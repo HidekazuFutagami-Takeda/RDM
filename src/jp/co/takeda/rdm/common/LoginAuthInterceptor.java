@@ -21,7 +21,7 @@ import com.opensymphony.xwork2.interceptor.ExceptionHolder;
 import com.opensymphony.xwork2.util.logging.Logger;
 import com.opensymphony.xwork2.util.logging.LoggerFactory;
 
-import jp.co.takeda.jkr.exception.LoginAuthException;
+import jp.co.takeda.rdm.exception.LoginAuthException;
 
 public class LoginAuthInterceptor extends AbstractInterceptor {
 
@@ -43,7 +43,7 @@ public class LoginAuthInterceptor extends AbstractInterceptor {
 
     /**
      * ログイン済みかチェックする。<br/>
-     *
+     * 
      * @param actioninvocation ActionInvocation
      * @return 次のインターセプター処理
      * @see com.opensymphony.xwork2.interceptor.MethodFilterInterceptor#doIntercept(com.opensymphony.xwork2.ActionInvocation)
@@ -102,7 +102,7 @@ public class LoginAuthInterceptor extends AbstractInterceptor {
 
     /**
      * チェックしないパスかチェックする。<br>
-     *
+     * 
      * @param excludePaths チェックしないパス
      * @param currentRequestPath 現在のパス
      * @return true：チェックしないパス。false：チェックするパス。

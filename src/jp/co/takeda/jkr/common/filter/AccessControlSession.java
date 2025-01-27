@@ -28,7 +28,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import jp.co.takeda.jkr.common.BaseInfoHolder;
 import jp.co.takeda.jkr.common.LoginInfo;
 import jp.co.takeda.jkr.service.CommonControlService;
-import jp.co.takeda.jkr.util.AppConstant;
+import jp.co.takeda.rdm.util.AppConstant;
 
 /**
  * <pre>

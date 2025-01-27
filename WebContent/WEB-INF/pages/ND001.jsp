@@ -9,9 +9,9 @@
 --%>
 <%@ page
   language="java"
-  import="jp.co.takeda.jkr.util.AppMethods,
+  import="jp.co.takeda.rdm.util.AppMethods,
       jp.co.takeda.rdm.util.RdmConstantsData,
-      jp.co.takeda.jkr.util.JkrConstantsData"
+      jp.co.takeda.rdm.util.JkrConstantsData"
   session="true"
   buffer="8kb"
   autoFlush="true"

@@ -34,7 +34,7 @@ import jp.co.takeda.jkr.entity.SRdmMParamMstEntity;
 import jp.co.takeda.jkr.entity.SRdmMJgiJokenEntity;
 import jp.co.takeda.jkr.exception.UnauthorizedException;
 import jp.co.takeda.rdm.util.RdmConstantsData;
-import jp.co.takeda.jkr.util.StringUtils;
+import jp.co.takeda.rdm.util.StringUtils;
 
 /**
  * Serviceクラス（NC001)

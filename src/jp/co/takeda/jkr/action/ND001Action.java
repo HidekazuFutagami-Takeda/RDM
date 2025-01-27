@@ -21,8 +21,8 @@ import jp.co.takeda.jkr.common.BaseDTO;
 import jp.co.takeda.jkr.common.BeanUtil;
 import jp.co.takeda.jkr.dto.ND001DTO;
 import jp.co.takeda.jkr.service.ND001Service;
-import jp.co.takeda.jkr.util.JkrConstantsData;
-import jp.co.takeda.jkr.util.StringUtils;
+import jp.co.takeda.rdm.util.JkrConstantsData;
+import jp.co.takeda.rdm.util.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
 

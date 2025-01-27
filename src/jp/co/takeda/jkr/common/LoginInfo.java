@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 import jp.co.takeda.jkr.entity.RdmMsgMstEntity;
-import jp.co.takeda.jkr.util.DateUtils;
+import jp.co.takeda.rdm.util.DateUtils;
 
 /**
  * タイトル:  武田薬品工業株式会社

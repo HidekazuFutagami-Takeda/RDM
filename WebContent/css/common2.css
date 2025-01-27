@@ -662,3 +662,72 @@ body {
   display: none;
 }
 
+/*--------------------------*/
+/* RDM登録画面系 */
+/*--------------------------*/
+TD.comFormTableItem				/* テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 0px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+}
+TD.comFormTableItem#center		{ text-align : center; }
+TD.comFormTableItem#right		{ text-align : right; }
+TD.comFormTableItem#levelHigh	{ text-align : center; color : #ff3300; }
+TD.comFormTableItem#overdue		{ text-align : center; color : #ff3300; }
+TD.comFormTableItem#red			{ text-align : center; color : #ff3300; }
+TD.comFormTableItem#blue		{ text-align : center; color : #0033ff; }
+TD.comFormTableItem#green		{ text-align : center; color : #006600; }
+TD.comFormTableItem#yellow		{ text-align : center; color : #999933; }
+TD.comFormTableItem#orange		{ text-align : center; color : #ff6600; }
+
+TD.comFormTableItemNf012Head	/* NF012 テーブル形式の見出し項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : center;
+  border-style: dotted;
+  border-top-width : 1px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+  height : 30px;
+}
+
+TD.comFormTableItemNf012	/* NF012 テーブル形式の項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: dotted;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 0px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+  height : 30px;
+  padding-left : 10px;
+}
+
+
+TABLE.comCustomTable	/* 全画面用ポータル大枠 */
+{
+  margin-top:10pt;
+  width:540pt;
+  background-color:#ffffff;
+  border-color:#666666;
+  padding : 1pt 1pt 1pt 1pt;
+}
+
+.comCustomTable tbody td{
+resize : horizontal;     // <-ユーザが幅を変更できる①
+overflow : hidden;     // <-はみ出たら非表示②
+white-space : nowrap; // <-折り返さない③
+}

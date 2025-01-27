@@ -10,6 +10,9 @@ package jp.co.takeda.rdm.util;
  */
 public class RdmConstantsData {
 
+    /***条件設定 : 適用日設定可能本部権限 */
+    public static final String RDM_JKN_HONBU_COMMIT = "JKN0163";
+
 	//TODO 二神　JKN0163を正しく設定する
     /**条件設定 : MDM管理者権限 */
 	//TODO二神　MDM管理者：JKN0813  全MR：JKN0023
@@ -33,25 +36,6 @@ public class RdmConstantsData {
     /**メニュー権限 : 来期用項目メニュースイッチ */
     public static final String RDM_PARAM_MST_MENU_MN_NT_FAC = "MN_NT_FAC";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /***条件設定 : 適用日設定可能本部権限 */
-    public static final String RDM_JKN_HONBU_COMMIT = "JKN0163";
-
-    /***条件設定 : 適用日設定不可本部権限 */
-    public static final String RDM_JKN_HONBU_NOCOMMIT = "JKN0162";
-
     /**条件設定 : ワクチンG権限 */
     public static final String RDM_JKN_VACCINE = "JKN0161";
 
@@ -65,7 +49,19 @@ public class RdmConstantsData {
     public static final String RDM_JKN_ONCGM = "JKN0337";
 
     /**条件設定 : MR権限 */
-    //public static final String RDM_JKN_MR = "JKN0164";
+    public static final String RDM_JKN_MR = "JKN0164";
+
+
+
+
+
+
+
+
+
+
+
+
 
     //20180118 HISOL Kawamoto JKR-C-005 MOD START
     //20150127 HISOL Suzuki 期末期首 組織変更対応 ADD START

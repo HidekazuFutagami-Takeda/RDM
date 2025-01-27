@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>タイトル</display-name>
+
+    <context-param>
+        <param-name>spring.profiles.active</param-name>
+        <param-value>product</param-value>
+    </context-param>
+    <context-param>
+        <param-name>spring.profiles.default</param-name>
+        <param-value>product</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext_common.xml,/WEB-INF/applicationContext_custom.xml</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>AccessCheck</filter-name>
+        <!-- 本番を意識したバージョン（HTTPHeaderから取得する） -->
+        <!-- filter-class>jp.co.takeda.jkr.common.filter.AccessControlHttpHeader</filter-class -->
+        <!-- 開発環境を意識したバージョン（sessionから取得する） -->
+        <filter-class>jp.co.takeda.jkr.common.filter.AccessControlSession</filter-class>
+        <!-- CLEARTRUST で格納されたHTTPヘッダの名前を記載する。-->
+        <init-param>
+          <param-name>HTTP_HEADER_NAME</param-name>
+          <param-value>EMPLOYEENUMBER</param-value>
+        </init-param>
+        <!-- CLEARTRUST で格納されたHTTPヘッダの名前を記載する。-->
+        <init-param>
+          <param-name>SESSION_NAME</param-name>
+          <param-value>USERID</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccessCheck</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- ThreadLocalの管理 -->
+    <filter>
+        <filter-name>ControlThreadLocalFilter</filter-name>
+        <filter-class>jp.co.takeda.jkr.common.ControlThreadLocalFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ControlThreadLocalFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 権限情報（リクエスト情報をラッピング）設定 -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>jp.co.takeda.jkr.common.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <resource-ref>
+        <res-ref-name>jdbc/JkrDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+
+</web-app>

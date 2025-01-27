@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="共通" output="common.xml">
+    <sheet index="*共通設定*" toName="共通設定">
+        <label match="設計情報フォルダ" />
+        <label match="ソースフォルダ" />
+        <label match="JSPフォルダ" />
+        <label match="WEB-INFフォルダ" />
+        <label match="ルートパッケージ" />
+        <label match="DTOパッケージ" />
+        <label match="Actionパッケージ" />
+        <label match="Serviceパッケージ" />
+        <label match="Entityパッケージ" />
+        <label match="共通パッケージ" />
+        <label match="Exceptionパッケージ" />
+        <!-- フレームワーク -->
+        <label match="P層フレームワーク" />
+        <label match="F層フレームワーク" />
+        <label match="D層フレームワーク" />
+        <!-- DB設定 -->
+        <label match="データソースタイプ" />
+        <label match="データソース名" />
+        <label match="ドライバクラス" />
+        <label match="接続URL" />
+        <label match="ユーザ名" />
+        <label match="パスワード" />
+        <!-- 生成 -->
+        <label match="Lombok使用" />
+        <label match="Javaエンコーディング" />
+        <label match="XMLエンコーディング" />
+        <label match="メッセージリソースエンコーディング" />
+        <label match="リクエストエンコーディング" />
+        <!-- 共通部品設定 -->
+        <label match="排他キー名" />
+        <label match="ログインチェック除外パス" />
+        <label match="直打ち許可パス" />
+        <label match="直打ち禁止パス" />
+        <label match="画面利用権限チェック" />
+        <label match="利用時間帯チェック" />
+    </sheet>
+</rule>

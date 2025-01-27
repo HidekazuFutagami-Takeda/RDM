@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="テーブル定義書" output="table.xml">
+    <sheet index="*" toName="テーブル定義" exclude="表紙,変更履歴">
+        <label match="システム名" />
+        <label match="サブシステムID" />
+        <label match="テーブル物理名" />
+        <label match="テーブル論理名" />
+        <vlist match="列定義">
+            <property match="No." />
+            <property match="列物理名" />
+            <property match="列論理名" />
+            <property match="SQL型" />
+            <property match="桁数" />
+            <property match="PK" />
+            <property match="NOT NULL" toName="NOTNULL" />
+            <property match="ソート" />
+            <property match="説明" />
+            <property match="備考" />
+            <property match="変数名" />
+            <property match="変数型" />
+        </vlist>
+    </sheet>
+</rule>

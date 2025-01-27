@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.mapper.action.prefix.enabled" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+    <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+    <constant name="struts.custom.include.extension" value="/NC001Init,/NC001Init.action" />
+    <constant name="authorization.screen.check" value="true" />
+    <constant name="authorization.time.check" value="true" />
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <package name="default" namespace="/" extends="struts-default">
+        <interceptors>
+            <interceptor name="resources" class="jp.co.takeda.rdm.common.ResourcesInterceptor"/>
+            <interceptor name="noCache" class="jp.co.takeda.rdm.common.NoCacheInterceptor"/>
+            <interceptor name="checkExtension" class="jp.co.takeda.rdm.common.CheckExtensionInterceptor"/>
+            <interceptor name="loginAuth" class="jp.co.takeda.rdm.common.LoginAuthInterceptor"/>
+            <interceptor name="loginInfoAndMenuInit" class="jp.co.takeda.jkr.common.LoginInfoAndMenuInitInterceptor"/>
+            <interceptor name="transitionAuth" class="jp.co.takeda.rdm.common.TransitionAuthInterceptor"/>
+            <interceptor-stack name="custom-defaultStack">
+                <interceptor-ref name="resources" />
+                <interceptor-ref name="logger" />
+                <interceptor-ref name="timer" />
+                <interceptor-ref name="exception">
+                    <param name="logEnabled">true</param>
+                    <param name="logLevel">ERROR</param>
+                </interceptor-ref>
+                <interceptor-ref name="checkExtension" />
+                <interceptor-ref name="loginAuth" />
+                <interceptor-ref name="loginInfoAndMenuInit" />
+                <interceptor-ref name="transitionAuth" />
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params"/>
+                <!-- <interceptor-ref name="conversionError"/> -->
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="annotationWorkflow" />
+                <interceptor-ref name="noCache" />
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="custom-defaultStack" />
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="InvalidServiceException">/WEB-INF/pages/error/mapsInvalidServiceException.jsp</result>
+            <result name="UnauthorizedException">/WEB-INF/pages/error/mapsUnauthorizedException.jsp</result>
+            <result name="PauseServiceException">/WEB-INF/pages/error/mapsPauseServiceException.jsp</result>
+            <result name="OverTimeServiceException">/WEB-INF/pages/error/mapsOverTimeServiceException.jsp</result>
+            <result name="SessionTimeoutException">/WEB-INF/pages/error/mapsSessionTimeoutException.jsp</result>
+            <result name="InvalidRequestException">/WEB-INF/pages/error/mapsInvalidRequestException.jsp</result>
+            <result name="exception">/WEB-INF/pages/JKR999C010.jsp</result>
+            <result name="invalid.token">/WEB-INF/pages/JKR999C010.jsp</result>
+            <result name="error" type="chain">JKR999C010Init</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.InvalidServiceException" result="InvalidServiceException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.UnauthorizedException" result="UnauthorizedException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.PauseServiceException" result="PauseServiceException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.OverTimeServiceException" result="OverTimeServiceException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.SessionTimeoutException" result="SessionTimeoutException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.InvalidRequestException" result="InvalidRequestException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.LoginAuthException" result="SessionTimeoutException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.CheckExtentionException" result="InvalidRequestException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.UpdateAccessException" result="exception"/>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+
+        <action name="NC001Init" class="nC001Action" method="init">
+            <result name="NC001">/WEB-INF/pages/NC001.jsp</result>
+        </action>
+
+        <action name="ND001Init" class="nD001Action" method="init">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+
+        <action name="ND401Init" class="nD401Action" method="init">
+            <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
+        </action>
+
+        <action name="ND501Init" class="nD501Action" method="init">
+            <result name="ND501">/WEB-INF/pages/ND501.jsp</result>
+        </action>
+
+        <action name="NF001Init" class="nF001Action" method="init">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+        </action>
+
+        <action name="NF401Init" class="nF401Action" method="init">
+            <result name="NF401">/WEB-INF/pages/NF401.jsp</result>
+        </action>
+
+        <action name="NF403Init" class="nF403Action" method="init">
+            <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
+        </action>
+
+        <action name="NF501Init" class="nF501Action" method="init">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
+
+        <action name="NM001Init" class="nM001Action" method="init">
+            <result name="NM001">/WEB-INF/pages/NM001.jsp</result>
+        </action>
+
+        <action name="NM011Init" class="nM011Action" method="init">
+            <result name="NM011">/WEB-INF/pages/NM011.jsp</result>
+        </action>
+
+        <action name="NC011Init" class="nC011Action" method="init">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+
+
+
+
+
+
+<!--                  ここから下消す                      -->
+
+        <action name="JKR000C010Search" class="jKR000C010Action" method="search">
+            <result name="JKR000C010">/WEB-INF/pages/JKR000C010.jsp</result>
+        </action>
+        <action name="JKR000C010Check" class="jKR000C010Action" method="check">
+            <result name="JKR000C010">/WEB-INF/pages/JKR000C010.jsp</result>
+        </action>
+        <action name="JKR000C010View" class="jKR000C010Action" method="view">
+            <result name="JKR000C010">/WEB-INF/pages/JKR000C010.jsp</result>
+        </action>
+        <action name="JKR000C010Common" class="jKR000C010Action" method="common">
+            <result name="JKR000C010">/WEB-INF/pages/JKR000C010.jsp</result>
+        </action>
+        <action name="JKR000C010Listout" class="jKR000C010Action" method="Listout">
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR000C010DownloadInsTrtCsv" class="jKR000C010Action" method="downloadInsTrtCsv">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR000C010DownloadDocTrtCsv" class="jKR000C010Action" method="downloadDocTrtCsv">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <!--　ここから変更 -->
+        <action name="JKR010C010Init" class="jKR010C010Action" method="init">
+            <result name="JKR010C010">/WEB-INF/pages/RDM010C010.jsp</result>
+        </action>
+        <action name="JKR010C010Search" class="jKR010C010Action" method="search">
+            <result name="JKR010C010">/WEB-INF/pages/RDM010C010.jsp</result>
+        </action>
+        <action name="JKR010C010Sort" class="jKR010C010Action" method="sort">
+            <result name="JKR010C010">/WEB-INF/pages/RDM010C010.jsp</result>
+        </action>
+        <action name="JKR010C010Page" class="jKR010C010Action" method="page">
+            <result name="JKR010C010">/WEB-INF/pages/RDM010C010.jsp</result>
+        </action>
+        <action name="JKR010C010Register" class="jKR010C010Action" method="register">
+            <result name="JKR010C010">/WEB-INF/pages/RDM010C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <!--　ここまで変更 -->
+        <action name="JKR020C010Init" class="jKR020C010Action" method="init">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+        </action>
+        <action name="JKR020C010Search" class="jKR020C010Action" method="search">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+        </action>
+        <action name="JKR020C010Update" class="jKR020C010Action" method="update">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR020C010SetClear" class="jKR020C010Action" method="setClear">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR020C010Check" class="jKR020C010Action" method="check">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR020C010Confirm" class="jKR020C010Action" method="confirm">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR020C010Release" class="jKR020C010Action" method="release">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR020C010Page" class="jKR020C010Action" method="page">
+            <result name="JKR020C010">/WEB-INF/pages/JKR020C010.jsp</result>
+        </action>
+        <action name="JKR020C020Init" class="jKR020C020Action" method="init">
+            <result name="JKR020C020">/WEB-INF/pages/JKR020C020.jsp</result>
+        </action>
+        <action name="JKR020C020Search" class="jKR020C020Action" method="search">
+            <result name="JKR020C020">/WEB-INF/pages/JKR020C020.jsp</result>
+        </action>
+        <action name="JKR020C020Page" class="jKR020C020Action" method="page">
+            <result name="JKR020C020">/WEB-INF/pages/JKR020C020.jsp</result>
+        </action>
+        <action name="JKR020C020Download" class="jKR020C020Action" method="download">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR020C020Reset" class="jKR020C020Action" method="reset">
+            <result name="JKR020C020">/WEB-INF/pages/JKR020C020.jsp</result>
+        </action>
+        <action name="JKR020C020Register" class="jKR020C020Action" method="register">
+            <result name="JKR020C020">/WEB-INF/pages/JKR020C020.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR020C020Cancel" class="jKR020C020Action" method="cancel">
+            <result name="JKR020C020">/WEB-INF/pages/JKR020C020.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR030C010Init" class="jKR030C010Action" method="init">
+            <result name="JKR030C010">/WEB-INF/pages/JKR030C010.jsp</result>
+        </action>
+        <action name="JKR030C010Register" class="jKR030C010Action" method="register">
+            <result name="JKR030C010">/WEB-INF/pages/JKR030C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR030C010DownLoad" class="jKR030C010Action" method="downLoad">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR030C010Sort" class="jKR030C010Action" method="sort">
+            <result name="JKR030C010">/WEB-INF/pages/JKR030C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR030C010Page" class="jKR030C010Action" method="page">
+            <result name="JKR030C010">/WEB-INF/pages/JKR030C010.jsp</result>
+        </action>
+        <action name="JKR030C020Init" class="jKR030C020Action" method="init">
+            <result name="JKR030C020">/WEB-INF/pages/JKR030C020.jsp</result>
+        </action>
+        <action name="JKR030C020Register" class="jKR030C020Action" method="register">
+            <result name="JKR030C020">/WEB-INF/pages/JKR030C020.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR030C020DownLoad" class="jKR030C020Action" method="downLoad">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR030C020Sort" class="jKR030C020Action" method="sort">
+            <result name="JKR030C020">/WEB-INF/pages/JKR030C020.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR030C020Page" class="jKR030C020Action" method="page">
+            <result name="JKR030C020">/WEB-INF/pages/JKR030C020.jsp</result>
+        </action>
+        <action name="JKR040C010Init" class="jKR040C010Action" method="init">
+            <result name="JKR040C010">/WEB-INF/pages/JKR040C010.jsp</result>
+        </action>
+        <action name="JKR040C010Search" class="jKR040C010Action" method="search">
+            <result name="JKR040C010">/WEB-INF/pages/JKR040C010.jsp</result>
+        </action>
+        <action name="JKR040C010Sort" class="jKR040C010Action" method="sort">
+            <result name="JKR040C010">/WEB-INF/pages/JKR040C010.jsp</result>
+        </action>
+        <action name="JKR040C010Page" class="jKR040C010Action" method="page">
+            <result name="JKR040C010">/WEB-INF/pages/JKR040C010.jsp</result>
+        </action>
+        <action name="JKR040C010ViewInit" class="jKR040C010Action" method="viewInit">
+            <result name="JKR040C010">/WEB-INF/pages/JKR040C010.jsp</result>
+        </action>
+        <action name="JKR040C010Register" class="jKR040C010Action" method="register">
+            <result name="JKR040C010">/WEB-INF/pages/JKR040C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR040C010Download" class="jKR040C010Action" method="download">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR040C010OtherTekiyoChg" class="jKR040C010Action" method="otherTekiyoChg">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR040C010TabErrList" class="jKR040C010Action" method="tabErrList">
+            <result name="JKR040C040Init" type="chain">JKR040C040Init</result>
+        </action>
+        <action name="JKR040C010InsertRow" class="jKR040C010Action" method="insertRow">
+            <result name="JKR040C010">/WEB-INF/pages/JKR040C010.jsp</result>
+        </action>
+        <action name="JKR040C020Init" class="jKR040C020Action" method="init">
+            <result name="JKR040C020">/WEB-INF/pages/JKR040C020.jsp</result>
+        </action>
+        <action name="JKR040C020Search" class="jKR040C020Action" method="search">
+            <result name="JKR040C020">/WEB-INF/pages/JKR040C020.jsp</result>
+        </action>
+        <action name="JKR040C020Sort" class="jKR040C020Action" method="sort">
+            <result name="JKR040C020">/WEB-INF/pages/JKR040C020.jsp</result>
+        </action>
+        <action name="JKR040C020Page" class="jKR040C020Action" method="page">
+            <result name="JKR040C020">/WEB-INF/pages/JKR040C020.jsp</result>
+        </action>
+        <action name="JKR040C020ViewInit" class="jKR040C020Action" method="viewInit">
+            <result name="JKR040C020">/WEB-INF/pages/JKR040C020.jsp</result>
+        </action>
+        <action name="JKR040C020CsvDownload" class="jKR040C020Action" method="csvDownload">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR040C020OtherTekiyoChg" class="jKR040C020Action" method="otherTekiyoChg">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR040C020Register" class="jKR040C020Action" method="register">
+            <result name="JKR040C020">/WEB-INF/pages/JKR040C020.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR040C030Init" class="jKR040C030Action" method="init">
+            <result name="JKR040C030">/WEB-INF/pages/JKR040C030.jsp</result>
+        </action>
+        <action name="JKR040C030Search" class="jKR040C030Action" method="search">
+            <result name="JKR040C030">/WEB-INF/pages/JKR040C030.jsp</result>
+        </action>
+        <action name="JKR040C030Sort" class="jKR040C030Action" method="sort">
+            <result name="JKR040C030">/WEB-INF/pages/JKR040C030.jsp</result>
+        </action>
+        <action name="JKR040C030Page" class="jKR040C030Action" method="page">
+            <result name="JKR040C030">/WEB-INF/pages/JKR040C030.jsp</result>
+        </action>
+        <action name="JKR040C030ViewInit" class="jKR040C030Action" method="viewInit">
+            <result name="JKR040C030">/WEB-INF/pages/JKR040C030.jsp</result>
+        </action>
+        <action name="JKR040C030CsvDownload" class="jKR040C030Action" method="csvDownload">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR040C030OtherTekiyoChg" class="jKR040C030Action" method="otherTekiyoChg">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR040C030Register" class="jKR040C030Action" method="register">
+            <result name="JKR040C030">/WEB-INF/pages/JKR040C030.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR040C040Init" class="jKR040C040Action" method="init">
+            <result name="JKR040C040">/WEB-INF/pages/JKR040C040.jsp</result>
+        </action>
+        <action name="JKR040C040Search" class="jKR040C040Action" method="search">
+            <result name="JKR040C040">/WEB-INF/pages/JKR040C040.jsp</result>
+        </action>
+        <action name="JKR040C040Sort" class="jKR040C040Action" method="sort">
+            <result name="JKR040C040">/WEB-INF/pages/JKR040C040.jsp</result>
+        </action>
+        <action name="JKR040C040Page" class="jKR040C040Action" method="page">
+            <result name="JKR040C040">/WEB-INF/pages/JKR040C040.jsp</result>
+        </action>
+        <action name="JKR040C040ViewInit" class="jKR040C040Action" method="viewInit">
+            <result name="JKR040C040">/WEB-INF/pages/JKR040C040.jsp</result>
+        </action>
+        <action name="JKR040C040Register" class="jKR040C040Action" method="register">
+            <result name="JKR040C040">/WEB-INF/pages/JKR040C040.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR040C040Download" class="jKR040C040Action" method="download">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR040C040OtherTekiyoChg" class="jKR040C040Action" method="otherTekiyoChg">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR050C010Init" class="jKR050C010Action" method="init">
+            <result name="JKR050C010">/WEB-INF/pages/JKR050C010.jsp</result>
+        </action>
+        <action name="JKR050C010Search" class="jKR050C010Action" method="search">
+            <result name="JKR050C010">/WEB-INF/pages/JKR050C010.jsp</result>
+        </action>
+        <action name="JKR050C010Sort" class="jKR050C010Action" method="sort">
+            <result name="JKR050C010">/WEB-INF/pages/JKR050C010.jsp</result>
+        </action>
+        <action name="JKR050C010Page" class="jKR050C010Action" method="page">
+            <result name="JKR050C010">/WEB-INF/pages/JKR050C010.jsp</result>
+        </action>
+        <action name="JKR050C010ViewInit" class="jKR050C010Action" method="viewInit">
+            <result name="JKR050C010">/WEB-INF/pages/JKR050C010.jsp</result>
+        </action>
+        <action name="JKR050C010CsvDownLoad" class="jKR050C010Action" method="csvDownLoad">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR050C010OtherTekiyoChg" class="jKR050C010Action" method="otherTekiyoChg">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR050C010Register" class="jKR050C010Action" method="register">
+            <result name="JKR050C010">/WEB-INF/pages/JKR050C010.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR050C020Init" class="jKR050C020Action" method="init">
+            <result name="JKR050C020">/WEB-INF/pages/JKR050C020.jsp</result>
+        </action>
+        <action name="JKR050C020Search" class="jKR050C020Action" method="search">
+            <result name="JKR050C020">/WEB-INF/pages/JKR050C020.jsp</result>
+        </action>
+        <action name="JKR050C020Sort" class="jKR050C020Action" method="sort">
+            <result name="JKR050C020">/WEB-INF/pages/JKR050C020.jsp</result>
+        </action>
+        <action name="JKR050C020Page" class="jKR050C020Action" method="page">
+            <result name="JKR050C020">/WEB-INF/pages/JKR050C020.jsp</result>
+        </action>
+        <action name="JKR050C020ViewInit" class="jKR050C020Action" method="viewInit">
+            <result name="JKR050C020">/WEB-INF/pages/JKR050C020.jsp</result>
+        </action>
+        <action name="JKR050C020CsvDownLoad" class="jKR050C020Action" method="csvDownLoad">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR050C020OtherTekiyoChg" class="jKR050C020Action" method="otherTekiyoChg">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR050C020Register" class="jKR050C020Action" method="register">
+            <result name="JKR050C020">/WEB-INF/pages/JKR050C020.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR050C030Init" class="jKR050C030Action" method="init">
+            <result name="JKR050C030">/WEB-INF/pages/JKR050C030.jsp</result>
+        </action>
+        <action name="JKR050C030Search" class="jKR050C030Action" method="search">
+            <result name="JKR050C030">/WEB-INF/pages/JKR050C030.jsp</result>
+        </action>
+        <action name="JKR050C030Sort" class="jKR050C030Action" method="sort">
+            <result name="JKR050C030">/WEB-INF/pages/JKR050C030.jsp</result>
+        </action>
+        <action name="JKR050C030Page" class="jKR050C030Action" method="page">
+            <result name="JKR050C030">/WEB-INF/pages/JKR050C030.jsp</result>
+        </action>
+        <action name="JKR050C030ViewInit" class="jKR050C030Action" method="viewInit">
+            <result name="JKR050C030">/WEB-INF/pages/JKR050C030.jsp</result>
+        </action>
+        <action name="JKR050C030CsvDownLoad" class="jKR050C030Action" method="csvDownLoad">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR050C030OtherTekiyoChg" class="jKR050C030Action" method="otherTekiyoChg">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR050C030Register" class="jKR050C030Action" method="register">
+            <result name="JKR050C030">/WEB-INF/pages/JKR050C030.jsp</result>
+            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+        </action>
+        <action name="JKR090C010Init" class="jKR090C010Action" method="init">
+            <result name="JKR090C010">/WEB-INF/pages/JKR090C010.jsp</result>
+        </action>
+        <action name="JKR090C010Search" class="jKR090C010Action" method="search">
+            <result name="JKR090C010">/WEB-INF/pages/JKR090C010.jsp</result>
+        </action>
+        <action name="JKR090C010Sort" class="jKR090C010Action" method="sort">
+            <result name="JKR090C010">/WEB-INF/pages/JKR090C010.jsp</result>
+        </action>
+        <action name="JKR090C010Page" class="jKR090C010Action" method="page">
+            <result name="JKR090C010">/WEB-INF/pages/JKR090C010.jsp</result>
+        </action>
+        <action name="JKR090C010Reload" class="jKR090C010Action" method="reload">
+            <result name="JKR090C010">/WEB-INF/pages/JKR090C010.jsp</result>
+        </action>
+        <action name="JKR090C010Download" class="jKR090C010Action" method="download">
+            <result name="stream" type="stream">
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">${bufferSize}</param>
+                <param name="contentType">${contentType}</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="contentLength">${contentLength}</param>
+            </result>
+        </action>
+        <action name="JKR090C020Init" class="jKR090C020Action" method="init">
+            <result name="JKR090C020">/WEB-INF/pages/JKR090C020.jsp</result>
+        </action>
+        <action name="JKR100C010Init" class="jKR100C010Action" method="init">
+            <result name="JKR100C010">/WEB-INF/pages/JKR100C010.jsp</result>
+        </action>
+        <action name="JKR100C010AjaxSosJgi" class="jKR100C010Action" method="ajaxSosJgi">
+            <result name="JKR100C020">/WEB-INF/pages/JKR100C020.jsp</result>
+        </action>
+        <action name="JKR100C040Init" class="jKR100C040Action" method="init">
+            <result name="JKR100C040">/WEB-INF/pages/JKR100C040.jsp</result>
+        </action>
+        <action name="JKR100C040Search" class="jKR100C040Action" method="search">
+            <result name="JKR100C040">/WEB-INF/pages/JKR100C040.jsp</result>
+        </action>
+        <action name="JKR100C050Init" class="jKR100C050Action" method="init">
+            <result name="JKR100C050">/WEB-INF/pages/JKR100C050.jsp</result>
+        </action>
+        <action name="JKR100C060Init" class="jKR100C060Action" method="init">
+            <result name="JKR100C060">/WEB-INF/pages/JKR100C060.jsp</result>
+        </action>
+        <action name="JKR100C060Search" class="jKR100C060Action" method="search">
+            <result name="JKR100C060">/WEB-INF/pages/JKR100C060.jsp</result>
+        </action>
+        <action name="JKR100C060Sort" class="jKR100C060Action" method="sort">
+            <result name="JKR100C060">/WEB-INF/pages/JKR100C060.jsp</result>
+        </action>
+        <action name="JKR100C060Page" class="jKR100C060Action" method="page">
+            <result name="JKR100C060">/WEB-INF/pages/JKR100C060.jsp</result>
+        </action>
+        <action name="JKR100C060Reset" class="jKR100C060Action" method="reset">
+            <result name="JKR100C060">/WEB-INF/pages/JKR100C060.jsp</result>
+        </action>
+        <action name="JKR100C070Init" class="jKR100C070Action" method="init">
+            <result name="JKR100C070">/WEB-INF/pages/JKR100C070.jsp</result>
+        </action>
+        <action name="JKR100C070Search" class="jKR100C070Action" method="search">
+            <result name="JKR100C070">/WEB-INF/pages/JKR100C070.jsp</result>
+        </action>
+        <action name="JKR100C070Page" class="jKR100C070Action" method="page">
+            <result name="JKR100C070">/WEB-INF/pages/JKR100C070.jsp</result>
+        </action>
+        <action name="JKR100C090Init" class="jKR100C090Action" method="init">
+            <result name="JKR100C090">/WEB-INF/pages/JKR100C090.jsp</result>
+        </action>
+        <action name="JKR100C090Register" class="jKR100C090Action" method="register">
+            <result name="JKR100C090">/WEB-INF/pages/JKR100C090.jsp</result>
+        </action>
+        <action name="JKR100C100Init" class="jKR100C100Action" method="init">
+            <result name="JKR100C100">/WEB-INF/pages/JKR100C100.jsp</result>
+        </action>
+        <action name="JKR100C100Register" class="jKR100C100Action" method="register">
+            <result name="JKR100C100">/WEB-INF/pages/JKR100C100.jsp</result>
+        </action>
+        <action name="JKR999C010Init" class="jKR999C010Action" method="init">
+            <result name="JKR999C010">/WEB-INF/pages/JKR999C010.jsp</result>
+        </action>
+    </package>
+</struts>

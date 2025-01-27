@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="検証ルール一覧" output="validation-rule.xml">
+    <sheet index="*" toName="ルール">
+        <vlist match="検証ルール">
+            <property match="検証ルール日本語名" />
+            <property match="No" />
+            <property match="検証ルール名" />
+            <property match="属性定義" >
+                <subProperty match="属性1">
+                    <subProperty match="属性名" />
+                    <subProperty match="属性型" />
+                  <subProperty match="属性値" />
+                  </subProperty>
+                <subProperty match="属性2">
+                    <subProperty match="属性名" />
+                    <subProperty match="属性型" />
+                    <subProperty match="属性値" />
+                </subProperty>
+                <subProperty match="属性3">
+                    <subProperty match="属性名" />
+                    <subProperty match="属性型" />
+                    <subProperty match="属性値" />
+                </subProperty>
+                <subProperty match="属性4">
+                    <subProperty match="属性名" />
+                    <subProperty match="属性型" />
+                    <subProperty match="属性値" />
+                </subProperty>
+            </property>
+            <property match="メッセージID" />
+        </vlist>
+    </sheet>
+</rule>

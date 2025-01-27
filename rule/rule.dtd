@@ -1,0 +1,85 @@
+<!--
+ALL RIGHTS RESERVED,
+COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
+-->
+<!-- version 2.7.0 -->
+<!ENTITY % ruleType "label|text|vlist">
+
+<!ELEMENT rule (file|(sheet)*)>
+<!ATTLIST rule input CDATA #IMPLIED>
+<!ATTLIST rule output CDATA #IMPLIED>
+<!ATTLIST rule maxColumn CDATA #IMPLIED>
+<!ATTLIST rule maxRow CDATA #IMPLIED>
+<!ATTLIST rule cdata (true|false) "false">
+
+<!ELEMENT file (sheet)*>
+<!ATTLIST file toName CDATA #IMPLIED>
+
+<!ELEMENT sheet (block|(%ruleType;))*>
+<!ATTLIST sheet index CDATA #REQUIRED>
+<!ATTLIST sheet exclude CDATA #IMPLIED>
+<!ATTLIST sheet toName CDATA #IMPLIED>
+
+<!ELEMENT block (%ruleType;)*>
+<!ATTLIST block toName CDATA #REQUIRED>
+
+<!ELEMENT label EMPTY>
+<!ATTLIST label match CDATA #IMPLIED>
+<!ATTLIST label column CDATA #IMPLIED>
+<!ATTLIST label row CDATA #IMPLIED>
+<!ATTLIST label toName CDATA #IMPLIED>
+<!ATTLIST label direction (right|bottom) "right">
+<!ATTLIST label delimitedBy CDATA "">
+<!ATTLIST label isDouble (true|false) "false">
+<!ATTLIST label trim (true|false) "false">
+<!ATTLIST label required (true|false) "false">
+<!ATTLIST label hankaku (true|false) "false">
+<!ATTLIST label lineseparator (true|false) "false">
+<!ATTLIST label delete CDATA #IMPLIED>
+<!ATTLIST label mask CDATA #IMPLIED>
+
+<!ELEMENT text (label|vlist)*>
+<!ATTLIST text match CDATA #IMPLIED>
+<!ATTLIST text column CDATA #IMPLIED>
+<!ATTLIST text row CDATA #IMPLIED>
+<!ATTLIST text toName CDATA #IMPLIED>
+<!ATTLIST text direction (right|bottom) "bottom">
+<!ATTLIST text blankRow CDATA #IMPLIED>
+<!ATTLIST text blankLine CDATA #IMPLIED>
+<!ATTLIST text trim (true|false) "false">
+<!ATTLIST text required (true|false) "false">
+<!ATTLIST text hankaku (true|false) "false">
+<!ATTLIST text lineseparator (true|false) "false">
+<!ATTLIST text delete CDATA #IMPLIED>
+<!ATTLIST text mask CDATA #IMPLIED>
+
+<!ELEMENT vlist (property)*>
+<!ATTLIST vlist match CDATA #IMPLIED>
+<!ATTLIST vlist column CDATA #IMPLIED>
+<!ATTLIST vlist row CDATA #IMPLIED>
+<!ATTLIST vlist toName CDATA #IMPLIED>
+<!ATTLIST vlist direction (right|bottom) "bottom">
+
+<!ELEMENT property (subProperty)*>
+<!ATTLIST property match CDATA #REQUIRED>
+<!ATTLIST property toName CDATA #IMPLIED>
+<!ATTLIST property delimitedBy CDATA "">
+<!ATTLIST property isDouble (true|false) "false">
+<!ATTLIST property trim (true|false) "false">
+<!ATTLIST property required (true|false) "false">
+<!ATTLIST property hankaku (true|false) "false">
+<!ATTLIST property lineseparator (true|false) "false">
+<!ATTLIST property delete CDATA #IMPLIED>
+<!ATTLIST property mask CDATA #IMPLIED>
+
+<!ELEMENT subProperty (subProperty)*>
+<!ATTLIST subProperty match CDATA #REQUIRED>
+<!ATTLIST subProperty toName CDATA #IMPLIED>
+<!ATTLIST subProperty delimitedBy CDATA "">
+<!ATTLIST subProperty isDouble (true|false) "false">
+<!ATTLIST subProperty trim (true|false) "false">
+<!ATTLIST subProperty required (true|false) "false">
+<!ATTLIST subProperty hankaku (true|false) "false">
+<!ATTLIST subProperty lineseparator (true|false) "false">
+<!ATTLIST subProperty delete CDATA #IMPLIED>
+<!ATTLIST subProperty mask CDATA #IMPLIED>

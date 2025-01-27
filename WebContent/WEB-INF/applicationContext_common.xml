@@ -42,6 +42,6 @@
 
     <beans profile="product">
         <context:component-scan base-package="jp.co.takeda" use-default-filters="true"/>
-        <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/JkrDataSource"/>
+        <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/RdmDataSource"/>
     </beans>
 </beans>

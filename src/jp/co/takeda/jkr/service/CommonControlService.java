@@ -73,7 +73,7 @@ public class CommonControlService extends BaseService {
                 //代行中ではない場合、ユーザID⇒従業員番号
                 if (!loginInfo.isActing()) {
                     //受け取る文字は必ず７桁のC123456
-                    if(userId != null && jp.co.takeda.rdm.util.StringUtils.getByteLength(userId) == 7 && jp.co.takeda.jkr.util.StringUtils.isSingleByte(userId)) {
+                    if(userId != null && jp.co.takeda.rdm.util.StringUtils.getByteLength(userId) == 7 && jp.co.takeda.rdm.util.StringUtils.isSingleByte(userId)) {
                         SelectLoginJgiNoByUserIdEntity loginParam = new SelectLoginJgiNoByUserIdEntity();
                         loginParam.setInUserId(userId);
                         List<SelectLoginJgiNoByUserIdEntity> loginUserList = dao.select(loginParam);
@@ -361,7 +361,7 @@ public class CommonControlService extends BaseService {
     public int getJgiNo(String userId) {
         int jgiNo = 0;
         //ユーザIDをもとに従業員番号を取得
-        if(userId != null && jp.co.takeda.rdm.util.StringUtils.getByteLength(userId) == 7 && jp.co.takeda.jkr.util.StringUtils.isSingleByte(userId)) {
+        if(userId != null && jp.co.takeda.rdm.util.StringUtils.getByteLength(userId) == 7 && jp.co.takeda.rdm.util.StringUtils.isSingleByte(userId)) {
             SelectLoginJgiNoByUserIdEntity loginParam = new SelectLoginJgiNoByUserIdEntity();
             loginParam.setInUserId(userId);
             List<SelectLoginJgiNoByUserIdEntity> loginUserList = dao.select(loginParam);

@@ -13,7 +13,7 @@
 --%>
 <%@ page
   language="java"
-  import="java.util.*,java.text.*,jp.co.takeda.jkr.util.AppConstant,jp.co.takeda.jkr.common.MainMenuData"
+  import="java.util.*,java.text.*,jp.co.takeda.rdm.util.AppConstant,jp.co.takeda.jkr.common.MainMenuData"
   session="true"
   buffer="8kb"
   autoFlush="true"

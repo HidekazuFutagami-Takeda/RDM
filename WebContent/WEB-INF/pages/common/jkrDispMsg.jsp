@@ -11,7 +11,7 @@
 <%@page import="jp.co.takeda.jkr.common.LoginInfo"%>
 <%@ page
   language="java"
-  import="jp.co.takeda.jkr.util.AppConstant"
+  import="jp.co.takeda.rdm.util.AppConstant"
   session="true"
   buffer="8kb"
   autoFlush="true"

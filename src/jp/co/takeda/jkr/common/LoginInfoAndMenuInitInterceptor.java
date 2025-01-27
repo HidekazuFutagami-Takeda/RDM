@@ -10,7 +10,7 @@ import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
 
 import jp.co.takeda.jkr.service.CommonControlService;
-import jp.co.takeda.jkr.util.AppConstant;
+import jp.co.takeda.rdm.util.AppConstant;
 
 import org.apache.struts2.StrutsStatics;
 

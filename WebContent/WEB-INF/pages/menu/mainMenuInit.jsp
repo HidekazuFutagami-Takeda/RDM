@@ -11,14 +11,14 @@
  * </pre>
  * @since 1.0
  * @version $Revision: 1.2 $
- * @author 
+ * @author
  */
 --%>
 <%@page import="jp.co.takeda.jkr.common.BaseInfoHolder"%>
 <%@page import="jp.co.takeda.jkr.common.LoginInfo"%>
-<%@ page 
+<%@ page
   language="java"
-  import="java.util.*,java.text.*,jp.co.takeda.jkr.util.AppConstant,jp.co.takeda.jkr.common.MainMenuData"
+  import="java.util.*,java.text.*,jp.co.takeda.rdm.util.AppConstant,jp.co.takeda.jkr.common.MainMenuData"
   session="true"
   buffer="8kb"
   autoFlush="true"
@@ -35,7 +35,7 @@
 
   boolean renderModeFlg = false;
   boolean loginInfoFlg = false;
-  
+
   if(request.getParameter("_portlet_id") != null){
     portletIdFlg = true;
   }
@@ -43,24 +43,24 @@
   if(request.getParameter("_render_mode") != null){
     renderModeFlg = true;
   }
-  
+
   //if(session != null && session.getAttribute("_loginInfo") != null){
   if(session != null && session.getAttribute(BaseInfoHolder.USERINFO_KEY) != null){
     loginInfoFlg = true;
   }
-  
+
   boolean outSideFlg = false;
-  
+
   String serverPath = AppConstant.HOMEPAGE_URL;
-  
+
   String actScreenId = "";
   String actFunctionId = "";
-  
+
   String userId = "";
   String directExecType = "";
   String returnUrl      = "";
 %>
-<s:set id="serverPath" value="%{@jp.co.takeda.jkr.util.AppConstant@HOMEPAGE_URL}"/>
+<s:set id="serverPath" value="%{@jp.co.takeda.rdm.util.AppConstant@HOMEPAGE_URL}"/>
 <s:set id="loginData" value="#session.UserInfoKey"/>
 <s:set id="mainMenu" value="#session.mainMenuData"/>
 
@@ -69,29 +69,29 @@
   <%
   LoginInfo loginData = (LoginInfo)request.getSession().getAttribute(BaseInfoHolder.USERINFO_KEY);
   %>
-  
+
   <%
     outSideFlg = (!"AdminDocCopy".equals(loginData.getScreenId()) &&
            !"TkServiceDocCopy".equals(loginData.getScreenId()))? false: false;
-           
+
     actScreenId = loginData.getScreenId();
     actFunctionId = loginData.getFunctionId();
     userId = loginData.getUserId();
     directExecType	= loginData.getDirectExecType();	// J13-0006 2013/6/21 uchida add
     returnUrl		= loginData.getReturnUrl();			// J13-0006 2013/6/21 uchida add
-    
+
     actScreenId = "";
     actFunctionId = "";
-    
+
     directExecType = "";
     returnUrl      = "";
-    
+
   %>
 <% } %>
 
 <%
   MainMenuData mainMenu = null;
-  
+
   String pmsJgiNo = "";
   String pmsPass1 = "";
   String pmsPass2 = "";
@@ -100,11 +100,11 @@
   String dccJgiNo = "";
   String dccPass  = "";
   int s = 0;
-  
+
   if(session.getAttribute(AppConstant.SESKEY_MENU_DATA) != null){
     mainMenu = (MainMenuData)session.getAttribute(AppConstant.SESKEY_MENU_DATA);
-    
-    
+
+
     dccJgiNo = mainMenu.getSasJgiNo() != null ? mainMenu.getSasJgiNo().toString() : "";
     dccPass = mainMenu.getSasPass() != null ? mainMenu.getSasPass().toString() : "";
     sasJgiNo = mainMenu.getSasJgiNo() != null ? mainMenu.getSasJgiNo().toString() : "";
@@ -116,10 +116,10 @@
     pmsJgiNo = mainMenu.getSasJgiNo() != null ? mainMenu.getSasJgiNo().toString() : "";
     pmsPass1 = mainMenu.getPmsPass1() != null ? mainMenu.getPmsPass1().toString() : "";
     pmsPass2 = mainMenu.getPmsPass2() != null ? mainMenu.getPmsPass2().toString() : "";
-    
+
 %>
   <script type="text/javascript">
-    //actFlg 
+    //actFlg
     postJgiNo = "<%= mainMenu.getActorJgiNo() %>";
     menuJgiNo = "<%= mainMenu.getJgiNo() %>";							//00：ログイン従業員番号(代行含む)
     menuPostJgiNo = "<%= mainMenu.getActorJgiNo() %>";					//01：画面従業員番号
@@ -134,11 +134,11 @@
     menuDccPass = "<%= dccPass %>";										//32：dccPass
     menuScreenId = "<%= actScreenId %>";
     menuFunctionId = "<%= actFunctionId %>";
-      
+
   <% if(!"S0110403".equals(mainMenu.getMenuCode()) && !"S0110405".equals(mainMenu.getMenuCode())){ %>
       menuLinkInit(menuScreenId,menuFunctionId);
   <% } %>
-  
+
   </script>
 <form style="visibility:hidden;position:absolute;" name="_menuInitForm" method="POST">
   <input type="text" name="postJgiNo"  value="<%= mainMenu.getActorJgiNo() %>"></input>

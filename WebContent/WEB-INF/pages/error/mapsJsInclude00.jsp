@@ -1,6 +1,6 @@
 <%@ page 
   language="java"
-  import="java.util.*,java.text.*,jp.co.takeda.jkr.util.AppConstant"
+  import="java.util.*,java.text.*,jp.co.takeda.rdm.util.AppConstant"
   session="true"
   buffer="8kb"
   autoFlush="true"

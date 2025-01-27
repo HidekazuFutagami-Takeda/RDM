@@ -29,7 +29,7 @@ import javax.servlet.http.HttpSession;
 import jp.co.takeda.jkr.common.BaseInfoHolder;
 import jp.co.takeda.jkr.common.LoginInfo;
 import jp.co.takeda.jkr.service.CommonControlService;
-import jp.co.takeda.jkr.util.AppConstant;
+import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.jkr.util.JkrConstantsData;
 
 import org.apache.commons.logging.Log;

@@ -13,7 +13,7 @@
  */
 
 /* パッケージ名 */
-package jp.co.takeda.jkr.util;
+package jp.co.takeda.rdm.util;
 
 
 /**

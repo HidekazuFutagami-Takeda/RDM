@@ -9,10 +9,10 @@
  * @author 日立
  */
 --%>
-<%@ page 
+<%@ page
   language="java"
   import="java.util.*,java.text.*,
-      jp.co.takeda.jkr.util.AppConstant,
+      jp.co.takeda.rdm.util.AppConstant,
       jp.co.takeda.jkr.common.MainMenuData"
   session="true"
   buffer="8kb"
@@ -60,7 +60,7 @@
         subCatStr += writeStartSubCategory('<s:property value="#main2.catNo"/>');
         </script>
     </s:if>
-    
+
     <s:elseif test="#main2.subCatNo > 0 && #main2.listNo == 0">
     <%------------------------------------%>
     <%-- サブカテゴリー作成処理を行う   --%>
@@ -119,10 +119,10 @@
         subCatStr += createFormDate("5",'<s:property value="#strName" escapeHtml="false"/>','<s:property value="#main2.boldFlg"/>','<s:property value="#main2.newFlg"/>','<s:property value="#main2.linkUrl"/>','<s:property value="#main2.targetType"/>','<s:property value="#main2.formType"/>','<s:property value="#main2.formName"/>','<s:property value="#main2.paramName1"/>','<s:property value="#main2.paramType1"/>','<s:property value="#main2.paramName2"/>','<s:property value="#main2.paramType2"/>','<s:property value="#main2.paramName3"/>','<s:property value="#main2.paramType3"/>','<s:property value="#main2.paramName4"/>','<s:property value="#main2.paramType4"/>','<s:property value="#main2.paramName5"/>','<s:property value="#main2.paramType5"/>','<s:property value="#main2.freeParamName1"/>','<s:property value="#main2.freeParam1"/>','<s:property value="#main2.freeParamName2"/>','<s:property value="#main2.freeParam2"/>','<s:property value="#main2.freeParamName3"/>','<s:property value="#main2.freeParam3"/>','<s:property value="#main2.freeParamName4"/>','<s:property value="#main2.freeParam4"/>','<s:property value="#main2.freeParamName5"/>','<s:property value="#main2.freeParam5"/>');
         </script>
       </s:elseif>
-      
+
       <s:elseif test="#main2.scrnId == '' || #main2.scrnId == null">
         <%-- リンク用 --%>
-        
+
         <s:set id="subLinkUrl2" value="(#main2.linkUrl != null && #main2.linkUrl != '') ? #main2.linkUrl : ''"/>
         <script type="text/javascript">
         <%-- 通常リンクかチェックする --%>
@@ -137,7 +137,7 @@
         }
         </script>
       </s:elseif>
-      
+
       <s:else>
         <%-- オンクリック用 --%>
         <script type="text/javascript">

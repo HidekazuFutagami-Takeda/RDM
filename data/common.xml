@@ -16,7 +16,7 @@
         <F層フレームワーク>SpringFramework</F層フレームワーク>
         <D層フレームワーク>MyBatis</D層フレームワーク>
         <データソースタイプ>JNDI</データソースタイプ>
-        <データソース名>jdbc/JkrDataSource</データソース名>
+        <データソース名>jdbc/RdmDataSource</データソース名>
         <接続URL>jdbc:oracle:thin:@10.231.136.87:1521:orcl</接続URL>
         <ユーザ名>IEI_ONLINE</ユーザ名>
         <パスワード>IEI_ONLINEPW</パスワード>

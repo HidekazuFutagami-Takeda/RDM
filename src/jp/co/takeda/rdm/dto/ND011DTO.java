@@ -40,12 +40,6 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	private String msgId;
 
 	/**
-	 * メッセージ中身
-	 * @generated
-	 */
-	private String msgStr;
-
-	/**
 	 * ユーザ権限
 	 * @generated
 	 */
@@ -55,7 +49,7 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * ユーザ従業員番号
 	 * @generated
 	 */
-	private Integer loginJgiNo;
+	private String loginJgiNo;
 
 	/**
 	 * ユーザ氏名
@@ -582,13 +576,6 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	private String shnFlg;
 
     /**
-     * ボタンフラグ
-     * @generated
-     */
-    private String buttonFlg;
-
-
-    /**
      * デフォルトのコンストラクタ。
      * @generated
      */
@@ -637,14 +624,14 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * ND011DTO.javaloginJgiNoを設定
 	 * @return loginJgiNo
 	 */
-	public Integer getLoginJgiNo() {
+	public String getLoginJgiNo() {
 		return loginJgiNo;
 	}
 
 	/**
 	 * @param loginJgiNo セットする loginJgiNo
 	 */
-	public void setLoginJgiNo(Integer loginJgiNo) {
+	public void setLoginJgiNo(String loginJgiNo) {
 		this.loginJgiNo = loginJgiNo;
 	}
 
@@ -1966,36 +1953,6 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 */
 	public void setShnFlg(String shnFlg) {
 		this.shnFlg = shnFlg;
-	}
-
-	/**
-	 * ND011DTO.javabuttonFlgを設定
-	 * @return buttonFlg
-	 */
-	public String getButtonFlg() {
-		return buttonFlg;
-	}
-
-	/**
-	 * @param buttonFlg セットする buttonFlg
-	 */
-	public void setButtonFlg(String buttonFlg) {
-		this.buttonFlg = buttonFlg;
-	}
-
-	/**
-	 * ND011DTO.javamsgStrを設定
-	 * @return msgStr
-	 */
-	public String getMsgStr() {
-		return msgStr;
-	}
-
-	/**
-	 * @param msgStr セットする msgStr
-	 */
-	public void setMsgStr(String msgStr) {
-		this.msgStr = msgStr;
 	}
 
 	/**

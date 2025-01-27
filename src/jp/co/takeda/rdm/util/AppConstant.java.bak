@@ -850,8 +850,7 @@ public interface AppConstant {
     public static final String REQKEY_CAI_DATA = "CatAddrInfoData";						//宛先詳細ポップアップデータ
     //Add End   2012/06/08 K.Yoshida J12-0006 Step2対応
     //施設固定コード複数入力 add 2003/01/21 S.Kubo
-    public static final String SESKEY_III_REGISTERDATA = "ImtInsInputCategoresRegisterData";    //施設固定コード複数入力一覧制御データ
-    public static final String REQKEY_III_DATA = "ImtInsInputCategoresData";                    //施設固定コード複数入力一覧データ
+    public static final String SESKEY_III_REGISTERDATA = "ImtInsInputCategoresRegisterData";    //施設固定コード複数入力一覧制御データ                 //施設固定コード複数入力一覧データ
     //外部参照施設基本詳細 add 2003/02/03 S.Kubo
     public static final String SESKEY_ICR_REFERDATA = "ImtClinicalReferenceReferData";      //外部参照施設基本詳細詳細データ
     public static final String SESKEY_ICR_REFER_SCRNDATA = "ImtClinicalReferenceScrnData";  //外部参照施設基本画面データ
@@ -2394,7 +2393,6 @@ public interface AppConstant {
     //---------------------- 森川　の追加領域 開始 担当 : 森川  -----------------------------
     //医師固定コード複数入力 add 2007/05/24 K.Morikawa
     public static final String SESKEY_DCA_REGISTERDATA	= "DmcDocInputCategoriesRegisterData";	//医師固定コード複数入力一覧制御データ
-    public static final String REQKEY_DCA_DATA			= "DmcDocInputCategoriesData";			//医師固定コード複数入力一覧データ
 
     //書籍 add 2007/09/19 K.Morikawa
     public static final String SESKEY_PRB_VIEWDATA		= "PrctcBookViewData";		//書籍一覧制御データ
@@ -2814,15 +2812,6 @@ public interface AppConstant {
     public static final String SESKEY_JKR100C070_SEARCHKEY = "JKR100C070_SEARCHKEY";
     /** 組織,従業員,組織従業員での初期結果 */
     public static final String SESKEY_JKR100C010_SEARCHKEY = "JKR100C010_SEARCHKEY";
-
-    /** 医師新規での初期結果 */
-    public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
-    /** 施設新規での初期結果 */
-    public static final String SESKEY_NF011_SEARCHKEY = "NF011_SEARCHKEY";
-    /** 施設更新での初期結果 */
-    public static final String SESKEY_NF012_SEARCHKEY = "NF012_SEARCHKEY";
-    /** 施設新規 - 申請内容確認での初期結果 */
-    public static final String SESKEY_NF301_SEARCHKEY = "NF301_SEARCHKEY";
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;
 

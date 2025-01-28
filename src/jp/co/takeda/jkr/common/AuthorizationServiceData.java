@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import jp.co.takeda.jkr.exception.InvalidServiceException;
 import jp.co.takeda.jkr.exception.OverTimeServiceException;
-import jp.co.takeda.jkr.exception.PauseServiceException;
+import jp.co.takeda.rdm.exception.PauseServiceException;
 import jp.co.takeda.jkr.exception.UnauthorizedException;
 
 import org.apache.commons.logging.Log;

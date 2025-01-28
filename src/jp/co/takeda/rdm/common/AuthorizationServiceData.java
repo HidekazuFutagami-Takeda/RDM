@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import jp.co.takeda.jkr.exception.InvalidServiceException;
 import jp.co.takeda.jkr.exception.OverTimeServiceException;
-import jp.co.takeda.jkr.exception.PauseServiceException;
+import jp.co.takeda.rdm.exception.PauseServiceException;
 import jp.co.takeda.jkr.exception.UnauthorizedException;
 
 import org.apache.commons.logging.Log;
@@ -15,7 +15,7 @@ import org.apache.commons.logging.LogFactory;
  * <pre>
  * プログラム認証と利用時間帯チェック情報受渡しデータです。
  * </pre>
- * @author 
+ * @author
  * @version $Revision: 1.1 $
  * @since 1.0
  */
@@ -543,7 +543,7 @@ public class AuthorizationServiceData extends BaseDTO implements Serializable {
             }
         }
     }
-    
+
     /**
      * <pre>
      * 権限、利用時間帯チェックを行います。

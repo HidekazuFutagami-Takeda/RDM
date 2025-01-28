@@ -104,6 +104,12 @@ public abstract class BaseDTO implements Serializable {
     private String backScreenId;
     
     /**
+	 * 前画面ＩＤ
+	 * @generated
+	 */
+	private String preScreenId;
+
+    /**
      * 改ページ機能の情報設定共通メソッド
      * @param pageCntCur 現在のページ数
      * @param lineCntAll 全明細行数

@@ -1,4 +1,4 @@
-package jp.co.takeda.jkr.common.filter;
+package jp.co.takeda.rdm.common.filter;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

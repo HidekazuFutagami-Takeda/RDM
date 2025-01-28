@@ -1,4 +1,4 @@
-package jp.co.takeda.jkr.common.filter;
+package jp.co.takeda.rdm.common.filter;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

@@ -11,7 +11,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jp.co.takeda.jkr.exception.InvalidRequestException;
+import jp.co.takeda.rdm.exception.InvalidRequestException;
 import jp.co.takeda.jkr.service.CommonControlService;
 
 import org.apache.commons.logging.Log;

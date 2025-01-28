@@ -15,7 +15,7 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import jp.co.takeda.jkr.exception.DataExclusiveException;
+import jp.co.takeda.rdm.exception.DataExclusiveException;
 import jp.co.takeda.jkr.exception.UpdateAccessException;
 
 /**

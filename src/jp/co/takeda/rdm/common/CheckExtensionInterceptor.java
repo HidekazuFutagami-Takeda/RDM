@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.util.logging.Logger;
 import com.opensymphony.xwork2.util.logging.LoggerFactory;
 
-import jp.co.takeda.jkr.exception.CheckExtentionException;
+import jp.co.takeda.rdm.exception.CheckExtentionException;
 /**
  * 
  * @generated

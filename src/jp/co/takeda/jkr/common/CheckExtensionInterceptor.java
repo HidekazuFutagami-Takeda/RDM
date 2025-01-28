@@ -18,9 +18,9 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.opensymphony.xwork2.util.logging.Logger;
 import com.opensymphony.xwork2.util.logging.LoggerFactory;
 
-import jp.co.takeda.jkr.exception.CheckExtentionException;
+import jp.co.takeda.rdm.exception.CheckExtentionException;
 /**
- * 
+ *
  * @generated
  */
 public class CheckExtensionInterceptor extends AbstractInterceptor {
@@ -49,7 +49,7 @@ public class CheckExtensionInterceptor extends AbstractInterceptor {
 
     /**
      * URLの直打ち防止処理を実行する。<br/>
-     * 
+     *
      * @param actioninvocation ActionInvocation
      * @return 次のインターセプター処理
      * @see com.opensymphony.xwork2.interceptor.MethodFilterInterceptor#doIntercept(com.opensymphony.xwork2.ActionInvocation)
@@ -71,7 +71,7 @@ public class CheckExtensionInterceptor extends AbstractInterceptor {
                 // true：アクセス拒否するパスである
                 if (checkExcludURLExtention(excludeExtentions, currentRequestPath)) {
                     throw new CheckExtentionException("Not Allow.");
-                
+
                 // true：許可するパスでない
                 } else if (!checkIncludURLExtention(includeExtentions, currentRequestPath)) {
                     throw new CheckExtentionException("Not Allow.");
@@ -84,7 +84,7 @@ public class CheckExtensionInterceptor extends AbstractInterceptor {
     /**
      * アクセス拒否するパスをカンマ区切りで指定する。<br>
      * 正規表現で指定可能。
-     * 
+     *
      * @param excludeExtentions 拒否するパス
      * @param currentRequestPath 現在のパス
      * @return true：アクセス拒否のパス。false：アクセスを許可するパス。
@@ -108,7 +108,7 @@ public class CheckExtensionInterceptor extends AbstractInterceptor {
     /**
      * アクセス許可するパスをカンマ区切りで指定する。<br>
      * 正規表現で指定可能。
-     * 
+     *
      * @param includeExtentions 許可するパス
      * @param currentRequestPath 現在のパス
      * @return true：アクセス許可のパス。false：アクセスを許可するパスの可能性がある。

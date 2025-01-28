@@ -21,7 +21,7 @@ import com.opensymphony.xwork2.interceptor.ExceptionHolder;
 import com.opensymphony.xwork2.util.logging.Logger;
 import com.opensymphony.xwork2.util.logging.LoggerFactory;
 
-import jp.co.takeda.jkr.exception.LoginAuthException;
+import jp.co.takeda.rdm.exception.LoginAuthException;
 
 public class LoginAuthInterceptor extends AbstractInterceptor {
 

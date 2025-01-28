@@ -2,8 +2,8 @@ package jp.co.takeda.jkr.common;
 
 import java.io.Serializable;
 
-import jp.co.takeda.jkr.exception.InvalidServiceException;
-import jp.co.takeda.jkr.exception.OverTimeServiceException;
+import jp.co.takeda.rdm.exception.InvalidServiceException;
+import jp.co.takeda.rdm.exception.OverTimeServiceException;
 import jp.co.takeda.rdm.exception.PauseServiceException;
 import jp.co.takeda.jkr.exception.UnauthorizedException;
 

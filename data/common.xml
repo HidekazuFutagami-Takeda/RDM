@@ -11,7 +11,7 @@
         <Serviceパッケージ>jp.co.takeda.jkr.service</Serviceパッケージ>
         <Entityパッケージ>jp.co.takeda.jkr.entity</Entityパッケージ>
         <共通パッケージ>jp.co.takeda.jkr.common</共通パッケージ>
-        <Exceptionパッケージ>jp.co.takeda.jkr.exception</Exceptionパッケージ>
+        <Exceptionパッケージ>jp.co.takeda.rdm.exception</Exceptionパッケージ>
         <P層フレームワーク>Struts2</P層フレームワーク>
         <F層フレームワーク>SpringFramework</F層フレームワーク>
         <D層フレームワーク>MyBatis</D層フレームワーク>

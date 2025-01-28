@@ -33,7 +33,7 @@
             <クラス名>CheckExtentionException</クラス名>
             <部品名/>
             <クラス名日本語>URL直打ち例外クラス</クラス名日本語>
-            <パッケージ名>jp.co.takeda.jkr.exception</パッケージ名>
+            <パッケージ名>jp.co.takeda.rdm.exception</パッケージ名>
             <テンプレート名>anyWarpKERNEL_Struts2SpringTemplate/templates/common/CheckExtentionException.jet</テンプレート名>
         </共通部品>
         <共通部品>
@@ -61,7 +61,7 @@
             <クラス名>LoginAuthException</クラス名>
             <部品名/>
             <クラス名日本語>ログイン済みチェック例外クラス</クラス名日本語>
-            <パッケージ名>jp.co.takeda.jkr.exception</パッケージ名>
+            <パッケージ名>jp.co.takeda.rdm.exception</パッケージ名>
             <テンプレート名>anyWarpKERNEL_Struts2SpringTemplate/templates/common/LoginAuthException.jet</テンプレート名>
         </共通部品>
         <共通部品>
@@ -75,14 +75,14 @@
             <クラス名>DataExclusiveException</クラス名>
             <部品名/>
             <クラス名日本語>他処理実行済み例外クラス</クラス名日本語>
-            <パッケージ名>jp.co.takeda.jkr.exception</パッケージ名>
+            <パッケージ名>jp.co.takeda.rdm.exception</パッケージ名>
             <テンプレート名>anyWarpKERNEL_Struts2SpringTemplate/templates/common/DataExclusiveException.jet</テンプレート名>
         </共通部品>
         <共通部品>
             <クラス名>UpdateAccessException</クラス名>
             <部品名/>
             <クラス名日本語>排他制御処理例外クラス</クラス名日本語>
-            <パッケージ名>jp.co.takeda.jkr.exception</パッケージ名>
+            <パッケージ名>jp.co.takeda.rdm.exception</パッケージ名>
             <テンプレート名>anyWarpKERNEL_Struts2SpringTemplate/templates/common/UpdateAccessException.jet</テンプレート名>
         </共通部品>
     </共通部品>

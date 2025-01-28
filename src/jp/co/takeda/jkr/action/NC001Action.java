@@ -145,25 +145,6 @@ public class NC001Action extends BaseAction<NC001DTO> {
     }
 
     /**
-     * 後処理
-     * @customizable
-     */
-    protected String viewNext(BaseDTO outdto) throws Exception {
-        // START UOC
-        //担当変更状況テーブルデータが検索された場合
-        if (dto.getJkrSosStsTableData() != null) {
-            //戻るためのDTOセッション格納キー
-            request.getSession().setAttribute(JkrConstantsData.JKR000C010_RETURN_DTO_KEY, dto);
-        } else {
-            //「リスト作成依頼」押下時に設定されたセッション情報をクリアする
-            request.getSession().removeAttribute(JkrConstantsData.JKR000C010_RETURN_DTO_KEY);
-        }
-        // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
-
-    /**
      * 前処理
      * @customizable
      */

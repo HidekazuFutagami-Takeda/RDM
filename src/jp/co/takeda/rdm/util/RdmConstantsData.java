@@ -6,7 +6,7 @@ package jp.co.takeda.rdm.util;
  * </pre>
  * @since 1.0
  * @version $Revision: 1.3 $
- * @author 日立　花
+ * @author 日立　二神
  */
 public class RdmConstantsData {
 

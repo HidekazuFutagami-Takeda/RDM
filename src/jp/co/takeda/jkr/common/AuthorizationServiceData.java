@@ -5,7 +5,7 @@ import java.io.Serializable;
 import jp.co.takeda.rdm.exception.InvalidServiceException;
 import jp.co.takeda.rdm.exception.OverTimeServiceException;
 import jp.co.takeda.rdm.exception.PauseServiceException;
-import jp.co.takeda.jkr.exception.UnauthorizedException;
+import jp.co.takeda.rdm.exception.UnauthorizedException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -16,7 +16,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import jp.co.takeda.rdm.exception.DataExclusiveException;
-import jp.co.takeda.jkr.exception.UpdateAccessException;
+import jp.co.takeda.rdm.exception.UpdateAccessException;
 
 /**
  * DAO呼び出し前に、select for update文を実行し、更新系処理（更新、削除）が可能か

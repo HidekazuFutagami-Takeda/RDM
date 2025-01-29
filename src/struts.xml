@@ -92,7 +92,7 @@
         </action>
         <action name="ND011Register" class="nD011Action" method="register">
             <result name="ND011">/WEB-INF/pages/JKR030C010.jsp</result>
-            <result name="JKR090C020Init" type="chain">JKR090C020Init</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
         </action>
         <action name="NF011Init" class="nF011Action" method="init">
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>

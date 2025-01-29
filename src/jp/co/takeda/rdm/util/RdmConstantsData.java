@@ -525,14 +525,14 @@ public class RdmConstantsData {
     public static final String SCREEN_ID_JKR100C090 = "JKR100C090";
     public static final String SCREEN_ID_JKR100C100 = "JKR100C100";
     public static final String SCREEN_ID_JKR090C010 = "JKR090C010";
-    public static final String SCREEN_ID_JKR090C020 = "JKR090C020";
+    public static final String SCREEN_ID_NC101 = "NC101";
     /**画面ＩＤエリア終了 */
 
     /**登録完了画面フラグ */
-    public static final String JKR090C020_FINISH_FLG = "JKR090C020Finish";
+    public static final String NC101_FINISH_FLG = "NC101Finish";
 
     /**登録完了画面値 */
-    public static final String JKR090C020_FINISH_VALUE = "1";
+    public static final String NC101_FINISH_VALUE = "1";
 
     /**部門ランク */
     public enum BumonRank {

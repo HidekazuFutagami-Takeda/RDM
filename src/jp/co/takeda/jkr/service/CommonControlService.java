@@ -23,7 +23,7 @@ import jp.co.takeda.jkr.common.LoginInfo;
 import jp.co.takeda.jkr.common.MainMenuData;
 import jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity;
 import jp.co.takeda.rdm.entity.MRdmFwTransitionEntity;
-import jp.co.takeda.jkr.entity.RdmMsgMstEntity;
+import jp.co.takeda.rdm.entity.RdmMsgMstEntity;
 import jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectLoginJgiNoByUserIdEntity;

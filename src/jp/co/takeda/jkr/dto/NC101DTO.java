@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 import jp.co.takeda.jkr.common.BaseDTO;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import jp.co.takeda.jkr.entity.RdmMsgMstEntity;
+import jp.co.takeda.rdm.entity.RdmMsgMstEntity;
 
 
 /**

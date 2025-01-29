@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="rdm_msg_mst">
-    <resultMap id="msgMstResultMap" type="jp.co.takeda.jkr.entity.RdmMsgMstEntity">
+    <resultMap id="msgMstResultMap" type="jp.co.takeda.rdm.entity.RdmMsgMstEntity">
         <result column="MSG_CD" property="msgCd"/>
         <result column="MSG_DATA" property="msgData"/>
         <result column="DATA_VALUE" property="dataValue"/>
@@ -17,7 +17,7 @@
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
         <result column="UPD_SHA_ID" property="updShaId"/>
     </resultMap>
-    <select id="selectList" parameterType="jp.co.takeda.jkr.entity.RdmMsgMstEntity" resultMap="msgMstResultMap">
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.RdmMsgMstEntity" resultMap="msgMstResultMap">
         SELECT
             MSG_CD, MSG_DATA, DATA_VALUE, FONT_SIZE, COLOR, BOLD, ITALIC, UNDER_LINE, TEXT_ALIGN, UP_JGI_NO, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
         FROM

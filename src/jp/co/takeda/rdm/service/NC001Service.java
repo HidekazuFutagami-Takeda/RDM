@@ -30,7 +30,7 @@ import jp.co.takeda.jkr.common.BaseService;
 import jp.co.takeda.jkr.common.BeanUtil;
 import jp.co.takeda.jkr.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NC001DTO;
-import jp.co.takeda.jkr.entity.SRdmMParamMstEntity;
+import jp.co.takeda.rdm.entity.SRdmMParamMstEntity;
 import jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity;
 import jp.co.takeda.rdm.exception.UnauthorizedException;
 import jp.co.takeda.rdm.util.RdmConstantsData;

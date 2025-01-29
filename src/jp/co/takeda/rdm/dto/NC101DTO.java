@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.dto;
+package jp.co.takeda.rdm.dto;
 
 import java.io.Serializable;
 

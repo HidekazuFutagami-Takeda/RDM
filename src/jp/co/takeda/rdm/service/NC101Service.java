@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.service;
+package jp.co.takeda.rdm.service;
 
 import javax.inject.Named;
 
@@ -14,7 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.takeda.jkr.dto.NC101DTO;
+import jp.co.takeda.rdm.dto.NC101DTO;
 
 /**
  * Serviceクラス（NC101)

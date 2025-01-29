@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="s_rdm_m_jgi_joken">
-    <resultMap id="sRdmMJgiJokenResultMap" type="jp.co.takeda.jkr.entity.SRdmMJgiJokenEntity">
+    <resultMap id="sRdmMJgiJokenResultMap" type="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
         <result column="JGI_NO" property="jgiNo"/>
         <result column="JOKEN_SET_CD" property="jokenSetCd"/>
     </resultMap>

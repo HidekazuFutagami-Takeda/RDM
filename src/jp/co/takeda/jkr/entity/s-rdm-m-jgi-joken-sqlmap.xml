@@ -5,7 +5,7 @@
         <result column="JGI_NO" property="jgiNo"/>
         <result column="JOKEN_SET_CD" property="jokenSetCd"/>
     </resultMap>
-    <select id="selectByValue" parameterType="jp.co.takeda.jkr.entity.SRdmMJgiJokenEntity" resultMap="sRdmMJgiJokenResultMap">
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity" resultMap="sRdmMJgiJokenResultMap">
         SELECT
             JGI_NO, JOKEN_SET_CD
         FROM

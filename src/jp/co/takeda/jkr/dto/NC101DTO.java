@@ -7,7 +7,7 @@ package jp.co.takeda.jkr.dto;
 
 import java.io.Serializable;
 
-import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.jkr.common.BaseDTO;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import jp.co.takeda.jkr.entity.RdmMsgMstEntity;
 

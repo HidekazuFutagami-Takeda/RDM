@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import jp.co.takeda.jkr.common.BaseAction;
-import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.jkr.common.BaseDTO;
 import jp.co.takeda.jkr.common.BeanUtil;
 
 import com.opensymphony.xwork2.interceptor.annotations.Before;

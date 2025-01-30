@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
-import jp.co.takeda.jkr.service.NC101Service;
+import jp.co.takeda.rdm.service.NC101Service;
 
 import org.springframework.context.annotation.Scope;
 

@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2014, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.entity.join;
+package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
 

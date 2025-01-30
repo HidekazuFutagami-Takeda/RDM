@@ -3,7 +3,7 @@ package jp.co.takeda.jkr.common;
 import java.io.Serializable;
 import java.util.Map;
 
-import jp.co.takeda.jkr.entity.RdmMsgMstEntity;
+import jp.co.takeda.rdm.entity.RdmMsgMstEntity;
 import jp.co.takeda.rdm.util.DateUtils;
 
 /**

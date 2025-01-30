@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2014, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.entity;
+package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
 
@@ -12,12 +12,12 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 
 /**
- * Entityクラス
- * テーブル物理名 : S_RDM_M_JGI_JOKEN
- * テーブル論理名 : 従業員別条件テーブル当月
+ * 結合Entityクラス
+ * テーブル物理名 : S_JKR_M_JGI_JOKEN
+ * SQLID : selectJokenSetList
  * @generated
  */
-public class SRdmMJgiJokenEntity extends BaseEntity implements Serializable {
+public class SelectJokenSetListEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -26,13 +26,13 @@ public class SRdmMJgiJokenEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 従業員番号 (PK)
+     * 入力_従業員番号 (パラメータ3)
      * @generated
      */
-    private Integer jgiNo;
+    private Integer inJgiNo;
 
     /**
-     * 条件セット (PK)
+     * 条件セット
      * @generated
      */
     private String jokenSetCd;
@@ -41,38 +41,26 @@ public class SRdmMJgiJokenEntity extends BaseEntity implements Serializable {
      * コンストラクタ
      * @generated
      */
-    public SRdmMJgiJokenEntity() {
-        super("s_rdm_m_jgi_joken");
+    public SelectJokenSetListEntity() {
+        super("s_jkr_m_jgi_joken" , "selectJokenSetList");
     }
 
     /**
-     * コンストラクタ
-     * @param jgiNo 従業員番号
-     * @param jokenSetCd 条件セット
+     * 入力_従業員番号の取得
+     * @return 入力_従業員番号
      * @generated
      */
-    public SRdmMJgiJokenEntity(Integer jgiNo, String jokenSetCd) {
-        super("s_rdm_m_jgi_joken");
-        this.jgiNo = jgiNo;
-        this.jokenSetCd = jokenSetCd;
+    public Integer getInJgiNo() {
+        return inJgiNo;
     }
 
     /**
-     * 従業員番号の取得
-     * @return 従業員番号
+     * 入力_従業員番号の設定
+     * @param inJgiNo 入力_従業員番号
      * @generated
      */
-    public Integer getJgiNo() {
-        return this.jgiNo;
-    }
-
-    /**
-     * 従業員番号の設定
-     * @param jgiNo 従業員番号
-     * @generated
-     */
-    public void setJgiNo(Integer jgiNo) {
-        this.jgiNo = jgiNo;
+    public void setInJgiNo(Integer inJgiNo) {
+        this.inJgiNo = inJgiNo;
     }
 
     /**
@@ -81,7 +69,7 @@ public class SRdmMJgiJokenEntity extends BaseEntity implements Serializable {
      * @generated
      */
     public String getJokenSetCd() {
-        return this.jokenSetCd;
+        return jokenSetCd;
     }
 
     /**

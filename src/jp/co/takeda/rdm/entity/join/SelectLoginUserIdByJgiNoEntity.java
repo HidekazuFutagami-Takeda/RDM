@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2014, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.entity.join;
+package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
 
@@ -13,11 +13,11 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * 結合Entityクラス
- * テーブル物理名 : S_JKR_M_JGI_JOKEN
- * SQLID : selectJokenSetList
+ * テーブル物理名 : S_JKR_M_JGI_MST
+ * SQLID : selectLoginUserIdByJgiNo
  * @generated
  */
-public class SelectJokenSetListEntity extends BaseEntity implements Serializable {
+public class SelectLoginUserIdByJgiNoEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -26,59 +26,59 @@ public class SelectJokenSetListEntity extends BaseEntity implements Serializable
     private static final long serialVersionUID = 1L;
 
     /**
-     * 入力_従業員番号 (パラメータ3)
+     * 従業員番号 (パラメータ1)
      * @generated
      */
-    private Integer inJgiNo;
+    private int inJgiNo;
 
     /**
-     * 条件セット
+     * ユーザID
      * @generated
      */
-    private String jokenSetCd;
+    private String userId;
 
     /**
      * コンストラクタ
      * @generated
      */
-    public SelectJokenSetListEntity() {
-        super("s_jkr_m_jgi_joken" , "selectJokenSetList");
+    public SelectLoginUserIdByJgiNoEntity() {
+        super("s_jkr_m_jgi_mst" , "selectLoginUserIdByJgiNo");
     }
 
     /**
-     * 入力_従業員番号の取得
-     * @return 入力_従業員番号
+     * 従業員番号の取得
+     * @return 従業員番号
      * @generated
      */
-    public Integer getInJgiNo() {
+    public int getInJgiNo() {
         return inJgiNo;
     }
 
     /**
-     * 入力_従業員番号の設定
-     * @param inJgiNo 入力_従業員番号
+     * 従業員番号の設定
+     * @param inJgiNo 従業員番号
      * @generated
      */
-    public void setInJgiNo(Integer inJgiNo) {
+    public void setInJgiNo(int inJgiNo) {
         this.inJgiNo = inJgiNo;
     }
 
     /**
-     * 条件セットの取得
-     * @return 条件セット
+     * ユーザIDの取得
+     * @return ユーザID
      * @generated
      */
-    public String getJokenSetCd() {
-        return jokenSetCd;
+    public String getUserId() {
+        return userId;
     }
 
     /**
-     * 条件セットの設定
-     * @param jokenSetCd 条件セット
+     * ユーザIDの設定
+     * @param userId ユーザID
      * @generated
      */
-    public void setJokenSetCd(String jokenSetCd) {
-        this.jokenSetCd = jokenSetCd;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     /**

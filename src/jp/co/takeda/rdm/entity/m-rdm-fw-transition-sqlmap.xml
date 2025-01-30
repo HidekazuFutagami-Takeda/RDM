@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="m_rdm_fw_transition">
-    <resultMap id="mRdmFwTransitionResultMap" type="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity">
+    <resultMap id="mRdmFwTransitionResultMap" type="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity">
         <result column="SCREEN_ID" property="screenId"/>
         <result column="FUNCTION_ID" property="functionId"/>
         <result column="SUB_NO" property="subNo"/>
@@ -14,7 +14,7 @@
         <result column="UP_SCRN_ID" property="upScrnId"/>
         <result column="UP_FUNC_ID" property="upFuncId"/>
     </resultMap>
-    <select id="selectByPK" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
         SELECT
             SCREEN_ID, FUNCTION_ID, SUB_NO, PRE_SCREEN_ID, PRE_FUNCTION_ID, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
         FROM
@@ -22,7 +22,7 @@
         WHERE
             SCREEN_ID = #{screenId} AND FUNCTION_ID = #{functionId} AND SUB_NO = #{subNo}
     </select>
-    <select id="selectForUpdate" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
         SELECT
             SCREEN_ID, FUNCTION_ID, SUB_NO, PRE_SCREEN_ID, PRE_FUNCTION_ID, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
         FROM
@@ -31,13 +31,13 @@
             SCREEN_ID = #{screenId} AND FUNCTION_ID = #{functionId} AND SUB_NO = #{subNo}
             FOR UPDATE
     </select>
-    <select id="selectList" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
         SELECT
             SCREEN_ID, FUNCTION_ID, SUB_NO, PRE_SCREEN_ID, PRE_FUNCTION_ID, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
         FROM
             ORAUSR01.M_RDM_FW_TRANSITION
     </select>
-    <select id="selectByValue" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity" resultMap="mRdmFwTransitionResultMap">
         SELECT
             SCREEN_ID, FUNCTION_ID, SUB_NO, PRE_SCREEN_ID, PRE_FUNCTION_ID, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
         FROM
@@ -56,7 +56,7 @@
             <if test="upFuncId != null">AND UP_FUNC_ID = #{upFuncId}</if>
         </where>
     </select>
-    <select id="countByValue" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity" resultType="int">
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity" resultType="int">
         SELECT
             count (*)
         FROM
@@ -75,19 +75,19 @@
             <if test="upFuncId != null">AND UP_FUNC_ID = #{upFuncId}</if>
         </where>
     </select>
-    <insert id="insertByPK" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity">
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity">
         INSERT INTO
             ORAUSR01.M_RDM_FW_TRANSITION(SCREEN_ID, FUNCTION_ID, SUB_NO, PRE_SCREEN_ID, PRE_FUNCTION_ID, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID)
         VALUES
             (#{screenId}, #{functionId}, #{subNo}, #{preScreenId}, #{preFunctionId}, #{comments}, #{upJgiNo}, #{isDate}, #{upDate}, #{upScrnId}, #{upFuncId})
     </insert>
-    <insert id="insertByValue" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity">
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity">
         INSERT INTO
             ORAUSR01.M_RDM_FW_TRANSITION(<trim suffixOverrides=",">SCREEN_ID,FUNCTION_ID,SUB_NO,<if test="preScreenId != null">PRE_SCREEN_ID,</if><if test="preFunctionId != null">PRE_FUNCTION_ID,</if><if test="comments != null">COMMENTS,</if><if test="upJgiNo != null">UP_JGI_NO,</if><if test="isDate != null">IS_DATE,</if><if test="upDate != null">UP_DATE,</if><if test="upScrnId != null">UP_SCRN_ID,</if><if test="upFuncId != null">UP_FUNC_ID,</if></trim>)
         VALUES
             (<trim suffixOverrides=",">#{screenId},#{functionId},#{subNo},<if test="preScreenId != null">#{preScreenId},</if><if test="preFunctionId != null">#{preFunctionId},</if><if test="comments != null">#{comments},</if><if test="upJgiNo != null">#{upJgiNo},</if><if test="isDate != null">#{isDate},</if><if test="upDate != null">#{upDate},</if><if test="upScrnId != null">#{upScrnId},</if><if test="upFuncId != null">#{upFuncId},</if></trim>)
     </insert>
-    <update id="updateByPK" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity">
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity">
         UPDATE
             ORAUSR01.M_RDM_FW_TRANSITION
         SET
@@ -95,7 +95,7 @@
         WHERE
             SCREEN_ID = #{search.screenId} AND FUNCTION_ID = #{search.functionId} AND SUB_NO = #{search.subNo}
     </update>
-    <update id="updateByValue" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity">
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity">
         UPDATE
             ORAUSR01.M_RDM_FW_TRANSITION
         <set>
@@ -111,13 +111,13 @@
         WHERE
             SCREEN_ID = #{search.screenId} AND FUNCTION_ID = #{search.functionId} AND SUB_NO = #{search.subNo}
     </update>
-    <delete id="deleteByPK" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity">
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity">
         DELETE FROM
             ORAUSR01.M_RDM_FW_TRANSITION
         WHERE
             SCREEN_ID = #{screenId} AND FUNCTION_ID = #{functionId} AND SUB_NO = #{subNo}
     </delete>
-    <delete id="deleteByValue" parameterType="jp.co.takeda.jkr.entity.MRdmFwTransitionEntity">
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwTransitionEntity">
         DELETE FROM
             ORAUSR01.M_RDM_FW_TRANSITION
         <where>

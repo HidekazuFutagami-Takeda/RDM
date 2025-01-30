@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="m_rdm_jgi_sos_mst">
-    <resultMap id="mRdmJgiSosMstResultMap" type="jp.co.takeda.jkr.entity.MRdmJgiSosMstEntity">
+    <resultMap id="mRdmJgiSosMstResultMap" type="jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity">
         <result column="JGI_NO" property="jgiNo"/>
         <result column="JGI_NAME" property="jgiName"/>
         <result column="SOS_CD" property="sosCd"/>
@@ -12,7 +12,7 @@
         <result column="UP_SOS_CD" property="upSosCd"/>
         <result column="TRT_CD" property="trtCd"/>
     </resultMap>
-    <select id="selectByValue" parameterType="jp.co.takeda.jkr.entity.MRdmJgiSosMstEntity" resultMap="mRdmJgiSosMstResultMap">
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity" resultMap="mRdmJgiSosMstResultMap">
         SELECT
             M_RDM_JGI_SOS_MST.JGI_NO
            ,M_RDM_JGI_SOS_MST.JGI_NAME

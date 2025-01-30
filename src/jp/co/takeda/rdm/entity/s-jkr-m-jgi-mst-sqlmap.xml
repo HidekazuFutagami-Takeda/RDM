@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="s_jkr_m_jgi_mst">
-    <resultMap id="sJkrMJgiMstResultMap" type="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity">
+    <resultMap id="sJkrMJgiMstResultMap" type="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity">
         <result column="JGI_NO" property="jgiNo"/>
         <result column="JGI_NAME" property="jgiName"/>
         <result column="JGI_NAME_KANA" property="jgiNameKana"/>
@@ -76,13 +76,13 @@
         <result column="SYOZOKU_UP_DATE" property="syozokuUpDate"/>
         <result column="JGI_KB" property="jgiKb"/>
     </resultMap>
-    <resultMap id="selectLoginJgiNoByUserIdResultMap" type="jp.co.takeda.jkr.entity.join.SelectLoginJgiNoByUserIdEntity">
+    <resultMap id="selectLoginJgiNoByUserIdResultMap" type="jp.co.takeda.rdm.entity.join.SelectLoginJgiNoByUserIdEntity">
         <result column="JGI_NO" property="jgiNo"/>
     </resultMap>
-    <resultMap id="selectLoginUserIdByJgiNoResultMap" type="jp.co.takeda.jkr.entity.join.SelectLoginUserIdByJgiNoEntity">
+    <resultMap id="selectLoginUserIdByJgiNoResultMap" type="jp.co.takeda.rdm.entity.join.SelectLoginUserIdByJgiNoEntity">
         <result column="USER_ID" property="userId"/>
     </resultMap>
-    <resultMap id="selectCodeMstResultMap" type="jp.co.takeda.jkr.entity.join.SelectCodeMstEntity">
+    <resultMap id="selectCodeMstResultMap" type="jp.co.takeda.rdm.entity.join.SelectCodeMstEntity">
         <result column="DATA_KBN" property="dataKbn"/>
         <result column="DATA_CD" property="dataCd"/>
         <result column="DATA_NAME" property="dataName"/>
@@ -91,7 +91,7 @@
         <result column="DEF_FLG" property="defFlg"/>
         <result column="BIKO" property="biko"/>
     </resultMap>
-    <select id="selectByPK" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
         SELECT
             JGI_NO, JGI_NAME, JGI_NAME_KANA, SEX_CD, SEX_NAME, KOYOU_KB, KOYOU_NAME, NYUUSYA_DAY, BIRTH_DAY, TAISHOKU_KB, TAISHOKU_CD, TAISHOKU_NAME, TAISHOKU_DAY, HATUREI_DAY, KENMU_KB, SHOZOKU_SEI_NAME, SHOZOKU_RYAKU_NAME, SOS_NAME, BUMON_SEI_NAME1, BUMON_SEI_NAME2, BUMON_SEI_NAME3, BUMON_SEI_NAME4, BUMON_SEI_NAME5, BUMON_SEI_NAME6, BUMON_RYAKU_NAME1, BUMON_RYAKU_NAME2, BUMON_RYAKU_NAME3, BUMON_RYAKU_NAME4, BUMON_RYAKU_NAME5, BUMON_RYAKU_NAME6, SOS_CD1, SOS_CD2, SOS_CD3, SOS_CD4, SOS_CD5, SOS_CD6, LINE_STAFF_KB, SHOKUSEI_CD, SHOKUSEI_NAME, SHUKKOU_CD, SHUKKOU_NAME, SHUKKOU_TAN_NAME, KINMU_BA_JOU_NAME, ROUSO_KB, KINMU_KB, SHOKUSHU_CD, SHOKUSHU_NAME, JIGYO_JO_CD, JIGYO_JO_SEI_NAME, JIGYO_JO_RYAKU_NAME, KAIGAI_KINMU_CD, KAIGAI_KINMU_NAME, COMPANY_CD, COMPANY_NAME, KINMU_TDFKN_CD, KINMU_TDFKN_NAME, KINMU_SCSN_CD, KINMU_SCSN_NAME, SOS_CD, SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_HOSOKU, SEWA_SOS_CD, OLD_JGI_NO, OLD_KOYOU_KB, OLD_KOYOU_NAME, SHOKUI_CD, SHOKUI_NAME, BUMON_RANK, SEWA_BUMON_RANK, KIHON_UP_DATE, SYOZOKU_UP_DATE, JGI_KB
         FROM
@@ -99,7 +99,7 @@
         WHERE
             JGI_NO = #{jgiNo} AND KENMU_KB = #{kenmuKb}
     </select>
-    <select id="selectForUpdate" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
         SELECT
             JGI_NO, JGI_NAME, JGI_NAME_KANA, SEX_CD, SEX_NAME, KOYOU_KB, KOYOU_NAME, NYUUSYA_DAY, BIRTH_DAY, TAISHOKU_KB, TAISHOKU_CD, TAISHOKU_NAME, TAISHOKU_DAY, HATUREI_DAY, KENMU_KB, SHOZOKU_SEI_NAME, SHOZOKU_RYAKU_NAME, SOS_NAME, BUMON_SEI_NAME1, BUMON_SEI_NAME2, BUMON_SEI_NAME3, BUMON_SEI_NAME4, BUMON_SEI_NAME5, BUMON_SEI_NAME6, BUMON_RYAKU_NAME1, BUMON_RYAKU_NAME2, BUMON_RYAKU_NAME3, BUMON_RYAKU_NAME4, BUMON_RYAKU_NAME5, BUMON_RYAKU_NAME6, SOS_CD1, SOS_CD2, SOS_CD3, SOS_CD4, SOS_CD5, SOS_CD6, LINE_STAFF_KB, SHOKUSEI_CD, SHOKUSEI_NAME, SHUKKOU_CD, SHUKKOU_NAME, SHUKKOU_TAN_NAME, KINMU_BA_JOU_NAME, ROUSO_KB, KINMU_KB, SHOKUSHU_CD, SHOKUSHU_NAME, JIGYO_JO_CD, JIGYO_JO_SEI_NAME, JIGYO_JO_RYAKU_NAME, KAIGAI_KINMU_CD, KAIGAI_KINMU_NAME, COMPANY_CD, COMPANY_NAME, KINMU_TDFKN_CD, KINMU_TDFKN_NAME, KINMU_SCSN_CD, KINMU_SCSN_NAME, SOS_CD, SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_HOSOKU, SEWA_SOS_CD, OLD_JGI_NO, OLD_KOYOU_KB, OLD_KOYOU_NAME, SHOKUI_CD, SHOKUI_NAME, BUMON_RANK, SEWA_BUMON_RANK, KIHON_UP_DATE, SYOZOKU_UP_DATE, JGI_KB
         FROM
@@ -108,13 +108,13 @@
             JGI_NO = #{jgiNo} AND KENMU_KB = #{kenmuKb}
             FOR UPDATE
     </select>
-    <select id="selectList" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
         SELECT
             JGI_NO, JGI_NAME, JGI_NAME_KANA, SEX_CD, SEX_NAME, KOYOU_KB, KOYOU_NAME, NYUUSYA_DAY, BIRTH_DAY, TAISHOKU_KB, TAISHOKU_CD, TAISHOKU_NAME, TAISHOKU_DAY, HATUREI_DAY, KENMU_KB, SHOZOKU_SEI_NAME, SHOZOKU_RYAKU_NAME, SOS_NAME, BUMON_SEI_NAME1, BUMON_SEI_NAME2, BUMON_SEI_NAME3, BUMON_SEI_NAME4, BUMON_SEI_NAME5, BUMON_SEI_NAME6, BUMON_RYAKU_NAME1, BUMON_RYAKU_NAME2, BUMON_RYAKU_NAME3, BUMON_RYAKU_NAME4, BUMON_RYAKU_NAME5, BUMON_RYAKU_NAME6, SOS_CD1, SOS_CD2, SOS_CD3, SOS_CD4, SOS_CD5, SOS_CD6, LINE_STAFF_KB, SHOKUSEI_CD, SHOKUSEI_NAME, SHUKKOU_CD, SHUKKOU_NAME, SHUKKOU_TAN_NAME, KINMU_BA_JOU_NAME, ROUSO_KB, KINMU_KB, SHOKUSHU_CD, SHOKUSHU_NAME, JIGYO_JO_CD, JIGYO_JO_SEI_NAME, JIGYO_JO_RYAKU_NAME, KAIGAI_KINMU_CD, KAIGAI_KINMU_NAME, COMPANY_CD, COMPANY_NAME, KINMU_TDFKN_CD, KINMU_TDFKN_NAME, KINMU_SCSN_CD, KINMU_SCSN_NAME, SOS_CD, SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_HOSOKU, SEWA_SOS_CD, OLD_JGI_NO, OLD_KOYOU_KB, OLD_KOYOU_NAME, SHOKUI_CD, SHOKUI_NAME, BUMON_RANK, SEWA_BUMON_RANK, KIHON_UP_DATE, SYOZOKU_UP_DATE, JGI_KB
         FROM
             S_JKR_M_JGI_MST
     </select>
-    <select id="selectByValue" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity" resultMap="sJkrMJgiMstResultMap">
         SELECT
             JGI_NO, JGI_NAME, JGI_NAME_KANA, SEX_CD, SEX_NAME, KOYOU_KB, KOYOU_NAME, NYUUSYA_DAY, BIRTH_DAY, TAISHOKU_KB, TAISHOKU_CD, TAISHOKU_NAME, TAISHOKU_DAY, HATUREI_DAY, KENMU_KB, SHOZOKU_SEI_NAME, SHOZOKU_RYAKU_NAME, SOS_NAME, BUMON_SEI_NAME1, BUMON_SEI_NAME2, BUMON_SEI_NAME3, BUMON_SEI_NAME4, BUMON_SEI_NAME5, BUMON_SEI_NAME6, BUMON_RYAKU_NAME1, BUMON_RYAKU_NAME2, BUMON_RYAKU_NAME3, BUMON_RYAKU_NAME4, BUMON_RYAKU_NAME5, BUMON_RYAKU_NAME6, SOS_CD1, SOS_CD2, SOS_CD3, SOS_CD4, SOS_CD5, SOS_CD6, LINE_STAFF_KB, SHOKUSEI_CD, SHOKUSEI_NAME, SHUKKOU_CD, SHUKKOU_NAME, SHUKKOU_TAN_NAME, KINMU_BA_JOU_NAME, ROUSO_KB, KINMU_KB, SHOKUSHU_CD, SHOKUSHU_NAME, JIGYO_JO_CD, JIGYO_JO_SEI_NAME, JIGYO_JO_RYAKU_NAME, KAIGAI_KINMU_CD, KAIGAI_KINMU_NAME, COMPANY_CD, COMPANY_NAME, KINMU_TDFKN_CD, KINMU_TDFKN_NAME, KINMU_SCSN_CD, KINMU_SCSN_NAME, SOS_CD, SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_HOSOKU, SEWA_SOS_CD, OLD_JGI_NO, OLD_KOYOU_KB, OLD_KOYOU_NAME, SHOKUI_CD, SHOKUI_NAME, BUMON_RANK, SEWA_BUMON_RANK, KIHON_UP_DATE, SYOZOKU_UP_DATE, JGI_KB
         FROM
@@ -195,7 +195,7 @@
             <if test="jgiKb != null">AND JGI_KB = #{jgiKb}</if>
         </where>
     </select>
-    <select id="countByValue" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity" resultType="int">
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity" resultType="int">
         SELECT
             count (*)
         FROM
@@ -276,19 +276,19 @@
             <if test="jgiKb != null">AND JGI_KB = #{jgiKb}</if>
         </where>
     </select>
-    <insert id="insertByPK" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity">
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity">
         INSERT INTO
             S_JKR_M_JGI_MST(JGI_NO, JGI_NAME, JGI_NAME_KANA, SEX_CD, SEX_NAME, KOYOU_KB, KOYOU_NAME, NYUUSYA_DAY, BIRTH_DAY, TAISHOKU_KB, TAISHOKU_CD, TAISHOKU_NAME, TAISHOKU_DAY, HATUREI_DAY, KENMU_KB, SHOZOKU_SEI_NAME, SHOZOKU_RYAKU_NAME, SOS_NAME, BUMON_SEI_NAME1, BUMON_SEI_NAME2, BUMON_SEI_NAME3, BUMON_SEI_NAME4, BUMON_SEI_NAME5, BUMON_SEI_NAME6, BUMON_RYAKU_NAME1, BUMON_RYAKU_NAME2, BUMON_RYAKU_NAME3, BUMON_RYAKU_NAME4, BUMON_RYAKU_NAME5, BUMON_RYAKU_NAME6, SOS_CD1, SOS_CD2, SOS_CD3, SOS_CD4, SOS_CD5, SOS_CD6, LINE_STAFF_KB, SHOKUSEI_CD, SHOKUSEI_NAME, SHUKKOU_CD, SHUKKOU_NAME, SHUKKOU_TAN_NAME, KINMU_BA_JOU_NAME, ROUSO_KB, KINMU_KB, SHOKUSHU_CD, SHOKUSHU_NAME, JIGYO_JO_CD, JIGYO_JO_SEI_NAME, JIGYO_JO_RYAKU_NAME, KAIGAI_KINMU_CD, KAIGAI_KINMU_NAME, COMPANY_CD, COMPANY_NAME, KINMU_TDFKN_CD, KINMU_TDFKN_NAME, KINMU_SCSN_CD, KINMU_SCSN_NAME, SOS_CD, SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_CD, SEWA_SOS_TAIKEI_HOSOKU, SEWA_SOS_CD, OLD_JGI_NO, OLD_KOYOU_KB, OLD_KOYOU_NAME, SHOKUI_CD, SHOKUI_NAME, BUMON_RANK, SEWA_BUMON_RANK, KIHON_UP_DATE, SYOZOKU_UP_DATE, JGI_KB)
         VALUES
             (#{jgiNo}, #{jgiName}, #{jgiNameKana}, #{sexCd}, #{sexName}, #{koyouKb}, #{koyouName}, #{nyuusyaDay}, #{birthDay}, #{taishokuKb}, #{taishokuCd}, #{taishokuName}, #{taishokuDay}, #{hatureiDay}, #{kenmuKb}, #{shozokuSeiName}, #{shozokuRyakuName}, #{sosName}, #{bumonSeiName1}, #{bumonSeiName2}, #{bumonSeiName3}, #{bumonSeiName4}, #{bumonSeiName5}, #{bumonSeiName6}, #{bumonRyakuName1}, #{bumonRyakuName2}, #{bumonRyakuName3}, #{bumonRyakuName4}, #{bumonRyakuName5}, #{bumonRyakuName6}, #{sosCd1}, #{sosCd2}, #{sosCd3}, #{sosCd4}, #{sosCd5}, #{sosCd6}, #{lineStaffKb}, #{shokuseiCd}, #{shokuseiName}, #{shukkouCd}, #{shukkouName}, #{shukkouTanName}, #{kinmuBaJouName}, #{rousoKb}, #{kinmuKb}, #{shokushuCd}, #{shokushuName}, #{jigyoJoCd}, #{jigyoJoSeiName}, #{jigyoJoRyakuName}, #{kaigaiKinmuCd}, #{kaigaiKinmuName}, #{companyCd}, #{companyName}, #{kinmuTdfknCd}, #{kinmuTdfknName}, #{kinmuScsnCd}, #{kinmuScsnName}, #{sosCd}, #{sosTaikeiCd}, #{sewaSosTaikeiCd}, #{sewaSosTaikeiHosoku}, #{sewaSosCd}, #{oldJgiNo}, #{oldKoyouKb}, #{oldKoyouName}, #{shokuiCd}, #{shokuiName}, #{bumonRank}, #{sewaBumonRank}, #{kihonUpDate}, #{syozokuUpDate}, #{jgiKb})
     </insert>
-    <insert id="insertByValue" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity">
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity">
         INSERT INTO
             S_JKR_M_JGI_MST(<trim suffixOverrides=",">JGI_NO,<if test="jgiName != null">JGI_NAME,</if><if test="jgiNameKana != null">JGI_NAME_KANA,</if><if test="sexCd != null">SEX_CD,</if><if test="sexName != null">SEX_NAME,</if><if test="koyouKb != null">KOYOU_KB,</if><if test="koyouName != null">KOYOU_NAME,</if><if test="nyuusyaDay != null">NYUUSYA_DAY,</if><if test="birthDay != null">BIRTH_DAY,</if><if test="taishokuKb != null">TAISHOKU_KB,</if><if test="taishokuCd != null">TAISHOKU_CD,</if><if test="taishokuName != null">TAISHOKU_NAME,</if><if test="taishokuDay != null">TAISHOKU_DAY,</if><if test="hatureiDay != null">HATUREI_DAY,</if>KENMU_KB,<if test="shozokuSeiName != null">SHOZOKU_SEI_NAME,</if><if test="shozokuRyakuName != null">SHOZOKU_RYAKU_NAME,</if><if test="sosName != null">SOS_NAME,</if><if test="bumonSeiName1 != null">BUMON_SEI_NAME1,</if><if test="bumonSeiName2 != null">BUMON_SEI_NAME2,</if><if test="bumonSeiName3 != null">BUMON_SEI_NAME3,</if><if test="bumonSeiName4 != null">BUMON_SEI_NAME4,</if><if test="bumonSeiName5 != null">BUMON_SEI_NAME5,</if><if test="bumonSeiName6 != null">BUMON_SEI_NAME6,</if><if test="bumonRyakuName1 != null">BUMON_RYAKU_NAME1,</if><if test="bumonRyakuName2 != null">BUMON_RYAKU_NAME2,</if><if test="bumonRyakuName3 != null">BUMON_RYAKU_NAME3,</if><if test="bumonRyakuName4 != null">BUMON_RYAKU_NAME4,</if><if test="bumonRyakuName5 != null">BUMON_RYAKU_NAME5,</if><if test="bumonRyakuName6 != null">BUMON_RYAKU_NAME6,</if><if test="sosCd1 != null">SOS_CD1,</if><if test="sosCd2 != null">SOS_CD2,</if><if test="sosCd3 != null">SOS_CD3,</if><if test="sosCd4 != null">SOS_CD4,</if><if test="sosCd5 != null">SOS_CD5,</if><if test="sosCd6 != null">SOS_CD6,</if><if test="lineStaffKb != null">LINE_STAFF_KB,</if><if test="shokuseiCd != null">SHOKUSEI_CD,</if><if test="shokuseiName != null">SHOKUSEI_NAME,</if><if test="shukkouCd != null">SHUKKOU_CD,</if><if test="shukkouName != null">SHUKKOU_NAME,</if><if test="shukkouTanName != null">SHUKKOU_TAN_NAME,</if><if test="kinmuBaJouName != null">KINMU_BA_JOU_NAME,</if><if test="rousoKb != null">ROUSO_KB,</if><if test="kinmuKb != null">KINMU_KB,</if><if test="shokushuCd != null">SHOKUSHU_CD,</if><if test="shokushuName != null">SHOKUSHU_NAME,</if><if test="jigyoJoCd != null">JIGYO_JO_CD,</if><if test="jigyoJoSeiName != null">JIGYO_JO_SEI_NAME,</if><if test="jigyoJoRyakuName != null">JIGYO_JO_RYAKU_NAME,</if><if test="kaigaiKinmuCd != null">KAIGAI_KINMU_CD,</if><if test="kaigaiKinmuName != null">KAIGAI_KINMU_NAME,</if><if test="companyCd != null">COMPANY_CD,</if><if test="companyName != null">COMPANY_NAME,</if><if test="kinmuTdfknCd != null">KINMU_TDFKN_CD,</if><if test="kinmuTdfknName != null">KINMU_TDFKN_NAME,</if><if test="kinmuScsnCd != null">KINMU_SCSN_CD,</if><if test="kinmuScsnName != null">KINMU_SCSN_NAME,</if><if test="sosCd != null">SOS_CD,</if><if test="sosTaikeiCd != null">SOS_TAIKEI_CD,</if><if test="sewaSosTaikeiCd != null">SEWA_SOS_TAIKEI_CD,</if><if test="sewaSosTaikeiHosoku != null">SEWA_SOS_TAIKEI_HOSOKU,</if><if test="sewaSosCd != null">SEWA_SOS_CD,</if><if test="oldJgiNo != null">OLD_JGI_NO,</if><if test="oldKoyouKb != null">OLD_KOYOU_KB,</if><if test="oldKoyouName != null">OLD_KOYOU_NAME,</if><if test="shokuiCd != null">SHOKUI_CD,</if><if test="shokuiName != null">SHOKUI_NAME,</if><if test="bumonRank != null">BUMON_RANK,</if><if test="sewaBumonRank != null">SEWA_BUMON_RANK,</if><if test="kihonUpDate != null">KIHON_UP_DATE,</if><if test="syozokuUpDate != null">SYOZOKU_UP_DATE,</if><if test="jgiKb != null">JGI_KB,</if></trim>)
         VALUES
             (<trim suffixOverrides=",">#{jgiNo},<if test="jgiName != null">#{jgiName},</if><if test="jgiNameKana != null">#{jgiNameKana},</if><if test="sexCd != null">#{sexCd},</if><if test="sexName != null">#{sexName},</if><if test="koyouKb != null">#{koyouKb},</if><if test="koyouName != null">#{koyouName},</if><if test="nyuusyaDay != null">#{nyuusyaDay},</if><if test="birthDay != null">#{birthDay},</if><if test="taishokuKb != null">#{taishokuKb},</if><if test="taishokuCd != null">#{taishokuCd},</if><if test="taishokuName != null">#{taishokuName},</if><if test="taishokuDay != null">#{taishokuDay},</if><if test="hatureiDay != null">#{hatureiDay},</if>#{kenmuKb},<if test="shozokuSeiName != null">#{shozokuSeiName},</if><if test="shozokuRyakuName != null">#{shozokuRyakuName},</if><if test="sosName != null">#{sosName},</if><if test="bumonSeiName1 != null">#{bumonSeiName1},</if><if test="bumonSeiName2 != null">#{bumonSeiName2},</if><if test="bumonSeiName3 != null">#{bumonSeiName3},</if><if test="bumonSeiName4 != null">#{bumonSeiName4},</if><if test="bumonSeiName5 != null">#{bumonSeiName5},</if><if test="bumonSeiName6 != null">#{bumonSeiName6},</if><if test="bumonRyakuName1 != null">#{bumonRyakuName1},</if><if test="bumonRyakuName2 != null">#{bumonRyakuName2},</if><if test="bumonRyakuName3 != null">#{bumonRyakuName3},</if><if test="bumonRyakuName4 != null">#{bumonRyakuName4},</if><if test="bumonRyakuName5 != null">#{bumonRyakuName5},</if><if test="bumonRyakuName6 != null">#{bumonRyakuName6},</if><if test="sosCd1 != null">#{sosCd1},</if><if test="sosCd2 != null">#{sosCd2},</if><if test="sosCd3 != null">#{sosCd3},</if><if test="sosCd4 != null">#{sosCd4},</if><if test="sosCd5 != null">#{sosCd5},</if><if test="sosCd6 != null">#{sosCd6},</if><if test="lineStaffKb != null">#{lineStaffKb},</if><if test="shokuseiCd != null">#{shokuseiCd},</if><if test="shokuseiName != null">#{shokuseiName},</if><if test="shukkouCd != null">#{shukkouCd},</if><if test="shukkouName != null">#{shukkouName},</if><if test="shukkouTanName != null">#{shukkouTanName},</if><if test="kinmuBaJouName != null">#{kinmuBaJouName},</if><if test="rousoKb != null">#{rousoKb},</if><if test="kinmuKb != null">#{kinmuKb},</if><if test="shokushuCd != null">#{shokushuCd},</if><if test="shokushuName != null">#{shokushuName},</if><if test="jigyoJoCd != null">#{jigyoJoCd},</if><if test="jigyoJoSeiName != null">#{jigyoJoSeiName},</if><if test="jigyoJoRyakuName != null">#{jigyoJoRyakuName},</if><if test="kaigaiKinmuCd != null">#{kaigaiKinmuCd},</if><if test="kaigaiKinmuName != null">#{kaigaiKinmuName},</if><if test="companyCd != null">#{companyCd},</if><if test="companyName != null">#{companyName},</if><if test="kinmuTdfknCd != null">#{kinmuTdfknCd},</if><if test="kinmuTdfknName != null">#{kinmuTdfknName},</if><if test="kinmuScsnCd != null">#{kinmuScsnCd},</if><if test="kinmuScsnName != null">#{kinmuScsnName},</if><if test="sosCd != null">#{sosCd},</if><if test="sosTaikeiCd != null">#{sosTaikeiCd},</if><if test="sewaSosTaikeiCd != null">#{sewaSosTaikeiCd},</if><if test="sewaSosTaikeiHosoku != null">#{sewaSosTaikeiHosoku},</if><if test="sewaSosCd != null">#{sewaSosCd},</if><if test="oldJgiNo != null">#{oldJgiNo},</if><if test="oldKoyouKb != null">#{oldKoyouKb},</if><if test="oldKoyouName != null">#{oldKoyouName},</if><if test="shokuiCd != null">#{shokuiCd},</if><if test="shokuiName != null">#{shokuiName},</if><if test="bumonRank != null">#{bumonRank},</if><if test="sewaBumonRank != null">#{sewaBumonRank},</if><if test="kihonUpDate != null">#{kihonUpDate},</if><if test="syozokuUpDate != null">#{syozokuUpDate},</if><if test="jgiKb != null">#{jgiKb},</if></trim>)
     </insert>
-    <update id="updateByPK" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity">
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity">
         UPDATE
             S_JKR_M_JGI_MST
         SET
@@ -296,7 +296,7 @@
         WHERE
             JGI_NO = #{search.jgiNo} AND KENMU_KB = #{search.kenmuKb}
     </update>
-    <update id="updateByValue" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity">
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity">
         UPDATE
             S_JKR_M_JGI_MST
         <set>
@@ -375,13 +375,13 @@
         WHERE
             JGI_NO = #{search.jgiNo} AND KENMU_KB = #{search.kenmuKb}
     </update>
-    <delete id="deleteByPK" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity">
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity">
         DELETE FROM
             S_JKR_M_JGI_MST
         WHERE
             JGI_NO = #{jgiNo} AND KENMU_KB = #{kenmuKb}
     </delete>
-    <delete id="deleteByValue" parameterType="jp.co.takeda.jkr.entity.SJkrMJgiMstEntity">
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.SJkrMJgiMstEntity">
         DELETE FROM
             S_JKR_M_JGI_MST
         <where>
@@ -460,19 +460,19 @@
             <if test="jgiKb != null">AND JGI_KB = #{jgiKb}</if>
         </where>
     </delete>
-   <select id="selectLoginJgiNoByUserId" parameterType="jp.co.takeda.jkr.entity.join.SelectLoginJgiNoByUserIdEntity" resultMap="selectLoginJgiNoByUserIdResultMap">
+   <select id="selectLoginJgiNoByUserId" parameterType="jp.co.takeda.rdm.entity.join.SelectLoginJgiNoByUserIdEntity" resultMap="selectLoginJgiNoByUserIdResultMap">
         SELECT
             COM_USER_INFO.SEARCH_JGI_NO(#{inUserId})  JGI_NO
         FROM
             DUAL
     </select>
-   <select id="selectLoginUserIdByJgiNo" parameterType="jp.co.takeda.jkr.entity.join.SelectLoginUserIdByJgiNoEntity" resultMap="selectLoginUserIdByJgiNoResultMap">
+   <select id="selectLoginUserIdByJgiNo" parameterType="jp.co.takeda.rdm.entity.join.SelectLoginUserIdByJgiNoEntity" resultMap="selectLoginUserIdByJgiNoResultMap">
         SELECT
             COM_USER_INFO.SEARCH_USER_ID(#{inJgiNo})  USER_ID
         FROM
             DUAL
     </select>
-   <select id="selectCodeMst" parameterType="jp.co.takeda.jkr.entity.join.SelectCodeMstEntity" resultMap="selectCodeMstResultMap">
+   <select id="selectCodeMst" parameterType="jp.co.takeda.rdm.entity.join.SelectCodeMstEntity" resultMap="selectCodeMstResultMap">
         SELECT
             DATA_KBN,                --データ区分
             DATA_CD,                 --コード

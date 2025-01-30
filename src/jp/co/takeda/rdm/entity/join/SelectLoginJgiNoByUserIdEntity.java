@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2014, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.entity.join;
+package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
 
@@ -14,10 +14,10 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 /**
  * 結合Entityクラス
  * テーブル物理名 : S_JKR_M_JGI_MST
- * SQLID : selectLoginUserIdByJgiNo
+ * SQLID : selectLoginJgiNoByUserId
  * @generated
  */
-public class SelectLoginUserIdByJgiNoEntity extends BaseEntity implements Serializable {
+public class SelectLoginJgiNoByUserIdEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -26,41 +26,23 @@ public class SelectLoginUserIdByJgiNoEntity extends BaseEntity implements Serial
     private static final long serialVersionUID = 1L;
 
     /**
-     * 従業員番号 (パラメータ1)
+     * ユーザID (パラメータ1)
      * @generated
      */
-    private int inJgiNo;
+    private String inUserId;
 
     /**
-     * ユーザID
+     * 従業員番号
      * @generated
      */
-    private String userId;
+    private int jgiNo;
 
     /**
      * コンストラクタ
      * @generated
      */
-    public SelectLoginUserIdByJgiNoEntity() {
-        super("s_jkr_m_jgi_mst" , "selectLoginUserIdByJgiNo");
-    }
-
-    /**
-     * 従業員番号の取得
-     * @return 従業員番号
-     * @generated
-     */
-    public int getInJgiNo() {
-        return inJgiNo;
-    }
-
-    /**
-     * 従業員番号の設定
-     * @param inJgiNo 従業員番号
-     * @generated
-     */
-    public void setInJgiNo(int inJgiNo) {
-        this.inJgiNo = inJgiNo;
+    public SelectLoginJgiNoByUserIdEntity() {
+        super("s_jkr_m_jgi_mst" , "selectLoginJgiNoByUserId");
     }
 
     /**
@@ -68,17 +50,35 @@ public class SelectLoginUserIdByJgiNoEntity extends BaseEntity implements Serial
      * @return ユーザID
      * @generated
      */
-    public String getUserId() {
-        return userId;
+    public String getInUserId() {
+        return inUserId;
     }
 
     /**
      * ユーザIDの設定
-     * @param userId ユーザID
+     * @param inUserId ユーザID
      * @generated
      */
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setInUserId(String inUserId) {
+        this.inUserId = inUserId;
+    }
+
+    /**
+     * 従業員番号の取得
+     * @return 従業員番号
+     * @generated
+     */
+    public int getJgiNo() {
+        return jgiNo;
+    }
+
+    /**
+     * 従業員番号の設定
+     * @param jgiNo 従業員番号
+     * @generated
+     */
+    public void setJgiNo(int jgiNo) {
+        this.jgiNo = jgiNo;
     }
 
     /**

@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import java.io.InputStream;
 import java.util.List;
 
-import jp.co.takeda.jkr.entity.join.SelectTopMenuDispDataEntity;
+import jp.co.takeda.rdm.entity.join.SelectTopMenuDispDataEntity;
 
 /**
  * DTOクラス

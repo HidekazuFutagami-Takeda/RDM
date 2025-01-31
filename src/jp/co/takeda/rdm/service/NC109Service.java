@@ -14,29 +14,29 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.takeda.rdm.dto.JKR999C010DTO;
+import jp.co.takeda.rdm.dto.NC109DTO;
 
 /**
- * Serviceクラス（JKR999C010)
+ * Serviceクラス（NC109)
  * @generated
  */
 @Named
-public class JKR999C010Service extends BaseService {
+public class NC109Service extends BaseService {
 
     /**
      * ログインスタンス
      * @generated
      */
-    private static Log log = LogFactory.getLog(JKR999C010Service.class);
+    private static Log log = LogFactory.getLog(NC109Service.class);
 
     /**
      * イベント処理
-     * @param indto JKR999C010DTO
+     * @param indto NC109DTO
      * @return 遷移先DTO
      * @customizable
      */
     @Transactional
-    public BaseDTO init(JKR999C010DTO indto) {
+    public BaseDTO init(NC109DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
 
@@ -46,12 +46,12 @@ public class JKR999C010Service extends BaseService {
 
     /**
      * イベント処理
-     * @param indto JKR999C010DTO
+     * @param indto NC109DTO
      * @return 遷移先DTO
      * @customizable
      */
     @Transactional
-    public BaseDTO execute(JKR999C010DTO indto) {
+    public BaseDTO execute(NC109DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
 

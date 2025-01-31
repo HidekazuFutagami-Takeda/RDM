@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
  * DTOクラス
  * @generated
  */
-public class JKR999C010DTO extends BaseDTO implements Serializable {
+public class NC109DTO extends BaseDTO implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -27,14 +27,14 @@ public class JKR999C010DTO extends BaseDTO implements Serializable {
      * このDTOが関連付けられている画面ID
      * @generated
      */
-    private String JKR999C010 = "JKR999C010";
+    private String NC109 = "NC109";
 
     /**
      * デフォルトのコンストラクタ。
      * @generated
      */
-    public JKR999C010DTO() {
-        setForward(JKR999C010);
+    public NC109DTO() {
+        setForward(NC109);
     }
 
     // START UOC
@@ -46,8 +46,8 @@ public class JKR999C010DTO extends BaseDTO implements Serializable {
      * @param screenID 画面ID
      * @generated
      */
-    public void setJKR999C010(String screenID){
-        this.JKR999C010 = screenID;
+    public void setNC109(String screenID){
+        this.NC109 = screenID;
     }
 
     /**
@@ -55,8 +55,8 @@ public class JKR999C010DTO extends BaseDTO implements Serializable {
      * @return 画面ID名
      * @generated
      */
-    public String getJKR999C010(){
-        return JKR999C010;
+    public String getNC109(){
+        return NC109;
     }
 
     /**

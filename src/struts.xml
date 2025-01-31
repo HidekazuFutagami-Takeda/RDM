@@ -66,9 +66,9 @@
             <result name="OverTimeServiceException">/WEB-INF/pages/error/mapsOverTimeServiceException.jsp</result>
             <result name="SessionTimeoutException">/WEB-INF/pages/error/mapsSessionTimeoutException.jsp</result>
             <result name="InvalidRequestException">/WEB-INF/pages/error/mapsInvalidRequestException.jsp</result>
-            <result name="exception">/WEB-INF/pages/JKR999C010.jsp</result>
-            <result name="invalid.token">/WEB-INF/pages/JKR999C010.jsp</result>
-            <result name="error" type="chain">JKR999C010Init</result>
+            <result name="exception">/WEB-INF/pages/NC109.jsp</result>
+            <result name="invalid.token">/WEB-INF/pages/NC109.jsp</result>
+            <result name="error" type="chain">NC109Init</result>
         </global-results>
         <global-exception-mappings>
             <exception-mapping exception="jp.co.takeda.rdm.exception.InvalidServiceException" result="InvalidServiceException"/>

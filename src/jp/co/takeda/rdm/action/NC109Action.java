@@ -13,18 +13,18 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
-import jp.co.takeda.rdm.service.JKR999C010Service;
+import jp.co.takeda.rdm.service.NC109Service;
 import org.springframework.context.annotation.Scope;
 
-import jp.co.takeda.rdm.dto.JKR999C010DTO;
+import jp.co.takeda.rdm.dto.NC109DTO;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("jKR999C010Action")
+@Named("nC109Action")
 @Scope("request")
-public class JKR999C010Action extends BaseAction<JKR999C010DTO> {
+public class NC109Action extends BaseAction<NC109DTO> {
 
     /**
      * シリアルバージョンID
@@ -37,7 +37,7 @@ public class JKR999C010Action extends BaseAction<JKR999C010DTO> {
      * @generated
      */
     @Inject
-    private JKR999C010Service jKR999C010Service;
+    private NC109Service nC109Service;
 
     // START UOC
 
@@ -47,8 +47,8 @@ public class JKR999C010Action extends BaseAction<JKR999C010DTO> {
      * コンストラクタ
      * @generated
      */
-    public JKR999C010Action() {
-        dto = new JKR999C010DTO();
+    public NC109Action() {
+        dto = new NC109DTO();
     }
 
     /**
@@ -93,7 +93,7 @@ public class JKR999C010Action extends BaseAction<JKR999C010DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = jKR999C010Service.init(dto);
+        BaseDTO outdto = nC109Service.init(dto);
         return initNext(outdto);
     }
 

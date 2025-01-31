@@ -732,7 +732,7 @@
             <種別>隠しフィールド</種別>
             <備考/>
             <項目ID>jkrSosStsTableData</項目ID>
-            <変数型>jp.co.takeda.jkr.entity.join.SelectTopMenuDispDataEntity</変数型>
+            <変数型>jp.co.takeda.rdm.entity.join.SelectTopMenuDispDataEntity</変数型>
             <繰返変数名/>
             <初期値/>
         </画面項目>
@@ -4527,7 +4527,7 @@
             <種別>隠しフィールド</種別>
             <備考/>
             <項目ID>jkrMrChangeDataRyoikiDataLst</項目ID>
-            <変数型>java.util.List&lt;jp.co.takeda.jkr.dto.JkrMrChangeDataRyoikiData&gt;</変数型>
+            <変数型>java.util.List&lt;jp.co.takeda.rdm.dto.JkrMrChangeDataRyoikiData&gt;</変数型>
             <繰返変数名>jkrMrChangeData</繰返変数名>
             <初期値>new java.util.ArrayList&lt;JkrMrChangeDataRyoikiData&gt;()</初期値>
         </画面項目>
@@ -4538,7 +4538,7 @@
             <種別>隠しフィールド</種別>
             <備考/>
             <項目ID>jkrMrChangeDataHinMokuDataLst</項目ID>
-            <変数型>java.util.List&lt;jp.co.takeda.jkr.dto.JkrMrChangeDataHinMokuData&gt;</変数型>
+            <変数型>java.util.List&lt;jp.co.takeda.rdm.dto.JkrMrChangeDataHinMokuData&gt;</変数型>
             <繰返変数名>jkrMrChangeData</繰返変数名>
             <初期値>new java.util.ArrayList&lt;JkrMrChangeDataHinMokuData&gt;()</初期値>
         </画面項目>
@@ -5836,7 +5836,7 @@
             <種別>隠しフィールド</種別>
             <備考/>
             <項目ID>jkrMrChangeDataRyoikiDataLst</項目ID>
-            <変数型>java.util.List&lt;jp.co.takeda.jkr.dto.JkrMrChangeDataRyoikiData&gt;</変数型>
+            <変数型>java.util.List&lt;jp.co.takeda.rdm.dto.JkrMrChangeDataRyoikiData&gt;</変数型>
             <繰返変数名>jkrMrChangeData</繰返変数名>
             <初期値>new java.util.ArrayList&lt;JkrMrChangeDataRyoikiData&gt;()</初期値>
         </画面項目>
@@ -5847,7 +5847,7 @@
             <種別>隠しフィールド</種別>
             <備考/>
             <項目ID>jkrMrChangeDataHinMokuDataLst</項目ID>
-            <変数型>java.util.List&lt;jp.co.takeda.jkr.dto.JkrMrChangeDataHinMokuData&gt;</変数型>
+            <変数型>java.util.List&lt;jp.co.takeda.rdm.dto.JkrMrChangeDataHinMokuData&gt;</変数型>
             <繰返変数名>jkrMrChangeData</繰返変数名>
             <初期値>new java.util.ArrayList&lt;JkrMrChangeDataHinMokuData&gt;()</初期値>
         </画面項目>
@@ -40730,7 +40730,7 @@
             <種別>隠しフィールド</種別>
             <備考/>
             <項目ID>trtDataList</項目ID>
-            <変数型>java.util.List&lt;jp.co.takeda.jkr.dto.ChgDeptEditData&gt;</変数型>
+            <変数型>java.util.List&lt;jp.co.takeda.rdm.dto.ChgDeptEditData&gt;</変数型>
             <繰返変数名>chgDeptEditRowData</繰返変数名>
             <初期値/>
         </画面項目>
@@ -40774,7 +40774,7 @@
             <種別>隠しフィールド</種別>
             <備考/>
             <項目ID>trtChgData</項目ID>
-            <変数型>jp.co.takeda.jkr.dto.ChgDeptEditData</変数型>
+            <変数型>jp.co.takeda.rdm.dto.ChgDeptEditData</変数型>
             <繰返変数名>chgDeptInsertData</繰返変数名>
             <初期値/>
         </画面項目>
@@ -47308,7 +47308,7 @@
             <種別>ラベル</種別>
             <備考>同上</備考>
             <項目ID>message1</項目ID>
-            <変数型>jp.co.takeda.jkr.entity.SJkrJkrMsgMstEntity</変数型>
+            <変数型>jp.co.takeda.rdm.entity.SJkrJkrMsgMstEntity</変数型>
             <繰返変数名/>
             <初期値/>
         </画面項目>
@@ -47330,7 +47330,7 @@
             <種別>ラベル</種別>
             <備考>同上</備考>
             <項目ID>message3</項目ID>
-            <変数型>jp.co.takeda.jkr.entity.SJkrJkrMsgMstEntity</変数型>
+            <変数型>jp.co.takeda.rdm.entity.SJkrJkrMsgMstEntity</変数型>
             <繰返変数名/>
             <初期値/>
         </画面項目>
@@ -49229,7 +49229,7 @@
             <種別>ラベル</種別>
             <備考/>
             <項目ID>mJgiMstList</項目ID>
-            <変数型>java.util.List&lt;jp.co.takeda.jkr.dto.JgiData&gt;</変数型>
+            <変数型>java.util.List&lt;jp.co.takeda.rdm.dto.JgiData&gt;</変数型>
             <繰返変数名>insData</繰返変数名>
             <初期値/>
         </画面項目>
@@ -50857,7 +50857,7 @@
     <画面項目定義 name="画面項目定義">
         <システム名>担当変更システム</システム名>
         <サブシステムID>JKR</サブシステムID>
-        <画面ID>JKR999C010</画面ID>
+        <画面ID>NC109</画面ID>
         <画面名>共通エラー</画面名>
         <更新者>Thu Aug 07 00:00:00 JST 2014</更新者>
         <更新日>日立　猿渡</更新日>

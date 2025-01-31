@@ -14,7 +14,6 @@ import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
-import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
@@ -43,8 +42,6 @@ public class NF012Action extends BaseAction<NF012DTO> {
      */
     @Inject
     private NF012Service nF012Service;
-    // 確認画面用にする
-    private NC101DTO paramDto;
     // START UOC
     // END UOC
 
@@ -113,16 +110,14 @@ public class NF012Action extends BaseAction<NF012DTO> {
 
         // 画面タイトル制御処理
         String title = "NF012_施設情報更新";
-        //ユーザ権限
-        String jokenSetCd = dto.getLoginJokenSetCd();
 
         dto.setTitle(title);
 
-        //モック
-        //dto.setInsNo("101004372");
-        dto.setInsNo("313001119");
-        //dto.setInsNo("101110001");	// 施設分類03
-        dto.setReqId("250124-000143");
+//        //モック
+//        //dto.setInsNo("101004372");
+//        dto.setInsNo("313001119");
+//        //dto.setInsNo("101110001");	// 施設分類03
+//        dto.setReqId("250130-000167");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
@@ -130,23 +125,23 @@ public class NF012Action extends BaseAction<NF012DTO> {
         dto.setPreScreenId(preScreenId);
 
         //モック
-        String kbn = "1";
-        if(kbn.equals("1")) {
-        	// 施設固定コードから
-	        preScreenId = "NF001";
-	        dto.setReqId("");
+//        String kbn = "2";
+//        if(kbn.equals("1")) {
+//        	// ULT施設コードから
+//	        preScreenId = "NF001";
+//	        dto.setReqId("");
+//
+//        } else {
+//        	// reqIdから
+//	        preScreenId = "NC011";
+//	        //dto.setReqStsCd("01");
+//	        dto.setInsNo("");
+//        }
+//        //dto.setLoginJgiNo("0");
+//        dto.setLoginJgiNo("8830034");
+//        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+//        //dto.setLoginJokenSetCd("JKN0023");	// MR
 
-        } else {
-        	// reqIdから
-	        preScreenId = "NC011";
-	        //dto.setReqStsCd("01");
-	        dto.setInsNo("");
-        }
-
-        //dto.setLoginJgiNo("0");
-        dto.setLoginJgiNo("8830034");
-        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-        // dto.setLoginJokenSetCd("JKN0023");	// MR
 
         // 遷移パターン　1:施設コードから作成、2：申請データあり
         // 施設コード　ありなしで分岐
@@ -180,7 +175,7 @@ public class NF012Action extends BaseAction<NF012DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NF011_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_NF012_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -293,39 +288,6 @@ public class NF012Action extends BaseAction<NF012DTO> {
 
     	// END UOC
     	outdto.setForward("NF012");
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
-
-    /**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String apprRej() throws Exception {
-        apprRejSetup();
-        // F層呼び出し
-        BaseDTO outdto = nF012Service.apprRej(dto);
-        return apprRejNext(outdto);
-    }
-
-    /**
-     * 前処理
-     * @customizable
-     */
-    protected void apprRejSetup() throws Exception {
-        // START UOC
-        dto.setMsgId(null);
-        // END UOC
-    }
-
-    /**
-     * 後処理
-     * @customizable
-     */
-    protected String apprRejNext(BaseDTO outdto) throws Exception {
-    	// START UOC
-    	// END UOC
         setNextDTO(outdto);
         return outdto.getForward();
     }

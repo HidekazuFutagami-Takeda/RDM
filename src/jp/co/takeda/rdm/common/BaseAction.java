@@ -176,12 +176,13 @@ public abstract class BaseAction<DTO extends BaseDTO> extends ActionSupport
         //TODO 二神　後日変更する
         String screenId = "";
         String functionId = "";
-        if(actionStr.length() < 10) {
-        	screenId = actionStr.substring(0, 5);
-            functionId = actionStr.substring(5);
-        }else {
+        String sysChk = actionStr.substring(0,1);
+        if(!sysChk.equals("N")) {
         	screenId = actionStr.substring(0, 10);
-            functionId = actionStr.substring(10);
+        	functionId = actionStr.substring(10);
+        }else {
+        	screenId = actionStr.substring(0, 5);
+        	functionId = actionStr.substring(5);
         }
 
         functionId = functionId.contains(";") ? functionId.substring(0, functionId.indexOf(";")) : functionId;

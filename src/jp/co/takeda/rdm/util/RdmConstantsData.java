@@ -49,7 +49,7 @@ public class RdmConstantsData {
     public static final String RDM_JKN_ONCGM = "JKN0337";
 
     /**条件設定 : MR権限 */
-    public static final String RDM_JKN_MR = "JKN0164";
+    //public static final String RDM_JKN_MR = "JKN0164";
 
 
 
@@ -538,226 +538,34 @@ public class RdmConstantsData {
     public static final String CODE_NAME_UNIV_SUBDIV = "UNIV_SUBDIV";
     /**コード情報コード名 : 容量別実績把握病院区分 */
     public static final String CODE_NAME_CAPA_TYPE = "CAPA_TYPE";
-    /**コード情報コード名 : 老人短期入所施設 */
-    public static final String CODE_NAME_WELFARE02 = "WELFARE02";
-    /**コード情報コード名 : その他(老人福祉法関連分類情報) */
-    public static final String CODE_NAME_WELFARE08 = "WELFARE08";
-    /**コード情報コード名 : En-T ARB ('18.11) */
-    public static final String CODE_NAME_RESULT01 = "RESULT01";
-    /**コード情報コード名 : En-T DPP4 ('18.11) */
-    public static final String CODE_NAME_RESULT02 = "RESULT02";
-    /**コード情報コード名 : En-T ω3 ('18.11) */
-    public static final String CODE_NAME_RESULT03 = "RESULT03";
-    /**コード情報コード名 : En-T PPI ('18.11) */
-    public static final String CODE_NAME_RESULT04 = "RESULT04";
-    /**コード情報コード名 : En-T 睡眠 ('18.11) */
-    public static final String CODE_NAME_RESULT05 = "RESULT05";
-    /**コード情報コード名 : En-T アルツハイマー ('18.11) */
-    public static final String CODE_NAME_RESULT06 = "RESULT06";
-    /**コード情報コード名 : En-T 骨粗鬆症 ('18.11) */
-    public static final String CODE_NAME_RESULT07 = "RESULT07";
-    /**コード情報コード名 : REMターゲット */
-    public static final String CODE_NAME_RESULT08 = "RESULT08";
-    /**コード情報コード名 : BLP未獲得市場区分 */
-    public static final String CODE_NAME_RESULT09 = "RESULT09";
-    /**コード情報コード名 : 整形育成先 */
-    public static final String CODE_NAME_RESULT10 = "RESULT10";
-    /**コード情報コード名 : TKP・MSコールUP */
-    public static final String CODE_NAME_RESULT11 = "RESULT11";
-    /**コード情報コード名 : ALC Core1・2('19.10) */
-    public static final String CODE_NAME_RESULT12 = "RESULT12";
-    /**コード情報コード名 : ENT Tier1-4('19.4) */
-    public static final String CODE_NAME_RESULT13 = "RESULT13";
-    /**コード情報コード名 : JIA厚労省施設 */
-    public static final String CODE_NAME_RESULT14 = "RESULT14";
-    /**コード情報コード名 : 注力先('18.12) */
-    public static final String CODE_NAME_RESULT15 = "RESULT15";
-    /**コード情報コード名 : ENBターゲット先('19.4) */
-    public static final String CODE_NAME_RESULT16 = "RESULT16";
-    /**コード情報コード名 : 骨G */
-    public static final String CODE_NAME_RESULT17 = "RESULT17";
-    /**コード情報コード名 : ナテグリニド繁用先 */
-    public static final String CODE_NAME_RESULT18 = "RESULT18";
-    /**コード情報コード名 : GLUターゲット先 */
-    public static final String CODE_NAME_RESULT19 = "RESULT19";
-    /**コード情報コード名 : 骨G2 */
-    public static final String CODE_NAME_RESULT20 = "RESULT20";
-    /**コード情報コード名 : （Ｕ：未使用） */
-    public static final String CODE_NAME_RESULT21 = "RESULT21";
-    /**コード情報コード名 : ＤＯＩＴ３ */
-    public static final String CODE_NAME_RESULT22 = "RESULT22";
-    /**コード情報コード名 : ＰＣＩ３００ */
-    public static final String CODE_NAME_RESULT23 = "RESULT23";
-    /**コード情報コード名 : ＪＤＥｓＡＲＴ */
-    public static final String CODE_NAME_RESULT24 = "RESULT24";
-    /**コード情報コード名 : （Ｙ：未使用） */
-    public static final String CODE_NAME_RESULT25 = "RESULT25";
-    /**コード情報コード名 : ＴＡＰ先 */
-    public static final String CODE_NAME_RESULT26 = "RESULT26";
-    /**コード情報コード名 : ＱＯＬ２００５ＴＫＰ */
-    public static final String CODE_NAME_RESULT27 = "RESULT27";
-    /**コード情報コード名 : ＴＫＰ未獲得市場区分 */
-    public static final String CODE_NAME_RESULT28 = "RESULT28";
-    /**コード情報コード名 : ＡＣＴ未獲得市場区分 */
-    public static final String CODE_NAME_RESULT29 = "RESULT29";
-    /**コード情報コード名 : （４：未使用） */
-    public static final String CODE_NAME_RESULT30 = "RESULT30";
-    /**コード情報コード名 : 旧ＬＭＲ */
-    public static final String CODE_NAME_RESULT31 = "RESULT31";
-    /**コード情報コード名 : （６：未使用） */
-    public static final String CODE_NAME_RESULT32 = "RESULT32";
-    /**コード情報コード名 : ＬＥＵ乳癌 */
-    public static final String CODE_NAME_RESULT33 = "RESULT33";
-    /**コード情報コード名 : ＯＮＣ担当区分 */
-    public static final String CODE_NAME_RESULT34 = "RESULT34";
-    /**コード情報コード名 : ＲＰＬ（ＣＶＭ）担当区分 */
-    public static final String CODE_NAME_RESULT35 = "RESULT35";
-    /**コード情報コード名 : （１０：未使用） */
-    public static final String CODE_NAME_RESULT36 = "RESULT36";
-    /**コード情報コード名 : 内視鏡 */
-    public static final String CODE_NAME_EQUIP01 = "EQUIP01";
-    /**コード情報コード名 : 骨量測定器 */
-    public static final String CODE_NAME_EQUIP02 = "EQUIP02";
-    /**コード情報コード名 : ICD */
-    public static final String CODE_NAME_EQUIP03 = "EQUIP03";
-    /**コード情報コード名 : CCU */
-    public static final String CODE_NAME_EQUIP07 = "EQUIP07";
-    /**コード情報コード名 : NCU */
-    public static final String CODE_NAME_EQUIP09 = "EQUIP09";
+    /**コード情報コード名 : 老人福祉法関連分類情報 */
+    public static final String CODE_NAME_WELFARE_LIST = "WELFARE_LIST";
+    /**コード情報コード名 : 実績把握区分情報 */
+    public static final String CODE_NAME_RESULT_LIST = "RESULT_LIST";
+    /**コード情報コード名 : 病院設備情報 */
+    public static final String CODE_NAME_EQUIP_LIST = "EQUIP_LIST";
     /**コード情報コード名 : Ｔ先 */
     public static final String CODE_NAME_MARKET01 = "MARKET01";
-    /**コード情報コード名 : 酸抑制剤 */
-    public static final String CODE_NAME_MARKET02 = "MARKET02";
-    /**コード情報コード名 : 高脂血症 */
-    public static final String CODE_NAME_MARKET03 = "MARKET03";
-    /**コード情報コード名 : 高血圧 */
-    public static final String CODE_NAME_MARKET04 = "MARKET04";
-    /**コード情報コード名 : 糖尿病 */
-    public static final String CODE_NAME_MARKET06 = "MARKET06";
-    /**コード情報コード名 : 骨粗鬆症 */
-    public static final String CODE_NAME_MARKET07 = "MARKET07";
-    /**コード情報コード名 : CVMターゲット */
-    public static final String CODE_NAME_MARKET09 = "MARKET09";
-    /**コード情報コード名 : 社会医療法人 */
-    public static final String CODE_NAME_MEDICAL12 = "MEDICAL12";
-    /**コード情報コード名 : 入院包括化実施病院 */
-    public static final String CODE_NAME_SPFUNC01 = "SPFUNC01";
+    /**コード情報コード名 : 市場規模情報 */
+    public static final String CODE_NAME_MARKET_LIST = "MARKET_LIST";
+    /**コード情報コード名 : 医療法関連分類情報 */
+    public static final String CODE_NAME_MEDICAL_LIST = "MEDICAL_LIST";
+    /**コード情報コード名 : 特別な機能情報 */
+    public static final String CODE_NAME_SPFUNC_LIST = "SPFUNC_LIST";
     /**コード情報コード名 : 救命救急センター */
     public static final String CODE_NAME_SPFUNC03 = "SPFUNC03";
-    /**コード情報コード名 : 大学院大学 */
-    public static final String CODE_NAME_SPFUNC04 = "SPFUNC04";
-    /**コード情報コード名 : がん連携パス */
-    public static final String CODE_NAME_TIEUP10 = "TIEUP10";
-    /**コード情報コード名 : 心疾患連携パス */
-    public static final String CODE_NAME_TIEUP11 = "TIEUP11";
-    /**コード情報コード名 : 糖尿病連携パス */
-    public static final String CODE_NAME_TIEUP12 = "TIEUP12";
-    /**コード情報コード名 : （Ａ：未使用） */
-    public static final String CODE_NAME_USERCD0001 = "USERCD0001";
-    /**コード情報コード名 : ＶＣＴ・Ｖ先 */
-    public static final String CODE_NAME_USERCD0002 = "USERCD0002";
-    /**コード情報コード名 : （Ｃ：未使用） */
-    public static final String CODE_NAME_USERCD0003 = "USERCD0003";
-    /**コード情報コード名 : NEXアーリーアダプタ */
-    public static final String CODE_NAME_USERCD0004 = "USERCD0004";
-    /**コード情報コード名 : （Ｅ：未使用） */
-    public static final String CODE_NAME_USERCD0005 = "USERCD0005";
-    /**コード情報コード名 : テルモ・コプロ */
-    public static final String CODE_NAME_USERCD0006 = "USERCD0006";
-    /**コード情報コード名 : （Ｇ：未使用） */
-    public static final String CODE_NAME_USERCD0007 = "USERCD0007";
-    /**コード情報コード名 : リュープリン・コプロ１２／１０ */
-    public static final String CODE_NAME_USERCD0008 = "USERCD0008";
-    /**コード情報コード名 : アクトス・コプロ */
-    public static final String CODE_NAME_USERCD0009 = "USERCD0009";
-    /**コード情報コード名 : ベネット・コプロ */
-    public static final String CODE_NAME_USERCD0010 = "USERCD0010";
-    /**コード情報コード名 : グルファスト */
-    public static final String CODE_NAME_USERCD0011 = "USERCD0011";
-    /**コード情報コード名 : リュープリンコプロ０８／１０ */
-    public static final String CODE_NAME_USERCD0012 = "USERCD0012";
-    /**コード情報コード名 : （Ｍ：未使用） */
-    public static final String CODE_NAME_USERCD0013 = "USERCD0013";
-    /**コード情報コード名 : COP活動先 */
-    public static final String CODE_NAME_USERCD0014 = "USERCD0014";
-    /**コード情報コード名 : ω3製剤市場 */
-    public static final String CODE_NAME_USERCD0015 = "USERCD0015";
-    /**コード情報コード名 : TCB RW在籍施設 */
-    public static final String CODE_NAME_USERCD0016 = "USERCD0016";
-    /**コード情報コード名 : DPP4アーリーアダプタ */
-    public static final String CODE_NAME_USERCD0017 = "USERCD0017";
-    /**コード情報コード名 : DPP4阻害薬('16.2) */
-    public static final String CODE_NAME_USERCD0018 = "USERCD0018";
-    /**コード情報コード名 : DPP4阻害薬市場 */
-    public static final String CODE_NAME_USERCD0019 = "USERCD0019";
-    /**コード情報コード名 : ARB/CCB配合剤市場 */
-    public static final String CODE_NAME_USERCD0020 = "USERCD0020";
-    /**コード情報コード名 : 抗潰瘍(ＰＰＩ)市場 */
-    public static final String CODE_NAME_USERCD0021 = "USERCD0021";
-    /**コード情報コード名 : 骨粗鬆症市場 */
-    public static final String CODE_NAME_USERCD0022 = "USERCD0022";
-    /**コード情報コード名 : 睡眠市場 */
-    public static final String CODE_NAME_USERCD0023 = "USERCD0023";
-    /**コード情報コード名 : Ｘ雑・災害 */
-    public static final String CODE_NAME_USERCD0024 = "USERCD0024";
-    /**コード情報コード名 : アルツハイマー市場 */
-    public static final String CODE_NAME_USERCD0025 = "USERCD0025";
-    /**コード情報コード名 : ARB総市場 */
-    public static final String CODE_NAME_USERCD0026 = "USERCD0026";
-    /**コード情報コード名 : 施設責任者 */
-    public static final String CODE_NAME_USERCD0027 = "USERCD0027";
-    /**コード情報コード名 : タケプロン・コプロ */
-    public static final String CODE_NAME_USERCD0028 = "USERCD0028";
-    /**コード情報コード名 : 抗潰瘍(PPI)市場('16.6) */
-    public static final String CODE_NAME_USERCD0029 = "USERCD0029";
-    /**コード情報コード名 : （４：未使用） */
-    public static final String CODE_NAME_USERCD0030 = "USERCD0030";
-    /**コード情報コード名 : インフル・セオリア */
-    public static final String CODE_NAME_USERCD0031 = "USERCD0031";
-    /**コード情報コード名 : インフル・あすか */
-    public static final String CODE_NAME_USERCD0032 = "USERCD0032";
-    /**コード情報コード名 : マーケティングＧ・Ｔ */
-    public static final String CODE_NAME_USERCD0033 = "USERCD0033";
-    /**コード情報コード名 : （８：未使用） */
-    public static final String CODE_NAME_USERCD0034 = "USERCD0034";
-    /**コード情報コード名 : セルタッチ・ベネット */
-    public static final String CODE_NAME_USERCD0035 = "USERCD0035";
-    /**コード情報コード名 : （１０：未使用） */
-    public static final String CODE_NAME_USERCD0036 = "USERCD0036";
-    /**コード情報コード名 :　入院診療計画 */
-    public static final String CODE_NAME_REWARD04 = "REWARD04";
-    /**コード情報コード名 :　院内感染防止対策 */
-    public static final String CODE_NAME_REWARD05 = "REWARD05";
-    /**コード情報コード名 :　地域連携小児夜間・休日診療料1 */
-    public static final String CODE_NAME_REWARD08 = "REWARD08";
-    /**コード情報コード名 :　小児入院医療管理料 */
-    public static final String CODE_NAME_REWARD09 = "REWARD09";
-    /**コード情報コード名 :　緩和ケア診療加算 */
-    public static final String CODE_NAME_REWARD18 = "REWARD18";
+    /**コード情報コード名 : 医療連携関係情報 */
+    public static final String CODE_NAME_TIEUP_LIST = "TIEUP_LIST";
+    /**コード情報コード名 : ユーザーコード */
+    public static final String CODE_NAME_USERCD_LIST = "USERCD_LIST";
+    /**コード情報コード名 :　診療報酬情報 */
+    public static final String CODE_NAME_REWARD_LIST = "REWARD_LIST";
     /**コード情報コード名 :　短期滞在手術基本料 */
     public static final String CODE_NAME_REWARD21 = "REWARD21";
-    /**コード情報コード名 :　在宅患者訪問診療料又は在総診 */
-    public static final String CODE_NAME_REWARD23 = "REWARD23";
-    /**コード情報コード名 :　生活習慣病指導管理料 */
-    public static final String CODE_NAME_REWARD25 = "REWARD25";
-    /**コード情報コード名 :　慢性疼痛疾患管理料 */
-    public static final String CODE_NAME_REWARD26 = "REWARD26";
     /**コード情報コード名 :　看護配置（有床診療所） */
     public static final String CODE_NAME_REWARD27 = "REWARD27";
     /**コード情報コード名 :　老人入院基本料 */
     public static final String CODE_NAME_REWARD29 = "REWARD29";
-    /**コード情報コード名 :　地域連携時間外診療(有無) */
-    public static final String CODE_NAME_REWARD35 = "REWARD35";
-    /**コード情報コード名 :　地域連携診療計画管理料 */
-    public static final String CODE_NAME_REWARD36 = "REWARD36";
-    /**コード情報コード名 :　地域連携診療計画退院時指導料 */
-    public static final String CODE_NAME_REWARD37 = "REWARD37";
-    /**コード情報コード名 :　病理診断料 */
-    public static final String CODE_NAME_REWARD44 = "REWARD44";
-    /**コード情報コード名 :　急性期入院加算 */
-    public static final String CODE_NAME_REWARD16 = "REWARD16";
-    /**コード情報コード名 :　急性期特定入院加算 */
-    public static final String CODE_NAME_REWARD17 = "REWARD17";
     /**コード情報コード名 : 対象区分 */
     public static final String CODE_NAME_HO_INS_TYPE = "HO_INS_TYPE";
     /**コード情報コード名 : ワクチン対象区分 */

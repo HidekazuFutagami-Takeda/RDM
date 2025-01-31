@@ -131,6 +131,9 @@ public class NF011Service extends BaseService {
         		indto.setReqJgiNo(loginInfo.getJgiNo());
 //        		indto.setReqBrCd(loginInfo.getBrCd());
 //        		indto.setReqDistCd(loginInfo.getDistCd());
+
+        		indto.setReqYmdhms("");
+        		indto.setReqStsNm("");
         	} else {
         		// 完全新規 ログイン情報から申請者セット
         		// TODO ログイン関連できてから確認

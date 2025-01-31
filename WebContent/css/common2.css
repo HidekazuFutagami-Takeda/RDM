@@ -70,6 +70,14 @@ TABLE.comPortalTable	/* 全画面用ポータル大枠 */
   border-color:#666666;
   padding : 1pt 1pt 1pt 1pt;
 }
+TABLE.comPortalTableBlue	/* 全画面用ポータル大枠 青背景 */
+{
+  margin-top:10pt;
+  width:540pt;
+  background-color:#D7EEFF;
+  border-color:#666666;
+  padding : 1pt 1pt 1pt 1pt;
+}
 TABLE.comPortalBodyTable		/* 全画面用ポータルボディー */
 {
   background-color: #999999;
@@ -687,6 +695,19 @@ TD.comFormTableItem#green		{ text-align : center; color : #006600; }
 TD.comFormTableItem#yellow		{ text-align : center; color : #999933; }
 TD.comFormTableItem#orange		{ text-align : center; color : #ff6600; }
 
+TD.comFormTableItemBlue				/* テーブル形式の各項目 青背景 */
+{
+  color : #000000;
+  background-color:#D7EEFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 0px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+}
+
 TD.comFormTableItemNf012Head	/* NF012 テーブル形式の見出し項目 */
 {
   color : #000000;
@@ -722,6 +743,15 @@ TABLE.comCustomTable	/* 全画面用ポータル大枠 */
   margin-top:10pt;
   width:540pt;
   background-color:#ffffff;
+  border-color:#666666;
+  padding : 1pt 1pt 1pt 1pt;
+}
+
+TABLE.comCustomTableBlue	/* 全画面用ポータル大枠 青背景 */
+{
+  margin-top:10pt;
+  width:540pt;
+  background-color:#D7EEFF;
   border-color:#666666;
   padding : 1pt 1pt 1pt 1pt;
 }

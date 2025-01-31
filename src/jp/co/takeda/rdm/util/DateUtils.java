@@ -369,4 +369,30 @@ public class DateUtils {
 	    }catch(Exception e){}
 	    return sdf.format(cd.getTime());
 	}
+
+    /**
+     * <pre>
+     * 日付チェック - 年＋月＋日の文字列が有効日付かどうかのチェック
+     *
+     * 機能：引数で指定された文字列が日付であることをチェックする。
+     * </pre>
+     *
+     * @since 0.0.1
+     * @param s
+     *            :String チェックする文字列
+     * @return boolean 処理結果 true:有効 false:無効
+     */
+    public static boolean isDate(String s) {
+    	if (s == null || s.length() != 8) {
+           return false;
+        }
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
+        try {
+        	sdf.parse(s);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

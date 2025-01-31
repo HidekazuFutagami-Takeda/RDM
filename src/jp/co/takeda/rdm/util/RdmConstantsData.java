@@ -401,11 +401,6 @@ public class RdmConstantsData {
     /** 担当変更システムトップメニュー:帳票名称 */
     public static final String JKR000C010_REPORT42_NM = "（ワクチン）";
 
-
-    /** 担当変更システムトップメニュー[リスト作成依頼]ボタン押下 : 戻るためのDTOセッション格納キー */
-    public static final String NC001_RETURN_DTO_KEY = "NC001_RETURN_DTO_KEY";
-
-
     // 2020.04.22 fsz ADD_START
     /** jrxmlファイル格納場所 */
     public static final String XML_FILE_AREA = "/oracle/jasper/";

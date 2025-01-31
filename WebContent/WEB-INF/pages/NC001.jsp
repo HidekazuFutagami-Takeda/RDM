@@ -10,8 +10,7 @@
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppMethods,
-      jp.co.takeda.rdm.util.RdmConstantsData,
-      jp.co.takeda.rdm.util.JkrConstantsData"
+      jp.co.takeda.rdm.util.RdmConstantsData"
   session="true"
   buffer="8kb"
   autoFlush="true"

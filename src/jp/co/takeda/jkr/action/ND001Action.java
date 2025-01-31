@@ -16,9 +16,9 @@ import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
-import jp.co.takeda.jkr.common.BaseAction;
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BeanUtil;
+import jp.co.takeda.rdm.common.BaseAction;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.jkr.dto.ND001DTO;
 import jp.co.takeda.jkr.service.ND001Service;
 import jp.co.takeda.rdm.util.JkrConstantsData;

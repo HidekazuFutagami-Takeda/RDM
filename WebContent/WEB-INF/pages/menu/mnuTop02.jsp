@@ -10,7 +10,7 @@
  * @author 日立　花
  */
 --%>
-<%@page import="jp.co.takeda.jkr.common.MainMenuData"%>
+<%@page import="jp.co.takeda.rdm.common.MainMenuData"%>
 <%@ page
   language="java"
   import="java.util.*,java.text.*"

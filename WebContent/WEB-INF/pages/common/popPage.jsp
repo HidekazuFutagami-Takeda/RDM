@@ -17,7 +17,7 @@
   errorPage="error/comError.jsp"
   isErrorPage="false"
   contentType="text/html;charset=UTF-8"
-  import="jp.co.takeda.jkr.common.LoginInfo,jp.co.takeda.jkr.common.BaseInfoHolder"
+  import="jp.co.takeda.rdm.common.LoginInfo,jp.co.takeda.rdm.common.BaseInfoHolder"
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 

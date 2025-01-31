@@ -1,4 +1,4 @@
-package jp.co.takeda.jkr.common;
+package jp.co.takeda.rdm.common;
 
 import java.util.ArrayList;
 import java.util.List;

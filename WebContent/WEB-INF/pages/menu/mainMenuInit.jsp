@@ -14,11 +14,11 @@
  * @author
  */
 --%>
-<%@page import="jp.co.takeda.jkr.common.BaseInfoHolder"%>
-<%@page import="jp.co.takeda.jkr.common.LoginInfo"%>
+<%@page import="jp.co.takeda.rdm.common.BaseInfoHolder"%>
+<%@page import="jp.co.takeda.rdm.common.LoginInfo"%>
 <%@ page
   language="java"
-  import="java.util.*,java.text.*,jp.co.takeda.rdm.util.AppConstant,jp.co.takeda.jkr.common.MainMenuData"
+  import="java.util.*,java.text.*,jp.co.takeda.rdm.util.AppConstant,jp.co.takeda.rdm.common.MainMenuData"
   session="true"
   buffer="8kb"
   autoFlush="true"

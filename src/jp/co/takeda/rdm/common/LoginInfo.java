@@ -1,4 +1,4 @@
-package jp.co.takeda.jkr.common;
+package jp.co.takeda.rdm.common;
 
 import java.io.Serializable;
 import java.util.Map;

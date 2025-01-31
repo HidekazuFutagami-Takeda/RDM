@@ -8,8 +8,8 @@
  * @author
  */
 --%>
-<%@page import="jp.co.takeda.jkr.common.AuthorizationServiceData"%>
-<%@page import="jp.co.takeda.jkr.common.BaseInfoHolder"%>
+<%@page import="jp.co.takeda.rdm.common.AuthorizationServiceData"%>
+<%@page import="jp.co.takeda.rdm.common.BaseInfoHolder"%>
 <%@ page
   language="java"
   import="java.util.*,java.text.*"
@@ -22,7 +22,7 @@
   info="comRelInvalidLogin"
   contentType="text/html;charset=UTF-8"
 %>
-<%@ page import="jp.co.takeda.jkr.common.LoginInfo" %>
+<%@ page import="jp.co.takeda.rdm.common.LoginInfo" %>
 <%
 	String directExecType = null;
   String returnUrl      = null;

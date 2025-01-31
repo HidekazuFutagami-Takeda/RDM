@@ -26,9 +26,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import jp.co.takeda.jkr.common.BaseInfoHolder;
-import jp.co.takeda.jkr.common.LoginInfo;
-import jp.co.takeda.jkr.service.CommonControlService;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.service.CommonControlService;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.JkrConstantsData;
 

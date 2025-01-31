@@ -20,7 +20,7 @@
   info="comRelInvalidLogin"
   contentType="text/html;charset=UTF-8"
 %>
-<%@ page import="jp.co.takeda.jkr.common.LoginInfo" %>
+<%@ page import="jp.co.takeda.rdm.common.LoginInfo" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
   String directExecType = null;

@@ -8,9 +8,9 @@ package jp.co.takeda.jkr.action;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.common.BaseAction;
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BeanUtil;
+import jp.co.takeda.rdm.common.BaseAction;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BeanUtil;
 
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;

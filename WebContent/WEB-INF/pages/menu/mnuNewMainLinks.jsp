@@ -13,7 +13,7 @@
   language="java"
   import="java.util.*,java.text.*,
       jp.co.takeda.rdm.util.AppConstant,
-      jp.co.takeda.jkr.common.MainMenuData"
+      jp.co.takeda.rdm.common.MainMenuData"
   session="true"
   buffer="8kb"
   autoFlush="true"

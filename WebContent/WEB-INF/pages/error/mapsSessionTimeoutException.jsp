@@ -8,8 +8,8 @@
  * @author
  */
 --%>
-<%@page import="jp.co.takeda.jkr.common.LoginInfo"%>
-<%@page import="jp.co.takeda.jkr.common.BaseInfoHolder"%>
+<%@page import="jp.co.takeda.rdm.common.LoginInfo"%>
+<%@page import="jp.co.takeda.rdm.common.BaseInfoHolder"%>
 <%@ page
   language="java"
   import="java.util.*,java.text.*"
@@ -22,7 +22,7 @@
   info="comRelInvalidLogin"
   contentType="text/html;charset=UTF-8"
 %>
-<%@ page import="jp.co.takeda.jkr.common.LoginInfo" %>
+<%@ page import="jp.co.takeda.rdm.common.LoginInfo" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
   String directExecType = null;

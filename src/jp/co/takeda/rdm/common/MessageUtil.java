@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.common;
+package jp.co.takeda.rdm.common;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,7 +17,7 @@ import org.springframework.context.support.MessageSourceAccessor;
  */
 @Named
 public final class MessageUtil {
-    
+
     /**
      * ログメッセージの格納クラス
      * @generated

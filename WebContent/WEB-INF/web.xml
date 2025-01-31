@@ -50,7 +50,7 @@
     <!-- ThreadLocalの管理 -->
     <filter>
         <filter-name>ControlThreadLocalFilter</filter-name>
-        <filter-class>jp.co.takeda.jkr.common.ControlThreadLocalFilter</filter-class>
+        <filter-class>jp.co.takeda.rdm.common.ControlThreadLocalFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>ControlThreadLocalFilter</filter-name>

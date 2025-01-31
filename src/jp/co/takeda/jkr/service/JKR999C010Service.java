@@ -7,8 +7,8 @@ package jp.co.takeda.jkr.service;
 
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BaseService;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseService;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -24,11 +24,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BaseInfoHolder;
-import jp.co.takeda.jkr.common.BaseService;
-import jp.co.takeda.jkr.common.BeanUtil;
-import jp.co.takeda.jkr.common.LoginInfo;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NC001DTO;
 import jp.co.takeda.rdm.entity.SRdmMParamMstEntity;
 import jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity;

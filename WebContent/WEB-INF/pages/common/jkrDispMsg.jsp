@@ -8,7 +8,7 @@
  * @author 日立　花
  */
 --%>
-<%@page import="jp.co.takeda.jkr.common.LoginInfo"%>
+<%@page import="jp.co.takeda.rdm.common.LoginInfo"%>
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant"

@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.service;
+package jp.co.takeda.rdm.service;
 
 import java.sql.CallableStatement;
 import java.sql.SQLException;
@@ -15,12 +15,12 @@ import java.util.Map;
 
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.common.AuthorizationServiceData;
-import jp.co.takeda.jkr.common.BaseInfoHolder;
-import jp.co.takeda.jkr.common.BaseService;
-import jp.co.takeda.jkr.common.BeanUtil;
-import jp.co.takeda.jkr.common.LoginInfo;
-import jp.co.takeda.jkr.common.MainMenuData;
+import jp.co.takeda.rdm.common.AuthorizationServiceData;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.common.MainMenuData;
 import jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity;
 import jp.co.takeda.rdm.entity.MRdmFwTransitionEntity;
 import jp.co.takeda.rdm.entity.RdmMsgMstEntity;

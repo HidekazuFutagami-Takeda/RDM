@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.common;
+package jp.co.takeda.rdm.common;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -12,7 +12,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 import jp.co.takeda.rdm.exception.InvalidRequestException;
-import jp.co.takeda.jkr.service.CommonControlService;
+import jp.co.takeda.rdm.service.CommonControlService;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

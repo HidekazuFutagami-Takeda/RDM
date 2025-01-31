@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.common;
+package jp.co.takeda.rdm.common;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,22 +28,22 @@ import jp.co.takeda.rdm.exception.UpdateAccessException;
  * アプリケーション全体で同一である必要がある（DTOと合わせる）。<br>
  * 以下に本クラスの指定方法を示す。<br>
  * SpringFrameworkの定義ファイルに以下のように指定する。（以下はサンプル）<br>
- * 
+ *
  * <pre>
- * &lt;bean id="updateInterceptor" class="jp.co.takeda.jkr.common.UpdateAccessIntercepter"&gt;
+ * &lt;bean id="updateInterceptor" class="jp.co.takeda.rdm.common.UpdateAccessIntercepter"&gt;
  *   &lt;property name="selectForUpdateMethodName" value="SelectForUpdateを行うDAOのメソッドの名前"/&gt;
  *   &lt;property name="updateDateGetterName" value="DTO,Entityクラスから更新日付を取得するメソッドの名前"/&gt;
  * &lt;/bean&gt;
  * </pre>
- * 
+ *
  * <br>
  * 本クラスを適用するDAOクラスを指定する。<br>
- * 
+ *
  * <pre>
  * &lt;aop:advisor pointcut="execution(* jp.co.XXXX.dao..*.update*(..))"  advice-ref="updateInterceptor"/&gt;
  * &lt;aop:advisor pointcut="execution(* jp.co.XXXX.dao..*.delete*(..))"  advice-ref="updateInterceptor"/&gt;
  * </pre>
- * 
+ *
  * <br>
  * @generated
  */
@@ -54,13 +54,13 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
      * @generated
      */
     protected final Log logger = LogFactory.getLog(this.getClass());
-    
+
     /**
      * SelectForUpdateのSQLを実行するDAOのメソッド名(applicationContextで設定する。）
      * @generated
      */
     private String selectForUpdateMethodName;
-    
+
     /**
      * 更新日付を取得する際のメソッド名(applicationContextで設定する。）
      * @generated
@@ -69,7 +69,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * SelectForUpdateのSQLを実行するDAOのメソッド名を取得する (値は、applicationContextで設定する。）
-     * 
+     *
      * @return DAOでSelectForUpdateのSQLを実行するメソッド名
      * @generated
      */
@@ -79,7 +79,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * SelectForUpdateのSQLを実行するDAOのメソッド名を格納する （値は、applicationContextで設定する。）
-     * 
+     *
      * @param selectForUpdateMethodName SelectForUpdateのSQLを実行するDAOのメソッド名
      * @generated
      */
@@ -89,7 +89,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 更新日付を取得する際のメソッド名を取得する (値は、applicationContextで設定する。）
-     * 
+     *
      * @return 更新日付を取得する際のメソッド名
      * @generated
      */
@@ -99,7 +99,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 更新日付を取得する際のメソッド名を格納する （値は、applicationContextで設定する。）
-     * 
+     *
      * @param updateDateGetterName 更新日付を取得する際のメソッド名
      * @generated
      */
@@ -110,7 +110,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
     /**
      * DAO実行前に、該当するselect for update文のDAOを呼び出し、更新日付が同じかチェックする。<br>
      * 同じ場合、指定したDAOを呼び出す。<br>
-     * 
+     *
      * @param methodInvocation MethodInvocation
      * @return DAO実行結果
      * @throws DataExclusiveException 更新日付が不一致時の実行時例外。
@@ -190,7 +190,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 引数で渡されたDTOの情報とテーブルから取得したDTOとを比較する。 （実際に動作するメソッドは、データのデータ型により異なる。）
-     * 
+     *
      * @param parameterDto 引数で渡されたDTO
      * @param resultDto テーブルから取得したDTO
      * @return true：更新日付が同じ。false：更新日付が同じではない。
@@ -208,7 +208,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 引数で渡されたDTOの情報とテーブルから取得したDTOとを比較する。 （データ型の振り分けメソッド）
-     * 
+     *
      * @param parameterDto 引数で渡されたDTO
      * @param resultDto テーブルから取得したDTO
      * @param propertyGetterName DTOからデータを取得する際のメソッド
@@ -258,7 +258,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 引数で渡されたDTOの情報とテーブルから取得したDTOとを比較する。 （データ型がString型の場合）
-     * 
+     *
      * @param parameterDto 引数で渡されたDTO
      * @param resultDto テーブルから取得したDTO
      * @param propertyGetterName DTOからデータを取得する際のメソッド
@@ -311,7 +311,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 引数で渡されたDTOの情報とテーブルから取得したDTOとを比較する。 （データ型がDate型の場合）
-     * 
+     *
      * @param parameterDto 引数で渡されたDTO
      * @param resultDto テーブルから取得したDTO
      * @param propertyGetterName DTOからデータを取得する際のメソッド
@@ -364,7 +364,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 引数で渡されたDTOの情報とテーブルから取得したDTOとを比較する。 （データ型がTimestamp型の場合）
-     * 
+     *
      * @param parameterDto 引数で渡されたDTO
      * @param resultDto テーブルから取得したDTO
      * @param propertyGetterName DTOからデータを取得する際のメソッド
@@ -419,7 +419,7 @@ public class UpdateAccessIntercepter implements MethodInterceptor {
 
     /**
      * 引数で渡されたDTOの情報とテーブルから取得したDTOとを比較する。 （データ型がString型・Date型以外の場合）
-     * 
+     *
      * @param parameterDto 引数で渡されたDTO
      * @param resultDto テーブルから取得したDTO
      * @param propertyGetterName DTOからデータを取得する際のメソッド

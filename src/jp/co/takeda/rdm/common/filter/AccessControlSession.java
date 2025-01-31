@@ -25,9 +25,9 @@ import org.apache.tomcat.util.codec.binary.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import jp.co.takeda.jkr.common.BaseInfoHolder;
-import jp.co.takeda.jkr.common.LoginInfo;
-import jp.co.takeda.jkr.service.CommonControlService;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.service.CommonControlService;
 import jp.co.takeda.rdm.util.AppConstant;
 
 /**

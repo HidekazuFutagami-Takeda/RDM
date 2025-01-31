@@ -37,7 +37,7 @@
     </bean>
 
     <aop:config proxy-target-class="true">
-        <aop:advisor pointcut="execution(* jp.co.takeda.jkr.service.*.*(..)) or execution(* jp.co.takeda.jkr.common.DAO.*(..))" advice-ref="debugInterceptor"/>
+        <aop:advisor pointcut="execution(* jp.co.takeda.rdm.service.*.*(..)) or execution(* jp.co.takeda.rdm.common.DAO.*(..))" advice-ref="debugInterceptor"/>
     </aop:config>
 
     <beans profile="product">

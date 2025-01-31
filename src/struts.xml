@@ -18,7 +18,7 @@
             <interceptor name="noCache" class="jp.co.takeda.rdm.common.NoCacheInterceptor"/>
             <interceptor name="checkExtension" class="jp.co.takeda.rdm.common.CheckExtensionInterceptor"/>
             <interceptor name="loginAuth" class="jp.co.takeda.rdm.common.LoginAuthInterceptor"/>
-            <interceptor name="loginInfoAndMenuInit" class="jp.co.takeda.jkr.common.LoginInfoAndMenuInitInterceptor"/>
+            <interceptor name="loginInfoAndMenuInit" class="jp.co.takeda.rdm.common.LoginInfoAndMenuInitInterceptor"/>
             <interceptor name="transitionAuth" class="jp.co.takeda.rdm.common.TransitionAuthInterceptor"/>
             <interceptor-stack name="custom-defaultStack">
                 <interceptor-ref name="resources" />

@@ -3,13 +3,13 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.common;
+package jp.co.takeda.rdm.common;
 
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jp.co.takeda.jkr.service.CommonControlService;
+import jp.co.takeda.rdm.service.CommonControlService;
 import jp.co.takeda.rdm.util.AppConstant;
 
 import org.apache.struts2.StrutsStatics;

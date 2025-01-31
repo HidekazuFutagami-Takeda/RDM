@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.action;
+package jp.co.takeda.rdm.action;
 
 import java.util.ArrayList;
 

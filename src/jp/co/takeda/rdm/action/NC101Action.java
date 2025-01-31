@@ -3,52 +3,61 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.action;
+package jp.co.takeda.rdm.action;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BeanUtil;
+
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
-import jp.co.takeda.jkr.service.JKR999C010Service;
+
+import jp.co.takeda.rdm.service.NC101Service;
+
 import org.springframework.context.annotation.Scope;
 
-import jp.co.takeda.jkr.dto.JKR999C010DTO;
+import jp.co.takeda.rdm.dto.NC101DTO;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("jKR999C010Action")
+@Named("nC101Action")
 @Scope("request")
-public class JKR999C010Action extends BaseAction<JKR999C010DTO> {
+public class NC101Action extends BaseAction<NC101DTO> {
 
     /**
      * シリアルバージョンID
      * @generated
      */
     private static final long serialVersionUID = 1L;
-    
+
     /**
      * Serviceオブジェクト
      * @generated
      */
     @Inject
-    private JKR999C010Service jKR999C010Service;
+    private NC101Service nC101Service;
 
     // START UOC
-
+    /** 登録完了共通画面へのパラメータ設定 */
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
     // END UOC
 
     /**
      * コンストラクタ
      * @generated
      */
-    public JKR999C010Action() {
-        dto = new JKR999C010DTO();
+    public NC101Action() {
+        dto = new NC101DTO();
     }
 
     /**
@@ -93,7 +102,7 @@ public class JKR999C010Action extends BaseAction<JKR999C010DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = jKR999C010Service.init(dto);
+        BaseDTO outdto = nC101Service.init(dto);
         return initNext(outdto);
     }
 
@@ -113,7 +122,10 @@ public class JKR999C010Action extends BaseAction<JKR999C010DTO> {
      */
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
-        outdto.setForward("exception");
+        //前画面から受け渡されたパラメータを設定する
+        if (paramDto != null) {
+            BeanUtil.copyProperties(dto, paramDto);
+        }
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();

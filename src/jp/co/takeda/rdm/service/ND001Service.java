@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.service;
+package jp.co.takeda.rdm.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -29,7 +29,7 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.jkr.dto.ND001DTO;
+import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.entity.SRdmMParamMstEntity;
 import jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity;
 import jp.co.takeda.rdm.exception.UnauthorizedException;

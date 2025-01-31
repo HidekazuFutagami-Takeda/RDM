@@ -11,7 +11,7 @@
 --%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="jp.co.takeda.rdm.util.StringUtils"%>
-<%@page import="jp.co.takeda.jkr.dto.JKR090C010DTO"%>
+<%@page import="jp.co.takeda.rdm.dto.JKR090C010DTO"%>
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal"

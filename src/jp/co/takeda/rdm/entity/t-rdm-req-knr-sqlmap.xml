@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_rdm_req_knr">
+    <resultMap id="seqRdmReqIdResultMap" type="jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
+    <resultMap id="tRdmReqKnrResultMap" type="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="REQ_TYPE" property="reqType"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="TEKIYO_YMD" property="tekiyoYmd"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_SHZ" property="reqShzNm"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="REQ_MEMO" property="reqMemo"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="REQ_KNG_KBN" property="reqKngKbn"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+        <result column="SHN_BR_CODE" property="shnBrCode"/>
+        <result column="SHN_DIST_CODE" property="shnDistCode"/>
+        <result column="SHN_SHZ" property="shnShz"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_BR_CODE" property="aprBrCode"/>
+        <result column="APR_DIST_CODE" property="aprDistCode"/>
+        <result column="APR_SHZ" property="aprShz"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="APR_HRY_FLG" property="aprHryFlg"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMNET" property="aprCommnet"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="UPD_MST_YMD" property="updMstYmd"/>
+        <result column="FB_REQ_FLG" property="fbReqFlg"/>
+        <result column="FB_REQ_ID" property="fbReqId"/>
+        <result column="FB_ANS_ID" property="fbAnsId"/>
+        <result column="FB_DATA_TYPE" property="fbDataType"/>
+        <result column="FB_REC_ID" property="fbRecId"/>
+        <result column="FB_UPD_KBN" property="fbUpdKbn"/>
+        <result column="FB_PRC_TYPE" property="fbPrcType"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+        <select id="issueReqId" parameterType="jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity" resultMap="seqRdmReqIdResultMap">
+        SELECT
+            TO_CHAR(SYSDATE,'YYMMDD') || '-' || LPAD(SEQ_RDM_REQ_ID.NEXTVAL,6,'0') AS REQ_ID
+		FROM
+            DUAL
+    </select>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+        SELECT
+            REQ_ID, REQ_CHL, REQ_TYPE, REQ_STS, TEKIYO_YMD, REQ_BR_CODE, REQ_DIST_CODE, REQ_SHZ, REQ_JGI_NO, REQ_JGI_NAME, REQ_YMDHMS, REQ_MEMO, REQ_COMMENT, REQ_KNG_KBN, SHN_FLG, SHN_BR_CODE, SHN_DIST_CODE, SHN_SHZ, SHN_JGI_NO, SHN_SHA_ID, SHN_YMDHMS, APR_BR_CODE, APR_DIST_CODE, APR_SHZ, APR_JGI_NO, APR_SHA_ID, APR_YMDHMS, APR_HRY_FLG, APR_MEMO, APR_COMMNET, INS_NO, DOC_NO, UPD_MST_YMD, FB_REQ_FLG, FB_REQ_ID, FB_ANS_ID, FB_DATA_TYPE, FB_REC_ID, FB_UPD_KBN, FB_PRC_TYPE, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_REQ_KNR
+        WHERE
+            REQ_ID = #{reqId}
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+        SELECT
+            REQ_ID, REQ_CHL, REQ_TYPE, REQ_STS, TEKIYO_YMD, REQ_BR_CODE, REQ_DIST_CODE, REQ_SHZ, REQ_JGI_NO, REQ_JGI_NAME, REQ_YMDHMS, REQ_MEMO, REQ_COMMENT, REQ_KNG_KBN, SHN_FLG, SHN_BR_CODE, SHN_DIST_CODE, SHN_SHZ, SHN_JGI_NO, SHN_SHA_ID, SHN_YMDHMS, APR_BR_CODE, APR_DIST_CODE, APR_SHZ, APR_JGI_NO, APR_SHA_ID, APR_YMDHMS, APR_HRY_FLG, APR_MEMO, APR_COMMNET, INS_NO, DOC_NO, UPD_MST_YMD, FB_REQ_FLG, FB_REQ_ID, FB_ANS_ID, FB_DATA_TYPE, FB_REC_ID, FB_UPD_KBN, FB_PRC_TYPE, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_REQ_KNR
+        WHERE
+            REQ_ID = #{reqId}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+        SELECT
+            REQ_ID, REQ_CHL, REQ_TYPE, REQ_STS, TEKIYO_YMD, REQ_BR_CODE, REQ_DIST_CODE, REQ_SHZ, REQ_JGI_NO, REQ_JGI_NAME, REQ_YMDHMS, REQ_MEMO, REQ_COMMENT, REQ_KNG_KBN, SHN_FLG, SHN_BR_CODE, SHN_DIST_CODE, SHN_SHZ, SHN_JGI_NO, SHN_SHA_ID, SHN_YMDHMS, APR_BR_CODE, APR_DIST_CODE, APR_SHZ, APR_JGI_NO, APR_SHA_ID, APR_YMDHMS, APR_HRY_FLG, APR_MEMO, APR_COMMNET, INS_NO, DOC_NO, UPD_MST_YMD, FB_REQ_FLG, FB_REQ_ID, FB_ANS_ID, FB_DATA_TYPE, FB_REC_ID, FB_UPD_KBN, FB_PRC_TYPE, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            T_RDM_REQ_KNR
+        ORDER BY REQ_ID
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+        SELECT
+            REQ_ID, REQ_CHL, REQ_TYPE, REQ_STS, TEKIYO_YMD, REQ_BR_CODE, REQ_DIST_CODE, REQ_SHZ, REQ_JGI_NO, REQ_JGI_NAME, REQ_YMDHMS, REQ_MEMO, REQ_COMMENT, REQ_KNG_KBN, SHN_FLG, SHN_BR_CODE, SHN_DIST_CODE, SHN_SHZ, SHN_JGI_NO, SHN_SHA_ID, SHN_YMDHMS, APR_BR_CODE, APR_DIST_CODE, APR_SHZ, APR_JGI_NO, APR_SHA_ID, APR_YMDHMS, APR_HRY_FLG, APR_MEMO, APR_COMMNET, INS_NO, DOC_NO, UPD_MST_YMD, FB_REQ_FLG, FB_REQ_ID, FB_ANS_ID, FB_DATA_TYPE, FB_REC_ID, FB_UPD_KBN, FB_PRC_TYPE, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            T_RDM_REQ_KNR
+        <where>
+			<if test="reqId != null">AND REQ_ID = #{reqId}</if>
+			<if test="reqChl != null">AND REQ_CHL = #{reqChl}</if>
+			<if test="reqType != null">AND REQ_TYPE = #{reqType}</if>
+			<if test="reqStsCd != null">AND REQ_STS = #{reqStsCd}</if>
+			<if test="tekiyoYmd != null">AND TEKIYO_YMD = #{tekiyoYmd}</if>
+			<if test="reqBrCd != null">AND REQ_BR_CODE = #{reqBrCd}</if>
+			<if test="reqDistCd != null">AND REQ_DIST_CODE = #{reqDistCd}</if>
+			<if test="reqShzNm != null">AND REQ_SHZ = #{reqShzNm}</if>
+			<if test="reqJgiNo != null">AND REQ_JGI_NO = #{reqJgiNo}</if>
+			<if test="reqJgiName != null">AND REQ_JGI_NAME = #{reqJgiName}</if>
+			<if test="reqYmdhms != null">AND REQ_YMDHMS = #{reqYmdhms}</if>
+			<if test="reqMemo != null">AND REQ_MEMO = #{reqMemo}</if>
+			<if test="reqComment != null">AND REQ_COMMENT = #{reqComment}</if>
+			<if test="reqKngKbn != null">AND REQ_KNG_KBN = #{reqKngKbn}</if>
+			<if test="shnFlg != null">AND SHN_FLG = #{shnFlg}</if>
+			<if test="shnBrCode != null">AND SHN_BR_CODE = #{shnBrCode}</if>
+			<if test="shnDistCode != null">AND SHN_DIST_CODE = #{shnDistCode}</if>
+			<if test="shnShz != null">AND SHN_SHZ = #{shnShz}</if>
+			<if test="shnJgiNo != null">AND SHN_JGI_NO = #{shnJgiNo}</if>
+			<if test="shnShaName != null">AND SHN_SHA_ID = #{shnShaName}</if>
+			<if test="shnYmdhms != null">AND SHN_YMDHMS = #{shnYmdhms}</if>
+			<if test="aprBrCode != null">AND APR_BR_CODE = #{aprBrCode}</if>
+			<if test="aprDistCode != null">AND APR_DIST_CODE = #{aprDistCode}</if>
+			<if test="aprShz != null">AND APR_SHZ = #{aprShz}</if>
+			<if test="aprJgiNo != null">AND APR_JGI_NO = #{aprJgiNo}</if>
+			<if test="aprShaName != null">AND APR_SHA_ID = #{aprShaName}</if>
+			<if test="aprYmdhms != null">AND APR_YMDHMS = #{aprYmdhms}</if>
+			<if test="aprHryFlg != null">AND APR_HRY_FLG = #{aprHryFlg}</if>
+			<if test="aprMemo != null">AND APR_MEMO = #{aprMemo}</if>
+			<if test="aprCommnet != null">AND APR_COMMNET = #{aprCommnet}</if>
+			<if test="insNo != null">AND INS_NO = #{insNo}</if>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="updMstYmd != null">AND UPD_MST_YMD = #{updMstYmd}</if>
+			<if test="fbReqFlg != null">AND FB_REQ_FLG = #{fbReqFlg}</if>
+			<if test="fbReqId != null">AND FB_REQ_ID = #{fbReqId}</if>
+			<if test="fbAnsId != null">AND FB_ANS_ID = #{fbAnsId}</if>
+			<if test="fbDataType != null">AND FB_DATA_TYPE = #{fbDataType}</if>
+			<if test="fbRecId != null">AND FB_REC_ID = #{fbRecId}</if>
+			<if test="fbUpdKbn != null">AND FB_UPD_KBN = #{fbUpdKbn}</if>
+			<if test="fbPrcType != null">AND FB_PRC_TYPE = #{fbPrcType}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            T_RDM_REQ_KNR
+        <where>
+			<if test="reqId != null">AND REQ_ID = #{reqId}</if>
+			<if test="reqChl != null">AND REQ_CHL = #{reqChl}</if>
+			<if test="reqType != null">AND REQ_TYPE = #{reqType}</if>
+			<if test="reqStsCd != null">AND REQ_STS = #{reqStsCd}</if>
+			<if test="tekiyoYmd != null">AND TEKIYO_YMD = #{tekiyoYmd}</if>
+			<if test="reqBrCd != null">AND REQ_BR_CODE = #{reqBrCd}</if>
+			<if test="reqDistCd != null">AND REQ_DIST_CODE = #{reqDistCd}</if>
+			<if test="reqShzNm != null">AND REQ_SHZ = #{reqShzNm}</if>
+			<if test="reqJgiNo != null">AND REQ_JGI_NO = #{reqJgiNo}</if>
+			<if test="reqJgiName != null">AND REQ_JGI_NAME = #{reqJgiName}</if>
+			<if test="reqYmdhms != null">AND REQ_YMDHMS = #{reqYmdhms}</if>
+			<if test="reqMemo != null">AND REQ_MEMO = #{reqMemo}</if>
+			<if test="reqComment != null">AND REQ_COMMENT = #{reqComment}</if>
+			<if test="reqKngKbn != null">AND REQ_KNG_KBN = #{reqKngKbn}</if>
+			<if test="shnFlg != null">AND SHN_FLG = #{shnFlg}</if>
+			<if test="shnBrCode != null">AND SHN_BR_CODE = #{shnBrCode}</if>
+			<if test="shnDistCode != null">AND SHN_DIST_CODE = #{shnDistCode}</if>
+			<if test="shnShz != null">AND SHN_SHZ = #{shnShz}</if>
+			<if test="shnJgiNo != null">AND SHN_JGI_NO = #{shnJgiNo}</if>
+			<if test="shnShaName != null">AND SHN_SHA_ID = #{shnShaName}</if>
+			<if test="shnYmdhms != null">AND SHN_YMDHMS = #{shnYmdhms}</if>
+			<if test="aprBrCode != null">AND APR_BR_CODE = #{aprBrCode}</if>
+			<if test="aprDistCode != null">AND APR_DIST_CODE = #{aprDistCode}</if>
+			<if test="aprShz != null">AND APR_SHZ = #{aprShz}</if>
+			<if test="aprJgiNo != null">AND APR_JGI_NO = #{aprJgiNo}</if>
+			<if test="aprShaName != null">AND APR_SHA_ID = #{aprShaName}</if>
+			<if test="aprYmdhms != null">AND APR_YMDHMS = #{aprYmdhms}</if>
+			<if test="aprHryFlg != null">AND APR_HRY_FLG = #{aprHryFlg}</if>
+			<if test="aprMemo != null">AND APR_MEMO = #{aprMemo}</if>
+			<if test="aprCommnet != null">AND APR_COMMNET = #{aprCommnet}</if>
+			<if test="insNo != null">AND INS_NO = #{insNo}</if>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="updMstYmd != null">AND UPD_MST_YMD = #{updMstYmd}</if>
+			<if test="fbReqFlg != null">AND FB_REQ_FLG = #{fbReqFlg}</if>
+			<if test="fbReqId != null">AND FB_REQ_ID = #{fbReqId}</if>
+			<if test="fbAnsId != null">AND FB_ANS_ID = #{fbAnsId}</if>
+			<if test="fbDataType != null">AND FB_DATA_TYPE = #{fbDataType}</if>
+			<if test="fbRecId != null">AND FB_REC_ID = #{fbRecId}</if>
+			<if test="fbUpdKbn != null">AND FB_UPD_KBN = #{fbUpdKbn}</if>
+			<if test="fbPrcType != null">AND FB_PRC_TYPE = #{fbPrcType}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        INSERT INTO
+            T_RDM_REQ_KNR(REQ_ID, REQ_CHL, REQ_TYPE, REQ_STS, TEKIYO_YMD, REQ_BR_CODE, REQ_DIST_CODE, REQ_SHZ, REQ_JGI_NO, REQ_JGI_NAME, REQ_YMDHMS, REQ_MEMO, REQ_COMMENT, REQ_KNG_KBN, SHN_FLG, SHN_BR_CODE, SHN_DIST_CODE, SHN_SHZ, SHN_JGI_NO, SHN_SHA_ID, SHN_YMDHMS, APR_BR_CODE, APR_DIST_CODE, APR_SHZ, APR_JGI_NO, APR_SHA_ID, APR_YMDHMS, APR_HRY_FLG, APR_MEMO, APR_COMMNET, INS_NO, DOC_NO, UPD_MST_YMD, FB_REQ_FLG, FB_REQ_ID, FB_ANS_ID, FB_DATA_TYPE, FB_REC_ID, FB_UPD_KBN, FB_PRC_TYPE, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID)
+        VALUES
+            (#{reqId}, #{reqChl}, #{reqType}, #{reqStsCd}, #{tekiyoYmd}, #{reqBrCd}, #{reqDistCd}, #{reqShzNm}, #{reqJgiNo}, #{reqJgiName}, #{reqYmdhms}, #{reqMemo}, #{reqComment}, #{reqKngKbn}, #{shnFlg}, #{shnBrCode}, #{shnDistCode}, #{shnShz}, #{shnJgiNo}, #{shnShaName}, #{shnYmdhms}, #{aprBrCode}, #{aprDistCode}, #{aprShz}, #{aprJgiNo}, #{aprShaName}, #{aprYmdhms}, #{aprHryFlg}, #{aprMemo}, #{aprCommnet}, #{insNo}, #{docNo}, #{updMstYmd}, #{fbReqFlg}, #{fbReqId}, #{fbAnsId}, #{fbDataType}, #{fbRecId}, #{fbUpdKbn}, #{fbPrcType}, #{insShaYmd}, #{insShaId}, #{updShaYmd}, #{updShaId})
+    </insert>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        INSERT INTO
+            T_RDM_REQ_KNR(<trim suffixOverrides=",">REQ_ID,<if test="reqChl != null">REQ_CHL,</if><if test="reqType != null">REQ_TYPE,</if><if test="reqStsCd != null">REQ_STS,</if><if test="tekiyoYmd != null">TEKIYO_YMD,</if><if test="reqBrCd != null">REQ_BR_CODE,</if><if test="reqDistCd != null">REQ_DIST_CODE,</if><if test="reqShzNm != null">REQ_SHZ,</if><if test="reqJgiNo != null">REQ_JGI_NO,</if><if test="reqJgiName != null">REQ_JGI_NAME,</if><if test="reqYmdhms != null">REQ_YMDHMS,</if><if test="reqMemo != null">REQ_MEMO,</if><if test="reqComment != null">REQ_COMMENT,</if><if test="reqKngKbn != null">REQ_KNG_KBN,</if><if test="shnFlg != null">SHN_FLG,</if><if test="shnBrCode != null">SHN_BR_CODE,</if><if test="shnDistCode != null">SHN_DIST_CODE,</if><if test="shnShz != null">SHN_SHZ,</if><if test="shnJgiNo != null">SHN_JGI_NO,</if><if test="shnShaName != null">SHN_SHA_ID,</if><if test="shnYmdhms != null">SHN_YMDHMS,</if><if test="aprBrCode != null">APR_BR_CODE,</if><if test="aprDistCode != null">APR_DIST_CODE,</if><if test="aprShz != null">APR_SHZ,</if><if test="aprJgiNo != null">APR_JGI_NO,</if><if test="aprShaName != null">APR_SHA_ID,</if><if test="aprYmdhms != null">APR_YMDHMS,</if><if test="aprHryFlg != null">APR_HRY_FLG,</if><if test="aprMemo != null">APR_MEMO,</if><if test="aprCommnet != null">APR_COMMNET,</if><if test="insNo != null">INS_NO,</if><if test="docNo != null">DOC_NO,</if><if test="updMstYmd != null">UPD_MST_YMD,</if><if test="fbReqFlg != null">FB_REQ_FLG,</if><if test="fbReqId != null">FB_REQ_ID,</if><if test="fbAnsId != null">FB_ANS_ID,</if><if test="fbDataType != null">FB_DATA_TYPE,</if><if test="fbRecId != null">FB_REC_ID,</if><if test="fbUpdKbn != null">FB_UPD_KBN,</if><if test="fbPrcType != null">FB_PRC_TYPE,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{reqId},<if test="reqChl != null">#{reqChl},</if><if test="reqType != null">#{reqType},</if><if test="reqStsCd != null">#{reqStsCd},</if><if test="tekiyoYmd != null">#{tekiyoYmd},</if><if test="reqBrCd != null">#{reqBrCd},</if><if test="reqDistCd != null">#{reqDistCd},</if><if test="reqShzNm != null">#{reqShzNm},</if><if test="reqJgiNo != null">#{reqJgiNo},</if><if test="reqJgiName != null">#{reqJgiName},</if><if test="reqYmdhms != null">#{reqYmdhms},</if><if test="reqMemo != null">#{reqMemo},</if><if test="reqComment != null">#{reqComment},</if><if test="reqKngKbn != null">#{reqKngKbn},</if><if test="shnFlg != null">#{shnFlg},</if><if test="shnBrCode != null">#{shnBrCode},</if><if test="shnDistCode != null">#{shnDistCode},</if><if test="shnShz != null">#{shnShz},</if><if test="shnJgiNo != null">#{shnJgiNo},</if><if test="shnShaName != null">#{shnShaName},</if><if test="shnYmdhms != null">#{shnYmdhms},</if><if test="aprBrCode != null">#{aprBrCode},</if><if test="aprDistCode != null">#{aprDistCode},</if><if test="aprShz != null">#{aprShz},</if><if test="aprJgiNo != null">#{aprJgiNo},</if><if test="aprShaName != null">#{aprShaName},</if><if test="aprYmdhms != null">#{aprYmdhms},</if><if test="aprHryFlg != null">#{aprHryFlg},</if><if test="aprMemo != null">#{aprMemo},</if><if test="aprCommnet != null">#{aprCommnet},</if><if test="insNo != null">#{insNo},</if><if test="docNo != null">#{docNo},</if><if test="updMstYmd != null">#{updMstYmd},</if><if test="fbReqFlg != null">#{fbReqFlg},</if><if test="fbReqId != null">#{fbReqId},</if><if test="fbAnsId != null">#{fbAnsId},</if><if test="fbDataType != null">#{fbDataType},</if><if test="fbRecId != null">#{fbRecId},</if><if test="fbUpdKbn != null">#{fbUpdKbn},</if><if test="fbPrcType != null">#{fbPrcType},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        UPDATE
+            T_RDM_REQ_KNR
+        SET
+            <trim suffixOverrides=","><if test="update.reqChl != null">REQ_CHL = #{update.reqChl},</if><if test="update.reqChl == null">REQ_CHL = NULL,</if><if test="update.reqType != null">REQ_TYPE = #{update.reqType},</if><if test="update.reqType == null">REQ_TYPE = NULL,</if><if test="update.reqStsCd != null">REQ_STS = #{update.reqStsCd},</if><if test="update.reqStsCd == null">REQ_STS = NULL,</if><if test="update.tekiyoYmd != null">TEKIYO_YMD = #{update.tekiyoYmd},</if><if test="update.tekiyoYmd == null">TEKIYO_YMD = NULL,</if><if test="update.reqBrCd != null">REQ_BR_CODE = #{update.reqBrCd},</if><if test="update.reqBrCd == null">REQ_BR_CODE = NULL,</if><if test="update.reqDistCd != null">REQ_DIST_CODE = #{update.reqDistCd},</if><if test="update.reqDistCd == null">REQ_DIST_CODE = NULL,</if><if test="update.reqShzNm != null">REQ_SHZ = #{update.reqShzNm},</if><if test="update.reqShzNm == null">REQ_SHZ = NULL,</if><if test="update.reqJgiNo != null">REQ_JGI_NO = #{update.reqJgiNo},</if><if test="update.reqJgiNo == null">REQ_JGI_NO = NULL,</if><if test="update.reqJgiName != null">REQ_JGI_NAME = #{update.reqJgiName},</if><if test="update.reqJgiName == null">REQ_JGI_NAME = NULL,</if><if test="update.reqYmdhms != null">REQ_YMDHMS = #{update.reqYmdhms},</if><if test="update.reqYmdhms == null">REQ_YMDHMS = NULL,</if><if test="update.reqMemo != null">REQ_MEMO = #{update.reqMemo},</if><if test="update.reqMemo == null">REQ_MEMO = NULL,</if><if test="update.reqComment != null">REQ_COMMENT = #{update.reqComment},</if><if test="update.reqComment == null">REQ_COMMENT = NULL,</if><if test="update.reqKngKbn != null">REQ_KNG_KBN = #{update.reqKngKbn},</if><if test="update.reqKngKbn == null">REQ_KNG_KBN = NULL,</if><if test="update.shnFlg != null">SHN_FLG = #{update.shnFlg},</if><if test="update.shnFlg == null">SHN_FLG = NULL,</if><if test="update.shnBrCode != null">SHN_BR_CODE = #{update.shnBrCode},</if><if test="update.shnBrCode == null">SHN_BR_CODE = NULL,</if><if test="update.shnDistCode != null">SHN_DIST_CODE = #{update.shnDistCode},</if><if test="update.shnDistCode == null">SHN_DIST_CODE = NULL,</if><if test="update.shnShz != null">SHN_SHZ = #{update.shnShz},</if><if test="update.shnShz == null">SHN_SHZ = NULL,</if><if test="update.shnJgiNo != null">SHN_JGI_NO = #{update.shnJgiNo},</if><if test="update.shnJgiNo == null">SHN_JGI_NO = NULL,</if><if test="update.shnShaName != null">SHN_SHA_ID = #{update.shnShaName},</if><if test="update.shnShaName == null">SHN_SHA_ID = NULL,</if><if test="update.shnYmdhms != null">SHN_YMDHMS = #{update.shnYmdhms},</if><if test="update.shnYmdhms == null">SHN_YMDHMS = NULL,</if><if test="update.aprBrCode != null">APR_BR_CODE = #{update.aprBrCode},</if><if test="update.aprBrCode == null">APR_BR_CODE = NULL,</if><if test="update.aprDistCode != null">APR_DIST_CODE = #{update.aprDistCode},</if><if test="update.aprDistCode == null">APR_DIST_CODE = NULL,</if><if test="update.aprShz != null">APR_SHZ = #{update.aprShz},</if><if test="update.aprShz == null">APR_SHZ = NULL,</if><if test="update.aprJgiNo != null">APR_JGI_NO = #{update.aprJgiNo},</if><if test="update.aprJgiNo == null">APR_JGI_NO = NULL,</if><if test="update.aprShaName != null">APR_SHA_ID = #{update.aprShaName},</if><if test="update.aprShaName == null">APR_SHA_ID = NULL,</if><if test="update.aprYmdhms != null">APR_YMDHMS = #{update.aprYmdhms},</if><if test="update.aprYmdhms == null">APR_YMDHMS = NULL,</if><if test="update.aprHryFlg != null">APR_HRY_FLG = #{update.aprHryFlg},</if><if test="update.aprHryFlg == null">APR_HRY_FLG = NULL,</if><if test="update.aprMemo != null">APR_MEMO = #{update.aprMemo},</if><if test="update.aprMemo == null">APR_MEMO = NULL,</if><if test="update.aprCommnet != null">APR_COMMNET = #{update.aprCommnet},</if><if test="update.aprCommnet == null">APR_COMMNET = NULL,</if><if test="update.insNo != null">INS_NO = #{update.insNo},</if><if test="update.insNo == null">INS_NO = NULL,</if><if test="update.docNo != null">DOC_NO = #{update.docNo},</if><if test="update.docNo == null">DOC_NO = NULL,</if><if test="update.updMstYmd != null">UPD_MST_YMD = #{update.updMstYmd},</if><if test="update.updMstYmd == null">UPD_MST_YMD = NULL,</if><if test="update.fbReqFlg != null">FB_REQ_FLG = #{update.fbReqFlg},</if><if test="update.fbReqFlg == null">FB_REQ_FLG = NULL,</if><if test="update.fbReqId != null">FB_REQ_ID = #{update.fbReqId},</if><if test="update.fbReqId == null">FB_REQ_ID = NULL,</if><if test="update.fbAnsId != null">FB_ANS_ID = #{update.fbAnsId},</if><if test="update.fbAnsId == null">FB_ANS_ID = NULL,</if><if test="update.fbDataType != null">FB_DATA_TYPE = #{update.fbDataType},</if><if test="update.fbDataType == null">FB_DATA_TYPE = NULL,</if><if test="update.fbRecId != null">FB_REC_ID = #{update.fbRecId},</if><if test="update.fbRecId == null">FB_REC_ID = NULL,</if><if test="update.fbUpdKbn != null">FB_UPD_KBN = #{update.fbUpdKbn},</if><if test="update.fbUpdKbn == null">FB_UPD_KBN = NULL,</if><if test="update.fbPrcType != null">FB_PRC_TYPE = #{update.fbPrcType},</if><if test="update.fbPrcType == null">FB_PRC_TYPE = NULL,</if><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if><if test="update.insShaYmd == null">INS_SHA_YMD = NULL,</if><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if><if test="update.insShaId == null">INS_SHA_ID = NULL,</if><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if><if test="update.updShaYmd == null">UPD_SHA_YMD = NULL,</if><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if><if test="update.updShaId == null">UPD_SHA_ID = NULL,</if></trim>
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        UPDATE
+            T_RDM_REQ_KNR
+        <set>
+			<if test="update.reqChlNullFlag == true">REQ_CHL = NULL,</if><if test="update.reqChlNullFlag == false"><if test="update.reqChl != null">REQ_CHL = #{update.reqChl},</if></if>
+			<if test="update.reqTypeNullFlag == true">REQ_TYPE = NULL,</if><if test="update.reqTypeNullFlag == false"><if test="update.reqType != null">REQ_TYPE = #{update.reqType},</if></if>
+			<if test="update.reqStsCdNullFlag == true">REQ_STS = NULL,</if><if test="update.reqStsCdNullFlag == false"><if test="update.reqStsCd != null">REQ_STS = #{update.reqStsCd},</if></if>
+			<if test="update.tekiyoYmdNullFlag == true">TEKIYO_YMD = NULL,</if><if test="update.tekiyoYmdNullFlag == false"><if test="update.tekiyoYmd != null">TEKIYO_YMD = #{update.tekiyoYmd},</if></if>
+			<if test="update.reqBrCdNullFlag == true">REQ_BR_CODE = NULL,</if><if test="update.reqBrCdNullFlag == false"><if test="update.reqBrCd != null">REQ_BR_CODE = #{update.reqBrCd},</if></if>
+			<if test="update.reqDistCdNullFlag == true">REQ_DIST_CODE = NULL,</if><if test="update.reqDistCdNullFlag == false"><if test="update.reqDistCd != null">REQ_DIST_CODE = #{update.reqDistCd},</if></if>
+			<if test="update.reqShzNmNullFlag == true">REQ_SHZ = NULL,</if><if test="update.reqShzNmNullFlag == false"><if test="update.reqShzNm != null">REQ_SHZ = #{update.reqShzNm},</if></if>
+			<if test="update.reqJgiNoNullFlag == true">REQ_JGI_NO = NULL,</if><if test="update.reqJgiNoNullFlag == false"><if test="update.reqJgiNo != null">REQ_JGI_NO = #{update.reqJgiNo},</if></if>
+			<if test="update.reqJgiNameNullFlag == true">REQ_JGI_NAME = NULL,</if><if test="update.reqJgiNameNullFlag == false"><if test="update.reqJgiName != null">REQ_JGI_NAME = #{update.reqJgiName},</if></if>
+			<if test="update.reqYmdhmsNullFlag == true">REQ_YMDHMS = NULL,</if><if test="update.reqYmdhmsNullFlag == false"><if test="update.reqYmdhms != null">REQ_YMDHMS = #{update.reqYmdhms},</if></if>
+			<if test="update.reqMemoNullFlag == true">REQ_MEMO = NULL,</if><if test="update.reqMemoNullFlag == false"><if test="update.reqMemo != null">REQ_MEMO = #{update.reqMemo},</if></if>
+			<if test="update.reqCommentNullFlag == true">REQ_COMMENT = NULL,</if><if test="update.reqCommentNullFlag == false"><if test="update.reqComment != null">REQ_COMMENT = #{update.reqComment},</if></if>
+			<if test="update.reqKngKbnNullFlag == true">REQ_KNG_KBN = NULL,</if><if test="update.reqKngKbnNullFlag == false"><if test="update.reqKngKbn != null">REQ_KNG_KBN = #{update.reqKngKbn},</if></if>
+			<if test="update.shnFlgNullFlag == true">SHN_FLG = NULL,</if><if test="update.shnFlgNullFlag == false"><if test="update.shnFlg != null">SHN_FLG = #{update.shnFlg},</if></if>
+			<if test="update.shnBrCodeNullFlag == true">SHN_BR_CODE = NULL,</if><if test="update.shnBrCodeNullFlag == false"><if test="update.shnBrCode != null">SHN_BR_CODE = #{update.shnBrCode},</if></if>
+			<if test="update.shnDistCodeNullFlag == true">SHN_DIST_CODE = NULL,</if><if test="update.shnDistCodeNullFlag == false"><if test="update.shnDistCode != null">SHN_DIST_CODE = #{update.shnDistCode},</if></if>
+			<if test="update.shnShzNullFlag == true">SHN_SHZ = NULL,</if><if test="update.shnShzNullFlag == false"><if test="update.shnShz != null">SHN_SHZ = #{update.shnShz},</if></if>
+			<if test="update.shnJgiNoNullFlag == true">SHN_JGI_NO = NULL,</if><if test="update.shnJgiNoNullFlag == false"><if test="update.shnJgiNo != null">SHN_JGI_NO = #{update.shnJgiNo},</if></if>
+			<if test="update.shnShaNameNullFlag == true">SHN_SHA_ID = NULL,</if><if test="update.shnShaNameNullFlag == false"><if test="update.shnShaName != null">SHN_SHA_ID = #{update.shnShaName},</if></if>
+			<if test="update.shnYmdhmsNullFlag == true">SHN_YMDHMS = NULL,</if><if test="update.shnYmdhmsNullFlag == false"><if test="update.shnYmdhms != null">SHN_YMDHMS = #{update.shnYmdhms},</if></if>
+			<if test="update.aprBrCodeNullFlag == true">APR_BR_CODE = NULL,</if><if test="update.aprBrCodeNullFlag == false"><if test="update.aprBrCode != null">APR_BR_CODE = #{update.aprBrCode},</if></if>
+			<if test="update.aprDistCodeNullFlag == true">APR_DIST_CODE = NULL,</if><if test="update.aprDistCodeNullFlag == false"><if test="update.aprDistCode != null">APR_DIST_CODE = #{update.aprDistCode},</if></if>
+			<if test="update.aprShzNullFlag == true">APR_SHZ = NULL,</if><if test="update.aprShzNullFlag == false"><if test="update.aprShz != null">APR_SHZ = #{update.aprShz},</if></if>
+			<if test="update.aprJgiNoNullFlag == true">APR_JGI_NO = NULL,</if><if test="update.aprJgiNoNullFlag == false"><if test="update.aprJgiNo != null">APR_JGI_NO = #{update.aprJgiNo},</if></if>
+			<if test="update.aprShaNameNullFlag == true">APR_SHA_ID = NULL,</if><if test="update.aprShaNameNullFlag == false"><if test="update.aprShaName != null">APR_SHA_ID = #{update.aprShaName},</if></if>
+			<if test="update.aprYmdhmsNullFlag == true">APR_YMDHMS = NULL,</if><if test="update.aprYmdhmsNullFlag == false"><if test="update.aprYmdhms != null">APR_YMDHMS = #{update.aprYmdhms},</if></if>
+			<if test="update.aprHryFlgNullFlag == true">APR_HRY_FLG = NULL,</if><if test="update.aprHryFlgNullFlag == false"><if test="update.aprHryFlg != null">APR_HRY_FLG = #{update.aprHryFlg},</if></if>
+			<if test="update.aprMemoNullFlag == true">APR_MEMO = NULL,</if><if test="update.aprMemoNullFlag == false"><if test="update.aprMemo != null">APR_MEMO = #{update.aprMemo},</if></if>
+			<if test="update.aprCommnetNullFlag == true">APR_COMMNET = NULL,</if><if test="update.aprCommnetNullFlag == false"><if test="update.aprCommnet != null">APR_COMMNET = #{update.aprCommnet},</if></if>
+			<if test="update.insNoNullFlag == true">INS_NO = NULL,</if><if test="update.insNoNullFlag == false"><if test="update.insNo != null">INS_NO = #{update.insNo},</if></if>
+			<if test="update.docNoNullFlag == true">DOC_NO = NULL,</if><if test="update.docNoNullFlag == false"><if test="update.docNo != null">DOC_NO = #{update.docNo},</if></if>
+			<if test="update.updMstYmdNullFlag == true">UPD_MST_YMD = NULL,</if><if test="update.updMstYmdNullFlag == false"><if test="update.updMstYmd != null">UPD_MST_YMD = #{update.updMstYmd},</if></if>
+			<if test="update.fbReqFlgNullFlag == true">FB_REQ_FLG = NULL,</if><if test="update.fbReqFlgNullFlag == false"><if test="update.fbReqFlg != null">FB_REQ_FLG = #{update.fbReqFlg},</if></if>
+			<if test="update.fbReqIdNullFlag == true">FB_REQ_ID = NULL,</if><if test="update.fbReqIdNullFlag == false"><if test="update.fbReqId != null">FB_REQ_ID = #{update.fbReqId},</if></if>
+			<if test="update.fbAnsIdNullFlag == true">FB_ANS_ID = NULL,</if><if test="update.fbAnsIdNullFlag == false"><if test="update.fbAnsId != null">FB_ANS_ID = #{update.fbAnsId},</if></if>
+			<if test="update.fbDataTypeNullFlag == true">FB_DATA_TYPE = NULL,</if><if test="update.fbDataTypeNullFlag == false"><if test="update.fbDataType != null">FB_DATA_TYPE = #{update.fbDataType},</if></if>
+			<if test="update.fbRecIdNullFlag == true">FB_REC_ID = NULL,</if><if test="update.fbRecIdNullFlag == false"><if test="update.fbRecId != null">FB_REC_ID = #{update.fbRecId},</if></if>
+			<if test="update.fbUpdKbnNullFlag == true">FB_UPD_KBN = NULL,</if><if test="update.fbUpdKbnNullFlag == false"><if test="update.fbUpdKbn != null">FB_UPD_KBN = #{update.fbUpdKbn},</if></if>
+			<if test="update.fbPrcTypeNullFlag == true">FB_PRC_TYPE = NULL,</if><if test="update.fbPrcTypeNullFlag == false"><if test="update.fbPrcType != null">FB_PRC_TYPE = #{update.fbPrcType},</if></if>
+			<if test="update.insShaYmdNullFlag == true">INS_SHA_YMD = NULL,</if><if test="update.insShaYmdNullFlag == false"><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if></if>
+			<if test="update.insShaIdNullFlag == true">INS_SHA_ID = NULL,</if><if test="update.insShaIdNullFlag == false"><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if></if>
+			<if test="update.updShaYmdNullFlag == true">UPD_SHA_YMD = NULL,</if><if test="update.updShaYmdNullFlag == false"><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if></if>
+			<if test="update.updShaIdNullFlag == true">UPD_SHA_ID = NULL,</if><if test="update.updShaIdNullFlag == false"><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if></if>
+        </set>
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <update id="updateTRdmReqKnrData" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        UPDATE
+            T_RDM_REQ_KNR
+        <set>
+			<if test="reqChl != null">REQ_CHL = #{reqChl},</if>
+			<if test="reqType != null">REQ_TYPE = #{reqType},</if>
+			<if test="reqStsCd != null">REQ_STS = #{reqStsCd},</if>
+			<if test="tekiyoYmd != null">TEKIYO_YMD = #{tekiyoYmd},</if>
+			<if test="reqBrCd != null">REQ_BR_CODE = #{reqBrCd},</if>
+			<if test="reqDistCd != null">REQ_DIST_CODE = #{reqDistCd},</if>
+			<if test="reqShzNm != null">REQ_SHZ = #{reqShzNm},</if>
+			<if test="reqJgiNo != null">REQ_JGI_NO = #{reqJgiNo},</if>
+			<if test="reqJgiName != null">REQ_JGI_NAME = #{reqJgiName},</if>
+			<if test="reqYmdhms != null">REQ_YMDHMS = #{reqYmdhms},</if>
+			<if test="reqMemo != null">REQ_MEMO = #{reqMemo},</if>
+			<if test="reqComment != null">REQ_COMMENT = #{reqComment},</if>
+			<if test="reqKngKbn != null">REQ_KNG_KBN = #{reqKngKbn},</if>
+			<if test="shnFlg != null">SHN_FLG = #{shnFlg},</if>
+			<if test="shnBrCode != null">SHN_BR_CODE = #{shnBrCode},</if>
+			<if test="shnDistCode != null">SHN_DIST_CODE = #{shnDistCode},</if>
+			<if test="shnShz != null">SHN_SHZ = #{shnShz},</if>
+			<if test="shnJgiNo != null">SHN_JGI_NO = #{shnJgiNo},</if>
+			<if test="shnShaName != null">SHN_SHA_ID = #{shnShaName},</if>
+			<if test="shnYmdhms != null">SHN_YMDHMS = #{shnYmdhms},</if>
+			<if test="aprBrCode != null">APR_BR_CODE = #{aprBrCode},</if>
+			<if test="aprDistCode != null">APR_DIST_CODE = #{aprDistCode},</if>
+			<if test="aprShz != null">APR_SHZ = #{aprShz},</if>
+			<if test="aprJgiNo != null">APR_JGI_NO = #{aprJgiNo},</if>
+			<if test="aprShaName != null">APR_SHA_ID = #{aprShaName},</if>
+			<if test="aprYmdhms != null">APR_YMDHMS = #{aprYmdhms},</if>
+			<if test="aprHryFlg != null">APR_HRY_FLG = #{aprHryFlg},</if>
+			<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if>
+			<if test="aprCommnet != null">APR_COMMNET = #{aprCommnet},</if>
+			<if test="insNo != null">INS_NO = #{insNo},</if>
+			<if test="docNo != null">DOC_NO = #{docNo},</if>
+			<if test="updMstYmd != null">UPD_MST_YMD = #{updMstYmd},</if>
+			<if test="fbReqFlg != null">FB_REQ_FLG = #{fbReqFlg},</if>
+			<if test="fbReqId != null">FB_REQ_ID = #{fbReqId},</if>
+			<if test="fbAnsId != null">FB_ANS_ID = #{fbAnsId},</if>
+			<if test="fbDataType != null">FB_DATA_TYPE = #{fbDataType},</if>
+			<if test="fbRecId != null">FB_REC_ID = #{fbRecId},</if>
+			<if test="fbUpdKbn != null">FB_UPD_KBN = #{fbUpdKbn},</if>
+			<if test="fbPrcType != null">FB_PRC_TYPE = #{fbPrcType},</if>
+			<if test="insShaYmd != null">INS_SHA_YMD = #{insShaYmd},</if>
+			<if test="insShaId != null">INS_SHA_ID = #{insShaId},</if>
+			<if test="updShaYmd != null">UPD_SHA_YMD = #{updShaYmd},</if>
+			<if test="updShaId != null">UPD_SHA_ID = #{updShaId},</if>
+        </set>
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        DELETE FROM
+            T_RDM_REQ_KNR
+        WHERE
+            REQ_ID = #{reqId}
+    </delete>
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        DELETE FROM
+            T_RDM_REQ_KNR
+        <where>
+			<if test="reqId != null">AND REQ_ID = #{reqId}</if>
+			<if test="reqChl != null">AND REQ_CHL = #{reqChl}</if>
+			<if test="reqType != null">AND REQ_TYPE = #{reqType}</if>
+			<if test="reqStsCd != null">AND REQ_STS = #{reqStsCd}</if>
+			<if test="tekiyoYmd != null">AND TEKIYO_YMD = #{tekiyoYmd}</if>
+			<if test="reqBrCd != null">AND REQ_BR_CODE = #{reqBrCd}</if>
+			<if test="reqDistCd != null">AND REQ_DIST_CODE = #{reqDistCd}</if>
+			<if test="reqShzNm != null">AND REQ_SHZ = #{reqShzNm}</if>
+			<if test="reqJgiNo != null">AND REQ_JGI_NO = #{reqJgiNo}</if>
+			<if test="reqJgiName != null">AND REQ_JGI_NAME = #{reqJgiName}</if>
+			<if test="reqYmdhms != null">AND REQ_YMDHMS = #{reqYmdhms}</if>
+			<if test="reqMemo != null">AND REQ_MEMO = #{reqMemo}</if>
+			<if test="reqComment != null">AND REQ_COMMENT = #{reqComment}</if>
+			<if test="reqKngKbn != null">AND REQ_KNG_KBN = #{reqKngKbn}</if>
+			<if test="shnFlg != null">AND SHN_FLG = #{shnFlg}</if>
+			<if test="shnBrCode != null">AND SHN_BR_CODE = #{shnBrCode}</if>
+			<if test="shnDistCode != null">AND SHN_DIST_CODE = #{shnDistCode}</if>
+			<if test="shnShz != null">AND SHN_SHZ = #{shnShz}</if>
+			<if test="shnJgiNo != null">AND SHN_JGI_NO = #{shnJgiNo}</if>
+			<if test="shnShaName != null">AND SHN_SHA_ID = #{shnShaName}</if>
+			<if test="shnYmdhms != null">AND SHN_YMDHMS = #{shnYmdhms}</if>
+			<if test="aprBrCode != null">AND APR_BR_CODE = #{aprBrCode}</if>
+			<if test="aprDistCode != null">AND APR_DIST_CODE = #{aprDistCode}</if>
+			<if test="aprShz != null">AND APR_SHZ = #{aprShz}</if>
+			<if test="aprJgiNo != null">AND APR_JGI_NO = #{aprJgiNo}</if>
+			<if test="aprShaName != null">AND APR_SHA_ID = #{aprShaName}</if>
+			<if test="aprYmdhms != null">AND APR_YMDHMS = #{aprYmdhms}</if>
+			<if test="aprHryFlg != null">AND APR_HRY_FLG = #{aprHryFlg}</if>
+			<if test="aprMemo != null">AND APR_MEMO = #{aprMemo}</if>
+			<if test="aprCommnet != null">AND APR_COMMNET = #{aprCommnet}</if>
+			<if test="insNo != null">AND INS_NO = #{insNo}</if>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="updMstYmd != null">AND UPD_MST_YMD = #{updMstYmd}</if>
+			<if test="fbReqFlg != null">AND FB_REQ_FLG = #{fbReqFlg}</if>
+			<if test="fbReqId != null">AND FB_REQ_ID = #{fbReqId}</if>
+			<if test="fbAnsId != null">AND FB_ANS_ID = #{fbAnsId}</if>
+			<if test="fbDataType != null">AND FB_DATA_TYPE = #{fbDataType}</if>
+			<if test="fbRecId != null">AND FB_REC_ID = #{fbRecId}</if>
+			<if test="fbUpdKbn != null">AND FB_UPD_KBN = #{fbUpdKbn}</if>
+			<if test="fbPrcType != null">AND FB_PRC_TYPE = #{fbPrcType}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </delete>
+    <select id="selectNF011DateChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+        SELECT
+			TO_CHAR(UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		FROM
+            T_RDM_REQ_KNR
+        WHERE
+            REQ_ID = #{reqId}
+    </select>
+    <update id="updateNF011Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+        UPDATE
+            T_RDM_REQ_KNR
+        SET
+            REQ_STS = #{reqStsCd},
+            REQ_COMMENT = #{reqComment},
+            UPD_SHA_YMD = #{updShaYmd},
+            UPD_SHA_ID = #{updShaId}
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+</mapper>

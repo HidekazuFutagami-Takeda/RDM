@@ -10,7 +10,7 @@
         <SQL種別>SELECT</SQL種別>
         <SQLID>selectTopMenuMnuKbnMgr</SQLID>
         <説明>メニュー区分管理取得</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
   NVL(MIN(a.menu_kb),4) AS menu_kb
 FROM
   iei_master.mnu_kb_mgr a,
@@ -1384,7 +1384,7 @@ FROM
         <SQL種別>SELECT</SQL種別>
         <SQLID>selectCodeMst</SQLID>
         <説明>従業員関連汎用マスタ検索</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
     DATA_KBN,                --データ区分
     DATA_CD,                 --コード
     DATA_NAME,               --名称
@@ -1392,10 +1392,10 @@ FROM
     DATA_SEQ,                --表示順
     DEF_FLG,                 --デフォルトフラグ
     BIKO                     --備考
-FROM 
+FROM
     IEI_MASTER.JKR_CD_MST               --従業員汎用マスタ
-WHERE 
-    DATA_KBN = #{inDataKbn} AND 
+WHERE
+    DATA_KBN = #{inDataKbn} AND
     DATA_CD = #{inDataCd}
 ORDER BY DATA_SEQ </SQL>
         <除外テーブルカラム名/>
@@ -2557,10 +2557,10 @@ FOR UPDATE NOWAIT</SQL>
         <SQLID>selectJokenSetList</SQLID>
         <説明>トップメニュー画面
 新組織リスト検索SQL</説明>
-        <SQL>    SELECT 
+        <SQL>    SELECT
       A.JOKEN_SET_CD --条件セット
-    FROM 
-      M_JGI_JOKEN A  
+    FROM
+      M_JGI_JOKEN A
     WHERE A.JGI_NO = #{inJgiNo}
       ORDER BY
           A.JOKEN_SET_CD</SQL>
@@ -2597,43 +2597,43 @@ FOR UPDATE NOWAIT</SQL>
         <SQLID>selectActJgiNo</SQLID>
         <説明>トップメニュー画面
 代行ユーザ検索を取得するSQL</説明>
-        <SQL>   SELECT 
-     A.JGI_NO, 
-     A.SOS_CD, 
-     A.SOS_NAME, 
-     A.BUMON_SEI_NAME1, 
-     A.BUMON_SEI_NAME2, 
-     A.BUMON_SEI_NAME3, 
-     A.BUMON_SEI_NAME4 
-   FROM 
-     S_JKR_M_JGI_MST_FIX A 
-    ,S_JKR_M_JGI_MST_FIX C 
-   WHERE 
-   A.JGI_NO IN ( 
-           SELECT 
-             ACT_JGI_NO 
-           FROM 
-             S_JKR_ACW_JGI_ACT B 
-           WHERE 
-               (B.JGI_NO = #{inJgiNo} OR B.JGI_NO = #{inActorJgiNo} ) 
-             AND 
-               START_DATE &lt;= to_char(sysdate,'yyyymmdd') 
-             AND 
-               NVL(END_DATE,'30000000') &gt;= to_char(sysdate,'yyyymmdd') 
-           ) 
-   AND 
-     A.KENMU_KB = 0 
-   AND 
-     A.INFO_KB = '1' 
-   AND 
-     A.JGI_KB='5' 
-   AND 
+        <SQL>   SELECT
+     A.JGI_NO,
+     A.SOS_CD,
+     A.SOS_NAME,
+     A.BUMON_SEI_NAME1,
+     A.BUMON_SEI_NAME2,
+     A.BUMON_SEI_NAME3,
+     A.BUMON_SEI_NAME4
+   FROM
+     S_JKR_M_JGI_MST_FIX A
+    ,S_JKR_M_JGI_MST_FIX C
+   WHERE
+   A.JGI_NO IN (
+           SELECT
+             ACT_JGI_NO
+           FROM
+             S_JKR_ACW_JGI_ACT B
+           WHERE
+               (B.JGI_NO = #{inJgiNo} OR B.JGI_NO = #{inActorJgiNo} )
+             AND
+               START_DATE &lt;= to_char(sysdate,'yyyymmdd')
+             AND
+               NVL(END_DATE,'30000000') &gt;= to_char(sysdate,'yyyymmdd')
+           )
+   AND
+     A.KENMU_KB = 0
+   AND
+     A.INFO_KB = '1'
+   AND
+     A.JGI_KB='5'
+   AND
      A.SOS_CD != C.SOS_CD
-   AND 
-     C.KENMU_KB = 0 
-   AND 
-     C.INFO_KB = '1' 
-   AND 
+   AND
+     C.KENMU_KB = 0
+   AND
+     C.INFO_KB = '1'
+   AND
      (C.JGI_NO = #{inJgiNo} OR C.JGI_NO = #{inActorJgiNo} ) </SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -2744,13 +2744,13 @@ FOR UPDATE NOWAIT</SQL>
 新組織リスト検索SQL</説明>
         <SQL>    SELECT
       CTL.SOS_CD
-    FROM 
+    FROM
       JKR_CTRL_TOSOS    CTL
   &lt;if test="inSelectKbn == 1"&gt;
-    WHERE '1' = ( 
-                 SELECT CTRL_FLG 
-                   FROM JKR_CTRL_TOSOS 
-                  WHERE JOKEN_SET_CD = #{inJokenSetCd} 
+    WHERE '1' = (
+                 SELECT CTRL_FLG
+                   FROM JKR_CTRL_TOSOS
+                  WHERE JOKEN_SET_CD = #{inJokenSetCd}
                 )
      AND CTL.CTRL_FLG = 1
   &lt;/if&gt;
@@ -2837,9 +2837,9 @@ WHERE
 &lt;/if&gt;
   AND TRTGRP.TRT_GRP_CD = TRTGRP_TRT.TRT_GRP_CD
   AND COM_CAL.CAL_DATE BETWEEN TRTGRP_TRT.TEKIYO_START_DATE AND TRTGRP_TRT.TEKIYO_END_DATE
-  AND TRTGRP_TRT.TRT_CD = (SELECT MIN(TRT.TRT_CD) FROM S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                           WHERE 
-                                 TRT.TRT_GRP_CD = TRTGRP_TRT.TRT_GRP_CD 
+  AND TRTGRP_TRT.TRT_CD = (SELECT MIN(TRT.TRT_CD) FROM S_JKR_COM_LNK_TRTGRP_TRT TRT
+                           WHERE
+                                 TRT.TRT_GRP_CD = TRTGRP_TRT.TRT_GRP_CD
                              AND (SELECT MAX(CAL_DATE) FROM S_JKR_COM_CAL_USR WHERE COM_CAL.TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE)
   ORDER BY
       TRTGRP_TRT.DISP_SORT ASC</SQL>
@@ -3559,7 +3559,7 @@ WHERE
         <SQLID>selectTopMenuDispDataToSos</SQLID>
         <説明>トップメニュー画面
 「組織(新)」選択時にトップメニューの一覧表示で利用するデータを取得するSQL</説明>
-        <SQL>WITH TRT_LIST AS 
+        <SQL>WITH TRT_LIST AS
          (
           SELECT
               AUTH_KNR.TRT_CD   -- 領域コード
@@ -3583,7 +3583,7 @@ WHERE
           AND COM_CAL.CAL_DATE BETWEEN AUTH_KNR.TEKIYO_START_DATE AND AUTH_KNR.TEKIYO_END_DATE
           AND COM_CAL.CAL_DATE BETWEEN TRTGRP_TRT.TEKIYO_START_DATE AND TRTGRP_TRT.TEKIYO_END_DATE
          )
-,COM_INS_MST AS 
+,COM_INS_MST AS
          (
          SELECT INS_NO, MAIN_INS_NO FROM S_JKR_COM_INS_MST_USR,V_JKR_COM_CAL_USR_TODAY WHERE CAL_MONTH NOT IN ('03', '09')
          UNION ALL
@@ -3613,7 +3613,7 @@ FROM
     JKR_SOS_STS   FSTS   --担当変更状況
 
   INNER JOIN
-   ( 
+   (
     SELECT --担当引継ぎ情報の内、新組織が選択組織になっている組織情報リスト
          CHG_MR.TEKIYO_YMD
         ,FSOS.SOS_CD2 FROMSOS2
@@ -3622,11 +3622,11 @@ FROM
         ,TSOS.SOS_CD3 TOSOS3
         ,DECODE(FSOS.SOS_CD3,'00000', FSOS.SOS_CD2, FSOS.SOS_CD3) F_SOS_CD  --現組織コード(チームレベルの場合は営業所レベルの組織コードをセット)
         ,#{inSosCd} T_SOS_CD  --新組織コード(画面で選択した組織の組織コード)
-    FROM 
+    FROM
         JKR_CHG_TNT_MR  CHG_MR --担当引継ぎ情報
        ,COM_MR_SOS FSOS        --MR所属組織
        ,COM_MR_SOS TSOS        --MR所属組織
-    WHERE 
+    WHERE
         CHG_MR.TO_SOS_CD IN (  --担当引継ぎ情報の新組織コードが選択組織（配下組織含む）
                              SELECT DISTINCT
                                  MRS.SOS_CD
@@ -3700,7 +3700,7 @@ FROM
                                         MRS.SOS_CD2 = #{inSosCd} --支店 or 営業所レベルの組織コード
                                 OR
                                         MRS.SOS_CD3 = #{inSosCd} --支店 or 営業所レベルの組織コード
-                               ) 
+                               )
           AND INS.TEKIYO_YMD != (SELECT TEKIYO_YMD FROM DISP_TEKIYO_YMD)
           AND INS.TRT_CD IN (SELECT TRT_CD FROM TRT_LIST)
          )INS_CNT
@@ -3794,10 +3794,10 @@ FROM
                                         MRS.SOS_CD2 = #{inSosCd} --支店 or 営業所レベルの組織コード
                                 OR
                                         MRS.SOS_CD3 = #{inSosCd} --支店 or 営業所レベルの組織コード
-                               ) 
+                               )
          )DOC_CNT
     )BT_TEKIYO
-WHERE 
+WHERE
       --FSTS.DISP_FLG = '1'     --画面表示対象適用日のレコードを指定
       FSTS.TEKIYO_YMD = (SELECT TEKIYO_YMD FROM DISP_TEKIYO_YMD)
 GROUP BY
@@ -4063,12 +4063,12 @@ GROUP BY
         <SQLID>selectMrCatList</SQLID>
         <説明>仮従業員登録画面
 [MR種類]プルダウンリストを取得するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
     T4.DATA_CD AS MR_CAT,
     T4.DATA_NAME AS MR_CAT_NAME,
     T2.SHOKUSHU_CD AS SHOKUSHU_CD,
     T5.DATA_NAME AS SHOKUSHU_NAME
-FROM 
+FROM
     (
     SELECT
         AUTH_KNR.TRT_CD
@@ -4092,9 +4092,9 @@ FROM
     S_JKR_JKR_CD_MST T3,
     S_JKR_JKR_CD_MST T4,  -- MR種類名称取得用
     S_JKR_JKR_CD_MST T5   -- 職種名称取得用
-WHERE 
-    T1.TRT_CD = T2.TRT_CD AND 
-    T2.TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= T2.TEKIYO_END_DATE AND 
+WHERE
+    T1.TRT_CD = T2.TRT_CD AND
+    T2.TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= T2.TEKIYO_END_DATE AND
     T2.SHOKUSHU_CD = T3.DATA_NAME AND
     T3.DATA_KBN = 'mr_cat_shokushu' AND
     T3.DATA_CD = T4.DATA_CD AND
@@ -4198,10 +4198,10 @@ ORDER BY
         <SQLID>selectMaxRnbn</SQLID>
         <説明>仮従業員登録画面
 仮従業員名の末尾に付加する連番の最大値を取得する。</説明>
-        <SQL>SELECT 
-    jkr_common.get_max_kno(#{inSosCd},#{inShokushuCd},#{inSubstrStartIndex}) AS MAX_RNBN 
-FROM 
-    DUAL 
+        <SQL>SELECT
+    jkr_common.get_max_kno(#{inSosCd},#{inShokushuCd},#{inSubstrStartIndex}) AS MAX_RNBN
+FROM
+    DUAL
 </SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -4252,16 +4252,16 @@ FROM
         <SQLID>selectMaxUpDate</SQLID>
         <説明>仮従業員登録画面
 選択組織の最終更新日(楽観排他制御用)を取得する。</説明>
-        <SQL>SELECT 
-    MAX(UP_DATE) AS MAX_UP_DATE 
-FROM 
-    S_JKR_M_JGI_SOS_PLAN 
-WHERE 
+        <SQL>SELECT
+    MAX(UP_DATE) AS MAX_UP_DATE
+FROM
+    S_JKR_M_JGI_SOS_PLAN
+WHERE
 &lt;if test="inBumonRank == 3"&gt;
- SOS_CD3 = #{inSosCd} 
+ SOS_CD3 = #{inSosCd}
 &lt;/if&gt;
 &lt;if test="inBumonRank != 3"&gt;
- SOS_CD = #{inSosCd} 
+ SOS_CD = #{inSosCd}
 &lt;/if&gt;
 </SQL>
         <除外テーブルカラム名/>
@@ -4305,7 +4305,7 @@ WHERE
         <SQLID>selectKktiSosInfo</SQLID>
         <説明>仮従業員登録画面
 確定組織情報を取得する。</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
     A.SOS_CD,
     DECODE(B.SOS_CD2,'00000','',(SELECT BUMON_SEI_NAME FROM S_JKR_M_SOS_MST_FIX WHERE SOS_CD = B.SOS_CD2)) BUMON_SEI_NAME2,
     DECODE(B.SOS_CD3,'00000','',(SELECT BUMON_SEI_NAME FROM S_JKR_M_SOS_MST_FIX WHERE SOS_CD = B.SOS_CD3)) BUMON_SEI_NAME3,
@@ -4397,9 +4397,9 @@ WHERE
         <SQLID>selectKrJgiList</SQLID>
         <説明>仮従業員登録画面
 一覧情報を取得する。</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
 &lt;if test="inSelectKbn == 0"&gt;
-    COUNT(*) AS REC_CNT 
+    COUNT(*) AS REC_CNT
 &lt;/if&gt;
 &lt;if test="inSelectKbn == 1"&gt;
     MBP.JGI_NO,
@@ -4419,7 +4419,7 @@ WHERE
         SHOZOKU_RYAKU_NAME,
         DECODE(SUBSTR(SHOZOKU_RYAKU_NAME,0,2),'医営',
             SUBSTR(SHOZOKU_RYAKU_NAME,3),
-            SHOZOKU_RYAKU_NAME)) VIEW_SOS_NAME 
+            SHOZOKU_RYAKU_NAME)) VIEW_SOS_NAME
 &lt;/if&gt;
 FROM
     S_JKR_M_JGI_BASE_PLAN MBP,
@@ -4432,53 +4432,53 @@ FROM
     (SELECT TO_MR_NO, TO_SOS_CD, COUNT(*) CNT FROM JKR_CHG_MR_INS_TRT GROUP BY TO_MR_NO,TO_SOS_CD) CBI,
     (SELECT TO_MR_NO, TO_SOS_CD, COUNT(*) CNT FROM JKR_CHG_MR_INS_DOC_TRT GROUP BY TO_MR_NO,TO_SOS_CD) CBD,
     (SELECT TO_MR_NO, TO_SOS_CD, COUNT(*) CNT FROM JKR_CHG_MR_IN_CHRG_OF_INS GROUP BY TO_MR_NO,TO_SOS_CD) CBC,
-    (SELECT TEKIYO_YMD FROM JKR_SOS_STS WHERE SOS_CD = #{inSosCd} AND DISP_FLG ='1') JSS 
-WHERE 
+    (SELECT TEKIYO_YMD FROM JKR_SOS_STS WHERE SOS_CD = #{inSosCd} AND DISP_FLG ='1') JSS
+WHERE
     MBP.JGI_NO = MSP.JGI_NO
     AND (MBP.TAISHOKU_DAY IS NULL OR MBP.TAISHOKU_DAY &gt; TRUNC(ADD_MONTHS(SYSDATE, 1), 'MM'))
     AND MSP.KENMU_KB = '0'
     AND MSP.INFO_KB  = '1'
     AND MSP.UPDATE_KB  = '0'
 &lt;if test="inBumonRank == 3"&gt;
-    AND MSP.SOS_CD3 = #{inSosCd} 
+    AND MSP.SOS_CD3 = #{inSosCd}
 &lt;/if&gt;
 &lt;if test="inBumonRank != 3"&gt;
-    AND MSP.SOS_CD = #{inSosCd} 
+    AND MSP.SOS_CD = #{inSosCd}
 &lt;/if&gt;
     AND JCM.DATA_KBN = 'shokushu_cd'
     AND JCM.DATA_CD = MSP.SHOKUSHU_CD
-    AND (MSP.SHOKUSHU_CD ='350' OR MSP.SHOKUSHU_CD LIKE '4%' ) 
+    AND (MSP.SHOKUSHU_CD ='350' OR MSP.SHOKUSHU_CD LIKE '4%' )
     AND SHOKUSEI_CD NOT IN ('505','515')
-    AND MBP.JGI_KB NOT IN ('3','4','8') 
-    AND MFP.JGI_NO = MBP.JGI_NO 
+    AND MBP.JGI_KB NOT IN ('3','4','8')
+    AND MFP.JGI_NO = MBP.JGI_NO
     AND JSS.TEKIYO_YMD BETWEEN MFP.START_DAY AND MFP.END_DAY
-    AND CBM.TO_MR_NO(+) = MSP.JGI_NO 
-    AND CBI.TO_MR_NO(+) = MSP.JGI_NO 
-    AND CBD.TO_MR_NO(+) = MSP.JGI_NO 
-    AND CBC.TO_MR_NO(+) = MSP.JGI_NO 
-    AND CBM.TO_SOS_CD(+) = MSP.SOS_CD 
-    AND CBI.TO_SOS_CD(+) = MSP.SOS_CD 
-    AND CBD.TO_SOS_CD(+) = MSP.SOS_CD 
-    AND CBC.TO_SOS_CD(+) = MSP.SOS_CD 
-    AND MSP.SOS_CD = MSOS.SOS_CD 
-    AND MSOS.FLG_NEXT_MONTH = '1' 
+    AND CBM.TO_MR_NO(+) = MSP.JGI_NO
+    AND CBI.TO_MR_NO(+) = MSP.JGI_NO
+    AND CBD.TO_MR_NO(+) = MSP.JGI_NO
+    AND CBC.TO_MR_NO(+) = MSP.JGI_NO
+    AND CBM.TO_SOS_CD(+) = MSP.SOS_CD
+    AND CBI.TO_SOS_CD(+) = MSP.SOS_CD
+    AND CBD.TO_SOS_CD(+) = MSP.SOS_CD
+    AND CBC.TO_SOS_CD(+) = MSP.SOS_CD
+    AND MSP.SOS_CD = MSOS.SOS_CD
+    AND MSOS.FLG_NEXT_MONTH = '1'
     AND CSC.SHOKUSHU_CD = MSP.SHOKUSHU_CD
     AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN CSC.TEKIYO_START_DATE AND CSC.TEKIYO_END_DATE
-ORDER BY 
+ORDER BY
 &lt;if test="inSortCondition == 1"&gt;
-MSOS.BR_CODE ASC ,MSOS.DIST_SEQ ASC ,MSOS.DIST_CODE ASC ,MSOS.TEAM_CODE ASC ,MSP.SHOKUSEI_CD ASC ,MSP.SHOKUSHU_CD ASC ,MBP.JGI_KB ASC ,MBP.JGI_NO ASC 
+MSOS.BR_CODE ASC ,MSOS.DIST_SEQ ASC ,MSOS.DIST_CODE ASC ,MSOS.TEAM_CODE ASC ,MSP.SHOKUSEI_CD ASC ,MSP.SHOKUSHU_CD ASC ,MBP.JGI_KB ASC ,MBP.JGI_NO ASC
 &lt;/if&gt;
 &lt;if test="inSortCondition == 2"&gt;
-MSP.SOS_CD ASC 
+MSP.SOS_CD ASC
 &lt;/if&gt;
 &lt;if test="inSortCondition == 3"&gt;
-MSP.SOS_CD DESC 
+MSP.SOS_CD DESC
 &lt;/if&gt;
 &lt;if test="inSortCondition == 4"&gt;
-MBP.JGI_NO ASC 
+MBP.JGI_NO ASC
 &lt;/if&gt;
 &lt;if test="inSortCondition == 5"&gt;
-MBP.JGI_NO DESC 
+MBP.JGI_NO DESC
 &lt;/if&gt;</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -4691,13 +4691,13 @@ MBP.JGI_NO DESC
         <SQLID>selectLinkDispDecision</SQLID>
         <説明>仮従業員登録画面
 [複数担当先施設の医師担当変更の処理へ]リンクの表示要否を判定するためのSQL。</説明>
-        <SQL>SELECT 
-    COUNT(*) AS REC_CNT 
+        <SQL>SELECT
+    COUNT(*) AS REC_CNT
 FROM
-    S_JKR_COM_LNK_TRTGRP_TRT 
+    S_JKR_COM_LNK_TRTGRP_TRT
 WHERE
-    TRT_GRP_CD = #{inTrtGrpCd} AND 
-    TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE AND 
+    TRT_GRP_CD = #{inTrtGrpCd} AND
+    TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE AND
     (INS_SUB_TANT_SET_FLG = '1' OR DOC_TANT_SET_FLG = '0')
 </SQL>
         <除外テーブルカラム名/>
@@ -4741,10 +4741,10 @@ WHERE
         <SQLID>selectKrJgiNo</SQLID>
         <説明>仮従業員登録画面
 仮従業員用の従業員番号を採番する。</説明>
-        <SQL>SELECT 
-    jkr_common.GET_TJGI_NO AS KR_JGI_NO 
-FROM 
-    DUAL 
+        <SQL>SELECT
+    jkr_common.GET_TJGI_NO AS KR_JGI_NO
+FROM
+    DUAL
 </SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -4771,126 +4771,126 @@ FROM
         <SQLID>selectSosPlanInfo</SQLID>
         <説明>仮従業員登録画面
 対象組織の組織情報（部門ランク、組織コード１～５、正式名称、略称、体系コード）を取得する。</説明>
-        <SQL>SELECT 
-    BUMON_RANK, SOS_CD1, SOS_CD2, SOS_CD3, SOS_CD4, SOS_CD5, 
-    BUMON_SEI_NAME1 || BUMON_SEI_NAME2 || BUMON_SEI_NAME3 || BUMON_SEI_NAME4 || BUMON_SEI_NAME5 || BUMON_SEI_NAME6 SHOZOKU_SEI_NAME, 
-    BUMON_RYAKU_NAME1 || BUMON_RYAKU_NAME2 || BUMON_RYAKU_NAME3 || BUMON_RYAKU_NAME4 || BUMON_RYAKU_NAME5 || BUMON_RYAKU_NAME6 SHOZOKU_RYAKU_NAME, 
-    BUMON_RYAKU_NAME1 || BUMON_RYAKU_NAME2 || BUMON_RYAKU_NAME3 || BUMON_RYAKU_NAME4 || BUMON_RYAKU_NAME5 || BUMON_RYAKU_NAME6 SOS_NAME, 
-    SOS_TAIKEI_CD 
+        <SQL>SELECT
+    BUMON_RANK, SOS_CD1, SOS_CD2, SOS_CD3, SOS_CD4, SOS_CD5,
+    BUMON_SEI_NAME1 || BUMON_SEI_NAME2 || BUMON_SEI_NAME3 || BUMON_SEI_NAME4 || BUMON_SEI_NAME5 || BUMON_SEI_NAME6 SHOZOKU_SEI_NAME,
+    BUMON_RYAKU_NAME1 || BUMON_RYAKU_NAME2 || BUMON_RYAKU_NAME3 || BUMON_RYAKU_NAME4 || BUMON_RYAKU_NAME5 || BUMON_RYAKU_NAME6 SHOZOKU_RYAKU_NAME,
+    BUMON_RYAKU_NAME1 || BUMON_RYAKU_NAME2 || BUMON_RYAKU_NAME3 || BUMON_RYAKU_NAME4 || BUMON_RYAKU_NAME5 || BUMON_RYAKU_NAME6 SOS_NAME,
+    SOS_TAIKEI_CD
 FROM (
-    SELECT 
-        SOS.SOS_CD, 
-        MIN(SOS.SOS_TAIKEI_CD ) SOS_TAIKEI_CD, 
-        MIN(SOS.BUMON_RANK ) BUMON_RANK, 
-        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 1 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD1, 
-        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 2 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD2, 
-        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 3 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD3, 
-        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 4 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD4, 
-        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 5 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD5, 
-        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 6 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD6, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 1 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME1, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 2 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME2, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 3 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME3, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 4 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME4, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 5 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME5, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 6 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME6, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 1 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME1, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 2 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME2, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 3 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME3, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 4 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME4, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 5 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME5, 
-        MIN(CASE WHEN RANK.BUMON_RANK = 6 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME6 
-    FROM S_JKR_M_SOS_MST_PLAN SOS, 
+    SELECT
+        SOS.SOS_CD,
+        MIN(SOS.SOS_TAIKEI_CD ) SOS_TAIKEI_CD,
+        MIN(SOS.BUMON_RANK ) BUMON_RANK,
+        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 1 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD1,
+        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 2 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD2,
+        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 3 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD3,
+        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 4 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD4,
+        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 5 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD5,
+        NVL(MIN(CASE WHEN RANK.BUMON_RANK = 6 THEN RANK.SOS_CD ELSE NULL END), '00000') SOS_CD6,
+        MIN(CASE WHEN RANK.BUMON_RANK = 1 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME1,
+        MIN(CASE WHEN RANK.BUMON_RANK = 2 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME2,
+        MIN(CASE WHEN RANK.BUMON_RANK = 3 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME3,
+        MIN(CASE WHEN RANK.BUMON_RANK = 4 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME4,
+        MIN(CASE WHEN RANK.BUMON_RANK = 5 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME5,
+        MIN(CASE WHEN RANK.BUMON_RANK = 6 THEN RANK.BUMON_SEI_NAME ELSE NULL END) BUMON_SEI_NAME6,
+        MIN(CASE WHEN RANK.BUMON_RANK = 1 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME1,
+        MIN(CASE WHEN RANK.BUMON_RANK = 2 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME2,
+        MIN(CASE WHEN RANK.BUMON_RANK = 3 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME3,
+        MIN(CASE WHEN RANK.BUMON_RANK = 4 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME4,
+        MIN(CASE WHEN RANK.BUMON_RANK = 5 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME5,
+        MIN(CASE WHEN RANK.BUMON_RANK = 6 THEN RANK.BUMON_RYAKU_NAME ELSE NULL END) BUMON_RYAKU_NAME6
+    FROM S_JKR_M_SOS_MST_PLAN SOS,
     (
-        SELECT SOS_CD TGT_SOS_CD, SOS_CD, BUMON_SEI_NAME, BUMON_RYAKU_NAME, BUMON_RANK 
-        FROM S_JKR_M_SOS_MST_PLAN 
-        WHERE FIX_FLG = '1' 
-        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-        BETWEEN START_DAY AND END_DAY) OR FLG_NEXT_MONTH = '1' ) 
-        UNION 
-        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK 
-        FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-        WHERE SOS.FIX_FLG = '1' 
-        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-        BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' ) 
-        AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-        AND SOS.UP_SOS_CD != '00000' 
-        AND UPSOS.FLG_NEXT_MONTH ='1' 
-        UNION 
-        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK 
-        FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD 
-              FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-              WHERE SOS.FIX_FLG = '1' 
-              AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-              BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' ) 
-              AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-              AND SOS.UP_SOS_CD != '00000' 
-              AND UPSOS.FLG_NEXT_MONTH ='1' 
-             ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-        WHERE UPSOS.FIX_FLG = '1' 
-        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-        BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' ) 
-        AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-        AND SOS.UP_SOS_CD != '00000' 
-        UNION 
-        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK 
-        FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD 
-              FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD 
-                    FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-                    WHERE SOS.FIX_FLG = '1' 
-                    AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-                    BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' ) 
-                    AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-                    AND SOS.UP_SOS_CD != '00000' 
-                    AND UPSOS.FLG_NEXT_MONTH ='1' 
-                    ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-              WHERE UPSOS.FIX_FLG = '1' 
-              AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-              BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' ) 
-              AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-              AND SOS.UP_SOS_CD != '00000' 
-              ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-        WHERE UPSOS.FIX_FLG = '1' 
-        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-        BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' ) 
-        AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-        AND SOS.UP_SOS_CD != '00000' 
-        UNION 
-        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK 
-        FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD 
-              FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD 
-                    FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD 
-                          FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-                          WHERE SOS.FIX_FLG = '1' 
-                          AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-                          BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' ) 
-                          AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-                          AND SOS.UP_SOS_CD != '00000' 
-                          AND UPSOS.FLG_NEXT_MONTH ='1' 
-                          ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-                    WHERE UPSOS.FIX_FLG = '1' 
-                    AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-                    BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' ) 
-                    AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-                    AND SOS.UP_SOS_CD != '00000' 
-                    ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-              WHERE UPSOS.FIX_FLG = '1' 
-              AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-              BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' ) 
-              AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-              AND SOS.UP_SOS_CD != '00000' 
-              ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS 
-        WHERE UPSOS.FIX_FLG = '1' 
-        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01' 
-        BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' ) 
-        AND SOS.UP_SOS_CD = UPSOS.SOS_CD 
-        AND SOS.UP_SOS_CD != '00000' 
-        ) RANK 
-    WHERE SOS.SOS_CD = RANK.TGT_SOS_CD 
-    AND SOS.FLG_NEXT_MONTH ='1' 
-    AND RANK.TGT_SOS_CD = #{inTgtSosCd}  
-    GROUP BY SOS.SOS_CD 
-    ) 
+        SELECT SOS_CD TGT_SOS_CD, SOS_CD, BUMON_SEI_NAME, BUMON_RYAKU_NAME, BUMON_RANK
+        FROM S_JKR_M_SOS_MST_PLAN
+        WHERE FIX_FLG = '1'
+        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+        BETWEEN START_DAY AND END_DAY) OR FLG_NEXT_MONTH = '1' )
+        UNION
+        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK
+        FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+        WHERE SOS.FIX_FLG = '1'
+        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+        BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' )
+        AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+        AND SOS.UP_SOS_CD != '00000'
+        AND UPSOS.FLG_NEXT_MONTH ='1'
+        UNION
+        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK
+        FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD
+              FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+              WHERE SOS.FIX_FLG = '1'
+              AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+              BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' )
+              AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+              AND SOS.UP_SOS_CD != '00000'
+              AND UPSOS.FLG_NEXT_MONTH ='1'
+             ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+        WHERE UPSOS.FIX_FLG = '1'
+        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+        BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' )
+        AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+        AND SOS.UP_SOS_CD != '00000'
+        UNION
+        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK
+        FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD
+              FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD
+                    FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+                    WHERE SOS.FIX_FLG = '1'
+                    AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+                    BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' )
+                    AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+                    AND SOS.UP_SOS_CD != '00000'
+                    AND UPSOS.FLG_NEXT_MONTH ='1'
+                    ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+              WHERE UPSOS.FIX_FLG = '1'
+              AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+              BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' )
+              AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+              AND SOS.UP_SOS_CD != '00000'
+              ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+        WHERE UPSOS.FIX_FLG = '1'
+        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+        BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' )
+        AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+        AND SOS.UP_SOS_CD != '00000'
+        UNION
+        SELECT SOS.SOS_CD TGT_SOS_CD, UPSOS.SOS_CD, UPSOS.BUMON_SEI_NAME, UPSOS.BUMON_RYAKU_NAME, UPSOS.BUMON_RANK
+        FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD
+              FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD
+                    FROM (SELECT SOS.SOS_CD, UPSOS.UP_SOS_CD
+                          FROM S_JKR_M_SOS_MST_PLAN SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+                          WHERE SOS.FIX_FLG = '1'
+                          AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+                          BETWEEN SOS.START_DAY AND SOS.END_DAY) OR SOS.FLG_NEXT_MONTH = '1' )
+                          AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+                          AND SOS.UP_SOS_CD != '00000'
+                          AND UPSOS.FLG_NEXT_MONTH ='1'
+                          ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+                    WHERE UPSOS.FIX_FLG = '1'
+                    AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+                    BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' )
+                    AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+                    AND SOS.UP_SOS_CD != '00000'
+                    ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+              WHERE UPSOS.FIX_FLG = '1'
+              AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+              BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' )
+              AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+              AND SOS.UP_SOS_CD != '00000'
+              ) SOS, S_JKR_M_SOS_MST_PLAN UPSOS
+        WHERE UPSOS.FIX_FLG = '1'
+        AND ((TO_CHAR(ADD_MONTHS((SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1), 1), 'YYYYMM') || '01'
+        BETWEEN UPSOS.START_DAY AND UPSOS.END_DAY) OR UPSOS.FLG_NEXT_MONTH = '1' )
+        AND SOS.UP_SOS_CD = UPSOS.SOS_CD
+        AND SOS.UP_SOS_CD != '00000'
+        ) RANK
+    WHERE SOS.SOS_CD = RANK.TGT_SOS_CD
+    AND SOS.FLG_NEXT_MONTH ='1'
+    AND RANK.TGT_SOS_CD = #{inTgtSosCd}
+    GROUP BY SOS.SOS_CD
+    )
 </SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -5237,21 +5237,21 @@ FROM (
         <SQLID>insertFlgPlanInfo</SQLID>
         <説明>仮従業員登録画面
 従業員基本（フラグ情報）予定を登録する。</説明>
-        <SQL>INSERT INTO S_JKR_M_JGI_FLG_PLAN( 
-    JGI_NO, 
-    START_DAY, 
+        <SQL>INSERT INTO S_JKR_M_JGI_FLG_PLAN(
+    JGI_NO,
+    START_DAY,
     END_DAY,
-    FLG1, 
-    UP_JGI_NO, 
-    UP_DATE, 
-    IS_DATE, 
-    UP_SCRN_ID, 
+    FLG1,
+    UP_JGI_NO,
+    UP_DATE,
+    IS_DATE,
+    UP_SCRN_ID,
     UP_FUNC_ID
-) VALUES ( 
-    #{inJgiNo}, 
-    (SELECT TO_CHAR(TEKIYO_YMD,'YYYYMMDD') START_DAY FROM JKR_SOS_STS WHERE SOS_CD = #{inSosCd} AND DISP_FLG ='1'), 
-    '99991231', 
-    #{inFlg1}, 
+) VALUES (
+    #{inJgiNo},
+    (SELECT TO_CHAR(TEKIYO_YMD,'YYYYMMDD') START_DAY FROM JKR_SOS_STS WHERE SOS_CD = #{inSosCd} AND DISP_FLG ='1'),
+    '99991231',
+    #{inFlg1},
     #{inUserId},
     #{inSystemDate},
     #{inSystemDate},
@@ -5328,17 +5328,17 @@ FROM (
         <SQLID>updateFlg1</SQLID>
         <説明>仮従業員登録画面
 従業員基本（フラグ情報）予定の予備フラグ１を更新する。</説明>
-        <SQL>UPDATE 
-    S_JKR_M_JGI_FLG_PLAN 
-SET 
-    FLG1 = #{inFlg1}, 
-    UP_JGI_NO = #{inUserId}, 
-    UP_DATE=#{inSystemDate}, 
-    UP_SCRN_ID=#{inScreenId}, 
-    UP_FUNC_ID=#{inEventId} 
-WHERE 
-    JGI_NO = #{inJgiNo} 
-    AND START_DAY = #{inStartDay} 
+        <SQL>UPDATE
+    S_JKR_M_JGI_FLG_PLAN
+SET
+    FLG1 = #{inFlg1},
+    UP_JGI_NO = #{inUserId},
+    UP_DATE=#{inSystemDate},
+    UP_SCRN_ID=#{inScreenId},
+    UP_FUNC_ID=#{inEventId}
+WHERE
+    JGI_NO = #{inJgiNo}
+    AND START_DAY = #{inStartDay}
     AND FLG1 != #{inFlg1}</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -5410,16 +5410,16 @@ WHERE
         <SQLID>updateEndDay</SQLID>
         <説明>仮従業員登録画面
 従業員基本（フラグ情報）予定の適用終了日を更新する。</説明>
-        <SQL>UPDATE 
-    S_JKR_M_JGI_FLG_PLAN 
-SET 
-    END_DAY = TO_CHAR(TO_DATE(#{inTekiyoYmd}) - 1, 'YYYYMMDD'), 
-    UP_JGI_NO = #{inUserId}, 
-    UP_DATE=#{inSystemDate}, 
-    UP_SCRN_ID=#{inScreenId}, 
-    UP_FUNC_ID=#{inEventId} 
-WHERE 
-    JGI_NO = #{inJgiNo} 
+        <SQL>UPDATE
+    S_JKR_M_JGI_FLG_PLAN
+SET
+    END_DAY = TO_CHAR(TO_DATE(#{inTekiyoYmd}) - 1, 'YYYYMMDD'),
+    UP_JGI_NO = #{inUserId},
+    UP_DATE=#{inSystemDate},
+    UP_SCRN_ID=#{inScreenId},
+    UP_FUNC_ID=#{inEventId}
+WHERE
+    JGI_NO = #{inJgiNo}
     AND #{inTekiyoYmd} BETWEEN START_DAY AND END_DAY </SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -5483,13 +5483,13 @@ WHERE
         <SQLID>selectFlgPlanMinStartDay</SQLID>
         <説明>仮従業員登録画面
 従業員基本（フラグ情報）予定から適用日より未来、かつ最小となる適用開始日を取得する。</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
     START_DAY
-FROM 
+FROM
     S_JKR_M_JGI_FLG_PLAN T1,
-    (SELECT MIN(START_DAY) MIN_START_DAY 
-     FROM S_JKR_M_JGI_FLG_PLAN WHERE JGI_NO = #{inJgiNo} AND START_DAY &gt; TO_CHAR(#{inTekiyoYmd},'YYYYMMDD')) T2 
-WHERE 
+    (SELECT MIN(START_DAY) MIN_START_DAY
+     FROM S_JKR_M_JGI_FLG_PLAN WHERE JGI_NO = #{inJgiNo} AND START_DAY &gt; TO_CHAR(#{inTekiyoYmd},'YYYYMMDD')) T2
+WHERE
     T1.JGI_NO = #{inJgiNo} AND
     T1.START_DAY = T2.MIN_START_DAY
 </SQL>
@@ -5534,17 +5534,17 @@ WHERE
         <SQLID>updateKrJgiChgMrInsTrt</SQLID>
         <説明>仮従業員登録画面
 担当変更情報（ＭＲ施設領域）の仮従業員情報を設定された新担当の従業員情報で更新する。</説明>
-        <SQL>UPDATE 
-    JKR_CHG_MR_INS_TRT 
-SET 
-    TO_MR_NO = #{inToMrNo}, 
-    TO_SOS_CD = #{inToSosCd}, 
-    UP_JGI_NO = #{inUserId}, 
-    UP_DATE = #{inSystemDate}, 
-    UP_SCRN_ID = #{inScreenId}, 
-    UP_FUNC_ID = #{inEventId} 
-WHERE 
-    TO_MR_NO = #{inKrJgiNo} 
+        <SQL>UPDATE
+    JKR_CHG_MR_INS_TRT
+SET
+    TO_MR_NO = #{inToMrNo},
+    TO_SOS_CD = #{inToSosCd},
+    UP_JGI_NO = #{inUserId},
+    UP_DATE = #{inSystemDate},
+    UP_SCRN_ID = #{inScreenId},
+    UP_FUNC_ID = #{inEventId}
+WHERE
+    TO_MR_NO = #{inKrJgiNo}
 AND TEKIYO_YMD = #{inTekiyoYmd}
 </SQL>
         <除外テーブルカラム名/>
@@ -5625,17 +5625,17 @@ AND TEKIYO_YMD = #{inTekiyoYmd}
         <SQLID>updateKrJgiChgMrInsDocTrt</SQLID>
         <説明>仮従業員登録画面
 担当変更情報（ＭＲ施設医師領域）の仮従業員情報を設定された新担当の従業員情報で更新する。</説明>
-        <SQL>UPDATE 
-    JKR_CHG_MR_INS_DOC_TRT 
-SET 
-    TO_MR_NO = #{inToMrNo}, 
-    TO_SOS_CD = #{inToSosCd}, 
-    UP_JGI_NO = #{inUserId}, 
-    UP_DATE = #{inSystemDate}, 
-    UP_SCRN_ID = #{inScreenId}, 
-    UP_FUNC_ID = #{inEventId} 
-WHERE 
-    TO_MR_NO = #{inKrJgiNo} 
+        <SQL>UPDATE
+    JKR_CHG_MR_INS_DOC_TRT
+SET
+    TO_MR_NO = #{inToMrNo},
+    TO_SOS_CD = #{inToSosCd},
+    UP_JGI_NO = #{inUserId},
+    UP_DATE = #{inSystemDate},
+    UP_SCRN_ID = #{inScreenId},
+    UP_FUNC_ID = #{inEventId}
+WHERE
+    TO_MR_NO = #{inKrJgiNo}
 AND TEKIYO_YMD = #{inTekiyoYmd}
 </SQL>
         <除外テーブルカラム名/>
@@ -5716,17 +5716,17 @@ AND TEKIYO_YMD = #{inTekiyoYmd}
         <SQLID>updateKrJgiChgMrInChrgOfIns</SQLID>
         <説明>仮従業員登録画面
 担当変更情報（施設責任者）の仮従業員情報を設定された新担当の従業員情報で更新する。</説明>
-        <SQL>UPDATE 
-    JKR_CHG_MR_IN_CHRG_OF_INS 
-SET 
-    TO_MR_NO = #{inToMrNo}, 
-    TO_SOS_CD = #{inToSosCd}, 
-    UP_JGI_NO = #{inUserId}, 
-    UP_DATE = #{inSystemDate}, 
-    UP_SCRN_ID = #{inScreenId}, 
-    UP_FUNC_ID = #{inEventId} 
-WHERE 
-    TO_MR_NO = #{inKrJgiNo} 
+        <SQL>UPDATE
+    JKR_CHG_MR_IN_CHRG_OF_INS
+SET
+    TO_MR_NO = #{inToMrNo},
+    TO_SOS_CD = #{inToSosCd},
+    UP_JGI_NO = #{inUserId},
+    UP_DATE = #{inSystemDate},
+    UP_SCRN_ID = #{inScreenId},
+    UP_FUNC_ID = #{inEventId}
+WHERE
+    TO_MR_NO = #{inKrJgiNo}
 AND TEKIYO_YMD = #{inTekiyoYmd}
 </SQL>
         <除外テーブルカラム名/>
@@ -5807,52 +5807,52 @@ AND TEKIYO_YMD = #{inTekiyoYmd}
         <SQLID>selectFromSosCdListByIns</SQLID>
         <説明>仮従業員登録画面
 振替後の新組織、新担当者、および適用日に紐付く現組織コードを取得</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
     DECODE(A.BUMON_RANK,4,A.UP_SOS_CD,A.SOS_CD) AS FROM_SOS_CD
-FROM 
-    S_JKR_M_SOS_MST_FIX A, 
-    ( 
-    SELECT 
-        FROM_SOS_CD 
-    FROM 
-        JKR_CHG_MR_INS_TRT 
-    WHERE 
-        TO_MR_NO = #{inToMrNo} 
+FROM
+    S_JKR_M_SOS_MST_FIX A,
+    (
+    SELECT
+        FROM_SOS_CD
+    FROM
+        JKR_CHG_MR_INS_TRT
+    WHERE
+        TO_MR_NO = #{inToMrNo}
     &lt;if test="inToSosCd != null"&gt;
-      AND TO_SOS_CD = #{inToSosCd} 
+      AND TO_SOS_CD = #{inToSosCd}
     &lt;/if&gt;
     &lt;if test="inTekiyoYmd != null"&gt;
-      AND TEKIYO_YMD = #{inTekiyoYmd} 
+      AND TEKIYO_YMD = #{inTekiyoYmd}
     &lt;/if&gt;
     &lt;if test="inScreenId != null"&gt;
-      AND UP_SCRN_ID = #{inScreenId} 
+      AND UP_SCRN_ID = #{inScreenId}
     &lt;/if&gt;
     &lt;if test="inEventId != null"&gt;
-      AND UP_FUNC_ID = #{inEventId} 
+      AND UP_FUNC_ID = #{inEventId}
     &lt;/if&gt;
     UNION
-    SELECT 
-        FROM_SOS_CD 
-    FROM 
-        JKR_CHG_MR_IN_CHRG_OF_INS 
-    WHERE 
-        TO_MR_NO = #{inToMrNo} 
+    SELECT
+        FROM_SOS_CD
+    FROM
+        JKR_CHG_MR_IN_CHRG_OF_INS
+    WHERE
+        TO_MR_NO = #{inToMrNo}
     &lt;if test="inToSosCd != null"&gt;
-      AND TO_SOS_CD = #{inToSosCd} 
+      AND TO_SOS_CD = #{inToSosCd}
     &lt;/if&gt;
     &lt;if test="inTekiyoYmd != null"&gt;
-      AND TEKIYO_YMD = #{inTekiyoYmd} 
+      AND TEKIYO_YMD = #{inTekiyoYmd}
     &lt;/if&gt;
     &lt;if test="inScreenId != null"&gt;
-      AND UP_SCRN_ID = #{inScreenId} 
+      AND UP_SCRN_ID = #{inScreenId}
     &lt;/if&gt;
     &lt;if test="inEventId != null"&gt;
-      AND UP_FUNC_ID = #{inEventId} 
+      AND UP_FUNC_ID = #{inEventId}
     &lt;/if&gt;
-    ) B 
-WHERE 
-    A.SOS_CD = B.FROM_SOS_CD 
-GROUP BY 
+    ) B
+WHERE
+    A.SOS_CD = B.FROM_SOS_CD
+GROUP BY
     DECODE(A.BUMON_RANK,4,A.UP_SOS_CD,A.SOS_CD)</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -5919,33 +5919,33 @@ GROUP BY
         <SQLID>selectFromSosCdListByDoc</SQLID>
         <説明>仮従業員登録画面
 振替後の新組織、新担当者、および適用日に紐付く現組織コードを取得</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
     DECODE(A.BUMON_RANK,4,A.UP_SOS_CD,A.SOS_CD) AS FROM_SOS_CD
-FROM 
-    S_JKR_M_SOS_MST_FIX A, 
-    ( 
-    SELECT 
-        FROM_SOS_CD 
-    FROM 
-        JKR_CHG_MR_INS_DOC_TRT  
-    WHERE 
-        TO_MR_NO = #{inToMrNo} 
+FROM
+    S_JKR_M_SOS_MST_FIX A,
+    (
+    SELECT
+        FROM_SOS_CD
+    FROM
+        JKR_CHG_MR_INS_DOC_TRT
+    WHERE
+        TO_MR_NO = #{inToMrNo}
     &lt;if test="inToSosCd != null"&gt;
-      AND TO_SOS_CD = #{inToSosCd} 
+      AND TO_SOS_CD = #{inToSosCd}
     &lt;/if&gt;
     &lt;if test="inTekiyoYmd != null"&gt;
-      AND TEKIYO_YMD = #{inTekiyoYmd} 
+      AND TEKIYO_YMD = #{inTekiyoYmd}
     &lt;/if&gt;
     &lt;if test="inScreenId != null"&gt;
-      AND UP_SCRN_ID = #{inScreenId} 
+      AND UP_SCRN_ID = #{inScreenId}
     &lt;/if&gt;
     &lt;if test="inEventId != null"&gt;
-      AND UP_FUNC_ID = #{inEventId} 
+      AND UP_FUNC_ID = #{inEventId}
     &lt;/if&gt;
-    ) B 
-WHERE 
-    A.SOS_CD = B.FROM_SOS_CD 
-GROUP BY 
+    ) B
+WHERE
+    A.SOS_CD = B.FROM_SOS_CD
+GROUP BY
     DECODE(A.BUMON_RANK,4,A.UP_SOS_CD,A.SOS_CD)</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -6013,7 +6013,7 @@ GROUP BY
         <説明>仮従業員登録画面
 従業員基本（所属情報）予定テーブルより、対象組織・ＭＲ種類に紐付くレコード件数を取得する。</説明>
         <SQL>SELECT
-    COUNT(*) AS REC_CNT 
+    COUNT(*) AS REC_CNT
 FROM
     JKR_MR_INS_TRT A
 WHERE
@@ -6120,12 +6120,12 @@ WHERE
         <説明>仮従業員登録画面
 選択している職種に紐付く領域コードをすべて取得する。</説明>
         <SQL>SELECT DISTINCT
-    TRT_CD 
+    TRT_CD
 FROM
-    S_JKR_COM_LNK_TRT_SHOKUSHU 
+    S_JKR_COM_LNK_TRT_SHOKUSHU
 WHERE
-    SHOKUSHU_CD = #{inShokushuCd} 
-AND TEKIYO_START_DATE &lt;= (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1) 
+    SHOKUSHU_CD = #{inShokushuCd}
+AND TEKIYO_START_DATE &lt;= (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1)
 AND TEKIYO_END_DATE &gt;= (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 1)
 </SQL>
         <除外テーブルカラム名/>
@@ -6161,39 +6161,39 @@ AND TEKIYO_END_DATE &gt;= (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = 
         <SQLID>insertKrJgiComMrSos</SQLID>
         <説明>仮従業員登録画面
 対象組織、領域コード、ＭＲ種別の組み合わせのデータを登録する。</説明>
-        <SQL>INSERT INTO 
-    COM_MR_SOS 
-( 
-    SOS_CD, 
-    MR_CAT, 
-    TRT_CD, 
-    SOS_CD2, 
-    SOS_CD3, 
-    SOS_CD4, 
-    SOS_CD5, 
-    UP_JGI_NO, 
-    IS_DATE, 
-    UP_DATE, 
-    UP_SCRN_ID, 
-    UP_FUNC_ID 
-) 
-SELECT 
-    SOS_CD, 
-    #{inInsMrCat}, 
-    #{inTrtCd}, 
-    SOS_CD2, 
-    SOS_CD3, 
-    SOS_CD4, 
-    SOS_CD5, 
+        <SQL>INSERT INTO
+    COM_MR_SOS
+(
+    SOS_CD,
+    MR_CAT,
+    TRT_CD,
+    SOS_CD2,
+    SOS_CD3,
+    SOS_CD4,
+    SOS_CD5,
+    UP_JGI_NO,
+    IS_DATE,
+    UP_DATE,
+    UP_SCRN_ID,
+    UP_FUNC_ID
+)
+SELECT
+    SOS_CD,
+    #{inInsMrCat},
+    #{inTrtCd},
+    SOS_CD2,
+    SOS_CD3,
+    SOS_CD4,
+    SOS_CD5,
     #{inUserId},
     #{inSystemDate},
     #{inSystemDate},
     #{inScreenId},
     #{inEventId}
-FROM 
-    S_JKR_M_JGI_SOS_PLAN 
-WHERE 
-    SOS_CD = #{inSosCd} 
+FROM
+    S_JKR_M_JGI_SOS_PLAN
+WHERE
+    SOS_CD = #{inSosCd}
     AND ROWNUM = '1' </SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -6386,10 +6386,10 @@ WHERE
    ,TEXT8
    ,TEXT9
    ,TEXT10
-FROM 
-    S_JKR_M_JGI_FLG_PLAN 
-WHERE 
-    JGI_NO = #{inJgiNo} 
+FROM
+    S_JKR_M_JGI_FLG_PLAN
+WHERE
+    JGI_NO = #{inJgiNo}
     AND #{inTekiyoYmd} BETWEEN START_DAY AND END_DAY </SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -6814,7 +6814,7 @@ FROM
     &lt;/if&gt;
     UNION ALL
     SELECT
-        '2' AS MONTH_KBN, TO_CHAR(ADD_MONTHS(CAL5.CAL_DATE,1),'YYYY') AS CAL_YEAR, 
+        '2' AS MONTH_KBN, TO_CHAR(ADD_MONTHS(CAL5.CAL_DATE,1),'YYYY') AS CAL_YEAR,
         TO_CHAR(ADD_MONTHS(CAL5.CAL_DATE,1),'MM') AS CAL_MONTH, '01' AS CAL_DAY
     FROM
         S_JKR_COM_CAL_USR CAL5
@@ -6889,13 +6889,13 @@ ORDER BY
         <SQL種別>SELECT</SQL種別>
         <SQLID>selectSosStsListByJokenABE</SQLID>
         <説明>担当変更状況設定・確認.初期表示、表示ボタン
-一覧データ検索SQL（条件判定フラグ="E"　または 
+一覧データ検索SQL（条件判定フラグ="E"　または
 　　　　　　 （検索組織コードが医薬営業本部（01050）以外 かつ　（条件判定フラグ="A"または条件判定フラグ="B"））
 　　　　　　）
 </説明>
-        <SQL>SELECT 
+        <SQL>SELECT
 &lt;if test="inSelectKbn == 0"&gt;
-   COUNT(*) AS REC_CNT 
+   COUNT(*) AS REC_CNT
 &lt;/if&gt;
 &lt;if test="inSelectKbn == 1"&gt;
     STS.SOS_CD       -- 組織コード
@@ -6913,18 +6913,18 @@ ORDER BY
    ,STS.UP_DATE      -- 更新日
    ,CNTTBL.CHANG_COUNT --変更件数
 &lt;/if&gt;
-FROM 
+FROM
   (
-    SELECT DISTINCT 
+    SELECT DISTINCT
        DECODE(MST.BUMON_RANK, 2, MST2.BUMON_SEI_NAME, 3, MST2.BUMON_SEI_NAME || ' ' || MST3.BUMON_SEI_NAME,4,MST2.BUMON_SEI_NAME || ' ' || MST3.BUMON_SEI_NAME || ' ' || MST4.BUMON_SEI_NAME) AS SOS_NAME
       ,MST.BR_CODE
       ,MST.DIST_SEQ
       ,MST.DIST_CODE
       ,MST.TEAM_CODE
-      ,JKR.* 
-    FROM 
+      ,JKR.*
+    FROM
       (
-        SELECT 
+        SELECT
            JSS.SOS_CD
           ,JSS.STATUS
           ,JSS.JGI_STS
@@ -6935,13 +6935,13 @@ FROM
           ,JSS.CHG_MR_INS_TRT_ERR_CNT
           ,JSS.CHG_MR_INS_DOC_TRT_ERR_CNT
           ,JSS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT
-          ,JSS.INF_DATA, JSS.UP_DATE 
-        FROM 
+          ,JSS.INF_DATA, JSS.UP_DATE
+        FROM
            JKR_SOS_STS JSS
            ,S_JKR_M_SOS_MST_FIX SOSMST
-        WHERE 
-              JSS.SOS_CD  = SOSMST.SOS_CD 
-          AND JSS.DISP_FLG = '1' 
+        WHERE
+              JSS.SOS_CD  = SOSMST.SOS_CD
+          AND JSS.DISP_FLG = '1'
           AND SOSMST.BUMON_RANK &lt;= 3
           &lt;if test="inJokenflg == 'E'.toString()"&gt;
             AND SOSMST.SOS_CD = #{inSosCd}
@@ -6949,23 +6949,23 @@ FROM
          &lt;if test="inJokenflg != 'E'.toString()"&gt;
             AND (SOSMST.SOS_CD = #{inSosCd} OR SOSMST.UP_SOS_CD = #{inSosCd})
           &lt;/if&gt;
-      ) JKR 
+      ) JKR
       ,V_COM_MR_SOS_TRT SOS
       ,S_JKR_M_SOS_MST_FIX MST
       ,S_JKR_M_SOS_MST_FIX MST2
       ,S_JKR_M_SOS_MST_FIX MST3
-      ,S_JKR_M_SOS_MST_FIX MST4 
-    WHERE 
-          SOS.SOS_CD = JKR.SOS_CD 
-      AND JKR.SOS_CD = MST.SOS_CD 
-      AND SOS.SOS_CD2 = MST2.SOS_CD  
-      AND SOS.SOS_CD3 = MST3.SOS_CD  
-      AND SOS.SOS_CD4 = MST4.SOS_CD 
+      ,S_JKR_M_SOS_MST_FIX MST4
+    WHERE
+          SOS.SOS_CD = JKR.SOS_CD
+      AND JKR.SOS_CD = MST.SOS_CD
+      AND SOS.SOS_CD2 = MST2.SOS_CD
+      AND SOS.SOS_CD3 = MST3.SOS_CD
+      AND SOS.SOS_CD4 = MST4.SOS_CD
   ) STS
 &lt;if test="inSelectKbn == 1"&gt;
 LEFT JOIN
   (
-    SELECT 
+    SELECT
        DECODE(SUB2.SOS_CD4,'00000',SUB2.SOS_CD, SUB2.SOS_CD3) AS SOS_CD       -- 組織コード
       ,SUB.TEKIYO_YMD   -- 適用日
       ,SUM(NVL(PROD.CNT,0) + NVL(INS.CNT,0) + NVL(CHRG.CNT,0) + NVL(DOC.CNT,0)) CHANG_COUNT --変更件数
@@ -7040,7 +7040,7 @@ LEFT JOIN
        ON PROD.SOS_CD = SUB.SOS_CD
       AND PROD.TEKIYO_YMD = SUB.TEKIYO_YMD
     WHERE
-      SUB.DISP_FLG = '1' 
+      SUB.DISP_FLG = '1'
     GROUP BY
        DECODE(SUB2.SOS_CD4,'00000',SUB2.SOS_CD, SUB2.SOS_CD3)  -- 組織コード
       ,SUB.TEKIYO_YMD   -- 適用日
@@ -7054,15 +7054,15 @@ WHERE 0=0
 &lt;/if&gt;
 &lt;if test="inFixFlg == 1"&gt;
   AND STS.STATUS &lt; '50'
-  AND STS.STATUS != '00' 
+  AND STS.STATUS != '00'
 &lt;/if&gt;
 &lt;if test="inErrFlg == 2"&gt;
-  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) &gt; 0 
+  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) &gt; 0
 &lt;/if&gt;
 &lt;if test="inErrFlg == 1"&gt;
-  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) = 0 
+  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) = 0
 &lt;/if&gt;
-ORDER BY 
+ORDER BY
    STS.BR_CODE
   ,STS.DIST_SEQ
   ,STS.DIST_CODE
@@ -7295,9 +7295,9 @@ ORDER BY
 　　　　　　 （検索組織コードが医薬営業本部（01050） かつ　（条件判定フラグ="A"または条件判定フラグ="B"））
 　　　　　　）
 </説明>
-        <SQL>SELECT 
+        <SQL>SELECT
 &lt;if test="inSelectKbn == 0"&gt;
-  COUNT(*) AS REC_CNT 
+  COUNT(*) AS REC_CNT
 &lt;/if&gt;
 &lt;if test="inSelectKbn == 1"&gt;
    STS.SOS_CD       -- 組織コード
@@ -7315,9 +7315,9 @@ ORDER BY
   ,STS.UP_DATE     -- 更新日
   ,CNTTBL.CHANG_COUNT --変更件数
 &lt;/if&gt;
-FROM 
-  ( 
-    SELECT DISTINCT 
+FROM
+  (
+    SELECT DISTINCT
        A.SOS_NAME
       ,A.BR_CODE
       ,A.DIST_SEQ
@@ -7336,7 +7336,7 @@ FROM
       ,B.INF_DATA
       ,B.UP_JGI_NO
       ,B.UP_DATE
-    FROM 
+    FROM
       (
         SELECT
            A.SOS_CD
@@ -7348,13 +7348,13 @@ FROM
           ,A.SOS_CD3
           ,A.SOS_CD4
           ,A.SOS_CD5
-          ,B.BUMON_SEI_NAME AS SOS_NAME 
+          ,B.BUMON_SEI_NAME AS SOS_NAME
         FROM
            V_COM_MR_SOS_TRT A
           ,S_JKR_M_SOS_MST_FIX B
         WHERE
-              A.SOS_CD = B.SOS_CD 
-          AND A.SOS_CD = A.SOS_CD2 
+              A.SOS_CD = B.SOS_CD
+          AND A.SOS_CD = A.SOS_CD2
         UNION
         SELECT
            A.SOS_CD
@@ -7367,16 +7367,16 @@ FROM
           ,A.SOS_CD4
           ,A.SOS_CD5
           ,B.BUMON_SEI_NAME || ' ' || C.BUMON_SEI_NAME AS SOS_NAME
-        FROM       
+        FROM
            V_COM_MR_SOS_TRT A
           ,S_JKR_M_SOS_MST_FIX B
           ,S_JKR_M_SOS_MST_FIX C
-        WHERE       
-               A.SOS_CD2 = B.SOS_CD 
-           AND A.SOS_CD = C.SOS_CD 
-           AND A.SOS_CD = A.SOS_CD3 
+        WHERE
+               A.SOS_CD2 = B.SOS_CD
+           AND A.SOS_CD = C.SOS_CD
+           AND A.SOS_CD = A.SOS_CD3
         UNION
-        SELECT 
+        SELECT
            A.SOS_CD
           ,D.BR_CODE
           ,D.DIST_SEQ
@@ -7385,21 +7385,21 @@ FROM
           ,A.SOS_CD2
           ,A.SOS_CD3
           ,A.SOS_CD4
-          ,A.SOS_CD5       
-          ,B.BUMON_SEI_NAME || ' ' || C.BUMON_SEI_NAME || ' ' || D.BUMON_SEI_NAME AS SOS_NAME       
-        FROM       
+          ,A.SOS_CD5
+          ,B.BUMON_SEI_NAME || ' ' || C.BUMON_SEI_NAME || ' ' || D.BUMON_SEI_NAME AS SOS_NAME
+        FROM
            V_COM_MR_SOS_TRT A
           ,S_JKR_M_SOS_MST_FIX B
           ,S_JKR_M_SOS_MST_FIX C
-          ,S_JKR_M_SOS_MST_FIX D       
-        WHERE       
-              A.SOS_CD2 = B.SOS_CD 
-          AND A.SOS_CD3 = C.SOS_CD 
-          AND A.SOS_CD = D.SOS_CD 
+          ,S_JKR_M_SOS_MST_FIX D
+        WHERE
+              A.SOS_CD2 = B.SOS_CD
+          AND A.SOS_CD3 = C.SOS_CD
+          AND A.SOS_CD = D.SOS_CD
           AND A.SOS_CD = A.SOS_CD4
-      ) A, 
+      ) A,
       (
-        SELECT 
+        SELECT
            JK.SOS_CD
           ,JK.TEKIYO_YMD
           ,JK.STATUS
@@ -7414,22 +7414,22 @@ FROM
           ,JK.INF_DATA
           ,JK.UP_JGI_NO
           ,JK.IS_DATE
-          ,JK.UP_DATE 
-        FROM 
+          ,JK.UP_DATE
+        FROM
            JKR_SOS_STS JK
           ,S_JKR_M_SOS_MST_FIX M
-        WHERE 
-              JK.SOS_CD = M.SOS_CD 
-          AND JK.DISP_FLG = '1' 
+        WHERE
+              JK.SOS_CD = M.SOS_CD
+          AND JK.DISP_FLG = '1'
           AND M.BUMON_RANK &lt;= 3
       ) B
-    WHERE 
+    WHERE
         A.SOS_CD = B.SOS_CD
-  ) STS 
+  ) STS
 &lt;if test="inSelectKbn == 1"&gt;
 LEFT JOIN
   (
-    SELECT 
+    SELECT
        DECODE(SUB2.SOS_CD4,'00000',SUB2.SOS_CD, SUB2.SOS_CD3) AS SOS_CD       -- 組織コード
       ,SUB.TEKIYO_YMD   -- 適用日
       ,SUM(NVL(PROD.CNT,0) + NVL(INS.CNT,0) + NVL(CHRG.CNT,0) + NVL(DOC.CNT,0)) CHANG_COUNT --変更件数
@@ -7504,7 +7504,7 @@ LEFT JOIN
        ON PROD.SOS_CD = SUB.SOS_CD
       AND PROD.TEKIYO_YMD = SUB.TEKIYO_YMD
     WHERE
-      SUB.DISP_FLG = '1' 
+      SUB.DISP_FLG = '1'
     GROUP BY
        DECODE(SUB2.SOS_CD4,'00000',SUB2.SOS_CD, SUB2.SOS_CD3)  -- 組織コード
       ,SUB.TEKIYO_YMD   -- 適用日
@@ -7517,17 +7517,17 @@ WHERE 0=0
   AND STS.SOS_CD IN (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE SOS_CD = #{inSosCd} OR SOS_CD2 = #{inSosCd} OR SOS_CD3 = #{inSosCd})
 &lt;/if&gt;
 &lt;if test="inJokenflg == 'D'.toString()"&gt;
-  AND STS.SOS_CD IN 
+  AND STS.SOS_CD IN
         (
-          SELECT SOS_CD 
+          SELECT SOS_CD
           FROM V_COM_MR_SOS_TRT
-          WHERE TRT_CD IN 
+          WHERE TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
@@ -7538,15 +7538,15 @@ WHERE 0=0
 &lt;/if&gt;
 &lt;if test="inFixFlg == 1"&gt;
   AND STS.STATUS &lt; '50'
-  AND STS.STATUS != '00' 
+  AND STS.STATUS != '00'
 &lt;/if&gt;
 &lt;if test="inErrFlg == 2"&gt;
-  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) &gt; 0 
+  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) &gt; 0
 &lt;/if&gt;
 &lt;if test="inErrFlg == 1"&gt;
-  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) = 0 
+  AND ( STS.CHG_TNT_MR_ERR_CNT + STS.CHG_MR_INS_TRT_ERR_CNT + STS.CHG_MR_INS_DOC_TRT_ERR_CNT + STS.CHG_MR_IN_CHRG_OF_INS_ERR_CNT) = 0
 &lt;/if&gt;
-ORDER BY 
+ORDER BY
    STS.BR_CODE
   ,STS.DIST_SEQ
   ,STS.DIST_CODE</SQL>
@@ -7774,26 +7774,26 @@ ORDER BY
         <SQLID>selectUnderSosList</SQLID>
         <説明>担当変更状況設定・確認.更新ボタン押下、設定クリアボタン押下、チェックボタン押下、解除ボタン押下、解除ボタン押下
 選択組織が営業所レベルの場合、配下組織の組織コードをすべて取得する</説明>
-        <SQL>SELECT DISTINCT 
+        <SQL>SELECT DISTINCT
    SOS_CD
   ,TEKIYO_YMD
   ,JGI_STS
-FROM 
-  ( 
-    SELECT 
+FROM
+  (
+    SELECT
        DECODE(M.BUMON_RANK, 4,M.UP_SOS_CD,M.SOS_CD) NEW_SOS_CD
       ,M.SOS_CD
       ,S.TEKIYO_YMD
       ,S.JGI_STS
-    FROM 
+    FROM
        JKR_SOS_STS S
-      ,S_JKR_M_SOS_MST_FIX M 
-    WHERE 
-          S.SOS_CD = M.SOS_CD 
+      ,S_JKR_M_SOS_MST_FIX M
+    WHERE
+          S.SOS_CD = M.SOS_CD
       AND S.DISP_FLG = '1'
-    ORDER BY BUMON_RANK 
-  ) 
-WHERE 
+    ORDER BY BUMON_RANK
+  )
+WHERE
   NEW_SOS_CD = #{inSosCd}</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -8054,9 +8054,9 @@ WHERE
         <SQLID>selectTekiyoYmdList</SQLID>
         <説明>担当変更状況設定・確認.設定クリアボタン押下
 選択組織の担当変更情報が存在する[適用日]を全て取得するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
   TEKIYO_YMD
-FROM 
+FROM
   JKR_SOS_STS
 WHERE
   SOS_CD = #{inSosCd}
@@ -8093,18 +8093,18 @@ ORDER BY TEKIYO_YMD DESC</SQL>
         <SQL種別>SELECT</SQL種別>
         <SQLID>selectCtrlFlg</SQLID>
         <説明>新組織表示権限検索SELECTのSQL文の生成</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
    SOS_CD
-  ,CTRL_FLG 
-FROM 
-  JKR_CTRL_TOSOS 
-WHERE 
+  ,CTRL_FLG
+FROM
+  JKR_CTRL_TOSOS
+WHERE
    JOKEN_SET_CD = #{inJgiJoken}
 &lt;if test="inHandaFlg != null"&gt;
-  AND SOS_CD IN 
+  AND SOS_CD IN
       (
-        SELECT SOS_CD 
-        FROM S_JKR_M_JGI_MST 
+        SELECT SOS_CD
+        FROM S_JKR_M_JGI_MST
         WHERE JGI_NO = #{inJgiNo}
        )
 &lt;/if&gt;</SQL>
@@ -8224,11 +8224,11 @@ WHERE EXISTS
         <SQLID>selectCalDate</SQLID>
         <説明>担当変更状況確定ボタン押下して、
 担当変更状況テーブル更新用の項目「確定入力日(バッチ用)」を取得するＳＱＬ</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
    CAL_DATE
-FROM 
+FROM
   S_JKR_COM_CAL_USR
-WHERE 
+WHERE
    TODAY = '1'</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -8319,7 +8319,7 @@ WHERE
         AND JSP.JGI_NO = JBP.JGI_NO
         AND JBP.JGI_KB != '7'
         AND   (JBP.TAISHOKU_DAY IS NULL                                                       -- 退職年月日
-                OR NOT (TO_CHAR(JBP.TAISHOKU_DAY, 'YYYYMMDD')   &lt;=    
+                OR NOT (TO_CHAR(JBP.TAISHOKU_DAY, 'YYYYMMDD')   &lt;=
                     (
                     SELECT
                         TO_CHAR(ADD_MONTHS(CAL_DATE - 1, 1), 'YYYYMM') || '01'
@@ -8365,7 +8365,7 @@ WHERE
             AND JSP.JGI_NO = JBP.JGI_NO
             AND JBP.JGI_KB != '7'
             AND   (JBP.TAISHOKU_DAY IS NULL                                                       -- 退職年月日
-                    OR NOT (TO_CHAR(JBP.TAISHOKU_DAY, 'YYYYMMDD')   &lt;=    
+                    OR NOT (TO_CHAR(JBP.TAISHOKU_DAY, 'YYYYMMDD')   &lt;=
                         (
                         SELECT
                             TO_CHAR(ADD_MONTHS(CAL_DATE - 1, 1), 'YYYYMM') || '01'
@@ -8507,95 +8507,95 @@ WHERE
         <説明>担当変更状況（新組織）確認.初期表示、表示ボタン
 担当変更状況（新組織）確認に一覧データ検索SQL</説明>
         <SQL>&lt;if test="inSelectKbn == 0"&gt;
-SELECT 
-  COUNT(*) AS REC_CNT 
+SELECT
+  COUNT(*) AS REC_CNT
 FROM (
 &lt;/if&gt;
-  SELECT 
+  SELECT
      CHG.T_SOS_CD AS DSP_SOS_CD     -- 表示用組織コード
     ,NAME.SOS_NAME AS DSP_SOS_NAME  -- 表示用組織名称
     ,TSTS.STATUS AS STATUS_CD       -- 担当変更状況
     ,TO_CHAR(FSTS.TEKIYO_YMD,'yyyy/mm/dd') AS TEKIYO_YMD                -- 適用日
     ,MAX(TO_CHAR(TSTS.LAST_CHK_DATE,'yy/mm/dd hh24:mi:ss')) AS LAST_CHK_DATE  -- 最終確認日
     ,MIN(DECODE(FSTS.STATUS,'00','50',FSTS.STATUS)) FIXEDSTATUS    -- 確定済みチェック
-  FROM 
+  FROM
      JKR_SOS_STS FSTS          -- 担当変更状況
     ,JKR_TOSOS_STS TSTS        -- 担当変更状況（新組織）
     ,S_JKR_M_SOS_MST_PLAN SOSM,  -- 組織基本（予定）
     (
-      SELECT 
+      SELECT
          FSOS.SOS_CD2 FROMSOS2
         ,FSOS.SOS_CD3 FROMSOS3
         ,TSOS.SOS_CD2 TOSOS2
         ,TSOS.SOS_CD3 TOSOS3
         ,DECODE(FSOS.SOS_CD3,'00000',FSOS.SOS_CD2,FSOS.SOS_CD3) F_SOS_CD
-        ,DECODE(TSOS.SOS_CD3,'00000',TSOS.SOS_CD2,TSOS.SOS_CD3) T_SOS_CD 
-      FROM 
+        ,DECODE(TSOS.SOS_CD3,'00000',TSOS.SOS_CD2,TSOS.SOS_CD3) T_SOS_CD
+      FROM
          JKR_CHG_TNT_MR B            -- 担当変更情報（担当ＭＲ）
         ,V_COM_MR_SOS_TRT  FSOS             -- MR所属組織（現）
         ,V_COM_MR_SOS_TRT  TSOS             -- MR所属組織（新）
-      WHERE 
-            B.FROM_SOS_CD = FSOS.SOS_CD 
-        AND B.TO_SOS_CD = TSOS.SOS_CD 
-      GROUP BY 
+      WHERE
+            B.FROM_SOS_CD = FSOS.SOS_CD
+        AND B.TO_SOS_CD = TSOS.SOS_CD
+      GROUP BY
          FSOS.SOS_CD2
         ,FSOS.SOS_CD3
         ,TSOS.SOS_CD2
-        ,TSOS.SOS_CD3 
-    ) CHG, 
-    ( 
-      SELECT 
+        ,TSOS.SOS_CD3
+    ) CHG,
+    (
+      SELECT
          HIER.SOS_CD
         ,HIER.BUMON_SEI_NAME2 || '　' || HIER.BUMON_SEI_NAME3 SOS_NAME
-        ,HIER.BUMON_RANK 
-      FROM 
+        ,HIER.BUMON_RANK
+      FROM
          S_JKR_M_SOS_MST_PLAN_HIER HIER
         ,V_COM_MR_SOS_TRT  COM              -- MR所属組織
-      WHERE 
-            HIER.SOS_CD2 = COM.SOS_CD2 
+      WHERE
+            HIER.SOS_CD2 = COM.SOS_CD2
         AND HIER.SOS_CD3 = COM.SOS_CD3
         &lt;if test="inKbnFlg == 1"&gt;
-           AND HIER.SOS_CD1 = #{inSosCd} 
-           AND HIER.SOS_CD2 != '00000' 
+           AND HIER.SOS_CD1 = #{inSosCd}
+           AND HIER.SOS_CD2 != '00000'
         &lt;/if&gt;
          &lt;if test="inKbnFlg == 2"&gt;
-          AND HIER.SOS_CD2 = #{inSosCd} 
+          AND HIER.SOS_CD2 = #{inSosCd}
         &lt;/if&gt;
         &lt;if test="inKbnFlg == 3"&gt;
-           AND HIER.SOS_CD1 = #{inSosCd} 
-           AND HIER.SOS_CD2 != '00000' 
-           AND COM.TRT_CD IN 
+           AND HIER.SOS_CD1 = #{inSosCd}
+           AND HIER.SOS_CD2 != '00000'
+           AND COM.TRT_CD IN
                (
                  SELECT
-                    TRT_CD 
-                  FROM  
-                    S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                  WHERE 
+                    TRT_CD
+                  FROM
+                    S_JKR_COM_LNK_TRTGRP_TRT TRT
+                  WHERE
                       TRT_GRP_CD = #{inTrtGrpCd}
                   AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
                 )
         &lt;/if&gt;
         &lt;if test="inKbnFlg == 4"&gt;
-          AND HIER.SOS_CD = #{inSosCd} 
+          AND HIER.SOS_CD = #{inSosCd}
         &lt;/if&gt;
-        AND BUMON_RANK IN ('2','3') 
-      GROUP BY 
+        AND BUMON_RANK IN ('2','3')
+      GROUP BY
          HIER.SOS_CD
         ,HIER.SOS_CD2
         ,HIER.SOS_CD3
         ,HIER.BUMON_SEI_NAME2
         ,HIER.BUMON_SEI_NAME3
         ,HIER.BUMON_RANK
-    ) NAME 
-  WHERE 
-      FSTS.SOS_CD = CHG.F_SOS_CD 
-  AND TSTS.SOS_CD = CHG.T_SOS_CD 
-  AND TSTS.SOS_CD = NAME.SOS_CD 
-  AND TSTS.SOS_CD = SOSM.SOS_CD 
-  AND SOSM.FLG_NEXT_MONTH = '1' 
-  AND FSTS.DISP_FLG = '1' 
+    ) NAME
+  WHERE
+      FSTS.SOS_CD = CHG.F_SOS_CD
+  AND TSTS.SOS_CD = CHG.T_SOS_CD
+  AND TSTS.SOS_CD = NAME.SOS_CD
+  AND TSTS.SOS_CD = SOSM.SOS_CD
+  AND SOSM.FLG_NEXT_MONTH = '1'
+  AND FSTS.DISP_FLG = '1'
   AND FSTS.TEKIYO_YMD = TSTS.TEKIYO_YMD
-  GROUP BY 
+  GROUP BY
      SOSM.BR_CODE
     ,SOSM.DIST_SEQ
     ,SOSM.DIST_CODE
@@ -8603,10 +8603,10 @@ FROM (
     ,TSTS.STATUS
     ,NAME.SOS_NAME
     ,FSTS.TEKIYO_YMD
-  ORDER BY 
+  ORDER BY
      SOSM.BR_CODE
     ,SOSM.DIST_SEQ
-    ,SOSM.DIST_CODE 
+    ,SOSM.DIST_CODE
 &lt;if test="inSelectKbn == 0"&gt;
 )
 &lt;/if&gt;</SQL>
@@ -8733,7 +8733,7 @@ FROM (
         <SQLID>selectCsvToSosStsList</SQLID>
         <説明>担当変更状況（新組織）確認.CSV出力ボタン
 担当変更状況（新組織）確認にCSVデータ検索SQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
    TO_CHAR(MAIN.TEKIYO_YMD,'yyyy/mm/dd') AS TEKIYO_YMD   -- 適用日
   ,MAIN.SOS_NAME     -- 組織名(csv)
   ,MAIN.PSOS_CD      -- 新組織区分(csv)
@@ -8742,318 +8742,318 @@ FROM (
   ,DECODE(MR.BYMR_ERR_CNT, NULL, '0', MR.BYMR_ERR_CNT) || '件'     AS BYMR_ERR_CNT   -- エラー担当(csv)
   ,DECODE(INS.BYINS_ERR_CNT, NULL, '0', INS.BYINS_ERR_CNT) || '件' AS BYINS_ERR_CNT  -- エラー施設(csv)
   ,DECODE(DOC.BYDOC_ERR_CNT, NULL, '0', DOC.BYDOC_ERR_CNT) || '件' AS BYDOC_ERR_CNT  -- エラー医師(csv)
-FROM 
+FROM
     -- エラー担当ビュー
   (
-    SELECT 
+    SELECT
        SUM(ERR.BYMR_ERR_CNT) BYMR_ERR_CNT    -- エラー担当
       ,ERR.SOS_CD TO_SOS_CD                  -- 新組織コード
       ,ERR.TEKIYO_YMD                        -- 適用日
     FROM
-      ( 
-        SELECT 
+      (
+        SELECT
           COUNT(*) BYMR_ERR_CNT
-         ,DECODE(MS.SOS_CD4, '00000', BMR.TO_SOS_CD, MS.SOS_CD3) SOS_CD 
+         ,DECODE(MS.SOS_CD4, '00000', BMR.TO_SOS_CD, MS.SOS_CD3) SOS_CD
          ,BMR.TEKIYO_YMD
-        FROM 
+        FROM
           JKR_CHG_TNT_MR BMR             -- 担当変更情報（担当ＭＲ）
          ,V_COM_MR_SOS_TRT  MS            -- MR所属組織（MR種類）
-        WHERE 
-           BMR.TO_SOS_CD = MS.SOS_CD 
+        WHERE
+           BMR.TO_SOS_CD = MS.SOS_CD
           &lt;if test="inKbnFlg == 2"&gt;
-            AND MS.SOS_CD2 = #{inSosCd} 
+            AND MS.SOS_CD2 = #{inSosCd}
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 3"&gt;
-           AND MS.TRT_CD IN 
+           AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 4"&gt;
-            AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} ) 
-            AND MS.TRT_CD IN 
+            AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} )
+            AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
-            AND NVL(BMR.MSG_CD, '0') != '0' 
-        GROUP BY 
+            AND NVL(BMR.MSG_CD, '0') != '0'
+        GROUP BY
            BMR.TO_SOS_CD
           ,BMR.TEKIYO_YMD
           ,MS.SOS_CD3
-          ,MS.SOS_CD4 
-      ) ERR 
-   GROUP BY 
+          ,MS.SOS_CD4
+      ) ERR
+   GROUP BY
       ERR.SOS_CD
      ,ERR.TEKIYO_YMD
-  ) MR, 
+  ) MR,
   -- エラー施設ビュー
   (
-    SELECT 
+    SELECT
        SUM(ERR.BYINS_ERR_CNT) BYINS_ERR_CNT  -- エラー施設
       ,ERR.SOS_CD TO_SOS_CD                  -- 新組織コード
       ,ERR.TEKIYO_YMD                        -- 適用日
     FROM
-      ( 
-        SELECT 
+      (
+        SELECT
            COUNT(*) BYINS_ERR_CNT
           ,DECODE(MS.SOS_CD4, '00000', BINS.TO_SOS_CD, MS.SOS_CD3) SOS_CD
-          ,BINS.TEKIYO_YMD 
-        FROM 
+          ,BINS.TEKIYO_YMD
+        FROM
            JKR_CHG_MR_INS_TRT BINS   -- 担当変更情報（ＭＲ施設領域）
           ,V_COM_MR_SOS_TRT  MS             -- MR所属組織（MR種類）
-        WHERE 
-                BINS.TO_SOS_CD = MS.SOS_CD 
+        WHERE
+                BINS.TO_SOS_CD = MS.SOS_CD
           &lt;if test="inKbnFlg == 2"&gt;
-            AND MS.SOS_CD2 = #{inSosCd} 
+            AND MS.SOS_CD2 = #{inSosCd}
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 3"&gt;
-           AND MS.TRT_CD IN 
+           AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 4"&gt;
-            AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} ) 
-            AND MS.TRT_CD IN 
+            AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} )
+            AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
-          AND NVL(BINS.MSG_CD, '0') != '0' 
-        GROUP BY 
+          AND NVL(BINS.MSG_CD, '0') != '0'
+        GROUP BY
            BINS.TO_SOS_CD
           ,BINS.TEKIYO_YMD
           ,MS.SOS_CD3
-          ,MS.SOS_CD4 
+          ,MS.SOS_CD4
         UNION
-        SELECT 
+        SELECT
            COUNT(*) BYINS_ERR_CNT
           ,DECODE(MS.SOS_CD4, '00000', CHRG.TO_SOS_CD, MS.SOS_CD3) SOS_CD
-          ,CHRG.TEKIYO_YMD 
-        FROM 
+          ,CHRG.TEKIYO_YMD
+        FROM
            JKR_CHG_MR_IN_CHRG_OF_INS CHRG  -- 担当変更情報（施設責任者）
           ,V_COM_MR_SOS_TRT  MS            -- MR所属組織（MR種類）
-        WHERE 
-                CHRG.TO_SOS_CD = MS.SOS_CD 
+        WHERE
+                CHRG.TO_SOS_CD = MS.SOS_CD
           &lt;if test="inKbnFlg == 2"&gt;
-            AND MS.SOS_CD2 = #{inSosCd} 
+            AND MS.SOS_CD2 = #{inSosCd}
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 3"&gt;
-           AND MS.TRT_CD IN 
+           AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 4"&gt;
-            AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} ) 
-            AND MS.TRT_CD IN 
+            AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} )
+            AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
-          AND NVL(CHRG.MSG_CD, '0') != '0' 
-        GROUP BY 
+          AND NVL(CHRG.MSG_CD, '0') != '0'
+        GROUP BY
            CHRG.TO_SOS_CD
           ,CHRG.TEKIYO_YMD
           ,MS.SOS_CD3
-          ,MS.SOS_CD4 
-      ) ERR 
-    GROUP BY 
+          ,MS.SOS_CD4
+      ) ERR
+    GROUP BY
        ERR.SOS_CD
       ,ERR.TEKIYO_YMD
-  ) INS, 
+  ) INS,
   -- エラー医師ビュー
   (
-    SELECT 
+    SELECT
        SUM(ERR.BYDOC_ERR_CNT) BYDOC_ERR_CNT  -- エラー医師
       ,ERR.SOS_CD TO_SOS_CD                  -- 新組織コード
       ,ERR.TEKIYO_YMD                        -- 適用日
     FROM
-      ( 
-        SELECT 
+      (
+        SELECT
            COUNT(*) BYDOC_ERR_CNT
-          ,DECODE(MS.SOS_CD4, '00000', BDOC.TO_SOS_CD, MS.SOS_CD3) SOS_CD 
+          ,DECODE(MS.SOS_CD4, '00000', BDOC.TO_SOS_CD, MS.SOS_CD3) SOS_CD
           ,BDOC.TEKIYO_YMD
-        FROM 
+        FROM
            JKR_CHG_MR_INS_DOC_TRT BDOC     -- 担当変更情報（ＭＲ施設医師領域）
           ,V_COM_MR_SOS_TRT  MS             -- MR所属組織
-        WHERE 
-           BDOC.TO_SOS_CD = MS.SOS_CD 
+        WHERE
+           BDOC.TO_SOS_CD = MS.SOS_CD
           &lt;if test="inKbnFlg == 2"&gt;
-            AND MS.SOS_CD2 = #{inSosCd} 
+            AND MS.SOS_CD2 = #{inSosCd}
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 3"&gt;
-           AND MS.TRT_CD IN 
+           AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
           &lt;if test="inKbnFlg == 4"&gt;
-           AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} ) 
-           AND MS.TRT_CD IN 
+           AND (MS.SOS_CD2 = #{inSosCd} OR MS.SOS_CD3 = #{inSosCd} )
+           AND MS.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
-          AND NVL(BDOC.MSG_CD, '0') != '0' 
-      GROUP BY 
+          AND NVL(BDOC.MSG_CD, '0') != '0'
+      GROUP BY
          BDOC.TO_SOS_CD
         ,BDOC.TEKIYO_YMD
         ,MS.SOS_CD3
-        ,MS.SOS_CD4 
-      ) ERR 
-    GROUP BY 
+        ,MS.SOS_CD4
+      ) ERR
+    GROUP BY
        ERR.SOS_CD
       ,ERR.TEKIYO_YMD
   ) DOC,
   -- 新組織情報
   (
-    SELECT 
+    SELECT
        NAME.SOS_NAME SOS_NAME
       ,DECODE(PLAN_SOS.SOS_CD,NULL,'','新') PSOS_CD
       ,FSTS.TEKIYO_YMD
       ,DECODE(TSTS.STATUS,'00','','10','未','20','済') STATUS1
-      ,DECODE(PLAN_SOS.SOS_CD,NULL,DECODE(MAX(FSTS.STATUS),'00','', DECODE(MIN(DECODE(FSTS.STATUS,'00', '50', FSTS.STATUS)),'50','済','40','未','')),'-') STATUS2 
+      ,DECODE(PLAN_SOS.SOS_CD,NULL,DECODE(MAX(FSTS.STATUS),'00','', DECODE(MIN(DECODE(FSTS.STATUS,'00', '50', FSTS.STATUS)),'50','済','40','未','')),'-') STATUS2
       ,TSTS.SOS_CD SOS_CD
       ,SOSM.BR_CODE BR_CODE
       ,SOSM.DIST_SEQ DIST_SEQ
-      ,SOSM.DIST_CODE DIST_CODE 
-    FROM 
+      ,SOSM.DIST_CODE DIST_CODE
+    FROM
        JKR_SOS_STS FSTS          -- 担当変更状況
       ,JKR_TOSOS_STS TSTS        -- 担当変更状況（新組織）
       ,S_JKR_M_SOS_MST_PLAN SOSM -- 組織基本（予定）
-      ,( 
-        SELECT 
+      ,(
+        SELECT
            FSOS.SOS_CD2 FROMSOS2
           ,FSOS.SOS_CD3 FROMSOS3
           ,TSOS.SOS_CD2 TOSOS2
           ,TSOS.SOS_CD3 TOSOS3
           ,DECODE(FSOS.SOS_CD3,'00000',FSOS.SOS_CD2,FSOS.SOS_CD3) F_SOS_CD
-          ,DECODE(TSOS.SOS_CD3,'00000',TSOS.SOS_CD2,TSOS.SOS_CD3) T_SOS_CD 
-        FROM 
+          ,DECODE(TSOS.SOS_CD3,'00000',TSOS.SOS_CD2,TSOS.SOS_CD3) T_SOS_CD
+        FROM
            JKR_CHG_TNT_MR B     -- 担当変更情報（担当ＭＲ）
           ,V_COM_MR_SOS_TRT  FSOS      -- MR所属組織（現）
           ,V_COM_MR_SOS_TRT  TSOS      -- MR所属組織（新）
-        WHERE 
-              B.FROM_SOS_CD = FSOS.SOS_CD 
-          AND B.TO_SOS_CD = TSOS.SOS_CD 
-        GROUP BY 
+        WHERE
+              B.FROM_SOS_CD = FSOS.SOS_CD
+          AND B.TO_SOS_CD = TSOS.SOS_CD
+        GROUP BY
             FSOS.SOS_CD2
            ,FSOS.SOS_CD3
            ,TSOS.SOS_CD2
-           ,TSOS.SOS_CD3 
+           ,TSOS.SOS_CD3
       ) CHG,                  -- 担当変更状況
-      ( 
+      (
         SELECT DISTINCT
            HIER.SOS_CD
           ,HIER.BUMON_SEI_NAME2 || '　' ||HIER.BUMON_SEI_NAME3 SOS_NAME
-          ,HIER.BUMON_RANK 
-        FROM 
-           S_JKR_M_SOS_MST_PLAN_HIER HIER 
+          ,HIER.BUMON_RANK
+        FROM
+           S_JKR_M_SOS_MST_PLAN_HIER HIER
           ,V_COM_MR_SOS_TRT  COM              -- MR所属組織
-        WHERE 
-              HIER.SOS_CD2 = COM.SOS_CD2 
-          AND HIER.SOS_CD3 = COM.SOS_CD3 
+        WHERE
+              HIER.SOS_CD2 = COM.SOS_CD2
+          AND HIER.SOS_CD3 = COM.SOS_CD3
         &lt;if test="inKbnFlg == 1"&gt;
-          AND HIER.SOS_CD1 = #{inSosCd} 
-          AND HIER.SOS_CD2 != '00000' 
+          AND HIER.SOS_CD1 = #{inSosCd}
+          AND HIER.SOS_CD2 != '00000'
         &lt;/if&gt;
         &lt;if test="inKbnFlg == 2"&gt;
-          AND HIER.SOS_CD2 = #{inSosCd} 
+          AND HIER.SOS_CD2 = #{inSosCd}
         &lt;/if&gt;
         &lt;if test="inKbnFlg == 3"&gt;
-           AND HIER.SOS_CD1 = #{inSosCd} 
-           AND HIER.SOS_CD2 != '00000' 
-           AND COM.TRT_CD IN 
+           AND HIER.SOS_CD1 = #{inSosCd}
+           AND HIER.SOS_CD2 != '00000'
+           AND COM.TRT_CD IN
              (
                SELECT
-                  TRT_CD 
-                FROM  
-                  S_JKR_COM_LNK_TRTGRP_TRT TRT 
-                WHERE 
+                  TRT_CD
+                FROM
+                  S_JKR_COM_LNK_TRTGRP_TRT TRT
+                WHERE
                     TRT_GRP_CD = #{inTrtGrpCd}
                 AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
               )
           &lt;/if&gt;
         &lt;if test="inKbnFlg == 4"&gt;
-          AND HIER.SOS_CD = #{inSosCd} 
+          AND HIER.SOS_CD = #{inSosCd}
         &lt;/if&gt;
-        AND BUMON_RANK IN ('2','3') 
-        GROUP BY 
+        AND BUMON_RANK IN ('2','3')
+        GROUP BY
            HIER.SOS_CD
           ,HIER.SOS_CD2
           ,HIER.SOS_CD3
           ,HIER.BUMON_SEI_NAME2
           ,HIER.BUMON_SEI_NAME3
-          ,HIER.BUMON_RANK 
-       ) NAME, 
-       ( 
-         SELECT 
-            SOS_CD 
+          ,HIER.BUMON_RANK
+       ) NAME,
+       (
+         SELECT
+            SOS_CD
          FROM S_JKR_M_SOS_MST_PLAN   -- 組織基本（予定）
-         WHERE 
-            START_DAY &gt; (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') 
+         WHERE
+            START_DAY &gt; (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1')
          AND FIX_FLG = '1'
-       ) PLAN_SOS 
-    WHERE 
-          FSTS.SOS_CD = CHG.F_SOS_CD 
-      AND TSTS.SOS_CD = CHG.T_SOS_CD 
-      AND TSTS.SOS_CD = NAME.SOS_CD 
-      AND TSTS.SOS_CD = PLAN_SOS.SOS_CD(+) 
-      AND TSTS.SOS_CD = SOSM.SOS_CD 
-      AND SOSM.FLG_NEXT_MONTH = '1' 
-      AND FSTS.DISP_FLG = '1' 
+       ) PLAN_SOS
+    WHERE
+          FSTS.SOS_CD = CHG.F_SOS_CD
+      AND TSTS.SOS_CD = CHG.T_SOS_CD
+      AND TSTS.SOS_CD = NAME.SOS_CD
+      AND TSTS.SOS_CD = PLAN_SOS.SOS_CD(+)
+      AND TSTS.SOS_CD = SOSM.SOS_CD
+      AND SOSM.FLG_NEXT_MONTH = '1'
+      AND FSTS.DISP_FLG = '1'
       AND FSTS.TEKIYO_YMD = TSTS.TEKIYO_YMD
-    GROUP BY 
+    GROUP BY
        SOSM.BR_CODE
       ,SOSM.DIST_SEQ
       ,SOSM.DIST_CODE
@@ -9062,20 +9062,20 @@ FROM
       ,NAME.SOS_NAME
       ,PLAN_SOS.SOS_CD
       ,TSTS.SOS_CD
-      ,FSTS.TEKIYO_YMD 
-    ORDER BY 
-       SOSM.BR_CODE 
+      ,FSTS.TEKIYO_YMD
+    ORDER BY
+       SOSM.BR_CODE
       ,SOSM.DIST_SEQ
-      ,SOSM.DIST_CODE 
+      ,SOSM.DIST_CODE
    ) MAIN
-WHERE 
-    MAIN.SOS_CD = MR.TO_SOS_CD(+) 
-AND MAIN.TEKIYO_YMD = MR.TEKIYO_YMD(+) 
-AND MAIN.SOS_CD = INS.TO_SOS_CD(+) 
-AND MAIN.TEKIYO_YMD = INS.TEKIYO_YMD(+) 
-AND MAIN.SOS_CD = DOC.TO_SOS_CD(+) 
-AND MAIN.TEKIYO_YMD = DOC.TEKIYO_YMD(+) 
-ORDER BY 
+WHERE
+    MAIN.SOS_CD = MR.TO_SOS_CD(+)
+AND MAIN.TEKIYO_YMD = MR.TEKIYO_YMD(+)
+AND MAIN.SOS_CD = INS.TO_SOS_CD(+)
+AND MAIN.TEKIYO_YMD = INS.TEKIYO_YMD(+)
+AND MAIN.SOS_CD = DOC.TO_SOS_CD(+)
+AND MAIN.TEKIYO_YMD = DOC.TEKIYO_YMD(+)
+ORDER BY
    MAIN.BR_CODE
   ,MAIN.DIST_SEQ
   ,MAIN.DIST_CODE </SQL>
@@ -9584,7 +9584,7 @@ ORDER BY
     AND V_PROD.TEKIYO_YMD = TRT.TEKIYO_YMD
     )
 &lt;if test="inSelectKbn == 0"&gt;
-SELECT 
+SELECT
     COUNT(*) AS REC_CNT
 &lt;/if&gt;
 &lt;if test="inSelectKbn == 1"&gt;
@@ -9602,16 +9602,16 @@ SELECT
     FROM
         V_JKR_MR_INS_PROD_COUNT_WK A
     WHERE
-        0 = 0 
+        0 = 0
 &lt;if test="inBtTkyFlg != 1"&gt;
       AND A.PROD_TEKIYO_YMD = DECODE(A.OLD_HAVE_FLG, '0', #{inTekiyoYmd}, A.TEKIYO_YMD)
 &lt;/if&gt;
 &lt;if test="inBtTkyFlg == 1"&gt;
       AND CASE WHEN A.OLD_HAVE_FLG = '0' AND A.PROD_TEKIYO_YMD != #{inTekiyoYmd} THEN '1'
-                   ELSE CASE WHEN A.OLD_HAVE_FLG = '1' AND A.PROD_TEKIYO_YMD = A.TEKIYO_YMD THEN '1' 
+                   ELSE CASE WHEN A.OLD_HAVE_FLG = '1' AND A.PROD_TEKIYO_YMD = A.TEKIYO_YMD THEN '1'
                              ELSE '0'
                         END
-                   END = '1' 
+                   END = '1'
 &lt;/if&gt;
     GROUP BY
         A.TEKIYO_YMD
@@ -9658,12 +9658,12 @@ SELECT
 SELECT /*+ NO_MERGE(INS_CNTV) PUSH_PRED(INS_CNTV) */
       BASE.TEKIYO_YMD         --適用日
      ,CASE WHEN BASE.FROM_MR_NO != 0 AND BASE.TEKIYO_YMD = JGI_S_FP.HATUREI_DAY
-           THEN DECODE(JGI_S_FP.MOVE_FLG,'2','2','3','2','0') 
+           THEN DECODE(JGI_S_FP.MOVE_FLG,'2','2','3','2','0')
            ELSE '0' END AS FROM_INOUT                  --現担当転入出フラグ（出入マーク表示制御用）
      ,BASE.FROM_SOS_CD                                 --現組織コード
      ,CASE WHEN BASE.FROM_MR_NO = 0 AND BASE.MAIN_MR = '0' THEN '担当が追加されました。'
            WHEN BASE.FROM_MR_NO = 0 AND BASE.MAIN_MR = '1' THEN '副担当が追加されました。'
-           ELSE DECODE(JGI_F.BUMON_RANK, 
+           ELSE DECODE(JGI_F.BUMON_RANK,
                                        2, JGI_F.BUMON_RYAKU_NAME2,
                                        3, JGI_F.BUMON_RYAKU_NAME3,
                                        4, JGI_F.BUMON_RYAKU_NAME3 || JGI_F.BUMON_RYAKU_NAME4,
@@ -9689,12 +9689,12 @@ SELECT /*+ NO_MERGE(INS_CNTV) PUSH_PRED(INS_CNTV) */
      ,BASE.TO_SOS_CD                                 --新組織コード
      ,CASE WHEN BASE.TO_MR_NO = 0 AND BASE.MAIN_MR = '0' THEN '担当が外されました。'
            WHEN BASE.TO_MR_NO = 0 AND BASE.MAIN_MR = '1' THEN '副担当が外されました。'
-           ELSE DECODE(SOS_TS.BUMON_RANK, 
-                           2, SOS_TS.BUMON_RYAKU_NAME, 
-                           3, SOS_TS.BUMON_RYAKU_NAME, 
-                           4, SPH.BUMON_RYAKU_NAME || SOS_TS.BUMON_RYAKU_NAME, 
+           ELSE DECODE(SOS_TS.BUMON_RANK,
+                           2, SOS_TS.BUMON_RYAKU_NAME,
+                           3, SOS_TS.BUMON_RYAKU_NAME,
+                           4, SPH.BUMON_RYAKU_NAME || SOS_TS.BUMON_RYAKU_NAME,
                            SOS_TS.SOS_NAME
-                          ) 
+                          )
            END AS TO_SOS_NAME                       --組織名(新担当)
      ,JGI_S_TP.SOS_CD3  AS TO_SOS_CD_DIST           --新組織コード(所属営業所)
      ,DECODE(MRS.SOS_CD, MRS.SOS_CD2, MRS.SOS_CD2, MRS.SOS_CD3) AS SUMMARY_SOS_CD      --集計組織コード(営業所レベル以上)
@@ -9896,7 +9896,7 @@ INNER JOIN
                          B.INS_NO     = C.INS_NO
                     AND  B.TRT_GRP_CD = C.TRT_GRP_CD
                     AND  B.TRT_CD     = C.TRT_CD
-                    AND  B.MAIN_MR    = C.MAIN_MR 
+                    AND  B.MAIN_MR    = C.MAIN_MR
                     AND  B.MR_NO      = C.FROM_MR_NO
                     AND  C.TEKIYO_YMD = D.TEKIYO_YMD
                 WHERE
@@ -9945,7 +9945,7 @@ INNER JOIN
            &lt;/if&gt;
             GROUP BY E.TEKIYO_YMD, E.FROM_SOS_CD, E.FROM_MR_NO, E.TO_SOS_CD, E.TO_MR_NO, E.MAIN_MR
       ) INS_CNTV
-      ON 
+      ON
           NVL(INS_CNTV.MAIN_MR,'ZZ') = NVL(BASE.MAIN_MR,'ZZ')    --ベース情報：主副担当区分
       AND INS_CNTV.TEKIYO_YMD = BASE.TEKIYO_YMD        --ベース情報：適用日
       AND INS_CNTV.FROM_SOS_CD = BASE.FROM_SOS_CD      --ベース情報：現担当組織コード
@@ -9975,7 +9975,7 @@ INNER JOIN
 &lt;/if&gt;
 WHERE 0 = 0
 --別適用日CSV出力時
-  &lt;if test="inBtTkyFlg == 1"&gt; 
+  &lt;if test="inBtTkyFlg == 1"&gt;
     AND CD3.DATA_NAME IS NOT NULL
   &lt;/if&gt;
 -- 組織(現)指定ありの場合
@@ -10123,7 +10123,7 @@ MINUS
             <No.>5</No.>
             <パラメータ名>入力_表示対象領域リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -10235,7 +10235,7 @@ MINUS
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>fromMrName</変数名>
@@ -10356,7 +10356,7 @@ MINUS
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>operation</変数名>
@@ -11791,7 +11791,7 @@ MINUS
 削除行、更新行データは退避用データとして担当変更情報（ＭＲ施設領域）テーブルを更新するSQL</説明>
         <SQL>UPDATE
  JKR_CHG_MR_INS_TRT MAIN
-SET 
+SET
  MAIN.TO_MR_NO = #{inToMrNo}
  &lt;if test="inToSosCd != null"&gt;,MAIN.TO_SOS_CD = #{inToSosCd}&lt;/if&gt;
  &lt;if test="inBgColor != null"&gt;,MAIN.BG_COLOR = #{inBgColor}&lt;/if&gt;
@@ -11809,11 +11809,11 @@ AND MAIN.TEKIYO_YMD = #{inTekiyoYmd}
 &lt;if test="inReplaceFlg == 0"&gt;
  AND NOT EXISTS (
            SELECT 'X'
-           FROM JKR_CHG_MR_INS_TRT SUB 
-           WHERE 
+           FROM JKR_CHG_MR_INS_TRT SUB
+           WHERE
                SUB.FROM_SOS_CD = MAIN.FROM_SOS_CD
            AND SUB.FROM_MR_NO = MAIN.FROM_MR_NO
-           AND SUB.INS_NO = MAIN.INS_NO 
+           AND SUB.INS_NO = MAIN.INS_NO
            AND SUB.TRT_CD = MAIN.TRT_CD
            AND SUB.TEKIYO_YMD != MAIN.TEKIYO_YMD
          )
@@ -11946,7 +11946,7 @@ AND MAIN.TEKIYO_YMD = #{inTekiyoYmd}
 削除行、更新行データは退避用データとして担当変更情報（ＭＲ施設医師領域）テーブルを更新するSQL</説明>
         <SQL>UPDATE
  JKR_CHG_MR_INS_DOC_TRT  MAIN
-SET 
+SET
  MAIN.TO_MR_NO = #{inToMrNo}
  &lt;if test="inToSosCd != null"&gt;,MAIN.TO_SOS_CD = #{inToSosCd}&lt;/if&gt;
  &lt;if test="inBgColor != null"&gt;,MAIN.BG_COLOR = #{inBgColor}&lt;/if&gt;
@@ -11963,12 +11963,12 @@ AND MAIN.TO_MR_NO = #{inToMrNoBef}
 AND MAIN.TEKIYO_YMD = #{inTekiyoYmd}
 &lt;if test="inReplaceFlg == 0"&gt;
  AND NOT EXISTS (
-         SELECT 'X' 
-         FROM JKR_CHG_MR_INS_DOC_TRT SUB 
-         WHERE 
+         SELECT 'X'
+         FROM JKR_CHG_MR_INS_DOC_TRT SUB
+         WHERE
              SUB.FROM_SOS_CD = MAIN.FROM_SOS_CD
          AND SUB.FROM_MR_NO = MAIN.FROM_MR_NO
-         AND SUB.INS_NO = MAIN.INS_NO 
+         AND SUB.INS_NO = MAIN.INS_NO
          AND SUB.TRT_CD = MAIN.TRT_CD
          AND SUB.DOC_NO = MAIN.DOC_NO
          AND SUB.TEKIYO_YMD != MAIN.TEKIYO_YMD
@@ -12102,7 +12102,7 @@ AND MAIN.TEKIYO_YMD = #{inTekiyoYmd}
 削除行、更新行データは退避用データとして担当変更情報（施設責任者）テーブルを更新するSQL</説明>
         <SQL>UPDATE
  JKR_CHG_MR_IN_CHRG_OF_INS  MAIN
-SET 
+SET
  MAIN.TO_MR_NO = #{inToMrNo}
  &lt;if test="inToSosCd != null"&gt;,MAIN.TO_SOS_CD = #{inToSosCd}&lt;/if&gt;
  &lt;if test="inBgColor != null"&gt;,MAIN.BG_COLOR = #{inBgColor}&lt;/if&gt;
@@ -12118,13 +12118,13 @@ AND MAIN.TO_SOS_CD = #{inToSosCdBef}
 AND MAIN.TO_MR_NO = #{inToMrNoBef}
 AND MAIN.TEKIYO_YMD = #{inTekiyoYmd}
 &lt;if test="inReplaceFlg == 0"&gt;
- AND NOT EXISTS ( 
-         SELECT 'X' 
-         FROM JKR_CHG_MR_IN_CHRG_OF_INS  SUB 
-         WHERE 
+ AND NOT EXISTS (
+         SELECT 'X'
+         FROM JKR_CHG_MR_IN_CHRG_OF_INS  SUB
+         WHERE
              SUB.FROM_SOS_CD = MAIN.FROM_SOS_CD
          AND SUB.FROM_MR_NO = MAIN.FROM_MR_NO
-         AND SUB.INS_NO = MAIN.INS_NO 
+         AND SUB.INS_NO = MAIN.INS_NO
          AND SUB.TEKIYO_YMD != MAIN.TEKIYO_YMD
        )
 &lt;/if&gt;</SQL>
@@ -12254,9 +12254,9 @@ AND MAIN.TEKIYO_YMD = #{inTekiyoYmd}
         <SQLID>selectInsExistByOtherTeikiyoYmd</SQLID>
         <説明>担当引継ぎ.登録ボタン押下
 担当変更情報（ＭＲ施設領域）テーブルに別適用日の担当変更データが存在するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
   CHG_MR_INS_TRT_ID
-FROM 
+FROM
   JKR_CHG_MR_INS_TRT
 WHERE
     TEKIYO_YMD != #{inTekiyoYmd}
@@ -12311,8 +12311,8 @@ AND FROM_MR_NO = #{inFromMrNo}</SQL>
         <SQLID>deleteByInsOtherTeikiYmd</SQLID>
         <説明>担当引継ぎ.登録ボタン押下
 担当変更情報（ＭＲ施設領域）テーブルに別適用日の担当変更データを削除するSQL</説明>
-        <SQL>DELETE 
-FROM 
+        <SQL>DELETE
+FROM
   JKR_CHG_MR_INS_TRT
 WHERE
     TEKIYO_YMD != #{inTekiyoYmd}
@@ -12356,9 +12356,9 @@ AND FROM_MR_NO = #{inFromMrNo}</SQL>
         <SQLID>selectDocExistByOtherTeikiyoYmd</SQLID>
         <説明>担当引継ぎ.登録ボタン押下
 担当変更情報（ＭＲ施設医師領域）テーブルに別適用日の担当変更データが存在するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
   CHG_MR_INS_DOC_TRT_ID
-FROM 
+FROM
   JKR_CHG_MR_INS_DOC_TRT
 WHERE
     TEKIYO_YMD != #{inTekiyoYmd}
@@ -12413,8 +12413,8 @@ AND FROM_MR_NO = #{inFromMrNo}</SQL>
         <SQLID>deleteByDocOtherTeikiYmd</SQLID>
         <説明>担当引継ぎ.登録ボタン押下
 担当変更情報（ＭＲ施設医師領域）テーブルに別適用日の担当変更データを削除するSQL</説明>
-        <SQL>DELETE 
-FROM 
+        <SQL>DELETE
+FROM
   JKR_CHG_MR_INS_DOC_TRT
 WHERE
     TEKIYO_YMD != #{inTekiyoYmd}
@@ -12458,9 +12458,9 @@ AND FROM_MR_NO = #{inFromMrNo}</SQL>
         <SQLID>selectMrExistByOtherTeikiYmd</SQLID>
         <説明>担当引継ぎ.登録ボタン押下
 担当変更情報（施設責任者）テーブルに別適用日の担当変更データが存在するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
   CHG_MR_IN_CHRG_OF_INS_ID
-FROM 
+FROM
   JKR_CHG_MR_IN_CHRG_OF_INS
 WHERE
     TEKIYO_YMD != #{inTekiyoYmd}
@@ -12515,8 +12515,8 @@ AND FROM_MR_NO = #{inFromMrNo}</SQL>
         <SQLID>deleteByMrOtherTeikiYmd</SQLID>
         <説明>担当引継ぎ.登録ボタン押下
 担当変更情報（施設責任者）テーブルに別適用日の担当変更データを削除するSQL</説明>
-        <SQL>DELETE 
-FROM 
+        <SQL>DELETE
+FROM
   JKR_CHG_MR_IN_CHRG_OF_INS
 WHERE
     TEKIYO_YMD != #{inTekiyoYmd}
@@ -12562,7 +12562,7 @@ AND FROM_MR_NO = #{inFromMrNo}</SQL>
 更新行データは担当変更情報（ＭＲ施設領域）テーブルに登録した退避データについて背景色を一括更新する。</説明>
         <SQL>UPDATE
  JKR_CHG_MR_INS_TRT
-SET 
+SET
   BG_COLOR = #{inBgColor}
  ,UP_JGI_NO = #{inUpJgiNo}
  ,UP_DATE = #{inUpDate}
@@ -12634,7 +12634,7 @@ AND BG_COLOR = #{inBgColorBef}</SQL>
 更新行データは担当変更情報（ＭＲ施設医師領域）テーブルに登録した退避データについて背景色を一括更新する。</説明>
         <SQL>UPDATE
  JKR_CHG_MR_INS_DOC_TRT
-SET 
+SET
   BG_COLOR = #{inBgColor}
  ,UP_JGI_NO = #{inUpJgiNo}
  ,UP_DATE = #{inUpDate}
@@ -12706,7 +12706,7 @@ AND BG_COLOR = #{inBgColorBef}</SQL>
 更新行データは担当変更情報（担当変更情報（施設責任者））テーブルに登録した退避データについて背景色を一括更新する。</説明>
         <SQL>UPDATE
  JKR_CHG_MR_IN_CHRG_OF_INS
-SET 
+SET
   BG_COLOR = #{inBgColor}
  ,UP_JGI_NO = #{inUpJgiNo}
  ,UP_DATE = #{inUpDate}
@@ -12777,11 +12777,11 @@ AND BG_COLOR = #{inBgColorBef}</SQL>
         <説明>担当引継ぎ.登録ボタ
 追加行データは担当変更情報（ＭＲ施設領域）テーブルを登録するSQL</説明>
         <SQL>INSERT INTO JKR_CHG_MR_INS_TRT
- (CHG_MR_INS_TRT_ID, TEKIYO_YMD, INS_NO, TRT_GRP_CD, TRT_CD, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MAIN_MR, DEL_TAN, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID) 
+ (CHG_MR_INS_TRT_ID, TEKIYO_YMD, INS_NO, TRT_GRP_CD, TRT_CD, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MAIN_MR, DEL_TAN, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID)
 SELECT
   JKR_CHG_MR_INS_TRT_SEQ.NEXTVAL, #{inTekiyoYmd}, M.INS_NO, M.TRT_GRP_CD, M.TRT_CD, #{inFromSosCd}, #{inFromMrNo}, #{inToSosCd}, #{inToMrNo}, M.MAIN_MR, #{inDelTan}, #{inMsgCd}, #{inBgColor}, #{inUpJgiNo}, #{inIsDate}, #{inUpDate}, #{inUpScrnId}, #{inUpFuncId}
 FROM (
-    SELECT A.INS_NO, A.TRT_GRP_CD, A.TRT_CD, A.MAIN_MR 
+    SELECT A.INS_NO, A.TRT_GRP_CD, A.TRT_CD, A.MAIN_MR
     FROM JKR_MR_INS_TRT A
         ,S_JKR_COM_LNK_TRTGRP_TRT C
       &lt;if test="inEndTermFlg == 0"&gt;    --期末月以外の場合
@@ -12797,30 +12797,30 @@ FROM (
       AND C.INS_TANT_SET_HAND_FLG_JKR = '1'
       AND CAL_DATE BETWEEN TO_CHAR(C.TEKIYO_START_DATE,'YYYYMMDD') AND TO_CHAR(C.TEKIYO_END_DATE,'YYYYMMDD')
       AND A.INS_NO = D.INS_NO
-      AND D.OLD_INSR_FLG IN ('0', '3') 
+      AND D.OLD_INSR_FLG IN ('0', '3')
       AND A.MR_NO = E.JGI_NO
       AND E.KENMU_KB = 0
       AND E.INFO_KB = '1'
       AND (E.JGI_KB NOT IN ('3','4') OR D.DEL_FLG = '0')
     AND NOT EXISTS (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_INS_TRT B
-         WHERE 
+         WHERE
              B.FROM_SOS_CD = #{inFromSosCd}
          AND B.FROM_MR_NO = #{inFromMrNo}
-         AND B.INS_NO = A.INS_NO 
+         AND B.INS_NO = A.INS_NO
          AND B.TRT_GRP_CD = A.TRT_GRP_CD
          AND B.TRT_CD = A.TRT_CD
          AND B.TEKIYO_YMD = #{inTekiyoYmd}
        )
    &lt;if test="inReplaceFlg == 0"&gt;
     AND NOT EXISTS (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_INS_TRT B
-         WHERE 
+         WHERE
            B.FROM_SOS_CD = #{inFromSosCd}
          AND B.FROM_MR_NO = #{inFromMrNo}
-         AND B.INS_NO = A.INS_NO 
+         AND B.INS_NO = A.INS_NO
          AND B.TRT_GRP_CD = A.TRT_GRP_CD
          AND B.TRT_CD = A.TRT_CD
          AND B.TEKIYO_YMD != #{inTekiyoYmd}
@@ -12962,11 +12962,11 @@ FROM (
         <説明>担当引継ぎ.登録ボタ
 追加行データは担当変更情報（ＭＲ施設医師領域）テーブルを登録するSQL</説明>
         <SQL>INSERT INTO JKR_CHG_MR_INS_DOC_TRT
-  (CHG_MR_INS_DOC_TRT_ID, TEKIYO_YMD, INS_NO, DOC_NO, TRT_GRP_CD, TRT_CD, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MAIN_MR, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID) 
+  (CHG_MR_INS_DOC_TRT_ID, TEKIYO_YMD, INS_NO, DOC_NO, TRT_GRP_CD, TRT_CD, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MAIN_MR, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID)
 SELECT
   JKR_CHG_MR_INS_DOC_TRT_SEQ.NEXTVAL, #{inTekiyoYmd}, M.INS_NO, M.DOC_NO, M.TRT_GRP_CD, M.TRT_CD, #{inFromSosCd}, #{inFromMrNo}, #{inToSosCd}, #{inToMrNo}, M.MAIN_MR, #{inMsgCd}, #{inBgColor}, #{inUpJgiNo}, #{inIsDate}, #{inUpDate}, #{inUpScrnId}, #{inUpFuncId}
 FROM (
-    SELECT A.INS_NO, A.TRT_GRP_CD, A.TRT_CD, A.DOC_NO, A.MAIN_MR 
+    SELECT A.INS_NO, A.TRT_GRP_CD, A.TRT_CD, A.DOC_NO, A.MAIN_MR
     FROM JKR_MR_INS_DOC_TRT A
         ,S_JKR_COM_LNK_TRTGRP_TRT C
       &lt;if test="inEndTermFlg == 0"&gt;    --期末月以外の場合
@@ -12983,18 +12983,18 @@ FROM (
       AND (C.DOC_TANT_SET_FLG = '0' OR C.INS_SUB_TANT_SET_FLG = '1')
       AND CAL_DATE BETWEEN TO_CHAR(C.TEKIYO_START_DATE,'YYYYMMDD') AND TO_CHAR(C.TEKIYO_END_DATE,'YYYYMMDD')
       AND A.INS_NO = D.INS_NO
-      --AND D.OLD_INSR_FLG IN ('0', '3') 
+      --AND D.OLD_INSR_FLG IN ('0', '3')
       AND A.MR_NO = E.JGI_NO
       AND E.KENMU_KB = 0
       AND E.INFO_KB = '1'
       AND (E.JGI_KB NOT IN ('3','4') OR D.DEL_FLG = '0')
     AND NOT EXISTS (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_INS_DOC_TRT B
-         WHERE 
+         WHERE
              B.FROM_SOS_CD = #{inFromSosCd}
          AND B.FROM_MR_NO = #{inFromMrNo}
-         AND B.INS_NO = A.INS_NO 
+         AND B.INS_NO = A.INS_NO
          AND B.TRT_GRP_CD = A.TRT_GRP_CD
          AND B.TRT_CD = A.TRT_CD
          AND B.DOC_NO = A.DOC_NO
@@ -13002,12 +13002,12 @@ FROM (
        )
    &lt;if test="inReplaceFlg == 0"&gt;
     AND NOT EXISTS (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_INS_DOC_TRT B
-         WHERE 
+         WHERE
              B.FROM_SOS_CD = #{inFromSosCd}
          AND B.FROM_MR_NO = #{inFromMrNo}
-         AND B.INS_NO = A.INS_NO 
+         AND B.INS_NO = A.INS_NO
          AND B.TRT_GRP_CD = A.TRT_GRP_CD
          AND B.TRT_CD = A.TRT_CD
          AND B.DOC_NO = A.DOC_NO
@@ -13142,11 +13142,11 @@ FROM (
         <説明>担当引継ぎ.登録ボタ
 追加行データは担当変更情報（施設責任者）テーブルを登録するSQL</説明>
         <SQL>INSERT INTO JKR_CHG_MR_IN_CHRG_OF_INS
- (CHG_MR_IN_CHRG_OF_INS_ID, TEKIYO_YMD, INS_NO, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID) 
+ (CHG_MR_IN_CHRG_OF_INS_ID, TEKIYO_YMD, INS_NO, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID)
 SELECT
   JKR_CHG_MR_IN_CHRG_OF_INS_SEQ.NEXTVAL, #{inTekiyoYmd}, M.INS_NO, #{inFromSosCd}, #{inFromMrNo}, #{inToSosCd}, #{inToMrNo}, #{inMsgCd}, #{inBgColor}, #{inUpJgiNo}, #{inIsDate}, #{inUpDate}, #{inUpScrnId}, #{inUpFuncId}
 FROM (
-    SELECT DISTINCT A.INS_NO 
+    SELECT DISTINCT A.INS_NO
     FROM JKR_MR_IN_CHRG_OF_INS A
       &lt;if test="inEndTermFlg == 0"&gt;    --期末月以外の場合
          ,S_JKR_COM_INS_MST_USR  C     --ORAUSR01.施設基本マスタ
@@ -13155,28 +13155,28 @@ FROM (
          ,S_JKR_COM_INS_MST_JT  C      --JKRTRM01.施設基本マスタ
       &lt;/if&gt;
         ,S_JKR_M_JGI_MST_FIX D
-    WHERE 
+    WHERE
         A.MR_NO=#{inFromMrNo}
     AND A.INS_NO = C.INS_NO
-    AND C.OLD_INSR_FLG IN ('0', '3') 
+    AND C.OLD_INSR_FLG IN ('0', '3')
     AND A.MR_NO = D.JGI_NO
     AND D.KENMU_KB = 0
     AND D.INFO_KB = '1'
     AND (D.JGI_KB NOT IN ('3','4') OR C.DEL_FLG = '0')
     AND NOT EXISTS (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_IN_CHRG_OF_INS B
-         WHERE 
+         WHERE
              B.FROM_SOS_CD = #{inFromSosCd}
          AND B.FROM_MR_NO = #{inFromMrNo}
-         AND B.INS_NO = A.INS_NO 
+         AND B.INS_NO = A.INS_NO
          AND B.TEKIYO_YMD = #{inTekiyoYmd}
        )
    &lt;if test="inReplaceFlg == 0"&gt;
     AND NOT EXISTS (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_IN_CHRG_OF_INS B
-         WHERE 
+         WHERE
              B.FROM_SOS_CD = #{inFromSosCd}
          AND B.FROM_MR_NO = #{inFromMrNo}
          AND B.INS_NO = A.INS_NO
@@ -13386,13 +13386,13 @@ FROM (
 &lt;if test="inSelectKbn == 1"&gt;
       BASE.TEKIYO_YMD         --適用日
      ,CASE WHEN BASE.FROM_MR_NO != 0 AND BASE.TEKIYO_YMD = JGI_S_FP.HATUREI_DAY
-           --THEN DECODE(JGI_S_FP.MOVE_FLG,'2','2','3','2','4','2','0') 
-           THEN DECODE(JGI_S_FP.MOVE_FLG,'2','2','3','2','0') 
+           --THEN DECODE(JGI_S_FP.MOVE_FLG,'2','2','3','2','4','2','0')
+           THEN DECODE(JGI_S_FP.MOVE_FLG,'2','2','3','2','0')
            ELSE '0' END AS FROM_INOUT                  --現担当転入出フラグ（出入マーク表示制御用）
      ,BASE.FROM_SOS_CD                                 --現組織コード
      ,CASE WHEN BASE.FROM_MR_NO = 0 AND BASE.MAIN_MR = '0' THEN '担当が追加されました。'
            WHEN BASE.FROM_MR_NO = 0 AND BASE.MAIN_MR = '1' THEN '副担当が追加されました。'
-           ELSE DECODE(JGI_F.BUMON_RANK, 
+           ELSE DECODE(JGI_F.BUMON_RANK,
                                        2, JGI_F.BUMON_RYAKU_NAME2,
                                        3, JGI_F.BUMON_RYAKU_NAME3,
                                        4, JGI_F.BUMON_RYAKU_NAME3 || JGI_F.BUMON_RYAKU_NAME4,
@@ -13405,15 +13405,15 @@ FROM (
      --新担当転入出フラグ（出入マーク表示制御用）
 /*
      ,CASE WHEN BASE.TO_MR_NO != 0 AND BASE.TEKIYO_YMD = JGI_S_TP.HATUREI_DAY
-           THEN CASE WHEN BASE.FROM_MR_NO = BASE.TO_MR_NO 
+           THEN CASE WHEN BASE.FROM_MR_NO = BASE.TO_MR_NO
                      THEN
                          --DECODE(JGI_S_FP.MOVE_FLG, '2', '2', '3', '2', '4', '2', '0')
                          DECODE(JGI_S_FP.MOVE_FLG, '2', '2', '3', '2', '0')
                      ELSE
-                         --DECODE(JGI_S_TP.MOVE_FLG, '0', '0', '4', '1', '5', '0', DECODE(JGI_F.JGI_NO, BASE.TO_MR_NO, '4', '1')) 
-                         DECODE(JGI_S_TP.MOVE_FLG, '0', '0', '4', '0', '5', '0', DECODE(JGI_F.JGI_NO, BASE.TO_MR_NO, '4', '1')) 
+                         --DECODE(JGI_S_TP.MOVE_FLG, '0', '0', '4', '1', '5', '0', DECODE(JGI_F.JGI_NO, BASE.TO_MR_NO, '4', '1'))
+                         DECODE(JGI_S_TP.MOVE_FLG, '0', '0', '4', '0', '5', '0', DECODE(JGI_F.JGI_NO, BASE.TO_MR_NO, '4', '1'))
                      END
-           ELSE '0' 
+           ELSE '0'
            END       AS TO_INOUT
 */
      ,CASE WHEN BASE.TO_MR_NO != 0
@@ -13431,12 +13431,12 @@ FROM (
      ,BASE.TO_SOS_CD                                 --新組織コード
      ,CASE WHEN BASE.TO_MR_NO = 0 AND BASE.MAIN_MR = '0' THEN '担当が外されました。'
            WHEN BASE.TO_MR_NO = 0 AND BASE.MAIN_MR = '1' THEN '副担当が外されました。'
-           ELSE DECODE(SOS_TS.BUMON_RANK, 
-                           2, SOS_TS.BUMON_RYAKU_NAME, 
-                           3, SOS_TS.BUMON_RYAKU_NAME, 
-                           4, SPH.BUMON_RYAKU_NAME || SOS_TS.BUMON_RYAKU_NAME, 
+           ELSE DECODE(SOS_TS.BUMON_RANK,
+                           2, SOS_TS.BUMON_RYAKU_NAME,
+                           3, SOS_TS.BUMON_RYAKU_NAME,
+                           4, SPH.BUMON_RYAKU_NAME || SOS_TS.BUMON_RYAKU_NAME,
                            SOS_TS.SOS_NAME
-                          ) 
+                          )
            END AS TO_SOS_NAME                       --組織名(新担当)
      ,JGI_S_TP.SOS_CD3  AS TO_SOS_CD_DIST           --新組織コード(所属営業所)
      ,DECODE(MRS.SOS_CD, MRS.SOS_CD2, MRS.SOS_CD2, MRS.SOS_CD3) AS SUMMARY_SOS_CD      --集計組織コード(営業所レベル以上)
@@ -13480,7 +13480,7 @@ INNER JOIN
  ON
      SSTS.SOS_CD = BASE.FROM_SOS_CD --担当追加行には現組織の適用日が設定されている
  --AND SSTS.TEKIYO_YMD IN (SELECT TEKIYO_YMD FROM TGT_TEKIYO_YMD)
- AND SSTS.TEKIYO_YMD IN 
+ AND SSTS.TEKIYO_YMD IN
    (
    &lt;if test="inFromSosCd != null"&gt;
     SELECT SSTS.TEKIYO_YMD TEKIYO_YMD
@@ -13599,7 +13599,7 @@ INNER JOIN
             ,E.TO_MR_NO
             ,E.MAIN_MR
             ,COUNT( E.INS_NO) INS_CNT
-        FROM ( 
+        FROM (
       SELECT DISTINCT TEKIYO_YMD
             ,INS_NO
             ,FROM_SOS_CD
@@ -13608,7 +13608,7 @@ INNER JOIN
             ,TO_MR_NO
             ,MAIN_MR
             ,JGI_KB
-        FROM ( 
+        FROM (
       SELECT  D.TEKIYO_YMD
             ,D.DISP_FLG
             ,B.INS_NO
@@ -13617,11 +13617,11 @@ INNER JOIN
             ,A.SOS_CD FROM_SOS_CD
             ,A.JGI_NO FROM_MR_NO
             ,NVL(C.TO_SOS_CD, A.SOS_CD) TO_SOS_CD
-            ,DECODE(NVL(C.DEL_TAN, '0') 
+            ,DECODE(NVL(C.DEL_TAN, '0')
             ,'1'
             ,0
             ,NVL(C.TO_MR_NO, A.JGI_NO) ) TO_MR_NO
-            ,DECODE(NVL(C.DEL_TAN, '0') 
+            ,DECODE(NVL(C.DEL_TAN, '0')
             ,'1'
             ,B.MAIN_MR
             ,'') MAIN_MR
@@ -13642,7 +13642,7 @@ INNER JOIN
          AND C.TEKIYO_YMD = D.TEKIYO_YMD
        WHERE A.KENMU_KB = 0
          AND A.INFO_KB = '1'
-       UNION 
+       UNION
       SELECT F.TEKIYO_YMD
             ,F.DISP_FLG
             ,E.INS_NO
@@ -13652,7 +13652,7 @@ INNER JOIN
                                ELSE MRST.SOS_CD3 END  --現組織コード
             ,0
             ,E.TO_SOS_CD
-            ,DECODE(NVL(E.DEL_TAN, '0') 
+            ,DECODE(NVL(E.DEL_TAN, '0')
             ,'1'
             ,0
             ,E.TO_MR_NO) TO_MR_NO
@@ -13693,7 +13693,7 @@ INNER JOIN
          AND INS_CNTV.TO_SOS_CD = BASE.TO_SOS_CD
          AND INS_CNTV.TO_MR_NO = BASE.TO_MR_NO
 &lt;/if&gt;
-WHERE 
+WHERE
    NVL(BASE.MSG_CD, '0') &gt; '0'
 -- 組織(現)指定ありの場合
   &lt;if test="inFromSosCd != null"&gt;
@@ -14301,12 +14301,12 @@ FROM
     LEFT OUTER JOIN
         (SELECT UP_DATE, TEKIYO_YMD
           FROM JKR_SOS_STS STS
-          WHERE SOS_CD = 
-                (SELECT DISTINCT 
+          WHERE SOS_CD =
+                (SELECT DISTINCT
                          CASE WHEN SOS.BUMON_RANK = '2' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '3' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '4' THEN CS.SOS_CD3
-                              ELSE CS.SOS_CD3 END AS SOS_CD 
+                              ELSE CS.SOS_CD3 END AS SOS_CD
                    FROM  COM_MR_SOS CS
                         ,S_JKR_M_SOS_MST_FIX SOS
                   WHERE
@@ -14458,7 +14458,7 @@ GROUP BY
     DATA_CD, DATA_NAME
 FROM
     S_JKR_JKR_CD_MST
-   ,(SELECT COUNT(*) cnt FROM S_JKR_COM_LNK_SPCFC_PROD_TRT TRT, (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') CAL 
+   ,(SELECT COUNT(*) cnt FROM S_JKR_COM_LNK_SPCFC_PROD_TRT TRT, (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') CAL
      WHERE TRT.TRT_GRP_CD = #{inTrtGrpCd} AND CAL.CAL_DATE BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE)
 WHERE
     DATA_KBN = #{inDataKbn}
@@ -16359,7 +16359,7 @@ TEKIYO_YMD
             <No.>28</No.>
             <パラメータ名>表示対象領域リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -16383,7 +16383,7 @@ TEKIYO_YMD
             <No.>31</No.>
             <パラメータ名>表示対象領域リスト（更新）</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.selectChgInsAuthTrtListErrEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.selectChgInsAuthTrtListErrEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <エンティティ定義>
@@ -20358,7 +20358,7 @@ TEKIYO_YMD
         <SQLID>selectChgInsTrtBtTkyCnt</SQLID>
         <説明>施設・領域別担当変更画面
 別適用日の担当変更情報件数を取得するSQL</説明>
-        <SQL>WITH TRT_LIST AS 
+        <SQL>WITH TRT_LIST AS
          (
           SELECT
               AUTH_KNR.TRT_CD   -- 領域コード
@@ -20582,12 +20582,12 @@ FROM
     LEFT OUTER JOIN
         (SELECT UP_DATE, TEKIYO_YMD
           FROM JKR_SOS_STS STS
-          WHERE SOS_CD = 
-                (SELECT DISTINCT 
+          WHERE SOS_CD =
+                (SELECT DISTINCT
                          CASE WHEN SOS.BUMON_RANK = '2' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '3' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '4' THEN CS.SOS_CD3
-                              ELSE CS.SOS_CD3 END AS SOS_CD 
+                              ELSE CS.SOS_CD3 END AS SOS_CD
                    FROM  COM_MR_SOS CS
                         ,S_JKR_M_SOS_MST_FIX SOS
                   WHERE
@@ -21471,7 +21471,7 @@ WHERE CHG_MR_IN_CHRG_OF_INS_ID = #{inChgMrInChrgOfInsId} --識別ID
         <説明>施設・領域別担当変更画面
 担当変更情報（ＭＲ施設領域）のデータを更新するＳＱＬ</説明>
         <SQL>UPDATE JKR_CHG_MR_INS_TRT A
-SET 
+SET
   &lt;if test="inToSosCd != null"&gt;TO_SOS_CD = #{inToSosCd},&lt;/if&gt;
   &lt;if test="inToMrNo != null"&gt;TO_MR_NO = #{inToMrNo},&lt;/if&gt;
   &lt;if test="inMainMr == 0"&gt; &lt;if test="inDelTanMainMr != null"&gt;DEL_TAN = #{inDelTanMainMr},&lt;/if&gt;&lt;/if&gt;
@@ -21484,7 +21484,7 @@ SET
   UP_FUNC_ID = #{inUpFuncId}
 WHERE CHG_MR_INS_TRT_ID = #{inChgMrInsTrtId} --識別ID
 -- 「領域・現組織・現担当者・主副担当区分」が同一かつ、適用日が異なる担当変更情報が存在しないこと
-AND NOT EXISTS (SELECT 'X' 
+AND NOT EXISTS (SELECT 'X'
                 FROM JKR_CHG_MR_INS_TRT B
                 WHERE B.INS_NO = A.INS_NO
                   AND B.TRT_GRP_CD = A.TRT_GRP_CD
@@ -21625,7 +21625,7 @@ AND NOT EXISTS (SELECT 'X'
         <説明>施設・領域別担当変更画面
 担当変更情報（施設責任者）のデータを更新するＳＱＬ</説明>
         <SQL>UPDATE JKR_CHG_MR_IN_CHRG_OF_INS A
-SET 
+SET
   &lt;if test="inChrgToSosCd != null"&gt;TO_SOS_CD = #{inChrgToSosCd},&lt;/if&gt;
   &lt;if test="inChrgToMrNo != null"&gt;TO_MR_NO = #{inChrgToMrNo},&lt;/if&gt;
   &lt;if test="inMsgCd != null"&gt;MSG_CD = #{inMsgCd},&lt;/if&gt;
@@ -21636,7 +21636,7 @@ SET
   UP_FUNC_ID = #{inUpFuncId}
 WHERE CHG_MR_IN_CHRG_OF_INS_ID = #{inChgMrInChrgOfInsId} --識別ID
 -- 「現組織・現担当者」が同一かつ、適用日が異なる担当変更情報が存在しないこと
-AND NOT EXISTS (SELECT 'X' 
+AND NOT EXISTS (SELECT 'X'
                 FROM JKR_CHG_MR_IN_CHRG_OF_INS B
                 WHERE B.INS_NO = A.INS_NO
                   AND B.FROM_SOS_CD = A.FROM_SOS_CD
@@ -21730,14 +21730,14 @@ AND NOT EXISTS (SELECT 'X'
         <説明>施設・領域別担当変更画面
 担当変更情報（ＭＲ施設領域）にデータを登録するＳＱＬ</説明>
         <SQL>INSERT INTO JKR_CHG_MR_INS_TRT
-(CHG_MR_INS_TRT_ID, TEKIYO_YMD, INS_NO, TRT_GRP_CD, TRT_CD, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MAIN_MR, DEL_TAN, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID) 
+(CHG_MR_INS_TRT_ID, TEKIYO_YMD, INS_NO, TRT_GRP_CD, TRT_CD, FROM_SOS_CD, FROM_MR_NO, TO_SOS_CD, TO_MR_NO, MAIN_MR, DEL_TAN, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID)
 SELECT JKR_CHG_MR_INS_TRT_SEQ.NEXTVAL, #{inTekiyoYmd}, #{inInsNo}, #{inTrtGrpCd}, #{inTrtCd}, #{inFromSosCd}, #{inFromMrNo}, #{inToSosCd}, #{inToMrNo}, #{inMainMr}, #{inDelTan}, #{inMsgCd}, #{inBgColor}, #{inUpJgiNo}, #{inIsDate}, #{inUpDate}, #{inUpScrnId}, #{inUpFuncId}
-FROM DUAL 
+FROM DUAL
   WHERE NOT EXISTS
         (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_INS_TRT B
-         WHERE 
+         WHERE
              B.INS_NO = #{inInsNo}
          AND B.TRT_GRP_CD = #{inTrtGrpCd}
          AND B.TRT_CD = #{inTrtCd}
@@ -21906,9 +21906,9 @@ SELECT JKR_CHG_MR_IN_CHRG_OF_INS_SEQ.NEXTVAL, #{inTekiyoYmd}, #{inInsNo}, #{inCh
 FROM DUAL
   WHERE NOT EXISTS
        (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_MR_IN_CHRG_OF_INS B
-         WHERE 
+         WHERE
              B.INS_NO = #{inInsNo}
          AND B.FROM_SOS_CD = #{inChrgFromSosCd}
          AND B.FROM_MR_NO = #{inChrgFromMrNo}
@@ -22216,58 +22216,58 @@ WHERE
         <説明>施設・領域別担当変更画面
 登録対象データの内、複数担当先施設の情報を取得する。
 </説明>
-        <SQL>  SELECT DISTINCT 
+        <SQL>  SELECT DISTINCT
          MULTI_TNT_INS.INS_NO  AS INS_NO,       --施設固定コード
          INS.INS_ABBR_NAME AS INS_ABBR_NAME     --施設略式漢字名
-   FROM 
+   FROM
     --複数担当先施設取得
-      ( 
+      (
       --現在マスタに登録されている副担当情報
-          SELECT 
-              JMI.MR_NO AS FROM_MR_NO, 
-              JMI.MR_NO AS TO_MR_NO, 
-              JMI.INS_NO 
-          FROM 
+          SELECT
+              JMI.MR_NO AS FROM_MR_NO,
+              JMI.MR_NO AS TO_MR_NO,
+              JMI.INS_NO
+          FROM
           &lt;if test="inEndTermFlg == 0"&gt; --ORAUSR01.施設基本(期末月以外)
               S_JKR_COM_INS_MST_USR INS,
           &lt;/if&gt;
           &lt;if test="inEndTermFlg == 1"&gt; --ORAUSR01.施設基本(期末月以外)
               S_JKR_COM_INS_MST_JT INS,
           &lt;/if&gt;
-              JKR_MR_INS_TRT JMI, 
-              S_JKR_M_JGI_MST_FIX MJF 
-          WHERE 
+              JKR_MR_INS_TRT JMI,
+              S_JKR_M_JGI_MST_FIX MJF
+          WHERE
                 JMI.TRT_CD = #{inTrtCd}
             AND JMI.MAIN_MR = '1' --副担当レコードを指定
-            AND MJF.JGI_NO = JMI.MR_NO 
-            AND MJF.KENMU_KB = 0 
-            AND MJF.INFO_KB = '1' 
-            AND INS.INS_NO = JMI.INS_NO 
-            AND INS.OLD_INSR_FLG IN ('0', '3') 
+            AND MJF.JGI_NO = JMI.MR_NO
+            AND MJF.KENMU_KB = 0
+            AND MJF.INFO_KB = '1'
+            AND INS.INS_NO = JMI.INS_NO
+            AND INS.OLD_INSR_FLG IN ('0', '3')
             AND MJF.SOS_CD = #{inFromSosCd}
       --担当解除された副担当を除く
         MINUS
-          SELECT 
-              JCI.FROM_MR_NO AS FROM_MR_NO, 
-              JCI.FROM_MR_NO AS TO_MR_NO, 
-              JCI.INS_NO 
-          FROM 
-              JKR_CHG_MR_INS_TRT JCI 
-          WHERE 
+          SELECT
+              JCI.FROM_MR_NO AS FROM_MR_NO,
+              JCI.FROM_MR_NO AS TO_MR_NO,
+              JCI.INS_NO
+          FROM
+              JKR_CHG_MR_INS_TRT JCI
+          WHERE
                JCI.TRT_CD = #{inTrtCd}
            AND JCI.MAIN_MR = '1' --副担当レコードを指定
            AND JCI.DEL_TAN = '1' --担当解除レコードを指定
            AND JCI.FROM_SOS_CD = #{inFromSosCd}
            AND JCI.TEKIYO_YMD = #{inTekiyoYmd}
       --担当変更された副担当データを追加（副担追加を含む）
-        UNION 
-          SELECT 
-              JCI.FROM_MR_NO, 
-              JCI.TO_MR_NO, 
-              JCI.INS_NO 
-          FROM 
-              JKR_CHG_MR_INS_TRT JCI 
-          WHERE 
+        UNION
+          SELECT
+              JCI.FROM_MR_NO,
+              JCI.TO_MR_NO,
+              JCI.INS_NO
+          FROM
+              JKR_CHG_MR_INS_TRT JCI
+          WHERE
                 TRT_CD = #{inTrtCd}
             AND MAIN_MR = '1'  --副担当レコードを指定
             AND TO_MR_NO &gt; '0' --担当解除ではない
@@ -22281,11 +22281,11 @@ WHERE
           &lt;if test="inEndTermFlg == 1"&gt; --JKRTRM01.施設基本(期末月)
              ,S_JKR_COM_INS_MST_JT INS
           &lt;/if&gt;
-   WHERE 
-            MULTI_TNT_INS.INS_NO = JMI.INS_NO 
-        AND JMI.INS_NO = INS.INS_NO 
+   WHERE
+            MULTI_TNT_INS.INS_NO = JMI.INS_NO
+        AND JMI.INS_NO = INS.INS_NO
         AND JMI.TRT_CD = #{inTrtCd}
-        AND JMI.MAIN_MR IN (0,1) 
+        AND JMI.MAIN_MR IN (0,1)
         AND INS.INS_NO  = #{inInsNo}
 </SQL>
         <除外テーブルカラム名/>
@@ -22521,7 +22521,7 @@ WHERE EXISTS
         <SQLID>selectInsProdChgList</SQLID>
         <説明>施設・特定品目別担当変更.初期表示、表示ボタン
 施設・特定品目別担当変更に一覧データ検索SQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
   /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE')
   OPT_PARAM('_OPTIMIZER_USE_FEEDBACK','FALSE') */
 &lt;if test="inSelectKbn == 0"&gt;
@@ -22715,7 +22715,7 @@ FROM
                      OR
                        --担当変更情報（施設責任者）
                        NVL(CHG_COI.TO_SOS_CD, JGI_F.SOS_CD) IN (SELECT DISTINCT SOS_CD FROM V_COM_MR_SOS_TRT WHERE SOS_CD = #{inToSosCd} OR SOS_CD3 = #{inToSosCd})
-                    )   
+                    )
                 AND NVL(CHG_MIT.DEL_TAN,'0') = '0' --組織・担当(新)を指定している場合、担当削除レコードを除く
                 &lt;if test="inToJgiNo != null"&gt;  -- 担当者(新)まで指定ありの場合
                          --担当変更情報（ＭＲ施設領域）
@@ -22800,7 +22800,7 @@ FROM
         LEFT JOIN
             V_JKR_CHG_INS_SPCFC_PROD_TRT TRT_DTL${detail.recordNo}   --担当変更情報（施設特定品目担当領域）ビュー
         ON
-              TRT_DTL${detail.recordNo}.INS_NO     = BASE.INS_NO 
+              TRT_DTL${detail.recordNo}.INS_NO     = BASE.INS_NO
           AND TRT_DTL${detail.recordNo}.PROD_CODE  = #{detail.prodCode}
           AND TRT_DTL${detail.recordNo}.TEKIYO_YMD = DECODE(TRT_DTL${detail.recordNo}.NEW_FLG, '0', BASE.TEKIYO_YMD, #{inTekiyoYmd})
 &lt;/if&gt;
@@ -22808,13 +22808,13 @@ FROM
         LEFT JOIN
             V_JKR_CHG_INS_SPCFC_PROD_TRT TRT_DTL${detail.recordNo}   --担当変更情報（施設特定品目担当領域）ビュー
         ON
-              TRT_DTL${detail.recordNo}.INS_NO     = BASE.INS_NO 
+              TRT_DTL${detail.recordNo}.INS_NO     = BASE.INS_NO
           AND TRT_DTL${detail.recordNo}.PROD_CODE  = #{detail.prodCode}
           AND CASE WHEN TRT_DTL${detail.recordNo}.NEW_FLG = '0' AND TRT_DTL${detail.recordNo}.TEKIYO_YMD = BASE.TEKIYO_YMD THEN '1'
-                   ELSE CASE WHEN TRT_DTL${detail.recordNo}.NEW_FLG = '1' AND TRT_DTL${detail.recordNo}.TEKIYO_YMD != #{inTekiyoYmd} THEN '1' 
+                   ELSE CASE WHEN TRT_DTL${detail.recordNo}.NEW_FLG = '1' AND TRT_DTL${detail.recordNo}.TEKIYO_YMD != #{inTekiyoYmd} THEN '1'
                              ELSE '0'
                         END
-                   END = '1' 
+                   END = '1'
 &lt;/if&gt;
 &lt;/foreach&gt;
         INNER JOIN
@@ -22936,14 +22936,14 @@ FROM
          &lt;/if&gt;
         -- 施設固定C（複数）が選択された場合
          &lt;if test="inInsNoArray != null"&gt;
-           AND INS.INS_NO IN 
+           AND INS.INS_NO IN
                            &lt;foreach item="insNo" index="index" collection="inInsNoArray" open="(" separator="," close=")"&gt;
                              #{insNo}
                            &lt;/foreach&gt;
          &lt;/if&gt;
         -- 対象区分が選択された場合
          &lt;if test="inHoInsTypeArray != null"&gt;
-           AND INS.HO_INS_TYPE IN 
+           AND INS.HO_INS_TYPE IN
                            &lt;foreach item="hoInsType" index="index" collection="inHoInsTypeArray" open="(" separator="," close=")"&gt;
                              #{hoInsType}
                            &lt;/foreach&gt;
@@ -22990,10 +22990,10 @@ FROM
          &lt;/if&gt;
 &lt;/if&gt;
     )DETAIL
-&lt;if test="inDispProdList.size() &gt; 0"&gt; 
+&lt;if test="inDispProdList.size() &gt; 0"&gt;
 WHERE 0=0
   &lt;if test="inChgPres == 1"&gt; --変更情報（なし）の場合
-    AND 
+    AND
     (
     &lt;foreach item="detail" index="index" collection="inDispProdList" open="(" separator="+" close=")"&gt;
         DECODE(ID${detail.recordNo}, NULL, 0, 1)        -- 変更ありフラグ
@@ -23002,7 +23002,7 @@ WHERE 0=0
     )
   &lt;/if&gt;
   &lt;if test="inChgPres == 2"&gt; --変更情報（あり）の場合
-    AND 
+    AND
     (
     &lt;foreach item="detail" index="index" collection="inDispProdList" open="(" separator="+" close=")"&gt;
         DECODE(ID${detail.recordNo}, NULL, 0, 1)        -- 変更ありフラグ
@@ -23011,7 +23011,7 @@ WHERE 0=0
     )
   &lt;/if&gt;
   &lt;if test="inFromTrtCd != null"&gt; --現担当領域
-    AND 
+    AND
     (
     &lt;foreach item="detail" index="index" collection="inDispProdList" open="(" separator="+" close=")"&gt;
         DECODE(FROM_TRT_CD${detail.recordNo}, #{inFromTrtCd}, 1, 0)        -- 担当現領域
@@ -23019,7 +23019,7 @@ WHERE 0=0
     &gt; 0
     )
   &lt;/if&gt;
-  
+
 &lt;/if&gt;
 ------------ソート条件
 &lt;if test="inSelectKbn == 1"&gt;
@@ -23215,7 +23215,7 @@ WHERE 0=0
             <No.>20</No.>
             <パラメータ名>表示対象品目リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -26815,27 +26815,27 @@ WHERE 0=0
         <SQL>SELECT DISTINCT
    TRT.TRT_GRP_CD         -- 領域グループコード
   ,TRT.TRT_CD             -- 領域コード
-  ,TRT.TRT_NM             -- 領域名称      
+  ,TRT.TRT_NM             -- 領域名称
   ,TRT.DISP_SORT          -- 表示順
   ,PROD.PROD_CODE         -- 品目固定コード
   ,PROD.PRIORITY_RANK
-FROM 
+FROM
    S_JKR_COM_LNK_SPCFC_PROD_TRT PROD  -- 特定品目担当領域定義
 INNER JOIN
       S_JKR_COM_CAL_USR CAL           -- カレンダーテーブル
-  ON  
+  ON
       CAL.TODAY = '1'
   AND CAL.CAL_DATE BETWEEN PROD.TEKIYO_START_DATE AND PROD.TEKIYO_END_DATE
 INNER JOIN
       S_JKR_COM_LNK_TRTGRP_TRT TRT   -- 領域グループ・領域関連定義
-  ON  
+  ON
       TRT.TRT_GRP_CD = PROD.TRT_GRP_CD
   AND TRT.TRT_CD = PROD.TRT_CD
   AND CAL.CAL_DATE BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
 WHERE
   PROD.TRT_GRP_CD = #{inTrtGrpCd}
 &lt;if test="inProdCodeArray != null"&gt;
-  AND PROD.PROD_CODE IN 
+  AND PROD.PROD_CODE IN
     &lt;foreach item="prodCode" index="index" collection="inProdCodeArray" open="(" separator="," close=")"&gt;
       #{prodCode}
     &lt;/foreach&gt;
@@ -26926,13 +26926,13 @@ WHERE
         <SQLID>selectProdHeaderList</SQLID>
         <説明>施設・特定品目別担当変更.初期表示、表示ボタン
 一覧ヘッダ_特定品目名を取得するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
    ROW_NUMBER() OVER(ORDER BY MAIN.DISP_SORT) RECORD_NO -- レコード順番
   ,MAIN.PROD_CODE        -- 品目固定コード
   ,MAIN.PROD_NAME　　　　-- 品目名称
 FROM
 (
-  SELECT DISTINCT 
+  SELECT DISTINCT
      A.PROD_CODE
     ,MST.PROD_NAME
     ,MIN(A.DISP_SORT) DISP_SORT
@@ -26944,7 +26944,7 @@ FROM
   WHERE
       A.TRT_GRP_CD = #{inTrtGrpCd}
   &lt;if test="inProdCodeArray != null"&gt;
-    AND A.PROD_CODE IN 
+    AND A.PROD_CODE IN
       &lt;foreach item="prodCode" index="index" collection="inProdCodeArray" open="(" separator="," close=")"&gt;
 　　    #{prodCode}
       &lt;/foreach&gt;
@@ -26952,7 +26952,7 @@ FROM
   AND (SELECT CAL_DATE FROM S_JKR_COM_CAL_USR WHERE TODAY = '1') BETWEEN A.TEKIYO_START_DATE AND A.TEKIYO_END_DATE
   GROUP BY A.PROD_CODE,  MST.PROD_NAME
 ) MAIN
-ORDER BY 
+ORDER BY
   MAIN.DISP_SORT ASC</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -27018,9 +27018,9 @@ ORDER BY
         <SQLID>selectChgProdUpDate</SQLID>
         <説明>施設・特定品目別担当変更.登録ボタン押下
 排他チェックで選択組織の表示対象レコードの最新の「更新日」を検索するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
  UP_DATE
-FROM 
+FROM
  JKR_CHG_INS_SPCFC_PROD_TRT
 WHERE
     CHG_INS_SPCFC_PROD_TRT_ID = #{inChgInsSpcfcProdTrtId}
@@ -27058,9 +27058,9 @@ FOR UPDATE NOWAIT</SQL>
         <SQLID>selectProdByOtherTeikiyoYmd</SQLID>
         <説明>施設・特定品目別担当変更.登録ボタン押下
 別適用日の担当変更データが存在するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
   CHG_INS_SPCFC_PROD_TRT_ID
-FROM 
+FROM
   JKR_CHG_INS_SPCFC_PROD_TRT
 WHERE
     TEKIYO_YMD != #{inTekiyoYmd}
@@ -27150,7 +27150,7 @@ WHERE CHG_INS_SPCFC_PROD_TRT_ID = #{inChgInsSpcfcProdTrtId} --識別ID
         <説明>施設・特定品目別担当変更.登録ボタン押下
 担当変更情報（施設特定品目担当領域）のデータを更新するＳＱＬ</説明>
         <SQL>UPDATE JKR_CHG_INS_SPCFC_PROD_TRT A
-SET 
+SET
   &lt;if test="inToTrtGrpCd != null"&gt;TO_TRT_GRP_CD = #{inToTrtGrpCd},&lt;/if&gt;
   &lt;if test="inToTrtCd != null"&gt;TO_TRT_CD = #{inToTrtCd},&lt;/if&gt;
   &lt;if test="inMsgCd != null"&gt;MSG_CD = #{inMsgCd},&lt;/if&gt;
@@ -27257,15 +27257,15 @@ WHERE CHG_INS_SPCFC_PROD_TRT_ID = #{inChgInsSpcfcProdTrtId} --識別ID
         <説明>施設・特定品目別担当変更.登録ボタン押下
 担当変更情報（施設特定品目担当領域）にデータを登録するＳＱＬ</説明>
         <SQL>INSERT INTO JKR_CHG_INS_SPCFC_PROD_TRT
-(CHG_INS_SPCFC_PROD_TRT_ID, TEKIYO_YMD, INS_NO, PROD_CODE, FROM_TRT_GRP_CD, FROM_TRT_CD, TO_TRT_GRP_CD, TO_TRT_CD, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID) 
- SELECT 
+(CHG_INS_SPCFC_PROD_TRT_ID, TEKIYO_YMD, INS_NO, PROD_CODE, FROM_TRT_GRP_CD, FROM_TRT_CD, TO_TRT_GRP_CD, TO_TRT_CD, MSG_CD, BG_COLOR, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID)
+ SELECT
    JKR_CHG_INS_SPCFC_PROD_TRT_SEQ.NEXTVAL, #{inTekiyoYmd}, #{inInsNo}, #{inProdCode}, #{inFromTrtGrpCd}, #{inFromTrtCd}, #{inToTrtGrpCd}, #{inToTrtCd}, #{inMsgCd}, #{inBgColor}, #{inUpJgiNo}, #{inIsDate}, #{inUpDate}, #{inUpScrnId}, #{inUpFuncId}
-FROM DUAL 
+FROM DUAL
   WHERE NOT EXISTS
         (
-         SELECT 'X' 
+         SELECT 'X'
          FROM JKR_CHG_INS_SPCFC_PROD_TRT B
-         WHERE 
+         WHERE
              B.INS_NO = #{inInsNo}
          AND B.PROD_CODE = #{inProdCode}
          AND B.FROM_TRT_GRP_CD = #{inFromTrtGrpCd}
@@ -28999,7 +28999,7 @@ TEKIYO_YMD
             <No.>22</No.>
             <パラメータ名>表示対象領域リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -29023,7 +29023,7 @@ TEKIYO_YMD
             <No.>25</No.>
             <パラメータ名>表示対象領域リスト（更新）</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.selectChgInsAuthTrtListErrEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.selectChgInsAuthTrtListErrEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <エンティティ定義>
@@ -29266,7 +29266,7 @@ TEKIYO_YMD
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>toJgiName</変数名>
@@ -29530,7 +29530,7 @@ TEKIYO_YMD
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>toBrCode1</変数名>
@@ -29794,7 +29794,7 @@ TEKIYO_YMD
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>toBrCode2</変数名>
@@ -31955,7 +31955,7 @@ TEKIYO_YMD
 市区郡・領域別担当変更に担当変更情報（ＭＲ施設領域）を更新するSQL</説明>
         <SQL>UPDATE
     JKR_CHG_MR_INS_TRT
-SET 
+SET
     TO_SOS_CD  = #{inToSosCd},
     TO_MR_NO   = #{inToMrNo},
     DEL_TAN    = #{inDelTan},
@@ -32141,7 +32141,7 @@ WHERE
         <説明>市区郡・領域別担当変更.登録ボタン押下
 市区郡・領域別担当変更に担当変更情報（施設責任者）を更新するSQL</説明>
         <SQL>UPDATE JKR_CHG_MR_IN_CHRG_OF_INS A
-SET 
+SET
     TO_SOS_CD  = #{inToSosCd},
     TO_MR_NO   = #{inToMrNo},
     MSG_CD     = #{inMsgCd},
@@ -32288,7 +32288,7 @@ WHERE
         <説明>施設・領域別担当変更画面
 指定した識別IDリストよりレコードを削除するＳＱＬ</説明>
         <SQL>UPDATE JKR_CHG_MR_INS_TRT A
-SET 
+SET
   &lt;if test="inToSosCd != null"&gt;TO_SOS_CD = #{inToSosCd},&lt;/if&gt;
   &lt;if test="inToMrNo != null"&gt;TO_MR_NO = #{inToMrNo},&lt;/if&gt;
   &lt;if test="inDelTan != null"&gt;DEL_TAN = #{inDelTan},&lt;/if&gt;
@@ -32303,7 +32303,7 @@ WHERE CHG_MR_INS_TRT_ID IN
   #{detail.chgMrInsTrtId}
 &lt;/foreach&gt;
 -- 「領域・現組織・現担当者・主副担当区分」が同一かつ、適用日が異なる担当変更情報が存在しないこと
-AND NOT EXISTS (SELECT 'X' 
+AND NOT EXISTS (SELECT 'X'
                 FROM JKR_CHG_MR_INS_TRT B
                 WHERE B.INS_NO = A.INS_NO
                   AND B.TRT_GRP_CD = A.TRT_GRP_CD
@@ -33199,9 +33199,9 @@ AND CHG.FROM_MR_NO =  #{inFromMrNo}</SQL>
 市区郡・領域別担当変更に担当変更情報（ＭＲ施設領域）を削除するSQL
 (登録(更新)対象の領域が自動設定されているのを含む)</説明>
         <SQL>DELETE
-FROM 
+FROM
   JKR_CHG_MR_INS_TRT A
-WHERE 
+WHERE
     A.TRT_CD = #{inTrtCd}
 AND A.FROM_SOS_CD = #{inFromSosCd}
 AND A.FROM_MR_NO = #{inFromMrNo}
@@ -33216,7 +33216,7 @@ AND A.INS_NO IN
                 &lt;foreach item="insNo" index="index" collection="inInsNoList" open="(" separator="," close=")"&gt;
                   #{insNo}
                 &lt;/foreach&gt;
-AND NOT EXISTS (SELECT 'X' 
+AND NOT EXISTS (SELECT 'X'
                 FROM JKR_CHG_MR_INS_TRT B
                 WHERE B.INS_NO = A.INS_NO
                   AND B.TRT_CD = A.TRT_CD
@@ -33352,9 +33352,9 @@ WHERE CHG_MR_INS_TRT_ID IN
         <説明>市区郡・領域別担当変更.登録ボタン押下
 市区郡・領域別担当変更に担当変更情報（施設責任者）を削除するSQL</説明>
         <SQL>DELETE
-FROM 
+FROM
   JKR_CHG_MR_IN_CHRG_OF_INS A
-WHERE 
+WHERE
     A.FROM_SOS_CD = #{inFromSosCd}
 AND A.FROM_MR_NO = #{inFromMrNo}
 AND A.INS_NO IN
@@ -33363,9 +33363,9 @@ AND A.INS_NO IN
                 &lt;/foreach&gt;
 AND A.TEKIYO_YMD = #{inTekiyoYmd}
 AND NOT EXISTS (
-          SELECT 'X' 
+          SELECT 'X'
           FROM JKR_CHG_MR_IN_CHRG_OF_INS B
-          WHERE 
+          WHERE
               B.INS_NO = A.INS_NO
           AND B.FROM_SOS_CD = A.FROM_SOS_CD
           AND B.FROM_MR_NO = A.FROM_MR_NO
@@ -33430,7 +33430,7 @@ WHERE
          INS.ADDR_CODE_PREF = #{inAddrCodePref} --JIS府県コード
      AND INS.TK_CITY_CD     = #{inTkCityCd}     --武田市区郡コード
      AND INS.HO_INS_TYPE    = #{inHoInsType}    --対象区分
-     AND INS.OLD_INSR_FLG IN ('0', '3')         --サブコード分類       
+     AND INS.OLD_INSR_FLG IN ('0', '3')         --サブコード分類
      AND INS.DEL_FLG        != '1'              --削除フラグが'1'(論理削除)ではない
 
 &lt;foreach item="detail" index="index" collection="inTrtDataList"&gt; --表示領域分繰り返し
@@ -33713,7 +33713,7 @@ FROM
   (
 &lt;/if&gt;
  SELECT
-       /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE') 
+       /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE')
            PUSH_PRED(TRT_DTL1)
            PUSH_PRED(TRT_DTL2) */
 -------ベース項目-------
@@ -33777,7 +33777,7 @@ FROM
        THEN '0' -- （論理削除施設かつ新担当が雑担当）OR 施設責任者更新可能フラグが'0'(更新不可) OR 副担当行の場合はリンク非活性
   ELSE CASE WHEN NVL(CHG_INF.CHG_MR_IN_CHRG_OF_INS_ID, 0) = 0 THEN '1' --変更情報が存在しない場合は無条件でリンク表示
     ELSE CASE WHEN NVL(CHG_INF.TO_SOS_CD, JGI_F.SOS_CD) IN
-      (SELECT DISTINCT SOS_CD FROM V_COM_MR_SOS_TRT WHERE 0=0 
+      (SELECT DISTINCT SOS_CD FROM V_COM_MR_SOS_TRT WHERE 0=0
        &lt;if test="inDispRng == 1"&gt;    --表示範囲：全社
        )
        &lt;/if&gt;
@@ -33845,7 +33845,7 @@ FROM
                   SOS_CD FROM S_JKR_M_SOS_MST_PLAN
                   WHERE FLG_NEXT_MONTH = '1'
                      OR FLG_THIS_MONTH = '1'
-            ) 
+            )
           &lt;/if&gt;
           &lt;if test="detail.dispRng == 2"&gt; -- 表示範囲：支店
          (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE TRT_CD = #{detail.trtCd}
@@ -34180,7 +34180,7 @@ FROM
  --施設責任者管理(現担当情報)
  LEFT OUTER JOIN
      JKR_MR_IN_CHRG_OF_INS  CRNT_INF
-    ON CRNT_INF.INS_NO = BASE.INS_NO 
+    ON CRNT_INF.INS_NO = BASE.INS_NO
  --提供用従業員基本（確定）
  LEFT OUTER JOIN
       S_JKR_M_JGI_MST_FIX  JGI_F
@@ -34664,7 +34664,7 @@ ORDER BY
             <No.>28</No.>
             <パラメータ名>表示対象領域リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -34992,7 +34992,7 @@ ORDER BY
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>bgColorRnk</変数名>
@@ -39642,7 +39642,7 @@ COM_CAL_USR AS
         MIT.MAIN_MR = '0'
     AND CHG_MIT.FROM_MR_NO IS NOT NULL
     )
-SELECT 
+SELECT
 &lt;if test="inSelectKbn == 0"&gt;
  /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE') */
   COUNT(*) AS REC_CNT
@@ -39702,7 +39702,7 @@ FROM
                             SOS_CD FROM S_JKR_M_SOS_MST_PLAN
                             WHERE FLG_NEXT_MONTH = '1'
                                OR FLG_THIS_MONTH = '1'
-                      ) 
+                      )
                     &lt;/if&gt;
                     &lt;if test="detail.dispRng == 2"&gt; -- 表示範囲：支店
                     (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE TRT_CD = #{detail.trtCd}
@@ -40301,7 +40301,7 @@ WHERE
             <No.>19</No.>
             <パラメータ名>表示対象領域リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -40325,7 +40325,7 @@ WHERE
             <No.>22</No.>
             <パラメータ名>表示対象領域リスト（更新）</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.selectAuthTrtErrListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.selectAuthTrtErrListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <エンティティ定義>
@@ -43673,7 +43673,7 @@ WHERE
         <SQLID>selectChgDocTrtBtTkyCnt</SQLID>
         <説明>医師・領域別担当変更画面
 別適用日の担当変更情報件数を取得するSQL</説明>
-        <SQL>WITH TRT_LIST AS 
+        <SQL>WITH TRT_LIST AS
          (
           SELECT
               AUTH_KNR.TRT_CD   -- 領域コード
@@ -43697,7 +43697,7 @@ WHERE
           AND COM_CAL.CAL_DATE BETWEEN AUTH_KNR.TEKIYO_START_DATE AND AUTH_KNR.TEKIYO_END_DATE
           AND COM_CAL.CAL_DATE BETWEEN TRTGRP_TRT.TEKIYO_START_DATE AND TRTGRP_TRT.TEKIYO_END_DATE
          )
-,COM_INS_MST AS 
+,COM_INS_MST AS
          (
          SELECT INS_NO, MAIN_INS_NO FROM S_JKR_COM_INS_MST_USR,V_JKR_COM_CAL_USR_TODAY WHERE CAL_MONTH NOT IN ('03', '09')
          UNION ALL
@@ -43975,12 +43975,12 @@ FROM
     LEFT OUTER JOIN
         (SELECT UP_DATE, TEKIYO_YMD
           FROM JKR_SOS_STS STS
-          WHERE SOS_CD = 
-                (SELECT DISTINCT 
+          WHERE SOS_CD =
+                (SELECT DISTINCT
                          CASE WHEN SOS.BUMON_RANK = '2' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '3' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '4' THEN CS.SOS_CD3
-                              ELSE CS.SOS_CD3 END AS SOS_CD 
+                              ELSE CS.SOS_CD3 END AS SOS_CD
                    FROM  COM_MR_SOS CS
                         ,S_JKR_M_SOS_MST_FIX SOS
                   WHERE
@@ -46058,7 +46058,7 @@ GROUP BY
             <No.>2</No.>
             <パラメータ名>表示対象領域リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.selectAuthTrtDeptListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.selectAuthTrtDeptListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -46178,7 +46178,7 @@ GROUP BY
             <No.>17</No.>
             <パラメータ名>表示対象領域リスト（更新）</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.selectAuthTrtErrListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.selectAuthTrtErrListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <エンティティ定義>
@@ -49413,12 +49413,12 @@ FROM
     LEFT OUTER JOIN
         (SELECT UP_DATE, TEKIYO_YMD
           FROM JKR_SOS_STS STS
-          WHERE SOS_CD = 
-                (SELECT DISTINCT 
+          WHERE SOS_CD =
+                (SELECT DISTINCT
                          CASE WHEN SOS.BUMON_RANK = '2' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '3' THEN CS.SOS_CD
                               WHEN SOS.BUMON_RANK = '4' THEN CS.SOS_CD3
-                              ELSE CS.SOS_CD3 END AS SOS_CD 
+                              ELSE CS.SOS_CD3 END AS SOS_CD
                    FROM  COM_MR_SOS CS
                         ,S_JKR_M_SOS_MST_FIX SOS
                   WHERE
@@ -49540,7 +49540,7 @@ WHERE
                           CAL.CAL_DATE BETWEEN TRT.TEKIYO_START_DATE AND TRT.TEKIYO_END_DATE
                       AND TRT.TANT_AUTO_SET_TRT = #{inTrtCd}  -- 担当者未設定時自動設定領域
                       )
-  AND CHG1.DOC_NO IN 
+  AND CHG1.DOC_NO IN
            &lt;foreach item="docNo" index="index" collection="inDocNoList" open="(" separator="," close=")"&gt;
               #{docNo}
            &lt;/foreach&gt;
@@ -49837,7 +49837,7 @@ WHERE
   AND CHG1.FROM_SOS_CD = #{inFromSosCd}
   AND CHG1.FROM_MR_NO = #{inFromMrNo}
   AND CHG1.MAIN_MR = #{inMainMr}
-  AND CHG1.DOC_NO IN 
+  AND CHG1.DOC_NO IN
            &lt;foreach item="docNo" index="index" collection="inDocNoList" open="(" separator="," close=")"&gt;
               #{docNo}
            &lt;/foreach&gt;
@@ -50077,7 +50077,7 @@ WHERE CHG_MR_INS_DOC_TRT_ID IN
     AND CHG1.FROM_SOS_CD = #{inFromSosCd}
     AND CHG1.FROM_MR_NO = #{inFromMrNo}
     AND CHG1.MAIN_MR = #{inMainMr}
-    AND CHG1.DOC_NO IN 
+    AND CHG1.DOC_NO IN
              &lt;foreach item="docNo" index="index" collection="inDocNoList" open="(" separator="," close=")"&gt;
                 #{docNo}
              &lt;/foreach&gt;
@@ -50196,7 +50196,7 @@ WHERE CHG_MR_INS_DOC_TRT_ID IN
 担当変更情報が登録済みの場合、変更後の「新組織・新担当者」の組合せが 「現組織・現担当者」と同じである場合、担当変更情報（ＭＲ施設医師領域）テーブルより、以下の条件を満たすレコードを更新するＳＱＬ</説明>
         <SQL>UPDATE
     JKR_CHG_MR_INS_DOC_TRT
-SET 
+SET
     TO_SOS_CD  = #{inToSosCd},
     TO_MR_NO   = #{inToMrNo},
     DEL_TAN    = #{inDelTan},
@@ -50220,7 +50220,7 @@ WHERE
         AND CHG1.FROM_MR_NO = #{inFromMrNo}
         AND CHG1.MAIN_MR = #{inMainMr}
         AND CHG1.TEKIYO_YMD = #{inTekiyoYmd}
-        AND CHG1.DOC_NO IN 
+        AND CHG1.DOC_NO IN
                 &lt;foreach item="docNo" index="index" collection="inDocNoList" open="(" separator="," close=")"&gt;
                   #{docNo}
                 &lt;/foreach&gt;
@@ -50383,7 +50383,7 @@ WHERE
 担当変更情報が登録済みの場合、変更後の「新組織・新担当者」の組合せが 「現組織・現担当者」と同じである場合、担当変更情報（ＭＲ施設医師領域）テーブルより、以下の条件を満たすレコードを物理削除するＳＱＬ</説明>
         <SQL>UPDATE
     JKR_CHG_MR_INS_DOC_TRT
-SET 
+SET
     TO_SOS_CD  = #{inToSosCd},
     TO_MR_NO   = #{inToMrNo},
     DEL_TAN    = #{inDelTan},
@@ -51013,7 +51013,7 @@ ORDER BY
         MIT.MAIN_MR = '0'
     AND CHG_MIT.FROM_MR_NO IS NOT NULL
     )
-SELECT 
+SELECT
 &lt;if test="inSelectKbn == 0"&gt;
     COUNT(*) AS REC_CNT
 &lt;/if&gt;
@@ -51024,7 +51024,7 @@ SELECT
 FROM
     (
     SELECT
-        /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE') 
+        /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE')
             PUSH_PRED(DTL1)
             PUSH_PRED(DTL2) */
         BASE.TEKIYO_YMD    --適用日
@@ -51078,7 +51078,7 @@ FROM
                                 SOS_CD FROM S_JKR_M_SOS_MST_PLAN
                                 WHERE FLG_NEXT_MONTH = '1'
                                    OR FLG_THIS_MONTH = '1'
-                          ) 
+                          )
                         &lt;/if&gt;
                         &lt;if test="detail.dispRng == 2"&gt; -- 表示範囲：支店
                        (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE TRT_CD = #{detail.trtCd}
@@ -51175,7 +51175,7 @@ FROM
                         JKR_SOS_STS D  -- 担当変更状況
                     ON
                         D.SOS_CD = A.SOS_CD
-                    AND D.TEKIYO_YMD IN 
+                    AND D.TEKIYO_YMD IN
                                     (
                                      &lt;if test="inFromSosCd != null"&gt;
                                       SELECT SSTS.TEKIYO_YMD TEKIYO_YMD
@@ -51446,7 +51446,7 @@ FROM
                                 #{dispTrtData.trtCd}
                               &lt;/foreach&gt;
                            &lt;/if&gt;
-                      AND B1.TEKIYO_YMD IN 
+                      AND B1.TEKIYO_YMD IN
                                       (
                                        &lt;if test="inFromSosCd != null"&gt;
                                         SELECT SSTS.TEKIYO_YMD TEKIYO_YMD
@@ -51580,8 +51580,8 @@ WHERE
     &lt;foreach item="detail" index="index" collection="inDispTrtList" open="(" separator="+" close=")"&gt;
         TO_NUMBER(LINK_FLG${detail.recordNo})             -- リンクがつく領域が存在する行に絞る
     &lt;/foreach&gt;
-    &gt; 0 
-    AND 
+    &gt; 0
+    AND
     &lt;foreach item="detail" index="index" collection="inDispTrtList" open="(" separator="+" close=")"&gt;
         TO_NUMBER(ERR_FLG${detail.recordNo})             -- リンクがつく領域が存在する行に絞る
     &lt;/foreach&gt;
@@ -51796,7 +51796,7 @@ WHERE
             <No.>19</No.>
             <パラメータ名>表示対象領域リスト</パラメータ名>
             <変数型>java.util.List</変数型>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
             <test1/>
         </パラメータ定義>
         <パラメータ定義>
@@ -52022,7 +52022,7 @@ WHERE
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>id1</変数名>
@@ -52253,7 +52253,7 @@ WHERE
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>fromBrCode1</変数名>
@@ -52484,7 +52484,7 @@ WHERE
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>msgCd2</変数名>
@@ -52715,7 +52715,7 @@ WHERE
             <SQL型/>
             <ソート順/>
             <除外/>
-            <備考>jp.co.takeda.jkr.entity.join.SelectAuthTrtListEntityリスト</備考>
+            <備考>jp.co.takeda.rdm.entity.join.SelectAuthTrtListEntityリスト</備考>
         </エンティティ定義>
         <エンティティ定義>
             <変数名>fromSosName3</変数名>
@@ -55712,42 +55712,42 @@ WHERE
         <SQLID>selectReportList</SQLID>
         <説明>帳票一覧画面
 帳票一覧に表示するデータを取得するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
 &lt;if test="inSelectKbn == 0"&gt;
-    COUNT(*) AS REC_CNT 
+    COUNT(*) AS REC_CNT
 &lt;/if&gt;
 &lt;if test="inSelectKbn == 1"&gt;
-    B.REFER_FLAG, C.SUBSYSTEM_NAME, A.TITLE, NVL(A.FILE_SIZE,DBMS_LOB.GETLENGTH(F.CHOHYO_DATA)) FILE_SIZE, A.IS_DATE, F.CRT_DATE COMPLETE_DATE, A.EXPIRE_DATE, A.REQUEST_ID, A.STATUS 
+    B.REFER_FLAG, C.SUBSYSTEM_NAME, A.TITLE, NVL(A.FILE_SIZE,DBMS_LOB.GETLENGTH(F.CHOHYO_DATA)) FILE_SIZE, A.IS_DATE, F.CRT_DATE COMPLETE_DATE, A.EXPIRE_DATE, A.REQUEST_ID, A.STATUS
 &lt;/if&gt;
-FROM 
-    S_JKR_COM_PDF_REQ A, S_JKR_COM_PDF_REF_AUTH B, S_JKR_COM_SUBSYSTEM C, COM_PDF_SOS_AUTH D, S_JKR_COM_PDF_REQ_DT E, S_JKR_T_PSS_CHOHYO_KIHON F 
-WHERE 
-    A.REQUEST_ID = D.REQUEST_ID 
+FROM
+    S_JKR_COM_PDF_REQ A, S_JKR_COM_PDF_REF_AUTH B, S_JKR_COM_SUBSYSTEM C, COM_PDF_SOS_AUTH D, S_JKR_COM_PDF_REQ_DT E, S_JKR_T_PSS_CHOHYO_KIHON F
+WHERE
+    A.REQUEST_ID = D.REQUEST_ID
 AND A.REQUEST_ID = F.CHOHYO_NO(+)
-AND D.SOS_CD IN (SELECT SOS_CD FROM COM_MR_SOS WHERE SOS_CD3 = #{inSosCd} OR SOS_CD = #{inSosCd}) 
-AND A.REQUEST_ID = B.REQUEST_ID(+) 
-AND B.JGI_NO(+) = #{inJgiNo} 
-AND A.SUBSYSTEM_ID = C.SUBSYSTEM_ID 
-AND A.REQUEST_ID = E.REQUEST_ID 
-AND E.SEQ = 1 
-AND C.SUBSYSTEM_ID = '3' 
+AND D.SOS_CD IN (SELECT SOS_CD FROM COM_MR_SOS WHERE SOS_CD3 = #{inSosCd} OR SOS_CD = #{inSosCd})
+AND A.REQUEST_ID = B.REQUEST_ID(+)
+AND B.JGI_NO(+) = #{inJgiNo}
+AND A.SUBSYSTEM_ID = C.SUBSYSTEM_ID
+AND A.REQUEST_ID = E.REQUEST_ID
+AND E.SEQ = 1
+AND C.SUBSYSTEM_ID = '3'
 &lt;if test="inKdkKbn == 1"&gt;
-AND A.REQUEST_ID NOT IN (SELECT B.REQUEST_ID FROM S_JKR_COM_PDF_REF_AUTH B WHERE B.JGI_NO = #{inJgiNo}) 
+AND A.REQUEST_ID NOT IN (SELECT B.REQUEST_ID FROM S_JKR_COM_PDF_REF_AUTH B WHERE B.JGI_NO = #{inJgiNo})
 &lt;/if&gt;
 &lt;if test="inKdkKbn == 2"&gt;
-AND A.REQUEST_ID IN (SELECT B.REQUEST_ID FROM S_JKR_COM_PDF_REF_AUTH B WHERE B.JGI_NO = #{inJgiNo}) 
+AND A.REQUEST_ID IN (SELECT B.REQUEST_ID FROM S_JKR_COM_PDF_REF_AUTH B WHERE B.JGI_NO = #{inJgiNo})
 &lt;/if&gt;
 &lt;if test="inReportName != null"&gt;
-AND A.TITLE LIKE '%' || #{inReportName} || '%' 
+AND A.TITLE LIKE '%' || #{inReportName} || '%'
 &lt;/if&gt;
 &lt;if test="inStartDate != null and inEndDate != null"&gt;
-AND A.IS_DATE BETWEEN TO_DATE(#{inStartDate},'YYYY/MM/DD HH24:MI:SS') AND TO_DATE(#{inEndDate},'YYYY/MM/DD HH24:MI:SS') 
+AND A.IS_DATE BETWEEN TO_DATE(#{inStartDate},'YYYY/MM/DD HH24:MI:SS') AND TO_DATE(#{inEndDate},'YYYY/MM/DD HH24:MI:SS')
 &lt;/if&gt;
 &lt;if test="inStartDate != null and inEndDate == null"&gt;
-AND A.IS_DATE &gt;= TO_DATE(#{inStartDate},'YYYY/MM/DD HH24:MI:SS') 
+AND A.IS_DATE &gt;= TO_DATE(#{inStartDate},'YYYY/MM/DD HH24:MI:SS')
 &lt;/if&gt;
 &lt;if test="inStartDate == null and inEndDate != null"&gt;
-AND A.IS_DATE &amp;lt;= TO_DATE(#{inEndDate},'YYYY/MM/DD HH24:MI:SS') 
+AND A.IS_DATE &amp;lt;= TO_DATE(#{inEndDate},'YYYY/MM/DD HH24:MI:SS')
 &lt;/if&gt;
 &lt;if test="inSortCondition == 1"&gt;
 ORDER BY A.IS_DATE ASC
@@ -58779,26 +58779,26 @@ ORDER BY
         <SQLID>selectJisFknList</SQLID>
         <説明>JIS府県武田市区郡選択画面
 JIS府県一覧を取得するSQL</説明>
-        <SQL>SELECT DISTINCT 
-    A.ADDR_CODE_PREF, A.ADDR_NAME_PREF 
-FROM 
+        <SQL>SELECT DISTINCT
+    A.ADDR_CODE_PREF, A.ADDR_NAME_PREF
+FROM
 &lt;if test="inJgiNo == null"&gt;
-    JKR_SOS_ADDR A 
+    JKR_SOS_ADDR A
 &lt;/if&gt;
 &lt;if test="inJgiNo != null"&gt;
-    JKR_MR_ADDR A ,JKR_MR_INS_TRT B ,S_JKR_M_JGI_MST_FIX C 
+    JKR_MR_ADDR A ,JKR_MR_INS_TRT B ,S_JKR_M_JGI_MST_FIX C
 &lt;/if&gt;
-WHERE A.TRT_CD IN (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT 
-                   WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' 
+WHERE A.TRT_CD IN (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT
+                   WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1'
                    AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE)
 &lt;if test="inJgiNo == null"&gt;
-    AND A.SOS_CD = #{inSosCd} 
+    AND A.SOS_CD = #{inSosCd}
 &lt;/if&gt;
 &lt;if test="inJgiNo != null"&gt;
-    AND A.TRT_CD = B.TRT_CD AND B.MR_NO = C.JGI_NO AND A.MR_NO = C.JGI_NO 
-    AND C.KENMU_KB = 0 
-    AND C.INFO_KB = 1 
-    AND C.JGI_NO = #{inJgiNo} 
+    AND A.TRT_CD = B.TRT_CD AND B.MR_NO = C.JGI_NO AND A.MR_NO = C.JGI_NO
+    AND C.KENMU_KB = 0
+    AND C.INFO_KB = 1
+    AND C.JGI_NO = #{inJgiNo}
 &lt;/if&gt;
 ORDER BY
     A.ADDR_CODE_PREF ASC</SQL>
@@ -58870,27 +58870,27 @@ ORDER BY
         <SQLID>selectTkdSkgnList</SQLID>
         <説明>JIS府県武田市区郡選択画面
 指定されたJIS府県に紐付く武田市区郡一覧を取得するSQL</説明>
-        <SQL>SELECT DISTINCT 
+        <SQL>SELECT DISTINCT
     A.ADDR_CODE_PREF, A.ADDR_NAME_PREF ,A.TK_CITY_CD ,A.TK_CITY_NAME
-FROM 
+FROM
 &lt;if test="inJgiNo == null"&gt;
-    JKR_SOS_ADDR A 
+    JKR_SOS_ADDR A
 &lt;/if&gt;
 &lt;if test="inJgiNo != null"&gt;
-    JKR_MR_ADDR A ,JKR_MR_INS_TRT B ,S_JKR_M_JGI_MST_FIX C 
+    JKR_MR_ADDR A ,JKR_MR_INS_TRT B ,S_JKR_M_JGI_MST_FIX C
 &lt;/if&gt;
-WHERE A.TRT_CD IN (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT 
-                   WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' 
+WHERE A.TRT_CD IN (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT
+                   WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1'
                    AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE)
     AND A.ADDR_CODE_PREF = #{inAddrCodePref}
 &lt;if test="inJgiNo == null"&gt;
-    AND A.SOS_CD = #{inSosCd} 
+    AND A.SOS_CD = #{inSosCd}
 &lt;/if&gt;
 &lt;if test="inJgiNo != null"&gt;
-    AND A.TRT_CD = B.TRT_CD AND B.MR_NO = C.JGI_NO AND A.MR_NO = C.JGI_NO 
-    AND C.KENMU_KB = 0 
-    AND C.INFO_KB = 1 
-    AND C.JGI_NO = #{inJgiNo} 
+    AND A.TRT_CD = B.TRT_CD AND B.MR_NO = C.JGI_NO AND A.MR_NO = C.JGI_NO
+    AND C.KENMU_KB = 0
+    AND C.INFO_KB = 1
+    AND C.JGI_NO = #{inJgiNo}
 &lt;/if&gt;
 ORDER BY
     A.TK_CITY_CD ASC
@@ -59061,24 +59061,24 @@ ORDER BY
         <SQL種別>SELECT</SQL種別>
         <SQLID>selectSpcfcProdList</SQLID>
         <説明>品目選択画面.[品目一覧]を取得するSQL</説明>
-        <SQL>SELECT 
-    A.PROD_CODE, 
-    B.PROD_NAME, 
-    C.DISP_SORT 
-FROM 
-    S_JKR_COM_LNK_SPCFC_PROD_TRT A, 
-    S_JKR_COM_PROD B, 
-    S_JKR_COM_LNK_TRT_PROD C 
-WHERE 
-    A.PROD_CODE = B.PROD_CODE 
-AND A.PROD_CODE = C.PROD_CODE 
-AND A.TRT_CD = C.TRT_CD 
-AND A.TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= A.TEKIYO_END_DATE 
-AND C.TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= C.TEKIYO_END_DATE 
-AND A.TRT_GRP_CD = #{inTrtGrpCd} 
-AND C.SYS_TYPE = 'com' 
-AND B.IS_DEL = 0 
-GROUP BY A.PROD_CODE, B.PROD_NAME, C.DISP_SORT 
+        <SQL>SELECT
+    A.PROD_CODE,
+    B.PROD_NAME,
+    C.DISP_SORT
+FROM
+    S_JKR_COM_LNK_SPCFC_PROD_TRT A,
+    S_JKR_COM_PROD B,
+    S_JKR_COM_LNK_TRT_PROD C
+WHERE
+    A.PROD_CODE = B.PROD_CODE
+AND A.PROD_CODE = C.PROD_CODE
+AND A.TRT_CD = C.TRT_CD
+AND A.TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= A.TEKIYO_END_DATE
+AND C.TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= C.TEKIYO_END_DATE
+AND A.TRT_GRP_CD = #{inTrtGrpCd}
+AND C.SYS_TYPE = 'com'
+AND B.IS_DEL = 0
+GROUP BY A.PROD_CODE, B.PROD_NAME, C.DISP_SORT
 ORDER BY C.DISP_SORT
 </SQL>
         <除外テーブルカラム名/>
@@ -59212,104 +59212,104 @@ ORDER BY C.DISP_SORT
         <SQL種別>SELECT</SQL種別>
         <SQLID>selectInsList</SQLID>
         <説明>施設選択画面.[施設一覧]を取得するSQL</説明>
-        <SQL>SELECT 
+        <SQL>SELECT
 &lt;if test="inSelectKbn == 0"&gt;
-    COUNT(*) AS REC_CNT 
+    COUNT(*) AS REC_CNT
 &lt;/if&gt;
 &lt;if test="inSelectKbn == 1"&gt;
-    A.INS_NO, A.INS_ABBR_NAME, A.INS_ADDR, A.ADDR_CODE_PREF, E.ADDR_NAME_PREF, A.TK_CITY_CD, E.TK_CITY_NAME 
+    A.INS_NO, A.INS_ABBR_NAME, A.INS_ADDR, A.ADDR_CODE_PREF, E.ADDR_NAME_PREF, A.TK_CITY_CD, E.TK_CITY_NAME
 &lt;/if&gt;
-FROM 
+FROM
 &lt;if test="inSchemaKbn == 0"&gt;
-    S_JKR_COM_INS_MST_USR A, 
+    S_JKR_COM_INS_MST_USR A,
 &lt;/if&gt;
 &lt;if test="inSchemaKbn == 1"&gt;
-    S_JKR_COM_INS_MST_JT A, 
+    S_JKR_COM_INS_MST_JT A,
 &lt;/if&gt;
     (
-    SELECT 
-        DISTINCT F1.INS_NO 
-    FROM ( 
-        SELECT 
-            JMI.MR_NO FROM_MR_NO, JMI.MR_NO TO_MR_NO, JMI.INS_NO 
-        FROM 
+    SELECT
+        DISTINCT F1.INS_NO
+    FROM (
+        SELECT
+            JMI.MR_NO FROM_MR_NO, JMI.MR_NO TO_MR_NO, JMI.INS_NO
+        FROM
            &lt;if test="inSchemaKbn == 0"&gt;
-            S_JKR_COM_INS_MST_USR INS,  
+            S_JKR_COM_INS_MST_USR INS,
            &lt;/if&gt;
            &lt;if test="inSchemaKbn == 1"&gt;
-            S_JKR_COM_INS_MST_JT INS, 
+            S_JKR_COM_INS_MST_JT INS,
            &lt;/if&gt;
-            JKR_MR_INS_TRT JMI, S_JKR_M_JGI_MST_FIX MJF 
-        WHERE 
+            JKR_MR_INS_TRT JMI, S_JKR_M_JGI_MST_FIX MJF
+        WHERE
             JMI.MAIN_MR = '1' AND MJF.JGI_NO = JMI.MR_NO
         AND MJF.KENMU_KB = 0 AND MJF.INFO_KB = '1' AND INS.INS_NO = JMI.INS_NO AND INS.OLD_INSR_FLG IN('0','3')
-        AND MJF.SOS_CD IN 
-            (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE (SOS_CD = #{inSosCd} OR SOS_CD3 = #{inSosCd}) AND TRT_CD IN 
-                (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE) 
-            ) 
+        AND MJF.SOS_CD IN
+            (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE (SOS_CD = #{inSosCd} OR SOS_CD3 = #{inSosCd}) AND TRT_CD IN
+                (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE)
+            )
         MINUS
-        SELECT 
-            JCI.FROM_MR_NO, JCI.FROM_MR_NO, JCI.INS_NO 
-        FROM 
+        SELECT
+            JCI.FROM_MR_NO, JCI.FROM_MR_NO, JCI.INS_NO
+        FROM
             JKR_CHG_MR_INS_TRT JCI
            ,JKR_SOS_STS        SSTS
         WHERE
-            JCI.MAIN_MR = '1' AND JCI.DEL_TAN = '1' 
-        AND JCI.FROM_SOS_CD IN 
-            (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE (SOS_CD = #{inSosCd} OR SOS_CD3 = #{inSosCd}) AND TRT_CD IN 
-                (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE) 
-            ) 
+            JCI.MAIN_MR = '1' AND JCI.DEL_TAN = '1'
+        AND JCI.FROM_SOS_CD IN
+            (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE (SOS_CD = #{inSosCd} OR SOS_CD3 = #{inSosCd}) AND TRT_CD IN
+                (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE)
+            )
         AND JCI.FROM_SOS_CD = SSTS.SOS_CD
         AND JCI.TEKIYO_YMD = SSTS.TEKIYO_YMD
         AND SSTS.DISP_FLG = '1'
         UNION
-        SELECT 
-            JCI.FROM_MR_NO, JCI.TO_MR_NO, JCI.INS_NO 
-        FROM 
+        SELECT
+            JCI.FROM_MR_NO, JCI.TO_MR_NO, JCI.INS_NO
+        FROM
             JKR_CHG_MR_INS_TRT JCI
            ,JKR_SOS_STS        SSTS
-        WHERE 
-            JCI.MAIN_MR = '1' AND JCI.TO_MR_NO &gt; '0' 
-        AND JCI.FROM_SOS_CD IN 
-            (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE (SOS_CD = #{inSosCd} OR SOS_CD3 = #{inSosCd}) AND TRT_CD IN 
-                (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE) 
-            ) 
+        WHERE
+            JCI.MAIN_MR = '1' AND JCI.TO_MR_NO &gt; '0'
+        AND JCI.FROM_SOS_CD IN
+            (SELECT SOS_CD FROM V_COM_MR_SOS_TRT WHERE (SOS_CD = #{inSosCd} OR SOS_CD3 = #{inSosCd}) AND TRT_CD IN
+                (SELECT TRT_CD FROM S_JKR_COM_LNK_TRTGRP_TRT WHERE TRT_GRP_CD = #{inTrtGrpCd} AND INS_TANT_SET_HAND_FLG_JKR = '1' AND TEKIYO_START_DATE &lt;= #{inSystemDate} AND #{inSystemDate} &lt;= TEKIYO_END_DATE)
+            )
         AND JCI.FROM_SOS_CD = SSTS.SOS_CD
         AND JCI.TEKIYO_YMD = SSTS.TEKIYO_YMD
         AND SSTS.DISP_FLG = '1'
         ) F1
         &lt;if test="inJgiNo != null"&gt;
-        ,JKR_MR_INS_TRT F2 
-        WHERE 
+        ,JKR_MR_INS_TRT F2
+        WHERE
             F1.INS_NO = F2.INS_NO AND F2.MR_NO = #{inJgiNo} AND F2.MAIN_MR IN (0,1)
         &lt;/if&gt;
-    ) F, 
-    S_JKR_COM_TK_CITY E 
-WHERE 
-    F.INS_NO = A.INS_NO AND A.ADDR_CODE_PREF = E.ADDR_CODE_PREF AND A.TK_CITY_CD = E.TK_CITY_CD AND A.DEL_FLG = '0' 
+    ) F,
+    S_JKR_COM_TK_CITY E
+WHERE
+    F.INS_NO = A.INS_NO AND A.ADDR_CODE_PREF = E.ADDR_CODE_PREF AND A.TK_CITY_CD = E.TK_CITY_CD AND A.DEL_FLG = '0'
     &lt;if test="inInsNameKanj != null"&gt;
-    AND ( A.INS_FORMAL_NAME LIKE '%' || #{inInsNameKanj} || '%' OR A.INS_ABBR_NAME LIKE '%' || #{inInsNameKanj} || '%' ) 
+    AND ( A.INS_FORMAL_NAME LIKE '%' || #{inInsNameKanj} || '%' OR A.INS_ABBR_NAME LIKE '%' || #{inInsNameKanj} || '%' )
     &lt;/if&gt;
     &lt;if test="inInsNameKana != null"&gt;
-    AND A.INS_KANA_SRCH LIKE '%' || #{inInsNameKana} || '%' 
+    AND A.INS_KANA_SRCH LIKE '%' || #{inInsNameKana} || '%'
     &lt;/if&gt;
     &lt;if test="inInsNo != null"&gt;
-    AND A.INS_NO = #{inInsNo} 
+    AND A.INS_NO = #{inInsNo}
     &lt;/if&gt;
     &lt;if test="inHoInsType != null"&gt;
-    AND A.HO_INS_TYPE = #{inHoInsType} 
+    AND A.HO_INS_TYPE = #{inHoInsType}
     &lt;/if&gt;
 &lt;if test="inSortCondition == 1"&gt;
-ORDER BY A.RELN_INS_NO ASC, A.RELN_INS_SEQ ASC 
+ORDER BY A.RELN_INS_NO ASC, A.RELN_INS_SEQ ASC
 &lt;/if&gt;
 &lt;if test="inSortCondition == 2"&gt;
-ORDER BY A.RELN_INS_NO DESC, A.RELN_INS_SEQ DESC 
+ORDER BY A.RELN_INS_NO DESC, A.RELN_INS_SEQ DESC
 &lt;/if&gt;
 &lt;if test="inSortCondition == 3"&gt;
-ORDER BY A.ADDR_CODE_PREF ASC, A.TK_CITY_CD ASC, A.INS_ADDR ASC 
+ORDER BY A.ADDR_CODE_PREF ASC, A.TK_CITY_CD ASC, A.INS_ADDR ASC
 &lt;/if&gt;
 &lt;if test="inSortCondition == 4"&gt;
-ORDER BY A.ADDR_CODE_PREF DESC, A.TK_CITY_CD DESC, A.INS_ADDR DESC 
+ORDER BY A.ADDR_CODE_PREF DESC, A.TK_CITY_CD DESC, A.INS_ADDR DESC
 &lt;/if&gt;</SQL>
         <除外テーブルカラム名/>
         <テーブル名一覧/>
@@ -59639,24 +59639,24 @@ ORDER BY C.DISP_SORT ASC ,A.JGI_NO ASC</SQL>
         <SQLID>selectDeptList</SQLID>
         <説明>所属部科選択画面
 所属部科一覧を取得するSQL</説明>
-        <SQL>SELECT  
+        <SQL>SELECT
 &lt;if test="inSelectKbn == 0"&gt;
-    COUNT(DISTINCT A.DEPT_CODE) AS REC_CNT 
+    COUNT(DISTINCT A.DEPT_CODE) AS REC_CNT
 &lt;/if&gt;
 &lt;if test="inSelectKbn == 1"&gt;
-    DISTINCT A.DEPT_CODE, A.KANA_NAME, A.KANJ_NAME 
+    DISTINCT A.DEPT_CODE, A.KANA_NAME, A.KANJ_NAME
 &lt;/if&gt;
 FROM
     S_JKR_DMC_MST_DEPT A,
-    S_JKR_DMC_INS_DOC B 
-WHERE 
-    A.DEPT_CODE = B.DEPT_CODE 
-AND B.INS_NO = #{inInsNo} 
+    S_JKR_DMC_INS_DOC B
+WHERE
+    A.DEPT_CODE = B.DEPT_CODE
+AND B.INS_NO = #{inInsNo}
 &lt;if test="inKanaName != null"&gt;
-AND A.KANA_NAME LIKE '%' || #{inKanaName} || '%' 
+AND A.KANA_NAME LIKE '%' || #{inKanaName} || '%'
 &lt;/if&gt;
 &lt;if test="inKanjName != null"&gt;
-AND A.KANJ_NAME LIKE '%' || #{inKanjName} || '%' 
+AND A.KANJ_NAME LIKE '%' || #{inKanjName} || '%'
 &lt;/if&gt;
 ORDER BY A.DEPT_CODE ASC</SQL>
         <除外テーブルカラム名/>
@@ -59818,14 +59818,14 @@ ORDER BY A.DEPT_CODE ASC</SQL>
         <SQLID>selectInsNoForCheck</SQLID>
         <説明>施設固定コード複数入力画面で入力された施設固定コードに対するチェック用SQL
 </説明>
-        <SQL>SELECT 
- OLD_INSR_FLG 
-FROM 
+        <SQL>SELECT
+ OLD_INSR_FLG
+FROM
 &lt;if test="inSchemaKbn == 0"&gt;
-    S_JKR_COM_INS_MST_USR  
+    S_JKR_COM_INS_MST_USR
 &lt;/if&gt;
 &lt;if test="inSchemaKbn == 1"&gt;
-    S_JKR_COM_INS_MST_JT  
+    S_JKR_COM_INS_MST_JT
 &lt;/if&gt;
 WHERE INS_NO = #{inInsNo}
 </SQL>

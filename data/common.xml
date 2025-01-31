@@ -6,11 +6,11 @@
         <JSPフォルダ>/WEB-INF/pages</JSPフォルダ>
         <WEB-INFフォルダ>/WebContent/WEB-INF</WEB-INFフォルダ>
         <ルートパッケージ>jp.co.takeda</ルートパッケージ>
-        <DTOパッケージ>jp.co.takeda.jkr.dto</DTOパッケージ>
-        <Actionパッケージ>jp.co.takeda.jkr.action</Actionパッケージ>
-        <Serviceパッケージ>jp.co.takeda.jkr.service</Serviceパッケージ>
-        <Entityパッケージ>jp.co.takeda.jkr.entity</Entityパッケージ>
-        <共通パッケージ>jp.co.takeda.jkr.common</共通パッケージ>
+        <DTOパッケージ>jp.co.takeda.rdm.dto</DTOパッケージ>
+        <Actionパッケージ>jp.co.takeda.rdm.action</Actionパッケージ>
+        <Serviceパッケージ>jp.co.takeda.rdm.service</Serviceパッケージ>
+        <Entityパッケージ>jp.co.takeda.rdm.entity</Entityパッケージ>
+        <共通パッケージ>jp.co.takeda.rdm.common</共通パッケージ>
         <Exceptionパッケージ>jp.co.takeda.rdm.exception</Exceptionパッケージ>
         <P層フレームワーク>Struts2</P層フレームワーク>
         <F層フレームワーク>SpringFramework</F層フレームワーク>

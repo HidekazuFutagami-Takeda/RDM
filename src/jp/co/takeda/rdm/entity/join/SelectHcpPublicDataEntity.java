@@ -1,26 +1,48 @@
 /*
  * ALL RIGHTS RESERVED,
- * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
+ * COPYRIGHT (C) 2014, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.rdm.dto;
+package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
+
+import jp.co.takeda.rdm.common.BaseEntity;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 
 /**
- * DTOクラス　公的機関
+ * 結合Entityクラス
+ * テーブル物理名 : T_RDM_HCP_PUBLIC_REQ
+ * SQLID : selectHcpPublicData
  * @generated
  */
-public class HcpPublicData implements Serializable {
+public class SelectHcpPublicDataEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
      * @generated
      */
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 入力_申請ID(パラメータ1)
+     * @generated
+     */
+    private String inReqId;
+
+    /**
+     * 入力_医師コード (パラメータ2)
+     * @generated
+     */
+    private String inDocNo;
+
+    /**
+     * 入力_公的機関名 (パラメータ3)
+     * @generated
+     */
+    private String inPubInstitutionCd;
 
     /**
      * 分類区分コード
@@ -130,28 +152,68 @@ public class HcpPublicData implements Serializable {
      */
     private String pubInstposEdDD;
 
-
     /**
      * コンストラクタ
-     * @customizable
+     * @generated
      */
-    public HcpPublicData() {
-        // START UOC
-
-        // END UOC
+    public SelectHcpPublicDataEntity() {
+        super("t_rdm_hcp_public_req" , "selectHcpPublicData");
     }
+
+	/**
+	 * SelectHcpSocietyDataEntity.javainReqIdを設定
+	 * @return inReqId
+	 */
+	public String getInReqId() {
+		return inReqId;
+	}
+
+	/**
+	 * @param inReqId セットする inReqId
+	 */
+	public void setInReqId(String inReqId) {
+		this.inReqId = inReqId;
+	}
+
+	/**
+	 * SelectHcpSocietyDataEntity.javainDocNoを設定
+	 * @return inDocNo
+	 */
+	public String getInDocNo() {
+		return inDocNo;
+	}
+
+	/**
+	 * @param inDocNo セットする inDocNo
+	 */
+	public void setInDocNo(String inDocNo) {
+		this.inDocNo = inDocNo;
+	}
 
 
 
 	/**
-	 * HcpPublicData.javaclassCategoryCdを設定
+	 * SelectHcpPublicDataEntity.javainPubInstitutionCdを設定
+	 * @return inPubInstitutionCd
+	 */
+	public String getInPubInstitutionCd() {
+		return inPubInstitutionCd;
+	}
+
+	/**
+	 * @param inPubInstitutionCd セットする inPubInstitutionCd
+	 */
+	public void setInPubInstitutionCd(String inPubInstitutionCd) {
+		this.inPubInstitutionCd = inPubInstitutionCd;
+	}
+
+	/**
+	 * SelectHcpPublicDataEntity.javaclassCategoryCdを設定
 	 * @return classCategoryCd
 	 */
 	public String getClassCategoryCd() {
 		return classCategoryCd;
 	}
-
-
 
 	/**
 	 * @param classCategoryCd セットする classCategoryCd
@@ -160,17 +222,13 @@ public class HcpPublicData implements Serializable {
 		this.classCategoryCd = classCategoryCd;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javaclassCategoryNmを設定
+	 * SelectHcpPublicDataEntity.javaclassCategoryNmを設定
 	 * @return classCategoryNm
 	 */
 	public String getClassCategoryNm() {
 		return classCategoryNm;
 	}
-
-
 
 	/**
 	 * @param classCategoryNm セットする classCategoryNm
@@ -179,17 +237,13 @@ public class HcpPublicData implements Serializable {
 		this.classCategoryNm = classCategoryNm;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstitutionCdを設定
+	 * SelectHcpPublicDataEntity.javapubInstitutionCdを設定
 	 * @return pubInstitutionCd
 	 */
 	public String getPubInstitutionCd() {
 		return pubInstitutionCd;
 	}
-
-
 
 	/**
 	 * @param pubInstitutionCd セットする pubInstitutionCd
@@ -198,17 +252,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstitutionCd = pubInstitutionCd;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstitutionNmを設定
+	 * SelectHcpPublicDataEntity.javapubInstitutionNmを設定
 	 * @return pubInstitutionNm
 	 */
 	public String getPubInstitutionNm() {
 		return pubInstitutionNm;
 	}
-
-
 
 	/**
 	 * @param pubInstitutionNm セットする pubInstitutionNm
@@ -217,17 +267,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstitutionNm = pubInstitutionNm;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstStYYYYを設定
+	 * SelectHcpPublicDataEntity.javapubInstStYYYYを設定
 	 * @return pubInstStYYYY
 	 */
 	public String getPubInstStYYYY() {
 		return pubInstStYYYY;
 	}
-
-
 
 	/**
 	 * @param pubInstStYYYY セットする pubInstStYYYY
@@ -236,17 +282,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstStYYYY = pubInstStYYYY;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstStMMを設定
+	 * SelectHcpPublicDataEntity.javapubInstStMMを設定
 	 * @return pubInstStMM
 	 */
 	public String getPubInstStMM() {
 		return pubInstStMM;
 	}
-
-
 
 	/**
 	 * @param pubInstStMM セットする pubInstStMM
@@ -255,17 +297,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstStMM = pubInstStMM;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstStDDを設定
+	 * SelectHcpPublicDataEntity.javapubInstStDDを設定
 	 * @return pubInstStDD
 	 */
 	public String getPubInstStDD() {
 		return pubInstStDD;
 	}
-
-
 
 	/**
 	 * @param pubInstStDD セットする pubInstStDD
@@ -274,17 +312,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstStDD = pubInstStDD;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstEdYYYYを設定
+	 * SelectHcpPublicDataEntity.javapubInstEdYYYYを設定
 	 * @return pubInstEdYYYY
 	 */
 	public String getPubInstEdYYYY() {
 		return pubInstEdYYYY;
 	}
-
-
 
 	/**
 	 * @param pubInstEdYYYY セットする pubInstEdYYYY
@@ -293,17 +327,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstEdYYYY = pubInstEdYYYY;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstEdMMを設定
+	 * SelectHcpPublicDataEntity.javapubInstEdMMを設定
 	 * @return pubInstEdMM
 	 */
 	public String getPubInstEdMM() {
 		return pubInstEdMM;
 	}
-
-
 
 	/**
 	 * @param pubInstEdMM セットする pubInstEdMM
@@ -312,17 +342,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstEdMM = pubInstEdMM;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstEdDDを設定
+	 * SelectHcpPublicDataEntity.javapubInstEdDDを設定
 	 * @return pubInstEdDD
 	 */
 	public String getPubInstEdDD() {
 		return pubInstEdDD;
 	}
-
-
 
 	/**
 	 * @param pubInstEdDD セットする pubInstEdDD
@@ -331,17 +357,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstEdDD = pubInstEdDD;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstPositionCdを設定
+	 * SelectHcpPublicDataEntity.javapubInstPositionCdを設定
 	 * @return pubInstPositionCd
 	 */
 	public String getPubInstPositionCd() {
 		return pubInstPositionCd;
 	}
-
-
 
 	/**
 	 * @param pubInstPositionCd セットする pubInstPositionCd
@@ -350,17 +372,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstPositionCd = pubInstPositionCd;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstPositionNmを設定
+	 * SelectHcpPublicDataEntity.javapubInstPositionNmを設定
 	 * @return pubInstPositionNm
 	 */
 	public String getPubInstPositionNm() {
 		return pubInstPositionNm;
 	}
-
-
 
 	/**
 	 * @param pubInstPositionNm セットする pubInstPositionNm
@@ -369,17 +387,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstPositionNm = pubInstPositionNm;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstposStYYYYを設定
+	 * SelectHcpPublicDataEntity.javapubInstposStYYYYを設定
 	 * @return pubInstposStYYYY
 	 */
 	public String getPubInstposStYYYY() {
 		return pubInstposStYYYY;
 	}
-
-
 
 	/**
 	 * @param pubInstposStYYYY セットする pubInstposStYYYY
@@ -388,17 +402,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstposStYYYY = pubInstposStYYYY;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstposStMMを設定
+	 * SelectHcpPublicDataEntity.javapubInstposStMMを設定
 	 * @return pubInstposStMM
 	 */
 	public String getPubInstposStMM() {
 		return pubInstposStMM;
 	}
-
-
 
 	/**
 	 * @param pubInstposStMM セットする pubInstposStMM
@@ -407,17 +417,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstposStMM = pubInstposStMM;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstposStDDを設定
+	 * SelectHcpPublicDataEntity.javapubInstposStDDを設定
 	 * @return pubInstposStDD
 	 */
 	public String getPubInstposStDD() {
 		return pubInstposStDD;
 	}
-
-
 
 	/**
 	 * @param pubInstposStDD セットする pubInstposStDD
@@ -426,17 +432,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstposStDD = pubInstposStDD;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstposEdYYYYを設定
+	 * SelectHcpPublicDataEntity.javapubInstposEdYYYYを設定
 	 * @return pubInstposEdYYYY
 	 */
 	public String getPubInstposEdYYYY() {
 		return pubInstposEdYYYY;
 	}
-
-
 
 	/**
 	 * @param pubInstposEdYYYY セットする pubInstposEdYYYY
@@ -445,17 +447,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstposEdYYYY = pubInstposEdYYYY;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstposEdMMを設定
+	 * SelectHcpPublicDataEntity.javapubInstposEdMMを設定
 	 * @return pubInstposEdMM
 	 */
 	public String getPubInstposEdMM() {
 		return pubInstposEdMM;
 	}
-
-
 
 	/**
 	 * @param pubInstposEdMM セットする pubInstposEdMM
@@ -464,17 +462,13 @@ public class HcpPublicData implements Serializable {
 		this.pubInstposEdMM = pubInstposEdMM;
 	}
 
-
-
 	/**
-	 * HcpPublicData.javapubInstposEdDDを設定
+	 * SelectHcpPublicDataEntity.javapubInstposEdDDを設定
 	 * @return pubInstposEdDD
 	 */
 	public String getPubInstposEdDD() {
 		return pubInstposEdDD;
 	}
-
-
 
 	/**
 	 * @param pubInstposEdDD セットする pubInstposEdDD
@@ -483,10 +477,8 @@ public class HcpPublicData implements Serializable {
 		this.pubInstposEdDD = pubInstposEdDD;
 	}
 
-
-
 	/**
-     * このDTOの値を返す
+     * このEntityの値を返す
      * @return DTOの値
      * @generated
      */
@@ -494,4 +486,3 @@ public class HcpPublicData implements Serializable {
         return ReflectionToStringBuilder.toString(this);
     }
 }
-

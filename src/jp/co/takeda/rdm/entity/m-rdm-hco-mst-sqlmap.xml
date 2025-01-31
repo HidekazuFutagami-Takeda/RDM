@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_hco_mst">
+	<resultMap id="mRdmHcoMstResultMap" type="jp.co.takeda.rdm.entity.join.MRdmHcoMstEntity">
+		<result column="INS_NO" property="insNo"/>
+		<result column="INS_CLASS" property="insClass"/>
+		<result column="RELN_INS_NO" property="relnInsNo"/>
+		<result column="RELN_INS_CODE" property="relnInsCode"/>
+		<result column="INS_SBT" property="insSbt"/>
+		<result column="INS_KANA" property="insKana"/>
+		<result column="INS_KANA_SRCH" property="insKanaSrch"/>
+		<result column="INS_ABBR_NAME" property="insAbbrName"/>
+		<result column="INS_FORMAL_NAME" property="insFormalName"/>
+		<result column="INS_CONT_NAME" property="insContName"/>
+		<result column="INS_KANJ_SRCH" property="insKanjSrch"/>
+		<result column="INS_PCODE" property="insPcode"/>
+		<result column="ADDR_CODE_PREF" property="addrCodePref"/>
+		<result column="ADDR_CODE_CITY" property="addrCodeCity"/>
+		<result column="TK_CITY_CD" property="tkCityCd"/>
+		<result column="INS_ADDR_DT" property="insAddrDt"/>
+		<result column="INS_ADDR" property="insAddr"/>
+		<result column="INS_ADDR_SRCH" property="insAddrSrch"/>
+		<result column="INS_ADDR_KANA" property="insAddrKana"/>
+		<result column="INS_ADDR_KANA_SRCH" property="insAddrKanaSrch"/>
+		<result column="INS_PHONE1" property="insPhone1"/>
+		<result column="INS_FAX1" property="insFax1"/>
+		<result column="INS_PHONE2" property="insPhone2"/>
+		<result column="INS_FAX2" property="insFax2"/>
+		<result column="INS_PHONE_SRCH" property="insPhoneSrch"/>
+		<result column="INS_URL" property="insUrl"/>
+		<result column="INS_URL_YMD" property="insUrlYmd"/>
+		<result column="TRADE_TYPE" property="tradeType"/>
+		<result column="WS_TYPE" property="wsType"/>
+		<result column="BASKET_PURCHASE" property="basketPurchase"/>
+		<result column="HO_INS_TYPE" property="hoInsType"/>
+		<result column="PHARM_TYPE" property="pharmType"/>
+		<result column="INS_RANK" property="insRank"/>
+		<result column="MANAGE_CD" property="manageCd"/>
+		<result column="REG_VIS_TYPE" property="regVisType"/>
+		<result column="IMP_HOS_TYPE" property="impHosType"/>
+		<result column="IMP_INS_TYPE" property="impInsType"/>
+		<result column="UNIV_SUBDIV" property="univSubdiv"/>
+		<result column="INS_OPEN_YEAR" property="insOpenYear"/>
+		<result column="INS_OPEN_MONTH" property="insOpenMonth"/>
+		<result column="INS_OPEN_DAY" property="insOpenDay"/>
+		<result column="HOS_EMERG" property="hosEmerg"/>
+		<result column="CAPA_TYPE" property="capaType"/>
+		<result column="BEDCNT_BASE" property="bedcntBase"/>
+		<result column="BEDS_TOT" property="bedsTot"/>
+		<result column="MED_BEDS_TOT" property="medBedsTot"/>
+		<result column="ENTCAPA_NUM" property="entcapaNum"/>
+		<result column="MAIN_INS_NO" property="mainInsNo"/>
+		<result column="INS_SECOND_TYPE" property="insSecondType"/>
+		<result column="ULT_INS_NO" property="ultInsNo"/>
+		<result column="MDM_ID" property="mdmId"/>
+		<result column="DEL_KBN" property="delKbn"/>
+		<result column="DEL_REASON" property="delReason"/>
+		<result column="DEL_REQ_YMD" property="delReqYmd"/>
+		<result column="DEL_FLG" property="delFlg"/>
+		<result column="DEL_YMD" property="delYmd"/>
+		<result column="RST_REASON" property="rstReason"/>
+		<result column="DUP_CODE" property="dupCode"/>
+		<result column="DUP_UPDATE" property="dupUpdate"/>
+		<result column="INS_SHA_YMD" property="insShaYmd"/>
+		<result column="INS_SHA_ID" property="insShaId"/>
+		<result column="UPD_SHA_YMD" property="updShaYmd"/>
+		<result column="UPD_SHA_ID" property="updShaId"/>
+	</resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcoMstEntity" resultMap="mRdmHcoMstResultMap">
+        SELECT
+            INS_NO, INS_CLASS, RELN_INS_NO, RELN_INS_CODE, INS_SBT, INS_KANA, INS_KANA_SRCH, INS_ABBR_NAME, INS_FORMAL_NAME, INS_CONT_NAME, INS_KANJ_SRCH, INS_PCODE, ADDR_CODE_PREF, ADDR_CODE_CITY, TK_CITY_CD, INS_ADDR_DT, INS_ADDR, INS_ADDR_SRCH, INS_ADDR_KANA, INS_ADDR_KANA_SRCH, INS_PHONE1, INS_FAX1, INS_PHONE2, INS_FAX2, INS_PHONE_SRCH, INS_URL, INS_URL_YMD, TRADE_TYPE, WS_TYPE, BASKET_PURCHASE, HO_INS_TYPE, PHARM_TYPE, INS_RANK, MANAGE_CD, REG_VIS_TYPE, IMP_HOS_TYPE, IMP_INS_TYPE, UNIV_SUBDIV, INS_OPEN_YEAR, INS_OPEN_MONTH, INS_OPEN_DAY, HOS_EMERG, CAPA_TYPE, BEDCNT_BASE, BEDS_TOT, MED_BEDS_TOT, ENTCAPA_NUM, MAIN_INS_NO, INS_SECOND_TYPE, ULT_INS_NO, MDM_ID, DEL_KBN, DEL_REASON, DEL_REQ_YMD, DEL_FLG, DEL_YMD, RST_REASON, DUP_CODE, DUP_UPDATE, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            M_RDM_HCO_MST
+        WHERE
+            INS_NO = #{insNo}
+    </select>
+</mapper>

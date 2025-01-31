@@ -1,26 +1,48 @@
 /*
  * ALL RIGHTS RESERVED,
- * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
+ * COPYRIGHT (C) 2014, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.rdm.dto;
+package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
+
+import jp.co.takeda.rdm.common.BaseEntity;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 
 /**
- * DTOクラス 所属学会
+ * 結合Entityクラス
+ * テーブル物理名 : T_RDM_HCP_SOCIETY_REQ
+ * SQLID : selectHcpSocietyData
  * @generated
  */
-public class HcpSocietyData implements Serializable {
+public class SelectHcpSocietyDataEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
      * @generated
      */
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 入力_申請ID(パラメータ1)
+     * @generated
+     */
+    private String inReqId;
+
+    /**
+     * 入力_医師コード (パラメータ2)
+     * @generated
+     */
+    private String inDocNo;
+
+    /**
+     * 入力_所属学会名 (パラメータ3)
+     * @generated
+     */
+    private String inMedicalSocietyNm;
 
     /**
      * 所属学会名称
@@ -226,33 +248,66 @@ public class HcpSocietyData implements Serializable {
      */
     private String certifyEdDD;
 
-
-
     /**
      * コンストラクタ
-     * @customizable
+     * @generated
      */
-    public HcpSocietyData() {
-        // START UOC
-
-        // END UOC
+    public SelectHcpSocietyDataEntity() {
+        super("t_rdm_hcp_society_req" , "selectHcpSocietyData");
     }
 
-
-
-
+	/**
+	 * SelectHcpSocietyDataEntity.javainReqIdを設定
+	 * @return inReqId
+	 */
+	public String getInReqId() {
+		return inReqId;
+	}
 
 	/**
-	 * HcpSocietyData.javamedicalSocietyNmを設定
+	 * @param inReqId セットする inReqId
+	 */
+	public void setInReqId(String inReqId) {
+		this.inReqId = inReqId;
+	}
+
+	/**
+	 * SelectHcpSocietyDataEntity.javainDocNoを設定
+	 * @return inDocNo
+	 */
+	public String getInDocNo() {
+		return inDocNo;
+	}
+
+	/**
+	 * @param inDocNo セットする inDocNo
+	 */
+	public void setInDocNo(String inDocNo) {
+		this.inDocNo = inDocNo;
+	}
+
+	/**
+	 * SelectHcpSocietyDataEntity.javainMedicalSocietyNmを設定
+	 * @return inMedicalSocietyNm
+	 */
+	public String getInMedicalSocietyNm() {
+		return inMedicalSocietyNm;
+	}
+
+	/**
+	 * @param inMedicalSocietyNm セットする inMedicalSocietyNm
+	 */
+	public void setInMedicalSocietyNm(String inMedicalSocietyNm) {
+		this.inMedicalSocietyNm = inMedicalSocietyNm;
+	}
+
+	/**
+	 * SelectHcpSocietyDataEntity.javamedicalSocietyNmを設定
 	 * @return medicalSocietyNm
 	 */
 	public String getMedicalSocietyNm() {
 		return medicalSocietyNm;
 	}
-
-
-
-
 
 	/**
 	 * @param medicalSocietyNm セットする medicalSocietyNm
@@ -261,21 +316,13 @@ public class HcpSocietyData implements Serializable {
 		this.medicalSocietyNm = medicalSocietyNm;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaadmissionYYYYを設定
+	 * SelectHcpSocietyDataEntity.javaadmissionYYYYを設定
 	 * @return admissionYYYY
 	 */
 	public String getAdmissionYYYY() {
 		return admissionYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param admissionYYYY セットする admissionYYYY
@@ -284,21 +331,13 @@ public class HcpSocietyData implements Serializable {
 		this.admissionYYYY = admissionYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaadmissionMMを設定
+	 * SelectHcpSocietyDataEntity.javaadmissionMMを設定
 	 * @return admissionMM
 	 */
 	public String getAdmissionMM() {
 		return admissionMM;
 	}
-
-
-
-
 
 	/**
 	 * @param admissionMM セットする admissionMM
@@ -307,21 +346,13 @@ public class HcpSocietyData implements Serializable {
 		this.admissionMM = admissionMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaadmissionDDを設定
+	 * SelectHcpSocietyDataEntity.javaadmissionDDを設定
 	 * @return admissionDD
 	 */
 	public String getAdmissionDD() {
 		return admissionDD;
 	}
-
-
-
-
 
 	/**
 	 * @param admissionDD セットする admissionDD
@@ -330,21 +361,13 @@ public class HcpSocietyData implements Serializable {
 		this.admissionDD = admissionDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaquitYYYYを設定
+	 * SelectHcpSocietyDataEntity.javaquitYYYYを設定
 	 * @return quitYYYY
 	 */
 	public String getQuitYYYY() {
 		return quitYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param quitYYYY セットする quitYYYY
@@ -353,21 +376,13 @@ public class HcpSocietyData implements Serializable {
 		this.quitYYYY = quitYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaquitMMを設定
+	 * SelectHcpSocietyDataEntity.javaquitMMを設定
 	 * @return quitMM
 	 */
 	public String getQuitMM() {
 		return quitMM;
 	}
-
-
-
-
 
 	/**
 	 * @param quitMM セットする quitMM
@@ -376,21 +391,13 @@ public class HcpSocietyData implements Serializable {
 		this.quitMM = quitMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaquitDDを設定
+	 * SelectHcpSocietyDataEntity.javaquitDDを設定
 	 * @return quitDD
 	 */
 	public String getQuitDD() {
 		return quitDD;
 	}
-
-
-
-
 
 	/**
 	 * @param quitDD セットする quitDD
@@ -399,21 +406,13 @@ public class HcpSocietyData implements Serializable {
 		this.quitDD = quitDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javapositionCodeを設定
+	 * SelectHcpSocietyDataEntity.javapositionCodeを設定
 	 * @return positionCode
 	 */
 	public String getPositionCode() {
 		return positionCode;
 	}
-
-
-
-
 
 	/**
 	 * @param positionCode セットする positionCode
@@ -422,21 +421,13 @@ public class HcpSocietyData implements Serializable {
 		this.positionCode = positionCode;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javapositionNameを設定
+	 * SelectHcpSocietyDataEntity.javapositionNameを設定
 	 * @return positionName
 	 */
 	public String getPositionName() {
 		return positionName;
 	}
-
-
-
-
 
 	/**
 	 * @param positionName セットする positionName
@@ -445,21 +436,13 @@ public class HcpSocietyData implements Serializable {
 		this.positionName = positionName;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javasocietyPosiStYYYYを設定
+	 * SelectHcpSocietyDataEntity.javasocietyPosiStYYYYを設定
 	 * @return societyPosiStYYYY
 	 */
 	public String getSocietyPosiStYYYY() {
 		return societyPosiStYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param societyPosiStYYYY セットする societyPosiStYYYY
@@ -468,21 +451,13 @@ public class HcpSocietyData implements Serializable {
 		this.societyPosiStYYYY = societyPosiStYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javasocietyPosiStMMを設定
+	 * SelectHcpSocietyDataEntity.javasocietyPosiStMMを設定
 	 * @return societyPosiStMM
 	 */
 	public String getSocietyPosiStMM() {
 		return societyPosiStMM;
 	}
-
-
-
-
 
 	/**
 	 * @param societyPosiStMM セットする societyPosiStMM
@@ -491,21 +466,13 @@ public class HcpSocietyData implements Serializable {
 		this.societyPosiStMM = societyPosiStMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javasocietyPosiStDDを設定
+	 * SelectHcpSocietyDataEntity.javasocietyPosiStDDを設定
 	 * @return societyPosiStDD
 	 */
 	public String getSocietyPosiStDD() {
 		return societyPosiStDD;
 	}
-
-
-
-
 
 	/**
 	 * @param societyPosiStDD セットする societyPosiStDD
@@ -514,21 +481,13 @@ public class HcpSocietyData implements Serializable {
 		this.societyPosiStDD = societyPosiStDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javasocietyPosiEdYYYYを設定
+	 * SelectHcpSocietyDataEntity.javasocietyPosiEdYYYYを設定
 	 * @return societyPosiEdYYYY
 	 */
 	public String getSocietyPosiEdYYYY() {
 		return societyPosiEdYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param societyPosiEdYYYY セットする societyPosiEdYYYY
@@ -537,21 +496,13 @@ public class HcpSocietyData implements Serializable {
 		this.societyPosiEdYYYY = societyPosiEdYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javasocietyPosiEdMMを設定
+	 * SelectHcpSocietyDataEntity.javasocietyPosiEdMMを設定
 	 * @return societyPosiEdMM
 	 */
 	public String getSocietyPosiEdMM() {
 		return societyPosiEdMM;
 	}
-
-
-
-
 
 	/**
 	 * @param societyPosiEdMM セットする societyPosiEdMM
@@ -560,21 +511,13 @@ public class HcpSocietyData implements Serializable {
 		this.societyPosiEdMM = societyPosiEdMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javasocietyPosiEdDDを設定
+	 * SelectHcpSocietyDataEntity.javasocietyPosiEdDDを設定
 	 * @return societyPosiEdDD
 	 */
 	public String getSocietyPosiEdDD() {
 		return societyPosiEdDD;
 	}
-
-
-
-
 
 	/**
 	 * @param societyPosiEdDD セットする societyPosiEdDD
@@ -583,21 +526,13 @@ public class HcpSocietyData implements Serializable {
 		this.societyPosiEdDD = societyPosiEdDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaadvisingDoctorCdを設定
+	 * SelectHcpSocietyDataEntity.javaadvisingDoctorCdを設定
 	 * @return advisingDoctorCd
 	 */
 	public String getAdvisingDoctorCd() {
 		return advisingDoctorCd;
 	}
-
-
-
-
 
 	/**
 	 * @param advisingDoctorCd セットする advisingDoctorCd
@@ -606,21 +541,13 @@ public class HcpSocietyData implements Serializable {
 		this.advisingDoctorCd = advisingDoctorCd;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javaadvisingDoctorNmを設定
+	 * SelectHcpSocietyDataEntity.javaadvisingDoctorNmを設定
 	 * @return advisingDoctorNm
 	 */
 	public String getAdvisingDoctorNm() {
 		return advisingDoctorNm;
 	}
-
-
-
-
 
 	/**
 	 * @param advisingDoctorNm セットする advisingDoctorNm
@@ -629,21 +556,13 @@ public class HcpSocietyData implements Serializable {
 		this.advisingDoctorNm = advisingDoctorNm;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingAcquisiYYYYを設定
+	 * SelectHcpSocietyDataEntity.javacoachingAcquisiYYYYを設定
 	 * @return coachingAcquisiYYYY
 	 */
 	public String getCoachingAcquisiYYYY() {
 		return coachingAcquisiYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingAcquisiYYYY セットする coachingAcquisiYYYY
@@ -652,21 +571,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingAcquisiYYYY = coachingAcquisiYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingAcquisiMMを設定
+	 * SelectHcpSocietyDataEntity.javacoachingAcquisiMMを設定
 	 * @return coachingAcquisiMM
 	 */
 	public String getCoachingAcquisiMM() {
 		return coachingAcquisiMM;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingAcquisiMM セットする coachingAcquisiMM
@@ -675,21 +586,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingAcquisiMM = coachingAcquisiMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingAcquisiDDを設定
+	 * SelectHcpSocietyDataEntity.javacoachingAcquisiDDを設定
 	 * @return coachingAcquisiDD
 	 */
 	public String getCoachingAcquisiDD() {
 		return coachingAcquisiDD;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingAcquisiDD セットする coachingAcquisiDD
@@ -698,21 +601,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingAcquisiDD = coachingAcquisiDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingStYYYYを設定
+	 * SelectHcpSocietyDataEntity.javacoachingStYYYYを設定
 	 * @return coachingStYYYY
 	 */
 	public String getCoachingStYYYY() {
 		return coachingStYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingStYYYY セットする coachingStYYYY
@@ -721,21 +616,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingStYYYY = coachingStYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingStMMを設定
+	 * SelectHcpSocietyDataEntity.javacoachingStMMを設定
 	 * @return coachingStMM
 	 */
 	public String getCoachingStMM() {
 		return coachingStMM;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingStMM セットする coachingStMM
@@ -744,21 +631,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingStMM = coachingStMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingStDDを設定
+	 * SelectHcpSocietyDataEntity.javacoachingStDDを設定
 	 * @return coachingStDD
 	 */
 	public String getCoachingStDD() {
 		return coachingStDD;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingStDD セットする coachingStDD
@@ -767,21 +646,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingStDD = coachingStDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingEdYYYYを設定
+	 * SelectHcpSocietyDataEntity.javacoachingEdYYYYを設定
 	 * @return coachingEdYYYY
 	 */
 	public String getCoachingEdYYYY() {
 		return coachingEdYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingEdYYYY セットする coachingEdYYYY
@@ -790,21 +661,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingEdYYYY = coachingEdYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingEdMMを設定
+	 * SelectHcpSocietyDataEntity.javacoachingEdMMを設定
 	 * @return coachingEdMM
 	 */
 	public String getCoachingEdMM() {
 		return coachingEdMM;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingEdMM セットする coachingEdMM
@@ -813,21 +676,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingEdMM = coachingEdMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacoachingEdDDを設定
+	 * SelectHcpSocietyDataEntity.javacoachingEdDDを設定
 	 * @return coachingEdDD
 	 */
 	public String getCoachingEdDD() {
 		return coachingEdDD;
 	}
-
-
-
-
 
 	/**
 	 * @param coachingEdDD セットする coachingEdDD
@@ -836,21 +691,13 @@ public class HcpSocietyData implements Serializable {
 		this.coachingEdDD = coachingEdDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyingPhysicianCdを設定
+	 * SelectHcpSocietyDataEntity.javacertifyingPhysicianCdを設定
 	 * @return certifyingPhysicianCd
 	 */
 	public String getCertifyingPhysicianCd() {
 		return certifyingPhysicianCd;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyingPhysicianCd セットする certifyingPhysicianCd
@@ -859,21 +706,13 @@ public class HcpSocietyData implements Serializable {
 		this.certifyingPhysicianCd = certifyingPhysicianCd;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyingPhysicianNmを設定
+	 * SelectHcpSocietyDataEntity.javacertifyingPhysicianNmを設定
 	 * @return certifyingPhysicianNm
 	 */
 	public String getCertifyingPhysicianNm() {
 		return certifyingPhysicianNm;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyingPhysicianNm セットする certifyingPhysicianNm
@@ -882,21 +721,13 @@ public class HcpSocietyData implements Serializable {
 		this.certifyingPhysicianNm = certifyingPhysicianNm;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyStYYYYを設定
+	 * SelectHcpSocietyDataEntity.javacertifyStYYYYを設定
 	 * @return certifyStYYYY
 	 */
 	public String getCertifyStYYYY() {
 		return certifyStYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyStYYYY セットする certifyStYYYY
@@ -905,21 +736,13 @@ public class HcpSocietyData implements Serializable {
 		this.certifyStYYYY = certifyStYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyStMMを設定
+	 * SelectHcpSocietyDataEntity.javacertifyStMMを設定
 	 * @return certifyStMM
 	 */
 	public String getCertifyStMM() {
 		return certifyStMM;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyStMM セットする certifyStMM
@@ -928,21 +751,13 @@ public class HcpSocietyData implements Serializable {
 		this.certifyStMM = certifyStMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyStDDを設定
+	 * SelectHcpSocietyDataEntity.javacertifyStDDを設定
 	 * @return certifyStDD
 	 */
 	public String getCertifyStDD() {
 		return certifyStDD;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyStDD セットする certifyStDD
@@ -951,21 +766,13 @@ public class HcpSocietyData implements Serializable {
 		this.certifyStDD = certifyStDD;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyEdYYYYを設定
+	 * SelectHcpSocietyDataEntity.javacertifyEdYYYYを設定
 	 * @return certifyEdYYYY
 	 */
 	public String getCertifyEdYYYY() {
 		return certifyEdYYYY;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyEdYYYY セットする certifyEdYYYY
@@ -974,21 +781,13 @@ public class HcpSocietyData implements Serializable {
 		this.certifyEdYYYY = certifyEdYYYY;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyEdMMを設定
+	 * SelectHcpSocietyDataEntity.javacertifyEdMMを設定
 	 * @return certifyEdMM
 	 */
 	public String getCertifyEdMM() {
 		return certifyEdMM;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyEdMM セットする certifyEdMM
@@ -997,21 +796,13 @@ public class HcpSocietyData implements Serializable {
 		this.certifyEdMM = certifyEdMM;
 	}
 
-
-
-
-
 	/**
-	 * HcpSocietyData.javacertifyEdDDを設定
+	 * SelectHcpSocietyDataEntity.javacertifyEdDDを設定
 	 * @return certifyEdDD
 	 */
 	public String getCertifyEdDD() {
 		return certifyEdDD;
 	}
-
-
-
-
 
 	/**
 	 * @param certifyEdDD セットする certifyEdDD
@@ -1020,12 +811,8 @@ public class HcpSocietyData implements Serializable {
 		this.certifyEdDD = certifyEdDD;
 	}
 
-
-
-
-
 	/**
-     * このDTOの値を返す
+     * このEntityの値を返す
      * @return DTOの値
      * @generated
      */
@@ -1033,4 +820,3 @@ public class HcpSocietyData implements Serializable {
         return ReflectionToStringBuilder.toString(this);
     }
 }
-

@@ -2821,8 +2821,14 @@ public interface AppConstant {
     public static final String SESKEY_NF011_SEARCHKEY = "NF011_SEARCHKEY";
     /** 施設更新での初期結果 */
     public static final String SESKEY_NF012_SEARCHKEY = "NF012_SEARCHKEY";
+    /** 施設紐付け新規での初期結果 */
+    public static final String SESKEY_NF211_SEARCHKEY = "NF211_SEARCHKEY";
     /** 施設新規 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF301_SEARCHKEY = "NF301_SEARCHKEY";
+    /** 施設更新 - 申請内容確認での初期結果 */
+    public static final String SESKEY_NF303_SEARCHKEY = "NF303_SEARCHKEY";
+    /** 施設紐付け更新 - 申請内容確認での初期結果 */
+    public static final String SESKEY_NF311_SEARCHKEY = "NF311_SEARCHKEY";
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;
 

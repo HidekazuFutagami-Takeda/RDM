@@ -18,17 +18,17 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.NF011DTO;
-import jp.co.takeda.rdm.service.NF011Service;
+import jp.co.takeda.rdm.dto.NF211DTO;
+import jp.co.takeda.rdm.service.NF211Service;
 import jp.co.takeda.rdm.util.AppConstant;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nF011Action")
+@Named("nF211Action")
 @Scope("request")
-public class NF011Action extends BaseAction<NF011DTO> {
+public class NF211Action extends BaseAction<NF211DTO> {
 
     /**
      * シリアルバージョンID
@@ -41,7 +41,7 @@ public class NF011Action extends BaseAction<NF011DTO> {
      * @generated
      */
     @Inject
-    private NF011Service nF011Service;
+    private NF211Service nF211Service;
     // START UOC
     // END UOC
 
@@ -49,8 +49,8 @@ public class NF011Action extends BaseAction<NF011DTO> {
      * コンストラクタ
      * @generated
      */
-    public NF011Action() {
-        dto = new NF011DTO();
+    public NF211Action() {
+        dto = new NF211DTO();
     }
 
     /**
@@ -96,7 +96,7 @@ public class NF011Action extends BaseAction<NF011DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nF011Service.init(dto);
+        BaseDTO outdto = nF211Service.init(dto);
         return initNext(outdto);
     }
 
@@ -112,58 +112,61 @@ public class NF011Action extends BaseAction<NF011DTO> {
         dto.setPageCntCur(1);
 
         // 画面タイトル制御処理
-        String title = "NF011_施設新規作成";
-        //ユーザ権限
-        String jokenSetCd = dto.getLoginJokenSetCd();
-
+        String title = "NF211_施設紐付け新規";
         dto.setTitle(title);
 
         //モック
-//        dto.setUltInsCd("001100020");
-//        dto.setReqId("250114-000112"); // 領域担当者有req
-//        dto.setReqId("250124-000145");
+        //dto.setInsNo("101108001");
+        dto.setInsNo("101108217");
+        //dto.setReqId("250131-000178");
+        dto.setReqId("250131-000182");
+        dto.setTkdTrtKbn("0");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
-        String ultCd = dto.getUltInsCd();
+        String insNo = dto.getInsNo();
+        String tkdTrtKbn = dto.getTkdTrtKbn();
         dto.setPreScreenId(preScreenId);
 
         //モック
-//        String kbn = "1";
-//        if(kbn.equals("0")) {
-//	        preScreenId = "NF001";
-//	        dto.setLoginJgiNo("8830034");
-//	        dto.setReqId("");
-//        } else {
-//	        preScreenId = "NC011";
-//	        dto.setLoginJgiNo("8830034");
-//	//        dto.setLoginJgiNo("0");
-//	        //dto.setReqStsCd("01");
-//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-//        }
+        String kbn = "1";
+        if(kbn.equals("0")) {
+	        preScreenId = "NF201";
+	        dto.setLoginJgiNo("8830034");
+	        dto.setReqId("");
+        } else {
+	        preScreenId = "NC011";
+	        dto.setLoginJgiNo("8830034");
+	        //dto.setLoginJgiNo("0");
+	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+	        dto.setInsNo("");
+        }
 
-        // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
-        // ULT施設コード　ありなしで分岐
-        // NF001_施設検索
-        if ("NF001".equals(preScreenId)) {
-        	if (ultCd != null && ultCd.length() > 0) {
-        		// ULT施設コードで初期データ作成
-        		dto.setDisplayKbn("1");
-        	} else if(ultCd == null || ultCd.length() == 0){
-        		// 完全新規
-        		dto.setDisplayKbn("0");
+        // 遷移パターン　0:完全新規、1:施設固定コードから作成、2：申請データあり
+        // 施設固定コード　ありなしで分岐
+        // NF201_親子紐付け一覧
+        if ("NF201".equals(preScreenId)) {
+        	if (insNo != null && insNo.length() > 0) {
+        		// 施設固定コードで初期データ作成
+        		if("0".equals(tkdTrtKbn)) {
+        			dto.setDisplayKbn("0");
+        		} else {
+        			dto.setDisplayKbn("1");
+        		}
         	} else { //遷移エラー
         	}
         }
         // 申請ID
         // NC011_申請一覧
-        // NF301_施設新規作成 - 申請内容確認
-        // NM101_通知内容詳細
-        if ("NC011".equals(preScreenId) || "NF301".equals(preScreenId) || "NM101".equals(preScreenId)) {
+        if ("NC011".equals(preScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
-        		dto.setDisplayKbn("2");
+        		if("0".equals(tkdTrtKbn)) {
+        			dto.setDisplayKbn("2");
+        		} else {
+        			dto.setDisplayKbn("3");
+        		}
         	} else { //遷移エラー
         	}
         }
@@ -194,7 +197,7 @@ public class NF011Action extends BaseAction<NF011DTO> {
     public String register() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nF011Service.register(dto);
+        BaseDTO outdto = nF211Service.register(dto);
         return registerNext(outdto);
     }
 
@@ -214,18 +217,11 @@ public class NF011Action extends BaseAction<NF011DTO> {
      */
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
-//        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !"exception".equals(outdto.getForward())){
-//            setJumpInfo(dto.getMsgId());
-//            outdto.setForward(dto.getForward());
-//        }
         // END UOC
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
 		// 本画面を再表示
-		outdto.setForward("NF011");
+		outdto.setForward("NF211");
 
         setNextDTO(outdto);
         return outdto.getForward();
@@ -239,8 +235,8 @@ public class NF011Action extends BaseAction<NF011DTO> {
     public String cancel() throws Exception {
         cancelSetup();
         // F層呼び出し
-        BaseDTO outdto = nF011Service.cancel(dto);
-        outdto = nF011Service.init(dto);
+        BaseDTO outdto = nF211Service.cancel(dto);
+        outdto = nF211Service.init(dto);
         return cancelNext(outdto);
     }
 
@@ -277,8 +273,8 @@ public class NF011Action extends BaseAction<NF011DTO> {
     public String shnComp() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nF011Service.shnComp(dto);
-        outdto = nF011Service.init(dto);
+        BaseDTO outdto = nF211Service.shnComp(dto);
+        outdto = nF211Service.init(dto);
         return shnCompNext(outdto);
     }
 
@@ -301,7 +297,7 @@ public class NF011Action extends BaseAction<NF011DTO> {
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
     	// END UOC
-    	outdto.setForward("NF011");
+    	outdto.setForward("NF211");
         setNextDTO(outdto);
         return outdto.getForward();
     }

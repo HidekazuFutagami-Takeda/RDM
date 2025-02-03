@@ -1037,7 +1037,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		tr.appendChild(delFlgInp);
 
 		a.className = "comMiniLink";
-		a.setAttribute("href", "");
+		a.setAttribute("href", "#");
 		const js = "JavaScript:delTrtRow("+trtRow+");return false;";
 		a.setAttribute("onclick", js);
 		image.setAttribute("border", "0");
@@ -1267,6 +1267,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="functionId"/>
      <s:hidden name="loginJokenSetCd"/>
      <s:hidden name="loginJgiNo"/>
+     <s:hidden name="loginNm"/>
      <s:hidden name="loginBrCd"/>
      <s:hidden name="loginDistCd"/>
      <s:hidden name="shnFlg"/>
@@ -1491,7 +1492,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
           	    <nobr>
                 <s:textfield name="mainInsNm" id="mainInsNm" size="20" maxlength="150" style="background-color:#D4D0C8" readonly="true" />
                 <s:hidden name="mainInsCd" id="mainInsCd" onchange='trtView();'/>
-                <a class="comMiniLink" href ="" onClick="JavaScript:document.fm1.mainInsCd.value='';document.fm1.mainInsNm.value='';return false;">Clear</a>
+                <a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.mainInsCd.value='';document.fm1.mainInsNm.value='';return false;">Clear</a>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -1955,7 +1956,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			        <td><%-- アクションボタン --%>
 			        <s:if test='%{editApprFlg=="1" && (reqStsCd == "" || reqStsCd == "01" || reqStsCd == "03" || reqStsCd == "13")}'>
 			          <nobr>
-		                <a class="comMiniLink" href ="" onClick="JavaScript:delTrtRow('<s:property value="%{#status.index}"/>'); return false;" >
+		                <a class="comMiniLink" href="#" onClick="JavaScript:delTrtRow('<s:property value="%{#status.index}"/>'); return false;" >
 		                  <img border="0" src="img/button_delete.gif">
 		                </a>
 		              </nobr>

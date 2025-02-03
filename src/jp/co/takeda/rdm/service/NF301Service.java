@@ -44,7 +44,7 @@ import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
 /**
- * Serviceクラス（NF011)
+ * Serviceクラス（NF301)
  * @generated
  */
 @Named

@@ -19,7 +19,7 @@ import java.util.List;
  * DTOクラス
  * @generated
  */
-public class NF012DTO extends BaseDTO implements Serializable {
+public class NF303DTO extends BaseDTO implements Serializable {
 
 	/**
 	 * シリアルバージョンUID
@@ -31,7 +31,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	 * このDTOが関連付けられている画面ID
 	 * @generated
 	 */
-	private String NF012 = "NF012";
+	private String NF303 = "NF303";
 
 	/**
 	 * メッセージID
@@ -98,6 +98,12 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String reqId;
+
+	/**
+     * 申請チャネル
+     * @generated
+     */
+    private String reqChl;
 
 	/**
 	 * 申請者所属名称
@@ -4748,12 +4754,31 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	 */
 	private String msgStr;
 
+	/**
+	 * 申請ボタン活性フラグ
+	 * 0：非活性、1:活性
+	 * @generated
+	 */
+	private String btnEnableFlg;
+
+	/**
+     * 却下コメント
+     * @generated
+     */
+    private String aprComment;
+
+	/**
+	 * アルトマークへの情報連携
+	 * @generated
+	 */
+	private String fbReqFlg;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
      */
-    public NF012DTO() {
-        setForward(NF012);
+    public NF303DTO() {
+        setForward(NF303);
     }
 
     // START UOC
@@ -4765,8 +4790,8 @@ public class NF012DTO extends BaseDTO implements Serializable {
      * @param screenID 画面ID
      * @generated
      */
-    public void setNF012(String screenID){
-        this.NF012 = screenID;
+    public void setNF303(String screenID){
+        this.NF303 = screenID;
     }
 
     /**
@@ -4774,12 +4799,12 @@ public class NF012DTO extends BaseDTO implements Serializable {
      * @return 画面ID名
      * @generated
      */
-    public String getNF012(){
-        return NF012;
+    public String getNF303(){
+        return NF303;
     }
 
 	/**
-	 * NF012DTO.javamsgIdを設定
+	 * NF303DTO.javamsgIdを設定
 	 * @return msgId
 	 */
 	public String getMsgId() {
@@ -4794,7 +4819,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaloginJokenSetCdを設定
+	 * NF303DTO.javaloginJokenSetCdを設定
 	 * @return loginJokenSetCd
 	 */
 	public String getLoginJokenSetCd() {
@@ -4809,7 +4834,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaloginJgiNoを設定
+	 * NF303DTO.javaloginJgiNoを設定
 	 * @return loginJgiNo
 	 */
 	public String getLoginJgiNo() {
@@ -4824,7 +4849,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaloginNmを設定
+	 * NF303DTO.javaloginNmを設定
 	 * @return loginNm
 	 */
 	public String getLoginNm() {
@@ -4839,7 +4864,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaloginBrCdを設定
+	 * NF303DTO.javaloginBrCdを設定
 	 * @return loginBrCd
 	 */
 	public String getLoginBrCd() {
@@ -4854,7 +4879,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaloginDistCdを設定
+	 * NF303DTO.javaloginDistCdを設定
 	 * @return loginDistCd
 	 */
 	public String getLoginDistCd() {
@@ -4869,7 +4894,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaloginShzNmを設定
+	 * NF303DTO.javaloginShzNmを設定
 	 * @return loginShzNm
 	 */
 	public String getLoginShzNm() {
@@ -4884,7 +4909,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaloginTrtCdを設定
+	 * NF303DTO.javaloginTrtCdを設定
 	 * @return loginTrtCd
 	 */
 	public String getLoginTrtCd() {
@@ -4899,7 +4924,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javagamenIdを設定
+	 * NF303DTO.javagamenIdを設定
 	 * @return gamenId
 	 */
 	public String getGamenId() {
@@ -4914,7 +4939,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatitleを設定
+	 * NF303DTO.javatitleを設定
 	 * @return title
 	 */
 	public String getTitle() {
@@ -4929,7 +4954,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqIdを設定
+	 * NF303DTO.javareqIdを設定
 	 * @return reqId
 	 */
 	public String getReqId() {
@@ -4944,7 +4969,22 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqShzNmを設定
+	 * NF303DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
+	}
+
+	/**
+	 * NF303DTO.javareqShzNmを設定
 	 * @return reqShzNm
 	 */
 	public String getReqShzNm() {
@@ -4959,7 +4999,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqStsNmを設定
+	 * NF303DTO.javareqStsNmを設定
 	 * @return reqStsNm
 	 */
 	public String getReqStsNm() {
@@ -4974,7 +5014,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqJgiNameを設定
+	 * NF303DTO.javareqJgiNameを設定
 	 * @return reqJgiName
 	 */
 	public String getReqJgiName() {
@@ -4989,7 +5029,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqYmdhmsを設定
+	 * NF303DTO.javareqYmdhmsを設定
 	 * @return reqYmdhms
 	 */
 	public String getReqYmdhms() {
@@ -5004,7 +5044,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javashnShaNameを設定
+	 * NF303DTO.javashnShaNameを設定
 	 * @return shnShaName
 	 */
 	public String getShnShaName() {
@@ -5019,7 +5059,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javashnYmdhmsを設定
+	 * NF303DTO.javashnYmdhmsを設定
 	 * @return shnYmdhms
 	 */
 	public String getShnYmdhms() {
@@ -5034,7 +5074,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaprShaNameを設定
+	 * NF303DTO.javaaprShaNameを設定
 	 * @return aprShaName
 	 */
 	public String getAprShaName() {
@@ -5049,7 +5089,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaprYmdhmsを設定
+	 * NF303DTO.javaaprYmdhmsを設定
 	 * @return aprYmdhms
 	 */
 	public String getAprYmdhms() {
@@ -5064,7 +5104,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqJgiNoを設定
+	 * NF303DTO.javareqJgiNoを設定
 	 * @return reqJgiNo
 	 */
 	public Integer getReqJgiNo() {
@@ -5079,7 +5119,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqBrCdを設定
+	 * NF303DTO.javareqBrCdを設定
 	 * @return reqBrCd
 	 */
 	public String getReqBrCd() {
@@ -5094,7 +5134,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqDistCdを設定
+	 * NF303DTO.javareqDistCdを設定
 	 * @return reqDistCd
 	 */
 	public String getReqDistCd() {
@@ -5109,7 +5149,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqStsCdを設定
+	 * NF303DTO.javareqStsCdを設定
 	 * @return reqStsCd
 	 */
 	public String getReqStsCd() {
@@ -5124,7 +5164,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javashnJgiNoを設定
+	 * NF303DTO.javashnJgiNoを設定
 	 * @return shnJgiNo
 	 */
 	public Integer getShnJgiNo() {
@@ -5139,7 +5179,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaprJgiNoを設定
+	 * NF303DTO.javaaprJgiNoを設定
 	 * @return aprJgiNo
 	 */
 	public Integer getAprJgiNo() {
@@ -5154,7 +5194,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaupdShaYmdを設定
+	 * NF303DTO.javaupdShaYmdを設定
 	 * @return updShaYmd
 	 */
 	public String getUpdShaYmd() {
@@ -5169,7 +5209,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsNoを設定
+	 * NF303DTO.javainsNoを設定
 	 * @return insNo
 	 */
 	public String getInsNo() {
@@ -5184,7 +5224,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsClassを設定
+	 * NF303DTO.javainsClassを設定
 	 * @return insClass
 	 */
 	public String getInsClass() {
@@ -5199,7 +5239,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsSbtを設定
+	 * NF303DTO.javainsSbtを設定
 	 * @return insSbt
 	 */
 	public String getInsSbt() {
@@ -5214,7 +5254,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsAbbrNameを設定
+	 * NF303DTO.javainsAbbrNameを設定
 	 * @return insAbbrName
 	 */
 	public String getInsAbbrName() {
@@ -5229,7 +5269,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsKanaを設定
+	 * NF303DTO.javainsKanaを設定
 	 * @return insKana
 	 */
 	public String getInsKana() {
@@ -5244,7 +5284,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsFormalNameを設定
+	 * NF303DTO.javainsFormalNameを設定
 	 * @return insFormalName
 	 */
 	public String getInsFormalName() {
@@ -5259,7 +5299,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatradeTypeを設定
+	 * NF303DTO.javatradeTypeを設定
 	 * @return tradeType
 	 */
 	public String getTradeType() {
@@ -5274,7 +5314,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatradeTypeNmを設定
+	 * NF303DTO.javatradeTypeNmを設定
 	 * @return tradeTypeNm
 	 */
 	public String getTradeTypeNm() {
@@ -5289,7 +5329,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsOpenYearを設定
+	 * NF303DTO.javainsOpenYearを設定
 	 * @return insOpenYear
 	 */
 	public String getInsOpenYear() {
@@ -5304,7 +5344,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsOpenMonthを設定
+	 * NF303DTO.javainsOpenMonthを設定
 	 * @return insOpenMonth
 	 */
 	public String getInsOpenMonth() {
@@ -5319,7 +5359,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsOpenDayを設定
+	 * NF303DTO.javainsOpenDayを設定
 	 * @return insOpenDay
 	 */
 	public String getInsOpenDay() {
@@ -5334,7 +5374,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsAbbrNameを設定
+	 * NF303DTO.javapreInsAbbrNameを設定
 	 * @return preInsAbbrName
 	 */
 	public String getPreInsAbbrName() {
@@ -5349,7 +5389,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsKanaを設定
+	 * NF303DTO.javapreInsKanaを設定
 	 * @return preInsKana
 	 */
 	public String getPreInsKana() {
@@ -5364,7 +5404,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsFormalNameを設定
+	 * NF303DTO.javapreInsFormalNameを設定
 	 * @return preInsFormalName
 	 */
 	public String getPreInsFormalName() {
@@ -5379,7 +5419,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTradeTypeを設定
+	 * NF303DTO.javapreTradeTypeを設定
 	 * @return preTradeType
 	 */
 	public String getPreTradeType() {
@@ -5394,7 +5434,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTradeTypeNmを設定
+	 * NF303DTO.javapreTradeTypeNmを設定
 	 * @return preTradeTypeNm
 	 */
 	public String getPreTradeTypeNm() {
@@ -5409,7 +5449,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsOpenYearを設定
+	 * NF303DTO.javapreInsOpenYearを設定
 	 * @return preInsOpenYear
 	 */
 	public String getPreInsOpenYear() {
@@ -5424,7 +5464,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsOpenMonthを設定
+	 * NF303DTO.javapreInsOpenMonthを設定
 	 * @return preInsOpenMonth
 	 */
 	public String getPreInsOpenMonth() {
@@ -5439,7 +5479,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsOpenDayを設定
+	 * NF303DTO.javapreInsOpenDayを設定
 	 * @return preInsOpenDay
 	 */
 	public String getPreInsOpenDay() {
@@ -5454,7 +5494,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaprePharmTypeを設定
+	 * NF303DTO.javaprePharmTypeを設定
 	 * @return prePharmType
 	 */
 	public String getPrePharmType() {
@@ -5469,7 +5509,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaprePharmTypeNmを設定
+	 * NF303DTO.javaprePharmTypeNmを設定
 	 * @return prePharmTypeNm
 	 */
 	public String getPrePharmTypeNm() {
@@ -5484,7 +5524,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapharmTypeを設定
+	 * NF303DTO.javapharmTypeを設定
 	 * @return pharmType
 	 */
 	public String getPharmType() {
@@ -5499,7 +5539,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapharmTypeNmを設定
+	 * NF303DTO.javapharmTypeNmを設定
 	 * @return pharmTypeNm
 	 */
 	public String getPharmTypeNm() {
@@ -5514,7 +5554,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsRankを設定
+	 * NF303DTO.javapreInsRankを設定
 	 * @return preInsRank
 	 */
 	public String getPreInsRank() {
@@ -5529,7 +5569,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsRankNmを設定
+	 * NF303DTO.javapreInsRankNmを設定
 	 * @return preInsRankNm
 	 */
 	public String getPreInsRankNm() {
@@ -5544,7 +5584,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsRankを設定
+	 * NF303DTO.javainsRankを設定
 	 * @return insRank
 	 */
 	public String getInsRank() {
@@ -5559,7 +5599,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsRankNmを設定
+	 * NF303DTO.javainsRankNmを設定
 	 * @return insRankNm
 	 */
 	public String getInsRankNm() {
@@ -5574,7 +5614,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreRegVisTypeを設定
+	 * NF303DTO.javapreRegVisTypeを設定
 	 * @return preRegVisType
 	 */
 	public String getPreRegVisType() {
@@ -5589,7 +5629,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreRegVisTypeNmを設定
+	 * NF303DTO.javapreRegVisTypeNmを設定
 	 * @return preRegVisTypeNm
 	 */
 	public String getPreRegVisTypeNm() {
@@ -5604,7 +5644,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaregVisTypeを設定
+	 * NF303DTO.javaregVisTypeを設定
 	 * @return regVisType
 	 */
 	public String getRegVisType() {
@@ -5619,7 +5659,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaregVisTypeNmを設定
+	 * NF303DTO.javaregVisTypeNmを設定
 	 * @return regVisTypeNm
 	 */
 	public String getRegVisTypeNm() {
@@ -5634,7 +5674,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreManageCdを設定
+	 * NF303DTO.javapreManageCdを設定
 	 * @return preManageCd
 	 */
 	public String getPreManageCd() {
@@ -5649,7 +5689,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreManageNmを設定
+	 * NF303DTO.javapreManageNmを設定
 	 * @return preManageNm
 	 */
 	public String getPreManageNm() {
@@ -5664,7 +5704,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamanageCdを設定
+	 * NF303DTO.javamanageCdを設定
 	 * @return manageCd
 	 */
 	public String getManageCd() {
@@ -5679,7 +5719,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamanageNmを設定
+	 * NF303DTO.javamanageNmを設定
 	 * @return manageNm
 	 */
 	public String getManageNm() {
@@ -5694,7 +5734,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawsTypeを設定
+	 * NF303DTO.javawsTypeを設定
 	 * @return wsType
 	 */
 	public String getWsType() {
@@ -5709,7 +5749,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawsTypeNmを設定
+	 * NF303DTO.javawsTypeNmを設定
 	 * @return wsTypeNm
 	 */
 	public String getWsTypeNm() {
@@ -5724,7 +5764,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabasketPurchaseを設定
+	 * NF303DTO.javabasketPurchaseを設定
 	 * @return basketPurchase
 	 */
 	public String getBasketPurchase() {
@@ -5739,7 +5779,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabasketPurchaseNmを設定
+	 * NF303DTO.javabasketPurchaseNmを設定
 	 * @return basketPurchaseNm
 	 */
 	public String getBasketPurchaseNm() {
@@ -5754,7 +5794,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaunivSubdivを設定
+	 * NF303DTO.javaunivSubdivを設定
 	 * @return univSubdiv
 	 */
 	public String getUnivSubdiv() {
@@ -5769,7 +5809,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaunivSubdivNmを設定
+	 * NF303DTO.javaunivSubdivNmを設定
 	 * @return univSubdivNm
 	 */
 	public String getUnivSubdivNm() {
@@ -5784,7 +5824,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javacapaTypeを設定
+	 * NF303DTO.javacapaTypeを設定
 	 * @return capaType
 	 */
 	public String getCapaType() {
@@ -5799,7 +5839,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javacapaTypeNmを設定
+	 * NF303DTO.javacapaTypeNmを設定
 	 * @return capaTypeNm
 	 */
 	public String getCapaTypeNm() {
@@ -5814,7 +5854,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreWsTypeを設定
+	 * NF303DTO.javapreWsTypeを設定
 	 * @return preWsType
 	 */
 	public String getPreWsType() {
@@ -5829,7 +5869,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreWsTypeNmを設定
+	 * NF303DTO.javapreWsTypeNmを設定
 	 * @return preWsTypeNm
 	 */
 	public String getPreWsTypeNm() {
@@ -5844,7 +5884,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreBasketPurchaseを設定
+	 * NF303DTO.javapreBasketPurchaseを設定
 	 * @return preBasketPurchase
 	 */
 	public String getPreBasketPurchase() {
@@ -5859,7 +5899,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreBasketPurchaseNmを設定
+	 * NF303DTO.javapreBasketPurchaseNmを設定
 	 * @return preBasketPurchaseNm
 	 */
 	public String getPreBasketPurchaseNm() {
@@ -5874,7 +5914,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUnivSubdivを設定
+	 * NF303DTO.javapreUnivSubdivを設定
 	 * @return preUnivSubdiv
 	 */
 	public String getPreUnivSubdiv() {
@@ -5889,7 +5929,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUnivSubdivNmを設定
+	 * NF303DTO.javapreUnivSubdivNmを設定
 	 * @return preUnivSubdivNm
 	 */
 	public String getPreUnivSubdivNm() {
@@ -5904,7 +5944,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreCapaTypeを設定
+	 * NF303DTO.javapreCapaTypeを設定
 	 * @return preCapaType
 	 */
 	public String getPreCapaType() {
@@ -5919,7 +5959,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreCapaTypeNmを設定
+	 * NF303DTO.javapreCapaTypeNmを設定
 	 * @return preCapaTypeNm
 	 */
 	public String getPreCapaTypeNm() {
@@ -5934,7 +5974,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultInsCdを設定
+	 * NF303DTO.javaultInsCdを設定
 	 * @return ultInsCd
 	 */
 	public String getUltInsCd() {
@@ -5949,7 +5989,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUltInsCdを設定
+	 * NF303DTO.javapreUltInsCdを設定
 	 * @return preUltInsCd
 	 */
 	public String getPreUltInsCd() {
@@ -5964,7 +6004,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javashisetsuNmRyakuを設定
+	 * NF303DTO.javashisetsuNmRyakuを設定
 	 * @return shisetsuNmRyaku
 	 */
 	public String getShisetsuNmRyaku() {
@@ -5979,7 +6019,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreShisetsuNmRyakuを設定
+	 * NF303DTO.javapreShisetsuNmRyakuを設定
 	 * @return preShisetsuNmRyaku
 	 */
 	public String getPreShisetsuNmRyaku() {
@@ -5994,7 +6034,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javashisetsuNmを設定
+	 * NF303DTO.javashisetsuNmを設定
 	 * @return shisetsuNm
 	 */
 	public String getShisetsuNm() {
@@ -6009,7 +6049,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreShisetsuNmを設定
+	 * NF303DTO.javapreShisetsuNmを設定
 	 * @return preShisetsuNm
 	 */
 	public String getPreShisetsuNm() {
@@ -6024,7 +6064,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCntBaseを設定
+	 * NF303DTO.javabedCntBaseを設定
 	 * @return bedCntBase
 	 */
 	public String getBedCntBase() {
@@ -6039,7 +6079,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCnt01を設定
+	 * NF303DTO.javabedCnt01を設定
 	 * @return bedCnt01
 	 */
 	public String getBedCnt01() {
@@ -6054,7 +6094,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCnt02を設定
+	 * NF303DTO.javabedCnt02を設定
 	 * @return bedCnt02
 	 */
 	public String getBedCnt02() {
@@ -6069,7 +6109,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCnt03を設定
+	 * NF303DTO.javabedCnt03を設定
 	 * @return bedCnt03
 	 */
 	public String getBedCnt03() {
@@ -6084,7 +6124,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCnt04を設定
+	 * NF303DTO.javabedCnt04を設定
 	 * @return bedCnt04
 	 */
 	public String getBedCnt04() {
@@ -6099,7 +6139,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCnt05を設定
+	 * NF303DTO.javabedCnt05を設定
 	 * @return bedCnt05
 	 */
 	public String getBedCnt05() {
@@ -6114,7 +6154,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCnt06を設定
+	 * NF303DTO.javabedCnt06を設定
 	 * @return bedCnt06
 	 */
 	public String getBedCnt06() {
@@ -6129,7 +6169,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedCnt07を設定
+	 * NF303DTO.javabedCnt07を設定
 	 * @return bedCnt07
 	 */
 	public String getBedCnt07() {
@@ -6144,7 +6184,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabedsTotを設定
+	 * NF303DTO.javabedsTotを設定
 	 * @return bedsTot
 	 */
 	public String getBedsTot() {
@@ -6159,7 +6199,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamedBedsTotを設定
+	 * NF303DTO.javamedBedsTotを設定
 	 * @return medBedsTot
 	 */
 	public String getMedBedsTot() {
@@ -6174,7 +6214,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCntBaseを設定
+	 * NF303DTO.javaultBedCntBaseを設定
 	 * @return ultBedCntBase
 	 */
 	public String getUltBedCntBase() {
@@ -6189,7 +6229,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCnt01を設定
+	 * NF303DTO.javaultBedCnt01を設定
 	 * @return ultBedCnt01
 	 */
 	public String getUltBedCnt01() {
@@ -6204,7 +6244,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCnt02を設定
+	 * NF303DTO.javaultBedCnt02を設定
 	 * @return ultBedCnt02
 	 */
 	public String getUltBedCnt02() {
@@ -6219,7 +6259,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCnt03を設定
+	 * NF303DTO.javaultBedCnt03を設定
 	 * @return ultBedCnt03
 	 */
 	public String getUltBedCnt03() {
@@ -6234,7 +6274,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCnt04を設定
+	 * NF303DTO.javaultBedCnt04を設定
 	 * @return ultBedCnt04
 	 */
 	public String getUltBedCnt04() {
@@ -6249,7 +6289,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCnt05を設定
+	 * NF303DTO.javaultBedCnt05を設定
 	 * @return ultBedCnt05
 	 */
 	public String getUltBedCnt05() {
@@ -6264,7 +6304,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCnt06を設定
+	 * NF303DTO.javaultBedCnt06を設定
 	 * @return ultBedCnt06
 	 */
 	public String getUltBedCnt06() {
@@ -6279,7 +6319,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedCnt07を設定
+	 * NF303DTO.javaultBedCnt07を設定
 	 * @return ultBedCnt07
 	 */
 	public String getUltBedCnt07() {
@@ -6294,7 +6334,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultBedsTotを設定
+	 * NF303DTO.javaultBedsTotを設定
 	 * @return ultBedsTot
 	 */
 	public String getUltBedsTot() {
@@ -6309,7 +6349,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaultMedBedsTotを設定
+	 * NF303DTO.javaultMedBedsTotを設定
 	 * @return ultMedBedsTot
 	 */
 	public String getUltMedBedsTot() {
@@ -6324,7 +6364,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCntBaseを設定
+	 * NF303DTO.javanextBedCntBaseを設定
 	 * @return nextBedCntBase
 	 */
 	public String getNextBedCntBase() {
@@ -6339,7 +6379,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCnt01を設定
+	 * NF303DTO.javanextBedCnt01を設定
 	 * @return nextBedCnt01
 	 */
 	public String getNextBedCnt01() {
@@ -6354,7 +6394,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCnt02を設定
+	 * NF303DTO.javanextBedCnt02を設定
 	 * @return nextBedCnt02
 	 */
 	public String getNextBedCnt02() {
@@ -6369,7 +6409,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCnt03を設定
+	 * NF303DTO.javanextBedCnt03を設定
 	 * @return nextBedCnt03
 	 */
 	public String getNextBedCnt03() {
@@ -6384,7 +6424,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCnt04を設定
+	 * NF303DTO.javanextBedCnt04を設定
 	 * @return nextBedCnt04
 	 */
 	public String getNextBedCnt04() {
@@ -6399,7 +6439,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCnt05を設定
+	 * NF303DTO.javanextBedCnt05を設定
 	 * @return nextBedCnt05
 	 */
 	public String getNextBedCnt05() {
@@ -6414,7 +6454,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCnt06を設定
+	 * NF303DTO.javanextBedCnt06を設定
 	 * @return nextBedCnt06
 	 */
 	public String getNextBedCnt06() {
@@ -6429,7 +6469,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedCnt07を設定
+	 * NF303DTO.javanextBedCnt07を設定
 	 * @return nextBedCnt07
 	 */
 	public String getNextBedCnt07() {
@@ -6444,7 +6484,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextBedsTotを設定
+	 * NF303DTO.javanextBedsTotを設定
 	 * @return nextBedsTot
 	 */
 	public String getNextBedsTot() {
@@ -6459,7 +6499,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javanextMedBedsTotを設定
+	 * NF303DTO.javanextMedBedsTotを設定
 	 * @return nextMedBedsTot
 	 */
 	public String getNextMedBedsTot() {
@@ -6474,7 +6514,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsPcodeを設定
+	 * NF303DTO.javainsPcodeを設定
 	 * @return insPcode
 	 */
 	public String getInsPcode() {
@@ -6489,7 +6529,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsAddrを設定
+	 * NF303DTO.javainsAddrを設定
 	 * @return insAddr
 	 */
 	public String getInsAddr() {
@@ -6504,7 +6544,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsAddrKanaを設定
+	 * NF303DTO.javainsAddrKanaを設定
 	 * @return insAddrKana
 	 */
 	public String getInsAddrKana() {
@@ -6519,7 +6559,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaddrCodePrefを設定
+	 * NF303DTO.javaaddrCodePrefを設定
 	 * @return addrCodePref
 	 */
 	public String getAddrCodePref() {
@@ -6534,7 +6574,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaddrCodePrefNameを設定
+	 * NF303DTO.javaaddrCodePrefNameを設定
 	 * @return addrCodePrefName
 	 */
 	public String getAddrCodePrefName() {
@@ -6549,7 +6589,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaddrCodeCityを設定
+	 * NF303DTO.javaaddrCodeCityを設定
 	 * @return addrCodeCity
 	 */
 	public String getAddrCodeCity() {
@@ -6564,7 +6604,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaddrCodeCityNameを設定
+	 * NF303DTO.javaaddrCodeCityNameを設定
 	 * @return addrCodeCityName
 	 */
 	public String getAddrCodeCityName() {
@@ -6579,7 +6619,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsAddrDtを設定
+	 * NF303DTO.javainsAddrDtを設定
 	 * @return insAddrDt
 	 */
 	public String getInsAddrDt() {
@@ -6594,7 +6634,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatkCityCdを設定
+	 * NF303DTO.javatkCityCdを設定
 	 * @return tkCityCd
 	 */
 	public String getTkCityCd() {
@@ -6609,7 +6649,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatkCityNameを設定
+	 * NF303DTO.javatkCityNameを設定
 	 * @return tkCityName
 	 */
 	public String getTkCityName() {
@@ -6624,7 +6664,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsPhone1を設定
+	 * NF303DTO.javainsPhone1を設定
 	 * @return insPhone1
 	 */
 	public String getInsPhone1() {
@@ -6639,7 +6679,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsPhone2を設定
+	 * NF303DTO.javainsPhone2を設定
 	 * @return insPhone2
 	 */
 	public String getInsPhone2() {
@@ -6654,7 +6694,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsFax1を設定
+	 * NF303DTO.javainsFax1を設定
 	 * @return insFax1
 	 */
 	public String getInsFax1() {
@@ -6669,7 +6709,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsFax2を設定
+	 * NF303DTO.javainsFax2を設定
 	 * @return insFax2
 	 */
 	public String getInsFax2() {
@@ -6684,7 +6724,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsUrlを設定
+	 * NF303DTO.javainsUrlを設定
 	 * @return insUrl
 	 */
 	public String getInsUrl() {
@@ -6699,7 +6739,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsUrlYmdを設定
+	 * NF303DTO.javainsUrlYmdを設定
 	 * @return insUrlYmd
 	 */
 	public String getInsUrlYmd() {
@@ -6714,7 +6754,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0001を設定
+	 * NF303DTO.javafree0001を設定
 	 * @return free0001
 	 */
 	public String getFree0001() {
@@ -6729,7 +6769,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0002を設定
+	 * NF303DTO.javafree0002を設定
 	 * @return free0002
 	 */
 	public String getFree0002() {
@@ -6744,7 +6784,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0003を設定
+	 * NF303DTO.javafree0003を設定
 	 * @return free0003
 	 */
 	public String getFree0003() {
@@ -6759,7 +6799,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0015を設定
+	 * NF303DTO.javafree0015を設定
 	 * @return free0015
 	 */
 	public String getFree0015() {
@@ -6774,7 +6814,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0008を設定
+	 * NF303DTO.javafree0008を設定
 	 * @return free0008
 	 */
 	public String getFree0008() {
@@ -6789,7 +6829,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0009を設定
+	 * NF303DTO.javafree0009を設定
 	 * @return free0009
 	 */
 	public String getFree0009() {
@@ -6804,7 +6844,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0004を設定
+	 * NF303DTO.javafree0004を設定
 	 * @return free0004
 	 */
 	public String getFree0004() {
@@ -6819,7 +6859,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0005を設定
+	 * NF303DTO.javafree0005を設定
 	 * @return free0005
 	 */
 	public String getFree0005() {
@@ -6834,7 +6874,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0006を設定
+	 * NF303DTO.javafree0006を設定
 	 * @return free0006
 	 */
 	public String getFree0006() {
@@ -6849,7 +6889,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0007を設定
+	 * NF303DTO.javafree0007を設定
 	 * @return free0007
 	 */
 	public String getFree0007() {
@@ -6864,7 +6904,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0010を設定
+	 * NF303DTO.javafree0010を設定
 	 * @return free0010
 	 */
 	public String getFree0010() {
@@ -6879,7 +6919,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0011を設定
+	 * NF303DTO.javafree0011を設定
 	 * @return free0011
 	 */
 	public String getFree0011() {
@@ -6894,7 +6934,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0013を設定
+	 * NF303DTO.javafree0013を設定
 	 * @return free0013
 	 */
 	public String getFree0013() {
@@ -6909,7 +6949,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0014を設定
+	 * NF303DTO.javafree0014を設定
 	 * @return free0014
 	 */
 	public String getFree0014() {
@@ -6924,7 +6964,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0012を設定
+	 * NF303DTO.javafree0012を設定
 	 * @return free0012
 	 */
 	public String getFree0012() {
@@ -6939,7 +6979,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawelfare02を設定
+	 * NF303DTO.javawelfare02を設定
 	 * @return welfare02
 	 */
 	public String getWelfare02() {
@@ -6954,7 +6994,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawelfare02Nmを設定
+	 * NF303DTO.javawelfare02Nmを設定
 	 * @return welfare02Nm
 	 */
 	public String getWelfare02Nm() {
@@ -6969,7 +7009,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawelfare08Nmを設定
+	 * NF303DTO.javawelfare08Nmを設定
 	 * @return welfare08Nm
 	 */
 	public String getWelfare08Nm() {
@@ -6984,7 +7024,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawelfare08を設定
+	 * NF303DTO.javawelfare08を設定
 	 * @return welfare08
 	 */
 	public String getWelfare08() {
@@ -6999,7 +7039,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult01を設定
+	 * NF303DTO.javaresult01を設定
 	 * @return result01
 	 */
 	public String getResult01() {
@@ -7014,7 +7054,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult02を設定
+	 * NF303DTO.javaresult02を設定
 	 * @return result02
 	 */
 	public String getResult02() {
@@ -7029,7 +7069,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult03を設定
+	 * NF303DTO.javaresult03を設定
 	 * @return result03
 	 */
 	public String getResult03() {
@@ -7044,7 +7084,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult04を設定
+	 * NF303DTO.javaresult04を設定
 	 * @return result04
 	 */
 	public String getResult04() {
@@ -7059,7 +7099,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult05を設定
+	 * NF303DTO.javaresult05を設定
 	 * @return result05
 	 */
 	public String getResult05() {
@@ -7074,7 +7114,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult06を設定
+	 * NF303DTO.javaresult06を設定
 	 * @return result06
 	 */
 	public String getResult06() {
@@ -7089,7 +7129,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult07を設定
+	 * NF303DTO.javaresult07を設定
 	 * @return result07
 	 */
 	public String getResult07() {
@@ -7104,7 +7144,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult08を設定
+	 * NF303DTO.javaresult08を設定
 	 * @return result08
 	 */
 	public String getResult08() {
@@ -7119,7 +7159,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult09を設定
+	 * NF303DTO.javaresult09を設定
 	 * @return result09
 	 */
 	public String getResult09() {
@@ -7134,7 +7174,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult10を設定
+	 * NF303DTO.javaresult10を設定
 	 * @return result10
 	 */
 	public String getResult10() {
@@ -7149,7 +7189,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult11を設定
+	 * NF303DTO.javaresult11を設定
 	 * @return result11
 	 */
 	public String getResult11() {
@@ -7164,7 +7204,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult12を設定
+	 * NF303DTO.javaresult12を設定
 	 * @return result12
 	 */
 	public String getResult12() {
@@ -7179,7 +7219,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult13を設定
+	 * NF303DTO.javaresult13を設定
 	 * @return result13
 	 */
 	public String getResult13() {
@@ -7194,7 +7234,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult14を設定
+	 * NF303DTO.javaresult14を設定
 	 * @return result14
 	 */
 	public String getResult14() {
@@ -7209,7 +7249,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult15を設定
+	 * NF303DTO.javaresult15を設定
 	 * @return result15
 	 */
 	public String getResult15() {
@@ -7224,7 +7264,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult16を設定
+	 * NF303DTO.javaresult16を設定
 	 * @return result16
 	 */
 	public String getResult16() {
@@ -7239,7 +7279,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult17を設定
+	 * NF303DTO.javaresult17を設定
 	 * @return result17
 	 */
 	public String getResult17() {
@@ -7254,7 +7294,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult18を設定
+	 * NF303DTO.javaresult18を設定
 	 * @return result18
 	 */
 	public String getResult18() {
@@ -7269,7 +7309,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult19を設定
+	 * NF303DTO.javaresult19を設定
 	 * @return result19
 	 */
 	public String getResult19() {
@@ -7284,7 +7324,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult20を設定
+	 * NF303DTO.javaresult20を設定
 	 * @return result20
 	 */
 	public String getResult20() {
@@ -7299,7 +7339,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult21を設定
+	 * NF303DTO.javaresult21を設定
 	 * @return result21
 	 */
 	public String getResult21() {
@@ -7314,7 +7354,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult22を設定
+	 * NF303DTO.javaresult22を設定
 	 * @return result22
 	 */
 	public String getResult22() {
@@ -7329,7 +7369,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult23を設定
+	 * NF303DTO.javaresult23を設定
 	 * @return result23
 	 */
 	public String getResult23() {
@@ -7344,7 +7384,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult24を設定
+	 * NF303DTO.javaresult24を設定
 	 * @return result24
 	 */
 	public String getResult24() {
@@ -7359,7 +7399,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult25を設定
+	 * NF303DTO.javaresult25を設定
 	 * @return result25
 	 */
 	public String getResult25() {
@@ -7374,7 +7414,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult26を設定
+	 * NF303DTO.javaresult26を設定
 	 * @return result26
 	 */
 	public String getResult26() {
@@ -7389,7 +7429,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult27を設定
+	 * NF303DTO.javaresult27を設定
 	 * @return result27
 	 */
 	public String getResult27() {
@@ -7404,7 +7444,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult28を設定
+	 * NF303DTO.javaresult28を設定
 	 * @return result28
 	 */
 	public String getResult28() {
@@ -7419,7 +7459,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult29を設定
+	 * NF303DTO.javaresult29を設定
 	 * @return result29
 	 */
 	public String getResult29() {
@@ -7434,7 +7474,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult30を設定
+	 * NF303DTO.javaresult30を設定
 	 * @return result30
 	 */
 	public String getResult30() {
@@ -7449,7 +7489,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult31を設定
+	 * NF303DTO.javaresult31を設定
 	 * @return result31
 	 */
 	public String getResult31() {
@@ -7464,7 +7504,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult32を設定
+	 * NF303DTO.javaresult32を設定
 	 * @return result32
 	 */
 	public String getResult32() {
@@ -7479,7 +7519,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult33を設定
+	 * NF303DTO.javaresult33を設定
 	 * @return result33
 	 */
 	public String getResult33() {
@@ -7494,7 +7534,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult34を設定
+	 * NF303DTO.javaresult34を設定
 	 * @return result34
 	 */
 	public String getResult34() {
@@ -7509,7 +7549,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult35を設定
+	 * NF303DTO.javaresult35を設定
 	 * @return result35
 	 */
 	public String getResult35() {
@@ -7524,7 +7564,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult36を設定
+	 * NF303DTO.javaresult36を設定
 	 * @return result36
 	 */
 	public String getResult36() {
@@ -7539,7 +7579,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult01Nmを設定
+	 * NF303DTO.javaresult01Nmを設定
 	 * @return result01Nm
 	 */
 	public String getResult01Nm() {
@@ -7554,7 +7594,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult02Nmを設定
+	 * NF303DTO.javaresult02Nmを設定
 	 * @return result02Nm
 	 */
 	public String getResult02Nm() {
@@ -7569,7 +7609,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult03Nmを設定
+	 * NF303DTO.javaresult03Nmを設定
 	 * @return result03Nm
 	 */
 	public String getResult03Nm() {
@@ -7584,7 +7624,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult04Nmを設定
+	 * NF303DTO.javaresult04Nmを設定
 	 * @return result04Nm
 	 */
 	public String getResult04Nm() {
@@ -7599,7 +7639,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult05Nmを設定
+	 * NF303DTO.javaresult05Nmを設定
 	 * @return result05Nm
 	 */
 	public String getResult05Nm() {
@@ -7614,7 +7654,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult06Nmを設定
+	 * NF303DTO.javaresult06Nmを設定
 	 * @return result06Nm
 	 */
 	public String getResult06Nm() {
@@ -7629,7 +7669,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult07Nmを設定
+	 * NF303DTO.javaresult07Nmを設定
 	 * @return result07Nm
 	 */
 	public String getResult07Nm() {
@@ -7644,7 +7684,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult08Nmを設定
+	 * NF303DTO.javaresult08Nmを設定
 	 * @return result08Nm
 	 */
 	public String getResult08Nm() {
@@ -7659,7 +7699,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult09Nmを設定
+	 * NF303DTO.javaresult09Nmを設定
 	 * @return result09Nm
 	 */
 	public String getResult09Nm() {
@@ -7674,7 +7714,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult10Nmを設定
+	 * NF303DTO.javaresult10Nmを設定
 	 * @return result10Nm
 	 */
 	public String getResult10Nm() {
@@ -7689,7 +7729,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult11Nmを設定
+	 * NF303DTO.javaresult11Nmを設定
 	 * @return result11Nm
 	 */
 	public String getResult11Nm() {
@@ -7704,7 +7744,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult12Nmを設定
+	 * NF303DTO.javaresult12Nmを設定
 	 * @return result12Nm
 	 */
 	public String getResult12Nm() {
@@ -7719,7 +7759,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult13Nmを設定
+	 * NF303DTO.javaresult13Nmを設定
 	 * @return result13Nm
 	 */
 	public String getResult13Nm() {
@@ -7734,7 +7774,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult14Nmを設定
+	 * NF303DTO.javaresult14Nmを設定
 	 * @return result14Nm
 	 */
 	public String getResult14Nm() {
@@ -7749,7 +7789,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult15Nmを設定
+	 * NF303DTO.javaresult15Nmを設定
 	 * @return result15Nm
 	 */
 	public String getResult15Nm() {
@@ -7764,7 +7804,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult16Nmを設定
+	 * NF303DTO.javaresult16Nmを設定
 	 * @return result16Nm
 	 */
 	public String getResult16Nm() {
@@ -7779,7 +7819,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult17Nmを設定
+	 * NF303DTO.javaresult17Nmを設定
 	 * @return result17Nm
 	 */
 	public String getResult17Nm() {
@@ -7794,7 +7834,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult18Nmを設定
+	 * NF303DTO.javaresult18Nmを設定
 	 * @return result18Nm
 	 */
 	public String getResult18Nm() {
@@ -7809,7 +7849,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult19Nmを設定
+	 * NF303DTO.javaresult19Nmを設定
 	 * @return result19Nm
 	 */
 	public String getResult19Nm() {
@@ -7824,7 +7864,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult20Nmを設定
+	 * NF303DTO.javaresult20Nmを設定
 	 * @return result20Nm
 	 */
 	public String getResult20Nm() {
@@ -7839,7 +7879,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult21Nmを設定
+	 * NF303DTO.javaresult21Nmを設定
 	 * @return result21Nm
 	 */
 	public String getResult21Nm() {
@@ -7854,7 +7894,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult22Nmを設定
+	 * NF303DTO.javaresult22Nmを設定
 	 * @return result22Nm
 	 */
 	public String getResult22Nm() {
@@ -7869,7 +7909,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult23Nmを設定
+	 * NF303DTO.javaresult23Nmを設定
 	 * @return result23Nm
 	 */
 	public String getResult23Nm() {
@@ -7884,7 +7924,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult24Nmを設定
+	 * NF303DTO.javaresult24Nmを設定
 	 * @return result24Nm
 	 */
 	public String getResult24Nm() {
@@ -7899,7 +7939,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult25Nmを設定
+	 * NF303DTO.javaresult25Nmを設定
 	 * @return result25Nm
 	 */
 	public String getResult25Nm() {
@@ -7914,7 +7954,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult26Nmを設定
+	 * NF303DTO.javaresult26Nmを設定
 	 * @return result26Nm
 	 */
 	public String getResult26Nm() {
@@ -7929,7 +7969,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult27Nmを設定
+	 * NF303DTO.javaresult27Nmを設定
 	 * @return result27Nm
 	 */
 	public String getResult27Nm() {
@@ -7944,7 +7984,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult28Nmを設定
+	 * NF303DTO.javaresult28Nmを設定
 	 * @return result28Nm
 	 */
 	public String getResult28Nm() {
@@ -7959,7 +7999,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult29Nmを設定
+	 * NF303DTO.javaresult29Nmを設定
 	 * @return result29Nm
 	 */
 	public String getResult29Nm() {
@@ -7974,7 +8014,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult30Nmを設定
+	 * NF303DTO.javaresult30Nmを設定
 	 * @return result30Nm
 	 */
 	public String getResult30Nm() {
@@ -7989,7 +8029,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult31Nmを設定
+	 * NF303DTO.javaresult31Nmを設定
 	 * @return result31Nm
 	 */
 	public String getResult31Nm() {
@@ -8004,7 +8044,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult32Nmを設定
+	 * NF303DTO.javaresult32Nmを設定
 	 * @return result32Nm
 	 */
 	public String getResult32Nm() {
@@ -8019,7 +8059,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult33Nmを設定
+	 * NF303DTO.javaresult33Nmを設定
 	 * @return result33Nm
 	 */
 	public String getResult33Nm() {
@@ -8034,7 +8074,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult34Nmを設定
+	 * NF303DTO.javaresult34Nmを設定
 	 * @return result34Nm
 	 */
 	public String getResult34Nm() {
@@ -8049,7 +8089,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult35Nmを設定
+	 * NF303DTO.javaresult35Nmを設定
 	 * @return result35Nm
 	 */
 	public String getResult35Nm() {
@@ -8064,7 +8104,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult36Nmを設定
+	 * NF303DTO.javaresult36Nmを設定
 	 * @return result36Nm
 	 */
 	public String getResult36Nm() {
@@ -8079,7 +8119,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip01を設定
+	 * NF303DTO.javaequip01を設定
 	 * @return equip01
 	 */
 	public String getEquip01() {
@@ -8094,7 +8134,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip02を設定
+	 * NF303DTO.javaequip02を設定
 	 * @return equip02
 	 */
 	public String getEquip02() {
@@ -8109,7 +8149,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip03を設定
+	 * NF303DTO.javaequip03を設定
 	 * @return equip03
 	 */
 	public String getEquip03() {
@@ -8124,7 +8164,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip07を設定
+	 * NF303DTO.javaequip07を設定
 	 * @return equip07
 	 */
 	public String getEquip07() {
@@ -8139,7 +8179,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip09を設定
+	 * NF303DTO.javaequip09を設定
 	 * @return equip09
 	 */
 	public String getEquip09() {
@@ -8154,7 +8194,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip01Nmを設定
+	 * NF303DTO.javaequip01Nmを設定
 	 * @return equip01Nm
 	 */
 	public String getEquip01Nm() {
@@ -8169,7 +8209,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip02Nmを設定
+	 * NF303DTO.javaequip02Nmを設定
 	 * @return equip02Nm
 	 */
 	public String getEquip02Nm() {
@@ -8184,7 +8224,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip03Nmを設定
+	 * NF303DTO.javaequip03Nmを設定
 	 * @return equip03Nm
 	 */
 	public String getEquip03Nm() {
@@ -8199,7 +8239,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip07Nmを設定
+	 * NF303DTO.javaequip07Nmを設定
 	 * @return equip07Nm
 	 */
 	public String getEquip07Nm() {
@@ -8214,7 +8254,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip09Nmを設定
+	 * NF303DTO.javaequip09Nmを設定
 	 * @return equip09Nm
 	 */
 	public String getEquip09Nm() {
@@ -8229,7 +8269,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket01を設定
+	 * NF303DTO.javamarket01を設定
 	 * @return market01
 	 */
 	public String getMarket01() {
@@ -8244,7 +8284,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket02を設定
+	 * NF303DTO.javamarket02を設定
 	 * @return market02
 	 */
 	public String getMarket02() {
@@ -8259,7 +8299,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket03を設定
+	 * NF303DTO.javamarket03を設定
 	 * @return market03
 	 */
 	public String getMarket03() {
@@ -8274,7 +8314,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket04を設定
+	 * NF303DTO.javamarket04を設定
 	 * @return market04
 	 */
 	public String getMarket04() {
@@ -8289,7 +8329,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket06を設定
+	 * NF303DTO.javamarket06を設定
 	 * @return market06
 	 */
 	public String getMarket06() {
@@ -8304,7 +8344,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket07を設定
+	 * NF303DTO.javamarket07を設定
 	 * @return market07
 	 */
 	public String getMarket07() {
@@ -8319,7 +8359,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket09を設定
+	 * NF303DTO.javamarket09を設定
 	 * @return market09
 	 */
 	public String getMarket09() {
@@ -8334,7 +8374,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket01Nmを設定
+	 * NF303DTO.javamarket01Nmを設定
 	 * @return market01Nm
 	 */
 	public String getMarket01Nm() {
@@ -8349,7 +8389,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket02Nmを設定
+	 * NF303DTO.javamarket02Nmを設定
 	 * @return market02Nm
 	 */
 	public String getMarket02Nm() {
@@ -8364,7 +8404,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket03Nmを設定
+	 * NF303DTO.javamarket03Nmを設定
 	 * @return market03Nm
 	 */
 	public String getMarket03Nm() {
@@ -8379,7 +8419,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket04Nmを設定
+	 * NF303DTO.javamarket04Nmを設定
 	 * @return market04Nm
 	 */
 	public String getMarket04Nm() {
@@ -8394,7 +8434,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket06Nmを設定
+	 * NF303DTO.javamarket06Nmを設定
 	 * @return market06Nm
 	 */
 	public String getMarket06Nm() {
@@ -8409,7 +8449,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket07Nmを設定
+	 * NF303DTO.javamarket07Nmを設定
 	 * @return market07Nm
 	 */
 	public String getMarket07Nm() {
@@ -8424,7 +8464,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket09Nmを設定
+	 * NF303DTO.javamarket09Nmを設定
 	 * @return market09Nm
 	 */
 	public String getMarket09Nm() {
@@ -8439,7 +8479,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamedical12を設定
+	 * NF303DTO.javamedical12を設定
 	 * @return medical12
 	 */
 	public String getMedical12() {
@@ -8454,7 +8494,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamedical12Nmを設定
+	 * NF303DTO.javamedical12Nmを設定
 	 * @return medical12Nm
 	 */
 	public String getMedical12Nm() {
@@ -8469,7 +8509,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc01を設定
+	 * NF303DTO.javaspfunc01を設定
 	 * @return spfunc01
 	 */
 	public String getSpfunc01() {
@@ -8484,7 +8524,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc03を設定
+	 * NF303DTO.javaspfunc03を設定
 	 * @return spfunc03
 	 */
 	public String getSpfunc03() {
@@ -8499,7 +8539,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc04を設定
+	 * NF303DTO.javaspfunc04を設定
 	 * @return spfunc04
 	 */
 	public String getSpfunc04() {
@@ -8514,7 +8554,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc01Nmを設定
+	 * NF303DTO.javaspfunc01Nmを設定
 	 * @return spfunc01Nm
 	 */
 	public String getSpfunc01Nm() {
@@ -8529,7 +8569,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc03Nmを設定
+	 * NF303DTO.javaspfunc03Nmを設定
 	 * @return spfunc03Nm
 	 */
 	public String getSpfunc03Nm() {
@@ -8544,7 +8584,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc04Nmを設定
+	 * NF303DTO.javaspfunc04Nmを設定
 	 * @return spfunc04Nm
 	 */
 	public String getSpfunc04Nm() {
@@ -8559,7 +8599,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup10を設定
+	 * NF303DTO.javatieup10を設定
 	 * @return tieup10
 	 */
 	public String getTieup10() {
@@ -8574,7 +8614,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup11を設定
+	 * NF303DTO.javatieup11を設定
 	 * @return tieup11
 	 */
 	public String getTieup11() {
@@ -8589,7 +8629,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup12を設定
+	 * NF303DTO.javatieup12を設定
 	 * @return tieup12
 	 */
 	public String getTieup12() {
@@ -8604,7 +8644,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup10Nmを設定
+	 * NF303DTO.javatieup10Nmを設定
 	 * @return tieup10Nm
 	 */
 	public String getTieup10Nm() {
@@ -8619,7 +8659,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup11Nmを設定
+	 * NF303DTO.javatieup11Nmを設定
 	 * @return tieup11Nm
 	 */
 	public String getTieup11Nm() {
@@ -8634,7 +8674,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup12Nmを設定
+	 * NF303DTO.javatieup12Nmを設定
 	 * @return tieup12Nm
 	 */
 	public String getTieup12Nm() {
@@ -8649,7 +8689,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0001を設定
+	 * NF303DTO.javausercd0001を設定
 	 * @return usercd0001
 	 */
 	public String getUsercd0001() {
@@ -8664,7 +8704,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0002を設定
+	 * NF303DTO.javausercd0002を設定
 	 * @return usercd0002
 	 */
 	public String getUsercd0002() {
@@ -8679,7 +8719,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0003を設定
+	 * NF303DTO.javausercd0003を設定
 	 * @return usercd0003
 	 */
 	public String getUsercd0003() {
@@ -8694,7 +8734,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0004を設定
+	 * NF303DTO.javausercd0004を設定
 	 * @return usercd0004
 	 */
 	public String getUsercd0004() {
@@ -8709,7 +8749,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0005を設定
+	 * NF303DTO.javausercd0005を設定
 	 * @return usercd0005
 	 */
 	public String getUsercd0005() {
@@ -8724,7 +8764,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0006を設定
+	 * NF303DTO.javausercd0006を設定
 	 * @return usercd0006
 	 */
 	public String getUsercd0006() {
@@ -8739,7 +8779,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0007を設定
+	 * NF303DTO.javausercd0007を設定
 	 * @return usercd0007
 	 */
 	public String getUsercd0007() {
@@ -8754,7 +8794,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0008を設定
+	 * NF303DTO.javausercd0008を設定
 	 * @return usercd0008
 	 */
 	public String getUsercd0008() {
@@ -8769,7 +8809,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0009を設定
+	 * NF303DTO.javausercd0009を設定
 	 * @return usercd0009
 	 */
 	public String getUsercd0009() {
@@ -8784,7 +8824,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0010を設定
+	 * NF303DTO.javausercd0010を設定
 	 * @return usercd0010
 	 */
 	public String getUsercd0010() {
@@ -8799,7 +8839,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0011を設定
+	 * NF303DTO.javausercd0011を設定
 	 * @return usercd0011
 	 */
 	public String getUsercd0011() {
@@ -8814,7 +8854,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0012を設定
+	 * NF303DTO.javausercd0012を設定
 	 * @return usercd0012
 	 */
 	public String getUsercd0012() {
@@ -8829,7 +8869,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0013を設定
+	 * NF303DTO.javausercd0013を設定
 	 * @return usercd0013
 	 */
 	public String getUsercd0013() {
@@ -8844,7 +8884,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0014を設定
+	 * NF303DTO.javausercd0014を設定
 	 * @return usercd0014
 	 */
 	public String getUsercd0014() {
@@ -8859,7 +8899,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0015を設定
+	 * NF303DTO.javausercd0015を設定
 	 * @return usercd0015
 	 */
 	public String getUsercd0015() {
@@ -8874,7 +8914,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0016を設定
+	 * NF303DTO.javausercd0016を設定
 	 * @return usercd0016
 	 */
 	public String getUsercd0016() {
@@ -8889,7 +8929,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0017を設定
+	 * NF303DTO.javausercd0017を設定
 	 * @return usercd0017
 	 */
 	public String getUsercd0017() {
@@ -8904,7 +8944,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0018を設定
+	 * NF303DTO.javausercd0018を設定
 	 * @return usercd0018
 	 */
 	public String getUsercd0018() {
@@ -8919,7 +8959,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0019を設定
+	 * NF303DTO.javausercd0019を設定
 	 * @return usercd0019
 	 */
 	public String getUsercd0019() {
@@ -8934,7 +8974,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0020を設定
+	 * NF303DTO.javausercd0020を設定
 	 * @return usercd0020
 	 */
 	public String getUsercd0020() {
@@ -8949,7 +8989,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0021を設定
+	 * NF303DTO.javausercd0021を設定
 	 * @return usercd0021
 	 */
 	public String getUsercd0021() {
@@ -8964,7 +9004,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0022を設定
+	 * NF303DTO.javausercd0022を設定
 	 * @return usercd0022
 	 */
 	public String getUsercd0022() {
@@ -8979,7 +9019,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0023を設定
+	 * NF303DTO.javausercd0023を設定
 	 * @return usercd0023
 	 */
 	public String getUsercd0023() {
@@ -8994,7 +9034,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0024を設定
+	 * NF303DTO.javausercd0024を設定
 	 * @return usercd0024
 	 */
 	public String getUsercd0024() {
@@ -9009,7 +9049,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0025を設定
+	 * NF303DTO.javausercd0025を設定
 	 * @return usercd0025
 	 */
 	public String getUsercd0025() {
@@ -9024,7 +9064,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0026を設定
+	 * NF303DTO.javausercd0026を設定
 	 * @return usercd0026
 	 */
 	public String getUsercd0026() {
@@ -9039,7 +9079,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0027を設定
+	 * NF303DTO.javausercd0027を設定
 	 * @return usercd0027
 	 */
 	public String getUsercd0027() {
@@ -9054,7 +9094,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0028を設定
+	 * NF303DTO.javausercd0028を設定
 	 * @return usercd0028
 	 */
 	public String getUsercd0028() {
@@ -9069,7 +9109,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0029を設定
+	 * NF303DTO.javausercd0029を設定
 	 * @return usercd0029
 	 */
 	public String getUsercd0029() {
@@ -9084,7 +9124,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0030を設定
+	 * NF303DTO.javausercd0030を設定
 	 * @return usercd0030
 	 */
 	public String getUsercd0030() {
@@ -9099,7 +9139,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0031を設定
+	 * NF303DTO.javausercd0031を設定
 	 * @return usercd0031
 	 */
 	public String getUsercd0031() {
@@ -9114,7 +9154,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0032を設定
+	 * NF303DTO.javausercd0032を設定
 	 * @return usercd0032
 	 */
 	public String getUsercd0032() {
@@ -9129,7 +9169,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0033を設定
+	 * NF303DTO.javausercd0033を設定
 	 * @return usercd0033
 	 */
 	public String getUsercd0033() {
@@ -9144,7 +9184,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0034を設定
+	 * NF303DTO.javausercd0034を設定
 	 * @return usercd0034
 	 */
 	public String getUsercd0034() {
@@ -9159,7 +9199,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0035を設定
+	 * NF303DTO.javausercd0035を設定
 	 * @return usercd0035
 	 */
 	public String getUsercd0035() {
@@ -9174,7 +9214,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0036を設定
+	 * NF303DTO.javausercd0036を設定
 	 * @return usercd0036
 	 */
 	public String getUsercd0036() {
@@ -9189,7 +9229,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0001Nmを設定
+	 * NF303DTO.javausercd0001Nmを設定
 	 * @return usercd0001Nm
 	 */
 	public String getUsercd0001Nm() {
@@ -9204,7 +9244,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0002Nmを設定
+	 * NF303DTO.javausercd0002Nmを設定
 	 * @return usercd0002Nm
 	 */
 	public String getUsercd0002Nm() {
@@ -9219,7 +9259,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0003Nmを設定
+	 * NF303DTO.javausercd0003Nmを設定
 	 * @return usercd0003Nm
 	 */
 	public String getUsercd0003Nm() {
@@ -9234,7 +9274,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0004Nmを設定
+	 * NF303DTO.javausercd0004Nmを設定
 	 * @return usercd0004Nm
 	 */
 	public String getUsercd0004Nm() {
@@ -9249,7 +9289,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0005Nmを設定
+	 * NF303DTO.javausercd0005Nmを設定
 	 * @return usercd0005Nm
 	 */
 	public String getUsercd0005Nm() {
@@ -9264,7 +9304,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0006Nmを設定
+	 * NF303DTO.javausercd0006Nmを設定
 	 * @return usercd0006Nm
 	 */
 	public String getUsercd0006Nm() {
@@ -9279,7 +9319,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0007Nmを設定
+	 * NF303DTO.javausercd0007Nmを設定
 	 * @return usercd0007Nm
 	 */
 	public String getUsercd0007Nm() {
@@ -9294,7 +9334,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0008Nmを設定
+	 * NF303DTO.javausercd0008Nmを設定
 	 * @return usercd0008Nm
 	 */
 	public String getUsercd0008Nm() {
@@ -9309,7 +9349,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0009Nmを設定
+	 * NF303DTO.javausercd0009Nmを設定
 	 * @return usercd0009Nm
 	 */
 	public String getUsercd0009Nm() {
@@ -9324,7 +9364,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0010Nmを設定
+	 * NF303DTO.javausercd0010Nmを設定
 	 * @return usercd0010Nm
 	 */
 	public String getUsercd0010Nm() {
@@ -9339,7 +9379,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0011Nmを設定
+	 * NF303DTO.javausercd0011Nmを設定
 	 * @return usercd0011Nm
 	 */
 	public String getUsercd0011Nm() {
@@ -9354,7 +9394,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0012Nmを設定
+	 * NF303DTO.javausercd0012Nmを設定
 	 * @return usercd0012Nm
 	 */
 	public String getUsercd0012Nm() {
@@ -9369,7 +9409,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0013Nmを設定
+	 * NF303DTO.javausercd0013Nmを設定
 	 * @return usercd0013Nm
 	 */
 	public String getUsercd0013Nm() {
@@ -9384,7 +9424,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0014Nmを設定
+	 * NF303DTO.javausercd0014Nmを設定
 	 * @return usercd0014Nm
 	 */
 	public String getUsercd0014Nm() {
@@ -9399,7 +9439,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0015Nmを設定
+	 * NF303DTO.javausercd0015Nmを設定
 	 * @return usercd0015Nm
 	 */
 	public String getUsercd0015Nm() {
@@ -9414,7 +9454,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0016Nmを設定
+	 * NF303DTO.javausercd0016Nmを設定
 	 * @return usercd0016Nm
 	 */
 	public String getUsercd0016Nm() {
@@ -9429,7 +9469,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0017Nmを設定
+	 * NF303DTO.javausercd0017Nmを設定
 	 * @return usercd0017Nm
 	 */
 	public String getUsercd0017Nm() {
@@ -9444,7 +9484,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0018Nmを設定
+	 * NF303DTO.javausercd0018Nmを設定
 	 * @return usercd0018Nm
 	 */
 	public String getUsercd0018Nm() {
@@ -9459,7 +9499,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0019Nmを設定
+	 * NF303DTO.javausercd0019Nmを設定
 	 * @return usercd0019Nm
 	 */
 	public String getUsercd0019Nm() {
@@ -9474,7 +9514,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0020Nmを設定
+	 * NF303DTO.javausercd0020Nmを設定
 	 * @return usercd0020Nm
 	 */
 	public String getUsercd0020Nm() {
@@ -9489,7 +9529,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0021Nmを設定
+	 * NF303DTO.javausercd0021Nmを設定
 	 * @return usercd0021Nm
 	 */
 	public String getUsercd0021Nm() {
@@ -9504,7 +9544,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0022Nmを設定
+	 * NF303DTO.javausercd0022Nmを設定
 	 * @return usercd0022Nm
 	 */
 	public String getUsercd0022Nm() {
@@ -9519,7 +9559,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0023Nmを設定
+	 * NF303DTO.javausercd0023Nmを設定
 	 * @return usercd0023Nm
 	 */
 	public String getUsercd0023Nm() {
@@ -9534,7 +9574,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0024Nmを設定
+	 * NF303DTO.javausercd0024Nmを設定
 	 * @return usercd0024Nm
 	 */
 	public String getUsercd0024Nm() {
@@ -9549,7 +9589,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0025Nmを設定
+	 * NF303DTO.javausercd0025Nmを設定
 	 * @return usercd0025Nm
 	 */
 	public String getUsercd0025Nm() {
@@ -9564,7 +9604,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0026Nmを設定
+	 * NF303DTO.javausercd0026Nmを設定
 	 * @return usercd0026Nm
 	 */
 	public String getUsercd0026Nm() {
@@ -9579,7 +9619,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0027Nmを設定
+	 * NF303DTO.javausercd0027Nmを設定
 	 * @return usercd0027Nm
 	 */
 	public String getUsercd0027Nm() {
@@ -9594,7 +9634,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0028Nmを設定
+	 * NF303DTO.javausercd0028Nmを設定
 	 * @return usercd0028Nm
 	 */
 	public String getUsercd0028Nm() {
@@ -9609,7 +9649,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0029Nmを設定
+	 * NF303DTO.javausercd0029Nmを設定
 	 * @return usercd0029Nm
 	 */
 	public String getUsercd0029Nm() {
@@ -9624,7 +9664,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0030Nmを設定
+	 * NF303DTO.javausercd0030Nmを設定
 	 * @return usercd0030Nm
 	 */
 	public String getUsercd0030Nm() {
@@ -9639,7 +9679,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0031Nmを設定
+	 * NF303DTO.javausercd0031Nmを設定
 	 * @return usercd0031Nm
 	 */
 	public String getUsercd0031Nm() {
@@ -9654,7 +9694,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0032Nmを設定
+	 * NF303DTO.javausercd0032Nmを設定
 	 * @return usercd0032Nm
 	 */
 	public String getUsercd0032Nm() {
@@ -9669,7 +9709,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0033Nmを設定
+	 * NF303DTO.javausercd0033Nmを設定
 	 * @return usercd0033Nm
 	 */
 	public String getUsercd0033Nm() {
@@ -9684,7 +9724,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0034Nmを設定
+	 * NF303DTO.javausercd0034Nmを設定
 	 * @return usercd0034Nm
 	 */
 	public String getUsercd0034Nm() {
@@ -9699,7 +9739,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0035Nmを設定
+	 * NF303DTO.javausercd0035Nmを設定
 	 * @return usercd0035Nm
 	 */
 	public String getUsercd0035Nm() {
@@ -9714,7 +9754,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0036Nmを設定
+	 * NF303DTO.javausercd0036Nmを設定
 	 * @return usercd0036Nm
 	 */
 	public String getUsercd0036Nm() {
@@ -9729,7 +9769,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0101を設定
+	 * NF303DTO.javausercd0101を設定
 	 * @return usercd0101
 	 */
 	public String getUsercd0101() {
@@ -9744,7 +9784,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0102を設定
+	 * NF303DTO.javausercd0102を設定
 	 * @return usercd0102
 	 */
 	public String getUsercd0102() {
@@ -9759,7 +9799,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0103を設定
+	 * NF303DTO.javausercd0103を設定
 	 * @return usercd0103
 	 */
 	public String getUsercd0103() {
@@ -9774,7 +9814,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0104を設定
+	 * NF303DTO.javausercd0104を設定
 	 * @return usercd0104
 	 */
 	public String getUsercd0104() {
@@ -9789,7 +9829,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0105を設定
+	 * NF303DTO.javausercd0105を設定
 	 * @return usercd0105
 	 */
 	public String getUsercd0105() {
@@ -9804,7 +9844,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0106を設定
+	 * NF303DTO.javausercd0106を設定
 	 * @return usercd0106
 	 */
 	public String getUsercd0106() {
@@ -9819,7 +9859,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0107を設定
+	 * NF303DTO.javausercd0107を設定
 	 * @return usercd0107
 	 */
 	public String getUsercd0107() {
@@ -9834,7 +9874,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0108を設定
+	 * NF303DTO.javausercd0108を設定
 	 * @return usercd0108
 	 */
 	public String getUsercd0108() {
@@ -9849,7 +9889,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0109を設定
+	 * NF303DTO.javausercd0109を設定
 	 * @return usercd0109
 	 */
 	public String getUsercd0109() {
@@ -9864,7 +9904,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0201を設定
+	 * NF303DTO.javausercd0201を設定
 	 * @return usercd0201
 	 */
 	public String getUsercd0201() {
@@ -9879,7 +9919,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0202を設定
+	 * NF303DTO.javausercd0202を設定
 	 * @return usercd0202
 	 */
 	public String getUsercd0202() {
@@ -9894,7 +9934,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0203を設定
+	 * NF303DTO.javausercd0203を設定
 	 * @return usercd0203
 	 */
 	public String getUsercd0203() {
@@ -9909,7 +9949,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0204を設定
+	 * NF303DTO.javausercd0204を設定
 	 * @return usercd0204
 	 */
 	public String getUsercd0204() {
@@ -9924,7 +9964,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0205を設定
+	 * NF303DTO.javausercd0205を設定
 	 * @return usercd0205
 	 */
 	public String getUsercd0205() {
@@ -9939,7 +9979,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0206を設定
+	 * NF303DTO.javausercd0206を設定
 	 * @return usercd0206
 	 */
 	public String getUsercd0206() {
@@ -9954,7 +9994,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward04を設定
+	 * NF303DTO.javareward04を設定
 	 * @return reward04
 	 */
 	public String getReward04() {
@@ -9969,7 +10009,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward05を設定
+	 * NF303DTO.javareward05を設定
 	 * @return reward05
 	 */
 	public String getReward05() {
@@ -9984,7 +10024,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward08を設定
+	 * NF303DTO.javareward08を設定
 	 * @return reward08
 	 */
 	public String getReward08() {
@@ -9999,7 +10039,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward09を設定
+	 * NF303DTO.javareward09を設定
 	 * @return reward09
 	 */
 	public String getReward09() {
@@ -10014,7 +10054,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward18を設定
+	 * NF303DTO.javareward18を設定
 	 * @return reward18
 	 */
 	public String getReward18() {
@@ -10029,7 +10069,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward21を設定
+	 * NF303DTO.javareward21を設定
 	 * @return reward21
 	 */
 	public String getReward21() {
@@ -10044,7 +10084,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward23を設定
+	 * NF303DTO.javareward23を設定
 	 * @return reward23
 	 */
 	public String getReward23() {
@@ -10059,7 +10099,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward25を設定
+	 * NF303DTO.javareward25を設定
 	 * @return reward25
 	 */
 	public String getReward25() {
@@ -10074,7 +10114,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward26を設定
+	 * NF303DTO.javareward26を設定
 	 * @return reward26
 	 */
 	public String getReward26() {
@@ -10089,7 +10129,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward27を設定
+	 * NF303DTO.javareward27を設定
 	 * @return reward27
 	 */
 	public String getReward27() {
@@ -10104,7 +10144,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward29を設定
+	 * NF303DTO.javareward29を設定
 	 * @return reward29
 	 */
 	public String getReward29() {
@@ -10119,7 +10159,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward35を設定
+	 * NF303DTO.javareward35を設定
 	 * @return reward35
 	 */
 	public String getReward35() {
@@ -10134,7 +10174,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward36を設定
+	 * NF303DTO.javareward36を設定
 	 * @return reward36
 	 */
 	public String getReward36() {
@@ -10149,7 +10189,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward37を設定
+	 * NF303DTO.javareward37を設定
 	 * @return reward37
 	 */
 	public String getReward37() {
@@ -10164,7 +10204,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward44を設定
+	 * NF303DTO.javareward44を設定
 	 * @return reward44
 	 */
 	public String getReward44() {
@@ -10179,7 +10219,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward16を設定
+	 * NF303DTO.javareward16を設定
 	 * @return reward16
 	 */
 	public String getReward16() {
@@ -10194,7 +10234,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward17を設定
+	 * NF303DTO.javareward17を設定
 	 * @return reward17
 	 */
 	public String getReward17() {
@@ -10209,7 +10249,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward04Nmを設定
+	 * NF303DTO.javareward04Nmを設定
 	 * @return reward04Nm
 	 */
 	public String getReward04Nm() {
@@ -10224,7 +10264,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward05Nmを設定
+	 * NF303DTO.javareward05Nmを設定
 	 * @return reward05Nm
 	 */
 	public String getReward05Nm() {
@@ -10239,7 +10279,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward08Nmを設定
+	 * NF303DTO.javareward08Nmを設定
 	 * @return reward08Nm
 	 */
 	public String getReward08Nm() {
@@ -10254,7 +10294,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward09Nmを設定
+	 * NF303DTO.javareward09Nmを設定
 	 * @return reward09Nm
 	 */
 	public String getReward09Nm() {
@@ -10269,7 +10309,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward18Nmを設定
+	 * NF303DTO.javareward18Nmを設定
 	 * @return reward18Nm
 	 */
 	public String getReward18Nm() {
@@ -10284,7 +10324,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward21Nmを設定
+	 * NF303DTO.javareward21Nmを設定
 	 * @return reward21Nm
 	 */
 	public String getReward21Nm() {
@@ -10299,7 +10339,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward23Nmを設定
+	 * NF303DTO.javareward23Nmを設定
 	 * @return reward23Nm
 	 */
 	public String getReward23Nm() {
@@ -10314,7 +10354,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward25Nmを設定
+	 * NF303DTO.javareward25Nmを設定
 	 * @return reward25Nm
 	 */
 	public String getReward25Nm() {
@@ -10329,7 +10369,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward26Nmを設定
+	 * NF303DTO.javareward26Nmを設定
 	 * @return reward26Nm
 	 */
 	public String getReward26Nm() {
@@ -10344,7 +10384,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward27Nmを設定
+	 * NF303DTO.javareward27Nmを設定
 	 * @return reward27Nm
 	 */
 	public String getReward27Nm() {
@@ -10359,7 +10399,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward29Nmを設定
+	 * NF303DTO.javareward29Nmを設定
 	 * @return reward29Nm
 	 */
 	public String getReward29Nm() {
@@ -10374,7 +10414,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward35Nmを設定
+	 * NF303DTO.javareward35Nmを設定
 	 * @return reward35Nm
 	 */
 	public String getReward35Nm() {
@@ -10389,7 +10429,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward36Nmを設定
+	 * NF303DTO.javareward36Nmを設定
 	 * @return reward36Nm
 	 */
 	public String getReward36Nm() {
@@ -10404,7 +10444,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward37Nmを設定
+	 * NF303DTO.javareward37Nmを設定
 	 * @return reward37Nm
 	 */
 	public String getReward37Nm() {
@@ -10419,7 +10459,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward44Nmを設定
+	 * NF303DTO.javareward44Nmを設定
 	 * @return reward44Nm
 	 */
 	public String getReward44Nm() {
@@ -10434,7 +10474,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward16Nmを設定
+	 * NF303DTO.javareward16Nmを設定
 	 * @return reward16Nm
 	 */
 	public String getReward16Nm() {
@@ -10449,7 +10489,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward17Nmを設定
+	 * NF303DTO.javareward17Nmを設定
 	 * @return reward17Nm
 	 */
 	public String getReward17Nm() {
@@ -10464,7 +10504,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsPcodeを設定
+	 * NF303DTO.javapreInsPcodeを設定
 	 * @return preInsPcode
 	 */
 	public String getPreInsPcode() {
@@ -10479,7 +10519,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsAddrを設定
+	 * NF303DTO.javapreInsAddrを設定
 	 * @return preInsAddr
 	 */
 	public String getPreInsAddr() {
@@ -10494,7 +10534,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsAddrKanaを設定
+	 * NF303DTO.javapreInsAddrKanaを設定
 	 * @return preInsAddrKana
 	 */
 	public String getPreInsAddrKana() {
@@ -10509,7 +10549,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreAddrCodePrefを設定
+	 * NF303DTO.javapreAddrCodePrefを設定
 	 * @return preAddrCodePref
 	 */
 	public String getPreAddrCodePref() {
@@ -10524,7 +10564,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreAddrCodePrefNameを設定
+	 * NF303DTO.javapreAddrCodePrefNameを設定
 	 * @return preAddrCodePrefName
 	 */
 	public String getPreAddrCodePrefName() {
@@ -10539,7 +10579,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreAddrCodeCityを設定
+	 * NF303DTO.javapreAddrCodeCityを設定
 	 * @return preAddrCodeCity
 	 */
 	public String getPreAddrCodeCity() {
@@ -10554,7 +10594,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreAddrCodeCityNameを設定
+	 * NF303DTO.javapreAddrCodeCityNameを設定
 	 * @return preAddrCodeCityName
 	 */
 	public String getPreAddrCodeCityName() {
@@ -10569,7 +10609,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsAddrDtを設定
+	 * NF303DTO.javapreInsAddrDtを設定
 	 * @return preInsAddrDt
 	 */
 	public String getPreInsAddrDt() {
@@ -10584,7 +10624,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTkCityCdを設定
+	 * NF303DTO.javapreTkCityCdを設定
 	 * @return preTkCityCd
 	 */
 	public String getPreTkCityCd() {
@@ -10599,7 +10639,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTkCityNameを設定
+	 * NF303DTO.javapreTkCityNameを設定
 	 * @return preTkCityName
 	 */
 	public String getPreTkCityName() {
@@ -10614,7 +10654,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsPhone1を設定
+	 * NF303DTO.javapreInsPhone1を設定
 	 * @return preInsPhone1
 	 */
 	public String getPreInsPhone1() {
@@ -10629,7 +10669,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsPhone2を設定
+	 * NF303DTO.javapreInsPhone2を設定
 	 * @return preInsPhone2
 	 */
 	public String getPreInsPhone2() {
@@ -10644,7 +10684,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsFax1を設定
+	 * NF303DTO.javapreInsFax1を設定
 	 * @return preInsFax1
 	 */
 	public String getPreInsFax1() {
@@ -10659,7 +10699,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsFax2を設定
+	 * NF303DTO.javapreInsFax2を設定
 	 * @return preInsFax2
 	 */
 	public String getPreInsFax2() {
@@ -10674,7 +10714,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsUrlを設定
+	 * NF303DTO.javapreInsUrlを設定
 	 * @return preInsUrl
 	 */
 	public String getPreInsUrl() {
@@ -10689,7 +10729,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreInsUrlYmdを設定
+	 * NF303DTO.javapreInsUrlYmdを設定
 	 * @return preInsUrlYmd
 	 */
 	public String getPreInsUrlYmd() {
@@ -10704,7 +10744,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0001を設定
+	 * NF303DTO.javapreFree0001を設定
 	 * @return preFree0001
 	 */
 	public String getPreFree0001() {
@@ -10719,7 +10759,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0002を設定
+	 * NF303DTO.javapreFree0002を設定
 	 * @return preFree0002
 	 */
 	public String getPreFree0002() {
@@ -10734,7 +10774,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0003を設定
+	 * NF303DTO.javapreFree0003を設定
 	 * @return preFree0003
 	 */
 	public String getPreFree0003() {
@@ -10749,7 +10789,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0015を設定
+	 * NF303DTO.javapreFree0015を設定
 	 * @return preFree0015
 	 */
 	public String getPreFree0015() {
@@ -10764,7 +10804,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0008を設定
+	 * NF303DTO.javapreFree0008を設定
 	 * @return preFree0008
 	 */
 	public String getPreFree0008() {
@@ -10779,7 +10819,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0009を設定
+	 * NF303DTO.javapreFree0009を設定
 	 * @return preFree0009
 	 */
 	public String getPreFree0009() {
@@ -10794,7 +10834,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0004を設定
+	 * NF303DTO.javapreFree0004を設定
 	 * @return preFree0004
 	 */
 	public String getPreFree0004() {
@@ -10809,7 +10849,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0005を設定
+	 * NF303DTO.javapreFree0005を設定
 	 * @return preFree0005
 	 */
 	public String getPreFree0005() {
@@ -10824,7 +10864,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0006を設定
+	 * NF303DTO.javapreFree0006を設定
 	 * @return preFree0006
 	 */
 	public String getPreFree0006() {
@@ -10839,7 +10879,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0007を設定
+	 * NF303DTO.javapreFree0007を設定
 	 * @return preFree0007
 	 */
 	public String getPreFree0007() {
@@ -10854,7 +10894,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0010を設定
+	 * NF303DTO.javapreFree0010を設定
 	 * @return preFree0010
 	 */
 	public String getPreFree0010() {
@@ -10869,7 +10909,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0011を設定
+	 * NF303DTO.javapreFree0011を設定
 	 * @return preFree0011
 	 */
 	public String getPreFree0011() {
@@ -10884,7 +10924,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0013を設定
+	 * NF303DTO.javapreFree0013を設定
 	 * @return preFree0013
 	 */
 	public String getPreFree0013() {
@@ -10899,7 +10939,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0014を設定
+	 * NF303DTO.javapreFree0014を設定
 	 * @return preFree0014
 	 */
 	public String getPreFree0014() {
@@ -10914,7 +10954,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreFree0012を設定
+	 * NF303DTO.javapreFree0012を設定
 	 * @return preFree0012
 	 */
 	public String getPreFree0012() {
@@ -10929,7 +10969,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreWelfare02を設定
+	 * NF303DTO.javapreWelfare02を設定
 	 * @return preWelfare02
 	 */
 	public String getPreWelfare02() {
@@ -10944,7 +10984,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreWelfare02Nmを設定
+	 * NF303DTO.javapreWelfare02Nmを設定
 	 * @return preWelfare02Nm
 	 */
 	public String getPreWelfare02Nm() {
@@ -10959,7 +10999,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreWelfare08Nmを設定
+	 * NF303DTO.javapreWelfare08Nmを設定
 	 * @return preWelfare08Nm
 	 */
 	public String getPreWelfare08Nm() {
@@ -10974,7 +11014,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreWelfare08を設定
+	 * NF303DTO.javapreWelfare08を設定
 	 * @return preWelfare08
 	 */
 	public String getPreWelfare08() {
@@ -10989,7 +11029,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult01を設定
+	 * NF303DTO.javapreResult01を設定
 	 * @return preResult01
 	 */
 	public String getPreResult01() {
@@ -11004,7 +11044,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult02を設定
+	 * NF303DTO.javapreResult02を設定
 	 * @return preResult02
 	 */
 	public String getPreResult02() {
@@ -11019,7 +11059,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult03を設定
+	 * NF303DTO.javapreResult03を設定
 	 * @return preResult03
 	 */
 	public String getPreResult03() {
@@ -11034,7 +11074,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult04を設定
+	 * NF303DTO.javapreResult04を設定
 	 * @return preResult04
 	 */
 	public String getPreResult04() {
@@ -11049,7 +11089,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult05を設定
+	 * NF303DTO.javapreResult05を設定
 	 * @return preResult05
 	 */
 	public String getPreResult05() {
@@ -11064,7 +11104,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult06を設定
+	 * NF303DTO.javapreResult06を設定
 	 * @return preResult06
 	 */
 	public String getPreResult06() {
@@ -11079,7 +11119,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult07を設定
+	 * NF303DTO.javapreResult07を設定
 	 * @return preResult07
 	 */
 	public String getPreResult07() {
@@ -11094,7 +11134,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult08を設定
+	 * NF303DTO.javapreResult08を設定
 	 * @return preResult08
 	 */
 	public String getPreResult08() {
@@ -11109,7 +11149,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult09を設定
+	 * NF303DTO.javapreResult09を設定
 	 * @return preResult09
 	 */
 	public String getPreResult09() {
@@ -11124,7 +11164,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult10を設定
+	 * NF303DTO.javapreResult10を設定
 	 * @return preResult10
 	 */
 	public String getPreResult10() {
@@ -11139,7 +11179,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult11を設定
+	 * NF303DTO.javapreResult11を設定
 	 * @return preResult11
 	 */
 	public String getPreResult11() {
@@ -11154,7 +11194,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult12を設定
+	 * NF303DTO.javapreResult12を設定
 	 * @return preResult12
 	 */
 	public String getPreResult12() {
@@ -11169,7 +11209,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult13を設定
+	 * NF303DTO.javapreResult13を設定
 	 * @return preResult13
 	 */
 	public String getPreResult13() {
@@ -11184,7 +11224,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult14を設定
+	 * NF303DTO.javapreResult14を設定
 	 * @return preResult14
 	 */
 	public String getPreResult14() {
@@ -11199,7 +11239,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult15を設定
+	 * NF303DTO.javapreResult15を設定
 	 * @return preResult15
 	 */
 	public String getPreResult15() {
@@ -11214,7 +11254,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult16を設定
+	 * NF303DTO.javapreResult16を設定
 	 * @return preResult16
 	 */
 	public String getPreResult16() {
@@ -11229,7 +11269,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult17を設定
+	 * NF303DTO.javapreResult17を設定
 	 * @return preResult17
 	 */
 	public String getPreResult17() {
@@ -11244,7 +11284,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult18を設定
+	 * NF303DTO.javapreResult18を設定
 	 * @return preResult18
 	 */
 	public String getPreResult18() {
@@ -11259,7 +11299,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult19を設定
+	 * NF303DTO.javapreResult19を設定
 	 * @return preResult19
 	 */
 	public String getPreResult19() {
@@ -11274,7 +11314,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult20を設定
+	 * NF303DTO.javapreResult20を設定
 	 * @return preResult20
 	 */
 	public String getPreResult20() {
@@ -11289,7 +11329,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult21を設定
+	 * NF303DTO.javapreResult21を設定
 	 * @return preResult21
 	 */
 	public String getPreResult21() {
@@ -11304,7 +11344,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult22を設定
+	 * NF303DTO.javapreResult22を設定
 	 * @return preResult22
 	 */
 	public String getPreResult22() {
@@ -11319,7 +11359,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult23を設定
+	 * NF303DTO.javapreResult23を設定
 	 * @return preResult23
 	 */
 	public String getPreResult23() {
@@ -11334,7 +11374,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult24を設定
+	 * NF303DTO.javapreResult24を設定
 	 * @return preResult24
 	 */
 	public String getPreResult24() {
@@ -11349,7 +11389,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult25を設定
+	 * NF303DTO.javapreResult25を設定
 	 * @return preResult25
 	 */
 	public String getPreResult25() {
@@ -11364,7 +11404,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult26を設定
+	 * NF303DTO.javapreResult26を設定
 	 * @return preResult26
 	 */
 	public String getPreResult26() {
@@ -11379,7 +11419,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult27を設定
+	 * NF303DTO.javapreResult27を設定
 	 * @return preResult27
 	 */
 	public String getPreResult27() {
@@ -11394,7 +11434,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult28を設定
+	 * NF303DTO.javapreResult28を設定
 	 * @return preResult28
 	 */
 	public String getPreResult28() {
@@ -11409,7 +11449,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult29を設定
+	 * NF303DTO.javapreResult29を設定
 	 * @return preResult29
 	 */
 	public String getPreResult29() {
@@ -11424,7 +11464,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult30を設定
+	 * NF303DTO.javapreResult30を設定
 	 * @return preResult30
 	 */
 	public String getPreResult30() {
@@ -11439,7 +11479,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult31を設定
+	 * NF303DTO.javapreResult31を設定
 	 * @return preResult31
 	 */
 	public String getPreResult31() {
@@ -11454,7 +11494,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult32を設定
+	 * NF303DTO.javapreResult32を設定
 	 * @return preResult32
 	 */
 	public String getPreResult32() {
@@ -11469,7 +11509,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult33を設定
+	 * NF303DTO.javapreResult33を設定
 	 * @return preResult33
 	 */
 	public String getPreResult33() {
@@ -11484,7 +11524,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult34を設定
+	 * NF303DTO.javapreResult34を設定
 	 * @return preResult34
 	 */
 	public String getPreResult34() {
@@ -11499,7 +11539,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult35を設定
+	 * NF303DTO.javapreResult35を設定
 	 * @return preResult35
 	 */
 	public String getPreResult35() {
@@ -11514,7 +11554,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult36を設定
+	 * NF303DTO.javapreResult36を設定
 	 * @return preResult36
 	 */
 	public String getPreResult36() {
@@ -11529,7 +11569,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult01Nmを設定
+	 * NF303DTO.javapreResult01Nmを設定
 	 * @return preResult01Nm
 	 */
 	public String getPreResult01Nm() {
@@ -11544,7 +11584,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult02Nmを設定
+	 * NF303DTO.javapreResult02Nmを設定
 	 * @return preResult02Nm
 	 */
 	public String getPreResult02Nm() {
@@ -11559,7 +11599,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult03Nmを設定
+	 * NF303DTO.javapreResult03Nmを設定
 	 * @return preResult03Nm
 	 */
 	public String getPreResult03Nm() {
@@ -11574,7 +11614,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult04Nmを設定
+	 * NF303DTO.javapreResult04Nmを設定
 	 * @return preResult04Nm
 	 */
 	public String getPreResult04Nm() {
@@ -11589,7 +11629,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult05Nmを設定
+	 * NF303DTO.javapreResult05Nmを設定
 	 * @return preResult05Nm
 	 */
 	public String getPreResult05Nm() {
@@ -11604,7 +11644,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult06Nmを設定
+	 * NF303DTO.javapreResult06Nmを設定
 	 * @return preResult06Nm
 	 */
 	public String getPreResult06Nm() {
@@ -11619,7 +11659,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult07Nmを設定
+	 * NF303DTO.javapreResult07Nmを設定
 	 * @return preResult07Nm
 	 */
 	public String getPreResult07Nm() {
@@ -11634,7 +11674,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult08Nmを設定
+	 * NF303DTO.javapreResult08Nmを設定
 	 * @return preResult08Nm
 	 */
 	public String getPreResult08Nm() {
@@ -11649,7 +11689,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult09Nmを設定
+	 * NF303DTO.javapreResult09Nmを設定
 	 * @return preResult09Nm
 	 */
 	public String getPreResult09Nm() {
@@ -11664,7 +11704,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult10Nmを設定
+	 * NF303DTO.javapreResult10Nmを設定
 	 * @return preResult10Nm
 	 */
 	public String getPreResult10Nm() {
@@ -11679,7 +11719,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult11Nmを設定
+	 * NF303DTO.javapreResult11Nmを設定
 	 * @return preResult11Nm
 	 */
 	public String getPreResult11Nm() {
@@ -11694,7 +11734,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult12Nmを設定
+	 * NF303DTO.javapreResult12Nmを設定
 	 * @return preResult12Nm
 	 */
 	public String getPreResult12Nm() {
@@ -11709,7 +11749,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult13Nmを設定
+	 * NF303DTO.javapreResult13Nmを設定
 	 * @return preResult13Nm
 	 */
 	public String getPreResult13Nm() {
@@ -11724,7 +11764,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult14Nmを設定
+	 * NF303DTO.javapreResult14Nmを設定
 	 * @return preResult14Nm
 	 */
 	public String getPreResult14Nm() {
@@ -11739,7 +11779,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult15Nmを設定
+	 * NF303DTO.javapreResult15Nmを設定
 	 * @return preResult15Nm
 	 */
 	public String getPreResult15Nm() {
@@ -11754,7 +11794,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult16Nmを設定
+	 * NF303DTO.javapreResult16Nmを設定
 	 * @return preResult16Nm
 	 */
 	public String getPreResult16Nm() {
@@ -11769,7 +11809,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult17Nmを設定
+	 * NF303DTO.javapreResult17Nmを設定
 	 * @return preResult17Nm
 	 */
 	public String getPreResult17Nm() {
@@ -11784,7 +11824,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult18Nmを設定
+	 * NF303DTO.javapreResult18Nmを設定
 	 * @return preResult18Nm
 	 */
 	public String getPreResult18Nm() {
@@ -11799,7 +11839,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult19Nmを設定
+	 * NF303DTO.javapreResult19Nmを設定
 	 * @return preResult19Nm
 	 */
 	public String getPreResult19Nm() {
@@ -11814,7 +11854,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult20Nmを設定
+	 * NF303DTO.javapreResult20Nmを設定
 	 * @return preResult20Nm
 	 */
 	public String getPreResult20Nm() {
@@ -11829,7 +11869,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult21Nmを設定
+	 * NF303DTO.javapreResult21Nmを設定
 	 * @return preResult21Nm
 	 */
 	public String getPreResult21Nm() {
@@ -11844,7 +11884,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult22Nmを設定
+	 * NF303DTO.javapreResult22Nmを設定
 	 * @return preResult22Nm
 	 */
 	public String getPreResult22Nm() {
@@ -11859,7 +11899,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult23Nmを設定
+	 * NF303DTO.javapreResult23Nmを設定
 	 * @return preResult23Nm
 	 */
 	public String getPreResult23Nm() {
@@ -11874,7 +11914,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult24Nmを設定
+	 * NF303DTO.javapreResult24Nmを設定
 	 * @return preResult24Nm
 	 */
 	public String getPreResult24Nm() {
@@ -11889,7 +11929,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult25Nmを設定
+	 * NF303DTO.javapreResult25Nmを設定
 	 * @return preResult25Nm
 	 */
 	public String getPreResult25Nm() {
@@ -11904,7 +11944,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult26Nmを設定
+	 * NF303DTO.javapreResult26Nmを設定
 	 * @return preResult26Nm
 	 */
 	public String getPreResult26Nm() {
@@ -11919,7 +11959,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult27Nmを設定
+	 * NF303DTO.javapreResult27Nmを設定
 	 * @return preResult27Nm
 	 */
 	public String getPreResult27Nm() {
@@ -11934,7 +11974,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult28Nmを設定
+	 * NF303DTO.javapreResult28Nmを設定
 	 * @return preResult28Nm
 	 */
 	public String getPreResult28Nm() {
@@ -11949,7 +11989,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult29Nmを設定
+	 * NF303DTO.javapreResult29Nmを設定
 	 * @return preResult29Nm
 	 */
 	public String getPreResult29Nm() {
@@ -11964,7 +12004,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult30Nmを設定
+	 * NF303DTO.javapreResult30Nmを設定
 	 * @return preResult30Nm
 	 */
 	public String getPreResult30Nm() {
@@ -11979,7 +12019,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult31Nmを設定
+	 * NF303DTO.javapreResult31Nmを設定
 	 * @return preResult31Nm
 	 */
 	public String getPreResult31Nm() {
@@ -11994,7 +12034,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult32Nmを設定
+	 * NF303DTO.javapreResult32Nmを設定
 	 * @return preResult32Nm
 	 */
 	public String getPreResult32Nm() {
@@ -12009,7 +12049,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult33Nmを設定
+	 * NF303DTO.javapreResult33Nmを設定
 	 * @return preResult33Nm
 	 */
 	public String getPreResult33Nm() {
@@ -12024,7 +12064,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult34Nmを設定
+	 * NF303DTO.javapreResult34Nmを設定
 	 * @return preResult34Nm
 	 */
 	public String getPreResult34Nm() {
@@ -12039,7 +12079,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult35Nmを設定
+	 * NF303DTO.javapreResult35Nmを設定
 	 * @return preResult35Nm
 	 */
 	public String getPreResult35Nm() {
@@ -12054,7 +12094,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreResult36Nmを設定
+	 * NF303DTO.javapreResult36Nmを設定
 	 * @return preResult36Nm
 	 */
 	public String getPreResult36Nm() {
@@ -12069,7 +12109,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip01を設定
+	 * NF303DTO.javapreEquip01を設定
 	 * @return preEquip01
 	 */
 	public String getPreEquip01() {
@@ -12084,7 +12124,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip02を設定
+	 * NF303DTO.javapreEquip02を設定
 	 * @return preEquip02
 	 */
 	public String getPreEquip02() {
@@ -12099,7 +12139,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip03を設定
+	 * NF303DTO.javapreEquip03を設定
 	 * @return preEquip03
 	 */
 	public String getPreEquip03() {
@@ -12114,7 +12154,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip07を設定
+	 * NF303DTO.javapreEquip07を設定
 	 * @return preEquip07
 	 */
 	public String getPreEquip07() {
@@ -12129,7 +12169,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip09を設定
+	 * NF303DTO.javapreEquip09を設定
 	 * @return preEquip09
 	 */
 	public String getPreEquip09() {
@@ -12144,7 +12184,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip01Nmを設定
+	 * NF303DTO.javapreEquip01Nmを設定
 	 * @return preEquip01Nm
 	 */
 	public String getPreEquip01Nm() {
@@ -12159,7 +12199,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip02Nmを設定
+	 * NF303DTO.javapreEquip02Nmを設定
 	 * @return preEquip02Nm
 	 */
 	public String getPreEquip02Nm() {
@@ -12174,7 +12214,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip03Nmを設定
+	 * NF303DTO.javapreEquip03Nmを設定
 	 * @return preEquip03Nm
 	 */
 	public String getPreEquip03Nm() {
@@ -12189,7 +12229,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip07Nmを設定
+	 * NF303DTO.javapreEquip07Nmを設定
 	 * @return preEquip07Nm
 	 */
 	public String getPreEquip07Nm() {
@@ -12204,7 +12244,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreEquip09Nmを設定
+	 * NF303DTO.javapreEquip09Nmを設定
 	 * @return preEquip09Nm
 	 */
 	public String getPreEquip09Nm() {
@@ -12219,7 +12259,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket01を設定
+	 * NF303DTO.javapreMarket01を設定
 	 * @return preMarket01
 	 */
 	public String getPreMarket01() {
@@ -12234,7 +12274,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket02を設定
+	 * NF303DTO.javapreMarket02を設定
 	 * @return preMarket02
 	 */
 	public String getPreMarket02() {
@@ -12249,7 +12289,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket03を設定
+	 * NF303DTO.javapreMarket03を設定
 	 * @return preMarket03
 	 */
 	public String getPreMarket03() {
@@ -12264,7 +12304,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket04を設定
+	 * NF303DTO.javapreMarket04を設定
 	 * @return preMarket04
 	 */
 	public String getPreMarket04() {
@@ -12279,7 +12319,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket06を設定
+	 * NF303DTO.javapreMarket06を設定
 	 * @return preMarket06
 	 */
 	public String getPreMarket06() {
@@ -12294,7 +12334,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket07を設定
+	 * NF303DTO.javapreMarket07を設定
 	 * @return preMarket07
 	 */
 	public String getPreMarket07() {
@@ -12309,7 +12349,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket09を設定
+	 * NF303DTO.javapreMarket09を設定
 	 * @return preMarket09
 	 */
 	public String getPreMarket09() {
@@ -12324,7 +12364,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket01Nmを設定
+	 * NF303DTO.javapreMarket01Nmを設定
 	 * @return preMarket01Nm
 	 */
 	public String getPreMarket01Nm() {
@@ -12339,7 +12379,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket02Nmを設定
+	 * NF303DTO.javapreMarket02Nmを設定
 	 * @return preMarket02Nm
 	 */
 	public String getPreMarket02Nm() {
@@ -12354,7 +12394,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket03Nmを設定
+	 * NF303DTO.javapreMarket03Nmを設定
 	 * @return preMarket03Nm
 	 */
 	public String getPreMarket03Nm() {
@@ -12369,7 +12409,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket04Nmを設定
+	 * NF303DTO.javapreMarket04Nmを設定
 	 * @return preMarket04Nm
 	 */
 	public String getPreMarket04Nm() {
@@ -12384,7 +12424,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket06Nmを設定
+	 * NF303DTO.javapreMarket06Nmを設定
 	 * @return preMarket06Nm
 	 */
 	public String getPreMarket06Nm() {
@@ -12399,7 +12439,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket07Nmを設定
+	 * NF303DTO.javapreMarket07Nmを設定
 	 * @return preMarket07Nm
 	 */
 	public String getPreMarket07Nm() {
@@ -12414,7 +12454,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMarket09Nmを設定
+	 * NF303DTO.javapreMarket09Nmを設定
 	 * @return preMarket09Nm
 	 */
 	public String getPreMarket09Nm() {
@@ -12429,7 +12469,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMedical12を設定
+	 * NF303DTO.javapreMedical12を設定
 	 * @return preMedical12
 	 */
 	public String getPreMedical12() {
@@ -12444,7 +12484,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreMedical12Nmを設定
+	 * NF303DTO.javapreMedical12Nmを設定
 	 * @return preMedical12Nm
 	 */
 	public String getPreMedical12Nm() {
@@ -12459,7 +12499,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreSpfunc01を設定
+	 * NF303DTO.javapreSpfunc01を設定
 	 * @return preSpfunc01
 	 */
 	public String getPreSpfunc01() {
@@ -12474,7 +12514,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreSpfunc03を設定
+	 * NF303DTO.javapreSpfunc03を設定
 	 * @return preSpfunc03
 	 */
 	public String getPreSpfunc03() {
@@ -12489,7 +12529,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreSpfunc04を設定
+	 * NF303DTO.javapreSpfunc04を設定
 	 * @return preSpfunc04
 	 */
 	public String getPreSpfunc04() {
@@ -12504,7 +12544,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreSpfunc01Nmを設定
+	 * NF303DTO.javapreSpfunc01Nmを設定
 	 * @return preSpfunc01Nm
 	 */
 	public String getPreSpfunc01Nm() {
@@ -12519,7 +12559,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreSpfunc03Nmを設定
+	 * NF303DTO.javapreSpfunc03Nmを設定
 	 * @return preSpfunc03Nm
 	 */
 	public String getPreSpfunc03Nm() {
@@ -12534,7 +12574,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreSpfunc04Nmを設定
+	 * NF303DTO.javapreSpfunc04Nmを設定
 	 * @return preSpfunc04Nm
 	 */
 	public String getPreSpfunc04Nm() {
@@ -12549,7 +12589,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTieup10を設定
+	 * NF303DTO.javapreTieup10を設定
 	 * @return preTieup10
 	 */
 	public String getPreTieup10() {
@@ -12564,7 +12604,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTieup11を設定
+	 * NF303DTO.javapreTieup11を設定
 	 * @return preTieup11
 	 */
 	public String getPreTieup11() {
@@ -12579,7 +12619,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTieup12を設定
+	 * NF303DTO.javapreTieup12を設定
 	 * @return preTieup12
 	 */
 	public String getPreTieup12() {
@@ -12594,7 +12634,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTieup10Nmを設定
+	 * NF303DTO.javapreTieup10Nmを設定
 	 * @return preTieup10Nm
 	 */
 	public String getPreTieup10Nm() {
@@ -12609,7 +12649,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTieup11Nmを設定
+	 * NF303DTO.javapreTieup11Nmを設定
 	 * @return preTieup11Nm
 	 */
 	public String getPreTieup11Nm() {
@@ -12624,7 +12664,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreTieup12Nmを設定
+	 * NF303DTO.javapreTieup12Nmを設定
 	 * @return preTieup12Nm
 	 */
 	public String getPreTieup12Nm() {
@@ -12639,7 +12679,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0001を設定
+	 * NF303DTO.javapreUsercd0001を設定
 	 * @return preUsercd0001
 	 */
 	public String getPreUsercd0001() {
@@ -12654,7 +12694,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0002を設定
+	 * NF303DTO.javapreUsercd0002を設定
 	 * @return preUsercd0002
 	 */
 	public String getPreUsercd0002() {
@@ -12669,7 +12709,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0003を設定
+	 * NF303DTO.javapreUsercd0003を設定
 	 * @return preUsercd0003
 	 */
 	public String getPreUsercd0003() {
@@ -12684,7 +12724,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0004を設定
+	 * NF303DTO.javapreUsercd0004を設定
 	 * @return preUsercd0004
 	 */
 	public String getPreUsercd0004() {
@@ -12699,7 +12739,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0005を設定
+	 * NF303DTO.javapreUsercd0005を設定
 	 * @return preUsercd0005
 	 */
 	public String getPreUsercd0005() {
@@ -12714,7 +12754,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0006を設定
+	 * NF303DTO.javapreUsercd0006を設定
 	 * @return preUsercd0006
 	 */
 	public String getPreUsercd0006() {
@@ -12729,7 +12769,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0007を設定
+	 * NF303DTO.javapreUsercd0007を設定
 	 * @return preUsercd0007
 	 */
 	public String getPreUsercd0007() {
@@ -12744,7 +12784,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0008を設定
+	 * NF303DTO.javapreUsercd0008を設定
 	 * @return preUsercd0008
 	 */
 	public String getPreUsercd0008() {
@@ -12759,7 +12799,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0009を設定
+	 * NF303DTO.javapreUsercd0009を設定
 	 * @return preUsercd0009
 	 */
 	public String getPreUsercd0009() {
@@ -12774,7 +12814,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0010を設定
+	 * NF303DTO.javapreUsercd0010を設定
 	 * @return preUsercd0010
 	 */
 	public String getPreUsercd0010() {
@@ -12789,7 +12829,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0011を設定
+	 * NF303DTO.javapreUsercd0011を設定
 	 * @return preUsercd0011
 	 */
 	public String getPreUsercd0011() {
@@ -12804,7 +12844,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0012を設定
+	 * NF303DTO.javapreUsercd0012を設定
 	 * @return preUsercd0012
 	 */
 	public String getPreUsercd0012() {
@@ -12819,7 +12859,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0013を設定
+	 * NF303DTO.javapreUsercd0013を設定
 	 * @return preUsercd0013
 	 */
 	public String getPreUsercd0013() {
@@ -12834,7 +12874,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0014を設定
+	 * NF303DTO.javapreUsercd0014を設定
 	 * @return preUsercd0014
 	 */
 	public String getPreUsercd0014() {
@@ -12849,7 +12889,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0015を設定
+	 * NF303DTO.javapreUsercd0015を設定
 	 * @return preUsercd0015
 	 */
 	public String getPreUsercd0015() {
@@ -12864,7 +12904,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0016を設定
+	 * NF303DTO.javapreUsercd0016を設定
 	 * @return preUsercd0016
 	 */
 	public String getPreUsercd0016() {
@@ -12879,7 +12919,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0017を設定
+	 * NF303DTO.javapreUsercd0017を設定
 	 * @return preUsercd0017
 	 */
 	public String getPreUsercd0017() {
@@ -12894,7 +12934,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0018を設定
+	 * NF303DTO.javapreUsercd0018を設定
 	 * @return preUsercd0018
 	 */
 	public String getPreUsercd0018() {
@@ -12909,7 +12949,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0019を設定
+	 * NF303DTO.javapreUsercd0019を設定
 	 * @return preUsercd0019
 	 */
 	public String getPreUsercd0019() {
@@ -12924,7 +12964,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0020を設定
+	 * NF303DTO.javapreUsercd0020を設定
 	 * @return preUsercd0020
 	 */
 	public String getPreUsercd0020() {
@@ -12939,7 +12979,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0021を設定
+	 * NF303DTO.javapreUsercd0021を設定
 	 * @return preUsercd0021
 	 */
 	public String getPreUsercd0021() {
@@ -12954,7 +12994,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0022を設定
+	 * NF303DTO.javapreUsercd0022を設定
 	 * @return preUsercd0022
 	 */
 	public String getPreUsercd0022() {
@@ -12969,7 +13009,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0023を設定
+	 * NF303DTO.javapreUsercd0023を設定
 	 * @return preUsercd0023
 	 */
 	public String getPreUsercd0023() {
@@ -12984,7 +13024,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0024を設定
+	 * NF303DTO.javapreUsercd0024を設定
 	 * @return preUsercd0024
 	 */
 	public String getPreUsercd0024() {
@@ -12999,7 +13039,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0025を設定
+	 * NF303DTO.javapreUsercd0025を設定
 	 * @return preUsercd0025
 	 */
 	public String getPreUsercd0025() {
@@ -13014,7 +13054,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0026を設定
+	 * NF303DTO.javapreUsercd0026を設定
 	 * @return preUsercd0026
 	 */
 	public String getPreUsercd0026() {
@@ -13029,7 +13069,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0027を設定
+	 * NF303DTO.javapreUsercd0027を設定
 	 * @return preUsercd0027
 	 */
 	public String getPreUsercd0027() {
@@ -13044,7 +13084,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0028を設定
+	 * NF303DTO.javapreUsercd0028を設定
 	 * @return preUsercd0028
 	 */
 	public String getPreUsercd0028() {
@@ -13059,7 +13099,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0029を設定
+	 * NF303DTO.javapreUsercd0029を設定
 	 * @return preUsercd0029
 	 */
 	public String getPreUsercd0029() {
@@ -13074,7 +13114,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0030を設定
+	 * NF303DTO.javapreUsercd0030を設定
 	 * @return preUsercd0030
 	 */
 	public String getPreUsercd0030() {
@@ -13089,7 +13129,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0031を設定
+	 * NF303DTO.javapreUsercd0031を設定
 	 * @return preUsercd0031
 	 */
 	public String getPreUsercd0031() {
@@ -13104,7 +13144,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0032を設定
+	 * NF303DTO.javapreUsercd0032を設定
 	 * @return preUsercd0032
 	 */
 	public String getPreUsercd0032() {
@@ -13119,7 +13159,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0033を設定
+	 * NF303DTO.javapreUsercd0033を設定
 	 * @return preUsercd0033
 	 */
 	public String getPreUsercd0033() {
@@ -13134,7 +13174,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0034を設定
+	 * NF303DTO.javapreUsercd0034を設定
 	 * @return preUsercd0034
 	 */
 	public String getPreUsercd0034() {
@@ -13149,7 +13189,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0035を設定
+	 * NF303DTO.javapreUsercd0035を設定
 	 * @return preUsercd0035
 	 */
 	public String getPreUsercd0035() {
@@ -13164,7 +13204,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0036を設定
+	 * NF303DTO.javapreUsercd0036を設定
 	 * @return preUsercd0036
 	 */
 	public String getPreUsercd0036() {
@@ -13179,7 +13219,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0001Nmを設定
+	 * NF303DTO.javapreUsercd0001Nmを設定
 	 * @return preUsercd0001Nm
 	 */
 	public String getPreUsercd0001Nm() {
@@ -13194,7 +13234,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0002Nmを設定
+	 * NF303DTO.javapreUsercd0002Nmを設定
 	 * @return preUsercd0002Nm
 	 */
 	public String getPreUsercd0002Nm() {
@@ -13209,7 +13249,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0003Nmを設定
+	 * NF303DTO.javapreUsercd0003Nmを設定
 	 * @return preUsercd0003Nm
 	 */
 	public String getPreUsercd0003Nm() {
@@ -13224,7 +13264,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0004Nmを設定
+	 * NF303DTO.javapreUsercd0004Nmを設定
 	 * @return preUsercd0004Nm
 	 */
 	public String getPreUsercd0004Nm() {
@@ -13239,7 +13279,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0005Nmを設定
+	 * NF303DTO.javapreUsercd0005Nmを設定
 	 * @return preUsercd0005Nm
 	 */
 	public String getPreUsercd0005Nm() {
@@ -13254,7 +13294,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0006Nmを設定
+	 * NF303DTO.javapreUsercd0006Nmを設定
 	 * @return preUsercd0006Nm
 	 */
 	public String getPreUsercd0006Nm() {
@@ -13269,7 +13309,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0007Nmを設定
+	 * NF303DTO.javapreUsercd0007Nmを設定
 	 * @return preUsercd0007Nm
 	 */
 	public String getPreUsercd0007Nm() {
@@ -13284,7 +13324,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0008Nmを設定
+	 * NF303DTO.javapreUsercd0008Nmを設定
 	 * @return preUsercd0008Nm
 	 */
 	public String getPreUsercd0008Nm() {
@@ -13299,7 +13339,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0009Nmを設定
+	 * NF303DTO.javapreUsercd0009Nmを設定
 	 * @return preUsercd0009Nm
 	 */
 	public String getPreUsercd0009Nm() {
@@ -13314,7 +13354,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0010Nmを設定
+	 * NF303DTO.javapreUsercd0010Nmを設定
 	 * @return preUsercd0010Nm
 	 */
 	public String getPreUsercd0010Nm() {
@@ -13329,7 +13369,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0011Nmを設定
+	 * NF303DTO.javapreUsercd0011Nmを設定
 	 * @return preUsercd0011Nm
 	 */
 	public String getPreUsercd0011Nm() {
@@ -13344,7 +13384,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0012Nmを設定
+	 * NF303DTO.javapreUsercd0012Nmを設定
 	 * @return preUsercd0012Nm
 	 */
 	public String getPreUsercd0012Nm() {
@@ -13359,7 +13399,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0013Nmを設定
+	 * NF303DTO.javapreUsercd0013Nmを設定
 	 * @return preUsercd0013Nm
 	 */
 	public String getPreUsercd0013Nm() {
@@ -13374,7 +13414,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0014Nmを設定
+	 * NF303DTO.javapreUsercd0014Nmを設定
 	 * @return preUsercd0014Nm
 	 */
 	public String getPreUsercd0014Nm() {
@@ -13389,7 +13429,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0015Nmを設定
+	 * NF303DTO.javapreUsercd0015Nmを設定
 	 * @return preUsercd0015Nm
 	 */
 	public String getPreUsercd0015Nm() {
@@ -13404,7 +13444,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0016Nmを設定
+	 * NF303DTO.javapreUsercd0016Nmを設定
 	 * @return preUsercd0016Nm
 	 */
 	public String getPreUsercd0016Nm() {
@@ -13419,7 +13459,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0017Nmを設定
+	 * NF303DTO.javapreUsercd0017Nmを設定
 	 * @return preUsercd0017Nm
 	 */
 	public String getPreUsercd0017Nm() {
@@ -13434,7 +13474,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0018Nmを設定
+	 * NF303DTO.javapreUsercd0018Nmを設定
 	 * @return preUsercd0018Nm
 	 */
 	public String getPreUsercd0018Nm() {
@@ -13449,7 +13489,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0019Nmを設定
+	 * NF303DTO.javapreUsercd0019Nmを設定
 	 * @return preUsercd0019Nm
 	 */
 	public String getPreUsercd0019Nm() {
@@ -13464,7 +13504,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0020Nmを設定
+	 * NF303DTO.javapreUsercd0020Nmを設定
 	 * @return preUsercd0020Nm
 	 */
 	public String getPreUsercd0020Nm() {
@@ -13479,7 +13519,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0021Nmを設定
+	 * NF303DTO.javapreUsercd0021Nmを設定
 	 * @return preUsercd0021Nm
 	 */
 	public String getPreUsercd0021Nm() {
@@ -13494,7 +13534,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0022Nmを設定
+	 * NF303DTO.javapreUsercd0022Nmを設定
 	 * @return preUsercd0022Nm
 	 */
 	public String getPreUsercd0022Nm() {
@@ -13509,7 +13549,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0023Nmを設定
+	 * NF303DTO.javapreUsercd0023Nmを設定
 	 * @return preUsercd0023Nm
 	 */
 	public String getPreUsercd0023Nm() {
@@ -13524,7 +13564,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0024Nmを設定
+	 * NF303DTO.javapreUsercd0024Nmを設定
 	 * @return preUsercd0024Nm
 	 */
 	public String getPreUsercd0024Nm() {
@@ -13539,7 +13579,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0025Nmを設定
+	 * NF303DTO.javapreUsercd0025Nmを設定
 	 * @return preUsercd0025Nm
 	 */
 	public String getPreUsercd0025Nm() {
@@ -13554,7 +13594,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0026Nmを設定
+	 * NF303DTO.javapreUsercd0026Nmを設定
 	 * @return preUsercd0026Nm
 	 */
 	public String getPreUsercd0026Nm() {
@@ -13569,7 +13609,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0027Nmを設定
+	 * NF303DTO.javapreUsercd0027Nmを設定
 	 * @return preUsercd0027Nm
 	 */
 	public String getPreUsercd0027Nm() {
@@ -13584,7 +13624,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0028Nmを設定
+	 * NF303DTO.javapreUsercd0028Nmを設定
 	 * @return preUsercd0028Nm
 	 */
 	public String getPreUsercd0028Nm() {
@@ -13599,7 +13639,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0029Nmを設定
+	 * NF303DTO.javapreUsercd0029Nmを設定
 	 * @return preUsercd0029Nm
 	 */
 	public String getPreUsercd0029Nm() {
@@ -13614,7 +13654,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0030Nmを設定
+	 * NF303DTO.javapreUsercd0030Nmを設定
 	 * @return preUsercd0030Nm
 	 */
 	public String getPreUsercd0030Nm() {
@@ -13629,7 +13669,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0031Nmを設定
+	 * NF303DTO.javapreUsercd0031Nmを設定
 	 * @return preUsercd0031Nm
 	 */
 	public String getPreUsercd0031Nm() {
@@ -13644,7 +13684,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0032Nmを設定
+	 * NF303DTO.javapreUsercd0032Nmを設定
 	 * @return preUsercd0032Nm
 	 */
 	public String getPreUsercd0032Nm() {
@@ -13659,7 +13699,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0033Nmを設定
+	 * NF303DTO.javapreUsercd0033Nmを設定
 	 * @return preUsercd0033Nm
 	 */
 	public String getPreUsercd0033Nm() {
@@ -13674,7 +13714,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0034Nmを設定
+	 * NF303DTO.javapreUsercd0034Nmを設定
 	 * @return preUsercd0034Nm
 	 */
 	public String getPreUsercd0034Nm() {
@@ -13689,7 +13729,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0035Nmを設定
+	 * NF303DTO.javapreUsercd0035Nmを設定
 	 * @return preUsercd0035Nm
 	 */
 	public String getPreUsercd0035Nm() {
@@ -13704,7 +13744,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0036Nmを設定
+	 * NF303DTO.javapreUsercd0036Nmを設定
 	 * @return preUsercd0036Nm
 	 */
 	public String getPreUsercd0036Nm() {
@@ -13719,7 +13759,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0101を設定
+	 * NF303DTO.javapreUsercd0101を設定
 	 * @return preUsercd0101
 	 */
 	public String getPreUsercd0101() {
@@ -13734,7 +13774,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0102を設定
+	 * NF303DTO.javapreUsercd0102を設定
 	 * @return preUsercd0102
 	 */
 	public String getPreUsercd0102() {
@@ -13749,7 +13789,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0103を設定
+	 * NF303DTO.javapreUsercd0103を設定
 	 * @return preUsercd0103
 	 */
 	public String getPreUsercd0103() {
@@ -13764,7 +13804,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0104を設定
+	 * NF303DTO.javapreUsercd0104を設定
 	 * @return preUsercd0104
 	 */
 	public String getPreUsercd0104() {
@@ -13779,7 +13819,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0105を設定
+	 * NF303DTO.javapreUsercd0105を設定
 	 * @return preUsercd0105
 	 */
 	public String getPreUsercd0105() {
@@ -13794,7 +13834,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0106を設定
+	 * NF303DTO.javapreUsercd0106を設定
 	 * @return preUsercd0106
 	 */
 	public String getPreUsercd0106() {
@@ -13809,7 +13849,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0107を設定
+	 * NF303DTO.javapreUsercd0107を設定
 	 * @return preUsercd0107
 	 */
 	public String getPreUsercd0107() {
@@ -13824,7 +13864,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0108を設定
+	 * NF303DTO.javapreUsercd0108を設定
 	 * @return preUsercd0108
 	 */
 	public String getPreUsercd0108() {
@@ -13839,7 +13879,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0109を設定
+	 * NF303DTO.javapreUsercd0109を設定
 	 * @return preUsercd0109
 	 */
 	public String getPreUsercd0109() {
@@ -13854,7 +13894,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0201を設定
+	 * NF303DTO.javapreUsercd0201を設定
 	 * @return preUsercd0201
 	 */
 	public String getPreUsercd0201() {
@@ -13869,7 +13909,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0202を設定
+	 * NF303DTO.javapreUsercd0202を設定
 	 * @return preUsercd0202
 	 */
 	public String getPreUsercd0202() {
@@ -13884,7 +13924,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0203を設定
+	 * NF303DTO.javapreUsercd0203を設定
 	 * @return preUsercd0203
 	 */
 	public String getPreUsercd0203() {
@@ -13899,7 +13939,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0204を設定
+	 * NF303DTO.javapreUsercd0204を設定
 	 * @return preUsercd0204
 	 */
 	public String getPreUsercd0204() {
@@ -13914,7 +13954,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0205を設定
+	 * NF303DTO.javapreUsercd0205を設定
 	 * @return preUsercd0205
 	 */
 	public String getPreUsercd0205() {
@@ -13929,7 +13969,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreUsercd0206を設定
+	 * NF303DTO.javapreUsercd0206を設定
 	 * @return preUsercd0206
 	 */
 	public String getPreUsercd0206() {
@@ -13944,7 +13984,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward04を設定
+	 * NF303DTO.javapreReward04を設定
 	 * @return preReward04
 	 */
 	public String getPreReward04() {
@@ -13959,7 +13999,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward05を設定
+	 * NF303DTO.javapreReward05を設定
 	 * @return preReward05
 	 */
 	public String getPreReward05() {
@@ -13974,7 +14014,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward08を設定
+	 * NF303DTO.javapreReward08を設定
 	 * @return preReward08
 	 */
 	public String getPreReward08() {
@@ -13989,7 +14029,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward09を設定
+	 * NF303DTO.javapreReward09を設定
 	 * @return preReward09
 	 */
 	public String getPreReward09() {
@@ -14004,7 +14044,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward18を設定
+	 * NF303DTO.javapreReward18を設定
 	 * @return preReward18
 	 */
 	public String getPreReward18() {
@@ -14019,7 +14059,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward21を設定
+	 * NF303DTO.javapreReward21を設定
 	 * @return preReward21
 	 */
 	public String getPreReward21() {
@@ -14034,7 +14074,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward23を設定
+	 * NF303DTO.javapreReward23を設定
 	 * @return preReward23
 	 */
 	public String getPreReward23() {
@@ -14049,7 +14089,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward25を設定
+	 * NF303DTO.javapreReward25を設定
 	 * @return preReward25
 	 */
 	public String getPreReward25() {
@@ -14064,7 +14104,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward26を設定
+	 * NF303DTO.javapreReward26を設定
 	 * @return preReward26
 	 */
 	public String getPreReward26() {
@@ -14079,7 +14119,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward27を設定
+	 * NF303DTO.javapreReward27を設定
 	 * @return preReward27
 	 */
 	public String getPreReward27() {
@@ -14094,7 +14134,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward29を設定
+	 * NF303DTO.javapreReward29を設定
 	 * @return preReward29
 	 */
 	public String getPreReward29() {
@@ -14109,7 +14149,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward35を設定
+	 * NF303DTO.javapreReward35を設定
 	 * @return preReward35
 	 */
 	public String getPreReward35() {
@@ -14124,7 +14164,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward36を設定
+	 * NF303DTO.javapreReward36を設定
 	 * @return preReward36
 	 */
 	public String getPreReward36() {
@@ -14139,7 +14179,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward37を設定
+	 * NF303DTO.javapreReward37を設定
 	 * @return preReward37
 	 */
 	public String getPreReward37() {
@@ -14154,7 +14194,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward44を設定
+	 * NF303DTO.javapreReward44を設定
 	 * @return preReward44
 	 */
 	public String getPreReward44() {
@@ -14169,7 +14209,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward16を設定
+	 * NF303DTO.javapreReward16を設定
 	 * @return preReward16
 	 */
 	public String getPreReward16() {
@@ -14184,7 +14224,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward17を設定
+	 * NF303DTO.javapreReward17を設定
 	 * @return preReward17
 	 */
 	public String getPreReward17() {
@@ -14199,7 +14239,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward04Nmを設定
+	 * NF303DTO.javapreReward04Nmを設定
 	 * @return preReward04Nm
 	 */
 	public String getPreReward04Nm() {
@@ -14214,7 +14254,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward05Nmを設定
+	 * NF303DTO.javapreReward05Nmを設定
 	 * @return preReward05Nm
 	 */
 	public String getPreReward05Nm() {
@@ -14229,7 +14269,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward08Nmを設定
+	 * NF303DTO.javapreReward08Nmを設定
 	 * @return preReward08Nm
 	 */
 	public String getPreReward08Nm() {
@@ -14244,7 +14284,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward09Nmを設定
+	 * NF303DTO.javapreReward09Nmを設定
 	 * @return preReward09Nm
 	 */
 	public String getPreReward09Nm() {
@@ -14259,7 +14299,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward18Nmを設定
+	 * NF303DTO.javapreReward18Nmを設定
 	 * @return preReward18Nm
 	 */
 	public String getPreReward18Nm() {
@@ -14274,7 +14314,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward21Nmを設定
+	 * NF303DTO.javapreReward21Nmを設定
 	 * @return preReward21Nm
 	 */
 	public String getPreReward21Nm() {
@@ -14289,7 +14329,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward23Nmを設定
+	 * NF303DTO.javapreReward23Nmを設定
 	 * @return preReward23Nm
 	 */
 	public String getPreReward23Nm() {
@@ -14304,7 +14344,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward25Nmを設定
+	 * NF303DTO.javapreReward25Nmを設定
 	 * @return preReward25Nm
 	 */
 	public String getPreReward25Nm() {
@@ -14319,7 +14359,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward26Nmを設定
+	 * NF303DTO.javapreReward26Nmを設定
 	 * @return preReward26Nm
 	 */
 	public String getPreReward26Nm() {
@@ -14334,7 +14374,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward27Nmを設定
+	 * NF303DTO.javapreReward27Nmを設定
 	 * @return preReward27Nm
 	 */
 	public String getPreReward27Nm() {
@@ -14349,7 +14389,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward29Nmを設定
+	 * NF303DTO.javapreReward29Nmを設定
 	 * @return preReward29Nm
 	 */
 	public String getPreReward29Nm() {
@@ -14364,7 +14404,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward35Nmを設定
+	 * NF303DTO.javapreReward35Nmを設定
 	 * @return preReward35Nm
 	 */
 	public String getPreReward35Nm() {
@@ -14379,7 +14419,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward36Nmを設定
+	 * NF303DTO.javapreReward36Nmを設定
 	 * @return preReward36Nm
 	 */
 	public String getPreReward36Nm() {
@@ -14394,7 +14434,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward37Nmを設定
+	 * NF303DTO.javapreReward37Nmを設定
 	 * @return preReward37Nm
 	 */
 	public String getPreReward37Nm() {
@@ -14409,7 +14449,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward44Nmを設定
+	 * NF303DTO.javapreReward44Nmを設定
 	 * @return preReward44Nm
 	 */
 	public String getPreReward44Nm() {
@@ -14424,7 +14464,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward16Nmを設定
+	 * NF303DTO.javapreReward16Nmを設定
 	 * @return preReward16Nm
 	 */
 	public String getPreReward16Nm() {
@@ -14439,7 +14479,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javapreReward17Nmを設定
+	 * NF303DTO.javapreReward17Nmを設定
 	 * @return preReward17Nm
 	 */
 	public String getPreReward17Nm() {
@@ -14454,7 +14494,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareqCommentを設定
+	 * NF303DTO.javareqCommentを設定
 	 * @return reqComment
 	 */
 	public String getReqComment() {
@@ -14469,7 +14509,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaaprMemoを設定
+	 * NF303DTO.javaaprMemoを設定
 	 * @return aprMemo
 	 */
 	public String getAprMemo() {
@@ -14484,7 +14524,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javadisplayKbnを設定
+	 * NF303DTO.javadisplayKbnを設定
 	 * @return displayKbn
 	 */
 	public String getDisplayKbn() {
@@ -14499,7 +14539,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafuncIdを設定
+	 * NF303DTO.javafuncIdを設定
 	 * @return funcId
 	 */
 	public String getFuncId() {
@@ -14514,7 +14554,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatradeTypeComboを設定
+	 * NF303DTO.javatradeTypeComboを設定
 	 * @return tradeTypeCombo
 	 */
 	public LinkedHashMap<String, String> getTradeTypeCombo() {
@@ -14529,7 +14569,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsOpenYearComboを設定
+	 * NF303DTO.javainsOpenYearComboを設定
 	 * @return insOpenYearCombo
 	 */
 	public LinkedHashMap<String, String> getInsOpenYearCombo() {
@@ -14544,7 +14584,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsOpenMonthComboを設定
+	 * NF303DTO.javainsOpenMonthComboを設定
 	 * @return insOpenMonthCombo
 	 */
 	public LinkedHashMap<String, String> getInsOpenMonthCombo() {
@@ -14559,7 +14599,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javainsOpenDayComboを設定
+	 * NF303DTO.javainsOpenDayComboを設定
 	 * @return insOpenDayCombo
 	 */
 	public LinkedHashMap<String, String> getInsOpenDayCombo() {
@@ -14574,7 +14614,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaunivSubdivComboを設定
+	 * NF303DTO.javaunivSubdivComboを設定
 	 * @return univSubdivCombo
 	 */
 	public LinkedHashMap<String, String> getUnivSubdivCombo() {
@@ -14589,7 +14629,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawsTypeComboを設定
+	 * NF303DTO.javawsTypeComboを設定
 	 * @return wsTypeCombo
 	 */
 	public LinkedHashMap<String, String> getWsTypeCombo() {
@@ -14604,7 +14644,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javabasketPurchaseComboを設定
+	 * NF303DTO.javabasketPurchaseComboを設定
 	 * @return basketPurchaseCombo
 	 */
 	public LinkedHashMap<String, String> getBasketPurchaseCombo() {
@@ -14619,7 +14659,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0001Comboを設定
+	 * NF303DTO.javafree0001Comboを設定
 	 * @return free0001Combo
 	 */
 	public LinkedHashMap<String, String> getFree0001Combo() {
@@ -14634,7 +14674,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0002Comboを設定
+	 * NF303DTO.javafree0002Comboを設定
 	 * @return free0002Combo
 	 */
 	public LinkedHashMap<String, String> getFree0002Combo() {
@@ -14649,7 +14689,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0003Comboを設定
+	 * NF303DTO.javafree0003Comboを設定
 	 * @return free0003Combo
 	 */
 	public LinkedHashMap<String, String> getFree0003Combo() {
@@ -14664,7 +14704,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0015Comboを設定
+	 * NF303DTO.javafree0015Comboを設定
 	 * @return free0015Combo
 	 */
 	public LinkedHashMap<String, String> getFree0015Combo() {
@@ -14679,7 +14719,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0008Comboを設定
+	 * NF303DTO.javafree0008Comboを設定
 	 * @return free0008Combo
 	 */
 	public LinkedHashMap<String, String> getFree0008Combo() {
@@ -14694,7 +14734,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0009Comboを設定
+	 * NF303DTO.javafree0009Comboを設定
 	 * @return free0009Combo
 	 */
 	public LinkedHashMap<String, String> getFree0009Combo() {
@@ -14709,7 +14749,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0004Comboを設定
+	 * NF303DTO.javafree0004Comboを設定
 	 * @return free0004Combo
 	 */
 	public LinkedHashMap<String, String> getFree0004Combo() {
@@ -14724,7 +14764,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0005Comboを設定
+	 * NF303DTO.javafree0005Comboを設定
 	 * @return free0005Combo
 	 */
 	public LinkedHashMap<String, String> getFree0005Combo() {
@@ -14739,7 +14779,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0006Comboを設定
+	 * NF303DTO.javafree0006Comboを設定
 	 * @return free0006Combo
 	 */
 	public LinkedHashMap<String, String> getFree0006Combo() {
@@ -14754,7 +14794,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0007Comboを設定
+	 * NF303DTO.javafree0007Comboを設定
 	 * @return free0007Combo
 	 */
 	public LinkedHashMap<String, String> getFree0007Combo() {
@@ -14769,7 +14809,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0010Comboを設定
+	 * NF303DTO.javafree0010Comboを設定
 	 * @return free0010Combo
 	 */
 	public LinkedHashMap<String, String> getFree0010Combo() {
@@ -14784,7 +14824,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0011Comboを設定
+	 * NF303DTO.javafree0011Comboを設定
 	 * @return free0011Combo
 	 */
 	public LinkedHashMap<String, String> getFree0011Combo() {
@@ -14799,7 +14839,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0013Comboを設定
+	 * NF303DTO.javafree0013Comboを設定
 	 * @return free0013Combo
 	 */
 	public LinkedHashMap<String, String> getFree0013Combo() {
@@ -14814,7 +14854,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0014Comboを設定
+	 * NF303DTO.javafree0014Comboを設定
 	 * @return free0014Combo
 	 */
 	public LinkedHashMap<String, String> getFree0014Combo() {
@@ -14829,7 +14869,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javafree0012Comboを設定
+	 * NF303DTO.javafree0012Comboを設定
 	 * @return free0012Combo
 	 */
 	public LinkedHashMap<String, String> getFree0012Combo() {
@@ -14844,7 +14884,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javacapaTypeComboを設定
+	 * NF303DTO.javacapaTypeComboを設定
 	 * @return capaTypeCombo
 	 */
 	public LinkedHashMap<String, String> getCapaTypeCombo() {
@@ -14859,7 +14899,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawelfare02Comboを設定
+	 * NF303DTO.javawelfare02Comboを設定
 	 * @return welfare02Combo
 	 */
 	public LinkedHashMap<String, String> getWelfare02Combo() {
@@ -14874,7 +14914,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javawelfare08Comboを設定
+	 * NF303DTO.javawelfare08Comboを設定
 	 * @return welfare08Combo
 	 */
 	public LinkedHashMap<String, String> getWelfare08Combo() {
@@ -14889,7 +14929,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult01Comboを設定
+	 * NF303DTO.javaresult01Comboを設定
 	 * @return result01Combo
 	 */
 	public LinkedHashMap<String, String> getResult01Combo() {
@@ -14904,7 +14944,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult02Comboを設定
+	 * NF303DTO.javaresult02Comboを設定
 	 * @return result02Combo
 	 */
 	public LinkedHashMap<String, String> getResult02Combo() {
@@ -14919,7 +14959,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult03Comboを設定
+	 * NF303DTO.javaresult03Comboを設定
 	 * @return result03Combo
 	 */
 	public LinkedHashMap<String, String> getResult03Combo() {
@@ -14934,7 +14974,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult04Comboを設定
+	 * NF303DTO.javaresult04Comboを設定
 	 * @return result04Combo
 	 */
 	public LinkedHashMap<String, String> getResult04Combo() {
@@ -14949,7 +14989,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult05Comboを設定
+	 * NF303DTO.javaresult05Comboを設定
 	 * @return result05Combo
 	 */
 	public LinkedHashMap<String, String> getResult05Combo() {
@@ -14964,7 +15004,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult06Comboを設定
+	 * NF303DTO.javaresult06Comboを設定
 	 * @return result06Combo
 	 */
 	public LinkedHashMap<String, String> getResult06Combo() {
@@ -14979,7 +15019,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult07Comboを設定
+	 * NF303DTO.javaresult07Comboを設定
 	 * @return result07Combo
 	 */
 	public LinkedHashMap<String, String> getResult07Combo() {
@@ -14994,7 +15034,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult08Comboを設定
+	 * NF303DTO.javaresult08Comboを設定
 	 * @return result08Combo
 	 */
 	public LinkedHashMap<String, String> getResult08Combo() {
@@ -15009,7 +15049,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult09Comboを設定
+	 * NF303DTO.javaresult09Comboを設定
 	 * @return result09Combo
 	 */
 	public LinkedHashMap<String, String> getResult09Combo() {
@@ -15024,7 +15064,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult10Comboを設定
+	 * NF303DTO.javaresult10Comboを設定
 	 * @return result10Combo
 	 */
 	public LinkedHashMap<String, String> getResult10Combo() {
@@ -15039,7 +15079,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult11Comboを設定
+	 * NF303DTO.javaresult11Comboを設定
 	 * @return result11Combo
 	 */
 	public LinkedHashMap<String, String> getResult11Combo() {
@@ -15054,7 +15094,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult12Comboを設定
+	 * NF303DTO.javaresult12Comboを設定
 	 * @return result12Combo
 	 */
 	public LinkedHashMap<String, String> getResult12Combo() {
@@ -15069,7 +15109,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult13Comboを設定
+	 * NF303DTO.javaresult13Comboを設定
 	 * @return result13Combo
 	 */
 	public LinkedHashMap<String, String> getResult13Combo() {
@@ -15084,7 +15124,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult14Comboを設定
+	 * NF303DTO.javaresult14Comboを設定
 	 * @return result14Combo
 	 */
 	public LinkedHashMap<String, String> getResult14Combo() {
@@ -15099,7 +15139,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult15Comboを設定
+	 * NF303DTO.javaresult15Comboを設定
 	 * @return result15Combo
 	 */
 	public LinkedHashMap<String, String> getResult15Combo() {
@@ -15114,7 +15154,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult16Comboを設定
+	 * NF303DTO.javaresult16Comboを設定
 	 * @return result16Combo
 	 */
 	public LinkedHashMap<String, String> getResult16Combo() {
@@ -15129,7 +15169,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult17Comboを設定
+	 * NF303DTO.javaresult17Comboを設定
 	 * @return result17Combo
 	 */
 	public LinkedHashMap<String, String> getResult17Combo() {
@@ -15144,7 +15184,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult18Comboを設定
+	 * NF303DTO.javaresult18Comboを設定
 	 * @return result18Combo
 	 */
 	public LinkedHashMap<String, String> getResult18Combo() {
@@ -15159,7 +15199,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult19Comboを設定
+	 * NF303DTO.javaresult19Comboを設定
 	 * @return result19Combo
 	 */
 	public LinkedHashMap<String, String> getResult19Combo() {
@@ -15174,7 +15214,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult20Comboを設定
+	 * NF303DTO.javaresult20Comboを設定
 	 * @return result20Combo
 	 */
 	public LinkedHashMap<String, String> getResult20Combo() {
@@ -15189,7 +15229,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult21Comboを設定
+	 * NF303DTO.javaresult21Comboを設定
 	 * @return result21Combo
 	 */
 	public LinkedHashMap<String, String> getResult21Combo() {
@@ -15204,7 +15244,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult22Comboを設定
+	 * NF303DTO.javaresult22Comboを設定
 	 * @return result22Combo
 	 */
 	public LinkedHashMap<String, String> getResult22Combo() {
@@ -15219,7 +15259,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult23Comboを設定
+	 * NF303DTO.javaresult23Comboを設定
 	 * @return result23Combo
 	 */
 	public LinkedHashMap<String, String> getResult23Combo() {
@@ -15234,7 +15274,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult24Comboを設定
+	 * NF303DTO.javaresult24Comboを設定
 	 * @return result24Combo
 	 */
 	public LinkedHashMap<String, String> getResult24Combo() {
@@ -15249,7 +15289,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult25Comboを設定
+	 * NF303DTO.javaresult25Comboを設定
 	 * @return result25Combo
 	 */
 	public LinkedHashMap<String, String> getResult25Combo() {
@@ -15264,7 +15304,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult26Comboを設定
+	 * NF303DTO.javaresult26Comboを設定
 	 * @return result26Combo
 	 */
 	public LinkedHashMap<String, String> getResult26Combo() {
@@ -15279,7 +15319,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult27Comboを設定
+	 * NF303DTO.javaresult27Comboを設定
 	 * @return result27Combo
 	 */
 	public LinkedHashMap<String, String> getResult27Combo() {
@@ -15294,7 +15334,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult28Comboを設定
+	 * NF303DTO.javaresult28Comboを設定
 	 * @return result28Combo
 	 */
 	public LinkedHashMap<String, String> getResult28Combo() {
@@ -15309,7 +15349,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult29Comboを設定
+	 * NF303DTO.javaresult29Comboを設定
 	 * @return result29Combo
 	 */
 	public LinkedHashMap<String, String> getResult29Combo() {
@@ -15324,7 +15364,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult30Comboを設定
+	 * NF303DTO.javaresult30Comboを設定
 	 * @return result30Combo
 	 */
 	public LinkedHashMap<String, String> getResult30Combo() {
@@ -15339,7 +15379,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult31Comboを設定
+	 * NF303DTO.javaresult31Comboを設定
 	 * @return result31Combo
 	 */
 	public LinkedHashMap<String, String> getResult31Combo() {
@@ -15354,7 +15394,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult32Comboを設定
+	 * NF303DTO.javaresult32Comboを設定
 	 * @return result32Combo
 	 */
 	public LinkedHashMap<String, String> getResult32Combo() {
@@ -15369,7 +15409,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult33Comboを設定
+	 * NF303DTO.javaresult33Comboを設定
 	 * @return result33Combo
 	 */
 	public LinkedHashMap<String, String> getResult33Combo() {
@@ -15384,7 +15424,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult34Comboを設定
+	 * NF303DTO.javaresult34Comboを設定
 	 * @return result34Combo
 	 */
 	public LinkedHashMap<String, String> getResult34Combo() {
@@ -15399,7 +15439,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult35Comboを設定
+	 * NF303DTO.javaresult35Comboを設定
 	 * @return result35Combo
 	 */
 	public LinkedHashMap<String, String> getResult35Combo() {
@@ -15414,7 +15454,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaresult36Comboを設定
+	 * NF303DTO.javaresult36Comboを設定
 	 * @return result36Combo
 	 */
 	public LinkedHashMap<String, String> getResult36Combo() {
@@ -15429,7 +15469,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip01Comboを設定
+	 * NF303DTO.javaequip01Comboを設定
 	 * @return equip01Combo
 	 */
 	public LinkedHashMap<String, String> getEquip01Combo() {
@@ -15444,7 +15484,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip02Comboを設定
+	 * NF303DTO.javaequip02Comboを設定
 	 * @return equip02Combo
 	 */
 	public LinkedHashMap<String, String> getEquip02Combo() {
@@ -15459,7 +15499,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip03Comboを設定
+	 * NF303DTO.javaequip03Comboを設定
 	 * @return equip03Combo
 	 */
 	public LinkedHashMap<String, String> getEquip03Combo() {
@@ -15474,7 +15514,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip07Comboを設定
+	 * NF303DTO.javaequip07Comboを設定
 	 * @return equip07Combo
 	 */
 	public LinkedHashMap<String, String> getEquip07Combo() {
@@ -15489,7 +15529,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaequip09Comboを設定
+	 * NF303DTO.javaequip09Comboを設定
 	 * @return equip09Combo
 	 */
 	public LinkedHashMap<String, String> getEquip09Combo() {
@@ -15504,7 +15544,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket01Comboを設定
+	 * NF303DTO.javamarket01Comboを設定
 	 * @return market01Combo
 	 */
 	public LinkedHashMap<String, String> getMarket01Combo() {
@@ -15519,7 +15559,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket02Comboを設定
+	 * NF303DTO.javamarket02Comboを設定
 	 * @return market02Combo
 	 */
 	public LinkedHashMap<String, String> getMarket02Combo() {
@@ -15534,7 +15574,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket03Comboを設定
+	 * NF303DTO.javamarket03Comboを設定
 	 * @return market03Combo
 	 */
 	public LinkedHashMap<String, String> getMarket03Combo() {
@@ -15549,7 +15589,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket04Comboを設定
+	 * NF303DTO.javamarket04Comboを設定
 	 * @return market04Combo
 	 */
 	public LinkedHashMap<String, String> getMarket04Combo() {
@@ -15564,7 +15604,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket06Comboを設定
+	 * NF303DTO.javamarket06Comboを設定
 	 * @return market06Combo
 	 */
 	public LinkedHashMap<String, String> getMarket06Combo() {
@@ -15579,7 +15619,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket07Comboを設定
+	 * NF303DTO.javamarket07Comboを設定
 	 * @return market07Combo
 	 */
 	public LinkedHashMap<String, String> getMarket07Combo() {
@@ -15594,7 +15634,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamarket09Comboを設定
+	 * NF303DTO.javamarket09Comboを設定
 	 * @return market09Combo
 	 */
 	public LinkedHashMap<String, String> getMarket09Combo() {
@@ -15609,7 +15649,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamedical12Comboを設定
+	 * NF303DTO.javamedical12Comboを設定
 	 * @return medical12Combo
 	 */
 	public LinkedHashMap<String, String> getMedical12Combo() {
@@ -15624,7 +15664,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc01Comboを設定
+	 * NF303DTO.javaspfunc01Comboを設定
 	 * @return spfunc01Combo
 	 */
 	public LinkedHashMap<String, String> getSpfunc01Combo() {
@@ -15639,7 +15679,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc03Comboを設定
+	 * NF303DTO.javaspfunc03Comboを設定
 	 * @return spfunc03Combo
 	 */
 	public LinkedHashMap<String, String> getSpfunc03Combo() {
@@ -15654,7 +15694,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaspfunc04Comboを設定
+	 * NF303DTO.javaspfunc04Comboを設定
 	 * @return spfunc04Combo
 	 */
 	public LinkedHashMap<String, String> getSpfunc04Combo() {
@@ -15669,7 +15709,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup10Comboを設定
+	 * NF303DTO.javatieup10Comboを設定
 	 * @return tieup10Combo
 	 */
 	public LinkedHashMap<String, String> getTieup10Combo() {
@@ -15684,7 +15724,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup11Comboを設定
+	 * NF303DTO.javatieup11Comboを設定
 	 * @return tieup11Combo
 	 */
 	public LinkedHashMap<String, String> getTieup11Combo() {
@@ -15699,7 +15739,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javatieup12Comboを設定
+	 * NF303DTO.javatieup12Comboを設定
 	 * @return tieup12Combo
 	 */
 	public LinkedHashMap<String, String> getTieup12Combo() {
@@ -15714,7 +15754,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0001Comboを設定
+	 * NF303DTO.javausercd0001Comboを設定
 	 * @return usercd0001Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0001Combo() {
@@ -15729,7 +15769,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0002Comboを設定
+	 * NF303DTO.javausercd0002Comboを設定
 	 * @return usercd0002Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0002Combo() {
@@ -15744,7 +15784,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0003Comboを設定
+	 * NF303DTO.javausercd0003Comboを設定
 	 * @return usercd0003Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0003Combo() {
@@ -15759,7 +15799,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0004Comboを設定
+	 * NF303DTO.javausercd0004Comboを設定
 	 * @return usercd0004Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0004Combo() {
@@ -15774,7 +15814,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0005Comboを設定
+	 * NF303DTO.javausercd0005Comboを設定
 	 * @return usercd0005Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0005Combo() {
@@ -15789,7 +15829,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0006Comboを設定
+	 * NF303DTO.javausercd0006Comboを設定
 	 * @return usercd0006Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0006Combo() {
@@ -15804,7 +15844,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0007Comboを設定
+	 * NF303DTO.javausercd0007Comboを設定
 	 * @return usercd0007Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0007Combo() {
@@ -15819,7 +15859,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0008Comboを設定
+	 * NF303DTO.javausercd0008Comboを設定
 	 * @return usercd0008Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0008Combo() {
@@ -15834,7 +15874,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0009Comboを設定
+	 * NF303DTO.javausercd0009Comboを設定
 	 * @return usercd0009Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0009Combo() {
@@ -15849,7 +15889,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0010Comboを設定
+	 * NF303DTO.javausercd0010Comboを設定
 	 * @return usercd0010Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0010Combo() {
@@ -15864,7 +15904,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0011Comboを設定
+	 * NF303DTO.javausercd0011Comboを設定
 	 * @return usercd0011Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0011Combo() {
@@ -15879,7 +15919,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0012Comboを設定
+	 * NF303DTO.javausercd0012Comboを設定
 	 * @return usercd0012Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0012Combo() {
@@ -15894,7 +15934,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0013Comboを設定
+	 * NF303DTO.javausercd0013Comboを設定
 	 * @return usercd0013Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0013Combo() {
@@ -15909,7 +15949,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0014Comboを設定
+	 * NF303DTO.javausercd0014Comboを設定
 	 * @return usercd0014Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0014Combo() {
@@ -15924,7 +15964,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0015Comboを設定
+	 * NF303DTO.javausercd0015Comboを設定
 	 * @return usercd0015Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0015Combo() {
@@ -15939,7 +15979,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0016Comboを設定
+	 * NF303DTO.javausercd0016Comboを設定
 	 * @return usercd0016Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0016Combo() {
@@ -15954,7 +15994,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0017Comboを設定
+	 * NF303DTO.javausercd0017Comboを設定
 	 * @return usercd0017Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0017Combo() {
@@ -15969,7 +16009,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0018Comboを設定
+	 * NF303DTO.javausercd0018Comboを設定
 	 * @return usercd0018Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0018Combo() {
@@ -15984,7 +16024,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0019Comboを設定
+	 * NF303DTO.javausercd0019Comboを設定
 	 * @return usercd0019Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0019Combo() {
@@ -15999,7 +16039,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0020Comboを設定
+	 * NF303DTO.javausercd0020Comboを設定
 	 * @return usercd0020Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0020Combo() {
@@ -16014,7 +16054,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0021Comboを設定
+	 * NF303DTO.javausercd0021Comboを設定
 	 * @return usercd0021Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0021Combo() {
@@ -16029,7 +16069,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0022Comboを設定
+	 * NF303DTO.javausercd0022Comboを設定
 	 * @return usercd0022Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0022Combo() {
@@ -16044,7 +16084,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0023Comboを設定
+	 * NF303DTO.javausercd0023Comboを設定
 	 * @return usercd0023Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0023Combo() {
@@ -16059,7 +16099,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0024Comboを設定
+	 * NF303DTO.javausercd0024Comboを設定
 	 * @return usercd0024Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0024Combo() {
@@ -16074,7 +16114,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0025Comboを設定
+	 * NF303DTO.javausercd0025Comboを設定
 	 * @return usercd0025Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0025Combo() {
@@ -16089,7 +16129,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0026Comboを設定
+	 * NF303DTO.javausercd0026Comboを設定
 	 * @return usercd0026Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0026Combo() {
@@ -16104,7 +16144,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0027Comboを設定
+	 * NF303DTO.javausercd0027Comboを設定
 	 * @return usercd0027Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0027Combo() {
@@ -16119,7 +16159,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0028Comboを設定
+	 * NF303DTO.javausercd0028Comboを設定
 	 * @return usercd0028Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0028Combo() {
@@ -16134,7 +16174,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0029Comboを設定
+	 * NF303DTO.javausercd0029Comboを設定
 	 * @return usercd0029Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0029Combo() {
@@ -16149,7 +16189,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0030Comboを設定
+	 * NF303DTO.javausercd0030Comboを設定
 	 * @return usercd0030Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0030Combo() {
@@ -16164,7 +16204,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0031Comboを設定
+	 * NF303DTO.javausercd0031Comboを設定
 	 * @return usercd0031Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0031Combo() {
@@ -16179,7 +16219,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0032Comboを設定
+	 * NF303DTO.javausercd0032Comboを設定
 	 * @return usercd0032Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0032Combo() {
@@ -16194,7 +16234,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0033Comboを設定
+	 * NF303DTO.javausercd0033Comboを設定
 	 * @return usercd0033Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0033Combo() {
@@ -16209,7 +16249,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0034Comboを設定
+	 * NF303DTO.javausercd0034Comboを設定
 	 * @return usercd0034Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0034Combo() {
@@ -16224,7 +16264,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0035Comboを設定
+	 * NF303DTO.javausercd0035Comboを設定
 	 * @return usercd0035Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0035Combo() {
@@ -16239,7 +16279,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javausercd0036Comboを設定
+	 * NF303DTO.javausercd0036Comboを設定
 	 * @return usercd0036Combo
 	 */
 	public LinkedHashMap<String, String> getUsercd0036Combo() {
@@ -16254,7 +16294,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward04Comboを設定
+	 * NF303DTO.javareward04Comboを設定
 	 * @return reward04Combo
 	 */
 	public LinkedHashMap<String, String> getReward04Combo() {
@@ -16269,7 +16309,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward05Comboを設定
+	 * NF303DTO.javareward05Comboを設定
 	 * @return reward05Combo
 	 */
 	public LinkedHashMap<String, String> getReward05Combo() {
@@ -16284,7 +16324,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward08Comboを設定
+	 * NF303DTO.javareward08Comboを設定
 	 * @return reward08Combo
 	 */
 	public LinkedHashMap<String, String> getReward08Combo() {
@@ -16299,7 +16339,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward09Comboを設定
+	 * NF303DTO.javareward09Comboを設定
 	 * @return reward09Combo
 	 */
 	public LinkedHashMap<String, String> getReward09Combo() {
@@ -16314,7 +16354,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward18Comboを設定
+	 * NF303DTO.javareward18Comboを設定
 	 * @return reward18Combo
 	 */
 	public LinkedHashMap<String, String> getReward18Combo() {
@@ -16329,7 +16369,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward21Comboを設定
+	 * NF303DTO.javareward21Comboを設定
 	 * @return reward21Combo
 	 */
 	public LinkedHashMap<String, String> getReward21Combo() {
@@ -16344,7 +16384,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward23Comboを設定
+	 * NF303DTO.javareward23Comboを設定
 	 * @return reward23Combo
 	 */
 	public LinkedHashMap<String, String> getReward23Combo() {
@@ -16359,7 +16399,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward25Comboを設定
+	 * NF303DTO.javareward25Comboを設定
 	 * @return reward25Combo
 	 */
 	public LinkedHashMap<String, String> getReward25Combo() {
@@ -16374,7 +16414,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward26Comboを設定
+	 * NF303DTO.javareward26Comboを設定
 	 * @return reward26Combo
 	 */
 	public LinkedHashMap<String, String> getReward26Combo() {
@@ -16389,7 +16429,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward27Comboを設定
+	 * NF303DTO.javareward27Comboを設定
 	 * @return reward27Combo
 	 */
 	public LinkedHashMap<String, String> getReward27Combo() {
@@ -16404,7 +16444,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward29Comboを設定
+	 * NF303DTO.javareward29Comboを設定
 	 * @return reward29Combo
 	 */
 	public LinkedHashMap<String, String> getReward29Combo() {
@@ -16419,7 +16459,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward35Comboを設定
+	 * NF303DTO.javareward35Comboを設定
 	 * @return reward35Combo
 	 */
 	public LinkedHashMap<String, String> getReward35Combo() {
@@ -16434,7 +16474,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward36Comboを設定
+	 * NF303DTO.javareward36Comboを設定
 	 * @return reward36Combo
 	 */
 	public LinkedHashMap<String, String> getReward36Combo() {
@@ -16449,7 +16489,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward37Comboを設定
+	 * NF303DTO.javareward37Comboを設定
 	 * @return reward37Combo
 	 */
 	public LinkedHashMap<String, String> getReward37Combo() {
@@ -16464,7 +16504,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward44Comboを設定
+	 * NF303DTO.javareward44Comboを設定
 	 * @return reward44Combo
 	 */
 	public LinkedHashMap<String, String> getReward44Combo() {
@@ -16479,7 +16519,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward16Comboを設定
+	 * NF303DTO.javareward16Comboを設定
 	 * @return reward16Combo
 	 */
 	public LinkedHashMap<String, String> getReward16Combo() {
@@ -16494,7 +16534,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javareward17Comboを設定
+	 * NF303DTO.javareward17Comboを設定
 	 * @return reward17Combo
 	 */
 	public LinkedHashMap<String, String> getReward17Combo() {
@@ -16509,7 +16549,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javashnFlgを設定
+	 * NF303DTO.javashnFlgを設定
 	 * @return shnFlg
 	 */
 	public String getShnFlg() {
@@ -16524,7 +16564,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javaeditApprFlgを設定
+	 * NF303DTO.javaeditApprFlgを設定
 	 * @return editApprFlg
 	 */
 	public String getEditApprFlg() {
@@ -16539,7 +16579,7 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF012DTO.javamsgStrを設定
+	 * NF303DTO.javamsgStrを設定
 	 * @return msgStr
 	 */
 	public String getMsgStr() {
@@ -16551,6 +16591,51 @@ public class NF012DTO extends BaseDTO implements Serializable {
 	 */
 	public void setMsgStr(String msgStr) {
 		this.msgStr = msgStr;
+	}
+
+	/**
+	 * NF303DTO.javabtnEnableFlgを設定
+	 * @return btnEnableFlg
+	 */
+	public String getBtnEnableFlg() {
+		return btnEnableFlg;
+	}
+
+	/**
+	 * @param btnEnableFlg セットする btnEnableFlg
+	 */
+	public void setBtnEnableFlg(String btnEnableFlg) {
+		this.btnEnableFlg = btnEnableFlg;
+	}
+
+	/**
+	 * NF303DTO.javaaprCommentを設定
+	 * @return aprComment
+	 */
+	public String getAprComment() {
+		return aprComment;
+	}
+
+	/**
+	 * @param aprComment セットする aprComment
+	 */
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
+	}
+
+	/**
+	 * NF303DTO.javafbReqFlgを設定
+	 * @return fbReqFlg
+	 */
+	public String getFbReqFlg() {
+		return fbReqFlg;
+	}
+
+	/**
+	 * @param fbReqFlg セットする fbReqFlg
+	 */
+	public void setFbReqFlg(String fbReqFlg) {
+		this.fbReqFlg = fbReqFlg;
 	}
 
 	/**

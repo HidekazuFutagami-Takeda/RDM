@@ -903,6 +903,637 @@
         <result column="APR_MEMO" property="aprMemo"/>
         <result column="SHN_FLG" property="shnFlg"/>
     </resultMap>
+    <resultMap id="nF303MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF303MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="SHN_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_CLASS" property="insClass"/>
+        <result column="INS_SBT" property="insSbt"/>
+        <result column="PRE_INS_ABBR_NAME" property="preInsAbbrName"/>
+        <result column="PRE_INS_KANA" property="preInsKana"/>
+        <result column="PRE_INS_FORMAL_NAME" property="preInsFormalName"/>
+        <result column="PRE_TRADE_TYPE" property="preTradeType"/>
+        <result column="PRE_TRADE_TYPE_NM" property="preTradeTypeNm"/>
+        <result column="PRE_INS_OPEN_YEAR" property="preInsOpenYear"/>
+        <result column="PRE_INS_OPEN_MONTH" property="preInsOpenMonth"/>
+        <result column="PRE_INS_OPEN_DAY" property="preInsOpenDay"/>
+        <result column="PRE_PHARM_TYPE" property="prePharmType"/>
+        <result column="PRE_PHARM_TYPE_NM" property="prePharmTypeNm"/>
+        <result column="PRE_INS_RANK" property="preInsRank"/>
+        <result column="PRE_INS_RANK_NM" property="preInsRankNm"/>
+        <result column="PRE_REG_VIS_TYPE" property="preRegVisType"/>
+        <result column="PRE_REG_VIS_TYPE_NM" property="preRegVisTypeNm"/>
+        <result column="PRE_MANAGE_CD" property="preManageCd"/>
+        <result column="PRE_MANAGE_NM" property="preManageNm"/>
+        <result column="PRE_WS_TYPE" property="preWsType"/>
+        <result column="PRE_BASKET_PURCHASE" property="preBasketPurchase"/>
+        <result column="PRE_BASKET_PURCHASE_NM" property="preBasketPurchaseNm"/>
+        <result column="PRE_UNIV_SUBDIV" property="preUnivSubdiv"/>
+        <result column="PRE_UNIV_SUBDIV_NM" property="preUnivSubdivNm"/>
+		<result column="PRE_CAPA_TYPE" property="preCapaType"/>
+		<result column="PRE_CAPA_TYPE_NM" property="preCapaTypeNm"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_KANA" property="insKana"/>
+        <result column="INS_FORMAL_NAME" property="insFormalName"/>
+        <result column="TRADE_TYPE" property="tradeType"/>
+        <result column="TRADE_TYPE_NM" property="tradeTypeNm"/>
+        <result column="INS_OPEN_YEAR" property="insOpenYear"/>
+        <result column="INS_OPEN_MONTH" property="insOpenMonth"/>
+        <result column="INS_OPEN_DAY" property="insOpenDay"/>
+        <result column="PHARM_TYPE" property="pharmType"/>
+        <result column="PHARM_TYPE_NM" property="pharmTypeNm"/>
+        <result column="INS_RANK" property="insRank"/>
+        <result column="INS_RANK_NM" property="insRankNm"/>
+        <result column="REG_VIS_TYPE" property="regVisType"/>
+        <result column="REG_VIS_TYPE_NM" property="regVisTypeNm"/>
+        <result column="MANAGE_CD" property="manageCd"/>
+        <result column="MANAGE_NM" property="manageNm"/>
+        <result column="WS_TYPE" property="wsType"/>
+        <result column="WS_TYPE_NM" property="wsTypeNm"/>
+        <result column="BASKET_PURCHASE" property="basketPurchase"/>
+        <result column="BASKET_PURCHASE_NM" property="basketPurchaseNm"/>
+        <result column="UNIV_SUBDIV" property="univSubdiv"/>
+        <result column="UNIV_SUBDIV_NM" property="univSubdivNm"/>
+        <result column="CAPA_TYPE" property="capaType"/>
+        <result column="CAPA_TYPE_NM" property="capaTypeNm"/>
+		<result column="ULT_INS_NO" property="ultInsCd"/>
+		<result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
+		<result column="SHISETSU_NM" property="shisetsuNm"/>
+        <result column="BEDCNT_BASE" property="bedCntBase"/>
+        <result column="BEDCNT01" property="bedCnt01"/>
+        <result column="BEDCNT02" property="bedCnt02"/>
+        <result column="BEDCNT03" property="bedCnt03"/>
+        <result column="BEDCNT04" property="bedCnt04"/>
+        <result column="BEDCNT05" property="bedCnt05"/>
+        <result column="BEDCNT06" property="bedCnt06"/>
+        <result column="BEDCNT07" property="bedCnt07"/>
+        <result column="BEDS_TOT" property="bedsTot"/>
+        <result column="MED_BEDS_TOT" property="medBedsTot"/>
+        <result column="KYOKABYOSHOSU_IPPAN" property="ultBedCnt01"/>
+        <result column="KYOKABYOSHOSU_SEISHIN" property="ultBedCnt03"/>
+        <result column="KYOKABYOSHOSU_KEKKAKU" property="ultBedCnt04"/>
+        <result column="KYOKABYOSHOSU_KANSEN" property="ultBedCnt05"/>
+        <result column="KYOKABYOSHOSU_RYOYO" property="ultBedCnt07"/>
+        <result column="KYOKABYOSHOSU_SUM" property="ultBedsTot"/>
+        <result column="NEXT_BEDCNT_BASE" property="bedCntBase"/>
+        <result column="NEXT_BEDCNT01" property="nextBedCnt01"/>
+        <result column="NEXT_BEDCNT02" property="nextBedCnt02"/>
+        <result column="NEXT_BEDCNT03" property="nextBedCnt03"/>
+        <result column="NEXT_BEDCNT04" property="nextBedCnt04"/>
+        <result column="NEXT_BEDCNT05" property="nextBedCnt05"/>
+        <result column="NEXT_BEDCNT06" property="nextBedCnt06"/>
+        <result column="NEXT_BEDCNT07" property="nextBedCnt07"/>
+        <result column="NEXT_BEDS_TOT" property="nextBedsTot"/>
+        <result column="NEXT_MED_BEDS_TOT" property="nextMedBedsTot"/>
+        <result column="PRE_INS_PCODE" property="preInsPcode"/>
+        <result column="PRE_ADDR_CODE_PREF" property="preAddrCodePref"/>
+        <result column="PRE_ADDR_NAME_PREF" property="preAddrCodePrefName"/>
+        <result column="PRE_ADDR_CODE_CITY" property="preAddrCodeCity"/>
+        <result column="PRE_ADDR_NAME_CITY" property="preAddrCodeCityName"/>
+        <result column="PRE_INS_ADDR_DT" property="preInsAddrDt"/>
+        <result column="PRE_TK_CITY_CD" property="preTkCityCd"/>
+        <result column="PRE_TK_CITY_NAME" property="preTkCityName"/>
+        <result column="PRE_INS_PHONE1" property="preInsPhone1"/>
+        <result column="PRE_INS_PHONE2" property="preInsPhone2"/>
+        <result column="PRE_INS_FAX1" property="preInsFax1"/>
+        <result column="PRE_INS_FAX2" property="preInsFax2"/>
+        <result column="PRE_INS_URL" property="preInsUrl"/>
+        <result column="PRE_INS_URL_YMD" property="preInsUrlYmd"/>
+        <result column="INS_PCODE" property="insPcode"/>
+        <result column="ADDR_CODE_PREF" property="addrCodePref"/>
+        <result column="ADDR_NAME_PREF" property="addrCodePrefName"/>
+        <result column="ADDR_CODE_CITY" property="addrCodeCity"/>
+        <result column="ADDR_NAME_CITY" property="addrCodeCityName"/>
+        <result column="INS_ADDR_DT" property="insAddrDt"/>
+        <result column="TK_CITY_CD" property="tkCityCd"/>
+        <result column="TK_CITY_NAME" property="tkCityName"/>
+        <result column="INS_PHONE1" property="insPhone1"/>
+        <result column="INS_PHONE2" property="insPhone2"/>
+        <result column="INS_FAX1" property="insFax1"/>
+        <result column="INS_FAX2" property="insFax2"/>
+        <result column="INS_URL" property="insUrl"/>
+        <result column="INS_URL_YMD" property="insUrlYmd"/>
+        <result column="INS_ADDR_KANA" property="insAddrKana"/>
+        <result column="PRE_FREE0001" property="preFree0001"/>
+		<result column="PRE_FREE0002" property="preFree0002"/>
+		<result column="PRE_FREE0003" property="preFree0003"/>
+		<result column="PRE_FREE0004" property="preFree0004"/>
+		<result column="PRE_FREE0005" property="preFree0005"/>
+		<result column="PRE_FREE0006" property="preFree0006"/>
+		<result column="PRE_FREE0007" property="preFree0007"/>
+		<result column="PRE_FREE0008" property="preFree0008"/>
+		<result column="PRE_FREE0009" property="preFree0009"/>
+		<result column="PRE_FREE0010" property="preFree0010"/>
+		<result column="PRE_FREE0011" property="preFree0011"/>
+		<result column="PRE_FREE0012" property="preFree0012"/>
+		<result column="PRE_FREE0013" property="preFree0013"/>
+		<result column="PRE_FREE0014" property="preFree0014"/>
+		<result column="PRE_FREE0015" property="preFree0015"/>
+		<result column="FREE0001" property="free0001"/>
+		<result column="FREE0002" property="free0002"/>
+		<result column="FREE0003" property="free0003"/>
+		<result column="FREE0004" property="free0004"/>
+		<result column="FREE0005" property="free0005"/>
+		<result column="FREE0006" property="free0006"/>
+		<result column="FREE0007" property="free0007"/>
+		<result column="FREE0008" property="free0008"/>
+		<result column="FREE0009" property="free0009"/>
+		<result column="FREE0010" property="free0010"/>
+		<result column="FREE0011" property="free0011"/>
+		<result column="FREE0012" property="free0012"/>
+		<result column="FREE0013" property="free0013"/>
+		<result column="FREE0014" property="free0014"/>
+		<result column="FREE0015" property="free0015"/>
+		<result column="PRE_WELFARE02" property="preWelfare02"/>
+		<result column="PRE_WELFARE08" property="preWelfare08"/>
+		<result column="PRE_WELFARE02Nm" property="preWelfare02Nm"/>
+		<result column="PRE_WELFARE08Nm" property="preWelfare08Nm"/>
+		<result column="WELFARE02" property="welfare02"/>
+		<result column="WELFARE08" property="welfare08"/>
+		<result column="WELFARE02_NM" property="welfare02Nm"/>
+		<result column="WELFARE08_NM" property="welfare08Nm"/>
+		<result column="PRE_RESULT01" property="preResult01"/>
+		<result column="PRE_RESULT02" property="preResult02"/>
+		<result column="PRE_RESULT03" property="preResult03"/>
+		<result column="PRE_RESULT04" property="preResult04"/>
+		<result column="PRE_RESULT05" property="preResult05"/>
+		<result column="PRE_RESULT06" property="preResult06"/>
+		<result column="PRE_RESULT07" property="preResult07"/>
+		<result column="PRE_RESULT08" property="preResult08"/>
+		<result column="PRE_RESULT09" property="preResult09"/>
+		<result column="PRE_RESULT10" property="preResult10"/>
+		<result column="PRE_RESULT11" property="preResult11"/>
+		<result column="PRE_RESULT12" property="preResult12"/>
+		<result column="PRE_RESULT13" property="preResult13"/>
+		<result column="PRE_RESULT14" property="preResult14"/>
+		<result column="PRE_RESULT15" property="preResult15"/>
+		<result column="PRE_RESULT16" property="preResult16"/>
+		<result column="PRE_RESULT17" property="preResult17"/>
+		<result column="PRE_RESULT18" property="preResult18"/>
+		<result column="PRE_RESULT19" property="preResult19"/>
+		<result column="PRE_RESULT20" property="preResult20"/>
+		<result column="PRE_RESULT21" property="preResult21"/>
+		<result column="PRE_RESULT22" property="preResult22"/>
+		<result column="PRE_RESULT23" property="preResult23"/>
+		<result column="PRE_RESULT24" property="preResult24"/>
+		<result column="PRE_RESULT25" property="preResult25"/>
+		<result column="PRE_RESULT26" property="preResult26"/>
+		<result column="PRE_RESULT27" property="preResult27"/>
+		<result column="PRE_RESULT28" property="preResult28"/>
+		<result column="PRE_RESULT29" property="preResult29"/>
+		<result column="PRE_RESULT30" property="preResult30"/>
+		<result column="PRE_RESULT31" property="preResult31"/>
+		<result column="PRE_RESULT32" property="preResult32"/>
+		<result column="PRE_RESULT33" property="preResult33"/>
+		<result column="PRE_RESULT34" property="preResult34"/>
+		<result column="PRE_RESULT35" property="preResult35"/>
+		<result column="PRE_RESULT36" property="preResult36"/>
+		<result column="PRE_RESULT01_NM" property="preResult01Nm"/>
+		<result column="PRE_RESULT02_NM" property="preResult02Nm"/>
+		<result column="PRE_RESULT03_NM" property="preResult03Nm"/>
+		<result column="PRE_RESULT04_NM" property="preResult04Nm"/>
+		<result column="PRE_RESULT05_NM" property="preResult05Nm"/>
+		<result column="PRE_RESULT06_NM" property="preResult06Nm"/>
+		<result column="PRE_RESULT07_NM" property="preResult07Nm"/>
+		<result column="PRE_RESULT08_NM" property="preResult08Nm"/>
+		<result column="PRE_RESULT09_NM" property="preResult09Nm"/>
+		<result column="PRE_RESULT10_NM" property="preResult10Nm"/>
+		<result column="PRE_RESULT11_NM" property="preResult11Nm"/>
+		<result column="PRE_RESULT12_NM" property="preResult12Nm"/>
+		<result column="PRE_RESULT13_NM" property="preResult13Nm"/>
+		<result column="PRE_RESULT14_NM" property="preResult14Nm"/>
+		<result column="PRE_RESULT15_NM" property="preResult15Nm"/>
+		<result column="PRE_RESULT16_NM" property="preResult16Nm"/>
+		<result column="PRE_RESULT17_NM" property="preResult17Nm"/>
+		<result column="PRE_RESULT18_NM" property="preResult18Nm"/>
+		<result column="PRE_RESULT19_NM" property="preResult19Nm"/>
+		<result column="PRE_RESULT20_NM" property="preResult20Nm"/>
+		<result column="PRE_RESULT21_NM" property="preResult21Nm"/>
+		<result column="PRE_RESULT22_NM" property="preResult22Nm"/>
+		<result column="PRE_RESULT23_NM" property="preResult23Nm"/>
+		<result column="PRE_RESULT24_NM" property="preResult24Nm"/>
+		<result column="PRE_RESULT25_NM" property="preResult25Nm"/>
+		<result column="PRE_RESULT26_NM" property="preResult26Nm"/>
+		<result column="PRE_RESULT27_NM" property="preResult27Nm"/>
+		<result column="PRE_RESULT28_NM" property="preResult28Nm"/>
+		<result column="PRE_RESULT29_NM" property="preResult29Nm"/>
+		<result column="PRE_RESULT30_NM" property="preResult30Nm"/>
+		<result column="PRE_RESULT31_NM" property="preResult31Nm"/>
+		<result column="PRE_RESULT32_NM" property="preResult32Nm"/>
+		<result column="PRE_RESULT33_NM" property="preResult33Nm"/>
+		<result column="PRE_RESULT34_NM" property="preResult34Nm"/>
+		<result column="PRE_RESULT35_NM" property="preResult35Nm"/>
+		<result column="PRE_RESULT36_NM" property="preResult36Nm"/>
+		<result column="RESULT01" property="result01"/>
+		<result column="RESULT02" property="result02"/>
+		<result column="RESULT03" property="result03"/>
+		<result column="RESULT04" property="result04"/>
+		<result column="RESULT05" property="result05"/>
+		<result column="RESULT06" property="result06"/>
+		<result column="RESULT07" property="result07"/>
+		<result column="RESULT08" property="result08"/>
+		<result column="RESULT09" property="result09"/>
+		<result column="RESULT10" property="result10"/>
+		<result column="RESULT11" property="result11"/>
+		<result column="RESULT12" property="result12"/>
+		<result column="RESULT13" property="result13"/>
+		<result column="RESULT14" property="result14"/>
+		<result column="RESULT15" property="result15"/>
+		<result column="RESULT16" property="result16"/>
+		<result column="RESULT17" property="result17"/>
+		<result column="RESULT18" property="result18"/>
+		<result column="RESULT19" property="result19"/>
+		<result column="RESULT20" property="result20"/>
+		<result column="RESULT21" property="result21"/>
+		<result column="RESULT22" property="result22"/>
+		<result column="RESULT23" property="result23"/>
+		<result column="RESULT24" property="result24"/>
+		<result column="RESULT25" property="result25"/>
+		<result column="RESULT26" property="result26"/>
+		<result column="RESULT27" property="result27"/>
+		<result column="RESULT28" property="result28"/>
+		<result column="RESULT29" property="result29"/>
+		<result column="RESULT30" property="result30"/>
+		<result column="RESULT31" property="result31"/>
+		<result column="RESULT32" property="result32"/>
+		<result column="RESULT33" property="result33"/>
+		<result column="RESULT34" property="result34"/>
+		<result column="RESULT35" property="result35"/>
+		<result column="RESULT36" property="result36"/>
+		<result column="RESULT01_NM" property="result01Nm"/>
+		<result column="RESULT02_NM" property="result02Nm"/>
+		<result column="RESULT03_NM" property="result03Nm"/>
+		<result column="RESULT04_NM" property="result04Nm"/>
+		<result column="RESULT05_NM" property="result05Nm"/>
+		<result column="RESULT06_NM" property="result06Nm"/>
+		<result column="RESULT07_NM" property="result07Nm"/>
+		<result column="RESULT08_NM" property="result08Nm"/>
+		<result column="RESULT09_NM" property="result09Nm"/>
+		<result column="RESULT10_NM" property="result10Nm"/>
+		<result column="RESULT11_NM" property="result11Nm"/>
+		<result column="RESULT12_NM" property="result12Nm"/>
+		<result column="RESULT13_NM" property="result13Nm"/>
+		<result column="RESULT14_NM" property="result14Nm"/>
+		<result column="RESULT15_NM" property="result15Nm"/>
+		<result column="RESULT16_NM" property="result16Nm"/>
+		<result column="RESULT17_NM" property="result17Nm"/>
+		<result column="RESULT18_NM" property="result18Nm"/>
+		<result column="RESULT19_NM" property="result19Nm"/>
+		<result column="RESULT20_NM" property="result20Nm"/>
+		<result column="RESULT21_NM" property="result21Nm"/>
+		<result column="RESULT22_NM" property="result22Nm"/>
+		<result column="RESULT23_NM" property="result23Nm"/>
+		<result column="RESULT24_NM" property="result24Nm"/>
+		<result column="RESULT25_NM" property="result25Nm"/>
+		<result column="RESULT26_NM" property="result26Nm"/>
+		<result column="RESULT27_NM" property="result27Nm"/>
+		<result column="RESULT28_NM" property="result28Nm"/>
+		<result column="RESULT29_NM" property="result29Nm"/>
+		<result column="RESULT30_NM" property="result30Nm"/>
+		<result column="RESULT31_NM" property="result31Nm"/>
+		<result column="RESULT32_NM" property="result32Nm"/>
+		<result column="RESULT33_NM" property="result33Nm"/>
+		<result column="RESULT34_NM" property="result34Nm"/>
+		<result column="RESULT35_NM" property="result35Nm"/>
+		<result column="RESULT36_NM" property="result36Nm"/>
+		<result column="PRE_EQUIP01" property="preEquip01"/>
+		<result column="PRE_EQUIP02" property="preEquip02"/>
+		<result column="PRE_EQUIP03" property="preEquip03"/>
+		<result column="PRE_EQUIP07" property="preEquip07"/>
+		<result column="PRE_EQUIP09" property="preEquip09"/>
+		<result column="PRE_EQUIP01_NM" property="preEquip01Nm"/>
+		<result column="PRE_EQUIP02_NM" property="preEquip02Nm"/>
+		<result column="PRE_EQUIP03_NM" property="preEquip03Nm"/>
+		<result column="PRE_EQUIP07_NM" property="preEquip07Nm"/>
+		<result column="PRE_EQUIP09_NM" property="preEquip09Nm"/>
+		<result column="EQUIP01" property="equip01"/>
+		<result column="EQUIP02" property="equip02"/>
+		<result column="EQUIP03" property="equip03"/>
+		<result column="EQUIP07" property="equip07"/>
+		<result column="EQUIP09" property="equip09"/>
+		<result column="EQUIP01_NM" property="equip01Nm"/>
+		<result column="EQUIP02_NM" property="equip02Nm"/>
+		<result column="EQUIP03_NM" property="equip03Nm"/>
+		<result column="EQUIP07_NM" property="equip07Nm"/>
+		<result column="EQUIP09_NM" property="equip09Nm"/>
+		<result column="PRE_MARKET01" property="preMarket01"/>
+		<result column="PRE_MARKET02" property="preMarket02"/>
+		<result column="PRE_MARKET03" property="preMarket03"/>
+		<result column="PRE_MARKET04" property="preMarket04"/>
+		<result column="PRE_MARKET06" property="preMarket06"/>
+		<result column="PRE_MARKET07" property="preMarket07"/>
+		<result column="PRE_MARKET09" property="preMarket09"/>
+		<result column="PRE_MARKET01_NM" property="preMarket01Nm"/>
+		<result column="PRE_MARKET02_NM" property="preMarket02Nm"/>
+		<result column="PRE_MARKET03_NM" property="preMarket03Nm"/>
+		<result column="PRE_MARKET04_NM" property="preMarket04Nm"/>
+		<result column="PRE_MARKET06_NM" property="preMarket06Nm"/>
+		<result column="PRE_MARKET07_NM" property="preMarket07Nm"/>
+		<result column="PRE_MARKET09_NM" property="preMarket09Nm"/>
+		<result column="MARKET01" property="market01"/>
+		<result column="MARKET02" property="market02"/>
+		<result column="MARKET03" property="market03"/>
+		<result column="MARKET04" property="market04"/>
+		<result column="MARKET06" property="market06"/>
+		<result column="MARKET07" property="market07"/>
+		<result column="MARKET09" property="market09"/>
+		<result column="MARKET01_NM" property="market01Nm"/>
+		<result column="MARKET02_NM" property="market02Nm"/>
+		<result column="MARKET03_NM" property="market03Nm"/>
+		<result column="MARKET04_NM" property="market04Nm"/>
+		<result column="MARKET06_NM" property="market06Nm"/>
+		<result column="MARKET07_NM" property="market07Nm"/>
+		<result column="MARKET09_NM" property="market09Nm"/>
+		<result column="PRE_MEDICAL12" property="preMedical12"/>
+		<result column="PRE_MEDICAL12_NM" property="preMedical12Nm"/>
+		<result column="MEDICAL12" property="medical12"/>
+		<result column="MEDICAL12_NM" property="medical12Nm"/>
+		<result column="PRE_SPFUNC01" property="preSpfunc01"/>
+		<result column="PRE_SPFUNC03" property="preSpfunc03"/>
+		<result column="PRE_SPFUNC04" property="preSpfunc04"/>
+		<result column="PRE_SPFUNC01_NM" property="preSpfunc01Nm"/>
+		<result column="PRE_SPFUNC03_NM" property="preSpfunc03Nm"/>
+		<result column="PRE_SPFUNC04_NM" property="preSpfunc04Nm"/>
+		<result column="SPFUNC01" property="spfunc01"/>
+		<result column="SPFUNC03" property="spfunc03"/>
+		<result column="SPFUNC04" property="spfunc04"/>
+		<result column="SPFUNC01_NM" property="spfunc01Nm"/>
+		<result column="SPFUNC03_NM" property="spfunc03Nm"/>
+		<result column="SPFUNC04_NM" property="spfunc04Nm"/>
+		<result column="PRE_TIEUP10" property="preTieup10"/>
+		<result column="PRE_TIEUP11" property="preTieup11"/>
+		<result column="PRE_TIEUP12" property="preTieup12"/>
+		<result column="PRE_TIEUP10_NM" property="preTieup10Nm"/>
+		<result column="PRE_TIEUP11_NM" property="preTieup11Nm"/>
+		<result column="PRE_TIEUP12_NM" property="preTieup12Nm"/>
+		<result column="TIEUP10" property="tieup10"/>
+		<result column="TIEUP11" property="tieup11"/>
+		<result column="TIEUP12" property="tieup12"/>
+		<result column="TIEUP10_NM" property="tieup10Nm"/>
+		<result column="TIEUP11_NM" property="tieup11Nm"/>
+		<result column="TIEUP12_NM" property="tieup12Nm"/>
+		<result column="PRE_USERCD0001" property="preUsercd0001"/>
+		<result column="PRE_USERCD0002" property="preUsercd0002"/>
+		<result column="PRE_USERCD0003" property="preUsercd0003"/>
+		<result column="PRE_USERCD0004" property="preUsercd0004"/>
+		<result column="PRE_USERCD0005" property="preUsercd0005"/>
+		<result column="PRE_USERCD0006" property="preUsercd0006"/>
+		<result column="PRE_USERCD0007" property="preUsercd0007"/>
+		<result column="PRE_USERCD0008" property="preUsercd0008"/>
+		<result column="PRE_USERCD0009" property="preUsercd0009"/>
+		<result column="PRE_USERCD0010" property="preUsercd0010"/>
+		<result column="PRE_USERCD0011" property="preUsercd0011"/>
+		<result column="PRE_USERCD0012" property="preUsercd0012"/>
+		<result column="PRE_USERCD0013" property="preUsercd0013"/>
+		<result column="PRE_USERCD0014" property="preUsercd0014"/>
+		<result column="PRE_USERCD0015" property="preUsercd0015"/>
+		<result column="PRE_USERCD0016" property="preUsercd0016"/>
+		<result column="PRE_USERCD0017" property="preUsercd0017"/>
+		<result column="PRE_USERCD0018" property="preUsercd0018"/>
+		<result column="PRE_USERCD0019" property="preUsercd0019"/>
+		<result column="PRE_USERCD0020" property="preUsercd0020"/>
+		<result column="PRE_USERCD0021" property="preUsercd0021"/>
+		<result column="PRE_USERCD0022" property="preUsercd0022"/>
+		<result column="PRE_USERCD0023" property="preUsercd0023"/>
+		<result column="PRE_USERCD0024" property="preUsercd0024"/>
+		<result column="PRE_USERCD0025" property="preUsercd0025"/>
+		<result column="PRE_USERCD0026" property="preUsercd0026"/>
+		<result column="PRE_USERCD0027" property="preUsercd0027"/>
+		<result column="PRE_USERCD0028" property="preUsercd0028"/>
+		<result column="PRE_USERCD0029" property="preUsercd0029"/>
+		<result column="PRE_USERCD0030" property="preUsercd0030"/>
+		<result column="PRE_USERCD0031" property="preUsercd0031"/>
+		<result column="PRE_USERCD0032" property="preUsercd0032"/>
+		<result column="PRE_USERCD0033" property="preUsercd0033"/>
+		<result column="PRE_USERCD0034" property="preUsercd0034"/>
+		<result column="PRE_USERCD0035" property="preUsercd0035"/>
+		<result column="PRE_USERCD0036" property="preUsercd0036"/>
+		<result column="PRE_USERCD0001_NM" property="preUsercd0001Nm"/>
+		<result column="PRE_USERCD0002_NM" property="preUsercd0002Nm"/>
+		<result column="PRE_USERCD0003_NM" property="preUsercd0003Nm"/>
+		<result column="PRE_USERCD0004_NM" property="preUsercd0004Nm"/>
+		<result column="PRE_USERCD0005_NM" property="preUsercd0005Nm"/>
+		<result column="PRE_USERCD0006_NM" property="preUsercd0006Nm"/>
+		<result column="PRE_USERCD0007_NM" property="preUsercd0007Nm"/>
+		<result column="PRE_USERCD0008_NM" property="preUsercd0008Nm"/>
+		<result column="PRE_USERCD0009_NM" property="preUsercd0009Nm"/>
+		<result column="PRE_USERCD0010_NM" property="preUsercd0010Nm"/>
+		<result column="PRE_USERCD0011_NM" property="preUsercd0011Nm"/>
+		<result column="PRE_USERCD0012_NM" property="preUsercd0012Nm"/>
+		<result column="PRE_USERCD0013_NM" property="preUsercd0013Nm"/>
+		<result column="PRE_USERCD0014_NM" property="preUsercd0014Nm"/>
+		<result column="PRE_USERCD0015_NM" property="preUsercd0015Nm"/>
+		<result column="PRE_USERCD0016_NM" property="preUsercd0016Nm"/>
+		<result column="PRE_USERCD0017_NM" property="preUsercd0017Nm"/>
+		<result column="PRE_USERCD0018_NM" property="preUsercd0018Nm"/>
+		<result column="PRE_USERCD0019_NM" property="preUsercd0019Nm"/>
+		<result column="PRE_USERCD0020_NM" property="preUsercd0020Nm"/>
+		<result column="PRE_USERCD0021_NM" property="preUsercd0021Nm"/>
+		<result column="PRE_USERCD0022_NM" property="preUsercd0022Nm"/>
+		<result column="PRE_USERCD0023_NM" property="preUsercd0023Nm"/>
+		<result column="PRE_USERCD0024_NM" property="preUsercd0024Nm"/>
+		<result column="PRE_USERCD0025_NM" property="preUsercd0025Nm"/>
+		<result column="PRE_USERCD0026_NM" property="preUsercd0026Nm"/>
+		<result column="PRE_USERCD0027_NM" property="preUsercd0027Nm"/>
+		<result column="PRE_USERCD0028_NM" property="preUsercd0028Nm"/>
+		<result column="PRE_USERCD0029_NM" property="preUsercd0029Nm"/>
+		<result column="PRE_USERCD0030_NM" property="preUsercd0030Nm"/>
+		<result column="PRE_USERCD0031_NM" property="preUsercd0031Nm"/>
+		<result column="PRE_USERCD0032_NM" property="preUsercd0032Nm"/>
+		<result column="PRE_USERCD0033_NM" property="preUsercd0033Nm"/>
+		<result column="PRE_USERCD0034_NM" property="preUsercd0034Nm"/>
+		<result column="PRE_USERCD0035_NM" property="preUsercd0035Nm"/>
+		<result column="PRE_USERCD0036_NM" property="preUsercd0036Nm"/>
+		<result column="PRE_USERCD0101" property="preUsercd0101"/>
+		<result column="PRE_USERCD0102" property="preUsercd0102"/>
+		<result column="PRE_USERCD0103" property="preUsercd0103"/>
+		<result column="PRE_USERCD0104" property="preUsercd0104"/>
+		<result column="PRE_USERCD0105" property="preUsercd0105"/>
+		<result column="PRE_USERCD0106" property="preUsercd0106"/>
+		<result column="PRE_USERCD0107" property="preUsercd0107"/>
+		<result column="PRE_USERCD0108" property="preUsercd0108"/>
+		<result column="PRE_USERCD0109" property="preUsercd0109"/>
+		<result column="PRE_USERCD0201" property="preUsercd0201"/>
+		<result column="PRE_USERCD0202" property="preUsercd0202"/>
+		<result column="PRE_USERCD0203" property="preUsercd0203"/>
+		<result column="PRE_USERCD0204" property="preUsercd0204"/>
+		<result column="PRE_USERCD0205" property="preUsercd0205"/>
+		<result column="PRE_USERCD0206" property="preUsercd0206"/>
+		<result column="USERCD0001" property="usercd0001"/>
+		<result column="USERCD0002" property="usercd0002"/>
+		<result column="USERCD0003" property="usercd0003"/>
+		<result column="USERCD0004" property="usercd0004"/>
+		<result column="USERCD0005" property="usercd0005"/>
+		<result column="USERCD0006" property="usercd0006"/>
+		<result column="USERCD0007" property="usercd0007"/>
+		<result column="USERCD0008" property="usercd0008"/>
+		<result column="USERCD0009" property="usercd0009"/>
+		<result column="USERCD0010" property="usercd0010"/>
+		<result column="USERCD0011" property="usercd0011"/>
+		<result column="USERCD0012" property="usercd0012"/>
+		<result column="USERCD0013" property="usercd0013"/>
+		<result column="USERCD0014" property="usercd0014"/>
+		<result column="USERCD0015" property="usercd0015"/>
+		<result column="USERCD0016" property="usercd0016"/>
+		<result column="USERCD0017" property="usercd0017"/>
+		<result column="USERCD0018" property="usercd0018"/>
+		<result column="USERCD0019" property="usercd0019"/>
+		<result column="USERCD0020" property="usercd0020"/>
+		<result column="USERCD0021" property="usercd0021"/>
+		<result column="USERCD0022" property="usercd0022"/>
+		<result column="USERCD0023" property="usercd0023"/>
+		<result column="USERCD0024" property="usercd0024"/>
+		<result column="USERCD0025" property="usercd0025"/>
+		<result column="USERCD0026" property="usercd0026"/>
+		<result column="USERCD0027" property="usercd0027"/>
+		<result column="USERCD0028" property="usercd0028"/>
+		<result column="USERCD0029" property="usercd0029"/>
+		<result column="USERCD0030" property="usercd0030"/>
+		<result column="USERCD0031" property="usercd0031"/>
+		<result column="USERCD0032" property="usercd0032"/>
+		<result column="USERCD0033" property="usercd0033"/>
+		<result column="USERCD0034" property="usercd0034"/>
+		<result column="USERCD0035" property="usercd0035"/>
+		<result column="USERCD0036" property="usercd0036"/>
+		<result column="USERCD0001_NM" property="usercd0001Nm"/>
+		<result column="USERCD0002_NM" property="usercd0002Nm"/>
+		<result column="USERCD0003_NM" property="usercd0003Nm"/>
+		<result column="USERCD0004_NM" property="usercd0004Nm"/>
+		<result column="USERCD0005_NM" property="usercd0005Nm"/>
+		<result column="USERCD0006_NM" property="usercd0006Nm"/>
+		<result column="USERCD0007_NM" property="usercd0007Nm"/>
+		<result column="USERCD0008_NM" property="usercd0008Nm"/>
+		<result column="USERCD0009_NM" property="usercd0009Nm"/>
+		<result column="USERCD0010_NM" property="usercd0010Nm"/>
+		<result column="USERCD0011_NM" property="usercd0011Nm"/>
+		<result column="USERCD0012_NM" property="usercd0012Nm"/>
+		<result column="USERCD0013_NM" property="usercd0013Nm"/>
+		<result column="USERCD0014_NM" property="usercd0014Nm"/>
+		<result column="USERCD0015_NM" property="usercd0015Nm"/>
+		<result column="USERCD0016_NM" property="usercd0016Nm"/>
+		<result column="USERCD0017_NM" property="usercd0017Nm"/>
+		<result column="USERCD0018_NM" property="usercd0018Nm"/>
+		<result column="USERCD0019_NM" property="usercd0019Nm"/>
+		<result column="USERCD0020_NM" property="usercd0020Nm"/>
+		<result column="USERCD0021_NM" property="usercd0021Nm"/>
+		<result column="USERCD0022_NM" property="usercd0022Nm"/>
+		<result column="USERCD0023_NM" property="usercd0023Nm"/>
+		<result column="USERCD0024_NM" property="usercd0024Nm"/>
+		<result column="USERCD0025_NM" property="usercd0025Nm"/>
+		<result column="USERCD0026_NM" property="usercd0026Nm"/>
+		<result column="USERCD0027_NM" property="usercd0027Nm"/>
+		<result column="USERCD0028_NM" property="usercd0028Nm"/>
+		<result column="USERCD0029_NM" property="usercd0029Nm"/>
+		<result column="USERCD0030_NM" property="usercd0030Nm"/>
+		<result column="USERCD0031_NM" property="usercd0031Nm"/>
+		<result column="USERCD0032_NM" property="usercd0032Nm"/>
+		<result column="USERCD0033_NM" property="usercd0033Nm"/>
+		<result column="USERCD0034_NM" property="usercd0034Nm"/>
+		<result column="USERCD0035_NM" property="usercd0035Nm"/>
+		<result column="USERCD0036_NM" property="usercd0036Nm"/>
+		<result column="USERCD0101" property="usercd0101"/>
+		<result column="USERCD0102" property="usercd0102"/>
+		<result column="USERCD0103" property="usercd0103"/>
+		<result column="USERCD0104" property="usercd0104"/>
+		<result column="USERCD0105" property="usercd0105"/>
+		<result column="USERCD0106" property="usercd0106"/>
+		<result column="USERCD0107" property="usercd0107"/>
+		<result column="USERCD0108" property="usercd0108"/>
+		<result column="USERCD0109" property="usercd0109"/>
+		<result column="USERCD0201" property="usercd0201"/>
+		<result column="USERCD0202" property="usercd0202"/>
+		<result column="USERCD0203" property="usercd0203"/>
+		<result column="USERCD0204" property="usercd0204"/>
+		<result column="USERCD0205" property="usercd0205"/>
+		<result column="USERCD0206" property="usercd0206"/>
+		<result column="PRE_REWARD04" property="preReward04"/>
+		<result column="PRE_REWARD05" property="preReward05"/>
+		<result column="PRE_REWARD08" property="preReward08"/>
+		<result column="PRE_REWARD09" property="preReward09"/>
+		<result column="PRE_REWARD16" property="preReward16"/>
+		<result column="PRE_REWARD17" property="preReward17"/>
+		<result column="PRE_REWARD18" property="preReward18"/>
+		<result column="PRE_REWARD21" property="preReward21"/>
+		<result column="PRE_REWARD23" property="preReward23"/>
+		<result column="PRE_REWARD25" property="preReward25"/>
+		<result column="PRE_REWARD26" property="preReward26"/>
+		<result column="PRE_REWARD27" property="preReward27"/>
+		<result column="PRE_REWARD29" property="preReward29"/>
+		<result column="PRE_REWARD35" property="preReward35"/>
+		<result column="PRE_REWARD36" property="preReward36"/>
+		<result column="PRE_REWARD37" property="preReward37"/>
+		<result column="PRE_REWARD44" property="preReward44"/>
+		<result column="PRE_REWARD04_NM" property="preReward04Nm"/>
+		<result column="PRE_REWARD05_NM" property="preReward05Nm"/>
+		<result column="PRE_REWARD08_NM" property="preReward08Nm"/>
+		<result column="PRE_REWARD09_NM" property="preReward09Nm"/>
+		<result column="PRE_REWARD16_NM" property="preReward16Nm"/>
+		<result column="PRE_REWARD17_NM" property="preReward17Nm"/>
+		<result column="PRE_REWARD18_NM" property="preReward18Nm"/>
+		<result column="PRE_REWARD21_NM" property="preReward21Nm"/>
+		<result column="PRE_REWARD23_NM" property="preReward23Nm"/>
+		<result column="PRE_REWARD25_NM" property="preReward25Nm"/>
+		<result column="PRE_REWARD26_NM" property="preReward26Nm"/>
+		<result column="PRE_REWARD27_NM" property="preReward27Nm"/>
+		<result column="PRE_REWARD29_NM" property="preReward29Nm"/>
+		<result column="PRE_REWARD35_NM" property="preReward35Nm"/>
+		<result column="PRE_REWARD36_NM" property="preReward36Nm"/>
+		<result column="PRE_REWARD37_NM" property="preReward37Nm"/>
+		<result column="PRE_REWARD44_NM" property="preReward44Nm"/>
+		<result column="REWARD04" property="reward04"/>
+		<result column="REWARD05" property="reward05"/>
+		<result column="REWARD08" property="reward08"/>
+		<result column="REWARD09" property="reward09"/>
+		<result column="REWARD16" property="reward16"/>
+		<result column="REWARD17" property="reward17"/>
+		<result column="REWARD18" property="reward18"/>
+		<result column="REWARD21" property="reward21"/>
+		<result column="REWARD23" property="reward23"/>
+		<result column="REWARD25" property="reward25"/>
+		<result column="REWARD26" property="reward26"/>
+		<result column="REWARD27" property="reward27"/>
+		<result column="REWARD29" property="reward29"/>
+		<result column="REWARD35" property="reward35"/>
+		<result column="REWARD36" property="reward36"/>
+		<result column="REWARD37" property="reward37"/>
+		<result column="REWARD44" property="reward44"/>
+		<result column="REWARD04_NM" property="reward04Nm"/>
+		<result column="REWARD05_NM" property="reward05Nm"/>
+		<result column="REWARD08_NM" property="reward08Nm"/>
+		<result column="REWARD09_NM" property="reward09Nm"/>
+		<result column="REWARD16_NM" property="reward16Nm"/>
+		<result column="REWARD17_NM" property="reward17Nm"/>
+		<result column="REWARD18_NM" property="reward18Nm"/>
+		<result column="REWARD21_NM" property="reward21Nm"/>
+		<result column="REWARD23_NM" property="reward23Nm"/>
+		<result column="REWARD25_NM" property="reward25Nm"/>
+		<result column="REWARD26_NM" property="reward26Nm"/>
+		<result column="REWARD27_NM" property="reward27Nm"/>
+		<result column="REWARD29_NM" property="reward29Nm"/>
+		<result column="REWARD35_NM" property="reward35Nm"/>
+		<result column="REWARD36_NM" property="reward36Nm"/>
+		<result column="REWARD37_NM" property="reward37Nm"/>
+		<result column="REWARD44_NM" property="reward44Nm"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity" resultMap="tRdmHcoReqResultMap">
         SELECT
             REQ_ID, INS_NO, INS_CLASS, INS_SBT, INS_KANA, INS_ABBR_NAME, INS_FORMAL_NAME, INS_CONT_NAME, INS_PCODE, ADDR_CODE_PREF, ADDR_CODE_CITY, TK_CITY_CD, INS_ADDR_DT, INS_ADDR, INS_ADDR_KANA, INS_PHONE1, INS_FAX1, INS_PHONE2, INS_FAX2, INS_URL, INS_URL_YMD, TRADE_TYPE, WS_TYPE, BASKET_PURCHASE, HO_INS_TYPE, PHARM_TYPE, INS_RANK, MANAGE_CD, REG_VIS_TYPE, IMP_HOS_TYPE, IMP_INS_TYPE, UNIV_SUBDIV, INS_OPEN_YEAR, INS_OPEN_MONTH, INS_OPEN_DAY, HOS_EMERG, CAPA_TYPE, CLITEM_LIST, VAC_INS_TYPE, VAC_VISIT_TYPE, BEDCNT_BASE, BEDS_TOT, MED_BEDS_TOT, ENTCAPA_NUM, MAIN_INS_NO, INS_SECOND_TYPE, ULT_INS_NO, MDM_ID, BEDCNT01, BEDCNT02, BEDCNT03, BEDCNT04, BEDCNT05, BEDCNT06, BEDCNT07, FREE0001, FREE0002, FREE0003, FREE0004, FREE0005, FREE0006, FREE0007, FREE0008, FREE0009, FREE0010, FREE0011, FREE0012, FREE0013, FREE0014, FREE0015, FREE0101, WELFARE02, WELFARE08, RESULT01, RESULT02, RESULT03, RESULT04, RESULT05, RESULT06, RESULT07, RESULT08, RESULT09, RESULT10, RESULT11, RESULT12, RESULT13, RESULT14, RESULT15, RESULT16, RESULT17, RESULT18, RESULT19, RESULT20, RESULT21, RESULT22, RESULT23, RESULT24, RESULT25, RESULT26, RESULT27, RESULT28, RESULT29, RESULT30, RESULT31, RESULT32, RESULT33, RESULT34, RESULT35, RESULT36, EQUIP01, EQUIP02, EQUIP03, EQUIP07, EQUIP09, MARKET01, MARKET02, MARKET03, MARKET04, MARKET06, MARKET07, MARKET09, MEDICAL12, SPFUNC01, SPFUNC02, SPFUNC03, SPFUNC04, SPFUNC05, SPFUNC06, TIEUP05, TIEUP08, TIEUP09, TIEUP10, TIEUP11, TIEUP12, TIEUP13, USERCD0001, USERCD0002, USERCD0003, USERCD0004, USERCD0005, USERCD0006, USERCD0007, USERCD0008, USERCD0009, USERCD0010, USERCD0011, USERCD0012, USERCD0013, USERCD0014, USERCD0015, USERCD0016, USERCD0017, USERCD0018, USERCD0019, USERCD0020, USERCD0021, USERCD0022, USERCD0023, USERCD0024, USERCD0025, USERCD0026, USERCD0027, USERCD0028, USERCD0029, USERCD0030, USERCD0031, USERCD0032, USERCD0033, USERCD0034, USERCD0035, USERCD0036, USERCD0101, USERCD0102, USERCD0103, USERCD0104, USERCD0105, USERCD0106, USERCD0107, USERCD0108, USERCD0109, USERCD0201, USERCD0202, USERCD0203, USERCD0204, USERCD0205, USERCD0206, REWARD04, REWARD05, REWARD08, REWARD09, REWARD16, REWARD17, REWARD18, REWARD21, REWARD23, REWARD25, REWARD26, REWARD27, REWARD29, REWARD35, REWARD36, REWARD37, REWARD44, DEL_KBN, DEL_REASON, DEL_YMD, DUP_INS_NO, RST_REASON, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -1822,259 +2453,259 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_WELFARE02 -- コード情報
 		ON 1=1
-		AND CDM_WELFARE02.CODE_NAME = 'WELFARE02'
+		AND CDM_WELFARE02.CODE_NAME = 'WELFARE_LIST'
 		AND CDM_WELFARE02.DEL_FLG = '0'
 		AND CDM_WELFARE02.VALUE1 = WELFARE.WELFARE02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_WELFARE08 -- コード情報
 		ON 1=1
-		AND CDM_WELFARE08.CODE_NAME = 'WELFARE08'
+		AND CDM_WELFARE08.CODE_NAME = 'WELFARE_LIST'
 		AND CDM_WELFARE08.DEL_FLG = '0'
 		AND CDM_WELFARE08.VALUE1 = WELFARE.WELFARE08
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT01 -- コード情報
 		ON 1=1
-		AND CDM_RESULT01.CODE_NAME = 'RESULT01'
+		AND CDM_RESULT01.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT01.DEL_FLG = '0'
 		AND CDM_RESULT01.VALUE1 = RESULT.RESULT01
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT02 -- コード情報
 		ON 1=1
-		AND CDM_RESULT02.CODE_NAME = 'RESULT02'
+		AND CDM_RESULT02.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT02.DEL_FLG = '0'
 		AND CDM_RESULT02.VALUE1 = RESULT.RESULT02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT03 -- コード情報
 		ON 1=1
-		AND CDM_RESULT03.CODE_NAME = 'RESULT03'
+		AND CDM_RESULT03.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT03.DEL_FLG = '0'
 		AND CDM_RESULT03.VALUE1 = RESULT.RESULT03
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT04 -- コード情報
 		ON 1=1
-		AND CDM_RESULT04.CODE_NAME = 'RESULT04'
+		AND CDM_RESULT04.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT04.DEL_FLG = '0'
 		AND CDM_RESULT04.VALUE1 = RESULT.RESULT04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT05 -- コード情報
 		ON 1=1
-		AND CDM_RESULT05.CODE_NAME = 'RESULT05'
+		AND CDM_RESULT05.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT05.DEL_FLG = '0'
 		AND CDM_RESULT05.VALUE1 = RESULT.RESULT05
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT06 -- コード情報
 		ON 1=1
-		AND CDM_RESULT06.CODE_NAME = 'RESULT06'
+		AND CDM_RESULT06.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT06.DEL_FLG = '0'
 		AND CDM_RESULT06.VALUE1 = RESULT.RESULT06
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT07 -- コード情報
 		ON 1=1
-		AND CDM_RESULT07.CODE_NAME = 'RESULT07'
+		AND CDM_RESULT07.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT07.DEL_FLG = '0'
 		AND CDM_RESULT07.VALUE1 = RESULT.RESULT07
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT08 -- コード情報
 		ON 1=1
-		AND CDM_RESULT08.CODE_NAME = 'RESULT08'
+		AND CDM_RESULT08.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT08.DEL_FLG = '0'
 		AND CDM_RESULT08.VALUE1 = RESULT.RESULT08
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT09 -- コード情報
 		ON 1=1
-		AND CDM_RESULT09.CODE_NAME = 'RESULT09'
+		AND CDM_RESULT09.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT09.DEL_FLG = '0'
 		AND CDM_RESULT09.VALUE1 = RESULT.RESULT09
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT10 -- コード情報
 		ON 1=1
-		AND CDM_RESULT10.CODE_NAME = 'RESULT10'
+		AND CDM_RESULT10.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT10.DEL_FLG = '0'
 		AND CDM_RESULT10.VALUE1 = RESULT.RESULT10
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT11 -- コード情報
 		ON 1=1
-		AND CDM_RESULT11.CODE_NAME = 'RESULT11'
+		AND CDM_RESULT11.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT11.DEL_FLG = '0'
 		AND CDM_RESULT11.VALUE1 = RESULT.RESULT11
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT12 -- コード情報
 		ON 1=1
-		AND CDM_RESULT12.CODE_NAME = 'RESULT12'
+		AND CDM_RESULT12.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT12.DEL_FLG = '0'
 		AND CDM_RESULT12.VALUE1 = RESULT.RESULT12
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT13 -- コード情報
 		ON 1=1
-		AND CDM_RESULT13.CODE_NAME = 'RESULT13'
+		AND CDM_RESULT13.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT13.DEL_FLG = '0'
 		AND CDM_RESULT13.VALUE1 = RESULT.RESULT13
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT14 -- コード情報
 		ON 1=1
-		AND CDM_RESULT14.CODE_NAME = 'RESULT14'
+		AND CDM_RESULT14.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT14.DEL_FLG = '0'
 		AND CDM_RESULT14.VALUE1 = RESULT.RESULT14
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT15 -- コード情報
 		ON 1=1
-		AND CDM_RESULT15.CODE_NAME = 'RESULT15'
+		AND CDM_RESULT15.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT15.DEL_FLG = '0'
 		AND CDM_RESULT15.VALUE1 = RESULT.RESULT15
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT16 -- コード情報
 		ON 1=1
-		AND CDM_RESULT16.CODE_NAME = 'RESULT16'
+		AND CDM_RESULT16.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT16.DEL_FLG = '0'
 		AND CDM_RESULT16.VALUE1 = RESULT.RESULT16
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT17 -- コード情報
 		ON 1=1
-		AND CDM_RESULT17.CODE_NAME = 'RESULT17'
+		AND CDM_RESULT17.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT17.DEL_FLG = '0'
 		AND CDM_RESULT17.VALUE1 = RESULT.RESULT17
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT18 -- コード情報
 		ON 1=1
-		AND CDM_RESULT18.CODE_NAME = 'RESULT18'
+		AND CDM_RESULT18.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT18.DEL_FLG = '0'
 		AND CDM_RESULT18.VALUE1 = RESULT.RESULT18
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT19 -- コード情報
 		ON 1=1
-		AND CDM_RESULT19.CODE_NAME = 'RESULT19'
+		AND CDM_RESULT19.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT19.DEL_FLG = '0'
 		AND CDM_RESULT19.VALUE1 = RESULT.RESULT19
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT20 -- コード情報
 		ON 1=1
-		AND CDM_RESULT20.CODE_NAME = 'RESULT20'
+		AND CDM_RESULT20.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT20.DEL_FLG = '0'
 		AND CDM_RESULT20.VALUE1 = RESULT.RESULT20
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT21 -- コード情報
 		ON 1=1
-		AND CDM_RESULT21.CODE_NAME = 'RESULT21'
+		AND CDM_RESULT21.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT21.DEL_FLG = '0'
 		AND CDM_RESULT21.VALUE1 = RESULT.RESULT21
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT22 -- コード情報
 		ON 1=1
-		AND CDM_RESULT22.CODE_NAME = 'RESULT22'
+		AND CDM_RESULT22.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT22.DEL_FLG = '0'
 		AND CDM_RESULT22.VALUE1 = RESULT.RESULT22
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT23 -- コード情報
 		ON 1=1
-		AND CDM_RESULT23.CODE_NAME = 'RESULT23'
+		AND CDM_RESULT23.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT23.DEL_FLG = '0'
 		AND CDM_RESULT23.VALUE1 = RESULT.RESULT23
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT24 -- コード情報
 		ON 1=1
-		AND CDM_RESULT24.CODE_NAME = 'RESULT24'
+		AND CDM_RESULT24.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT24.DEL_FLG = '0'
 		AND CDM_RESULT24.VALUE1 = RESULT.RESULT24
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT25 -- コード情報
 		ON 1=1
-		AND CDM_RESULT25.CODE_NAME = 'RESULT25'
+		AND CDM_RESULT25.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT25.DEL_FLG = '0'
 		AND CDM_RESULT25.VALUE1 = RESULT.RESULT25
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT26 -- コード情報
 		ON 1=1
-		AND CDM_RESULT26.CODE_NAME = 'RESULT26'
+		AND CDM_RESULT26.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT26.DEL_FLG = '0'
 		AND CDM_RESULT26.VALUE1 = RESULT.RESULT26
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT27 -- コード情報
 		ON 1=1
-		AND CDM_RESULT27.CODE_NAME = 'RESULT27'
+		AND CDM_RESULT27.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT27.DEL_FLG = '0'
 		AND CDM_RESULT27.VALUE1 = RESULT.RESULT27
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT28 -- コード情報
 		ON 1=1
-		AND CDM_RESULT28.CODE_NAME = 'RESULT28'
+		AND CDM_RESULT28.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT28.DEL_FLG = '0'
 		AND CDM_RESULT28.VALUE1 = RESULT.RESULT28
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT29 -- コード情報
 		ON 1=1
-		AND CDM_RESULT29.CODE_NAME = 'RESULT29'
+		AND CDM_RESULT29.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT29.DEL_FLG = '0'
 		AND CDM_RESULT29.VALUE1 = RESULT.RESULT29
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT30 -- コード情報
 		ON 1=1
-		AND CDM_RESULT30.CODE_NAME = 'RESULT30'
+		AND CDM_RESULT30.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT30.DEL_FLG = '0'
 		AND CDM_RESULT30.VALUE1 = RESULT.RESULT30
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT31 -- コード情報
 		ON 1=1
-		AND CDM_RESULT31.CODE_NAME = 'RESULT31'
+		AND CDM_RESULT31.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT31.DEL_FLG = '0'
 		AND CDM_RESULT31.VALUE1 = RESULT.RESULT31
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT32 -- コード情報
 		ON 1=1
-		AND CDM_RESULT32.CODE_NAME = 'RESULT32'
+		AND CDM_RESULT32.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT32.DEL_FLG = '0'
 		AND CDM_RESULT32.VALUE1 = RESULT.RESULT32
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT33 -- コード情報
 		ON 1=1
-		AND CDM_RESULT33.CODE_NAME = 'RESULT33'
+		AND CDM_RESULT33.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT33.DEL_FLG = '0'
 		AND CDM_RESULT33.VALUE1 = RESULT.RESULT33
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT34 -- コード情報
 		ON 1=1
-		AND CDM_RESULT34.CODE_NAME = 'RESULT34'
+		AND CDM_RESULT34.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT34.DEL_FLG = '0'
 		AND CDM_RESULT34.VALUE1 = RESULT.RESULT34
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT35 -- コード情報
 		ON 1=1
-		AND CDM_RESULT35.CODE_NAME = 'RESULT35'
+		AND CDM_RESULT35.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT35.DEL_FLG = '0'
 		AND CDM_RESULT35.VALUE1 = RESULT.RESULT35
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT36 -- コード情報
 		ON 1=1
-		AND CDM_RESULT36.CODE_NAME = 'RESULT36'
+		AND CDM_RESULT36.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT36.DEL_FLG = '0'
 		AND CDM_RESULT36.VALUE1 = RESULT.RESULT36
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP01 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP01.CODE_NAME = 'EQUIP01'
+		AND CDM_EQUIP01.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP01.DEL_FLG = '0'
 		AND CDM_EQUIP01.VALUE1 = EQUIP.EQUIP01
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP02 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP02.CODE_NAME = 'EQUIP02'
+		AND CDM_EQUIP02.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP02.DEL_FLG = '0'
 		AND CDM_EQUIP02.VALUE1 = EQUIP.EQUIP02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP03 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP03.CODE_NAME = 'EQUIP03'
+		AND CDM_EQUIP03.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP03.DEL_FLG = '0'
 		AND CDM_EQUIP03.VALUE1 = EQUIP.EQUIP03
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP07 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP07.CODE_NAME = 'EQUIP07'
+		AND CDM_EQUIP07.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP07.DEL_FLG = '0'
 		AND CDM_EQUIP07.VALUE1 = EQUIP.EQUIP07
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP09 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP09.CODE_NAME = 'EQUIP09'
+		AND CDM_EQUIP09.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP09.DEL_FLG = '0'
 		AND CDM_EQUIP09.VALUE1 = EQUIP.EQUIP09
 		LEFT JOIN
@@ -2086,49 +2717,49 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET02 -- コード情報
 		ON 1=1
-		AND CDM_MARKET02.CODE_NAME = 'MARKET02'
+		AND CDM_MARKET02.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET02.DEL_FLG = '0'
 		AND CDM_MARKET02.VALUE1 = MARKET.MARKET02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET03 -- コード情報
 		ON 1=1
-		AND CDM_MARKET03.CODE_NAME = 'MARKET03'
+		AND CDM_MARKET03.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET03.DEL_FLG = '0'
 		AND CDM_MARKET03.VALUE1 = MARKET.MARKET03
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET04 -- コード情報
 		ON 1=1
-		AND CDM_MARKET04.CODE_NAME = 'MARKET04'
+		AND CDM_MARKET04.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET04.DEL_FLG = '0'
 		AND CDM_MARKET04.VALUE1 = MARKET.MARKET04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET06 -- コード情報
 		ON 1=1
-		AND CDM_MARKET06.CODE_NAME = 'MARKET06'
+		AND CDM_MARKET06.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET06.DEL_FLG = '0'
 		AND CDM_MARKET06.VALUE1 = MARKET.MARKET06
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET07 -- コード情報
 		ON 1=1
-		AND CDM_MARKET07.CODE_NAME = 'MARKET07'
+		AND CDM_MARKET07.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET07.DEL_FLG = '0'
 		AND CDM_MARKET07.VALUE1 = MARKET.MARKET07
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET09 -- コード情報
 		ON 1=1
-		AND CDM_MARKET09.CODE_NAME = 'MARKET09'
+		AND CDM_MARKET09.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET09.DEL_FLG = '0'
 		AND CDM_MARKET09.VALUE1 = MARKET.MARKET09
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MEDICAL12 -- コード情報
 		ON 1=1
-		AND CDM_MEDICAL12.CODE_NAME = 'MEDICAL12'
+		AND CDM_MEDICAL12.CODE_NAME = 'MEDICAL_LIST'
 		AND CDM_MEDICAL12.DEL_FLG = '0'
 		AND CDM_MEDICAL12.VALUE1 = MEDICAL.MEDICAL12
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_SPFUNC01 -- コード情報
 		ON 1=1
-		AND CDM_SPFUNC01.CODE_NAME = 'SPFUNC01'
+		AND CDM_SPFUNC01.CODE_NAME = 'SPFUNC_LIST'
 		AND CDM_SPFUNC01.DEL_FLG = '0'
 		AND CDM_SPFUNC01.VALUE1 = SPFUNC.SPFUNC01
 		LEFT JOIN
@@ -2140,283 +2771,283 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_SPFUNC04 -- コード情報
 		ON 1=1
-		AND CDM_SPFUNC04.CODE_NAME = 'SPFUNC04'
+		AND CDM_SPFUNC04.CODE_NAME = 'SPFUNC_LIST'
 		AND CDM_SPFUNC04.DEL_FLG = '0'
 		AND CDM_SPFUNC04.VALUE1 = SPFUNC.SPFUNC04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_TIEUP10 -- コード情報
 		ON 1=1
-		AND CDM_TIEUP10.CODE_NAME = 'TIEUP10'
+		AND CDM_TIEUP10.CODE_NAME = 'TIEUP_LIST'
 		AND CDM_TIEUP10.DEL_FLG = '0'
 		AND CDM_TIEUP10.VALUE1 = TIEUP.TIEUP10
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_TIEUP11 -- コード情報
 		ON 1=1
-		AND CDM_TIEUP11.CODE_NAME = 'TIEUP11'
+		AND CDM_TIEUP11.CODE_NAME = 'TIEUP_LIST'
 		AND CDM_TIEUP11.DEL_FLG = '0'
 		AND CDM_TIEUP11.VALUE1 = TIEUP.TIEUP11
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_TIEUP12 -- コード情報
 		ON 1=1
-		AND CDM_TIEUP12.CODE_NAME = 'TIEUP12'
+		AND CDM_TIEUP12.CODE_NAME = 'TIEUP_LIST'
 		AND CDM_TIEUP12.DEL_FLG = '0'
 		AND CDM_TIEUP12.VALUE1 = TIEUP.TIEUP12
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0001 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0001.CODE_NAME = 'USERCD0001'
+		AND CDM_USERCD0001.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0001.DEL_FLG = '0'
 		AND CDM_USERCD0001.VALUE1 = USERCD.USERCD0001
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0002 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0002.CODE_NAME = 'USERCD0002'
+		AND CDM_USERCD0002.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0002.DEL_FLG = '0'
 		AND CDM_USERCD0002.VALUE1 = USERCD.USERCD0002
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0003 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0003.CODE_NAME = 'USERCD0003'
+		AND CDM_USERCD0003.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0003.DEL_FLG = '0'
 		AND CDM_USERCD0003.VALUE1 = USERCD.USERCD0003
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0004 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0004.CODE_NAME = 'USERCD0004'
+		AND CDM_USERCD0004.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0004.DEL_FLG = '0'
 		AND CDM_USERCD0004.VALUE1 = USERCD.USERCD0004
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0005 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0005.CODE_NAME = 'USERCD0005'
+		AND CDM_USERCD0005.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0005.DEL_FLG = '0'
 		AND CDM_USERCD0005.VALUE1 = USERCD.USERCD0005
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0006 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0006.CODE_NAME = 'USERCD0006'
+		AND CDM_USERCD0006.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0006.DEL_FLG = '0'
 		AND CDM_USERCD0006.VALUE1 = USERCD.USERCD0006
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0007 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0007.CODE_NAME = 'USERCD0007'
+		AND CDM_USERCD0007.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0007.DEL_FLG = '0'
 		AND CDM_USERCD0007.VALUE1 = USERCD.USERCD0007
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0008 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0008.CODE_NAME = 'USERCD0008'
+		AND CDM_USERCD0008.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0008.DEL_FLG = '0'
 		AND CDM_USERCD0008.VALUE1 = USERCD.USERCD0008
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0009 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0009.CODE_NAME = 'USERCD0009'
+		AND CDM_USERCD0009.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0009.DEL_FLG = '0'
 		AND CDM_USERCD0009.VALUE1 = USERCD.USERCD0009
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0010 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0010.CODE_NAME = 'USERCD0010'
+		AND CDM_USERCD0010.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0010.DEL_FLG = '0'
 		AND CDM_USERCD0010.VALUE1 = USERCD.USERCD0010
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0011 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0011.CODE_NAME = 'USERCD0011'
+		AND CDM_USERCD0011.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0011.DEL_FLG = '0'
 		AND CDM_USERCD0011.VALUE1 = USERCD.USERCD0011
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0012 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0012.CODE_NAME = 'USERCD0012'
+		AND CDM_USERCD0012.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0012.DEL_FLG = '0'
 		AND CDM_USERCD0012.VALUE1 = USERCD.USERCD0012
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0013 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0013.CODE_NAME = 'USERCD0013'
+		AND CDM_USERCD0013.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0013.DEL_FLG = '0'
 		AND CDM_USERCD0013.VALUE1 = USERCD.USERCD0013
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0014 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0014.CODE_NAME = 'USERCD0014'
+		AND CDM_USERCD0014.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0014.DEL_FLG = '0'
 		AND CDM_USERCD0014.VALUE1 = USERCD.USERCD0014
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0015 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0015.CODE_NAME = 'USERCD0015'
+		AND CDM_USERCD0015.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0015.DEL_FLG = '0'
 		AND CDM_USERCD0015.VALUE1 = USERCD.USERCD0015
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0016 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0016.CODE_NAME = 'USERCD0016'
+		AND CDM_USERCD0016.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0016.DEL_FLG = '0'
 		AND CDM_USERCD0016.VALUE1 = USERCD.USERCD0016
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0017 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0017.CODE_NAME = 'USERCD0017'
+		AND CDM_USERCD0017.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0017.DEL_FLG = '0'
 		AND CDM_USERCD0017.VALUE1 = USERCD.USERCD0017
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0018 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0018.CODE_NAME = 'USERCD0018'
+		AND CDM_USERCD0018.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0018.DEL_FLG = '0'
 		AND CDM_USERCD0018.VALUE1 = USERCD.USERCD0018
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0019 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0019.CODE_NAME = 'USERCD0019'
+		AND CDM_USERCD0019.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0019.DEL_FLG = '0'
 		AND CDM_USERCD0019.VALUE1 = USERCD.USERCD0019
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0020 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0020.CODE_NAME = 'USERCD0020'
+		AND CDM_USERCD0020.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0020.DEL_FLG = '0'
 		AND CDM_USERCD0020.VALUE1 = USERCD.USERCD0020
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0021 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0021.CODE_NAME = 'USERCD0021'
+		AND CDM_USERCD0021.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0021.DEL_FLG = '0'
 		AND CDM_USERCD0021.VALUE1 = USERCD.USERCD0021
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0022 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0022.CODE_NAME = 'USERCD0022'
+		AND CDM_USERCD0022.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0022.DEL_FLG = '0'
 		AND CDM_USERCD0022.VALUE1 = USERCD.USERCD0022
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0023 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0023.CODE_NAME = 'USERCD0023'
+		AND CDM_USERCD0023.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0023.DEL_FLG = '0'
 		AND CDM_USERCD0023.VALUE1 = USERCD.USERCD0023
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0024 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0024.CODE_NAME = 'USERCD0024'
+		AND CDM_USERCD0024.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0024.DEL_FLG = '0'
 		AND CDM_USERCD0024.VALUE1 = USERCD.USERCD0024
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0025 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0025.CODE_NAME = 'USERCD0025'
+		AND CDM_USERCD0025.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0025.DEL_FLG = '0'
 		AND CDM_USERCD0025.VALUE1 = USERCD.USERCD0025
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0026 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0026.CODE_NAME = 'USERCD0026'
+		AND CDM_USERCD0026.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0026.DEL_FLG = '0'
 		AND CDM_USERCD0026.VALUE1 = USERCD.USERCD0026
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0027 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0027.CODE_NAME = 'USERCD0027'
+		AND CDM_USERCD0027.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0027.DEL_FLG = '0'
 		AND CDM_USERCD0027.VALUE1 = USERCD.USERCD0027
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0028 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0028.CODE_NAME = 'USERCD0028'
+		AND CDM_USERCD0028.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0028.DEL_FLG = '0'
 		AND CDM_USERCD0028.VALUE1 = USERCD.USERCD0028
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0029 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0029.CODE_NAME = 'USERCD0029'
+		AND CDM_USERCD0029.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0029.DEL_FLG = '0'
 		AND CDM_USERCD0029.VALUE1 = USERCD.USERCD0029
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0030 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0030.CODE_NAME = 'USERCD0030'
+		AND CDM_USERCD0030.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0030.DEL_FLG = '0'
 		AND CDM_USERCD0030.VALUE1 = USERCD.USERCD0030
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0031 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0031.CODE_NAME = 'USERCD0031'
+		AND CDM_USERCD0031.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0031.DEL_FLG = '0'
 		AND CDM_USERCD0031.VALUE1 = USERCD.USERCD0031
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0032 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0032.CODE_NAME = 'USERCD0032'
+		AND CDM_USERCD0032.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0032.DEL_FLG = '0'
 		AND CDM_USERCD0032.VALUE1 = USERCD.USERCD0032
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0033 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0033.CODE_NAME = 'USERCD0033'
+		AND CDM_USERCD0033.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0033.DEL_FLG = '0'
 		AND CDM_USERCD0033.VALUE1 = USERCD.USERCD0033
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0034 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0034.CODE_NAME = 'USERCD0034'
+		AND CDM_USERCD0034.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0034.DEL_FLG = '0'
 		AND CDM_USERCD0034.VALUE1 = USERCD.USERCD0034
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0035 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0035.CODE_NAME = 'USERCD0035'
+		AND CDM_USERCD0035.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0035.DEL_FLG = '0'
 		AND CDM_USERCD0035.VALUE1 = USERCD.USERCD0035
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0036 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0036.CODE_NAME = 'USERCD0036'
+		AND CDM_USERCD0036.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0036.DEL_FLG = '0'
 		AND CDM_USERCD0036.VALUE1 = USERCD.USERCD0036
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD04 -- コード情報
 		ON 1=1
-		AND CDM_REWARD04.CODE_NAME = 'REWARD04'
+		AND CDM_REWARD04.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD04.DEL_FLG = '0'
 		AND CDM_REWARD04.VALUE1 = REWARD.REWARD04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD05 -- コード情報
 		ON 1=1
-		AND CDM_REWARD05.CODE_NAME = 'REWARD05'
+		AND CDM_REWARD05.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD05.DEL_FLG = '0'
 		AND CDM_REWARD05.VALUE1 = REWARD.REWARD05
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD08 -- コード情報
 		ON 1=1
-		AND CDM_REWARD08.CODE_NAME = 'REWARD08'
+		AND CDM_REWARD08.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD08.DEL_FLG = '0'
 		AND CDM_REWARD08.VALUE1 = REWARD.REWARD08
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD09 -- コード情報
 		ON 1=1
-		AND CDM_REWARD09.CODE_NAME = 'REWARD09'
+		AND CDM_REWARD09.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD09.DEL_FLG = '0'
 		AND CDM_REWARD09.VALUE1 = REWARD.REWARD09
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD16 -- コード情報
 		ON 1=1
-		AND CDM_REWARD16.CODE_NAME = 'REWARD16'
+		AND CDM_REWARD16.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD16.DEL_FLG = '0'
 		AND CDM_REWARD16.VALUE1 = REWARD.REWARD16
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD17 -- コード情報
 		ON 1=1
-		AND CDM_REWARD17.CODE_NAME = 'REWARD17'
+		AND CDM_REWARD17.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD17.DEL_FLG = '0'
 		AND CDM_REWARD17.VALUE1 = REWARD.REWARD17
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD18 -- コード情報
 		ON 1=1
-		AND CDM_REWARD18.CODE_NAME = 'REWARD18'
+		AND CDM_REWARD18.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD18.DEL_FLG = '0'
 		AND CDM_REWARD18.VALUE1 = REWARD.REWARD18
 		LEFT JOIN
@@ -2428,19 +3059,19 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD23 -- コード情報
 		ON 1=1
-		AND CDM_REWARD23.CODE_NAME = 'REWARD23'
+		AND CDM_REWARD23.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD23.DEL_FLG = '0'
 		AND CDM_REWARD23.VALUE1 = REWARD.REWARD23
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD25 -- コード情報
 		ON 1=1
-		AND CDM_REWARD25.CODE_NAME = 'REWARD25'
+		AND CDM_REWARD25.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD25.DEL_FLG = '0'
 		AND CDM_REWARD25.VALUE1 = REWARD.REWARD25
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD26 -- コード情報
 		ON 1=1
-		AND CDM_REWARD26.CODE_NAME = 'REWARD26'
+		AND CDM_REWARD26.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD26.DEL_FLG = '0'
 		AND CDM_REWARD26.VALUE1 = REWARD.REWARD26
 		LEFT JOIN
@@ -2458,25 +3089,25 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD35 -- コード情報
 		ON 1=1
-		AND CDM_REWARD35.CODE_NAME = 'REWARD35'
+		AND CDM_REWARD35.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD35.DEL_FLG = '0'
 		AND CDM_REWARD35.VALUE1 = REWARD.REWARD35
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD36 -- コード情報
 		ON 1=1
-		AND CDM_REWARD36.CODE_NAME = 'REWARD36'
+		AND CDM_REWARD36.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD36.DEL_FLG = '0'
 		AND CDM_REWARD36.VALUE1 = REWARD.REWARD36
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD37 -- コード情報
 		ON 1=1
-		AND CDM_REWARD37.CODE_NAME = 'REWARD37'
+		AND CDM_REWARD37.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD37.DEL_FLG = '0'
 		AND CDM_REWARD37.VALUE1 = REWARD.REWARD37
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD44 -- コード情報
 		ON 1=1
-		AND CDM_REWARD44.CODE_NAME = 'REWARD44'
+		AND CDM_REWARD44.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD44.DEL_FLG = '0'
 		AND CDM_REWARD44.VALUE1 = REWARD.REWARD44
 		WHERE 1=1
@@ -3423,259 +4054,259 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_WELFARE02 -- コード情報
 		ON 1=1
-		AND CDM_WELFARE02.CODE_NAME = 'WELFARE02'
+		AND CDM_WELFARE02.CODE_NAME = 'WELFARE_LIST'
 		AND CDM_WELFARE02.DEL_FLG = '0'
 		AND CDM_WELFARE02.VALUE1 = WELFARE.WELFARE02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_WELFARE08 -- コード情報
 		ON 1=1
-		AND CDM_WELFARE08.CODE_NAME = 'WELFARE08'
+		AND CDM_WELFARE08.CODE_NAME = 'WELFARE_LIST'
 		AND CDM_WELFARE08.DEL_FLG = '0'
 		AND CDM_WELFARE08.VALUE1 = WELFARE.WELFARE08
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT01 -- コード情報
 		ON 1=1
-		AND CDM_RESULT01.CODE_NAME = 'RESULT01'
+		AND CDM_RESULT01.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT01.DEL_FLG = '0'
 		AND CDM_RESULT01.VALUE1 = RESULT.RESULT01
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT02 -- コード情報
 		ON 1=1
-		AND CDM_RESULT02.CODE_NAME = 'RESULT02'
+		AND CDM_RESULT02.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT02.DEL_FLG = '0'
 		AND CDM_RESULT02.VALUE1 = RESULT.RESULT02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT03 -- コード情報
 		ON 1=1
-		AND CDM_RESULT03.CODE_NAME = 'RESULT03'
+		AND CDM_RESULT03.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT03.DEL_FLG = '0'
 		AND CDM_RESULT03.VALUE1 = RESULT.RESULT03
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT04 -- コード情報
 		ON 1=1
-		AND CDM_RESULT04.CODE_NAME = 'RESULT04'
+		AND CDM_RESULT04.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT04.DEL_FLG = '0'
 		AND CDM_RESULT04.VALUE1 = RESULT.RESULT04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT05 -- コード情報
 		ON 1=1
-		AND CDM_RESULT05.CODE_NAME = 'RESULT05'
+		AND CDM_RESULT05.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT05.DEL_FLG = '0'
 		AND CDM_RESULT05.VALUE1 = RESULT.RESULT05
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT06 -- コード情報
 		ON 1=1
-		AND CDM_RESULT06.CODE_NAME = 'RESULT06'
+		AND CDM_RESULT06.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT06.DEL_FLG = '0'
 		AND CDM_RESULT06.VALUE1 = RESULT.RESULT06
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT07 -- コード情報
 		ON 1=1
-		AND CDM_RESULT07.CODE_NAME = 'RESULT07'
+		AND CDM_RESULT07.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT07.DEL_FLG = '0'
 		AND CDM_RESULT07.VALUE1 = RESULT.RESULT07
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT08 -- コード情報
 		ON 1=1
-		AND CDM_RESULT08.CODE_NAME = 'RESULT08'
+		AND CDM_RESULT08.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT08.DEL_FLG = '0'
 		AND CDM_RESULT08.VALUE1 = RESULT.RESULT08
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT09 -- コード情報
 		ON 1=1
-		AND CDM_RESULT09.CODE_NAME = 'RESULT09'
+		AND CDM_RESULT09.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT09.DEL_FLG = '0'
 		AND CDM_RESULT09.VALUE1 = RESULT.RESULT09
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT10 -- コード情報
 		ON 1=1
-		AND CDM_RESULT10.CODE_NAME = 'RESULT10'
+		AND CDM_RESULT10.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT10.DEL_FLG = '0'
 		AND CDM_RESULT10.VALUE1 = RESULT.RESULT10
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT11 -- コード情報
 		ON 1=1
-		AND CDM_RESULT11.CODE_NAME = 'RESULT11'
+		AND CDM_RESULT11.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT11.DEL_FLG = '0'
 		AND CDM_RESULT11.VALUE1 = RESULT.RESULT11
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT12 -- コード情報
 		ON 1=1
-		AND CDM_RESULT12.CODE_NAME = 'RESULT12'
+		AND CDM_RESULT12.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT12.DEL_FLG = '0'
 		AND CDM_RESULT12.VALUE1 = RESULT.RESULT12
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT13 -- コード情報
 		ON 1=1
-		AND CDM_RESULT13.CODE_NAME = 'RESULT13'
+		AND CDM_RESULT13.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT13.DEL_FLG = '0'
 		AND CDM_RESULT13.VALUE1 = RESULT.RESULT13
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT14 -- コード情報
 		ON 1=1
-		AND CDM_RESULT14.CODE_NAME = 'RESULT14'
+		AND CDM_RESULT14.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT14.DEL_FLG = '0'
 		AND CDM_RESULT14.VALUE1 = RESULT.RESULT14
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT15 -- コード情報
 		ON 1=1
-		AND CDM_RESULT15.CODE_NAME = 'RESULT15'
+		AND CDM_RESULT15.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT15.DEL_FLG = '0'
 		AND CDM_RESULT15.VALUE1 = RESULT.RESULT15
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT16 -- コード情報
 		ON 1=1
-		AND CDM_RESULT16.CODE_NAME = 'RESULT16'
+		AND CDM_RESULT16.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT16.DEL_FLG = '0'
 		AND CDM_RESULT16.VALUE1 = RESULT.RESULT16
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT17 -- コード情報
 		ON 1=1
-		AND CDM_RESULT17.CODE_NAME = 'RESULT17'
+		AND CDM_RESULT17.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT17.DEL_FLG = '0'
 		AND CDM_RESULT17.VALUE1 = RESULT.RESULT17
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT18 -- コード情報
 		ON 1=1
-		AND CDM_RESULT18.CODE_NAME = 'RESULT18'
+		AND CDM_RESULT18.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT18.DEL_FLG = '0'
 		AND CDM_RESULT18.VALUE1 = RESULT.RESULT18
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT19 -- コード情報
 		ON 1=1
-		AND CDM_RESULT19.CODE_NAME = 'RESULT19'
+		AND CDM_RESULT19.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT19.DEL_FLG = '0'
 		AND CDM_RESULT19.VALUE1 = RESULT.RESULT19
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT20 -- コード情報
 		ON 1=1
-		AND CDM_RESULT20.CODE_NAME = 'RESULT20'
+		AND CDM_RESULT20.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT20.DEL_FLG = '0'
 		AND CDM_RESULT20.VALUE1 = RESULT.RESULT20
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT21 -- コード情報
 		ON 1=1
-		AND CDM_RESULT21.CODE_NAME = 'RESULT21'
+		AND CDM_RESULT21.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT21.DEL_FLG = '0'
 		AND CDM_RESULT21.VALUE1 = RESULT.RESULT21
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT22 -- コード情報
 		ON 1=1
-		AND CDM_RESULT22.CODE_NAME = 'RESULT22'
+		AND CDM_RESULT22.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT22.DEL_FLG = '0'
 		AND CDM_RESULT22.VALUE1 = RESULT.RESULT22
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT23 -- コード情報
 		ON 1=1
-		AND CDM_RESULT23.CODE_NAME = 'RESULT23'
+		AND CDM_RESULT23.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT23.DEL_FLG = '0'
 		AND CDM_RESULT23.VALUE1 = RESULT.RESULT23
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT24 -- コード情報
 		ON 1=1
-		AND CDM_RESULT24.CODE_NAME = 'RESULT24'
+		AND CDM_RESULT24.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT24.DEL_FLG = '0'
 		AND CDM_RESULT24.VALUE1 = RESULT.RESULT24
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT25 -- コード情報
 		ON 1=1
-		AND CDM_RESULT25.CODE_NAME = 'RESULT25'
+		AND CDM_RESULT25.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT25.DEL_FLG = '0'
 		AND CDM_RESULT25.VALUE1 = RESULT.RESULT25
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT26 -- コード情報
 		ON 1=1
-		AND CDM_RESULT26.CODE_NAME = 'RESULT26'
+		AND CDM_RESULT26.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT26.DEL_FLG = '0'
 		AND CDM_RESULT26.VALUE1 = RESULT.RESULT26
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT27 -- コード情報
 		ON 1=1
-		AND CDM_RESULT27.CODE_NAME = 'RESULT27'
+		AND CDM_RESULT27.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT27.DEL_FLG = '0'
 		AND CDM_RESULT27.VALUE1 = RESULT.RESULT27
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT28 -- コード情報
 		ON 1=1
-		AND CDM_RESULT28.CODE_NAME = 'RESULT28'
+		AND CDM_RESULT28.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT28.DEL_FLG = '0'
 		AND CDM_RESULT28.VALUE1 = RESULT.RESULT28
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT29 -- コード情報
 		ON 1=1
-		AND CDM_RESULT29.CODE_NAME = 'RESULT29'
+		AND CDM_RESULT29.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT29.DEL_FLG = '0'
 		AND CDM_RESULT29.VALUE1 = RESULT.RESULT29
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT30 -- コード情報
 		ON 1=1
-		AND CDM_RESULT30.CODE_NAME = 'RESULT30'
+		AND CDM_RESULT30.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT30.DEL_FLG = '0'
 		AND CDM_RESULT30.VALUE1 = RESULT.RESULT30
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT31 -- コード情報
 		ON 1=1
-		AND CDM_RESULT31.CODE_NAME = 'RESULT31'
+		AND CDM_RESULT31.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT31.DEL_FLG = '0'
 		AND CDM_RESULT31.VALUE1 = RESULT.RESULT31
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT32 -- コード情報
 		ON 1=1
-		AND CDM_RESULT32.CODE_NAME = 'RESULT32'
+		AND CDM_RESULT32.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT32.DEL_FLG = '0'
 		AND CDM_RESULT32.VALUE1 = RESULT.RESULT32
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT33 -- コード情報
 		ON 1=1
-		AND CDM_RESULT33.CODE_NAME = 'RESULT33'
+		AND CDM_RESULT33.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT33.DEL_FLG = '0'
 		AND CDM_RESULT33.VALUE1 = RESULT.RESULT33
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT34 -- コード情報
 		ON 1=1
-		AND CDM_RESULT34.CODE_NAME = 'RESULT34'
+		AND CDM_RESULT34.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT34.DEL_FLG = '0'
 		AND CDM_RESULT34.VALUE1 = RESULT.RESULT34
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT35 -- コード情報
 		ON 1=1
-		AND CDM_RESULT35.CODE_NAME = 'RESULT35'
+		AND CDM_RESULT35.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT35.DEL_FLG = '0'
 		AND CDM_RESULT35.VALUE1 = RESULT.RESULT35
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_RESULT36 -- コード情報
 		ON 1=1
-		AND CDM_RESULT36.CODE_NAME = 'RESULT36'
+		AND CDM_RESULT36.CODE_NAME = 'RESULT_LIST'
 		AND CDM_RESULT36.DEL_FLG = '0'
 		AND CDM_RESULT36.VALUE1 = RESULT.RESULT36
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP01 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP01.CODE_NAME = 'EQUIP01'
+		AND CDM_EQUIP01.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP01.DEL_FLG = '0'
 		AND CDM_EQUIP01.VALUE1 = EQUIP.EQUIP01
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP02 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP02.CODE_NAME = 'EQUIP02'
+		AND CDM_EQUIP02.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP02.DEL_FLG = '0'
 		AND CDM_EQUIP02.VALUE1 = EQUIP.EQUIP02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP03 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP03.CODE_NAME = 'EQUIP03'
+		AND CDM_EQUIP03.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP03.DEL_FLG = '0'
 		AND CDM_EQUIP03.VALUE1 = EQUIP.EQUIP03
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP07 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP07.CODE_NAME = 'EQUIP07'
+		AND CDM_EQUIP07.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP07.DEL_FLG = '0'
 		AND CDM_EQUIP07.VALUE1 = EQUIP.EQUIP07
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_EQUIP09 -- コード情報
 		ON 1=1
-		AND CDM_EQUIP09.CODE_NAME = 'EQUIP09'
+		AND CDM_EQUIP09.CODE_NAME = 'EQUIP_LIST'
 		AND CDM_EQUIP09.DEL_FLG = '0'
 		AND CDM_EQUIP09.VALUE1 = EQUIP.EQUIP09
 		LEFT JOIN
@@ -3687,49 +4318,49 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET02 -- コード情報
 		ON 1=1
-		AND CDM_MARKET02.CODE_NAME = 'MARKET02'
+		AND CDM_MARKET02.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET02.DEL_FLG = '0'
 		AND CDM_MARKET02.VALUE1 = MARKET.MARKET02
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET03 -- コード情報
 		ON 1=1
-		AND CDM_MARKET03.CODE_NAME = 'MARKET03'
+		AND CDM_MARKET03.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET03.DEL_FLG = '0'
 		AND CDM_MARKET03.VALUE1 = MARKET.MARKET03
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET04 -- コード情報
 		ON 1=1
-		AND CDM_MARKET04.CODE_NAME = 'MARKET04'
+		AND CDM_MARKET04.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET04.DEL_FLG = '0'
 		AND CDM_MARKET04.VALUE1 = MARKET.MARKET04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET06 -- コード情報
 		ON 1=1
-		AND CDM_MARKET06.CODE_NAME = 'MARKET06'
+		AND CDM_MARKET06.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET06.DEL_FLG = '0'
 		AND CDM_MARKET06.VALUE1 = MARKET.MARKET06
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET07 -- コード情報
 		ON 1=1
-		AND CDM_MARKET07.CODE_NAME = 'MARKET07'
+		AND CDM_MARKET07.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET07.DEL_FLG = '0'
 		AND CDM_MARKET07.VALUE1 = MARKET.MARKET07
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MARKET09 -- コード情報
 		ON 1=1
-		AND CDM_MARKET09.CODE_NAME = 'MARKET09'
+		AND CDM_MARKET09.CODE_NAME = 'MARKET_LIST'
 		AND CDM_MARKET09.DEL_FLG = '0'
 		AND CDM_MARKET09.VALUE1 = MARKET.MARKET09
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_MEDICAL12 -- コード情報
 		ON 1=1
-		AND CDM_MEDICAL12.CODE_NAME = 'MEDICAL12'
+		AND CDM_MEDICAL12.CODE_NAME = 'MEDICAL_LIST'
 		AND CDM_MEDICAL12.DEL_FLG = '0'
 		AND CDM_MEDICAL12.VALUE1 = MEDICAL.MEDICAL12
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_SPFUNC01 -- コード情報
 		ON 1=1
-		AND CDM_SPFUNC01.CODE_NAME = 'SPFUNC01'
+		AND CDM_SPFUNC01.CODE_NAME = 'SPFUNC_LIST'
 		AND CDM_SPFUNC01.DEL_FLG = '0'
 		AND CDM_SPFUNC01.VALUE1 = SPFUNC.SPFUNC01
 		LEFT JOIN
@@ -3741,283 +4372,283 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_SPFUNC04 -- コード情報
 		ON 1=1
-		AND CDM_SPFUNC04.CODE_NAME = 'SPFUNC04'
+		AND CDM_SPFUNC04.CODE_NAME = 'SPFUNC_LIST'
 		AND CDM_SPFUNC04.DEL_FLG = '0'
 		AND CDM_SPFUNC04.VALUE1 = SPFUNC.SPFUNC04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_TIEUP10 -- コード情報
 		ON 1=1
-		AND CDM_TIEUP10.CODE_NAME = 'TIEUP10'
+		AND CDM_TIEUP10.CODE_NAME = 'TIEUP_LIST'
 		AND CDM_TIEUP10.DEL_FLG = '0'
 		AND CDM_TIEUP10.VALUE1 = TIEUP.TIEUP10
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_TIEUP11 -- コード情報
 		ON 1=1
-		AND CDM_TIEUP11.CODE_NAME = 'TIEUP11'
+		AND CDM_TIEUP11.CODE_NAME = 'TIEUP_LIST'
 		AND CDM_TIEUP11.DEL_FLG = '0'
 		AND CDM_TIEUP11.VALUE1 = TIEUP.TIEUP11
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_TIEUP12 -- コード情報
 		ON 1=1
-		AND CDM_TIEUP12.CODE_NAME = 'TIEUP12'
+		AND CDM_TIEUP12.CODE_NAME = 'TIEUP_LIST'
 		AND CDM_TIEUP12.DEL_FLG = '0'
 		AND CDM_TIEUP12.VALUE1 = TIEUP.TIEUP12
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0001 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0001.CODE_NAME = 'USERCD0001'
+		AND CDM_USERCD0001.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0001.DEL_FLG = '0'
 		AND CDM_USERCD0001.VALUE1 = USERCD.USERCD0001
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0002 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0002.CODE_NAME = 'USERCD0002'
+		AND CDM_USERCD0002.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0002.DEL_FLG = '0'
 		AND CDM_USERCD0002.VALUE1 = USERCD.USERCD0002
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0003 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0003.CODE_NAME = 'USERCD0003'
+		AND CDM_USERCD0003.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0003.DEL_FLG = '0'
 		AND CDM_USERCD0003.VALUE1 = USERCD.USERCD0003
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0004 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0004.CODE_NAME = 'USERCD0004'
+		AND CDM_USERCD0004.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0004.DEL_FLG = '0'
 		AND CDM_USERCD0004.VALUE1 = USERCD.USERCD0004
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0005 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0005.CODE_NAME = 'USERCD0005'
+		AND CDM_USERCD0005.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0005.DEL_FLG = '0'
 		AND CDM_USERCD0005.VALUE1 = USERCD.USERCD0005
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0006 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0006.CODE_NAME = 'USERCD0006'
+		AND CDM_USERCD0006.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0006.DEL_FLG = '0'
 		AND CDM_USERCD0006.VALUE1 = USERCD.USERCD0006
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0007 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0007.CODE_NAME = 'USERCD0007'
+		AND CDM_USERCD0007.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0007.DEL_FLG = '0'
 		AND CDM_USERCD0007.VALUE1 = USERCD.USERCD0007
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0008 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0008.CODE_NAME = 'USERCD0008'
+		AND CDM_USERCD0008.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0008.DEL_FLG = '0'
 		AND CDM_USERCD0008.VALUE1 = USERCD.USERCD0008
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0009 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0009.CODE_NAME = 'USERCD0009'
+		AND CDM_USERCD0009.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0009.DEL_FLG = '0'
 		AND CDM_USERCD0009.VALUE1 = USERCD.USERCD0009
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0010 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0010.CODE_NAME = 'USERCD0010'
+		AND CDM_USERCD0010.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0010.DEL_FLG = '0'
 		AND CDM_USERCD0010.VALUE1 = USERCD.USERCD0010
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0011 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0011.CODE_NAME = 'USERCD0011'
+		AND CDM_USERCD0011.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0011.DEL_FLG = '0'
 		AND CDM_USERCD0011.VALUE1 = USERCD.USERCD0011
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0012 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0012.CODE_NAME = 'USERCD0012'
+		AND CDM_USERCD0012.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0012.DEL_FLG = '0'
 		AND CDM_USERCD0012.VALUE1 = USERCD.USERCD0012
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0013 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0013.CODE_NAME = 'USERCD0013'
+		AND CDM_USERCD0013.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0013.DEL_FLG = '0'
 		AND CDM_USERCD0013.VALUE1 = USERCD.USERCD0013
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0014 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0014.CODE_NAME = 'USERCD0014'
+		AND CDM_USERCD0014.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0014.DEL_FLG = '0'
 		AND CDM_USERCD0014.VALUE1 = USERCD.USERCD0014
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0015 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0015.CODE_NAME = 'USERCD0015'
+		AND CDM_USERCD0015.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0015.DEL_FLG = '0'
 		AND CDM_USERCD0015.VALUE1 = USERCD.USERCD0015
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0016 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0016.CODE_NAME = 'USERCD0016'
+		AND CDM_USERCD0016.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0016.DEL_FLG = '0'
 		AND CDM_USERCD0016.VALUE1 = USERCD.USERCD0016
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0017 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0017.CODE_NAME = 'USERCD0017'
+		AND CDM_USERCD0017.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0017.DEL_FLG = '0'
 		AND CDM_USERCD0017.VALUE1 = USERCD.USERCD0017
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0018 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0018.CODE_NAME = 'USERCD0018'
+		AND CDM_USERCD0018.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0018.DEL_FLG = '0'
 		AND CDM_USERCD0018.VALUE1 = USERCD.USERCD0018
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0019 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0019.CODE_NAME = 'USERCD0019'
+		AND CDM_USERCD0019.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0019.DEL_FLG = '0'
 		AND CDM_USERCD0019.VALUE1 = USERCD.USERCD0019
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0020 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0020.CODE_NAME = 'USERCD0020'
+		AND CDM_USERCD0020.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0020.DEL_FLG = '0'
 		AND CDM_USERCD0020.VALUE1 = USERCD.USERCD0020
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0021 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0021.CODE_NAME = 'USERCD0021'
+		AND CDM_USERCD0021.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0021.DEL_FLG = '0'
 		AND CDM_USERCD0021.VALUE1 = USERCD.USERCD0021
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0022 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0022.CODE_NAME = 'USERCD0022'
+		AND CDM_USERCD0022.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0022.DEL_FLG = '0'
 		AND CDM_USERCD0022.VALUE1 = USERCD.USERCD0022
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0023 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0023.CODE_NAME = 'USERCD0023'
+		AND CDM_USERCD0023.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0023.DEL_FLG = '0'
 		AND CDM_USERCD0023.VALUE1 = USERCD.USERCD0023
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0024 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0024.CODE_NAME = 'USERCD0024'
+		AND CDM_USERCD0024.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0024.DEL_FLG = '0'
 		AND CDM_USERCD0024.VALUE1 = USERCD.USERCD0024
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0025 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0025.CODE_NAME = 'USERCD0025'
+		AND CDM_USERCD0025.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0025.DEL_FLG = '0'
 		AND CDM_USERCD0025.VALUE1 = USERCD.USERCD0025
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0026 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0026.CODE_NAME = 'USERCD0026'
+		AND CDM_USERCD0026.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0026.DEL_FLG = '0'
 		AND CDM_USERCD0026.VALUE1 = USERCD.USERCD0026
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0027 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0027.CODE_NAME = 'USERCD0027'
+		AND CDM_USERCD0027.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0027.DEL_FLG = '0'
 		AND CDM_USERCD0027.VALUE1 = USERCD.USERCD0027
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0028 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0028.CODE_NAME = 'USERCD0028'
+		AND CDM_USERCD0028.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0028.DEL_FLG = '0'
 		AND CDM_USERCD0028.VALUE1 = USERCD.USERCD0028
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0029 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0029.CODE_NAME = 'USERCD0029'
+		AND CDM_USERCD0029.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0029.DEL_FLG = '0'
 		AND CDM_USERCD0029.VALUE1 = USERCD.USERCD0029
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0030 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0030.CODE_NAME = 'USERCD0030'
+		AND CDM_USERCD0030.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0030.DEL_FLG = '0'
 		AND CDM_USERCD0030.VALUE1 = USERCD.USERCD0030
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0031 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0031.CODE_NAME = 'USERCD0031'
+		AND CDM_USERCD0031.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0031.DEL_FLG = '0'
 		AND CDM_USERCD0031.VALUE1 = USERCD.USERCD0031
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0032 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0032.CODE_NAME = 'USERCD0032'
+		AND CDM_USERCD0032.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0032.DEL_FLG = '0'
 		AND CDM_USERCD0032.VALUE1 = USERCD.USERCD0032
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0033 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0033.CODE_NAME = 'USERCD0033'
+		AND CDM_USERCD0033.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0033.DEL_FLG = '0'
 		AND CDM_USERCD0033.VALUE1 = USERCD.USERCD0033
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0034 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0034.CODE_NAME = 'USERCD0034'
+		AND CDM_USERCD0034.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0034.DEL_FLG = '0'
 		AND CDM_USERCD0034.VALUE1 = USERCD.USERCD0034
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0035 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0035.CODE_NAME = 'USERCD0035'
+		AND CDM_USERCD0035.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0035.DEL_FLG = '0'
 		AND CDM_USERCD0035.VALUE1 = USERCD.USERCD0035
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_USERCD0036 -- コード情報
 		ON 1=1
-		AND CDM_USERCD0036.CODE_NAME = 'USERCD0036'
+		AND CDM_USERCD0036.CODE_NAME = 'USERCD_LIST'
 		AND CDM_USERCD0036.DEL_FLG = '0'
 		AND CDM_USERCD0036.VALUE1 = USERCD.USERCD0036
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD04 -- コード情報
 		ON 1=1
-		AND CDM_REWARD04.CODE_NAME = 'REWARD04'
+		AND CDM_REWARD04.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD04.DEL_FLG = '0'
 		AND CDM_REWARD04.VALUE1 = REWARD.REWARD04
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD05 -- コード情報
 		ON 1=1
-		AND CDM_REWARD05.CODE_NAME = 'REWARD05'
+		AND CDM_REWARD05.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD05.DEL_FLG = '0'
 		AND CDM_REWARD05.VALUE1 = REWARD.REWARD05
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD08 -- コード情報
 		ON 1=1
-		AND CDM_REWARD08.CODE_NAME = 'REWARD08'
+		AND CDM_REWARD08.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD08.DEL_FLG = '0'
 		AND CDM_REWARD08.VALUE1 = REWARD.REWARD08
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD09 -- コード情報
 		ON 1=1
-		AND CDM_REWARD09.CODE_NAME = 'REWARD09'
+		AND CDM_REWARD09.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD09.DEL_FLG = '0'
 		AND CDM_REWARD09.VALUE1 = REWARD.REWARD09
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD16 -- コード情報
 		ON 1=1
-		AND CDM_REWARD16.CODE_NAME = 'REWARD16'
+		AND CDM_REWARD16.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD16.DEL_FLG = '0'
 		AND CDM_REWARD16.VALUE1 = REWARD.REWARD16
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD17 -- コード情報
 		ON 1=1
-		AND CDM_REWARD17.CODE_NAME = 'REWARD17'
+		AND CDM_REWARD17.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD17.DEL_FLG = '0'
 		AND CDM_REWARD17.VALUE1 = REWARD.REWARD17
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD18 -- コード情報
 		ON 1=1
-		AND CDM_REWARD18.CODE_NAME = 'REWARD18'
+		AND CDM_REWARD18.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD18.DEL_FLG = '0'
 		AND CDM_REWARD18.VALUE1 = REWARD.REWARD18
 		LEFT JOIN
@@ -4029,19 +4660,19 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD23 -- コード情報
 		ON 1=1
-		AND CDM_REWARD23.CODE_NAME = 'REWARD23'
+		AND CDM_REWARD23.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD23.DEL_FLG = '0'
 		AND CDM_REWARD23.VALUE1 = REWARD.REWARD23
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD25 -- コード情報
 		ON 1=1
-		AND CDM_REWARD25.CODE_NAME = 'REWARD25'
+		AND CDM_REWARD25.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD25.DEL_FLG = '0'
 		AND CDM_REWARD25.VALUE1 = REWARD.REWARD25
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD26 -- コード情報
 		ON 1=1
-		AND CDM_REWARD26.CODE_NAME = 'REWARD26'
+		AND CDM_REWARD26.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD26.DEL_FLG = '0'
 		AND CDM_REWARD26.VALUE1 = REWARD.REWARD26
 		LEFT JOIN
@@ -4059,25 +4690,25 @@
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD35 -- コード情報
 		ON 1=1
-		AND CDM_REWARD35.CODE_NAME = 'REWARD35'
+		AND CDM_REWARD35.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD35.DEL_FLG = '0'
 		AND CDM_REWARD35.VALUE1 = REWARD.REWARD35
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD36 -- コード情報
 		ON 1=1
-		AND CDM_REWARD36.CODE_NAME = 'REWARD36'
+		AND CDM_REWARD36.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD36.DEL_FLG = '0'
 		AND CDM_REWARD36.VALUE1 = REWARD.REWARD36
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD37 -- コード情報
 		ON 1=1
-		AND CDM_REWARD37.CODE_NAME = 'REWARD37'
+		AND CDM_REWARD37.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD37.DEL_FLG = '0'
 		AND CDM_REWARD37.VALUE1 = REWARD.REWARD37
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_REWARD44 -- コード情報
 		ON 1=1
-		AND CDM_REWARD44.CODE_NAME = 'REWARD44'
+		AND CDM_REWARD44.CODE_NAME = 'REWARD_LIST'
 		AND CDM_REWARD44.DEL_FLG = '0'
 		AND CDM_REWARD44.VALUE1 = REWARD.REWARD44
 		WHERE 1=1
@@ -4256,6 +4887,2429 @@
 		AND CDM_VACVISITTYPE.VALUE1 = HCO.VAC_VISIT_TYPE
 		WHERE 1=1
         AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectNF303REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF303MainDataEntity" resultMap="nF303MainDataResultMap">
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL	-- 申請管理.申請チャネル
+		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, HCO.INS_NO			-- 施設_申請管理.施設固定コード
+		, MST.INS_CLASS
+		, MST.INS_SBT
+		-- ★基本情報変更前
+		, MST.INS_ABBR_NAME AS PRE_INS_ABBR_NAME		-- 施設_基本情報.施設略式漢字名
+		, MST.INS_KANA AS PRE_INS_KANA					-- 施設_基本情報.施設カナ名
+		, MST.INS_FORMAL_NAME AS PRE_INS_FORMAL_NAME	-- 施設_基本情報.施設正式漢字名
+		, MST.TRADE_TYPE AS PRE_TRADE_TYPE				-- 施設_基本情報.取引区分
+		, CDM_PTRADETYPE.VALUE1_KANJ AS PRE_TRADE_TYPE_NM	-- 施設_基本情報.取引区分
+		, MST.INS_OPEN_YEAR AS PRE_INS_OPEN_YEAR		-- 施設_基本情報.開業年
+		, MST.INS_OPEN_MONTH AS PRE_INS_OPEN_MONTH		-- 施設_基本情報.開業月
+		, MST.INS_OPEN_DAY AS PRE_INS_OPEN_DAY			-- 施設_基本情報.開業日
+		, MST.PHARM_TYPE AS PRE_PHARM_TYPE				-- 施設_基本情報.施設区分
+		, CDM_PPHARMTYPE.VALUE1_KANJ AS PRE_PHARM_TYPE_NM	-- 施設_基本情報.施設区分
+		, MST.INS_RANK AS PRE_INS_RANK					-- 施設_基本情報.階級区分
+		, CDM_PINSRANK.VALUE1_KANJ AS PRE_INS_RANK_NM	-- 施設_基本情報.階級区分
+		, MST.REG_VIS_TYPE AS PRE_REG_VIS_TYPE			-- 施設_基本情報.定訪先区分
+		, CDM_PREGVISTYPE.VALUE1_KANJ AS PRE_REG_VIS_TYPE_NM	-- 施設_基本情報.定訪先区分
+		, MST.MANAGE_CD AS PRE_MANAGE_CD				-- 施設_基本情報.経営主体コード
+			-- 経営主体名
+		, MST.WS_TYPE AS PRE_WS_TYPE					-- 施設_基本情報.卸色区分
+		, CDM_PWSTYPE.VALUE1_KANJ AS PRE_WS_TYPE_NM		-- 施設_来期用項目情報.施設区分
+		, MST.BASKET_PURCHASE AS PRE_BASKET_PURCHASE	-- 施設_基本情報.本部一括購入
+		, CDM_PBASKETPURCHASE.VALUE1_KANJ AS PRE_BASKET_PURCHASE_NM	-- 施設_基本情報.本部一括購入
+		, MST.UNIV_SUBDIV AS PRE_UNIV_SUBDIV			-- 施設_基本情報.大学細分類
+		, CDM_PUNIVSUBDIV.VALUE1_KANJ AS PRE_UNIV_SUBDIV_NM	-- 施設_基本情報.大学細分類
+		, MST.CAPA_TYPE AS PRE_CAPA_TYPE				-- 施設_基本情報.容量別実績把握病院区分
+		, CDM_PCAPATYPE.VALUE1_KANJ AS PRE_CAPA_TYPE_NM	-- 施設_基本情報.容量別実績把握病院区分
+		-- ★基本情報変更後
+		, HCO.INS_ABBR_NAME		-- 施設_申請管理.施設略式漢字名
+		, HCO.INS_KANA			-- 施設_申請管理.施設カナ名
+		, HCO.INS_FORMAL_NAME	-- 施設_申請管理.施設正式漢字名
+		, HCO.TRADE_TYPE		-- 施設_申請管理.取引区分
+		, CDM_TRADETYPE.VALUE1_KANJ AS TRADE_TYPE_NM	-- 施設_基本情報.取引区分
+		, HCO.INS_OPEN_YEAR		-- 施設_申請管理.開業年
+		, HCO.INS_OPEN_MONTH	-- 施設_申請管理.開業月
+		, HCO.INS_OPEN_DAY		-- 施設_申請管理.開業日
+		, NEXT.PHARM_TYPE		-- 施設_来期用項目情報.施設区分
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE_NM	-- 施設_来期用項目情報.施設区分
+		, NEXT.INS_RANK			-- 施設_来期用項目情報.階級区分
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK_NM	-- 施設_来期用項目情報.施設区分
+		, NEXT.REG_VIS_TYPE		-- 施設_来期用項目情報.定訪先区分
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM	-- 施設_来期用項目情報.施設区分
+		, NEXT.MANAGE_CD		-- 施設_来期用項目情報.経営主体コード
+		, HCO.WS_TYPE			-- 施設_申請管理.卸色区分
+		, CDM_WSTYPE.VALUE1_KANJ AS WS_TYPE_NM	-- コード情報.卸色区分
+		, HCO.BASKET_PURCHASE	-- 施設_申請管理.本部一括購入
+		, CDM_BASKETPURCHASE.VALUE1_KANJ AS BASKET_PURCHASE_NM	-- コード情報.本部一括購入
+		, HCO.UNIV_SUBDIV		-- 施設_申請管理.大学細分類
+		, CDM_UNIVSUBDIV.VALUE1_KANJ AS UNIV_SUBDIV_NM	-- コード情報.大学細分類
+		, HCO.CAPA_TYPE			-- 施設_申請管理.容量別実績把握病院区分
+		, CDM_CAPATYPE.VALUE1_KANJ AS CAPA_TYPE_NM	-- コード情報.容量別実績把握病院区分
+		-- ★ULT施設情報
+		, HCO.ULT_INS_NO		-- 施設_申請管理.ULT施設コード
+		, ULT.SHISETSU_NM_RYAKU	-- ULT_MDB施設マスタ.施設名略名
+		, ULT.SHISETSU_NM		-- ULT_MDB施設マスタ.施設名
+		-- ★病床数現状
+		, MST.BEDCNT_BASE					-- 施設_基本情報.病床(基準)
+		, BEDCNT.BEDCNT_KEKKAKU AS BEDCNT04	-- 施設_病床数情報.設定値(結核)
+		, BEDCNT.BEDCNT_IPPAN AS BEDCNT01	-- 施設_病床数情報.設定値(一般)
+		, BEDCNT.BEDCNT_KANSEN AS BEDCNT05	-- 施設_病床数情報.設定値(感染症)
+		, BEDCNT.BEDCNT_SESHIN AS BEDCNT03	-- 施設_病床数情報.設定値(精神)
+		, BEDCNT.BEDCNT_RYOYO AS BEDCNT07	-- 施設_病床数情報.設定値(療養)
+		, BEDCNT.BEDCNT_IRYORYOYO AS BEDCNT02	-- 施設_病床数情報.設定値(医療療養)
+		, BEDCNT.BEDCNT_KAIGO AS BEDCNT06		-- 施設_病床数情報.設定値(介護療養)
+		, MST.BEDS_TOT			-- 施設_病床数情報.ベッド数計
+		, MST.MED_BEDS_TOT		-- 施設_病床数情報.医療ベッド数計
+		-- ★病床数ULT
+		, ULT.KYOKABYOSHOSU_SUM		-- ULT_MDB施設マスタ.許可病床数合計
+		, ULT.KYOKABYOSHOSU_KEKKAKU -- ULT_MDB施設マスタ.許可病床数結核
+		, ULT.KYOKABYOSHOSU_IPPAN 	-- ULT_MDB施設マスタ.許可病床数一般病床
+		, ULT.KYOKABYOSHOSU_KANSEN	-- ULT_MDB施設マスタ.許可病床数感染症
+		, ULT.KYOKABYOSHOSU_SEISHIN	-- ULT_MDB施設マスタ.許可病床数精神
+		, ULT.KYOKABYOSHOSU_RYOYO	-- ULT_MDB施設マスタ.許可病床数療養病床
+		-- ★病床数来期
+		, BEDCNT_NEXT.BEDCNT_KEKKAKU AS NEXT_BEDCNT04	-- 施設_病床数情報(来期用).設定値(結核)
+		, BEDCNT_NEXT.BEDCNT_IPPAN AS NEXT_BEDCNT01		-- 施設_病床数情報(来期用).設定値(一般)
+		, BEDCNT_NEXT.BEDCNT_KANSEN AS NEXT_BEDCNT05	-- 施設_病床数情報(来期用).設定値(感染症)
+		, BEDCNT_NEXT.BEDCNT_SESHIN AS NEXT_BEDCNT03	-- 施設_病床数情報(来期用).設定値(精神)
+		, BEDCNT_NEXT.BEDCNT_RYOYO AS NEXT_BEDCNT07		-- 施設_病床数情報(来期用).設定値(療養)
+		, BEDCNT_NEXT.BEDCNT_IRYORYOYO AS NEXT_BEDCNT02	-- 施設_病床数情報(来期用).設定値(医療療養)
+		, BEDCNT_NEXT.BEDCNT_KAIGO AS NEXT_BEDCNT06		-- 施設_病床数情報(来期用).設定値(介護療養)
+		, NEXT.BEDS_TOT AS NEXT_BEDS_TOT			-- 施設_来期用項目情報.ベッド数計
+		, NEXT.MED_BEDS_TOT AS NEXT_MED_BEDS_TOT	-- 施設_来期用項目情報医療ベッド数計
+		-- ★住所詳細（変更前）
+		, MST.INS_PCODE AS PRE_INS_PCODE				-- 施設_基本情報.郵便番号
+		, MST.ADDR_CODE_PREF AS PRE_ADDR_CODE_PREF		-- 施設_基本情報.JIS府県コード
+		, ADDRMST.ADDR_NAME_PREF AS PRE_ADDR_NAME_PREF	-- 都道府県名
+		, MST.ADDR_CODE_CITY AS PRE_ADDR_CODE_CITY		-- 施設_基本情報.JIS市区町村コード
+		, ADDRMST.ADDR_NAME_CITY AS PRE_ADDR_NAME_CITY	-- 市区町村名
+		, MST.INS_ADDR_DT AS PRE_INS_ADDR_DT			-- 施設_基本情報.町名地番
+		, MST.TK_CITY_CD AS PRE_TK_CITY_CD				-- 施設_基本情報.武田市区郡コード
+		, ADDRMST.TK_CITY_NAME AS PRE_TK_CITY_NAME		-- 市区群名
+		, MST.INS_PHONE1 AS PRE_INS_PHONE1				-- 施設_基本情報.電話番号1
+		, MST.INS_PHONE2 AS PRE_INS_PHONE2				-- 施設_基本情報.電話番号2
+		, MST.INS_FAX1 AS PRE_INS_FAX1					-- 施設_基本情報.FAX番号1
+		, MST.INS_FAX2 AS PRE_INS_FAX2					-- 施設_基本情報.FAX番号2
+		, MST.INS_URL AS PRE_INS_URL					-- 施設_基本情報.ホームページアドレス
+		, MST.INS_URL_YMD AS PRE_INS_URL_YMD			-- 施設_基本情報.ホームページアドレス最終更新日
+		-- ★住所詳細（変更後）
+		, HCO.INS_PCODE			-- 施設_申請管理.郵便番号
+		, HCO.ADDR_CODE_PREF	-- 施設_申請管理.JIS府県コード
+		, ADDR.ADDR_NAME_PREF	-- 都道府県名
+		, HCO.ADDR_CODE_CITY	-- 施設_申請管理.JIS市区町村コード
+		, ADDR.ADDR_NAME_CITY	-- 市区町村名
+		, HCO.INS_ADDR_DT		-- 施設_申請管理.町名地番
+		, HCO.TK_CITY_CD		-- 施設_申請管理.武田市区郡コード
+		, ADDR.TK_CITY_NAME		-- 市区群名
+		, HCO.INS_PHONE1		-- 施設_申請管理.電話番号1
+		, HCO.INS_PHONE2		-- 施設_申請管理.電話番号2
+		, HCO.INS_FAX1			-- 施設_申請管理.FAX番号1
+		, HCO.INS_FAX2			-- 施設_申請管理.FAX番号2
+		, HCO.INS_URL			-- 施設_申請管理.ホームページアドレス
+		, HCO.INS_URL_YMD		-- 施設_申請管理.ホームページアドレス最終更新日
+		, HCO.INS_ADDR_KANA		-- 施設_申請管理.施設住所カナ
+		-- ★フリー項目区分情報（変更前）
+		, FREE.FREE0001 AS PRE_FREE0001
+		, FREE.FREE0002 AS PRE_FREE0002
+		, FREE.FREE0003 AS PRE_FREE0003
+		, FREE.FREE0004 AS PRE_FREE0004
+		, FREE.FREE0005 AS PRE_FREE0005
+		, FREE.FREE0006 AS PRE_FREE0006
+		, FREE.FREE0007 AS PRE_FREE0007
+		, FREE.FREE0008 AS PRE_FREE0008
+		, FREE.FREE0009 AS PRE_FREE0009
+		, FREE.FREE0010 AS PRE_FREE0010
+		, FREE.FREE0011 AS PRE_FREE0011
+		, FREE.FREE0012 AS PRE_FREE0012
+		, FREE.FREE0013 AS PRE_FREE0013
+		, FREE.FREE0014 AS PRE_FREE0014
+		, FREE.FREE0015 AS PRE_FREE0015
+		-- ★フリー項目区分情報（変更後）
+		, HCO.FREE0001
+		, HCO.FREE0002
+		, HCO.FREE0003
+		, HCO.FREE0004
+		, HCO.FREE0005
+		, HCO.FREE0006
+		, HCO.FREE0007
+		, HCO.FREE0008
+		, HCO.FREE0009
+		, HCO.FREE0010
+		, HCO.FREE0011
+		, HCO.FREE0012
+		, HCO.FREE0013
+		, HCO.FREE0014
+		, HCO.FREE0015
+		-- ★老人福祉法関連分類情報（変更前）
+		, WELFARE.WELFARE02　AS PRE_WELFARE02
+		, WELFARE.WELFARE08　AS PRE_WELFARE08
+		, CDM_PWELFARE02.VALUE1_KANJ AS PRE_WELFARE02_NM
+		, CDM_PWELFARE08.VALUE1_KANJ AS PRE_WELFARE08_NM
+		-- ★老人福祉法関連分類情報（変更後）
+		, HCO.WELFARE02
+		, HCO.WELFARE08
+		, CDM_WELFARE02.VALUE1_KANJ AS WELFARE02_NM
+		, CDM_WELFARE08.VALUE1_KANJ AS WELFARE08_NM
+
+		-- ★実績把握区分情報（変更前）
+		, RESULT.RESULT01 AS PRE_RESULT01
+		, RESULT.RESULT02 AS PRE_RESULT02
+		, RESULT.RESULT03 AS PRE_RESULT03
+		, RESULT.RESULT04 AS PRE_RESULT04
+		, RESULT.RESULT05 AS PRE_RESULT05
+		, RESULT.RESULT06 AS PRE_RESULT06
+		, RESULT.RESULT07 AS PRE_RESULT07
+		, RESULT.RESULT08 AS PRE_RESULT08
+		, RESULT.RESULT09 AS PRE_RESULT09
+		, RESULT.RESULT10 AS PRE_RESULT10
+		, RESULT.RESULT11 AS PRE_RESULT11
+		, RESULT.RESULT12 AS PRE_RESULT12
+		, RESULT.RESULT13 AS PRE_RESULT13
+		, RESULT.RESULT14 AS PRE_RESULT14
+		, RESULT.RESULT15 AS PRE_RESULT15
+		, RESULT.RESULT16 AS PRE_RESULT16
+		, RESULT.RESULT17 AS PRE_RESULT17
+		, RESULT.RESULT18 AS PRE_RESULT18
+		, RESULT.RESULT19 AS PRE_RESULT19
+		, RESULT.RESULT20 AS PRE_RESULT20
+		, RESULT.RESULT21 AS PRE_RESULT21
+		, RESULT.RESULT22 AS PRE_RESULT22
+		, RESULT.RESULT23 AS PRE_RESULT23
+		, RESULT.RESULT24 AS PRE_RESULT24
+		, RESULT.RESULT25 AS PRE_RESULT25
+		, RESULT.RESULT26 AS PRE_RESULT26
+		, RESULT.RESULT27 AS PRE_RESULT27
+		, RESULT.RESULT28 AS PRE_RESULT28
+		, RESULT.RESULT29 AS PRE_RESULT29
+		, RESULT.RESULT30 AS PRE_RESULT30
+		, RESULT.RESULT31 AS PRE_RESULT31
+		, RESULT.RESULT32 AS PRE_RESULT32
+		, RESULT.RESULT33 AS PRE_RESULT33
+		, RESULT.RESULT34 AS PRE_RESULT34
+		, RESULT.RESULT35 AS PRE_RESULT35
+		, RESULT.RESULT36 AS PRE_RESULT36
+		, CDM_PRESULT01.VALUE1_KANJ AS PRE_RESULT01_NM
+		, CDM_PRESULT02.VALUE1_KANJ AS PRE_RESULT02_NM
+		, CDM_PRESULT03.VALUE1_KANJ AS PRE_RESULT03_NM
+		, CDM_PRESULT04.VALUE1_KANJ AS PRE_RESULT04_NM
+		, CDM_PRESULT05.VALUE1_KANJ AS PRE_RESULT05_NM
+		, CDM_PRESULT06.VALUE1_KANJ AS PRE_RESULT06_NM
+		, CDM_PRESULT07.VALUE1_KANJ AS PRE_RESULT07_NM
+		, CDM_PRESULT08.VALUE1_KANJ AS PRE_RESULT08_NM
+		, CDM_PRESULT09.VALUE1_KANJ AS PRE_RESULT09_NM
+		, CDM_PRESULT10.VALUE1_KANJ AS PRE_RESULT10_NM
+		, CDM_PRESULT11.VALUE1_KANJ AS PRE_RESULT11_NM
+		, CDM_PRESULT12.VALUE1_KANJ AS PRE_RESULT12_NM
+		, CDM_PRESULT13.VALUE1_KANJ AS PRE_RESULT13_NM
+		, CDM_PRESULT14.VALUE1_KANJ AS PRE_RESULT14_NM
+		, CDM_PRESULT15.VALUE1_KANJ AS PRE_RESULT15_NM
+		, CDM_PRESULT16.VALUE1_KANJ AS PRE_RESULT16_NM
+		, CDM_PRESULT17.VALUE1_KANJ AS PRE_RESULT17_NM
+		, CDM_PRESULT18.VALUE1_KANJ AS PRE_RESULT18_NM
+		, CDM_PRESULT19.VALUE1_KANJ AS PRE_RESULT19_NM
+		, CDM_PRESULT20.VALUE1_KANJ AS PRE_RESULT20_NM
+		, CDM_PRESULT21.VALUE1_KANJ AS PRE_RESULT21_NM
+		, CDM_PRESULT22.VALUE1_KANJ AS PRE_RESULT22_NM
+		, CDM_PRESULT23.VALUE1_KANJ AS PRE_RESULT23_NM
+		, CDM_PRESULT24.VALUE1_KANJ AS PRE_RESULT24_NM
+		, CDM_PRESULT25.VALUE1_KANJ AS PRE_RESULT25_NM
+		, CDM_PRESULT26.VALUE1_KANJ AS PRE_RESULT26_NM
+		, CDM_PRESULT27.VALUE1_KANJ AS PRE_RESULT27_NM
+		, CDM_PRESULT28.VALUE1_KANJ AS PRE_RESULT28_NM
+		, CDM_PRESULT29.VALUE1_KANJ AS PRE_RESULT29_NM
+		, CDM_PRESULT30.VALUE1_KANJ AS PRE_RESULT30_NM
+		, CDM_PRESULT31.VALUE1_KANJ AS PRE_RESULT31_NM
+		, CDM_PRESULT32.VALUE1_KANJ AS PRE_RESULT32_NM
+		, CDM_PRESULT33.VALUE1_KANJ AS PRE_RESULT33_NM
+		, CDM_PRESULT34.VALUE1_KANJ AS PRE_RESULT34_NM
+		, CDM_PRESULT35.VALUE1_KANJ AS PRE_RESULT35_NM
+		, CDM_PRESULT36.VALUE1_KANJ AS PRE_RESULT36_NM
+		, CDM_RESULT01.VALUE1_KANJ AS RESULT01_NM
+		, CDM_RESULT02.VALUE1_KANJ AS RESULT02_NM
+		, CDM_RESULT03.VALUE1_KANJ AS RESULT03_NM
+		, CDM_RESULT04.VALUE1_KANJ AS RESULT04_NM
+		, CDM_RESULT05.VALUE1_KANJ AS RESULT05_NM
+		, CDM_RESULT06.VALUE1_KANJ AS RESULT06_NM
+		, CDM_RESULT07.VALUE1_KANJ AS RESULT07_NM
+		, CDM_RESULT08.VALUE1_KANJ AS RESULT08_NM
+		, CDM_RESULT09.VALUE1_KANJ AS RESULT09_NM
+		, CDM_RESULT10.VALUE1_KANJ AS RESULT10_NM
+		, CDM_RESULT11.VALUE1_KANJ AS RESULT11_NM
+		, CDM_RESULT12.VALUE1_KANJ AS RESULT12_NM
+		, CDM_RESULT13.VALUE1_KANJ AS RESULT13_NM
+		, CDM_RESULT14.VALUE1_KANJ AS RESULT14_NM
+		, CDM_RESULT15.VALUE1_KANJ AS RESULT15_NM
+		, CDM_RESULT16.VALUE1_KANJ AS RESULT16_NM
+		, CDM_RESULT17.VALUE1_KANJ AS RESULT17_NM
+		, CDM_RESULT18.VALUE1_KANJ AS RESULT18_NM
+		, CDM_RESULT19.VALUE1_KANJ AS RESULT19_NM
+		, CDM_RESULT20.VALUE1_KANJ AS RESULT20_NM
+		, CDM_RESULT21.VALUE1_KANJ AS RESULT21_NM
+		, CDM_RESULT22.VALUE1_KANJ AS RESULT22_NM
+		, CDM_RESULT23.VALUE1_KANJ AS RESULT23_NM
+		, CDM_RESULT24.VALUE1_KANJ AS RESULT24_NM
+		, CDM_RESULT25.VALUE1_KANJ AS RESULT25_NM
+		, CDM_RESULT26.VALUE1_KANJ AS RESULT26_NM
+		, CDM_RESULT27.VALUE1_KANJ AS RESULT27_NM
+		, CDM_RESULT28.VALUE1_KANJ AS RESULT28_NM
+		, CDM_RESULT29.VALUE1_KANJ AS RESULT29_NM
+		, CDM_RESULT30.VALUE1_KANJ AS RESULT30_NM
+		, CDM_RESULT31.VALUE1_KANJ AS RESULT31_NM
+		, CDM_RESULT32.VALUE1_KANJ AS RESULT32_NM
+		, CDM_RESULT33.VALUE1_KANJ AS RESULT33_NM
+		, CDM_RESULT34.VALUE1_KANJ AS RESULT34_NM
+		, CDM_RESULT35.VALUE1_KANJ AS RESULT35_NM
+		, CDM_RESULT36.VALUE1_KANJ AS RESULT36_NM
+		-- ★実績把握区分情報（変更後）
+		, HCO.RESULT01
+		, HCO.RESULT02
+		, HCO.RESULT03
+		, HCO.RESULT04
+		, HCO.RESULT05
+		, HCO.RESULT06
+		, HCO.RESULT07
+		, HCO.RESULT08
+		, HCO.RESULT09
+		, HCO.RESULT10
+		, HCO.RESULT11
+		, HCO.RESULT12
+		, HCO.RESULT13
+		, HCO.RESULT14
+		, HCO.RESULT15
+		, HCO.RESULT16
+		, HCO.RESULT17
+		, HCO.RESULT18
+		, HCO.RESULT19
+		, HCO.RESULT20
+		, HCO.RESULT21
+		, HCO.RESULT22
+		, HCO.RESULT23
+		, HCO.RESULT24
+		, HCO.RESULT25
+		, HCO.RESULT26
+		, HCO.RESULT27
+		, HCO.RESULT28
+		, HCO.RESULT29
+		, HCO.RESULT30
+		, HCO.RESULT31
+		, HCO.RESULT32
+		, HCO.RESULT33
+		, HCO.RESULT34
+		, HCO.RESULT35
+		, HCO.RESULT36
+		-- ★病院設備情報（変更前）
+		, EQUIP.EQUIP01 AS PRE_EQUIP01
+		, EQUIP.EQUIP02 AS PRE_EQUIP02
+		, EQUIP.EQUIP03 AS PRE_EQUIP03
+		, EQUIP.EQUIP07 AS PRE_EQUIP07
+		, EQUIP.EQUIP09 AS PRE_EQUIP09
+		, CDM_PEQUIP01.VALUE1_KANJ AS PRE_EQUIP01_NM
+		, CDM_PEQUIP02.VALUE1_KANJ AS PRE_EQUIP02_NM
+		, CDM_PEQUIP03.VALUE1_KANJ AS PRE_EQUIP03_NM
+		, CDM_PEQUIP07.VALUE1_KANJ AS PRE_EQUIP07_NM
+		, CDM_PEQUIP09.VALUE1_KANJ AS PRE_EQUIP09_NM
+		-- ★病院設備情報（変更後）
+		, HCO.EQUIP01
+		, HCO.EQUIP02
+		, HCO.EQUIP03
+		, HCO.EQUIP07
+		, HCO.EQUIP09
+		, CDM_EQUIP01.VALUE1_KANJ AS EQUIP01_NM
+		, CDM_EQUIP02.VALUE1_KANJ AS EQUIP02_NM
+		, CDM_EQUIP03.VALUE1_KANJ AS EQUIP03_NM
+		, CDM_EQUIP07.VALUE1_KANJ AS EQUIP07_NM
+		, CDM_EQUIP09.VALUE1_KANJ AS EQUIP09_NM
+		-- ★市場規模情報（変更前）
+		, MARKET.MARKET01 AS PRE_MARKET01
+		, MARKET.MARKET02 AS PRE_MARKET02
+		, MARKET.MARKET03 AS PRE_MARKET03
+		, MARKET.MARKET04 AS PRE_MARKET04
+		, MARKET.MARKET06 AS PRE_MARKET06
+		, MARKET.MARKET07 AS PRE_MARKET07
+		, MARKET.MARKET09 AS PRE_MARKET09
+		-- ★市場規模情報（変更後）
+		, HCO.MARKET01
+		, HCO.MARKET02
+		, HCO.MARKET03
+		, HCO.MARKET04
+		, HCO.MARKET06
+		, HCO.MARKET07
+		, HCO.MARKET09
+		, CDM_PMARKET01.VALUE1_KANJ AS PRE_MARKET01_NM
+		, CDM_PMARKET02.VALUE1_KANJ AS PRE_MARKET02_NM
+		, CDM_PMARKET03.VALUE1_KANJ AS PRE_MARKET03_NM
+		, CDM_PMARKET04.VALUE1_KANJ AS PRE_MARKET04_NM
+		, CDM_PMARKET06.VALUE1_KANJ AS PRE_MARKET06_NM
+		, CDM_PMARKET07.VALUE1_KANJ AS PRE_MARKET07_NM
+		, CDM_PMARKET09.VALUE1_KANJ AS PRE_MARKET09_NM
+		, CDM_MARKET01.VALUE1_KANJ AS MARKET01_NM
+		, CDM_MARKET02.VALUE1_KANJ AS MARKET02_NM
+		, CDM_MARKET03.VALUE1_KANJ AS MARKET03_NM
+		, CDM_MARKET04.VALUE1_KANJ AS MARKET04_NM
+		, CDM_MARKET06.VALUE1_KANJ AS MARKET06_NM
+		, CDM_MARKET07.VALUE1_KANJ AS MARKET07_NM
+		, CDM_MARKET09.VALUE1_KANJ AS MARKET09_NM
+		-- ★医療法関連分類情報（変更前）
+		, MEDICAL.MEDICAL12 AS PRE_MEDICAL12
+		, CDM_PMEDICAL12.VALUE1_KANJ AS PRE_MEDICAL12_NM
+		-- ★医療法関連分類情報（変更後）
+		, HCO.MEDICAL12
+		, CDM_MEDICAL12.VALUE1_KANJ AS MEDICAL12_NM
+		-- ★特別な機能情報（変更前）
+		, SPFUNC.SPFUNC01 AS PRE_SPFUNC01
+		, SPFUNC.SPFUNC03 AS PRE_SPFUNC03
+		, SPFUNC.SPFUNC04 AS PRE_SPFUNC04
+		, CDM_PSPFUNC01.VALUE1_KANJ AS PRE_SPFUNC01_NM
+		, CDM_PSPFUNC03.VALUE1_KANJ AS PRE_SPFUNC03_NM
+		, CDM_PSPFUNC04.VALUE1_KANJ AS PRE_SPFUNC04_NM
+		-- ★特別な機能情報（変更後）
+		, HCO.SPFUNC01
+		, HCO.SPFUNC03
+		, HCO.SPFUNC04
+		, CDM_SPFUNC01.VALUE1_KANJ AS SPFUNC01_NM
+		, CDM_SPFUNC03.VALUE1_KANJ AS SPFUNC03_NM
+		, CDM_SPFUNC04.VALUE1_KANJ AS SPFUNC04_NM
+		-- ★医療連携関係情報（変更前）
+		, TIEUP.TIEUP10 AS PRE_TIEUP10
+		, TIEUP.TIEUP11 AS PRE_TIEUP11
+		, TIEUP.TIEUP12 AS PRE_TIEUP12
+		, CDM_PTIEUP10.VALUE1_KANJ AS PRE_TIEUP10_NM
+		, CDM_PTIEUP11.VALUE1_KANJ AS PRE_TIEUP11_NM
+		, CDM_PTIEUP12.VALUE1_KANJ AS PRE_TIEUP12_NM
+		-- ★医療連携関係情報（変更後）
+		, HCO.TIEUP10
+		, HCO.TIEUP11
+		, HCO.TIEUP12
+		, CDM_TIEUP10.VALUE1_KANJ AS TIEUP10_NM
+		, CDM_TIEUP11.VALUE1_KANJ AS TIEUP11_NM
+		, CDM_TIEUP12.VALUE1_KANJ AS TIEUP12_NM
+		-- ★ユーザーコード情報（変更前）
+		, USERCD.USERCD0001 AS PRE_UESRCD0001
+		, USERCD.USERCD0002 AS PRE_UESRCD0002
+		, USERCD.USERCD0003 AS PRE_UESRCD0003
+		, USERCD.USERCD0004 AS PRE_UESRCD0004
+		, USERCD.USERCD0005 AS PRE_UESRCD0005
+		, USERCD.USERCD0006 AS PRE_UESRCD0006
+		, USERCD.USERCD0007 AS PRE_UESRCD0007
+		, USERCD.USERCD0008 AS PRE_UESRCD0008
+		, USERCD.USERCD0009 AS PRE_UESRCD0009
+		, USERCD.USERCD0010 AS PRE_UESRCD0010
+		, USERCD.USERCD0011 AS PRE_UESRCD0011
+		, USERCD.USERCD0012 AS PRE_UESRCD0012
+		, USERCD.USERCD0013 AS PRE_UESRCD0013
+		, USERCD.USERCD0014 AS PRE_UESRCD0014
+		, USERCD.USERCD0015 AS PRE_UESRCD0015
+		, USERCD.USERCD0016 AS PRE_UESRCD0016
+		, USERCD.USERCD0017 AS PRE_UESRCD0017
+		, USERCD.USERCD0018 AS PRE_UESRCD0018
+		, USERCD.USERCD0019 AS PRE_UESRCD0019
+		, USERCD.USERCD0020 AS PRE_UESRCD0020
+		, USERCD.USERCD0021 AS PRE_UESRCD0021
+		, USERCD.USERCD0022 AS PRE_UESRCD0022
+		, USERCD.USERCD0023 AS PRE_UESRCD0023
+		, USERCD.USERCD0024 AS PRE_UESRCD0024
+		, USERCD.USERCD0025 AS PRE_UESRCD0025
+		, USERCD.USERCD0026 AS PRE_UESRCD0026
+		, USERCD.USERCD0027 AS PRE_UESRCD0027
+		, USERCD.USERCD0028 AS PRE_UESRCD0028
+		, USERCD.USERCD0029 AS PRE_UESRCD0029
+		, USERCD.USERCD0030 AS PRE_UESRCD0030
+		, USERCD.USERCD0031 AS PRE_UESRCD0031
+		, USERCD.USERCD0032 AS PRE_UESRCD0032
+		, USERCD.USERCD0033 AS PRE_UESRCD0033
+		, USERCD.USERCD0034 AS PRE_UESRCD0034
+		, USERCD.USERCD0035 AS PRE_UESRCD0035
+		, USERCD.USERCD0036 AS PRE_UESRCD0036
+		, CDM_PUSERCD0001.VALUE1_KANJ AS PRE_USERCD0001_NM
+		, CDM_PUSERCD0002.VALUE1_KANJ AS PRE_USERCD0002_NM
+		, CDM_PUSERCD0003.VALUE1_KANJ AS PRE_USERCD0003_NM
+		, CDM_PUSERCD0004.VALUE1_KANJ AS PRE_USERCD0004_NM
+		, CDM_PUSERCD0005.VALUE1_KANJ AS PRE_USERCD0005_NM
+		, CDM_PUSERCD0006.VALUE1_KANJ AS PRE_USERCD0006_NM
+		, CDM_PUSERCD0007.VALUE1_KANJ AS PRE_USERCD0007_NM
+		, CDM_PUSERCD0008.VALUE1_KANJ AS PRE_USERCD0008_NM
+		, CDM_PUSERCD0009.VALUE1_KANJ AS PRE_USERCD0009_NM
+		, CDM_PUSERCD0010.VALUE1_KANJ AS PRE_USERCD0010_NM
+		, CDM_PUSERCD0011.VALUE1_KANJ AS PRE_USERCD0011_NM
+		, CDM_PUSERCD0012.VALUE1_KANJ AS PRE_USERCD0012_NM
+		, CDM_PUSERCD0013.VALUE1_KANJ AS PRE_USERCD0013_NM
+		, CDM_PUSERCD0014.VALUE1_KANJ AS PRE_USERCD0014_NM
+		, CDM_PUSERCD0015.VALUE1_KANJ AS PRE_USERCD0015_NM
+		, CDM_PUSERCD0016.VALUE1_KANJ AS PRE_USERCD0016_NM
+		, CDM_PUSERCD0017.VALUE1_KANJ AS PRE_USERCD0017_NM
+		, CDM_PUSERCD0018.VALUE1_KANJ AS PRE_USERCD0018_NM
+		, CDM_PUSERCD0019.VALUE1_KANJ AS PRE_USERCD0019_NM
+		, CDM_PUSERCD0020.VALUE1_KANJ AS PRE_USERCD0020_NM
+		, CDM_PUSERCD0021.VALUE1_KANJ AS PRE_USERCD0021_NM
+		, CDM_PUSERCD0022.VALUE1_KANJ AS PRE_USERCD0022_NM
+		, CDM_PUSERCD0023.VALUE1_KANJ AS PRE_USERCD0023_NM
+		, CDM_PUSERCD0024.VALUE1_KANJ AS PRE_USERCD0024_NM
+		, CDM_PUSERCD0025.VALUE1_KANJ AS PRE_USERCD0025_NM
+		, CDM_PUSERCD0026.VALUE1_KANJ AS PRE_USERCD0026_NM
+		, CDM_PUSERCD0027.VALUE1_KANJ AS PRE_USERCD0027_NM
+		, CDM_PUSERCD0028.VALUE1_KANJ AS PRE_USERCD0028_NM
+		, CDM_PUSERCD0029.VALUE1_KANJ AS PRE_USERCD0029_NM
+		, CDM_PUSERCD0030.VALUE1_KANJ AS PRE_USERCD0030_NM
+		, CDM_PUSERCD0031.VALUE1_KANJ AS PRE_USERCD0031_NM
+		, CDM_PUSERCD0032.VALUE1_KANJ AS PRE_USERCD0032_NM
+		, CDM_PUSERCD0033.VALUE1_KANJ AS PRE_USERCD0033_NM
+		, CDM_PUSERCD0034.VALUE1_KANJ AS PRE_USERCD0034_NM
+		, CDM_PUSERCD0035.VALUE1_KANJ AS PRE_USERCD0035_NM
+		, CDM_PUSERCD0036.VALUE1_KANJ AS PRE_USERCD0036_NM
+		, USERCD.USERCD0101 AS PRE_UESRCD0101
+		, USERCD.USERCD0102 AS PRE_UESRCD0102
+		, USERCD.USERCD0103 AS PRE_UESRCD0103
+		, USERCD.USERCD0104 AS PRE_UESRCD0104
+		, USERCD.USERCD0105 AS PRE_UESRCD0105
+		, USERCD.USERCD0106 AS PRE_UESRCD0106
+		, USERCD.USERCD0107 AS PRE_UESRCD0107
+		, USERCD.USERCD0108 AS PRE_UESRCD0108
+		, USERCD.USERCD0109 AS PRE_UESRCD0109
+		, USERCD.USERCD0201 AS PRE_UESRCD0201
+		, USERCD.USERCD0202 AS PRE_UESRCD0202
+		, USERCD.USERCD0203 AS PRE_UESRCD0203
+		, USERCD.USERCD0204 AS PRE_UESRCD0204
+		, USERCD.USERCD0205 AS PRE_UESRCD0205
+		, USERCD.USERCD0206 AS PRE_UESRCD0206
+		, CDM_USERCD0001.VALUE1_KANJ AS USERCD0001_NM
+		, CDM_USERCD0002.VALUE1_KANJ AS USERCD0002_NM
+		, CDM_USERCD0003.VALUE1_KANJ AS USERCD0003_NM
+		, CDM_USERCD0004.VALUE1_KANJ AS USERCD0004_NM
+		, CDM_USERCD0005.VALUE1_KANJ AS USERCD0005_NM
+		, CDM_USERCD0006.VALUE1_KANJ AS USERCD0006_NM
+		, CDM_USERCD0007.VALUE1_KANJ AS USERCD0007_NM
+		, CDM_USERCD0008.VALUE1_KANJ AS USERCD0008_NM
+		, CDM_USERCD0009.VALUE1_KANJ AS USERCD0009_NM
+		, CDM_USERCD0010.VALUE1_KANJ AS USERCD0010_NM
+		, CDM_USERCD0011.VALUE1_KANJ AS USERCD0011_NM
+		, CDM_USERCD0012.VALUE1_KANJ AS USERCD0012_NM
+		, CDM_USERCD0013.VALUE1_KANJ AS USERCD0013_NM
+		, CDM_USERCD0014.VALUE1_KANJ AS USERCD0014_NM
+		, CDM_USERCD0015.VALUE1_KANJ AS USERCD0015_NM
+		, CDM_USERCD0016.VALUE1_KANJ AS USERCD0016_NM
+		, CDM_USERCD0017.VALUE1_KANJ AS USERCD0017_NM
+		, CDM_USERCD0018.VALUE1_KANJ AS USERCD0018_NM
+		, CDM_USERCD0019.VALUE1_KANJ AS USERCD0019_NM
+		, CDM_USERCD0020.VALUE1_KANJ AS USERCD0020_NM
+		, CDM_USERCD0021.VALUE1_KANJ AS USERCD0021_NM
+		, CDM_USERCD0022.VALUE1_KANJ AS USERCD0022_NM
+		, CDM_USERCD0023.VALUE1_KANJ AS USERCD0023_NM
+		, CDM_USERCD0024.VALUE1_KANJ AS USERCD0024_NM
+		, CDM_USERCD0025.VALUE1_KANJ AS USERCD0025_NM
+		, CDM_USERCD0026.VALUE1_KANJ AS USERCD0026_NM
+		, CDM_USERCD0027.VALUE1_KANJ AS USERCD0027_NM
+		, CDM_USERCD0028.VALUE1_KANJ AS USERCD0028_NM
+		, CDM_USERCD0029.VALUE1_KANJ AS USERCD0029_NM
+		, CDM_USERCD0030.VALUE1_KANJ AS USERCD0030_NM
+		, CDM_USERCD0031.VALUE1_KANJ AS USERCD0031_NM
+		, CDM_USERCD0032.VALUE1_KANJ AS USERCD0032_NM
+		, CDM_USERCD0033.VALUE1_KANJ AS USERCD0033_NM
+		, CDM_USERCD0034.VALUE1_KANJ AS USERCD0034_NM
+		, CDM_USERCD0035.VALUE1_KANJ AS USERCD0035_NM
+		, CDM_USERCD0036.VALUE1_KANJ AS USERCD0036_NM
+		-- ★ユーザーコード情報（変更後）
+		, HCO.USERCD0001
+		, HCO.USERCD0002
+		, HCO.USERCD0003
+		, HCO.USERCD0004
+		, HCO.USERCD0005
+		, HCO.USERCD0006
+		, HCO.USERCD0007
+		, HCO.USERCD0008
+		, HCO.USERCD0009
+		, HCO.USERCD0010
+		, HCO.USERCD0011
+		, HCO.USERCD0012
+		, HCO.USERCD0013
+		, HCO.USERCD0014
+		, HCO.USERCD0015
+		, HCO.USERCD0016
+		, HCO.USERCD0017
+		, HCO.USERCD0018
+		, HCO.USERCD0019
+		, HCO.USERCD0020
+		, HCO.USERCD0021
+		, HCO.USERCD0022
+		, HCO.USERCD0023
+		, HCO.USERCD0024
+		, HCO.USERCD0025
+		, HCO.USERCD0026
+		, HCO.USERCD0027
+		, HCO.USERCD0028
+		, HCO.USERCD0029
+		, HCO.USERCD0030
+		, HCO.USERCD0031
+		, HCO.USERCD0032
+		, HCO.USERCD0033
+		, HCO.USERCD0034
+		, HCO.USERCD0035
+		, HCO.USERCD0036
+		, HCO.USERCD0101
+		, HCO.USERCD0102
+		, HCO.USERCD0103
+		, HCO.USERCD0104
+		, HCO.USERCD0105
+		, HCO.USERCD0106
+		, HCO.USERCD0107
+		, HCO.USERCD0108
+		, HCO.USERCD0109
+		, HCO.USERCD0201
+		, HCO.USERCD0202
+		, HCO.USERCD0203
+		, HCO.USERCD0204
+		, HCO.USERCD0205
+		, HCO.USERCD0206
+		-- ★診療報酬情報（変更前）
+		, REWARD.REWARD04 AS PRE_REWARD04
+		, REWARD.REWARD05 AS PRE_REWARD05
+		, REWARD.REWARD08 AS PRE_REWARD08
+		, REWARD.REWARD09 AS PRE_REWARD09
+		, REWARD.REWARD16 AS PRE_REWARD16
+		, REWARD.REWARD17 AS PRE_REWARD17
+		, REWARD.REWARD18 AS PRE_REWARD18
+		, REWARD.REWARD21 AS PRE_REWARD21
+		, REWARD.REWARD23 AS PRE_REWARD23
+		, REWARD.REWARD25 AS PRE_REWARD25
+		, REWARD.REWARD26 AS PRE_REWARD26
+		, REWARD.REWARD27 AS PRE_REWARD27
+		, REWARD.REWARD29 AS PRE_REWARD29
+		, REWARD.REWARD35 AS PRE_REWARD35
+		, REWARD.REWARD36 AS PRE_REWARD36
+		, REWARD.REWARD37 AS PRE_REWARD37
+		, REWARD.REWARD44 AS PRE_REWARD44
+		, CDM_PREWARD04.VALUE1_KANJ AS PRE_REWARD04_NM
+		, CDM_PREWARD05.VALUE1_KANJ AS PRE_REWARD05_NM
+		, CDM_PREWARD08.VALUE1_KANJ AS PRE_REWARD08_NM
+		, CDM_PREWARD09.VALUE1_KANJ AS PRE_REWARD09_NM
+		, CDM_PREWARD16.VALUE1_KANJ AS PRE_REWARD16_NM
+		, CDM_PREWARD17.VALUE1_KANJ AS PRE_REWARD17_NM
+		, CDM_PREWARD18.VALUE1_KANJ AS PRE_REWARD18_NM
+		, CDM_PREWARD21.VALUE1_KANJ AS PRE_REWARD21_NM
+		, CDM_PREWARD23.VALUE1_KANJ AS PRE_REWARD23_NM
+		, CDM_PREWARD25.VALUE1_KANJ AS PRE_REWARD25_NM
+		, CDM_PREWARD26.VALUE1_KANJ AS PRE_REWARD26_NM
+		, CDM_PREWARD27.VALUE1_KANJ AS PRE_REWARD27_NM
+		, CDM_PREWARD29.VALUE1_KANJ AS PRE_REWARD29_NM
+		, CDM_PREWARD35.VALUE1_KANJ AS PRE_REWARD35_NM
+		, CDM_PREWARD36.VALUE1_KANJ AS PRE_REWARD36_NM
+		, CDM_PREWARD37.VALUE1_KANJ AS PRE_REWARD37_NM
+		, CDM_PREWARD44.VALUE1_KANJ AS PRE_REWARD44_NM
+		-- ★診療報酬情報（変更後）
+		, HCO.REWARD04
+		, HCO.REWARD05
+		, HCO.REWARD08
+		, HCO.REWARD09
+		, HCO.REWARD16
+		, HCO.REWARD17
+		, HCO.REWARD18
+		, HCO.REWARD21
+		, HCO.REWARD23
+		, HCO.REWARD25
+		, HCO.REWARD26
+		, HCO.REWARD27
+		, HCO.REWARD29
+		, HCO.REWARD35
+		, HCO.REWARD36
+		, HCO.REWARD37
+		, HCO.REWARD44
+		, CDM_REWARD04.VALUE1_KANJ AS REWARD04_NM
+		, CDM_REWARD05.VALUE1_KANJ AS REWARD05_NM
+		, CDM_REWARD08.VALUE1_KANJ AS REWARD08_NM
+		, CDM_REWARD09.VALUE1_KANJ AS REWARD09_NM
+		, CDM_REWARD16.VALUE1_KANJ AS REWARD16_NM
+		, CDM_REWARD17.VALUE1_KANJ AS REWARD17_NM
+		, CDM_REWARD18.VALUE1_KANJ AS REWARD18_NM
+		, CDM_REWARD21.VALUE1_KANJ AS REWARD21_NM
+		, CDM_REWARD23.VALUE1_KANJ AS REWARD23_NM
+		, CDM_REWARD25.VALUE1_KANJ AS REWARD25_NM
+		, CDM_REWARD26.VALUE1_KANJ AS REWARD26_NM
+		, CDM_REWARD27.VALUE1_KANJ AS REWARD27_NM
+		, CDM_REWARD29.VALUE1_KANJ AS REWARD29_NM
+		, CDM_REWARD35.VALUE1_KANJ AS REWARD35_NM
+		, CDM_REWARD36.VALUE1_KANJ AS REWARD36_NM
+		, CDM_REWARD37.VALUE1_KANJ AS REWARD37_NM
+		, CDM_REWARD44.VALUE1_KANJ AS REWARD44_NM
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.APR_COMMNET AS APR_COMMENT  -- 申請管理.承認・却下コメント
+		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
+		FROM
+		T_RDM_REQ_KNR KNR ---申請管理
+		INNER JOIN
+		T_RDM_HCO_REQ HCO ---施設_申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON 1=1
+		AND HCO.INS_NO = MST.INS_NO
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST ULT -- ULT_MDB施設マスタ
+		ON 1=1
+		AND ULT.DCF_SHISETSU_CD = HCO.ULT_INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		LEFT JOIN
+		COM_POS_ADDR ADDR
+		ON 1=1
+		AND HCO.INS_PCODE = ADDR.POST_CODE
+		LEFT JOIN
+		COM_POS_ADDR ADDRMST
+		ON 1=1
+		AND MST.INS_PCODE = ADDRMST.POST_CODE
+		LEFT JOIN
+		M_RDM_HCO_ITEM_NEXT NEXT -- 施設_来期用項目情報
+		ON 1=1
+		AND NEXT.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS BEDCNT_IPPAN
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS BEDCNT_IRYORYOYO
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS BEDCNT_SESHIN
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS BEDCNT_KEKKAKU
+		  , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS BEDCNT_KANSEN
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS BEDCNT_KAIGO
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS BEDCNT_RYOYO
+		FROM
+		  M_RDM_HCO_BEDCNT
+		WHERE
+		  RELEV_TYPE = '008'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO
+		) BEDCNT
+		ON 1=1
+		AND BEDCNT.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS BEDCNT_IPPAN
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS BEDCNT_IRYORYOYO
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS BEDCNT_SESHIN
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS BEDCNT_KEKKAKU
+		  , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS BEDCNT_KANSEN
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS BEDCNT_KAIGO
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS BEDCNT_RYOYO
+		FROM
+		  M_RDM_HCO_BEDCNT_NEXT
+		WHERE
+		  RELEV_TYPE = '008'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO
+		) BEDCNT_NEXT
+		ON 1=1
+		AND BEDCNT_NEXT.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS FREE0001
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS FREE0002
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS FREE0003
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS FREE0004
+		  , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS FREE0005
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS FREE0006
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS FREE0007
+		  , MAX(CASE SET_CD WHEN '008' THEN SET_VALUE ELSE null END) AS FREE0008
+		  , MAX(CASE SET_CD WHEN '009' THEN SET_VALUE ELSE null END) AS FREE0009
+		  , MAX(CASE SET_CD WHEN '010' THEN SET_VALUE ELSE null END) AS FREE0010
+		  , MAX(CASE SET_CD WHEN '011' THEN SET_VALUE ELSE null END) AS FREE0011
+		  , MAX(CASE SET_CD WHEN '012' THEN SET_VALUE ELSE null END) AS FREE0012
+		  , MAX(CASE SET_CD WHEN '013' THEN SET_VALUE ELSE null END) AS FREE0013
+		  , MAX(CASE SET_CD WHEN '014' THEN SET_VALUE ELSE null END) AS FREE0014
+		  , MAX(CASE SET_CD WHEN '015' THEN SET_VALUE ELSE null END) AS FREE0015
+		FROM
+		  M_RDM_HCO_FREE
+		WHERE
+		  RELEV_TYPE = '073'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) FREE
+		ON 1=1
+		AND FREE.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS WELFARE02
+		  , MAX(CASE SET_CD WHEN '008' THEN SET_VALUE ELSE null END) AS WELFARE08
+		FROM
+		  M_RDM_HCO_WELFARE
+		WHERE
+		  RELEV_TYPE = '004'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) WELFARE
+		ON 1=1
+		AND WELFARE.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS RESULT01
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS RESULT02
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS RESULT03
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS RESULT04
+		  , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS RESULT05
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS RESULT06
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS RESULT07
+		  , MAX(CASE SET_CD WHEN '008' THEN SET_VALUE ELSE null END) AS RESULT08
+		  , MAX(CASE SET_CD WHEN '009' THEN SET_VALUE ELSE null END) AS RESULT09
+		  , MAX(CASE SET_CD WHEN '010' THEN SET_VALUE ELSE null END) AS RESULT10
+		  , MAX(CASE SET_CD WHEN '011' THEN SET_VALUE ELSE null END) AS RESULT11
+		  , MAX(CASE SET_CD WHEN '012' THEN SET_VALUE ELSE null END) AS RESULT12
+		  , MAX(CASE SET_CD WHEN '013' THEN SET_VALUE ELSE null END) AS RESULT13
+		  , MAX(CASE SET_CD WHEN '014' THEN SET_VALUE ELSE null END) AS RESULT14
+		  , MAX(CASE SET_CD WHEN '015' THEN SET_VALUE ELSE null END) AS RESULT15
+		  , MAX(CASE SET_CD WHEN '016' THEN SET_VALUE ELSE null END) AS RESULT16
+		  , MAX(CASE SET_CD WHEN '017' THEN SET_VALUE ELSE null END) AS RESULT17
+		  , MAX(CASE SET_CD WHEN '018' THEN SET_VALUE ELSE null END) AS RESULT18
+		  , MAX(CASE SET_CD WHEN '019' THEN SET_VALUE ELSE null END) AS RESULT19
+		  , MAX(CASE SET_CD WHEN '020' THEN SET_VALUE ELSE null END) AS RESULT20
+		  , MAX(CASE SET_CD WHEN '021' THEN SET_VALUE ELSE null END) AS RESULT21
+		  , MAX(CASE SET_CD WHEN '022' THEN SET_VALUE ELSE null END) AS RESULT22
+		  , MAX(CASE SET_CD WHEN '023' THEN SET_VALUE ELSE null END) AS RESULT23
+		  , MAX(CASE SET_CD WHEN '024' THEN SET_VALUE ELSE null END) AS RESULT24
+		  , MAX(CASE SET_CD WHEN '025' THEN SET_VALUE ELSE null END) AS RESULT25
+		  , MAX(CASE SET_CD WHEN '026' THEN SET_VALUE ELSE null END) AS RESULT26
+		  , MAX(CASE SET_CD WHEN '027' THEN SET_VALUE ELSE null END) AS RESULT27
+		  , MAX(CASE SET_CD WHEN '028' THEN SET_VALUE ELSE null END) AS RESULT28
+		  , MAX(CASE SET_CD WHEN '029' THEN SET_VALUE ELSE null END) AS RESULT29
+		  , MAX(CASE SET_CD WHEN '030' THEN SET_VALUE ELSE null END) AS RESULT30
+		  , MAX(CASE SET_CD WHEN '031' THEN SET_VALUE ELSE null END) AS RESULT31
+		  , MAX(CASE SET_CD WHEN '032' THEN SET_VALUE ELSE null END) AS RESULT32
+		  , MAX(CASE SET_CD WHEN '033' THEN SET_VALUE ELSE null END) AS RESULT33
+		  , MAX(CASE SET_CD WHEN '034' THEN SET_VALUE ELSE null END) AS RESULT34
+		  , MAX(CASE SET_CD WHEN '035' THEN SET_VALUE ELSE null END) AS RESULT35
+		  , MAX(CASE SET_CD WHEN '036' THEN SET_VALUE ELSE null END) AS RESULT36
+		FROM
+		  M_RDM_HCO_RESULT
+		WHERE
+		  RELEV_TYPE = '020'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) RESULT
+		ON 1=1
+		AND RESULT.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		(SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS EQUIP01
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS EQUIP02
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS EQUIP03
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS EQUIP07
+		  , MAX(CASE SET_CD WHEN '009' THEN SET_VALUE ELSE null END) AS EQUIP09
+		FROM
+		  M_RDM_HCO_EQUIP
+		WHERE
+		  RELEV_TYPE = '007'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) EQUIP
+		ON 1=1
+		AND EQUIP.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS MARKET01
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS MARKET02
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS MARKET03
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS MARKET04
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS MARKET06
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS MARKET07
+		  , MAX(CASE SET_CD WHEN '009' THEN SET_VALUE ELSE null END) AS MARKET09
+		FROM
+		  M_RDM_HCO_MARKET
+		WHERE
+		  RELEV_TYPE = '013'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) MARKET
+		ON 1=1
+		AND MARKET.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '012' THEN SET_VALUE ELSE null END) AS MEDICAL12
+		FROM
+		  M_RDM_HCO_MEDICAL
+		WHERE
+		  RELEV_TYPE = '003'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) MEDICAL
+		ON 1=1
+		AND MEDICAL.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS SPFUNC01
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS SPFUNC03
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS SPFUNC04
+		FROM
+		  M_RDM_HCO_SPFUNC
+		WHERE
+		  RELEV_TYPE = '006'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) SPFUNC
+		ON 1=1
+		AND SPFUNC.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '010' THEN SET_VALUE ELSE null END) AS TIEUP10
+		  , MAX(CASE SET_CD WHEN '011' THEN SET_VALUE ELSE null END) AS TIEUP11
+		  , MAX(CASE SET_CD WHEN '012' THEN SET_VALUE ELSE null END) AS TIEUP12
+		FROM
+		  M_RDM_HCO_FREE
+		WHERE
+		  RELEV_TYPE = '012'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) TIEUP
+		ON 1=1
+		AND TIEUP.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0001
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0002
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0003
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0004
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0005
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0006
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0007
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '008' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0008
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '009' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0009
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '010' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0010
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '011' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0011
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '012' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0012
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '013' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0013
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '014' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0014
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '015' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0015
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '016' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0016
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '017' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0017
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '018' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0018
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '019' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0019
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '020' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0020
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '021' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0021
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '022' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0022
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '023' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0023
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '024' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0024
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '025' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0025
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '026' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0026
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '027' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0027
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '028' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0028
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '029' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0029
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '030' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0030
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '031' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0031
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '032' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0032
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '033' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0033
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '034' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0034
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '035' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0035
+		  , MAX(CASE RELEV_CD WHEN '00' THEN CASE SET_CD WHEN '036' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0036
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0101
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0102
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0103
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0104
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0105
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0106
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0107
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '008' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0108
+		  , MAX(CASE RELEV_CD WHEN '01' THEN CASE SET_CD WHEN '009' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0109
+		  , MAX(CASE RELEV_CD WHEN '02' THEN CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0201
+		  , MAX(CASE RELEV_CD WHEN '02' THEN CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0202
+		  , MAX(CASE RELEV_CD WHEN '02' THEN CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0203
+		  , MAX(CASE RELEV_CD WHEN '02' THEN CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0204
+		  , MAX(CASE RELEV_CD WHEN '02' THEN CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0205
+		  , MAX(CASE RELEV_CD WHEN '02' THEN CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END ELSE null END) AS USERCD0206
+		FROM
+		  M_RDM_HCO_USERCD
+		WHERE
+		  RELEV_TYPE = '021'
+		GROUP BY
+		  INS_NO) USERCD
+		ON 1=1
+		AND USERCD.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS REWARD04
+	      , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS REWARD05
+	      , MAX(CASE SET_CD WHEN '008' THEN SET_VALUE ELSE null END) AS REWARD08
+	      , MAX(CASE SET_CD WHEN '009' THEN SET_VALUE ELSE null END) AS REWARD09
+	      , MAX(CASE SET_CD WHEN '016' THEN SET_VALUE ELSE null END) AS REWARD16
+	      , MAX(CASE SET_CD WHEN '017' THEN SET_VALUE ELSE null END) AS REWARD17
+	      , MAX(CASE SET_CD WHEN '018' THEN SET_VALUE ELSE null END) AS REWARD18
+	      , MAX(CASE SET_CD WHEN '021' THEN SET_VALUE ELSE null END) AS REWARD21
+	      , MAX(CASE SET_CD WHEN '023' THEN SET_VALUE ELSE null END) AS REWARD23
+	      , MAX(CASE SET_CD WHEN '025' THEN SET_VALUE ELSE null END) AS REWARD25
+	      , MAX(CASE SET_CD WHEN '026' THEN SET_VALUE ELSE null END) AS REWARD26
+	      , MAX(CASE SET_CD WHEN '027' THEN SET_VALUE ELSE null END) AS REWARD27
+	      , MAX(CASE SET_CD WHEN '029' THEN SET_VALUE ELSE null END) AS REWARD29
+	      , MAX(CASE SET_CD WHEN '035' THEN SET_VALUE ELSE null END) AS REWARD35
+	      , MAX(CASE SET_CD WHEN '036' THEN SET_VALUE ELSE null END) AS REWARD36
+	      , MAX(CASE SET_CD WHEN '037' THEN SET_VALUE ELSE null END) AS REWARD37
+	      , MAX(CASE SET_CD WHEN '044' THEN SET_VALUE ELSE null END) AS REWARD44
+		FROM
+		  M_RDM_HCO_REWARD
+		WHERE
+		  RELEV_TYPE = '005'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO) REWARD
+		ON 1=1
+		AND REWARD.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PTRADETYPE -- コード情報
+		ON 1=1
+		AND CDM_PTRADETYPE.CODE_NAME = 'TRADE_TYPE'
+		AND CDM_PTRADETYPE.DEL_FLG = '0'
+		AND CDM_PTRADETYPE.VALUE1 = MST.TRADE_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_TRADETYPE -- コード情報
+		ON 1=1
+		AND CDM_TRADETYPE.CODE_NAME = 'TRADE_TYPE'
+		AND CDM_TRADETYPE.DEL_FLG = '0'
+		AND CDM_TRADETYPE.VALUE1 = HCO.TRADE_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PPHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_PPHARMTYPE.CODE_NAME = 'PHARM_TYPE'
+		AND CDM_PPHARMTYPE.DEL_FLG = '0'
+		AND CDM_PPHARMTYPE.VALUE1 = MST.PHARM_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PINSRANK -- コード情報
+		ON 1=1
+		AND CDM_PINSRANK.CODE_NAME = 'INS_RANK'
+		AND CDM_PINSRANK.DEL_FLG = '0'
+		AND CDM_PINSRANK.VALUE1 = MST.INS_RANK
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREGVISTYPE -- コード情報
+		ON 1=1
+		AND CDM_PREGVISTYPE.CODE_NAME = 'REG_VIS_TYPE'
+		AND CDM_PREGVISTYPE.DEL_FLG = '0'
+		AND CDM_PREGVISTYPE.VALUE1 = MST.REG_VIS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_PHARMTYPE.CODE_NAME = 'PHARM_TYPE'
+		AND CDM_PHARMTYPE.DEL_FLG = '0'
+		AND CDM_PHARMTYPE.VALUE1 = NEXT.PHARM_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_INSRANK -- コード情報
+		ON 1=1
+		AND CDM_INSRANK.CODE_NAME = 'INS_RANK'
+		AND CDM_INSRANK.DEL_FLG = '0'
+		AND CDM_INSRANK.VALUE1 = NEXT.INS_RANK
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REGVISTYPE -- コード情報
+		ON 1=1
+		AND CDM_REGVISTYPE.CODE_NAME = 'REG_VIS_TYPE'
+		AND CDM_REGVISTYPE.DEL_FLG = '0'
+		AND CDM_REGVISTYPE.VALUE1 = NEXT.REG_VIS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PWSTYPE -- コード情報
+		ON 1=1
+		AND CDM_PWSTYPE.CODE_NAME = 'WS_TYPE'
+		AND CDM_PWSTYPE.DEL_FLG = '0'
+		AND CDM_PWSTYPE.VALUE1 = MST.WS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_WSTYPE -- コード情報
+		ON 1=1
+		AND CDM_WSTYPE.CODE_NAME = 'WS_TYPE'
+		AND CDM_WSTYPE.DEL_FLG = '0'
+		AND CDM_WSTYPE.VALUE1 = HCO.WS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PBASKETPURCHASE -- コード情報
+		ON 1=1
+		AND CDM_PBASKETPURCHASE.CODE_NAME = 'BASKET_PURCHASE'
+		AND CDM_PBASKETPURCHASE.DEL_FLG = '0'
+		AND CDM_PBASKETPURCHASE.VALUE1 = MST.BASKET_PURCHASE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_BASKETPURCHASE -- コード情報
+		ON 1=1
+		AND CDM_BASKETPURCHASE.CODE_NAME = 'BASKET_PURCHASE'
+		AND CDM_BASKETPURCHASE.DEL_FLG = '0'
+		AND CDM_BASKETPURCHASE.VALUE1 = HCO.BASKET_PURCHASE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUNIVSUBDIV -- コード情報
+		ON 1=1
+		AND CDM_PUNIVSUBDIV.CODE_NAME = 'UNIV_SUBDIV'
+		AND CDM_PUNIVSUBDIV.DEL_FLG = '0'
+		AND CDM_PUNIVSUBDIV.VALUE1 = MST.UNIV_SUBDIV
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_UNIVSUBDIV -- コード情報
+		ON 1=1
+		AND CDM_UNIVSUBDIV.CODE_NAME = 'UNIV_SUBDIV'
+		AND CDM_UNIVSUBDIV.DEL_FLG = '0'
+		AND CDM_UNIVSUBDIV.VALUE1 = HCO.UNIV_SUBDIV
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PCAPATYPE -- コード情報
+		ON 1=1
+		AND CDM_PCAPATYPE.CODE_NAME = 'CAPA_TYPE'
+		AND CDM_PCAPATYPE.DEL_FLG = '0'
+		AND CDM_PCAPATYPE.VALUE1 = MST.CAPA_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_CAPATYPE -- コード情報
+		ON 1=1
+		AND CDM_CAPATYPE.CODE_NAME = 'CAPA_TYPE'
+		AND CDM_CAPATYPE.DEL_FLG = '0'
+		AND CDM_CAPATYPE.VALUE1 = HCO.CAPA_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PWELFARE02 -- コード情報
+		ON 1=1
+		AND CDM_PWELFARE02.CODE_NAME = 'WELFARE_LIST'
+		AND CDM_PWELFARE02.DEL_FLG = '0'
+		AND CDM_PWELFARE02.VALUE1 = WELFARE.WELFARE02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PWELFARE08 -- コード情報
+		ON 1=1
+		AND CDM_PWELFARE08.CODE_NAME = 'WELFARE_LIST'
+		AND CDM_PWELFARE08.DEL_FLG = '0'
+		AND CDM_PWELFARE08.VALUE1 = WELFARE.WELFARE08
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_WELFARE02 -- コード情報
+		ON 1=1
+		AND CDM_WELFARE02.CODE_NAME = 'WELFARE_LIST'
+		AND CDM_WELFARE02.DEL_FLG = '0'
+		AND CDM_WELFARE02.VALUE1 = HCO.WELFARE02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_WELFARE08 -- コード情報
+		ON 1=1
+		AND CDM_WELFARE08.CODE_NAME = 'WELFARE_LIST'
+		AND CDM_WELFARE08.DEL_FLG = '0'
+		AND CDM_WELFARE08.VALUE1 = HCO.WELFARE08
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT01 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT01.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT01.DEL_FLG = '0'
+		AND CDM_PRESULT01.VALUE1 = RESULT.RESULT01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT02 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT02.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT02.DEL_FLG = '0'
+		AND CDM_PRESULT02.VALUE1 = RESULT.RESULT02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT03 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT03.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT03.DEL_FLG = '0'
+		AND CDM_PRESULT03.VALUE1 = RESULT.RESULT03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT04 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT04.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT04.DEL_FLG = '0'
+		AND CDM_PRESULT04.VALUE1 = RESULT.RESULT04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT05 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT05.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT05.DEL_FLG = '0'
+		AND CDM_PRESULT05.VALUE1 = RESULT.RESULT05
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT06 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT06.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT06.DEL_FLG = '0'
+		AND CDM_PRESULT06.VALUE1 = RESULT.RESULT06
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT07 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT07.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT07.DEL_FLG = '0'
+		AND CDM_PRESULT07.VALUE1 = RESULT.RESULT07
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT08 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT08.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT08.DEL_FLG = '0'
+		AND CDM_PRESULT08.VALUE1 = RESULT.RESULT08
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT09 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT09.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT09.DEL_FLG = '0'
+		AND CDM_PRESULT09.VALUE1 = RESULT.RESULT09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT10 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT10.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT10.DEL_FLG = '0'
+		AND CDM_PRESULT10.VALUE1 = RESULT.RESULT10
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT11 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT11.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT11.DEL_FLG = '0'
+		AND CDM_PRESULT11.VALUE1 = RESULT.RESULT11
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT12 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT12.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT12.DEL_FLG = '0'
+		AND CDM_PRESULT12.VALUE1 = RESULT.RESULT12
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT13 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT13.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT13.DEL_FLG = '0'
+		AND CDM_PRESULT13.VALUE1 = RESULT.RESULT13
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT14 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT14.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT14.DEL_FLG = '0'
+		AND CDM_PRESULT14.VALUE1 = RESULT.RESULT14
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT15 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT15.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT15.DEL_FLG = '0'
+		AND CDM_PRESULT15.VALUE1 = RESULT.RESULT15
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT16 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT16.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT16.DEL_FLG = '0'
+		AND CDM_PRESULT16.VALUE1 = RESULT.RESULT16
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT17 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT17.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT17.DEL_FLG = '0'
+		AND CDM_PRESULT17.VALUE1 = RESULT.RESULT17
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT18 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT18.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT18.DEL_FLG = '0'
+		AND CDM_PRESULT18.VALUE1 = RESULT.RESULT18
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT19 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT19.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT19.DEL_FLG = '0'
+		AND CDM_PRESULT19.VALUE1 = RESULT.RESULT19
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT20 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT20.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT20.DEL_FLG = '0'
+		AND CDM_PRESULT20.VALUE1 = RESULT.RESULT20
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT21 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT21.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT21.DEL_FLG = '0'
+		AND CDM_PRESULT21.VALUE1 = RESULT.RESULT21
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT22 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT22.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT22.DEL_FLG = '0'
+		AND CDM_PRESULT22.VALUE1 = RESULT.RESULT22
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT23 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT23.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT23.DEL_FLG = '0'
+		AND CDM_PRESULT23.VALUE1 = RESULT.RESULT23
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT24 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT24.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT24.DEL_FLG = '0'
+		AND CDM_PRESULT24.VALUE1 = RESULT.RESULT24
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT25 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT25.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT25.DEL_FLG = '0'
+		AND CDM_PRESULT25.VALUE1 = RESULT.RESULT25
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT26 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT26.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT26.DEL_FLG = '0'
+		AND CDM_PRESULT26.VALUE1 = RESULT.RESULT26
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT27 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT27.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT27.DEL_FLG = '0'
+		AND CDM_PRESULT27.VALUE1 = RESULT.RESULT27
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT28 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT28.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT28.DEL_FLG = '0'
+		AND CDM_PRESULT28.VALUE1 = RESULT.RESULT28
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT29 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT29.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT29.DEL_FLG = '0'
+		AND CDM_PRESULT29.VALUE1 = RESULT.RESULT29
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT30 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT30.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT30.DEL_FLG = '0'
+		AND CDM_PRESULT30.VALUE1 = RESULT.RESULT30
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT31 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT31.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT31.DEL_FLG = '0'
+		AND CDM_PRESULT31.VALUE1 = RESULT.RESULT31
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT32 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT32.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT32.DEL_FLG = '0'
+		AND CDM_PRESULT32.VALUE1 = RESULT.RESULT32
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT33 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT33.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT33.DEL_FLG = '0'
+		AND CDM_PRESULT33.VALUE1 = RESULT.RESULT33
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT34 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT34.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT34.DEL_FLG = '0'
+		AND CDM_PRESULT34.VALUE1 = RESULT.RESULT34
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT35 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT35.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT35.DEL_FLG = '0'
+		AND CDM_PRESULT35.VALUE1 = RESULT.RESULT35
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PRESULT36 -- コード情報
+		ON 1=1
+		AND CDM_PRESULT36.CODE_NAME = 'RESULT_LIST'
+		AND CDM_PRESULT36.DEL_FLG = '0'
+		AND CDM_PRESULT36.VALUE1 = RESULT.RESULT36
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT01 -- コード情報
+		ON 1=1
+		AND CDM_RESULT01.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT01.DEL_FLG = '0'
+		AND CDM_RESULT01.VALUE1 = HCO.RESULT01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT02 -- コード情報
+		ON 1=1
+		AND CDM_RESULT02.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT02.DEL_FLG = '0'
+		AND CDM_RESULT02.VALUE1 = HCO.RESULT02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT03 -- コード情報
+		ON 1=1
+		AND CDM_RESULT03.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT03.DEL_FLG = '0'
+		AND CDM_RESULT03.VALUE1 = HCO.RESULT03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT04 -- コード情報
+		ON 1=1
+		AND CDM_RESULT04.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT04.DEL_FLG = '0'
+		AND CDM_RESULT04.VALUE1 = HCO.RESULT04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT05 -- コード情報
+		ON 1=1
+		AND CDM_RESULT05.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT05.DEL_FLG = '0'
+		AND CDM_RESULT05.VALUE1 = HCO.RESULT05
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT06 -- コード情報
+		ON 1=1
+		AND CDM_RESULT06.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT06.DEL_FLG = '0'
+		AND CDM_RESULT06.VALUE1 = HCO.RESULT06
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT07 -- コード情報
+		ON 1=1
+		AND CDM_RESULT07.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT07.DEL_FLG = '0'
+		AND CDM_RESULT07.VALUE1 = HCO.RESULT07
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT08 -- コード情報
+		ON 1=1
+		AND CDM_RESULT08.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT08.DEL_FLG = '0'
+		AND CDM_RESULT08.VALUE1 = HCO.RESULT08
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT09 -- コード情報
+		ON 1=1
+		AND CDM_RESULT09.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT09.DEL_FLG = '0'
+		AND CDM_RESULT09.VALUE1 = HCO.RESULT09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT10 -- コード情報
+		ON 1=1
+		AND CDM_RESULT10.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT10.DEL_FLG = '0'
+		AND CDM_RESULT10.VALUE1 = HCO.RESULT10
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT11 -- コード情報
+		ON 1=1
+		AND CDM_RESULT11.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT11.DEL_FLG = '0'
+		AND CDM_RESULT11.VALUE1 = HCO.RESULT11
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT12 -- コード情報
+		ON 1=1
+		AND CDM_RESULT12.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT12.DEL_FLG = '0'
+		AND CDM_RESULT12.VALUE1 = HCO.RESULT12
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT13 -- コード情報
+		ON 1=1
+		AND CDM_RESULT13.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT13.DEL_FLG = '0'
+		AND CDM_RESULT13.VALUE1 = HCO.RESULT13
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT14 -- コード情報
+		ON 1=1
+		AND CDM_RESULT14.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT14.DEL_FLG = '0'
+		AND CDM_RESULT14.VALUE1 = HCO.RESULT14
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT15 -- コード情報
+		ON 1=1
+		AND CDM_RESULT15.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT15.DEL_FLG = '0'
+		AND CDM_RESULT15.VALUE1 = HCO.RESULT15
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT16 -- コード情報
+		ON 1=1
+		AND CDM_RESULT16.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT16.DEL_FLG = '0'
+		AND CDM_RESULT16.VALUE1 = HCO.RESULT16
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT17 -- コード情報
+		ON 1=1
+		AND CDM_RESULT17.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT17.DEL_FLG = '0'
+		AND CDM_RESULT17.VALUE1 = HCO.RESULT17
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT18 -- コード情報
+		ON 1=1
+		AND CDM_RESULT18.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT18.DEL_FLG = '0'
+		AND CDM_RESULT18.VALUE1 = HCO.RESULT18
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT19 -- コード情報
+		ON 1=1
+		AND CDM_RESULT19.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT19.DEL_FLG = '0'
+		AND CDM_RESULT19.VALUE1 = HCO.RESULT19
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT20 -- コード情報
+		ON 1=1
+		AND CDM_RESULT20.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT20.DEL_FLG = '0'
+		AND CDM_RESULT20.VALUE1 = HCO.RESULT20
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT21 -- コード情報
+		ON 1=1
+		AND CDM_RESULT21.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT21.DEL_FLG = '0'
+		AND CDM_RESULT21.VALUE1 = HCO.RESULT21
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT22 -- コード情報
+		ON 1=1
+		AND CDM_RESULT22.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT22.DEL_FLG = '0'
+		AND CDM_RESULT22.VALUE1 = HCO.RESULT22
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT23 -- コード情報
+		ON 1=1
+		AND CDM_RESULT23.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT23.DEL_FLG = '0'
+		AND CDM_RESULT23.VALUE1 = HCO.RESULT23
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT24 -- コード情報
+		ON 1=1
+		AND CDM_RESULT24.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT24.DEL_FLG = '0'
+		AND CDM_RESULT24.VALUE1 = HCO.RESULT24
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT25 -- コード情報
+		ON 1=1
+		AND CDM_RESULT25.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT25.DEL_FLG = '0'
+		AND CDM_RESULT25.VALUE1 = HCO.RESULT25
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT26 -- コード情報
+		ON 1=1
+		AND CDM_RESULT26.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT26.DEL_FLG = '0'
+		AND CDM_RESULT26.VALUE1 = HCO.RESULT26
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT27 -- コード情報
+		ON 1=1
+		AND CDM_RESULT27.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT27.DEL_FLG = '0'
+		AND CDM_RESULT27.VALUE1 = HCO.RESULT27
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT28 -- コード情報
+		ON 1=1
+		AND CDM_RESULT28.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT28.DEL_FLG = '0'
+		AND CDM_RESULT28.VALUE1 = HCO.RESULT28
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT29 -- コード情報
+		ON 1=1
+		AND CDM_RESULT29.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT29.DEL_FLG = '0'
+		AND CDM_RESULT29.VALUE1 = HCO.RESULT29
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT30 -- コード情報
+		ON 1=1
+		AND CDM_RESULT30.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT30.DEL_FLG = '0'
+		AND CDM_RESULT30.VALUE1 = HCO.RESULT30
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT31 -- コード情報
+		ON 1=1
+		AND CDM_RESULT31.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT31.DEL_FLG = '0'
+		AND CDM_RESULT31.VALUE1 = HCO.RESULT31
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT32 -- コード情報
+		ON 1=1
+		AND CDM_RESULT32.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT32.DEL_FLG = '0'
+		AND CDM_RESULT32.VALUE1 = HCO.RESULT32
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT33 -- コード情報
+		ON 1=1
+		AND CDM_RESULT33.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT33.DEL_FLG = '0'
+		AND CDM_RESULT33.VALUE1 = HCO.RESULT33
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT34 -- コード情報
+		ON 1=1
+		AND CDM_RESULT34.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT34.DEL_FLG = '0'
+		AND CDM_RESULT34.VALUE1 = HCO.RESULT34
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT35 -- コード情報
+		ON 1=1
+		AND CDM_RESULT35.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT35.DEL_FLG = '0'
+		AND CDM_RESULT35.VALUE1 = HCO.RESULT35
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RESULT36 -- コード情報
+		ON 1=1
+		AND CDM_RESULT36.CODE_NAME = 'RESULT_LIST'
+		AND CDM_RESULT36.DEL_FLG = '0'
+		AND CDM_RESULT36.VALUE1 = HCO.RESULT36
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PEQUIP01 -- コード情報
+		ON 1=1
+		AND CDM_PEQUIP01.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_PEQUIP01.DEL_FLG = '0'
+		AND CDM_PEQUIP01.VALUE1 = EQUIP.EQUIP01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PEQUIP02 -- コード情報
+		ON 1=1
+		AND CDM_PEQUIP02.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_PEQUIP02.DEL_FLG = '0'
+		AND CDM_PEQUIP02.VALUE1 = EQUIP.EQUIP02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PEQUIP03 -- コード情報
+		ON 1=1
+		AND CDM_PEQUIP03.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_PEQUIP03.DEL_FLG = '0'
+		AND CDM_PEQUIP03.VALUE1 = EQUIP.EQUIP03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PEQUIP07 -- コード情報
+		ON 1=1
+		AND CDM_PEQUIP07.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_PEQUIP07.DEL_FLG = '0'
+		AND CDM_PEQUIP07.VALUE1 = EQUIP.EQUIP07
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PEQUIP09 -- コード情報
+		ON 1=1
+		AND CDM_PEQUIP09.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_PEQUIP09.DEL_FLG = '0'
+		AND CDM_PEQUIP09.VALUE1 = EQUIP.EQUIP09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_EQUIP01 -- コード情報
+		ON 1=1
+		AND CDM_EQUIP01.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_EQUIP01.DEL_FLG = '0'
+		AND CDM_EQUIP01.VALUE1 = HCO.EQUIP01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_EQUIP02 -- コード情報
+		ON 1=1
+		AND CDM_EQUIP02.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_EQUIP02.DEL_FLG = '0'
+		AND CDM_EQUIP02.VALUE1 = HCO.EQUIP02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_EQUIP03 -- コード情報
+		ON 1=1
+		AND CDM_EQUIP03.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_EQUIP03.DEL_FLG = '0'
+		AND CDM_EQUIP03.VALUE1 = HCO.EQUIP03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_EQUIP07 -- コード情報
+		ON 1=1
+		AND CDM_EQUIP07.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_EQUIP07.DEL_FLG = '0'
+		AND CDM_EQUIP07.VALUE1 = HCO.EQUIP07
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_EQUIP09 -- コード情報
+		ON 1=1
+		AND CDM_EQUIP09.CODE_NAME = 'EQUIP_LIST'
+		AND CDM_EQUIP09.DEL_FLG = '0'
+		AND CDM_EQUIP09.VALUE1 = HCO.EQUIP09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMARKET01 -- コード情報
+		ON 1=1
+		AND CDM_PMARKET01.CODE_NAME = 'MARKET01'
+		AND CDM_PMARKET01.DEL_FLG = '0'
+		AND CDM_PMARKET01.VALUE1 = MARKET.MARKET01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMARKET02 -- コード情報
+		ON 1=1
+		AND CDM_PMARKET02.CODE_NAME = 'MARKET_LIST'
+		AND CDM_PMARKET02.DEL_FLG = '0'
+		AND CDM_PMARKET02.VALUE1 = MARKET.MARKET02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMARKET03 -- コード情報
+		ON 1=1
+		AND CDM_PMARKET03.CODE_NAME = 'MARKET_LIST'
+		AND CDM_PMARKET03.DEL_FLG = '0'
+		AND CDM_PMARKET03.VALUE1 = MARKET.MARKET03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMARKET04 -- コード情報
+		ON 1=1
+		AND CDM_PMARKET04.CODE_NAME = 'MARKET_LIST'
+		AND CDM_PMARKET04.DEL_FLG = '0'
+		AND CDM_PMARKET04.VALUE1 = MARKET.MARKET04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMARKET06 -- コード情報
+		ON 1=1
+		AND CDM_PMARKET06.CODE_NAME = 'MARKET_LIST'
+		AND CDM_PMARKET06.DEL_FLG = '0'
+		AND CDM_PMARKET06.VALUE1 = MARKET.MARKET06
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMARKET07 -- コード情報
+		ON 1=1
+		AND CDM_PMARKET07.CODE_NAME = 'MARKET_LIST'
+		AND CDM_PMARKET07.DEL_FLG = '0'
+		AND CDM_PMARKET07.VALUE1 = MARKET.MARKET07
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMARKET09 -- コード情報
+		ON 1=1
+		AND CDM_PMARKET09.CODE_NAME = 'MARKET_LIST'
+		AND CDM_PMARKET09.DEL_FLG = '0'
+		AND CDM_PMARKET09.VALUE1 = MARKET.MARKET09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MARKET01 -- コード情報
+		ON 1=1
+		AND CDM_MARKET01.CODE_NAME = 'MARKET01'
+		AND CDM_MARKET01.DEL_FLG = '0'
+		AND CDM_MARKET01.VALUE1 = HCO.MARKET01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MARKET02 -- コード情報
+		ON 1=1
+		AND CDM_MARKET02.CODE_NAME = 'MARKET_LIST'
+		AND CDM_MARKET02.DEL_FLG = '0'
+		AND CDM_MARKET02.VALUE1 = HCO.MARKET02
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MARKET03 -- コード情報
+		ON 1=1
+		AND CDM_MARKET03.CODE_NAME = 'MARKET_LIST'
+		AND CDM_MARKET03.DEL_FLG = '0'
+		AND CDM_MARKET03.VALUE1 = HCO.MARKET03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MARKET04 -- コード情報
+		ON 1=1
+		AND CDM_MARKET04.CODE_NAME = 'MARKET_LIST'
+		AND CDM_MARKET04.DEL_FLG = '0'
+		AND CDM_MARKET04.VALUE1 = HCO.MARKET04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MARKET06 -- コード情報
+		ON 1=1
+		AND CDM_MARKET06.CODE_NAME = 'MARKET_LIST'
+		AND CDM_MARKET06.DEL_FLG = '0'
+		AND CDM_MARKET06.VALUE1 = HCO.MARKET06
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MARKET07 -- コード情報
+		ON 1=1
+		AND CDM_MARKET07.CODE_NAME = 'MARKET_LIST'
+		AND CDM_MARKET07.DEL_FLG = '0'
+		AND CDM_MARKET07.VALUE1 = HCO.MARKET07
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MARKET09 -- コード情報
+		ON 1=1
+		AND CDM_MARKET09.CODE_NAME = 'MARKET_LIST'
+		AND CDM_MARKET09.DEL_FLG = '0'
+		AND CDM_MARKET09.VALUE1 = HCO.MARKET09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PMEDICAL12 -- コード情報
+		ON 1=1
+		AND CDM_PMEDICAL12.CODE_NAME = 'MEDICAL_LIST'
+		AND CDM_PMEDICAL12.DEL_FLG = '0'
+		AND CDM_PMEDICAL12.VALUE1 = MEDICAL.MEDICAL12
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_MEDICAL12 -- コード情報
+		ON 1=1
+		AND CDM_MEDICAL12.CODE_NAME = 'MEDICAL_LIST'
+		AND CDM_MEDICAL12.DEL_FLG = '0'
+		AND CDM_MEDICAL12.VALUE1 = HCO.MEDICAL12
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PSPFUNC01 -- コード情報
+		ON 1=1
+		AND CDM_PSPFUNC01.CODE_NAME = 'SPFUNC_LIST'
+		AND CDM_PSPFUNC01.DEL_FLG = '0'
+		AND CDM_PSPFUNC01.VALUE1 = SPFUNC.SPFUNC01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PSPFUNC03 -- コード情報
+		ON 1=1
+		AND CDM_PSPFUNC03.CODE_NAME = 'SPFUNC03'
+		AND CDM_PSPFUNC03.DEL_FLG = '0'
+		AND CDM_PSPFUNC03.VALUE1 = SPFUNC.SPFUNC03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PSPFUNC04 -- コード情報
+		ON 1=1
+		AND CDM_PSPFUNC04.CODE_NAME = 'SPFUNC_LIST'
+		AND CDM_PSPFUNC04.DEL_FLG = '0'
+		AND CDM_PSPFUNC04.VALUE1 = SPFUNC.SPFUNC04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_SPFUNC01 -- コード情報
+		ON 1=1
+		AND CDM_SPFUNC01.CODE_NAME = 'SPFUNC_LIST'
+		AND CDM_SPFUNC01.DEL_FLG = '0'
+		AND CDM_SPFUNC01.VALUE1 = HCO.SPFUNC01
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_SPFUNC03 -- コード情報
+		ON 1=1
+		AND CDM_SPFUNC03.CODE_NAME = 'SPFUNC03'
+		AND CDM_SPFUNC03.DEL_FLG = '0'
+		AND CDM_SPFUNC03.VALUE1 = HCO.SPFUNC03
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_SPFUNC04 -- コード情報
+		ON 1=1
+		AND CDM_SPFUNC04.CODE_NAME = 'SPFUNC_LIST'
+		AND CDM_SPFUNC04.DEL_FLG = '0'
+		AND CDM_SPFUNC04.VALUE1 = HCO.SPFUNC04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PTIEUP10 -- コード情報
+		ON 1=1
+		AND CDM_PTIEUP10.CODE_NAME = 'TIEUP_LIST'
+		AND CDM_PTIEUP10.DEL_FLG = '0'
+		AND CDM_PTIEUP10.VALUE1 = TIEUP.TIEUP10
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PTIEUP11 -- コード情報
+		ON 1=1
+		AND CDM_PTIEUP11.CODE_NAME = 'TIEUP_LIST'
+		AND CDM_PTIEUP11.DEL_FLG = '0'
+		AND CDM_PTIEUP11.VALUE1 = TIEUP.TIEUP11
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PTIEUP12 -- コード情報
+		ON 1=1
+		AND CDM_PTIEUP12.CODE_NAME = 'TIEUP_LIST'
+		AND CDM_PTIEUP12.DEL_FLG = '0'
+		AND CDM_PTIEUP12.VALUE1 = TIEUP.TIEUP12
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_TIEUP10 -- コード情報
+		ON 1=1
+		AND CDM_TIEUP10.CODE_NAME = 'TIEUP_LIST'
+		AND CDM_TIEUP10.DEL_FLG = '0'
+		AND CDM_TIEUP10.VALUE1 = HCO.TIEUP10
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_TIEUP11 -- コード情報
+		ON 1=1
+		AND CDM_TIEUP11.CODE_NAME = 'TIEUP_LIST'
+		AND CDM_TIEUP11.DEL_FLG = '0'
+		AND CDM_TIEUP11.VALUE1 = HCO.TIEUP11
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_TIEUP12 -- コード情報
+		ON 1=1
+		AND CDM_TIEUP12.CODE_NAME = 'TIEUP_LIST'
+		AND CDM_TIEUP12.DEL_FLG = '0'
+		AND CDM_TIEUP12.VALUE1 = HCO.TIEUP12
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0001 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0001.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0001.DEL_FLG = '0'
+		AND CDM_PUSERCD0001.VALUE1 = USERCD.USERCD0001
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0002 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0002.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0002.DEL_FLG = '0'
+		AND CDM_PUSERCD0002.VALUE1 = USERCD.USERCD0002
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0003 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0003.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0003.DEL_FLG = '0'
+		AND CDM_PUSERCD0003.VALUE1 = USERCD.USERCD0003
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0004 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0004.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0004.DEL_FLG = '0'
+		AND CDM_PUSERCD0004.VALUE1 = USERCD.USERCD0004
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0005 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0005.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0005.DEL_FLG = '0'
+		AND CDM_PUSERCD0005.VALUE1 = USERCD.USERCD0005
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0006 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0006.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0006.DEL_FLG = '0'
+		AND CDM_PUSERCD0006.VALUE1 = USERCD.USERCD0006
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0007 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0007.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0007.DEL_FLG = '0'
+		AND CDM_PUSERCD0007.VALUE1 = USERCD.USERCD0007
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0008 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0008.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0008.DEL_FLG = '0'
+		AND CDM_PUSERCD0008.VALUE1 = USERCD.USERCD0008
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0009 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0009.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0009.DEL_FLG = '0'
+		AND CDM_PUSERCD0009.VALUE1 = USERCD.USERCD0009
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0010 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0010.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0010.DEL_FLG = '0'
+		AND CDM_PUSERCD0010.VALUE1 = USERCD.USERCD0010
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0011 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0011.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0011.DEL_FLG = '0'
+		AND CDM_PUSERCD0011.VALUE1 = USERCD.USERCD0011
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0012 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0012.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0012.DEL_FLG = '0'
+		AND CDM_PUSERCD0012.VALUE1 = USERCD.USERCD0012
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0013 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0013.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0013.DEL_FLG = '0'
+		AND CDM_PUSERCD0013.VALUE1 = USERCD.USERCD0013
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0014 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0014.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0014.DEL_FLG = '0'
+		AND CDM_PUSERCD0014.VALUE1 = USERCD.USERCD0014
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0015 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0015.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0015.DEL_FLG = '0'
+		AND CDM_PUSERCD0015.VALUE1 = USERCD.USERCD0015
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0016 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0016.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0016.DEL_FLG = '0'
+		AND CDM_PUSERCD0016.VALUE1 = USERCD.USERCD0016
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0017 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0017.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0017.DEL_FLG = '0'
+		AND CDM_PUSERCD0017.VALUE1 = USERCD.USERCD0017
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0018 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0018.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0018.DEL_FLG = '0'
+		AND CDM_PUSERCD0018.VALUE1 = USERCD.USERCD0018
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0019 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0019.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0019.DEL_FLG = '0'
+		AND CDM_PUSERCD0019.VALUE1 = USERCD.USERCD0019
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0020 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0020.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0020.DEL_FLG = '0'
+		AND CDM_PUSERCD0020.VALUE1 = USERCD.USERCD0020
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0021 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0021.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0021.DEL_FLG = '0'
+		AND CDM_PUSERCD0021.VALUE1 = USERCD.USERCD0021
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0022 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0022.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0022.DEL_FLG = '0'
+		AND CDM_PUSERCD0022.VALUE1 = USERCD.USERCD0022
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0023 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0023.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0023.DEL_FLG = '0'
+		AND CDM_PUSERCD0023.VALUE1 = USERCD.USERCD0023
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0024 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0024.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0024.DEL_FLG = '0'
+		AND CDM_PUSERCD0024.VALUE1 = USERCD.USERCD0024
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0025 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0025.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0025.DEL_FLG = '0'
+		AND CDM_PUSERCD0025.VALUE1 = USERCD.USERCD0025
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0026 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0026.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0026.DEL_FLG = '0'
+		AND CDM_PUSERCD0026.VALUE1 = USERCD.USERCD0026
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0027 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0027.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0027.DEL_FLG = '0'
+		AND CDM_PUSERCD0027.VALUE1 = USERCD.USERCD0027
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0028 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0028.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0028.DEL_FLG = '0'
+		AND CDM_PUSERCD0028.VALUE1 = USERCD.USERCD0028
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0029 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0029.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0029.DEL_FLG = '0'
+		AND CDM_PUSERCD0029.VALUE1 = USERCD.USERCD0029
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0030 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0030.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0030.DEL_FLG = '0'
+		AND CDM_PUSERCD0030.VALUE1 = USERCD.USERCD0030
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0031 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0031.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0031.DEL_FLG = '0'
+		AND CDM_PUSERCD0031.VALUE1 = USERCD.USERCD0031
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0032 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0032.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0032.DEL_FLG = '0'
+		AND CDM_PUSERCD0032.VALUE1 = USERCD.USERCD0032
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0033 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0033.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0033.DEL_FLG = '0'
+		AND CDM_PUSERCD0033.VALUE1 = USERCD.USERCD0033
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0034 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0034.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0034.DEL_FLG = '0'
+		AND CDM_PUSERCD0034.VALUE1 = USERCD.USERCD0034
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0035 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0035.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0035.DEL_FLG = '0'
+		AND CDM_PUSERCD0035.VALUE1 = USERCD.USERCD0035
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PUSERCD0036 -- コード情報
+		ON 1=1
+		AND CDM_PUSERCD0036.CODE_NAME = 'USERCD_LIST'
+		AND CDM_PUSERCD0036.DEL_FLG = '0'
+		AND CDM_PUSERCD0036.VALUE1 = USERCD.USERCD0036
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0001 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0001.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0001.DEL_FLG = '0'
+		AND CDM_USERCD0001.VALUE1 = HCO.USERCD0001
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0002 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0002.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0002.DEL_FLG = '0'
+		AND CDM_USERCD0002.VALUE1 = HCO.USERCD0002
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0003 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0003.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0003.DEL_FLG = '0'
+		AND CDM_USERCD0003.VALUE1 = HCO.USERCD0003
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0004 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0004.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0004.DEL_FLG = '0'
+		AND CDM_USERCD0004.VALUE1 = HCO.USERCD0004
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0005 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0005.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0005.DEL_FLG = '0'
+		AND CDM_USERCD0005.VALUE1 = HCO.USERCD0005
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0006 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0006.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0006.DEL_FLG = '0'
+		AND CDM_USERCD0006.VALUE1 = HCO.USERCD0006
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0007 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0007.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0007.DEL_FLG = '0'
+		AND CDM_USERCD0007.VALUE1 = HCO.USERCD0007
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0008 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0008.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0008.DEL_FLG = '0'
+		AND CDM_USERCD0008.VALUE1 = HCO.USERCD0008
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0009 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0009.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0009.DEL_FLG = '0'
+		AND CDM_USERCD0009.VALUE1 = HCO.USERCD0009
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0010 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0010.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0010.DEL_FLG = '0'
+		AND CDM_USERCD0010.VALUE1 = HCO.USERCD0010
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0011 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0011.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0011.DEL_FLG = '0'
+		AND CDM_USERCD0011.VALUE1 = HCO.USERCD0011
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0012 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0012.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0012.DEL_FLG = '0'
+		AND CDM_USERCD0012.VALUE1 = HCO.USERCD0012
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0013 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0013.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0013.DEL_FLG = '0'
+		AND CDM_USERCD0013.VALUE1 = HCO.USERCD0013
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0014 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0014.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0014.DEL_FLG = '0'
+		AND CDM_USERCD0014.VALUE1 = HCO.USERCD0014
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0015 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0015.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0015.DEL_FLG = '0'
+		AND CDM_USERCD0015.VALUE1 = HCO.USERCD0015
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0016 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0016.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0016.DEL_FLG = '0'
+		AND CDM_USERCD0016.VALUE1 = HCO.USERCD0016
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0017 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0017.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0017.DEL_FLG = '0'
+		AND CDM_USERCD0017.VALUE1 = HCO.USERCD0017
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0018 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0018.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0018.DEL_FLG = '0'
+		AND CDM_USERCD0018.VALUE1 = HCO.USERCD0018
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0019 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0019.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0019.DEL_FLG = '0'
+		AND CDM_USERCD0019.VALUE1 = HCO.USERCD0019
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0020 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0020.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0020.DEL_FLG = '0'
+		AND CDM_USERCD0020.VALUE1 = HCO.USERCD0020
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0021 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0021.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0021.DEL_FLG = '0'
+		AND CDM_USERCD0021.VALUE1 = HCO.USERCD0021
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0022 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0022.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0022.DEL_FLG = '0'
+		AND CDM_USERCD0022.VALUE1 = HCO.USERCD0022
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0023 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0023.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0023.DEL_FLG = '0'
+		AND CDM_USERCD0023.VALUE1 = HCO.USERCD0023
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0024 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0024.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0024.DEL_FLG = '0'
+		AND CDM_USERCD0024.VALUE1 = HCO.USERCD0024
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0025 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0025.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0025.DEL_FLG = '0'
+		AND CDM_USERCD0025.VALUE1 = HCO.USERCD0025
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0026 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0026.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0026.DEL_FLG = '0'
+		AND CDM_USERCD0026.VALUE1 = HCO.USERCD0026
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0027 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0027.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0027.DEL_FLG = '0'
+		AND CDM_USERCD0027.VALUE1 = HCO.USERCD0027
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0028 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0028.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0028.DEL_FLG = '0'
+		AND CDM_USERCD0028.VALUE1 = HCO.USERCD0028
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0029 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0029.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0029.DEL_FLG = '0'
+		AND CDM_USERCD0029.VALUE1 = HCO.USERCD0029
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0030 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0030.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0030.DEL_FLG = '0'
+		AND CDM_USERCD0030.VALUE1 = HCO.USERCD0030
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0031 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0031.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0031.DEL_FLG = '0'
+		AND CDM_USERCD0031.VALUE1 = HCO.USERCD0031
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0032 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0032.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0032.DEL_FLG = '0'
+		AND CDM_USERCD0032.VALUE1 = HCO.USERCD0032
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0033 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0033.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0033.DEL_FLG = '0'
+		AND CDM_USERCD0033.VALUE1 = HCO.USERCD0033
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0034 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0034.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0034.DEL_FLG = '0'
+		AND CDM_USERCD0034.VALUE1 = HCO.USERCD0034
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0035 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0035.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0035.DEL_FLG = '0'
+		AND CDM_USERCD0035.VALUE1 = HCO.USERCD0035
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_USERCD0036 -- コード情報
+		ON 1=1
+		AND CDM_USERCD0036.CODE_NAME = 'USERCD_LIST'
+		AND CDM_USERCD0036.DEL_FLG = '0'
+		AND CDM_USERCD0036.VALUE1 = HCO.USERCD0036
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD04 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD04.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD04.DEL_FLG = '0'
+		AND CDM_PREWARD04.VALUE1 = REWARD.REWARD04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD05 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD05.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD05.DEL_FLG = '0'
+		AND CDM_PREWARD05.VALUE1 = REWARD.REWARD05
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD08 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD08.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD08.DEL_FLG = '0'
+		AND CDM_PREWARD08.VALUE1 = REWARD.REWARD08
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD09 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD09.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD09.DEL_FLG = '0'
+		AND CDM_PREWARD09.VALUE1 = REWARD.REWARD09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD16 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD16.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD16.DEL_FLG = '0'
+		AND CDM_PREWARD16.VALUE1 = REWARD.REWARD16
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD17 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD17.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD17.DEL_FLG = '0'
+		AND CDM_PREWARD17.VALUE1 = REWARD.REWARD17
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD18 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD18.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD18.DEL_FLG = '0'
+		AND CDM_PREWARD18.VALUE1 = REWARD.REWARD18
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD21 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD21.CODE_NAME = 'REWARD21'
+		AND CDM_PREWARD21.DEL_FLG = '0'
+		AND CDM_PREWARD21.VALUE1 = REWARD.REWARD21
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD23 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD23.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD23.DEL_FLG = '0'
+		AND CDM_PREWARD23.VALUE1 = REWARD.REWARD23
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD25 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD25.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD25.DEL_FLG = '0'
+		AND CDM_PREWARD25.VALUE1 = REWARD.REWARD25
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD26 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD26.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD26.DEL_FLG = '0'
+		AND CDM_PREWARD26.VALUE1 = REWARD.REWARD26
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD27 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD27.CODE_NAME = 'REWARD27'
+		AND CDM_PREWARD27.DEL_FLG = '0'
+		AND CDM_PREWARD27.VALUE1 = REWARD.REWARD27
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD29 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD29.CODE_NAME = 'REWARD29'
+		AND CDM_PREWARD29.DEL_FLG = '0'
+		AND CDM_PREWARD29.VALUE1 = REWARD.REWARD29
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD35 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD35.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD35.DEL_FLG = '0'
+		AND CDM_PREWARD35.VALUE1 = REWARD.REWARD35
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD36 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD36.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD36.DEL_FLG = '0'
+		AND CDM_PREWARD36.VALUE1 = REWARD.REWARD36
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD37 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD37.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD37.DEL_FLG = '0'
+		AND CDM_PREWARD37.VALUE1 = REWARD.REWARD37
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PREWARD44 -- コード情報
+		ON 1=1
+		AND CDM_PREWARD44.CODE_NAME = 'REWARD_LIST'
+		AND CDM_PREWARD44.DEL_FLG = '0'
+		AND CDM_PREWARD44.VALUE1 = REWARD.REWARD44
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD04 -- コード情報
+		ON 1=1
+		AND CDM_REWARD04.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD04.DEL_FLG = '0'
+		AND CDM_REWARD04.VALUE1 = HCO.REWARD04
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD05 -- コード情報
+		ON 1=1
+		AND CDM_REWARD05.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD05.DEL_FLG = '0'
+		AND CDM_REWARD05.VALUE1 = HCO.REWARD05
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD08 -- コード情報
+		ON 1=1
+		AND CDM_REWARD08.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD08.DEL_FLG = '0'
+		AND CDM_REWARD08.VALUE1 = HCO.REWARD08
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD09 -- コード情報
+		ON 1=1
+		AND CDM_REWARD09.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD09.DEL_FLG = '0'
+		AND CDM_REWARD09.VALUE1 = HCO.REWARD09
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD16 -- コード情報
+		ON 1=1
+		AND CDM_REWARD16.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD16.DEL_FLG = '0'
+		AND CDM_REWARD16.VALUE1 = HCO.REWARD16
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD17 -- コード情報
+		ON 1=1
+		AND CDM_REWARD17.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD17.DEL_FLG = '0'
+		AND CDM_REWARD17.VALUE1 = HCO.REWARD17
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD18 -- コード情報
+		ON 1=1
+		AND CDM_REWARD18.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD18.DEL_FLG = '0'
+		AND CDM_REWARD18.VALUE1 = HCO.REWARD18
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD21 -- コード情報
+		ON 1=1
+		AND CDM_REWARD21.CODE_NAME = 'REWARD21'
+		AND CDM_REWARD21.DEL_FLG = '0'
+		AND CDM_REWARD21.VALUE1 = HCO.REWARD21
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD23 -- コード情報
+		ON 1=1
+		AND CDM_REWARD23.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD23.DEL_FLG = '0'
+		AND CDM_REWARD23.VALUE1 = HCO.REWARD23
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD25 -- コード情報
+		ON 1=1
+		AND CDM_REWARD25.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD25.DEL_FLG = '0'
+		AND CDM_REWARD25.VALUE1 = HCO.REWARD25
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD26 -- コード情報
+		ON 1=1
+		AND CDM_REWARD26.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD26.DEL_FLG = '0'
+		AND CDM_REWARD26.VALUE1 = HCO.REWARD26
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD27 -- コード情報
+		ON 1=1
+		AND CDM_REWARD27.CODE_NAME = 'REWARD27'
+		AND CDM_REWARD27.DEL_FLG = '0'
+		AND CDM_REWARD27.VALUE1 = HCO.REWARD27
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD29 -- コード情報
+		ON 1=1
+		AND CDM_REWARD29.CODE_NAME = 'REWARD29'
+		AND CDM_REWARD29.DEL_FLG = '0'
+		AND CDM_REWARD29.VALUE1 = HCO.REWARD29
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD35 -- コード情報
+		ON 1=1
+		AND CDM_REWARD35.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD35.DEL_FLG = '0'
+		AND CDM_REWARD35.VALUE1 = HCO.REWARD35
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD36 -- コード情報
+		ON 1=1
+		AND CDM_REWARD36.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD36.DEL_FLG = '0'
+		AND CDM_REWARD36.VALUE1 = HCO.REWARD36
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD37 -- コード情報
+		ON 1=1
+		AND CDM_REWARD37.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD37.DEL_FLG = '0'
+		AND CDM_REWARD37.VALUE1 = HCO.REWARD37
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REWARD44 -- コード情報
+		ON 1=1
+		AND CDM_REWARD44.CODE_NAME = 'REWARD_LIST'
+		AND CDM_REWARD44.DEL_FLG = '0'
+		AND CDM_REWARD44.VALUE1 = HCO.REWARD44
+		WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectNF211InsChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity" resultMap="tRdmHcoReqResultMap">
+		SELECT
+		  HCO.REQ_ID  -- 施設_申請管理.申請ID
+		FROM
+		T_RDM_HCO_REQ HCO ---施設_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		AND KNR.REQ_TYPE IN ('03')
+		AND KNR.REQ_STS IN ('03','13','04','14')
+		WHERE 1=1
+        AND HCO.INS_NO = #{insNo}
     </select>
 	<update id="updateNF011Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity">
         UPDATE

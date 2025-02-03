@@ -200,7 +200,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="lineCntEnd" />
     <s:hidden name="lineCntAll1" />
     <%-- 画面用パラメータ --%>
-    <s:hidden name="backScreenId" value="NF012" />
+    <s:hidden name="backScreenId" value="NF303" />
      <s:hidden name="preScreenId"/>
      <s:hidden name="screenId"/>
      <s:hidden name="functionId"/>

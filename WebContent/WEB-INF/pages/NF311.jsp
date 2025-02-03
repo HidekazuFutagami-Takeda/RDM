@@ -215,7 +215,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="lineCntEnd" />
     <s:hidden name="lineCntAll1" />
     <%-- 画面用パラメータ --%>
-    <s:hidden name="backScreenId" value="NF011" />
+    <s:hidden name="backScreenId" value="NF311" />
      <s:hidden name="preScreenId"/>
      <s:hidden name="screenId"/>
      <s:hidden name="functionId"/>
@@ -415,12 +415,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		      		<s:label key="trtPrdGrpNm" value="武田紐" />
 				</s:if>
 				<s:else>
-					<s:label key="trtPrdGrpNm" />
+					<s:label key="trtPrdGrpNm" /><s:hidden name="trtPrdGrpNm"/>
 				</s:else>
 			</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>適用日</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
-	      		<s:label key="tekiyoYmd" />
+	      		<s:label key="tekiyoYmd" /><s:hidden name="tekiyoYmd"/>
 	      </nobr></td>
       </tr>
       <tr>
@@ -429,10 +429,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
-	      	<s:label key="mainInsCd" />
+	      	<s:label key="mainInsCd" /><s:hidden name="mainInsCd"/>
 			</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設略式漢字名</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="mainInsNm" /></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="mainInsNm" /><s:hidden name="mainInsNm"/></nobr></td>
       </tr>
 	<s:if test='tkdTrtKbn == "1"'>
       <tr>
@@ -440,7 +440,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設担当者</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="insTanto" /></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="insTanto" /><s:hidden name="insTanto"/></nobr></td>
       </tr>
 	</s:if>
   　</table>

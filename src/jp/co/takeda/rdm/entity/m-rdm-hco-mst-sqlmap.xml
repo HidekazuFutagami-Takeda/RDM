@@ -103,6 +103,7 @@
     </resultMap>
     <resultMap id="nF311MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF311MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
+		<result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_SHZ" property="reqShzNm"/>
         <result column="REQ_STS_NM" property="reqStsNm"/>
         <result column="REQ_JGI_NAME" property="reqJgiName"/>

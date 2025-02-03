@@ -445,7 +445,6 @@ public class NF211Service extends BaseService {
     		// ※MR権限の場合のみ ログインユーザ情報.領域コード
     		inEntityCmb.setInTrtCd(indto.getLoginTrtCd());
     	}
-    	// TODO sqlでデータ取得のためコメントアウトした箇所を解除する
         List<SelectLnkTrtDataEntity> outMainList = dao.select(inEntityCmb);
         LinkedHashMap<String, String> mapTrtPrdGrp = new LinkedHashMap<String, String>();
         mapTrtPrdGrp.put("", "--選択してください--");

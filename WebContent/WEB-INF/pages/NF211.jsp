@@ -282,7 +282,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="lineCntEnd" />
     <s:hidden name="lineCntAll1" />
     <%-- 画面用パラメータ --%>
-    <s:hidden name="backScreenId" value="NF011" />
+    <s:hidden name="backScreenId" value="NF211" />
      <s:hidden name="preScreenId"/>
      <s:hidden name="screenId"/>
      <s:hidden name="functionId"/>
@@ -533,7 +533,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				</s:if>
 				<s:else>
 					<s:select id="trtPrdGrp" name="trtPrdGrp" cssStyle="width:150pt" list ="trtPrdGrpCombo" onchange="JavaScript:clearMainIns(); return false;"/>
-					<s:textfield id="trtPrdGrpView" name="trtPrdGrpView" cssStyle="width:120pt" readonly="true" />
+					<s:textfield id="trtPrdGrpView" name="trtPrdGrpView" cssStyle="width:150pt" readonly="true" />
 				</s:else>
 			</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>適用日<font color="red" size="3">*</font></nobr></td>

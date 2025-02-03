@@ -23,6 +23,7 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF311DTO;
 import jp.co.takeda.rdm.entity.join.MRdmHcoOyakoEntity;
+import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.SelectLnkTrtDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity;
@@ -396,6 +397,7 @@ public class NF311Service extends BaseService {
     		SelectNF211MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
     		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
     		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
     		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -460,13 +462,13 @@ public class NF311Service extends BaseService {
         	// 施設紐付け情報
         	indto.setTrtPrdGrp("00Z");
 
-        	// 適用日を"yyyy-MM-dd"に変換
+        	// 適用日を"yyyy/MM/dd"に変換
     		if(mainDataEntity.getTekiyoYmd() != null && mainDataEntity.getTekiyoYmd().length() == 8) {
     			StringBuilder sbTekiyoYmd = new StringBuilder();
     			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(0,4));
-    			sbTekiyoYmd.append("-");
+    			sbTekiyoYmd.append("/");
     			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(4,6));
-    			sbTekiyoYmd.append("-");
+    			sbTekiyoYmd.append("/");
     			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(6,8));
     			indto.setTekiyoYmd(sbTekiyoYmd.toString());
     		}
@@ -490,6 +492,7 @@ public class NF311Service extends BaseService {
     		SelectNF311MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
     		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
     		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
     		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -584,6 +587,38 @@ public class NF311Service extends BaseService {
         }
 
 		// 申請ボタン活性フラグ取得
+    	String mnFac = "0";
+    	String mnOya = "0";
+
+		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
+		mRdmParamMstEntity.setParamName("MN_FAC");
+		mRdmParamMstEntity.setDelFlg("0");
+
+		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
+		if(mRdmParamMstEntityList.size() > 0) {
+			// valueの左一桁
+			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+		}
+
+		MRdmParamMstEntity mRdmParamMstOyaEntity = new MRdmParamMstEntity();
+		if("0".equals(indto.getTkdTrtKbn())) {
+			mRdmParamMstOyaEntity.setParamName("MN_NT_OYA");
+		} else {
+			mRdmParamMstOyaEntity.setParamName("MN_CT_OYA");
+		}
+		mRdmParamMstOyaEntity.setDelFlg("0");
+
+		List<MRdmParamMstEntity> mRdmParamMstOyaEntityList = dao.selectByValue(mRdmParamMstOyaEntity);
+		if(mRdmParamMstOyaEntityList.size() > 0) {
+			// value
+			mnOya = mRdmParamMstOyaEntityList.get(0).getValue();
+		}
+
+		if(mnFac.equals("1") && mnOya.equals("1")) {
+			indto.setBtnEnableFlg("1");
+		} else {
+			indto.setBtnEnableFlg("0");
+		}
 
         // END UOC
 		outdto.setForward("NF311");
@@ -640,13 +675,52 @@ public class NF311Service extends BaseService {
         boolean errFlg = false;
         String errMsg = "";
 
-//        if("3".equals(indto.getFuncId())) {
-//			if(indto.getAprComment() != null && indto.getAprComment().isEmpty()) {
-//	        	// 却下の場合はコメントを入力してください。
-//				errMsg += loginInfo.getMsgData(RdmConstantsData.W026) + "\n";
-//				errFlg = true;
-//	        }
-//        }
+     // 同じ施設固定コードに紐づく施設削除申請がすでに存在している場合
+        TRdmHcoReqEntity tRdmHcoReqchkEntity = new TRdmHcoReqEntity("selectNF211InsChkData");
+        tRdmHcoReqchkEntity.setInsNo(indto.getInsNo());
+        List<TRdmHcoReqEntity> tRdmHcoReqchkEntityList = dao.select(tRdmHcoReqchkEntity);
+
+        if(tRdmHcoReqchkEntityList.size() > 0) {
+        	// 重複する申請が行われています。（施設コード）
+        	errMsg += loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "施設コード") + "\n";
+        	errFlg = true;
+        }
+
+        // 同じ施設固定コード＋領域コード＋品目グループコードで申請されている
+        if("0".equals(indto.getTkdTrtKbn())) {
+        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqEntity = new TRdmHcoLnkNxtReqEntity("selectNF211TrtChkData");
+        	tRdmHcoLnkNxtReqEntity.setInsNo(indto.getInsNo());
+        	tRdmHcoLnkNxtReqEntity.setReqId(indto.getReqId());
+        	List<TRdmHcoLnkNxtReqEntity> tRdmHcoLnkNxtReqEntityList = dao.select(tRdmHcoLnkNxtReqEntity);
+
+        	if(tRdmHcoLnkNxtReqEntityList.size() > 0) {
+        		// 申請する領域が重複しています。
+            	errMsg += loginInfo.getMsgData(RdmConstantsData.W021) + "\n";
+            	errFlg = true;
+        	}
+
+        } else if(indto.getTrtPrdGrp() != null && !indto.getTrtPrdGrp().isEmpty()) {
+        	TRdmHcoLnkReqEntity tRdmHcoLnkReqEntity = new TRdmHcoLnkReqEntity("selectNF211TrtChkData");
+        	tRdmHcoLnkReqEntity.setInsNo(indto.getInsNo());
+        	tRdmHcoLnkReqEntity.setReqId(indto.getReqId());
+        	tRdmHcoLnkReqEntity.setTrtCd(indto.getTrtPrdGrp().substring(0,2));
+        	tRdmHcoLnkReqEntity.setHinGCd(indto.getTrtPrdGrp().substring(2));
+        	List<TRdmHcoLnkReqEntity> tRdmHcoLnkReqEntityList = dao.select(tRdmHcoLnkReqEntity);
+
+        	if(tRdmHcoLnkReqEntityList.size() > 0) {
+        		// 申請する領域が重複しています。
+            	errMsg += loginInfo.getMsgData(RdmConstantsData.W021) + "\n";
+            	errFlg = true;
+        	}
+        }
+
+        if("3".equals(indto.getFuncId())) {
+			if(indto.getAprComment() != null && indto.getAprComment().isEmpty()) {
+	        	// 却下の場合はコメントを入力してください。
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W026) + "\n";
+				errFlg = true;
+	        }
+        }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
 		if(indto.getUpdShaYmd() != null && !indto.getUpdShaYmd().equals("")) {
@@ -670,6 +744,93 @@ public class NF311Service extends BaseService {
         	return outdto;
         }
 
+        // 更新処理
+        if("1".equals(indto.getFuncId())) {
+			// 申請
+			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+
+			tRdmReqKnrEntity.setReqId(indto.getReqId());
+			if("1".equals(indto.getReqChl()) || "2".equals(indto.getReqChl())) {
+				tRdmReqKnrEntity.setReqStsCd("03");
+			} else if("3".equals(indto.getReqChl())) {
+				tRdmReqKnrEntity.setReqStsCd("13");
+			}
+
+			tRdmReqKnrEntity.setReqBrCd(indto.getLoginBrCd());
+        	tRdmReqKnrEntity.setReqDistCd(indto.getLoginDistCd());
+        	tRdmReqKnrEntity.setReqShzNm(indto.getLoginShzNm());
+        	tRdmReqKnrEntity.setReqJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
+        	tRdmReqKnrEntity.setReqJgiName(indto.getLoginNm());
+        	tRdmReqKnrEntity.setReqYmdhms(sysDateTime);
+        	tRdmReqKnrEntity.setReqComment(indto.getReqComment());
+
+        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		tRdmReqKnrEntity.setReqKngKbn("2");
+        	} else {
+        		tRdmReqKnrEntity.setReqKngKbn("1");
+        	}
+
+        	tRdmReqKnrEntity.setUpdShaYmd(sysDate);
+        	tRdmReqKnrEntity.setUpdShaId(indto.getLoginJgiNo());
+
+        	dao.update(tRdmReqKnrEntity);
+
+        	outdto.setForward("NC101");
+
+		} else if("2".equals(indto.getFuncId())) {
+			// 承認
+			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+
+			tRdmReqKnrEntity.setReqId(indto.getReqId());
+
+			if("1".equals(indto.getReqChl()) || "2".equals(indto.getReqChl())) {
+				tRdmReqKnrEntity.setReqStsCd("04");
+			} else if("3".equals(indto.getReqChl())) {
+				tRdmReqKnrEntity.setReqStsCd("14");
+			}
+
+			tRdmReqKnrEntity.setAprBrCode(indto.getLoginBrCd());
+        	tRdmReqKnrEntity.setAprDistCode(indto.getLoginDistCd());
+        	tRdmReqKnrEntity.setAprShz(indto.getLoginShzNm());
+        	tRdmReqKnrEntity.setAprJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
+        	tRdmReqKnrEntity.setAprShaName(indto.getLoginNm());
+        	tRdmReqKnrEntity.setAprYmdhms(sysDateTime);
+        	tRdmReqKnrEntity.setAprCommnet(indto.getAprComment());
+
+        	tRdmReqKnrEntity.setUpdShaYmd(sysDate);
+        	tRdmReqKnrEntity.setUpdShaId(indto.getLoginJgiNo());
+
+        	dao.update(tRdmReqKnrEntity);
+
+        	outdto.setForward("NC101");
+
+		} else if("3".equals(indto.getFuncId())) {
+			// 却下
+			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+
+			tRdmReqKnrEntity.setReqId(indto.getReqId());
+
+			if("1".equals(indto.getReqChl()) || "2".equals(indto.getReqChl())) {
+				tRdmReqKnrEntity.setReqStsCd("02");
+			} else if("3".equals(indto.getReqChl())) {
+				tRdmReqKnrEntity.setReqStsCd("12");
+			}
+
+			tRdmReqKnrEntity.setAprBrCode(indto.getLoginBrCd());
+        	tRdmReqKnrEntity.setAprDistCode(indto.getLoginDistCd());
+        	tRdmReqKnrEntity.setAprShz(indto.getLoginShzNm());
+        	tRdmReqKnrEntity.setAprJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
+        	tRdmReqKnrEntity.setAprShaName(indto.getLoginNm());
+        	tRdmReqKnrEntity.setAprYmdhms(sysDateTime);
+        	tRdmReqKnrEntity.setAprCommnet(indto.getAprComment());
+
+        	tRdmReqKnrEntity.setUpdShaYmd(sysDate);
+        	tRdmReqKnrEntity.setUpdShaId(indto.getLoginJgiNo());
+
+        	dao.update(tRdmReqKnrEntity);
+
+        	outdto.setForward("NC011");
+		}
 
 		// END UOC
 		return outdto;
@@ -893,21 +1054,238 @@ public class NF311Service extends BaseService {
 
     	indto.setReqId(reqId);
 
+        // 初期表示検索
+    	if ("0".equals(indto.getTkdTrtKbn())) {
+        	// 申請データ（一時保存含む）を参照
+        	// 武田紐領域別区分が'0'（来期用紐付け(武田紐)）
+        	SelectNF211MainDataEntity paramEntity = new SelectNF211MainDataEntity();
+    		paramEntity.setInReqId(indto.getReqId());
+    		List<SelectNF211MainDataEntity> mainDataEntityList = dao.select(paramEntity);
+    		SelectNF211MainDataEntity mainDataEntity = mainDataEntityList.get(0);
+
+    		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
+    		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
+    		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
+    		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
+    		indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
+    		indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
+
+    		SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+    		SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    		if(mainDataEntity.getReqYmdhms() != null && mainDataEntity.getReqYmdhms().length() == 14) {
+				try {
+					Date reqYmd = sdfDateTime.parse(mainDataEntity.getReqYmdhms());
+					String strReqYmd = sdfDateTime2.format(reqYmd);
+					indto.setReqYmdhms(strReqYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+					indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+				}
+    		} else {
+    			indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+    		}
+
+    		if(mainDataEntity.getShnYmdhms() != null && mainDataEntity.getShnYmdhms().length() == 14) {
+				try {
+					Date shnYmd = sdfDateTime.parse(mainDataEntity.getShnYmdhms());
+					String strShnYmd = sdfDateTime2.format(shnYmd);
+					indto.setShnYmdhms(strShnYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+					indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+				}
+    		} else {
+    			indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+    		}
+
+    		if(mainDataEntity.getAprYmdhms() != null && mainDataEntity.getAprYmdhms().length() == 14) {
+				try {
+					Date aprYmd = sdfDateTime.parse(mainDataEntity.getAprYmdhms());
+					String strAprYmd = sdfDateTime2.format(aprYmd);
+					indto.setAprYmdhms(strAprYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+					indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+				}
+    		} else {
+    			indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+    		}
+
+    		indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
+    		indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
+    		indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
+    		indto.setReqStsCd(StringUtils.nvl(mainDataEntity.getReqStsCd(), ""));
+    		indto.setShnJgiNo(mainDataEntity.getShnJgiNo());
+    		indto.setAprJgiNo(mainDataEntity.getAprJgiNo());
+    		indto.setUpdShaYmd(StringUtils.nvl(mainDataEntity.getUpdShaYmd(), ""));
+
+    		// 施設情報
+    		indto.setInsNo(StringUtils.nvl(mainDataEntity.getInsNo(), ""));
+        	indto.setInsAbbrName(StringUtils.nvl(mainDataEntity.getInsAbbrName(), ""));
+        	indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
+        	indto.setInsSbt(StringUtils.nvl(mainDataEntity.getInsSbt(), ""));
+
+        	// 施設紐付け情報
+        	indto.setTrtPrdGrp("00Z");
+
+        	// 適用日を"yyyy/MM/dd"に変換
+    		if(mainDataEntity.getTekiyoYmd() != null && mainDataEntity.getTekiyoYmd().length() == 8) {
+    			StringBuilder sbTekiyoYmd = new StringBuilder();
+    			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(0,4));
+    			sbTekiyoYmd.append("/");
+    			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(4,6));
+    			sbTekiyoYmd.append("/");
+    			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(6,8));
+    			indto.setTekiyoYmd(sbTekiyoYmd.toString());
+    		}
+
+    		indto.setMainInsCd(StringUtils.nvl(mainDataEntity.getMainInsCd(), ""));
+    		indto.setMainInsNm(StringUtils.nvl(mainDataEntity.getMainInsNm(), ""));
+        	indto.setMainInsAddr(StringUtils.nvl(mainDataEntity.getMainInsAddr(), ""));
+        	indto.setMainInsSbt(StringUtils.nvl(mainDataEntity.getMainInsSbt(), ""));
+        	indto.setInsSbtAf(StringUtils.nvl(mainDataEntity.getInsSbtAf(), ""));
+
+        	indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
+        	indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
+        	indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), ""));
+
+        } else {
+    		// 申請データ（一時保存含む）を参照
+        	// 武田紐領域別区分が'1'（領域別紐付け）
+    		SelectNF311MainDataEntity paramEntity = new SelectNF311MainDataEntity();
+    		paramEntity.setInReqId(indto.getReqId());
+    		List<SelectNF311MainDataEntity> mainDataEntityList = dao.select(paramEntity);
+    		SelectNF311MainDataEntity mainDataEntity = mainDataEntityList.get(0);
+
+    		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
+    		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
+    		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
+    		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
+    		indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
+    		indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
+
+    		SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+    		SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    		if(mainDataEntity.getReqYmdhms() != null && mainDataEntity.getReqYmdhms().length() == 14) {
+				try {
+					Date reqYmd = sdfDateTime.parse(mainDataEntity.getReqYmdhms());
+					String strReqYmd = sdfDateTime2.format(reqYmd);
+					indto.setReqYmdhms(strReqYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+					indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+				}
+    		} else {
+    			indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+    		}
+
+    		if(mainDataEntity.getShnYmdhms() != null && mainDataEntity.getShnYmdhms().length() == 14) {
+				try {
+					Date shnYmd = sdfDateTime.parse(mainDataEntity.getShnYmdhms());
+					String strShnYmd = sdfDateTime2.format(shnYmd);
+					indto.setShnYmdhms(strShnYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+					indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+				}
+    		} else {
+    			indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+    		}
+
+    		if(mainDataEntity.getAprYmdhms() != null && mainDataEntity.getAprYmdhms().length() == 14) {
+				try {
+					Date aprYmd = sdfDateTime.parse(mainDataEntity.getAprYmdhms());
+					String strAprYmd = sdfDateTime2.format(aprYmd);
+					indto.setAprYmdhms(strAprYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+					indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+				}
+    		} else {
+    			indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+    		}
+
+    		indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
+    		indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
+    		indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
+    		indto.setReqStsCd(StringUtils.nvl(mainDataEntity.getReqStsCd(), ""));
+    		indto.setShnJgiNo(mainDataEntity.getShnJgiNo());
+    		indto.setAprJgiNo(mainDataEntity.getAprJgiNo());
+    		indto.setUpdShaYmd(StringUtils.nvl(mainDataEntity.getUpdShaYmd(), ""));
+
+    		// 施設情報
+    		indto.setInsNo(StringUtils.nvl(mainDataEntity.getInsNo(), ""));
+        	indto.setInsAbbrName(StringUtils.nvl(mainDataEntity.getInsAbbrName(), ""));
+        	indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
+        	indto.setInsSbt(StringUtils.nvl(mainDataEntity.getInsSbt(), ""));
+
+        	// 施設紐付け情報
+        	indto.setTrtPrdGrp(mainDataEntity.getTrtCd() + mainDataEntity.getHinGCd());
+        	if(!"・".equals(mainDataEntity.getTrtPrdGrpNm())) {
+        		indto.setTrtPrdGrpNm(mainDataEntity.getTrtPrdGrpNm());
+        	} else {
+        		indto.setTrtPrdGrpNm("");
+        	}
+
+        	// 適用日を"yyyy/MM/dd"に変換
+    		if(mainDataEntity.getTekiyoYmd() != null && mainDataEntity.getTekiyoYmd().length() == 8) {
+    			StringBuilder sbTekiyoYmd = new StringBuilder();
+    			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(0,4));
+    			sbTekiyoYmd.append("/");
+    			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(4,6));
+    			sbTekiyoYmd.append("/");
+    			sbTekiyoYmd.append(mainDataEntity.getTekiyoYmd().substring(6,8));
+    			indto.setTekiyoYmd(sbTekiyoYmd.toString());
+    		}
+
+    		indto.setMainInsCd(StringUtils.nvl(mainDataEntity.getMainInsCd(), ""));
+    		indto.setMainInsNm(StringUtils.nvl(mainDataEntity.getMainInsNm(), ""));
+        	indto.setMainInsAddr(StringUtils.nvl(mainDataEntity.getMainInsAddr(), ""));
+        	indto.setInsTanto(StringUtils.nvl(mainDataEntity.getJgiName(), ""));
+        	indto.setMainInsSbt(StringUtils.nvl(mainDataEntity.getMainInsSbt(), ""));
+        	indto.setInsSbtAf(StringUtils.nvl(mainDataEntity.getInsSbtAf(), ""));
+
+        	indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
+        	indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
+        	indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
+        	indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), ""));
+        }
+
 		// 申請ボタン活性フラグ取得
-//		indto.setBtnEnableFlg("0");
-//		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
-//		mRdmParamMstEntity.setParamName("MN_FAC");
-//		mRdmParamMstEntity.setDelFlg("0");
-//
-//		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
-//		if(mRdmParamMstEntityList.size() > 0) {
-//			// valueの左一桁
-//			String value = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
-//			if("1".equals(value)) {
-//				// 申請ボタン活性
-//				indto.setBtnEnableFlg("1");
-//			}
-//		}
+    	String mnFac = "0";
+    	String mnOya = "0";
+
+		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
+		mRdmParamMstEntity.setParamName("MN_FAC");
+		mRdmParamMstEntity.setDelFlg("0");
+
+		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
+		if(mRdmParamMstEntityList.size() > 0) {
+			// valueの左一桁
+			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+		}
+
+		MRdmParamMstEntity mRdmParamMstOyaEntity = new MRdmParamMstEntity();
+		if("0".equals(indto.getTkdTrtKbn())) {
+			mRdmParamMstOyaEntity.setParamName("MN_NT_OYA");
+		} else {
+			mRdmParamMstOyaEntity.setParamName("MN_CT_OYA");
+		}
+		mRdmParamMstOyaEntity.setDelFlg("0");
+
+		List<MRdmParamMstEntity> mRdmParamMstOyaEntityList = dao.selectByValue(mRdmParamMstOyaEntity);
+		if(mRdmParamMstOyaEntityList.size() > 0) {
+			// value
+			mnOya = mRdmParamMstOyaEntityList.get(0).getValue();
+		}
+
+		if(mnFac.equals("1") && mnOya.equals("1")) {
+			indto.setBtnEnableFlg("1");
+		} else {
+			indto.setBtnEnableFlg("0");
+		}
 
         // END UOC
         outdto.setForward("NF311");

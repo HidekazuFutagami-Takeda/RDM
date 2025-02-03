@@ -166,6 +166,11 @@
             <result name="NF211">/WEB-INF/pages/NF211.jsp</result>
             <result name="NF311">/WEB-INF/pages/NF311.jsp</result>
         </action>
+        <action name="NF311Register" class="nF311Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NF311">/WEB-INF/pages/NF311.jsp</result>
+        </action>
         <action name="NF311ApprRej" class="nF311Action" method="apprRej">
         	<result name="NF211">/WEB-INF/pages/NF211.jsp</result>
         	<result name="NF311">/WEB-INF/pages/NF311.jsp</result>

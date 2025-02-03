@@ -57,10 +57,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     function onLoadFunc(){
 		tkdTrtKbn = document.fm1.tkdTrtKbn.value;
 
-		if(tkdTrtKbn == "0") {
-			document.fm1.mainInsNm.style.backgroundColor = "#D7EEFF";
-
-		} else {
+		if(tkdTrtKbn == "1") {
 			// 領域・品目グループ
 			if(document.fm1.trtPrdGrp.selectedIndex != 0){
 				document.fm1.trtPrdGrpView.value = document.fm1.trtPrdGrp.options[document.fm1.trtPrdGrp.selectedIndex].textContent;
@@ -71,20 +68,21 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 戻るボタン
     function backBtn(){
-    	if(window.confirm("施設新規作成画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-    		// NF011_施設新規作成に遷移
-    		document.fm1.screenId.value="NF011";
+    	if(window.confirm("施設紐付け新規画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+    		// NF211_施設紐付け新規に遷移
+    		document.fm1.screenId.value="NF211";
 			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
     	}
     }
 
+    // 却下ボタン
     function rejectBtn(){
     	if(window.confirm("申請データを却下します。よろしいですか？")){
     		// エラーチェック後に、DB登録定義(申請管理)シートの通り申請管理を更新する
 			// NC011_申請一覧へ遷移する
-    		document.fm1.screenId.value="NF301";
+    		document.fm1.screenId.value="NF311";
 			document.fm1.functionId.value="Register";
 			document.fm1.funcId.value = "3";
 
@@ -92,11 +90,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	}
     }
 
+    // 申請ボタン、承認ボタン
     function reqApprBtn(funcId){
     	// エラーチェック後に、DB登録定義(申請管理)シートの通り申請管理を更新する
     	// NC101_完了画面へ遷移する
     	// funcId 1申請 2承認
-   		document.fm1.screenId.value="NF301";
+   		document.fm1.screenId.value="NF311";
 		document.fm1.functionId.value="Register";
 		document.fm1.funcId.value = funcId;
 
@@ -243,6 +242,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
+	<s:hidden name="reqChl"/>
 	<s:hidden name="btnEnableFlg"/>
 
     <%-- トップメニューからの共通パラメータ --%>
@@ -432,7 +432,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      	<s:label key="mainInsCd" />
 			</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設略式漢字名</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textfield name="mainInsNm" size="40" style="border: none;" readonly="true" /></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="mainInsNm" /></nobr></td>
       </tr>
 	<s:if test='tkdTrtKbn == "1"'>
       <tr>
@@ -440,7 +440,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設担当者</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textfield name="insTanto" size="40" style="border: none;" readonly="true" /></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="insTanto" /></nobr></td>
       </tr>
 	</s:if>
   　</table>
@@ -455,12 +455,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請コメント</nobr></td>
       </tr>
       <tr>
-      	<s:if test='%{reqStsCd == "01"}'>
-	    	<td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" /></nobr></td>
-      	</s:if>
-      	<s:else>
-      		<td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
-      	</s:else>
+    	<td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
       </tr>
       <s:if test='%{loginJokenSetCd == "JKN0813"}'>
 	      <tr>
@@ -507,15 +502,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
                <nobr>
                	<s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
-	               		<s:if test='%{reqStsCd == "03"}'>
-	               			<input type="checkbox" id="fbReqFlg" name="fbReqFlg" /><label for="fbReqFlg">アルトマークへの情報連携</label>
-	               		</s:if>
 						<input class="comButton" type="button"name="buttonF3" value="承認" onClick="reqApprBtn('2');JavaScript:return false;" />
 					</s:if>
 					<s:else>
-						<s:if test='%{reqStsCd == "03"}'>
-							<input type="checkbox" id="fbReqFlg" name="fbReqFlg" readonly="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
-						</s:if>
 						<input class="comButton" type="button"name="buttonF3" value="承認" onClick="reqApprBtn('2');JavaScript:return false;" disabled />
 					</s:else>
 				</s:if>

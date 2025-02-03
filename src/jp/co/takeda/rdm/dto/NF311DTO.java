@@ -100,6 +100,12 @@ public class NF311DTO extends BaseDTO implements Serializable {
 	private String reqId;
 
 	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
+	/**
 	 * 申請者所属名称
 	 * @generated
 	 */
@@ -332,6 +338,13 @@ public class NF311DTO extends BaseDTO implements Serializable {
 	private String editApprFlg;
 
 	/**
+	 * 申請ボタン活性フラグ
+	 * 0：非活性、1:活性
+	 * @generated
+	 */
+	private String btnEnableFlg;
+
+	/**
 	 * メッセージ中身
 	 * @generated
 	 */
@@ -530,6 +543,21 @@ public class NF311DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReqId(String reqId) {
 		this.reqId = reqId;
+	}
+
+	/**
+	 * NF311DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**
@@ -1100,6 +1128,21 @@ public class NF311DTO extends BaseDTO implements Serializable {
 	 */
 	public void setEditApprFlg(String editApprFlg) {
 		this.editApprFlg = editApprFlg;
+	}
+
+	/**
+	 * NF311DTO.javabtnEnableFlgを設定
+	 * @return btnEnableFlg
+	 */
+	public String getBtnEnableFlg() {
+		return btnEnableFlg;
+	}
+
+	/**
+	 * @param btnEnableFlg セットする btnEnableFlg
+	 */
+	public void setBtnEnableFlg(String btnEnableFlg) {
+		this.btnEnableFlg = btnEnableFlg;
 	}
 
 	/**

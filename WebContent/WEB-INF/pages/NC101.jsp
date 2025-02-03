@@ -122,7 +122,7 @@ function returnButtonGo(action){
 <%-- submit用フォーム 終了 --%>
 
   <%-- バナー部分をインクルード 開始 --%>
-  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <jsp:include page="common/jkrTopMenu.jsp" flush="true" />
   <%-- バナー部分をインクルード 終了 --%>
 
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
@@ -169,7 +169,7 @@ function returnButtonGo(action){
                 </tr>
                 </s:if>
                 <!-- トップメニューからの遷移 -->
-                <s:if test="%{#session.UserInfoKey.screenId == 'JKR000C010'}">
+                <s:if test="%{#session.UserInfoKey.screenId == 'NC001'}">
 
                 </s:if>
                 <s:if test="message3 != null">
@@ -219,7 +219,7 @@ function returnButtonGo(action){
   </tr>
 </table>
 <%-- ボトム部分をインクルード 開始 --%>
-  <jsp:include page="common/jkrBottom.jsp" flush="true" />
+<%--   <jsp:include page="common/jkrBottom.jsp" flush="true" /> --%>
 <%-- ボトム部分をインクルード 終了 --%>
 </body>
 </html>

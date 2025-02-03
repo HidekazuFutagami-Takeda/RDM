@@ -49,7 +49,7 @@
   <tr>
     <td align="right">
       <a class="comBannerSecondaryLink" style="margin-left:3pt;margin-right:3pt;" href="" onClick="JavaScript:jkrMenuLink('<s:property value="%{#TOP_FUNCTIONID}"/>');return false;">
-      施設・医師担当変更メニューへ
+      メニュー画面へ
       </a>
       <a class="comBannerSecondaryLink" href="" OnClick="jkrHomeLink();return false;"><font class="comBannerSecondaryLink">ホームへ</font></a>&nbsp;
     </td>

@@ -37,9 +37,6 @@
   <tr>
     <td align="left">&nbsp;</td>
     <td align="right" colSpan="2">
-      <a class="comBannerSecondaryLink" style="margin-left:3pt;margin-right:3pt;" href="" onClick="JavaScript:document._fmTopMenu.action='<%= request.getContextPath() %>/servlet/control';JavaScript:jkrMenuLink('<s:property value="%{#TOP_FUNCTIONID}"/>');return false;">
-      メニュー画面へ
-      </a>
       <a class="comBannerSecondaryLink" href="" OnClick="jkrHomeLink();return false;"><font class="comBannerSecondaryLink">ホームへ</font></a>&nbsp;
     </td>
   </tr>

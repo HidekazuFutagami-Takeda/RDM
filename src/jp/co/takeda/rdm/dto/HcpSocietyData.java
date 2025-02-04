@@ -47,6 +47,12 @@ public class HcpSocietyData implements Serializable {
     private String admissionDD;
 
     /**
+     * 入会年月日(ラベル用)
+     * @generated
+     */
+    private String admissionYMD;
+
+    /**
      * 脱会年月日(年)
      * @generated
      */
@@ -63,6 +69,12 @@ public class HcpSocietyData implements Serializable {
      * @generated
      */
     private String quitDD;
+
+    /**
+     * 脱会年月日(ラベル用)
+     * @generated
+     */
+    private String quitYMD;
 
     /**
      * 所属役職コード
@@ -95,6 +107,12 @@ public class HcpSocietyData implements Serializable {
     private String societyPosiStDD;
 
     /**
+     * 役職開始年月日(ラベル用)
+     * @generated
+     */
+    private String societyPosiStYMD;
+
+    /**
      * 役職終了年月日(年)
      * @generated
      */
@@ -111,6 +129,12 @@ public class HcpSocietyData implements Serializable {
      * @generated
      */
     private String societyPosiEdDD;
+
+    /**
+     * 役職終了年月日(ラベル用)
+     * @generated
+     */
+    private String societyPosiEdYMD;
 
     /**
      * 所属学会指導医区分コード
@@ -143,6 +167,12 @@ public class HcpSocietyData implements Serializable {
     private String coachingAcquisiDD;
 
     /**
+     * 指導医取得年月日(ラベル用)
+     * @generated
+     */
+    private String coachingAcquisiYMD;
+
+    /**
      * 指導医開始年月日(年)
      * @generated
      */
@@ -161,6 +191,12 @@ public class HcpSocietyData implements Serializable {
     private String coachingStDD;
 
     /**
+     * 指導医開始年月日(ラベル用)
+     * @generated
+     */
+    private String coachingStYMD;
+
+    /**
      * 指導医終了年月日(年)
      * @generated
      */
@@ -177,6 +213,12 @@ public class HcpSocietyData implements Serializable {
      * @generated
      */
     private String coachingEdDD;
+
+    /**
+     * 指導医終了年月日(ラベル用)
+     * @generated
+     */
+    private String coachingEdYMD;
 
     /**
      * 所属学会認定医区分コード
@@ -209,6 +251,12 @@ public class HcpSocietyData implements Serializable {
     private String certifyStDD;
 
     /**
+     * 認定医開始年月日(ラベル用)
+     * @generated
+     */
+    private String certifyStYMD;
+
+    /**
      * 認定医終了年月日(年)
      * @generated
      */
@@ -226,6 +274,11 @@ public class HcpSocietyData implements Serializable {
      */
     private String certifyEdDD;
 
+    /**
+     * 認定医終了年月日(ラベル用)
+     * @generated
+     */
+    private String certifyEdYMD;
 
 
     /**
@@ -1021,8 +1074,249 @@ public class HcpSocietyData implements Serializable {
 	}
 
 
+/**
+	 * HcpSocietyData.javaadmissionYMDを設定
+	 * @return admissionYMD
+	 */
+	public String getAdmissionYMD() {
+		return admissionYMD;
+	}
 
 
+
+
+
+	/**
+	 * @param admissionYMD セットする admissionYMD
+	 */
+	public void setAdmissionYMD(String admissionYMD) {
+		this.admissionYMD = admissionYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javaquitYMDを設定
+	 * @return quitYMD
+	 */
+	public String getQuitYMD() {
+		return quitYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param quitYMD セットする quitYMD
+	 */
+	public void setQuitYMD(String quitYMD) {
+		this.quitYMD = quitYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javasocietyPosiStYMDを設定
+	 * @return societyPosiStYMD
+	 */
+	public String getSocietyPosiStYMD() {
+		return societyPosiStYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param societyPosiStYMD セットする societyPosiStYMD
+	 */
+	public void setSocietyPosiStYMD(String societyPosiStYMD) {
+		this.societyPosiStYMD = societyPosiStYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javasocietyPosiEdYMDを設定
+	 * @return societyPosiEdYMD
+	 */
+	public String getSocietyPosiEdYMD() {
+		return societyPosiEdYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param societyPosiEdYMD セットする societyPosiEdYMD
+	 */
+	public void setSocietyPosiEdYMD(String societyPosiEdYMD) {
+		this.societyPosiEdYMD = societyPosiEdYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javacoachingAcquisiYMDを設定
+	 * @return coachingAcquisiYMD
+	 */
+	public String getCoachingAcquisiYMD() {
+		return coachingAcquisiYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param coachingAcquisiYMD セットする coachingAcquisiYMD
+	 */
+	public void setCoachingAcquisiYMD(String coachingAcquisiYMD) {
+		this.coachingAcquisiYMD = coachingAcquisiYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javacoachingStYMDを設定
+	 * @return coachingStYMD
+	 */
+	public String getCoachingStYMD() {
+		return coachingStYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param coachingStYMD セットする coachingStYMD
+	 */
+	public void setCoachingStYMD(String coachingStYMD) {
+		this.coachingStYMD = coachingStYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javacoachingEdYMDを設定
+	 * @return coachingEdYMD
+	 */
+	public String getCoachingEdYMD() {
+		return coachingEdYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param coachingEdYMD セットする coachingEdYMD
+	 */
+	public void setCoachingEdYMD(String coachingEdYMD) {
+		this.coachingEdYMD = coachingEdYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javacertifyStYMDを設定
+	 * @return certifyStYMD
+	 */
+	public String getCertifyStYMD() {
+		return certifyStYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param certifyStYMD セットする certifyStYMD
+	 */
+	public void setCertifyStYMD(String certifyStYMD) {
+		this.certifyStYMD = certifyStYMD;
+	}
+
+
+
+
+
+	/**
+	 * HcpSocietyData.javacertifyEdYMDを設定
+	 * @return certifyEdYMD
+	 */
+	public String getCertifyEdYMD() {
+		return certifyEdYMD;
+	}
+
+
+
+
+
+	/**
+	 * @param certifyEdYMD セットする certifyEdYMD
+	 */
+	public void setCertifyEdYMD(String certifyEdYMD) {
+		this.certifyEdYMD = certifyEdYMD;
+	}
+
+
+
+
+
+	/*
+ * * @return 比較用文字列
+ */
+	public String toChkString() {
+		return medicalSocietyNm +
+				admissionYYYY +
+				admissionMM +
+				admissionDD +
+				quitYYYY +
+				quitMM +
+				quitDD +
+				positionCode +
+				societyPosiStYYYY +
+				societyPosiStMM +
+				societyPosiStDD +
+				societyPosiEdYYYY +
+				societyPosiEdMM +
+				societyPosiEdDD +
+				advisingDoctorCd +
+				coachingAcquisiYYYY +
+				coachingAcquisiMM +
+				coachingAcquisiDD +
+				coachingStYYYY +
+				coachingStMM +
+				coachingStDD +
+				coachingEdYYYY +
+				coachingEdMM +
+				coachingEdDD +
+				certifyingPhysicianCd +
+				certifyStYYYY +
+				certifyStMM +
+				certifyStDD +
+				certifyEdYYYY +
+				certifyEdMM +
+				certifyEdDD ;
+	}
 
 	/**
      * このDTOの値を返す

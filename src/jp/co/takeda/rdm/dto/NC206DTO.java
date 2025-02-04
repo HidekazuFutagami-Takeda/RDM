@@ -33,6 +33,12 @@ public class NC206DTO extends BaseDTO implements Serializable {
 	 */
 	private String NC206 = "NC206";
 
+    /**
+     * 親画面コールバックメソッド名
+     * @generated
+     */
+    private String callBack;
+
 	/**
 	 * メッセージID
 	 * @generated
@@ -496,25 +502,17 @@ public class NC206DTO extends BaseDTO implements Serializable {
 	 */
 	private LinkedHashMap<String,String> certifyEdDDCombo = new LinkedHashMap<String,String>();
 
-
-	/**
-	 * 所属学会リスト
-	 * @generated
-	 */
-	private List<HcpSocietyData> hcpSocietyDataList = new ArrayList<HcpSocietyData>();
-
-	/**
-	 * 所属学会リストインデックス
-	 * @generated
-	 */
-	private Integer slistIndex;
-
 	/**
 	 * 所属学会リスト更新フラグ
 	 * @generated
 	 */
 	private String hcpSocietyDataChgFlg;
 
+	/**
+	 * 適用フラグ
+	 * @generated
+	 */
+	private String returnFlg;
 
 	/**
 	 * デフォルトのコンストラクタ。
@@ -547,6 +545,21 @@ public class NC206DTO extends BaseDTO implements Serializable {
 	}
 
 
+
+	/**
+	 * NC206DTO.javacallBackを設定
+	 * @return callBack
+	 */
+	public String getCallBack() {
+		return callBack;
+	}
+
+	/**
+	 * @param callBack セットする callBack
+	 */
+	public void setCallBack(String callBack) {
+		this.callBack = callBack;
+	}
 
 	/**
 	 * NC206DTO.javamsgIdを設定
@@ -1713,36 +1726,6 @@ public class NC206DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NC206DTO.javahcpSocietyDataListを設定
-	 * @return hcpSocietyDataList
-	 */
-	public List<HcpSocietyData> getHcpSocietyDataList() {
-		return hcpSocietyDataList;
-	}
-
-	/**
-	 * @param hcpSocietyDataList セットする hcpSocietyDataList
-	 */
-	public void setHcpSocietyDataList(List<HcpSocietyData> hcpSocietyDataList) {
-		this.hcpSocietyDataList = hcpSocietyDataList;
-	}
-
-	/**
-	 * NC206DTO.javaslistIndexを設定
-	 * @return listIndex
-	 */
-	public Integer getSlistIndex() {
-		return slistIndex;
-	}
-
-	/**
-	 * @param listIndex セットする listIndex
-	 */
-	public void setSlistIndex(Integer listIndex) {
-		this.slistIndex = slistIndex;
-	}
-
-	/**
 	 * NC206DTO.javahcpSocietyDataChgFlgを設定
 	 * @return hcpSocietyDataChgFlg
 	 */
@@ -1755,6 +1738,21 @@ public class NC206DTO extends BaseDTO implements Serializable {
 	 */
 	public void setHcpSocietyDataChgFlg(String hcpSocietyDataChgFlg) {
 		this.hcpSocietyDataChgFlg = hcpSocietyDataChgFlg;
+	}
+
+	/**
+	 * NC206DTO.javareturnFlgを設定
+	 * @return returnFlg
+	 */
+	public String getReturnFlg() {
+		return returnFlg;
+	}
+
+	/**
+	 * @param returnFlg セットする returnFlg
+	 */
+	public void setReturnFlg(String returnFlg) {
+		this.returnFlg = returnFlg;
 	}
 
 	/**

@@ -138,7 +138,7 @@ public class SelectND301MainDataEntity extends BaseEntity implements Serializabl
      * ULT医師C
      * @generated
      */
-    private String ultDocCd;
+    private String ultDocNo;
 
     /**
      * ULT医師名(漢字)
@@ -730,18 +730,18 @@ public class SelectND301MainDataEntity extends BaseEntity implements Serializabl
 	}
 
 	/**
-	 * SelectND011MainDataEntity.javaultDocCdを設定
-	 * @return ultDocCd
+	 * SelectND011MainDataEntity.javaultDocNoを設定
+	 * @return ultDocNo
 	 */
-	public String getUltDocCd() {
-		return ultDocCd;
+	public String getUltDocNo() {
+		return ultDocNo;
 	}
 
 	/**
-	 * @param ultDocCd セットする ultDocCd
+	 * @param ultDocNo セットする ultDocNo
 	 */
-	public void setUltDocCd(String ultDocCd) {
-		this.ultDocCd = ultDocCd;
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 	/**

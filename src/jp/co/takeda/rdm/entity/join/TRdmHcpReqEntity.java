@@ -260,8 +260,8 @@ public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
      * ULT医師コード
      * @generated
      */
-    private String ultDocCd;
-    private boolean ultDocCdNullFlag;
+    private String ultDocNo;
+    private boolean ultDocNoNullFlag;
 
     /**
      * MDM_ID
@@ -1973,11 +1973,11 @@ public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmHcpReqEntity.javaultDocCdを設定
-	 * @return ultDocCd
+	 * TRdmHcpReqEntity.javaultDocNoを設定
+	 * @return ultDocNo
 	 */
-	public String getUltDocCd() {
-		return ultDocCd;
+	public String getUltDocNo() {
+		return ultDocNo;
 	}
 
 
@@ -1986,10 +1986,10 @@ public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * @param ultDocCd セットする ultDocCd
+	 * @param ultDocNo セットする ultDocNo
 	 */
-	public void setUltDocCd(String ultDocCd) {
-		this.ultDocCd = ultDocCd;
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 
@@ -1998,11 +1998,11 @@ public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmHcpReqEntity.javaultDocCdNullFlagを設定
-	 * @return ultDocCdNullFlag
+	 * TRdmHcpReqEntity.javaultDocNoNullFlagを設定
+	 * @return ultDocNoNullFlag
 	 */
-	public boolean isUltDocCdNullFlag() {
-		return ultDocCdNullFlag;
+	public boolean isUltDocNoNullFlag() {
+		return ultDocNoNullFlag;
 	}
 
 
@@ -2011,10 +2011,10 @@ public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * @param ultDocCdNullFlag セットする ultDocCdNullFlag
+	 * @param ultDocNoNullFlag セットする ultDocNoNullFlag
 	 */
-	public void setUltDocCdNullFlag(boolean ultDocCdNullFlag) {
-		this.ultDocCdNullFlag = ultDocCdNullFlag;
+	public void setUltDocNoNullFlag(boolean ultDocNoNullFlag) {
+		this.ultDocNoNullFlag = ultDocNoNullFlag;
 	}
 
 

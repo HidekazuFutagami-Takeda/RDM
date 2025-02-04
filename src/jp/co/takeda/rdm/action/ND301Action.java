@@ -17,9 +17,8 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.ND011DTO;
 import jp.co.takeda.rdm.dto.ND301DTO;
-import jp.co.takeda.rdm.service.ND011Service;
+import jp.co.takeda.rdm.service.ND301Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
@@ -37,9 +36,9 @@ import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
  * Actionクラス
  * @generated
  */
-@Named("nD011Action")
+@Named("nD301Action")
 @Scope("request")
-public class ND011Action extends BaseAction<ND011DTO> {
+public class ND301Action extends BaseAction<ND301DTO> {
 
     /**
      * シリアルバージョンID
@@ -52,9 +51,9 @@ public class ND011Action extends BaseAction<ND011DTO> {
      * @generated
      */
     @Inject
-    private ND011Service nD011Service;
+    private ND301Service nD301Service;
     // 確認画面用にする
-    private ND301DTO paramDto;
+    private JKR090C020DTO paramDto;
     // START UOC
     // END UOC
 
@@ -62,8 +61,8 @@ public class ND011Action extends BaseAction<ND011DTO> {
      * コンストラクタ
      * @generated
      */
-    public ND011Action() {
-        dto = new ND011DTO();
+    public ND301Action() {
+        dto = new ND301DTO();
     }
 
     /**
@@ -111,7 +110,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nD011Service.init(dto);
+        BaseDTO outdto = nD301Service.init(dto);
         return initNext(outdto);
     }
 
@@ -131,7 +130,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
 //        String finishFlg = (String)request.getParameter(RdmConstantsData.JKR090C020_FINISH_FLG);
 //        // 遷移元画面が登録完了画面の場合
 //        if (RdmConstantsData.JKR090C020_FINISH_VALUE.equals(finishFlg)) {
-//            ND011DTO searchKey = (ND011DTO)sessionMap.get(AppConstant.SESKEY_ND011_SEARCHKEY);
+//            ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
 //            BeanUtils.copyProperties(dto, searchKey);
 //
 //        } else if (!dto.getBackScreenId().startsWith("JKR030C0")) {
@@ -143,43 +142,19 @@ public class ND011Action extends BaseAction<ND011DTO> {
 
 //        dto.setActionMtKbn("1");
       //画面タイト制御処理
-        String title = "ND011_医師新規作成";
+        String title = "ND301_医師新規作成 - 申請内容確認";
         //ユーザ権限
         String jokenSetCd = dto.getLoginJokenSetCd();
 
         dto.setTitle(title);
 
         String preScreenId = loginInfo.getPreScreenId();
+        dto.setBackScreenId(preScreenId);
         String reqId = dto.getReqId();
         String ultNo = dto.getUltDocNo();
 
         //モック
-        preScreenId = "NC011";
-
-        // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
-        // ULTT医師コード　ありなしで分岐
-        // ND001_医師検索
-        if ("ND001".equals(preScreenId)) {
-        	if (ultNo != null && ultNo.length() > 0) {
-        		// ULT医師コードで初期データ作成
-        		dto.setDisplayKbn("1");
-        	} else if(ultNo == null || ultNo.length() == 0){
-        		// 完全新規
-        		dto.setDisplayKbn("0");
-        	} else { //遷移エラー
-        	}
-        }
-        // 申請ID
-        // NC011_申請一覧
-        // ND301_医師新規作成 - 申請内容確認
-        // NM101_通知内容詳細
-        if ("NC011".equals(preScreenId) || "ND301".equals(preScreenId) || "NM101".equals(preScreenId)) {
-        	if (reqId != null && reqId.length() > 0) {
-        		// 申請データ（一時保存含む）を参照
-        		dto.setDisplayKbn("2");
-        	} else { //遷移エラー
-        	}
-        }
+        preScreenId = "ND301";
 
         dto.setMsgId(null);
 
@@ -193,7 +168,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_ND011_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -207,10 +182,10 @@ public class ND011Action extends BaseAction<ND011DTO> {
     public String register() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nD011Service.register(dto);
-        if (outdto instanceof ND011DTO) {
+        BaseDTO outdto = nD301Service.register(dto);
+        if (outdto instanceof ND301DTO) {
             // START UOC
-//            outdto = nD011Service.register(dto);
+//            outdto = nD301Service.register(dto);
             // END UOC
         }
         return registerNext(outdto);
@@ -233,45 +208,134 @@ public class ND011Action extends BaseAction<ND011DTO> {
      */
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
-        if (!RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
+        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
+                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
+                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
+                && !RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
                 && !"exception".equals(outdto.getForward())){
             setJumpInfo(dto.getMsgId());
 //            outdto.setForward("JKR090C020Init");
         }
         // END UOC
         //TODO buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
-        //"4" = 登録完了
-        if ("4".equals(dto.getButtonFlg())) {
-            // 登録完了画面へ遷移
-            setJumpInfo();
-            outdto.setForward("ND301Init");
-            //画面状況フラグを初期化
-            dto.setMsgId("");
-            dto.setButtonFlg("");
-        }
         setNextDTO(outdto);
         return outdto.getForward();
     }
 
-    /**
-     * 登録終了画面へ遷移用パラメータ設定。
-     * @param dto 登録完了画面DTO
-     */
-    private void setJumpInfo() {
-        // メッセージオブジェクト取得
-        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+//    /**
+//     * 業務処理
+//     * @customizable
+//     */
+//    @InputConfig(methodName="validationError")
+//    public String downLoad() throws Exception {
+//        downLoadSetup();
+//        // F層呼び出し
+//        BaseDTO outdto = nD301Service.downLoad(dto);
+//        return downLoadNext(outdto);
+//    }
 
-        paramDto = new ND301DTO();
-        // ブラウザタイトルと画面タイトル
-//        paramDto.setBrowerTitle("ND301_医師新規作成 - 申請内容確認");
-        paramDto.setTitle("ND301_医師新規作成 - 申請内容確認");
-        paramDto.setReqId(dto.getReqId());
-//        // 戻るリンク1(表示文言)
-//        paramDto.setReturnLinkNm1("ND011_医師新規作成画面へ戻る");
-//        // 戻るリンク1(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND011Init");
+//    /**
+//     * 前処理
+//     * @customizable
+//     */
+//    protected void downLoadSetup() throws Exception {
+//        // START UOC
+//
+//        // END UOC
+//    }
+//
+//    /**
+//     * 後処理
+//     * @customizable
+//     */
+//    protected String downLoadNext(BaseDTO outdto) throws Exception {
+//        // START UOC
+//        outdto.setForward("stream");
+//        // END UOC
+//        setNextDTO(outdto);
+//        return outdto.getForward();
+//    }
 
-    }
+//    /**
+//     * 業務処理
+//     * @customizable
+//     */
+//    @InputConfig(methodName="validationError")
+//    public String sort() throws Exception {
+//        sortSetup();
+//        // F層呼び出し
+//        BaseDTO outdto = nD301Service.sort(dto);
+//        if (outdto instanceof ND301DTO) {
+//            // START UOC
+//
+//            // END UOC
+//        }
+//        return sortNext(outdto);
+//    }
+
+//    /**
+//     * 前処理
+//     * @customizable
+//     */
+//    protected void sortSetup() throws Exception {
+//        // START UOC
+//
+//        // END UOC
+//    }
+//
+//    /**
+//     * 後処理
+//     * @customizable
+//     */
+//    protected String sortNext(BaseDTO outdto) throws Exception {
+//        // START UOC
+//        // 検索条件をセッションに格納する（リンク押下時に使用）
+//        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, outdto);
+//        // END UOC
+//        setNextDTO(outdto);
+//        return outdto.getForward();
+//    }
+
+
+//    /**
+//     * 業務処理
+//     * @customizable
+//     */
+//    @InputConfig(methodName="validationError")
+//    public String page() throws Exception {
+//        pageSetup();
+//        // F層呼び出し
+//        BaseDTO outdto = nD301Service.page(dto);
+//        if (outdto instanceof ND301DTO) {
+//            // START UOC
+//
+//            // END UOC
+//        }
+//        return pageNext(outdto);
+//    }
+
+//    /**
+//     * 前処理
+//     * @customizable
+//     */
+//    protected void pageSetup() throws Exception {
+//        // START UOC
+//
+//        // END UOC
+//    }
+//
+//    /**
+//     * 後処理
+//     * @customizable
+//     */
+//    protected String pageNext(BaseDTO outdto) throws Exception {
+//        // START UOC
+//        // 検索条件をセッションに格納する（リンク押下時に使用）
+//        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, outdto);
+//        // END UOC
+//        setNextDTO(outdto);
+//        return outdto.getForward();
+//    }
 
     // START UOC
     /**
@@ -287,141 +351,141 @@ public class ND011Action extends BaseAction<ND011DTO> {
         String jokenSetCd = dto.getLoginJokenSetCd();
 
         //画面タイトル内容設定
-        paramDto = new ND301DTO();
-//        // ブラウザタイトル
-//        paramDto.setBrowerTitle ("担当引継ぎ"+ subTitle);
-//        // 画面タイトル
-//        paramDto.setTitle("担当引継ぎ"+ subTitle);
-//        // 戻るリンク(表示文言)
-//        paramDto.setReturnLinkNm1("戻る");
-//        // 戻るリンク(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND011Init");
-//        // メッセージ１
-//        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
-//        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
+        paramDto = new JKR090C020DTO();
+        // ブラウザタイトル
+        paramDto.setBrowerTitle ("担当引継ぎ"+ subTitle);
+        // 画面タイトル
+        paramDto.setTitle("担当引継ぎ"+ subTitle);
+        // 戻るリンク(表示文言)
+        paramDto.setReturnLinkNm1("戻る");
+        // 戻るリンク(遷移先URL)
+        paramDto.setReturnLinkURL1("ND301Init");
+        // メッセージ１
+        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
+        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
 
-        ND011DTO searchKey = (ND011DTO)sessionMap.get(AppConstant.SESKEY_ND011_SEARCHKEY);
+        ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
 //        searchKey.setActionMtKbn("2");
-        sessionMap.put(AppConstant.SESKEY_ND011_SEARCHKEY, searchKey);
+        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, searchKey);
     }
 
     /**
      * 前画面から組織関連パラメータ設定
-     * @param Dto010
+     * @param Dto301
      */
-    public void setSosInfo(Map<String, Object> sessionMap, ND011DTO Dto010) {
+    public void setSosInfo(Map<String, Object> sessionMap, ND301DTO Dto301) {
 
 //        //トップメニューで組織(現)を選択した場合
-//        if ("0".equals(Dto010.getSosSelFlg())) {
+//        if ("0".equals(Dto301.getSosSelFlg())) {
 //
 //            // 検索条件_組織・担当（新）_テキスト
-//            Dto010.setDispToSosJgiName("");
+//            Dto301.setDispToSosJgiName("");
 //            // 検索条件_新組織コード
-//            Dto010.setSearchToSosCd("");
+//            Dto301.setSearchToSosCd("");
 //            // 検索条件_組織（新）_テキスト
-//            Dto010.setSearchToSosName("");
+//            Dto301.setSearchToSosName("");
 //            //検索条件_組織コード（新）（営業所）
-//            Dto010.setSearchToSosCd3("");
+//            Dto301.setSearchToSosCd3("");
 //
 //
 //        //トップメニューで組織(新)を選択した場合
 //        } else {
 //
 //            // 検索条件_組織・担当（現）_テキスト
-//            Dto010.setDispFromSosJgiName("");
+//            Dto301.setDispFromSosJgiName("");
 //            // 検索条件_現組織コード
-//            Dto010.setSearchFromSosCd("");
+//            Dto301.setSearchFromSosCd("");
 //            // 検索条件_組織（現）_テキスト
-//            Dto010.setSearchFromSosName("");
+//            Dto301.setSearchFromSosName("");
 //            // 検索条件_現組織支店コード
-//            Dto010.setSearchFromSosCd2("");
+//            Dto301.setSearchFromSosCd2("");
 //            // 検索条件_現組織支店名称
-//            Dto010.setSearchFromSosNm2("");
+//            Dto301.setSearchFromSosNm2("");
 //            // 検索条件_現組織の組織コード３
-//            Dto010.setSearchFromSosCd3("");
+//            Dto301.setSearchFromSosCd3("");
 //            // 検索条件_現組織の組織コード４
-//            Dto010.setSearchFromSosCd4("");
+//            Dto301.setSearchFromSosCd4("");
 //        }
 //
 //        // 検索条件_現従業員番号
-//        Dto010.setSearchFromJgiNo("");
+//        Dto301.setSearchFromJgiNo("");
 //        // 検索条件_現従業員
-//        Dto010.setSearchFromJgiName("");
+//        Dto301.setSearchFromJgiName("");
 //        // 検索条件_新従業員番号
-//        Dto010.setSearchToJgiNo("");
+//        Dto301.setSearchToJgiNo("");
 //        // 検索条件_新従業員
-//        Dto010.setSearchToJgiName("");
+//        Dto301.setSearchToJgiName("");
 
-       if ((Dto010.getBackScreenId().startsWith("JKR040C0") || Dto010.getBackScreenId().startsWith("JKR050C0"))
-//            && !StringUtils.isEmpty(Dto010.getTopChangedSosCd())
+       if ((Dto301.getBackScreenId().startsWith("JKR040C0") || Dto301.getBackScreenId().startsWith("JKR050C0"))
+//            && !StringUtils.isEmpty(Dto301.getTopChangedSosCd())
             ) {
 
 //            //トップメニューで組織(現)を選択した場合
-//            if ("0".equals(Dto010.getSosSelFlg())) {
+//            if ("0".equals(Dto301.getSosSelFlg())) {
 //                // 検索条件_組織・担当（現）_テキスト
-//                Dto010.setDispFromSosJgiName(Dto010.getTopChangedSosNm());
+//                Dto301.setDispFromSosJgiName(Dto301.getTopChangedSosNm());
 //                // 検索条件_現組織コード
-//                Dto010.setSearchFromSosCd(Dto010.getTopChangedSosCd());
+//                Dto301.setSearchFromSosCd(Dto301.getTopChangedSosCd());
 //                // 検索条件_組織（現）_テキスト
-//                Dto010.setSearchFromSosName(Dto010.getTopChangedSosNm());
+//                Dto301.setSearchFromSosName(Dto301.getTopChangedSosNm());
 //                // 検索条件_現組織支店コード
-//                Dto010.setSearchFromSosCd2(Dto010.getTopChangedSosCd2());
+//                Dto301.setSearchFromSosCd2(Dto301.getTopChangedSosCd2());
 //                // 検索条件_現組織支店名称
-//                Dto010.setSearchFromSosNm2(Dto010.getTopChangedSosNm2());
+//                Dto301.setSearchFromSosNm2(Dto301.getTopChangedSosNm2());
 //                // 検索条件_現組織の組織コード３
-//                Dto010.setSearchFromSosCd3(Dto010.getTopChangedSosCd3());
+//                Dto301.setSearchFromSosCd3(Dto301.getTopChangedSosCd3());
 //                // 検索条件_現組織の組織コード４
-//                Dto010.setSearchFromSosCd4("");
+//                Dto301.setSearchFromSosCd4("");
 //
 //            //トップメニューで組織(新)を選択した場合
 //            } else {
 //
 //                // 検索条件_組織・担当（新）_テキスト
-//                Dto010.setDispToSosJgiName(Dto010.getTopChangedSosNm());
+//                Dto301.setDispToSosJgiName(Dto301.getTopChangedSosNm());
 //                // 検索条件_新組織コード
-//                Dto010.setSearchToSosCd(Dto010.getTopChangedSosCd());
+//                Dto301.setSearchToSosCd(Dto301.getTopChangedSosCd());
 //                // 検索条件_組織（新）_テキスト
-//                Dto010.setSearchToSosName(Dto010.getTopChangedSosNm());
+//                Dto301.setSearchToSosName(Dto301.getTopChangedSosNm());
 //                //検索条件_組織コード（新）（営業所）
-//                Dto010.setSearchToSosCd3(Dto010.getTopChangedSosCd3());
+//                Dto301.setSearchToSosCd3(Dto301.getTopChangedSosCd3());
 //
 //            }
         } else {
 
 //            //トップメニューで組織(現)を選択した場合
-//            if ("0".equals(Dto010.getSosSelFlg())) {
+//            if ("0".equals(Dto301.getSosSelFlg())) {
 //                // 検索条件_現組織コード
-//                Dto010.setSearchFromSosCd(Dto010.getSelectedSosCd());
+//                Dto301.setSearchFromSosCd(Dto301.getSelectedSosCd());
 //                // 検索条件_組織・担当（現）_テキスト
-//                Dto010.setDispFromSosJgiName(Dto010.getSelectedSosNm());
+//                Dto301.setDispFromSosJgiName(Dto301.getSelectedSosNm());
 //                // 検索条件_組織（現）_テキスト
-//                Dto010.setSearchFromSosName(Dto010.getSelectedSosNm());
+//                Dto301.setSearchFromSosName(Dto301.getSelectedSosNm());
 //                // 検索条件_現組織支店コード
-//                Dto010.setSearchFromSosCd2(Dto010.getSelectedSosCd2());
+//                Dto301.setSearchFromSosCd2(Dto301.getSelectedSosCd2());
 //                // 検索条件_現組織支店名称
-//                Dto010.setSearchFromSosNm2(Dto010.getSelectedSosNm2());
+//                Dto301.setSearchFromSosNm2(Dto301.getSelectedSosNm2());
 //                // 検索条件_現組織の組織コード３
-//                Dto010.setSearchFromSosCd3(Dto010.getSelectedSosCd3());
+//                Dto301.setSearchFromSosCd3(Dto301.getSelectedSosCd3());
 //                // 検索条件_現組織の組織コード４
-//                Dto010.setSearchFromSosCd4("");
+//                Dto301.setSearchFromSosCd4("");
 //
 //            //トップメニューで組織(新)を選択した場合
 //            } else {
 //
 //                // 検索条件_新組織コード
-//                Dto010.setSearchToSosCd(Dto010.getSelectedSosCd());
+//                Dto301.setSearchToSosCd(Dto301.getSelectedSosCd());
 //                // 検索条件_組織・担当（新）_テキスト
-//                Dto010.setDispToSosJgiName(Dto010.getSelectedSosNm());
+//                Dto301.setDispToSosJgiName(Dto301.getSelectedSosNm());
 //                // 検索条件_組織（新）_テキスト
-//                Dto010.setSearchToSosName(Dto010.getSelectedSosNm());
+//                Dto301.setSearchToSosName(Dto301.getSelectedSosNm());
 //                // 検索条件_新組織コード(営業所）
-//                Dto010.setSearchToSosCd3(Dto010.getSelectedSosCd3());
+//                Dto301.setSearchToSosCd3(Dto301.getSelectedSosCd3());
 //            }
         }
 //       // 検索条件_現組織コード(ポップアップ用）
-//       Dto010.setSearchFromSosCdPop(Dto010.getSearchFromSosCd());
+//       Dto301.setSearchFromSosCdPop(Dto301.getSearchFromSosCd());
 //       // 検索条件_新組織コード(ポップアップ用）
-//       Dto010.setSearchToSosCdPop(Dto010.getSearchToSosCd());
+//       Dto301.setSearchToSosCdPop(Dto301.getSearchToSosCd());
     }
 
     /**

@@ -40,6 +40,12 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	private String msgId;
 
 	/**
+	 * メッセージ中身
+	 * @generated
+	 */
+	private String msgStr;
+
+	/**
 	 * ユーザ権限
 	 * @generated
 	 */
@@ -49,7 +55,7 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * ユーザ従業員番号
 	 * @generated
 	 */
-	private String loginJgiNo;
+	private Integer loginJgiNo;
 
 	/**
 	 * ユーザ氏名
@@ -193,7 +199,7 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * ULT医師C
 	 * @generated
 	 */
-	private String ultDocCd;
+	private String ultDocNo;
 
 	/**
 	 * ULT医師名(漢字)
@@ -343,7 +349,7 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * 専門追加情報
 	 * @generated
 	 */
-	private String spComCd;
+	private String spCom;
 
 	/**
 	 * 出身所属部科コード
@@ -415,7 +421,7 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * 勤務形態
 	 * @generated
 	 */
-	private String skJobFrom;
+	private String skJobForm;
 
 	/**
 	 * 薬審メンバー区分
@@ -560,7 +566,7 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * コンボボックス_勤務形態
 	 * @generated
 	 */
-	private LinkedHashMap<String,String> skJobFromCombo = new LinkedHashMap<String,String>();
+	private LinkedHashMap<String,String> skJobFormCombo = new LinkedHashMap<String,String>();
 
 	/**
 	 * コンボボックス_薬審メンバー区分
@@ -574,6 +580,13 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String shnFlg;
+
+    /**
+     * ボタンフラグ
+     * @generated
+     */
+    private String buttonFlg;
+
 
     /**
      * デフォルトのコンストラクタ。
@@ -624,14 +637,14 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 * ND011DTO.javaloginJgiNoを設定
 	 * @return loginJgiNo
 	 */
-	public String getLoginJgiNo() {
+	public Integer getLoginJgiNo() {
 		return loginJgiNo;
 	}
 
 	/**
 	 * @param loginJgiNo セットする loginJgiNo
 	 */
-	public void setLoginJgiNo(String loginJgiNo) {
+	public void setLoginJgiNo(Integer loginJgiNo) {
 		this.loginJgiNo = loginJgiNo;
 	}
 
@@ -981,18 +994,18 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND011DTO.javaultDocCdを設定
-	 * @return ultDocCd
+	 * ND011DTO.javaultDocNoを設定
+	 * @return ultDocNo
 	 */
-	public String getUltDocCd() {
-		return ultDocCd;
+	public String getUltDocNo() {
+		return ultDocNo;
 	}
 
 	/**
-	 * @param ultDocCd セットする ultDocCd
+	 * @param ultDocNo セットする ultDocNo
 	 */
-	public void setUltDocCd(String ultDocCd) {
-		this.ultDocCd = ultDocCd;
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 	/**
@@ -1356,18 +1369,18 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND011DTO.javaspComCdを設定
-	 * @return spComCd
+	 * ND011DTO.javaspComを設定
+	 * @return spCom
 	 */
-	public String getSpComCd() {
-		return spComCd;
+	public String getSpCom() {
+		return spCom;
 	}
 
 	/**
-	 * @param spComCd セットする spComCd
+	 * @param spCom セットする spCom
 	 */
-	public void setSpComCd(String spComCd) {
-		this.spComCd = spComCd;
+	public void setSpCom(String spCom) {
+		this.spCom = spCom;
 	}
 
 	/**
@@ -1536,18 +1549,18 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND011DTO.javaskJobFromを設定
-	 * @return skJobFrom
+	 * ND011DTO.javaskJobFormを設定
+	 * @return skJobForm
 	 */
-	public String getSkJobFrom() {
-		return skJobFrom;
+	public String getSkJobForm() {
+		return skJobForm;
 	}
 
 	/**
-	 * @param skJobFrom セットする skJobFrom
+	 * @param skJobForm セットする skJobForm
 	 */
-	public void setSkJobFrom(String skJobFrom) {
-		this.skJobFrom = skJobFrom;
+	public void setSkJobForm(String skJobForm) {
+		this.skJobForm = skJobForm;
 	}
 
 	/**
@@ -1911,18 +1924,18 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND011DTO.javaskJobFromComboを設定
-	 * @return skJobFromCombo
+	 * ND011DTO.javaskJobFormComboを設定
+	 * @return skJobFormCombo
 	 */
-	public LinkedHashMap<String, String> getSkJobFromCombo() {
-		return skJobFromCombo;
+	public LinkedHashMap<String, String> getSkJobFormCombo() {
+		return skJobFormCombo;
 	}
 
 	/**
-	 * @param skJobFromCombo セットする skJobFromCombo
+	 * @param skJobFormCombo セットする skJobFormCombo
 	 */
-	public void setSkJobFromCombo(LinkedHashMap<String, String> skJobFromCombo) {
-		this.skJobFromCombo = skJobFromCombo;
+	public void setSkJobFormCombo(LinkedHashMap<String, String> skJobFormCombo) {
+		this.skJobFormCombo = skJobFormCombo;
 	}
 
 	/**
@@ -1953,6 +1966,36 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 */
 	public void setShnFlg(String shnFlg) {
 		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * ND011DTO.javabuttonFlgを設定
+	 * @return buttonFlg
+	 */
+	public String getButtonFlg() {
+		return buttonFlg;
+	}
+
+	/**
+	 * @param buttonFlg セットする buttonFlg
+	 */
+	public void setButtonFlg(String buttonFlg) {
+		this.buttonFlg = buttonFlg;
+	}
+
+	/**
+	 * ND011DTO.javamsgStrを設定
+	 * @return msgStr
+	 */
+	public String getMsgStr() {
+		return msgStr;
+	}
+
+	/**
+	 * @param msgStr セットする msgStr
+	 */
+	public void setMsgStr(String msgStr) {
+		this.msgStr = msgStr;
 	}
 
 	/**

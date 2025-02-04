@@ -65,6 +65,12 @@ public class HcpPublicData implements Serializable {
     private String pubInstStDD;
 
     /**
+     * 公的機関開始年月日(ラベル用)
+     * @generated
+     */
+    private String pubInstStYMD;
+
+    /**
      * 公的機関終了年月日(年)
      * @generated
      */
@@ -81,6 +87,12 @@ public class HcpPublicData implements Serializable {
      * @generated
      */
     private String pubInstEdDD;
+
+    /**
+     * 公的機関終了年月日(ラベル用)
+     * @generated
+     */
+    private String pubInstEdYMD;
 
     /**
      * 公的機関役職コード
@@ -113,6 +125,12 @@ public class HcpPublicData implements Serializable {
     private String pubInstposStDD;
 
     /**
+     * 公的機関役職開始年月日(ラベル用)
+     * @generated
+     */
+    private String pubInstposStYMD;
+
+    /**
      * 公的機関役職終了年月日(年)
      * @generated
      */
@@ -130,6 +148,11 @@ public class HcpPublicData implements Serializable {
      */
     private String pubInstposEdDD;
 
+    /**
+     * 公的機関役職終了年月日(ラベル用)
+     * @generated
+     */
+    private String pubInstposEdYMD;
 
     /**
      * コンストラクタ
@@ -483,6 +506,102 @@ public class HcpPublicData implements Serializable {
 		this.pubInstposEdDD = pubInstposEdDD;
 	}
 
+	/**
+	 * HcpPublicData.javapubInstStYMDを設定
+	 * @return pubInstStYMD
+	 */
+	public String getPubInstStYMD() {
+		return pubInstStYMD;
+	}
+
+
+
+	/**
+	 * @param pubInstStYMD セットする pubInstStYMD
+	 */
+	public void setPubInstStYMD(String pubInstStYMD) {
+		this.pubInstStYMD = pubInstStYMD;
+	}
+
+
+
+	/**
+	 * HcpPublicData.javapubInstEdYMDを設定
+	 * @return pubInstEdYMD
+	 */
+	public String getPubInstEdYMD() {
+		return pubInstEdYMD;
+	}
+
+
+
+	/**
+	 * @param pubInstEdYMD セットする pubInstEdYMD
+	 */
+	public void setPubInstEdYMD(String pubInstEdYMD) {
+		this.pubInstEdYMD = pubInstEdYMD;
+	}
+
+
+
+	/**
+	 * HcpPublicData.javapubInstposStYMDを設定
+	 * @return pubInstposStYMD
+	 */
+	public String getPubInstposStYMD() {
+		return pubInstposStYMD;
+	}
+
+
+
+	/**
+	 * @param pubInstposStYMD セットする pubInstposStYMD
+	 */
+	public void setPubInstposStYMD(String pubInstposStYMD) {
+		this.pubInstposStYMD = pubInstposStYMD;
+	}
+
+
+
+	/**
+	 * HcpPublicData.javapubInstposEdYMDを設定
+	 * @return pubInstposEdYMD
+	 */
+	public String getPubInstposEdYMD() {
+		return pubInstposEdYMD;
+	}
+
+
+
+	/**
+	 * @param pubInstposEdYMD セットする pubInstposEdYMD
+	 */
+	public void setPubInstposEdYMD(String pubInstposEdYMD) {
+		this.pubInstposEdYMD = pubInstposEdYMD;
+	}
+
+
+
+		/*
+	 * * @return 比較用文字列
+	 */
+		public String toChkString() {
+			return classCategoryCd +
+					pubInstitutionCd +
+					pubInstStYYYY +
+					pubInstStMM +
+					pubInstStDD +
+					pubInstEdYYYY +
+					pubInstEdMM +
+					pubInstEdDD +
+					pubInstPositionCd +
+					pubInstposStYYYY +
+					pubInstposStMM +
+					pubInstposStDD +
+					pubInstposEdYYYY +
+					pubInstposEdMM +
+					pubInstposEdDD;
+		}
 
 
 	/**

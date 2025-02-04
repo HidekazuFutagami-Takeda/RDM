@@ -344,6 +344,13 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
         super("t_rdm_req_knr");
     }
 
+    /**
+     * コンストラクタ
+     * @generated
+     */
+    public TRdmReqKnrEntity(String sqlId) {
+        super("t_rdm_req_knr", sqlId);
+    }
 
 	/**
 	 * TRdmReqKnrEntity.javareqIdを設定

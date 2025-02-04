@@ -2749,10 +2749,19 @@ public class NF012Service extends BaseService {
         	List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
 
         	if(tRdmReqKnrEntityList.size() > 0) {
-        		if(!tRdmReqKnrEntityList.get(0).getUpdShaYmd().equals(indto.getUpdShaYmd())) {
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		Date updDate = null;
+                try {
+					updDate = sdFormat.parse(indto.getUpdShaYmd());
+				} catch (ParseException e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+				}
+        		if(!tRdmReqKnrEntityList.get(0).getUpdShaYmd().equals(updDate)) {
         			// 既に他のユーザーによってデータが処理されています。
         			errMsg += loginInfo.getMsgData(RdmConstantsData.E003) + "\n";
-        			errFlg = true;
+    	        	errFlg = true;
+
         		}
         	}
         }
@@ -2797,9 +2806,9 @@ public class NF012Service extends BaseService {
         	tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
         	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
         	tRdmReqKnrInsData.setInsNo(indto.getInsNo());
-        	tRdmReqKnrInsData.setInsShaYmd(sysDate);
+        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
         	tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmReqKnrInsData.setUpdShaYmd(sysDate);
+        	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
         	tRdmReqKnrInsData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.insertByValue(tRdmReqKnrInsData);
@@ -2816,7 +2825,7 @@ public class NF012Service extends BaseService {
         	}
 
         	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
-        	tRdmReqKnrUpdData.setUpdShaYmd(sysDate);
+        	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.update(tRdmReqKnrUpdData);

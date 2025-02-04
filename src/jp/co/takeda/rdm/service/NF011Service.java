@@ -888,9 +888,9 @@ public class NF011Service extends BaseService {
         	tRdmReqKnrInsData.setReqJgiNo(indto.getReqJgiNo());
         	tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
         	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
-        	tRdmReqKnrInsData.setInsShaYmd(sysDate);
+        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
         	tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmReqKnrInsData.setUpdShaYmd(sysDate);
+        	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
         	tRdmReqKnrInsData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.insertByValue(tRdmReqKnrInsData);
@@ -901,7 +901,7 @@ public class NF011Service extends BaseService {
         	tRdmReqKnrUpdData.setReqId(reqId);
         	tRdmReqKnrUpdData.setReqStsCd("01");
         	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
-        	tRdmReqKnrUpdData.setUpdShaYmd(sysDate);
+        	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.update(tRdmReqKnrUpdData);

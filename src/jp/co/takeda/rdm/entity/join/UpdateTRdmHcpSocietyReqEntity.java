@@ -8,6 +8,8 @@ package jp.co.takeda.rdm.entity.join;
 import java.io.Serializable;
 
 import jp.co.takeda.rdm.common.BaseEntity;
+import jp.co.takeda.rdm.util.StringUtils;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.Date;
@@ -18,7 +20,7 @@ import java.util.Date;
  * テーブル論理名 : 医師_所属学会_申請管理
  * @generated
  */
-public class TRdmHcpSocietyReqEntity extends BaseEntity implements Serializable {
+public class UpdateTRdmHcpSocietyReqEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -288,8 +290,8 @@ public class TRdmHcpSocietyReqEntity extends BaseEntity implements Serializable 
      * コンストラクタ
      * @generated
      */
-    public TRdmHcpSocietyReqEntity() {
-        super("t_rdm_hcp_society_req");
+    public UpdateTRdmHcpSocietyReqEntity() {
+        super("t_rdm_hcp_society_req", "updateData");
     }
 
 
@@ -1972,8 +1974,42 @@ public class TRdmHcpSocietyReqEntity extends BaseEntity implements Serializable 
 	}
 
 
+	/**
+	 * null更新可の項目の更新
+	 */
+		public void checkSetNull() {
+			if(StringUtils.isEmpty(admissionYYYY)) this.admissionYYYYNullFlag = true;//入会年月日(年)
+			if(StringUtils.isEmpty(admissionMM)) this.admissionMMNullFlag = true;//入会年月日(月)
+			if(StringUtils.isEmpty(admissionDD)) this.admissionDDNullFlag = true;//入会年月日(日)
+			if(StringUtils.isEmpty(quitYYYY)) this.quitYYYYNullFlag = true;//脱会年月日(年)
+			if(StringUtils.isEmpty(quitMM)) this.quitMMNullFlag = true;//脱会年月日(月)
+			if(StringUtils.isEmpty(quitDD)) this.quitDDNullFlag = true;//脱会年月日(日)
+			if(StringUtils.isEmpty(positionCode)) this.positionCodeNullFlag = true;//所属役職
+			if(StringUtils.isEmpty(societyPosiStYYYY)) this.societyPosiStYYYYNullFlag = true;//役職開始年月日(年)
+			if(StringUtils.isEmpty(societyPosiStMM)) this.societyPosiStMMNullFlag = true;//役職開始年月日(月)
+			if(StringUtils.isEmpty(societyPosiStDD)) this.societyPosiStDDNullFlag = true;//役職開始年月日(日)
+			if(StringUtils.isEmpty(societyPosiEdYYYY)) this.societyPosiEdYYYYNullFlag = true;//役職終了年月日(年)
+			if(StringUtils.isEmpty(societyPosiEdMM)) this.societyPosiEdMMNullFlag = true;//役職終了年月日(月)
+			if(StringUtils.isEmpty(societyPosiEdDD)) this.societyPosiEdDDNullFlag = true;//役職終了年月日(日)
+			if(StringUtils.isEmpty(advisingDoctorCd)) this.advisingDoctorCdNullFlag = true;//所属学会指導医区分
+			if(StringUtils.isEmpty(coachingAcquisiYYYY)) this.coachingAcquisiYYYYNullFlag = true;//指導医取得年月日(年)
+			if(StringUtils.isEmpty(coachingAcquisiMM)) this.coachingAcquisiMMNullFlag = true;//指導医取得年月日(月)
+			if(StringUtils.isEmpty(coachingAcquisiDD)) this.coachingAcquisiDDNullFlag = true;//指導医取得年月日(日)
+			if(StringUtils.isEmpty(coachingStYYYY)) this.coachingStYYYYNullFlag = true;//指導医開始年月日(年)
+			if(StringUtils.isEmpty(coachingStMM)) this.coachingStMMNullFlag = true;//指導医開始年月日(月)
+			if(StringUtils.isEmpty(coachingStDD)) this.coachingStDDNullFlag = true;//指導医開始年月日(日)
+			if(StringUtils.isEmpty(coachingEdYYYY)) this.coachingEdYYYYNullFlag = true;//指導医終了年月日(年)
+			if(StringUtils.isEmpty(coachingEdMM)) this.coachingEdMMNullFlag = true;//指導医終了年月日(月)
+			if(StringUtils.isEmpty(coachingEdDD)) this.coachingEdDDNullFlag = true;//指導医終了年月日(日)
+			if(StringUtils.isEmpty(certifyingPhysicianCd)) this.certifyingPhysicianCdNullFlag = true;//所属学会認定医区分
+			if(StringUtils.isEmpty(certifyStYYYY)) this.certifyStYYYYNullFlag = true;//認定医開始年月日(年)
+			if(StringUtils.isEmpty(certifyStMM)) this.certifyStMMNullFlag = true;//認定医開始年月日(月)
+			if(StringUtils.isEmpty(certifyStDD)) this.certifyStDDNullFlag = true;//認定医開始年月日(日)
+			if(StringUtils.isEmpty(certifyEdYYYY)) this.certifyEdYYYYNullFlag = true;//認定医終了年月日(年)
+			if(StringUtils.isEmpty(certifyEdMM)) this.certifyEdMMNullFlag = true;//認定医終了年月日(月)
+			if(StringUtils.isEmpty(certifyEdDD)) this.certifyEdDDNullFlag = true;//認定医終了年月日(日)
 
-
+		}
 
 	/**
      * このEntityの値を返す

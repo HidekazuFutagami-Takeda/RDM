@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="t_rdm_hcp_public_req">
+    <resultMap id="selectUpDateResultMap" type="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpPublicReqEntity">
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
     <resultMap id="tRdmHcpPublicReqResultMap" type="jp.co.takeda.rdm.entity.join.TRdmHcpPublicReqEntity">
         <result column="REQ_ID" property="reqId"/>
         <result column="DOC_NO" property="docNo"/>
@@ -249,4 +253,42 @@
 		  AND PUR.REQ_ID = #{inReqId}
 		ORDER BY PUI.SORT_NUM, PUR.CLASS_CATEGORY
     </select>
+            <select id="selectUpDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpPublicReqEntity" resultMap="selectUpDateResultMap">
+        SELECT
+            UPD_SHA_YMD
+           ,UPD_SHA_ID
+        FROM
+            T_RDM_HCP_PUBLIC_REQ
+        WHERE
+             REQ_ID = #{reqId}
+         AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
+        FOR UPDATE NOWAIT
+    </select>
+    <update id="updateData" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpPublicReqEntity">
+        UPDATE
+            T_RDM_HCP_PUBLIC_REQ
+        SET
+			<if test="docNoNullFlag == true">DOC_NO = NULL,</if><if test="docNoNullFlag == false"><if test="docNo != null">DOC_NO = #{docNo},</if></if>
+			<if test="classCategoryCdNullFlag == true">CLASS_CATEGORY = NULL,</if><if test="classCategoryCdNullFlag == false"><if test="classCategoryCd != null">CLASS_CATEGORY = #{classCategoryCd},</if></if>
+			<if test="pubInstStYYYYNullFlag == true">PUB_INST_ST_YYYY = NULL,</if><if test="pubInstStYYYYNullFlag == false"><if test="pubInstStYYYY != null">PUB_INST_ST_YYYY = #{pubInstStYYYY},</if></if>
+			<if test="pubInstStMMNullFlag == true">PUB_INST_ST_MM = NULL,</if><if test="pubInstStMMNullFlag == false"><if test="pubInstStMM != null">PUB_INST_ST_MM = #{pubInstStMM},</if></if>
+			<if test="pubInstStDDNullFlag == true">PUB_INST_ST_DD = NULL,</if><if test="pubInstStDDNullFlag == false"><if test="pubInstStDD != null">PUB_INST_ST_DD = #{pubInstStDD},</if></if>
+			<if test="pubInstEdYYYYNullFlag == true">PUB_INST_ED_YYYY = NULL,</if><if test="pubInstEdYYYYNullFlag == false"><if test="pubInstEdYYYY != null">PUB_INST_ED_YYYY = #{pubInstEdYYYY},</if></if>
+			<if test="pubInstEdMMNullFlag == true">PUB_INST_ED_MM = NULL,</if><if test="pubInstEdMMNullFlag == false"><if test="pubInstEdMM != null">PUB_INST_ED_MM = #{pubInstEdMM},</if></if>
+			<if test="pubInstEdDDNullFlag == true">PUB_INST_ED_DD = NULL,</if><if test="pubInstEdDDNullFlag == false"><if test="pubInstEdDD != null">PUB_INST_ED_DD = #{pubInstEdDD},</if></if>
+			<if test="pubInstPositionCdNullFlag == true">PUB_INST_POSITION = NULL,</if><if test="pubInstPositionCdNullFlag == false"><if test="pubInstPositionCd != null">PUB_INST_POSITION = #{pubInstPositionCd},</if></if>
+			<if test="pubInstposStYYYYNullFlag == true">PUB_INSTPOS_ST_YYYY = NULL,</if><if test="pubInstposStYYYYNullFlag == false"><if test="pubInstposStYYYY != null">PUB_INSTPOS_ST_YYYY = #{pubInstposStYYYY},</if></if>
+			<if test="pubInstposStMMNullFlag == true">PUB_INSTPOS_ST_MM = NULL,</if><if test="pubInstposStMMNullFlag == false"><if test="pubInstposStMM != null">PUB_INSTPOS_ST_MM = #{pubInstposStMM},</if></if>
+			<if test="pubInstposStDDNullFlag == true">PUB_INSTPOS_ST_DD = NULL,</if><if test="pubInstposStDDNullFlag == false"><if test="pubInstposStDD != null">PUB_INSTPOS_ST_DD = #{pubInstposStDD},</if></if>
+			<if test="pubInstposEdYYYYNullFlag == true">PUB_INSTPOS_ED_YYYY = NULL,</if><if test="pubInstposEdYYYYNullFlag == false"><if test="pubInstposEdYYYY != null">PUB_INSTPOS_ED_YYYY = #{pubInstposEdYYYY},</if></if>
+			<if test="pubInstposEdMMNullFlag == true">PUB_INSTPOS_ED_MM = NULL,</if><if test="pubInstposEdMMNullFlag == false"><if test="pubInstposEdMM != null">PUB_INSTPOS_ED_MM = #{pubInstposEdMM},</if></if>
+			<if test="pubInstposEdDDNullFlag == true">PUB_INSTPOS_ED_DD = NULL,</if><if test="pubInstposEdDDNullFlag == false"><if test="pubInstposEdDD != null">PUB_INSTPOS_ED_DD = #{pubInstposEdDD},</if></if>
+			<if test="insShaYmdNullFlag == true">INS_SHA_YMD = NULL,</if><if test="insShaYmdNullFlag == false"><if test="insShaYmd != null">INS_SHA_YMD = #{insShaYmd},</if></if>
+			<if test="insShaIdNullFlag == true">INS_SHA_ID = NULL,</if><if test="insShaIdNullFlag == false"><if test="insShaId != null">INS_SHA_ID = #{insShaId},</if></if>
+			<if test="updShaYmdNullFlag == true">UPD_SHA_YMD = NULL,</if><if test="updShaYmdNullFlag == false"><if test="updShaYmd != null">UPD_SHA_YMD = #{updShaYmd},</if></if>
+			<if test="updShaIdNullFlag == true">UPD_SHA_ID = NULL</if><if test="updShaIdNullFlag == false"><if test="updShaId != null">UPD_SHA_ID = #{updShaId}</if></if>
+        WHERE
+            REQ_ID = #{reqId}
+        AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
+    </update>
 </mapper>

@@ -13,12 +13,12 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import java.util.Date;
 
 /**
- * Entityクラス
+ * 結合Entityクラス
  * テーブル物理名 : T_RDM_REQ_KNR
- * テーブル論理名 : 申請管理
+ * SQLID : updateShn,updateND11
  * @generated
  */
-public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
+public class UpdateTRdmReqKnrEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -340,13 +340,13 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
      * コンストラクタ
      * @generated
      */
-    public TRdmReqKnrEntity() {
-        super("t_rdm_req_knr");
+    public UpdateTRdmReqKnrEntity() {
+        super("t_rdm_req_knr" , "updateShn");
     }
 
 
-	/**
-	 * TRdmReqKnrEntity.javareqIdを設定
+    /**
+	 * UpdateTRdmReqKnrEntity.javareqIdを設定
 	 * @return reqId
 	 */
 	public String getReqId() {
@@ -363,7 +363,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqIdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqIdNullFlagを設定
 	 * @return reqIdNullFlag
 	 */
 	public boolean isReqIdNullFlag() {
@@ -380,7 +380,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqChlを設定
+	 * UpdateTRdmReqKnrEntity.javareqChlを設定
 	 * @return reqChl
 	 */
 	public String getReqChl() {
@@ -397,7 +397,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqChlNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqChlNullFlagを設定
 	 * @return reqChlNullFlag
 	 */
 	public boolean isReqChlNullFlag() {
@@ -414,7 +414,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqTypeを設定
+	 * UpdateTRdmReqKnrEntity.javareqTypeを設定
 	 * @return reqType
 	 */
 	public String getReqType() {
@@ -431,7 +431,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqTypeNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqTypeNullFlagを設定
 	 * @return reqTypeNullFlag
 	 */
 	public boolean isReqTypeNullFlag() {
@@ -448,7 +448,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqStsCdを設定
+	 * UpdateTRdmReqKnrEntity.javareqStsCdを設定
 	 * @return reqStsCd
 	 */
 	public String getReqStsCd() {
@@ -465,7 +465,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqStsCdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqStsCdNullFlagを設定
 	 * @return reqStsCdNullFlag
 	 */
 	public boolean isReqStsCdNullFlag() {
@@ -482,7 +482,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javatekiyoYmdを設定
+	 * UpdateTRdmReqKnrEntity.javatekiyoYmdを設定
 	 * @return tekiyoYmd
 	 */
 	public String getTekiyoYmd() {
@@ -499,7 +499,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javatekiyoYmdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javatekiyoYmdNullFlagを設定
 	 * @return tekiyoYmdNullFlag
 	 */
 	public boolean isTekiyoYmdNullFlag() {
@@ -516,7 +516,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqBrCdを設定
+	 * UpdateTRdmReqKnrEntity.javareqBrCdを設定
 	 * @return reqBrCd
 	 */
 	public String getReqBrCd() {
@@ -533,7 +533,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqBrCdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqBrCdNullFlagを設定
 	 * @return reqBrCdNullFlag
 	 */
 	public boolean isReqBrCdNullFlag() {
@@ -550,7 +550,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqDistCdを設定
+	 * UpdateTRdmReqKnrEntity.javareqDistCdを設定
 	 * @return reqDistCd
 	 */
 	public String getReqDistCd() {
@@ -567,7 +567,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqDistCdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqDistCdNullFlagを設定
 	 * @return reqDistCdNullFlag
 	 */
 	public boolean isReqDistCdNullFlag() {
@@ -584,7 +584,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqShzNmを設定
+	 * UpdateTRdmReqKnrEntity.javareqShzNmを設定
 	 * @return reqShzNm
 	 */
 	public String getReqShzNm() {
@@ -601,7 +601,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqShzNmNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqShzNmNullFlagを設定
 	 * @return reqShzNmNullFlag
 	 */
 	public boolean isReqShzNmNullFlag() {
@@ -618,7 +618,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqJgiNoを設定
+	 * UpdateTRdmReqKnrEntity.javareqJgiNoを設定
 	 * @return reqJgiNo
 	 */
 	public Integer getReqJgiNo() {
@@ -635,7 +635,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqJgiNoNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqJgiNoNullFlagを設定
 	 * @return reqJgiNoNullFlag
 	 */
 	public boolean isReqJgiNoNullFlag() {
@@ -652,7 +652,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqJgiNameを設定
+	 * UpdateTRdmReqKnrEntity.javareqJgiNameを設定
 	 * @return reqJgiName
 	 */
 	public String getReqJgiName() {
@@ -669,7 +669,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqJgiNameNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqJgiNameNullFlagを設定
 	 * @return reqJgiNameNullFlag
 	 */
 	public boolean isReqJgiNameNullFlag() {
@@ -686,7 +686,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqYmdhmsを設定
+	 * UpdateTRdmReqKnrEntity.javareqYmdhmsを設定
 	 * @return reqYmdhms
 	 */
 	public String getReqYmdhms() {
@@ -703,7 +703,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqYmdhmsNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqYmdhmsNullFlagを設定
 	 * @return reqYmdhmsNullFlag
 	 */
 	public boolean isReqYmdhmsNullFlag() {
@@ -720,7 +720,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqMemoを設定
+	 * UpdateTRdmReqKnrEntity.javareqMemoを設定
 	 * @return reqMemo
 	 */
 	public String getReqMemo() {
@@ -737,7 +737,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqMemoNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqMemoNullFlagを設定
 	 * @return reqMemoNullFlag
 	 */
 	public boolean isReqMemoNullFlag() {
@@ -754,7 +754,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqCommentを設定
+	 * UpdateTRdmReqKnrEntity.javareqCommentを設定
 	 * @return reqComment
 	 */
 	public String getReqComment() {
@@ -771,7 +771,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqCommentNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqCommentNullFlagを設定
 	 * @return reqCommentNullFlag
 	 */
 	public boolean isReqCommentNullFlag() {
@@ -788,7 +788,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqKngKbnを設定
+	 * UpdateTRdmReqKnrEntity.javareqKngKbnを設定
 	 * @return reqKngKbn
 	 */
 	public String getReqKngKbn() {
@@ -805,7 +805,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javareqKngKbnNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javareqKngKbnNullFlagを設定
 	 * @return reqKngKbnNullFlag
 	 */
 	public boolean isReqKngKbnNullFlag() {
@@ -822,7 +822,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnFlgを設定
+	 * UpdateTRdmReqKnrEntity.javashnFlgを設定
 	 * @return shnFlg
 	 */
 	public String getShnFlg() {
@@ -839,7 +839,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnFlgNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javashnFlgNullFlagを設定
 	 * @return shnFlgNullFlag
 	 */
 	public boolean isShnFlgNullFlag() {
@@ -856,7 +856,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnBrCodeを設定
+	 * UpdateTRdmReqKnrEntity.javashnBrCodeを設定
 	 * @return shnBrCode
 	 */
 	public String getShnBrCode() {
@@ -873,7 +873,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnBrCodeNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javashnBrCodeNullFlagを設定
 	 * @return shnBrCodeNullFlag
 	 */
 	public boolean isShnBrCodeNullFlag() {
@@ -890,7 +890,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnDistCodeを設定
+	 * UpdateTRdmReqKnrEntity.javashnDistCodeを設定
 	 * @return shnDistCode
 	 */
 	public String getShnDistCode() {
@@ -907,7 +907,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnDistCodeNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javashnDistCodeNullFlagを設定
 	 * @return shnDistCodeNullFlag
 	 */
 	public boolean isShnDistCodeNullFlag() {
@@ -924,7 +924,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnShzを設定
+	 * UpdateTRdmReqKnrEntity.javashnShzを設定
 	 * @return shnShz
 	 */
 	public String getShnShz() {
@@ -941,7 +941,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnShzNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javashnShzNullFlagを設定
 	 * @return shnShzNullFlag
 	 */
 	public boolean isShnShzNullFlag() {
@@ -958,7 +958,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnJgiNoを設定
+	 * UpdateTRdmReqKnrEntity.javashnJgiNoを設定
 	 * @return shnJgiNo
 	 */
 	public Integer getShnJgiNo() {
@@ -975,7 +975,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnJgiNoNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javashnJgiNoNullFlagを設定
 	 * @return shnJgiNoNullFlag
 	 */
 	public boolean isShnJgiNoNullFlag() {
@@ -992,7 +992,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnShaNameを設定
+	 * UpdateTRdmReqKnrEntity.javashnShaNameを設定
 	 * @return shnShaName
 	 */
 	public String getShnShaName() {
@@ -1009,7 +1009,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnShaNameNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javashnShaNameNullFlagを設定
 	 * @return shnShaNameNullFlag
 	 */
 	public boolean isShnShaNameNullFlag() {
@@ -1026,7 +1026,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnYmdhmsを設定
+	 * UpdateTRdmReqKnrEntity.javashnYmdhmsを設定
 	 * @return shnYmdhms
 	 */
 	public String getShnYmdhms() {
@@ -1043,7 +1043,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javashnYmdhmsNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javashnYmdhmsNullFlagを設定
 	 * @return shnYmdhmsNullFlag
 	 */
 	public boolean isShnYmdhmsNullFlag() {
@@ -1060,7 +1060,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprBrCodeを設定
+	 * UpdateTRdmReqKnrEntity.javaaprBrCodeを設定
 	 * @return aprBrCode
 	 */
 	public String getAprBrCode() {
@@ -1077,7 +1077,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprBrCodeNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprBrCodeNullFlagを設定
 	 * @return aprBrCodeNullFlag
 	 */
 	public boolean isAprBrCodeNullFlag() {
@@ -1094,7 +1094,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprDistCodeを設定
+	 * UpdateTRdmReqKnrEntity.javaaprDistCodeを設定
 	 * @return aprDistCode
 	 */
 	public String getAprDistCode() {
@@ -1111,7 +1111,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprDistCodeNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprDistCodeNullFlagを設定
 	 * @return aprDistCodeNullFlag
 	 */
 	public boolean isAprDistCodeNullFlag() {
@@ -1128,7 +1128,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprShzを設定
+	 * UpdateTRdmReqKnrEntity.javaaprShzを設定
 	 * @return aprShz
 	 */
 	public String getAprShz() {
@@ -1145,7 +1145,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprShzNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprShzNullFlagを設定
 	 * @return aprShzNullFlag
 	 */
 	public boolean isAprShzNullFlag() {
@@ -1162,7 +1162,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprJgiNoを設定
+	 * UpdateTRdmReqKnrEntity.javaaprJgiNoを設定
 	 * @return aprJgiNo
 	 */
 	public Integer getAprJgiNo() {
@@ -1179,7 +1179,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprJgiNoNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprJgiNoNullFlagを設定
 	 * @return aprJgiNoNullFlag
 	 */
 	public boolean isAprJgiNoNullFlag() {
@@ -1196,7 +1196,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprShaNameを設定
+	 * UpdateTRdmReqKnrEntity.javaaprShaNameを設定
 	 * @return aprShaName
 	 */
 	public String getAprShaName() {
@@ -1213,7 +1213,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprShaNameNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprShaNameNullFlagを設定
 	 * @return aprShaNameNullFlag
 	 */
 	public boolean isAprShaNameNullFlag() {
@@ -1230,7 +1230,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprYmdhmsを設定
+	 * UpdateTRdmReqKnrEntity.javaaprYmdhmsを設定
 	 * @return aprYmdhms
 	 */
 	public String getAprYmdhms() {
@@ -1247,7 +1247,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprYmdhmsNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprYmdhmsNullFlagを設定
 	 * @return aprYmdhmsNullFlag
 	 */
 	public boolean isAprYmdhmsNullFlag() {
@@ -1264,7 +1264,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprHryFlgを設定
+	 * UpdateTRdmReqKnrEntity.javaaprHryFlgを設定
 	 * @return aprHryFlg
 	 */
 	public String getAprHryFlg() {
@@ -1281,7 +1281,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprHryFlgNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprHryFlgNullFlagを設定
 	 * @return aprHryFlgNullFlag
 	 */
 	public boolean isAprHryFlgNullFlag() {
@@ -1298,7 +1298,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprMemoを設定
+	 * UpdateTRdmReqKnrEntity.javaaprMemoを設定
 	 * @return aprMemo
 	 */
 	public String getAprMemo() {
@@ -1315,7 +1315,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprMemoNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprMemoNullFlagを設定
 	 * @return aprMemoNullFlag
 	 */
 	public boolean isAprMemoNullFlag() {
@@ -1332,7 +1332,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprCommnetを設定
+	 * UpdateTRdmReqKnrEntity.javaaprCommnetを設定
 	 * @return aprCommnet
 	 */
 	public String getAprCommnet() {
@@ -1349,7 +1349,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprCommnetNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaaprCommnetNullFlagを設定
 	 * @return aprCommnetNullFlag
 	 */
 	public boolean isAprCommnetNullFlag() {
@@ -1366,7 +1366,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javainsNoを設定
+	 * UpdateTRdmReqKnrEntity.javainsNoを設定
 	 * @return insNo
 	 */
 	public String getInsNo() {
@@ -1383,7 +1383,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javainsNoNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javainsNoNullFlagを設定
 	 * @return insNoNullFlag
 	 */
 	public boolean isInsNoNullFlag() {
@@ -1400,7 +1400,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javadocNoを設定
+	 * UpdateTRdmReqKnrEntity.javadocNoを設定
 	 * @return docNo
 	 */
 	public String getDocNo() {
@@ -1417,7 +1417,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javadocNoNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javadocNoNullFlagを設定
 	 * @return docNoNullFlag
 	 */
 	public boolean isDocNoNullFlag() {
@@ -1434,7 +1434,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaupdMstYmdを設定
+	 * UpdateTRdmReqKnrEntity.javaupdMstYmdを設定
 	 * @return updMstYmd
 	 */
 	public String getUpdMstYmd() {
@@ -1451,7 +1451,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaupdMstYmdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaupdMstYmdNullFlagを設定
 	 * @return updMstYmdNullFlag
 	 */
 	public boolean isUpdMstYmdNullFlag() {
@@ -1468,7 +1468,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbReqFlgを設定
+	 * UpdateTRdmReqKnrEntity.javafbReqFlgを設定
 	 * @return fbReqFlg
 	 */
 	public String getFbReqFlg() {
@@ -1485,7 +1485,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbReqFlgNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javafbReqFlgNullFlagを設定
 	 * @return fbReqFlgNullFlag
 	 */
 	public boolean isFbReqFlgNullFlag() {
@@ -1502,7 +1502,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbReqIdを設定
+	 * UpdateTRdmReqKnrEntity.javafbReqIdを設定
 	 * @return fbReqId
 	 */
 	public String getFbReqId() {
@@ -1519,7 +1519,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbReqIdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javafbReqIdNullFlagを設定
 	 * @return fbReqIdNullFlag
 	 */
 	public boolean isFbReqIdNullFlag() {
@@ -1536,7 +1536,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbAnsIdを設定
+	 * UpdateTRdmReqKnrEntity.javafbAnsIdを設定
 	 * @return fbAnsId
 	 */
 	public String getFbAnsId() {
@@ -1553,7 +1553,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbAnsIdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javafbAnsIdNullFlagを設定
 	 * @return fbAnsIdNullFlag
 	 */
 	public boolean isFbAnsIdNullFlag() {
@@ -1570,7 +1570,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbDataTypeを設定
+	 * UpdateTRdmReqKnrEntity.javafbDataTypeを設定
 	 * @return fbDataType
 	 */
 	public String getFbDataType() {
@@ -1587,7 +1587,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbDataTypeNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javafbDataTypeNullFlagを設定
 	 * @return fbDataTypeNullFlag
 	 */
 	public boolean isFbDataTypeNullFlag() {
@@ -1604,7 +1604,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbRecIdを設定
+	 * UpdateTRdmReqKnrEntity.javafbRecIdを設定
 	 * @return fbRecId
 	 */
 	public String getFbRecId() {
@@ -1621,7 +1621,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbRecIdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javafbRecIdNullFlagを設定
 	 * @return fbRecIdNullFlag
 	 */
 	public boolean isFbRecIdNullFlag() {
@@ -1638,7 +1638,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbUpdKbnを設定
+	 * UpdateTRdmReqKnrEntity.javafbUpdKbnを設定
 	 * @return fbUpdKbn
 	 */
 	public String getFbUpdKbn() {
@@ -1655,7 +1655,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbUpdKbnNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javafbUpdKbnNullFlagを設定
 	 * @return fbUpdKbnNullFlag
 	 */
 	public boolean isFbUpdKbnNullFlag() {
@@ -1672,7 +1672,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbPrcTypeを設定
+	 * UpdateTRdmReqKnrEntity.javafbPrcTypeを設定
 	 * @return fbPrcType
 	 */
 	public String getFbPrcType() {
@@ -1689,7 +1689,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javafbPrcTypeNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javafbPrcTypeNullFlagを設定
 	 * @return fbPrcTypeNullFlag
 	 */
 	public boolean isFbPrcTypeNullFlag() {
@@ -1706,7 +1706,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javainsShaYmdを設定
+	 * UpdateTRdmReqKnrEntity.javainsShaYmdを設定
 	 * @return insShaYmd
 	 */
 	public Date getInsShaYmd() {
@@ -1723,7 +1723,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javainsShaYmdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javainsShaYmdNullFlagを設定
 	 * @return insShaYmdNullFlag
 	 */
 	public boolean isInsShaYmdNullFlag() {
@@ -1740,7 +1740,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javainsShaIdを設定
+	 * UpdateTRdmReqKnrEntity.javainsShaIdを設定
 	 * @return insShaId
 	 */
 	public String getInsShaId() {
@@ -1757,7 +1757,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javainsShaIdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javainsShaIdNullFlagを設定
 	 * @return insShaIdNullFlag
 	 */
 	public boolean isInsShaIdNullFlag() {
@@ -1774,7 +1774,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaupdShaYmdを設定
+	 * UpdateTRdmReqKnrEntity.javaupdShaYmdを設定
 	 * @return updShaYmd
 	 */
 	public Date getUpdShaYmd() {
@@ -1791,7 +1791,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaupdShaYmdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaupdShaYmdNullFlagを設定
 	 * @return updShaYmdNullFlag
 	 */
 	public boolean isUpdShaYmdNullFlag() {
@@ -1808,7 +1808,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaupdShaIdを設定
+	 * UpdateTRdmReqKnrEntity.javaupdShaIdを設定
 	 * @return updShaId
 	 */
 	public String getUpdShaId() {
@@ -1825,7 +1825,7 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaupdShaIdNullFlagを設定
+	 * UpdateTRdmReqKnrEntity.javaupdShaIdNullFlagを設定
 	 * @return updShaIdNullFlag
 	 */
 	public boolean isUpdShaIdNullFlag() {

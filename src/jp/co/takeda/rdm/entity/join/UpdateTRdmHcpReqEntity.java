@@ -8,6 +8,8 @@ package jp.co.takeda.rdm.entity.join;
 import java.io.Serializable;
 
 import jp.co.takeda.rdm.common.BaseEntity;
+import jp.co.takeda.rdm.util.StringUtils;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.Date;
@@ -18,7 +20,7 @@ import java.util.Date;
  * テーブル論理名 : 医師_申請管理
  * @generated
  */
-public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
+public class UpdateTRdmHcpReqEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -338,8 +340,8 @@ public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
      * コンストラクタ
      * @generated
      */
-    public TRdmHcpReqEntity() {
-        super("t_rdm_hcp_req");
+    public UpdateTRdmHcpReqEntity() {
+        super("t_rdm_hcp_req", "updateData");
     }
 
 
@@ -2518,8 +2520,44 @@ public class TRdmHcpReqEntity extends BaseEntity implements Serializable {
 	}
 
 
+	/**
+	 * null更新可の項目の更新
+	 */
+		public void checkSetNull() {
+//			if(StringUtils.isEmpty(docType)) this.docTypeNullFlag = true;//医師／薬剤師区分
+//			if(StringUtils.isEmpty(docKanj)) this.docKanjNullFlag = true;//氏名（漢字）
+//			if(StringUtils.isEmpty(docKana)) this.docKanaNullFlag = true;//氏名（カナ）
+//			if(StringUtils.isEmpty(docKanjiSei)) this.docKanjiSeiNullFlag = true;//氏名（漢字）姓
+//			if(StringUtils.isEmpty(docKanjiMei)) this.docKanjiMeiNullFlag = true;//氏名（漢字）名
+//			if(StringUtils.isEmpty(docKanaSei)) this.docKanaSeiNullFlag = true;//氏名（カナ）姓
+//			if(StringUtils.isEmpty(docKanaMei)) this.docKanaMeiNullFlag = true;//氏名（カナ）名
+			if(StringUtils.isEmpty(oldKanjSei)) this.oldKanjSeiNullFlag = true;//氏名（漢字）旧姓
+			if(StringUtils.isEmpty(oldKanaSei)) this.oldKanaSeiNullFlag = true;//氏名（カナ）旧姓
+			if(StringUtils.isEmpty(newNameStYear)) this.newNameStYearNullFlag = true;//改姓日（年）
+			if(StringUtils.isEmpty(newNameStMonth)) this.newNameStMonthNullFlag = true;//改姓日（月）
+			if(StringUtils.isEmpty(newNameStDay)) this.newNameStDayNullFlag = true;//改姓日（日）
+			if(StringUtils.isEmpty(dobYear)) this.dobYearNullFlag = true;//生年月日（年）
+			if(StringUtils.isEmpty(dobMonth)) this.dobMonthNullFlag = true;//生年月日（月）
+			if(StringUtils.isEmpty(dobDay)) this.dobDayNullFlag = true;//生年月日（日）
+//			if(StringUtils.isEmpty(sexCd)) this.sexCdNullFlag = true;//性別区分
+			if(StringUtils.isEmpty(homeTownCd)) this.homeTownCdNullFlag = true;//出身地コード
+			if(StringUtils.isEmpty(medSchoolCd)) this.medSchoolCdNullFlag = true;//出身校コード
+			if(StringUtils.isEmpty(gradYear)) this.gradYearNullFlag = true;//卒年
+			if(StringUtils.isEmpty(homeDeptCd)) this.homeDeptCdNullFlag = true;//出身所属コード
+			if(StringUtils.isEmpty(homeUnivCd)) this.homeUnivCdNullFlag = true;//出身医局校コード
+			if(StringUtils.isEmpty(emplYear)) this.emplYearNullFlag = true;//臨床研修年
+			if(StringUtils.isEmpty(spLiverCd)) this.spLiverCdNullFlag = true;//専門臓器コード
+			if(StringUtils.isEmpty(spDiseaseCd)) this.spDiseaseCdNullFlag = true;//専門詳細コード
+			if(StringUtils.isEmpty(spCom)) this.spComNullFlag = true;//専門追加情報
+//			if(StringUtils.isEmpty(skInsNo)) this.skInsNoNullFlag = true;//勤務先施設固定コード
+			if(StringUtils.isEmpty(skJobForm)) this.skJobFormNullFlag = true;//勤務形態
+//			if(StringUtils.isEmpty(skDeptCd)) this.skDeptCdNullFlag = true;//所属部科コード
+			if(StringUtils.isEmpty(skUnivPosCd)) this.skUnivPosCdNullFlag = true;//大学職位コード
+//			if(StringUtils.isEmpty(skTitleCd)) this.skTitleCdNullFlag = true;//役職コード
+			if(StringUtils.isEmpty(skDcctype)) this.skDcctypeNullFlag = true;//薬審メンバー区分
+//			if(StringUtils.isEmpty(ultDocCd)) this.ultDocCdNullFlag = true;//ULT医師コード
 
-
+		}
 
 
 	/**

@@ -15,10 +15,10 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 /**
  * 結合Entityクラス
  * テーブル物理名 : T_RDM_M_MDB_HCP_MST,T_RDM_REQ_KNR,T_RDM_HCP_REQ
- * SQLID : selectND011ULTData,selectND011REQData
+ * SQLID : selectND301REQData
  * @generated
  */
-public class SelectND011MainDataEntity extends BaseEntity implements Serializable {
+public class SelectND301MainDataEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -158,13 +158,25 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
      */
     private String docType;
 
+	/**
+	 * 医師／薬剤師区分(名称)
+	 * @generated
+	 */
+	private String docTypeNm;
+
     /**
      * 性別
      * @generated
      */
     private String sexCd;
 
-    /**
+	/**
+	 * 性別(名称)
+	 * @generated
+	 */
+	private String sexNm;
+
+	/**
      * 医師名(漢字)姓
      * @generated
      */
@@ -242,11 +254,23 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
      */
     private String homeTownCd;
 
+	/**
+	 * 出身地(名称)
+	 * @generated
+	 */
+	private String homeTownNm;
+
     /**
      * 出身校
      * @generated
      */
     private String medSchoolCd;
+
+	/**
+	 * 出身校(名称)
+	 * @generated
+	 */
+	private String medSchoolNm;
 
     /**
      * 卒年（西暦）
@@ -266,6 +290,12 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
      */
     private String homeUnivCd;
 
+	/**
+	 * 出身医局校(名称)
+	 * @generated
+	 */
+	private String homeUnivNm;
+
     /**
      * 出身所属部科
      * @generated
@@ -278,11 +308,23 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
      */
     private String spLiverCd;
 
+	/**
+	 * 専門臓器(名称)
+	 * @generated
+	 */
+	private String spLiverNm;
+
     /**
      * 専門詳細
      * @generated
      */
     private String spDiseaseCd;
+
+	/**
+	 * 専門詳細(名称)
+	 * @generated
+	 */
+	private String spDiseaseNm;
 
     /**
      * 専門追加情報
@@ -308,6 +350,12 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
      */
     private String skUnivPosCd;
 
+	/**
+	 * 大学職位(名称)
+	 * @generated
+	 */
+	private String skUnivPosNm;
+
     /**
      * 所属部科
      * @generated
@@ -320,17 +368,35 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
      */
     private String skTitleCd;
 
+	/**
+	 * 役職(名称)
+	 * @generated
+	 */
+	private String skTitleNm;
+
     /**
      * 勤務形態
      * @generated
      */
     private String skJobForm;
 
+	/**
+	 * 勤務形態(名称)
+	 * @generated
+	 */
+	private String skJobFormNm;
+
     /**
      * 薬審メンバー区分
      * @generated
      */
     private String skDcctype;
+
+	/**
+	 * 薬審メンバー区分(名称)
+	 * @generated
+	 */
+	private String skDcctypeNm;
 
     /**
      * 施設コード
@@ -363,12 +429,30 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String shnFlg;
 
+	/**
+     * 却下コメント
+     * @generated
+     */
+    private String aprComment;
+
+	/**
+	 * アルトマークへの情報連携
+	 * @generated
+	 */
+	private String fbReqFlg;
+
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
     /**
      * コンストラクタ
      * @generated
      */
-    public SelectND011MainDataEntity() {
-        super("t_rdm_hcp_req" , "selectND011REQData");
+    public SelectND301MainDataEntity() {
+        super("t_rdm_hcp_req" , "selectND301REQData");
     }
 
     /**
@@ -389,27 +473,23 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
         this.inReqId = inReqId;
     }
 
-    /**
-     * 入力_ULT医師コードの取得
-     * @return 入力_ULT医師コード
-     * @generated
-     */
-    public String getInUltDocNo() {
-        return inUltDocNo;
-    }
 
     /**
-     * 入力_ULT医師コードの設定
-     * @param inUltDocNo 入力_ULT医師コード
-     * @generated
-     */
-    public void setInUltDocNo(String inUltDocNo) {
-        this.inUltDocNo = inUltDocNo;
-    }
+	 * SelectND301MainDataEntity.javainUltDocNoを設定
+	 * @return inUltDocNo
+	 */
+	public String getInUltDocNo() {
+		return inUltDocNo;
+	}
 
+	/**
+	 * @param inUltDocNo セットする inUltDocNo
+	 */
+	public void setInUltDocNo(String inUltDocNo) {
+		this.inUltDocNo = inUltDocNo;
+	}
 
-
-    /**
+	/**
 	 * SelectND011MainDataEntity.javareqIdを設定
 	 * @return reqId
 	 */
@@ -1217,6 +1297,216 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setShnFlg(String shnFlg) {
 		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javadocTypeNmを設定
+	 * @return docTypeNm
+	 */
+	public String getDocTypeNm() {
+		return docTypeNm;
+	}
+
+	/**
+	 * @param docTypeNm セットする docTypeNm
+	 */
+	public void setDocTypeNm(String docTypeNm) {
+		this.docTypeNm = docTypeNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javasexNmを設定
+	 * @return sexNm
+	 */
+	public String getSexNm() {
+		return sexNm;
+	}
+
+	/**
+	 * @param sexNm セットする sexNm
+	 */
+	public void setSexNm(String sexNm) {
+		this.sexNm = sexNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javahomeTownNmを設定
+	 * @return homeTownNm
+	 */
+	public String getHomeTownNm() {
+		return homeTownNm;
+	}
+
+	/**
+	 * @param homeTownNm セットする homeTownNm
+	 */
+	public void setHomeTownNm(String homeTownNm) {
+		this.homeTownNm = homeTownNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javamedSchoolNmを設定
+	 * @return medSchoolNm
+	 */
+	public String getMedSchoolNm() {
+		return medSchoolNm;
+	}
+
+	/**
+	 * @param medSchoolNm セットする medSchoolNm
+	 */
+	public void setMedSchoolNm(String medSchoolNm) {
+		this.medSchoolNm = medSchoolNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javahomeUnivNmを設定
+	 * @return homeUnivNm
+	 */
+	public String getHomeUnivNm() {
+		return homeUnivNm;
+	}
+
+	/**
+	 * @param homeUnivNm セットする homeUnivNm
+	 */
+	public void setHomeUnivNm(String homeUnivNm) {
+		this.homeUnivNm = homeUnivNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javaspLiverNmを設定
+	 * @return spLiverNm
+	 */
+	public String getSpLiverNm() {
+		return spLiverNm;
+	}
+
+	/**
+	 * @param spLiverNm セットする spLiverNm
+	 */
+	public void setSpLiverNm(String spLiverNm) {
+		this.spLiverNm = spLiverNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javaspDiseaseNmを設定
+	 * @return spDiseaseNm
+	 */
+	public String getSpDiseaseNm() {
+		return spDiseaseNm;
+	}
+
+	/**
+	 * @param spDiseaseNm セットする spDiseaseNm
+	 */
+	public void setSpDiseaseNm(String spDiseaseNm) {
+		this.spDiseaseNm = spDiseaseNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javaskUnivPosNmを設定
+	 * @return skUnivPosNm
+	 */
+	public String getSkUnivPosNm() {
+		return skUnivPosNm;
+	}
+
+	/**
+	 * @param skUnivPosNm セットする skUnivPosNm
+	 */
+	public void setSkUnivPosNm(String skUnivPosNm) {
+		this.skUnivPosNm = skUnivPosNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javaskTitleNmを設定
+	 * @return skTitleNm
+	 */
+	public String getSkTitleNm() {
+		return skTitleNm;
+	}
+
+	/**
+	 * @param skTitleNm セットする skTitleNm
+	 */
+	public void setSkTitleNm(String skTitleNm) {
+		this.skTitleNm = skTitleNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javaskJobFormNmを設定
+	 * @return skJobFormNm
+	 */
+	public String getSkJobFormNm() {
+		return skJobFormNm;
+	}
+
+	/**
+	 * @param skJobFormNm セットする skJobFormNm
+	 */
+	public void setSkJobFormNm(String skJobFormNm) {
+		this.skJobFormNm = skJobFormNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javaskDcctypeNmを設定
+	 * @return skDcctypeNm
+	 */
+	public String getSkDcctypeNm() {
+		return skDcctypeNm;
+	}
+
+	/**
+	 * @param skDcctypeNm セットする skDcctypeNm
+	 */
+	public void setSkDcctypeNm(String skDcctypeNm) {
+		this.skDcctypeNm = skDcctypeNm;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javaaprCommentを設定
+	 * @return aprComment
+	 */
+	public String getAprComment() {
+		return aprComment;
+	}
+
+	/**
+	 * @param aprComment セットする aprComment
+	 */
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javafbReqFlgを設定
+	 * @return fbReqFlg
+	 */
+	public String getFbReqFlg() {
+		return fbReqFlg;
+	}
+
+	/**
+	 * @param fbReqFlg セットする fbReqFlg
+	 */
+	public void setFbReqFlg(String fbReqFlg) {
+		this.fbReqFlg = fbReqFlg;
+	}
+
+	/**
+	 * SelectND301MainDataEntity.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

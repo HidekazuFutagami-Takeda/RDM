@@ -8,6 +8,8 @@ package jp.co.takeda.rdm.entity.join;
 import java.io.Serializable;
 
 import jp.co.takeda.rdm.common.BaseEntity;
+import jp.co.takeda.rdm.util.StringUtils;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.Date;
@@ -18,7 +20,7 @@ import java.util.Date;
  * テーブル論理名 : 医師_公的機関_申請管理
  * @generated
  */
-public class TRdmHcpPublicReqEntity extends BaseEntity implements Serializable {
+public class UpdateTRdmHcpPublicReqEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -179,8 +181,8 @@ public class TRdmHcpPublicReqEntity extends BaseEntity implements Serializable {
      * コンストラクタ
      * @generated
      */
-    public TRdmHcpPublicReqEntity() {
-        super("t_rdm_hcp_public_req");
+    public UpdateTRdmHcpPublicReqEntity() {
+        super("t_rdm_hcp_public_req", "updateData");
     }
 
 
@@ -1065,8 +1067,27 @@ public class TRdmHcpPublicReqEntity extends BaseEntity implements Serializable {
 		this.updShaIdNullFlag = updShaIdNullFlag;
 	}
 
+/**
+ * null更新可の項目の更新
+ */
+	public void checkSetNull() {
+		if(StringUtils.isEmpty(classCategoryCd)) this.classCategoryCdNullFlag = true;//分類区分
+		if(StringUtils.isEmpty(pubInstitutionCd)) this.pubInstitutionCdNullFlag = true;//公的機関
+		if(StringUtils.isEmpty(pubInstStYYYY)) this.pubInstStYYYYNullFlag = true;//公的機関開始年月日(年)
+		if(StringUtils.isEmpty(pubInstStMM)) this.pubInstStMMNullFlag = true;//公的機関開始年月日(月)
+		if(StringUtils.isEmpty(pubInstStDD)) this.pubInstStDDNullFlag = true;//公的機関開始年月日(日)
+		if(StringUtils.isEmpty(pubInstEdYYYY)) this.pubInstEdYYYYNullFlag = true;//公的機関終了年月日(年)
+		if(StringUtils.isEmpty(pubInstEdMM)) this.pubInstEdMMNullFlag = true;//公的機関終了年月日(月)
+		if(StringUtils.isEmpty(pubInstEdDD)) this.pubInstEdDDNullFlag = true;//公的機関終了年月日(日)
+		if(StringUtils.isEmpty(pubInstPositionCd)) this.pubInstPositionCdNullFlag = true;//公的機関役職コード
+		if(StringUtils.isEmpty(pubInstposStYYYY)) this.pubInstposStYYYYNullFlag = true;//公的機関役職開始年月日(年)
+		if(StringUtils.isEmpty(pubInstposStMM)) this.pubInstposStMMNullFlag = true;//公的機関役職開始年月日(月)
+		if(StringUtils.isEmpty(pubInstposStDD)) this.pubInstposStDDNullFlag = true;//公的機関役職開始年月日(日)
+		if(StringUtils.isEmpty(pubInstposEdYYYY)) this.pubInstposEdYYYYNullFlag = true;//公的機関役職終了年月日(年)
+		if(StringUtils.isEmpty(pubInstposEdMM)) this.pubInstposEdMMNullFlag = true;//公的機関役職終了年月日(月)
+		if(StringUtils.isEmpty(pubInstposEdDD)) this.pubInstposEdDDNullFlag = true;//公的機関役職終了年月日(日)
 
-
+	}
 
 	/**
      * このEntityの値を返す

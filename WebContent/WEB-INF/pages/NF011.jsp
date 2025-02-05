@@ -937,6 +937,20 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		comClickFlgInit();
     }
 
+	// 数値とﾊｲﾌﾝのみかチェック
+	function chkNumhyph(String){
+		var i;
+		var Letter;
+
+		for( i = 0; i < String.length; i++ ){
+			Letter = String.charAt(i);
+			if((Letter!="-") && (Letter.search("[^0-9０-９]") != -1)){
+				return false;
+			}
+		}
+		return true;
+	}
+
 	// 住所候補ボタン
 	function addrPopBtn(){
 		const pCode = document.fm1.insPcode.value;
@@ -963,14 +977,36 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			return false;
 		}
 
+		document.fm1.postCode.value = pCode.replace("-","");
+
 		// NC205_住所候補ポップアップ画面を表示
 		window.open("","addrPopWindow",subScreenSize);
 		document.fm1.screenId.value = "NC205";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="addrPopWindow";
 
+		document.fm1.callBack.value="callBackAddrPop";
+
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+	}
+
+	// 住所候補ポップアップから値受け取り
+	function callBackAddrPop(addrNamePref,addrNameCity,addrNameArea,postCode,addrCodePref,addrCodeCity,
+								tkPrefCd,tkCityCd,tkCityName,addrKanaPref,addrKanaCity,addrKanaArea){
+
+		document.fm1.addrCodePrefName.value = addrNamePref;
+		document.fm1.addrCodePref.value = addrCodePref;
+		document.fm1.addrCodeCityName.value = addrNameCity;
+		document.fm1.addrCodeCity.value = addrCodeCity;
+		document.fm1.insAddrDt.value = addrNameArea;
+
+		document.fm1.tkCityName.value = tkCityName;
+		document.fm1.tkCityCd.value = tkCityCd;
+
+		document.fm1.addrCodePrefKana.value = addrKanaPref;
+		document.fm1.addrCodeCityKana.value = addrKanaCity;
+		document.fm1.addrDtKana.value = addrKanaArea;
 	}
 
 	// 担当者検索ボタン
@@ -980,6 +1016,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.screenId.value = "NC202";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="tantoPopWindow";
+
+		document.fm1.selectFlgPop.value="1";
 
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
@@ -1349,6 +1387,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <s:hidden name="topChangedSosNm2" />
   <s:hidden name="topChangedSosCd3" />
   <s:hidden name="topChangedSosNm3" />
+
+  <s:hidden name="postCode" />
+  <s:hidden name="callBack" />
 
 	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
 		<tbody>

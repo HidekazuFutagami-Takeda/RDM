@@ -280,6 +280,32 @@ function shwoInit() {
                 </tr>
               </s:elseif>
 
+             <tr>
+                <td>申請・承認テスト用</td>
+              　　　　　　　　　<td>
+                 <a href="" class="contentsTitle" onclick="gotoNext('NF011','Init'); return false;">施設新規（仮）</a>
+              　　　　　　　　　</td>
+                <td>施設新規直リンク</td>
+              </tr>
+              <tr>
+                <td></td>
+              　　　　　　　　　<td>
+                 <a href="" class="contentsTitle" onclick="gotoNext('ND011','Init'); return false;">医師新規（仮）</a>
+              　　　　　　　　　</td>
+                <td>医師新規直リンク</td>
+              </tr>
+             <tr><td>入力項目</td>
+              　　　　　　　　　<td><label>申請ID</label></td>
+                <td><s:textfield name="reqId" size="13" maxlength="13" /></td>
+              </tr>
+            <tr><td></td>
+              　　　　　　　　　<td><label>ULT施設コード</label></td>
+                <td><s:textfield name="ultInsCd" size="9" maxlength="9" /></td>
+              </tr>
+            <tr><td></td>
+              　　　　　　　　　<td><label>ULT医師コード</label></td>
+                <td><s:textfield name="ultDocNo" size="8" maxlength="8" /></td>
+              </tr>
             </table>
           </s:if>
 

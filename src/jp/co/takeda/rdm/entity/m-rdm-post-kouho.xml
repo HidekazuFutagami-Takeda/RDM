@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="postKouho">
-    <resultMap id="selectPostResultMap" type="jp.co.takeda.jkr.entity.MRdmPostKouho">
+    <resultMap id="selectPostResultMap" type="jp.co.takeda.rdm.entity.MRdmPostKouho">
         <result column="SESHON_ID" property="seshonId"/>
         <result column="SCREEN_ID" property="screenId"/>
         <result column="REC_CNT" property="recCnt"/>
@@ -18,7 +18,7 @@
         <result column="ADDR_KANA_CITY" property="addrKanaCity"/>
         <result column="ADDR_KANA_AREA" property="addrKanaArea"/>
     </resultMap>
-    <select id="selectPost" parameterType="jp.co.takeda.jkr.entity.MRdmPostKouho" resultMap="selectPostResultMap">
+    <select id="selectPost" parameterType="jp.co.takeda.rdm.entity.MRdmPostKouho" resultMap="selectPostResultMap">
         SELECT
           		 	  ADDR_NAME_PREF,ADDR_NAME_CITY,NVL(ADDR_NAME_AREA,'') ADDR_NAME_AREA,
 					  ADDR_CODE_PREF,ADDR_CODE_CITY,TK_PREF_CD,TK_CITY_CD,TK_CITY_NAME,

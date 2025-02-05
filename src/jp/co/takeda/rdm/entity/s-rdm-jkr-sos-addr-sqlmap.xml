@@ -14,6 +14,12 @@
 		<result column="UP_SCRN_ID" property="upScrnId"/>
 		<result column="UP_FUNC_ID" property="upFuncId"/>
 	</resultMap>
+	<resultMap id="SRdmJkrSosAddrEntiryResultMap" type="jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry">
+        	<result column="ADDR_CODE_PREF" property="addrCodePref"/>
+	        <result column="ADDR_NAME_PREF" property="addrNamePref"/>
+        	<result column="ADDR_CODE_CITY" property="addrCodeCity"/>
+        	<result column="ADDR_NAME_CITY" property="addrNameCity"/>
+	</resultMap>
     <select id="selectNF011sosAddrChkData" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
 		SELECT
 		  SOS.ADDR_CODE_PREF
@@ -25,4 +31,26 @@
         AND SOS.TK_CITY_CD = #{tkCityCd}
         AND SOS.SOS_CD = #{sosCd}
     </select>
+	<select id="selectSRdmJkrSosAddrEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry" resultMap="SRdmJkrSosAddrEntiryResultMap">
+		SELECT DISTINCT
+			ADDR_CODE_PREF,
+			ADDR_NAME_PREF
+		from
+			ORAUSR01.S_RDM_COM_POS_ADDR
+		ORDER BY
+			ADDR_CODE_PREF
+    </select>
+
+	<select id="selectSRdmJkrCityNameEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry" resultMap="SRdmJkrSosAddrEntiryResultMap">
+		SELECT
+			DISTINCT
+			ADDR_CODE_PREF,
+			ADDR_CODE_CITY,
+			ADDR_NAME_PREF,
+			ADDR_NAME_CITY
+		FROM
+			ORAUSR01.S_RDM_COM_POS_ADDR
+		ORDER BY
+			ADDR_CODE_PREF ,ADDR_CODE_CITY
+	</select>
 </mapper>

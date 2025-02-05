@@ -1,6 +1,6 @@
 <%--
  * <pre>
- *  組織検索ポップアップのAjaxレスポンス
+ *  担当者検索ポップアップのAjaxレスポンス
  * </pre>
  * @since 1.0
  * @version $Revision: 1.1 $
@@ -8,7 +8,6 @@
  * @see
  */
 --%>
-<%@page import="jp.co.takeda.rdm.dto.NC201DTO"%>
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal,java.lang.String"

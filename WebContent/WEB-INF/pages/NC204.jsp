@@ -1,5 +1,5 @@
 <%--
-/**   一旦ストップ...
+/**
  * <pre>
  *  所属部科選択ポップアップのJSP
  * </pre>
@@ -13,7 +13,7 @@
 <%@page import="jp.co.takeda.rdm.dto.NC204DTO"%>
 <%@page
   language="java"
-  import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal,java.lang.String"
+  import="jp.co.takeda.jkr.util.AppConstant,java.util.ArrayList,java.math.BigDecimal,java.lang.String"
   session="true"
   buffer="8kb"
   autoFlush="true"
@@ -75,7 +75,11 @@
 	<%-- 常に配列にするためにダミーを配置    DTOからjspに値を受け取っている部分 --%>
     <s:hidden name="callBack" />
     <s:hidden name="winVarName" />
-    <s:hidden name="paramInsNo" />
+
+	<s:hidden id="preScreenId" name ="preScreenId"/>
+    <s:hidden id="paramInsNo" name="paramInsNo"/>
+
+
     <s:hidden name="pageCntAll" />
     <s:hidden name="pageCntCur" />
     <s:hidden name="pageCntBase" />
@@ -115,7 +119,7 @@
 	<table>
 		<tr height="40">
 		    <td style="width:100pt;"><nobr>施設固定C   <s:property value="paramInsNo"/></nobr></td>
-            <td style="width:100pt;"><nobr>施設略式漢字名    <s:property value="insAbbrName"/></nobr></td>
+            <td style="width:100pt;"><nobr>施設略式漢字名    <s:label name="insAbbrName"  key="insAbbrName"/></nobr></td>
             <td style="width:10pt;"><s:checkbox name="allCheck" tabIndex="-1" value="false"/></td>
             <td style="width:100pt;"><nobr>全所属部科から検索</nobr></td>
 		</tr>

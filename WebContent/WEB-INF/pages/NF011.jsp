@@ -933,8 +933,30 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.functionId.value="Init";
 		document.fm1.target="insPopWindow";
 
+		const pCode = document.fm1.insPcode.value;
+		document.fm1.insPcode.value = "";
+
+		if(document.fm1.insType.value == "02" || document.fm1.insType.value == "05") {
+			document.fm1.kensakuInsSbt.value = "10";
+		} else {
+			document.fm1.kensakuInsSbt.value = "";
+		}
+
+		document.fm1.koshisetsuCheck.value = "1";
+		document.fm1.callBack.value = "callBackMainInsPop";
+
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+
+		document.fm1.insPcode.value = pCode;
+    }
+
+	// 施設ポップアップから親施設受け取り
+    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+
+    	document.fm1.mainInsCd.value = insNo;
+    	document.fm1.mainInsNm.value = insAbbrName;
+
     }
 
 	// 数値とﾊｲﾌﾝのみかチェック
@@ -1390,6 +1412,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <s:hidden name="topChangedSosNm3" />
 
   <s:hidden name="postCode" />
+  <s:hidden name="kensakuInsSbt" />
+  <s:hidden name="koshisetsuCheck" />
   <s:hidden name="callBack" />
 
 	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">

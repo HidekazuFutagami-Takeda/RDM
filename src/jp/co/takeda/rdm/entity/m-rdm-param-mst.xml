@@ -13,6 +13,10 @@
 		<result column="UPD_SHA_YMD" property="updShaYmd"/>
 		<result column="UPD_SHA_ID" property="updShaId"/>
     </resultMap>
+	<resultMap id="selectParamNc203ResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamNc203Entity">
+        <result column="PARAM_NAME" property="paramName"/>
+        <result column="VALUE" property="value"/>
+    </resultMap>
     <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmParamMstEntity" resultMap="mRdmParamMstResultMap">
         SELECT
 			PARAM_KANJ, PARAM_NAME, VALUE_KANJ, VALUE, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -30,5 +34,14 @@
 			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
 			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
         </where>
+    </select>
+<select id="selectParamNc203" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNc203Entity" resultMap="selectParamNc203ResultMap">
+        SELECT
+            PARAM_NAME, VALUE
+        FROM
+            ORAUSR01.M_RDM_PARAM_MST
+        WHERE
+            PARAM_NAME in ('MAX_ROWNUM', 'NC203_ROWNUM')
+        ORDER BY PARAM_NAME
     </select>
 </mapper>

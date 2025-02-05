@@ -360,9 +360,9 @@ public class ND301Action extends BaseAction<ND301DTO> {
         paramDto.setReturnLinkNm1("戻る");
         // 戻るリンク(遷移先URL)
         paramDto.setReturnLinkURL1("ND301Init");
-        // メッセージ１
-        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
-        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
+//        // メッセージ１
+//        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
+//        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
 
         ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
 //        searchKey.setActionMtKbn("2");

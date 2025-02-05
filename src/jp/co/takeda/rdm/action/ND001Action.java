@@ -21,7 +21,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.service.ND001Service;
-import jp.co.takeda.rdm.util.JkrConstantsData;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -153,10 +153,10 @@ public class ND001Action extends BaseAction<ND001DTO> {
         //担当変更状況テーブルデータが検索された場合
         if (dto.getJkrSosStsTableData() != null) {
             //戻るためのDTOセッション格納キー
-            request.getSession().setAttribute(JkrConstantsData.JKR000C010_RETURN_DTO_KEY, dto);
+            request.getSession().setAttribute(RdmConstantsData.NC001_RETURN_DTO_KEY, dto);
         } else {
             //「リスト作成依頼」押下時に設定されたセッション情報をクリアする
-            request.getSession().removeAttribute(JkrConstantsData.JKR000C010_RETURN_DTO_KEY);
+            request.getSession().removeAttribute(RdmConstantsData.NC001_RETURN_DTO_KEY);
         }
         // END UOC
         setNextDTO(outdto);

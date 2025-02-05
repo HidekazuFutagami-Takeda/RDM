@@ -86,7 +86,7 @@ function setTimer()
   if (count > maxSec) {
     var objid=document.getElementById('BlinkArea');
     if(objid != null && menuBox02.style.visibility != "hidden"){
-      document.fm1.screenId.value = 'NC001';
+      document.fm1.screenId.value = 'JKR000C010';
       document.fm1.functionId.value = 'View';
       comSubmitForAnyWarp(document.fm1);
     }
@@ -292,29 +292,28 @@ var gCseViewWin=null;
 
 /**
  * 選択画面を呼び出します。
+ * TODO 20250205　呼び出すjspに移し替える予定
  */
 function jmnSearchSosCd(){
+
   // 2度押し対策
   if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
   // 選択フラグ「1：組織」
   document.fm1.selectFlg.value	 = "1";
 
-  //従業員区分
-  document.fm1.dispJgiKb.value	 = "";
-  //職種
-  document.fm1.shokushuCd.value	 = "";
-  //職制
-  document.fm1.shokuseiCd.value	 = "";
-  //非従業員区分
-  document.fm1.noDispJgiKb.value	 = "";
-  //非職制
-  document.fm1.noShokushuCd.value	 = "";
-  //施設固定コード
-  document.fm1.insNo.value	 = "";
-
-  gCseViewWin = cseView(gCseViewWin,"genJmnCallBackCseView","gCseViewWin");
+  gCseViewWin = cseView(gCseViewWin,"rGenJmnCallBackCseView","gCseViewWin");
   return false;
 }
+
+function nc202JmnSearchSosCd(){
+	  // 2度押し対策
+	  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	  // 選択フラグ「1：組織」
+	  document.fm1.selectFlg.value	 = "1";
+
+	  gCseViewWin = nc202CseView(gCseViewWin,"rNc202CseViewGenJmnCallBackCseView","gCseViewWin");
+	  return false;
+	}
 
 
 /**
@@ -404,6 +403,39 @@ bumonRyakuName4, bumonRyakuName5, bumonRyakuName6 , selectedInsDispRngFlg, selec
   } else {
     document.fm1.ShowBtn.disabled = false;
   }
+}
+
+/**
+ * <pre>
+ * ポップアップのコールバック関数です。(単一選択、動的ポップアップ:Servlet処理有り)
+ * 受け取った値を好きなように編集します。
+ * 外勤では表示用の項目に値を設定し、submit用のformにキーとなる情報を保存します。
+ * </pre>
+ */
+function rGenJmnCallBackCseView(
+  bumonRank, sosCd,
+  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+	document.fm1.bumonRank.value    = bumonRank;
+	document.fm1.bumonSeiName.value = bumonSeiName;
+	document.fm1.sosCd.value        = sosCd;
+	document.fm1.brCode.value       = brCode;
+	document.fm1.distCode.value     = distCode;
+	document.fm1.upSosCode.value    = upSosCode;
+	document.fm1.upBumonRank.value  = upBumonRank;
+	document.fm1.upBrCode.value     = upBrCode;
+	document.fm1.upDistCode.value   = upDistCode;
+}
+
+function rNc202CseViewGenJmnCallBackCseView(
+	sosCd,bumonSeiName,
+	jgiNo, jgiName, trtCd, brCode, distCode){
+	document.fm1.sosCd.value        = sosCd;
+	document.fm1.bumonSeiName.value = bumonSeiName;
+	document.fm1.jgiNo.value        = jgiNo;
+	document.fm1.jgiName.value      = jgiName;
+	document.fm1.sosCd.value        = trtCd
+	document.fm1.brCode.value       = brCode;
+	document.fm1.distCode.value     = distCode;
 }
 
 /**

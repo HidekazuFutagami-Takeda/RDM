@@ -2837,6 +2837,7 @@ public interface AppConstant {
     public static final String SESKEY_NF311_SEARCHKEY = "NF311_SEARCHKEY";
 
     public static final String SESKEY_NC202_SEARCHKEY = "NC202_SEARCHKEY";
+    public static final String SESKEY_NC203_SEARCHKEY = "NC203_SEARCHKEY";
     public static final String SESKEY_NC205_SEARCHKEY = "NC205_SEARCHKEY";
 
     /** １ページで表示されるレコード件数 */

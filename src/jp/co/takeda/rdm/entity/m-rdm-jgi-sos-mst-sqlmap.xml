@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="m_rdm_jgi_sos_mst">
-    <resultMap id="selectInitJgiResultMap" type="jp.co.takeda.jkr.entity.join.SelectInitJgiEntity">
+    <resultMap id="selectInitJgiResultMap" type="jp.co.takeda.rdm.entity.join.SelectInitJgiEntity">
         <result column="BUMON_RANK" property="bumonRank"/>
         <result column="SOS_CD" property="sosCd"/>
         <result column="BUMON_SEI_NAME" property="bumonSeiName"/>
@@ -10,7 +10,7 @@
         <result column="DIST_SEQ" property="distSeq"/>
         <result column="UP_SOS_CD" property="upSosCode"/>
     </resultMap>
-    <resultMap id="selectJgiResultMap" type="jp.co.takeda.jkr.entity.join.SelectJgiEntity">
+    <resultMap id="selectJgiResultMap" type="jp.co.takeda.rdm.entity.join.SelectJgiEntity">
         <result column="BUMON_RANK" property="bumonRank"/>
         <result column="SOS_CD" property="sosCd"/>
         <result column="BUMON_SEI_NAME" property="bumonSeiName"/>
@@ -21,7 +21,7 @@
         <result column="JGI_NO" property="jgiNo"/>
         <result column="JGI_NAME" property="jgiName"/>
     </resultMap>
-    <select id="selectInitJgi" parameterType="jp.co.takeda.jkr.entity.join.SelectInitJgiEntity" resultMap="selectInitJgiResultMap">
+    <select id="selectInitJgi" parameterType="jp.co.takeda.rdm.entity.join.SelectInitJgiEntity" resultMap="selectInitJgiResultMap">
           SELECT DISTINCT
             JGI_SOS_MST.BUMON_RANK BUMON_RANK,
             JGI_SOS_MST.SOS_CD SOS_CD,
@@ -35,7 +35,7 @@
           WHERE 1 = 1
           AND SOS_CD = '01050'
     </select>
-    <select id="selectJgi" parameterType="jp.co.takeda.jkr.entity.join.SelectJgiEntity" resultMap="selectJgiResultMap">
+    <select id="selectJgi" parameterType="jp.co.takeda.rdm.entity.join.SelectJgiEntity" resultMap="selectJgiResultMap">
           <if test="inGmnFlg == 0">
               <if test="inBumonRank == 2">
               WITH SOS_LNK AS(

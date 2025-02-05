@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-import jp.co.takeda.jkr.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseDTO;
 
 import java.util.ArrayList;
 import java.util.List;

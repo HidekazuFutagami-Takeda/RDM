@@ -1018,24 +1018,25 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.target="tantoPopWindow";
 
 		document.fm1.selectFlgPop.value="1";
+		document.fm1.callBack.value="callBackTantoPop";
 
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
     }
 
 	// 担当者行の追加処理
-    function makeTrtRow(){
+    function callBackTantoPop(sosCd, bumonSeiName, inJgiNo, inJgiName, inTrtGrpCd, inTrtCd, inTrtNm, inMrCat, brCode, distCode){
 
 		let trtTable = document.getElementById("formTable11");
 		let trtRow = Number(trtTable.rows.length)-1;
 
-		// TODO 値仮置き　子画面から取得する
-		let trtCd = "02";
-		let trtNm = "trtNm";
-        let jgiNo = "0000"+trtRow;
-        let jgiNm = "jgiNm";
-        let trtGrpCd = "GrpCd";
-        let mrCat = "";
+		// 子画面から取得した値を設定する
+		let trtCd = inTrtCd;
+		let trtNm = inTrtNm;
+        let jgiNo = inJgiNo;
+        let jgiNm = inJgiName;
+        let trtGrpCd = inTrtGrpCd;
+        let mrCat = inMrCat;
 
 		let trtCdInp = document.createElement("input");
 		let jgiNoInp = document.createElement("input");

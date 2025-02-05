@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.service;
+package jp.co.takeda.rdm.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,17 +12,17 @@ import java.util.List;
 
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BaseService;
-import jp.co.takeda.jkr.common.BeanUtil;
-import jp.co.takeda.jkr.dto.CatDeptsComboDataList;
-import jp.co.takeda.jkr.dto.NC204DTO;
-import jp.co.takeda.jkr.dto.NC205DTO;
-import jp.co.takeda.jkr.util.JkrConstantsData;
-import jp.co.takeda.jkr.util.StringUtils;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.dto.CatDeptsComboDataList;
+//import jp.co.takeda.rdm.dto.NC204DTO;
+import jp.co.takeda.rdm.dto.NC205DTO;
+import jp.co.takeda.rdm.util.RdmConstantsData;
+import jp.co.takeda.rdm.util.StringUtils;
 
-import jp.co.takeda.jkr.entity.MRdmPostKouho;
-import jp.co.takeda.jkr.entity.join.SelectDeptListEntityRDM;
+import jp.co.takeda.rdm.entity.MRdmPostKouho;
+//import jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

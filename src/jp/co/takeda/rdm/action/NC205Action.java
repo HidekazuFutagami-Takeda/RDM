@@ -3,7 +3,7 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.action;
+package jp.co.takeda.rdm.action;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -12,11 +12,11 @@ import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
-import jp.co.takeda.jkr.common.BaseAction;
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.dto.NC205DTO;
-import jp.co.takeda.jkr.service.NC205Service;
-import jp.co.takeda.jkr.util.AppConstant;
+import jp.co.takeda.rdm.common.BaseAction;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.dto.NC205DTO;
+import jp.co.takeda.rdm.service.NC205Service;
+import jp.co.takeda.rdm.util.AppConstant;
 
 import org.springframework.context.annotation.Scope;
 

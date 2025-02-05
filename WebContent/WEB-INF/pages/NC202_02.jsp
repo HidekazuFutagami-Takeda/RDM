@@ -11,7 +11,7 @@
 <%@page import="jp.co.takeda.rdm.dto.NC201DTO"%>
 <%@ page
   language="java"
-  import="jp.co.takeda.jkr.util.AppConstant,java.util.ArrayList,java.math.BigDecimal,java.lang.String"
+  import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal,java.lang.String"
   session="true"
   buffer="8kb"
   autoFlush="true"

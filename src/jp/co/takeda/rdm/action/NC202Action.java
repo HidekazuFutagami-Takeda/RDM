@@ -14,13 +14,14 @@ import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
 import org.springframework.context.annotation.Scope;
 
-import jp.co.takeda.jkr.common.BaseAction;
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BeanUtil;
-import jp.co.takeda.rdm.dto.NC201DTO;
+import jp.co.takeda.rdm.common.BaseAction;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BeanUtil;
+//import jp.co.takeda.rdm.dto.NC201DTO;
 import jp.co.takeda.rdm.dto.NC202DTO;
 import jp.co.takeda.rdm.service.NC202Service;
-import jp.co.takeda.jkr.util.AppConstant;
+import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.jkr.util.JkrConstantsData;
 
 /**
@@ -160,7 +161,7 @@ public class NC202Action extends BaseAction<NC202DTO> {
      */
     protected String ajaxSosJgiNext(BaseDTO outdto) throws Exception {
         // START UOC
-        outdto.setForward(JkrConstantsData.SCREEN_ID_NC202_2);
+        outdto.setForward(RdmConstantsData.SCREEN_ID_NC202_2);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();

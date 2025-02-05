@@ -1,40 +1,266 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="m_rdm_jgi_sos_mst">
-    <resultMap id="mRdmJgiSosMstResultMap" type="jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity">
-        <result column="JGI_NO" property="jgiNo"/>
-        <result column="JGI_NAME" property="jgiName"/>
+    <resultMap id="selectInitJgiResultMap" type="jp.co.takeda.jkr.entity.join.SelectInitJgiEntity">
+        <result column="BUMON_RANK" property="bumonRank"/>
         <result column="SOS_CD" property="sosCd"/>
+        <result column="BUMON_SEI_NAME" property="bumonSeiName"/>
         <result column="BR_CODE" property="brCode"/>
         <result column="DIST_CODE" property="distCode"/>
-        <result column="BUMON_RYAKU_NAME" property="bumonRyakuName"/>
-        <result column="BUMON_RANK" property="bumonRank"/>
-        <result column="UP_SOS_CD" property="upSosCd"/>
-        <result column="TRT_CD" property="trtCd"/>
+        <result column="DIST_SEQ" property="distSeq"/>
+        <result column="UP_SOS_CD" property="upSosCode"/>
     </resultMap>
-    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity" resultMap="mRdmJgiSosMstResultMap">
-        SELECT
-            M_RDM_JGI_SOS_MST.JGI_NO
-           ,M_RDM_JGI_SOS_MST.JGI_NAME
-           ,M_RDM_JGI_SOS_MST.SOS_CD
-           ,M_RDM_JGI_SOS_MST.BR_CODE
-           ,M_RDM_JGI_SOS_MST.DIST_CODE
-           ,M_RDM_JGI_SOS_MST.BUMON_RYAKU_NAME
-           ,M_RDM_JGI_SOS_MST.BUMON_RANK
-           ,M_RDM_JGI_SOS_MST.UP_SOS_CD
-           ,S_RDM_COM_MR_SOS_TRT.TRT_CD
-        FROM
-            ORAUSR01.M_RDM_JGI_SOS_MST          --RDM用組織従業員情報
-           ,ORAUSR01.S_RDM_COM_LNK_TRT_SHOKUSHU --領域・職種関連定義
-           ,ORAUSR01.M_RDM_COM_CAL_USR          --RDM用カレンダー(オンライン用)
-           ,ORAUSR01.S_RDM_COM_MR_SOS_TRT       --組織領域マスタ
-        WHERE
-            M_RDM_COM_CAL_USR.TODAY='1'
-        AND M_RDM_JGI_SOS_MST.SOS_CD = S_RDM_COM_MR_SOS_TRT.SOS_CD
-        AND S_RDM_COM_LNK_TRT_SHOKUSHU.TRT_CD = S_RDM_COM_MR_SOS_TRT.TRT_CD
-        AND S_RDM_COM_LNK_TRT_SHOKUSHU.SHOKUSHU_CD = M_RDM_JGI_SOS_MST.SHOKUSHU_CD
-        AND M_RDM_COM_CAL_USR.CAL_DATE BETWEEN
-            S_RDM_COM_LNK_TRT_SHOKUSHU.TEKIYO_START_DATE AND S_RDM_COM_LNK_TRT_SHOKUSHU.TEKIYO_END_DATE
-        AND M_RDM_JGI_SOS_MST.JGI_NO = #{jgiNo}
+    <resultMap id="selectJgiResultMap" type="jp.co.takeda.jkr.entity.join.SelectJgiEntity">
+        <result column="BUMON_RANK" property="bumonRank"/>
+        <result column="SOS_CD" property="sosCd"/>
+        <result column="BUMON_SEI_NAME" property="bumonSeiName"/>
+        <result column="BR_CODE" property="brCode"/>
+        <result column="DIST_CODE" property="distCode"/>
+        <result column="DIST_SEQ" property="distSeq"/>
+        <result column="UP_SOS_CD" property="upSosCode"/>
+        <result column="JGI_NO" property="jgiNo"/>
+        <result column="JGI_NAME" property="jgiName"/>
+    </resultMap>
+    <select id="selectInitJgi" parameterType="jp.co.takeda.jkr.entity.join.SelectInitJgiEntity" resultMap="selectInitJgiResultMap">
+          SELECT DISTINCT
+            JGI_SOS_MST.BUMON_RANK BUMON_RANK,
+            JGI_SOS_MST.SOS_CD SOS_CD,
+            JGI_SOS_MST.BUMON_SEI_NAME BUMON_SEI_NAME,
+            JGI_SOS_MST.BR_CODE BR_CODE,
+            JGI_SOS_MST.DIST_CODE DIST_CODE,
+            JGI_SOS_MST.DIST_SEQ DIST_SEQ,
+            null UP_SOS_CD
+          FROM
+               ORAUSR01.M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報
+          WHERE 1 = 1
+          AND SOS_CD = '01050'
+    </select>
+    <select id="selectJgi" parameterType="jp.co.takeda.jkr.entity.join.SelectJgiEntity" resultMap="selectJgiResultMap">
+          <if test="inGmnFlg == 0">
+              <if test="inBumonRank == 2">
+              WITH SOS_LNK AS(
+                  SELECT DISTINCT
+                      SOS_MST.BUMON_RANK,
+                      UP_SOS_MST.SOS_CD,
+                      SOS_MST.BUMON_SEI_NAME,
+                      SOS_MST.BR_CODE,
+                      SOS_MST.DIST_CODE,
+                      SOS_MST.DIST_SEQ,
+                      SOS_MST.UP_SOS_CD
+                  FROM
+                      ORAUSR01.M_RDM_JGI_SOS_MST SOS_MST
+                  INNER JOIN
+                      ORAUSR01.M_RDM_JGI_SOS_MST UP_SOS_MST
+                  ON  SOS_MST.SOS_CD = UP_SOS_MST.UP_SOS_CD
+              )
+              SELECT DISTINCT
+                SOS_LNK.BUMON_RANK BUMON_RANK,
+                JGI_SOS_MST.UP_SOS_CD SOS_CD,
+                SOS_LNK.BUMON_SEI_NAME BUMON_SEI_NAME,
+                SOS_LNK.BR_CODE BR_CODE,
+                SOS_LNK.DIST_CODE DIST_CODE,
+                SOS_LNK.DIST_SEQ DIST_SEQ,
+              </if>
+              --部門ランクが3 エリア以上の場合
+              <if test="inBumonRank &gt;= 3">
+              SELECT DISTINCT
+                JGI_SOS_MST.BUMON_RANK BUMON_RANK,
+                JGI_SOS_MST.SOS_CD SOS_CD,
+                JGI_SOS_MST.BUMON_SEI_NAME BUMON_SEI_NAME,
+                JGI_SOS_MST.BR_CODE BR_CODE,
+                JGI_SOS_MST.DIST_CODE DIST_CODE,
+                JGI_SOS_MST.DIST_SEQ DIST_SEQ,
+              </if>
+              --部門ランクが3 エリア以下の場合
+              <if test="inBumonRank &lt;= 3">
+                NULL JGI_NO,
+                NULL JGI_NAME
+                </if>
+                --部門ランクが4 の場合
+                <if test="inBumonRank == 4">
+                JGI_SOS_MST.JGI_NO JGI_NO,
+                JGI_SOS_MST.JGI_NAME || '（' || JGI_SOS_MST.SHOKUSHU_NAME || '）'JGI_NAME
+              </if>
+              FROM
+                  ORAUSR01.M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報
+              --部門ランクが2:リージョン 以上の場合
+              <if test="inBumonRank &gt;= 2">
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_MR_SOS_TRT COM_MR_SOS
+              ON JGI_SOS_MST.SOS_CD = COM_MR_SOS.SOS_CD
+              INNER JOIN
+                  ORAUSR01.S_RDM_JKR_SOS_ADDR SOS_ADDR
+              ON COM_MR_SOS.SOS_CD = SOS_ADDR.SOS_CD
+              AND COM_MR_SOS.TRT_CD = SOS_ADDR.TRT_CD
+              </if>
+              <if test="inBumonRank == 2">
+              INNER JOIN
+                  SOS_LNK
+              ON JGI_SOS_MST.SOS_CD = SOS_LNK.SOS_CD
+              </if>
+              <if test="inBumonRank == 4">
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_SHOKUSHU_CONFIG  COM_SKS_CFG --職種別定義
+              ON COM_SKS_CFG.SHOKUSHU_CD = JGI_SOS_MST.SHOKUSHU_CD
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_LNK_TRT_SHOKUSHU  LNK_TRT_SKS --領域・職種関連定義
+              ON COM_SKS_CFG.SHOKUSHU_CD = JGI_SOS_MST.SHOKUSHU_CD
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_LNK_TRTGRP_TRT  COM_LNK_TGT　--領域グループ・領域関連定義
+              ON LNK_TRT_SKS.TRT_CD = COM_LNK_TGT.TRT_CD
+              INNER JOIN
+                  ORAUSR01.M_JGI_MST JGI_MST
+              ON JGI_SOS_MST.JGI_NO = JGI_MST.JGI_NO
+              INNER JOIN
+                  ORAUSR01.M_JGI_FLG_PLAN FLG_PLAN
+              ON JGI_SOS_MST.JGI_NO = FLG_PLAN.JGI_NO
+              ,ORAUSR01.M_RDM_COM_CAL_USR RDM_CAL_USR --RDM用カレンダー(オンライン用)
+              </if>
+              <where>
+                  AND SOS_ADDR.ADDR_CODE_PREF = #{inAddrCodePref}
+                  AND SOS_ADDR.TK_CITY_CD = #{inTkCityCd}
+                  AND SOS_ADDR.TRT_CD = #{inTrtCd}
+                  <if test="inBumonRank == 1">
+                      AND SOS_CD = '01050'
+                  </if>
+                  <if test="inBumonRank == 1 or inBumonRank == 3">
+                      AND JGI_SOS_MST.BUMON_RANK = #{inBumonRank}
+                  </if>
+                  <if test="inBumonRank == 2">
+                      AND JGI_SOS_MST.BUMON_RANK = 3
+                  </if>
+                  --上位組織コードが設定されている場合
+                  <if test="inBumonRank == 2">
+                      AND SOS_LNK.UP_SOS_CD = #{inUpSosCd}
+                  </if>
+                  <if test="inBumonRank == 3">
+                      AND JGI_SOS_MST.UP_SOS_CD = #{inUpSosCd}
+                  </if>
+                  --上位組織コードが設定されている場合
+                  <if test="inBumonRank == 4">
+                      AND JGI_SOS_MST.SOS_CD = #{inUpSosCd}
+                  </if>
+
+                  --上位組織コードが設定されている場合
+                  <if test="inBumonRank == 4">
+                      AND RDM_CAL_USR.TODAY = '1'
+                      AND LNK_TRT_SKS.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                      AND LNK_TRT_SKS.TEKIYO_END_DATE　&gt;= RDM_CAL_USR.CAL_DATE
+                      AND COM_SKS_CFG.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                      AND COM_SKS_CFG.TEKIYO_END_DATE &gt;= RDM_CAL_USR.CAL_DATE
+                      AND COM_LNK_TGT.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                      AND COM_LNK_TGT.TEKIYO_END_DATE &gt;= RDM_CAL_USR.CAL_DATE
+                      AND FLG_PLAN.START_DAY &lt;= RDM_CAL_USR.CAL_YEAR || RDM_CAL_USR.CAL_MONTH || RDM_CAL_USR.CAL_DAY
+                      AND FLG_PLAN.END_DAY &gt;= RDM_CAL_USR.CAL_YEAR || RDM_CAL_USR.CAL_MONTH || RDM_CAL_USR.CAL_DAY
+                      AND FLG_PLAN.FLG1 = '1'
+                      AND JGI_MST.JGI_KB IN ('0','1')
+                  </if>
+              </where>
+              <if test="inBumonRank == 2">
+                  ORDER BY SOS_LNK.BR_CODE, SOS_LNK.DIST_SEQ, SOS_LNK.DIST_CODE
+              </if>
+              <if test="inBumonRank == 3">
+                  ORDER BY JGI_SOS_MST.BR_CODE, JGI_SOS_MST.DIST_SEQ, JGI_SOS_MST.DIST_CODE
+              </if>
+              <if test="inBumonRank == 4">
+                  ORDER BY JGI_SOS_MST.BR_CODE, JGI_SOS_MST.DIST_SEQ, JGI_SOS_MST.DIST_CODE, JGI_SOS_MST.JGI_NO
+              </if>
+          </if>
+          <if test="inGmnFlg == 1">
+              SELECT DISTINCT
+              --部門ランクが3 エリア以下の場合
+              <if test="inBumonRank &lt;= 3">
+                SOS_MST.BUMON_RANK BUMON_RANK,
+                SOS_MST.SOS_CD SOS_CD,
+                SOS_MST.BUMON_SEI_NAME BUMON_SEI_NAME,
+                SOS_MST.BR_CODE BR_CODE,
+                SOS_MST.DIST_CODE DIST_CODE,
+                SOS_MST.DIST_SEQ DIST_SEQ,
+              </if>
+              --部門ランクが3 エリア以下の場合
+              <if test="inBumonRank &lt;= 3">
+                NULL JGI_NO,
+                NULL JGI_NAME
+              </if>
+              --部門ランクが4 の場合
+              <if test="inBumonRank == 4">
+                JGI_SOS_MST.BUMON_RANK BUMON_RANK,
+                JGI_SOS_MST.SOS_CD SOS_CD,
+                JGI_SOS_MST.BUMON_SEI_NAME BUMON_SEI_NAME,
+                JGI_SOS_MST.BR_CODE BR_CODE,
+                JGI_SOS_MST.DIST_CODE DIST_CODE,
+                JGI_SOS_MST.DIST_SEQ DIST_SEQ,
+                JGI_SOS_MST.JGI_NO JGI_NO,
+                JGI_SOS_MST.JGI_NAME || '（' || JGI_SOS_MST.SHOKUSHU_NAME || '）'JGI_NAME
+              </if>
+              --部門ランクが3 エリア以下の場合
+              <if test="inBumonRank &lt;= 3">
+              FROM
+                  ORAUSR01.M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_MR_SOS_TRT COM_MR_SOS
+              ON SOS_MST.SOS_CD = COM_MR_SOS.SOS_CD
+              </if>
+              --部門ランクが4 の場合
+              <if test="inBumonRank == 4">
+              FROM
+                  ORAUSR01.M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_MR_SOS_TRT  COM_MR_SOS --組織領域マスタ
+              ON JGI_SOS_MST.SOS_CD = COM_MR_SOS.SOS_CD
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_SHOKUSHU_CONFIG  COM_SKS_CFG --職種別定義
+              ON COM_SKS_CFG.SHOKUSHU_CD = JGI_SOS_MST.SHOKUSHU_CD
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_LNK_TRT_SHOKUSHU  LNK_TRT_SKS --領域・職種関連定義
+              ON LNK_TRT_SKS.TRT_CD = COM_MR_SOS.TRT_CD
+              AND LNK_TRT_SKS.SHOKUSHU_CD = JGI_SOS_MST.SHOKUSHU_CD
+              INNER JOIN
+                  ORAUSR01.S_RDM_COM_LNK_TRTGRP_TRT  COM_LNK_TGT --領域グループ・領域関連定義
+              ON COM_LNK_TGT.TRT_CD = LNK_TRT_SKS.TRT_CD
+              INNER JOIN
+                  ORAUSR01.M_RDM_SOS_MST SOS_MST --RDM用組織情報
+              ON  SOS_MST.SOS_CD =  JGI_SOS_MST.SOS_CD
+              INNER JOIN
+                  ORAUSR01.M_JGI_FLG_PLAN FLG_PLAN
+              ON JGI_SOS_MST.JGI_NO = FLG_PLAN.JGI_NO
+              ,ORAUSR01.M_RDM_COM_CAL_USR RDM_CAL_USR --RDM用カレンダー(オンライン用)
+              </if>
+              <where>
+                  1 = 1
+
+                  <if test="inBumonRank == 4">
+                  AND RDM_CAL_USR.TODAY = '1'
+                  AND LNK_TRT_SKS.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                  AND LNK_TRT_SKS.TEKIYO_END_DATE &gt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_SKS_CFG.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_SKS_CFG.TEKIYO_END_DATE &gt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_LNK_TGT.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_LNK_TGT.TEKIYO_END_DATE &gt;= RDM_CAL_USR.CAL_DATE
+                  AND FLG_PLAN.START_DAY &lt;= RDM_CAL_USR.CAL_YEAR || RDM_CAL_USR.CAL_MONTH || RDM_CAL_USR.CAL_DAY
+                  AND FLG_PLAN.END_DAY &gt;= RDM_CAL_USR.CAL_YEAR || RDM_CAL_USR.CAL_MONTH || RDM_CAL_USR.CAL_DAY
+                  AND FLG_PLAN.FLG1 = '1'
+                  AND JGI_SOS_MST.SOS_CD = #{inUpSosCd}
+                  </if>
+                  <if test="inBumonRank &lt;= 3">
+                  AND SOS_MST.BUMON_RANK = #{inBumonRank}
+                  </if>
+                  <if test="inTrtCd != null">
+                  AND COM_MR_SOS.TRT_CD = #{inTrtCd}
+                  </if>
+                  <if test="inBumonRank == 3 and inSosCd != null">
+                  AND SOS_MST.SOS_CD = #{inSosCd}
+                  </if>
+                  <if test="inBumonRank == 2 and inUpSosCd != null">
+                  AND SOS_MST.UP_SOS_CD = #{inUpSosCd}
+                  </if>
+              </where>
+              <if test="inBumonRank &lt;= 3">
+                  ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
+              </if>
+              <if test="inBumonRank == 4">
+                  ORDER BY JGI_SOS_MST.BR_CODE, JGI_SOS_MST.DIST_SEQ, JGI_SOS_MST.DIST_CODE, JGI_SOS_MST.JGI_NO
+              </if>
+          </if>
     </select>
 </mapper>

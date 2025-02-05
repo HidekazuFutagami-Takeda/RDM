@@ -2835,6 +2835,10 @@ public interface AppConstant {
     public static final String SESKEY_NF303_SEARCHKEY = "NF303_SEARCHKEY";
     /** 施設紐付け更新 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF311_SEARCHKEY = "NF311_SEARCHKEY";
+
+    public static final String SESKEY_NC202_SEARCHKEY = "NC202_SEARCHKEY";
+    public static final String SESKEY_NC205_SEARCHKEY = "NC205_SEARCHKEY";
+
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;
 

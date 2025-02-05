@@ -12,20 +12,20 @@ import java.util.List;
 
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BaseService;
-import jp.co.takeda.jkr.common.BeanUtil;
-import jp.co.takeda.jkr.entity.join.SelectInitJgiEntity;
-import jp.co.takeda.jkr.entity.join.SelectInitSosEntity;
-import jp.co.takeda.jkr.entity.join.SelectJgiEntity;
-import jp.co.takeda.jkr.entity.join.SelectSosEntity;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.entity.join.SelectInitJgiEntity;
+//import jp.co.takeda.rdm.entity.join.SelectInitSosEntity;
+import jp.co.takeda.rdm.entity.join.SelectJgiEntity;
+//import jp.co.takeda.rdm.entity.join.SelectSosEntity;
 import jp.co.takeda.rdm.dto.NC202DTO;
-import jp.co.takeda.rdm.dto.SosInitData;
+//import jp.co.takeda.rdm.dto.SosInitData;
 import jp.co.takeda.rdm.dto.JgiData;
 import jp.co.takeda.rdm.dto.JgiInitData;
 import jp.co.takeda.rdm.dto.NC201DTO;
-import jp.co.takeda.jkr.util.JkrConstantsData;
-import jp.co.takeda.jkr.util.StringUtils;
+import jp.co.takeda.rdm.util.RdmConstantsData;
+import jp.co.takeda.rdm.util.StringUtils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

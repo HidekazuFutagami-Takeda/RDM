@@ -7315,50 +7315,50 @@
         UPDATE
             T_RDM_HCO_REQ
         SET
-			INS_CLASS = #{insClass},
-			INS_SBT = #{insSbt},
-			INS_KANA = #{insKana},
-			INS_ABBR_NAME = #{insAbbrName},
-			INS_FORMAL_NAME = #{insFormalName},
-			INS_CONT_NAME = #{insContName},
-			INS_PCODE = #{insPcode},
-			ADDR_CODE_PREF = #{addrCodePref},
-			ADDR_CODE_CITY = #{addrCodeCity},
-			TK_CITY_CD = #{tkCityCd},
-			INS_ADDR_DT = #{insAddrDt},
-			INS_ADDR = #{insAddr},
-			INS_ADDR_KANA = #{insAddrKana},
-			INS_PHONE1 = #{insPhone1},
-			INS_FAX1 = #{insFax1},
-			INS_PHONE2 = #{insPhone2},
-			INS_FAX2 = #{insFax2},
-			INS_URL = #{insUrl},
-			INS_URL_YMD = #{insUrlYmd},
-			TRADE_TYPE = #{tradeType},
-			HO_INS_TYPE = #{hoInsType},
-			PHARM_TYPE = #{pharmType},
-			INS_RANK = #{insRank},
-			MANAGE_CD = #{manageCd},
-			REG_VIS_TYPE = #{regVisType},
-			IMP_HOS_TYPE = #{impHosType},
-			UNIV_SUBDIV = #{univSubdiv},
-			INS_OPEN_YEAR = #{insOpenYear},
-			INS_OPEN_MONTH = #{insOpenMonth},
-			INS_OPEN_DAY = #{insOpenDay},
-			VAC_INS_TYPE = #{vacInsType},
-			VAC_VISIT_TYPE = #{vacVisitType},
-			BEDCNT_BASE = #{bedcntBase},
-			BEDS_TOT = #{bedsTot},
-			MED_BEDS_TOT = #{medBedsTot},
-			ENTCAPA_NUM = #{entcapaNum},
-			MAIN_INS_NO = #{mainInsNo},
-			BEDCNT01 = #{bedcnt01},
-			BEDCNT02 = #{bedcnt02},
-			BEDCNT03 = #{bedcnt03},
-			BEDCNT04 = #{bedcnt04},
-			BEDCNT05 = #{bedcnt05},
-			BEDCNT06 = #{bedcnt06},
-			BEDCNT07 = #{bedcnt07},
+			<if test="insClass != null">INS_CLASS = #{insClass},</if><if test="insClass == null">INS_CLASS = null,</if>
+			<if test="insSbt != null">INS_SBT = #{insSbt},</if><if test="insSbt == null">INS_SBT = null,</if>
+			<if test="insKana != null">INS_KANA = #{insKana},</if><if test="insKana == null">INS_KANA = null,</if>
+			<if test="insAbbrName != null">INS_ABBR_NAME = #{insAbbrName},</if><if test="insAbbrName == null">INS_ABBR_NAME = null,</if>
+			<if test="insFormalName != null">INS_FORMAL_NAME = #{insFormalName},</if><if test="insFormalName == null">INS_FORMAL_NAME = null,</if>
+			<if test="insContName != null">INS_CONT_NAME = #{insContName},</if><if test="insContName == null">INS_CONT_NAME = null,</if>
+			<if test="insPcode != null">INS_PCODE = #{insPcode},</if><if test="insPcode == null">INS_PCODE = null,</if>
+			<if test="addrCodePref != null">ADDR_CODE_PREF = #{addrCodePref},</if><if test="addrCodePref == null">ADDR_CODE_PREF = null,</if>
+			<if test="addrCodeCity != null">ADDR_CODE_CITY = #{addrCodeCity},</if><if test="addrCodeCity == null">ADDR_CODE_CITY = null,</if>
+			<if test="tkCityCd != null">TK_CITY_CD = #{tkCityCd},</if><if test="tkCityCd == null">TK_CITY_CD = null,</if>
+			<if test="insAddrDt != null">INS_ADDR_DT = #{insAddrDt},</if><if test="insAddrDt == null">INS_ADDR_DT = null,</if>
+			<if test="insAddr != null">INS_ADDR = #{insAddr},</if><if test="insAddr == null">INS_ADDR = null,</if>
+			<if test="insAddrKana != null">INS_ADDR_KANA = #{insAddrKana},</if><if test="insAddrKana == null">INS_ADDR_KANA = null,</if>
+			<if test="insPhone1 != null">INS_PHONE1 = #{insPhone1},</if><if test="insPhone1 == null">INS_PHONE1 = null,</if>
+			<if test="insFax1 != null">INS_FAX1 = #{insFax1},</if><if test="insFax1 == null">INS_FAX1 = null,</if>
+			<if test="insPhone2 != null">INS_PHONE2 = #{insPhone2},</if><if test="insPhone2 == null">INS_PHONE2 = null,</if>
+			<if test="insFax2 != null">INS_FAX2 = #{insFax2},</if><if test="insFax2 == null">INS_FAX2 = null,</if>
+			<if test="insUrl != null">INS_URL = #{insUrl},</if><if test="insUrl == null">INS_URL = null,</if>
+			<if test="insUrlYmd != null">INS_URL_YMD = #{insUrlYmd},</if><if test="insUrlYmd == null">INS_URL_YMD = null,</if>
+			<if test="tradeType != null">TRADE_TYPE = #{tradeType},</if><if test="tradeType == null">TRADE_TYPE = null,</if>
+			<if test="hoInsType != null">HO_INS_TYPE = #{hoInsType},</if><if test="hoInsType == null">HO_INS_TYPE = null,</if>
+			<if test="pharmType != null">PHARM_TYPE = #{pharmType},</if><if test="pharmType == null">PHARM_TYPE = null,</if>
+			<if test="insRank != null">INS_RANK = #{insRank},</if><if test="insRank == null">INS_RANK = null,</if>
+			<if test="manageCd != null">MANAGE_CD = #{manageCd},</if><if test="manageCd == null">MANAGE_CD = null,</if>
+			<if test="regVisType != null">REG_VIS_TYPE = #{regVisType},</if><if test="regVisType == null">REG_VIS_TYPE = null,</if>
+			<if test="impHosType != null">IMP_HOS_TYPE = #{impHosType},</if><if test="impHosType == null">IMP_HOS_TYPE = null,</if>
+			<if test="univSubdiv != null">UNIV_SUBDIV = #{univSubdiv},</if><if test="univSubdiv == null">UNIV_SUBDIV = null,</if>
+			<if test="insOpenYear != null">INS_OPEN_YEAR = #{insOpenYear},</if><if test="insOpenYear == null">INS_OPEN_YEAR = null,</if>
+			<if test="insOpenMonth != null">INS_OPEN_MONTH = #{insOpenMonth},</if><if test="insOpenMonth == null">INS_OPEN_MONTH = null,</if>
+			<if test="insOpenDay != null">INS_OPEN_DAY = #{insOpenDay},</if><if test="insOpenDay == null">INS_OPEN_DAY = null,</if>
+			<if test="vacInsType != null">VAC_INS_TYPE = #{vacInsType},</if><if test="vacInsType == null">VAC_INS_TYPE = null,</if>
+			<if test="vacVisitType != null">VAC_VISIT_TYPE = #{vacVisitType},</if><if test="vacVisitType == null">VAC_VISIT_TYPE = null,</if>
+			<if test="bedcntBase != null">BEDCNT_BASE = #{bedcntBase},</if><if test="bedcntBase == null">BEDCNT_BASE = null,</if>
+			<if test="bedsTot != null">BEDS_TOT = #{bedsTot},</if><if test="bedsTot == null">BEDS_TOT = null,</if>
+			<if test="medBedsTot != null">MED_BEDS_TOT = #{medBedsTot},</if><if test="medBedsTot == null">MED_BEDS_TOT = null,</if>
+			<if test="entcapaNum != null">ENTCAPA_NUM = #{entcapaNum},</if><if test="entcapaNum == null">ENTCAPA_NUM = null,</if>
+			<if test="mainInsNo != null">MAIN_INS_NO = #{mainInsNo},</if><if test="mainInsNo == null">MAIN_INS_NO = null,</if>
+			<if test="bedcnt01 != null">BEDCNT01 = #{bedcnt01},</if><if test="bedcnt01 == null">BEDCNT01 = null,</if>
+			<if test="bedcnt02 != null">BEDCNT02 = #{bedcnt02},</if><if test="bedcnt02 == null">BEDCNT02 = null,</if>
+			<if test="bedcnt03 != null">BEDCNT03 = #{bedcnt03},</if><if test="bedcnt03 == null">BEDCNT03 = null,</if>
+			<if test="bedcnt04 != null">BEDCNT04 = #{bedcnt04},</if><if test="bedcnt04 == null">BEDCNT04 = null,</if>
+			<if test="bedcnt05 != null">BEDCNT05 = #{bedcnt05},</if><if test="bedcnt05 == null">BEDCNT05 = null,</if>
+			<if test="bedcnt06 != null">BEDCNT06 = #{bedcnt06},</if><if test="bedcnt06 == null">BEDCNT06 = null,</if>
+			<if test="bedcnt07 != null">BEDCNT07 = #{bedcnt07},</if><if test="bedcnt07 == null">BEDCNT07 = null,</if>
 			UPD_SHA_YMD = #{updShaYmd},
 			UPD_SHA_ID = #{updShaId}
         WHERE

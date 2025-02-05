@@ -163,21 +163,21 @@ public class NF301Service extends BaseService {
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
 				errFlg = true;
 	        }
-        }
-        if(indto.getInsRank() == null || indto.getInsRank().isEmpty()) {
-        	// 必須項目にデータを入力してください。（階級区分）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
-			errFlg = true;
-        }
-        if(indto.getRegVisType() == null || indto.getRegVisType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（定訪先区分）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
-			errFlg = true;
-        }
-        if(indto.getImpHosType() == null || indto.getImpHosType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（重点病院区分）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
-			errFlg = true;
+	        if(indto.getInsRank() == null || indto.getInsRank().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（階級区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getRegVisType() == null || indto.getRegVisType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（定訪先区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getImpHosType() == null || indto.getImpHosType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（重点病院区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
+	        	errFlg = true;
+	        }
         }
 
         if(indto.getInsRank() != null && ("01".equals(indto.getInsRank())
@@ -1705,21 +1705,21 @@ public class NF301Service extends BaseService {
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
 				errFlg = true;
 	        }
-        }
-        if(indto.getInsRank() == null || indto.getInsRank().isEmpty()) {
-        	// 必須項目にデータを入力してください。（階級区分）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
-			errFlg = true;
-        }
-        if(indto.getRegVisType() == null || indto.getRegVisType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（定訪先区分）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
-			errFlg = true;
-        }
-        if(indto.getImpHosType() == null || indto.getImpHosType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（重点病院区分）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
-			errFlg = true;
+	        if(indto.getInsRank() == null || indto.getInsRank().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（階級区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getRegVisType() == null || indto.getRegVisType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（定訪先区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getImpHosType() == null || indto.getImpHosType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（重点病院区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
+	        	errFlg = true;
+	        }
         }
 
         if(indto.getInsRank() != null && ("01".equals(indto.getInsRank())

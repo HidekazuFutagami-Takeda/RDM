@@ -591,7 +591,7 @@
 		, LNK.INS_SBT_AF
 		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
 		, KNR.APR_MEMO  -- 申請管理.承認者メモ
-		, KNR.APR_COMMNET AS APR_COMMENT  -- 申請管理.承認・却下コメント
+		, KNR.APR_COMMENT AS APR_COMMENT  -- 申請管理.承認・却下コメント
 		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
 		FROM
 		T_RDM_REQ_KNR KNR -- 申請管理

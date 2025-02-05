@@ -767,7 +767,7 @@
 		, KNR.APR_MEMO  -- 申請管理.承認者メモ
 		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
 		, KNR.REQ_CHL -- 申請管理.申請チャネル
-		, KNR.APR_COMMNET -- 申請管理.承認却下コメント
+		, KNR.APR_COMMENT -- 申請管理.承認却下コメント
 		, CDMDT.VALUE1_KANJ AS DOC_TYPE_NM
 		, CDMMF.VALUE1_KANJ AS SEX_NM
 		, CDMHT.VALUE1_KANJ AS HOME_TOWN_NM

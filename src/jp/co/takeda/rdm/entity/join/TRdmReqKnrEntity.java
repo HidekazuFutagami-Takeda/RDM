@@ -233,8 +233,8 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
      * 却下コメント
      * @generated
      */
-    private String aprCommnet;
-    private boolean aprCommnetNullFlag;
+    private String aprComment;
+    private boolean aprCommentNullFlag;
 
     /**
      * 施設固定コード
@@ -1339,36 +1339,36 @@ public class TRdmReqKnrEntity extends BaseEntity implements Serializable {
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprCommnetを設定
-	 * @return aprCommnet
+	 * TRdmReqKnrEntity.javaaprCommentを設定
+	 * @return aprComment
 	 */
-	public String getAprCommnet() {
-		return aprCommnet;
+	public String getAprComment() {
+		return aprComment;
 	}
 
 
 	/**
-	 * @param aprCommnet セットする aprCommnet
+	 * @param aprComment セットする aprComment
 	 */
-	public void setAprCommnet(String aprCommnet) {
-		this.aprCommnet = aprCommnet;
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
 	}
 
 
 	/**
-	 * TRdmReqKnrEntity.javaaprCommnetNullFlagを設定
-	 * @return aprCommnetNullFlag
+	 * TRdmReqKnrEntity.javaaprCommentNullFlagを設定
+	 * @return aprCommentNullFlag
 	 */
-	public boolean isAprCommnetNullFlag() {
-		return aprCommnetNullFlag;
+	public boolean isAprCommentNullFlag() {
+		return aprCommentNullFlag;
 	}
 
 
 	/**
-	 * @param aprCommnetNullFlag セットする aprCommnetNullFlag
+	 * @param aprCommentNullFlag セットする aprCommentNullFlag
 	 */
-	public void setAprCommnetNullFlag(boolean aprCommnetNullFlag) {
-		this.aprCommnetNullFlag = aprCommnetNullFlag;
+	public void setAprCommentNullFlag(boolean aprCommentNullFlag) {
+		this.aprCommentNullFlag = aprCommentNullFlag;
 	}
 
 

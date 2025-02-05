@@ -2466,7 +2466,7 @@ public class NF303Service extends BaseService {
         	tRdmReqKnrEntity.setAprJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
         	tRdmReqKnrEntity.setAprShaName(indto.getLoginNm());
         	tRdmReqKnrEntity.setAprYmdhms(sysDateTime);
-        	tRdmReqKnrEntity.setAprCommnet(indto.getAprComment());
+        	tRdmReqKnrEntity.setAprComment(indto.getAprComment());
 
         	if("on".equals(indto.getFbReqFlg())) {
         		tRdmReqKnrEntity.setFbReqFlg("1");
@@ -2499,7 +2499,7 @@ public class NF303Service extends BaseService {
         	tRdmReqKnrEntity.setAprJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
         	tRdmReqKnrEntity.setAprShaName(indto.getLoginNm());
         	tRdmReqKnrEntity.setAprYmdhms(sysDateTime);
-        	tRdmReqKnrEntity.setAprCommnet(indto.getAprComment());
+        	tRdmReqKnrEntity.setAprComment(indto.getAprComment());
 
         	tRdmReqKnrEntity.setUpdShaYmd(systemDate);
         	tRdmReqKnrEntity.setUpdShaId(indto.getLoginJgiNo());

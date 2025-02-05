@@ -754,14 +754,14 @@ public class ND301Service extends BaseService {
 					}else {
 						updateEntity1.setReqStsCd("04");//　申請ステータス
 					}
-					// 承認者所属リージョン
-					// 承認者所属エリア
-					// 承認者所属
+					updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
+					updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
+					updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
 					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
-					// 承認者氏名
+					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
 					updateEntity1.setAprYmdhms(strDate);// 承認日時
 					updateEntity1.setFbReqFlg(indto.getFbReqFlg());//FB申請要否フラグ
-					updateEntity1.setAprCommnet(indto.getAprComment());//承認者コメント
+					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
 				}
 				if ("2".equals(indto.getButtonFlg())) {//却下
 					if(reqChl.equals("3")) {//ULT起因
@@ -769,13 +769,13 @@ public class ND301Service extends BaseService {
 					}else {
 						updateEntity1.setReqStsCd("02");//　申請ステータス
 					}
-					// 承認者所属リージョン
-					// 承認者所属エリア
-					// 承認者所属
+					updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
+					updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
+					updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
 					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
-					// 承認者氏名
+					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
 					updateEntity1.setAprYmdhms(strDate);// 承認日時
-					updateEntity1.setAprCommnet(indto.getAprComment());//承認者コメント
+					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
 				}
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者

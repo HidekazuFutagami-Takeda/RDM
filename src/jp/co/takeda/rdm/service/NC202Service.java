@@ -23,7 +23,7 @@ import jp.co.takeda.rdm.dto.NC202DTO;
 //import jp.co.takeda.rdm.dto.SosInitData;
 import jp.co.takeda.rdm.dto.JgiData;
 import jp.co.takeda.rdm.dto.JgiInitData;
-import jp.co.takeda.rdm.dto.NC201DTO;
+//import jp.co.takeda.rdm.dto.NC201DTO;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 

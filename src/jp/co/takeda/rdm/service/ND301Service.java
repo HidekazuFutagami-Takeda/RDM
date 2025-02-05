@@ -733,9 +733,9 @@ public class ND301Service extends BaseService {
 					}else {
 						updateEntity1.setReqStsCd("03");//　申請ステータス
 					}
-					updateEntity1.setReqBrCd(reqBrCd);// 申請者所属リージョン
-					updateEntity1.setReqDistCd(reqDistCd);// 申請者所属エリア
-					updateEntity1.setReqShzNm(reqShzNm);// 申請者所属
+					updateEntity1.setReqBrCd(loginInfo.getBrCode());// 申請者所属リージョン
+					updateEntity1.setReqDistCd(loginInfo.getDistCode());// 申請者所属エリア
+					updateEntity1.setReqShzNm(loginInfo.getBumonRyakuName());// 申請者所属
 					updateEntity1.setReqJgiNo(loginInfo.getJgiNo());// 申請者従業員番号
 					updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
 					updateEntity1.setReqYmdhms(strDate); // 申請日時

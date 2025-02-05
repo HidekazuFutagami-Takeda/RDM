@@ -647,8 +647,6 @@ public class ND301Service extends BaseService {
 		BaseDTO outdto = indto;
 		// START UOC
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-//		// DropDownList作成
-//		createCombo(indto);
 		// START UOC
 		//却下ボタン押下の場合
 		if ("2".equals(indto.getButtonFlg())) {
@@ -666,13 +664,12 @@ public class ND301Service extends BaseService {
 		}
 		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg()) || "2".equals(indto.getButtonFlg())) {
 			// 登録か更新か申請IDで判定
-			if(indto.getReqId() != null && !StringUtils.isEmpty(indto.getReqId())) {
-				// 更新
-				//TODO 更新処理
+//			if(indto.getReqId() != null && !StringUtils.isEmpty(indto.getReqId())) {
+				// 更新処理
 				// 現在日付を取得する
 				Date currentDt = DateUtils.getNowDate();
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-//				String strDate = sdf.format(currentDt);
+				String strDate = sdf.format(currentDt);
 				Date dtoUpdShaYmddate = null;
 				try {
 					dtoUpdShaYmddate = sdf.parse(indto.getUpdShaYmd());
@@ -729,11 +726,57 @@ public class ND301Service extends BaseService {
 				UpdateTRdmReqKnrEntity updateEntity1 = new UpdateTRdmReqKnrEntity();
 				updateEntity1.setSqlId("updateData");
 				updateEntity1.setReqId(indto.getReqId());
-				if ("0".equals(indto.getButtonFlg())) {//一時保存の場合01固定、申請・承認時は更新なしで確認画面で更新
-					updateEntity1.setReqStsCd("01");//申請ステータス
+				String reqChl = indto.getReqChl();
+				if ("0".equals(indto.getButtonFlg())) {//申請
+					if(reqChl.equals("3")) {//ULT起因
+						updateEntity1.setReqStsCd("13");//　申請ステータス
+					}else {
+						updateEntity1.setReqStsCd("03");//　申請ステータス
+					}
+					updateEntity1.setReqBrCd(reqBrCd);// 申請者所属リージョン
+					updateEntity1.setReqDistCd(reqDistCd);// 申請者所属エリア
+					updateEntity1.setReqShzNm(reqShzNm);// 申請者所属
+					updateEntity1.setReqJgiNo(loginInfo.getJgiNo());// 申請者従業員番号
+					updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
+					updateEntity1.setReqYmdhms(strDate); // 申請日時
+					// 申請者権限区分
+					if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+						//MDM管理者：JKN0813 全MR：JKN0023)
+						updateEntity1.setReqKngKbn("2");
+					}else {
+						updateEntity1.setReqKngKbn("1");
+					}
+					updateEntity1.setReqComment(indto.getReqComment());//　申請コメント
 				}
-				updateEntity1.setReqComment(indto.getReqComment());//申請コメント
-				updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
+				if ("1".equals(indto.getButtonFlg())) {//承認
+					if(reqChl.equals("3")) {//ULT起因
+						updateEntity1.setReqStsCd("14");//　申請ステータス
+					}else {
+						updateEntity1.setReqStsCd("04");//　申請ステータス
+					}
+					// 承認者所属リージョン
+					// 承認者所属エリア
+					// 承認者所属
+					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
+					// 承認者氏名
+					updateEntity1.setAprYmdhms(strDate);// 承認日時
+					updateEntity1.setFbReqFlg(indto.getFbReqFlg());//FB申請要否フラグ
+					updateEntity1.setAprCommnet(indto.getAprComment());//承認者コメント
+				}
+				if ("2".equals(indto.getButtonFlg())) {//却下
+					if(reqChl.equals("3")) {//ULT起因
+						updateEntity1.setReqStsCd("12");//　申請ステータス
+					}else {
+						updateEntity1.setReqStsCd("02");//　申請ステータス
+					}
+					// 承認者所属リージョン
+					// 承認者所属エリア
+					// 承認者所属
+					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
+					// 承認者氏名
+					updateEntity1.setAprYmdhms(strDate);// 承認日時
+					updateEntity1.setAprCommnet(indto.getAprComment());//承認者コメント
+				}
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 				dao.update(updateEntity1);
@@ -750,200 +793,6 @@ public class ND301Service extends BaseService {
 //					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I012));
 //					return outdto;
 //				}
-			}else {
-				//　登録
-				//TODO 申請ID発行
-				SeqRdmReqIdEntity idEntity = new SeqRdmReqIdEntity();
-				List<SeqRdmReqIdEntity> outIdList = dao.select(idEntity);
-				String reqId = outIdList.get(0).getReqId();
-				//TODO 登録処理
-				// 申請管理
-				TRdmReqKnrEntity insEntity1 =  new TRdmReqKnrEntity();
-				insEntity1.setReqId(reqId); //申請ID
-				if("JKN0813".equals(indto.getLoginJokenSetCd())) {//MDM管理者：JKN0813 全MR：JKN0023)
-					insEntity1.setReqChl("2");//申請チャネル
-					insEntity1.setReqKngKbn("2");//申請者権限区分
-				} else {
-					insEntity1.setReqChl("1");//申請チャネル
-					insEntity1.setReqKngKbn("1");//申請者権限区分
-				}
-				insEntity1.setReqType("31");//申請区分
-				insEntity1.setReqStsCd("01");//申請ステータス
-				insEntity1.setReqBrCd("");//申請者所属リージョン
-				insEntity1.setReqDistCd("");//申請者所属エリア
-				insEntity1.setReqShzNm("");//申請者所属
-				insEntity1.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
-				insEntity1.setReqJgiName(loginInfo.getJgiName());//申請者氏名
-				insEntity1.setReqComment(indto.getReqComment());//申請コメント
-
-				// 現在日付を取得する
-				Date currentDt = DateUtils.getNowDate();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-				Date dtoUpdShaYmddate;
-//				String strDate = sdf.format(currentDt);
-				try {
-					dtoUpdShaYmddate = sdf.parse(indto.getUpdShaYmd());
-				} catch (ParseException e) {
-					// TODO 自動生成された catch ブロック
-					e.printStackTrace();
-				}
-
-				insEntity1.setInsShaYmd(currentDt);//作成日
-				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
-				insEntity1.setUpdShaYmd(currentDt);//更新日
-				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-
-				dao.insertByValue(insEntity1);
-
-				// 医師_申請管理
-				TRdmHcpReqEntity insEntity2 = new TRdmHcpReqEntity();
-				insEntity2.setReqId(reqId);//申請ID
-				insEntity2.setDocType(indto.getDocType());//医師／薬剤師区分
-				insEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei() );//氏名（漢字）
-				insEntity2.setDocKana(indto.getDocKanaSei()  + " " + indto.getDocKanaMei());//氏名（カナ）
-				insEntity2.setDocKanjiSei(indto.getDocKanjiSei());//氏名（漢字）姓
-				insEntity2.setDocKanjiMei(indto.getDocKanjiMei());//氏名（漢字）名
-				insEntity2.setDocKanaSei(indto.getDocKanaSei());//氏名（カナ）姓
-				insEntity2.setDocKanaMei(indto.getDocKanaMei());//氏名（カナ）名
-				insEntity2.setOldKanjSei(StringUtils.setEmptyToNull(indto.getOldKanjSei()));//氏名（漢字）旧姓
-				insEntity2.setOldKanaSei(StringUtils.setEmptyToNull(indto.getOldKanaSei()));//氏名（カナ）旧姓
-				insEntity2.setNewNameStYear(StringUtils.setEmptyToNull(indto.getNewNameStYear()));//改姓日（年）
-				insEntity2.setNewNameStMonth(StringUtils.setEmptyToNull(indto.getNewNameStMonth()));//改姓日（月）
-				insEntity2.setNewNameStDay(StringUtils.setEmptyToNull(indto.getNewNameStDay()));//改姓日（日）
-				insEntity2.setDobYear(StringUtils.setEmptyToNull(indto.getDobYear()));//生年月日（年）
-				insEntity2.setDobMonth(StringUtils.setEmptyToNull(indto.getDobMonth()));//生年月日（月）
-				insEntity2.setDobDay(StringUtils.setEmptyToNull(indto.getDobDay()));//生年月日（日）
-				insEntity2.setSexCd(StringUtils.setEmptyToNull(indto.getSexCd()));//性別区分
-				insEntity2.setHomeTownCd(StringUtils.setEmptyToNull(indto.getHomeTownCd()));//出身地コード
-				insEntity2.setMedSchoolCd(StringUtils.setEmptyToNull(indto.getMedSchoolCd()));//出身校コード
-				insEntity2.setGradYear(StringUtils.setEmptyToNull(indto.getGradYear()));//卒年
-				insEntity2.setHomeDeptCd(StringUtils.setEmptyToNull(indto.getHomeDeptCd()));//出身所属コード
-				insEntity2.setHomeUnivCd(StringUtils.setEmptyToNull(indto.getHomeUnivCd()));//出身医局校コード
-				insEntity2.setEmplYear(StringUtils.setEmptyToNull(indto.getEmplYear()));//臨床研修年
-				insEntity2.setSpLiverCd(StringUtils.setEmptyToNull(indto.getSpLiverCd()));//専門臓器コード
-				insEntity2.setSpDiseaseCd(StringUtils.setEmptyToNull(indto.getSpDiseaseCd()));//専門詳細コード
-				insEntity2.setSpCom(StringUtils.setEmptyToNull(indto.getSpCom()));//専門追加情報
-				insEntity2.setSkInsNo(indto.getSkInsNo());//勤務先施設固定コード
-				insEntity2.setSkJobForm(StringUtils.setEmptyToNull(indto.getSkJobForm()));//勤務形態
-				insEntity2.setSkDeptCd(indto.getSkDeptCd());//所属部科コード
-				insEntity2.setSkUnivPosCd(StringUtils.setEmptyToNull(indto.getSkUnivPosCd()));//大学職位コード
-				insEntity2.setSkTitleCd(indto.getSkTitleCd());//役職コード
-				insEntity2.setSkDcctype(StringUtils.setEmptyToNull(indto.getSkDcctype()));//薬審メンバー区分
-				insEntity2.setUltDocNo(indto.getUltDocNo());//ULT医師コード
-				insEntity2.setInsShaYmd(currentDt);//作成日
-				insEntity2.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
-				insEntity2.setUpdShaYmd(currentDt);//更新日
-				insEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-				dao.insertByValue(insEntity2);
-
-				//所属学会
-				List<HcpSocietyData> societyDataList = indto.getHcpSocietyDataList();
-				TRdmHcpSocietyReqEntity insEntity3 = new TRdmHcpSocietyReqEntity();
-				insEntity3.setReqId(reqId);//申請ID
-				insEntity3.setInsShaYmd(currentDt);//作成日
-				insEntity3.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
-				insEntity3.setUpdShaYmd(currentDt);//更新日
-				insEntity3.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-				for (HcpSocietyData sData : societyDataList) {
-					insEntity3.setMedicalSocietyNm(StringUtils.setEmptyToNull(sData.getMedicalSocietyNm()));//所属学会名称
-					insEntity3.setAdmissionYYYY(StringUtils.setEmptyToNull(sData.getAdmissionYYYY()));//入会年月日(年)
-					insEntity3.setAdmissionMM(StringUtils.setEmptyToNull(sData.getAdmissionMM()));//入会年月日(月)
-					insEntity3.setAdmissionDD(StringUtils.setEmptyToNull(sData.getAdmissionDD()));//入会年月日(日)
-					insEntity3.setQuitYYYY(StringUtils.setEmptyToNull(sData.getQuitYYYY()));//脱会年月日(年)
-					insEntity3.setQuitMM(StringUtils.setEmptyToNull(sData.getQuitMM()));//脱会年月日(月)
-					insEntity3.setQuitDD(StringUtils.setEmptyToNull(sData.getQuitDD()));//脱会年月日(日)
-					insEntity3.setPositionCode(StringUtils.setEmptyToNull(sData.getPositionCode()));//所属役職
-					insEntity3.setSocietyPosiStYYYY(StringUtils.setEmptyToNull(sData.getSocietyPosiStYYYY()));//役職開始年月日(年)
-					insEntity3.setSocietyPosiStMM(StringUtils.setEmptyToNull(sData.getSocietyPosiStMM()));//役職開始年月日(月)
-					insEntity3.setSocietyPosiStDD(StringUtils.setEmptyToNull(sData.getSocietyPosiStDD()));//役職開始年月日(日)
-					insEntity3.setSocietyPosiEdYYYY(StringUtils.setEmptyToNull(sData.getSocietyPosiEdYYYY()));//役職終了年月日(年)
-					insEntity3.setSocietyPosiEdMM(StringUtils.setEmptyToNull(sData.getSocietyPosiEdMM()));//役職終了年月日(月)
-					insEntity3.setSocietyPosiEdDD(StringUtils.setEmptyToNull(sData.getSocietyPosiEdDD()));//役職終了年月日(日)
-					insEntity3.setAdvisingDoctorCd(StringUtils.setEmptyToNull(sData.getAdvisingDoctorCd()));//所属学会指導医区分
-					insEntity3.setCoachingAcquisiYYYY(StringUtils.setEmptyToNull(sData.getCoachingAcquisiYYYY()));//指導医取得年月日(年)
-					insEntity3.setCoachingAcquisiMM(StringUtils.setEmptyToNull(sData.getCoachingAcquisiMM()));//指導医取得年月日(月)
-					insEntity3.setCoachingAcquisiDD(StringUtils.setEmptyToNull(sData.getCoachingAcquisiDD()));//指導医取得年月日(日)
-					insEntity3.setCoachingStYYYY(StringUtils.setEmptyToNull(sData.getCoachingStYYYY()));//指導医開始年月日(年)
-					insEntity3.setCoachingStMM(StringUtils.setEmptyToNull(sData.getCoachingStMM()));//指導医開始年月日(月)
-					insEntity3.setCoachingStDD(StringUtils.setEmptyToNull(sData.getCoachingStDD()));//指導医開始年月日(日)
-					insEntity3.setCoachingEdYYYY(StringUtils.setEmptyToNull(sData.getCoachingEdYYYY()));//指導医終了年月日(年)
-					insEntity3.setCoachingEdMM(StringUtils.setEmptyToNull(sData.getCoachingEdMM()));//指導医終了年月日(月)
-					insEntity3.setCoachingEdDD(StringUtils.setEmptyToNull(sData.getCoachingEdDD()));//指導医終了年月日(日)
-					insEntity3.setCertifyingPhysicianCd(StringUtils.setEmptyToNull(sData.getCertifyingPhysicianCd()));//所属学会認定医区分
-					insEntity3.setCertifyStYYYY(StringUtils.setEmptyToNull(sData.getCertifyStYYYY()));//認定医開始年月日(年)
-					insEntity3.setCertifyStMM(StringUtils.setEmptyToNull(sData.getCertifyStMM()));//認定医開始年月日(月)
-					insEntity3.setCertifyStDD(StringUtils.setEmptyToNull(sData.getCertifyStDD()));//認定医開始年月日(日)
-					insEntity3.setCertifyEdYYYY(StringUtils.setEmptyToNull(sData.getCertifyEdYYYY()));//認定医終了年月日(年)
-					insEntity3.setCertifyEdMM(StringUtils.setEmptyToNull(sData.getCertifyEdMM()));//認定医終了年月日(月)
-					insEntity3.setCertifyEdDD(StringUtils.setEmptyToNull(sData.getCertifyEdDD()));//認定医終了年月日(日)
-
-					dao.insertByValue(insEntity3);
-				}
-				//公的機関
-				List<HcpPublicData> publicDataList = indto.getHcpPublicDataList();
-				TRdmHcpPublicReqEntity insEntity4 = new TRdmHcpPublicReqEntity();
-				insEntity4.setReqId(reqId);//申請ID
-				insEntity4.setInsShaYmd(currentDt);//作成日
-				insEntity4.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
-				insEntity4.setUpdShaYmd(currentDt);//更新日
-				insEntity4.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-				for (HcpPublicData pData : publicDataList) {
-					insEntity4.setClassCategoryCd(StringUtils.setEmptyToNull(pData.getClassCategoryCd()));//分類区分
-					insEntity4.setPubInstitutionCd(pData.getPubInstitutionCd());//公的機関
-					insEntity4.setPubInstStYYYY(StringUtils.setEmptyToNull(pData.getPubInstStYYYY()));//公的機関開始年月日(年)
-					insEntity4.setPubInstStMM(StringUtils.setEmptyToNull(pData.getPubInstStMM()));//公的機関開始年月日(月)
-					insEntity4.setPubInstStDD(StringUtils.setEmptyToNull(pData.getPubInstStDD()));//公的機関開始年月日(日)
-					insEntity4.setPubInstEdYYYY(StringUtils.setEmptyToNull(pData.getPubInstEdYYYY()));//公的機関終了年月日(年)
-					insEntity4.setPubInstEdMM(StringUtils.setEmptyToNull(pData.getPubInstEdMM()));//公的機関終了年月日(月)
-					insEntity4.setPubInstEdDD(StringUtils.setEmptyToNull(pData.getPubInstEdDD()));//公的機関終了年月日(日)
-					insEntity4.setPubInstPositionCd(StringUtils.setEmptyToNull(pData.getPubInstPositionCd()));//公的機関役職コード
-					insEntity4.setPubInstposStYYYY(StringUtils.setEmptyToNull(pData.getPubInstposStYYYY()));//公的機関役職開始年月日(年)
-					insEntity4.setPubInstposStMM(StringUtils.setEmptyToNull(pData.getPubInstposStMM()));//公的機関役職開始年月日(月)
-					insEntity4.setPubInstposStDD(StringUtils.setEmptyToNull(pData.getPubInstposStDD()));//公的機関役職開始年月日(日)
-					insEntity4.setPubInstposEdYYYY(StringUtils.setEmptyToNull(pData.getPubInstposEdYYYY()));//公的機関役職終了年月日(年)
-					insEntity4.setPubInstposEdMM(StringUtils.setEmptyToNull(pData.getPubInstposEdMM()));//公的機関役職終了年月日(月)
-					insEntity4.setPubInstposEdDD(StringUtils.setEmptyToNull(pData.getPubInstposEdDD()));//公的機関役職終了年月日(日)
-
-					dao.insertByValue(insEntity4);
-				}
-			}
-		}
-		//審査ボタン押下の場合
-		if ("2".equals(indto.getButtonFlg())) {
-			//TODO ステータス更新
-			UpdateTRdmReqKnrEntity updateEntity = new UpdateTRdmReqKnrEntity();
-			//        	updateEntity.setSqlId("updateShn");
-			updateEntity.setReqId(indto.getReqId());
-			updateEntity.setShnFlg("1");
-			updateEntity.setShnBrCode("");
-			updateEntity.setShnDistCode("");
-			updateEntity.setShnShz("");
-			updateEntity.setShnJgiNo(loginInfo.getJgiNo());
-			updateEntity.setShnShaName(loginInfo.getJgiName());
-			// 現在日付を取得する
-			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			String strDate = sdf.format(date);
-			updateEntity.setShnYmdhms(strDate);
-			//        	updateEntity.setAprMemo(indto.getAprMemo());
-
-			dao.update(updateEntity);
-		}
-		//破棄ボタン押下の場合（申請IDがあり、本人しか操作できない状態なのでそのまま削除）
-		if ("4".equals(indto.getButtonFlg())) {
-			//TODO 物理削除
-			TRdmReqKnrEntity deleteEntity1 = new TRdmReqKnrEntity();
-			deleteEntity1.setReqId(indto.getReqId());
-			dao.deleteByPK(deleteEntity1);
-			TRdmHcpReqEntity deleteEntity2 = new TRdmHcpReqEntity();
-			deleteEntity2.setReqId(indto.getReqId());
-			dao.deleteByPK(deleteEntity2);
-			TRdmHcpSocietyReqEntity deleteEntity3 = new TRdmHcpSocietyReqEntity();
-			deleteEntity3.setReqId(indto.getReqId());
-			dao.deleteByValue(deleteEntity3);
-			TRdmHcpPublicReqEntity deleteEntity4 = new TRdmHcpPublicReqEntity();
-			deleteEntity4.setReqId(indto.getReqId());
-			dao.deleteByValue(deleteEntity4);
 		}
 		//TODO 後処理
 		// END UOC
@@ -960,362 +809,65 @@ public class ND301Service extends BaseService {
 		if(fullchkFlg) {
 			//	１：必須入力チェック
 			//	項目
-//			//	医師／薬剤師区分
-//			if(StringUtils.isEmpty(indto.getDocType())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "医師／薬剤師区分");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//	性別
-//			if(StringUtils.isEmpty(indto.getSexCd())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "性別");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//	医師名(漢字)姓
-//			if(StringUtils.isEmpty(indto.getDocKanjiSei())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "医師名(漢字)姓");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//	医師名(漢字)名
-//			if(StringUtils.isEmpty(indto.getDocKanjiMei())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "医師名(漢字)名");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//	医師名(半角カナ)姓
-//			if(StringUtils.isEmpty(indto.getDocKanaSei())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//	医師名(半角カナ)名
-//			if(StringUtils.isEmpty(indto.getDocKanaMei())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//	勤務先情報．施設
-//			if(StringUtils.isEmpty(indto.getSkInsNm())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "勤務先情報．施設");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//	勤務先情報．所属部科
-//			if(StringUtils.isEmpty(indto.getSkDeptNm())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-//				tmpMsgStr.replace("項目名", "勤務先情報．所属部科");
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-			//	勤務先情報．役職
-			if(StringUtils.isEmpty(indto.getSkTitleCd())) {
+			//	却下コメント
+			if(StringUtils.isEmpty(indto.getAprComment())) {
 				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "勤務先情報．役職");
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W026);//却下の場合はコメントを入力してください。
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}
 		//      ２：レングスチェック
 		//      項目                                チェック内容
 		int len = 0;
-//		//      医師名(漢字)姓                              ５文字を超えている場合
-//		len = indto.getDocKanjiSei().length();
-//		if(len > 5) {
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//      医師名(漢字)名                              ５文字を超えている場合
-//		len = indto.getDocKanjiMei().length();
-//		if(len > 5) {
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", " 医師名(漢字)名");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//      医師名(半角カナ)姓                              １０文字を超えている場合
-//		len = indto.getDocKanaSei().length();
-//		if(len > 10) {
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//      医師名(半角カナ)名                              １０文字を超えている場合
-//		len = indto.getDocKanaMei().length();
-//		if(len > 10) {
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//      旧姓(漢字)姓                                ５文字を超えている場合
-//		len = indto.getOldKanjSei().length();
-//		if(len > 5) {
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(漢字)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//      旧姓(半角カナ)姓                                １０文字を超えている場合
-//		len = indto.getOldKanaSei().length();
-//		if(len > 10) {
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(半角カナ)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
+
 		//      申請コメント                                ３００文字を超えている場合
-		len = StringUtils.getByteLength(indto.getReqComment());
-		if(len > 300) {
+		if(StringUtils.isEmpty(indto.getReqComment())) {
+			len = StringUtils.getByteLength(indto.getReqComment());
+			if(len > 300) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//      申請コメント                                ３００文字を超えている場合
+		if(StringUtils.isEmpty(indto.getAprComment())) {
+			len = StringUtils.getByteLength(indto.getAprComment());
+			if(len > 300) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "却下コメント");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+
+		//		項目                                チェック内容
+		//		重複申請チェック                                同じULTコードに紐づく医師新規作成申請がすでに存在している場合
+		SelectND301MainDataEntity paramChkEntity = new SelectND301MainDataEntity();
+		paramChkEntity.setSqlId("selectND301CheckUltData");
+		paramChkEntity.setInUltDocNo(indto.getUltDocNo());
+		List<SelectND301MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
+		if(!chkEntityList1.isEmpty()) {
 			errChk = true;
-			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-			tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);//重複する申請が行われています。（項目名）
+			tmpMsgStr = tmpMsgStr.replace("項目名", "ULT医師");
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
-//		//      審査・承認メモ                                ３００文字を超えている場合
-//		len = StringUtils.getByteLength(indto.getAprMemo());
-//		if(len > 300) {
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "審査・承認メモ");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//		４：半角全角チェック
-//		//		項目                                チェック内容
-//		//		医師名(漢字)姓                              半角文字が含まれている場合
-//		if(!StringUtils.isMultiByte(indto.getDocKanjiSei())){
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//		医師名(漢字)名                              半角文字が含まれている場合
-//		if(!StringUtils.isMultiByte(indto.getDocKanjiMei())){
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//		医師名(半角カナ)姓                              全角文字が含まれている場合
-//		if(StringUtils.checkMultiByte(indto.getDocKanaSei())){
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//		医師名(半角カナ)名                              全角文字が含まれている場合
-//		if(StringUtils.checkMultiByte(indto.getDocKanaMei())){
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//		旧姓(漢字)姓                                半角文字が含まれている場合
-//		if(!StringUtils.isMultiByte(indto.getOldKanjSei())){
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(漢字)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//		旧姓(半角カナ)姓                                全角文字が含まれている場合
-//		if(StringUtils.checkMultiByte(indto.getOldKanaSei())){
-//			errChk = true;
-//			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
-//			tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(半角カナ)姓");
-//			msgStr = msgStr + tmpMsgStr + "\n";
-//		}
-//		//		７：整合性チェック
-//		if(fullchkFlg) {
-//			//W022	有効な年月日を入力してください。（項目名）
-//			//生年月日
-//			if(!StringUtils.isEmpty(indto.getDobYear()) || !StringUtils.isEmpty(indto.getDobMonth()) || !StringUtils.isEmpty(indto.getDobDay())) {
-//				if(!DateUtils.isDate(indto.getDobYear() + indto.getDobMonth() + indto.getDobDay())) {
-//					errChk = true;
-//					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W022);//有効な年月日を入力してください。（項目名）
-//					tmpMsgStr = tmpMsgStr.replace("項目名", "生年月日");
-//					msgStr = msgStr + tmpMsgStr + "\n";
-//				}
-//			}
-//			//改姓日
-//			if(!StringUtils.isEmpty(indto.getNewNameStYear()) || !StringUtils.isEmpty(indto.getNewNameStMonth()) || !StringUtils.isEmpty(indto.getNewNameStDay())) {
-//				if(!DateUtils.isDate(indto.getNewNameStYear() + indto.getNewNameStMonth() + indto.getNewNameStDay())) {
-//					errChk = true;
-//					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W022);//有効な年月日を入力してください。（項目名）
-//					tmpMsgStr = tmpMsgStr.replace("項目名", "改姓日");
-//					msgStr = msgStr + tmpMsgStr + "\n";
-//				}
-//			}
-//			//		整合性チェック                              下記の全てが未設定ならエラー
-//			//		- 生年月日(年月日のすべて指定)
-//			//		- 出身校
-//			//		- 卒年
-//			if((StringUtils.isEmpty(indto.getDobYear()) && StringUtils.isEmpty(indto.getDobMonth()) && StringUtils.isEmpty(indto.getDobDay()))
-//					&& StringUtils.isEmpty(indto.getMedSchoolCd())
-//					&& StringUtils.isEmpty(indto.getGradYear())) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W028);//下記のいずれかが登録してください。- 生年月日(年月日のすべて指定)- 出身校- 卒年
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//			//		整合性チェック                              "医師／薬剤師区分が「医師」の場合
-//			//		役職まで登録されているか確認。"
-//			if(indto.getDocType().equals("1") && StringUtils.isEmpty(indto.getSkTitleCd())){
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W029);//医師／薬剤師区分に医師を設定する場合は役職を指定してください。
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-			//		項目                                チェック内容
-			//		重複申請チェック                                同じULTコードに紐づく医師新規作成申請がすでに存在している場合
-			SelectND301MainDataEntity paramChkEntity = new SelectND301MainDataEntity();
-			paramChkEntity.setSqlId("selectND301CheckUltData");
-			paramChkEntity.setInUltDocNo(indto.getUltDocNo());
-			List<SelectND301MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
-			if(!chkEntityList1.isEmpty()) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);//重複する申請が行われています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "ULT医師");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
 
-			//		整合性チェック                              廃院を勤務先施設に選択して申請している場合
-			paramChkEntity.setSqlId("selectND301CheckDelInsData");
-			paramChkEntity.setSkInsNo(indto.getSkInsNo());
-			List<SelectND301MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
-			if(!chkEntityList2.isEmpty()) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W040);//廃業・死亡状態で、申請できません。
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-//		}
-
-//		//		整合性チェック                              所属学会一覧内で所属学会名が重複しているデータが存在する場合
-//		List<HcpSocietyData> societyDataList = indto.getHcpSocietyDataList();
-//		if (societyDataList.size() > 1) {
-//			String[] medicalSocietyNmArray = new String[societyDataList.size()];
-//			int i = 0;
-//			for (HcpSocietyData sData : societyDataList) {
-//				medicalSocietyNmArray[i] = sData.getMedicalSocietyNm();
-//				i++;
-//			}
-//			int duplicate = 0;
-//			for (int j = 0; j < medicalSocietyNmArray.length; j++) {
-//				for (int k = 0; k < medicalSocietyNmArray.length; k++) {
-//					if (k != j && medicalSocietyNmArray[k] == medicalSocietyNmArray[j]) {
-//						duplicate++;
-//					}
-//				}
-//			}
-//			if(duplicate >= 2) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W047);//同一名称の所属学会が設定されています。所属学会の編集で名称を変更するか、戻るボタンで本画面を閉じてから再度申請を行ってください。
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//		}
-//		//		整合性チェック                              公的機関一覧内で公的機関が重複しているデータが存在する場合
-//		List<HcpPublicData> publicDataList = indto.getHcpPublicDataList();
-//		if (publicDataList.size() > 1) {
-//			String[] pubInstitutionCdArray = new String[societyDataList.size()];
-//			int i = 0;
-//			for (HcpPublicData pData : publicDataList) {
-//				pubInstitutionCdArray[i] = pData.getPubInstitutionCd();
-//				i++;
-//			}
-//			int duplicate = 0;
-//			for (int j = 0; j < pubInstitutionCdArray.length; j++) {
-//				for (int k = 0; k < pubInstitutionCdArray.length; k++) {
-//					if (k != j && pubInstitutionCdArray[k] == pubInstitutionCdArray[j]) {
-//						duplicate++;
-//					}
-//				}
-//			}
-//			if(duplicate >= 2) {
-//				errChk = true;
-//				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W048);//同一の公的機関が設定されています。公的機関の編集で公的機関を変更するか、戻るボタンで本画面を閉じてから再度申請を行ってください。
-//				msgStr = msgStr + tmpMsgStr + "\n";
-//			}
-//		}
+		//		整合性チェック                              廃院を勤務先施設に選択して申請している場合
+		paramChkEntity.setSqlId("selectND301CheckDelInsData");
+		paramChkEntity.setSkInsNo(indto.getSkInsNo());
+		List<SelectND301MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
+		if(!chkEntityList2.isEmpty()) {
+			errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W040);//廃業・死亡状態で、申請できません。
+			msgStr = msgStr + tmpMsgStr + "\n";
+		}
 
 		if(errChk) {//エラーありなのでメッセージをセットする
 			indto.setMsgStr(msgStr);
 		}
 		return errChk;
 	}
-
-//	private boolean checkPublicData(HcpPublicData pData, TRdmHcpPublicReqEntity pEntity) {
-//		HcpPublicData pdData = new HcpPublicData();
-//		pdData.setClassCategoryCd(StringUtils.nvl(pEntity.getClassCategoryCd(), ""));
-//		pdData.setPubInstitutionCd(StringUtils.nvl(pEntity.getPubInstitutionCd(), ""));
-//		pdData.setPubInstStYYYY(StringUtils.nvl(pEntity.getPubInstStYYYY(), ""));
-//		pdData.setPubInstStMM(StringUtils.nvl(pEntity.getPubInstStMM(), ""));
-//		pdData.setPubInstStDD(StringUtils.nvl(pEntity.getPubInstStDD(), ""));
-//		pdData.setPubInstEdYYYY(StringUtils.nvl(pEntity.getPubInstEdYYYY(), ""));
-//		pdData.setPubInstEdMM(StringUtils.nvl(pEntity.getPubInstEdMM(), ""));
-//		pdData.setPubInstEdDD(StringUtils.nvl(pEntity.getPubInstEdDD(), ""));
-//		pdData.setPubInstPositionCd(StringUtils.nvl(pEntity.getPubInstPositionCd(), ""));
-//		pdData.setPubInstposStYYYY(StringUtils.nvl(pEntity.getPubInstposStYYYY(), ""));
-//		pdData.setPubInstposStMM(StringUtils.nvl(pEntity.getPubInstposStMM(), ""));
-//		pdData.setPubInstposStDD(StringUtils.nvl(pEntity.getPubInstposStDD(), ""));
-//		pdData.setPubInstposEdYYYY(StringUtils.nvl(pEntity.getPubInstposEdYYYY(), ""));
-//		pdData.setPubInstposEdMM(StringUtils.nvl(pEntity.getPubInstposEdMM(), ""));
-//		pdData.setPubInstposEdDD(StringUtils.nvl(pEntity.getPubInstposEdDD(), ""));
-//		String pd = pData.toChkString();
-//		String pe = pdData.toChkString();
-//		if(pd.equals(pe)) {
-//			return true;
-//		}
-//		return false;
-//	}
-//
-//	private boolean checkSocietyData(HcpSocietyData sData, TRdmHcpSocietyReqEntity sEntity) {
-//		HcpSocietyData sdData = new HcpSocietyData();
-//		sdData.setMedicalSocietyNm(StringUtils.nvl(sEntity.getMedicalSocietyNm(), ""));
-//		sdData.setAdmissionYYYY(StringUtils.nvl(sEntity.getAdmissionYYYY(), ""));
-//		sdData.setAdmissionMM(StringUtils.nvl(sEntity.getAdmissionMM(), ""));
-//		sdData.setAdmissionDD(StringUtils.nvl(sEntity.getAdmissionDD(), ""));
-//		sdData.setQuitYYYY(StringUtils.nvl(sEntity.getQuitYYYY(), ""));
-//		sdData.setQuitMM(StringUtils.nvl(sEntity.getQuitMM(), ""));
-//		sdData.setQuitDD(StringUtils.nvl(sEntity.getQuitDD(), ""));
-//		sdData.setPositionCode(StringUtils.nvl(sEntity.getPositionCode(), ""));
-//		sdData.setSocietyPosiStYYYY(StringUtils.nvl(sEntity.getSocietyPosiStYYYY(), ""));
-//		sdData.setSocietyPosiStMM(StringUtils.nvl(sEntity.getSocietyPosiStMM(), ""));
-//		sdData.setSocietyPosiStDD(StringUtils.nvl(sEntity.getSocietyPosiStDD(), ""));
-//		sdData.setSocietyPosiEdYYYY(StringUtils.nvl(sEntity.getSocietyPosiEdYYYY(), ""));
-//		sdData.setSocietyPosiEdMM(StringUtils.nvl(sEntity.getSocietyPosiEdMM(), ""));
-//		sdData.setSocietyPosiEdDD(StringUtils.nvl(sEntity.getSocietyPosiEdDD(), ""));
-//		sdData.setAdvisingDoctorCd(StringUtils.nvl(sEntity.getAdvisingDoctorCd(), ""));
-//		sdData.setCoachingAcquisiYYYY(StringUtils.nvl(sEntity.getCoachingAcquisiYYYY(), ""));
-//		sdData.setCoachingAcquisiMM(StringUtils.nvl(sEntity.getCoachingAcquisiMM(), ""));
-//		sdData.setCoachingAcquisiDD(StringUtils.nvl(sEntity.getCoachingAcquisiDD(), ""));
-//		sdData.setCoachingStYYYY(StringUtils.nvl(sEntity.getCoachingStYYYY(), ""));
-//		sdData.setCoachingStMM(StringUtils.nvl(sEntity.getCoachingStMM(), ""));
-//		sdData.setCoachingStDD(StringUtils.nvl(sEntity.getCoachingStDD(), ""));
-//		sdData.setCoachingEdYYYY(StringUtils.nvl(sEntity.getCoachingEdYYYY(), ""));
-//		sdData.setCoachingEdMM(StringUtils.nvl(sEntity.getCoachingEdMM(), ""));
-//		sdData.setCoachingEdDD(StringUtils.nvl(sEntity.getCoachingEdDD(), ""));
-//		sdData.setCertifyingPhysicianCd(StringUtils.nvl(sEntity.getCertifyingPhysicianCd(), ""));
-//		sdData.setCertifyStYYYY(StringUtils.nvl(sEntity.getCertifyStYYYY(), ""));
-//		sdData.setCertifyStMM(StringUtils.nvl(sEntity.getCertifyStMM(), ""));
-//		sdData.setCertifyStDD(StringUtils.nvl(sEntity.getCertifyStDD(), ""));
-//		sdData.setCertifyEdYYYY(StringUtils.nvl(sEntity.getCertifyEdYYYY(), ""));
-//		sdData.setCertifyEdMM(StringUtils.nvl(sEntity.getCertifyEdMM(), ""));
-//		sdData.setCertifyEdDD(StringUtils.nvl(sEntity.getCertifyEdDD(), ""));
-//
-//		String sd = sData.toChkString();
-//		String se = sdData.toChkString();
-//		if(sd.equals(se)) {
-//			return true;
-//		}
-//		return false;
-//	}
 
 }

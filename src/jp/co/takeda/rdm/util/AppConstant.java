@@ -2815,8 +2815,14 @@ public interface AppConstant {
     /** 組織,従業員,組織従業員での初期結果 */
     public static final String SESKEY_JKR100C010_SEARCHKEY = "JKR100C010_SEARCHKEY";
 
+    /** 所属学会編集ポップアップでの初期結果 */
+    public static final String SESKEY_NC206_SEARCHKEY = "NC206_SEARCHKEY";
+    /** 公的機関編集ポップアップでの初期結果 */
+    public static final String SESKEY_NC207_SEARCHKEY = "NC207_SEARCHKEY";
     /** 医師新規での初期結果 */
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
+    /** 医師新規確認での初期結果 */
+    public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
     /** 施設新規での初期結果 */
     public static final String SESKEY_NF011_SEARCHKEY = "NF011_SEARCHKEY";
     /** 施設更新での初期結果 */

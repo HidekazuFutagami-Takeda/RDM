@@ -395,4 +395,36 @@ public class DateUtils {
             return false;
         }
     }
+
+    /**
+     * <pre>
+     * 日付大小チェック - 年＋月＋日の文字列が無効日付だとfalse、s1>s2の場合false、s1<=s2の場合true
+     *
+     * 機能：引数で指定された文字列が日付であることをチェックする。
+     * </pre>
+     *
+     * @since 0.0.1
+     * @param s
+     *            :String チェックする文字列
+     * @return boolean 処理結果 true:有効 false:無効
+     */
+    public static boolean compareDate(String s1,String s2) {
+    	if (!isDate(s1) || !isDate(s2)) {
+           return false;
+        }
+    	int si1 = 0;
+    	int si2 = 0;
+
+        try {
+        	si1 = Integer.parseInt(s1);
+        	si2 = Integer.parseInt(s2);
+        	if(si1 > si2) {
+        		return false;
+        	}else {
+        		return true;
+        	}
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

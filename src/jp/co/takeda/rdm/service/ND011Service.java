@@ -1345,63 +1345,63 @@ public class ND011Service extends BaseService {
 			if(StringUtils.isEmpty(indto.getDocType())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "医師／薬剤師区分");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師／薬剤師区分");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	性別
 			if(StringUtils.isEmpty(indto.getSexCd())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "性別");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "性別");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	医師名(漢字)姓
 			if(StringUtils.isEmpty(indto.getDocKanjiSei())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "医師名(漢字)姓");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	医師名(漢字)名
 			if(StringUtils.isEmpty(indto.getDocKanjiMei())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "医師名(漢字)名");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	医師名(半角カナ)姓
 			if(StringUtils.isEmpty(indto.getDocKanaSei())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	医師名(半角カナ)名
 			if(StringUtils.isEmpty(indto.getDocKanaMei())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	勤務先情報．施設
 			if(StringUtils.isEmpty(indto.getSkInsNo())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "勤務先情報．施設");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．施設");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	勤務先情報．所属部科
 			if(StringUtils.isEmpty(indto.getSkDeptCd())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "勤務先情報．所属部科");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．所属部科");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 			//	勤務先情報．役職
 			if(StringUtils.isEmpty(indto.getSkTitleCd())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr.replace("項目名", "勤務先情報．役職");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．役職");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}

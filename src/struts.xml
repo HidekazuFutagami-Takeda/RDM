@@ -91,8 +91,30 @@
             <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
         </action>
         <action name="ND011Register" class="nD011Action" method="register">
-            <result name="ND011">/WEB-INF/pages/JKR030C010.jsp</result>
-            <result name="NC101Init" type="chain">NC101Init</result>
+            <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
+            <result name="ND011Init" type="chain">ND011Init</result>
+            <result name="ND301Init" type="chain">ND301Init</result>
+        </action>
+        <action name="ND301Init" class="nD301Action" method="init">
+            <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
+            <result name="ND301">/WEB-INF/pages/ND301.jsp</result>
+        </action>
+        <action name="ND301Register" class="nD301Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="ND301">/WEB-INF/pages/ND301.jsp</result>
+        </action>
+        <action name="NC206Init" class="nC206Action" method="init">
+            <result name="NC206">/WEB-INF/pages/NC206.jsp</result>
+        </action>
+        <action name="NC206Register" class="nC206Action" method="register">
+            <result name="NC206">/WEB-INF/pages/NC206.jsp</result>
+        </action>
+        <action name="NC207Init" class="nC207Action" method="init">
+            <result name="NC207">/WEB-INF/pages/NC207.jsp</result>
+        </action>
+        <action name="NC207Register" class="nC207Action" method="register">
+            <result name="NC207">/WEB-INF/pages/NC207.jsp</result>
         </action>
         <action name="NF011Init" class="nF011Action" method="init">
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>

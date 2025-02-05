@@ -30,7 +30,7 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.service.CommonControlService;
 import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.JkrConstantsData;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -94,11 +94,11 @@ public class AccessControlHttpHeader implements Filter {
         if(accessToken != null) {
 	        try {
 
-			    FileInputStream fis = new FileInputStream(JkrConstantsData.PEM_FILE_AREA);
+			    FileInputStream fis = new FileInputStream(RdmConstantsData.PEM_FILE_AREA);
 			    BufferedInputStream bis = new BufferedInputStream(fis);
 
 			    // get the public key
-			    CertificateFactory certificateFactory = CertificateFactory.getInstance(JkrConstantsData.TYPE_X509);
+			    CertificateFactory certificateFactory = CertificateFactory.getInstance(RdmConstantsData.TYPE_X509);
 			    Certificate certificate = certificateFactory.generateCertificate(bis);
 			    PublicKey publicKey = certificate.getPublicKey();
 
@@ -116,7 +116,7 @@ public class AccessControlHttpHeader implements Filter {
 				// JWT発行日時 + 10分
 				Calendar calIat = Calendar.getInstance();
 				calIat.setTime(iat);
-				calIat.add(Calendar.MINUTE, JkrConstantsData.TEN_MINUTES);
+				calIat.add(Calendar.MINUTE, RdmConstantsData.TEN_MINUTES);
 
 				// 現在時刻取得
 				Calendar calNow = Calendar.getInstance();
@@ -129,7 +129,7 @@ public class AccessControlHttpHeader implements Filter {
 				}
 
 				// JWT発行者チェック
-				if (!JkrConstantsData.CTSTAKEDA.equals(iss)) {
+				if (!RdmConstantsData.CTSTAKEDA.equals(iss)) {
 		            log.info("ログイン処理＝＝＝＝＝＝Issuerエラー:" + iss);
 		            isLoginError = true;
 				}

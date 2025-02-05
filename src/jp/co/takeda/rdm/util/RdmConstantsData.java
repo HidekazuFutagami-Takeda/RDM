@@ -582,6 +582,11 @@ public class RdmConstantsData {
     public static final String CODE_NAME_DCC = "DCC";
     /**コード情報コード名 : 所属役職 */
     public static final String CODE_NAME_POSITION_CODE = "POSITION_CODE";
+    /**コード情報コード名 : 分類区分 */
+    public static final String CODE_NAME_CLASS_CATEGORY = "CLASS_CATEGORY";
+
+    /**パラメタ情報パラメタ名 : 医師メニュースイッチ */
+    public static final String PARAM_NAME_MN_DOC = "MN_DOC";
 
     /** MDMシステムトップメニューボタン押下 : 戻るためのDTOセッション格納キー */
     public static final String NC001_RETURN_DTO_KEY = "NC001_RETURN_DTO_KEY";
@@ -623,7 +628,7 @@ public class RdmConstantsData {
     public static final String W004 = "W004"; // 必須項目にデータを入力してください。（項目名）
     public static final String W005 = "W005"; // 申請理由がその他の場合、申請コメントを入力してください。
     public static final String W006 = "W006"; // 適用日は営業日を指定してください。
-    public static final String W007 = "W007"; // 適用日は翌営業日以降を指定してくだ項目名さい。
+    public static final String W007 = "W007"; // 適用日は翌営業日以降を指定してください。
     public static final String W008 = "W008"; // 重複する申請が行われています。（項目名）
     public static final String W009 = "W009"; // 最大文字数を超えています。（項目名）
     public static final String W010 = "W010"; // 所属医師、または、申請中の医師が存在します。

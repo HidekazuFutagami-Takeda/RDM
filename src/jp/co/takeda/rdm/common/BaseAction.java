@@ -184,7 +184,6 @@ public abstract class BaseAction<DTO extends BaseDTO> extends ActionSupport
         	screenId = actionStr.substring(0, 5);
         	functionId = actionStr.substring(5);
         }
-
         functionId = functionId.contains(";") ? functionId.substring(0, functionId.indexOf(";")) : functionId;
         log.info("画面ID====" + screenId + ":::::イベントID===" + functionId);
 
@@ -261,15 +260,14 @@ public abstract class BaseAction<DTO extends BaseDTO> extends ActionSupport
 
         // 画面ID、イベントIDの取得
         String actionStr = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/") + 1).replace(".action", "");
-
         //TODO二神
         String screenId = "";
-        if(actionStr.length() < 10) {
-        	screenId = actionStr.substring(0, 5);
-        }else {
+        String sysChk = actionStr.substring(0,1);
+        if(!sysChk.equals("N")) {
         	screenId = actionStr.substring(0, 10);
+        }else {
+        	screenId = actionStr.substring(0, 5);
         }
-
         //遷移先画面ID取得
         ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
         boolean isGettedNextScreen = false;

@@ -549,7 +549,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		return true;
 	}
 
-	const subScreenSize = "left=0, top=0, width=1000, heigth=1600";
 	// 住所候補ボタン
 	function addrPopBtn(){
 		const pCode = document.fm1.insPcode.value;
@@ -576,27 +575,68 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			return false;
 		}
 
+		document.fm1.postCode.value = pCode.replace("-","");
+
 		// NC205_住所候補ポップアップ画面を表示
-		window.open("","addrPopWindow",subScreenSize);
+		window.open("","addrPopWindow",addrSubScreenSize);
 		document.fm1.screenId.value = "NC205";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="addrPopWindow";
 
+		document.fm1.callBack.value="callBackAddrPop";
+
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+	}
+
+	// 住所候補ポップアップから値受け取り
+	function callBackAddrPop(addrNamePref,addrNameCity,addrNameArea,postCode,addrCodePref,addrCodeCity,
+								tkPrefCd,tkCityCd,tkCityName,addrKanaPref,addrKanaCity,addrKanaArea){
+
+		document.fm1.addrCodePrefName.value = addrNamePref;
+		document.fm1.addrCodePref.value = addrCodePref;
+		document.fm1.addrCodeCityName.value = addrNameCity;
+		document.fm1.addrCodeCity.value = addrCodeCity;
+		document.fm1.insAddrDt.value = addrNameArea;
+
+		document.fm1.tkCityName.value = tkCityName;
+		document.fm1.tkCityCd.value = tkCityCd;
+
+		document.fm1.addrCodePrefKana.value = addrKanaPref;
+		document.fm1.addrCodeCityKana.value = addrKanaCity;
+		document.fm1.addrDtKana.value = addrKanaArea;
 	}
 
 	// ULT施設選択ボタン
 	function ultInsPopBtn(){
 		// NC203_施設検索ポップアップ画面を表示
-		window.open("","insPopWindow",subScreenSize);
+		window.open("","insPopWindow",insSubScreenSize);
 		document.fm1.screenId.value = "NC203";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="insPopWindow";
 
+		const pCode = document.fm1.insPcode.value;
+		document.fm1.insPcode.value = "";
+		const pharmType = document.fm1.pharmType.value;
+		document.fm1.pharmType.value = "";
+
+		document.fm1.callBack.value = "callBackUltInsPop";
+
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+
+		document.fm1.insPcode.value = pCode;
+		document.fm1.pharmType.value = pharmType;
 	}
+
+	// 施設ポップアップからULT施設受け取り
+    function callBackUltInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+
+    	document.fm1.ultInsCd.value = dcfShisetsuCd;
+    	document.fm1.shisetsuNmRyaku.value = shisetsuNmRyaku;
+    	document.fm1.shisetsuNm.value = shisetsuNm;
+
+    }
 
 	// 戻るボタン
 	function backBtn(){
@@ -840,6 +880,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="showDocChgFlg"/>
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
+
+	<s:hidden name="postCode"/>
+	<s:hidden name="callBack"/>
 
 	<s:hidden name="insNo"/>
 	<s:hidden name="insClass"/>
@@ -1615,7 +1658,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--住所詳細--%>
         <s:hidden name="insAddr"/>
         <s:hidden name="insAddrKana"/>
-        <%--TODO valueを子画面から取得する --%>
         <s:hidden name="addrCodePrefKana" />
         <s:hidden name="addrCodeCityKana" />
         <s:hidden name="addrDtKana" />
@@ -1651,6 +1693,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:textfield name="addrCodePrefName" id="addrCodePrefName" size="20" style="background-color:#D4D0C8" readonly="true" />
+                <s:hidden name="addrCodePref" id="addrCodePref"/>
             </nobr>
 		</td>
 	</tr>
@@ -1660,6 +1703,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:textfield name="addrCodeCityName" id="addrCodeCityName" size="20" style="background-color:#D4D0C8" readonly="true" />
+                <s:hidden name="addrCodeCity" id="addrCodeCity"/>
             </nobr>
 		</td>
 	</tr>
@@ -1683,6 +1727,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:textfield name="tkCityName" id="tkCityName" size="20" style="background-color:#D4D0C8" readonly="true" />
+                <s:hidden name="tkCityCd" id="tkCityCd"/>
             </nobr>
 		</td>
 	</tr>

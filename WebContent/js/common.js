@@ -4,7 +4,7 @@
  * </pre>
  * @since 1.0
  * @version $Revision: 1.4 $
- * @author 
+ * @author
  */
 //値チェック用
 var COM_CHECK_NULL = "1";
@@ -70,6 +70,13 @@ var COM_FUNC_REFER		= "Refer";
 var COM_FUNC_CONFIRM	= "Confirm";
 var COM_FUNC_SEND	  = "Send";
 var COM_FUNC_DOWNLOAD	= "DownLoad";
+
+/**
+ * ポップアップ画面サイズ
+ */
+var insSubScreenSize = "left=0, top=0, width=1100, height=800";
+var addrSubScreenSize = "left=0, top=0, width=450, height=500";
+var tantoSubScreenSize = "left=0, top=0, width=600, height=600";
 
 /**
  * リンク情報
@@ -3170,10 +3177,10 @@ function comPopupDeleteRow(fmObj,dpObj,ckObj,startRow){
  * @return boolean true:成功
  * </pre>
  */
-function comPopupDeleteRowForSafari(fmObj,dpObj,ckObj){	
+function comPopupDeleteRowForSafari(fmObj,dpObj,ckObj){
   if(ckObj.length){
     for(var i = fmObj.rows.length-1 ; i > 0 ; i--){
-      
+
       if(ckObj[i-1].checked){
         comDebug("配列 行を削除します。i=[" + i + "]");
         fmObj.deleteRow(i);
@@ -3396,7 +3403,7 @@ function comSubmit(exe_form){
   return false;
   }
   COM_Click_flg = false;
-  
+
   //modify start T.Oonisi J11-0010:TS依頼書システム(開発以降) 添付ファイルJSエラー回避
   try{
     exe_form.submit();
@@ -3425,7 +3432,7 @@ function comSubmitForAnyWarp(exe_form){
     return false;
   }
   COM_Click_flg = false;
-  
+
   try{
     exe_form.action = exe_form.screenId.value + exe_form.functionId.value + ".action"
     exe_form.submit();
@@ -3932,21 +3939,21 @@ function comNextScreen(fmSubmit, screenId, functionId) {
 //alert("screenId = " + screenId);
 //alert("functionId = " + functionId);
   if (
-       (screenId == "BookMark"     && functionId == "RegisterInit") 
-    || (screenId == "BookMark"     && functionId == "Erase") 
-    || (screenId == "KeepDocument" && functionId == "View") 
+       (screenId == "BookMark"     && functionId == "RegisterInit")
+    || (screenId == "BookMark"     && functionId == "Erase")
+    || (screenId == "KeepDocument" && functionId == "View")
   ){
 
 /* J11-0013 modify start 2011/04/05 K.Adachi */
 //		fmSubmit.action=getNewServerActionUrl();
-    
+
     //アクセス端末をチェック
     if ((!comIsIPhoneClient()) && (!comIsIPadClient)) {
       // 「iPhone」「iPad」以外の場合
-      
+
       // 遷移先Actionを変更
       fmSubmit.action = getNewServerActionUrl();
-      
+
     }
 
 /* J11-0013 modify end 2011/04/05 K.Adachi */
@@ -4344,7 +4351,7 @@ function comCastKana(str){
 
 /**
  * 『iPhone』端末か評価します。.
- * 
+ *
  * @param なし
  * @return [true：iPhone端末, false：iPhone端末以外]
  */
@@ -4354,7 +4361,7 @@ function comIsIPhoneClient() {
 
 /**
  * 『iPad』端末か評価します。.
- * 
+ *
  * @param なし
  * @return [true：iPad端末, false：iPad端末以外]
  */
@@ -4364,14 +4371,14 @@ function comIsIPadClient(){
 
 /**
  * ユーザーエージェント情報の存在チェックを行います。.
- * 
+ *
  * @param userAgentName ユーザーエージェント名
  * @return [true：存在する, false：存在しない]
  */
 function comIsExistUserAgent(userAgentName){
-  
+
   var navi = navigator.userAgent;
-  
+
   if (navi.indexOf(userAgentName) >= 0) {
     return true;
   } else {

@@ -924,17 +924,18 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		}
     }
 
-    const subScreenSize = "left=0, top=0, width=1000, heigth=1600";
     // 親施設選択ボタン
     function mainInsPopBtn(){
 		// NC203_施設検索ポップアップ画面を表示
-		window.open("","insPopWindow",subScreenSize);
+		window.open("","insPopWindow",insSubScreenSize);
 		document.fm1.screenId.value = "NC203";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="insPopWindow";
 
 		const pCode = document.fm1.insPcode.value;
 		document.fm1.insPcode.value = "";
+		const pharmType = document.fm1.pharmType.value;
+		document.fm1.pharmType.value = "";
 
 		if(document.fm1.insType.value == "02" || document.fm1.insType.value == "05") {
 			document.fm1.kensakuInsSbt.value = "10";
@@ -949,6 +950,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		comClickFlgInit();
 
 		document.fm1.insPcode.value = pCode;
+		document.fm1.pharmType.value = pharmType;
     }
 
 	// 施設ポップアップから親施設受け取り
@@ -1002,7 +1004,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.postCode.value = pCode.replace("-","");
 
 		// NC205_住所候補ポップアップ画面を表示
-		window.open("","addrPopWindow",subScreenSize);
+		window.open("","addrPopWindow",addrSubScreenSize);
 		document.fm1.screenId.value = "NC205";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="addrPopWindow";
@@ -1034,7 +1036,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	// 担当者検索ボタン
     function trtPopBtn(){
 		// NC202_担当者検索ポップアップ画面を表示
-    	window.open("","tantoPopWindow",subScreenSize);
+    	window.open("","tantoPopWindow",tantoSubScreenSize);
 		document.fm1.screenId.value = "NC202";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="tantoPopWindow";

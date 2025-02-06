@@ -113,7 +113,7 @@ public class NF311Action extends BaseAction<NF311DTO> {
         dto.setPageCntCur(1);
 
         // 画面タイトル制御処理
-        String title = "NF311_施設情報更新 - 申請内容確認";
+        String title = "NF311_施設紐付け新規 - 申請内容確認";
         dto.setTitle(title);
 
         String preScreenId = loginInfo.getPreScreenId();
@@ -199,6 +199,9 @@ public class NF311Action extends BaseAction<NF311DTO> {
     protected void apprRejSetup() throws Exception {
         // START UOC
         dto.setMsgId(null);
+        // 画面タイトル制御処理
+        String title = "NF311_施設紐付け新規 - 申請内容確認";
+        dto.setTitle(title);
         // END UOC
     }
 

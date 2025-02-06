@@ -48,6 +48,23 @@
         AND HCO.HIN_G_CD = #{hinGCd}
         <if test="reqId != null">AND HCO.REQ_ID <![CDATA[<>]]> #{reqId}</if>
     </select>
+    <select id="selectNF212TrtChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity" resultMap="tRdmHcoLnkReqResultMap">
+		SELECT
+		  HCO.REQ_ID  -- 領域品目グループ別親子_申請管理.申請ID
+		FROM
+		T_RDM_HCO_LNK_REQ HCO --- 領域品目グループ別親子_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		AND KNR.REQ_TYPE IN ('11', '12', '13')
+		AND KNR.REQ_STS IN ('03','13','04','14')
+		WHERE 1=1
+        AND HCO.INS_NO = #{insNo}
+        AND HCO.TRT_CD = #{trtCd}
+        AND HCO.HIN_G_CD = #{hinGCd}
+        <if test="reqId != null">AND HCO.REQ_ID <![CDATA[<>]]> #{reqId}</if>
+    </select>
     <update id="updateNF211Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkNxtReqEntity">
         UPDATE
             T_RDM_HCO_LNK_REQ

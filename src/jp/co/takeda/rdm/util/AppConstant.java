@@ -2833,8 +2833,10 @@ public interface AppConstant {
     public static final String SESKEY_NF301_SEARCHKEY = "NF301_SEARCHKEY";
     /** 施設更新 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF303_SEARCHKEY = "NF303_SEARCHKEY";
-    /** 施設紐付け更新 - 申請内容確認での初期結果 */
+    /** 施設紐付け新規 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF311_SEARCHKEY = "NF311_SEARCHKEY";
+    /** 施設紐付け変更 - 申請内容確認での初期結果 */
+    public static final String SESKEY_NF313_SEARCHKEY = "NF313_SEARCHKEY";
 
     public static final String SESKEY_NC202_SEARCHKEY = "NC202_SEARCHKEY";
     public static final String SESKEY_NC203_SEARCHKEY = "NC203_SEARCHKEY";

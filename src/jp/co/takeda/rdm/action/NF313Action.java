@@ -18,17 +18,17 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.NF301DTO;
-import jp.co.takeda.rdm.service.NF301Service;
+import jp.co.takeda.rdm.dto.NF313DTO;
+import jp.co.takeda.rdm.service.NF313Service;
 import jp.co.takeda.rdm.util.AppConstant;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nF301Action")
+@Named("nF313Action")
 @Scope("request")
-public class NF301Action extends BaseAction<NF301DTO> {
+public class NF313Action extends BaseAction<NF313DTO> {
 
     /**
      * シリアルバージョンID
@@ -41,7 +41,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
      * @generated
      */
     @Inject
-    private NF301Service nF301Service;
+    private NF313Service nF313Service;
     // START UOC
     // END UOC
 
@@ -49,8 +49,8 @@ public class NF301Action extends BaseAction<NF301DTO> {
      * コンストラクタ
      * @generated
      */
-    public NF301Action() {
-        dto = new NF301DTO();
+    public NF313Action() {
+        dto = new NF313DTO();
     }
 
     /**
@@ -97,7 +97,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nF301Service.init(dto);
+        BaseDTO outdto = nF313Service.init(dto);
         return initNext(outdto);
     }
 
@@ -113,8 +113,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
         dto.setPageCntCur(1);
 
         // 画面タイトル制御処理
-        String title = "NF301_施設新規作成 - 申請内容確認";
-
+        String title = "NF313_施設紐付け変更 - 申請内容確認";
         dto.setTitle(title);
 
         String preScreenId = loginInfo.getPreScreenId();
@@ -132,7 +131,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NF301_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_NF313_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -145,7 +144,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
     public String register() throws Exception {
     	registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nF301Service.register(dto);
+        BaseDTO outdto = nF313Service.register(dto);
         return registerNext(outdto);
     }
 
@@ -159,11 +158,6 @@ public class NF301Action extends BaseAction<NF301DTO> {
 
     	//改ページ設定
         dto.setPageCntCur(1);
-
-        // 画面タイトル制御処理
-//        String title = "NF301_施設新規作成 - 申請内容確認";
-
-//        dto.setTitle(title);
 
         String preScreenId = loginInfo.getPreScreenId();
         dto.setPreScreenId(preScreenId);
@@ -180,7 +174,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NF301_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_NF313_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -194,7 +188,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
     public String apprRej() throws Exception {
         apprRejSetup();
         // F層呼び出し
-        BaseDTO outdto = nF301Service.apprRej(dto);
+        BaseDTO outdto = nF313Service.apprRej(dto);
         return apprRejNext(outdto);
     }
 
@@ -206,7 +200,7 @@ public class NF301Action extends BaseAction<NF301DTO> {
         // START UOC
         dto.setMsgId(null);
         // 画面タイトル制御処理
-        String title = "NF301_施設新規作成 - 申請内容確認";
+        String title = "NF313_施設紐付け変更 - 申請内容確認";
         dto.setTitle(title);
         // END UOC
     }

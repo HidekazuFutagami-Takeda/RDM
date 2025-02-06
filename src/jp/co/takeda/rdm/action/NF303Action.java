@@ -199,6 +199,9 @@ public class NF303Action extends BaseAction<NF303DTO> {
     protected void apprRejSetup() throws Exception {
         // START UOC
         dto.setMsgId(null);
+        // 画面タイトル制御処理
+        String title = "NF303_施設情報更新 - 申請内容確認";
+        dto.setTitle(title);
         // END UOC
     }
 

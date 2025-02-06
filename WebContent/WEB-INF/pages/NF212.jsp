@@ -76,17 +76,38 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	document.fm1.mainInsSbt.value='';
     }
 
-    const subScreenSize = "left=0, top=0, width=1000, heigth=1600";
     // 親施設選択ボタン
     function mainInsPopBtn(){
 		// NC203_施設検索ポップアップ画面を表示
-		window.open("","insPopWindow",subScreenSize);
+		window.open("","insPopWindow",insSubScreenSize);
 		document.fm1.screenId.value = "NC203";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="insPopWindow";
 
+		if(document.fm1.insSbt.value == "02" || document.fm1.insSbt.value == "05") {
+			document.fm1.kensakuInsSbt.value = "10";
+		} else {
+			document.fm1.kensakuInsSbt.value = "";
+		}
+
+		document.fm1.koshisetsuCheck.value = "1";
+		document.fm1.callBack.value = "callBackMainInsPop";
+
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+    }
+
+	// 施設ポップアップから親施設受け取り
+    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+
+    	document.fm1.mainInsCd.value = insNo;
+    	document.fm1.mainInsNm.value = insAbbrName;
+    	document.fm1.mainInsAddr.value = insAddr;
+
+    	// TODO 子画面から取得
+    	document.fm1.insTanto.value = "";
+    	document.fm1.mainInsSbt.value = "";
+
     }
 
 	// 戻るボタン
@@ -298,7 +319,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
+	<s:hidden name="koshisetsuCheck"/>
+	<s:hidden name="kensakuInsSbt"/>
 	<s:hidden name="insSbt"/>
+	<s:hidden name="callBack"/>
 	<s:hidden name="editApprFlg"/>
 
     <%-- トップメニューからの共通パラメータ --%>
@@ -359,6 +383,25 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <s:hidden name="topChangedSosNm2" />
   <s:hidden name="topChangedSosCd3" />
   <s:hidden name="topChangedSosNm3" />
+
+  <s:hidden name="title" />
+
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設紐付け変更"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+    <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
 
 	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
 		<tbody>
@@ -514,6 +557,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
       	<s:hidden name="trtCd"/>
 		<s:hidden name="hinGCd"/>
+		<s:hidden name="trtPrdGrpNm"/>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>領域・品目グループ</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
@@ -565,7 +609,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
+				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" />
                 <a class="comMiniLink" href="JavaScript:clearMainIns();">Clear</a>
 			</s:if>
 			<s:else>
@@ -724,9 +768,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	  </tr>
   </table>
 <%-- SUBMIT用パラメータ 終了 --%>
-
-            </s:form>
+	</td>
+	</tr>
+    </tbody>
+    </table>
+<%-- ポータルボディー 終了 --%>
+    </s:form>
   </table>
+
   <jsp:include page="common/jkrBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />

@@ -290,6 +290,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <s:hidden name="topChangedSosCd3" />
   <s:hidden name="topChangedSosNm3" />
 
+  <s:hidden name="title" />
+
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>

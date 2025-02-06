@@ -216,5 +216,18 @@
         	<result name="NF211">/WEB-INF/pages/NF211.jsp</result>
         	<result name="NF311">/WEB-INF/pages/NF311.jsp</result>
         </action>
+        <action name="NF313Init" class="nF313Action" method="init">
+            <result name="NF212">/WEB-INF/pages/NF212.jsp</result>
+            <result name="NF313">/WEB-INF/pages/NF313.jsp</result>
+        </action>
+        <action name="NF313Register" class="nF313Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NF313">/WEB-INF/pages/NF313.jsp</result>
+        </action>
+        <action name="NF313ApprRej" class="nF313Action" method="apprRej">
+        	<result name="NF212">/WEB-INF/pages/NF212.jsp</result>
+        	<result name="NF313">/WEB-INF/pages/NF313.jsp</result>
+        </action>
     </package>
 </struts>

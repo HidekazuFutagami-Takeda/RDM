@@ -86,17 +86,38 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	document.fm1.mainInsSbt.value='';
     }
 
-    const subScreenSize = "left=0, top=0, width=1000, heigth=1600";
     // 親施設選択ボタン
     function mainInsPopBtn(){
 		// NC203_施設検索ポップアップ画面を表示
-		window.open("","insPopWindow",subScreenSize);
+		window.open("","insPopWindow",insSubScreenSize);
 		document.fm1.screenId.value = "NC203";
 		document.fm1.functionId.value="Init";
 		document.fm1.target="insPopWindow";
 
+		if(document.fm1.insSbt.value == "02" || document.fm1.insSbt.value == "05") {
+			document.fm1.kensakuInsSbt.value = "10";
+		} else {
+			document.fm1.kensakuInsSbt.value = "";
+		}
+
+		document.fm1.koshisetsuCheck.value = "1";
+		document.fm1.callBack.value = "callBackMainInsPop";
+
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+    }
+
+	// 施設ポップアップから親施設受け取り
+    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+
+    	document.fm1.mainInsCd.value = insNo;
+    	document.fm1.mainInsNm.value = insAbbrName;
+    	document.fm1.mainInsAddr.value = insAddr;
+
+    	// TODO 子画面から取得
+    	document.fm1.insTanto.value = "";
+    	document.fm1.mainInsSbt.value = "";
+
     }
 
 	// 戻るボタン
@@ -309,7 +330,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
+	<s:hidden name="koshisetsuCheck"/>
+	<s:hidden name="kensakuInsSbt"/>
 	<s:hidden name="insSbt"/>
+	<s:hidden name="callBack"/>
 	<s:hidden name="editApprFlg"/>
 
     <%-- トップメニューからの共通パラメータ --%>

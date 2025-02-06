@@ -1418,6 +1418,23 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <s:hidden name="koshisetsuCheck" />
   <s:hidden name="callBack" />
 
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+    <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
 	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
 		<tbody>
 		<s:if test="msgStr != null">
@@ -2151,9 +2168,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	  </tr>
   </table>
 <%-- SUBMIT用パラメータ 終了 --%>
+</td>
+</tr>
+</tbody>
+</table>
+<%-- ポータルボディー 終了 --%>
+</s:form>
+</table>
 
-            </s:form>
-  </table>
   <jsp:include page="common/jkrBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />

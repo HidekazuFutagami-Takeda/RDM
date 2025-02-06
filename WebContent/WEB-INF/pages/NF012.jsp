@@ -1281,7 +1281,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設情報更新"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>

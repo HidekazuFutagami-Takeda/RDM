@@ -122,7 +122,7 @@ function returnButtonGo(action){
 <%-- submit用フォーム 終了 --%>
 
   <%-- バナー部分をインクルード 開始 --%>
-  <jsp:include page="common/jkrTopMenu.jsp" flush="true" />
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
   <%-- バナー部分をインクルード 終了 --%>
 
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
@@ -135,7 +135,7 @@ function returnButtonGo(action){
       <s:hidden name="NC101Finish" value="1" />
       <table class="comPortalTitle">
         <tr>
-          <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt='<s:property value="title"/>'></td>
+          <td class="comPortalTitleIcon"></td>
           <td class="comPortalTitle"><nobr><s:property value="title"/></nobr></td>
           <td class="comPortalTitleRight"><nobr></nobr></td>
         </tr>
@@ -219,7 +219,7 @@ function returnButtonGo(action){
   </tr>
 </table>
 <%-- ボトム部分をインクルード 開始 --%>
-<%--   <jsp:include page="common/jkrBottom.jsp" flush="true" /> --%>
+   <jsp:include page="common/jkrBottom.jsp" flush="true" />
 <%-- ボトム部分をインクルード 終了 --%>
 </body>
 </html>

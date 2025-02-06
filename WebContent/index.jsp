@@ -18,7 +18,7 @@
 	}
 </script>
 <!-- 20200527 HPI Kubota UNIXTIME処理 ADD END -->
-<title>担当変更システム</title>
+<title>RDMシステム</title>
 <s:head />
 </head>
 <body>
@@ -27,7 +27,7 @@
         <hr />
     </div>
     <div class="title">
-        担当変更システム&nbsp;&nbsp;&nbsp;ログイン index.jsp
+        RDMシステム&nbsp;&nbsp;&nbsp;ログイン index.jsp
         <hr />
     </div>
     <br />
@@ -55,49 +55,11 @@
                 	<td>：</td>
                     <td><s:textfield name="username" cssErrorStyle="background-color:red"  value="CTSTAKEDA"/></td>
                 </tr>
-                <!-- 20200522 HPI Kubota ログイン項目追加 ADD END-->
-                <tr>
-                    <td>権限セット選択</td>
-                    <td>：</td>
-                    <td>
-                      <input type="radio" name="jokenType" value="0" id="jokenType0" onclick="document.fm1.code.value = 'c198267';"><label for="jokenType0">営業所権限（複数なし）</label>
-                    </td>
-                </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td>
-                      <input type="radio" name="jokenType" value="1" id="jokenType1" onclick="document.fm1.code.value = 'c873041';"><label for="jokenType1">営業所権限（複数あり）</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <input type="radio" name="jokenType" value="2" id="jokenType2" onclick="document.fm1.code.value = 'c283054';"><label for="jokenType2">支店権限</label>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <input type="radio" name="jokenType" value="5" id="jokenType5" onclick="document.fm1.code.value = 'c911117';" checked><label for="jokenType5">本部権限(JKN0162)</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <input type="radio" name="jokenType" value="3" id="jokenType3" onclick="document.fm1.code.value = 'c883003';" checked><label for="jokenType3">本部権限(JKN0163)</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <input type="radio" name="jokenType" value="4" id="jokenType4" onclick="document.fm1.code.value = 'c281106';"><label for="jokenType4">ワクチンG</label>
+                      <input type="radio" name="jokenType" value="3" id="jokenType3" onclick="document.fm1.code.value = 'c883003';" checked><label for="jokenType3">c883003本部権限(JKN0163)</label>
                     </td>
                 </tr>
             </table>

@@ -610,83 +610,86 @@ public class NF212Service extends BaseService {
         	dao.update(tRdmReqKnrUpdData);
         }
 
-        // 武田紐親子_来期用_申請管理
-        TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqEntity = new TRdmHcoLnkNxtReqEntity();
-        tRdmHcoLnkNxtReqEntity.setReqId(reqId);
-        TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqData = dao.selectByPK(tRdmHcoLnkNxtReqEntity);
+        if("0".equals(indto.getTkdTrtKbn())) {
+	        // 武田紐親子_来期用_申請管理
+	        TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqEntity = new TRdmHcoLnkNxtReqEntity();
+	        tRdmHcoLnkNxtReqEntity.setReqId(reqId);
+	        TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqData = dao.selectByPK(tRdmHcoLnkNxtReqEntity);
 
-        if(tRdmHcoLnkNxtReqData == null) {
-        	// 新規登録
-        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqInsData = new TRdmHcoLnkNxtReqEntity();
-        	tRdmHcoLnkNxtReqInsData.setReqId(reqId);
-        	tRdmHcoLnkNxtReqInsData.setTrtCd("00");
-        	tRdmHcoLnkNxtReqInsData.setInsNo(indto.getInsNo());
-        	tRdmHcoLnkNxtReqInsData.setMainInsNoBf(indto.getPreMainInsCd());
-        	tRdmHcoLnkNxtReqInsData.setMainInsFlgBf("0");
-        	tRdmHcoLnkNxtReqInsData.setInsSbtBf(indto.getPreMainInsSbt());
-        	tRdmHcoLnkNxtReqInsData.setMainInsNoAf(indto.getMainInsCd());
-        	tRdmHcoLnkNxtReqInsData.setMainInsFlgAf("0");
-        	tRdmHcoLnkNxtReqInsData.setInsSbtAf(indto.getMainInsSbt());
-        	tRdmHcoLnkNxtReqInsData.setInsShaYmd(sysDate);
-        	tRdmHcoLnkNxtReqInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmHcoLnkNxtReqInsData.setUpdShaYmd(sysDate);
-        	tRdmHcoLnkNxtReqInsData.setUpdShaId(indto.getLoginJgiNo());
+	        if(tRdmHcoLnkNxtReqData == null) {
+	        	// 新規登録
+	        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqInsData = new TRdmHcoLnkNxtReqEntity();
+	        	tRdmHcoLnkNxtReqInsData.setReqId(reqId);
+	        	tRdmHcoLnkNxtReqInsData.setTrtCd("00");
+	        	tRdmHcoLnkNxtReqInsData.setInsNo(indto.getInsNo());
+	        	tRdmHcoLnkNxtReqInsData.setMainInsNoBf(indto.getPreMainInsCd());
+	        	tRdmHcoLnkNxtReqInsData.setMainInsFlgBf("0");
+	        	tRdmHcoLnkNxtReqInsData.setInsSbtBf(indto.getPreMainInsSbt());
+	        	tRdmHcoLnkNxtReqInsData.setMainInsNoAf(indto.getMainInsCd());
+	        	tRdmHcoLnkNxtReqInsData.setMainInsFlgAf("0");
+	        	tRdmHcoLnkNxtReqInsData.setInsSbtAf(indto.getMainInsSbt());
+	        	tRdmHcoLnkNxtReqInsData.setInsShaYmd(sysDate);
+	        	tRdmHcoLnkNxtReqInsData.setInsShaId(indto.getLoginJgiNo());
+	        	tRdmHcoLnkNxtReqInsData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkNxtReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
-        	dao.insertByValue(tRdmHcoLnkNxtReqInsData);
+	        	dao.insertByValue(tRdmHcoLnkNxtReqInsData);
 
-        } else {
-        	// 更新
-        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqUpdData = new TRdmHcoLnkNxtReqEntity("updateNF211Data");
-        	tRdmHcoLnkNxtReqUpdData.setReqId(reqId);
-        	tRdmHcoLnkNxtReqUpdData.setMainInsNoAf(indto.getMainInsCd());
-        	tRdmHcoLnkNxtReqUpdData.setInsSbtAf(indto.getMainInsSbt());
-        	tRdmHcoLnkNxtReqUpdData.setUpdShaYmd(sysDate);
-        	tRdmHcoLnkNxtReqUpdData.setUpdShaId(indto.getLoginJgiNo());
+	        } else {
+	        	// 更新
+	        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqUpdData = new TRdmHcoLnkNxtReqEntity("updateNF211Data");
+	        	tRdmHcoLnkNxtReqUpdData.setReqId(reqId);
+	        	tRdmHcoLnkNxtReqUpdData.setMainInsNoAf(indto.getMainInsCd());
+	        	tRdmHcoLnkNxtReqUpdData.setInsSbtAf(indto.getMainInsSbt());
+	        	tRdmHcoLnkNxtReqUpdData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkNxtReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
-        	dao.update(tRdmHcoLnkNxtReqUpdData);
-        }
-
-        // 領域品目グループ別親子_申請管理
-        TRdmHcoLnkReqEntity tRdmHcoLnkReqEntity = new TRdmHcoLnkReqEntity();
-        tRdmHcoLnkReqEntity.setReqId(reqId);
-        TRdmHcoLnkReqEntity tRdmHcoLnkReqData = dao.selectByPK(tRdmHcoLnkReqEntity);
-
-        if(tRdmHcoLnkReqData == null) {
-        	// 新規登録
-        	TRdmHcoLnkReqEntity tRdmHcoLnkReqInsData = new TRdmHcoLnkReqEntity();
-        	tRdmHcoLnkReqInsData.setReqId(reqId);
-
-    		tRdmHcoLnkReqInsData.setTrtCd(indto.getTrtCd());
-    		tRdmHcoLnkReqInsData.setHinGCd(indto.getHinGCd());
-
-        	tRdmHcoLnkReqInsData.setInsNo(indto.getInsNo());
-        	tRdmHcoLnkReqInsData.setMainInsNoBf(indto.getPreMainInsCd());
-        	tRdmHcoLnkReqInsData.setMainInsFlgBf("0");
-        	tRdmHcoLnkReqInsData.setInsSbtBf(indto.getPreMainInsSbt());
-        	tRdmHcoLnkReqInsData.setMainInsNoAf(indto.getMainInsCd());
-        	tRdmHcoLnkReqInsData.setMainInsFlgAf("0");
-        	tRdmHcoLnkReqInsData.setInsSbtAf(indto.getMainInsSbt());
-        	tRdmHcoLnkReqInsData.setInsShaYmd(sysDate);
-        	tRdmHcoLnkReqInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmHcoLnkReqInsData.setUpdShaYmd(sysDate);
-        	tRdmHcoLnkReqInsData.setUpdShaId(indto.getLoginJgiNo());
-
-        	dao.insertByValue(tRdmHcoLnkReqInsData);
+	        	dao.update(tRdmHcoLnkNxtReqUpdData);
+	        }
 
         } else {
-        	// 更新
-        	TRdmHcoLnkReqEntity tRdmHcoLnkReqUpdData = new TRdmHcoLnkReqEntity("updateNF211Data");
-        	tRdmHcoLnkReqUpdData.setReqId(reqId);
+	        // 領域品目グループ別親子_申請管理
+	        TRdmHcoLnkReqEntity tRdmHcoLnkReqEntity = new TRdmHcoLnkReqEntity();
+	        tRdmHcoLnkReqEntity.setReqId(reqId);
+	        TRdmHcoLnkReqEntity tRdmHcoLnkReqData = dao.selectByPK(tRdmHcoLnkReqEntity);
 
-        	tRdmHcoLnkReqUpdData.setTrtCd(indto.getTrtCd());
-    		tRdmHcoLnkReqUpdData.setHinGCd(indto.getHinGCd());
+	        if(tRdmHcoLnkReqData == null) {
+	        	// 新規登録
+	        	TRdmHcoLnkReqEntity tRdmHcoLnkReqInsData = new TRdmHcoLnkReqEntity();
+	        	tRdmHcoLnkReqInsData.setReqId(reqId);
 
-        	tRdmHcoLnkReqUpdData.setMainInsNoAf(indto.getMainInsCd());
-        	tRdmHcoLnkReqUpdData.setInsSbtAf(indto.getMainInsSbt());
-        	tRdmHcoLnkReqUpdData.setUpdShaYmd(sysDate);
-        	tRdmHcoLnkReqUpdData.setUpdShaId(indto.getLoginJgiNo());
+	    		tRdmHcoLnkReqInsData.setTrtCd(indto.getTrtCd());
+	    		tRdmHcoLnkReqInsData.setHinGCd(indto.getHinGCd());
 
-        	dao.update(tRdmHcoLnkReqUpdData);
+	        	tRdmHcoLnkReqInsData.setInsNo(indto.getInsNo());
+	        	tRdmHcoLnkReqInsData.setMainInsNoBf(indto.getPreMainInsCd());
+	        	tRdmHcoLnkReqInsData.setMainInsFlgBf("0");
+	        	tRdmHcoLnkReqInsData.setInsSbtBf(indto.getPreMainInsSbt());
+	        	tRdmHcoLnkReqInsData.setMainInsNoAf(indto.getMainInsCd());
+	        	tRdmHcoLnkReqInsData.setMainInsFlgAf("0");
+	        	tRdmHcoLnkReqInsData.setInsSbtAf(indto.getMainInsSbt());
+	        	tRdmHcoLnkReqInsData.setInsShaYmd(sysDate);
+	        	tRdmHcoLnkReqInsData.setInsShaId(indto.getLoginJgiNo());
+	        	tRdmHcoLnkReqInsData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkReqInsData.setUpdShaId(indto.getLoginJgiNo());
+
+	        	dao.insertByValue(tRdmHcoLnkReqInsData);
+
+	        } else {
+	        	// 更新
+	        	TRdmHcoLnkReqEntity tRdmHcoLnkReqUpdData = new TRdmHcoLnkReqEntity("updateNF211Data");
+	        	tRdmHcoLnkReqUpdData.setReqId(reqId);
+
+	        	tRdmHcoLnkReqUpdData.setTrtCd(indto.getTrtCd());
+	    		tRdmHcoLnkReqUpdData.setHinGCd(indto.getHinGCd());
+
+	        	tRdmHcoLnkReqUpdData.setMainInsNoAf(indto.getMainInsCd());
+	        	tRdmHcoLnkReqUpdData.setInsSbtAf(indto.getMainInsSbt());
+	        	tRdmHcoLnkReqUpdData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkReqUpdData.setUpdShaId(indto.getLoginJgiNo());
+
+	        	dao.update(tRdmHcoLnkReqUpdData);
+	        }
         }
 
     	indto.setReqId(reqId);

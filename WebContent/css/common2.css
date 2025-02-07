@@ -695,6 +695,162 @@ TD.comFormTableItem#green		{ text-align : center; color : #006600; }
 TD.comFormTableItem#yellow		{ text-align : center; color : #999933; }
 TD.comFormTableItem#orange		{ text-align : center; color : #ff6600; }
 
+TD.comFormTableItemNf212Head				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 1px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemNf212Left				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 0px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemNf212Right				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 1px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemNf212Foot1				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 0px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemNf212Foot2				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 0px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemNf212Foot3				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemBlueNf212Head				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #D7EEFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 1px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemBlueNf212Left				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #D7EEFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 0px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemBlueNf212Right				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #D7EEFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 1px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemBlueNf212Foot1				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #D7EEFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 0px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemBlueNf212Foot2				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #D7EEFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 0px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comFormTableItemBlueNf212Foot3				/* NF212 テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #D7EEFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
 TD.comFormTableItemBlue				/* テーブル形式の各項目 青背景 */
 {
   color : #000000;

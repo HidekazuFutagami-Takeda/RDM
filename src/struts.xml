@@ -128,7 +128,6 @@
         <action name="NF011Cancel" class="nF011Action" method="cancel">
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
-            <result name="JKR000C010">/WEB-INF/pages/JKR000C010.jsp</result>
         </action>
         <action name="NF011Register" class="nF011Action" method="register">
         	<result name="NF011">/WEB-INF/pages/NF011.jsp</result>

@@ -279,7 +279,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
-<table id="formTable" border="0" <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> align="center" style="width:98%;">
+<table id="formTable" border="0" class="comPortalTable" align="center" style="width:98%;">
   <tr>
     <td>
       <s:form name="fm1" theme="simple">
@@ -398,7 +398,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     </table>
 <%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
-    <table class="comPortalBody">
+    <table class="comPortalBody" <s:if test='tkdTrtKbn == "0"'>style="background-color: #D7EEFF;"</s:if>>
     <tbody>
       <tr>
         <td>
@@ -592,8 +592,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colspan=2 style="text-align:center"><nobr>変更前</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colspan=2 style="text-align:center"><nobr>変更後</nobr></td>
+        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Head"</s:if><s:else>class="comFormTableItemNf212Head"</s:else> colspan=2 style="text-align:center"><nobr>変更前</nobr></td>
+        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Head"</s:if><s:else>class="comFormTableItemNf212Head"</s:else> colspan=2 style="text-align:center"><nobr>変更後</nobr></td>
       </tr>
       <tr>
       	<s:hidden name="preMainInsCd"/>
@@ -603,13 +603,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       	<s:hidden name="preMainInsSbt"/>
       	<s:hidden name="mainInsSbt"/>
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="preMainInsCd" /></nobr></td>
+        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Left"</s:if><s:else>class="comFormTableItemNf212Left"</s:else>><nobr>親施設</nobr></td>
+        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Right"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><nobr><s:label key="preMainInsCd" /></nobr></td>
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設<font color="red" size="3">*</font></nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
+        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Right"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" />
+				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
                 <a class="comMiniLink" href="JavaScript:clearMainIns();">Clear</a>
 			</s:if>
 			<s:else>
@@ -621,25 +621,25 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Left"</s:if><s:else>class="comFormTableItemNf212Left"</s:else>><nobr>施設略式漢字名</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Right"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><nobr><s:label key="preMainInsNm" /></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設略式漢字名</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="preMainInsNm" /></nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設略式漢字名</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textfield name="mainInsNm" size="40" style="border: none;" readonly="true" /></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Right"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><nobr><s:textfield name="mainInsNm" size="40" style="border: none;" readonly="true" /></nobr></td>
       </tr>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>住所</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><s:label key="preMainInsAddr" /></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>住所</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><s:textfield name="mainInsAddr" size="50" style="border: none;" readonly="true" /></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Foot1"</s:if><s:else>class="comFormTableItemNf212Left"</s:else>><nobr>住所</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Foot3"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><s:label key="preMainInsAddr" /></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Foot2"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>住所</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Foot3"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><s:textfield name="mainInsAddr" size="50" style="border: none;" readonly="true" /></td>
       </tr>
       <s:if test='tkdTrtKbn == "1"'>
       <tr>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設担当者</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="preInsTanto" /></nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設担当者</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textfield name="insTanto" size="40" style="border: none;" readonly="true" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItemNf212Foot1"><nobr>施設担当者</nobr></td>
+	      <td class="comFormTableItemNf212Foot3"><nobr><s:label key="preInsTanto" /></nobr></td>
+	      <td class="comFormTableItemNf212Foot2"><nobr>施設担当者</nobr></td>
+	      <td class="comFormTableItemNf212Foot3"><nobr><s:textfield name="insTanto" size="40" style="border: none;" readonly="true" /></nobr></td>
       </tr>
       </s:if>
 	</table>

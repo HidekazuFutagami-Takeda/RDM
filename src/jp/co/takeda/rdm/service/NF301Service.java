@@ -675,6 +675,8 @@ public class NF301Service extends BaseService {
 
         // エラー時処理
         if(errFlg) {
+        	String title = "NF011_施設新規作成";
+            indto.setTitle(title);
         	indto.setMsgStr(errMsg);
 			outdto.setForward("NF011");
         	return outdto;
@@ -2218,6 +2220,8 @@ public class NF301Service extends BaseService {
         // エラー時処理
         if(errFlg) {
         	indto.setMsgStr(errMsg);
+        	String title = "NF011_施設新規作成";
+            indto.setTitle(title);
         	// DropDownList作成
             createCombo(indto);
 			outdto.setForward("NF011");

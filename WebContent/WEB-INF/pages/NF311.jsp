@@ -202,7 +202,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
-<table id="formTable" border="0" <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> align="center" style="width:98%;">
+<table id="formTable" border="0" class="comPortalTable" align="center" style="width:98%;">
   <tr>
     <td>
       <s:form name="fm1" theme="simple">
@@ -318,7 +318,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     </table>
 <%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
-    <table class="comPortalBody">
+    <table class="comPortalBody" <s:if test='tkdTrtKbn == "0"'>style="background-color: #D7EEFF;"</s:if>>
     <tbody>
       <tr>
         <td>

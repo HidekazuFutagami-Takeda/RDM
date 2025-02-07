@@ -271,6 +271,8 @@ public class NF303Service extends BaseService {
 
         // エラー時処理
         if(errFlg) {
+        	String title = "NF012_施設情報更新";
+            indto.setTitle(title);
         	indto.setMsgStr(errMsg);
         	outdto.setForward("NF012");
         	return outdto;
@@ -2726,6 +2728,8 @@ public class NF303Service extends BaseService {
 
         // エラー時処理
         if(errFlg) {
+        	String title = "NF012_施設情報更新";
+            indto.setTitle(title);
         	indto.setMsgStr(errMsg);
         	outdto.setForward("NF012");
         	return outdto;

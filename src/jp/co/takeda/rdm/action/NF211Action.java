@@ -185,7 +185,7 @@ public class NF211Action extends BaseAction<NF211DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NF011_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_NF211_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();

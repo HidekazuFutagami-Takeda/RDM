@@ -2147,23 +2147,18 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">
                <nobr>
 				<s:if test='%{(reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
-					<s:if test='%{loginJgiNo == reqJgiNo}'>
 		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/>
-					</s:if>
-					<s:else>
-		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;" disabled />
-					</s:else>
 				</s:if>
 				<s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13")}'>
-					<s:if test='%{loginJgiNo == reqJgiNo && loginJokenSetCd == "JKN0813"}'>
+					<s:if test='%{(loginJokenSetCd == "JKN0813")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;" />
 					</s:if>
 					<s:else>
-		                <input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;"  disabled/>
+						<input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;" disabled />
 					</s:else>
 				</s:elseif>
 				<s:else>
-					&nbsp;
+	                &nbsp;
 				</s:else>
                 </nobr>
 	      </td>

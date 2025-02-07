@@ -116,11 +116,11 @@ public class NF212Action extends BaseAction<NF212DTO> {
         dto.setTitle(title);
 
         //モック
-        dto.setInsNo("101108001");
-        dto.setReqId("250204-000195");
-        dto.setTrtCd("00");
-        dto.setHinGCd("00");
-        dto.setTkdTrtKbn("0");
+//        dto.setInsNo("101115001");
+//        dto.setReqId("250207-000217");
+//        dto.setTrtCd("00");
+//        dto.setHinGCd("00");
+//        dto.setTkdTrtKbn("1");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
@@ -129,28 +129,28 @@ public class NF212Action extends BaseAction<NF212DTO> {
         dto.setPreScreenId(preScreenId);
 
         //モック
-        String kbn = "0";
-        if(kbn.equals("0")) {
-	        preScreenId = "NF201";
-	        dto.setLoginJgiNo("8830034");
-	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-	        dto.setReqId("");
-        } else {
-	        preScreenId = "NC011";
-	        dto.setLoginJgiNo("8830034");
-	        //dto.setLoginJgiNo("0");
-	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-	        dto.setInsNo("");
-        }
+//        String kbn = "1";
+//        if(kbn.equals("0")) {
+//	        preScreenId = "NF201";
+//	        dto.setLoginJgiNo("8830034");
+//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+//	        dto.setReqId("");
+//        } else {
+//	        preScreenId = "NC011";
+//	        dto.setLoginJgiNo("8830034");
+//	        //dto.setLoginJgiNo("0");
+//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+//	        dto.setInsNo("");
+//        }
 
-        // 遷移パターン　0:完全新規、1:施設固定コードから作成、2：申請データあり
-        // 施設固定コード　ありなしで分岐
+        // 遷移パターン　0:施設固定コード(区分0)、1:施設固定コード(区分1)、2：申請データあり(区分0)、3：申請データあり(区分1)
+        // 武田紐領域別区分で初期データ作成
         // NF201_親子紐付け一覧
         if ("NF201".equals(preScreenId)) {
         	if (insNo != null && insNo.length() > 0) {
-        		// 施設固定コードで初期データ作成
+        		// 武田紐領域別区分で初期データ作成
         		if("0".equals(tkdTrtKbn)) {
         			dto.setDisplayKbn("0");
         		} else {
@@ -185,7 +185,7 @@ public class NF212Action extends BaseAction<NF212DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NF011_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_NF212_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();

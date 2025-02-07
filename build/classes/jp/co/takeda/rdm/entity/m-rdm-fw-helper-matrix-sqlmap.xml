@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_fw_helper_matrix">
+    <resultMap id="mRdmFwHelperMatrixResultMap" type="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity">
+        <result column="SCREEN_ID" property="screenId"/>
+        <result column="FUNCTION_ID" property="functionId"/>
+        <result column="INITIAL_KBN" property="initialKbn"/>
+        <result column="TYPE_KBN" property="typeKbn"/>
+        <result column="HELPER_NAME" property="helperName"/>
+        <result column="GENERATION" property="generation"/>
+        <result column="DATA_SOURCE" property="dataSource"/>
+        <result column="COMMENTS" property="comments"/>
+        <result column="UP_JGI_NO" property="upJgiNo"/>
+        <result column="IS_DATE" property="isDate"/>
+        <result column="UP_DATE" property="upDate"/>
+        <result column="UP_SCRN_ID" property="upScrnId"/>
+        <result column="UP_FUNC_ID" property="upFuncId"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity" resultMap="mRdmFwHelperMatrixResultMap">
+        SELECT
+            SCREEN_ID, FUNCTION_ID, INITIAL_KBN, TYPE_KBN, HELPER_NAME, GENERATION, DATA_SOURCE, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
+        FROM
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        WHERE
+            SCREEN_ID = #{screenId} AND FUNCTION_ID = #{functionId}
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity" resultMap="mRdmFwHelperMatrixResultMap">
+        SELECT
+            SCREEN_ID, FUNCTION_ID, INITIAL_KBN, TYPE_KBN, HELPER_NAME, GENERATION, DATA_SOURCE, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
+        FROM
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        WHERE
+            SCREEN_ID = #{screenId} AND FUNCTION_ID = #{functionId}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity" resultMap="mRdmFwHelperMatrixResultMap">
+        SELECT
+            SCREEN_ID, FUNCTION_ID, INITIAL_KBN, TYPE_KBN, HELPER_NAME, GENERATION, DATA_SOURCE, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
+        FROM
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity" resultMap="mRdmFwHelperMatrixResultMap">
+        SELECT
+            SCREEN_ID, FUNCTION_ID, INITIAL_KBN, TYPE_KBN, HELPER_NAME, GENERATION, DATA_SOURCE, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
+        FROM
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        <where>
+            <if test="screenId != null">AND SCREEN_ID = #{screenId}</if>
+            <if test="functionId != null">AND FUNCTION_ID = #{functionId}</if>
+            <if test="initialKbn != null">AND INITIAL_KBN = #{initialKbn}</if>
+            <if test="typeKbn != null">AND TYPE_KBN = #{typeKbn}</if>
+            <if test="helperName != null">AND HELPER_NAME = #{helperName}</if>
+            <if test="generation != null">AND GENERATION = #{generation}</if>
+            <if test="dataSource != null">AND DATA_SOURCE = #{dataSource}</if>
+            <if test="comments != null">AND COMMENTS = #{comments}</if>
+            <if test="upJgiNo != null">AND UP_JGI_NO = #{upJgiNo}</if>
+            <if test="isDate != null">AND IS_DATE = #{isDate}</if>
+            <if test="upDate != null">AND UP_DATE = #{upDate}</if>
+            <if test="upScrnId != null">AND UP_SCRN_ID = #{upScrnId}</if>
+            <if test="upFuncId != null">AND UP_FUNC_ID = #{upFuncId}</if>
+        </where>
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        <where>
+            <if test="screenId != null">AND SCREEN_ID = #{screenId}</if>
+            <if test="functionId != null">AND FUNCTION_ID = #{functionId}</if>
+            <if test="initialKbn != null">AND INITIAL_KBN = #{initialKbn}</if>
+            <if test="typeKbn != null">AND TYPE_KBN = #{typeKbn}</if>
+            <if test="helperName != null">AND HELPER_NAME = #{helperName}</if>
+            <if test="generation != null">AND GENERATION = #{generation}</if>
+            <if test="dataSource != null">AND DATA_SOURCE = #{dataSource}</if>
+            <if test="comments != null">AND COMMENTS = #{comments}</if>
+            <if test="upJgiNo != null">AND UP_JGI_NO = #{upJgiNo}</if>
+            <if test="isDate != null">AND IS_DATE = #{isDate}</if>
+            <if test="upDate != null">AND UP_DATE = #{upDate}</if>
+            <if test="upScrnId != null">AND UP_SCRN_ID = #{upScrnId}</if>
+            <if test="upFuncId != null">AND UP_FUNC_ID = #{upFuncId}</if>
+        </where>
+    </select>
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity">
+        INSERT INTO
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX(SCREEN_ID, FUNCTION_ID, INITIAL_KBN, TYPE_KBN, HELPER_NAME, GENERATION, DATA_SOURCE, COMMENTS, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID)
+        VALUES
+            (#{screenId}, #{functionId}, #{initialKbn}, #{typeKbn}, #{helperName}, #{generation}, #{dataSource}, #{comments}, #{upJgiNo}, #{isDate}, #{upDate}, #{upScrnId}, #{upFuncId})
+    </insert>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity">
+        INSERT INTO
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX(<trim suffixOverrides=",">SCREEN_ID,FUNCTION_ID,<if test="initialKbn != null">INITIAL_KBN,</if><if test="typeKbn != null">TYPE_KBN,</if><if test="helperName != null">HELPER_NAME,</if><if test="generation != null">GENERATION,</if><if test="dataSource != null">DATA_SOURCE,</if><if test="comments != null">COMMENTS,</if><if test="upJgiNo != null">UP_JGI_NO,</if><if test="isDate != null">IS_DATE,</if><if test="upDate != null">UP_DATE,</if><if test="upScrnId != null">UP_SCRN_ID,</if><if test="upFuncId != null">UP_FUNC_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{screenId},#{functionId},<if test="initialKbn != null">#{initialKbn},</if><if test="typeKbn != null">#{typeKbn},</if><if test="helperName != null">#{helperName},</if><if test="generation != null">#{generation},</if><if test="dataSource != null">#{dataSource},</if><if test="comments != null">#{comments},</if><if test="upJgiNo != null">#{upJgiNo},</if><if test="isDate != null">#{isDate},</if><if test="upDate != null">#{upDate},</if><if test="upScrnId != null">#{upScrnId},</if><if test="upFuncId != null">#{upFuncId},</if></trim>)
+    </insert>
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity">
+        UPDATE
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        SET
+            <trim suffixOverrides=","><if test="update.initialKbn != null">INITIAL_KBN = #{update.initialKbn},</if><if test="update.initialKbn == null">INITIAL_KBN = NULL,</if><if test="update.typeKbn != null">TYPE_KBN = #{update.typeKbn},</if><if test="update.typeKbn == null">TYPE_KBN = NULL,</if><if test="update.helperName != null">HELPER_NAME = #{update.helperName},</if><if test="update.helperName == null">HELPER_NAME = NULL,</if><if test="update.generation != null">GENERATION = #{update.generation},</if><if test="update.generation == null">GENERATION = NULL,</if><if test="update.dataSource != null">DATA_SOURCE = #{update.dataSource},</if><if test="update.dataSource == null">DATA_SOURCE = NULL,</if><if test="update.comments != null">COMMENTS = #{update.comments},</if><if test="update.comments == null">COMMENTS = NULL,</if><if test="update.upJgiNo != null">UP_JGI_NO = #{update.upJgiNo},</if><if test="update.upJgiNo == null">UP_JGI_NO = NULL,</if><if test="update.isDate != null">IS_DATE = #{update.isDate},</if><if test="update.isDate == null">IS_DATE = NULL,</if><if test="update.upDate != null">UP_DATE = #{update.upDate},</if><if test="update.upDate == null">UP_DATE = NULL,</if><if test="update.upScrnId != null">UP_SCRN_ID = #{update.upScrnId},</if><if test="update.upScrnId == null">UP_SCRN_ID = NULL,</if><if test="update.upFuncId != null">UP_FUNC_ID = #{update.upFuncId},</if><if test="update.upFuncId == null">UP_FUNC_ID = NULL,</if></trim>
+        WHERE
+            SCREEN_ID = #{search.screenId} AND FUNCTION_ID = #{search.functionId}
+    </update>
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity">
+        UPDATE
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        <set>
+            <if test="update.initialKbnNullFlag == true">INITIAL_KBN = NULL,</if><if test="update.initialKbnNullFlag == false"><if test="update.initialKbn != null">INITIAL_KBN = #{update.initialKbn},</if></if>
+            <if test="update.typeKbnNullFlag == true">TYPE_KBN = NULL,</if><if test="update.typeKbnNullFlag == false"><if test="update.typeKbn != null">TYPE_KBN = #{update.typeKbn},</if></if>
+            <if test="update.helperNameNullFlag == true">HELPER_NAME = NULL,</if><if test="update.helperNameNullFlag == false"><if test="update.helperName != null">HELPER_NAME = #{update.helperName},</if></if>
+            <if test="update.generationNullFlag == true">GENERATION = NULL,</if><if test="update.generationNullFlag == false"><if test="update.generation != null">GENERATION = #{update.generation},</if></if>
+            <if test="update.dataSourceNullFlag == true">DATA_SOURCE = NULL,</if><if test="update.dataSourceNullFlag == false"><if test="update.dataSource != null">DATA_SOURCE = #{update.dataSource},</if></if>
+            <if test="update.commentsNullFlag == true">COMMENTS = NULL,</if><if test="update.commentsNullFlag == false"><if test="update.comments != null">COMMENTS = #{update.comments},</if></if>
+            <if test="update.upJgiNoNullFlag == true">UP_JGI_NO = NULL,</if><if test="update.upJgiNoNullFlag == false"><if test="update.upJgiNo != null">UP_JGI_NO = #{update.upJgiNo},</if></if>
+            <if test="update.isDateNullFlag == true">IS_DATE = NULL,</if><if test="update.isDateNullFlag == false"><if test="update.isDate != null">IS_DATE = #{update.isDate},</if></if>
+            <if test="update.upDateNullFlag == true">UP_DATE = NULL,</if><if test="update.upDateNullFlag == false"><if test="update.upDate != null">UP_DATE = #{update.upDate},</if></if>
+            <if test="update.upScrnIdNullFlag == true">UP_SCRN_ID = NULL,</if><if test="update.upScrnIdNullFlag == false"><if test="update.upScrnId != null">UP_SCRN_ID = #{update.upScrnId},</if></if>
+            <if test="update.upFuncIdNullFlag == true">UP_FUNC_ID = NULL,</if><if test="update.upFuncIdNullFlag == false"><if test="update.upFuncId != null">UP_FUNC_ID = #{update.upFuncId},</if></if>
+        </set>
+        WHERE
+            SCREEN_ID = #{search.screenId} AND FUNCTION_ID = #{search.functionId}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity">
+        DELETE FROM
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        WHERE
+            SCREEN_ID = #{screenId} AND FUNCTION_ID = #{functionId}
+    </delete>
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity">
+        DELETE FROM
+            ORAUSR01.M_RDM_FW_HELPER_MATRIX
+        <where>
+            <if test="screenId != null">AND SCREEN_ID = #{screenId}</if>
+            <if test="functionId != null">AND FUNCTION_ID = #{functionId}</if>
+            <if test="initialKbn != null">AND INITIAL_KBN = #{initialKbn}</if>
+            <if test="typeKbn != null">AND TYPE_KBN = #{typeKbn}</if>
+            <if test="helperName != null">AND HELPER_NAME = #{helperName}</if>
+            <if test="generation != null">AND GENERATION = #{generation}</if>
+            <if test="dataSource != null">AND DATA_SOURCE = #{dataSource}</if>
+            <if test="comments != null">AND COMMENTS = #{comments}</if>
+            <if test="upJgiNo != null">AND UP_JGI_NO = #{upJgiNo}</if>
+            <if test="isDate != null">AND IS_DATE = #{isDate}</if>
+            <if test="upDate != null">AND UP_DATE = #{upDate}</if>
+            <if test="upScrnId != null">AND UP_SCRN_ID = #{upScrnId}</if>
+            <if test="upFuncId != null">AND UP_FUNC_ID = #{upFuncId}</if>
+        </where>
+    </delete>
+</mapper>

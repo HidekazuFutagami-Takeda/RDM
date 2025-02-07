@@ -3,24 +3,24 @@
  * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.jkr.service;
+package jp.co.takeda.rdm.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BaseService;
-import jp.co.takeda.jkr.dto.CatDeptsComboDataList;
-import jp.co.takeda.jkr.dto.NC204DTO;
-import jp.co.takeda.jkr.entity.SRdmDmcMstDeptEntity;
-import jp.co.takeda.jkr.entity.SRdmJkrSosInsAbbrNameEntiry;
-import jp.co.takeda.jkr.entity.join.SelectDeptListEntity;
-import jp.co.takeda.jkr.util.AppMethods;
-import jp.co.takeda.jkr.util.StringUtils;
-import jp.co.takeda.jkr.entity.join.SelectDeptListEntityRDM;
-import jp.co.takeda.jkr.entity.join.SelectHenkanListEntity;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.dto.CatDeptsComboDataList;
+import jp.co.takeda.rdm.dto.NC204DTO;
+import jp.co.takeda.rdm.entity.SRdmDmcMstDeptEntity;
+import jp.co.takeda.rdm.entity.SRdmJkrSosInsAbbrNameEntiry;
+import jp.co.takeda.rdm.entity.join.SelectDeptListEntity;
+import jp.co.takeda.rdm.util.AppMethods;
+import jp.co.takeda.rdm.util.StringUtils;
+import jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM;
+import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -44,7 +44,7 @@ public class NC204Service extends BaseService {
     //略式漢字施設名
     private void  insAbbrNameDrop(NC204DTO indto) {
         // START UOC
-        SRdmJkrSosInsAbbrNameEntiry sRdmJkrSosAddrEntiry = new SRdmJkrSosInsAbbrNameEntiry();
+    	SRdmJkrSosInsAbbrNameEntiry sRdmJkrSosAddrEntiry = new SRdmJkrSosInsAbbrNameEntiry();
         sRdmJkrSosAddrEntiry.setInsNo(indto.getParamInsNo());
         List<SRdmJkrSosInsAbbrNameEntiry> jkrSosAddrMap = dao.select(sRdmJkrSosAddrEntiry);
         indto.setInsAbbrName(jkrSosAddrMap.get(0).getInsAbbrName());

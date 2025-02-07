@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_hcp_sp_liver">
+    <resultMap id="MRdmHcpSpLiverResultMap" type="jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity">
+        <result column="SP_LIVER" property="spLiver"/>
+        <result column="SP_LIVER_KJ" property="spLiverKj"/>
+        <result column="SP_LIVER_KN" property="spLiverKn"/>
+        <result column="SORT_NUM" property="sortNum"/>
+        <result column="DEL_FLG" property="delFlg"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity" resultMap="MRdmHcpSpLiverResultMap">
+        SELECT
+            SP_LIVER, SP_LIVER_KJ, SP_LIVER_KN, SORT_NUM, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_HCP_SP_LIVER
+        WHERE
+            SP_LIVER = #{spLiver}
+            ORDER BY SORT_NUM, SP_LIVER
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity" resultMap="MRdmHcpSpLiverResultMap">
+        SELECT
+            SP_LIVER, SP_LIVER_KJ, SP_LIVER_KN, SORT_NUM, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_HCP_SP_LIVER
+        WHERE
+            SP_LIVER = #{spLiver}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity" resultMap="MRdmHcpSpLiverResultMap">
+        SELECT
+            SP_LIVER, SP_LIVER_KJ, SP_LIVER_KN, SORT_NUM, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_HCP_SP_LIVER
+            ORDER BY SORT_NUM, SP_LIVER
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity" resultMap="MRdmHcpSpLiverResultMap">
+        SELECT
+            SP_LIVER, SP_LIVER_KJ, SP_LIVER_KN, SORT_NUM, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_HCP_SP_LIVER
+        <where>
+	        <if test="spLiver != null">AND SP_LIVER = #{spLiver}</if>
+			<if test="spLiverKj != null">AND SP_LIVER_KJ = #{spLiverKj}</if>
+			<if test="spLiverKn != null">AND SP_LIVER_KN = #{spLiverKn}</if>
+			<if test="sortNum != null">AND SORT_NUM = #{sortNum}</if>
+			<if test="delFlg != null">AND DEL_FLG = #{delFlg}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+            ORDER BY SORT_NUM, SP_LIVER
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            M_RDM_HCP_SP_LIVER
+        <where>
+	        <if test="spLiver != null">AND SP_LIVER = #{spLiver}</if>
+			<if test="spLiverKj != null">AND SP_LIVER_KJ = #{spLiverKj}</if>
+			<if test="spLiverKn != null">AND SP_LIVER_KN = #{spLiverKn}</if>
+			<if test="sortNum != null">AND SORT_NUM = #{sortNum}</if>
+			<if test="delFlg != null">AND DEL_FLG = #{delFlg}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+
+</mapper>

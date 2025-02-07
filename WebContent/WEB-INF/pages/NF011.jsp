@@ -1049,7 +1049,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     }
 
 	// 担当者行の追加処理
-    function callBackTantoPop(sosCd, bumonSeiName, inJgiNo, inJgiName, inTrtGrpCd, inTrtCd, inTrtNm, inMrCat, brCode, distCode){
+    function callBackTantoPop(sosCd, bumonSeiName, inJgiNo, inJgiName, inTrtCd, brCode, distCode, inTrtGrpCd, inTrtNm, inMrCat){
 
 		let trtTable = document.getElementById("formTable11");
 		let trtRow = Number(trtTable.rows.length)-1;

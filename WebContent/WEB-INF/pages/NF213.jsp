@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  施設紐付け新規のJSP
+ *  施設紐付け削除のJSP
  * </pre>
  * @since 1.0
  * @version $Revision: 1.3 $
@@ -41,7 +41,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-  <title>NF211_施設紐付け新規</title>
+  <title>NF213_施設紐付け削除</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -53,72 +53,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <script>
 
 	comClickFlgInit();
-
-    function onLoadFunc(){
-    	editFlg = document.fm1.editApprFlg.value;
-		tkdTrtKbn = document.fm1.tkdTrtKbn.value;
-
-		if(tkdTrtKbn == "0") {
-
-			document.fm1.mainInsNm.style.backgroundColor = "#D7EEFF";
-			document.fm1.mainInsAddr.style.backgroundColor = "#D7EEFF";
-			document.fm1.insTanto.style.backgroundColor = "#D7EEFF";
-
-		} else {
-			if(editFlg == "0") {
-				// 領域・品目グループ
-				if(document.fm1.trtPrdGrp.selectedIndex != 0){
-					document.fm1.trtPrdGrpView.value = document.fm1.trtPrdGrp.options[document.fm1.trtPrdGrp.selectedIndex].textContent;
-				}
-				document.fm1.trtPrdGrp.hidden = "true";
-			} else {
-				document.fm1.trtPrdGrpView.hidden = "true";
-			}
-		}
-    }
-
-    // 親施設クリア処理
-    function clearMainIns(){
-    	document.fm1.mainInsCd.value='';
-    	document.fm1.mainInsNm.value='';
-    	document.fm1.mainInsAddr.value='';
-    	document.fm1.insTanto.value='';
-    	document.fm1.mainInsSbt.value='';
-    }
-
-    // 親施設選択ボタン
-    function mainInsPopBtn(){
-		// NC203_施設検索ポップアップ画面を表示
-		window.open("","insPopWindow",insSubScreenSize);
-		document.fm1.screenId.value = "NC203";
-		document.fm1.functionId.value="Init";
-		document.fm1.target="insPopWindow";
-
-		if(document.fm1.insSbt.value == "02" || document.fm1.insSbt.value == "05") {
-			document.fm1.kensakuInsSbt.value = "10";
-		} else {
-			document.fm1.kensakuInsSbt.value = "";
-		}
-
-		document.fm1.koshisetsuCheck.value = "1";
-		document.fm1.callBack.value = "callBackMainInsPop";
-
-		comSubmitForAnyWarp(fm1);
-		comClickFlgInit();
-    }
-
-	// 施設ポップアップから親施設受け取り
-    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
-
-    	document.fm1.mainInsCd.value = insNo;
-    	document.fm1.mainInsNm.value = insAbbrName;
-    	document.fm1.mainInsAddr.value = insAddr;
-
-    	// TODO 子画面から取得
-    	document.fm1.insTanto.value = "";
-    	document.fm1.mainInsSbt.value = "";
-
-    }
 
 	// 戻るボタン
 	function backBtn(){
@@ -148,7 +82,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		// 申請データを破棄（＝物理的に削除）し、遷移元画面へ遷移する（本画面のタブを閉じる）
 		// 申請IDで対象を絞り込み申請管理、施設_申請管理、施設_領域担当者ワークを削除
 
-			document.fm1.screenId.value="NF211";
+			document.fm1.screenId.value="NF213";
 			document.fm1.functionId.value="Cancel";
 
 			comSubmitForAnyWarp(fm1);
@@ -159,19 +93,18 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	function submitBtn(funcId){
 
 		document.fm1.funcId.value = funcId;
-		document.fm1.screenId.value="NF011";
 
 		if(funcId == "0") {
 			// 一時保存
-			document.fm1.screenId.value="NF211";
+			document.fm1.screenId.value="NF213";
 			document.fm1.functionId.value="Register";
 		} else if(funcId == "2") {
 			// 承認・却下
-			document.fm1.screenId.value="NF311";
+			document.fm1.screenId.value="NF315";
 			document.fm1.functionId.value="ApprRej";
 		} else {
 			// 申請
-			document.fm1.screenId.value="NF311";
+			document.fm1.screenId.value="NF315";
 			document.fm1.functionId.value="Init";
 		}
 
@@ -182,7 +115,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	// 審査完了ボタン
 	function shnCompBtn(){
 
-		document.fm1.screenId.value="NF211";
+		document.fm1.screenId.value="NF213";
 		document.fm1.functionId.value="ShnComp";
 
 		document.fm1.target="";
@@ -193,7 +126,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     </script>
 </head>
 
-<body class="comPage" onUnload="JavaScript:jmsUnLoad();" onLoad="JavaScript:onLoadFunc();">
+<body class="comPage" onUnload="JavaScript:jmsUnLoad();">
   <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
     <input type="text" name="screenId"           value="" />
     <input type="text" name="functionId"         value="" />
@@ -516,70 +449,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
       </tr>
-     <s:if test='tkdTrtKbn == "1"'>
-      <tr>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設一覧</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-      </tr>
-      <tr>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colSpan="5"><%-- スクロールバー用のテーブルクラスにすること --%>
-              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
-			  <table class="comCustomTable" id="formTable11">
-				<tr>
-				  <%-- ヘッダ行 --%>
-			      <td class="comTableTitle" width="50px"><nobr>領域</nobr></td>
-			      <td class="comTableTitle" width="50px"><nobr>品目グループ</nobr></td>
-			      <td class="comTableTitle" width="100px"><nobr>施設略式漢字名</nobr></td>
-			      <td class="comTableTitle" width="50px"><nobr>対象区分</nobr></td>
-			      <td class="comTableTitle" width="150px"><nobr>住所</nobr></td>
-			      <td class="comTableTitle" width="80px"><nobr>担当者</nobr></td>
-			    </tr>
-			    <s:iterator value="lnkTrtDataList" status="status" var="rowBean">
-			      <tr>
-			        <%--領域担当者データ取得項目--%>
-			        <%--領域担当者データ保持用のHIDDEN項目--%>
-			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtGrpCd"/>
-			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtCd"/>
-			        <s:hidden name="lnkTrtDataList[%{#status.index}].hinGCd"/>
-
-					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].trtNm"/></nobr></td>
-					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].hinGName"/></nobr></td>
-					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].insAbbrName"/></nobr></td>
-					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].hoInsType"/></nobr></td>
-					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].insAddr"/></nobr></td>
-					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].jgiName"/></nobr></td>
-			      </tr>
-			    </s:iterator>
-			  </table>
-			  </div>
-	      </td>
-      </tr>
-	  <tr>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-        <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-      </tr>
-    </s:if>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>領域・品目グループ<font color="red" size="3">*</font></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>領域・品目グループ</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
-	      		<s:if test='tkdTrtKbn == "0"'>
-	      			<!-- 武田紐固定 -->
-		      		<s:hidden name="trtPrdGrp" />
-					<s:textfield id="trtPrdGrpTkdView" name="trtPrdGrpTkdView" value="武田紐" cssStyle="width:120pt; background-color:#D4D0C8" readonly="true" />
-				</s:if>
-				<s:else>
-					<s:select id="trtPrdGrp" name="trtPrdGrp" cssStyle="width:150pt" list ="trtPrdGrpCombo" onchange="JavaScript:clearMainIns(); return false;"/>
-					<s:textfield id="trtPrdGrpView" name="trtPrdGrpView" cssStyle="width:150pt" readonly="true" />
-				</s:else>
+	      		<s:label key="trtPrdGrpNm" />
+	      		<s:hidden name="trtPrdGrpNm" />
 			</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>適用日<font color="red" size="3">*</font></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>適用日<s:if test='tkdTrtKbn == "1"'><font color="red" size="3">*</font></s:if></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
 	      	<s:if test='tkdTrtKbn == "0"'>
 	      		<s:textfield name="tekiyoYmd" type="date" cssStyle="background-color:#D4D0C8" readonly="true" />
@@ -596,36 +473,29 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
       	  <s:hidden name="mainInsSbt"/>
-      	  <s:hidden name="insSbtAf"/>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設<font color="red" size="3">*</font></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>親施設</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
-                <a class="comMiniLink" href="JavaScript:clearMainIns();">Clear</a>
-			</s:if>
-			<s:else>
-				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" disabled />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
-			</s:else>
-			</nobr></td>
+	      	<s:label key="mainInsCd" />
+	      </nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設略式漢字名</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textfield name="mainInsNm" size="40" style="border: none;" readonly="true" /></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="mainInsNm" /></nobr></td>
       </tr>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>住所</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colspan=2><nobr><s:textfield name="mainInsAddr" size="50" style="border: none;" readonly="true" /></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colspan=2><nobr><s:label key="mainInsAddr" /></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
       </tr>
+      <s:if test='tkdTrtKbn == "1"'>
       <tr>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設担当者</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textfield name="insTanto" size="40" style="border: none;" readonly="true" /></nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>親施設担当者</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="insTanto" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
+      </s:if>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colspan=4><nobr><font color="red">※施設紐付けの追加・変更・削除の際は、上長の承認を得てから実施願います。</font></nobr></td>

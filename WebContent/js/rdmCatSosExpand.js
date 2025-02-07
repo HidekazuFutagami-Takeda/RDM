@@ -104,6 +104,16 @@ function nc202CseView(w, callBack, winVarName, clearProc){
   joken[ix1++] = new Array(document.fm1.initSosCdPop.value);
   jokenName[ix1] = "trtCdPop";
   joken[ix1++] = new Array(document.fm1.trtCdPop.value);
+  jokenName[ix1] = "initSosCdPop";
+  joken[ix1++] = new Array(document.fm1.initSosCdPop.value);
+  jokenName[ix1] = "addrCodePrefPop";
+  joken[ix1++] = new Array(document.fm1.addrCodePrefPop.value);
+  jokenName[ix1] = "tkCityCdPop";
+  joken[ix1++] = new Array(document.fm1.tkCityCdPop.value);
+  jokenName[ix1] = "sosCdPop";
+  joken[ix1++] = new Array(document.fm1.sosCdPop.value);
+  jokenName[ix1] = "upSosCdPop";
+  joken[ix1++] = new Array(document.fm1.upSosCdPop.value);
 
   /*条件有り呼び出しパターン*/
   comPostPopup(w,"NC202Init.action",RCSE_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
@@ -240,11 +250,11 @@ function rCseSelectSos(bumonRank, sosCd,
  * 従業員選択ボタン押下
  */
 function rCseSelectJgi(sosCd,bumonSeiName,
-		  jgiNo, jgiName, trtCd, brCode, distCode
+		  jgiNo, jgiName, trtCd, brCode, distCode, trtGrpCd, trtNm, mrCat
 ) {
   eval(
 		  "window.opener." + document.fm1.callBack.value + "(sosCd,bumonSeiName, "
-        + "jgiNo, jgiName, trtCd, brCode, distCode)"
+        + "jgiNo, jgiName, trtCd, brCode, distCode, trtGrpCd, trtNm, mrCat)"
   );
       cseClose();
 }

@@ -428,14 +428,17 @@ function rGenJmnCallBackCseView(
 
 function rNc202CseViewGenJmnCallBackCseView(
 	sosCd,bumonSeiName,
-	jgiNo, jgiName, trtCd, brCode, distCode){
+	jgiNo, jgiName, trtCd, brCode, distCode,trtGrpCd,trtNm,mrCat){
 	document.fm1.sosCd.value        = sosCd;
-	document.fm1.bumonSeiName.value = bumonSeiName;
+	document.fm1.bumonRyakuName.value = bumonSeiName;
 	document.fm1.jgiNo.value        = jgiNo;
 	document.fm1.jgiName.value      = jgiName;
 	document.fm1.sosCd.value        = trtCd
 	document.fm1.brCode.value       = brCode;
 	document.fm1.distCode.value     = distCode;
+	document.fm1.trtGrpCd.value     = trtGrpCd;
+	document.fm1.trtNm.value        = trtNm;
+	document.fm1.mrCat.value        = mrCat;
 }
 
 /**

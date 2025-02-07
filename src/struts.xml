@@ -87,6 +87,24 @@
         <action name="NC001Init" class="nC001Action" method="init">
             <result name="NC001">/WEB-INF/pages/NC001.jsp</result>
         </action>
+        <action name="NC011Init" class="nC011Action" method="init">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NC011Search" class="nC011Action" method="search">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NC011Page" class="nC011Action" method="page">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+		<action name="NC011Page" class="nC011Action" method="page">
+			<result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+		</action>
+		<action name="NC011Sort" class="nC011Action" method="sort">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NC205Init" class="nC205Action" method="init">
+            <result name="NC205">/WEB-INF/pages/NC205.jsp</result>
+        </action>
         <action name="NC202Init" class="nC202Action" method="init">
             <result name="NC202">/WEB-INF/pages/NC202_01.jsp</result>
         </action>

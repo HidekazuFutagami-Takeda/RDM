@@ -12,12 +12,6 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.Date;
 
-/**
- * Entityクラス
- * テーブル物理名 : M_RDM_JGI_SOS_MST
- * SQLID : selectInitJgi
- * @generated
- */
 public class SelectInitJgiEntity extends BaseEntity implements Serializable {
 
     /**
@@ -49,7 +43,7 @@ public class SelectInitJgiEntity extends BaseEntity implements Serializable {
      * 組織名称
      * @generated
      */
-    private String bumonSeiName;
+    private String bumonRyakuName;
 
     /**
      * 医薬支店C
@@ -135,24 +129,23 @@ public class SelectInitJgiEntity extends BaseEntity implements Serializable {
 	}
 
     /**
-     * 組織名称の取得
-     * @param bumonSeiName 組織名称
-     * @generated
-     */
-	public String getBumonSeiName() {
-		return bumonSeiName;
+	 * SelectInitJgiEntity.javabumonRyakuNameを設定
+	 * @return bumonRyakuName
+	 */
+	public String getBumonRyakuName() {
+		return bumonRyakuName;
 	}
 
-    /**
-     * 組織名称の設定
-     * @param bumonSeiName 組織名称
-     * @generated
-     */
-	public void setBumonSeiName(String bumonSeiName) {
-		this.bumonSeiName = bumonSeiName;
+
+	/**
+	 * @param bumonRyakuName セットする bumonRyakuName
+	 */
+	public void setBumonRyakuName(String bumonRyakuName) {
+		this.bumonRyakuName = bumonRyakuName;
 	}
 
-    /**
+
+	/**
      * 医薬支店Cの取得
      * @param brCode 医薬支店C
      * @generated

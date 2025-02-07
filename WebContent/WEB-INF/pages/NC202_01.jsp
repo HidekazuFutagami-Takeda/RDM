@@ -54,7 +54,7 @@
   <form name="fm1" onSubmit="JavaScript:return false;" >
     <s:hidden name="callBack" />
     <s:hidden name="winVarName" />
-    <s:hidden name="bumonSeiName" />
+    <s:hidden name="bumonRyakuName" />
     <s:hidden name="bumonRankPop"/>
     <s:hidden name="SosCdPop"/>
 <%-- ポータルボディー 開始 --%>
@@ -91,10 +91,10 @@
             name="focus<s:property value="#rowBean.sosCd"/>"
             class="comLink"
             onclick="rcseCallAjaxJgi('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>'); return false;"
-          ><s:property value="#rowBean.bumonSeiName"/></a>
+          ><s:property value="#rowBean.bumonRyakuName"/></a>
         </s:if>
         <s:else>
-          <s:property value="#rowBean.bumonSeiName"/>
+          <s:property value="#rowBean.bumonRyakuName"/>
         </s:else>
 
       </nobr>

@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * Entityクラス
  * テーブル物理名 : M_RDM_JGI_SOS_MST
- * SQLID : selectInitJgi
+ * SQLID : selectJgi
  * @generated
  */
 public class SelectJgiEntity extends BaseEntity implements Serializable {
@@ -84,7 +84,7 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
      * 組織名称
      * @generated
      */
-    private String bumonSeiName;
+    private String bumonRyakuName;
 
     /**
      * 医薬支店C
@@ -123,6 +123,25 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private String jgiName;
+
+    /**
+     * 領域グループコードコード
+     * @generated
+     */
+    private String trtGrpCd;
+
+    /**
+     * 領域名
+     * @generated
+     */
+    private String trtNm;
+
+    /**
+     * MR種類
+     * @generated
+     */
+    private String mrCat;
+
 
     public SelectJgiEntity() {
         super("m_rdm_jgi_sos_mst","selectJgi");
@@ -293,24 +312,21 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
 	}
 
     /**
-     * 組織名称の取得
-     * @param bumonSeiName 組織名称
-     * @generated
-     */
-	public String getBumonSeiName() {
-		return bumonSeiName;
+	 * SelectJgiEntity.javabumonRyakuNameを設定
+	 * @return bumonRyakuName
+	 */
+	public String getBumonRyakuName() {
+		return bumonRyakuName;
 	}
 
-    /**
-     * 組織名称の設定
-     * @param bumonSeiName 組織名称
-     * @generated
-     */
-	public void setBumonSeiName(String bumonSeiName) {
-		this.bumonSeiName = bumonSeiName;
+	/**
+	 * @param bumonRyakuName セットする bumonRyakuName
+	 */
+	public void setBumonRyakuName(String bumonRyakuName) {
+		this.bumonRyakuName = bumonRyakuName;
 	}
 
-    /**
+	/**
      * 医薬支店Cの取得
      * @param brCode 医薬支店C
      * @generated
@@ -417,6 +433,51 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
      */
 	public void setJgiName(String jgiName) {
 		this.jgiName = jgiName;
+	}
+
+	/**
+	 * SelectJgiEntity.javatrtGrpCdを設定
+	 * @return trtGrpCd
+	 */
+	public String getTrtGrpCd() {
+		return trtGrpCd;
+	}
+
+	/**
+	 * @param trtGrpCd セットする trtGrpCd
+	 */
+	public void setTrtGrpCd(String trtGrpCd) {
+		this.trtGrpCd = trtGrpCd;
+	}
+
+	/**
+	 * SelectJgiEntity.javatrtNmを設定
+	 * @return trtNm
+	 */
+	public String getTrtNm() {
+		return trtNm;
+	}
+
+	/**
+	 * @param trtNm セットする trtNm
+	 */
+	public void setTrtNm(String trtNm) {
+		this.trtNm = trtNm;
+	}
+
+	/**
+	 * SelectJgiEntity.javamrCatを設定
+	 * @return mrCat
+	 */
+	public String getMrCat() {
+		return mrCat;
+	}
+
+	/**
+	 * @param mrCat セットする mrCat
+	 */
+	public void setMrCat(String mrCat) {
+		this.mrCat = mrCat;
 	}
 
 	/**

@@ -40,7 +40,7 @@
                 name="focus<s:property value="#rowBean.sosCd"/>"
                 class="comLink"
                 onclick="rcseCallAjaxJgi('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>'); return false;"
-              ><s:property value="#rowBean.bumonSeiName"/></a>
+              ><s:property value="#rowBean.bumonRyakuName"/></a>
             </s:if>
             <s:else>
               <s:property value="#rowBeanJgi.jgiNo"/>
@@ -66,12 +66,15 @@
                       class="cseJgiSelectButton"
                       onclick="rCseSelectJgi(
                           '<s:property value="#rowBeanJgi.sosCd"/>',
-                          '<s:property value="#rowBeanJgi.bumonSeiName"/>',
+                          '<s:property value="#rowBeanJgi.bumonRyakuName"/>',
                           '<s:property value="#rowBeanJgi.jgiNo"/>',
                           '<s:property value="#rowBeanJgi.jgiName"/>',
                           '<s:property value="#rowBeanJgi.trtCd"/>',
                           '<s:property value="#rowBeanJgi.brCode"/>',
-                          '<s:property value="#rowBeanJgi.distCode"/>'
+                          '<s:property value="#rowBeanJgi.distCode"/>',
+                          '<s:property value="#rowBeanJgi.trtGrpCd"/>',
+                          '<s:property value="#rowBeanJgi.trtNm"/>',
+                          '<s:property value="#rowBeanJgi.mrCat"/>'
                       );"
                   >
                 <%-- 従業員名 --%>

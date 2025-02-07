@@ -38,7 +38,7 @@ public class JgiData implements Serializable {
      * 組織名称
      * @generated
      */
-    private String bumonSeiName;
+    private String bumonRyakuName;
 
     /**
      * 医薬支店C
@@ -101,6 +101,23 @@ public class JgiData implements Serializable {
     private String jgiName;
 
     /**
+     * 領域グループコードコード
+     * @generated
+     */
+    private String trtGrpCd;
+
+    /**
+     * 領域名
+     * @generated
+     */
+    private String trtNm;
+
+    /**
+     * MR種類
+     * @generated
+     */
+    private String mrCat;
+    /**
      * コンストラクタ
      * @customizable
      */
@@ -147,21 +164,18 @@ public class JgiData implements Serializable {
 	}
 
 	/**
-	 * 組織名称の取得
-	 * @return　組織名称
-	 * @generated
+	 * JgiData.javabumonRyakuNameを設定
+	 * @return bumonRyakuName
 	 */
-	public String getBumonSeiName() {
-		return bumonSeiName;
+	public String getBumonRyakuName() {
+		return bumonRyakuName;
 	}
 
 	/**
-	 * 組織名称の設定
-	　* @param bumonSeiName　組織名称
-	 *　@generated
+	 * @param bumonRyakuName セットする bumonRyakuName
 	 */
-	public void setBumonSeiName(String bumonSeiName) {
-		this.bumonSeiName = bumonSeiName;
+	public void setBumonRyakuName(String bumonRyakuName) {
+		this.bumonRyakuName = bumonRyakuName;
 	}
 
 	/**
@@ -347,6 +361,51 @@ public class JgiData implements Serializable {
 	}
 
     /**
+	 * JgiData.javatrtGrpCdを設定
+	 * @return trtGrpCd
+	 */
+	public String getTrtGrpCd() {
+		return trtGrpCd;
+	}
+
+	/**
+	 * @param trtGrpCd セットする trtGrpCd
+	 */
+	public void setTrtGrpCd(String trtGrpCd) {
+		this.trtGrpCd = trtGrpCd;
+	}
+
+	/**
+	 * JgiData.javatrtNmを設定
+	 * @return trtNm
+	 */
+	public String getTrtNm() {
+		return trtNm;
+	}
+
+	/**
+	 * @param trtNm セットする trtNm
+	 */
+	public void setTrtNm(String trtNm) {
+		this.trtNm = trtNm;
+	}
+
+	/**
+	 * JgiData.javamrCatを設定
+	 * @return mrCat
+	 */
+	public String getMrCat() {
+		return mrCat;
+	}
+
+	/**
+	 * @param mrCat セットする mrCat
+	 */
+	public void setMrCat(String mrCat) {
+		this.mrCat = mrCat;
+	}
+
+	/**
      * このDTOの値を返す
      * @return DTOの値
      * @generated
@@ -355,4 +414,3 @@ public class JgiData implements Serializable {
         return ReflectionToStringBuilder.toString(this);
     }
 }
-

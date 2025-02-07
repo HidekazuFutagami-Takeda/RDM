@@ -38,7 +38,7 @@ public class JgiInitData implements Serializable {
      * 組織名称
      * @generated
      */
-    private String bumonSeiName;
+    private String bumonRyakuName;
 
     /**
      * 医薬支店C
@@ -105,21 +105,18 @@ public class JgiInitData implements Serializable {
 	}
 
 	/**
-	 * 組織名称の取得
-	 * @return　組織名称
-	 * @generated
+	 * JgiInitData.javabumonRyakuNameを設定
+	 * @return bumonRyakuName
 	 */
-	public String getBumonSeiName() {
-		return bumonSeiName;
+	public String getBumonRyakuName() {
+		return bumonRyakuName;
 	}
 
 	/**
-	 * 組織名称の設定
-	　* @param bumonSeiName　組織名称
-	 *　@generated
+	 * @param bumonRyakuName セットする bumonRyakuName
 	 */
-	public void setBumonSeiName(String bumonSeiName) {
-		this.bumonSeiName = bumonSeiName;
+	public void setBumonRyakuName(String bumonRyakuName) {
+		this.bumonRyakuName = bumonRyakuName;
 	}
 
 	/**
@@ -185,4 +182,3 @@ public class JgiInitData implements Serializable {
         return ReflectionToStringBuilder.toString(this);
     }
 }
-

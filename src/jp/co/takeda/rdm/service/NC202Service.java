@@ -13,11 +13,14 @@ import java.util.List;
 import javax.inject.Named;
 
 import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.entity.join.SelectInitJgiEntity;
 //import jp.co.takeda.rdm.entity.join.SelectInitSosEntity;
 import jp.co.takeda.rdm.entity.join.SelectJgiEntity;
+import jp.co.takeda.rdm.entity.join.SelectRyakuNameEntity;
 //import jp.co.takeda.rdm.entity.join.SelectSosEntity;
 import jp.co.takeda.rdm.dto.NC202DTO;
 //import jp.co.takeda.rdm.dto.SosInitData;
@@ -113,9 +116,7 @@ public class NC202Service extends BaseService {
     */
    @Transactional
    private void getJgiList(int initFlg, NC202DTO indto) {
-   	//消すこと　表示領域を制限するために使用
-//   	indto.setTrtCdPop("06");
-
+	   LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
        SelectJgiEntity selectJgiEntity = new SelectJgiEntity();
        selectJgiEntity.setInBumonRank(initFlg);
 //       selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(null));
@@ -125,15 +126,15 @@ public class NC202Service extends BaseService {
 //    	   selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
     	   selectJgiEntity.setInUpSosCd(indto.getSosCdPop());
        }
-       //注意_以下の値は親画面が完成次第、比較対象の値を変更すること
-       if (indto.getWinVarName().equals("gCseViewWi")) {
+       loginInfo.setPreScreenId("NF011");
+       if (loginInfo.getPreScreenId().equals("NF011")) {
     	   selectJgiEntity.setInGmnFlg(0);
-    	   selectJgiEntity.setInTrtCd("02");
-    	   selectJgiEntity.setInAddrCodePref("01");
-    	   selectJgiEntity.setInTkCityCd("018");
-    	   //selectJgiEntity.setInTrtCd(indto.getTrtCdPop());
-    	   //selectJgiEntity.setInAddrCodePref(indto.getAddrCodePrefPop());
-    	   //selectJgiEntity.setInTkCityCd(indto.getTkCityCdPop());
+//    	   selectJgiEntity.setInTrtCd("02");
+//    	   selectJgiEntity.setInAddrCodePref("01");
+//    	   selectJgiEntity.setInTkCityCd("018");
+    	   selectJgiEntity.setInTrtCd(indto.getTrtCdPop());
+    	   selectJgiEntity.setInAddrCodePref(indto.getAddrCodePrefPop());
+    	   selectJgiEntity.setInTkCityCd(indto.getTkCityCdPop());
 
        }else {
     	   selectJgiEntity.setInGmnFlg(1);
@@ -144,6 +145,23 @@ public class NC202Service extends BaseService {
        }
 
        List<SelectJgiEntity> selectJgiList = dao.select(selectJgiEntity);
+
+
+		if (selectJgiEntity.getInBumonRank() == 4) {
+			String sosCd = selectJgiList.get(0).getSosCd();
+
+			SelectRyakuNameEntity selectRyakuNameEntity = new SelectRyakuNameEntity();
+			selectRyakuNameEntity.setInSosCd(sosCd);
+			List<SelectRyakuNameEntity> selectRyakuNameList = dao.select(selectRyakuNameEntity);
+			String sosName = selectRyakuNameList.get(0).getBumonRyakuName();
+
+			for (SelectJgiEntity entity : selectJgiList) {
+				String nameJoin;
+				nameJoin = sosName + entity.getBumonRyakuName();
+				entity.setBumonRyakuName(nameJoin);
+			}
+		}
+
        List<JgiData> jgiDataList = new ArrayList<JgiData>(selectJgiList.size());
 
        for (SelectJgiEntity entity : selectJgiList) {

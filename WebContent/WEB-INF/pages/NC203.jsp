@@ -8,7 +8,7 @@
  * @author BHH 張
  */
 --%>
-<%@page import="jp.co.takeda.jkr.util.StringUtils"%>
+<%@page import="jp.co.takeda.rdm.util.StringUtils"%>
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
 <%@page import="org.apache.struts2.ServletActionContext"%>
 <%@page import="jp.co.takeda.rdm.dto.NC203DTO"%>

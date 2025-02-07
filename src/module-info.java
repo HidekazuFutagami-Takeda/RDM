@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 module RDM_GitHub {
+=======
+module rdmGithub {
+>>>>>>> Stashed changes
 	exports jp.co.takeda.rdm.action;
 	exports jp.co.takeda.rdm.common;
 	exports jp.co.takeda.rdm.util;

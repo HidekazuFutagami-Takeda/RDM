@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="s_rdm_jkr_sos_ins_abbr_name">
+    <resultMap id="SRdmJkrSosInsAbrrNameEntiryResultMap" type="jp.co.takeda.rdm.entity.SRdmJkrSosInsAbbrNameEntiry">
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+    </resultMap>
+
+    <select id="selectSRdmJkrSosInsAbrrNameEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosInsAbbrNameEntiry" resultMap="SRdmJkrSosInsAbrrNameEntiryResultMap">
+	SELECT DISTINCT HCO_MST.INS_ABBR_NAME
+		FROM ORAUSR01.M_RDM_HCO_DEPT_KR HCO_DEPT
+	 	INNER JOIN
+			 ORAUSR01.M_RDM_HCO_MST HCO_MST
+		ON 	 HCO_MST.INS_NO = HCO_DEPT.INS_NO
+		WHERE
+			 ORAUSR01.HCO_DEPT.INS_NO = #{insNo}
+    </select>
+
+</mapper>

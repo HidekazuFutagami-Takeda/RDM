@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="s_rdm_jkr_sos_req-kbn">
+    <resultMap id="SRdmJkrSosReqTypeEntiryResultMap" type="jp.co.takeda.rdm.entity.SRdmJkrSosReqTypeEntiry">
+        <result column="VALUE1" property="value1"/>
+        <result column="VALUE1_KANJ" property="value1Kanj"/>
+        <result column="IDFLG" property="idFlg"/>
+    </resultMap>
+
+    <select id="selectSRdmJkrSosReqTypeAllEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry" resultMap="SRdmJkrSosReqTypeEntiryResultMap">
+	 SELECT DISTINCT
+		    VALUE1,
+		    VALUE1_KANJ
+	  FROM
+	  	    ORAUSR01.M_RDM_CODE_MST
+	  WHERE
+	        CODE_NAME ='REQ_KBN_LB'
+	  AND   DEL_FLG = 0
+	  AND NOT VALUE1 LIKE '%X%'
+	  ORDER BY
+	   	    VALUE1
+    </select>
+    <select id="selectSRdmJkrSosReqTypeEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry" resultMap="SRdmJkrSosReqTypeEntiryResultMap">
+  SELECT DISTINCT
+   VALUE1,
+   VALUE1_KANJ
+  FROM
+   ORAUSR01.M_RDM_CODE_MST
+   WHERE
+      CODE_NAME ='REQ_KBN_LB'
+   AND DEL_FLG = 0
+   <if test="idFlg == 0">
+   AND (VALUE1 LIKE '0%'
+   OR   VALUE1 LIKE '1%'
+   OR   VALUE1 LIKE '2%')
+   </if>
+   <if test="idFlg == 1">
+   AND (VALUE1 LIKE '3%'
+   OR   VALUE1 LIKE '4%'
+   OR   VALUE1 LIKE '5%')
+   </if>
+   AND NOT VALUE1 LIKE '%X%'
+   ORDER BY
+   VALUE1
+
+    </select>
+
+</mapper>

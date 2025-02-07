@@ -12,7 +12,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.dto.JKR090C020DTO;
+//import jp.co.takeda.rdm.dto.JKR090C020DTO;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
@@ -53,7 +53,7 @@ public class ND301Action extends BaseAction<ND301DTO> {
     @Inject
     private ND301Service nD301Service;
     // 確認画面用にする
-    private JKR090C020DTO paramDto;
+    //private JKR090C020DTO paramDto;
     // START UOC
     // END UOC
 
@@ -178,18 +178,18 @@ public class ND301Action extends BaseAction<ND301DTO> {
      * 業務処理
      * @customizable
      */
-    @InputConfig(methodName="validationError")
-    public String register() throws Exception {
-        registerSetup();
-        // F層呼び出し
-        BaseDTO outdto = nD301Service.register(dto);
-        if (outdto instanceof ND301DTO) {
-            // START UOC
-//            outdto = nD301Service.register(dto);
-            // END UOC
-        }
-        return registerNext(outdto);
-    }
+//    @InputConfig(methodName="validationError")
+//    public String register() throws Exception {
+//        registerSetup();
+//        // F層呼び出し
+//        BaseDTO outdto = nD301Service.register(dto);
+//        if (outdto instanceof ND301DTO) {
+//            // START UOC
+////            outdto = nD301Service.register(dto);
+//            // END UOC
+//        }
+//        return registerNext(outdto);
+//    }
 
     /**
      * 前処理
@@ -206,21 +206,21 @@ public class ND301Action extends BaseAction<ND301DTO> {
      * 後処理
      * @customizable
      */
-    protected String registerNext(BaseDTO outdto) throws Exception {
-        // START UOC
-        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
-                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
-                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
-                && !RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
-                && !"exception".equals(outdto.getForward())){
-            setJumpInfo(dto.getMsgId());
-//            outdto.setForward("JKR090C020Init");
-        }
-        // END UOC
-        //TODO buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
+//    protected String registerNext(BaseDTO outdto) throws Exception {
+//        // START UOC
+//        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
+//                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
+//                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
+//                && !RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
+//                && !"exception".equals(outdto.getForward())){
+//            setJumpInfo(dto.getMsgId());
+////            outdto.setForward("JKR090C020Init");
+//        }
+//        // END UOC
+//        //TODO buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
+//        setNextDTO(outdto);
+//        return outdto.getForward();
+//    }
 
 //    /**
 //     * 業務処理
@@ -343,31 +343,31 @@ public class ND301Action extends BaseAction<ND301DTO> {
      * @param dto 登録完了画面DTO
      * @param msgId メッセージID
      */
-    private void setJumpInfo(String msgId) {
-        // メッセージオブジェクト取得
-        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-
-        String subTitle = "";
-        String jokenSetCd = dto.getLoginJokenSetCd();
-
-        //画面タイトル内容設定
-        paramDto = new JKR090C020DTO();
-        // ブラウザタイトル
-        paramDto.setBrowerTitle ("担当引継ぎ"+ subTitle);
-        // 画面タイトル
-        paramDto.setTitle("担当引継ぎ"+ subTitle);
-        // 戻るリンク(表示文言)
-        paramDto.setReturnLinkNm1("戻る");
-        // 戻るリンク(遷移先URL)
-        paramDto.setReturnLinkURL1("ND301Init");
-//        // メッセージ１
-//        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
-//        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
-
-        ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
-//        searchKey.setActionMtKbn("2");
-        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, searchKey);
-    }
+//    private void setJumpInfo(String msgId) {
+//        // メッセージオブジェクト取得
+//        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+//
+//        String subTitle = "";
+//        String jokenSetCd = dto.getLoginJokenSetCd();
+//
+//        //画面タイトル内容設定
+//        paramDto = new JKR090C020DTO();
+//        // ブラウザタイトル
+//        paramDto.setBrowerTitle ("担当引継ぎ"+ subTitle);
+//        // 画面タイトル
+//        paramDto.setTitle("担当引継ぎ"+ subTitle);
+//        // 戻るリンク(表示文言)
+//        paramDto.setReturnLinkNm1("戻る");
+//        // 戻るリンク(遷移先URL)
+//        paramDto.setReturnLinkURL1("ND301Init");
+////        // メッセージ１
+////        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
+////        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
+//
+//        ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
+////        searchKey.setActionMtKbn("2");
+//        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, searchKey);
+//    }
 
     /**
      * 前画面から組織関連パラメータ設定

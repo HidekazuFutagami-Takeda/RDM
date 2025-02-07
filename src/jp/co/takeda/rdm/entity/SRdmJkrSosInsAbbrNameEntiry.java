@@ -1,4 +1,4 @@
-package jp.co.takeda.jkr.entity;
+package jp.co.takeda.rdm.entity;
 
 import java.io.Serializable;
 import java.util.Date;

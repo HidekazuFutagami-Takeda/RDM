@@ -87,6 +87,7 @@
         <action name="NC001Init" class="nC001Action" method="init">
             <result name="NC001">/WEB-INF/pages/NC001.jsp</result>
         </action>
+<<<<<<< Updated upstream
         <action name="NC202Init" class="nC202Action" method="init">
             <result name="NC202">/WEB-INF/pages/NC202_01.jsp</result>
         </action>
@@ -129,6 +130,68 @@
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
         </action>
+=======
+        <action name="NC011Init" class="nC011Action" method="init">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NC011Search" class="nC011Action" method="search">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NC011Page" class="nC011Action" method="page">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+		<action name="NC011Page" class="nC011Action" method="page">
+			<result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+		</action>
+		<action name="NC011Sort" class="nC011Action" method="sort">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NC205Init" class="nC205Action" method="init">
+            <result name="NC205">/WEB-INF/pages/NC205.jsp</result>
+        </action>
+        <action name="NC202Init" class="nC202Action" method="init">
+            <result name="NC202">/WEB-INF/pages/NC202_01.jsp</result>
+        </action>
+        <action name="NC202AjaxJgi" class="nC202Action" method="ajaxJgi">
+            <result name="NC202_02">/WEB-INF/pages/NC202_02.jsp</result>
+        </action>
+        <action name="ND011Init" class="nD011Action" method="init">
+            <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
+        </action>
+        <action name="ND011Register" class="nD011Action" method="register">
+            <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
+            <result name="ND011Init" type="chain">ND011Init</result>
+            <result name="ND301Init" type="chain">ND301Init</result>
+        </action>
+        <action name="ND301Init" class="nD301Action" method="init">
+            <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
+            <result name="ND301">/WEB-INF/pages/ND301.jsp</result>
+        </action>
+        <action name="ND301Register" class="nD301Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="ND301">/WEB-INF/pages/ND301.jsp</result>
+        </action>
+        <action name="NC206Init" class="nC206Action" method="init">
+            <result name="NC206">/WEB-INF/pages/NC206.jsp</result>
+        </action>
+        <action name="NC206Register" class="nC206Action" method="register">
+            <result name="NC206">/WEB-INF/pages/NC206.jsp</result>
+        </action>
+        <action name="NC207Init" class="nC207Action" method="init">
+            <result name="NC207">/WEB-INF/pages/NC207.jsp</result>
+        </action>
+        <action name="NC207Register" class="nC207Action" method="register">
+            <result name="NC207">/WEB-INF/pages/NC207.jsp</result>
+        </action>
+        <action name="NF011Init" class="nF011Action" method="init">
+            <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+        </action>
+        <action name="NF011Cancel" class="nF011Action" method="cancel">
+            <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+>>>>>>> Stashed changes
         <action name="NF011Register" class="nF011Action" method="register">
         	<result name="NF011">/WEB-INF/pages/NF011.jsp</result>
             <result name="NF301">/WEB-INF/pages/NF301.jsp</result>

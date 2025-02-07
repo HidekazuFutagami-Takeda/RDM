@@ -71,6 +71,20 @@
         WHERE
             REQ_ID = #{reqId}
     </update>
+    <select id="selectNF313TrtChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkNxtReqEntity" resultMap="tRdmHcoLnkNxtReqResultMap">
+		SELECT
+		  HCO.REQ_ID  -- 武田紐親子_来期用_申請管理.申請ID
+		FROM
+		T_RDM_HCO_LNK_NXT_REQ HCO --- 武田紐親子_来期用_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		AND KNR.REQ_TYPE IN ('11')
+		AND KNR.REQ_STS IN ('03','13','04','14')
+		WHERE 1=1
+        AND HCO.INS_NO = #{insNo}
+    </select>
     <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkNxtReqEntity">
         DELETE FROM
             T_RDM_HCO_LNK_NXT_REQ

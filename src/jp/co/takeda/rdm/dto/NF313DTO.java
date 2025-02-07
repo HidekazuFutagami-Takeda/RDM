@@ -100,6 +100,12 @@ public class NF313DTO extends BaseDTO implements Serializable {
 	private String reqId;
 
 	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
+	/**
 	 * 申請者所属名称
 	 * @generated
 	 */
@@ -334,6 +340,12 @@ public class NF313DTO extends BaseDTO implements Serializable {
 	private String aprMemo;
 
 	/**
+	 * 承認・却下コメント
+	 * @generated
+	 */
+	private String aprComment;
+
+	/**
 	 * 表示分岐
 	 * 0:完全新規、1:ULTから作成、2：申請データあり
 	 * @generated
@@ -360,6 +372,13 @@ public class NF313DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String editApprFlg;
+
+	/**
+	 * 申請ボタン活性フラグ
+	 * 0：非活性、1:活性
+	 * @generated
+	 */
+	private String btnEnableFlg;
 
 	/**
 	 * メッセージ中身
@@ -560,6 +579,21 @@ public class NF313DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReqId(String reqId) {
 		this.reqId = reqId;
+	}
+
+	/**
+	 * NF313DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**
@@ -1148,6 +1182,21 @@ public class NF313DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF313DTO.javaaprCommentを設定
+	 * @return aprComment
+	 */
+	public String getAprComment() {
+		return aprComment;
+	}
+
+	/**
+	 * @param aprComment セットする aprComment
+	 */
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
+	}
+
+	/**
 	 * NF313DTO.javadisplayKbnを設定
 	 * @return displayKbn
 	 */
@@ -1205,6 +1254,21 @@ public class NF313DTO extends BaseDTO implements Serializable {
 	 */
 	public void setEditApprFlg(String editApprFlg) {
 		this.editApprFlg = editApprFlg;
+	}
+
+	/**
+	 * NF313DTO.javabtnEnableFlgを設定
+	 * @return btnEnableFlg
+	 */
+	public String getBtnEnableFlg() {
+		return btnEnableFlg;
+	}
+
+	/**
+	 * @param btnEnableFlg セットする btnEnableFlg
+	 */
+	public void setBtnEnableFlg(String btnEnableFlg) {
+		this.btnEnableFlg = btnEnableFlg;
 	}
 
 	/**

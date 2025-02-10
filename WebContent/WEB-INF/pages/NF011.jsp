@@ -959,6 +959,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	document.fm1.mainInsCd.value = insNo;
     	document.fm1.mainInsNm.value = insAbbrName;
 
+    	trtView();
     }
 
 	// 数値とﾊｲﾌﾝのみかチェック
@@ -1556,7 +1557,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-	      		<s:select id="insType" name="insType" cssStyle="width:120pt" list ="insTypeCombo" onchange='changeBox("1"); mainInsView(); vacView(); bedCntView();'/>
+	      		<s:select id="insType" name="insType" cssStyle="width:120pt" list ="insTypeCombo" onchange='changeBox("1"); mainInsView(); vacView(); bedCntView();　trtView();;'/>
 	      		<s:textfield id="insTypeView" name="insTypeView" cssStyle="width:120pt" readonly="true" />
       		</nobr>
       	　　</td>
@@ -1579,7 +1580,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
           	    <nobr>
                 <s:textfield name="mainInsNm" id="mainInsNm" size="20" maxlength="150" style="background-color:#D4D0C8" readonly="true" />
                 <s:hidden name="mainInsCd" id="mainInsCd" onchange='trtView();'/>
-                <a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.mainInsCd.value='';document.fm1.mainInsNm.value='';return false;">Clear</a>
+                <a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.mainInsCd.value='';document.fm1.mainInsNm.value='';trtView();return false;">Clear</a>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

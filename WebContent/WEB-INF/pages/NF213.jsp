@@ -263,6 +263,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
+	<s:hidden name="trtCd"/>
+	<s:hidden name="hinGCd"/>
 	<s:hidden name="koshisetsuCheck"/>
 	<s:hidden name="kensakuInsSbt"/>
 	<s:hidden name="insSbt"/>

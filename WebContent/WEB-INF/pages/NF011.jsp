@@ -1042,6 +1042,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.functionId.value="Init";
 		document.fm1.target="tantoPopWindow";
 
+		document.fm1.trtCdPop.value = document.fm1.trtCd.value;
+		document.fm1.addrCodePrefPop.value = document.fm1.addrCodePref.value;
+		document.fm1.tkCityCdPop.value = document.fm1.tkCityCd.value;
+
 		document.fm1.selectFlgPop.value="1";
 		document.fm1.callBack.value="callBackTantoPop";
 
@@ -1354,6 +1358,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="ultInsCd"/>
 	<s:hidden name="ultInsNm"/>
 	<s:hidden name="editApprFlg"/>
+
+	<s:hidden name="addrCodePrefPop"/>
+	<s:hidden name="tkCityCdPop"/>
 
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>

@@ -140,6 +140,18 @@
         <action name="NC207Register" class="nC207Action" method="register">
             <result name="NC207">/WEB-INF/pages/NC207.jsp</result>
         </action>
+        <action name="ND001Init" class="nD001Action" method="init">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="ND001Search" class="nD001Action" method="search">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="ND001Page" class="nD001Action" method="page">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="ND001Sort" class="nD001Action" method="sort">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
         <action name="NF011Init" class="nF011Action" method="init">
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
         </action>

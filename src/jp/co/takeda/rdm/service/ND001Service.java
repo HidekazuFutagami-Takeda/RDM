@@ -12,26 +12,26 @@ import java.util.LinkedHashMap;
 
 
 
-import jp.co.takeda.jkr.common.LoginInfo;
-import jp.co.takeda.jkr.common.BaseInfoHolder;
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BaseService;
-import jp.co.takeda.jkr.common.BeanUtil;
-import jp.co.takeda.jkr.entity.join.SelectHcpEntity;
-import jp.co.takeda.jkr.entity.join.SelectCntSelectHcpEntity;
-import jp.co.takeda.jkr.entity.join.SelectParamNd001Entity;
-import jp.co.takeda.jkr.entity.join.SelectParamSwitchEntity;
-import jp.co.takeda.jkr.entity.join.SelectNd001ComboListEntity;
-import jp.co.takeda.jkr.entity.join.SelectNd001ShussinkoComboListEntity;
-import jp.co.takeda.jkr.entity.join.SelectNd001IkkComboListEntity;
-import jp.co.takeda.jkr.entity.join.SelectHenkanListEntity;
+import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.entity.join.SelectHcpEntity;
+import jp.co.takeda.rdm.entity.join.SelectCntSelectHcpEntity;
+import jp.co.takeda.rdm.entity.join.SelectParamNd001Entity;
+import jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd001ComboListEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd001ShussinkoComboListEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd001IkkComboListEntity;
+import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 
-import jp.co.takeda.jkr.entity.MRdmComCalUsrEntity;
+import jp.co.takeda.rdm.entity.MRdmComCalUsrEntity;
 
 import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.dto.HcpData;
-import jp.co.takeda.jkr.util.StringUtils;
+import jp.co.takeda.rdm.util.StringUtils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

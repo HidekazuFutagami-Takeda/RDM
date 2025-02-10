@@ -8,7 +8,7 @@ package jp.co.takeda.rdm.dto;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 
-import jp.co.takeda.jkr.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseDTO;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.ArrayList;

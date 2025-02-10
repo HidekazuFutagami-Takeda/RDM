@@ -15,13 +15,12 @@ import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.context.annotation.Scope;
 
-import jp.co.takeda.jkr.common.BaseAction;
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.dto.JKR040C010DTO;
+import jp.co.takeda.rdm.common.BaseAction;
+import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.service.ND001Service;
-import jp.co.takeda.jkr.util.AppConstant;
-import jp.co.takeda.jkr.util.JkrConstantsData;
+import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.JkrConstantsData;
 
 /**
  * Actionクラス
@@ -165,7 +164,7 @@ public class ND001Action extends BaseAction<ND001DTO> {
         pageSetup();
         // F層呼び出し
         BaseDTO outdto = nD001Service.page(dto);
-        if (outdto instanceof JKR040C010DTO) {
+        if (outdto instanceof ND001DTO) {
             // START UOC
 
             // END UOC
@@ -209,7 +208,7 @@ public class ND001Action extends BaseAction<ND001DTO> {
         pageSetup();
         // F層呼び出し
         BaseDTO outdto = nD001Service.sort(dto);
-        if (outdto instanceof JKR040C010DTO) {
+        if (outdto instanceof ND001DTO) {
             // START UOC
 
             // END UOC

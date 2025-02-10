@@ -12,7 +12,7 @@
         <result column="UP_SOS_CD" property="upSosCd"/>
         <result column="TRT_CD" property="trtCd"/>
     </resultMap>
-    <resultMap id="selectInitJgiResultMap" type="jp.co.takeda.jkr.entity.join.SelectInitJgiEntity">
+    <resultMap id="selectInitJgiResultMap" type="jp.co.takeda.rdm.entity.join.SelectInitJgiEntity">
         <result column="BUMON_RANK" property="bumonRank"/>
         <result column="SOS_CD" property="sosCd"/>
         <result column="BUMON_RYAKU_NAME" property="bumonRyakuName"/>
@@ -21,7 +21,7 @@
         <result column="DIST_SEQ" property="distSeq"/>
         <result column="UP_SOS_CD" property="upSosCode"/>
     </resultMap>
-    <resultMap id="selectJgiResultMap" type="jp.co.takeda.jkr.entity.join.SelectJgiEntity">
+    <resultMap id="selectJgiResultMap" type="jp.co.takeda.rdm.entity.join.SelectJgiEntity">
         <result column="BUMON_RANK" property="bumonRank"/>
         <result column="SOS_CD" property="sosCd"/>
         <result column="BUMON_RYAKU_NAME" property="bumonRyakuName"/>
@@ -60,10 +60,10 @@
             S_RDM_COM_LNK_TRT_SHOKUSHU.TEKIYO_START_DATE AND S_RDM_COM_LNK_TRT_SHOKUSHU.TEKIYO_END_DATE
         AND M_RDM_JGI_SOS_MST.JGI_NO = #{jgiNo}
     </select>
-    <resultMap id="selectRyakuNameResultMap" type="jp.co.takeda.jkr.entity.join.SelectRyakuNameEntity">
+    <resultMap id="selectRyakuNameResultMap" type="jp.co.takeda.rdm.entity.join.SelectRyakuNameEntity">
         <result column="BUMON_RYAKU_NAME" property="bumonRyakuName"/>
     </resultMap>
-    <select id="selectInitJgi" parameterType="jp.co.takeda.jkr.entity.join.SelectInitJgiEntity" resultMap="selectInitJgiResultMap">
+    <select id="selectInitJgi" parameterType="jp.co.takeda.rdm.entity.join.SelectInitJgiEntity" resultMap="selectInitJgiResultMap">
           SELECT DISTINCT
             JGI_SOS_MST.BUMON_RANK BUMON_RANK,
             JGI_SOS_MST.SOS_CD SOS_CD,
@@ -77,7 +77,7 @@
           WHERE 1 = 1
           AND SOS_CD = '01050'
     </select>
-    <select id="selectJgi" parameterType="jp.co.takeda.jkr.entity.join.SelectJgiEntity" resultMap="selectJgiResultMap">
+    <select id="selectJgi" parameterType="jp.co.takeda.rdm.entity.join.SelectJgiEntity" resultMap="selectJgiResultMap">
           <if test="inGmnFlg == 0">
               <if test="inBumonRank == 2">
               WITH SOS_LNK AS(
@@ -313,7 +313,7 @@
               </if>
           </if>
     </select>
-    <select id="selectRyakuName" parameterType="jp.co.takeda.jkr.entity.join.SelectRyakuNameEntity" resultMap="selectRyakuNameResultMap">
+    <select id="selectRyakuName" parameterType="jp.co.takeda.rdm.entity.join.SelectRyakuNameEntity" resultMap="selectRyakuNameResultMap">
          WITH SOS_LNK AS(
             SELECT DISTINCT
                 UP_SOS_CD

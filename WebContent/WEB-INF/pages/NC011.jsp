@@ -12,9 +12,6 @@
 <%@page import="jp.co.takeda.rdm.util.StringUtils"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="org.apache.struts2.ServletActionContext"%>
-<!--<%@page import="jp.co.takeda.rdm.dto.JKR040C010DTO"%>
-<%@page import="jp.co.takeda.rdm.dto.ChgInsTrtList"%>
-<%@page import="jp.co.takeda.rdm.dto.ChgInsTrtTrtList"%>-->
 <%@page import="jp.co.takeda.rdm.util.AppMethods"%>
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
 
@@ -42,7 +39,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title>施設別・地区別（施設）担当変更</title>
+    <title>NC011_申請一覧</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="css/common2.css" rel="Stylesheet" type="text/css" />
     <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -75,24 +72,38 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 %>
 </head>
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="申請一覧"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
 
+ <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
 
+	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
+		<tbody>
+		<s:if test="msgStr != null">
+			<tr>
+				<td>
+					<nobr>
+					<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
+					</nobr>
+				</td>
+			</tr>
+		</s:if>
+		</tbody>
+	</table>
 
-
-<table class="comPortalControlTable" style="margin-top:3pt;margin-bottom:1pt;" border="0"></table>
-<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-<tbody>
-<s:if test="msgStr != null">
-<tr>
-<td>
-<nobr>
-<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-</nobr>
-</td>
-</tr>
-</s:if>
-</tbody>
-</table>
 <table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
   <tbody>
   <tr/>
@@ -102,11 +113,16 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <s:form name="fm1" theme="simple" >
     <s:hidden name="screenId"  />
     <s:hidden name="functionId" />
+
+    <s:hidden id="pageFlag" name="pageFlag" />
+
     <input type="hidden" name="windowName" value="" />
     <input type="hidden" name="openerName" value="" />
 
 	<s:hidden id="mrAdminCd" name="mrAdminCd"/>
     <s:hidden id="mrAdminFlg" name="mrAdminFlg"/>
+    <s:hidden id="preScreenId" name="preScreenId"/>
+
 
 	<s:hidden id="jgiNo" name="jgiNo"/>
     <s:hidden id="jgiName" name="jgiName"/>
@@ -123,15 +139,18 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
 	<s:hidden id="sortCondition" name="sortCondition" />
 
-    <s:hidden id="reqBrCode" name="reqBrCode"/><!-- 申請者所属リージョン -->
-	<s:hidden id="reqDistCode" name="reqDistCode"/><!-- 申請者所属エリア -->
+	<s:hidden id="bumonRank" name="bumonRank"/>
+	<s:hidden id="sosCd" name="sosCd"/>
+<!--  <s:hidden id="bumonRyakuName" name="bumonRyakuName"/>  申請者所属-->
+    <s:hidden id="brCode" name="brCode"/><!-- 申請者所属リージョン -->
+	<s:hidden id="distCode" name="distCode"/><!-- 申請者所属エリア -->
 
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
 	<tr><td>
 <%-- 検索部 開始 --%>
 
-	<CENTER>
+
 <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
     <tbody>
       <s:if test="msgStr != null">
@@ -209,10 +228,13 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	</tr>
 	<tr>
 						<%-- 申請者所属 --%>
-			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr></td>
+			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
+			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init')"/>
+			   </nobr>
+			</td>
 				<td>
-				<nobr><s:submit value="選択" name="選択" onclick="this.form.action='%{inSearchInput}';  this.form.submit();return false;" onkeypress="if(event.keyCode==13){event.returnValue=false}" />
-					<s:textfield size="20" maxlength="40" name="reqShz" STYLE="ime-mode:active" /></nobr>
+					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" />
+					<a href ="" onClick="popClear();return false;">Clear</a>
 				</td>
 							<%-- 施設固定C --%>
 			<td class="pupControlItem"><nobr>&nbsp;施設固定C</nobr></td>
@@ -254,12 +276,21 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	</tr>
 	<tr>
 						<%-- 申請日: 操作日-1カ月、操作日 --%>
+				<s:if test='preScreenId == "NM001"'>
+				<td>
+					<input type="date" size="20" maxlength="40" name="reqYmdhmsFrom" id="inreqYmdhmsFrom" value="${reqYmdhmsFrom}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>　～
+				</td>
+				<td>
+					<input type="date" size="20" maxlength="40" name="reqYmdhmsTo" id="inreqYmdhmsTo" value="${reqYmdhmsTo}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>
+				</td>
+				</s:if>
+				<s:if test='preScreenId != "NM001"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
 				<td>
 				<input type="date" name ="reqYmdhmsFrom"id="inreqYmdhmsFrom" value="${inreqYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
 				<input type="date" name ="reqYmdhmsTo"  id="inreqYmdhmsTo" value="${inreqYmdhmsTo}" pattern="yyyy-MM-dd" />
-
 				</td>
+				</s:if>
 					　　<%-- 施設分類 --%>
 			<td class="pupControlItem"><nobr>&nbsp;施設分類</nobr></td>
 	            <td class="comTableSearchItem">
@@ -273,6 +304,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	</tr>
 
 	<tr>
+
 						<%--連携種別 --%>
 			<td class="pupControlItem"><nobr>&nbsp;連携種別</nobr></td>
             <td class="comTableSearchItem">
@@ -280,11 +312,6 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				<s:select id="jkrSosReqSbtMap" name="reqSbt" cssStyle="width:80pt" list ="jkrSosReqSbtMap" />
 				</span>
 		    </td>
-
-
-
-
-
 						<%-- 施設種別 --%>
 			<td class="pupControlItem"><nobr>&nbsp;施設種別</nobr></td>
 	            <td class="comTableSearchItem">
@@ -345,10 +372,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			    </td>
 				</s:if>
 	</tr>
-
-
-</table>
+<tr>
+<td>
+   <input type="button" name="search" value="検索" onclick="rdmSearch();">
+   </td>
+   <td>
+   <input type="button" name="クリア" value="クリア" onclick="rdmCler();return false;" /></td>
+   </tr>
 <%-- ページャー表示 開始 --%>
+          <s:if test='pageFlag == "1" '>
+          </s:if>
+          <s:if test='pageFlag !="1"'>
                  <!-- 改ページ -->
                   <table width="95%" >
                       <tbody>
@@ -416,21 +450,18 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                       </tr>
                       </tbody>
                   </table>
+                  </s:if>
           <%-- ページャー表示 終了 --%>
+</table>
 <table>
-<tr>
-<td>
-   <input type="button" name="search" value="検索" onclick="rdmSearch();">
-   </td>
-   <td>
-   <input type="button" name="クリア" value="クリア" onclick="rdmCler();" /></td>
-   </tr>
-   </table>
-<a href="yourTargetPage.jsp?param=${yourValue}">${yourValue}ああああ</a>
+   <s:if test='pageFlag == "1" '>
+          <!-- なにも表示しない -->
+      </s:if>
+   <s:else>
+	<tr>
+	      <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
 
- 	<div id="osirase" align="center"  style="background-color:#ffffff; height:300px; overflow-y:scroll; border-width:1px; border-style:solid;">
-  <table  align="center" style="width:2100px; cellpadding="2" cellspacing="0" border="0"  >
-    <%-- 項目 --%>
+				  <%-- ヘッダー行 --%>
 	<tr class="comTableTitle">
 		<td class="comTableTitle" style="width:90px; border:none;">申請ID
 			 <span style="font-size: 1pt;"> </span>
@@ -439,7 +470,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		     <a class="<%=reqIdDescClass %>" href="" onclick="NC011Sort(1);return false;">▼</a>
 		</td>
 
-		<td class="comTableTitle" style="width:90px; border:none;">申請日時
+		<td class="comTableTitle" style="width:120px; border:none;">申請日時
 			 <span style="font-size: 1pt;"> </span>
 		     <a class="<%=reqYmdhmsAscClass %>" href="" onclick="NC011Sort(2);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
@@ -494,71 +525,77 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <td class="comTableTitle" style="width:30px; border:none;">FB処理区分</td>
     </s:if>
 	</tr>
+	</table>
     <%-- 内容 --%>
+              <div style="max-height:300px;width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+                  <table class="tkdUlt" =border=1 cellpadding=2 cellspacing=0 style="width:1240px;">
 
     <s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
-	 <tr>
-		  <td class="comTableItem" style="width:100px;">
+			 <tr>
+				  <td class="comTableItem" style="width:180px;">
+					  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />');return false;">
+				          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+				             <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
+				          </acronym>
+		              </a>
+				  </td>
+		          <td class="comTableItem" style="width:150px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo"  key="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo" /></td>
+		          <td class="comTableItem" style="width:5px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqSbt"  key="catSnseiComboDataList[%{#status.index}].reqSbt" /></td>
+		          <td class="comTableItem" style="width:10px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqType"  key="catSnseiComboDataList[%{#status.index}].reqType" /></td>
+		          <td class="comTableItem" style="width:10px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqSts"  key="catSnseiComboDataList[%{#status.index}].reqSts" /></td>
+		          <td class="comTableItem" style="width:65px; "><s:label  name="catSnseiComboDataList[%{#status.index}].sbt"  key="catSnseiComboDataList[%{#status.index}].sbt"/></td>
+		          <td class="comTableItem" style="width:65px; "><s:label  name="catSnseiComboDataList[%{#status.index}].insNo"  key="catSnseiComboDataList[%{#status.index}].insNo" /></td>
+		          <td class="comTableItem" style="width:300px;"><s:label  name="catSnseiComboDataList[%{#status.index}].insFormalName"  key="catSnseiComboDataList[%{#status.index}].insFormalName" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqJgiName"  key="catSnseiComboDataList[%{#status.index}].reqJgiName" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqShz"  key="catSnseiComboDataList[%{#status.index}].reqShz" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqComment"  key="catSnseiComboDataList[%{#status.index}].reqComment" /></td>
+		        <s:if test='mrAdminFlg == "1"'>
+		          <td class="comTableItem" style="width:300px;"><s:label  name="catSnseiComboDataList[%{#status.index}].shnFlg"  key="catSnseiComboDataList[%{#status.index}].shnFlg" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].shnYmdhms"  key="catSnseiComboDataList[%{#status.index}].shnYmdhms" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].shnShaId"  key="catSnseiComboDataList[%{#status.index}].shnShaId" /></td>
+		        </s:if>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS"  key="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID"  key="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_MEMO"  key="catSnseiComboDataList[%{#status.index}].aPR_MEMO" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aprComment"  key="catSnseiComboDataList[%{#status.index}].aprComment" /></td>
+		      	<s:if test='mrAdminFlg == "1"'>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].fbReqFlg"  key="catSnseiComboDataList[%{#status.index}].fbReqFlg" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].fbAnsId"  key="catSnseiComboDataList[%{#status.index}].fbAnsId" /></td>
+		          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].fbPrcType"  key="catSnseiComboDataList[%{#status.index}].fbPrcType" /></td>
+		      	</s:if>
 
-		                               <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"
-                                        onClick="NC011Seni('<s:property  value="reqType" />');return false;">
-                                           <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
-                                                 <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
-                                              </acronym>
-
-                                      </a>
-		  </td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo"  key="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo" /></td>
-          <td class="comTableItem" style="width:10px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqSbt"  key="catSnseiComboDataList[%{#status.index}].reqSbt" /></td>
-          <td class="comTableItem" style="width:10px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqType"  key="catSnseiComboDataList[%{#status.index}].reqType" /></td>
-          <td class="comTableItem" style="width:10px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqSts"  key="catSnseiComboDataList[%{#status.index}].reqSts" /></td>
-          <td class="comTableItem" style="width:65px; "><s:label  name="catSnseiComboDataList[%{#status.index}].sbt"  key="catSnseiComboDataList[%{#status.index}].sbt"/></td>
-          <td class="comTableItem" style="width:65px; "><s:label  name="catSnseiComboDataList[%{#status.index}].insNo"  key="catSnseiComboDataList[%{#status.index}].insNo" /></td>
-          <td class="comTableItem" style="width:300px;"><s:label  name="catSnseiComboDataList[%{#status.index}].insFormalName"  key="catSnseiComboDataList[%{#status.index}].insFormalName" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqJgiName"  key="catSnseiComboDataList[%{#status.index}].reqJgiName" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqShz"  key="catSnseiComboDataList[%{#status.index}].reqShz" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].reqComment"  key="catSnseiComboDataList[%{#status.index}].reqComment" /></td>
-          <s:if test='mrAdminFlg == "1"'>
-          <td class="comTableItem" style="width:300px;"><s:label  name="catSnseiComboDataList[%{#status.index}].shnFlg"  key="catSnseiComboDataList[%{#status.index}].shnFlg" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].shnYmdhms"  key="catSnseiComboDataList[%{#status.index}].shnYmdhms" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].shnShaId"  key="catSnseiComboDataList[%{#status.index}].shnShaId" /></td>
-          </s:if>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS"  key="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID"  key="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_MEMO"  key="catSnseiComboDataList[%{#status.index}].aPR_MEMO" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].aprComment"  key="catSnseiComboDataList[%{#status.index}].aprComment" /></td>
-      <s:if test='mrAdminFlg == "1"'>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].fbReqFlg"  key="catSnseiComboDataList[%{#status.index}].fbReqFlg" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].fbAnsId"  key="catSnseiComboDataList[%{#status.index}].fbAnsId" /></td>
-          <td class="comTableItem" style="width:50px; "><s:label  name="catSnseiComboDataList[%{#status.index}].fbPrcType"  key="catSnseiComboDataList[%{#status.index}].fbPrcType" /></td>
-      </s:if>
       </tr>
     </s:iterator>
     </table>
-    </div>
-	</CENTER>
+</div>
+    </s:else>
+
+    </td>
+    </tr>
+    </table>
+            <tr>
+        	      <td class="comFormTableItem">
+                <nobr>
+                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
+                </nobr>
+	      </td>
+
 <%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>
 <!--  <hr class="comSplit" /> -->
 <%-- 後制御部 --%>
- <table class="comPortalControlTable comPortalControlTablePopup" align="center" style="width:300pt;" >
-        <tr>
-        <td width="100%"></td>
-             <td class="comPortalControlItem">
-            <%--    <nobr style="position: fixed; bottom: 20; left: 20;width: 100%; text-align: left;">  --%>
-                <input type="button" value="戻る" OnClick="cdcClose();">
-            </td>
-        </tr>
-    </table>
-	</td></tr>
+
 	</table>
-</s:form>
+
     </tbody>
     </table>
+    </s:form>
+    </table>
 <%-- ポータルボディー 終了 --%>
-   <input type="hidden" name="dummy" value="dummy" />
+
 
 <%-- メイン部 一覧 終了 --%>
 <%-- ポータル大枠 終了 --%>
-
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
 </body>
 </html>

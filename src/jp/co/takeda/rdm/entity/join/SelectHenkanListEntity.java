@@ -65,7 +65,7 @@ public class SelectHenkanListEntity extends BaseEntity implements Serializable {
      * @generated
      */
     public SelectHenkanListEntity(String henkanType) {
-        super("m_rdm_henkan" , "selectHenkan");
+        super("m_rdm_henkan-sqlmap" , "selectHenkan");
         this.henkanType = henkanType;
     }
 

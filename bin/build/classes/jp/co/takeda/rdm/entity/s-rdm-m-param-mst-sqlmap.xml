@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_param_mst">
+    <resultMap id="sRdmMParamMstResultMap" type="jp.co.takeda.rdm.entity.SRdmMParamMstEntity">
+        <result column="PARAM_KANJ" property="paramKanj"/>
+        <result column="PARAM_NAME" property="paramName"/>
+        <result column="VALUE_KANJ" property="valueKanj"/>
+        <result column="VALUE" property="value"/>
+        <result column="BIKO" property="biko"/>
+    </resultMap>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.SRdmMParamMstEntity" resultMap="sRdmMParamMstResultMap">
+            SELECT
+              PARAM_KANJ --パラメタ名（漢字）
+             ,PARAM_NAME --パラメタ名
+             ,VALUE_KANJ --値（漢字）
+             ,VALUE      --値
+             ,BIKO       --備考
+            FROM
+              ORAUSR01.M_RDM_PARAM_MST
+    </select>
+</mapper>

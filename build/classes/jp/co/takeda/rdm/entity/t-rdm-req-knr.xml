@@ -21,8 +21,8 @@
         <result column="APR_COMMENT" property="aprComment"/>
         <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
         <result column="REQ_JGI_NO" property="reqJgiNo"/>
-        <result column="REQ_BR_CODE" property="reqBrCode"/>
-        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="REQ_BR_CODE" property="brCode"/>
+        <result column="REQ_DIST_CODE" property="distCode"/>
         <result column="INS_NO_SK" property="insNoSk"/>
         <result column="INS_NO_MT" property="insNoMt"/>
         <result column="INS_ABBR_NAME" property="insAbbrName"/>
@@ -75,8 +75,8 @@
         <result column="APR_COMMENT" property="aprComment"/>
         <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
         <result column="REQ_JGI_NO" property="reqJgiNo"/>
-        <result column="REQ_BR_CODE" property="reqBrCode"/>
-        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="REQ_BR_CODE" property="brCode"/>
+        <result column="REQ_DIST_CODE" property="distCode"/>
         <result column="INS_NO_SK" property="insNoSk"/>
         <result column="INS_NO_MT" property="insNoMt"/>
         <result column="INS_ABBR_NAME" property="insAbbrName"/>
@@ -118,7 +118,7 @@
 		    CASE
 			        WHEN REQ_KNR.REQ_TYPE IN ('01','02','03','04') THEN HCO_REQ.INS_NO
 			        WHEN REQ_KNR.REQ_TYPE IN ('11','12','13','21')  THEN HCO_MST.INS_NO
-			END AS INS_NO --施設、医師、どちらかになるが、分けると長くなるため省略のためINS＿NOに統一
+			END AS INS_NO
 			,CASE
 			        WHEN REQ_KNR.REQ_TYPE IN ('01','02','03','04') THEN HCO_REQ.INS_FORMAL_NAME
 			        WHEN REQ_KNR.REQ_TYPE IN ('11','12','13','21')   THEN HCO_MST.INS_FORMAL_NAME
@@ -127,7 +127,7 @@
 		    ,CASE
 			        WHEN REQ_KNR.REQ_TYPE IN ('31','32','33','34') THEN HCP_REQ.DOC_NO
 			        WHEN REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')  THEN HCP_MST.DOC_NO
-			END AS DOC_NO --施設、医師、どちらかになるが、分けると長くなるため省略のためINS＿NOに統一
+			END AS DOC_NO
 			,CASE
 			        WHEN REQ_KNR.REQ_TYPE IN ('31','32','33','34') THEN HCP_REQ.DOC_KANJ
 			        WHEN REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')  THEN HCP_MST.DOC_KANJ
@@ -196,12 +196,10 @@
 		AND REQ_KNR.REQ_JGI_NO = #{reqJgiNo}
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
-	    <if test="reqBrCode != null">
-	    AND REQ_KNR.REQ_BR_CODE = #{reqBrCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)
-	    </if>
-	    <if test="reqDistCode != null">
-		AND REQ_KNR.REQ_DIST_CODE = #{reqDistCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)
-		</if>
+	    <if test="brCode != null">
+	    AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
+	    <if test="distCode != null">
+		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)		</if>
 	    <if test="reqJgiName != null">
 	    AND REQ_KNR.REQ_JGI_NAME LIKE  '%' || #{reqJgiName} || '%'
 	    </if>
@@ -430,15 +428,13 @@
 		AND REQ_KNR.REQ_JGI_NO = #{reqJgiNo}
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
-	    <if test="reqBrCode != null">
-	    AND REQ_KNR.REQ_BR_CODE = #{reqBrCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)
-	    </if>
-	    <if test="reqDistCode != null">
-		AND REQ_KNR.REQ_DIST_CODE = #{reqDistCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)
+	    <if test="brCode != null">
+	    AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
+	    <if test="distCode != null">
+		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)
 		</if>
-	    <if test="reqJgiName != null">
-	    AND REQ_KNR.REQ_JGI_NAME LIKE  '%' || #{reqJgiName} || '%'
-	    </if>
+	    <if test="distCode != null">
+		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)	    </if>
 	   	<if test="reqShz != null">
 	    AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
 	    </if><!-- 管理者 -->

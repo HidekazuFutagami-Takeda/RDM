@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_henkan-sqlmap">
+    <resultMap id="SelectHenkanResultMap" type="jp.co.takeda.rdm.entity.join.SelectHenkanListEntity">
+    	<result column="SEARCH_HENKAN" property="searchHenkan"/>
+    </resultMap>
+
+    <!-- 施設一覧 _変換系-->
+    <select id="selectHenkan" parameterType="jp.co.takeda.rdm.entity.join.SelectHenkanListEntity" resultMap="SelectHenkanResultMap">
+    	SELECT
+    		<if test="henkanType == '漢字変換'">
+		 		ORAUSR01.F_RDM_KJ_HENKAN(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == '半角変換'">
+		 		ORAUSR01.F_RDM_HW_HENKAN(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == 'ハイフン変換'">
+		 		ORAUSR01.F_RDM_HY_HENKAN(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == 'ハイフン除去'">
+		 		ORAUSR01.F_RDM_HY_REMOVE(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == '全角変換'">
+		 		ORAUSR01.F_RDM_FW_HENKAN(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		FROM
+		  dual
+    </select>
+
+
+</mapper>

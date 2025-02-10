@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="s_rdm_m_jgi_joken">
+    <resultMap id="sRdmMJgiJokenResultMap" type="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
+        <result column="JGI_NO" property="jgiNo"/>
+        <result column="JOKEN_SET_CD" property="jokenSetCd"/>
+    </resultMap>
+    <resultMap id="selectJokenSetListResultMap" type="jp.co.takeda.rdm.entity.join.SelectJokenSetListEntity">
+        <result column="JOKEN_SET_CD" property="jokenSetCd"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity" resultMap="sRdmMJgiJokenResultMap">
+        SELECT
+            JGI_NO, JOKEN_SET_CD
+        FROM
+            ORAUSR01.S_RDM_M_JGI_JOKEN
+        WHERE
+            JGI_NO = #{jgiNo} AND JOKEN_SET_CD = #{jokenSetCd}
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity" resultMap="sRdmMJgiJokenResultMap">
+        SELECT
+            JGI_NO, JOKEN_SET_CD
+        FROM
+            ORAUSR01.S_RDM_M_JGI_JOKEN
+        WHERE
+            JGI_NO = #{jgiNo} AND JOKEN_SET_CD = #{jokenSetCd}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity" resultMap="sRdmMJgiJokenResultMap">
+        SELECT
+            JGI_NO, JOKEN_SET_CD
+        FROM
+            ORAUSR01.S_RDM_M_JGI_JOKEN
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity" resultMap="sRdmMJgiJokenResultMap">
+        SELECT
+            JGI_NO, JOKEN_SET_CD
+        FROM
+            ORAUSR01.S_RDM_M_JGI_JOKEN
+        <where>
+            <if test="jgiNo != null">AND JGI_NO = #{jgiNo}</if>
+            <if test="jokenSetCd != null">AND JOKEN_SET_CD = #{jokenSetCd}</if>
+        </where>
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            ORAUSR01.S_RDM_M_JGI_JOKEN
+        <where>
+            <if test="jgiNo != null">AND JGI_NO = #{jgiNo}</if>
+            <if test="jokenSetCd != null">AND JOKEN_SET_CD = #{jokenSetCd}</if>
+        </where>
+    </select>
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
+        INSERT INTO
+            S_JKR_M_JGI_JOKEN(JGI_NO, JOKEN_SET_CD)
+        VALUES
+            (#{jgiNo}, #{jokenSetCd})
+    </insert>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
+        INSERT INTO
+            S_JKR_M_JGI_JOKEN(<trim suffixOverrides=",">JGI_NO,JOKEN_SET_CD,</trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{jgiNo},#{jokenSetCd},</trim>)
+    </insert>
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
+        UPDATE
+            S_JKR_M_JGI_JOKEN
+        SET
+            <trim suffixOverrides=","></trim>
+        WHERE
+            JGI_NO = #{search.jgiNo} AND JOKEN_SET_CD = #{search.jokenSetCd}
+    </update>
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
+        UPDATE
+            S_JKR_M_JGI_JOKEN
+        <set>
+        </set>
+        WHERE
+            JGI_NO = #{search.jgiNo} AND JOKEN_SET_CD = #{search.jokenSetCd}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
+        DELETE FROM
+            S_JKR_M_JGI_JOKEN
+        WHERE
+            JGI_NO = #{jgiNo} AND JOKEN_SET_CD = #{jokenSetCd}
+    </delete>
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
+        DELETE FROM
+            S_JKR_M_JGI_JOKEN
+        <where>
+            <if test="jgiNo != null">AND JGI_NO = #{jgiNo}</if>
+            <if test="jokenSetCd != null">AND JOKEN_SET_CD = #{jokenSetCd}</if>
+        </where>
+    </delete>
+   <select id="selectJokenSetList" parameterType="jp.co.takeda.rdm.entity.join.SelectJokenSetListEntity" resultMap="selectJokenSetListResultMap">
+            SELECT
+              A.JOKEN_SET_CD --条件セット
+            FROM
+              M_JGI_JOKEN A
+            WHERE A.JGI_NO = #{inJgiNo}
+              ORDER BY
+                  A.JOKEN_SET_CD
+    </select>
+</mapper>

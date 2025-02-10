@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="画面項目定義書" output="screenvalidation.xml" maxColumn="200">
+    <sheet index="*入力チェック定義*" toName="入力チェック定義">
+        <!-- 全体共通設定 -->
+        <label match="システム名" />
+        <label match="サブシステム名" />
+        <label match="画面ID" />
+        <label match="画面名" />
+        <label match="更新者" direction="bottom" />
+        <label match="更新日" direction="bottom" />
+        <vlist match="入力チェック">
+            <property match="イベントID" />
+            <property match="No." />
+            <property match="項目ID" />
+            <property match="繰返変数名" />
+            <property match="入力形式" />
+            <property match="属性" >
+                <subProperty match="属性値1" />
+                <subProperty match="属性値2" />
+                <subProperty match="属性値3" />
+                <subProperty match="属性値4" />
+            </property>
+            <property match="メッセージID" />
+        </vlist>
+    </sheet>
+</rule>

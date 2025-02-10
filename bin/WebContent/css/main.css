@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #ffffff;
+	font-family: "Meiryo UI";
+}
+
+#header {
+	text-align: center;
+	font-weight: 600;
+	font-size: 18pt;
+}
+
+.title {
+	text-align: center;
+	font-size: 16pt;
+	font-weight: 600;
+}
+
+#toMenu {
+	position: absolute;
+	right: 12px;
+	font-size: 11pt;
+}
+
+.main {
+	text-align: center;
+	position: relative;
+	font-size: 12pt;
+	text-align: center;
+	min-height: 80%;
+	height: 80%;
+	margin: 30px auto 0px;
+}
+
+hr {
+	color: #bb3344;
+}
+
+#footer {
+	text-align: center;
+	bottom: 0px;
+	left: 12px;
+	height: 0px;
+}
+
+#footer hr {
+	color: #bb9999;
+}
+
+/* 図書館システム用 */
+INPUT {
+	width: 100px;
+}
+
+INPUT[type="submit"] {
+	width: 70px;
+}
+
+table.list {
+	border-top: 1px solid #666666;
+	border-left: 1px solid #666666;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background-color: #ffffff;
+	empty-cells: show;
+}
+
+.list th {
+	border-right: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+	color: #111111;
+	background-color: #cccccc;
+	background-position: left top;
+	padding: 0.3em 0.4em;
+	text-align: center;
+}
+
+.list td {
+	border-right: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+	padding: 0.3em 0.4em;
+}
+
+#error {
+	color: red;
+}
+
+#stacktrace {
+	color: black;
+	font-size: small;
+}

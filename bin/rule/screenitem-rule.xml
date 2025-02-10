@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="画面項目定義書" output="screenitem.xml" maxColumn="200">
+    <sheet index="*画面項目定義*" toName="画面項目定義">
+        <label match="システム名" />
+        <label match="サブシステムID" />
+        <label match="画面ID" />
+        <label match="画面名" />
+        <label match="更新者" direction="bottom" />
+        <label match="更新日" direction="bottom" />
+        <vlist match="画面項目">
+            <property match="項目名" required="true" />
+            <property match="No." />
+            <property match="入出力" />
+            <property match="種別" />
+            <property match="備考"/>
+            <!-- P層設計 -->
+            <property match="項目ID"/>
+            <property match="変数型" />
+            <property match="繰返変数名" />
+            <property match="初期値" />
+        </vlist>
+    </sheet>
+</rule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="共通" output="compornent.xml">
+    <sheet index="*共通部品*" toName="共通部品">
+        <vlist match="共通部品">
+            <property match="クラス名" />
+            <property match="部品名" />
+            <property match="クラス名（日本語）" />
+            <property match="パッケージ名" />
+            <property match="テンプレート名" />
+        </vlist>
+    </sheet>
+</rule>

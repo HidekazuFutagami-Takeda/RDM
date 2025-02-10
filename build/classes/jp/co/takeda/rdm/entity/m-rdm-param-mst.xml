@@ -58,7 +58,7 @@
             PARAM_NAME in ('MAX_ROWNUM', 'NC203_ROWNUM')
         ORDER BY PARAM_NAME
     </select>
-       <select id="selectParamNc011" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNC011Entity" resultMap="selectParamNC011ResultMap">
+       <select id="selectParamNC011" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNC011Entity" resultMap="selectParamNC011ResultMap">
         SELECT
             PARAM_NAME, VALUE
         FROM

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Context path="/rdm" reloadable="true">
+    <Resource name="jdbc/RdmDataSource" auth="Container"
+    	type="javax.sql.DataSource"
+        driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@jptyothdbort1.cwddxjpmm7ru.ap-northeast-1.rds.amazonaws.com/ORCL"
+		username="ORAUSR01" password="kgrkwyTRUY#767" />
+</Context>
+<!--    開発環境（AWS_TH_DEV） -->
+<!--	url="jdbc:oracle:thin:@jptyothdbrd001.cie4ijpuyjwp.ap-northeast-1.rds.amazonaws.com/ORCL" -->
+<!--    username="IEI_ONLINE" password="IEI_ONLINEpw" /> -->
+
+<!--	検証環境（UAT） -->
+<!--	url="jdbc:oracle:thin:@jptyothdbort1.cwddxjpmm7ru.ap-northeast-1.rds.amazonaws.com/ORCL" -->
+<!--	username="IEI_ONLINE" password="jfhwjcgYRF#6473" /> -->
+
+<!--	検証環境（IEI_ONLINE） -->
+<!--
+		url="jdbc:oracle:thin:@jptyothdbort1.cwddxjpmm7ru.ap-northeast-1.rds.amazonaws.com/ORCL"
+		username="IEI_ONLINE" password="jfhwjcgYRF#6473" />
+ -->
+<!--	検証環境（ORAUSR01） -->
+<!--
+		url="jdbc:oracle:thin:@jptyothdbort1.cwddxjpmm7ru.ap-northeast-1.rds.amazonaws.com/ORCL"
+		username="ORAUSR01" password="kgrkwyTRUY#767" />
+ -->

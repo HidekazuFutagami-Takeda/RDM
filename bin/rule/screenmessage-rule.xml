@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="画面メッセージ一覧" output="screenmessage.xml">
+    <sheet index="1">
+        <label match="システム名" />
+        <vlist match="詳細情報">
+            <property match="項番" />
+            <property match="メッセージID" />
+            <property match="画面メッセージ" />
+            <property match="可変項目1" toName="可変項目" />
+            <property match="可変項目2" toName="可変項目" />
+            <property match="可変項目3" toName="可変項目" />
+            <property match="可変項目4" toName="可変項目" />
+            <property match="可変項目5" toName="可変項目" />
+            <property match="備考" />
+        </vlist>
+    </sheet>
+</rule>

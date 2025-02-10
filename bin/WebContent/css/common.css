@@ -1,0 +1,1079 @@
+/*
+ * $id:$
+ *******************************************************************************
+ * <改訂履歴>
+ * 2010/10/04 照井 雅史：all：1.4
+ *   B10-335 MEMOタブ追加対応
+ * 2012/05/11 吉田　享平：all：1.5
+ *   B12-0088 Windows7ワイド対応
+ * 2012/11/12 松清　武史：1.12
+ *   B12-0001 トップメニューグレー表示不具合対応
+ * YYYY/MM/DD 改訂者名：[フィールド名｜メソッド名]：[リビジョン番号]
+ *   [改訂内容]
+ *******************************************************************************
+ * <既知のバグ情報>
+ * YYYY/MM/DD バグ発見者名：[メソッド名]：[リビジョン番号]
+ *   [バグ内容]
+ */
+
+/**
+ * <pre>
+ * 共通スタイルシート
+ * </pre>
+ * @since 1.0
+ * @version $Revision: 1.1 $
+ * @author 日立
+ * @see test.servlet.PopupServlet
+ */
+/*----------------------------------------------------------------------*/
+/*	portal.css(本来はOraclePortalに付いているのもで動的に作成される。)	*/
+/*	をcommon.cssに順次移行していく										*/
+/*	移行の際には頭にcomを付加する。										*/
+/*	また、ファイルが大きくならないように必要なものだけを入れること		*/
+/*----------------------------------------------------------------------*/
+
+/**
+ * 頭の"山田太郎さんのホームページ"で使用します。
+ * @since 1.0
+ * @author 日立
+ */
+.comBannerGreeting {
+  COLOR: #336699; FONT-FAMILY: inherit; FONT-SIZE: 16pt; FONT-WEIGHT: bold
+}
+/**
+ *	セカンダリリンク"2001-06-21"という本日日付で使用します。
+ */
+.comBannerSecondaryText {
+  COLOR: #663300; FONT-FAMILY: inherit; FONT-SIZE: 8pt
+}
+/**
+ *	セカンダリリンク"ホームへ"で使用します。
+ */
+.comBannerSecondaryLink {
+  COLOR: #663300; FONT-FAMILY: inherit; FONT-SIZE: 8pt
+}
+/**
+ * セカンダリリンクのhoverの抑止
+ */
+A.comBannerSecondaryLink {color: #663300;}
+A.comBannerSecondaryLink:hover {color: #663300;}
+A.comBannerSecondaryLink:visited {color: #663300;}
+/**
+ *	共有スクリーンポートレット用スタイル
+ */
+.comPortletHeaderColor {
+  BACKGROUND-COLOR: #336699
+}
+.comLeftCurve {
+  BACKGROUND-ATTACHMENT: scroll; BACKGROUND-IMAGE: url(maps/img/FFFFFFl.gif); BACKGROUND-POSITION: left top; BACKGROUND-REPEAT: no-repeat
+}
+.comRightCurve {
+  BACKGROUND-ATTACHMENT: scroll; BACKGROUND-IMAGE: url(maps/img/FFFFFFr.gif); BACKGROUND-POSITION: right top; BACKGROUND-REPEAT: no-repeat
+}
+.comPortletHeaderText {
+  COLOR: #ffffff; FONT-FAMILY: inherit; FONT-SIZE: 10pt; FONT-WEIGHT: bold
+}
+.comRegionHeaderColor {
+  BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #336699 0px solid; BORDER-LEFT: #336699 0px solid; BORDER-RIGHT: #336699 0px solid; BORDER-TOP: #336699 0px solid
+}
+.comRegionBorder {
+  BORDER-BOTTOM: #336699 1px solid; BORDER-LEFT: #336699 1px solid; BORDER-RIGHT: #336699 1px solid; BORDER-TOP: #336699 1px solid
+}
+/**
+ * トップメニュー用
+ * @since 1.0
+ * @author 日立
+ */
+A.comTopMenuLink
+{
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	color: #336699; font-family: inherit; font-size: 9pt; font-weight: bold; */
+  color: #336699; font-family: inherit; font-size: 8pt; font-weight: bold; text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.comTopMenuLink#noLink
+{
+  color: #cccc99;
+  /*text-decoration: none;*/
+}
+A.comTopMenuLink:visited
+{
+  /*color: #cccc99*/
+  color: #336699;
+}
+A.comTopMenuLink:hover
+{
+    COLOR: #ff3300
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+    text-decoration:underline;
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+A.comShareLink
+{
+  text-decoration:none;
+}
+A.comShareLink:hover
+{
+  color: #ff3300; text-decoration:underline;
+}
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/* Add Start 2012/11/12 T.Matsukiyo B12-0001 H&Nトップメニュー他システム経由時グレーになる不具合対応 */
+A.comShareLink:visited
+{
+  color: #000000;
+}
+/* Add End   2012/11/12 T.Matsukiyo B12-0001 H&Nトップメニュー他システム経由時グレーになる不具合対応 */
+SPAN.comTopMenuPos {
+  position:absolute;
+  top: 30px;
+/* MEMOタブ追加対応
+  left: 25%;
+/* MEMOタブ追加対応
+}
+
+/**
+ * 共有スクリーンモードのインラインフレームの設定
+ */
+IFRAME.comBasic
+{
+/*	position	: absolute; */
+/*	top			: 40pt; */
+/*	left		: 10pt; */
+/*	border		: 10px;	意味無し*/
+  width		: 100%;
+  height		: 100%;
+/*	visibility	: hidden;	*/
+}
+/*----------*/
+/* 標準設定 */
+/*----------*/
+TABLE
+{
+  FONT-SIZE: 8pt;
+}
+A
+{
+  COLOR: #000000;
+  FONT-SIZE: 8pt;
+  LINE-HEIGHT: 18px;
+  TEXT-DECORATION: underline
+}
+A:visited
+{
+    COLOR: #666666
+}
+A:hover
+{
+    COLOR: #ff3300
+}
+SPAN.comDeleteLink
+{
+  cursor: hand;
+  color: #ff3300;
+  font-size:8pt;
+  font-weight: bolder;
+}
+SPAN.comHelp
+{
+/*	width:12pt;*/
+/*	height:12pt;*/
+  padding:1pt 1pt 0pt 2pt;	/* 上右下左 */
+  position:absolute;
+  border-style:solid;
+  border-width:1pt;
+  border-color:#000000;
+  background-color:#ffffcc;
+  z-index:1;
+  visibility:hidden;
+  font-size:8pt;
+  text-align:center;
+  vertical-align:middle;
+}
+A.comMiniLink		/* Clear文字のリンク */
+{
+  color: #000000;
+  font-size:8pt;
+  font-style: italic;
+}
+A.comMiniLink:hover
+{
+  color: #ff3300;
+}
+A.comMiniLink:visited
+{
+  color: #000000;
+}
+A.comMiniLink:visited:hover
+{
+  color: #ff3300;
+}
+A.comSmallLink		/* トップ画面一覧用追加 2001/09/18 */
+{
+  color: #000000;
+  font-size:8pt;
+  font-style: italic;
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+  text-decoration:none;
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.comSmallLink:hover
+{
+  color: #ff3300;
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+  text-decoration:underline;
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.comSmallLink:visited
+{
+  color: #000000;
+}
+A.comSmallLink:visited:hover
+{
+  color: #ff3300;
+}
+
+A.comLink		/* visitedしても通常通りのリンク */
+{
+  color: #000000;
+  font-size:8pt;
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+  text-decoration:none;
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.comLink:hover
+{
+  color: #ff3300;
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+  text-decoration:underline;
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.comLink:visited
+{
+  color: #000000;
+}
+A.comLink:visited:hover
+{
+  color: #ff3300;
+}
+
+IMG
+{
+  vertical-align: bottom;
+}
+/**
+ * 隠しフォーム用
+ */
+FORM.comHidden
+{
+  visibility:hidden;
+  position:absolute;
+}
+/* コンテンツの共通 */
+BODY.comPage {
+  BACKGROUND-COLOR: #ffffff;
+  margin: 0pt 0pt 0pt 0pt;
+}
+TABLE.comLayout
+{
+  margin: 0pt 0pt 0pt 0pt;
+  padding: 0pt 0pt 0pt 0pt;
+  border-style: none;
+  font-size: 8pt;
+  width: 100%;
+}
+TABLE.comTitle
+{
+  margin: 0pt 0pt 0pt 0pt;
+  padding: 0pt 0pt 0pt 0pt;
+  border-style: none;
+/*	border-style: solid;
+  border-width: 1pt;*/
+  width: 100%;
+  font-size: 11pt;
+}
+HR.comTitle
+{
+  color: #336699;
+  width: 98%;
+  height: 2pt;
+}
+HR.comTitle2
+{
+  color: #336699;
+  width: 100%;
+  height: 2pt;
+}
+HR.comSplit			/* 分割線大 */
+{
+  color: #336699;
+  width: 99%;
+  height: 1pt;
+}
+HR.comSplitL		/* 分割線小 */
+{
+  width: 97%;
+  height: 1pt;
+}
+A.comRightTitle
+{
+}
+IMG.comIcon
+{
+/*	vertical-align: middle;*/
+  width: 15pt;
+  height: 15pt;
+}
+IMG.comSmallIcon
+{
+  width: 13pt;
+  height: 13pt;
+  vertical-align: bottom;
+}
+TD.comTitle
+{
+  margin: 0pt 0pt 0pt 0pt;
+  padding: 0pt 0pt 0pt 0pt;
+/*	font-size: 10pt;
+  border-style: solid;
+  border-width: 1pt;*/
+}
+#personal
+{	width:100%;
+  color: #666666;
+  font-size:10pt;
+  text-align:center;
+}
+SPAN.comComment
+{
+  font-size: 8pt;
+  color: #666666;
+}
+SPAN.comSpanLink
+{
+  cursor: hand;	/* hrefを指定しない場合でもカーソルをハンドにする */
+  color: #000000;
+  font-size: 8pt;
+  line-height: 18px;
+  text-decoration: underline;
+}
+SPAN.comSpanLinkHover
+{
+  cursor: hand;
+  color: #ff3300;
+  font-size: 8pt;
+  line-height: 18px;
+  text-decoration: underline;
+}	/* onMouseOver,onMouseOutで切替 */
+
+SELECT
+{
+  font-size: 8pt;
+}
+SELECT.comItem
+{
+  color: #000000;
+  background-color: #ffffff;
+  /*padding: 0pt;*/
+  /*font-size: 10pt;*/
+}
+
+TABLE.comPortalTable	/* 全画面用ポータル大枠 */
+{
+  margin-top:10pt;
+  width:540pt;
+  background-color: #ffffff;
+  border-color:#666666;
+  padding : 1pt 1pt 1pt 1pt;
+}
+TABLE.comPortalTitle	/* 全画面用ポータルタイトル */
+{
+  padding: 0pt;
+  margin: 0pt;
+  width:	100%;
+  background-color:#ff7f50;
+}
+TABLE.comPortalMainTable		/* メイン部の枠 */
+{
+  padding:0pt;
+  border-style:	none;
+  margin: 0pt 2pt 2pt 2pt;	/* 上右下左 */
+  width:	100%;
+  background-color:#ffffff;
+}
+TABLE.comPortalControlTable
+{
+/* 表示位置調整 2001/09/26 */
+/* 	padding:	0pt;	/* 上右下左 */
+  padding:	0pt 0pt 2pt 0pt;	/* 上右下左 */
+  margin:		0pt 0pt 5pt 0pt;	/* 上右下左 */
+  border-style:	none;
+  width:	100%;
+  background-color:#ffffff;
+}
+TD.comPortalControlItem		/* 制御部の項目 */
+{
+  /*font-size: 6pt;*/
+}
+TD.comWaku					/* 表示項目の枠付き */
+{
+  border-style: solid;
+  border-top-width: 1pt;
+  border-left-width: 1pt;
+  border-right-width: 1pt;
+  border-bottom-width: 1pt;
+  border-color: #808080;
+  padding: 2pt;
+}
+TD.comTableTitle			/* テーブル形式のタイトル項目 */
+{
+  color : #000000;
+/*	background-color: #e0e0d4;*/
+/*	background-color: #cccccc;*/
+  background-color: #dddddd;
+  text-align : center;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+TD.comTableItem				/* テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+TD.comTableItem#center		{ text-align : center; }
+TD.comTableItem#right		{ text-align : right; }
+TD.comTableItem#levelHigh	{ text-align : center; color : #ff3300; }
+TD.comTableItem#overdue		{ text-align : center; color : #ff3300; }
+TD.comTableItem#red			{ text-align : center; color : #ff3300; }
+TD.comTableItem#blue		{ text-align : center; color : #0033ff; }
+TD.comTableItem#green		{ text-align : center; color : #006600; }
+TD.comTableItem#yellow		{ text-align : center; color : #999933; }
+TD.comTableItem#orange		{ text-align : center; color : #ff6600; }
+
+/*----*/
+/* 色 */
+/*----*/
+.white	{ color: #ffffff; }
+.gray	{ color: #666666; }
+.black	{ color: #000000; }
+.red	{ color: #ff3300; }
+.blue	{ color: #0033ff; }
+.green	{ color: #006600; }
+.yellow	{ color: #999933; }
+.orange	{ color: #ff6600; }
+
+/*----------------------------------------*/
+/* テーブル形式のスクロール用前後アイコン */
+/*----------------------------------------*/
+A.comScroll
+{
+  color: #000000;
+  font-size: 8pt;
+  text-decoration: none;
+}
+A.comScroll:hover
+{
+  color: #ff3300;
+}
+A.comScroll:visited
+{
+  color: #000000;
+}
+A.comScroll:visited:hover
+{
+  color: #ff3300;
+}
+A.comNoScroll
+{
+  color: #666666;
+  font-size: 8pt;
+  text-decoration: none;
+}
+
+/*------------------------------------*/
+/* テーブル形式のソート用▲▼アイコン */
+/*------------------------------------*/
+A.comTableSort
+{
+  color: #0000cd;
+  font-size: 6pt;
+  text-decoration: none;
+}
+A.comTableSort:hover
+{
+  color: #ff3300
+}
+A.comTableSort:visited
+{
+  color: #0000cd
+}
+A.comTableSort:visited:hover
+{
+  color: #ff3300;
+}
+A.comTableNoSort
+{
+  color: #4682b4;
+  font-size: 6pt;
+  text-decoration: none;
+}
+A.comTableNoSort:hover
+{
+  color: #ff3300;
+}
+A.comTableNoSort:visited
+{
+  color: #4682b4;
+}
+A.comTableNoSort:visited:hover
+{
+  color: #ff3300;
+}
+/*------------------------------------*/
+A.comSubject		/* 件名やタイトルのリンク */
+{
+  color: #000000;
+  font-size: 8pt;
+  text-decoration: underline;
+}
+A.comSubject:visited
+{
+  /*color: #666666;*/
+  color: #000000;
+}
+A.comSubject:hover
+{
+  color: #ff3300;
+}
+A.comSubject:visited:hover
+{
+  color: #ff3300;
+}
+/*------------------------------------*/
+TABLE.comTableSearch	/* テーブル形式の検索部の枠 */
+{
+  background-color: #ffffff;
+  margin: 5pt 2pt 5pt 5pt;	/* 上右下左 */
+  border-style:none;
+  border-width: 1pt;
+  border-color: #000000;
+}
+TD.comTableSearchItem	/* テーブル形式の検索部の項目 */
+{
+}
+/*----------------------------*/
+/* コメント等のポップアップ用 */
+/*----------------------------*/
+IMG.comComment
+{
+  cursor: hand;
+}
+DIV.comComment
+{
+  position: absolute;
+  visibility: hidden;
+  font-size:8pt;
+  background-color:#ffffcc;
+  border-style: solid;
+  border-width: 1pt;
+  /*width: 240pt;*/
+}
+UL.comComment
+{
+  margin: 2pt 5pt 2pt 12pt;
+}
+LI.comComment
+{
+  text-align: left;
+  font-size: 8pt;
+  list-style-image: url(../img/triangle01.gif);
+}
+/*--------------------------*/
+/* テーブル形式にタブを付加 */
+/*--------------------------*/
+TD.comTab
+{
+/* 表示位置調整 2001/10/01 */
+/*	padding: 0pt 0pt 0pt 0pt;	/* 上右下左 */
+  padding: 5pt 0pt 0pt 0pt;	/* 上右下左 */
+}
+TD.comTabLeft {
+  background: url(../img/FFFFFFtl.gif) #336699 no-repeat left top;
+  width:10px;
+  height:18px;
+}
+TD.comTabRight {
+  background: url(../img/FFFFFFtr.gif) #336699 no-repeat right top;
+  width:8px;
+}
+TD.comTabBgLeft {
+  background: url(../img/FFFFFFtl.gif) #e6e6fa no-repeat left top;
+  width:10px;
+  height:18px;
+}
+TD.comTabBgRight {
+  background: url(../img/FFFFFFtr.gif) #e6e6fa no-repeat right top;
+  width:8px;
+}
+TD.comTabCenter {
+/*	background-color: #c0c0c0;*/
+  background-color: #336699;
+  padding-top:1pt;
+}
+TD.comTabBgCenter {
+/*	background-color: #ccffff;*/
+  background-color: #e6e6fa;
+  padding-top:1pt;
+}
+SPAN.comTabText {
+  color: #99ccff;
+/*	color: #ff3300;*/
+  font-size: 8pt;
+  font-weight: bolder;
+}
+SPAN.comTabBgText {
+  cursor: hand;
+  color: #666666;
+  font-size: 8pt;
+  font-weight: normal;
+}
+
+/*-----------------------------------------*/
+TD.comSubjectBolder		/* 参照画面の件名を大きく見せる */
+{
+  padding: 5pt 5pt 5pt 5pt;	/* 上右下左 */
+  background-color: #ffffcc;
+  color: #000000;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1pt;
+  text-align: left;
+  font-size: 11pt;
+  font-weight: bolder;
+}
+TABLE.comDetailTable
+{
+  padding: 0pt;
+  margin:5pt;
+}
+TD.comDetailItem
+{
+/*	vertical-align: bottom;*/
+  vertical-align: middle;
+  padding: 2pt 5pt 2pt 5pt;	/* 上右下左 */
+}
+TD.comDetailBody
+{
+  padding: 10pt 8pt 10pt 8pt;	/* 上右下左 */
+  border-style: solid;
+  border-color: #666666;
+  border-width: 1pt;
+  text-align: left;
+}
+/*-----------------------------------------*/
+TD.comMessage		/* 参照画面の件名を大きく見せる */
+{
+  padding: 5pt 5pt 5pt 5pt;	/* 上右下左 */
+/*	background-color: #ffffcc; */
+  color: #0000ff;
+/*	border-style: solid; */
+/*	border-color: #000000; */
+/*	border-width: 1pt; */
+  text-align: left;
+  font-size: 11pt;
+  font-weight: bolder;
+}
+
+/*--------------*/
+/* 青色のリンク */
+/*--------------*/
+A.comBlueLink
+{
+  color: #0033ff;
+  font-size: 8pt;
+  text-decoration: underline;
+}
+A.comBlueLink:hover
+{
+  color: #0000ab;
+}
+A.comBlueLink:visited
+{
+  color: #666666;
+}
+A.comBlueLink:visited:hover
+{
+  color: #0000ab;
+}
+
+/*------------------------------*/
+/* 全画面での青色のサブタイトル */
+/*------------------------------*/
+TD.comSubTitle
+{
+  padding: 1pt 2pt 1pt 10pt;
+  font-size: 10pt;
+  color: #336699;
+  font-weight: normal;
+}
+/*----------------------------------*/
+/* 全画面での青色の次のサブタイトル */
+/*----------------------------------*/
+TD.comSubTitle2
+{
+  padding: 5pt 2pt 1pt 15pt;
+  font-size: 8pt;
+  color: #000000;
+  font-weight: normal;
+}
+/*--------------*/
+/* カレンダ機能 */
+/*--------------*/
+TD.comCalendarTitle
+{
+  width : 15pt;
+  height : 18pt;
+  color : #000000;
+  background-color: #dddddd;
+  text-align : center;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+/*	font-weight: bolder;*/
+  font-weight: normal;
+}
+TD.comCalendarTitle#sun	{ color : #ff3300; }	/* 日曜日 */
+TD.comCalendarTitle#sat	{ color : #0033ff; }	/* 土曜日 */
+
+TD.comCalendarDay
+{
+  width : 15pt;
+  height : 18pt;
+  text-align : center;
+  background-color: #ffffff;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  padding:0pt;
+}
+
+A.comCalendarDay
+{
+  color: #000000;
+  font-size: 8pt;
+  text-decoration: none;
+}
+A.comCalendarDay#wek	{ font-size: 8pt;color : #ff3300; }	/* 週選択 */
+A.comCalendarDay#sun	{ color : #ff3300; }	/* 日曜日 */
+A.comCalendarDay#sat	{ color : #0033ff; }	/* 土曜日 */
+A.comCalendarDay#fet	{ color : #ff3300; }	/* 祝日 */
+A.comCalendarDay#nxt	{ color : #666666; }	/* 次月 */
+
+A.comCalendarDay:hover
+{
+  color: #ff3300;
+}
+A.comCalendarDay:hover#sun	{ color : #ff0000; }	/* 日曜日 */
+A.comCalendarDay:hover#sat	{ color : #0000ff; }	/* 土曜日 */
+A.comCalendarDay:hover#fet	{ color : #ff0000; }	/* 祝日 */
+A.comCalendarDay:hover#nxt	{ color : #ff3300; }	/* 次月 */
+
+A.comCalendarDay:visited
+{
+  color: #000000;
+}
+A.comCalendarDay:visited#sun	{ color : #ff3300; }	/* 日曜日 */
+A.comCalendarDay:visited#sat	{ color : #0033ff; }	/* 土曜日 */
+A.comCalendarDay:visited#fet	{ color : #ff3300; }	/* 祝日 */
+A.comCalendarDay:visited#nxt	{ color : #666666; }	/* 次月 */
+
+A.comCalendarDay:visited:hover
+{
+  color: #ff3300;
+}
+A.comCalendarDay:visited:hover#sun	{ color : #ff0000; }	/* 日曜日 */
+A.comCalendarDay:visited:hover#sat	{ color : #0000ff; }	/* 土曜日 */
+A.comCalendarDay:visited:hover#fet	{ color : #ff0000; }	/* 祝日 */
+A.comCalendarDay:visited:hover#nxt	{ color : #ff3300; }	/* 次月 */
+
+INPUT.comCalendarWeek
+{
+  background-color:#dddddd;
+  width:100%;
+  height:100%;
+  font-size:7pt;
+}
+/*-------------------------------------------------------*/
+
+TD.comPortalInputItem
+{
+  padding: 1pt 2pt 1pt 15pt;		/* 上右下左 */
+}
+TD.comPortalInputItemCenter
+{
+  padding: 1pt 2pt 1pt 2pt;		/* 上右下左 */
+}
+TD.comPortalInputItemRight
+{
+  padding: 1pt 15pt 1pt 2pt;		/* 上右下左 */
+  width: 100%;
+}
+TD.comPortalTitleIcon	/* 全画面用ポータル枠のタイトルのアイコン部分 */
+{
+  padding: 0pt;	/* 上右下左 */
+}
+TD.comPortalTitle	/* 全画面用ポータル枠のタイトル文字部分 */
+{
+  padding: 1pt 0pt 0pt 1pt;	/* 上右下左 */
+  font-size: 11pt;
+  font-weight: bolder;
+  color: #ffffff;
+}
+TD.comPortalTitleRight	/* 全画面用ポータル枠のタイトルの右端アイコン部分 */
+{
+  padding: 0pt;	/* 上右下左 */
+  width:100%;
+  text-align:right;
+}
+A.comPortalTitleLink {	/* ポータル枠内のリンク「再表示」など */
+  color: #ffffff;
+  font-size: 8pt;
+}
+A.comPortalTitleLink:visited	{ color : #ffffff; }
+A.comPortalTitleLink:hover		{ color : #ffffff; }
+
+INPUT
+{
+  font-family: "Meiryo UI";
+  font-size: 8pt;
+}
+SELECT
+{
+  font-family: "Meiryo UI";
+  font-size: 8pt;
+}
+INPUT.comButton
+{
+  font-size: 8pt;
+}
+INPUT.comCloseButton
+{
+  padding:0pt;
+  height:12pt;
+  width:13pt;
+/*	background-color: #ffffff;*/
+  background-image: url(../img/winclose01.gif);
+  background-repeat: no-repeat;
+  background-position:100% 100%;
+}
+TABLE.comPortalBody		/* 全画面用ポータル枠のボディー部分 */
+{
+  background-color: #ffffff;
+  border-style:	solid;
+  border-color:	#ff7f50;
+  border-width:	1pt;
+  margin: 0pt;
+  padding: 2pt;
+  width:	100%;
+}
+IMG.comListIco
+{
+  cursor: hand;
+  vertical-align:middle;
+  border-style: none;
+}
+IMG.comIco
+{
+  cursor: hand;
+  vertical-align:bottom;
+  border-style: none;
+}
+IMG.comCalIcon
+{
+  cursor: hand;
+  vertical-align:middle;
+  /*vertical-align:bottom;*/
+  border-style: none;
+  width:10pt;
+  height:10pt;
+}
+/* ポータル枠 */
+/*	例	:	ex)<IMG class=portalicon src="./img/newsico01.gif" alt="ニュース">	*/
+IMG.portalIcon
+{
+  width: 14pt;
+  height: 14pt;
+}
+IMG.comPortalIcon
+{
+  width: 13pt;
+  height: 13pt;
+}
+SPAN.comWelcome {
+  font-size:10pt;
+  font-weight:bold;
+  color:#666666;
+}
+/* add start K.Yoshida B12-0088 Win7ワイド対応 */
+SPAN.comWelcomeWin7 {
+  font-size:10pt;
+  font-weight:bold;
+  color:#666666;
+}
+/* add end   K.Yoshida B12-0088 Win7ワイド対応 */
+/* 一覧セル内アイコン用追加 2001/09/10 START */
+/*------------------------------*/
+/*	掲示板					*/
+/*------------------------------*/
+/* 一覧セル内アイコン用削除 2001/10/08 START
+IMG.Ico
+{
+  width: 12pt;
+  height: 12pt;
+}
+/* 一覧セル内アイコン用削除 2001/10/08 END   */
+
+/*------------------------------*/
+/*	メニュー					*/
+/*------------------------------*/
+A.comMenuLink
+{
+  color: #000000;
+  font-size: 8pt;
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	text-decoration: underline;	*/
+  text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.comMenuLink#noLink
+{
+  color: #666666;
+  text-decoration: none;
+}
+A.comMenuLink:visited
+{
+  /*color: #666666;*/
+  color: #000000;
+}
+A.comMenuLink:hover
+{
+  color: #ff3300;
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+  text-decoration:underline;
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+/*A.comMenuLink:visited#noLink	{ color : #ff3300; }*/
+TD.comMenuHead
+{
+  background: #336699;
+  color: #ffffff;
+  font-weight: bold;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-top: 2px
+  border:1px solid #FFFFFF;
+  border-bottom:0px;
+}
+TD.comMenuItem
+{
+  font-size: 8pt;
+  padding-bottom: 1px;
+  padding-left: 11px;
+  padding-right: 3px;
+  padding-top: 5px;
+}
+TD.comMenuItem#onLink	{ color: #003399; }
+TD.comMenuItem#noLink	{ color: #666666; }
+
+TD.comTitle
+{
+  background-color: #ff7f50;
+}
+
+/*
+#yellow	{ color: #999933; }
+#green	{ color: #006600; }
+#red	{ color: #ff3333; }
+#blue	{ color: #003399; }
+*/
+/*
+#noLink	{ color: #a9a9a9; }
+#noLink	{ color: #666666; }
+*/
+/*管理画面用*/
+A.comBigMenuTitle {
+  color: #330000; font-family: inherit; font-size: 15px; font-weight: bold; text-decoration: none
+}
+A.comBigMenuTitle:hover {
+  color: #ff9900; font-family: inherit; font-size: 17px; font-weight: bold; text-decoration: none
+}
+A.comBigMenuTitle:visited
+{
+  color: #330000; font-family: inherit; font-size: 15px; font-weight: bold; text-decoration: none
+}
+A.comBigMenuTitle:visited:hover
+{
+  color: #ff9900; font-family: inherit; font-size: 17px; font-weight: bold; text-decoration: none
+}
+TD.comBigMenu {
+  border-bottom: #999999 2px solid; border-left: #999999 0px solid; border-right: #999999 0px solid; border-top: #999999 0px solid; color: #000033; font-family: inherit; font-size: 18px; font-weight: bold; text-decoration: none
+}
+
+/*
+Oracleポータル
+アクティブなタブの色			#336699
+アクティブなタブテキスト		#99CCFF
+アクティブでないタブの色		#CCCC99
+アクティブでないタブテキスト	#003366
+*/
+
+/* 標準利用色一覧
+枠(青)	#336699
+赤系	#ff3300
+黄系	#ffffcc
+青系	#0033ff
+グレー	#666666
+一覧のタイトルグレー: #e0e0d4;
+*/
+/*--------------------------*/
+/* Dend向けiframe           */
+/*--------------------------*/
+IFRAME.comDendPos
+{
+  position: absolute;
+  top: 30px;
+  /* left: 700px; */
+  left: 729px;
+}
+
+/* add  2010/03/05 T.Oonisi J10-0002 表現力向上対応 */
+img.iconMarg{
+  vertical-align: middle;
+  padding:0px;
+  margin:0px;
+  border:0;
+}
+
+body {
+  font-family: "Meiryo UI";
+}
+
+#menuCat{
+  display: none;
+}

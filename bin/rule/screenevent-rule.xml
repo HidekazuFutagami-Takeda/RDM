@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="画面項目定義書" output="screenevent.xml" maxColumn="200" maxRow="500">
+    <sheet index="*イベント定義*" toName="イベント定義">
+        <label match="システム名" />
+        <label match="サブシステムID" />
+        <label match="画面ID" />
+        <label match="画面名" />
+        <label match="更新者" direction="bottom" />
+        <label match="更新日" direction="bottom" />
+        <vlist match="イベント">
+            <property match="イベントID" required="true" />
+            <property match="No." />
+            <property match="遷移先画面ID" />
+            <property match="遷移タイプ" />
+            <property match="検証" />
+            <property match="トークンチェック" />
+            <property match="権限" />
+            <property match="備考"/>
+        </vlist>
+    </sheet>
+</rule>

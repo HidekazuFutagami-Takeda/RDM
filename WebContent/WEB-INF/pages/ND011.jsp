@@ -46,11 +46,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
+  <link href="css/reqDisplay.css" rel="Stylesheet" type="text/css" />
   <script type="text/javascript" src="js/common.js"></script>
   <script type="text/javascript" src="js/jgiKanren.js"></script>
-<%--   <script type="text/javascript" src="js/catSosJgiExpand.js"></script> --%>
   <script type="text/javascript" src="js/catHcpSoc.js"></script>
   <script type="text/javascript" src="js/catHcpPub.js"></script>
+  <script type="text/javascript" src="js/catDeptsComboRDM.js"></script>
+  <script type="text/javascript" src="js/catShisetsu.js"></script>
   <script type="text/javascript" src="js/ND011.js"></script>
     <script>
     destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
@@ -262,46 +264,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="searchFromSosCdPop"/>  <!--現組織コード(ポップアップ用) -->
     <s:hidden name="searchToSosCdPop"/>    <!--新組織コード(ポップアップ用) -->
     <s:hidden id="selectedTekiyoYmd" name="selectedTekiyoYmd"/>
-    <%-- 組織ポップアップ用パラメータ --%>
-    <input type="hidden" name="selectFlgPop"           value="" />
-  <input type="hidden" name="initSosCdPop"           value="" />
-  <input type="hidden" name="sosKbnPop"              value="" />
-  <input type="hidden" name="sknnFlgPop"             value="" />
-  <input type="hidden" name="insFlgPop"              value="" />
-  <input type="hidden" name="topMenuFlgPop"          value="" />
-  <input type="hidden" name="authorityPop"           value="" />
-  <input type="hidden" name="bumonRankTopPop"        value="" />
-  <input type="hidden" name="bumonRankBtmPop"        value="" />
-  <input type="hidden" name="topSosCdPop"            value="" />
-  <input type="hidden" name="defTblFlgPop"           value="" />
-  <input type="hidden" name="actSosListPop"          value="<s:property value="%{sosCdHairetu}"/>" />
-  <input type="hidden" name="shokushuFlgPop"         value="" />
-  <input type="hidden" name="ztTntFlgPop"            value="" />
-  <input type="hidden" name="jokenSetCdPop"          value="" />
-  <input type="hidden" name="menuTrtGrpCdPop"        value="" />
-  <input type="hidden" name="menuSosCdPop"           value="" />
-  <input type="hidden" name="selectableBumonrankPop" value="" />
-  <input type="hidden" name="insNoPop"               value="" />
-  <input type="hidden" name="trtCdPop"               value="" />
-  <input type="hidden" name="sosCdFromPop"           value="" />
-  <input type="hidden" name="krJgiNoDispFlgPop"      value="" />
-  <input type="hidden" name="sosCdToPop"             value="" />
-  <input type="hidden" name="trtTntFlgPop"           value="" />
-
-  <!-- 選択された組織情報格納（表示押下前） -->
-  <s:hidden name="topChgSosCd" value=""/>
-  <s:hidden name="topChgSosNm" value=""/>
-  <s:hidden name="topChgSosCd2" value=""/>
-  <s:hidden name="topChgSosNm2" value=""/>
-  <s:hidden name="topChgSosCd3" value=""/>
-  <s:hidden name="topChgSosNm3" value=""/>
-  <!-- 選択された組織情報格納（表示押下後） -->
-  <s:hidden name="topChangedSosCd" />
-  <s:hidden name="topChangedSosNm" />
-  <s:hidden name="topChangedSosCd2" />
-  <s:hidden name="topChangedSosNm2" />
-  <s:hidden name="topChangedSosCd3" />
-  <s:hidden name="topChangedSosNm3" />
+    <%-- 所属部科ポップアップ用パラメータ --%>
+    <input type="hidden" name="cdcCheckedCodes" value="" />
+    <input type="hidden" name="paramInsNo" value="" />
 
     <%-- 所属学会ポップアップ用パラメータ --%>
     <input type="hidden" name="hcpSocietyDataChgFlg" value="" />
@@ -485,68 +450,180 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
 	      <td class="comFormTableItem"><nobr>基本情報</nobr></td>
 	      <td class="comFormTableItem"><nobr>医師／薬剤師区分<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="docType" name="docType" cssStyle="width:80pt" list ="docTypeCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:select id="docType" name="docType" cssStyle="width:80pt" list ="docTypeCombo"/>
+	      	</s:if>
+	      	<s:else>
+				<s:select id="docType" name="docType" cssStyle="width:80pt" list ="docTypeCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>性別<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="sexCd" name="sexCd" cssStyle="width:80pt" list ="sexCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	     		<s:select id="sexCd" name="sexCd" cssStyle="width:80pt" list ="sexCdCombo"/>
+	      	</s:if>
+	      	<s:else>
+				<s:select id="sexCd" name="sexCd" cssStyle="width:80pt" list ="sexCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(漢字)姓<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="docKanjiSei" size="15" maxlength="15" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" readonly="true" />
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(漢字)名<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="docKanjiMei" size="15" maxlength="15" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:textfield name="docKanjiMei" size="15" maxlength="15" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:textfield name="docKanjiMei" size="15" maxlength="15" readonly="true" />
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)姓<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="docKanaSei" size="15" maxlength="15" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:textfield name="docKanaSei" size="15" maxlength="15" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:textfield name="docKanaSei" size="15" maxlength="15" readonly="true" />
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)名<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="docKanaMei" size="15" maxlength="15" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+			      <s:textfield name="docKanaMei" size="15" maxlength="15" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:textfield name="docKanaMei" size="15" maxlength="15" readonly="true" />
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>旧姓(漢字)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="oldKanjSei" size="15" maxlength="15" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      <s:textfield name="oldKanjSei" size="15" maxlength="15" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:textfield name="oldKanjSei" size="15" maxlength="15" readonly="true" />
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>改姓日</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="newNameStYear" name="newNameStYear" cssStyle="width:40pt" list ="newNameStYearCombo"/>年<s:select id="newNameStMonth" name="newNameStMonth" cssStyle="width:30pt" list ="newNameStMonthCombo"/>月<s:select id="newNameStDay" name="newNameStDay" cssStyle="width:30pt" list ="newNameStDayCombo"/>日</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+			    <s:select id="newNameStYear" name="newNameStYear" cssStyle="width:40pt" list ="newNameStYearCombo"/>年<s:select id="newNameStMonth" name="newNameStMonth" cssStyle="width:30pt" list ="newNameStMonthCombo"/>月<s:select id="newNameStDay" name="newNameStDay" cssStyle="width:30pt" list ="newNameStDayCombo"/>日
+			</s:if>
+	      	<s:else>
+			    <s:select id="newNameStYear" name="newNameStYear" cssStyle="width:40pt" list ="newNameStYearCombo" disabled="true"/>年<s:select id="newNameStMonth" name="newNameStMonth" cssStyle="width:30pt" list ="newNameStMonthCombo" disabled="true"/>月<s:select id="newNameStDay" name="newNameStDay" cssStyle="width:30pt" list ="newNameStDayCombo" disabled="true"/>日
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>旧姓(半角カナ)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="oldKanaSei" size="15" maxlength="15" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+			      <s:textfield name="oldKanaSei" size="15" maxlength="15" />
+			</s:if>
+	      	<s:else>
+			      <s:textfield name="oldKanaSei" size="15" maxlength="15" readonly="true" />
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>生年月日</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="dobYear" name="dobYear" cssStyle="width:40pt" list ="dobYearCombo"/>年<s:select id="dobMonth" name="dobMonth" cssStyle="width:30pt" list ="dobMonthCombo"/>月<s:select id="dobDay" name="dobDay" cssStyle="width:30pt" list ="dobDayCombo"/>日</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select id="dobYear" name="dobYear" cssStyle="width:40pt" list ="dobYearCombo"/>年<s:select id="dobMonth" name="dobMonth" cssStyle="width:30pt" list ="dobMonthCombo"/>月<s:select id="dobDay" name="dobDay" cssStyle="width:30pt" list ="dobDayCombo"/>日
+			</s:if>
+			<s:else>
+		      <s:select id="dobYear" name="dobYear" cssStyle="width:40pt" list ="dobYearCombo" disabled="true"/>年<s:select id="dobMonth" name="dobMonth" cssStyle="width:30pt" list ="dobMonthCombo" disabled="true"/>月<s:select id="dobDay" name="dobDay" cssStyle="width:30pt" list ="dobDayCombo" disabled="true"/>日
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>出身地</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="homeTownCd" name="homeTownCd" cssStyle="width:80pt" list ="homeTownCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select id="homeTownCd" name="homeTownCd" cssStyle="width:80pt" list ="homeTownCdCombo"/>
+			</s:if>
+			<s:else>
+		      <s:select id="homeTownCd" name="homeTownCd" cssStyle="width:80pt" list ="homeTownCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>出身校</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="medSchoolCd" name="medSchoolCd" cssStyle="width:100pt" list ="medSchoolCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select id="medSchoolCd" name="medSchoolCd" cssStyle="width:100pt" list ="medSchoolCdCombo"/>
+			</s:if>
+			<s:else>
+		      <s:select id="medSchoolCd" name="medSchoolCd" cssStyle="width:100pt" list ="medSchoolCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>卒年（西暦）</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="gradYear" name="gradYear" cssStyle="width:40pt" list ="gradYearCombo"/>年</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select id="gradYear" name="gradYear" cssStyle="width:40pt" list ="gradYearCombo"/>年
+			</s:if>
+			<s:else>
+		      <s:select id="gradYear" name="gradYear" cssStyle="width:40pt" list ="gradYearCombo" disabled="true"/>年
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>臨床研修年（西暦）</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="emplYear" name="emplYear" cssStyle="width:40pt" list ="emplYearCombo"/>年</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select id="emplYear" name="emplYear" cssStyle="width:40pt" list ="emplYearCombo"/>年
+			</s:if>
+			<s:else>
+		      <s:select id="emplYear" name="emplYear" cssStyle="width:40pt" list ="emplYearCombo" disabled="true"/>年
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>出身医局校</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="homeUnivCd" name="homeUnivCd" cssStyle="width:100pt" list ="homeUnivCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select id="homeUnivCd" name="homeUnivCd" cssStyle="width:100pt" list ="homeUnivCdCombo"/>
+			</s:if>
+			<s:else>
+		      <s:select id="homeUnivCd" name="homeUnivCd" cssStyle="width:100pt" list ="homeUnivCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>出身所属部科</nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:jmrPopView();return false;" />
-                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" style="background-color:#D4D0C8"/>
-                <s:hidden name="homeDeptCd" id="homeDeptCd"/>
-                <a class="comMiniLink" href ="" onClick="JavaScript:defaultValue();return false;">Clear</a>
+	      			<s:if test='%{editApprFlg == "1"}'>
+		                <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
+		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" style="background-color:#D4D0C8"/>
+		                <s:hidden name="homeDeptCd" id="homeDeptCd"/>
+		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('homeDept');return false;">Clear</a>
+					</s:if>
+					<s:else>
+		                <input class="comButton" type="button"name="button1" value="選択"  disabled />
+		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" style="background-color:#D4D0C8" disabled="true"/>
+		                <s:hidden name="homeDeptCd" id="homeDeptCd"/>
+					</s:else>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -555,14 +632,35 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>専門臓器</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="spLiverCd" name="spLiverCd" cssStyle="width:100pt" list ="spLiverCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:select id="spLiverCd" name="spLiverCd" cssStyle="width:100pt" list ="spLiverCdCombo"/>
+			</s:if>
+			<s:else>
+	      		<s:select id="spLiverCd" name="spLiverCd" cssStyle="width:100pt" list ="spLiverCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>専門詳細</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="spDiseaseCd" name="spDiseaseCd" cssStyle="width:100pt" list ="spDiseaseCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:select id="spDiseaseCd" name="spDiseaseCd" cssStyle="width:100pt" list ="spDiseaseCdCombo"/>
+			</s:if>
+			<s:else>
+	      		<s:select id="spDiseaseCd" name="spDiseaseCd" cssStyle="width:100pt" list ="spDiseaseCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>専門追加情報</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="spCom" size="20" maxlength="150" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:textfield name="spCom" size="20" maxlength="150" />
+			</s:if>
+			<s:else>
+				<s:textfield name="spCom" size="20" maxlength="150" readonly="true" />
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
@@ -582,7 +680,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>所属学会</nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button" name="button2" value="新規作成" onClick="tmpChsView('0', '0');return false;" />
+	      			<s:if test='%{editApprFlg == "1"}'>
+              		  	<input class="comButton" type="button" name="button2" value="新規作成" onClick="tmpChsView('0', '0');return false;" />
+					</s:if>
+					<s:else>
+             		  	<input class="comButton" type="button" name="button2" value="新規作成"  disabled />
+					</s:else>
                 </nobr>
 	      </td>
       </tr>
@@ -647,9 +750,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdMM"/>
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdDD"/>
 			        <td><%-- アクションボタン --%>
-			        <s:if test="%{reqStsCd == '' || reqStsCd == '01' || reqStsCd == '03' || reqStsCd == '13'}">
+<%-- 			        <s:if test="%{reqStsCd == '' || reqStsCd == '01' || reqStsCd == '03' || reqStsCd == '13'}"> --%>
+					<s:if test='%{editApprFlg == "1"}'>
 			          <nobr>
-<!--                 <input class="comButton" type="image" name="buttonS<s:property value="%{#status.index}"/>" src="img/button_update.gif" onClick="tmpChsView('1','<s:property value="%{#status.index}"/>');return false;" >-->
 		                <a class="comMiniLink" href ="" onClick="JavaScript:tmpChsView('1','<s:property value="%{#status.index}"/>'); return false;" >
 		                  <img border="0" src="img/button_update.gif">
 		                </a>
@@ -714,7 +817,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>公的機関</nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="button3" value="新規作成" onClick="tmpChpView('0','0');return false;" />
+	     		 	<s:if test='%{editApprFlg == "1"}'>
+                		<input class="comButton" type="button"name="button3" value="新規作成" onClick="tmpChpView('0','0');return false;" />
+					</s:if>
+					<s:else>
+                		<input class="comButton" type="button"name="button3" value="新規作成"  disabled />
+					</s:else>
                 </nobr>
 	      </td>
       </tr>
@@ -758,10 +866,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			        <s:hidden name="hcpPublicDataList[%{#status.index}].pubInstposEdDD"/>
 
 			        <td><%-- アクションボタン --%>
-			        <s:if test="%{reqStsCd == '' || reqStsCd == '01' || reqStsCd == '03' || reqStsCd == '13'}">
-			          <nobr>
-		                <input class="comButton" type="image" name="buttonP<s:property value="%{#status.index}"/>" src="img/button_update.gif" onClick="JavaScript:tmpChpView('1','<s:property value="%{#status.index}"/>'); return false;" >
-		              </nobr>
+<%-- 			        <s:if test="%{reqStsCd == '' || reqStsCd == '01' || reqStsCd == '03' || reqStsCd == '13'}"> --%>
+					<s:if test='%{editApprFlg == "1"}'>
+						<nobr>
+		                	<input class="comButton" type="image" name="buttonP<s:property value="%{#status.index}"/>" src="img/button_update.gif" onClick="JavaScript:tmpChpView('1','<s:property value="%{#status.index}"/>'); return false;" >
+		             	</nobr>
 			        </s:if>
 			        <s:else>
 						<nobr>&nbsp;</nobr>
@@ -808,35 +917,77 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>施設<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:jmrPopView();return false;" />
-                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
-                <s:hidden name="skInsNo" id="skInsNo"/>
-                <a class="comMiniLink" href ="" onClick="JavaScript:defaultValue();return false;">Clear</a>
+			      	<s:if test='%{editApprFlg == "1"}'>
+		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCseView();return false;" />
+		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:hidden name="skInsNo" id="skInsNo"/>
+		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skIns');return false;">Clear</a>
+					</s:if>
+					<s:else>
+		                <input class="comButton" type="button"name="button2" value="選択" disabled />
+		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:hidden name="skInsNo" id="skInsNo"/>
+					</s:else>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="skUnivPosCd" name="skUnivPosCd" cssStyle="width:80pt" list ="skUnivPosCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+			      <s:select id="skUnivPosCd" name="skUnivPosCd" cssStyle="width:80pt" list ="skUnivPosCdCombo"/>
+			</s:if>
+			<s:else>
+			      <s:select id="skUnivPosCd" name="skUnivPosCd" cssStyle="width:80pt" list ="skUnivPosCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>所属部科<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="button3" value="選択" onClick="JavaScript:jmrPopView();return false;" />
-                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
-                <s:hidden name="skDeptCd" id="skDeptCd"/>
-                <a class="comMiniLink" href ="" onClick="JavaScript:defaultValue();return false;">Clear</a>
+			      	<s:if test='%{editApprFlg == "1"}'>
+		                <input class="comButton" type="button"name="button3" value="選択" onClick="JavaScript:tmpCdcView('1');return false;" />
+		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:hidden name="skDeptCd" id="skDeptCd"/>
+		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skDept');return false;">Clear</a>
+					</s:if>
+					<s:else>
+		                <input class="comButton" type="button"name="button3" value="選択" disabled />
+		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:hidden name="skDeptCd" id="skDeptCd"/>
+					</s:else>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>役職<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="skTitleCd" name="skTitleCd" cssStyle="width:80pt" list ="skTitleCdCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+			      <s:select id="skTitleCd" name="skTitleCd" cssStyle="width:80pt" list ="skTitleCdCombo"/>
+			</s:if>
+			<s:else>
+			      <s:select id="skTitleCd" name="skTitleCd" cssStyle="width:80pt" list ="skTitleCdCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="skJobForm" name="skJobForm" cssStyle="width:80pt" list ="skJobFormCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+			      <s:select id="skJobForm" name="skJobForm" cssStyle="width:80pt" list ="skJobFormCombo"/>
+			</s:if>
+			<s:else>
+			      <s:select id="skJobForm" name="skJobForm" cssStyle="width:80pt" list ="skJobFormCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select id="skDcctype" name="skDcctype" cssStyle="width:80pt" list ="skDcctypeCombo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      <s:if test='%{editApprFlg == "1"}'>
+			      <s:select id="skDcctype" name="skDcctype" cssStyle="width:80pt" list ="skDcctypeCombo"/>
+			</s:if>
+			<s:else>
+			      <s:select id="skDcctype" name="skDcctype" cssStyle="width:80pt" list ="skDcctypeCombo" disabled="true"/>
+			</s:else>
+	      </nobr></td>
       </tr>
   </table>
   <%--コメント類 --%>
@@ -849,7 +1000,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
-	     	<s:if test='%{reqStsCd == "01"}'>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" }'>
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
@@ -878,10 +1029,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<tr>
 	      <td class="comFormTableItem">
                 <nobr>
-                <s:if test='%{screenId == "ND001"}'>
+                <s:if test='%{preScreenId == "ND001"}'>
                 	<input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backFnc('0');return false;" />
 				</s:if>
-				<s:if test='%{screenId == "NC011"}'>
+				<s:if test='%{preScreenId == "NC011"}'>
 					<input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backFnc('1');return false;" />
 				</s:if>
                 </nobr>

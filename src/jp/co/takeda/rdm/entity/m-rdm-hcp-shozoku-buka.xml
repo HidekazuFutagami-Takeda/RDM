@@ -13,8 +13,12 @@
         <result column="SEARCHINPUT" property="searchInput"/>
         <result column="INSEARCHINPUT" property="inSearchInput"/>
     </resultMap>
-
-    <select id="selectDeptList" parameterType="jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM" resultMap="selectDeptListResultMap">
+    <resultMap id="selectDeptListMap" type="jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM">
+        <result column="DEPT_CODE" property="deptCode"/>
+        <result column="DEPT_KJ" property="DeptKj"/>
+        <result column="DEPT_KN" property="DeptKn"/>
+    </resultMap>
+    <select id="selectDeptList" parameterType="jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM" resultMap="selectDeptListMap">
         SELECT
             HCP_SHOZOKU.DEPT_KJ, HCP_SHOZOKU.DEPT_CODE, HCP_SHOZOKU.DEPT_KN
         <if test= "allCheck == false">  --(全所属部科チェックボックスの有無を確認,0の時チェック無しの処理/施設固定コードを使用する処理を実行)

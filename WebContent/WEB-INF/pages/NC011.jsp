@@ -248,7 +248,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			    </td>
 		</tr>
 		<tr>
-		<s:if test='mrAdminFlg == "0"'>
+		<s:if test='mrAdminFlg != "1"'>
 								<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
 			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true"/>
@@ -282,7 +282,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				</td>
 		</tr>
 		<tr>	<%-- 申請者 --%>
-			<s:if test='mrAdminFlg == "0"'>
+			<s:if test='mrAdminFlg != "1"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
 				<td>
 					 <s:textfield readonly="true" Style="width:100pt" name="reqjgiName" cssStyle="background-color:#D4D0C8;"/>
@@ -392,7 +392,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		</tr>
 		<tr>
 					<!-- 申請チャネル -->
-					<s:if test='mrAdminFlg == "0"'>
+					<s:if test='mrAdminFlg != "1"'>
 					<s:hidden id="jkrSosReqChlMap" name="reqChl" list ="jkrSosReqChlMap" />
 					</s:if>
 					<s:if test='mrAdminFlg == "1"'>

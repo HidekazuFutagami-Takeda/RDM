@@ -44,10 +44,15 @@ public class NC204Service extends BaseService {
     //略式漢字施設名
     private void  insAbbrNameDrop(NC204DTO indto) {
         // START UOC
-    	SRdmJkrSosInsAbbrNameEntiry sRdmJkrSosAddrEntiry = new SRdmJkrSosInsAbbrNameEntiry();
-        sRdmJkrSosAddrEntiry.setInsNo(indto.getParamInsNo());
-        List<SRdmJkrSosInsAbbrNameEntiry> jkrSosAddrMap = dao.select(sRdmJkrSosAddrEntiry);
-        indto.setInsAbbrName(jkrSosAddrMap.get(0).getInsAbbrName());
+    	if(StringUtils.isEmpty(indto.getParamInsNo())) {
+    		indto.setInsAbbrName("");
+    		indto.setAllCheck(true);
+    	}else {
+    		SRdmJkrSosInsAbbrNameEntiry sRdmJkrSosAddrEntiry = new SRdmJkrSosInsAbbrNameEntiry();
+    		sRdmJkrSosAddrEntiry.setInsNo(indto.getParamInsNo());
+    		List<SRdmJkrSosInsAbbrNameEntiry> jkrSosAddrMap = dao.select(sRdmJkrSosAddrEntiry);
+    		indto.setInsAbbrName(jkrSosAddrMap.get(0).getInsAbbrName());
+    	}
         // END UOC
     }
 
@@ -93,15 +98,15 @@ public class NC204Service extends BaseService {
        // SelectDeptListEntity paramEntity = new SelectDeptListEntity();
       SelectDeptListEntityRDM paramEntity = new SelectDeptListEntityRDM();
       SelectDeptListEntityRDM paramEntity2 = new SelectDeptListEntityRDM(indto.getSearchInput());
-      paramEntity.setScreenId("RDMND101");
-
+//      paramEntity.setScreenId("RDMND101");
+      paramEntity.setScreenId(indto.getBackScreenId());
 
       //入力_検索文字列  入力バーに入れられた値がnull、""でないかのチェック。
       if(indto.getSearchInput() == null) {
-      	paramEntity.setSearchInput("");
+      	paramEntity.setSearchInput(null);
       	paramEntity.setInSearchInput("");
       }else if(indto.getSearchInput().equals("")) {
-        	paramEntity.setSearchInput("");
+        	paramEntity.setSearchInput(null);
           	paramEntity.setInSearchInput("");
       }else {
     	  if (indto.getSearchInput().isEmpty()) {
@@ -109,22 +114,23 @@ public class NC204Service extends BaseService {
           }
           else {
           	 //漢字変換
-          	SelectHenkanListEntity kanziHenkan = new SelectHenkanListEntity("漢字変換");
-              kanziHenkan.setSearchHenkan(indto.getSearchInput());
-              //漢字変換結果を格納
-              List<SelectHenkanListEntity> selectKnazi = dao.select(kanziHenkan);
-              for (SelectHenkanListEntity kanzi : selectKnazi) {
-              	paramEntity.setSearchInput(kanzi.getSearchHenkan());
-              }
-          }
+//          	SelectHenkanListEntity kanziHenkan = new SelectHenkanListEntity("漢字変換");
+//        	  kanziHenkan.setSearchHenkan(indto.getSearchInput());
+//              //漢字変換結果を格納
+//              List<SelectHenkanListEntity> selectKnazi = dao.select(kanziHenkan);
+//              for (SelectHenkanListEntity kanzi : selectKnazi) {
+//              	paramEntity.setSearchInput(kanzi.getSearchHenkan());
+//              }
+//          }
       //paramEntity.setSearchInput(indto.getSearchInput());
      // paramEntity.setInSearchInput(indto.getSearchInput());
       	paramEntity2.setSearchInput(indto.getSearchInput());
       	paramEntity2.setInSearchInput(indto.getSearchInput());
         SelectDeptListEntityRDM selectCntEntity2 = (SelectDeptListEntityRDM)dao.select(paramEntity2).get(0);
-      	paramEntity.setSearchInput(selectCntEntity2.getSearchInput());
+      	paramEntity.setSearchInput(StringUtils.setEmptyToNull(selectCntEntity2.getSearchInput()));
       	paramEntity.setInSearchInput(selectCntEntity2.getSearchInput());
       	//paramEntity=paramEntity2;
+          }
       }
         //入力_SELECT区分 (パラメータ1)
        // paramEntity.setInSelectKbn(0);
@@ -135,14 +141,15 @@ public class NC204Service extends BaseService {
         paramEntity.setInsNo(indto.getParamInsNo());
         //paramEntity.setInInsNo(indto.getParamInsNo());
         //入力_所属部科名カナ(パラメータ3)
-        paramEntity.setInDeptKn("TEST");
+//        paramEntity.setInDeptKn("TEST");
         //paramEntity.setInDeptKn(StringUtils.setEmptyToNull(AppMethods.zKanaToHKana(indto.getKensakuKana())));
        //入力_所属部科名漢字 (パラメータ4)
-        paramEntity.setInDeptKj("TEST");
+//        paramEntity.setInDeptKj("TEST");
        //paramEntity.setInDeptKj(StringUtils.setEmptyToNull(indto.getKensakuKanj()));
        //入力_全所属部科チェックボックス(パラメータ5)
         paramEntity.setAllCheck(indto.getAllCheck());
-        if(paramEntity.getSearchInput() != null) {
+//        if(!StringUtils.isEmpty(paramEntity.getSearchInput())) {
+
          //画面初期表示時の所属部科一覧を取得する
       //  SelectDeptListEntity selectCntEntity = (SelectDeptListEntity)dao.select(paramEntity).get(0);
       //SelectDeptListEntityRDM selectCntEntity = (SelectDeptListEntityRDM)dao.select(paramEntity).get(0);
@@ -156,7 +163,7 @@ public class NC204Service extends BaseService {
             //画面初期表示時の帳票一覧を取得する
             List<SelectDeptListEntityRDM> deptListEntity = dao.select(paramEntity);
 
-            if(paramEntity.getScreenId() == "RDMND011") {
+            if(paramEntity.getScreenId().equals("ND011")) {
             	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
                      CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
@@ -168,7 +175,7 @@ public class NC204Service extends BaseService {
 
                      catDeptsComboDataList.add(dataRecord);
              }
-            }else if(paramEntity.getScreenId() == "RDMND012") {
+            }else if(paramEntity.getScreenId().equals("ND012")) {
             	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
                      CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
@@ -180,7 +187,7 @@ public class NC204Service extends BaseService {
 
                      catDeptsComboDataList.add(dataRecord);
              }
-            }else if(paramEntity.getScreenId() == "RDMND101") {
+            }else if(paramEntity.getScreenId().equals("ND101")) {
             	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
                      CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
@@ -193,7 +200,7 @@ public class NC204Service extends BaseService {
 
                      catDeptsComboDataList.add(dataRecord);
              }
-            }else if(paramEntity.getScreenId() == "RDMND102") {
+            }else if(paramEntity.getScreenId().equals("ND102")) {
             	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
                      CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
@@ -213,7 +220,8 @@ public class NC204Service extends BaseService {
         //検索された帳票一覧をDTOに設定する
         indto.setCatDeptsComboDataList(catDeptsComboDataList);
         // END UOC
-        }return outdto;
+//        }
+        return outdto;
     }
 
     /**

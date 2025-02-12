@@ -284,5 +284,11 @@
         	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
         	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
         </action>
+        <action name="NC203Init" class="nC203Action" method="init">
+            <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
+        </action>
+        <action name="NC204Init" class="nC204Action" method="init">
+            <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
+        </action>
     </package>
 </struts>

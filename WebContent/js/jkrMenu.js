@@ -86,7 +86,7 @@ function setTimer()
   if (count > maxSec) {
     var objid=document.getElementById('BlinkArea');
     if(objid != null && menuBox02.style.visibility != "hidden"){
-      document.fm1.screenId.value = 'JKR000C010';
+      document.fm1.screenId.value = 'NC001';
       document.fm1.functionId.value = 'View';
       comSubmitForAnyWarp(document.fm1);
     }

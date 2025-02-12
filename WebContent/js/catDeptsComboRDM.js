@@ -67,16 +67,19 @@ function cdcView(w,callBack,winVarName){
     joken[joken.length] = new Array(checkedCodes[i].value);
   }
   jokenName[jokenName.length] = "paramInsNo";
-  joken[joken.length] = new Array(document.fm1.insNo070.value);
+  //joken[joken.length] = new Array(document.fm1.insNo070.value);
+  joken[joken.length] = new Array(document.fm1.paramInsNo.value);
+  jokenName[jokenName.length] = "backScreenId";
+  joken[joken.length] = new Array(document.fm1.backScreenId.value);
 
   /*条件有り呼び出しパターン    ここを変更*/
   if(callBack = "tmpCallBackShozokuViewRDM"){
-	  comPostPopup(w,"NC204Init.action",CSE_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
+	  comPostPopup(w,"NC204Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 	  w.focus();
 	  return(w);
   }
   if(callBack = "tmpCallBackPostViewRDM"){
-	  comPostPopup(w,"NC205Init.action",CSE_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
+	  comPostPopup(w,"NC205Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 	  w.focus();
 	  return(w);
   }

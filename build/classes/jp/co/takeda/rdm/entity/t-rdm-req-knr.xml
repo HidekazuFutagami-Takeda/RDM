@@ -287,7 +287,7 @@
 	    AND REQ_KNR.REQ_COMMENT LIKE '%' || #{reqComment} || '%'
 	    </if>
 	    <if test="aprComment != null">
-	    AND REQ_KNR.COMMENT LIKE '%' || #{aprComment} || '%'
+	    AND REQ_KNR.APR_COMMENT LIKE '%' || #{aprComment} || '%'
 	    </if>
 	    <if test="reqType != null">
 	    AND CODE_LB.VALUE1 = #{reqType}   --...ドロップダウンで選択するらしい?　　--入力情報を受け取り判別

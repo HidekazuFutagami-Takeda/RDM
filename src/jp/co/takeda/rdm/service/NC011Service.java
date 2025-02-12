@@ -364,6 +364,7 @@ public class NC011Service extends BaseService {
         addrDrop(indto);
         cal(indto);
         sbtDrop(indto);
+        reqChlDrop(indto);
         reqSbtDrop(indto);
         reqTypeDrop(indto);
         reqStsDrop(indto);
@@ -372,7 +373,7 @@ public class NC011Service extends BaseService {
         hoInsTypeDrop(indto);
         docTypeDrop(indto);
         jobFormDrop(indto);
-        reqChlDrop(indto);
+
         FbReqFlg(indto);
         FbPrcType(indto);
         //paramEntity.setScreenId("RDMND101");
@@ -625,9 +626,11 @@ public class NC011Service extends BaseService {
                 			dataRecord.setSbt("施設");
                 		}else if(entiry.getReqType().equals("31") || entiry.getReqType().equals("32") || entiry.getReqType().equals("33") || entiry.getReqType().equals("34") || entiry.getReqType().equals("41") || entiry.getReqType().equals("42") || entiry.getReqType().equals("43") || entiry.getReqType().equals("44") || entiry.getReqType().equals("51")) {
                 			dataRecord.setSbt("医師");
-                		}
+                		}else {
+                    		dataRecord.setSbt(" ");
+                    	}
                 	}else {
-                		dataRecord.setReqSbt(" ");
+                		dataRecord.setSbt(" ");
                 	}
 
                        //dataRecord.setReqId(entiry.getReqId());

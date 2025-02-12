@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  申請一覧のJSP
+ *  施設・領域別担当変更のJSP
  * </pre>
  * @since 1.0
  * @version $Revision:
@@ -26,33 +26,23 @@
 %>
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-//String title = (String)request.getAttribute("title");
-//String execDate = (String)request.getAttribute("execDate");
-//ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
-//JKR040C010DTO dto = new JKR040C010DTO();
-//if (stack.peek() instanceof JKR040C010DTO) {
-//  dto = (JKR040C010DTO)stack.peek();
-//}
-%>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title>NC011_申請一覧</title>
+    <title>NM001_申請サマリ</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="css/common2.css" rel="Stylesheet" type="text/css" />
     <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
     <script type="text/javascript" src="js/jkrSosStatus.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-    <%-- 040C共通のjs --%>
-    <!-- <script type="text/javascript" src="js/JKR040C000.js"></script>-->
+
 
     <script type="text/javascript" src="js/NC011.js"></script>
     <script type="text/javascript" src="js/jkrSosStatus.js"></script>
     <script type="text/javascript" src="js/JKR040C010.js"></script>
-    <!--<script type="text/javascript" src="js/RDMNC011.js"></script>-->
     <script type="text/javascript" src="js/catTkCityCombo.js"></script>
     <script type="text/javascript" src="js/imtInsInputCategores.js"></script>
     <script type="text/javascript" src="js/jgiKanren.js"></script>

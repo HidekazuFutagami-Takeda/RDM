@@ -11,23 +11,23 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import jp.co.takeda.rdm.util.RdmConstantsData;
-import jp.co.takeda.jkr.util.StringUtils;
+import jp.co.takeda.rdm.util.StringUtils;
 
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.common.BaseDTO;
-import jp.co.takeda.jkr.common.BaseInfoHolder;
-import jp.co.takeda.jkr.common.BaseService;
-import jp.co.takeda.jkr.common.LoginInfo;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NC203DTO;
 import jp.co.takeda.rdm.dto.InsData;
-import jp.co.takeda.jkr.entity.MRdmHcoKeieitaiEntiry;
-import jp.co.takeda.jkr.entity.SRdmJkrSosAddrEntiry;
-import jp.co.takeda.jkr.entity.join.MRdmCodeMstEntity;
-import jp.co.takeda.jkr.entity.join.SelectCntSelectHcoEntity;
-import jp.co.takeda.jkr.entity.join.SelectHenkanListEntity;
-import jp.co.takeda.jkr.entity.join.SelectInsListEntity;
-import jp.co.takeda.jkr.entity.join.SelectParamNc203Entity;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
+import jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry;
+import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
+import jp.co.takeda.rdm.entity.join.SelectCntSelectHcoEntity;
+import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
+import jp.co.takeda.rdm.entity.join.SelectInsListEntity;
+import jp.co.takeda.rdm.entity.join.SelectParamNc203Entity;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.logging.Log;

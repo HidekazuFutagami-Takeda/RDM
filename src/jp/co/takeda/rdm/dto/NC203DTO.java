@@ -12,7 +12,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-import jp.co.takeda.jkr.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseDTO;
 
 /**
  * DTOクラス

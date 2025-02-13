@@ -128,6 +128,19 @@
             <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
             <result name="ND301">/WEB-INF/pages/ND301.jsp</result>
         </action>
+
+        <action name="NF501Init" class="NF501Action" method="init">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
+        <action name="ND103Init" class="ND103Action" method="init">
+            <result name="ND103">/WEB-INF/pages/ND103.jsp</result>
+        </action>
+        <action name="ND013Init" class="ND013Action" method="init">
+            <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
+        </action>
+        <action name="NC208Init" class="NC208Action" method="init">
+            <result name="NC208">/WEB-INF/pages/NC208.jsp</result>
+        </action>
         <action name="NC206Init" class="nC206Action" method="init">
             <result name="NC206">/WEB-INF/pages/NC206.jsp</result>
         </action>

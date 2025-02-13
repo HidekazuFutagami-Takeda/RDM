@@ -306,6 +306,10 @@ function shwoInit() {
                 <td><s:textfield name="reqId" size="13" maxlength="13" /></td>
               </tr>
             <tr><td></td>
+              　　　　　　　　　<td><label>武田医師コード</label></td>
+                <td><s:textfield name="paramDocNo" size="8" maxlength="8" /></td>
+              </tr>
+            <tr><td></td>
               　　　　　　　　　<td><label>ULT施設コード</label></td>
                 <td><s:textfield name="ultInsCd" size="9" maxlength="9" /></td>
               </tr>

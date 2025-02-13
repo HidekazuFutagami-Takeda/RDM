@@ -416,6 +416,20 @@ TD.comTableItem#green		{ text-align : center; color : #006600; }
 TD.comTableItem#yellow		{ text-align : center; color : #999933; }
 TD.comTableItem#orange		{ text-align : center; color : #ff6600; }
 
+TD.comTableItemNF001				/* テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #e8b5a2;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+  height : 30px;
+}
+
 TD.comTableTitle			/* テーブル形式のタイトル項目 */
 {
   color : #000000;
@@ -430,6 +444,52 @@ TD.comTableTitle			/* テーブル形式のタイトル項目 */
   border-bottom-width : 1px;
   font-size   : 8pt;
 }
+
+TD.comTableTitleNF001			/* テーブル形式のタイトル項目 */
+{
+  color : #000000;
+/*	background-color: #e0e0d4;*/
+/*	background-color: #cccccc;*/
+  background-color: #e8b5a2;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comTableTitleNF001W			/* テーブル形式のタイトル項目 */
+{
+  color : #000000;
+/*	background-color: #e0e0d4;*/
+/*	background-color: #cccccc;*/
+  background-color: #FFFFFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
+TD.comTableTitleNF001Act			/* テーブル形式のタイトル項目 */
+{
+  color : #000000;
+/*	background-color: #e0e0d4;*/
+/*	background-color: #cccccc;*/
+  background-color: #FFFFFF;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 0px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
 TABLE.comTableSearch	/* テーブル形式の検索部の枠 */
 {
   background-color: #ffffff;

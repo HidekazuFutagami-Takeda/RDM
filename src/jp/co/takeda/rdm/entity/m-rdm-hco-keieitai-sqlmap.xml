@@ -20,5 +20,15 @@
 	FROM
 		ORAUSR01.M_RDM_HCO_KEIEITAI
     </select>
-
+	<select id="selectKeieitaiComboList" parameterType="jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry" resultMap="MRdmHcoKeieitaiEntiryResultMap">
+        SELECT
+			SET_DT_CD,
+	    	KEIEITAI_KJ
+        FROM
+            M_RDM_HCO_KEIEITAI
+        WHERE
+        	DEL_FLG = '0'
+        ORDER BY
+			SORT_NUM ASC
+    </select>
 </mapper>

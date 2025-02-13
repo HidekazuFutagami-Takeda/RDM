@@ -152,6 +152,12 @@
         <action name="ND001Sort" class="nD001Action" method="sort">
             <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
         </action>
+        <action name="NF001Init" class="nF001Action" method="init">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+        </action>
+        <action name="NF001Search" class="nF001Action" method="search">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+        </action>
         <action name="NF011Init" class="nF011Action" method="init">
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
         </action>
@@ -288,6 +294,9 @@
         	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
         </action>
         <action name="NC203Init" class="nC203Action" method="init">
+            <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
+        </action>
+        <action name="NC203Search" class="nC203Action" method="search">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>
         <action name="NC204Init" class="nC204Action" method="init">

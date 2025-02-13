@@ -91,6 +91,41 @@
     <resultMap id="kanjiHenkanResultMap" type="jp.co.takeda.rdm.entity.join.SelectInsListEntity">
         <result column="SEARCH_INPUT" property="searchInput"/>
     </resultMap>
+   	<resultMap id="nF001MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF001MainDataEntity">
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_FORMAL_NAME" property="insFormalName"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ADDR" property="insAddr"/>
+        <result column="INS_PHONE1" property="insPhone1"/>
+        <result column="INS_TYPE" property="insType"/>
+        <result column="KEIEITAI_KJ" property="keieitaiKj"/>
+        <result column="BEDS_TOT" property="bedsTot"/>
+        <result column="DOC_COUNT" property="docCount"/>
+        <result column="PLN_VALUE" property="plnValue"/>
+        <result column="JSK_VALUE_TK" property="jskValueTk"/>
+        <result column="JSK_VALUE_ZK" property="jskValueZk"/>
+        <result column="JSK_VALUE_ZZK" property="jskValueZzk"/>
+        <result column="DEL_KBN" property="delKbn"/>
+        <result column="DEL_FLG" property="delFlg"/>
+        <result column="DEL_FLG_NM" property="delFlgNm"/>
+        <result column="BUMON_RYAKU_NAME" property="bumonRyakuName"/>
+        <result column="JGI_NAME" property="jgiName"/>
+        <result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
+        <result column="SHISETSU_NM" property="shisetsuNm"/>
+        <result column="DCF_SHISETSU_CD" property="dcfShisetsuCd"/>
+        <result column="ADDRESS" property="address"/>
+        <result column="SHISETSU_TEL" property="shisetsuTel"/>
+        <result column="ULT_PHARM_TYPE" property="ultPharmType"/>
+        <result column="ULT_KEIEITAI_KJ" property="ultKeieitaiKj"/>
+        <result column="BYOSHO_SU" property="byoshoSu"/>
+        <result column="INS_CLASS" property="insClass"/>
+        <result column="SOS_CD" property="sosCd"/>
+        <result column="JGI_NO" property="jgiNo"/>
+        <result column="VALUE_CT" property="valueCt"/>
+        <result column="VALUE_FAC" property="valueFac"/>
+        <result column="VALUE_NT" property="valueNt"/>
+        <result column="CNT" property="cnt"/>
+    </resultMap>
 	<resultMap id="nF211MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
         <result column="REQ_CHL" property="reqChl"/>
@@ -575,6 +610,373 @@
 			  ORAUSR01.F_RDM_KJ_HENKAN(#{searchInput}) SEARCH_INPUT
 			FROM
 			  dual
+	</select>
+	<select id="selectNF001DataList" parameterType="jp.co.takeda.rdm.entity.join.SelectNF001MainDataEntity" resultMap="nF001MainDataResultMap">
+		SELECT DISTINCT
+		  MST.INS_ABBR_NAME
+		, MST.INS_FORMAL_NAME
+		, MST.INS_NO
+		, MST.INS_ADDR
+		, MST.INS_PHONE1
+		, CDM_INSTYPE.VALUE1_KANJ AS INS_TYPE
+		, KEIEI.KEIEITAI_KJ
+		, MST.BEDS_TOT
+		, SUP.DOC_COUNT
+		, SUP.PLN_VALUE
+		, SUP.JSK_VALUE_TK
+		, SUP.JSK_VALUE_ZK
+		, SUP.JSK_VALUE_ZZK
+		, CDM_DELKBN.VALUE1_KANJ AS DEL_KBN
+		, MST.DEL_FLG
+		, CDM_DELFLG.VALUE1_KANJ AS DEL_FLG_NM
+		, JGI_B.BUMON_RYAKU_NAME
+		, JGI_B.JGI_NAME
+		, MDB.SHISETSU_NM_RYAKU
+		, MDB.SHISETSU_NM
+		, MDB.DCF_SHISETSU_CD
+		, MDB.ADDRESS
+		, MDB.SHISETSU_TEL
+		, CDM_ULTPHARM.VALUE1_KANJ AS ULT_PHARM_TYPE
+		, KEIEI_ULT.KEIEITAI_KJ AS ULT_KEIEITAI_KJ
+		, MDB.BYOSHO_SU
+		, MST.INS_CLASS
+		, JKR_ADDR.SOS_CD
+		, JGI_B.JGI_NO
+		, PRM_CT.VALUE AS VALUE_CT
+		, PRM_FAC.VALUE AS VALUE_FAC
+		, PRM_NT.VALUE AS VALUE_NT
+		FROM
+		M_RDM_PARAM_MST PRM_CT -- パラメタ情報 親子紐当期
+		INNER JOIN
+		M_RDM_PARAM_MST PRM_FAC -- パラメタ情報 来期項目
+		ON 1=1
+		AND PRM_FAC.PARAM_NAME = 'MN_NT_FAC'
+		INNER JOIN
+		M_RDM_PARAM_MST PRM_NT -- パラメタ情報 親子紐来期
+		ON 1=1
+		AND PRM_NT.PARAM_NAME = 'MN_NT_OYA'
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON 1=1
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST MDB -- ULT_MDB施設マスタ
+		ON 1=1
+		AND MDB.DCF_SHISETSU_CD = MST.ULT_INS_NO
+--		LEFT JOIN
+--		(SELECT
+--			*
+--			FROM
+--			T_RDM_M_MDB_HCO_MST
+--			WHERE 1=1
+--			AND DCF_SHISETSU_CD NOT EXISTS (SELECT ULT_INS_NO FROM M_RDM_HCO_MST)
+--		) MDB_ULT -- ULT_MDB施設マスタ
+--		ON 1=1
+		LEFT JOIN
+		M_RDM_JKR_MR_INS_TRT JKR_A -- RDM用施設担当者情報 A
+		ON 1=1
+		AND JKR_A.INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_JGI_SOS_MST JGI_A -- RDM用組織従業員情報 A
+		ON 1=1
+		AND JGI_A.JGI_NO = JKR_A.JGI_NO
+		LEFT JOIN
+		S_RDM_JKR_MR_IN_CHRG_OF_INS CHRG -- 施設責任者管理
+		ON 1=1
+		AND CHRG.INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_JGI_SOS_MST JGI_B -- RDM用組織従業員情報 B
+		ON 1=1
+		AND JGI_B.JGI_NO = CHRG.MR_NO
+		LEFT JOIN
+		M_RDM_HCO_SUP SUP -- 施設_補足情報
+		ON 1=1
+		AND SUP.INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_DELKBN -- コード情報 削除区分
+		ON 1=1
+		AND CDM_DELKBN.CODE_NAME = 'DEL_KBN'
+		AND CDM_DELKBN.DEL_FLG = '0'
+		AND CDM_DELKBN.VALUE1 = MST.DEL_KBN
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_DELFLG -- コード情報 削除フラグ
+		ON 1=1
+		AND CDM_DELFLG.CODE_NAME = 'DEL_FLG'
+		AND CDM_DELFLG.DEL_FLG = '0'
+		AND CDM_DELFLG.VALUE1 = MST.DEL_FLG
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEI-- 施設_経営主体マスタ 経営主体 武田
+		ON 1=1
+		AND KEIEI.DEL_FLG = '0'
+		AND KEIEI.SET_DT_CD = MST.MANAGE_CD
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_ULTPHARM -- コード情報 ULT施設区分
+		ON 1=1
+		AND CDM_ULTPHARM.CODE_NAME = 'ULT_PHARM_TYPE'
+		AND CDM_ULTPHARM.DEL_FLG = '0'
+		AND CDM_ULTPHARM.VALUE1 = MDB.SHISETSU_KBN
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI_LNK -- 経営体紐付けマスタ
+		ON 1=1
+		AND KEIEI_LNK.KEIEITAI_CD = MDB.KEIEITAI_CD
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEI_ULT -- 施設_経営主体マスタ ULT
+		ON 1=1
+		AND KEIEI_ULT.DEL_FLG = '0'
+		AND KEIEI_ULT.SET_DT_CD = KEIEI_LNK.SET_DT_CD
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_INSTYPE -- コード情報 施設種別
+		ON 1=1
+		AND CDM_INSTYPE.CODE_NAME = 'INS_TYPE'
+		AND CDM_INSTYPE.DEL_FLG = '0'
+		AND CDM_INSTYPE.VALUE1 = MST.INS_SBT
+		LEFT JOIN
+		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
+		ON 1=1
+		AND ADDR.ADDR_CODE_PREF = MDB.TODOFUKEN_CD
+		AND ADDR.ADDR_CODE_CITY = MDB.SHIKUCHOSON_CD
+		LEFT JOIN
+		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
+		ON 1=1
+		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
+		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
+		AND JKR_ADDR.SOS_CD = #{loginSosCd}
+		LEFT JOIN
+		M_RDM_JKR_MR_INS_TRT JKR_B -- RDM用施設担当者情報 B
+		ON 1=1
+		AND JKR_B.INS_NO = MST.INS_NO
+		AND JKR_B.JGI_NO = #{loginJgiNo}
+		WHERE 1=1
+		AND PRM_CT.PARAM_NAME = 'MN_CT_OYA'
+		<if test="delKbn != null">AND MST.DEL_KBN = #{delKbn}</if>
+		<if test="insKanjSrch != null">
+			AND (MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjSrch}|| '%'
+			OR	MDB.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjSrch}|| '%')
+		</if>
+		<if test="insKanaSrch != null">
+			AND (MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%'
+			OR	MDB.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
+		</if>
+		<if test="delFlg != null">AND MST.DEL_FLG = #{delFlg}</if>
+		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
+		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
+		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
+		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
+		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
+		<if test="insPhoneSrch != null">
+			AND (MST.INS_PHONE_SRCH LIKE '%' ||#{insPhoneSrch}|| '%'
+			OR	MDB.SHISETSU_TEL_SRCH LIKE '%' ||#{insPhoneSrch}|| '%')
+		</if>
+		<if test="insPcode != null">
+			AND (MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%'
+			OR	MDB.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
+		</if>
+		<if test="addrCodePref != null">AND MST.ADDR_CODE_PREF = #{addrCodePref}</if>
+		<if test="addrCodeCity != null">AND MST.ADDR_CODE_CITY = #{addrCodeCity}</if>
+		<if test="insAddrSrch != null">
+			AND (MST.INS_ADDR_SRCH LIKE '%' ||#{insAddrSrch}|| '%'
+			OR	MDB.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
+		</if>
+		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
+		<if test="sosCd != null">
+			<if test="bumonRank == '2'">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
+			<if test="bumonRank == '3'">AND JGI_A.SOS_CD = #{sosCd}</if>
+		</if>
+		<if test="jgiNo != null">
+			AND JGI_A.BR_CODE = #{brCode}
+			AND JGI_A.DIST_CODE = #{distCode}
+			AND JGI_A.JGI_NO =  #{jgiNo}
+		</if>
+        <if test="inSortId == 0">ORDER BY MST.INS_NO ASC NULLS FIRST</if>
+        <if test="inSortId == 1">ORDER BY MST.INS_NO DESC NULLS LAST</if>
+        <if test="inSortId == 2">ORDER BY MST.INS_ABBR_NAME ASC NULLS FIRST</if>
+        <if test="inSortId == 3">ORDER BY MST.INS_ABBR_NAME DESC NULLS LAST</if>
+        <if test="inSortId == 4">ORDER BY MST.INS_ADDR ASC NULLS FIRST</if>
+        <if test="inSortId == 5">ORDER BY MST.INS_ADDR DESC NULLS LAST</if>
+        <if test="inSortId == 6">ORDER BY MDB.SHISETSU_NM_RYAKU ASC NULLS FIRST</if>
+        <if test="inSortId == 7">ORDER BY MDB.SHISETSU_NM_RYAKU DESC NULLS LAST</if>
+        <if test="inSortId == 8">ORDER BY MDB.ADDRESS ASC NULLS FIRST</if>
+        <if test="inSortId == 9">ORDER BY MDB.ADDRESS DESC NULLS LAST</if>
+		OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
+	</select>
+	<select id="selectNF001DataListCnt" parameterType="jp.co.takeda.rdm.entity.join.SelectNF001MainDataEntity" resultMap="nF001MainDataResultMap">
+		SELECT
+			COUNT(*) CNT
+		FROM(
+		SELECT DISTINCT
+		  MST.INS_ABBR_NAME
+		, MST.INS_FORMAL_NAME
+		, MST.INS_NO
+		, MST.INS_ADDR
+		, MST.INS_PHONE1
+		, CDM_INSTYPE.VALUE1_KANJ AS INS_TYPE
+		, KEIEI.KEIEITAI_KJ
+		, MST.BEDS_TOT
+		, SUP.DOC_COUNT
+		, SUP.PLN_VALUE
+		, SUP.JSK_VALUE_TK
+		, SUP.JSK_VALUE_ZK
+		, SUP.JSK_VALUE_ZZK
+		, CDM_DELKBN.VALUE1_KANJ AS DEL_KBN
+		, MST.DEL_FLG
+		, CDM_DELFLG.VALUE1_KANJ AS DEL_FLG_NM
+		, JGI_B.BUMON_RYAKU_NAME
+		, JGI_B.JGI_NAME
+		, MDB.SHISETSU_NM_RYAKU
+		, MDB.SHISETSU_NM
+		, MDB.DCF_SHISETSU_CD
+		, MDB.ADDRESS
+		, MDB.SHISETSU_TEL
+		, CDM_ULTPHARM.VALUE1_KANJ AS ULT_PHARM_TYPE
+		, KEIEI_ULT.KEIEITAI_KJ AS ULT_KEIEITAI_KJ
+		, MDB.BYOSHO_SU
+		, MST.INS_CLASS
+		, JKR_ADDR.SOS_CD
+		, JGI_B.JGI_NO
+		, PRM_CT.VALUE AS VALUE_CT
+		, PRM_FAC.VALUE AS VALUE_FAC
+		, PRM_NT.VALUE AS VALUE_NT
+		FROM
+		M_RDM_PARAM_MST PRM_CT -- パラメタ情報 親子紐当期
+		INNER JOIN
+		M_RDM_PARAM_MST PRM_FAC -- パラメタ情報 来期項目
+		ON 1=1
+		AND PRM_FAC.PARAM_NAME = 'MN_NT_FAC'
+		INNER JOIN
+		M_RDM_PARAM_MST PRM_NT -- パラメタ情報 親子紐来期
+		ON 1=1
+		AND PRM_NT.PARAM_NAME = 'MN_NT_OYA'
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON 1=1
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST MDB -- ULT_MDB施設マスタ
+		ON 1=1
+		AND MDB.DCF_SHISETSU_CD = MST.ULT_INS_NO
+--		LEFT JOIN
+--		(SELECT
+--			*
+--			FROM
+--			T_RDM_M_MDB_HCO_MST
+--			WHERE 1=1
+--			AND DCF_SHISETSU_CD NOT EXISTS (SELECT ULT_INS_NO FROM M_RDM_HCO_MST)
+--		) MDB_ULT -- ULT_MDB施設マスタ
+--		ON 1=1
+		LEFT JOIN
+		M_RDM_JKR_MR_INS_TRT JKR_A -- RDM用施設担当者情報 A
+		ON 1=1
+		AND JKR_A.INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_JGI_SOS_MST JGI_A -- RDM用組織従業員情報 A
+		ON 1=1
+		AND JGI_A.JGI_NO = JKR_A.JGI_NO
+		LEFT JOIN
+		S_RDM_JKR_MR_IN_CHRG_OF_INS CHRG -- 施設責任者管理
+		ON 1=1
+		AND CHRG.INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_JGI_SOS_MST JGI_B -- RDM用組織従業員情報 B
+		ON 1=1
+		AND JGI_B.JGI_NO = CHRG.MR_NO
+		LEFT JOIN
+		M_RDM_HCO_SUP SUP -- 施設_補足情報
+		ON 1=1
+		AND SUP.INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_DELKBN -- コード情報 削除区分
+		ON 1=1
+		AND CDM_DELKBN.CODE_NAME = 'DEL_KBN'
+		AND CDM_DELKBN.DEL_FLG = '0'
+		AND CDM_DELKBN.VALUE1 = MST.DEL_KBN
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_DELFLG -- コード情報 削除フラグ
+		ON 1=1
+		AND CDM_DELFLG.CODE_NAME = 'DEL_FLG'
+		AND CDM_DELFLG.DEL_FLG = '0'
+		AND CDM_DELFLG.VALUE1 = MST.DEL_FLG
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEI-- 施設_経営主体マスタ 経営主体 武田
+		ON 1=1
+		AND KEIEI.DEL_FLG = '0'
+		AND KEIEI.SET_DT_CD = MST.MANAGE_CD
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_ULTPHARM -- コード情報 ULT施設区分
+		ON 1=1
+		AND CDM_ULTPHARM.CODE_NAME = 'ULT_PHARM_TYPE'
+		AND CDM_ULTPHARM.DEL_FLG = '0'
+		AND CDM_ULTPHARM.VALUE1 = MDB.SHISETSU_KBN
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI_LNK -- 経営体紐付けマスタ
+		ON 1=1
+		AND KEIEI_LNK.KEIEITAI_CD = MDB.KEIEITAI_CD
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEI_ULT -- 施設_経営主体マスタ ULT
+		ON 1=1
+		AND KEIEI_ULT.DEL_FLG = '0'
+		AND KEIEI_ULT.SET_DT_CD = KEIEI_LNK.SET_DT_CD
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_INSTYPE -- コード情報 施設種別
+		ON 1=1
+		AND CDM_INSTYPE.CODE_NAME = 'INS_TYPE'
+		AND CDM_INSTYPE.DEL_FLG = '0'
+		AND CDM_INSTYPE.VALUE1 = MST.INS_SBT
+		LEFT JOIN
+		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
+		ON 1=1
+		AND ADDR.ADDR_CODE_PREF = MDB.TODOFUKEN_CD
+		AND ADDR.ADDR_CODE_CITY = MDB.SHIKUCHOSON_CD
+		LEFT JOIN
+		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
+		ON 1=1
+		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
+		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
+		AND JKR_ADDR.SOS_CD = #{loginSosCd}
+		LEFT JOIN
+		M_RDM_JKR_MR_INS_TRT JKR_B -- RDM用施設担当者情報 B
+		ON 1=1
+		AND JKR_B.INS_NO = MST.INS_NO
+		AND JKR_B.JGI_NO = #{loginJgiNo}
+		WHERE 1=1
+		AND PRM_CT.PARAM_NAME = 'MN_CT_OYA'
+		<if test="delKbn != null">AND MST.DEL_KBN = #{delKbn}</if>
+		<if test="insKanjSrch != null">
+			AND (MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjSrch}|| '%'
+			OR	MDB.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjSrch}|| '%')
+		</if>
+		<if test="insKanaSrch != null">
+			AND (MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%'
+			OR	MDB.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
+		</if>
+		<if test="delFlg != null">AND MST.DEL_FLG = #{delFlg}</if>
+		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
+		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
+		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
+		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
+		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
+		<if test="insPhoneSrch != null">
+			AND (MST.INS_PHONE_SRCH LIKE '%' ||#{insPhoneSrch}|| '%'
+			OR	MDB.SHISETSU_TEL_SRCH LIKE '%' ||#{insPhoneSrch}|| '%')
+		</if>
+		<if test="insPcode != null">
+			AND (MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%'
+			OR	MDB.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
+		</if>
+		<if test="addrCodePref != null">AND MST.ADDR_CODE_PREF = #{addrCodePref}</if>
+		<if test="addrCodeCity != null">AND MST.ADDR_CODE_CITY = #{addrCodeCity}</if>
+		<if test="insAddrSrch != null">
+			AND (MST.INS_ADDR_SRCH LIKE '%' ||#{insAddrSrch}|| '%'
+			OR	MDB.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
+		</if>
+		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
+		<if test="sosCd != null">
+			<if test="bumonRank == '2'">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
+			<if test="bumonRank == '3'">AND JGI_A.SOS_CD = #{sosCd}</if>
+		</if>
+		<if test="jgiNo != null">
+			AND JGI_A.BR_CODE = #{brCode}
+			AND JGI_A.DIST_CODE = #{distCode}
+			AND JGI_A.JGI_NO =  #{jgiNo}
+		</if>
+		) CNT_GP
 	</select>
     <select id="selectNF211ReqTkdData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity" resultMap="nF211MainDataResultMap">
 		SELECT

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\zzk5186\OneDrive - Takeda\Documents\GitHub\RDM\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2993226870.index
+2852144370.index
+2799525244.index
+2086127284.index
+3293195487.index
+1593681355.index

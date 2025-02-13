@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hcp_kmu_req_new">
+    <resultMap id="mRdmHcpKmuReqNewResultMap" type="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity">
+        <result column="REQ_SHZ" property="reqShz"/>
+        <result column="REQ_STS" property="reqSts"/>
+        <result column="REQ_JGI_NAME" property="jgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="brCode"/>
+        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="REQ_STS_CD" property="reqStsCd"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="DOC_KANJ" property="docKanj"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="ULT_DOC_NO" property="urlDocNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="DEPT_KJ" property="deptKj"/>
+        <result column="TITLE_CODE_AF" property="titleCodeAf"/>
+        <result column="JOB_FORM_AF" property="jobFormAf"/>
+        <result column="DCC_TYPE_AF" property="dccTypeAf"/>
+        <result column="UNIV_POS_CODE_AF" property="univPosCodeAf"/>
+        <result column="TEKIYO_YMD" property="tekiyoYmd"/>
+        <result column="INS_NO_SK" property="insNoSk"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
+        <result column="DEPT_CODE_AF" property="deptCodeAf"/>
+        <result column="DEPT_KN" property="deptKn"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+       	<result column="APR_COMMENT" property="aprComment"/>
+    </resultMap>
+
+    <select id="selectHcpKmuReqNew" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity" resultMap="mRdmHcpKmuReqNewResultMap">
+
+    	<!-- 新規の場合 -->
+		<if test="paramDocNo != null">
+		SELECT
+			 DOC_KANJ --氏名（漢字）
+			,DOC_NO --医師固定コード
+			,ULT_DOC_NO --ULT医師コード
+		FROM
+			ORAUSR01.M_RDM_HCP_MST --医師_基本情報
+		WHERE
+			DOC_NO = #{paramDocNo} --医師固定コード（親画面）
+		</if>
+
+		<!-- 申請データありの場合 -->
+		<if test="paramReqId != null">
+		SELECT
+			 REQ_KNR.REQ_SHZ --申請者所属
+			,REQ_KNR.REQ_STS --申請ステータス(名称)
+			,REQ_KNR.REQ_JGI_NAME --申請者氏名
+			,REQ_KNR.REQ_YMDHMS --申請日時
+			,REQ_KNR.REQ_JGI_NO --申請者従業員番号
+			,REQ_KNR.REQ_BR_CODE --申請者所属リージョン
+			,REQ_KNR.REQ_DIST_CODE --申請者所属エリア
+			,REQ_KNR.REQ_STS AS REQ_STS_CD --申請ステータス(コード)
+			,REQ_KNR.UPD_SHA_YMD --更新日
+			,HCP_MST.DOC_KANJ --氏名（漢字）
+			,HCP_MST.DOC_NO --医師固定コード
+			,HCP_MST.ULT_DOC_NO --ULT医師コード
+			,HCO_MST.INS_ABBR_NAME --施設略式漢字名
+			,SHOZOKU_BUKA.DEPT_KJ --所属部科漢字名
+			,KMU_REQ.TITLE_CODE_AF --役職コード(異動先)
+			,KMU_REQ.JOB_FORM_AF --勤務形態(異動先)
+			,KMU_REQ.DCC_TYPE_AF --薬審メンバー区分(異動先)
+			,KMU_REQ.UNIV_POS_CODE_AF --大学職位コード(異動先)
+			,REQ_KNR.TEKIYO_YMD --適用開始日
+			,KMU_REQ.INS_NO_SK --施設固定コード(異動先)
+			,HCO_MST.ULT_INS_NO --ULT施設コード
+			,KMU_REQ.DEPT_CODE_AF --所属部科コード(異動先)
+			,SHOZOKU_BUKA.DEPT_KN --所属部科カナ名
+			,REQ_KNR.REQ_COMMENT --申請コメント
+			,REQ_KNR.APR_COMMENT --却下コメント
+		FROM
+			ORAUSR01.T_RDM_REQ_KNR REQ_KNR --申請管理
+		INNER JOIN
+			ORAUSR01.T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+		ON
+			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID --申請ID
+
+		INNER JOIN
+			ORAUSR01.M_RDM_HCP_MST HCP_MST --医師_基本情報
+		ON
+			HCP_MST.DOC_NO = KMU_REQ.DOC_NO --医師固定コード
+
+		INNER JOIN
+			ORAUSR01.M_RDM_HCO_MST HCO_MST --施設_基本情報
+		ON
+			HCO_MST.INS_NO = KMU_REQ.INS_NO_SK --施設固定コード,施設固定コード(異動先)
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_HCP_SHOZOKU_BUKA SHOZOKU_BUKA --医師_所属部科マスタ
+		ON
+			SHOZOKU_BUKA.DEPT_CODE = KMU_REQ.DEPT_CODE_AF --武田所属部科コード・所属部科コード(異動先)
+
+		LEFT JOIN
+			 ORAUSR01.M_RDM_HCP_YAKUSHOKU HCP_UNIV --医師_役職マスタ(大学先)
+		ON
+			HCP_UNIV.TITLE_CODE = KMU_REQ.UNIV_POS_CODE_AF  --武田所属部科コード,大学職位コード(異動先)
+		AND
+			HCP_UNIV.UNIV_TITLE_FLG = '1' --大学職位利用フラグ
+		AND
+			HCP_UNIV.DEL_FLG = '0' --削除フラグ
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_HCP_YAKUSHOKU YAKUSHOKU --医師_役職マスタ(役職先)
+		ON
+			YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_AF  --武田所属部科コード,役職コード(異動先)
+		AND
+			YAKUSHOKU.UNIV_TITLE_FLG = '0' --大学職位利用フラグ
+		AND
+			YAKUSHOKU.DEL_FLG = '0' --削除フラグ
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_CODE_MST JOB_FORM --コード情報(勤務形態先)
+		ON
+			JOB_FORM.CODE_NAME = 'JOB_FORM' --コード名,'JOB_FORM'（勤務形態）
+		AND
+			JOB_FORM.DEL_FLG = '0' --削除フラグ
+		AND
+			JOB_FORM.VALUE1 = KMU_REQ.JOB_FORM_AF --勤務形態(異動先)
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_CODE_MST YAKUSIN --コード情報(薬審先)
+		ON
+			YAKUSIN.CODE_NAME = 'DCC' --コード名,'DCC'（薬審メンバー区分）
+		AND
+			YAKUSIN.DEL_FLG = '0' --削除フラグ
+		AND
+			YAKUSIN.VALUE1 = KMU_REQ.DCC_TYPE_AF --薬審メンバー区分(異動先)
+
+		WHERE
+			REQ_KNR.REQ_ID = #{paramReqId}--申請ID（親画面）
+		</if>
+
+    </select>
+
+    <delete id="deleteRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity">
+       DELETE FROM
+           ORAUSR01.T_RDM_HCP_KMU_REQ
+       WHERE
+           REQ_ID = #{paramReqId}--申請ID
+   	</delete>
+
+   	<delete id="deleteRdmReqKnr" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity">
+       DELETE FROM
+           ORAUSR01.T_RDM_REQ_KNR
+       WHERE
+           REQ_ID = #{paramReqId}--申請ID
+   	</delete>
+
+    <insert id="insertRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.InsertRdmHcpKmuNewEntity">
+	        INSERT INTO
+				ORAUSR01.T_RDM_HCP_KMU_REQ
+				(REQ_ID,DOC_NO,INS_NO_MT,TRN_KBN,INS_NO_SK,JOB_FORM_BF,DEPT_CODE_BF,DEPT_KANJI_BF,DEPT_KANA_BF,UNIV_POS_CODE_BF,TITLE_CODE_BF,DCC_TYPE_BF,JOB_FORM_AF,DEPT_CODE_AF,DEPT_KANJI_AF,DEPT_KANA_AF,UNIV_POS_CODE_AF,TITLE_CODE_AF,DCC_TYPE_AF,ULT_DOC_NO,ULT_INS_NO,INS_SHA_YMD,INS_SHA_ID,UPD_SHA_YMD,UPD_SHA_ID)
+			VALUES
+				(#{reqId},#{docNo},NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,#{jobFromAf},#{deptCodeAf},#{deptKanjiAf},#{deptKanaAf},#{univPosCodeAf},#{titleCodeAf},#{dccTypeAf},#{ultDocNo},#{ultInsNo},#{insShaYmd},#{insShaId},#{updShaYmd},#{updShaId});
+    </insert>
+
+    <insert id="insertRdmReqKnr" parameterType="jp.co.takeda.rdm.entity.join.InsertRdmReqKnrNewEntity">
+	        INSERT INTO
+				ORAUSR01.T_RDM_REQ_KNR
+				(REQ_ID,REQ_CHL,REQ_TYPE,REQ_STS,TEKIYO_YMD,REQ_BR_CODE,REQ_DIST_CODE,REQ_SHZ,REQ_JGI_NO,REQ_JGI_NAME,REQ_YMDHMS,REQ_MEMO,REQ_COMMENT,REQ_KNG_KBN,SHN_FLG,SHN_BR_CODE,SHN_DIST_CODE,SHN_SHZ,SHN_JGI_NO,SHN_SHA_ID,SHN_YMDHMS,APR_BR_CODE,APR_DIST_CODE,APR_SHZ,APR_JGI_NO,APR_SHA_ID,APR_YMDHMS,APR_HRY_FLG,APR_MEMO,APR_COMMENT,INS_NO,DOC_NO,UPD_MST_YMD,FB_REQ_FLG,FB_REQ_ID,FB_ANS_ID,FB_DATA_TYPE,FB_REC_ID,FB_UPD_KBN,FB_PRC_TYPE,INS_SHA_YMD,INS_SHA_ID,UPD_SHA_YMD,UPD_SHA_ID)
+			VALUES
+				(#{reqId},#{reqChl},#{reqType},#{reqSts},#{tekiyoYmd},#{brCode},#{reqDistCode},#{reqShz},#{reqJgiNo},#{reqJgiName},NULL,NULL,#{reqMemo},#{reqComment},NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,#{insNo},#{docNo},NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,#{insShaYmd},#{insShaId},#{updShaYmd},#{updShaId});
+
+    </insert>
+
+    <update id="UpdateRdmReqKnr" parameterType="jp.co.takeda.rdm.entity.join.UpdateRdmReqKnrNewEntity">
+       UPDATE
+			ORAUSR01.T_RDM_REQ_KNR
+		SET
+			REQ_ID = #{reqId},
+			REQ_CHL = #{reqChl},
+			REQ_TYPE = #{reqType},
+			REQ_STS = #{reqSts},
+			TEKIYO_YMD = #{tekiyoYmd},
+			REQ_BR_CODE = #{brCode},
+			REQ_DIST_CODE = #{reqDistCode},
+			REQ_SHZ = #{reqShz},
+			REQ_JGI_NO = #{reqJgiNo},
+			REQ_JGI_NAME = #{reqJgiName},
+			REQ_YMDHMS = NULL,
+			REQ_MEMO = NULL,
+			REQ_COMMENT = #{reqComment},
+			REQ_KNG_KBN = #{reqKngKbn},
+			SHN_FLG = NULL,
+			SHN_BR_CODE = NULL,
+			SHN_DIST_CODE = NULL,
+			SHN_SHZ = NULL,
+			SHN_JGI_NO = NULL,
+			SHN_SHA_ID = NULL,
+			SHN_YMDHMS = NULL,
+			APR_BR_CODE = NULL,
+			APR_DIST_CODE = NULL,
+			APR_SHZ = NULL,
+			APR_JGI_NO = NULL,
+			APR_SHA_ID = NULL,
+			APR_YMDHMS = NULL,
+			APR_HRY_FLG = NULL,
+			APR_MEMO = NULL,
+			APR_COMMENT = NULL,
+			INS_NO = NULL,
+			DOC_NO = NULL,
+			UPD_MST_YMD = NULL,
+			FB_REQ_FLG = NULL,
+			FB_REQ_ID = NULL,
+			FB_ANS_ID = NULL,
+			FB_DATA_TYPE = NULL,
+			FB_REC_ID = NULL,
+			FB_UPD_KBN = NULL,
+			FB_PRC_TYPE = NULL,
+			INS_SHA_YMD = #{insShaYmd},
+			INS_SHA_ID = #{insShaId},
+			UPD_SHA_YMD = #{updShaYmd},
+			UPD_SHA_ID = #{updShaId}
+		WHERE
+			REQ_ID = #{reqId}
+   	</update>
+
+   	<update id="updateRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.UpdateRdmHcpKmuNewEntity">
+       UPDATE
+			ORAUSR01.T_RDM_HCP_KMU_REQ
+		SET
+			REQ_ID = #{reqId},
+			DOC_NO = #{docNo},
+			INS_NO_MT = NULL,
+			TRN_KBN = NULL,
+			INS_NO_SK = NULL,
+			JOB_FORM_BF = NULL,
+			DEPT_CODE_BF = NULL,
+			DEPT_KANJI_BF = NULL,
+			DEPT_KANA_BF = NULL,
+			UNIV_POS_CODE_BF = NULL,
+			TITLE_CODE_BF = NULL,
+			DCC_TYPE_BF = NULL,
+			JOB_FORM_AF = #{jobFromAf},
+			DEPT_CODE_AF = #{deptCodeAf},
+			DEPT_KANJI_AF = #{deptKanjiAf},
+			DEPT_KANA_AF = #{deptKanaAf},
+			UNIV_POS_CODE_AF = #{univPosCodeAf},
+			TITLE_CODE_AF = #{titleCodeAf},
+			DCC_TYPE_AF = #{dccTypeAf},
+			ULT_DOC_NO = #{ultDocNo},
+			ULT_INS_NO = #{ultInsNo},
+			INS_SHA_YMD = #{insShaYmd},
+			INS_SHA_ID = #{insShaId},
+			UPD_SHA_YMD = #{updShaYmd},
+			UPD_SHA_ID = #{updShaId}
+		WHERE
+			REQ_ID = #{reqId}
+   	</update>
+
+</mapper>

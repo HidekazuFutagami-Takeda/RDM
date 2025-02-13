@@ -53,4 +53,17 @@
 		ORDER BY
 			ADDR_CODE_PREF ,ADDR_CODE_CITY
 	</select>
+
+	<select id="selectAddrPrefComboList" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
+		SELECT DISTINCT
+			ADDR_CODE_PREF,
+			ADDR_NAME_PREF
+		FROM
+			S_RDM_COM_POS_ADDR
+		<where>
+			<if test="trtCd != null">TRT_CD = #{trtCd}</if>
+		</where>
+		ORDER BY
+			ADDR_CODE_PREF
+    </select>
 </mapper>

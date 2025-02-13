@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="s_rdm_jkr_sos_addr">
+	<resultMap id="sRdmJkrSosAddrResultMap" type="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity">
+		<result column="ADDR_CODE_PREF" property="addrCodePref"/>
+		<result column="TK_CITY_CD" property="tkCityCd"/>
+		<result column="ADDR_NAME_PREF" property="addrNamePref"/>
+		<result column="TK_CITY_NAME" property="tkCityName"/>
+		<result column="TRT_CD" property="trtCd"/>
+		<result column="SOS_CD" property="sosCd"/>
+		<result column="UP_JGI_NO" property="upJgiNo"/>
+		<result column="IS_DATE" property="isDate"/>
+		<result column="UP_DATE" property="upDate"/>
+		<result column="UP_SCRN_ID" property="upScrnId"/>
+		<result column="UP_FUNC_ID" property="upFuncId"/>
+	</resultMap>
+    <select id="selectNF011sosAddrChkData" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
+		SELECT
+		  SOS.ADDR_CODE_PREF
+		, SOS.TK_CITY_CD
+		FROM
+		S_RDM_JKR_SOS_ADDR SOS -- 組織担当地区情報
+		WHERE 1=1
+        AND SOS.ADDR_CODE_PREF = #{addrCodePref}
+        AND SOS.TK_CITY_CD = #{tkCityCd}
+        AND SOS.SOS_CD = #{sosCd}
+    </select>
+</mapper>

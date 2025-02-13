@@ -297,13 +297,6 @@ function shwoInit() {
               <tr>
                 <td></td>
               　　　　　　　　　<td>
-                 <a href="" class="contentsTitle" onclick="gotoNext('ND103','Init'); return false;">医師勤務先追加（仮）</a>
-              　　　　　　　　　</td>
-                <td>医師勤務先追加直リンク</td>
-              </tr>
-              <tr>
-                <td></td>
-              　　　　　　　　　<td>
                  <a href="" class="contentsTitle" onclick="gotoNext('NF013','Init'); return false;">施設削除（開発中）</a>
               　　　　　　　　　</td>
                 <td>施設削除リンク（開発中）</td>

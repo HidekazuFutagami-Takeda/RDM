@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_rdm_hcp_society_req">
+    <resultMap id="selectUpDateResultMap" type="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpSocietyReqEntity">
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <resultMap id="tRdmHcpSocietyReqResultMap" type="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="MEDICAL_SOCIETY_NM" property="medicalSocietyNm"/>
+        <result column="ADMISSION_YYYY" property="admissionYYYY"/>
+        <result column="ADMISSION_MM" property="admissionMM"/>
+        <result column="ADMISSION_DD" property="admissionDD"/>
+        <result column="QUIT_YYYY" property="quitYYYY"/>
+        <result column="QUIT_MM" property="quitMM"/>
+        <result column="QUIT_DD" property="quitDD"/>
+        <result column="POSITION_CODE" property="positionCode"/>
+        <result column="SOCIETY_POSI_ST_YYYY" property="societyPosiStYYYY"/>
+        <result column="SOCIETY_POSI_ST_MM" property="societyPosiStMM"/>
+        <result column="SOCIETY_POSI_ST_DD" property="societyPosiStDD"/>
+        <result column="SOCIETY_POSI_ED_YYYY" property="societyPosiEdYYYY"/>
+        <result column="SOCIETY_POSI_ED_MM" property="societyPosiEdMM"/>
+        <result column="SOCIETY_POSI_ED_DD" property="societyPosiEdDD"/>
+        <result column="ADVISING_DOCTOR" property="advisingDoctorCd"/>
+        <result column="COACHING_ACQUISI_YYYY" property="coachingAcquisiYYYY"/>
+        <result column="COACHING_ACQUISI_MM" property="coachingAcquisiMM"/>
+        <result column="COACHING_ACQUISI_DD" property="coachingAcquisiDD"/>
+        <result column="COACHING_ST_YYYY" property="coachingStYYYY"/>
+        <result column="COACHING_ST_MM" property="coachingStMM"/>
+        <result column="COACHING_ST_DD" property="coachingStDD"/>
+        <result column="COACHING_ED_YYYY" property="coachingEdYYYY"/>
+        <result column="COACHING_ED_MM" property="coachingEdMM"/>
+        <result column="COACHING_ED_DD" property="coachingEdDD"/>
+        <result column="CERTIFYING_PHYSICIAN" property="certifyingPhysicianCd"/>
+        <result column="CERTIFY_ST_YYYY" property="certifyStYYYY"/>
+        <result column="CERTIFY_ST_MM" property="certifyStMM"/>
+        <result column="CERTIFY_ST_DD" property="certifyStDD"/>
+        <result column="CERTIFY_ED_YYYY" property="certifyEdYYYY"/>
+        <result column="CERTIFY_ED_MM" property="certifyEdMM"/>
+        <result column="CERTIFY_ED_DD" property="certifyEdDD"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <resultMap id="hcpSocietyDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity">
+        <result column="MEDICAL_SOCIETY_NM" property="medicalSocietyNm"/>
+        <result column="ADMISSION_YYYY" property="admissionYYYY"/>
+        <result column="ADMISSION_MM" property="admissionMM"/>
+        <result column="ADMISSION_DD" property="admissionDD"/>
+        <result column="QUIT_YYYY" property="quitYYYY"/>
+        <result column="QUIT_MM" property="quitMM"/>
+        <result column="QUIT_DD" property="quitDD"/>
+        <result column="POSITION_CODE" property="positionCode"/>
+        <result column="POSITION_NM" property="positionName"/>
+        <result column="SOCIETY_POSI_ST_YYYY" property="societyPosiStYYYY"/>
+        <result column="SOCIETY_POSI_ST_MM" property="societyPosiStMM"/>
+        <result column="SOCIETY_POSI_ST_DD" property="societyPosiStDD"/>
+        <result column="SOCIETY_POSI_ED_YYYY" property="societyPosiEdYYYY"/>
+        <result column="SOCIETY_POSI_ED_MM" property="societyPosiEdMM"/>
+        <result column="SOCIETY_POSI_ED_DD" property="societyPosiEdDD"/>
+        <result column="ADVISING_DOCTOR" property="advisingDoctorCd"/>
+        <result column="ADVISING_DOCTOR_NM" property="advisingDoctorNm"/>
+        <result column="COACHING_ACQUISI_YYYY" property="coachingAcquisiYYYY"/>
+        <result column="COACHING_ACQUISI_MM" property="coachingAcquisiMM"/>
+        <result column="COACHING_ACQUISI_DD" property="coachingAcquisiDD"/>
+        <result column="COACHING_ST_YYYY" property="coachingStYYYY"/>
+        <result column="COACHING_ST_MM" property="coachingStMM"/>
+        <result column="COACHING_ST_DD" property="coachingStDD"/>
+        <result column="COACHING_ED_YYYY" property="coachingEdYYYY"/>
+        <result column="COACHING_ED_MM" property="coachingEdMM"/>
+        <result column="COACHING_ED_DD" property="coachingEdDD"/>
+        <result column="CERTIFYING_PHYSICIAN" property="certifyingPhysicianCd"/>
+        <result column="CERTIFYING_PHYSICIAN_NM" property="certifyingPhysicianNm"/>
+        <result column="CERTIFY_ST_YYYY" property="certifyStYYYY"/>
+        <result column="CERTIFY_ST_MM" property="certifyStMM"/>
+        <result column="CERTIFY_ST_DD" property="certifyStDD"/>
+        <result column="CERTIFY_ED_YYYY" property="certifyEdYYYY"/>
+        <result column="CERTIFY_ED_MM" property="certifyEdMM"/>
+        <result column="CERTIFY_ED_DD" property="certifyEdDD"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity" resultMap="tRdmHcpSocietyReqResultMap">
+        SELECT
+            REQ_ID, DOC_NO, MEDICAL_SOCIETY_NM, ADMISSION_YYYY, ADMISSION_MM, ADMISSION_DD, QUIT_YYYY, QUIT_MM, QUIT_DD, POSITION_CODE, SOCIETY_POSI_ST_YYYY, SOCIETY_POSI_ST_MM, SOCIETY_POSI_ST_DD, SOCIETY_POSI_ED_YYYY, SOCIETY_POSI_ED_MM, SOCIETY_POSI_ED_DD, ADVISING_DOCTOR, COACHING_ACQUISI_YYYY, COACHING_ACQUISI_MM, COACHING_ACQUISI_DD, COACHING_ST_YYYY, COACHING_ST_MM, COACHING_ST_DD, COACHING_ED_YYYY, COACHING_ED_MM, COACHING_ED_DD, CERTIFYING_PHYSICIAN, CERTIFY_ST_YYYY, CERTIFY_ST_MM, CERTIFY_ST_DD, CERTIFY_ED_YYYY, CERTIFY_ED_MM, CERTIFY_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_HCP_SOCIETY_REQ
+        WHERE
+            REQ_ID = #{reqId} AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity" resultMap="tRdmHcpSocietyReqResultMap">
+        SELECT
+            REQ_ID, DOC_NO, MEDICAL_SOCIETY_NM, ADMISSION_YYYY, ADMISSION_MM, ADMISSION_DD, QUIT_YYYY, QUIT_MM, QUIT_DD, POSITION_CODE, SOCIETY_POSI_ST_YYYY, SOCIETY_POSI_ST_MM, SOCIETY_POSI_ST_DD, SOCIETY_POSI_ED_YYYY, SOCIETY_POSI_ED_MM, SOCIETY_POSI_ED_DD, ADVISING_DOCTOR, COACHING_ACQUISI_YYYY, COACHING_ACQUISI_MM, COACHING_ACQUISI_DD, COACHING_ST_YYYY, COACHING_ST_MM, COACHING_ST_DD, COACHING_ED_YYYY, COACHING_ED_MM, COACHING_ED_DD, CERTIFYING_PHYSICIAN, CERTIFY_ST_YYYY, CERTIFY_ST_MM, CERTIFY_ST_DD, CERTIFY_ED_YYYY, CERTIFY_ED_MM, CERTIFY_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_HCP_SOCIETY_REQ
+        WHERE
+            REQ_ID = #{reqId} AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity" resultMap="tRdmHcpSocietyReqResultMap">
+        SELECT
+            REQ_ID, DOC_NO, MEDICAL_SOCIETY_NM, ADMISSION_YYYY, ADMISSION_MM, ADMISSION_DD, QUIT_YYYY, QUIT_MM, QUIT_DD, POSITION_CODE, SOCIETY_POSI_ST_YYYY, SOCIETY_POSI_ST_MM, SOCIETY_POSI_ST_DD, SOCIETY_POSI_ED_YYYY, SOCIETY_POSI_ED_MM, SOCIETY_POSI_ED_DD, ADVISING_DOCTOR, COACHING_ACQUISI_YYYY, COACHING_ACQUISI_MM, COACHING_ACQUISI_DD, COACHING_ST_YYYY, COACHING_ST_MM, COACHING_ST_DD, COACHING_ED_YYYY, COACHING_ED_MM, COACHING_ED_DD, CERTIFYING_PHYSICIAN, CERTIFY_ST_YYYY, CERTIFY_ST_MM, CERTIFY_ST_DD, CERTIFY_ED_YYYY, CERTIFY_ED_MM, CERTIFY_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            T_RDM_HCP_SOCIETY_REQ
+        ORDER BY REQ_ID, MEDICAL_SOCIETY_NM
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity" resultMap="tRdmHcpSocietyReqResultMap">
+        SELECT
+            REQ_ID, DOC_NO, MEDICAL_SOCIETY_NM, ADMISSION_YYYY, ADMISSION_MM, ADMISSION_DD, QUIT_YYYY, QUIT_MM, QUIT_DD, POSITION_CODE, SOCIETY_POSI_ST_YYYY, SOCIETY_POSI_ST_MM, SOCIETY_POSI_ST_DD, SOCIETY_POSI_ED_YYYY, SOCIETY_POSI_ED_MM, SOCIETY_POSI_ED_DD, ADVISING_DOCTOR, COACHING_ACQUISI_YYYY, COACHING_ACQUISI_MM, COACHING_ACQUISI_DD, COACHING_ST_YYYY, COACHING_ST_MM, COACHING_ST_DD, COACHING_ED_YYYY, COACHING_ED_MM, COACHING_ED_DD, CERTIFYING_PHYSICIAN, CERTIFY_ST_YYYY, CERTIFY_ST_MM, CERTIFY_ST_DD, CERTIFY_ED_YYYY, CERTIFY_ED_MM, CERTIFY_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            T_RDM_HCP_SOCIETY_REQ
+        <where>
+			<if test="reqId != null">AND REQ_ID = #{reqId}</if>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="medicalSocietyNm != null">AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}</if>
+			<if test="admissionYYYY != null">AND ADMISSION_YYYY = #{admissionYYYY}</if>
+			<if test="admissionMM != null">AND ADMISSION_MM = #{admissionMM}</if>
+			<if test="admissionDD != null">AND ADMISSION_DD = #{admissionDD}</if>
+			<if test="quitYYYY != null">AND QUIT_YYYY = #{quitYYYY}</if>
+			<if test="quitMM != null">AND QUIT_MM = #{quitMM}</if>
+			<if test="quitDD != null">AND QUIT_DD = #{quitDD}</if>
+			<if test="positionCode != null">AND POSITION_CODE = #{positionCode}</if>
+			<if test="societyPosiStYYYY != null">AND SOCIETY_POSI_ST_YYYY = #{societyPosiStYYYY}</if>
+			<if test="societyPosiStMM != null">AND SOCIETY_POSI_ST_MM = #{societyPosiStMM}</if>
+			<if test="societyPosiStDD != null">AND SOCIETY_POSI_ST_DD = #{societyPosiStDD}</if>
+			<if test="societyPosiEdYYYY != null">AND SOCIETY_POSI_ED_YYYY = #{societyPosiEdYYYY}</if>
+			<if test="societyPosiEdMM != null">AND SOCIETY_POSI_ED_MM = #{societyPosiEdMM}</if>
+			<if test="societyPosiEdDD != null">AND SOCIETY_POSI_ED_DD = #{societyPosiEdDD}</if>
+			<if test="advisingDoctorCd != null">AND ADVISING_DOCTOR = #{advisingDoctorCd}</if>
+			<if test="coachingAcquisiYYYY != null">AND COACHING_ACQUISI_YYYY = #{coachingAcquisiYYYY}</if>
+			<if test="coachingAcquisiMM != null">AND COACHING_ACQUISI_MM = #{coachingAcquisiMM}</if>
+			<if test="coachingAcquisiDD != null">AND COACHING_ACQUISI_DD = #{coachingAcquisiDD}</if>
+			<if test="coachingStYYYY != null">AND COACHING_ST_YYYY = #{coachingStYYYY}</if>
+			<if test="coachingStMM != null">AND COACHING_ST_MM = #{coachingStMM}</if>
+			<if test="coachingStDD != null">AND COACHING_ST_DD = #{coachingStDD}</if>
+			<if test="coachingEdYYYY != null">AND COACHING_ED_YYYY = #{coachingEdYYYY}</if>
+			<if test="coachingEdMM != null">AND COACHING_ED_MM = #{coachingEdMM}</if>
+			<if test="coachingEdDD != null">AND COACHING_ED_DD = #{coachingEdDD}</if>
+			<if test="certifyingPhysicianCd != null">AND CERTIFYING_PHYSICIAN = #{certifyingPhysicianCd}</if>
+			<if test="certifyStYYYY != null">AND CERTIFY_ST_YYYY = #{certifyStYYYY}</if>
+			<if test="certifyStMM != null">AND CERTIFY_ST_MM = #{certifyStMM}</if>
+			<if test="certifyStDD != null">AND CERTIFY_ST_DD = #{certifyStDD}</if>
+			<if test="certifyEdYYYY != null">AND CERTIFY_ED_YYYY = #{certifyEdYYYY}</if>
+			<if test="certifyEdMM != null">AND CERTIFY_ED_MM = #{certifyEdMM}</if>
+			<if test="certifyEdDD != null">AND CERTIFY_ED_DD = #{certifyEdDD}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            T_RDM_HCP_SOCIETY_REQ
+        <where>
+			<if test="reqId != null">AND REQ_ID = #{reqId}</if>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="medicalSocietyNm != null">AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}</if>
+			<if test="admissionYYYY != null">AND ADMISSION_YYYY = #{admissionYYYY}</if>
+			<if test="admissionMM != null">AND ADMISSION_MM = #{admissionMM}</if>
+			<if test="admissionDD != null">AND ADMISSION_DD = #{admissionDD}</if>
+			<if test="quitYYYY != null">AND QUIT_YYYY = #{quitYYYY}</if>
+			<if test="quitMM != null">AND QUIT_MM = #{quitMM}</if>
+			<if test="quitDD != null">AND QUIT_DD = #{quitDD}</if>
+			<if test="positionCode != null">AND POSITION_CODE = #{positionCode}</if>
+			<if test="societyPosiStYYYY != null">AND SOCIETY_POSI_ST_YYYY = #{societyPosiStYYYY}</if>
+			<if test="societyPosiStMM != null">AND SOCIETY_POSI_ST_MM = #{societyPosiStMM}</if>
+			<if test="societyPosiStDD != null">AND SOCIETY_POSI_ST_DD = #{societyPosiStDD}</if>
+			<if test="societyPosiEdYYYY != null">AND SOCIETY_POSI_ED_YYYY = #{societyPosiEdYYYY}</if>
+			<if test="societyPosiEdMM != null">AND SOCIETY_POSI_ED_MM = #{societyPosiEdMM}</if>
+			<if test="societyPosiEdDD != null">AND SOCIETY_POSI_ED_DD = #{societyPosiEdDD}</if>
+			<if test="advisingDoctorCd != null">AND ADVISING_DOCTOR = #{advisingDoctorCd}</if>
+			<if test="coachingAcquisiYYYY != null">AND COACHING_ACQUISI_YYYY = #{coachingAcquisiYYYY}</if>
+			<if test="coachingAcquisiMM != null">AND COACHING_ACQUISI_MM = #{coachingAcquisiMM}</if>
+			<if test="coachingAcquisiDD != null">AND COACHING_ACQUISI_DD = #{coachingAcquisiDD}</if>
+			<if test="coachingStYYYY != null">AND COACHING_ST_YYYY = #{coachingStYYYY}</if>
+			<if test="coachingStMM != null">AND COACHING_ST_MM = #{coachingStMM}</if>
+			<if test="coachingStDD != null">AND COACHING_ST_DD = #{coachingStDD}</if>
+			<if test="coachingEdYYYY != null">AND COACHING_ED_YYYY = #{coachingEdYYYY}</if>
+			<if test="coachingEdMM != null">AND COACHING_ED_MM = #{coachingEdMM}</if>
+			<if test="coachingEdDD != null">AND COACHING_ED_DD = #{coachingEdDD}</if>
+			<if test="certifyingPhysicianCd != null">AND CERTIFYING_PHYSICIAN = #{certifyingPhysicianCd}</if>
+			<if test="certifyStYYYY != null">AND CERTIFY_ST_YYYY = #{certifyStYYYY}</if>
+			<if test="certifyStMM != null">AND CERTIFY_ST_MM = #{certifyStMM}</if>
+			<if test="certifyStDD != null">AND CERTIFY_ST_DD = #{certifyStDD}</if>
+			<if test="certifyEdYYYY != null">AND CERTIFY_ED_YYYY = #{certifyEdYYYY}</if>
+			<if test="certifyEdMM != null">AND CERTIFY_ED_MM = #{certifyEdMM}</if>
+			<if test="certifyEdDD != null">AND CERTIFY_ED_DD = #{certifyEdDD}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity">
+        INSERT INTO
+            T_RDM_HCP_SOCIETY_REQ(REQ_ID, DOC_NO, MEDICAL_SOCIETY_NM, ADMISSION_YYYY, ADMISSION_MM, ADMISSION_DD, QUIT_YYYY, QUIT_MM, QUIT_DD, POSITION_CODE, SOCIETY_POSI_ST_YYYY, SOCIETY_POSI_ST_MM, SOCIETY_POSI_ST_DD, SOCIETY_POSI_ED_YYYY, SOCIETY_POSI_ED_MM, SOCIETY_POSI_ED_DD, ADVISING_DOCTOR, COACHING_ACQUISI_YYYY, COACHING_ACQUISI_MM, COACHING_ACQUISI_DD, COACHING_ST_YYYY, COACHING_ST_MM, COACHING_ST_DD, COACHING_ED_YYYY, COACHING_ED_MM, COACHING_ED_DD, CERTIFYING_PHYSICIAN, CERTIFY_ST_YYYY, CERTIFY_ST_MM, CERTIFY_ST_DD, CERTIFY_ED_YYYY, CERTIFY_ED_MM, CERTIFY_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID)
+        VALUES
+            (#{reqId}, #{docNo}, #{medicalSocietyNm}, #{admissionYYYY}, #{admissionMM}, #{admissionDD}, #{quitYYYY}, #{quitMM}, #{quitDD}, #{positionCode}, #{societyPosiStYYYY}, #{societyPosiStMM}, #{societyPosiStDD}, #{societyPosiEdYYYY}, #{societyPosiEdMM}, #{societyPosiEdDD}, #{advisingDoctorCd}, #{coachingAcquisiYYYY}, #{coachingAcquisiMM}, #{coachingAcquisiDD}, #{coachingStYYYY}, #{coachingStMM}, #{coachingStDD}, #{coachingEdYYYY}, #{coachingEdMM}, #{coachingEdDD}, #{certifyingPhysicianCd}, #{certifyStYYYY}, #{certifyStMM}, #{certifyStDD}, #{certifyEdYYYY}, #{certifyEdMM}, #{certifyEdDD}, #{insShaYmd}, #{insShaId}, #{updShaYmd}, #{updShaId})
+    </insert>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity">
+        INSERT INTO
+            T_RDM_HCP_SOCIETY_REQ(<trim suffixOverrides=",">REQ_ID,<if test="docNo != null">DOC_NO,</if><if test="medicalSocietyNm != null">MEDICAL_SOCIETY_NM,</if><if test="admissionYYYY != null">ADMISSION_YYYY,</if><if test="admissionMM != null">ADMISSION_MM,</if><if test="admissionDD != null">ADMISSION_DD,</if><if test="quitYYYY != null">QUIT_YYYY,</if><if test="quitMM != null">QUIT_MM,</if><if test="quitDD != null">QUIT_DD,</if><if test="positionCode != null">POSITION_CODE,</if><if test="societyPosiStYYYY != null">SOCIETY_POSI_ST_YYYY,</if><if test="societyPosiStMM != null">SOCIETY_POSI_ST_MM,</if><if test="societyPosiStDD != null">SOCIETY_POSI_ST_DD,</if><if test="societyPosiEdYYYY != null">SOCIETY_POSI_ED_YYYY,</if><if test="societyPosiEdMM != null">SOCIETY_POSI_ED_MM,</if><if test="societyPosiEdDD != null">SOCIETY_POSI_ED_DD,</if><if test="advisingDoctorCd != null">ADVISING_DOCTOR,</if><if test="coachingAcquisiYYYY != null">COACHING_ACQUISI_YYYY,</if><if test="coachingAcquisiMM != null">COACHING_ACQUISI_MM,</if><if test="coachingAcquisiDD != null">COACHING_ACQUISI_DD,</if><if test="coachingStYYYY != null">COACHING_ST_YYYY,</if><if test="coachingStMM != null">COACHING_ST_MM,</if><if test="coachingStDD != null">COACHING_ST_DD,</if><if test="coachingEdYYYY != null">COACHING_ED_YYYY,</if><if test="coachingEdMM != null">COACHING_ED_MM,</if><if test="coachingEdDD != null">COACHING_ED_DD,</if><if test="certifyingPhysicianCd != null">CERTIFYING_PHYSICIAN,</if><if test="certifyStYYYY != null">CERTIFY_ST_YYYY,</if><if test="certifyStMM != null">CERTIFY_ST_MM,</if><if test="certifyStDD != null">CERTIFY_ST_DD,</if><if test="certifyEdYYYY != null">CERTIFY_ED_YYYY,</if><if test="certifyEdMM != null">CERTIFY_ED_MM,</if><if test="certifyEdDD != null">CERTIFY_ED_DD,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{reqId},<if test="docNo != null">#{docNo},</if><if test="medicalSocietyNm != null">#{medicalSocietyNm},</if><if test="admissionYYYY != null">#{admissionYYYY},</if><if test="admissionMM != null">#{admissionMM},</if><if test="admissionDD != null">#{admissionDD},</if><if test="quitYYYY != null">#{quitYYYY},</if><if test="quitMM != null">#{quitMM},</if><if test="quitDD != null">#{quitDD},</if><if test="positionCode != null">#{positionCode},</if><if test="societyPosiStYYYY != null">#{societyPosiStYYYY},</if><if test="societyPosiStMM != null">#{societyPosiStMM},</if><if test="societyPosiStDD != null">#{societyPosiStDD},</if><if test="societyPosiEdYYYY != null">#{societyPosiEdYYYY},</if><if test="societyPosiEdMM != null">#{societyPosiEdMM},</if><if test="societyPosiEdDD != null">#{societyPosiEdDD},</if><if test="advisingDoctorCd != null">#{advisingDoctorCd},</if><if test="coachingAcquisiYYYY != null">#{coachingAcquisiYYYY},</if><if test="coachingAcquisiMM != null">#{coachingAcquisiMM},</if><if test="coachingAcquisiDD != null">#{coachingAcquisiDD},</if><if test="coachingStYYYY != null">#{coachingStYYYY},</if><if test="coachingStMM != null">#{coachingStMM},</if><if test="coachingStDD != null">#{coachingStDD},</if><if test="coachingEdYYYY != null">#{coachingEdYYYY},</if><if test="coachingEdMM != null">#{coachingEdMM},</if><if test="coachingEdDD != null">#{coachingEdDD},</if><if test="certifyingPhysicianCd != null">#{certifyingPhysicianCd},</if><if test="certifyStYYYY != null">#{certifyStYYYY},</if><if test="certifyStMM != null">#{certifyStMM},</if><if test="certifyStDD != null">#{certifyStDD},</if><if test="certifyEdYYYY != null">#{certifyEdYYYY},</if><if test="certifyEdMM != null">#{certifyEdMM},</if><if test="certifyEdDD != null">#{certifyEdDD},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity">
+        UPDATE
+            T_RDM_HCP_SOCIETY_REQ
+        SET
+            <trim suffixOverrides=","><if test="update.docNo != null">DOC_NO = #{update.docNo},</if><if test="update.docNo == null">DOC_NO = NULL,</if><if test="update.admissionYYYY != null">ADMISSION_YYYY = #{update.admissionYYYY},</if><if test="update.admissionYYYY == null">ADMISSION_YYYY = NULL,</if><if test="update.admissionMM != null">ADMISSION_MM = #{update.admissionMM},</if><if test="update.admissionMM == null">ADMISSION_MM = NULL,</if><if test="update.admissionDD != null">ADMISSION_DD = #{update.admissionDD},</if><if test="update.admissionDD == null">ADMISSION_DD = NULL,</if><if test="update.quitYYYY != null">QUIT_YYYY = #{update.quitYYYY},</if><if test="update.quitYYYY == null">QUIT_YYYY = NULL,</if><if test="update.quitMM != null">QUIT_MM = #{update.quitMM},</if><if test="update.quitMM == null">QUIT_MM = NULL,</if><if test="update.quitDD != null">QUIT_DD = #{update.quitDD},</if><if test="update.quitDD == null">QUIT_DD = NULL,</if><if test="update.positionCode != null">POSITION_CODE = #{update.positionCode},</if><if test="update.positionCode == null">POSITION_CODE = NULL,</if><if test="update.societyPosiStYYYY != null">SOCIETY_POSI_ST_YYYY = #{update.societyPosiStYYYY},</if><if test="update.societyPosiStYYYY == null">SOCIETY_POSI_ST_YYYY = NULL,</if><if test="update.societyPosiStMM != null">SOCIETY_POSI_ST_MM = #{update.societyPosiStMM},</if><if test="update.societyPosiStMM == null">SOCIETY_POSI_ST_MM = NULL,</if><if test="update.societyPosiStDD != null">SOCIETY_POSI_ST_DD = #{update.societyPosiStDD},</if><if test="update.societyPosiStDD == null">SOCIETY_POSI_ST_DD = NULL,</if><if test="update.societyPosiEdYYYY != null">SOCIETY_POSI_ED_YYYY = #{update.societyPosiEdYYYY},</if><if test="update.societyPosiEdYYYY == null">SOCIETY_POSI_ED_YYYY = NULL,</if><if test="update.societyPosiEdMM != null">SOCIETY_POSI_ED_MM = #{update.societyPosiEdMM},</if><if test="update.societyPosiEdMM == null">SOCIETY_POSI_ED_MM = NULL,</if><if test="update.societyPosiEdDD != null">SOCIETY_POSI_ED_DD = #{update.societyPosiEdDD},</if><if test="update.societyPosiEdDD == null">SOCIETY_POSI_ED_DD = NULL,</if><if test="update.advisingDoctorCd != null">ADVISING_DOCTOR = #{update.advisingDoctorCd},</if><if test="update.advisingDoctorCd == null">ADVISING_DOCTOR = NULL,</if><if test="update.coachingAcquisiYYYY != null">COACHING_ACQUISI_YYYY = #{update.coachingAcquisiYYYY},</if><if test="update.coachingAcquisiYYYY == null">COACHING_ACQUISI_YYYY = NULL,</if><if test="update.coachingAcquisiMM != null">COACHING_ACQUISI_MM = #{update.coachingAcquisiMM},</if><if test="update.coachingAcquisiMM == null">COACHING_ACQUISI_MM = NULL,</if><if test="update.coachingAcquisiDD != null">COACHING_ACQUISI_DD = #{update.coachingAcquisiDD},</if><if test="update.coachingAcquisiDD == null">COACHING_ACQUISI_DD = NULL,</if><if test="update.coachingStYYYY != null">COACHING_ST_YYYY = #{update.coachingStYYYY},</if><if test="update.coachingStYYYY == null">COACHING_ST_YYYY = NULL,</if><if test="update.coachingStMM != null">COACHING_ST_MM = #{update.coachingStMM},</if><if test="update.coachingStMM == null">COACHING_ST_MM = NULL,</if><if test="update.coachingStDD != null">COACHING_ST_DD = #{update.coachingStDD},</if><if test="update.coachingStDD == null">COACHING_ST_DD = NULL,</if><if test="update.coachingEdYYYY != null">COACHING_ED_YYYY = #{update.coachingEdYYYY},</if><if test="update.coachingEdYYYY == null">COACHING_ED_YYYY = NULL,</if><if test="update.coachingEdMM != null">COACHING_ED_MM = #{update.coachingEdMM},</if><if test="update.coachingEdMM == null">COACHING_ED_MM = NULL,</if><if test="update.coachingEdDD != null">COACHING_ED_DD = #{update.coachingEdDD},</if><if test="update.coachingEdDD == null">COACHING_ED_DD = NULL,</if><if test="update.certifyingPhysicianCd != null">CERTIFYING_PHYSICIAN = #{update.certifyingPhysicianCd},</if><if test="update.certifyingPhysicianCd == null">CERTIFYING_PHYSICIAN = NULL,</if><if test="update.certifyStYYYY != null">CERTIFY_ST_YYYY = #{update.certifyStYYYY},</if><if test="update.certifyStYYYY == null">CERTIFY_ST_YYYY = NULL,</if><if test="update.certifyStMM != null">CERTIFY_ST_MM = #{update.certifyStMM},</if><if test="update.certifyStMM == null">CERTIFY_ST_MM = NULL,</if><if test="update.certifyStDD != null">CERTIFY_ST_DD = #{update.certifyStDD},</if><if test="update.certifyStDD == null">CERTIFY_ST_DD = NULL,</if><if test="update.certifyEdYYYY != null">CERTIFY_ED_YYYY = #{update.certifyEdYYYY},</if><if test="update.certifyEdYYYY == null">CERTIFY_ED_YYYY = NULL,</if><if test="update.certifyEdMM != null">CERTIFY_ED_MM = #{update.certifyEdMM},</if><if test="update.certifyEdMM == null">CERTIFY_ED_MM = NULL,</if><if test="update.certifyEdDD != null">CERTIFY_ED_DD = #{update.certifyEdDD},</if><if test="update.certifyEdDD == null">CERTIFY_ED_DD = NULL,</if><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if><if test="update.insShaYmd == null">INS_SHA_YMD = NULL,</if><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if><if test="update.insShaId == null">INS_SHA_ID = NULL,</if><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if><if test="update.updShaYmd == null">UPD_SHA_YMD = NULL,</if><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if><if test="update.updShaId == null">UPD_SHA_ID = NULL,</if></trim>
+        WHERE
+            REQ_ID = #{reqId} AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}
+    </update>
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity">
+        UPDATE
+            T_RDM_HCP_SOCIETY_REQ
+        <set>
+			<if test="update.docNoNullFlag == true">DOC_NO = NULL,</if><if test="update.docNoNullFlag == false"><if test="update.docNo != null">DOC_NO = #{update.docNo},</if></if>
+			<if test="update.admissionYYYYNullFlag == true">ADMISSION_YYYY = NULL,</if><if test="update.admissionYYYYNullFlag == false"><if test="update.admissionYYYY != null">ADMISSION_YYYY = #{update.admissionYYYY},</if></if>
+			<if test="update.admissionMMNullFlag == true">ADMISSION_MM = NULL,</if><if test="update.admissionMMNullFlag == false"><if test="update.admissionMM != null">ADMISSION_MM = #{update.admissionMM},</if></if>
+			<if test="update.admissionDDNullFlag == true">ADMISSION_DD = NULL,</if><if test="update.admissionDDNullFlag == false"><if test="update.admissionDD != null">ADMISSION_DD = #{update.admissionDD},</if></if>
+			<if test="update.quitYYYYNullFlag == true">QUIT_YYYY = NULL,</if><if test="update.quitYYYYNullFlag == false"><if test="update.quitYYYY != null">QUIT_YYYY = #{update.quitYYYY},</if></if>
+			<if test="update.quitMMNullFlag == true">QUIT_MM = NULL,</if><if test="update.quitMMNullFlag == false"><if test="update.quitMM != null">QUIT_MM = #{update.quitMM},</if></if>
+			<if test="update.quitDDNullFlag == true">QUIT_DD = NULL,</if><if test="update.quitDDNullFlag == false"><if test="update.quitDD != null">QUIT_DD = #{update.quitDD},</if></if>
+			<if test="update.positionCodeNullFlag == true">POSITION_CODE = NULL,</if><if test="update.positionCodeNullFlag == false"><if test="update.positionCode != null">POSITION_CODE = #{update.positionCode},</if></if>
+			<if test="update.societyPosiStYYYYNullFlag == true">SOCIETY_POSI_ST_YYYY = NULL,</if><if test="update.societyPosiStYYYYNullFlag == false"><if test="update.societyPosiStYYYY != null">SOCIETY_POSI_ST_YYYY = #{update.societyPosiStYYYY},</if></if>
+			<if test="update.societyPosiStMMNullFlag == true">SOCIETY_POSI_ST_MM = NULL,</if><if test="update.societyPosiStMMNullFlag == false"><if test="update.societyPosiStMM != null">SOCIETY_POSI_ST_MM = #{update.societyPosiStMM},</if></if>
+			<if test="update.societyPosiStDDNullFlag == true">SOCIETY_POSI_ST_DD = NULL,</if><if test="update.societyPosiStDDNullFlag == false"><if test="update.societyPosiStDD != null">SOCIETY_POSI_ST_DD = #{update.societyPosiStDD},</if></if>
+			<if test="update.societyPosiEdYYYYNullFlag == true">SOCIETY_POSI_ED_YYYY = NULL,</if><if test="update.societyPosiEdYYYYNullFlag == false"><if test="update.societyPosiEdYYYY != null">SOCIETY_POSI_ED_YYYY = #{update.societyPosiEdYYYY},</if></if>
+			<if test="update.societyPosiEdMMNullFlag == true">SOCIETY_POSI_ED_MM = NULL,</if><if test="update.societyPosiEdMMNullFlag == false"><if test="update.societyPosiEdMM != null">SOCIETY_POSI_ED_MM = #{update.societyPosiEdMM},</if></if>
+			<if test="update.societyPosiEdDDNullFlag == true">SOCIETY_POSI_ED_DD = NULL,</if><if test="update.societyPosiEdDDNullFlag == false"><if test="update.societyPosiEdDD != null">SOCIETY_POSI_ED_DD = #{update.societyPosiEdDD},</if></if>
+			<if test="update.advisingDoctorCdNullFlag == true">ADVISING_DOCTOR = NULL,</if><if test="update.advisingDoctorCdNullFlag == false"><if test="update.advisingDoctorCd != null">ADVISING_DOCTOR = #{update.advisingDoctorCd},</if></if>
+			<if test="update.coachingAcquisiYYYYNullFlag == true">COACHING_ACQUISI_YYYY = NULL,</if><if test="update.coachingAcquisiYYYYNullFlag == false"><if test="update.coachingAcquisiYYYY != null">COACHING_ACQUISI_YYYY = #{update.coachingAcquisiYYYY},</if></if>
+			<if test="update.coachingAcquisiMMNullFlag == true">COACHING_ACQUISI_MM = NULL,</if><if test="update.coachingAcquisiMMNullFlag == false"><if test="update.coachingAcquisiMM != null">COACHING_ACQUISI_MM = #{update.coachingAcquisiMM},</if></if>
+			<if test="update.coachingAcquisiDDNullFlag == true">COACHING_ACQUISI_DD = NULL,</if><if test="update.coachingAcquisiDDNullFlag == false"><if test="update.coachingAcquisiDD != null">COACHING_ACQUISI_DD = #{update.coachingAcquisiDD},</if></if>
+			<if test="update.coachingStYYYYNullFlag == true">COACHING_ST_YYYY = NULL,</if><if test="update.coachingStYYYYNullFlag == false"><if test="update.coachingStYYYY != null">COACHING_ST_YYYY = #{update.coachingStYYYY},</if></if>
+			<if test="update.coachingStMMNullFlag == true">COACHING_ST_MM = NULL,</if><if test="update.coachingStMMNullFlag == false"><if test="update.coachingStMM != null">COACHING_ST_MM = #{update.coachingStMM},</if></if>
+			<if test="update.coachingStDDNullFlag == true">COACHING_ST_DD = NULL,</if><if test="update.coachingStDDNullFlag == false"><if test="update.coachingStDD != null">COACHING_ST_DD = #{update.coachingStDD},</if></if>
+			<if test="update.coachingEdYYYYNullFlag == true">COACHING_ED_YYYY = NULL,</if><if test="update.coachingEdYYYYNullFlag == false"><if test="update.coachingEdYYYY != null">COACHING_ED_YYYY = #{update.coachingEdYYYY},</if></if>
+			<if test="update.coachingEdMMNullFlag == true">COACHING_ED_MM = NULL,</if><if test="update.coachingEdMMNullFlag == false"><if test="update.coachingEdMM != null">COACHING_ED_MM = #{update.coachingEdMM},</if></if>
+			<if test="update.coachingEdDDNullFlag == true">COACHING_ED_DD = NULL,</if><if test="update.coachingEdDDNullFlag == false"><if test="update.coachingEdDD != null">COACHING_ED_DD = #{update.coachingEdDD},</if></if>
+			<if test="update.certifyingPhysicianCdNullFlag == true">CERTIFYING_PHYSICIAN = NULL,</if><if test="update.certifyingPhysicianCdNullFlag == false"><if test="update.certifyingPhysicianCd != null">CERTIFYING_PHYSICIAN = #{update.certifyingPhysicianCd},</if></if>
+			<if test="update.certifyStYYYYNullFlag == true">CERTIFY_ST_YYYY = NULL,</if><if test="update.certifyStYYYYNullFlag == false"><if test="update.certifyStYYYY != null">CERTIFY_ST_YYYY = #{update.certifyStYYYY},</if></if>
+			<if test="update.certifyStMMNullFlag == true">CERTIFY_ST_MM = NULL,</if><if test="update.certifyStMMNullFlag == false"><if test="update.certifyStMM != null">CERTIFY_ST_MM = #{update.certifyStMM},</if></if>
+			<if test="update.certifyStDDNullFlag == true">CERTIFY_ST_DD = NULL,</if><if test="update.certifyStDDNullFlag == false"><if test="update.certifyStDD != null">CERTIFY_ST_DD = #{update.certifyStDD},</if></if>
+			<if test="update.certifyEdYYYYNullFlag == true">CERTIFY_ED_YYYY = NULL,</if><if test="update.certifyEdYYYYNullFlag == false"><if test="update.certifyEdYYYY != null">CERTIFY_ED_YYYY = #{update.certifyEdYYYY},</if></if>
+			<if test="update.certifyEdMMNullFlag == true">CERTIFY_ED_MM = NULL,</if><if test="update.certifyEdMMNullFlag == false"><if test="update.certifyEdMM != null">CERTIFY_ED_MM = #{update.certifyEdMM},</if></if>
+			<if test="update.certifyEdDDNullFlag == true">CERTIFY_ED_DD = NULL,</if><if test="update.certifyEdDDNullFlag == false"><if test="update.certifyEdDD != null">CERTIFY_ED_DD = #{update.certifyEdDD},</if></if>
+			<if test="update.insShaYmdNullFlag == true">INS_SHA_YMD = NULL,</if><if test="update.insShaYmdNullFlag == false"><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if></if>
+			<if test="update.insShaIdNullFlag == true">INS_SHA_ID = NULL,</if><if test="update.insShaIdNullFlag == false"><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if></if>
+			<if test="update.updShaYmdNullFlag == true">UPD_SHA_YMD = NULL,</if><if test="update.updShaYmdNullFlag == false"><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if></if>
+			<if test="update.updShaIdNullFlag == true">UPD_SHA_ID = NULL,</if><if test="update.updShaIdNullFlag == false"><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if></if>
+        </set>
+        WHERE
+            REQ_ID = #{reqId} AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity">
+        DELETE FROM
+            T_RDM_HCP_SOCIETY_REQ
+        WHERE
+            REQ_ID = #{reqId} AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}
+    </delete>
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity">
+        DELETE FROM
+            T_RDM_HCP_SOCIETY_REQ
+        <where>
+			<if test="reqId != null">AND REQ_ID = #{reqId}</if>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="medicalSocietyNm != null">AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}</if>
+			<if test="admissionYYYY != null">AND ADMISSION_YYYY = #{admissionYYYY}</if>
+			<if test="admissionMM != null">AND ADMISSION_MM = #{admissionMM}</if>
+			<if test="admissionDD != null">AND ADMISSION_DD = #{admissionDD}</if>
+			<if test="quitYYYY != null">AND QUIT_YYYY = #{quitYYYY}</if>
+			<if test="quitMM != null">AND QUIT_MM = #{quitMM}</if>
+			<if test="quitDD != null">AND QUIT_DD = #{quitDD}</if>
+			<if test="positionCode != null">AND POSITION_CODE = #{positionCode}</if>
+			<if test="societyPosiStYYYY != null">AND SOCIETY_POSI_ST_YYYY = #{societyPosiStYYYY}</if>
+			<if test="societyPosiStMM != null">AND SOCIETY_POSI_ST_MM = #{societyPosiStMM}</if>
+			<if test="societyPosiStDD != null">AND SOCIETY_POSI_ST_DD = #{societyPosiStDD}</if>
+			<if test="societyPosiEdYYYY != null">AND SOCIETY_POSI_ED_YYYY = #{societyPosiEdYYYY}</if>
+			<if test="societyPosiEdMM != null">AND SOCIETY_POSI_ED_MM = #{societyPosiEdMM}</if>
+			<if test="societyPosiEdDD != null">AND SOCIETY_POSI_ED_DD = #{societyPosiEdDD}</if>
+			<if test="advisingDoctorCd != null">AND ADVISING_DOCTOR = #{advisingDoctorCd}</if>
+			<if test="coachingAcquisiYYYY != null">AND COACHING_ACQUISI_YYYY = #{coachingAcquisiYYYY}</if>
+			<if test="coachingAcquisiMM != null">AND COACHING_ACQUISI_MM = #{coachingAcquisiMM}</if>
+			<if test="coachingAcquisiDD != null">AND COACHING_ACQUISI_DD = #{coachingAcquisiDD}</if>
+			<if test="coachingStYYYY != null">AND COACHING_ST_YYYY = #{coachingStYYYY}</if>
+			<if test="coachingStMM != null">AND COACHING_ST_MM = #{coachingStMM}</if>
+			<if test="coachingStDD != null">AND COACHING_ST_DD = #{coachingStDD}</if>
+			<if test="coachingEdYYYY != null">AND COACHING_ED_YYYY = #{coachingEdYYYY}</if>
+			<if test="coachingEdMM != null">AND COACHING_ED_MM = #{coachingEdMM}</if>
+			<if test="coachingEdDD != null">AND COACHING_ED_DD = #{coachingEdDD}</if>
+			<if test="certifyingPhysicianCd != null">AND CERTIFYING_PHYSICIAN = #{certifyingPhysicianCd}</if>
+			<if test="certifyStYYYY != null">AND CERTIFY_ST_YYYY = #{certifyStYYYY}</if>
+			<if test="certifyStMM != null">AND CERTIFY_ST_MM = #{certifyStMM}</if>
+			<if test="certifyStDD != null">AND CERTIFY_ST_DD = #{certifyStDD}</if>
+			<if test="certifyEdYYYY != null">AND CERTIFY_ED_YYYY = #{certifyEdYYYY}</if>
+			<if test="certifyEdMM != null">AND CERTIFY_ED_MM = #{certifyEdMM}</if>
+			<if test="certifyEdDD != null">AND CERTIFY_ED_DD = #{certifyEdDD}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </delete>
+    <select id="selectHcpSocietyData" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity" resultMap="hcpSocietyDataResultMap">
+		SELECT
+		  SOC.MEDICAL_SOCIETY_NM -- 所属学会名称
+		, SOC.ADMISSION_YYYY -- 入会年月日(年)
+		, SOC.ADMISSION_MM -- 入会年月日(月)
+		, SOC.ADMISSION_DD -- 入会年月日(日)
+		, SOC.QUIT_YYYY -- 脱会年月日(年)
+		, SOC.QUIT_MM -- 脱会年月日(月)
+		, SOC.QUIT_DD -- 脱会年月日(日)
+		, SOC.POSITION_CODE -- 所属役職コード
+		, NVL2(CDM.VALUE1_KANJ,CDM.VALUE1_KANJ,'--なし--') AS POSITION_NM -- 所属役職名称
+		, SOC.SOCIETY_POSI_ST_YYYY -- 役職開始年月日(年)
+		, SOC.SOCIETY_POSI_ST_MM -- 役職開始年月日(月)
+		, SOC.SOCIETY_POSI_ST_DD -- 役職開始年月日(日)
+		, SOC.SOCIETY_POSI_ED_YYYY -- 役職終了年月日(年)
+		, SOC.SOCIETY_POSI_ED_MM -- 役職終了年月日(月)
+		, SOC.SOCIETY_POSI_ED_DD -- 役職終了年月日(日)
+		, SOC.ADVISING_DOCTOR -- 所属学会指導医区分コード
+		, CASE WHEN SOC.ADVISING_DOCTOR = '1' THEN '○' ELSE '×' END AS ADVISING_DOCTOR_NM -- 所属学会指導医区分名称
+		, SOC.COACHING_ACQUISI_YYYY -- 指導医取得年月日(年)
+		, SOC.COACHING_ACQUISI_MM -- 指導医取得年月日(月)
+		, SOC.COACHING_ACQUISI_DD -- 指導医取得年月日(日)
+		, SOC.COACHING_ST_YYYY -- 指導医開始年月日(年)
+		, SOC.COACHING_ST_MM -- 指導医開始年月日(月)
+		, SOC.COACHING_ST_DD -- 指導医開始年月日(日)
+		, SOC.COACHING_ED_YYYY -- 指導医終了年月日(年)
+		, SOC.COACHING_ED_MM -- 指導医終了年月日(月)
+		, SOC.COACHING_ED_DD -- 指導医終了年月日(日)
+		, SOC.CERTIFYING_PHYSICIAN -- 所属学会認定医区分コード
+		, CASE WHEN SOC.CERTIFYING_PHYSICIAN = '1' THEN '○' ELSE '×' END AS CERTIFYING_PHYSICIAN_NM  -- 所属学会認定医区分名称
+		, SOC.CERTIFY_ST_YYYY -- 認定医開始年月日(年)
+		, SOC.CERTIFY_ST_MM -- 認定医開始年月日(月)
+		, SOC.CERTIFY_ST_DD -- 認定医開始年月日(日)
+		, SOC.CERTIFY_ED_YYYY -- 認定医終了年月日(年)
+		, SOC.CERTIFY_ED_MM -- 認定医終了年月日(月)
+		, SOC.CERTIFY_ED_DD -- 認定医終了年月日(日)
+		FROM
+		T_RDM_HCP_SOCIETY_REQ SOC -- 医師_所属学会_申請管理
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'POSITION_CODE'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = SOC.POSITION_CODE
+		WHERE 1=1
+		  AND SOC.REQ_ID = #{inReqId}
+		ORDER BY SOC.MEDICAL_SOCIETY_NM
+    </select>
+        <select id="selectUpDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpSocietyReqEntity" resultMap="selectUpDateResultMap">
+        SELECT
+            UPD_SHA_YMD
+           ,UPD_SHA_ID
+        FROM
+            T_RDM_HCP_SOCIETY_REQ
+        WHERE
+             REQ_ID = #{reqId}
+         AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}
+        FOR UPDATE NOWAIT
+    </select>
+    <update id="updateData" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpSocietyReqEntity">
+        UPDATE
+            T_RDM_HCP_SOCIETY_REQ
+        SET
+			<if test="docNoNullFlag == true">DOC_NO = NULL,</if><if test="docNoNullFlag == false"><if test="docNo != null">DOC_NO = #{docNo},</if></if>
+			<if test="admissionYYYYNullFlag == true">ADMISSION_YYYY = NULL,</if><if test="admissionYYYYNullFlag == false"><if test="admissionYYYY != null">ADMISSION_YYYY = #{admissionYYYY},</if></if>
+			<if test="admissionMMNullFlag == true">ADMISSION_MM = NULL,</if><if test="admissionMMNullFlag == false"><if test="admissionMM != null">ADMISSION_MM = #{admissionMM},</if></if>
+			<if test="admissionDDNullFlag == true">ADMISSION_DD = NULL,</if><if test="admissionDDNullFlag == false"><if test="admissionDD != null">ADMISSION_DD = #{admissionDD},</if></if>
+			<if test="quitYYYYNullFlag == true">QUIT_YYYY = NULL,</if><if test="quitYYYYNullFlag == false"><if test="quitYYYY != null">QUIT_YYYY = #{quitYYYY},</if></if>
+			<if test="quitMMNullFlag == true">QUIT_MM = NULL,</if><if test="quitMMNullFlag == false"><if test="quitMM != null">QUIT_MM = #{quitMM},</if></if>
+			<if test="quitDDNullFlag == true">QUIT_DD = NULL,</if><if test="quitDDNullFlag == false"><if test="quitDD != null">QUIT_DD = #{quitDD},</if></if>
+			<if test="positionCodeNullFlag == true">POSITION_CODE = NULL,</if><if test="positionCodeNullFlag == false"><if test="positionCode != null">POSITION_CODE = #{positionCode},</if></if>
+			<if test="societyPosiStYYYYNullFlag == true">SOCIETY_POSI_ST_YYYY = NULL,</if><if test="societyPosiStYYYYNullFlag == false"><if test="societyPosiStYYYY != null">SOCIETY_POSI_ST_YYYY = #{societyPosiStYYYY},</if></if>
+			<if test="societyPosiStMMNullFlag == true">SOCIETY_POSI_ST_MM = NULL,</if><if test="societyPosiStMMNullFlag == false"><if test="societyPosiStMM != null">SOCIETY_POSI_ST_MM = #{societyPosiStMM},</if></if>
+			<if test="societyPosiStDDNullFlag == true">SOCIETY_POSI_ST_DD = NULL,</if><if test="societyPosiStDDNullFlag == false"><if test="societyPosiStDD != null">SOCIETY_POSI_ST_DD = #{societyPosiStDD},</if></if>
+			<if test="societyPosiEdYYYYNullFlag == true">SOCIETY_POSI_ED_YYYY = NULL,</if><if test="societyPosiEdYYYYNullFlag == false"><if test="societyPosiEdYYYY != null">SOCIETY_POSI_ED_YYYY = #{societyPosiEdYYYY},</if></if>
+			<if test="societyPosiEdMMNullFlag == true">SOCIETY_POSI_ED_MM = NULL,</if><if test="societyPosiEdMMNullFlag == false"><if test="societyPosiEdMM != null">SOCIETY_POSI_ED_MM = #{societyPosiEdMM},</if></if>
+			<if test="societyPosiEdDDNullFlag == true">SOCIETY_POSI_ED_DD = NULL,</if><if test="societyPosiEdDDNullFlag == false"><if test="societyPosiEdDD != null">SOCIETY_POSI_ED_DD = #{societyPosiEdDD},</if></if>
+			<if test="advisingDoctorCdNullFlag == true">ADVISING_DOCTOR = NULL,</if><if test="advisingDoctorCdNullFlag == false"><if test="advisingDoctorCd != null">ADVISING_DOCTOR = #{advisingDoctorCd},</if></if>
+			<if test="coachingAcquisiYYYYNullFlag == true">COACHING_ACQUISI_YYYY = NULL,</if><if test="coachingAcquisiYYYYNullFlag == false"><if test="coachingAcquisiYYYY != null">COACHING_ACQUISI_YYYY = #{coachingAcquisiYYYY},</if></if>
+			<if test="coachingAcquisiMMNullFlag == true">COACHING_ACQUISI_MM = NULL,</if><if test="coachingAcquisiMMNullFlag == false"><if test="coachingAcquisiMM != null">COACHING_ACQUISI_MM = #{coachingAcquisiMM},</if></if>
+			<if test="coachingAcquisiDDNullFlag == true">COACHING_ACQUISI_DD = NULL,</if><if test="coachingAcquisiDDNullFlag == false"><if test="coachingAcquisiDD != null">COACHING_ACQUISI_DD = #{coachingAcquisiDD},</if></if>
+			<if test="coachingStYYYYNullFlag == true">COACHING_ST_YYYY = NULL,</if><if test="coachingStYYYYNullFlag == false"><if test="coachingStYYYY != null">COACHING_ST_YYYY = #{coachingStYYYY},</if></if>
+			<if test="coachingStMMNullFlag == true">COACHING_ST_MM = NULL,</if><if test="coachingStMMNullFlag == false"><if test="coachingStMM != null">COACHING_ST_MM = #{coachingStMM},</if></if>
+			<if test="coachingStDDNullFlag == true">COACHING_ST_DD = NULL,</if><if test="coachingStDDNullFlag == false"><if test="coachingStDD != null">COACHING_ST_DD = #{coachingStDD},</if></if>
+			<if test="coachingEdYYYYNullFlag == true">COACHING_ED_YYYY = NULL,</if><if test="coachingEdYYYYNullFlag == false"><if test="coachingEdYYYY != null">COACHING_ED_YYYY = #{coachingEdYYYY},</if></if>
+			<if test="coachingEdMMNullFlag == true">COACHING_ED_MM = NULL,</if><if test="coachingEdMMNullFlag == false"><if test="coachingEdMM != null">COACHING_ED_MM = #{coachingEdMM},</if></if>
+			<if test="coachingEdDDNullFlag == true">COACHING_ED_DD = NULL,</if><if test="coachingEdDDNullFlag == false"><if test="coachingEdDD != null">COACHING_ED_DD = #{coachingEdDD},</if></if>
+			<if test="certifyingPhysicianCdNullFlag == true">CERTIFYING_PHYSICIAN = NULL,</if><if test="certifyingPhysicianCdNullFlag == false"><if test="certifyingPhysicianCd != null">CERTIFYING_PHYSICIAN = #{certifyingPhysicianCd},</if></if>
+			<if test="certifyStYYYYNullFlag == true">CERTIFY_ST_YYYY = NULL,</if><if test="certifyStYYYYNullFlag == false"><if test="certifyStYYYY != null">CERTIFY_ST_YYYY = #{certifyStYYYY},</if></if>
+			<if test="certifyStMMNullFlag == true">CERTIFY_ST_MM = NULL,</if><if test="certifyStMMNullFlag == false"><if test="certifyStMM != null">CERTIFY_ST_MM = #{certifyStMM},</if></if>
+			<if test="certifyStDDNullFlag == true">CERTIFY_ST_DD = NULL,</if><if test="certifyStDDNullFlag == false"><if test="certifyStDD != null">CERTIFY_ST_DD = #{certifyStDD},</if></if>
+			<if test="certifyEdYYYYNullFlag == true">CERTIFY_ED_YYYY = NULL,</if><if test="certifyEdYYYYNullFlag == false"><if test="certifyEdYYYY != null">CERTIFY_ED_YYYY = #{certifyEdYYYY},</if></if>
+			<if test="certifyEdMMNullFlag == true">CERTIFY_ED_MM = NULL,</if><if test="certifyEdMMNullFlag == false"><if test="certifyEdMM != null">CERTIFY_ED_MM = #{certifyEdMM},</if></if>
+			<if test="certifyEdDDNullFlag == true">CERTIFY_ED_DD = NULL,</if><if test="certifyEdDDNullFlag == false"><if test="certifyEdDD != null">CERTIFY_ED_DD = #{certifyEdDD},</if></if>
+			<if test="insShaYmdNullFlag == true">INS_SHA_YMD = NULL,</if><if test="insShaYmdNullFlag == false"><if test="insShaYmd != null">INS_SHA_YMD = #{insShaYmd},</if></if>
+			<if test="insShaIdNullFlag == true">INS_SHA_ID = NULL,</if><if test="insShaIdNullFlag == false"><if test="insShaId != null">INS_SHA_ID = #{insShaId},</if></if>
+			<if test="updShaYmdNullFlag == true">UPD_SHA_YMD = NULL,</if><if test="updShaYmdNullFlag == false"><if test="updShaYmd != null">UPD_SHA_YMD = #{updShaYmd},</if></if>
+			<if test="updShaIdNullFlag == true">UPD_SHA_ID = NULL</if><if test="updShaIdNullFlag == false"><if test="updShaId != null">UPD_SHA_ID = #{updShaId}</if></if>
+        WHERE
+            REQ_ID = #{reqId}
+        AND MEDICAL_SOCIETY_NM = #{medicalSocietyNm}
+    </update>
+</mapper>

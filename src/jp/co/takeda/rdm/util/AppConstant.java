@@ -2847,6 +2847,7 @@ public interface AppConstant {
     public static final String SESKEY_NC203_SEARCHKEY = "NC203_SEARCHKEY";
     public static final String SESKEY_NC204_SEARCHKEY = "NC204_SEARCHKEY";
     public static final String SESKEY_NC205_SEARCHKEY = "NC205_SEARCHKEY";
+    public static final String SESKEY_ND103_SEARCHKEY = "ND103_SEARCHKEY";
 
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;
@@ -2857,6 +2858,8 @@ public interface AppConstant {
     public static final int ORA_NOTNULL_COLUMN_NULL = 1400;  //でるで
     public static final int ORA_VALUE_LARGER_ERROR = 1438;   //でるで
     public static final int SQL_MANY_ROWS = 2112;    //into句で読んだときの話
+
+
 
 
 

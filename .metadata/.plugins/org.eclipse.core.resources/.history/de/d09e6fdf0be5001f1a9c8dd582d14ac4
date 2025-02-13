@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.mapper.action.prefix.enabled" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+    <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+    <constant name="struts.custom.include.extension" value="/NC001Init,/NC001Init.action" />
+    <constant name="authorization.screen.check" value="true" />
+    <constant name="authorization.time.check" value="true" />
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <package name="default" namespace="/" extends="struts-default">
+        <interceptors>
+            <interceptor name="resources" class="jp.co.takeda.rdm.common.ResourcesInterceptor"/>
+            <interceptor name="noCache" class="jp.co.takeda.rdm.common.NoCacheInterceptor"/>
+            <interceptor name="checkExtension" class="jp.co.takeda.rdm.common.CheckExtensionInterceptor"/>
+            <interceptor name="loginAuth" class="jp.co.takeda.rdm.common.LoginAuthInterceptor"/>
+            <interceptor name="loginInfoAndMenuInit" class="jp.co.takeda.rdm.common.LoginInfoAndMenuInitInterceptor"/>
+            <interceptor name="transitionAuth" class="jp.co.takeda.rdm.common.TransitionAuthInterceptor"/>
+            <interceptor-stack name="custom-defaultStack">
+                <interceptor-ref name="resources" />
+                <interceptor-ref name="logger" />
+                <interceptor-ref name="timer" />
+                <interceptor-ref name="exception">
+                    <param name="logEnabled">true</param>
+                    <param name="logLevel">ERROR</param>
+                </interceptor-ref>
+                <interceptor-ref name="checkExtension" />
+                <interceptor-ref name="loginAuth" />
+                <interceptor-ref name="loginInfoAndMenuInit" />
+                <interceptor-ref name="transitionAuth" />
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params"/>
+                <!-- <interceptor-ref name="conversionError"/> -->
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="annotationWorkflow" />
+                <interceptor-ref name="noCache" />
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="custom-defaultStack" />
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="InvalidServiceException">/WEB-INF/pages/error/mapsInvalidServiceException.jsp</result>
+            <result name="UnauthorizedException">/WEB-INF/pages/error/mapsUnauthorizedException.jsp</result>
+            <result name="PauseServiceException">/WEB-INF/pages/error/mapsPauseServiceException.jsp</result>
+            <result name="OverTimeServiceException">/WEB-INF/pages/error/mapsOverTimeServiceException.jsp</result>
+            <result name="SessionTimeoutException">/WEB-INF/pages/error/mapsSessionTimeoutException.jsp</result>
+            <result name="InvalidRequestException">/WEB-INF/pages/error/mapsInvalidRequestException.jsp</result>
+            <result name="exception">/WEB-INF/pages/NC109.jsp</result>
+            <result name="invalid.token">/WEB-INF/pages/NC109.jsp</result>
+            <result name="error" type="chain">NC109Init</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.InvalidServiceException" result="InvalidServiceException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.UnauthorizedException" result="UnauthorizedException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.PauseServiceException" result="PauseServiceException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.OverTimeServiceException" result="OverTimeServiceException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.SessionTimeoutException" result="SessionTimeoutException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.InvalidRequestException" result="InvalidRequestException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.LoginAuthException" result="SessionTimeoutException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.CheckExtentionException" result="InvalidRequestException"/>
+            <exception-mapping exception="jp.co.takeda.rdm.exception.UpdateAccessException" result="exception"/>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+
+        <action name="NC001Init" class="nC001Action" method="init">
+            <result name="NC001">/WEB-INF/pages/NC001.jsp</result>
+        </action>
+        <action name="ND011Init" class="nD011Action" method="init">
+            <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
+        </action>
+        <action name="ND011Register" class="nD011Action" method="register">
+            <result name="ND011">/WEB-INF/pages/JKR030C010.jsp</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
+        </action>
+        <action name="NF011Init" class="nF011Action" method="init">
+            <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+        </action>
+        <action name="NF011Cancel" class="nF011Action" method="cancel">
+            <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="JKR000C010">/WEB-INF/pages/JKR000C010.jsp</result>
+        </action>
+        <action name="NF011Register" class="nF011Action" method="register">
+        	<result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+            <result name="NF301">/WEB-INF/pages/NF301.jsp</result>
+        </action>
+        <action name="NF011ShnComp" class="nF011Action" method="shnComp">
+        	<result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+        </action>
+        <action name="NF012Init" class="nF012Action" method="init">
+            <result name="NF012">/WEB-INF/pages/NF012.jsp</result>
+        </action>
+        <action name="NF012Cancel" class="nF012Action" method="cancel">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NF012Register" class="nF012Action" method="register">
+        	<result name="NF012">/WEB-INF/pages/NF012.jsp</result>
+            <result name="NF303">/WEB-INF/pages/NF303.jsp</result>
+        </action>
+        <action name="NF012ShnComp" class="nF012Action" method="shnComp">
+        	<result name="NF012">/WEB-INF/pages/NF012.jsp</result>
+        </action>
+        <action name="NF211Init" class="nF211Action" method="init">
+            <result name="NF211">/WEB-INF/pages/NF211.jsp</result>
+        </action>
+        <action name="NF211Cancel" class="nF211Action" method="cancel">
+            <result name="NF201">/WEB-INF/pages/NF201.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NF211Register" class="nF211Action" method="register">
+        	<result name="NF211">/WEB-INF/pages/NF211.jsp</result>
+        </action>
+        <action name="NF211ShnComp" class="nF211Action" method="shnComp">
+        	<result name="NF211">/WEB-INF/pages/NF211.jsp</result>
+        </action>
+        <action name="NF212Init" class="nF212Action" method="init">
+            <result name="NF212">/WEB-INF/pages/NF212.jsp</result>
+        </action>
+        <action name="NF212Cancel" class="nF212Action" method="cancel">
+            <result name="NF201">/WEB-INF/pages/NF201.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NF212Register" class="nF212Action" method="register">
+        	<result name="NF212">/WEB-INF/pages/NF212.jsp</result>
+        </action>
+        <action name="NF212ShnComp" class="nF212Action" method="shnComp">
+        	<result name="NF212">/WEB-INF/pages/NF212.jsp</result>
+        </action>
+        <action name="NF301Init" class="nF301Action" method="init">
+            <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+            <result name="NF301">/WEB-INF/pages/NF301.jsp</result>
+        </action>
+        <action name="NF301Register" class="nF301Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NF301">/WEB-INF/pages/NF301.jsp</result>
+        </action>
+        <action name="NF301ApprRej" class="nF301Action" method="apprRej">
+        	<result name="NF011">/WEB-INF/pages/NF011.jsp</result>
+        	<result name="NF301">/WEB-INF/pages/NF301.jsp</result>
+        </action>
+        <action name="NF303Init" class="nF303Action" method="init">
+            <result name="NF012">/WEB-INF/pages/NF012.jsp</result>
+            <result name="NF303">/WEB-INF/pages/NF303.jsp</result>
+        </action>
+        <action name="NF303Register" class="nF303Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NF303">/WEB-INF/pages/NF303.jsp</result>
+        </action>
+        <action name="NF303ApprRej" class="nF303Action" method="apprRej">
+        	<result name="NF012">/WEB-INF/pages/NF012.jsp</result>
+        	<result name="NF303">/WEB-INF/pages/NF303.jsp</result>
+        </action>
+        <action name="NF311Init" class="nF311Action" method="init">
+            <result name="NF211">/WEB-INF/pages/NF211.jsp</result>
+            <result name="NF311">/WEB-INF/pages/NF311.jsp</result>
+        </action>
+        <action name="NF311Register" class="nF311Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NF311">/WEB-INF/pages/NF311.jsp</result>
+        </action>
+        <action name="NF311ApprRej" class="nF311Action" method="apprRej">
+        	<result name="NF211">/WEB-INF/pages/NF211.jsp</result>
+        	<result name="NF311">/WEB-INF/pages/NF311.jsp</result>
+        </action>
+    </package>
+</struts>

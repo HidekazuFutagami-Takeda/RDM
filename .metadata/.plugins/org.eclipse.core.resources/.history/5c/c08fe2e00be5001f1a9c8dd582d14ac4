@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rdm_common">
+    <resultMap id="getNextTermFirstdayResultMap" type="jp.co.takeda.rdm.entity.join.RdmCommonEntity">
+        <result column="NEXT_TERM_FIRSTDAY" property="nextTermFirstday"/>
+    </resultMap>
+    <resultMap id="getNextBizdayResultMap" type="jp.co.takeda.rdm.entity.join.RdmCommonEntity">
+        <result column="NEXT_BIZDAY" property="nextBizday"/>
+    </resultMap>
+    <select id="getNextTermFirstday" parameterType="jp.co.takeda.rdm.entity.join.RdmCommonEntity" resultMap="getNextTermFirstdayResultMap">
+        SELECT
+            RDM_COMMON.GET_NEXT_TERM_FIRSTDAY(#{inVBatDate}) AS NEXT_TERM_FIRSTDAY
+		FROM
+            DUAL
+    </select>
+    <select id="getNextBizday" parameterType="jp.co.takeda.rdm.entity.join.RdmCommonEntity" resultMap="getNextBizdayResultMap">
+        SELECT
+            RDM_COMMON.GET_NEXT_BIZDAY(#{inVBatDate}) AS NEXT_BIZDAY
+		FROM
+            DUAL
+    </select>
+</mapper>

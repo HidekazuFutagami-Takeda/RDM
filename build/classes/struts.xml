@@ -140,6 +140,18 @@
         <action name="NC207Register" class="nC207Action" method="register">
             <result name="NC207">/WEB-INF/pages/NC207.jsp</result>
         </action>
+        <action name="ND001Init" class="nD001Action" method="init">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="ND001Search" class="nD001Action" method="search">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="ND001Page" class="nD001Action" method="page">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="ND001Sort" class="nD001Action" method="sort">
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
         <action name="NF011Init" class="nF011Action" method="init">
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
         </action>
@@ -258,6 +270,25 @@
         <action name="NF313ApprRej" class="nF313Action" method="apprRej">
         	<result name="NF212">/WEB-INF/pages/NF212.jsp</result>
         	<result name="NF313">/WEB-INF/pages/NF313.jsp</result>
+        </action>
+        <action name="NF315Init" class="nF315Action" method="init">
+            <result name="NF213">/WEB-INF/pages/NF213.jsp</result>
+            <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NF315Register" class="nF315Action" method="register">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NF315ApprRej" class="nF315Action" method="apprRej">
+        	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
+        	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NC203Init" class="nC203Action" method="init">
+            <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
+        </action>
+        <action name="NC204Init" class="nC204Action" method="init">
+            <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
         </action>
     </package>
 </struts>

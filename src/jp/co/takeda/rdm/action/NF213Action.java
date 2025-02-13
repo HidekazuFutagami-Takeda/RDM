@@ -117,12 +117,15 @@ public class NF213Action extends BaseAction<NF213DTO> {
 
         //モック
         //dto.setInsNo("101108001");
-        dto.setInsNo("101110001");
-        //dto.setReqId("250131-000178");
-        dto.setReqId("250203-000187");
-        dto.setTrtCd("00");
-        dto.setHinGCd("00");
-        dto.setTkdTrtKbn("1");
+//        dto.setInsNo("101110001");
+//        dto.setTrtCd("00");
+//        dto.setHinGCd("00");
+//        dto.setTkdTrtKbn("1");
+//        if("0".equals(dto.getTkdTrtKbn())) {
+//        	dto.setReqId("250203-000188");
+//        } else {
+//        	dto.setReqId("250210-000221");
+//        }
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
@@ -131,21 +134,21 @@ public class NF213Action extends BaseAction<NF213DTO> {
         dto.setPreScreenId(preScreenId);
 
         //モック
-        String kbn = "1";
-        if(kbn.equals("0")) {
-	        preScreenId = "NF201";
-	        dto.setLoginJgiNo("8830034");
-	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-	        dto.setReqId("");
-        } else {
-	        preScreenId = "NC011";
-	        dto.setLoginJgiNo("8830034");
-	        //dto.setLoginJgiNo("0");
-	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-	        dto.setInsNo("");
-        }
+//        String kbn = "1";
+//        if(kbn.equals("0")) {
+//	        preScreenId = "NF201";
+//	        dto.setLoginJgiNo("8830034");
+//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+//	        dto.setReqId("");
+//        } else {
+//	        preScreenId = "NC011";
+//	        dto.setLoginJgiNo("8830034");
+//	        //dto.setLoginJgiNo("0");
+//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+//	        dto.setInsNo("");
+//        }
 
         // 遷移パターン　0:完全新規、1:施設固定コードから作成、2：申請データあり
         // 施設固定コード　ありなしで分岐

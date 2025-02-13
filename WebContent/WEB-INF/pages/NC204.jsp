@@ -75,7 +75,7 @@
 	<%-- 常に配列にするためにダミーを配置    DTOからjspに値を受け取っている部分 --%>
     <s:hidden name="callBack" />
     <s:hidden name="winVarName" />
-
+	<s:hidden id="backScreenId" name ="backScreenId"/>
 	<s:hidden id="preScreenId" name ="preScreenId"/>
     <s:hidden id="paramInsNo" name="paramInsNo"/>
 
@@ -120,7 +120,7 @@
 		<tr height="40">
 		    <td style="width:100pt;"><nobr>施設固定C   <s:property value="paramInsNo"/></nobr></td>
             <td style="width:100pt;"><nobr>施設略式漢字名    <s:label name="insAbbrName"  key="insAbbrName"/></nobr></td>
-            <td style="width:10pt;"><s:checkbox name="allCheck" tabIndex="-1" value="false"/></td>
+            <td style="width:10pt;"><s:checkbox name="allCheck" tabIndex="-1"/></td>
             <td style="width:100pt;"><nobr>全所属部科から検索</nobr></td>
 		</tr>
 	</table>

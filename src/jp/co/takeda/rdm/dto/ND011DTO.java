@@ -587,6 +587,12 @@ public class ND011DTO extends BaseDTO implements Serializable {
      */
     private String buttonFlg;
 
+	/**
+	 * 編集可能フラグ
+	 * 0:不可、1:可
+	 * @generated
+	 */
+	private String editApprFlg;
 
     /**
      * デフォルトのコンストラクタ。
@@ -1996,6 +2002,21 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 */
 	public void setMsgStr(String msgStr) {
 		this.msgStr = msgStr;
+	}
+
+	/**
+	 * ND011DTO.javaeditApprFlgを設定
+	 * @return editApprFlg
+	 */
+	public String getEditApprFlg() {
+		return editApprFlg;
+	}
+
+	/**
+	 * @param editApprFlg セットする editApprFlg
+	 */
+	public void setEditApprFlg(String editApprFlg) {
+		this.editApprFlg = editApprFlg;
 	}
 
 	/**

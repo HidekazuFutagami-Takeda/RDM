@@ -273,6 +273,39 @@
         <result column="REQ_COMMENT" property="reqComment"/>
         <result column="APR_COMMENT" property="aprComment"/>
     </resultMap>
+    <resultMap id="nF315MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF315MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="SHN_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_ADDR" property="insAddr"/>
+        <result column="TRT_PRD_GRP_NM" property="trtPrdGrpNm"/>
+        <result column="TRT_CD" property="trtCd"/>
+        <result column="HIN_G_CD" property="hinGCd"/>
+        <result column="TEKIYO_YMD" property="tekiyoYmd"/>
+        <result column="MAIN_INS_NO" property="mainInsCd"/>
+        <result column="MAIN_INS_NM" property="mainInsNm"/>
+        <result column="MAIN_INS_ADDR" property="mainInsAddr"/>
+        <result column="JGI_NAME" property="jgiName"/>
+        <result column="MAIN_INS_SBT" property="mainInsSbt"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcoMstEntity" resultMap="mRdmHcoMstResultMap">
         SELECT
             INS_NO, INS_CLASS, RELN_INS_NO, RELN_INS_CODE, INS_SBT, INS_KANA, INS_KANA_SRCH, INS_ABBR_NAME, INS_FORMAL_NAME, INS_CONT_NAME, INS_KANJ_SRCH, INS_PCODE, ADDR_CODE_PREF, ADDR_CODE_CITY, TK_CITY_CD, INS_ADDR_DT, INS_ADDR, INS_ADDR_SRCH, INS_ADDR_KANA, INS_ADDR_KANA_SRCH, INS_PHONE1, INS_FAX1, INS_PHONE2, INS_FAX2, INS_PHONE_SRCH, INS_URL, INS_URL_YMD, TRADE_TYPE, WS_TYPE, BASKET_PURCHASE, HO_INS_TYPE, PHARM_TYPE, INS_RANK, MANAGE_CD, REG_VIS_TYPE, IMP_HOS_TYPE, IMP_INS_TYPE, UNIV_SUBDIV, INS_OPEN_YEAR, INS_OPEN_MONTH, INS_OPEN_DAY, HOS_EMERG, CAPA_TYPE, BEDCNT_BASE, BEDS_TOT, MED_BEDS_TOT, ENTCAPA_NUM, MAIN_INS_NO, INS_SECOND_TYPE, ULT_INS_NO, MDM_ID, DEL_KBN, DEL_REASON, DEL_REQ_YMD, DEL_FLG, DEL_YMD, RST_REASON, DUP_CODE, DUP_UPDATE, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -1348,6 +1381,141 @@
 		ON 1=1
 		AND TRT_PRD.TRT_CD = LNK.TRT_CD
 		AND TRT_PRD.HIN_G_CD = LNK.HIN_G_CD
+		LEFT JOIN
+		M_RDM_COM_CAL_USR CAL -- RDM用カレンダー(オンライン用)
+		ON 1=1
+		AND CAL.TODAY = '1'
+		LEFT JOIN
+		S_RDM_COM_LNK_TRT_PRDGRP_PRD PRD -- 領域別品目グループ品目
+		ON 1=1
+		AND PRD.TRT_CD = LNK.TRT_CD
+		AND PRD.HIN_G_CD = LNK.HIN_G_CD
+		AND PRD.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+		AND PRD.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+		LEFT JOIN
+		S_RDM_COM_LNK_TRTGRP_TRT TRT -- 領域グループ・領域関連定義
+		ON 1=1
+		AND TRT.TRT_CD = PRD.TRT_CD
+		AND TRT.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+		AND TRT.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectNF315ReqTkdData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF315MainDataEntity" resultMap="nF315MainDataResultMap">
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL  -- 申請管理.申請チャネル
+		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, NXT.INS_NO
+		, MST_KO.INS_ABBR_NAME
+		, MST_KO.INS_ADDR
+		, KNR.TEKIYO_YMD
+		, NXT.TRT_CD
+		, NXT.MAIN_INS_NO_BF AS MAIN_INS_NO
+		, MST_O_BF.INS_ABBR_NAME AS MAIN_INS_NM
+		, MST_O_BF.INS_ADDR AS MAIN_INS_ADDR
+		, MST_O_BF.INS_SBT AS MAIN_INS_SBT
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_COMMENT  -- 申請管理.承認・却下コメント
+		FROM
+		T_RDM_REQ_KNR KNR -- 申請管理
+		LEFT JOIN
+		T_RDM_HCO_LNK_NXT_REQ NXT -- 武田紐親子_来期用_申請管理
+		ON 1=1
+		AND KNR.REQ_ID = NXT.REQ_ID
+		LEFT JOIN
+		M_RDM_HCO_MST MST_KO	-- 施設_基本情報 子
+		ON 1=1
+		AND MST_KO.INS_NO = NXT.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_MST MST_O_BF	-- 施設_基本情報 親
+		ON 1=1
+		AND MST_O_BF.INS_NO = NXT.MAIN_INS_NO_BF
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectNF315ReqTrtData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF315MainDataEntity" resultMap="nF315MainDataResultMap">
+	    SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL  -- 申請管理.申請チャネル
+		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, LNK.INS_NO
+		, MST_KO.INS_ABBR_NAME
+		, MST_KO.INS_ADDR
+		, TRT.TRT_NM || '・' || PRD.HIN_G_NAME AS TRT_PRD_GRP_NM
+		, KNR.TEKIYO_YMD
+		, LNK.TRT_CD
+		, LNK.HIN_G_CD
+		, LNK.MAIN_INS_NO_BF AS MAIN_INS_NO
+		, MST_O_BF.INS_ABBR_NAME AS MAIN_INS_NM
+		, MST_O_BF.INS_ADDR AS MAIN_INS_ADDR
+		, JGI_BF.JGI_NAME AS JGI_NAME
+		, LNK.INS_SBT_BF AS MAIN_INS_SBT
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_COMMENT  -- 申請管理.承認・却下コメント
+		FROM
+		T_RDM_REQ_KNR KNR -- 申請管理
+		LEFT JOIN
+		T_RDM_HCO_LNK_REQ LNK -- 領域品目グループ別親子_申請管理
+		ON 1=1
+		AND LNK.REQ_ID = KNR.REQ_ID
+		LEFT JOIN
+		M_RDM_HCO_MST MST_KO	-- 施設_基本情報 子
+		ON 1=1
+		AND MST_KO.INS_NO = LNK.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_MST MST_O_BF	-- 施設_基本情報 親
+		ON 1=1
+		AND MST_O_BF.INS_NO = LNK.MAIN_INS_NO_BF
+		LEFT JOIN
+		M_RDM_JKR_MR_INS_TRT JKR_BF -- RDM用施設担当者情報 親
+		ON 1=1
+		AND JKR_BF.INS_NO = LNK.MAIN_INS_NO_BF
+		AND JKR_BF.TRT_CD = LNK.TRT_CD
+		LEFT JOIN
+		M_RDM_JGI_SOS_MST JGI_BF -- RDM用組織従業員情報 親
+		ON 1=1
+		AND JGI_BF.JGI_NO = JKR_BF.JGI_NO
 		LEFT JOIN
 		M_RDM_COM_CAL_USR CAL -- RDM用カレンダー(オンライン用)
 		ON 1=1

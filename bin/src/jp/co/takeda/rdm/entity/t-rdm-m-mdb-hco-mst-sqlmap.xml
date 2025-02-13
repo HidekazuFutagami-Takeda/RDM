@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_rdm_m_mdb_hco_mst">
+	<resultMap id="TRdmMMdbHcoMstResultMap" type="jp.co.takeda.rdm.entity.join.TRdmMMdbHcoMstEntity">
+		<result column="MDB_KBN" property="mdbKbn"/>
+		<result column="DCF_SHISETSU_CD" property="dcfShisetsuCd"/>
+		<result column="MIKAKUNIN_FLG" property="mikakuninFlg"/>
+		<result column="SAKUJYO_YOTEI_RIYU_CD" property="sakujyoYoteiRiyuCd"/>
+		<result column="CHOUFUKU_AITESAKI_CD" property="choufukuAitesakiCd"/>
+		<result column="SHISETSU_NM" property="shisetsuNm"/>
+		<result column="SHISETSU_NM_SRCH" property="shisetsuNmSrch"/>
+		<result column="SHISETSU_NM_KANA" property="shisetsuNmKana"/>
+		<result column="SHISETSU_NM_KANA_SRCH" property="shisetsuNmKanaSrch"/>
+		<result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
+		<result column="SHISETSU_NM_RYAKU_KANA" property="shisetsuNmRyakuKana"/>
+		<result column="ADDRESSFUMEI_CD" property="addressfumeiCd"/>
+		<result column="TODOFUKEN_CD" property="todofukenCd"/>
+		<result column="SHIKUCHOSON_CD" property="shikuchosonCd"/>
+		<result column="OAZA_TSUSHO_CD" property="oazaTsushoCd"/>
+		<result column="AZA_CHOME_CD" property="azaChomeCd"/>
+		<result column="YUBIN_NO" property="yubinNo"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="ADDRESS_SRCH" property="addressSrch"/>
+		<result column="ADDRESS_KANA" property="addressKana"/>
+		<result column="ADDRESS_KANA_SRCH" property="addressKanaSrch"/>
+		<result column="ADDRESSHYOJI_NO" property="addresshyojiNo"/>
+		<result column="TODOFUKEN_CNT" property="todofukenCnt"/>
+		<result column="SHIKUCHOSON_CNT" property="shikuchosonCnt"/>
+		<result column="OAZA_TSUSHO_CNT" property="oazaTsushoCnt"/>
+		<result column="AZA_CHOME_CNT" property="azaChomeCnt"/>
+		<result column="TODOFUKEN_KANA_CNT" property="todofukenKanaCnt"/>
+		<result column="SHIKUCHOSON_KANA_CNT" property="shikuchosonKanaCnt"/>
+		<result column="OAZA_TSUSHO_KANA_CNT" property="oazaTsushoKanaCnt"/>
+		<result column="AZA_CHOME_KANA_CNT" property="azaChomeKanaCnt"/>
+		<result column="TELNASHI_FLG" property="telnashiFlg"/>
+		<result column="SHISETSU_TEL" property="shisetsuTel"/>
+		<result column="SHISETSU_TEL_SRCH" property="shisetsuTelSrch"/>
+		<result column="KEIEITAI_CD" property="keieitaiCd"/>
+		<result column="SHISETSU_KBN" property="shisetsuKbn"/>
+		<result column="SHISETSU_DAIHYO_CD" property="shisetsuDaihyoCd"/>
+		<result column="SHISETSU_DAIHYO_NM" property="shisetsuDaihyoNm"/>
+		<result column="SHISETSU_DAIHYO_KANA" property="shisetsuDaihyoKana"/>
+		<result column="KAIGYOYOTEI_FLG" property="kaigyoyoteiFlg"/>
+		<result column="KAIGYO_YM" property="kaigyoYm"/>
+		<result column="KYUIN_FLG" property="kyuinFlg"/>
+		<result column="KYUIN_YM" property="kyuinYm"/>
+		<result column="SHINRYOKAMOKU_CD1" property="shinryokamokuCd1"/>
+		<result column="SHINRYOKAMOKU_CD2" property="shinryokamokuCd2"/>
+		<result column="SHINRYOKAMOKU_CD3" property="shinryokamokuCd3"/>
+		<result column="SHINRYOKAMOKU_CD4" property="shinryokamokuCd4"/>
+		<result column="SHINRYOKAMOKU_CD5" property="shinryokamokuCd5"/>
+		<result column="SHINRYOKAMOKU_CD6" property="shinryokamokuCd6"/>
+		<result column="SHINRYOKAMOKU_CD7" property="shinryokamokuCd7"/>
+		<result column="SHINRYOKAMOKU_CD8" property="shinryokamokuCd8"/>
+		<result column="SHINRYOKAMOKU_CD9" property="shinryokamokuCd9"/>
+		<result column="SHINRYOKAMOKU_CD10" property="shinryokamokuCd10"/>
+		<result column="SHINRYOKAMOKU_CD11" property="shinryokamokuCd11"/>
+		<result column="SHINRYOKAMOKU_CD12" property="shinryokamokuCd12"/>
+		<result column="SHINRYOKAMOKU_CD13" property="shinryokamokuCd13"/>
+		<result column="SHINRYOKAMOKU_CD14" property="shinryokamokuCd14"/>
+		<result column="SHINRYOKAMOKU_CD15" property="shinryokamokuCd15"/>
+		<result column="SHINRYOKAMOKU_CD16" property="shinryokamokuCd16"/>
+		<result column="SHINRYOKAMOKU_CD17" property="shinryokamokuCd17"/>
+		<result column="SHINRYOKAMOKU_CD18" property="shinryokamokuCd18"/>
+		<result column="SHINRYOKAMOKU_CD19" property="shinryokamokuCd19"/>
+		<result column="SHINRYOKAMOKU_CD20" property="shinryokamokuCd20"/>
+		<result column="SHINRYOKAMOKU_CD21" property="shinryokamokuCd21"/>
+		<result column="SHINRYOKAMOKU_CD22" property="shinryokamokuCd22"/>
+		<result column="SHINRYOKAMOKU_CD23" property="shinryokamokuCd23"/>
+		<result column="SHINRYOKAMOKU_CD24" property="shinryokamokuCd24"/>
+		<result column="SHINRYOKAMOKU_CD25" property="shinryokamokuCd25"/>
+		<result column="SHINRYOKAMOKU_CD26" property="shinryokamokuCd26"/>
+		<result column="SHINRYOKAMOKU_CD27" property="shinryokamokuCd27"/>
+		<result column="SHINRYOKAMOKU_CD28" property="shinryokamokuCd28"/>
+		<result column="SHINRYOKAMOKU_CD29" property="shinryokamokuCd29"/>
+		<result column="SHINRYOKAMOKU_CD30" property="shinryokamokuCd30"/>
+		<result column="SHINRYOKAMOKU_CD31" property="shinryokamokuCd31"/>
+		<result column="SHINRYOKAMOKU_CD32" property="shinryokamokuCd32"/>
+		<result column="SHINRYOKAMOKU_CD33" property="shinryokamokuCd33"/>
+		<result column="SHINRYOKAMOKU_CD34" property="shinryokamokuCd34"/>
+		<result column="SHINRYOKAMOKU_CD35" property="shinryokamokuCd35"/>
+		<result column="SHINRYOKAMOKU_CD36" property="shinryokamokuCd36"/>
+		<result column="SHINRYOKAMOKU_CD37" property="shinryokamokuCd37"/>
+		<result column="SHINRYOKAMOKU_CD38" property="shinryokamokuCd38"/>
+		<result column="SHINRYOKAMOKU_CD39" property="shinryokamokuCd39"/>
+		<result column="SHINRYOKAMOKU_CD40" property="shinryokamokuCd40"/>
+		<result column="SHINRYOKAMOKU_CD41" property="shinryokamokuCd41"/>
+		<result column="SHINRYOKAMOKU_CD42" property="shinryokamokuCd42"/>
+		<result column="SHINRYOKAMOKU_CD43" property="shinryokamokuCd43"/>
+		<result column="SHINRYOKAMOKU_CD44" property="shinryokamokuCd44"/>
+		<result column="SHINRYOKAMOKU_CD45" property="shinryokamokuCd45"/>
+		<result column="SHINRYOKAMOKU_CD46" property="shinryokamokuCd46"/>
+		<result column="SHINRYOKAMOKU_CD47" property="shinryokamokuCd47"/>
+		<result column="SHINRYOKAMOKU_CD48" property="shinryokamokuCd48"/>
+		<result column="SHINRYOKAMOKU_CD49" property="shinryokamokuCd49"/>
+		<result column="SHINRYOKAMOKU_CD50" property="shinryokamokuCd50"/>
+		<result column="SHINRYOKAMOKU_CD51" property="shinryokamokuCd51"/>
+		<result column="SHINRYOKAMOKU_CD52" property="shinryokamokuCd52"/>
+		<result column="SHINRYOKAMOKU_CD53" property="shinryokamokuCd53"/>
+		<result column="SHINRYOKAMOKU_CD54" property="shinryokamokuCd54"/>
+		<result column="SHINRYOKAMOKU_CD55" property="shinryokamokuCd55"/>
+		<result column="SHINRYOKAMOKU_CD56" property="shinryokamokuCd56"/>
+		<result column="SHINRYOKAMOKU_CD57" property="shinryokamokuCd57"/>
+		<result column="SHINRYOKAMOKU_CD58" property="shinryokamokuCd58"/>
+		<result column="SHINRYOKAMOKU_CD59" property="shinryokamokuCd59"/>
+		<result column="SHINRYOKAMOKU_CD60" property="shinryokamokuCd60"/>
+		<result column="BYOIN_SHUBETSU_CD" property="byoinShubetsuCd"/>
+		<result column="SAISHINSA_KBN" property="saishinsaKbn"/>
+		<result column="KANRENDAIGAKU_OYA_CD" property="kanrendaigakuOyaCd"/>
+		<result column="BYOTOHEISA_FLG" property="byotoheisaFlg"/>
+		<result column="BYOSHO_SU" property="byoshoSu"/>
+		<result column="KYOKABYOSHO_MAINT_YMD" property="kyokabyoshoMaintYmd"/>
+		<result column="KYOKABYOSHOSU_SUM" property="kyokabyoshosuSum"/>
+		<result column="KYOKABYOSHOSU_SEISHIN" property="kyokabyoshosuSeishin"/>
+		<result column="KYOKABYOSHOSU_KEKKAKU" property="kyokabyoshosuKekkaku"/>
+		<result column="KYOKABYOSHOSU_KANSEN" property="kyokabyoshosuKansen"/>
+		<result column="KYOKABYOSHOSU_OTHER" property="kyokabyoshosuOther"/>
+		<result column="KYOKABYOSHOSU_IPPAN" property="kyokabyoshosuIppan"/>
+		<result column="KYOKABYOSHOSU_RYOYO" property="kyokabyoshosuRyoyo"/>
+		<result column="KENSA_BISEIBUTSU" property="kensaBiseibutsu"/>
+		<result column="KENSA_KESSEI" property="kensaKessei"/>
+		<result column="KENSA_KETSUEKI" property="kensaKetsueki"/>
+		<result column="KENSA_BYORI" property="kensaByori"/>
+		<result column="KENSA_KISEICHU" property="kensaKiseichu"/>
+		<result column="KENSA_SEIKA" property="kensaSeika"/>
+		<result column="KENSA_RI" property="kensaRi"/>
+		<result column="TOKUYO_IMUSHITSU_CD" property="tokuyoImushitsuCd"/>
+		<result column="KANRI_YAKUZAISHI" property="kanriYakuzaishi"/>
+		<result column="KANRI_YAKUZAISHI_KANA" property="kanriYakuzaishiKana"/>
+		<result column="CHAIN_HONBU_CD" property="chainHonbuCd"/>
+		<result column="SHUSEI_KBN" property="shuseiKbn"/>
+		<result column="MAINT_YMD" property="maintYmd"/>
+		<result column="TENSO_YMD" property="tensoYmd"/>
+		<result column="INS_SHA_YMD" property="insShaYmd"/>
+		<result column="INS_SHA_ID" property="insShaId"/>
+		<result column="UPD_SHA_YMD" property="updShaYmd"/>
+		<result column="UPD_SHA_ID" property="updShaId"/>
+	</resultMap>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmMMdbHcoMstEntity" resultMap="TRdmMMdbHcoMstResultMap">
+		SELECT
+			MDB_KBN, DCF_SHISETSU_CD, MIKAKUNIN_FLG, SAKUJYO_YOTEI_RIYU_CD, CHOUFUKU_AITESAKI_CD, SHISETSU_NM, SHISETSU_NM_SRCH, SHISETSU_NM_KANA, SHISETSU_NM_KANA_SRCH, SHISETSU_NM_RYAKU, SHISETSU_NM_RYAKU_KANA, ADDRESSFUMEI_CD, TODOFUKEN_CD, SHIKUCHOSON_CD, OAZA_TSUSHO_CD, AZA_CHOME_CD, YUBIN_NO, ADDRESS, ADDRESS_SRCH, ADDRESS_KANA, ADDRESS_KANA_SRCH, ADDRESSHYOJI_NO, TODOFUKEN_CNT, SHIKUCHOSON_CNT, OAZA_TSUSHO_CNT, AZA_CHOME_CNT, TODOFUKEN_KANA_CNT, SHIKUCHOSON_KANA_CNT, OAZA_TSUSHO_KANA_CNT, AZA_CHOME_KANA_CNT, TELNASHI_FLG, SHISETSU_TEL, SHISETSU_TEL_SRCH, KEIEITAI_CD, SHISETSU_KBN, SHISETSU_DAIHYO_CD, SHISETSU_DAIHYO_NM, SHISETSU_DAIHYO_KANA, KAIGYOYOTEI_FLG, KAIGYO_YM, KYUIN_FLG, KYUIN_YM, SHINRYOKAMOKU_CD1, SHINRYOKAMOKU_CD2, SHINRYOKAMOKU_CD3, SHINRYOKAMOKU_CD4, SHINRYOKAMOKU_CD5, SHINRYOKAMOKU_CD6, SHINRYOKAMOKU_CD7, SHINRYOKAMOKU_CD8, SHINRYOKAMOKU_CD9, SHINRYOKAMOKU_CD10, SHINRYOKAMOKU_CD11, SHINRYOKAMOKU_CD12, SHINRYOKAMOKU_CD13, SHINRYOKAMOKU_CD14, SHINRYOKAMOKU_CD15, SHINRYOKAMOKU_CD16, SHINRYOKAMOKU_CD17, SHINRYOKAMOKU_CD18, SHINRYOKAMOKU_CD19, SHINRYOKAMOKU_CD20, SHINRYOKAMOKU_CD21, SHINRYOKAMOKU_CD22, SHINRYOKAMOKU_CD23, SHINRYOKAMOKU_CD24, SHINRYOKAMOKU_CD25, SHINRYOKAMOKU_CD26, SHINRYOKAMOKU_CD27, SHINRYOKAMOKU_CD28, SHINRYOKAMOKU_CD29, SHINRYOKAMOKU_CD30, SHINRYOKAMOKU_CD31, SHINRYOKAMOKU_CD32, SHINRYOKAMOKU_CD33, SHINRYOKAMOKU_CD34, SHINRYOKAMOKU_CD35, SHINRYOKAMOKU_CD36, SHINRYOKAMOKU_CD37, SHINRYOKAMOKU_CD38, SHINRYOKAMOKU_CD39, SHINRYOKAMOKU_CD40, SHINRYOKAMOKU_CD41, SHINRYOKAMOKU_CD42, SHINRYOKAMOKU_CD43, SHINRYOKAMOKU_CD44, SHINRYOKAMOKU_CD45, SHINRYOKAMOKU_CD46, SHINRYOKAMOKU_CD47, SHINRYOKAMOKU_CD48, SHINRYOKAMOKU_CD49, SHINRYOKAMOKU_CD50, SHINRYOKAMOKU_CD51, SHINRYOKAMOKU_CD52, SHINRYOKAMOKU_CD53, SHINRYOKAMOKU_CD54, SHINRYOKAMOKU_CD55, SHINRYOKAMOKU_CD56, SHINRYOKAMOKU_CD57, SHINRYOKAMOKU_CD58, SHINRYOKAMOKU_CD59, SHINRYOKAMOKU_CD60, BYOIN_SHUBETSU_CD, SAISHINSA_KBN, KANRENDAIGAKU_OYA_CD, BYOTOHEISA_FLG, BYOSHO_SU, KYOKABYOSHO_MAINT_YMD, KYOKABYOSHOSU_SUM, KYOKABYOSHOSU_SEISHIN, KYOKABYOSHOSU_KEKKAKU, KYOKABYOSHOSU_KANSEN, KYOKABYOSHOSU_OTHER, KYOKABYOSHOSU_IPPAN, KYOKABYOSHOSU_RYOYO, KENSA_BISEIBUTSU, KENSA_KESSEI, KENSA_KETSUEKI, KENSA_BYORI, KENSA_KISEICHU, KENSA_SEIKA, KENSA_RI, TOKUYO_IMUSHITSU_CD, KANRI_YAKUZAISHI, KANRI_YAKUZAISHI_KANA, CHAIN_HONBU_CD, SHUSEI_KBN, MAINT_YMD, TENSO_YMD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+			T_RDM_M_MDB_HCO_MST
+		WHERE
+			MDB_KBN = #{mdbKbn}
+        AND DCF_SHISETSU_CD = #{dcfShisetsuCd}
+    </select>
+    <select id="selectNF011InsDelChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmMMdbHcoMstEntity" resultMap="TRdmMMdbHcoMstResultMap">
+		SELECT
+		  HCO.DCF_SHISETSU_CD  -- ULT_MDB施設マスタ.DCF施設コード
+		FROM
+		T_RDM_M_MDB_HCO_MST HCO -- ULT_MDB施設マスタ
+		WHERE 1=1
+        AND HCO.DCF_SHISETSU_CD = #{dcfShisetsuCd}
+        AND HCO.BYOTOHEISA_FLG = '1'
+    </select>
+    <select id="selectNF012InsDelChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmMMdbHcoMstEntity" resultMap="TRdmMMdbHcoMstResultMap">
+		SELECT
+		MST.INS_NO
+		FROM
+		M_RDM_HCO_MST MST	-- 施設_基本情報
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST HCO -- ULT_MDB施設マスタ
+		ON 1=1
+		AND HCO.DCF_SHISETSU_CD = MST.ULT_INS_NO
+		WHERE 1=1
+        AND MST.INS_NO = #{insNo}
+        AND HCO.BYOTOHEISA_FLG = '1'
+    </select>
+</mapper>

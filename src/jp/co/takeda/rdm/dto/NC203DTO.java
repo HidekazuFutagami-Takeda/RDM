@@ -56,6 +56,16 @@ public class NC203DTO extends BaseDTO implements Serializable {
      */
     private String callBack;
 
+    /**
+     * 最大表示件数（エラーチェック用）
+     */
+    private Integer maxPageCnt;
+
+    /**
+     * 検索結果件数（エラーチェック用）
+     */
+    private Integer pageCnt;
+
 	/**
      * 親画面名
      * @generated
@@ -164,6 +174,12 @@ public class NC203DTO extends BaseDTO implements Serializable {
     private boolean koshisetsuCheck;
 
     /**
+     * 検索条件_子施設を除く
+     * @generated
+     */
+    private boolean kensakuBool;
+
+    /**
      * 住所
      * @generated
      */
@@ -180,6 +196,12 @@ public class NC203DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private String kensakuAddrCodeCity;
+
+    /**
+	 * メッセージ中身
+	 * @generated
+	 */
+	private String msgStr;
 
 	/**
      * 検索条件_test
@@ -826,6 +848,22 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * ND011DTO.javamsgStrを設定
+	 * @return msgStr
+	 */
+	public String getMsgStr() {
+		return msgStr;
+	}
+
+	/**
+	 * @param msgStr セットする msgStr
+	 */
+	public void setMsgStr(String msgStr) {
+		this.msgStr = msgStr;
+	}
+
+
+	/**
 	 * NC203DTO.javasortConditionを設定
 	 * @return sortCondition
 	 */
@@ -853,6 +891,51 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	 */
 	public void setInSortId(String inSortId) {
 		this.inSortId = inSortId;
+	}
+
+	/**
+	 * NC203DTO.javakensakuBoolを設定
+	 * @return kensakuBool
+	 */
+	public boolean isKensakuBool() {
+		return kensakuBool;
+	}
+
+	/**
+	 * @param kensakuBool セットする kensakuBool
+	 */
+	public void setKensakuBool(boolean kensakuBool) {
+		this.kensakuBool = kensakuBool;
+	}
+
+	/**
+	 * NC203DTO.javamaxPageCntを設定
+	 * @return maxPageCnt
+	 */
+	public Integer getMaxPageCnt() {
+		return maxPageCnt;
+	}
+
+	/**
+	 * @param maxPageCnt セットする maxPageCnt
+	 */
+	public void setMaxPageCnt(Integer maxPageCnt) {
+		this.maxPageCnt = maxPageCnt;
+	}
+
+	/**
+	 * NC203DTO.javapageCntを設定
+	 * @return pageCnt
+	 */
+	public Integer getPageCnt() {
+		return pageCnt;
+	}
+
+	/**
+	 * @param pageCnt セットする pageCnt
+	 */
+	public void setPageCnt(Integer pageCnt) {
+		this.pageCnt = pageCnt;
 	}
 
 	/**

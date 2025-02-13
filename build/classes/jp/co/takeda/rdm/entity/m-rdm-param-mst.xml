@@ -21,6 +21,16 @@
         <result column="PARAM_NAME" property="paramName"/>
         <result column="VALUE" property="value"/>
     </resultMap>
+    <resultMap id="selectParamNd001ResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamNd001Entity">
+        <result column="PARAM_NAME" property="paramName"/>
+        <result column="VALUE" property="value"/>
+    </resultMap>
+    <resultMap id="selectParamSwitchResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity">
+        <result column="SHINKI_FLG" property="shinkiFlg"/>
+        <result column="HENSHU_FLG" property="henshuFlg"/>
+        <result column="SAKUJO_FLG" property="sakujoFlg"/>
+        <result column="FUKKATSU_FLG" property="fukkatsuFlg"/>
+    </resultMap>
     <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmParamMstEntity" resultMap="mRdmParamMstResultMap">
         SELECT
 			PARAM_KANJ, PARAM_NAME, VALUE_KANJ, VALUE, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -48,7 +58,7 @@
             PARAM_NAME in ('MAX_ROWNUM', 'NC203_ROWNUM')
         ORDER BY PARAM_NAME
     </select>
-       <select id="selectParamNc011" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNC011Entity" resultMap="selectParamNC011ResultMap">
+       <select id="selectParamNC011" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNC011Entity" resultMap="selectParamNC011ResultMap">
         SELECT
             PARAM_NAME, VALUE
         FROM
@@ -56,5 +66,27 @@
         WHERE
             PARAM_NAME in ('MAX_ROWNUM', 'NC011_ROWNUM')
         ORDER BY PARAM_NAME
+    </select>
+   <select id="selectParamNd001" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNd001Entity" resultMap="selectParamNd001ResultMap">
+        SELECT
+            PARAM_NAME, VALUE
+        FROM
+            ORAUSR01.M_RDM_PARAM_MST
+        WHERE
+            PARAM_NAME in ('MAX_ROWNUM', 'ND001_ROWNUM')
+        ORDER BY PARAM_NAME
+    </select>
+    <select id="selectParamSwitch" parameterType="jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity" resultMap="selectParamSwitchResultMap">
+        SELECT
+            SUBSTR(VALUE,1,1) SHINKI_FLG
+           ,SUBSTR(VALUE,2,1) HENSHU_FLG
+           ,SUBSTR(VALUE,3,1) SAKUJO_FLG
+           <if test="inParamName == 1">
+           ,SUBSTR(VALUE,4,1) FUKKATSU_FLG
+           </if>
+        FROM ORAUSR01.M_RDM_PARAM_MST
+        WHERE 1 = 1
+        <if test="inParamName == 1">AND PARAM_NAME = 'MN_DOC'</if>
+        <if test="inParamName == 2">AND PARAM_NAME = 'MN_KMU'</if>
     </select>
 </mapper>

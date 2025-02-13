@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_hco_oyako">
+	<resultMap id="mRdmHcoOyakoResultMap" type="jp.co.takeda.rdm.entity.join.MRdmHcoOyakoEntity">
+        <result column="TRT_CD" property="trtCd"/>
+        <result column="HIN_G_CD" property="hinGCd"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="MAIN_INS_NO" property="mainInsNo"/>
+        <result column="MAIN_INS_FLG" property="mainInsFlg"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <resultMap id="lnkTrtDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectLnkTrtDataEntity">
+        <result column="TRT_GRP_CD" property="trtGrpCd"/>
+        <result column="TRT_CD" property="trtCd"/>
+        <result column="TRT_NM" property="trtNm"/>
+        <result column="HIN_G_CD" property="hinGCd"/>
+        <result column="HIN_G_NAME" property="hinGName"/>
+        <result column="HO_INS_TYPE" property="hoInsType"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_ADDR" property="insAddr"/>
+        <result column="JGI_NAME" property="jgiName"/>
+    </resultMap>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcoOyakoEntity" resultMap="mRdmHcoOyakoResultMap">
+        SELECT
+            TRT_CD, HIN_G_CD, INS_NO, MAIN_INS_NO, MAIN_INS_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_HCO_OYAKO
+        <where>
+        	<if test="trtCd != null">AND TRT_CD = #{trtCd}</if>
+			<if test="hinGCd != null">AND HIN_G_CD = #{hinGCd}</if>
+			<if test="insNo != null">AND INS_NO = #{insNo}</if>
+			<if test="mainInsNo != null">AND MAIN_INS_NO = #{mainInsNo}</if>
+			<if test="mainInsFlg != null">AND MAIN_INS_FLG = #{mainInsFlg}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <select id="selectLnkTrtData" parameterType="jp.co.takeda.rdm.entity.join.SelectLnkTrtDataEntity" resultMap="lnkTrtDataResultMap">
+		WITH TRT_PRD_G AS (
+			SELECT
+			  TRT.TRT_GRP_CD
+			, TRT.TRT_CD
+			, TRT_NM
+			, PRD.HIN_G_CD
+			, PRD.HIN_G_NAME
+			, MIN(TRT.DISP_SORT) AS TRT_DISP_SORT
+			, MIN(PRD.DISP_SORT) AS PRD_DISP_SORT
+			FROM
+			M_RDM_COM_CAL_USR CAL	-- RDM用カレンダー(オンライン用)
+			LEFT JOIN
+			S_RDM_COM_LNK_TRT_PRDGRP_PRD PRD	-- 領域別品目グループ品目
+			ON 1=1
+			AND PRD.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+			AND PRD.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+			LEFT JOIN
+			S_RDM_COM_LNK_TRTGRP_TRT TRT	-- 領域グループ・領域関連定義
+			ON 1=1
+			AND TRT.TRT_CD = PRD.TRT_CD
+			AND TRT.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+			AND TRT.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+			WHERE 1=1
+			AND CAL.TODAY = '1'
+			GROUP BY
+			  TRT.TRT_GRP_CD
+			, TRT.TRT_CD
+			, TRT_NM
+			, PRD.HIN_G_CD
+			, PRD.HIN_G_NAME
+
+			UNION
+
+			SELECT
+			  'Z'
+			, '00'
+			, '-'
+			, 'Z'
+			, '武田紐'
+			, 0
+			, 0
+			FROM
+			M_RDM_COM_CAL_USR
+		)
+
+		SELECT
+		  NVL(TRT_PRD_G.TRT_NM, '-') AS TRT_NM
+		, NVL(TRT_PRD_G.HIN_G_NAME, '-') AS HIN_G_NAME
+		, NVL(MST.INS_ABBR_NAME, '-') AS INS_ABBR_NAME
+		, NVL(CDM_HOINSTYPE.VALUE1_KANJ, '-') AS HO_INS_TYPE
+		, NVL(MST.INS_ADDR, '-') AS INS_ADDR
+		, NVL(JGI.JGI_NAME, '-') AS JGI_NAME
+		FROM
+		M_RDM_HCO_OYAKO OYAKO	-- 施設_領域別親子情報
+		LEFT JOIN
+		M_RDM_HCO_MST MST	-- 施設_基本情報
+		ON 1=1
+		AND MST.INS_NO = OYAKO.MAIN_INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_HOINSTYPE -- コード情報
+		ON 1=1
+		AND CDM_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
+		AND CDM_HOINSTYPE.DEL_FLG = '0'
+		AND CDM_HOINSTYPE.VALUE1 = MST.HO_INS_TYPE
+		LEFT JOIN
+		TRT_PRD_G -- サブクエリ（領域・品目グループ）
+		ON 1=1
+		AND	TRT_PRD_G.TRT_CD = OYAKO.TRT_CD
+		AND TRT_PRD_G.HIN_G_CD = OYAKO.HIN_G_CD
+		LEFT JOIN
+		M_RDM_JKR_MR_INS_TRT MR -- RDM用施設担当者情報
+		ON 1=1
+		AND MR.INS_NO = OYAKO.MAIN_INS_NO
+		AND MR.TRT_GRP_CD = TRT_PRD_G.TRT_GRP_CD
+		AND MR.TRT_CD = TRT_PRD_G.TRT_CD
+		AND MR.MAIN_MR = '0'
+		LEFT JOIN
+		M_RDM_JGI_SOS_MST JGI -- RDM用組織従業員情報
+		ON 1=1
+		AND JGI.JGI_NO = MR.JGI_NO
+		WHERE 1=1
+		AND OYAKO.INS_NO = #{inInsNo}
+		ORDER BY
+		  TRT_PRD_G.TRT_DISP_SORT ASC
+		, TRT_PRD_G.PRD_DISP_SORT ASC
+    </select>
+    <select id="selectTrtPrdComboData" parameterType="jp.co.takeda.rdm.entity.join.SelectLnkTrtDataEntity" resultMap="lnkTrtDataResultMap">
+		WITH OYAKO AS (
+			SELECT
+			  OYAKO.TRT_CD || OYAKO.HIN_G_CD AS TRT_PRD_CD
+			FROM
+			M_RDM_HCO_OYAKO OYAKO	-- 施設_領域別親子情報
+			WHERE 1=1
+			AND OYAKO.INS_NO = #{inInsNo}
+		)
+
+		SELECT
+		  TRT_GRP_CD
+		, TRT_CD
+		, TRT_NM
+		, HIN_G_CD
+		, HIN_G_NAME
+		, TRT_DISP_SORT
+		, PRD_DISP_SORT
+		FROM (
+		SELECT
+		  TRT.TRT_GRP_CD
+		, PRD.TRT_CD
+		, TRT.TRT_NM
+		, PRD.HIN_G_CD
+		, PRD.HIN_G_NAME
+		, MIN(TRT.DISP_SORT) AS TRT_DISP_SORT
+		, MIN(PRD.DISP_SORT) AS PRD_DISP_SORT
+		FROM
+		M_RDM_COM_CAL_USR CAL	-- RDM用カレンダー(オンライン用)
+		LEFT JOIN
+		S_RDM_COM_LNK_TRT_PRDGRP_PRD PRD	-- 領域別品目グループ品目
+		ON 1=1
+		AND PRD.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+		AND PRD.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+		LEFT JOIN
+		S_RDM_COM_LNK_TRTGRP_TRT TRT	-- 領域グループ・領域関連定義
+		ON 1=1
+		AND TRT.TRT_CD = PRD.TRT_CD
+		AND TRT.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+		AND TRT.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+		WHERE 1=1
+		AND CAL.TODAY = '1'
+		<if test="inTrtCd != null">AND PRD.TRT_CD = #{inTrtCd}</if>
+		AND PRD.TRT_CD || PRD.HIN_G_CD NOT IN (SELECT TRT_PRD_CD FROM OYAKO)
+		GROUP BY
+		  TRT.TRT_GRP_CD
+		, PRD.TRT_CD
+		, TRT.TRT_NM
+		, PRD.HIN_G_CD
+		, PRD.HIN_G_NAME
+		) GRP
+		ORDER BY
+		  TRT_DISP_SORT ASC
+		, PRD_DISP_SORT ASC
+    </select>
+</mapper>

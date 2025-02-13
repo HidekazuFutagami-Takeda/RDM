@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_rdm_hco_lnk_req">
+    <resultMap id="tRdmHcoLnkReqResultMap" type="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity">
+        <result column="REQ_ID" property="reqId"/>
+		<result column="TRT_CD" property="trtCd"/>
+		<result column="HIN_G_CD" property="hinGCd"/>
+		<result column="INS_NO" property="insNo"/>
+		<result column="MAIN_INS_NO_BF" property="mainInsNoBf"/>
+		<result column="MAIN_INS_FLG_BF" property="mainInsFlgBf"/>
+		<result column="INS_SBT_BF" property="insSbtBf"/>
+		<result column="MAIN_INS_NO_AF" property="mainInsNoAf"/>
+		<result column="MAIN_INS_FLG_AF" property="mainInsFlgAf"/>
+		<result column="INS_SBT_AF" property="insSbtAf"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity">
+        INSERT INTO
+            T_RDM_HCO_LNK_REQ(<trim suffixOverrides=",">REQ_ID,<if test="trtCd != null">TRT_CD,</if><if test="hinGCd != null">HIN_G_CD,</if><if test="insNo != null">INS_NO,</if><if test="mainInsNoBf != null">MAIN_INS_NO_BF,</if><if test="mainInsFlgBf != null">MAIN_INS_FLG_BF,</if><if test="insSbtBf != null">INS_SBT_BF,</if><if test="mainInsNoAf != null">MAIN_INS_NO_AF,</if><if test="mainInsFlgAf != null">MAIN_INS_FLG_AF,</if><if test="insSbtAf != null">INS_SBT_AF,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{reqId},<if test="trtCd != null">#{trtCd},</if><if test="hinGCd != null">#{hinGCd},</if><if test="insNo != null">#{insNo},</if><if test="mainInsNoBf != null">#{mainInsNoBf},</if><if test="mainInsFlgBf != null">#{mainInsFlgBf},</if><if test="insSbtBf != null">#{insSbtBf},</if><if test="mainInsNoAf != null">#{mainInsNoAf},</if><if test="mainInsFlgAf != null">#{mainInsFlgAf},</if><if test="insSbtAf != null">#{insSbtAf},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity" resultMap="tRdmHcoLnkReqResultMap">
+        SELECT
+            REQ_ID, TRT_CD, HIN_G_CD, INS_NO, MAIN_INS_NO_BF, MAIN_INS_FLG_BF, INS_SBT_BF, MAIN_INS_NO_AF, MAIN_INS_FLG_AF, INS_SBT_AF, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_HCO_LNK_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </select>
+	<select id="selectNF211TrtChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity" resultMap="tRdmHcoLnkReqResultMap">
+		SELECT
+		  HCO.REQ_ID  -- 領域品目グループ別親子_申請管理.申請ID
+		FROM
+		T_RDM_HCO_LNK_REQ HCO --- 領域品目グループ別親子_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		AND KNR.REQ_TYPE IN ('11', '12')
+		AND KNR.REQ_STS IN ('03','13','04','14')
+		WHERE 1=1
+        AND HCO.INS_NO = #{insNo}
+        AND HCO.TRT_CD = #{trtCd}
+        AND HCO.HIN_G_CD = #{hinGCd}
+        <if test="reqId != null">AND HCO.REQ_ID <![CDATA[<>]]> #{reqId}</if>
+    </select>
+    <select id="selectNF212TrtChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity" resultMap="tRdmHcoLnkReqResultMap">
+		SELECT
+		  HCO.REQ_ID  -- 領域品目グループ別親子_申請管理.申請ID
+		FROM
+		T_RDM_HCO_LNK_REQ HCO --- 領域品目グループ別親子_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		AND KNR.REQ_TYPE IN ('11', '12', '13')
+		AND KNR.REQ_STS IN ('03','13','04','14')
+		WHERE 1=1
+        AND HCO.INS_NO = #{insNo}
+        AND HCO.TRT_CD = #{trtCd}
+        AND HCO.HIN_G_CD = #{hinGCd}
+        <if test="reqId != null">AND HCO.REQ_ID <![CDATA[<>]]> #{reqId}</if>
+    </select>
+    <update id="updateNF211Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkNxtReqEntity">
+        UPDATE
+            T_RDM_HCO_LNK_REQ
+        SET
+        	TRT_CD = #{trtCd},
+			HIN_G_CD = #{hinGCd},
+			MAIN_INS_NO_AF = #{mainInsNoAf},
+			INS_SBT_AF = #{insSbtAf},
+			UPD_SHA_YMD = #{updShaYmd},
+			UPD_SHA_ID = #{updShaId}
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <select id="selectNF313TrtChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity" resultMap="tRdmHcoLnkReqResultMap">
+		SELECT
+		  HCO.REQ_ID  -- 領域品目グループ別親子_申請管理.申請ID
+		FROM
+		T_RDM_HCO_LNK_REQ HCO --- 領域品目グループ別親子_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		AND KNR.REQ_TYPE IN ('11')
+		AND KNR.REQ_STS IN ('03','13','04','14')
+		WHERE 1=1
+        AND HCO.INS_NO = #{insNo}
+        AND HCO.TRT_CD = #{trtCd}
+        AND HCO.HIN_G_CD = #{hinGCd}
+    </select>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkReqEntity">
+        DELETE FROM
+            T_RDM_HCO_LNK_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </delete>
+</mapper>

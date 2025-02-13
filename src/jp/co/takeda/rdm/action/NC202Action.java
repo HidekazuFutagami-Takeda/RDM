@@ -163,6 +163,7 @@ public class NC202Action extends BaseAction<NC202DTO> {
         // START UOC
         outdto.setForward(RdmConstantsData.SCREEN_ID_NC202_2);
         // END UOC
+        outdto.setForward("NC202_02");
         setNextDTO(outdto);
         return outdto.getForward();
     }

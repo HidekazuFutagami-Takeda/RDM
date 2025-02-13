@@ -9,12 +9,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
 import javax.inject.Named;
 
 import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NC203DTO;
 import jp.co.takeda.rdm.dto.InsData;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
@@ -52,6 +56,8 @@ public class NC203Service extends BaseService {
     @Transactional
     public BaseDTO init(NC203DTO indto) {
         BaseDTO outdto = indto;
+    	//1-1 権限判定
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
         // START UOC
         //検索部分ヘッダ（初期表示は表示しない=1）
         indto.setPageFlg(1);
@@ -79,6 +85,7 @@ public class NC203Service extends BaseService {
      */
     @Transactional
     public BaseDTO search(NC203DTO indto) {
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
         BaseDTO outdto = indto;
 
         outdto = this.list(indto);
@@ -160,7 +167,16 @@ public class NC203Service extends BaseService {
 
         selectParamSelectHcoList = dao.select(selectParamSelectHcoEntity);
 
+        if (checkInput(loginInfo, indto, selectParamSelectHcoEntity ,false)) {
+        	return outdto;
+        }
+
+        indto.setPageCnt(selectParamSelectHcoList.get(0).getCntHco());
+        indto.setMaxPageCnt(selectParamNc203List.get(0).getValue());
         indto.initPageInfo(indto.getPageCntCur(), selectParamSelectHcoList.get(0).getCntHco(), selectParamNc203List.get(1).getValue());
+        if (checkSearchResults(loginInfo, indto, false)) {
+        	return outdto;
+        }
 
         selectinsListEntity.setInOffset(indto.getLineCntStart() - 1);
         selectinsListEntity.setInLimit(selectParamNc203List.get(1).getValue());
@@ -440,6 +456,80 @@ public class NC203Service extends BaseService {
         // END UOC
         return outdto;
     }
+
+    /*
+	 * エラーありならtrueとし、エラーメッセージをmsgStrにセットする
+	 */
+
+
+	/*
+	 * １：必須入力チェック
+	 * エラーありならtrueとし、エラーメッセージをmsgStrにセットする
+	 */
+	public boolean checkInput(LoginInfo loginInfo, NC203DTO indto, SelectCntSelectHcoEntity selectParamSelectHcoEntity, boolean fullchkFlg) {
+
+		boolean errChk = false;
+		String msgStr = "";
+		String tmpMsgStr = "";
+
+        if (    StringUtils.isEmpty(selectParamSelectHcoEntity.getInsKanjiSrch())    &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getInsKanaSrch())     &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getKensakuHaiinKbn())      &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getKensakuDelFlg())        &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getInsNoSrch())    &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getUltNo()) &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getKensakuManageCd())       &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getKensakuHoInsType())     &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getKensakuInsSbt())        &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getPharmType())    &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getPhone1()) &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getInsPcode())     &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getKensakuAddrCodePref())     &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getKensakuAddrCodeCity())    &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getAddress())  &&
+        		BooleanUtils.isFalse(selectParamSelectHcoEntity.isKoshisetsuCheck())        &&
+        		StringUtils.isEmpty(selectParamSelectHcoEntity.getInSortId())
+        		) {
+			errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);// 検索条件を入力してください。
+			msgStr = msgStr + tmpMsgStr + "\n";
+
+        }
+		if (errChk) {// エラーありなのでメッセージをセットする
+			indto.setMsgStr(msgStr);
+		}
+        return errChk;
+	}
+
+	/*
+	 * ６：範囲チェック　
+	 * 検索結果件数
+	 * エラーありならtrueとし、エラーメッセージをmsgStrにセットする
+	 */
+	public boolean checkSearchResults(LoginInfo loginInfo, NC203DTO indto, boolean fullchkFlg) {
+
+		boolean errChk = false;
+		String msgStr = "";
+		String tmpMsgStr = "";
+
+		//６：範囲チェック　
+		//検索結果件数
+		int pageCnt = 0;
+		int maxPageCnt = 0;
+		pageCnt = indto.getPageCnt();
+		maxPageCnt = indto.getMaxPageCnt();
+		if (pageCnt > maxPageCnt) {
+			errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W002);// 検索結果が表示上限を超えています。検索条件を絞って再検索してください。
+			msgStr = msgStr + tmpMsgStr + "\n";
+		}
+		if (errChk) {// エラーありなのでメッセージをセットする
+			indto.setMsgStr(msgStr);
+		}
+		return errChk;
+	}
+
+
 
     /**
      * イベント処理

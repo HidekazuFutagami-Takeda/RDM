@@ -12,6 +12,8 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import jp.co.takeda.rdm.common.BaseEntity;
 
 
+
+
 /**
  * 結合Entityクラス
  * テーブル物理名 : T_RDM_HCP_KMU_REQ KMU_REQ

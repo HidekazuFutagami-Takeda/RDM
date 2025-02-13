@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_code_mst">
+    <resultMap id="mRdmCodeMstResultMap" type="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity">
+        <result column="CODE_KANJ" property="codeKanj"/>
+        <result column="CODE_NAME" property="codeName"/>
+        <result column="VALUE1_KANJ" property="value1Kanj"/>
+        <result column="VALUE1" property="value1"/>
+        <result column="VALUE2_KANJ" property="value2Kanj"/>
+        <result column="VALUE2" property="value2"/>
+        <result column="VALUE3_KANJ" property="value3Kanj"/>
+        <result column="VALUE3" property="value3"/>
+        <result column="SORT_NUM" property="sortNum"/>
+        <result column="BIKO" property="biko"/>
+        <result column="DEL_FLG" property="delFlg"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <resultMap id="selectComboListResultMap" type="jp.co.takeda.rdm.entity.join.SelectComboListEntity">
+        <result column="VALUE1" property="value"/>
+        <result column="VALUE1_KANJ" property="valueKanji"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity" resultMap="mRdmCodeMstResultMap">
+        SELECT
+            CODE_KANJ, CODE_NAME, VALUE1_KANJ, VALUE1, VALUE2_KANJ, VALUE2, VALUE3_KANJ, VALUE3, SORT_NUM, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID        FROM
+            M_RDM_CODE_MST
+        WHERE
+            CODE_NAME = #{codeName} AND VALUE1 = #{value1}
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity" resultMap="mRdmCodeMstResultMap">
+        SELECT
+            CODE_KANJ, CODE_NAME, VALUE1_KANJ, VALUE1, VALUE2_KANJ, VALUE2, VALUE3_KANJ, VALUE3, SORT_NUM, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID        FROM
+            M_RDM_CODE_MST
+        WHERE
+            CODE_NAME = #{codeName} AND VALUE1 = #{value1}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity" resultMap="mRdmCodeMstResultMap">
+        SELECT
+            CODE_KANJ, CODE_NAME, VALUE1_KANJ, VALUE1, VALUE2_KANJ, VALUE2, VALUE3_KANJ, VALUE3, SORT_NUM, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_CODE_MST
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity" resultMap="mRdmCodeMstResultMap">
+        SELECT
+            CODE_KANJ, CODE_NAME, VALUE1_KANJ, VALUE1, VALUE2_KANJ, VALUE2, VALUE3_KANJ, VALUE3, SORT_NUM, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_CODE_MST
+        <where>
+            <if test="codeKanj != null">AND CODE_KANJ = #{codeKanj}</if>
+			<if test="codeName != null">AND CODE_NAME = #{codeName}</if>
+			<if test="value1Kanj != null">AND VALUE1_KANJ = #{value1Kanj}</if>
+			<if test="value1 != null">AND VALUE1 = #{value1}</if>
+			<if test="value2Kanj != null">AND VALUE2_KANJ = #{value2Kanj}</if>
+			<if test="value2 != null">AND VALUE2 = #{value2}</if>
+			<if test="value3Kanj != null">AND VALUE3_KANJ = #{value3Kanj}</if>
+			<if test="value3 != null">AND VALUE3 = #{value3}</if>
+			<if test="sortNum != null">AND SORT_NUM = #{sortNum}</if>
+			<if test="biko != null">AND BIKO = #{biko}</if>
+			<if test="delFlg != null">AND DEL_FLG = #{delFlg}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            M_RDM_CODE_MST
+        <where>
+            <if test="codeKanj != null">AND CODE_KANJ = #{codeKanj}</if>
+			<if test="codeName != null">AND CODE_NAME = #{codeName}</if>
+			<if test="value1Kanj != null">AND VALUE1_KANJ = #{value1Kanj}</if>
+			<if test="value1 != null">AND VALUE1 = #{value1}</if>
+			<if test="value2Kanj != null">AND VALUE2_KANJ = #{value2Kanj}</if>
+			<if test="value2 != null">AND VALUE2 = #{value2}</if>
+			<if test="value3Kanj != null">AND VALUE3_KANJ = #{value3Kanj}</if>
+			<if test="value3 != null">AND VALUE3 = #{value3}</if>
+			<if test="sortNum != null">AND SORT_NUM = #{sortNum}</if>
+			<if test="biko != null">AND BIKO = #{biko}</if>
+			<if test="delFlg != null">AND DEL_FLG = #{delFlg}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity">
+        INSERT INTO
+            M_RDM_CODE_MST(CODE_KANJ, CODE_NAME, VALUE1_KANJ, VALUE1, VALUE2_KANJ, VALUE2, VALUE3_KANJ, VALUE3, SORT_NUM, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID)
+        VALUES
+            (#{codeKanj}, #{codeName}, #{value1Kanj}, #{value1}, #{value2Kanj}, #{value2}, #{value3Kanj}, #{value3}, #{sortNum}, #{biko}, #{delFlg}, #{insShaYmd}, #{insShaId}, #{updShaYmd}, #{updShaId})
+    </insert>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity">
+        INSERT INTO
+            M_RDM_CODE_MST(<trim suffixOverrides=",">CODE_NAME,VALUE1,<if test="codeKanj != null">CODE_KANJ,</if><if test="value1Kanj != null">VALUE1_KANJ,</if><if test="value2 != null">VALUE2,</if><if test="value2Kanj != null">VALUE2_KANJ,</if><if test="sortNum != null">SORT_NUM,</if><if test="biko != null">BIKO,</if><if test="delFlg != null">DEL_FLG,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{codeName},#{value1},<if test="codeKanj != null">#{codeKanj},</if><if test="value1Kanj != null">#{value1Kanj},</if><if test="value2 != null">#{value2},</if><if test="value2Kanj != null">#{value2Kanj},</if><if test="value2 != null">#{value2},</if><if test="value3Kanj != null">#{value3Kanj},</if><if test="sortNum != null">#{sortNum},</if><if test="biko != null">#{biko},</if><if test="delFlg != null">#{delFlg},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity">
+        UPDATE
+            M_RDM_CODE_MST
+        SET
+            <trim suffixOverrides=","><if test="update.codeKanj != null">CODE_KANJ = #{update.codeKanj},</if><if test="update.codeKanj == null">CODE_KANJ = NULL,</if><if test="update.value1Kanj != null">VALUE1_KANJ = #{update.value1Kanj},</if><if test="update.value1Kanj == null">VALUE1_KANJ = NULL,</if><if test="update.value2Kanj != null">VALUE2_KANJ = #{update.value2Kanj},</if><if test="update.value2Kanj == null">VALUE2_KANJ = NULL,</if><if test="update.value2 != null">VALUE2 = #{update.value2},</if><if test="update.value2 == null">VALUE2 = NULL,</if><if test="update.value3Kanj != null">VALUE3_KANJ = #{update.value3Kanj},</if><if test="update.value3Kanj == null">VALUE3_KANJ = NULL,</if><if test="update.value3 != null">VALUE3 = #{update.value3},</if><if test="update.value3 == null">VALUE3 = NULL,</if><if test="update.sortNum != null">SORT_NUM = #{update.sortNum},</if><if test="update.sortNum == null">SORT_NUM = NULL,</if><if test="update.biko != null">BIKO = #{update.biko},</if><if test="update.biko == null">BIKO = NULL,</if><if test="update.delFlg != null">DEL_FLG = #{update.delFlg},</if><if test="update.delFlg == null">DEL_FLG = NULL,</if><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if><if test="update.insShaYmd == null">INS_SHA_YMD = NULL,</if><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if><if test="update.insShaId == null">INS_SHA_ID = NULL,</if><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if><if test="update.updShaYmd == null">UPD_SHA_YMD = NULL,</if><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if><if test="update.updShaId == null">UPD_SHA_ID = NULL,</if></trim>
+        WHERE
+            CODE_NAME = #{search.codeName} AND VALUE1 = #{search.value1}
+    </update>
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity">
+        UPDATE
+            M_RDM_CODE_MST
+        <set>
+			<if test="update.codeKanjNullFlag == true">CODE_KANJ = NULL,</if><if test="update.codeKanjNullFlag == false"><if test="update.codeKanj != null">CODE_KANJ = #{update.codeKanj},</if></if>
+			<if test="update.value1KanjNullFlag == true">VALUE1_KANJ = NULL,</if><if test="update.value1KanjNullFlag == false"><if test="update.value1Kanj != null">VALUE1_KANJ = #{update.value1Kanj},</if></if>
+			<if test="update.value2KanjNullFlag == true">VALUE2_KANJ = NULL,</if><if test="update.value2KanjNullFlag == false"><if test="update.value2Kanj != null">VALUE2_KANJ = #{update.value2Kanj},</if></if>
+			<if test="update.value2NullFlag == true">VALUE2 = NULL,</if><if test="update.value2NullFlag == false"><if test="update.value2 != null">VALUE2 = #{update.value2},</if></if>
+			<if test="update.value3KanjNullFlag == true">VALUE3_KANJ = NULL,</if><if test="update.value3KanjNullFlag == false"><if test="update.value3Kanj != null">VALUE3_KANJ = #{update.value3Kanj},</if></if>
+			<if test="update.value3NullFlag == true">VALUE3 = NULL,</if><if test="update.value3NullFlag == false"><if test="update.value3 != null">VALUE3 = #{update.value3},</if></if>
+			<if test="update.sortNumNullFlag == true">SORT_NUM = NULL,</if><if test="update.sortNumNullFlag == false"><if test="update.sortNum != null">SORT_NUM = #{update.sortNum},</if></if>
+			<if test="update.bikoNullFlag == true">BIKO = NULL,</if><if test="update.bikoNullFlag == false"><if test="update.biko != null">BIKO = #{update.biko},</if></if>
+			<if test="update.delFlgNullFlag == true">DEL_FLG = NULL,</if><if test="update.delFlgNullFlag == false"><if test="update.delFlg != null">DEL_FLG = #{update.delFlg},</if></if>
+			<if test="update.insShaYmdNullFlag == true">INS_SHA_YMD = NULL,</if><if test="update.insShaYmdNullFlag == false"><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if></if>
+			<if test="update.insShaIdNullFlag == true">INS_SHA_ID = NULL,</if><if test="update.insShaIdNullFlag == false"><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if></if>
+			<if test="update.updShaYmdNullFlag == true">UPD_SHA_YMD = NULL,</if><if test="update.updShaYmdNullFlag == false"><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if></if>
+			<if test="update.updShaIdNullFlag == true">UPD_SHA_ID = NULL,</if><if test="update.updShaIdNullFlag == false"><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if></if>
+        </set>
+        WHERE
+            CODE_NAME = #{search.codeName} AND VALUE1 = #{search.value1}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity">
+        DELETE FROM
+            M_RDM_CODE_MST
+        WHERE
+            CODE_NAME = #{codeName} AND VALUE1 = #{value1}
+    </delete>
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity">
+        DELETE FROM
+            M_RDM_CODE_MST
+        <where>
+            <if test="codeKanj != null">AND CODE_KANJ = #{codeKanj}</if>
+			<if test="codeName != null">AND CODE_NAME = #{codeName}</if>
+			<if test="value1Kanj != null">AND VALUE1_KANJ = #{value1Kanj}</if>
+			<if test="value1 != null">AND VALUE1 = #{value1}</if>
+			<if test="value2Kanj != null">AND VALUE2_KANJ = #{value2Kanj}</if>
+			<if test="value2 != null">AND VALUE2 = #{value2}</if>
+			<if test="value3Kanj != null">AND VALUE3_KANJ = #{value3Kanj}</if>
+			<if test="value3 != null">AND VALUE3 = #{value3}</if>
+			<if test="sortNum != null">AND SORT_NUM = #{sortNum}</if>
+			<if test="biko != null">AND BIKO = #{biko}</if>
+			<if test="delFlg != null">AND DEL_FLG = #{delFlg}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </delete>
+   <select id="selectComboList" parameterType="jp.co.takeda.rdm.entity.join.SelectComboListEntity" resultMap="selectComboListResultMap">
+        SELECT
+            VALUE1, VALUE1_KANJ
+        FROM
+            M_RDM_CODE_MST
+        WHERE
+            CODE_NAME = #{inCodeName}
+        AND DEL_FLG = '0'
+        ORDER BY
+            SORT_NUM, VALUE1
+    </select>
+</mapper>

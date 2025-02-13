@@ -82,11 +82,20 @@ function NC011Page( pageCntCur ){
   // 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);
 }
+function popClear(){
+	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	document.fm1.bumonRank.value = "";
+	document.fm1.sosCd.value = "";
+	document.fm1.bumonRyakuName.value = "";
+	document.fm1.brCode.value = "";
+	document.fm1.distCode.value = "";
+}
+
 function rdmCler(){
 	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	document.fm1.aDdrCodePref.value = "";
 	document.fm1.sbt.value = "";
-	document.fm1.reqShz.value = "";
+	document.fm1.bumonRyakuName.value = "";
 	document.fm1.insNo.value = "";
 	document.fm1.docNo.value = "";
 	document.fm1.reqJgiName.value = "";
@@ -120,96 +129,75 @@ function NC011Seni(reqType) {
 	  //申請区分遷移先設定
 	if(reqType == "01"){
 		alert("NF011_施設新規作成に遷移します")
-		gotoNext('NC011','Init');
+		gotoNext('NF011','Init');
 	}
 	if(reqType == "02"){
 		alert("NF012_施設情報更新に遷移します")
+		gotoNext('NF012','Init');
 	}
 	if(reqType == "03"){
 		alert("NF013_施設削除に遷移します")
+		gotoNext('NF013','Init');
 	}
 	if(reqType == "04"){
 		alert("NF014_施設復活に遷移します")
+		gotoNext('NF014','Init');
 	}
 	if(reqType == "11"){
 		alert("NF211_施設紐づけ作成に遷移します")
+		gotoNext('NF211','Init');
 	}
 	if(reqType == "12"){
 		alert("NF212_親施設の変更に遷移します")
+		gotoNext('NF212','Init');
 	}
 	if(reqType == "13"){
 		alert("NF213_施設紐づけの削除に遷移します")
+		gotoNext('NF213','Init');
 	}
 	if(reqType == "21"){
 		alert("NF101_施設来期情報更新に遷移します")
+		gotoNext('NF101','Init');
 	}
 	if(reqType == "31"){
 		alert("ND011_医師新規作成に遷移します")
+		gotoNext('ND011','Init');
 	}
 	if(reqType == "32"){
 		alert("ND012_医師情報更新に遷移します")
+		gotoNext('ND012','Init');
 	}
 	if(reqType == "33"){
 		alert("ND105_医師削除に遷移します")
+		gotoNext('ND015','Init');
 	}
 	if(reqType == "34"){
 		alert("ND014_医師復活に遷移します")
+		gotoNext('ND014','Init');
 	}
 	if(reqType == "41"){
 		alert("ND103_医師勤務先追加に遷移します")
+		//gotoNext('ND113','Init');
+		gotoNext('ND103','Init');
 	}
 	if(reqType == "42"){
 		alert("ND101_医療機関への異動に遷移します")
+		gotoNext('ND101','Init');
 	}
 	if(reqType == "43"){
 		alert("ND102_医療機関以外への異動に遷移します")
+		gotoNext('ND102','Init');
 	}
 	if(reqType == "44"){
 		alert("ND104_医師勤務先削除に遷移します")
+		gotoNext('ND104','Init');
+	}
+	if(reqType == "51"){
+		alert("ND013_勤務先情報更新に遷移します")
+		gotoNext('ND014','Init');
 	}
 }
 
-//function rdmSearch() {
-//	  // 変更内容破棄確認チェック
-//	  //if (!jkrDestructChack()) return false;
-//	  // 検索前チェック
-//	  if(jimChkBeforeSearch()) {
-//	    //現在ページ番号変更（遷移）
-//	    document.fm1.pageCntCur.value = 1;
-//	    document.fm1.sortCondition1.value = "";
-//	    document.fm1.sortCondition2.value = "";
-//	    // エラー一覧
-//	    if (document.fm1.gamenId.value == "NC011") {
-//	      document.fm1.screenId.value	= "NC011";
-//	      document.fm1.functionId.value = 'Search';
-//	    } else {
-//	      // 施設・領域別担当変更
-//	      if (document.fm1.searchDeveWay.value == "0") {
-//	        document.fm1.screenId.value	= "JKR040C010";
-//	        document.fm1.functionId.value = 'Search';
-//	      // 施設・特定品目別担当変更
-//	      } else if (document.fm1.searchDeveWay.value == "1") {
-//	        document.fm1.screenId.value	= "JKR040C030";
-//	        document.fm1.functionId.value = 'Search';
-//	      // 市区郡・領域別担当変更
-//	      } else {
-//	        document.fm1.screenId.value	= "JKR040C020";
-//	        document.fm1.functionId.value = 'Search';
-//	      }
-//	    }
-//
-//	    //選択された組織情報格納（表示押下前→表示押下後）
-//	    setTopChangedSos();
-//
-//	    //20150202 HISOL Suzuki 本番課題No.25対応 ADD START
-//	    //選択された組織情報格納（ポップアップ用）
-//	    setSearchSosCdPop();
-//	    //20150202 HISOL Suzuki 本番課題No.25対応 ADD END
-//
-//	    // 検索イベント呼び出し
-//	    comSubmitForAnyWarp(fm1);
-//	  }
-//	}
 
 /**
  * <pre>
@@ -283,6 +271,23 @@ function sosReqSbt(){
 			document.fm1.docType.style.backgroundColor = JKR_BG_COLOR_DISABLED;
 			document.fm1.jobForm.disabled = true;
 			document.fm1.jobForm.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.getElementById('jkrSosReqTypeMap').options[1].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[2].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[3].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[4].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[5].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[6].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[7].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[8].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[9].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[10].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[11].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[12].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[13].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[14].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[15].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[16].hidden=false;
+
 	 }
 
 	 if(val1 == '0'){
@@ -309,6 +314,23 @@ function sosReqSbt(){
 		document.fm1.insSbt.style.backgroundColor = JKR_BG_COLOR_NORMAL;
 		document.fm1.hoInsType.disabled = false;
 		document.fm1.hoInsType.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+
+		document.getElementById('jkrSosReqTypeMap').options[9].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[10].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[11].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[12].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[13].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[14].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[15].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[16].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[1].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[2].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[3].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[4].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[5].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[6].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[7].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[8].hidden=false;
 	 }
 	 if(val1 == '1'){
 		document.fm1.insNo.value = "";
@@ -335,6 +357,24 @@ function sosReqSbt(){
 		document.fm1.docType.style.backgroundColor = JKR_BG_COLOR_NORMAL;
 		document.fm1.jobForm.disabled = false;
 		document.fm1.jobForm.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+
+		document.getElementById('jkrSosReqTypeMap').options[1].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[2].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[3].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[4].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[5].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[6].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[7].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[8].hidden=true;
+
+		document.getElementById('jkrSosReqTypeMap').options[9].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[10].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[11].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[12].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[13].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[14].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[15].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[16].hidden=false;
 	 }
  	 //申請チャネル
       document.getElementById("jkrSosReqChlMap").value = "";
@@ -457,36 +497,27 @@ function tmpCallBackInsView(insNo) {
   }
 }
 
-/**
- * <pre>
- *  ポップアップウィンドウオブジェクトチェック関数
- * </pre>
- *  ポップアップ起動中にウィンドウが閉じられた時に
- *  ウィンドウオブジェクトがstring型に変更される場合があるため、
- *  ウィンドウオブジェクトの型をチェックしてJSエラーを回避します。
- *
- * @return true：正常,false：異常
- */
-function jimCheckPopUp() {
 
-  // 本画面で使用する全ポップアップウィンドウオブジェクトを対象にチェック
-  if(typeof(gCseViewFromWin) =='string') return false;  // 組織・従業員選択(組織・担当(現))
-  if(typeof(gCseViewToWin) =='string') return false;    // 組織・従業員選択(組織・担当(新))
-  if(typeof(gCseViewChgWin) =='string') return false;   // 組織従業員選択(変更担当者)
-  if(typeof(gCtcViewWin) =='string') return false;      // JIS府県武田市区郡選択
-  if(typeof(gCseViewToJgiWin) =='string') return false; // 従業員選択(新担当者)
-  if(typeof(gCseViewSosWin) =='string') return false;   // 従業員選択(組織)
-  if(typeof(gIiiViewWin) =='string') return false;      // 施設固定CD複数入力画面
-  if(typeof(gCpcViewWin) == 'string') return false;     // 品目選択
-  // 全ウィンドウが正常ならばtrue
-  return true;
+//戻るボタン
+function backBtn(){
+	document.fm1.target="";
+	const preScreenId = document.fm1.preScreenId.value;
+	if(preScreenId == "NC001"){
+		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			document.fm1.screenId.value = preScreenId;
+			document.fm1.functionId.value="Init";
+
+			comSubmitForAnyWarp(fm1);
+		}
+	} else if(preScreenId == "NM001"){
+		if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			document.fm1.screenId.value = preScreenId;
+			document.fm1.functionId.value="Init";
+
+			comSubmitForAnyWarp(fm1);
+		}
+	}
 }
-/**
- * <pre>
- * clear(リンク)押下時に呼ばれます。
- *@param name クリア項目名
- * </pre>
- */
 function jimClear( name ) {
   if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
   // 組織･担当(現)

@@ -17,12 +17,16 @@ var ND011_APPLICATION_ID = "ND011";
 var msgContent = ""; //確認メッセージ
 var gChsViewWin = null;        // 所属学会POPUP用
 var gChpViewWin = null;        // 公的機関POPUP用
+var gCdcViewWin = null;        // 出身所属部科/勤務先情報 所属部科POPUP用
+var gCseViewWin = null;        // 勤務先情報 施設POPUP用
+//var gCsdViewWin = null;        // 勤務先情報 所属部科POPUP用
+
 /**
  * ポップアップ選択行ID
  */
 var gChsViewSelId		= null;
 var gChpViewSelId		= null;
-
+var gCdcViewSelId		= null; // 出身所属部科/勤務先情報 所属部科判定用
 ///**
 // * <pre>
 // *  詳細 => 一覧
@@ -34,6 +38,29 @@ var gChpViewSelId		= null;
 //  document.fm0.functionId.value="View";
 //  comSubmit(fm0);
 //}
+
+/**
+ * <pre>
+ * clear(リンク)押下時に呼ばれます。
+ *@param name クリア項目名
+ * </pre>
+ */
+function nd011Clear( name ) {
+  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+  // 出身所属部科
+  if ( name == 'homeDept' ) {
+    document.fm1.homeDeptCd.value = "";
+    document.fm1.homeDeptNm.value = "";
+    // 勤務先情報 施設
+  } else if ( name == 'skIns' ) {
+    document.fm1.skInsNo.value = "";
+    document.fm1.skInsNm.value = "";
+  // 勤務先情報 所属部科
+  } else if ( name == 'skDept' ) {
+    document.fm1.skDeptCd.value = "";
+    document.fm1.skDeptNm.value = "";
+  }
+}
 
 /**
  * <pre>
@@ -69,26 +96,37 @@ function nd011Register(buttonFlg){
  * @param targetWinName	対象ウィンドウ名称
  */
 function hcpClosePopUp(targetWin,targetWinName){
-
   if(hcpCheckPopUp()){
+	  // 対象ポップアップが存在すればフォーカスを当てる
+	  if(targetWin != null){
+		  targetWin.focus();
+	  }
 
-    // 対象ポップアップが存在すればフォーカスを当てる
-    if(targetWin != null){
-      targetWin.focus();
-    }
-
-    // 所属学会編集ポップアップ
-    if(gChsViewWin != null && targetWinName != "gChsViewWin"){
-      gChsViewWin.close();
-      gChsViewWin = null;
-    }
-
-    // 公的機関編集ポップアップ
-    if(gChpViewWin != null && targetWinName != "gChpViewWin"){
-      gChpViewWin.close();
-      gChpViewWin = null;
-    }
-
+	  // 所属学会編集ポップアップ
+	  if(gChsViewWin != null && targetWinName != "gChsViewWin"){
+		  gChsViewWin.close();
+		  gChsViewWin = null;
+	  }
+	  // 公的機関編集ポップアップ
+	  if(gChpViewWin != null && targetWinName != "gChpViewWin"){
+		  gChpViewWin.close();
+		  gChpViewWin = null;
+	  }
+	  // 出身所属部科ポップアップ
+	  if(gCdcViewWin != null && targetWinName != "gCdcViewWin"){
+		  gCdcViewWin.close();
+		  gCdcViewWin = null;
+	  }
+	  // 勤務先情報 施設ポップアップ
+	  if(gCseViewWin != null && targetWinName != "gCseViewWin"){
+		  gCseViewWin.close();
+		  gCseViewWin = null;
+	  }
+//	  // 勤務先情報 所属部科ポップアップ
+//	  if(gCsdViewWin != null && targetWinName != "gCsdViewWin"){
+//		  gCsdViewWin.close();
+//		  gCsdViewWin = null;
+//	  }
   }
 }
 
@@ -107,6 +145,9 @@ function hcpCheckPopUp() {
   // 本画面で使用する全ポップアップウィンドウオブジェクトを対象にチェック
   if(typeof(gChsViewWin) == 'string') return false;     // 所属学会編集ポップアップ
   if(typeof(gChpViewWin) == 'string') return false;     // 公的機関編集ポップアップ
+  if(typeof(gCdcViewWin) == 'string') return false;     // 出身所属部科ポップアップ
+  if(typeof(gCseViewWin) == 'string') return false;     // 勤務先情報 施設ポップアップ
+//  if(typeof(gCsdViewWin) == 'string') return false;     // 勤務先情報 所属部科ポップアップ
   // 全ウィンドウが正常ならばtrue
   return true;
 }
@@ -273,7 +314,7 @@ function tmpChsView(newupdFlg,indexNo){
 
 /**
  * <pre>
- * 施設名_選択　コールバック関数。
+ * 所属学会　コールバック関数。
  * </pre>
  */
 function tmpCallBackChsView(hcpSocietyDataChgFlg,medicalSocietyNm
@@ -917,7 +958,7 @@ function tmpChpView(newupdFlg,indexNo){
 
 /**
  * <pre>
- * 施設名_選択　コールバック関数。
+ * 公的機関　コールバック関数。
  * </pre>
  */
 function tmpCallBackChpView(hcpPublicDataChgFlg,classCategoryCdPop,classCategoryNmPop,pubInstitutionCdPop,pubInstitutionNmPop,pubInstPositionCdPop,pubInstPositionNmPop
@@ -925,12 +966,12 @@ function tmpCallBackChpView(hcpPublicDataChgFlg,classCategoryCdPop,classCategory
 		,pubInstposStYYYYPop,pubInstposStMMPop,pubInstposStDDPop,pubInstposEdYYYYPop,pubInstposEdMMPop,pubInstposEdDDPop
 ){
 	if(hcpPublicDataChgFlg == "0"){
-		CallBackToNewHcpSocRow(classCategoryCdPop,classCategoryNmPop,pubInstitutionCdPop,pubInstitutionNmPop,pubInstPositionCdPop,pubInstPositionNmPop
+		CallBackToNewHcpPubRow(classCategoryCdPop,classCategoryNmPop,pubInstitutionCdPop,pubInstitutionNmPop,pubInstPositionCdPop,pubInstPositionNmPop
 				,pubInstStYYYYPop,pubInstStMMPop,pubInstStDDPop,pubInstEdYYYYPop,pubInstEdMMPop,pubInstEdDDPop
 				,pubInstposStYYYYPop,pubInstposStMMPop,pubInstposStDDPop,pubInstposEdYYYYPop,pubInstposEdMMPop,pubInstposEdDDPop
 		);
 	}else{
-		CallBackToUpdHcpSocRow(gChpViewSelId,classCategoryCdPop,classCategoryNmPop,pubInstitutionCdPop,pubInstitutionNmPop,pubInstPositionCdPop,pubInstPositionNmPop
+		CallBackToUpdHcpPubRow(gChpViewSelId,classCategoryCdPop,classCategoryNmPop,pubInstitutionCdPop,pubInstitutionNmPop,pubInstPositionCdPop,pubInstPositionNmPop
 				,pubInstStYYYYPop,pubInstStMMPop,pubInstStDDPop,pubInstEdYYYYPop,pubInstEdMMPop,pubInstEdDDPop
 				,pubInstposStYYYYPop,pubInstposStMMPop,pubInstposStDDPop,pubInstposEdYYYYPop,pubInstposEdMMPop,pubInstposEdDDPop
 		);
@@ -942,7 +983,7 @@ function tmpCallBackChpView(hcpPublicDataChgFlg,classCategoryCdPop,classCategory
  *@param POPUPで設定された値
  *@param indexNo	選択行番号
  */
-function CallBackToUpdHcpSocRow(indexNo,classCategoryCdPop,classCategoryNmPop,pubInstitutionCdPop,pubInstitutionNmPop,pubInstPositionCdPop,pubInstPositionNmPop
+function CallBackToUpdHcpPubRow(indexNo,classCategoryCdPop,classCategoryNmPop,pubInstitutionCdPop,pubInstitutionNmPop,pubInstPositionCdPop,pubInstPositionNmPop
 		,pubInstStYYYYPop,pubInstStMMPop,pubInstStDDPop,pubInstEdYYYYPop,pubInstEdMMPop,pubInstEdDDPop
 		,pubInstposStYYYYPop,pubInstposStMMPop,pubInstposStDDPop,pubInstposEdYYYYPop,pubInstposEdMMPop,pubInstposEdDDPop
 ){
@@ -1017,7 +1058,7 @@ function CallBackToUpdHcpSocRow(indexNo,classCategoryCdPop,classCategoryNmPop,pu
  * 公的機関編集画面(新規)からの戻り。
  *@param POPUPで設定された値
  */
-function CallBackToNewHcpSocRow(classCategoryCd,classCategoryNm,pubInstitutionCd,pubInstitutionNm,pubInstPositionCd,pubInstPositionNm
+function CallBackToNewHcpPubRow(classCategoryCd,classCategoryNm,pubInstitutionCd,pubInstitutionNm,pubInstPositionCd,pubInstPositionNm
 		,pubInstStYYYY,pubInstStMM,pubInstStDD,pubInstEdYYYY,pubInstEdMM,pubInstEdDD
 		,pubInstposStYYYY,pubInstposStMM,pubInstposStDD,pubInstposEdYYYY,pubInstposEdMM,pubInstposEdDD
 ){
@@ -1222,4 +1263,75 @@ function CallBackToNewHcpSocRow(classCategoryCd,classCategoryNm,pubInstitutionCd
 	return false;
 }
 
+/**
+ * 所属部科POPUP画面を呼び出します。
+ *
+ */
+function tmpCdcView(index){
 
+// 2度押し対策
+  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+  //index 0:出身所属部科,1:勤務先情報 所属部科
+  gCdcCsdViewSelId = index;
+  // 全てのポップアップを閉じる
+  hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
+
+ // パラメータの設定
+  if(gCdcCsdViewSelId == "0") {
+     document.fm1.cdcCheckedCodes.value = "";
+     document.fm1.paramInsNo.value = "";
+  } else if (gCdcCsdViewSelId == "1") {
+     document.fm1.cdcCheckedCodes.value = "";
+     document.fm1.paramInsNo.value = document.fm1.skInsNo.value;
+  } else {//ここにはこない
+  }
+  document.fm1.backScreenId.value = "ND011";
+  gCdcViewWin = cdcView(gCdcViewWin,"tmpCallBackShozokuViewRDM","gCdcViewWin");
+  return(true);
+}
+
+/**
+ * <pre>
+ * 出身所属部科POPUP　コールバック関数。
+ * </pre>
+ */
+function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
+//gCdcViewSelId 0:出身所属部科,1:勤務先情報 所属部科
+  if(gCdcCsdViewSelId == "0") {
+    document.fm1.homeDeptCd.value = deptCode;
+    document.fm1.homeDeptNm.value = DeptKj;
+  } else if(gCdcCsdViewSelId == "1") {
+    document.fm1.skDeptCd.value = deptCode;
+    document.fm1.skDeptNm.value = DeptKj;
+  } else{//ここにはこない
+  }
+}
+
+/**
+ * 施設検索POPUP画面を呼び出します。
+ *
+ */
+function tmpCseView(){
+
+// 2度押し対策
+  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+
+  // 全てのポップアップを閉じる
+  hcpClosePopUp(gCseViewWin, "gCseViewWin");
+
+ // パラメータの設定
+  //document.fm1.backScreenId.value = "ND011";
+  gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
+  return(true);
+}
+
+/**
+ * <pre>
+ * 施設検索POPUP　コールバック関数。
+ * </pre>
+ */
+function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+    document.fm1.skInsNo.value = insNo;
+    document.fm1.skInsNm.value = shisetsuNm;
+
+}

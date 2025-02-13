@@ -12,11 +12,11 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-//import jp.co.takeda.rdm.dto.JKR090C020DTO;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.ND301DTO;
 import jp.co.takeda.rdm.service.ND301Service;
 import jp.co.takeda.rdm.util.AppConstant;
@@ -53,7 +53,7 @@ public class ND301Action extends BaseAction<ND301DTO> {
     @Inject
     private ND301Service nD301Service;
     // 確認画面用にする
-    //private JKR090C020DTO paramDto;
+    private NC101DTO paramDto;
     // START UOC
     // END UOC
 
@@ -178,18 +178,18 @@ public class ND301Action extends BaseAction<ND301DTO> {
      * 業務処理
      * @customizable
      */
-//    @InputConfig(methodName="validationError")
-//    public String register() throws Exception {
-//        registerSetup();
-//        // F層呼び出し
-//        BaseDTO outdto = nD301Service.register(dto);
-//        if (outdto instanceof ND301DTO) {
-//            // START UOC
-////            outdto = nD301Service.register(dto);
-//            // END UOC
-//        }
-//        return registerNext(outdto);
-//    }
+    @InputConfig(methodName="validationError")
+    public String register() throws Exception {
+        registerSetup();
+        // F層呼び出し
+        BaseDTO outdto = nD301Service.register(dto);
+        if (outdto instanceof ND301DTO) {
+            // START UOC
+//            outdto = nD301Service.register(dto);
+            // END UOC
+        }
+        return registerNext(outdto);
+    }
 
     /**
      * 前処理
@@ -206,136 +206,21 @@ public class ND301Action extends BaseAction<ND301DTO> {
      * 後処理
      * @customizable
      */
-//    protected String registerNext(BaseDTO outdto) throws Exception {
-//        // START UOC
-//        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !"exception".equals(outdto.getForward())){
-//            setJumpInfo(dto.getMsgId());
-////            outdto.setForward("JKR090C020Init");
-//        }
-//        // END UOC
-//        //TODO buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
-//        setNextDTO(outdto);
-//        return outdto.getForward();
-//    }
-
-//    /**
-//     * 業務処理
-//     * @customizable
-//     */
-//    @InputConfig(methodName="validationError")
-//    public String downLoad() throws Exception {
-//        downLoadSetup();
-//        // F層呼び出し
-//        BaseDTO outdto = nD301Service.downLoad(dto);
-//        return downLoadNext(outdto);
-//    }
-
-//    /**
-//     * 前処理
-//     * @customizable
-//     */
-//    protected void downLoadSetup() throws Exception {
-//        // START UOC
-//
-//        // END UOC
-//    }
-//
-//    /**
-//     * 後処理
-//     * @customizable
-//     */
-//    protected String downLoadNext(BaseDTO outdto) throws Exception {
-//        // START UOC
-//        outdto.setForward("stream");
-//        // END UOC
-//        setNextDTO(outdto);
-//        return outdto.getForward();
-//    }
-
-//    /**
-//     * 業務処理
-//     * @customizable
-//     */
-//    @InputConfig(methodName="validationError")
-//    public String sort() throws Exception {
-//        sortSetup();
-//        // F層呼び出し
-//        BaseDTO outdto = nD301Service.sort(dto);
-//        if (outdto instanceof ND301DTO) {
-//            // START UOC
-//
-//            // END UOC
-//        }
-//        return sortNext(outdto);
-//    }
-
-//    /**
-//     * 前処理
-//     * @customizable
-//     */
-//    protected void sortSetup() throws Exception {
-//        // START UOC
-//
-//        // END UOC
-//    }
-//
-//    /**
-//     * 後処理
-//     * @customizable
-//     */
-//    protected String sortNext(BaseDTO outdto) throws Exception {
-//        // START UOC
-//        // 検索条件をセッションに格納する（リンク押下時に使用）
-//        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, outdto);
-//        // END UOC
-//        setNextDTO(outdto);
-//        return outdto.getForward();
-//    }
-
-
-//    /**
-//     * 業務処理
-//     * @customizable
-//     */
-//    @InputConfig(methodName="validationError")
-//    public String page() throws Exception {
-//        pageSetup();
-//        // F層呼び出し
-//        BaseDTO outdto = nD301Service.page(dto);
-//        if (outdto instanceof ND301DTO) {
-//            // START UOC
-//
-//            // END UOC
-//        }
-//        return pageNext(outdto);
-//    }
-
-//    /**
-//     * 前処理
-//     * @customizable
-//     */
-//    protected void pageSetup() throws Exception {
-//        // START UOC
-//
-//        // END UOC
-//    }
-//
-//    /**
-//     * 後処理
-//     * @customizable
-//     */
-//    protected String pageNext(BaseDTO outdto) throws Exception {
-//        // START UOC
-//        // 検索条件をセッションに格納する（リンク押下時に使用）
-//        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, outdto);
-//        // END UOC
-//        setNextDTO(outdto);
-//        return outdto.getForward();
-//    }
+    protected String registerNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
+                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
+                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
+                && !RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
+                && !"exception".equals(outdto.getForward())){
+            setJumpInfo(dto.getMsgId());
+//            outdto.setForward("JKR090C020Init");
+        }
+        // END UOC
+        //TODO buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
 
     // START UOC
     /**
@@ -343,192 +228,27 @@ public class ND301Action extends BaseAction<ND301DTO> {
      * @param dto 登録完了画面DTO
      * @param msgId メッセージID
      */
-//    private void setJumpInfo(String msgId) {
-//        // メッセージオブジェクト取得
-//        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-//
-//        String subTitle = "";
-//        String jokenSetCd = dto.getLoginJokenSetCd();
-//
-//        //画面タイトル内容設定
-//        paramDto = new JKR090C020DTO();
-//        // ブラウザタイトル
-//        paramDto.setBrowerTitle ("担当引継ぎ"+ subTitle);
-//        // 画面タイトル
-//        paramDto.setTitle("担当引継ぎ"+ subTitle);
-//        // 戻るリンク(表示文言)
-//        paramDto.setReturnLinkNm1("戻る");
-//        // 戻るリンク(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND301Init");
-////        // メッセージ１
-////        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
-////        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
-//
-//        ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
-////        searchKey.setActionMtKbn("2");
-//        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, searchKey);
-//    }
+    private void setJumpInfo(String msgId) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-    /**
-     * 前画面から組織関連パラメータ設定
-     * @param Dto301
-     */
-    public void setSosInfo(Map<String, Object> sessionMap, ND301DTO Dto301) {
+        String subTitle = "";
+        String jokenSetCd = dto.getLoginJokenSetCd();
+//TODO
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+        // ブラウザタイトル
+        paramDto.setBrowerTitle ("ND301_医師新規作成 - 申請内容確認");
+        // 画面タイトル
+        paramDto.setTitle("ND301_医師新規作成 - 申請内容確認");
+        // 戻るリンク(表示文言)
+        paramDto.setReturnLinkNm1("戻る");
+        // 戻るリンク(遷移先URL)
+        paramDto.setReturnLinkURL1("ND301Init");
 
-//        //トップメニューで組織(現)を選択した場合
-//        if ("0".equals(Dto301.getSosSelFlg())) {
-//
-//            // 検索条件_組織・担当（新）_テキスト
-//            Dto301.setDispToSosJgiName("");
-//            // 検索条件_新組織コード
-//            Dto301.setSearchToSosCd("");
-//            // 検索条件_組織（新）_テキスト
-//            Dto301.setSearchToSosName("");
-//            //検索条件_組織コード（新）（営業所）
-//            Dto301.setSearchToSosCd3("");
-//
-//
-//        //トップメニューで組織(新)を選択した場合
-//        } else {
-//
-//            // 検索条件_組織・担当（現）_テキスト
-//            Dto301.setDispFromSosJgiName("");
-//            // 検索条件_現組織コード
-//            Dto301.setSearchFromSosCd("");
-//            // 検索条件_組織（現）_テキスト
-//            Dto301.setSearchFromSosName("");
-//            // 検索条件_現組織支店コード
-//            Dto301.setSearchFromSosCd2("");
-//            // 検索条件_現組織支店名称
-//            Dto301.setSearchFromSosNm2("");
-//            // 検索条件_現組織の組織コード３
-//            Dto301.setSearchFromSosCd3("");
-//            // 検索条件_現組織の組織コード４
-//            Dto301.setSearchFromSosCd4("");
-//        }
-//
-//        // 検索条件_現従業員番号
-//        Dto301.setSearchFromJgiNo("");
-//        // 検索条件_現従業員
-//        Dto301.setSearchFromJgiName("");
-//        // 検索条件_新従業員番号
-//        Dto301.setSearchToJgiNo("");
-//        // 検索条件_新従業員
-//        Dto301.setSearchToJgiName("");
-
-       if ((Dto301.getBackScreenId().startsWith("JKR040C0") || Dto301.getBackScreenId().startsWith("JKR050C0"))
-//            && !StringUtils.isEmpty(Dto301.getTopChangedSosCd())
-            ) {
-
-//            //トップメニューで組織(現)を選択した場合
-//            if ("0".equals(Dto301.getSosSelFlg())) {
-//                // 検索条件_組織・担当（現）_テキスト
-//                Dto301.setDispFromSosJgiName(Dto301.getTopChangedSosNm());
-//                // 検索条件_現組織コード
-//                Dto301.setSearchFromSosCd(Dto301.getTopChangedSosCd());
-//                // 検索条件_組織（現）_テキスト
-//                Dto301.setSearchFromSosName(Dto301.getTopChangedSosNm());
-//                // 検索条件_現組織支店コード
-//                Dto301.setSearchFromSosCd2(Dto301.getTopChangedSosCd2());
-//                // 検索条件_現組織支店名称
-//                Dto301.setSearchFromSosNm2(Dto301.getTopChangedSosNm2());
-//                // 検索条件_現組織の組織コード３
-//                Dto301.setSearchFromSosCd3(Dto301.getTopChangedSosCd3());
-//                // 検索条件_現組織の組織コード４
-//                Dto301.setSearchFromSosCd4("");
-//
-//            //トップメニューで組織(新)を選択した場合
-//            } else {
-//
-//                // 検索条件_組織・担当（新）_テキスト
-//                Dto301.setDispToSosJgiName(Dto301.getTopChangedSosNm());
-//                // 検索条件_新組織コード
-//                Dto301.setSearchToSosCd(Dto301.getTopChangedSosCd());
-//                // 検索条件_組織（新）_テキスト
-//                Dto301.setSearchToSosName(Dto301.getTopChangedSosNm());
-//                //検索条件_組織コード（新）（営業所）
-//                Dto301.setSearchToSosCd3(Dto301.getTopChangedSosCd3());
-//
-//            }
-        } else {
-
-//            //トップメニューで組織(現)を選択した場合
-//            if ("0".equals(Dto301.getSosSelFlg())) {
-//                // 検索条件_現組織コード
-//                Dto301.setSearchFromSosCd(Dto301.getSelectedSosCd());
-//                // 検索条件_組織・担当（現）_テキスト
-//                Dto301.setDispFromSosJgiName(Dto301.getSelectedSosNm());
-//                // 検索条件_組織（現）_テキスト
-//                Dto301.setSearchFromSosName(Dto301.getSelectedSosNm());
-//                // 検索条件_現組織支店コード
-//                Dto301.setSearchFromSosCd2(Dto301.getSelectedSosCd2());
-//                // 検索条件_現組織支店名称
-//                Dto301.setSearchFromSosNm2(Dto301.getSelectedSosNm2());
-//                // 検索条件_現組織の組織コード３
-//                Dto301.setSearchFromSosCd3(Dto301.getSelectedSosCd3());
-//                // 検索条件_現組織の組織コード４
-//                Dto301.setSearchFromSosCd4("");
-//
-//            //トップメニューで組織(新)を選択した場合
-//            } else {
-//
-//                // 検索条件_新組織コード
-//                Dto301.setSearchToSosCd(Dto301.getSelectedSosCd());
-//                // 検索条件_組織・担当（新）_テキスト
-//                Dto301.setDispToSosJgiName(Dto301.getSelectedSosNm());
-//                // 検索条件_組織（新）_テキスト
-//                Dto301.setSearchToSosName(Dto301.getSelectedSosNm());
-//                // 検索条件_新組織コード(営業所）
-//                Dto301.setSearchToSosCd3(Dto301.getSelectedSosCd3());
-//            }
-        }
-//       // 検索条件_現組織コード(ポップアップ用）
-//       Dto301.setSearchFromSosCdPop(Dto301.getSearchFromSosCd());
-//       // 検索条件_新組織コード(ポップアップ用）
-//       Dto301.setSearchToSosCdPop(Dto301.getSearchToSosCd());
+        ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
+//        searchKey.setActionMtKbn("2");
+        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, searchKey);
     }
 
-    /**
-     * 前画面から組織関連パラメータをコピーする
-     * @param objectTo コピー先
-     * @param objectFrom コピー元
-     */
-    public void copySosInfo(Object objectTo, Object objectFrom) {
-        // 検索条件_組織・担当（現）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "dispFromSosJgiName");
-        // 検索条件_現組織コード
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd");
-        // 検索条件_組織（現）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosName");
-        // 検索条件_現組織支店コード
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd2");
-        // 検索条件_現組織支店名称
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosNm2");
-        // 検索条件_現組織の組織コード３
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd3");
-        // 検索条件_現組織の組織コード４
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd4");
-
-        // 検索条件_組織・担当（新）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "dispToSosJgiName");
-        // 検索条件_新組織コード
-        StringUtils.copyValue(objectTo, objectFrom, "searchToSosCd");
-        // 検索条件_組織（新）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "searchToSosName");
-        //検索条件_組織コード（新）（営業所）
-        StringUtils.copyValue(objectTo, objectFrom, "searchToSosCd3");
-
-        // 検索条件_現従業員番号
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromJgiNo");
-        // 検索条件_現従業員
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromJgiName");
-        // 検索条件_新従業員番号
-        StringUtils.copyValue(objectTo, objectFrom, "searchToJgiNo");
-        // 検索条件_新従業員
-        StringUtils.copyValue(objectTo, objectFrom, "searchToJgiName");
-
-        // 施設表示範囲設定フラグ
-        StringUtils.copyValue(objectTo, objectFrom, "insDispRngFlg");
-    }
-    // END UOC
 }

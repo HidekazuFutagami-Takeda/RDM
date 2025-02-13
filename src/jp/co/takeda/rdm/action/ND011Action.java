@@ -12,13 +12,14 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-//import jp.co.takeda.rdm.dto.JKR090C020DTO;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.ND011DTO;
 import jp.co.takeda.rdm.dto.ND301DTO;
+import jp.co.takeda.rdm.exception.InvalidRequestException;
 import jp.co.takeda.rdm.service.ND011Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.RdmConstantsData;
@@ -77,6 +78,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
         // START UOC
     	dto.setMsgId(null);
     	dto.setMsgStr(null);
+
         return null;
         // END UOC
         // START UOC
@@ -152,9 +154,12 @@ public class ND011Action extends BaseAction<ND011DTO> {
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
         String ultNo = dto.getUltDocNo();
-
+//TODO
         //モック
-        preScreenId = "NC011";
+        //preScreenId = "NC011";
+        preScreenId = dto.getPreScreenId();
+
+        dto.setPreScreenId(preScreenId);
 
         // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
         // ULTT医師コード　ありなしで分岐
@@ -167,17 +172,22 @@ public class ND011Action extends BaseAction<ND011DTO> {
         		// 完全新規
         		dto.setDisplayKbn("0");
         	} else { //遷移エラー
+        		throw new InvalidRequestException();
         	}
-        }
-        // 申請ID
-        // NC011_申請一覧
-        // ND301_医師新規作成 - 申請内容確認
-        // NM101_通知内容詳細
-        if ("NC011".equals(preScreenId) || "ND301".equals(preScreenId) || "NM101".equals(preScreenId)) {
-        	if (reqId != null && reqId.length() > 0) {
-        		// 申請データ（一時保存含む）を参照
-        		dto.setDisplayKbn("2");
-        	} else { //遷移エラー
+        }else {
+        	// 申請ID
+        	// NC011_申請一覧
+        	// ND301_医師新規作成 - 申請内容確認
+        	// NM101_通知内容詳細
+        	if ("NC011".equals(preScreenId) || "ND301".equals(preScreenId) || "NM101".equals(preScreenId)) {
+        		if (reqId != null && reqId.length() > 0) {
+        			// 申請データ（一時保存含む）を参照
+        			dto.setDisplayKbn("2");
+        		} else { //遷移エラー
+        			throw new InvalidRequestException();
+        		}
+        	}else {//遷移エラー
+        		throw new InvalidRequestException();
         	}
         }
 
@@ -305,166 +315,166 @@ public class ND011Action extends BaseAction<ND011DTO> {
         sessionMap.put(AppConstant.SESKEY_ND011_SEARCHKEY, searchKey);
     }
 
-    /**
-     * 前画面から組織関連パラメータ設定
-     * @param Dto010
-     */
-    public void setSosInfo(Map<String, Object> sessionMap, ND011DTO Dto010) {
-
-//        //トップメニューで組織(現)を選択した場合
-//        if ("0".equals(Dto010.getSosSelFlg())) {
+//    /**
+//     * 前画面から組織関連パラメータ設定
+//     * @param Dto010
+//     */
+//    public void setSosInfo(Map<String, Object> sessionMap, ND011DTO Dto010) {
 //
-//            // 検索条件_組織・担当（新）_テキスト
-//            Dto010.setDispToSosJgiName("");
-//            // 検索条件_新組織コード
-//            Dto010.setSearchToSosCd("");
-//            // 検索条件_組織（新）_テキスト
-//            Dto010.setSearchToSosName("");
-//            //検索条件_組織コード（新）（営業所）
-//            Dto010.setSearchToSosCd3("");
+////        //トップメニューで組織(現)を選択した場合
+////        if ("0".equals(Dto010.getSosSelFlg())) {
+////
+////            // 検索条件_組織・担当（新）_テキスト
+////            Dto010.setDispToSosJgiName("");
+////            // 検索条件_新組織コード
+////            Dto010.setSearchToSosCd("");
+////            // 検索条件_組織（新）_テキスト
+////            Dto010.setSearchToSosName("");
+////            //検索条件_組織コード（新）（営業所）
+////            Dto010.setSearchToSosCd3("");
+////
+////
+////        //トップメニューで組織(新)を選択した場合
+////        } else {
+////
+////            // 検索条件_組織・担当（現）_テキスト
+////            Dto010.setDispFromSosJgiName("");
+////            // 検索条件_現組織コード
+////            Dto010.setSearchFromSosCd("");
+////            // 検索条件_組織（現）_テキスト
+////            Dto010.setSearchFromSosName("");
+////            // 検索条件_現組織支店コード
+////            Dto010.setSearchFromSosCd2("");
+////            // 検索条件_現組織支店名称
+////            Dto010.setSearchFromSosNm2("");
+////            // 検索条件_現組織の組織コード３
+////            Dto010.setSearchFromSosCd3("");
+////            // 検索条件_現組織の組織コード４
+////            Dto010.setSearchFromSosCd4("");
+////        }
+////
+////        // 検索条件_現従業員番号
+////        Dto010.setSearchFromJgiNo("");
+////        // 検索条件_現従業員
+////        Dto010.setSearchFromJgiName("");
+////        // 検索条件_新従業員番号
+////        Dto010.setSearchToJgiNo("");
+////        // 検索条件_新従業員
+////        Dto010.setSearchToJgiName("");
 //
+//       if ((Dto010.getBackScreenId().startsWith("JKR040C0") || Dto010.getBackScreenId().startsWith("JKR050C0"))
+////            && !StringUtils.isEmpty(Dto010.getTopChangedSosCd())
+//            ) {
 //
-//        //トップメニューで組織(新)を選択した場合
+////            //トップメニューで組織(現)を選択した場合
+////            if ("0".equals(Dto010.getSosSelFlg())) {
+////                // 検索条件_組織・担当（現）_テキスト
+////                Dto010.setDispFromSosJgiName(Dto010.getTopChangedSosNm());
+////                // 検索条件_現組織コード
+////                Dto010.setSearchFromSosCd(Dto010.getTopChangedSosCd());
+////                // 検索条件_組織（現）_テキスト
+////                Dto010.setSearchFromSosName(Dto010.getTopChangedSosNm());
+////                // 検索条件_現組織支店コード
+////                Dto010.setSearchFromSosCd2(Dto010.getTopChangedSosCd2());
+////                // 検索条件_現組織支店名称
+////                Dto010.setSearchFromSosNm2(Dto010.getTopChangedSosNm2());
+////                // 検索条件_現組織の組織コード３
+////                Dto010.setSearchFromSosCd3(Dto010.getTopChangedSosCd3());
+////                // 検索条件_現組織の組織コード４
+////                Dto010.setSearchFromSosCd4("");
+////
+////            //トップメニューで組織(新)を選択した場合
+////            } else {
+////
+////                // 検索条件_組織・担当（新）_テキスト
+////                Dto010.setDispToSosJgiName(Dto010.getTopChangedSosNm());
+////                // 検索条件_新組織コード
+////                Dto010.setSearchToSosCd(Dto010.getTopChangedSosCd());
+////                // 検索条件_組織（新）_テキスト
+////                Dto010.setSearchToSosName(Dto010.getTopChangedSosNm());
+////                //検索条件_組織コード（新）（営業所）
+////                Dto010.setSearchToSosCd3(Dto010.getTopChangedSosCd3());
+////
+////            }
 //        } else {
 //
-//            // 検索条件_組織・担当（現）_テキスト
-//            Dto010.setDispFromSosJgiName("");
-//            // 検索条件_現組織コード
-//            Dto010.setSearchFromSosCd("");
-//            // 検索条件_組織（現）_テキスト
-//            Dto010.setSearchFromSosName("");
-//            // 検索条件_現組織支店コード
-//            Dto010.setSearchFromSosCd2("");
-//            // 検索条件_現組織支店名称
-//            Dto010.setSearchFromSosNm2("");
-//            // 検索条件_現組織の組織コード３
-//            Dto010.setSearchFromSosCd3("");
-//            // 検索条件_現組織の組織コード４
-//            Dto010.setSearchFromSosCd4("");
+////            //トップメニューで組織(現)を選択した場合
+////            if ("0".equals(Dto010.getSosSelFlg())) {
+////                // 検索条件_現組織コード
+////                Dto010.setSearchFromSosCd(Dto010.getSelectedSosCd());
+////                // 検索条件_組織・担当（現）_テキスト
+////                Dto010.setDispFromSosJgiName(Dto010.getSelectedSosNm());
+////                // 検索条件_組織（現）_テキスト
+////                Dto010.setSearchFromSosName(Dto010.getSelectedSosNm());
+////                // 検索条件_現組織支店コード
+////                Dto010.setSearchFromSosCd2(Dto010.getSelectedSosCd2());
+////                // 検索条件_現組織支店名称
+////                Dto010.setSearchFromSosNm2(Dto010.getSelectedSosNm2());
+////                // 検索条件_現組織の組織コード３
+////                Dto010.setSearchFromSosCd3(Dto010.getSelectedSosCd3());
+////                // 検索条件_現組織の組織コード４
+////                Dto010.setSearchFromSosCd4("");
+////
+////            //トップメニューで組織(新)を選択した場合
+////            } else {
+////
+////                // 検索条件_新組織コード
+////                Dto010.setSearchToSosCd(Dto010.getSelectedSosCd());
+////                // 検索条件_組織・担当（新）_テキスト
+////                Dto010.setDispToSosJgiName(Dto010.getSelectedSosNm());
+////                // 検索条件_組織（新）_テキスト
+////                Dto010.setSearchToSosName(Dto010.getSelectedSosNm());
+////                // 検索条件_新組織コード(営業所）
+////                Dto010.setSearchToSosCd3(Dto010.getSelectedSosCd3());
+////            }
 //        }
+////       // 検索条件_現組織コード(ポップアップ用）
+////       Dto010.setSearchFromSosCdPop(Dto010.getSearchFromSosCd());
+////       // 検索条件_新組織コード(ポップアップ用）
+////       Dto010.setSearchToSosCdPop(Dto010.getSearchToSosCd());
+//    }
+
+//    /**
+//     * 前画面から組織関連パラメータをコピーする
+//     * @param objectTo コピー先
+//     * @param objectFrom コピー元
+//     */
+//    public void copySosInfo(Object objectTo, Object objectFrom) {
+//        // 検索条件_組織・担当（現）_テキスト
+//        StringUtils.copyValue(objectTo, objectFrom, "dispFromSosJgiName");
+//        // 検索条件_現組織コード
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd");
+//        // 検索条件_組織（現）_テキスト
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosName");
+//        // 検索条件_現組織支店コード
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd2");
+//        // 検索条件_現組織支店名称
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosNm2");
+//        // 検索条件_現組織の組織コード３
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd3");
+//        // 検索条件_現組織の組織コード４
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd4");
+//
+//        // 検索条件_組織・担当（新）_テキスト
+//        StringUtils.copyValue(objectTo, objectFrom, "dispToSosJgiName");
+//        // 検索条件_新組織コード
+//        StringUtils.copyValue(objectTo, objectFrom, "searchToSosCd");
+//        // 検索条件_組織（新）_テキスト
+//        StringUtils.copyValue(objectTo, objectFrom, "searchToSosName");
+//        //検索条件_組織コード（新）（営業所）
+//        StringUtils.copyValue(objectTo, objectFrom, "searchToSosCd3");
 //
 //        // 検索条件_現従業員番号
-//        Dto010.setSearchFromJgiNo("");
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromJgiNo");
 //        // 検索条件_現従業員
-//        Dto010.setSearchFromJgiName("");
+//        StringUtils.copyValue(objectTo, objectFrom, "searchFromJgiName");
 //        // 検索条件_新従業員番号
-//        Dto010.setSearchToJgiNo("");
+//        StringUtils.copyValue(objectTo, objectFrom, "searchToJgiNo");
 //        // 検索条件_新従業員
-//        Dto010.setSearchToJgiName("");
-
-       if ((Dto010.getBackScreenId().startsWith("JKR040C0") || Dto010.getBackScreenId().startsWith("JKR050C0"))
-//            && !StringUtils.isEmpty(Dto010.getTopChangedSosCd())
-            ) {
-
-//            //トップメニューで組織(現)を選択した場合
-//            if ("0".equals(Dto010.getSosSelFlg())) {
-//                // 検索条件_組織・担当（現）_テキスト
-//                Dto010.setDispFromSosJgiName(Dto010.getTopChangedSosNm());
-//                // 検索条件_現組織コード
-//                Dto010.setSearchFromSosCd(Dto010.getTopChangedSosCd());
-//                // 検索条件_組織（現）_テキスト
-//                Dto010.setSearchFromSosName(Dto010.getTopChangedSosNm());
-//                // 検索条件_現組織支店コード
-//                Dto010.setSearchFromSosCd2(Dto010.getTopChangedSosCd2());
-//                // 検索条件_現組織支店名称
-//                Dto010.setSearchFromSosNm2(Dto010.getTopChangedSosNm2());
-//                // 検索条件_現組織の組織コード３
-//                Dto010.setSearchFromSosCd3(Dto010.getTopChangedSosCd3());
-//                // 検索条件_現組織の組織コード４
-//                Dto010.setSearchFromSosCd4("");
+//        StringUtils.copyValue(objectTo, objectFrom, "searchToJgiName");
 //
-//            //トップメニューで組織(新)を選択した場合
-//            } else {
-//
-//                // 検索条件_組織・担当（新）_テキスト
-//                Dto010.setDispToSosJgiName(Dto010.getTopChangedSosNm());
-//                // 検索条件_新組織コード
-//                Dto010.setSearchToSosCd(Dto010.getTopChangedSosCd());
-//                // 検索条件_組織（新）_テキスト
-//                Dto010.setSearchToSosName(Dto010.getTopChangedSosNm());
-//                //検索条件_組織コード（新）（営業所）
-//                Dto010.setSearchToSosCd3(Dto010.getTopChangedSosCd3());
-//
-//            }
-        } else {
-
-//            //トップメニューで組織(現)を選択した場合
-//            if ("0".equals(Dto010.getSosSelFlg())) {
-//                // 検索条件_現組織コード
-//                Dto010.setSearchFromSosCd(Dto010.getSelectedSosCd());
-//                // 検索条件_組織・担当（現）_テキスト
-//                Dto010.setDispFromSosJgiName(Dto010.getSelectedSosNm());
-//                // 検索条件_組織（現）_テキスト
-//                Dto010.setSearchFromSosName(Dto010.getSelectedSosNm());
-//                // 検索条件_現組織支店コード
-//                Dto010.setSearchFromSosCd2(Dto010.getSelectedSosCd2());
-//                // 検索条件_現組織支店名称
-//                Dto010.setSearchFromSosNm2(Dto010.getSelectedSosNm2());
-//                // 検索条件_現組織の組織コード３
-//                Dto010.setSearchFromSosCd3(Dto010.getSelectedSosCd3());
-//                // 検索条件_現組織の組織コード４
-//                Dto010.setSearchFromSosCd4("");
-//
-//            //トップメニューで組織(新)を選択した場合
-//            } else {
-//
-//                // 検索条件_新組織コード
-//                Dto010.setSearchToSosCd(Dto010.getSelectedSosCd());
-//                // 検索条件_組織・担当（新）_テキスト
-//                Dto010.setDispToSosJgiName(Dto010.getSelectedSosNm());
-//                // 検索条件_組織（新）_テキスト
-//                Dto010.setSearchToSosName(Dto010.getSelectedSosNm());
-//                // 検索条件_新組織コード(営業所）
-//                Dto010.setSearchToSosCd3(Dto010.getSelectedSosCd3());
-//            }
-        }
-//       // 検索条件_現組織コード(ポップアップ用）
-//       Dto010.setSearchFromSosCdPop(Dto010.getSearchFromSosCd());
-//       // 検索条件_新組織コード(ポップアップ用）
-//       Dto010.setSearchToSosCdPop(Dto010.getSearchToSosCd());
-    }
-
-    /**
-     * 前画面から組織関連パラメータをコピーする
-     * @param objectTo コピー先
-     * @param objectFrom コピー元
-     */
-    public void copySosInfo(Object objectTo, Object objectFrom) {
-        // 検索条件_組織・担当（現）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "dispFromSosJgiName");
-        // 検索条件_現組織コード
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd");
-        // 検索条件_組織（現）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosName");
-        // 検索条件_現組織支店コード
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd2");
-        // 検索条件_現組織支店名称
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosNm2");
-        // 検索条件_現組織の組織コード３
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd3");
-        // 検索条件_現組織の組織コード４
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromSosCd4");
-
-        // 検索条件_組織・担当（新）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "dispToSosJgiName");
-        // 検索条件_新組織コード
-        StringUtils.copyValue(objectTo, objectFrom, "searchToSosCd");
-        // 検索条件_組織（新）_テキスト
-        StringUtils.copyValue(objectTo, objectFrom, "searchToSosName");
-        //検索条件_組織コード（新）（営業所）
-        StringUtils.copyValue(objectTo, objectFrom, "searchToSosCd3");
-
-        // 検索条件_現従業員番号
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromJgiNo");
-        // 検索条件_現従業員
-        StringUtils.copyValue(objectTo, objectFrom, "searchFromJgiName");
-        // 検索条件_新従業員番号
-        StringUtils.copyValue(objectTo, objectFrom, "searchToJgiNo");
-        // 検索条件_新従業員
-        StringUtils.copyValue(objectTo, objectFrom, "searchToJgiName");
-
-        // 施設表示範囲設定フラグ
-        StringUtils.copyValue(objectTo, objectFrom, "insDispRngFlg");
-    }
+//        // 施設表示範囲設定フラグ
+//        StringUtils.copyValue(objectTo, objectFrom, "insDispRngFlg");
+//    }
     // END UOC
 }

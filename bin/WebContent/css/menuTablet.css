@@ -1,0 +1,176 @@
+/*
+ * $Id: menuTablet.css,v 1.1 2013/04/16 04:17:48 murakami Exp $
+ *******************************************************************************
+ * <改訂履歴>
+ * 2011/04/27 大西　孝育：all：1.0
+ *   B11-0149 iPad版Home&Naviトップページ
+ * YYYY/MM/DD 改訂者名：[フィールド名｜メソッド名]：[リビジョン番号]
+ *   [改訂内容]
+ *******************************************************************************
+ * <既知のバグ情報>
+ * YYYY/MM/DD バグ発見者名：[メソッド名]：[リビジョン番号]
+ *   [バグ内容]
+ */
+
+/**
+ * <pre>
+ * メニュー用スタイルシート
+ * </pre>
+ * @since 1.0
+ * @version $Revision: 1.1 $
+ * @author 日立
+ * @see test.servlet.PopupServlet
+ */
+
+
+body.bodyStyle{
+  margin:0px;
+  padding:0px;
+}
+
+td.lineBgLog{
+  background-image:url(maps/img/mainBar01.gif);
+  background-position:0 18px;
+  background-repeat:repeat-x;
+}
+
+
+td.lineBg{
+  background-image:url(maps/img/mainBar01.gif);
+  background-position:top;
+  background-repeat:repeat-x;
+}
+
+td.lineBgGradient{
+  background-image:url(maps/img/mainBar02.png);
+  background-position:top;
+  background-repeat:repeat-x;
+  width:258px;
+}
+
+td.lineBg,td.lineBgGradient{
+  font-size:1px;
+  height:7px;
+}
+
+span.menuWelcome{
+  position:absolute;
+  top:3px;
+  left:40%;
+  font-style:normal;
+  font-size:10pt;
+  font-weight:bold;
+  color:#0000FF;
+}
+
+td.bgImg1{
+  background-image:url(maps/img/menuBg01.gif);
+  background-color:#3A7DFF;
+  background-repeat:no-repeat;
+  padding-left:10px;
+}
+
+td.bgImg2{
+  background-image:url(maps/img/menuBg02.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg3{
+  background-image:url(maps/img/menuBg03.gif);
+  background-repeat:repeat-y;
+  background-position:right;
+  border-left-width:1px;
+  border-left-style:solid;
+  border-left-color:#3A7DFF;
+}
+
+td.bgImg4{
+  background-image:url(maps/img/menuBg04.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg5{
+  background-image:url(maps/img/menuBg05.gif);
+  background-repeat:repeat;
+}
+
+td.bgImg6{
+  background-image:url(maps/img/menuBg06.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg7{
+  background-image:url(maps/img/menuBg07.gif);
+  background-repeat:no-repeat;
+  padding-left:10px;
+
+}
+
+td.bgImg8{
+  background-image:url(maps/img/menuBg08.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg9{
+  background-image:url(maps/img/menuBg09.gif);
+  background-repeat:no-repeat;
+}
+
+td.hrStyle{
+  height:7px;
+  padding-top:0px;
+  padding-bottom:0px;
+  vertical-align:middle;
+  text-align:center;
+}
+
+td.empHrStyle{
+  height:7px;
+  padding-top:0px;
+  padding-bottom:0px;
+  font-size:1px;
+}
+
+td.mnuTdItem1{
+  width:20px;
+  vertical-align:middle;
+  text-align:center;
+  height:24px;
+}
+
+td.tdStyle1{
+  vertical-align:top;
+  width:25%;
+}
+
+td.tdLine1{
+  border-color:#c0c0c0;
+  border-width:0 0 0 4px;
+  border-style:solid;
+  vertical-align:top;
+  width:25%;
+}
+
+tr.mnuTrItem1{
+  width:100%;
+  font-size:10pt;
+}
+
+hr.hrStyle{
+  border-color:#0000ff;
+  border-width:0 0 1 0px;
+  border-style:solid;
+  margin:0px;
+}
+
+
+div.tabletMemuStyle{
+  position:absolute;
+  top:85px;
+  left:5px;
+  background-color:#e0ffff;
+  z-index:20;
+  width:99%;
+  border:1px #0000ff solid;
+  height:540px;
+}

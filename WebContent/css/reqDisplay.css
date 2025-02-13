@@ -1,0 +1,24 @@
+/**
+ * <pre>
+ *  非活性用のスタイルシート
+ * </pre>
+ * @since 1.0
+ * @version $Revision: 1.1 $
+ * @author
+ */
+
+
+/**
+ * <pre>
+ *  コンボボックス関連
+ * </pre>
+ */
+select:disabled {
+  color: #000000;
+/*   background-color: #ffffff; */
+}
+
+select:disabled::-ms-value,
+select:disabled::-ms-expand {
+  color: #000000;
+}

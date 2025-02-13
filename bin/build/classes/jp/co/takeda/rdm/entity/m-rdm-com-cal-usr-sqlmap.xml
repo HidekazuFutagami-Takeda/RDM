@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_com_cal_usr">
+    <resultMap id="MRdmComCalUsrResultMap" type="jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity">
+        <result column="CAL_YEAR" property="calYear"/>
+        <result column="CAL_MONTH" property="calMonth"/>
+        <result column="CAL_DAY" property="calDay"/>
+        <result column="FISCAL_YEAR" property="fiscalYear"/>
+        <result column="DAY_KB" property="dayKb"/>
+        <result column="CAL_DATE" property="calDate"/>
+        <result column="CAL_TERM" property="calTerm"/>
+        <result column="PUB_HOLIDAY" property="pubHoliday"/>
+        <result column="BUSINESS_DAY" property="businessDay"/>
+        <result column="TODAY" property="today"/>
+        <result column="SUMMARY" property="summary"/>
+        <result column="BIZ_DAYS" property="bizDays"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <resultMap id="MRdmComCalUsrEntityResultMap" type="jp.co.takeda.rdm.entity.MRdmComCalUsrEntity">
+        <result column="CAL_DATE" property="calDate"/>
+       	<result column="TODAY" property="today"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity" resultMap="MRdmComCalUsrResultMap">
+        SELECT
+            CAL_YEAR, CAL_MONTH, CAL_DAY, FISCAL_YEAR, DAY_KB, CAL_DATE, CAL_TERM, PUB_HOLIDAY, BUSINESS_DAY, TODAY, SUMMARY, BIZ_DAYS, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_COM_CAL_USR
+        WHERE
+            CAL_YEAR = #{calYear} AND CAL_MONTH = #{calMonth} AND CAL_DAY = #{calDay}
+            ORDER BY CAL_YEAR, CAL_MONTH, CAL_DAY
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity" resultMap="MRdmComCalUsrResultMap">
+        SELECT
+            CAL_YEAR, CAL_MONTH, CAL_DAY, FISCAL_YEAR, DAY_KB, CAL_DATE, CAL_TERM, PUB_HOLIDAY, BUSINESS_DAY, TODAY, SUMMARY, BIZ_DAYS, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_COM_CAL_USR
+        WHERE
+            UNIV_CODE = #{univCode}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity" resultMap="MRdmComCalUsrResultMap">
+        SELECT
+            CAL_YEAR, CAL_MONTH, CAL_DAY, FISCAL_YEAR, DAY_KB, CAL_DATE, CAL_TERM, PUB_HOLIDAY, BUSINESS_DAY, TODAY, SUMMARY, BIZ_DAYS, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_COM_CAL_USR
+            ORDER BY CAL_YEAR, CAL_MONTH, CAL_DAY
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity" resultMap="MRdmComCalUsrResultMap">
+        SELECT
+            CAL_YEAR, CAL_MONTH, CAL_DAY, FISCAL_YEAR, DAY_KB, CAL_DATE, CAL_TERM, PUB_HOLIDAY, BUSINESS_DAY, TODAY, SUMMARY, BIZ_DAYS, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_COM_CAL_USR
+        <where>
+	        <if test="calYear != null">AND CAL_YEAR = #{calYear}</if>
+			<if test="calMonth != null">AND CAL_MONTH = #{calMonth}</if>
+			<if test="calDay != null">AND CAL_DAY = #{calDay}</if>
+			<if test="fiscalYear != null">AND FISCAL_YEAR = #{fiscalYear}</if>
+			<if test="dayKb != null">AND DAY_KB = #{dayKb}</if>
+			<if test="calDate != null">AND CAL_DATE = #{calDate}</if>
+			<if test="calTerm != null">AND CAL_TERM = #{calTerm}</if>
+			<if test="pubHoliday != null">AND PUB_HOLIDAY = #{pubHoliday}</if>
+			<if test="businessDay != null">AND BUSINESS_DAY = #{businessDay}</if>
+			<if test="today != null">AND TODAY = #{today}</if>
+			<if test="summary != null">AND SUMMARY = #{summary}</if>
+			<if test="bizDays != null">AND BIZ_DAYS = #{bizDays}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+            ORDER BY CAL_YEAR, CAL_MONTH, CAL_DAY
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            M_RDM_COM_CAL_USR
+        <where>
+	        <if test="calYear != null">AND CAL_YEAR = #{calYear}</if>
+			<if test="calMonth != null">AND CAL_MONTH = #{calMonth}</if>
+			<if test="calDay != null">AND CAL_DAY = #{calDay}</if>
+			<if test="fiscalYear != null">AND FISCAL_YEAR = #{fiscalYear}</if>
+			<if test="dayKb != null">AND DAY_KB = #{dayKb}</if>
+			<if test="calDate != null">AND CAL_DATE = #{calDate}</if>
+			<if test="calTerm != null">AND CAL_TERM = #{calTerm}</if>
+			<if test="pubHoliday != null">AND PUB_HOLIDAY = #{pubHoliday}</if>
+			<if test="businessDay != null">AND BUSINESS_DAY = #{businessDay}</if>
+			<if test="today != null">AND TODAY = #{today}</if>
+			<if test="summary != null">AND SUMMARY = #{summary}</if>
+			<if test="bizDays != null">AND BIZ_DAYS = #{bizDays}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <select id="selectTodaySRdmJkrSosAddrEntiry" parameterType="jp.co.takeda.rdm.entity.MRdmComCalUsrEntity" resultMap="MRdmComCalUsrEntityResultMap">
+		SELECT
+			CAL_YEAR, CAL_MONTH, CAL_DAY, FISCAL_YEAR, DAY_KB, CAL_DATE,
+			CAL_TERM, PUB_HOLIDAY, BUSINESS_DAY, TODAY, SUMMARY, BIZ_DAYS,
+			INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+			 ORAUSR01.M_RDM_COM_CAL_USR
+		WHERE
+			TODAY = '1'
+	    </select>
+	    <select id="selectAgoSRdmJkrSosAddrEntiry" parameterType="jp.co.takeda.rdm.entity.MRdmComCalUsrEntity" resultMap="MRdmComCalUsrEntityResultMap">
+		SELECT
+			CAL_DATE -30 as CAL_DATE
+		from
+			ORAUSR01.M_RDM_COM_CAL_USR
+		where
+			TODAY = 1
+    </select>
+</mapper>

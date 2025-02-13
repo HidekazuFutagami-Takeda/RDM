@@ -1,0 +1,192 @@
+/*
+ * $id:$
+ *******************************************************************************
+ * <改訂履歴>
+ * 2011/03/16 高浜 一道
+ *   J11-0013：iPad対応
+ * 2011/03/23 高浜 一道
+ *   J11-0013：iPad対応
+ * 2011/03/28 高浜 一道
+ *   J11-0013：iPad対応
+ * 2013/07/10 吉田 貴子：all：1.2
+ *   J13-0006 【TPM】Home&Navi既存システム対応(DDD iPad対応)
+ * YYYY/MM/DD 改訂者名：[フィールド名｜メソッド名]：[リビジョン番号]
+ *   [改訂内容]
+ *******************************************************************************
+ * <既知のバグ情報>
+ * YYYY/MM/DD バグ発見者名：[メソッド名]：[リビジョン番号]
+ *   [バグ内容]
+ */
+
+/**
+ * <pre>
+ * ポップアップ用 共通スタイルシート
+ * </pre>
+ * @since 1.0
+ * @version $Revision: 1.2 $
+ * @author 鶴澤 幸治
+ * @see test.servlet.PopupServlet
+ */
+
+TABLE.pupBodyTable		/* 全画面用ポータルボディー */
+{
+	backgroud-color: #999999;
+	border-style:	solid;
+	border-width:	0pt;
+	margin: 0pt;
+	padding: 0pt;
+	width:	100%;
+}
+TABLE.pupReferenceDetail
+{
+	padding: 0pt;
+	margin:0pt;
+	border-style:none;
+	border-color:#666666;
+	border-width: 1pt;
+	background-color: #ffffff;
+}
+/* add start 2011/03/16 K.Takahama J11-0013：iPad対応 */
+TABLE.pupReferenceDetailForiPad
+{
+	padding: 0pt;
+	margin:auto;
+	border-style:none;
+	border-color:#666666;
+	border-width: 1pt;
+	background-color: #ffffff;
+}
+/* add end   2011/03/16 K.Takahama J11-0013：iPad対応 */
+TD.pupControlItem
+{
+/*
+	color : #000000;
+	background-color: #ffffe0;
+	text-align : center;
+	padding: 0pt;
+	border-style: outset;
+	border-top-width : 0pt;
+	border-left-width : 1pt;
+	border-right-width : 1pt;
+	border-bottom-width : 1pt;
+	font-size   : 8pt;
+*/
+}
+
+TABLE.pupControlTable
+{
+	margin:			0pt;
+	padding:		0pt;
+	border-style:	none;
+}
+/* add start 2011/03/28 K.Takahama J11-0013：iPad対応 */
+/* pupControlTableのiPad対応版 */
+TABLE.pupControlTableForiPad
+{
+	margin:			auto;
+	padding:		0pt;
+	border-style:	none;
+}
+/* add end   2011/03/28 K.Takahama J11-0013：iPad対応 */
+TABLE.pupList		/* 検索のメイン */
+{
+	padding:0pt;
+	border-style:	none;
+	margin: -2pt 2pt 2pt 2pt;	/* 上右下左 */
+	width:	100%;
+	background-color:#999999;
+}
+/* 2013/07/10 add start T.Yoshida J13-0006 */
+TABLE.pupListForiPad		/* 検索のメイン */
+{
+	padding:0pt;
+	border-style:	none;
+	margin:			auto;
+	width:	100%;
+	background-color:#999999;
+}
+/* 2013/07/10 add end T.Yoshida J13-0006 */
+
+TD.pupTitle
+{
+	color : #000000;
+	background-color: #cccccc;
+	text-align : center;
+	border-style: solid;
+	border-top-width : 1px;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-bottom-width : 1px;
+	border-color : #a9a9a9;
+	font-size   : 8pt;
+	padding:2pt;
+}
+TD.pupItem
+{
+
+	color : #000000;
+	background-color: #ffffff;
+	text-align : left;
+	border-style: solid;
+	border-top-width : 0px;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-bottom-width : 1px;
+	border-color : #a9a9a9;
+	font-size   : 8pt;
+	padding:2pt;
+}
+TD.pupButton
+{
+	color : #000000;
+	background-color: #ffffff;
+	text-align : center;
+	border-style: solid;
+	border-top-width : 0px;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-bottom-width : 1px;
+	padding-top : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-bottom : 0px;
+	border-color : #a9a9a9;
+	/*font-size   : 8pt;
+	width : 0%;*/
+}
+INPUT.pupButton
+{
+	height:100%;
+	width:100%;
+}
+/* add end   2011/03/23 K.Takahama J11-0013：iPad対応 */
+INPUT.pupButtonForiPad
+{
+	height:16;
+	width:100%;
+}
+/* add end   2011/03/23 K.Takahama J11-0013：iPad対応 */
+A.pupScroll
+{
+	color: #000000;
+	font-size: 8pt;
+	text-decoration: none;
+}
+A.pupScroll:hover
+{
+	color: #ff3300;
+}
+A.pupScroll:visited
+{
+	color: #000000;
+}
+A.pupScroll:visited:hover
+{
+	color: #ff3300;
+}
+A.pupNoScroll
+{
+	color: #666666;
+	font-size: 8pt;
+	text-decoration: none;
+}

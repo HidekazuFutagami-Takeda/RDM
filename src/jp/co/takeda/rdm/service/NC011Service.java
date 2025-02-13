@@ -8,6 +8,7 @@ package jp.co.takeda.rdm.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class NC011Service extends BaseService {
 
 
     //カレンダーの実装
-    private void cal(NC011DTO indto) {
+    private void cal(NC011DTO indto)  throws ParseException  {
     	//本日日付_RDM用カレンダー(オンライン用)_生成用エンティティ
     	MRdmComCalUsrEntity paramComCalUsrToday = new MRdmComCalUsrEntity("1");
 
@@ -69,6 +70,13 @@ public class NC011Service extends BaseService {
         // SimpleDateFormatで日付フォーマット設定
      	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //本日日付データ_取り出す
+     	if(indto.getPreScreenId().equals("NM001")) {
+     		if(indto.getReqYmdhmsTo().length() == 8) {
+         	indto.setReqYmdhmsTo(indto.getReqYmdhmsTo().substring(0, 4)+ '-' + indto.getReqYmdhmsTo().substring(4, 6)+ '-' + indto.getReqYmdhmsTo().substring(6, 8));
+         	indto.setReqYmdhmsFrom(indto.getReqYmdhmsFrom().substring(0, 4)+ '-' + indto.getReqYmdhmsFrom().substring(4, 6)+ '-' + indto.getReqYmdhmsFrom().substring(6, 8));
+    	}
+     	}
+     	if(!indto.getPreScreenId().equals("NM001")) {
         for (MRdmComCalUsrEntity entity : SelectComCalUsrKako) {
             //検索結果_本日日付
             indto.setInreqYmdhmsFrom(sdf.format(entity.getCalDate()));
@@ -80,7 +88,7 @@ public class NC011Service extends BaseService {
             indto.setKnYmdhmsTo(sdf.format(entity.getCalDate()));
         }
     }
-
+    }
     //ドロップダウンリスト-都道府県
     private void  addrDrop(NC011DTO indto) {
         // START UOC
@@ -207,18 +215,6 @@ public class NC011Service extends BaseService {
             indto.setJkrSosHoInsTypeMap(mapReqType);
     }
 
-    //ドロップダウンリスト-連携種別
-    private void  reqSbtDrop(NC011DTO indto) {
-        // START UOC
-        LinkedHashMap<String, String> mapAddr = new LinkedHashMap<String, String>();
-        mapAddr.put(null,"全て");
-        mapAddr.put("0","手動");
-        mapAddr.put("1","ULT連携");
-        indto.setJkrSosReqSbtMap(mapAddr);
-        // END UOC
-    }
-
-
     //ドロップダウンリスト-申請チャネル
     private void  reqChlDrop(NC011DTO indto){
         // START UOC
@@ -236,7 +232,46 @@ public class NC011Service extends BaseService {
             	mapReqType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
             }
             indto.setJkrSosReqChlMap(mapReqType);
+//          if(indto.getReqSbt() != null) {
+//          if(!indto.getReqSbt().equals("")) {
+//              indto.setReqChl(" ");
+//          }
+//      }
+
     }
+
+  //ドロップダウンリスト-連携種別
+    private void  reqSbtDrop(NC011DTO indto) {
+        // START UOC
+        LinkedHashMap<String, String> mapAddr = new LinkedHashMap<String, String>();
+        mapAddr.put(null,"全て");
+        mapAddr.put("0","手動");
+        mapAddr.put("1","ULT連携");
+
+        indto.setJkrSosReqSbtMap(mapAddr);
+
+        if(indto.getReqChl().equals("01")) {
+            indto.setReqSbt("0");
+            indto.setReqChl("01");
+        }
+        if(indto.getReqChl().equals("02")) {
+            indto.setReqSbt("0");
+            indto.setReqChl("02");
+        }
+        if(indto.getReqChl().equals("03")) {
+            indto.setReqSbt("1");
+            indto.setReqChl("13");
+        }
+        if(indto.getReqChl().equals("04")) {
+            indto.setReqSbt("1");
+            indto.setReqChl("14");
+        }
+
+        // END UOC
+    }
+
+
+
     //ドロップダウンリスト-種別
     private void  sbtDrop(NC011DTO indto) {
         // START UOC
@@ -276,7 +311,7 @@ public class NC011Service extends BaseService {
      * @customizable
      */
     @Transactional
-    public BaseDTO sort(NC011DTO indto) {
+    public BaseDTO sort(NC011DTO indto) throws ParseException{
         BaseDTO outdto = indto;
         // START UOC
 
@@ -291,9 +326,10 @@ public class NC011Service extends BaseService {
      * @param indto RDMNC011DTO
      * @return 遷移先DTO
      * @customizable
+     *  @throws ParseException
      */
     @Transactional
-    public BaseDTO init(NC011DTO indto) {
+    public BaseDTO init(NC011DTO indto) throws ParseException{
         BaseDTO outdto = indto;
         // START UOC
         addrDrop(indto);
@@ -312,21 +348,23 @@ public class NC011Service extends BaseService {
         FbPrcType(indto);
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
+        indto.setPageFlag("1");
 
         // END UOC
         return outdto;
 
     }
 
-	public BaseDTO search(NC011DTO indto) {
+	public BaseDTO search(NC011DTO indto) throws ParseException{
 		BaseDTO outdto = indto;
 		SRdmReqListEntity paramEntity = new SRdmReqListEntity();
       //  List<NC011Entity> selectTestEntity = dao.select(paramEntity);
       //  indto.setTest(selectTestEntity.get(0).getTest());
-
+		indto.setPageFlag("0");
         addrDrop(indto);
         cal(indto);
         sbtDrop(indto);
+        reqChlDrop(indto);
         reqSbtDrop(indto);
         reqTypeDrop(indto);
         reqStsDrop(indto);
@@ -335,7 +373,7 @@ public class NC011Service extends BaseService {
         hoInsTypeDrop(indto);
         docTypeDrop(indto);
         jobFormDrop(indto);
-        reqChlDrop(indto);
+
         FbReqFlg(indto);
         FbPrcType(indto);
         //paramEntity.setScreenId("RDMND101");
@@ -366,15 +404,27 @@ public class NC011Service extends BaseService {
           paramEntity.setSbt(StringUtils.setEmptyToNull(indto.getSbt()));
           selectCntSelectReqListEntity.setSbt(StringUtils.setEmptyToNull(indto.getSbt()));
 
-          //申請者所属リージョンの検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
-          paramEntity.setReqBrCode(StringUtils.setEmptyToNull(indto.getReqBrCode()));
-          selectCntSelectReqListEntity.setReqBrCode(StringUtils.setEmptyToNull(indto.getReqBrCode()));
+          //部門ランクの検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
+          paramEntity.setBumonRank(StringUtils.setEmptyToNull(indto.getBumonRank()));
+          selectCntSelectReqListEntity.setBumonRank(StringUtils.setEmptyToNull(indto.getBumonRank()));
+
+          //組織コードの検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
+          paramEntity.setBumonRyakuName(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
+          selectCntSelectReqListEntity.setBumonRyakuName(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
          //paramEntity.setReqBrCode("010");
 
-          //申請者所属エリアの検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
-          paramEntity.setReqDistCode(StringUtils.setEmptyToNull(indto.getReqDistCode()));
-          selectCntSelectReqListEntity.setReqDistCode(StringUtils.setEmptyToNull(indto.getReqDistCode()));
-          //paramEntity.setReqDistCode("011");
+          //組織名称の検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
+          paramEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
+          selectCntSelectReqListEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
+         //paramEntity.setReqBrCode("010");
+
+          //申請者所属リージョン(医薬支店C)の検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
+          paramEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
+          selectCntSelectReqListEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
+
+          //申請者所属エリア(医薬営業所C)の検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
+          paramEntity.setDistCode(StringUtils.setEmptyToNull(indto.getDistCode()));
+          selectCntSelectReqListEntity.setDistCode(StringUtils.setEmptyToNull(indto.getDistCode()));
 
           //申請者名の検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
           paramEntity.setReqJgiName(StringUtils.setEmptyToNull(indto.getReqJgiName()));
@@ -386,9 +436,10 @@ public class NC011Service extends BaseService {
           //paramEntity.setReqJgiNo("8830034");//test用
 
           //申請者所属の検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
-          paramEntity.setReqShz(StringUtils.setEmptyToNull(indto.getReqShz()));
-          selectCntSelectReqListEntity.setReqShz(StringUtils.setEmptyToNull(indto.getReqShz()));
-
+          paramEntity.setReqShz(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
+          selectCntSelectReqListEntity.setReqShz(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
+          //paramEntity.setReqShz(StringUtils.setEmptyToNull(indto.getReqShz()));
+          //selectCntSelectReqListEntity.setReqShz(StringUtils.setEmptyToNull(indto.getReqShz()));
           //都道府県の検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setADdrCodePref(StringUtils.setEmptyToNull(indto.getADdrCodePref()));
           selectCntSelectReqListEntity.setADdrCodePref(StringUtils.setEmptyToNull(indto.getADdrCodePref()));
@@ -575,9 +626,11 @@ public class NC011Service extends BaseService {
                 			dataRecord.setSbt("施設");
                 		}else if(entiry.getReqType().equals("31") || entiry.getReqType().equals("32") || entiry.getReqType().equals("33") || entiry.getReqType().equals("34") || entiry.getReqType().equals("41") || entiry.getReqType().equals("42") || entiry.getReqType().equals("43") || entiry.getReqType().equals("44") || entiry.getReqType().equals("51")) {
                 			dataRecord.setSbt("医師");
-                		}
+                		}else {
+                    		dataRecord.setSbt(" ");
+                    	}
                 	}else {
-                		dataRecord.setReqSbt(" ");
+                		dataRecord.setSbt(" ");
                 	}
 
                        //dataRecord.setReqId(entiry.getReqId());
@@ -603,27 +656,112 @@ public class NC011Service extends BaseService {
                 			dataRecord.setReqSbt("手動");
                 		}else if(entiry.getReqChl().equals("3") || entiry.getReqChl().equals("4")) {
                 			dataRecord.setReqSbt("ULT連携");
+                		}else if(entiry.getReqChl().equals("")){
+                			dataRecord.setReqSbt(" ");
+                		}else {
+                			dataRecord.setReqSbt(" ");
                 		}
                 	}else {
                 		dataRecord.setReqSbt(" ");
                 	}
 
                        //dataRecord.setreqChl(entiry.getreqChl());
-                    // 申請タイプ
+                    // 申請区分 コードの値のみの取得
+//                	if(entiry.getReqType() != null) {
+//                	dataRecord.setReqType(entiry.getReqType());
+//                	}else {
+//                		dataRecord.setReqType(" ");
+//                	}
+                	// 申請区分　コードの値を文字に変換している
                 	if(entiry.getReqType() != null) {
                 	dataRecord.setReqType(entiry.getReqType());
                 	}else {
                 		dataRecord.setReqType(" ");
                 	}
-                      // dataRecord.setReqType(entiry.getReqType());
                     // 申請ステータス
-                	if(entiry.getReqSts() != null) {
-                	dataRecord.setReqSts(entiry.getReqSts());
+                	if(entiry.getReqType() != null) {
+                		if(entiry.getReqType().equals("01")) {
+                			dataRecord.setReqType("施設新規作成");
+                		}else if(entiry.getReqType().equals("02")) {
+                			dataRecord.setReqType("施設情報更新");
+                		}else if(entiry.getReqType().equals("03")) {
+                			dataRecord.setReqType("施設削除");
+                		}else if(entiry.getReqType().equals("04")) {
+                			dataRecord.setReqType("施設復活");
+                		}else if(entiry.getReqType().equals("11")) {
+                			dataRecord.setReqType("施設紐付け新規");
+                		}else if(entiry.getReqType().equals("12")) {
+                			dataRecord.setReqType("施設紐付け変更");
+                		}else if(entiry.getReqType().equals("13")) {
+                			dataRecord.setReqType("施設紐付け削除");
+                		}else if(entiry.getReqType().equals("21")) {
+                			dataRecord.setReqType("施設来期用項目更新");
+                		}else if(entiry.getReqType().equals("31")) {
+                			dataRecord.setReqType("医師新規作成");
+                		}else if(entiry.getReqType().equals("32")) {
+                			dataRecord.setReqType("医師情報更新");
+                		}else if(entiry.getReqType().equals("33")) {
+                			dataRecord.setReqType("医師削除");
+                		}else if(entiry.getReqType().equals("34")) {
+                			dataRecord.setReqType("医師復活");
+                		}else if(entiry.getReqType().equals("41")) {
+                			dataRecord.setReqType("医師勤務先追加");
+                		}else if(entiry.getReqType().equals("42")) {
+                			dataRecord.setReqType("医療機関への異動");
+                		}else if(entiry.getReqType().equals("43")) {
+                			dataRecord.setReqType("医療機関以外への異動");
+                		}else if(entiry.getReqType().equals("44")) {
+                			dataRecord.setReqType("医師勤務先削除");
+                		}else if(entiry.getReqType().equals("51")) {
+                			dataRecord.setReqType("勤務先情報更新");
+                		}else {
+                			dataRecord.setReqType(" ");
+                		}
                 	}else {
                 		dataRecord.setReqSts(" ");
                 	}
 
-                       //dataRecord.setREQ_STS(entiry.getREQ_STS());
+                    // 申請ステータス
+//                	if(entiry.getReqSts() != null) {
+//                	dataRecord.setReqSts(entiry.getReqSts());
+//                	}else {
+//                		dataRecord.setReqSts(" ");
+//                	}
+                	// 申請ステータス
+                	if(entiry.getReqSts() != null) {
+                		if(entiry.getReqSts().equals("01")) {
+                			dataRecord.setReqSts("保存済み");
+                		}else if(entiry.getReqSts().equals("02")) {
+                			dataRecord.setReqSts("却下済み");
+                		}else if(entiry.getReqSts().equals("03")) {
+                			dataRecord.setReqSts("承認待ち");
+                		}else if(entiry.getReqSts().equals("04")) {
+                			dataRecord.setReqSts("承認済み");
+                		}else if(entiry.getReqSts().equals("11")) {
+                			dataRecord.setReqSts("ULT申請待ち");
+                		}else if(entiry.getReqSts().equals("12")) {
+                			dataRecord.setReqSts("ULT却下済み");
+                		}else if(entiry.getReqSts().equals("13")) {
+                			dataRecord.setReqSts("ULT承認待ち");
+                		}else if(entiry.getReqSts().equals("14")) {
+                			dataRecord.setReqSts("ULT承認済み");
+                		}else if(entiry.getReqSts().equals("21")) {
+                			dataRecord.setReqSts("FB適用承認済み");
+                		}else if(entiry.getReqSts().equals("22")) {
+                			dataRecord.setReqSts("FB結果確認");
+                		}else if(entiry.getReqSts().equals("31")) {
+                			dataRecord.setReqSts("MDM処理中");
+                		}else if(entiry.getReqSts().equals("32")) {
+                			dataRecord.setReqSts("MDM適用保留");
+                		}else if(entiry.getReqSts().equals("33")) {
+                			dataRecord.setReqSts("MDM登録済み");
+                		}else if(entiry.getReqSts().equals("34")) {
+                			dataRecord.setReqSts("MDM却下");
+                		}else {
+                    		dataRecord.setReqType(" ");
+                    	}
+                	}
+
                     // 施設固定コード/医師固定コード
                 	if(entiry.getInsNo() != null) {
                 	dataRecord.setInsNo(entiry.getInsNo());
@@ -701,8 +839,14 @@ public class NC011Service extends BaseService {
                       // dataRecord.setAPR_COMMNET(entiry.getAPR_COMMNET());
                     // 審査
                    	if(entiry.getShnFlg() != null) {
-                    	dataRecord.setShnFlg(entiry.getShnFlg());
-                    	}else {
+                		if(entiry.getShnFlg().equals("0")) {
+                			dataRecord.setShnFlg("未");
+                		}else if(entiry.getShnFlg().equals("1")) {
+                			dataRecord.setShnFlg("済");
+                		}else {
+                			dataRecord.setShnFlg(" ");
+                		}
+                	}else {
                     		dataRecord.setShnFlg(" ");
                     	}
                       // dataRecord.setAPR_COMMNET(entiry.getAPR_COMMNET());
@@ -782,10 +926,11 @@ public class NC011Service extends BaseService {
      * イベント処理
      * @param indto ND001DTO
      * @return 遷移先DTO
+     * @throws ParseException
      * @customizable
      */
     @Transactional
-    public BaseDTO page(NC011DTO indto) {
+    public BaseDTO page(NC011DTO indto) throws ParseException {
         BaseDTO outdto = indto;
         // START UOC
 

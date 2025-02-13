@@ -180,19 +180,19 @@ public class CatSnseiComboDataList implements Serializable {
 
 	private String reqJgiNo;
 	    /**
-	 * reqBrCode
+	 * brCode
 	 * @generated
 	 */
 
-	private String reqBrCode;
+	private String brCode;
 
 
 		/**
-	 * reqDistCode
+	 * distCode
 	 * @generated
 	 */
 
-	private String reqDistCode;
+	private String distCode;
         /**
      * reqShz
      * @generated
@@ -236,7 +236,17 @@ public class CatSnseiComboDataList implements Serializable {
 
     private String aprComment;
 
+    /**
+     * 遷移元画面ID
+     */
+	private String preScreenId;
+	public String getPreScreenId() {
+		return preScreenId;
+	}
 
+	public void setPreScreenId(String preScreenId) {
+		this.preScreenId = preScreenId;
+	}
 
     /**
      * コンストラクタ
@@ -526,23 +536,61 @@ public class CatSnseiComboDataList implements Serializable {
 	public void setReqJgiNo(String reqJgiNo) {
 		this.reqJgiNo = reqJgiNo;
 	}
+
+
+    /**
+     *部門ランク
+     */
+	private String bumonRank;
+
+    public String getBumonRank() {
+		return bumonRank;
+	}
+	public void setBumonRank(String bumonRank) {
+		this.bumonRank = bumonRank;
+	}
+
+    /**
+     *組織コード
+     */
+	private String sosCd;
+
+	public String getSosCd() {
+		return sosCd;
+	}
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
+	}
+
+    /**
+     *組織名称
+     */
+	private String bumonRyakuName;
+
+	public String getBumonRyakuName() {
+		return bumonRyakuName;
+	}
+	public void setBumonRyakuName(String bumonRyakuName) {
+		this.bumonRyakuName = bumonRyakuName;
+	}
+
 	/**
 	 * 医薬支店Cとの比較
 	 */
-    public String getReqBrCode() {
-		return reqBrCode;
+    public String getBrCode() {
+		return brCode;
 	}
-	public void setReqBrCode(String reqBrCode) {
-		this.reqBrCode = reqBrCode;
+	public void setBrCode(String brCode) {
+		this.brCode = brCode;
 	}
 	/**
 	 * 医薬営業所Cとの比較
 	 */
-	public String getReqDistCode() {
-		return reqDistCode;
+	public String getDistCode() {
+		return distCode;
 	}
-	public void setReqDistCode(String reqDistCode) {
-		this.reqDistCode = reqDistCode;
+	public void setDistCode(String distCode) {
+		this.distCode = distCode;
 	}
     /**
      * 検索条件_申請者所属

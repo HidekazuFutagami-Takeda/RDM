@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<!DOCTYPE rule SYSTEM "rule.dtd">
+<rule input="SQL定義書" output="sql.xml">
+    <sheet index="*" toName="SQL定義" exclude="表紙,変更履歴,template_SQL,master">
+        <label match="システム名" />
+        <label match="サブシステムID" />
+        <label match="テーブル物理名" />
+        <label match="版" direction="bottom" />
+        <label match="更新者" direction="bottom" />
+        <label match="更新日" direction="bottom" />
+        <label match="SQL種別" />
+        <label match="SQL ID" toName="SQLID" />
+        <label match="説明" />
+        <label match="SQL" />
+        <label match="除外テーブルカラム名" direction="bottom" />
+        <label match="テーブル名一覧" direction="bottom" />
+        <vlist match="パラメータ定義">
+            <property match="変数名" required="true" />
+            <property match="No." />
+            <property match="パラメータ名" />
+            <property match="変数型" />
+            <property match="備考" />
+            <property match="テスト*" toName="test" />
+        </vlist>
+        <vlist match="エンティティ定義">
+            <property match="変数名" required="true" />
+            <property match="No." />
+            <property match="項目名" />
+            <property match="列物理名" />
+            <property match="変数型" />
+            <property match="SQL型" />
+            <property match="ソート順" />
+            <property match="除外" />
+            <property match="備考" />
+        </vlist>
+    </sheet>
+    <sheet index="master">
+        <text match="変数型" />
+        <text match="SQL型" />
+    </sheet>
+</rule>

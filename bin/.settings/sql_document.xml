@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<data version="2.7.0.201402051635">
+    <selectTopMenuMnuKbnMgr>
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+    </selectTopMenuMnuKbnMgr>
+    <SQL螳夂ｾｩ name="selectTopMenuMnuKbnMgr">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+        <迚�>
+        <譖ｴ譁ｰ閠�譌･遶�/譖ｴ譁ｰ閠�
+        <譖ｴ譁ｰ譌･>2014/08/21</譖ｴ譁ｰ譌･>
+        <SQL遞ｮ蛻･>SELECT</SQL遞ｮ蛻･>
+        <SQLID>selectTopMenuMnuKbnMgr</SQLID>
+        <隱ｬ譏�繝｡繝九Η繝ｼ蛹ｺ蛻�ｮ｡逅�叙蠕�/隱ｬ譏�
+        <SQL>SELECT 
+  NVL(MIN(a.menu_kb),4) AS menu_kb
+FROM
+  iei_master.mnu_kb_mgr a,
+  iei_online.s_jkr_m_jgi_joken b
+WHERE
+  b.jgi_no = #{inJgiNo}
+AND a.joken_set_cd = b.joken_set_cd</SQL>
+        <髯､螟悶ユ繝ｼ繝悶Ν繧ｫ繝ｩ繝�錐/>
+        <繝��繝悶Ν蜷堺ｸ�ｦｧ/>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inJgiNo</螟画焚蜷�
+            <No.>1</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�蠕捺･ｭ蜩｡逡ｪ蜿ｷ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�Integer</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�menuKb</螟画焚蜷�
+            <No.>1</No.>
+            <鬆�岼蜷�繝｡繝九Η繝ｼ蛹ｺ蛻�/鬆�岼蜷�
+            <蛻礼黄逅�錐>menu_kb</蛻礼黄逅�錐>
+            <螟画焚蝙�Integer</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+    </SQL螳夂ｾｩ>
+    <SQL螳夂ｾｩ name="selectMenuViewJokenSetList">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+        <迚�>
+        <譖ｴ譁ｰ閠�譌･遶�/譖ｴ譁ｰ閠�
+        <譖ｴ譁ｰ譌･>2014/08/21</譖ｴ譁ｰ譌･>
+        <SQL遞ｮ蛻･>SELECT</SQL遞ｮ蛻･>
+        <SQLID>selectMenuViewJokenSetList</SQLID>
+        <隱ｬ譏�譚｡莉ｶ繧ｻ繝�ヨ讀懃ｴ｢</隱ｬ譏�
+        <SQL>SELECT
+  joken_set_cd
+FROM
+  s_jkr_m_jgi_joken
+WHERE jgi_no = #{inJgiNo}
+ORDER BY joken_set_cd</SQL>
+        <髯､螟悶ユ繝ｼ繝悶Ν繧ｫ繝ｩ繝�錐/>
+        <繝��繝悶Ν蜷堺ｸ�ｦｧ/>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inJgiNo</螟画焚蜷�
+            <No.>1</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�蠕捺･ｭ蜩｡逡ｪ蜿ｷ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�Integer</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�jokenSetCd</螟画焚蜷�
+            <No.>1</No.>
+            <鬆�岼蜷�譚｡莉ｶ繧ｻ繝�ヨ</鬆�岼蜷�
+            <蛻礼黄逅�錐>joken_set_cd</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+    </SQL螳夂ｾｩ>
+    <SQL螳夂ｾｩ name="selectTopMenuMainLink">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+        <迚�>
+        <譖ｴ譁ｰ閠�譌･遶�/譖ｴ譁ｰ閠�
+        <譖ｴ譁ｰ譌･>2014/08/21</譖ｴ譁ｰ譌･>
+        <SQL遞ｮ蛻･>SELECT</SQL遞ｮ蛻･>
+        <SQLID>selectTopMenuMainLink</SQLID>
+        <隱ｬ譏�繝ｭ繧ｰ繧､繝ｳ繝ｦ繝ｼ繧ｶ繝ｼ逡ｪ蜿ｷ蜿翫�繝｡繝九Η繝ｼ繝輔Λ繧ｰ縺九ｉ繝｡繧､繝ｳ繝｡繝九Η繝ｼ繧貞叙蠕励☆繧�/隱ｬ譏�
+        <SQL>SELECT
+    --繝｡繧､繝ｳ繝｡繝九Η繝ｼ蜿翫�繝医ャ繝励Γ繝九Η繝ｼ縺ｮ蝣ｴ蜷�
+  &lt;if test="inDataFlg == 1"&gt;
+    CASE WHEN links.scrn_id IS NOT NULL OR links.link_url IS NOT NULL THEN '0' ELSE '1' END sub_menu_flg ,
+    mgr.menu_id,
+  &lt;/if&gt;
+    --繧ｵ繝悶Γ繝九Η繝ｼ縺ｮ蝣ｴ蜷�
+  &lt;if test="inDataFlg == 2"&gt;
+    mgr.popup_id,
+  &lt;/if&gt;
+  &lt;if test="inDispKb == 1 or inDispKb == 3"&gt;
+    mgr.menu_name,
+  &lt;/if&gt;
+  &lt;if test="inDispKb != 1 and inDispKb != 3"&gt;
+    NVL(mgr.top_disp_name,mgr.menu_name) AS menu_name,
+  &lt;/if&gt;
+
+    --繝｡繝ｳ繝�リ繝ｳ繧ｹ蛹ｺ蛻�
+  CASE WHEN mgr.mnt_kb = '1' OR mgr.mnt_kb = '2' THEN mgr.mnt_kb
+     WHEN mgr.mnt_kb = '0' AND mdj.disp_kb IS NULL THEN  mgr.mnt_kb
+     WHEN mgr.mnt_kb = '0' AND mdj.disp_kb IS NOT NULL THEN  mdj.disp_kb
+  ELSE '1' END AS disp_kb,
+  mgr.grp_no,
+  NVL(mbd.bold_flg,'0') AS bold_flg,
+  CASE WHEN TRUNC(SYSDATE) BETWEEN TRUNC(mgr.disp_start_date) AND TRUNC(mgr.disp_start_date + 6) THEN '1' ELSE '0' END AS new_flg ,
+
+  mgr.cat_no,
+  mgr.sub_cat_no,
+  mgr.list_no,
+  mgr.free_flg1,
+
+  links.scrn_id,
+  links.func_id,
+  links.link_url,
+  links.target_type,
+  links.form_type,
+  links.form_name,
+  links.param_name1,
+  links.param_type1,
+  links.param_name2,
+  links.param_type2,
+  links.param_name3,
+  links.param_type3,
+  links.param_name4,
+  links.param_type4,
+  links.param_name5,
+  links.param_type5,
+  links.free_param_name1,
+  links.free_param1,
+  links.free_param_name2,
+  links.free_param2,
+  links.free_param_name3,
+  links.free_param3,
+  links.free_param_name4,
+  links.free_param4,
+  links.free_param_name5,
+  links.free_param5
+--繝｡繝九Η繝ｼ繝｡繧､繝ｳ邂｡逅�繝｡繝九Η繝ｼ繝ｪ繝ｳ繧ｯ繧ｳ繝ｳ繝�Φ繝�ｮ｡逅�
+FROM iei_master.mnu_main_mgr mgr,iei_master.mnu_link_contents links,
+
+(
+  SELECT
+    mdj4.menu_id,mdj4.menu_kb,MAX(mdj4.disp_kb) AS disp_kb
+  FROM (
+      SELECT DISTINCT
+        mdj3.menu_id,
+        mdj3.menu_kb,
+        CASE WHEN mdj2.disp_kb IS NOT NULL THEN mdj2.disp_kb WHEN mdj3.disp_kb = '0' THEN '1' ELSE '0' END AS disp_kb
+      FROM
+      (SELECT
+        mdj1.menu_id,
+        mdj1.disp_kb,
+        mdj1.menu_kb
+       FROM
+        iei_master.mnu_disp_joken mdj1,S_JKR_m_jgi_joken jkn
+       WHERE
+        jkn.jgi_no = #{inJgiNo}
+       AND mdj1.joken_set_cd = jkn.joken_set_cd
+       AND mdj1.menu_kb = #{inMenuKb}
+
+       ) mdj2,iei_master.mnu_disp_joken mdj3
+       WHERE
+         mdj2.menu_id(+) = mdj3.menu_id
+       AND mdj2.menu_kb(+) = mdj3.menu_kb
+       AND mdj3.menu_kb = #{inMenuKb}
+
+      ) mdj4
+  GROUP BY mdj4.menu_id,mdj4.menu_kb) mdj,
+
+(
+  SELECT
+    bold.menu_id,
+    bold.menu_kb,
+    CASE
+
+    WHEN (bold.bold_joken1 = '1' OR bold.bold_joken1 = '7') AND     --BOLD譚｡莉ｶ1 譛亥�繝ｻ蟷ｴ蠎ｦ蟋九�蟷ｴ蛻昴�蟷ｴ譛ｫ縺ｮ菴輔ｌ縺�
+        cal.cal_date &lt; bold.bold_date1 THEN '1'
+    WHEN  bold.bold_joken1 = '2' AND                                --BOLD譚｡莉ｶ1 譛域忰繝ｻ蟷ｴ蠎ｦ譛ｫ繝ｻ蟷ｴ譛ｫ縺ｮ菴輔ｌ縺�
+        cal.cal_date &gt; bold.bold_date1 THEN '1'
+    WHEN (bold.bold_joken2 = '1' OR bold.bold_joken2 = '7') AND     --BOLD譚｡莉ｶ2 譛亥�繝ｻ蟷ｴ蠎ｦ蟋九�蟷ｴ蛻昴�蟷ｴ譛ｫ縺ｮ菴輔ｌ縺�
+        cal.cal_date &lt; bold.bold_date2 THEN '1'
+    WHEN  bold.bold_joken2 = '2' AND                                --BOLD譚｡莉ｶ2 譛域忰繝ｻ蟷ｴ蠎ｦ譛ｫ繝ｻ蟷ｴ譛ｫ縺ｮ菴輔ｌ縺�
+        cal.cal_date &gt; bold.bold_date2 THEN '1'
+    WHEN (bold.bold_joken3 = '1' OR bold.bold_joken3 = '7') AND     --BOLD譚｡莉ｶ3 譛亥�繝ｻ蟷ｴ蠎ｦ蟋九�蟷ｴ蛻昴�蟷ｴ譛ｫ縺ｮ菴輔ｌ縺�
+         cal.cal_date &lt; bold.bold_date3 THEN '1'
+    WHEN  bold.bold_joken3 = '2' AND                                --BOLD譚｡莉ｶ3 譛域忰繝ｻ蟷ｴ蠎ｦ譛ｫ繝ｻ蟷ｴ譛ｫ縺ｮ菴輔ｌ縺�
+        cal.cal_date &gt; bold.bold_date3 THEN '1'
+
+    WHEN bold.bold_joken1 = '3'                                                                                                                                             --BOLD譚｡莉ｶ1縲�ｦ門�
+        AND ( cal.cal_date &gt;= TO_DATE(cal.cal_year || '-04-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-04-01') + bold.bold_term1
+        OR    cal.cal_date &gt;= TO_DATE(cal.cal_year || '-10-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-10-01') + bold.bold_term1) then '1'
+    WHEN  bold.bold_joken1 = '4'                                                                                                                                            --BOLD譚｡莉ｶ1縲�ｦ匁忰
+        AND ( cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) - bold.bold_term1 AND cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-03-01'))
+        OR    cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-09-01'))- bold.bold_term1 AND cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-09-01')) ) then '1'
+    WHEN  bold.bold_joken2 = '3'                                                                                                                                            --BOLD譚｡莉ｶ2縲�ｦ門�
+        AND (  cal.cal_date &gt;= TO_DATE(cal.cal_year || '-04-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '04-01') + bold.bold_term2
+        OR     cal.cal_date &gt;= TO_DATE(cal.cal_year || '-10-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '10-01') + bold.bold_term2) then '1'
+    WHEN bold.bold_joken2 = '4'                                                                                                                                             --BOLD譚｡莉ｶ2縲�ｦ匁忰
+        AND (  cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) - bold.bold_term2 AND cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-03-01'))
+        OR     cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-09-01'))- bold.bold_term2 AND cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-09-01')) ) then '1'
+    WHEN bold.bold_joken3 = '3'                                                                                                                                             --BOLD譚｡莉ｶ3縲�ｦ門�
+        AND ( cal.cal_date &gt;= TO_DATE(cal.cal_year || '-04-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-04-01') + bold.bold_term3
+        OR    cal.cal_date &gt;= TO_DATE(cal.cal_year || '-10-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-10-01') + bold.bold_term3) then '1'
+    WHEN bold.bold_joken3 = '4'                                                                                                                                             --BOLD譚｡莉ｶ3縲�ｦ匁忰
+        AND ( cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) - bold.bold_term3 AND cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-03-01'))
+        OR    cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-09-01'))- bold.bold_term3 AND cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-09-01')) ) then '1'
+    WHEN bold.bold_joken1 = '5'                                                                                                                                             --BOLD譚｡莉ｶ1縲�ｹｴ蠎ｦ蛻�
+        AND  cal.cal_date &gt;= TO_DATE(cal.cal_year || '-04-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-04-01') + bold.bold_term1 then '1'
+    WHEN bold.bold_joken1 = '6'                                                                                                                                             --BOLD譚｡莉ｶ1縲�ｹｴ蠎ｦ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) - bold.bold_term1 then '1'
+    WHEN bold.bold_joken1 = '8'                                                                                                                                             --BOLD譚｡莉ｶ1縲�ｹｴ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) - bold.bold_term1 then '1'
+    WHEN bold.bold_joken1 = '5'                                                                                                                                             --BOLD譚｡莉ｶ1縲�ｹｴ蠎ｦ蛻�
+        AND  cal.cal_date &gt;= TO_DATE(cal.cal_year || '-04-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-04-01') + bold.bold_term1 then '1'
+    WHEN bold.bold_joken1 = '6'                                                                                                                                             --BOLD譚｡莉ｶ2縲�ｹｴ蠎ｦ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) - bold.bold_term1 then '1'
+    WHEN bold.bold_joken1 = '8'                                                                                                                                             --BOLD譚｡莉ｶ2縲�ｹｴ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) - bold.bold_term1 then '1'
+    WHEN bold.bold_joken2 = '5'                                                                                                                                             --BOLD譚｡莉ｶ2縲�ｹｴ蠎ｦ蛻�
+        AND  cal.cal_date &gt;= TO_DATE(cal.cal_year || '-04-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-04-01') + bold.bold_term2 then '1'
+    WHEN bold.bold_joken2 = '6'                                                                                                                                             --BOLD譚｡莉ｶ2縲�ｹｴ蠎ｦ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) - bold.bold_term2 then '1'
+    WHEN bold.bold_joken2 = '8'                                                                                                                                             --BOLD譚｡莉ｶ3縲�ｹｴ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) - bold.bold_term2 then '1'
+    WHEN bold.bold_joken3 = '5'                                                                                                                                             --BOLD譚｡莉ｶ3縲�ｹｴ蠎ｦ蛻�
+        AND  cal.cal_date &gt;= TO_DATE(cal.cal_year || '-04-01') AND cal.cal_date &lt; TO_DATE(cal.cal_year || '-04-01') + bold.bold_term3 then '1'
+    WHEN bold.bold_joken3 = '6'                                                                                                                                             --BOLD譚｡莉ｶ3縲�ｹｴ蠎ｦ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-03-01')) - bold.bold_term3 then '1'
+    WHEN bold.bold_joken3 = '8'                                                                                                                                             --BOLD譚｡莉ｶ3縲�ｹｴ譛ｫ
+        AND  cal.cal_date &lt;= LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) AND cal.cal_date &gt; LAST_DAY(TO_DATE(cal.cal_year || '-12-01')) - bold.bold_term3 then '1'
+
+    ELSE '0' END bold_flg
+  FROM(
+
+  SELECT
+    mmm.menu_id,
+    mmm.menu_kb,
+    mmm.bold_joken1,
+    CASE WHEN mmm.bold_joken1 IS NULL THEN NULL
+         WHEN mmm.bold_joken1 = '1' THEN TRUNC(com.cal_date,'MM') + mmm.bold_term1                         --譛亥�
+         WHEN mmm.bold_joken1 = '2' THEN LAST_DAY(com.cal_date) - mmm.bold_term1                           --譛域忰
+         WHEN mmm.bold_joken1 = '7' THEN TRUNC(com.cal_date,'YY') + mmm.bold_term1                         --蟷ｴ蛻�
+    ELSE NULL END bold_date1,                             --陬�｣ｾ譛滄俣1
+
+    mmm.bold_term1,
+    mmm.bold_joken2,
+    CASE WHEN mmm.bold_joken2 IS NULL THEN NULL
+         WHEN mmm.bold_joken2 = '1' THEN TRUNC(com.cal_date,'MM') + mmm.bold_term2                         --譛亥�
+         WHEN mmm.bold_joken2 = '2' THEN LAST_DAY(com.cal_date) - mmm.bold_term2                           --譛域忰
+         WHEN mmm.bold_joken2 = '7' THEN TRUNC(com.cal_date,'YY') + mmm.bold_term2                         --蟷ｴ蛻�
+    ELSE NULL END bold_date2,                             --陬�｣ｾ譛滄俣2
+
+    mmm.bold_term2,
+    mmm.bold_joken3,
+    CASE WHEN mmm.bold_joken3 IS NULL THEN NULL
+         WHEN mmm.bold_joken3 = '1' THEN TRUNC(com.cal_date,'MM') + mmm.bold_term3                         --譛亥�
+         WHEN mmm.bold_joken3 = '2' THEN LAST_DAY(com.cal_date) - mmm.bold_term3                           --譛域忰
+         WHEN mmm.bold_joken3 = '7' THEN TRUNC(com.cal_date,'YY') + mmm.bold_term3                         --蟷ｴ蛻�
+    ELSE NULL END bold_date3,                             --陬�｣ｾ譛滄俣3
+
+    mmm.bold_term3
+
+  FROM iei_master.mnu_main_mgr mmm,(select * from orausr01.com_cal where today = '1') com     --繝｡繝九Η繝ｼ繝｡繧､繝ｳ邂｡逅�繧ｫ繝ｬ繝ｳ繝��繝��繝悶Ν
+  WHERE mmm.menu_kb = #{inMenuKb}) bold,(select * from orausr01.com_cal where today = '1') cal
+
+  ) mbd
+WHERE
+  mgr.menu_kb = #{inMenuKb}
+
+    --繝｡繧､繝ｳ繝｡繝九Η繝ｼ蜿翫�繧ｵ繝悶Γ繝九Η繝ｼ縺ｮ蝣ｴ蜷�
+    &lt;if test="inDispKb == 1 and inDataFlg == 1"&gt;
+      --繝｡繧､繝ｳ繝｡繝九Η繝ｼ蜿翫�繧ｵ繝悶Γ繝九Η繝ｼ縺ｮ蝣ｴ蜷�
+    AND mgr.popup_id IS NULL
+    &lt;/if&gt;
+      --繧ｵ繝悶Γ繝九Η繝ｼ縺ｮ蝣ｴ蜷�
+    &lt;if test="inDispKb == 1 and inDataFlg == 2"&gt;
+    AND mgr.popup_id IS NOT NULL
+    &lt;/if&gt;
+    &lt;if test="inDispKb == 1"&gt;
+    AND mgr.free_flg1 = '1'
+    &lt;/if&gt;
+    &lt;if test="inDispKb == 3"&gt;
+    AND mgr.free_flg1 IS NULL
+    &lt;/if&gt;
+    &lt;if test="inDispKb != 1 and inDispKb != 3"&gt;
+    AND mgr.free_flg1 = '1'
+    &lt;/if&gt;
+
+    --繧ｭ繝｣繝ｪ繧｢蛻･陦ｨ遉ｺ繝ｻ繝｡繝九Η繝ｼ陦ｨ遉ｺ驛ｨ菴榊玄蛻��繝｡繝ｳ繝�玄蛻�
+AND NOT (mgr.carrier_kb = #{inCarrierKb1} OR mgr.carrier_kb = #{inCarrierKb2} OR mgr.disp_part_kb = #{inDispPartKb} OR mgr.mnt_kb = '1')
+
+    --莉｣陦後Θ繝ｼ繧ｶ蟇ｾ蠢懊�縺ｿ陦ｨ遉ｺ
+    --騾壼ｸｸ譎�
+    &lt;if test="inActFlg == false"&gt;
+    AND NVL(mgr.pxy_link_disp,'1') NOT IN ('0')
+    &lt;/if&gt;
+    --莉｣陦梧凾
+    &lt;if test="inActFlg == true"&gt;
+    AND NVL(mgr.pxy_link_disp,'0') IN ('0')
+    &lt;/if&gt;
+
+AND mgr.menu_id = mbd.menu_id(+)
+AND mgr.menu_kb = mbd.menu_kb(+)
+AND mgr.menu_id = links.menu_id(+)
+AND mgr.menu_id = mdj.menu_id(+)
+AND mgr.menu_kb = mdj.menu_kb(+)
+
+
+    --繝｡繝九Η繝ｼ陦ｨ遉ｺ驛ｨ菴阪′縲後ぎ繧ｸ繧ｧ繝�ヨ縲阪�髯､螟�
+AND mgr.disp_part_kb != '3'
+
+    --陦ｨ遉ｺ蛹ｺ蛻�′縲鯉ｼ代�繧呈賜髯､
+AND NOT EXISTS(
+    SELECT 1 FROM iei_master.mnu_main_mgr mg
+    WHERE mg.menu_id = mgr.menu_id AND mg.menu_kb = mgr.menu_kb AND mdj.disp_kb = '1'
+  )
+
+    --繝｡繝九Η繝ｼ陦ｨ遉ｺ譛滄俣
+AND SYSDATE BETWEEN mgr.disp_start_date AND mgr.disp_end_date
+
+ORDER BY
+  &lt;choose&gt;
+    &lt;when test="inDispKb == 1"&gt;
+    mgr.grp_no,
+    mgr.disp_seq
+    &lt;/when&gt;
+    &lt;when test="inDispKb == 3"&gt;
+    mgr.cat_no,
+    mgr.sub_cat_no,
+    mgr.list_no,
+    mgr.grp_no
+    &lt;/when&gt;
+    &lt;otherwise&gt;
+    mgr.top_disp_seq
+    &lt;/otherwise&gt;
+  &lt;/choose&gt;</SQL>
+        <髯､螟悶ユ繝ｼ繝悶Ν繧ｫ繝ｩ繝�錐/>
+        <繝��繝悶Ν蜷堺ｸ�ｦｧ/>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inDataFlg</螟画焚蜷�
+            <No.>1</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繝��繧ｿ繝輔Λ繧ｰ�医Γ繧､繝ｳ繝｡繝九Η繝ｼ��縲�し繝悶Γ繝九Η繝ｼ����/繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inDispKb</螟画焚蜷�
+            <No.>2</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�陦ｨ遉ｺ蛹ｺ蛻�ｼ医Γ繧､繝ｳ繝｡繝九Η繝ｼ��縲�ヨ繝��繝｡繝九Η繝ｼ��  譁ｰ繝｡繝九Η繝ｼ:3��/繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inCarrierKb1</螟画焚蜷�
+            <No.>3</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繧ｭ繝｣繝ｪ繧｢蛹ｺ蛻�</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inCarrierKb2</螟画焚蜷�
+            <No.>4</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繧ｭ繝｣繝ｪ繧｢蛹ｺ蛻�</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inDispPartKb</螟画焚蜷�
+            <No.>5</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繝｡繝九Η繝ｼ陦ｨ遉ｺ驛ｨ菴榊玄蛻�0�壹Γ繧､繝ｳ繝｡繝九Η繝ｼ驛ｨ縺ｮ縺ｿ縲��壹ヨ繝��繝｡繝九Η繝ｼ驛ｨ縺ｮ縺ｿ縲�2�壹Γ繧､繝ｳ繝｡繝九Η繝ｼ驛ｨ縺ｨ繝医ャ繝励Γ繝九Η繝ｼ驛ｨ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inActFlg</螟画焚蜷�
+            <No.>6</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�莉｣陦後ヵ繝ｩ繧ｰ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�Boolean</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inJgiNo</螟画焚蜷�
+            <No.>7</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�蠕捺･ｭ蜩｡逡ｪ蜿ｷ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inMenuKb</螟画焚蜷�
+            <No.>8</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繝｡繝九Η繝ｼ蛹ｺ蛻�/繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�String</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�subMenuFlg</螟画焚蜷�
+            <No.>1</No.>
+            <鬆�岼蜷�繧ｵ繝悶Γ繝九Η繝ｼ繝輔Λ繧ｰ</鬆�岼蜷�
+            <蛻礼黄逅�錐>sub_menu_flg</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�menuId</螟画焚蜷�
+            <No.>2</No.>
+            <鬆�岼蜷�繝｡繝九Η繝ｼID</鬆�岼蜷�
+            <蛻礼黄逅�錐>menu_id</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�popupId</螟画焚蜷�
+            <No.>3</No.>
+            <鬆�岼蜷�繝｡繝九Η繝ｼ繝昴ャ繝励い繝��ID</鬆�岼蜷�
+            <蛻礼黄逅�錐>popup_id</蛻礼黄逅�錐>
+            <螟画焚蝙�int</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�menuName</螟画焚蜷�
+            <No.>4</No.>
+            <鬆�岼蜷�繝｡繝九Η繝ｼ蜷咲ｧｰ</鬆�岼蜷�
+            <蛻礼黄逅�錐>menu_name</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�dispKb</螟画焚蜷�
+            <No.>5</No.>
+            <鬆�岼蜷�陦ｨ遉ｺ蛹ｺ蛻�ｼ医Γ繧､繝ｳ繝｡繝九Η繝ｼ��縲�ヨ繝��繝｡繝九Η繝ｼ��  譁ｰ繝｡繝九Η繝ｼ:3��/鬆�岼蜷�
+            <蛻礼黄逅�錐>disp_kb</蛻礼黄逅�錐>
+            <螟画焚蝙�int</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�grpNo</螟画焚蜷�
+            <No.>6</No.>
+            <鬆�岼蜷�繧ｰ繝ｫ繝ｼ繝湧o</鬆�岼蜷�
+            <蛻礼黄逅�錐>grp_no</蛻礼黄逅�錐>
+            <螟画焚蝙�int</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�boldFlg</螟画焚蜷�
+            <No.>7</No.>
+            <鬆�岼蜷�陬�｣ｾ繝輔Λ繧ｰ</鬆�岼蜷�
+            <蛻礼黄逅�錐>bold_flg</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�newFlg</螟画焚蜷�
+            <No.>8</No.>
+            <鬆�岼蜷�New繝輔Λ繧ｰ</鬆�岼蜷�
+            <蛻礼黄逅�錐>new_flg</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�catNo</螟画焚蜷�
+            <No.>9</No.>
+            <鬆�岼蜷�繧ｫ繝�ざ繝ｪ繝ｼNo</鬆�岼蜷�
+            <蛻礼黄逅�錐>cat_no</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�subCatNo</螟画焚蜷�
+            <No.>10</No.>
+            <鬆�岼蜷�繧ｵ繝悶き繝�ざ繝ｪ繝ｼNo</鬆�岼蜷�
+            <蛻礼黄逅�錐>sub_cat_no</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�listNo</螟画焚蜷�
+            <No.>11</No.>
+            <鬆�岼蜷�繝ｪ繧ｹ繝�o</鬆�岼蜷�
+            <蛻礼黄逅�錐>list_no</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeFlg1</螟画焚蜷�
+            <No.>12</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝輔Λ繧ｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_flg1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�scrnId</螟画焚蜷�
+            <No.>13</No.>
+            <鬆�岼蜷�逕ｻ髱｢繧ｹ繧ｯ繝ｪ繝ｼ繝ｳID</鬆�岼蜷�
+            <蛻礼黄逅�錐>scrn_id</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�funcId</螟画焚蜷�
+            <No.>14</No.>
+            <鬆�岼蜷�逕ｻ髱｢繝輔ぃ繝ｳ繧ｯ繧ｷ繝ｧ繝ｳID</鬆�岼蜷�
+            <蛻礼黄逅�錐>func_id</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�linkUrl</螟画焚蜷�
+            <No.>15</No.>
+            <鬆�岼蜷�繝ｪ繝ｳ繧ｯ蜈医�URL</鬆�岼蜷�
+            <蛻礼黄逅�錐>link_url</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�targetType</螟画焚蜷�
+            <No.>16</No.>
+            <鬆�岼蜷�繧ｿ繝ｼ繧ｲ繝�ヨ螻樊�</鬆�岼蜷�
+            <蛻礼黄逅�錐>target_type</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�formType</螟画焚蜷�
+            <No.>17</No.>
+            <鬆�岼蜷�騾∽ｿ｡譁ｹ蠑�/鬆�岼蜷�
+            <蛻礼黄逅�錐>form_type</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�formName</螟画焚蜷�
+            <No.>18</No.>
+            <鬆�岼蜷�繝輔か繝ｼ繝�錐遘ｰ</鬆�岼蜷�
+            <蛻礼黄逅�錐>form_name</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName1</螟画焚蜷�
+            <No.>19</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType1</螟画焚蜷�
+            <No.>20</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName2</螟画焚蜷�
+            <No.>21</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType2</螟画焚蜷�
+            <No.>22</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName3</螟画焚蜷�
+            <No.>23</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType3</螟画焚蜷�
+            <No.>24</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName4</螟画焚蜷�
+            <No.>25</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType4</螟画焚蜷�
+            <No.>26</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName5</螟画焚蜷�
+            <No.>27</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType5</螟画焚蜷�
+            <No.>28</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName1</螟画焚蜷�
+            <No.>29</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam1</螟画焚蜷�
+            <No.>30</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName2</螟画焚蜷�
+            <No.>31</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam2</螟画焚蜷�
+            <No.>32</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName3</螟画焚蜷�
+            <No.>33</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam3</螟画焚蜷�
+            <No.>34</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName4</螟画焚蜷�
+            <No.>35</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam4</螟画焚蜷�
+            <No.>36</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName5</螟画焚蜷�
+            <No.>37</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam5</螟画焚蜷�
+            <No.>38</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+    </SQL螳夂ｾｩ>
+    <SQL螳夂ｾｩ name="selectTopMenuSubTopLink">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+        <迚�>
+        <譖ｴ譁ｰ閠�譌･遶�/譖ｴ譁ｰ閠�
+        <譖ｴ譁ｰ譌･>2014/08/21</譖ｴ譁ｰ譌･>
+        <SQL遞ｮ蛻･>SELECT</SQL遞ｮ蛻･>
+        <SQLID>selectTopMenuSubTopLink</SQLID>
+        <隱ｬ譏�繝ｭ繧ｰ繧､繝ｳ繝ｦ繝ｼ繧ｶ繝ｼ逡ｪ蜿ｷ蜿翫�繝｡繝九Η繝ｼ繝輔Λ繧ｰ縺九ｉ繧ｵ繝悶Γ繝九Η繝ｼ繧貞叙蠕励☆繧�/隱ｬ譏�
+        <SQL>SELECT
+    mgr.menu_name,                                 --繝｡繝九Η繝ｼ蜷咲ｧｰ
+    mgr.mnt_kb,                                        --繝｡繝ｳ繝�リ繝ｳ繧ｹ蛹ｺ蛻�
+    mgr.cat_no,                                         --繧ｫ繝�ざ繝ｪ繝ｼNo
+    mgr.sub_cat_no,                                  --繧ｵ繝悶き繝�ざ繝ｪ繝ｼNo
+    mgr.list_no,                                         --繝ｪ繧ｹ繝�o
+    mgr.free_flg1,                                      --繝輔Μ繝ｼ繝輔Λ繧ｰ��
+    lnk.scrn_id,                                          --逕ｻ髱｢繧ｹ繧ｯ繝ｪ繝ｼ繝ｳID
+    lnk.func_id,                                          --逕ｻ髱｢繝輔ぃ繝ｳ繧ｯ繧ｷ繝ｧ繝ｳID
+    lnk.link_url,                                          --繝ｪ繝ｳ繧ｯ蜈医�URL
+    lnk.target_type,                                   --繧ｿ繝ｼ繧ｲ繝�ヨ螻樊�
+    lnk.form_type,                                     --騾∽ｿ｡譁ｹ蠑�
+    lnk.form_name,                                       --繝輔か繝ｼ繝�錐遘ｰ
+    lnk.param_name1,                                   --繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.param_type1,                                     --繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��
+    lnk.param_name2,                                     --繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.param_type2,                                     --繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��
+    lnk.param_name3,                                     --繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.param_type3,                                     --繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��
+    lnk.param_name4,                                     --繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.param_type4,                                     --繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��
+    lnk.param_name5,                                     --繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.param_type5,                                     --繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��
+    lnk.free_param_name1,                            --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.free_param1,                                     --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��
+    lnk.free_param_name2,                                 --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.free_param2,                                     --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��
+    lnk.free_param_name3,                                 --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.free_param3,                                     --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��
+    lnk.free_param_name4,                                 --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.free_param4,                                     --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��
+    lnk.free_param_name5,                                 --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��
+    lnk.free_param5                                         --繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��
+FROM
+    (SELECT
+        c.menu_id,                                       --繝｡繝九Η繝ｼID
+        MIN(c.popup_seq) AS popup_seq                    --繝昴ャ繝励い繝��蜀�ｸｦ縺ｳ鬆�
+     FROM
+
+        (SELECT
+            a.menu_id,                                   --繝｡繝九Η繝ｼID
+            a.joken_cd,                                  --譚｡莉ｶ繧ｻ繝�ヨ
+            a.popup_seq                                  --繝昴ャ繝励い繝��蜀�ｸｦ縺ｳ鬆�
+         FROM
+             iei_master.mnu_top_task a ,s_jkr_m_jgi_joken b    --繝｡繝九Η繝ｼ繝医ャ繝励ち繧ｹ繧ｯ邂｡逅�蠕捺･ｭ蜩｡蛻･譚｡莉ｶ繝��繝悶Ν蠖捺怦
+         WHERE
+             b.jgi_no = #{inJgiNo}                         --蠕捺･ｭ蜩｡逡ｪ蜿ｷ
+
+         AND a.joken_cd = b.joken_set_cd                 --譚｡莉ｶ繧ｻ繝�ヨ
+        ) c
+    GROUP BY c.menu_id) tsk,                             --繝｡繝九Η繝ｼID
+    iei_master.mnu_main_mgr mgr,                         --繝｡繝九Η繝ｼ繝｡繧､繝ｳ邂｡逅�
+    iei_master.mnu_link_contents lnk                     --繝｡繝九Η繝ｼ繝ｪ繝ｳ繧ｯ繧ｳ繝ｳ繝�Φ繝�ｮ｡逅�
+WHERE
+    tsk.menu_id = mgr.menu_id                            --繝｡繝九Η繝ｼID
+AND mgr.menu_kb = #{inMenuKb}                             --繝｡繝九Η繝ｼ蛹ｺ蛻�
+
+AND mgr.menu_id = lnk.menu_id(+)                         --繝｡繝九Η繝ｼID
+
+        --繧ｭ繝｣繝ｪ繧｢蛻･陦ｨ遉ｺ繝ｻ繝｡繝九Η繝ｼ陦ｨ遉ｺ驛ｨ菴榊玄蛻��繝｡繝ｳ繝�玄蛻�
+        --繝｡繝九Η繝ｼ繝ｪ繝ｳ繧ｯ縺ｮ蜀�ｮｹ繧定｡ｨ遉ｺ縺吶ｋ
+AND NOT (mgr.carrier_kb = #{inCarrierKb1} OR mgr.carrier_kb = #{inCarrierKb2} OR mgr.disp_part_kb = '1' OR mgr.mnt_kb = '1')
+
+        --莉｣陦後Θ繝ｼ繧ｶ蟇ｾ蠢懊�縺ｿ陦ｨ遉ｺ
+        --騾壼ｸｸ譎�
+    &lt;if test="inActFlg == false"&gt;
+    AND NVL(mgr.pxy_link_disp,'1') NOT IN ('0')
+    &lt;/if&gt;
+    --莉｣陦梧凾
+    &lt;if test="inActFlg == true"&gt;
+    AND NVL(mgr.pxy_link_disp,'0') IN ('0')
+    &lt;/if&gt;
+
+        --繝｡繝九Η繝ｼ陦ｨ遉ｺ譛滄俣
+AND SYSDATE BETWEEN mgr.disp_start_date AND mgr.disp_end_date
+
+        --繝｡繝九Η繝ｼ陦ｨ遉ｺ驛ｨ菴阪′縲後ぎ繧ｸ繧ｧ繝�ヨ縲阪�髯､螟�
+AND mgr.disp_part_kb != '3'                         --繝｡繝九Η繝ｼ陦ｨ遉ｺ驛ｨ菴榊玄蛻�
+AND mgr.free_flg1 = '1'                             --繝輔Μ繝ｼ繝輔Λ繧ｰ
+ORDER BY
+    tsk.popup_seq,
+    mgr.cat_no,
+    mgr.sub_cat_no,
+    mgr.list_no</SQL>
+        <髯､螟悶ユ繝ｼ繝悶Ν繧ｫ繝ｩ繝�錐/>
+        <繝��繝悶Ν蜷堺ｸ�ｦｧ/>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inCarrierKb1</螟画焚蜷�
+            <No.>1</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繧ｭ繝｣繝ｪ繧｢蛹ｺ蛻�</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inCarrierKb2</螟画焚蜷�
+            <No.>2</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繧ｭ繝｣繝ｪ繧｢蛹ｺ蛻�</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inActFlg</螟画焚蜷�
+            <No.>3</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�莉｣陦後ヵ繝ｩ繧ｰ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�Boolean</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inJgiNo</螟画焚蜷�
+            <No.>4</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�蠕捺･ｭ蜩｡逡ｪ蜿ｷ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inMenuKb</螟画焚蜷�
+            <No.>5</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繝｡繝九Η繝ｼ蛹ｺ蛻�/繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�String</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�menuName</螟画焚蜷�
+            <No.>1</No.>
+            <鬆�岼蜷�繝｡繝九Η繝ｼ蜷咲ｧｰ</鬆�岼蜷�
+            <蛻礼黄逅�錐>menu_name</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�mntKb</螟画焚蜷�
+            <No.>2</No.>
+            <鬆�岼蜷�繝｡繝ｳ繝�リ繝ｳ繧ｹ蛹ｺ蛻�/鬆�岼蜷�
+            <蛻礼黄逅�錐>mnt_kb</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�catNo</螟画焚蜷�
+            <No.>3</No.>
+            <鬆�岼蜷�繧ｫ繝�ざ繝ｪ繝ｼNo</鬆�岼蜷�
+            <蛻礼黄逅�錐>cat_no</蛻礼黄逅�錐>
+            <螟画焚蝙�int</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�subCatNo</螟画焚蜷�
+            <No.>4</No.>
+            <鬆�岼蜷�繧ｵ繝悶き繝�ざ繝ｪ繝ｼNo</鬆�岼蜷�
+            <蛻礼黄逅�錐>sub_cat_no</蛻礼黄逅�錐>
+            <螟画焚蝙�int</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�listNo</螟画焚蜷�
+            <No.>5</No.>
+            <鬆�岼蜷�繝ｪ繧ｹ繝�o</鬆�岼蜷�
+            <蛻礼黄逅�錐>list_no</蛻礼黄逅�錐>
+            <螟画焚蝙�int</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeFlg1</螟画焚蜷�
+            <No.>6</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝輔Λ繧ｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_flg1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�scrnId</螟画焚蜷�
+            <No.>7</No.>
+            <鬆�岼蜷�逕ｻ髱｢繧ｹ繧ｯ繝ｪ繝ｼ繝ｳID</鬆�岼蜷�
+            <蛻礼黄逅�錐>scrn_id</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�funcId</螟画焚蜷�
+            <No.>8</No.>
+            <鬆�岼蜷�逕ｻ髱｢繝輔ぃ繝ｳ繧ｯ繧ｷ繝ｧ繝ｳID</鬆�岼蜷�
+            <蛻礼黄逅�錐>func_id</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�linkUrl</螟画焚蜷�
+            <No.>9</No.>
+            <鬆�岼蜷�繝ｪ繝ｳ繧ｯ蜈医�URL</鬆�岼蜷�
+            <蛻礼黄逅�錐>link_url</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�targetType</螟画焚蜷�
+            <No.>10</No.>
+            <鬆�岼蜷�繧ｿ繝ｼ繧ｲ繝�ヨ螻樊�</鬆�岼蜷�
+            <蛻礼黄逅�錐>target_type</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�formType</螟画焚蜷�
+            <No.>11</No.>
+            <鬆�岼蜷�騾∽ｿ｡譁ｹ蠑�/鬆�岼蜷�
+            <蛻礼黄逅�錐>form_type</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�formName</螟画焚蜷�
+            <No.>12</No.>
+            <鬆�岼蜷�繝輔か繝ｼ繝�錐遘ｰ</鬆�岼蜷�
+            <蛻礼黄逅�錐>form_name</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName1</螟画焚蜷�
+            <No.>13</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType1</螟画焚蜷�
+            <No.>14</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName2</螟画焚蜷�
+            <No.>15</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType2</螟画焚蜷�
+            <No.>16</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName3</螟画焚蜷�
+            <No.>17</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType3</螟画焚蜷�
+            <No.>18</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName4</螟画焚蜷�
+            <No.>19</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType4</螟画焚蜷�
+            <No.>20</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramName5</螟画焚蜷�
+            <No.>21</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_name5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�paramType5</螟画焚蜷�
+            <No.>22</No.>
+            <鬆�岼蜷�繝代Λ繝｡繝ｼ繧ｿ遞ｮ蛻･��/鬆�岼蜷�
+            <蛻礼黄逅�錐>param_type5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName1</螟画焚蜷�
+            <No.>23</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam1</螟画焚蜷�
+            <No.>24</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param1</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName2</螟画焚蜷�
+            <No.>25</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam2</螟画焚蜷�
+            <No.>26</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param2</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName3</螟画焚蜷�
+            <No.>27</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam3</螟画焚蜷�
+            <No.>28</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param3</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName4</螟画焚蜷�
+            <No.>29</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam4</螟画焚蜷�
+            <No.>30</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param4</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParamName5</螟画焚蜷�
+            <No.>31</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ蜷咲ｧｰ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param_name5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�freeParam5</螟画焚蜷�
+            <No.>32</No.>
+            <鬆�岼蜷�繝輔Μ繝ｼ繝代Λ繝｡繝ｼ繧ｿ��/鬆�岼蜷�
+            <蛻礼黄逅�錐>free_param5</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+    </SQL螳夂ｾｩ>
+    <SQL螳夂ｾｩ name="selectLoginJgiNoByUserId">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+        <迚�>
+        <譖ｴ譁ｰ閠�譌･遶�/譖ｴ譁ｰ閠�
+        <譖ｴ譁ｰ譌･>2014/08/21</譖ｴ譁ｰ譌･>
+        <SQL遞ｮ蛻･>SELECT</SQL遞ｮ蛻･>
+        <SQLID>selectLoginJgiNoByUserId</SQLID>
+        <隱ｬ譏�螟画鋤繝��繝悶Ν繧医ｊ繝ｦ繝ｼ繧ｶID繧偵く繝ｼ縺ｫ蠕捺･ｭ蜩｡逡ｪ蜿ｷ繧貞叙蠕励☆繧�/隱ｬ譏�
+        <SQL>SELECT
+    COM_USER_INFO.SEARCH_JGI_NO(#{inUserId})  JGI_NO
+FROM
+    DUAL</SQL>
+        <髯､螟悶ユ繝ｼ繝悶Ν繧ｫ繝ｩ繝�錐/>
+        <繝��繝悶Ν蜷堺ｸ�ｦｧ/>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inUserId</螟画焚蜷�
+            <No.>1</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�繝ｦ繝ｼ繧ｶID</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�String</螟画焚蝙�
+            <蛯呵�/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�jgiNo</螟画焚蜷�
+            <No.>1</No.>
+            <鬆�岼蜷�蠕捺･ｭ蜩｡逡ｪ蜿ｷ</鬆�岼蜷�
+            <蛻礼黄逅�錐>JGI_NO</蛻礼黄逅�錐>
+            <螟画焚蝙�int</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+    </SQL螳夂ｾｩ>
+    <SQL螳夂ｾｩ name="selectLoginUserIdByJgiNo">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+        <迚�>
+        <譖ｴ譁ｰ閠�譌･遶�/譖ｴ譁ｰ閠�
+        <譖ｴ譁ｰ譌･>2014/08/21</譖ｴ譁ｰ譌･>
+        <SQL遞ｮ蛻･>SELECT</SQL遞ｮ蛻･>
+        <SQLID>selectLoginUserIdByJgiNo</SQLID>
+        <隱ｬ譏�螟画鋤繝��繝悶Ν繧医ｊ繝ｦ繝ｼ繧ｶID繧偵く繝ｼ縺ｫ繝ｦ繝ｼ繧ｶID繧貞叙蠕励☆繧�/隱ｬ譏�
+        <SQL>SELECT
+    COM_USER_INFO.SEARCH_USER_ID(#{inJgiNo})  USER_ID
+FROM
+    DUAL</SQL>
+        <髯､螟悶ユ繝ｼ繝悶Ν繧ｫ繝ｩ繝�錐/>
+        <繝��繝悶Ν蜷堺ｸ�ｦｧ/>
+        <繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+            <螟画焚蜷�inJgiNo</螟画焚蜷�
+            <No.>1</No.>
+            <繝代Λ繝｡繝ｼ繧ｿ蜷�蠕捺･ｭ蜩｡逡ｪ蜿ｷ</繝代Λ繝｡繝ｼ繧ｿ蜷�
+            <螟画焚蝙�int</螟画焚蝙�
+            <蛯呵�/>
+            <test1/>
+        </繝代Λ繝｡繝ｼ繧ｿ螳夂ｾｩ>
+        <繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+            <螟画焚蜷�userId</螟画焚蜷�
+            <No.>1</No.>
+            <鬆�岼蜷�繝ｦ繝ｼ繧ｶID</鬆�岼蜷�
+            <蛻礼黄逅�錐>USER_ID</蛻礼黄逅�錐>
+            <螟画焚蝙�String</螟画焚蝙�
+            <SQL蝙�>
+            <繧ｽ繝ｼ繝磯�/>
+            <髯､螟�>
+            <蛯呵�/>
+        </繧ｨ繝ｳ繝�ぅ繝�ぅ螳夂ｾｩ>
+    </SQL螳夂ｾｩ>
+    
+    <master>
+        <螟画焚蝙�Boolean</螟画焚蝙�
+        <螟画焚蝙�Boolean[]</螟画焚蝙�
+        <螟画焚蝙�Byte</螟画焚蝙�
+        <螟画焚蝙�Byte[]</螟画焚蝙�
+        <螟画焚蝙�Double</螟画焚蝙�
+        <螟画焚蝙�Double[]</螟画焚蝙�
+        <螟画焚蝙�Float</螟画焚蝙�
+        <螟画焚蝙�Float[]</螟画焚蝙�
+        <螟画焚蝙�Integer</螟画焚蝙�
+        <螟画焚蝙�Integer[]</螟画焚蝙�
+        <螟画焚蝙�Long</螟画焚蝙�
+        <螟画焚蝙�Long[]</螟画焚蝙�
+        <螟画焚蝙�Short</螟画焚蝙�
+        <螟画焚蝙�Short[]</螟画焚蝙�
+        <螟画焚蝙�String</螟画焚蝙�
+        <螟画焚蝙�String[]</螟画焚蝙�
+        <螟画焚蝙�boolean</螟画焚蝙�
+        <螟画焚蝙�boolean[]</螟画焚蝙�
+        <螟画焚蝙�byte</螟画焚蝙�
+        <螟画焚蝙�byte[]</螟画焚蝙�
+        <螟画焚蝙�double</螟画焚蝙�
+        <螟画焚蝙�double[]</螟画焚蝙�
+        <螟画焚蝙�float</螟画焚蝙�
+        <螟画焚蝙�float[]</螟画焚蝙�
+        <螟画焚蝙�int</螟画焚蝙�
+        <螟画焚蝙�int[]</螟画焚蝙�
+        <螟画焚蝙�java.math.BigDecimal</螟画焚蝙�
+        <螟画焚蝙�java.math.BigInteger</螟画焚蝙�
+        <螟画焚蝙�java.sql.Date</螟画焚蝙�
+        <螟画焚蝙�java.sql.Time</螟画焚蝙�
+        <螟画焚蝙�java.sql.Timestamp</螟画焚蝙�
+        <螟画焚蝙�java.util.Date</螟画焚蝙�
+        <螟画焚蝙�java.util.List</螟画焚蝙�
+        <螟画焚蝙�long</螟画焚蝙�
+        <螟画焚蝙�long[]</螟画焚蝙�
+        <螟画焚蝙�short</螟画焚蝙�
+        <螟画焚蝙�short[]</螟画焚蝙�
+        <SQL蝙�ARRAY</SQL蝙�
+        <SQL蝙�BIGINT</SQL蝙�
+        <SQL蝙�BINARY</SQL蝙�
+        <SQL蝙�BIT</SQL蝙�
+        <SQL蝙�BLOB</SQL蝙�
+        <SQL蝙�BOOLEAN</SQL蝙�
+        <SQL蝙�CHAR</SQL蝙�
+        <SQL蝙�CLOB</SQL蝙�
+        <SQL蝙�CURSOR</SQL蝙�
+        <SQL蝙�DATE</SQL蝙�
+        <SQL蝙�DECIMAL</SQL蝙�
+        <SQL蝙�DOUBLE</SQL蝙�
+        <SQL蝙�FLOAT</SQL蝙�
+        <SQL蝙�INTEGER</SQL蝙�
+        <SQL蝙�LONGVARBINARY</SQL蝙�
+        <SQL蝙�LONGVARCHAR</SQL蝙�
+        <SQL蝙�NCHAR</SQL蝙�
+        <SQL蝙�NCLOB</SQL蝙�
+        <SQL蝙�NULL</SQL蝙�
+        <SQL蝙�NUMERIC</SQL蝙�
+        <SQL蝙�NVARCHAR</SQL蝙�
+        <SQL蝙�OTHER</SQL蝙�
+        <SQL蝙�REAL</SQL蝙�
+        <SQL蝙�SMALLINT</SQL蝙�
+        <SQL蝙�TIME</SQL蝙�
+        <SQL蝙�TIMESTAMP</SQL蝙�
+        <SQL蝙�TINYINT</SQL蝙�
+        <SQL蝙�UNDEFINED</SQL蝙�
+        <SQL蝙�VARBINARY</SQL蝙�
+        <SQL蝙�VARCHAR</SQL蝙�
+    </master>
+    <繝��繝悶Ν螳夂ｾｩ name="selectTopMenuMnuKbnMgr">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="selectMenuViewJokenSetList">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="selectTopMenuMainLink">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="selectTopMenuSubTopLink">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="selectLoginJgiNoByUserId">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="selectLoginUserIdByJgiNo">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="selectFullProgramAuthenticate">
+        <繧ｷ繧ｹ繝�Β蜷�諡�ｽ灘､画峩繧ｷ繧ｹ繝�Β</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>JKR</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>S_JKR_M_JGI_MST</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="template_SQL">
+        <繧ｷ繧ｹ繝�Β蜷�${context.getValue("/繧ｷ繧ｹ繝�Β蜷�)}</繧ｷ繧ｹ繝�Β蜷�
+        <繧ｵ繝悶す繧ｹ繝�ΒID>${context.getValue("/繧ｵ繝悶す繧ｹ繝�ΒID")}</繧ｵ繝悶す繧ｹ繝�ΒID>
+        <繝��繝悶Ν迚ｩ逅�錐>${context.getValue("/繝��繝悶Ν迚ｩ逅�錐")}</繝��繝悶Ν迚ｩ逅�錐>
+    </繝��繝悶Ν螳夂ｾｩ>
+    <繝��繝悶Ν螳夂ｾｩ name="master"/>
+    <繝ｫ繝ｼ繝ｫ name="selectTopMenuMnuKbnMgr"/>
+    <繝ｫ繝ｼ繝ｫ name="selectMenuViewJokenSetList"/>
+    <繝ｫ繝ｼ繝ｫ name="selectTopMenuMainLink"/>
+    <繝ｫ繝ｼ繝ｫ name="selectTopMenuSubTopLink"/>
+    <繝ｫ繝ｼ繝ｫ name="selectLoginJgiNoByUserId"/>
+    <繝ｫ繝ｼ繝ｫ name="selectLoginUserIdByJgiNo"/>
+    <繝ｫ繝ｼ繝ｫ name="selectFullProgramAuthenticate"/>
+    <繝ｫ繝ｼ繝ｫ name="template_SQL"/>
+    <繝ｫ繝ｼ繝ｫ name="master"/>
+</data>

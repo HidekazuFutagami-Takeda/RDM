@@ -1,0 +1,118 @@
+/*
+ * $Id: jkrMenu.css,v 1.1 2013/04/16 05:18:26 murakami Exp $
+ *******************************************************************************
+ * <改訂履歴>
+ * 2006/04/19 片山 真二：all：1.0
+ *   新規作成
+ * YYYY/MM/DD 改訂者名：[フィールド名｜メソッド名]：[リビジョン番号]
+ *   [改訂内容]
+ *******************************************************************************
+ * <既知のバグ情報>
+ * YYYY/MM/DD バグ発見者名：[メソッド名]：[リビジョン番号]
+ *   [バグ内容]
+ */
+/**
+ * <pre>
+ *  従業員関連メニューのスタイルシート
+ * </pre>
+ * @since 1.0
+ * @version $Revision: 1.1 $
+ * @author 日立
+ */
+
+.comItem
+{
+  color: #000000;
+  background-color: #D4D0C8;
+  /*padding: 0pt;*/
+  /*font-size: 10pt;*/
+  width: 60px;
+}
+
+  .titleIcon:link, .titleIcon:visited, .titleIcon:active, .titleIcon:hover {
+    font-size:12px;
+    border-width:1px;
+    border-style:dashed;
+    text-align:center;
+    vertical-align:middle;
+    color:#330000;
+    text-decoration:none;
+  }
+  .titleLink:link, .titleLink:visited, .titleLink:active {
+    font-size:15px;
+    font-weight:bold;
+    color:#330000;
+    text-decoration:none;
+  }
+  .titleLink:hover {
+    font-size:17px;
+    font-weight:bold;
+    color:#FF3300;
+    text-decoration:none;
+  }
+  .titleLinkNew {
+    font-size:15px;
+    font-weight:bold;
+    color:#330000;
+    text-decoration:none;
+  }
+  .titleLeter {
+    padding-top:5px;
+    padding-left:20px;
+    line-height:1.5em;
+  }
+  .contentsTitle:link, .contentsTitle:visited, .contentsTitle:active {
+    color:#0000CC;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .contentsTitle:hover {
+    color:#FF3300;
+    font-weight:bold;
+    font-size:15px;
+  }
+  .contentsBox {
+    padding:6px;
+    vertical-align:top;
+    border-width:1px;
+    border-style:solid;
+    border-color:#808080;
+  }
+  .contentsLetter {
+    line-height:1.5em;
+  }
+  .contentsHeader {
+    font-size:15px;
+    color:#ffffff;
+    font-weight:bold;
+    text-align:center;
+    padding:3px;
+    background-color:#ff7f50;
+    border-width:1px;
+    border-color:#808080;
+    border-style:solid;
+  }
+  .contentsBox2 {
+    padding:2px;
+    vertical-align:top;
+    border-width:0px;
+    border-style:solid;
+  }
+
+  /* セレクトタグ　MR種類*/
+  SELECT.menuSelect {
+    color: #000000;
+    background-color: #FFFFFF;
+    /*padding: 0pt;*/
+    /*font-size: 10pt;*/
+    width: 110px;
+  }
+  /* INPUTタグ　MR種類*/
+  INPUT.menuSelect {
+    color: #000000;
+    background-color: #D4D0C8;
+    /*padding: 0pt;*/
+    /*font-size: 10pt;*/
+    width: 100px;
+  }
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="postKouho">
+    <resultMap id="selectPostResultMap" type="jp.co.takeda.rdm.entity.MRdmPostKouho">
+        <result column="SESHON_ID" property="seshonId"/>
+        <result column="SCREEN_ID" property="screenId"/>
+        <result column="REC_CNT" property="recCnt"/>
+        <result column="POST_CODE" property="postCode"/>
+        <result column="ADDR_NAME_PREF" property="addrNamePref"/>
+        <result column="ADDR_NAME_CITY" property="addrNameCity"/>
+        <result column="ADDR_NAME_AREA" property="addrNameArea"/>
+        <result column="ADDR_CODE_PREF" property="addrCodePref"/>
+        <result column="ADDR_CODE_CITY" property="addrCodeCity"/>
+        <result column="TK_PREF_CD" property="tkPrefCd"/>
+        <result column="TK_CITY_CD" property="tkCityCd"/>
+        <result column="TK_CITY_NAME" property="tkCityName"/>
+        <result column="ADDR_KANA_PREF" property="addrKanaPref"/>
+        <result column="ADDR_KANA_CITY" property="addrKanaCity"/>
+        <result column="ADDR_KANA_AREA" property="addrKanaArea"/>
+    </resultMap>
+    <select id="selectPost" parameterType="jp.co.takeda.rdm.entity.MRdmPostKouho" resultMap="selectPostResultMap">
+        SELECT
+          		 	  ADDR_NAME_PREF,ADDR_NAME_CITY,NVL(ADDR_NAME_AREA,'') ADDR_NAME_AREA,
+					  ADDR_CODE_PREF,ADDR_CODE_CITY,TK_PREF_CD,TK_CITY_CD,TK_CITY_NAME,
+					  ADDR_KANA_PREF,ADDR_KANA_CITY,NVL(ADDR_KANA_AREA,'') ADDR_KANA_AREA
+	        FROM
+	        ORAUSR01.S_RDM_COM_POS_ADDR
+	        <where>
+	             POST_CODE = #{postCode} --(郵便番号を元画面から入力情報として取得)
+	        </where>
+			ORDER BY ADDR_CODE_PREF,ADDR_CODE_CITY ASC
+
+    </select>
+</mapper>

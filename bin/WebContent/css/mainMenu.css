@@ -1,0 +1,577 @@
+/*
+ * $Id: mainMenu.css,v 1.1 2013/04/16 04:17:49 murakami Exp $
+ *******************************************************************************
+ * <改訂履歴>
+ * 2010/05/08 大西　孝育：all：1.4
+ *   B10-0130 レイアウト変更の為
+ * 2011/04/08 大西　孝育：all：1.5
+ *   J11-0013 iPadレイアウト変更対応
+ * 2011/04/15 大西　孝育：all：1.6
+ *   B11-0130 Naviトップ画面の高さ・幅改訂
+ * 2012/05/11 吉田　享平：all：1.6
+ *   B12-0088 Windows7ワイド対応
+ * 2012/08/01 吉田　貴子：all：1.13
+ *   B12-0146 メニュー変更
+ * 2014/08/26 吉田　貴子：all：1.13
+ *   J14-0008 メニューレイアウト変更
+ * YYYY/MM/DD 改訂者名：[フィールド名｜メソッド名]：[リビジョン番号]
+ *   [改訂内容]
+ *******************************************************************************
+ * <既知のバグ情報>
+ * YYYY/MM/DD バグ発見者名：[メソッド名]：[リビジョン番号]
+ *   [バグ内容]
+ */
+/* Navigation Menu CSS */
+
+/*《メインメニュー》*/
+DIV#NaviBar {LEFT: 0px; WIDTH: 100%; BACKGROUND-COLOR: #FFFFFF}
+
+TD.NaviMenu {BACKGROUND-COLOR: #FFFFFF;cursor:hand}
+
+
+/*TD.NaviMenu A       {FONT-WEIGHT: bold; COLOR: white; TEXT-DECORATION: none}*/
+/*f TD.NaviMenu A       {FONT-WEIGHT: bold; COLOR: red; TEXT-DECORATION: none}*/
+
+/*TD.NaviMenu A:hover {color:#ff8000; text-decoration:none}*/
+TD.NaviMenu A:hover {color:#ff0000; text-decoration:none}
+
+/*
+DIV.MenuBlock {PADDING-RIGHT: 5px; BORDER-TOP: white 1px solid;
+               PADDING-LEFT: 8px; FONT-SIZE: 80%;
+               VISIBILITY: hidden; PADDING-BOTTOM: 5px;
+               PADDING-TOP: 5px; POSITION: absolute;
+               BACKGROUND-COLOR: #2a4076}
+*/
+
+/*
+DIV.MenuBlock {PADDING-RIGHT: 5px; BORDER-LEFT: 50px;
+               PADDING-LEFT: 8px; FONT-SIZE: 80%;
+               VISIBILITY: hidden; PADDING-BOTTOM: 5px;
+               PADDING-TOP: 5px; POSITION: absolute;
+               BACKGROUND-COLOR: #FFFFFF}
+*/
+
+/*------------------------------------------------------------------------------*/
+
+/*《サブメニュー》
+DIV.MenuBlock {VISIBILITY: hidden; POSITION: absolute;
+               BACKGROUND-COLOR: #FFFFCC;
+               TOP:0px; LEFT:0px;
+               PADDING-LEFT: 8px;
+               border: 2 solid #C0C0C0;
+               border-style:outset;
+}*/
+DIV.MenuBlock {display: none; POSITION: absolute;
+               BACKGROUND-COLOR: #FFFFCC;
+               TOP:0px; LEFT:0px;
+               PADDING-LEFT: 8px;
+               border: 2 solid #C0C0C0;
+               border-style:outset;
+}
+
+
+/*DIV.MenuBlock {VISIBILITY: hidden; POSITION: absolute; BACKGROUND-COLOR: #FFFFFF}*/
+
+
+
+
+
+/*DIV.MenuBlock A          {FONT-WEIGHT: bold; COLOR: white; TEXT-DECORATION: none}*/
+/*DIV.MenuBlock A          {FONT-WEIGHT: bold; COLOR: blue; TEXT-DECORATION: none}*/
+/*DIV.MenuBlock A          {COLOR: #000000; TEXT-DECORATION: none}*/
+DIV.MenuBlock A          {COLOR: #000000}
+DIV.MenuBlock A:visited  {COLOR: #000000}
+
+/*DIV.MenuBlock A:hover    {color:#ff8000; text-decoration:none}*/
+/*DIV.MenuBlock A:hover    {color:#ff0000; text-decoration:none}*/
+DIV.MenuBlock A:hover    {color:#ff0000}
+
+
+
+
+
+TD.mainMenuHead{
+  background-color:#3b7df9;
+  color: #ffffff;
+  font-weight: bold;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-top: 2px;
+  border:1px solid #FFFFFF;
+  border-bottom:0px;
+}
+
+TD.mainMenuItem{
+  font-size: 8pt;
+  padding-bottom: 1px;
+  padding-left: 11px;
+  padding-right: 3px;
+  padding-top: 5px;
+}
+TD.mainMenuItem#onLink{
+  color: #003399;
+}
+TD.mainMenuItem#noLink{
+  color: #666666;
+}
+
+
+DIV.subMenuBlock {
+  display: none;
+  position: absolute;
+  background-color:#e0ffff;
+  top:0px;
+  left:0px;
+  PADDING-LEFT: 8px;
+  border: 2 solid #C0C0C0;
+  border-style:outset
+}
+
+TD.NaviMenu{
+  background-color:#e0ffff;
+}
+
+A.mainMenuLink{
+  color: #000000;
+  font-size: 8pt;
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	text-decoration:underline;	*/
+  text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.mainMenuLink#noLink{
+  color: #666666;
+  text-decoration: none;
+}
+A.mainMenuLink:visited{
+  color: #000000;
+  text-decoration:underline;
+}
+A.mainMenuLink:hover{
+  color: #ff3300;
+  text-decoration:underline;
+}
+
+DIV.mainMenuScroll{
+  scrollbar-base-color:#3b7df9;
+  scrollbar-arrow-color:#3b7df9;
+  scrollbar-face-color:#ffffff;
+  scrollbar-track-color:#e0ffff;
+  scrollbar-3dlight-color:#e0ffff;
+  scrollbar-darkshadow-color:#e0ffff;
+  scrollbar-highlight-color:#3b7df9;
+  scrollbar-shadow-color:#3b7df9;
+  border-bottom: #336699 1px solid;
+  border-left: #336699 1px solid;
+  border-right: #336699 1px solid;
+  border-top: #336699 1px solid;
+  padding:2 1 2 2px;
+  background-color:#e0ffff;
+}
+
+/* B10-0130 */
+td.bgImg1{
+  background-image:url(../img/menuBg01.gif);
+  background-color:#3A7DFF;
+  background-repeat:no-repeat;
+  padding-left:10px;
+/* 2012/08/01 add start T.Yoshida B12-0146 */
+  height:22;
+/* 2012/08/01 add end T.Yoshida B12-0146 */
+}
+
+td.bgImg2{
+  background-image:url(../img/menuBg02.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg3{
+  background-image:url(../img/menuBg03.gif);
+  background-repeat:repeat-y;
+  background-position:right;
+  border-left-width:1px;
+  border-left-style:solid;
+  border-left-color:#3A7DFF;
+}
+
+td.bgImg4{
+  background-image:url(../img/menuBg04.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg5{
+  background-image:url(../img/menuBg05.gif);
+  background-repeat:repeat;
+}
+
+td.bgImg6{
+  background-image:url(../img/menuBg06.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg7{
+  background-image:url(../img/menuBg07.gif);
+  background-repeat:no-repeat;
+  padding-left:10px;
+
+}
+
+td.bgImg8{
+  background-image:url(../img/menuBg08.gif);
+  background-repeat:no-repeat;
+}
+
+td.bgImg9{
+  background-image:url(../img/menuBg09.gif);
+  background-repeat:no-repeat;
+/* 2012/08/01 add start T.Yoshida B12-0146 */
+  height:22;
+/* 2012/08/01 add end T.Yoshida B12-0146 */
+}
+
+td.bgImg10{
+  background-image:url(../img/menuBg10.gif);
+  background-repeat:no-repeat;
+}
+
+A.menuHeaderText{
+  font-weight:bold;
+  font-size:10pt;
+  color:#ffffff;
+  font-family: inherit;
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	text-decoration:underline;	*/
+  text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+
+A.menuHeaderText#noLink {
+  color: #ffffff;
+  text-decoration:underline;
+}
+A.menuHeaderText:visited {
+  color: #ffffff;
+  text-decoration:underline;
+}
+A.menuHeaderText:hover {
+  color: #0606c6;
+  text-decoration:underline;
+}
+
+A.NaviMenu{
+  color:#000000;
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	text-decoration:underline;	*/
+  text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.NaviMenu:Link {
+  color:#000000;
+  text-decoration:underline;
+}
+A.NaviMenu:visited{
+  color:#000000;
+  text-decoration:underline;
+}
+A.NaviMenu:hover{
+  color: #ff0000;
+  text-decoration:underline;
+}
+
+A.MenuItem{
+  color:#000000;
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	text-decoration: underline;	*/
+  text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.MenuItem:Link {
+  color:#000000;
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	text-decoration: underline;	*/
+  text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.MenuItem:visited{
+  color:#000000;
+  text-decoration:underline;
+}
+A.MenuItem:hover{
+  color: #ff0000;
+  text-decoration:underline;
+}
+
+A.comMenuLink
+{
+  color: #000000;
+  font-size: 8pt;
+/* Mod Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+/*	text-decoration: underline;	*/
+  text-decoration:none;
+/* Mod End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+A.comMenuLink#noLink
+{
+  color: #666666;
+  text-decoration: none;
+}
+A.comMenuLink:visited
+{
+  color: #000000;
+}
+A.comMenuLink:hover
+{
+  color: #ff3300;
+/* Add Start K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+  text-decoration:underline;
+/* Add End   K.Yoshida J12-0006 H&Nトップメニューレイアウト改訂 リンク アンダーライン非表示 */
+}
+
+DIV.MenuItem{
+  padding-top:2px;
+  padding-bottom:2px;
+}
+
+FONT.menuHeaderText {
+  FONT-WEIGHT: bold;
+  FONT-SIZE: 13px;
+  COLOR: #ffffff;
+}
+
+TD.lineBgLog{
+  background-image:url(../img/mainBar01.gif);
+  background-position:0 20px;
+  background-repeat:repeat-x;
+}
+
+/* add start 2011/04/08 T.Oonisi J11-0013 iPadレイアウト変更対応 */
+TD.lineBgLogIpad{
+  background-image:url(../img/mainBar01.gif);
+  background-position:0 18px;
+  background-repeat:repeat-x;
+}
+/* add end   2011/04/08 T.Oonisi J11-0013 iPadレイアウト変更対応 */
+
+TD.lineBg{
+  background-image:url(../img/mainBar01.gif);
+  background-position:top;
+  background-repeat:repeat-x;
+}
+
+TD.bgAlpha{
+  filter: alpha(style=1, opacity=100, finishopacity=0, startx=70 ,finishx=100);
+}
+
+SPAN.menuWelcome{
+  position:absolute;
+  top:3px;
+  left:40%;
+  font-style:normal;
+  font-size:10pt;
+  font-weight:bold;
+  color:#0000FF;
+}
+/* add start K.Yoshida B12-0088 Win7ワイド対応 */
+SPAN.menuWelcomeWin7{
+  position:absolute;
+  top:3px;
+  left:44%;
+  font-style:normal;
+  font-size:10pt;
+  font-weight:bold;
+  color:#0000FF;
+}
+/* add end   K.Yoshida B12-0088 Win7ワイド対応 */
+
+IMG.comPortalIcon{
+  width: 13pt;
+  height: 13pt;
+}
+
+/* 2012/05/31 add start T.Yoshida J12-0006 Step2対応 */
+
+/* 2012/07/20 mod start T.Yoshida B12-0146 */
+.mainMenuButton {
+  border: 0px;
+/* 2014/08/22 modify start T.Yoshida J14-0008
+  background-image:url(../img/menuTitle1.png); */
+  background-image:url(../img/menuTitle3.png);
+/* 2014/08/22 modify end T.Yoshida J14-0008 */
+  background-position:0px 0px;
+  background-repeat:no-repeat;
+  background-color:#f0f0f0;
+/* 2014/08/22 modify start T.Yoshida J14-0008
+  padding-left:5px;
+  height: 23px;
+  width:  150px;
+  font-size: 14px;
+  outline:none; */
+  padding-left:14px;
+  height: 36px;
+  width:  80px;
+  font-size: 13px;
+  vertical-align: middle;
+/* 2014/08/22 modify end T.Yoshida J14-0008 */
+  color: #ffffff;
+}
+
+.mainMenuButton2 {
+/* 2014/08/22 modify start T.Yoshida J14-0008
+  background-image:url(../img/menuTitle2.png); */
+  background-image:url(../img/menuTitle4.png);
+/* 2014/08/22 modify end T.Yoshida J14-0008 */
+  background-position:0px 0px;
+  background-repeat:no-repeat;
+  background-color:#f0f0f0;
+/* 2014/08/22 modify start T.Yoshida J14-0008
+  padding-left:5px;
+  height: 23px;
+  width:  150px;
+  font-size: 14px;
+  outline:none; */
+  padding-left:14px;
+  height: 36px;
+  width:  80px;
+  font-size: 13px;
+  vertical-align: middle;
+/* 2014/08/22 modify end T.Yoshida J14-0008 */
+  color: #ffffff;
+}
+/* 2012/07/20 mod end T.Yoshida B12-0146 */
+
+SPAN.comWelcomeWin7 {
+  font-size:10pt;
+  font-weight:bold;
+  color:#666666;
+}
+
+DIV.menuSubCategory{
+  scrollbar-base-color:#3b7df9;
+  scrollbar-arrow-color:#3b7df9;
+  scrollbar-face-color:#ffffff;
+  scrollbar-track-color:#e0ffff;
+  scrollbar-3dlight-color:#e0ffff;
+  scrollbar-darkshadow-color:#e0ffff;
+  scrollbar-highlight-color:#3b7df9;
+  scrollbar-shadow-color:#3b7df9;
+  padding:2 1 2 2px;
+/* 2012/08/01 modify start T.Yoshida B12-0146
+  background-color:#e0ffff;
+ */
+  background-color:#ffffff;
+/* 2012/08/01 modify end T.Yoshida B12-0146  */
+}
+
+/* 2012/05/31 add end T.Yoshida J12-0006 Step2対応 */
+/* 2012/08/01 add start T.Yoshida B12-0146 */
+DIV.menuSubCategoryGrp{
+  scrollbar-base-color:#3b7df9;
+  scrollbar-arrow-color:#3b7df9;
+  scrollbar-face-color:#ffffff;
+  scrollbar-track-color:#e0ffff;
+  scrollbar-3dlight-color:#e0ffff;
+  scrollbar-darkshadow-color:#e0ffff;
+  scrollbar-highlight-color:#3b7df9;
+  scrollbar-shadow-color:#3b7df9;
+  border-bottom: #336699 1px solid;
+  border-left: #336699 1px solid;
+  border-right: #336699 1px solid;
+  border-top: #336699 1px solid;
+  padding:2 1 2 2px;
+  background-color:#ffffff;
+}
+
+A.comMenuLink2
+{
+  color: #000000;
+  font-size: 13px;
+  text-decoration:none;
+}
+A.comMenuLink2#noLink
+{
+  color: #666666;
+  text-decoration: none;
+}
+A.comMenuLink2:visited
+{
+  color: #000000;
+}
+A.comMenuLink2:hover
+{
+  color: #ff3300;
+  text-decoration:underline;
+}
+
+
+A.MenuItem2{
+  font-size: 13px;
+  color:#000000;
+  text-decoration:none;
+/* 2014/08/26 add start T.Yoshida J14-0008 */
+  padding-left: 20px;
+  background-image:url(../img/menuLinkIcon5.png);
+  background-position:5px 5px;
+  background-repeat:no-repeat;
+/* 2014/08/26 add end T.Yoshida J14-0008 */
+}
+A.MenuItem2:Link {
+  color:#000000;
+  text-decoration:none;
+}
+A.MenuItem2:visited{
+  color:#000000;
+  text-decoration:underline;
+}
+A.MenuItem2:hover{
+  color: #ff0000;
+  text-decoration:underline;
+}
+
+TD.subCategoryHead{ /* mainMenuHead */
+  font-size: 13px;
+  background-color:#e0e0e0;
+  color: #000000;*/
+}
+
+
+/* 2012/08/01 add end T.Yoshida B12-0146 */
+
+/* 2014/08/26 add start T.Yoshida J14-0008 */
+A.linkMenuItem
+{
+  color: #000000;
+  font-size: 13px;
+  text-decoration:none;
+  display:block;
+  padding-left: 20px;
+  background-image:url(../img/menuLinkIcon5.png);
+  background-position:5px 5px;
+  background-repeat:no-repeat;
+
+}
+A.linkMenuItem#noLink
+{
+  color: #666666;
+  text-decoration: none;
+}
+A.linkMenuItem:visited
+{
+  color: #000000;
+}
+A.linkMenuItem:hover
+{
+  color: #ff3300;
+  text-decoration:underline;
+}
+
+TD.linkMenuTd{
+  padding: 2px, 0;
+}
+
+IMG.comSrchIcon{
+  width: 12pt;
+  height: 12pt;
+  border:0;
+}
+
+/* 2014/08/26 add end T.Yoshida J14-0008 */

@@ -283,7 +283,6 @@ public class NF213Service extends BaseService {
         } else if ("3".equals(indto.getDisplayKbn())) {
     		// 申請データ（一時保存含む）を参照
         	// 武田紐領域別区分が'1'（領域別紐付け）
-        	// TODO
     		SelectNF213MainDataEntity paramEntity = new SelectNF213MainDataEntity("selectNF213ReqTrtData");
     		paramEntity.setInReqId(indto.getReqId());
     		List<SelectNF213MainDataEntity> mainDataEntityList = dao.select(paramEntity);
@@ -396,24 +395,6 @@ public class NF213Service extends BaseService {
         // END UOC
         return outdto;
     }
-
-    /**
-     * 親施設リストセット
-     * @param sEntity
-     * @param sData
-     */
-    private void setLnkTrtData(SelectLnkTrtDataEntity sEntity, LnkTrtData sData) {
-
-    	sData.setTrtGrpCd(StringUtils.nvl(sEntity.getTrtGrpCd(), ""));
-    	sData.setTrtCd(StringUtils.nvl(sEntity.getTrtCd(), ""));
-    	sData.setTrtNm(StringUtils.nvl(sEntity.getTrtNm(), ""));
-    	sData.setHinGCd(StringUtils.nvl(sEntity.getHinGCd(), ""));
-    	sData.setHinGName(StringUtils.nvl(sEntity.getHinGName(), ""));
-    	sData.setInsAbbrName(StringUtils.nvl(sEntity.getInsAbbrName(), ""));
-    	sData.setHoInsType(StringUtils.nvl(sEntity.getHoInsType(), ""));
-    	sData.setInsAddr(StringUtils.nvl(sEntity.getInsAddr(), ""));
-    	sData.setJgiName(StringUtils.nvl(sEntity.getJgiName(), ""));
-	}
 
     /**
      *
@@ -673,7 +654,6 @@ public class NF213Service extends BaseService {
         String sysDate = fmtDate.format(systemDate);
 
         // 申請管理の更新を行う
-// TODO
         TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
         tRdmReqKnrEntity.setReqId(indto.getReqId());
         tRdmReqKnrEntity.setShnFlg("1");

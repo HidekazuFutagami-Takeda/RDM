@@ -5,26 +5,22 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.action;
 
-import java.util.ArrayList;
-
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.springframework.context.annotation.Scope;
 
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.context.annotation.Scope;
+
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
-import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.service.ND001Service;
-import jp.co.takeda.rdm.util.RdmConstantsData;
-import jp.co.takeda.rdm.util.StringUtils;
-import lombok.Getter;
-import lombok.Setter;
+import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.JkrConstantsData;
 
 /**
  * Actionクラス
@@ -46,6 +42,10 @@ public class ND001Action extends BaseAction<ND001DTO> {
      */
     @Inject
     private ND001Service nD001Service;
+
+    // START UOC
+
+    // END UOC
 
     /**
      * コンストラクタ
@@ -97,6 +97,7 @@ public class ND001Action extends BaseAction<ND001DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
+
         // END UOC
     }
 
@@ -106,10 +107,28 @@ public class ND001Action extends BaseAction<ND001DTO> {
      */
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
-
+        // 検索条件をセッションに格納する（更新やソートリンク押下時に使用）
+        sessionMap.put(AppConstant.SESKEY_ND001_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
+    }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String search() throws Exception {
+        searchSetup();
+        // F層呼び出し
+        BaseDTO outdto = nD001Service.search(dto);
+//        if (outdto instanceof ND001DTO) {
+            // START UOC
+
+            // END UOC
+//        }
+        return searchNext(outdto);
     }
 
     /**
@@ -123,53 +142,43 @@ public class ND001Action extends BaseAction<ND001DTO> {
     }
 
     /**
-     * 前処理
-     * @customizable
-     */
-    protected void checkSetup() throws Exception {
-        // START UOC
-
-        // END UOC
-    }
-
-    /**
      * 後処理
      * @customizable
      */
-    protected String checkNext(BaseDTO outdto) throws Exception {
+    protected String searchNext(BaseDTO outdto) throws Exception {
         // START UOC
-
+        // 検索条件をセッションに格納する（ページャ押下時に使用）
+        sessionMap.put(AppConstant.SESKEY_ND001_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
     }
 
+
     /**
-     * 後処理
+     * 業務処理
      * @customizable
      */
-    protected String viewNext(BaseDTO outdto) throws Exception {
-        // START UOC
-        //担当変更状況テーブルデータが検索された場合
-        if (dto.getJkrSosStsTableData() != null) {
-            //戻るためのDTOセッション格納キー
-            request.getSession().setAttribute(RdmConstantsData.NC001_RETURN_DTO_KEY, dto);
-        } else {
-            //「リスト作成依頼」押下時に設定されたセッション情報をクリアする
-            request.getSession().removeAttribute(RdmConstantsData.NC001_RETURN_DTO_KEY);
+    @InputConfig(methodName="validationError")
+    public String page() throws Exception {
+        pageSetup();
+        // F層呼び出し
+        BaseDTO outdto = nD001Service.page(dto);
+        if (outdto instanceof ND001DTO) {
+            // START UOC
+
+            // END UOC
         }
-        // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
+        return pageNext(outdto);
     }
 
     /**
      * 前処理
      * @customizable
      */
-    protected void commonSetup() throws Exception {
+    protected void pageSetup() throws Exception {
         // START UOC
-
+        this.setSearchCon();
         // END UOC
     }
 
@@ -177,21 +186,53 @@ public class ND001Action extends BaseAction<ND001DTO> {
      * 後処理
      * @customizable
      */
-    protected String commonNext(BaseDTO outdto) throws Exception {
+    protected String pageNext(BaseDTO outdto) throws Exception {
         // START UOC
-
+        sessionMap.put(AppConstant.SESKEY_ND001_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
     }
 
+    private void setSearchCon() {
+
+    }
+
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String sort() throws Exception {
+        pageSetup();
+        // F層呼び出し
+        BaseDTO outdto = nD001Service.sort(dto);
+        if (outdto instanceof ND001DTO) {
+            // START UOC
+
+            // END UOC
+        }
+        return sortNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void sortSetup() throws Exception {
+        // START UOC
+        this.setSearchCon();
+        // END UOC
+    }
+
     /**
      * 後処理
      * @customizable
      */
-    protected String showNext(BaseDTO outdto) throws Exception {
+    protected String sortNext(BaseDTO outdto) throws Exception {
         // START UOC
-
+        sessionMap.put(AppConstant.SESKEY_ND001_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();

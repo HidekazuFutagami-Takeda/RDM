@@ -585,6 +585,12 @@ public class RdmConstantsData {
     public static final String CODE_NAME_POSITION_CODE = "POSITION_CODE";
     /**コード情報コード名 : 分類区分 */
     public static final String CODE_NAME_CLASS_CATEGORY = "CLASS_CATEGORY";
+    /**コード情報コード名 : 削除区分 */
+    public static final String CODE_NAME_DEL_KBN = "DEL_KBN";
+    /**コード情報コード名 : 削除フラグ */
+    public static final String CODE_NAME_DEL_FLG = "DEL_FLG";
+    /**コード情報コード名 : 施設区分 */
+    public static final String CODE_NAME_PHARM_TYPE = "PHARM_TYPE";
 
     /**パラメタ情報パラメタ名 : 医師メニュースイッチ */
     public static final String PARAM_NAME_MN_DOC = "MN_DOC";

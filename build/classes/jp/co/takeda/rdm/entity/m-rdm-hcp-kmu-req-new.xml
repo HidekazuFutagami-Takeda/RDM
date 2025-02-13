@@ -252,11 +252,4 @@
 			REQ_ID = #{reqId}
    	</update>
 
-   	<delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.ComMrSosEntity">
-       DELETE FROM
-           COM_MR_SOS
-       WHERE
-           SOS_CD = #{sosCd} AND TRT_CD = #{trtCd} AND MR_CAT = #{mrCat}
-   	</delete>
-
 </mapper>

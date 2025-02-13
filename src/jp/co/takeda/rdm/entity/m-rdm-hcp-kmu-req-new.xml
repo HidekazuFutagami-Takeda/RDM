@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="hcp_kmu_req_new">
-    <resultMap id="mRdmHcpKmuReqNewResultMap" type="jp.co.takeda.jkr.entity.join.SelectHcpKmuReqNewEntity">
+    <resultMap id="mRdmHcpKmuReqNewResultMap" type="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity">
         <result column="REQ_SHZ" property="reqShz"/>
         <result column="REQ_STS" property="reqSts"/>
         <result column="REQ_JGI_NAME" property="jgiName"/>
@@ -30,7 +30,7 @@
        	<result column="APR_COMMENT" property="aprComment"/>
     </resultMap>
 
-    <select id="selectHcpKmuReqNew" parameterType="jp.co.takeda.jkr.entity.join.SelectHcpKmuReqNewEntity" resultMap="mRdmHcpKmuReqNewResultMap">
+    <select id="selectHcpKmuReqNew" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity" resultMap="mRdmHcpKmuReqNewResultMap">
 
     	<!-- 新規の場合 -->
 		<if test="paramDocNo != null">
@@ -136,21 +136,21 @@
 
     </select>
 
-    <delete id="deleteRdmHcpKmu" parameterType="jp.co.takeda.jkr.entity.join.SelectHcpKmuReqNewEntity">
+    <delete id="deleteRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity">
        DELETE FROM
            ORAUSR01.T_RDM_HCP_KMU_REQ
        WHERE
            REQ_ID = #{paramReqId}--申請ID
    	</delete>
 
-   	<delete id="deleteRdmReqKnr" parameterType="jp.co.takeda.jkr.entity.join.SelectHcpKmuReqNewEntity">
+   	<delete id="deleteRdmReqKnr" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity">
        DELETE FROM
            ORAUSR01.T_RDM_REQ_KNR
        WHERE
            REQ_ID = #{paramReqId}--申請ID
    	</delete>
 
-    <insert id="insertRdmHcpKmu" parameterType="jp.co.takeda.jkr.entity.join.InsertRdmHcpKmuNewEntity">
+    <insert id="insertRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.InsertRdmHcpKmuNewEntity">
 	        INSERT INTO
 				ORAUSR01.T_RDM_HCP_KMU_REQ
 				(REQ_ID,DOC_NO,INS_NO_MT,TRN_KBN,INS_NO_SK,JOB_FORM_BF,DEPT_CODE_BF,DEPT_KANJI_BF,DEPT_KANA_BF,UNIV_POS_CODE_BF,TITLE_CODE_BF,DCC_TYPE_BF,JOB_FORM_AF,DEPT_CODE_AF,DEPT_KANJI_AF,DEPT_KANA_AF,UNIV_POS_CODE_AF,TITLE_CODE_AF,DCC_TYPE_AF,ULT_DOC_NO,ULT_INS_NO,INS_SHA_YMD,INS_SHA_ID,UPD_SHA_YMD,UPD_SHA_ID)
@@ -158,7 +158,7 @@
 				(#{reqId},#{docNo},NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,#{jobFromAf},#{deptCodeAf},#{deptKanjiAf},#{deptKanaAf},#{univPosCodeAf},#{titleCodeAf},#{dccTypeAf},#{ultDocNo},#{ultInsNo},#{insShaYmd},#{insShaId},#{updShaYmd},#{updShaId});
     </insert>
 
-    <insert id="insertRdmReqKnr" parameterType="jp.co.takeda.jkr.entity.join.InsertRdmReqKnrNewEntity">
+    <insert id="insertRdmReqKnr" parameterType="jp.co.takeda.rdm.entity.join.InsertRdmReqKnrNewEntity">
 	        INSERT INTO
 				ORAUSR01.T_RDM_REQ_KNR
 				(REQ_ID,REQ_CHL,REQ_TYPE,REQ_STS,TEKIYO_YMD,REQ_BR_CODE,REQ_DIST_CODE,REQ_SHZ,REQ_JGI_NO,REQ_JGI_NAME,REQ_YMDHMS,REQ_MEMO,REQ_COMMENT,REQ_KNG_KBN,SHN_FLG,SHN_BR_CODE,SHN_DIST_CODE,SHN_SHZ,SHN_JGI_NO,SHN_SHA_ID,SHN_YMDHMS,APR_BR_CODE,APR_DIST_CODE,APR_SHZ,APR_JGI_NO,APR_SHA_ID,APR_YMDHMS,APR_HRY_FLG,APR_MEMO,APR_COMMENT,INS_NO,DOC_NO,UPD_MST_YMD,FB_REQ_FLG,FB_REQ_ID,FB_ANS_ID,FB_DATA_TYPE,FB_REC_ID,FB_UPD_KBN,FB_PRC_TYPE,INS_SHA_YMD,INS_SHA_ID,UPD_SHA_YMD,UPD_SHA_ID)
@@ -167,7 +167,7 @@
 
     </insert>
 
-    <update id="UpdateRdmReqKnr" parameterType="jp.co.takeda.jkr.entity.join.UpdateRdmReqKnrNewEntity">
+    <update id="UpdateRdmReqKnr" parameterType="jp.co.takeda.rdm.entity.join.UpdateRdmReqKnrNewEntity">
        UPDATE
 			ORAUSR01.T_RDM_REQ_KNR
 		SET
@@ -219,7 +219,7 @@
 			REQ_ID = #{reqId}
    	</update>
 
-   	<update id="updateRdmHcpKmu" parameterType="jp.co.takeda.jkr.entity.join.UpdateRdmHcpKmuNewEntity">
+   	<update id="updateRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.UpdateRdmHcpKmuNewEntity">
        UPDATE
 			ORAUSR01.T_RDM_HCP_KMU_REQ
 		SET
@@ -252,7 +252,7 @@
 			REQ_ID = #{reqId}
    	</update>
 
-   	<delete id="deleteByPK" parameterType="jp.co.takeda.jkr.entity.ComMrSosEntity">
+   	<delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.ComMrSosEntity">
        DELETE FROM
            COM_MR_SOS
        WHERE

@@ -85,6 +85,7 @@ public class NF012Service extends BaseService {
 //    		indto.setReqDistCd(loginInfo.getDistCd());
     		indto.setReqYmdhms("");
     		indto.setReqStsNm("");
+    		indto.setReqId("");
 
     		// 基本情報
     		indto.setInsNo(indto.getInsNo());

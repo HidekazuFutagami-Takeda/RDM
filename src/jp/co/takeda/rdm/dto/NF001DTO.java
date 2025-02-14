@@ -296,6 +296,12 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	private String msgStr;
 
 	/**
+	 * 検索フラグ
+	 * @generated
+	 */
+	private String srchFlg;
+
+	/**
      * デフォルトのコンストラクタ。
      * @generated
      */
@@ -976,6 +982,21 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setMsgStr(String msgStr) {
 		this.msgStr = msgStr;
+	}
+
+	/**
+	 * NF001DTO.javasrchFlgを設定
+	 * @return srchFlg
+	 */
+	public String getSrchFlg() {
+		return srchFlg;
+	}
+
+	/**
+	 * @param srchFlg セットする srchFlg
+	 */
+	public void setSrchFlg(String srchFlg) {
+		this.srchFlg = srchFlg;
 	}
 
 	/**

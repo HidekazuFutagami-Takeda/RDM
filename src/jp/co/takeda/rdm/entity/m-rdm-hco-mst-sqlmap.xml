@@ -760,7 +760,7 @@
 		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
 		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
 		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
-		<if test="insType != null">AND MST.INS_TYPE = #{insType}</if>
+		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
 		<if test="insPhoneSrch != null">
 			AND (MST.INS_PHONE_SRCH LIKE '%' ||#{insPhoneSrch}|| '%'
@@ -950,7 +950,7 @@
 		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
 		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
 		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
-		<if test="insType != null">AND MST.INS_TYPE = #{insType}</if>
+		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
 		<if test="insPhoneSrch != null">
 			AND (MST.INS_PHONE_SRCH LIKE '%' ||#{insPhoneSrch}|| '%'

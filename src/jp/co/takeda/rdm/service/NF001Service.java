@@ -23,6 +23,7 @@ import jp.co.takeda.rdm.dto.CatSnseiComboDataList;
 import jp.co.takeda.rdm.dto.HcoSearchDataList;
 import jp.co.takeda.rdm.dto.NF001DTO;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
+import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
@@ -88,6 +89,54 @@ public class NF001Service extends BaseService {
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 		// DropDownList作成
         createCombo(indto);
+
+        // エラーチェック
+        // 検索項目未入力の場合
+        boolean inputFlg = false;
+
+        if(indto.getSosCd() != null && !indto.getSosCd().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getJgiNo() != null && !indto.getJgiNo().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getDelKbn() != null && !indto.getDelKbn().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getInsKanjSrch() != null && !indto.getInsKanjSrch().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getInsKanaSrch() != null && !indto.getInsKanaSrch().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getDelFlg() != null && !indto.getDelFlg().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getInsNo() != null && !indto.getInsNo().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getUltInsNo() != null && !indto.getUltInsNo().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getKeieitai() != null && !indto.getKeieitai().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getHoInsType() != null && !indto.getHoInsType().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getInsType() != null && !indto.getInsType().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getPharmType() != null && !indto.getPharmType().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getInsPhoneSrch() != null && !indto.getInsPhoneSrch().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getInsPcode() != null && !indto.getInsPcode().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getAddrCodePref() != null && !indto.getAddrCodePref().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getAddrCodeCity() != null && !indto.getAddrCodeCity().isEmpty()) {
+        	inputFlg = true;
+        } else if(indto.getInsAddrSrch() != null && !indto.getInsAddrSrch().isEmpty()) {
+        	inputFlg = true;
+        }
+
+        if (!inputFlg) {
+      	  // 検索条件を入力してください。
+      	  String tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);
+      	  //エラーメッセージをdtoに格納
+      	  indto.setMsgStr(tmpMsgStr);
+      	  return outdto;
+      }
 
         // 一覧表示データ
         List<HcoSearchDataList> hcoSearchDataList = new ArrayList<HcoSearchDataList>();
@@ -265,7 +314,27 @@ public class NF001Service extends BaseService {
         	  return outdto;
         }
 
+        // 機能定義取得
+        String newValue = "0";
+        String editValue = "0";
+        String delValue = "0";
+        String revValue = "0";
+
+        MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
+		mRdmParamMstEntity.setParamName("MN_FAC");
+		mRdmParamMstEntity.setDelFlg("0");
+
+		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
+		if(mRdmParamMstEntityList.size() > 0) {
+			// 新規・編集・削除・復活　各桁0の場合対応するアクションボタン非表示にする
+			newValue = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+			editValue = mRdmParamMstEntityList.get(0).getValue().substring(1,2);
+			delValue = mRdmParamMstEntityList.get(0).getValue().substring(2,3);
+			revValue = mRdmParamMstEntityList.get(0).getValue().substring(3);
+		}
+
         // 一覧を取得する
+        // TODO SQL確認
         List<SelectNF001MainDataEntity> selectNF001MainDataEntityList = dao.select(selectNF001MainDataEntity);
 
         for (SelectNF001MainDataEntity entity : selectNF001MainDataEntityList) {
@@ -447,77 +516,168 @@ public class NF001Service extends BaseService {
         	}
 
         	// 機能フラグ1 新規作成
+        	String funcFlg1 = "0";
         	if(entity.getInsNo() == null && entity.getDcfShisetsuCd() != null) {
-        		dataRecord.setFuncFlg1("1");
+        		funcFlg1 = "1";
+        	}
+
+        	// 機能フラグ2 編集
+        	String funcFlg2 = "0";
+        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())) {
+        		funcFlg2 = "1";
+        	}
+
+        	// 機能フラグ3 削除
+        	String funcFlg3 = "0";
+        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())) {
+        		funcFlg3 = "1";
+        	}
+
+        	// 機能フラグ4 復活
+        	String funcFlg4 = "0";
+        	if(entity.getInsNo() != null && "1".equals(entity.getDelFlg())) {
+        		funcFlg4 = "1";
+        	}
+
+        	// 機能フラグ5 親子紐づけ
+        	String funcFlg5 = "0";
+        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())
+        			&& !"06".equals(entity.getInsClass()) && "1".equals(entity.getValueCt())) {
+        		funcFlg5 = "1";
+        	}
+
+        	// 機能フラグ6 来期用項目更新
+        	String funcFlg6 = "0";
+        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())
+        			&& "1".equals(entity.getValueFac())) {
+        		funcFlg6 = "1";
+        	}
+
+        	// 機能フラグ7 親子紐付け（来期）
+        	String funcFlg7 = "0";
+        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())
+        			&& !"06".equals(entity.getInsClass()) && "1".equals(entity.getValueNt())) {
+        		funcFlg7 = "1";
+        	}
+
+        	// MR新規判定フラグ
+        	String mrNewFlg = "0";
+        	if(entity.getSosCd() != null) {
+        		mrNewFlg = "1";
+        	}
+
+        	// MR更新判定フラグ
+        	String mrUpdFlg = "0";
+        	if(entity.getJgiNo() != null) {
+        		mrUpdFlg = "1";
+        	}
+
+        	// 新規作成
+        	if("1".equals(funcFlg1) && "1".equals(newValue)) {
+        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        			dataRecord.setFuncFlg1("1");
+        		} else if("JKN0023".equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        			dataRecord.setFuncFlg1("1");
+        		} else {
+        			dataRecord.setFuncFlg1("0");
+        		}
         	} else {
         		dataRecord.setFuncFlg1("0");
         	}
 
-        	// 機能フラグ2 編集
-        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())) {
-        		dataRecord.setFuncFlg2("1");
+        	// 編集
+        	if("1".equals(funcFlg2) && "1".equals(editValue)) {
+        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        			dataRecord.setFuncFlg2("1");
+        		} else if("JKN0023".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        			dataRecord.setFuncFlg2("1");
+        		} else {
+        			dataRecord.setFuncFlg2("0");
+        		}
         	} else {
         		dataRecord.setFuncFlg2("0");
         	}
 
-        	// 機能フラグ3 削除
-        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())) {
-        		dataRecord.setFuncFlg3("1");
+        	// 削除
+        	if("1".equals(funcFlg3) && "1".equals(delValue)) {
+        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        			dataRecord.setFuncFlg3("1");
+        		} else if("JKN0023".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        			dataRecord.setFuncFlg3("1");
+        		} else {
+        			dataRecord.setFuncFlg3("0");
+        		}
         	} else {
         		dataRecord.setFuncFlg3("0");
         	}
 
-        	// 機能フラグ4 復活
-        	if(entity.getInsNo() != null && "1".equals(entity.getDelFlg())) {
-        		dataRecord.setFuncFlg4("1");
+        	// 復活
+        	if("1".equals(funcFlg4) && "1".equals(revValue)) {
+        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        			dataRecord.setFuncFlg4("1");
+        		} else if("JKN0043".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        			dataRecord.setFuncFlg4("1");
+        		} else {
+        			dataRecord.setFuncFlg4("0");
+        		}
         	} else {
         		dataRecord.setFuncFlg4("0");
         	}
 
-        	// 機能フラグ5 親子紐づけ
-        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())
-        			&& !"06".equals(entity.getInsClass()) && "1".equals(entity.getValueCt())) {
-        		dataRecord.setFuncFlg5("1");
+        	// 親子紐づけ
+        	if("1".equals(funcFlg5) && "1".equals(editValue)) {
+        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        			dataRecord.setFuncFlg5("1");
+        		} else if("JKN0053".equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        			dataRecord.setFuncFlg5("1");
+        		} else {
+        			dataRecord.setFuncFlg5("0");
+        		}
         	} else {
         		dataRecord.setFuncFlg5("0");
         	}
 
-        	// 機能フラグ6 来期用項目更新
-        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())
-        			&& "1".equals(entity.getValueFac())) {
-        		dataRecord.setFuncFlg6("1");
+        	// 来期用項目更新
+        	if("1".equals(funcFlg6) && "1".equals(editValue)) {
+        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        			dataRecord.setFuncFlg6("1");
+        		} else if("JKN0063".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        			dataRecord.setFuncFlg6("1");
+        		} else {
+        			dataRecord.setFuncFlg6("0");
+        		}
         	} else {
         		dataRecord.setFuncFlg6("0");
         	}
 
-        	// 機能フラグ7 親子紐付け（来期）
-        	if(entity.getInsNo() != null && "0".equals(entity.getDelFlg())
-        			&& !"06".equals(entity.getInsClass()) && "1".equals(entity.getValueNt())) {
-        		dataRecord.setFuncFlg7("1");
+        	// 親子紐づけ(来期)
+        	if("1".equals(funcFlg7) && "1".equals(editValue)) {
+        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        			dataRecord.setFuncFlg7("1");
+        		} else if("JKN0073".equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        			dataRecord.setFuncFlg7("1");
+        		} else {
+        			dataRecord.setFuncFlg7("0");
+        		}
         	} else {
         		dataRecord.setFuncFlg7("0");
         	}
 
-        	// MR新規判定フラグ
-        	if(entity.getSosCd() != null) {
-        		dataRecord.setMrNewFlg("1");
-        	} else {
-        		dataRecord.setMrNewFlg("0");
-        	}
-
-        	// MR更新判定フラグ
-        	if(entity.getJgiNo() != null) {
-        		dataRecord.setMrUpdFlg("1");
-        	} else {
-        		dataRecord.setMrUpdFlg("0");
-        	}
+        	// TODO テスト用
+    		dataRecord.setFuncFlg1("1");
+        	dataRecord.setFuncFlg2("1");
+        	dataRecord.setFuncFlg3("1");
+        	dataRecord.setFuncFlg4("1");
+        	dataRecord.setFuncFlg5("1");
+        	dataRecord.setFuncFlg6("1");
+        	dataRecord.setFuncFlg7("1");
 
         	hcoSearchDataList.add(dataRecord);
         }
 
         indto.setHcoSearchDataList(hcoSearchDataList);
 
-        // TODO 機能定義取得
+        indto.setSrchFlg("1");
 
         // END UOC
        	return outdto;

@@ -58,22 +58,141 @@
 	    	comClickFlgInit();
 	    }
 
-	    function searchBtn() {
+	    // TODO サイズ調整
+	    var sosSubScreenSize = "left=0, top=0, width=1100, height=800";
+	 	// 組織選択ボタン
+	    function sosPopBtn(){
+			// NC201_組織検索ポップアップを開く
+			window.open("","sosPopWindow",sosSubScreenSize);
+			document.fm1.screenId.value = "NC201";
+			document.fm1.functionId.value="Init";
+			document.fm1.target="sosPopWindow";
 
-			document.fm1.screenId.value	= "NF001";
-	        document.fm1.functionId.value = 'Search';
+			document.fm1.callBack.value = "callBackSosPop";
 
-	        // 検索イベント呼び出し
-	        comSubmitForAnyWarp(fm1);
-
+			comSubmitForAnyWarp(fm1);
 	    }
+
+	 	// 組織検索ポップアップから値受け取り
+	 	// TODO
+	    function callBackSosPop(sosCd, sosNm){
+			document.fm1.sosCd.value = sosCd;
+			document.fm1.sosNm.value = sosNm;
+	 	}
+
+	 	// 担当者選択ボタン
+	    function tantoPopBtn(){
+			// NC202_担当者検索ポップアップ画面を表示
+	    	window.open("","tantoPopWindow",tantoSubScreenSize);
+			document.fm1.screenId.value = "NC202";
+			document.fm1.functionId.value="Init";
+			document.fm1.target="tantoPopWindow";
+
+			document.fm1.sosCdPop.value = document.fm1.sosCd.value;
+			document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
+			document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+
+			document.fm1.selectFlgPop.value="1";
+			document.fm1.callBack.value="callBackTantoPop";
+
+			comSubmitForAnyWarp(fm1);
+			comClickFlgInit();
+	    }
+
+		// 担当者検索ポップアップから値受け取り
+	    function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+	    							distCode, trtGrpCd, trtNm, mrCat){
+			document.fm1.sosCd.value = sosCd;
+			document.fm1.bumonRyakuName.value = bumonSeiName;
+			document.fm1.jgiNo.value = jgiNo;
+			document.fm1.jgiNm.value = jgiName;
+			document.fm1.trtCd.value = trtCd;
+			document.fm1.trtNm.value = trtNm;
+			document.fm1.mrCat.value = mrCat;
+			document.fm1.brCode.value = brCode;
+			document.fm1.distCode.value = distCode;
+	    }
+
+		// 組織Clearボタン
+	    function sosClearBtn(){
+			document.fm1.sosCd.value = "";
+			document.fm1.sosNm.value = "";
+			document.fm1.bumonRyakuName.value = "";
+			document.fm1.jgiNo.value = "";
+			document.fm1.jgiNm.value = "";
+			document.fm1.trtCd.value = "";
+			document.fm1.trtNm.value = "";
+			document.fm1.mrCat.value = "";
+			document.fm1.brCode.value = "";
+			document.fm1.distCode.value = "";
+		}
+
+	 	// 担当者Clearボタン
+	    function tantoClearBtn(){
+			document.fm1.bumonRyakuName.value = "";
+			document.fm1.jgiNo.value = "";
+			document.fm1.jgiNm.value = "";
+			document.fm1.trtCd.value = "";
+			document.fm1.trtNm.value = "";
+			document.fm1.mrCat.value = "";
+			document.fm1.brCode.value = "";
+			document.fm1.distCode.value = "";
+		}
+
+	 	// Clearボタン
+	    function clearBtn(){
+			document.fm1.sosCd.value = "";
+			document.fm1.sosNm.value = "";
+			document.fm1.bumonRyakuName.value = "";
+			document.fm1.jgiNo.value = "";
+			document.fm1.jgiNm.value = "";
+			document.fm1.trtCd.value = "";
+			document.fm1.trtNm.value = "";
+			document.fm1.mrCat.value = "";
+			document.fm1.brCode.value = "";
+			document.fm1.distCode.value = "";
+
+			document.fm1.delKbn.value = "";
+			document.fm1.insKanjSrch.value = "";
+			document.fm1.insKanaSrch.value = "";
+			document.fm1.delFlg.value = "";
+			document.fm1.insNo.value = "";
+			document.fm1.ultInsNo.value = "";
+			document.fm1.keieitai.value = "";
+			document.fm1.hoInsType.value = "";
+			document.fm1.insType.value = "";
+			document.fm1.pharmType.value = "";
+			document.fm1.insPhoneSrch.value = "";
+			document.fm1.insPcode.value = "";
+			document.fm1.addrCodePref.value = "";
+			document.fm1.addrCodeCity.value = "";
+			document.fm1.insAddrSrch.value = "";
+		}
+
+	 	// 画面遷移処理
+	    function gotoNext(screenId,functionId){
+	  	  fm1.screenId.value=screenId;
+	  	  fm1.functionId.value=functionId;
+	  	  comSubmitForAnyWarp(fm1);
+	  	}
+
+	 	// アクションボタン
+	    function actBtn(screenId, insNo){
+	 		// 新規
+	 		if(screenId == "NF011"){
+	 			fm1.ultInsCd.value = insNo;
+	 		} else {
+	 			fm1.insNo.value = insNo;
+	 		}
+
+	  		fm1.screenId.value=screenId;
+		  	fm1.functionId.value="Init";
+		  	comSubmitForAnyWarp(fm1);
+		}
     </script>
 <%
-
-
 // ソート順状態制御用
 String sortCondition = StringUtils.nvl((String)request.getAttribute("sortCondition"), "");
-//String sortCondition = null;
 %>
 </head>
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
@@ -124,99 +243,92 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <input type="hidden" name="windowName" value="" />
     <input type="hidden" name="openerName" value="" />
 
+	<s:hidden name="loginJokenSetCd"/>
     <s:hidden id="preScreenId" name="preScreenId"/>
 	<s:hidden id="pageCntCur" name="pageCntCur"/>
 	<s:hidden id="sortCondition" name="sortCondition" />
 
+	<s:hidden id="callBack" name="callBack" />
+	<s:hidden id="title" name="title" />
+	<s:hidden id="srchFlg" name="srchFlg" />
+
+	<s:hidden id="upSosCd" name="upSosCd"/>
+	<s:hidden id="sosCdPop" name="sosCdPop"/>
+	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
+	<s:hidden id="bumonRankPop" name="bumonRankPop"/>
+	<s:hidden id="selectFlgPop" name="selectFlgPop"/>
+
+	<s:hidden id="ultInsCd" name="ultInsCd"/>
+
 	<s:hidden id="bumonRank" name="bumonRank"/>
-<!--  <s:hidden id="bumonRyakuName" name="bumonRyakuName"/>  申請者所属-->
-    <s:hidden id="brCode" name="brCode"/><!-- 申請者所属リージョン -->
-	<s:hidden id="distCode" name="distCode"/><!-- 申請者所属エリア -->
+	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
+    <s:hidden id="brCode" name="brCode"/>
+	<s:hidden id="distCode" name="distCode"/>
+	<s:hidden id="trtCd" name="trtCd"/>
+	<s:hidden id="trtNm" name="trtNm"/>
+	<s:hidden id="mrCat" name="mrCat"/>
 
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
 	<tr><td>
 <%-- 検索部 開始 --%>
 
-
-<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-    <tbody>
-      <s:if test="msgStr != null">
-      <tr>
-        <td>
-          <nobr>
-          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-          </nobr>
-        </td>
-      </tr>
-      </s:if>
-    </tbody>
-  </table>
-<table>
 <%
   // ソート表示状態制御
-  String reqIdAscClass = "comTableNoSort";
-  String reqIdDescClass = "comTableNoSort";
-  String reqYmdhmsAscClass = "comTableNoSort";
-  String reqYmdhmsDescClass = "comTableNoSort";
-  String reqSbtAscClass = "comTableNoSort";
-  String reqSbtDescClass = "comTableNoSort";
-  String reqTypeAscClass = "comTableNoSort";
-  String reqTypeDescClass = "comTableNoSort";
-  String reqStsAscClass = "comTableNoSort";
-  String reqStsDescClass = "comTableNoSort";
-  String sbtAscClass = "comTableNoSort";
-  String sbtDescClass = "comTableNoSort";
-  String reqJgiNameAscClass = "comTableNoSort";
-  String reqJgiNameDescClass = "comTableNoSort";
+  String insNoAscClass = "comTableNoSort";
+  String insNoDescClass = "comTableNoSort";
+  String insAbbrNameAscClass = "comTableNoSort";
+  String insAbbrNameDescClass = "comTableNoSort";
+  String insAddrAscClass = "comTableNoSort";
+  String insAddrDescClass = "comTableNoSort";
+  String shisetsuNmRyakuAscClass = "comTableNoSort";
+  String shisetsuNmRyakuDescClass = "comTableNoSort";
+  String addressAscClass = "comTableNoSort";
+  String addressDescClass = "comTableNoSort";
   if ("1".equals(sortCondition)) {
-	  reqIdDescClass = "comTableSort";
+	  insNoDescClass = "comTableSort";
   } else if ("2".equals(sortCondition)) {
-	  reqYmdhmsAscClass = "comTableSort";
+	  insAbbrNameAscClass = "comTableSort";
   } else if ("3".equals(sortCondition)) {
-	  reqYmdhmsDescClass = "comTableSort";
+	  insAbbrNameDescClass = "comTableSort";
   } else if ("4".equals(sortCondition)) {
-	  reqSbtAscClass = "comTableSort";
+	  insAddrAscClass = "comTableSort";
   } else if ("5".equals(sortCondition)) {
-	  reqSbtDescClass = "comTableSort";
+	  insAddrDescClass = "comTableSort";
   } else if ("6".equals(sortCondition)) {
-	  reqTypeAscClass = "comTableSort";
+	  shisetsuNmRyakuAscClass = "comTableSort";
   } else if ("7".equals(sortCondition)) {
-	  reqTypeDescClass = "comTableSort";
+	  shisetsuNmRyakuDescClass = "comTableSort";
   } else if ("8".equals(sortCondition)) {
-	  reqStsAscClass = "comTableSort";
+	  addressAscClass = "comTableSort";
   } else if ("9".equals(sortCondition)) {
-	  reqStsDescClass = "comTableSort";
-  } else if ("10".equals(sortCondition)) {
-	  sbtAscClass = "comTableSort";
-  } else if ("11".equals(sortCondition)) {
-	  sbtDescClass = "comTableSort";
-  } else if ("12".equals(sortCondition)) {
-	  reqJgiNameAscClass = "comTableSort";
-  } else if ("13".equals(sortCondition)) {
-	  reqJgiNameDescClass = "comTableSort";
+	  addressDescClass = "comTableSort";
+  } else {
+	  insNoAscClass = "comTableSort";
   }
 %>
 	<tr>
 		<%-- 組織 --%>
 		<td class="pupControlItem"><nobr>&nbsp;組織</nobr>
-		   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init')"/>
+		   <nobr>
+		   <input class="comButton" type="button" name="button1" value="選択" onClick="JavaScript:sosPopBtn(); return false;" />
 		   </nobr>
 		</td>
 		<td>
 			<s:textfield size="20" maxlength="40" name="sosNm" style="background-color:#D4D0C8" readonly="true" />
 			<s:hidden key="sosCd" />
-			<a href ="" onClick="popClear();return false;">Clear</a>
+			<a href ="#" onClick="sosClearBtn();return false;">Clear</a>
 		</td>
 		<%-- 担当者 --%>
 		<td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
-		   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC202','Init')"/>
+		   <nobr>
+		   <input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
 		   </nobr>
 		</td>
 		<td>
 			<s:textfield size="20" maxlength="40" name="jgiNm" style="background-color:#D4D0C8" readonly="true" />
 			<s:hidden key="jgiNo" />
-			<a href ="" onClick="popClear();return false;">Clear</a>
+			<a href ="#" onClick="tantoClearBtn();return false;">Clear</a>
 		</td>
 		<%-- 廃院区分 --%>
 		<td class="pupControlItem"><nobr>&nbsp;廃院区分</nobr></td>
@@ -302,7 +414,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	    </td>
 	    <%-- 新規作成 --%>
 	    <td colspan=2><nobr>
-	    	<s:submit value="新規作成" name="新規作成" onclick="gotoNext('NF011','Init')"/>
+		    <s:if test='srchFlg == "1" '>
+	    		<input type="button" name="新規作成" value="新規作成" onclick="gotoNext('NF011','Init')" />
+	    	</s:if>
+	    	<s:else>
+	    		<input type="button" name="新規作成" value="新規作成" onclick="gotoNext('NF011','Init')" disabled />
+	    	</s:else>
 			※新規作成の前に検索してください
 		</nobr></td>
 	</tr>
@@ -313,8 +430,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			<s:textfield size="65" name="insAddrSrch" />
 	    </td>
 		<td colspan=2>
-			<input type="button" name="search" value="検索" onclick="javaScript:searchBtn();">
-			<input type="button" name="クリア" value="クリア" onclick="rdmCler();return false;" />
+			<input type="button" value="検索" name="検索" onclick="gotoNext('NF001','Search')"/>
+			<input type="button" name="クリア" value="クリア" onclick="clearBtn();return false;" />
 		</td>
 	</tr>
 	<tr>
@@ -400,7 +517,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   </s:if>
           <%-- ページャー表示 終了 --%>
 </table>
-    <div style="max-height:400px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+    <div style="max-height:390px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 <table>
    <s:if test='pageFlag == "1" '>
           <!-- なにも表示しない -->
@@ -414,22 +531,22 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td style="background-color:#FFFFFF; width:100px;" >&nbsp;</td>
 		<td class="comTableTitleNF001W" style="width:130px">施設略式漢字名
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqIdAscClass %>" href="" onclick="NF001Sort(2);return false;">▲</a>
+		     <a class="<%=insAbbrNameAscClass %>" href="" onclick="NF001Sort(2);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqIdDescClass %>" href="" onclick="NF001Sort(3);return false;">▼</a>
+		     <a class="<%=insAbbrNameDescClass %>" href="" onclick="NF001Sort(3);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001W" style="width:160px;">施設正式漢字名</td>
 		<td class="comTableTitleNF001W" style="width:80px;">施設固定C
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqSbtAscClass %>" href="" onclick="NF001Sort(0);return false;">▲</a>
+		     <a class="<%=insNoAscClass %>" href="" onclick="NF001Sort(0);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqSbtDescClass %>" href="" onclick="NF001Sort(1);return false;">▼</a>
+		     <a class="<%=insNoDescClass %>" href="" onclick="NF001Sort(1);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001W" style="width:200px;">施設住所
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqTypeAscClass %>" href="" onclick="NF001Sort(4);return false;">▲</a>
+		     <a class="<%=insAddrAscClass %>" href="" onclick="NF001Sort(4);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqTypeDescClass %>" href="" onclick="NF001Sort(5);return false;">▼</a>
+		     <a class="<%=insAddrDescClass %>" href="" onclick="NF001Sort(5);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001W" style="width:150px;">電話番号</td>
 		<td class="comTableTitleNF001W" style="width:90px;">施設種別</td>
@@ -440,17 +557,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td class="comTableTitleNF001Act">アクション</td>
 		<td class="comTableTitleNF001">ULT施設略名
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqIdAscClass %>" href="" onclick="NF001Sort(6);return false;">▲</a>
+		     <a class="<%=shisetsuNmRyakuAscClass %>" href="" onclick="NF001Sort(6);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqIdDescClass %>" href="" onclick="NF001Sort(7);return false;">▼</a>
+		     <a class="<%=shisetsuNmRyakuDescClass %>" href="" onclick="NF001Sort(7);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001">ULT施設名</td>
 		<td class="comTableTitleNF001">ULT施設コード</td>
 		<td class="comTableTitleNF001">ULT住所
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqTypeAscClass %>" href="" onclick="NF001Sort(8);return false;">▲</a>
+		     <a class="<%=addressAscClass %>" href="" onclick="NF001Sort(8);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=reqTypeDescClass %>" href="" onclick="NF001Sort(9);return false;">▼</a>
+		     <a class="<%=addressDescClass %>" href="" onclick="NF001Sort(9);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001">ULT電話番号</td>
 		<td class="comTableTitleNF001">ULT施設区分</td>
@@ -463,40 +580,70 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:iterator value="hcoSearchDataList" status="status" var="rowBean">
 		<tr style="min-height:30px;">
 			<td class="comTableItem" rowspan=2>
+				<table>
 				<%-- アクションアイコン --%>
-				<nobr>
+				<tr>
 					<%-- 新規作成 --%>
-        	        <a class="comMiniLink" href="#" onClick="JavaScript:gotoNext('NF011','Init');" >
-   		            <img border="0" src="img/button_insert.gif">
-	                </a>
+					<td style="width:18px;">
+					<s:if test="#rowBean.funcFlg1 == 1">
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF011','<s:property value="#rowBean.dcfShisetsuCd"/>');" >
+	   		            <img border="0" src="img/button_insert.gif">
+		                </a>
+	                </s:if>
+	                </td>
 	                <%-- 編集 --%>
-        	        <a class="comMiniLink" href="#" onClick="JavaScript:gotoNext('NF012','Init');" >
-   		            <img border="0" src="img/button_update.gif">
-	                </a>
+	                <td style="width:18px;">
+	                <s:if test="#rowBean.funcFlg2 == 1">
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF012','<s:property value="#rowBean.insNo"/>');" >
+	   		            <img border="0" src="img/button_update.gif">
+		                </a>
+	                </s:if>
+	                </td>
 	                <%-- 削除 --%>
-        	        <a class="comMiniLink" href="#" onClick="JavaScript:gotoNext('NF013','Init');" >
-   		            <img border="0" src="img/button_delete.gif">
-	                </a>
+	                <td style="width:18px;">
+        	        <s:if test="#rowBean.funcFlg3 == 1">
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF013','<s:property value="#rowBean.insNo"/>');" >
+	   		            <img border="0" src="img/button_delete.gif">
+		                </a>
+		            </s:if>
+		            </td>
 	                <%-- 復活 --%>
-        	        <a class="comMiniLink" href="#" onClick="JavaScript:gotoNext('NF014','Init');" >
-   		            <img border="0" src="img/button_restoration.gif">
-	                </a>
-	            </nobr>
-	            <br>
-	            <nobr>
+	                <td style="width:18px;">
+	                <s:if test="#rowBean.funcFlg4 == 1">
+        	        	<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF014','<s:property value="#rowBean.insNo"/>');" >
+   		            	<img border="0" src="img/button_restoration.gif">
+	                	</a>
+	                </s:if>
+	                </td>
+                </tr>
+                <tr>
+                	<td>
 					<%-- 親子紐づけ --%>
-        	        <a class="comMiniLink" href="#" onClick="JavaScript:gotoNext('NF201','Init');" >
-   		            <img border="0" src="img/button_linkcurrent.gif">
-	                </a>
+					<s:if test="#rowBean.funcFlg5 == 1">
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF201','<s:property value="#rowBean.insNo"/>');" >
+	   		            <img border="0" src="img/button_linkcurrent.gif">
+		                </a>
+	                </s:if>
+	                </td>
+	                <td>
 	                <%-- 来期用項目更新 --%>
-        	        <a class="comMiniLink" href="#" onClick="JavaScript:gotoNext('NF101','Init');" >
-   		            <img border="0" src="img/button_updatenext.gif">
-	                </a>
+	                <s:if test="#rowBean.funcFlg6 == 1">
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF101','<s:property value="#rowBean.insNo"/>');" >
+	   		            <img border="0" src="img/button_updatenext.gif">
+		                </a>
+		            </s:if>
+		            </td>
+	                <td>
 	                <%-- 親子紐付け（来期） --%>
-        	        <a class="comMiniLink" href="#" onClick="JavaScript:gotoNext('NF202','Init');" >
-   		            <img border="0" src="img/buttun_linknext.gif">
-	                </a>
-	            </nobr>
+	                <s:if test="#rowBean.funcFlg7 == 1">
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF202','<s:property value="#rowBean.insNo"/>');" >
+	   		            <img border="0" src="img/buttun_linknext.gif">
+		                </a>
+		            </s:if>
+		            </td>
+	                <td></td>
+	            </tr>
+	            </table>
 			</td>
 	        <td class="comTableItem" style="height:30px;"><s:label key="hcoSearchDataList[%{#status.index}].insAbbrName" /></td>
 	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].insFormalName" /></td>

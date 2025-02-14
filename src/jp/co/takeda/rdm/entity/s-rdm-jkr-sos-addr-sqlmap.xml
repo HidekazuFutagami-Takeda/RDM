@@ -59,7 +59,7 @@
 			ADDR_CODE_PREF,
 			ADDR_NAME_PREF
 		FROM
-			S_RDM_COM_POS_ADDR
+			S_RDM_JKR_SOS_ADDR
 		<where>
 			<if test="trtCd != null">TRT_CD = #{trtCd}</if>
 		</where>

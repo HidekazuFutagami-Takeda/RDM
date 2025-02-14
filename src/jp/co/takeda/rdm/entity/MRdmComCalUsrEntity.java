@@ -109,8 +109,8 @@ public class MRdmComCalUsrEntity  extends BaseEntity implements Serializable{
      * 作成日
      * @generated
      */
-    private Date isShaYmd;
-    private boolean isShaYmdNullFlag;
+    private Date insShaYmd;
+    private boolean insShaYmdNullFlag;
 
     /**
      * 作成者
@@ -359,20 +359,12 @@ public class MRdmComCalUsrEntity  extends BaseEntity implements Serializable{
 		this.bizDaysNullFlag = bizDaysNullFlag;
 	}
 
-	public Date getIsShaYmd() {
-		return isShaYmd;
+	public boolean isInsShaYmdNullFlag() {
+		return insShaYmdNullFlag;
 	}
 
-	public void setIsShaYmd(Date isShaYmd) {
-		this.isShaYmd = isShaYmd;
-	}
-
-	public boolean isShaYmdNullFlag() {
-		return isShaYmdNullFlag;
-	}
-
-	public void setShaYmdNullFlag(boolean isShaYmdNullFlag) {
-		this.isShaYmdNullFlag = isShaYmdNullFlag;
+	public void setInsShaYmdNullFlag(boolean insShaYmdNullFlag) {
+		this.insShaYmdNullFlag = insShaYmdNullFlag;
 	}
 
 	public String getInsShaId() {

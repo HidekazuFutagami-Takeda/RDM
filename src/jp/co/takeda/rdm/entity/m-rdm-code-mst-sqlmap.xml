@@ -22,6 +22,14 @@
         <result column="VALUE1" property="value"/>
         <result column="VALUE1_KANJ" property="valueKanji"/>
     </resultMap>
+    <resultMap id="selectNd001ComboListResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd001ComboListEntity">
+        <result column="VALUE1" property="value1"/>
+        <result column="VALUE1_KANJ" property="value1Kanj"/>
+    </resultMap>
+    <resultMap id="selectNd101ComboListResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd101ComboListEntity">
+        <result column="VALUE1" property="value1"/>
+        <result column="VALUE1_KANJ" property="value1Kanj"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity" resultMap="mRdmCodeMstResultMap">
         SELECT
             CODE_KANJ, CODE_NAME, VALUE1_KANJ, VALUE1, VALUE2_KANJ, VALUE2, VALUE3_KANJ, VALUE3, SORT_NUM, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID        FROM
@@ -167,5 +175,23 @@
         AND DEL_FLG = '0'
         ORDER BY
             SORT_NUM, VALUE1
+    </select>
+   <select id="selectNd001ComboList" parameterType="jp.co.takeda.rdm.entity.join.SelectNd001ComboListEntity" resultMap="selectNd001ComboListResultMap">
+        SELECT
+            VALUE1, VALUE1 || '：' || VALUE1_KANJ VALUE1_KANJ
+        FROM
+            M_RDM_CODE_MST
+        WHERE
+            CODE_NAME = #{inDataKbn}
+        ORDER BY VALUE1
+    </select>
+   <select id="selectNd101ComboList" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101ComboListEntity" resultMap="selectNd101ComboListResultMap">
+        SELECT
+            VALUE1, VALUE1_KANJ
+        FROM
+            M_RDM_CODE_MST
+        WHERE
+            CODE_NAME = #{inDataKbn}
+        ORDER BY VALUE1
     </select>
 </mapper>

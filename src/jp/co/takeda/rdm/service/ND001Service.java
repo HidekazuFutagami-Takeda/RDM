@@ -10,7 +10,7 @@ import java.util.List;
 import javax.inject.Named;
 import java.util.LinkedHashMap;
 
-
+import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
@@ -22,11 +22,9 @@ import jp.co.takeda.rdm.entity.join.SelectCntSelectHcpEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamNd001Entity;
 import jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd001ComboListEntity;
-import jp.co.takeda.rdm.entity.join.SelectNd001ShussinkoComboListEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd001ShusshinkoComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd001IkkComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
-
-import jp.co.takeda.rdm.entity.MRdmComCalUsrEntity;
 
 import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.util.RdmConstantsData;
@@ -334,9 +332,11 @@ public class ND001Service extends BaseService {
     }
 
     public void setCombo(ND001DTO indto) {
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+    	indto.setMrAdminFlg(loginInfo.getJokenFlg());
     	if (indto.getMrAdminFlg().equals("0")) {
-    		indto.setBumonSeiName("testR");
-    		indto.setJgiName("testMR");
+    		indto.setBumonSeiName(loginInfo.getBumonRyakuName());
+    		indto.setJgiName(loginInfo.getJgiName());
     	}
 
         //1-2 ドロップダウンリストの生成
@@ -365,29 +365,29 @@ public class ND001Service extends BaseService {
         indto.setSearchDocAttributeCombo(mapDocAttribute);
 
         //出身校
-        SelectNd001ShussinkoComboListEntity selectNd001ShussinkoComboListEntity = new SelectNd001ShussinkoComboListEntity();
-        List<SelectNd001ShussinkoComboListEntity> selectNd001ShussinkoComboList;
+        SelectNd001ShusshinkoComboListEntity selectNd001ShussinkoComboListEntity = new SelectNd001ShusshinkoComboListEntity();
+        List<SelectNd001ShusshinkoComboListEntity> selectNd001ShussinkoComboList;
         selectNd001ShussinkoComboList = dao.select(selectNd001ShussinkoComboListEntity);
         LinkedHashMap<String, String> mapMedSch = new LinkedHashMap<String, String>();
         mapMedSch.put(null, "--なし--");
-        for (SelectNd001ShussinkoComboListEntity outEntity : selectNd001ShussinkoComboList) {
+        for (SelectNd001ShusshinkoComboListEntity outEntity : selectNd001ShussinkoComboList) {
         	mapMedSch.put(outEntity.getUnivCode(), outEntity.getUnivKj());
         }
         indto.setSearchMedSchCombo(mapMedSch);
 
         //卒年
-        MRdmComCalUsrEntity mRdmComCalUsrEntity = new MRdmComCalUsrEntity("1");
-        List<MRdmComCalUsrEntity> MRdmComCalUsrList;
-        MRdmComCalUsrList = dao.select(mRdmComCalUsrEntity);
+		MRdmComCalUsrEntity inEntityYearCmb = new MRdmComCalUsrEntity();
+		inEntityYearCmb.setToday("1");
+		MRdmComCalUsrEntity outCalUsr = dao.selectByValue(inEntityYearCmb).get(0);
         LinkedHashMap<String, String> mapGradYear = new LinkedHashMap<String, String>();
         mapGradYear.put(null, "");
-        Integer thisYear = Integer.parseInt(MRdmComCalUsrList.get(0).getCalYear());
+        Integer thisYear = Integer.parseInt(outCalUsr.getCalYear());
         Integer futureYear = thisYear + 1;
         String futureYearString = Integer.toString(futureYear);
         mapGradYear.put(futureYearString,futureYearString);
-        mapGradYear.put(MRdmComCalUsrList.get(0).getCalYear(), MRdmComCalUsrList.get(0).getCalYear());
+        mapGradYear.put(outCalUsr.getCalYear(),outCalUsr.getCalYear());
         for (int i = 1; i < 101; i++){
-            Integer year = Integer.parseInt(MRdmComCalUsrList.get(0).getCalYear()) - i;
+            Integer year = Integer.parseInt(outCalUsr.getCalYear()) - i;
             String yearString = Integer.toString(year);
             mapGradYear.put(yearString, yearString);
         }

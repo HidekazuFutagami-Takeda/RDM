@@ -17,7 +17,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
  * SQLID : selectNd001ShussinkoComboList
  * @generated
  */
-public class SelectNd001ShussinkoComboListEntity extends BaseEntity implements Serializable {
+public class SelectNd001ShusshinkoComboListEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -41,8 +41,8 @@ public class SelectNd001ShussinkoComboListEntity extends BaseEntity implements S
      * コンストラクタ
      * @generated
      */
-    public SelectNd001ShussinkoComboListEntity() {
-        super("m_rdm_hcp_shussinko" , "selectNd001ShussinkoComboList");
+    public SelectNd001ShusshinkoComboListEntity() {
+        super("m_rdm_hcp_shusshinko" , "selectNd001ShussinkoComboList");
     }
 
 	/**

@@ -56,6 +56,10 @@
     <script>
 	    function comSetFormWindowInfo(){
 	    	comClickFlgInit();
+
+	    	sosAddrChange();
+
+	    	document.fm1.addrCodeCity.value = document.fm1.tmpAddrCodeCity.value;
 	    }
 
 	    // TODO サイズ調整
@@ -166,6 +170,7 @@
 			document.fm1.insPcode.value = "";
 			document.fm1.addrCodePref.value = "";
 			document.fm1.addrCodeCity.value = "";
+			document.fm1.tmpAddrCodeCity.value = "";
 			document.fm1.insAddrSrch.value = "";
 		}
 
@@ -189,6 +194,52 @@
 		  	fm1.functionId.value="Init";
 		  	comSubmitForAnyWarp(fm1);
 		}
+
+	 	// ソートボタン
+	    function sortBtn(sortCondition) {
+			//ソート区分設定
+	    	document.fm1.sortCondition.value = sortCondition;
+	        document.fm1.screenId.value	= "NF001";
+	        document.fm1.functionId.value = "Search";
+
+	      comSubmitForAnyWarp(fm1);
+	    }
+
+	 	// ページボタン
+	    function pageBtn( pageCntCur ){
+			//現在ページ番号変更（遷移）
+			document.fm1.pageCntCur.value = pageCntCur;
+			document.fm1.screenId.value	= "NF001";
+			document.fm1.functionId.value = "Search";
+			// 検索イベント呼び出し
+			comSubmitForAnyWarp(fm1);
+    	}
+
+	    function sosAddrChange() {
+			//市区町村配列
+			var val2 = document.getElementById("addrCodeCity");
+			val2.value = '';
+			//選択された都道府県のCD
+			var val1 = document.getElementById("addrCodePref").value;
+
+			for (i = 0; i < val2.length; i++) {
+				//表示
+				val2.options[i].style.display = "block";
+				var val2Cd = val2[i].value;
+				if(val2Cd != ""){
+					//市区町村コードの頭2つ切り取る
+					var val2cut = val2Cd.toString().substr(0, 2);
+					if (val1 != val2cut) {
+						val2.options[i];
+						val2.options[i].style.display = "none";
+					}
+				}
+			}
+    	}
+
+	    function addrCodeCityChange(){
+	    	document.fm1.tmpAddrCodeCity.value = document.fm1.addrCodeCity.value;
+	    }
     </script>
 <%
 // ソート順状態制御用
@@ -259,6 +310,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="selectFlgPop" name="selectFlgPop"/>
 
 	<s:hidden id="ultInsCd" name="ultInsCd"/>
+
+	<s:hidden id="tmpAddrCodeCity" name="tmpAddrCodeCity" />
 
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
@@ -405,12 +458,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<%-- 都道府県--%>
 	    <td class="pupControlItem"><nobr>&nbsp;都道府県</nobr></td>
         <td class="comTableSearchItem">
-			<s:select id="addrCodePref" name="addrCodePref" cssStyle="width:80pt" list ="addrPrefCombo" />
+			<s:select id="addrCodePref" name="addrCodePref" cssStyle="width:80pt" list ="addrPrefCombo" onchange="sosAddrChange();addrCodeCityChange();" />
 	    </td>
 	    <%-- JIS市区町村名 --%>
 	    <td class="pupControlItem"><nobr>&nbsp;JIS市区町村名</nobr></td>
         <td class="comTableSearchItem">
-			<s:select id="addrCodeCity" name="addrCodeCity" cssStyle="width:80pt" list ="addrCityCombo" />
+			<s:select id="addrCodeCity" name="addrCodeCity" cssStyle="width:80pt" list ="addrCityCombo" onchange="addrCodeCityChange();" />
 	    </td>
 	    <%-- 新規作成 --%>
 	    <td colspan=2><nobr>
@@ -455,7 +508,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <!-- 前頁リンク -->
                             <s:if test="pageCntCur > 1">
                             <nobr>
-                                <a class="comMiniLink" href = "" onClick="NF001Page(<s:property value="pageCntCur-1"/>);return false;">
+                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur-1"/>);return false;">
                                 &lt;&lt; 前
                                 </a>&nbsp;
                             </nobr>
@@ -463,7 +516,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
                             <!-- ページ基準の前頁リンク -->
                             <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="NF001Page(<s:property value="pageCntBase-1"/>);return false;">
+                              <a class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="pageCntBase-1"/>);return false;">
                               <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
                             </s:if>
 
@@ -473,7 +526,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                                 <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
                                 <s:if test="#pageCntCurTemp <= pageCntAll">
                                   <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="NF001Page(<s:property value="#pageCntCurTemp"/>);return false;">
+                                    <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp"/>);return false;">
                                     <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
                                   </s:if>
                                   <s:else>
@@ -487,14 +540,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <!-- 次のグループ -->
                             <s:if test="(#pageCntBase + 10) <= pageCntAll">
                                 &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="NF001Page(<s:property value="#pageCntCurTemp-1"/>);return false;">
+                                <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp-1"/>);return false;">
                                 <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
                             </s:if>
 
                             <!-- 次頁  -->
                             <s:if test="pageCntCur < pageCntAll">
                               <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="NF001Page(<s:property value="pageCntCur+1"/>);return false;">
+                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur+1"/>);return false;">
                                   次&gt;&gt;
                                 </a>
                               </nobr>
@@ -531,22 +584,22 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td style="background-color:#FFFFFF; width:100px;" >&nbsp;</td>
 		<td class="comTableTitleNF001W" style="width:130px">施設略式漢字名
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=insAbbrNameAscClass %>" href="" onclick="NF001Sort(2);return false;">▲</a>
+		     <a class="<%=insAbbrNameAscClass %>" href="" onclick="sortBtn(2);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=insAbbrNameDescClass %>" href="" onclick="NF001Sort(3);return false;">▼</a>
+		     <a class="<%=insAbbrNameDescClass %>" href="" onclick="sortBtn(3);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001W" style="width:160px;">施設正式漢字名</td>
 		<td class="comTableTitleNF001W" style="width:80px;">施設固定C
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=insNoAscClass %>" href="" onclick="NF001Sort(0);return false;">▲</a>
+		     <a class="<%=insNoAscClass %>" href="" onclick="sortBtn(0);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=insNoDescClass %>" href="" onclick="NF001Sort(1);return false;">▼</a>
+		     <a class="<%=insNoDescClass %>" href="" onclick="sortBtn(1);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001W" style="width:200px;">施設住所
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=insAddrAscClass %>" href="" onclick="NF001Sort(4);return false;">▲</a>
+		     <a class="<%=insAddrAscClass %>" href="" onclick="sortBtn(4);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=insAddrDescClass %>" href="" onclick="NF001Sort(5);return false;">▼</a>
+		     <a class="<%=insAddrDescClass %>" href="" onclick="sortBtn(5);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001W" style="width:150px;">電話番号</td>
 		<td class="comTableTitleNF001W" style="width:90px;">施設種別</td>
@@ -557,17 +610,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td class="comTableTitleNF001Act">アクション</td>
 		<td class="comTableTitleNF001">ULT施設略名
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=shisetsuNmRyakuAscClass %>" href="" onclick="NF001Sort(6);return false;">▲</a>
+		     <a class="<%=shisetsuNmRyakuAscClass %>" href="" onclick="sortBtn(6);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=shisetsuNmRyakuDescClass %>" href="" onclick="NF001Sort(7);return false;">▼</a>
+		     <a class="<%=shisetsuNmRyakuDescClass %>" href="" onclick="sortBtn(7);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001">ULT施設名</td>
 		<td class="comTableTitleNF001">ULT施設コード</td>
 		<td class="comTableTitleNF001">ULT住所
 			 <span style="font-size: 1pt;"> </span>
-		     <a class="<%=addressAscClass %>" href="" onclick="NF001Sort(8);return false;">▲</a>
+		     <a class="<%=addressAscClass %>" href="" onclick="sortBtn(8);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
-		     <a class="<%=addressDescClass %>" href="" onclick="NF001Sort(9);return false;">▼</a>
+		     <a class="<%=addressDescClass %>" href="" onclick="sortBtn(9);return false;">▼</a>
 		</td>
 		<td class="comTableTitleNF001">ULT電話番号</td>
 		<td class="comTableTitleNF001">ULT施設区分</td>

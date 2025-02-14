@@ -80,15 +80,6 @@ public class NF001Action extends BaseAction<NF001DTO> {
         return null;
         // END UOC
     }
-//    public String before() throws Exception {
-//        // START UOC
-//    	dto.setMsgId(null);
-//dto.setMsgStr(null);
-//        return null;
-//        // END UOC
-//        // START UOC
-//    }
-
 
     /**
      * イベント毎のメソッド実行前に共通後処理。<br/>
@@ -140,30 +131,6 @@ public class NF001Action extends BaseAction<NF001DTO> {
         dto.setTitle(title);
         // END UOC
     }
-    /**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String sort() throws Exception {
-        pageSetup();
-        // F層呼び出し
-        BaseDTO outdto = NF001Service.sort(dto);
-
-        return sortNext(outdto);
-    }
-
-    /**
-     * 後処理
-     * @customizable
-     */
-    protected String sortNext(BaseDTO outdto) throws Exception {
-        // START UOC
-        sessionMap.put(AppConstant.SESKEY_NF001_SEARCHKEY, outdto);
-        // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
 
     /**
      * 後処理
@@ -213,43 +180,5 @@ public class NF001Action extends BaseAction<NF001DTO> {
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
-    }
-
-	/**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String page() throws Exception {
-        pageSetup();
-        // F層呼び出し
-        BaseDTO outdto = NF001Service.page(dto);
-
-        return pageNext(outdto);
-    }
-
-	/**
-     * 前処理
-     * @customizable
-     */
-    protected void pageSetup() throws Exception {
-        // START UOC
-    	this.setSearchCon();
-        NF001DTO searchKey = (NF001DTO)sessionMap.get(AppConstant.SESKEY_NF001_SEARCHKEY);
-    }
-
-	/**
-     * 後処理
-     * @customizable
-     */
-    protected String pageNext(BaseDTO outdto) throws Exception {
-        // START UOC
-    	sessionMap.put(AppConstant.SESKEY_NF001_SEARCHKEY, outdto);
-        // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
-    private void setSearchCon() {
-
     }
 }

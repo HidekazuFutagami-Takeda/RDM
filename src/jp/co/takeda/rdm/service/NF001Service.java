@@ -47,23 +47,6 @@ public class NF001Service extends BaseService {
 
     /**
      * イベント処理
-     * @param indto ND001DTO
-     * @return 遷移先DTO
-     * @customizable
-     */
-    @Transactional
-    public BaseDTO sort(NF001DTO indto) {
-        BaseDTO outdto = indto;
-        // START UOC
-
-        outdto = search(indto);
-
-        // END UOC
-        return outdto;
-    }
-
-    /**
-     * イベント処理
      * @param indto RDMNF001DTO
      * @return 遷移先DTO
      * @customizable
@@ -242,8 +225,10 @@ public class NF001Service extends BaseService {
   		selectNF001MainDataEntity.setAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePref()));
 
         // JIS市区町村
-  		selectNF001MainDataCntEntity.setAddrCodeCity(StringUtils.setEmptyToNull(indto.getAddrCodeCity()));
-  		selectNF001MainDataEntity.setAddrCodeCity(StringUtils.setEmptyToNull(indto.getAddrCodeCity()));
+  		if(indto.getAddrCodeCity() != null && !"".equals(indto.getAddrCodeCity())){
+  			selectNF001MainDataCntEntity.setAddrCodeCity(StringUtils.setEmptyToNull(indto.getAddrCodeCity().substring(2)));
+  			selectNF001MainDataEntity.setAddrCodeCity(StringUtils.setEmptyToNull(indto.getAddrCodeCity().substring(2)));
+  		}
 
   		// 住所(全角)
   		// 全角変換(F_RDM_FW_HENKAN)
@@ -807,8 +792,13 @@ public class NF001Service extends BaseService {
 
         //1-2-8			JIS市区町村
 		//ブランク　※都道府県が選択された場合、リストを取得する
+        SRdmJkrSosAddrEntity inEntityCityCmb = new SRdmJkrSosAddrEntity();
+        List<SRdmJkrSosAddrEntity> outMainCityList = dao.selectByValue(inEntityCityCmb);
         LinkedHashMap<String, String> mapAddrCity = new LinkedHashMap<String, String>();
         mapAddrCity.put("", "--なし--");
+        for (SRdmJkrSosAddrEntity outEntity : outMainCityList) {
+        	mapAddrCity.put(outEntity.getAddrCodePref()+outEntity.getTkCityCd(), outEntity.getTkCityName());
+        }
         indto.setAddrCityCombo(mapAddrCity);
     }
 }

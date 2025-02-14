@@ -182,6 +182,12 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	private String addrCodeCity;
 
 	/**
+	 * JIS市区町村
+	 * @generated
+	 */
+	private String tmpAddrCodeCity;
+
+	/**
 	 * 住所(全角)
 	 * @generated
 	 */
@@ -697,6 +703,21 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAddrCodeCity(String addrCodeCity) {
 		this.addrCodeCity = addrCodeCity;
+	}
+
+	/**
+	 * NF001DTO.javatmpAddrCodeCityを設定
+	 * @return tmpAddrCodeCity
+	 */
+	public String getTmpAddrCodeCity() {
+		return tmpAddrCodeCity;
+	}
+
+	/**
+	 * @param tmpAddrCodeCity セットする tmpAddrCodeCity
+	 */
+	public void setTmpAddrCodeCity(String tmpAddrCodeCity) {
+		this.tmpAddrCodeCity = tmpAddrCodeCity;
 	}
 
 	/**

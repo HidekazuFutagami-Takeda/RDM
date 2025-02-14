@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_rdm_hcp_kmu_req">
+    <resultMap id="tRdmHcpKmuReqResultMap" type="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="INS_NO_MT" property="insNoMt"/>
+        <result column="TRN_KBN" property="trnKbn"/>
+        <result column="INS_NO_SK" property="insNoSk"/>
+        <result column="JOB_FORM_BF" property="jobFormBf"/>
+        <result column="DEPT_CODE_BF" property="deptCodeBf"/>
+        <result column="DEPT_KANJI_BF" property="deptKanjiBf"/>
+        <result column="DEPT_KANA_BF" property="deptKanaBf"/>
+        <result column="UNIV_POS_CODE_BF" property="univPosCodeBf"/>
+        <result column="TITLE_CODE_BF" property="titleCodeBf"/>
+        <result column="DCC_TYPE_BF" property="dccTypeBf"/>
+        <result column="JOB_FORM_AF" property="jobFormAf"/>
+        <result column="DEPT_CODE_AF" property="deptCodeAf"/>
+        <result column="DEPT_KANJI_AF" property="deptKanjiAf"/>
+        <result column="DEPT_KANA_AF" property="deptKanaAf"/>
+        <result column="UNIV_POS_CODE_AF" property="univPosCodeAf"/>
+        <result column="TITLE_CODE_AF" property="titleCodeAf"/>
+        <result column="DCC_TYPE_AF" property="dccTypeAf"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <resultMap id="selectDocReqKnrInsChangeResultMap" type="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_SHZ" property="reqShz"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_STS" property="reqSts"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="REQ_BR_CODE" property="reqBrCode"/>
+        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
+        <result column="DOC_KANJ" property="docKanj"/>
+        <result column="PRE_INS_ABBR_NAME" property="preInsAbbrName"/>
+        <result column="PRE_DEPT_KJ" property="preDeptKj"/>
+        <result column="TITLE_PRE_TITLE_KJ" property="titlePreTitleKj"/>
+        <result column="KMU_PRE_VALUE1_KANJ" property="kmuPreCodeKanj"/>
+        <result column="YAKUSHIN_PRE_VALUE1_KANJ" property="yakushinPreCodeKanj"/>
+        <result column="UNIV_PRE_TITLE_KJ" property="univPreTitleKj"/>
+        <result column="PRE_INS_NO" property="preInsNo"/>
+        <result column="PRE_ULT_INS_NO" property="preUltInsNo"/>
+        <result column="PRE_DEPT_CODE" property="preDeptCode"/>
+        <result column="PRE_DEPT_KN" property="preDeptKn"/>
+        <result column="PRE_TITLE_CODE" property="preTitleCode"/>
+        <result column="PRE_JOB_FORM" property="preJobForm"/>
+        <result column="PRE_DCC" property="preDcc"/>
+        <result column="PRE_UNIV_POS_CODE" property="preUnivPosCode"/>
+        <result column="TRN_KBN" property="trnKbn"/>
+        <result column="POST_INS_ABBR_NAME" property="postInsAbbrName"/>
+        <result column="POST_DEPT_KJ" property="postDeptKj"/>
+        <result column="TITLE_POST_TITLE_KJ" property="titlePostTitleKj"/>
+        <result column="KMU_POST_VALUE1_KANJ" property="kmuPostCodeKanj"/>
+        <result column="YAKUSHIN_POST_VALUE1_KANJ" property="yakushinPostCodeKanj"/>
+        <result column="UNIV_POST_TITLE_KJ" property="univPostTitleKj"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="POST_INS_NO" property="postInsNo"/>
+        <result column="POST_ULT_INS_NO" property="postUltInsNo"/>
+        <result column="POST_DEPT_CODE" property="postDeptCode"/>
+        <result column="POST_DEPT_KN" property="postDeptKn"/>
+        <result column="POST_TITLE_CODE" property="postTitleCode"/>
+        <result column="POST_JOB_FORM" property="postJobForm"/>
+        <result column="POST_DCC" property="postDcc"/>
+        <result column="POST_UNIV_POS_CODE" property="postUnivPosCode"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="TEKIYO_YMD" property="tekiyoYmd"/>
+        <result column="PRE_HO_INS_TYPE" property="preHoInsType"/>
+        <result column="POST_HO_INS_TYPE" property="postHoInsType"/>
+    </resultMap>
+    <resultMap id="selectDocReqKnrInsChangeCheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_SHZ" property="reqShz"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_STS" property="reqSts"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="REQ_BR_CODE" property="reqBrCode"/>
+        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
+        <result column="DOC_KANJ" property="docKanj"/>
+        <result column="PRE_INS_ABBR_NAME" property="preInsAbbrName"/>
+        <result column="PRE_DEPT_KJ" property="preDeptKj"/>
+        <result column="TITLE_PRE_TITLE_KJ" property="titlePreTitleKj"/>
+        <result column="KMU_PRE_VALUE1_KANJ" property="kmuPreCodeKanj"/>
+        <result column="YAKUSHIN_PRE_VALUE1_KANJ" property="yakushinPreCodeKanj"/>
+        <result column="UNIV_PRE_TITLE_KJ" property="univPreTitleKj"/>
+        <result column="PRE_INS_NO" property="preInsNo"/>
+        <result column="PRE_ULT_INS_NO" property="preUltInsNo"/>
+        <result column="PRE_DEPT_CODE" property="preDeptCode"/>
+        <result column="PRE_DEPT_KN" property="preDeptKn"/>
+        <result column="PRE_TITLE_CODE" property="preTitleCode"/>
+        <result column="PRE_JOB_FORM" property="preJobForm"/>
+        <result column="PRE_DCC" property="preDcc"/>
+        <result column="PRE_UNIV_POS_CODE" property="preUnivPosCode"/>
+        <result column="TRN_KBN" property="trnKbn"/>
+        <result column="POST_INS_ABBR_NAME" property="postInsAbbrName"/>
+        <result column="POST_DEPT_KJ" property="postDeptKj"/>
+        <result column="TITLE_POST_TITLE_KJ" property="titlePostTitleKj"/>
+        <result column="KMU_POST_VALUE1_KANJ" property="kmuPostCodeKanj"/>
+        <result column="YAKUSHIN_POST_VALUE1_KANJ" property="yakushinPostCodeKanj"/>
+        <result column="UNIV_POST_TITLE_KJ" property="univPostTitleKj"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="POST_INS_NO" property="postInsNo"/>
+        <result column="POST_ULT_INS_NO" property="postUltInsNo"/>
+        <result column="POST_DEPT_CODE" property="postDeptCode"/>
+        <result column="POST_DEPT_KN" property="postDeptKn"/>
+        <result column="POST_TITLE_CODE" property="postTitleCode"/>
+        <result column="POST_JOB_FORM" property="postJobForm"/>
+        <result column="POST_DCC" property="postDcc"/>
+        <result column="POST_UNIV_POS_CODE" property="postUnivPosCode"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="TEKIYO_YMD" property="tekiyoYmd"/>
+        <result column="PRE_HO_INS_TYPE" property="preHoInsType"/>
+        <result column="POST_HO_INS_TYPE" property="postHoInsType"/>
+        <result column="REQ_CHL" property="reqChl"/>
+    </resultMap>
+    <resultMap id="nd101CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity" resultMap="tRdmHcpKmuReqResultMap">
+        SELECT
+            REQ_ID, DOC_NO, INS_NO_MT, TRN_KBN, INS_NO_SK, JOB_FORM_BF, DEPT_CODE_BF, DEPT_KANJI_BF, DEPT_KANA_BF, UNIV_POS_CODE_BF, TITLE_CODE_BF, DCC_TYPE_BF, JOB_FORM_AF, DEPT_CODE_AF, DEPT_KANJI_AF, DEPT_KANA_AF, UNIV_POS_CODE_AF, TITLE_CODE_AF, DCC_TYPE_AF, ULT_DOC_NO, ULT_INS_NO, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_HCP_KMU_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </select>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity">
+        INSERT INTO
+            T_RDM_HCP_KMU_REQ(<trim suffixOverrides=",">REQ_ID,<if test="docNo != null">DOC_NO,</if><if test="insNoMt != null">INS_NO_MT,</if><if test="trnKbn != null">TRN_KBN,</if><if test="insNoSk != null">INS_NO_SK,</if><if test="jobFormBf != null">JOB_FORM_BF,</if><if test="deptCodeBf != null">DEPT_CODE_BF,</if><if test="deptKanjiBf != null">DEPT_KANJI_BF,</if><if test="deptKanaBf != null">DEPT_KANA_BF,</if><if test="univPosCodeBf != null">UNIV_POS_CODE_BF,</if><if test="titleCodeBf != null">TITLE_CODE_BF,</if><if test="dccTypeBf != null">DCC_TYPE_BF,</if><if test="jobFormAf != null">JOB_FORM_AF,</if><if test="deptCodeAf != null">DEPT_CODE_AF,</if><if test="deptKanjiAf != null">DEPT_KANJI_AF,</if><if test="deptKanaAf != null">DEPT_KANA_AF,</if><if test="univPosCodeAf != null">UNIV_POS_CODE_AF,</if><if test="titleCodeAf != null">TITLE_CODE_AF,</if><if test="dccTypeAf != null">DCC_TYPE_AF,</if><if test="ultDocNo != null">ULT_DOC_NO,</if><if test="ultInsNo != null">ULT_INS_NO,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{reqId},<if test="docNo  != null">#{docNo},</if><if test="insNoMt != null">#{insNoMt},</if><if test="trnKbn != null">#{trnKbn},</if><if test="insNoSk != null">#{insNoSk},</if><if test="jobFormBf != null">#{jobFormBf},</if><if test="deptCodeBf != null">#{deptCodeBf},</if><if test="deptKanjiBf != null">#{deptKanjiBf},</if><if test="deptKanaBf != null">#{deptKanaBf},</if><if test="univPosCodeBf != null">#{univPosCodeBf},</if><if test="titleCodeBf != null">#{titleCodeBf},</if><if test="dccTypeBf != null">#{dccTypeBf},</if><if test="jobFormAf != null">#{jobFormAf},</if><if test="deptCodeAf != null">#{deptCodeAf},</if><if test="deptKanjiAf != null">#{deptKanjiAf},</if><if test="deptKanaAf != null">#{deptKanaAf},</if><if test="univPosCodeAf != null">#{univPosCodeAf},</if><if test="titleCodeAf != null">#{titleCodeAf},</if><if test="dccTypeAf != null">#{dccTypeAf},</if><if test="ultDocNo != null">#{ultDocNo},</if><if test="ultInsNo != null">#{ultInsNo},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity">
+        DELETE FROM
+            T_RDM_HCP_KMU_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </delete>
+   <select id="selectDocReqKnrInsChange" parameterType="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeEntity" resultMap="selectDocReqKnrInsChangeResultMap">
+       SELECT
+           HCP_MST.DOC_KANJ DOC_KANJ
+          ,PRE_HCO_MST.INS_ABBR_NAME PRE_INS_ABBR_NAME
+          ,PRE_SHOZOKU_BUKA.DEPT_KJ PRE_DEPT_KJ
+          ,TITLE_PRE_YAKUSHOKU.TITLE_KJ TITLE_PRE_TITLE_KJ
+          ,KMU_PRE_CODE_MST.VALUE1_KANJ KMU_PRE_VALUE1_KANJ
+          ,YAKUSHIN_PRE_CODE_MST.VALUE1_KANJ YAKUSHIN_PRE_VALUE1_KANJ
+          ,UNIV_PRE_YAKUSHOKU.TITLE_KJ UNIV_PRE_TITLE_KJ
+
+          ,HCP_MST.DOC_NO
+          ,PRE_HCO_MST.HO_INS_TYPE PRE_HO_INS_TYPE
+       <if test="inReqFlg == 1">
+          ,REQ_KNR.REQ_ID
+          ,REQ_KNR.REQ_SHZ
+          ,REQ_STS_CODE_MST.VALUE1_KANJ REQ_STS_NM
+          ,REQ_KNR.REQ_STS
+          ,REQ_KNR.REQ_JGI_NAME
+          ,REQ_KNR.REQ_JGI_NO
+          ,NVL2(REQ_KNR.REQ_YMDHMS,SUBSTR(REQ_KNR.REQ_YMDHMS,1,4) || '/'|| SUBSTR(REQ_KNR.REQ_YMDHMS,5,2) || '/'|| SUBSTR(REQ_KNR.REQ_YMDHMS,7,2) || ' '|| SUBSTR(REQ_KNR.REQ_YMDHMS,9,2) || ':'|| SUBSTR(REQ_KNR.REQ_YMDHMS,11,2),'-') REQ_YMDHMS
+          ,REQ_KNR.REQ_BR_CODE
+          ,REQ_KNR.REQ_DIST_CODE
+          ,REQ_KNR.UPD_SHA_YMD
+
+          ,KMU_REQ.INS_NO_MT PRE_INS_NO
+          ,PRE_HCO_MST.ULT_INS_NO PRE_ULT_INS_NO
+          ,KMU_REQ.DEPT_CODE_BF PRE_DEPT_CODE
+          ,PRE_SHOZOKU_BUKA.DEPT_KN PRE_DEPT_KN
+          ,KMU_REQ.TITLE_CODE_BF PRE_TITLE_CODE
+          ,KMU_REQ.JOB_FORM_BF PRE_JOB_FORM
+          ,KMU_REQ.DCC_TYPE_BF PRE_DCC
+          ,KMU_REQ.UNIV_POS_CODE_BF PRE_UNIV_POS_CODE
+          ,REQ_KNR.TEKIYO_YMD
+
+          ,KMU_REQ.TRN_KBN
+          ,POST_HCO_MST.INS_ABBR_NAME POST_INS_ABBR_NAME
+          ,POST_SHOZOKU_BUKA.DEPT_KJ POST_DEPT_KJ
+          ,TITLE_POST_YAKUSHOKU.TITLE_KJ TITLE_POST_TITLE_KJ
+          ,KMU_POST_CODE_MST.VALUE1_KANJ KMU_POST_VALUE1_KANJ
+          ,YAKUSHIN_POST_CODE_MST.VALUE1_KANJ YAKUSHIN_POST_VALUE1_KANJ
+          ,UNIV_POST_YAKUSHOKU.TITLE_KJ UNIV_POST_TITLE_KJ
+          ,SUBSTR(REQ_KNR.APR_YMDHMS, 1,4) || '-' || SUBSTR(REQ_KNR.APR_YMDHMS, 5,2) || '-' ||SUBSTR(REQ_KNR.APR_YMDHMS, 7,2) APR_YMDHMS
+          ,KMU_REQ.INS_NO_SK POST_INS_NO
+          ,POST_HCO_MST.ULT_INS_NO POST_ULT_INS_NO
+          ,KMU_REQ.DEPT_CODE_AF POST_DEPT_CODE
+          ,POST_SHOZOKU_BUKA.DEPT_KN POST_DEPT_KN
+          ,KMU_REQ.TITLE_CODE_AF POST_TITLE_CODE
+          ,KMU_REQ.JOB_FORM_AF POST_JOB_FORM
+          ,KMU_REQ.DCC_TYPE_AF POST_DCC
+          ,KMU_REQ.UNIV_POS_CODE_AF POST_UNIV_POS_CODE
+          ,REQ_KNR.REQ_COMMENT
+          ,REQ_KNR.APR_COMMENT
+
+          ,POST_HCO_MST.HO_INS_TYPE POST_HO_INS_TYPE
+       </if>
+       <if test="inReqFlg == 0">
+          ,HCP_WORK.INS_NO PRE_INS_NO
+          ,PRE_HCO_MST.ULT_INS_NO PRE_ULT_INS_NO
+          ,HCP_WORK.DEPT_CODE PRE_DEPT_CODE
+          ,PRE_SHOZOKU_BUKA.DEPT_KN PRE_DEPT_KN
+          ,HCP_WORK.TITLE_CODE PRE_TITLE_CODE
+          ,HCP_WORK.JOB_FORM PRE_JOB_FORM
+          ,HCP_WORK.DCC PRE_DCC
+          ,HCP_WORK.UNIV_POS_CODE PRE_UNIV_POS_CODE
+       </if>
+       <if test="inReqFlg == 1">
+       FROM T_RDM_REQ_KNR REQ_KNR
+       --NC011_No2
+       inner join
+           T_RDM_HCP_KMU_REQ KMU_REQ
+       ON
+           KMU_REQ.REQ_ID = REQ_KNR.REQ_ID
+       --NC011_No3
+       inner join
+           M_RDM_HCP_MST HCP_MST
+       ON
+           HCP_MST.DOC_NO = KMU_REQ.DOC_NO
+       --NC011_No4
+       LEFT JOIN
+           M_RDM_HCO_MST PRE_HCO_MST
+       ON
+           PRE_HCO_MST.INS_NO = KMU_REQ.INS_NO_MT
+       --NC011_No5
+       LEFT JOIN
+           M_RDM_HCO_MST POST_HCO_MST
+       ON
+           POST_HCO_MST.INS_NO = KMU_REQ.INS_NO_SK
+       --NC011_No6
+       LEFT JOIN
+           M_RDM_HCP_SHOZOKU_BUKA PRE_SHOZOKU_BUKA
+       ON
+           PRE_SHOZOKU_BUKA.DEPT_CODE = KMU_REQ.DEPT_CODE_BF
+       --NC011_No7
+       LEFT JOIN
+           M_RDM_HCP_SHOZOKU_BUKA POST_SHOZOKU_BUKA
+       ON
+           POST_SHOZOKU_BUKA.DEPT_CODE = KMU_REQ.DEPT_CODE_AF
+       --NC011_No8
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU UNIV_PRE_YAKUSHOKU
+       ON
+           UNIV_PRE_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_BF
+       AND UNIV_PRE_YAKUSHOKU.UNIV_TITLE_FLG = 1
+       AND UNIV_PRE_YAKUSHOKU.DEL_FLG = 0
+       --NC011_No9
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU UNIV_POST_YAKUSHOKU
+       ON
+           UNIV_POST_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_AF
+       AND UNIV_POST_YAKUSHOKU.UNIV_TITLE_FLG = 1
+       AND UNIV_POST_YAKUSHOKU.DEL_FLG = 0
+       --NC011_No10
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU TITLE_PRE_YAKUSHOKU
+       ON
+           TITLE_PRE_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_BF
+       AND TITLE_PRE_YAKUSHOKU.UNIV_TITLE_FLG = 0
+       AND TITLE_PRE_YAKUSHOKU.DEL_FLG = 0
+       --NC011_No11
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU TITLE_POST_YAKUSHOKU
+       ON
+           TITLE_POST_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_AF
+       AND TITLE_POST_YAKUSHOKU.UNIV_TITLE_FLG = 0
+       AND TITLE_POST_YAKUSHOKU.DEL_FLG = 0
+       --NC011_No12
+       LEFT JOIN
+           M_RDM_CODE_MST KMU_PRE_CODE_MST
+       ON
+           KMU_PRE_CODE_MST.CODE_NAME = 'JOB_FORM'
+       AND KMU_PRE_CODE_MST.DEL_FLG = 0
+       AND KMU_PRE_CODE_MST.VALUE1 = KMU_REQ.JOB_FORM_BF
+       --NC011_No13
+       LEFT JOIN
+           M_RDM_CODE_MST KMU_POST_CODE_MST
+       ON
+           KMU_POST_CODE_MST.CODE_NAME = 'JOB_FORM'
+       AND KMU_POST_CODE_MST.DEL_FLG = 0
+       AND KMU_POST_CODE_MST.VALUE1 = KMU_REQ.JOB_FORM_AF
+       --NC011_No14
+       LEFT JOIN
+           M_RDM_CODE_MST YAKUSHIN_PRE_CODE_MST
+       ON
+           YAKUSHIN_PRE_CODE_MST.CODE_NAME = 'DCC'
+       AND YAKUSHIN_PRE_CODE_MST.DEL_FLG = 0
+       AND YAKUSHIN_PRE_CODE_MST.VALUE1 = KMU_REQ.DCC_TYPE_BF
+       --NC011_No15
+       LEFT JOIN
+           M_RDM_CODE_MST YAKUSHIN_POST_CODE_MST
+       ON
+           YAKUSHIN_POST_CODE_MST.CODE_NAME = 'DCC'
+       AND YAKUSHIN_POST_CODE_MST.DEL_FLG = 0
+       AND YAKUSHIN_POST_CODE_MST.VALUE1 = KMU_REQ.DCC_TYPE_BF
+       --NC011_No16（追加）
+       LEFT JOIN
+           M_RDM_CODE_MST REQ_STS_CODE_MST
+       ON
+           REQ_STS_CODE_MST.CODE_NAME = 'REQ_STS'
+       AND REQ_STS_CODE_MST.DEL_FLG = 0
+       AND REQ_STS_CODE_MST.VALUE1 = REQ_KNR.REQ_STS
+       </if>
+       <if test="inReqFlg == 0">
+       FROM M_RDM_HCP_MST HCP_MST
+       --ND013_No2
+       inner join
+           M_RDM_HCP_WORK HCP_WORK
+       ON
+           HCP_WORK.DOC_NO = HCP_MST.DOC_NO
+       --ND013_No4
+       LEFT JOIN
+           M_RDM_HCO_MST PRE_HCO_MST
+       ON
+           PRE_HCO_MST.INS_NO = HCP_WORK.INS_NO
+       --ND013_No5
+       LEFT JOIN
+           M_RDM_HCP_SHOZOKU_BUKA PRE_SHOZOKU_BUKA
+       ON
+           PRE_SHOZOKU_BUKA.DEPT_CODE = HCP_WORK.DEPT_CODE
+       --ND013_No6
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU UNIV_PRE_YAKUSHOKU
+       on
+           UNIV_PRE_YAKUSHOKU.TITLE_CODE = HCP_WORK.UNIV_POS_CODE
+       AND UNIV_PRE_YAKUSHOKU.UNIV_TITLE_FLG = 1
+       AND UNIV_PRE_YAKUSHOKU.DEL_FLG = 0
+       --ND013_No7
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU TITLE_PRE_YAKUSHOKU
+       on
+           TITLE_PRE_YAKUSHOKU.TITLE_CODE =  HCP_WORK.TITLE_CODE
+       AND TITLE_PRE_YAKUSHOKU.UNIV_TITLE_FLG = 0
+       AND TITLE_PRE_YAKUSHOKU.DEL_FLG = 0
+       --ND013_No8
+       LEFT JOIN
+           M_RDM_CODE_MST KMU_PRE_CODE_MST
+       ON
+           KMU_PRE_CODE_MST.CODE_NAME = 'JOB_FORM'
+       AND KMU_PRE_CODE_MST.DEL_FLG = 0
+       AND KMU_PRE_CODE_MST.VALUE1 = HCP_WORK.JOB_FORM
+       --ND013_No9
+       LEFT JOIN
+           M_RDM_CODE_MST YAKUSHIN_PRE_CODE_MST
+       ON
+           YAKUSHIN_PRE_CODE_MST.CODE_NAME = 'DCC'
+       AND YAKUSHIN_PRE_CODE_MST.DEL_FLG = 0
+       AND YAKUSHIN_PRE_CODE_MST.VALUE1 = HCP_WORK.DCC
+       </if>
+       where 1 = 1
+       <if test="inReqFlg == 1">
+       --NC011_No1
+       AND KMU_REQ.REQ_ID = #{inReqId}
+       </if>
+       <if test="inReqFlg == 0">
+       --ND013_No1
+       AND HCP_MST.DOC_NO = #{inDocNo}
+       --ND013_No3
+       AND HCP_WORK.INS_NO = #{inInsNo}
+       </if>
+    </select>
+	<update id="updateND101Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity">
+	UPDATE
+		T_RDM_HCP_KMU_REQ
+	SET
+		INS_NO_SK = #{insNoSk},
+		JOB_FORM_AF = #{jobFormAf},
+		DEPT_CODE_AF = #{deptCodeAf},
+		DEPT_KANJI_AF = #{deptKanjiAf},
+		DEPT_KANA_AF = #{deptKanaAf},
+		UNIV_POS_CODE_AF = #{univPosCodeAf},
+		TITLE_CODE_AF = #{titleCodeAf},
+		DCC_TYPE_AF = #{dccTypeAf},
+		ULT_INS_NO = #{ultInsNo},
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
+    <select id="selectNd101DupData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+			SELECT REQ_KNR.REQ_ID
+			FROM
+			    T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+			INNER JOIN
+			    T_RDM_REQ_KNR REQ_KNR --申請管理
+			ON
+			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID
+			AND REQ_KNR.REQ_TYPE IN ('42','43','44')
+			AND REQ_KNR.REQ_STS IN ('03','13','04','14')
+			WHERE 1 = 1
+			and KMU_REQ.DOC_NO = #{inDocNo}
+			and KMU_REQ.INS_NO_MT = #{inInsNo}
+    </select>
+    <select id="selectNd101DelData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+			SELECT REQ_KNR.REQ_ID
+			FROM
+			    T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+			INNER JOIN
+			    T_RDM_REQ_KNR REQ_KNR --申請管理
+			ON
+			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID
+			AND REQ_KNR.REQ_TYPE IN ('33')
+			AND REQ_KNR.REQ_STS IN ('03','13','04','14')
+			WHERE 1 = 1
+			and KMU_REQ.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectNd101DupKmuData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+			SELECT REQ_KNR.REQ_ID
+			FROM
+			    T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+			INNER JOIN
+			    T_RDM_REQ_KNR REQ_KNR --申請管理
+			ON
+			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID
+			AND REQ_KNR.REQ_TYPE IN ('42','43','44')
+			AND REQ_KNR.REQ_STS IN ('03','13','04','14')
+			WHERE 1 = 1
+			and KMU_REQ.DOC_NO = #{inDocNo}
+			and KMU_REQ.INS_NO_MT = #{inInsNo}
+    </select>
+    <select id="selectDocReqKnrInsChangeCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity" resultMap="selectDocReqKnrInsChangeCheckResultMap">
+       SELECT
+           HCP_MST.DOC_KANJ
+          ,PRE_HCO_MST.INS_ABBR_NAME PRE_INS_ABBR_NAME
+          ,PRE_SHOZOKU_BUKA.DEPT_KJ PRE_DEPT_KJ
+          ,TITLE_PRE_YAKUSHOKU.TITLE_KJ TITLE_PRE_TITLE_KJ
+          ,KMU_PRE_CODE_MST.VALUE1_KANJ KMU_PRE_VALUE1_KANJ
+          ,YAKUSHIN_PRE_CODE_MST.VALUE1_KANJ YAKUSHIN_PRE_VALUE1_KANJ
+          ,UNIV_PRE_YAKUSHOKU.TITLE_KJ UNIV_PRE_TITLE_KJ
+
+          ,HCP_MST.DOC_NO
+          ,PRE_HCO_MST.HO_INS_TYPE PRE_HO_INS_TYPE
+
+          ,REQ_KNR.REQ_ID
+          ,REQ_KNR.REQ_SHZ
+          ,REQ_STS_CODE_MST.VALUE1_KANJ REQ_STS_NM
+          ,REQ_KNR.REQ_STS
+          ,REQ_KNR.REQ_JGI_NAME
+          ,REQ_KNR.REQ_JGI_NO
+          ,NVL2(REQ_KNR.REQ_YMDHMS,SUBSTR(REQ_KNR.REQ_YMDHMS,1,4) || '/'|| SUBSTR(REQ_KNR.REQ_YMDHMS,5,2) || '/'|| SUBSTR(REQ_KNR.REQ_YMDHMS,7,2) || ' '|| SUBSTR(REQ_KNR.REQ_YMDHMS,9,2) || ':'|| SUBSTR(REQ_KNR.REQ_YMDHMS,11,2),'-') REQ_YMDHMS
+          ,REQ_KNR.REQ_BR_CODE
+          ,REQ_KNR.REQ_DIST_CODE
+          ,REQ_KNR.UPD_SHA_YMD
+
+          ,KMU_REQ.INS_NO_MT PRE_INS_NO
+          ,PRE_HCO_MST.ULT_INS_NO PRE_ULT_INS_NO
+          ,KMU_REQ.DEPT_CODE_BF PRE_DEPT_CODE
+          ,PRE_SHOZOKU_BUKA.DEPT_KN PRE_DEPT_KN
+          ,KMU_REQ.TITLE_CODE_BF PRE_TITLE_CODE
+          ,KMU_REQ.JOB_FORM_BF PRE_JOB_FORM
+          ,KMU_REQ.DCC_TYPE_BF PRE_DCC
+          ,KMU_REQ.UNIV_POS_CODE_BF PRE_UNIV_POS_CODE
+          ,REQ_KNR.TEKIYO_YMD
+
+          ,KMU_REQ.TRN_KBN
+          ,POST_HCO_MST.INS_ABBR_NAME POST_INS_ABBR_NAME
+          ,POST_SHOZOKU_BUKA.DEPT_KJ POST_DEPT_KJ
+          ,TITLE_POST_YAKUSHOKU.TITLE_KJ TITLE_POST_TITLE_KJ
+          ,KMU_POST_CODE_MST.VALUE1_KANJ KMU_POST_VALUE1_KANJ
+          ,YAKUSHIN_POST_CODE_MST.VALUE1_KANJ YAKUSHIN_POST_VALUE1_KANJ
+          ,UNIV_POST_YAKUSHOKU.TITLE_KJ UNIV_POST_TITLE_KJ
+          ,SUBSTR(REQ_KNR.APR_YMDHMS, 1,4) || '-' || SUBSTR(REQ_KNR.APR_YMDHMS, 5,2) || '-' ||SUBSTR(REQ_KNR.APR_YMDHMS, 7,2) APR_YMDHMS
+          ,KMU_REQ.INS_NO_SK POST_INS_NO
+          ,POST_HCO_MST.ULT_INS_NO POST_ULT_INS_NO
+          ,KMU_REQ.DEPT_CODE_AF POST_DEPT_CODE
+          ,POST_SHOZOKU_BUKA.DEPT_KN POST_DEPT_KN
+          ,KMU_REQ.TITLE_CODE_AF POST_TITLE_CODE
+          ,KMU_REQ.JOB_FORM_AF POST_JOB_FORM
+          ,KMU_REQ.DCC_TYPE_AF POST_DCC
+          ,KMU_REQ.UNIV_POS_CODE_AF POST_UNIV_POS_CODE
+          ,REQ_KNR.REQ_COMMENT
+          ,REQ_KNR.APR_COMMENT
+
+          ,POST_HCO_MST.HO_INS_TYPE POST_HO_INS_TYPE
+          ,REQ_KNR.REQ_CHL
+
+       FROM T_RDM_REQ_KNR REQ_KNR
+       --NO2
+       INNER JOIN
+           T_RDM_HCP_KMU_REQ KMU_REQ
+       ON
+           KMU_REQ.REQ_ID = REQ_KNR.REQ_ID
+       --NO3
+       INNER JOIN
+           M_RDM_HCP_MST HCP_MST
+       ON
+           HCP_MST.DOC_NO = KMU_REQ.DOC_NO
+       --NO4
+       LEFT JOIN
+           M_RDM_HCO_MST PRE_HCO_MST
+       ON
+           PRE_HCO_MST.INS_NO = KMU_REQ.INS_NO_MT
+       --NO5
+       LEFT JOIN
+           M_RDM_HCO_MST POST_HCO_MST
+       ON
+           POST_HCO_MST.INS_NO = KMU_REQ.INS_NO_SK
+       --NO6
+       LEFT JOIN
+           M_RDM_HCP_SHOZOKU_BUKA PRE_SHOZOKU_BUKA
+       ON
+           PRE_SHOZOKU_BUKA.DEPT_CODE = KMU_REQ.DEPT_CODE_BF
+       --NO7
+       LEFT JOIN
+           M_RDM_HCP_SHOZOKU_BUKA POST_SHOZOKU_BUKA
+       ON
+           POST_SHOZOKU_BUKA.DEPT_CODE = KMU_REQ.DEPT_CODE_AF
+       --NO8
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU UNIV_PRE_YAKUSHOKU
+       ON
+           UNIV_PRE_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_BF
+       AND UNIV_PRE_YAKUSHOKU.UNIV_TITLE_FLG = 1
+       AND UNIV_PRE_YAKUSHOKU.DEL_FLG = 0
+       --NO9
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU UNIV_POST_YAKUSHOKU
+       ON
+           UNIV_POST_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_AF
+       AND UNIV_POST_YAKUSHOKU.UNIV_TITLE_FLG = 1
+       AND UNIV_POST_YAKUSHOKU.DEL_FLG = 0
+       --NO10
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU TITLE_PRE_YAKUSHOKU
+       ON
+           TITLE_PRE_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_BF
+       AND TITLE_PRE_YAKUSHOKU.UNIV_TITLE_FLG = 0
+       AND TITLE_PRE_YAKUSHOKU.DEL_FLG = 0
+       --NO11
+       LEFT JOIN
+           M_RDM_HCP_YAKUSHOKU TITLE_POST_YAKUSHOKU
+       ON
+           TITLE_POST_YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_AF
+       AND TITLE_POST_YAKUSHOKU.UNIV_TITLE_FLG = 0
+       AND TITLE_POST_YAKUSHOKU.DEL_FLG = 0
+       --NO12
+       LEFT JOIN
+           M_RDM_CODE_MST KMU_PRE_CODE_MST
+       ON
+           KMU_PRE_CODE_MST.CODE_NAME = 'JOB_FORM'
+       AND KMU_PRE_CODE_MST.DEL_FLG = 0
+       AND KMU_PRE_CODE_MST.VALUE1 = KMU_REQ.JOB_FORM_BF
+       --NO13
+       LEFT JOIN
+           M_RDM_CODE_MST KMU_POST_CODE_MST
+       ON
+           KMU_POST_CODE_MST.CODE_NAME = 'JOB_FORM'
+       AND KMU_POST_CODE_MST.DEL_FLG = 0
+       AND KMU_POST_CODE_MST.VALUE1 = KMU_REQ.JOB_FORM_AF
+       --NO14
+       LEFT JOIN
+           M_RDM_CODE_MST YAKUSHIN_PRE_CODE_MST
+       ON
+           YAKUSHIN_PRE_CODE_MST.CODE_NAME = 'DCC'
+       AND YAKUSHIN_PRE_CODE_MST.DEL_FLG = 0
+       AND YAKUSHIN_PRE_CODE_MST.VALUE1 = KMU_REQ.DCC_TYPE_BF
+       --NO15
+       LEFT JOIN
+           M_RDM_CODE_MST YAKUSHIN_POST_CODE_MST
+       ON
+           YAKUSHIN_POST_CODE_MST.CODE_NAME = 'DCC'
+       AND YAKUSHIN_POST_CODE_MST.DEL_FLG = 0
+       AND YAKUSHIN_POST_CODE_MST.VALUE1 = KMU_REQ.DCC_TYPE_BF
+       --NO16（追加）
+       LEFT JOIN
+           M_RDM_CODE_MST REQ_STS_CODE_MST
+       ON
+           REQ_STS_CODE_MST.CODE_NAME = 'REQ_STS'
+       AND REQ_STS_CODE_MST.DEL_FLG = 0
+       AND REQ_STS_CODE_MST.VALUE1 = REQ_KNR.REQ_STS
+       WHERE 1 = 1
+       --NO1
+       AND KMU_REQ.REQ_ID = #{inReqId}
+    </select>
+</mapper>

@@ -36,8 +36,9 @@
 <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jkrSosStatus.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/catDeptsComboRDM.js"></script>
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-
+<script type="text/javascript" src="js/ND011.js"></script>
 <script type="text/javascript" src="js/ND101.js"></script>
 <script type="text/javascript" src="js/catTkCityCombo.js"></script>
 <script type="text/javascript" src="js/imtInsInputCategores.js"></script>
@@ -48,6 +49,14 @@
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();"/>
 
     <s:form name="fm1" theme="simple" onSubmit="JavaScript:return false;" >
+
+          <%-- 所属部科ポップアップ用パラメータ --%>
+          <input type="hidden" name="cdcCheckedCodes" value="" />
+          <input type="hidden" name="paramInsNo" value="" />
+          <%-- 画面用パラメータ --%>
+          <s:hidden name="backScreenId" value="ND011" />
+
+
           <s:hidden name="screenId" value="ND101"/>
           <s:hidden name="functionId" value="Register"/>
           <s:hidden id="pageFlag" name="pageFlag" />
@@ -183,19 +192,26 @@
 	                  <td>
 	                  </td>
 	                  <td>異動先施設<span style="color: red;">*</span></td>
-	                  <td><s:textfield name="abbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear(abbrName)" style="color:lightgray">clear</a>&nbsp;</td>
+	                  <td><s:textfield name="abbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear(abbrName)" style="color:lightgray; width:100pt;">clear</a>&nbsp;</td>
 	              </tr>
 	              <tr>
 	                  <td></td>
 	                  <td>異動先所属部科<span style="color: red;">*</span></td>
-	                  <td><s:textfield name="shozokubukaName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear(shozokubukaName)" style="color:lightgray">clear</a>&nbsp;</td>
+	                  <td>
+	                      <nobr>
+	                                   <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" style="width:100pt;"/><s:textfield name="shozokubukaName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear(shozokubukaName)" style="color:lightgray">clear</a>&nbsp;
+	                      </nobr>
+	                  </td>
 	              </tr>
               </s:if>
               <s:else>
 	              <tr>
 	                  <td></td>
 	                  <td>所属部科<span style="color: red;">*</span></td>
-	                  <td><s:textfield name="shozokubukaName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear(shozokubukaName)" style="color:lightgray">clear</a>&nbsp;</td>
+	                  <td>
+	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
+	                               <s:textfield name="shozokubukaName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear(shozokubukaName)" style="color:lightgray; width:100pt;">clear</a>&nbsp;
+	                  </td>
 	              </tr>
               </s:else>
               <tr>

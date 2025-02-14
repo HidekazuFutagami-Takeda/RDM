@@ -13,6 +13,10 @@
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
         <result column="UPD_SHA_ID" property="updShaId"/>
     </resultMap>
+    <resultMap id="selectNd101YakushokuComboListResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd101YakushokuComboListEntity">
+        <result column="TITLE_CODE" property="titleCode"/>
+        <result column="TITLE_KJ" property="titleKj"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpYakushokuEntity" resultMap="MRdmHcpYakushokuResultMap">
         SELECT
             TITLE_CODE, TITLE_KJ, TITLE_KN, UNIV_TITLE_FLG, SORT_NUM, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -75,5 +79,14 @@
 			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
         </where>
     </select>
-
+   <select id="selectNd101YakushokuComboList" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101YakushokuComboListEntity" resultMap="selectNd101YakushokuComboListResultMap">
+        SELECT
+            TITLE_CODE, TITLE_KJ
+        FROM
+            M_RDM_HCP_YAKUSHOKU
+        WHERE 1 = 1
+        AND UNIV_TITLE_FLG = #{inDataKbn}
+        AND DEL_FLG = '0'
+        ORDER BY SORT_NUM
+    </select>
 </mapper>

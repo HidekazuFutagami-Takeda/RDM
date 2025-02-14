@@ -196,6 +196,7 @@ public class ND101Service extends BaseService {
 
 		//1-3-1　入力項目
 		//MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
+        indto.setMrAdminFlg(loginInfo.getJokenFlg());
         if (indto.getMrAdminFlg().equals("0")) {
         	if(!(indto.getReqSts().equals("01"))) {
         		indto.setInputFlg("0");
@@ -378,7 +379,7 @@ public class ND101Service extends BaseService {
         	tRdmReqKnrUpdData.setReqId(reqId);
 
         	if("13".equals(indto.getReqSts())) {
-        		tRdmReqKnrUpdData.setReqStsCd("11");
+        		tRdmReqKnrUpdData.setReqStsCd("13");
         	} else {
         		tRdmReqKnrUpdData.setReqStsCd("01");
         	}

@@ -593,7 +593,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   </s:if>
           <%-- ページャー表示 終了 --%>
 
-    <div style="max-height:390px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+    <div style="max-height:270px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 <table>
    <s:if test='pageFlag == "1" '>
           <!-- なにも表示しない -->
@@ -769,6 +769,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
 <%-- メイン部 一覧 終了 --%>
 <%-- ポータル大枠 終了 --%>
+	<jsp:include page="common/jkrBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />
 </body>

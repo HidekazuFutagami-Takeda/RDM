@@ -59,17 +59,34 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     function backFnc(backKbn){
     	if(backKbn == '0')	{
 	    	if(window.confirm(destructMsg.replace("（遷移元）", '医師検索'))){
-	    		//document.fm1.screenId.value="ND001";
+				//モック
+	    		document.fm1.screenId.value="ND001";
+	    		document.fm1.functionId.value="Init";
+  				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-				window.close();
+//				window.close();
 				//元タブにフォーカス
 	    	}
     	}
     	if(backKbn == '1')	{
 	    	if(window.confirm(destructMsg.replace("（遷移元）", '申請一覧'))){
-	    		//document.fm1.screenId.value="NC011";
+				//モック
+	    		document.fm1.screenId.value="NC011";
+	    		document.fm1.functionId.value="Init";
+  				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-				window.close();
+//				window.close();
+				//元タブにフォーカス
+	    	}
+    	}
+    	if(backKbn == '2')	{
+	    	if(window.confirm("画面を閉じます。よろしいですか？")){
+				//モック
+	    		document.fm1.screenId.value="NC001";
+	    		document.fm1.functionId.value="Init";
+  				comSubmitForAnyWarp(fm1);
+				//この画面（タブ）を閉じる
+//				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -98,14 +115,18 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     function comSetFormWindowInfo(){
         comSetFormWindowName('ND011');
-        if (document.fm1.msgId.value == "M0001102"){
-          alert('<s:property value="#session.UserInfoKey.msgMap.M0001102.msgData" />');
-          return false;
-        }
-        if (document.fm1.msgId.value == "M0001101"){
-          alert('<s:property value="#session.UserInfoKey.msgMap.M0001101.msgData" />');
-          return false;
-        }
+//         if (document.fm1.msgId.value == "M0001102"){
+//           alert('<s:property value="#session.UserInfoKey.msgMap.M0001102.msgData" />');
+//           return false;
+//         }
+//         if (document.fm1.msgId.value == "M0001101"){
+//           alert('<s:property value="#session.UserInfoKey.msgMap.M0001101.msgData" />');
+//           return false;
+//         }
+		const returnFlg = document.fm1.buttonFlg.value;
+		if(returnFlg == "8"){//削除完了時画面を閉じろ
+// 			window.close();ではjsで開いた画面しか無理
+		}
         return false;
       }
     </script>
@@ -117,86 +138,86 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <input type="text" name="functionId"         value="" />
     <input type="text" name="windowName"         value="" />
     <input type="text" name="openerName"         value="" />
-    <input type="text" name="infoId1"            value="" />
-    <input type="text" name="systemId1"          value="" />
-    <input type="text" name="backScreenId1"      value="JkrMrChange" />
-    <input type="text" name="backFunctionId1"    value="" />
-    <input type="text" name="backScreenName1"    value="" />
-    <input type="text" name="backParamName1"     value="" />
-    <input type="text" name="backParamValue1"    value="" />
-    <input type="text" name="backParamName2"     value="" />
-    <input type="text" name="backParamValue2"    value="" />
-    <input type="text" name="fromScreenId1"      value="" />
-    <input type="text" name="fromFunctionId1"    value="" />
-    <input type="text" name="kensakuChar1"       value="" />
-    <input type="text" name="kensakuAndOr1"      value="" />
-    <input type="text" name="pageNextBackFlag1"  value="" />
-    <input type="text" name="sortFieldNo1"       value="" />
-    <input type="text" name="sortFLG1"           value="" />
-    <input type="text" name="startRecordNo1"     value="" />
-    <input type="text" name="pageLines1"         value="" />
-    <input type="hidden" name="endRecordNo1"	value="" />
-    <input type="text" name="no1"                value="1" />
+<!--     <input type="text" name="infoId1"            value="" /> -->
+<!--     <input type="text" name="systemId1"          value="" /> -->
+<!--     <input type="text" name="backScreenId1"      value="JkrMrChange" /> -->
+<!--     <input type="text" name="backFunctionId1"    value="" /> -->
+<!--     <input type="text" name="backScreenName1"    value="" /> -->
+<!--     <input type="text" name="backParamName1"     value="" /> -->
+<!--     <input type="text" name="backParamValue1"    value="" /> -->
+<!--     <input type="text" name="backParamName2"     value="" /> -->
+<!--     <input type="text" name="backParamValue2"    value="" /> -->
+<!--     <input type="text" name="fromScreenId1"      value="" /> -->
+<!--     <input type="text" name="fromFunctionId1"    value="" /> -->
+<!--     <input type="text" name="kensakuChar1"       value="" /> -->
+<!--     <input type="text" name="kensakuAndOr1"      value="" /> -->
+<!--     <input type="text" name="pageNextBackFlag1"  value="" /> -->
+<!--     <input type="text" name="sortFieldNo1"       value="" /> -->
+<!--     <input type="text" name="sortFLG1"           value="" /> -->
+<!--     <input type="text" name="startRecordNo1"     value="" /> -->
+<!--     <input type="text" name="pageLines1"         value="" /> -->
+<!--     <input type="hidden" name="endRecordNo1"	value="" /> -->
+<!--     <input type="text" name="no1"                value="1" /> -->
 
     <%-- フレーム対応で発生したPOST用 引数1:frame(フレーム対応),以外(何もしない) 引数２:オブジェクトの型 --%>
 
-    <%-- 組織・従業員選択ポップアップ用 --%>
-    <input type="hidden" name="selectFlg"			value="" />
-    <input type="hidden" name="topSosCd"			value="" />
-    <input type="hidden" name="initSosCd"			value="" />
-    <input type="hidden" name="openBumonRank"		value="" />
-    <input type="hidden" name="objData"				value="" />
-    <input type="hidden" name="dspSelPtn"			value="" />
-    <input type="hidden" name="dspSelSos"			value="" />
-    <input type="hidden" name="sosLevelType"		value="" />
-    <input type="hidden" name="dispJgiKb"			value="" />
-    <input type="hidden" name="shokushuCd"			value="" />
-    <input type="hidden" name="shokuseiCd"			value="" />
-    <input type="hidden" name="noDispJgiKb"			value="" />
-    <input type="hidden" name="noShokushuCd"		value="" />
-    <input type="hidden" name="noShokuseiCd"		value="" />
-    <input type="hidden" name="insNo1"				value="" />
-    <input type="hidden" name="dspClrBtn1"			value="" /><%-- クリアボタン表示フラグ  --%>
-    <input type="hidden" name="openJgiFlg"			value="" />
-    <input type="text" name="sosSelFlg1"	value="" />
+<%--     組織・従業員選択ポップアップ用 --%>
+<!--     <input type="hidden" name="selectFlg"			value="" /> -->
+<!--     <input type="hidden" name="topSosCd"			value="" /> -->
+<!--     <input type="hidden" name="initSosCd"			value="" /> -->
+<!--     <input type="hidden" name="openBumonRank"		value="" /> -->
+<!--     <input type="hidden" name="objData"				value="" /> -->
+<!--     <input type="hidden" name="dspSelPtn"			value="" /> -->
+<!--     <input type="hidden" name="dspSelSos"			value="" /> -->
+<!--     <input type="hidden" name="sosLevelType"		value="" /> -->
+<!--     <input type="hidden" name="dispJgiKb"			value="" /> -->
+<!--     <input type="hidden" name="shokushuCd"			value="" /> -->
+<!--     <input type="hidden" name="shokuseiCd"			value="" /> -->
+<!--     <input type="hidden" name="noDispJgiKb"			value="" /> -->
+<!--     <input type="hidden" name="noShokushuCd"		value="" /> -->
+<!--     <input type="hidden" name="noShokuseiCd"		value="" /> -->
+<!--     <input type="hidden" name="insNo1"				value="" /> -->
+<%--     <input type="hidden" name="dspClrBtn1"			value="" />クリアボタン表示フラグ  --%>
+<!--     <input type="hidden" name="openJgiFlg"			value="" /> -->
+<!--     <input type="text" name="sosSelFlg1"	value="" /> -->
 
-    <input type="checkbox" name="delCheck" />
-    <input type="checkbox" name="hurikaeMr" />
-    <input type="checkbox" name="shokiHurikaeMr" />
+<!--     <input type="checkbox" name="delCheck" /> -->
+<!--     <input type="checkbox" name="hurikaeMr" /> -->
+<!--     <input type="checkbox" name="shokiHurikaeMr" /> -->
 
-    <%-- 組織・従業員選択ポップアップの表示判断の条件 取得パラメータ：（MR種類・業務種類）--%>
-    <input type="hidden" name="mrCat"				value=""	/>
-    <input type="hidden" name="registCat"			value=""	/>
+<%--     組織・従業員選択ポップアップの表示判断の条件 取得パラメータ：（MR種類・業務種類） --%>
+<!--     <input type="hidden" name="mrCat"				value=""	/> -->
+<!--     <input type="hidden" name="registCat"			value=""	/> -->
 
-    <%-- 登録：排他処理用データ--%>
-    <input type="hidden" name="ExUpDate"			value=""	/>
+<%--     登録：排他処理用データ --%>
+<!--     <input type="hidden" name="ExUpDate"			value=""	/> -->
 
-    <input type="text" name="userAuth1"		value="" />
-    <input type="text" name="jpjJgiNo1"		value="" />
-    <input type="text" name="sosCd1"		value="" />
-    <input type="text" name="sosName1"		value="" />
-    <input type="text" name="mrCat1"		value="" />
-    <input type="text" name="registCat1"	value="" />
-    <input type="text" name="jgiKb1"		value="" />
-    <input type="text" name="selectedSosName1"	value="" />
-    <input type="text" name="selectedSosCd1"	value="" />
-    <input type="text" name="jgiJoken1"		value="" />
-    <input type="text" name="sosName1"		value="" />
-    <input type="text" name="wkCat1"		value="" />
-    <input type="hidden" name="searchToSosCd1"		value="" />
-    <input type="hidden" name="searchToSosName1"	value="" />
-    <input type="hidden" name="shokikaSosName1"	value="" />
-    <input type="hidden" name="shokikaSosCd1"	value="" />
+<!--     <input type="text" name="userAuth1"		value="" /> -->
+<!--     <input type="text" name="jpjJgiNo1"		value="" /> -->
+<!--     <input type="text" name="sosCd1"		value="" /> -->
+<!--     <input type="text" name="sosName1"		value="" /> -->
+<!--     <input type="text" name="mrCat1"		value="" /> -->
+<!--     <input type="text" name="registCat1"	value="" /> -->
+<!--     <input type="text" name="jgiKb1"		value="" /> -->
+<!--     <input type="text" name="selectedSosName1"	value="" /> -->
+<!--     <input type="text" name="selectedSosCd1"	value="" /> -->
+<!--     <input type="text" name="jgiJoken1"		value="" /> -->
+<!--     <input type="text" name="sosName1"		value="" /> -->
+<!--     <input type="text" name="wkCat1"		value="" /> -->
+<!--     <input type="hidden" name="searchToSosCd1"		value="" /> -->
+<!--     <input type="hidden" name="searchToSosName1"	value="" /> -->
+<!--     <input type="hidden" name="shokikaSosName1"	value="" /> -->
+<!--     <input type="hidden" name="shokikaSosCd1"	value="" /> -->
 
-    <input type="hidden" name="selectedPlanSosName1"		value="<bean:print name="menudata" property="selectedSosName"/>" />
+<%--     <input type="hidden" name="selectedPlanSosName1"		value="<bean:print name="menudata" property="selectedSosName"/>" /> --%>
 
-    <%-- 登録前の最終総行数 --%>
-    <input type="hidden" name="allUltCount1"	value="" />
-    <%-- 登録前の追加の総行数 --%>
-    <input type="hidden" name="addUltCount1"	value="" />
+<%--     登録前の最終総行数 --%>
+<!--     <input type="hidden" name="allUltCount1"	value="" /> -->
+<%--     登録前の追加の総行数 --%>
+<!--     <input type="hidden" name="addUltCount1"	value="" /> -->
 
-    <%--追加用　MR種類--%>
-    <input type="hidden" name="takeMrCat"	value="" />
+<%--     追加用　MR種類 --%>
+<!--     <input type="hidden" name="takeMrCat"	value="" /> -->
 
   </form>
 
@@ -205,7 +226,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <jsp:include page="common/jkrTop.jsp" flush="true" />
   <br>
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
-  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <jsp:include page="common/rdmDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
 <table border="0" class="comPortalTable" align="center" style="width:98%;">
@@ -222,6 +243,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="lineCntAll1" />
     <%-- 画面用パラメータ --%>
     <s:hidden name="backScreenId" value="ND011" />
+     <s:hidden name="preScreenId"/>
      <s:hidden name="screenId" value="" />
      <s:hidden name="functionId"/>
      <s:hidden name="loginJokenSetCd"/>
@@ -231,39 +253,39 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="shnFlg"/>
      <s:hidden name="msgId" value="%{msgId}"/>
 
-    <s:hidden name="defaultSosCd"/>
-    <s:hidden name="defaultSosName"/>
-    <s:hidden name="defaultBumonRank"/>
-    <s:hidden name="defaultMrCat"/>
-    <s:hidden name="searchBumonRank"/>
-    <s:hidden name="maxUpDate"/>
-    <s:hidden name="sosCdFixFlg"/>
-    <s:hidden name="sosCdFix"/>
-    <s:hidden name="sosNameFix"/>
-    <s:hidden name="showFlg"/>
-    <s:hidden name="showDocChgFlg"/>
-    <s:hidden name="sosSelFlg"/>
-    <s:hidden name="sosRyakuName"/>
+<%--     <s:hidden name="defaultSosCd"/> --%>
+<%--     <s:hidden name="defaultSosName"/> --%>
+<%--     <s:hidden name="defaultBumonRank"/> --%>
+<%--     <s:hidden name="defaultMrCat"/> --%>
+<%--     <s:hidden name="searchBumonRank"/> --%>
+<%--     <s:hidden name="maxUpDate"/> --%>
+<%--     <s:hidden name="sosCdFixFlg"/> --%>
+<%--     <s:hidden name="sosCdFix"/> --%>
+<%--     <s:hidden name="sosNameFix"/> --%>
+<%--     <s:hidden name="showFlg"/> --%>
+<%--     <s:hidden name="showDocChgFlg"/> --%>
+<%--     <s:hidden name="sosSelFlg"/> --%>
+<%--     <s:hidden name="sosRyakuName"/> --%>
 
 
-    <%-- トップメニューからの共通パラメータ --%>
-    <s:hidden name="trtGrpCd"/>
-    <s:hidden name="selectedBumonRank"/>
-    <s:hidden name="sosCd"/>
-    <s:hidden name="sosName"/>
-    <s:hidden name="selectedSosCd"/>
-    <s:hidden name="selectedSosNm"/>
-    <s:hidden name="selectedSosCd2" />
-    <s:hidden name="selectedSosNm2" />
-    <s:hidden name="selectedSosCd3" />
-    <s:hidden name="selectedSosNm3" />
-    <s:hidden name="selectedJgiJoken"/>
-    <s:hidden name="jokenSetCd"/>
-    <s:hidden name="sosCdHairetu"/>
-    <s:hidden name="wkCat"/>
-    <s:hidden name="searchFromSosCdPop"/>  <!--現組織コード(ポップアップ用) -->
-    <s:hidden name="searchToSosCdPop"/>    <!--新組織コード(ポップアップ用) -->
-    <s:hidden id="selectedTekiyoYmd" name="selectedTekiyoYmd"/>
+<%--     トップメニューからの共通パラメータ --%>
+<%--     <s:hidden name="trtGrpCd"/> --%>
+<%--     <s:hidden name="selectedBumonRank"/> --%>
+<%--     <s:hidden name="sosCd"/> --%>
+<%--     <s:hidden name="sosName"/> --%>
+<%--     <s:hidden name="selectedSosCd"/> --%>
+<%--     <s:hidden name="selectedSosNm"/> --%>
+<%--     <s:hidden name="selectedSosCd2" /> --%>
+<%--     <s:hidden name="selectedSosNm2" /> --%>
+<%--     <s:hidden name="selectedSosCd3" /> --%>
+<%--     <s:hidden name="selectedSosNm3" /> --%>
+<%--     <s:hidden name="selectedJgiJoken"/> --%>
+<%--     <s:hidden name="jokenSetCd"/> --%>
+<%--     <s:hidden name="sosCdHairetu"/> --%>
+<%--     <s:hidden name="wkCat"/> --%>
+<%--     <s:hidden name="searchFromSosCdPop"/>  <!--現組織コード(ポップアップ用) --> --%>
+<%--     <s:hidden name="searchToSosCdPop"/>    <!--新組織コード(ポップアップ用) --> --%>
+<%--     <s:hidden id="selectedTekiyoYmd" name="selectedTekiyoYmd"/> --%>
     <%-- 所属部科ポップアップ用パラメータ --%>
     <input type="hidden" name="cdcCheckedCodes" value="" />
     <input type="hidden" name="paramInsNo" value="" />
@@ -326,6 +348,24 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <input type="hidden" name="pubInstposEdDDPop" value="" />
 <!-- ボタン制御用 -->
     <s:hidden name="buttonFlg" />
+    	<s:hidden name="title" />
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師新規作成"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+<table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
   <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
     <tbody>
       <s:if test="msgStr != null">
@@ -1015,6 +1055,17 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
 	      </tr>
       </s:if>
+<s:if test='%{reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13"  }'>
+</s:if>
+<s:else>
+		 <tr>
+		      <td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
+	     </tr>
+	     <tr>
+		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+	      </tr>
+</s:else>
+
   </table>
 
   <%--ボタン類 --%>
@@ -1035,11 +1086,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:if test='%{preScreenId == "NC011"}'>
 					<input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backFnc('1');return false;" />
 				</s:if>
+				<s:if test='%{preScreenId != "ND001" && preScreenId != "NC011"}'>
+					<input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backFnc('2');return false;" />
+				</s:if>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{loginJgiNo == reqJgiNo && reqStsCd == "01"}'>
+				<s:if test='%{reqStsCd == null || reqStsCd == "" ||(loginJgiNo == reqJgiNo && reqStsCd == "01")}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="register('4');return false;" />
 				</s:if>
 				<s:else>
@@ -1049,7 +1103,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{loginJgiNo == reqJgiNo && reqStsCd == "01"}'>
+				<s:if test='%{reqStsCd == null || reqStsCd == "" ||(loginJgiNo == reqJgiNo && reqStsCd == "01")}'>
 	                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="register('0');return false;" />
 				</s:if>
 				<s:else>
@@ -1095,10 +1149,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	  </tr>
   </table>
 <%-- SUBMIT用パラメータ 終了 --%>
-
-            </s:form>
+    </td>
+	</tr>
+    </tbody>
+    </table>
+  </s:form>
   </table>
-  <jsp:include page="common/jkrBottom.jsp" flush="true" />
+
+  <jsp:include page="common/rdmBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />
 </body>

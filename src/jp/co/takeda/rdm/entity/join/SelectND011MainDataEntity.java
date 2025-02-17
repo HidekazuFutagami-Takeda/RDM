@@ -357,6 +357,12 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
     private String aprMemo;
 
 	/**
+	 * 承認・却下コメント
+	 * @generated
+	 */
+	private String aprComment;
+
+	/**
 	 * 審査済みフラグ
 	 * 0:未審査、1:審査済
 	 * @generated
@@ -1202,6 +1208,21 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setAprMemo(String aprMemo) {
 		this.aprMemo = aprMemo;
+	}
+
+	/**
+	 * SelectND011MainDataEntity.javaaprCommentを設定
+	 * @return aprComment
+	 */
+	public String getAprComment() {
+		return aprComment;
+	}
+
+	/**
+	 * @param aprComment セットする aprComment
+	 */
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
 	}
 
 	/**

@@ -307,6 +307,15 @@
         <action name="NC203Init" class="nC203Action" method="init">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>
+        <action name="NC203Search" class="nC203Action" method="search">
+            <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
+        </action>
+        <action name="NC203Page" class="nC203Action" method="page">
+            <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
+        </action>
+        <action name="NC203Sort" class="nC203Action" method="sort">
+            <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
+        </action>
         <action name="NC204Init" class="nC204Action" method="init">
             <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
         </action>

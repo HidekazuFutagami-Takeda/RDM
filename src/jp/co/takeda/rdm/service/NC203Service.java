@@ -313,18 +313,33 @@ public class NC203Service extends BaseService {
     public BaseDTO list(NC203DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
+        String preScreenId = indto.getPreScreenId();
 
         //廃院区分_生成用エンティティ
         MRdmCodeMstEntity paramHaiinKbn = new MRdmCodeMstEntity();
         //検索条件_廃院区分
         paramHaiinKbn.setCodeName("DEL_KBN");
         //廃院区分の帳票一覧を取得する
-        List<MRdmCodeMstEntity> SelectHaiinKbn = dao.select(paramHaiinKbn);
+        List<MRdmCodeMstEntity> SelectHaiinKbn = dao.selectByValue(paramHaiinKbn);
 
         LinkedHashMap<String, String> mapHaiinKbn = new LinkedHashMap<String, String>();
-        mapHaiinKbn.put("", "--なし--");
-        for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
-        	mapHaiinKbn.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+
+        if("ND011".equals(preScreenId) || "ND014".equals(preScreenId) || "ND101".equals(preScreenId)
+        		|| "ND103".equals(preScreenId) || "ND501".equals(preScreenId) || "NF011".equals(preScreenId)
+        		|| "NF012".equals(preScreenId) || "NF211".equals(preScreenId) || "NF212".equals(preScreenId)
+        		|| "NF401".equals(preScreenId) || "NF403".equals(preScreenId)) {
+        	for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
+		    	if("0".equals(outEntity.getValue1())) {
+		    		// 「0:通常」を選択し変更不可とする
+		    		mapHaiinKbn.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+		    		indto.setKensakuHaiinKbn("0");
+		    	}
+		    }
+        } else {
+		    mapHaiinKbn.put("", "--なし--");
+		    for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
+		    	mapHaiinKbn.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+		    }
         }
         indto.setHaiinKbnMap(mapHaiinKbn);
 
@@ -333,12 +348,25 @@ public class NC203Service extends BaseService {
     	//検索条件_削除フラグ
         paramDelFlg.setCodeName("DEL_FLG");
         //削除フラグの帳票一覧を取得する
-        List<MRdmCodeMstEntity> SelectDelFlg = dao.select(paramDelFlg);
+        List<MRdmCodeMstEntity> SelectDelFlg = dao.selectByValue(paramDelFlg);
 
         LinkedHashMap<String, String> mapDelFlg = new LinkedHashMap<String, String>();
-        mapDelFlg.put("", "--なし--");
-        for (MRdmCodeMstEntity outEntity : SelectDelFlg) {
-        	mapDelFlg.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+        if("ND011".equals(preScreenId) || "ND014".equals(preScreenId) || "ND101".equals(preScreenId)
+        		|| "ND103".equals(preScreenId) || "ND501".equals(preScreenId) || "NF011".equals(preScreenId)
+        		|| "NF012".equals(preScreenId) || "NF211".equals(preScreenId) || "NF212".equals(preScreenId)
+        		|| "NF401".equals(preScreenId) || "NF403".equals(preScreenId)) {
+		    for (MRdmCodeMstEntity outEntity : SelectDelFlg) {
+		    	if("0".equals(outEntity.getValue1())) {
+		    		// 「0:無効」を選択し変更不可とする
+		    		mapDelFlg.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+		    		indto.setKensakuDelFlg("0");
+		    	}
+		    }
+        } else {
+		    mapDelFlg.put("", "--なし--");
+		    for (MRdmCodeMstEntity outEntity : SelectDelFlg) {
+		    	mapDelFlg.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+		    }
         }
         indto.setDelFlgMap(mapDelFlg);
 
@@ -348,7 +376,7 @@ public class NC203Service extends BaseService {
     	//検索条件_施設区分
     	paramPharmType.setCodeName("PHARM_TYPE");
         //施設区分の帳票一覧を取得する
-        List<MRdmCodeMstEntity> SelectPharmTypeList = dao.select(paramPharmType);
+        List<MRdmCodeMstEntity> SelectPharmTypeList = dao.selectByValue(paramPharmType);
         //施設区分データ_取り出す
         LinkedHashMap<String, String> mapPharmType = new LinkedHashMap<String, String>();
         mapPharmType.put("", "--なし--");
@@ -361,12 +389,24 @@ public class NC203Service extends BaseService {
         //検索条件_施設種別
     	paramPharmType.setCodeName("INS_TYPE");
         //施設種別の帳票一覧を取得する
-        List<MRdmCodeMstEntity> SelectInsTypeList = dao.select(paramPharmType);
+        List<MRdmCodeMstEntity> SelectInsTypeList = dao.selectByValue(paramPharmType);
         //施設種別データ_取り出す
         LinkedHashMap<String, String> mapInsTypeList = new LinkedHashMap<String, String>();
-        mapInsTypeList.put("", "--なし--");
-        for (MRdmCodeMstEntity outEntity : SelectInsTypeList) {
-        	mapInsTypeList.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+
+        if((preScreenId.equals("NF011") || preScreenId.equals("NF211") || preScreenId.equals("NF212"))
+        		&& indto.getKensakuInsSbt() != null && !"".equals(indto.getKensakuInsSbt())) {
+        	// 連携された施設種別を選択状態とし変更不可とする
+        	for (MRdmCodeMstEntity outEntity : SelectInsTypeList) {
+        		if(indto.getKensakuInsSbt().equals(outEntity.getValue1())) {
+        			mapInsTypeList.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+        		}
+		    }
+
+        } else {
+		    mapInsTypeList.put("", "--なし--");
+		    for (MRdmCodeMstEntity outEntity : SelectInsTypeList) {
+		    	mapInsTypeList.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+		    }
         }
         //施設種別を格納する
         indto.setInsTypeMap(mapInsTypeList);
@@ -374,7 +414,7 @@ public class NC203Service extends BaseService {
         //対象区分_施設種別
     	paramPharmType.setCodeName("HO_INS_TYPE");
         //対象区分の帳票一覧を取得する
-        List<MRdmCodeMstEntity> SelectHoInsTypeList = dao.select(paramPharmType);
+        List<MRdmCodeMstEntity> SelectHoInsTypeList = dao.selectByValue(paramPharmType);
         //対象区分データ_取り出す
         LinkedHashMap<String, String> mapHoInsType = new LinkedHashMap<String, String>();
         mapHoInsType.put("", "--なし--");

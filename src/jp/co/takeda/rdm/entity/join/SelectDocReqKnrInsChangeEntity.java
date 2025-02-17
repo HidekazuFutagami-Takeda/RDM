@@ -288,6 +288,10 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
     private String postHoInsType;
 
     /**
+     * 申請区分
+     */
+    private String reqType;
+    /**
      * コンストラクタ
      * @generated
      */
@@ -1073,6 +1077,21 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
 	 */
 	public void setPostHoInsType(String postHoInsType) {
 		this.postHoInsType = postHoInsType;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javareqTypeを設定
+	 * @return reqType
+	 */
+	public String getReqType() {
+		return reqType;
+	}
+
+	/**
+	 * @param reqType セットする reqType
+	 */
+	public void setReqType(String reqType) {
+		this.reqType = reqType;
 	}
 
 	/**

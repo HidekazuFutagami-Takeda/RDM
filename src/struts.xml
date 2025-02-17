@@ -163,6 +163,14 @@
             <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
         </action>
+        <action name="ND307Init" class="nD307Action" method="init">
+            <result name="ND307">/WEB-INF/pages/ND307.jsp</result>
+            <result name="ND101">/WEB-INF/pages/ND101.jsp</result>
+        </action>
+        <action name="ND307Register" class="nD307Action" method="register">
+            <result name="ND307">/WEB-INF/pages/ND307.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+        </action>
         <action name="NF001Init" class="nF001Action" method="init">
             <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
         </action>

@@ -18,20 +18,19 @@ import org.springframework.context.annotation.Scope;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
-import jp.co.takeda.rdm.dto.ND101DTO;
-import jp.co.takeda.rdm.service.ND101Service;
+import jp.co.takeda.rdm.service.ND307Service;
 import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.StringUtils;
+import jp.co.takeda.rdm.util.JkrConstantsData;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.exception.InvalidRequestException;
+import jp.co.takeda.rdm.dto.ND307DTO;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nD101Action")
+@Named("nD307Action")
 @Scope("request")
-public class ND101Action extends BaseAction<ND101DTO> {
+public class ND307Action extends BaseAction<ND307DTO> {
 
     /**
      * シリアルバージョンID
@@ -44,7 +43,7 @@ public class ND101Action extends BaseAction<ND101DTO> {
      * @generated
      */
     @Inject
-    private ND101Service nD101Service;
+    private ND307Service nD307Service;
 
     // START UOC
 
@@ -54,8 +53,8 @@ public class ND101Action extends BaseAction<ND101DTO> {
      * コンストラクタ
      * @generated
      */
-    public ND101Action() {
-        dto = new ND101DTO();
+    public ND307Action() {
+        dto = new ND307DTO();
     }
 
     /**
@@ -90,7 +89,7 @@ public class ND101Action extends BaseAction<ND101DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nD101Service.init(dto);
+        BaseDTO outdto = nD307Service.init(dto);
         return initNext(outdto);
     }
 
@@ -101,35 +100,13 @@ public class ND101Action extends BaseAction<ND101DTO> {
     protected void initSetup() throws Exception {
         // START UOC
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-    	String preScreenId = loginInfo.getPreScreenId();
 
-    	//モック
-    	loginInfo.setJokenFlg("1");
-    	loginInfo.setJgiNo(8830034);
-    	loginInfo.setJgiName("テスト");
+        String preScreenId = loginInfo.getPreScreenId();
+        dto.setPreScreenId(preScreenId);
 
-    	//検証用 TODO
-    	if(preScreenId.equals("NC001")) {
-    		preScreenId = dto.getPreScreenId();
-    	}
-
-    	dto.setPreScreenId(preScreenId);
-
-		// 遷移パターン 0:施設-医師コードから作成、1:申請データあり
-		// 医師勤務先情報更新
-		if ("ND013".equals(preScreenId)) {
-			dto.setDisplayKbn("0");
-			// 申請一覧
-		} else if ("NC011".equals(preScreenId) || "ND307".equals(preScreenId)) {
-			dto.setDisplayKbn("1");
-		} else {
-			throw new InvalidRequestException();
-		}
-
-		String title = "ND101_医療機関への異動";
+		String title = "ND307_医療機関への異動 - 申請内容確認";
 
 		dto.setTitle(title);
-
         // END UOC
     }
 
@@ -140,7 +117,7 @@ public class ND101Action extends BaseAction<ND101DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（更新やソートリンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_ND101_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_ND307_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -154,7 +131,7 @@ public class ND101Action extends BaseAction<ND101DTO> {
     public String register() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nD101Service.register(dto);
+        BaseDTO outdto = nD307Service.register(dto);
         return registerNext(outdto);
     }
 
@@ -180,37 +157,4 @@ public class ND101Action extends BaseAction<ND101DTO> {
         return outdto.getForward();
     }
 
-    /**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String cancel() throws Exception {
-        cancelSetup();
-        // F層呼び出し
-        BaseDTO outdto = nD101Service.cancel(dto);
-        return cancelNext(outdto);
-    }
-
-    /**
-     * 前処理
-     * @customizable
-     */
-    protected void cancelSetup() throws Exception {
-        // START UOC
-
-        // END UOC
-    }
-
-    /**
-     * 後処理
-     * @customizable
-     */
-    protected String cancelNext(BaseDTO outdto) throws Exception {
-        // START UOC
-
-        // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
 }

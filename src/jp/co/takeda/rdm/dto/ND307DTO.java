@@ -36,6 +36,17 @@ public class ND307DTO extends BaseDTO implements Serializable {
     private String ND307 = "ND307";
 
 	/**
+	 * ND101遷移元画面
+	 * 申請破棄ボタン押下時の遷移先保持用
+	 *
+	 */
+	private String nd101PreScreenId;
+
+	/**
+     * タイトル
+     */
+    private String title;
+	/**
      * 条件セット
      */
     private String jokenSetCd;
@@ -145,6 +156,7 @@ public class ND307DTO extends BaseDTO implements Serializable {
      * 対象区分(先)
      */
     private String postHoInsType;
+
     /**
      * 大学職位(先)
      */
@@ -363,7 +375,7 @@ public class ND307DTO extends BaseDTO implements Serializable {
     /**
      * 適用日付
      */
-    private String tekiyoDay;
+    private String dispTekiyoYmd;
 
     /**
      * 適用日付初期値
@@ -382,10 +394,29 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	private String msgStr;
 
 	/**
+	 * アラートメッセージ中身
+	 * @generated
+	 */
+	private String AlertMsgStr;
+
+	/**
+	 * アラートメッセージ中身2
+	 * @generated
+	 */
+	private String alertMsgStr2;
+
+	/**
+	 * 警告無視フラグ 1の場合、廃業・死亡の警告を無視
+	 * @generated
+	 */
+	private String alertIgnore;
+
+
+	/**
 	 * 押下ボタンフラグ
 	 * @generated
 	 */
-	private String btnFlg;
+	private String tempButtonExecuted;
 
 	/**
 	 * 承認ボタン表示フラグ 0　非表示　1　表示
@@ -422,6 +453,17 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	 */
 	private String funcId;
 
+
+    /**
+     * 申請画面へボタン活性非活性フラグ
+     */
+	private String reqBtnActiveFlg;
+
+    /**
+     * 申請区分
+     */
+	private String reqType;
+
 	/**
      * デフォルトのコンストラクタ。
      * @generated
@@ -430,7 +472,7 @@ public class ND307DTO extends BaseDTO implements Serializable {
         setForward(ND307);
     }
 
-    /**
+	/**
 	 * ND307DTO.javagamenJgiNoを設定
 	 * @return gamenJgiNo
 	 */
@@ -458,6 +500,36 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	 */
 	public void setND307(String nD307) {
 		ND307 = nD307;
+	}
+
+	/**
+	 * ND307DTO.javand101PreScreenIdを設定
+	 * @return nd101PreScreenId
+	 */
+	public String getNd101PreScreenId() {
+		return nd101PreScreenId;
+	}
+
+	/**
+	 * @param nd101PreScreenId セットする nd101PreScreenId
+	 */
+	public void setNd101PreScreenId(String nd101PreScreenId) {
+		this.nd101PreScreenId = nd101PreScreenId;
+	}
+
+	/**
+	 * ND307DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	/**
@@ -1436,18 +1508,18 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND307DTO.javatekiyoDayを設定
-	 * @return tekiyoDay
+	 * ND307DTO.javadispTekiyoYmdを設定
+	 * @return dispTekiyoYmd
 	 */
-	public String getTekiyoDay() {
-		return tekiyoDay;
+	public String getDispTekiyoYmd() {
+		return dispTekiyoYmd;
 	}
 
 	/**
-	 * @param tekiyoDay セットする tekiyoDay
+	 * @param dispTekiyoYmd セットする dispTekiyoYmd
 	 */
-	public void setTekiyoDay(String tekiyoDay) {
-		this.tekiyoDay = tekiyoDay;
+	public void setDispTekiyoYmd(String dispTekiyoYmd) {
+		this.dispTekiyoYmd = dispTekiyoYmd;
 	}
 
 	/**
@@ -1496,18 +1568,63 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND307DTO.javabtnFlgを設定
-	 * @return btnFlg
+	 * ND307DTO.javaAlertMsgStrを設定
+	 * @return alertMsgStr
 	 */
-	public String getBtnFlg() {
-		return btnFlg;
+	public String getAlertMsgStr() {
+		return AlertMsgStr;
 	}
 
 	/**
-	 * @param btnFlg セットする btnFlg
+	 * @param alertMsgStr セットする alertMsgStr
 	 */
-	public void setBtnFlg(String btnFlg) {
-		this.btnFlg = btnFlg;
+	public void setAlertMsgStr(String alertMsgStr) {
+		AlertMsgStr = alertMsgStr;
+	}
+
+	/**
+	 * ND307DTO.javaalertMsgStr2を設定
+	 * @return alertMsgStr2
+	 */
+	public String getAlertMsgStr2() {
+		return alertMsgStr2;
+	}
+
+	/**
+	 * @param alertMsgStr2 セットする alertMsgStr2
+	 */
+	public void setAlertMsgStr2(String alertMsgStr2) {
+		this.alertMsgStr2 = alertMsgStr2;
+	}
+
+	/**
+	 * ND307DTO.javaalertIgnoreを設定
+	 * @return alertIgnore
+	 */
+	public String getAlertIgnore() {
+		return alertIgnore;
+	}
+
+	/**
+	 * @param alertIgnore セットする alertIgnore
+	 */
+	public void setAlertIgnore(String alertIgnore) {
+		this.alertIgnore = alertIgnore;
+	}
+
+	/**
+	 * ND307DTO.javatempButtonExecutedを設定
+	 * @return tempButtonExecuted
+	 */
+	public String getTempButtonExecuted() {
+		return tempButtonExecuted;
+	}
+
+	/**
+	 * @param tempButtonExecuted セットする tempButtonExecuted
+	 */
+	public void setTempButtonExecuted(String tempButtonExecuted) {
+		this.tempButtonExecuted = tempButtonExecuted;
 	}
 
 	/**
@@ -1598,6 +1715,36 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	 */
 	public void setFuncId(String funcId) {
 		this.funcId = funcId;
+	}
+
+	/**
+	 * ND307DTO.javareqBtnActiveFlgを設定
+	 * @return reqBtnActiveFlg
+	 */
+	public String getReqBtnActiveFlg() {
+		return reqBtnActiveFlg;
+	}
+
+	/**
+	 * @param reqBtnActiveFlg セットする reqBtnActiveFlg
+	 */
+	public void setReqBtnActiveFlg(String reqBtnActiveFlg) {
+		this.reqBtnActiveFlg = reqBtnActiveFlg;
+	}
+
+	/**
+	 * ND307DTO.javareqTypeを設定
+	 * @return reqType
+	 */
+	public String getReqType() {
+		return reqType;
+	}
+
+	/**
+	 * @param reqType セットする reqType
+	 */
+	public void setReqType(String reqType) {
+		this.reqType = reqType;
 	}
 
 	/**

@@ -36,6 +36,23 @@ public class ND101DTO extends BaseDTO implements Serializable {
     private String ND101 = "ND101";
 
 	/**
+	 * 表示分岐
+	 * 0:完全新規、1:申請データあり
+	 */
+	private String displayKbn;
+
+	/**
+     * タイトル
+     */
+    private String Title;
+
+	/**
+	 * ND101遷移元画面
+	 * 申請破棄ボタン押下時の遷移先保持用
+	 *
+	 */
+	private String nd101PreScreenId;
+	/**
      * 条件セット
      */
     private String jokenSetCd;
@@ -364,7 +381,7 @@ public class ND101DTO extends BaseDTO implements Serializable {
     /**
      * 適用日付
      */
-    private String tekiyoDay;
+    private String dispTekiyoYmd;
 
     /**
      * 適用日付初期値
@@ -386,8 +403,17 @@ public class ND101DTO extends BaseDTO implements Serializable {
 	 * 押下ボタンフラグ
 	 * @generated
 	 */
-	private String btnFlg;
+	private String tempButtonExecuted;
 
+    /**
+     * 申請画面へボタン活性非活性フラグ
+     */
+	private String reqBtnActiveFlg;
+
+    /**
+     * 申請区分
+     */
+	private String reqType;
 	/**
      * デフォルトのコンストラクタ。
      * @generated
@@ -424,6 +450,51 @@ public class ND101DTO extends BaseDTO implements Serializable {
 	 */
 	public void setND101(String nD101) {
 		ND101 = nD101;
+	}
+
+	/**
+	 * ND101DTO.javadisplayKbnを設定
+	 * @return displayKbn
+	 */
+	public String getDisplayKbn() {
+		return displayKbn;
+	}
+
+	/**
+	 * @param displayKbn セットする displayKbn
+	 */
+	public void setDisplayKbn(String displayKbn) {
+		this.displayKbn = displayKbn;
+	}
+
+	/**
+	 * ND101DTO.javaTitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return Title;
+	}
+
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		Title = title;
+	}
+
+	/**
+	 * ND101DTO.javand101PreScreenIdを設定
+	 * @return nd101PreScreenId
+	 */
+	public String getNd101PreScreenId() {
+		return nd101PreScreenId;
+	}
+
+	/**
+	 * @param nd101PreScreenId セットする nd101PreScreenId
+	 */
+	public void setNd101PreScreenId(String nd101PreScreenId) {
+		this.nd101PreScreenId = nd101PreScreenId;
 	}
 
 	/**
@@ -1387,18 +1458,18 @@ public class ND101DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND101DTO.javatekiyoDayを設定
-	 * @return tekiyoDay
+	 * ND101DTO.javadispTekiyoYmdを設定
+	 * @return dispTekiyoYmd
 	 */
-	public String getTekiyoDay() {
-		return tekiyoDay;
+	public String getDispTekiyoYmd() {
+		return dispTekiyoYmd;
 	}
 
 	/**
-	 * @param tekiyoDay セットする tekiyoDay
+	 * @param dispTekiyoYmd セットする dispTekiyoYmd
 	 */
-	public void setTekiyoDay(String tekiyoDay) {
-		this.tekiyoDay = tekiyoDay;
+	public void setDispTekiyoYmd(String dispTekiyoYmd) {
+		this.dispTekiyoYmd = dispTekiyoYmd;
 	}
 
 	/**
@@ -1447,18 +1518,18 @@ public class ND101DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND101DTO.javabtnFlgを設定
-	 * @return btnFlg
+	 * ND101DTO.javatempButtonExecutedを設定
+	 * @return tempButtonExecuted
 	 */
-	public String getBtnFlg() {
-		return btnFlg;
+	public String getTempButtonExecuted() {
+		return tempButtonExecuted;
 	}
 
 	/**
-	 * @param btnFlg セットする btnFlg
+	 * @param tempButtonExecuted セットする tempButtonExecuted
 	 */
-	public void setBtnFlg(String btnFlg) {
-		this.btnFlg = btnFlg;
+	public void setTempButtonExecuted(String tempButtonExecuted) {
+		this.tempButtonExecuted = tempButtonExecuted;
 	}
 
 	/**
@@ -1474,6 +1545,36 @@ public class ND101DTO extends BaseDTO implements Serializable {
 	 */
 	public void setPreHoInsType(String preHoInsType) {
 		this.preHoInsType = preHoInsType;
+	}
+
+	/**
+	 * ND101DTO.javareqBtnActiveFlgを設定
+	 * @return reqBtnActiveFlg
+	 */
+	public String getReqBtnActiveFlg() {
+		return reqBtnActiveFlg;
+	}
+
+	/**
+	 * @param reqBtnActiveFlg セットする reqBtnActiveFlg
+	 */
+	public void setReqBtnActiveFlg(String reqBtnActiveFlg) {
+		this.reqBtnActiveFlg = reqBtnActiveFlg;
+	}
+
+	/**
+	 * ND101DTO.javareqTypeを設定
+	 * @return reqType
+	 */
+	public String getReqType() {
+		return reqType;
+	}
+
+	/**
+	 * @param reqType セットする reqType
+	 */
+	public void setReqType(String reqType) {
+		this.reqType = reqType;
 	}
 
 	/**

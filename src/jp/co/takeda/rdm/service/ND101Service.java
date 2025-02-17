@@ -5,6 +5,7 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +24,6 @@ import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.util.StringUtils;
 import jp.co.takeda.rdm.entity.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeEntity;
-import jp.co.takeda.rdm.entity.join.SelectHcpEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd101ComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd101YakushokuComboListEntity;
@@ -52,7 +52,7 @@ public class ND101Service extends BaseService {
      * ログインスタンス
      * @generated
      */
-    private static Log log = LogFactory.getLog(ND001Service.class);
+    private static Log log = LogFactory.getLog(ND101Service.class);
 
     /**
      * イベント処理
@@ -67,24 +67,46 @@ public class ND101Service extends BaseService {
     	//1-1 権限判定
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
+        //ドロップダウンリスト等の作成
         setCombo(indto);
+
+        indto.setMrAdminFlg(loginInfo.getJokenFlg());
+        indto.setPreScreenId(loginInfo.getPreScreenId());
+        //一時保存押下フラグのセット
+        if(StringUtils.isEmpty(indto.getTempButtonExecuted()) || indto.getPreScreenId().equals("ND307")) {
+        	indto.setTempButtonExecuted("0");
+        }
 
         SelectDocReqKnrInsChangeEntity selectDocReqKnrInsChangeEntity = new SelectDocReqKnrInsChangeEntity();
 
-        indto.setTempReqBtnFlg(StringUtils.nvl(indto.getTempReqBtnFlg(), "0"));
-        //遷移元画面によってパラメータセットを変更
-        if(indto.getPreScreenId().equals("NC011")|| indto.getTempReqBtnFlg().equals("1")) {
-        	//例　250130-000001
-        	selectDocReqKnrInsChangeEntity.setInReqId(indto.getReqId());
-        	selectDocReqKnrInsChangeEntity.setInReqFlg(1);
-        }else{
+        List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList;
+        //遷移元画面フラグ 申請済み、一時保存ボタン押下時:1 申請なしの場合:0
+
+        if("0".equals(indto.getDisplayKbn())) {
+			if (!(indto.getPreScreenId().equals("ND307") || indto.getPreScreenId().equals("ND101"))) {
+				indto.setNd101PreScreenId(indto.getPreScreenId());
+			}
         	selectDocReqKnrInsChangeEntity.setInReqFlg(0);
         	selectDocReqKnrInsChangeEntity.setInDocNo(indto.getDocNo());
         	selectDocReqKnrInsChangeEntity.setInInsNo(indto.getInsNo());
-        }
-    	List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
+        	selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
 
-    	if(indto.getPreScreenId().equals("NC011")|| indto.getTempReqBtnFlg().equals("1")) {
+    		indto.setReqId("-");
+    		indto.setReqShz(loginInfo.getBumonRyakuName());
+    		indto.setReqStsNm("-");
+    		indto.setReqJgiName(loginInfo.getJgiName());
+    		indto.setReqYmdhms("-");
+    		//ヘッダ部隠し項目
+    		indto.setReqDistCode(loginInfo.getDistCode());
+    		indto.setReqBrCode(loginInfo.getBrCode());
+        }else {
+        	if (!(indto.getPreScreenId().equals("ND307") || indto.getPreScreenId().equals("ND101"))) {
+				indto.setNd101PreScreenId(indto.getPreScreenId());
+			}
+        	selectDocReqKnrInsChangeEntity.setInReqId(indto.getReqId());
+        	selectDocReqKnrInsChangeEntity.setInReqFlg(1);
+        	selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
+
     		//ヘッダ部
     		indto.setReqId(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqId(), "-"));
     		indto.setReqShz(selectDocReqKnrInsChangeList.get(0).getReqShz());
@@ -98,6 +120,8 @@ public class ND101Service extends BaseService {
     		indto.setReqDistCode(selectDocReqKnrInsChangeList.get(0).getReqDistCode());
     		indto.setUpdShaYmd(selectDocReqKnrInsChangeList.get(0).getUpdShaYmd());
 
+
+
     		//隠し項目（変更後）
     		indto.setPostInsNo(selectDocReqKnrInsChangeList.get(0).getPostInsNo());
     		indto.setPostUltInsNo(selectDocReqKnrInsChangeList.get(0).getPostUltInsNo());
@@ -107,30 +131,11 @@ public class ND101Service extends BaseService {
     		indto.setPostJobForm(selectDocReqKnrInsChangeList.get(0).getPostJobForm());
     		indto.setPostDcc(selectDocReqKnrInsChangeList.get(0).getPostDcc());
     		indto.setPostUnivPosCode(selectDocReqKnrInsChangeList.get(0).getPostUnivPosCode());
-    		//reqSts設定用フラグ　NC011の場合 0
 
-    	}else  {
-    		//ヘッダ部　github連携時に修正すること TODO
-    		indto.setReqId(StringUtils.nvl(indto.getReqId(), "-"));
-    		indto.setReqShz("TestR");
-    		if(indto.getTempReqBtnFlg().equals("0")) {
-    			indto.setReqStsNm("-");
-    		} else {
-    			indto.setReqStsNm("保存済み");
-    		}
-    		indto.setReqJgiName("TestMR");
-    		indto.setReqYmdhms("-");
-    		//ヘッダ部隠し項目
-
-    		//indto.申請者所属リージョン　loginInfoから取得 TODO
-    		//indto.申請者所属エリア　loginInfoから取得 TODO
-    		indto.setReqDistCode("testR");
-    		indto.setUpdShaYmd("testA");
-
-    		//reqSts設定用フラグ　ND013の場合 1
-
-    	}
-
+    		//画面切り替え判定用
+    		indto.setReqType(selectDocReqKnrInsChangeList.get(0).getReqType());
+        }
+        //以下共通
         //基本情報
     	indto.setDocKanj(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getDocKanj(), "-"));
 
@@ -169,104 +174,109 @@ public class ND101Service extends BaseService {
 		indto.setKmuPostCodeKanj(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getKmuPostCodeKanj(),"--なし--"));
 		indto.setYakushinPostCodeKanj(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getYakushinPostCodeKanj(),"--なし--"));
 		indto.setUnivPostTitleKj(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getUnivPostTitleKj(),"--なし--"));
-		indto.setTekiyoDay(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getTekiyoYmd(),indto.getTekiyoInitDay()));
+
+		//表示する適用日の設定
+		if(StringUtils.isEmpty(selectDocReqKnrInsChangeList.get(0).getTekiyoYmd())) {
+			String tempDispTekiyoYmd = indto.getTekiyoInitDay();
+			indto.setDispTekiyoYmd(tempDispTekiyoYmd.substring(0,4) + "-" + tempDispTekiyoYmd.substring(4,6) + "-" +  tempDispTekiyoYmd.substring(6,8));
+		} else {
+			String tempDispTekiyoYmd = selectDocReqKnrInsChangeList.get(0).getTekiyoYmd();
+			indto.setDispTekiyoYmd(tempDispTekiyoYmd.substring(0,4) + "-" + tempDispTekiyoYmd.substring(4,6) + "-" +  tempDispTekiyoYmd.substring(6,8));
+		}
 
 		//コメント
 		indto.setReqComment(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqComment(), ""));
 		indto.setAprComment(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getAprComment(), ""));
 
-		//入力項目活性・非活性制御
-		indto.setInputFlg("1");
-		indto.setReqCommentFlg("1");
-
-		indto.setReqDestBtnFlg("1");
-		indto.setTempReqBtnFlg("1");
-		indto.setReqBtnFlg("1");
-
-//		if (indto.getPreScreenId().equals("NC011")) {
-//			indto.setReqShz(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqShz(), "-"));
-//			indto.setReqJgiName(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiName(), "-"));
-//		}
-
-        //動作確認用にjginoを変換しています。
-		//製造完了したら不要 TODO
-        if (!(indto.getGamenJgiNo() == null || !(indto.getGamenJgiNo().equals(" ")))){
-        	loginInfo.setJgiNo(Integer.parseInt(indto.getGamenJgiNo()));
-        }
-
 		//1-3-1　入力項目
 		//MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
-        indto.setMrAdminFlg(loginInfo.getJokenFlg());
+      //管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         if (indto.getMrAdminFlg().equals("0")) {
-        	if(!(indto.getReqSts().equals("01"))) {
-        		indto.setInputFlg("0");
-        		indto.setReqCommentFlg("0");
-        	}
-        }
-
-        //管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
-        if (indto.getMrAdminFlg().equals("1")) {
-        	if (indto.getReqSts() == null) {
+        	if (StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01")) {
         		indto.setInputFlg("1");
-        	}else if(!(indto.getReqSts().equals("01")||indto.getReqSts().equals("03")||indto.getReqSts().equals("13"))) {
+        		indto.setReqCommentFlg("1");
+        	}else {
+        		indto.setInputFlg("0");
+        		indto.setReqCommentFlg("0");
+        	}
+        }else  {
+        	if (StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01")||indto.getReqSts().equals("03")||indto.getReqSts().equals("13")) {
+        		indto.setInputFlg("1");
+        	}else {
         		indto.setInputFlg("0");
         		indto.setReqCommentFlg("0");
         	}
         }
 
-        //完全新規(申請管理．申請ステータスが取得できない)の場合は活性
-        if (indto.getReqSts() == null) {
-        	indto.setInputFlg("1");
-        }
+		// 取得した申請管理．申請者従業員番号とログインユーザ情報．従業員番号が異なる場合、申請コメント欄は変更不可（非活性）とする
+		if (StringUtils.isEmpty(indto.getReqSts()) || StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(), "")
+				.equals(Integer.toString(loginInfo.getJgiNo()))) {
+			if(indto.getMrAdminFlg().equals("1")) {
+				//申請者であり管理者の場合、申請前、保存済みの状態の場合のみ申請コメントを活性
+				if(StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01")) {
+					indto.setReqCommentFlg("1");
+				}else {
+					indto.setReqCommentFlg("0");
+				}
+			}else {
+				indto.setReqCommentFlg("1");
+			}
 
-        //取得した申請管理．申請者従業員番号とログインユーザ情報．従業員番号が異なる場合、申請コメント欄は変更不可（非活性）とする
-        if (!(indto.getReqSts() == null) && !(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(),"").equals(Integer.toString(loginInfo.getJgiNo())))) {
-        	indto.setReqCommentFlg("0");
-        }
+		} else {
+			indto.setReqCommentFlg("0");
+		}
 
         //申請前は「申請破棄」ボタンを非活性にする 非活性:0
-        if (indto.getReqSts() == null) {
+        if (StringUtils.isEmpty(indto.getReqSts())|| !(indto.getReqSts().equals("01"))) {
         	indto.setReqDestBtnFlg("0");
-        }else if (!(indto.getReqSts().equals("01"))) {
-            indto.setReqDestBtnFlg("0");
+        }else {
+        	indto.setReqDestBtnFlg("1");
         }
 
         //申請管理．申請ステータスが取得できない（初回DB登録前）場合は、押下可（活性）とする
         //取得した申請管理．申請ステータスが'01'(保存済み)、'03'（承認待ち）、'13'(ULT承認待ち)以外の場合は、押下不可（非活性）とする
-        if (indto.getReqSts() == null) {
-        	indto.setTempReqBtnFlg("1");
-        }else if (!(indto.getReqSts().equals("01")||indto.getReqSts().equals("03")||indto.getReqSts().equals("13"))) {
-        	indto.setTempReqBtnFlg("0");
-        }
-
+		if (indto.getMrAdminFlg().equals("0")) {
+			if (StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01")) {
+				indto.setTempReqBtnFlg("1");
+			} else {
+				indto.setTempReqBtnFlg("0");
+			}
+		} else {
+			if (StringUtils.isEmpty(indto.getReqSts()) || (indto.getReqSts().equals("01") || indto.getReqSts().equals("03")|| indto.getReqSts().equals("13"))) {
+				indto.setTempReqBtnFlg("1");
+			} else{
+				indto.setTempReqBtnFlg("0");
+			}
+		}
         //申請管理．申請ステータスが取得できない（初回DB登録前）または'01'(保存済み)の場合：申請画面へボタンとして表示する
-        if(indto.getReqSts() == null || indto.getReqSts().equals("01")) {
+        if(StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01")) {
         	indto.setReqBtnFlg("1");
         }
+        //申請画面へボタン　活性非活性処理
+        String tempJgiNo = StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(), "");
+        //MR権限の場合
+		if (indto.getMrAdminFlg().equals("0") && ((StringUtils.isEmpty(tempJgiNo) || tempJgiNo.equals(Integer.toString(loginInfo.getJgiNo()))))) {
+			if ( StringUtils.isEmpty(indto.getReqSts())|| indto.getReqSts().equals("01")) {
+				indto.setReqBtnActiveFlg("1");
+			}else {
+				indto.setReqBtnActiveFlg("0");
+			}
 
-        //自分が申請者(新規申請時または取得した申請管理．申請者従業員番号とログインユーザ情報．従業員番号が一致)の場合
-        if(StringUtils.nvl(indto.getReqSts(),"").equals("01") || indto.getReqSts() == null || StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(),"").equals(Integer.toString(loginInfo.getJgiNo()))) {
-        	indto.setReqBtnFlg("1");
-        }
+		}else {
+			indto.setReqBtnActiveFlg("0");
+		}
+		//管理者権限の場合
+		if (indto.getMrAdminFlg().equals("1")) {
+			if (StringUtils.isEmpty(indto.getReqSts())||StringUtils.nvl(indto.getReqSts(), "").equals("01")|| StringUtils.nvl(indto.getReqSts(), "").equals("03")|| StringUtils.nvl(indto.getReqSts(), "").equals("13")) {
+				indto.setReqBtnFlg("1");
+				indto.setReqBtnActiveFlg("1");
+			}else {
+				indto.setReqBtnActiveFlg("0");
+			}
 
+		}
 
-
-        if ((StringUtils.nvl(indto.getReqSts(),"").equals("01") || indto.getReqSts() == null || StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(),"").equals(Integer.toString(loginInfo.getJgiNo())))) {
-        		indto.setReqBtnFlg("1");
-        }else {
-        	if(indto.getMrAdminFlg().equals("0")) {
-        		if(!(indto.getReqSts().equals("01"))) {
-        			indto.setReqBtnFlg("0");
-        		}
-        	}
-
-        	if(indto.getMrAdminFlg().equals("1")) {
-        		if(!(StringUtils.nvl(indto.getReqSts(),"").equals("01")||StringUtils.nvl(indto.getReqSts(),"").equals("03")||StringUtils.nvl(indto.getReqSts(),"").equals("13"))) {
-        			indto.setReqBtnFlg("0");
-        		}
-        	}
-        }
-
+        //ドロップダウンリスト等の作成
         setCombo(indto);
 
         return outdto;
@@ -288,6 +298,8 @@ public class ND101Service extends BaseService {
         Date systemDate = DateUtils.getNowDate();
         SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
         String sysDate = fmtDate.format(systemDate);
+
+
 
         String reqId = indto.getReqId();
         boolean errFlg = false;
@@ -318,11 +330,9 @@ public class ND101Service extends BaseService {
 
         if(tRdmReqKnrData == null) {
         	// 新規登録
-        	// 新規にIDを取得 TODO
-//        	SeqRdmReqIdEntity seqRdmReqIdEntity = new SeqRdmReqIdEntity();
-//        	List<SeqRdmReqIdEntity> seqRdmReqIdDate = dao.select(seqRdmReqIdEntity);
-//        	reqId = seqRdmReqIdDate.get(0).getReqId();
-        	reqId = "250211-000001";
+        	SeqRdmReqIdEntity seqRdmReqIdEntity = new SeqRdmReqIdEntity();
+        	List<SeqRdmReqIdEntity> seqRdmReqIdDate = dao.select(seqRdmReqIdEntity);
+        	reqId = seqRdmReqIdDate.get(0).getReqId();
 
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
@@ -345,21 +355,17 @@ public class ND101Service extends BaseService {
 
         	tRdmReqKnrInsData.setReqStsCd("01");
 
-        	SelectHenkanListEntity haifunHenkan = new SelectHenkanListEntity("ハイフン除去");
-        	haifunHenkan.setSearchHenkan(indto.getSelectDay());
-        	List<SelectHenkanListEntity> selectHaifun = dao.select(haifunHenkan);
-        	indto.setSelectDay(selectHaifun.get(0).getSearchHenkan());
-
+			if (!(StringUtils.isEmpty(indto.getSelectDay()))) {
+				SelectHenkanListEntity haifunHenkan = new SelectHenkanListEntity("ハイフン除去");
+				haifunHenkan.setSearchHenkan(indto.getSelectDay());
+				List<SelectHenkanListEntity> selectHaifun = dao.select(haifunHenkan);
+				indto.setSelectDay(selectHaifun.get(0).getSearchHenkan());
+			}
 
         	tRdmReqKnrInsData.setTekiyoYmd(indto.getSelectDay());
-            //TODO
-        	//直書きしているため修正必要　loginInfoから取得予定
-        	//医薬支店C     brCode
-        	tRdmReqKnrInsData.setReqBrCd("aaa");
-        	//医薬営業所C   distCode
-        	tRdmReqKnrInsData.setReqDistCd("bbb");
-        	//組織名称      bumonRyakuName
-        	tRdmReqKnrInsData.setReqShzNm("testSosName");
+        	tRdmReqKnrInsData.setReqBrCd(loginInfo.getBrCode());
+        	tRdmReqKnrInsData.setReqDistCd(loginInfo.getDistCode());
+        	tRdmReqKnrInsData.setReqShzNm(loginInfo.getBumonRyakuName());
 
         	tRdmReqKnrInsData.setReqJgiNo(loginInfo.getJgiNo());
         	tRdmReqKnrInsData.setReqJgiName(loginInfo.getJgiName());
@@ -384,11 +390,12 @@ public class ND101Service extends BaseService {
         		tRdmReqKnrUpdData.setReqStsCd("01");
         	}
 
-        	SelectHenkanListEntity haifunHenkan = new SelectHenkanListEntity("ハイフン除去");
-        	haifunHenkan.setSearchHenkan(indto.getSelectDay());
-        	List<SelectHenkanListEntity> selectHaifun = dao.select(haifunHenkan);
-        	indto.setSelectDay(selectHaifun.get(0).getSearchHenkan());
-
+			if (!(StringUtils.isEmpty(indto.getSelectDay()))) {
+				SelectHenkanListEntity haifunHenkan = new SelectHenkanListEntity("ハイフン除去");
+				haifunHenkan.setSearchHenkan(indto.getSelectDay());
+				List<SelectHenkanListEntity> selectHaifun = dao.select(haifunHenkan);
+				indto.setSelectDay(selectHaifun.get(0).getSearchHenkan());
+			}
         	String tekiyoYmd = indto.getSelectDay();
         	tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);
         	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
@@ -404,32 +411,29 @@ public class ND101Service extends BaseService {
         TRdmHcpKmuReqEntity tRdmHcpKmuReqData = dao.selectByPK(tRdmHcpKmuReqEntity);
 
 
-        if(tRdmReqKnrData == null) {
+        if(tRdmHcpKmuReqData == null) {
         	TRdmHcpKmuReqEntity tRdmHcpKmuReqInsData = new TRdmHcpKmuReqEntity();
         	tRdmHcpKmuReqInsData.setReqId(reqId);
         	tRdmHcpKmuReqInsData.setDocNo(indto.getDocNo());
         	tRdmHcpKmuReqInsData.setInsNoMt(indto.getPreInsNo());
-        	tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), "Z"));
-        	tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(indto.getPreJobForm(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(indto.getPreDeptCode(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptKanjiBf(StringUtils.nvl(indto.getPreDeptKj(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptKanaBf(StringUtils.nvl(indto.getPreDeptKn(), "Z"));
+        	tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+        	tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(indto.getPreJobForm(), ""));
+        	tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(indto.getPreDeptCode(), ""));
+        	tRdmHcpKmuReqInsData.setDeptKanjiBf(StringUtils.nvl(indto.getPreDeptKj(), ""));
+        	tRdmHcpKmuReqInsData.setDeptKanaBf(StringUtils.nvl(indto.getPreDeptKn(), ""));
         	tRdmHcpKmuReqInsData.setUnivPosCodeBf(indto.getPreUnivPosCode());
         	tRdmHcpKmuReqInsData.setTitleCodeBf(indto.getPreTitleCode());
         	tRdmHcpKmuReqInsData.setDccTypeBf(indto.getPreDcc());
-        	tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(indto.getJobForm(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), "Z"));
+        	tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(indto.getJobForm(), ""));
+        	tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
+        	tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
+        	tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
         	tRdmHcpKmuReqInsData.setUnivPosCodeAf(indto.getDigakuShokui());
         	tRdmHcpKmuReqInsData.setTitleCodeAf(indto.getYakushoku());
         	tRdmHcpKmuReqInsData.setDccTypeAf(indto.getDcc());
         	tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
-        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())) {
-        		tRdmHcpKmuReqInsData.setUltInsNo(null);
-        	}else if(indto.getPostUltInsNo() == null){
-        		tRdmHcpKmuReqInsData.setUltInsNo("Z");
-        	}else {
+            //異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
+        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || indto.getPostUltInsNo() == null) {
         		tRdmHcpKmuReqInsData.setUltInsNo(indto.getPostUltInsNo());
         	}
         	tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
@@ -441,20 +445,30 @@ public class ND101Service extends BaseService {
         }else {
         	TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
         	tRdmHcpKmuReqUpdData.setReqId(reqId);
-        	tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), "Z"));
-        	tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getJobForm(), "Z"));
-        	tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), "Z"));
-        	tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), "Z"));
-        	tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), "Z"));
+        	tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+        	tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getJobForm(), ""));
+        	tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
+        	tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
+        	tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
         	tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(indto.getDigakuShokui(),""));
         	tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(indto.getYakushoku(),""));
         	tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(indto.getDcc(),""));
-        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())) {
-        		tRdmHcpKmuReqUpdData.setUltInsNo(null);
-        	}else if(indto.getPostUltInsNo() == null){
-        		tRdmHcpKmuReqUpdData.setUltInsNo("Z");
+        	//ult医師コード最新化
+        	SelectDocReqKnrInsChangeEntity selectDocReqKnrInsChangeEntity = new SelectDocReqKnrInsChangeEntity();
+        	selectDocReqKnrInsChangeEntity.setInReqFlg(0);
+        	selectDocReqKnrInsChangeEntity.setInDocNo(indto.getDocNo());
+        	selectDocReqKnrInsChangeEntity.setInInsNo(indto.getPreInsNo());
+        	String tempUltDocNo;
+        	List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
+        	if(selectDocReqKnrInsChangeList == null) {
+        		tempUltDocNo = "";
         	}else {
-        		tRdmHcpKmuReqUpdData.setUltInsNo(indto.getPostUltInsNo());
+        		tempUltDocNo = StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getUltDocNo(),"");
+        	}
+        	tRdmHcpKmuReqUpdData.setUltDocNo(tempUltDocNo);
+            //異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
+        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || StringUtils.isEmpty(indto.getPostUltInsNo())) {
+        		tRdmHcpKmuReqUpdData.setUltInsNo(indto.getPreUltInsNo());
         	}
         	tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
         	tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
@@ -464,6 +478,12 @@ public class ND101Service extends BaseService {
         }
         indto.setReqId(reqId);
 
+
+
+        // 保存が完了しました。
+		errMsg += loginInfo.getMsgData(RdmConstantsData.I005)+ "\n";
+		errFlg = true;
+		indto.setMsgStr(errMsg);
         outdto = init(indto);
 
     	return outdto;
@@ -478,6 +498,7 @@ public class ND101Service extends BaseService {
    @Transactional
    public BaseDTO cancel(ND101DTO indto) {
 	   BaseDTO outdto = indto;
+
 	   setCombo(indto);
 
        // START UOC
@@ -489,7 +510,12 @@ public class ND101Service extends BaseService {
        TRdmHcpKmuReqEntity tRdmHcpKmuReqEntity = new TRdmHcpKmuReqEntity();
        tRdmHcpKmuReqEntity.setReqId(indto.getReqId());
        dao.deleteByPK(tRdmHcpKmuReqEntity);
-       indto.setForward(indto.getPreScreenId());
+
+       indto.setTempReqBtnFlg("0");
+
+
+       indto.setForward(indto.getNd101PreScreenId());
+
 	   return outdto;
    }
 
@@ -506,7 +532,7 @@ public class ND101Service extends BaseService {
         	mapYakushoku.put(outEntity.getTitleCode(),outEntity.getTitleKj());
         }
         indto.setYakushokuCombo(mapYakushoku);
-        if(!(indto.getReqSts() == null)) {
+        if(!(StringUtils.isEmpty(indto.getReqSts()))) {
         	indto.setYakushoku(indto.getPostTitleCode());
         }
 
@@ -521,7 +547,7 @@ public class ND101Service extends BaseService {
         	mapJobForm.put(outEntity.getValue1(),outEntity.getValue1Kanj());
         }
         indto.setJobFormCombo(mapJobForm);
-        if(!(indto.getReqSts() == null)) {
+        if(!(StringUtils.isEmpty(indto.getReqSts()))) {
         	indto.setJobForm(indto.getPostJobForm());
         }
 
@@ -536,7 +562,7 @@ public class ND101Service extends BaseService {
         	mapDcc.put(outEntity.getValue1(),outEntity.getValue1Kanj());
         }
         indto.setDccCombo(mapDcc);
-        if(!(indto.getReqSts() == null)) {
+        if(!(StringUtils.isEmpty(indto.getReqSts()))) {
         	indto.setDcc(indto.getPostDcc());
         }
 
@@ -551,26 +577,21 @@ public class ND101Service extends BaseService {
         	mapDigakuShokui.put(outEntity.getTitleCode(),outEntity.getTitleKj());
         }
         indto.setDigakuShokuiCombo(mapDigakuShokui);
-        if(!(indto.getReqSts() == null)) {
+        if(!(StringUtils.isEmpty(indto.getReqSts()))) {
         	indto.setDigakuShokui(indto.getPostUnivPosCode());
         }
 
       //翌日日付_RDM用カレンダー(オンライン用)_生成用エンティティ
     	SelectTmrEntity selectTmrEntity = new SelectTmrEntity();
-
         //翌日日付_RDM用カレンダー(オンライン用)の帳票一覧を取得する
         List<SelectTmrEntity> selectTmrList = dao.select(selectTmrEntity);
 
         // SimpleDateFormatで日付フォーマット設定
-     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+     	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         //翌日日付データ_取り出す（リストの[0]を取得)
         for (SelectTmrEntity entity : selectTmrList) {
             //検索結果_翌日日付
             indto.setTekiyoInitDay(sdf.format(entity.getCalDate()));
-        }
-        //申請一覧からの遷移の場合は適用日を表示する
-        if(!(indto.getReqSts() == null)) {
-        	indto.setTekiyoDay(indto.getTekiyoDay().substring(0,4) + "-" + indto.getTekiyoDay().substring(4,6) + "-" +  indto.getTekiyoDay().substring(6,8));
         }
     }
 

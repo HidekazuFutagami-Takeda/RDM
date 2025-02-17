@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import jp.co.takeda.jkr.util.JkrConstantsData;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
@@ -208,16 +209,19 @@ public class ND301Action extends BaseAction<ND301DTO> {
      */
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
-        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
-                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
-                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
-                && !RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
+        if (!RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
                 && !"exception".equals(outdto.getForward())){
-            setJumpInfo(dto.getMsgId());
-//            outdto.setForward("JKR090C020Init");
+
         }
         // END UOC
         //TODO buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
+        //"9" = 登録完了
+        if ("9".equals(dto.getReturnFlg())) {
+            // 登録完了画面へ遷移
+            setJumpInfo(dto.getButtonFlg());
+
+            outdto.setForward("NC101Init");
+        }
         setNextDTO(outdto);
         return outdto.getForward();
     }
@@ -228,27 +232,33 @@ public class ND301Action extends BaseAction<ND301DTO> {
      * @param dto 登録完了画面DTO
      * @param msgId メッセージID
      */
-    private void setJumpInfo(String msgId) {
+    private void setJumpInfo(String event) {
         // メッセージオブジェクト取得
         LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-        String subTitle = "";
-        String jokenSetCd = dto.getLoginJokenSetCd();
-//TODO
         //画面タイトル内容設定
         paramDto = new NC101DTO();
         // ブラウザタイトル
-        paramDto.setBrowerTitle ("ND301_医師新規作成 - 申請内容確認");
+        paramDto.setBrowerTitle ("ND011_医師新規作成");
         // 画面タイトル
-        paramDto.setTitle("ND301_医師新規作成 - 申請内容確認");
+        paramDto.setTitle("医師新規作成");
         // 戻るリンク(表示文言)
-        paramDto.setReturnLinkNm1("戻る");
+        paramDto.setReturnLinkNm1("医師検索画面へ");
         // 戻るリンク(遷移先URL)
-        paramDto.setReturnLinkURL1("ND301Init");
+        paramDto.setReturnLinkURL1("ND001Init");
+        // メッセージ１
+        if (event.equals("0")) {//I002	申請が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
+        }
+        if (event.equals("1")) {//I003	承認が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I003));
+        }
+        if (event.equals("2")) {//I004	却下が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I004));
+        }
 
-        ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
-//        searchKey.setActionMtKbn("2");
-        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, searchKey);
+//        ND301DTO searchKey = (ND301DTO)sessionMap.get(AppConstant.SESKEY_ND301_SEARCHKEY);
+//        sessionMap.put(AppConstant.SESKEY_ND301_SEARCHKEY, searchKey);
     }
 
 }

@@ -33,6 +33,12 @@ public class NC203DTO extends BaseDTO implements Serializable {
     private String NC203 = "NC203";
 
     /**
+	 * 画面タイトル
+	 * @generated
+	 */
+	private String title;
+
+    /**
      * searchInput
      * @generated
      */
@@ -332,6 +338,21 @@ public class NC203DTO extends BaseDTO implements Serializable {
     public String getNC203(){
         return NC203;
     }
+
+	/**
+	 * NC203DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	/**
      * イベントIDの取得

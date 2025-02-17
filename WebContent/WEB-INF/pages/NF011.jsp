@@ -936,6 +936,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.insPcode.value = "";
 		const pharmType = document.fm1.pharmType.value;
 		document.fm1.pharmType.value = "";
+		const preScreenId = document.fm1.preScreenId.value;
+		document.fm1.preScreenId.value = "NF011";
 
 		if(document.fm1.insType.value == "02" || document.fm1.insType.value == "05") {
 			document.fm1.kensakuInsSbt.value = "10";
@@ -951,6 +953,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 		document.fm1.insPcode.value = pCode;
 		document.fm1.pharmType.value = pharmType;
+		document.fm1.preScreenId.value = preScreenId;
     }
 
 	// 施設ポップアップから親施設受け取り

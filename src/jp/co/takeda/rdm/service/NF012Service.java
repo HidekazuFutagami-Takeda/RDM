@@ -77,12 +77,11 @@ public class NF012Service extends BaseService {
     		SelectNF012MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
-    		// TODO ログイン関連できてから確認
-//    		indto.setReqShzNm(loginInfo.getShzNm());
-    		indto.setReqJgiName(loginInfo.getJgiName());
-    		indto.setReqJgiNo(loginInfo.getJgiNo());
-//    		indto.setReqBrCd(loginInfo.getBrCd());
-//    		indto.setReqDistCd(loginInfo.getDistCd());
+    		indto.setReqShzNm(indto.getLoginShzNm());
+			indto.setReqJgiName(loginInfo.getJgiName());
+			indto.setReqJgiNo(loginInfo.getJgiNo());
+    		indto.setReqBrCd(loginInfo.getBrCode());
+    		indto.setReqDistCd(loginInfo.getDistCode());
     		indto.setReqYmdhms("");
     		indto.setReqStsNm("");
     		indto.setReqId("");

@@ -88,6 +88,23 @@ if (stack.peek() instanceof NC203DTO) {
 </head>
 
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設検索"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+<table class="comPortalBody">
+	<tbody>
+	<tr>
+	<td>
+
 	<%-- 施設選択 開始 --%>
 
 	<!-- ポータル枠 開始 -->
@@ -113,6 +130,8 @@ if (stack.peek() instanceof NC203DTO) {
     <s:hidden name="callBack" />
     <s:hidden name="winVarName" />
     <s:hidden name="sortCondition" />
+    <s:hidden name="title" />
+    <s:hidden name="preScreenId" />
      <s:url id="searchurl" action="NC203Search"/>
     <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
     <s:url id="sorturl" action="NC203Sort"/>
@@ -229,7 +248,15 @@ if (stack.peek() instanceof NC203DTO) {
 					<s:textfield id="insPcode" size="20" maxlength="14" name="insPcode" style="ime-mode:inactive;" />
 				</td>
 
-				<td><s:checkbox id="koshisetsuCheck" align="right" name="koshisetsuCheck" tabIndex="-1" value="false" /></td><td><nobr>子施設を除く</nobr></td>
+				<td>
+					<s:if test="preScreenId == 'NF011' || preScreenId == 'NF211' || preScreenId == 'NF212'">
+					<input type="checkbox" id="koshisetsuCheck" align="right" name="koshisetsuCheck" checked disabled />
+					<s:hidden name="koshisetsuCheck" value="true" />
+					</s:if>
+					<s:else>
+					<s:checkbox id="koshisetsuCheck" align="right" name="koshisetsuCheck" tabIndex="-1" value="false" />
+					</s:else>
+				</td><td><nobr><label for="koshisetsuCheck">子施設を除く</label></nobr></td>
 
 			</tr>
 
@@ -269,13 +296,13 @@ if (stack.peek() instanceof NC203DTO) {
 		</table>
 		<!-- 前制御部 終了 -->
 
+<table width="95%" >
 		<tr>
-
          <%-- ページャー表示 開始 --%>
           <s:if test='pageFlg == "1" '>
           </s:if>
           <s:else>
-                    <td align="center">
+                    <td align="right">
                       <jsp:include page="common/rdmPage.jsp">
                       <jsp:param name="" value="" />
                       </jsp:include>
@@ -283,6 +310,7 @@ if (stack.peek() instanceof NC203DTO) {
           </s:else>
           <%-- ページャー表示 終了 --%>
          </tr>
+</table>
 
 		<!-- 一覧部 開始 -->
 <%
@@ -317,14 +345,17 @@ if (stack.peek() instanceof NC203DTO) {
 	  ultAdrsDescClass = "comTableSort";
   }
 %>
-		<table class="pupList" align="center" border=1 cellpadding=2 cellspacing=0 style="width:800pt; resize : horizontal; overflow : hidden;">
+
+	<div style="max-height:270px;width:800px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+		<!-- <table class="pupList" align="center" border=1 cellpadding=2 cellspacing=0 style="width:800pt; resize : horizontal; overflow : hidden;"> -->
+		<table>
 		<tbody>
 			<!-- ヘッダー -->
 			<s:if test='pageFlg == "1"'>
 			<!-- 何も表示しない -->
 			</s:if>
 			<s:else>
-			<tr>
+			<tr style="position: sticky; top:0; left:0;">
 				<td class="actionTh" style="border:none" style="width:8pt"><nobr>&nbsp;</nobr></td>
 				<td class="comTableTitle" style="width:105pt;"><nobr>施設略式漢字名
 				<s:if test=' !(insData == null || insData.size() <= 0)'>
@@ -364,7 +395,7 @@ if (stack.peek() instanceof NC203DTO) {
 
                 <td class="comTableTitle" style="width:5pt;"><nobr>ベッド数</nobr></td>
 			</tr>
-			<tr>
+			<tr style="position: sticky; top:20; left:0;">
 				<td class="actionTh" style="width:8pt;"><nobr>選択</nobr></td>
 				<td class="comTableTitle" style="width:105pt;"><nobr>ULT施設略名
 				<s:if test=' !(insData == null || insData.size() <= 0)'>
@@ -429,6 +460,7 @@ if (stack.peek() instanceof NC203DTO) {
            </s:else>
 		</tbody>
 		</table>
+</div>
 		<!-- 一覧部 終了 -->
 
 		<!-- 後制御部 開始 -->
@@ -449,6 +481,11 @@ if (stack.peek() instanceof NC203DTO) {
 	</tbody>
 	</table>
 	<!-- ポータル枠 終了 -->
+	</td>
+	</tr>
+	</tbody>
+</table>
+
 	<!-- 施設選択 終了 -->
 </body>
 </html>

@@ -50,17 +50,24 @@
 		* </pre>
 */
 		function clearText() {
-			var haiinKbn = document.getElementById("haiinKbn");
-			haiinKbn.value = '';
+			var preScreenId = document.fm1.preScreenId.value;
+
+			if(preScreenId != "ND011" && preScreenId != "ND014" && preScreenId != "ND101"
+				&& preScreenId != "ND103" && preScreenId != "ND501" && preScreenId != "NF011"
+					&& preScreenId != "NF012" && preScreenId != "NF211" && preScreenId != "NF212"
+						&& preScreenId != "NF401" && preScreenId != "NF403") {
+				var haiinKbn = document.getElementById("haiinKbn");
+				haiinKbn.value = '';
+
+				var delFlg = document.getElementById("delFlg");
+				delFlg.value = '';
+			}
 
 			var insKanjiSrch = document.getElementById("insKanjiSrch");
 			insKanjiSrch.value = '';
 
 			var insKanaSrch = document.getElementById("insKanaSrch");
 			insKanaSrch.value = '';
-
-			var delFlg = document.getElementById("delFlg");
-			delFlg.value = '';
 
 			var insNoSrch = document.getElementById("insNoSrch");
 			insNoSrch.value = '';
@@ -74,8 +81,11 @@
 			var hoInsType = document.getElementById("hoInsType");
 			hoInsType.value = '';
 
-			var insType = document.getElementById("insType");
-			insType.value = '';
+			if(preScreenId != "NF011" && preScreenId != "NF211" && preScreenId != "NF212"
+				&& document.getElementById("insType").length < 1){
+				var insType = document.getElementById("insType");
+				insType.value = '';
+			}
 
 			var pharmType = document.getElementById("pharmType");
 			pharmType.value = '';
@@ -86,8 +96,10 @@
 			var insPcode = document.getElementById("insPcode");
 			insPcode.value = '';
 
-			var koshisetsuCheck = document.getElementById("koshisetsuCheck");
-			koshisetsuCheck.checked = false;
+			if(preScreenId != "NF011" && preScreenId != "NF211" && preScreenId != "NF212"){
+				var koshisetsuCheck = document.getElementById("koshisetsuCheck");
+				koshisetsuCheck.checked = false;
+			}
 
 			var jkrSosAddrCd = document.getElementById("jkrSosAddrCd");
 			jkrSosAddrCd.value = '';

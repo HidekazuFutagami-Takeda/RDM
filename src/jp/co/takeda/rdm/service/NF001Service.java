@@ -19,7 +19,6 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.CatSnseiComboDataList;
 import jp.co.takeda.rdm.dto.HcoSearchDataList;
 import jp.co.takeda.rdm.dto.NF001DTO;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
@@ -55,12 +54,24 @@ public class NF001Service extends BaseService {
     public BaseDTO init(NF001DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
         // DropDownList作成
         createCombo(indto);
 
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
+
+        // MR権限の場合、親画面．ログインユーザ情報からログインユーザの従業員番号、氏名、組織コード、医薬支店C、医薬営業所C、所属組織名を取得し
+        // 検索条件．組織、検索条件．担当者に設定する
+        if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+        	indto.setSosCd(loginInfo.getSosCd());
+        	indto.setSosNm(indto.getLoginShzNm());
+        	indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        	indto.setJgiNm(loginInfo.getJgiName());
+        	indto.setBrCode(loginInfo.getBrCode());
+        	indto.setDistCode(loginInfo.getDistCode());
+        }
 
         // END UOC
         return outdto;
@@ -216,8 +227,8 @@ public class NF001Service extends BaseService {
         	List<SelectHenkanListEntity> selectHenkanListEntity = dao.select(henkanEntity);
         	// ハイフン除去後の値をセット
         	String pcode = selectHenkanListEntity.get(0).getSearchHenkan();
-    		selectNF001MainDataCntEntity.setInsPhoneSrch(pcode);
-    		selectNF001MainDataEntity.setInsPhoneSrch(pcode);
+    		selectNF001MainDataCntEntity.setInsPcode(pcode);
+    		selectNF001MainDataEntity.setInsPcode(pcode);
         }
 
         // 都道府県
@@ -239,8 +250,8 @@ public class NF001Service extends BaseService {
         	List<SelectHenkanListEntity> selectHenkanListEntity = dao.select(henkanEntity);
         	// 全角変換後の値をセット
         	String addr = selectHenkanListEntity.get(0).getSearchHenkan();
-    		selectNF001MainDataCntEntity.setInsPhoneSrch(addr);
-    		selectNF001MainDataEntity.setInsPhoneSrch(addr);
+    		selectNF001MainDataCntEntity.setInsAddrSrch(addr);
+    		selectNF001MainDataEntity.setInsAddrSrch(addr);
         }
 
         // ULT施設コード
@@ -319,7 +330,6 @@ public class NF001Service extends BaseService {
 		}
 
         // 一覧を取得する
-        // TODO SQL確認
         List<SelectNF001MainDataEntity> selectNF001MainDataEntityList = dao.select(selectNF001MainDataEntity);
 
         for (SelectNF001MainDataEntity entity : selectNF001MainDataEntityList) {
@@ -648,15 +658,6 @@ public class NF001Service extends BaseService {
         		dataRecord.setFuncFlg7("0");
         	}
 
-        	// TODO テスト用
-    		dataRecord.setFuncFlg1("1");
-        	dataRecord.setFuncFlg2("1");
-        	dataRecord.setFuncFlg3("1");
-        	dataRecord.setFuncFlg4("1");
-        	dataRecord.setFuncFlg5("1");
-        	dataRecord.setFuncFlg6("1");
-        	dataRecord.setFuncFlg7("1");
-
         	hcoSearchDataList.add(dataRecord);
         }
 
@@ -792,8 +793,8 @@ public class NF001Service extends BaseService {
 
         //1-2-8			JIS市区町村
 		//ブランク　※都道府県が選択された場合、リストを取得する
-        SRdmJkrSosAddrEntity inEntityCityCmb = new SRdmJkrSosAddrEntity();
-        List<SRdmJkrSosAddrEntity> outMainCityList = dao.selectByValue(inEntityCityCmb);
+        SRdmJkrSosAddrEntity inEntityCityCmb = new SRdmJkrSosAddrEntity("selectAddrCityComboList");
+        List<SRdmJkrSosAddrEntity> outMainCityList = dao.select(inEntityCityCmb);
         LinkedHashMap<String, String> mapAddrCity = new LinkedHashMap<String, String>();
         mapAddrCity.put("", "--なし--");
         for (SRdmJkrSosAddrEntity outEntity : outMainCityList) {

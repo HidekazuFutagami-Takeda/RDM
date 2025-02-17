@@ -10,6 +10,8 @@ import javax.inject.Named;
 
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.LoginInfo;
 
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
@@ -108,6 +110,7 @@ public class NC203Action extends BaseAction<NC203DTO> {
             //住所検索
             outdto = nC203Service.searchCityName(dto);
         }
+
         return initNext(outdto);
     }
 
@@ -117,6 +120,9 @@ public class NC203Action extends BaseAction<NC203DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
+    	// 画面タイトル制御処理
+        String title = "NC203_施設検索ポップアップ";
+        dto.setTitle(title);
 
         // END UOC
     }

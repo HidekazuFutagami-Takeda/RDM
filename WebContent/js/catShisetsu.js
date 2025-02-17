@@ -44,7 +44,7 @@ function cseView(w, callBack, winVarName, clearProc){
   w = window.open (
     "",
     comCreateWindowName(CSE_APPLICATION_ID),
-    "width=500,height=570,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no"
+    "width=1100,height=570,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no"
   );
 
   cseParentClearProc	= clearProc;
@@ -53,67 +53,67 @@ function cseView(w, callBack, winVarName, clearProc){
   jokenName = new Array();	//パラメタの名前を1次元配列で指定
   joken = new Array();		//パラメタの値を2次元配列で指定
 
-  jokenName[ix1] = "selectFlgPop";
-  joken[ix1++] = new Array(document.fm1.selectFlgPop.value);
-  jokenName[ix1] = "initSosCdPop";
-  joken[ix1++] = new Array(document.fm1.initSosCdPop.value);
-  jokenName[ix1] = "sosKbnPop";
-  joken[ix1++] = new Array(document.fm1.sosKbnPop.value);
-  jokenName[ix1] = "sknnFlgPop";
-  joken[ix1++] = new Array(document.fm1.sknnFlgPop.value);
-  jokenName[ix1] = "insFlgPop";
-  joken[ix1++] = new Array(document.fm1.insFlgPop.value);
-  jokenName[ix1] = "topMenuFlgPop";
-  joken[ix1++] = new Array(document.fm1.topMenuFlgPop.value);
-  jokenName[ix1] = "authorityPop";
-  joken[ix1++] = new Array(document.fm1.authorityPop.value);
-  jokenName[ix1] = "bumonRankTopPop";
-  joken[ix1++] = new Array(document.fm1.bumonRankTopPop.value);
-  jokenName[ix1] = "bumonRankBtmPop";
-  joken[ix1++] = new Array(document.fm1.bumonRankBtmPop.value);
-  jokenName[ix1] = "topSosCdPop";
-  joken[ix1++] = new Array(document.fm1.topSosCdPop.value);
-  jokenName[ix1] = "defTblFlgPop";
-  joken[ix1++] = new Array(document.fm1.defTblFlgPop.value);
-  jokenName[ix1] = "actSosListPop";
-  joken[ix1++] = new Array(document.fm1.actSosListPop.value);
-  jokenName[ix1] = "shokushuFlgPop";
-  joken[ix1++] = new Array(document.fm1.shokushuFlgPop.value);
-  jokenName[ix1] = "ztTntFlgPop";
-  joken[ix1++] = new Array(document.fm1.ztTntFlgPop.value);
-  jokenName[ix1] = "jokenSetCdPop";
-  joken[ix1++] = new Array(document.fm1.jokenSetCdPop.value);
-  jokenName[ix1] = "menuTrtGrpCdPop";
-  joken[ix1++] = new Array(document.fm1.menuTrtGrpCdPop.value);
-  jokenName[ix1] = "menuSosCdPop";
-  joken[ix1++] = new Array(document.fm1.menuSosCdPop.value);
-  jokenName[ix1] = "selectableBumonrankPop";
-  joken[ix1++] = new Array(document.fm1.selectableBumonrankPop.value);
-  jokenName[ix1] = "insNoPop";
-  joken[ix1++] = new Array(document.fm1.insNoPop.value);
-  jokenName[ix1] = "trtCdPop";
-  joken[ix1++] = new Array(document.fm1.trtCdPop.value);
-  jokenName[ix1] = "sosCdFromPop";
-  joken[ix1++] = new Array(document.fm1.sosCdFromPop.value);
-  //TOP MENU情報引き継げ
-  jokenName[ix1] = "sosCd";
-  joken[ix1++] = new Array(document.fm1.sosCd.value);
-  jokenName[ix1] = "sosName";
-  joken[ix1++] = new Array(document.fm1.sosName.value);
-  jokenName[ix1] = "selectedSosCd";
-  joken[ix1++] = new Array(document.fm1.selectedSosCd.value);
-  jokenName[ix1] = "selectedSosNm";
-  joken[ix1++] = new Array(document.fm1.selectedSosNm.value);
-  jokenName[ix1] = "krJgiNoDispFlgPop";
-  joken[ix1++] = new Array(document.fm1.krJgiNoDispFlgPop.value);
-//20150202 HISOL Suzuki 本番課題No.25対応 ADD START
-  jokenName[ix1] = "sosCdToPop";
-  joken[ix1++] = new Array(document.fm1.sosCdToPop.value);
-  jokenName[ix1] = "trtTntFlgPop";
-  joken[ix1++] = new Array(document.fm1.trtTntFlgPop.value);
-//20150202 HISOL Suzuki 本番課題No.25対応 ADD END
-
-  alert("aaaaaaaaaaaaaaa");
+//  jokenName[ix1] = "selectFlgPop";
+//  joken[ix1++] = new Array(document.fm1.selectFlgPop.value);
+//  jokenName[ix1] = "initSosCdPop";
+//  joken[ix1++] = new Array(document.fm1.initSosCdPop.value);
+//  jokenName[ix1] = "sosKbnPop";
+//  joken[ix1++] = new Array(document.fm1.sosKbnPop.value);
+//  jokenName[ix1] = "sknnFlgPop";
+//  joken[ix1++] = new Array(document.fm1.sknnFlgPop.value);
+//  jokenName[ix1] = "insFlgPop";
+//  joken[ix1++] = new Array(document.fm1.insFlgPop.value);
+//  jokenName[ix1] = "topMenuFlgPop";
+//  joken[ix1++] = new Array(document.fm1.topMenuFlgPop.value);
+//  jokenName[ix1] = "authorityPop";
+//  joken[ix1++] = new Array(document.fm1.authorityPop.value);
+//  jokenName[ix1] = "bumonRankTopPop";
+//  joken[ix1++] = new Array(document.fm1.bumonRankTopPop.value);
+//  jokenName[ix1] = "bumonRankBtmPop";
+//  joken[ix1++] = new Array(document.fm1.bumonRankBtmPop.value);
+//  jokenName[ix1] = "topSosCdPop";
+//  joken[ix1++] = new Array(document.fm1.topSosCdPop.value);
+//  jokenName[ix1] = "defTblFlgPop";
+//  joken[ix1++] = new Array(document.fm1.defTblFlgPop.value);
+//  jokenName[ix1] = "actSosListPop";
+//  joken[ix1++] = new Array(document.fm1.actSosListPop.value);
+//  jokenName[ix1] = "shokushuFlgPop";
+//  joken[ix1++] = new Array(document.fm1.shokushuFlgPop.value);
+//  jokenName[ix1] = "ztTntFlgPop";
+//  joken[ix1++] = new Array(document.fm1.ztTntFlgPop.value);
+//  jokenName[ix1] = "jokenSetCdPop";
+//  joken[ix1++] = new Array(document.fm1.jokenSetCdPop.value);
+//  jokenName[ix1] = "menuTrtGrpCdPop";
+//  joken[ix1++] = new Array(document.fm1.menuTrtGrpCdPop.value);
+//  jokenName[ix1] = "menuSosCdPop";
+//  joken[ix1++] = new Array(document.fm1.menuSosCdPop.value);
+//  jokenName[ix1] = "selectableBumonrankPop";
+//  joken[ix1++] = new Array(document.fm1.selectableBumonrankPop.value);
+//  jokenName[ix1] = "insNoPop";
+//  joken[ix1++] = new Array(document.fm1.insNoPop.value);
+//  jokenName[ix1] = "trtCdPop";
+//  joken[ix1++] = new Array(document.fm1.trtCdPop.value);
+//  jokenName[ix1] = "sosCdFromPop";
+//  joken[ix1++] = new Array(document.fm1.sosCdFromPop.value);
+//  //TOP MENU情報引き継げ
+//  jokenName[ix1] = "sosCd";
+//  joken[ix1++] = new Array(document.fm1.sosCd.value);
+//  jokenName[ix1] = "sosName";
+//  joken[ix1++] = new Array(document.fm1.sosName.value);
+//  jokenName[ix1] = "selectedSosCd";
+//  joken[ix1++] = new Array(document.fm1.selectedSosCd.value);
+//  jokenName[ix1] = "selectedSosNm";
+//  joken[ix1++] = new Array(document.fm1.selectedSosNm.value);
+//  jokenName[ix1] = "krJgiNoDispFlgPop";
+//  joken[ix1++] = new Array(document.fm1.krJgiNoDispFlgPop.value);
+////20150202 HISOL Suzuki 本番課題No.25対応 ADD START
+//  jokenName[ix1] = "sosCdToPop";
+//  joken[ix1++] = new Array(document.fm1.sosCdToPop.value);
+//  jokenName[ix1] = "trtTntFlgPop";
+//  joken[ix1++] = new Array(document.fm1.trtTntFlgPop.value);
+////20150202 HISOL Suzuki 本番課題No.25対応 ADD END
+//
+//  alert("aaaaaaaaaaaaaaa");
   /*条件有り呼び出しパターン*/
   comPostPopup(w,"NC203Init.action",CSE_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 

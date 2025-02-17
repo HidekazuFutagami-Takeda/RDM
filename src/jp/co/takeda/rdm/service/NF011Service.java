@@ -127,24 +127,22 @@ public class NF011Service extends BaseService {
 				indto.setBedsTot(Integer.toString(bedsTot));
 				indto.setMedBedsTot(Integer.toString(bedsTot));
 
-				// TODO ログイン関連できてから確認
-//        		indto.setReqShzNm(loginInfo.getShzNm());
+        		indto.setReqShzNm(indto.getLoginShzNm());
 				indto.setReqJgiName(loginInfo.getJgiName());
 				indto.setReqJgiNo(loginInfo.getJgiNo());
-//        		indto.setReqBrCd(loginInfo.getBrCd());
-//        		indto.setReqDistCd(loginInfo.getDistCd());
+        		indto.setReqBrCd(loginInfo.getBrCode());
+        		indto.setReqDistCd(loginInfo.getDistCode());
 
 				indto.setReqId("");
 				indto.setReqYmdhms("");
 				indto.setReqStsNm("");
 			} else {
 				// 完全新規 ログイン情報から申請者セット
-				// TODO ログイン関連できてから確認
-//        		indto.setReqShzNm(loginInfo.getShzNm());
+				indto.setReqShzNm(indto.getLoginShzNm());
 				indto.setReqJgiName(loginInfo.getJgiName());
 				indto.setReqJgiNo(loginInfo.getJgiNo());
-//        		indto.setReqBrCd(loginInfo.getBrCd());
-//        		indto.setReqDistCd(loginInfo.getDistCd());
+        		indto.setReqBrCd(loginInfo.getBrCode());
+        		indto.setReqDistCd(loginInfo.getDistCode());
 
 				indto.setReqId("");
 				indto.setUltInsCd("");
@@ -309,12 +307,11 @@ public class NF011Service extends BaseService {
 
 			} else {
 				// 完全新規
-				// TODO ログイン関連できてから確認
-//        		indto.setReqShzNm(loginInfo.getShzNm());
+				indto.setReqShzNm(indto.getLoginShzNm());
 				indto.setReqJgiName(loginInfo.getJgiName());
 				indto.setReqJgiNo(loginInfo.getJgiNo());
-//        		indto.setReqBrCd(loginInfo.getBrCd());
-//        		indto.setReqDistCd(loginInfo.getDistCd());
+        		indto.setReqBrCd(loginInfo.getBrCode());
+        		indto.setReqDistCd(loginInfo.getDistCode());
 
 				indto.setUltInsCd("");
 				indto.setUltInsNm("");
@@ -323,12 +320,11 @@ public class NF011Service extends BaseService {
 			}
 		} else if ("0".equals(indto.getDisplayKbn())) {
 			// 完全新規
-			// TODO ログイン関連できてから確認
-//    		indto.setReqShzNm(loginInfo.getShzNm());
+			indto.setReqShzNm(indto.getLoginShzNm());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
-//    		indto.setReqBrCd(loginInfo.getBrCd());
-//    		indto.setReqDistCd(loginInfo.getDistCd());
+    		indto.setReqBrCd(loginInfo.getBrCode());
+    		indto.setReqDistCd(loginInfo.getDistCode());
 
 			indto.setReqId("");
 			indto.setUltInsCd("");

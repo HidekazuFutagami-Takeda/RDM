@@ -73,6 +73,17 @@
 		ORDER BY
 			ADDR_CODE_PREF ,ADDR_CODE_CITY
 	</select>
+	<select id="selectAddrCityComboList" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
+		SELECT DISTINCT
+			ADDR_CODE_PREF,
+			ADDR_NAME_PREF,
+			TK_CITY_CD,
+			TK_CITY_NAME
+		FROM
+			S_RDM_JKR_SOS_ADDR
+		ORDER BY
+			ADDR_CODE_PREF ,TK_CITY_CD
+	</select>
 	<select id="selectAddrPrefComboList" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
 		SELECT DISTINCT
 			ADDR_CODE_PREF,

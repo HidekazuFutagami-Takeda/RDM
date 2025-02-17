@@ -129,6 +129,8 @@
 			document.fm1.mrCat.value = "";
 			document.fm1.brCode.value = "";
 			document.fm1.distCode.value = "";
+			document.fm1.bumonRank.value = "";
+			document.fm1.upSosCd.value = "";
 		}
 
 	 	// 担当者Clearボタン
@@ -155,6 +157,8 @@
 			document.fm1.mrCat.value = "";
 			document.fm1.brCode.value = "";
 			document.fm1.distCode.value = "";
+			document.fm1.bumonRank.value = "";
+			document.fm1.upSosCd.value = "";
 
 			document.fm1.delKbn.value = "";
 			document.fm1.insKanjSrch.value = "";
@@ -176,9 +180,10 @@
 
 	 	// 画面遷移処理
 	    function gotoNext(screenId,functionId){
-	  	  fm1.screenId.value=screenId;
-	  	  fm1.functionId.value=functionId;
-	  	  comSubmitForAnyWarp(fm1);
+	   		document.fm1.target="";
+	  	 	fm1.screenId.value=screenId;
+	  	  	fm1.functionId.value=functionId;
+	  	  	comSubmitForAnyWarp(fm1);
 	  	}
 
 	 	// アクションボタン
@@ -190,6 +195,7 @@
 	 			fm1.insNo.value = insNo;
 	 		}
 
+	 		document.fm1.target="";
 	  		fm1.screenId.value=screenId;
 		  	fm1.functionId.value="Init";
 		  	comSubmitForAnyWarp(fm1);
@@ -199,6 +205,7 @@
 	    function sortBtn(sortCondition) {
 			//ソート区分設定
 	    	document.fm1.sortCondition.value = sortCondition;
+	    	document.fm1.target="";
 	        document.fm1.screenId.value	= "NF001";
 	        document.fm1.functionId.value = "Search";
 
@@ -209,6 +216,7 @@
 	    function pageBtn( pageCntCur ){
 			//現在ページ番号変更（遷移）
 			document.fm1.pageCntCur.value = pageCntCur;
+			document.fm1.target="";
 			document.fm1.screenId.value	= "NF001";
 			document.fm1.functionId.value = "Search";
 			// 検索イベント呼び出し
@@ -246,6 +254,15 @@
 String sortCondition = StringUtils.nvl((String)request.getAttribute("sortCondition"), "");
 %>
 </head>
+
+  <%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
@@ -295,6 +312,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <input type="hidden" name="openerName" value="" />
 
 	<s:hidden name="loginJokenSetCd"/>
+	<s:hidden name="loginShzNm"/>
     <s:hidden id="preScreenId" name="preScreenId"/>
 	<s:hidden id="pageCntCur" name="pageCntCur"/>
 	<s:hidden id="sortCondition" name="sortCondition" />
@@ -375,7 +393,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<%-- 担当者 --%>
 		<td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
 		   <nobr>
-		   <input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
+		   <s:if test="bumonRank == '2'">
+		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
+		   </s:if>
+		   <s:else>
+		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
+		   </s:else>
 		   </nobr>
 		</td>
 		<td>
@@ -569,8 +592,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   </table>
                   </s:if>
           <%-- ページャー表示 終了 --%>
-</table>
-    <div style="max-height:390px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+
+    <div style="max-height:270px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 <table>
    <s:if test='pageFlag == "1" '>
           <!-- なにも表示しない -->
@@ -724,11 +747,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
     </td>
     </tr>
-    </table>
             <tr>
         	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
+                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="gotoNext('NC001','Init')" />
                 </nobr>
 	      </td>
 
@@ -747,6 +769,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
 <%-- メイン部 一覧 終了 --%>
 <%-- ポータル大枠 終了 --%>
+	<jsp:include page="common/jkrBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />
 </body>

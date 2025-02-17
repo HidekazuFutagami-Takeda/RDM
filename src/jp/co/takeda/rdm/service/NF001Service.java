@@ -659,15 +659,6 @@ public class NF001Service extends BaseService {
         	}
 
         	hcoSearchDataList.add(dataRecord);
-
-        	// TODO
-        	dataRecord.setFuncFlg1("1");
-        	dataRecord.setFuncFlg2("1");
-        	dataRecord.setFuncFlg3("1");
-        	dataRecord.setFuncFlg4("1");
-        	dataRecord.setFuncFlg5("1");
-        	dataRecord.setFuncFlg6("1");
-        	dataRecord.setFuncFlg7("1");
         }
 
         indto.setHcoSearchDataList(hcoSearchDataList);

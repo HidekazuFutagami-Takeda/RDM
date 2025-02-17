@@ -182,6 +182,12 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	private String addrCodeCity;
 
 	/**
+	 * JIS市区町村
+	 * @generated
+	 */
+	private String tmpAddrCodeCity;
+
+	/**
 	 * 住所(全角)
 	 * @generated
 	 */
@@ -294,6 +300,12 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String msgStr;
+
+	/**
+	 * 検索フラグ
+	 * @generated
+	 */
+	private String srchFlg;
 
 	/**
      * デフォルトのコンストラクタ。
@@ -694,6 +706,21 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF001DTO.javatmpAddrCodeCityを設定
+	 * @return tmpAddrCodeCity
+	 */
+	public String getTmpAddrCodeCity() {
+		return tmpAddrCodeCity;
+	}
+
+	/**
+	 * @param tmpAddrCodeCity セットする tmpAddrCodeCity
+	 */
+	public void setTmpAddrCodeCity(String tmpAddrCodeCity) {
+		this.tmpAddrCodeCity = tmpAddrCodeCity;
+	}
+
+	/**
 	 * NF001DTO.javainsAddrSrchを設定
 	 * @return insAddrSrch
 	 */
@@ -976,6 +1003,21 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setMsgStr(String msgStr) {
 		this.msgStr = msgStr;
+	}
+
+	/**
+	 * NF001DTO.javasrchFlgを設定
+	 * @return srchFlg
+	 */
+	public String getSrchFlg() {
+		return srchFlg;
+	}
+
+	/**
+	 * @param srchFlg セットする srchFlg
+	 */
+	public void setSrchFlg(String srchFlg) {
+		this.srchFlg = srchFlg;
 	}
 
 	/**

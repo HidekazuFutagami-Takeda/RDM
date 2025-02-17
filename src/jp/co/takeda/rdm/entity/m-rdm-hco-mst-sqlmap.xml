@@ -91,7 +91,7 @@
     <resultMap id="kanjiHenkanResultMap" type="jp.co.takeda.rdm.entity.join.SelectInsListEntity">
         <result column="SEARCH_INPUT" property="searchInput"/>
     </resultMap>
-   	<resultMap id="nF001MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF001MainDataEntity">
+    <resultMap id="nF001MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF001MainDataEntity">
         <result column="INS_ABBR_NAME" property="insAbbrName"/>
         <result column="INS_FORMAL_NAME" property="insFormalName"/>
         <result column="INS_NO" property="insNo"/>
@@ -612,6 +612,103 @@
 			  dual
 	</select>
 	<select id="selectNF001DataList" parameterType="jp.co.takeda.rdm.entity.join.SelectNF001MainDataEntity" resultMap="nF001MainDataResultMap">
+		WITH MST AS(
+			SELECT
+			TKD.INS_ABBR_NAME
+			, TKD.INS_FORMAL_NAME
+			, TKD.INS_NO
+			, TKD.INS_ADDR
+			, TKD.INS_PHONE1
+			, TKD.BEDS_TOT
+			, TKD.DEL_FLG
+			, ULT.SHISETSU_NM_RYAKU
+			, ULT.SHISETSU_NM
+			, ULT.DCF_SHISETSU_CD
+			, ULT.ADDRESS
+			, ULT.SHISETSU_TEL
+			, ULT.BYOSHO_SU
+			, TKD.INS_CLASS
+			, TKD.DEL_KBN
+			, TKD.MANAGE_CD
+			, ULT.SHISETSU_KBN
+			, ULT.KEIEITAI_CD
+			, TKD.INS_SBT
+			, ULT.TODOFUKEN_CD
+			, ULT.SHIKUCHOSON_CD
+			, TKD.INS_KANJ_SRCH
+			, ULT.SHISETSU_NM_SRCH
+			, TKD.INS_KANA_SRCH
+			, ULT.SHISETSU_NM_KANA_SRCH
+			, TKD.HO_INS_TYPE
+			, TKD.PHARM_TYPE
+			, TKD.INS_PHONE_SRCH
+			, ULT.SHISETSU_TEL_SRCH
+			, TKD.INS_PCODE
+			, ULT.YUBIN_NO
+			, TKD.ADDR_CODE_PREF
+			, TKD.ADDR_CODE_CITY
+			, TKD.INS_ADDR_SRCH
+			, ULT.ADDRESS_SRCH
+			, TKD.ULT_INS_NO
+			FROM
+			M_RDM_HCO_MST TKD -- 施設_基本情報 武田施設すべて
+			LEFT JOIN
+			T_RDM_M_MDB_HCO_MST ULT -- ULT_MDB施設マスタ 武田施設＋ULT施設
+			ON 1=1
+			AND ULT.DCF_SHISETSU_CD = TKD.ULT_INS_NO
+
+			UNION ALL
+
+			SELECT
+			null AS INS_ABBR_NAME
+			, null AS INS_FORMAL_NAME
+			, null AS INS_NO
+			, null AS INS_ADDR
+			, null AS INS_PHONE1
+			, null AS BEDS_TOT
+			, null AS DEL_FLG
+			, SHISETSU_NM_RYAKU
+			, SHISETSU_NM
+			, DCF_SHISETSU_CD
+			, ADDRESS
+			, SHISETSU_TEL
+			, BYOSHO_SU
+			, null AS INS_CLASS
+			, null AS DEL_KBN
+			, null AS MANAGE_CD
+			, SHISETSU_KBN
+			, KEIEITAI_CD
+			, null AS INS_SBT
+			, TODOFUKEN_CD
+			, SHIKUCHOSON_CD
+			, null AS INS_KANJ_SRCH
+			, SHISETSU_NM_SRCH
+			, null AS INS_KANA_SRCH
+			, SHISETSU_NM_KANA_SRCH
+			, NULL AS HO_INS_TYPE
+			, NULL AS PHARM_TYPE
+			, null AS INS_PHONE_SRCH
+			, SHISETSU_TEL_SRCH
+			, null AS INS_PCODE
+			, YUBIN_NO
+			, null AS ADDR_CODE_PREF
+			, null AS ADDR_CODE_CITY
+			, null AS INS_ADDR_SRCH
+			, ADDRESS_SRCH
+			, null AS ULT_INS_NO
+			FROM
+			T_RDM_M_MDB_HCO_MST HMDB -- ULT_MDB施設マスタ
+			WHERE 1=1
+			AND NOT EXISTS
+	    	(SELECT
+	         *
+		     FROM
+		     M_RDM_HCO_MST HMST --施設_基本情報
+	    	 WHERE
+	         HMDB.DCF_SHISETSU_CD = HMST.ULT_INS_NO
+		    )
+		)
+
 		SELECT DISTINCT
 		  MST.INS_ABBR_NAME
 		, MST.INS_FORMAL_NAME
@@ -631,14 +728,14 @@
 		, CDM_DELFLG.VALUE1_KANJ AS DEL_FLG_NM
 		, JGI_B.BUMON_RYAKU_NAME
 		, JGI_B.JGI_NAME
-		, MDB.SHISETSU_NM_RYAKU
-		, MDB.SHISETSU_NM
-		, MDB.DCF_SHISETSU_CD
-		, MDB.ADDRESS
-		, MDB.SHISETSU_TEL
+		, MST.SHISETSU_NM_RYAKU
+		, MST.SHISETSU_NM
+		, MST.DCF_SHISETSU_CD
+		, MST.ADDRESS
+		, MST.SHISETSU_TEL
 		, CDM_ULTPHARM.VALUE1_KANJ AS ULT_PHARM_TYPE
 		, KEIEI_ULT.KEIEITAI_KJ AS ULT_KEIEITAI_KJ
-		, MDB.BYOSHO_SU
+		, MST.BYOSHO_SU
 		, MST.INS_CLASS
 		, JKR_ADDR.SOS_CD
 		, JGI_B.JGI_NO
@@ -656,21 +753,8 @@
 		ON 1=1
 		AND PRM_NT.PARAM_NAME = 'MN_NT_OYA'
 		LEFT JOIN
-		M_RDM_HCO_MST MST -- 施設_基本情報
+		MST -- 施設_基本情報, ULT_MDB施設マスタ
 		ON 1=1
-		LEFT JOIN
-		T_RDM_M_MDB_HCO_MST MDB -- ULT_MDB施設マスタ
-		ON 1=1
-		AND MDB.DCF_SHISETSU_CD = MST.ULT_INS_NO
---		LEFT JOIN
---		(SELECT
---			*
---			FROM
---			T_RDM_M_MDB_HCO_MST
---			WHERE 1=1
---			AND DCF_SHISETSU_CD NOT EXISTS (SELECT ULT_INS_NO FROM M_RDM_HCO_MST)
---		) MDB_ULT -- ULT_MDB施設マスタ
---		ON 1=1
 		LEFT JOIN
 		M_RDM_JKR_MR_INS_TRT JKR_A -- RDM用施設担当者情報 A
 		ON 1=1
@@ -713,11 +797,11 @@
 		ON 1=1
 		AND CDM_ULTPHARM.CODE_NAME = 'ULT_PHARM_TYPE'
 		AND CDM_ULTPHARM.DEL_FLG = '0'
-		AND CDM_ULTPHARM.VALUE1 = MDB.SHISETSU_KBN
+		AND CDM_ULTPHARM.VALUE1 = MST.SHISETSU_KBN
 		LEFT JOIN
 		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI_LNK -- 経営体紐付けマスタ
 		ON 1=1
-		AND KEIEI_LNK.KEIEITAI_CD = MDB.KEIEITAI_CD
+		AND KEIEI_LNK.KEIEITAI_CD = MST.KEIEITAI_CD
 		LEFT JOIN
 		M_RDM_HCO_KEIEITAI KEIEI_ULT -- 施設_経営主体マスタ ULT
 		ON 1=1
@@ -732,8 +816,8 @@
 		LEFT JOIN
 		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
 		ON 1=1
-		AND ADDR.ADDR_CODE_PREF = MDB.TODOFUKEN_CD
-		AND ADDR.ADDR_CODE_CITY = MDB.SHIKUCHOSON_CD
+		AND ADDR.ADDR_CODE_PREF = MST.TODOFUKEN_CD
+		AND ADDR.ADDR_CODE_CITY = MST.SHIKUCHOSON_CD
 		LEFT JOIN
 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
 		ON 1=1
@@ -750,31 +834,31 @@
 		<if test="delKbn != null">AND MST.DEL_KBN = #{delKbn}</if>
 		<if test="insKanjSrch != null">
 			AND (MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjSrch}|| '%'
-			OR	MDB.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjSrch}|| '%')
+			OR	MST.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjSrch}|| '%')
 		</if>
 		<if test="insKanaSrch != null">
 			AND (MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%'
-			OR	MDB.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
+			OR	MST.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
 		</if>
 		<if test="delFlg != null">AND MST.DEL_FLG = #{delFlg}</if>
 		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
 		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
 		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
-		<if test="insType != null">AND MST.INS_TYPE = #{insType}</if>
+		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
 		<if test="insPhoneSrch != null">
 			AND (MST.INS_PHONE_SRCH LIKE '%' ||#{insPhoneSrch}|| '%'
-			OR	MDB.SHISETSU_TEL_SRCH LIKE '%' ||#{insPhoneSrch}|| '%')
+			OR	MST.SHISETSU_TEL_SRCH LIKE '%' ||#{insPhoneSrch}|| '%')
 		</if>
 		<if test="insPcode != null">
 			AND (MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%'
-			OR	MDB.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
+			OR	MST.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
 		</if>
 		<if test="addrCodePref != null">AND MST.ADDR_CODE_PREF = #{addrCodePref}</if>
 		<if test="addrCodeCity != null">AND MST.ADDR_CODE_CITY = #{addrCodeCity}</if>
 		<if test="insAddrSrch != null">
 			AND (MST.INS_ADDR_SRCH LIKE '%' ||#{insAddrSrch}|| '%'
-			OR	MDB.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
+			OR	MST.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
 		</if>
 		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
 		<if test="sosCd != null">
@@ -792,16 +876,113 @@
         <if test="inSortId == 3">ORDER BY MST.INS_ABBR_NAME DESC NULLS LAST</if>
         <if test="inSortId == 4">ORDER BY MST.INS_ADDR ASC NULLS FIRST</if>
         <if test="inSortId == 5">ORDER BY MST.INS_ADDR DESC NULLS LAST</if>
-        <if test="inSortId == 6">ORDER BY MDB.SHISETSU_NM_RYAKU ASC NULLS FIRST</if>
-        <if test="inSortId == 7">ORDER BY MDB.SHISETSU_NM_RYAKU DESC NULLS LAST</if>
-        <if test="inSortId == 8">ORDER BY MDB.ADDRESS ASC NULLS FIRST</if>
-        <if test="inSortId == 9">ORDER BY MDB.ADDRESS DESC NULLS LAST</if>
+        <if test="inSortId == 6">ORDER BY MST.SHISETSU_NM_RYAKU ASC NULLS FIRST</if>
+        <if test="inSortId == 7">ORDER BY MST.SHISETSU_NM_RYAKU DESC NULLS LAST</if>
+        <if test="inSortId == 8">ORDER BY MST.ADDRESS ASC NULLS FIRST</if>
+        <if test="inSortId == 9">ORDER BY MST.ADDRESS DESC NULLS LAST</if>
 		OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
 	</select>
 	<select id="selectNF001DataListCnt" parameterType="jp.co.takeda.rdm.entity.join.SelectNF001MainDataEntity" resultMap="nF001MainDataResultMap">
 		SELECT
 			COUNT(*) CNT
 		FROM(
+		WITH MST AS(
+			SELECT
+			TKD.INS_ABBR_NAME
+			, TKD.INS_FORMAL_NAME
+			, TKD.INS_NO
+			, TKD.INS_ADDR
+			, TKD.INS_PHONE1
+			, TKD.BEDS_TOT
+			, TKD.DEL_FLG
+			, ULT.SHISETSU_NM_RYAKU
+			, ULT.SHISETSU_NM
+			, ULT.DCF_SHISETSU_CD
+			, ULT.ADDRESS
+			, ULT.SHISETSU_TEL
+			, ULT.BYOSHO_SU
+			, TKD.INS_CLASS
+			, TKD.DEL_KBN
+			, TKD.MANAGE_CD
+			, ULT.SHISETSU_KBN
+			, ULT.KEIEITAI_CD
+			, TKD.INS_SBT
+			, ULT.TODOFUKEN_CD
+			, ULT.SHIKUCHOSON_CD
+			, TKD.INS_KANJ_SRCH
+			, ULT.SHISETSU_NM_SRCH
+			, TKD.INS_KANA_SRCH
+			, ULT.SHISETSU_NM_KANA_SRCH
+			, TKD.HO_INS_TYPE
+			, TKD.PHARM_TYPE
+			, TKD.INS_PHONE_SRCH
+			, ULT.SHISETSU_TEL_SRCH
+			, TKD.INS_PCODE
+			, ULT.YUBIN_NO
+			, TKD.ADDR_CODE_PREF
+			, TKD.ADDR_CODE_CITY
+			, TKD.INS_ADDR_SRCH
+			, ULT.ADDRESS_SRCH
+			, TKD.ULT_INS_NO
+			FROM
+			M_RDM_HCO_MST TKD -- 施設_基本情報 武田施設すべて
+			LEFT JOIN
+			T_RDM_M_MDB_HCO_MST ULT -- ULT_MDB施設マスタ 武田施設＋ULT施設
+			ON 1=1
+			AND ULT.DCF_SHISETSU_CD = TKD.ULT_INS_NO
+
+			UNION ALL
+
+			SELECT
+			null AS INS_ABBR_NAME
+			, null AS INS_FORMAL_NAME
+			, null AS INS_NO
+			, null AS INS_ADDR
+			, null AS INS_PHONE1
+			, null AS BEDS_TOT
+			, null AS DEL_FLG
+			, SHISETSU_NM_RYAKU
+			, SHISETSU_NM
+			, DCF_SHISETSU_CD
+			, ADDRESS
+			, SHISETSU_TEL
+			, BYOSHO_SU
+			, null AS INS_CLASS
+			, null AS DEL_KBN
+			, null AS MANAGE_CD
+			, SHISETSU_KBN
+			, KEIEITAI_CD
+			, null AS INS_SBT
+			, TODOFUKEN_CD
+			, SHIKUCHOSON_CD
+			, null AS INS_KANJ_SRCH
+			, SHISETSU_NM_SRCH
+			, null AS INS_KANA_SRCH
+			, SHISETSU_NM_KANA_SRCH
+			, NULL AS HO_INS_TYPE
+			, NULL AS PHARM_TYPE
+			, null AS INS_PHONE_SRCH
+			, SHISETSU_TEL_SRCH
+			, null AS INS_PCODE
+			, YUBIN_NO
+			, null AS ADDR_CODE_PREF
+			, null AS ADDR_CODE_CITY
+			, null AS INS_ADDR_SRCH
+			, ADDRESS_SRCH
+			, null AS ULT_INS_NO
+			FROM
+			T_RDM_M_MDB_HCO_MST HMDB -- ULT_MDB施設マスタ
+			WHERE 1=1
+			AND NOT EXISTS
+	    	(SELECT
+	         *
+		     FROM
+		     M_RDM_HCO_MST HMST --施設_基本情報
+	    	 WHERE
+	         HMDB.DCF_SHISETSU_CD = HMST.ULT_INS_NO
+		    )
+		)
+
 		SELECT DISTINCT
 		  MST.INS_ABBR_NAME
 		, MST.INS_FORMAL_NAME
@@ -821,14 +1002,14 @@
 		, CDM_DELFLG.VALUE1_KANJ AS DEL_FLG_NM
 		, JGI_B.BUMON_RYAKU_NAME
 		, JGI_B.JGI_NAME
-		, MDB.SHISETSU_NM_RYAKU
-		, MDB.SHISETSU_NM
-		, MDB.DCF_SHISETSU_CD
-		, MDB.ADDRESS
-		, MDB.SHISETSU_TEL
+		, MST.SHISETSU_NM_RYAKU
+		, MST.SHISETSU_NM
+		, MST.DCF_SHISETSU_CD
+		, MST.ADDRESS
+		, MST.SHISETSU_TEL
 		, CDM_ULTPHARM.VALUE1_KANJ AS ULT_PHARM_TYPE
 		, KEIEI_ULT.KEIEITAI_KJ AS ULT_KEIEITAI_KJ
-		, MDB.BYOSHO_SU
+		, MST.BYOSHO_SU
 		, MST.INS_CLASS
 		, JKR_ADDR.SOS_CD
 		, JGI_B.JGI_NO
@@ -846,21 +1027,8 @@
 		ON 1=1
 		AND PRM_NT.PARAM_NAME = 'MN_NT_OYA'
 		LEFT JOIN
-		M_RDM_HCO_MST MST -- 施設_基本情報
+		MST -- 施設_基本情報, ULT_MDB施設マスタ
 		ON 1=1
-		LEFT JOIN
-		T_RDM_M_MDB_HCO_MST MDB -- ULT_MDB施設マスタ
-		ON 1=1
-		AND MDB.DCF_SHISETSU_CD = MST.ULT_INS_NO
---		LEFT JOIN
---		(SELECT
---			*
---			FROM
---			T_RDM_M_MDB_HCO_MST
---			WHERE 1=1
---			AND DCF_SHISETSU_CD NOT EXISTS (SELECT ULT_INS_NO FROM M_RDM_HCO_MST)
---		) MDB_ULT -- ULT_MDB施設マスタ
---		ON 1=1
 		LEFT JOIN
 		M_RDM_JKR_MR_INS_TRT JKR_A -- RDM用施設担当者情報 A
 		ON 1=1
@@ -903,11 +1071,11 @@
 		ON 1=1
 		AND CDM_ULTPHARM.CODE_NAME = 'ULT_PHARM_TYPE'
 		AND CDM_ULTPHARM.DEL_FLG = '0'
-		AND CDM_ULTPHARM.VALUE1 = MDB.SHISETSU_KBN
+		AND CDM_ULTPHARM.VALUE1 = MST.SHISETSU_KBN
 		LEFT JOIN
 		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI_LNK -- 経営体紐付けマスタ
 		ON 1=1
-		AND KEIEI_LNK.KEIEITAI_CD = MDB.KEIEITAI_CD
+		AND KEIEI_LNK.KEIEITAI_CD = MST.KEIEITAI_CD
 		LEFT JOIN
 		M_RDM_HCO_KEIEITAI KEIEI_ULT -- 施設_経営主体マスタ ULT
 		ON 1=1
@@ -922,8 +1090,8 @@
 		LEFT JOIN
 		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
 		ON 1=1
-		AND ADDR.ADDR_CODE_PREF = MDB.TODOFUKEN_CD
-		AND ADDR.ADDR_CODE_CITY = MDB.SHIKUCHOSON_CD
+		AND ADDR.ADDR_CODE_PREF = MST.TODOFUKEN_CD
+		AND ADDR.ADDR_CODE_CITY = MST.SHIKUCHOSON_CD
 		LEFT JOIN
 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
 		ON 1=1
@@ -940,31 +1108,31 @@
 		<if test="delKbn != null">AND MST.DEL_KBN = #{delKbn}</if>
 		<if test="insKanjSrch != null">
 			AND (MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjSrch}|| '%'
-			OR	MDB.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjSrch}|| '%')
+			OR	MST.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjSrch}|| '%')
 		</if>
 		<if test="insKanaSrch != null">
 			AND (MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%'
-			OR	MDB.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
+			OR	MST.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
 		</if>
 		<if test="delFlg != null">AND MST.DEL_FLG = #{delFlg}</if>
 		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
 		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
 		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
-		<if test="insType != null">AND MST.INS_TYPE = #{insType}</if>
+		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
 		<if test="insPhoneSrch != null">
 			AND (MST.INS_PHONE_SRCH LIKE '%' ||#{insPhoneSrch}|| '%'
-			OR	MDB.SHISETSU_TEL_SRCH LIKE '%' ||#{insPhoneSrch}|| '%')
+			OR	MST.SHISETSU_TEL_SRCH LIKE '%' ||#{insPhoneSrch}|| '%')
 		</if>
 		<if test="insPcode != null">
 			AND (MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%'
-			OR	MDB.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
+			OR	MST.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
 		</if>
 		<if test="addrCodePref != null">AND MST.ADDR_CODE_PREF = #{addrCodePref}</if>
 		<if test="addrCodeCity != null">AND MST.ADDR_CODE_CITY = #{addrCodeCity}</if>
 		<if test="insAddrSrch != null">
 			AND (MST.INS_ADDR_SRCH LIKE '%' ||#{insAddrSrch}|| '%'
-			OR	MDB.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
+			OR	MST.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
 		</if>
 		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
 		<if test="sosCd != null">

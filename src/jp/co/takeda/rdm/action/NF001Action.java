@@ -80,15 +80,6 @@ public class NF001Action extends BaseAction<NF001DTO> {
         return null;
         // END UOC
     }
-//    public String before() throws Exception {
-//        // START UOC
-//    	dto.setMsgId(null);
-//dto.setMsgStr(null);
-//        return null;
-//        // END UOC
-//        // START UOC
-//    }
-
 
     /**
      * イベント毎のメソッド実行前に共通後処理。<br/>
@@ -134,36 +125,11 @@ public class NF001Action extends BaseAction<NF001DTO> {
     	// 画面タイトル制御処理
         String title = "NF001_施設検索";
 
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+
         dto.setTitle(title);
         // END UOC
-    }
-    /**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String sort() throws Exception {
-        pageSetup();
-        // F層呼び出し
-        BaseDTO outdto = NF001Service.sort(dto);
-//        if (outdto instanceof JKR040C010DTO) {
-//            // START UOC
-//
-//            // END UOC
-//        }
-        return sortNext(outdto);
-    }
-
-    /**
-     * 後処理
-     * @customizable
-     */
-    protected String sortNext(BaseDTO outdto) throws Exception {
-        // START UOC
-        sessionMap.put(AppConstant.SESKEY_NF001_SEARCHKEY, outdto);
-        // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
     }
 
     /**
@@ -189,36 +155,7 @@ public class NF001Action extends BaseAction<NF001DTO> {
     	searchSetup();
         // F層呼び出し
     	outdto = NF001Service.search(dto);
-/*
-    	//日付チェック
-    	if (Objects.equals(dto.getBoolKnb(), "1")) {
-    		errChk = true;
-			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W003);// 終了日は開始日以降を選択してください。
-    		if(errChk) {//エラーありなのでメッセージをセットする
-    			dto.setMsgStr(tmpMsgStr);
-    		}
-    		//入力された日付を保持
-    		dto.setInreqYmdhmsFrom(dto.getReqYmdhmsFrom());
-    		dto.setInreqYmdhmsTo(dto.getReqYmdhmsTo());
 
-    		//return searchNext(dto);
-    		//return outdto.getForward();
-    	}
-
-    	//検索結果にエラーがある場合
-    	if (Objects.equals(dto.getBoolKnb(), "2")){//エラーありなのでメッセージをセットする
-    		tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W002);// 検索結果が表示上限を超えています。検索条件を絞って再検索してください。。
-    		//エラーメッセージをdtoに格納
-    		dto.setMsgStr(tmpMsgStr);
-    		//return outdto.getForward();
-    	}
-
-*/
-        if (outdto instanceof NF001DTO) {
-            // START UOC
-
-            // END UOC
-        }
         return searchNext(outdto);
     }
 
@@ -243,63 +180,5 @@ public class NF001Action extends BaseAction<NF001DTO> {
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
-    }
-
-	/**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String page() throws Exception {
-        pageSetup();
-        // F層呼び出し
-        BaseDTO outdto = NF001Service.page(dto);
-        if (outdto instanceof NF001DTO) {            // START UOC
-//        	// チェック済み再設定
-//        	NC011DTO dto = (NC011DTO)outdto;
-//        	String[] cdcCheckedCodes = dto.getCdcCheckedCodes();
-//        	for (String data : cdcCheckedCodes) {
-//        		String depCd = data.split(",", -1)[0];
-//        		for (CatDeptsComboDataList catDeptsComboDataList : dto.getCatDeptsComboDataList()) {
-//        			if (catDeptsComboDataList.getDeptCode().equals(depCd)) {
-//        				catDeptsComboDataList.setCheckers(true);
-//        			}
-//        		}
-//            }
-
-            // END UOC
-        }
-        return pageNext(outdto);
-    }
-
-	/**
-     * 前処理
-     * @customizable
-     */
-    protected void pageSetup() throws Exception {
-        // START UOC
-    	this.setSearchCon();
-        NF001DTO searchKey = (NF001DTO)sessionMap.get(AppConstant.SESKEY_NF001_SEARCHKEY);
-        // 所属部科名カナ
-//        dto.setKensakuKana(searchKey.getKensakuKana());
-//        // 入力_所属部科名漢字
-//        dto.setKensakuKanj(searchKey.getKensakuKanj());
-//
-//        // END UOC
-    }
-
-	/**
-     * 後処理
-     * @customizable
-     */
-    protected String pageNext(BaseDTO outdto) throws Exception {
-        // START UOC
-    	sessionMap.put(AppConstant.SESKEY_NF001_SEARCHKEY, outdto);
-        // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
-    private void setSearchCon() {
-
     }
 }

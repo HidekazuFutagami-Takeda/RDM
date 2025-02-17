@@ -152,6 +152,23 @@
         <action name="ND001Sort" class="nD001Action" method="sort">
             <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
         </action>
+        <action name="ND101Init" class="nD101Action" method="init">
+            <result name="ND101">/WEB-INF/pages/ND101.jsp</result>
+        </action>
+        <action name="ND101Register" class="nD101Action" method="register">
+            <result name="ND101">/WEB-INF/pages/ND101.jsp</result>
+        </action>
+        <action name="ND101Cancel" class="nD101Action" method="cancel">
+            <result name="ND101">/WEB-INF/pages/ND101.jsp</result>
+            <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NF001Init" class="nF001Action" method="init">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+        </action>
+        <action name="NF001Search" class="nF001Action" method="search">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+        </action>
         <action name="NF011Init" class="nF011Action" method="init">
             <result name="NF011">/WEB-INF/pages/NF011.jsp</result>
         </action>

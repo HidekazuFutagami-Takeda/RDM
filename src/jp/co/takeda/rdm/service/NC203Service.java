@@ -313,7 +313,7 @@ public class NC203Service extends BaseService {
     public BaseDTO list(NC203DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
-        String preScreenId = indto.getPreScreenId();
+        String winVarName = indto.getWinVarName();
 
         //廃院区分_生成用エンティティ
         MRdmCodeMstEntity paramHaiinKbn = new MRdmCodeMstEntity();
@@ -324,10 +324,10 @@ public class NC203Service extends BaseService {
 
         LinkedHashMap<String, String> mapHaiinKbn = new LinkedHashMap<String, String>();
 
-        if("ND011".equals(preScreenId) || "ND014".equals(preScreenId) || "ND101".equals(preScreenId)
-        		|| "ND103".equals(preScreenId) || "ND501".equals(preScreenId) || "NF011".equals(preScreenId)
-        		|| "NF012".equals(preScreenId) || "NF211".equals(preScreenId) || "NF212".equals(preScreenId)
-        		|| "NF401".equals(preScreenId) || "NF403".equals(preScreenId)) {
+        if("ND011".equals(winVarName) || "ND014".equals(winVarName) || "ND101".equals(winVarName)
+        		|| "ND103".equals(winVarName) || "ND501".equals(winVarName) || "NF011".equals(winVarName)
+        		|| "NF012".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName)
+        		|| "NF401".equals(winVarName) || "NF403".equals(winVarName)) {
         	for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
 		    	if("0".equals(outEntity.getValue1())) {
 		    		// 「0:通常」を選択し変更不可とする
@@ -351,10 +351,10 @@ public class NC203Service extends BaseService {
         List<MRdmCodeMstEntity> SelectDelFlg = dao.selectByValue(paramDelFlg);
 
         LinkedHashMap<String, String> mapDelFlg = new LinkedHashMap<String, String>();
-        if("ND011".equals(preScreenId) || "ND014".equals(preScreenId) || "ND101".equals(preScreenId)
-        		|| "ND103".equals(preScreenId) || "ND501".equals(preScreenId) || "NF011".equals(preScreenId)
-        		|| "NF012".equals(preScreenId) || "NF211".equals(preScreenId) || "NF212".equals(preScreenId)
-        		|| "NF401".equals(preScreenId) || "NF403".equals(preScreenId)) {
+        if("ND011".equals(winVarName) || "ND014".equals(winVarName) || "ND101".equals(winVarName)
+        		|| "ND103".equals(winVarName) || "ND501".equals(winVarName) || "NF011".equals(winVarName)
+        		|| "NF012".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName)
+        		|| "NF401".equals(winVarName) || "NF403".equals(winVarName)) {
 		    for (MRdmCodeMstEntity outEntity : SelectDelFlg) {
 		    	if("0".equals(outEntity.getValue1())) {
 		    		// 「0:無効」を選択し変更不可とする
@@ -393,7 +393,7 @@ public class NC203Service extends BaseService {
         //施設種別データ_取り出す
         LinkedHashMap<String, String> mapInsTypeList = new LinkedHashMap<String, String>();
 
-        if((preScreenId.equals("NF011") || preScreenId.equals("NF211") || preScreenId.equals("NF212"))
+        if((winVarName.equals("NF011") || winVarName.equals("NF211") || winVarName.equals("NF212"))
         		&& indto.getKensakuInsSbt() != null && !"".equals(indto.getKensakuInsSbt())) {
         	// 連携された施設種別を選択状態とし変更不可とする
         	for (MRdmCodeMstEntity outEntity : SelectInsTypeList) {

@@ -37,6 +37,17 @@ TABLE.pupBodyTable		/* 全画面用ポータルボディー */
 	padding: 0pt;
 	width:	100%;
 }
+
+TABLE.pupBodyTableBlue		/* 全画面用ポータルボディー */
+{
+	background-color: #D7EEFF;
+	border-style:	solid;
+	border-width:	0pt;
+	margin: 0pt;
+	padding: 0pt;
+	width:	100%;
+}
+
 TABLE.pupReferenceDetail
 {
 	padding: 0pt;
@@ -45,6 +56,16 @@ TABLE.pupReferenceDetail
 	border-color:#666666;
 	border-width: 1pt;
 	background-color: #ffffff;
+}
+
+TABLE.pupReferenceDetailBlue
+{
+	padding: 0pt;
+	margin:0pt;
+	border-style:none;
+	border-color:#666666;
+	border-width: 1pt;
+	background-color: #D7EEFF;
 }
 /* add start 2011/03/16 K.Takahama J11-0013：iPad対応 */
 TABLE.pupReferenceDetailForiPad
@@ -140,6 +161,24 @@ TD.pupButton
 {
 	color : #000000;
 	background-color: #ffffff;
+	text-align : center;
+	border-style: solid;
+	border-top-width : 0px;
+	border-left-width : 1px;
+	border-right-width : 1px;
+	border-bottom-width : 1px;
+	padding-top : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-bottom : 0px;
+	border-color : #a9a9a9;
+	/*font-size   : 8pt;
+	width : 0%;*/
+}
+TD.pupButtonBlue
+{
+	color : #000000;
+	background-color: #D7EEFF;
 	text-align : center;
 	border-style: solid;
 	border-top-width : 0px;

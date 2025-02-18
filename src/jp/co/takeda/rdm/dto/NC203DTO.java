@@ -285,6 +285,13 @@ public class NC203DTO extends BaseDTO implements Serializable {
      */
     private int pageFlg;
 
+    /**
+     * 表示区分
+     * 0:ULTなし、1:ULTあり、2:来期用
+     * @generated
+     */
+    private String viewKbn;
+
 
 	/**
 	 * NC203DTO.javapageFlgを設定
@@ -957,6 +964,21 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	 */
 	public void setPageCnt(Integer pageCnt) {
 		this.pageCnt = pageCnt;
+	}
+
+	/**
+	 * NC203DTO.javaviewKbnを設定
+	 * @return viewKbn
+	 */
+	public String getViewKbn() {
+		return viewKbn;
+	}
+
+	/**
+	 * @param viewKbn セットする viewKbn
+	 */
+	public void setViewKbn(String viewKbn) {
+		this.viewKbn = viewKbn;
 	}
 
 	/**

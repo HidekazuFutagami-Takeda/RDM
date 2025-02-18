@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t-rdm-req-smr">
+
+    <resultMap id="sJkrJkrAuthKnrResultMap" type="jp.co.takeda.rdm.entity.SRdmReqSamariEntity">
+        <result column="REQ_YMDHMS" property="reqYmdhmsFrom"/>
+        <result column="REQ_YMDHMS" property="reqYmdhmsTo"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="REQ_TYPE" property="reqType"/><!-- reqKbn=req_TYPE -->
+        <result column="REQ_STS" property="reqSts"/>
+        <result column="APR_YMDHMS" property="aPR_YMDHMS"/>
+        <result column="APR_SHA_ID" property="aPR_SHA_ID"/>
+        <result column="ADDR_CODE_PREF" property="addrCodePref"/>
+        <result column="ADDR_NAME_PREF" property="addrNamePref"/>
+        <result column="KEY" property="key"/>
+        <result column="SORT" property="sort"/>
+        <result column="REQ_COUNT" property="reqCount"/>
+
+        <result column="MR_ADMIN_FLG" property="mrAdminFlg"/>
+    </resultMap>
+  <select id="selectReqSmr" parameterType="jp.co.takeda.rdm.entity.SRdmReqSamariEntity" resultMap="sJkrJkrAuthKnrResultMap">
+	  WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
+    SELECT
+          ADDR_CODE_PREF
+         ,ADDR_NAME_PREF
+    FROM  ORAUSR01.S_RDM_JKR_SOS_ADDR
+    UNION
+    SELECT
+           '99'
+          ,'その他'
+    FROM   DUAL
+    )
+,JKR_ADDR_B AS(  --■サブクエリ（都道府県_B）
+    SELECT
+          ADDR_CODE_PREF
+         ,ADDR_NAME_PREF
+    FROM  ORAUSR01.S_RDM_JKR_SOS_ADDR
+    UNION
+    SELECT
+           '99'
+          ,'その他'
+    FROM   DUAL
+    )
+,JKR_ADDR AS(  --■サブクエリ（都道府県）
+    SELECT
+            ADDR_CODE_PREF,
+            ADDR_NAME_PREF
+    FROM    ORAUSR01.S_RDM_JKR_SOS_ADDR
+    UNION
+    SELECT
+            '99'
+            ,'その他'
+    FROM    DUAL
+    )
+,REQ_NUM AS(  --■サブクエリ（申請状況）
+    SELECT
+            CODE_REQ_KBN.VALUE2    KEY
+           ,CODE_REQ_KBN.SORT_NUM  SORT
+           ,CODE_REQ_KBN.VALUE3  REQ_TYPE_SYU
+           ,CODE_REQ_STS.VALUE3   REQ_STS
+           ,CODE_REQ_CHL.VALUE3   REQ_CHL
+    FROM  (
+    SELECT   --コード情報 申請区分
+            CODE_NAME,DEL_FLG
+           ,VALUE2
+           ,VALUE3
+           ,SORT_NUM
+    FROM    ORAUSR01.M_RDM_CODE_MST
+    WHERE   CODE_NAME = 'NM001_REQ_KBN'
+    AND     DEL_FLG = '0'
+         )  CODE_REQ_KBN
+           ,(
+    SELECT    --コード情報 申請ステータス
+            CODE_NAME
+           ,DEL_FLG
+           ,VALUE2
+           ,VALUE3
+    FROM    ORAUSR01.M_RDM_CODE_MST
+    WHERE   CODE_NAME = 'NM001_REQ_STS'
+    AND     DEL_FLG = '0'
+           )CODE_REQ_STS
+           ,(
+    SELECT     --コード情報 申請チャネル
+            CODE_NAME
+           ,DEL_FLG
+           ,VALUE2
+           ,VALUE3
+    FROM    ORAUSR01.M_RDM_CODE_MST
+    WHERE   CODE_NAME = 'NM001_REQ_CHL'
+    AND     DEL_FLG = '0'
+           )CODE_REQ_CHL
+    WHERE
+            CODE_REQ_KBN.VALUE2 = CODE_REQ_STS.VALUE2
+    AND     CODE_REQ_KBN.VALUE2 = CODE_REQ_CHL.VALUE2
+           )
+,REQ_INFO AS(
+	    SELECT  --■サブクエリ（申請情報）
+	          REQ_KNR.REQ_ID
+	         ,CASE
+	          WHEN JKR_ADDR_A.ADDR_CODE_PREF IS NOT NULL  THEN JKR_ADDR_A.ADDR_CODE_PREF
+	          WHEN JKR_ADDR_B.ADDR_CODE_PREF IS NOT NULL THEN JKR_ADDR_B.ADDR_CODE_PREF
+	          WHEN JKR_ADDR_B.ADDR_CODE_PREF IS NULL THEN '99'
+	          END AS ADDR_CODE_PREF
+	         ,REQ_KNR.REQ_TYPE
+	         ,REQ_KNR.REQ_STS
+	         ,REQ_KNR.REQ_CHL
+	         ,CASE
+	          WHEN REQ_KNR.REQ_TYPE IN ('11','12','13') THEN '1X'
+	          WHEN REQ_KNR.REQ_TYPE NOT IN ('11','12','13') THEN REQ_KNR.REQ_TYPE
+	          END AS REQ_TYPE_SYU
+
+        FROM  ORAUSR01.T_RDM_REQ_KNR REQ_KNR
+	     LEFT JOIN
+	          ORAUSR01.T_RDM_HCO_REQ HCO_REQ --施設_申請管理　
+	      ON  HCO_REQ.REQ_ID=REQ_KNR.REQ_ID
+	     LEFT JOIN
+	          ORAUSR01.T_RDM_HCP_REQ HCP_REQ --医師_申請管理
+	      ON  HCP_REQ.REQ_ID=REQ_KNR.REQ_ID
+	     LEFT JOIN
+	          ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
+	      ON  HCP_REQ.INS_NO_SK=HCO_MST.INS_NO
+	     LEFT JOIN
+	          JKR_ADDR_A    --■サブクエリ（都道府県_A）
+	      ON  JKR_ADDR_A.ADDR_CODE_PREF=HCO_REQ.ADDR_CODE_PREF
+	     LEFT JOIN
+	          JKR_ADDR_B    --■サブクエリ（都道府県_B）
+          ON  JKR_ADDR_B.ADDR_CODE_PREF=HCO_MST.ADDR_CODE_PREF
+      WHERE
+              1=1
+        <if test="reqYmdhmsFrom != null">
+	      AND SUBSTR(REQ_KNR.REQ_YMDHMS,1,8) &gt;= #{reqYmdhmsFrom} --中間の青いのについて、大なり小なり等がjspで判別されないため、エスケープ文字を使用
+		</if>
+		<if test="reqYmdhmsTo != null">
+		  AND SUBSTR(REQ_KNR.REQ_YMDHMS,1,8) &lt;= #{reqYmdhmsTo} --種別が0,施設の場合:年月日,a.REQ_YMDHMSは時間、分、秒...までだすのでYYYYMMDDまでを抜き出す
+	    </if>
+          )
+         SELECT    --■メインクエリ
+                        JKR_ADDR.ADDR_CODE_PREF
+                       ,JKR_ADDR.ADDR_NAME_PREF
+                       ,REQ_NUM.KEY
+                       ,REQ_NUM.SORT
+                       ,CASE
+		                WHEN REQ_NUM.REQ_TYPE_SYU IN ('11','12','13') THEN '1X'
+			            ELSE REQ_NUM.REQ_TYPE_SYU
+		                END AS REQ_TYPE_SYU
+                       ,REQ_NUM.REQ_STS
+                       ,REQ_NUM.REQ_CHL
+                       ,COUNT(REQ_INFO.REQ_ID) REQ_COUNT
+
+       FROM         JKR_ADDR
+       LEFT JOIN
+                    REQ_NUM
+          ON        1=1
+
+       LEFT JOIN
+                    REQ_INFO
+          ON        REQ_INFO.ADDR_CODE_PREF=JKR_ADDR.ADDR_CODE_PREF
+
+          AND       REQ_NUM.REQ_TYPE_SYU=REQ_INFO.REQ_TYPE
+
+          AND       REQ_NUM.REQ_STS=REQ_INFO.REQ_STS
+
+          AND       REQ_NUM.REQ_CHL=REQ_INFO.REQ_CHL
+      GROUP BY  JKR_ADDR.ADDR_CODE_PREF
+	                   ,JKR_ADDR.ADDR_NAME_PREF
+	                   ,REQ_NUM.KEY
+	                   ,REQ_NUM.SORT
+	                   ,CASE
+		                 WHEN REQ_NUM.REQ_TYPE_SYU IN ('11','12','13') THEN '1X'
+			             ELSE REQ_NUM.REQ_TYPE_SYU
+		                 END
+	                   ,REQ_NUM.REQ_STS
+	                   ,REQ_NUM.REQ_CHL
+      ORDER BY JKR_ADDR.ADDR_CODE_PREF
+                       , REQ_NUM.SORT
+
+	</select>
+</mapper>

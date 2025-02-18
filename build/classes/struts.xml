@@ -284,6 +284,34 @@
         	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
         	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
         </action>
+        <action name="NM001Init" class="nM001Action" method="init">
+        	<result name="NM001">/WEB-INF/pages/NM001.jsp</result>
+            <result name="NF213">/WEB-INF/pages/NF213.jsp</result>
+            <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NM001Search" class="nM001Action" method="search">
+        	<result name="NM001">/WEB-INF/pages/NM001.jsp</result>
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="NM001Page" class="nM001Action" method="page">
+        	<result name="NM001">/WEB-INF/pages/NM001.jsp</result>
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="NM001Sort" class="nM001Action" method="sort">
+        	<result name="NM001">/WEB-INF/pages/NM001.jsp</result>
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="NM001Register" class="nM001Action" method="register">
+        	<result name="NM001">/WEB-INF/pages/NM001.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NM001.jsp</result>
+            <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NM001ApprRej" class="nM001Action" method="apprRej">
+        	<result name="NM001">/WEB-INF/pages/NM001.jsp</result>
+        	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
+        	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
         <action name="NC203Init" class="nC203Action" method="init">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>

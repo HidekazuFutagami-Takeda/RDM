@@ -12,7 +12,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import jp.co.takeda.jkr.util.JkrConstantsData;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;

@@ -45,6 +45,7 @@
 <script type="text/javascript" src="js/jgiKanren.js"></script>
 <script type="text/javascript" src="js/rdmCatSosExpand.js"></script>
 <script type="text/javascript" src="js/jkrMenu.js"></script>
+<script type="text/javascript" src="js/catShisetsu.js"></script>
 <script>
 var msgContent = ""; //確認メッセージ
 
@@ -237,7 +238,8 @@ table {
 
           <s:hidden name="reqSts"/>
 
-
+		  <s:hidden name="preInsClass"/>
+		  <s:hidden name="postInsClass"/>
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>
@@ -365,7 +367,7 @@ table {
 	                  <td>異動先施設<span style="color: red;">*</span></td>
 	                  <td>
 	                      <nobr>
-							<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" /><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('abbrName')">clear</a>&nbsp;
+							<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCseView();return false;" /><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('abbrName')">clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
@@ -461,7 +463,7 @@ table {
                   </td>
 			      <td>大学職位</td>
 			      <td class="comPortalControlItem" style="text-align: left;">
-			      <s:if test='inputFlg == 1 && postHoInsType == 1'>
+			      <s:if test='inputFlg == 1 && postHoInsType == 1 && postInsClass = "01"' >
 					  <s:select id="digakuShokui" name="digakuShokui"
 						  cssStyle="width:100pt" list="digakuShokuiCombo" />
 				  </s:if>

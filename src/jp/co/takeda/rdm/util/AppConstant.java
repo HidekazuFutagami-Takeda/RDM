@@ -2821,6 +2821,8 @@ public interface AppConstant {
     public static final String SESKEY_NC207_SEARCHKEY = "NC207_SEARCHKEY";
     /** RDM医師検索 */
     public static final String SESKEY_ND001_SEARCHKEY = "ND001_SEARCHKEY";
+    /** RDM医療機関への異動 */
+    public static final String SESKEY_ND101_SEARCHKEY = "ND101_SEARCHKEY";
     /** 医師新規での初期結果 */
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
     /** 医師新規確認での初期結果 */

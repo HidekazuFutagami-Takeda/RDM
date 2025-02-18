@@ -144,6 +144,8 @@ public class ND101Service extends BaseService {
         indto.setUltDocNo(selectDocReqKnrInsChangeList.get(0).getUltDocNo());
         indto.setPreHoInsType(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getPreHoInsType(),""));
         indto.setPostHoInsType(selectDocReqKnrInsChangeList.get(0).getPostHoInsType());
+        indto.setPreInsClass(selectDocReqKnrInsChangeList.get(0).getPreInsClass());
+        indto.setPostInsClass(selectDocReqKnrInsChangeList.get(0).getPostInsClass());
 
 
     	//勤務情報（変更前）

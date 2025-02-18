@@ -88,10 +88,27 @@ if (stack.peek() instanceof NC203DTO) {
 </head>
 
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設検索"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+<table class="comPortalBody" <s:if test='viewKbn == 2'>style="background-color: #D7EEFF;"</s:if>>
+	<tbody>
+	<tr>
+	<td>
+
 	<%-- 施設選択 開始 --%>
 
 	<!-- ポータル枠 開始 -->
-	<table class="pupBodyTable" align="center">
+	<table <s:if test='viewKbn == 2'>class="pupBodyTableBlue"</s:if><s:else>class="pupBodyTable"</s:else> align="center">
 	<tbody>
 	<s:form name="fm1" theme="simple" onSubmit="JavaScript:return false;"><!-- フォームfm1開始 -->
 	<s:hidden name="screenId" value="NC203" />
@@ -113,6 +130,15 @@ if (stack.peek() instanceof NC203DTO) {
     <s:hidden name="callBack" />
     <s:hidden name="winVarName" />
     <s:hidden name="sortCondition" />
+    <s:hidden name="title" />
+    <s:hidden name="viewKbn" />
+    <s:hidden name="loginJokenSetCd"/>
+    <s:hidden name="loginJgiNo"/>
+    <s:hidden name="loginBrCd"/>
+    <s:hidden name="loginDistCd"/>
+    <s:hidden name="trtCd"/>
+    <s:hidden name="tkdTrtKbn"/>
+    <s:hidden name="insSbtEditFlg"/>
      <s:url id="searchurl" action="NC203Search"/>
     <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
     <s:url id="sorturl" action="NC203Sort"/>
@@ -142,7 +168,7 @@ if (stack.peek() instanceof NC203DTO) {
 		</tbody>
 	</table>
 		<!-- 前制御部 開始 -->
-		<table class="pupReferenceDetail" align="center" style="border-style:solid;width:500pt;">
+		<table <s:if test='viewKbn == 2'>class="pupReferenceDetailBlue"</s:if><s:else>class="pupReferenceDetail"</s:else> align="center" style="width:500pt;">
 		<tbody>
 			<tr>
 				<%-- 組織 --%>
@@ -185,11 +211,18 @@ if (stack.peek() instanceof NC203DTO) {
 				<td>
 					<s:textfield id="insNoSrch" size="20" maxlength="20" name="insNoSrch" STYLE="ime-mode:active" />
 				</td>
-				<%-- ULTコード --%>
-				<td class="pupControlItem"><nobr>&nbsp;ULTコード</nobr></td>
-				<td>
-					<s:textfield id="ultNo" size="20" maxlength="14" name="ultNo" style="ime-mode:inactive;" />
-				</td>
+				<s:if test="viewKbn == 1">
+					<%-- ULTコード --%>
+					<td class="pupControlItem"><nobr>&nbsp;ULTコード</nobr></td>
+					<td>
+						<s:textfield id="ultNo" size="20" maxlength="14" name="ultNo" style="ime-mode:inactive;" />
+					</td>
+				</s:if>
+				<s:else>
+					<%-- ULTコードなし --%>
+					<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+					<td>&nbsp;</td>
+				</s:else>
 				<%-- 経営主体 --%>
 				<td class="pupControlItem"><nobr>&nbsp;経営主体</nobr></td>
 				<td>
@@ -229,7 +262,15 @@ if (stack.peek() instanceof NC203DTO) {
 					<s:textfield id="insPcode" size="20" maxlength="14" name="insPcode" style="ime-mode:inactive;" />
 				</td>
 
-				<td><s:checkbox id="koshisetsuCheck" align="right" name="koshisetsuCheck" tabIndex="-1" value="false" /></td><td><nobr>子施設を除く</nobr></td>
+				<td>
+					<s:if test="winVarName == 'NF011' || winVarName == 'NF211' || winVarName == 'NF212'">
+					<input type="checkbox" id="koshisetsuCheck" align="right" name="koshisetsuCheck" checked disabled />
+					<s:hidden name="koshisetsuCheck" value="true" />
+					</s:if>
+					<s:else>
+					<s:checkbox id="koshisetsuCheck" align="right" name="koshisetsuCheck" tabIndex="-1" value="false" />
+					</s:else>
+				</td><td><nobr><label for="koshisetsuCheck">子施設を除く</label></nobr></td>
 
 			</tr>
 
@@ -269,13 +310,13 @@ if (stack.peek() instanceof NC203DTO) {
 		</table>
 		<!-- 前制御部 終了 -->
 
+<table width="95%" >
 		<tr>
-
          <%-- ページャー表示 開始 --%>
           <s:if test='pageFlg == "1" '>
           </s:if>
           <s:else>
-                    <td align="center">
+                    <td align="right">
                       <jsp:include page="common/rdmPage.jsp">
                       <jsp:param name="" value="" />
                       </jsp:include>
@@ -283,12 +324,15 @@ if (stack.peek() instanceof NC203DTO) {
           </s:else>
           <%-- ページャー表示 終了 --%>
          </tr>
+</table>
 
 		<!-- 一覧部 開始 -->
 <%
   // ソート表示状態制御
   String insAbbrAscClass = "comTableNoSort";
   String insAbbrDescClass = "comTableNoSort";
+  String insFormalAscClass = "comTableNoSort";
+  String insFormalDescClass = "comTableNoSort";
   String ultAbbrAscClass = "comTableNoSort";
   String ultAbbrDescClass = "comTableNoSort";
   String insNoAscClass = "comTableNoSort";
@@ -297,7 +341,9 @@ if (stack.peek() instanceof NC203DTO) {
   String insAdrsDescClass = "comTableNoSort";
   String ultAdrsAscClass = "comTableNoSort";
   String ultAdrsDescClass = "comTableNoSort";
-  if ("1".equals(sortCondition)) {
+  if ("0".equals(sortCondition)) {
+	  insNoAscClass = "comTableSort";
+  } else if ("1".equals(sortCondition)) {
 	  insNoDescClass = "comTableSort";
   } else if ("2".equals(sortCondition)) {
 	  insAbbrAscClass = "comTableSort";
@@ -315,124 +361,201 @@ if (stack.peek() instanceof NC203DTO) {
 	  ultAdrsAscClass = "comTableSort";
   } else if ("9".equals(sortCondition)) {
 	  ultAdrsDescClass = "comTableSort";
+  } else if ("10".equals(sortCondition)) {
+	  insFormalAscClass = "comTableSort";
+  } else if ("11".equals(sortCondition)) {
+	  insFormalDescClass = "comTableSort";
   }
 %>
-		<table class="pupList" align="center" border=1 cellpadding=2 cellspacing=0 style="width:800pt; resize : horizontal; overflow : hidden;">
+
+	<div style="max-height:270px;width:800px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+		<table>
 		<tbody>
 			<!-- ヘッダー -->
 			<s:if test='pageFlg == "1"'>
 			<!-- 何も表示しない -->
 			</s:if>
 			<s:else>
-			<tr>
-				<td class="actionTh" style="border:none" style="width:8pt"><nobr>&nbsp;</nobr></td>
-				<td class="comTableTitle" style="width:105pt;"><nobr>施設略式漢字名
-				<s:if test=' !(insData == null || insData.size() <= 0)'>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=insAbbrAscClass %>" href="" onclick="jimSort(2);return false;">▲</a>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=insAbbrDescClass %>" href="" onclick="jimSort(3);return false;">▼</a>
-                </s:if>
-                </nobr></td>
 
-                <td class="comTableTitle" style="width:200pt;"><nobr>施設正式漢字名</nobr></td>
 
-                <td class="comTableTitle" style="width:50pt;"><nobr>施設固定C
-                				<s:if test=' !(insData == null || insData.size() <= 0)'>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=insNoAscClass %>" href="" onclick="jimSort(0);return false;">▲</a>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=insNoDescClass %>" href="" onclick="jimSort(1);return false;">▼</a>
-                </s:if>
-                </nobr></td>
-                <td class="comTableTitle" style="width:250pt;"><nobr>施設住所
-                				<s:if test=' !(insData == null || insData.size() <= 0)'>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=insAdrsAscClass %>" href="" onclick="jimSort(4);return false;">▲</a>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=insAdrsDescClass %>" href="" onclick="jimSort(5);return false;">▼</a>
-                </s:if>
-                </nobr></td>
+			<s:if test="viewKbn == 1">
+			<!-- ULTあり一覧 -->
+				<tr style="position: sticky; top:0; left:0;">
+					<td class="actionTh" style="border:none" style="width:8pt"><nobr>&nbsp;</nobr></td>
+					<td class="comTableTitle" style="width:105pt;"><nobr>施設略式漢字名
+					<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAbbrAscClass %>" href="" onclick="jimSort(2);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAbbrDescClass %>" href="" onclick="jimSort(3);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
 
-                <td class="comTableTitle" style="width:50pt;"><nobr>電話番号
-                </nobr></td>
+	                <td class="comTableTitle" style="width:200pt;"><nobr>施設正式漢字名</nobr></td>
 
-                <td class="comTableTitle" style="width:50pt;"><nobr>施設種別
-                </nobr></td>
+	                <td class="comTableTitle" style="width:50pt;"><nobr>施設固定C
+	                				<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insNoAscClass %>" href="" onclick="jimSort(0);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insNoDescClass %>" href="" onclick="jimSort(1);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
+	                <td class="comTableTitle" style="width:250pt;"><nobr>施設住所
+	                				<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAdrsAscClass %>" href="" onclick="jimSort(4);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAdrsDescClass %>" href="" onclick="jimSort(5);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
 
-                <td class="comTableTitle" style="width:50pt;"><nobr>経営主体</nobr></td>
+	                <td class="comTableTitle" style="width:50pt;"><nobr>電話番号
+	                </nobr></td>
 
-                <td class="comTableTitle" style="width:5pt;"><nobr>ベッド数</nobr></td>
-			</tr>
-			<tr>
-				<td class="actionTh" style="width:8pt;"><nobr>選択</nobr></td>
-				<td class="comTableTitle" style="width:105pt;"><nobr>ULT施設略名
-				<s:if test=' !(insData == null || insData.size() <= 0)'>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=ultAbbrAscClass %>" href="" onclick="jimSort(6);return false;">▲</a>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=ultAbbrDescClass %>" href="" onclick="jimSort(7);return false;">▼</a>
-                </s:if>
-                </nobr></td>
-                <td class="comTableTitle" style="width:200pt;"><nobr>ULT施設名</nobr></td>
+	                <td class="comTableTitle" style="width:50pt;"><nobr>施設種別
+	                </nobr></td>
 
-                <td class="comTableTitle" style="width:50pt;"><nobr>ULTコード</nobr></td>
-                <td class="comTableTitle" style="width:250pt;"><nobr>ULT住所
-				<s:if test=' !(insData == null || insData.size() <= 0)'>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=ultAdrsAscClass %>" href="" onclick="jimSort(8);return false;">▲</a>
-                       <span style="font-size: 1pt;"> </span>
-                       <a class="<%=ultAdrsDescClass %>" href="" onclick="jimSort(9);return false;">▼</a>
-                </s:if>
-                </nobr></td>
-                <td class="comTableTitle" style="width:50pt;"><nobr>ULT電話番号</nobr></td>
+	                <td class="comTableTitle" style="width:50pt;"><nobr>経営主体</nobr></td>
 
-                <td class="comTableTitle" style="width:50pt;"><nobr>ULT施設区分</nobr></td>
+	                <td class="comTableTitle" style="width:5pt;"><nobr>ベッド数</nobr></td>
+				</tr>
+				<tr style="position: sticky; top:20; left:0;">
+					<td class="actionTh" style="width:8pt;"><nobr>選択</nobr></td>
+					<td class="comTableTitle" style="width:105pt;"><nobr>ULT施設略名
+					<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=ultAbbrAscClass %>" href="" onclick="jimSort(6);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=ultAbbrDescClass %>" href="" onclick="jimSort(7);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
+	                <td class="comTableTitle" style="width:200pt;"><nobr>ULT施設名</nobr></td>
 
-                <td class="comTableTitle" style="width:50pt;"><nobr>ULT経営主体</nobr></td>
+	                <td class="comTableTitle" style="width:50pt;"><nobr>ULTコード</nobr></td>
+	                <td class="comTableTitle" style="width:250pt;"><nobr>ULT住所
+					<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=ultAdrsAscClass %>" href="" onclick="jimSort(8);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=ultAdrsDescClass %>" href="" onclick="jimSort(9);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
+	                <td class="comTableTitle" style="width:50pt;"><nobr>ULT電話番号</nobr></td>
 
-                <td class="comTableTitle" style="width:5pt;"><nobr>ULTベッド数</nobr></td>
-			</tr>
-			<s:iterator value="insData" status="status" var="rowBean">
-			<tr>
-				<td class="pupButton" style="height:90%;" rowspan="2" >
-				<input class="pupButton" type="button" value="" OnClick="cseSelectIns(
-				'<s:property value="#rowBean.insAbbrName" />',
-				'<s:property value="#rowBean.insFormalName" />',
-				'<s:property value="#rowBean.insNo" />',
-				'<s:property value="#rowBean.insAddr" />',
-				'<s:property value="#rowBean.shisetsuNmRyaku" />',
-				'<s:property value="#rowBean.shisetsuNm" />',
-				'<s:property value="#rowBean.dcfShisetsuCd" />',
-				'<s:property value="#rowBean.address" />',
-				);"></input></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insFormalName" /></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insNo" /></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAddr" /></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].phone1" /></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insSbt" /></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].manageCd" /></td>
-				<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].bedsTot" /></td>
-			</tr>
-			<tr>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuNmRyaku" /></td>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuNm" /></td>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].dcfShisetsuCd" /></td>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff" style="width:500pt"><s:label key="insData[%{#status.index}].address" /></td>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuTel" /></td>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuKbn" /></td>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].keieitaiCd" /></td>
-				<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].byoshoSu" /></td>
-			</tr>
-            </s:iterator>
+	                <td class="comTableTitle" style="width:50pt;"><nobr>ULT施設区分</nobr></td>
+
+	                <td class="comTableTitle" style="width:50pt;"><nobr>ULT経営主体</nobr></td>
+
+	                <td class="comTableTitle" style="width:5pt;"><nobr>ULTベッド数</nobr></td>
+				</tr>
+				<s:iterator value="insData" status="status" var="rowBean">
+				<tr>
+					<td class="pupButton" style="height:90%;" rowspan="2" >
+					<input class="pupButton" type="button" value="" OnClick="cseSelectIns(
+					'<s:property value="#rowBean.insAbbrName" />',
+					'<s:property value="#rowBean.insFormalName" />',
+					'<s:property value="#rowBean.insNo" />',
+					'<s:property value="#rowBean.insAddr" />',
+					'<s:property value="#rowBean.shisetsuNmRyaku" />',
+					'<s:property value="#rowBean.shisetsuNm" />',
+					'<s:property value="#rowBean.dcfShisetsuCd" />',
+					'<s:property value="#rowBean.address" />',
+					);"></input></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insFormalName" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insNo" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAddr" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].phone1" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insSbt" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].manageCd" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].bedsTot" /></td>
+				</tr>
+				<tr>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuNmRyaku" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuNm" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].dcfShisetsuCd" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff" style="width:500pt"><s:label key="insData[%{#status.index}].address" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuTel" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuKbn" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].keieitaiCd" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].byoshoSu" /></td>
+				</tr>
+	            </s:iterator>
+			</s:if>
+			<s:else>
+			<!-- ULTなし一覧 -->
+				<tr style="position: sticky; top:0; left:0;">
+					<td style="border:none; width:8pt" <s:if test="viewKbn == 2">style="background-color:#D7EEFF;"</s:if><s:else>style="background-color:#FFFFFF;"</s:else>><nobr>選択</nobr></td>
+					<td class="comTableTitle" style="width:50pt;"><nobr>施設固定C
+             		<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insNoAscClass %>" href="" onclick="jimSort(0);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insNoDescClass %>" href="" onclick="jimSort(1);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
+
+					<td class="comTableTitle" style="width:105pt;"><nobr>施設略式漢字名
+					<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAbbrAscClass %>" href="" onclick="jimSort(2);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAbbrDescClass %>" href="" onclick="jimSort(3);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
+
+	                <td class="comTableTitle" style="width:200pt;"><nobr>施設正式漢字名
+	                <s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insFormalAscClass %>" href="" onclick="jimSort(10);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insFormalDescClass %>" href="" onclick="jimSort(11);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
+
+	                <td class="comTableTitle" style="width:250pt;"><nobr>施設住所
+	                				<s:if test=' !(insData == null || insData.size() <= 0)'>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAdrsAscClass %>" href="" onclick="jimSort(4);return false;">▲</a>
+	                       <span style="font-size: 1pt;"> </span>
+	                       <a class="<%=insAdrsDescClass %>" href="" onclick="jimSort(5);return false;">▼</a>
+	                </s:if>
+	                </nobr></td>
+
+	                <td class="comTableTitle" style="width:50pt;"><nobr>郵便番号
+	                </nobr></td>
+				</tr>
+
+				<s:iterator value="insData" status="status" var="rowBean">
+				<tr>
+					<td <s:if test="viewKbn == 2">class="pupButtonBlue"</s:if><s:else>class="pupButton"</s:else> style="height:90%;">
+					<input class="pupButton" type="button" value="" OnClick="cseSelectIns(
+					'<s:property value="#rowBean.insAbbrName" />',
+					'<s:property value="#rowBean.insFormalName" />',
+					'<s:property value="#rowBean.insNo" />',
+					'<s:property value="#rowBean.insAddr" />',
+					'<s:property value="#rowBean.shisetsuNmRyaku" />',
+					'<s:property value="#rowBean.shisetsuNm" />',
+					'<s:property value="#rowBean.dcfShisetsuCd" />',
+					'<s:property value="#rowBean.address" />',
+					);"></input></td>
+					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insNo" /></td>
+					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>
+					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insFormalName" /></td>
+					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insAddr" /></td>
+					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insPcode" /></td>
+				</tr>
+	            </s:iterator>
+			</s:else>
            </s:else>
 		</tbody>
 		</table>
+</div>
 		<!-- 一覧部 終了 -->
 
 		<!-- 後制御部 開始 -->
-		<table class="comPortalControlTable comPortalControlTablePopup" align="center" style="width:440pt;">
+		<table <s:if test='viewKbn == 2'>class="comPortalControlTableBlue comPortalControlTablePopupBlue"</s:if><s:else>class="comPortalControlTable comPortalControlTablePopup"</s:else> align="center" style="width:440pt;">
 		<tbody>
 			<tr>
 				<td width="100%"></td>
@@ -449,6 +572,11 @@ if (stack.peek() instanceof NC203DTO) {
 	</tbody>
 	</table>
 	<!-- ポータル枠 終了 -->
+	</td>
+	</tr>
+	</tbody>
+</table>
+
 	<!-- 施設選択 終了 -->
 </body>
 </html>

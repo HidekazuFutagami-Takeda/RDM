@@ -242,11 +242,64 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
     private String sortCondition;
 
     /**
+     * 表示区分
+     */
+    private String viewKbn;
+
+    /**
+     * 管理者権限フラグ
+     */
+    private boolean knrFlg;
+
+    /**
+     * 領域コード
+     * @generated
+     */
+    private String trtCd;
+
+    /**
+     * 武田紐領域別区分
+     * @generated
+     */
+    private String tkdTrtKbn;
+
+    /**
+     * 従業員番号
+     * @generated
+     */
+    private String jgiNo;
+
+    /**
+     * 氏名
+     * @generated
+     */
+    private String jgiName;
+
+    /**
+     * 医薬支店C
+     * @generated
+     */
+    private String BrCd;
+
+    /**
+     * 医薬営業所C
+     * @generated
+     */
+    private String DistCd;
+
+    /**
+     * 対象区分
+     * @generated
+     */
+    private String hoInsType;
+
+
+    /**
      * コンストラクタ
      * @generated
      */
     public SelectInsListEntity() {
-        super("m_rdm_hco_mst" , "selectInsList");
+        super("m_rdm_hco_mst" , "selectInsListUlt");
 
     }
     public SelectInsListEntity(String searchInput) {
@@ -667,6 +720,123 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
 	 */
 	public void setSortCondition(String sortCondition) {
 		this.sortCondition = sortCondition;
+	}
+	/**
+	 * SelectInsListEntity.javaviewKbnを設定
+	 * @return viewKbn
+	 */
+	public String getViewKbn() {
+		return viewKbn;
+	}
+	/**
+	 * @param viewKbn セットする viewKbn
+	 */
+	public void setViewKbn(String viewKbn) {
+		this.viewKbn = viewKbn;
+	}
+	/**
+	 * SelectInsListEntity.javaknrFlgを設定
+	 * @return knrFlg
+	 */
+	public boolean isKnrFlg() {
+		return knrFlg;
+	}
+	/**
+	 * @param knrFlg セットする knrFlg
+	 */
+	public void setKnrFlg(boolean knrFlg) {
+		this.knrFlg = knrFlg;
+	}
+	/**
+	 * SelectInsListEntity.javatrtCdを設定
+	 * @return trtCd
+	 */
+	public String getTrtCd() {
+		return trtCd;
+	}
+	/**
+	 * @param trtCd セットする trtCd
+	 */
+	public void setTrtCd(String trtCd) {
+		this.trtCd = trtCd;
+	}
+	/**
+	 * SelectInsListEntity.javatkdTrtKbnを設定
+	 * @return tkdTrtKbn
+	 */
+	public String getTkdTrtKbn() {
+		return tkdTrtKbn;
+	}
+	/**
+	 * @param tkdTrtKbn セットする tkdTrtKbn
+	 */
+	public void setTkdTrtKbn(String tkdTrtKbn) {
+		this.tkdTrtKbn = tkdTrtKbn;
+	}
+	/**
+	 * SelectInsListEntity.javajgiNoを設定
+	 * @return jgiNo
+	 */
+	public String getJgiNo() {
+		return jgiNo;
+	}
+	/**
+	 * @param jgiNo セットする jgiNo
+	 */
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
+	/**
+	 * SelectInsListEntity.javajgiNameを設定
+	 * @return jgiName
+	 */
+	public String getJgiName() {
+		return jgiName;
+	}
+	/**
+	 * @param jgiName セットする jgiName
+	 */
+	public void setJgiName(String jgiName) {
+		this.jgiName = jgiName;
+	}
+	/**
+	 * SelectInsListEntity.javaBrCdを設定
+	 * @return brCd
+	 */
+	public String getBrCd() {
+		return BrCd;
+	}
+	/**
+	 * @param brCd セットする brCd
+	 */
+	public void setBrCd(String brCd) {
+		BrCd = brCd;
+	}
+	/**
+	 * SelectInsListEntity.javaDistCdを設定
+	 * @return distCd
+	 */
+	public String getDistCd() {
+		return DistCd;
+	}
+	/**
+	 * @param distCd セットする distCd
+	 */
+	public void setDistCd(String distCd) {
+		DistCd = distCd;
+	}
+	/**
+	 * SelectInsListEntity.javahoInsTypeを設定
+	 * @return hoInsType
+	 */
+	public String getHoInsType() {
+		return hoInsType;
+	}
+	/**
+	 * @param hoInsType セットする hoInsType
+	 */
+	public void setHoInsType(String hoInsType) {
+		this.hoInsType = hoInsType;
 	}
 	/**
      * このEntityの値を返す

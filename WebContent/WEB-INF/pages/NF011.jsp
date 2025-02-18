@@ -943,7 +943,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			document.fm1.kensakuInsSbt.value = "";
 		}
 
-		document.fm1.koshisetsuCheck.value = "1";
+		document.fm1.viewKbn.value = "0";
 		document.fm1.callBack.value = "callBackMainInsPop";
 
 		comSubmitForAnyWarp(fm1);
@@ -1361,6 +1361,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	<s:hidden name="addrCodePrefPop"/>
 	<s:hidden name="tkCityCdPop"/>
+	<s:hidden name="winVarName" value="NF011" />
+	<s:hidden name="viewKbn" />
 
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>

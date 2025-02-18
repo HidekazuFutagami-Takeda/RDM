@@ -221,12 +221,52 @@ public class SelectCntSelectHcoEntity extends BaseEntity implements Serializable
      */
     private String inSortId;
 
+    /**
+     * 表示区分
+     */
+    private String viewKbn;
+
+    /**
+     * 管理者権限フラグ
+     */
+    private boolean knrFlg;
+
+    /**
+     * 領域コード
+     * @generated
+     */
+    private String trtCd;
+
+    /**
+     * 武田紐領域別区分
+     * @generated
+     */
+    private String tkdTrtKbn;
+
+    /**
+     * 従業員番号
+     * @generated
+     */
+    private String jgiNo;
+
+    /**
+     * 医薬支店C
+     * @generated
+     */
+    private String BrCd;
+
+    /**
+     * 医薬営業所C
+     * @generated
+     */
+    private String DistCd;
+
 
     /**
      * コンストラクタ
      */
     public SelectCntSelectHcoEntity() {
-        super("m_rdm_hco_mst" , "selectCntHco");
+        super("m_rdm_hco_mst" , "selectCntHcoUlt");
     }
 
 	/**
@@ -727,6 +767,36 @@ public class SelectCntSelectHcoEntity extends BaseEntity implements Serializable
 	}
 
 	/**
+	 * SelectCntSelectHcoEntity.javaviewKbnを設定
+	 * @return viewKbn
+	 */
+	public String getViewKbn() {
+		return viewKbn;
+	}
+
+	/**
+	 * @param viewKbn セットする viewKbn
+	 */
+	public void setViewKbn(String viewKbn) {
+		this.viewKbn = viewKbn;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javaknrFlgを設定
+	 * @return knrFlg
+	 */
+	public boolean isKnrFlg() {
+		return knrFlg;
+	}
+
+	/**
+	 * @param knrFlg セットする knrFlg
+	 */
+	public void setKnrFlg(boolean knrFlg) {
+		this.knrFlg = knrFlg;
+	}
+
+	/**
 	 * SelectCntSelectHcoEntity.javasortConditionを設定
 	 * @return sortCondition
 	 */
@@ -739,6 +809,81 @@ public class SelectCntSelectHcoEntity extends BaseEntity implements Serializable
 	 */
 	public void setSortCondition(String sortCondition) {
 		this.sortCondition = sortCondition;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javatrtCdを設定
+	 * @return trtCd
+	 */
+	public String getTrtCd() {
+		return trtCd;
+	}
+
+	/**
+	 * @param trtCd セットする trtCd
+	 */
+	public void setTrtCd(String trtCd) {
+		this.trtCd = trtCd;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javatkdTrtKbnを設定
+	 * @return tkdTrtKbn
+	 */
+	public String getTkdTrtKbn() {
+		return tkdTrtKbn;
+	}
+
+	/**
+	 * @param tkdTrtKbn セットする tkdTrtKbn
+	 */
+	public void setTkdTrtKbn(String tkdTrtKbn) {
+		this.tkdTrtKbn = tkdTrtKbn;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javajgiNoを設定
+	 * @return jgiNo
+	 */
+	public String getJgiNo() {
+		return jgiNo;
+	}
+
+	/**
+	 * @param jgiNo セットする jgiNo
+	 */
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javaBrCdを設定
+	 * @return brCd
+	 */
+	public String getBrCd() {
+		return BrCd;
+	}
+
+	/**
+	 * @param brCd セットする brCd
+	 */
+	public void setBrCd(String brCd) {
+		BrCd = brCd;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javaDistCdを設定
+	 * @return distCd
+	 */
+	public String getDistCd() {
+		return DistCd;
+	}
+
+	/**
+	 * @param distCd セットする distCd
+	 */
+	public void setDistCd(String distCd) {
+		DistCd = distCd;
 	}
 
 	/**

@@ -202,6 +202,18 @@ public class InsData implements Serializable {
     private String tkCityCd;
 
     /**
+     * 氏名
+     * @generated
+     */
+    private String jgiName;
+
+    /**
+     * 対象区分
+     * @generated
+     */
+    private String hoInsType;
+
+    /**
      * コンストラクタ
      * @customizable
      */
@@ -647,6 +659,44 @@ public class InsData implements Serializable {
     }
 
     /**
+	 * InsData.javajgiNameを設定
+	 * @return jgiName
+	 */
+	public String getJgiName() {
+		return jgiName;
+	}
+
+
+
+	/**
+	 * @param jgiName セットする jgiName
+	 */
+	public void setJgiName(String jgiName) {
+		this.jgiName = jgiName;
+	}
+
+
+
+	/**
+	 * InsData.javahoInsTypeを設定
+	 * @return hoInsType
+	 */
+	public String getHoInsType() {
+		return hoInsType;
+	}
+
+
+
+	/**
+	 * @param hoInsType セットする hoInsType
+	 */
+	public void setHoInsType(String hoInsType) {
+		this.hoInsType = hoInsType;
+	}
+
+
+
+	/**
      * このDTOの値を返す
      * @return DTOの値
      * @generated

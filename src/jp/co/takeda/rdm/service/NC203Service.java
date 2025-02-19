@@ -357,6 +357,9 @@ public class NC203Service extends BaseService {
         	// 対象区分
         	test.setHoInsType(entity.getHoInsType());
 
+        	// 施設区分
+        	test.setInsClass(entity.getInsClass());
+
         	//データ代入
         	dataList.add(test);
         }

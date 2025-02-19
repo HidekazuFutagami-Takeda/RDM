@@ -86,6 +86,7 @@
         <result column="INS_PCODE" property="insPcode"/>
         <result column="JGI_NAME" property="jgiName"/>
         <result column="HO_INS_TYPE" property="hoInsType"/>
+        <result column="INS_CLASS" property="insClass"/>
     </resultMap>
     <resultMap id="selectCntHcoResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectHcoEntity">
         <result column="CNT_HCO" property="cntHco"/>
@@ -382,6 +383,7 @@
 		,HCO_MST.MANAGE_CD                  --施設_基本情報       経営主体コード
 		,HCO_MST.BEDS_TOT                   --施設_基本情報       ベッド数計
 		,HCO_MST.HO_INS_TYPE				--施設_基本情報       対象区分
+		,HCO_MST.INS_CLASS				--施設_基本情報       施設分類
 		,MDB_HCO_MST1.SHISETSU_NM_RYAKU     --ULT_MDB施設マスタ   施設名略名
 		,MDB_HCO_MST1.SHISETSU_NM           --ULT_MDB施設マスタ   施設名
 		,MDB_HCO_MST1.DCF_SHISETSU_CD       --ULT_MDB施設マスタ   DCF施設コード
@@ -515,6 +517,7 @@
 		<if test="trtCd != null">,JGI_SOS_MST1.JGI_NAME</if>
 		,HCO_MST.INS_SBT
 		,HCO_MST.HO_INS_TYPE
+		,HCO_MST.INS_CLASS				--施設_基本情報       施設分類
 
 		FROM ORAUSR01.M_RDM_PARAM_MST PARAM_MST
 		INNER JOIN
@@ -615,6 +618,7 @@
 		,HCO_MST.MANAGE_CD                  --施設_基本情報       経営主体コード
 		,HCO_MST.BEDS_TOT                   --施設_基本情報       ベッド数計
 		,HCO_MST.HO_INS_TYPE				--施設_基本情報       対象区分
+		,HCO_MST.INS_CLASS				--施設_基本情報       施設分類
 		,MDB_HCO_MST1.SHISETSU_NM_RYAKU     --ULT_MDB施設マスタ   施設名略名
 		,MDB_HCO_MST1.SHISETSU_NM           --ULT_MDB施設マスタ   施設名
 		,MDB_HCO_MST1.DCF_SHISETSU_CD       --ULT_MDB施設マスタ   DCF施設コード
@@ -728,6 +732,7 @@
 		<if test="trtCd != null">,JGI_SOS_MST1.JGI_NAME</if>
 		,HCO_MST.INS_SBT
 		,HCO_MST.HO_INS_TYPE
+		,HCO_MST.INS_CLASS				--施設_基本情報       施設分類
 
 		FROM ORAUSR01.M_RDM_PARAM_MST PARAM_MST
 		INNER JOIN

@@ -293,6 +293,12 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
      */
     private String hoInsType;
 
+    /**
+     * 施設分類
+     * @generated
+     */
+    private String insClass;
+
 
     /**
      * コンストラクタ
@@ -837,6 +843,19 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
 	 */
 	public void setHoInsType(String hoInsType) {
 		this.hoInsType = hoInsType;
+	}
+	/**
+	 * SelectInsListEntity.javainsClassを設定
+	 * @return insClass
+	 */
+	public String getInsClass() {
+		return insClass;
+	}
+	/**
+	 * @param insClass セットする insClass
+	 */
+	public void setInsClass(String insClass) {
+		this.insClass = insClass;
 	}
 	/**
      * このEntityの値を返す

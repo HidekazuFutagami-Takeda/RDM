@@ -2825,10 +2825,16 @@ public interface AppConstant {
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
     /** 医師新規確認での初期結果 */
     public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
+    /** RDM医療機関への異動 */
+    public static final String SESKEY_ND307_SEARCHKEY = "ND307_SEARCHKEY";
+    /** 施設検索での初期結果 */
+    public static final String SESKEY_NF001_SEARCHKEY = "NF001_SEARCHKEY";
     /** 施設新規での初期結果 */
     public static final String SESKEY_NF011_SEARCHKEY = "NF011_SEARCHKEY";
     /** 施設更新での初期結果 */
     public static final String SESKEY_NF012_SEARCHKEY = "NF012_SEARCHKEY";
+    /** 施設削除での初期結果 */
+    public static final String SESKEY_NF013_SEARCHKEY = "NF013_SEARCHKEY";
     /** 施設紐付け新規での初期結果 */
     public static final String SESKEY_NF211_SEARCHKEY = "NF211_SEARCHKEY";
     /** 施設紐付け変更での初期結果 */
@@ -2862,8 +2868,6 @@ public interface AppConstant {
     public static final int ORA_NOTNULL_COLUMN_NULL = 1400;  //でるで
     public static final int ORA_VALUE_LARGER_ERROR = 1438;   //でるで
     public static final int SQL_MANY_ROWS = 2112;    //into句で読んだときの話
-
-
 
 
 

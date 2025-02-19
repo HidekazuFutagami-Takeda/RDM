@@ -43,6 +43,14 @@ public class MRdmHcoKeieitaiEntiry extends BaseEntity implements Serializable {
         super("m_rdm_hco_keieitai", "selectMRdmHcoKeieitaiEntiry");
     }
 
+    /**
+     * コンストラクタ
+     * @generated
+     */
+    public MRdmHcoKeieitaiEntiry(String sqlId) {
+        super("m_rdm_hco_keieitai", sqlId);
+    }
+
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

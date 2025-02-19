@@ -461,6 +461,9 @@ if (stack.peek() instanceof NC203DTO) {
 					'<s:property value="#rowBean.shisetsuNm" />',
 					'<s:property value="#rowBean.dcfShisetsuCd" />',
 					'<s:property value="#rowBean.address" />',
+					'<s:property value="#rowBean.jgiName" />',
+					'<s:property value="#rowBean.insSbt" />',
+					'<s:property value="#rowBean.hoInsType" />',
 					);"></input></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insFormalName" /></td>
@@ -539,6 +542,9 @@ if (stack.peek() instanceof NC203DTO) {
 					'<s:property value="#rowBean.shisetsuNm" />',
 					'<s:property value="#rowBean.dcfShisetsuCd" />',
 					'<s:property value="#rowBean.address" />',
+					'<s:property value="#rowBean.jgiName" />',
+					'<s:property value="#rowBean.insSbt" />',
+					'<s:property value="#rowBean.hoInsType" />',
 					);"></input></td>
 					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insNo" /></td>
 					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>

@@ -232,126 +232,130 @@ public class NC203Service extends BaseService {
     	List<SelectInsListEntity> selectInsEntityList = dao.select(selectinsListEntity);
 
         List<InsData> dataList = new ArrayList<InsData>();
-        for(SelectInsListEntity entiry : selectInsEntityList) {
+        for(SelectInsListEntity entity : selectInsEntityList) {
 
         	InsData test = new InsData();
 
         	// 施設略式漢字名
-        	if(entiry.getInsAbbrName() != null) {
-        	test.setInsAbbrName(entiry.getInsAbbrName());
+        	if(entity.getInsAbbrName() != null) {
+        	test.setInsAbbrName(entity.getInsAbbrName());
         	}else {
         	test.setInsAbbrName(" ");
     		}
 
         	// 施設正式漢字名
-        	if(entiry.getInsFormalName() != null) {
-        	test.setInsFormalName(entiry.getInsFormalName());
+        	if(entity.getInsFormalName() != null) {
+        	test.setInsFormalName(entity.getInsFormalName());
         	}else {
         	test.setInsFormalName(" ");
     		}
 
         	// 施設固定コード
-        	if(entiry.getInsNo() != null) {
-        	test.setInsNo(entiry.getInsNo());
+        	if(entity.getInsNo() != null) {
+        	test.setInsNo(entity.getInsNo());
         	}else {
         	test.setInsNo(" ");
     		}
 
         	// 住所
-        	if(entiry.getInsAddr() != null) {
-        	test.setInsAddr(entiry.getInsAddr());
+        	if(entity.getInsAddr() != null) {
+        	test.setInsAddr(entity.getInsAddr());
         	}else {
         	test.setInsAddr(" ");
     		}
 
         	// 電話名
-        	if(entiry.getPhone1() != null) {
-        	test.setPhone1(entiry.getPhone1());
+        	if(entity.getPhone1() != null) {
+        	test.setPhone1(entity.getPhone1());
         	}else {
         	test.setPhone1(" ");
     		}
 
         	// 施設種別
-        	if(entiry.getInsSbt() != null) {
-        	test.setInsSbt(entiry.getInsSbt());
+        	if(entity.getInsSbt() != null) {
+        	test.setInsSbt(entity.getInsSbt());
         	}else {
         	test.setInsSbt(" ");
         	}
 
         	// 経営主体コード
-        	if(entiry.getManageCd() != null) {
-        	test.setManageCd(entiry.getManageCd());
+        	if(entity.getManageCd() != null) {
+        	test.setManageCd(entity.getManageCd());
         	}else {
         	test.setManageCd(" ");
         	}
 
         	// 病床数
-        	test.setBedsTot(entiry.getBedsTot());
+        	test.setBedsTot(entity.getBedsTot());
 
         	// ULT施設略式漢字名
-        	if(entiry.getShisetsuNmRyaku() != null) {
-        	test.setShisetsuNmRyaku(entiry.getShisetsuNmRyaku());
+        	if(entity.getShisetsuNmRyaku() != null) {
+        	test.setShisetsuNmRyaku(entity.getShisetsuNmRyaku());
         	}else {
         	test.setShisetsuNmRyaku(" ");
     		}
 
         	// ULT施設正式漢字名
-        	if(entiry.getShisetsuNm() != null) {
-        	test.setShisetsuNm(entiry.getShisetsuNm());
+        	if(entity.getShisetsuNm() != null) {
+        	test.setShisetsuNm(entity.getShisetsuNm());
         	}else {
         	test.setShisetsuNm(" ");
     		}
 
         	// ULT施設固定コード
-        	if(entiry.getDcfShisetsuCd() != null) {
-        	test.setDcfShisetsuCd(entiry.getDcfShisetsuCd());
+        	if(entity.getDcfShisetsuCd() != null) {
+        	test.setDcfShisetsuCd(entity.getDcfShisetsuCd());
         	}else {
         	test.setDcfShisetsuCd(" ");
     		}
 
         	// ULT住所
-        	if(entiry.getAddress() != null) {
-        	test.setAddress(entiry.getAddress());
+        	if(entity.getAddress() != null) {
+        	test.setAddress(entity.getAddress());
         	}else {
         	test.setAddress(" ");
     		}
 
         	// ULT電話番号
-        	if(entiry.getShisetsuTel() != null) {
-        	test.setShisetsuTel(entiry.getShisetsuTel());
+        	if(entity.getShisetsuTel() != null) {
+        	test.setShisetsuTel(entity.getShisetsuTel());
         	}else {
         	test.setShisetsuTel(" ");
     		}
 
         	// 施設区分
-        	if(entiry.getShisetsuKbn() != null) {
-        	test.setShisetsuKbn(entiry.getShisetsuKbn());
+        	if(entity.getShisetsuKbn() != null) {
+        	test.setShisetsuKbn(entity.getShisetsuKbn());
         	}else {
         	test.setShisetsuKbn(" ");
     		}
 
         	// 経営主体コード
-        	if(entiry.getKeieitaiCd() != null) {
-        	test.setKeieitaiCd(entiry.getKeieitaiCd());
+        	if(entity.getKeieitaiCd() != null) {
+        	test.setKeieitaiCd(entity.getKeieitaiCd());
         	}else {
         	test.setKeieitaiCd(" ");
     		}
 
         	// 病床数
-        	test.setByoshoSu(entiry.getByoshoSu());
+        	test.setByoshoSu(entity.getByoshoSu());
 
         	// 郵便番号
-        	if(entiry.getInsPcode() != null) {
-        	test.setInsPcode(entiry.getInsPcode());
+        	if(entity.getInsPcode() != null) {
+        	test.setInsPcode(entity.getInsPcode());
         	}else {
         	test.setInsPcode(" ");
     		}
 
         	// 氏名
-        	test.setJgiName(entiry.getJgiName());
+        	if("0".equals(indto.getTkdTrtKbn())) {
+        		test.setJgiName("");
+        	} else {
+        		test.setJgiName(entity.getJgiName());
+        	}
 
         	// 対象区分
-        	test.setHoInsType(entiry.getHoInsType());
+        	test.setHoInsType(entity.getHoInsType());
 
         	//データ代入
         	dataList.add(test);

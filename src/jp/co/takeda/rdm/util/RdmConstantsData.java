@@ -11,12 +11,12 @@ package jp.co.takeda.rdm.util;
 public class RdmConstantsData {
 
     /***条件設定 : 適用日設定可能本部権限 */
-    public static final String RDM_JKN_HONBU_COMMIT = "JKN0163";
+//    public static final String RDM_JKN_HONBU_COMMIT = "JKN0163";
 
 	//TODO 二神　JKN0163を正しく設定する
     /**条件設定 : MDM管理者権限 */
 	//TODO二神　MDM管理者：JKN0813  全MR：JKN0023
-    public static final String RDM_JKN_ADMIN = "JKN0163";
+    public static final String RDM_JKN_ADMIN = "JKN0813";
 
     /**条件設定 : 全MR権限 */
     public static final String RDM_JKN_MR = "JKN0023";
@@ -585,6 +585,12 @@ public class RdmConstantsData {
     public static final String CODE_NAME_POSITION_CODE = "POSITION_CODE";
     /**コード情報コード名 : 分類区分 */
     public static final String CODE_NAME_CLASS_CATEGORY = "CLASS_CATEGORY";
+    /**コード情報コード名 : 削除区分 */
+    public static final String CODE_NAME_DEL_KBN = "DEL_KBN";
+    /**コード情報コード名 : 削除フラグ */
+    public static final String CODE_NAME_DEL_FLG = "DEL_FLG";
+    /**コード情報コード名 : 施設区分 */
+    public static final String CODE_NAME_PHARM_TYPE = "PHARM_TYPE";
 
     /**パラメタ情報パラメタ名 : 医師メニュースイッチ */
     public static final String PARAM_NAME_MN_DOC = "MN_DOC";

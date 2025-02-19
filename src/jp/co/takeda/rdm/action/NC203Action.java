@@ -100,8 +100,12 @@ public class NC203Action extends BaseAction<NC203DTO> {
         // F層呼び出し
         dto.setFunctionId("Init");
 
+        if(dto.getViewKbn() == null || dto.getViewKbn().isEmpty()) {
+        	dto.setViewKbn("0");
+        }
+
         String winVarName = dto.getWinVarName();
-        if((winVarName.equals("NF011") || winVarName.equals("NF211") || winVarName.equals("NF212"))
+        if(("NF011".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName))
         		&& dto.getKensakuInsSbt() != null && !"".equals(dto.getKensakuInsSbt())) {
         	// 施設種別固定
         	dto.setInsSbtEditFlg("0");

@@ -1603,9 +1603,10 @@ public class NF301Service extends BaseService {
 
         	dao.update(tRdmReqKnrEntity);
 
-        	outdto.setForward("NC011");
+
 		}
 
+		outdto.setForward("NC011");
 		// END UOC
 		return outdto;
     }

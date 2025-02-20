@@ -2815,6 +2815,9 @@ public interface AppConstant {
     /** 組織,従業員,組織従業員での初期結果 */
     public static final String SESKEY_JKR100C010_SEARCHKEY = "JKR100C010_SEARCHKEY";
 
+    /** 医師勤務先追加での初期結果 */
+    public static final String SESKEY_ND103_SEARCHKEY = "SESKEY_ND103_SEARCHKEY";
+
     /** 所属学会編集ポップアップでの初期結果 */
     public static final String SESKEY_NC206_SEARCHKEY = "NC206_SEARCHKEY";
     /** 公的機関編集ポップアップでの初期結果 */
@@ -2825,6 +2828,9 @@ public interface AppConstant {
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
     /** 医師新規確認での初期結果 */
     public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
+    /** 医師勤務先追加 - 申請内容確認での初期結果 */
+    public static final String SESKEY_ND311_SEARCHKEY = "SESKEY_ND311_SEARCHKEY";
+
     /** 施設検索での初期結果 */
     public static final String SESKEY_NF001_SEARCHKEY = "NF001_SEARCHKEY";
     /** 施設新規での初期結果 */

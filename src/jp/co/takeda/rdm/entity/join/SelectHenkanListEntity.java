@@ -6,12 +6,8 @@
 package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
-import java.util.Date;
-
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import jp.co.takeda.rdm.common.BaseEntity;
-import jxl.write.DateTime;
 
 
 /**

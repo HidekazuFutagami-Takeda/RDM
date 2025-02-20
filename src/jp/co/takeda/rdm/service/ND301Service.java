@@ -5,56 +5,35 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
-import java.io.ByteArrayInputStream;
-import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Named;
 
-import jp.co.takeda.rdm.common.BaseInfoHolder;
-import jp.co.takeda.rdm.common.LoginInfo;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.transaction.annotation.Transactional;
+
 import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
-import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcpPublicData;
 import jp.co.takeda.rdm.dto.HcpSocietyData;
 import jp.co.takeda.rdm.dto.ND301DTO;
-import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
-import jp.co.takeda.rdm.entity.join.MRdmHcpShusshinkoEntity;
-import jp.co.takeda.rdm.entity.join.MRdmHcpSpDiseaseEntity;
-import jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity;
-import jp.co.takeda.rdm.entity.join.MRdmHcpYakushokuEntity;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
-import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectND301MainDataEntity;
-import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
-import jp.co.takeda.rdm.entity.join.TRdmHcpPublicReqEntity;
-import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
-import jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity;
-import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
-import jp.co.takeda.rdm.entity.join.UpdateTRdmHcpPublicReqEntity;
-import jp.co.takeda.rdm.entity.join.UpdateTRdmHcpReqEntity;
-import jp.co.takeda.rdm.entity.join.UpdateTRdmHcpSocietyReqEntity;
 import jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts2.ServletActionContext;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Serviceクラス（ND301)

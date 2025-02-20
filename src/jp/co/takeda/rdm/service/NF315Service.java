@@ -541,8 +541,8 @@ public class NF315Service extends BaseService {
 
 		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
 		if(mRdmParamMstEntityList.size() > 0) {
-			// valueの左一桁
-			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+			// valueの左から三桁目
+			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(2,3);
 		}
 
 		MRdmParamMstEntity mRdmParamMstOyaEntity = new MRdmParamMstEntity();
@@ -1119,7 +1119,6 @@ public class NF315Service extends BaseService {
         }
 
     	// 申請ボタン活性フラグ取得
-    	// TODO
     	String mnFac = "0";
     	String mnOya = "0";
 
@@ -1129,8 +1128,8 @@ public class NF315Service extends BaseService {
 
 		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
 		if(mRdmParamMstEntityList.size() > 0) {
-			// valueの左一桁
-			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+			// valueの左から三桁目
+			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(2,3);
 		}
 
 		MRdmParamMstEntity mRdmParamMstOyaEntity = new MRdmParamMstEntity();

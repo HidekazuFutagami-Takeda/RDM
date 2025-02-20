@@ -119,12 +119,11 @@ public class NF213Service extends BaseService {
         	indto.setMainInsAddr(StringUtils.nvl(mainDataEntity.getMainInsAddr(), ""));
         	indto.setMainInsSbt(StringUtils.nvl(mainDataEntity.getMainInsSbt(), ""));
 
-    		// TODO ログイン関連できてから確認
-//        		indto.setReqShzNm(loginInfo.getShzNm());
-    		indto.setReqJgiName(loginInfo.getJgiName());
-    		indto.setReqJgiNo(loginInfo.getJgiNo());
-//        		indto.setReqBrCd(loginInfo.getBrCd());
-//        		indto.setReqDistCd(loginInfo.getDistCd());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
+			indto.setReqJgiName(loginInfo.getJgiName());
+			indto.setReqJgiNo(loginInfo.getJgiNo());
+    		indto.setReqBrCd(loginInfo.getBrCode());
+    		indto.setReqDistCd(loginInfo.getDistCode());
 
         } else if ("1".equals(indto.getDisplayKbn())) {
         	// 施設固定コードで初期データ作成
@@ -180,12 +179,11 @@ public class NF213Service extends BaseService {
         	indto.setInsTanto(StringUtils.nvl(mainDataEntity.getJgiName(), ""));
         	indto.setMainInsSbt(StringUtils.nvl(mainDataEntity.getMainInsSbt(), ""));
 
-    		// TODO ログイン関連できてから確認
-//        		indto.setReqShzNm(loginInfo.getShzNm());
-    		indto.setReqJgiName(loginInfo.getJgiName());
-    		indto.setReqJgiNo(loginInfo.getJgiNo());
-//        		indto.setReqBrCd(loginInfo.getBrCd());
-//        		indto.setReqDistCd(loginInfo.getDistCd());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
+			indto.setReqJgiName(loginInfo.getJgiName());
+			indto.setReqJgiNo(loginInfo.getJgiNo());
+    		indto.setReqBrCd(loginInfo.getBrCode());
+    		indto.setReqDistCd(loginInfo.getDistCode());
 
         } else if ("2".equals(indto.getDisplayKbn())) {
         	// 申請データ（一時保存含む）を参照

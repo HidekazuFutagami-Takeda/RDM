@@ -130,64 +130,64 @@ function ciiUnLoad(){
  */
 function ciiSearch(){
 
-	var checkSingle = "";
-	var checkKanji = "";
-	var checkNumber = "";
-	var kanaMess = "";      //カナチェック用エラーメッセージ保存変数
-	var kanjiMess = "";     //漢字チェック用エラーメッセージ保存変数
-	var numberMess = "";    //数値チェック用エラーメッセージ保存変数
-	var errMess= "";        //表示用エラーメッセージ
-	var newLineKanji = "";  //改行コード
-	var newLineKana = "";   //改行コード
+//	var checkSingle = "";
+//	var checkKanji = "";
+//	var checkNumber = "";
+//	var kanaMess = "";      //カナチェック用エラーメッセージ保存変数
+//	var kanjiMess = "";     //漢字チェック用エラーメッセージ保存変数
+//	var numberMess = "";    //数値チェック用エラーメッセージ保存変数
+//	var errMess= "";        //表示用エラーメッセージ
+//	var newLineKanji = "";  //改行コード
+//	var newLineKana = "";   //改行コード
 
 
 	//施設検索用漢字名の入力チェック(記号文字数20)
-	checkKanji = document.fm1.insKanjiSrch.value;
-	if(checkKanji != ""){
-		kanjiMess = ciiChkNoSign(checkKanji);
-		if(kanjiMess != ""){
-			newLineKanji = "\n";
-		}
-	}
+//	checkKanji = document.fm1.insKanjiSrch.value;
+//	if(checkKanji != ""){
+//		kanjiMess = ciiChkNoSign(checkKanji);
+//		if(kanjiMess != ""){
+//			newLineKanji = "\n";
+//		}
+//	}
 
 	//施設検索用カナ名の入力チェック(半角文字数20)
 	//全角カナの入力チェック(全角文字数10)
-	checkSingle = document.fm1.insKanaSrch.value;
-	if(checkSingle != ""){
-		kanaMess = comChkFullSizeChar(checkSingle,'施設名(半角カナ)','20');
-		if(kanaMess != ""){
-			newLineKana = "\n";
-		}
-	}
+//	checkSingle = document.fm1.insKanaSrch.value;
+//	if(checkSingle != ""){
+//		kanaMess = comChkFullSizeChar(checkSingle,'施設名(半角カナ)','20');
+//		if(kanaMess != ""){
+//			newLineKana = "\n";
+//		}
+//	}
 
 	//施設検索用施設固定コードの入力チェック(数値文字数14)
-	checkNumber = document.fm1.insNoSrch.value;
-	if(checkNumber != ""){
-		numberMess = ciiChkNumValue(checkNumber);
-		if(numberMess != ""){
-			newLineNum = "\n";
-		}
-	}
+//	checkNumber = document.fm1.insNoSrch.value;
+//	if(checkNumber != ""){
+//		numberMess = ciiChkNumValue(checkNumber);
+//		if(numberMess != ""){
+//			newLineNum = "\n";
+//		}
+//	}
 
-	if((kanjiMess != "") || (kanaMess != "") || (numberMess != "")){
-		errMess = kanjiMess + newLineKanji + kanaMess + newLineKana + numberMess;
-		alert(errMess);
-		if(kanjiMess != ""){
-		    document.fm1.insKanjiSrch.focus();
-		}else if(kanaMess != ""){
-		    document.fm1.insKanaSrch.focus();
-		}else if(numberMess != ""){
-		    document.fm1.insNoSrch.focus();
-		}
-		return false;
-	}
+//	if((kanjiMess != "") || (kanaMess != "") || (numberMess != "")){
+//		errMess = kanjiMess + newLineKanji + kanaMess + newLineKana + numberMess;
+//		alert(errMess);
+//		if(kanjiMess != ""){
+//		    document.fm1.insKanjiSrch.focus();
+//		}else if(kanaMess != ""){
+//		    document.fm1.insKanaSrch.focus();
+//		}else if(numberMess != ""){
+//		    document.fm1.insNoSrch.focus();
+//		}
+//		return false;
+//	}
 
 	//ボタン２度押し対策をなるべく早くやる(実際のSubmitのときではなく)
 	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
-	
+
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 1;
-    
+
     // 検索イベント呼び出し
     document.fm1.submit_search.click();
 }
@@ -201,7 +201,7 @@ function ciiSearch(){
 function ciiReset(){
 	//画面初期化する
     document.fm1.pageCntCur.value = 1;
-    
+
     // 検索イベント呼び出し
     document.fm1.reset_search.click();
 }

@@ -132,12 +132,11 @@ public class NF212Service extends BaseService {
         	indto.setMainInsAddr("");
         	indto.setMainInsSbt("");
 
-    		// TODO ログイン関連できてから確認
-//        		indto.setReqShzNm(loginInfo.getShzNm());
-    		indto.setReqJgiName(loginInfo.getJgiName());
-    		indto.setReqJgiNo(loginInfo.getJgiNo());
-//        		indto.setReqBrCd(loginInfo.getBrCd());
-//        		indto.setReqDistCd(loginInfo.getDistCd());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
+			indto.setReqJgiName(loginInfo.getJgiName());
+			indto.setReqJgiNo(loginInfo.getJgiNo());
+    		indto.setReqBrCd(loginInfo.getBrCode());
+    		indto.setReqDistCd(loginInfo.getDistCode());
 
         } else if ("1".equals(indto.getDisplayKbn())) {
         	// 施設固定コード、領域コード、品目グループコードからデータ取得
@@ -202,12 +201,11 @@ public class NF212Service extends BaseService {
         	indto.setInsTanto("");
         	indto.setMainInsSbt("");
 
-    		// TODO ログイン関連できてから確認
-//        		indto.setReqShzNm(loginInfo.getShzNm());
-    		indto.setReqJgiName(loginInfo.getJgiName());
-    		indto.setReqJgiNo(loginInfo.getJgiNo());
-//        		indto.setReqBrCd(loginInfo.getBrCd());
-//        		indto.setReqDistCd(loginInfo.getDistCd());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
+			indto.setReqJgiName(loginInfo.getJgiName());
+			indto.setReqJgiNo(loginInfo.getJgiNo());
+    		indto.setReqBrCd(loginInfo.getBrCode());
+    		indto.setReqDistCd(loginInfo.getDistCode());
 
         	// 親施設リスト
     		SelectLnkTrtDataEntity trtParamEntity = new SelectLnkTrtDataEntity();

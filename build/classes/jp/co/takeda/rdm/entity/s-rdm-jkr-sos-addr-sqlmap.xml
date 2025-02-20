@@ -20,6 +20,26 @@
         	<result column="ADDR_CODE_CITY" property="addrCodeCity"/>
         	<result column="ADDR_NAME_CITY" property="addrNameCity"/>
 	</resultMap>
+	<select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
+        SELECT
+			ADDR_CODE_PREF, TK_CITY_CD, ADDR_NAME_PREF, TK_CITY_NAME, TRT_CD, SOS_CD, UP_JGI_NO, IS_DATE, UP_DATE, UP_SCRN_ID, UP_FUNC_ID
+        FROM
+            S_RDM_JKR_SOS_ADDR
+        <where>
+            <if test="addrCodePref != null">AND ADDR_CODE_PREF = #{addrCodePref}</if>
+            <if test="tkCityCd != null">AND TK_CITY_CD = #{tkCityCd}</if>
+            <if test="addrNamePref != null">AND ADDR_NAME_PREF = #{addrNamePref}</if>
+            <if test="tkCityName != null">AND TK_CITY_NAME = #{tkCityName}</if>
+            <if test="trtCd != null">AND TRT_CD = #{trtCd}</if>
+            <if test="sosCd != null">AND SOS_CD = #{sosCd}</if>
+            <if test="upJgiNo != null">AND UP_JGI_NO = #{upJgiNo}</if>
+            <if test="isDate != null">AND IS_DATE = #{isDate}</if>
+            <if test="upDate != null">AND UP_DATE = #{upDate}</if>
+            <if test="upScrnId != null">AND UP_SCRN_ID = #{upScrnId}</if>
+            <if test="upFuncId != null">AND UP_FUNC_ID = #{upFuncId}</if>
+
+        </where>
+    </select>
     <select id="selectNF011sosAddrChkData" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
 		SELECT
 		  SOS.ADDR_CODE_PREF
@@ -53,4 +73,27 @@
 		ORDER BY
 			ADDR_CODE_PREF ,ADDR_CODE_CITY
 	</select>
+	<select id="selectAddrCityComboList" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
+		SELECT DISTINCT
+			ADDR_CODE_PREF,
+			ADDR_NAME_PREF,
+			TK_CITY_CD,
+			TK_CITY_NAME
+		FROM
+			S_RDM_JKR_SOS_ADDR
+		ORDER BY
+			ADDR_CODE_PREF ,TK_CITY_CD
+	</select>
+	<select id="selectAddrPrefComboList" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
+		SELECT DISTINCT
+			ADDR_CODE_PREF,
+			ADDR_NAME_PREF
+		FROM
+			S_RDM_JKR_SOS_ADDR
+		<where>
+			<if test="trtCd != null">TRT_CD = #{trtCd}</if>
+		</where>
+		ORDER BY
+			ADDR_CODE_PREF
+    </select>
 </mapper>

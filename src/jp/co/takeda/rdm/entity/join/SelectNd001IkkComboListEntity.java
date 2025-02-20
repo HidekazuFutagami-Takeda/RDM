@@ -42,7 +42,7 @@ public class SelectNd001IkkComboListEntity extends BaseEntity implements Seriali
      * @generated
      */
     public SelectNd001IkkComboListEntity() {
-        super("m_rdm_hcp_shussinko" , "selectNd001IkkComboList");
+        super("m_rdm_hcp_shusshinko" , "selectNd001IkkComboList");
     }
 
 	/**

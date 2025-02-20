@@ -106,7 +106,7 @@ public class NC203Service extends BaseService {
     		// 管理者権限
     		selectinsListEntity.setKnrFlg(true);
     		selectParamSelectHcoEntity.setKnrFlg(true);
-    		if(("NF211".equals(indto.getWinVarName()) || "NF212".equals(indto.getWinVarName()))
+    		if(("NF211".equals(indto.getBackScreenId()) || "NF212".equals(indto.getBackScreenId()))
     				&& "1".equals(indto.getTkdTrtKbn()) && !indto.getTrtCd().isEmpty()){
     			selectinsListEntity.setTrtCd(indto.getTrtCd());
     			selectParamSelectHcoEntity.setTrtCd(indto.getTrtCd());
@@ -382,7 +382,7 @@ public class NC203Service extends BaseService {
     public BaseDTO list(NC203DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
-        String winVarName = indto.getWinVarName();
+        String backScreenId = indto.getBackScreenId();
 
         //廃院区分_生成用エンティティ
         MRdmCodeMstEntity paramHaiinKbn = new MRdmCodeMstEntity();
@@ -393,10 +393,10 @@ public class NC203Service extends BaseService {
 
         LinkedHashMap<String, String> mapHaiinKbn = new LinkedHashMap<String, String>();
 
-        if("ND011".equals(winVarName) || "ND014".equals(winVarName) || "ND101".equals(winVarName)
-        		|| "ND103".equals(winVarName) || "ND501".equals(winVarName) || "NF011".equals(winVarName)
-        		|| "NF012".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName)
-        		|| "NF401".equals(winVarName) || "NF403".equals(winVarName)) {
+        if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)
+        		|| "ND103".equals(backScreenId) || "ND501".equals(backScreenId) || "NF011".equals(backScreenId)
+        		|| "NF012".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId)
+        		|| "NF401".equals(backScreenId) || "NF403".equals(backScreenId)) {
         	for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
 		    	if("0".equals(outEntity.getValue1())) {
 		    		// 「0:通常」を選択し変更不可とする
@@ -420,10 +420,10 @@ public class NC203Service extends BaseService {
         List<MRdmCodeMstEntity> SelectDelFlg = dao.selectByValue(paramDelFlg);
 
         LinkedHashMap<String, String> mapDelFlg = new LinkedHashMap<String, String>();
-        if("ND011".equals(winVarName) || "ND014".equals(winVarName) || "ND101".equals(winVarName)
-        		|| "ND103".equals(winVarName) || "ND501".equals(winVarName) || "NF011".equals(winVarName)
-        		|| "NF012".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName)
-        		|| "NF401".equals(winVarName) || "NF403".equals(winVarName)) {
+        if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)
+        		|| "ND103".equals(backScreenId) || "ND501".equals(backScreenId) || "NF011".equals(backScreenId)
+        		|| "NF012".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId)
+        		|| "NF401".equals(backScreenId) || "NF403".equals(backScreenId)) {
 		    for (MRdmCodeMstEntity outEntity : SelectDelFlg) {
 		    	if("0".equals(outEntity.getValue1())) {
 		    		// 「0:無効」を選択し変更不可とする

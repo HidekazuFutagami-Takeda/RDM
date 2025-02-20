@@ -22,7 +22,6 @@ import jp.co.takeda.rdm.dto.NC202DTO;
 import jp.co.takeda.rdm.service.NC202Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.RdmConstantsData;
-import jp.co.takeda.rdm.util.JkrConstantsData;
 
 /**
  * Actionクラス

@@ -20,7 +20,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.service.ND001Service;
 import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.JkrConstantsData;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 
 /**
  * Actionクラス

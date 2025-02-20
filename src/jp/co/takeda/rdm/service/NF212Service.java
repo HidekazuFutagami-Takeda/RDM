@@ -132,7 +132,7 @@ public class NF212Service extends BaseService {
         	indto.setMainInsAddr("");
         	indto.setMainInsSbt("");
 
-        	indto.setReqShzNm(indto.getLoginShzNm());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());
@@ -201,7 +201,7 @@ public class NF212Service extends BaseService {
         	indto.setInsTanto("");
         	indto.setMainInsSbt("");
 
-        	indto.setReqShzNm(indto.getLoginShzNm());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());

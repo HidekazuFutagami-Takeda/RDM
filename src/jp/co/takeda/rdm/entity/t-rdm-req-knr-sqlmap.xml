@@ -430,22 +430,4 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
-	<update id="updateND101Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
-	UPDATE
-		T_RDM_REQ_KNR
-	SET
-		REQ_STS = #{reqStsCd},
-		TEKIYO_YMD = #{tekiyoYmd},
-		REQ_COMMENT = #{reqComment},
-		UPD_SHA_YMD = #{updShaYmd},
-		UPD_SHA_ID = #{updShaId}
-	WHERE
-		REQ_ID = #{reqId}
-	</update>
-	<select id="selectNd101DateChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
-	SELECT
-		UPD_SHA_YMD -- 申請管理.更新日
-	FROM
-		T_RDM_REQ_KNR WHERE REQ_ID = #{reqId}
-	</select>
 </mapper>

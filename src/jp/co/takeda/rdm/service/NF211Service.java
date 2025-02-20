@@ -115,7 +115,7 @@ public class NF211Service extends BaseService {
 		    	indto.setTekiyoYmd(tekiyoYmd);
         	}
 
-        	indto.setReqShzNm(indto.getLoginShzNm());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());
@@ -165,7 +165,7 @@ public class NF211Service extends BaseService {
 	        	indto.setTekiyoYmd(tekiyoYmd);
         	}
 
-        	indto.setReqShzNm(indto.getLoginShzNm());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());

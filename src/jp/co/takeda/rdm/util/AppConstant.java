@@ -2815,9 +2815,6 @@ public interface AppConstant {
     /** 組織,従業員,組織従業員での初期結果 */
     public static final String SESKEY_JKR100C010_SEARCHKEY = "JKR100C010_SEARCHKEY";
 
-    /** 医師勤務先追加での初期結果 */
-    public static final String SESKEY_ND103_SEARCHKEY = "SESKEY_ND103_SEARCHKEY";
-
     /** 所属学会編集ポップアップでの初期結果 */
     public static final String SESKEY_NC206_SEARCHKEY = "NC206_SEARCHKEY";
     /** 公的機関編集ポップアップでの初期結果 */
@@ -2828,9 +2825,8 @@ public interface AppConstant {
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
     /** 医師新規確認での初期結果 */
     public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
-    /** 医師勤務先追加 - 申請内容確認での初期結果 */
-    public static final String SESKEY_ND311_SEARCHKEY = "SESKEY_ND311_SEARCHKEY";
-
+    /** RDM医療機関への異動 */
+    public static final String SESKEY_ND307_SEARCHKEY = "ND307_SEARCHKEY";
     /** 施設検索での初期結果 */
     public static final String SESKEY_NF001_SEARCHKEY = "NF001_SEARCHKEY";
     /** 施設新規での初期結果 */
@@ -2839,6 +2835,8 @@ public interface AppConstant {
     public static final String SESKEY_NF012_SEARCHKEY = "NF012_SEARCHKEY";
     /** 施設削除での初期結果 */
     public static final String SESKEY_NF013_SEARCHKEY = "NF013_SEARCHKEY";
+    /** 施設復活での初期結果 */
+    public static final String SESKEY_NF014_SEARCHKEY = "NF014_SEARCHKEY";
     /** 施設紐付け新規での初期結果 */
     public static final String SESKEY_NF211_SEARCHKEY = "NF211_SEARCHKEY";
     /** 施設紐付け変更での初期結果 */
@@ -2861,6 +2859,7 @@ public interface AppConstant {
     public static final String SESKEY_NC203_SEARCHKEY = "NC203_SEARCHKEY";
     public static final String SESKEY_NC204_SEARCHKEY = "NC204_SEARCHKEY";
     public static final String SESKEY_NC205_SEARCHKEY = "NC205_SEARCHKEY";
+    public static final String SESKEY_NM001_SEARCHKEY = "NM001_SEARCHKEY";
 
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;

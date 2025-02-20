@@ -18,17 +18,17 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.NF013DTO;
-import jp.co.takeda.rdm.service.NF013Service;
+import jp.co.takeda.rdm.dto.NF014DTO;
+import jp.co.takeda.rdm.service.NF014Service;
 import jp.co.takeda.rdm.util.AppConstant;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nF013Action")
+@Named("nF014Action")
 @Scope("request")
-public class NF013Action extends BaseAction<NF013DTO> {
+public class NF014Action extends BaseAction<NF014DTO> {
 
     /**
      * シリアルバージョンID
@@ -41,7 +41,7 @@ public class NF013Action extends BaseAction<NF013DTO> {
      * @generated
      */
     @Inject
-    private NF013Service nF013Service;
+    private NF014Service NF014Service;
     // START UOC
     // END UOC
 
@@ -49,8 +49,8 @@ public class NF013Action extends BaseAction<NF013DTO> {
      * コンストラクタ
      * @generated
      */
-    public NF013Action() {
-        dto = new NF013DTO();
+    public NF014Action() {
+        dto = new NF014DTO();
     }
 
     /**
@@ -96,7 +96,7 @@ public class NF013Action extends BaseAction<NF013DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nF013Service.init(dto);
+        BaseDTO outdto = NF014Service.init(dto);
         return initNext(outdto);
     }
 
@@ -112,58 +112,49 @@ public class NF013Action extends BaseAction<NF013DTO> {
         dto.setPageCntCur(1);
 
         // 画面タイトル制御処理
-        String title = "NF013_施設削除";
-        //ユーザ権限
-        String jokenSetCd = dto.getLoginJokenSetCd();
+        String title = "NF014_施設復活";
 
         dto.setTitle(title);
 
         //モック
-//        dto.setUltInsCd("001100020");
-//        dto.setReqId("250114-000112"); // 領域担当者有req
-//        dto.setReqId("250124-000145");
+        dto.setInsNo("101030001");
+//        dto.setReqId("");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
-        String ultCd = dto.getUltInsCd();
+        String insNo = dto.getInsNo();
         dto.setPreScreenId(preScreenId);
 
         //モック
-//        String kbn = "1";
-//        if(kbn.equals("0")) {
-//	        preScreenId = "NF001";
-//	        dto.setLoginJgiNo("8830034");
-//	        dto.setReqId("");
-//        } else {
-//	        preScreenId = "NC011";
-//	        dto.setLoginJgiNo("8830034");
-//	//        dto.setLoginJgiNo("0");
-//	        //dto.setReqStsCd("01");
-//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-//        }
+        String kbn = "0";
+        if(kbn.equals("0")) {
+	        preScreenId = "NF001";
+	        dto.setLoginJgiNo("8830034");
+	        dto.setReqId("");
+        } else {
+	        preScreenId = "NC011";
+	        dto.setLoginJgiNo("8830034");
+	//        dto.setLoginJgiNo("0");
+	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+        }
 
         // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
-        // ULT施設コード　ありなしで分岐
+        // 施設固定コード　ありなしで分岐
         // NF001_施設検索
         if ("NF001".equals(preScreenId)) {
-        	if (ultCd != null && ultCd.length() > 0) {
-        		// ULT施設コードで初期データ作成
-        		dto.setDisplayKbn("1");
-        	} else if(ultCd == null || ultCd.length() == 0){
-        		// 完全新規
+        	if (insNo != null && insNo.length() > 0) {
+        		// 施設固定コードで初期データ作成
         		dto.setDisplayKbn("0");
         	} else { //遷移エラー
         	}
         }
         // 申請ID
         // NC011_申請一覧
-        // NF301_施設新規作成 - 申請内容確認
-        // NM101_通知内容詳細
-        if ("NC011".equals(preScreenId) || "NF301".equals(preScreenId) || "NM101".equals(preScreenId)) {
+        if ("NC011".equals(preScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
-        		dto.setDisplayKbn("2");
+        		dto.setDisplayKbn("1");
         	} else { //遷移エラー
         	}
         }
@@ -180,7 +171,7 @@ public class NF013Action extends BaseAction<NF013DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NF013_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_NF014_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -194,7 +185,7 @@ public class NF013Action extends BaseAction<NF013DTO> {
     public String register() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nF013Service.register(dto);
+        BaseDTO outdto = NF014Service.register(dto);
         return registerNext(outdto);
     }
 
@@ -225,7 +216,7 @@ public class NF013Action extends BaseAction<NF013DTO> {
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
 		// 本画面を再表示
-		outdto.setForward("NF013");
+		outdto.setForward("NF014");
 
         setNextDTO(outdto);
         return outdto.getForward();
@@ -239,8 +230,8 @@ public class NF013Action extends BaseAction<NF013DTO> {
     public String cancel() throws Exception {
         cancelSetup();
         // F層呼び出し
-        BaseDTO outdto = nF013Service.cancel(dto);
-        outdto = nF013Service.init(dto);
+        BaseDTO outdto = NF014Service.cancel(dto);
+        outdto = NF014Service.init(dto);
         return cancelNext(outdto);
     }
 
@@ -277,8 +268,8 @@ public class NF013Action extends BaseAction<NF013DTO> {
     public String shnComp() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nF013Service.shnComp(dto);
-        outdto = nF013Service.init(dto);
+        BaseDTO outdto = NF014Service.shnComp(dto);
+        outdto = NF014Service.init(dto);
         return shnCompNext(outdto);
     }
 
@@ -301,7 +292,7 @@ public class NF013Action extends BaseAction<NF013DTO> {
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
     	// END UOC
-    	outdto.setForward("NF013");
+    	outdto.setForward("NF014");
         setNextDTO(outdto);
         return outdto.getForward();
     }

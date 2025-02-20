@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  施設復活のJSP
+ *  施設復活 - 申請内容確認のJSP
  * </pre>
  * @since 1.0
  * @version $Revision: 1.3 $
@@ -41,7 +41,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-  <title>NF014_施設復活</title>
+  <title>NF307_施設復活 - 申請内容確認</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -52,90 +52,40 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <script type="text/javascript" src="js/catHcpPub.js"></script>
     <script>
 
-	comClickFlgInit();
+    comClickFlgInit();
 
-    // 初期表示処理
-    function onLoadFunc(){
-    	editFlg = document.fm1.editApprFlg.value;
-
-		if(editFlg == "0") {
-			// 復活理由
-			document.fm1.rstReasonView.value = document.fm1.rstReason.options[document.fm1.rstReason.selectedIndex].textContent;
-			document.fm1.rstReason.hidden = "true";
-		} else {
-			document.fm1.rstReasonView.hidden = "true";
-		}
-    }
-
-    // 戻るボタン
-	function backBtn(){
-		document.fm1.target="";
-		const preScreenId = document.fm1.preScreenId.value;
-		if(preScreenId == "NF001"){
-			if(window.confirm("施設検索画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
-			}
-		} else if(preScreenId == "NC011"){
-			if(window.confirm("申請一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
-			}
-		}
-	}
-
-	// 申請破棄ボタン
-	function reqCancelBtn(){
-		document.fm1.target="";
-		if(window.confirm("申請データを破棄します。よろしいですか？")){
-		// 申請データを破棄（＝物理的に削除）し、遷移元画面へ遷移する（本画面のタブを閉じる）
-		// 申請IDで対象を絞り込み申請管理、施設_申請管理、施設_領域担当者ワークを削除
-
-			document.fm1.screenId.value="NF014";
-			document.fm1.functionId.value="Cancel";
+    function backBtn(){
+    	if(window.confirm("施設復活画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+    		// NF014_施設復活画面に遷移
+    		document.fm1.screenId.value="NF014";
+			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
-		}
-	}
+    	}
+    }
 
-	// 一時保存ボタン、申請画面へ、承認・却下画面へボタン
-	function submitBtn(funcId){
-
-		document.fm1.funcId.value = funcId;
-		document.fm1.screenId.value="NF014";
-
-		if(funcId == "0") {
-			// 一時保存
-			document.fm1.screenId.value="NF014";
+    function rejectBtn(){
+    	if(window.confirm("申請データを却下します。よろしいですか？")){
+    		// エラーチェック後に、DB登録定義(申請管理)シートの通り申請管理を更新する
+			// NC011_申請一覧へ遷移する
+    		document.fm1.screenId.value="NF307";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF307";
-			document.fm1.functionId.value="ApprRej";
-		} else {
-			// 申請
-			document.fm1.screenId.value="NF307";
-			document.fm1.functionId.value="Init";
-		}
+			document.fm1.funcId.value = "3";
 
-		document.fm1.target="";
+			comSubmitForAnyWarp(fm1);
+    	}
+    }
+
+    function reqApprBtn(funcId){
+    	// エラーチェック後に、DB登録定義(申請管理)シートの通り申請管理を更新する
+    	// NC101_完了画面へ遷移する
+    	// funcId 1申請 2承認
+   		document.fm1.screenId.value="NF307";
+		document.fm1.functionId.value="Register";
+		document.fm1.funcId.value = funcId;
+
 		comSubmitForAnyWarp(fm1);
-	}
-
-	// 審査完了ボタン
-	function shnCompBtn(){
-
-		document.fm1.screenId.value="NF014";
-		document.fm1.functionId.value="ShnComp";
-
-		document.fm1.target="";
-		comSubmitForAnyWarp(fm1);
-
-	}
+    }
 
     </script>
 </head>
@@ -277,9 +227,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
-	<s:hidden name="editApprFlg"/>
-
-	<s:hidden name="winVarName" value="NF014" />
+	<s:hidden name="reqChl"/>
+	<s:hidden name="btnEnableFlg"/>
 
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>
@@ -447,6 +396,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       	<s:hidden name="insPcode"/>
       	<s:hidden name="insAddr"/>
       	<s:hidden name="delReason"/>
+      	<s:hidden name="rstReason"/>
         <%--申請内容--%>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
@@ -477,45 +427,39 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>削除理由</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="delReason"/></nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>復活理由<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="rstReason" name="rstReason" cssStyle="width:130pt" list="rstReasonCombo"/>
-	      	<s:textfield id="rstReasonView" name="rstReasonView" cssStyle="width:130pt" readonly="true" />
-	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>復活理由</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="rstReason"/></nobr></td>
       </tr>
   </table>
 
-  <%--コメント類 --%>
   <table id="formTable03" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--コメント--%>
         <td style="width: 650px; height: 0px; border-width: 0px;"></td>
       </tr>
-        <tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
-        <tr>
-	      <td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
-      </tr>
-      <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
       <tr>
-	      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
-      </tr>
-      <tr>
-      	<s:if test='%{reqStsCd == "03" || reqStsCd == "13"}'>
-	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
+      	<s:if test='%{reqStsCd == "01"}'>
+	    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" /></nobr></td>
       	</s:if>
       	<s:else>
-      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
+      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
       	</s:else>
       </tr>
+      <s:if test='%{loginJokenSetCd == "JKN0813"}'>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
+	      </tr>
+	      <tr>
+	      	<s:if test='%{reqStsCd == "03" || reqStsCd == "13"}'>
+		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
+	      	</s:if>
+	      	<s:else>
+	      		<td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+	      	</s:else>
+	      </tr>
       </s:if>
   </table>
 
@@ -532,65 +476,50 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">
                 <nobr>
                 <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
+                <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
+                	<s:if test='%{btnEnableFlg == "1"}'>
+	                	<input class="comButton" type="button"name="buttonF2" value="却下" onClick="JavaScript:rejectBtn();return false;" />
+	                </s:if>
+	                <s:else>
+	                	<input class="comButton" type="button"name="buttonF2" value="却下" onClick="JavaScript:rejectBtn();return false;" disabled />
+	                </s:else>
+                </s:if>
                 </nobr>
 	      </td>
-	      <td class="comFormTableItem">
-                <nobr>
-				<s:if test='%{loginJgiNo == reqJgiNo && reqStsCd == "01"}'>
-	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="JavaScript:reqCancelBtn();return false;" />
-				</s:if>
-				<s:else>
-					&nbsp;
-				</s:else>
-                </nobr>
-	      </td>
-	      <td class="comFormTableItem">
-                <nobr>
-				<s:if test='%{loginJgiNo == reqJgiNo}'>
-					<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01" && reqStsCd != "03" && reqStsCd != "13")}'>
-		                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/>
-		            </s:if>
-		            <s:else>
-		            	<input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" />
-		           	</s:else>
-				</s:if>
-				<s:else>
-					&nbsp;
-				</s:else>
-                </nobr>
-	      </td>
-	      <td class="comFormTableItem">
-                <nobr>
-				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
-					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
-		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="JavaScript:shnCompBtn();return false;"  disabled/>
-					</s:if>
-					<s:else>
-		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="JavaScript:shnCompBtn();return false;" />
-					</s:else>
-				</s:if>
-				<s:else>
-					&nbsp;
-				</s:else>
-                </nobr>
-	      </td>
+	      <td class="comFormTableItem">&nbsp;</td>
+	      <td class="comFormTableItem">&nbsp;</td>
+	      <td class="comFormTableItem">&nbsp;</td>
 	      <td class="comFormTableItem">
                <nobr>
-				<s:if test='%{(reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
-		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/>
-				</s:if>
-				<s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13")}'>
-					<s:if test='%{(loginJokenSetCd == "JKN0813")}'>
-		                <input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;" />
+               	<s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
+               		<s:if test='%{btnEnableFlg == "1"}'>
+	               		<s:if test='%{reqStsCd == "03"}'>
+	               			<input type="checkbox" id="fbReqFlg" name="fbReqFlg" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               		</s:if>
+						<input class="comButton" type="button"name="buttonF3" value="承認" onClick="reqApprBtn('2');JavaScript:return false;" />
 					</s:if>
 					<s:else>
-						<input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;" disabled />
+						<s:if test='%{reqStsCd == "03"}'>
+							<input type="checkbox" id="fbReqFlg" name="fbReqFlg" readonly="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+						</s:if>
+						<input class="comButton" type="button"name="buttonF3" value="承認" onClick="reqApprBtn('2');JavaScript:return false;" disabled />
 					</s:else>
-				</s:elseif>
+				</s:if>
 				<s:else>
-	                &nbsp;
-				</s:else>
-                </nobr>
+					&nbsp;
+               	</s:else>
+               	<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+               		<s:if test='%{btnEnableFlg == "1"}'>
+						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" />
+					</s:if>
+					<s:else>
+						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" disabled />
+					</s:else>
+				</s:if>
+				<s:else>
+					&nbsp;
+               	</s:else>
+               </nobr>
 	      </td>
 	  </tr>
   </table>

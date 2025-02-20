@@ -166,6 +166,10 @@ public class NF014Service extends BaseService {
 			indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 			indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
 			indto.setRstReason(StringUtils.nvl(mainDataEntity.getRstReason(), ""));
+
+			indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
+			indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
+
 		}
 
 		// DropDownList作成
@@ -266,6 +270,12 @@ public class NF014Service extends BaseService {
 			errFlg = true;
 		}
 
+		if (indto.getAprMemo() != null && indto.getAprMemo().length() > 300) {
+			// 最大文字数を超えています。（審査・承認メモ）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "審査・承認メモ") + "\n";
+			errFlg = true;
+		}
+
 		// エラー時処理
 		if (errFlg) {
 			indto.setMsgStr(errMsg);
@@ -297,14 +307,16 @@ public class NF014Service extends BaseService {
 				tRdmReqKnrInsData.setReqChl("1");
 				tRdmReqKnrInsData.setReqKngKbn("1");
 			}
-			tRdmReqKnrInsData.setReqType("01");
+			tRdmReqKnrInsData.setReqType("04");
 			tRdmReqKnrInsData.setReqStsCd("01");
+			indto.setReqStsCd("01");
 			tRdmReqKnrInsData.setReqBrCd(indto.getReqBrCd());
 			tRdmReqKnrInsData.setReqDistCd(indto.getReqDistCd());
 			tRdmReqKnrInsData.setReqShzNm(indto.getReqShzNm());
 			tRdmReqKnrInsData.setReqJgiNo(indto.getReqJgiNo());
 			tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
 			tRdmReqKnrInsData.setReqComment(indto.getReqComment());
+			tRdmReqKnrInsData.setInsNo(indto.getInsNo());
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
 			tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
@@ -314,10 +326,17 @@ public class NF014Service extends BaseService {
 
 		} else {
 			// 更新
-			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF011Data");
+			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF014Data");
 			tRdmReqKnrUpdData.setReqId(reqId);
-			tRdmReqKnrUpdData.setReqStsCd("01");
+			if("13".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd("11");
+				indto.setReqStsCd("11");
+			} else {
+				tRdmReqKnrUpdData.setReqStsCd("01");
+				indto.setReqStsCd("01");
+			}
 			tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+			tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());
 			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
 			tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
 
@@ -333,6 +352,21 @@ public class NF014Service extends BaseService {
 			// 新規登録
 			TRdmHcoReqEntity tRdmHcoReqInsData = new TRdmHcoReqEntity();
 			tRdmHcoReqInsData.setReqId(reqId);
+			tRdmHcoReqInsData.setInsNo(indto.getInsNo());
+
+			// 削除施設の施設名は先頭に'●'が入っているので、'●'を除いた値をセットする
+			String insAbbrName = indto.getInsAbbrName();
+			if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
+				insAbbrName = insAbbrName.substring(1);
+			}
+			tRdmHcoReqInsData.setInsAbbrName(insAbbrName);
+
+			String insFormalName = indto.getInsFormalName();
+			if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
+				insFormalName = insFormalName.substring(1);
+			}
+			tRdmHcoReqInsData.setInsFormalName(insFormalName);
+
 			tRdmHcoReqInsData.setRstReason(indto.getRstReason());
 			tRdmHcoReqInsData.setInsShaYmd(sysDate);
 			tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
@@ -343,7 +377,22 @@ public class NF014Service extends BaseService {
 
 		} else {
 			// 更新
-			TRdmHcoReqEntity tRdmHcoReqUpdData = new TRdmHcoReqEntity("updateNF011Data");
+			TRdmHcoReqEntity tRdmHcoReqUpdData = new TRdmHcoReqEntity("updateNF014Data");
+			tRdmHcoReqUpdData.setReqId(reqId);
+
+			// 削除施設の施設名は先頭に'●'が入っているので、'●'を除いた値をセットする
+			String insAbbrName = indto.getInsAbbrName();
+			if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
+				insAbbrName = insAbbrName.substring(1);
+			}
+			tRdmHcoReqUpdData.setInsAbbrName(insAbbrName);
+
+			String insFormalName = indto.getInsFormalName();
+			if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
+				insFormalName = insFormalName.substring(1);
+			}
+			tRdmHcoReqUpdData.setInsFormalName(insFormalName);
+
 			tRdmHcoReqUpdData.setRstReason(indto.getRstReason());
 			tRdmHcoReqUpdData.setUpdShaYmd(sysDate);
 			tRdmHcoReqUpdData.setUpdShaId(indto.getLoginJgiNo());
@@ -352,7 +401,6 @@ public class NF014Service extends BaseService {
 		}
 
 		indto.setReqId(reqId);
-		indto.setReqStsCd("01");
 		indto.setDisplayKbn("1");
 
 		outdto = init(indto);

@@ -2001,8 +2001,8 @@ public class NF303Service extends BaseService {
 
 		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
 		if(mRdmParamMstEntityList.size() > 0) {
-			// valueの左一桁
-			String value = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+			// valueの左から二桁目
+			String value = mRdmParamMstEntityList.get(0).getValue().substring(1,2);
 			if("1".equals(value)) {
 				// 申請ボタン活性
 				indto.setBtnEnableFlg("1");

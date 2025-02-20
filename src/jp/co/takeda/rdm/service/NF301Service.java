@@ -553,7 +553,9 @@ public class NF301Service extends BaseService {
         if(indto.getUltInsCd() != null && !indto.getUltInsCd().equals("")) {
 	        TRdmHcoReqEntity tRdmHcoReqchkEntity = new TRdmHcoReqEntity("selectNF011UltChkData");
 	        tRdmHcoReqchkEntity.setUltInsNo(indto.getUltInsCd());
-	        tRdmHcoReqchkEntity.setReqId(indto.getReqId());
+	        if(indto.getReqId() != null && !indto.getReqId().isEmpty()) {
+	        	tRdmHcoReqchkEntity.setReqId(indto.getReqId());
+	        }
 	        List<TRdmHcoReqEntity> tRdmHcoReqchkEntityList = dao.select(tRdmHcoReqchkEntity);
 
 	        if(tRdmHcoReqchkEntityList.size() > 0) {
@@ -1466,7 +1468,9 @@ public class NF301Service extends BaseService {
         if(indto.getUltInsCd() != null && !indto.getUltInsCd().equals("")) {
 	        TRdmHcoReqEntity tRdmHcoReqchkEntity = new TRdmHcoReqEntity("selectNF011UltChkData");
 	        tRdmHcoReqchkEntity.setUltInsNo(indto.getUltInsCd());
-	        tRdmHcoReqchkEntity.setReqId(indto.getReqId());
+	        if(indto.getReqId() != null && !indto.getReqId().isEmpty()) {
+	        	tRdmHcoReqchkEntity.setReqId(indto.getReqId());
+	        }
 	        List<TRdmHcoReqEntity> tRdmHcoReqchkEntityList = dao.select(tRdmHcoReqchkEntity);
 
 	        if(tRdmHcoReqchkEntityList.size() > 0) {
@@ -1603,10 +1607,9 @@ public class NF301Service extends BaseService {
 
         	dao.update(tRdmReqKnrEntity);
 
-
+        	outdto.setForward("NC011");
 		}
 
-		outdto.setForward("NC011");
 		// END UOC
 		return outdto;
     }
@@ -2098,7 +2101,9 @@ public class NF301Service extends BaseService {
         if(indto.getUltInsCd() != null && !indto.getUltInsCd().equals("")) {
 	        TRdmHcoReqEntity tRdmHcoReqchkEntity = new TRdmHcoReqEntity("selectNF011UltChkData");
 	        tRdmHcoReqchkEntity.setUltInsNo(indto.getUltInsCd());
-	        tRdmHcoReqchkEntity.setReqId(indto.getReqId());
+	        if(indto.getReqId() != null && !indto.getReqId().isEmpty()) {
+	        	tRdmHcoReqchkEntity.setReqId(indto.getReqId());
+	        }
 	        List<TRdmHcoReqEntity> tRdmHcoReqchkEntityList = dao.select(tRdmHcoReqchkEntity);
 
 	        if(tRdmHcoReqchkEntityList.size() > 0) {

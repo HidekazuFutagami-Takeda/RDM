@@ -15,7 +15,9 @@ import java.util.List;
 import javax.inject.Named;
 
 import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.CatSnseiComboDataList;
 import jp.co.takeda.rdm.dto.NC011DTO;
 import jp.co.takeda.rdm.entity.MRdmComCalUsrEntity;
@@ -59,6 +61,9 @@ public class NC011Service extends BaseService {
 
     //カレンダーの実装
     private void cal(NC011DTO indto)  throws ParseException  {
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        loginInfo.getPreScreenId();
+
     	//本日日付_RDM用カレンダー(オンライン用)_生成用エンティティ
     	MRdmComCalUsrEntity paramComCalUsrToday = new MRdmComCalUsrEntity("1");
 
@@ -70,13 +75,16 @@ public class NC011Service extends BaseService {
         // SimpleDateFormatで日付フォーマット設定
      	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //本日日付データ_取り出す
-     	if(indto.getPreScreenId().equals("NM001")) {
-     		if(indto.getReqYmdhmsTo().length() == 8) {
-         	indto.setReqYmdhmsTo(indto.getReqYmdhmsTo().substring(0, 4)+ '-' + indto.getReqYmdhmsTo().substring(4, 6)+ '-' + indto.getReqYmdhmsTo().substring(6, 8));
-         	indto.setReqYmdhmsFrom(indto.getReqYmdhmsFrom().substring(0, 4)+ '-' + indto.getReqYmdhmsFrom().substring(4, 6)+ '-' + indto.getReqYmdhmsFrom().substring(6, 8));
-    	}
+     	if(loginInfo.getPreScreenId().equals("NM001")) {
+     		//if(indto.getReqYmdhmsTo().length() == 8) {
+//         	indto.setReqYmdhmsTo(indto.getReqYmdhmsTo().substring(0, 4)+ '-' + indto.getReqYmdhmsTo().substring(4, 6)+ '-' + indto.getReqYmdhmsTo().substring(6, 8));
+//         	indto.setReqYmdhmsFrom(indto.getReqYmdhmsFrom().substring(0, 4)+ '-' + indto.getReqYmdhmsFrom().substring(4, 6)+ '-' + indto.getReqYmdhmsFrom().substring(6, 8));
+         	indto.setReqYmdhmsTo(indto.getInreqYmdhmsTo());
+         	indto.setReqYmdhmsFrom(indto.getInreqYmdhmsFrom());
+
+     		//}
      	}
-     	if(!indto.getPreScreenId().equals("NM001")) {
+     	if(!loginInfo.getPreScreenId().equals("NM001")) {
         for (MRdmComCalUsrEntity entity : SelectComCalUsrKako) {
             //検索結果_本日日付
             indto.setInreqYmdhmsFrom(sdf.format(entity.getCalDate()));
@@ -99,6 +107,7 @@ public class NC011Service extends BaseService {
         for (SRdmJkrSosAddrEntiry outEntity : jkrSosAddrMap) {
         	mapAddr.put(outEntity.getAddrCodePref(),outEntity.getAddrNamePref());
         }
+        mapAddr.put("99","その他");
         indto.setJkrSosAddrMap(mapAddr);
         // END UOC
     }
@@ -242,6 +251,8 @@ public class NC011Service extends BaseService {
 
   //ドロップダウンリスト-連携種別
     private void  reqSbtDrop(NC011DTO indto) {
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        loginInfo.getPreScreenId();
         // START UOC
         LinkedHashMap<String, String> mapAddr = new LinkedHashMap<String, String>();
         mapAddr.put(null,"全て");
@@ -249,24 +260,24 @@ public class NC011Service extends BaseService {
         mapAddr.put("1","ULT連携");
 
         indto.setJkrSosReqSbtMap(mapAddr);
-
-        if(indto.getReqChl().equals("01")) {
+        if(loginInfo.getPreScreenId().equals("NM001")) {
+        if(indto.getReqChl().equals("1")) {
             indto.setReqSbt("0");
             indto.setReqChl("01");
         }
-        if(indto.getReqChl().equals("02")) {
+        if(indto.getReqChl().equals("2")) {
             indto.setReqSbt("0");
             indto.setReqChl("02");
         }
-        if(indto.getReqChl().equals("03")) {
+        if(indto.getReqChl().equals("3")) {
             indto.setReqSbt("1");
             indto.setReqChl("13");
         }
-        if(indto.getReqChl().equals("04")) {
+        if(indto.getReqChl().equals("4")) {
             indto.setReqSbt("1");
             indto.setReqChl("14");
         }
-
+        }
         // END UOC
     }
 
@@ -330,6 +341,9 @@ public class NC011Service extends BaseService {
      */
     @Transactional
     public BaseDTO init(NC011DTO indto) throws ParseException{
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+    	indto.setPreScreenId(loginInfo.getPreScreenId());
+
         BaseDTO outdto = indto;
         // START UOC
         addrDrop(indto);
@@ -483,6 +497,21 @@ public class NC011Service extends BaseService {
           //申請チャネルの検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setReqChl(StringUtils.setEmptyToNull(indto.getReqChl()));
           selectCntSelectReqListEntity.setReqChl(StringUtils.setEmptyToNull(indto.getReqChl()));
+          if(paramEntity.getReqChl() !=null) {
+          if(paramEntity.getReqChl().equals("01")) {
+        	  paramEntity.setReqChl("1");
+        	  selectCntSelectReqListEntity.setReqChl("1");
+          }else if(paramEntity.getReqChl().equals("02")) {
+        	  paramEntity.setReqChl("2");
+        	  selectCntSelectReqListEntity.setReqChl("2");
+          }else if(paramEntity.getReqChl().equals("13")) {
+        	  paramEntity.setReqChl("3");
+        	  selectCntSelectReqListEntity.setReqChl("3");
+          }else if(paramEntity.getReqChl().equals("14")) {
+        	  paramEntity.setReqChl("4");
+        	  selectCntSelectReqListEntity.setReqChl("4");
+          }
+          }
 
 
           //勤務形態の検索値のセット、setEmptyToNullで空文字をNullに置換している。

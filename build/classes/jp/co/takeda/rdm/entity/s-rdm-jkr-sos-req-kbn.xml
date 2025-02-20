@@ -16,7 +16,7 @@
 	  WHERE
 	        CODE_NAME ='REQ_KBN_LB'
 	  AND   DEL_FLG = 0
-	  AND NOT VALUE1 LIKE '%X%'
+
 	  ORDER BY
 	   	    VALUE1
     </select>
@@ -39,7 +39,7 @@
    OR   VALUE1 LIKE '4%'
    OR   VALUE1 LIKE '5%')
    </if>
-   AND NOT VALUE1 LIKE '%X%'
+
    ORDER BY
    VALUE1
 

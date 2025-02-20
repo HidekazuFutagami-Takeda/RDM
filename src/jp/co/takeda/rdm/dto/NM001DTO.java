@@ -75,15 +75,6 @@ public class NM001DTO extends BaseDTO implements Serializable {
 
 
 
-    /**
-     * 検索-種別
-     * @generated
-     */
-    private String reqType;
-
-
-
-
 
 
 	/**
@@ -161,6 +152,11 @@ public class NM001DTO extends BaseDTO implements Serializable {
 	public void setMrAdminFlg(String mrAdminFlg) {
 		this.mrAdminFlg = mrAdminFlg;
 	}
+	/**
+	 * 画面タイトル
+	 * @generated
+	 */
+	private String title;
 	/**
 	 * Offset値を取得します。
 	 * @return Offset値
@@ -670,6 +666,16 @@ public class NM001DTO extends BaseDTO implements Serializable {
 	public void setMsgData(String msgData) {
 		this.msgData = msgData;
 	}
+	/**
+	 * NM001DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	/**
 	 * 検索-申請日時
@@ -726,41 +732,24 @@ public class NM001DTO extends BaseDTO implements Serializable {
 	public void setKnYmdhmsTo(String knYmdhmsTo) {
 		this.knYmdhmsTo = knYmdhmsTo;
 	}
+    /**
+     * 検索-申請区分
+     * @generated
+     */
+    private String reqType;
         /**
-     * reqChl
+     * reqChl　申請チャネル
      * @generated
      */
 
     private String reqChl;
 
-
         /**
-     * reqSts
+     * reqSts　申請ステータス
      * @generated
      */
 
     private String reqSts;
-
-
-    /**
-     * 施設名-検索用
-     */
-    private String insKanjiSrch;
-
-	    /**
-		 * 施設名-検索用を取得します。
-		 * @return 施設名-検索用
-		 */
-		public String getInsKanjiSrch() {
-			return insKanjiSrch;
-		}
-	/**
-	 * 施設名-検索用を設定します。
-	 * @param insKanjiSrch 施設名-検索用
-	 */
-	public void setInsKanjiSrch(String insKanjiSrch) {
-		this.insKanjiSrch = insKanjiSrch;
-	}
 
 
         /**
@@ -777,98 +766,722 @@ public class NM001DTO extends BaseDTO implements Serializable {
 
 	private String reqJgiNo;
 
-    /**
-     *部門ランク
-     */
-	private String bumonRank;
+    private String reqType1;
+    private String reqType2;
+    private String reqType3;
+    private String reqType4;
+    private String reqType5;
+    private String reqType6;
+    private String reqType7;
+    private String reqType8;
+    private String reqType9;
+    private String reqType10;
+    private String reqType11;
+    private String reqType12;
+    private String reqType13;
+    private String reqType14;
+    private String reqType15;
+    private String reqType16;
+    private String reqType17;
+    private String reqType18;
+    private String reqType19;
+    private String reqType20;
+    private String reqType21;
+    private String reqType22;
+    private String reqType23;
+    private String reqType24;
+    private String reqType25;
+    private String reqType26;
+    private String reqType27;
+    private String reqType28;
+    private String reqType29;
+    private String reqType30;
+    private String reqType31;
+    private String reqType32;
+    private String reqType33;
+    private String reqType34;
+    private String reqChl1;
+    private String reqChl2;
+    private String reqChl3;
+    private String reqChl4;
+    private String reqChl5;
+    private String reqChl6;
+    private String reqChl7;
+    private String reqChl8;
+    private String reqChl9;
+    private String reqChl10;
+    private String reqChl11;
+    private String reqChl12;
+    private String reqChl13;
+    private String reqChl14;
+    private String reqChl15;
+    private String reqChl16;
+    private String reqChl17;
+    private String reqChl18;
+    private String reqChl19;
+    private String reqChl20;
+    private String reqChl21;
+    private String reqChl22;
+    private String reqChl23;
+    private String reqChl24;
+    private String reqChl25;
+    private String reqChl26;
+    private String reqChl27;
+    private String reqChl28;
+    private String reqChl29;
+    private String reqChl30;
+    private String reqChl31;
+    private String reqChl32;
+    private String reqChl33;
+    private String reqChl34;
+    private String reqSts1;
+    private String reqSts2;
+    private String reqSts3;
+    private String reqSts4;
+    private String reqSts5;
+    private String reqSts6;
+    private String reqSts7;
+    private String reqSts8;
+    private String reqSts9;
+    private String reqSts10;
+    private String reqSts11;
+    private String reqSts12;
+    private String reqSts13;
+    private String reqSts14;
+    private String reqSts15;
+    private String reqSts16;
+    private String reqSts17;
+    private String reqSts18;
+    private String reqSts19;
+    private String reqSts20;
+    private String reqSts21;
+    private String reqSts22;
+    private String reqSts23;
+    private String reqSts24;
+    private String reqSts25;
+    private String reqSts26;
+    private String reqSts27;
+    private String reqSts28;
+    private String reqSts29;
+    private String reqSts30;
+    private String reqSts31;
+    private String reqSts32;
+    private String reqSts33;
+    private String reqSts34;
 
-    public String getBumonRank() {
-		return bumonRank;
+
+	public String getReqType1() {
+		return reqType1;
 	}
-	public void setBumonRank(String bumonRank) {
-		this.bumonRank = bumonRank;
+	public void setReqType1(String reqType1) {
+		this.reqType1 = reqType1;
 	}
-
-    /**
-     *組織コード
-     */
-	private String sosCd;
-
-	public String getSosCd() {
-		return sosCd;
+	public String getReqType2() {
+		return reqType2;
 	}
-	public void setSosCd(String sosCd) {
-		this.sosCd = sosCd;
+	public void setReqType2(String reqType2) {
+		this.reqType2 = reqType2;
 	}
-
-    /**
-     *組織名称
-     */
-	private String bumonRyakuName;
-
-	public String getBumonRyakuName() {
-		return bumonRyakuName;
+	public String getReqType3() {
+		return reqType3;
 	}
-	public void setBumonRyakuName(String bumonRyakuName) {
-		this.bumonRyakuName = bumonRyakuName;
+	public void setReqType3(String reqType3) {
+		this.reqType3 = reqType3;
 	}
-
-
-	    /**
-	 * brCode
-	 * @generated
-	 */
-
-	/**
-	 * 医薬支店Cとの比較
-	 */
-	private String brCode;
-
-
-		/**
-	 * distCode
-	 * @generated
-	 */
-
-	private String distCode;
-
-    /**
-	 * brCodeを取得します。
-	 * @return brCode
-	 */
-	public String getBrCode() {
-		return brCode;
+	public String getReqType4() {
+		return reqType4;
 	}
-	/**
-	 * brCodeを設定します。
-	 * @param brCode reqBrCode
-	 */
-	public void setReqBrCode(String brCode) {
-		this.brCode = brCode;
+	public void setReqType4(String reqType4) {
+		this.reqType4 = reqType4;
 	}
-	/**
-	 * distCodeを取得します。
-	 * @return distCode
-	 */
-	public String getDistCode() {
-		return distCode;
+	public String getReqType5() {
+		return reqType5;
 	}
-	/**
-	 * distCodeを設定します。
-	 * @param distCode distCode
-	 */
-	public void setDistCode(String distCode) {
-		this.distCode = distCode;
+	public void setReqType5(String reqType5) {
+		this.reqType5 = reqType5;
 	}
-
-		/**
-     * reqShz
-     * @generated
-     */
-
-    private String reqShz;
-
-
+	public String getReqType6() {
+		return reqType6;
+	}
+	public void setReqType6(String reqType6) {
+		this.reqType6 = reqType6;
+	}
+	public String getReqType7() {
+		return reqType7;
+	}
+	public void setReqType7(String reqType7) {
+		this.reqType7 = reqType7;
+	}
+	public String getReqType8() {
+		return reqType8;
+	}
+	public void setReqType8(String reqType8) {
+		this.reqType8 = reqType8;
+	}
+	public String getReqType9() {
+		return reqType9;
+	}
+	public void setReqType9(String reqType9) {
+		this.reqType9 = reqType9;
+	}
+	public String getReqType10() {
+		return reqType10;
+	}
+	public void setReqType10(String reqType10) {
+		this.reqType10 = reqType10;
+	}
+	public String getReqType11() {
+		return reqType11;
+	}
+	public void setReqType11(String reqType11) {
+		this.reqType11 = reqType11;
+	}
+	public String getReqType12() {
+		return reqType12;
+	}
+	public void setReqType12(String reqType12) {
+		this.reqType12 = reqType12;
+	}
+	public String getReqType13() {
+		return reqType13;
+	}
+	public void setReqType13(String reqType13) {
+		this.reqType13 = reqType13;
+	}
+	public String getReqType14() {
+		return reqType14;
+	}
+	public void setReqType14(String reqType14) {
+		this.reqType14 = reqType14;
+	}
+	public String getReqType15() {
+		return reqType15;
+	}
+	public void setReqType15(String reqType15) {
+		this.reqType15 = reqType15;
+	}
+	public String getReqType16() {
+		return reqType16;
+	}
+	public void setReqType16(String reqType16) {
+		this.reqType16 = reqType16;
+	}
+	public String getReqType17() {
+		return reqType17;
+	}
+	public void setReqType17(String reqType17) {
+		this.reqType17 = reqType17;
+	}
+	public String getReqType18() {
+		return reqType18;
+	}
+	public void setReqType18(String reqType18) {
+		this.reqType18 = reqType18;
+	}
+	public String getReqType19() {
+		return reqType19;
+	}
+	public void setReqType19(String reqType19) {
+		this.reqType19 = reqType19;
+	}
+	public String getReqType20() {
+		return reqType20;
+	}
+	public void setReqType20(String reqType20) {
+		this.reqType20 = reqType20;
+	}
+	public String getReqType21() {
+		return reqType21;
+	}
+	public void setReqType21(String reqType21) {
+		this.reqType21 = reqType21;
+	}
+	public String getReqType22() {
+		return reqType22;
+	}
+	public void setReqType22(String reqType22) {
+		this.reqType22 = reqType22;
+	}
+	public String getReqType23() {
+		return reqType23;
+	}
+	public void setReqType23(String reqType23) {
+		this.reqType23 = reqType23;
+	}
+	public String getReqType24() {
+		return reqType24;
+	}
+	public void setReqType24(String reqType24) {
+		this.reqType24 = reqType24;
+	}
+	public String getReqType25() {
+		return reqType25;
+	}
+	public void setReqType25(String reqType25) {
+		this.reqType25 = reqType25;
+	}
+	public String getReqType26() {
+		return reqType26;
+	}
+	public void setReqType26(String reqType26) {
+		this.reqType26 = reqType26;
+	}
+	public String getReqType27() {
+		return reqType27;
+	}
+	public void setReqType27(String reqType27) {
+		this.reqType27 = reqType27;
+	}
+	public String getReqType28() {
+		return reqType28;
+	}
+	public void setReqType28(String reqType28) {
+		this.reqType28 = reqType28;
+	}
+	public String getReqType29() {
+		return reqType29;
+	}
+	public void setReqType29(String reqType29) {
+		this.reqType29 = reqType29;
+	}
+	public String getReqType30() {
+		return reqType30;
+	}
+	public void setReqType30(String reqType30) {
+		this.reqType30 = reqType30;
+	}
+	public String getReqType31() {
+		return reqType31;
+	}
+	public void setReqType31(String reqType31) {
+		this.reqType31 = reqType31;
+	}
+	public String getReqType32() {
+		return reqType32;
+	}
+	public void setReqType32(String reqType32) {
+		this.reqType32 = reqType32;
+	}
+	public String getReqType33() {
+		return reqType33;
+	}
+	public void setReqType33(String reqType33) {
+		this.reqType33 = reqType33;
+	}
+	public String getReqType34() {
+		return reqType34;
+	}
+	public void setReqType34(String reqType34) {
+		this.reqType34 = reqType34;
+	}
+	public String getReqChl1() {
+		return reqChl1;
+	}
+	public void setReqChl1(String reqChl1) {
+		this.reqChl1 = reqChl1;
+	}
+	public String getReqChl2() {
+		return reqChl2;
+	}
+	public void setReqChl2(String reqChl2) {
+		this.reqChl2 = reqChl2;
+	}
+	public String getReqChl3() {
+		return reqChl3;
+	}
+	public void setReqChl3(String reqChl3) {
+		this.reqChl3 = reqChl3;
+	}
+	public String getReqChl4() {
+		return reqChl4;
+	}
+	public void setReqChl4(String reqChl4) {
+		this.reqChl4 = reqChl4;
+	}
+	public String getReqChl5() {
+		return reqChl5;
+	}
+	public void setReqChl5(String reqChl5) {
+		this.reqChl5 = reqChl5;
+	}
+	public String getReqChl6() {
+		return reqChl6;
+	}
+	public void setReqChl6(String reqChl6) {
+		this.reqChl6 = reqChl6;
+	}
+	public String getReqChl7() {
+		return reqChl7;
+	}
+	public void setReqChl7(String reqChl7) {
+		this.reqChl7 = reqChl7;
+	}
+	public String getReqChl8() {
+		return reqChl8;
+	}
+	public void setReqChl8(String reqChl8) {
+		this.reqChl8 = reqChl8;
+	}
+	public String getReqChl9() {
+		return reqChl9;
+	}
+	public void setReqChl9(String reqChl9) {
+		this.reqChl9 = reqChl9;
+	}
+	public String getReqChl10() {
+		return reqChl10;
+	}
+	public void setReqChl10(String reqChl10) {
+		this.reqChl10 = reqChl10;
+	}
+	public String getReqChl11() {
+		return reqChl11;
+	}
+	public void setReqChl11(String reqChl11) {
+		this.reqChl11 = reqChl11;
+	}
+	public String getReqChl12() {
+		return reqChl12;
+	}
+	public void setReqChl12(String reqChl12) {
+		this.reqChl12 = reqChl12;
+	}
+	public String getReqChl13() {
+		return reqChl13;
+	}
+	public void setReqChl13(String reqChl13) {
+		this.reqChl13 = reqChl13;
+	}
+	public String getReqChl14() {
+		return reqChl14;
+	}
+	public void setReqChl14(String reqChl14) {
+		this.reqChl14 = reqChl14;
+	}
+	public String getReqChl15() {
+		return reqChl15;
+	}
+	public void setReqChl15(String reqChl15) {
+		this.reqChl15 = reqChl15;
+	}
+	public String getReqChl16() {
+		return reqChl16;
+	}
+	public void setReqChl16(String reqChl16) {
+		this.reqChl16 = reqChl16;
+	}
+	public String getReqChl17() {
+		return reqChl17;
+	}
+	public void setReqChl17(String reqChl17) {
+		this.reqChl17 = reqChl17;
+	}
+	public String getReqChl18() {
+		return reqChl18;
+	}
+	public void setReqChl18(String reqChl18) {
+		this.reqChl18 = reqChl18;
+	}
+	public String getReqChl19() {
+		return reqChl19;
+	}
+	public void setReqChl19(String reqChl19) {
+		this.reqChl19 = reqChl19;
+	}
+	public String getReqChl20() {
+		return reqChl20;
+	}
+	public void setReqChl20(String reqChl20) {
+		this.reqChl20 = reqChl20;
+	}
+	public String getReqChl21() {
+		return reqChl21;
+	}
+	public void setReqChl21(String reqChl21) {
+		this.reqChl21 = reqChl21;
+	}
+	public String getReqChl22() {
+		return reqChl22;
+	}
+	public void setReqChl22(String reqChl22) {
+		this.reqChl22 = reqChl22;
+	}
+	public String getReqChl23() {
+		return reqChl23;
+	}
+	public void setReqChl23(String reqChl23) {
+		this.reqChl23 = reqChl23;
+	}
+	public String getReqChl24() {
+		return reqChl24;
+	}
+	public void setReqChl24(String reqChl24) {
+		this.reqChl24 = reqChl24;
+	}
+	public String getReqChl25() {
+		return reqChl25;
+	}
+	public void setReqChl25(String reqChl25) {
+		this.reqChl25 = reqChl25;
+	}
+	public String getReqChl26() {
+		return reqChl26;
+	}
+	public void setReqChl26(String reqChl26) {
+		this.reqChl26 = reqChl26;
+	}
+	public String getReqChl27() {
+		return reqChl27;
+	}
+	public void setReqChl27(String reqChl27) {
+		this.reqChl27 = reqChl27;
+	}
+	public String getReqChl28() {
+		return reqChl28;
+	}
+	public void setReqChl28(String reqChl28) {
+		this.reqChl28 = reqChl28;
+	}
+	public String getReqChl29() {
+		return reqChl29;
+	}
+	public void setReqChl29(String reqChl29) {
+		this.reqChl29 = reqChl29;
+	}
+	public String getReqChl30() {
+		return reqChl30;
+	}
+	public void setReqChl30(String reqChl30) {
+		this.reqChl30 = reqChl30;
+	}
+	public String getReqChl31() {
+		return reqChl31;
+	}
+	public void setReqChl31(String reqChl31) {
+		this.reqChl31 = reqChl31;
+	}
+	public String getReqChl32() {
+		return reqChl32;
+	}
+	public void setReqChl32(String reqChl32) {
+		this.reqChl32 = reqChl32;
+	}
+	public String getReqChl33() {
+		return reqChl33;
+	}
+	public void setReqChl33(String reqChl33) {
+		this.reqChl33 = reqChl33;
+	}
+	public String getReqChl34() {
+		return reqChl34;
+	}
+	public void setReqChl34(String reqChl34) {
+		this.reqChl34 = reqChl34;
+	}
+	public String getReqSts1() {
+		return reqSts1;
+	}
+	public void setReqSts1(String reqSts1) {
+		this.reqSts1 = reqSts1;
+	}
+	public String getReqSts2() {
+		return reqSts2;
+	}
+	public void setReqSts2(String reqSts2) {
+		this.reqSts2 = reqSts2;
+	}
+	public String getReqSts3() {
+		return reqSts3;
+	}
+	public void setReqSts3(String reqSts3) {
+		this.reqSts3 = reqSts3;
+	}
+	public String getReqSts4() {
+		return reqSts4;
+	}
+	public void setReqSts4(String reqSts4) {
+		this.reqSts4 = reqSts4;
+	}
+	public String getReqSts5() {
+		return reqSts5;
+	}
+	public void setReqSts5(String reqSts5) {
+		this.reqSts5 = reqSts5;
+	}
+	public String getReqSts6() {
+		return reqSts6;
+	}
+	public void setReqSts6(String reqSts6) {
+		this.reqSts6 = reqSts6;
+	}
+	public String getReqSts7() {
+		return reqSts7;
+	}
+	public void setReqSts7(String reqSts7) {
+		this.reqSts7 = reqSts7;
+	}
+	public String getReqSts8() {
+		return reqSts8;
+	}
+	public void setReqSts8(String reqSts8) {
+		this.reqSts8 = reqSts8;
+	}
+	public String getReqSts9() {
+		return reqSts9;
+	}
+	public void setReqSts9(String reqSts9) {
+		this.reqSts9 = reqSts9;
+	}
+	public String getReqSts10() {
+		return reqSts10;
+	}
+	public void setReqSts10(String reqSts10) {
+		this.reqSts10 = reqSts10;
+	}
+	public String getReqSts11() {
+		return reqSts11;
+	}
+	public void setReqSts11(String reqSts11) {
+		this.reqSts11 = reqSts11;
+	}
+	public String getReqSts12() {
+		return reqSts12;
+	}
+	public void setReqSts12(String reqSts12) {
+		this.reqSts12 = reqSts12;
+	}
+	public String getReqSts13() {
+		return reqSts13;
+	}
+	public void setReqSts13(String reqSts13) {
+		this.reqSts13 = reqSts13;
+	}
+	public String getReqSts14() {
+		return reqSts14;
+	}
+	public void setReqSts14(String reqSts14) {
+		this.reqSts14 = reqSts14;
+	}
+	public String getReqSts15() {
+		return reqSts15;
+	}
+	public void setReqSts15(String reqSts15) {
+		this.reqSts15 = reqSts15;
+	}
+	public String getReqSts16() {
+		return reqSts16;
+	}
+	public void setReqSts16(String reqSts16) {
+		this.reqSts16 = reqSts16;
+	}
+	public String getReqSts17() {
+		return reqSts17;
+	}
+	public void setReqSts17(String reqSts17) {
+		this.reqSts17 = reqSts17;
+	}
+	public String getReqSts18() {
+		return reqSts18;
+	}
+	public void setReqSts18(String reqSts18) {
+		this.reqSts18 = reqSts18;
+	}
+	public String getReqSts19() {
+		return reqSts19;
+	}
+	public void setReqSts19(String reqSts19) {
+		this.reqSts19 = reqSts19;
+	}
+	public String getReqSts20() {
+		return reqSts20;
+	}
+	public void setReqSts20(String reqSts20) {
+		this.reqSts20 = reqSts20;
+	}
+	public String getReqSts21() {
+		return reqSts21;
+	}
+	public void setReqSts21(String reqSts21) {
+		this.reqSts21 = reqSts21;
+	}
+	public String getReqSts22() {
+		return reqSts22;
+	}
+	public void setReqSts22(String reqSts22) {
+		this.reqSts22 = reqSts22;
+	}
+	public String getReqSts23() {
+		return reqSts23;
+	}
+	public void setReqSts23(String reqSts23) {
+		this.reqSts23 = reqSts23;
+	}
+	public String getReqSts24() {
+		return reqSts24;
+	}
+	public void setReqSts24(String reqSts24) {
+		this.reqSts24 = reqSts24;
+	}
+	public String getReqSts25() {
+		return reqSts25;
+	}
+	public void setReqSts25(String reqSts25) {
+		this.reqSts25 = reqSts25;
+	}
+	public String getReqSts26() {
+		return reqSts26;
+	}
+	public void setReqSts26(String reqSts26) {
+		this.reqSts26 = reqSts26;
+	}
+	public String getReqSts27() {
+		return reqSts27;
+	}
+	public void setReqSts27(String reqSts27) {
+		this.reqSts27 = reqSts27;
+	}
+	public String getReqSts28() {
+		return reqSts28;
+	}
+	public void setReqSts28(String reqSts28) {
+		this.reqSts28 = reqSts28;
+	}
+	public String getReqSts29() {
+		return reqSts29;
+	}
+	public void setReqSts29(String reqSts29) {
+		this.reqSts29 = reqSts29;
+	}
+	public String getReqSts30() {
+		return reqSts30;
+	}
+	public void setReqSts30(String reqSts30) {
+		this.reqSts30 = reqSts30;
+	}
+	public String getReqSts31() {
+		return reqSts31;
+	}
+	public void setReqSts31(String reqSts31) {
+		this.reqSts31 = reqSts31;
+	}
+	public String getReqSts32() {
+		return reqSts32;
+	}
+	public void setReqSts32(String reqSts32) {
+		this.reqSts32 = reqSts32;
+	}
+	public String getReqSts33() {
+		return reqSts33;
+	}
+	public void setReqSts33(String reqSts33) {
+		this.reqSts33 = reqSts33;
+	}
+	public String getReqSts34() {
+		return reqSts34;
+	}
+	public void setReqSts34(String reqSts34) {
+		this.reqSts34 = reqSts34;
+	}
 	/**
 	 * 検索-申請日時を取得します。
 	 * @return 検索-申請日時
@@ -997,20 +1610,6 @@ public String getInreqYmdhmsTo() {
 	 */
 	public void setReqJgiNo(String reqJgiNo) {
 		this.reqJgiNo = reqJgiNo;
-	}
-	/**
-	 * reqShzを取得します。
-	 * @return reqShz
-	 */
-	public String getReqShz() {
-	    return reqShz;
-	}
-	/**
-	 * reqShzを設定します。
-	 * @param reqShz reqShz
-	 */
-	public void setReqShz(String reqShz) {
-	   this.reqShz = reqShz;
 	}
 
 	/**

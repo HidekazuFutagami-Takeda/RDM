@@ -241,7 +241,7 @@ public class AccessControlSession implements Filter {
 //2020.05.04 Hitachi Hagimoto ユーザIDをアクセストークンから取得する方式に変更 ADD_END
         	//本番の場合は不要
 	        String urlName = ((HttpServletRequest) request).getRequestURI();
-	        if (urlName.contains("NC001Init")) {
+	        if (urlName.contains("NC001Init") || urlName.contains("NC011Init")) {
 	            log.info("ログイン処理＝＝＝＝＝＝RequestURI:" + ((HttpServletRequest) request).getRequestURI());
 
             //本番環境

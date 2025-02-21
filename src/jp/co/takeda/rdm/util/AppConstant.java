@@ -2821,18 +2821,12 @@ public interface AppConstant {
     public static final String SESKEY_NC207_SEARCHKEY = "NC207_SEARCHKEY";
     /** RDM医師検索 */
     public static final String SESKEY_ND001_SEARCHKEY = "ND001_SEARCHKEY";
-    /** RDM医療機関への異動での初期結果 */
-    public static final String SESKEY_ND101_SEARCHKEY = "ND101_SEARCHKEY";
-    /** RDM医療機関以外への異動での初期結果 */
-    public static final String SESKEY_ND102_SEARCHKEY = "ND102_SEARCHKEY";
     /** 医師新規での初期結果 */
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
     /** 医師新規確認での初期結果 */
     public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
     /** RDM医療機関への異動 */
     public static final String SESKEY_ND307_SEARCHKEY = "ND307_SEARCHKEY";
-    /** RDM医療機関以外への異動 - 申請内容確認での初期結果 */
-    public static final String SESKEY_ND309_SEARCHKEY = "ND309_SEARCHKEY";
     /** 施設検索での初期結果 */
     public static final String SESKEY_NF001_SEARCHKEY = "NF001_SEARCHKEY";
     /** 施設新規での初期結果 */
@@ -2841,6 +2835,8 @@ public interface AppConstant {
     public static final String SESKEY_NF012_SEARCHKEY = "NF012_SEARCHKEY";
     /** 施設削除での初期結果 */
     public static final String SESKEY_NF013_SEARCHKEY = "NF013_SEARCHKEY";
+    /** 施設復活での初期結果 */
+    public static final String SESKEY_NF014_SEARCHKEY = "NF014_SEARCHKEY";
     /** 施設紐付け新規での初期結果 */
     public static final String SESKEY_NF211_SEARCHKEY = "NF211_SEARCHKEY";
     /** 施設紐付け変更での初期結果 */
@@ -2851,6 +2847,8 @@ public interface AppConstant {
     public static final String SESKEY_NF301_SEARCHKEY = "NF301_SEARCHKEY";
     /** 施設更新 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF303_SEARCHKEY = "NF303_SEARCHKEY";
+    /** 施設復活 - 申請内容確認での初期結果 */
+    public static final String SESKEY_NF307_SEARCHKEY = "NF307_SEARCHKEY";
     /** 施設紐付け新規 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF311_SEARCHKEY = "NF311_SEARCHKEY";
     /** 施設紐付け変更 - 申請内容確認での初期結果 */
@@ -2863,6 +2861,7 @@ public interface AppConstant {
     public static final String SESKEY_NC203_SEARCHKEY = "NC203_SEARCHKEY";
     public static final String SESKEY_NC204_SEARCHKEY = "NC204_SEARCHKEY";
     public static final String SESKEY_NC205_SEARCHKEY = "NC205_SEARCHKEY";
+    public static final String SESKEY_NM001_SEARCHKEY = "NM001_SEARCHKEY";
 
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;

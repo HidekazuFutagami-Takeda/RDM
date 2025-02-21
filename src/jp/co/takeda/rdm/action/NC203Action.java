@@ -99,6 +99,20 @@ public class NC203Action extends BaseAction<NC203DTO> {
         initSetup();
         // F層呼び出し
         dto.setFunctionId("Init");
+
+        if(dto.getViewKbn() == null || dto.getViewKbn().isEmpty()) {
+        	dto.setViewKbn("0");
+        }
+
+        String backScreenId = dto.getBackScreenId();
+        if(("NF011".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId))
+        		&& dto.getKensakuInsSbt() != null && !"".equals(dto.getKensakuInsSbt())) {
+        	// 施設種別固定
+        	dto.setInsSbtEditFlg("0");
+        } else {
+        	dto.setInsSbtEditFlg("1");
+        }
+
         BaseDTO outdto = nC203Service.init(dto);
         //都道府県取得
         if (dto.getKensakuAddrCodePref() != null) {

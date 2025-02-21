@@ -77,7 +77,7 @@ public class NF012Service extends BaseService {
     		SelectNF012MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
-    		indto.setReqShzNm(indto.getLoginShzNm());
+    		indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());

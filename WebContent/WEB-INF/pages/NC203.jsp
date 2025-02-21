@@ -128,10 +128,18 @@ if (stack.peek() instanceof NC203DTO) {
     <s:hidden name="jgiNo" />
     <s:hidden name="trtGrpCd" />
     <s:hidden name="callBack" />
+    <s:hidden name="backScreenId" />
     <s:hidden name="winVarName" />
     <s:hidden name="sortCondition" />
     <s:hidden name="title" />
     <s:hidden name="viewKbn" />
+    <s:hidden name="loginJokenSetCd"/>
+    <s:hidden name="loginJgiNo"/>
+    <s:hidden name="loginBrCd"/>
+    <s:hidden name="loginDistCd"/>
+    <s:hidden name="trtCd"/>
+    <s:hidden name="tkdTrtKbn"/>
+    <s:hidden name="insSbtEditFlg"/>
      <s:url id="searchurl" action="NC203Search"/>
     <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
     <s:url id="sorturl" action="NC203Sort"/>
@@ -204,7 +212,7 @@ if (stack.peek() instanceof NC203DTO) {
 				<td>
 					<s:textfield id="insNoSrch" size="20" maxlength="20" name="insNoSrch" STYLE="ime-mode:active" />
 				</td>
-				<s:if test="viewKbn == 0">
+				<s:if test="viewKbn == 1">
 					<%-- ULTコード --%>
 					<td class="pupControlItem"><nobr>&nbsp;ULTコード</nobr></td>
 					<td>
@@ -256,7 +264,7 @@ if (stack.peek() instanceof NC203DTO) {
 				</td>
 
 				<td>
-					<s:if test="winVarName == 'NF011' || winVarName == 'NF211' || winVarName == 'NF212'">
+					<s:if test="backScreenId == 'NF011' || backScreenId == 'NF211' || backScreenId == 'NF212'">
 					<input type="checkbox" id="koshisetsuCheck" align="right" name="koshisetsuCheck" checked disabled />
 					<s:hidden name="koshisetsuCheck" value="true" />
 					</s:if>
@@ -334,7 +342,9 @@ if (stack.peek() instanceof NC203DTO) {
   String insAdrsDescClass = "comTableNoSort";
   String ultAdrsAscClass = "comTableNoSort";
   String ultAdrsDescClass = "comTableNoSort";
-  if ("1".equals(sortCondition)) {
+  if ("0".equals(sortCondition)) {
+	  insNoAscClass = "comTableSort";
+  } else if ("1".equals(sortCondition)) {
 	  insNoDescClass = "comTableSort";
   } else if ("2".equals(sortCondition)) {
 	  insAbbrAscClass = "comTableSort";
@@ -352,6 +362,10 @@ if (stack.peek() instanceof NC203DTO) {
 	  ultAdrsAscClass = "comTableSort";
   } else if ("9".equals(sortCondition)) {
 	  ultAdrsDescClass = "comTableSort";
+  } else if ("10".equals(sortCondition)) {
+	  insFormalAscClass = "comTableSort";
+  } else if ("11".equals(sortCondition)) {
+	  insFormalDescClass = "comTableSort";
   }
 %>
 
@@ -365,7 +379,7 @@ if (stack.peek() instanceof NC203DTO) {
 			<s:else>
 
 
-			<s:if test="viewKbn == 0">
+			<s:if test="viewKbn == 1">
 			<!-- ULTあり一覧 -->
 				<tr style="position: sticky; top:0; left:0;">
 					<td class="actionTh" style="border:none" style="width:8pt"><nobr>&nbsp;</nobr></td>
@@ -448,6 +462,10 @@ if (stack.peek() instanceof NC203DTO) {
 					'<s:property value="#rowBean.shisetsuNm" />',
 					'<s:property value="#rowBean.dcfShisetsuCd" />',
 					'<s:property value="#rowBean.address" />',
+					'<s:property value="#rowBean.jgiName" />',
+					'<s:property value="#rowBean.insSbt" />',
+					'<s:property value="#rowBean.hoInsType" />',
+					'<s:property value="#rowBean.insClass" />',
 					);"></input></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insFormalName" /></td>
@@ -495,9 +513,9 @@ if (stack.peek() instanceof NC203DTO) {
 	                <td class="comTableTitle" style="width:200pt;"><nobr>施設正式漢字名
 	                <s:if test=' !(insData == null || insData.size() <= 0)'>
 	                       <span style="font-size: 1pt;"> </span>
-	                       <a class="<%=insFormalAscClass %>" href="" onclick="jimSort(2);return false;">▲</a>
+	                       <a class="<%=insFormalAscClass %>" href="" onclick="jimSort(10);return false;">▲</a>
 	                       <span style="font-size: 1pt;"> </span>
-	                       <a class="<%=insFormalDescClass %>" href="" onclick="jimSort(3);return false;">▼</a>
+	                       <a class="<%=insFormalDescClass %>" href="" onclick="jimSort(11);return false;">▼</a>
 	                </s:if>
 	                </nobr></td>
 
@@ -526,6 +544,10 @@ if (stack.peek() instanceof NC203DTO) {
 					'<s:property value="#rowBean.shisetsuNm" />',
 					'<s:property value="#rowBean.dcfShisetsuCd" />',
 					'<s:property value="#rowBean.address" />',
+					'<s:property value="#rowBean.jgiName" />',
+					'<s:property value="#rowBean.insSbt" />',
+					'<s:property value="#rowBean.hoInsType" />',
+					'<s:property value="#rowBean.insClass" />',
 					);"></input></td>
 					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insNo" /></td>
 					<td <s:if test="viewKbn == 2">class="comTableItemBlue"</s:if><s:else>class="comTableItem"</s:else> id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>

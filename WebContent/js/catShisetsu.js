@@ -234,9 +234,9 @@ function cseUnLoad(){
 /**
  * 施設を選択ボタン押下
  */
-function cseSelectIns(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address) {
+function cseSelectIns(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass) {
 	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
-  eval("window.opener." + document.fm1.callBack.value + "(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address)"
+  eval("window.opener." + document.fm1.callBack.value + "(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass)"
   );
       cseClose();
 }

@@ -25,9 +25,24 @@
   contentType="text/html;charset=UTF-8"
 %>
 
+
+
+<%@ page
+  language="java"
+  import="jp.co.takeda.rdm.util.AppMethods,
+      jp.co.takeda.rdm.util.RdmConstantsData"
+  session="true"
+  buffer="8kb"
+  autoFlush="true"
+  isThreadSafe="true"
+  isErrorPage="false"
+  contentType="text/html;charset=UTF-8"
+%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
-
+<s:set name="dateFormat0" value="%{new java.text.SimpleDateFormat('yyyy年M月d日')}" />
+<s:set name="dateFormat1" value="%{new java.text.SimpleDateFormat('dd')}" />
+<s:set name="dateFormat2" value="%{new java.text.SimpleDateFormat('yyyy/MM/dd HH:mm:ss')}" />
+<s:set name="dateFormat3" value="%{new java.text.SimpleDateFormat('yyyy/MM/dd')}" />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
@@ -40,7 +55,7 @@
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 
 
-    <script type="text/javascript" src="js/NC011.js"></script>
+    <script type="text/javascript" src="js/NM001.js"></script>
     <script type="text/javascript" src="js/jkrSosStatus.js"></script>
     <script type="text/javascript" src="js/JKR040C010.js"></script>
     <script type="text/javascript" src="js/catTkCityCombo.js"></script>
@@ -53,6 +68,33 @@
     	comClickFlgInit();
     }
     </script>
+    <script>
+        // 5分（300,000ミリ秒）ごとにページをリロードする
+        setInterval(function() {
+            location.reload();
+        }, 300000); // 300,000ミリ秒 = 5分
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    	  const table = document.getElementById('myTable');
+    	  const rows = table.getElementsByTagName('tr');
+
+    	  for (let i = 0; i < rows.length; i++) {
+    	    const cells = rows[i].getElementsByTagName('td');
+    	    for (let j = 0; j < cells.length; j++) {
+    	      const cellValue = parseInt(cells[j].innerText, 10);
+
+    	      if (cellValue < 20) {
+    	        cells[j].style.backgroundColor = 'lightgreen';
+    	      } else if (cellValue < 40) {
+    	        cells[j].style.backgroundColor = 'lightblue';
+    	      } else {
+    	        cells[j].style.backgroundColor = 'lightcoral';
+    	      }
+    	    }
+    	  }
+    	});
+    </script>
         <style>
     .parent {
         display:flex;
@@ -63,67 +105,61 @@
         position:Sticky;
         top:0;
         background-color: #fff;
+        left: 1;
         }
     th {
-        height:10px;
+    	background-color: #ffffff;
+    	border: 1px solid black;
+        height:2px;
     }
+    thead {
+        position:Sticky;
+        top:0;
+        background-color: #fff;
+        }
     </style>
     <style>
+      TH.comTableTitle			/* テーブル形式のタイトル項目 */
+       {
+         color : #000000;
+         background-color: #e0e0d4;
+       /*	background-color: #cccccc;*/
+         background-color: #e8b5a2;
+
+         border-style: solid;
+         border-top-width : 1px;
+         border-left-width : 1px;
+         border-right-width : 1px;
+         border-bottom-width : 1px;
+       }
+       .tkdUlt TH:first-child {
+         position: sticky;
+         left: 1;
+         z-index:100;
+       }
 	    .testlayout {
 	    }
-	    .container {
-		    resize : horizontal;
-		    overflow : hidden;
-		}
+
 		.siz{
-		width:2500px;
+		width:2000px;
 
 		}
 	</style>
-<%
-
-
-// ソート順状態制御用
-String sortCondition = StringUtils.nvl((String)request.getAttribute("sortCondition"), "");
-//String sortCondition = null;
-%>
 </head>
-<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
-<%-- ポータルタイトル 開始 --%>
-    <table class="comPortalTitle">
-    <tbody>
-    <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="申請一覧"></td>
-        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
-        <td class="comPortalTitleRight"><nobr></nobr></td>
-    </tr>
-    </tbody>
-    </table>
-<%-- ポータルタイトル 終了 --%>
-<%-- ポータルボディー 開始 --%>
+<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();changeCellColors();">
 
- <table class="comPortalBody">
-    <tbody>
-      <tr>
-        <td>
 
-	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-		<tbody>
-		<s:if test="msgStr != null">
-			<tr>
-				<td>
-					<nobr>
-					<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-					</nobr>
-				</td>
-			</tr>
-		</s:if>
-		</tbody>
-	</table>
+  <%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
-<table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
-  <tbody>
-  <tr/>
+<table class="comPortalTable" align="center" style="width:98%;">
+  <tr>
+    <td>
     <s:form name="fm1" theme="simple" >
     <s:hidden name="screenId"  />
     <s:hidden name="functionId" />
@@ -148,473 +184,806 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="knYmdhmsFrom" name="knYmdhmsFrom"/>
 	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
 
-<!--  	<s:hidden id="reqId" name="reqId"/>
-	<s:hidden id="reqType" name="reqType"/>-->
-
-	<s:hidden id="sortCondition" name="sortCondition" />
+	<s:hidden name="inreqYmdhmsFrom"/>
+	<s:hidden name="inreqYmdhmsTo"/>
+	<s:hidden name="reqType" />
+	<s:hidden name="reqChl"/>
+	<s:hidden name="reqSts"/>
+	<s:hidden name="aDdrCodePref"/>
 
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="sosCd" name="sosCd"/>
 <!--  <s:hidden id="bumonRyakuName" name="bumonRyakuName"/>  申請者所属-->
-    <s:hidden id="brCode" name="brCode"/><!-- 申請者所属リージョン -->
-	<s:hidden id="distCode" name="distCode"/><!-- 申請者所属エリア -->
-
+	<s:hidden name="title" />
+	<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="申請サマリ"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
-<table class="pupBodyTable" align="center">
-<tr align="center"><td>
+<table class="comPortalBody">
+	<tbody>
+		<tr align="left"><td>
+			<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
+		<tbody>
+		<s:if test="msgStr != null">
+			<tr>
+				<td>
+					<nobr>
+					<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
+					</nobr>
+				</td>
+			</tr>
+		</s:if>
+		</tbody>
+	</table>
 <%-- 検索部 開始 --%>
-	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
 
-	    <tbody>
-	      <s:if test="msgStr != null">
-	      <tr>
-	        <td>
-	          <nobr>
-	          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-	          </nobr>
-	        </td>
-	      </tr>
-	      </s:if>
-	    </tbody>
-	  </table>
-	  	<%
-	  // ソート表示状態制御
-	  String reqIdAscClass = "comTableNoSort";
-	  String reqIdDescClass = "comTableNoSort";
-	  String reqYmdhmsAscClass = "comTableNoSort";
-	  String reqYmdhmsDescClass = "comTableNoSort";
-	  String reqSbtAscClass = "comTableNoSort";
-	  String reqSbtDescClass = "comTableNoSort";
-	  String reqTypeAscClass = "comTableNoSort";
-	  String reqTypeDescClass = "comTableNoSort";
-	  String reqStsAscClass = "comTableNoSort";
-	  String reqStsDescClass = "comTableNoSort";
-	  String sbtAscClass = "comTableNoSort";
-	  String sbtDescClass = "comTableNoSort";
-	  String reqJgiNameAscClass = "comTableNoSort";
-	  String reqJgiNameDescClass = "comTableNoSort";
-	  if ("1".equals(sortCondition)) {
-		  reqIdDescClass = "comTableSort";
-	  } else if ("2".equals(sortCondition)) {
-		  reqYmdhmsAscClass = "comTableSort";
-	  } else if ("3".equals(sortCondition)) {
-		  reqYmdhmsDescClass = "comTableSort";
-	  } else if ("4".equals(sortCondition)) {
-		  reqSbtAscClass = "comTableSort";
-	  } else if ("5".equals(sortCondition)) {
-		  reqSbtDescClass = "comTableSort";
-	  } else if ("6".equals(sortCondition)) {
-		  reqTypeAscClass = "comTableSort";
-	  } else if ("7".equals(sortCondition)) {
-		  reqTypeDescClass = "comTableSort";
-	  } else if ("8".equals(sortCondition)) {
-		  reqStsAscClass = "comTableSort";
-	  } else if ("9".equals(sortCondition)) {
-		  reqStsDescClass = "comTableSort";
-	  } else if ("10".equals(sortCondition)) {
-		  sbtAscClass = "comTableSort";
-	  } else if ("11".equals(sortCondition)) {
-		  sbtDescClass = "comTableSort";
-	  } else if ("12".equals(sortCondition)) {
-		  reqJgiNameAscClass = "comTableSort";
-	  } else if ("13".equals(sortCondition)) {
-		  reqJgiNameDescClass = "comTableSort";
-	  }
-	%>
-	<table style="align:cener;">
-
-		<tr>
-					<%-- 都道府県--%>
-			    <td class="pupControlItem"><nobr>&nbsp;都道府県</nobr></td>
-	            <td class="comTableSearchItem">
-				<s:select id="jkrSosAddrCd" name="aDdrCodePref" cssStyle="width:80pt" list ="jkrSosAddrMap" />
-			    </td>
-					<%-- 種別 --%>
-				<td class="pupControlItem"><nobr>&nbsp;種別</nobr></td>
-	            <td class="comTableSearchItem">
-	            <span onchange="sosSbt(); return false;">
-				<s:select id="jkrSosSbtMap" name="sbt" cssStyle="width:80pt" list ="jkrSosSbtMap" />
-				</span>
-			    </td>
-		</tr>
-		<tr>
-		<s:if test='mrAdminFlg == "0"'>
-								<%-- 申請者所属 --%>
-			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true"/>
-			   </nobr>
-			</td>
-				<td >
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true"/>
-					<a href ="" onClick="popClear();return false;"disabled="true" >Clear</a>
-				</td>
-		</s:if>
-		<s:if test='mrAdminFlg == "1"'>
-						<%-- 申請者所属 --%>
-			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init')"/>
-			   </nobr>
-			</td>
-				<td>
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" />
-					<a href ="" onClick="popClear();return false;">Clear</a>
-				</td>
-		</s:if>
-							<%-- 施設固定C --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設固定C</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="14" name="insNo" style="ime-mode:inactive;" />
-				</td>
-					<%--医師固定C --%>
-			<td class="pupControlItem"><nobr>&nbsp;医師固定C</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="14" name="docNo" style="ime-mode:inactive;" />
-				</td>
-		</tr>
-		<tr>	<%-- 申請者 --%>
-			<s:if test='mrAdminFlg == "0"'>
-			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
-				<td>
-					 <s:textfield readonly="true" Style="width:100pt" name="reqjgiName" cssStyle="background-color:#D4D0C8;"/>
-				</td>
-				</s:if>
-			<s:if test='mrAdminFlg == "1"'>
-			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="40" name="reqJgiName" STYLE="ime-mode:active" />
-				</td>
-				</s:if>
+	<table style="align:left;">
 
 
-					<%-- 施設名(全角) --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設名(全角)※</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="40" name="insKanjiSrch" STYLE="ime-mode:active" />
-				</td>
-						<%-- 医師名(全角) --%>
-			<td class="pupControlItem"><nobr>&nbsp;医師名(全角)</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="14" name="docKanj" style="ime-mode:inactive;" />
-				</td>
-		</tr>
 		<tr>
 						<%-- 申請日: 操作日-1カ月、操作日 --%>
-				<s:if test='preScreenId == "NM001"'>
+
+			<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
+
 				<td>
 					<input type="date" size="20" maxlength="40" name="reqYmdhmsFrom" id="inreqYmdhmsFrom" value="${reqYmdhmsFrom}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>　～
 				</td>
 				<td>
 					<input type="date" size="20" maxlength="40" name="reqYmdhmsTo" id="inreqYmdhmsTo" value="${reqYmdhmsTo}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>
 				</td>
-				</s:if>
-				<s:if test='preScreenId != "NM001"'>
-			<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
-				<td>
-				<input type="date" name ="reqYmdhmsFrom"id="inreqYmdhmsFrom" value="${inreqYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
-				<input type="date" name ="reqYmdhmsTo"  id="inreqYmdhmsTo" value="${inreqYmdhmsTo}" pattern="yyyy-MM-dd" />
-				</td>
-				</s:if>
-					　　<%-- 施設分類 --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設分類</nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="insClass" cssStyle="width:80pt" list ="jkrSosInsClassMap" />
-			    </td>
-				<%-- 医師／薬剤師区分 --%>
-			<td class="pupControlItem"><nobr>&nbsp;医師／薬剤師区分</nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="docType" cssStyle="width:80pt" list ="jkrSosDocTypeMap" />
-			    </td>
 		</tr>
 		<tr>
-						<%--連携種別 --%>
-			<td class="pupControlItem"><nobr>&nbsp;連携種別</nobr></td>
-	           <td class="comTableSearchItem">
-	           <span onchange="sosReqSbt(); return false;">
-				<s:select id="jkrSosReqSbtMap" name="reqSbt" cssStyle="width:80pt" list ="jkrSosReqSbtMap" />
-				</span>
-		    </td>
-						<%-- 施設種別 --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設種別</nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="insSbt" cssStyle="width:80pt" list ="jkrSosInsSbtMap" />
-			    </td>
-				<%-- 勤務形態 --%>
-			<td class="pupControlItem"><nobr>&nbsp;勤務形態 </nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="jobForm" cssStyle="width:80pt" list ="JkrSosJobFormMap" />
-			    </td>
-		</tr>
-		<tr>
-						<%-- 申請区分 --%>
-			<td class="pupControlItem"><nobr>&nbsp;申請区分</nobr></td>
-	           <td class="comTableSearchItem">
-			<s:select id="jkrSosReqTypeMap" name="reqType" cssStyle="width:80pt" list ="jkrSosReqTypeMap" />
-		    </td>
-						<%-- 対象区分 --%>
-			<td class="pupControlItem"><nobr>&nbsp;対象区分</nobr></td>
-	            <td class="comTableSearchItem">
-				<s:select id="jkrSosReqStsMap" name="hoInsType" cssStyle="width:80pt" list ="jkrSosHoInsTypeMap" />
-			    </td>
-		</tr>
-			<tr>
-							<%-- 申請ステータス --%>
-				<td class="pupControlItem"><nobr>&nbsp;申請ステータス</nobr></td>
-		            <td class="comTableSearchItem">
-						<s:select id="jkrSosReqStsMap" name="reqSts" cssStyle="width:80pt" list ="jkrSosReqStsMap" />
-				    </td>
-		</tr>
-		<tr>
-							<%-- 申請ID --%>
-				<td class="pupControlItem"><nobr>&nbsp;申請ID</nobr></td>
-					<td>
-						<s:textfield size="20" maxlength="40" name="reqId" STYLE="ime-mode:active" />
-					</td>
-							<%-- 申請コメント --%>
-				<td class="pupControlItem"><nobr>&nbsp;申請コメント</nobr></td>
-					<td>
-						<s:textfield size="20" maxlength="14" name="reqComment" style="ime-mode:inactive;" />
-					</td>
-					<%-- 承認・却下コメント --%>
-				<td class="pupControlItem"><nobr>&nbsp;承認・却下コメント</nobr></td>
-					<td>
-						<s:textfield size="20" maxlength="40" name="aprComment" STYLE="ime-mode:active" />
-					</td>
-		</tr>
-		<tr>
-					<!-- 申請チャネル -->
-					<s:if test='mrAdminFlg == "0"'>
-					<s:hidden id="jkrSosReqChlMap" name="reqChl" list ="jkrSosReqChlMap" />
-					</s:if>
-					<s:if test='mrAdminFlg == "1"'>
-					<td class="pupControlItem"><nobr>&nbsp;申請チャネル</nobr></td>
-		            <td class="comTableSearchItem">
-		            <span onchange="sosAddrChange(); return false;">
-						<s:select id="jkrSosReqChlMap" name="reqChl" cssStyle="width:80pt" list ="jkrSosReqChlMap" />
-				    </span>
-				    </td>
-					</s:if>
-		</tr>
-		<tr>
+			<td></td><td></td><td></td>
 			   <td>
-				   <input type="button" name="search" value="検索" onclick="rdmSearch();">
-				   <input type="button" name="クリア" value="クリア" onclick="rdmCler();return false;" />
+			   	   <input type="button" name="クリア" value="クリア" onclick="rdmCler();return false;" />
+				   <input type="button" name="search" value="検索" onclick="rdmSearch();" >
 			   </td>
 		</tr>
 	</table>
-	<%-- ページャー表示 開始 --%>
-          <s:if test='pageFlag == "1" '>
-          </s:if>
-          <s:if test='pageFlag !="1"'>
-                 <!-- 改ページ -->
-                  <table width="95%" >
-                      <tbody>
-                      <tr align="right">
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="NC011Page(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
 
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="NC011Page(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0','1','2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="NC011Page(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="NC011Page(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="NC011Page(<s:property value="pageCntCur+1"/>);return false;">
-                                  次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                  </s:if>
-          <%-- ページャー表示 終了 --%>
           <s:if test='pageFlag == "1" '>
           <!-- なにも表示しない -->
       	  </s:if>
-      	  <s:else>
-              <div style="max-height:300px;width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-              <table class="siz">
-              <%-- ヘッダー行 --%>
-												<tr>
-													<!-- style="resize : horizontal;overflow : hidden;   " -->
+      	  <s:else><!-- max-height:500px; div内スタイルから抜き取って最大幅の上限を撤廃、overflow-y:hiddenで縦スクロールを無効化 -->
+              <div id="insTableDataOff" style="width:1450px;overflow-y: hidden; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;"onscroll="javascript:jpjOffSyncScrolling()" >
 
-													<td class="comTableTitle container" width="120px"
-														style="border: none;" id="styles">申請ID <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqIdAscClass%>" href=""
-														onclick="NC011Sort(0);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqIdDescClass%>" href=""
-														onclick="NC011Sort(1);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container" width="180px"
-														style="border: none;">申請日時 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqYmdhmsAscClass%>" href=""
-														onclick="NC011Sort(2);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqYmdhmsDescClass%>" href=""
-														onclick="NC011Sort(3);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container" width="120px"
-														style="border: none;">連携種別 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqSbtAscClass%>" href=""
-														onclick="NC011Sort(4);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqSbtDescClass%>" href=""
-														onclick="NC011Sort(5);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container"
-														style="width: 140px; border: none;">申請区分 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeAscClass%>" href=""
-														onclick="NC011Sort(6);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeDescClass%>" href=""
-														onclick="NC011Sort(7);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container"
-														style="width: 140px; border: none;">申請区分 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeAscClass%>" href=""
-														onclick="NC011Sort(6);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeDescClass%>" href=""
-														onclick="NC011Sort(7);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container"
-														style="width: 50px; border: none;">種別 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=sbtAscClass%>" href=""
-														onclick="NC011Sort(10);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=sbtDescClass%>" href=""
-														onclick="NC011Sort(11);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container"
-														style="width: 90px; border: none;">施設／医師固定C</td>
-													<td class="comTableTitle container"
-														style="width: 300px; border: none;">施設／医師名</td>
-													<td class="comTableTitle container"
-														style="width: 90px; border: none;">申請者 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqJgiNameAscClass%>" href=""
-														onclick="NC011Sort(12);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqJgiNameDescClass%>" href=""
-														onclick="NC011Sort(13);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container"
-														style="width: 300px; border: none;">申請者所属</td>
-													<td class="comTableTitle container"
-														style="width: 120px; border: none;">申請コメント</td>
-													<s:if test='mrAdminFlg == "1"'>
-														<td class="comTableTitle container"
-															style="width: 30px; border: none;">審査</td>
-														<td class="comTableTitle container"
-															style="width: 160px; border: none;">審査日時</td>
-														<td class="comTableTitle container"
-															style="width: 90px; border: none;">審査者</td>
-													</s:if>
-													<td class="comTableTitle container"
-														style="width: 160px; border: none;">承認日時</td>
-													<td class="comTableTitle container"
-														style="width: 90px; border: none;">承認者</td>
-													<td class="comTableTitle container"
-														style="width: 120px; border: none;">審査・承認メモ</td>
-													<td class="comTableTitle container"
-														style="width: 120px; border: none;">承認・却下コメント</td>
-													<s:if test='mrAdminFlg == "1"'>
-														<td class="comTableTitle container"
-															style="width: 80px; border: none;">FB申請要否</td>
-														<td class="comTableTitle container"
-															style="width: 50px; border: none;">FB回答</td>
-														<td class="comTableTitle container"
-															style="width: 80px; border: none;">FB処理区分</td>
-													</s:if>
-												</tr>
-												<%-- 内容 --%>
-				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
-					<tr>
-						 <td class="comTableItem">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />');return false;">
-						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
-						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
-						          </acronym>
-			              </a>
-				  		 </td>
-				  		 <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo"  key="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqSbt"  key="catSnseiComboDataList[%{#status.index}].reqSbt" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqType"  key="catSnseiComboDataList[%{#status.index}].reqType" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqSts"  key="catSnseiComboDataList[%{#status.index}].reqSts" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].sbt"  key="catSnseiComboDataList[%{#status.index}].sbt"/></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].insNo"  key="catSnseiComboDataList[%{#status.index}].insNo" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].insFormalName"  key="catSnseiComboDataList[%{#status.index}].insFormalName" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqJgiName"  key="catSnseiComboDataList[%{#status.index}].reqJgiName" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqShz"  key="catSnseiComboDataList[%{#status.index}].reqShz" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqComment"  key="catSnseiComboDataList[%{#status.index}].reqComment" /></td>
-					 <s:if test='mrAdminFlg == "1"'>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnFlg"  key="catSnseiComboDataList[%{#status.index}].shnFlg" /></td>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnYmdhms"  key="catSnseiComboDataList[%{#status.index}].shnYmdhms" /></td>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnShaId"  key="catSnseiComboDataList[%{#status.index}].shnShaId" /></td>
-				     </s:if>
-				     	  <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS"  key="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS" /></td>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID"  key="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID" /></td>
-		  		          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_MEMO"  key="catSnseiComboDataList[%{#status.index}].aPR_MEMO" /></td>
-		       		      <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aprComment"  key="catSnseiComboDataList[%{#status.index}].aprComment" /></td>
-			      	 <s:if test='mrAdminFlg == "1"'>
-			          	  <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbReqFlg"  key="catSnseiComboDataList[%{#status.index}].fbReqFlg" /></td>
-			              <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbAnsId"  key="catSnseiComboDataList[%{#status.index}].fbAnsId" /></td>
-			              <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbPrcType"  key="catSnseiComboDataList[%{#status.index}].fbPrcType" /></td>
-			      	 </s:if>
+              <table class="siz tkdUlt" id="dataTable" style="margin-top:3pt;margin-bottom:1pt;"border="0" >
+              <thead style="z-index:3">
+              <%-- ヘッダー行 --%>
+				<tr>
+					<th rowspan="4" class="comTableTitle container tkdUlt" width="180px"
+						style="border: none;" id="styles">都道府県
+					</th>
+				</tr>
+					<tr><!-- 枠組み　大 -->
+							<td colspan="4" class="comTableTitle container" width="150px"
+							style="border: none;" id="styles">施設新規</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設更新</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設削除</td>
+							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">領域別親子紐付け<br>(当期)<br>承認待ち</td>
+							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設復活<br><br>承認待ち</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">医師新規</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">医師削除</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">医師復活</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設更新来期</td>
+							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">武田親子紐づけ<br>(来期)<br>承認待ち</td>
 					</tr>
+						<tr>　<!-- 枠組み　中 -->
+							<td colspan="2" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>承認待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>申請待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>承認待ち
+							</td>
+							<td colspan="2" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>承認待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>申請待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>承認待ち
+							</td>
+							<td colspan="2" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>承認待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>申請待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>ULT承認待ち
+							</td>
+							<td colspan="2" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>承認待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>申請待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>ULT承認待ち
+							</td>
+							<td colspan="2" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>承認待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>申請待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>承認待ち
+							</td>
+							<td colspan="2" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>承認待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>申請待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>承認待ち
+							</td>
+							<td colspan="2" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles"><br>承認待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>申請待ち
+							</td>
+							<td colspan="1" class="comTableTitle container" width="100px"
+								style="border: none;" id="styles">ULT<br>承認待ち
+							</td>
+
+						</tr>
+						<tr><!-- 枠組み　小 -->
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+						    <td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+						     <td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;">承認者
+							</td>
+							<td class="comTableTitle container" width="180px"
+								style="border: none;background-Color:#f4d3c4;">MR
+							</td>
+						</tr>
+					</thead>
+												<%-- 内容 --%>
+				<s:iterator value="NM001DTO" status="status" var="rowBean" >
+
+			<s:if test='#rowBean.key == "R01"'>
+				<tr>
+			</s:if>
+			<s:if test='#rowBean.key == "R01"'>
+                        <th class="comTableItem" style="z-index:1;text-align: left;">
+                        <s:label  key="#rowBean.addrNamePref" align="left"/>
+                        <s:hidden name="#rowBean.addrCodePref"/>
+					    </th>
+			</s:if>
+						<s:hidden name="#rowBean.reqChl"  />
+
+						<s:hidden name="#rowBean.reqType"  />
+						<s:hidden name="#rowBean.reqSts"  />
+						<s:if test="#rowBean.reqCountSsAd != null">
+							 <td class="comTableItem" style="text-align: center;">
+							 <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni1('<s:property  value="#rowBean.reqType1" />', '<s:property value="#rowBean.reqChl1"/>', '<s:property value="#rowBean.reqSts1"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+							          	<s:if test="#rowBean.reqCountSsAd >= 5">
+							            <s:label style="color : red;" key="#rowBean.reqCountSsAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label  key="#rowBean.reqCountSsAd" />
+							            </s:else>
+							          </acronym>
+				             </a>
+				             </td>
+				        </s:if>
+			             <s:elseif test="#rowBean.reqCountSsMr != null">
+					             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+					             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni2('<s:property  value="#rowBean.reqType2" />', '<s:property value="#rowBean.reqChl2"/>', '<s:property value="#rowBean.reqSts2"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+								          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+								        <s:if test="#rowBean.reqCountSsMr >= 5">
+							            <s:label style="color : red;" key="#rowBean.reqCountSsMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label style="background-Color:#f4d3c4;" class="labels" key="#rowBean.reqCountSsMr" />
+							            </s:else>
+								          </acronym>
+					             </a>
+					             </td>
+			             </s:elseif>
+			             <s:elseif test="#rowBean.reqCountSsUr != null">
+				             <td class="comTableItem" style="text-align: center;">
+				             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni3('<s:property  value="#rowBean.reqType3" />', '<s:property value="#rowBean.reqChl3"/>', '<s:property value="#rowBean.reqSts3"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+							            <s:if test="#rowBean.reqCountSsUr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSsUr" />
+							            </s:if>
+							            <s:else>
+							            <s:label  class="labels"  key="#rowBean.reqCountSsUr" />
+							            </s:else>
+							          </acronym>
+				             </a>
+				             </td>
+				             </s:elseif>
+				             <s:elseif test="#rowBean.reqCountSsUs != null">
+				             <td class="comTableItem" style="text-align: center;">
+				             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni4('<s:property  value="#rowBean.reqType4" />', '<s:property value="#rowBean.reqChl4"/>', '<s:property value="#rowBean.reqSts4"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+							            <s:if test="#rowBean.reqCountSsUs >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSsUs" />
+							            </s:if>
+							            <s:else>
+							            <s:label class="labels"  key="#rowBean.reqCountSsUs" />
+							            </s:else>
+							          </acronym>
+				             </a>
+				             </td>
+			             </s:elseif>
+			             <s:elseif test="#rowBean.reqCountScAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni5('<s:property  value="#rowBean.reqType5" />', '<s:property value="#rowBean.reqChl5"/>', '<s:property value="#rowBean.reqSts5"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountScAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountScAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label class="labels"   key="#rowBean.reqCountScAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			             </td>
+			             </s:elseif>
+			             <s:elseif test="#rowBean.reqCountScMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni6('<s:property  value="#rowBean.reqType6" />', '<s:property value="#rowBean.reqChl6"/>', '<s:property value="#rowBean.reqSts6"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+						            	<s:if test="#rowBean.reqCountScMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountScMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label  style="background-Color:#f4d3c4;" class="labels" key="#rowBean.reqCountScMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountScUr != null">
+				             <td class="comTableItem" style="text-align: center;">
+				             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni7('<s:property  value="#rowBean.reqType7" />', '<s:property value="#rowBean.reqChl7"/>', '<s:property value="#rowBean.reqSts7"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+							            	<s:if test="#rowBean.reqCountScUr >= 5">
+								            <s:label style="color : red" key="#rowBean.reqCountScUr" />
+								            </s:if>
+								            <s:else>
+								            <s:label  class="labels" key="#rowBean.reqCountScUr" />
+								            </s:else>
+							          </acronym>
+				             </a>
+				              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountScUs != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni8('<s:property  value="#rowBean.reqType8" />', '<s:property value="#rowBean.reqChl8"/>', '<s:property value="#rowBean.reqSts8"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+						            	<s:if test="#rowBean.reqCountScUs >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountScUs" />
+							            </s:if>
+							            <s:else>
+							            <s:label  class="labels"  key="#rowBean.reqCountScUs" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSdAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni9('<s:property  value="#rowBean.reqType9" />', '<s:property value="#rowBean.reqChl9"/>', '<s:property value="#rowBean.reqSts9"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+										<s:if test="#rowBean.reqCountSdAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSdAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountSdAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSdMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni10('<s:property  value="#rowBean.reqType10" />', '<s:property value="#rowBean.reqChl10"/>', '<s:property value="#rowBean.reqSts10"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountSdMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSdMr" />
+							            </s:if>
+							            <s:else>
+						           	    <s:label   class="labels" key="#rowBean.reqCountSdMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSdUr != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni11('<s:property  value="#rowBean.reqType11" />', '<s:property value="#rowBean.reqChl11"/>', '<s:property value="#rowBean.reqSts11"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountSdUr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSdUr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountSdUr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSdUs != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni12('<s:property  value="#rowBean.reqType12" />', '<s:property value="#rowBean.reqChl12"/>', '<s:property value="#rowBean.reqSts12"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountSdUs >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSdUs" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountSdUs" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountRnAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni13('<s:property  value="#rowBean.reqType13" />', '<s:property value="#rowBean.reqChl13"/>', '<s:property value="#rowBean.reqSts13"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountRnAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountRnAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountRnAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountRnMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni14('<s:property  value="#rowBean.reqType14" />', '<s:property value="#rowBean.reqChl14"/>', '<s:property value="#rowBean.reqSts14"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountRnMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountRnMr" />
+							            </s:if>
+							            <s:else>
+							             <s:label   class="labels" key="#rowBean.reqCountRnMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountShAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni15('<s:property  value="#rowBean.reqType15" />', '<s:property value="#rowBean.reqChl15"/>', '<s:property value="#rowBean.reqSts15"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						           		<s:if test="#rowBean.reqCountShAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountShAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountShAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountShMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni16('<s:property  value="#rowBean.reqType16" />', '<s:property value="#rowBean.reqChl16"/>', '<s:property value="#rowBean.reqSts16"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						                <s:if test="#rowBean.reqCountShMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountShMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountShMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDsAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni17('<s:property  value="#rowBean.reqType17" />', '<s:property value="#rowBean.reqChl17"/>', '<s:property value="#rowBean.reqSts17"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDsAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDsAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountDsAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDsMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni18('<s:property  value="#rowBean.reqType18" />', '<s:property value="#rowBean.reqChl18"/>', '<s:property value="#rowBean.reqSts18"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDsMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDsMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountDsMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDsUr != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni19('<s:property  value="#rowBean.reqType19" />', '<s:property value="#rowBean.reqChl19"/>', '<s:property value="#rowBean.reqSts19"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDsUr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDsUr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountDsUr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDsUs != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni20('<s:property  value="#rowBean.reqType20" />', '<s:property value="#rowBean.reqChl20"/>', '<s:property value="#rowBean.reqSts20"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						          	    <s:if test="#rowBean.reqCountDsUs >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDsUs" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountDsUs" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDdAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni21('<s:property  value="#rowBean.reqType21" />', '<s:property value="#rowBean.reqChl21"/>', '<s:property value="#rowBean.reqSts21"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDdAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDdAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountDdAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDdMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni22('<s:property  value="#rowBean.reqType22" />', '<s:property value="#rowBean.reqChl22"/>', '<s:property value="#rowBean.reqSts22"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDdMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDdMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountDdMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDdUr != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni23('<s:property  value="#rowBean.reqType23" />', '<s:property value="#rowBean.reqChl23"/>', '<s:property value="#rowBean.reqSts23"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDdUr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDdUr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountDdUr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDdUs != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni24('<s:property  value="#rowBean.reqType24" />', '<s:property value="#rowBean.reqChl24"/>', '<s:property value="#rowBean.reqSts24"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDdUs >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDdUs" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountDdUs" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDhAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni25('<s:property  value="#rowBean.reqType25" />', '<s:property value="#rowBean.reqChl25"/>', '<s:property value="#rowBean.reqSts25"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDhAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDhAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountDhAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDhMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni26('<s:property  value="#rowBean.reqType26" />', '<s:property value="#rowBean.reqChl26"/>', '<s:property value="#rowBean.reqSts26"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDhMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDhMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountDhMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDhUr != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni27('<s:property  value="#rowBean.reqType27" />', '<s:property value="#rowBean.reqChl27"/>', '<s:property value="#rowBean.reqSts27"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDhUr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDhUr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountDhUr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountDhUs != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni28('<s:property  value="#rowBean.reqType28" />', '<s:property value="#rowBean.reqChl28"/>', '<s:property value="#rowBean.reqSts28"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountDhUs >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountDhUs" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountDhUs" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSuAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni29('<s:property  value="#rowBean.reqType29" />', '<s:property value="#rowBean.reqChl29"/>', '<s:property value="#rowBean.reqSts29"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountSuAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSuAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountSuAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSuMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni30('<s:property  value="#rowBean.reqType30" />', '<s:property value="#rowBean.reqChl30"/>', '<s:property value="#rowBean.reqSts30"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountSuMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSuMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountSuMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSuUr != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni31('<s:property  value="#rowBean.reqType31" />', '<s:property value="#rowBean.reqChl31"/>', '<s:property value="#rowBean.reqSts31"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountSuUr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSuUr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountSuUr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountSuUs != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni32('<s:property  value="#rowBean.reqType32" />', '<s:property value="#rowBean.reqChl32"/>', '<s:property value="#rowBean.reqSts32"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountSuUs >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountSuUs" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels"  key="#rowBean.reqCountSuUs" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountTsAd != null">
+			             <td class="comTableItem" style="text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni33('<s:property  value="#rowBean.reqType33" />', '<s:property value="#rowBean.reqChl33"/>', '<s:property value="#rowBean.reqSts33"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountTsAd >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountTsAd" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountTsAd" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			              </td>
+			              </s:elseif>
+			              <s:elseif test="#rowBean.reqCountTsMr != null">
+			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
+			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni34('<s:property  value="#rowBean.reqType34" />', '<s:property value="#rowBean.reqChl34"/>', '<s:property value="#rowBean.reqSts34"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
+						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
+
+						            	<s:if test="#rowBean.reqCountTsMr >= 5">
+							            <s:label style="color : red" key="#rowBean.reqCountTsMr" />
+							            </s:if>
+							            <s:else>
+							            <s:label   class="labels" key="#rowBean.reqCountTsMr" />
+							            </s:else>
+						          </acronym>
+			             </a>
+			             </td>
+			             </s:elseif>
+			<s:if test='#rowBean.key == "R16"'>
+
+
+
+			</s:if>
 				</s:iterator>
 
 				</table>
@@ -633,16 +1002,18 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 									<%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>
 						  <!--  <hr class="comSplit" /> -->
 						  <%-- 後制御部 --%>
+						  </tbody>
 	</table>
 	</s:form>
-    </tbody>
     </table>
-</table>
+
+
 <%-- ポータルボディー 終了 --%>
 
 
 <%-- メイン部 一覧 終了 --%>
 <%-- ポータル大枠 終了 --%>
+<jsp:include page="common/jkrBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />
 </body>

@@ -176,32 +176,18 @@ public class ND307Service extends BaseService {
 		}
 
 		// 整合性チェック
-		// 申請時に既に医師削除申請がされている場合（承認待ち）
+		// 申請時に既に医師削除申請がされている場合
 		if(!indto.getAlertIgnore().equals("1")) {
 			SelectNd101MainDataEntity paramEntity2 = new SelectNd101MainDataEntity();
 			paramEntity2.setSqlId("selectNd101DelData");
 			paramEntity2.setInDocNo(indto.getDocNo());
 			List<SelectNd101MainDataEntity> mainDataEntityList2 = dao.select(paramEntity2);
 			if (mainDataEntityList2.size() > 0) {
-				// 医師免許返納・死亡の申請がされています。よろしいですか？
+				// 廃業・死亡の申請がされています。よろしいですか？
 				alertErrMsg2 += loginInfo.getMsgData(RdmConstantsData.I010) + "\n";
 				errFlg = true;
 			}
 		}
-
-		// 整合性チェック
-		// 申請時に既に医師削除申請がされている場合（承認済）
-
-		SelectNd101MainDataEntity paramEntity4 = new SelectNd101MainDataEntity();
-		paramEntity4.setSqlId("selectNd101DelAppdData");
-		paramEntity4.setInDocNo(indto.getDocNo());
-		List<SelectNd101MainDataEntity> mainDataEntityList4 = dao.select(paramEntity4);
-		if (mainDataEntityList4.size() > 0) {
-			// 医師免許返納・死亡状態で、申請できません。
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W040) + "\n";
-			errFlg = true;
-		}
-
 
 		// 排他チェック
 		// 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
@@ -459,8 +445,7 @@ public class ND307Service extends BaseService {
         indto.setUltDocNo(selectDocReqKnrInsChangeCheckList.get(0).getUltDocNo());
         indto.setPreHoInsType(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreHoInsType(),""));
         indto.setPostHoInsType(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostHoInsType(),""));
-        indto.setPreInsClass(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreInsClass(),""));
-        indto.setPostInsClass(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostInsClass(),""));
+
 
     	//勤務情報（変更前）
     	indto.setPreInsAbbrName(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreInsAbbrName(), "-"));

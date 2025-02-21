@@ -105,9 +105,6 @@ public class CommonControlService extends BaseService {
                 MRdmJgiSosMstEntity rdmJgiSosMstParam = new MRdmJgiSosMstEntity();
                 rdmJgiSosMstParam.setJgiNo(loginInfo.getJgiNo());
 
-                //TODO二神テスト用セット3080833
-                rdmJgiSosMstParam.setJgiNo(3080833);
-
                 MRdmJgiSosMstEntity rdmJgiSosMstEntity = dao.selectByValue(rdmJgiSosMstParam).get(0);
 
                 loginInfo.setJgiName(rdmJgiSosMstEntity.getJgiName());

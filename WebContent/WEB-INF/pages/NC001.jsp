@@ -304,13 +304,17 @@ function shwoInit() {
               <tr>
                 <td></td>
               　　　　　　　　　<td>
-                 <a href="" class="contentsTitle" onclick="gotoNext('ND101','Init'); return false;">医療機関への異動リンク（開発中）</a>
+                 <a href="" class="contentsTitle" onclick="gotoNext('ND103','Init'); return false;">医師勤務先追加（開発中）</a>
               　　　　　　　　　</td>
-                <td>医療機関への異動リンク（開発中）</td>
+                <td>医師勤務先追加直リンク（開発中）</td>
               </tr>
              <tr><td>入力項目</td>
               　　　　　　　　　<td><label>申請ID</label></td>
                 <td><s:textfield name="reqId" size="13" maxlength="13" /></td>
+              </tr>
+              <tr><td></td>
+              　　　　　　　　　<td><label>武田医師固定C</label></td>
+                <td><s:textfield name="paramDocNo" size="9" maxlength="9" /></td>
               </tr>
             <tr><td></td>
               　　　　　　　　　<td><label>ULT施設コード</label></td>
@@ -319,10 +323,6 @@ function shwoInit() {
             <tr><td></td>
               　　　　　　　　　<td><label>ULT医師コード</label></td>
                 <td><s:textfield name="ultDocNo" size="8" maxlength="8" /></td>
-              </tr>
-            <tr><td></td>
-              　　　　　　　　　<td><label>画面遷移確認用(NC011 ND013)</label></td>
-                <td><s:textfield name="preScreenId" size="20" maxlength="20" /></td>
               </tr>
             </table>
           </s:if>

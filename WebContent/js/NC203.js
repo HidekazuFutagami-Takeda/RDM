@@ -50,7 +50,7 @@
 		* </pre>
 */
 		function clearText() {
-			var preScreenId = document.fm1.preScreenId.value;
+			var preScreenId = document.fm1.backScreenId.value;
 
 			if(preScreenId != "ND011" && preScreenId != "ND014" && preScreenId != "ND101"
 				&& preScreenId != "ND103" && preScreenId != "ND501" && preScreenId != "NF011"
@@ -72,8 +72,10 @@
 			var insNoSrch = document.getElementById("insNoSrch");
 			insNoSrch.value = '';
 
-			var ultNo = document.getElementById("ultNo");
-			ultNo.value = '';
+			if(document.fm1.viewKbn.value == '1'){
+				var ultNo = document.getElementById("ultNo");
+				ultNo.value = '';
+			}
 
 			var hcoKeieitai = document.getElementById("hcoKeieitai");
 			hcoKeieitai.value = '';
@@ -81,8 +83,7 @@
 			var hoInsType = document.getElementById("hoInsType");
 			hoInsType.value = '';
 
-			if(preScreenId != "NF011" && preScreenId != "NF211" && preScreenId != "NF212"
-				&& document.getElementById("insType").length < 1){
+			if(document.fm1.insSbtEditFlg.value == '1'){
 				var insType = document.getElementById("insType");
 				insType.value = '';
 			}

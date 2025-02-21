@@ -93,6 +93,39 @@ public class NC203Service extends BaseService {
 
 		//
     	SelectInsListEntity selectinsListEntity = new SelectInsListEntity();
+    	SelectCntSelectHcoEntity selectParamSelectHcoEntity = new SelectCntSelectHcoEntity();
+
+    	selectinsListEntity.setViewKbn(indto.getViewKbn());
+    	selectParamSelectHcoEntity.setViewKbn(indto.getViewKbn());
+    	if(!"1".equals(indto.getViewKbn())) {
+    		selectinsListEntity.setSqlId("selectInsList");
+    		selectParamSelectHcoEntity.setSqlId("selectCntHco");
+    	}
+
+    	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+    		// 管理者権限
+    		selectinsListEntity.setKnrFlg(true);
+    		selectParamSelectHcoEntity.setKnrFlg(true);
+    		if(("NF211".equals(indto.getBackScreenId()) || "NF212".equals(indto.getBackScreenId()))
+    				&& "1".equals(indto.getTkdTrtKbn()) && !indto.getTrtCd().isEmpty()){
+    			selectinsListEntity.setTrtCd(indto.getTrtCd());
+    			selectParamSelectHcoEntity.setTrtCd(indto.getTrtCd());
+    		}
+    	} else {
+    		// MR権限
+    		selectinsListEntity.setKnrFlg(false);
+    		selectParamSelectHcoEntity.setKnrFlg(false);
+    		if(!indto.getTrtCd().isEmpty()){
+    			selectinsListEntity.setTrtCd(indto.getTrtCd());
+    			selectParamSelectHcoEntity.setTrtCd(indto.getTrtCd());
+    		}
+    		selectinsListEntity.setJgiNo(indto.getLoginJgiNo());
+    		selectParamSelectHcoEntity.setJgiNo(indto.getLoginJgiNo());
+    		selectinsListEntity.setBrCd(indto.getLoginBrCd());
+    		selectParamSelectHcoEntity.setBrCd(indto.getLoginBrCd());
+    		selectinsListEntity.setDistCd(indto.getLoginDistCd());
+    		selectParamSelectHcoEntity.setDistCd(indto.getLoginDistCd());
+    	}
 
     	//検索条件_施設名（全角）
         if (indto.getInsKanjiSrch().isEmpty()) {
@@ -106,6 +139,7 @@ public class NC203Service extends BaseService {
             List<SelectHenkanListEntity> selectKanji = dao.select(kanjiHenkan);
             for (SelectHenkanListEntity kanji : selectKanji) {
             	selectinsListEntity.setInsKanjiSrch(kanji.getSearchHenkan());
+            	selectParamSelectHcoEntity.setInsKanjiSrch(kanji.getSearchHenkan());
             }
         }
 
@@ -121,6 +155,7 @@ public class NC203Service extends BaseService {
             List<SelectHenkanListEntity> selectKana = dao.select(kanaHenkan);
             for (SelectHenkanListEntity kana : selectKana) {
             	selectinsListEntity.setInsKanaSrch(kana.getSearchHenkan());
+            	selectParamSelectHcoEntity.setInsKanaSrch(kana.getSearchHenkan());
             }
         }
 
@@ -136,6 +171,7 @@ public class NC203Service extends BaseService {
             List<SelectHenkanListEntity> selectPhone = dao.select(haifunRemove);
             for (SelectHenkanListEntity phone : selectPhone) {
             	selectinsListEntity.setPhone1(phone.getSearchHenkan());
+            	selectParamSelectHcoEntity.setPhone1(phone.getSearchHenkan());
             }
         }
 
@@ -145,10 +181,7 @@ public class NC203Service extends BaseService {
 		selectParamNc203List = dao.select(selectParamNc203Entity);
 
 		//1-4-2 件数取得
-        SelectCntSelectHcoEntity selectParamSelectHcoEntity = new SelectCntSelectHcoEntity();
         List<SelectCntSelectHcoEntity> selectParamSelectHcoList;
-        selectParamSelectHcoEntity.setInsKanjiSrch(StringUtils.setEmptyToNull(indto.getInsKanjiSrch()));
-        selectParamSelectHcoEntity.setInsKanaSrch(StringUtils.setEmptyToNull(indto.getInsKanaSrch()));
         selectParamSelectHcoEntity.setKensakuHaiinKbn(StringUtils.setEmptyToNull(indto.getKensakuHaiinKbn()));
         selectParamSelectHcoEntity.setKensakuDelFlg(StringUtils.setEmptyToNull(indto.getKensakuDelFlg()));
         selectParamSelectHcoEntity.setInsNoSrch(StringUtils.setEmptyToNull(indto.getInsNoSrch()));
@@ -157,7 +190,6 @@ public class NC203Service extends BaseService {
         selectParamSelectHcoEntity.setKensakuHoInsType(StringUtils.setEmptyToNull(indto.getKensakuHoInsType()));
         selectParamSelectHcoEntity.setKensakuInsSbt(StringUtils.setEmptyToNull(indto.getKensakuInsSbt()));
         selectParamSelectHcoEntity.setPharmType(StringUtils.setEmptyToNull(indto.getPharmType()));
-        selectParamSelectHcoEntity.setPhone1(indto.getPhone1());
         selectParamSelectHcoEntity.setInsPcode(StringUtils.setEmptyToNull(indto.getInsPcode()));
         selectParamSelectHcoEntity.setKensakuAddrCodePref(StringUtils.setEmptyToNull(indto.getKensakuAddrCodePref()));
         selectParamSelectHcoEntity.setKensakuAddrCodeCity(StringUtils.setEmptyToNull(indto.getKensakuAddrCodeCity()));
@@ -182,8 +214,6 @@ public class NC203Service extends BaseService {
         selectinsListEntity.setInLimit(selectParamNc203List.get(1).getValue());
 
         //検索結果取得
-        selectinsListEntity.setInsKanjiSrch(indto.getInsKanjiSrch());
-        selectinsListEntity.setInsKanaSrch(StringUtils.setEmptyToNull(indto.getInsKanaSrch()));
         selectinsListEntity.setKensakuHaiinKbn(StringUtils.setEmptyToNull(indto.getKensakuHaiinKbn()));
         selectinsListEntity.setKensakuDelFlg(StringUtils.setEmptyToNull(indto.getKensakuDelFlg()));
         selectinsListEntity.setInsNoSrch(StringUtils.setEmptyToNull(indto.getInsNoSrch()));
@@ -192,7 +222,6 @@ public class NC203Service extends BaseService {
         selectinsListEntity.setKensakuHoInsType(StringUtils.setEmptyToNull(indto.getKensakuHoInsType()));
         selectinsListEntity.setKensakuInsSbt(StringUtils.setEmptyToNull(indto.getKensakuInsSbt()));
         selectinsListEntity.setPharmType(StringUtils.setEmptyToNull(indto.getPharmType()));
-        selectinsListEntity.setPhone1(indto.getPhone1());
         selectinsListEntity.setInsPcode(StringUtils.setEmptyToNull(indto.getInsPcode()));
         selectinsListEntity.setKensakuAddrCodePref(StringUtils.setEmptyToNull(indto.getKensakuAddrCodePref()));
         selectinsListEntity.setKensakuAddrCodeCity(StringUtils.setEmptyToNull(indto.getKensakuAddrCodeCity()));
@@ -203,93 +232,133 @@ public class NC203Service extends BaseService {
     	List<SelectInsListEntity> selectInsEntityList = dao.select(selectinsListEntity);
 
         List<InsData> dataList = new ArrayList<InsData>();
-        for(SelectInsListEntity entiry : selectInsEntityList) {
+        for(SelectInsListEntity entity : selectInsEntityList) {
 
         	InsData test = new InsData();
 
         	// 施設略式漢字名
-        	test.setInsAbbrName(entiry.getInsAbbrName());
+        	if(entity.getInsAbbrName() != null) {
+        	test.setInsAbbrName(entity.getInsAbbrName());
+        	}else {
+        	test.setInsAbbrName(" ");
+    		}
 
         	// 施設正式漢字名
-        	test.setInsFormalName(entiry.getInsFormalName());
+        	if(entity.getInsFormalName() != null) {
+        	test.setInsFormalName(entity.getInsFormalName());
+        	}else {
+        	test.setInsFormalName(" ");
+    		}
 
         	// 施設固定コード
-        	test.setInsNo(entiry.getInsNo());
+        	if(entity.getInsNo() != null) {
+        	test.setInsNo(entity.getInsNo());
+        	}else {
+        	test.setInsNo(" ");
+    		}
 
         	// 住所
-        	test.setInsAddr(entiry.getInsAddr());
+        	if(entity.getInsAddr() != null) {
+        	test.setInsAddr(entity.getInsAddr());
+        	}else {
+        	test.setInsAddr(" ");
+    		}
 
         	// 電話名
-        	if(entiry.getPhone1() != null) {
-        	test.setPhone1(entiry.getPhone1());
+        	if(entity.getPhone1() != null) {
+        	test.setPhone1(entity.getPhone1());
         	}else {
         	test.setPhone1(" ");
     		}
 
         	// 施設種別
-        	if(entiry.getInsSbt() != null) {
-        	test.setInsSbt(entiry.getInsSbt());
+        	if(entity.getInsSbt() != null) {
+        	test.setInsSbt(entity.getInsSbt());
         	}else {
         	test.setInsSbt(" ");
         	}
 
         	// 経営主体コード
-        	test.setManageCd(entiry.getManageCd());
+        	if(entity.getManageCd() != null) {
+        	test.setManageCd(entity.getManageCd());
+        	}else {
+        	test.setManageCd(" ");
+        	}
 
         	// 病床数
-        	test.setBedsTot(entiry.getBedsTot());
+        	test.setBedsTot(entity.getBedsTot());
 
         	// ULT施設略式漢字名
-        	if(entiry.getShisetsuNmRyaku() != null) {
-        	test.setShisetsuNmRyaku(entiry.getShisetsuNmRyaku());
+        	if(entity.getShisetsuNmRyaku() != null) {
+        	test.setShisetsuNmRyaku(entity.getShisetsuNmRyaku());
         	}else {
         	test.setShisetsuNmRyaku(" ");
     		}
 
         	// ULT施設正式漢字名
-        	if(entiry.getShisetsuNm() != null) {
-        	test.setShisetsuNm(entiry.getShisetsuNm());
+        	if(entity.getShisetsuNm() != null) {
+        	test.setShisetsuNm(entity.getShisetsuNm());
         	}else {
         	test.setShisetsuNm(" ");
     		}
 
         	// ULT施設固定コード
-        	if(entiry.getDcfShisetsuCd() != null) {
-        	test.setDcfShisetsuCd(entiry.getDcfShisetsuCd());
+        	if(entity.getDcfShisetsuCd() != null) {
+        	test.setDcfShisetsuCd(entity.getDcfShisetsuCd());
         	}else {
         	test.setDcfShisetsuCd(" ");
     		}
 
         	// ULT住所
-        	if(entiry.getAddress() != null) {
-        	test.setAddress(entiry.getAddress());
+        	if(entity.getAddress() != null) {
+        	test.setAddress(entity.getAddress());
         	}else {
         	test.setAddress(" ");
     		}
 
         	// ULT電話番号
-        	if(entiry.getShisetsuTel() != null) {
-        	test.setShisetsuTel(entiry.getShisetsuTel());
+        	if(entity.getShisetsuTel() != null) {
+        	test.setShisetsuTel(entity.getShisetsuTel());
         	}else {
         	test.setShisetsuTel(" ");
     		}
 
         	// 施設区分
-        	if(entiry.getShisetsuKbn() != null) {
-        	test.setShisetsuKbn(entiry.getShisetsuKbn());
+        	if(entity.getShisetsuKbn() != null) {
+        	test.setShisetsuKbn(entity.getShisetsuKbn());
         	}else {
         	test.setShisetsuKbn(" ");
     		}
 
         	// 経営主体コード
-        	if(entiry.getKeieitaiCd() != null) {
-        	test.setKeieitaiCd(entiry.getKeieitaiCd());
+        	if(entity.getKeieitaiCd() != null) {
+        	test.setKeieitaiCd(entity.getKeieitaiCd());
         	}else {
         	test.setKeieitaiCd(" ");
     		}
 
         	// 病床数
-        	test.setByoshoSu(entiry.getByoshoSu());
+        	test.setByoshoSu(entity.getByoshoSu());
+
+        	// 郵便番号
+        	if(entity.getInsPcode() != null) {
+        	test.setInsPcode(entity.getInsPcode());
+        	}else {
+        	test.setInsPcode(" ");
+    		}
+
+        	// 氏名
+        	if("0".equals(indto.getTkdTrtKbn())) {
+        		test.setJgiName("");
+        	} else {
+        		test.setJgiName(entity.getJgiName());
+        	}
+
+        	// 対象区分
+        	test.setHoInsType(entity.getHoInsType());
+
+        	// 施設区分
+        	test.setInsClass(entity.getInsClass());
 
         	//データ代入
         	dataList.add(test);
@@ -313,7 +382,7 @@ public class NC203Service extends BaseService {
     public BaseDTO list(NC203DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
-        String winVarName = indto.getWinVarName();
+        String backScreenId = indto.getBackScreenId();
 
         //廃院区分_生成用エンティティ
         MRdmCodeMstEntity paramHaiinKbn = new MRdmCodeMstEntity();
@@ -324,10 +393,10 @@ public class NC203Service extends BaseService {
 
         LinkedHashMap<String, String> mapHaiinKbn = new LinkedHashMap<String, String>();
 
-        if("ND011".equals(winVarName) || "ND014".equals(winVarName) || "ND101".equals(winVarName)
-        		|| "ND103".equals(winVarName) || "ND501".equals(winVarName) || "NF011".equals(winVarName)
-        		|| "NF012".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName)
-        		|| "NF401".equals(winVarName) || "NF403".equals(winVarName)) {
+        if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)
+        		|| "ND103".equals(backScreenId) || "ND501".equals(backScreenId) || "NF011".equals(backScreenId)
+        		|| "NF012".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId)
+        		|| "NF401".equals(backScreenId) || "NF403".equals(backScreenId)) {
         	for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
 		    	if("0".equals(outEntity.getValue1())) {
 		    		// 「0:通常」を選択し変更不可とする
@@ -351,10 +420,10 @@ public class NC203Service extends BaseService {
         List<MRdmCodeMstEntity> SelectDelFlg = dao.selectByValue(paramDelFlg);
 
         LinkedHashMap<String, String> mapDelFlg = new LinkedHashMap<String, String>();
-        if("ND011".equals(winVarName) || "ND014".equals(winVarName) || "ND101".equals(winVarName)
-        		|| "ND103".equals(winVarName) || "ND501".equals(winVarName) || "NF011".equals(winVarName)
-        		|| "NF012".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName)
-        		|| "NF401".equals(winVarName) || "NF403".equals(winVarName)) {
+        if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)
+        		|| "ND103".equals(backScreenId) || "ND501".equals(backScreenId) || "NF011".equals(backScreenId)
+        		|| "NF012".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId)
+        		|| "NF401".equals(backScreenId) || "NF403".equals(backScreenId)) {
 		    for (MRdmCodeMstEntity outEntity : SelectDelFlg) {
 		    	if("0".equals(outEntity.getValue1())) {
 		    		// 「0:無効」を選択し変更不可とする
@@ -393,8 +462,7 @@ public class NC203Service extends BaseService {
         //施設種別データ_取り出す
         LinkedHashMap<String, String> mapInsTypeList = new LinkedHashMap<String, String>();
 
-        if((winVarName.equals("NF011") || winVarName.equals("NF211") || winVarName.equals("NF212"))
-        		&& indto.getKensakuInsSbt() != null && !"".equals(indto.getKensakuInsSbt())) {
+        if("0".equals(indto.getInsSbtEditFlg())) {
         	// 連携された施設種別を選択状態とし変更不可とする
         	for (MRdmCodeMstEntity outEntity : SelectInsTypeList) {
         		if(indto.getKensakuInsSbt().equals(outEntity.getValue1())) {

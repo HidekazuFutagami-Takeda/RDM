@@ -33,6 +33,30 @@ public class NC203DTO extends BaseDTO implements Serializable {
     private String NC203 = "NC203";
 
     /**
+	 * ユーザ権限
+	 * @generated
+	 */
+	private String loginJokenSetCd;
+
+	/**
+	 * ユーザ従業員番号
+	 * @generated
+	 */
+	private String loginJgiNo;
+
+	/**
+	 * ユーザ医薬支店C
+	 * @generated
+	 */
+	private String loginBrCd;
+
+	/**
+	 * ユーザ医薬営業所C
+	 * @generated
+	 */
+	private String loginDistCd;
+
+    /**
 	 * 画面タイトル
 	 * @generated
 	 */
@@ -210,6 +234,12 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	private String msgStr;
 
 	/**
+	 * 施設種別編集フラグ
+	 * @generated
+	 */
+	private String insSbtEditFlg;
+
+	/**
      * 検索条件_test
      * @generated
      */
@@ -292,6 +322,17 @@ public class NC203DTO extends BaseDTO implements Serializable {
      */
     private String viewKbn;
 
+    /**
+     * 領域コード
+     * @generated
+     */
+    private String trtCd;
+
+    /**
+     * 武田紐領域別区分
+     * @generated
+     */
+    private String tkdTrtKbn;
 
 	/**
 	 * NC203DTO.javapageFlgを設定
@@ -345,6 +386,66 @@ public class NC203DTO extends BaseDTO implements Serializable {
     public String getNC203(){
         return NC203;
     }
+
+	/**
+	 * NC203DTO.javaloginJokenSetCdを設定
+	 * @return loginJokenSetCd
+	 */
+	public String getLoginJokenSetCd() {
+		return loginJokenSetCd;
+	}
+
+	/**
+	 * @param loginJokenSetCd セットする loginJokenSetCd
+	 */
+	public void setLoginJokenSetCd(String loginJokenSetCd) {
+		this.loginJokenSetCd = loginJokenSetCd;
+	}
+
+	/**
+	 * NC203DTO.javaloginJgiNoを設定
+	 * @return loginJgiNo
+	 */
+	public String getLoginJgiNo() {
+		return loginJgiNo;
+	}
+
+	/**
+	 * @param loginJgiNo セットする loginJgiNo
+	 */
+	public void setLoginJgiNo(String loginJgiNo) {
+		this.loginJgiNo = loginJgiNo;
+	}
+
+	/**
+	 * NC203DTO.javaloginBrCdを設定
+	 * @return loginBrCd
+	 */
+	public String getLoginBrCd() {
+		return loginBrCd;
+	}
+
+	/**
+	 * @param loginBrCd セットする loginBrCd
+	 */
+	public void setLoginBrCd(String loginBrCd) {
+		this.loginBrCd = loginBrCd;
+	}
+
+	/**
+	 * NC203DTO.javaloginDistCdを設定
+	 * @return loginDistCd
+	 */
+	public String getLoginDistCd() {
+		return loginDistCd;
+	}
+
+	/**
+	 * @param loginDistCd セットする loginDistCd
+	 */
+	public void setLoginDistCd(String loginDistCd) {
+		this.loginDistCd = loginDistCd;
+	}
 
 	/**
 	 * NC203DTO.javatitleを設定
@@ -892,6 +993,21 @@ public class NC203DTO extends BaseDTO implements Serializable {
 
 
 	/**
+	 * NC203DTO.javainsSbtEditFlgを設定
+	 * @return insSbtEditFlg
+	 */
+	public String getInsSbtEditFlg() {
+		return insSbtEditFlg;
+	}
+
+	/**
+	 * @param insSbtEditFlg セットする insSbtEditFlg
+	 */
+	public void setInsSbtEditFlg(String insSbtEditFlg) {
+		this.insSbtEditFlg = insSbtEditFlg;
+	}
+
+	/**
 	 * NC203DTO.javasortConditionを設定
 	 * @return sortCondition
 	 */
@@ -979,6 +1095,36 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	 */
 	public void setViewKbn(String viewKbn) {
 		this.viewKbn = viewKbn;
+	}
+
+	/**
+	 * NC203DTO.javatrtCdを設定
+	 * @return trtCd
+	 */
+	public String getTrtCd() {
+		return trtCd;
+	}
+
+	/**
+	 * @param trtCd セットする trtCd
+	 */
+	public void setTrtCd(String trtCd) {
+		this.trtCd = trtCd;
+	}
+
+	/**
+	 * NC203DTO.javatkdTrtKbnを設定
+	 * @return tkdTrtKbn
+	 */
+	public String getTkdTrtKbn() {
+		return tkdTrtKbn;
+	}
+
+	/**
+	 * @param tkdTrtKbn セットする tkdTrtKbn
+	 */
+	public void setTkdTrtKbn(String tkdTrtKbn) {
+		this.tkdTrtKbn = tkdTrtKbn;
 	}
 
 	/**

@@ -127,7 +127,7 @@ public class NF011Service extends BaseService {
 				indto.setBedsTot(Integer.toString(bedsTot));
 				indto.setMedBedsTot(Integer.toString(bedsTot));
 
-        		indto.setReqShzNm(indto.getLoginShzNm());
+        		indto.setReqShzNm(loginInfo.getBumonRyakuName());
 				indto.setReqJgiName(loginInfo.getJgiName());
 				indto.setReqJgiNo(loginInfo.getJgiNo());
         		indto.setReqBrCd(loginInfo.getBrCode());
@@ -138,7 +138,7 @@ public class NF011Service extends BaseService {
 				indto.setReqStsNm("");
 			} else {
 				// 完全新規 ログイン情報から申請者セット
-				indto.setReqShzNm(indto.getLoginShzNm());
+				indto.setReqShzNm(loginInfo.getBumonRyakuName());
 				indto.setReqJgiName(loginInfo.getJgiName());
 				indto.setReqJgiNo(loginInfo.getJgiNo());
         		indto.setReqBrCd(loginInfo.getBrCode());
@@ -307,7 +307,7 @@ public class NF011Service extends BaseService {
 
 			} else {
 				// 完全新規
-				indto.setReqShzNm(indto.getLoginShzNm());
+				indto.setReqShzNm(loginInfo.getBumonRyakuName());
 				indto.setReqJgiName(loginInfo.getJgiName());
 				indto.setReqJgiNo(loginInfo.getJgiNo());
         		indto.setReqBrCd(loginInfo.getBrCode());
@@ -320,7 +320,7 @@ public class NF011Service extends BaseService {
 			}
 		} else if ("0".equals(indto.getDisplayKbn())) {
 			// 完全新規
-			indto.setReqShzNm(indto.getLoginShzNm());
+			indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());

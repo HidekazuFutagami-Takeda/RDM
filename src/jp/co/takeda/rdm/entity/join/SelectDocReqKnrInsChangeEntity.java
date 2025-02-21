@@ -291,17 +291,6 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
      * 申請区分
      */
     private String reqType;
-
-    /**
-     * 施設分類(元)
-     */
-    private String preInsClass;
-
-    /**
-     * 施設分類(先)
-     */
-    private String postInsClass;
-
     /**
      * コンストラクタ
      * @generated
@@ -1103,36 +1092,6 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
 	 */
 	public void setReqType(String reqType) {
 		this.reqType = reqType;
-	}
-
-	/**
-	 * SelectDocReqKnrInsChangeEntity.javapreInsClassを設定
-	 * @return preInsClass
-	 */
-	public String getPreInsClass() {
-		return preInsClass;
-	}
-
-	/**
-	 * @param preInsClass セットする preInsClass
-	 */
-	public void setPreInsClass(String preInsClass) {
-		this.preInsClass = preInsClass;
-	}
-
-	/**
-	 * SelectDocReqKnrInsChangeEntity.javapostInsClassを設定
-	 * @return postInsClass
-	 */
-	public String getPostInsClass() {
-		return postInsClass;
-	}
-
-	/**
-	 * @param postInsClass セットする postInsClass
-	 */
-	public void setPostInsClass(String postInsClass) {
-		this.postInsClass = postInsClass;
 	}
 
 	/**

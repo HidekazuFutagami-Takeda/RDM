@@ -951,11 +951,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 		document.fm1.insPcode.value = pCode;
 		document.fm1.pharmType.value = pharmType;
-		document.fm1.preScreenId.value = preScreenId;
     }
 
 	// 施設ポップアップから親施設受け取り
-    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType, insClass){
 
     	document.fm1.mainInsCd.value = insNo;
     	document.fm1.mainInsNm.value = insAbbrName;

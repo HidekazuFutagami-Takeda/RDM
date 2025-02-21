@@ -591,8 +591,8 @@ public class NF313Service extends BaseService {
 
 		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
 		if(mRdmParamMstEntityList.size() > 0) {
-			// valueの左一桁
-			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+			// valueの左から二桁目
+			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(1,2);
 		}
 
 		MRdmParamMstEntity mRdmParamMstOyaEntity = new MRdmParamMstEntity();
@@ -1226,8 +1226,8 @@ public class NF313Service extends BaseService {
 
 		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
 		if(mRdmParamMstEntityList.size() > 0) {
-			// valueの左一桁
-			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+			// valueの左から二桁目
+			mnFac = mRdmParamMstEntityList.get(0).getValue().substring(1,2);
 		}
 
 		MRdmParamMstEntity mRdmParamMstOyaEntity = new MRdmParamMstEntity();

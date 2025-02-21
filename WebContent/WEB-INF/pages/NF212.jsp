@@ -62,7 +62,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 			document.fm1.mainInsNm.style.backgroundColor = "#D7EEFF";
 			document.fm1.mainInsAddr.style.backgroundColor = "#D7EEFF";
-			document.fm1.insTanto.style.backgroundColor = "#D7EEFF";
 
 		}
     }
@@ -72,7 +71,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	document.fm1.mainInsCd.value='';
     	document.fm1.mainInsNm.value='';
     	document.fm1.mainInsAddr.value='';
-    	document.fm1.insTanto.value='';
+    	if(document.fm1.tkdTrtKbn.value == "1") {
+	    	document.fm1.insTanto.value='';
+    	}
     	document.fm1.mainInsSbt.value='';
     }
 
@@ -90,7 +91,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			document.fm1.kensakuInsSbt.value = "";
 		}
 
-		document.fm1.koshisetsuCheck.value = "1";
+		if(document.fm1.tkdTrtKbn.value == "0"){
+			document.fm1.viewKbn.value = "2";
+		} else {
+			document.fm1.viewKbn.value = "0";
+		}
+
 		document.fm1.callBack.value = "callBackMainInsPop";
 
 		comSubmitForAnyWarp(fm1);
@@ -98,15 +104,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     }
 
 	// 施設ポップアップから親施設受け取り
-    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType, insClass){
 
     	document.fm1.mainInsCd.value = insNo;
     	document.fm1.mainInsNm.value = insAbbrName;
     	document.fm1.mainInsAddr.value = insAddr;
 
-    	// TODO 子画面から取得
-    	document.fm1.insTanto.value = "";
-    	document.fm1.mainInsSbt.value = "";
+    	if(document.fm1.tkdTrtKbn.value == "1") {
+	    	document.fm1.insTanto.value = jgiName;
+    	}
+    	document.fm1.mainInsSbt.value = insSbt;
 
     }
 
@@ -304,6 +311,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="shnFlg"/>
      <s:hidden name="funcId"/>
      <s:hidden name="tkdTrtKbn"/>
+     <s:hidden name="viewKbn"/>
+     <s:hidden name="winVarName" value="NF212" />
 
     <s:hidden name="defaultSosCd"/>
     <s:hidden name="defaultSosName"/>

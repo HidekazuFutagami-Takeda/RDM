@@ -20,9 +20,17 @@
     </resultMap>
     <select id="selectPost" parameterType="jp.co.takeda.rdm.entity.MRdmPostKouho" resultMap="selectPostResultMap">
         SELECT
-          		 	  ADDR_NAME_PREF,ADDR_NAME_CITY,NVL(ADDR_NAME_AREA,'') ADDR_NAME_AREA,
-					  ADDR_CODE_PREF,ADDR_CODE_CITY,TK_PREF_CD,TK_CITY_CD,TK_CITY_NAME,
-					  ADDR_KANA_PREF,ADDR_KANA_CITY,NVL(ADDR_KANA_AREA,'') ADDR_KANA_AREA
+          		 	   ADDR_NAME_PREF
+          		 	  ,ADDR_NAME_CITY
+          		 	  ,NVL(ADDR_NAME_AREA,'') ADDR_NAME_AREA
+          		 	  ,ADDR_CODE_PREF
+          		 	  ,ADDR_CODE_CITY
+          		 	  ,TK_PREF_CD
+          		 	  ,TK_CITY_CD
+          		 	  ,TK_CITY_NAME
+					  ,ADDR_KANA_PREF
+					  ,ADDR_KANA_CITY
+					  ,NVL(ADDR_KANA_AREA,'') ADDR_KANA_AREA
 	        FROM
 	        ORAUSR01.S_RDM_COM_POS_ADDR
 	        <where>

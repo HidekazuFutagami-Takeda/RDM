@@ -119,7 +119,7 @@ public class NF213Service extends BaseService {
         	indto.setMainInsAddr(StringUtils.nvl(mainDataEntity.getMainInsAddr(), ""));
         	indto.setMainInsSbt(StringUtils.nvl(mainDataEntity.getMainInsSbt(), ""));
 
-        	indto.setReqShzNm(indto.getLoginShzNm());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());
@@ -179,7 +179,7 @@ public class NF213Service extends BaseService {
         	indto.setInsTanto(StringUtils.nvl(mainDataEntity.getJgiName(), ""));
         	indto.setMainInsSbt(StringUtils.nvl(mainDataEntity.getMainInsSbt(), ""));
 
-        	indto.setReqShzNm(indto.getLoginShzNm());
+        	indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());

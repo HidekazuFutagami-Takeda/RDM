@@ -620,6 +620,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		const pharmType = document.fm1.pharmType.value;
 		document.fm1.pharmType.value = "";
 
+		document.fm1.viewKbn.value = "1";
 		document.fm1.callBack.value = "callBackUltInsPop";
 
 		comSubmitForAnyWarp(fm1);
@@ -630,7 +631,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	}
 
 	// 施設ポップアップからULT施設受け取り
-    function callBackUltInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+    function callBackUltInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType, insClass){
 
     	document.fm1.ultInsCd.value = dcfShisetsuCd;
     	document.fm1.shisetsuNmRyaku.value = shisetsuNmRyaku;
@@ -883,6 +884,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	<s:hidden name="postCode"/>
 	<s:hidden name="callBack"/>
+	<s:hidden name="viewKbn"/>
+	<s:hidden name="winVarName" value="NF012" />
 
 	<s:hidden name="insNo"/>
 	<s:hidden name="insClass"/>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="m_rdm_hcp-yakusyoku">
+    <resultMap id="mRdmHcpYakusyokuMap" type="jp.co.takeda.rdm.entity.MRdmHcpYakusyokuEntity">
+        <result column="TITLE_CODE" property="titleCode"/>
+        <result column="TITLE_KJ" property="titleKj"/>
+    </resultMap>
+
+    <select id="selectYakusyoku" parameterType="jp.co.takeda.rdm.entity.MRdmHcpYakusyokuEntity" resultMap="mRdmHcpYakusyokuMap">
+        SELECT TITLE_CODE, TITLE_KJ
+		FROM
+			ORAUSR01.M_RDM_HCP_YAKUSHOKU
+		WHERE
+			UNIV_TITLE_FLG = #{univTitleFlg}
+		AND
+			DEL_FLG = '0'
+		ORDER BY
+			 TITLE_CODE
+    </select>
+
+</mapper>

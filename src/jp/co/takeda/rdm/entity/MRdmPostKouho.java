@@ -41,27 +41,16 @@ public class MRdmPostKouho extends BaseEntity implements Serializable {
      */
     private String screenId;
     /**
+     * 遷移元画面ID
+     * @generated
+     */
+    private String preScreenId;
+    /**
      * 入力_郵便番号
      * @generated
      */
     private String inPostCode;
 
-    private String test;
-    public MRdmPostKouho() {
-        super("postKouho","selectPost");
-    }
-
-    /**
-     * 遷移元画面ID
-     * @generated
-     */
-    private String preScreenId;
-    public String getPreScreenId() {
-		return preScreenId;
-	}
-	public void setPreScreenId(String preScreenId) {
-		this.preScreenId = preScreenId;
-	}
 
 	/**
      * 検索条件_郵便番号
@@ -133,288 +122,268 @@ public class MRdmPostKouho extends BaseEntity implements Serializable {
      * @generated
      */
     private String addrKanaArea;
-    /**
-     * 入力_セッションIDの取得
-     * @return 入力_セッションID
-     * @generated
-     */
-    public String getSeshonId() {
-        return seshonId;
-    }
-    /**
-     * 入力_セッションIDの設定
-     * @param セッションID
-     * @generated
-     */
-    public void setSeshonId(String seshonId) {
-        this.seshonId = seshonId;
-    }
-    /**
-     * 入力_スクリーンIDの取得
-     * @return 入力_スクリーンID
-     * @generated
-     */
-    public String getScreenId() {
-        return screenId;
-    }
-    /**
-     * 入力_スクリーンIDの設定
-     * @param スクリーンID
-     * @generated
-     */
-    public void setScreenId(String screenId) {
-        this.screenId = screenId;
-    }
-    /**
-     * 入力_郵便番号の取得
-     * @return 入力_郵便番号
-     * @generated
-     */
-    public String getInPostCode() {
-        return inPostCode;
+
+    private String test;
+    public MRdmPostKouho() {
+        super("postKouho","selectPost");
     }
 
     /**
-     * 入力_郵便番号の設定
-     * @param inInsNo 入力_郵便番号
-     * @generated
-     */
-    public void setInPostCode(String inPostCode) {
-        this.inPostCode = inPostCode;
-    }
-    /**
-     * 検索条件_郵便番号の取得
-     * @return 検索条件_郵便番号
-     * @generated
-     */
-    public String getPostCode() {
-        return postCode;
-    }
+	 * MRdmPostKouho.javaseshonIdを設定
+	 * @return seshonId
+	 */
+	public String getSeshonId() {
+		return seshonId;
+	}
 
-    /**
-     * 検索条件_郵便番号の設定
-     * @param 検索条件_郵便番号
-     * @generated
-     */
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
+	/**
+	 * @param seshonId セットする seshonId
+	 */
+	public void setSeshonId(String seshonId) {
+		this.seshonId = seshonId;
+	}
 
-    /**
-     * 検索条件_JIS府県名の取得
-     * @return 検索条件_JIS府県名
-     * @generated
-     */
-    public String getAddrNamePref() {
-        return addrNamePref;
-    }
+	/**
+	 * MRdmPostKouho.javapreScreenIdを設定
+	 * @return preScreenId
+	 */
+	public String getPreScreenId() {
+		return preScreenId;
+	}
 
-    /**
-     * 検索条件_JIS府県名の設定
-     * @param  検索条件_JIS府県名
-     * @generated
-     */
-    public void setAddrNamePref(String addrNamePref) {
-        this.addrNamePref = addrNamePref;
-    }
+	/**
+	 * @param preScreenId セットする preScreenId
+	 */
+	public void setPreScreenId(String preScreenId) {
+		this.preScreenId = preScreenId;
+	}
 
-    /**
-     * 検索条件_JIS市区町村名の取得
-     * @return 検索条件_JIS市区町村名
-     * @generated
-     */
-    public String getAddrNameCity() {
-        return addrNameCity;
-    }
+	/**
+	 * MRdmPostKouho.javascreenIdを設定
+	 * @return screenId
+	 */
+	public String getScreenId() {
+		return screenId;
+	}
 
-    /**
-     * 検索条件_JIS市区町村名の設定
-     * @param 検索条件_JIS市区町村名
-     * @generated
-     */
-    public void setAddrNameCity(String addrNameCity) {
-        this.addrNameCity = addrNameCity;
-    }
+	/**
+	 * @param screenId セットする screenId
+	 */
+	public void setScreenId(String screenId) {
+		this.screenId = screenId;
+	}
 
-    /**
-     * 検索条件_大字／町域名の取得
-     * @return 検索条件_大字／町域名
-     * @generated
-     */
-    public String getAddrNameArea() {
-        return addrNameArea;
-    }
+	/**
+	 * MRdmPostKouho.javainPostCodeを設定
+	 * @return inPostCode
+	 */
+	public String getInPostCode() {
+		return inPostCode;
+	}
 
-    /**
-     * 検索条件_大字／町域名の設定
-     * @param  検索条件_大字／町域名
-     * @generated
-     */
-    public void setAddrNameArea(String addrNameArea) {
-        this.addrNameArea = addrNameArea;
-    }
+	/**
+	 * @param inPostCode セットする inPostCode
+	 */
+	public void setInPostCode(String inPostCode) {
+		this.inPostCode = inPostCode;
+	}
 
-    /**
-     * 検索条件_JIS府県コードの取得
-     * @return 検索条件_JIS府県コード
-     * @generated
-     */
-    public String getAddrCodePref() {
-        return addrCodePref;
-    }
+	/**
+	 * MRdmPostKouho.javapostCodeを設定
+	 * @return postCode
+	 */
+	public String getPostCode() {
+		return postCode;
+	}
 
-    /**
-     * 検索条件_JIS府県コードの設定
-     * @param 検索条件_JIS府県コード
-     * @generated
-     */
-    public void setAddrCodePref(String addrCodePref) {
-        this.addrCodePref = addrCodePref;
-    }
+	/**
+	 * @param postCode セットする postCode
+	 */
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
 
-    /**
-     * 検索条件_JIS市区町村コードの取得
-     * @return 検索条件_JIS市区町村コード
-     * @generated
-     */
-    public String getAddrCodeCity() {
-        return addrCodeCity;
-    }
+	/**
+	 * MRdmPostKouho.javaaddrNamePrefを設定
+	 * @return addrNamePref
+	 */
+	public String getAddrNamePref() {
+		return addrNamePref;
+	}
 
-    /**
-     * 検索条件_JIS市区町村コードの設定
-     * @param 検索条件_JIS市区町村コード
-     * @generated
-     */
-    public void setAddrCodeCity(String addrCodeCity) {
-        this.addrCodeCity = addrCodeCity;
-    }
+	/**
+	 * @param addrNamePref セットする addrNamePref
+	 */
+	public void setAddrNamePref(String addrNamePref) {
+		this.addrNamePref = addrNamePref;
+	}
 
-    /**
-     * 検索条件_武田府県コードの取得
-     * @return 検索条件_武田府県コード
-     * @generated
-     */
-    public String getTkPrefCd() {
-        return tkPrefCd;
-    }
+	/**
+	 * MRdmPostKouho.javaaddrNameCityを設定
+	 * @return addrNameCity
+	 */
+	public String getAddrNameCity() {
+		return addrNameCity;
+	}
 
-    /**
-     * 検索条件_武田府県コードの設定
-     * @param 検索条件_武田府県コード
-     * @generated
-     */
-    public void setTkPrefCd(String tkPrefCd) {
-        this.tkPrefCd = tkPrefCd;
-    }
+	/**
+	 * @param addrNameCity セットする addrNameCity
+	 */
+	public void setAddrNameCity(String addrNameCity) {
+		this.addrNameCity = addrNameCity;
+	}
 
-    /**
-     * 検索条件_武田市区郡コードの取得
-     * @return 検索条件_武田市区郡コード
-     * @generated
-     */
-    public String getTkCityCd() {
-        return tkCityCd;
-    }
+	/**
+	 * MRdmPostKouho.javaaddrNameAreaを設定
+	 * @return addrNameArea
+	 */
+	public String getAddrNameArea() {
+		return addrNameArea;
+	}
 
-    /**
-     * 検索条件_武田市区郡コードの設定
-     * @param kensakuKana 検索条件_武田市区郡コード
-     * @generated
-     */
-    public void setTkCityCd(String tkCityCd) {
-        this.tkCityCd = tkCityCd;
-    }
-    /**
-     * 検索条件_武田市区郡コードの取得
-     * @return 検索条件_武田市区郡コード
-     * @generated
-     */
-    public String getTkCityName() {
-        return tkCityName;
-    }
+	/**
+	 * @param addrNameArea セットする addrNameArea
+	 */
+	public void setAddrNameArea(String addrNameArea) {
+		this.addrNameArea = addrNameArea;
+	}
 
-    /**
-     * 検索条件_武田市区郡コードの設定
-     * @param kensakuKana 検索条件_武田市区郡コード
-     * @generated
-     */
-    public void setTkCityName(String tkCityName) {
-        this.tkCityCd = tkCityName;
-    }
+	/**
+	 * MRdmPostKouho.javaaddrCodePrefを設定
+	 * @return addrCodePref
+	 */
+	public String getAddrCodePref() {
+		return addrCodePref;
+	}
 
-    /**
-     * 検索条件_JIS府県カナ
-     * @return 検索条件_JIS府県カナ
-     * @generated
-     */
-    public String getAddrKanaPref() {
-        return addrKanaPref;
-    }
+	/**
+	 * @param addrCodePref セットする addrCodePref
+	 */
+	public void setAddrCodePref(String addrCodePref) {
+		this.addrCodePref = addrCodePref;
+	}
 
-    /**
-     * 検索条件_JIS府県カナの設定
-     * @param kensakuKana 検索条件_JIS府県カナ
-     * @generated
-     */
-    public void setAddrKanaPref(String addrKanaPref) {
-        this.addrKanaPref = addrKanaPref;
-    }
+	/**
+	 * MRdmPostKouho.javaaddrCodeCityを設定
+	 * @return addrCodeCity
+	 */
+	public String getAddrCodeCity() {
+		return addrCodeCity;
+	}
 
-    /**
-     * 検索条件_JIS市区町村名カナの取得
-     * @return 検索条件_JIS市区町村名カナ
-     * @generated
-     */
-    public String getAddrKanaCity() {
-        return addrKanaCity;
-    }
+	/**
+	 * @param addrCodeCity セットする addrCodeCity
+	 */
+	public void setAddrCodeCity(String addrCodeCity) {
+		this.addrCodeCity = addrCodeCity;
+	}
 
-    /**
-     * 検索条件_JIS市区町村名カナの設定
-     * @param 検索条件_JIS市区町村名カナ
-     * @generated
-     */
-    public void setAddrKanaCity(String addrKanaCity) {
-        this.addrKanaCity = addrKanaCity;
-    }
+	/**
+	 * MRdmPostKouho.javatkPrefCdを設定
+	 * @return tkPrefCd
+	 */
+	public String getTkPrefCd() {
+		return tkPrefCd;
+	}
 
-    /**
-     * 検索条件_大字／町域名カナの取得
-     * @return 検索条件_大字／町域名カナ
-     * @generated
-     */
-    public String getAddrKanaArea() {
-        return addrKanaArea;
-    }
-    /**
-     * 検索条件_大字／町域名カナの設定
-     * @param 検索条件_大字／町域名カナ
-     * @generated
-     */
-    public void setAddrKanaArea(String addrKanaArea) {
-        this.addrKanaArea = addrKanaArea;
-    }
+	/**
+	 * @param tkPrefCd セットする tkPrefCd
+	 */
+	public void setTkPrefCd(String tkPrefCd) {
+		this.tkPrefCd = tkPrefCd;
+	}
 
-    /**
-     * システムコードの取得
-     * @return システムコード
-     * @generated
-     */
-    public String getTest() {
-        return this.test;
-    }
+	/**
+	 * MRdmPostKouho.javatkCityCdを設定
+	 * @return tkCityCd
+	 */
+	public String getTkCityCd() {
+		return tkCityCd;
+	}
 
-    /**
-     * システムコードの設定
-     * @param sysCd システムコード
-     * @generated
-     */
-    public void setTest(String test) {
-        this.test = test;
-    }
+	/**
+	 * @param tkCityCd セットする tkCityCd
+	 */
+	public void setTkCityCd(String tkCityCd) {
+		this.tkCityCd = tkCityCd;
+	}
 
-    /**
+	/**
+	 * MRdmPostKouho.javatkCityNameを設定
+	 * @return tkCityName
+	 */
+	public String getTkCityName() {
+		return tkCityName;
+	}
+
+	/**
+	 * @param tkCityName セットする tkCityName
+	 */
+	public void setTkCityName(String tkCityName) {
+		this.tkCityName = tkCityName;
+	}
+
+	/**
+	 * MRdmPostKouho.javaaddrKanaPrefを設定
+	 * @return addrKanaPref
+	 */
+	public String getAddrKanaPref() {
+		return addrKanaPref;
+	}
+
+	/**
+	 * @param addrKanaPref セットする addrKanaPref
+	 */
+	public void setAddrKanaPref(String addrKanaPref) {
+		this.addrKanaPref = addrKanaPref;
+	}
+
+	/**
+	 * MRdmPostKouho.javaaddrKanaCityを設定
+	 * @return addrKanaCity
+	 */
+	public String getAddrKanaCity() {
+		return addrKanaCity;
+	}
+
+	/**
+	 * @param addrKanaCity セットする addrKanaCity
+	 */
+	public void setAddrKanaCity(String addrKanaCity) {
+		this.addrKanaCity = addrKanaCity;
+	}
+
+	/**
+	 * MRdmPostKouho.javaaddrKanaAreaを設定
+	 * @return addrKanaArea
+	 */
+	public String getAddrKanaArea() {
+		return addrKanaArea;
+	}
+
+	/**
+	 * @param addrKanaArea セットする addrKanaArea
+	 */
+	public void setAddrKanaArea(String addrKanaArea) {
+		this.addrKanaArea = addrKanaArea;
+	}
+
+	/**
+	 * MRdmPostKouho.javatestを設定
+	 * @return test
+	 */
+	public String getTest() {
+		return test;
+	}
+
+	/**
+	 * @param test セットする test
+	 */
+	public void setTest(String test) {
+		this.test = test;
+	}
+
+	/**
      * このEntityの値を返す
      * @return DTOの値
      * @generated

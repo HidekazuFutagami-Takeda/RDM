@@ -192,12 +192,26 @@
 	    AND HCO_MST.INS_NO = #{insNo}
 	    </if>
 	    <if test="reqType != null">
-	    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+		    <if test='reqType != "1X"'>
+		    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+		    </if>
+		    <if test='reqType == "1X"'>
+		    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
+		    </if>
 	    </if>
 	    <if test="aDdrCodePref != null">
-	    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
-		OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
-	    )
+		    <if test='aDdrCodePref != "99"'>
+		    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
+			OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
+		    )
+		    </if>
+		    <if test='aDdrCodePref == "99"'>
+			AND( HCO_REQ.ADDR_CODE_PREF IS NULL
+			OR   HCO_MST.ADDR_CODE_PREF IS NULL
+			OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
+			OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+		    )
+		    </if>
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="reqJgiNo != null">
@@ -298,7 +312,12 @@
 	    AND REQ_KNR.APR_COMMENT LIKE '%' || #{aprComment} || '%'
 	    </if>
 	    <if test="reqType != null">
-	    AND CODE_LB.VALUE1 = #{reqType}   --...ドロップダウンで選択するらしい?　　--入力情報を受け取り判別
+	    	<if test='reqType != "1X"'>
+		    AND CODE_LB.VALUE1 = #{reqType}   --...ドロップダウンで選択するらしい?　　--入力情報を受け取り判別
+		    </if>
+		    <if test='reqType == "1X"'>
+    		AND CODE_LB.VALUE1 IN('11','12','13')
+		    </if>
     	</if>
     	<if test="jgiNo != null">
     	AND
@@ -424,12 +443,26 @@
 	    AND HCO_MST.INS_NO = #{insNo}
 	    </if>
 	    <if test="reqType != null">
-	    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+		    <if test='reqType != "1X"'>
+		    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+		    </if>
+		    <if test='reqType == "1X"'>
+		    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
+		    </if>
 	    </if>
 	    <if test="aDdrCodePref != null">
-	    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
-		OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
-	    )
+		    <if test='aDdrCodePref != "99"'>
+		    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
+			OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
+		    )
+		    </if>
+		    <if test='aDdrCodePref == "99"'>
+			AND( HCO_REQ.ADDR_CODE_PREF IS NULL
+			OR   HCO_MST.ADDR_CODE_PREF IS NULL
+			OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
+			OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+		    )
+		    </if>
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="reqJgiNo != null">
@@ -530,7 +563,12 @@
 	    AND REQ_KNR.APR_COMMENT LIKE '%' || #{aprComment} || '%'
 	    </if>
 	    <if test="reqType != null">
-	    AND CODE_LB.VALUE1 = #{reqType}   --...ドロップダウンで選択するらしい?　　--入力情報を受け取り判別
+	    	<if test='reqType != "1X"'>
+		    AND CODE_LB.VALUE1 = #{reqType}   --...ドロップダウンで選択するらしい?　　--入力情報を受け取り判別
+		    </if>
+		    <if test='reqType == "1X"'>
+    		AND CODE_LB.VALUE1 IN('11','12','13')
+		    </if>
     	</if>
     	<if test="jgiNo != null">
     	AND

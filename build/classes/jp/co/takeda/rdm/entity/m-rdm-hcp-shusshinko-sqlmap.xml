@@ -14,6 +14,14 @@
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
         <result column="UPD_SHA_ID" property="updShaId"/>
     </resultMap>
+    <resultMap id="selectNd001ShussinkoComboListResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd001ShusshinkoComboListEntity">
+        <result column="UNIV_CODE" property="univCode"/>
+        <result column="UNIV_KJ" property="univKj"/>
+    </resultMap>
+    <resultMap id="selectNd001IkkComboListResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd001IkkComboListEntity">
+        <result column="UNIV_CODE" property="univCode"/>
+        <result column="UNIV_KJ" property="univKj"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpShusshinkoEntity" resultMap="MRdmHcpShusshinkoResultMap">
         SELECT
             UNIV_CODE, UNIV_KJ, UNIV_KN, UNIV_FLG, UNIV_IKK_FLG, SORT_NUM, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -78,5 +86,24 @@
 			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
         </where>
     </select>
-
+   <select id="selectNd001ShussinkoComboList" parameterType="jp.co.takeda.rdm.entity.join.SelectNd001ShusshinkoComboListEntity" resultMap="selectNd001ShussinkoComboListResultMap">
+        SELECT
+            UNIV_CODE, UNIV_KJ
+        FROM
+            M_RDM_HCP_SHUSSHINKO
+        WHERE 1 = 1
+        AND UNIV_FLG = '1'
+        AND DEL_FLG = '0'
+        ORDER BY SORT_NUM
+    </select>
+   <select id="selectNd001IkkComboList" parameterType="jp.co.takeda.rdm.entity.join.SelectNd001IkkComboListEntity" resultMap="selectNd001IkkComboListResultMap">
+        SELECT
+            UNIV_CODE, UNIV_KJ
+        FROM
+            M_RDM_HCP_SHUSSHINKO
+        WHERE 1 = 1
+        AND UNIV_IKK_FLG = '1'
+        AND DEL_FLG = '0'
+        ORDER BY SORT_NUM
+    </select>
 </mapper>

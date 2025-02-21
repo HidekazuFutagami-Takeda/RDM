@@ -6,7 +6,7 @@
         <result column="REQ_YMDHMS" property="reqYmdhmsFrom"/>
         <result column="REQ_YMDHMS" property="reqYmdhmsTo"/>
         <result column="REQ_CHL" property="reqChl"/>
-        <result column="REQ_TYPE" property="reqType"/><!-- reqKbn=req_TYPE -->
+        <result column="REQ_TYPE_SYU" property="reqType"/><!-- reqKbn=req_TYPE -->
         <result column="REQ_STS" property="reqSts"/>
         <result column="APR_YMDHMS" property="aPR_YMDHMS"/>
         <result column="APR_SHA_ID" property="aPR_SHA_ID"/>

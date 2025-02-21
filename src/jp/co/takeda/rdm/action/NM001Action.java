@@ -21,6 +21,7 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
 //import jp.co.takeda.rdm.dto.JKR040C010DTO;
 import jp.co.takeda.rdm.dto.NM001DTO;
+import jp.co.takeda.rdm.exception.InvalidRequestException;
 import jp.co.takeda.rdm.service.NM001Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.RdmConstantsData;
@@ -131,6 +132,55 @@ public class NM001Action extends BaseAction<NM001DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+    	//改ページ設定
+        dto.setPageCntCur(1);
+
+//        // 登録完了画面から戻る場合、遷移前の検索条件をセッションから取得する。
+//        //　遷移元画面IDを取得
+//        String finishFlg = (String)request.getParameter(RdmConstantsData.JKR090C020_FINISH_FLG);
+//        // 遷移元画面が登録完了画面の場合
+//        if (RdmConstantsData.JKR090C020_FINISH_VALUE.equals(finishFlg)) {
+//            ND011DTO searchKey = (ND011DTO)sessionMap.get(AppConstant.SESKEY_ND011_SEARCHKEY);
+//            BeanUtils.copyProperties(dto, searchKey);
+//
+//        } else if (!dto.getBackScreenId().startsWith("JKR030C0")) {
+//            //前画面から組織関連パラメータ設定
+//            setSosInfo(sessionMap, dto);
+//        }
+
+//        dto.setStatus("FirstTab");
+
+//        dto.setActionMtKbn("1");
+      //画面タイト制御処理
+        String title = "NM001_申請サマリ";
+        //ユーザ権限
+//        String jokenSetCd = dto.getLoginJokenSetCd();
+//
+        dto.setTitle(title);
+
+        String preScreenId = loginInfo.getPreScreenId();
+//        String reqId = dto.getReqId();
+//        String ultNo = dto.getUltDocNo();
+//TODO
+        //モック
+        //preScreenId = "NC011";
+        preScreenId = dto.getPreScreenId();
+
+        dto.setPreScreenId(preScreenId);
+
+        // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
+        // ULTT医師コード　ありなしで分岐
+        // ND001_医師検索
+        //管理者：0　MR：１
+        if ("ND001".equals(preScreenId)||loginInfo.getJokenFlg().equals("0")) {
+        	//何もしない
+        }else {
+        		throw new InvalidRequestException();
+        }
+
+//        dto.setMsgId(null);
 
         // END UOC
     }

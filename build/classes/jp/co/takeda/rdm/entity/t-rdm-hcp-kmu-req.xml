@@ -77,6 +77,7 @@
         <result column="TEKIYO_YMD" property="tekiyoYmd"/>
         <result column="PRE_HO_INS_TYPE" property="preHoInsType"/>
         <result column="POST_HO_INS_TYPE" property="postHoInsType"/>
+        <result column="REQ_TYPE" property="reqType"/>
     </resultMap>
     <resultMap id="selectDocReqKnrInsChangeCheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity">
         <result column="REQ_ID" property="reqId"/>
@@ -206,6 +207,7 @@
           ,REQ_KNR.APR_COMMENT
 
           ,POST_HCO_MST.HO_INS_TYPE POST_HO_INS_TYPE
+          ,REQ_KNR.REQ_TYPE
        </if>
        <if test="inReqFlg == 0">
           ,HCP_WORK.INS_NO PRE_INS_NO

@@ -1090,6 +1090,7 @@ public class NF301Service extends BaseService {
         }
 
         // 初期表示検索
+        indto.setReqId(reqId);
         List<HcoJkrData> hcoJkrDataList = new ArrayList<HcoJkrData>();
         List<HcoJkrData> beforeHcoJkrDataList = new ArrayList<HcoJkrData>();
 

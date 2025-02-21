@@ -128,6 +128,8 @@ public class NF011Action extends BaseAction<NF011DTO> {
         String ultCd = dto.getUltInsCd();
         dto.setPreScreenId(preScreenId);
 
+        dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+
         //モック
 //        String kbn = "1";
 //        if(kbn.equals("0")) {

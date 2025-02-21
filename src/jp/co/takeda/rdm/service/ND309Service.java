@@ -26,7 +26,7 @@ import jp.co.takeda.rdm.entity.join.SelectTmrEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
 import jp.co.takeda.rdm.dto.ND101DTO;
-import jp.co.takeda.rdm.dto.ND307DTO;
+import jp.co.takeda.rdm.dto.ND309DTO;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
 import jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity;
 import jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeEntity;
@@ -34,6 +34,10 @@ import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd101ComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd101YakushokuComboListEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd102ClosedCheckEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd102MrDummyCheckEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd102MultipleWorkCheckEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd102TrnListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd307ParamSwitchEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity;
 import jp.co.takeda.rdm.util.RdmConstantsData;
@@ -46,26 +50,26 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 /**
- * Serviceクラス（ND307)
+ * Serviceクラス（ND309)
  * @generated
  */
 @Named
-public class ND307Service extends BaseService {
+public class ND309Service extends BaseService {
 
     /**
      * ログインスタンス
      * @generated
      */
-    private static Log log = LogFactory.getLog(ND307Service.class);
+    private static Log log = LogFactory.getLog(ND309Service.class);
 
     /**
      * イベント処理
-     * @param indto ND307DTO
+     * @param indto ND309DTO
      * @return 遷移先DTO
      * @customizable
      */
     @Transactional
-    public BaseDTO init(ND307DTO indto) {
+    public BaseDTO init(ND309DTO indto) {
 		BaseDTO outdto = indto;
 		// 1-1 権限判定
 		LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
@@ -77,42 +81,11 @@ public class ND307Service extends BaseService {
 		String alertErrMsg2 = "";
 
 		// 必須入力チェック
-		if (indto.getReqType().equals("42") || indto.getMovemedEditFlg().equals("0")) {
-			if (indto.getPostInsNo() == null || indto.getPostInsNo().isEmpty()) {
-				// 必須項目にデータを入力してください。（異動先施設）
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "異動先施設") + "\n";
-				errFlg = true;
-			}
-		}
-		if (indto.getPostDeptCode() == null || indto.getPostDeptCode().isEmpty()) {
-			// 必須項目にデータを入力してください。（異動先所属部科）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "異動先所属部科") + "\n";
-			errFlg = true;
-		}
-		if (indto.getYakushoku() == null || indto.getYakushoku().isEmpty()) {
-			// 必須項目にデータを入力してください。（役職）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "役職") + "\n";
-			errFlg = true;
-		}
 
-		// 医療機関への異動の場合
-		if (StringUtils.isEmpty(indto.getPreHoInsType())) {
-			if (indto.getPostHoInsType().equals("1") && indto.getPostInsClass().equals("01")) {
-				if (indto.getPostUnivPosCode() == null || indto.getPostUnivPosCode().isEmpty()) {
-					// 勤務先が大学附属病院の場合、大学職位を入力してください。
-					errMsg += loginInfo.getMsgData(RdmConstantsData.W031) + "\n";
-					errFlg = true;
-				}
-			}
-			// 勤務先情報更新の場合
-		} else {
-			if (indto.getPreHoInsType().equals("1") && indto.getPreInsClass().equals("01")) {
-				if (indto.getPostUnivPosCode() == null || indto.getPostUnivPosCode().isEmpty()) {
-					// 勤務先が大学附属病院の場合、大学職位を入力してください。
-					errMsg += loginInfo.getMsgData(RdmConstantsData.W031) + "\n";
-					errFlg = true;
-				}
-			}
+		if (indto.getTrnKbnCd() == null || indto.getTrnKbnCd().isEmpty()) {
+			// 必須項目にデータを入力してください。（異動区分）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "異動区分") + "\n";
+			errFlg = true;
 		}
 
 		// レングスチェック
@@ -164,17 +137,6 @@ public class ND307Service extends BaseService {
 			}
 		}
 
-		// 所属部科を指定する場合に施設を指定しているか
-		if (indto.getReqType().equals("42") || indto.getMovemedEditFlg().equals("0")) {
-			if (!(StringUtils.isEmpty(indto.getPostDeptCode()))) {
-				if (StringUtils.isEmpty(indto.getPostInsNo())) {
-					// 所属部科を選択する場合は施設も選択してください。
-					errMsg += loginInfo.getMsgData(RdmConstantsData.W027) + "\n";
-					errFlg = true;
-				}
-			}
-		}
-
 		// 整合性チェック
 		// 申請時に既に医師削除申請がされている場合（承認待ち）
 		if(!indto.getAlertIgnore().equals("1")) {
@@ -202,6 +164,40 @@ public class ND307Service extends BaseService {
 			errFlg = true;
 		}
 
+		// 整合性チェック
+		//
+		SelectNd102MultipleWorkCheckEntity multipleWorkCheckEntity = new SelectNd102MultipleWorkCheckEntity();
+		multipleWorkCheckEntity.setInDocNo(indto.getDocNo());
+		List<SelectNd102MultipleWorkCheckEntity> multipleWorkCheckList = dao.select(multipleWorkCheckEntity);
+		if(multipleWorkCheckList.size() >= 2) {
+			// 通常勤務先施設数が2以上のため申請できません。
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W037) + "\n";
+			errFlg = true;
+		}
+
+		// 整合性チェック
+		//
+		SelectNd102ClosedCheckEntity closedCheckEntity = new SelectNd102ClosedCheckEntity();
+		closedCheckEntity.setInDocNo(indto.getDocNo());
+		List<SelectNd102ClosedCheckEntity> closedCheckList = dao.select(closedCheckEntity);
+		if(!(closedCheckList.isEmpty())) {
+			// 医師免許返納・死亡の申請されているため申請できません。
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W038) + "\n";
+			errFlg = true;
+		}
+
+		// 整合性チェック
+		//
+		if(indto.getMrAdminFlg().equals("1")) {
+			SelectNd102MrDummyCheckEntity mrDummyCheckEntity = new SelectNd102MrDummyCheckEntity();
+			mrDummyCheckEntity.setInInsNo(indto.getPreInsNo());
+			List<SelectNd102MrDummyCheckEntity> MrDummyCheckList = dao.select(mrDummyCheckEntity);
+			if(!(MrDummyCheckList.isEmpty())) {
+				// 医療機関以外の施設から医療機関以外の施設への申請はできません。
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W039) + "\n";
+				errFlg = true;
+			}
+		}
 
 		// 排他チェック
 		// 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
@@ -248,8 +244,8 @@ public class ND307Service extends BaseService {
 
 			indto.setDispTekiyoYmd(tempDispTekiyoYmd.substring(0,4) + "-" + tempDispTekiyoYmd.substring(4,6) + "-" +  tempDispTekiyoYmd.substring(6,8));
         	indto.setTempReqBtnFlg("1");
-        	indto.setTitle("ND101_医療機関への異動");
-        	outdto.setForward("ND101");
+        	indto.setTitle("ND102_医療機関以外への異動");
+        	outdto.setForward("ND102");
         	return outdto;
         }
 
@@ -285,32 +281,27 @@ public class ND307Service extends BaseService {
         		tRdmReqKnrInsData.setReqKngKbn("1");
         	}
 
-        	if("0".equals(indto.getMovemedEditFlg())) {
-        		tRdmReqKnrInsData.setReqType("42");
-        	}else {
-        		tRdmReqKnrInsData.setReqType("51");
-        	}
+        	tRdmReqKnrInsData.setReqType("43");
 
         	tRdmReqKnrInsData.setReqStsCd("01");
 
-	        String tekiyoYmd = indto.getSelectDay().replace("-", "");
-        	indto.setSelectDay(tekiyoYmd);
-
+			if (!(StringUtils.isEmpty(indto.getSelectDay()))) {
+				SelectHenkanListEntity haifunHenkan = new SelectHenkanListEntity("ハイフン除去");
+				haifunHenkan.setSearchHenkan(indto.getSelectDay());
+				List<SelectHenkanListEntity> selectHaifun = dao.select(haifunHenkan);
+				indto.setSelectDay(selectHaifun.get(0).getSearchHenkan());
+			}
 
         	tRdmReqKnrInsData.setTekiyoYmd(indto.getSelectDay());
-        	//医薬支店C     brCode
         	tRdmReqKnrInsData.setReqBrCd(loginInfo.getBrCode());
-        	//医薬営業所C   distCode
         	tRdmReqKnrInsData.setReqDistCd(loginInfo.getDistCode());
-        	//組織名称      bumonRyakuName
         	tRdmReqKnrInsData.setReqShzNm(loginInfo.getBumonRyakuName());
 
         	tRdmReqKnrInsData.setReqJgiNo(loginInfo.getJgiNo());
         	tRdmReqKnrInsData.setReqJgiName(loginInfo.getJgiName());
         	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
         	tRdmReqKnrInsData.setDocNo(indto.getDocNo());
-        	tRdmReqKnrInsData.setInsNo(indto.getInsNo());
-        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
+        	tRdmReqKnrInsData.setInsNo(StringUtils.nvl(indto.getTrnKbnInsNo(), ""));
         	tRdmReqKnrInsData.setInsShaYmd(systemDate);
         	tRdmReqKnrInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
         	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
@@ -319,16 +310,23 @@ public class ND307Service extends BaseService {
         	dao.insertByValue(tRdmReqKnrInsData);
 
         }else {
-        	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateND101Data");
+        	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateND102Data");
         	tRdmReqKnrUpdData.setReqId(reqId);
 
+        	if("13".equals(indto.getReqSts())) {
+        		tRdmReqKnrUpdData.setReqStsCd("13");
+        	} else {
+        		tRdmReqKnrUpdData.setReqStsCd("01");
+        	}
 
-        	tRdmReqKnrUpdData.setReqStsCd(tRdmReqKnrData.getReqStsCd());
-        	SelectHenkanListEntity haifunHenkan = new SelectHenkanListEntity("ハイフン除去");
-        	haifunHenkan.setSearchHenkan(indto.getSelectDay());
-        	List<SelectHenkanListEntity> selectHaifun = dao.select(haifunHenkan);
-        	indto.setSelectDay(selectHaifun.get(0).getSearchHenkan());
+        	tRdmReqKnrUpdData.setInsNo(StringUtils.nvl(indto.getTrnKbnInsNo(), ""));
 
+			if (!(StringUtils.isEmpty(indto.getSelectDay()))) {
+				SelectHenkanListEntity haifunHenkan = new SelectHenkanListEntity("ハイフン除去");
+				haifunHenkan.setSearchHenkan(indto.getSelectDay());
+				List<SelectHenkanListEntity> selectHaifun = dao.select(haifunHenkan);
+				indto.setSelectDay(selectHaifun.get(0).getSearchHenkan());
+			}
         	String tekiyoYmd = indto.getSelectDay();
         	tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);
         	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
@@ -348,15 +346,9 @@ public class ND307Service extends BaseService {
         	TRdmHcpKmuReqEntity tRdmHcpKmuReqInsData = new TRdmHcpKmuReqEntity();
         	tRdmHcpKmuReqInsData.setReqId(reqId);
         	tRdmHcpKmuReqInsData.setDocNo(indto.getDocNo());
-        	tRdmHcpKmuReqInsData.setInsNoMt(indto.getPreInsNo());
-
-        	if(indto.getReqType().equals("42") || indto.getMovemedEditFlg().equals("0")  ) {
-        		//異動申請の場合のみ異動先施設を登録
-        		tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), "Z"));
-        	}else {
-        		//勤務先情報更新の場合は所属している勤務先を登録
-        		tRdmHcpKmuReqInsData.setInsNoSk(indto.getPreInsNo());
-        	}
+        	tRdmHcpKmuReqInsData.setInsNoMt(StringUtils.nvl(indto.getPreInsNo(),"Z"));
+        	tRdmHcpKmuReqInsData.setTrnKbn(StringUtils.nvl(indto.getTrnKbnCd(), "Z"));
+        	tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getTrnKbnInsNo(), "Z"));
         	tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(indto.getPreJobForm(), "Z"));
         	tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(indto.getPreDeptCode(), "Z"));
         	tRdmHcpKmuReqInsData.setDeptKanjiBf(StringUtils.nvl(indto.getPreDeptKj(), "Z"));
@@ -364,57 +356,37 @@ public class ND307Service extends BaseService {
         	tRdmHcpKmuReqInsData.setUnivPosCodeBf(indto.getPreUnivPosCode());
         	tRdmHcpKmuReqInsData.setTitleCodeBf(indto.getPreTitleCode());
         	tRdmHcpKmuReqInsData.setDccTypeBf(indto.getPreDcc());
-        	tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(indto.getJobForm(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), "Z"));
-        	tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), "Z"));
-        	tRdmHcpKmuReqInsData.setUnivPosCodeAf(indto.getDigakuShokui());
-        	tRdmHcpKmuReqInsData.setTitleCodeAf(indto.getYakushoku());
-        	tRdmHcpKmuReqInsData.setDccTypeAf(indto.getDcc());
+        	tRdmHcpKmuReqInsData.setJobFormAf("Z");
+        	tRdmHcpKmuReqInsData.setDeptCodeAf("9999");
+        	tRdmHcpKmuReqInsData.setDeptKanjiAf("Z");
+        	tRdmHcpKmuReqInsData.setDeptKanaAf("Z");
         	tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
-        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())) {
-        		tRdmHcpKmuReqInsData.setUltInsNo(null);
-        	}else if(indto.getPostUltInsNo() == null){
-        		tRdmHcpKmuReqInsData.setUltInsNo("Z");
-        	}else {
-        		tRdmHcpKmuReqInsData.setUltInsNo(indto.getPostUltInsNo());
-        	}
         	tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
         	tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
         	tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
         	tRdmHcpKmuReqInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
-
         	dao.insertByValue(tRdmHcpKmuReqInsData);
         }else {
+        	TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND102Data");
+        	tRdmHcpKmuReqUpdData.setReqId(reqId);
+        	tRdmHcpKmuReqUpdData.setTrnKbn(StringUtils.nvl(indto.getTrnKbnCd(), "Z"));
+        	tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), "Z"));
+        	//ult医師コード最新化
         	SelectDocReqKnrInsChangeEntity selectDocReqKnrInsChangeEntity = new SelectDocReqKnrInsChangeEntity();
         	selectDocReqKnrInsChangeEntity.setInReqFlg(0);
         	selectDocReqKnrInsChangeEntity.setInDocNo(indto.getDocNo());
-        	selectDocReqKnrInsChangeEntity.setInInsNo(indto.getInsNo());
-        	List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
+        	selectDocReqKnrInsChangeEntity.setInInsNo(indto.getPreInsNo());
         	String tempUltDocNo;
-        	if (CollectionUtils.isEmpty(selectDocReqKnrInsChangeList)) {
+        	List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
+        	if(selectDocReqKnrInsChangeList == null) {
         		tempUltDocNo = "Z";
         	}else {
         		tempUltDocNo = selectDocReqKnrInsChangeList.get(0).getUltDocNo();
         	}
-
-
-
-        	TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
-        	tRdmHcpKmuReqUpdData.setReqId(reqId);
-        	tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), "Z"));
-        	tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getJobForm(), "Z"));
-        	tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), "Z"));
-        	tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), "Z"));
-        	tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), "Z"));
-        	tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(indto.getDigakuShokui(),""));
-        	tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(indto.getYakushoku(),""));
-        	tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(indto.getDcc(),""));
         	tRdmHcpKmuReqUpdData.setUltDocNo(tempUltDocNo);
-        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || indto.getPostUltInsNo() == null) {
+            //異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
+        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || StringUtils.isEmpty(indto.getPostUltInsNo())) {
         		tRdmHcpKmuReqUpdData.setUltInsNo(indto.getPreUltInsNo());
-        	}else {
-        		tRdmHcpKmuReqUpdData.setUltInsNo("Z");
         	}
         	tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
         	tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
@@ -441,15 +413,17 @@ public class ND307Service extends BaseService {
 		indto.setReqDistCode(selectDocReqKnrInsChangeCheckList.get(0).getReqDistCode());
 		indto.setUpdShaYmd(selectDocReqKnrInsChangeCheckList.get(0).getUpdShaYmd());
 
-		//隠し項目（変更後）
-		indto.setPostInsNo(selectDocReqKnrInsChangeCheckList.get(0).getPostInsNo());
-		indto.setPostUltInsNo(selectDocReqKnrInsChangeCheckList.get(0).getPostUltInsNo());
-		indto.setPostDeptCode(selectDocReqKnrInsChangeCheckList.get(0).getPostDeptCode());
-		indto.setPostDeptKn(selectDocReqKnrInsChangeCheckList.get(0).getPostDeptKn());
-		indto.setPostTitleCode(selectDocReqKnrInsChangeCheckList.get(0).getPostTitleCode());
-		indto.setPostJobForm(selectDocReqKnrInsChangeCheckList.get(0).getPostJobForm());
-		indto.setPostDcc(selectDocReqKnrInsChangeCheckList.get(0).getPostDcc());
-		indto.setPostUnivPosCode(selectDocReqKnrInsChangeCheckList.get(0).getPostUnivPosCode());
+		//隠し項目（変更後） TODO
+//		indto.setPostInsNo(selectDocReqKnrInsChangeCheckList.get(0).getPostInsNo());
+//		indto.setPostUltInsNo(selectDocReqKnrInsChangeCheckList.get(0).getPostUltInsNo());
+//		indto.setPostDeptCode(selectDocReqKnrInsChangeCheckList.get(0).getPostDeptCode());
+//		indto.setPostDeptKn(selectDocReqKnrInsChangeCheckList.get(0).getPostDeptKn());
+//		indto.setPostTitleCode(selectDocReqKnrInsChangeCheckList.get(0).getPostTitleCode());
+//		indto.setPostJobForm(selectDocReqKnrInsChangeCheckList.get(0).getPostJobForm());
+//		indto.setPostDcc(selectDocReqKnrInsChangeCheckList.get(0).getPostDcc());
+//		indto.setPostUnivPosCode(selectDocReqKnrInsChangeCheckList.get(0).getPostUnivPosCode());
+
+
 
 		//基本情報
     	indto.setDocKanj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getDocKanj(), "-"));
@@ -457,10 +431,12 @@ public class ND307Service extends BaseService {
     	//基本情報隠し項目
         indto.setDocNo(selectDocReqKnrInsChangeCheckList.get(0).getDocNo());
         indto.setUltDocNo(selectDocReqKnrInsChangeCheckList.get(0).getUltDocNo());
-        indto.setPreHoInsType(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreHoInsType(),""));
-        indto.setPostHoInsType(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostHoInsType(),""));
-        indto.setPreInsClass(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreInsClass(),""));
-        indto.setPostInsClass(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostInsClass(),""));
+
+//        nd102ではいらない TODO
+//        indto.setPreHoInsType(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreHoInsType(),""));
+//        indto.setPostHoInsType(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostHoInsType(),""));
+//        indto.setPreInsClass(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreInsClass(),""));
+//        indto.setPostInsClass(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostInsClass(),""));
 
     	//勤務情報（変更前）
     	indto.setPreInsAbbrName(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPreInsAbbrName(), "-"));
@@ -480,16 +456,31 @@ public class ND307Service extends BaseService {
 		indto.setPreDcc(selectDocReqKnrInsChangeCheckList.get(0).getPreDcc());
 		indto.setPreUnivPosCode(selectDocReqKnrInsChangeCheckList.get(0).getPreUnivPosCode());
 
-		//異動区分　画面表示の切替に使用
-		indto.setTrnKbn(selectDocReqKnrInsChangeCheckList.get(0).getTrnKbn());
+//		//異動区分　画面表示の切替に使用  nd102ではいらない TODO
+//		indto.setTrnKbn(selectDocReqKnrInsChangeCheckList.get(0).getTrnKbn());
 
-		//勤務情報（変更後）
-		indto.setPostInsAbbrName(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostInsAbbrName(),"-"));
-		indto.setPostDeptKj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostDeptKj(), "-"));
-		indto.setTitlePostTitleKj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getTitlePostTitleKj(),"-"));
-		indto.setKmuPostCodeKanj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getKmuPostCodeKanj(),"-"));
-		indto.setYakushinPostCodeKanj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getYakushinPostCodeKanj(),"-"));
-		indto.setUnivPostTitleKj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getUnivPostTitleKj(),"-"));
+		//勤務情報（変更後） nd102ではいらない TODO
+//		indto.setPostInsAbbrName(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostInsAbbrName(),"-"));
+//		indto.setPostDeptKj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getPostDeptKj(), "-"));
+//		indto.setTitlePostTitleKj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getTitlePostTitleKj(),"-"));
+//		indto.setKmuPostCodeKanj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getKmuPostCodeKanj(),"-"));
+//		indto.setYakushinPostCodeKanj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getYakushinPostCodeKanj(),"-"));
+//		indto.setUnivPostTitleKj(StringUtils.nvl(selectDocReqKnrInsChangeCheckList.get(0).getUnivPostTitleKj(),"-"));
+
+		//
+        //異動区分
+        SelectNd102TrnListEntity selectNd102TrnListEntity = new SelectNd102TrnListEntity();
+        List<SelectNd102TrnListEntity> selectNd102TrnList;
+        selectNd102TrnList = dao.select(selectNd102TrnListEntity);
+        //表示用
+        LinkedHashMap<String, String> mapTrnKbn = new LinkedHashMap<String, String>();
+        mapTrnKbn.put(null, "--選択してください--");
+        for (SelectNd102TrnListEntity outEntity : selectNd102TrnList) {
+        	mapTrnKbn.put(outEntity.getTrnValue1(),outEntity.getValue1Kanj());
+        }
+
+		indto.setPostTrnKbn(mapTrnKbn.get(indto.getTrnKbnCd()));
+
 		String tempTekiyoDay = selectDocReqKnrInsChangeCheckList.get(0).getTekiyoYmd();
 		tempTekiyoDay = tempTekiyoDay.substring(0,4) + "/" +  tempTekiyoDay.substring(4,6) + "/" + tempTekiyoDay.substring(6,8);
 		indto.setDispTekiyoYmd(StringUtils.nvl(tempTekiyoDay,indto.getTekiyoInitDay()));
@@ -508,43 +499,43 @@ public class ND307Service extends BaseService {
 		//承認ボタン
 		if (indto.getMrAdminFlg().equals("0")) {
 			if (indto.getReqSts().equals("01")) {
-				indto.setNd307AppdFlg("1");
+				indto.setNd309AppdFlg("1");
 				if (paramSwitch.getKmuFlg().equals("1") && paramSwitch.getDocFlg().equals("1")) {
-					indto.setNd307AppdActiveFlg("1");
+					indto.setNd309AppdActiveFlg("1");
 				} else {
-					indto.setNd307AppdActiveFlg("0");
+					indto.setNd309AppdActiveFlg("0");
 				}
 			} else {
-				indto.setNd307AppdFlg("0");
-				indto.setNd307AppdActiveFlg("0");
+				indto.setNd309AppdFlg("0");
+				indto.setNd309AppdActiveFlg("0");
 			}
 		} else {
 			if (indto.getReqSts().equals("01") || indto.getReqSts().equals("11") || indto.getReqSts().equals("03") || indto.getReqSts().equals("13")) {
-				indto.setNd307AppdFlg("1");
+				indto.setNd309AppdFlg("1");
 				if (paramSwitch.getKmuFlg().equals("1") && paramSwitch.getDocFlg().equals("1")) {
-					indto.setNd307AppdActiveFlg("1");
+					indto.setNd309AppdActiveFlg("1");
 				} else {
-					indto.setNd307AppdActiveFlg("0");
+					indto.setNd309AppdActiveFlg("0");
 				}
 			} else {
-				indto.setNd307AppdFlg("0");
-				indto.setNd307AppdActiveFlg("0");
+				indto.setNd309AppdFlg("0");
+				indto.setNd309AppdActiveFlg("0");
 			}
 		}
 
 		//却下ボタン
 		if(indto.getMrAdminFlg().equals("1")) {
 			if(indto.getReqSts().equals("03") || indto.getReqSts().equals("11")) {
-				indto.setNd307RejectFlg("1");
+				indto.setNd309RejectFlg("1");
 				if(paramSwitch.getKmuFlg().equals("1") && paramSwitch.getDocFlg().equals("1")) {
-					indto.setNd307RejectActiveFlg("1");
+					indto.setNd309RejectActiveFlg("1");
 				}else {
-					indto.setNd307RejectActiveFlg("0");
+					indto.setNd309RejectActiveFlg("0");
 				}
 			}
 		}else {
-			indto.setNd307RejectFlg("0");
-			indto.setNd307RejectActiveFlg("0");
+			indto.setNd309RejectFlg("0");
+			indto.setNd309RejectActiveFlg("0");
 		}
         return outdto;
     }
@@ -556,7 +547,7 @@ public class ND307Service extends BaseService {
      * @customizable
      */
     @Transactional
-    public BaseDTO register(ND307DTO indto) {
+    public BaseDTO register(ND309DTO indto) {
     	BaseDTO outdto = indto;
 
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -711,7 +702,7 @@ public class ND307Service extends BaseService {
 
         	dao.update(tRdmReqKnrEntity);
 
-        	outdto.setForward("NC101");
+        	outdto.setForward("NC102");
 		}
 
     	return outdto;
@@ -719,67 +710,31 @@ public class ND307Service extends BaseService {
 
 
     //ND101　医療機関への異動画面用
-    public void setCombo(ND307DTO indto, Boolean errFlg) {
+    public void setCombo(ND309DTO indto, Boolean errFlg) {
     	//1-2 ドロップダウンリストの生成
-        //役職
-    	SelectNd101YakushokuComboListEntity selectNd101YakushokuComboListEntity = new SelectNd101YakushokuComboListEntity();
-    	List<SelectNd101YakushokuComboListEntity> selectNd101YakushokuComboList;
-    	selectNd101YakushokuComboListEntity.setInDataKbn("0");
-    	selectNd101YakushokuComboList = dao.select(selectNd101YakushokuComboListEntity);
-    	LinkedHashMap<String, String> mapYakushoku = new LinkedHashMap<String, String>();
-    	mapYakushoku.put(null, "--選択してください--");
-        for (SelectNd101YakushokuComboListEntity outEntity : selectNd101YakushokuComboList) {
-        	mapYakushoku.put(outEntity.getTitleCode(),outEntity.getTitleKj());
-        }
-        indto.setYakushokuCombo(mapYakushoku);
-        if(!(indto.getReqSts() == null) && !(errFlg)) {
-        	indto.setYakushoku(indto.getPostTitleCode());
+
+        //異動区分
+        SelectNd102TrnListEntity selectNd102TrnListEntity = new SelectNd102TrnListEntity();
+        List<SelectNd102TrnListEntity> selectNd102TrnList;
+        selectNd102TrnList = dao.select(selectNd102TrnListEntity);
+        //表示用
+        LinkedHashMap<String, String> mapTrnKbn = new LinkedHashMap<String, String>();
+        //異動先施設コード保管用
+        LinkedHashMap<String, String> mapTrnKbnInsNo = new LinkedHashMap<String, String>();
+        mapTrnKbn.put(null, "--選択してください--");
+        for (SelectNd102TrnListEntity outEntity : selectNd102TrnList) {
+        	mapTrnKbn.put(outEntity.getTrnValue1(),outEntity.getValue1Kanj());
         }
 
-        //勤務形態
-        SelectNd101ComboListEntity selectNd101ComboListEntity = new SelectNd101ComboListEntity();
-        List<SelectNd101ComboListEntity> selectNd101ComboList;
-        selectNd101ComboListEntity.setInDataKbn("JOB_FORM");
-        selectNd101ComboList = dao.select(selectNd101ComboListEntity);
-        LinkedHashMap<String, String> mapJobForm = new LinkedHashMap<String, String>();
-        mapJobForm.put(null, "--なし--");
-        for (SelectNd101ComboListEntity outEntity : selectNd101ComboList) {
-        	mapJobForm.put(outEntity.getValue1(),outEntity.getValue1Kanj());
-        }
-        indto.setJobFormCombo(mapJobForm);
-        if(!(indto.getReqSts() == null) && !(errFlg)) {
-        	indto.setJobForm(indto.getPostJobForm());
+        for (SelectNd102TrnListEntity outEntity : selectNd102TrnList) {
+        	mapTrnKbnInsNo.put(outEntity.getTrnValue1(),outEntity.getDummyValue1());
         }
 
-        //薬審メンバー区分
-        SelectNd101ComboListEntity selectNd101ComboListEntity2 = new SelectNd101ComboListEntity();
-        List<SelectNd101ComboListEntity> selectNd101ComboList2;
-        selectNd101ComboListEntity2.setInDataKbn("DCC");
-        selectNd101ComboList2 = dao.select(selectNd101ComboListEntity2);
-        LinkedHashMap<String, String> mapDcc = new LinkedHashMap<String, String>();
-        mapDcc.put(null, "--なし--");
-        for (SelectNd101ComboListEntity outEntity : selectNd101ComboList2) {
-        	mapDcc.put(outEntity.getValue1(),outEntity.getValue1Kanj());
-        }
-        indto.setDccCombo(mapDcc);
-        if(!(indto.getReqSts() == null)&& !(errFlg)) {
-        	indto.setDcc(indto.getPostDcc());
-        }
-
-        //大学職位
-    	SelectNd101YakushokuComboListEntity selectNd101YakushokuComboListEntity2 = new SelectNd101YakushokuComboListEntity();
-    	List<SelectNd101YakushokuComboListEntity> selectNd101YakushokuComboList2;
-    	selectNd101YakushokuComboListEntity2.setInDataKbn("1");
-    	selectNd101YakushokuComboList2 = dao.select(selectNd101YakushokuComboListEntity2);
-    	LinkedHashMap<String, String> mapDigakuShokui = new LinkedHashMap<String, String>();
-    	mapDigakuShokui.put(null, "--選択してください--");
-        for (SelectNd101YakushokuComboListEntity outEntity : selectNd101YakushokuComboList2) {
-        	mapDigakuShokui.put(outEntity.getTitleCode(),outEntity.getTitleKj());
-        }
-        indto.setDigakuShokuiCombo(mapDigakuShokui);
-        if(!(indto.getReqSts() == null) && !(errFlg) ) {
-        	indto.setDigakuShokui(indto.getPostUnivPosCode());
-        }
+        indto.setTrnKbnInsNoCombo(mapTrnKbnInsNo);
+        indto.setTrnKbnCombo(mapTrnKbn);
+//        if(!(StringUtils.isEmpty(indto.getReqSts()))) {
+//        	indto.setTrnKbnInsNo(indto.getPostUnivPosCode());
+//        }
 
         //翌日日付_RDM用カレンダー(オンライン用)_生成用エンティティ
       	SelectTmrEntity selectTmrEntity = new SelectTmrEntity();

@@ -452,6 +452,18 @@
 			and KMU_REQ.DOC_NO = #{inDocNo}
 			and KMU_REQ.INS_NO_MT = #{inInsNo}
     </select>
+	<update id="updateND102Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity">
+	UPDATE
+		T_RDM_HCP_KMU_REQ
+	SET
+	    TRN_KBN = #{trnKbn},
+		INS_NO_SK = #{insNoSk},
+		ULT_INS_NO = #{ultInsNo},
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
     <select id="selectDocReqKnrInsChangeCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity" resultMap="selectDocReqKnrInsChangeCheckResultMap">
        SELECT
            HCP_MST.DOC_KANJ

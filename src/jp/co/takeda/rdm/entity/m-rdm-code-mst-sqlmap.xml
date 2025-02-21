@@ -30,6 +30,20 @@
         <result column="VALUE1" property="value1"/>
         <result column="VALUE1_KANJ" property="value1Kanj"/>
     </resultMap>
+    <resultMap id="selectNd102TrnListResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd102TrnListEntity">
+        <result column="VALUE1_KANJ" property="value1Kanj"/>
+        <result column="TRN_VALUE1" property="trnValue1"/>
+        <result column="DUMMY_VALUE1" property="dummyValue1"/>
+    </resultMap>
+    <resultMap id="selectNd102MrDummyCheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd102MrDummyCheckEntity">
+        <result column="VALUE1_KANJ" property="value1Kanj"/>
+        <result column="TRN_VALUE1" property="trnValue1"/>
+        <result column="DUMMY_VALUE1" property="dummyValue1"/>
+    </resultMap>
+    <resultMap id="selectNd102MultipleWorkCheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd102MultipleWorkCheckEntity">
+        <result column="DOC_NO" property="docNo"/>
+        <result column="INS_NO" property="insNo"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity" resultMap="mRdmCodeMstResultMap">
         SELECT
             CODE_KANJ, CODE_NAME, VALUE1_KANJ, VALUE1, VALUE2_KANJ, VALUE2, VALUE3_KANJ, VALUE3, SORT_NUM, BIKO, DEL_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID        FROM
@@ -193,5 +207,63 @@
         WHERE
             CODE_NAME = #{inDataKbn}
         ORDER BY VALUE1
+    </select>
+   <select id="selectNd102TrnList" parameterType="jp.co.takeda.rdm.entity.join.SelectNd102TrnListEntity" resultMap="selectNd102TrnListResultMap">
+        SELECT DISTINCT
+            TRN_CODE_MST.VALUE1_KANJ VALUE1_KANJ
+           ,TRN_CODE_MST.VALUE1 TRN_VALUE1
+           ,NVL(DUMMY_CODE_MST.VALUE1,'') DUMMY_VALUE1
+        FROM
+            M_RDM_CODE_MST TRN_CODE_MST
+        LEFT JOIN
+            M_RDM_CODE_MST DUMMY_CODE_MST
+        ON
+            DUMMY_CODE_MST.CODE_NAME = 'DUMMY_HCO'
+        AND DUMMY_CODE_MST.DEL_FLG = '0'
+        AND DUMMY_CODE_MST.VALUE2 = TRN_CODE_MST.VALUE1
+        WHERE 1 = 1
+        AND TRN_CODE_MST.CODE_NAME = 'TRN_KBN'
+        AND TRN_CODE_MST.DEL_FLG = '0'
+        ORDER BY TRN_CODE_MST.VALUE1
+    </select>
+   <select id="selectNd102MrDummyCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectNd102MrDummyCheckEntity" resultMap="selectNd102MrDummyCheckResultMap">
+        SELECT
+            DUMMY_CODE_MST.CODE_KANJ
+        FROM
+            M_RDM_CODE_MST DUMMY_CODE_MST
+        WHERE 1 = 1
+        AND DUMMY_CODE_MST.CODE_NAME = 'DUMMY_HCO'
+        AND DUMMY_CODE_MST.DEL_FLG = '0'
+        AND DUMMY_CODE_MST.VALUE1 = #{inInsNo} --DOC_NO
+    </select>
+   <select id="selectNd102MultipleWorkCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectNd102MultipleWorkCheckEntity" resultMap="selectNd102MultipleWorkCheckResultMap">
+        SELECT
+            HCP_WORK.DOC_NO DOC_NO
+           ,HCP_WORK.INS_NO INS_NO
+        FROM
+            M_RDM_HCP_WORK HCP_WORK
+        LEFT JOIN
+            M_RDM_CODE_MST DUMMY_CODE_MST
+        ON
+            DUMMY_CODE_MST.CODE_NAME = 'DUMMY_HCO'
+        AND DUMMY_CODE_MST.DEL_FLG = '0'
+        AND DUMMY_CODE_MST.VALUE1 = HCP_WORK.INS_NO
+        WHERE 1 = 1
+        AND DUMMY_CODE_MST.VALUE1 IS NULL
+        AND HCP_WORK.DOC_NO = #{inDocNo}
+
+        MINUS
+
+        SELECT
+            KMU_REQ.DOC_NO DOC_NO
+           ,KMU_REQ.INS_NO_MT INS_NO
+        FROM T_RDM_HCP_KMU_REQ KMU_REQ
+        INNER JOIN
+            T_RDM_REQ_KNR REQ_KNR
+        ON
+            KMU_REQ.REQ_ID = REQ_KNR.REQ_ID
+        AND REQ_KNR.REQ_TYPE = '44'
+        AND REQ_KNR.REQ_STS IN ('03','13','04','14')
+        AND KMU_REQ.DOC_NO = #{inDocNo}
     </select>
 </mapper>

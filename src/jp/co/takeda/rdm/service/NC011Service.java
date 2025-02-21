@@ -363,6 +363,9 @@ public class NC011Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
+        if(indto.getPreScreenId().equals("NM001")) {
+        	outdto = search(indto);
+        }
 
         // END UOC
         return outdto;

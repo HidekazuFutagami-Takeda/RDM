@@ -1534,6 +1534,36 @@
         <result column="APR_COMMENT" property="aprComment"/>
         <result column="SHN_FLG" property="shnFlg"/>
     </resultMap>
+    <resultMap id="nF307MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF307MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="SHN_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_FORMAL_NAME" property="insFormalName"/>
+        <result column="INS_ADDR" property="insAddr"/>
+        <result column="INS_PCODE" property="insPcode"/>
+        <result column="DEL_REASON" property="delReason"/>
+        <result column="RST_REASON" property="rstReason"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity" resultMap="tRdmHcoReqResultMap">
         SELECT
             REQ_ID, INS_NO, INS_CLASS, INS_SBT, INS_KANA, INS_ABBR_NAME, INS_FORMAL_NAME, INS_CONT_NAME, INS_PCODE, ADDR_CODE_PREF, ADDR_CODE_CITY, TK_CITY_CD, INS_ADDR_DT, INS_ADDR, INS_ADDR_KANA, INS_PHONE1, INS_FAX1, INS_PHONE2, INS_FAX2, INS_URL, INS_URL_YMD, TRADE_TYPE, WS_TYPE, BASKET_PURCHASE, HO_INS_TYPE, PHARM_TYPE, INS_RANK, MANAGE_CD, REG_VIS_TYPE, IMP_HOS_TYPE, IMP_INS_TYPE, UNIV_SUBDIV, INS_OPEN_YEAR, INS_OPEN_MONTH, INS_OPEN_DAY, HOS_EMERG, CAPA_TYPE, CLITEM_LIST, VAC_INS_TYPE, VAC_VISIT_TYPE, BEDCNT_BASE, BEDS_TOT, MED_BEDS_TOT, ENTCAPA_NUM, MAIN_INS_NO, INS_SECOND_TYPE, ULT_INS_NO, MDM_ID, BEDCNT01, BEDCNT02, BEDCNT03, BEDCNT04, BEDCNT05, BEDCNT06, BEDCNT07, FREE0001, FREE0002, FREE0003, FREE0004, FREE0005, FREE0006, FREE0007, FREE0008, FREE0009, FREE0010, FREE0011, FREE0012, FREE0013, FREE0014, FREE0015, FREE0101, WELFARE02, WELFARE08, RESULT01, RESULT02, RESULT03, RESULT04, RESULT05, RESULT06, RESULT07, RESULT08, RESULT09, RESULT10, RESULT11, RESULT12, RESULT13, RESULT14, RESULT15, RESULT16, RESULT17, RESULT18, RESULT19, RESULT20, RESULT21, RESULT22, RESULT23, RESULT24, RESULT25, RESULT26, RESULT27, RESULT28, RESULT29, RESULT30, RESULT31, RESULT32, RESULT33, RESULT34, RESULT35, RESULT36, EQUIP01, EQUIP02, EQUIP03, EQUIP07, EQUIP09, MARKET01, MARKET02, MARKET03, MARKET04, MARKET06, MARKET07, MARKET09, MEDICAL12, SPFUNC01, SPFUNC02, SPFUNC03, SPFUNC04, SPFUNC05, SPFUNC06, TIEUP05, TIEUP08, TIEUP09, TIEUP10, TIEUP11, TIEUP12, TIEUP13, USERCD0001, USERCD0002, USERCD0003, USERCD0004, USERCD0005, USERCD0006, USERCD0007, USERCD0008, USERCD0009, USERCD0010, USERCD0011, USERCD0012, USERCD0013, USERCD0014, USERCD0015, USERCD0016, USERCD0017, USERCD0018, USERCD0019, USERCD0020, USERCD0021, USERCD0022, USERCD0023, USERCD0024, USERCD0025, USERCD0026, USERCD0027, USERCD0028, USERCD0029, USERCD0030, USERCD0031, USERCD0032, USERCD0033, USERCD0034, USERCD0035, USERCD0036, USERCD0101, USERCD0102, USERCD0103, USERCD0104, USERCD0105, USERCD0106, USERCD0107, USERCD0108, USERCD0109, USERCD0201, USERCD0202, USERCD0203, USERCD0204, USERCD0205, USERCD0206, REWARD04, REWARD05, REWARD08, REWARD09, REWARD16, REWARD17, REWARD18, REWARD21, REWARD23, REWARD25, REWARD26, REWARD27, REWARD29, REWARD35, REWARD36, REWARD37, REWARD44, DEL_KBN, DEL_REASON, DEL_YMD, DUP_INS_NO, RST_REASON, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -4714,6 +4744,22 @@
 		WHERE 1=1
         AND KNR.REQ_ID = #{inReqId}
     </select>
+    <select id="selectNF014InsChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity" resultMap="tRdmHcoReqResultMap">
+		SELECT
+		  HCO.REQ_ID  -- 施設_申請管理.申請ID
+		FROM
+		T_RDM_HCO_REQ HCO ---施設_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		AND KNR.REQ_TYPE IN ('04')
+		AND KNR.REQ_STS IN ('03','13','04','14')
+        <if test="reqId != null">AND KNR.REQ_ID <![CDATA[<>]]> #{reqId}</if>
+		WHERE 1=1
+        AND HCO.INS_NO = #{insNo}
+
+    </select>
     <select id="selectNF301REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF301MainDataEntity" resultMap="nF301MainDataResultMap">
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID
@@ -7297,6 +7343,69 @@
 		WHERE 1=1
         AND KNR.REQ_ID = #{inReqId}
     </select>
+	<select id="selectNF307REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF307MainDataEntity" resultMap="nF307MainDataResultMap">
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL  -- 申請管理.申請チャネル
+		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, HCO.INS_NO
+		, HCO.INS_ABBR_NAME
+		, HCO.INS_FORMAL_NAME
+		, MST.INS_ADDR
+		, MST.INS_PCODE
+		, CDM_DEL.VALUE1_KANJ AS DEL_REASON
+		, CDM_RST.VALUE1_KANJ AS RST_REASON
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.APR_COMMENT  -- 申請管理.承認・却下コメント
+		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
+		FROM
+		T_RDM_REQ_KNR KNR -- 申請管理
+		INNER JOIN
+		T_RDM_HCO_REQ HCO -- 施設_申請管理
+		ON 1=1
+		AND KNR.REQ_ID = HCO.REQ_ID
+		INNER JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON 1=1
+		AND MST.INS_NO = HCO.INS_NO
+		--INNER JOIN
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_DEL -- コード情報
+		ON 1=1
+		AND CDM_DEL.CODE_NAME = 'HCO_DEL_REASON'
+		AND CDM_DEL.DEL_FLG = '0'
+		AND CDM_DEL.VALUE1 = MST.DEL_REASON
+		--INNER JOIN
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_RST -- コード情報
+		ON 1=1
+		AND CDM_RST.CODE_NAME = 'HCO_RST_REASON'
+		AND CDM_RST.DEL_FLG = '0'
+		AND CDM_RST.VALUE1 = HCO.RST_REASON
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		WHERE 1=1
+		AND KNR.REQ_ID = #{inReqId}
+	</select>
     <select id="selectNF211InsChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity" resultMap="tRdmHcoReqResultMap">
 		SELECT
 		  HCO.REQ_ID  -- 施設_申請管理.申請ID
@@ -7542,6 +7651,18 @@
 			</if>
 			INS_SHA_YMD = #{insShaYmd},
 			INS_SHA_ID = #{insShaId},
+			UPD_SHA_YMD = #{updShaYmd},
+			UPD_SHA_ID = #{updShaId}
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <update id="updateNF014Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity">
+        UPDATE
+            T_RDM_HCO_REQ
+        SET
+			<if test="insAbbrName != null">INS_ABBR_NAME = #{insAbbrName},</if><if test="insAbbrName == null">INS_ABBR_NAME = null,</if>
+			<if test="insFormalName != null">INS_FORMAL_NAME = #{insFormalName},</if><if test="insFormalName == null">INS_FORMAL_NAME = null,</if>
+			<if test="rstReason != null">RST_REASON = #{rstReason},</if><if test="rstReason == null">RST_REASON = null,</if>
 			UPD_SHA_YMD = #{updShaYmd},
 			UPD_SHA_ID = #{updShaId}
         WHERE

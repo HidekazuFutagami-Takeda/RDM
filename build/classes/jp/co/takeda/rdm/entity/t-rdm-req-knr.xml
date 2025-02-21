@@ -206,9 +206,11 @@
 		    )
 		    </if>
 		    <if test='aDdrCodePref == "99"'>
-			AND HCO_REQ.ADDR_CODE_PREF  IS NULL
-			AND   HCO_MST.ADDR_CODE_PREF IS NULL
-
+			AND( HCO_REQ.ADDR_CODE_PREF IS NULL
+			OR   HCO_MST.ADDR_CODE_PREF IS NULL
+			OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
+			OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+		    )
 		    </if>
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
@@ -455,8 +457,10 @@
 		    )
 		    </if>
 		    <if test='aDdrCodePref == "99"'>
-			AND( HCO_REQ.ADDR_CODE_PREF  IS NULL
+			AND( HCO_REQ.ADDR_CODE_PREF IS NULL
 			OR   HCO_MST.ADDR_CODE_PREF IS NULL
+			OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
+			OR   HCO_MST.ADDR_CODE_PREF = 'Z'
 		    )
 		    </if>
 	    </if>

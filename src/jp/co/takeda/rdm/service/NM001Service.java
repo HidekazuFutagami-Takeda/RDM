@@ -79,7 +79,7 @@ public class NM001Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
-
+        outdto = search(indto);
         // END UOC
         return outdto;
 
@@ -90,8 +90,6 @@ public class NM001Service extends BaseService {
 		SRdmReqSamariEntity paramEntity = new SRdmReqSamariEntity();
       //  List<NM001Entity> selectTestEntity = dao.select(paramEntity);
       //  indto.setTest(selectTestEntity.get(0).getTest());
-
-
 
         //paramEntity.setScreenId("RDMNM001");
         List<NM001DTO> nm001Dto = new ArrayList<NM001DTO>();
@@ -115,16 +113,20 @@ public class NM001Service extends BaseService {
         //SimpleDateFormatで日付フォーマット設定
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           //日付チェック 開始日が終了日より後の場合
+          if (indto.getReqYmdhmsFrom() != null){
           try {
+
 			if (!sdf.parse(indto.getReqYmdhmsFrom()).before(sdf.parse(indto.getReqYmdhmsTo()))) {
 				indto.setBoolKnb("1");
 				indto.setKensakuBool(false);
         		return outdto;
 			  }
+
 		} catch (ParseException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+          }
 
           //入力_検索文字列  申請日がnullでないかのチェック。
           if(paramEntity.getReqYmdhmsFrom() != null) {

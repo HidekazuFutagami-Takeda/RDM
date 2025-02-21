@@ -5,35 +5,56 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
+import java.io.ByteArrayInputStream;
+import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Named;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.transaction.annotation.Transactional;
-
-import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
-import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.dto.HcpPublicData;
 import jp.co.takeda.rdm.dto.HcpSocietyData;
 import jp.co.takeda.rdm.dto.ND301DTO;
+import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
+import jp.co.takeda.rdm.entity.join.MRdmHcpShusshinkoEntity;
+import jp.co.takeda.rdm.entity.join.MRdmHcpSpDiseaseEntity;
+import jp.co.takeda.rdm.entity.join.MRdmHcpSpLiverEntity;
+import jp.co.takeda.rdm.entity.join.MRdmHcpYakushokuEntity;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
+import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectND301MainDataEntity;
+import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
+import jp.co.takeda.rdm.entity.join.TRdmHcpPublicReqEntity;
+import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
+import jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity;
+import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
+import jp.co.takeda.rdm.entity.join.UpdateTRdmHcpPublicReqEntity;
+import jp.co.takeda.rdm.entity.join.UpdateTRdmHcpReqEntity;
+import jp.co.takeda.rdm.entity.join.UpdateTRdmHcpSocietyReqEntity;
 import jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Serviceクラス（ND301)
@@ -142,6 +163,7 @@ public class ND301Service extends BaseService {
 			indto.setSkDeptCd(StringUtils.nvl(mainDataEntity.getSkDeptCd(), ""));
 			indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
 			indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
+			indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
 			indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
 			indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
 
@@ -171,6 +193,14 @@ public class ND301Service extends BaseService {
 				beforeHcpPublicDataList.add(pbData);
 			}
 			indto.setHcpPublicDataList(hcpPublicDataList);
+			if(indto.getReqStsCd().equals("01")) {
+				//申請者の初期操作では申請者情報が無いのでログイン情報をセットしておく
+				indto.setReqShzNm(loginInfo.getBumonRyakuName());
+				indto.setReqJgiName(loginInfo.getJgiName());
+				indto.setReqJgiNo(loginInfo.getJgiNo());
+				indto.setReqBrCd(loginInfo.getBrCode());
+				indto.setReqDistCd(loginInfo.getDistCode());
+			}
 		} else {
 			//TODO 遷移エラー
 		}
@@ -190,10 +220,12 @@ public class ND301Service extends BaseService {
 				indto.setBtnEnableFlg("1");
 			}
 		}
-
+		if(loginInfo.getJokenSetCd().equals("JKN0813")) {
+			indto.setFbReqFlg(true);//初期値はチェックON
+		}
 //		indto.setHcpSocietyDataChgFlg("0");
 //		indto.setHcpPublicDataChgFlg("0");
-		indto.setLoginJokenSetCd("JKN0813");//MDM管理者：JKN0813 全MR：JKN0023
+		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0813 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
 //		// DropDownList作成
 //		createCombo(indto);
@@ -403,218 +435,6 @@ public class ND301Service extends BaseService {
 		sData.setCertifyEdYMD(certifyEdYMD);
 	}
 
-//	/**
-//	 * コンボ作成
-//	 * @param indto ND301DTO
-//	 * @return なし
-//	 * @customizable
-//	 */
-//	private void createCombo(ND301DTO indto){
-//		//1-2-1     医師／薬剤師区分
-//		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-//		//            コード名＝DOC_TYPE（医師／薬剤師区分）
-//		//            削除フラグ=0
-//		SelectComboListEntity inEntityCmb = new SelectComboListEntity();
-//		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_DOC_TYPE);
-//		List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
-//		LinkedHashMap<String, String> mapDocType = new LinkedHashMap<String, String>();
-//		mapDocType.put("", "--なし--");
-//		for (SelectComboListEntity outEntity : outMainList) {
-//			mapDocType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
-//		}
-//		indto.setDocTypeCombo(mapDocType);
-//
-//		//1-2-2     性別
-//		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-//		//            コード名＝MF（性別）
-//		//            削除フラグ=0
-//		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_MF);
-//		outMainList.clear();
-//		outMainList = dao.select(inEntityCmb);
-//		LinkedHashMap<String, String> mapMF = new LinkedHashMap<String, String>();
-//		mapMF.put("", "--なし--");
-//		for (SelectComboListEntity outEntity : outMainList) {
-//			mapMF.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
-//		}
-//		indto.setSexCdCombo(mapMF);
-//		//1-2-3     改姓日
-//		//下記で作成する                          空白を選択可能とし、取得値が無い場合は空白を初期値として選択する
-//		//            年      現在日付の年+1年～－100年
-//		//            月      01～12
-//		//            日      01～31
-//		MRdmComCalUsrEntity inEntityYearCmb = new MRdmComCalUsrEntity();
-//		inEntityYearCmb.setToday("1");
-//		MRdmComCalUsrEntity outCalUsr = dao.selectByValue(inEntityYearCmb).get(0);
-//		int yearInt = Integer.parseInt(outCalUsr.getCalYear());
-//		LinkedHashMap<String, String> mapYear = new LinkedHashMap<String, String>();
-//		mapYear.put("", "");
-//		for (int i = 0; i < 101; i++) {
-//			String yearStr = Integer.toString(yearInt + 1 - i);
-//			mapYear.put(yearStr, yearStr);
-//		}
-//		indto.setNewNameStYearCombo(mapYear);
-//
-//		LinkedHashMap<String, String> mapMonth = new LinkedHashMap<String, String>();
-//		mapMonth.put("", "");
-//		for (int i = 0; i < 12; i++) {
-//			String monthStr = String.format("%02d", (i+1));
-//			mapMonth.put(monthStr, monthStr);
-//		}
-//		indto.setNewNameStMonthCombo(mapMonth);
-//
-//		LinkedHashMap<String, String> mapDay = new LinkedHashMap<String, String>();
-//		mapDay.put("", "");
-//		for (int i = 0; i < 31; i++) {
-//			String dayStr = String.format("%02d", (i+1));
-//			mapDay.put(dayStr, dayStr);
-//		}
-//		indto.setNewNameStDayCombo(mapDay);
-//
-//		//1-2-4     生年月日
-//		//下記で作成する                          空白を選択可能とし、取得値が無い場合は空白を初期値として選択する
-//		//            年      現在日付の年+1年～－100年
-//		//            月      01～12
-//		//            日      01～31
-//		indto.setDobYearCombo(mapYear);
-//		indto.setDobMonthCombo(mapMonth);
-//		indto.setDobDayCombo(mapDay);
-//
-//		//1-2-5     出身地
-//		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-//		//            コード名＝HOME_TOWN（出身地）
-//		//            削除フラグ=0
-//		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_HOME_TOWN);
-//		outMainList.clear();
-//		outMainList = dao.select(inEntityCmb);
-//		LinkedHashMap<String, String> mapHomeTown = new LinkedHashMap<String, String>();
-//		mapHomeTown.put("", "--なし--");
-//		for (SelectComboListEntity outEntity : outMainList) {
-//			mapHomeTown.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
-//		}
-//		indto.setHomeTownCdCombo(mapHomeTown);
-//		//1-2-6     出身校              「補足_出身医局校_出身校リスト」シート参照
-//		//医師_出身大学マスタから下記条件で「武田出身大学コード：出身大学漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-//		//        出身校利用フラグ=1
-//		//        削除フラグ=0
-//		MRdmHcpShusshinkoEntity inEntitySskCmb = new MRdmHcpShusshinkoEntity();
-//		inEntitySskCmb.setUnivFlg(1);
-//		inEntitySskCmb.setDelFlg(0);
-//		List<MRdmHcpShusshinkoEntity> outMainSskList = dao.selectByValue(inEntitySskCmb);
-//		LinkedHashMap<String, String> mapMedSchoolCd = new LinkedHashMap<String, String>();
-//		mapMedSchoolCd.put("", "--なし--");
-//		for (MRdmHcpShusshinkoEntity outEntity : outMainSskList) {
-//			mapMedSchoolCd.put(outEntity.getUnivCode(), outEntity.getUnivKj());
-//		}
-//		indto.setMedSchoolCdCombo(mapMedSchoolCd);
-//
-//		//1-2-7     卒年（西暦）
-//		//下記で作成する                          空白を選択可能とし、取得値が無い場合は空白を初期値として選択する
-//		//            年      現在日付の年+1年～－100年
-//		indto.setGradYearCombo(mapYear);
-//
-//		//1-2-8     臨床研修年（西暦）
-//		//下記で作成する                          空白を選択可能とし、取得値が無い場合は空白を初期値として選択する
-//		//            年      現在日付の年+1年～－100年
-//		indto.setEmplYearCombo(mapYear);
-//
-//		//1-2-9     出身医局校                  「補足_出身医局校_出身校リスト」シート参照
-//		//医師_出身大学マスタから下記条件で「武田出身大学コード：出身大学漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-//		//        出身医局校利用フラグ=1
-//		//        削除フラグ=0
-//		inEntitySskCmb.setUnivIkkFlg(1);
-//		inEntitySskCmb.setDelFlg(0);
-//		outMainSskList.clear();
-//		outMainSskList = dao.selectByValue(inEntitySskCmb);
-//		LinkedHashMap<String, String> mapHomeUnivCd = new LinkedHashMap<String, String>();
-//		mapHomeUnivCd.put("", "--なし--");
-//		for (MRdmHcpShusshinkoEntity outEntity : outMainSskList) {
-//			mapHomeUnivCd.put(outEntity.getUnivCode(), outEntity.getUnivKj());
-//		}
-//		indto.setHomeUnivCdCombo(mapHomeUnivCd);
-//		//1-2-10    専門臓器                「専門臓器一覧」シート参照
-//		//医師_専門臓器マスタから下記条件で「専門臓器コード：専門臓器漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-//		//        削除フラグ=0
-//		MRdmHcpSpLiverEntity inEntitySLiCmb = new MRdmHcpSpLiverEntity();
-//		inEntitySLiCmb.setDelFlg(0);
-//		List<MRdmHcpSpLiverEntity> outMainSLiList = dao.selectByValue(inEntitySLiCmb);
-//		LinkedHashMap<String, String> mapSpLiverCd = new LinkedHashMap<String, String>();
-//		mapSpLiverCd.put("", "--なし--");
-//		for (MRdmHcpSpLiverEntity outEntity : outMainSLiList) {
-//			mapSpLiverCd.put(outEntity.getSpLiver(), outEntity.getSpLiverKj());
-//		}
-//		indto.setSpLiverCdCombo(mapSpLiverCd);
-//
-//		//1-2-11    専門詳細                「専門詳細一覧」シート参照
-//		//医師_専門詳細マスタから下記条件で「専門詳細コード：専門詳細漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-//		//        削除フラグ=0
-//		MRdmHcpSpDiseaseEntity inEntitySDiCmb = new MRdmHcpSpDiseaseEntity();
-//		inEntitySDiCmb.setDelFlg(0);
-//		List<MRdmHcpSpDiseaseEntity> outMainSDiList = dao.selectByValue(inEntitySDiCmb);
-//		LinkedHashMap<String, String> mapSpDiseaseCd = new LinkedHashMap<String, String>();
-//		mapSpDiseaseCd.put("", "--なし--");
-//		for (MRdmHcpSpDiseaseEntity outEntity : outMainSDiList) {
-//			mapSpDiseaseCd.put(outEntity.getSpDisease(), outEntity.getSpDiseaseKj());
-//		}
-//		indto.setSpDiseaseCdCombo(mapSpDiseaseCd);
-//
-//		//1-2-12    大学職位
-//		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-//		//        大学職位利用フラグ=1
-//		//        削除フラグ=0
-//		MRdmHcpYakushokuEntity inEntityPosCmb = new MRdmHcpYakushokuEntity();
-//		inEntityPosCmb.setUnivTitleFlg(1);
-//		inEntityPosCmb.setDelFlg(0);
-//		List<MRdmHcpYakushokuEntity> outMainPosList = dao.selectByValue(inEntityPosCmb);
-//		LinkedHashMap<String, String> mapSkUnivPosCd = new LinkedHashMap<String, String>();
-//		mapSkUnivPosCd.put("", "--なし--");
-//		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
-//			mapSkUnivPosCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
-//		}
-//		indto.setSkUnivPosCdCombo(mapSkUnivPosCd);
-//
-//		//1-2-13    役職
-//		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-//		//        大学職位利用フラグ=0
-//		//        削除フラグ=0
-//		inEntityPosCmb.setUnivTitleFlg(0);
-//		inEntityPosCmb.setDelFlg(0);
-//		outMainPosList.clear();
-//		outMainPosList = dao.selectByValue(inEntityPosCmb);
-//		LinkedHashMap<String, String> mapSkTitleCd = new LinkedHashMap<String, String>();
-//		mapSkTitleCd.put("", "--なし--");
-//		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
-//			mapSkTitleCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
-//		}
-//		indto.setSkTitleCdCombo(mapSkTitleCd);
-//
-//		//1-2-14    勤務形態
-//		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-//		//            コード名＝JOB_FORM（勤務形態）
-//		//            削除フラグ=0
-//		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_JOB_FORM);
-//		outMainList.clear();
-//		outMainList = dao.select(inEntityCmb);
-//		LinkedHashMap<String, String> mapJobForm = new LinkedHashMap<String, String>();
-//		mapJobForm.put("", "--なし--");
-//		for (SelectComboListEntity outEntity : outMainList) {
-//			mapJobForm.put(outEntity.getValue(), outEntity.getValueKanji());
-//		}
-//		indto.setSkJobFormCombo(mapJobForm);
-//
-//		//1-2-15    薬審メンバー区分
-//		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-//		//            コード名＝DCC（薬審メンバー区分）
-//		//            削除フラグ=0
-//		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_DCC);
-//		outMainList.clear();
-//		outMainList = dao.select(inEntityCmb);
-//		LinkedHashMap<String, String> mapDCC = new LinkedHashMap<String, String>();
-//		mapDCC.put("", "--なし--");
-//		for (SelectComboListEntity outEntity : outMainList) {
-//			mapDCC.put(outEntity.getValue(), outEntity.getValueKanji());
-//		}
-//		indto.setSkDcctypeCombo(mapDCC);
-//	}
 	/**
 	 * イベント処理
 	 * @param indto ND301DTO
@@ -626,11 +446,27 @@ public class ND301Service extends BaseService {
 		BaseDTO outdto = indto;
 		// START UOC
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+		// パラメタ医師メニュー取得
+		indto.setBtnEnableFlg("0");
+		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
+		mRdmParamMstEntity.setParamName(jp.co.takeda.rdm.util.RdmConstantsData.PARAM_NAME_MN_DOC);
+		mRdmParamMstEntity.setDelFlg("0");
+
+		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
+		if(mRdmParamMstEntityList.size() > 0) {
+			// valueの左一桁（新規）
+			String value = mRdmParamMstEntityList.get(0).getValue().substring(0,1);
+			if("1".equals(value)) {
+				// 申請・承認・却下ボタン活性
+				indto.setBtnEnableFlg("1");
+			}
+		}
 		// START UOC
 		//却下ボタン押下の場合
 		if ("2".equals(indto.getButtonFlg())) {
 			// チェック処理（FULL）
 			if(checkInput(loginInfo,indto,true)) {
+				indto.setReturnFlg("0");
 				return outdto;
 			}
 		}
@@ -638,6 +474,7 @@ public class ND301Service extends BaseService {
 		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg())) {
 			// チェック処理（簡易）
 			if(checkInput(loginInfo,indto,false)) {
+				indto.setReturnFlg("0");
 				return outdto;
 			}
 		}
@@ -685,6 +522,7 @@ public class ND301Service extends BaseService {
 					} else {
 						indto.setForward("exception");
 					}
+					indto.setReturnFlg("0");
 					return outdto;
 				}
 
@@ -692,12 +530,14 @@ public class ND301Service extends BaseService {
 					//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 					indto.setMsgId(RdmConstantsData.E003);
 					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+					indto.setReturnFlg("0");
 					return outdto;
 				} else {
 					if (outEntity1.get(0).getUpdShaYmd().compareTo(dtoUpdShaYmddate) > 0) {
 						//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 						indto.setMsgId(RdmConstantsData.E003);
 						indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+						indto.setReturnFlg("0");
 						return outdto;
 					}
 				}
@@ -711,6 +551,15 @@ public class ND301Service extends BaseService {
 						updateEntity1.setReqStsCd("13");//　申請ステータス
 					}else {
 						updateEntity1.setReqStsCd("03");//　申請ステータス
+						// 申請者権限区分
+						if("JKN0813".equals(loginInfo.getJokenSetCd())) {
+							//MDM管理者：JKN0813 全MR：JKN0023)
+							updateEntity1.setReqKngKbn("2");
+							updateEntity1.setReqChl("2");
+						}else {
+							updateEntity1.setReqKngKbn("1");
+							updateEntity1.setReqChl("1");
+						}
 					}
 					updateEntity1.setReqBrCd(loginInfo.getBrCode());// 申請者所属リージョン
 					updateEntity1.setReqDistCd(loginInfo.getDistCode());// 申請者所属エリア
@@ -718,13 +567,6 @@ public class ND301Service extends BaseService {
 					updateEntity1.setReqJgiNo(loginInfo.getJgiNo());// 申請者従業員番号
 					updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
 					updateEntity1.setReqYmdhms(strDate); // 申請日時
-					// 申請者権限区分
-					if("JKN0813".equals(indto.getLoginJokenSetCd())) {
-						//MDM管理者：JKN0813 全MR：JKN0023)
-						updateEntity1.setReqKngKbn("2");
-					}else {
-						updateEntity1.setReqKngKbn("1");
-					}
 					updateEntity1.setReqComment(indto.getReqComment());//　申請コメント
 				}
 				if ("1".equals(indto.getButtonFlg())) {//承認
@@ -739,7 +581,11 @@ public class ND301Service extends BaseService {
 					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
 					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
 					updateEntity1.setAprYmdhms(strDate);// 承認日時
-					updateEntity1.setFbReqFlg(indto.getFbReqFlg());//FB申請要否フラグ
+					if(indto.getFbReqFlg()) {
+						updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+					}else {
+						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+					}
 					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
 				}
 				if ("2".equals(indto.getButtonFlg())) {//却下
@@ -760,10 +606,10 @@ public class ND301Service extends BaseService {
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 				dao.update(updateEntity1);
 
-				if ("0".equals(indto.getButtonFlg())) {
-					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I005));
-					return outdto;
-				}
+//				if ("0".equals(indto.getButtonFlg())) {
+//					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I005));
+//					return outdto;
+//				}
 //				if ("1".equals(indto.getButtonFlg())) {
 //					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I015));
 //					return outdto;
@@ -772,6 +618,7 @@ public class ND301Service extends BaseService {
 //					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I012));
 //					return outdto;
 //				}
+				indto.setReturnFlg("9");
 		}
 		//TODO 後処理
 		// END UOC
@@ -800,7 +647,7 @@ public class ND301Service extends BaseService {
 		int len = 0;
 
 		//      申請コメント                                ３００文字を超えている場合
-		if(StringUtils.isEmpty(indto.getReqComment())) {
+		if(!StringUtils.isEmpty(indto.getReqComment())) {
 			len = StringUtils.getByteLength(indto.getReqComment());
 			if(len > 300) {
 				errChk = true;
@@ -810,7 +657,7 @@ public class ND301Service extends BaseService {
 			}
 		}
 		//      申請コメント                                ３００文字を超えている場合
-		if(StringUtils.isEmpty(indto.getAprComment())) {
+		if(!StringUtils.isEmpty(indto.getAprComment())) {
 			len = StringUtils.getByteLength(indto.getAprComment());
 			if(len > 300) {
 				errChk = true;
@@ -825,6 +672,7 @@ public class ND301Service extends BaseService {
 		SelectND301MainDataEntity paramChkEntity = new SelectND301MainDataEntity();
 		paramChkEntity.setSqlId("selectND301CheckUltData");
 		paramChkEntity.setInUltDocNo(indto.getUltDocNo());
+		paramChkEntity.setInReqId(indto.getReqId());
 		List<SelectND301MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
 		if(!chkEntityList1.isEmpty()) {
 			errChk = true;

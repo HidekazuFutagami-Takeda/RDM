@@ -527,6 +527,13 @@ public class ND301DTO extends BaseDTO implements Serializable {
 	 */
 	private String btnEnableFlg;
 
+	/**
+	 * 処理結果フラグ
+	 * 9:完了
+	 * @generated
+	 */
+	private String returnFlg;
+
 //	/**
 //	 * 表示分岐
 //	 * 0:完全新規、1:ULTから作成、2：申請データあり
@@ -671,7 +678,7 @@ public class ND301DTO extends BaseDTO implements Serializable {
 	 * アルトマークへの情報連携
 	 * @generated
 	 */
-	private String fbReqFlg;
+	private Boolean fbReqFlg;
 
 	/**
 	 * 処理分岐用
@@ -2079,14 +2086,14 @@ public class ND301DTO extends BaseDTO implements Serializable {
 	 * ND301DTO.javafbReqFlgを設定
 	 * @return fbReqFlg
 	 */
-	public String getFbReqFlg() {
+	public Boolean getFbReqFlg() {
 		return fbReqFlg;
 	}
 
 	/**
 	 * @param fbReqFlg セットする fbReqFlg
 	 */
-	public void setFbReqFlg(String fbReqFlg) {
+	public void setFbReqFlg(Boolean fbReqFlg) {
 		this.fbReqFlg = fbReqFlg;
 	}
 
@@ -2313,6 +2320,21 @@ public class ND301DTO extends BaseDTO implements Serializable {
 	 */
 	public void setBtnEnableFlg(String btnEnableFlg) {
 		this.btnEnableFlg = btnEnableFlg;
+	}
+
+	/**
+	 * ND301DTO.javareturnFlgを設定
+	 * @return returnFlg
+	 */
+	public String getReturnFlg() {
+		return returnFlg;
+	}
+
+	/**
+	 * @param returnFlg セットする returnFlg
+	 */
+	public void setReturnFlg(String returnFlg) {
+		this.returnFlg = returnFlg;
 	}
 
 	/**

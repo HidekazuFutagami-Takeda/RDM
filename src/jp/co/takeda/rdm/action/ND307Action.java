@@ -12,24 +12,25 @@ import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.context.annotation.Scope;
 
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
-import jp.co.takeda.rdm.common.BeanUtil;
-//import jp.co.takeda.rdm.dto.NC201DTO;
-import jp.co.takeda.rdm.dto.NC202DTO;
-import jp.co.takeda.rdm.service.NC202Service;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.service.ND307Service;
 import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.RdmConstantsData;
+import jp.co.takeda.rdm.util.JkrConstantsData;
+import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.ND307DTO;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nC202Action")
+@Named("nD307Action")
 @Scope("request")
-public class NC202Action extends BaseAction<NC202DTO> {
+public class ND307Action extends BaseAction<ND307DTO> {
 
     /**
      * シリアルバージョンID
@@ -42,7 +43,7 @@ public class NC202Action extends BaseAction<NC202DTO> {
      * @generated
      */
     @Inject
-    private NC202Service nC202Service;
+    private ND307Service nD307Service;
 
     // START UOC
 
@@ -52,8 +53,8 @@ public class NC202Action extends BaseAction<NC202DTO> {
      * コンストラクタ
      * @generated
      */
-    public NC202Action() {
-        dto = new NC202DTO();
+    public ND307Action() {
+        dto = new ND307DTO();
     }
 
     /**
@@ -88,7 +89,7 @@ public class NC202Action extends BaseAction<NC202DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nC202Service.init(dto);
+        BaseDTO outdto = nD307Service.init(dto);
         return initNext(outdto);
     }
 
@@ -98,7 +99,14 @@ public class NC202Action extends BaseAction<NC202DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
+    	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
+        String preScreenId = loginInfo.getPreScreenId();
+        dto.setPreScreenId(preScreenId);
+
+		String title = "ND307_医療機関への異動 - 申請内容確認";
+
+		dto.setTitle(title);
         // END UOC
     }
 
@@ -109,7 +117,7 @@ public class NC202Action extends BaseAction<NC202DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（更新やソートリンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NC202_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_ND307_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -120,37 +128,19 @@ public class NC202Action extends BaseAction<NC202DTO> {
      * @customizable
      */
     @InputConfig(methodName="validationError")
-    public String ajaxJgi() throws Exception {
-        ajaxSosSetup();
+    public String register() throws Exception {
+        registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nC202Service.ajaxJgi(dto);
-        return ajaxSosJgiNext(outdto);
+        BaseDTO outdto = nD307Service.register(dto);
+        return registerNext(outdto);
     }
 
     /**
      * 前処理
      * @customizable
      */
-    protected void ajaxSosSetup() throws Exception {
+    protected void registerSetup() throws Exception {
         // START UOC
-        NC202DTO searchKey = (NC202DTO)sessionMap.get(AppConstant.SESKEY_NC202_SEARCHKEY);
-
-//        // ajaxのパラメータ退避
-//        String searchTrtCd = dto.getTrtCdPop();
-        Integer searchBumonRank= dto.getBumonRankPop();
-        String searchSosCd = dto.getSosCdPop();
-
-        BeanUtil.copyProperties(dto, searchKey);
-
-        // Integer項目nullの場合、BeanUtil.copyPropertiesで0に変換されてしまうため、再設定
-        //dto.setBumonRankPop(searchBumonRank);
-
-        // 退避値の再設定
-
-//        dto.setTrtCdPop(searchTrtCd);
-        dto.setBumonRankPop(searchBumonRank);
-        dto.setSosCdPop(searchSosCd);
-
         // END UOC
     }
 
@@ -158,12 +148,13 @@ public class NC202Action extends BaseAction<NC202DTO> {
      * 後処理
      * @customizable
      */
-    protected String ajaxSosJgiNext(BaseDTO outdto) throws Exception {
+    protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
-        outdto.setForward(RdmConstantsData.SCREEN_ID_NC202_2);
         // END UOC
-        outdto.setForward("NC202_02");
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+
         setNextDTO(outdto);
         return outdto.getForward();
     }
+
 }

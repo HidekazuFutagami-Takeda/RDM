@@ -105,6 +105,7 @@
         <result column="DEPT_CODE" property="skDeptCd"/>
         <result column="REQ_COMMENT" property="reqComment"/>
         <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMENT" property="aprComment"/>
         <result column="SHN_FLG" property="shnFlg"/>
     </resultMap>
     <resultMap id="nD011MainDataUltResultMap" type="jp.co.takeda.rdm.entity.join.SelectND011MainDataEntity">
@@ -515,6 +516,7 @@
 		, HCP.DEPT_CODE  -- 医師_申請管理.所属部科コード
 		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
 		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.APR_COMMENT  -- 申請管理.承認却下コメント
 		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
 		FROM
 		T_RDM_REQ_KNR KNR ---申請管理
@@ -697,6 +699,7 @@
 			WHERE KNR.REQ_TYPE = '31'
 			AND KNR.REQ_STS IN ('03','13','04','14')
 			AND HCP.ULT_DOC_NO = #{inUltDocNo}
+			AND KNR.REQ_ID != #{inReqId}
     </select>
     <select id="selectND011CheckDelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectND011MainDataEntity" resultMap="nD011CheckResultMap">
 			SELECT KNR.REQ_ID
@@ -708,6 +711,12 @@
 			    KNR.REQ_ID = HCO.REQ_ID
 			WHERE KNR.REQ_TYPE = '03'
 			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCO.INS_NO = #{skInsNo}
+			UNION
+			SELECT '0'
+			FROM
+			M_RDM_HCO_MST HCO --施設_基本情報
+			WHERE HCO.DEL_FLG = '1'
 			AND HCO.INS_NO = #{skInsNo}
     </select>
         <select id="selectND301REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND301MainDataEntity" resultMap="nD301MainDataResultMap">
@@ -888,5 +897,24 @@
 			WHERE KNR.REQ_TYPE = '31'
 			AND KNR.REQ_STS IN ('03','13','04','14')
 			AND HCP.ULT_DOC_NO = #{inUltDocNo}
+			AND KNR.REQ_ID != #{inReqId}
+    </select>
+    <select id="selectND301CheckDelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectND301MainDataEntity" resultMap="nD011CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCO_REQ HCO --施設_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCO.REQ_ID
+			WHERE KNR.REQ_TYPE = '03'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCO.INS_NO = #{skInsNo}
+			UNION
+			SELECT '0'
+			FROM
+			M_RDM_HCO_MST HCO --施設_基本情報
+			WHERE HCO.DEL_FLG = '1'
+			AND HCO.INS_NO = #{skInsNo}
     </select>
 </mapper>

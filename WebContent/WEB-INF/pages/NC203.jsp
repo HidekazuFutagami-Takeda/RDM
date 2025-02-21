@@ -128,6 +128,7 @@ if (stack.peek() instanceof NC203DTO) {
     <s:hidden name="jgiNo" />
     <s:hidden name="trtGrpCd" />
     <s:hidden name="callBack" />
+    <s:hidden name="backScreenId" />
     <s:hidden name="winVarName" />
     <s:hidden name="sortCondition" />
     <s:hidden name="title" />
@@ -263,7 +264,7 @@ if (stack.peek() instanceof NC203DTO) {
 				</td>
 
 				<td>
-					<s:if test="winVarName == 'NF011' || winVarName == 'NF211' || winVarName == 'NF212'">
+					<s:if test="backScreenId == 'NF011' || backScreenId == 'NF211' || backScreenId == 'NF212'">
 					<input type="checkbox" id="koshisetsuCheck" align="right" name="koshisetsuCheck" checked disabled />
 					<s:hidden name="koshisetsuCheck" value="true" />
 					</s:if>

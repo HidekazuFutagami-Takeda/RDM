@@ -50,7 +50,7 @@
 		* </pre>
 */
 		function clearText() {
-			var preScreenId = document.fm1.winVarName.value;
+			var preScreenId = document.fm1.backScreenId.value;
 
 			if(preScreenId != "ND011" && preScreenId != "ND014" && preScreenId != "ND101"
 				&& preScreenId != "ND103" && preScreenId != "ND501" && preScreenId != "NF011"

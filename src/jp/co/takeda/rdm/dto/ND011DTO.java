@@ -454,6 +454,12 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	private String aprMemo;
 
 	/**
+	 * 承認・却下コメント
+	 * @generated
+	 */
+	private String aprComment;
+
+	/**
 	 * 表示分岐
 	 * 0:完全新規、1:ULTから作成、2：申請データあり
 	 * @generated
@@ -1642,6 +1648,21 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAprMemo(String aprMemo) {
 		this.aprMemo = aprMemo;
+	}
+
+	/**
+	 * ND011DTO.javaaprCommentを設定
+	 * @return aprComment
+	 */
+	public String getAprComment() {
+		return aprComment;
+	}
+
+	/**
+	 * @param aprComment セットする aprComment
+	 */
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
 	}
 
 	/**

@@ -14,10 +14,10 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 /**
  * 結合Entityクラス
  * テーブル物理名 : m_rdm_hcp_shussinko
- * SQLID : selectNd001IkkComboList
+ * SQLID : selectNd001ShussinkoComboList
  * @generated
  */
-public class SelectNd001IkkComboListEntity extends BaseEntity implements Serializable {
+public class SelectNd001ShusshinkoComboListEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -41,8 +41,8 @@ public class SelectNd001IkkComboListEntity extends BaseEntity implements Seriali
      * コンストラクタ
      * @generated
      */
-    public SelectNd001IkkComboListEntity() {
-        super("m_rdm_hcp_shusshinko" , "selectNd001IkkComboList");
+    public SelectNd001ShusshinkoComboListEntity() {
+        super("m_rdm_hcp_shusshinko" , "selectNd001ShussinkoComboList");
     }
 
 	/**

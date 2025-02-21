@@ -104,8 +104,8 @@ public class NC203Action extends BaseAction<NC203DTO> {
         	dto.setViewKbn("0");
         }
 
-        String winVarName = dto.getWinVarName();
-        if(("NF011".equals(winVarName) || "NF211".equals(winVarName) || "NF212".equals(winVarName))
+        String backScreenId = dto.getBackScreenId();
+        if(("NF011".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId))
         		&& dto.getKensakuInsSbt() != null && !"".equals(dto.getKensakuInsSbt())) {
         	// 施設種別固定
         	dto.setInsSbtEditFlg("0");

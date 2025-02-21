@@ -23,6 +23,9 @@
         <result column="CAL_DATE" property="calDate"/>
        	<result column="TODAY" property="today"/>
     </resultMap>
+    <resultMap id="selectTmrEntityResultMap" type="jp.co.takeda.rdm.entity.join.SelectTmrEntity">
+        <result column="CAL_DATE" property="calDate"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity" resultMap="MRdmComCalUsrResultMap">
         SELECT
             CAL_YEAR, CAL_MONTH, CAL_DAY, FISCAL_YEAR, DAY_KB, CAL_DATE, CAL_TERM, PUB_HOLIDAY, BUSINESS_DAY, TODAY, SUMMARY, BIZ_DAYS, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -114,5 +117,13 @@
 			ORAUSR01.M_RDM_COM_CAL_USR
 		where
 			TODAY = 1
+    </select>
+    <select id="selectTmr" parameterType="jp.co.takeda.rdm.entity.join.SelectTmrEntity" resultMap="selectTmrEntityResultMap">
+	    SELECT
+		    CAL_DATE +1 as CAL_DATE
+	    FROM
+		    ORAUSR01.M_RDM_COM_CAL_USR
+	    WHERE
+		    TODAY = 1
     </select>
 </mapper>

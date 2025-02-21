@@ -178,7 +178,7 @@
 						           		  '<s:property value="#rowBean.addrCodeCity" />',
 						           		  '<s:property value="#rowBean.tkPrefCd" />',
 						           		  '<s:property value="#rowBean.tkCityCd" />',
-						           		  '<s:property value="#rowBean.tkCityNmae" />',
+						           		  '<s:property value="#rowBean.tkCityName" />',
 						           		  '<s:property value="#rowBean.addrKanaPref" />',
 						           		  '<s:property value="#rowBean.addrKanaCity" />',
 						           		  '<s:property value="#rowBean.addrKanaArea"/>');">

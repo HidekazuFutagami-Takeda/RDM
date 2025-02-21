@@ -393,9 +393,25 @@
         UPDATE
             T_RDM_REQ_KNR
         SET
+			<if test="reqChlNullFlag == true">REQ_CHL = NULL,</if><if test="reqChlNullFlag == false"><if test="reqChl != null">REQ_CHL = #{reqChl},</if></if>
+			<if test="reqKngKbnNullFlag == true">REQ_KNG_KBN = NULL,</if><if test="reqKngKbnNullFlag == false"><if test="reqKngKbn != null">REQ_KNG_KBN = #{reqKngKbn},</if></if>
 			<if test="reqStsCdNullFlag == true">REQ_STS = NULL,</if><if test="reqStsCdNullFlag == false"><if test="reqStsCd != null">REQ_STS = #{reqStsCd},</if></if>
+			<if test="reqBrCdNullFlag == true">REQ_BR_CODE = NULL,</if><if test="reqBrCdNullFlag == false"><if test="reqBrCd != null">REQ_BR_CODE = #{reqBrCd},</if></if>
+			<if test="reqDistCdNullFlag == true">REQ_DIST_CODE = NULL,</if><if test="reqDistCdNullFlag == false"><if test="reqDistCd != null">REQ_DIST_CODE = #{reqDistCd},</if></if>
+			<if test="reqShzNmNullFlag == true">REQ_SHZ = NULL,</if><if test="reqShzNmNullFlag == false"><if test="reqShzNm != null">REQ_SHZ = #{reqShzNm},</if></if>
+			<if test="reqJgiNoNullFlag == true">REQ_JGI_NO = NULL,</if><if test="reqJgiNoNullFlag == false"><if test="reqJgiNo != null">REQ_JGI_NO = #{reqJgiNo},</if></if>
+			<if test="reqJgiNameNullFlag == true">REQ_JGI_NAME = NULL,</if><if test="reqJgiNameNullFlag == false"><if test="reqJgiName != null">REQ_JGI_NAME = #{reqJgiName},</if></if>
+			<if test="reqYmdhmsNullFlag == true">REQ_YMDHMS = NULL,</if><if test="reqYmdhmsNullFlag == false"><if test="reqYmdhms != null">REQ_YMDHMS = #{reqYmdhms},</if></if>
 			<if test="reqCommentNullFlag == true">REQ_COMMENT = NULL,</if><if test="reqCommentNullFlag == false"><if test="reqComment != null">REQ_COMMENT = #{reqComment},</if></if>
+			<if test="aprBrCodeNullFlag == true">APR_BR_CODE = NULL,</if><if test="aprBrCodeNullFlag == false"><if test="aprBrCode != null">APR_BR_CODE = #{aprBrCode},</if></if>
+			<if test="aprDistCodeNullFlag == true">APR_DIST_CODE = NULL,</if><if test="aprDistCodeNullFlag == false"><if test="aprDistCode != null">APR_DIST_CODE = #{aprDistCode},</if></if>
+			<if test="aprShzNullFlag == true">APR_SHZ = NULL,</if><if test="aprShzNullFlag == false"><if test="aprShz != null">APR_SHZ = #{aprShz},</if></if>
+			<if test="aprJgiNoNullFlag == true">APR_JGI_NO = NULL,</if><if test="aprJgiNoNullFlag == false"><if test="aprJgiNo != null">APR_JGI_NO = #{aprJgiNo},</if></if>
+			<if test="aprShaNameNullFlag == true">APR_SHA_ID = NULL,</if><if test="aprShaNameNullFlag == false"><if test="aprShaName != null">APR_SHA_ID = #{aprShaName},</if></if>
+			<if test="aprYmdhmsNullFlag == true">APR_YMDHMS = NULL,</if><if test="aprYmdhmsNullFlag == false"><if test="aprYmdhms != null">APR_YMDHMS = #{aprYmdhms},</if></if>
+			<if test="fbReqFlgNullFlag == true">FB_REQ_FLG = NULL,</if><if test="fbReqFlgNullFlag == false"><if test="fbReqFlg != null">FB_REQ_FLG = #{fbReqFlg},</if></if>
 			<if test="aprMemoNullFlag == true">APR_MEMO = NULL,</if><if test="aprMemoNullFlag == false"><if test="aprMemo != null">APR_MEMO = #{aprMemo},</if></if>
+			<if test="aprCommentNullFlag == true">APR_COMMENT = NULL,</if><if test="aprCommentNullFlag == false"><if test="aprComment != null">APR_COMMENT = #{aprComment},</if></if>
 			<if test="updShaYmdNullFlag == true">UPD_SHA_YMD = NULL,</if><if test="updShaYmdNullFlag == false"><if test="updShaYmd != null">UPD_SHA_YMD = #{updShaYmd},</if></if>
 			<if test="updShaIdNullFlag == true">UPD_SHA_ID = NULL</if><if test="updShaIdNullFlag == false"><if test="updShaId != null">UPD_SHA_ID = #{updShaId}</if></if>
         WHERE
@@ -430,4 +446,22 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
+	<update id="updateND101Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+	UPDATE
+		T_RDM_REQ_KNR
+	SET
+		REQ_STS = #{reqStsCd},
+		TEKIYO_YMD = #{tekiyoYmd},
+		REQ_COMMENT = #{reqComment},
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
+	<select id="selectNd101DateChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+	SELECT
+		UPD_SHA_YMD -- 申請管理.更新日
+	FROM
+		T_RDM_REQ_KNR WHERE REQ_ID = #{reqId}
+	</select>
 </mapper>

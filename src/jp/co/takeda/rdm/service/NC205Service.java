@@ -101,7 +101,7 @@ public class NC205Service extends BaseService {
             List<MRdmPostKouho> selectTestEntity = dao.select(paramEntity);
 
             //RDM011とRDMND012はどちらも同じ処理だが、この書き方でのORがどうかけばよいかわかるまで分けて書いています。
-            if(paramEntity.getPreScreenId() == "RDMND011") {
+            if(paramEntity.getPreScreenId().equals("ND011")) {
             	for (MRdmPostKouho entiry : selectTestEntity) {
                     CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
@@ -124,7 +124,7 @@ public class NC205Service extends BaseService {
 
                     catDeptsComboDataList.add(dataRecord);
             	}
-            }else if(paramEntity.getPreScreenId() == "RDMND012") {
+            }else if(paramEntity.getPreScreenId().equals("ND012")) {
             	for (MRdmPostKouho entiry : selectTestEntity) {
                     CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 

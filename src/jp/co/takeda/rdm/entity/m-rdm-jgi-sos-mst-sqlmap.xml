@@ -48,16 +48,19 @@
            ,S_RDM_COM_MR_SOS_TRT.TRT_CD
         FROM
             ORAUSR01.M_RDM_JGI_SOS_MST          --RDM用組織従業員情報
-           ,ORAUSR01.S_RDM_COM_LNK_TRT_SHOKUSHU --領域・職種関連定義
-           ,ORAUSR01.M_RDM_COM_CAL_USR          --RDM用カレンダー(オンライン用)
-           ,ORAUSR01.S_RDM_COM_MR_SOS_TRT       --組織領域マスタ
-        WHERE
-            M_RDM_COM_CAL_USR.TODAY='1'
-        AND M_RDM_JGI_SOS_MST.SOS_CD = S_RDM_COM_MR_SOS_TRT.SOS_CD
-        AND S_RDM_COM_LNK_TRT_SHOKUSHU.TRT_CD = S_RDM_COM_MR_SOS_TRT.TRT_CD
-        AND S_RDM_COM_LNK_TRT_SHOKUSHU.SHOKUSHU_CD = M_RDM_JGI_SOS_MST.SHOKUSHU_CD
+ INNER JOIN ORAUSR01.M_RDM_COM_CAL_USR          --RDM用カレンダー(オンライン用)
+         ON M_RDM_COM_CAL_USR.TODAY='1'
+  LEFT JOIN ORAUSR01.S_RDM_COM_LNK_TRT_SHOKUSHU --領域・職種関連定義
+         ON 1=1
         AND M_RDM_COM_CAL_USR.CAL_DATE BETWEEN
             S_RDM_COM_LNK_TRT_SHOKUSHU.TEKIYO_START_DATE AND S_RDM_COM_LNK_TRT_SHOKUSHU.TEKIYO_END_DATE
+        AND M_RDM_JGI_SOS_MST.SHOKUSHU_CD = S_RDM_COM_LNK_TRT_SHOKUSHU.SHOKUSHU_CD
+  LEFT JOIN ORAUSR01.S_RDM_COM_MR_SOS_TRT       --組織領域マスタ
+         ON 1=1
+        AND M_RDM_JGI_SOS_MST.SOS_CD = S_RDM_COM_MR_SOS_TRT.SOS_CD
+        AND S_RDM_COM_LNK_TRT_SHOKUSHU.TRT_CD = S_RDM_COM_MR_SOS_TRT.TRT_CD
+        WHERE
+            1=1
         AND M_RDM_JGI_SOS_MST.JGI_NO = #{jgiNo}
     </select>
     <resultMap id="selectRyakuNameResultMap" type="jp.co.takeda.rdm.entity.join.SelectRyakuNameEntity">

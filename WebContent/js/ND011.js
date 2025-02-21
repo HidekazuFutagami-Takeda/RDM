@@ -1330,7 +1330,7 @@ function tmpCseView(){
  * 施設検索POPUP　コールバック関数。
  * </pre>
  */
-function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
     document.fm1.skInsNo.value = insNo;
     document.fm1.skInsNm.value = shisetsuNm;
 

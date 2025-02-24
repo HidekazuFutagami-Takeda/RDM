@@ -190,34 +190,10 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	private String updShaYmd;
 
 	/**
-	 * ULT施設C
+	 * 施設固定コード
 	 * @generated
 	 */
-	private String ultInsCd;
-
-	/**
-	 * ULT施設名
-	 * @generated
-	 */
-	private String ultInsNm;
-
-	/**
-	 * 施設種別
-	 * @generated
-	 */
-	private String insType;
-
-	/**
-	 * 親施設
-	 * @generated
-	 */
-	private String mainInsCd;
-
-	/**
-	 * 親施設名
-	 * @generated
-	 */
-	private String mainInsNm;
+	private String insNo;
 
 	/**
 	 * 施設略式漢字名
@@ -226,58 +202,10 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	private String insAbbrName;
 
 	/**
-	 * 施設カナ名
-	 * @generated
-	 */
-	private String insKana;
-
-	/**
 	 * 施設正式漢字名
 	 * @generated
 	 */
 	private String insFormalName;
-
-	/**
-	 * 契約用正式漢字名
-	 * @generated
-	 */
-	private String insContName;
-
-	/**
-	 * 取引区分
-	 * @generated
-	 */
-	private String tradeType;
-
-	/**
-	 * 開業年月日(年)
-	 * @generated
-	 */
-	private String insOpenYear;
-
-	/**
-	 * 開業年月日(月)
-	 * @generated
-	 */
-	private String insOpenMonth;
-
-	/**
-	 * 開業年月日(日)
-	 * @generated
-	 */
-	private String insOpenDay;
-
-	/**
-	 * 施設住所
-	 * @generated
-	 */
-	private String insAddr;
-
-	/**
-	 * 施設住所カナ
-	 * @generated
-	 */
-	private String insAddrKana;
 
 	/**
 	 * 郵便番号
@@ -286,226 +214,76 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	private String insPcode;
 
 	/**
-	 * JIS府県コード
+	 * 医師数(勤務中)
 	 * @generated
 	 */
-	private String addrCodePref;
+	private String docCount;
 
 	/**
-	 * JIS府県名
+	 * 医師数(申請中)
 	 * @generated
 	 */
-	private String addrCodePrefName;
+	private String reqDocCount;
 
 	/**
-	 * JIS市区町村コード
+	 * 当期子施設数
 	 * @generated
 	 */
-	private String addrCodeCity;
+	private String insCount;
 
 	/**
-	 * JIS市区町村名
+	 * 来期子施設数
 	 * @generated
 	 */
-	private String addrCodeCityName;
+	private String nextInsCount;
 
 	/**
-	 * 町名地番
+	 * 過去実績
 	 * @generated
 	 */
-	private String insAddrDt;
+	private String jskValue;
 
 	/**
-	 * 武田市区郡コード
+	 * 施設住所
 	 * @generated
 	 */
-	private String tkCityCd;
+	private String insAddr;
 
 	/**
-	 * 武田市区郡名
+	 * 削除区分
 	 * @generated
 	 */
-	private String tkCityName;
+	private String delKbn;
 
 	/**
-	 * 電話番号1
+	 * 廃院日
 	 * @generated
 	 */
-	private String insPhone1;
+	private String delYmd;
 
 	/**
-	 * 電話番号2
+	 * 削除理由
 	 * @generated
 	 */
-	private String insPhone2;
+	private String delReason;
 
 	/**
-	 * FAX番号1
+	 * 重複施設固定コード
 	 * @generated
 	 */
-	private String insFax1;
+	private String dupInsNo;
 
 	/**
-	 * FAX番号2
+	 * 重複施設略式漢字名
 	 * @generated
 	 */
-	private String insFax2;
+	private String dupInsAbbrName;
 
 	/**
-	 * ホームページアドレス
+	 * 重複施設住所
 	 * @generated
 	 */
-	private String insUrl;
-
-	/**
-	 * ホームページアドレス最終更新日
-	 * @generated
-	 */
-	private String insUrlYmd;
-
-	/**
-	 * 施設区分
-	 * @generated
-	 */
-	private String pharmType;
-
-	/**
-	 * 階級区分
-	 * @generated
-	 */
-	private String insRank;
-
-	/**
-	 * 定訪先区分
-	 * @generated
-	 */
-	private String regVisType;
-
-	/**
-	 * 重点病院区分
-	 * @generated
-	 */
-	private String impHosType;
-
-	/**
-	 * 大学細分類
-	 * @generated
-	 */
-	private String univSubdiv;
-
-	/**
-	 * 対象区分
-	 * @generated
-	 */
-	private String hoInsType;
-
-	/**
-	 * 経営主体
-	 * @generated
-	 */
-	private String manageCd;
-
-	/**
-	 * 病床(基準)
-	 * @generated
-	 */
-	private String bedCntBase;
-
-	/**
-	 * 病床数(一般)
-	 * @generated
-	 */
-	private String bedCnt01;
-
-	/**
-	 * 病床数(医療療養)
-	 * @generated
-	 */
-	private String bedCnt02;
-
-	/**
-	 * 病床数(精神)
-	 * @generated
-	 */
-	private String bedCnt03;
-
-	/**
-	 * 病床数(結核)
-	 * @generated
-	 */
-	private String bedCnt04;
-
-	/**
-	 * 病床数(感染症)
-	 * @generated
-	 */
-	private String bedCnt05;
-
-	/**
-	 * 病床数(介護療養)
-	 * @generated
-	 */
-	private String bedCnt06;
-
-	/**
-	 * 病床数(療養)
-	 * @generated
-	 */
-	private String bedCnt07;
-
-	/**
-	 * ベッド数計
-	 * @generated
-	 */
-	private String bedsTot;
-
-	/**
-	 * 医療ベッド数計
-	 * @generated
-	 */
-	private String medBedsTot;
-
-	/**
-	 * 入所定員数
-	 * @generated
-	 */
-	private String entcapaNum;
-
-	/**
-	 * ワクチン対象区分(当期)
-	 * @generated
-	 */
-	private String vacInsType;
-
-	/**
-	 * ワクチン定訪先区分(当期)
-	 * @generated
-	 */
-	private String vacVisitType;
-
-	/**
-	 * 領域
-	 * @generated
-	 */
-	private String trtCd;
-
-	/**
-	 * 領域担当者リスト変更前
-	 * @generated
-	 */
-	private List<HcoJkrData> beforeHcoJkrDataList = new ArrayList<HcoJkrData>();
-
-	/**
-	 * 領域担当者リスト
-	 * @generated
-	 */
-	private List<HcoJkrData> hcoJkrDataList = new ArrayList<HcoJkrData>();
-
-	/**
-	 * 領域担当者リスト更新フラグ
-	 * @generated
-	 */
-	private String hcoJkrDataChgFlg;
+	private String dupInsAddr;
 
 	/**
 	 * 申請コメント
@@ -534,94 +312,16 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	private String funcId;
 
 	/**
-	 * コンボボックス_施設種別
+	 * コンボボックス_削除区分
 	 * @generated
 	 */
-	private LinkedHashMap<String,String> insTypeCombo = new LinkedHashMap<String,String>();
+	private LinkedHashMap<String,String> delKbnCombo = new LinkedHashMap<String,String>();
 
 	/**
-	 * コンボボックス_取引区分
+	 * コンボボックス_削除理由
 	 * @generated
 	 */
-	private LinkedHashMap<String,String> tradeTypeCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_開業年月日(年)
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> insOpenYearCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_開業年月日(月)
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> insOpenMonthCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_開業年月日(日)
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> insOpenDayCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_施設区分
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> pharmTypeCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_階級区分
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> insRankCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_定訪先区分
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> regVisTypeCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_重点病院区分
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> impHosTypeCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_大学細分類
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> univSubdivCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_対象区分
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> hoInsTypeCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_経営主体
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> manageCdCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_ワクチン対象区分(当期)
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> vacInsTypeCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_ワクチン定訪先区分(当期)
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> vacVisitTypeCombo = new LinkedHashMap<String,String>();
-
-	/**
-	 * コンボボックス_領域
-	 * @generated
-	 */
-	private LinkedHashMap<String,String> trtCdCombo = new LinkedHashMap<String,String>();
+	private LinkedHashMap<String,String> delReasonCombo = new LinkedHashMap<String,String>();
 
 	/**
 	 * 審査済みフラグ
@@ -672,6 +372,21 @@ public class NF013DTO extends BaseDTO implements Serializable {
     public String getNF013(){
         return NF013;
     }
+
+	/**
+	 * NF013DTO.javamsgIdを設定
+	 * @return msgId
+	 */
+	public String getMsgId() {
+		return msgId;
+	}
+
+	/**
+	 * @param msgId セットする msgId
+	 */
+	public void setMsgId(String msgId) {
+		this.msgId = msgId;
+	}
 
 	/**
 	 * NF013DTO.javaloginJokenSetCdを設定
@@ -1049,48 +764,243 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javabeforeHcoJkrDataListを設定
-	 * @return beforeHcoJkrDataList
+	 * NF013DTO.javainsNoを設定
+	 * @return insNo
 	 */
-	public List<HcoJkrData> getBeforeHcoJkrDataList() {
-		return beforeHcoJkrDataList;
+	public String getInsNo() {
+		return insNo;
 	}
 
 	/**
-	 * @param beforeHcoJkrDataList セットする beforeHcoJkrDataList
+	 * @param insNo セットする insNo
 	 */
-	public void setBeforeHcoJkrDataList(List<HcoJkrData> beforeHcoJkrDataList) {
-		this.beforeHcoJkrDataList = beforeHcoJkrDataList;
+	public void setInsNo(String insNo) {
+		this.insNo = insNo;
 	}
 
 	/**
-	 * NF013DTO.javahcoJkrDataListを設定
-	 * @return hcoJkrDataList
+	 * NF013DTO.javainsAbbrNameを設定
+	 * @return insAbbrName
 	 */
-	public List<HcoJkrData> getHcoJkrDataList() {
-		return hcoJkrDataList;
+	public String getInsAbbrName() {
+		return insAbbrName;
 	}
 
 	/**
-	 * @param hcoJkrDataList セットする hcoJkrDataList
+	 * @param insAbbrName セットする insAbbrName
 	 */
-	public void setHcoJkrDataList(List<HcoJkrData> hcoJkrDataList) {
-		this.hcoJkrDataList = hcoJkrDataList;
+	public void setInsAbbrName(String insAbbrName) {
+		this.insAbbrName = insAbbrName;
 	}
 
 	/**
-	 * NF013DTO.javahcoJkrDataChgFlgを設定
-	 * @return hcoJkrDataChgFlg
+	 * NF013DTO.javainsFormalNameを設定
+	 * @return insFormalName
 	 */
-	public String getHcoJkrDataChgFlg() {
-		return hcoJkrDataChgFlg;
+	public String getInsFormalName() {
+		return insFormalName;
 	}
 
 	/**
-	 * @param hcoJkrDataChgFlg セットする hcoJkrDataChgFlg
+	 * @param insFormalName セットする insFormalName
 	 */
-	public void setHcoJkrDataChgFlg(String hcoJkrDataChgFlg) {
-		this.hcoJkrDataChgFlg = hcoJkrDataChgFlg;
+	public void setInsFormalName(String insFormalName) {
+		this.insFormalName = insFormalName;
+	}
+
+	/**
+	 * NF013DTO.javainsPcodeを設定
+	 * @return insPcode
+	 */
+	public String getInsPcode() {
+		return insPcode;
+	}
+
+	/**
+	 * @param insPcode セットする insPcode
+	 */
+	public void setInsPcode(String insPcode) {
+		this.insPcode = insPcode;
+	}
+
+	/**
+	 * NF013DTO.javadocCountを設定
+	 * @return docCount
+	 */
+	public String getDocCount() {
+		return docCount;
+	}
+
+	/**
+	 * @param docCount セットする docCount
+	 */
+	public void setDocCount(String docCount) {
+		this.docCount = docCount;
+	}
+
+	/**
+	 * NF013DTO.javareqDocCountを設定
+	 * @return reqDocCount
+	 */
+	public String getReqDocCount() {
+		return reqDocCount;
+	}
+
+	/**
+	 * @param reqDocCount セットする reqDocCount
+	 */
+	public void setReqDocCount(String reqDocCount) {
+		this.reqDocCount = reqDocCount;
+	}
+
+	/**
+	 * NF013DTO.javainsCountを設定
+	 * @return insCount
+	 */
+	public String getInsCount() {
+		return insCount;
+	}
+
+	/**
+	 * @param insCount セットする insCount
+	 */
+	public void setInsCount(String insCount) {
+		this.insCount = insCount;
+	}
+
+	/**
+	 * NF013DTO.javanextInsCountを設定
+	 * @return nextInsCount
+	 */
+	public String getNextInsCount() {
+		return nextInsCount;
+	}
+
+	/**
+	 * @param nextInsCount セットする nextInsCount
+	 */
+	public void setNextInsCount(String nextInsCount) {
+		this.nextInsCount = nextInsCount;
+	}
+
+	/**
+	 * NF013DTO.javajskValueを設定
+	 * @return jskValue
+	 */
+	public String getJskValue() {
+		return jskValue;
+	}
+
+	/**
+	 * @param jskValue セットする jskValue
+	 */
+	public void setJskValue(String jskValue) {
+		this.jskValue = jskValue;
+	}
+
+	/**
+	 * NF013DTO.javainsAddrを設定
+	 * @return insAddr
+	 */
+	public String getInsAddr() {
+		return insAddr;
+	}
+
+	/**
+	 * @param insAddr セットする insAddr
+	 */
+	public void setInsAddr(String insAddr) {
+		this.insAddr = insAddr;
+	}
+
+	/**
+	 * NF013DTO.javadelKbnを設定
+	 * @return delKbn
+	 */
+	public String getDelKbn() {
+		return delKbn;
+	}
+
+	/**
+	 * @param delKbn セットする delKbn
+	 */
+	public void setDelKbn(String delKbn) {
+		this.delKbn = delKbn;
+	}
+
+	/**
+	 * NF013DTO.javadelYmdを設定
+	 * @return delYmd
+	 */
+	public String getDelYmd() {
+		return delYmd;
+	}
+
+	/**
+	 * @param delYmd セットする delYmd
+	 */
+	public void setDelYmd(String delYmd) {
+		this.delYmd = delYmd;
+	}
+
+	/**
+	 * NF013DTO.javadelReasonを設定
+	 * @return delReason
+	 */
+	public String getDelReason() {
+		return delReason;
+	}
+
+	/**
+	 * @param delReason セットする delReason
+	 */
+	public void setDelReason(String delReason) {
+		this.delReason = delReason;
+	}
+
+	/**
+	 * NF013DTO.javadupInsNoを設定
+	 * @return dupInsNo
+	 */
+	public String getDupInsNo() {
+		return dupInsNo;
+	}
+
+	/**
+	 * @param dupInsNo セットする dupInsNo
+	 */
+	public void setDupInsNo(String dupInsNo) {
+		this.dupInsNo = dupInsNo;
+	}
+
+	/**
+	 * NF013DTO.javadupInsAbbrNameを設定
+	 * @return dupInsAbbrName
+	 */
+	public String getDupInsAbbrName() {
+		return dupInsAbbrName;
+	}
+
+	/**
+	 * @param dupInsAbbrName セットする dupInsAbbrName
+	 */
+	public void setDupInsAbbrName(String dupInsAbbrName) {
+		this.dupInsAbbrName = dupInsAbbrName;
+	}
+
+	/**
+	 * NF013DTO.javadupInsAddrを設定
+	 * @return dupInsAddr
+	 */
+	public String getDupInsAddr() {
+		return dupInsAddr;
+	}
+
+	/**
+	 * @param dupInsAddr セットする dupInsAddr
+	 */
+	public void setDupInsAddr(String dupInsAddr) {
+		this.dupInsAddr = dupInsAddr;
 	}
 
 	/**
@@ -1124,21 +1034,6 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javamsgIdを設定
-	 * @return msgId
-	 */
-	public String getMsgId() {
-		return msgId;
-	}
-
-	/**
-	 * @param msgId セットする msgId
-	 */
-	public void setMsgId(String msgId) {
-		this.msgId = msgId;
-	}
-
-	/**
 	 * NF013DTO.javadisplayKbnを設定
 	 * @return displayKbn
 	 */
@@ -1169,6 +1064,36 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF013DTO.javadelKbnComboを設定
+	 * @return delKbnCombo
+	 */
+	public LinkedHashMap<String, String> getDelKbnCombo() {
+		return delKbnCombo;
+	}
+
+	/**
+	 * @param delKbnCombo セットする delKbnCombo
+	 */
+	public void setDelKbnCombo(LinkedHashMap<String, String> delKbnCombo) {
+		this.delKbnCombo = delKbnCombo;
+	}
+
+	/**
+	 * NF013DTO.javadelReasonComboを設定
+	 * @return delReasonCombo
+	 */
+	public LinkedHashMap<String, String> getDelReasonCombo() {
+		return delReasonCombo;
+	}
+
+	/**
+	 * @param delReasonCombo セットする delReasonCombo
+	 */
+	public void setDelReasonCombo(LinkedHashMap<String, String> delReasonCombo) {
+		this.delReasonCombo = delReasonCombo;
+	}
+
+	/**
 	 * NF013DTO.javashnFlgを設定
 	 * @return shnFlg
 	 */
@@ -1181,981 +1106,6 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 */
 	public void setShnFlg(String shnFlg) {
 		this.shnFlg = shnFlg;
-	}
-
-	/**
-	 * NF013DTO.javaultInsCdを設定
-	 * @return ultInsCd
-	 */
-	public String getUltInsCd() {
-		return ultInsCd;
-	}
-
-	/**
-	 * @param ultInsCd セットする ultInsCd
-	 */
-	public void setUltInsCd(String ultInsCd) {
-		this.ultInsCd = ultInsCd;
-	}
-
-	/**
-	 * NF013DTO.javaultInsNmを設定
-	 * @return ultInsNm
-	 */
-	public String getUltInsNm() {
-		return ultInsNm;
-	}
-
-	/**
-	 * @param ultInsNm セットする ultInsNm
-	 */
-	public void setUltInsNm(String ultInsNm) {
-		this.ultInsNm = ultInsNm;
-	}
-
-	/**
-	 * NF013DTO.javainsTypeを設定
-	 * @return insType
-	 */
-	public String getInsType() {
-		return insType;
-	}
-
-	/**
-	 * @param insType セットする insType
-	 */
-	public void setInsType(String insType) {
-		this.insType = insType;
-	}
-
-	/**
-	 * NF013DTO.javamainInsCdを設定
-	 * @return mainInsCd
-	 */
-	public String getMainInsCd() {
-		return mainInsCd;
-	}
-
-	/**
-	 * @param mainInsCd セットする mainInsCd
-	 */
-	public void setMainInsCd(String mainInsCd) {
-		this.mainInsCd = mainInsCd;
-	}
-
-	/**
-	 * NF013DTO.javamainInsNmを設定
-	 * @return mainInsNm
-	 */
-	public String getMainInsNm() {
-		return mainInsNm;
-	}
-
-	/**
-	 * @param mainInsNm セットする mainInsNm
-	 */
-	public void setMainInsNm(String mainInsNm) {
-		this.mainInsNm = mainInsNm;
-	}
-
-	/**
-	 * NF013DTO.javainsAbbrNameを設定
-	 * @return insAbbrName
-	 */
-	public String getInsAbbrName() {
-		return insAbbrName;
-	}
-
-	/**
-	 * @param insAbbrName セットする insAbbrName
-	 */
-	public void setInsAbbrName(String insAbbrName) {
-		this.insAbbrName = insAbbrName;
-	}
-
-	/**
-	 * NF013DTO.javainsKanaを設定
-	 * @return insKana
-	 */
-	public String getInsKana() {
-		return insKana;
-	}
-
-	/**
-	 * @param insKana セットする insKana
-	 */
-	public void setInsKana(String insKana) {
-		this.insKana = insKana;
-	}
-
-	/**
-	 * NF013DTO.javainsFormalNameを設定
-	 * @return insFormalName
-	 */
-	public String getInsFormalName() {
-		return insFormalName;
-	}
-
-	/**
-	 * @param insFormalName セットする insFormalName
-	 */
-	public void setInsFormalName(String insFormalName) {
-		this.insFormalName = insFormalName;
-	}
-
-	/**
-	 * NF013DTO.javainsContNameを設定
-	 * @return insContName
-	 */
-	public String getInsContName() {
-		return insContName;
-	}
-
-	/**
-	 * @param insContName セットする insContName
-	 */
-	public void setInsContName(String insContName) {
-		this.insContName = insContName;
-	}
-
-	/**
-	 * NF013DTO.javatradeTypeを設定
-	 * @return tradeType
-	 */
-	public String getTradeType() {
-		return tradeType;
-	}
-
-	/**
-	 * @param tradeType セットする tradeType
-	 */
-	public void setTradeType(String tradeType) {
-		this.tradeType = tradeType;
-	}
-
-	/**
-	 * NF013DTO.javainsOpenYearを設定
-	 * @return insOpenYear
-	 */
-	public String getInsOpenYear() {
-		return insOpenYear;
-	}
-
-	/**
-	 * @param insOpenYear セットする insOpenYear
-	 */
-	public void setInsOpenYear(String insOpenYear) {
-		this.insOpenYear = insOpenYear;
-	}
-
-	/**
-	 * NF013DTO.javainsOpenMonthを設定
-	 * @return insOpenMonth
-	 */
-	public String getInsOpenMonth() {
-		return insOpenMonth;
-	}
-
-	/**
-	 * @param insOpenMonth セットする insOpenMonth
-	 */
-	public void setInsOpenMonth(String insOpenMonth) {
-		this.insOpenMonth = insOpenMonth;
-	}
-
-	/**
-	 * NF013DTO.javainsOpenDayを設定
-	 * @return insOpenDay
-	 */
-	public String getInsOpenDay() {
-		return insOpenDay;
-	}
-
-	/**
-	 * @param insOpenDay セットする insOpenDay
-	 */
-	public void setInsOpenDay(String insOpenDay) {
-		this.insOpenDay = insOpenDay;
-	}
-
-	/**
-	 * NF013DTO.javainsAddrを設定
-	 * @return insAddr
-	 */
-	public String getInsAddr() {
-		return insAddr;
-	}
-
-	/**
-	 * @param insAddr セットする insAddr
-	 */
-	public void setInsAddr(String insAddr) {
-		this.insAddr = insAddr;
-	}
-
-	/**
-	 * NF013DTO.javainsAddrKanaを設定
-	 * @return insAddrKana
-	 */
-	public String getInsAddrKana() {
-		return insAddrKana;
-	}
-
-	/**
-	 * @param insAddrKana セットする insAddrKana
-	 */
-	public void setInsAddrKana(String insAddrKana) {
-		this.insAddrKana = insAddrKana;
-	}
-
-	/**
-	 * NF013DTO.javainsPcodeを設定
-	 * @return insPcode
-	 */
-	public String getInsPcode() {
-		return insPcode;
-	}
-
-	/**
-	 * @param insPcode セットする insPcode
-	 */
-	public void setInsPcode(String insPcode) {
-		this.insPcode = insPcode;
-	}
-
-	/**
-	 * NF013DTO.javaaddrCodePrefを設定
-	 * @return addrCodePref
-	 */
-	public String getAddrCodePref() {
-		return addrCodePref;
-	}
-
-	/**
-	 * @param addrCodePref セットする addrCodePref
-	 */
-	public void setAddrCodePref(String addrCodePref) {
-		this.addrCodePref = addrCodePref;
-	}
-
-	/**
-	 * NF013DTO.javaaddrCodePrefNameを設定
-	 * @return addrCodePrefName
-	 */
-	public String getAddrCodePrefName() {
-		return addrCodePrefName;
-	}
-
-	/**
-	 * @param addrCodePrefName セットする addrCodePrefName
-	 */
-	public void setAddrCodePrefName(String addrCodePrefName) {
-		this.addrCodePrefName = addrCodePrefName;
-	}
-
-	/**
-	 * NF013DTO.javaaddrCodeCityを設定
-	 * @return addrCodeCity
-	 */
-	public String getAddrCodeCity() {
-		return addrCodeCity;
-	}
-
-	/**
-	 * @param addrCodeCity セットする addrCodeCity
-	 */
-	public void setAddrCodeCity(String addrCodeCity) {
-		this.addrCodeCity = addrCodeCity;
-	}
-
-	/**
-	 * NF013DTO.javaaddrCodeCityNameを設定
-	 * @return addrCodeCityName
-	 */
-	public String getAddrCodeCityName() {
-		return addrCodeCityName;
-	}
-
-	/**
-	 * @param addrCodeCityName セットする addrCodeCityName
-	 */
-	public void setAddrCodeCityName(String addrCodeCityName) {
-		this.addrCodeCityName = addrCodeCityName;
-	}
-
-	/**
-	 * NF013DTO.javainsAddrDtを設定
-	 * @return insAddrDt
-	 */
-	public String getInsAddrDt() {
-		return insAddrDt;
-	}
-
-	/**
-	 * @param insAddrDt セットする insAddrDt
-	 */
-	public void setInsAddrDt(String insAddrDt) {
-		this.insAddrDt = insAddrDt;
-	}
-
-	/**
-	 * NF013DTO.javatkCityCdを設定
-	 * @return tkCityCd
-	 */
-	public String getTkCityCd() {
-		return tkCityCd;
-	}
-
-	/**
-	 * @param tkCityCd セットする tkCityCd
-	 */
-	public void setTkCityCd(String tkCityCd) {
-		this.tkCityCd = tkCityCd;
-	}
-
-	/**
-	 * NF013DTO.javatkCityNameを設定
-	 * @return tkCityName
-	 */
-	public String getTkCityName() {
-		return tkCityName;
-	}
-
-	/**
-	 * @param tkCityName セットする tkCityName
-	 */
-	public void setTkCityName(String tkCityName) {
-		this.tkCityName = tkCityName;
-	}
-
-	/**
-	 * NF013DTO.javainsPhone1を設定
-	 * @return insPhone1
-	 */
-	public String getInsPhone1() {
-		return insPhone1;
-	}
-
-	/**
-	 * @param insPhone1 セットする insPhone1
-	 */
-	public void setInsPhone1(String insPhone1) {
-		this.insPhone1 = insPhone1;
-	}
-
-	/**
-	 * NF013DTO.javainsPhone2を設定
-	 * @return insPhone2
-	 */
-	public String getInsPhone2() {
-		return insPhone2;
-	}
-
-	/**
-	 * @param insPhone2 セットする insPhone2
-	 */
-	public void setInsPhone2(String insPhone2) {
-		this.insPhone2 = insPhone2;
-	}
-
-	/**
-	 * NF013DTO.javainsFax1を設定
-	 * @return insFax1
-	 */
-	public String getInsFax1() {
-		return insFax1;
-	}
-
-	/**
-	 * @param insFax1 セットする insFax1
-	 */
-	public void setInsFax1(String insFax1) {
-		this.insFax1 = insFax1;
-	}
-
-	/**
-	 * NF013DTO.javainsFax2を設定
-	 * @return insFax2
-	 */
-	public String getInsFax2() {
-		return insFax2;
-	}
-
-	/**
-	 * @param insFax2 セットする insFax2
-	 */
-	public void setInsFax2(String insFax2) {
-		this.insFax2 = insFax2;
-	}
-
-	/**
-	 * NF013DTO.javainsUrlを設定
-	 * @return insUrl
-	 */
-	public String getInsUrl() {
-		return insUrl;
-	}
-
-	/**
-	 * @param insUrl セットする insUrl
-	 */
-	public void setInsUrl(String insUrl) {
-		this.insUrl = insUrl;
-	}
-
-	/**
-	 * NF013DTO.javainsUrlYmdを設定
-	 * @return insUrlYmd
-	 */
-	public String getInsUrlYmd() {
-		return insUrlYmd;
-	}
-
-	/**
-	 * @param insUrlYmd セットする insUrlYmd
-	 */
-	public void setInsUrlYmd(String insUrlYmd) {
-		this.insUrlYmd = insUrlYmd;
-	}
-
-	/**
-	 * NF013DTO.javapharmTypeを設定
-	 * @return pharmType
-	 */
-	public String getPharmType() {
-		return pharmType;
-	}
-
-	/**
-	 * @param pharmType セットする pharmType
-	 */
-	public void setPharmType(String pharmType) {
-		this.pharmType = pharmType;
-	}
-
-	/**
-	 * NF013DTO.javainsRankを設定
-	 * @return insRank
-	 */
-	public String getInsRank() {
-		return insRank;
-	}
-
-	/**
-	 * @param insRank セットする insRank
-	 */
-	public void setInsRank(String insRank) {
-		this.insRank = insRank;
-	}
-
-	/**
-	 * NF013DTO.javaregVisTypeを設定
-	 * @return regVisType
-	 */
-	public String getRegVisType() {
-		return regVisType;
-	}
-
-	/**
-	 * @param regVisType セットする regVisType
-	 */
-	public void setRegVisType(String regVisType) {
-		this.regVisType = regVisType;
-	}
-
-	/**
-	 * NF013DTO.javaimpHosTypeを設定
-	 * @return impHosType
-	 */
-	public String getImpHosType() {
-		return impHosType;
-	}
-
-	/**
-	 * @param impHosType セットする impHosType
-	 */
-	public void setImpHosType(String impHosType) {
-		this.impHosType = impHosType;
-	}
-
-	/**
-	 * NF013DTO.javaunivSubdivを設定
-	 * @return univSubdiv
-	 */
-	public String getUnivSubdiv() {
-		return univSubdiv;
-	}
-
-	/**
-	 * @param univSubdiv セットする univSubdiv
-	 */
-	public void setUnivSubdiv(String univSubdiv) {
-		this.univSubdiv = univSubdiv;
-	}
-
-	/**
-	 * NF013DTO.javahoInsTypeを設定
-	 * @return hoInsType
-	 */
-	public String getHoInsType() {
-		return hoInsType;
-	}
-
-	/**
-	 * @param hoInsType セットする hoInsType
-	 */
-	public void setHoInsType(String hoInsType) {
-		this.hoInsType = hoInsType;
-	}
-
-	/**
-	 * NF013DTO.javamanageCdを設定
-	 * @return manageCd
-	 */
-	public String getManageCd() {
-		return manageCd;
-	}
-
-	/**
-	 * @param manageCd セットする manageCd
-	 */
-	public void setManageCd(String manageCd) {
-		this.manageCd = manageCd;
-	}
-
-	/**
-	 * NF013DTO.javabedCntBaseを設定
-	 * @return bedCntBase
-	 */
-	public String getBedCntBase() {
-		return bedCntBase;
-	}
-
-	/**
-	 * @param bedCntBase セットする bedCntBase
-	 */
-	public void setBedCntBase(String bedCntBase) {
-		this.bedCntBase = bedCntBase;
-	}
-
-	/**
-	 * NF013DTO.javabedCnt01を設定
-	 * @return bedCnt01
-	 */
-	public String getBedCnt01() {
-		return bedCnt01;
-	}
-
-	/**
-	 * @param bedCnt01 セットする bedCnt01
-	 */
-	public void setBedCnt01(String bedCnt01) {
-		this.bedCnt01 = bedCnt01;
-	}
-
-	/**
-	 * NF013DTO.javabedCnt02を設定
-	 * @return bedCnt02
-	 */
-	public String getBedCnt02() {
-		return bedCnt02;
-	}
-
-	/**
-	 * @param bedCnt02 セットする bedCnt02
-	 */
-	public void setBedCnt02(String bedCnt02) {
-		this.bedCnt02 = bedCnt02;
-	}
-
-	/**
-	 * NF013DTO.javabedCnt03を設定
-	 * @return bedCnt03
-	 */
-	public String getBedCnt03() {
-		return bedCnt03;
-	}
-
-	/**
-	 * @param bedCnt03 セットする bedCnt03
-	 */
-	public void setBedCnt03(String bedCnt03) {
-		this.bedCnt03 = bedCnt03;
-	}
-
-	/**
-	 * NF013DTO.javabedCnt04を設定
-	 * @return bedCnt04
-	 */
-	public String getBedCnt04() {
-		return bedCnt04;
-	}
-
-	/**
-	 * @param bedCnt04 セットする bedCnt04
-	 */
-	public void setBedCnt04(String bedCnt04) {
-		this.bedCnt04 = bedCnt04;
-	}
-
-	/**
-	 * NF013DTO.javabedCnt05を設定
-	 * @return bedCnt05
-	 */
-	public String getBedCnt05() {
-		return bedCnt05;
-	}
-
-	/**
-	 * @param bedCnt05 セットする bedCnt05
-	 */
-	public void setBedCnt05(String bedCnt05) {
-		this.bedCnt05 = bedCnt05;
-	}
-
-	/**
-	 * NF013DTO.javabedCnt06を設定
-	 * @return bedCnt06
-	 */
-	public String getBedCnt06() {
-		return bedCnt06;
-	}
-
-	/**
-	 * @param bedCnt06 セットする bedCnt06
-	 */
-	public void setBedCnt06(String bedCnt06) {
-		this.bedCnt06 = bedCnt06;
-	}
-
-	/**
-	 * NF013DTO.javabedCnt07を設定
-	 * @return bedCnt07
-	 */
-	public String getBedCnt07() {
-		return bedCnt07;
-	}
-
-	/**
-	 * @param bedCnt07 セットする bedCnt07
-	 */
-	public void setBedCnt07(String bedCnt07) {
-		this.bedCnt07 = bedCnt07;
-	}
-
-	/**
-	 * NF013DTO.javabedsTotを設定
-	 * @return bedsTot
-	 */
-	public String getBedsTot() {
-		return bedsTot;
-	}
-
-	/**
-	 * @param bedsTot セットする bedsTot
-	 */
-	public void setBedsTot(String bedsTot) {
-		this.bedsTot = bedsTot;
-	}
-
-	/**
-	 * NF013DTO.javamedBedsTotを設定
-	 * @return medBedsTot
-	 */
-	public String getMedBedsTot() {
-		return medBedsTot;
-	}
-
-	/**
-	 * @param medBedsTot セットする medBedsTot
-	 */
-	public void setMedBedsTot(String medBedsTot) {
-		this.medBedsTot = medBedsTot;
-	}
-
-	/**
-	 * NF013DTO.javaentcapaNumを設定
-	 * @return entcapaNum
-	 */
-	public String getEntcapaNum() {
-		return entcapaNum;
-	}
-
-	/**
-	 * @param entcapaNum セットする entcapaNum
-	 */
-	public void setEntcapaNum(String entcapaNum) {
-		this.entcapaNum = entcapaNum;
-	}
-
-	/**
-	 * NF013DTO.javavacInsTypeを設定
-	 * @return vacInsType
-	 */
-	public String getVacInsType() {
-		return vacInsType;
-	}
-
-	/**
-	 * @param vacInsType セットする vacInsType
-	 */
-	public void setVacInsType(String vacInsType) {
-		this.vacInsType = vacInsType;
-	}
-
-	/**
-	 * NF013DTO.javavacVisitTypeを設定
-	 * @return vacVisitType
-	 */
-	public String getVacVisitType() {
-		return vacVisitType;
-	}
-
-	/**
-	 * @param vacVisitType セットする vacVisitType
-	 */
-	public void setVacVisitType(String vacVisitType) {
-		this.vacVisitType = vacVisitType;
-	}
-
-	/**
-	 * NF013DTO.javatrtCdを設定
-	 * @return trtCd
-	 */
-	public String getTrtCd() {
-		return trtCd;
-	}
-
-	/**
-	 * @param trtCd セットする trtCd
-	 */
-	public void setTrtCd(String trtCd) {
-		this.trtCd = trtCd;
-	}
-
-	/**
-	 * NF013DTO.javainsTypeComboを設定
-	 * @return insTypeCombo
-	 */
-	public LinkedHashMap<String, String> getInsTypeCombo() {
-		return insTypeCombo;
-	}
-
-	/**
-	 * @param insTypeCombo セットする insTypeCombo
-	 */
-	public void setInsTypeCombo(LinkedHashMap<String, String> insTypeCombo) {
-		this.insTypeCombo = insTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javatradeTypeComboを設定
-	 * @return tradeTypeCombo
-	 */
-	public LinkedHashMap<String, String> getTradeTypeCombo() {
-		return tradeTypeCombo;
-	}
-
-	/**
-	 * @param tradeTypeCombo セットする tradeTypeCombo
-	 */
-	public void setTradeTypeCombo(LinkedHashMap<String, String> tradeTypeCombo) {
-		this.tradeTypeCombo = tradeTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javainsOpenYearComboを設定
-	 * @return insOpenYearCombo
-	 */
-	public LinkedHashMap<String, String> getInsOpenYearCombo() {
-		return insOpenYearCombo;
-	}
-
-	/**
-	 * @param insOpenYearCombo セットする insOpenYearCombo
-	 */
-	public void setInsOpenYearCombo(LinkedHashMap<String, String> insOpenYearCombo) {
-		this.insOpenYearCombo = insOpenYearCombo;
-	}
-
-	/**
-	 * NF013DTO.javainsOpenMonthComboを設定
-	 * @return insOpenMonthCombo
-	 */
-	public LinkedHashMap<String, String> getInsOpenMonthCombo() {
-		return insOpenMonthCombo;
-	}
-
-	/**
-	 * @param insOpenMonthCombo セットする insOpenMonthCombo
-	 */
-	public void setInsOpenMonthCombo(LinkedHashMap<String, String> insOpenMonthCombo) {
-		this.insOpenMonthCombo = insOpenMonthCombo;
-	}
-
-	/**
-	 * NF013DTO.javainsOpenDayComboを設定
-	 * @return insOpenDayCombo
-	 */
-	public LinkedHashMap<String, String> getInsOpenDayCombo() {
-		return insOpenDayCombo;
-	}
-
-	/**
-	 * @param insOpenDayCombo セットする insOpenDayCombo
-	 */
-	public void setInsOpenDayCombo(LinkedHashMap<String, String> insOpenDayCombo) {
-		this.insOpenDayCombo = insOpenDayCombo;
-	}
-
-	/**
-	 * NF013DTO.javapharmTypeComboを設定
-	 * @return pharmTypeCombo
-	 */
-	public LinkedHashMap<String, String> getPharmTypeCombo() {
-		return pharmTypeCombo;
-	}
-
-	/**
-	 * @param pharmTypeCombo セットする pharmTypeCombo
-	 */
-	public void setPharmTypeCombo(LinkedHashMap<String, String> pharmTypeCombo) {
-		this.pharmTypeCombo = pharmTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javainsRankComboを設定
-	 * @return insRankCombo
-	 */
-	public LinkedHashMap<String, String> getInsRankCombo() {
-		return insRankCombo;
-	}
-
-	/**
-	 * @param insRankCombo セットする insRankCombo
-	 */
-	public void setInsRankCombo(LinkedHashMap<String, String> insRankCombo) {
-		this.insRankCombo = insRankCombo;
-	}
-
-	/**
-	 * NF013DTO.javaregVisTypeComboを設定
-	 * @return regVisTypeCombo
-	 */
-	public LinkedHashMap<String, String> getRegVisTypeCombo() {
-		return regVisTypeCombo;
-	}
-
-	/**
-	 * @param regVisTypeCombo セットする regVisTypeCombo
-	 */
-	public void setRegVisTypeCombo(LinkedHashMap<String, String> regVisTypeCombo) {
-		this.regVisTypeCombo = regVisTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javaimpHosTypeComboを設定
-	 * @return impHosTypeCombo
-	 */
-	public LinkedHashMap<String, String> getImpHosTypeCombo() {
-		return impHosTypeCombo;
-	}
-
-	/**
-	 * @param impHosTypeCombo セットする impHosTypeCombo
-	 */
-	public void setImpHosTypeCombo(LinkedHashMap<String, String> impHosTypeCombo) {
-		this.impHosTypeCombo = impHosTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javaunivSubdivComboを設定
-	 * @return univSubdivCombo
-	 */
-	public LinkedHashMap<String, String> getUnivSubdivCombo() {
-		return univSubdivCombo;
-	}
-
-	/**
-	 * @param univSubdivCombo セットする univSubdivCombo
-	 */
-	public void setUnivSubdivCombo(LinkedHashMap<String, String> univSubdivCombo) {
-		this.univSubdivCombo = univSubdivCombo;
-	}
-
-	/**
-	 * NF013DTO.javahoInsTypeComboを設定
-	 * @return hoInsTypeCombo
-	 */
-	public LinkedHashMap<String, String> getHoInsTypeCombo() {
-		return hoInsTypeCombo;
-	}
-
-	/**
-	 * @param hoInsTypeCombo セットする hoInsTypeCombo
-	 */
-	public void setHoInsTypeCombo(LinkedHashMap<String, String> hoInsTypeCombo) {
-		this.hoInsTypeCombo = hoInsTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javamanageCdComboを設定
-	 * @return manageCdCombo
-	 */
-	public LinkedHashMap<String, String> getManageCdCombo() {
-		return manageCdCombo;
-	}
-
-	/**
-	 * @param manageCdCombo セットする manageCdCombo
-	 */
-	public void setManageCdCombo(LinkedHashMap<String, String> manageCdCombo) {
-		this.manageCdCombo = manageCdCombo;
-	}
-
-	/**
-	 * NF013DTO.javavacInsTypeComboを設定
-	 * @return vacInsTypeCombo
-	 */
-	public LinkedHashMap<String, String> getVacInsTypeCombo() {
-		return vacInsTypeCombo;
-	}
-
-	/**
-	 * @param vacInsTypeCombo セットする vacInsTypeCombo
-	 */
-	public void setVacInsTypeCombo(LinkedHashMap<String, String> vacInsTypeCombo) {
-		this.vacInsTypeCombo = vacInsTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javavacVisitTypeComboを設定
-	 * @return vacVisitTypeCombo
-	 */
-	public LinkedHashMap<String, String> getVacVisitTypeCombo() {
-		return vacVisitTypeCombo;
-	}
-
-	/**
-	 * @param vacVisitTypeCombo セットする vacVisitTypeCombo
-	 */
-	public void setVacVisitTypeCombo(LinkedHashMap<String, String> vacVisitTypeCombo) {
-		this.vacVisitTypeCombo = vacVisitTypeCombo;
-	}
-
-	/**
-	 * NF013DTO.javatrtCdComboを設定
-	 * @return trtCdCombo
-	 */
-	public LinkedHashMap<String, String> getTrtCdCombo() {
-		return trtCdCombo;
-	}
-
-	/**
-	 * @param trtCdCombo セットする trtCdCombo
-	 */
-	public void setTrtCdCombo(LinkedHashMap<String, String> trtCdCombo) {
-		this.trtCdCombo = trtCdCombo;
 	}
 
 	/**

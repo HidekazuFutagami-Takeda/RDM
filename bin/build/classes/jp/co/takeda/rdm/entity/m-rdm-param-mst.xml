@@ -66,4 +66,13 @@
             PARAM_NAME in ('MAX_ROWNUM', 'NM001_ROWNUM')
         ORDER BY PARAM_NAME
     </select>
+    <select id="selectParamNm011" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNM011Entity" resultMap="selectParamNM011ResultMap">
+        SELECT
+            PARAM_NAME, VALUE
+        FROM
+            ORAUSR01.M_RDM_PARAM_MST
+        WHERE
+            PARAM_NAME in ('MAX_ROWNUM', 'NM001_ROWNUM')
+        ORDER BY PARAM_NAME
+    </select>
 </mapper>

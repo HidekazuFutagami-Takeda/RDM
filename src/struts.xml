@@ -436,6 +436,34 @@
         	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
         	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
         </action>
+        <action name="NM011Init" class="nM011Action" method="init">
+        	<result name="NM011">/WEB-INF/pages/NM011.jsp</result>
+            <result name="NF213">/WEB-INF/pages/NF213.jsp</result>
+            <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NM011Search" class="nM011Action" method="search">
+        	<result name="NM011">/WEB-INF/pages/NM011.jsp</result>
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="NM011Page" class="nM011Action" method="page">
+        	<result name="NM011">/WEB-INF/pages/NM011.jsp</result>
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="NM011Sort" class="nM011Action" method="sort">
+        	<result name="NM011">/WEB-INF/pages/NM011.jsp</result>
+            <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
+        </action>
+        <action name="NM011Register" class="nM011Action" method="register">
+        	<result name="NM011">/WEB-INF/pages/NM011.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NM001.jsp</result>
+            <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NM011ApprRej" class="nM011Action" method="apprRej">
+        	<result name="NM011">/WEB-INF/pages/NM011.jsp</result>
+        	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
+        	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
 
         <action name="ND103Cancel" class="ND103Action" method="cancel">
             <result name="ND103">/WEB-INF/pages/ND103.jsp</result>

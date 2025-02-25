@@ -127,72 +127,141 @@ function gotoNext(screenId,functionId){
 function NC011Seni(reqType) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-	if(reqType == "01"){
+//	if(reqType == "01"){
+//		alert("NF011_施設新規作成に遷移します")
+//		gotoNext('NF011','Init');
+//	}
+//	if(reqType == "02"){
+//		alert("NF012_施設情報更新に遷移します")
+//		gotoNext('NF012','Init');
+//	}
+//	if(reqType == "03"){
+//		alert("NF013_施設削除に遷移します")
+//		gotoNext('NF013','Init');
+//	}
+//	if(reqType == "04"){
+//		alert("NF014_施設復活に遷移します")
+//		gotoNext('NF014','Init');
+//	}
+//	if(reqType == "11"){
+//		alert("NF211_施設紐づけ作成に遷移します")
+//		gotoNext('NF211','Init');
+//	}
+//	if(reqType == "12"){
+//		alert("NF212_親施設の変更に遷移します")
+//		gotoNext('NF212','Init');
+//	}
+//	if(reqType == "13"){
+//		alert("NF213_施設紐づけの削除に遷移します")
+//		gotoNext('NF213','Init');
+//	}
+//	if(reqType == "21"){
+//		alert("NF101_施設来期情報更新に遷移します")
+//		gotoNext('NF101','Init');
+//	}
+//	if(reqType == "31"){
+//		alert("ND011_医師新規作成に遷移します")
+//		gotoNext('ND011','Init');
+//	}
+//	if(reqType == "32"){
+//		alert("ND012_医師情報更新に遷移します")
+//		gotoNext('ND012','Init');
+//	}
+//	if(reqType == "33"){
+//		alert("ND105_医師削除に遷移します")
+//		gotoNext('ND015','Init');
+//	}
+//	if(reqType == "34"){
+//		alert("ND014_医師復活に遷移します")
+//		gotoNext('ND014','Init');
+//	}
+//	if(reqType == "41"){
+//		alert("ND103_医師勤務先追加に遷移します")
+//		//gotoNext('ND113','Init');
+//		gotoNext('ND103','Init');
+//	}
+//	if(reqType == "42"){
+//		alert("ND101_医療機関への異動に遷移します")
+//		gotoNext('ND101','Init');
+//	}
+//	if(reqType == "43"){
+//		alert("ND102_医療機関以外への異動に遷移します")
+//		gotoNext('ND102','Init');
+//	}
+//	if(reqType == "44"){
+//		alert("ND104_医師勤務先削除に遷移します")
+//		gotoNext('ND104','Init');
+//	}
+//	if(reqType == "51"){
+//		alert("ND013_勤務先情報更新に遷移します")
+//		gotoNext('ND014','Init');
+//	}
+	if(reqType == "施設新規作成"){
 		alert("NF011_施設新規作成に遷移します")
 		gotoNext('NF011','Init');
 	}
-	if(reqType == "02"){
+	if(reqType == "施設情報更新"){
 		alert("NF012_施設情報更新に遷移します")
 		gotoNext('NF012','Init');
 	}
-	if(reqType == "03"){
+	if(reqType == "施設削除"){
 		alert("NF013_施設削除に遷移します")
 		gotoNext('NF013','Init');
 	}
-	if(reqType == "04"){
+	if(reqType == "施設復活"){
 		alert("NF014_施設復活に遷移します")
 		gotoNext('NF014','Init');
 	}
-	if(reqType == "11"){
+	if(reqType == "施設紐付け新規"){
 		alert("NF211_施設紐づけ作成に遷移します")
 		gotoNext('NF211','Init');
 	}
-	if(reqType == "12"){
+	if(reqType == "施設紐付け変更"){
 		alert("NF212_親施設の変更に遷移します")
 		gotoNext('NF212','Init');
 	}
-	if(reqType == "13"){
+	if(reqType == "施設紐付け削除"){
 		alert("NF213_施設紐づけの削除に遷移します")
 		gotoNext('NF213','Init');
 	}
-	if(reqType == "21"){
+	if(reqType == "施設来期用項目更新"){
 		alert("NF101_施設来期情報更新に遷移します")
 		gotoNext('NF101','Init');
 	}
-	if(reqType == "31"){
+	if(reqType == "医師新規作成"){
 		alert("ND011_医師新規作成に遷移します")
 		gotoNext('ND011','Init');
 	}
-	if(reqType == "32"){
+	if(reqType == "医師情報更新"){
 		alert("ND012_医師情報更新に遷移します")
 		gotoNext('ND012','Init');
 	}
-	if(reqType == "33"){
+	if(reqType == "医師削除"){
 		alert("ND105_医師削除に遷移します")
 		gotoNext('ND015','Init');
 	}
-	if(reqType == "34"){
+	if(reqType == "医師復活"){
 		alert("ND014_医師復活に遷移します")
 		gotoNext('ND014','Init');
 	}
-	if(reqType == "41"){
+	if(reqType == "医師勤務先追加"){
 		alert("ND103_医師勤務先追加に遷移します")
 		//gotoNext('ND113','Init');
 		gotoNext('ND103','Init');
 	}
-	if(reqType == "42"){
+	if(reqType == "医療機関への異動"){
 		alert("ND101_医療機関への異動に遷移します")
 		gotoNext('ND101','Init');
 	}
-	if(reqType == "43"){
+	if(reqType == "医療機関以外への異動"){
 		alert("ND102_医療機関以外への異動に遷移します")
 		gotoNext('ND102','Init');
 	}
-	if(reqType == "44"){
+	if(reqType == "医師勤務先削除"){
 		alert("ND104_医師勤務先削除に遷移します")
 		gotoNext('ND104','Init');
 	}
-	if(reqType == "51"){
+	if(reqType == "勤務先情報更新"){
 		alert("ND013_勤務先情報更新に遷移します")
 		gotoNext('ND014','Init');
 	}

@@ -123,6 +123,7 @@ public class NC204DTO extends BaseDTO implements Serializable {
   private String Count;
 
 
+
 	/**
      * @generated
      */
@@ -278,6 +279,14 @@ public class NC204DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NC204DTO.javasearchInputを設定
+	 * @return searchInput
+	 */
+	public boolean getAllCheck() {
+		return allCheck;
+	}
+
+	/**
 	 * @param allCheck セットする allCheck
 	 */
 	public void setAllCheck(boolean allCheck) {
@@ -418,6 +427,8 @@ public class NC204DTO extends BaseDTO implements Serializable {
 	public void setCount(String count) {
 		Count = count;
 	}
+
+
 
 	/**
 	 * NC204DTO.javacatDeptsComboDataListを設定

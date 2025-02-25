@@ -45,6 +45,12 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	private String preScreenId;
 
 	/**
+	 * 画面タイトル
+	 * @generated
+	 */
+	private String title;
+
+	/**
      * Offset値
      * @generated
      */
@@ -488,7 +494,20 @@ public class NC011DTO extends BaseDTO implements Serializable {
 		this.preScreenId = preScreenId;
 	}
 
-    public LinkedHashMap getJkrSosFbReqFlgMap() {
+    /**
+	 * NC011DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public LinkedHashMap getJkrSosFbReqFlgMap() {
 		return JkrSosFbReqFlgMap;
 	}
 	public void setJkrSosFbReqFlgMap(LinkedHashMap jkrSosFbReqFlgMap) {

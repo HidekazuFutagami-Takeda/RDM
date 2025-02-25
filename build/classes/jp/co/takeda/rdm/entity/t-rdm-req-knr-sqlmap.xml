@@ -434,6 +434,18 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
+	<update id="updateNF013Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+	UPDATE
+		T_RDM_REQ_KNR
+	SET
+		REQ_STS = #{reqStsCd},
+		REQ_COMMENT = #{reqComment},
+		<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if><if test="aprMemo == null">APR_MEMO = NULL,</if>
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
 	<update id="updateNF211Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
 	UPDATE
 		T_RDM_REQ_KNR
@@ -464,4 +476,17 @@
 	FROM
 		T_RDM_REQ_KNR WHERE REQ_ID = #{reqId}
 	</select>
+	<update id="updateND102Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+	UPDATE
+		ORAUSR01.T_RDM_REQ_KNR
+	SET
+		REQ_STS = #{reqStsCd},
+		INS_NO = #{insNo},
+		TEKIYO_YMD = #{tekiyoYmd},
+		REQ_COMMENT = #{reqComment},
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
 </mapper>

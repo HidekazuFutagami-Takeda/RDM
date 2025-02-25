@@ -139,6 +139,7 @@ public class SelectDeptListEntityRDM extends BaseEntity implements Serializable 
 
 	 private String selectCntEntity2;
 
+
     /**
      * コンストラクタ
      * @generated
@@ -425,6 +426,7 @@ public class SelectDeptListEntityRDM extends BaseEntity implements Serializable 
         this.recCnt = recCnt;
     }
 
+
     /**
      * このEntityの値を返す
      * @return DTOの値
@@ -434,6 +436,8 @@ public class SelectDeptListEntityRDM extends BaseEntity implements Serializable 
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
+
+
 
 
 }

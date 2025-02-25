@@ -1,6 +1,6 @@
 /*
  * ALL RIGHTS RESERVED,
- * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
+ * COPYRIGHT (C) 2305, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
 package jp.co.takeda.rdm.dto;
@@ -19,7 +19,7 @@ import java.util.List;
  * DTOクラス
  * @generated
  */
-public class NF013DTO extends BaseDTO implements Serializable {
+public class NF305DTO extends BaseDTO implements Serializable {
 
 	/**
 	 * シリアルバージョンUID
@@ -31,7 +31,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 * このDTOが関連付けられている画面ID
 	 * @generated
 	 */
-	private String NF013 = "NF013";
+	private String NF305 = "NF305";
 
 	/**
 	 * メッセージID
@@ -98,6 +98,12 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String reqId;
+
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
 
 	/**
 	 * 申請者所属名称
@@ -256,6 +262,12 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	private String delKbn;
 
 	/**
+	 * 削除区分
+	 * @generated
+	 */
+	private String delKbnNm;
+
+	/**
 	 * 廃院日
 	 * @generated
 	 */
@@ -266,6 +278,12 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String delReason;
+
+	/**
+	 * 削除理由
+	 * @generated
+	 */
+	private String delReasonNm;
 
 	/**
 	 * 重複施設固定コード
@@ -296,6 +314,12 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String aprMemo;
+
+	/**
+	 * 承認・却下コメント
+	 * @generated
+	 */
+	private String aprComment;
 
 	/**
 	 * 表示分岐
@@ -343,12 +367,25 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 */
 	private String msgStr;
 
+	/**
+	 * 申請ボタン活性フラグ
+	 * 0：非活性、1:活性
+	 * @generated
+	 */
+	private String btnEnableFlg;
+
+	/**
+	 * アルトマークへの情報連携
+	 * @generated
+	 */
+	private String fbReqFlg;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
      */
-    public NF013DTO() {
-        setForward(NF013);
+    public NF305DTO() {
+        setForward(NF305);
     }
 
     // START UOC
@@ -360,8 +397,8 @@ public class NF013DTO extends BaseDTO implements Serializable {
      * @param screenID 画面ID
      * @generated
      */
-    public void setNF013(String screenID){
-        this.NF013 = screenID;
+    public void setNF305(String screenID){
+        this.NF305 = screenID;
     }
 
     /**
@@ -369,12 +406,12 @@ public class NF013DTO extends BaseDTO implements Serializable {
      * @return 画面ID名
      * @generated
      */
-    public String getNF013(){
-        return NF013;
+    public String getNF305(){
+        return NF305;
     }
 
 	/**
-	 * NF013DTO.javamsgIdを設定
+	 * NF305DTO.javamsgIdを設定
 	 * @return msgId
 	 */
 	public String getMsgId() {
@@ -389,7 +426,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaloginJokenSetCdを設定
+	 * NF305DTO.javaloginJokenSetCdを設定
 	 * @return loginJokenSetCd
 	 */
 	public String getLoginJokenSetCd() {
@@ -404,7 +441,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaloginJgiNoを設定
+	 * NF305DTO.javaloginJgiNoを設定
 	 * @return loginJgiNo
 	 */
 	public String getLoginJgiNo() {
@@ -419,7 +456,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaloginNmを設定
+	 * NF305DTO.javaloginNmを設定
 	 * @return loginNm
 	 */
 	public String getLoginNm() {
@@ -434,7 +471,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaloginBrCdを設定
+	 * NF305DTO.javaloginBrCdを設定
 	 * @return loginBrCd
 	 */
 	public String getLoginBrCd() {
@@ -449,7 +486,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaloginDistCdを設定
+	 * NF305DTO.javaloginDistCdを設定
 	 * @return loginDistCd
 	 */
 	public String getLoginDistCd() {
@@ -464,7 +501,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaloginShzNmを設定
+	 * NF305DTO.javaloginShzNmを設定
 	 * @return loginShzNm
 	 */
 	public String getLoginShzNm() {
@@ -479,7 +516,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaloginTrtCdを設定
+	 * NF305DTO.javaloginTrtCdを設定
 	 * @return loginTrtCd
 	 */
 	public String getLoginTrtCd() {
@@ -494,7 +531,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javagamenIdを設定
+	 * NF305DTO.javagamenIdを設定
 	 * @return gamenId
 	 */
 	public String getGamenId() {
@@ -509,7 +546,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javatitleを設定
+	 * NF305DTO.javatitleを設定
 	 * @return title
 	 */
 	public String getTitle() {
@@ -524,7 +561,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqIdを設定
+	 * NF305DTO.javareqIdを設定
 	 * @return reqId
 	 */
 	public String getReqId() {
@@ -539,7 +576,22 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqShzNmを設定
+	 * NF305DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
+	}
+
+	/**
+	 * NF305DTO.javareqShzNmを設定
 	 * @return reqShzNm
 	 */
 	public String getReqShzNm() {
@@ -554,7 +606,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqStsNmを設定
+	 * NF305DTO.javareqStsNmを設定
 	 * @return reqStsNm
 	 */
 	public String getReqStsNm() {
@@ -569,7 +621,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqJgiNameを設定
+	 * NF305DTO.javareqJgiNameを設定
 	 * @return reqJgiName
 	 */
 	public String getReqJgiName() {
@@ -584,7 +636,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqYmdhmsを設定
+	 * NF305DTO.javareqYmdhmsを設定
 	 * @return reqYmdhms
 	 */
 	public String getReqYmdhms() {
@@ -599,7 +651,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javashnShaNameを設定
+	 * NF305DTO.javashnShaNameを設定
 	 * @return shnShaName
 	 */
 	public String getShnShaName() {
@@ -614,7 +666,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javashnYmdhmsを設定
+	 * NF305DTO.javashnYmdhmsを設定
 	 * @return shnYmdhms
 	 */
 	public String getShnYmdhms() {
@@ -629,7 +681,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaaprShaNameを設定
+	 * NF305DTO.javaaprShaNameを設定
 	 * @return aprShaName
 	 */
 	public String getAprShaName() {
@@ -644,7 +696,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaaprYmdhmsを設定
+	 * NF305DTO.javaaprYmdhmsを設定
 	 * @return aprYmdhms
 	 */
 	public String getAprYmdhms() {
@@ -659,7 +711,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqJgiNoを設定
+	 * NF305DTO.javareqJgiNoを設定
 	 * @return reqJgiNo
 	 */
 	public Integer getReqJgiNo() {
@@ -674,7 +726,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqBrCdを設定
+	 * NF305DTO.javareqBrCdを設定
 	 * @return reqBrCd
 	 */
 	public String getReqBrCd() {
@@ -689,7 +741,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqDistCdを設定
+	 * NF305DTO.javareqDistCdを設定
 	 * @return reqDistCd
 	 */
 	public String getReqDistCd() {
@@ -704,7 +756,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqStsCdを設定
+	 * NF305DTO.javareqStsCdを設定
 	 * @return reqStsCd
 	 */
 	public String getReqStsCd() {
@@ -719,7 +771,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javashnJgiNoを設定
+	 * NF305DTO.javashnJgiNoを設定
 	 * @return shnJgiNo
 	 */
 	public Integer getShnJgiNo() {
@@ -734,7 +786,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaaprJgiNoを設定
+	 * NF305DTO.javaaprJgiNoを設定
 	 * @return aprJgiNo
 	 */
 	public Integer getAprJgiNo() {
@@ -749,7 +801,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaupdShaYmdを設定
+	 * NF305DTO.javaupdShaYmdを設定
 	 * @return updShaYmd
 	 */
 	public String getUpdShaYmd() {
@@ -764,7 +816,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javainsNoを設定
+	 * NF305DTO.javainsNoを設定
 	 * @return insNo
 	 */
 	public String getInsNo() {
@@ -779,7 +831,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javainsAbbrNameを設定
+	 * NF305DTO.javainsAbbrNameを設定
 	 * @return insAbbrName
 	 */
 	public String getInsAbbrName() {
@@ -794,7 +846,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javainsFormalNameを設定
+	 * NF305DTO.javainsFormalNameを設定
 	 * @return insFormalName
 	 */
 	public String getInsFormalName() {
@@ -809,7 +861,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javainsPcodeを設定
+	 * NF305DTO.javainsPcodeを設定
 	 * @return insPcode
 	 */
 	public String getInsPcode() {
@@ -824,7 +876,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadocCountを設定
+	 * NF305DTO.javadocCountを設定
 	 * @return docCount
 	 */
 	public String getDocCount() {
@@ -839,7 +891,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqDocCountを設定
+	 * NF305DTO.javareqDocCountを設定
 	 * @return reqDocCount
 	 */
 	public String getReqDocCount() {
@@ -854,7 +906,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javainsCountを設定
+	 * NF305DTO.javainsCountを設定
 	 * @return insCount
 	 */
 	public String getInsCount() {
@@ -869,7 +921,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javanextInsCountを設定
+	 * NF305DTO.javanextInsCountを設定
 	 * @return nextInsCount
 	 */
 	public String getNextInsCount() {
@@ -884,7 +936,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javajskValueを設定
+	 * NF305DTO.javajskValueを設定
 	 * @return jskValue
 	 */
 	public String getJskValue() {
@@ -899,7 +951,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javainsAddrを設定
+	 * NF305DTO.javainsAddrを設定
 	 * @return insAddr
 	 */
 	public String getInsAddr() {
@@ -914,7 +966,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadelKbnを設定
+	 * NF305DTO.javadelKbnを設定
 	 * @return delKbn
 	 */
 	public String getDelKbn() {
@@ -929,7 +981,22 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadelYmdを設定
+	 * NF305DTO.javadelKbnNmを設定
+	 * @return delKbnNm
+	 */
+	public String getDelKbnNm() {
+		return delKbnNm;
+	}
+
+	/**
+	 * @param delKbnNm セットする delKbnNm
+	 */
+	public void setDelKbnNm(String delKbnNm) {
+		this.delKbnNm = delKbnNm;
+	}
+
+	/**
+	 * NF305DTO.javadelYmdを設定
 	 * @return delYmd
 	 */
 	public String getDelYmd() {
@@ -944,7 +1011,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadelReasonを設定
+	 * NF305DTO.javadelReasonを設定
 	 * @return delReason
 	 */
 	public String getDelReason() {
@@ -959,7 +1026,22 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadupInsNoを設定
+	 * NF305DTO.javadelReasonNmを設定
+	 * @return delReasonNm
+	 */
+	public String getDelReasonNm() {
+		return delReasonNm;
+	}
+
+	/**
+	 * @param delReasonNm セットする delReasonNm
+	 */
+	public void setDelReasonNm(String delReasonNm) {
+		this.delReasonNm = delReasonNm;
+	}
+
+	/**
+	 * NF305DTO.javadupInsNoを設定
 	 * @return dupInsNo
 	 */
 	public String getDupInsNo() {
@@ -974,7 +1056,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadupInsAbbrNameを設定
+	 * NF305DTO.javadupInsAbbrNameを設定
 	 * @return dupInsAbbrName
 	 */
 	public String getDupInsAbbrName() {
@@ -989,7 +1071,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadupInsAddrを設定
+	 * NF305DTO.javadupInsAddrを設定
 	 * @return dupInsAddr
 	 */
 	public String getDupInsAddr() {
@@ -1004,7 +1086,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javareqCommentを設定
+	 * NF305DTO.javareqCommentを設定
 	 * @return reqComment
 	 */
 	public String getReqComment() {
@@ -1019,7 +1101,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaaprMemoを設定
+	 * NF305DTO.javaaprMemoを設定
 	 * @return aprMemo
 	 */
 	public String getAprMemo() {
@@ -1034,7 +1116,22 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadisplayKbnを設定
+	 * NF305DTO.javaaprCommentを設定
+	 * @return aprComment
+	 */
+	public String getAprComment() {
+		return aprComment;
+	}
+
+	/**
+	 * @param aprComment セットする aprComment
+	 */
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
+	}
+
+	/**
+	 * NF305DTO.javadisplayKbnを設定
 	 * @return displayKbn
 	 */
 	public String getDisplayKbn() {
@@ -1049,7 +1146,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javafuncIdを設定
+	 * NF305DTO.javafuncIdを設定
 	 * @return funcId
 	 */
 	public String getFuncId() {
@@ -1064,7 +1161,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadelKbnComboを設定
+	 * NF305DTO.javadelKbnComboを設定
 	 * @return delKbnCombo
 	 */
 	public LinkedHashMap<String, String> getDelKbnCombo() {
@@ -1079,7 +1176,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javadelReasonComboを設定
+	 * NF305DTO.javadelReasonComboを設定
 	 * @return delReasonCombo
 	 */
 	public LinkedHashMap<String, String> getDelReasonCombo() {
@@ -1094,7 +1191,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javashnFlgを設定
+	 * NF305DTO.javashnFlgを設定
 	 * @return shnFlg
 	 */
 	public String getShnFlg() {
@@ -1109,7 +1206,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javaeditApprFlgを設定
+	 * NF305DTO.javaeditApprFlgを設定
 	 * @return editApprFlg
 	 */
 	public String getEditApprFlg() {
@@ -1124,7 +1221,7 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF013DTO.javamsgStrを設定
+	 * NF305DTO.javamsgStrを設定
 	 * @return msgStr
 	 */
 	public String getMsgStr() {
@@ -1136,6 +1233,36 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 */
 	public void setMsgStr(String msgStr) {
 		this.msgStr = msgStr;
+	}
+
+	/**
+	 * NF305DTO.javabtnEnableFlgを設定
+	 * @return btnEnableFlg
+	 */
+	public String getBtnEnableFlg() {
+		return btnEnableFlg;
+	}
+
+	/**
+	 * @param btnEnableFlg セットする btnEnableFlg
+	 */
+	public void setBtnEnableFlg(String btnEnableFlg) {
+		this.btnEnableFlg = btnEnableFlg;
+	}
+
+	/**
+	 * NF305DTO.javafbReqFlgを設定
+	 * @return fbReqFlg
+	 */
+	public String getFbReqFlg() {
+		return fbReqFlg;
+	}
+
+	/**
+	 * @param fbReqFlg セットする fbReqFlg
+	 */
+	public void setFbReqFlg(String fbReqFlg) {
+		this.fbReqFlg = fbReqFlg;
 	}
 
 	/**

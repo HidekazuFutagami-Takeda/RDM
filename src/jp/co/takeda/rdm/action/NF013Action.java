@@ -113,20 +113,20 @@ public class NF013Action extends BaseAction<NF013DTO> {
 
         // 画面タイトル制御処理
         String title = "NF013_施設削除";
-        //ユーザ権限
-        String jokenSetCd = dto.getLoginJokenSetCd();
 
         dto.setTitle(title);
 
-        //モック
-//        dto.setUltInsCd("001100020");
-//        dto.setReqId("250114-000112"); // 領域担当者有req
-//        dto.setReqId("250124-000145");
+//        //モック
+//        dto.setInsNo("101111211");
+//        dto.setReqId("250225-000497");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
-        String ultCd = dto.getUltInsCd();
+        String insNo = dto.getInsNo();
         dto.setPreScreenId(preScreenId);
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+
+        dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
 
         //モック
 //        String kbn = "1";
@@ -137,33 +137,28 @@ public class NF013Action extends BaseAction<NF013DTO> {
 //        } else {
 //	        preScreenId = "NC011";
 //	        dto.setLoginJgiNo("8830034");
-//	//        dto.setLoginJgiNo("0");
+//	        //dto.setLoginJgiNo("0");
 //	        //dto.setReqStsCd("01");
 //	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
 //	        //dto.setLoginJokenSetCd("JKN0023");	// MR
 //        }
 
-        // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
-        // ULT施設コード　ありなしで分岐
+        // 遷移パターン　0:施設固定コードから作成、1：申請データあり
+        // 施設固定コード　ありなしで分岐
         // NF001_施設検索
         if ("NF001".equals(preScreenId)) {
-        	if (ultCd != null && ultCd.length() > 0) {
-        		// ULT施設コードで初期データ作成
-        		dto.setDisplayKbn("1");
-        	} else if(ultCd == null || ultCd.length() == 0){
-        		// 完全新規
+        	if (insNo != null && insNo.length() > 0) {
+        		// 施設固定コードで初期データ作成
         		dto.setDisplayKbn("0");
         	} else { //遷移エラー
         	}
         }
         // 申請ID
         // NC011_申請一覧
-        // NF301_施設新規作成 - 申請内容確認
-        // NM101_通知内容詳細
-        if ("NC011".equals(preScreenId) || "NF301".equals(preScreenId) || "NM101".equals(preScreenId)) {
+        if ("NC011".equals(preScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
-        		dto.setDisplayKbn("2");
+        		dto.setDisplayKbn("1");
         	} else { //遷移エラー
         	}
         }
@@ -214,15 +209,6 @@ public class NF013Action extends BaseAction<NF013DTO> {
      */
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
-//        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !"exception".equals(outdto.getForward())){
-//            setJumpInfo(dto.getMsgId());
-//            outdto.setForward(dto.getForward());
-//        }
-        // END UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
 		// 本画面を再表示
 		outdto.setForward("NF013");
@@ -298,8 +284,6 @@ public class NF013Action extends BaseAction<NF013DTO> {
      */
     protected String shnCompNext(BaseDTO outdto) throws Exception {
     	// START UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
     	// END UOC
     	outdto.setForward("NF013");
         setNextDTO(outdto);

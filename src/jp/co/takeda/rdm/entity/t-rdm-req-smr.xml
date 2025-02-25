@@ -19,7 +19,7 @@
         <result column="MR_ADMIN_FLG" property="mrAdminFlg"/>
     </resultMap>
   <select id="selectReqSmr" parameterType="jp.co.takeda.rdm.entity.SRdmReqSamariEntity" resultMap="sJkrJkrAuthKnrResultMap">
-	  WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
+WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
     SELECT
           ADDR_CODE_PREF
          ,ADDR_NAME_PREF
@@ -52,6 +52,31 @@
             ,'その他'
     FROM    DUAL
     )
+, HCP_KMS_MAX AS(--■サブクエリ（医師勤務先）
+    SELECT MAX(INS_NO) MAX_INS_NO,
+           DOC_NO
+      FROM ORAUSR01.M_RDM_HCP_WORK
+      GROUP BY DOC_NO
+)
+, HCP_INS AS (--■サブクエリ（医師勤務）
+    SELECT  HCP_REQ.REQ_ID
+           ,CASE
+                 WHEN REQ_KNR.REQ_TYPE = '31' THEN HCP_REQ.INS_NO_SK
+                 WHEN HCP_KMS_MAX.MAX_INS_NO IS NULL THEN '000000000'
+                 ELSE HCP_KMS_MAX.MAX_INS_NO
+            END HCP_INS_NO
+      FROM  ORAUSR01.T_RDM_HCP_REQ HCP_REQ
+           LEFT JOIN
+            HCP_KMS_MAX
+           ON (
+                 HCP_REQ.DOC_NO = HCP_KMS_MAX.DOC_NO
+              )
+           LEFT JOIN
+            ORAUSR01.T_RDM_REQ_KNR REQ_KNR
+           ON (
+                 REQ_KNR.REQ_ID = HCP_REQ.REQ_ID
+              )
+)
 ,REQ_NUM AS(  --■サブクエリ（申請状況）
     SELECT
             CODE_REQ_KBN.VALUE2    KEY
@@ -97,9 +122,9 @@
 	    SELECT  --■サブクエリ（申請情報）
 	          REQ_KNR.REQ_ID
 	         ,CASE
-	          WHEN JKR_ADDR_A.ADDR_CODE_PREF IS NOT NULL  THEN JKR_ADDR_A.ADDR_CODE_PREF
-	          WHEN JKR_ADDR_B.ADDR_CODE_PREF IS NOT NULL THEN JKR_ADDR_B.ADDR_CODE_PREF
-	          WHEN JKR_ADDR_B.ADDR_CODE_PREF IS NULL THEN '99'
+	            WHEN  REQ_KNR.REQ_TYPE ='01'  THEN JKR_ADDR_A.ADDR_CODE_PREF
+	            WHEN  JKR_ADDR_B.ADDR_CODE_PREF IS NULL THEN '99'
+		        ELSE  JKR_ADDR_B.ADDR_CODE_PREF
 	          END AS ADDR_CODE_PREF
 	         ,REQ_KNR.REQ_TYPE
 	         ,REQ_KNR.REQ_STS
@@ -108,17 +133,17 @@
 	          WHEN REQ_KNR.REQ_TYPE IN ('11','12','13') THEN '1X'
 	          WHEN REQ_KNR.REQ_TYPE NOT IN ('11','12','13') THEN REQ_KNR.REQ_TYPE
 	          END AS REQ_TYPE_SYU
-
         FROM  ORAUSR01.T_RDM_REQ_KNR REQ_KNR
 	     LEFT JOIN
 	          ORAUSR01.T_RDM_HCO_REQ HCO_REQ --施設_申請管理　
 	      ON  HCO_REQ.REQ_ID=REQ_KNR.REQ_ID
-	     LEFT JOIN
-	          ORAUSR01.T_RDM_HCP_REQ HCP_REQ --医師_申請管理
-	      ON  HCP_REQ.REQ_ID=REQ_KNR.REQ_ID
+         LEFT JOIN
+              HCP_INS
+          ON     HCP_INS.REQ_ID=REQ_KNR.REQ_ID
 	     LEFT JOIN
 	          ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
-	      ON  HCP_REQ.INS_NO_SK=HCO_MST.INS_NO
+	      ON  HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
+              OR HCO_REQ.INS_NO=HCO_MST.INS_NO
 	     LEFT JOIN
 	          JKR_ADDR_A    --■サブクエリ（都道府県_A）
 	      ON  JKR_ADDR_A.ADDR_CODE_PREF=HCO_REQ.ADDR_CODE_PREF

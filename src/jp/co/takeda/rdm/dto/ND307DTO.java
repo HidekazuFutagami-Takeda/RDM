@@ -158,6 +158,11 @@ public class ND307DTO extends BaseDTO implements Serializable {
     private String postHoInsType;
 
     /**
+     * 施設分類(先)
+     */
+    private String postInsClass;
+
+    /**
      * 大学職位(先)
      */
     private String postUnivPosCode;
@@ -206,6 +211,11 @@ public class ND307DTO extends BaseDTO implements Serializable {
      * 対象区分(元)
      */
     private String preHoInsType;
+
+    /**
+     * 施設分類(元)
+     */
+    private String preInsClass;
 
     /**
      * ULT医師コード
@@ -863,6 +873,21 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * ND307DTO.javapostInsClassを設定
+	 * @return postInsClass
+	 */
+	public String getPostInsClass() {
+		return postInsClass;
+	}
+
+	/**
+	 * @param postInsClass セットする postInsClass
+	 */
+	public void setPostInsClass(String postInsClass) {
+		this.postInsClass = postInsClass;
+	}
+
+	/**
 	 * ND307DTO.javapostUnivPosCodeを設定
 	 * @return postUnivPosCode
 	 */
@@ -1010,6 +1035,21 @@ public class ND307DTO extends BaseDTO implements Serializable {
 	 */
 	public void setPreHoInsType(String preHoInsType) {
 		this.preHoInsType = preHoInsType;
+	}
+
+	/**
+	 * ND307DTO.javapreInsClassを設定
+	 * @return preInsClass
+	 */
+	public String getPreInsClass() {
+		return preInsClass;
+	}
+
+	/**
+	 * @param preInsClass セットする preInsClass
+	 */
+	public void setPreInsClass(String preInsClass) {
+		this.preInsClass = preInsClass;
 	}
 
 	/**

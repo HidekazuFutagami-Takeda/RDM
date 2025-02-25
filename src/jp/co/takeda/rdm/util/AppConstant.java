@@ -2823,10 +2823,16 @@ public interface AppConstant {
     public static final String SESKEY_ND001_SEARCHKEY = "ND001_SEARCHKEY";
     /** 医師新規での初期結果 */
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
+    /** RDM医療機関への異動での初期結果 */
+    public static final String SESKEY_ND101_SEARCHKEY = "ND101_SEARCHKEY";
+    /** RDM医療機関以外への異動での初期結果 */
+    public static final String SESKEY_ND102_SEARCHKEY = "ND102_SEARCHKEY";
     /** 医師新規確認での初期結果 */
     public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
     /** RDM医療機関への異動 */
     public static final String SESKEY_ND307_SEARCHKEY = "ND307_SEARCHKEY";
+    /** RDM医療機関以外への異動 - 申請内容確認での初期結果 */
+    public static final String SESKEY_ND309_SEARCHKEY = "ND309_SEARCHKEY";
     /** 施設検索での初期結果 */
     public static final String SESKEY_NF001_SEARCHKEY = "NF001_SEARCHKEY";
     /** 施設新規での初期結果 */
@@ -2847,6 +2853,8 @@ public interface AppConstant {
     public static final String SESKEY_NF301_SEARCHKEY = "NF301_SEARCHKEY";
     /** 施設更新 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF303_SEARCHKEY = "NF303_SEARCHKEY";
+    /** 施設削除 - 申請内容確認での初期結果 */
+    public static final String SESKEY_NF305_SEARCHKEY = "NF305_SEARCHKEY";
     /** 施設復活 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF307_SEARCHKEY = "NF307_SEARCHKEY";
     /** 施設紐付け新規 - 申請内容確認での初期結果 */

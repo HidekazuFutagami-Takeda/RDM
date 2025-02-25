@@ -104,9 +104,9 @@ public class ND101Action extends BaseAction<ND101DTO> {
     	String preScreenId = loginInfo.getPreScreenId();
 
     	//モック
-    	loginInfo.setJokenFlg("1");
-    	loginInfo.setJgiNo(8830034);
-    	loginInfo.setJgiName("テスト");
+//    	loginInfo.setJokenFlg("1");
+//    	loginInfo.setJgiNo(8830034);
+//    	loginInfo.setJgiName("テスト");
 
     	//検証用 TODO
     	if(preScreenId.equals("NC001")) {

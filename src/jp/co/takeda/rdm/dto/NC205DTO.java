@@ -36,33 +36,15 @@ public class NC205DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private String screenId;
-    public String getScreenId() {
-		return screenId;
-	}
 
-	public void setScreenId(String screenId) {
-		this.screenId = screenId;
-	}
 	private String backScreenId;
-	public String getBackScreenId() {
-		return backScreenId;
-	}
 
-	public void setBackScreenId(String backScreenId) {
-		this.backScreenId = backScreenId;
-	}
     /**
      * 遷移元画面ID
      * @generated
      */
 	private String preScreenId;
-	public String getPreScreenId() {
-		return preScreenId;
-	}
 
-	public void setPreScreenId(String preScreenId) {
-		this.preScreenId = preScreenId;
-	}
 	/**
      * 検索条件_郵便番号
      * @generated
@@ -163,15 +145,6 @@ public class NC205DTO extends BaseDTO implements Serializable {
      */
     private String test;
 
-
-
-	public String getTest() {
-		return test;
-	}
-
-	public void setTest(String test) {
-		this.test = test;
-	}
 	/**
      * @generated
      */
@@ -191,324 +164,351 @@ public class NC205DTO extends BaseDTO implements Serializable {
 
     // END UOC
 
-    /**
-     * この画面の画面IDをセットする
-     * @param screenID 画面ID
-     * @generated
-     */
-    public void setNC205(String screenId){
-        this.NC205 = screenId;
-    }
-
-    /**
-     * この画面の画面IDを返す
-     * @return 画面ID名
-     * @generated
-     */
-    public String getNC205(){
-        return NC205;
-    }
-    /**
-     * 検索条件_郵便番号の取得
-     * @return 検索条件_郵便番号
-     * @generated
-     */
-    public String getPostCode() {
-        return postCode;
-    }
-
-    /**
-     * 検索条件_郵便番号の設定
-     * @param 検索条件_郵便番号
-     * @generated
-     */
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    /**
-     * 検索条件_JIS府県名の取得
-     * @return 検索条件_JIS府県名
-     * @generated
-     */
-    public String getAddrNamePref() {
-        return addrNamePref;
-    }
-
-    /**
-     * 検索条件_JIS府県名の設定
-     * @param  検索条件_JIS府県名
-     * @generated
-     */
-    public void setAddrNamePref(String addrNamePref) {
-        this.addrNamePref = addrNamePref;
-    }
-
-    /**
-     * 検索条件_JIS市区町村名の取得
-     * @return 検索条件_JIS市区町村名
-     * @generated
-     */
-    public String getAddrNameCity() {
-        return addrNameCity;
-    }
-
-    /**
-     * 検索条件_JIS市区町村名の設定
-     * @param 検索条件_JIS市区町村名
-     * @generated
-     */
-    public void setAddrNameCity(String addrNameCity) {
-        this.addrNameCity = addrNameCity;
-    }
-
-    /**
-     * 検索条件_大字／町域名の取得
-     * @return 検索条件_大字／町域名
-     * @generated
-     */
-    public String getAddrNameArea() {
-        return addrNameArea;
-    }
-
-    /**
-     * 検索条件_大字／町域名の設定
-     * @param  検索条件_大字／町域名
-     * @generated
-     */
-    public void setAddrNameArea(String addrNameArea) {
-        this.addrNameArea = addrNameArea;
-    }
-
-    /**
-     * 検索条件_JIS府県コードの取得
-     * @return 検索条件_JIS府県コード
-     * @generated
-     */
-    public String getAddrCodePref() {
-        return addrCodePref;
-    }
-
-    /**
-     * 検索条件_JIS府県コードの設定
-     * @param 検索条件_JIS府県コード
-     * @generated
-     */
-    public void setAddrCodePref(String addrCodePref) {
-        this.addrCodePref = addrCodePref;
-    }
-
-    /**
-     * 検索条件_JIS市区町村コードの取得
-     * @return 検索条件_JIS市区町村コード
-     * @generated
-     */
-    public String getAddrCodeCity() {
-        return addrCodeCity;
-    }
-
-    /**
-     * 検索条件_JIS市区町村コードの設定
-     * @param 検索条件_JIS市区町村コード
-     * @generated
-     */
-    public void setAddrCodeCity(String addrCodeCity) {
-        this.addrCodeCity = addrCodeCity;
-    }
-
-    /**
-     * 検索条件_武田府県コードの取得
-     * @return 検索条件_武田府県コード
-     * @generated
-     */
-    public String getTkPrefCd() {
-        return tkPrefCd;
-    }
-
-    /**
-     * 検索条件_武田府県コードの設定
-     * @param 検索条件_武田府県コード
-     * @generated
-     */
-    public void setTkPrefCd(String tkPrefCd) {
-        this.tkPrefCd = tkPrefCd;
-    }
-
-    /**
-     * 検索条件_武田市区郡コードの取得
-     * @return 検索条件_武田市区郡コード
-     * @generated
-     */
-    public String getTkCityCd() {
-        return tkCityCd;
-    }
-
-    /**
-     * 検索条件_武田市区郡コードの設定
-     * @param kensakuKana 検索条件_武田市区郡コード
-     * @generated
-     */
-    public void setTkCityCd(String tkCityCd) {
-        this.tkCityCd = tkCityCd;
-    }
-    /**
-     * 検索条件_武田市区郡コードの取得
-     * @return 検索条件_武田市区郡コード
-     * @generated
-     */
-    public String getTkCityName() {
-        return tkCityName;
-    }
-
-    /**
-     * 検索条件_武田市区郡コードの設定
-     * @param kensakuKana 検索条件_武田市区郡コード
-     * @generated
-     */
-    public void setTkCityName(String tkCityName) {
-        this.tkCityName = tkCityName;
-    }
-
-    /**
-     * 検索条件_JIS府県カナ
-     * @return 検索条件_JIS府県カナ
-     * @generated
-     */
-    public String getAddrKanaPref() {
-        return addrKanaPref;
-    }
-
-    /**
-     * 検索条件_JIS府県カナの設定
-     * @param kensakuKana 検索条件_JIS府県カナ
-     * @generated
-     */
-    public void setAddrKanaPref(String addrKanaPref) {
-        this.addrKanaPref = addrKanaPref;
-    }
-
-    /**
-     * 検索条件_JIS市区町村名カナの取得
-     * @return 検索条件_JIS市区町村名カナ
-     * @generated
-     */
-    public String getAddrKanaCity() {
-        return addrKanaCity;
-    }
-
-    /**
-     * 検索条件_JIS市区町村名カナの設定
-     * @param 検索条件_JIS市区町村名カナ
-     * @generated
-     */
-    public void setAddrKanaCity(String addrKanaCity) {
-        this.addrKanaCity = addrKanaCity;
-    }
-
-    /**
-     * 検索条件_大字／町域名カナの取得
-     * @return 検索条件_大字／町域名カナ
-     * @generated
-     */
-    public String getAddrKanaArea() {
-        return addrKanaArea;
-    }
-    /**
-     * 検索条件_大字／町域名カナの設定
-     * @param 検索条件_大字／町域名カナ
-     * @generated
-     */
-    public void setAddrKanaArea(String addrKanaArea) {
-        this.addrKanaArea = addrKanaArea;
-    }
-	/**
-     * 親画面コールバックメソッド名の取得
-     * @return 親画面コールバックメソッド名
-     * @generated
-     */
-    public String getCallBack() {
-        return callBack;
-    }
 
 	/**
-     * 親画面コールバックメソッド名の設定
-     * @param callBack 親画面コールバックメソッド名
-     * @generated
-     */
-    public void setCallBack(String callBack) {
-        this.callBack = callBack;
-    }
-	/**
-     * 親画面コールバックメソッド名の取得
-     * @return 親画面コールバックメソッド名
-     * @generated
-     */
-    public String getSeshonId() {
-        return seshonId;
-    }
+	 * NC205DTO.javaNC205を設定
+	 * @return nC205
+	 */
+	public String getNC205() {
+		return NC205;
+	}
 
 	/**
-     * 親画面コールバックメソッド名の設定
-     * @param callBack 親画面コールバックメソッド名
-     * @generated
-     */
-    public void setSeshonId(String seshonId) {
-        this.seshonId = seshonId;
-    }
+	 * @param nC205 セットする nC205
+	 */
+	public void setNC205(String nC205) {
+		NC205 = nC205;
+	}
 
 	/**
-     * 親画面名の取得
-     * @return 親画面名
-     * @generated
-     */
-    public String getWinVarName() {
-        return winVarName;
-    }
+	 * NC205DTO.javascreenIdを設定
+	 * @return screenId
+	 */
+	public String getScreenId() {
+		return screenId;
+	}
 
 	/**
-     * 親画面名の設定
-     * @param winVarName 親画面名
-     * @generated
-     */
-    public void setWinVarName(String winVarName) {
-        this.winVarName = winVarName;
-    }
+	 * @param screenId セットする screenId
+	 */
+	public void setScreenId(String screenId) {
+		this.screenId = screenId;
+	}
 
 	/**
-     * 呼び出し元のClear処理メソッド名の取得
-     * @return 呼び出し元のClear処理メソッド名
-     * @generated
-     */
-    public String getParentClearProc() {
-        return parentClearProc;
-    }
+	 * NC205DTO.javabackScreenIdを設定
+	 * @return backScreenId
+	 */
+	public String getBackScreenId() {
+		return backScreenId;
+	}
 
 	/**
-     * 呼び出し元のClear処理メソッド名の設定
-     * @param parentClearProc 呼び出し元のClear処理メソッド名
-     * @generated
-     */
-    public void setParentClearProc(String parentClearProc) {
-        this.parentClearProc = parentClearProc;
-    }
-    /**
-     * 繰返リストの取得
-     * @return 繰返リスト
-     * @generated
-     */
-    public List<CatDeptsComboDataList> getCatDeptsComboDataList() {
-        return catDeptsComboDataList;
-    }
+	 * @param backScreenId セットする backScreenId
+	 */
+	public void setBackScreenId(String backScreenId) {
+		this.backScreenId = backScreenId;
+	}
 
-    /**
-     * 繰返リストの設定
-     * @param catDeptsComboDataList 繰返リスト
-     * @generated
-     */
-    public void setCatDeptsComboDataList(List<CatDeptsComboDataList> catDeptsComboDataList) {
-        this.catDeptsComboDataList = catDeptsComboDataList;
-    }
+	/**
+	 * NC205DTO.javapreScreenIdを設定
+	 * @return preScreenId
+	 */
+	public String getPreScreenId() {
+		return preScreenId;
+	}
 
+	/**
+	 * @param preScreenId セットする preScreenId
+	 */
+	public void setPreScreenId(String preScreenId) {
+		this.preScreenId = preScreenId;
+	}
+
+	/**
+	 * NC205DTO.javapostCodeを設定
+	 * @return postCode
+	 */
+	public String getPostCode() {
+		return postCode;
+	}
+
+	/**
+	 * @param postCode セットする postCode
+	 */
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+
+	/**
+	 * NC205DTO.javaaddrNamePrefを設定
+	 * @return addrNamePref
+	 */
+	public String getAddrNamePref() {
+		return addrNamePref;
+	}
+
+	/**
+	 * @param addrNamePref セットする addrNamePref
+	 */
+	public void setAddrNamePref(String addrNamePref) {
+		this.addrNamePref = addrNamePref;
+	}
+
+	/**
+	 * NC205DTO.javaaddrNameCityを設定
+	 * @return addrNameCity
+	 */
+	public String getAddrNameCity() {
+		return addrNameCity;
+	}
+
+	/**
+	 * @param addrNameCity セットする addrNameCity
+	 */
+	public void setAddrNameCity(String addrNameCity) {
+		this.addrNameCity = addrNameCity;
+	}
+
+	/**
+	 * NC205DTO.javaaddrNameAreaを設定
+	 * @return addrNameArea
+	 */
+	public String getAddrNameArea() {
+		return addrNameArea;
+	}
+
+	/**
+	 * @param addrNameArea セットする addrNameArea
+	 */
+	public void setAddrNameArea(String addrNameArea) {
+		this.addrNameArea = addrNameArea;
+	}
+
+	/**
+	 * NC205DTO.javaaddrCodePrefを設定
+	 * @return addrCodePref
+	 */
+	public String getAddrCodePref() {
+		return addrCodePref;
+	}
+
+	/**
+	 * @param addrCodePref セットする addrCodePref
+	 */
+	public void setAddrCodePref(String addrCodePref) {
+		this.addrCodePref = addrCodePref;
+	}
+
+	/**
+	 * NC205DTO.javaaddrCodeCityを設定
+	 * @return addrCodeCity
+	 */
+	public String getAddrCodeCity() {
+		return addrCodeCity;
+	}
+
+	/**
+	 * @param addrCodeCity セットする addrCodeCity
+	 */
+	public void setAddrCodeCity(String addrCodeCity) {
+		this.addrCodeCity = addrCodeCity;
+	}
+
+	/**
+	 * NC205DTO.javatkPrefCdを設定
+	 * @return tkPrefCd
+	 */
+	public String getTkPrefCd() {
+		return tkPrefCd;
+	}
+
+	/**
+	 * @param tkPrefCd セットする tkPrefCd
+	 */
+	public void setTkPrefCd(String tkPrefCd) {
+		this.tkPrefCd = tkPrefCd;
+	}
+
+	/**
+	 * NC205DTO.javatkCityCdを設定
+	 * @return tkCityCd
+	 */
+	public String getTkCityCd() {
+		return tkCityCd;
+	}
+
+	/**
+	 * @param tkCityCd セットする tkCityCd
+	 */
+	public void setTkCityCd(String tkCityCd) {
+		this.tkCityCd = tkCityCd;
+	}
+
+	/**
+	 * NC205DTO.javatkCityNameを設定
+	 * @return tkCityName
+	 */
+	public String getTkCityName() {
+		return tkCityName;
+	}
+
+	/**
+	 * @param tkCityName セットする tkCityName
+	 */
+	public void setTkCityName(String tkCityName) {
+		this.tkCityName = tkCityName;
+	}
+
+	/**
+	 * NC205DTO.javaaddrKanaPrefを設定
+	 * @return addrKanaPref
+	 */
+	public String getAddrKanaPref() {
+		return addrKanaPref;
+	}
+
+	/**
+	 * @param addrKanaPref セットする addrKanaPref
+	 */
+	public void setAddrKanaPref(String addrKanaPref) {
+		this.addrKanaPref = addrKanaPref;
+	}
+
+	/**
+	 * NC205DTO.javaaddrKanaCityを設定
+	 * @return addrKanaCity
+	 */
+	public String getAddrKanaCity() {
+		return addrKanaCity;
+	}
+
+	/**
+	 * @param addrKanaCity セットする addrKanaCity
+	 */
+	public void setAddrKanaCity(String addrKanaCity) {
+		this.addrKanaCity = addrKanaCity;
+	}
+
+	/**
+	 * NC205DTO.javaaddrKanaAreaを設定
+	 * @return addrKanaArea
+	 */
+	public String getAddrKanaArea() {
+		return addrKanaArea;
+	}
+
+	/**
+	 * @param addrKanaArea セットする addrKanaArea
+	 */
+	public void setAddrKanaArea(String addrKanaArea) {
+		this.addrKanaArea = addrKanaArea;
+	}
+
+	/**
+	 * NC205DTO.javaseshonIdを設定
+	 * @return seshonId
+	 */
+	public String getSeshonId() {
+		return seshonId;
+	}
+
+	/**
+	 * @param seshonId セットする seshonId
+	 */
+	public void setSeshonId(String seshonId) {
+		this.seshonId = seshonId;
+	}
+
+	/**
+	 * NC205DTO.javacallBackを設定
+	 * @return callBack
+	 */
+	public String getCallBack() {
+		return callBack;
+	}
+
+	/**
+	 * @param callBack セットする callBack
+	 */
+	public void setCallBack(String callBack) {
+		this.callBack = callBack;
+	}
+
+	/**
+	 * NC205DTO.javawinVarNameを設定
+	 * @return winVarName
+	 */
+	public String getWinVarName() {
+		return winVarName;
+	}
+
+	/**
+	 * @param winVarName セットする winVarName
+	 */
+	public void setWinVarName(String winVarName) {
+		this.winVarName = winVarName;
+	}
+
+	/**
+	 * NC205DTO.javaparentClearProcを設定
+	 * @return parentClearProc
+	 */
+	public String getParentClearProc() {
+		return parentClearProc;
+	}
+
+	/**
+	 * @param parentClearProc セットする parentClearProc
+	 */
+	public void setParentClearProc(String parentClearProc) {
+		this.parentClearProc = parentClearProc;
+	}
+
+	/**
+	 * NC205DTO.javatestを設定
+	 * @return test
+	 */
+	public String getTest() {
+		return test;
+	}
+
+	/**
+	 * @param test セットする test
+	 */
+	public void setTest(String test) {
+		this.test = test;
+	}
+
+	/**
+	 * NC205DTO.javacatDeptsComboDataListを設定
+	 * @return catDeptsComboDataList
+	 */
+	public List<CatDeptsComboDataList> getCatDeptsComboDataList() {
+		return catDeptsComboDataList;
+	}
+
+	/**
+	 * @param catDeptsComboDataList セットする catDeptsComboDataList
+	 */
+	public void setCatDeptsComboDataList(List<CatDeptsComboDataList> catDeptsComboDataList) {
+		this.catDeptsComboDataList = catDeptsComboDataList;
+	}
+
+	/**
+	 * NC205DTO.javasetPostCodeを設定
+	 * @return setPostCode
+	 */
+	public Object getSetPostCode() {
+		return setPostCode;
+	}
+
+	/**
+	 * @param setPostCode セットする setPostCode
+	 */
+	public void setSetPostCode(Object setPostCode) {
+		this.setPostCode = setPostCode;
+	}
 
     /**
      * このDTOの値を返す
@@ -518,6 +518,5 @@ public class NC205DTO extends BaseDTO implements Serializable {
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
-
 
 }

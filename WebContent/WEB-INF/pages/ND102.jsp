@@ -10,8 +10,8 @@
  */
 --%>
 <%@page import="jp.co.takeda.rdm.util.StringUtils"%>
-<%@page import="jp.co.takeda.rdm.dto.ND307DTO"%>
-<%@page import="jp.co.takeda.rdm.dto.ND101DTO"%>
+<%@page import="jp.co.takeda.rdm.dto.ND309DTO"%>
+<%@page import="jp.co.takeda.rdm.dto.ND102DTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
 <%@page import="org.apache.struts2.ServletActionContext"%>
@@ -30,7 +30,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<title>ND101_医療機関への異動</title>
+<title>ND102_医療機関以外への異動</title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 <link href="css/common2.css" rel="Stylesheet" type="text/css" />
 <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -39,12 +39,13 @@
 <script type="text/javascript" src="js/catDeptsComboRDM.js"></script>
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/ND011.js"></script>
-<script type="text/javascript" src="js/ND101.js"></script>
+<script type="text/javascript" src="js/ND102.js"></script>
 <script type="text/javascript" src="js/catTkCityCombo.js"></script>
 <script type="text/javascript" src="js/imtInsInputCategores.js"></script>
 <script type="text/javascript" src="js/jgiKanren.js"></script>
 <script type="text/javascript" src="js/rdmCatSosExpand.js"></script>
 <script type="text/javascript" src="js/jkrMenu.js"></script>
+<script type="text/javascript" src="js/catShisetsu.js"></script>
 <script>
 var msgContent = ""; //確認メッセージ
 
@@ -59,7 +60,7 @@ function submitBtn(funcId) {
 			return false;
 		}
 		// 一時保存
-		document.fm1.screenId.value = "ND101";
+		document.fm1.screenId.value = "ND102";
 		document.fm1.functionId.value = "Register";
 	} else if (funcId == 1) {
 		document.fm1.reqBtnFlg.value = "1";
@@ -69,7 +70,7 @@ function submitBtn(funcId) {
 			return false;
 		}
 		// 申請画面へ
-		document.fm1.screenId.value = "ND307";
+		document.fm1.screenId.value = "ND309";
 		document.fm1.functionId.value = "Init";
 	}
 	comSubmitForAnyWarp(fm1);
@@ -102,7 +103,7 @@ function reqCancelBtn() {
 	// 申請データを破棄（＝物理的に削除）し、遷移元画面へ遷移する（本画面のタブを閉じる）
 	// 申請IDで対象を絞り込み申請管理、勤務先_申請管理を削除
 
-	document.fm1.screenId.value = "ND101";
+	document.fm1.screenId.value = "ND102";
 	document.fm1.functionId.value = "Cancel";
 	comSubmitForAnyWarp(fm1);
 }
@@ -112,7 +113,7 @@ function backBtn() {
 	document.fm1.target = "";
 	msgContent = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
 
-	if(document.fm1.nd101PreScreenId.value == 'NC011'){
+	if(document.fm1.nd102PreScreenId.value == 'NC011'){
 
 		if (window.confirm(msgContent.replace("（遷移元）", '申請一覧'))) {
 		} else {
@@ -123,7 +124,7 @@ function backBtn() {
 		document.fm1.functionId.value = "init";
 
 		comSubmitForAnyWarp(fm1);
-	}else if(document.fm1.nd101PreScreenId.value == 'ND013'){
+	}else if(document.fm1.nd102PreScreenId.value == 'ND013'){
 
 		if (window.confirm(msgContent.replace("（遷移元）", '医師勤務先情報更新'))) {
 		} else {
@@ -168,16 +169,16 @@ table {
           <input type="hidden" name="cdcCheckedCodes" value="" />
           <input type="hidden" name="paramInsNo" value="" />
           <%-- 画面用パラメータ --%>
-          <s:hidden name="backScreenId" value="ND101" />
+          <s:hidden name="backScreenId" value="ND102" />
 
 
-          <s:hidden name="screenId" value="ND101"/>
+          <s:hidden name="screenId" value="ND102"/>
           <s:hidden name="functionId" value="Register"/>
           <s:hidden id="pageFlag" name="pageFlag" />
           <s:hidden id="mrAdminFlg" name="mrAdminFlg" />
 
           <s:hidden name="preScreenId"/>
-          <s:hidden name="nd101PreScreenId"/>
+          <s:hidden name="nd102PreScreenId"/>
           <s:hidden name="reqYmdhms"/>
           <s:hidden name="reqBrCode"/>
           <s:hidden name="reqDistCode"/>
@@ -237,7 +238,12 @@ table {
 
           <s:hidden name="reqSts"/>
 
+		  <s:hidden name="preInsClass"/>
+		  <s:hidden name="postInsClass"/>
 
+		  <s:hidden name="trnKbnCombo"/>
+
+		  <s:hidden name="title"/>
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>
@@ -304,9 +310,6 @@ table {
                   <td class="keisen"></td>
               </tr>
               <tr>
-                  <td>変更前</td>
-              </tr>
-              <tr>
                   <td></td>
                   <td>医師・コメディカル名</td>
                   <td><s:label key="docKanj"/></td>
@@ -332,150 +335,14 @@ table {
                   <td>大学職位</td>
                   <td><s:label key="univPreTitleKj"/></td>
               </tr>
-          <s:if test='(reqType == "42" || movemedEditFlg == "0")'>
-              <tr>
-                  <td></td>
-                  <td>異動区分</td>
-                  <td>医療機関</td>
-              </tr>
-          </s:if>
-              <tr>
-                  <td style="height: 10px;"></td>
-                  <td style="height: 10px;"></td>
-                  <td style="height: 10px;"></td>
-                  <td style="height: 10px;"></td>
-                  <td style="height: 10px;"></td>
-              </tr>
-              <tr>
-                  <td class="keisen"></td>
-                  <td class="keisen"></td>
-                  <td class="keisen"></td>
-                  <td class="keisen"></td>
-                  <td class="keisen"></td>
-              </tr>
-              <tr>
-              <tr>
-                  <td>変更後</td>
-              </tr>
-              <s:if test='(reqType == "42" || movemedEditFlg == "0")'>
-                  <s:if test='inputFlg == 1'>
 	              <tr>
 	                  <td>
 	                  </td>
-	                  <td>異動先施設<span style="color: red;">*</span></td>
-	                  <td>
-	                      <nobr>
-							<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" /><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('abbrName')">clear</a>&nbsp;
-	                      </nobr>
+	                  <td>異動区分<span style="color: red;">*</span></td>
+	                  <td class="comPortalControlItem" style="text-align:left;">
+	                      <s:select id="trnKbnCd" name="trnKbnCd" cssStyle="width:100pt" list ="trnKbnCombo"/>
 	                  </td>
 	              </tr>
-	              <tr>
-	                  <td></td>
-	                  <td>異動先所属部科<span style="color: red;">*</span></td>
-	                  <td>
-	                      <nobr>
-	                           <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;"/><s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')" >clear</a>&nbsp;
-	                      </nobr>
-	                  </td>
-	              </tr>
-	              <tr>
-	                  <td></td>
-	                  <td>※施設を先に選択してください</td>
-	              </tr>
-	              </s:if>
-                  <s:else>
-	              <tr>
-	                  <td>
-	                  </td>
-	                  <td>異動先施設<span style="color: red;">*</span></td>
-	                  <td>
-	                      <nobr>
-	                          <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
-	                      </nobr>
-	                  </td>
-	              </tr>
-	              <tr>
-	                  <td></td>
-	                  <td>異動先所属部科<span style="color: red;">*</span></td>
-	                  <td>
-	                      <nobr>
-	                           <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" style="color:lightgray">clear</a>&nbsp;
-	                      </nobr>
-	                  </td>
-	              </tr>
-	              </s:else>
-              </s:if>
-              <s:else>
-	              <tr>
-	                  <s:if test='inputFlg == 1'>
-	                  <td></td>
-	                  <td>所属部科<span style="color: red;">*</span></td>
-	                  <td>
-	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
-	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')">clear</a>&nbsp;
-	                  </td>
-	                  </s:if>
-	                  <s:else>
-	                  <td></td>
-	                  <td>所属部科<span style="color: red;">*</span></td>
-	                  <td>
-	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" disabled/>
-	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
-	                  </td>
-	                  </s:else>
-	              </tr>
-              </s:else>
-              <tr>
-                  <td></td>
-                  <td>役職<span style="color: red;">*</span></td>
-                  <td class="comPortalControlItem" style="text-align:left;">
-                  <s:if test='inputFlg == 1'>
-                      <s:select id="yakushoku" name="yakushoku" cssStyle="width:100pt" list ="yakushokuCombo"/>
-                  </s:if>
-                  <s:elseif test="inputFlg == 0">
-                      <select disabled style="width:100pt">
-                          <option><s:label key="titlePostTitleKj"/></option>
-                      </select>
-                  </s:elseif>
-                  </td>
-                  <td>勤務形態</td>
-                  <td class="comPortalControlItem" style="text-align:left;">
-					<s:if test='inputFlg == 1'>
-						<s:select id="jobForm" name="jobForm" cssStyle="width:100pt" list="jobFormCombo" />
-					</s:if>
-					<s:elseif test="inputFlg == 0">
-                      <select disabled style="width:100pt">
-                          <option><s:label key="kmuPostCodeKanj"/></option>
-                      </select>
-					</s:elseif>
-				</td>
-              </tr>
-              <tr>
-                  <td></td>
-                  <td>薬審メンバー区分</td>
-                  <td class="comPortalControlItem" style="text-align:left;">
-                  <s:if test='inputFlg == 1'>
-                      <s:select id="dcc" name="dcc" cssStyle="width:100pt" list ="dccCombo"/>
-                  </s:if>
-                  <s:elseif test="inputFlg == 0">
-                      <select disabled style="width:100pt">
-                          <option><s:label key="yakushinPostCodeKanj"/></option>
-                      </select>
-                  </s:elseif>
-                  </td>
-			      <td>大学職位</td>
-			      <td class="comPortalControlItem" style="text-align: left;">
-			      <s:if test='inputFlg == 1 && postHoInsType == 1'>
-					  <s:select id="digakuShokui" name="digakuShokui"
-						  cssStyle="width:100pt" list="digakuShokuiCombo" />
-				  </s:if>
-				  <s:else>
-					  <select disabled style="width: 100pt">
-						  <option><s:label key="univPostTitleKj" /></option>
-					  </select>
-				  </s:else>
-				  </td>
-		    </tr>
             <tr>
                   <td></td>
                   <td>適用日</td>

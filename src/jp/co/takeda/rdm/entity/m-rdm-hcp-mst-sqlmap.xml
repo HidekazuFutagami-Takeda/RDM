@@ -29,6 +29,9 @@
     <resultMap id="selectCntHcpResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectHcpEntity">
         <result column="CNT_HCP" property="cntHcp"/>
     </resultMap>
+    <resultMap id="selectNd102ClosedCheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd102ClosedCheckEntity">
+        <result column="DOC_NO" property="docNo"/>
+    </resultMap>
    <select id="selectHcp" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpEntity" resultMap="selectHcpResultMap">
         WITH ULT_ONLY AS (
             SELECT
@@ -650,5 +653,18 @@
                 --ソートID '9'
                 <if test="inSortId == 9">ORDER BY ISHI_NM_KANA DESC NULLS LAST</if>
                 ) SELECT_HCP
+    </select>
+    <select id="selectNd102ClosedCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectNd102ClosedCheckEntity" resultMap="selectNd102ClosedCheckResultMap">
+        SELECT
+            HCP_MST.DOC_NO
+        FROM
+           M_RDM_HCP_MST HCP_MST
+        INNER JOIN
+            T_RDM_HCP_REQ HCP_REQ
+        ON
+            HCP_MST.DOC_NO = HCP_REQ.DOC_NO
+        WHERE 1 = 1
+        AND HCP_MST.DOC_NO = #{inDocNo}
+        AND HCP_REQ.DOC_ATTRIBUTE = '3'
     </select>
 </mapper>

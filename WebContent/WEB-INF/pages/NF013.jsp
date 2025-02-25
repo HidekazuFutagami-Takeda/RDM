@@ -54,795 +54,36 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	comClickFlgInit();
 
-    // selectOption作成
-	function makeOption(value, text){
-		const option1 = document.createElement('option');
-    	option1.value = value;
-    	option1.textContent = text;
-    	return option1;
-	}
-
-    // selectを空にする
-    function removeBox(box){
-    	if (box.hasChildNodes()) {
-			while (box.childNodes.length > 0) {
-				box.removeChild(box.firstChild);
-			}
-		}
-    }
-
-    // 施設区分セレクトボックス設定
-    function makePharmTypeBox(box, insType){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--選択してください--");
-    	const option1 = makeOption("01","01:U(大学)");
-		const option2 = makeOption("02","02:H(病院)");
-		const option3 = makeOption("03","03:C(診療所)");
-		const option4 = makeOption("04","04:P(開業医)");
-		const option5 = makeOption("05","05:T(精神)");
-		const option6 = makeOption("06","06:B(調剤薬局)");
-		const option7 = makeOption("07","07:Y(ワクチン施設)");
-		const option8 = makeOption("08","08:W(二次店)");
-		const option9 = makeOption("09","09:Z(その他雑)");
-
-		box.appendChild(option0);
-		if(insType == "01"){
-			box.appendChild(option1);
-	    	box.appendChild(option2);
-	    	box.appendChild(option3);
-	    	box.appendChild(option4);
-	    	box.appendChild(option5);
-		} else if(insType == "02"){
-			box.appendChild(option2);
-	    	box.appendChild(option3);
-	    	box.appendChild(option4);
-		} else if(insType == "03"){
-			box.appendChild(option6);
-		} else if(insType == "06"){
-			box.appendChild(option3);
-	    	box.appendChild(option4);
-		} else if(insType == "08"){
-			box.appendChild(option7);
-		} else if(insType == "09"){
-			box.appendChild(option8);
-	    	box.appendChild(option9);
-		} else if(insType == "10"){
-			box.appendChild(option4);
-		}
-
-    	return box;
-    }
-
-    // 階級区分セレクトボックス設定
-    function makeInsRankBox(box, insType, pharmType){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--選択してください--");
-    	const option1 = makeOption("01","01:国公立大学医学部附属病院");
-    	const option2 = makeOption("02","02:私立大学医学部附属病院");
-    	const option3 = makeOption("03","03:国公立大学の分院");
-    	const option4 = makeOption("04","04:私立大学の分院");
-    	const option5 = makeOption("05","05:歯科大学本院");
-    	const option6 = makeOption("06","06:歯科大学分院");
-    	const option7 = makeOption("07","07:100床以上の国公立病院");
-    	const option8 = makeOption("08","08:200床以上の私立病院");
-    	const option9 = makeOption("09","09:20床以上99床以下の国公立病院");
-    	const option10 = makeOption("10","10:20床以上199床以下の私立病院");
-    	const option11 = makeOption("11","11:1床以上19床以下の診療所");
-    	const option12 = makeOption("12","12:無床の診療所");
-    	const option13 = makeOption("13","13:歯科施設");
-    	const option14 = makeOption("14","14:1床以上19床以下の個人立の開業医");
-    	const option15 = makeOption("15","15:無床の開業医");
-    	const option16 = makeOption("16","16:精神");
-    	const option17 = makeOption("17","17:B調剤薬局");
-    	const option18 = makeOption("18","18:二次店");
-    	const option19 = makeOption("19","19:特二次店");
-    	const option20 = makeOption("20","20:医療モール");
-    	const option21 = makeOption("00","00:該当なし");
-
-		box.appendChild(option0);
-    	if(insType == "01" && pharmType == "01"){
-			box.appendChild(option1);
-	    	box.appendChild(option2);
-	    	box.appendChild(option3);
-	    	box.appendChild(option4);
-	    	box.appendChild(option5);
-	    	box.appendChild(option6);
-    	} else if(insType == "01" && pharmType == "02"){
-			box.appendChild(option7);
-	    	box.appendChild(option8);
-	    	box.appendChild(option9);
-	    	box.appendChild(option10);
-    	} else if(insType == "01" && pharmType == "03"){
-			box.appendChild(option11);
-	    	box.appendChild(option12);
-    	} else if(insType == "01" && pharmType == "04"){
-			box.appendChild(option13);
-	    	box.appendChild(option14);
-	    	box.appendChild(option15);
-    	} else if(insType == "01" && pharmType == "05"){
-			box.appendChild(option16);
-    	} else if(insType == "02" && pharmType == "02"){
-	    	box.appendChild(option9);
-	    	box.appendChild(option10);
-    	} else if(insType == "02" && pharmType == "03"){
-	    	box.appendChild(option11);
-	    	box.appendChild(option12);
-    	} else if(insType == "02" && pharmType == "04"){
-			box.appendChild(option13);
-	    	box.appendChild(option14);
-	    	box.appendChild(option15);
-    	} else if(insType == "03" && pharmType == "06"){
-	    	box.appendChild(option17);
-    	} else if(insType == "06" && pharmType == "03"){
-			box.appendChild(option11);
-	    	box.appendChild(option12);
-    	} else if(insType == "06" && pharmType == "04"){
-			box.appendChild(option13);
-	    	box.appendChild(option14);
-	    	box.appendChild(option15);
-    	} else if(insType == "08" && pharmType == "07"){
-			box.appendChild(option21);
-    	} else if(insType == "09" && pharmType == "08"){
-	    	box.appendChild(option18);
-	    	box.appendChild(option19);
-    	} else if(insType == "09" && pharmType == "09"){
-	    	box.appendChild(option21);
-    	} else if(insType == "10" && pharmType == "04"){
-	    	box.appendChild(option20);
-    	}
-
-    	return box;
-    }
-
-    // 定訪先区分セレクトボックス設定
-    function makeRegVisTypeBox(box, insType, pharmType, insRank){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--選択してください--");
-    	const option1 = makeOption("1","1:定訪先");
-    	const option2 = makeOption("2","2:その他先");
-    	const option3 = makeOption("0","0:該当なし");
-
-		box.appendChild(option0);
-    	if((insType == "01" && pharmType == "01" && (insRank == "01" || insRank == "02" || insRank == "03"
-    			|| insRank == "04" || insRank == "05" || insRank == "06"))
-    		|| (insType == "01" && pharmType == "02" && (insRank == "07" || insRank == "08"))){
-	    	box.appendChild(option1);
-    	} else if((insType == "01" && pharmType == "02" && (insRank == "09" || insRank == "10"))
-    			|| (insType == "01" && pharmType == "03" && (insRank == "11" || insRank == "12"))
- 				|| (insType == "01" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
- 				|| (insType == "01" && pharmType == "05" && insRank == "16")
- 				|| (insType == "02" && pharmType == "02" && (insRank == "09" || insRank == "10"))
- 				|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
- 				|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
- 				|| (insType == "03" && pharmType == "06" && insRank == "17")
- 				|| (insType == "06" && pharmType == "03" && (insRank == "11" || insRank == "12"))
- 				|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))){
-	    	box.appendChild(option1);
-	    	box.appendChild(option2);
-    	} else if((insType == "08" && pharmType == "07" && insRank == "00")
-    			|| (insType == "09" && pharmType == "08" && insRank == "19")
-    			|| (insType == "09" && pharmType == "09" && insRank == "00")){
-    		box.appendChild(option3);
-    	} else if(insType == "10" && pharmType == "04" && insRank == "20"){
-    		box.appendChild(option1);
-    	}
-
-    	return box;
-    }
-
-    //  重点病院区分セレクトボックス設定
-    function makeImpHosTypeBox(box, insType, pharmType, insRank){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--選択してください--");
-    	const option1 = makeOption("1","1:H1");
-    	const option2 = makeOption("2","2:H2");
-    	const option3 = makeOption("0","0:該当なし");
-
-		box.appendChild(option0);
-    	if(insType == "01" && pharmType == "01" && (insRank == "01" || insRank == "02")){
-	    	box.appendChild(option3);
-    	} else if((insType == "01" && pharmType == "01" && (insRank == "03" || insRank == "04" || insRank == "05" || insRank == "06"))
-    			|| (insType == "01" && pharmType == "02" && (insRank == "07" || insRank == "08"))){
-	    	box.appendChild(option1);
-	    	box.appendChild(option2);
-    	} else if((insType == "01" && pharmType == "02" && (insRank == "09" || insRank == "10"))
-    			|| (insType == "01" && pharmType == "03" && (insRank == "11" || insRank == "12"))
-    			|| (insType == "01" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
-    			|| (insType == "01" && pharmType == "05" && insRank == "16")
-    			|| (insType == "02" && pharmType == "02" && (insRank == "09" || insRank == "10"))
-    			|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
-    			|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
-    			|| (insType == "03" && pharmType == "06" && insRank == "17")
-    			|| (insType == "03" && pharmType == "03" && (insRank == "11" || insRank == "12"))
-    			|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
-    			|| (insType == "08" && pharmType == "07" && insRank == "00")
-    			|| (insType == "09" && pharmType == "08" && (insRank == "18" || insRank == "19"))
-    			|| (insType == "09" && pharmType == "09" && insRank == "00")
-    			|| (insType == "10" && pharmType == "04" && insRank == "20")){
-    		box.appendChild(option3);
-    	}
-
-    	return box;
-    }
-
-    // 経営主体セレクトボックス設定
-    // TODO M_RDM_HCO_KEIEITAIから取得か保留中
-    function makeManageCdBox(box, insRank){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--選択してください--");
-    	const option1 = makeOption("001" ,"001:厚生労働省");
-    	const option2 = makeOption("002" ,"002:文部科学省");
-    	const option3 = makeOption("003" ,"003:財務省");
-    	const option4 = makeOption("004" ,"004:総務省");
-    	const option5 = makeOption("005" ,"005:警察庁");
-    	const option6 = makeOption("006" ,"006:防衛省");
-    	const option7 = makeOption("007" ,"007:独立行政法人国立病院機構");
-    	const option8 = makeOption("008" ,"008:国立高度専門医療研究センター");
-    	const option9 = makeOption("009" ,"009:その他の国");
-    	const option10 = makeOption("010" ,"010:その他の独立行政法人");
-    	const option11 = makeOption("011" ,"011:労働福祉事業団");
-    	const option12 = makeOption("012" ,"012:国立大学法人");
-    	const option13 = makeOption("013" ,"013:独立行政法人労働者健康安全機構");
-    	const option14 = makeOption("014" ,"014:独立行政法人地域医療機能推進機構");
-    	const option15 = makeOption("015" ,"015:都立");
-    	const option16 = makeOption("016" ,"016:道立");
-    	const option17 = makeOption("017" ,"017:府立");
-    	const option18 = makeOption("018" ,"018:県立");
-    	const option19 = makeOption("019" ,"019:市立");
-    	const option20 = makeOption("020" ,"020:区立");
-    	const option21 = makeOption("021" ,"021:町立");
-    	const option22 = makeOption("022" ,"022:村立");
-    	const option23 = makeOption("023" ,"023:一部事務組合");
-    	const option24 = makeOption("024" ,"024:地方独立行政法人");
-    	const option25 = makeOption("025" ,"025:地方公共団体");
-    	const option26 = makeOption("026" ,"026:済生会");
-    	const option27 = makeOption("027" ,"027:厚生連－全国厚生農業協同組合");
-    	const option28 = makeOption("028" ,"028:日本赤十字社");
-    	const option29 = makeOption("029" ,"029:北海道社会事業協会");
-    	const option30 = makeOption("030" ,"030:国民健康保険団体連合会");
-    	const option31 = makeOption("031" ,"031:国民健康保険組合");
-    	const option32 = makeOption("032" ,"032:全国社会保険協会連合会");
-    	const option33 = makeOption("033" ,"033:健康保険組合・連合会");
-    	const option34 = makeOption("034" ,"034:船員保険組合");
-    	const option35 = makeOption("035" ,"035:厚生団");
-    	const option36 = makeOption("036" ,"036:共済組合・連合会");
-    	const option37 = makeOption("037" ,"037:生活協同組合・連合会");
-    	const option38 = makeOption("038" ,"038:その他の社会保険関係");
-    	const option39 = makeOption("039" ,"039:その他の組合運営のもの");
-    	const option40 = makeOption("040" ,"040:医療法人");
-    	const option41 = makeOption("041" ,"041:学校法人");
-    	const option42 = makeOption("042" ,"042:財団法人");
-    	const option43 = makeOption("043" ,"043:社団法人");
-    	const option44 = makeOption("044" ,"044:社会福祉法人");
-    	const option45 = makeOption("045" ,"045:公益法人");
-    	const option46 = makeOption("046" ,"046:宗教法人");
-    	const option47 = makeOption("047" ,"047:その他の法人");
-    	const option48 = makeOption("048" ,"048:ＪＲ");
-    	const option49 = makeOption("049" ,"049:日本電信電話（株）");
-    	const option50 = makeOption("050" ,"050:日本たばこ産業（株）");
-    	const option51 = makeOption("051" ,"051:日本郵政株式会社");
-    	const option52 = makeOption("052" ,"052:医療福祉生協");
-    	const option53 = makeOption("053" ,"053:医師会");
-    	const option54 = makeOption("054" ,"054:会社・事務所");
-    	const option55 = makeOption("055" ,"055:個人");
-    	const option56 = makeOption("056" ,"056:歯科医師会");
-    	const option57 = makeOption("057" ,"057:薬剤師会");
-    	const option58 = makeOption("058" ,"058:その他の団体");
-    	const option59 = makeOption("059" ,"059:農業協同組合（厚生連を除く）");
-
-    	box.appendChild(option0);
-    	if(insRank == "01" || insRank == "03"){
-	    	box.appendChild(option1);
-	    	box.appendChild(option2);
-	    	box.appendChild(option3);
-	    	box.appendChild(option4);
-	    	box.appendChild(option5);
-	    	box.appendChild(option6);
-	    	box.appendChild(option7);
-	    	box.appendChild(option9);
-	    	box.appendChild(option10);
-	    	box.appendChild(option11);
-	    	box.appendChild(option12);
-	    	box.appendChild(option13);
-	    	box.appendChild(option14);
-	    	box.appendChild(option15);
-	    	box.appendChild(option16);
-	    	box.appendChild(option17);
-	    	box.appendChild(option18);
-	    	box.appendChild(option19);
-	    	box.appendChild(option20);
-	    	box.appendChild(option21);
-	    	box.appendChild(option22);
-	    	box.appendChild(option23);
-	    	box.appendChild(option24);
-	    	box.appendChild(option25);
-	    	box.appendChild(option26);
-	    	box.appendChild(option27);
-	    	box.appendChild(option28);
-	    	box.appendChild(option29);
-	    	box.appendChild(option30);
-	    	box.appendChild(option31);
-	    	box.appendChild(option32);
-	    	box.appendChild(option33);
-	    	box.appendChild(option34);
-	    	box.appendChild(option35);
-	    	box.appendChild(option36);
-	    	box.appendChild(option38);
-	    	box.appendChild(option39);
-	    	box.appendChild(option48);
-	    	box.appendChild(option49);
-	    	box.appendChild(option50);
-	    	box.appendChild(option51);
-    	} else if(insRank == "02" || insRank == "04" || insRank == "08" || insRank == "10"){
-	    	box.appendChild(option37);
-	    	box.appendChild(option40);
-	    	box.appendChild(option41);
-	    	box.appendChild(option42);
-	    	box.appendChild(option43);
-	    	box.appendChild(option44);
-	    	box.appendChild(option45);
-	    	box.appendChild(option46);
-	    	box.appendChild(option47);
-	    	box.appendChild(option52);
-	    	box.appendChild(option53);
-	    	box.appendChild(option54);
-	    	box.appendChild(option55);
-	    	box.appendChild(option56);
-	    	box.appendChild(option57);
-	    	box.appendChild(option58);
-	    	box.appendChild(option59);
-    	} else if(insRank == "05" || insRank == "06" || insRank == "16" || insRank == "17"
-    			 || insRank == "18" || insRank == "19" || insRank == "20" || insRank == "00"){
-    		box.appendChild(option1);
-    		box.appendChild(option2);
-    		box.appendChild(option3);
-    		box.appendChild(option4);
-    		box.appendChild(option5);
-    		box.appendChild(option6);
-    		box.appendChild(option7);
-    		box.appendChild(option9);
-    		box.appendChild(option10);
-    		box.appendChild(option11);
-    		box.appendChild(option12);
-    		box.appendChild(option13);
-    		box.appendChild(option14);
-    		box.appendChild(option15);
-    		box.appendChild(option16);
-    		box.appendChild(option17);
-    		box.appendChild(option18);
-    		box.appendChild(option19);
-    		box.appendChild(option20);
-    		box.appendChild(option21);
-    		box.appendChild(option22);
-    		box.appendChild(option23);
-    		box.appendChild(option24);
-    		box.appendChild(option25);
-    		box.appendChild(option26);
-    		box.appendChild(option27);
-    		box.appendChild(option28);
-    		box.appendChild(option29);
-    		box.appendChild(option30);
-    		box.appendChild(option31);
-    		box.appendChild(option32);
-    		box.appendChild(option33);
-    		box.appendChild(option34);
-    		box.appendChild(option35);
-    		box.appendChild(option36);
-    		box.appendChild(option37);
-    		box.appendChild(option38);
-    		box.appendChild(option39);
-    		box.appendChild(option40);
-    		box.appendChild(option41);
-    		box.appendChild(option42);
-    		box.appendChild(option43);
-    		box.appendChild(option44);
-    		box.appendChild(option45);
-    		box.appendChild(option46);
-    		box.appendChild(option47);
-    		box.appendChild(option48);
-    		box.appendChild(option49);
-    		box.appendChild(option50);
-    		box.appendChild(option51);
-    		box.appendChild(option52);
-    		box.appendChild(option53);
-    		box.appendChild(option54);
-    		box.appendChild(option55);
-    		box.appendChild(option56);
-    		box.appendChild(option57);
-    		box.appendChild(option58);
-    		box.appendChild(option59);
-    	} else if(insRank == "07" || insRank == "09"){
-    		box.appendChild(option1);
-    		box.appendChild(option2);
-    		box.appendChild(option3);
-    		box.appendChild(option4);
-    		box.appendChild(option5);
-    		box.appendChild(option6);
-    		box.appendChild(option7);
-    		box.appendChild(option8);
-    		box.appendChild(option9);
-    		box.appendChild(option10);
-    		box.appendChild(option11);
-    		box.appendChild(option12);
-    		box.appendChild(option13);
-    		box.appendChild(option14);
-    		box.appendChild(option15);
-    		box.appendChild(option16);
-    		box.appendChild(option17);
-    		box.appendChild(option18);
-    		box.appendChild(option19);
-    		box.appendChild(option20);
-    		box.appendChild(option21);
-    		box.appendChild(option22);
-    		box.appendChild(option23);
-    		box.appendChild(option24);
-    		box.appendChild(option25);
-    		box.appendChild(option26);
-    		box.appendChild(option27);
-    		box.appendChild(option28);
-    		box.appendChild(option29);
-    		box.appendChild(option30);
-    		box.appendChild(option31);
-    		box.appendChild(option32);
-    		box.appendChild(option33);
-    		box.appendChild(option34);
-    		box.appendChild(option35);
-    		box.appendChild(option36);
-    		box.appendChild(option38);
-    		box.appendChild(option39);
-    		box.appendChild(option48);
-    		box.appendChild(option49);
-    		box.appendChild(option50);
-    		box.appendChild(option51);
-    	} else if(insRank == "11" || insRank == "12"){
-    		box.appendChild(option1);
-    		box.appendChild(option2);
-    		box.appendChild(option3);
-    		box.appendChild(option4);
-    		box.appendChild(option5);
-    		box.appendChild(option6);
-    		box.appendChild(option7);
-    		box.appendChild(option8);
-    		box.appendChild(option9);
-    		box.appendChild(option10);
-    		box.appendChild(option11);
-    		box.appendChild(option12);
-    		box.appendChild(option13);
-    		box.appendChild(option14);
-    		box.appendChild(option15);
-    		box.appendChild(option16);
-    		box.appendChild(option17);
-    		box.appendChild(option18);
-    		box.appendChild(option19);
-    		box.appendChild(option20);
-    		box.appendChild(option21);
-    		box.appendChild(option22);
-    		box.appendChild(option23);
-    		box.appendChild(option24);
-    		box.appendChild(option25);
-    		box.appendChild(option26);
-    		box.appendChild(option27);
-    		box.appendChild(option28);
-    		box.appendChild(option29);
-    		box.appendChild(option30);
-    		box.appendChild(option31);
-    		box.appendChild(option32);
-    		box.appendChild(option33);
-    		box.appendChild(option34);
-    		box.appendChild(option35);
-    		box.appendChild(option36);
-    		box.appendChild(option37);
-    		box.appendChild(option38);
-    		box.appendChild(option39);
-    		box.appendChild(option40);
-    		box.appendChild(option41);
-    		box.appendChild(option42);
-    		box.appendChild(option43);
-    		box.appendChild(option44);
-    		box.appendChild(option45);
-    		box.appendChild(option46);
-    		box.appendChild(option47);
-    		box.appendChild(option48);
-    		box.appendChild(option49);
-    		box.appendChild(option50);
-    		box.appendChild(option51);
-    		box.appendChild(option52);
-    		box.appendChild(option53);
-    		box.appendChild(option54);
-    		box.appendChild(option55);
-    		box.appendChild(option56);
-    		box.appendChild(option57);
-    		box.appendChild(option58);
-    		box.appendChild(option59);
-    	} else if(insRank == "13" || insRank == "14" || insRank == "15"){
-    		box.appendChild(option14);
-    		box.appendChild(option23);
-    		box.appendChild(option24);
-    		box.appendChild(option26);
-    		box.appendChild(option40);
-    		box.appendChild(option41);
-    		box.appendChild(option43);
-    		box.appendChild(option44);
-    		box.appendChild(option45);
-    		box.appendChild(option54);
-    		box.appendChild(option55);
-    	}
-
-    	return box;
-    }
-
-    // セレクトボックスの設定
-    function changeBox(changeItem){
-    	// 施設区分
-    	if(changeItem == "1" || changeItem == "4"){
-        	var box = document.fm1.pharmType;
-        	box = makePharmTypeBox(box,document.fm1.insType.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpPharmType.value;
-        	}
-    	}
-
-    	// 階級区分
-    	if(changeItem == "1" || changeItem == "2" || changeItem == "4"){
-        	var box = document.fm1.insRank;
-        	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.pharmType.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpInsRank.value;
-        	}
-    	}
-
-    	// 定訪先区分
-    	if(changeItem == "1" || changeItem == "2" || changeItem == "3" || changeItem == "4"){
-        	var box = document.fm1.regVisType;
-        	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.pharmType.value, document.fm1.insRank.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpRegVisType.value;
-        	}
-    	}
-
-    	//  重点病院区分
-    	if(changeItem == "1" || changeItem == "2" || changeItem == "3" || changeItem == "4"){
-        	var box = document.fm1.impHosType;
-        	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.pharmType.value, document.fm1.insRank.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpImpHosType.value;
-        	}
-    	}
-
-    	// 経営主体
-    	if(changeItem == "3" || changeItem == "4"){
-        	var box = document.fm1.manageCd;
-        	box = makeManageCdBox(box,document.fm1.insRank.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpManageCd.value;
-        	}
-    	}
-    }
-
-    // 親施設表示設定
-    function mainInsView(){
-    	const insType = document.fm1.insType.value;
-    	if(insType == "02" || insType == "04" || insType == "05" || insType == "07"){
-    		document.getElementById("mainInsTr").style.visibility = "visible";
+    // 廃院日、削除区分表示設定
+    function delView(){
+    	const delKbn = document.fm1.delKbn.value;
+    	if(delKbn == "" || delKbn == "0"){
+    		document.getElementById("delYmdTr").style.visibility = "collapse";
+    		document.getElementById("delReasonTr").style.visibility = "collapse";
     	} else {
-    		document.getElementById("mainInsTr").style.visibility = "hidden";
-    		document.fm1.mainInsCd.value = "";
-    		document.fm1.mainInsNm.value = "";
+    		document.getElementById("delYmdTr").style.visibility = "visible";
+    		document.getElementById("delReasonTr").style.visibility = "visible";
     	}
     }
 
-	// ワクチン情報表示設定
-    function vacView(){
-    	const insType = document.fm1.insType.value;
-    	if(insType == "08"){
-    		document.getElementById("vacHr").style.visibility = "visible";
-    		document.getElementById("formTable09").style.visibility = "visible";
+	// 重複施設表示設定
+    function dupView(){
+    	const delKbn = document.fm1.delKbn.value;
+    	const delReason = document.fm1.delReason.value;
+    	if(delKbn != "" && delKbn != "0" && delReason == "03"){
+    		document.getElementById("formTable03").style.visibility = "visible";
     	} else {
-    		document.getElementById("vacHr").style.visibility = "hidden";
-    		document.getElementById("formTable09").style.visibility = "hidden";
-    		document.fm1.vacInsType.value = "";
-    		document.fm1.vacVisitType.value = "";
+    		document.getElementById("formTable03").style.visibility = "collapse";
     	}
     }
-
-	// 担当者情報表示設定
-    function trtView(){
-    	const mainInsCd = document.fm1.mainInsCd.value;
-    	if(mainInsCd == ""){
-    		document.getElementById("trtHr").style.visibility = "visible";
-    		document.getElementById("formTable10").style.visibility = "visible";
-    	} else {
-    		document.getElementById("trtHr").style.visibility = "hidden";
-    		document.getElementById("formTable10").style.visibility = "hidden";
-    	}
-    }
-
-	// 病床数表示設定
-	function bedCntView(){
-		const insType = document.fm1.insType.value;
-
-		if(insType == "01" || insType == "02"){
-    		document.getElementById("bedCntTr").style.visibility = "visible";
-    		document.getElementById("formTable08").style.visibility = "visible";
-
-    		// 活性
-    		document.fm1.bedCntBase.readOnly = false;
-    		document.fm1.bedCnt01.readOnly = false;
-    		document.fm1.bedCnt02.readOnly = false;
-    		document.fm1.bedCnt03.readOnly = false;
-    		document.fm1.bedCnt04.readOnly = false;
-    		document.fm1.bedCnt05.readOnly = false;
-    		document.fm1.bedCnt06.readOnly = false;
-    		document.fm1.bedCnt07.readOnly = false;
-    		document.fm1.bedCntBase.style = "";
-    		document.fm1.bedCnt01.style = "";
-    		document.fm1.bedCnt02.style = "";
-    		document.fm1.bedCnt03.style = "";
-    		document.fm1.bedCnt04.style = "";
-    		document.fm1.bedCnt05.style = "";
-    		document.fm1.bedCnt06.style = "";
-    		document.fm1.bedCnt07.style = "";
-
-    	}else if(insType == "03" || insType == "06" || insType == "08"
-    				|| insType == "09" || insType == "10"){
-    		document.getElementById("bedCntTr").style.visibility = "hidden";
-    		document.getElementById("formTable08").style.visibility = "hidden";
-
-    		// 非活性
-    		document.fm1.bedCntBase.readOnly = true;
-    		document.fm1.bedCnt01.readOnly = true;
-    		document.fm1.bedCnt02.readOnly = true;
-    		document.fm1.bedCnt03.readOnly = true;
-    		document.fm1.bedCnt04.readOnly = true;
-    		document.fm1.bedCnt05.readOnly = true;
-    		document.fm1.bedCnt06.readOnly = true;
-    		document.fm1.bedCnt07.readOnly = true;
-
-    		document.fm1.bedCntBase.value = "";
-    		document.fm1.bedCnt01.value = "";
-    		document.fm1.bedCnt02.value = "";
-    		document.fm1.bedCnt03.value = "";
-    		document.fm1.bedCnt04.value = "";
-    		document.fm1.bedCnt05.value = "";
-    		document.fm1.bedCnt06.value = "";
-    		document.fm1.bedCnt07.value = "";
-    		document.fm1.bedsTot.value = "";
-    		document.fm1.medBedsTot.value = "";
-    	} else if(insType == "04" || insType == "05" || insType == "07"){
-    		document.getElementById("bedCntTr").style.visibility = "visible";
-    		document.getElementById("formTable08").style.visibility = "visible";
-
-    		// 非活性
-    		document.fm1.bedCntBase.readOnly = true;
-    		document.fm1.bedCnt01.readOnly = true;
-    		document.fm1.bedCnt02.readOnly = true;
-    		document.fm1.bedCnt03.readOnly = true;
-    		document.fm1.bedCnt04.readOnly = true;
-    		document.fm1.bedCnt05.readOnly = true;
-    		document.fm1.bedCnt06.readOnly = true;
-    		document.fm1.bedCnt07.readOnly = true;
-    		document.fm1.bedCntBase.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt01.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt02.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt03.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt04.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt05.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt06.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt07.style = "background-color:#D4D0C8";
-
-    		document.fm1.bedCntBase.value = "0";
-    		document.fm1.bedCnt01.value = "0";
-    		document.fm1.bedCnt02.value = "0";
-    		document.fm1.bedCnt03.value = "0";
-    		document.fm1.bedCnt04.value = "0";
-    		document.fm1.bedCnt05.value = "0";
-    		document.fm1.bedCnt06.value = "0";
-    		document.fm1.bedCnt07.value = "0";
-    		document.fm1.bedsTot.value = "0";
-    		document.fm1.medBedsTot.value = "0";
-    	}
-
-		// 入所定員情報
-		if(insType == "06" || insType == "07"){
-			document.getElementById("entcapaNumTr").style.visibility = "visible";
-		} else {
-			document.getElementById("entcapaNumTr").style.visibility = "hidden";
-			document.fm1.entcapaNum.value = "";
-		}
-	}
-
-	// 病床数再計算
-	function calcBedCnt(){
-		var bedsTot = 0;
-		var medBedsTot = 0;
-
-		// 一般
-		if(document.fm1.bedCnt01.value != "" && comChkNum(document.fm1.bedCnt01.value)) {
-			bedsTot += parseInt(document.fm1.bedCnt01.value);
-			medBedsTot += parseInt(document.fm1.bedCnt01.value);
-		}
-
-		// 精神
-		if(document.fm1.bedCnt03.value != "" && comChkNum(document.fm1.bedCnt03.value)) {
-			bedsTot += parseInt(document.fm1.bedCnt03.value);
-			medBedsTot += parseInt(document.fm1.bedCnt03.value);
-		}
-
-		// 結核
-		if(document.fm1.bedCnt04.value != "" && comChkNum(document.fm1.bedCnt04.value)) {
-			bedsTot += parseInt(document.fm1.bedCnt04.value);
-			medBedsTot += parseInt(document.fm1.bedCnt04.value);
-		}
-
-		// 感染症
-		if(document.fm1.bedCnt05.value != "" && comChkNum(document.fm1.bedCnt05.value)) {
-			bedsTot += parseInt(document.fm1.bedCnt05.value);
-			medBedsTot += parseInt(document.fm1.bedCnt05.value);
-		}
-
-		// 療養
-		if(document.fm1.bedCnt07.value != "" && comChkNum(document.fm1.bedCnt07.value)) {
-			bedsTot += parseInt(document.fm1.bedCnt07.value);
-		}
-
-		// 医療療養
-		if(document.fm1.bedCnt02.value != "" && comChkNum(document.fm1.bedCnt02.value)) {
-			medBedsTot += parseInt(document.fm1.bedCnt02.value);
-		}
-
-		document.fm1.bedsTot.value = bedsTot;
-		document.fm1.medBedsTot.value = medBedsTot;
-	}
-
-	// 対象区分値設定
-	function setHoInsType(){
-		const insRank = document.fm1.insRank.value;
-
-		if(insRank == "01" ||insRank == "02"){
-			document.fm1.hoInsType.value = "1";
-		} else if(insRank == "03" || insRank == "04" || insRank == "05" || insRank == "06"
-			 || insRank == "07" || insRank == "08"){
-			document.fm1.hoInsType.value = "2";
-		} else if(insRank == "09" || insRank == "10" || insRank == "11" || insRank == "12"
-			 || insRank == "13" || insRank == "14"|| insRank == "15" || insRank == "16"
-			 || insRank == "17" || insRank == "20"){
-			document.fm1.hoInsType.value = "3";
-		} else if(insRank == "00" || insRank == "18" || insRank == "19"){
-			document.fm1.hoInsType.value = "4";
-		} else {
-			document.fm1.hoInsType.value = "";
-		}
-
-		document.fm1.hoInsTypeView.value = document.fm1.hoInsType.options[document.fm1.hoInsType.selectedIndex].textContent;
-	}
 
     // 初期表示処理
     function onLoadFunc(){
-    	changeBox("4");
-    	mainInsView();
-    	vacView();
-    	trtView();
-    	bedCntView();
+    	delView();
+    	dupView();
 
     	// 編集不可設定
 		onLoadEditSet();
-    	// 対象区分表示
-    	document.fm1.hoInsTypeView.value = document.fm1.hoInsType.options[document.fm1.hoInsType.selectedIndex].textContent;
     }
 
     function onLoadEditSet(){
@@ -850,82 +91,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 		if(editFlg == "0") {
 			// 施設種別
-			document.fm1.insTypeView.value = document.fm1.insType.options[document.fm1.insType.selectedIndex].textContent;
-			document.fm1.insType.hidden = "true";
-
-			// 取引区分
-			document.fm1.tradeTypeView.value = document.fm1.tradeType.options[document.fm1.tradeType.selectedIndex].textContent;
-			document.fm1.tradeType.hidden = "true";
-
-			// 開業年月日
-			document.fm1.insOpenYearView.value = document.fm1.insOpenYear.options[document.fm1.insOpenYear.selectedIndex].textContent;
-			document.fm1.insOpenYear.hidden = "true";
-			document.fm1.insOpenMonthView.value = document.fm1.insOpenMonth.options[document.fm1.insOpenMonth.selectedIndex].textContent;
-			document.fm1.insOpenMonth.hidden = "true";
-			document.fm1.insOpenDayView.value = document.fm1.insOpenDay.options[document.fm1.insOpenDay.selectedIndex].textContent;
-			document.fm1.insOpenDay.hidden = "true";
-
-			// 施設区分
-			document.fm1.pharmTypeView.value = document.fm1.pharmType.options[document.fm1.pharmType.selectedIndex].textContent;
-			document.fm1.pharmType.hidden = "true";
-
-			// 階級区分
-			document.fm1.insRankView.value = document.fm1.insRank.options[document.fm1.insRank.selectedIndex].textContent;
-			document.fm1.insRank.hidden = "true";
-
-			// 定訪先区分
-			document.fm1.regVisTypeView.value = document.fm1.regVisType.options[document.fm1.regVisType.selectedIndex].textContent;
-			document.fm1.regVisType.hidden = "true";
-
-			// 重点病院区分
-			document.fm1.impHosTypeView.value = document.fm1.impHosType.options[document.fm1.impHosType.selectedIndex].textContent;
-			document.fm1.impHosType.hidden = "true";
-
-			// 大学細分類
-			document.fm1.univSubdivView.value = document.fm1.univSubdiv.options[document.fm1.univSubdiv.selectedIndex].textContent;
-			document.fm1.univSubdiv.hidden = "true";
-
-			// 経営主体
-			document.fm1.manageCdView.value = document.fm1.manageCd.options[document.fm1.manageCd.selectedIndex].textContent;
-			document.fm1.manageCd.hidden = "true";
-
-			// 病床数情報
-			document.fm1.bedCntBase.readOnly = true;
-    		document.fm1.bedCnt01.readOnly = true;
-    		document.fm1.bedCnt02.readOnly = true;
-    		document.fm1.bedCnt03.readOnly = true;
-    		document.fm1.bedCnt04.readOnly = true;
-    		document.fm1.bedCnt05.readOnly = true;
-    		document.fm1.bedCnt06.readOnly = true;
-    		document.fm1.bedCnt07.readOnly = true;
-
-			// ワクチン対象区分
-			document.fm1.vacInsTypeView.value = document.fm1.vacInsType.options[document.fm1.vacInsType.selectedIndex].textContent;
-			document.fm1.vacInsType.hidden = "true";
-
-			// ワクチン定訪先区分
-			document.fm1.vacVisitTypeView.value = document.fm1.vacVisitType.options[document.fm1.vacVisitType.selectedIndex].textContent;
-			document.fm1.vacVisitType.hidden = "true";
+			//document.fm1.insTypeView.value = document.fm1.insType.options[document.fm1.insType.selectedIndex].textContent;
+			//document.fm1.insType.hidden = "true";
 
 		} else {
-			document.fm1.insTypeView.hidden = "true";
-			document.fm1.tradeTypeView.hidden = "true";
-			document.fm1.insOpenYearView.hidden = "true";
-			document.fm1.insOpenMonthView.hidden = "true";
-			document.fm1.insOpenDayView.hidden = "true";
-			document.fm1.pharmTypeView.hidden = "true";
-			document.fm1.insRankView.hidden = "true";
-			document.fm1.regVisTypeView.hidden = "true";
-			document.fm1.impHosTypeView.hidden = "true";
-			document.fm1.univSubdivView.hidden = "true";
-			document.fm1.manageCdView.hidden = "true";
-			document.fm1.vacInsTypeView.hidden = "true";
-			document.fm1.vacVisitTypeView.hidden = "true";
+			//document.fm1.insTypeView.hidden = "true";
 		}
     }
 
-    // 親施設選択ボタン
-    function mainInsPopBtn(){
+    // 施設選択ボタン
+    function insPopBtn(){
 		// NC203_施設検索ポップアップ画面を表示
 		window.open("","insPopWindow",insSubScreenSize);
 		document.fm1.screenId.value = "NC203";
@@ -934,213 +109,23 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 		const pCode = document.fm1.insPcode.value;
 		document.fm1.insPcode.value = "";
-		const pharmType = document.fm1.pharmType.value;
-		document.fm1.pharmType.value = "";
 
-		if(document.fm1.insType.value == "02" || document.fm1.insType.value == "05") {
-			document.fm1.kensakuInsSbt.value = "10";
-		} else {
-			document.fm1.kensakuInsSbt.value = "";
-		}
-
-		document.fm1.koshisetsuCheck.value = "1";
-		document.fm1.callBack.value = "callBackMainInsPop";
+		document.fm1.callBack.value = "callBackInsPop";
 
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
 
 		document.fm1.insPcode.value = pCode;
-		document.fm1.pharmType.value = pharmType;
     }
 
-	// 施設ポップアップから親施設受け取り
-    function callBackMainInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
+	// 施設ポップアップから重複施設受け取り
+    function callBackInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType, insClass){
 
-    	document.fm1.mainInsCd.value = insNo;
-    	document.fm1.mainInsNm.value = insAbbrName;
+    	document.fm1.dupInsNo.value = insNo;
+    	document.fm1.dupInsAbbrName.value = insAbbrName;
+    	document.fm1.dupInsAddr.value = insAddr;
 
-    	trtView();
     }
-
-	// 数値とﾊｲﾌﾝのみかチェック
-	function chkNumhyph(String){
-		var i;
-		var Letter;
-
-		for( i = 0; i < String.length; i++ ){
-			Letter = String.charAt(i);
-			if((Letter!="-") && (Letter.search("[^0-9０-９]") != -1)){
-				return false;
-			}
-		}
-		return true;
-	}
-
-	// 住所候補ボタン
-	function addrPopBtn(){
-		const pCode = document.fm1.insPcode.value;
-		if(pCode == ""){
-		// 郵便番号が未入力の場合
-			window.alert("必須項目にデータを入力してください。（郵便番号）");
-			return false;
-		} else if(pCode.length <= 6 || pCode.length >= 9){
-			// 郵便番号が６文字以下または９文字以上の場合
-			window.alert("最大文字数を超えています。（郵便番号）");
-			return false;
-		} else if(!chkNumhyph(pCode)){
-			// 郵便番号に数字、ハイフン　以外の文字がある場合
-			window.alert("入力文字種が不正です。（郵便番号）");
-			return false;
-		} else if(!comChkSingleByte(pCode)){
-			// 郵便番号に全角文字が含まれている場合
-			window.alert("半角で入力してください。（郵便番号）");
-			return false;
-		} else if((pCode.length == 8 && !comChkPostcode_IE(pCode))
-					|| (pCode.length == 7 && !comChkNum(pCode))){
-			// 郵便番号が３桁数字ー４桁数字　の書式以外の場合
-			window.alert("正しい書式で入力してください。（郵便番号）");
-			return false;
-		}
-
-		document.fm1.postCode.value = pCode.replace("-","");
-
-		// NC205_住所候補ポップアップ画面を表示
-		window.open("","addrPopWindow",addrSubScreenSize);
-		document.fm1.screenId.value = "NC205";
-		document.fm1.functionId.value="Init";
-		document.fm1.target="addrPopWindow";
-
-		document.fm1.callBack.value="callBackAddrPop";
-
-		comSubmitForAnyWarp(fm1);
-		comClickFlgInit();
-	}
-
-	// 住所候補ポップアップから値受け取り
-	function callBackAddrPop(addrNamePref,addrNameCity,addrNameArea,postCode,addrCodePref,addrCodeCity,
-								tkPrefCd,tkCityCd,tkCityName,addrKanaPref,addrKanaCity,addrKanaArea){
-
-		document.fm1.addrCodePrefName.value = addrNamePref;
-		document.fm1.addrCodePref.value = addrCodePref;
-		document.fm1.addrCodeCityName.value = addrNameCity;
-		document.fm1.addrCodeCity.value = addrCodeCity;
-		document.fm1.insAddrDt.value = addrNameArea;
-
-		document.fm1.tkCityName.value = tkCityName;
-		document.fm1.tkCityCd.value = tkCityCd;
-
-		document.fm1.addrCodePrefKana.value = addrKanaPref;
-		document.fm1.addrCodeCityKana.value = addrKanaCity;
-		document.fm1.addrDtKana.value = addrKanaArea;
-	}
-
-	// 担当者検索ボタン
-    function trtPopBtn(){
-		// NC202_担当者検索ポップアップ画面を表示
-    	window.open("","tantoPopWindow",tantoSubScreenSize);
-		document.fm1.screenId.value = "NC202";
-		document.fm1.functionId.value="Init";
-		document.fm1.target="tantoPopWindow";
-
-		document.fm1.trtCdPop.value = document.fm1.trtCd.value;
-		document.fm1.addrCodePrefPop.value = document.fm1.addrCodePref.value;
-		document.fm1.tkCityCdPop.value = document.fm1.tkCityCd.value;
-
-		document.fm1.selectFlgPop.value="1";
-		document.fm1.callBack.value="callBackTantoPop";
-
-		comSubmitForAnyWarp(fm1);
-		comClickFlgInit();
-    }
-
-	// 担当者行の追加処理
-    function callBackTantoPop(sosCd, bumonSeiName, inJgiNo, inJgiName, inTrtCd, brCode, distCode, inTrtGrpCd, inTrtNm, inMrCat){
-
-		let trtTable = document.getElementById("formTable11");
-		let trtRow = Number(trtTable.rows.length)-1;
-
-		// 子画面から取得した値を設定する
-		let trtCd = inTrtCd;
-		let trtNm = inTrtNm;
-        let jgiNo = inJgiNo;
-        let jgiNm = inJgiName;
-        let trtGrpCd = inTrtGrpCd;
-        let mrCat = inMrCat;
-
-		let trtCdInp = document.createElement("input");
-		let jgiNoInp = document.createElement("input");
-		let trtGrpInp = document.createElement("input");
-		let mrCatInp = document.createElement("input");
-		let delFlgInp = document.createElement("input");
-
-		trtCdInp.setAttribute("type", "hidden");
-		jgiNoInp.setAttribute("type", "hidden");
-		trtGrpInp.setAttribute("type", "hidden");
-		mrCatInp.setAttribute("type", "hidden");
-		delFlgInp.setAttribute("type", "hidden");
-
-		trtCdInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].trtCd");
-		jgiNoInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].jgiNo");
-		trtGrpInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].trtGrpCd");
-		mrCatInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].mrCat");
-		delFlgInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].deleteFlg");
-
-		trtCdInp.setAttribute("value", trtCd);
-		jgiNoInp.setAttribute("value", jgiNo);
-		trtGrpInp.setAttribute("value", trtGrpCd);
-		mrCatInp.setAttribute("value", mrCat);
-		delFlgInp.setAttribute("value", "0");
-
-		let tr = document.createElement("tr");
-		let td1 = document.createElement("td");
-		let td2 = document.createElement("td");
-		let td3 = document.createElement("td");
-		let a = document.createElement("a");
-		let image = document.createElement("img");
-
-		tr.appendChild(trtCdInp);
-		tr.appendChild(jgiNoInp);
-		tr.appendChild(trtGrpInp);
-		tr.appendChild(mrCatInp);
-		tr.appendChild(delFlgInp);
-
-		a.className = "comMiniLink";
-		a.setAttribute("href", "#");
-		const js = "JavaScript:delTrtRow("+trtRow+");return false;";
-		a.setAttribute("onclick", js);
-		image.setAttribute("border", "0");
-		image.setAttribute("src", "img/button_delete.gif");
-		a.appendChild(image);
-		td1.appendChild(a);
-		tr.appendChild(td1);
-
-		let text1 = document.createTextNode(trtNm);
-		td2.appendChild(text1);
-		tr.appendChild(td2);
-		let text2 = document.createTextNode(jgiNm);
-		td3.appendChild(text2);
-		tr.appendChild(td3);
-
-		trtTable.appendChild(tr);
-
-		return false;
-   	}
-
-	// 担当者行の削除ボタン
-	function delTrtRow(index){
-		// 対象の行を削除する
-		let i = Number(index)+1;
-		let trtTable = document.getElementById("formTable11");
-		let trtTr = trtTable.rows[i];
-		trtTr.style.visibility = "collapse";
-
-		let key = "hcoJkrDataList["+index+"].deleteFlg";
-		let delFlg = document.getElementsByName(key)[0];
-
-		delFlg.value = "1";
-
-		return false;
-	}
 
 	// 戻るボタン
 	function backBtn(){
@@ -1179,11 +164,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	// 一時保存ボタン、申請画面へ、承認・却下画面へボタン
 	function submitBtn(funcId){
-		document.fm1.insAddr.value = document.fm1.addrCodePrefName.value + document.fm1.addrCodeCityName.value
-										+ document.fm1.insAddrDt.value;
-		document.fm1.insAddrKana.value = document.fm1.addrCodePrefKana.value + document.fm1.addrCodeCityKana.value
-										+ document.fm1.addrDtKana.value;
-
 		document.fm1.funcId.value = funcId;
 		document.fm1.screenId.value="NF013";
 
@@ -1193,11 +173,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			document.fm1.functionId.value="Register";
 		} else if(funcId == "2") {
 			// 承認・却下
-			document.fm1.screenId.value="NF301";
+			document.fm1.screenId.value="NF305";
 			document.fm1.functionId.value="ApprRej";
 		} else {
 			// 申請
-			document.fm1.screenId.value="NF301";
+			document.fm1.screenId.value="NF305";
 			document.fm1.functionId.value="Init";
 		}
 
@@ -1355,8 +335,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
-	<s:hidden name="ultInsCd"/>
-	<s:hidden name="ultInsNm"/>
+	<s:hidden name="insFormalName" />
 	<s:hidden name="editApprFlg"/>
 
 	<s:hidden name="addrCodePrefPop"/>
@@ -1525,9 +504,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   </table>
   <br/>
   <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
-    <table id="formTable04" border="0" class="comPortalTable" align="center" style="width:75%;">
+    <table id="formTable02" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
-        <%--基本情報--%>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 220px; height: 0px; border-width: 0px;"></td>
@@ -1535,374 +513,138 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <td style="width: 220px; height: 0px; border-width: 0px;"></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>基本情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>施設略式漢字名(全角)<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>施設固定コード</nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-	      		<s:if test='%{editApprFlg == "1"}'>
-			      	<s:textfield name="insAbbrName" size="30" maxlength="60" />
-				</s:if>
-				<s:else>
-					<s:textfield name="insAbbrName" size="30" maxlength="60" readonly="true" />
-				</s:else>
+				<s:label key="insNo" /><s:hidden name="insNo" />
 			</nobr>
 		  </td>
-	      <td class="comFormTableItem"><nobr>施設カナ名(半角カナ)<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>施設略式漢字名</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-				<s:textfield name="insKana" size="30" maxlength="45" />
-			</s:if>
-			<s:else>
-				<s:textfield name="insKana" size="30" maxlength="45" readonly="true" />
-			</s:else>
+	      		<s:label key="insAbbrName" /><s:hidden name="insAbbrName" />
 			</nobr>
 		</td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>施設正式漢字名(全角)<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem" colSpan="3">
-	      	<nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-		      	<s:textfield name="insFormalName" size="60" maxlength="240" />
-		      </s:if>
-		      <s:else>
-		      	<s:textfield name="insFormalName" size="60" maxlength="240" readonly="true" />
-		      </s:else>
-		     </nobr>
-		   </td>
+	      <td class="comFormTableItem"><nobr>郵便番号</nobr></td>
+	      <td class="comFormTableItem">
+	      	<s:label key="insPcode" /><s:hidden name="insPcode" />
+		  </td>
+		  <td class="comFormTableItem" colspan=2 rowspan=2>
+			<table>
+				<tr>
+					<td class="comFormTableItem"><nobr>医師数</nobr></td>
+					<td class="comFormTableItem"><nobr>勤務中:<s:label key="docCount" /></nobr></td>
+					<td class="comFormTableItem"><nobr>施設数</nobr></td>
+					<td class="comFormTableItem"><nobr>当期子施設:<s:label key="insCount" /></nobr></td>
+				</tr>
+				<tr>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>申請中:<s:label key="reqDocCount" /></nobr></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>来期子施設:<s:label key="nextInsCount" /></nobr></td>
+				</tr>
+				<tr>
+					<td class="comFormTableItem"><nobr>過去実績</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="jskValue" /></nobr></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+				</tr>
+			</table>
+		  </td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>施設契約用漢字名(全角)<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem" colSpan="3">
-	      	<nobr>
-				<s:if test='%{editApprFlg == "1"}'>
-			      	<s:textfield name="insContName" size="60" maxlength="240" />
-		      	</s:if>
-		      	<s:else>
-		      		<s:textfield name="insContName" size="60" maxlength="240" readonly="true" />
-		      	</s:else>
-			</nobr>
-		</td>
-	  </tr>
-	  <tr>
-	  	  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>取引区分<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="tradeType" name="tradeType" cssStyle="width:120pt" list ="tradeTypeCombo"/>
-	      	<s:textfield id="tradeTypeView" name="tradeTypeView" cssStyle="width:120pt" readonly="true" />
-	      	</nobr>
-	      </td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>開業年月日</nobr></td>
+	      <td class="comFormTableItem"><nobr>施設住所</nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-	      		<s:select id="insOpenYear" name="insOpenYear" cssStyle="width:40pt" list ="insOpenYearCombo"/>
-	      		<s:textfield id="insOpenYearView" name="insOpenYearView" cssStyle="width:40pt" readonly="true" />
-	      		年
-	      		<s:select id="insOpenMonth" name="insOpenMonth" cssStyle="width:30pt" list ="insOpenMonthCombo"/>
-	      		<s:textfield id="insOpenMonthView" name="insOpenMonthView" cssStyle="width:40pt" readonly="true" />
-	      		月
-	      		<s:select id="insOpenDay" name="insOpenDay" cssStyle="width:30pt" list ="insOpenDayCombo"/>
-	      		<s:textfield id="insOpenDayView" name="insOpenDayView" cssStyle="width:40pt" readonly="true" />
-	      		日
-      		</nobr>
-	       </td>
+				<s:label key="insAddr" /><s:hidden name="insAddr" />
+			</nobr>
+		  </td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>削除区分<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem">
+	      	<nobr>
+				<s:select id="delKbn" name="delKbn" cssStyle="width:120pt" list ="delKbnCombo" onchange="delView();dupView();" />
+			</nobr>
+		  </td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr id="delYmdTr">
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>廃院日<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem" colspan=3>
+	      	<nobr>
+				<s:textfield type="date" name="delYmd" />　※日付不明の場合は1日を指定してください。
+			</nobr>
+		  </td>
+      </tr>
+      <tr id="delReasonTr">
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>削除理由<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem">
+	      	<nobr>
+				<s:select id="delReason" name="delReason" cssStyle="width:120pt" list ="delReasonCombo" onchange="dupView();" />
+			</nobr>
+		  </td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
   </table>
   <br/>
   <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
-    <table id="formTable05" border="0" class="comPortalTable" align="center" style="width:75%;">
+    <table id="formTable03" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
-        <%--住所詳細--%>
-        <s:hidden name="insAddr"/>
-        <s:hidden name="insAddrKana"/>
-        <%--TODO valueを子画面から取得する --%>
-        <s:hidden name="addrCodePrefKana" />
-        <s:hidden name="addrCodeCityKana" />
-        <s:hidden name="addrDtKana" />
-
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 30px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 220px; height: 0px; border-width: 0px;"></td>
       </tr>
       <tr>
-  	    <td class="comFormTableItem"><nobr>住所詳細</nobr></td>
-  	    <td class="comFormTableItem"><nobr>郵便番号<font color="red" size="3">*</font></nobr></td>
+  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+  	    <td class="comFormTableItem"><nobr>重複施設コード<font color="red" size="3">*</font></nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
-	    		<s:if test='%{editApprFlg == "1"}'>
-		    		<s:textfield name="insPcode" size="15" maxlength="8" />
-		    		<input class="comButton" type="button"name="button2" value="住所候補" onClick="JavaScript:addrPopBtn();return false;" />
-				</s:if>
-				<s:else>
-					<s:textfield name="insPcode" size="15" maxlength="8" readonly="true" />
-		    		<input class="comButton" type="button"name="button2" value="住所候補" onClick="JavaScript:addrPopBtn();return false;" disabled />
-				</s:else>
+	    		<input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:insPopBtn();return false;" />
+    		</nobr>
+   		</td>
+   		<td class="comFormTableItem"><nobr>
+   			<s:textfield name="dupInsNo" style="background-color:#D4D0C8" readonly="true" />
+				<a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.dupInsNo.value='';document.fm1.dupInsAbbrName.value='';document.fm1.dupInsAddr.value='';return false;">Clear</a>
+		</nobr></td>
+   		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+  	    <td class="comFormTableItem"><nobr>施設略式漢字名</nobr></td>
+   		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	    <td class="comFormTableItem">
+	    	<nobr>
+				<s:textfield name="dupInsAbbrName" style="background-color:#D4D0C8" readonly="true" />
     		</nobr>
    		</td>
    		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+  	    <td class="comFormTableItem"><nobr>施設住所</nobr></td>
    		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-      </tr>
-      <tr>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>JIS府県<font color="red" size="3">*</font></nobr></td>
-	    <td class="comFormTableItem">
+	    <td class="comFormTableItem" colspan=2>
 	    	<nobr>
-	    		<s:textfield name="addrCodePrefName" size="15" maxlength="15" style="background-color:#D4D0C8" readonly="true" />
-	    		<s:hidden name="addrCodePref" id="addrCodePref"/>
-	    	</nobr>
-	    </td>
-	    <td class="comFormTableItem"><nobr>JIS市区町村<font color="red" size="3">*</font></nobr></td>
-	    <td class="comFormTableItem">
-	    	<nobr>
-	    		<s:textfield name="addrCodeCityName" size="15" style="background-color:#D4D0C8" readonly="true" />
-	    		<s:hidden name="addrCodeCity" id="addrCodeCity"/>
-	    	</nobr>
-	    </td>
-      </tr>
-      <tr>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>町名地番(全角)<font color="red" size="3">*</font></nobr></td>
-	    <td class="comFormTableItem" colSpan="3">
-	    	<nobr>
-		    	<s:if test='%{editApprFlg == "1"}'>
-			    	<s:textfield name="insAddrDt" size="60" maxlength="300" />
-			    </s:if>
-			    <s:else>
-			    	<s:textfield name="insAddrDt" size="60" maxlength="300" readonly="true" />
-			    </s:else>
-	    	</nobr>
-    	</td>
-      </tr>
-      <tr>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>武田市区群<font color="red" size="3">*</font></nobr></td>
-	    <td class="comFormTableItem">
-	    	<nobr>
-	    		<s:textfield name="tkCityName" size="15" style="background-color:#D4D0C8" readonly="true" />
-	    		<s:hidden name="tkCityCd" id="tkCityCd"/>
-	    	</nobr>
-	    </td>
-      </tr>
-      <tr>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>電話番号(代表)(ﾊｲﾌﾝあり)<font color="red" size="3">*</font></nobr></td>
-	    <td class="comFormTableItem"><nobr>
-	    	<s:if test='%{editApprFlg == "1"}'>
-		    	<s:textfield name="insPhone1" size="15" maxlength="13" />
-		    </s:if>
-		    <s:else>
-		    	<s:textfield name="insPhone1" size="15" maxlength="13" readonly="true" />
-		    </s:else>
-		   </nobr>
-		</td>
-	    <td class="comFormTableItem"><nobr>FAX番号(代表)(ﾊｲﾌﾝあり)</nobr></td>
-	    <td class="comFormTableItem"><nobr>
-	    	<s:if test='%{editApprFlg == "1"}'>
-		    	<s:textfield name="insFax1" size="15" maxlength="13" />
-		    </s:if>
-		    <s:else>
-		    	<s:textfield name="insFax1" size="15" maxlength="13" readonly="true" />
-		    </s:else>
-		    </nobr>
-		</td>
-      </tr>
-      <tr>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>電話番号(薬局/DI室)(ﾊｲﾌﾝあり)</nobr></td>
-	    <td class="comFormTableItem"><nobr>
-	    	<s:if test='%{editApprFlg == "1"}'>
-			    <s:textfield name="insPhone2" size="15" maxlength="13" />
-			</s:if>
-			<s:else>
-				<s:textfield name="insPhone2" size="15" maxlength="13" readonly="true" />
-			</s:else>
-	    	</nobr>
-	    </td>
-	    <td class="comFormTableItem"><nobr>FAX番号(薬局/DI室)(ﾊｲﾌﾝあり)</nobr></td>
-	    <td class="comFormTableItem"><nobr>
-	    	<s:if test='%{editApprFlg == "1"}'>
-		    	<s:textfield name="insFax2" size="15" maxlength="13" />
-		    </s:if>
-		    <s:else>
-		    	<s:textfield name="insFax2" size="15" maxlength="13" readonly="true" />
-		    </s:else>
-    		</nobr>
-    	</td>
-      </tr>
-      <tr>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-  	    <td class="comFormTableItem"><nobr>ホームページアドレス</nobr></td>
-	    <td class="comFormTableItem">
-	    	<nobr>
-	    		<s:if test='%{editApprFlg == "1"}'>
-		    		<s:textarea name="insUrl" maxlength="150" />
-		    	</s:if>
-		    	<s:else>
-		    		<s:textarea name="insUrl" maxlength="150" readonly="true" />
-		    	</s:else>
-	    		<input class="comButton" type="button"name="button2" value="表示" onClick="JavaScript:window.open(document.fm1.insUrl.value, '_blank');return false;" />
+				<s:textfield name="dupInsAddr" size="40" style="background-color:#D4D0C8" readonly="true" />
     		</nobr>
    		</td>
-   		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-   		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-      </tr>
-      <tr>
-  	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>ホームページアドレス更新日</nobr></td>
-	    <td class="comFormTableItem"><nobr>
-	    	<s:if test='%{editApprFlg == "1"}'>
-	    		<s:textfield type="date" name="insUrlYmd" />
-	    	</s:if>
-	    	<s:else>
-	    		<s:textfield type="date" name="insUrlYmd" readonly="true" />
-	    	</s:else>
-	    	</nobr>
-    	</td>
-	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
   　　　</table>
-  <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
-
-    <input type="hidden" name="tmpPharmType" value="<s:property value="%{pharmType}"/>" />
-    <input type="hidden" name="tmpInsRank" value="<s:property value="%{insRank}"/>" />
-    <input type="hidden" name="tmpRegVisType" value="<s:property value="%{regVisType}"/>" />
-    <input type="hidden" name="tmpImpHosType" value="<s:property value="%{impHosType}"/>" />
-    <table id="formTable06" border="0" class="comPortalTable" align="center" style="width:75%;">
-      <tr>
-        <%--区分情報--%>
-        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>区分情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>施設区分<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="pharmType" name="pharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onchange='changeBox("2")'/>
-	      	<s:textfield id="pharmTypeView" name="pharmTypeView" cssStyle="width:120pt" readonly="true" />
-	      	</nobr>
-	      </td>
-	      <td class="comFormTableItem"><nobr>階級区分<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="insRank" name="insRank" cssStyle="width:120pt" list ="insRankCombo" onchange='changeBox("3"); setHoInsType();'/>
-	      	<s:textfield id="insRankView" name="insRankView" cssStyle="width:120pt" readonly="true" />
-	      	</nobr>
-	      </td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>定訪先区分<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="regVisType" name="regVisType" cssStyle="width:120pt" list ="regVisTypeCombo"/>
-	      	<s:textfield id="regVisTypeView" name="regVisTypeView" cssStyle="width:120pt" readonly="true" />
-	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>重点病院区分<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="impHosType" name="impHosType" cssStyle="width:120pt" list ="impHosTypeCombo"/>
-	      	<s:textfield id="impHosTypeView" name="impHosTypeView" cssStyle="width:120pt" readonly="true" />
-	      </nobr></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>大学細分類</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="univSubdiv" name="univSubdiv" cssStyle="width:120pt" list ="univSubdivCombo"/>
-	      	<s:textfield id="univSubdivView" name="univSubdivView" cssStyle="width:120pt" readonly="true" />
-	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>対象区分</nobr></td>
-	      <td class="comFormTableItem">
-	      	<nobr>
-	      		<s:select id="hoInsType" name="hoInsType" cssStyle="width:120pt; background-color:#D4D0C8" list ="hoInsTypeCombo" hidden="true" />
-	      		<s:textfield id="hoInsTypeView" name="hoInsTypeView" cssStyle="width:120pt; background-color:#D4D0C8" readonly="true" />
-	      	</nobr>
-	      </td>
-      </tr>
-  　</table>
-  <hr class="comTitle" id="trtHr" style="margin-top:2px;width:75%"/><br/>
-    <table id="formTable10" border="0" class="comPortalTable" align="center" style="width:75%;">
-      <tr>
-        <%--担当者情報--%>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>担当者情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>領域</nobr></td>
-	      <td class="comFormTableItem">
-	    	<nobr>
-	    		<s:select id="trtCd" name="trtCd" cssStyle="width:80pt" list ="trtCdCombo"/>
-	    		<s:if test='%{editApprFlg == "1"}'>
-		    		<input class="comButton" type="button"name="button2" value="担当者検索" onClick="JavaScript:trtPopBtn();return false;" />
-	    		</s:if>
-	    		<s:else>
-	    			<input class="comButton" type="button"name="button2" value="担当者検索" onClick="JavaScript:trtPopBtn();return false;" disabled />
-	    		</s:else>
-    		</nobr>
-   		　　</td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
-              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
-			  <table class="comCustomTable" id="formTable11">
-				<tr>
-				  <%-- ヘッダ行 --%>
-			      <td class="comTableTitle" width="20px"><nobr>&nbsp;</nobr></td>
-			      <td class="comTableTitle" width="50px"><nobr>領域</nobr></td>
-			      <td class="comTableTitle" width="50px"><nobr>担当者</nobr></td>
-			    </tr>
-			    <s:iterator value="hcoJkrDataList" status="status" var="rowBean">
-			      <tr>
-			        <%--領域担当者データ取得項目--%>
-			        <%--領域担当者データ保持用のHIDDEN項目--%>
-			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtCd"/>
-			        <s:hidden name="hcoJkrDataList[%{#status.index}].jgiNo"/>
-			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtGrpCd"/>
-			        <s:hidden name="hcoJkrDataList[%{#status.index}].mrCat"/>
-			        <s:hidden name="hcoJkrDataList[%{#status.index}].deleteFlg"/>
-
-			        <td><%-- アクションボタン --%>
-			        <s:if test='%{editApprFlg=="1" && (reqStsCd == "" || reqStsCd == "01" || reqStsCd == "03" || reqStsCd == "13")}'>
-			          <nobr>
-		                <a class="comMiniLink" href="#" onClick="JavaScript:delTrtRow('<s:property value="%{#status.index}"/>'); return false;" >
-		                  <img border="0" src="img/button_delete.gif">
-		                </a>
-		              </nobr>
-			        </s:if>
-			        <s:else>
-						<nobr>&nbsp;</nobr>
-			        </s:else>
-					</td>
-					<td><nobr><s:label key="hcoJkrDataList[%{#status.index}].trtNm"/></nobr></td>
-					<td><nobr><s:label key="hcoJkrDataList[%{#status.index}].jgiNm"/></nobr></td>
-			      </tr>
-			    </s:iterator>
-			  </table>
-			  </div>
-	      </td>
-      </tr>
-  　</table>
 
   <%--コメント類 --%>
-  <table id="formTable09" border="0" class="comPortalTable" align="center" style="width:75%;">
+  <table id="formTable04" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--コメント--%>
         <td style="width: 650px; height: 0px; border-width: 0px;"></td>
@@ -1929,7 +671,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   </table>
 
   <%--ボタン類 --%>
-  <table id="formTable10" border="0" class="comPortalTable" align="center" style="width:98%;">
+  <table id="formTable05" border="0" class="comPortalTable" align="center" style="width:98%;">
       <tr>
         <td style="width: 30%; height: 0px; border-width: 0px;"></td>
         <td style="width: 10%; height: 0px; border-width: 0px;"></td>

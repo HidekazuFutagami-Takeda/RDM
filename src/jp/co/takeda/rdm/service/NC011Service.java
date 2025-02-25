@@ -75,7 +75,7 @@ public class NC011Service extends BaseService {
         // SimpleDateFormatで日付フォーマット設定
      	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //本日日付データ_取り出す
-     	if(loginInfo.getPreScreenId().equals("NM001")) {
+     	if("NM001".equals(loginInfo.getPreScreenId())) {
      		//if(indto.getReqYmdhmsTo().length() == 8) {
 //         	indto.setReqYmdhmsTo(indto.getReqYmdhmsTo().substring(0, 4)+ '-' + indto.getReqYmdhmsTo().substring(4, 6)+ '-' + indto.getReqYmdhmsTo().substring(6, 8));
 //         	indto.setReqYmdhmsFrom(indto.getReqYmdhmsFrom().substring(0, 4)+ '-' + indto.getReqYmdhmsFrom().substring(4, 6)+ '-' + indto.getReqYmdhmsFrom().substring(6, 8));
@@ -84,7 +84,7 @@ public class NC011Service extends BaseService {
 
      		//}
      	}
-     	if(!loginInfo.getPreScreenId().equals("NM001")) {
+     	if(!"NM001".equals(loginInfo.getPreScreenId())) {
         for (MRdmComCalUsrEntity entity : SelectComCalUsrKako) {
             //検索結果_本日日付
             indto.setInreqYmdhmsFrom(sdf.format(entity.getCalDate()));
@@ -260,7 +260,7 @@ public class NC011Service extends BaseService {
         mapAddr.put("1","ULT連携");
 
         indto.setJkrSosReqSbtMap(mapAddr);
-        if(loginInfo.getPreScreenId().equals("NM001")) {
+        if("NM001".equals(loginInfo.getPreScreenId())) {
         if(indto.getReqChl().equals("1")) {
             indto.setReqSbt("0");
             indto.setReqChl("01");
@@ -363,7 +363,7 @@ public class NC011Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
-        if(indto.getPreScreenId().equals("NM001")) {
+        if("NM001".equals(indto.getPreScreenId())) {
         	outdto = search(indto);
         }
 

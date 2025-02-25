@@ -11,7 +11,7 @@
 --%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="jp.co.takeda.rdm.util.StringUtils"%>
-<%@page import="jp.co.takeda.rdm.dto.ND311DTO"%>
+<%@page import="jp.co.takeda.rdm.dto.NC101DTO"%>
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal"
@@ -47,7 +47,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
   <script type="text/javascript" src="js/common.js"></script>
-  <script type="text/javascript" src="js/ND301.js"></script>
     <script>
     destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
     function backFnc(reqId){
@@ -55,6 +54,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		document.fm1.screenId.value="ND011";
 			document.fm1.functionId.value="Init";
 			document.fm1.reqId.value=reqId;
+			document.fm1.preScreenId.value="ND301";
 			comSubmitForAnyWarp(fm1);
     	}
     }
@@ -89,16 +89,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
    	}
 
     function comSetFormWindowInfo(){
-//         comSetFormWindowName('ND011');
-//         if (document.fm1.msgId.value == "M0001102"){
-//           alert('<s:property value="#session.UserInfoKey.msgMap.M0001102.msgData" />');
-//           return false;
-//         }
-//         if (document.fm1.msgId.value == "M0001101"){
-//           alert('<s:property value="#session.UserInfoKey.msgMap.M0001101.msgData" />');
-//           return false;
-//         }
-//         return false;
+    	comClickFlgInit();
       }
     </script>
 </head>
@@ -132,64 +123,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     <%-- フレーム対応で発生したPOST用 引数1:frame(フレーム対応),以外(何もしない) 引数２:オブジェクトの型 --%>
 
-<%--     組織・従業員選択ポップアップ用 --%>
-<!--     <input type="hidden" name="selectFlg"			value="" /> -->
-<!--     <input type="hidden" name="topSosCd"			value="" /> -->
-<!--     <input type="hidden" name="initSosCd"			value="" /> -->
-<!--     <input type="hidden" name="openBumonRank"		value="" /> -->
-<!--     <input type="hidden" name="objData"				value="" /> -->
-<!--     <input type="hidden" name="dspSelPtn"			value="" /> -->
-<!--     <input type="hidden" name="dspSelSos"			value="" /> -->
-<!--     <input type="hidden" name="sosLevelType"		value="" /> -->
-<!--     <input type="hidden" name="dispJgiKb"			value="" /> -->
-<!--     <input type="hidden" name="shokushuCd"			value="" /> -->
-<!--     <input type="hidden" name="shokuseiCd"			value="" /> -->
-<!--     <input type="hidden" name="noDispJgiKb"			value="" /> -->
-<!--     <input type="hidden" name="noShokushuCd"		value="" /> -->
-<!--     <input type="hidden" name="noShokuseiCd"		value="" /> -->
-<!--     <input type="hidden" name="insNo1"				value="" /> -->
-<%--     <input type="hidden" name="dspClrBtn1"			value="" />クリアボタン表示フラグ  --%>
-<!--     <input type="hidden" name="openJgiFlg"			value="" /> -->
-<!--     <input type="text" name="sosSelFlg1"	value="" /> -->
-
-<!--     <input type="checkbox" name="delCheck" /> -->
-<!--     <input type="checkbox" name="hurikaeMr" /> -->
-<!--     <input type="checkbox" name="shokiHurikaeMr" /> -->
-
-<%--     組織・従業員選択ポップアップの表示判断の条件 取得パラメータ：（MR種類・業務種類） --%>
-<!--     <input type="hidden" name="mrCat"				value=""	/> -->
-<!--     <input type="hidden" name="registCat"			value=""	/> -->
-
-<%--     登録：排他処理用データ --%>
-<!--     <input type="hidden" name="ExUpDate"			value=""	/> -->
-
-<!--     <input type="text" name="userAuth1"		value="" /> -->
-<!--     <input type="text" name="jpjJgiNo1"		value="" /> -->
-<!--     <input type="text" name="sosCd1"		value="" /> -->
-<!--     <input type="text" name="sosName1"		value="" /> -->
-<!--     <input type="text" name="mrCat1"		value="" /> -->
-<!--     <input type="text" name="registCat1"	value="" /> -->
-<!--     <input type="text" name="jgiKb1"		value="" /> -->
-<!--     <input type="text" name="selectedSosName1"	value="" /> -->
-<!--     <input type="text" name="selectedSosCd1"	value="" /> -->
-<!--     <input type="text" name="jgiJoken1"		value="" /> -->
-<!--     <input type="text" name="sosName1"		value="" /> -->
-<!--     <input type="text" name="wkCat1"		value="" /> -->
-<!--     <input type="hidden" name="searchToSosCd1"		value="" /> -->
-<!--     <input type="hidden" name="searchToSosName1"	value="" /> -->
-<!--     <input type="hidden" name="shokikaSosName1"	value="" /> -->
-<!--     <input type="hidden" name="shokikaSosCd1"	value="" /> -->
-
-<%--     <input type="hidden" name="selectedPlanSosName1"		value="<bean:print name="menudata" property="selectedSosName"/>" /> --%>
-
-<%--     登録前の最終総行数 --%>
-<!--     <input type="hidden" name="allUltCount1"	value="" /> -->
-<%--     登録前の追加の総行数 --%>
-<!--     <input type="hidden" name="addUltCount1"	value="" /> -->
-
-<%--     追加用　MR種類 --%>
-<!--     <input type="hidden" name="takeMrCat"	value="" /> -->
-
   </form>
 
   <%-- バナー部分をインクルード --%>
@@ -197,7 +130,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <jsp:include page="common/jkrTop.jsp" flush="true" />
   <br>
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
-  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <jsp:include page="common/rdmDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
 <table border="0" class="comPortalTable" align="center" style="width:98%;">
@@ -214,6 +147,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="lineCntAll1" />
     <%-- 画面用パラメータ --%>
     <s:hidden name="backScreenId" value="ND301" />
+     <s:hidden name="preScreenId"/>
      <s:hidden name="screenId"/>
      <s:hidden name="functionId"/>
      <s:hidden name="loginJokenSetCd"/>
@@ -223,138 +157,25 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="shnFlg"/>
      <s:hidden name="msgId" value="%{msgId}"/>
 
-<%--     <s:hidden name="defaultSosCd"/> --%>
-<%--     <s:hidden name="defaultSosName"/> --%>
-<%--     <s:hidden name="defaultBumonRank"/> --%>
-<%--     <s:hidden name="defaultMrCat"/> --%>
-<%--     <s:hidden name="searchBumonRank"/> --%>
-<%--     <s:hidden name="maxUpDate"/> --%>
-<%--     <s:hidden name="sosCdFixFlg"/> --%>
-<%--     <s:hidden name="sosCdFix"/> --%>
-<%--     <s:hidden name="sosNameFix"/> --%>
-<%--     <s:hidden name="showFlg"/> --%>
-<%--     <s:hidden name="showDocChgFlg"/> --%>
-<%--     <s:hidden name="sosSelFlg"/> --%>
-<%--     <s:hidden name="sosRyakuName"/> --%>
-
-
-    <%-- トップメニューからの共通パラメータ --%>
-    <s:hidden name="trtGrpCd"/>
-    <s:hidden name="selectedBumonRank"/>
-    <s:hidden name="sosCd"/>
-    <s:hidden name="sosName"/>
-    <s:hidden name="selectedSosCd"/>
-    <s:hidden name="selectedSosNm"/>
-    <s:hidden name="selectedSosCd2" />
-    <s:hidden name="selectedSosNm2" />
-    <s:hidden name="selectedSosCd3" />
-    <s:hidden name="selectedSosNm3" />
-    <s:hidden name="selectedJgiJoken"/>
-    <s:hidden name="jokenSetCd"/>
-    <s:hidden name="sosCdHairetu"/>
-    <s:hidden name="wkCat"/>
-    <s:hidden name="searchFromSosCdPop"/>  <!--現組織コード(ポップアップ用) -->
-    <s:hidden name="searchToSosCdPop"/>    <!--新組織コード(ポップアップ用) -->
-    <s:hidden id="selectedTekiyoYmd" name="selectedTekiyoYmd"/>
-<%--     組織ポップアップ用パラメータ --%>
-<!--     <input type="hidden" name="selectFlgPop"           value="" /> -->
-<!--   <input type="hidden" name="initSosCdPop"           value="" /> -->
-<!--   <input type="hidden" name="sosKbnPop"              value="" /> -->
-<!--   <input type="hidden" name="sknnFlgPop"             value="" /> -->
-<!--   <input type="hidden" name="insFlgPop"              value="" /> -->
-<!--   <input type="hidden" name="topMenuFlgPop"          value="" /> -->
-<!--   <input type="hidden" name="authorityPop"           value="" /> -->
-<!--   <input type="hidden" name="bumonRankTopPop"        value="" /> -->
-<!--   <input type="hidden" name="bumonRankBtmPop"        value="" /> -->
-<!--   <input type="hidden" name="topSosCdPop"            value="" /> -->
-<!--   <input type="hidden" name="defTblFlgPop"           value="" /> -->
-<%--   <input type="hidden" name="actSosListPop"          value="<s:property value="%{sosCdHairetu}"/>" /> --%>
-<!--   <input type="hidden" name="shokushuFlgPop"         value="" /> -->
-<!--   <input type="hidden" name="ztTntFlgPop"            value="" /> -->
-<!--   <input type="hidden" name="jokenSetCdPop"          value="" /> -->
-<!--   <input type="hidden" name="menuTrtGrpCdPop"        value="" /> -->
-<!--   <input type="hidden" name="menuSosCdPop"           value="" /> -->
-<!--   <input type="hidden" name="selectableBumonrankPop" value="" /> -->
-<!--   <input type="hidden" name="insNoPop"               value="" /> -->
-<!--   <input type="hidden" name="trtCdPop"               value="" /> -->
-<!--   <input type="hidden" name="sosCdFromPop"           value="" /> -->
-<!--   <input type="hidden" name="krJgiNoDispFlgPop"      value="" /> -->
-<!--   <input type="hidden" name="sosCdToPop"             value="" /> -->
-<!--   <input type="hidden" name="trtTntFlgPop"           value="" /> -->
-
-<!--   <!-- 選択された組織情報格納（表示押下前） --> -->
-<%--   <s:hidden name="topChgSosCd" value=""/> --%>
-<%--   <s:hidden name="topChgSosNm" value=""/> --%>
-<%--   <s:hidden name="topChgSosCd2" value=""/> --%>
-<%--   <s:hidden name="topChgSosNm2" value=""/> --%>
-<%--   <s:hidden name="topChgSosCd3" value=""/> --%>
-<%--   <s:hidden name="topChgSosNm3" value=""/> --%>
-<!--   <!-- 選択された組織情報格納（表示押下後） --> -->
-<%--   <s:hidden name="topChangedSosCd" /> --%>
-<%--   <s:hidden name="topChangedSosNm" /> --%>
-<%--   <s:hidden name="topChangedSosCd2" /> --%>
-<%--   <s:hidden name="topChangedSosNm2" /> --%>
-<%--   <s:hidden name="topChangedSosCd3" /> --%>
-<%--   <s:hidden name="topChangedSosNm3" /> --%>
-
-<%--     所属学会ポップアップ用パラメータ --%>
-<!--     <input type="hidden" name="hcpSocietyDataChgFlg" value="" /> -->
-<!--     <input type="hidden" name="positionCodePop" value="" /> -->
-<!-- 	<input type="hidden" name="advisingDoctorCdPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyingPhysicianCdPop" value="" /> -->
-<!-- 	<input type="hidden" name="medicalSocietyNmPop" value="" /> -->
-<!-- 	<input type="hidden" name="admissionYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="admissionMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="admissionDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="quitYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="quitMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="quitDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="positionNamePop" value="" /> -->
-<!-- 	<input type="hidden" name="societyPosiStYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="societyPosiStMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="societyPosiStDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="societyPosiEdYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="societyPosiEdMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="societyPosiEdDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingAcquisiYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingAcquisiMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingAcquisiDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="advisingDoctorNmPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyingPhysicianNmPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingStYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingStMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingStDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingEdYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingEdMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="coachingEdDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyStYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyStMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyStDDPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyEdYYYYPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyEdMMPop" value="" /> -->
-<!-- 	<input type="hidden" name="certifyEdDDPop" value="" /> -->
-<%-- 	<%-- 公的機関ポップアップ用パラメータ --%> --%>
-<!-- 	<input type="hidden" name="hcpPublicDataChgFlg" value="" /> -->
-<!--     <input type="hidden" name="classCategoryCdPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstitutionCdPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstPositionCdPop" value="" /> -->
-<!--     <input type="hidden" name="classCategoryNmPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstitutionNmPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstStYYYYPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstStMMPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstStDDPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstEdYYYYPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstEdMMPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstEdDDPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstPositionNmPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstposStYYYYPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstposStMMPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstposStDDPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstposEdYYYYPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstposEdMMPop" value="" /> -->
-<!--     <input type="hidden" name="pubInstposEdDDPop" value="" /> -->
 <!-- ボタン制御用 -->
     <s:hidden name="buttonFlg" />
+    	<s:hidden name="title" />
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師新規作成 - 申請内容確認"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+<table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
   <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
     <tbody>
       <s:if test="msgStr != null">
@@ -373,6 +194,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--申請情報--%>
         <%--申請情報のHIDDEN項目--%>
         <s:hidden name="reqId"/>
+        <s:hidden name="reqChl"/>
         <s:hidden name="ultDocNo"/>
         <s:hidden name="reqShzNm"/>
         <s:hidden name="reqStsNm"/>
@@ -481,12 +303,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>医師／薬剤師区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="docTypeNm"/>
-			  <s:hidden name="docType"/>
+			  <s:hidden name="docType"/><s:hidden name="docTypeNm"/>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>性別</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="sexNm"/>
-			  <s:hidden name="sexCd"/>
+			  <s:hidden name="sexCd"/><s:hidden name="sexNm"/>
 	      </nobr></td>
       </tr>
       <tr>
@@ -548,7 +370,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>出身地</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="homeTownCd"/>：<s:label key="homeTownNm"/>
-			  <s:hidden name="homeTownCd"/>
+			  <s:hidden name="homeTownCd"/><s:hidden name="homeTownNm"/>
 	      </nobr></td>
       </tr>
       <tr>
@@ -556,7 +378,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>出身校</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="medSchoolNm"/>
-			  <s:hidden name="medSchoolCd"/>
+			  <s:hidden name="medSchoolCd"/><s:hidden name="medSchoolNm"/>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>卒年（西暦）</nobr></td>
 	      <td class="comFormTableItem"><nobr>
@@ -574,7 +396,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>出身医局校</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="homeUnivNm"/>
-			  <s:hidden name="homeUnivCd"/>
+			  <s:hidden name="homeUnivCd"/><s:hidden name="homeUnivNm"/>
 	      </nobr></td>
       </tr>
       <tr>
@@ -582,7 +404,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>出身所属部科</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="homeDeptNm"/>
-			  <s:hidden name="homeDeptCd"/>
+			  <s:hidden name="homeDeptCd"/><s:hidden name="homeDeptNm"/>
           </nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -592,12 +414,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>専門臓器</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="spLiverNm"/>
-			  <s:hidden name="spLiverCd"/>
+			  <s:hidden name="spLiverCd"/><s:hidden name="spLiverNm"/>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>専門詳細</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="spDiseaseNm"/>
-			  <s:hidden name="spDiseaseCd"/>
+			  <s:hidden name="spDiseaseCd"/><s:hidden name="spDiseaseNm"/>
 	      </nobr></td>
       </tr>
       <tr>
@@ -827,12 +649,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>施設</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skInsNm"/>
-			  <s:hidden name="skInsNo"/>
+			  <s:hidden name="skInsNo"/><s:hidden name="skInsNm"/>
           </nobr></td>
 	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skUnivPosNm"/>
-			  <s:hidden name="skUnivPosCd"/>
+			  <s:hidden name="skUnivPosCd"/><s:hidden name="skUnivPosNm"/>
 	      </nobr></td>
       </tr>
       <tr>
@@ -840,12 +662,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>所属部科</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skDeptNm"/>
-			  <s:hidden name="skDeptCd"/>
+			  <s:hidden name="skDeptCd"/><s:hidden name="skDeptNm"/>
           </nobr></td>
 	      <td class="comFormTableItem"><nobr>役職</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skTitleNm"/>
-			  <s:hidden name="skTitleCd"/>
+			  <s:hidden name="skTitleCd"/><s:hidden name="skTitleNm"/>
           </nobr></td>
       </tr>
       <tr>
@@ -853,12 +675,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skJobFormNm"/>
-			  <s:hidden name="skJobForm"/>
+			  <s:hidden name="skJobForm"/><s:hidden name="skJobFormNm"/>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skDcctypeNm"/>
-			  <s:hidden name="skDcctype"/>
+			  <s:hidden name="skDcctype"/><s:hidden name="skDcctypeNm"/>
 	      </nobr></td>
       </tr>
   </table>
@@ -916,21 +738,20 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem">
-					&nbsp;
-                </nobr>
+	      <nobr>&nbsp;</nobr>
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
                 <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
                 		<s:if test='%{reqStsCd == "03"}'>
-	               			<input type="checkbox" id="fbReqFlg" name="fbReqFlg" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
 	               		</s:if>
 	                	<input class="comButton" type="button"name="buttonF3" value="承認" onClick="register('1');return false;" />
 	                </s:if>
 	                <s:else>
 						<s:if test='%{reqStsCd == "03"}'>
-							<input type="checkbox" id="fbReqFlg" name="fbReqFlg" readonly="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
 						</s:if>
 	                	<input class="comButton" type="button"name="buttonF3" value="承認" disabled />
 	                </s:else>
@@ -953,6 +774,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   </table>
 <%-- SUBMIT用パラメータ 終了 --%>
 
+    </td>
+	</tr>
+    </tbody>
+    </table>
             </s:form>
   </table>
   <jsp:include page="common/jkrBottom.jsp" flush="true" />

@@ -822,6 +822,45 @@
         <result column="APR_MEMO" property="aprMemo"/>
         <result column="SHN_FLG" property="shnFlg"/>
     </resultMap>
+    <resultMap id="nF013MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF013MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="SHN_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_FORMAL_NAME" property="insFormalName"/>
+        <result column="INS_PCODE" property="insPcode"/>
+        <result column="DOC_COUNT" property="docCount"/>
+        <result column="REQ_DOC_COUNT" property="reqDocCount"/>
+        <result column="INS_COUNT" property="insCount"/>
+        <result column="NEXT_INS_COUNT" property="nextInsCount"/>
+        <result column="JSK_VALUE_TK" property="jskValueTk"/>
+        <result column="JSK_VALUE_ZK" property="jskValueZk"/>
+        <result column="JSK_VALUE_ZZK" property="jskValueZzk"/>
+        <result column="INS_ADDR" property="insAddr"/>
+        <result column="DEL_KBN" property="delKbn"/>
+        <result column="DEL_YMD" property="delYmd"/>
+        <result column="DEL_REASON" property="delReason"/>
+        <result column="DUP_INS_NO" property="dupInsNo"/>
+        <result column="DUP_INS_ABBR_NAME" property="dupInsAbbrName"/>
+        <result column="DUP_INS_ADDR" property="dupInsAddr"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+    </resultMap>
     <resultMap id="nF301MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF301MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
         <result column="SHN_SHZ" property="reqShzNm"/>
@@ -4744,6 +4783,236 @@
 		WHERE 1=1
         AND KNR.REQ_ID = #{inReqId}
     </select>
+    <select id="selectNF013INSData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF013MainDataEntity" resultMap="nF013MainDataResultMap">
+		WITH REQ_DOC AS ( -- ■サブクエリ(医師数(申請中))
+			SELECT
+			  INS_NO
+			, COUNT(REQ_ID) AS REQ_DOC_COUNT
+			FROM
+			(SELECT
+			  INS_NO
+			, REQ_ID
+			FROM
+			T_RDM_REQ_KNR -- 申請管理(医師数)
+			WHERE 1=1
+			AND INS_NO = #{inInsNo}
+			AND REQ_TYPE IN ('41', '42')
+			AND REQ_STS IN ('03', '04', '13', '14')
+
+			UNION
+
+			SELECT
+			  HCP.INS_NO_SK AS INS_NO
+			, KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP -- 医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR -- 申請管理(医師数)
+			ON 1=1
+			AND HCP.REQ_ID = KNR.REQ_ID
+			AND KNR.REQ_TYPE = '31'
+			AND KNR.REQ_STS IN ('03', '04', '13', '14')
+			WHERE 1=1
+			AND HCP.INS_NO_SK = #{inInsNo}) REQ_DOC_C
+			GROUP BY
+			INS_NO
+		),
+		INS AS ( -- ■サブクエリ(当期子施設数)
+			SELECT
+			  MAIN_INS_NO
+			, COUNT(INS_NO) AS INS_COUNT
+			FROM
+			M_RDM_HCO_OYAKO -- 施設_領域別親子情報
+			WHERE 1=1
+			AND MAIN_INS_NO = #{inInsNo}
+			AND TRT_CD = '00'
+			GROUP BY
+			MAIN_INS_NO
+		),
+		NEXT_INS AS ( -- ■サブクエリ(来期子施設数)
+			SELECT
+			  MAIN_INS_NO
+			, COUNT(INS_NO) AS NEXT_INS_COUNT
+			FROM
+			M_RDM_HCO_OYAKO_NEXT -- 施設_来期用親子情報
+			WHERE 1=1
+			AND MAIN_INS_NO = #{inInsNo}
+			AND TRT_CD = '00'
+			GROUP BY
+			MAIN_INS_NO
+		)
+
+		SELECT
+		  MST.INS_NO
+		, MST.INS_ABBR_NAME
+		, MST.INS_FORMAL_NAME
+		, MST.INS_PCODE
+		, MST.INS_ADDR
+		, SUP.DOC_COUNT
+		, REQ_DOC.REQ_DOC_COUNT
+		, INS.INS_COUNT
+		, NEXT_INS.NEXT_INS_COUNT
+		, SUP.JSK_VALUE_TK
+		, SUP.JSK_VALUE_ZK
+		, SUP.JSK_VALUE_ZZK
+		FROM
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		LEFT JOIN
+		REQ_DOC -- サブクエリ(医師数(申請中))
+		ON 1=1
+		AND REQ_DOC.INS_NO = MST.INS_NO
+		LEFT JOIN
+		INS -- サブクエリ(当期子施設数)
+		ON 1=1
+		AND INS.MAIN_INS_NO = MST.INS_NO
+		LEFT JOIN
+		NEXT_INS -- サブクエリ(来期子施設数)
+		ON 1=1
+		AND NEXT_INS.MAIN_INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_SUP SUP -- 施設_補足情報
+		ON 1=1
+		AND SUP.INS_NO = MST.INS_NO
+		WHERE 1=1
+		AND MST.INS_NO = #{inInsNo}
+
+    </select>
+    <select id="selectNF013REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF013MainDataEntity" resultMap="nF013MainDataResultMap">
+		WITH REQ_DOC AS ( -- ■サブクエリ(医師数(申請中))
+			SELECT
+			  INS_NO
+			, COUNT(REQ_ID) AS REQ_DOC_COUNT
+			FROM
+			(SELECT
+			  INS_NO
+			, REQ_ID
+			FROM
+			T_RDM_REQ_KNR -- 申請管理(医師数)
+			WHERE 1=1
+			AND INS_NO = #{inInsNo}
+			AND REQ_TYPE IN ('41', '42')
+			AND REQ_STS IN ('03', '04', '13', '14')
+
+			UNION
+
+			SELECT
+			  HCP.INS_NO_SK AS INS_NO
+			, KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP -- 医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR -- 申請管理(医師数)
+			ON 1=1
+			AND HCP.REQ_ID = KNR.REQ_ID
+			AND KNR.REQ_TYPE = '31'
+			AND KNR.REQ_STS IN ('03', '04', '13', '14')
+			WHERE 1=1
+			AND HCP.INS_NO_SK = #{inInsNo}) REQ_DOC_C
+			GROUP BY
+			INS_NO
+		),
+		INS AS ( -- ■サブクエリ(当期子施設数)
+			SELECT
+			  MAIN_INS_NO
+			, COUNT(INS_NO) AS INS_COUNT
+			FROM
+			M_RDM_HCO_OYAKO -- 施設_領域別親子情報
+			WHERE 1=1
+			AND MAIN_INS_NO = #{inInsNo}
+			AND TRT_CD = '00'
+			GROUP BY
+			MAIN_INS_NO
+		),
+		NEXT_INS AS ( -- ■サブクエリ(来期子施設数)
+			SELECT
+			  MAIN_INS_NO
+			, COUNT(INS_NO) AS NEXT_INS_COUNT
+			FROM
+			M_RDM_HCO_OYAKO_NEXT -- 施設_来期用親子情報
+			WHERE 1=1
+			AND MAIN_INS_NO = #{inInsNo}
+			AND TRT_CD = '00'
+			GROUP BY
+			MAIN_INS_NO
+		)
+
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, HCO.INS_NO
+		, HCO.INS_ABBR_NAME
+		, HCO.INS_FORMAL_NAME
+		, MST.INS_PCODE
+		, MST.INS_ADDR
+		, SUP.DOC_COUNT
+		, REQ_DOC.REQ_DOC_COUNT
+		, INS.INS_COUNT
+		, NEXT_INS.NEXT_INS_COUNT
+		, SUP.JSK_VALUE_TK
+		, SUP.JSK_VALUE_ZK
+		, SUP.JSK_VALUE_ZZK
+		, HCO.DEL_KBN
+		, HCO.DEL_YMD
+		, HCO.DEL_REASON
+		, HCO.DUP_INS_NO
+		, MST_DUP.INS_ABBR_NAME AS DUP_INS_ABBR_NAME
+		, MST_DUP.INS_ADDR AS DUP_INS_ADDR
+		, KNR.REQ_COMMENT
+		, KNR.APR_MEMO
+		FROM
+		T_RDM_REQ_KNR KNR -- 申請管理
+		INNER JOIN
+		T_RDM_HCO_REQ HCO-- 施設_申請管理
+		ON 1=1
+		AND HCO.REQ_ID = KNR.REQ_ID
+		INNER JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報 A
+		ON 1=1
+		AND MST.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		REQ_DOC -- サブクエリ(医師数(申請中))
+		ON 1=1
+		AND REQ_DOC.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		INS -- サブクエリ(当期子施設数)
+		ON 1=1
+		AND INS.MAIN_INS_NO = HCO.INS_NO
+		LEFT JOIN
+		NEXT_INS -- サブクエリ(来期子施設数)
+		ON 1=1
+		AND NEXT_INS.MAIN_INS_NO = HCO.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_SUP SUP -- 施設_補足情報
+		ON 1=1
+		AND SUP.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_MST MST_DUP -- 施設_基本情報 B
+		ON 1=1
+		AND MST_DUP.INS_NO = HCO.DUP_INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		WHERE 1=1
+		AND KNR.REQ_ID = #{inReqId}
+
+    </select>
     <select id="selectNF014InsChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity" resultMap="tRdmHcoReqResultMap">
 		SELECT
 		  HCO.REQ_ID  -- 施設_申請管理.申請ID
@@ -7651,6 +7920,21 @@
 			</if>
 			INS_SHA_YMD = #{insShaYmd},
 			INS_SHA_ID = #{insShaId},
+			UPD_SHA_YMD = #{updShaYmd},
+			UPD_SHA_ID = #{updShaId}
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <update id="updateNF013Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity">
+        UPDATE
+            T_RDM_HCO_REQ
+        SET
+			<if test="insAbbrName != null">INS_ABBR_NAME = #{insAbbrName},</if><if test="insAbbrName == null">INS_ABBR_NAME = null,</if>
+			<if test="insFormalName != null">INS_FORMAL_NAME = #{insFormalName},</if><if test="insFormalName == null">INS_FORMAL_NAME = null,</if>
+			<if test="delKbn != null">DEL_KBN = #{delKbn},</if><if test="delKbn == null">DEL_KBN = null,</if>
+			<if test="delReason != null">DEL_REASON = #{delReason},</if><if test="delReason == null">DEL_REASON = null,</if>
+			<if test="delYmd != null">DEL_YMD = #{delYmd},</if><if test="delYmd == null">DEL_YMD = null,</if>
+			<if test="dupInsNo != null">DUP_INS_NO = #{dupInsNo},</if><if test="dupInsNo == null">DUP_INS_NO = null,</if>
 			UPD_SHA_YMD = #{updShaYmd},
 			UPD_SHA_ID = #{updShaId}
         WHERE

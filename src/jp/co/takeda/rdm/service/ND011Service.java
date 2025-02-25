@@ -124,13 +124,17 @@ public class ND011Service extends BaseService {
 				indto.setSkInsNo(StringUtils.nvl(mainDataEntity.getSkInsNo(), ""));
 				indto.setSkDeptCd(StringUtils.nvl(mainDataEntity.getSkDeptCd(), ""));
 
-				indto.setReqShzNm(loginInfo.getBumonRyakuName());
-				indto.setReqJgiName(loginInfo.getJgiName());
-				indto.setReqJgiNo(loginInfo.getJgiNo());
-				indto.setReqBrCd(loginInfo.getBrCode());
-				indto.setReqDistCd(loginInfo.getDistCode());
-				indto.setReqStsNm("");
-				indto.setReqYmdhms("");
+				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(),loginInfo.getBumonRyakuName()));
+				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(),loginInfo.getJgiName()));
+				if(mainDataEntity.getReqJgiNo() == null) {
+					indto.setReqJgiNo(loginInfo.getJgiNo());
+				}else {
+					indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
+				}
+				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(),loginInfo.getBrCode()));
+				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(),loginInfo.getDistCode()));
+				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(),""));
+				indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(),""));
 			} else {
 				// 完全新規 ログイン情報から申請者セット
 				indto.setReqShzNm(loginInfo.getBumonRyakuName());
@@ -1544,6 +1548,16 @@ public class ND011Service extends BaseService {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(半角カナ)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//      専門追加情報                                ３００文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getSpCom())) {
+			len = StringUtils.getByteLength(indto.getSpCom());
+			if(len > 300) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "専門追加情報");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}

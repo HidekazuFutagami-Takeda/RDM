@@ -253,10 +253,10 @@
           <!-- なにも表示しない -->
       	  </s:if>
       	  <s:else><!-- max-height:500px; div内スタイルから抜き取って最大幅の上限を撤廃、overflow-y:hiddenで縦スクロールを無効化 -->
-              <div id="insTableDataOff" style="width:1450px;overflow-y: hidden; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;"onscroll="javascript:jpjOffSyncScrolling()" >
+              <div id="insTableDataOff" style=" max-height:500px; width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;"onscroll="javascript:jpjOffSyncScrolling()" >
 
               <table class="siz tkdUlt" id="dataTable" style="margin-top:3pt;margin-bottom:1pt;"border="0" >
-              <thead style="z-index:3">
+              <thead style="z-index:3;">
               <%-- ヘッダー行 --%>
 				<tr>
 					<th rowspan="4" class="comTableTitle container tkdUlt" width="180px"
@@ -495,7 +495,7 @@
 							            <s:label style="color : red;" key="#rowBean.reqCountSsMr" />
 							            </s:if>
 							            <s:else>
-							            <s:label style="background-Color:#f4d3c4;" class="labels" key="#rowBean.reqCountSsMr" />
+							            <s:label class="labels" key="#rowBean.reqCountSsMr" />
 							            </s:else>
 								          </acronym>
 					             </a>

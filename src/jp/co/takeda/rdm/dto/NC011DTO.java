@@ -33,16 +33,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
     private String NC011 = "NC011";
 
     private String boolKnb;
-
-
-
-	public String getBoolKnb() {
-		return boolKnb;
-	}
-	public void setBoolKnb(String boolKnb) {
-		this.boolKnb = boolKnb;
-	}
-
 	/**
      * 親画面コールバックメソッド名
      * @generated
@@ -53,13 +43,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
      * 遷移元画面ID
      */
 	private String preScreenId;
-	public String getPreScreenId() {
-		return preScreenId;
-	}
-
-	public void setPreScreenId(String preScreenId) {
-		this.preScreenId = preScreenId;
-	}
 
 	/**
      * Offset値
@@ -159,29 +142,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
      */
     private LinkedHashMap JkrSosFbPrcTypeMap;
 
-
-    public LinkedHashMap getJkrSosFbReqFlgMap() {
-		return JkrSosFbReqFlgMap;
-	}
-	public void setJkrSosFbReqFlgMap(LinkedHashMap jkrSosFbReqFlgMap) {
-		JkrSosFbReqFlgMap = jkrSosFbReqFlgMap;
-	}
-	public LinkedHashMap getJkrSosFbPrcTypeMap() {
-		return JkrSosFbPrcTypeMap;
-	}
-	public void setJkrSosFbPrcTypeMap(LinkedHashMap jkrSosFbPrcTypeMap) {
-		JkrSosFbPrcTypeMap = jkrSosFbPrcTypeMap;
-	}
-
-
-	/**
-	 * 担当先コンボを取得します。
-	 * @return 担当先コンボ
-	 */
-	public LinkedHashMap getSearchInsChgCombo() {
-	    return searchInsChgCombo;
-	}
-
 	/**
 	 * ソート部の宣言 + get,set
 	 */
@@ -200,6 +160,354 @@ public class NC011DTO extends BaseDTO implements Serializable {
     private String sbtDescClass;
     private String reqJgiNameAscClass;
     private String reqJgiNameDescClass;
+
+	/**
+     * 親画面名
+     * @generated
+     */
+    private String winVarName;
+
+	/**
+     * 呼び出し元のClear処理メソッド名
+     * @generated
+     */
+    private String parentClearProc;
+
+    /**
+     * 親画面から受け取るMR/管理者のflag
+     */
+    private String mrAdminCd;
+
+	/**
+     * 従業員番号
+     */
+    private String jgiNo;
+    /**
+     * 従業員名
+     */
+    private String jgiName;
+
+	/**
+	 * 審査flag
+	 */
+	private String shnFlg;
+
+	/**
+	 * 審査者名
+	 */
+	private String shnShaId;
+
+
+	/**
+	 * FB申請要否
+	 */
+	private String fbReqFlg;
+
+
+	/**
+	 * 審査日時
+	 */
+	private String shnYmdhms;
+
+	/**
+	 * FB回答ID
+	 *
+	 */
+	private String fbAnsId;
+
+
+	/**
+	 * FB処理区分
+	 */
+	private String fbPrcType;
+
+
+	/**
+     * @generated
+     */
+    private List<CatSnseiComboDataList> catSnseiComboDataList = new ArrayList<CatSnseiComboDataList>();
+    /**
+	 * メッセージ中身
+	 * @generated
+	 */
+	private String msgStr;
+
+
+    /**
+	 * メッセージ中身
+	 * @generated
+	 */
+	private String msgData;
+
+	    /**
+	 * reqChl
+	 * @generated
+	 */
+
+	private String reqChl;
+
+
+	    /**
+	 * reqSts
+	 * @generated
+	 */
+
+	private String reqSts;
+
+	    /**
+	 * insNo
+	 * @generated
+	 */
+
+	private String insNo;
+	    /**
+	 * docNo
+	 * @generated
+	 */
+
+	private String docNo;
+	 /**
+	 * insClass
+	 * @generated
+	 */
+
+	private String insClass;
+
+
+		/**
+	 * insSbt
+	 * @generated
+	 */
+
+	private String insSbt;
+
+	    /**
+	 * reqSts
+	 * @generated
+	 */
+
+	private String docType;
+	    /**
+	 * jobForm 勤務形態
+	 * @generated
+	 */
+
+	private String jobForm;
+	    /**
+	 * hoInsType
+	 * @generated
+	 */
+
+	private String hoInsType;
+
+	    /**
+	 * insFormalName
+	 * @generated
+	 */
+
+	private String insFormalName;
+
+	/**
+	 * 施設名-検索用
+	 */
+	private String insKanjiSrch;
+
+	/**
+	 * @generated
+	 */
+	private String test;
+
+	/**
+	 * rEQ_ID
+	 * @generated
+	 */
+
+	private String reqId;
+
+	/**
+	 * 検索-申請日時
+	 * inreqYmdhmsFrom
+	 * @generated
+	 */
+
+	private String inreqYmdhmsFrom;
+	/**
+	 * 検索-申請日時
+	 * inreqYmdhmsTo
+	 * @generated
+	 */
+
+	private String inreqYmdhmsTo;
+
+	/**
+	 * reqYmdhmsFrom
+	 * @generated
+	 */
+
+	private String reqYmdhmsFrom;
+	/**
+	 * reqYmdhmsTo
+	 * @generated
+	 */
+
+	private String reqYmdhmsTo;
+
+	/**
+	 * knYmdhmsFrom
+	 * @generated
+	 */
+
+	private String knYmdhmsFrom;
+
+
+	/**
+	 * knYmdhmsTo
+	 * @generated
+	 */
+
+	private String knYmdhmsTo;
+
+		/**
+	 * docKanj
+	 * @generated
+	 */
+
+	private String docKanj;
+
+
+
+	    /**
+	 * reqJgiName --申請者氏名
+	 * @generated
+	 */
+
+	private String reqJgiName;
+
+	    /**
+	 * reqJgiNo
+	 * @generated
+	 */
+
+	private String reqJgiNo;
+
+	/**
+	 *部門ランク
+	 */
+	private String bumonRank;
+
+
+	/**
+	 *組織コード
+	 */
+	private String sosCd;
+
+	/**
+	 *組織名称
+	 */
+	private String bumonRyakuName;
+
+
+
+	    /**
+	 * brCode
+	 * @generated
+	 */
+
+	/**
+	 * 医薬支店Cとの比較
+	 */
+	private String brCode;
+
+
+		/**
+	 * distCode
+	 * @generated
+	 */
+
+	private String distCode;
+
+
+		/**
+	 * reqShz
+	 * @generated
+	 */
+
+	private String reqShz;
+	    /**
+	 * reqComment
+	 * 申請コメント
+	 * @generated
+	 */
+
+	private String reqComment;
+
+	    /**
+	 * aPR_YMDHMS
+	 * @generated
+	 */
+
+	private String aPR_YMDHMS;
+
+	    /**
+	 * aPR_SHA_ID
+	 * @generated
+	 */
+
+	private String aPR_SHA_ID;
+
+	    /**
+	 * aPR_MEMO
+	 * @generated
+	 */
+
+	private String aPR_MEMO;
+
+	    /**
+	 * aPR_COMMNET
+	 * @generated
+	 */
+
+	private String aprComment;
+
+	private boolean isKensakuBool;
+
+	private String pageFlag;
+
+	public String getBoolKnb() {
+		return boolKnb;
+	}
+	public void setBoolKnb(String boolKnb) {
+		this.boolKnb = boolKnb;
+	}
+
+	public String getPreScreenId() {
+		return preScreenId;
+	}
+
+	public void setPreScreenId(String preScreenId) {
+		this.preScreenId = preScreenId;
+	}
+
+    public LinkedHashMap getJkrSosFbReqFlgMap() {
+		return JkrSosFbReqFlgMap;
+	}
+	public void setJkrSosFbReqFlgMap(LinkedHashMap jkrSosFbReqFlgMap) {
+		JkrSosFbReqFlgMap = jkrSosFbReqFlgMap;
+	}
+	public LinkedHashMap getJkrSosFbPrcTypeMap() {
+		return JkrSosFbPrcTypeMap;
+	}
+	public void setJkrSosFbPrcTypeMap(LinkedHashMap jkrSosFbPrcTypeMap) {
+		JkrSosFbPrcTypeMap = jkrSosFbPrcTypeMap;
+	}
+
+	/**
+	 * 担当先コンボを取得します。
+	 * @return 担当先コンボ
+	 */
+	public LinkedHashMap getSearchInsChgCombo() {
+	    return searchInsChgCombo;
+	}
 
     public String getSortCondition() {
 		return sortCondition;
@@ -292,8 +600,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 		this.reqJgiNameDescClass = reqJgiNameDescClass;
 	}
 
-
-
     /**
 	 * 担当先コンボを設定します。
 	 * @param searchInsChgCombo 担当先コンボ
@@ -302,33 +608,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	    this.searchInsChgCombo = searchInsChgCombo;
 	}
 
-	/**
-     * 親画面名
-     * @generated
-     */
-    private String winVarName;
-
-	/**
-     * 呼び出し元のClear処理メソッド名
-     * @generated
-     */
-    private String parentClearProc;
-
-    /**
-     * 親画面から受け取るMR/管理者のflag
-     */
-    private String mrAdminCd;
-
-
-
-	/**
-     * 従業員番号
-     */
-    private String jgiNo;
-    /**
-     * 従業員名
-     */
-    private String jgiName;
 
     public String getJgiNo() {
 		return jgiNo;
@@ -407,10 +686,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setInLimit(Integer inLimit) {
 	    this.inLimit = inLimit;
 	}
-	/**
-	 * 審査flag
-	 */
-	private String shnFlg;
 
 	/**
 	 * 審査flagを取得します。
@@ -428,12 +703,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * 審査日時
-	 */
-	private String shnYmdhms;
-
-
-	/**
 	 * 審査日時を取得します。
 	 * @return 審査日時
 	 */
@@ -447,12 +716,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setShnYmdhms(String shnYmdhms) {
 		this.shnYmdhms = shnYmdhms;
 	}
-
-	/**
-	 * 審査者名
-	 */
-	private String shnShaId;
-
 	/**
 	 * 審査者名を取得します。
 	 * @return 審査者名
@@ -467,11 +730,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setShnShaId(String shnShaId) {
 		this.shnShaId = shnShaId;
 	}
-
-	/**
-	 * FB申請要否
-	 */
-	private String fbReqFlg;
 
 	/**
 	 * FB申請要否を取得します。
@@ -489,12 +747,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * FB回答ID
-	 *
-	 */
-	private String fbAnsId;
-
-	/**
 	 * FB回答IDを取得します。
 	 * @return FB回答ID
 	 */
@@ -508,11 +760,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setFbAnsId(String fbAnsId) {
 		this.fbAnsId = fbAnsId;
 	}
-
-	/**
-	 * FB処理区分
-	 */
-	private String fbPrcType;
 
 	/**
 	 * FB処理区分を取得します。
@@ -530,15 +777,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-     * @generated
-     */
-    private List<CatSnseiComboDataList> catSnseiComboDataList = new ArrayList<CatSnseiComboDataList>();
-    /**
-	 * メッセージ中身
-	 * @generated
-	 */
-	private String msgStr;
-	/**
 	 * メッセージ中身を取得します。
 	 * @return メッセージ中身
 	 */
@@ -553,11 +791,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 		this.msgStr = msgStr;
 	}
 
-    /**
-	 * メッセージ中身
-	 * @generated
-	 */
-	private String msgData;
 	/**
 	 * メッセージ中身を取得します。
 	 * @param w009
@@ -575,60 +808,7 @@ public class NC011DTO extends BaseDTO implements Serializable {
 		this.msgData = msgData;
 	}
 
-	/**
-     * @generated
-     */
-    private String test;
 
-    /**
-     * rEQ_ID
-     * @generated
-     */
-
-    private String reqId;
-
-	/**
-	 * 検索-申請日時
-	 * inreqYmdhmsFrom
-	 * @generated
-	 */
-
-    private String inreqYmdhmsFrom;
-    /**
-	 * 検索-申請日時
-	 * inreqYmdhmsTo
-	 * @generated
-	 */
-
-    private String inreqYmdhmsTo;
-
-    /**
-     * reqYmdhmsFrom
-     * @generated
-     */
-
-    private String reqYmdhmsFrom;
-    /**
-     * reqYmdhmsTo
-     * @generated
-     */
-
-    private String reqYmdhmsTo;
-
-    /**
-     * knYmdhmsFrom
-     * @generated
-     */
-
-    private String knYmdhmsFrom;
-
-
-	/**
-     * knYmdhmsTo
-     * @generated
-     */
-
-    private String knYmdhmsTo;
 
     public String getKnYmdhmsFrom() {
 		return knYmdhmsFrom;
@@ -642,78 +822,8 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setKnYmdhmsTo(String knYmdhmsTo) {
 		this.knYmdhmsTo = knYmdhmsTo;
 	}
-        /**
-     * reqChl
-     * @generated
-     */
-
-    private String reqChl;
 
 
-        /**
-     * reqSts
-     * @generated
-     */
-
-    private String reqSts;
-
-        /**
-     * insNo
-     * @generated
-     */
-
-    private String insNo;
-	    /**
-	 * docNo
-	 * @generated
-	 */
-
-	private String docNo;
-	 /**
-	 * insClass
-	 * @generated
-	 */
-
-	private String insClass;
-
-
-		/**
-	 * insSbt
-	 * @generated
-	 */
-
-	private String insSbt;
-
-	    /**
-	 * reqSts
-	 * @generated
-	 */
-
-	private String docType;
-	    /**
-	 * jobForm 勤務形態
-	 * @generated
-	 */
-
-	private String jobForm;
-	    /**
-	 * hoInsType
-	 * @generated
-	 */
-
-	private String hoInsType;
-
-        /**
-     * insFormalName
-     * @generated
-     */
-
-    private String insFormalName;
-
-    /**
-     * 施設名-検索用
-     */
-    private String insKanjiSrch;
 
 	    /**
 		 * 施設名-検索用を取得します。
@@ -730,33 +840,7 @@ public class NC011DTO extends BaseDTO implements Serializable {
 		this.insKanjiSrch = insKanjiSrch;
 	}
 
-		/**
-	 * docKanj
-	 * @generated
-	 */
 
-    private String docKanj;
-
-
-
-        /**
-     * reqJgiName --申請者氏名
-     * @generated
-     */
-
-    private String reqJgiName;
-
-	    /**
-	 * reqJgiNo
-	 * @generated
-	 */
-
-	private String reqJgiNo;
-
-    /**
-     *部門ランク
-     */
-	private String bumonRank;
 
     public String getBumonRank() {
 		return bumonRank;
@@ -765,10 +849,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 		this.bumonRank = bumonRank;
 	}
 
-    /**
-     *組織コード
-     */
-	private String sosCd;
 
 	public String getSosCd() {
 		return sosCd;
@@ -777,10 +857,7 @@ public class NC011DTO extends BaseDTO implements Serializable {
 		this.sosCd = sosCd;
 	}
 
-    /**
-     *組織名称
-     */
-	private String bumonRyakuName;
+
 
 	public String getBumonRyakuName() {
 		return bumonRyakuName;
@@ -788,25 +865,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setBumonRyakuName(String bumonRyakuName) {
 		this.bumonRyakuName = bumonRyakuName;
 	}
-
-
-	    /**
-	 * brCode
-	 * @generated
-	 */
-
-	/**
-	 * 医薬支店Cとの比較
-	 */
-	private String brCode;
-
-
-		/**
-	 * distCode
-	 * @generated
-	 */
-
-	private String distCode;
 
     /**
 	 * brCodeを取得します。
@@ -836,48 +894,6 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setDistCode(String distCode) {
 		this.distCode = distCode;
 	}
-
-		/**
-     * reqShz
-     * @generated
-     */
-
-    private String reqShz;
-	    /**
-	 * reqComment
-	 * 申請コメント
-	 * @generated
-	 */
-
-	private String reqComment;
-
-        /**
-     * aPR_YMDHMS
-     * @generated
-     */
-
-    private String aPR_YMDHMS;
-
-        /**
-     * aPR_SHA_ID
-     * @generated
-     */
-
-    private String aPR_SHA_ID;
-
-        /**
-     * aPR_MEMO
-     * @generated
-     */
-
-    private String aPR_MEMO;
-
-        /**
-     * aPR_COMMNET
-     * @generated
-     */
-
-    private String aprComment;
 
 
 	/**
@@ -922,13 +938,13 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setInreqYmdhmsFrom(String inreqYmdhmsFrom) {
 	   this.inreqYmdhmsFrom = inreqYmdhmsFrom;
 	}
-/**
- * 検索-申請日時を取得します。
- * @return 検索-申請日時
- */
-public String getInreqYmdhmsTo() {
-   return inreqYmdhmsTo;
-}
+	/**
+	 * 検索-申請日時を取得します。
+	 * @return 検索-申請日時
+	 */
+	public String getInreqYmdhmsTo() {
+	   return inreqYmdhmsTo;
+	}
 	/**
 	 * 検索-申請日時を設定します。
 	 * @param inreqYmdhmsTo 検索-申請日時
@@ -1020,13 +1036,13 @@ public String getInreqYmdhmsTo() {
 	public void setInsNo(String insNo) {
 	   this.insNo = insNo;
 	}
-/**
- * docNoを取得します。
- * @return docNo
- */
-public String getDocNo() {
-	return docNo;
-}
+	/**
+	 * docNoを取得します。
+	 * @return docNo
+	 */
+	public String getDocNo() {
+		return docNo;
+	}
 	/**
 	 * docNoを設定します。
 	 * @param docNo docNo
@@ -1034,20 +1050,20 @@ public String getDocNo() {
 	public void setDocNo(String docNo) {
 		this.docNo = docNo;
 	}
-/**
- * insClassを取得します。
- * @return insClass
- */
-public String getInsClass() {
-  return insClass;
-}
-/**
- * insClassを設定します。
- * @param insClass insClass
- */
-public void setInsClass(String insClass) {
- this.insClass = insClass;
-}
+	/**
+	 * insClassを取得します。
+	 * @return insClass
+	 */
+	public String getInsClass() {
+	  return insClass;
+	}
+	/**
+	 * insClassを設定します。
+	 * @param insClass insClass
+	 */
+	public void setInsClass(String insClass) {
+	 this.insClass = insClass;
+	}
 	/**
 	 * insSbtを取得します。
 	 * @return insSbt
@@ -1104,13 +1120,13 @@ public void setInsClass(String insClass) {
 	public void setInsFormalName(String insFormalName) {
 	   this.insFormalName = insFormalName;
 	}
-/**
- * docKanjを取得します。
- * @return docKanj
- */
-public String getDocKanj() {
-	return docKanj;
-}
+	/**
+	 * docKanjを取得します。
+	 * @return docKanj
+	 */
+	public String getDocKanj() {
+		return docKanj;
+	}
 	/**
 	 * docKanjを設定します。
 	 * @param docKanj docKanj
@@ -1174,20 +1190,20 @@ public String getDocKanj() {
 	public void setReqShz(String reqShz) {
 	   this.reqShz = reqShz;
 	}
-/**
- * reqCommentを設定します。
- * @param reqComment reqComment
- */
-public void setReqComment(String reqComment) {
-  this.reqComment = reqComment;
-}
-/**
- * reqCommentを取得します。
- * @return reqComment
- */
-public String getReqComment() {
-  return reqComment;
-}
+	/**
+	 * reqCommentを設定します。
+	 * @param reqComment reqComment
+	 */
+	public void setReqComment(String reqComment) {
+	  this.reqComment = reqComment;
+	}
+	/**
+	 * reqCommentを取得します。
+	 * @return reqComment
+	 */
+	public String getReqComment() {
+	  return reqComment;
+	}
 	/**
      * 検索条件_承認日時
      */
@@ -1518,39 +1534,38 @@ public String getReqComment() {
 	public void setJkrSosHoInsTypeMap(LinkedHashMap jkrSosHoInsTypeMap) {
 	    this.jkrSosHoInsTypeMap = jkrSosHoInsTypeMap;
 	}
-/**
- * @generatedを取得します。
- * @return @generated
- */
-public List<CatSnseiComboDataList> getCatSnseiComboDataList() {
-return catSnseiComboDataList;
-}
-/**
- * @generatedを設定します。
- * @param catSnseiComboDataList @generated
- */
-public void setCatSnseiComboDataList(List<CatSnseiComboDataList> catSnseiComboDataList) {
-this.catSnseiComboDataList = catSnseiComboDataList;
-}
+	/**
+	 * @generatedを取得します。
+	 * @return @generated
+	 */
+	public List<CatSnseiComboDataList> getCatSnseiComboDataList() {
+	return catSnseiComboDataList;
+	}
+	/**
+	 * @generatedを設定します。
+	 * @param catSnseiComboDataList @generated
+	 */
+	public void setCatSnseiComboDataList(List<CatSnseiComboDataList> catSnseiComboDataList) {
+	this.catSnseiComboDataList = catSnseiComboDataList;
+	}
 
-/*
- * */
-private boolean isKensakuBool;
+	/*
+	 * */
 
 
-public boolean isKensakuBool() {
-	return isKensakuBool;
-}
-public void setKensakuBool(boolean isKensakuBool) {
-	this.isKensakuBool = isKensakuBool;
-}
+	public boolean isKensakuBool() {
+		return isKensakuBool;
+	}
+	public void setKensakuBool(boolean isKensakuBool) {
+		this.isKensakuBool = isKensakuBool;
+	}
 
-private String pageFlag;
 
-public String getPageFlag() {
-	return pageFlag;
-}
-public void setPageFlag(String pageFlag) {
-	this.pageFlag = pageFlag;
-}
+
+	public String getPageFlag() {
+		return pageFlag;
+	}
+	public void setPageFlag(String pageFlag) {
+		this.pageFlag = pageFlag;
+	}
 }

@@ -235,6 +235,16 @@
         <action name="NF013Init" class="nF013Action" method="init">
             <result name="NF013">/WEB-INF/pages/NF013.jsp</result>
         </action>
+        <action name="NF013Cancel" class="nF013Action" method="cancel">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NF013Register" class="nF013Action" method="register">
+        	<result name="NF013">/WEB-INF/pages/NF013.jsp</result>
+        </action>
+        <action name="NF013ShnComp" class="nF013Action" method="shnComp">
+        	<result name="NF013">/WEB-INF/pages/NF013.jsp</result>
+        </action>
         <action name="NF014Init" class="nF014Action" method="init">
             <result name="NF014">/WEB-INF/pages/NF014.jsp</result>
         </action>
@@ -377,7 +387,7 @@
         </action>
         <action name="NC203Sort" class="nC203Action" method="sort">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
-        </action>   
+        </action>
         <action name="NC204Init" class="nC204Action" method="init">
             <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
         </action>

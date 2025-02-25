@@ -108,6 +108,32 @@
         <result column="FB_PRC_TYPE" property="fbPrcType"/>
     </resultMap>
   <select id="selectReqKnr" parameterType="jp.co.takeda.rdm.entity.SRdmReqListEntity" resultMap="sJkrJkrAuthKnrResultMap">
+		WITH HCP_KMS_MAX AS(--■サブクエリ（医師勤務先）
+		    SELECT MAX(INS_NO) MAX_INS_NO,
+		           DOC_NO
+		      FROM ORAUSR01.M_RDM_HCP_WORK
+		      GROUP BY DOC_NO
+		)
+		, HCP_INS AS (--■サブクエリ（医師勤務）
+		    SELECT  HCP_REQ.REQ_ID
+		           ,CASE
+		                 WHEN REQ_KNR.REQ_TYPE = '31' THEN HCP_REQ.INS_NO_SK
+		                 WHEN HCP_KMS_MAX.MAX_INS_NO IS NULL THEN '000000000'
+		                 ELSE HCP_KMS_MAX.MAX_INS_NO
+		            END HCP_INS_NO
+		      FROM  ORAUSR01.T_RDM_HCP_REQ HCP_REQ
+		           LEFT JOIN
+		            HCP_KMS_MAX
+		           ON (
+		                 HCP_REQ.DOC_NO = HCP_KMS_MAX.DOC_NO
+		              )
+		           LEFT JOIN
+		            ORAUSR01.T_RDM_REQ_KNR REQ_KNR
+		           ON (
+		                 REQ_KNR.REQ_ID = HCP_REQ.REQ_ID
+		              )
+		)
+
 	  SELECT
 		  	REQ_KNR.REQ_ID
 		   ,REQ_KNR.REQ_YMDHMS
@@ -165,8 +191,13 @@
 			on HCP_REQ.REQ_ID=REQ_KNR.REQ_ID
 			left join ORAUSR01.T_RDM_HCP_KMU_REQ HCP_KMU_REQ --勤務先_申請管理
 			on HCP_KMU_REQ.REQ_ID=REQ_KNR.REQ_ID
-			left join ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
-			on HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
+            LEFT JOIN HCP_INS  --■サブクエリ（医師勤務）
+		    ON HCP_INS.REQ_ID=REQ_KNR.REQ_ID
+			LEFT JOIN
+	        ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
+	        ON HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
+            OR HCO_REQ.INS_NO=HCO_MST.INS_NO
+			OR HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
 			left join ORAUSR01.M_RDM_HCP_MST HCP_MST --医師_基本情報
 			on HCP_MST.DOC_NO=nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(HCP_REQ.DOC_NO,HCP_REQ.DOC_NO,HCP_KMU_REQ.DOC_NO)))
 			left join  ORAUSR01.M_RDM_CODE_MST CODE_LB --コード情報 申請区分_LB
@@ -200,18 +231,42 @@
 		    </if>
 	    </if>
 	    <if test="aDdrCodePref != null">
-		    <if test='aDdrCodePref != "99"'>
-		    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
-			OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
-		    )
-		    </if>
-		    <if test='aDdrCodePref == "99"'>
-			AND( HCO_REQ.ADDR_CODE_PREF IS NULL
-			OR   HCO_MST.ADDR_CODE_PREF IS NULL
-			OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
-			OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-		    )
-		    </if>
+	    	<if test="reqType != null">
+			    <if test='aDdrCodePref != "99"'>
+				   <if test='reqType == "01" &amp;&amp; reqType == "31"'><!-- &amp;で&になる -->
+					    AND HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
+				   </if>
+				   <if test='reqType != "01" &amp;&amp; reqType != "31"'>
+						AND  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別	  --//施設マスタ
+			       </if>
+			    </if>
+			    <if test='aDdrCodePref == "99"'>
+				    <if test='reqType == "01" &amp;&amp; reqType == "31"'>
+					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
+					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
+					    )
+				    </if>
+				    <if test='reqType != "01" &amp;&amp; reqType != "31"'>
+						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+		                )
+				    </if>
+				</if>
+			</if>
+			<if test="reqType == null">
+			   	<if test='aDdrCodePref != "99"'>
+					    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
+						OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
+					    )
+			    </if>
+			    <if test='aDdrCodePref == "99"'>
+						AND( HCO_REQ.ADDR_CODE_PREF IS NULL
+						OR   HCO_MST.ADDR_CODE_PREF IS NULL
+						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
+						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+					    )
+			    </if>
+			</if>
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="reqJgiNo != null">
@@ -367,6 +422,31 @@
 	  SELECT COUNT(*) CNT_REQ
  	  FROM(
 
+		WITH HCP_KMS_MAX AS(--■サブクエリ（医師勤務先）
+		    SELECT MAX(INS_NO) MAX_INS_NO,
+		           DOC_NO
+		      FROM ORAUSR01.M_RDM_HCP_WORK
+		      GROUP BY DOC_NO
+		)
+		, HCP_INS AS (--■サブクエリ（医師勤務）
+		    SELECT  HCP_REQ.REQ_ID
+		           ,CASE
+		                 WHEN REQ_KNR.REQ_TYPE = '31' THEN HCP_REQ.INS_NO_SK
+		                 WHEN HCP_KMS_MAX.MAX_INS_NO IS NULL THEN '000000000'
+		                 ELSE HCP_KMS_MAX.MAX_INS_NO
+		            END HCP_INS_NO
+		      FROM  ORAUSR01.T_RDM_HCP_REQ HCP_REQ
+		           LEFT JOIN
+		            HCP_KMS_MAX
+		           ON (
+		                 HCP_REQ.DOC_NO = HCP_KMS_MAX.DOC_NO
+		              )
+		           LEFT JOIN
+		            ORAUSR01.T_RDM_REQ_KNR REQ_KNR
+		           ON (
+		                 REQ_KNR.REQ_ID = HCP_REQ.REQ_ID
+		              )
+		)
 	  	  SELECT
 		  	REQ_KNR.REQ_ID,REQ_KNR.REQ_YMDHMS,REQ_KNR.REQ_CHL,
 		    REQ_KNR.REQ_TYPE,REQ_KNR.REQ_STS,
@@ -416,8 +496,12 @@
 			on HCP_REQ.REQ_ID=REQ_KNR.REQ_ID
 			left join ORAUSR01.T_RDM_HCP_KMU_REQ HCP_KMU_REQ --勤務先_申請管理
 			on HCP_KMU_REQ.REQ_ID=REQ_KNR.REQ_ID
-			left join ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
-			on HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
+            LEFT JOIN HCP_INS  --■サブクエリ（医師勤務）
+		    ON HCP_INS.REQ_ID=REQ_KNR.REQ_ID
+			LEFT JOIN ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
+	        ON HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
+            OR HCO_REQ.INS_NO=HCO_MST.INS_NO
+			OR HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
 			left join ORAUSR01.M_RDM_HCP_MST HCP_MST --医師_基本情報
 			on HCP_MST.DOC_NO=nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(HCP_REQ.DOC_NO,HCP_REQ.DOC_NO,HCP_KMU_REQ.DOC_NO)))
 			left join  ORAUSR01.M_RDM_CODE_MST CODE_LB --コード情報 申請区分_LB
@@ -451,18 +535,42 @@
 		    </if>
 	    </if>
 	    <if test="aDdrCodePref != null">
-		    <if test='aDdrCodePref != "99"'>
-		    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
-			OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
-		    )
-		    </if>
-		    <if test='aDdrCodePref == "99"'>
-			AND( HCO_REQ.ADDR_CODE_PREF IS NULL
-			OR   HCO_MST.ADDR_CODE_PREF IS NULL
-			OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
-			OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-		    )
-		    </if>
+	    	<if test="reqType != null">
+			    <if test='aDdrCodePref != "99"'>
+				   <if test='reqType == "01" &amp;&amp; reqType == "31"'><!-- &amp;で&になる -->
+					    AND HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
+				   </if>
+				   <if test='reqType != "01" &amp;&amp; reqType != "31"'>
+						AND  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別	  --//施設マスタ
+			       </if>
+			    </if>
+			    <if test='aDdrCodePref == "99"'>
+				    <if test='reqType == "01" &amp;&amp; reqType == "31"'>
+					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
+					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
+					    )
+				    </if>
+				    <if test='reqType != "01" &amp;&amp; reqType != "31"'>
+						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+		                )
+				    </if>
+				</if>
+			</if>
+			<if test="reqType == null">
+			   	<if test='aDdrCodePref != "99"'>
+					    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
+						OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
+					    )
+			    </if>
+			    <if test='aDdrCodePref == "99"'>
+						AND( HCO_REQ.ADDR_CODE_PREF IS NULL
+						OR   HCO_MST.ADDR_CODE_PREF IS NULL
+						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
+						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+					    )
+			    </if>
+			</if>
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="reqJgiNo != null">

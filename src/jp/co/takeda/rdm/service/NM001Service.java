@@ -335,12 +335,12 @@ public class NM001Service extends BaseService {
               		}
               		else if(entiry.getKey().equals("R12")) {
                     	if(!entiry.getReqCount().equals("0")) {
-                    		dataRecord.setReqCountSsAd(entiry.getReqCount());
+                    		dataRecord.setReqCountSdUs(entiry.getReqCount());
                     		dataRecord.setReqType12(entiry.getReqType());
                     		dataRecord.setReqChl12(entiry.getReqChl());
                     		dataRecord.setReqSts12(entiry.getReqSts());
                      	}else {
-                     		dataRecord.setReqCountSsAd(" ");
+                     		dataRecord.setReqCountSdUs(" ");
                      		dataRecord.setReqType12(" ");
                      		dataRecord.setReqChl12(" ");
                      		dataRecord.setReqSts12(" ");

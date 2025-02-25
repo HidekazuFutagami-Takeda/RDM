@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * Entityクラス
  * テーブル物理名 : M_RDM_HCP_SHOZOKU_BUKA
- * テーブル論理名 : 医師_所属部科マスタ
+ * テーブル論理名 : 所属部科マスタ
  * @generated
  */
 public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
@@ -47,6 +47,7 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private String kanaName;
+
     private boolean kanaNameNullFlag;
 
     /**
@@ -54,7 +55,10 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private String kanjName;
+
     private boolean kanjNameNullFlag;
+
+
     /**　　追加箇所
      * 入力_全所属部科チェックボックス(パラメータ5)
      * @generated
@@ -75,6 +79,7 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private Integer isJgiNo;
+
     private boolean isJgiNoNullFlag;
 
     /**
@@ -82,6 +87,7 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private Integer upJgiNo;
+
     private boolean upJgiNoNullFlag;
 
     /**
@@ -89,6 +95,7 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private Date isDate;
+
     private boolean isDateNullFlag;
 
     /**
@@ -96,6 +103,7 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private Date upDate;
+
     private boolean upDateNullFlag;
 
     /**
@@ -103,6 +111,7 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private String upScrnId;
+
     private boolean upScrnIdNullFlag;
 
     /**
@@ -110,6 +119,7 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private String upFuncId;
+
     private boolean upFuncIdNullFlag;
 
     /**
@@ -131,343 +141,306 @@ public class SRdmDmcMstDeptEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * 所属部科コードの取得
-     * @return 所属部科コード
-     * @generated
-     */
-    public String getDeptCode() {
-        return this.deptCode;
-    }
-    /**
-     * 所属部科コードの取得
-     * @return 所属部科コード
-     * @generated
-     */
-    public String getSearchInput() {
-        return this.searchInput;
-    }
+	 * SRdmDmcMstDeptEntity.javadeptCodeを設定
+	 * @return deptCode
+	 */
+	public String getDeptCode() {
+		return deptCode;
+	}
 
-    /**
-     * 所属部科コードの設定
-     * @param deptCode 所属部科コード
-     * @generated
-     */
-    public void setDeptCode(String deptCode) {
-        this.deptCode = deptCode;
-    }
-    /**  追加箇所
-     * 入力_全所属部科チェックボックスの設定
-     * @param inKanjName 入力_全所属部科チェックボックスの
-     * @generated
-     */
-    public void setInAllCheck(boolean inAllCheck) {
-        this.inAllCheck = inAllCheck;
-    }
-    /**　追加箇所
-     * 入力_検索文字列の設定
-     * @param inKanjName 入力_検索文字列
-     * @generated
-     */
-    public void setInSearchInput(String inSearchInput) {
-        this.inSearchInput = inSearchInput;
-    }
-    /**　追加箇所
-     * 入力_検索文字列の設定
-     * @param inKanjName 入力_検索文字列
-     * @generated
-     */
-    public void setsearchInput(String searchInput) {
-        this.searchInput = searchInput;
-    }
-    /**
-     * 所属部科カナ名の取得
-     * @return 所属部科カナ名
-     * @generated
-     */
-    public String getKanaName() {
-        return this.kanaName;
-    }
+	/**
+	 * @param deptCode セットする deptCode
+	 */
+	public void setDeptCode(String deptCode) {
+		this.deptCode = deptCode;
+	}
 
-    /**
-     * 所属部科カナ名の設定
-     * @param kanaName 所属部科カナ名
-     * @generated
-     */
-    public void setKanaName(String kanaName) {
-        this.kanaName = kanaName;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javakanaNameを設定
+	 * @return kanaName
+	 */
+	public String getKanaName() {
+		return kanaName;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isKanaNameNullFlag() {
-        return this.kanaNameNullFlag;
-    }
+	/**
+	 * @param kanaName セットする kanaName
+	 */
+	public void setKanaName(String kanaName) {
+		this.kanaName = kanaName;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param kanaNameNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setKanaNameNullFlag(boolean kanaNameNullFlag) {
-        this.kanaNameNullFlag = kanaNameNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javakanaNameNullFlagを設定
+	 * @return kanaNameNullFlag
+	 */
+	public boolean isKanaNameNullFlag() {
+		return kanaNameNullFlag;
+	}
 
-    /**
-     * 所属部科漢字名の取得
-     * @return 所属部科漢字名
-     * @generated
-     */
-    public String getKanjName() {
-        return this.kanjName;
-    }
+	/**
+	 * @param kanaNameNullFlag セットする kanaNameNullFlag
+	 */
+	public void setKanaNameNullFlag(boolean kanaNameNullFlag) {
+		this.kanaNameNullFlag = kanaNameNullFlag;
+	}
 
-    /**
-     * 所属部科漢字名の設定
-     * @param kanjName 所属部科漢字名
-     * @generated
-     */
-    public void setKanjName(String kanjName) {
-        this.kanjName = kanjName;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javakanjNameを設定
+	 * @return kanjName
+	 */
+	public String getKanjName() {
+		return kanjName;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isKanjNameNullFlag() {
-        return this.kanjNameNullFlag;
-    }
+	/**
+	 * @param kanjName セットする kanjName
+	 */
+	public void setKanjName(String kanjName) {
+		this.kanjName = kanjName;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param kanjNameNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setKanjNameNullFlag(boolean kanjNameNullFlag) {
-        this.kanjNameNullFlag = kanjNameNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javakanjNameNullFlagを設定
+	 * @return kanjNameNullFlag
+	 */
+	public boolean isKanjNameNullFlag() {
+		return kanjNameNullFlag;
+	}
 
-    /**
-     * 新規登録者の取得
-     * @return 新規登録者
-     * @generated
-     */
-    public Integer getIsJgiNo() {
-        return this.isJgiNo;
-    }
+	/**
+	 * @param kanjNameNullFlag セットする kanjNameNullFlag
+	 */
+	public void setKanjNameNullFlag(boolean kanjNameNullFlag) {
+		this.kanjNameNullFlag = kanjNameNullFlag;
+	}
 
-    /**
-     * 新規登録者の設定
-     * @param isJgiNo 新規登録者
-     * @generated
-     */
-    public void setIsJgiNo(Integer isJgiNo) {
-        this.isJgiNo = isJgiNo;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javainAllCheckを設定
+	 * @return inAllCheck
+	 */
+	public boolean isInAllCheck() {
+		return inAllCheck;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isIsJgiNoNullFlag() {
-        return this.isJgiNoNullFlag;
-    }
+	/**
+	 * @param inAllCheck セットする inAllCheck
+	 */
+	public void setInAllCheck(boolean inAllCheck) {
+		this.inAllCheck = inAllCheck;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param isJgiNoNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setIsJgiNoNullFlag(boolean isJgiNoNullFlag) {
-        this.isJgiNoNullFlag = isJgiNoNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javainSearchInputを設定
+	 * @return inSearchInput
+	 */
+	public String getInSearchInput() {
+		return inSearchInput;
+	}
 
-    /**
-     * 最終更新者の取得
-     * @return 最終更新者
-     * @generated
-     */
-    public Integer getUpJgiNo() {
-        return this.upJgiNo;
-    }
+	/**
+	 * @param inSearchInput セットする inSearchInput
+	 */
+	public void setInSearchInput(String inSearchInput) {
+		this.inSearchInput = inSearchInput;
+	}
 
-    /**
-     * 最終更新者の設定
-     * @param upJgiNo 最終更新者
-     * @generated
-     */
-    public void setUpJgiNo(Integer upJgiNo) {
-        this.upJgiNo = upJgiNo;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javasearchInputを設定
+	 * @return searchInput
+	 */
+	public String getSearchInput() {
+		return searchInput;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isUpJgiNoNullFlag() {
-        return this.upJgiNoNullFlag;
-    }
+	/**
+	 * @param searchInput セットする searchInput
+	 */
+	public void setSearchInput(String searchInput) {
+		this.searchInput = searchInput;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param upJgiNoNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setUpJgiNoNullFlag(boolean upJgiNoNullFlag) {
-        this.upJgiNoNullFlag = upJgiNoNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaisJgiNoを設定
+	 * @return isJgiNo
+	 */
+	public Integer getIsJgiNo() {
+		return isJgiNo;
+	}
 
-    /**
-     * 登録日の取得
-     * @return 登録日
-     * @generated
-     */
-    public Date getIsDate() {
-        return this.isDate;
-    }
+	/**
+	 * @param isJgiNo セットする isJgiNo
+	 */
+	public void setIsJgiNo(Integer isJgiNo) {
+		this.isJgiNo = isJgiNo;
+	}
 
-    /**
-     * 登録日の設定
-     * @param isDate 登録日
-     * @generated
-     */
-    public void setIsDate(Date isDate) {
-        this.isDate = isDate;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaisJgiNoNullFlagを設定
+	 * @return isJgiNoNullFlag
+	 */
+	public boolean isJgiNoNullFlag() {
+		return isJgiNoNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isIsDateNullFlag() {
-        return this.isDateNullFlag;
-    }
+	/**
+	 * @param isJgiNoNullFlag セットする isJgiNoNullFlag
+	 */
+	public void setJgiNoNullFlag(boolean isJgiNoNullFlag) {
+		this.isJgiNoNullFlag = isJgiNoNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param isDateNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setIsDateNullFlag(boolean isDateNullFlag) {
-        this.isDateNullFlag = isDateNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaupJgiNoを設定
+	 * @return upJgiNo
+	 */
+	public Integer getUpJgiNo() {
+		return upJgiNo;
+	}
 
-    /**
-     * 更新日の取得
-     * @return 更新日
-     * @generated
-     */
-    public Date getUpDate() {
-        return this.upDate;
-    }
+	/**
+	 * @param upJgiNo セットする upJgiNo
+	 */
+	public void setUpJgiNo(Integer upJgiNo) {
+		this.upJgiNo = upJgiNo;
+	}
 
-    /**
-     * 更新日の設定
-     * @param upDate 更新日
-     * @generated
-     */
-    public void setUpDate(Date upDate) {
-        this.upDate = upDate;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaupJgiNoNullFlagを設定
+	 * @return upJgiNoNullFlag
+	 */
+	public boolean isUpJgiNoNullFlag() {
+		return upJgiNoNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isUpDateNullFlag() {
-        return this.upDateNullFlag;
-    }
+	/**
+	 * @param upJgiNoNullFlag セットする upJgiNoNullFlag
+	 */
+	public void setUpJgiNoNullFlag(boolean upJgiNoNullFlag) {
+		this.upJgiNoNullFlag = upJgiNoNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param upDateNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setUpDateNullFlag(boolean upDateNullFlag) {
-        this.upDateNullFlag = upDateNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaisDateを設定
+	 * @return isDate
+	 */
+	public Date getIsDate() {
+		return isDate;
+	}
 
-    /**
-     * 更新画面IDの取得
-     * @return 更新画面ID
-     * @generated
-     */
-    public String getUpScrnId() {
-        return this.upScrnId;
-    }
+	/**
+	 * @param isDate セットする isDate
+	 */
+	public void setIsDate(Date isDate) {
+		this.isDate = isDate;
+	}
 
-    /**
-     * 更新画面IDの設定
-     * @param upScrnId 更新画面ID
-     * @generated
-     */
-    public void setUpScrnId(String upScrnId) {
-        this.upScrnId = upScrnId;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaisDateNullFlagを設定
+	 * @return isDateNullFlag
+	 */
+	public boolean isDateNullFlag() {
+		return isDateNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isUpScrnIdNullFlag() {
-        return this.upScrnIdNullFlag;
-    }
+	/**
+	 * @param isDateNullFlag セットする isDateNullFlag
+	 */
+	public void setDateNullFlag(boolean isDateNullFlag) {
+		this.isDateNullFlag = isDateNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param upScrnIdNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setUpScrnIdNullFlag(boolean upScrnIdNullFlag) {
-        this.upScrnIdNullFlag = upScrnIdNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaupDateを設定
+	 * @return upDate
+	 */
+	public Date getUpDate() {
+		return upDate;
+	}
 
-    /**
-     * 更新機能IDの取得
-     * @return 更新機能ID
-     * @generated
-     */
-    public String getUpFuncId() {
-        return this.upFuncId;
-    }
+	/**
+	 * @param upDate セットする upDate
+	 */
+	public void setUpDate(Date upDate) {
+		this.upDate = upDate;
+	}
 
-    /**
-     * 更新機能IDの設定
-     * @param upFuncId 更新機能ID
-     * @generated
-     */
-    public void setUpFuncId(String upFuncId) {
-        this.upFuncId = upFuncId;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaupDateNullFlagを設定
+	 * @return upDateNullFlag
+	 */
+	public boolean isUpDateNullFlag() {
+		return upDateNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの取得
-     * @return true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public boolean isUpFuncIdNullFlag() {
-        return this.upFuncIdNullFlag;
-    }
+	/**
+	 * @param upDateNullFlag セットする upDateNullFlag
+	 */
+	public void setUpDateNullFlag(boolean upDateNullFlag) {
+		this.upDateNullFlag = upDateNullFlag;
+	}
 
-    /**
-     * NULL更新するかのフラグの設定
-     * @param upFuncIdNullFlag true：NULL更新する、false：NULL更新しない
-     * @generated
-     */
-    public void setUpFuncIdNullFlag(boolean upFuncIdNullFlag) {
-        this.upFuncIdNullFlag = upFuncIdNullFlag;
-    }
+	/**
+	 * SRdmDmcMstDeptEntity.javaupScrnIdを設定
+	 * @return upScrnId
+	 */
+	public String getUpScrnId() {
+		return upScrnId;
+	}
 
-    /**
+	/**
+	 * @param upScrnId セットする upScrnId
+	 */
+	public void setUpScrnId(String upScrnId) {
+		this.upScrnId = upScrnId;
+	}
+
+	/**
+	 * SRdmDmcMstDeptEntity.javaupScrnIdNullFlagを設定
+	 * @return upScrnIdNullFlag
+	 */
+	public boolean isUpScrnIdNullFlag() {
+		return upScrnIdNullFlag;
+	}
+
+	/**
+	 * @param upScrnIdNullFlag セットする upScrnIdNullFlag
+	 */
+	public void setUpScrnIdNullFlag(boolean upScrnIdNullFlag) {
+		this.upScrnIdNullFlag = upScrnIdNullFlag;
+	}
+
+	/**
+	 * SRdmDmcMstDeptEntity.javaupFuncIdを設定
+	 * @return upFuncId
+	 */
+	public String getUpFuncId() {
+		return upFuncId;
+	}
+
+	/**
+	 * @param upFuncId セットする upFuncId
+	 */
+	public void setUpFuncId(String upFuncId) {
+		this.upFuncId = upFuncId;
+	}
+
+	/**
+	 * SRdmDmcMstDeptEntity.javaupFuncIdNullFlagを設定
+	 * @return upFuncIdNullFlag
+	 */
+	public boolean isUpFuncIdNullFlag() {
+		return upFuncIdNullFlag;
+	}
+
+	/**
+	 * @param upFuncIdNullFlag セットする upFuncIdNullFlag
+	 */
+	public void setUpFuncIdNullFlag(boolean upFuncIdNullFlag) {
+		this.upFuncIdNullFlag = upFuncIdNullFlag;
+	}
+
+	/**
      * このEntityの値を返す
      * @return DTOの値
      * @generated

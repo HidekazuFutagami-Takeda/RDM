@@ -233,6 +233,9 @@ public class NC011Action extends BaseAction<NC011DTO> {
     @InputConfig(methodName="validationError")
     public String search() throws Exception {
     	BaseDTO outdto = dto;
+    	//画面タイト制御処理
+        String title = "NC011_申請一覧";
+        dto.setTitle(title);
     	searchSetup();
         // F層呼び出し
     	outdto = NC011Service.search(dto);

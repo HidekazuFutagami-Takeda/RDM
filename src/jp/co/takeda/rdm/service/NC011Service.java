@@ -563,7 +563,7 @@ public class NC011Service extends BaseService {
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           //日付チェック 開始日が終了日より後の場合
           try {
-			if (!sdf.parse(indto.getReqYmdhmsFrom()).before(sdf.parse(indto.getReqYmdhmsTo()))) {
+			if (sdf.parse(indto.getReqYmdhmsFrom()).compareTo(sdf.parse(indto.getReqYmdhmsTo())) == 1) {
 				indto.setBoolKnb("1");
 				indto.setKensakuBool(false);
         		return outdto;

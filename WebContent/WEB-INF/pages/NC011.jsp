@@ -73,121 +73,45 @@
         position:Sticky;
         top:0;
         background-color: #fff;
+        left: 2;
         }
     th {
-        height:10px;
+    	background-color: #ffffff;
+    	border: 1px solid black;
+        height:2px;
     }
     </style>
     <style>
 	    .testlayout {
 	    }
-	    .container {
-		    resize : horizontal;
-		    overflow : hidden;
-		}
 		.siz{
 		width:2500px;
-
 		}
+		      TH.comTableTitle			/* テーブル形式のタイトル項目 */
+       {
+         color : #000000;
+         background-color: #e0e0d4;
+       /*	background-color: #cccccc;*/
+         background-color: #e8b5a2;
+
+         border-style: solid;
+         border-top-width : 1px;
+         border-left-width : 1px;
+         border-right-width : 1px;
+         border-bottom-width : 1px;
+       }
+       .tkdUlt TH:first-child {
+         position: sticky;
+         left: 1;
+         z-index:100;
+       }
 	</style>
 <%
-
-
 // ソート順状態制御用
 String sortCondition = StringUtils.nvl((String)request.getAttribute("sortCondition"), "");
 //String sortCondition = null;
 %>
-</head>
-<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
-<%-- ポータルタイトル 開始 --%>
-    <table class="comPortalTitle">
-    <tbody>
-    <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="申請一覧"></td>
-        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
-        <td class="comPortalTitleRight"><nobr></nobr></td>
-    </tr>
-    </tbody>
-    </table>
-<%-- ポータルタイトル 終了 --%>
-<%-- ポータルボディー 開始 --%>
-
- <table class="comPortalBody">
-    <tbody>
-      <tr>
-        <td>
-
-	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-		<tbody>
-		<s:if test="msgStr != null">
-			<tr>
-				<td>
-					<nobr>
-					<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-					</nobr>
-				</td>
-			</tr>
-		</s:if>
-		</tbody>
-	</table>
-
-<table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
-  <tbody>
-  <tr/>
-    <s:form name="fm1" theme="simple" >
-    <s:hidden name="screenId"  />
-    <s:hidden name="functionId" />
-
-    <s:hidden id="pageFlag" name="pageFlag" />
-
-    <input type="hidden" name="windowName" value="" />
-    <input type="hidden" name="openerName" value="" />
-
-	<s:hidden id="mrAdminCd" name="mrAdminCd"/>
-    <s:hidden id="mrAdminFlg" name="mrAdminFlg"/>
-    <s:hidden id="preScreenId" name="preScreenId"/>
-
-
-	<s:hidden id="jgiNo" name="jgiNo"/>
-    <s:hidden id="jgiName" name="jgiName"/>
-
-
-	<s:hidden id="reqJgiNo" name="reqJgiNo"/>
-	<s:hidden id="pageCntCur" name="pageCntCur"/>
-
-	<s:hidden id="knYmdhmsFrom" name="knYmdhmsFrom"/>
-	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
-
-<!--  	<s:hidden id="reqId" name="reqId"/>
-	<s:hidden id="reqType" name="reqType"/>-->
-
-	<s:hidden id="sortCondition" name="sortCondition" />
-
-	<s:hidden id="bumonRank" name="bumonRank"/>
-	<s:hidden id="sosCd" name="sosCd"/>
-<!--  <s:hidden id="bumonRyakuName" name="bumonRyakuName"/>  申請者所属-->
-    <s:hidden id="brCode" name="brCode"/><!-- 申請者所属リージョン -->
-	<s:hidden id="distCode" name="distCode"/><!-- 申請者所属エリア -->
-
-<%-- ポータルボディー 開始 --%>
-<table class="pupBodyTable" align="center">
-<tr align="center"><td>
-<%-- 検索部 開始 --%>
-	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-
-	    <tbody>
-	      <s:if test="msgStr != null">
-	      <tr>
-	        <td>
-	          <nobr>
-	          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-	          </nobr>
-	        </td>
-	      </tr>
-	      </s:if>
-	    </tbody>
-	  </table>
-	  	<%
+	 <%
 	  // ソート表示状態制御
 	  String reqIdAscClass = "comTableNoSort";
 	  String reqIdDescClass = "comTableNoSort";
@@ -231,8 +155,90 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		  reqJgiNameDescClass = "comTableSort";
 	  }
 	%>
-	<table style="align:cener;">
+</head>
+<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo(); sosSbt();">
 
+  <%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
+
+ <table class="comPortalTable" align="center" style="width:98%;">
+   <tr>
+	<td>
+    <s:form name="fm1" theme="simple" >
+    <s:hidden name="screenId"  />
+    <s:hidden name="functionId" />
+
+    <s:hidden id="pageFlag" name="pageFlag" />
+
+    <input type="hidden" name="windowName" value="" />
+    <input type="hidden" name="openerName" value="" />
+
+	<s:hidden id="mrAdminCd" name="mrAdminCd"/>
+    <s:hidden id="mrAdminFlg" name="mrAdminFlg"/>
+    <s:hidden id="preScreenId" name="preScreenId"/>
+
+
+	<s:hidden id="jgiNo" name="jgiNo"/>
+    <s:hidden id="jgiName" name="jgiName"/>
+    <s:hidden id="reqJgiName"/>
+
+	<s:hidden id="reqJgiNo" name="reqJgiNo"/>
+	<s:hidden id="pageCntCur" name="pageCntCur"/>
+
+	<s:hidden id="knYmdhmsFrom" name="knYmdhmsFrom"/>
+	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
+
+<!--  	<s:hidden id="reqId" name="reqId"/>
+	<s:hidden id="reqType" name="reqType"/>-->
+
+	<s:hidden id="sortCondition" name="sortCondition" />
+	<s:hidden name="title" />
+	<s:hidden id="bumonRank" name="bumonRank"/>
+	<s:hidden id="sosCd" name="sosCd"/>
+<!--  <s:hidden id="bumonRyakuName" name="bumonRyakuName"/>  申請者所属-->
+    <s:hidden id="brCode" name="brCode"/><!-- 申請者所属リージョン -->
+	<s:hidden id="distCode" name="distCode"/><!-- 申請者所属エリア -->
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="申請サマリ"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+
+
+
+	<table class="comPortalBody" style="align:cener;">
+		<tbody>
+      	<tr align="center">
+       	<td>
+				<%-- 検索部 開始 --%>
+			<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px" >
+			    <tbody>
+			      <s:if test="msgStr != null">
+			      <tr>
+			        <td>
+			          <nobr>
+			          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
+			          </nobr>
+			        </td>
+			      </tr>
+			      </s:if>
+			    </tbody>
+			</table>
+	<table style="align:cener;">
 		<tr>
 					<%-- 都道府県--%>
 			    <td class="pupControlItem"><nobr>&nbsp;都道府県</nobr></td>
@@ -489,12 +495,13 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
       	  </s:if>
       	  <s:else>
               <div style="max-height:300px;width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-              <table class="siz">
+              <table class="siz tkdUlt">
+              		<thead style="z-index:3;">
               <%-- ヘッダー行 --%>
 												<tr>
 													<!-- style="resize : horizontal;overflow : hidden;   " -->
 
-													<td class="comTableTitle container" width="120px"
+													<th rowspan="4" class="comTableTitle container tkdUlt" width="120px"
 														style="border: none;" id="styles">申請ID <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdAscClass%>" href=""
@@ -502,7 +509,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdDescClass%>" href=""
 														onclick="NC011Sort(1);return false;">▼</a>
-													</td>
+													</th>
 													<td class="comTableTitle container" width="180px"
 														style="border: none;">申請日時 <span
 														style="font-size: 1pt;"> </span> <a
@@ -590,16 +597,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 															style="width: 80px; border: none;">FB処理区分</td>
 													</s:if>
 												</tr>
+								</thead>
 												<%-- 内容 --%>
 				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
 					<tr>
-						 <td class="comTableItem">
+						 <th class="comTableItem">
 						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
 						          </acronym>
 			              </a>
-				  		 </td>
+				  		 </th>
 				  		 <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo"  key="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo" /></td>
 				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqSbt"  key="catSnseiComboDataList[%{#status.index}].reqSbt" /></td>
 				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqType"  key="catSnseiComboDataList[%{#status.index}].reqType" /></td>
@@ -643,16 +651,21 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 									<%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>
 						  <!--  <hr class="comSplit" /> -->
 						  <%-- 後制御部 --%>
-	</table>
+						            </td>
+          </tr>
+          </tbody>
+          </table>
 	</s:form>
-    </tbody>
-    </table>
-</table>
+	    </td>
+    </tr>
+  </table>
+
 <%-- ポータルボディー 終了 --%>
 
 
 <%-- メイン部 一覧 終了 --%>
 <%-- ポータル大枠 終了 --%>
+<jsp:include page="common/jkrBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />
 </body>

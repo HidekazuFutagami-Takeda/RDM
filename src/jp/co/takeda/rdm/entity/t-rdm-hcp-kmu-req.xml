@@ -77,6 +77,8 @@
         <result column="TEKIYO_YMD" property="tekiyoYmd"/>
         <result column="PRE_HO_INS_TYPE" property="preHoInsType"/>
         <result column="POST_HO_INS_TYPE" property="postHoInsType"/>
+        <result column="PRE_INS_CLASS" property="preInsClass"/>
+        <result column="POST_INS_CLASS" property="postInsClass"/>
         <result column="REQ_TYPE" property="reqType"/>
     </resultMap>
     <resultMap id="selectDocReqKnrInsChangeCheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity">
@@ -128,6 +130,8 @@
         <result column="TEKIYO_YMD" property="tekiyoYmd"/>
         <result column="PRE_HO_INS_TYPE" property="preHoInsType"/>
         <result column="POST_HO_INS_TYPE" property="postHoInsType"/>
+        <result column="PRE_INS_CLASS" property="preInsClass"/>
+        <result column="POST_INS_CLASS" property="postInsClass"/>
         <result column="REQ_CHL" property="reqChl"/>
     </resultMap>
     <resultMap id="nd101CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity">
@@ -165,6 +169,7 @@
 
           ,HCP_MST.DOC_NO
           ,PRE_HCO_MST.HO_INS_TYPE PRE_HO_INS_TYPE
+          ,PRE_HCO_MST.INS_CLASS PRE_INS_CLASS
        <if test="inReqFlg == 1">
           ,REQ_KNR.REQ_ID
           ,REQ_KNR.REQ_SHZ
@@ -207,6 +212,7 @@
           ,REQ_KNR.APR_COMMENT
 
           ,POST_HCO_MST.HO_INS_TYPE POST_HO_INS_TYPE
+          ,POST_HCO_MST.INS_CLASS POST_INS_CLASS
           ,REQ_KNR.REQ_TYPE
        </if>
        <if test="inReqFlg == 0">
@@ -415,7 +421,20 @@
 			ON
 			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID
 			AND REQ_KNR.REQ_TYPE IN ('33')
-			AND REQ_KNR.REQ_STS IN ('03','13','04','14')
+			AND REQ_KNR.REQ_STS IN ('03','13')
+			WHERE 1 = 1
+			and KMU_REQ.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectNd101DelAppdData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+			SELECT REQ_KNR.REQ_ID
+			FROM
+			    T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+			INNER JOIN
+			    T_RDM_REQ_KNR REQ_KNR --申請管理
+			ON
+			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID
+			AND REQ_KNR.REQ_TYPE IN ('33')
+			AND REQ_KNR.REQ_STS IN ('04','14')
 			WHERE 1 = 1
 			and KMU_REQ.DOC_NO = #{inDocNo}
     </select>
@@ -457,6 +476,7 @@
 
           ,HCP_MST.DOC_NO
           ,PRE_HCO_MST.HO_INS_TYPE PRE_HO_INS_TYPE
+          ,PRE_HCO_MST.INS_CLASS PRE_INS_CLASS
 
           ,REQ_KNR.REQ_ID
           ,REQ_KNR.REQ_SHZ
@@ -488,6 +508,7 @@
           ,UNIV_POST_YAKUSHOKU.TITLE_KJ UNIV_POST_TITLE_KJ
           ,SUBSTR(REQ_KNR.APR_YMDHMS, 1,4) || '-' || SUBSTR(REQ_KNR.APR_YMDHMS, 5,2) || '-' ||SUBSTR(REQ_KNR.APR_YMDHMS, 7,2) APR_YMDHMS
           ,KMU_REQ.INS_NO_SK POST_INS_NO
+          ,KMU_REQ.INS_NO_SK POST_INS_NO
           ,POST_HCO_MST.ULT_INS_NO POST_ULT_INS_NO
           ,KMU_REQ.DEPT_CODE_AF POST_DEPT_CODE
           ,POST_SHOZOKU_BUKA.DEPT_KN POST_DEPT_KN
@@ -499,6 +520,7 @@
           ,REQ_KNR.APR_COMMENT
 
           ,POST_HCO_MST.HO_INS_TYPE POST_HO_INS_TYPE
+          ,POST_HCO_MST.INS_CLASS POST_INS_CLASS
           ,REQ_KNR.REQ_CHL
 
        FROM T_RDM_REQ_KNR REQ_KNR

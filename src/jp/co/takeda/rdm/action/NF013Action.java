@@ -116,10 +116,9 @@ public class NF013Action extends BaseAction<NF013DTO> {
 
         dto.setTitle(title);
 
-        //モック
-        dto.setInsNo("101031781");
-//        dto.setReqId("250114-000112"); // 領域担当者有req
-        dto.setReqId("250221-000485");
+//        //モック
+//        dto.setInsNo("101111211");
+//        dto.setReqId("250225-000497");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
@@ -130,19 +129,19 @@ public class NF013Action extends BaseAction<NF013DTO> {
         dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
 
         //モック
-        String kbn = "1";
-        if(kbn.equals("0")) {
-	        preScreenId = "NF001";
-	        dto.setLoginJgiNo("8830034");
-	        dto.setReqId("");
-        } else {
-	        preScreenId = "NC011";
-	        dto.setLoginJgiNo("8830034");
-	//        dto.setLoginJgiNo("0");
-	        //dto.setReqStsCd("01");
-	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-        }
+//        String kbn = "1";
+//        if(kbn.equals("0")) {
+//	        preScreenId = "NF001";
+//	        dto.setLoginJgiNo("8830034");
+//	        dto.setReqId("");
+//        } else {
+//	        preScreenId = "NC011";
+//	        dto.setLoginJgiNo("8830034");
+//	        //dto.setLoginJgiNo("0");
+//	        //dto.setReqStsCd("01");
+//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+//        }
 
         // 遷移パターン　0:施設固定コードから作成、1：申請データあり
         // 施設固定コード　ありなしで分岐

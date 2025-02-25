@@ -8,30 +8,27 @@ package jp.co.takeda.rdm.action;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.context.annotation.Scope;
+
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.springframework.context.annotation.Scope;
-
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
-import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.StringUtils;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.ND102DTO;
-import jp.co.takeda.rdm.exception.InvalidRequestException;
-import jp.co.takeda.rdm.service.ND102Service;
+import jp.co.takeda.rdm.dto.NF305DTO;
+import jp.co.takeda.rdm.service.NF305Service;
+import jp.co.takeda.rdm.util.AppConstant;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nD102Action")
+@Named("nF305Action")
 @Scope("request")
-public class ND102Action extends BaseAction<ND102DTO> {
+public class NF305Action extends BaseAction<NF305DTO> {
 
     /**
      * シリアルバージョンID
@@ -44,18 +41,16 @@ public class ND102Action extends BaseAction<ND102DTO> {
      * @generated
      */
     @Inject
-    private ND102Service nD102Service;
-
+    private NF305Service nF305Service;
     // START UOC
-
     // END UOC
 
     /**
      * コンストラクタ
      * @generated
      */
-    public ND102Action() {
-        dto = new ND102DTO();
+    public NF305Action() {
+        dto = new NF305DTO();
     }
 
     /**
@@ -69,6 +64,7 @@ public class ND102Action extends BaseAction<ND102DTO> {
         // START UOC
         return null;
         // END UOC
+        // START UOC
     }
 
     /**
@@ -84,13 +80,24 @@ public class ND102Action extends BaseAction<ND102DTO> {
     }
 
     /**
+     * validationエラー時に実行する処理。<br/>
+     * @customizable
+     */
+    @InputConfig
+    public String validationError() {
+        // START UOC
+        return "input";
+        // END UOC
+    }
+
+    /**
      * 業務処理
      * @customizable
      */
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nD102Service.init(dto);
+        BaseDTO outdto = nF305Service.init(dto);
         return initNext(outdto);
     }
 
@@ -100,35 +107,20 @@ public class ND102Action extends BaseAction<ND102DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
-    	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-    	String preScreenId = loginInfo.getPreScreenId();
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-    	//モック
-//    	loginInfo.setJokenFlg("1");
-//    	loginInfo.setJgiNo(8830034);
-//    	loginInfo.setJgiName("テスト");
+    	//改ページ設定
+        dto.setPageCntCur(1);
 
-    	//検証用 TODO
-    	if(preScreenId.equals("NC001")) {
-    		preScreenId = dto.getPreScreenId();
-    	}
+        // 画面タイトル制御処理
+        String title = "NF305_施設削除 - 申請内容確認";
 
-    	dto.setPreScreenId(preScreenId);
+        dto.setTitle(title);
 
-		// 遷移パターン 0:施設-医師コードから作成、1:申請データあり
-		// 医師勤務先情報更新
-		if ("ND013".equals(preScreenId)) {
-			dto.setDisplayKbn("0");
-			// 申請一覧
-		} else if ("NC011".equals(preScreenId) || "ND309".equals(preScreenId)) {
-			dto.setDisplayKbn("1");
-		} else {
-			throw new InvalidRequestException();
-		}
+        String preScreenId = loginInfo.getPreScreenId();
+        dto.setPreScreenId(preScreenId);
 
-		String title = "ND102_医療機関以外への異動";
-
-		dto.setTitle(title);
+        dto.setMsgId(null);
 
         // END UOC
     }
@@ -139,8 +131,8 @@ public class ND102Action extends BaseAction<ND102DTO> {
      */
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
-        // 検索条件をセッションに格納する（更新やソートリンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_ND102_SEARCHKEY, outdto);
+        // 検索条件をセッションに格納する（リンク押下時に使用）
+        sessionMap.put(AppConstant.SESKEY_NF305_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -150,11 +142,10 @@ public class ND102Action extends BaseAction<ND102DTO> {
      * 業務処理
      * @customizable
      */
-    @InputConfig(methodName="validationError")
     public String register() throws Exception {
-        registerSetup();
+    	registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nD102Service.register(dto);
+        BaseDTO outdto = nF305Service.register(dto);
         return registerNext(outdto);
     }
 
@@ -164,6 +155,16 @@ public class ND102Action extends BaseAction<ND102DTO> {
      */
     protected void registerSetup() throws Exception {
         // START UOC
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+    	//改ページ設定
+        dto.setPageCntCur(1);
+
+        String preScreenId = loginInfo.getPreScreenId();
+        dto.setPreScreenId(preScreenId);
+
+        dto.setMsgId(null);
+
         // END UOC
     }
 
@@ -173,9 +174,9 @@ public class ND102Action extends BaseAction<ND102DTO> {
      */
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
+        // 検索条件をセッションに格納する（リンク押下時に使用）
+        sessionMap.put(AppConstant.SESKEY_NF305_SEARCHKEY, outdto);
         // END UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
         setNextDTO(outdto);
         return outdto.getForward();
     }
@@ -185,20 +186,23 @@ public class ND102Action extends BaseAction<ND102DTO> {
      * @customizable
      */
     @InputConfig(methodName="validationError")
-    public String cancel() throws Exception {
-        cancelSetup();
+    public String apprRej() throws Exception {
+        apprRejSetup();
         // F層呼び出し
-        BaseDTO outdto = nD102Service.cancel(dto);
-        return cancelNext(outdto);
+        BaseDTO outdto = nF305Service.apprRej(dto);
+        return apprRejNext(outdto);
     }
 
     /**
      * 前処理
      * @customizable
      */
-    protected void cancelSetup() throws Exception {
+    protected void apprRejSetup() throws Exception {
         // START UOC
-
+        dto.setMsgId(null);
+        // 画面タイトル制御処理
+        String title = "NF305_施設削除 - 申請内容確認";
+        dto.setTitle(title);
         // END UOC
     }
 
@@ -206,10 +210,9 @@ public class ND102Action extends BaseAction<ND102DTO> {
      * 後処理
      * @customizable
      */
-    protected String cancelNext(BaseDTO outdto) throws Exception {
-        // START UOC
-
-        // END UOC
+    protected String apprRejNext(BaseDTO outdto) throws Exception {
+    	// START UOC
+    	// END UOC
         setNextDTO(outdto);
         return outdto.getForward();
     }

@@ -22,14 +22,10 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.util.StringUtils;
-import jp.co.takeda.rdm.entity.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
-import jp.co.takeda.rdm.entity.join.SelectNd101ComboListEntity;
-import jp.co.takeda.rdm.entity.join.SelectNd101YakushokuComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectTmrEntity;
 import jp.co.takeda.rdm.dto.ND102DTO;
-import jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
@@ -132,6 +128,20 @@ public class ND102Service extends BaseService {
     		indto.setPostJobForm(selectDocReqKnrInsChangeList.get(0).getPostJobForm());
     		indto.setPostDcc(selectDocReqKnrInsChangeList.get(0).getPostDcc());
     		indto.setPostUnivPosCode(selectDocReqKnrInsChangeList.get(0).getPostUnivPosCode());
+
+    		indto.setTrnKbnCd(selectDocReqKnrInsChangeList.get(0).getTrnKbn());
+            //異動区分
+            SelectNd102TrnListEntity selectNd102TrnListEntity = new SelectNd102TrnListEntity();
+            List<SelectNd102TrnListEntity> selectNd102TrnList;
+            selectNd102TrnList = dao.select(selectNd102TrnListEntity);
+            //表示用
+            LinkedHashMap<String, String> mapTrnKbn = new LinkedHashMap<String, String>();
+            mapTrnKbn.put(null, "--選択してください--");
+            for (SelectNd102TrnListEntity outEntity : selectNd102TrnList) {
+            	mapTrnKbn.put(outEntity.getTrnValue1(),outEntity.getValue1Kanj());
+            }
+
+    		indto.setPostTrnKbn(mapTrnKbn.get(indto.getTrnKbnCd()));
         }
         //以下共通
         //基本情報
@@ -203,7 +213,12 @@ public class ND102Service extends BaseService {
 					indto.setReqCommentFlg("0");
 				}
 			}else {
-				indto.setReqCommentFlg("1");
+				if(StringUtils.isEmpty(indto.getReqSts())) {
+					indto.setReqCommentFlg("1");
+				}else {
+					indto.setReqCommentFlg("0");
+				}
+
 			}
 
 		} else {
@@ -513,9 +528,9 @@ public class ND102Service extends BaseService {
 
         indto.setTrnKbnInsNoCombo(mapTrnKbnInsNo);
         indto.setTrnKbnCombo(mapTrnKbn);
-//        if(!(StringUtils.isEmpty(indto.getReqSts()))) {
-//        	indto.setTrnKbnInsNo(indto.getPostUnivPosCode());
-//        }
+        if(!(StringUtils.isEmpty(indto.getReqSts()))) {
+        	indto.setTrnKbnInsNo(indto.getPostTrnKbn());
+        }
 
       //翌日日付_RDM用カレンダー(オンライン用)_生成用エンティティ
     	SelectTmrEntity selectTmrEntity = new SelectTmrEntity();

@@ -336,12 +336,24 @@ table {
                   <td><s:label key="univPreTitleKj"/></td>
               </tr>
 	              <tr>
-	                  <td>
-	                  </td>
-	                  <td>異動区分<span style="color: red;">*</span></td>
-	                  <td class="comPortalControlItem" style="text-align:left;">
-	                      <s:select id="trnKbnCd" name="trnKbnCd" cssStyle="width:100pt" list ="trnKbnCombo"/>
-	                  </td>
+	                  <s:if test='inputFlg == 1'>
+	                      <td>
+	                      </td>
+	                      <td>異動区分<span style="color: red;">*</span></td>
+	                      <td class="comPortalControlItem" style="text-align:left;">
+	                          <s:select id="trnKbnCd" name="trnKbnCd" cssStyle="width:100pt" list ="trnKbnCombo"/>
+	                      </td>
+	                  </s:if>
+	                  <s:elseif test="inputFlg == 0">
+	                  	  <td>
+	                      </td>
+	                      <td>異動区分<span style="color: red;">*</span></td>
+	                      <td>
+                              <select disabled style="width:100pt">
+                                  <option><s:label key="postTrnKbn"/></option>
+                              </select>
+                          </td>
+                      </s:elseif>
 	              </tr>
             <tr>
                   <td></td>

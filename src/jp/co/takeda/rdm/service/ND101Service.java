@@ -219,7 +219,12 @@ public class ND101Service extends BaseService {
 					indto.setReqCommentFlg("0");
 				}
 			}else {
-				indto.setReqCommentFlg("1");
+				if(StringUtils.isEmpty(indto.getReqSts())) {
+					indto.setReqCommentFlg("1");
+				}else {
+					indto.setReqCommentFlg("0");
+				}
+
 			}
 
 		} else {

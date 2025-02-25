@@ -291,6 +291,17 @@ public class SelectDocReqKnrInsChangeCheckEntity extends BaseEntity implements S
      * 申請チャネル
      */
     private String reqChl;
+
+    /**
+     * 施設分類(元)
+     */
+    private String preInsClass;
+
+    /**
+     * 施設分類(先)
+     */
+    private String postInsClass;
+
     /**
      * コンストラクタ
      * @generated
@@ -1092,6 +1103,36 @@ public class SelectDocReqKnrInsChangeCheckEntity extends BaseEntity implements S
 	 */
 	public void setReqChl(String reqChl) {
 		this.reqChl = reqChl;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeCheckEntity.javapreInsClassを設定
+	 * @return preInsClass
+	 */
+	public String getPreInsClass() {
+		return preInsClass;
+	}
+
+	/**
+	 * @param preInsClass セットする preInsClass
+	 */
+	public void setPreInsClass(String preInsClass) {
+		this.preInsClass = preInsClass;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeCheckEntity.javapostInsClassを設定
+	 * @return postInsClass
+	 */
+	public String getPostInsClass() {
+		return postInsClass;
+	}
+
+	/**
+	 * @param postInsClass セットする postInsClass
+	 */
+	public void setPostInsClass(String postInsClass) {
+		this.postInsClass = postInsClass;
 	}
 
 	/**

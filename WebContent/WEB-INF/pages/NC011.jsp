@@ -500,7 +500,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 													<!-- style="resize : horizontal;overflow : hidden;   " -->
 
 													<th rowspan="4" class="comTableTitle container tkdUlt" width="120px"
-														style="border: none;" id="styles">申請ID <span
+														style="border: none;z-index:3;" id="styles">申請ID <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdAscClass%>" href=""
 														onclick="NC011Sort(0);return false;">▲</a> <span
@@ -599,7 +599,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 												<%-- 内容 --%>
 				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
 					<tr>
-						 <th class="comTableItem">
+						 <th class="comTableItem"style="z-index:2;">
 						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />','<s:property  value="reqId" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />

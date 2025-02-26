@@ -498,6 +498,24 @@
         <action name="ND311Cancel" class="ND311Action" method="cancel">
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
         </action>
+        <action name="ND012Init" class="nD012Action" method="init">
+            <result name="ND012">/WEB-INF/pages/ND012.jsp</result>
+        </action>
+        <action name="ND012Register" class="nD012Action" method="register">
+            <result name="ND012">/WEB-INF/pages/ND012.jsp</result>
+            <result name="ND012Init" type="chain">ND012Init</result>
+            <result name="ND303Init" type="chain">ND303Init</result>
+            <result name="ND303Register" type="chain">ND303Register</result>
+        </action>
+        <action name="ND303Init" class="nD303Action" method="init">
+            <result name="ND303">/WEB-INF/pages/ND303.jsp</result>
+            <result name="ND012Init" type="chain">ND012Init</result>
+        </action>
+        <action name="ND303Register" class="nD303Action" method="register">
+            <result name="ND303">/WEB-INF/pages/ND303.jsp</result>
+            <result name="ND303Init" type="chain">ND303Init</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
+        </action>
 
     </package>
 </struts>

@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  医師新規作成のJSP
+ *  医師情報更新のJSP
  * </pre>
  * @since 1.0
  * @version $Revision: 1.3 $
@@ -24,25 +24,13 @@
 
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-String regEnabedFlg = StringUtils.nvl((String)request.getAttribute("regEnabedFlg"), "");
-//20180406 HISOL ISHIDA START
-String sosSelFlg = StringUtils.nvl((String)request.getAttribute("sosSelFlg"), "");
-//20180406 HISOL ISHIDA END
-String strRegDisabled = "";
-//20180406 HISOL ISHIDA START
-//if (!"1".equals(regEnabedFlg)) {
-if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
-//20180406 HISOL ISHIDA END
-    strRegDisabled = "disabled";
-}
-%>
+
 <%-- オブジェクト読み込み --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-  <title>ND011_医師新規作成</title>
+  <title>ND012_医師情報更新</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -52,8 +40,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <script type="text/javascript" src="js/catHcpSoc.js"></script>
   <script type="text/javascript" src="js/catHcpPub.js"></script>
   <script type="text/javascript" src="js/catDeptsComboRDM.js"></script>
-  <script type="text/javascript" src="js/catShisetsu.js"></script>
-  <script type="text/javascript" src="js/ND011.js"></script>
+  <script type="text/javascript" src="js/ND012.js"></script>
     <script>
     destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
     function backFnc(backKbn){
@@ -91,6 +78,15 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    	}
     	}
     }
+    function gotoND013(){
+        gotoMsg = '<s:property value="#session.UserInfoKey.msgMap.I007.msgData" />';
+    	if(window.confirm(gotoMsg)){
+			//モック
+    		document.fm1.screenId.value="ND013";
+    		document.fm1.functionId.value="Init";
+			comSubmitForAnyWarp(fm1);
+    	}
+    }
     function register(kbn){
       //区分 0:一時保存,1:申請（一時保存チェック高),2:審査,3:承認（チェック高),4:申請破棄
       //確定ボタン
@@ -100,16 +96,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       if (kbn == '1'){//I015	申請します。よろしいですか？
         msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
       }
-      if (kbn == '2'){//I014	ステータスを審査済みに変更します。よろしいですか？
-          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I014.msgData" />';
-      }
-      if (kbn == '3'){//I012	申請データを承認します。よろしいですか？
-          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
+//       if (kbn == '2'){//I014	ステータスを審査済みに変更します。よろしいですか？
+//           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I014.msgData" />';
+//       }
+      if (kbn == '3'){//I009	申請データを却下します。よろしいですか？
+          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I009.msgData" />';
       }
       if (kbn == '4'){//I007	申請データを破棄します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I007.msgData" />';
       }
-      nd011Register(kbn);
+      nd012Register(kbn);
     }
 
 
@@ -138,86 +134,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <input type="text" name="functionId"         value="" />
     <input type="text" name="windowName"         value="" />
     <input type="text" name="openerName"         value="" />
-<!--     <input type="text" name="infoId1"            value="" /> -->
-<!--     <input type="text" name="systemId1"          value="" /> -->
-<!--     <input type="text" name="backScreenId1"      value="JkrMrChange" /> -->
-<!--     <input type="text" name="backFunctionId1"    value="" /> -->
-<!--     <input type="text" name="backScreenName1"    value="" /> -->
-<!--     <input type="text" name="backParamName1"     value="" /> -->
-<!--     <input type="text" name="backParamValue1"    value="" /> -->
-<!--     <input type="text" name="backParamName2"     value="" /> -->
-<!--     <input type="text" name="backParamValue2"    value="" /> -->
-<!--     <input type="text" name="fromScreenId1"      value="" /> -->
-<!--     <input type="text" name="fromFunctionId1"    value="" /> -->
-<!--     <input type="text" name="kensakuChar1"       value="" /> -->
-<!--     <input type="text" name="kensakuAndOr1"      value="" /> -->
-<!--     <input type="text" name="pageNextBackFlag1"  value="" /> -->
-<!--     <input type="text" name="sortFieldNo1"       value="" /> -->
-<!--     <input type="text" name="sortFLG1"           value="" /> -->
-<!--     <input type="text" name="startRecordNo1"     value="" /> -->
-<!--     <input type="text" name="pageLines1"         value="" /> -->
-<!--     <input type="hidden" name="endRecordNo1"	value="" /> -->
-<!--     <input type="text" name="no1"                value="1" /> -->
-
-    <%-- フレーム対応で発生したPOST用 引数1:frame(フレーム対応),以外(何もしない) 引数２:オブジェクトの型 --%>
-
-<%--     組織・従業員選択ポップアップ用 --%>
-<!--     <input type="hidden" name="selectFlg"			value="" /> -->
-<!--     <input type="hidden" name="topSosCd"			value="" /> -->
-<!--     <input type="hidden" name="initSosCd"			value="" /> -->
-<!--     <input type="hidden" name="openBumonRank"		value="" /> -->
-<!--     <input type="hidden" name="objData"				value="" /> -->
-<!--     <input type="hidden" name="dspSelPtn"			value="" /> -->
-<!--     <input type="hidden" name="dspSelSos"			value="" /> -->
-<!--     <input type="hidden" name="sosLevelType"		value="" /> -->
-<!--     <input type="hidden" name="dispJgiKb"			value="" /> -->
-<!--     <input type="hidden" name="shokushuCd"			value="" /> -->
-<!--     <input type="hidden" name="shokuseiCd"			value="" /> -->
-<!--     <input type="hidden" name="noDispJgiKb"			value="" /> -->
-<!--     <input type="hidden" name="noShokushuCd"		value="" /> -->
-<!--     <input type="hidden" name="noShokuseiCd"		value="" /> -->
-<!--     <input type="hidden" name="insNo1"				value="" /> -->
-<%--     <input type="hidden" name="dspClrBtn1"			value="" />クリアボタン表示フラグ  --%>
-<!--     <input type="hidden" name="openJgiFlg"			value="" /> -->
-<!--     <input type="text" name="sosSelFlg1"	value="" /> -->
-
-<!--     <input type="checkbox" name="delCheck" /> -->
-<!--     <input type="checkbox" name="hurikaeMr" /> -->
-<!--     <input type="checkbox" name="shokiHurikaeMr" /> -->
-
-<%--     組織・従業員選択ポップアップの表示判断の条件 取得パラメータ：（MR種類・業務種類） --%>
-<!--     <input type="hidden" name="mrCat"				value=""	/> -->
-<!--     <input type="hidden" name="registCat"			value=""	/> -->
-
-<%--     登録：排他処理用データ --%>
-<!--     <input type="hidden" name="ExUpDate"			value=""	/> -->
-
-<!--     <input type="text" name="userAuth1"		value="" /> -->
-<!--     <input type="text" name="jpjJgiNo1"		value="" /> -->
-<!--     <input type="text" name="sosCd1"		value="" /> -->
-<!--     <input type="text" name="sosName1"		value="" /> -->
-<!--     <input type="text" name="mrCat1"		value="" /> -->
-<!--     <input type="text" name="registCat1"	value="" /> -->
-<!--     <input type="text" name="jgiKb1"		value="" /> -->
-<!--     <input type="text" name="selectedSosName1"	value="" /> -->
-<!--     <input type="text" name="selectedSosCd1"	value="" /> -->
-<!--     <input type="text" name="jgiJoken1"		value="" /> -->
-<!--     <input type="text" name="sosName1"		value="" /> -->
-<!--     <input type="text" name="wkCat1"		value="" /> -->
-<!--     <input type="hidden" name="searchToSosCd1"		value="" /> -->
-<!--     <input type="hidden" name="searchToSosName1"	value="" /> -->
-<!--     <input type="hidden" name="shokikaSosName1"	value="" /> -->
-<!--     <input type="hidden" name="shokikaSosCd1"	value="" /> -->
-
-<%--     <input type="hidden" name="selectedPlanSosName1"		value="<bean:print name="menudata" property="selectedSosName"/>" /> --%>
-
-<%--     登録前の最終総行数 --%>
-<!--     <input type="hidden" name="allUltCount1"	value="" /> -->
-<%--     登録前の追加の総行数 --%>
-<!--     <input type="hidden" name="addUltCount1"	value="" /> -->
-
-<%--     追加用　MR種類 --%>
-<!--     <input type="hidden" name="takeMrCat"	value="" /> -->
 
   </form>
 
@@ -253,39 +169,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="shnFlg"/>
      <s:hidden name="msgId" value="%{msgId}"/>
 
-<%--     <s:hidden name="defaultSosCd"/> --%>
-<%--     <s:hidden name="defaultSosName"/> --%>
-<%--     <s:hidden name="defaultBumonRank"/> --%>
-<%--     <s:hidden name="defaultMrCat"/> --%>
-<%--     <s:hidden name="searchBumonRank"/> --%>
-<%--     <s:hidden name="maxUpDate"/> --%>
-<%--     <s:hidden name="sosCdFixFlg"/> --%>
-<%--     <s:hidden name="sosCdFix"/> --%>
-<%--     <s:hidden name="sosNameFix"/> --%>
-<%--     <s:hidden name="showFlg"/> --%>
-<%--     <s:hidden name="showDocChgFlg"/> --%>
-<%--     <s:hidden name="sosSelFlg"/> --%>
-<%--     <s:hidden name="sosRyakuName"/> --%>
-
-
-<%--     トップメニューからの共通パラメータ --%>
-<%--     <s:hidden name="trtGrpCd"/> --%>
-<%--     <s:hidden name="selectedBumonRank"/> --%>
-<%--     <s:hidden name="sosCd"/> --%>
-<%--     <s:hidden name="sosName"/> --%>
-<%--     <s:hidden name="selectedSosCd"/> --%>
-<%--     <s:hidden name="selectedSosNm"/> --%>
-<%--     <s:hidden name="selectedSosCd2" /> --%>
-<%--     <s:hidden name="selectedSosNm2" /> --%>
-<%--     <s:hidden name="selectedSosCd3" /> --%>
-<%--     <s:hidden name="selectedSosNm3" /> --%>
-<%--     <s:hidden name="selectedJgiJoken"/> --%>
-<%--     <s:hidden name="jokenSetCd"/> --%>
-<%--     <s:hidden name="sosCdHairetu"/> --%>
-<%--     <s:hidden name="wkCat"/> --%>
-<%--     <s:hidden name="searchFromSosCdPop"/>  <!--現組織コード(ポップアップ用) --> --%>
-<%--     <s:hidden name="searchToSosCdPop"/>    <!--新組織コード(ポップアップ用) --> --%>
-<%--     <s:hidden id="selectedTekiyoYmd" name="selectedTekiyoYmd"/> --%>
     <%-- 所属部科ポップアップ用パラメータ --%>
     <input type="hidden" name="cdcCheckedCodes" value="" />
     <input type="hidden" name="paramInsNo" value="" />
@@ -353,7 +236,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師新規作成"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師情報更新"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>
@@ -402,6 +285,40 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <s:hidden name="shnJgiNo"/>
         <s:hidden name="aprJgiNo"/>
         <s:hidden name="updShaYmd"/>
+        <s:hidden name="tkdDocNo"/>
+        <s:hidden name="tkdDocNm"/>
+        <s:hidden name="tkdDocKana"/>
+        <s:hidden name="mstDocType"/>
+        <s:hidden name="mstDocTypeNm"/>
+        <s:hidden name="mstSexCd"/>
+        <s:hidden name="mstSexNm"/>
+        <s:hidden name="mstDocKanjiSei"/>
+        <s:hidden name="mstDocKanjiMei"/>
+        <s:hidden name="mstDocKanaSei"/>
+        <s:hidden name="mstDocKanaMei"/>
+        <s:hidden name="mstOldKanjSei"/>
+        <s:hidden name="mstOldKanaSei"/>
+        <s:hidden name="mstNewNameStYear"/>
+        <s:hidden name="mstNewNameStMonth"/>
+        <s:hidden name="mstNewNameStDay"/>
+        <s:hidden name="mstDobYear"/>
+        <s:hidden name="mstDobMonth"/>
+        <s:hidden name="mstDobDay"/>
+        <s:hidden name="mstHomeTownCd"/>
+        <s:hidden name="mstHomeTownNm"/>
+        <s:hidden name="mstMedSchoolCd"/>
+        <s:hidden name="mstMedSchoolNm"/>
+        <s:hidden name="mstGradYear"/>
+        <s:hidden name="mstEmplYear"/>
+        <s:hidden name="mstHomeUnivCd"/>
+        <s:hidden name="mstHomeUnivNm"/>
+        <s:hidden name="mstHomeDeptCd"/>
+        <s:hidden name="mstHomeDeptNm"/>
+        <s:hidden name="mstSpLiverCd"/>
+        <s:hidden name="mstSpLiverNm"/>
+        <s:hidden name="mstSpDiseaseCd"/>
+        <s:hidden name="mstSpDiseaseNm"/>
+        <s:hidden name="mstSpCom"/>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
@@ -462,7 +379,21 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>ULT医師情報</nobr></td>
+	      <td class="comFormTableItem"><nobr>基本情報</nobr></td>
+	      <td class="comFormTableItem"><nobr>医師固定C</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="tkdDocNo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>武田医師名(漢字)</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="tkdDocNm"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>武田医師名(半角カナ)</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="tkdDocKana"/></nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>ULT医師C</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="ultDocNo"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -481,16 +412,24 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <table id="formTable03" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--基本情報--%>
-        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 20%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 40%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 40%; height: 0px; border-width: 0px;"></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>基本情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>医師／薬剤師区分<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012Head"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItemNd012Head"><nobr>変更前</nobr></td>
+	      <td class="comFormTableItemNd012Head"><nobr>変更後</nobr></td>
+      </tr>
+      <tr>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>医師／薬剤師区分</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocTypeNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      		<s:select id="docType" name="docType" cssStyle="width:80pt" list ="docTypeCombo"/>
 	      	</s:if>
@@ -498,8 +437,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:select id="docType" name="docType" cssStyle="width:80pt" list ="docTypeCombo" disabled="true"/>
 			</s:else>
 	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>性別<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>性別</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSexNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	     		<s:select id="sexCd" name="sexCd" cssStyle="width:80pt" list ="sexCdCombo"/>
 	      	</s:if>
@@ -509,9 +451,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>医師名(漢字)姓<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItem"><nobr>医師名(漢字)姓</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" />
 	      	</s:if>
@@ -519,8 +461,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" readonly="true" />
 			</s:else>
 	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>医師名(漢字)名<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>医師名(漢字)名</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiMei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      		<s:textfield name="docKanjiMei" size="15" maxlength="15" />
 	      	</s:if>
@@ -530,9 +475,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>医師名(半角カナ)姓<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItem"><nobr>医師名(半角カナ)姓</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      		<s:textfield name="docKanaSei" size="15" maxlength="15" />
 	      	</s:if>
@@ -540,8 +485,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<s:textfield name="docKanaSei" size="15" maxlength="15" readonly="true" />
 			</s:else>
 	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>医師名(半角カナ)名<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>医師名(半角カナ)名</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaMei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 			      <s:textfield name="docKanaMei" size="15" maxlength="15" />
 	      	</s:if>
@@ -551,9 +499,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>旧姓(漢字)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanjSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      <s:textfield name="oldKanjSei" size="15" maxlength="15" />
 	      	</s:if>
@@ -561,8 +514,23 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<s:textfield name="oldKanjSei" size="15" maxlength="15" readonly="true" />
 			</s:else>
 	      </nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>旧姓(半角カナ)姓</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanaSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+			      <s:textfield name="oldKanaSei" size="15" maxlength="15" />
+			</s:if>
+	      	<s:else>
+			      <s:textfield name="oldKanaSei" size="15" maxlength="15" readonly="true" />
+			</s:else>
+	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>改姓日</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstNewNameStYear"/>年<s:label key="mstNewNameStMonth"/>月<s:label key="mstNewNameStDay"/>日</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 			    <s:select id="newNameStYear" name="newNameStYear" cssStyle="width:40pt" list ="newNameStYearCombo"/>年<s:select id="newNameStMonth" name="newNameStMonth" cssStyle="width:30pt" list ="newNameStMonthCombo"/>月<s:select id="newNameStDay" name="newNameStDay" cssStyle="width:30pt" list ="newNameStDayCombo"/>日
 			</s:if>
@@ -572,23 +540,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>旧姓(半角カナ)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:textfield name="oldKanaSei" size="15" maxlength="15" />
-			</s:if>
-	      	<s:else>
-			      <s:textfield name="oldKanaSei" size="15" maxlength="15" readonly="true" />
-			</s:else>
-	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>生年月日</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDobYear"/>年<s:label key="mstDobMonth"/>月<s:label key="mstDobDay"/>日</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="dobYear" name="dobYear" cssStyle="width:40pt" list ="dobYearCombo"/>年<s:select id="dobMonth" name="dobMonth" cssStyle="width:30pt" list ="dobMonthCombo"/>月<s:select id="dobDay" name="dobDay" cssStyle="width:30pt" list ="dobDayCombo"/>日
 			</s:if>
@@ -596,8 +555,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		      <s:select id="dobYear" name="dobYear" cssStyle="width:40pt" list ="dobYearCombo" disabled="true"/>年<s:select id="dobMonth" name="dobMonth" cssStyle="width:30pt" list ="dobMonthCombo" disabled="true"/>月<s:select id="dobDay" name="dobDay" cssStyle="width:30pt" list ="dobDayCombo" disabled="true"/>日
 			</s:else>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>出身地</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeTownNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="homeTownCd" name="homeTownCd" cssStyle="width:80pt" list ="homeTownCdCombo"/>
 			</s:if>
@@ -607,9 +569,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>出身校</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstMedSchoolNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="medSchoolCd" name="medSchoolCd" cssStyle="width:100pt" list ="medSchoolCdCombo"/>
 			</s:if>
@@ -617,8 +579,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		      <s:select id="medSchoolCd" name="medSchoolCd" cssStyle="width:100pt" list ="medSchoolCdCombo" disabled="true"/>
 			</s:else>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>卒年（西暦）</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstGradYear"/>年</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="gradYear" name="gradYear" cssStyle="width:40pt" list ="gradYearCombo"/>年
 			</s:if>
@@ -628,18 +593,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>臨床研修年（西暦）</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-		      <s:select id="emplYear" name="emplYear" cssStyle="width:40pt" list ="emplYearCombo"/>年
-			</s:if>
-			<s:else>
-		      <s:select id="emplYear" name="emplYear" cssStyle="width:40pt" list ="emplYearCombo" disabled="true"/>年
-			</s:else>
-	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>出身医局校</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeUnivNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="homeUnivCd" name="homeUnivCd" cssStyle="width:100pt" list ="homeUnivCdCombo"/>
 			</s:if>
@@ -649,15 +605,32 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>臨床研修年（西暦）</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstEmplYear"/>年</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select id="emplYear" name="emplYear" cssStyle="width:40pt" list ="emplYearCombo"/>年
+			</s:if>
+			<s:else>
+		      <s:select id="emplYear" name="emplYear" cssStyle="width:40pt" list ="emplYearCombo" disabled="true"/>年
+			</s:else>
+	      </nobr></td>
+      </tr>
+      <tr>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>出身所属部科</nobr></td>
-	      <td class="comFormTableItem">
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeDeptNm"/></nobr></td>
+	      <td class="comFormTableItemNd012">
                 <nobr>
 	      			<s:if test='%{editApprFlg == "1"}'>
 		                <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
 		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" style="background-color:#D4D0C8"/>
 		                <s:hidden name="homeDeptCd" id="homeDeptCd"/>
-		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('homeDept');return false;">Clear</a>
+		                <a class="comMiniLink" href ="" onClick="JavaScript:nd012Clear('homeDept');return false;">Clear</a>
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button1" value="選択"  disabled />
@@ -666,13 +639,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 					</s:else>
                 </nobr>
 	      </td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>専門臓器</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpLiverNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      		<s:select id="spLiverCd" name="spLiverCd" cssStyle="width:100pt" list ="spLiverCdCombo"/>
 			</s:if>
@@ -680,8 +651,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<s:select id="spLiverCd" name="spLiverCd" cssStyle="width:100pt" list ="spLiverCdCombo" disabled="true"/>
 			</s:else>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>専門詳細</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpDiseaseNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      		<s:select id="spDiseaseCd" name="spDiseaseCd" cssStyle="width:100pt" list ="spDiseaseCdCombo"/>
 			</s:if>
@@ -691,9 +665,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>専門追加情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpCom"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 	      		<s:textfield name="spCom" size="20" maxlength="150" />
 			</s:if>
@@ -701,8 +675,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:textfield name="spCom" size="20" maxlength="150" readonly="true" />
 			</s:else>
 	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
   </table>
   <br/>
@@ -945,89 +917,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
       <table id="formTable08" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
-        <%--勤務先情報--%>
-        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>勤務先情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>施設<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem">
-                <nobr>
-			      	<s:if test='%{editApprFlg == "1"}'>
-		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCseView();return false;" />
-		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
-		                <s:hidden name="skInsNo" id="skInsNo"/>
-		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skIns');return false;">Clear</a>
-					</s:if>
-					<s:else>
-		                <input class="comButton" type="button"name="button2" value="選択" disabled />
-		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
-		                <s:hidden name="skInsNo" id="skInsNo"/>
-					</s:else>
-                </nobr>
-	      </td>
-	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:select id="skUnivPosCd" name="skUnivPosCd" cssStyle="width:80pt" list ="skUnivPosCdCombo"/>
-			</s:if>
-			<s:else>
-			      <s:select id="skUnivPosCd" name="skUnivPosCd" cssStyle="width:80pt" list ="skUnivPosCdCombo" disabled="true"/>
-			</s:else>
-	      </nobr></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>所属部科<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem">
-                <nobr>
-			      	<s:if test='%{editApprFlg == "1"}'>
-		                <input class="comButton" type="button"name="button3" value="選択" onClick="JavaScript:tmpCdcView('1');return false;" />
-		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
-		                <s:hidden name="skDeptCd" id="skDeptCd"/>
-		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skDept');return false;">Clear</a>
-					</s:if>
-					<s:else>
-		                <input class="comButton" type="button"name="button3" value="選択" disabled />
-		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
-		                <s:hidden name="skDeptCd" id="skDeptCd"/>
-					</s:else>
-                </nobr>
-	      </td>
-	      <td class="comFormTableItem"><nobr>役職<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:select id="skTitleCd" name="skTitleCd" cssStyle="width:80pt" list ="skTitleCdCombo"/>
-			</s:if>
-			<s:else>
-			      <s:select id="skTitleCd" name="skTitleCd" cssStyle="width:80pt" list ="skTitleCdCombo" disabled="true"/>
-			</s:else>
-	      </nobr></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:select id="skJobForm" name="skJobForm" cssStyle="width:80pt" list ="skJobFormCombo"/>
-			</s:if>
-			<s:else>
-			      <s:select id="skJobForm" name="skJobForm" cssStyle="width:80pt" list ="skJobFormCombo" disabled="true"/>
-			</s:else>
-	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-	      <s:if test='%{editApprFlg == "1"}'>
-			      <s:select id="skDcctype" name="skDcctype" cssStyle="width:80pt" list ="skDcctypeCombo"/>
-			</s:if>
-			<s:else>
-			      <s:select id="skDcctype" name="skDcctype" cssStyle="width:80pt" list ="skDcctypeCombo" disabled="true"/>
-			</s:else>
-	      </nobr></td>
+	      <td align="center">
+				<s:if test='%{btnEnableFlg == "0"}'>
+		                <input class="comButton" type="button"name="button4" value="勤務先情報更新画面へ" disabled/>
+		        </s:if>
+				<s:else>
+		                <input class="comButton" type="button"name="button4" value="勤務先情報更新画面へ" onClick="gotoND013();return false;" />
+				</s:else>
+		</td>
       </tr>
   </table>
   <%--コメント類 --%>
@@ -1047,14 +944,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
-	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
-	      <tr>
-		      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
-	      </tr>
-	      <tr>
-		      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
-	      </tr>
-      </s:if>
+<%-- 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'> --%>
+<!-- 	      <tr> -->
+<!-- 		      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td> -->
+<!-- 	      </tr> -->
+<!-- 	      <tr> -->
+<%-- 		      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td> --%>
+<!-- 	      </tr> -->
+<%--       </s:if> --%>
 <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13"  }'>
 </s:if>
 <s:else>
@@ -1113,17 +1010,17 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
-					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
-		                <input class="comButton" type="button"name="buttonF3" value="審査完了" disabled/>
-					</s:if>
-					<s:else>
-		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="register('2');return false;" />
-					</s:else>
-				</s:if>
-				<s:else>
+<%-- 				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'> --%>
+<%-- 					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'> --%>
+<!-- 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" disabled/> -->
+<%-- 					</s:if> --%>
+<%-- 					<s:else> --%>
+<!-- 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="register('2');return false;" /> -->
+<%-- 					</s:else> --%>
+<%-- 				</s:if> --%>
+<%-- 				<s:else> --%>
 					&nbsp;
-				</s:else>
+<%-- 				</s:else> --%>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem">
@@ -1133,11 +1030,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			   </s:if>
 				<s:else>
 				   <s:if test='%{reqStsCd != null && reqStsCd != "" && (reqStsCd == "03" || reqStsCd == "13") &&  loginJokenSetCd == "JKN0813"}'>
-		                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" onClick="register('3');return false;" />
+		                <input class="comButton" type="button"name="buttonF4" value="却下画面へ" onClick="register('3');return false;" />
 				   </s:if>
 					<s:else>
 						<s:if test='%{loginJokenSetCd == "JKN0813"}'>
-			                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" disabled/>
+			                <input class="comButton" type="button"name="buttonF4" value="却下画面へ" disabled/>
 						</s:if>
 						<s:else>
 			                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" disabled/>

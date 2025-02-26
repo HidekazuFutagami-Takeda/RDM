@@ -1209,9 +1209,9 @@ public class ND011Service extends BaseService {
 				}
 				insEntity1.setReqType("31");//申請区分
 				insEntity1.setReqStsCd("01");//申請ステータス
-				insEntity1.setReqBrCd("");//申請者所属リージョン
-				insEntity1.setReqDistCd("");//申請者所属エリア
-				insEntity1.setReqShzNm("");//申請者所属
+				insEntity1.setReqBrCd(loginInfo.getBrCode());//申請者所属リージョン
+				insEntity1.setReqDistCd(loginInfo.getDistCode());//申請者所属エリア
+				insEntity1.setReqShzNm(loginInfo.getBumonRyakuName());//申請者所属
 				insEntity1.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
 				insEntity1.setReqJgiName(loginInfo.getJgiName());//申請者氏名
 				insEntity1.setReqComment(indto.getReqComment());//申請コメント
@@ -1348,6 +1348,8 @@ public class ND011Service extends BaseService {
 				}
 				indto.setUpdShaYmd(strDate);
 				indto.setReqId(reqId);
+				indto.setReqStsCd("01");
+				indto.setReqStsNm("保存済み");
 			}
 		}
 		//審査ボタン押下の場合

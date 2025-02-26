@@ -11,10 +11,10 @@ import java.util.StringTokenizer;
  * <pre>
  * 文字列操作関数 - 文字列に関する共通関数です。
  * 取り敢えずはecpoのソースのまま、後々不要なものは消し、必要なものは付け足す
- * 
+ *
  * 補足：このクラスは全てスタティックなメソッドでありクラスをインスタンスして使用する必要はない。
  * </pre>
- * 
+ *
  * @author
  * @version 0
  */
@@ -24,7 +24,7 @@ public class StringUtils {
      * <pre>
      * 入力用の文字コード － システム入力時の文字コードです。
      * </pre>
-     * 
+     *
      * @since 0.0.0
      */
     public static final String STRING_INPUT_CODE = "MS932";
@@ -33,7 +33,7 @@ public class StringUtils {
      * <pre>
      * 出力用の文字コード － システム出力時の文字コードです。
      * </pre>
-     * 
+     *
      * @since 0.0.0
      */
     public static final String STRING_OUTPUT_CODE = "MS932";
@@ -42,7 +42,7 @@ public class StringUtils {
      * <pre>
      * 内部用文字コード － 内部用文字コードです。
      * </pre>
-     * 
+     *
      * @since 0.0.2
      */
     public static final String STRING_DEFAULT_CODE = "ISO8859_1";
@@ -85,7 +85,7 @@ public class StringUtils {
      * <pre>
      *  文字列検索 － 指定の文字列から指定の文字列を検索します。
      * </pre>
-     * 
+     *
      * @since 0.0.4
      * @param source
      *            :String 検索を行う文字列
@@ -104,7 +104,7 @@ public class StringUtils {
      * <pre>
      *  文字列を置換する。
      * </pre>
-     * 
+     *
      * @since 0.0.0
      * @param String
      *            :sOrgStr 置換する前の文字列
@@ -133,7 +133,7 @@ public class StringUtils {
      * <pre>
      *  文字列を置換する。
      * </pre>
-     * 
+     *
      * @param StringBuffer
      *            :source 置換する前の文字列
      * @param String
@@ -163,7 +163,7 @@ public class StringUtils {
      * Unicodeチェック - Unicodeで扱えない文字列がないかをチェック
      * 制御文字が存在する場合に処理結果をfalseにする(改行文字は制御文字)
      * </pre>
-     * 
+     *
      * @since 0.0.3
      * @param String
      *            s: チェックする文字列
@@ -177,7 +177,7 @@ public class StringUtils {
      * <pre>
      * Unicodeチェック - Unicodeで扱えない文字列がないかをチェック
      * </pre>
-     * 
+     *
      * @since 0.0.3
      * @param source
      *            :String チェックする文字列
@@ -219,10 +219,10 @@ public class StringUtils {
     /**
      * <pre>
      * マルチバイトチェック - SJISやEUCでのマルチバイト文字をチェック
-     * 
+     *
      * 機能：主な目的としては半角だけのところでマルチバイトが含まれないかをチェック用
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param source
      *            :String チェックする文字列
@@ -237,10 +237,10 @@ public class StringUtils {
     /**
      * <pre>
      * マルチバイトチェック - SJISやEUCでのマルチバイト文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列がマルチバイト文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param String
      *            source:チェックする文字列
@@ -264,10 +264,10 @@ public class StringUtils {
     /**
      * <pre>
      * 実際の文字数取得 - SJISやEUCでの文字数を返す。
-     * 
+     *
      * 機能：データベースでの文字数をチェックするのに使用
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param source
      *            :String 取得する文字列
@@ -282,7 +282,7 @@ public class StringUtils {
      * 数字の桁数取得
      * 機能：整数部と小数部を足し合わせた桁数取得する
      * </pre>
-     * 
+     *
      * @param number
      *            取得する文字列
      * @return int - 整数部と小数部を足し合わせた桁数
@@ -305,11 +305,11 @@ public class StringUtils {
     /**
      * <pre>
      * シングルバイトチェック - シングルバイト文字をチェック
-     * 
+     *
      * 機能：主な目的としては全角だけのところでシングルバイトが含まれないかをチェック用
      *      但し、半角カナをシングルバイト文字としてチェックする
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param String
      *            source:チェックする文字列
@@ -322,10 +322,10 @@ public class StringUtils {
     /**
      * <pre>
      * シングルバイトチェック - シングルバイト文字をチェック
-     * 
+     *
      * 機能：主な目的としては全角だけのところでシングルバイトが含まれないかをチェック用
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param String
      *            source:チェックする文字列
@@ -346,11 +346,11 @@ public class StringUtils {
     /**
      * <pre>
      * シングルバイトチェック - シングルバイト文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列がシングルバイト文字のみを含むことをチェックする。
      *      但し、半角カナ文字を除く
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param String
      *            s:チェックする文字列
@@ -364,11 +364,11 @@ public class StringUtils {
     /**
      * <pre>
      * シングルバイトチェック - シングルバイト文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列がシングルバイト文字のみを含むことをチェックする。
      *      半角カナ文字を有効とする場合は、引数にtrueを設定する
      * </pre>
-     * 
+     *
      * @since 0.0.2
      * @param String
      *            s:チェックする文字列
@@ -383,10 +383,10 @@ public class StringUtils {
     /**
      * <pre>
      * 有効文字チェック - 文字列が指定された有効文字かをチェック
-     * 
+     *
      * 機能：引数で指定された文字以外が含まれないかをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -407,11 +407,11 @@ public class StringUtils {
     /**
      * <pre>
      * 有効文字チェック - 文字列が指定された有効文字かをチェック
-     * 
+     *
      * 機能：引数で指定された文字が含まれないかをチェックします。
      *      HTMLの禁止タグのチェックを行います。
      * </pre>
-     * 
+     *
      * @since 1.0
      * @param s
      *            :String チェックする文字列
@@ -432,10 +432,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英字チェック - 英字(大文字小文字含む)のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英字(大文字小文字含む)のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -457,10 +457,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英字全角チェック - 英字全角(大文字小文字含む)のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英字全角(大文字小文字含む)のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -482,11 +482,11 @@ public class StringUtils {
     /**
      * <pre>
      * 整数数値文字チェック - 数字及びプラス,マイナス,カンマのみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が整数数値文字のみを含むことをチェックする。
      * 補足：String#trimで両端のスペースを取り除いてからチェックして下さい。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -525,11 +525,11 @@ public class StringUtils {
     /**
      * <pre>
      * 実数数値文字チェック - 数字及びプラス,マイナス,カンマ,ピリオドのみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が実数数値文字のみを含むことをチェックする。
      * 補足：String#trimで両端のスペースを取り除いてからチェックして下さい。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -575,10 +575,10 @@ public class StringUtils {
     /**
      * <pre>
      * 数字チェック - 数字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が数字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -600,10 +600,10 @@ public class StringUtils {
     /**
      * <pre>
      * 数字全角チェック - 数字全角のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が数字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -625,10 +625,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英大文字チェック - 英大文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英大文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -643,10 +643,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英全角大文字チェック - 英全角大文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英全角大文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -661,10 +661,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英小文字チェック - 英小文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英小文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -679,10 +679,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英全角小文字チェック - 英全角小文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英全角小文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -697,10 +697,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英数大文字チェック - 英数大文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英数大文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -723,10 +723,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英数全角大文字チェック - 英数全角大文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英数全角大文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -749,10 +749,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英数小文字チェック - 英数小文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英数大文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -775,10 +775,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英数全角小文字チェック - 英数全角小文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英数全角小文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -801,10 +801,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英数字チェック - 英数字(大文字小文字)のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英数字(大文字小文字)のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -827,10 +827,10 @@ public class StringUtils {
     /**
      * <pre>
      * 英数字全角チェック - 英数字全角(大文字小文字)のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が英数字全角(大文字小文字)のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -853,10 +853,10 @@ public class StringUtils {
     /**
      * <pre>
      * 大文字チェック - 大文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が大文字(半角全角含む)のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -877,10 +877,10 @@ public class StringUtils {
     /**
      * <pre>
      * 小文字チェック - 小文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が小文字(半角全角含む)のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -901,10 +901,10 @@ public class StringUtils {
     /**
      * <pre>
      * 数字チェック - 数字(半角全角含む)のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が数字(半角全角含む)のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -925,10 +925,10 @@ public class StringUtils {
     /**
      * <pre>
      * 汎用文字チェック - 汎用文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が汎用文字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -949,10 +949,10 @@ public class StringUtils {
     /**
      * <pre>
      * 汎用文字または数字チェック - 汎用文字または数字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が汎用文字または数字のみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -973,10 +973,10 @@ public class StringUtils {
     /**
      * <pre>
      * 半角カナチェック - 半角カナ文字のみ含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列が半角カナのみを含むことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -989,10 +989,10 @@ public class StringUtils {
     /**
      * <pre>
      * 半角カナチェック - 半角カナ文字が含まれるかどうかのチェック
-     * 
+     *
      * 機能：引数で指定された文字列に半角カナが含まれていないことをチェックする。
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String チェックする文字列
@@ -1011,10 +1011,10 @@ public class StringUtils {
     /**
      * <pre>
      * 大文字変換 - 大文字に変換する
-     * 
+     *
      * 機能：引数で指定された文字列を大文字に変換する
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String 変換する文字列
@@ -1031,10 +1031,10 @@ public class StringUtils {
     /**
      * <pre>
      * 小文字変換 - 小文字に変換する
-     * 
+     *
      * 機能：引数で指定された文字列を小文字に変換する
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String 変換する文字列
@@ -1051,10 +1051,10 @@ public class StringUtils {
     /**
      * <pre>
      * 全角->半角変換 - 半角文字に変換する
-     * 
+     *
      * 機能：引数で指定された文字列を半角文字に変換する
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String 変換する文字列
@@ -1097,10 +1097,10 @@ public class StringUtils {
     /**
      * <pre>
      * 半角->全角変換 - 全角文字に変換する
-     * 
+     *
      * 機能：引数で指定された文字列を全角文字に変換する
      * </pre>
-     * 
+     *
      * @since 0.0.1
      * @param s
      *            :String 変換する文字列
@@ -1159,7 +1159,7 @@ public class StringUtils {
 
     /**
      * 文字列をスペースで右埋めします。
-     * 
+     *
      * @return java.lang.String
      * @param val
      *            java.lang.String
@@ -1173,7 +1173,7 @@ public class StringUtils {
 
     /**
      * 文字列をスペースで右埋めします。
-     * 
+     *
      * @return java.lang.String
      * @param val
      *            java.lang.String
@@ -1188,7 +1188,7 @@ public class StringUtils {
 
     /**
      * 文字列を右埋めします。
-     * 
+     *
      * @return java.lang.String
      * @param val
      *            java.lang.String
@@ -1207,7 +1207,7 @@ public class StringUtils {
     /**
      * 機能：Stringの文字列を改行で区切り=の前後を HashtbleのKeyとValueにsetして返す。 作成日 : (01/07/05 午前
      * 04:23:52)
-     * 
+     *
      * @since 0.0.0
      * @param sValue
      *            java.lang.String
@@ -1262,7 +1262,7 @@ public class StringUtils {
      *   １．パスワードの作成。（１～９）
      *   ２．パスワードを返す
      * </pre>
-     * 
+     *
      * @since 0.0.7
      * @param パスワードの桁数
      */
@@ -1284,7 +1284,7 @@ public class StringUtils {
     /**
      * ・Stringの値をintの桁数でチェックし桁数を超えた 場合はintの桁数までの文字を返す。 作成日 : (01/07/03 午後
      * 06:32:22)
-     * 
+     *
      * @since 0.0.5
      * @return java.lang.String
      * @param str
@@ -1324,7 +1324,7 @@ public class StringUtils {
      * <pre>
      * UnicodeをSJISに変換
      * </pre>
-     * 
+     *
      * @since 0.0.2
      * @param source
      *            :String 変換する文字列
@@ -1341,7 +1341,7 @@ public class StringUtils {
      * <pre>
      * SJISやJISをUnicodeに変換
      * </pre>
-     * 
+     *
      * @since 0.0.2
      * @param source
      *            :String 変換する文字列
@@ -1358,7 +1358,7 @@ public class StringUtils {
      * <pre>
      * Unicodeのベンダ依存文字を対応します。
      * OC4Jの場合は、MS932を使用するにあたって～がおかしくなります。
-     * 
+     *
      * <pre>
      */
     public static String toMS932(String s) {
@@ -1367,11 +1367,11 @@ public class StringUtils {
         s = s.replace((char) 0x301c, (char) 0xff5e);
         return s;
     }
-    
+
     /**
      * <pre>
      * ダウンロードファイルのバイト配列へ変換する。
-     * 
+     *
      * <pre>
      */
     public static byte[] toDownloadBytes(String csvData) {
@@ -1387,7 +1387,7 @@ public class StringUtils {
      * <pre>
      * MS932 Unicodeに変換
      * </pre>
-     * 
+     *
      * @since 0.0.2
      * @param s
      *            :String 変換する文字列
@@ -1439,7 +1439,7 @@ public class StringUtils {
      *   １．パスワードの作成。（１～９、Ａ～Ｚ）
      *   ２．パスワードを返す
      * </pre>
-     * 
+     *
      * @since 0.0.5
      * @param パスワードの桁数
      */
@@ -1460,7 +1460,7 @@ public class StringUtils {
 
     /**
      * 指定バイトで抽出した文字列を返却する。
-     * 
+     *
      * @param argTarget
      *            抽出対象文字列
      * @param argBytes
@@ -1492,7 +1492,7 @@ public class StringUtils {
 
     /**
      * 空白チェック
-     * 
+     *
      * @param str
      *            文字列
      * @return 空白判断結果
@@ -1507,7 +1507,7 @@ public class StringUtils {
 
     /**
      * NVL処理
-     * 
+     *
      * @param str
      *            文字列
      * @param nvl
@@ -1523,7 +1523,7 @@ public class StringUtils {
 
     /**
      * 空白からNULLへ変換処理（SQL検索条件設定時使用）
-     * 
+     *
      * @param str
      * @return
      */
@@ -1534,13 +1534,13 @@ public class StringUtils {
             return str;
         }
     }
-    
+
     /**
      * ダウンロードファイル名のエンコード変換処理
-     * 
+     *
      * @param fileName ダウンロードファイル名
      * @return 変換後のファイル名
-     * @throws UnsupportedEncodingException 
+     * @throws UnsupportedEncodingException
      */
     public static String encodeFilename(String fileName, String encode) throws UnsupportedEncodingException {
         if (isEmpty(fileName)) {
@@ -1549,7 +1549,7 @@ public class StringUtils {
             return URLEncoder.encode(fileName, encode).replaceAll("\\+", "%20");
         }
     }
-    
+
     /**
      * CSV出力の項目値処理
      * @param str
@@ -1563,7 +1563,7 @@ public class StringUtils {
         }
         return "=\"" + str + "\"";
     }
-    
+
     /**
      * CSV出力の項目値処理
      * @param str
@@ -1573,7 +1573,7 @@ public class StringUtils {
     public static String toCsv(String str) {
         return "\"" + str + "\"";
     }
-    
+
     /**
      * 指定属性の値を取得する
      * @param object コピー元Bean
@@ -1598,10 +1598,10 @@ public class StringUtils {
             //e.printStackTrace();
         } catch (InvocationTargetException e) {
             //e.printStackTrace();
-        } 
+        }
         return rtn;
     }
-    
+
     /**
      * 指定属性の値をコピーする
      * @param object コピー元Bean
@@ -1628,6 +1628,45 @@ public class StringUtils {
             //e.printStackTrace();
         } catch (InvocationTargetException e) {
             //e.printStackTrace();
-        } 
+        }
+    }
+
+    /**
+     * NVL処理 str is NULL、then return nvl,str='Z' then return '' else return str
+     *
+     * @param str
+     *            文字列
+     * @param nvl
+     * @return
+     */
+    public static String nvlUpd(String str, String nvl) {
+        if (isEmpty(str)) {
+            return nvl(nvl,"");
+        } else {
+        	if(str.equals("Z")) {
+        		return "";
+        	}else {
+        		return str;
+        	}
+        }
+    }
+
+    /**
+     * Zチェック
+     *
+     * @param str
+     *            文字列
+     * @return Z判断結果
+     */
+    public static boolean isZ(String str) {
+    	if (str == null || str.length() == 0) {
+    		return false;
+    	} else {
+    		if(str.equals("Z")) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	}
     }
 }

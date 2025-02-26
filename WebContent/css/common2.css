@@ -1008,3 +1008,48 @@ resize : horizontal;     // <-ユーザが幅を変更できる①
 overflow : hidden;     // <-はみ出たら非表示②
 white-space : nowrap; // <-折り返さない③
 }
+
+
+TD.comFormTableItemNd012Head	/* ND012 テーブル形式の見出し項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : center;
+  border-style: dotted;
+  border-top-width : 1px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+  height : 30px;
+}
+
+TD.comFormTableItemNd012	/* ND012 テーブル形式の項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: dotted;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 0px;
+  border-bottom-width : 0px;
+  font-size   : 8pt;
+  height : 30px;
+  padding-left : 10px;
+}
+
+TD.comFormTableItemNd012Border	/* ND012 テーブル形式の項目 */
+{
+  color : #000000;
+  background-color: #ffffff;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 0px;
+  border-right-width : 0px;
+  border-bottom-width : 1px;
+  font-size   : 6pt;
+  height : 1px;
+  padding-left : 1px;
+}

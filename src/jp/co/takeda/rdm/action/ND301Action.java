@@ -17,6 +17,8 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NC101DTO;
+import jp.co.takeda.rdm.dto.ND011DTO;
+import jp.co.takeda.rdm.dto.ND012DTO;
 import jp.co.takeda.rdm.dto.ND301DTO;
 import jp.co.takeda.rdm.service.ND301Service;
 import jp.co.takeda.rdm.util.AppConstant;
@@ -150,8 +152,9 @@ public class ND301Action extends BaseAction<ND301DTO> {
 
         String preScreenId = loginInfo.getPreScreenId();
         dto.setBackScreenId(preScreenId);
-        String reqId = dto.getReqId();
-        String ultNo = dto.getUltDocNo();
+        ND011DTO searchKey = (ND011DTO)sessionMap.get(AppConstant.SESKEY_ND011_SEARCHKEY);
+        String reqId = searchKey.getReqId();
+        dto.setReqId(reqId);
 
         //モック
         preScreenId = "ND301";

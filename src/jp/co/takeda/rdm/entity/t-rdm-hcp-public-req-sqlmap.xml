@@ -253,7 +253,7 @@
 		  AND PUR.REQ_ID = #{inReqId}
 		ORDER BY PUI.SORT_NUM, PUR.CLASS_CATEGORY
     </select>
-            <select id="selectUpDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpPublicReqEntity" resultMap="selectUpDateResultMap">
+    <select id="selectUpDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmHcpPublicReqEntity" resultMap="selectUpDateResultMap">
         SELECT
             UPD_SHA_YMD
            ,UPD_SHA_ID
@@ -291,4 +291,116 @@
             REQ_ID = #{reqId}
         AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
     </update>
+    <select id="selectHcpPublicDataFromMst" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity" resultMap="hcpPublicDataResultMap">
+		SELECT
+		  PUR.CLASS_CATEGORY -- 分類区分コード
+		, CDC.VALUE1_KANJ AS CLASS_CATEGORY_NM -- 分類区分名称
+		, PUR.PUB_INSTITUTION_CD -- 公的機関コード
+		, PUI.PUB_INSTITUTION -- 公的機関名称
+		, PUR.PUB_INST_ST_YYYY -- 公的機関開始年月日(年)
+		, PUR.PUB_INST_ST_MM -- 公的機関開始年月日(月)
+		, PUR.PUB_INST_ST_DD -- 公的機関開始年月日(日)
+		, PUR.PUB_INST_ED_YYYY -- 公的機関終了年月日(年)
+		, PUR.PUB_INST_ED_MM -- 公的機関終了年月日(月)
+		, PUR.PUB_INST_ED_DD -- 公的機関終了年月日(日)
+		, PUR.PUB_INST_POSITION -- 公的機関役職コード
+		, CDP.VALUE1_KANJ AS PUB_INST_POSITION_NM -- 公的機関役職名称
+		, PUR.PUB_INSTPOS_ST_YYYY -- 公的機関役職開始年月日(年)
+		, PUR.PUB_INSTPOS_ST_MM -- 公的機関役職開始年月日(月)
+		, PUR.PUB_INSTPOS_ST_DD -- 公的機関役職開始年月日(日)
+		, PUR.PUB_INSTPOS_ED_YYYY -- 公的機関役職終了年月日(年)
+		, PUR.PUB_INSTPOS_ED_MM -- 公的機関役職終了年月日(月)
+		, PUR.PUB_INSTPOS_ED_DD -- 公的機関役職終了年月日(日)
+		FROM
+		M_RDM_HCP_PUBLIC PUR -- 医師_公的機関情報
+		LEFT JOIN
+		M_RDM_HCP_PUB_INSTITUTION PUI -- 医師_公的機関マスタ
+		ON 1=1
+		AND PUI.PUB_INSTITUTION_CD = PUR.PUB_INSTITUTION_CD
+		AND PUI.DEL_FLG = '0'
+		LEFT JOIN
+		M_RDM_CODE_MST CDP -- コード情報
+		ON 1=1
+		AND CDP.CODE_NAME = 'POSITION_CODE'
+		AND CDP.DEL_FLG = '0'
+		AND CDP.VALUE1 = PUR.PUB_INST_POSITION
+		LEFT JOIN
+		M_RDM_CODE_MST CDC -- コード情報(分類区分)
+		ON 1=1
+		AND CDC.CODE_NAME = 'CLASS_CATEGORY'
+		AND CDC.DEL_FLG = '0'
+		AND CDC.VALUE1 = PUR.CLASS_CATEGORY
+		WHERE 1=1
+		  AND PUR.DOC_NO = #{inDocNo}
+		ORDER BY PUI.SORT_NUM, PUR.CLASS_CATEGORY
+    </select>
+    <select id="selectHcpPublicDataMarge" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity" resultMap="hcpPublicDataResultMap">
+        WITH KEYDATA AS (
+          SELECT
+             DOC_NO
+           , PUB_INSTITUTION_CD
+            FROM
+             M_RDM_HCP_PUBLIC PUR -- 医師_公的機関情報
+           WHERE DOC_NO = #{inDocNo}
+           UNION
+          SELECT
+             DOC_NO
+           , PUB_INSTITUTION_CD
+            FROM
+             T_RDM_HCP_PUBLIC_REQ PUR -- 医師_公的機関_申請管理
+           WHERE DOC_NO = #{inDocNo}
+             AND REQ_ID = #{inReqId}
+        )
+		SELECT
+		  NVL(REQ.CLASS_CATEGORY, PUR.CLASS_CATEGORY) AS CLASS_CATEGORY -- 分類区分コード
+		, CDC.VALUE1_KANJ AS CLASS_CATEGORY_NM -- 分類区分名称
+		, KEY.PUB_INSTITUTION_CD -- 公的機関コード
+		, PUI.PUB_INSTITUTION -- 公的機関名称
+		, NVL(REQ.PUB_INST_ST_YYYY, PUR.PUB_INST_ST_YYYY) AS PUB_INST_ST_YYYY -- 公的機関開始年月日(年)
+		, NVL(REQ.PUB_INST_ST_MM, PUR.PUB_INST_ST_MM) AS PUB_INST_ST_MM -- 公的機関開始年月日(月)
+		, NVL(REQ.PUB_INST_ST_DD, PUR.PUB_INST_ST_DD) AS PUB_INST_ST_DD -- 公的機関開始年月日(日)
+		, NVL(REQ.PUB_INST_ED_YYYY, PUR.PUB_INST_ED_YYYY) AS PUB_INST_ED_YYYY -- 公的機関終了年月日(年)
+		, NVL(REQ.PUB_INST_ED_MM, PUR.PUB_INST_ED_MM) AS PUB_INST_ED_MM -- 公的機関終了年月日(月)
+		, NVL(REQ.PUB_INST_ED_DD, PUR.PUB_INST_ED_DD) AS PUB_INST_ED_DD -- 公的機関終了年月日(日)
+		, NVL(REQ.PUB_INST_POSITION, PUR.PUB_INST_POSITION) AS PUB_INST_POSITION -- 公的機関役職コード
+		, CDP.VALUE1_KANJ AS PUB_INST_POSITION_NM -- 公的機関役職名称
+		, NVL(REQ.PUB_INSTPOS_ST_YYYY, PUR.PUB_INSTPOS_ST_YYYY) AS PUB_INSTPOS_ST_YYYY -- 公的機関役職開始年月日(年)
+		, NVL(REQ.PUB_INSTPOS_ST_MM, PUR.PUB_INSTPOS_ST_MM) AS PUB_INSTPOS_ST_MM -- 公的機関役職開始年月日(月)
+		, NVL(REQ.PUB_INSTPOS_ST_DD, PUR.PUB_INSTPOS_ST_DD) AS PUB_INSTPOS_ST_DD -- 公的機関役職開始年月日(日)
+		, NVL(REQ.PUB_INSTPOS_ED_YYYY, PUR.PUB_INSTPOS_ED_YYYY) AS PUB_INSTPOS_ED_YYYY -- 公的機関役職終了年月日(年)
+		, NVL(REQ.PUB_INSTPOS_ED_MM, PUR.PUB_INSTPOS_ED_MM) AS PUB_INSTPOS_ED_MM -- 公的機関役職終了年月日(月)
+		, NVL(REQ.PUB_INSTPOS_ED_DD, PUR.PUB_INSTPOS_ED_DD) AS PUB_INSTPOS_ED_DD -- 公的機関役職終了年月日(日)
+		FROM
+        KEYDATA KEY
+        LEFT JOIN
+		M_RDM_HCP_PUBLIC PUR -- 医師_公的機関情報
+		ON 1=1
+        AND PUR.DOC_NO = KEY.DOC_NO
+		AND PUR.PUB_INSTITUTION_CD = KEY.PUB_INSTITUTION_CD
+        LEFT JOIN
+		T_RDM_HCP_PUBLIC_REQ REQ -- 医師_公的機関_申請管理
+		ON 1=1
+        AND REQ.REQ_ID = #{inReqId}
+        AND REQ.DOC_NO = KEY.DOC_NO
+		AND REQ.PUB_INSTITUTION_CD = KEY.PUB_INSTITUTION_CD
+		LEFT JOIN
+		M_RDM_HCP_PUB_INSTITUTION PUI -- 医師_公的機関マスタ
+		ON 1=1
+		AND KEY.PUB_INSTITUTION_CD = PUI.PUB_INSTITUTION_CD
+		AND PUI.DEL_FLG = '0'
+		LEFT JOIN
+		M_RDM_CODE_MST CDP -- コード情報
+		ON 1=1
+		AND CDP.CODE_NAME = 'POSITION_CODE'
+		AND CDP.DEL_FLG = '0'
+		AND CDP.VALUE1 = NVL(REQ.PUB_INST_POSITION, PUR.PUB_INST_POSITION)
+		LEFT JOIN
+		M_RDM_CODE_MST CDC -- コード情報(分類区分)
+		ON 1=1
+		AND CDC.CODE_NAME = 'CLASS_CATEGORY'
+		AND CDC.DEL_FLG = '0'
+		AND CDC.VALUE1 = NVL(REQ.CLASS_CATEGORY, PUR.CLASS_CATEGORY)
+		WHERE 1=1
+		ORDER BY PUI.SORT_NUM, NVL(REQ.CLASS_CATEGORY, PUR.CLASS_CATEGORY)
+    </select>
 </mapper>

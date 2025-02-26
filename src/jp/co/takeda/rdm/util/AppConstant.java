@@ -2823,12 +2823,16 @@ public interface AppConstant {
     public static final String SESKEY_ND001_SEARCHKEY = "ND001_SEARCHKEY";
     /** 医師新規での初期結果 */
     public static final String SESKEY_ND011_SEARCHKEY = "ND011_SEARCHKEY";
+    /** 医師情報更新での初期結果 */
+    public static final String SESKEY_ND012_SEARCHKEY = "ND012_SEARCHKEY";
     /** RDM医療機関への異動での初期結果 */
     public static final String SESKEY_ND101_SEARCHKEY = "ND101_SEARCHKEY";
     /** RDM医療機関以外への異動での初期結果 */
     public static final String SESKEY_ND102_SEARCHKEY = "ND102_SEARCHKEY";
     /** 医師新規確認での初期結果 */
     public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
+    /** 医師情報更新新規確認での初期結果 */
+    public static final String SESKEY_ND303_SEARCHKEY = "ND303_SEARCHKEY";
     /** RDM医療機関への異動 */
     public static final String SESKEY_ND307_SEARCHKEY = "ND307_SEARCHKEY";
     /** RDM医療機関以外への異動 - 申請内容確認での初期結果 */

@@ -12,15 +12,14 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.ND011DTO;
-import jp.co.takeda.rdm.dto.ND301DTO;
-import jp.co.takeda.rdm.exception.InvalidRequestException;
-import jp.co.takeda.rdm.service.ND011Service;
+import jp.co.takeda.rdm.dto.NC101DTO;
+import jp.co.takeda.rdm.dto.ND012DTO;
+import jp.co.takeda.rdm.dto.ND303DTO;
+import jp.co.takeda.rdm.service.ND303Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
@@ -38,9 +37,9 @@ import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
  * Actionクラス
  * @generated
  */
-@Named("nD011Action")
+@Named("nD303Action")
 @Scope("request")
-public class ND011Action extends BaseAction<ND011DTO> {
+public class ND303Action extends BaseAction<ND303DTO> {
 
     /**
      * シリアルバージョンID
@@ -53,9 +52,9 @@ public class ND011Action extends BaseAction<ND011DTO> {
      * @generated
      */
     @Inject
-    private ND011Service nD011Service;
+    private ND303Service nD303Service;
     // 確認画面用にする
-    private ND301DTO paramDto;
+    private NC101DTO paramDto;
     // START UOC
     // END UOC
 
@@ -63,8 +62,8 @@ public class ND011Action extends BaseAction<ND011DTO> {
      * コンストラクタ
      * @generated
      */
-    public ND011Action() {
-        dto = new ND011DTO();
+    public ND303Action() {
+        dto = new ND303DTO();
     }
 
     /**
@@ -78,7 +77,6 @@ public class ND011Action extends BaseAction<ND011DTO> {
         // START UOC
     	dto.setMsgId(null);
     	dto.setMsgStr(null);
-
         return null;
         // END UOC
         // START UOC
@@ -113,7 +111,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nD011Service.init(dto);
+        BaseDTO outdto = nD303Service.init(dto);
         return initNext(outdto);
     }
 
@@ -133,7 +131,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
 //        String finishFlg = (String)request.getParameter(RdmConstantsData.JKR090C020_FINISH_FLG);
 //        // 遷移元画面が登録完了画面の場合
 //        if (RdmConstantsData.JKR090C020_FINISH_VALUE.equals(finishFlg)) {
-//            ND011DTO searchKey = (ND011DTO)sessionMap.get(AppConstant.SESKEY_ND011_SEARCHKEY);
+//            ND303DTO searchKey = (ND303DTO)sessionMap.get(AppConstant.SESKEY_ND303_SEARCHKEY);
 //            BeanUtils.copyProperties(dto, searchKey);
 //
 //        } else if (!dto.getBackScreenId().startsWith("JKR030C0")) {
@@ -145,51 +143,21 @@ public class ND011Action extends BaseAction<ND011DTO> {
 
 //        dto.setActionMtKbn("1");
       //画面タイト制御処理
-        String title = "ND011_医師新規作成";
+        String title = "ND303_医師情報更新 - 申請内容確認";
         //ユーザ権限
         String jokenSetCd = dto.getLoginJokenSetCd();
 
         dto.setTitle(title);
 
         String preScreenId = loginInfo.getPreScreenId();
-        String reqId = dto.getReqId();
-        String ultNo = dto.getUltDocNo();
-//TODO
+        dto.setBackScreenId(preScreenId);
+//        String reqId = dto.getReqId();
+//        String ultNo = dto.getUltDocNo();
+        ND012DTO searchKey = (ND012DTO)sessionMap.get(AppConstant.SESKEY_ND012_SEARCHKEY);
+        String reqId = searchKey.getReqId();
+        dto.setReqId(reqId);
         //モック
-        //preScreenId = "NC011";
-        preScreenId = dto.getPreScreenId();
-
-        dto.setPreScreenId(preScreenId);
-
-        // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
-        // ULTT医師コード　ありなしで分岐
-        // ND001_医師検索
-        if ("ND001".equals(preScreenId)) {
-        	if (ultNo != null && ultNo.length() > 0) {
-        		// ULT医師コードで初期データ作成
-        		dto.setDisplayKbn("1");
-        	} else if(ultNo == null || ultNo.length() == 0){
-        		// 完全新規
-        		dto.setDisplayKbn("0");
-        	} else { //遷移エラー
-        		throw new InvalidRequestException();
-        	}
-        }else {
-        	// 申請ID
-        	// NC011_申請一覧
-        	// ND301_医師新規作成 - 申請内容確認
-        	// NM101_通知内容詳細
-        	if ("NC011".equals(preScreenId) || "ND301".equals(preScreenId) || "NM101".equals(preScreenId)) {
-        		if (reqId != null && reqId.length() > 0) {
-        			// 申請データ（一時保存含む）を参照
-        			dto.setDisplayKbn("2");
-        		} else { //遷移エラー
-        			throw new InvalidRequestException();
-        		}
-        	}else {//遷移エラー
-        		throw new InvalidRequestException();
-        	}
-        }
+        preScreenId = "ND303";
 
         dto.setMsgId(null);
 
@@ -203,7 +171,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_ND011_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_ND303_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -217,10 +185,10 @@ public class ND011Action extends BaseAction<ND011DTO> {
     public String register() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = nD011Service.register(dto);
-        if (outdto instanceof ND011DTO) {
+        BaseDTO outdto = nD303Service.register(dto);
+        if (outdto instanceof ND303DTO) {
             // START UOC
-//            outdto = nD011Service.register(dto);
+//            outdto = nD303Service.register(dto);
             // END UOC
         }
         return registerNext(outdto);
@@ -235,10 +203,6 @@ public class ND011Action extends BaseAction<ND011DTO> {
         dto.setMsgId(null);
         dto.setMsgStr(null);
         // END UOC
-//        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-//        String preScreenId = loginInfo.getPreScreenId();
-//
-//        dto.setPreScreenId(preScreenId);
     }
 
     /**
@@ -249,46 +213,19 @@ public class ND011Action extends BaseAction<ND011DTO> {
         // START UOC
         if (!RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
                 && !"exception".equals(outdto.getForward())){
-            setJumpInfo(dto.getMsgId());
-//            outdto.setForward("JKR090C020Init");
+
         }
         // END UOC
-        // buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
+        //TODO buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
         //"9" = 登録完了
-        if ("9".equals(dto.getButtonFlg())) {
+        if ("9".equals(dto.getReturnFlg())) {
             // 登録完了画面へ遷移
-            setJumpInfo();
-            outdto.setForward("ND301Init");
-            //画面状況フラグを初期化
-            dto.setMsgId("");
-            dto.setButtonFlg("");
-        }
-        if ("8".equals(dto.getButtonFlg())) {
-            // どうにかして画面を閉じる
+            setJumpInfo(dto.getButtonFlg());
 
+            outdto.setForward("NC101Init");
         }
         setNextDTO(outdto);
         return outdto.getForward();
-    }
-
-    /**
-     * 登録終了画面へ遷移用パラメータ設定。
-     * @param dto 登録完了画面DTO
-     */
-    private void setJumpInfo() {
-        // メッセージオブジェクト取得
-//        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-
-        paramDto = new ND301DTO();
-        // ブラウザタイトルと画面タイトル
-//        paramDto.setBrowerTitle("ND301_医師新規作成 - 申請内容確認");
-        paramDto.setTitle("ND301_医師新規作成 - 申請内容確認");
-        paramDto.setReqId(dto.getReqId());
-//        // 戻るリンク1(表示文言)
-//        paramDto.setReturnLinkNm1("ND011_医師新規作成画面へ戻る");
-//        // 戻るリンク1(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND011Init");
-
     }
 
     // START UOC
@@ -297,30 +234,33 @@ public class ND011Action extends BaseAction<ND011DTO> {
      * @param dto 登録完了画面DTO
      * @param msgId メッセージID
      */
-    private void setJumpInfo(String msgId) {
+    private void setJumpInfo(String event) {
         // メッセージオブジェクト取得
         LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-        String subTitle = "";
-        String jokenSetCd = dto.getLoginJokenSetCd();
-
         //画面タイトル内容設定
-        paramDto = new ND301DTO();
-//        // ブラウザタイトル
-//        paramDto.setBrowerTitle ("担当引継ぎ"+ subTitle);
-//        // 画面タイトル
-//        paramDto.setTitle("担当引継ぎ"+ subTitle);
-//        // 戻るリンク(表示文言)
-//        paramDto.setReturnLinkNm1("戻る");
-//        // 戻るリンク(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND011Init");
-//        // メッセージ１
-//        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
-//        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
+        paramDto = new NC101DTO();
+        // ブラウザタイトル
+        paramDto.setBrowerTitle ("ND011_医師新規作成");
+        // 画面タイトル
+        paramDto.setTitle("医師新規作成");
+        // 戻るリンク(表示文言)
+        paramDto.setReturnLinkNm1("医師検索画面へ");
+        // 戻るリンク(遷移先URL)
+        paramDto.setReturnLinkURL1("ND001Init");
+        // メッセージ１
+        if (event.equals("0")) {//I002	申請が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
+        }
+//        if (event.equals("1")) {//I003	承認が完了しました。
+//            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I003));
+//        }
+        if (event.equals("2")) {//I004	却下が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I004));
+        }
 
-        ND011DTO searchKey = (ND011DTO)sessionMap.get(AppConstant.SESKEY_ND011_SEARCHKEY);
-        searchKey.setReqId(dto.getReqId());
-        sessionMap.put(AppConstant.SESKEY_ND011_SEARCHKEY, searchKey);
+//        ND303DTO searchKey = (ND303DTO)sessionMap.get(AppConstant.SESKEY_ND303_SEARCHKEY);
+//        sessionMap.put(AppConstant.SESKEY_ND303_SEARCHKEY, searchKey);
     }
 
 }

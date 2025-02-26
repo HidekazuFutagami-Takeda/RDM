@@ -14,6 +14,7 @@
  * </pre>
  */
 var JKR_APPLICATION_ID = "JKR";
+var RDM_APPLICATION_ID = "RDM";
 
 /**
  * <pre>
@@ -22,6 +23,7 @@ var JKR_APPLICATION_ID = "JKR";
  * </pre>
  */
 var JKR_BG_COLOR_NORMAL = "#FFFFFF";
+var RDM_BG_COLOR_NORMAL = "#FFFFFF";
 
 /**
  * <pre>
@@ -30,6 +32,7 @@ var JKR_BG_COLOR_NORMAL = "#FFFFFF";
  * </pre>
  */
 var JKR_BG_COLOR_DISABLED = "#D4D0C8";
+var RDM_BG_COLOR_DISABLED = "#D4D0C8";
 
 /**
  * <pre>
@@ -410,3 +413,84 @@ function setSearchSosCdPop() {
     }
 }
 //20150202 HISOL Suzuki 本番課題No.25対応 ADD END
+/**
+ * <pre>
+ * 変更内容の破棄確認処理
+ * 　他ページへ遷移する際に一覧内容が変更されている場合
+ * 　確認ダイアログを表示する。
+ * <pre>
+ */
+var rdmMrChaker = 0;
+function rdmDestructChack(){
+
+  var delChangeFlg = true;
+
+  // 二度押しの場合はチェック不要(二度押し制御を優先)
+  if (COM_Click_flg) {
+    if(rdmMrChaker != 0){
+      delChangeFlg = confirm(destructMsg);
+    }
+  }
+   return delChangeFlg;
+}
+
+/**
+ * <pre>
+ * 『外勤担当者変更メニューへ』
+ * 　リンク押下時の処理
+ * <pre>
+ */
+function rdmMenuLink(functionId){
+  if(rdmDestructChack()){
+    //comNextScreen(document._fmTopMenu,'RdmMenu','View');
+    if( COM_Click_flg == false ){
+      alert("既に処理を開始しています。");
+      return false;
+    }
+    COM_Click_flg = false;
+
+    //フォームが存在しない場合、送信フォームを作成する
+    if(!document._fmMainRdm && !document.all._fmMainRdm){
+
+      var fmMainMenuObj = document.createElement('form');
+      fmMainMenuObj.id = "_fmMainRdm";
+      fmMainMenuObj.method = "POST";
+      fmMainMenuObj.action = "NC001" + functionId + ".action";
+      fmMainMenuObj.style.visibility = "hidden";
+      fmMainMenuObj.style.position = "absolute";
+
+      appFormData(fmMainMenuObj,"text","screenId","");
+      appFormData(fmMainMenuObj,"text","functionId","");
+      appFormData(fmMainMenuObj,"text","windowName","");
+      appFormData(fmMainMenuObj,"text","openerName","");
+
+      //各画面で変えられた組織を保持しトップメニューへ表示させる
+//      if (document.getElementById("topChangedSosCd")) {
+//        appFormData(fmMainMenuObj,"text", "topChangedSosCd",  document.getElementById("topChangedSosCd").value);
+//        appFormData(fmMainMenuObj,"text", "topChangedSosNm",  document.getElementById("topChangedSosNm").value);
+//        appFormData(fmMainMenuObj,"text", "topChangedSosCd2", document.getElementById("topChangedSosCd2").value);
+//        appFormData(fmMainMenuObj,"text", "topChangedSosNm2", document.getElementById("topChangedSosNm2").value);
+//        appFormData(fmMainMenuObj,"text", "topChangedSosCd3", document.getElementById("topChangedSosCd3").value);
+//        appFormData(fmMainMenuObj,"text", "topChangedSosNm3", document.getElementById("topChangedSosNm3").value);
+//      }
+
+      document.body.appendChild(fmMainMenuObj);
+      fmMainMenuObj.submit();
+    }
+    //location.href="RDM000C010View";
+  }
+   return false;
+}
+
+/**
+ * <pre>
+ * 『ホームへ』
+ * 　リンク押下時の処理
+ * <pre>
+ */
+function rdmHomeLink(){
+  if(rdmDestructChack()){
+    mnuTopGo('Menu','ViewInit');
+  }
+   return false;
+}

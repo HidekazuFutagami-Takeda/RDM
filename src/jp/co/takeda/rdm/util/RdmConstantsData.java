@@ -598,6 +598,8 @@ public class RdmConstantsData {
 
     /**パラメタ情報パラメタ名 : 医師メニュースイッチ */
     public static final String PARAM_NAME_MN_DOC = "MN_DOC";
+    /**パラメタ情報パラメタ名 : 医師勤務先メニュースイッチ */
+    public static final String PARAM_NAME_MN_KMU = "MN_KMU";
 
     /** MDMシステムトップメニューボタン押下 : 戻るためのDTOセッション格納キー */
     public static final String NC001_RETURN_DTO_KEY = "NC001_RETURN_DTO_KEY";

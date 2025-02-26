@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  医師新規作成 - 申請内容確認のJSP
+ *  医師情報更新 - 申請内容確認のJSP
  * </pre>
  * @since 1.0
  * @version $Revision: 1.3 $
@@ -24,25 +24,13 @@
 
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-String regEnabedFlg = StringUtils.nvl((String)request.getAttribute("regEnabedFlg"), "");
-//20180406 HISOL ISHIDA START
-String sosSelFlg = StringUtils.nvl((String)request.getAttribute("sosSelFlg"), "");
-//20180406 HISOL ISHIDA END
-String strRegDisabled = "";
-//20180406 HISOL ISHIDA START
-//if (!"1".equals(regEnabedFlg)) {
-if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
-//20180406 HISOL ISHIDA END
-    strRegDisabled = "disabled";
-}
-%>
+
 <%-- オブジェクト読み込み --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-  <title>ND301_医師新規作成 - 申請内容確認</title>
+  <title>ND303_医師情報更新 - 申請内容確認</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -50,43 +38,45 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <script>
     destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
     function backFnc(reqId){
-    	if(window.confirm(destructMsg.replace("（遷移元）", '医師新規作成'))){
-    		document.fm1.screenId.value="ND011";
+    	if(window.confirm(destructMsg.replace("（遷移元）", '医師情報更新'))){
+    		document.fm1.screenId.value="ND012";
 			document.fm1.functionId.value="Init";
 			document.fm1.reqId.value=reqId;
-			document.fm1.preScreenId.value="ND301";
+			document.fm1.preScreenId.value="ND303";
 			comSubmitForAnyWarp(fm1);
     	}
-    }
-    function register(kbn){
-      //区分 0:申請,1:承認,2:却下
-      //確定ボタン
-      if (kbn == '0'){//I015	申請します。よろしいですか？
-        msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
-      }
-      if (kbn == '1'){//I012	申請データを承認します。よろしいですか？
-          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
-      }
-      if (kbn == '2'){//I009	申請データを却下します。よろしいですか？
-          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I009.msgData" />';
-      }
-      nd301Register(kbn);
-    }
-
-    function nd301Register(buttonFlg){
-   	  // 確認メッセージ表示
-   	  if (confirm(msgContent)){
-   	  } else {
-   	    return false;
-   	  }
-
-   	  document.fm1.buttonFlg.value = buttonFlg;
-   	  document.fm1.screenId.value = 'ND301';
-   	  document.fm1.functionId.value = 'Register';
-
-   	  //イベント呼び出し
-   	  comSubmitForAnyWarp(fm1);
    	}
+
+    function register(kbn){
+        //区分 0:申請,1:承認,2:却下
+        //確定ボタン
+        if (kbn == '0'){//I015	申請します。よろしいですか？
+          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
+        }
+//         if (kbn == '1'){//I012	申請データを承認します。よろしいですか？
+//             msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
+//         }
+        if (kbn == '2'){//I009	申請データを却下します。よろしいですか？
+            msgContent = '<s:property value="#session.UserInfoKey.msgMap.I009.msgData" />';
+        }
+        nd303Register(kbn);
+      }
+
+      function nd303Register(buttonFlg){
+     	  // 確認メッセージ表示
+     	  if (confirm(msgContent)){
+     	  } else {
+     	    return false;
+     	  }
+
+     	  document.fm1.buttonFlg.value = buttonFlg;
+     	  document.fm1.screenId.value = 'ND303';
+     	  document.fm1.functionId.value = 'Register';
+
+     	  //イベント呼び出し
+     	  comSubmitForAnyWarp(fm1);
+     }
+
 
     function comSetFormWindowInfo(){
     	comClickFlgInit();
@@ -100,28 +90,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <input type="text" name="functionId"         value="" />
     <input type="text" name="windowName"         value="" />
     <input type="text" name="openerName"         value="" />
-<!--     <input type="text" name="infoId1"            value="" /> -->
-<!--     <input type="text" name="systemId1"          value="" /> -->
-<!--     <input type="text" name="backScreenId1"      value="JkrMrChange" /> -->
-<!--     <input type="text" name="backFunctionId1"    value="" /> -->
-<!--     <input type="text" name="backScreenName1"    value="" /> -->
-<!--     <input type="text" name="backParamName1"     value="" /> -->
-<!--     <input type="text" name="backParamValue1"    value="" /> -->
-<!--     <input type="text" name="backParamName2"     value="" /> -->
-<!--     <input type="text" name="backParamValue2"    value="" /> -->
-<!--     <input type="text" name="fromScreenId1"      value="" /> -->
-<!--     <input type="text" name="fromFunctionId1"    value="" /> -->
-<!--     <input type="text" name="kensakuChar1"       value="" /> -->
-<!--     <input type="text" name="kensakuAndOr1"      value="" /> -->
-<!--     <input type="text" name="pageNextBackFlag1"  value="" /> -->
-<!--     <input type="text" name="sortFieldNo1"       value="" /> -->
-<!--     <input type="text" name="sortFLG1"           value="" /> -->
-<!--     <input type="text" name="startRecordNo1"     value="" /> -->
-<!--     <input type="text" name="pageLines1"         value="" /> -->
-<!--     <input type="hidden" name="endRecordNo1"	value="" /> -->
-<!--     <input type="text" name="no1"                value="1" /> -->
-
-    <%-- フレーム対応で発生したPOST用 引数1:frame(フレーム対応),以外(何もしない) 引数２:オブジェクトの型 --%>
 
   </form>
 
@@ -146,9 +114,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="lineCntEnd" />
     <s:hidden name="lineCntAll1" />
     <%-- 画面用パラメータ --%>
-    <s:hidden name="backScreenId" value="ND301" />
+    <s:hidden name="backScreenId" value="ND303" />
      <s:hidden name="preScreenId"/>
-     <s:hidden name="screenId"/>
+     <s:hidden name="screenId" value="" />
      <s:hidden name="functionId"/>
      <s:hidden name="loginJokenSetCd"/>
      <s:hidden name="loginJgiNo"/>
@@ -164,7 +132,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師新規作成 - 申請内容確認"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師情報更新 - 申請内容確認"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>
@@ -176,6 +144,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <tbody>
       <tr>
         <td>
+
   <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
     <tbody>
       <s:if test="msgStr != null">
@@ -213,6 +182,40 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <s:hidden name="shnJgiNo"/>
         <s:hidden name="aprJgiNo"/>
         <s:hidden name="updShaYmd"/>
+        <s:hidden name="tkdDocNo"/>
+        <s:hidden name="tkdDocNm"/>
+        <s:hidden name="tkdDocKana"/>
+        <s:hidden name="mstDocType"/>
+        <s:hidden name="mstDocTypeNm"/>
+        <s:hidden name="mstSexCd"/>
+        <s:hidden name="mstSexNm"/>
+        <s:hidden name="mstDocKanjiSei"/>
+        <s:hidden name="mstDocKanjiMei"/>
+        <s:hidden name="mstDocKanaSei"/>
+        <s:hidden name="mstDocKanaMei"/>
+        <s:hidden name="mstOldKanjSei"/>
+        <s:hidden name="mstOldKanaSei"/>
+        <s:hidden name="mstNewNameStYear"/>
+        <s:hidden name="mstNewNameStMonth"/>
+        <s:hidden name="mstNewNameStDay"/>
+        <s:hidden name="mstDobYear"/>
+        <s:hidden name="mstDobMonth"/>
+        <s:hidden name="mstDobDay"/>
+        <s:hidden name="mstHomeTownCd"/>
+        <s:hidden name="mstHomeTownNm"/>
+        <s:hidden name="mstMedSchoolCd"/>
+        <s:hidden name="mstMedSchoolNm"/>
+        <s:hidden name="mstGradYear"/>
+        <s:hidden name="mstEmplYear"/>
+        <s:hidden name="mstHomeUnivCd"/>
+        <s:hidden name="mstHomeUnivNm"/>
+        <s:hidden name="mstHomeDeptCd"/>
+        <s:hidden name="mstHomeDeptNm"/>
+        <s:hidden name="mstSpLiverCd"/>
+        <s:hidden name="mstSpLiverNm"/>
+        <s:hidden name="mstSpDiseaseCd"/>
+        <s:hidden name="mstSpDiseaseNm"/>
+        <s:hidden name="mstSpCom"/>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
@@ -273,7 +276,21 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>ULT医師情報</nobr></td>
+	      <td class="comFormTableItem"><nobr>基本情報</nobr></td>
+	      <td class="comFormTableItem"><nobr>医師固定C</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="tkdDocNo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>武田医師名(漢字)</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="tkdDocNm"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>武田医師名(半角カナ)</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="tkdDocKana"/></nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>ULT医師C</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="ultDocNo"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -292,145 +309,186 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <table id="formTable03" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--基本情報--%>
-        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 20%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 40%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 40%; height: 0px; border-width: 0px;"></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>基本情報</nobr></td>
+	      <td class="comFormTableItemNd012Head"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItemNd012Head"><nobr>変更前</nobr></td>
+	      <td class="comFormTableItemNd012Head"><nobr>変更後</nobr></td>
+      </tr>
+      <tr>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>医師／薬剤師区分</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocTypeNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="docTypeNm"/>
 			  <s:hidden name="docType"/><s:hidden name="docTypeNm"/>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>性別</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSexNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="sexNm"/>
 			  <s:hidden name="sexCd"/><s:hidden name="sexNm"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(漢字)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="docKanjiSei"/>
 			  <s:hidden name="docKanjiSei"/>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>医師名(漢字)名</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiMei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="docKanjiMei"/>
 			  <s:hidden name="docKanjiMei"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="docKanaSei"/>
 			  <s:hidden name="docKanaSei"/>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)名</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaMei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="docKanaMei"/>
 			  <s:hidden name="docKanaMei"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>旧姓(漢字)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanjSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="oldKanjSei"/>
 			  <s:hidden name="oldKanjSei"/>
 	      </nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>旧姓(半角カナ)姓</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanaSei"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
+		      <s:label key="oldKanaSei"/>
+			  <s:hidden name="oldKanaSei"/>
+	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>改姓日</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstNewNameStYear"/>年<s:label key="mstNewNameStMonth"/>月<s:label key="mstNewNameStDay"/>日</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="newNameStYear"/>年<s:label key="newNameStMonth"/>月<s:label key="newNameStDay"/>日
 			  <s:hidden name="newNameStYear"/><s:hidden name="newNameStMonth"/><s:hidden name="newNameStDay"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>旧姓(半角カナ)姓</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="oldKanaSei"/>
-			  <s:hidden name="oldKanaSei"/>
-	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>生年月日</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDobYear"/>年<s:label key="mstDobMonth"/>月<s:label key="mstDobDay"/>日</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="dobYear"/>年<s:label key="dobMonth"/>月<s:label key="dobDay"/>日
 			  <s:hidden name="dobYear"/><s:hidden name="dobMonth"/><s:hidden name="dobDay"/>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>出身地</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="homeTownCd"/>：<s:label key="homeTownNm"/>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeTownNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
+		      <s:label key="homeTownNm"/>
 			  <s:hidden name="homeTownCd"/><s:hidden name="homeTownNm"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>出身校</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstMedSchoolNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="medSchoolNm"/>
 			  <s:hidden name="medSchoolCd"/><s:hidden name="medSchoolNm"/>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>卒年（西暦）</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstGradYear"/>年</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="gradYear"/>年
 			  <s:hidden name="gradYear"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>臨床研修年（西暦）</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="emplYear"/>年
-			  <s:hidden name="emplYear"/>
-	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>出身医局校</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeUnivNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="homeUnivNm"/>
 			  <s:hidden name="homeUnivCd"/><s:hidden name="homeUnivNm"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>臨床研修年（西暦）</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstEmplYear"/>年</nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
+		      <s:label key="emplYear"/>年
+			  <s:hidden name="emplYear"/>
+	      </nobr></td>
+      </tr>
+      <tr>
+      	<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+		<td class="comFormTableItemNd012Border"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>出身所属部科</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeDeptNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="homeDeptNm"/>
 			  <s:hidden name="homeDeptCd"/><s:hidden name="homeDeptNm"/>
           </nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>専門臓器</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpLiverNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="spLiverNm"/>
 			  <s:hidden name="spLiverCd"/><s:hidden name="spLiverNm"/>
 	      </nobr></td>
+      </tr>
+      <tr>
 	      <td class="comFormTableItem"><nobr>専門詳細</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpDiseaseNm"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="spDiseaseNm"/>
 			  <s:hidden name="spDiseaseCd"/><s:hidden name="spDiseaseNm"/>
 	      </nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>専門追加情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpCom"/></nobr></td>
+	      <td class="comFormTableItemNd012"><nobr>
 		      <s:label key="spCom"/>
 			  <s:hidden name="spCom"/>
 	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
   </table>
   <br/>
@@ -569,7 +627,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><%-- スクロールバー用のテーブルクラスにすること --%>
-              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
+              <div id="rdmHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
 			  <table id="formTable07">
 				<tr>
 			        <%-- ヘッダ行 --%>
@@ -635,55 +693,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
   </table>
   <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
-      <table id="formTable08" border="0" class="comPortalTable" align="center" style="width:75%;">
-      <tr>
-        <%--勤務先情報--%>
-        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
-        <td style="width: 220px; height: 0px; border-width: 0px;"></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>勤務先情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>施設</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="skInsNm"/>
-			  <s:hidden name="skInsNo"/><s:hidden name="skInsNm"/>
-          </nobr></td>
-	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="skUnivPosNm"/>
-			  <s:hidden name="skUnivPosCd"/><s:hidden name="skUnivPosNm"/>
-	      </nobr></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>所属部科</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="skDeptNm"/>
-			  <s:hidden name="skDeptCd"/><s:hidden name="skDeptNm"/>
-          </nobr></td>
-	      <td class="comFormTableItem"><nobr>役職</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="skTitleNm"/>
-			  <s:hidden name="skTitleCd"/><s:hidden name="skTitleNm"/>
-          </nobr></td>
-      </tr>
-      <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="skJobFormNm"/>
-			  <s:hidden name="skJobForm"/><s:hidden name="skJobFormNm"/>
-	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
-	      <td class="comFormTableItem"><nobr>
-		      <s:label key="skDcctypeNm"/>
-			  <s:hidden name="skDcctype"/><s:hidden name="skDcctypeNm"/>
-	      </nobr></td>
-      </tr>
-  </table>
+
   <%--コメント類 --%>
   <table id="formTable09" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
@@ -703,7 +713,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
 	      <tr>
-		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
+		      <td class="comFormTableItem"><nobr>却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
 	      <tr>
 		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="150" style="width: 650px; height: 80px;"/></nobr></td>
@@ -726,7 +736,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
                 <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backFnc('<s:property value="reqId"/>');return false;" />
                 </nobr>
 	      </td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItem">
+                <nobr>
                 <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 	                	<input class="comButton" type="button"name="buttonF2" value="却下" onClick="register('2');return false;" />
@@ -741,22 +752,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <nobr>&nbsp;</nobr>
 	      </td>
 	      <td class="comFormTableItem">
-                <nobr>
-                <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
-                	<s:if test='%{btnEnableFlg == "1"}'>
-                		<s:if test='%{reqStsCd == "03"}'>
-	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
-	               		</s:if>
-	                	<input class="comButton" type="button"name="buttonF3" value="承認" onClick="register('1');return false;" />
-	                </s:if>
-	                <s:else>
-						<s:if test='%{reqStsCd == "03"}'>
-							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
-						</s:if>
-	                	<input class="comButton" type="button"name="buttonF3" value="承認" disabled />
-	                </s:else>
-                </s:if>
-                </nobr>
+	      <nobr>&nbsp;</nobr>
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
@@ -773,13 +769,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	  </tr>
   </table>
 <%-- SUBMIT用パラメータ 終了 --%>
-
     </td>
 	</tr>
     </tbody>
     </table>
-            </s:form>
+  </s:form>
   </table>
+
   <jsp:include page="common/rdmBottom.jsp" flush="true" />
   <%-- ボトム部分をインクルード --%>
   <hr class="comTitle" />

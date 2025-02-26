@@ -147,8 +147,8 @@ public class NF301Service extends BaseService {
 			errFlg = true;
         }
         if(indto.getTkCityName() == null || indto.getTkCityName().isEmpty()) {
-        	// 必須項目にデータを入力してください。（武田市区群名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "武田市区群名") + "\n";
+        	// 必須項目にデータを入力してください。（武田市区郡名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "武田市区郡名") + "\n";
 			errFlg = true;
         }
         if(indto.getInsPhone1() == null || indto.getInsPhone1().isEmpty()) {
@@ -1696,8 +1696,8 @@ public class NF301Service extends BaseService {
 			errFlg = true;
         }
         if(indto.getTkCityName() == null || indto.getTkCityName().isEmpty()) {
-        	// 必須項目にデータを入力してください。（武田市区群名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "武田市区群名") + "\n";
+        	// 必須項目にデータを入力してください。（武田市区郡名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "武田市区郡名") + "\n";
 			errFlg = true;
         }
         if(indto.getInsPhone1() == null || indto.getInsPhone1().isEmpty()) {

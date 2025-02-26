@@ -1783,8 +1783,8 @@
 		, ADDR.ADDR_NAME_CITY AS SHIKUCHOSON_NM	-- 市区町村名
 		, ULT.ADDRESS			-- ULT_MDB施設マスタ.住所
 		, ULT.ADDRESS_KANA		-- ULT_MDB施設マスタ.住所カナ
-		, ADDR.TK_CITY_CD		-- 武田市区群コード
-		, ADDR.TK_CITY_NAME		-- 武田市区群名
+		, ADDR.TK_CITY_CD		-- 武田市区郡コード
+		, ADDR.TK_CITY_NAME		-- 武田市区郡名
 		, ULT.SHISETSU_TEL		-- ULT_MDB施設マスタ.施設電話番号
 		, KEI.SET_DT_CD			-- 経営体紐付けマスタ.武田経営主体コード
 		, ULT.KYOKABYOSHOSU_SUM	-- ULT_MDB施設マスタ.許可病床数合計

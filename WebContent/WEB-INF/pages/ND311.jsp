@@ -34,6 +34,8 @@
 	<link href="css/catDeptsCombo.css" rel="Stylesheet" type="text/css" />
 	<link href="css/common.css" rel="Stylesheet" type="text/css" />
 	<link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
+	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
+	<link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
 	<script type="text/javascript" src="js/jkrMenu.js"></script>
 	<script type="text/javascript" src="js/ND103.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
@@ -90,6 +92,13 @@
 </head>
 <body class="comPage">
 
+<%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
 <%-- submit用フォーム 開始 　まるっといらないかもって話がある--%>
 	<form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
@@ -130,6 +139,7 @@
 	<s:hidden name="errorBool" />
 	<s:hidden name="jokenSetCd" />
 
+	<s:hidden name="title" />
 	<s:hidden name="reqShz" />
 	<s:hidden name="reqChl" />
 	<s:hidden name="paramReqId" />
@@ -219,6 +229,16 @@
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
 	<tr><td>
+
+		<table class="comPortalTitle">
+			<tbody>
+				<tr>
+					<td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+					<td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+					<td class="comPortalTitleRight"><nobr></nobr></td>
+				</tr>
+			</tbody>
+		</table>
 
 		<!-- エラー表示部  開始 -->
 		<center>
@@ -502,5 +522,8 @@
 	<%-- ポータルボディー 終了 --%>
   </s:form>
 <%-- input用フォーム 終了 --%>
+<jsp:include page="common/jkrBottom.jsp" flush="true" />
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
 </body>
 </html>

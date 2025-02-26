@@ -113,6 +113,7 @@ public class NF013Service extends BaseService {
     		indto.setReqBrCd(loginInfo.getBrCode());
     		indto.setReqDistCd(loginInfo.getDistCode());
 
+    		indto.setReqId("");
     		indto.setReqYmdhms("");
     		indto.setReqStsNm("");
         } else if ("1".equals(indto.getDisplayKbn())) {
@@ -449,7 +450,9 @@ public class NF013Service extends BaseService {
         	}
         	tRdmHcoReqInsData.setInsFormalName(insFormalName);
 
-        	tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
+        	if(indto.getDelKbn() != null && !indto.getDelKbn().isEmpty()) {
+        		tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
+        	}
 
         	if(!indto.getDelKbn().isEmpty() && !"0".equals(indto.getDelKbn())) {
         		tRdmHcoReqInsData.setDelReason(indto.getDelReason());
@@ -502,7 +505,7 @@ public class NF013Service extends BaseService {
         	}
         	tRdmHcoReqUpdData.setInsFormalName(insFormalName);
 
-        	if(!indto.getDelKbn().isEmpty()) {
+        	if(indto.getDelKbn() != null && !indto.getDelKbn().isEmpty()) {
         		tRdmHcoReqUpdData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
         	}
 

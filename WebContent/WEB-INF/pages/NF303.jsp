@@ -1172,7 +1172,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insAddrDt" /></font></td>
 	</tr>
 	<tr>
-	   	<td class="comFormTableItem">武田市区群名</td>
+	   	<td class="comFormTableItem">武田市区郡名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preTkCityName" /></td>
 	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="tkCityName" /></font></td>
 	</tr>

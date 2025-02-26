@@ -585,7 +585,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
   	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
   	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>武田市区群</nobr></td>
+	    <td class="comFormTableItem"><nobr>武田市区郡</nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
 	    		<s:label key="tkCityName"/>

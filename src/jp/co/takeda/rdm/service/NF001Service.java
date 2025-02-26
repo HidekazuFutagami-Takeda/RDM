@@ -297,10 +297,6 @@ public class NF001Service extends BaseService {
         // 件数取得
         List<SelectNF001MainDataEntity> selectNF001MainDataCntList  = dao.select(selectNF001MainDataCntEntity);
 
-        indto.initPageInfo(indto.getPageCntCur(), selectNF001MainDataCntList.get(0).getCnt(), selectParamNF001List.get(1).getValue());
-        selectNF001MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
-        selectNF001MainDataEntity.setInLimit(selectParamNF001List.get(1).getValue());
-
         //1000件以上の場合のエラー
         if (selectNF001MainDataCntList.get(0).getCnt() > selectParamNF001List.get(0).getValue()) {
         	  // 検索結果が表示上限を超えています。検索条件を絞って再検索してください。。
@@ -309,6 +305,10 @@ public class NF001Service extends BaseService {
         	  indto.setMsgStr(tmpMsgStr);
         	  return outdto;
         }
+
+        indto.initPageInfo(indto.getPageCntCur(), selectNF001MainDataCntList.get(0).getCnt(), selectParamNF001List.get(1).getValue());
+        selectNF001MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
+        selectNF001MainDataEntity.setInLimit(selectParamNF001List.get(1).getValue());
 
         // 機能定義取得
         String newValue = "0";

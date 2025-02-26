@@ -18,17 +18,17 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.NF014DTO;
-import jp.co.takeda.rdm.service.NF014Service;
+import jp.co.takeda.rdm.dto.NF101DTO;
+import jp.co.takeda.rdm.service.NF101Service;
 import jp.co.takeda.rdm.util.AppConstant;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nF014Action")
+@Named("nF101Action")
 @Scope("request")
-public class NF014Action extends BaseAction<NF014DTO> {
+public class NF101Action extends BaseAction<NF101DTO> {
 
     /**
      * シリアルバージョンID
@@ -41,7 +41,7 @@ public class NF014Action extends BaseAction<NF014DTO> {
      * @generated
      */
     @Inject
-    private NF014Service NF014Service;
+    private NF101Service NF101Service;
     // START UOC
     // END UOC
 
@@ -49,8 +49,8 @@ public class NF014Action extends BaseAction<NF014DTO> {
      * コンストラクタ
      * @generated
      */
-    public NF014Action() {
-        dto = new NF014DTO();
+    public NF101Action() {
+        dto = new NF101DTO();
     }
 
     /**
@@ -96,7 +96,7 @@ public class NF014Action extends BaseAction<NF014DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = NF014Service.init(dto);
+        BaseDTO outdto = NF101Service.init(dto);
         return initNext(outdto);
     }
 
@@ -112,13 +112,15 @@ public class NF014Action extends BaseAction<NF014DTO> {
         dto.setPageCntCur(1);
 
         // 画面タイトル制御処理
-        String title = "NF014_施設復活";
+        String title = "NF101_施設来期情報更新";
 
         dto.setTitle(title);
 
         //モック
-//        dto.setInsNo("101030001");
-//        dto.setReqId("250220-000333");
+        //dto.setInsNo("101172360");
+        //dto.setInsNo("101108002"); // 施設種別06
+        dto.setInsNo("623000112"); // 施設種別08
+        dto.setReqId("250220-000333");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
@@ -126,27 +128,27 @@ public class NF014Action extends BaseAction<NF014DTO> {
         dto.setPreScreenId(preScreenId);
 
         //モック
-//        String kbn = "1";
-//        if(kbn.equals("0")) {
-//	        preScreenId = "NF001";
-//	        dto.setLoginJgiNo("8830034");
-//	        dto.setReqId("");
-//        } else {
-//	        preScreenId = "NC011";
-//	        dto.setInsNo("");
-//	        dto.setLoginJgiNo("8830034");
-//	        dto.setLoginJgiNo("0");
-//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-//        }
+        String kbn = "0";
+        if(kbn.equals("0")) {
+	        preScreenId = "NF001";
+	        dto.setLoginJgiNo("8830034");
+	        dto.setReqId("");
+        } else {
+	        preScreenId = "NC011";
+	        dto.setInsNo("");
+	        dto.setLoginJgiNo("8830034");
+	        dto.setLoginJgiNo("0");
+	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+        }
 
-        // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
+        // 遷移パターン　1:施設固定コードから作成、2：申請データあり
         // 施設固定コード　ありなしで分岐
         // NF001_施設検索
-        if ("NF001".equals(preScreenId)) {
+        if ("NF001".equals(preScreenId) || "NF102".equals(preScreenId)) {
         	if (insNo != null && insNo.length() > 0) {
         		// 施設固定コードで初期データ作成
-        		dto.setDisplayKbn("0");
+        		dto.setDisplayKbn("1");
         	} else { //遷移エラー
         	}
         }
@@ -155,7 +157,7 @@ public class NF014Action extends BaseAction<NF014DTO> {
         if ("NC011".equals(preScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
-        		dto.setDisplayKbn("1");
+        		dto.setDisplayKbn("2");
         	} else { //遷移エラー
         	}
         }
@@ -172,7 +174,7 @@ public class NF014Action extends BaseAction<NF014DTO> {
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（リンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NF014_SEARCHKEY, outdto);
+        sessionMap.put(AppConstant.SESKEY_NF101_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -186,7 +188,7 @@ public class NF014Action extends BaseAction<NF014DTO> {
     public String register() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = NF014Service.register(dto);
+        BaseDTO outdto = NF101Service.register(dto);
         return registerNext(outdto);
     }
 
@@ -205,19 +207,8 @@ public class NF014Action extends BaseAction<NF014DTO> {
      * @customizable
      */
     protected String registerNext(BaseDTO outdto) throws Exception {
-        // START UOC
-//        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !"exception".equals(outdto.getForward())){
-//            setJumpInfo(dto.getMsgId());
-//            outdto.setForward(dto.getForward());
-//        }
-        // END UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
 		// 本画面を再表示
-		outdto.setForward("NF014");
+		outdto.setForward("NF101");
 
         setNextDTO(outdto);
         return outdto.getForward();
@@ -231,8 +222,8 @@ public class NF014Action extends BaseAction<NF014DTO> {
     public String cancel() throws Exception {
         cancelSetup();
         // F層呼び出し
-        BaseDTO outdto = NF014Service.cancel(dto);
-        outdto = NF014Service.init(dto);
+        BaseDTO outdto = NF101Service.cancel(dto);
+        outdto = NF101Service.init(dto);
         return cancelNext(outdto);
     }
 
@@ -269,8 +260,8 @@ public class NF014Action extends BaseAction<NF014DTO> {
     public String shnComp() throws Exception {
         registerSetup();
         // F層呼び出し
-        BaseDTO outdto = NF014Service.shnComp(dto);
-        outdto = NF014Service.init(dto);
+        BaseDTO outdto = NF101Service.shnComp(dto);
+        outdto = NF101Service.init(dto);
         return shnCompNext(outdto);
     }
 
@@ -289,11 +280,7 @@ public class NF014Action extends BaseAction<NF014DTO> {
      * @customizable
      */
     protected String shnCompNext(BaseDTO outdto) throws Exception {
-    	// START UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
-    	// END UOC
-    	outdto.setForward("NF014");
+    	outdto.setForward("NF101");
         setNextDTO(outdto);
         return outdto.getForward();
     }

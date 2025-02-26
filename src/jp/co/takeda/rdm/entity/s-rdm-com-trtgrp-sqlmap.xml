@@ -25,6 +25,7 @@
 		WHERE 1=1
 		AND CAL.TODAY = '1'
 		<if test="trtCd != null">AND TRTG.TRT_CD = #{trtCd}</if>
+		ORDER BY TRTG.TRT_CD
     </select>
 
 </mapper>

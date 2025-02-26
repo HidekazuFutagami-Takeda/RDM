@@ -259,6 +259,19 @@
         <action name="NF014ShnComp" class="nF014Action" method="shnComp">
         	<result name="NF014">/WEB-INF/pages/NF014.jsp</result>
         </action>
+        <action name="NF101Init" class="nF101Action" method="init">
+            <result name="NF101">/WEB-INF/pages/NF101.jsp</result>
+        </action>
+        <action name="NF101Cancel" class="nF101Action" method="cancel">
+            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="NF101Register" class="nF101Action" method="register">
+        	<result name="NF101">/WEB-INF/pages/NF101.jsp</result>
+        </action>
+        <action name="NF101ShnComp" class="nF101Action" method="shnComp">
+        	<result name="NF101">/WEB-INF/pages/NF101.jsp</result>
+        </action>
         <action name="NF211Init" class="nF211Action" method="init">
             <result name="NF211">/WEB-INF/pages/NF211.jsp</result>
         </action>

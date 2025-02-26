@@ -689,14 +689,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		document.fm1.bedCnt05.readOnly = false;
     		document.fm1.bedCnt06.readOnly = false;
     		document.fm1.bedCnt07.readOnly = false;
-    		document.fm1.bedCntBase.style = "";
-    		document.fm1.bedCnt01.style = "";
-    		document.fm1.bedCnt02.style = "";
-    		document.fm1.bedCnt03.style = "";
-    		document.fm1.bedCnt04.style = "";
-    		document.fm1.bedCnt05.style = "";
-    		document.fm1.bedCnt06.style = "";
-    		document.fm1.bedCnt07.style = "";
+    		document.fm1.bedCntBase.style = "text-align:right;";
+    		document.fm1.bedCnt01.style = "text-align:right;";
+    		document.fm1.bedCnt02.style = "text-align:right;";
+    		document.fm1.bedCnt03.style = "text-align:right;";
+    		document.fm1.bedCnt04.style = "text-align:right;";
+    		document.fm1.bedCnt05.style = "text-align:right;";
+    		document.fm1.bedCnt06.style = "text-align:right;";
+    		document.fm1.bedCnt07.style = "text-align:right;";
 
     	}else if(insType == "03" || insType == "06" || insType == "08"
     				|| insType == "09" || insType == "10"){
@@ -736,14 +736,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		document.fm1.bedCnt05.readOnly = true;
     		document.fm1.bedCnt06.readOnly = true;
     		document.fm1.bedCnt07.readOnly = true;
-    		document.fm1.bedCntBase.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt01.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt02.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt03.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt04.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt05.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt06.style = "background-color:#D4D0C8";
-    		document.fm1.bedCnt07.style = "background-color:#D4D0C8";
+    		document.fm1.bedCntBase.style = "background-color:#D4D0C8; text-align:right;";
+    		document.fm1.bedCnt01.style = "background-color:#D4D0C8; text-align:right;";
+    		document.fm1.bedCnt02.style = "background-color:#D4D0C8; text-align:right;";
+    		document.fm1.bedCnt03.style = "background-color:#D4D0C8; text-align:right;";
+    		document.fm1.bedCnt04.style = "background-color:#D4D0C8; text-align:right;";
+    		document.fm1.bedCnt05.style = "background-color:#D4D0C8; text-align:right;";
+    		document.fm1.bedCnt06.style = "background-color:#D4D0C8; text-align:right;";
+    		document.fm1.bedCnt07.style = "background-color:#D4D0C8; text-align:right;";
 
     		document.fm1.bedCntBase.value = "0";
     		document.fm1.bedCnt01.value = "0";
@@ -1760,7 +1760,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
   	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
   	    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	    <td class="comFormTableItem"><nobr>武田市区群<font color="red" size="3">*</font></nobr></td>
+	    <td class="comFormTableItem"><nobr>武田市区郡<font color="red" size="3">*</font></nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
 	    		<s:textfield name="tkCityName" size="15" style="background-color:#D4D0C8" readonly="true" />
@@ -1820,10 +1820,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    <td class="comFormTableItem">
 	    	<nobr>
 	    		<s:if test='%{editApprFlg == "1"}'>
-		    		<s:textarea name="insUrl" maxlength="150" />
+		    		<s:textarea name="insUrl" maxlength="150" style="resize:none" />
 		    	</s:if>
 		    	<s:else>
-		    		<s:textarea name="insUrl" maxlength="150" readonly="true" />
+		    		<s:textarea name="insUrl" maxlength="150" readonly="true" style="resize:none" />
 		    	</s:else>
 	    		<input class="comButton" type="button"name="button2" value="表示" onClick="JavaScript:window.open(document.fm1.insUrl.value, '_blank');return false;" />
     		</nobr>
@@ -1941,37 +1941,37 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
 	      <td class="comFormTableItem"><nobr>病床数情報</nobr></td>
 	      <td class="comFormTableItem"><nobr>基準<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCntBase" size="4" maxlength="4" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCntBase" size="4" maxlength="4" style="text-align:right;" /></nobr></td>
 	      <td class="comFormTableItem"><nobr>結核<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt04" size="4" maxlength="4" onchange='javascript:calcBedCnt();' /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt04" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>一般<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt01" size="4" maxlength="4" onchange='javascript:calcBedCnt();' /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt01" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
 	      <td class="comFormTableItem"><nobr>感染症<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt05" size="4" maxlength="4" onchange='javascript:calcBedCnt();' /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt05" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>精神<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt03" size="4" maxlength="4" onchange='javascript:calcBedCnt();' /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt03" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
 	      <td class="comFormTableItem"><nobr>療養<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt07" size="4" maxlength="4" onchange='javascript:calcBedCnt();' /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt07" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>医療療養<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt02" size="4" maxlength="4" onchange='javascript:calcBedCnt();' /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt02" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
 	      <td class="comFormTableItem"><nobr>介護療養<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt06" size="4" maxlength="4" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt06" size="4" maxlength="4" style="text-align:right;" /></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>ベッド数計</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedsTot" size="4" maxlength="4" style="background-color:#D4D0C8" readonly="true" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedsTot" size="4" maxlength="4" style="background-color:#D4D0C8; text-align:right;" readonly="true" /></nobr></td>
 	      <td class="comFormTableItem"><nobr>医療ベッド数計</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="medBedsTot" size="4" maxlength="4" style="background-color:#D4D0C8" readonly="true" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="medBedsTot" size="4" maxlength="4" style="background-color:#D4D0C8; text-align:right;" readonly="true" /></nobr></td>
       </tr>
       <tr id="entcapaNumTr">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

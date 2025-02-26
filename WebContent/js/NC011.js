@@ -124,8 +124,13 @@ function gotoNext(screenId,functionId){
 	  fm1.functionId.value=functionId;
 	  comSubmitForAnyWarp(fm1);
 	}
-function NC011Seni(reqType) {
+function NC011Seni(reqType,reqId) {
 	if (!jkrDestructChack()) return false;
+
+	var reqIdcell = fm1.reqId.value;
+
+	fm1.reqId.value=reqId;
+
 	  //申請区分遷移先設定
 //	if(reqType == "01"){
 //		alert("NF011_施設新規作成に遷移します")
@@ -265,6 +270,7 @@ function NC011Seni(reqType) {
 		alert("ND013_勤務先情報更新に遷移します")
 		gotoNext('ND014','Init');
 	}
+	fm1.reqId.value=reqIdcell;
 }
 
 

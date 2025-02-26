@@ -167,6 +167,8 @@ public class NM011DTO extends BaseDTO implements Serializable {
      */
     private String winVarName;
 
+    private String title;
+
 	/**
      * 呼び出し元のClear処理メソッド名
      * @generated
@@ -480,6 +482,19 @@ public class NM011DTO extends BaseDTO implements Serializable {
 		this.boolKnb = boolKnb;
 	}
 
+	/**
+	 * NM011DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getPreScreenId() {
 		return preScreenId;
 	}
@@ -1568,4 +1583,5 @@ public class NM011DTO extends BaseDTO implements Serializable {
 	public void setPageFlag(String pageFlag) {
 		this.pageFlag = pageFlag;
 	}
+
 }

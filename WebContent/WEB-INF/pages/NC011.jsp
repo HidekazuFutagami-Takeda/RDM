@@ -218,8 +218,6 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 <%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
 
-
-
 	<table class="comPortalBody" style="align:cener;">
 		<tbody>
       	<tr align="center">
@@ -602,9 +600,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
 					<tr>
 						 <th class="comTableItem">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />');return false;">
+						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />','<s:property  value="reqId" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
+						            <s:hidden  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
 						          </acronym>
 			              </a>
 				  		 </th>

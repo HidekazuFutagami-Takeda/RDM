@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_rdm_hco_nxt_req">
+    <resultMap id="nF101MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="SHN_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_TYPE" property="insType"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
+        <result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
+        <result column="PHARM_TYPE" property="pharmType"/>
+        <result column="INS_RANK" property="insRank"/>
+        <result column="REG_VIS_TYPE" property="regVisType"/>
+        <result column="IMP_HOS_TYPE" property="impHosType"/>
+        <result column="HO_INS_TYPE" property="hoInsType"/>
+        <result column="MANAGE_CD" property="manageCd"/>
+        <result column="VAC_INS_TYPE" property="vacInsType"/>
+        <result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+        <result column="ULT_PHARM_TYPE" property="shisetsuKbn"/>
+        <result column="ULT_MANAGE_CD" property="keieitaiNm"/>
+        <result column="NEXT_PHARM_TYPE" property="nextPharmType"/>
+        <result column="NEXT_INS_RANK" property="nextInsRank"/>
+        <result column="NEXT_REG_VIS_TYPE" property="nextRegVisType"/>
+        <result column="NEXT_IMP_HOS_TYPE" property="nextImpHosType"/>
+        <result column="NEXT_HO_INS_TYPE" property="nextHoInsType"/>
+        <result column="NEXT_MANAGE_CD" property="nextManageCd"/>
+        <result column="NEXT_VAC_INS_TYPE" property="nextVacInsType"/>
+        <result column="NEXT_VAC_VISIT_TYPE" property="nextVacVisitType"/>
+        <result column="BEDCNT_BASE" property="bedCntBase"/>
+        <result column="BEDCNT04" property="bedCnt04"/>
+        <result column="BEDCNT01" property="bedCnt01"/>
+        <result column="BEDCNT05" property="bedCnt05"/>
+        <result column="BEDCNT03" property="bedCnt03"/>
+        <result column="BEDCNT07" property="bedCnt07"/>
+        <result column="BEDCNT02" property="bedCnt02"/>
+        <result column="BEDCNT06" property="bedCnt06"/>
+        <result column="BEDS_TOT" property="bedsTot"/>
+        <result column="MED_BEDS_TOT" property="medBedsTot"/>
+        <result column="ULT_BEDCNT_BASE" property="ultBedCntBase"/>
+        <result column="ULT_BEDCNT04" property="ultBedCnt04"/>
+        <result column="ULT_BEDCNT01" property="ultBedCnt01"/>
+        <result column="ULT_BEDCNT05" property="ultBedCnt05"/>
+        <result column="ULT_BEDCNT03" property="ultBedCnt03"/>
+        <result column="ULT_BEDCNT07" property="ultBedCnt07"/>
+        <result column="NEXT_BEDCNT04" property="nextBedCnt04"/>
+        <result column="NEXT_BEDCNT01" property="nextBedCnt01"/>
+        <result column="NEXT_BEDCNT05" property="nextBedCnt05"/>
+        <result column="NEXT_BEDCNT03" property="nextBedCnt03"/>
+        <result column="NEXT_BEDCNT07" property="nextBedCnt07"/>
+        <result column="NEXT_BEDCNT02" property="nextBedCnt02"/>
+        <result column="NEXT_BEDCNT06" property="nextBedCnt06"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+        <result column="PHARM_TYPE_FLG" property="pharmTypeFlg"/>
+        <result column="INS_RANK_FLG" property="insRankFlg"/>
+        <result column="REG_VIS_TYPE_FLG" property="regVisTypeFlg"/>
+        <result column="IMP_HOS_TYPE_FLG" property="impHosTypeFlg"/>
+        <result column="MANAGE_CD_FLG" property="manageCdFlg"/>
+        <result column="VAC_INS_TYPE_FLG" property="vacInsTypeFlg"/>
+        <result column="VAC_VISIT_TYPE_FLG" property="vacVisitTypeFlg"/>
+        <result column="BEDCNT_BASE_FLG" property="bedCntBaseFlg"/>
+        <result column="BEDCNT04_FLG" property="bedCnt04Flg"/>
+        <result column="BEDCNT01_FLG" property="bedCnt01Flg"/>
+        <result column="BEDCNT05_FLG" property="bedCnt05Flg"/>
+        <result column="BEDCNT03_FLG" property="bedCnt03Flg"/>
+        <result column="BEDCNT07_FLG" property="bedCnt07Flg"/>
+        <result column="BEDCNT02_FLG" property="bedCnt02Flg"/>
+        <result column="BEDCNT06_FLG" property="bedCnt06Flg"/>
+        <result column="BEDS_TOT_FLG" property="bedsTotFlg"/>
+        <result column="MED_BEDS_TOT_FLG" property="medBedsTotFlg"/>
+    </resultMap>
+    <select id="selectNF101INSData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity" resultMap="nF101MainDataResultMap">
+		WITH COLOR AS (
+		SELECT
+		  INS_NO
+		, CASE WHEN PHARM_TYPE IS NULL THEN '0' ELSE '1' END AS PHARM_TYPE_FLG
+		, CASE WHEN INS_RANK IS NULL THEN '0' ELSE '1' END AS INS_RANK_FLG
+		, CASE WHEN REG_VIS_TYPE IS NULL THEN '0' ELSE '1' END AS REG_VIS_TYPE_FLG
+		, CASE WHEN IMP_HOS_TYPE IS NULL THEN '0' ELSE '1' END AS IMP_HOS_TYPE_FLG
+		, CASE WHEN HO_INS_TYPE IS NULL THEN '0' ELSE '1' END AS HO_INS_TYPE_FLG
+		, CASE WHEN MANAGE_CD IS NULL THEN '0' ELSE '1' END AS MANAGE_CD_FLG
+		, CASE WHEN VAC_INS_TYPE IS NULL THEN '0' ELSE '1' END AS VAC_INS_TYPE_FLG
+		, CASE WHEN VAC_VISIT_TYPE IS NULL THEN '0' ELSE '1' END AS VAC_VISIT_TYPE_FLG
+		, CASE WHEN BEDCNT_BASE IS NULL THEN '0' ELSE '1' END AS BEDCNT_BASE_FLG
+		, CASE WHEN BEDCNT04 IS NULL THEN '0' ELSE '1' END AS BEDCNT04_FLG
+		, CASE WHEN BEDCNT01 IS NULL THEN '0' ELSE '1' END AS BEDCNT01_FLG
+		, CASE WHEN BEDCNT05 IS NULL THEN '0' ELSE '1' END AS BEDCNT05_FLG
+		, CASE WHEN BEDCNT03 IS NULL THEN '0' ELSE '1' END AS BEDCNT03_FLG
+		, CASE WHEN BEDCNT07 IS NULL THEN '0' ELSE '1' END AS BEDCNT07_FLG
+		, CASE WHEN BEDCNT02 IS NULL THEN '0' ELSE '1' END AS BEDCNT02_FLG
+		, CASE WHEN BEDCNT06 IS NULL THEN '0' ELSE '1' END AS BEDCNT06_FLG
+		, CASE WHEN BEDS_TOT IS NULL THEN '0' ELSE '1' END AS BEDS_TOT_FLG
+		, CASE WHEN MED_BEDS_TOT IS NULL THEN '0' ELSE '1' END AS MED_BEDS_TOT_FLG
+		FROM(
+			SELECT
+			  HCO.INS_NO
+			, MAX(HCO.PHARM_TYPE) AS PHARM_TYPE
+			, MAX(HCO.INS_RANK) AS INS_RANK
+			, MAX(HCO.REG_VIS_TYPE) AS REG_VIS_TYPE
+			, MAX(HCO.IMP_HOS_TYPE) AS IMP_HOS_TYPE
+			, MAX(HCO.HO_INS_TYPE) AS HO_INS_TYPE
+			, MAX(HCO.MANAGE_CD) AS MANAGE_CD
+			, MAX(HCO.VAC_INS_TYPE) AS VAC_INS_TYPE
+			, MAX(HCO.VAC_VISIT_TYPE) AS VAC_VISIT_TYPE
+			, MAX(HCO.BEDCNT_BASE) AS BEDCNT_BASE
+			, MAX(HCO.BEDCNT04) AS BEDCNT04
+			, MAX(HCO.BEDCNT01) AS BEDCNT01
+			, MAX(HCO.BEDCNT05) AS BEDCNT05
+			, MAX(HCO.BEDCNT03) AS BEDCNT03
+			, MAX(HCO.BEDCNT07) AS BEDCNT07
+			, MAX(HCO.BEDCNT02) AS BEDCNT02
+			, MAX(HCO.BEDCNT06) AS BEDCNT06
+			, MAX(HCO.BEDS_TOT) AS BEDS_TOT
+			, MAX(HCO.MED_BEDS_TOT) AS MED_BEDS_TOT
+			FROM
+			T_RDM_REQ_KNR KNR -- 申請管理
+			LEFT JOIN
+			T_RDM_HCO_NXT_REQ HCO -- 施設_来期用_申請管理
+			ON 1=1
+			AND KNR.REQ_ID = HCO.REQ_ID
+			WHERE 1=1
+			AND KNR.INS_NO = #{inInsNo}
+			AND KNR.REQ_TYPE = '21'
+			AND KNR.REQ_STS IN ('03', '13', '04', '14')
+			GROUP BY
+			HCO.INS_NO
+			)
+		)
+
+		SELECT
+		  MST.INS_NO -- 施設_基本情報.施設固定コード
+		, MST.INS_SBT AS INS_TYPE -- 施設_基本情報.施設種別
+		, MST.INS_ABBR_NAME -- 施設_基本情報.施設略式漢字名
+		, MST.ULT_INS_NO -- 施設_基本情報.ULT施設コード
+		, MDB.SHISETSU_NM_RYAKU -- ULT_MDB施設マスタ.施設名略名
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE -- 施設_基本情報.施設区分
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK -- 施設_基本情報.階級区分
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE -- 施設_基本情報.定訪先区分
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE -- 施設_基本情報.重点病院区分
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE -- 施設_基本情報.対象区分
+		, KEIEITAI.KEIEITAI_KJ AS MANAGE_CD -- 施設_経営主体マスタ.経営主体
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE -- 施設_基本情報.ワクチン対象区分
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE -- 施設_基本情報.ワクチン定訪先区分
+		, CDM_ULTPHARMTYPE.VALUE1_KANJ AS ULT_PHARM_TYPE -- ULT_MDB施設マスタ.施設区分
+		, ULT_KEIEITAI.KEIEITAI_KJ AS ULT_MANAGE_CD -- 施設_経営主体マスタ.経営主体
+		, VHCO.PHARM_TYPE AS NEXT_PHARM_TYPE -- 施設_来期用_申請管理.施設区分
+		, VHCO.INS_RANK AS NEXT_INS_RANK -- 施設_来期用_申請管理.階級区分
+		, VHCO.REG_VIS_TYPE AS NEXT_REG_VIS_TYPE -- 施設_来期用_申請管理.定訪先区分
+		, VHCO.IMP_HOS_TYPE AS NEXT_IMP_HOS_TYPE -- 施設_来期用_申請管理.重点病院区分
+		, VHCO.HO_INS_TYPE AS NEXT_HO_INS_TYPE -- 施設_来期用_申請管理.対象区分
+		, VHCO.MANAGE_CD AS NEXT_MANAGE_CD -- 施設_来期用_申請管理.経営主体コード
+		, VHCO.VAC_INS_TYPE AS NEXT_VAC_INS_TYPE -- 施設_来期用_申請管理.ワクチン対象区分
+		, VHCO.VAC_VISIT_TYPE AS NEXT_VAC_VISIT_TYPE -- 施設_来期用_申請管理.ワクチン定訪先区分
+		, MST.BEDCNT_BASE
+		, BEDCNT.BEDCNT04
+		, BEDCNT.BEDCNT01
+		, BEDCNT.BEDCNT05
+		, BEDCNT.BEDCNT03
+		, BEDCNT.BEDCNT07
+		, BEDCNT.BEDCNT02
+		, BEDCNT.BEDCNT06
+		, MST.BEDS_TOT
+		, MST.MED_BEDS_TOT
+		, MDB.KYOKABYOSHOSU_SUM	AS ULT_BEDCNT_BASE	-- ULT_MDB施設マスタ.許可病床数合計
+		, MDB.KYOKABYOSHOSU_KEKKAKU AS ULT_BEDCNT04	-- ULT_MDB施設マスタ.許可病床数結核
+		, MDB.KYOKABYOSHOSU_IPPAN AS ULT_BEDCNT01	-- ULT_MDB施設マスタ.許可病床数一般病床
+		, MDB.KYOKABYOSHOSU_KANSEN AS ULT_BEDCNT05	-- ULT_MDB施設マスタ.許可病床数感染症
+		, MDB.KYOKABYOSHOSU_SEISHIN AS ULT_BEDCNT03	-- ULT_MDB施設マスタ.許可病床数精神
+		, MDB.KYOKABYOSHOSU_RYOYO AS ULT_BEDCNT07	-- ULT_MDB施設マスタ.許可病床数療養病床
+		, VHCO.BEDCNT04 AS NEXT_BEDCNT04
+		, VHCO.BEDCNT01 AS NEXT_BEDCNT01
+		, VHCO.BEDCNT05 AS NEXT_BEDCNT05
+		, VHCO.BEDCNT03 AS NEXT_BEDCNT03
+		, VHCO.BEDCNT07 AS NEXT_BEDCNT07
+		, VHCO.BEDCNT02 AS NEXT_BEDCNT02
+		, VHCO.BEDCNT06 AS NEXT_BEDCNT06
+		, COLOR.PHARM_TYPE_FLG
+		, COLOR.INS_RANK_FLG
+		, COLOR.REG_VIS_TYPE_FLG
+		, COLOR.IMP_HOS_TYPE_FLG
+		, COLOR.MANAGE_CD_FLG
+		, COLOR.VAC_INS_TYPE_FLG
+		, COLOR.VAC_VISIT_TYPE_FLG
+		, COLOR.BEDCNT_BASE_FLG
+		, COLOR.BEDCNT04_FLG
+		, COLOR.BEDCNT01_FLG
+		, COLOR.BEDCNT05_FLG
+		, COLOR.BEDCNT03_FLG
+		, COLOR.BEDCNT07_FLG
+		, COLOR.BEDCNT02_FLG
+		, COLOR.BEDCNT06_FLG
+		, COLOR.BEDS_TOT_FLG
+		, COLOR.MED_BEDS_TOT_FLG
+		FROM
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		LEFT JOIN
+		M_RDM_HCO_VAC VAC -- 施設_ワクチン情報
+		ON 1=1
+		AND VAC.INS_NO = MST.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS BEDCNT01
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS BEDCNT02
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS BEDCNT03
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS BEDCNT04
+		  , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS BEDCNT05
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS BEDCNT06
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS BEDCNT07
+		FROM
+		  M_RDM_HCO_BEDCNT
+		WHERE
+		  RELEV_TYPE = '008'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO
+		) BEDCNT
+		ON 1=1
+		AND BEDCNT.INS_NO = MST.INS_NO
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST MDB -- ULT_MDB施設マスタ
+		ON 1=1
+		AND MDB.DCF_SHISETSU_CD = MST.ULT_INS_NO
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI -- 経営体紐付けマスタ
+		ON 1=1
+		AND KEIEI.KEIEITAI_CD = MDB.KEIEITAI_CD
+		LEFT JOIN
+		COLOR -- サブクエリ（カラー判定）
+		ON 1=1
+		AND COLOR.INS_NO = MST.INS_NO
+		LEFT JOIN
+		V_RDM_HCO_NXT_REQ_COL VHCO -- 施設_来期用_申請管理_集約ビュー
+		ON 1=1
+		AND VHCO.INS_NO = MST.INS_NO
+
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_PHARMTYPE.CODE_NAME = 'PHARM_TYPE'
+		AND CDM_PHARMTYPE.DEL_FLG = '0'
+		AND CDM_PHARMTYPE.VALUE1 = MST.PHARM_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_INSRANK -- コード情報
+		ON 1=1
+		AND CDM_INSRANK.CODE_NAME = 'INS_RANK'
+		AND CDM_INSRANK.DEL_FLG = '0'
+		AND CDM_INSRANK.VALUE1 = MST.INS_RANK
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REGVISTYPE -- コード情報
+		ON 1=1
+		AND CDM_REGVISTYPE.CODE_NAME = 'REG_VIS_TYPE'
+		AND CDM_REGVISTYPE.DEL_FLG = '0'
+		AND CDM_REGVISTYPE.VALUE1 = MST.REG_VIS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_IMPHOSTYPE -- コード情報
+		ON 1=1
+		AND CDM_IMPHOSTYPE.CODE_NAME = 'IMP_HOS_TYPE'
+		AND CDM_IMPHOSTYPE.DEL_FLG = '0'
+		AND CDM_IMPHOSTYPE.VALUE1 = MST.IMP_HOS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_HOINSTYPE -- コード情報
+		ON 1=1
+		AND CDM_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
+		AND CDM_HOINSTYPE.DEL_FLG = '0'
+		AND CDM_HOINSTYPE.VALUE1 = MST.HO_INS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_VACINSTYPE -- コード情報
+		ON 1=1
+		AND CDM_VACINSTYPE.CODE_NAME = 'VAC_INS_TYPE'
+		AND CDM_VACINSTYPE.DEL_FLG = '0'
+		AND CDM_VACINSTYPE.VALUE1 = VAC.VAC_INS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_VACVISITTYPE -- コード情報
+		ON 1=1
+		AND CDM_VACVISITTYPE.CODE_NAME = 'VAC_VISIT_TYPE'
+		AND CDM_VACVISITTYPE.DEL_FLG = '0'
+		AND CDM_VACVISITTYPE.VALUE1 = VAC.VAC_VISIT_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_ULTPHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_ULTPHARMTYPE.CODE_NAME = 'ULT_PHARM_TYPE'
+		AND CDM_ULTPHARMTYPE.DEL_FLG = '0'
+		AND CDM_ULTPHARMTYPE.VALUE1 = MDB.SHISETSU_KBN
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEITAI -- 施設_経営主体マスタ
+		ON 1=1
+		AND KEIEITAI.SET_DT_CD = MST.MANAGE_CD
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI ULT_KEIEITAI -- 施設_経営主体マスタ
+		ON 1=1
+		AND ULT_KEIEITAI.SET_DT_CD = KEIEI.SET_DT_CD
+		WHERE 1=1
+      	AND MST.INS_NO = #{inInsNo}
+    </select>
+    <select id="selectNF101REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity" resultMap="nF101MainDataResultMap">
+		WITH COLOR AS (
+		SELECT
+		  INS_NO
+		, CASE WHEN PHARM_TYPE IS NULL THEN '0' ELSE '1' END AS PHARM_TYPE_FLG
+		, CASE WHEN INS_RANK IS NULL THEN '0' ELSE '1' END AS INS_RANK_FLG
+		, CASE WHEN REG_VIS_TYPE IS NULL THEN '0' ELSE '1' END AS REG_VIS_TYPE_FLG
+		, CASE WHEN IMP_HOS_TYPE IS NULL THEN '0' ELSE '1' END AS IMP_HOS_TYPE_FLG
+		, CASE WHEN HO_INS_TYPE IS NULL THEN '0' ELSE '1' END AS HO_INS_TYPE_FLG
+		, CASE WHEN MANAGE_CD IS NULL THEN '0' ELSE '1' END AS MANAGE_CD_FLG
+		, CASE WHEN VAC_INS_TYPE IS NULL THEN '0' ELSE '1' END AS VAC_INS_TYPE_FLG
+		, CASE WHEN VAC_VISIT_TYPE IS NULL THEN '0' ELSE '1' END AS VAC_VISIT_TYPE_FLG
+		, CASE WHEN BEDCNT_BASE IS NULL THEN '0' ELSE '1' END AS BEDCNT_BASE_FLG
+		, CASE WHEN BEDCNT04 IS NULL THEN '0' ELSE '1' END AS BEDCNT04_FLG
+		, CASE WHEN BEDCNT01 IS NULL THEN '0' ELSE '1' END AS BEDCNT01_FLG
+		, CASE WHEN BEDCNT05 IS NULL THEN '0' ELSE '1' END AS BEDCNT05_FLG
+		, CASE WHEN BEDCNT03 IS NULL THEN '0' ELSE '1' END AS BEDCNT03_FLG
+		, CASE WHEN BEDCNT07 IS NULL THEN '0' ELSE '1' END AS BEDCNT07_FLG
+		, CASE WHEN BEDCNT02 IS NULL THEN '0' ELSE '1' END AS BEDCNT02_FLG
+		, CASE WHEN BEDCNT06 IS NULL THEN '0' ELSE '1' END AS BEDCNT06_FLG
+		, CASE WHEN BEDS_TOT IS NULL THEN '0' ELSE '1' END AS BEDS_TOT_FLG
+		, CASE WHEN MED_BEDS_TOT IS NULL THEN '0' ELSE '1' END AS MED_BEDS_TOT_FLG
+		FROM(
+			SELECT
+			  HCO.INS_NO
+			, MAX(HCO.PHARM_TYPE) AS PHARM_TYPE
+			, MAX(HCO.INS_RANK) AS INS_RANK
+			, MAX(HCO.REG_VIS_TYPE) AS REG_VIS_TYPE
+			, MAX(HCO.IMP_HOS_TYPE) AS IMP_HOS_TYPE
+			, MAX(HCO.HO_INS_TYPE) AS HO_INS_TYPE
+			, MAX(HCO.MANAGE_CD) AS MANAGE_CD
+			, MAX(HCO.VAC_INS_TYPE) AS VAC_INS_TYPE
+			, MAX(HCO.VAC_VISIT_TYPE) AS VAC_VISIT_TYPE
+			, MAX(HCO.BEDCNT_BASE) AS BEDCNT_BASE
+			, MAX(HCO.BEDCNT04) AS BEDCNT04
+			, MAX(HCO.BEDCNT01) AS BEDCNT01
+			, MAX(HCO.BEDCNT05) AS BEDCNT05
+			, MAX(HCO.BEDCNT03) AS BEDCNT03
+			, MAX(HCO.BEDCNT07) AS BEDCNT07
+			, MAX(HCO.BEDCNT02) AS BEDCNT02
+			, MAX(HCO.BEDCNT06) AS BEDCNT06
+			, MAX(HCO.BEDS_TOT) AS BEDS_TOT
+			, MAX(HCO.MED_BEDS_TOT) AS MED_BEDS_TOT
+			FROM
+			T_RDM_REQ_KNR KNR -- 申請管理
+			LEFT JOIN
+			T_RDM_HCO_NXT_REQ HCO -- 施設_来期用_申請管理
+			ON 1=1
+			AND KNR.REQ_ID = HCO.REQ_ID
+			WHERE 1=1
+			AND KNR.INS_NO = #{inInsNo}
+			AND KNR.REQ_TYPE = '21'
+			AND KNR.REQ_STS IN ('03', '13', '04', '14')
+			GROUP BY
+			HCO.INS_NO
+			)
+		)
+
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, HCO.INS_NO -- 施設_申請管理.施設固定コード
+		, MST.INS_SBT AS INS_TYPE -- 施設_基本情報.施設種別
+		, MST.INS_ABBR_NAME -- 施設_基本情報.施設略式漢字名
+		, MST.ULT_INS_NO -- 施設_申請管理.ULT施設コード
+		, MDB.SHISETSU_NM_RYAKU -- ULT_MDB施設マスタ.施設名略名
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE -- 施設_基本情報.施設区分
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK -- 施設_基本情報.階級区分
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE -- 施設_基本情報.定訪先区分
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE -- 施設_基本情報.重点病院区分
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE -- 施設_基本情報.対象区分
+		, KEIEITAI.KEIEITAI_KJ AS MANAGE_CD -- 施設_経営主体マスタ.経営主体
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE -- 施設_基本情報.ワクチン対象区分
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE -- 施設_基本情報.ワクチン定訪先区分
+		, CDM_ULTPHARMTYPE.VALUE1_KANJ AS ULT_PHARM_TYPE -- ULT_MDB施設マスタ.施設区分
+		, ULT_KEIEITAI.KEIEITAI_KJ AS ULT_MANAGE_CD -- 施設_経営主体マスタ.経営主体
+		, HCO.PHARM_TYPE AS NEXT_PHARM_TYPE -- 施設_来期用_申請管理.施設区分
+		, HCO.INS_RANK AS NEXT_INS_RANK -- 施設_来期用_申請管理.階級区分
+		, HCO.REG_VIS_TYPE AS NEXT_REG_VIS_TYPE -- 施設_来期用_申請管理.定訪先区分
+		, HCO.IMP_HOS_TYPE AS NEXT_IMP_HOS_TYPE -- 施設_来期用_申請管理.重点病院区分
+		, HCO.HO_INS_TYPE AS NEXT_HO_INS_TYPE -- 施設_来期用_申請管理.対象区分
+		, HCO.MANAGE_CD AS NEXT_MANAGE_CD -- 施設_来期用_申請管理.経営主体コード
+		, HCO.VAC_INS_TYPE AS NEXT_VAC_INS_TYPE -- 施設_来期用_申請管理.ワクチン対象区分
+		, HCO.VAC_VISIT_TYPE AS NEXT_VAC_VISIT_TYPE -- 施設_来期用_申請管理.ワクチン定訪先区分
+		, MST.BEDCNT_BASE
+		, BEDCNT.BEDCNT04
+		, BEDCNT.BEDCNT01
+		, BEDCNT.BEDCNT05
+		, BEDCNT.BEDCNT03
+		, BEDCNT.BEDCNT07
+		, BEDCNT.BEDCNT02
+		, BEDCNT.BEDCNT06
+		, MST.BEDS_TOT
+		, MST.MED_BEDS_TOT
+		, MDB.KYOKABYOSHOSU_SUM	AS ULT_BEDCNT_BASE	-- ULT_MDB施設マスタ.許可病床数合計
+		, MDB.KYOKABYOSHOSU_KEKKAKU AS ULT_BEDCNT04	-- ULT_MDB施設マスタ.許可病床数結核
+		, MDB.KYOKABYOSHOSU_IPPAN AS ULT_BEDCNT01	-- ULT_MDB施設マスタ.許可病床数一般病床
+		, MDB.KYOKABYOSHOSU_KANSEN AS ULT_BEDCNT05	-- ULT_MDB施設マスタ.許可病床数感染症
+		, MDB.KYOKABYOSHOSU_SEISHIN AS ULT_BEDCNT03	-- ULT_MDB施設マスタ.許可病床数精神
+		, MDB.KYOKABYOSHOSU_RYOYO AS ULT_BEDCNT07	-- ULT_MDB施設マスタ.許可病床数療養病床
+		, HCO.BEDCNT04 AS NEXT_BEDCNT04
+		, HCO.BEDCNT01 AS NEXT_BEDCNT01
+		, HCO.BEDCNT05 AS NEXT_BEDCNT05
+		, HCO.BEDCNT03 AS NEXT_BEDCNT03
+		, HCO.BEDCNT07 AS NEXT_BEDCNT07
+		, HCO.BEDCNT02 AS NEXT_BEDCNT02
+		, HCO.BEDCNT06 AS NEXT_BEDCNT06
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
+		, COLOR.PHARM_TYPE_FLG
+		, COLOR.INS_RANK_FLG
+		, COLOR.REG_VIS_TYPE_FLG
+		, COLOR.IMP_HOS_TYPE_FLG
+		, COLOR.MANAGE_CD_FLG
+		, COLOR.VAC_INS_TYPE_FLG
+		, COLOR.VAC_VISIT_TYPE_FLG
+		, COLOR.BEDCNT_BASE_FLG
+		, COLOR.BEDCNT04_FLG
+		, COLOR.BEDCNT01_FLG
+		, COLOR.BEDCNT05_FLG
+		, COLOR.BEDCNT03_FLG
+		, COLOR.BEDCNT07_FLG
+		, COLOR.BEDCNT02_FLG
+		, COLOR.BEDCNT06_FLG
+		, COLOR.BEDS_TOT_FLG
+		, COLOR.MED_BEDS_TOT_FLG
+		FROM
+		T_RDM_REQ_KNR KNR ---申請管理
+		LEFT JOIN
+		T_RDM_HCO_NXT_REQ HCO -- 施設_来期用_申請管理
+		ON 1=1
+		AND KNR.REQ_ID = HCO.REQ_ID
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON 1=1
+		AND MST.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_VAC VAC -- 施設_ワクチン情報
+		ON 1=1
+		AND VAC.INS_NO = MST.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS BEDCNT01
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS BEDCNT02
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS BEDCNT03
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS BEDCNT04
+		  , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS BEDCNT05
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS BEDCNT06
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS BEDCNT07
+		FROM
+		  M_RDM_HCO_BEDCNT
+		WHERE
+		  RELEV_TYPE = '008'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO
+		) BEDCNT
+		ON 1=1
+		AND BEDCNT.INS_NO = MST.INS_NO
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST MDB -- ULT_MDB施設マスタ
+		ON 1=1
+		AND MDB.DCF_SHISETSU_CD = MST.ULT_INS_NO
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI -- 経営体紐付けマスタ
+		ON 1=1
+		AND KEIEI.KEIEITAI_CD = MDB.KEIEITAI_CD
+		LEFT JOIN
+		COLOR -- サブクエリ（カラー判定）
+		ON 1=1
+		AND COLOR.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		V_RDM_HCO_NXT_REQ_COL VHCO -- 施設_来期用_申請管理_集約ビュー
+		ON 1=1
+		AND VHCO.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_PHARMTYPE.CODE_NAME = 'PHARM_TYPE'
+		AND CDM_PHARMTYPE.DEL_FLG = '0'
+		AND CDM_PHARMTYPE.VALUE1 = MST.PHARM_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_INSRANK -- コード情報
+		ON 1=1
+		AND CDM_INSRANK.CODE_NAME = 'INS_RANK'
+		AND CDM_INSRANK.DEL_FLG = '0'
+		AND CDM_INSRANK.VALUE1 = MST.INS_RANK
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REGVISTYPE -- コード情報
+		ON 1=1
+		AND CDM_REGVISTYPE.CODE_NAME = 'REG_VIS_TYPE'
+		AND CDM_REGVISTYPE.DEL_FLG = '0'
+		AND CDM_REGVISTYPE.VALUE1 = MST.REG_VIS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_IMPHOSTYPE -- コード情報
+		ON 1=1
+		AND CDM_IMPHOSTYPE.CODE_NAME = 'IMP_HOS_TYPE'
+		AND CDM_IMPHOSTYPE.DEL_FLG = '0'
+		AND CDM_IMPHOSTYPE.VALUE1 = MST.IMP_HOS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_HOINSTYPE -- コード情報
+		ON 1=1
+		AND CDM_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
+		AND CDM_HOINSTYPE.DEL_FLG = '0'
+		AND CDM_HOINSTYPE.VALUE1 = MST.HO_INS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_VACINSTYPE -- コード情報
+		ON 1=1
+		AND CDM_VACINSTYPE.CODE_NAME = 'VAC_INS_TYPE'
+		AND CDM_VACINSTYPE.DEL_FLG = '0'
+		AND CDM_VACINSTYPE.VALUE1 = VAC.VAC_INS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_VACVISITTYPE -- コード情報
+		ON 1=1
+		AND CDM_VACVISITTYPE.CODE_NAME = 'VAC_VISIT_TYPE'
+		AND CDM_VACVISITTYPE.DEL_FLG = '0'
+		AND CDM_VACVISITTYPE.VALUE1 = VAC.VAC_VISIT_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_ULTPHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_ULTPHARMTYPE.CODE_NAME = 'ULT_PHARM_TYPE'
+		AND CDM_ULTPHARMTYPE.DEL_FLG = '0'
+		AND CDM_ULTPHARMTYPE.VALUE1 = MDB.SHISETSU_KBN
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEITAI -- 施設_経営主体マスタ
+		ON 1=1
+		AND KEIEITAI.SET_DT_CD = MST.MANAGE_CD
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI ULT_KEIEITAI -- 施設_経営主体マスタ
+		ON 1=1
+		AND ULT_KEIEITAI.SET_DT_CD = KEIEI.SET_DT_CD
+		WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+</mapper>

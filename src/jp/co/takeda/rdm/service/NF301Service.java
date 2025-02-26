@@ -120,8 +120,11 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "取引区分") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsOpenYear() == null || indto.getInsOpenYear().isEmpty()
-        		|| indto.getInsOpenMonth() == null || indto.getInsOpenMonth().isEmpty()) {
+        if(!((indto.getInsOpenYear() == null || indto.getInsOpenYear().isEmpty())
+        		&& (indto.getInsOpenMonth() == null || indto.getInsOpenMonth().isEmpty())
+        		&& (indto.getInsOpenDay() == null || indto.getInsOpenDay().isEmpty()))
+        		&& ((indto.getInsOpenYear() == null || indto.getInsOpenYear().isEmpty())
+        		|| (indto.getInsOpenMonth() == null || indto.getInsOpenMonth().isEmpty()))) {
         	// 年月日、または年月を入力してください。（開業年月日）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W025).replace("項目名", "開業年月日") + "\n";
 			errFlg = true;
@@ -1669,8 +1672,11 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "取引区分") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsOpenYear() == null || indto.getInsOpenYear().isEmpty()
-        		|| indto.getInsOpenMonth() == null || indto.getInsOpenMonth().isEmpty()) {
+        if(!((indto.getInsOpenYear() == null || indto.getInsOpenYear().isEmpty())
+        		&& (indto.getInsOpenMonth() == null || indto.getInsOpenMonth().isEmpty())
+        		&& (indto.getInsOpenDay() == null || indto.getInsOpenDay().isEmpty()))
+        		&& ((indto.getInsOpenYear() == null || indto.getInsOpenYear().isEmpty())
+        		|| (indto.getInsOpenMonth() == null || indto.getInsOpenMonth().isEmpty()))) {
         	// 年月日、または年月を入力してください。（開業年月日）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W025).replace("項目名", "開業年月日") + "\n";
 			errFlg = true;

@@ -39,6 +39,12 @@ public class ND103DTO extends BaseDTO implements Serializable {
     private String winVarName;
 
     /**
+     * 親画面名
+     * @generated
+     */
+    private String title;
+
+    /**
      * 権限_条件セット
      * @generated
      */
@@ -1356,6 +1362,21 @@ public class ND103DTO extends BaseDTO implements Serializable {
 	 */
 	public void setHoInsType(String hoInsType) {
 		this.hoInsType = hoInsType;
+	}
+
+	/**
+	 * ND103DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 

@@ -476,7 +476,7 @@
 							 <td class="comTableItem" style="text-align: center;">
 							 <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni1('<s:property  value="#rowBean.reqType1" />', '<s:property value="#rowBean.reqChl1"/>', '<s:property value="#rowBean.reqSts1"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
-							          	<s:if test="#rowBean.reqCountSsAd >= 5">
+							          	<s:if test="#rowBean.reqCountSsAd >= 150">
 							            <s:label style="color : red;" key="#rowBean.reqCountSsAd" />
 							            </s:if>
 							            <s:else>
@@ -491,7 +491,7 @@
 					             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni2('<s:property  value="#rowBean.reqType2" />', '<s:property value="#rowBean.reqChl2"/>', '<s:property value="#rowBean.reqSts2"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 								          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-								        <s:if test="#rowBean.reqCountSsMr >= 5">
+								        <s:if test="#rowBean.reqCountSsMr >= 150">
 							            <s:label style="color : red;" key="#rowBean.reqCountSsMr" />
 							            </s:if>
 							            <s:else>
@@ -506,7 +506,7 @@
 				             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni3('<s:property  value="#rowBean.reqType3" />', '<s:property value="#rowBean.reqChl3"/>', '<s:property value="#rowBean.reqSts3"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-							            <s:if test="#rowBean.reqCountSsUr >= 5">
+							            <s:if test="#rowBean.reqCountSsUr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSsUr" />
 							            </s:if>
 							            <s:else>
@@ -521,7 +521,7 @@
 				             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni4('<s:property  value="#rowBean.reqType4" />', '<s:property value="#rowBean.reqChl4"/>', '<s:property value="#rowBean.reqSts4"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-							            <s:if test="#rowBean.reqCountSsUs >= 5">
+							            <s:if test="#rowBean.reqCountSsUs >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSsUs" />
 							            </s:if>
 							            <s:else>
@@ -536,7 +536,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni5('<s:property  value="#rowBean.reqType5" />', '<s:property value="#rowBean.reqChl5"/>', '<s:property value="#rowBean.reqSts5"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountScAd >= 5">
+						            	<s:if test="#rowBean.reqCountScAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountScAd" />
 							            </s:if>
 							            <s:else>
@@ -550,7 +550,7 @@
 			             <td class="comTableItem" style="background-Color:#f4d3c4;text-align: center;">
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni6('<s:property  value="#rowBean.reqType6" />', '<s:property value="#rowBean.reqChl6"/>', '<s:property value="#rowBean.reqSts6"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
-						            	<s:if test="#rowBean.reqCountScMr >= 5">
+						            	<s:if test="#rowBean.reqCountScMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountScMr" />
 							            </s:if>
 							            <s:else>
@@ -565,7 +565,7 @@
 				             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni7('<s:property  value="#rowBean.reqType7" />', '<s:property value="#rowBean.reqChl7"/>', '<s:property value="#rowBean.reqSts7"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 							          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-							            	<s:if test="#rowBean.reqCountScUr >= 5">
+							            	<s:if test="#rowBean.reqCountScUr >= 150">
 								            <s:label style="color : red" key="#rowBean.reqCountScUr" />
 								            </s:if>
 								            <s:else>
@@ -579,7 +579,7 @@
 			             <td class="comTableItem" style="text-align: center;">
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni8('<s:property  value="#rowBean.reqType8" />', '<s:property value="#rowBean.reqChl8"/>', '<s:property value="#rowBean.reqSts8"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
-						            	<s:if test="#rowBean.reqCountScUs >= 5">
+						            	<s:if test="#rowBean.reqCountScUs >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountScUs" />
 							            </s:if>
 							            <s:else>
@@ -594,7 +594,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni9('<s:property  value="#rowBean.reqType9" />', '<s:property value="#rowBean.reqChl9"/>', '<s:property value="#rowBean.reqSts9"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-										<s:if test="#rowBean.reqCountSdAd >= 5">
+										<s:if test="#rowBean.reqCountSdAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSdAd" />
 							            </s:if>
 							            <s:else>
@@ -609,7 +609,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni10('<s:property  value="#rowBean.reqType10" />', '<s:property value="#rowBean.reqChl10"/>', '<s:property value="#rowBean.reqSts10"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountSdMr >= 5">
+						            	<s:if test="#rowBean.reqCountSdMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSdMr" />
 							            </s:if>
 							            <s:else>
@@ -624,7 +624,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni11('<s:property  value="#rowBean.reqType11" />', '<s:property value="#rowBean.reqChl11"/>', '<s:property value="#rowBean.reqSts11"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountSdUr >= 5">
+						            	<s:if test="#rowBean.reqCountSdUr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSdUr" />
 							            </s:if>
 							            <s:else>
@@ -639,7 +639,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni12('<s:property  value="#rowBean.reqType12" />', '<s:property value="#rowBean.reqChl12"/>', '<s:property value="#rowBean.reqSts12"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountSdUs >= 5">
+						            	<s:if test="#rowBean.reqCountSdUs >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSdUs" />
 							            </s:if>
 							            <s:else>
@@ -654,7 +654,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni13('<s:property  value="#rowBean.reqType13" />', '<s:property value="#rowBean.reqChl13"/>', '<s:property value="#rowBean.reqSts13"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountRnAd >= 5">
+						            	<s:if test="#rowBean.reqCountRnAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountRnAd" />
 							            </s:if>
 							            <s:else>
@@ -669,7 +669,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni14('<s:property  value="#rowBean.reqType14" />', '<s:property value="#rowBean.reqChl14"/>', '<s:property value="#rowBean.reqSts14"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountRnMr >= 5">
+						            	<s:if test="#rowBean.reqCountRnMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountRnMr" />
 							            </s:if>
 							            <s:else>
@@ -684,7 +684,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni15('<s:property  value="#rowBean.reqType15" />', '<s:property value="#rowBean.reqChl15"/>', '<s:property value="#rowBean.reqSts15"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						           		<s:if test="#rowBean.reqCountShAd >= 5">
+						           		<s:if test="#rowBean.reqCountShAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountShAd" />
 							            </s:if>
 							            <s:else>
@@ -699,7 +699,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni16('<s:property  value="#rowBean.reqType16" />', '<s:property value="#rowBean.reqChl16"/>', '<s:property value="#rowBean.reqSts16"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						                <s:if test="#rowBean.reqCountShMr >= 5">
+						                <s:if test="#rowBean.reqCountShMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountShMr" />
 							            </s:if>
 							            <s:else>
@@ -714,7 +714,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni17('<s:property  value="#rowBean.reqType17" />', '<s:property value="#rowBean.reqChl17"/>', '<s:property value="#rowBean.reqSts17"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDsAd >= 5">
+						            	<s:if test="#rowBean.reqCountDsAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDsAd" />
 							            </s:if>
 							            <s:else>
@@ -729,7 +729,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni18('<s:property  value="#rowBean.reqType18" />', '<s:property value="#rowBean.reqChl18"/>', '<s:property value="#rowBean.reqSts18"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDsMr >= 5">
+						            	<s:if test="#rowBean.reqCountDsMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDsMr" />
 							            </s:if>
 							            <s:else>
@@ -744,7 +744,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni19('<s:property  value="#rowBean.reqType19" />', '<s:property value="#rowBean.reqChl19"/>', '<s:property value="#rowBean.reqSts19"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDsUr >= 5">
+						            	<s:if test="#rowBean.reqCountDsUr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDsUr" />
 							            </s:if>
 							            <s:else>
@@ -759,7 +759,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni20('<s:property  value="#rowBean.reqType20" />', '<s:property value="#rowBean.reqChl20"/>', '<s:property value="#rowBean.reqSts20"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						          	    <s:if test="#rowBean.reqCountDsUs >= 5">
+						          	    <s:if test="#rowBean.reqCountDsUs >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDsUs" />
 							            </s:if>
 							            <s:else>
@@ -774,7 +774,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni21('<s:property  value="#rowBean.reqType21" />', '<s:property value="#rowBean.reqChl21"/>', '<s:property value="#rowBean.reqSts21"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDdAd >= 5">
+						            	<s:if test="#rowBean.reqCountDdAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDdAd" />
 							            </s:if>
 							            <s:else>
@@ -789,7 +789,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni22('<s:property  value="#rowBean.reqType22" />', '<s:property value="#rowBean.reqChl22"/>', '<s:property value="#rowBean.reqSts22"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDdMr >= 5">
+						            	<s:if test="#rowBean.reqCountDdMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDdMr" />
 							            </s:if>
 							            <s:else>
@@ -804,7 +804,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni23('<s:property  value="#rowBean.reqType23" />', '<s:property value="#rowBean.reqChl23"/>', '<s:property value="#rowBean.reqSts23"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDdUr >= 5">
+						            	<s:if test="#rowBean.reqCountDdUr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDdUr" />
 							            </s:if>
 							            <s:else>
@@ -819,7 +819,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni24('<s:property  value="#rowBean.reqType24" />', '<s:property value="#rowBean.reqChl24"/>', '<s:property value="#rowBean.reqSts24"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDdUs >= 5">
+						            	<s:if test="#rowBean.reqCountDdUs >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDdUs" />
 							            </s:if>
 							            <s:else>
@@ -834,7 +834,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni25('<s:property  value="#rowBean.reqType25" />', '<s:property value="#rowBean.reqChl25"/>', '<s:property value="#rowBean.reqSts25"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDhAd >= 5">
+						            	<s:if test="#rowBean.reqCountDhAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDhAd" />
 							            </s:if>
 							            <s:else>
@@ -849,7 +849,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni26('<s:property  value="#rowBean.reqType26" />', '<s:property value="#rowBean.reqChl26"/>', '<s:property value="#rowBean.reqSts26"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDhMr >= 5">
+						            	<s:if test="#rowBean.reqCountDhMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDhMr" />
 							            </s:if>
 							            <s:else>
@@ -864,7 +864,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni27('<s:property  value="#rowBean.reqType27" />', '<s:property value="#rowBean.reqChl27"/>', '<s:property value="#rowBean.reqSts27"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDhUr >= 5">
+						            	<s:if test="#rowBean.reqCountDhUr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDhUr" />
 							            </s:if>
 							            <s:else>
@@ -879,7 +879,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni28('<s:property  value="#rowBean.reqType28" />', '<s:property value="#rowBean.reqChl28"/>', '<s:property value="#rowBean.reqSts28"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountDhUs >= 5">
+						            	<s:if test="#rowBean.reqCountDhUs >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountDhUs" />
 							            </s:if>
 							            <s:else>
@@ -894,7 +894,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni29('<s:property  value="#rowBean.reqType29" />', '<s:property value="#rowBean.reqChl29"/>', '<s:property value="#rowBean.reqSts29"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountSuAd >= 5">
+						            	<s:if test="#rowBean.reqCountSuAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSuAd" />
 							            </s:if>
 							            <s:else>
@@ -909,7 +909,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni30('<s:property  value="#rowBean.reqType30" />', '<s:property value="#rowBean.reqChl30"/>', '<s:property value="#rowBean.reqSts30"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountSuMr >= 5">
+						            	<s:if test="#rowBean.reqCountSuMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSuMr" />
 							            </s:if>
 							            <s:else>
@@ -924,7 +924,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni31('<s:property  value="#rowBean.reqType31" />', '<s:property value="#rowBean.reqChl31"/>', '<s:property value="#rowBean.reqSts31"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountSuUr >= 5">
+						            	<s:if test="#rowBean.reqCountSuUr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSuUr" />
 							            </s:if>
 							            <s:else>
@@ -939,7 +939,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni32('<s:property  value="#rowBean.reqType32" />', '<s:property value="#rowBean.reqChl32"/>', '<s:property value="#rowBean.reqSts32"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountSuUs >= 5">
+						            	<s:if test="#rowBean.reqCountSuUs >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountSuUs" />
 							            </s:if>
 							            <s:else>
@@ -954,7 +954,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni33('<s:property  value="#rowBean.reqType33" />', '<s:property value="#rowBean.reqChl33"/>', '<s:property value="#rowBean.reqSts33"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountTsAd >= 5">
+						            	<s:if test="#rowBean.reqCountTsAd >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountTsAd" />
 							            </s:if>
 							            <s:else>
@@ -969,7 +969,7 @@
 			             <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni34('<s:property  value="#rowBean.reqType34" />', '<s:property value="#rowBean.reqChl34"/>', '<s:property value="#rowBean.reqSts34"/>', '<s:property value="#rowBean.addrCodePref"/>');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 
-						            	<s:if test="#rowBean.reqCountTsMr >= 5">
+						            	<s:if test="#rowBean.reqCountTsMr >= 150">
 							            <s:label style="color : red" key="#rowBean.reqCountTsMr" />
 							            </s:if>
 							            <s:else>

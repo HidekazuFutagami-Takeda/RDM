@@ -20,7 +20,8 @@
         <result column="APR_MEMO" property="aPR_MEMO"/>
         <result column="APR_COMMENT" property="aprComment"/>
         <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
-        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+       <!--<result column="REQ_JGI_NO" property="reqJgiNo"/>  -->
+        <result column="REQ_JGI_NO" property="jgiNo"/>
         <result column="REQ_BR_CODE" property="brCode"/>
         <result column="REQ_DIST_CODE" property="distCode"/>
         <result column="INS_NO_SK" property="insNoSk"/>
@@ -74,7 +75,8 @@
         <result column="APR_MEMO" property="aPR_MEMO"/>
         <result column="APR_COMMENT" property="aprComment"/>
         <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
-        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+     <!--<result column="REQ_JGI_NO" property="reqJgiNo"/>  -->
+        <result column="REQ_JGI_NO" property="jgiNo"/>
         <result column="REQ_BR_CODE" property="brCode"/>
         <result column="REQ_DIST_CODE" property="distCode"/>
         <result column="INS_NO_SK" property="insNoSk"/>
@@ -269,8 +271,8 @@
 			</if>
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
-	    <if test="reqJgiNo != null">
-		AND REQ_KNR.REQ_JGI_NO = #{reqJgiNo}
+	    <if test="jgiNo != null">
+		AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
 	    <if test="brCode != null">
@@ -573,8 +575,8 @@
 			</if>
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
-	    <if test="reqJgiNo != null">
-		AND REQ_KNR.REQ_JGI_NO = #{reqJgiNo}
+	    <if test="jgiNo != null">
+		AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
 	    <if test="brCode != null">

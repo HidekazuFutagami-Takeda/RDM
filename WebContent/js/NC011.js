@@ -101,8 +101,10 @@ function rdmCler(){
 	document.fm1.reqJgiName.value = "";
 	document.fm1.insKanjiSrch.value = "";
 	document.fm1.docKanj.value = "";
-	document.fm1.inreqYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
-	document.fm1.inreqYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
+	//document.fm1.inreqYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
+	//document.fm1.inreqYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
+	document.fm1.inreqYmdhmsFrom.value ="";
+	document.fm1.inreqYmdhmsTo.value = "";
 	document.fm1.insClass.value = "";
 	document.fm1.docType.value = "";
 	document.fm1.reqSbt.value = "";
@@ -315,6 +317,12 @@ function sosReqSbt(){
 
       }
  }
+
+ function reqDisable(){
+	  // 変更内容破棄確認チェック
+	 document.fm1.bumonRyakuName.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	 document.fm1.reqjgiName.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	}
 
 
  /**

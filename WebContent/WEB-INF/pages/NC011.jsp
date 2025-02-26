@@ -255,11 +255,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<s:if test='mrAdminFlg != "1"'>
 								<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true"/>
+			   <nobr><s:submit  value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true" cssStyle="background-color:#D4D0C8;"/>
 			   </nobr>
 			</td>
 				<td >
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true"/>
+					<s:textfield size="20" maxlength="40" id="bumonRyakuName" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssStyle="background-color:#D4D0C8;"/>
 					<a href ="" onClick="popClear();return false;"disabled="true" >Clear</a>
 				</td>
 		</s:if>

@@ -452,9 +452,9 @@ function changeCellColors() {
     for (var i = 0; i < cells.length; i++) {
         var cellValue = parseInt(cells[i].innerText, 10);
 
-        if (cellValue > 1) {
+        if (cellValue > 99) {
             cells[i].style.backgroundColor = "yellow";
-        } else if (cellValue > 3) {
+        } else if (cellValue > 149) {
             cells[i].style.backgroundColor = "yellow";
         } else {
 

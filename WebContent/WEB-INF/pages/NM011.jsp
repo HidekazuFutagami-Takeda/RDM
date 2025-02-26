@@ -255,11 +255,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<s:if test='mrAdminFlg != "1"'>
 								<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true"/>
+			   <nobr><s:submit  value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true" cssStyle="background-color:#D4D0C8;"/>
 			   </nobr>
 			</td>
 				<td >
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true"/>
+					<s:textfield size="20" maxlength="40" id="bumonRyakuName" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssStyle="background-color:#D4D0C8;"/>
 					<a href ="" onClick="popClear();return false;"disabled="true" >Clear</a>
 				</td>
 		</s:if>
@@ -500,7 +500,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 													<!-- style="resize : horizontal;overflow : hidden;   " -->
 
 													<th rowspan="4" class="comTableTitle container tkdUlt" width="120px"
-														style="border: none;" id="styles">申請ID <span
+														style="border: none;z-index:3;" id="styles">申請ID <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdAscClass%>" href=""
 														onclick="NC011Sort(0);return false;">▲</a> <span
@@ -599,10 +599,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 												<%-- 内容 --%>
 				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
 					<tr>
-						 <th class="comTableItem">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />');return false;">
+						 <th class="comTableItem"style="z-index:2;">
+						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />','<s:property  value="reqId" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
+						            <s:hidden  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
 						          </acronym>
 			              </a>
 				  		 </th>

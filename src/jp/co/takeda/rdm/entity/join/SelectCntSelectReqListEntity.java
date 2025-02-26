@@ -66,16 +66,16 @@ public class SelectCntSelectReqListEntity extends BaseEntity implements Serializ
 	/**
      * 従業員番号
      */
-    private String jgiNo;
+    private int jgiNo;
     /**
      * 従業員名
      */
     private String jgiName;
 
-    public String getJgiNo() {
+    public int getJgiNo() {
 		return jgiNo;
 	}
-	public void setJgiNo(String jgiNo) {
+	public void setJgiNo(int jgiNo) {
 		this.jgiNo = jgiNo;
 	}
 	public String getJgiName() {

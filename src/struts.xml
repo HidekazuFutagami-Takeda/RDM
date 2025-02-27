@@ -136,6 +136,15 @@
             <result name="ND301Init" type="chain">ND301Init</result>
             <result name="NC101Init" type="chain">NC101Init</result>
         </action>
+        <action name="ND401Init" class="nD401Action" method="init">
+            <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
+        </action>
+        <action name="ND401Search" class="nD401Action" method="search">
+            <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
+        </action>
+        <action name="ND401Page" class="nD401Action" method="page">
+            <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
+        </action>
         <action name="NC206Init" class="nC206Action" method="init">
             <result name="NC206">/WEB-INF/pages/NC206.jsp</result>
         </action>

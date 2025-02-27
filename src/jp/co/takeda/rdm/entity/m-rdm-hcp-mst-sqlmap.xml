@@ -343,8 +343,8 @@
         OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
     </select>
     <select id="selectCntHcp" parameterType="jp.co.takeda.rdm.entity.join.SelectCntSelectHcpEntity" resultMap="selectCntHcpResultMap">
-        select count(*) CNT_HCP
-        from (
+        SELECT COUNT(*) CNT_HCP
+        FROM (
                 WITH ULT_ONLY AS (
                     SELECT
                         *

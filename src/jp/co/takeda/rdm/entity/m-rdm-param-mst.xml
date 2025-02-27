@@ -25,6 +25,10 @@
         <result column="PARAM_NAME" property="paramName"/>
         <result column="VALUE" property="value"/>
     </resultMap>
+    <resultMap id="selectParamNd401ResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamNd401Entity">
+        <result column="PARAM_NAME" property="paramName"/>
+        <result column="VALUE" property="value"/>
+    </resultMap>
     <resultMap id="selectParamNF001ResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamNF001Entity">
         <result column="PARAM_NAME" property="paramName"/>
         <result column="VALUE" property="value"/>
@@ -116,5 +120,14 @@
         ON
             PARAM_MST_MN_KMU.PARAM_NAME = 'MN_KMU'
         AND PARAM_MST_MN_DOC.PARAM_NAME = 'MN_DOC'
+    </select>
+   <select id="selectParamNd401" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNd401Entity" resultMap="selectParamNd401ResultMap">
+        SELECT
+            PARAM_NAME, VALUE
+        FROM
+            ORAUSR01.M_RDM_PARAM_MST
+        WHERE
+            PARAM_NAME in ('MAX_ROWNUM', 'ND401_ROWNUM')
+        ORDER BY PARAM_NAME
     </select>
 </mapper>

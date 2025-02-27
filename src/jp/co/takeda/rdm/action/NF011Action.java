@@ -113,15 +113,8 @@ public class NF011Action extends BaseAction<NF011DTO> {
 
         // 画面タイトル制御処理
         String title = "NF011_施設新規作成";
-        //ユーザ権限
-        String jokenSetCd = dto.getLoginJokenSetCd();
 
         dto.setTitle(title);
-
-        //モック
-//        dto.setUltInsCd("001100020");
-//        dto.setReqId("250114-000112"); // 領域担当者有req
-//        dto.setReqId("250124-000145");
 
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
@@ -129,21 +122,12 @@ public class NF011Action extends BaseAction<NF011DTO> {
         dto.setPreScreenId(preScreenId);
 
         dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
-
-        //モック
-//        String kbn = "1";
-//        if(kbn.equals("0")) {
-//	        preScreenId = "NF001";
-//	        dto.setLoginJgiNo("8830034");
-//	        dto.setReqId("");
-//        } else {
-//	        preScreenId = "NC011";
-//	        dto.setLoginJgiNo("8830034");
-//	//        dto.setLoginJgiNo("0");
-//	        //dto.setReqStsCd("01");
-//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-//        }
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
 
         // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
         // ULT施設コード　ありなしで分岐

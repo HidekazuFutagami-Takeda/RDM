@@ -116,32 +116,18 @@ public class NF013Action extends BaseAction<NF013DTO> {
 
         dto.setTitle(title);
 
-//        //モック
-//        dto.setInsNo("101111211");
-//        dto.setReqId("250225-000497");
-
         String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
         String insNo = dto.getInsNo();
         dto.setPreScreenId(preScreenId);
-        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
 
         dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
-
-        //モック
-//        String kbn = "1";
-//        if(kbn.equals("0")) {
-//	        preScreenId = "NF001";
-//	        dto.setLoginJgiNo("8830034");
-//	        dto.setReqId("");
-//        } else {
-//	        preScreenId = "NC011";
-//	        dto.setLoginJgiNo("8830034");
-//	        //dto.setLoginJgiNo("0");
-//	        //dto.setReqStsCd("01");
-//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-//        }
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
 
         // 遷移パターン　0:施設固定コードから作成、1：申請データあり
         // 施設固定コード　ありなしで分岐

@@ -312,7 +312,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <input type="hidden" name="openerName" value="" />
 
 	<s:hidden name="loginJokenSetCd"/>
-	<s:hidden name="loginShzNm"/>
+	<s:hidden name="loginJgiNo"/>
+    <s:hidden name="loginNm"/>
+    <s:hidden name="loginShzNm"/>
+    <s:hidden name="loginTrtCd"/>
+    <s:hidden name="loginBrCd"/>
+    <s:hidden name="loginDistCd"/>
     <s:hidden id="preScreenId" name="preScreenId"/>
 	<s:hidden id="pageCntCur" name="pageCntCur"/>
 	<s:hidden id="sortCondition" name="sortCondition" />

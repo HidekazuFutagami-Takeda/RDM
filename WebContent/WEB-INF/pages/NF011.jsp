@@ -1336,6 +1336,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="loginJokenSetCd"/>
      <s:hidden name="loginJgiNo"/>
      <s:hidden name="loginNm"/>
+     <s:hidden name="loginShzNm"/>
+     <s:hidden name="loginTrtCd"/>
      <s:hidden name="loginBrCd"/>
      <s:hidden name="loginDistCd"/>
      <s:hidden name="shnFlg"/>

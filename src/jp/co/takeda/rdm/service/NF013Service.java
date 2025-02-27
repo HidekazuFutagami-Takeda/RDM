@@ -113,6 +113,7 @@ public class NF013Service extends BaseService {
     		indto.setReqBrCd(loginInfo.getBrCode());
     		indto.setReqDistCd(loginInfo.getDistCode());
 
+    		indto.setReqId("");
     		indto.setReqYmdhms("");
     		indto.setReqStsNm("");
         } else if ("1".equals(indto.getDisplayKbn())) {
@@ -125,6 +126,7 @@ public class NF013Service extends BaseService {
     		SelectNF013MainDataEntity paramEntity = new SelectNF013MainDataEntity();
     		paramEntity.setInReqId(indto.getReqId());
     		paramEntity.setInInsNo(tRdmReqKnrData.getInsNo());
+    		indto.setInsNo(tRdmReqKnrData.getInsNo());
     		List<SelectNF013MainDataEntity> mainDataEntityList = dao.select(paramEntity);
     		SelectNF013MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
@@ -190,10 +192,10 @@ public class NF013Service extends BaseService {
     		indto.setInsPcode(StringUtils.nvl(mainDataEntity.getInsPcode(), ""));
     		indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 
-    		indto.setDocCount(StringUtils.nvl(mainDataEntity.getDocCount(), ""));
-    		indto.setReqDocCount(StringUtils.nvl(mainDataEntity.getReqDocCount(), ""));
-    		indto.setInsCount(StringUtils.nvl(mainDataEntity.getInsCount(), ""));
-    		indto.setNextInsCount(StringUtils.nvl(mainDataEntity.getNextInsCount(), ""));
+    		indto.setDocCount(StringUtils.nvl(mainDataEntity.getDocCount(), "0"));
+    		indto.setReqDocCount(StringUtils.nvl(mainDataEntity.getReqDocCount(), "0"));
+    		indto.setInsCount(StringUtils.nvl(mainDataEntity.getInsCount(), "0"));
+    		indto.setNextInsCount(StringUtils.nvl(mainDataEntity.getNextInsCount(), "0"));
 
     		if((mainDataEntity.getJskValueTk() == null || mainDataEntity.getJskValueTk() == 0)
     			&& (mainDataEntity.getJskValueZk() == null || mainDataEntity.getJskValueZk() == 0)
@@ -300,11 +302,6 @@ public class NF013Service extends BaseService {
         TRdmHcoReqEntity tRdmHcoReqEntity = new TRdmHcoReqEntity();
         tRdmHcoReqEntity.setReqId(indto.getReqId());
         dao.deleteByPK(tRdmHcoReqEntity);
-
-        // 施設_領域担当者ワークを物理削除
-        MRdmHcoJkrWkEntity mRdmHcoJkrWkEntity = new MRdmHcoJkrWkEntity();
-        mRdmHcoJkrWkEntity.setReqId(indto.getReqId());
-        dao.deleteByPK(mRdmHcoJkrWkEntity);
 
         // END UOC
         return outdto;
@@ -454,7 +451,9 @@ public class NF013Service extends BaseService {
         	}
         	tRdmHcoReqInsData.setInsFormalName(insFormalName);
 
-        	tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
+        	if(indto.getDelKbn() != null && !indto.getDelKbn().isEmpty()) {
+        		tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
+        	}
 
         	if(!indto.getDelKbn().isEmpty() && !"0".equals(indto.getDelKbn())) {
         		tRdmHcoReqInsData.setDelReason(indto.getDelReason());
@@ -507,7 +506,7 @@ public class NF013Service extends BaseService {
         	}
         	tRdmHcoReqUpdData.setInsFormalName(insFormalName);
 
-        	if(!indto.getDelKbn().isEmpty()) {
+        	if(indto.getDelKbn() != null && !indto.getDelKbn().isEmpty()) {
         		tRdmHcoReqUpdData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
         	}
 

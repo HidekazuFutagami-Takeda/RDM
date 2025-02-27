@@ -116,9 +116,6 @@ public class NF303Action extends BaseAction<NF303DTO> {
         String title = "NF303_施設情報更新 - 申請内容確認";
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
-
         dto.setMsgId(null);
 
         // END UOC

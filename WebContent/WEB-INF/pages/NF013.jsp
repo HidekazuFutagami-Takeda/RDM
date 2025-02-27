@@ -79,23 +79,27 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 初期表示処理
     function onLoadFunc(){
-    	delView();
-    	dupView();
-
     	// 編集不可設定
 		onLoadEditSet();
+
+    	delView();
+    	dupView();
     }
 
     function onLoadEditSet(){
 		editFlg = document.fm1.editApprFlg.value;
 
 		if(editFlg == "0") {
-			// 施設種別
-			//document.fm1.insTypeView.value = document.fm1.insType.options[document.fm1.insType.selectedIndex].textContent;
-			//document.fm1.insType.hidden = "true";
+			// 削除区分
+			document.fm1.delKbnView.value = document.fm1.delKbn.options[document.fm1.delKbn.selectedIndex].textContent;
+			document.fm1.delKbn.hidden = "true";
+			// 削除理由
+			document.fm1.delReasonView.value = document.fm1.delReason.options[document.fm1.delReason.selectedIndex].textContent;
+			document.fm1.delReason.hidden = "true";
 
 		} else {
-			//document.fm1.insTypeView.hidden = "true";
+			document.fm1.delKbnView.hidden = "true";
+			document.fm1.delReasonView.hidden = "true";
 		}
     }
 
@@ -318,6 +322,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="loginNm"/>
      <s:hidden name="loginBrCd"/>
      <s:hidden name="loginDistCd"/>
+     <s:hidden name="loginShzNm"/>
+     <s:hidden name="loginTrtCd"/>
      <s:hidden name="shnFlg"/>
      <s:hidden name="funcId"/>
 
@@ -536,19 +542,19 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			<table>
 				<tr>
 					<td class="comFormTableItem"><nobr>医師数</nobr></td>
-					<td class="comFormTableItem"><nobr>勤務中:<s:label key="docCount" /></nobr></td>
+					<td class="comFormTableItem"><nobr>勤務中:<s:label key="docCount" /><s:hidden name="docCount" /></nobr></td>
 					<td class="comFormTableItem"><nobr>施設数</nobr></td>
-					<td class="comFormTableItem"><nobr>当期子施設:<s:label key="insCount" /></nobr></td>
+					<td class="comFormTableItem"><nobr>当期子施設:<s:label key="insCount" /><s:hidden name="insCount" /></nobr></td>
 				</tr>
 				<tr>
 					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>申請中:<s:label key="reqDocCount" /></nobr></td>
+					<td class="comFormTableItem"><nobr>申請中:<s:label key="reqDocCount" /><s:hidden name="reqDocCount" /></nobr></td>
 					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>来期子施設:<s:label key="nextInsCount" /></nobr></td>
+					<td class="comFormTableItem"><nobr>来期子施設:<s:label key="nextInsCount" /><s:hidden name="nextInsCount" /></nobr></td>
 				</tr>
 				<tr>
 					<td class="comFormTableItem"><nobr>過去実績</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="jskValue" /></nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="jskValue" /><s:hidden name="jskValue" /></nobr></td>
 					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 				</tr>
@@ -569,7 +575,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>削除区分<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-				<s:select id="delKbn" name="delKbn" cssStyle="width:120pt" list ="delKbnCombo" onchange="delView();dupView();" />
+				<s:select id="delKbn" name="delKbn" cssStyle="width:150pt" list ="delKbnCombo" onchange="delView();dupView();" />
+				<s:textfield id="delKbnView" name="delKbnView" cssStyle="width:150pt" readonly="true" />
 			</nobr>
 		  </td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -580,7 +587,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>廃院日<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem" colspan=3>
 	      	<nobr>
-				<s:textfield type="date" name="delYmd" />　※日付不明の場合は1日を指定してください。
+	      		<s:if test="editApprFlg == 1">
+					<s:textfield type="date" name="delYmd" />　※日付不明の場合は1日を指定してください。
+				</s:if>
+				<s:else>
+					<s:textfield type="date" name="delYmd" readonly="true" />　※日付不明の場合は1日を指定してください。
+				</s:else>
 			</nobr>
 		  </td>
       </tr>
@@ -589,7 +601,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>削除理由<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-				<s:select id="delReason" name="delReason" cssStyle="width:120pt" list ="delReasonCombo" onchange="dupView();" />
+				<s:select id="delReason" name="delReason" cssStyle="width:150pt" list ="delReasonCombo" onchange="dupView();" />
+				<s:textfield id="delReasonView" name="delReasonView" cssStyle="width:150pt" readonly="true" />
 			</nobr>
 		  </td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -611,12 +624,19 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   	    <td class="comFormTableItem"><nobr>重複施設コード<font color="red" size="3">*</font></nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
-	    		<input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:insPopBtn();return false;" />
+	    		<s:if test="editApprFlg == 1">
+	    			<input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:insPopBtn();return false;" />
+	    		</s:if>
+	    		<s:else>
+	    			<input class="comButton" type="button"name="button2" value="選択" disabled />
+	    		</s:else>
     		</nobr>
    		</td>
    		<td class="comFormTableItem"><nobr>
    			<s:textfield name="dupInsNo" style="background-color:#D4D0C8" readonly="true" />
+   			<s:if test="editApprFlg == 1">
 				<a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.dupInsNo.value='';document.fm1.dupInsAbbrName.value='';document.fm1.dupInsAddr.value='';return false;">Clear</a>
+			</s:if>
 		</nobr></td>
    		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>

@@ -22,6 +22,7 @@ import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoSearchDataList;
 import jp.co.takeda.rdm.dto.NF001DTO;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
+import jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
@@ -297,10 +298,6 @@ public class NF001Service extends BaseService {
         // 件数取得
         List<SelectNF001MainDataEntity> selectNF001MainDataCntList  = dao.select(selectNF001MainDataCntEntity);
 
-        indto.initPageInfo(indto.getPageCntCur(), selectNF001MainDataCntList.get(0).getCnt(), selectParamNF001List.get(1).getValue());
-        selectNF001MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
-        selectNF001MainDataEntity.setInLimit(selectParamNF001List.get(1).getValue());
-
         //1000件以上の場合のエラー
         if (selectNF001MainDataCntList.get(0).getCnt() > selectParamNF001List.get(0).getValue()) {
         	  // 検索結果が表示上限を超えています。検索条件を絞って再検索してください。。
@@ -309,6 +306,10 @@ public class NF001Service extends BaseService {
         	  indto.setMsgStr(tmpMsgStr);
         	  return outdto;
         }
+
+        indto.initPageInfo(indto.getPageCntCur(), selectNF001MainDataCntList.get(0).getCnt(), selectParamNF001List.get(1).getValue());
+        selectNF001MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
+        selectNF001MainDataEntity.setInLimit(selectParamNF001List.get(1).getValue());
 
         // 機能定義取得
         String newValue = "0";
@@ -793,12 +794,12 @@ public class NF001Service extends BaseService {
 
         //1-2-8			JIS市区町村
 		//ブランク　※都道府県が選択された場合、リストを取得する
-        SRdmJkrSosAddrEntity inEntityCityCmb = new SRdmJkrSosAddrEntity("selectAddrCityComboList");
-        List<SRdmJkrSosAddrEntity> outMainCityList = dao.select(inEntityCityCmb);
+        SRdmJkrSosAddrEntiry inEntityCityCmb = new SRdmJkrSosAddrEntiry("selectSRdmJkrCityNameEntiry");
+        List<SRdmJkrSosAddrEntiry> outMainCityList = dao.select(inEntityCityCmb);
         LinkedHashMap<String, String> mapAddrCity = new LinkedHashMap<String, String>();
         mapAddrCity.put("", "--なし--");
-        for (SRdmJkrSosAddrEntity outEntity : outMainCityList) {
-        	mapAddrCity.put(outEntity.getAddrCodePref()+outEntity.getTkCityCd(), outEntity.getTkCityName());
+        for (SRdmJkrSosAddrEntiry outEntity : outMainCityList) {
+        	mapAddrCity.put(outEntity.getAddrCodePref()+outEntity.getAddrCodeCity(), outEntity.getAddrNameCity());
         }
         indto.setAddrCityCombo(mapAddrCity);
     }

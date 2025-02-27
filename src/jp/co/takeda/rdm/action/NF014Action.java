@@ -116,10 +116,15 @@ public class NF014Action extends BaseAction<NF014DTO> {
 
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
         String insNo = dto.getInsNo();
-        dto.setPreScreenId(preScreenId);
+
+        String preScreenId = dto.getBackScreenId();
+        if("NF307".equals(preScreenId)) {
+        	preScreenId = dto.getPreScreenId();
+        } else {
+        	dto.setPreScreenId(preScreenId);
+        }
 
         dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
         dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
@@ -194,17 +199,6 @@ public class NF014Action extends BaseAction<NF014DTO> {
      * @customizable
      */
     protected String registerNext(BaseDTO outdto) throws Exception {
-        // START UOC
-//        if (!RdmConstantsData.M0122740.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001102.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !RdmConstantsData.M0001101.equals(StringUtils.nvl(dto.getMsgId(),""))
-//                && !"exception".equals(outdto.getForward())){
-//            setJumpInfo(dto.getMsgId());
-//            outdto.setForward(dto.getForward());
-//        }
-        // END UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
 		// 本画面を再表示
 		outdto.setForward("NF014");
 
@@ -242,8 +236,8 @@ public class NF014Action extends BaseAction<NF014DTO> {
     protected String cancelNext(BaseDTO outdto) throws Exception {
         // START UOC
 
-    	// 前画面に遷移
-        outdto.setForward(outdto.getPreScreenId());
+    	// 完了画面に遷移
+        outdto.setForward("NC101");
 
         // END UOC
         setNextDTO(outdto);

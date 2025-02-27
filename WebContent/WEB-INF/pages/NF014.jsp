@@ -73,17 +73,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		const preScreenId = document.fm1.preScreenId.value;
 		if(preScreenId == "NF001"){
 			if(window.confirm("施設検索画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
+				window.close();
 			}
 		} else if(preScreenId == "NC011"){
 			if(window.confirm("申請一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
+				window.close();
 			}
 		}
 	}

@@ -235,8 +235,8 @@ public class NF012Action extends BaseAction<NF012DTO> {
     protected String cancelNext(BaseDTO outdto) throws Exception {
         // START UOC
 
-    	// 前画面に遷移
-        outdto.setForward(outdto.getPreScreenId());
+    	// 完了画面に遷移
+        outdto.setForward("NC101");
 
         // END UOC
         setNextDTO(outdto);

@@ -116,10 +116,15 @@ public class NF013Action extends BaseAction<NF013DTO> {
 
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
         String insNo = dto.getInsNo();
-        dto.setPreScreenId(preScreenId);
+
+        String preScreenId = dto.getBackScreenId();
+        if("NF305".equals(preScreenId)) {
+        	preScreenId = dto.getPreScreenId();
+        } else {
+        	dto.setPreScreenId(preScreenId);
+        }
 
         dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
         dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
@@ -233,8 +238,8 @@ public class NF013Action extends BaseAction<NF013DTO> {
     protected String cancelNext(BaseDTO outdto) throws Exception {
         // START UOC
 
-    	// 前画面に遷移
-        outdto.setForward(outdto.getPreScreenId());
+    	// 完了画面に遷移
+        outdto.setForward("NC101");
 
         // END UOC
         setNextDTO(outdto);

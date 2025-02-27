@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_hcp_public">
+    <resultMap id="mRdmHcpPublicResultMap" type="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity">
+        <result column="DOC_NO" property="docNo"/>
+        <result column="CLASS_CATEGORY" property="classCategoryCd"/>
+        <result column="PUB_INSTITUTION_CD" property="pubInstitutionCd"/>
+        <result column="PUB_INST_ST_YYYY" property="pubInstStYYYY"/>
+        <result column="PUB_INST_ST_MM" property="pubInstStMM"/>
+        <result column="PUB_INST_ST_DD" property="pubInstStDD"/>
+        <result column="PUB_INST_ED_YYYY" property="pubInstEdYYYY"/>
+        <result column="PUB_INST_ED_MM" property="pubInstEdMM"/>
+        <result column="PUB_INST_ED_DD" property="pubInstEdDD"/>
+        <result column="PUB_INST_POSITION" property="pubInstPositionCd"/>
+        <result column="PUB_INSTPOS_ST_YYYY" property="pubInstposStYYYY"/>
+        <result column="PUB_INSTPOS_ST_MM" property="pubInstposStMM"/>
+        <result column="PUB_INSTPOS_ST_DD" property="pubInstposStDD"/>
+        <result column="PUB_INSTPOS_ED_YYYY" property="pubInstposEdYYYY"/>
+        <result column="PUB_INSTPOS_ED_MM" property="pubInstposEdMM"/>
+        <result column="PUB_INSTPOS_ED_DD" property="pubInstposEdDD"/>
+        <result column="INS_SHA_YMD" property="insShaYmd"/>
+        <result column="INS_SHA_ID" property="insShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity" resultMap="mRdmHcpPublicResultMap">
+        SELECT
+            DOC_NO, CLASS_CATEGORY, PUB_INSTITUTION_CD, PUB_INST_ST_YYYY, PUB_INST_ST_MM, PUB_INST_ST_DD, PUB_INST_ED_YYYY, PUB_INST_ED_MM, PUB_INST_ED_DD, PUB_INST_POSITION, PUB_INSTPOS_ST_YYYY, PUB_INSTPOS_ST_MM, PUB_INSTPOS_ST_DD, PUB_INSTPOS_ED_YYYY, PUB_INSTPOS_ED_MM, PUB_INSTPOS_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            M_RDM_HCP_PUBLIC
+        WHERE
+            DOC_NO = #{docNo} AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
+    </select>
+    <select id="selectForUpdate" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity" resultMap="mRdmHcpPublicResultMap">
+        SELECT
+            DOC_NO, CLASS_CATEGORY, PUB_INSTITUTION_CD, PUB_INST_ST_YYYY, PUB_INST_ST_MM, PUB_INST_ST_DD, PUB_INST_ED_YYYY, PUB_INST_ED_MM, PUB_INST_ED_DD, PUB_INST_POSITION, PUB_INSTPOS_ST_YYYY, PUB_INSTPOS_ST_MM, PUB_INSTPOS_ST_DD, PUB_INSTPOS_ED_YYYY, PUB_INSTPOS_ED_MM, PUB_INSTPOS_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            M_RDM_HCP_PUBLIC
+        WHERE
+            DOC_NO = #{docNo} AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
+            FOR UPDATE
+    </select>
+    <select id="selectList" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity" resultMap="mRdmHcpPublicResultMap">
+        SELECT
+            DOC_NO, CLASS_CATEGORY, PUB_INSTITUTION_CD, PUB_INST_ST_YYYY, PUB_INST_ST_MM, PUB_INST_ST_DD, PUB_INST_ED_YYYY, PUB_INST_ED_MM, PUB_INST_ED_DD, PUB_INST_POSITION, PUB_INSTPOS_ST_YYYY, PUB_INSTPOS_ST_MM, PUB_INSTPOS_ST_DD, PUB_INSTPOS_ED_YYYY, PUB_INSTPOS_ED_MM, PUB_INSTPOS_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_HCP_PUBLIC
+        ORDER BY DOC_NO, PUB_INSTITUTION_CD
+    </select>
+    <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity" resultMap="mRdmHcpPublicResultMap">
+        SELECT
+            DOC_NO, CLASS_CATEGORY, PUB_INSTITUTION_CD, PUB_INST_ST_YYYY, PUB_INST_ST_MM, PUB_INST_ST_DD, PUB_INST_ED_YYYY, PUB_INST_ED_MM, PUB_INST_ED_DD, PUB_INST_POSITION, PUB_INSTPOS_ST_YYYY, PUB_INSTPOS_ST_MM, PUB_INSTPOS_ST_DD, PUB_INSTPOS_ED_YYYY, PUB_INSTPOS_ED_MM, PUB_INSTPOS_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+        FROM
+            M_RDM_HCP_PUBLIC
+        <where>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="classCategoryCd != null">AND CLASS_CATEGORY = #{classCategoryCd}</if>
+			<if test="pubInstitutionCd != null">AND PUB_INSTITUTION_CD = #{pubInstitutionCd}</if>
+			<if test="pubInstStYYYY != null">AND PUB_INST_ST_YYYY = #{pubInstStYYYY}</if>
+			<if test="pubInstStMM != null">AND PUB_INST_ST_MM = #{pubInstStMM}</if>
+			<if test="pubInstStDD != null">AND PUB_INST_ST_DD = #{pubInstStDD}</if>
+			<if test="pubInstEdYYYY != null">AND PUB_INST_ED_YYYY = #{pubInstEdYYYY}</if>
+			<if test="pubInstEdMM != null">AND PUB_INST_ED_MM = #{pubInstEdMM}</if>
+			<if test="pubInstEdDD != null">AND PUB_INST_ED_DD = #{pubInstEdDD}</if>
+			<if test="pubInstPositionCd != null">AND PUB_INST_POSITION = #{pubInstPositionCd}</if>
+			<if test="pubInstposStYYYY != null">AND PUB_INSTPOS_ST_YYYY = #{pubInstposStYYYY}</if>
+			<if test="pubInstposStMM != null">AND PUB_INSTPOS_ST_MM = #{pubInstposStMM}</if>
+			<if test="pubInstposStDD != null">AND PUB_INSTPOS_ST_DD = #{pubInstposStDD}</if>
+			<if test="pubInstposEdYYYY != null">AND PUB_INSTPOS_ED_YYYY = #{pubInstposEdYYYY}</if>
+			<if test="pubInstposEdMM != null">AND PUB_INSTPOS_ED_MM = #{pubInstposEdMM}</if>
+			<if test="pubInstposEdDD != null">AND PUB_INSTPOS_ED_DD = #{pubInstposEdDD}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <select id="countByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity" resultType="int">
+        SELECT
+            count (*)
+        FROM
+            M_RDM_HCP_PUBLIC
+        <where>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="classCategoryCd != null">AND CLASS_CATEGORY = #{classCategoryCd}</if>
+			<if test="pubInstitutionCd != null">AND PUB_INSTITUTION_CD = #{pubInstitutionCd}</if>
+			<if test="pubInstStYYYY != null">AND PUB_INST_ST_YYYY = #{pubInstStYYYY}</if>
+			<if test="pubInstStMM != null">AND PUB_INST_ST_MM = #{pubInstStMM}</if>
+			<if test="pubInstStDD != null">AND PUB_INST_ST_DD = #{pubInstStDD}</if>
+			<if test="pubInstEdYYYY != null">AND PUB_INST_ED_YYYY = #{pubInstEdYYYY}</if>
+			<if test="pubInstEdMM != null">AND PUB_INST_ED_MM = #{pubInstEdMM}</if>
+			<if test="pubInstEdDD != null">AND PUB_INST_ED_DD = #{pubInstEdDD}</if>
+			<if test="pubInstPositionCd != null">AND PUB_INST_POSITION = #{pubInstPositionCd}</if>
+			<if test="pubInstposStYYYY != null">AND PUB_INSTPOS_ST_YYYY = #{pubInstposStYYYY}</if>
+			<if test="pubInstposStMM != null">AND PUB_INSTPOS_ST_MM = #{pubInstposStMM}</if>
+			<if test="pubInstposStDD != null">AND PUB_INSTPOS_ST_DD = #{pubInstposStDD}</if>
+			<if test="pubInstposEdYYYY != null">AND PUB_INSTPOS_ED_YYYY = #{pubInstposEdYYYY}</if>
+			<if test="pubInstposEdMM != null">AND PUB_INSTPOS_ED_MM = #{pubInstposEdMM}</if>
+			<if test="pubInstposEdDD != null">AND PUB_INSTPOS_ED_DD = #{pubInstposEdDD}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </select>
+    <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity">
+        INSERT INTO
+            M_RDM_HCP_PUBLIC(DOC_NO, CLASS_CATEGORY, PUB_INSTITUTION_CD, PUB_INST_ST_YYYY, PUB_INST_ST_MM, PUB_INST_ST_DD, PUB_INST_ED_YYYY, PUB_INST_ED_MM, PUB_INST_ED_DD, PUB_INST_POSITION, PUB_INSTPOS_ST_YYYY, PUB_INSTPOS_ST_MM, PUB_INSTPOS_ST_DD, PUB_INSTPOS_ED_YYYY, PUB_INSTPOS_ED_MM, PUB_INSTPOS_ED_DD, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID)
+        VALUES
+            (#{docNo}, #{classCategoryCd}, #{pubInstitutionCd}, #{pubInstStYYYY}, #{pubInstStMM}, #{pubInstStDD}, #{pubInstEdYYYY}, #{pubInstEdMM}, #{pubInstEdDD}, #{pubInstPositionCd}, #{pubInstposStYYYY}, #{pubInstposStMM}, #{pubInstposStDD}, #{pubInstposEdYYYY}, #{pubInstposEdMM}, #{pubInstposEdDD}, #{insShaYmd}, #{insShaId}, #{updShaYmd}, #{updShaId})
+    </insert>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity">
+        INSERT INTO
+            M_RDM_HCP_PUBLIC(<trim suffixOverrides=","><if test="docNo != null">DOC_NO,</if><if test="classCategoryCd != null">CLASS_CATEGORY,</if><if test="pubInstitutionCd != null">PUB_INSTITUTION_CD,</if><if test="pubInstStYYYY != null">PUB_INST_ST_YYYY,</if><if test="pubInstStMM != null">PUB_INST_ST_MM,</if><if test="pubInstStDD != null">PUB_INST_ST_DD,</if><if test="pubInstEdYYYY != null">PUB_INST_ED_YYYY,</if><if test="pubInstEdMM != null">PUB_INST_ED_MM,</if><if test="pubInstEdDD != null">PUB_INST_ED_DD,</if><if test="pubInstPositionCd != null">PUB_INST_POSITION,</if><if test="pubInstposStYYYY != null">PUB_INSTPOS_ST_YYYY,</if><if test="pubInstposStMM != null">PUB_INSTPOS_ST_MM,</if><if test="pubInstposStDD != null">PUB_INSTPOS_ST_DD,</if><if test="pubInstposEdYYYY != null">PUB_INSTPOS_ED_YYYY,</if><if test="pubInstposEdMM != null">PUB_INSTPOS_ED_MM,</if><if test="pubInstposEdDD != null">PUB_INSTPOS_ED_DD,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=","><if test="docNo != null">#{docNo},</if><if test="classCategoryCd != null">#{classCategoryCd},</if><if test="pubInstitutionCd != null">#{pubInstitutionCd},</if><if test="pubInstStYYYY != null">#{pubInstStYYYY},</if><if test="pubInstStMM != null">#{pubInstStMM},</if><if test="pubInstStDD != null">#{pubInstStDD},</if><if test="pubInstEdYYYY != null">#{pubInstEdYYYY},</if><if test="pubInstEdMM != null">#{pubInstEdMM},</if><if test="pubInstEdDD != null">#{pubInstEdDD},</if><if test="pubInstPositionCd != null">#{pubInstPositionCd},</if><if test="pubInstposStYYYY != null">#{pubInstposStYYYY},</if><if test="pubInstposStMM != null">#{pubInstposStMM},</if><if test="pubInstposStDD != null">#{pubInstposStDD},</if><if test="pubInstposEdYYYY != null">#{pubInstposEdYYYY},</if><if test="pubInstposEdMM != null">#{pubInstposEdMM},</if><if test="pubInstposEdDD != null">#{pubInstposEdDD},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity">
+        UPDATE
+            M_RDM_HCP_PUBLIC
+        SET
+            <trim suffixOverrides=","><if test="update.classCategoryCd != null">CLASS_CATEGORY = #{update.classCategoryCd},</if><if test="update.classCategoryCd == null">CLASS_CATEGORY = NULL,</if><if test="update.pubInstStYYYY != null">PUB_INST_ST_YYYY = #{update.pubInstStYYYY},</if><if test="update.pubInstStYYYY == null">PUB_INST_ST_YYYY = NULL,</if><if test="update.pubInstStMM != null">PUB_INST_ST_MM = #{update.pubInstStMM},</if><if test="update.pubInstStMM == null">PUB_INST_ST_MM = NULL,</if><if test="update.pubInstStDD != null">PUB_INST_ST_DD = #{update.pubInstStDD},</if><if test="update.pubInstStDD == null">PUB_INST_ST_DD = NULL,</if><if test="update.pubInstEdYYYY != null">PUB_INST_ED_YYYY = #{update.pubInstEdYYYY},</if><if test="update.pubInstEdYYYY == null">PUB_INST_ED_YYYY = NULL,</if><if test="update.pubInstEdMM != null">PUB_INST_ED_MM = #{update.pubInstEdMM},</if><if test="update.pubInstEdMM == null">PUB_INST_ED_MM = NULL,</if><if test="update.pubInstEdDD != null">PUB_INST_ED_DD = #{update.pubInstEdDD},</if><if test="update.pubInstEdDD == null">PUB_INST_ED_DD = NULL,</if><if test="update.pubInstPositionCd != null">PUB_INST_POSITION = #{update.pubInstPositionCd},</if><if test="update.pubInstPositionCd == null">PUB_INST_POSITION = NULL,</if><if test="update.pubInstposStYYYY != null">PUB_INSTPOS_ST_YYYY = #{update.pubInstposStYYYY},</if><if test="update.pubInstposStYYYY == null">PUB_INSTPOS_ST_YYYY = NULL,</if><if test="update.pubInstposStMM != null">PUB_INSTPOS_ST_MM = #{update.pubInstposStMM},</if><if test="update.pubInstposStMM == null">PUB_INSTPOS_ST_MM = NULL,</if><if test="update.pubInstposStDD != null">PUB_INSTPOS_ST_DD = #{update.pubInstposStDD},</if><if test="update.pubInstposStDD == null">PUB_INSTPOS_ST_DD = NULL,</if><if test="update.pubInstposEdYYYY != null">PUB_INSTPOS_ED_YYYY = #{update.pubInstposEdYYYY},</if><if test="update.pubInstposEdYYYY == null">PUB_INSTPOS_ED_YYYY = NULL,</if><if test="update.pubInstposEdMM != null">PUB_INSTPOS_ED_MM = #{update.pubInstposEdMM},</if><if test="update.pubInstposEdMM == null">PUB_INSTPOS_ED_MM = NULL,</if><if test="update.pubInstposEdDD != null">PUB_INSTPOS_ED_DD = #{update.pubInstposEdDD},</if><if test="update.pubInstposEdDD == null">PUB_INSTPOS_ED_DD = NULL,</if><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if><if test="update.insShaYmd == null">INS_SHA_YMD = NULL,</if><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if><if test="update.insShaId == null">INS_SHA_ID = NULL,</if><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if><if test="update.updShaYmd == null">UPD_SHA_YMD = NULL,</if><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if><if test="update.updShaId == null">UPD_SHA_ID = NULL,</if></trim>
+        WHERE
+            DOC_NO = #{docNo} AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
+    </update>
+    <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity">
+        UPDATE
+            M_RDM_HCP_PUBLIC
+        <set>
+			<if test="update.classCategoryCdNullFlag == true">CLASS_CATEGORY = NULL,</if><if test="update.classCategoryCdNullFlag == false"><if test="update.classCategoryCd != null">CLASS_CATEGORY = #{update.classCategoryCd},</if></if>
+			<if test="update.pubInstStYYYYNullFlag == true">PUB_INST_ST_YYYY = NULL,</if><if test="update.pubInstStYYYYNullFlag == false"><if test="update.pubInstStYYYY != null">PUB_INST_ST_YYYY = #{update.pubInstStYYYY},</if></if>
+			<if test="update.pubInstStMMNullFlag == true">PUB_INST_ST_MM = NULL,</if><if test="update.pubInstStMMNullFlag == false"><if test="update.pubInstStMM != null">PUB_INST_ST_MM = #{update.pubInstStMM},</if></if>
+			<if test="update.pubInstStDDNullFlag == true">PUB_INST_ST_DD = NULL,</if><if test="update.pubInstStDDNullFlag == false"><if test="update.pubInstStDD != null">PUB_INST_ST_DD = #{update.pubInstStDD},</if></if>
+			<if test="update.pubInstEdYYYYNullFlag == true">PUB_INST_ED_YYYY = NULL,</if><if test="update.pubInstEdYYYYNullFlag == false"><if test="update.pubInstEdYYYY != null">PUB_INST_ED_YYYY = #{update.pubInstEdYYYY},</if></if>
+			<if test="update.pubInstEdMMNullFlag == true">PUB_INST_ED_MM = NULL,</if><if test="update.pubInstEdMMNullFlag == false"><if test="update.pubInstEdMM != null">PUB_INST_ED_MM = #{update.pubInstEdMM},</if></if>
+			<if test="update.pubInstEdDDNullFlag == true">PUB_INST_ED_DD = NULL,</if><if test="update.pubInstEdDDNullFlag == false"><if test="update.pubInstEdDD != null">PUB_INST_ED_DD = #{update.pubInstEdDD},</if></if>
+			<if test="update.pubInstPositionCdNullFlag == true">PUB_INST_POSITION = NULL,</if><if test="update.pubInstPositionCdNullFlag == false"><if test="update.pubInstPositionCd != null">PUB_INST_POSITION = #{update.pubInstPositionCd},</if></if>
+			<if test="update.pubInstposStYYYYNullFlag == true">PUB_INSTPOS_ST_YYYY = NULL,</if><if test="update.pubInstposStYYYYNullFlag == false"><if test="update.pubInstposStYYYY != null">PUB_INSTPOS_ST_YYYY = #{update.pubInstposStYYYY},</if></if>
+			<if test="update.pubInstposStMMNullFlag == true">PUB_INSTPOS_ST_MM = NULL,</if><if test="update.pubInstposStMMNullFlag == false"><if test="update.pubInstposStMM != null">PUB_INSTPOS_ST_MM = #{update.pubInstposStMM},</if></if>
+			<if test="update.pubInstposStDDNullFlag == true">PUB_INSTPOS_ST_DD = NULL,</if><if test="update.pubInstposStDDNullFlag == false"><if test="update.pubInstposStDD != null">PUB_INSTPOS_ST_DD = #{update.pubInstposStDD},</if></if>
+			<if test="update.pubInstposEdYYYYNullFlag == true">PUB_INSTPOS_ED_YYYY = NULL,</if><if test="update.pubInstposEdYYYYNullFlag == false"><if test="update.pubInstposEdYYYY != null">PUB_INSTPOS_ED_YYYY = #{update.pubInstposEdYYYY},</if></if>
+			<if test="update.pubInstposEdMMNullFlag == true">PUB_INSTPOS_ED_MM = NULL,</if><if test="update.pubInstposEdMMNullFlag == false"><if test="update.pubInstposEdMM != null">PUB_INSTPOS_ED_MM = #{update.pubInstposEdMM},</if></if>
+			<if test="update.pubInstposEdDDNullFlag == true">PUB_INSTPOS_ED_DD = NULL,</if><if test="update.pubInstposEdDDNullFlag == false"><if test="update.pubInstposEdDD != null">PUB_INSTPOS_ED_DD = #{update.pubInstposEdDD},</if></if>
+			<if test="update.insShaYmdNullFlag == true">INS_SHA_YMD = NULL,</if><if test="update.insShaYmdNullFlag == false"><if test="update.insShaYmd != null">INS_SHA_YMD = #{update.insShaYmd},</if></if>
+			<if test="update.insShaIdNullFlag == true">INS_SHA_ID = NULL,</if><if test="update.insShaIdNullFlag == false"><if test="update.insShaId != null">INS_SHA_ID = #{update.insShaId},</if></if>
+			<if test="update.updShaYmdNullFlag == true">UPD_SHA_YMD = NULL,</if><if test="update.updShaYmdNullFlag == false"><if test="update.updShaYmd != null">UPD_SHA_YMD = #{update.updShaYmd},</if></if>
+			<if test="update.updShaIdNullFlag == true">UPD_SHA_ID = NULL,</if><if test="update.updShaIdNullFlag == false"><if test="update.updShaId != null">UPD_SHA_ID = #{update.updShaId},</if></if>
+        </set>
+        WHERE
+            DOC_NO = #{docNo} AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity">
+        DELETE FROM
+            M_RDM_HCP_PUBLIC
+        WHERE
+            DOC_NO = #{docNo} AND PUB_INSTITUTION_CD = #{pubInstitutionCd}
+    </delete>
+    <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpPublicEntity">
+        DELETE FROM
+            M_RDM_HCP_PUBLIC
+        <where>
+			<if test="docNo != null">AND DOC_NO = #{docNo}</if>
+			<if test="classCategoryCd != null">AND CLASS_CATEGORY = #{classCategoryCd}</if>
+			<if test="pubInstitutionCd != null">AND PUB_INSTITUTION_CD = #{pubInstitutionCd}</if>
+			<if test="pubInstStYYYY != null">AND PUB_INST_ST_YYYY = #{pubInstStYYYY}</if>
+			<if test="pubInstStMM != null">AND PUB_INST_ST_MM = #{pubInstStMM}</if>
+			<if test="pubInstStDD != null">AND PUB_INST_ST_DD = #{pubInstStDD}</if>
+			<if test="pubInstEdYYYY != null">AND PUB_INST_ED_YYYY = #{pubInstEdYYYY}</if>
+			<if test="pubInstEdMM != null">AND PUB_INST_ED_MM = #{pubInstEdMM}</if>
+			<if test="pubInstEdDD != null">AND PUB_INST_ED_DD = #{pubInstEdDD}</if>
+			<if test="pubInstPositionCd != null">AND PUB_INST_POSITION = #{pubInstPositionCd}</if>
+			<if test="pubInstposStYYYY != null">AND PUB_INSTPOS_ST_YYYY = #{pubInstposStYYYY}</if>
+			<if test="pubInstposStMM != null">AND PUB_INSTPOS_ST_MM = #{pubInstposStMM}</if>
+			<if test="pubInstposStDD != null">AND PUB_INSTPOS_ST_DD = #{pubInstposStDD}</if>
+			<if test="pubInstposEdYYYY != null">AND PUB_INSTPOS_ED_YYYY = #{pubInstposEdYYYY}</if>
+			<if test="pubInstposEdMM != null">AND PUB_INSTPOS_ED_MM = #{pubInstposEdMM}</if>
+			<if test="pubInstposEdDD != null">AND PUB_INSTPOS_ED_DD = #{pubInstposEdDD}</if>
+			<if test="insShaYmd != null">AND INS_SHA_YMD = #{insShaYmd}</if>
+			<if test="insShaId != null">AND INS_SHA_ID = #{insShaId}</if>
+			<if test="updShaYmd != null">AND UPD_SHA_YMD = #{updShaYmd}</if>
+			<if test="updShaId != null">AND UPD_SHA_ID = #{updShaId}</if>
+        </where>
+    </delete>
+
+</mapper>

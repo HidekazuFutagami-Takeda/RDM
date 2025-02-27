@@ -423,6 +423,20 @@
 		FROM
 		T_RDM_REQ_KNR WHERE REQ_ID = #{reqId}
 	</select>
+	<select id="selectNF101CommentData" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+		SELECT
+		  REQ_YMDHMS
+		, REQ_JGI_NAME
+		, REQ_COMMENT
+		FROM
+		T_RDM_REQ_KNR
+		WHERE
+			REQ_TYPE = '21'
+		AND REQ_STS IN ('04', '14')
+		AND INS_NO = #{insNo}
+		ORDER BY
+		REQ_YMDHMS DESC
+	</select>
 	<update id="updateNF011Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
 	UPDATE
 		T_RDM_REQ_KNR

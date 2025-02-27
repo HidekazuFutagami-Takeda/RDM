@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 結合Entityクラス
  * テーブル物理名 : M_RDM_PARAM_MST
- * SQLID : selectParamNC011
+ * SQLID : selectParamNM011
  */
 public class SelectParamNM011Entity extends BaseEntity implements Serializable {
 
@@ -41,16 +41,18 @@ public class SelectParamNM011Entity extends BaseEntity implements Serializable {
      * コンストラクタ
      */
     public SelectParamNM011Entity() {
-    	 super("m_rdm_param_mst" , "selectParamNm011");
+    	 super("m_rdm_param_mst" , "selectParamNM011");
     }
 
+
 	/**
-	 * SelectParamNd001Entity.javaparamNameを設定
+	 * SelectParamNM011Entity.javaparamNameを設定
 	 * @return paramName
 	 */
 	public String getParamName() {
 		return paramName;
 	}
+
 
 	/**
 	 * @param paramName セットする paramName
@@ -59,13 +61,15 @@ public class SelectParamNM011Entity extends BaseEntity implements Serializable {
 		this.paramName = paramName;
 	}
 
+
 	/**
-	 * SelectParamNd001Entity.javavalueを設定
+	 * SelectParamNM011Entity.javavalueを設定
 	 * @return value
 	 */
 	public Integer getValue() {
 		return value;
 	}
+
 
 	/**
 	 * @param value セットする value
@@ -73,6 +77,7 @@ public class SelectParamNM011Entity extends BaseEntity implements Serializable {
 	public void setValue(Integer value) {
 		this.value = value;
 	}
+
 
 	/**
      * このEntityの値を返す

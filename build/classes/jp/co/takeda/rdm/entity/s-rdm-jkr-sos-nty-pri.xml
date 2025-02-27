@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="s_rdm_jkr_sos_nty-pri">
+    <resultMap id="SRdmJkrSosNtyPriEntiryResultMap" type="jp.co.takeda.rdm.entity.SRdmJkrSosNtyPriEntiry">
+        <result column="VALUE1" property="value1"/>
+        <result column="VALUE1_KANJ" property="value1Kanj"/>
+        <result column="IDFLG" property="idFlg"/>
+    </resultMap>
+
+    <select id="selectSRdmJkrSosNtyPriAllEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosNtyPriEntiry" resultMap="SRdmJkrSosNtyPriEntiryResultMap">
+	 SELECT DISTINCT
+		    VALUE1,
+		    VALUE1_KANJ
+	  FROM
+	  	    ORAUSR01.M_RDM_CODE_MST
+	  WHERE
+	        CODE_NAME ='NTY_PRI'
+	  AND   DEL_FLG = 0
+	  ORDER BY
+	   	    VALUE1
+    </select>
+</mapper>

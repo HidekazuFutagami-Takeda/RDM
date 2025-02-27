@@ -246,8 +246,8 @@ public class NM011Action extends BaseAction<NM011DTO> {
     			dto.setMsgStr(tmpMsgStr);
     		}
     		//入力された日付を保持
-    		dto.setInreqYmdhmsFrom(dto.getReqYmdhmsFrom());
-    		dto.setInreqYmdhmsTo(dto.getReqYmdhmsTo());
+    		dto.setInhisYmdhmsFrom(dto.getHisYmdhmsFrom());
+    		dto.setInhisYmdhmsTo(dto.getHisYmdhmsTo());
 
     		//return searchNext(dto);
     		//return outdto.getForward();

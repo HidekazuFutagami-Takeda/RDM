@@ -87,7 +87,7 @@
 		.siz{
 		width:2500px;
 		}
-		      TH.comTableTitle			/* テーブル形式のタイトル項目 */
+		TH.comTableTitle			/* テーブル形式のタイトル項目 */
        {
          color : #000000;
          background-color: #e0e0d4;
@@ -99,6 +99,32 @@
          border-left-width : 1px;
          border-right-width : 1px;
          border-bottom-width : 1px;
+                            /*テーブル幅可変*/
+	      resize : horizontal;
+		  overflow : hidden;
+		  font-weight:normal;
+       }
+       	TD.comTableTitle			/* テーブル形式のタイトル項目 */
+       {
+         color : #000000;
+         background-color: #e0e0d4;
+       /*	background-color: #cccccc;*/
+         background-color: #e8b5a2;
+
+         border-style: solid;
+         border-top-width : 1px;
+         border-left-width : 1px;
+         border-right-width : 1px;
+         border-bottom-width : 1px;
+                   /*テーブル幅可変*/
+	      resize : horizontal;
+		  overflow : hidden;
+		  font-weight:normal;
+       }
+       TD.tkdUlt:first-child {
+         position: sticky;
+         left: 1;
+         z-index:100;
        }
        .tkdUlt TH:first-child {
          position: sticky;
@@ -493,13 +519,13 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
       	  </s:if>
       	  <s:else>
               <div style="max-height:300px;width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-              <table class="siz tkdUlt">
+              <table class="siz">
               		<thead style="z-index:3;">
               <%-- ヘッダー行 --%>
 												<tr>
 													<!-- style="resize : horizontal;overflow : hidden;   " -->
 
-													<th rowspan="4" class="comTableTitle container tkdUlt" width="120px"
+													<td rowspan="4" class="comTableTitle container tkdUlt" width="120px"
 														style="border: none;z-index:3;" id="styles">申請ID <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdAscClass%>" href=""
@@ -507,7 +533,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdDescClass%>" href=""
 														onclick="NC011Sort(1);return false;">▼</a>
-													</th>
+													</td>
 													<td class="comTableTitle container" width="180px"
 														style="border: none;">申請日時 <span
 														style="font-size: 1pt;"> </span> <a
@@ -599,14 +625,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 												<%-- 内容 --%>
 				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
 					<tr>
-						 <th class="comTableItem"style="z-index:2;">
+						 <td class="comTableItem tkdUlt"style="z-index:2;">
 						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />','<s:property  value="reqId" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
 						            <s:hidden  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
 						          </acronym>
 			              </a>
-				  		 </th>
+				  		 </td>
 				  		 <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo"  key="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo" /></td>
 				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqSbt"  key="catSnseiComboDataList[%{#status.index}].reqSbt" /></td>
 				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqType"  key="catSnseiComboDataList[%{#status.index}].reqType" /></td>

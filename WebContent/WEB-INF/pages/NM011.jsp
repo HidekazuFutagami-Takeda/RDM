@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  申請一覧のJSP
+ *  通知一覧のJSP
  * </pre>
  * @since 1.0
  * @version $Revision:
@@ -39,7 +39,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title>NC011_申請一覧</title>
+    <title>NM011_通知一覧</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="css/common2.css" rel="Stylesheet" type="text/css" />
     <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -49,7 +49,7 @@
     <%-- 040C共通のjs --%>
     <!-- <script type="text/javascript" src="js/JKR040C000.js"></script>-->
 
-    <script type="text/javascript" src="js/NC011.js"></script>
+    <script type="text/javascript" src="js/NM011.js"></script>
     <script type="text/javascript" src="js/jkrSosStatus.js"></script>
     <script type="text/javascript" src="js/JKR040C010.js"></script>
     <!--<script type="text/javascript" src="js/RDMNC011.js"></script>-->
@@ -85,9 +85,9 @@
 	    .testlayout {
 	    }
 		.siz{
-		width:2500px;
+		width:1500px;
 		}
-		      TH.comTableTitle			/* テーブル形式のタイトル項目 */
+	TH.comTableTitle			/* テーブル形式のタイトル項目 */
        {
          color : #000000;
          background-color: #e0e0d4;
@@ -99,10 +99,41 @@
          border-left-width : 1px;
          border-right-width : 1px;
          border-bottom-width : 1px;
+                   /*テーブル幅可変*/
+	      resize : horizontal;
+		  overflow : hidden;
+		  font-weight:normal;
        }
-       .tkdUlt TH:first-child {
+       	TD.comTableTitle			/* テーブル形式のタイトル項目 */
+       {
+         color : #000000;
+         background-color: #e0e0d4;
+       /*	background-color: #cccccc;*/
+         background-color: #e8b5a2;
+
+         border-style: solid;
+         border-top-width : 1px;
+         border-left-width : 1px;
+         border-right-width : 1px;
+         border-bottom-width : 1px;
+                   /*テーブル幅可変*/
+	      resize : horizontal;
+		  overflow : hidden;
+		  font-weight:normal;
+       }
+       TD.tkdUlt:nth-child(1) {
          position: sticky;
-         left: 1;
+         left: 0;
+         z-index:100;
+       }
+       TD.tkdUlt:nth-child(2) {
+         position: sticky;
+         left: 109;
+         z-index:100;
+       }
+       TD.tkdUlt:nth-child(3) {
+         position: sticky;
+         left: 259;
          z-index:100;
        }
 	</style>
@@ -208,7 +239,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="申請サマリ"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="通知一覧"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>
@@ -238,175 +269,38 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			</table>
 	<table style="align:cener;">
 		<tr>
-					<%-- 都道府県--%>
-			    <td class="pupControlItem"><nobr>&nbsp;都道府県</nobr></td>
+					<%-- 通知分類--%>
+			    <td class="pupControlItem" ><nobr>&nbsp;通知分類</nobr></td>
 	            <td class="comTableSearchItem">
 				<s:select id="jkrSosAddrCd" name="aDdrCodePref" cssStyle="width:80pt" list ="jkrSosAddrMap" />
 			    </td>
-					<%-- 種別 --%>
-				<td class="pupControlItem"><nobr>&nbsp;種別</nobr></td>
+		</tr>
+		<tr>
+						<%-- 通知件名 --%>
+			<td class="pupControlItem"><nobr>&nbsp;通知件名</nobr><!-- ReqShz,bumonRyakuName --></td>
 	            <td class="comTableSearchItem">
-	            <span onchange="sosSbt(); return false;">
-				<s:select id="jkrSosSbtMap" name="sbt" cssStyle="width:80pt" list ="jkrSosSbtMap" />
-				</span>
+				<s:select id="jkrSosNtySubject" name="ntySubject" cssStyle="width:80pt" list ="jkrSosNtySubject" />
+			    </td>
+		</tr>
+		<tr>	<%-- ステータス --%>
+			<td class="pupControlItem"><nobr>&nbsp;ステータス</nobr></td>
+				<td>
+					 <s:textfield size="20" maxlength="40" name="insKanjiSrch" STYLE="ime-mode:active" />
+				</td>
+		</tr>
+		<tr>
+							<%-- 優先度 --%>
+			<td class="pupControlItem"><nobr>&nbsp;優先度</nobr></td>
+	            <td class="comTableSearchItem">
+				<s:select id="jkrSosNtyPri" name="ntyPri" cssStyle="width:80pt" list ="jkrSosNtyPri" />
 			    </td>
 		</tr>
 		<tr>
-		<s:if test='mrAdminFlg != "1"'>
-								<%-- 申請者所属 --%>
-			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit  value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true" cssStyle="background-color:#D4D0C8;"/>
-			   </nobr>
-			</td>
-				<td >
-					<s:textfield size="20" maxlength="40" id="bumonRyakuName" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssStyle="background-color:#D4D0C8;"/>
-					<a href ="" onClick="popClear();return false;"disabled="true" >Clear</a>
-				</td>
-		</s:if>
-		<s:if test='mrAdminFlg == "1"'>
-						<%-- 申請者所属 --%>
-			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init')"/>
-			   </nobr>
-			</td>
-				<td>
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" />
-					<a href ="" onClick="popClear();return false;">Clear</a>
-				</td>
-		</s:if>
-							<%-- 施設固定C --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設固定C</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="14" name="insNo" style="ime-mode:inactive;" />
-				</td>
-					<%--医師固定C --%>
-			<td class="pupControlItem"><nobr>&nbsp;医師固定C</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="14" name="docNo" style="ime-mode:inactive;" />
-				</td>
-		</tr>
-		<tr>	<%-- 申請者 --%>
-			<s:if test='mrAdminFlg != "1"'>
-			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
-				<td>
-					 <s:textfield readonly="true" Style="width:100pt" name="reqjgiName" cssStyle="background-color:#D4D0C8;"/>
-				</td>
-				</s:if>
-			<s:if test='mrAdminFlg == "1"'>
-			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="40" name="reqJgiName" STYLE="ime-mode:active" />
-				</td>
-				</s:if>
-
-
-					<%-- 施設名(全角) --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設名(全角)※</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="40" name="insKanjiSrch" STYLE="ime-mode:active" />
-				</td>
-						<%-- 医師名(全角) --%>
-			<td class="pupControlItem"><nobr>&nbsp;医師名(全角)</nobr></td>
-				<td>
-					<s:textfield size="20" maxlength="14" name="docKanj" style="ime-mode:inactive;" />
-				</td>
-		</tr>
-		<tr>
-						<%-- 申請日: 操作日-1カ月、操作日 --%>
-				<s:if test='preScreenId == "NM001"'>
-				<td>
-					<input type="date" size="20" maxlength="40" name="reqYmdhmsFrom" id="inreqYmdhmsFrom" value="${reqYmdhmsFrom}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>　～
-				</td>
-				<td>
-					<input type="date" size="20" maxlength="40" name="reqYmdhmsTo" id="inreqYmdhmsTo" value="${reqYmdhmsTo}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>
-				</td>
-				</s:if>
-				<s:if test='preScreenId != "NM001"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
 				<td>
-				<input type="date" name ="reqYmdhmsFrom"id="inreqYmdhmsFrom" value="${inreqYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
-				<input type="date" name ="reqYmdhmsTo"  id="inreqYmdhmsTo" value="${inreqYmdhmsTo}" pattern="yyyy-MM-dd" />
-				</td>
-				</s:if>
-					　　<%-- 施設分類 --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設分類</nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="insClass" cssStyle="width:80pt" list ="jkrSosInsClassMap" />
-			    </td>
-				<%-- 医師／薬剤師区分 --%>
-			<td class="pupControlItem"><nobr>&nbsp;医師／薬剤師区分</nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="docType" cssStyle="width:80pt" list ="jkrSosDocTypeMap" />
-			    </td>
-		</tr>
-		<tr>
-						<%--連携種別 --%>
-			<td class="pupControlItem"><nobr>&nbsp;連携種別</nobr></td>
-	           <td class="comTableSearchItem">
-	           <span onchange="sosReqSbt(); return false;">
-				<s:select id="jkrSosReqSbtMap" name="reqSbt" cssStyle="width:80pt" list ="jkrSosReqSbtMap" />
-				</span>
-		    </td>
-						<%-- 施設種別 --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設種別</nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="insSbt" cssStyle="width:80pt" list ="jkrSosInsSbtMap" />
-			    </td>
-				<%-- 勤務形態 --%>
-			<td class="pupControlItem"><nobr>&nbsp;勤務形態 </nobr></td>
-	            <td class="comTableSearchItem">
-					<s:select id="jkrSosReqStsMap" name="jobForm" cssStyle="width:80pt" list ="JkrSosJobFormMap" />
-			    </td>
-		</tr>
-		<tr>
-						<%-- 申請区分 --%>
-			<td class="pupControlItem"><nobr>&nbsp;申請区分</nobr></td>
-	           <td class="comTableSearchItem">
-			<s:select id="jkrSosReqTypeMap" name="reqType" cssStyle="width:80pt" list ="jkrSosReqTypeMap" />
-		    </td>
-						<%-- 対象区分 --%>
-			<td class="pupControlItem"><nobr>&nbsp;対象区分</nobr></td>
-	            <td class="comTableSearchItem">
-				<s:select id="jkrSosReqStsMap" name="hoInsType" cssStyle="width:80pt" list ="jkrSosHoInsTypeMap" />
-			    </td>
-		</tr>
-			<tr>
-							<%-- 申請ステータス --%>
-				<td class="pupControlItem"><nobr>&nbsp;申請ステータス</nobr></td>
-		            <td class="comTableSearchItem">
-						<s:select id="jkrSosReqStsMap" name="reqSts" cssStyle="width:80pt" list ="jkrSosReqStsMap" />
-				    </td>
-		</tr>
-		<tr>
-							<%-- 申請ID --%>
-				<td class="pupControlItem"><nobr>&nbsp;申請ID</nobr></td>
-					<td>
-						<s:textfield size="20" maxlength="40" name="reqId" STYLE="ime-mode:active" />
-					</td>
-							<%-- 申請コメント --%>
-				<td class="pupControlItem"><nobr>&nbsp;申請コメント</nobr></td>
-					<td>
-						<s:textfield size="20" maxlength="14" name="reqComment" style="ime-mode:inactive;" />
-					</td>
-					<%-- 承認・却下コメント --%>
-				<td class="pupControlItem"><nobr>&nbsp;承認・却下コメント</nobr></td>
-					<td>
-						<s:textfield size="20" maxlength="40" name="aprComment" STYLE="ime-mode:active" />
-					</td>
-		</tr>
-		<tr>
-					<!-- 申請チャネル -->
-					<s:if test='mrAdminFlg != "1"'>
-					<s:hidden id="jkrSosReqChlMap" name="reqChl" list ="jkrSosReqChlMap" />
-					</s:if>
-					<s:if test='mrAdminFlg == "1"'>
-					<td class="pupControlItem"><nobr>&nbsp;申請チャネル</nobr></td>
-		            <td class="comTableSearchItem">
-		            <span onchange="sosAddrChange(); return false;">
-						<s:select id="jkrSosReqChlMap" name="reqChl" cssStyle="width:80pt" list ="jkrSosReqChlMap" />
-				    </span>
-				    </td>
-					</s:if>
+				<input type="date" name ="hisYmdhmsFrom"id="inHisYmdhmsFrom" value="${inhisYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
+				<input type="date" name ="hisYmdhmsTo"  id="inHisYmdhmsTo" value="${inhisYmdhmsTo}" pattern="yyyy-MM-dd" />
+			</td>
 		</tr>
 		<tr>
 			   <td>
@@ -427,7 +321,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <!-- 前頁リンク -->
                             <s:if test="pageCntCur > 1">
                             <nobr>
-                                <a class="comMiniLink" href = "" onClick="NC011Page(<s:property value="pageCntCur-1"/>);return false;">
+                                <a class="comMiniLink" href = "" onClick="NM011Page(<s:property value="pageCntCur-1"/>);return false;">
                                 &lt;&lt; 前
                                 </a>&nbsp;
                             </nobr>
@@ -435,7 +329,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
                             <!-- ページ基準の前頁リンク -->
                             <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="NC011Page(<s:property value="pageCntBase-1"/>);return false;">
+                              <a class="comMiniLink"  href="" style="" onClick="NM011Page(<s:property value="pageCntBase-1"/>);return false;">
                               <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
                             </s:if>
 
@@ -445,7 +339,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                                 <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
                                 <s:if test="#pageCntCurTemp <= pageCntAll">
                                   <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="NC011Page(<s:property value="#pageCntCurTemp"/>);return false;">
+                                    <a  class="comMiniLink"  href="" style="" onClick="NM011Page(<s:property value="#pageCntCurTemp"/>);return false;">
                                     <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
                                   </s:if>
                                   <s:else>
@@ -459,14 +353,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <!-- 次のグループ -->
                             <s:if test="(#pageCntBase + 10) <= pageCntAll">
                                 &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="NC011Page(<s:property value="#pageCntCurTemp-1"/>);return false;">
+                                <a  class="comMiniLink"  href="" style="" onClick="NM011Page(<s:property value="#pageCntCurTemp-1"/>);return false;">
                                 <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
                             </s:if>
 
                             <!-- 次頁  -->
                             <s:if test="pageCntCur < pageCntAll">
                               <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="NC011Page(<s:property value="pageCntCur+1"/>);return false;">
+                                <a class="comMiniLink" href = "" onClick="NM011Page(<s:property value="pageCntCur+1"/>);return false;">
                                   次&gt;&gt;
                                 </a>
                               </nobr>
@@ -493,23 +387,23 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
       	  </s:if>
       	  <s:else>
               <div style="max-height:300px;width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-              <table class="siz tkdUlt">
+              <table class="siz">
               		<thead style="z-index:3;">
               <%-- ヘッダー行 --%>
 												<tr>
 													<!-- style="resize : horizontal;overflow : hidden;   " -->
 
-													<th rowspan="4" class="comTableTitle container tkdUlt" width="120px"
-														style="border: none;z-index:3;" id="styles">申請ID <span
+													<td rowspan="4" class="comTableTitle container tkdUlt" width="120px"
+														style="border: none;z-index:3;" id="styles">通知ID <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdAscClass%>" href=""
 														onclick="NC011Sort(0);return false;">▲</a> <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqIdDescClass%>" href=""
 														onclick="NC011Sort(1);return false;">▼</a>
-													</th>
-													<td class="comTableTitle container" width="180px"
-														style="border: none;">申請日時 <span
+													</td>
+													<td rowspan="4" class="comTableTitle container tkdUlt" width="180px"
+														style="border: none;">発生日時 <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqYmdhmsAscClass%>" href=""
 														onclick="NC011Sort(2);return false;">▲</a> <span
@@ -517,120 +411,43 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 														class="<%=reqYmdhmsDescClass%>" href=""
 														onclick="NC011Sort(3);return false;">▼</a>
 													</td>
-													<td class="comTableTitle container" width="120px"
-														style="border: none;">連携種別 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqSbtAscClass%>" href=""
-														onclick="NC011Sort(4);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqSbtDescClass%>" href=""
-														onclick="NC011Sort(5);return false;">▼</a>
+													<td rowspan="4" class="comTableTitle container tkdUlt" width="120px"
+														style="border: none;">通知分類
 													</td>
 													<td class="comTableTitle container"
-														style="width: 140px; border: none;">申請区分 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeAscClass%>" href=""
-														onclick="NC011Sort(6);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeDescClass%>" href=""
-														onclick="NC011Sort(7);return false;">▼</a>
+														style="width: 140px; border: none;">通知件名
 													</td>
 													<td class="comTableTitle container"
-														style="width: 140px; border: none;">申請区分 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeAscClass%>" href=""
-														onclick="NC011Sort(6);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqTypeDescClass%>" href=""
-														onclick="NC011Sort(7);return false;">▼</a>
-													</td>
+														style="width: 500px; border: none;">通知内容</td>
 													<td class="comTableTitle container"
-														style="width: 50px; border: none;">種別 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=sbtAscClass%>" href=""
-														onclick="NC011Sort(10);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=sbtDescClass%>" href=""
-														onclick="NC011Sort(11);return false;">▼</a>
-													</td>
+														style="width: 500px; border: none;">通知メモ</td>											</td>
 													<td class="comTableTitle container"
-														style="width: 90px; border: none;">施設／医師固定C</td>
+														style="width: 90px; border: none;">通知ステータス</td>
 													<td class="comTableTitle container"
-														style="width: 300px; border: none;">施設／医師名</td>
+														style="width: 80px; border: none;">通知優先度</td>
 													<td class="comTableTitle container"
-														style="width: 90px; border: none;">申請者 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqJgiNameAscClass%>" href=""
-														onclick="NC011Sort(12);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=reqJgiNameDescClass%>" href=""
-														onclick="NC011Sort(13);return false;">▼</a>
-													</td>
-													<td class="comTableTitle container"
-														style="width: 300px; border: none;">申請者所属</td>
-													<td class="comTableTitle container"
-														style="width: 120px; border: none;">申請コメント</td>
-													<s:if test='mrAdminFlg == "1"'>
-														<td class="comTableTitle container"
-															style="width: 30px; border: none;">審査</td>
-														<td class="comTableTitle container"
-															style="width: 160px; border: none;">審査日時</td>
-														<td class="comTableTitle container"
-															style="width: 90px; border: none;">審査者</td>
-													</s:if>
-													<td class="comTableTitle container"
-														style="width: 160px; border: none;">承認日時</td>
-													<td class="comTableTitle container"
-														style="width: 90px; border: none;">承認者</td>
-													<td class="comTableTitle container"
-														style="width: 120px; border: none;">審査・承認メモ</td>
-													<td class="comTableTitle container"
-														style="width: 120px; border: none;">承認・却下コメント</td>
-													<s:if test='mrAdminFlg == "1"'>
-														<td class="comTableTitle container"
-															style="width: 80px; border: none;">FB申請要否</td>
-														<td class="comTableTitle container"
-															style="width: 50px; border: none;">FB回答</td>
-														<td class="comTableTitle container"
-															style="width: 80px; border: none;">FB処理区分</td>
-													</s:if>
+														style="width: 180px; border: none;">最終更新日時</td>
 												</tr>
 								</thead>
 												<%-- 内容 --%>
-				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
+				<s:iterator value="catTuuchiComboDataList" status="status" var="rowBean">
 					<tr>
-						 <th class="comTableItem"style="z-index:2;">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />','<s:property  value="reqId" />');return false;">
+						 <td class="comTableItem tkdUlt"style="z-index:2;">
+						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="ntyId" />','<s:property  value="reqId" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
-						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
-						            <s:hidden  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
+						            <s:label  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
+						            <s:hidden  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
 						          </acronym>
 			              </a>
-				  		 </th>
-				  		 <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo"  key="catSnseiComboDataList[%{#status.index}].reqYmdhmsTo" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqSbt"  key="catSnseiComboDataList[%{#status.index}].reqSbt" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqType"  key="catSnseiComboDataList[%{#status.index}].reqType" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqSts"  key="catSnseiComboDataList[%{#status.index}].reqSts" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].sbt"  key="catSnseiComboDataList[%{#status.index}].sbt"/></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].insNo"  key="catSnseiComboDataList[%{#status.index}].insNo" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].insFormalName"  key="catSnseiComboDataList[%{#status.index}].insFormalName" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqJgiName"  key="catSnseiComboDataList[%{#status.index}].reqJgiName" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqShz"  key="catSnseiComboDataList[%{#status.index}].reqShz" /></td>
-				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqComment"  key="catSnseiComboDataList[%{#status.index}].reqComment" /></td>
-					 <s:if test='mrAdminFlg == "1"'>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnFlg"  key="catSnseiComboDataList[%{#status.index}].shnFlg" /></td>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnYmdhms"  key="catSnseiComboDataList[%{#status.index}].shnYmdhms" /></td>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnShaId"  key="catSnseiComboDataList[%{#status.index}].shnShaId" /></td>
-				     </s:if>
-				     	  <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS"  key="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS" /></td>
-				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID"  key="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID" /></td>
-		  		          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_MEMO"  key="catSnseiComboDataList[%{#status.index}].aPR_MEMO" /></td>
-		       		      <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aprComment"  key="catSnseiComboDataList[%{#status.index}].aprComment" /></td>
-			      	 <s:if test='mrAdminFlg == "1"'>
-			          	  <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbReqFlg"  key="catSnseiComboDataList[%{#status.index}].fbReqFlg" /></td>
-			              <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbAnsId"  key="catSnseiComboDataList[%{#status.index}].fbAnsId" /></td>
-			              <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbPrcType"  key="catSnseiComboDataList[%{#status.index}].fbPrcType" /></td>
-			      	 </s:if>
+				  		 </td>
+				  		 <td class="comTableItem tkdUlt" style="z-index:2;"><s:label  name="catTuuchiComboDataList[%{#status.index}].hisYmdhmsTo"  key="catTuuchiComboDataList[%{#status.index}].hisYmdhmsTo" /></td>
+				         <td class="comTableItem tkdUlt" style="z-index:2;"><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyBri"  key="catTuuchiComboDataList[%{#status.index}].ntyBri" /></td>
+				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySubject"  key="catTuuchiComboDataList[%{#status.index}].ntySubject" /></td>
+				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyData.replaceAll('\\n', '<br />')"  key="catTuuchiComboDataList[%{#status.index}].ntyData.replaceAll('\\n', '<br />')" /></td>
+				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyMemo"  key="catTuuchiComboDataList[%{#status.index}].ntyMemo"/></td>
+				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySts"  key="catTuuchiComboDataList[%{#status.index}].ntySts" /></td>
+				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyPri"  key="catTuuchiComboDataList[%{#status.index}].ntyPri" /></td>
+				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms"  key="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms" /></td>
 					</tr>
 				</s:iterator>
 

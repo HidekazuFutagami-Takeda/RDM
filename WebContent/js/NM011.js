@@ -37,7 +37,7 @@ function rdmSearch() {
 
 	if (!jkrDestructChack()) return false;
 
-      document.fm1.screenId.value	= "NC011";
+      document.fm1.screenId.value	= "NM011";
       document.fm1.functionId.value = 'Search';
 
 
@@ -54,12 +54,12 @@ function rdmSearch() {
 
 }
 
-function NC011Sort(sortCondition) {
+function NM011Sort(sortCondition) {
 	if (!jkrDestructChack()) return false;
 
 	  //ソート区分設定
 	  document.fm1.sortCondition.value = sortCondition;
-    document.fm1.screenId.value	= "NC011";
+    document.fm1.screenId.value	= "NM011";
     document.fm1.functionId.value = 'Sort';
 
   comSubmitForAnyWarp(fm1);
@@ -72,12 +72,12 @@ function NC011Sort(sortCondition) {
  * ページ切替えリンク押下時に呼ばれます。
  * </pre>
  */
-function NC011Page( pageCntCur ){
+function NM011Page( pageCntCur ){
   // 変更内容破棄確認チェック
   if (!jkrDestructChack()) return false;
   //現在ページ番号変更（遷移）
   document.fm1.pageCntCur.value = pageCntCur;
-  document.fm1.screenId.value	= "NC011";
+  document.fm1.screenId.value	= "NM011";
   document.fm1.functionId.value = 'Page';
   // 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);
@@ -124,7 +124,7 @@ function gotoNext(screenId,functionId){
 	  fm1.functionId.value=functionId;
 	  comSubmitForAnyWarp(fm1);
 	}
-function NC011Seni(reqType) {
+function NM011Seni(reqType) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
 	if(reqType == "01"){
@@ -456,7 +456,7 @@ function jimSort(sortCondition){
 	  document.fm1.sortCondition.value = sortCondition;
 
 	  //document.fm1.screenId.value	= document.fm1.gamenId.value;
-	  document.fm1.screenId.value	= "NC011";
+	  document.fm1.screenId.value	= "NM011";
 	  document.fm1.functionId.value = 'Sort';
 
 	  // 検索イベント呼び出し
@@ -581,7 +581,7 @@ function jimClear( name ) {
       } else if (document.fm1.gamenId.value == "JKR040C020") {
       } else if (document.fm1.gamenId.value == "JKR040C030") {
         setAllChgBtnStatus("chgInsCityList");
-      } else if (document.fm1.gamenId.value == "NC011") {
+      } else if (document.fm1.gamenId.value == "NM011") {
         setAllChgBtnStatus010("chgInsTrtList");
       }
   } else if (name == 'chgAddSos') {

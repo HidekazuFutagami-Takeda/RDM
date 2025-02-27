@@ -3,155 +3,101 @@
 <mapper namespace="t-rdm-nty-knr">
 
     <resultMap id="sJkrJkrAuthKnrResultMap" type="jp.co.takeda.rdm.entity.SRdmNtyListEntity">
-        <result column="REQ_ID" property="reqId"/>
-        <result column="REQ_YMDHMS" property="reqYmdhmsFrom"/>
-        <result column="REQ_YMDHMS" property="reqYmdhmsTo"/>
-        <result column="REQ_CHL" property="reqChl"/>
-        <result column="REQ_TYPE" property="reqType"/><!-- reqKbn=req_TYPE -->
-        <result column="REQ_STS" property="reqSts"/>
-        <result column="INS_NO" property="insNo"/>
-        <result column="DOC_NO" property="docNo"/>
-        <result column="DOC_KANJ" property="docKanj"/>
-        <result column="DOC_KANJI_SRCH" property="docKanjiSrch"/>
-        <result column="REQ_JGI_NAME" property="reqJgiName"/>
-        <result column="REQ_SHZ" property="reqShz"/>
-        <result column="APR_YMDHMS" property="aPR_YMDHMS"/>
-        <result column="APR_SHA_ID" property="aPR_SHA_ID"/>
-        <result column="APR_MEMO" property="aPR_MEMO"/>
-        <result column="APR_COMMENT" property="aprComment"/>
-        <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
-        <result column="REQ_JGI_NO" property="reqJgiNo"/>
-        <result column="REQ_BR_CODE" property="brCode"/>
-        <result column="REQ_DIST_CODE" property="distCode"/>
-        <result column="INS_NO_SK" property="insNoSk"/>
-        <result column="INS_NO_MT" property="insNoMt"/>
-        <result column="INS_ABBR_NAME" property="insAbbrName"/>
-        <result column="INS_FORMAL_NAME" property="insFormalName"/>
-        <result column="INS_CONT_NAME" property="insContName"/>
-        <result column="INS_KANJ_SRCH" property="insKanjiSrch"/>
-        <result column="INS_CLASS" property="insClass"/>
-        <result column="INS_SBT" property="insSbt"/>
-        <result column="HO_INS_TYPE" property="hoInsType"/>
-        <result column="DOC_TYPE" property="docType"/>
-        <result column="JOB_FORM" property="jobForm"/>
-        <result column="JOB_FORM_BF" property="jobFormBf"/>
-        <result column="JOB_FORM_AF" property="jobFormAf"/>
-        <result column="VALUE1" property="vALUE1"/>
-        <result column="REQ_COMMENT" property="reqComment"/>
-        <result column="INSORDOC" property="iNSORDOC"/>
-        <result column="MRORKNR" property="mRORKNR"/>
-        <result column="SBT" property="sBt"/>
-        <result column="EMP_ID" property="eMP_ID"/>
-        <result column="LEN_SBT" property="reqSbt"/>
-        <result column="SORT_ID" property="sORT_ID"/>
-        <result column="MR_ADMIN_FLG" property="mrAdminFlg"/>
+        <result column="NTY_ID" property="ntyId"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsFrom"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsTo"/>
+        <result column="NTY_BRI" property="ntyBri"/>
+        <result column="NTY_STS" property="ntySts"/>
+        <result column="NTY_PRI" property="ntyPri"/>
+        <result column="SS_UPD_YMDHMS" property="ssUpdYmdhms"/>
+        <result column="NTY_SUBJECT" property="ntySubject"/>
+        <result column="NTY_DATA1" property="ntyData"/>
+        <result column="NTY_MEMO" property="ntyMemo"/>
+        <result column="YOU_FLG" property="youFlg"/>
         <result column="INSORTID" property="inSortId"/>
-        <result column="SHN_FLG" property="shnFlg"/>
-        <result column="SHN_YMDHMS" property="shnYmdhms"/>
-        <result column="SHN_SHA_ID" property="shnShaId"/>
-        <result column="FB_REQ_FLG" property="fbReqFlg"/>
-        <result column="FB_ANS_ID" property="fbAnsId"/>
-        <result column="FB_PRC_TYPE" property="fbPrcType"/>
+
     </resultMap>
-    <resultMap id="selectCntNtyListResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectReqListEntity">
+    <resultMap id="selectCntNtyListResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectNtyListEntity">
         <result column="CNT_REQ" property="CntReq"/>
-        <result column="REQ_ID" property="reqId"/>
-        <result column="REQ_YMDHMS" property="reqYmdhmsFrom"/>
-        <result column="REQ_YMDHMS" property="reqYmdhmsTo"/>
-        <result column="REQ_CHL" property="reqChl"/>
-        <result column="REQ_TYPE" property="reqType"/><!-- reqKbn=req_TYPE -->
-        <result column="REQ_STS" property="reqSts"/>
-        <result column="INS_NO" property="insNo"/>
-        <result column="DOC_NO" property="docNo"/>
-        <result column="DOC_KANJ" property="docKanj"/>
-        <result column="DOC_KANJI_SRCH" property="docKanjiSrch"/>
-        <result column="REQ_JGI_NAME" property="reqJgiName"/>
-        <result column="REQ_SHZ" property="reqShz"/>
-        <result column="APR_YMDHMS" property="aPR_YMDHMS"/>
-        <result column="APR_SHA_ID" property="aPR_SHA_ID"/>
-        <result column="APR_MEMO" property="aPR_MEMO"/>
-        <result column="APR_COMMENT" property="aprComment"/>
-        <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
-        <result column="REQ_JGI_NO" property="reqJgiNo"/>
-        <result column="REQ_BR_CODE" property="brCode"/>
-        <result column="REQ_DIST_CODE" property="distCode"/>
-        <result column="INS_NO_SK" property="insNoSk"/>
-        <result column="INS_NO_MT" property="insNoMt"/>
-        <result column="INS_ABBR_NAME" property="insAbbrName"/>
-        <result column="INS_FORMAL_NAME" property="insFormalName"/>
-        <result column="INS_CONT_NAME" property="insContName"/>
-        <result column="INS_KANJ_SRCH" property="insKanjiSrch"/>
-        <result column="INS_CLASS" property="insClass"/>
-        <result column="INS_SBT" property="insSbt"/>
-        <result column="HO_INS_TYPE" property="hoInsType"/>
-        <result column="DOC_TYPE" property="docType"/>
-        <result column="JOB_FORM" property="jobForm"/>
-        <result column="JOB_FORM_BF" property="jobFormBf"/>
-        <result column="JOB_FORM_AF" property="jobFormAf"/>
-        <result column="VALUE1" property="vALUE1"/>
-        <result column="REQ_COMMENT" property="reqComment"/>
-        <result column="INSORDOC" property="iNSORDOC"/>
-        <result column="MRORKNR" property="mRORKNR"/>
-        <result column="SBT" property="sBt"/>
-        <result column="EMP_ID" property="eMP_ID"/>
-        <result column="LEN_SBT" property="reqSbt"/>
-        <result column="SORT_ID" property="sORT_ID"/>
-        <result column="MR_ADMIN_FLG" property="mrAdminFlg"/>
-        <result column="INSORTID" property="inSortId"/>
-        <result column="SHN_FLG" property="shnFlg"/>
-        <result column="SHN_YMDHMS" property="shnYmdhms"/>
-        <result column="SHN_SHA_ID" property="shnShaId"/>
-        <result column="FB_REQ_FLG" property="fbReqFlg"/>
-        <result column="FB_ANS_ID" property="fbAnsId"/>
-        <result column="FB_PRC_TYPE" property="fbPrcType"/>
+        <result column="NTY_ID" property="ntyId"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsFrom"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsTo"/>
+        <result column="NTY_BRI" property="ntyBri"/>
+        <result column="NTY_STS" property="ntySts"/>
+        <result column="NTY_PRI" property="ntyPri"/>
+        <result column="SS_UPD_YMDHMS" property="ssUpdYmdhms"/>
+        <result column="NTY_SUBJECT" property="ntySubject"/>
+        <result column="NTY_DATA1" property="ntyData"/>
+        <result column="NTY_MEMO" property="ntyMemo"/>
+        <result column="YOU_FLG" property="youFlg"/>
     </resultMap>
   <select id="selectNtyKnr" parameterType="jp.co.takeda.rdm.entity.SRdmNtyListEntity" resultMap="sJkrJkrAuthKnrResultMap">
-		SELECT   DISTINCT
-            NTY_ID,                        --通知ID
-            HIS_YMDHMS,                    --発生日時
-            CODE_MST_BRI.VALUE1_KANJ BRI,  --コード情報から値を取得？　通知分類
-            NTY_SUBJECT,                   --通知件名
-            NTY_DATA1,                     --通知内容1
-            NTY_MEMO,                      --メモ
-            CODE_MST_STS.VALUE1_KANJ STS,  --コード情報から　通知ステータス
-            CODE_MST_PRI.VALUE1_KANJ PRI,  --コード情報から　通知優先度
-            SS_UPD_YMDHMS                  --所属部科漢字名？最終更新日時
-FROM        ORAUSR01.T_RDM_NTY_KNR NTY_KNR
-LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_BRI--コード情報 通知分類
-            ON    CODE_MST_BRI.CODE_NAME = 'NTY_BRI'
-            AND  CODE_MST_BRI.DEL_FLG = '0'
-            AND  CODE_MST_BRI.VALUE1 = NTY_KNR.NTY_BRI
-LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_STS--コード情報 通知ステータス
-            ON  CODE_MST_STS.CODE_NAME = 'NTY_STS'
-            AND  CODE_MST_STS.DEL_FLG = '0'
-            AND  CODE_MST_STS.VALUE1 = NTY_KNR.NTY_STS
-LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_PRI--コード情報 通知優先度
-            ON  CODE_MST_PRI.CODE_NAME = 'NTY_PRI'
-            AND  CODE_MST_PRI.DEL_FLG = '0'
-            AND  CODE_MST_PRI.VALUE1 = NTY_KNR.NTY_PRI
-LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_SUBJECT--コード情報 通知件名
-            ON  CODE_MST_SUBJECT.CODE_NAME = 'NTY_SUBJECT'
-            AND  CODE_MST_SUBJECT.DEL_FLG = '0'
-            AND  CODE_MST_SUBJECT.VALUE1_KANJ = NTY_KNR.NTY_SUBJECT
-WHERE
-1=1
-            AND NTY_KNR.NTY_BRI IN('001','002','003','004','005','006','007')
-            AND NTY_KNR.NTY_SUBJECT = 'データ整合性アラート' --仮
-            AND NTY_KNR.NTY_STS IN ('0','1','2')
-            AND NTY_KNR.NTY_PRI = '3'
-            AND NTY_KNR.HIS_YMDHMS &gt;= #{reqYmdhmsFrom}
-            AND NTY_KNR.HIS_YMDHMS &lt;= #{reqYmdhmsTo}
+	SELECT   DISTINCT
+	            NTY_ID,                        --通知ID
+	            HIS_YMDHMS,                    --発生日時
+	            CODE_MST_BRI.VALUE1_KANJ NTY_BRI,  --コード情報から値を取得？　通知分類
+	            NTY_SUBJECT,                   --通知件名
+	            REPLACE(NTY_DATA1, CHR(10), '\\n') NTY_DATA1,                     --通知内容1
+	            NTY_MEMO,                      --メモ
+	            CODE_MST_STS.VALUE1_KANJ NTY_STS,  --コード情報から　通知ステータス
+	            CODE_MST_PRI.VALUE1_KANJ NTY_PRI,  --コード情報から　通知優先度
+	            SS_UPD_YMDHMS                  --所属部科漢字名？最終更新日時
+	FROM        ORAUSR01.T_RDM_NTY_KNR NTY_KNR
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_BRI--コード情報 通知分類
+	            ON    CODE_MST_BRI.CODE_NAME = 'NTY_BRI'
+	            AND  CODE_MST_BRI.DEL_FLG = '0'
+	            AND  CODE_MST_BRI.VALUE1 = NTY_KNR.NTY_BRI
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_STS--コード情報 通知ステータス
+	            ON  CODE_MST_STS.CODE_NAME = 'NTY_STS'
+	            AND  CODE_MST_STS.DEL_FLG = '0'
+	            AND  CODE_MST_STS.VALUE1 = NTY_KNR.NTY_STS
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_PRI--コード情報 通知優先度
+	            ON  CODE_MST_PRI.CODE_NAME = 'NTY_PRI'
+	            AND  CODE_MST_PRI.DEL_FLG = '0'
+	            AND  CODE_MST_PRI.VALUE1 = NTY_KNR.NTY_PRI
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_SUBJECT--コード情報 通知件名
+	            ON  CODE_MST_SUBJECT.CODE_NAME = 'NTY_SUBJECT'
+	            AND  CODE_MST_SUBJECT.DEL_FLG = '0'
+	            AND  CODE_MST_SUBJECT.VALUE1_KANJ = NTY_KNR.NTY_SUBJECT
+	WHERE
+	1=1
+	<if test="youFlg !='0'">
+		<if test="ntyBri != null">
+	            AND NTY_KNR.NTY_BRI IN('001','002','003','004','005','006','007')
+	    </if>
+	    <if test="ntySubject != null">
+	            AND NTY_KNR.NTY_SUBJECT = #{ntySubject}
+	    </if>
+	    <if test="ntySts != null">
+	            AND NTY_KNR.NTY_STS IN ('0','1','2')
+	    </if>
+	    <if test="ntyPri != null">
+	            AND NTY_KNR.NTY_PRI = #{ntyPri}
+	    </if>
+	    <if test="hisYmdhmsFrom != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &gt;= #{hisYmdhmsFrom}
+	    </if>
+	    <if test="hisYmdhmsTo != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
+		</if>
+	</if>
+	<if test="youFlg !='1'">
+	            AND NTY_KNR.NTY_PRI = '3'   --高 固定値
 
-            AND NTY_KNR.NTY_PRI = '3'
-            AND NTY_KNR.HIS_YMDHMS &gt;= #{reqYmdhmsFrom}
-            AND NTY_KNR.HIS_YMDHMS &lt;= #{reqYmdhmsTo}
-            AND CODE_MST_SUBJECT.VALUE2 = 2
+	    <if test="hisYmdhmsFrom != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &gt;= #{hisYmdhmsFrom}
+	    </if>
+	    <if test="hisYmdhmsTo != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
+	    </if>
 
+	            AND CODE_MST_SUBJECT.VALUE2 = 2  --対策要 固定値
+	</if>
 
 		--ソートID NULL OR '0'
-        <if test="inSortId == 0 or inSortId == null">ORDER BY REQ_KNR.REQ_ID ASC NULLS FIRST</if>
+        <if test="inSortId == 0 or inSortId == null">ORDER BY NTY_KNR.NTY_ID ASC NULLS FIRST</if>
 		--ソートID '1'
-        <if test="inSortId == 1 ">ORDER BY REQ_KNR.REQ_ID DESC NULLS LAST</if>
+        <if test="inSortId == 1 ">ORDER BY NTY_KNR.NTY_ID DESC NULLS LAST</if>
 		--ソートID '2'
         <if test="inSortId == 2 ">ORDER BY REQ_KNR.REQ_YMDHMS ASC NULLS FIRST</if>
         --ソートID '3'
@@ -181,279 +127,67 @@ WHERE
   <select id="countNtyKnr" parameterType="jp.co.takeda.rdm.entity.SRdmNtyListEntity" resultMap="selectCntNtyListResultMap">
 	  SELECT COUNT(*) CNT_REQ
  	  FROM(
-
-		WITH HCP_KMS_MAX AS(--■サブクエリ（医師勤務先）
-		    SELECT MAX(INS_NO) MAX_INS_NO,
-		           DOC_NO
-		      FROM ORAUSR01.M_RDM_HCP_WORK
-		      GROUP BY DOC_NO
-		)
-		, HCP_INS AS (--■サブクエリ（医師勤務）
-		    SELECT  HCP_REQ.REQ_ID
-		           ,CASE
-		                 WHEN REQ_KNR.REQ_TYPE = '31' THEN HCP_REQ.INS_NO_SK
-		                 WHEN HCP_KMS_MAX.MAX_INS_NO IS NULL THEN '000000000'
-		                 ELSE HCP_KMS_MAX.MAX_INS_NO
-		            END HCP_INS_NO
-		      FROM  ORAUSR01.T_RDM_HCP_REQ HCP_REQ
-		           LEFT JOIN
-		            HCP_KMS_MAX
-		           ON (
-		                 HCP_REQ.DOC_NO = HCP_KMS_MAX.DOC_NO
-		              )
-		           LEFT JOIN
-		            ORAUSR01.T_RDM_REQ_KNR REQ_KNR
-		           ON (
-		                 REQ_KNR.REQ_ID = HCP_REQ.REQ_ID
-		              )
-		)
-	  	  SELECT
-		  	REQ_KNR.REQ_ID,REQ_KNR.REQ_YMDHMS,REQ_KNR.REQ_CHL,
-		    REQ_KNR.REQ_TYPE,REQ_KNR.REQ_STS,
-
-		    --(検索処理:施設か医師かの判定:医師)
-		    --HCO_REQ.INS_NO,HCO_REQ.INS_FORMAL_NAME,
-
-		    CASE
-			        WHEN REQ_KNR.REQ_TYPE IN ('01','02','03','04') THEN HCO_REQ.INS_NO
-			        WHEN REQ_KNR.REQ_TYPE IN ('11','12','13','21')  THEN HCO_MST.INS_NO
-			END AS INS_NO --施設、医師、どちらかになるが、分けると長くなるため省略のためINS＿NOに統一
-			,CASE
-			        WHEN REQ_KNR.REQ_TYPE IN ('01','02','03','04') THEN HCO_REQ.INS_FORMAL_NAME
-			        WHEN REQ_KNR.REQ_TYPE IN ('11','12','13','21')   THEN HCO_MST.INS_FORMAL_NAME
-			END AS INS_FORMAL_NAME
-
-		    ,CASE
-			        WHEN REQ_KNR.REQ_TYPE IN ('31','32','33','34') THEN HCP_REQ.DOC_NO
-			        WHEN REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')  THEN HCP_MST.DOC_NO
-			END AS DOC_NO --施設、医師、どちらかになるが、分けると長くなるため省略のためINS＿NOに統一
-			,CASE
-			        WHEN REQ_KNR.REQ_TYPE IN ('31','32','33','34') THEN HCP_REQ.DOC_KANJ
-			        WHEN REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')  THEN HCP_MST.DOC_KANJ
-			END AS DOC_KANJ
-		    ,REQ_KNR.REQ_JGI_NAME,REQ_KNR.REQ_SHZ,REQ_KNR.REQ_COMMENT,REQ_KNR.APR_YMDHMS,REQ_KNR.APR_SHA_ID,
-		    REQ_KNR.APR_MEMO,REQ_KNR.APR_COMMENT
-		<if test='mrAdminFlg == "1"'>
-		   ,REQ_KNR.SHN_FLG,
-		    REQ_KNR.SHN_YMDHMS,
-		    REQ_KNR.SHN_SHA_ID,
-		    --REQ_KNR.FB_REQ_FLG,
-		    CODE_REQ_FLG.VALUE1_KANJ FB_REQ_FLG,
-		    REQ_KNR.FB_ANS_ID,
-		    --REQ_KNR.FB_PRC_TYPE
-			CODE_PRC_TYPE.VALUE1_KANJ FB_PRC_TYPE
-		</if>
-	  FROM  ORAUSR01.T_RDM_REQ_KNR REQ_KNR --申請管理
-			left join ORAUSR01.T_RDM_HCO_REQ HCO_REQ --施設_申請管理　
-			on HCO_REQ.REQ_ID=REQ_KNR.REQ_ID
-			left join ORAUSR01.T_RDM_HCO_NXT_REQ HCO_NXT_REQ --施設_来期用_申請管理
-			on HCO_NXT_REQ.REQ_ID=REQ_KNR.REQ_ID
-			left join ORAUSR01.T_RDM_HCO_LNK_REQ HCO_LNK_REQ --武田紐親子_来期用_申請管理
-			on HCO_LNK_REQ.REQ_ID=REQ_KNR.REQ_ID
-			left join ORAUSR01.T_RDM_HCO_LNK_NXT_REQ HCO_LNK_NXT_REQ --領域品目グループ別親子_申請管理
-			on HCO_LNK_NXT_REQ.REQ_ID=REQ_KNR.REQ_ID
-			left join ORAUSR01.T_RDM_HCP_REQ HCP_REQ --医師_申請管理
-			on HCP_REQ.REQ_ID=REQ_KNR.REQ_ID
-			left join ORAUSR01.T_RDM_HCP_KMU_REQ HCP_KMU_REQ --勤務先_申請管理
-			on HCP_KMU_REQ.REQ_ID=REQ_KNR.REQ_ID
-            LEFT JOIN HCP_INS  --■サブクエリ（医師勤務）
-		    ON HCP_INS.REQ_ID=REQ_KNR.REQ_ID
-			LEFT JOIN ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
-	        ON HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
-            OR HCO_REQ.INS_NO=HCO_MST.INS_NO
-			OR HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
-			left join ORAUSR01.M_RDM_HCP_MST HCP_MST --医師_基本情報
-			on HCP_MST.DOC_NO=nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(HCP_REQ.DOC_NO,HCP_REQ.DOC_NO,HCP_KMU_REQ.DOC_NO)))
-			left join  ORAUSR01.M_RDM_CODE_MST CODE_LB --コード情報 申請区分_LB
-			on  CODE_LB.CODE_NAME = 'REQ_KBN_LB'
-			AND CODE_LB.DEL_FLG = '0'
-      		AND CODE_LB.VALUE1 = REQ_KNR.REQ_TYPE
-			left join  ORAUSR01.M_RDM_CODE_MST CODE_LBV --コード情報 申請区分_LBV
-			on  CODE_LBV.CODE_NAME = 'REQ_KBN_LBV'
-			AND CODE_LBV.DEL_FLG = '0'
-			AND CODE_LBV.VALUE2 = CODE_LB.VALUE1
-			AND CODE_LBV.VALUE3 = REQ_KNR.REQ_TYPE
-			<if test='mrAdminFlg == "1"'>
-		    left join  ORAUSR01.M_RDM_CODE_MST CODE_REQ_FLG --コード情報FB申請要否
-			ON CODE_REQ_FLG.VALUE1 = REQ_KNR.FB_REQ_FLG
-		    AND CODE_REQ_FLG.CODE_NAME ='FB_REQ_FLG'
-		    left join  ORAUSR01.M_RDM_CODE_MST CODE_PRC_TYPE --コード情報FB処理区分
-			ON  CODE_PRC_TYPE.VALUE1 = REQ_KNR.FB_PRC_TYPE
-		    AND CODE_PRC_TYPE.CODE_NAME ='FB_PRC_TYPE'
-		    </if>
-	<where>
-		1=1
-		<if test="insNo != null">
-	    AND HCO_MST.INS_NO = #{insNo}
+	SELECT   DISTINCT
+	            NTY_ID,                        --通知ID
+	            HIS_YMDHMS,                    --発生日時
+	            CODE_MST_BRI.VALUE1_KANJ NTY_BRI,  --コード情報から値を取得？　通知分類
+	            NTY_SUBJECT,                   --通知件名
+	            REPLACE(NTY_DATA1, CHR(10), '\\n') NTY_DATA1,                    --通知内容1
+	            NTY_MEMO,                      --メモ
+	            CODE_MST_STS.VALUE1_KANJ NTY_STS,  --コード情報から　通知ステータス
+	            CODE_MST_PRI.VALUE1_KANJ NTY_PRI,  --コード情報から　通知優先度
+	            SS_UPD_YMDHMS                  --所属部科漢字名？最終更新日時
+	FROM        ORAUSR01.T_RDM_NTY_KNR NTY_KNR
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_BRI--コード情報 通知分類
+	            ON    CODE_MST_BRI.CODE_NAME = 'NTY_BRI'
+	            AND  CODE_MST_BRI.DEL_FLG = '0'
+	            AND  CODE_MST_BRI.VALUE1 = NTY_KNR.NTY_BRI
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_STS--コード情報 通知ステータス
+	            ON  CODE_MST_STS.CODE_NAME = 'NTY_STS'
+	            AND  CODE_MST_STS.DEL_FLG = '0'
+	            AND  CODE_MST_STS.VALUE1 = NTY_KNR.NTY_STS
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_PRI--コード情報 通知優先度
+	            ON  CODE_MST_PRI.CODE_NAME = 'NTY_PRI'
+	            AND  CODE_MST_PRI.DEL_FLG = '0'
+	            AND  CODE_MST_PRI.VALUE1 = NTY_KNR.NTY_PRI
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_SUBJECT--コード情報 通知件名
+	            ON  CODE_MST_SUBJECT.CODE_NAME = 'NTY_SUBJECT'
+	            AND  CODE_MST_SUBJECT.DEL_FLG = '0'
+	            AND  CODE_MST_SUBJECT.VALUE1_KANJ = NTY_KNR.NTY_SUBJECT
+	WHERE
+	1=1
+	<if test="youFlg !='0'">
+		<if test="ntyBri != null">
+	            AND NTY_KNR.NTY_BRI IN('001','002','003','004','005','006','007')
 	    </if>
-	    <if test="reqType != null">
-		    <if test='reqType != "1X"'>
-		    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
-		    </if>
-		    <if test='reqType == "1X"'>
-		    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
-		    </if>
+	    <if test="ntySubject != null">
+	            AND NTY_KNR.NTY_SUBJECT = #{ntySubject}
 	    </if>
-	    <if test="aDdrCodePref != null">
-	    	<if test="reqType != null">
-			    <if test='aDdrCodePref != "99"'>
-				   <if test='reqType == "01" &amp;&amp; reqType == "31"'><!-- &amp;で&になる -->
-					    AND HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
-				   </if>
-				   <if test='reqType != "01" &amp;&amp; reqType != "31"'>
-						AND  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別	  --//施設マスタ
-			       </if>
-			    </if>
-			    <if test='aDdrCodePref == "99"'>
-				    <if test='reqType == "01" &amp;&amp; reqType == "31"'>
-					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
-					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-					    )
-				    </if>
-				    <if test='reqType != "01" &amp;&amp; reqType != "31"'>
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-		                )
-				    </if>
-				</if>
-			</if>
-			<if test="reqType == null">
-			   	<if test='aDdrCodePref != "99"'>
-					    AND(HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//01 24しかなかったので24で行きます
-						OR  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別
-					    )
-			    </if>
-			    <if test='aDdrCodePref == "99"'>
-						AND( HCO_REQ.ADDR_CODE_PREF IS NULL
-						OR   HCO_MST.ADDR_CODE_PREF IS NULL
-						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'　
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-					    )
-			    </if>
-			</if>
+	    <if test="ntySts != null">
+	            AND NTY_KNR.NTY_STS IN ('0','1','2')
 	    </if>
-	    <!-- MRのみ　申請者従業員番号 -->
-	    <if test="reqJgiNo != null">
-		AND REQ_KNR.REQ_JGI_NO = #{reqJgiNo}
-	    </if><!-- MR -->
-	    <!-- 管理者のみ -->
-	    <if test="brCode != null">
-	    AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
-	    <if test="distCode != null">
-		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)
+	    <if test="ntyPri != null">
+	            AND NTY_KNR.NTY_PRI = #{ntyPri}
+	    </if>
+	    <if test="hisYmdhmsFrom != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &gt;= #{hisYmdhmsFrom}
+	    </if>
+	    <if test="hisYmdhmsTo != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
 		</if>
-	    <if test="distCode != null">
-		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)	    </if>
-	   	<if test="reqShz != null">
-	    AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
-	    </if><!-- 管理者 -->
+	</if>
+	<if test="youFlg !='1'">
+	            AND NTY_KNR.NTY_PRI = '3'   --高 固定値
 
-	    <if test=" insKanjiSrch != null">
-	    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'
-		OR  HCO_REQ.INS_FORMAL_NAME LIKE'%' || #{insKanjiSrch} || '%'
-		OR  HCO_REQ.INS_CONT_NAME LIKE  '%' || #{insKanjiSrch} || '%'
-		OR  HCO_MST.INS_KANJ_SRCH LIKE  '%' || #{insKanjiSrch} || '%'
-	    )
+	    <if test="hisYmdhmsFrom != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &gt;= #{hisYmdhmsFrom}
 	    </if>
-	    <if test="insNo != null">
-	    AND HCO_MST.INS_NO = #{insNo}
-	    AND
-			(  HCO_REQ.INS_NO = #{insNo} --種別が0,施設の場合:施設固定コード(本来の数字は入力情報から取得する)
-			OR HCO_NXT_REQ.INS_NO = #{insNo}
-			OR HCO_LNK_REQ.INS_NO = #{insNo}
-			OR HCO_LNK_NXT_REQ.INS_NO = #{insNo}
-			OR HCP_REQ.INS_NO_SK = #{insNo}
-			OR HCP_KMU_REQ.INS_NO_SK = #{insNo}
-			OR HCP_KMU_REQ.INS_NO_MT = #{insNo}
-			)
-		</if>
+	    <if test="hisYmdhmsTo != null">
+	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
+	    </if>
 
-		<if test="insClass != null">
-			AND(HCO_REQ.INS_CLASS = #{insClass} --種別が0,施設の場合:施設_申請管理：施設分類　　--入力情報を受け取り判別
-			OR  HCO_MST.INS_CLASS = #{insClass}　--種別が0,施設の場合:施設_基本情報：施設分類　　--入力情報を受け取り判別
-			)
-		</if>
-		<if test="insSbt != null">
-			AND(HCO_REQ.INS_SBT = #{insSbt}    --種別が0,施設の場合 ：施設種別　　　--入力情報を受け取り判別
-			OR  HCO_MST.INS_SBT = #{insSbt}    --入力情報を受け取り判別：施設種別　
-			)
-		</if>
-		<if test="hoInsType != null">
-			AND(HCO_REQ.HO_INS_TYPE = #{hoInsType}    --種別が0,施設の場合 ：施設種別　　　--入力情報を受け取り判別
-			OR  HCO_MST.HO_INS_TYPE = #{hoInsType}    --入力情報を受け取り判別：施設種別　
-			)
-		</if>
-		<if test="docNo != null">
-			AND HCP_MST.DOC_NO = #{docNo} --種別が1,医師の場合:医師固定コード(本来の数字は入力情報から取得する)
-		</if>
-		<if test="docKanj != null">
-			AND(HCP_REQ.DOC_KANJ LIKE '%' || #{docKanj} || '%'--医師_申請管理:氏名（漢字）
-			OR  HCP_MST.DOC_KANJI_SRCH LIKE '%' || #{docKanj} || '%'
-			)
-		</if>
-		<if test="docType != null">
-			AND(HCP_REQ.DOC_TYPE = #{docType} --種別が1,医師の場合:医師_申請管理：医師／薬剤師区分
-			OR  HCP_MST.DOC_TYPE = #{docType}  --種別が1,医師の場合:医師_基本情報：医師／薬剤師区分
-			)
-		</if>
-		<if test="jobForm != null">
-			AND(HCP_REQ.JOB_FORM = #{jobForm}     --種別が1,医師の場合
-			OR  HCP_KMU_REQ.JOB_FORM_BF = #{jobForm}
-			OR  HCP_KMU_REQ.JOB_FORM_AF = #{jobForm})   --上記ともに本来は別途SQL?で値を取得したドロップダウンから数値を受け取り判定
-		</if>
-
-		<!-- 管理者項目 -->
-		<if test='reqChl != null'>AND REQ_KNR.REQ_CHL IN #{reqChl}</if>
-
-		<!-- 共通項目 -->
-        <if test='reqSbt == "0"'>AND REQ_KNR.REQ_CHL IN ('1','2')
-       	</if> --※検索条件．連携種別が0：手動の場合　かつ　申請チャネルに値が無い場合
-		<if test='reqSbt == "1"'>AND REQ_KNR.REQ_CHL IN ('3','4')</if> --※検索条件．連携種別が1：ULT連携の場合　かつ　申請チャネルに値が無い場合
-
-
-
-	    <if test="reqYmdhmsFrom != null">
-	    AND SUBSTR(REQ_KNR.REQ_YMDHMS,1,8) &gt;= #{reqYmdhmsFrom} --中間の青いのについて、大なり小なり等がjspで判別されないため、エスケープ文字を使用
-		</if>
-		<if test="reqYmdhmsTo != null">
-		AND SUBSTR(REQ_KNR.REQ_YMDHMS,1,8) &lt;= #{reqYmdhmsTo} --種別が0,施設の場合:年月日,a.REQ_YMDHMSは時間、分、秒...までだすのでYYYYMMDDまでを抜き出す
-	    </if>
-	    <if test="reqSts != null">
-	    AND REQ_KNR.REQ_STS = #{reqSts}
-	    </if>
-	    <if test="reqId != null">
-	    AND REQ_KNR.REQ_ID = #{reqId}
-	    </if>
-	    <if test="reqComment != null">
-	    AND REQ_KNR.REQ_COMMENT LIKE '%' || #{reqComment} || '%'
-	    </if>
-	    <if test="aprComment != null">
-	    AND REQ_KNR.APR_COMMENT LIKE '%' || #{aprComment} || '%'
-	    </if>
-	    <if test="reqType != null">
-	    	<if test='reqType != "1X"'>
-		    AND CODE_LB.VALUE1 = #{reqType}   --...ドロップダウンで選択するらしい?　　--入力情報を受け取り判別
-		    </if>
-		    <if test='reqType == "1X"'>
-    		AND CODE_LB.VALUE1 IN('11','12','13')
-		    </if>
-    	</if>
-    	<if test="jgiNo != null">
-    	AND
-		NOT(REQ_KNR.REQ_STS = '01'
-		AND REQ_KNR.REQ_JGI_NO != #{jgiNo}　　--入力情報を受け取り判別
-		)
-		</if>
-		<if test='sbt == "0"'>
-		AND NOT REQ_KNR.REQ_TYPE IN ('31','32','33','34')
-		AND NOT REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')
-	    </if>
-		<if test='sbt == "1"'>
-		AND NOT REQ_KNR.REQ_TYPE IN ('01','02','03','04')
-		AND NOT REQ_KNR.REQ_TYPE IN ('11','12','13','21')
-	    </if>
-		</where>
-		ORDER BY REQ_KNR.REQ_ID DESC
+	            AND CODE_MST_SUBJECT.VALUE2 = 2  --対策要 固定値
+	</if>
 		)SELECT_REQ
 	</select>
 </mapper>

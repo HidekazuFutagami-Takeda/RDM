@@ -373,13 +373,17 @@ public class NC011Service extends BaseService {
     }
 
 	public BaseDTO search(NC011DTO indto) throws ParseException{
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        loginInfo.getPreScreenId();
+        loginInfo.getJgiNo();
+
 		BaseDTO outdto = indto;
 		SRdmReqListEntity paramEntity = new SRdmReqListEntity();
       //  List<NC011Entity> selectTestEntity = dao.select(paramEntity);
       //  indto.setTest(selectTestEntity.get(0).getTest());
 		indto.setPageFlag("0");
         addrDrop(indto);
-        cal(indto);
+       // cal(indto);
         sbtDrop(indto);
         reqChlDrop(indto);
         reqSbtDrop(indto);
@@ -405,13 +409,15 @@ public class NC011Service extends BaseService {
           SelectCntSelectReqListEntity selectCntSelectReqListEntity = new SelectCntSelectReqListEntity();
           List<SelectCntSelectReqListEntity> selectParamSelectReqList;
 
+          paramEntity.setJgiNo(loginInfo.getJgiNo());
+          selectCntSelectReqListEntity.setJgiNo(loginInfo.getJgiNo());
           //アドミンflagの検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setMrAdminFlg(StringUtils.setEmptyToNull(indto.getMrAdminFlg()));
           selectCntSelectReqListEntity.setMrAdminFlg(StringUtils.setEmptyToNull(indto.getMrAdminFlg()));
 
           //アドミンflagの検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
-          selectCntSelectReqListEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
+         // paramEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
+          //selectCntSelectReqListEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
 
           //申請IDの検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
@@ -563,7 +569,7 @@ public class NC011Service extends BaseService {
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           //日付チェック 開始日が終了日より後の場合
           try {
-			if (!sdf.parse(indto.getReqYmdhmsFrom()).before(sdf.parse(indto.getReqYmdhmsTo()))) {
+			if (sdf.parse(indto.getReqYmdhmsFrom()).compareTo(sdf.parse(indto.getReqYmdhmsTo())) == 1) {
 				indto.setBoolKnb("1");
 				indto.setKensakuBool(false);
         		return outdto;

@@ -116,10 +116,15 @@ public class NF011Action extends BaseAction<NF011DTO> {
 
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
         String ultCd = dto.getUltInsCd();
-        dto.setPreScreenId(preScreenId);
+
+        String preScreenId = dto.getBackScreenId();
+        if("NF301".equals(preScreenId)) {
+        	preScreenId = dto.getPreScreenId();
+        } else {
+        	dto.setPreScreenId(preScreenId);
+        }
 
         dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
         dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());

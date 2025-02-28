@@ -220,6 +220,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="knYmdhmsFrom" name="knYmdhmsFrom"/>
 	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
 
+	<s:hidden name="backScreenId" value="NC011" />
+
 <!--  	<s:hidden id="reqId" name="reqId"/>
 	<s:hidden id="reqType" name="reqType"/>-->
 

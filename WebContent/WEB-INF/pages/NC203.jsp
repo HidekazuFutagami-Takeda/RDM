@@ -63,6 +63,8 @@ if (stack.peek() instanceof NC203DTO) {
 
     	comClickFlgInit();
 
+    	sosAddrChange();
+
     }
     </script>
 	<style>

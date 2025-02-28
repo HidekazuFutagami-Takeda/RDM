@@ -107,6 +107,8 @@ public class NF011Service extends BaseService {
 				indto.setAddrCodePrefName(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""));
 				indto.setAddrCodeCity(StringUtils.nvl(mainDataEntity.getShikuchosonCd(), ""));
 				indto.setAddrCodeCityName(StringUtils.nvl(mainDataEntity.getShikuchosonNm(), ""));
+				indto.setTkCityCd(StringUtils.nvl(mainDataEntity.getTkCityCd(), ""));
+				indto.setTkCityName(StringUtils.nvl(mainDataEntity.getTkCityNm(), ""));
 				indto.setInsPhone1(StringUtils.nvl(mainDataEntity.getShisetsuTel(), ""));
 
 				// 経営主体

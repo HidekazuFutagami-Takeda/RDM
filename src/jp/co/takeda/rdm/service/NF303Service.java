@@ -849,7 +849,7 @@ public class NF303Service extends BaseService {
 		indto.setPreWsType(StringUtils.nvl(mainDataEntity.getPreWsType(), ""));
 
 		if(mainDataEntity.getPreWsType() != null && !mainDataEntity.getPreWsType().isEmpty()) {
-			indto.setPreWsTypeNm(StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
+			indto.setPreWsTypeNm(mainDataEntity.getPreWsType() + "：" + StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
 		} else {
 			indto.setPreWsTypeNm("--なし--");
 		}
@@ -857,7 +857,7 @@ public class NF303Service extends BaseService {
 		indto.setPreBasketPurchase(StringUtils.nvl(mainDataEntity.getPreBasketPurchase(), ""));
 
 		if(mainDataEntity.getPreBasketPurchase() != null && !mainDataEntity.getPreBasketPurchase().isEmpty()) {
-			indto.setPreBasketPurchaseNm(mainDataEntity.getPreBasketPurchase() + "：" + StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
+			indto.setPreBasketPurchaseNm(StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
 		} else {
 			indto.setPreBasketPurchaseNm("--なし--");
 		}
@@ -897,9 +897,9 @@ public class NF303Service extends BaseService {
 		indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
 		indto.setManageNm(StringUtils.nvl(mainDataEntity.getManageNm(), ""));
 		indto.setWsType(StringUtils.nvl(mainDataEntity.getWsType(), ""));
-		indto.setWsTypeNm(getViewNmValue(mainDataEntity.getWsType(),mainDataEntity.getWsTypeNm()));
+		indto.setWsTypeNm(getViewValue(mainDataEntity.getWsType(),mainDataEntity.getWsTypeNm()));
 		indto.setBasketPurchase(StringUtils.nvl(mainDataEntity.getBasketPurchase(), ""));
-		indto.setBasketPurchaseNm(getViewValue(mainDataEntity.getBasketPurchase(),mainDataEntity.getBasketPurchaseNm()));
+		indto.setBasketPurchaseNm(getViewNmValue(mainDataEntity.getBasketPurchase(),mainDataEntity.getBasketPurchaseNm()));
 		indto.setUnivSubdiv(StringUtils.nvl(mainDataEntity.getUnivSubdiv(), ""));
 		indto.setUnivSubdivNm(getViewValue(mainDataEntity.getUnivSubdiv(),mainDataEntity.getUnivSubdivNm()));
 		indto.setCapaType(StringUtils.nvl(mainDataEntity.getCapaType(), ""));
@@ -1401,37 +1401,37 @@ public class NF303Service extends BaseService {
 		indto.setPreMarket09(StringUtils.nvl(mainDataEntity.getPreMarket09(), ""));
 
 		if(mainDataEntity.getPreMarket01() != null && !mainDataEntity.getPreMarket01().isEmpty()) {
-			indto.setPreMarket01Nm(mainDataEntity.getPreMarket01() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
+			indto.setPreMarket01Nm(StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
 		} else {
 			indto.setPreMarket01Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket02() != null && !mainDataEntity.getPreMarket02().isEmpty()) {
-			indto.setPreMarket02Nm(mainDataEntity.getPreMarket02() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
+			indto.setPreMarket02Nm(StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
 		} else {
 			indto.setPreMarket02Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket03() != null && !mainDataEntity.getPreMarket03().isEmpty()) {
-			indto.setPreMarket03Nm(mainDataEntity.getPreMarket03() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
+			indto.setPreMarket03Nm(StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
 		} else {
 			indto.setPreMarket03Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket04() != null && !mainDataEntity.getPreMarket04().isEmpty()) {
-			indto.setPreMarket04Nm(mainDataEntity.getPreMarket04() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
+			indto.setPreMarket04Nm(StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
 		} else {
 			indto.setPreMarket04Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket06() != null && !mainDataEntity.getPreMarket06().isEmpty()) {
-			indto.setPreMarket06Nm(mainDataEntity.getPreMarket06() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
+			indto.setPreMarket06Nm(StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
 		} else {
 			indto.setPreMarket06Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket07() != null && !mainDataEntity.getPreMarket07().isEmpty()) {
-			indto.setPreMarket07Nm(mainDataEntity.getPreMarket07() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
+			indto.setPreMarket07Nm(StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
 		} else {
 			indto.setPreMarket07Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket09() != null && !mainDataEntity.getPreMarket09().isEmpty()) {
-			indto.setPreMarket09Nm(mainDataEntity.getPreMarket09() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
+			indto.setPreMarket09Nm(StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
 		} else {
 			indto.setPreMarket09Nm("--なし--");
 		}
@@ -1444,13 +1444,13 @@ public class NF303Service extends BaseService {
 		indto.setMarket07(StringUtils.nvl(mainDataEntity.getMarket07(), ""));
 		indto.setMarket09(StringUtils.nvl(mainDataEntity.getMarket09(), ""));
 
-		indto.setMarket01Nm(getViewValue(mainDataEntity.getMarket01(), mainDataEntity.getMarket01Nm()));
-		indto.setMarket02Nm(getViewValue(mainDataEntity.getMarket02(), mainDataEntity.getMarket02Nm()));
-		indto.setMarket03Nm(getViewValue(mainDataEntity.getMarket03(), mainDataEntity.getMarket03Nm()));
-		indto.setMarket04Nm(getViewValue(mainDataEntity.getMarket04(), mainDataEntity.getMarket04Nm()));
-		indto.setMarket06Nm(getViewValue(mainDataEntity.getMarket06(), mainDataEntity.getMarket06Nm()));
-		indto.setMarket07Nm(getViewValue(mainDataEntity.getMarket07(), mainDataEntity.getMarket07Nm()));
-		indto.setMarket09Nm(getViewValue(mainDataEntity.getMarket09(), mainDataEntity.getMarket09Nm()));
+		indto.setMarket01Nm(getViewNmValue(mainDataEntity.getMarket01(), mainDataEntity.getMarket01Nm()));
+		indto.setMarket02Nm(getViewNmValue(mainDataEntity.getMarket02(), mainDataEntity.getMarket02Nm()));
+		indto.setMarket03Nm(getViewNmValue(mainDataEntity.getMarket03(), mainDataEntity.getMarket03Nm()));
+		indto.setMarket04Nm(getViewNmValue(mainDataEntity.getMarket04(), mainDataEntity.getMarket04Nm()));
+		indto.setMarket06Nm(getViewNmValue(mainDataEntity.getMarket06(), mainDataEntity.getMarket06Nm()));
+		indto.setMarket07Nm(getViewNmValue(mainDataEntity.getMarket07(), mainDataEntity.getMarket07Nm()));
+		indto.setMarket09Nm(getViewNmValue(mainDataEntity.getMarket09(), mainDataEntity.getMarket09Nm()));
 
 		// 医療法関連分類情報
 		indto.setPreMedical12(StringUtils.nvl(mainDataEntity.getPreMedical12(), ""));
@@ -1471,17 +1471,17 @@ public class NF303Service extends BaseService {
 		indto.setPreSpfunc04(StringUtils.nvl(mainDataEntity.getPreSpfunc04(), ""));
 
 		if(mainDataEntity.getPreSpfunc01() != null && !mainDataEntity.getPreSpfunc01().isEmpty()) {
-			indto.setPreSpfunc01Nm(mainDataEntity.getPreSpfunc01() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
+			indto.setPreSpfunc01Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
 		} else {
 			indto.setPreSpfunc01Nm("--なし--");
 		}
 		if(mainDataEntity.getPreSpfunc03() != null && !mainDataEntity.getPreSpfunc03().isEmpty()) {
-			indto.setPreSpfunc03Nm(mainDataEntity.getPreSpfunc03() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
+			indto.setPreSpfunc03Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
 		} else {
 			indto.setPreSpfunc03Nm("--なし--");
 		}
 		if(mainDataEntity.getPreSpfunc04() != null && !mainDataEntity.getPreSpfunc04().isEmpty()) {
-			indto.setPreSpfunc04Nm(mainDataEntity.getPreSpfunc04() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
+			indto.setPreSpfunc04Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
 		} else {
 			indto.setPreSpfunc04Nm("--なし--");
 		}
@@ -1490,9 +1490,9 @@ public class NF303Service extends BaseService {
 		indto.setSpfunc03(StringUtils.nvl(mainDataEntity.getSpfunc03(), ""));
 		indto.setSpfunc04(StringUtils.nvl(mainDataEntity.getSpfunc04(), ""));
 
-		indto.setSpfunc01Nm(getViewValue(mainDataEntity.getSpfunc01(), mainDataEntity.getSpfunc01Nm()));
-		indto.setSpfunc03Nm(getViewValue(mainDataEntity.getSpfunc03(), mainDataEntity.getSpfunc03Nm()));
-		indto.setSpfunc04Nm(getViewValue(mainDataEntity.getSpfunc04(), mainDataEntity.getSpfunc04Nm()));
+		indto.setSpfunc01Nm(getViewNmValue(mainDataEntity.getSpfunc01(), mainDataEntity.getSpfunc01Nm()));
+		indto.setSpfunc03Nm(getViewNmValue(mainDataEntity.getSpfunc03(), mainDataEntity.getSpfunc03Nm()));
+		indto.setSpfunc04Nm(getViewNmValue(mainDataEntity.getSpfunc04(), mainDataEntity.getSpfunc04Nm()));
 
 		// 医療連携関連情報
 		indto.setPreTieup10(StringUtils.nvl(mainDataEntity.getPreTieup10(), ""));
@@ -1500,17 +1500,17 @@ public class NF303Service extends BaseService {
 		indto.setPreTieup12(StringUtils.nvl(mainDataEntity.getPreTieup12(), ""));
 
 		if(mainDataEntity.getPreTieup10() != null && !mainDataEntity.getPreTieup10().isEmpty()) {
-			indto.setPreTieup10Nm(mainDataEntity.getPreTieup10() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
+			indto.setPreTieup10Nm(StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
 		} else {
 			indto.setPreTieup10Nm("--なし--");
 		}
 		if(mainDataEntity.getPreTieup11() != null && !mainDataEntity.getPreTieup11().isEmpty()) {
-			indto.setPreTieup11Nm(mainDataEntity.getPreTieup11() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
+			indto.setPreTieup11Nm(StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
 		} else {
 			indto.setPreTieup11Nm("--なし--");
 		}
 		if(mainDataEntity.getPreTieup12() != null && !mainDataEntity.getPreTieup12().isEmpty()) {
-			indto.setPreTieup12Nm(mainDataEntity.getPreTieup12() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
+			indto.setPreTieup12Nm(StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
 		} else {
 			indto.setPreTieup12Nm("--なし--");
 		}
@@ -1519,9 +1519,9 @@ public class NF303Service extends BaseService {
 		indto.setTieup11(StringUtils.nvl(mainDataEntity.getTieup11(), ""));
 		indto.setTieup12(StringUtils.nvl(mainDataEntity.getTieup12(), ""));
 
-		indto.setTieup10Nm(getViewValue(mainDataEntity.getTieup10(), mainDataEntity.getTieup10Nm()));
-		indto.setTieup11Nm(getViewValue(mainDataEntity.getTieup11(), mainDataEntity.getTieup11Nm()));
-		indto.setTieup12Nm(getViewValue(mainDataEntity.getTieup12(), mainDataEntity.getTieup12Nm()));
+		indto.setTieup10Nm(getViewNmValue(mainDataEntity.getTieup10(), mainDataEntity.getTieup10Nm()));
+		indto.setTieup11Nm(getViewNmValue(mainDataEntity.getTieup11(), mainDataEntity.getTieup11Nm()));
+		indto.setTieup12Nm(getViewNmValue(mainDataEntity.getTieup12(), mainDataEntity.getTieup12Nm()));
 
 		// ユーザーコード情報
 		indto.setPreUsercd0001(StringUtils.nvl(mainDataEntity.getPreUsercd0001(), ""));
@@ -1867,87 +1867,87 @@ public class NF303Service extends BaseService {
 		indto.setPreReward44(StringUtils.nvl(mainDataEntity.getPreReward44(), ""));
 
 		if(mainDataEntity.getPreReward04() != null && !mainDataEntity.getPreReward04().isEmpty()) {
-			indto.setPreReward04Nm(mainDataEntity.getPreReward04() + "：" + StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
+			indto.setPreReward04Nm(StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
 		} else {
 			indto.setPreReward04Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward05() != null && !mainDataEntity.getPreReward05().isEmpty()) {
-			indto.setPreReward05Nm(mainDataEntity.getPreReward05() + "：" + StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
+			indto.setPreReward05Nm(StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
 		} else {
 			indto.setPreReward05Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward08() != null && !mainDataEntity.getPreReward08().isEmpty()) {
-			indto.setPreReward08Nm(mainDataEntity.getPreReward08() + "：" + StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
+			indto.setPreReward08Nm(StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
 		} else {
 			indto.setPreReward08Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward09() != null && !mainDataEntity.getPreReward09().isEmpty()) {
-			indto.setPreReward09Nm(mainDataEntity.getPreReward09() + "：" + StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
+			indto.setPreReward09Nm(StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
 		} else {
 			indto.setPreReward09Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward16() != null && !mainDataEntity.getPreReward16().isEmpty()) {
-			indto.setPreReward16Nm(mainDataEntity.getPreReward16() + "：" + StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
+			indto.setPreReward16Nm(StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
 		} else {
 			indto.setPreReward16Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward17() != null && !mainDataEntity.getPreReward17().isEmpty()) {
-			indto.setPreReward17Nm(mainDataEntity.getPreReward17() + "：" + StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
+			indto.setPreReward17Nm(StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
 		} else {
 			indto.setPreReward17Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward18() != null && !mainDataEntity.getPreReward18().isEmpty()) {
-			indto.setPreReward18Nm(mainDataEntity.getPreReward18() + "：" + StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
+			indto.setPreReward18Nm(StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
 		} else {
 			indto.setPreReward18Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward21() != null && !mainDataEntity.getPreReward21().isEmpty()) {
-			indto.setPreReward21Nm(mainDataEntity.getPreReward21() + "：" + StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
+			indto.setPreReward21Nm(StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
 		} else {
 			indto.setPreReward21Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward23() != null && !mainDataEntity.getPreReward23().isEmpty()) {
-			indto.setPreReward23Nm(mainDataEntity.getPreReward23() + "：" + StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
+			indto.setPreReward23Nm(StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
 		} else {
 			indto.setPreReward23Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward25() != null && !mainDataEntity.getPreReward25().isEmpty()) {
-			indto.setPreReward25Nm(mainDataEntity.getPreReward25() + "：" + StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
+			indto.setPreReward25Nm(StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
 		} else {
 			indto.setPreReward25Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward26() != null && !mainDataEntity.getPreReward26().isEmpty()) {
-			indto.setPreReward26Nm(mainDataEntity.getPreReward26() + "：" + StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
+			indto.setPreReward26Nm(StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
 		} else {
 			indto.setPreReward26Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward27() != null && !mainDataEntity.getPreReward27().isEmpty()) {
-			indto.setPreReward27Nm(mainDataEntity.getPreReward27() + "：" + StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
+			indto.setPreReward27Nm(StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
 		} else {
 			indto.setPreReward27Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward29() != null && !mainDataEntity.getPreReward29().isEmpty()) {
-			indto.setPreReward29Nm(mainDataEntity.getPreReward29() + "：" + StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
+			indto.setPreReward29Nm(StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
 		} else {
 			indto.setPreReward29Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward35() != null && !mainDataEntity.getPreReward35().isEmpty()) {
-			indto.setPreReward35Nm(mainDataEntity.getPreReward35() + "：" + StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
+			indto.setPreReward35Nm(StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
 		} else {
 			indto.setPreReward35Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward36() != null && !mainDataEntity.getPreReward36().isEmpty()) {
-			indto.setPreReward36Nm(mainDataEntity.getPreReward36() + "：" + StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
+			indto.setPreReward36Nm(StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
 		} else {
 			indto.setPreReward36Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward37() != null && !mainDataEntity.getPreReward37().isEmpty()) {
-			indto.setPreReward37Nm(mainDataEntity.getPreReward37() + "：" + StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
+			indto.setPreReward37Nm(StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
 		} else {
 			indto.setPreReward37Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward44() != null && !mainDataEntity.getPreReward44().isEmpty()) {
-			indto.setPreReward44Nm(mainDataEntity.getPreReward44() + "：" + StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
+			indto.setPreReward44Nm(StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
 		} else {
 			indto.setPreReward44Nm("--なし--");
 		}
@@ -1970,23 +1970,23 @@ public class NF303Service extends BaseService {
 		indto.setReward37(StringUtils.nvl(mainDataEntity.getReward37(), ""));
 		indto.setReward44(StringUtils.nvl(mainDataEntity.getReward44(), ""));
 
-		indto.setReward04Nm(getViewValue(mainDataEntity.getReward04(), mainDataEntity.getReward04Nm()));
-		indto.setReward05Nm(getViewValue(mainDataEntity.getReward05(), mainDataEntity.getReward05Nm()));
-		indto.setReward08Nm(getViewValue(mainDataEntity.getReward08(), mainDataEntity.getReward08Nm()));
-		indto.setReward09Nm(getViewValue(mainDataEntity.getReward09(), mainDataEntity.getReward09Nm()));
-		indto.setReward16Nm(getViewValue(mainDataEntity.getReward16(), mainDataEntity.getReward16Nm()));
-		indto.setReward17Nm(getViewValue(mainDataEntity.getReward17(), mainDataEntity.getReward17Nm()));
-		indto.setReward18Nm(getViewValue(mainDataEntity.getReward18(), mainDataEntity.getReward18Nm()));
-		indto.setReward21Nm(getViewValue(mainDataEntity.getReward21(), mainDataEntity.getReward21Nm()));
-		indto.setReward23Nm(getViewValue(mainDataEntity.getReward23(), mainDataEntity.getReward23Nm()));
-		indto.setReward25Nm(getViewValue(mainDataEntity.getReward25(), mainDataEntity.getReward25Nm()));
-		indto.setReward26Nm(getViewValue(mainDataEntity.getReward26(), mainDataEntity.getReward26Nm()));
-		indto.setReward27Nm(getViewValue(mainDataEntity.getReward27(), mainDataEntity.getReward27Nm()));
-		indto.setReward29Nm(getViewValue(mainDataEntity.getReward29(), mainDataEntity.getReward29Nm()));
-		indto.setReward35Nm(getViewValue(mainDataEntity.getReward35(), mainDataEntity.getReward35Nm()));
-		indto.setReward36Nm(getViewValue(mainDataEntity.getReward36(), mainDataEntity.getReward36Nm()));
-		indto.setReward37Nm(getViewValue(mainDataEntity.getReward37(), mainDataEntity.getReward37Nm()));
-		indto.setReward44Nm(getViewValue(mainDataEntity.getReward44(), mainDataEntity.getReward44Nm()));
+		indto.setReward04Nm(getViewNmValue(mainDataEntity.getReward04(), mainDataEntity.getReward04Nm()));
+		indto.setReward05Nm(getViewNmValue(mainDataEntity.getReward05(), mainDataEntity.getReward05Nm()));
+		indto.setReward08Nm(getViewNmValue(mainDataEntity.getReward08(), mainDataEntity.getReward08Nm()));
+		indto.setReward09Nm(getViewNmValue(mainDataEntity.getReward09(), mainDataEntity.getReward09Nm()));
+		indto.setReward16Nm(getViewNmValue(mainDataEntity.getReward16(), mainDataEntity.getReward16Nm()));
+		indto.setReward17Nm(getViewNmValue(mainDataEntity.getReward17(), mainDataEntity.getReward17Nm()));
+		indto.setReward18Nm(getViewNmValue(mainDataEntity.getReward18(), mainDataEntity.getReward18Nm()));
+		indto.setReward21Nm(getViewNmValue(mainDataEntity.getReward21(), mainDataEntity.getReward21Nm()));
+		indto.setReward23Nm(getViewNmValue(mainDataEntity.getReward23(), mainDataEntity.getReward23Nm()));
+		indto.setReward25Nm(getViewNmValue(mainDataEntity.getReward25(), mainDataEntity.getReward25Nm()));
+		indto.setReward26Nm(getViewNmValue(mainDataEntity.getReward26(), mainDataEntity.getReward26Nm()));
+		indto.setReward27Nm(getViewNmValue(mainDataEntity.getReward27(), mainDataEntity.getReward27Nm()));
+		indto.setReward29Nm(getViewNmValue(mainDataEntity.getReward29(), mainDataEntity.getReward29Nm()));
+		indto.setReward35Nm(getViewNmValue(mainDataEntity.getReward35(), mainDataEntity.getReward35Nm()));
+		indto.setReward36Nm(getViewNmValue(mainDataEntity.getReward36(), mainDataEntity.getReward36Nm()));
+		indto.setReward37Nm(getViewNmValue(mainDataEntity.getReward37(), mainDataEntity.getReward37Nm()));
+		indto.setReward44Nm(getViewNmValue(mainDataEntity.getReward44(), mainDataEntity.getReward44Nm()));
 
 		// コメント
 		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -3038,7 +3038,7 @@ public class NF303Service extends BaseService {
 		indto.setPreWsType(StringUtils.nvl(mainDataEntity.getPreWsType(), ""));
 
 		if(mainDataEntity.getPreWsType() != null && !mainDataEntity.getPreWsType().isEmpty()) {
-			indto.setPreWsTypeNm(StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
+			indto.setPreWsTypeNm(mainDataEntity.getPreWsType() + "：" + StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
 		} else {
 			indto.setPreWsTypeNm("--なし--");
 		}
@@ -3046,7 +3046,7 @@ public class NF303Service extends BaseService {
 		indto.setPreBasketPurchase(StringUtils.nvl(mainDataEntity.getPreBasketPurchase(), ""));
 
 		if(mainDataEntity.getPreBasketPurchase() != null && !mainDataEntity.getPreBasketPurchase().isEmpty()) {
-			indto.setPreBasketPurchaseNm(mainDataEntity.getPreBasketPurchase() + "：" + StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
+			indto.setPreBasketPurchaseNm(StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
 		} else {
 			indto.setPreBasketPurchaseNm("--なし--");
 		}
@@ -3086,9 +3086,9 @@ public class NF303Service extends BaseService {
 		indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
 		indto.setManageNm(StringUtils.nvl(mainDataEntity.getManageNm(), ""));
 		indto.setWsType(StringUtils.nvl(mainDataEntity.getWsType(), ""));
-		indto.setWsTypeNm(getViewNmValue(mainDataEntity.getWsType(),mainDataEntity.getWsTypeNm()));
+		indto.setWsTypeNm(getViewValue(mainDataEntity.getWsType(),mainDataEntity.getWsTypeNm()));
 		indto.setBasketPurchase(StringUtils.nvl(mainDataEntity.getBasketPurchase(), ""));
-		indto.setBasketPurchaseNm(getViewValue(mainDataEntity.getBasketPurchase(),mainDataEntity.getBasketPurchaseNm()));
+		indto.setBasketPurchaseNm(getViewNmValue(mainDataEntity.getBasketPurchase(),mainDataEntity.getBasketPurchaseNm()));
 		indto.setUnivSubdiv(StringUtils.nvl(mainDataEntity.getUnivSubdiv(), ""));
 		indto.setUnivSubdivNm(getViewValue(mainDataEntity.getUnivSubdiv(),mainDataEntity.getUnivSubdivNm()));
 		indto.setCapaType(StringUtils.nvl(mainDataEntity.getCapaType(), ""));
@@ -3590,37 +3590,37 @@ public class NF303Service extends BaseService {
 		indto.setPreMarket09(StringUtils.nvl(mainDataEntity.getPreMarket09(), ""));
 
 		if(mainDataEntity.getPreMarket01() != null && !mainDataEntity.getPreMarket01().isEmpty()) {
-			indto.setPreMarket01Nm(mainDataEntity.getPreMarket01() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
+			indto.setPreMarket01Nm(StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
 		} else {
 			indto.setPreMarket01Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket02() != null && !mainDataEntity.getPreMarket02().isEmpty()) {
-			indto.setPreMarket02Nm(mainDataEntity.getPreMarket02() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
+			indto.setPreMarket02Nm(StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
 		} else {
 			indto.setPreMarket02Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket03() != null && !mainDataEntity.getPreMarket03().isEmpty()) {
-			indto.setPreMarket03Nm(mainDataEntity.getPreMarket03() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
+			indto.setPreMarket03Nm(StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
 		} else {
 			indto.setPreMarket03Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket04() != null && !mainDataEntity.getPreMarket04().isEmpty()) {
-			indto.setPreMarket04Nm(mainDataEntity.getPreMarket04() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
+			indto.setPreMarket04Nm(StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
 		} else {
 			indto.setPreMarket04Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket06() != null && !mainDataEntity.getPreMarket06().isEmpty()) {
-			indto.setPreMarket06Nm(mainDataEntity.getPreMarket06() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
+			indto.setPreMarket06Nm(StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
 		} else {
 			indto.setPreMarket06Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket07() != null && !mainDataEntity.getPreMarket07().isEmpty()) {
-			indto.setPreMarket07Nm(mainDataEntity.getPreMarket07() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
+			indto.setPreMarket07Nm(StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
 		} else {
 			indto.setPreMarket07Nm("--なし--");
 		}
 		if(mainDataEntity.getPreMarket09() != null && !mainDataEntity.getPreMarket09().isEmpty()) {
-			indto.setPreMarket09Nm(mainDataEntity.getPreMarket09() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
+			indto.setPreMarket09Nm(StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
 		} else {
 			indto.setPreMarket09Nm("--なし--");
 		}
@@ -3633,13 +3633,13 @@ public class NF303Service extends BaseService {
 		indto.setMarket07(StringUtils.nvl(mainDataEntity.getMarket07(), ""));
 		indto.setMarket09(StringUtils.nvl(mainDataEntity.getMarket09(), ""));
 
-		indto.setMarket01Nm(getViewValue(mainDataEntity.getMarket01(), mainDataEntity.getMarket01Nm()));
-		indto.setMarket02Nm(getViewValue(mainDataEntity.getMarket02(), mainDataEntity.getMarket02Nm()));
-		indto.setMarket03Nm(getViewValue(mainDataEntity.getMarket03(), mainDataEntity.getMarket03Nm()));
-		indto.setMarket04Nm(getViewValue(mainDataEntity.getMarket04(), mainDataEntity.getMarket04Nm()));
-		indto.setMarket06Nm(getViewValue(mainDataEntity.getMarket06(), mainDataEntity.getMarket06Nm()));
-		indto.setMarket07Nm(getViewValue(mainDataEntity.getMarket07(), mainDataEntity.getMarket07Nm()));
-		indto.setMarket09Nm(getViewValue(mainDataEntity.getMarket09(), mainDataEntity.getMarket09Nm()));
+		indto.setMarket01Nm(getViewNmValue(mainDataEntity.getMarket01(), mainDataEntity.getMarket01Nm()));
+		indto.setMarket02Nm(getViewNmValue(mainDataEntity.getMarket02(), mainDataEntity.getMarket02Nm()));
+		indto.setMarket03Nm(getViewNmValue(mainDataEntity.getMarket03(), mainDataEntity.getMarket03Nm()));
+		indto.setMarket04Nm(getViewNmValue(mainDataEntity.getMarket04(), mainDataEntity.getMarket04Nm()));
+		indto.setMarket06Nm(getViewNmValue(mainDataEntity.getMarket06(), mainDataEntity.getMarket06Nm()));
+		indto.setMarket07Nm(getViewNmValue(mainDataEntity.getMarket07(), mainDataEntity.getMarket07Nm()));
+		indto.setMarket09Nm(getViewNmValue(mainDataEntity.getMarket09(), mainDataEntity.getMarket09Nm()));
 
 		// 医療法関連分類情報
 		indto.setPreMedical12(StringUtils.nvl(mainDataEntity.getPreMedical12(), ""));
@@ -3660,17 +3660,17 @@ public class NF303Service extends BaseService {
 		indto.setPreSpfunc04(StringUtils.nvl(mainDataEntity.getPreSpfunc04(), ""));
 
 		if(mainDataEntity.getPreSpfunc01() != null && !mainDataEntity.getPreSpfunc01().isEmpty()) {
-			indto.setPreSpfunc01Nm(mainDataEntity.getPreSpfunc01() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
+			indto.setPreSpfunc01Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
 		} else {
 			indto.setPreSpfunc01Nm("--なし--");
 		}
 		if(mainDataEntity.getPreSpfunc03() != null && !mainDataEntity.getPreSpfunc03().isEmpty()) {
-			indto.setPreSpfunc03Nm(mainDataEntity.getPreSpfunc03() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
+			indto.setPreSpfunc03Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
 		} else {
 			indto.setPreSpfunc03Nm("--なし--");
 		}
 		if(mainDataEntity.getPreSpfunc04() != null && !mainDataEntity.getPreSpfunc04().isEmpty()) {
-			indto.setPreSpfunc04Nm(mainDataEntity.getPreSpfunc04() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
+			indto.setPreSpfunc04Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
 		} else {
 			indto.setPreSpfunc04Nm("--なし--");
 		}
@@ -3679,9 +3679,9 @@ public class NF303Service extends BaseService {
 		indto.setSpfunc03(StringUtils.nvl(mainDataEntity.getSpfunc03(), ""));
 		indto.setSpfunc04(StringUtils.nvl(mainDataEntity.getSpfunc04(), ""));
 
-		indto.setSpfunc01Nm(getViewValue(mainDataEntity.getSpfunc01(), mainDataEntity.getSpfunc01Nm()));
-		indto.setSpfunc03Nm(getViewValue(mainDataEntity.getSpfunc03(), mainDataEntity.getSpfunc03Nm()));
-		indto.setSpfunc04Nm(getViewValue(mainDataEntity.getSpfunc04(), mainDataEntity.getSpfunc04Nm()));
+		indto.setSpfunc01Nm(getViewNmValue(mainDataEntity.getSpfunc01(), mainDataEntity.getSpfunc01Nm()));
+		indto.setSpfunc03Nm(getViewNmValue(mainDataEntity.getSpfunc03(), mainDataEntity.getSpfunc03Nm()));
+		indto.setSpfunc04Nm(getViewNmValue(mainDataEntity.getSpfunc04(), mainDataEntity.getSpfunc04Nm()));
 
 		// 医療連携関連情報
 		indto.setPreTieup10(StringUtils.nvl(mainDataEntity.getPreTieup10(), ""));
@@ -3689,17 +3689,17 @@ public class NF303Service extends BaseService {
 		indto.setPreTieup12(StringUtils.nvl(mainDataEntity.getPreTieup12(), ""));
 
 		if(mainDataEntity.getPreTieup10() != null && !mainDataEntity.getPreTieup10().isEmpty()) {
-			indto.setPreTieup10Nm(mainDataEntity.getPreTieup10() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
+			indto.setPreTieup10Nm(StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
 		} else {
 			indto.setPreTieup10Nm("--なし--");
 		}
 		if(mainDataEntity.getPreTieup11() != null && !mainDataEntity.getPreTieup11().isEmpty()) {
-			indto.setPreTieup11Nm(mainDataEntity.getPreTieup11() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
+			indto.setPreTieup11Nm(StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
 		} else {
 			indto.setPreTieup11Nm("--なし--");
 		}
 		if(mainDataEntity.getPreTieup12() != null && !mainDataEntity.getPreTieup12().isEmpty()) {
-			indto.setPreTieup12Nm(mainDataEntity.getPreTieup12() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
+			indto.setPreTieup12Nm(StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
 		} else {
 			indto.setPreTieup12Nm("--なし--");
 		}
@@ -3708,9 +3708,9 @@ public class NF303Service extends BaseService {
 		indto.setTieup11(StringUtils.nvl(mainDataEntity.getTieup11(), ""));
 		indto.setTieup12(StringUtils.nvl(mainDataEntity.getTieup12(), ""));
 
-		indto.setTieup10Nm(getViewValue(mainDataEntity.getTieup10(), mainDataEntity.getTieup10Nm()));
-		indto.setTieup11Nm(getViewValue(mainDataEntity.getTieup11(), mainDataEntity.getTieup11Nm()));
-		indto.setTieup12Nm(getViewValue(mainDataEntity.getTieup12(), mainDataEntity.getTieup12Nm()));
+		indto.setTieup10Nm(getViewNmValue(mainDataEntity.getTieup10(), mainDataEntity.getTieup10Nm()));
+		indto.setTieup11Nm(getViewNmValue(mainDataEntity.getTieup11(), mainDataEntity.getTieup11Nm()));
+		indto.setTieup12Nm(getViewNmValue(mainDataEntity.getTieup12(), mainDataEntity.getTieup12Nm()));
 
 		// ユーザーコード情報
 		indto.setPreUsercd0001(StringUtils.nvl(mainDataEntity.getPreUsercd0001(), ""));
@@ -4056,87 +4056,87 @@ public class NF303Service extends BaseService {
 		indto.setPreReward44(StringUtils.nvl(mainDataEntity.getPreReward44(), ""));
 
 		if(mainDataEntity.getPreReward04() != null && !mainDataEntity.getPreReward04().isEmpty()) {
-			indto.setPreReward04Nm(mainDataEntity.getPreReward04() + "：" + StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
+			indto.setPreReward04Nm(StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
 		} else {
 			indto.setPreReward04Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward05() != null && !mainDataEntity.getPreReward05().isEmpty()) {
-			indto.setPreReward05Nm(mainDataEntity.getPreReward05() + "：" + StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
+			indto.setPreReward05Nm(StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
 		} else {
 			indto.setPreReward05Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward08() != null && !mainDataEntity.getPreReward08().isEmpty()) {
-			indto.setPreReward08Nm(mainDataEntity.getPreReward08() + "：" + StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
+			indto.setPreReward08Nm(StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
 		} else {
 			indto.setPreReward08Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward09() != null && !mainDataEntity.getPreReward09().isEmpty()) {
-			indto.setPreReward09Nm(mainDataEntity.getPreReward09() + "：" + StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
+			indto.setPreReward09Nm(StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
 		} else {
 			indto.setPreReward09Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward16() != null && !mainDataEntity.getPreReward16().isEmpty()) {
-			indto.setPreReward16Nm(mainDataEntity.getPreReward16() + "：" + StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
+			indto.setPreReward16Nm(StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
 		} else {
 			indto.setPreReward16Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward17() != null && !mainDataEntity.getPreReward17().isEmpty()) {
-			indto.setPreReward17Nm(mainDataEntity.getPreReward17() + "：" + StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
+			indto.setPreReward17Nm(StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
 		} else {
 			indto.setPreReward17Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward18() != null && !mainDataEntity.getPreReward18().isEmpty()) {
-			indto.setPreReward18Nm(mainDataEntity.getPreReward18() + "：" + StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
+			indto.setPreReward18Nm(StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
 		} else {
 			indto.setPreReward18Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward21() != null && !mainDataEntity.getPreReward21().isEmpty()) {
-			indto.setPreReward21Nm(mainDataEntity.getPreReward21() + "：" + StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
+			indto.setPreReward21Nm(StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
 		} else {
 			indto.setPreReward21Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward23() != null && !mainDataEntity.getPreReward23().isEmpty()) {
-			indto.setPreReward23Nm(mainDataEntity.getPreReward23() + "：" + StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
+			indto.setPreReward23Nm(StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
 		} else {
 			indto.setPreReward23Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward25() != null && !mainDataEntity.getPreReward25().isEmpty()) {
-			indto.setPreReward25Nm(mainDataEntity.getPreReward25() + "：" + StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
+			indto.setPreReward25Nm(StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
 		} else {
 			indto.setPreReward25Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward26() != null && !mainDataEntity.getPreReward26().isEmpty()) {
-			indto.setPreReward26Nm(mainDataEntity.getPreReward26() + "：" + StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
+			indto.setPreReward26Nm(StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
 		} else {
 			indto.setPreReward26Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward27() != null && !mainDataEntity.getPreReward27().isEmpty()) {
-			indto.setPreReward27Nm(mainDataEntity.getPreReward27() + "：" + StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
+			indto.setPreReward27Nm(StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
 		} else {
 			indto.setPreReward27Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward29() != null && !mainDataEntity.getPreReward29().isEmpty()) {
-			indto.setPreReward29Nm(mainDataEntity.getPreReward29() + "：" + StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
+			indto.setPreReward29Nm(StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
 		} else {
 			indto.setPreReward29Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward35() != null && !mainDataEntity.getPreReward35().isEmpty()) {
-			indto.setPreReward35Nm(mainDataEntity.getPreReward35() + "：" + StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
+			indto.setPreReward35Nm(StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
 		} else {
 			indto.setPreReward35Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward36() != null && !mainDataEntity.getPreReward36().isEmpty()) {
-			indto.setPreReward36Nm(mainDataEntity.getPreReward36() + "：" + StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
+			indto.setPreReward36Nm(StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
 		} else {
 			indto.setPreReward36Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward37() != null && !mainDataEntity.getPreReward37().isEmpty()) {
-			indto.setPreReward37Nm(mainDataEntity.getPreReward37() + "：" + StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
+			indto.setPreReward37Nm(StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
 		} else {
 			indto.setPreReward37Nm("--なし--");
 		}
 		if(mainDataEntity.getPreReward44() != null && !mainDataEntity.getPreReward44().isEmpty()) {
-			indto.setPreReward44Nm(mainDataEntity.getPreReward44() + "：" + StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
+			indto.setPreReward44Nm(StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
 		} else {
 			indto.setPreReward44Nm("--なし--");
 		}
@@ -4159,23 +4159,23 @@ public class NF303Service extends BaseService {
 		indto.setReward37(StringUtils.nvl(mainDataEntity.getReward37(), ""));
 		indto.setReward44(StringUtils.nvl(mainDataEntity.getReward44(), ""));
 
-		indto.setReward04Nm(getViewValue(mainDataEntity.getReward04(), mainDataEntity.getReward04Nm()));
-		indto.setReward05Nm(getViewValue(mainDataEntity.getReward05(), mainDataEntity.getReward05Nm()));
-		indto.setReward08Nm(getViewValue(mainDataEntity.getReward08(), mainDataEntity.getReward08Nm()));
-		indto.setReward09Nm(getViewValue(mainDataEntity.getReward09(), mainDataEntity.getReward09Nm()));
-		indto.setReward16Nm(getViewValue(mainDataEntity.getReward16(), mainDataEntity.getReward16Nm()));
-		indto.setReward17Nm(getViewValue(mainDataEntity.getReward17(), mainDataEntity.getReward17Nm()));
-		indto.setReward18Nm(getViewValue(mainDataEntity.getReward18(), mainDataEntity.getReward18Nm()));
-		indto.setReward21Nm(getViewValue(mainDataEntity.getReward21(), mainDataEntity.getReward21Nm()));
-		indto.setReward23Nm(getViewValue(mainDataEntity.getReward23(), mainDataEntity.getReward23Nm()));
-		indto.setReward25Nm(getViewValue(mainDataEntity.getReward25(), mainDataEntity.getReward25Nm()));
-		indto.setReward26Nm(getViewValue(mainDataEntity.getReward26(), mainDataEntity.getReward26Nm()));
-		indto.setReward27Nm(getViewValue(mainDataEntity.getReward27(), mainDataEntity.getReward27Nm()));
-		indto.setReward29Nm(getViewValue(mainDataEntity.getReward29(), mainDataEntity.getReward29Nm()));
-		indto.setReward35Nm(getViewValue(mainDataEntity.getReward35(), mainDataEntity.getReward35Nm()));
-		indto.setReward36Nm(getViewValue(mainDataEntity.getReward36(), mainDataEntity.getReward36Nm()));
-		indto.setReward37Nm(getViewValue(mainDataEntity.getReward37(), mainDataEntity.getReward37Nm()));
-		indto.setReward44Nm(getViewValue(mainDataEntity.getReward44(), mainDataEntity.getReward44Nm()));
+		indto.setReward04Nm(getViewNmValue(mainDataEntity.getReward04(), mainDataEntity.getReward04Nm()));
+		indto.setReward05Nm(getViewNmValue(mainDataEntity.getReward05(), mainDataEntity.getReward05Nm()));
+		indto.setReward08Nm(getViewNmValue(mainDataEntity.getReward08(), mainDataEntity.getReward08Nm()));
+		indto.setReward09Nm(getViewNmValue(mainDataEntity.getReward09(), mainDataEntity.getReward09Nm()));
+		indto.setReward16Nm(getViewNmValue(mainDataEntity.getReward16(), mainDataEntity.getReward16Nm()));
+		indto.setReward17Nm(getViewNmValue(mainDataEntity.getReward17(), mainDataEntity.getReward17Nm()));
+		indto.setReward18Nm(getViewNmValue(mainDataEntity.getReward18(), mainDataEntity.getReward18Nm()));
+		indto.setReward21Nm(getViewNmValue(mainDataEntity.getReward21(), mainDataEntity.getReward21Nm()));
+		indto.setReward23Nm(getViewNmValue(mainDataEntity.getReward23(), mainDataEntity.getReward23Nm()));
+		indto.setReward25Nm(getViewNmValue(mainDataEntity.getReward25(), mainDataEntity.getReward25Nm()));
+		indto.setReward26Nm(getViewNmValue(mainDataEntity.getReward26(), mainDataEntity.getReward26Nm()));
+		indto.setReward27Nm(getViewNmValue(mainDataEntity.getReward27(), mainDataEntity.getReward27Nm()));
+		indto.setReward29Nm(getViewNmValue(mainDataEntity.getReward29(), mainDataEntity.getReward29Nm()));
+		indto.setReward35Nm(getViewNmValue(mainDataEntity.getReward35(), mainDataEntity.getReward35Nm()));
+		indto.setReward36Nm(getViewNmValue(mainDataEntity.getReward36(), mainDataEntity.getReward36Nm()));
+		indto.setReward37Nm(getViewNmValue(mainDataEntity.getReward37(), mainDataEntity.getReward37Nm()));
+		indto.setReward44Nm(getViewNmValue(mainDataEntity.getReward44(), mainDataEntity.getReward44Nm()));
 
 		// コメント
 		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));

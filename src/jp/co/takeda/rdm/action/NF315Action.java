@@ -116,9 +116,6 @@ public class NF315Action extends BaseAction<NF315DTO> {
         String title = "NF315_施設紐付け削除 - 申請内容確認";
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
-
         dto.setMsgId(null);
 
         // END UOC

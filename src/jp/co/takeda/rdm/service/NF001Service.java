@@ -22,6 +22,7 @@ import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoSearchDataList;
 import jp.co.takeda.rdm.dto.NF001DTO;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
+import jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
@@ -793,12 +794,12 @@ public class NF001Service extends BaseService {
 
         //1-2-8			JIS市区町村
 		//ブランク　※都道府県が選択された場合、リストを取得する
-        SRdmJkrSosAddrEntity inEntityCityCmb = new SRdmJkrSosAddrEntity("selectAddrCityComboList");
-        List<SRdmJkrSosAddrEntity> outMainCityList = dao.select(inEntityCityCmb);
+        SRdmJkrSosAddrEntiry inEntityCityCmb = new SRdmJkrSosAddrEntiry("selectSRdmJkrCityNameEntiry");
+        List<SRdmJkrSosAddrEntiry> outMainCityList = dao.select(inEntityCityCmb);
         LinkedHashMap<String, String> mapAddrCity = new LinkedHashMap<String, String>();
         mapAddrCity.put("", "--なし--");
-        for (SRdmJkrSosAddrEntity outEntity : outMainCityList) {
-        	mapAddrCity.put(outEntity.getAddrCodePref()+outEntity.getTkCityCd(), outEntity.getTkCityName());
+        for (SRdmJkrSosAddrEntiry outEntity : outMainCityList) {
+        	mapAddrCity.put(outEntity.getAddrCodePref()+outEntity.getAddrCodeCity(), outEntity.getAddrNameCity());
         }
         indto.setAddrCityCombo(mapAddrCity);
     }

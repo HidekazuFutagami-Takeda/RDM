@@ -126,6 +126,7 @@ public class NF013Service extends BaseService {
     		SelectNF013MainDataEntity paramEntity = new SelectNF013MainDataEntity();
     		paramEntity.setInReqId(indto.getReqId());
     		paramEntity.setInInsNo(tRdmReqKnrData.getInsNo());
+    		indto.setInsNo(tRdmReqKnrData.getInsNo());
     		List<SelectNF013MainDataEntity> mainDataEntityList = dao.select(paramEntity);
     		SelectNF013MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 

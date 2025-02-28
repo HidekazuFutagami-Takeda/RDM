@@ -116,9 +116,6 @@ public class NF311Action extends BaseAction<NF311DTO> {
         String title = "NF311_施設紐付け新規 - 申請内容確認";
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
-
         dto.setMsgId(null);
 
         // END UOC

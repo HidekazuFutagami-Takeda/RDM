@@ -126,7 +126,14 @@ public class NF001Action extends BaseAction<NF001DTO> {
         String title = "NF001_施設検索";
 
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+
+        dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
         dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
 
         dto.setTitle(title);
         // END UOC

@@ -186,8 +186,10 @@
 	  	  	comSubmitForAnyWarp(fm1);
 	  	}
 
+	 	var nf001Tab;
 	 	// アクションボタン
 	    function actBtn(screenId, insNo){
+	 		var tmpIns = fm1.insNo.value;
 	 		// 新規
 	 		if(screenId == "NF011"){
 	 			fm1.ultInsCd.value = insNo;
@@ -195,10 +197,19 @@
 	 			fm1.insNo.value = insNo;
 	 		}
 
-	 		document.fm1.target="";
+	 		if(nf001Tab && !nf001Tab.closed){
+	 			nf001Tab.close();
+	 		}
+
+	 		nf001Tab = window.open("","NF001Tab");
+			document.fm1.target="NF001Tab";
+
 	  		fm1.screenId.value=screenId;
 		  	fm1.functionId.value="Init";
 		  	comSubmitForAnyWarp(fm1);
+		  	comClickFlgInit();
+
+		  	fm1.insNo.value = tmpIns;
 		}
 
 	 	// ソートボタン
@@ -312,7 +323,13 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <input type="hidden" name="openerName" value="" />
 
 	<s:hidden name="loginJokenSetCd"/>
-	<s:hidden name="loginShzNm"/>
+	<s:hidden name="loginJgiNo"/>
+    <s:hidden name="loginNm"/>
+    <s:hidden name="loginShzNm"/>
+    <s:hidden name="loginTrtCd"/>
+    <s:hidden name="loginBrCd"/>
+    <s:hidden name="loginDistCd"/>
+    <s:hidden name="backScreenId" value="NF001" />
     <s:hidden id="preScreenId" name="preScreenId"/>
 	<s:hidden id="pageCntCur" name="pageCntCur"/>
 	<s:hidden id="sortCondition" name="sortCondition" />

@@ -115,35 +115,24 @@ public class NF212Action extends BaseAction<NF212DTO> {
         String title = "NF212_施設紐付け変更";
         dto.setTitle(title);
 
-        //モック
-//        dto.setInsNo("101115001");
-//        dto.setReqId("250207-000217");
-//        dto.setTrtCd("00");
-//        dto.setHinGCd("00");
-//        dto.setTkdTrtKbn("1");
-
-        String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
         String insNo = dto.getInsNo();
         String tkdTrtKbn = dto.getTkdTrtKbn();
-        dto.setPreScreenId(preScreenId);
 
-        //モック
-//        String kbn = "1";
-//        if(kbn.equals("0")) {
-//	        preScreenId = "NF201";
-//	        dto.setLoginJgiNo("8830034");
-//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-//	        dto.setReqId("");
-//        } else {
-//	        preScreenId = "NC011";
-//	        dto.setLoginJgiNo("8830034");
-//	        //dto.setLoginJgiNo("0");
-//	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
-//	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-//	        dto.setInsNo("");
-//        }
+        String preScreenId = dto.getBackScreenId();
+        if("NF313".equals(preScreenId)) {
+        	preScreenId = dto.getPreScreenId();
+        } else {
+        	dto.setPreScreenId(preScreenId);
+        }
+
+        dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
 
         // 遷移パターン　0:施設固定コード(区分0)、1:施設固定コード(区分1)、2：申請データあり(区分0)、3：申請データあり(区分1)
         // 武田紐領域別区分で初期データ作成
@@ -259,8 +248,8 @@ public class NF212Action extends BaseAction<NF212DTO> {
     protected String cancelNext(BaseDTO outdto) throws Exception {
         // START UOC
 
-    	// 前画面に遷移
-        outdto.setForward(outdto.getPreScreenId());
+    	// 完了画面に遷移
+        outdto.setForward("NC101");
 
         // END UOC
         setNextDTO(outdto);

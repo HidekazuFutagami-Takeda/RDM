@@ -127,18 +127,26 @@ public class NF101Action extends BaseAction<NF101DTO> {
         String insNo = dto.getInsNo();
         dto.setPreScreenId(preScreenId);
 
+        dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
+
         //モック
         String kbn = "0";
         if(kbn.equals("0")) {
 	        preScreenId = "NF001";
-	        dto.setLoginJgiNo("8830034");
+	       // dto.setLoginJgiNo("8830034");
 	        dto.setReqId("");
         } else {
 	        preScreenId = "NC011";
 	        dto.setInsNo("");
-	        dto.setLoginJgiNo("8830034");
-	        dto.setLoginJgiNo("0");
-	        dto.setLoginJokenSetCd("JKN0813");	// 管理者
+	        //dto.setLoginJgiNo("8830034");
+	        //dto.setLoginJgiNo("0");
+	        //dto.setLoginJokenSetCd("JKN0813");	// 管理者
 	        //dto.setLoginJokenSetCd("JKN0023");	// MR
         }
 

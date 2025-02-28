@@ -1553,8 +1553,6 @@ public class NF301Service extends BaseService {
 
         	dao.update(tRdmReqKnrEntity);
 
-        	outdto.setForward("NC101");
-
 		} else if("2".equals(indto.getFuncId())) {
 			// 承認
 			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
@@ -1585,8 +1583,6 @@ public class NF301Service extends BaseService {
 
         	dao.update(tRdmReqKnrEntity);
 
-        	outdto.setForward("NC101");
-
 		} else if("3".equals(indto.getFuncId())) {
 			// 却下
 			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
@@ -1610,9 +1606,9 @@ public class NF301Service extends BaseService {
         	tRdmReqKnrEntity.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.update(tRdmReqKnrEntity);
-
-        	outdto.setForward("NC011");
 		}
+
+    	outdto.setForward("NC101");
 
 		// END UOC
 		return outdto;

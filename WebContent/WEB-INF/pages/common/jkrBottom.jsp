@@ -46,6 +46,7 @@
 <!-- セカンダリリンク 開始 -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tbody>
+<!--
   <tr>
     <td align="right">
       <a class="comBannerSecondaryLink" style="margin-left:3pt;margin-right:3pt;" href="" onClick="JavaScript:jkrMenuLink('<s:property value="%{#TOP_FUNCTIONID}"/>');return false;">
@@ -54,6 +55,7 @@
       <a class="comBannerSecondaryLink" href="" OnClick="jkrHomeLink();return false;"><font class="comBannerSecondaryLink">ホームへ</font></a>&nbsp;
     </td>
   </tr>
+ -->
 </tbody>
 </table>
 <!-- セカンダリリンク 終了 -->

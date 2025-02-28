@@ -34,6 +34,8 @@
 <!-- セカンダリリンク 開始 -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:10px;">
 <tbody>
+<% if(mainMenu != null){ %>
+    <% if("S0110403".equals(mainMenu.getMenuCode()) || "S0110405".equals(mainMenu.getMenuCode())){ %>
   <tr>
     <td align="left">&nbsp;</td>
     <td align="right" colSpan="2">
@@ -43,6 +45,10 @@
       <a class="comBannerSecondaryLink" href="" OnClick="jkrHomeLink();return false;"><font class="comBannerSecondaryLink">ホームへ</font></a>&nbsp;
     </td>
   </tr>
+    <% } %>
+  <% } %>
+
+<!--
   <% if(mainMenu != null){ %>
     <% if(!"S0110403".equals(mainMenu.getMenuCode()) && !"S0110405".equals(mainMenu.getMenuCode())){ %>
     <tr style="display: none;">
@@ -52,6 +58,7 @@
     </tr>
     <% } %>
   <% } %>
+ -->
 </tbody>
 </table>
 <!-- セカンダリリンク 終了 -->

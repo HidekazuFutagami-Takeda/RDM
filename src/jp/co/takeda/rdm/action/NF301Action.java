@@ -162,9 +162,6 @@ public class NF301Action extends BaseAction<NF301DTO> {
 
 //        dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
-
         dto.setMsgId(null);
 
         // END UOC

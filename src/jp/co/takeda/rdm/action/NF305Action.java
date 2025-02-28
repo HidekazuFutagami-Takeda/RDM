@@ -157,9 +157,6 @@ public class NF305Action extends BaseAction<NF305DTO> {
     	//改ページ設定
         dto.setPageCntCur(1);
 
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
-
         dto.setMsgId(null);
 
         // END UOC

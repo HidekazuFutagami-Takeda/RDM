@@ -132,9 +132,9 @@ public class NC202Service extends BaseService {
 //    	   selectJgiEntity.setInTrtCd("02");
 //    	   selectJgiEntity.setInAddrCodePref("01");
 //    	   selectJgiEntity.setInTkCityCd("018");
-    	   selectJgiEntity.setInTrtCd(indto.getTrtCdPop());
-    	   selectJgiEntity.setInAddrCodePref(indto.getAddrCodePrefPop());
-    	   selectJgiEntity.setInTkCityCd(indto.getTkCityCdPop());
+    	   selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
+    	   selectJgiEntity.setInAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePrefPop()));
+    	   selectJgiEntity.setInTkCityCd(StringUtils.setEmptyToNull(indto.getTkCityCdPop()));
 
        }else {
     	   selectJgiEntity.setInGmnFlg(1);

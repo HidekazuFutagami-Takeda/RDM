@@ -64,6 +64,7 @@ if (stack.peek() instanceof NC203DTO) {
     	comClickFlgInit();
 
     	sosAddrChange();
+    	document.fm1.kensakuAddrCodeCity.value = document.fm1.tmpAddrCodeCity.value;
 
     }
     </script>
@@ -142,6 +143,7 @@ if (stack.peek() instanceof NC203DTO) {
     <s:hidden name="trtCd"/>
     <s:hidden name="tkdTrtKbn"/>
     <s:hidden name="insSbtEditFlg"/>
+    <s:hidden id="tmpAddrCodeCity" name="tmpAddrCodeCity" />
      <s:url id="searchurl" action="NC203Search"/>
     <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
     <s:url id="sorturl" action="NC203Sort"/>
@@ -283,7 +285,7 @@ if (stack.peek() instanceof NC203DTO) {
 				<nobr>&nbsp;都道府県 </nobr>
 				</td>
 				<td>
-				<span onchange="sosAddrChange(); return false;">
+				<span onchange="sosAddrChange();addrCodeCityChange(); return false;">
 				<s:select class="jkrSosAddrCd" id="jkrSosAddrCd" name="kensakuAddrCodePref" cssStyle="width:80pt" list ="jkrSosAddrMap" />
 			 	</span>
 			 	</td>
@@ -292,7 +294,7 @@ if (stack.peek() instanceof NC203DTO) {
 				<td class="comTableSearchItem">
 				<nobr>&nbsp;JIS市区町村 </nobr>
 				</td>
-				<td><s:select class="jkrCityNameCd" id="jkrCityNameCd" name="kensakuAddrCodeCity" cssStyle="width:80pt" list ="mapCityName" /></td>
+				<td><s:select class="jkrCityNameCd" id="jkrCityNameCd" name="kensakuAddrCodeCity" cssStyle="width:80pt" list ="mapCityName" onchange="addrCodeCityChange();" /></td>
 
 			</tr>
 			<tr>

@@ -844,7 +844,7 @@ public class NF011Service extends BaseService {
 		HashSet<String> trtSet = new HashSet<>();
 
 		for (int i = 0; i < hcoJkrDataList.size(); i++) {
-			HcoJkrData hcoJkrData = hcoJkrDataList.get(0);
+			HcoJkrData hcoJkrData = hcoJkrDataList.get(i);
 			if (!"1".equals(hcoJkrData.getDeleteFlg())) {
 				if (!trtSet.add(hcoJkrData.getTrtCd())) {
 					// 領域に対して担当者は1名のみ設定してください。

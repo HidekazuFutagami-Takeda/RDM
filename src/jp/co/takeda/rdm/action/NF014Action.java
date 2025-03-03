@@ -215,7 +215,6 @@ public class NF014Action extends BaseAction<NF014DTO> {
         cancelSetup();
         // F層呼び出し
         BaseDTO outdto = NF014Service.cancel(dto);
-        outdto = NF014Service.init(dto);
         return cancelNext(outdto);
     }
 

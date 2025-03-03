@@ -261,6 +261,8 @@ public class NF307Service extends BaseService {
  			dao.update(tRdmHcoReqUpdData);
  		}
 
+ 		indto.setReqId(reqId);
+
         // 初期表示検索
  		// 申請データを参照
 		SelectNF307MainDataEntity paramEntity = new SelectNF307MainDataEntity();

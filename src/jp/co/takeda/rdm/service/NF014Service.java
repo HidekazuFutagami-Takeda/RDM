@@ -326,7 +326,7 @@ public class NF014Service extends BaseService {
 
 		} else {
 			// 更新
-			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF014Data");
+			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF013Data");
 			tRdmReqKnrUpdData.setReqId(reqId);
 			if("13".equals(indto.getReqStsCd())) {
 				tRdmReqKnrUpdData.setReqStsCd("11");

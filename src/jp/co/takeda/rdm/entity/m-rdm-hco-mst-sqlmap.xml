@@ -472,7 +472,12 @@
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
 		<where>
-		<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		<if test="kensakuHaiinKbnNullFlg == '1' ">
+			AND HCO_MST.DEL_KBN IS NULL
+		</if>
+		<if test="kensakuHaiinKbnNullFlg != '1' ">
+			<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		</if>
 		<if test="insKanjiSrch != null">
 			AND (HCO_MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjiSrch}|| '%' --施設名（全角）
 			OR MDB_HCO_MST1.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjiSrch}|| '%')
@@ -569,7 +574,12 @@
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
 		<where>
-		<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		<if test="kensakuHaiinKbnNullFlg == '1' ">
+			AND HCO_MST.DEL_KBN IS NULL
+		</if>
+		<if test="kensakuHaiinKbnNullFlg != '1' ">
+			<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		</if>
 		<if test="insKanjiSrch != null ">AND HCO_MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjiSrch}|| '%' --施設名（全角）</if>
 		<if test="insKanaSrch != null ">AND HCO_MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%' --施設名（半角カナ）</if>
 		<if test="kensakuDelFlg != null ">AND HCO_MST.DEL_FLG = #{kensakuDelFlg} --削除フラグ</if>
@@ -707,7 +717,12 @@
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
 		<where>
-		<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		<if test="kensakuHaiinKbnNullFlg == '1' ">
+			AND HCO_MST.DEL_KBN IS NULL
+		</if>
+		<if test="kensakuHaiinKbnNullFlg != '1' ">
+			<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		</if>
 		<if test="insKanjiSrch != null">
 			AND (HCO_MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjiSrch}|| '%' --施設名（全角）
 			OR MDB_HCO_MST1.SHISETSU_NM_SRCH LIKE '%' ||#{insKanjiSrch}|| '%')
@@ -784,7 +799,12 @@
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
 		<where>
-		<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		<if test="kensakuHaiinKbnNullFlg == '1' ">
+			AND HCO_MST.DEL_KBN IS NULL
+		</if>
+		<if test="kensakuHaiinKbnNullFlg != '1' ">
+			<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+		</if>
 		<if test="insKanjiSrch != null ">AND HCO_MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjiSrch}|| '%' --施設名（全角）</if>
 		<if test="insKanaSrch != null ">AND HCO_MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%' --施設名（半角カナ）</if>
 		<if test="kensakuDelFlg != null ">AND HCO_MST.DEL_FLG = #{kensakuDelFlg} --削除フラグ</if>

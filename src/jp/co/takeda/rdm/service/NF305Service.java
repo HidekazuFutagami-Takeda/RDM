@@ -186,7 +186,7 @@ public class NF305Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -630,7 +630,7 @@ public class NF305Service extends BaseService {
         	tRdmReqKnrEntity.setReqYmdhms(sysDateTime);
         	tRdmReqKnrEntity.setReqComment(indto.getReqComment());
 
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		tRdmReqKnrEntity.setReqKngKbn("2");
         	} else {
         		tRdmReqKnrEntity.setReqKngKbn("1");

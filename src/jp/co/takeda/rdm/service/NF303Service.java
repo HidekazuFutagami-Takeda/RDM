@@ -294,7 +294,7 @@ public class NF303Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -343,7 +343,7 @@ public class NF303Service extends BaseService {
         TRdmHcoReqEntity tRdmHcoReqData = dao.selectByPK(tRdmHcoReqEntity);
 
         // 管理者権限
-        boolean knr = "JKN0813".equals(indto.getLoginJokenSetCd());
+        boolean knr = RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd());
 
         if(tRdmHcoReqData == null) {
         	// 新規登録
@@ -2424,7 +2424,7 @@ public class NF303Service extends BaseService {
         tRdmReqKnrEntity.setReqId(indto.getReqId());
         TRdmReqKnrEntity tRdmReqKnrData = dao.selectByPK(tRdmReqKnrEntity);
         String reqId = indto.getReqId();
-        boolean knr = "JKN0813".equals(indto.getLoginJokenSetCd());
+        boolean knr = RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd());
 
         if(tRdmReqKnrData == null) {
         	// 新規登録
@@ -3215,7 +3215,7 @@ public class NF303Service extends BaseService {
     	dao.update(tRdmReqKnrUpdEntity);
 
         // 管理者権限
-        boolean knr = "JKN0813".equals(indto.getLoginJokenSetCd());
+        boolean knr = RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd());
     	// 更新
     	TRdmHcoReqEntity tRdmHcoReqUpdData = new TRdmHcoReqEntity("updateNF012Data");
     	tRdmHcoReqUpdData.setReqId(reqId);

@@ -65,7 +65,7 @@ public class NF001Service extends BaseService {
 
         // MR権限の場合、親画面．ログインユーザ情報からログインユーザの従業員番号、氏名、組織コード、医薬支店C、医薬営業所C、所属組織名を取得し
         // 検索条件．組織、検索条件．担当者に設定する
-        if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
         	indto.setSosCd(loginInfo.getSosCd());
         	indto.setSosNm(indto.getLoginShzNm());
         	indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
@@ -570,9 +570,9 @@ public class NF001Service extends BaseService {
 
         	// 新規作成
         	if("1".equals(funcFlg1) && "1".equals(newValue)) {
-        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg1("1");
-        		} else if("JKN0023".equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
         			dataRecord.setFuncFlg1("1");
         		} else {
         			dataRecord.setFuncFlg1("0");
@@ -583,9 +583,9 @@ public class NF001Service extends BaseService {
 
         	// 編集
         	if("1".equals(funcFlg2) && "1".equals(editValue)) {
-        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg2("1");
-        		} else if("JKN0023".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg2("1");
         		} else {
         			dataRecord.setFuncFlg2("0");
@@ -596,9 +596,9 @@ public class NF001Service extends BaseService {
 
         	// 削除
         	if("1".equals(funcFlg3) && "1".equals(delValue)) {
-        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg3("1");
-        		} else if("JKN0023".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg3("1");
         		} else {
         			dataRecord.setFuncFlg3("0");
@@ -609,9 +609,9 @@ public class NF001Service extends BaseService {
 
         	// 復活
         	if("1".equals(funcFlg4) && "1".equals(revValue)) {
-        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg4("1");
-        		} else if("JKN0043".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg4("1");
         		} else {
         			dataRecord.setFuncFlg4("0");
@@ -622,9 +622,9 @@ public class NF001Service extends BaseService {
 
         	// 親子紐づけ
         	if("1".equals(funcFlg5) && "1".equals(editValue)) {
-        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg5("1");
-        		} else if("JKN0053".equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
         			dataRecord.setFuncFlg5("1");
         		} else {
         			dataRecord.setFuncFlg5("0");
@@ -635,9 +635,9 @@ public class NF001Service extends BaseService {
 
         	// 来期用項目更新
         	if("1".equals(funcFlg6) && "1".equals(editValue)) {
-        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg6("1");
-        		} else if("JKN0063".equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg6("1");
         		} else {
         			dataRecord.setFuncFlg6("0");
@@ -648,9 +648,9 @@ public class NF001Service extends BaseService {
 
         	// 親子紐づけ(来期)
         	if("1".equals(funcFlg7) && "1".equals(editValue)) {
-        		if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg7("1");
-        		} else if("JKN0073".equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
         			dataRecord.setFuncFlg7("1");
         		} else {
         			dataRecord.setFuncFlg7("0");
@@ -780,7 +780,7 @@ public class NF001Service extends BaseService {
 		//組織担当地区情報からJIS府県コード、JIS府県名を集約して取得しドロップダウンリストを作成する
 		//※MR権限の場合、親画面．領域区分を検索条件とする
         SRdmJkrSosAddrEntity inEntityAddrCmb = new SRdmJkrSosAddrEntity("selectAddrPrefComboList");
-		if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+		if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
 			//※MR権限の場合、親画面．領域区分を検索条件とする
 			inEntityAddrCmb.setTrtCd(indto.getTrtCd());
 		}

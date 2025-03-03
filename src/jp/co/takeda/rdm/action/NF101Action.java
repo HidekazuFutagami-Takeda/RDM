@@ -21,6 +21,7 @@ import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF101DTO;
 import jp.co.takeda.rdm.service.NF101Service;
 import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 
 /**
  * Actionクラス
@@ -146,8 +147,8 @@ public class NF101Action extends BaseAction<NF101DTO> {
 	        dto.setInsNo("");
 	        //dto.setLoginJgiNo("8830034");
 	        //dto.setLoginJgiNo("0");
-	        //dto.setLoginJokenSetCd("JKN0813");	// 管理者
-	        //dto.setLoginJokenSetCd("JKN0023");	// MR
+	        //dto.setLoginJokenSetCd(RdmConstantsData.RDM_JKN_ADMIN);	// 管理者
+	        //dto.setLoginJokenSetCd(RdmConstantsData.RDM_JKN_MR);	// MR
         }
 
         // 遷移パターン　1:施設固定コードから作成、2：申請データあり

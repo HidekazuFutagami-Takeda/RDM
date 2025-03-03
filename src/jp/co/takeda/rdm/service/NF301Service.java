@@ -622,7 +622,7 @@ public class NF301Service extends BaseService {
         }
 
         // MR権限の場合、ログインユーザ情報．組織コードが施設のJIS府県＋武田市区郡を担当可能か判定する
-        if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
         	SRdmJkrSosAddrEntity sRdmJkrSosAddrChkEntity = new SRdmJkrSosAddrEntity("selectNF011sosAddrChkData");
         	sRdmJkrSosAddrChkEntity.setSosCd(loginInfo.getSosCd());
         	sRdmJkrSosAddrChkEntity.setAddrCodePref(indto.getAddrCodePref());
@@ -703,7 +703,7 @@ public class NF301Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -1542,7 +1542,7 @@ public class NF301Service extends BaseService {
         	tRdmReqKnrEntity.setReqYmdhms(sysDateTime);
         	tRdmReqKnrEntity.setReqComment(indto.getReqComment());
 
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		tRdmReqKnrEntity.setReqKngKbn("2");
         	} else {
         		tRdmReqKnrEntity.setReqKngKbn("1");
@@ -2170,7 +2170,7 @@ public class NF301Service extends BaseService {
         }
 
         // MR権限の場合、ログインユーザ情報．組織コードが施設のJIS府県＋武田市区郡を担当可能か判定する
-        if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
         	SRdmJkrSosAddrEntity sRdmJkrSosAddrChkEntity = new SRdmJkrSosAddrEntity("selectNF011sosAddrChkData");
         	sRdmJkrSosAddrChkEntity.setSosCd(loginInfo.getSosCd());
         	sRdmJkrSosAddrChkEntity.setAddrCodePref(indto.getAddrCodePref());

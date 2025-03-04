@@ -624,7 +624,7 @@ public class NF309Service extends BaseService {
         	tRdmHcoNxtReqInsData.setVacInsType(StringUtils.nvl(indto.getNextVacInsType(), ""));
         	tRdmHcoNxtReqInsData.setVacVisitType(StringUtils.nvl(indto.getNextVacVisitType(), ""));
 
-        	if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
+        	if(!"01".equals(indto.getInsType()) && !"02".equals(indto.getInsType())) {
         		// 病床数非表示、0扱い
         		tRdmHcoNxtReqInsData.setBedcntBase("0");
 	        	tRdmHcoNxtReqInsData.setBedcnt04("0");
@@ -670,7 +670,7 @@ public class NF309Service extends BaseService {
         	tRdmHcoNxtReqUpdData.setVacInsType(StringUtils.nvl(indto.getNextVacInsType(), ""));
         	tRdmHcoNxtReqUpdData.setVacVisitType(StringUtils.nvl(indto.getNextVacVisitType(), ""));
 
-        	if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
+        	if(!"01".equals(indto.getInsType()) && !"02".equals(indto.getInsType())) {
         		// 病床数非表示、0扱い
         		tRdmHcoNxtReqUpdData.setBedcntBase("0");
 	        	tRdmHcoNxtReqUpdData.setBedcnt04("0");

@@ -708,32 +708,50 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	}
 
     	// 階級区分
-    	if(changeItem == "2" || changeItem == "4"){
+    	if(changeItem == "2"){
+        	var box = document.fm1.nextInsRank;
+        	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextInsRank;
         	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value);
         	box.value = document.fm1.tmpInsRank.value;
     	}
 
     	// 定訪先区分
-    	if(changeItem == "2" || changeItem == "3" || changeItem == "4"){
+    	if(changeItem == "2" || changeItem == "3"){
+        	var box = document.fm1.nextRegVisType;
+        	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextRegVisType;
         	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
         	box.value = document.fm1.tmpRegVisType.value;
     	}
 
     	//  重点病院区分
-    	if(changeItem == "2" || changeItem == "3" || changeItem == "4"){
+    	if(changeItem == "2" || changeItem == "3"){
+        	var box = document.fm1.nextImpHosType;
+        	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextImpHosType;
         	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
         	box.value = document.fm1.tmpImpHosType.value;
     	}
 
     	// 経営主体
-    	if(changeItem == "3" || changeItem == "4"){
+    	if(changeItem == "2" || changeItem == "3"){
+        	var box = document.fm1.nextManageCd;
+        	box = makeManageCdBox(box,document.fm1.nextInsRank.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextManageCd;
         	box = makeManageCdBox(box,document.fm1.nextInsRank.value);
         	box.value = document.fm1.tmpManageCd.value;
     	}
+
+    	setHoInsType();
     }
 
 	// 対象区分値設定

@@ -244,6 +244,7 @@ public class NF101Service extends BaseService {
     			indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
     		}
 
+    		indto.setReqChl(mainDataEntity.getReqChl());
     		indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
     		indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
     		indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -314,16 +315,16 @@ public class NF101Service extends BaseService {
     		indto.setUltBedsTot(Integer.toString(bedsTot));
     		indto.setUltMedBedsTot(Integer.toString(medBedsTot));
 
-    		indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), "0"));
-    		indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), "0"));
-    		indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), "0"));
-    		indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), "0"));
-    		indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), "0"));
-    		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), "0"));
-    		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), "0"));
-    		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), "0"));
-    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
-    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
+			indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), "0"));
+			indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), "0"));
+			indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), "0"));
+			indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), "0"));
+			indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), "0"));
+			indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), "0"));
+			indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), "0"));
+			indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), "0"));
+			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
+			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
 
     		// コメント
     		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -436,56 +437,58 @@ public class NF101Service extends BaseService {
         String errMsg = "";
 
         // レングスチェック
-        if(indto.getNextBedCntBase() != null && indto.getNextBedCntBase().length() > 4) {
-        	// 最大文字数を超えています。（病床（基準））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（基準）") + "\n";
-			errFlg = true;
+        if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
+	        if(indto.getNextBedCntBase() != null && indto.getNextBedCntBase().length() > 4) {
+	        	// 最大文字数を超えています。（病床（基準））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（基準）") + "\n";
+				errFlg = true;
+	        }
+	        if(indto.getNextBedCnt04() != null && indto.getNextBedCnt04().length() > 4) {
+	        	// 最大文字数を超えています。（病床（結核））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（結核）") + "\n";
+				errFlg = true;
+	        }
+	        if (indto.getNextBedCnt01() != null && indto.getNextBedCnt01().length() > 4) {
+				// 最大文字数を超えています。（病床（一般））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（一般）") + "\n";
+				errFlg = true;
+			}
+			if (indto.getNextBedCnt05() != null && indto.getNextBedCnt05().length() > 4) {
+				// 最大文字数を超えています。（病床（感染症））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（感染症）") + "\n";
+				errFlg = true;
+			}
+			if (indto.getNextBedCnt03() != null && indto.getNextBedCnt03().length() > 4) {
+				// 最大文字数を超えています。（病床（精神））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（精神）") + "\n";
+				errFlg = true;
+			}
+			if (indto.getNextBedCnt07() != null && indto.getNextBedCnt07().length() > 4) {
+				// 最大文字数を超えています。（病床（療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（療養）") + "\n";
+				errFlg = true;
+			}
+			if (indto.getNextBedCnt02() != null && indto.getNextBedCnt02().length() > 4) {
+				// 最大文字数を超えています。（病床（医療療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療療養）") + "\n";
+				errFlg = true;
+			}
+			if (indto.getNextBedCnt06() != null && indto.getNextBedCnt06().length() > 4) {
+				// 最大文字数を超えています。（病床（介護療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（介護療養）") + "\n";
+				errFlg = true;
+			}
+			if (indto.getNextBedsTot() != null && indto.getNextBedsTot().length() > 5) {
+				// 最大文字数を超えています。（病床（ベッド数計））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（ベッド数計）") + "\n";
+				errFlg = true;
+			}
+			if (indto.getMedBedsTot() != null && indto.getNextMedBedsTot().length() > 5) {
+				// 最大文字数を超えています。（病床（医療ベッド数計））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療ベッド数計）") + "\n";
+				errFlg = true;
+			}
         }
-        if(indto.getNextBedCnt04() != null && indto.getNextBedCnt04().length() > 4) {
-        	// 最大文字数を超えています。（病床（結核））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（結核）") + "\n";
-			errFlg = true;
-        }
-        if (indto.getNextBedCnt01() != null && indto.getNextBedCnt01().length() > 4) {
-			// 最大文字数を超えています。（病床（一般））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（一般）") + "\n";
-			errFlg = true;
-		}
-		if (indto.getNextBedCnt05() != null && indto.getNextBedCnt05().length() > 4) {
-			// 最大文字数を超えています。（病床（感染症））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（感染症）") + "\n";
-			errFlg = true;
-		}
-		if (indto.getNextBedCnt03() != null && indto.getNextBedCnt03().length() > 4) {
-			// 最大文字数を超えています。（病床（精神））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（精神）") + "\n";
-			errFlg = true;
-		}
-		if (indto.getNextBedCnt07() != null && indto.getNextBedCnt07().length() > 4) {
-			// 最大文字数を超えています。（病床（療養））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（療養）") + "\n";
-			errFlg = true;
-		}
-		if (indto.getNextBedCnt02() != null && indto.getNextBedCnt02().length() > 4) {
-			// 最大文字数を超えています。（病床（医療療養））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療療養）") + "\n";
-			errFlg = true;
-		}
-		if (indto.getNextBedCnt06() != null && indto.getNextBedCnt06().length() > 4) {
-			// 最大文字数を超えています。（病床（介護療養））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（介護療養）") + "\n";
-			errFlg = true;
-		}
-		if (indto.getNextBedsTot() != null && indto.getNextBedsTot().length() > 5) {
-			// 最大文字数を超えています。（病床（ベッド数計））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（ベッド数計）") + "\n";
-			errFlg = true;
-		}
-		if (indto.getMedBedsTot() != null && indto.getNextMedBedsTot().length() > 5) {
-			// 最大文字数を超えています。（病床（医療ベッド数計））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療ベッド数計）") + "\n";
-			errFlg = true;
-		}
         if(indto.getReqComment() != null && indto.getReqComment().length() > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
@@ -498,46 +501,48 @@ public class NF101Service extends BaseService {
         }
 
         // 文字種チェック
-        if (!StringUtils.isNumeric(indto.getNextBedCntBase())) {
-			// 入力文字種が不正です。（病床（基準））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（基準）") + "\n";
-			errFlg = true;
-		}
-		if (!StringUtils.isNumeric(indto.getNextBedCnt04())) {
-			// 入力文字種が不正です。（病床（結核））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（結核）") + "\n";
-			errFlg = true;
-		}
-		if (!StringUtils.isNumeric(indto.getNextBedCnt01())) {
-			// 入力文字種が不正です。（病床（一般））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（一般）") + "\n";
-			errFlg = true;
-		}
-		if (!StringUtils.isNumeric(indto.getNextBedCnt05())) {
-			// 入力文字種が不正です。（病床（感染症））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（感染症）") + "\n";
-			errFlg = true;
-		}
-		if (!StringUtils.isNumeric(indto.getNextBedCnt03())) {
-			// 入力文字種が不正です。（病床（精神））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（精神）") + "\n";
-			errFlg = true;
-		}
-		if (!StringUtils.isNumeric(indto.getNextBedCnt07())) {
-			// 入力文字種が不正です。（病床（療養））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（療養）") + "\n";
-			errFlg = true;
-		}
-		if (!StringUtils.isNumeric(indto.getNextBedCnt02())) {
-			// 入力文字種が不正です。（病床（医療療養））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（医療療養）") + "\n";
-			errFlg = true;
-		}
-		if (!StringUtils.isNumeric(indto.getNextBedCnt06())) {
-			// 入力文字種が不正です。（病床（介護療養））
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（介護療養）") + "\n";
-			errFlg = true;
-		}
+        if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
+		    if (!StringUtils.isNumeric(indto.getNextBedCntBase())) {
+				// 入力文字種が不正です。（病床（基準））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（基準）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt04())) {
+				// 入力文字種が不正です。（病床（結核））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（結核）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt01())) {
+				// 入力文字種が不正です。（病床（一般））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（一般）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt05())) {
+				// 入力文字種が不正です。（病床（感染症））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（感染症）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt03())) {
+				// 入力文字種が不正です。（病床（精神））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（精神）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt07())) {
+				// 入力文字種が不正です。（病床（療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（療養）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt02())) {
+				// 入力文字種が不正です。（病床（医療療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（医療療養）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt06())) {
+				// 入力文字種が不正です。（病床（介護療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（介護療養）") + "\n";
+				errFlg = true;
+			}
+        }
 
         // エラー時処理
         if(errFlg) {
@@ -625,16 +630,31 @@ public class NF101Service extends BaseService {
         	tRdmHcoNxtReqInsData.setManageCd(StringUtils.nvl(indto.getNextManageCd(), ""));
         	tRdmHcoNxtReqInsData.setVacInsType(StringUtils.nvl(indto.getNextVacInsType(), ""));
         	tRdmHcoNxtReqInsData.setVacVisitType(StringUtils.nvl(indto.getNextVacVisitType(), ""));
-        	tRdmHcoNxtReqInsData.setBedcntBase(StringUtils.nvl(indto.getNextBedCntBase(), ""));
-        	tRdmHcoNxtReqInsData.setBedcnt04(StringUtils.nvl(indto.getNextBedCnt04(), ""));
-        	tRdmHcoNxtReqInsData.setBedcnt01(StringUtils.nvl(indto.getNextBedCnt01(), ""));
-        	tRdmHcoNxtReqInsData.setBedcnt05(StringUtils.nvl(indto.getNextBedCnt05(), ""));
-        	tRdmHcoNxtReqInsData.setBedcnt07(StringUtils.nvl(indto.getNextBedCnt07(), ""));
-        	tRdmHcoNxtReqInsData.setBedcnt02(StringUtils.nvl(indto.getNextBedCnt02(), ""));
-        	tRdmHcoNxtReqInsData.setBedcnt03(StringUtils.nvl(indto.getNextBedCnt03(), ""));
-        	tRdmHcoNxtReqInsData.setBedcnt06(StringUtils.nvl(indto.getNextBedCnt06(), ""));
-        	tRdmHcoNxtReqInsData.setBedsTot(StringUtils.nvl(indto.getNextBedsTot(), ""));
-        	tRdmHcoNxtReqInsData.setMedBedsTot(StringUtils.nvl(indto.getNextMedBedsTot(), ""));
+
+        	if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
+        		// 病床数非表示、0扱い
+        		tRdmHcoNxtReqInsData.setBedcntBase("0");
+	        	tRdmHcoNxtReqInsData.setBedcnt04("0");
+	        	tRdmHcoNxtReqInsData.setBedcnt01("0");
+	        	tRdmHcoNxtReqInsData.setBedcnt05("0");
+	        	tRdmHcoNxtReqInsData.setBedcnt07("0");
+	        	tRdmHcoNxtReqInsData.setBedcnt02("0");
+	        	tRdmHcoNxtReqInsData.setBedcnt03("0");
+	        	tRdmHcoNxtReqInsData.setBedcnt06("0");
+	        	tRdmHcoNxtReqInsData.setBedsTot("0");
+	        	tRdmHcoNxtReqInsData.setMedBedsTot("0");
+        	} else {
+	        	tRdmHcoNxtReqInsData.setBedcntBase(StringUtils.nvl(indto.getNextBedCntBase(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcnt04(StringUtils.nvl(indto.getNextBedCnt04(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcnt01(StringUtils.nvl(indto.getNextBedCnt01(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcnt05(StringUtils.nvl(indto.getNextBedCnt05(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcnt07(StringUtils.nvl(indto.getNextBedCnt07(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcnt02(StringUtils.nvl(indto.getNextBedCnt02(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcnt03(StringUtils.nvl(indto.getNextBedCnt03(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcnt06(StringUtils.nvl(indto.getNextBedCnt06(), ""));
+	        	tRdmHcoNxtReqInsData.setBedsTot(StringUtils.nvl(indto.getNextBedsTot(), ""));
+	        	tRdmHcoNxtReqInsData.setMedBedsTot(StringUtils.nvl(indto.getNextMedBedsTot(), ""));
+        	}
 
         	tRdmHcoNxtReqInsData.setInsShaYmd(sysDate);
         	tRdmHcoNxtReqInsData.setInsShaId(indto.getLoginJgiNo());
@@ -656,16 +676,31 @@ public class NF101Service extends BaseService {
         	tRdmHcoNxtReqUpdData.setManageCd(StringUtils.nvl(indto.getNextManageCd(), ""));
         	tRdmHcoNxtReqUpdData.setVacInsType(StringUtils.nvl(indto.getNextVacInsType(), ""));
         	tRdmHcoNxtReqUpdData.setVacVisitType(StringUtils.nvl(indto.getNextVacVisitType(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcntBase(StringUtils.nvl(indto.getNextBedCntBase(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcnt04(StringUtils.nvl(indto.getNextBedCnt04(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcnt01(StringUtils.nvl(indto.getNextBedCnt01(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcnt05(StringUtils.nvl(indto.getNextBedCnt05(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcnt07(StringUtils.nvl(indto.getNextBedCnt07(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcnt02(StringUtils.nvl(indto.getNextBedCnt02(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcnt03(StringUtils.nvl(indto.getNextBedCnt03(), ""));
-        	tRdmHcoNxtReqUpdData.setBedcnt06(StringUtils.nvl(indto.getNextBedCnt06(), ""));
-        	tRdmHcoNxtReqUpdData.setBedsTot(StringUtils.nvl(indto.getNextBedsTot(), ""));
-        	tRdmHcoNxtReqUpdData.setMedBedsTot(StringUtils.nvl(indto.getNextMedBedsTot(), ""));
+
+        	if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
+        		// 病床数非表示、0扱い
+        		tRdmHcoNxtReqUpdData.setBedcntBase("0");
+	        	tRdmHcoNxtReqUpdData.setBedcnt04("0");
+	        	tRdmHcoNxtReqUpdData.setBedcnt01("0");
+	        	tRdmHcoNxtReqUpdData.setBedcnt05("0");
+	        	tRdmHcoNxtReqUpdData.setBedcnt07("0");
+	        	tRdmHcoNxtReqUpdData.setBedcnt02("0");
+	        	tRdmHcoNxtReqUpdData.setBedcnt03("0");
+	        	tRdmHcoNxtReqUpdData.setBedcnt06("0");
+	        	tRdmHcoNxtReqUpdData.setBedsTot("0");
+	        	tRdmHcoNxtReqUpdData.setMedBedsTot("0");
+        	} else {
+	        	tRdmHcoNxtReqUpdData.setBedcntBase(StringUtils.nvl(indto.getNextBedCntBase(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedcnt04(StringUtils.nvl(indto.getNextBedCnt04(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedcnt01(StringUtils.nvl(indto.getNextBedCnt01(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedcnt05(StringUtils.nvl(indto.getNextBedCnt05(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedcnt07(StringUtils.nvl(indto.getNextBedCnt07(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedcnt02(StringUtils.nvl(indto.getNextBedCnt02(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedcnt03(StringUtils.nvl(indto.getNextBedCnt03(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedcnt06(StringUtils.nvl(indto.getNextBedCnt06(), ""));
+	        	tRdmHcoNxtReqUpdData.setBedsTot(StringUtils.nvl(indto.getNextBedsTot(), ""));
+	        	tRdmHcoNxtReqUpdData.setMedBedsTot(StringUtils.nvl(indto.getNextMedBedsTot(), ""));
+        	}
 
         	tRdmHcoNxtReqUpdData.setUpdShaYmd(sysDate);
         	tRdmHcoNxtReqUpdData.setUpdShaId(indto.getLoginJgiNo());

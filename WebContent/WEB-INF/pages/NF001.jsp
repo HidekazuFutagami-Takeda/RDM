@@ -788,7 +788,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
             <tr>
         	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="gotoNext('NC001','Init')" />
+                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="window.close();" />
                 </nobr>
 	      </td>
 

@@ -101,16 +101,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 			if(insType =="01" || insType == "02"){
 				// 病床数
-				document.fm1.bedcntBase.readonly = true;
-				document.fm1.bedcnt04.readonly = true;
-				document.fm1.bedcnt01.readonly = true;
-				document.fm1.bedcnt05.readonly = true;
-				document.fm1.bedcnt03.readonly = true;
-				document.fm1.bedcnt07.readonly = true;
-				document.fm1.bedcnt02.readonly = true;
-				document.fm1.bedcnt06.readonly = true;
-				document.fm1.bedsTot.readonly = true;
-				document.fm1.medBedsTot.readonly = true;
+				document.fm1.nextBedCntBase.readOnly = true;
+				document.fm1.nextBedCnt04.readOnly = true;
+				document.fm1.nextBedCnt01.readOnly = true;
+				document.fm1.nextBedCnt05.readOnly = true;
+				document.fm1.nextBedCnt03.readOnly = true;
+				document.fm1.nextBedCnt07.readOnly = true;
+				document.fm1.nextBedCnt02.readOnly = true;
+				document.fm1.nextBedCnt06.readOnly = true;
+				document.fm1.nextBedsTot.readOnly = true;
+				document.fm1.nextMedBedsTot.readOnly = true;
 			}
 
 		} else {
@@ -835,6 +835,15 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.funcId.value = funcId;
 		document.fm1.screenId.value="NF101";
 
+		document.fm1.nextPharmTypeNm.value = document.fm1.nextPharmType.options[document.fm1.nextPharmType.selectedIndex].textContent;
+		document.fm1.nextInsRankNm.value = document.fm1.nextInsRank.options[document.fm1.nextInsRank.selectedIndex].textContent;
+		document.fm1.nextRegVisTypeNm.value = document.fm1.nextRegVisType.options[document.fm1.nextRegVisType.selectedIndex].textContent;
+		document.fm1.nextImpHosTypeNm.value = document.fm1.nextImpHosType.options[document.fm1.nextImpHosType.selectedIndex].textContent;
+		document.fm1.nextHoInsTypeNm.value = document.fm1.nextHoInsType.options[document.fm1.nextHoInsType.selectedIndex].textContent;
+		document.fm1.nextManageNm.value = document.fm1.nextManageCd.options[document.fm1.nextManageCd.selectedIndex].textContent;
+		document.fm1.nextVacInsTypeNm.value = document.fm1.nextVacInsType.options[document.fm1.nextVacInsType.selectedIndex].textContent;
+		document.fm1.nextVacVisitTypeNm.value = document.fm1.nextVacVisitType.options[document.fm1.nextVacVisitType.selectedIndex].textContent;
+
 		if(funcId == "0") {
 			// 一時保存
 			document.fm1.screenId.value="NF101";
@@ -1017,6 +1026,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
+	<s:hidden name="reqChl"/>
 	<s:hidden name="insType"/>
 	<s:hidden name="editApprFlg"/>
 	<s:hidden name="pharmTypeFlg"/>
@@ -1036,6 +1046,15 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="bedCnt06Flg"/>
 	<s:hidden name="bedsTotFlg"/>
 	<s:hidden name="medBedsTotFlg"/>
+
+	<s:hidden name="nextPharmTypeNm"/>
+	<s:hidden name="nextInsRankNm"/>
+	<s:hidden name="nextRegVisTypeNm"/>
+	<s:hidden name="nextImpHosTypeNm"/>
+	<s:hidden name="nextHoInsTypeNm"/>
+	<s:hidden name="nextManageNm"/>
+	<s:hidden name="nextVacInsTypeNm"/>
+	<s:hidden name="nextVacVisitTypeNm"/>
 
 	<input type="hidden" name="tmpPharmType" value="<s:property value="%{nextPharmType}"/>" />
     <input type="hidden" name="tmpInsRank" value="<s:property value="%{nextInsRank}"/>" />

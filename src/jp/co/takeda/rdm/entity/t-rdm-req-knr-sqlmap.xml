@@ -497,6 +497,31 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
+	<update id="updateNF309Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+	UPDATE
+		T_RDM_REQ_KNR
+	SET
+		REQ_STS = #{reqStsCd},
+		<if test="reqBrCd != null">REQ_BR_CODE = #{reqBrCd},</if>
+		<if test="reqDistCd != null">REQ_DIST_CODE = #{reqDistCd},</if>
+		<if test="reqShzNm != null">REQ_SHZ = #{reqShzNm},</if>
+		<if test="reqJgiNo != null">REQ_JGI_NO = #{reqJgiNo},</if>
+		<if test="reqJgiName != null">REQ_JGI_NAME = #{reqJgiName},</if>
+		<if test="reqYmdhms != null">REQ_YMDHMS = #{reqYmdhms},</if>
+		REQ_COMMENT = #{reqComment},
+		<if test="aprBrCode != null">APR_BR_CODE = #{aprBrCode},</if>
+		<if test="aprDistCode != null">APR_DIST_CODE = #{aprDistCode},</if>
+		<if test="aprShz != null">APR_SHZ = #{aprShz},</if>
+		<if test="aprJgiNo != null">APR_JGI_NO = #{aprJgiNo},</if>
+		<if test="aprShaName != null">APR_SHA_ID = #{aprShaName},</if>
+		<if test="aprYmdhms != null">APR_YMDHMS = #{aprYmdhms},</if>
+		<if test="aprComment != null">APR_COMMENT = #{aprComment},</if>
+		<if test="fbReqFlg != null">FB_REQ_FLG = #{fbReqFlg},</if>
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
 	<update id="updateND101Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
 	UPDATE
 		T_RDM_REQ_KNR

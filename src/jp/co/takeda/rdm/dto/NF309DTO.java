@@ -100,6 +100,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	private String reqId;
 
 	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
+	/**
 	 * 申請者所属名称
 	 * @generated
 	 */
@@ -238,6 +244,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	private String nextPharmType;
 
 	/**
+	 * 施設区分
+	 * @generated
+	 */
+	private String nextPharmTypeNm;
+
+	/**
 	 * 階級区分
 	 * @generated
 	 */
@@ -248,6 +260,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String nextInsRank;
+
+	/**
+	 * 階級区分
+	 * @generated
+	 */
+	private String nextInsRankNm;
 
 	/**
 	 * 定訪先区分
@@ -262,6 +280,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	private String nextRegVisType;
 
 	/**
+	 * 定訪先区分
+	 * @generated
+	 */
+	private String nextRegVisTypeNm;
+
+	/**
 	 * 重点病院区分
 	 * @generated
 	 */
@@ -274,6 +298,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	private String nextImpHosType;
 
 	/**
+	 * 重点病院区分
+	 * @generated
+	 */
+	private String nextImpHosTypeNm;
+
+	/**
 	 * 対象区分
 	 * @generated
 	 */
@@ -284,6 +314,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String nextHoInsType;
+
+	/**
+	 * 対象区分
+	 * @generated
+	 */
+	private String nextHoInsTypeNm;
 
 	/**
 	 * 経営主体
@@ -310,6 +346,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	private String nextManageCd;
 
 	/**
+	 * 経営主体
+	 * @generated
+	 */
+	private String nextManageNm;
+
+	/**
 	 * ワクチン対象区分
 	 * @generated
 	 */
@@ -322,6 +364,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	private String nextVacInsType;
 
 	/**
+	 * ワクチン対象区分
+	 * @generated
+	 */
+	private String nextVacInsTypeNm;
+
+	/**
 	 * ワクチン定訪先区分
 	 * @generated
 	 */
@@ -332,6 +380,12 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String nextVacVisitType;
+
+	/**
+	 * ワクチン定訪先区分
+	 * @generated
+	 */
+	private String nextVacVisitTypeNm;
 
 	/**
 	 * 病床(基準)
@@ -524,6 +578,18 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String aprMemo;
+
+	/**
+	 * 承認・却下コメント
+	 * @generated
+	 */
+	private String aprComment;
+
+	/**
+	 * アルトマークへの情報連携
+	 * @generated
+	 */
+	private String fbReqFlg;
 
 	/**
 	 * 表示分岐
@@ -912,6 +978,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF309DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
+	}
+
+	/**
 	 * NF309DTO.javareqShzNmを設定
 	 * @return reqShzNm
 	 */
@@ -1257,6 +1338,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF309DTO.javanextPharmTypeNmを設定
+	 * @return nextPharmTypeNm
+	 */
+	public String getNextPharmTypeNm() {
+		return nextPharmTypeNm;
+	}
+
+	/**
+	 * @param nextPharmTypeNm セットする nextPharmTypeNm
+	 */
+	public void setNextPharmTypeNm(String nextPharmTypeNm) {
+		this.nextPharmTypeNm = nextPharmTypeNm;
+	}
+
+	/**
 	 * NF309DTO.javainsRankを設定
 	 * @return insRank
 	 */
@@ -1284,6 +1380,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 */
 	public void setNextInsRank(String nextInsRank) {
 		this.nextInsRank = nextInsRank;
+	}
+
+	/**
+	 * NF309DTO.javanextInsRankNmを設定
+	 * @return nextInsRankNm
+	 */
+	public String getNextInsRankNm() {
+		return nextInsRankNm;
+	}
+
+	/**
+	 * @param nextInsRankNm セットする nextInsRankNm
+	 */
+	public void setNextInsRankNm(String nextInsRankNm) {
+		this.nextInsRankNm = nextInsRankNm;
 	}
 
 	/**
@@ -1317,6 +1428,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF309DTO.javanextRegVisTypeNmを設定
+	 * @return nextRegVisTypeNm
+	 */
+	public String getNextRegVisTypeNm() {
+		return nextRegVisTypeNm;
+	}
+
+	/**
+	 * @param nextRegVisTypeNm セットする nextRegVisTypeNm
+	 */
+	public void setNextRegVisTypeNm(String nextRegVisTypeNm) {
+		this.nextRegVisTypeNm = nextRegVisTypeNm;
+	}
+
+	/**
 	 * NF309DTO.javaimpHosTypeを設定
 	 * @return impHosType
 	 */
@@ -1347,6 +1473,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF309DTO.javanextImpHosTypeNmを設定
+	 * @return nextImpHosTypeNm
+	 */
+	public String getNextImpHosTypeNm() {
+		return nextImpHosTypeNm;
+	}
+
+	/**
+	 * @param nextImpHosTypeNm セットする nextImpHosTypeNm
+	 */
+	public void setNextImpHosTypeNm(String nextImpHosTypeNm) {
+		this.nextImpHosTypeNm = nextImpHosTypeNm;
+	}
+
+	/**
 	 * NF309DTO.javahoInsTypeを設定
 	 * @return hoInsType
 	 */
@@ -1374,6 +1515,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 */
 	public void setNextHoInsType(String nextHoInsType) {
 		this.nextHoInsType = nextHoInsType;
+	}
+
+	/**
+	 * NF309DTO.javanextHoInsTypeNmを設定
+	 * @return nextHoInsTypeNm
+	 */
+	public String getNextHoInsTypeNm() {
+		return nextHoInsTypeNm;
+	}
+
+	/**
+	 * @param nextHoInsTypeNm セットする nextHoInsTypeNm
+	 */
+	public void setNextHoInsTypeNm(String nextHoInsTypeNm) {
+		this.nextHoInsTypeNm = nextHoInsTypeNm;
 	}
 
 	/**
@@ -1437,6 +1593,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF309DTO.javanextManageNmを設定
+	 * @return nextManageNm
+	 */
+	public String getNextManageNm() {
+		return nextManageNm;
+	}
+
+	/**
+	 * @param nextManageNm セットする nextManageNm
+	 */
+	public void setNextManageNm(String nextManageNm) {
+		this.nextManageNm = nextManageNm;
+	}
+
+	/**
 	 * NF309DTO.javavacInsTypeを設定
 	 * @return vacInsType
 	 */
@@ -1467,6 +1638,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF309DTO.javanextVacInsTypeNmを設定
+	 * @return nextVacInsTypeNm
+	 */
+	public String getNextVacInsTypeNm() {
+		return nextVacInsTypeNm;
+	}
+
+	/**
+	 * @param nextVacInsTypeNm セットする nextVacInsTypeNm
+	 */
+	public void setNextVacInsTypeNm(String nextVacInsTypeNm) {
+		this.nextVacInsTypeNm = nextVacInsTypeNm;
+	}
+
+	/**
 	 * NF309DTO.javavacVisitTypeを設定
 	 * @return vacVisitType
 	 */
@@ -1494,6 +1680,21 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 */
 	public void setNextVacVisitType(String nextVacVisitType) {
 		this.nextVacVisitType = nextVacVisitType;
+	}
+
+	/**
+	 * NF309DTO.javanextVacVisitTypeNmを設定
+	 * @return nextVacVisitTypeNm
+	 */
+	public String getNextVacVisitTypeNm() {
+		return nextVacVisitTypeNm;
+	}
+
+	/**
+	 * @param nextVacVisitTypeNm セットする nextVacVisitTypeNm
+	 */
+	public void setNextVacVisitTypeNm(String nextVacVisitTypeNm) {
+		this.nextVacVisitTypeNm = nextVacVisitTypeNm;
 	}
 
 	/**
@@ -1974,6 +2175,36 @@ public class NF309DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAprMemo(String aprMemo) {
 		this.aprMemo = aprMemo;
+	}
+
+	/**
+	 * NF309DTO.javaaprCommentを設定
+	 * @return aprComment
+	 */
+	public String getAprComment() {
+		return aprComment;
+	}
+
+	/**
+	 * @param aprComment セットする aprComment
+	 */
+	public void setAprComment(String aprComment) {
+		this.aprComment = aprComment;
+	}
+
+	/**
+	 * NF309DTO.javafbReqFlgを設定
+	 * @return fbReqFlg
+	 */
+	public String getFbReqFlg() {
+		return fbReqFlg;
+	}
+
+	/**
+	 * @param fbReqFlg セットする fbReqFlg
+	 */
+	public void setFbReqFlg(String fbReqFlg) {
+		this.fbReqFlg = fbReqFlg;
 	}
 
 	/**

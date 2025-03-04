@@ -695,6 +695,14 @@ SELECT
   font-family: "Meiryo UI";
   font-size: 8pt;
 }
+INPUT.comTableInputYellow
+{
+  background-color: lemonchiffon;
+}
+SELECT.comTableSelectYellow
+{
+  background-color: lemonchiffon;
+}
 TD.comSubjectBolder		/* 参照画面の件名を大きく見せる */
 {
   padding: 5pt 5pt 5pt 5pt;	/* 上右下左 */

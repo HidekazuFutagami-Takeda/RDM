@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  施設来期情報更新のJSP
+ *  施設来期情報更新 - 申請内容確認のJSP
  * </pre>
  * @since 1.0
  * @version $Revision: 1.3 $
@@ -41,7 +41,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-  <title>NF101_施設来期情報更新</title>
+  <title>NF309_施設来期情報更新 - 申請内容確認</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -839,8 +839,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 一時保存
 			document.fm1.screenId.value="NF101";
 			document.fm1.functionId.value="Register";
+		} else if(funcId == "2") {
+			// 承認・却下
+			document.fm1.screenId.value="NF309";
+			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請画面へ、承認・却下画面へ
+			// 申請画面へ
 			document.fm1.screenId.value="NF309";
 			document.fm1.functionId.value="Init";
 		}
@@ -989,7 +993,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="lineCntEnd" />
     <s:hidden name="lineCntAll1" />
     <%-- 画面用パラメータ --%>
-    <s:hidden name="backScreenId" value="NF101" />
+    <s:hidden name="backScreenId" value="NF309" />
      <s:hidden name="preScreenId"/>
      <s:hidden name="screenId"/>
      <s:hidden name="functionId"/>
@@ -1108,7 +1112,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設来期情報更新"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設来期情報更新 - 申請内容確認"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>

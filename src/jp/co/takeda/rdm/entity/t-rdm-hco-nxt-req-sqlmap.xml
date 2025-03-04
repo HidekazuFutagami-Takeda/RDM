@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="t_rdm_hco_nxt_req">
+    <resultMap id="tRdmHcoNxtReqResultMap" type="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+		<result column="REQ_ID" property="reqId"/>
+		<result column="INS_NO" property="insNo"/>
+		<result column="PHARM_TYPE" property="pharmType"/>
+		<result column="HO_INS_TYPE" property="hoInsType"/>
+		<result column="REG_VIS_TYPE" property="regVisType"/>
+		<result column="INS_RANK" property="insRank"/>
+		<result column="IMP_HOS_TYPE" property="impHosType"/>
+		<result column="MANAGE_CD" property="manageCd"/>
+		<result column="VAC_INS_TYPE" property="vacInsType"/>
+		<result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+		<result column="BEDCNT_BASE" property="bedcntBase"/>
+		<result column="BEDCNT04" property="bedcnt04"/>
+		<result column="BEDCNT01" property="bedcnt01"/>
+		<result column="BEDCNT05" property="bedcnt05"/>
+		<result column="BEDCNT07" property="bedcnt07"/>
+		<result column="BEDCNT02" property="bedcnt02"/>
+		<result column="BEDCNT03" property="bedcnt03"/>
+		<result column="BEDCNT06" property="bedcnt06"/>
+		<result column="BEDS_TOT" property="bedsTot"/>
+		<result column="MED_BEDS_TOT" property="medBedsTot"/>
+		<result column="INS_SHA_YMD" property="insShaYmd"/>
+		<result column="INS_SHA_ID" property="insShaId"/>
+		<result column="UPD_SHA_YMD" property="updShaYmd"/>
+		<result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
     <resultMap id="nF101MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
         <result column="SHN_SHZ" property="reqShzNm"/>
@@ -57,6 +83,7 @@
         <result column="ULT_BEDCNT05" property="ultBedCnt05"/>
         <result column="ULT_BEDCNT03" property="ultBedCnt03"/>
         <result column="ULT_BEDCNT07" property="ultBedCnt07"/>
+        <result column="NEXT_BEDCNT_BASE" property="nextBedCntBase"/>
         <result column="NEXT_BEDCNT04" property="nextBedCnt04"/>
         <result column="NEXT_BEDCNT01" property="nextBedCnt01"/>
         <result column="NEXT_BEDCNT05" property="nextBedCnt05"/>
@@ -64,6 +91,8 @@
         <result column="NEXT_BEDCNT07" property="nextBedCnt07"/>
         <result column="NEXT_BEDCNT02" property="nextBedCnt02"/>
         <result column="NEXT_BEDCNT06" property="nextBedCnt06"/>
+        <result column="NEXT_BEDS_TOT" property="nextBedsTot"/>
+        <result column="NEXT_MED_BEDS_TOT" property="nextMedBedsTot"/>
         <result column="REQ_COMMENT" property="reqComment"/>
         <result column="APR_MEMO" property="aprMemo"/>
         <result column="SHN_FLG" property="shnFlg"/>
@@ -85,6 +114,20 @@
         <result column="BEDS_TOT_FLG" property="bedsTotFlg"/>
         <result column="MED_BEDS_TOT_FLG" property="medBedsTotFlg"/>
     </resultMap>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+        INSERT INTO
+            T_RDM_HCO_NXT_REQ(<trim suffixOverrides=",">REQ_ID,<if test="insNo != null">INS_NO,</if><if test="pharmType != null">PHARM_TYPE,</if><if test="hoInsType != null">HO_INS_TYPE,</if><if test="regVisType != null">REG_VIS_TYPE,</if><if test="insRank != null">INS_RANK,</if><if test="impHosType != null">IMP_HOS_TYPE,</if><if test="manageCd != null">MANAGE_CD,</if><if test="vacInsType != null">VAC_INS_TYPE,</if><if test="vacVisitType != null">VAC_VISIT_TYPE,</if><if test="bedcntBase != null">BEDCNT_BASE,</if><if test="bedcnt04 != null">BEDCNT04,</if><if test="bedcnt01 != null">BEDCNT01,</if><if test="bedcnt05 != null">BEDCNT05,</if><if test="bedcnt07 != null">BEDCNT07,</if><if test="bedcnt02 != null">BEDCNT02,</if><if test="bedcnt03 != null">BEDCNT03,</if><if test="bedcnt06 != null">BEDCNT06,</if><if test="bedsTot != null">BEDS_TOT,</if><if test="medBedsTot != null">MED_BEDS_TOT,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{reqId},<if test="insNo != null">#{insNo},</if><if test="pharmType != null">#{pharmType},</if><if test="hoInsType != null">#{hoInsType},</if><if test="regVisType != null">#{regVisType},</if><if test="insRank != null">#{insRank},</if><if test="impHosType != null">#{impHosType},</if><if test="manageCd != null">#{manageCd},</if><if test="vacInsType != null">#{vacInsType},</if><if test="vacVisitType != null">#{vacVisitType},</if><if test="bedcntBase != null">#{bedcntBase},</if><if test="bedcnt04 != null">#{bedcnt04},</if><if test="bedcnt01 != null">#{bedcnt01},</if><if test="bedcnt05 != null">#{bedcnt05},</if><if test="bedcnt07 != null">#{bedcnt07},</if><if test="bedcnt02 != null">#{bedcnt02},</if><if test="bedcnt03 != null">#{bedcnt03},</if><if test="bedcnt06 != null">#{bedcnt06},</if><if test="bedsTot != null">#{bedsTot},</if><if test="medBedsTot != null">#{medBedsTot},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity" resultMap="tRdmHcoNxtReqResultMap">
+        SELECT
+            REQ_ID, INS_NO, PHARM_TYPE, HO_INS_TYPE, REG_VIS_TYPE, INS_RANK, IMP_HOS_TYPE, MANAGE_CD, VAC_INS_TYPE, VAC_VISIT_TYPE, BEDCNT_BASE, BEDCNT04, BEDCNT01, BEDCNT05, BEDCNT07, BEDCNT02, BEDCNT03, BEDCNT06, BEDS_TOT, MED_BEDS_TOT, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_HCO_NXT_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </select>
     <select id="selectNF101INSData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity" resultMap="nF101MainDataResultMap">
 		WITH COLOR AS (
 		SELECT
@@ -423,6 +466,7 @@
 		, MDB.KYOKABYOSHOSU_KANSEN AS ULT_BEDCNT05	-- ULT_MDB施設マスタ.許可病床数感染症
 		, MDB.KYOKABYOSHOSU_SEISHIN AS ULT_BEDCNT03	-- ULT_MDB施設マスタ.許可病床数精神
 		, MDB.KYOKABYOSHOSU_RYOYO AS ULT_BEDCNT07	-- ULT_MDB施設マスタ.許可病床数療養病床
+		, HCO.BEDCNT_BASE AS NEXT_BEDCNT_BASE
 		, HCO.BEDCNT04 AS NEXT_BEDCNT04
 		, HCO.BEDCNT01 AS NEXT_BEDCNT01
 		, HCO.BEDCNT05 AS NEXT_BEDCNT05
@@ -430,6 +474,8 @@
 		, HCO.BEDCNT07 AS NEXT_BEDCNT07
 		, HCO.BEDCNT02 AS NEXT_BEDCNT02
 		, HCO.BEDCNT06 AS NEXT_BEDCNT06
+		, HCO.BEDS_TOT AS NEXT_BEDS_TOT
+		, HCO.MED_BEDS_TOT AS NEXT_MED_BEDS_TOT
 		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
 		, KNR.APR_MEMO  -- 申請管理.承認者メモ
 		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
@@ -565,4 +611,37 @@
 		WHERE 1=1
         AND KNR.REQ_ID = #{inReqId}
     </select>
+    <update id="updateNF101Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+        UPDATE
+            T_RDM_HCO_NXT_REQ
+        SET
+			<if test="pharmType != null">PHARM_TYPE = #{pharmType},</if><if test="pharmType == null">PHARM_TYPE = null,</if>
+			<if test="hoInsType != null">HO_INS_TYPE = #{hoInsType},</if><if test="hoInsType == null">HO_INS_TYPE = null,</if>
+			<if test="regVisType != null">REG_VIS_TYPE = #{regVisType},</if><if test="regVisType == null">REG_VIS_TYPE = null,</if>
+			<if test="insRank != null">INS_RANK = #{insRank},</if><if test="insRank == null">INS_RANK = null,</if>
+			<if test="impHosType != null">IMP_HOS_TYPE = #{impHosType},</if><if test="impHosType == null">IMP_HOS_TYPE = null,</if>
+			<if test="manageCd != null">MANAGE_CD = #{manageCd},</if><if test="manageCd == null">MANAGE_CD = null,</if>
+			<if test="vacInsType != null">VAC_INS_TYPE = #{vacInsType},</if><if test="vacInsType == null">VAC_INS_TYPE = null,</if>
+			<if test="vacVisitType != null">VAC_VISIT_TYPE = #{vacVisitType},</if><if test="vacVisitType == null">VAC_VISIT_TYPE = null,</if>
+			<if test="bedcntBase != null">BEDCNT_BASE = #{bedcntBase},</if><if test="bedcntBase == null">BEDCNT_BASE = null,</if>
+			<if test="bedcnt04 != null">BEDCNT04 = #{bedcnt04},</if><if test="bedcnt04 == null">BEDCNT04 = null,</if>
+			<if test="bedcnt01 != null">BEDCNT01 = #{bedcnt01},</if><if test="bedcnt01 == null">BEDCNT01 = null,</if>
+			<if test="bedcnt05 != null">BEDCNT05 = #{bedcnt05},</if><if test="bedcnt05 == null">BEDCNT05 = null,</if>
+			<if test="bedcnt07 != null">BEDCNT07 = #{bedcnt07},</if><if test="bedcnt07 == null">BEDCNT07 = null,</if>
+			<if test="bedcnt02 != null">BEDCNT02 = #{bedcnt02},</if><if test="bedcnt02 == null">BEDCNT02 = null,</if>
+			<if test="bedcnt03 != null">BEDCNT03 = #{bedcnt03},</if><if test="bedcnt03 == null">BEDCNT03 = null,</if>
+			<if test="bedcnt06 != null">BEDCNT06 = #{bedcnt06},</if><if test="bedcnt06 == null">BEDCNT06 = null,</if>
+			<if test="bedsTot != null">BEDS_TOT = #{bedsTot},</if><if test="bedsTot == null">BEDS_TOT = null,</if>
+			<if test="medBedsTot != null">MED_BEDS_TOT = #{medBedsTot},</if><if test="medBedsTot == null">MED_BEDS_TOT = null,</if>
+			UPD_SHA_YMD = #{updShaYmd},
+			UPD_SHA_ID = #{updShaId}
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+        DELETE FROM
+            T_RDM_HCO_NXT_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </delete>
 </mapper>

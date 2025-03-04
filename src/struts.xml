@@ -268,8 +268,7 @@
             <result name="NF101">/WEB-INF/pages/NF101.jsp</result>
         </action>
         <action name="NF101Cancel" class="nF101Action" method="cancel">
-            <result name="NF001">/WEB-INF/pages/NF001.jsp</result>
-            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101" type="chain">NC101Init</result>
         </action>
         <action name="NF101Register" class="nF101Action" method="register">
         	<result name="NF101">/WEB-INF/pages/NF101.jsp</result>
@@ -360,6 +359,14 @@
         <action name="NF307ApprRej" class="nF307Action" method="apprRej">
         	<result name="NF014">/WEB-INF/pages/NF014.jsp</result>
         	<result name="NF307">/WEB-INF/pages/NF307.jsp</result>
+        </action>
+        <action name="NF309Init" class="nF309Action" method="init">
+            <result name="NF101">/WEB-INF/pages/NF101.jsp</result>
+            <result name="NF309">/WEB-INF/pages/NF309.jsp</result>
+        </action>
+        <action name="NF309Register" class="nF309Action" method="register">
+            <result name="NC101" type="chain">NC101Init</result>
+            <result name="NF309">/WEB-INF/pages/NF309.jsp</result>
         </action>
         <action name="NF311Init" class="nF311Action" method="init">
             <result name="NF211">/WEB-INF/pages/NF211.jsp</result>

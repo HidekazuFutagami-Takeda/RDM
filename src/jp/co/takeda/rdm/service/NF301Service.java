@@ -512,39 +512,39 @@ public class NF301Service extends BaseService {
         // 病床数チェック
 		if(indto.getInsRank() == null) {
 
-		} else if(indto.getInsRank() == "01" || indto.getInsRank() == "02" || indto.getInsRank() == "03"
-				 || indto.getInsRank() == "04" || indto.getInsRank() == "05" || indto.getInsRank() == "06"
+		} else if("01".equals(indto.getInsRank()) || "02".equals(indto.getInsRank()) || "03".equals(indto.getInsRank())
+				 || "04".equals(indto.getInsRank()) || "05".equals(indto.getInsRank()) || "06".equals(indto.getInsRank())
 				 && !chkNumRange(indto.getBedsTot(), 0, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "12" || indto.getInsRank() == "13" || indto.getInsRank() == "15"
+		} else if("12".equals(indto.getInsRank()) || "13".equals(indto.getInsRank()) || "15".equals(indto.getInsRank())
 				 && !"0".equals(indto.getBedsTot())){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "11" || indto.getInsRank() == "14"
+		} else if("11".equals(indto.getInsRank()) || "14".equals(indto.getInsRank())
 				 && !chkNumRange(indto.getBedsTot(), 1, 19)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "07" && !chkNumRange(indto.getBedsTot(), 100, 9999)){
+		} else if("07".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 100, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "08" && !chkNumRange(indto.getBedsTot(), 200, 9999)){
+		} else if("08".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 200, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "09" && !chkNumRange(indto.getBedsTot(), 20, 99)){
+		} else if("09".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 99)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "10" && !chkNumRange(indto.getBedsTot(), 20, 199)){
+		} else if("10".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "16" && !chkNumRange(indto.getBedsTot(), 20, 199)
+		} else if("16".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)
 					&& !("0".equals(indto.getBedCnt01()) && "0".equals(indto.getBedCnt07()) && "0".equals(indto.getBedCnt04())
 							&& "0".equals(indto.getBedCnt05()) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
@@ -2060,39 +2060,39 @@ public class NF301Service extends BaseService {
         // 病床数チェック
 		if(indto.getInsRank() == null) {
 
-		} else if(indto.getInsRank() == "01" || indto.getInsRank() == "02" || indto.getInsRank() == "03"
-				 || indto.getInsRank() == "04" || indto.getInsRank() == "05" || indto.getInsRank() == "06"
+		} else if("01".equals(indto.getInsRank()) || "02".equals(indto.getInsRank()) || "03".equals(indto.getInsRank())
+				 || "04".equals(indto.getInsRank()) || "05".equals(indto.getInsRank()) || "06".equals(indto.getInsRank())
 				 && !chkNumRange(indto.getBedsTot(), 0, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "12" || indto.getInsRank() == "13" || indto.getInsRank() == "15"
+		} else if("12".equals(indto.getInsRank()) || "13".equals(indto.getInsRank()) || "15".equals(indto.getInsRank())
 				 && !"0".equals(indto.getBedsTot())){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "11" || indto.getInsRank() == "14"
+		} else if("11".equals(indto.getInsRank()) || "14".equals(indto.getInsRank())
 				 && !chkNumRange(indto.getBedsTot(), 1, 19)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "07" && !chkNumRange(indto.getBedsTot(), 100, 9999)){
+		} else if("07".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 100, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "08" && !chkNumRange(indto.getBedsTot(), 200, 9999)){
+		} else if("08".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 200, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "09" && !chkNumRange(indto.getBedsTot(), 20, 99)){
+		} else if("09".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 99)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "10" && !chkNumRange(indto.getBedsTot(), 20, 199)){
+		} else if("10".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "16" && !chkNumRange(indto.getBedsTot(), 20, 199)
+		} else if("16".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)
 					&& !("0".equals(indto.getBedCnt01()) && "0".equals(indto.getBedCnt07()) && "0".equals(indto.getBedCnt04())
 							&& "0".equals(indto.getBedCnt05()) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。

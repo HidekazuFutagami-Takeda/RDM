@@ -220,12 +220,12 @@ public class ND301Service extends BaseService {
 				indto.setBtnEnableFlg("1");
 			}
 		}
-		if(loginInfo.getJokenSetCd().equals("JKN0813")) {
+		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
 			indto.setFbReqFlg(true);//初期値はチェックON
 		}
 //		indto.setHcpSocietyDataChgFlg("0");
 //		indto.setHcpPublicDataChgFlg("0");
-		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0813 全MR：JKN0023
+		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
 //		// DropDownList作成
 //		createCombo(indto);
@@ -552,8 +552,8 @@ public class ND301Service extends BaseService {
 					}else {
 						updateEntity1.setReqStsCd("03");//　申請ステータス
 						// 申請者権限区分
-						if("JKN0813".equals(loginInfo.getJokenSetCd())) {
-							//MDM管理者：JKN0813 全MR：JKN0023)
+						if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
+							//MDM管理者：JKN0850 全MR：JKN0023)
 							updateEntity1.setReqKngKbn("2");
 							updateEntity1.setReqChl("2");
 						}else {

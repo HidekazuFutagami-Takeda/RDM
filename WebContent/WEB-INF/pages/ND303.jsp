@@ -711,7 +711,7 @@
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
-	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
@@ -738,7 +738,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
+                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 	                	<input class="comButton" type="button"name="buttonF2" value="却下" onClick="register('2');return false;" />
 	                </s:if>

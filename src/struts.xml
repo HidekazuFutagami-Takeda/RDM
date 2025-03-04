@@ -531,6 +531,23 @@
             <result name="ND303Init" type="chain">ND303Init</result>
             <result name="NC101Init" type="chain">NC101Init</result>
         </action>
-
+        <action name="ND105Init" class="nD105Action" method="init">
+            <result name="ND105">/WEB-INF/pages/ND105.jsp</result>
+        </action>
+        <action name="ND105Register" class="nD105Action" method="register">
+            <result name="ND105">/WEB-INF/pages/ND105.jsp</result>
+            <result name="ND105Init" type="chain">ND105Init</result>
+            <result name="ND315Init" type="chain">ND315Init</result>
+            <result name="ND315Register" type="chain">ND315Register</result>
+        </action>
+        <action name="ND315Init" class="nD315Action" method="init">
+            <result name="ND315">/WEB-INF/pages/ND315.jsp</result>
+            <result name="ND105Init" type="chain">ND105Init</result>
+        </action>
+        <action name="ND315Register" class="nD315Action" method="register">
+            <result name="ND315">/WEB-INF/pages/ND315.jsp</result>
+            <result name="ND315Init" type="chain">ND315Init</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
+        </action>
     </package>
 </struts>

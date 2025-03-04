@@ -54,7 +54,10 @@
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
         <result column="UPD_SHA_ID" property="updShaId"/>
     </resultMap>
-        <select id="issueReqId" parameterType="jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity" resultMap="seqRdmReqIdResultMap">
+    <resultMap id="selectLinkDataResultMap" type="jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
+    <select id="issueReqId" parameterType="jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity" resultMap="seqRdmReqIdResultMap">
         SELECT
             TO_CHAR(SYSDATE,'YYMMDD') || '-' || LPAD(SEQ_RDM_REQ_ID.NEXTVAL,6,'0') AS REQ_ID
 		FROM
@@ -553,4 +556,12 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
+	<select id="selectLinkDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity" resultMap="selectLinkDataResultMap">
+        SELECT
+            REQ_ID
+        FROM
+            T_RDM_REQ_KNR
+        WHERE
+            REQ_MEMO = #{reqId}
+    </select>
 </mapper>

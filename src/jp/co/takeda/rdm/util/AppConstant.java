@@ -2829,7 +2829,9 @@ public interface AppConstant {
     public static final String SESKEY_ND101_SEARCHKEY = "ND101_SEARCHKEY";
     /** RDM医療機関以外への異動での初期結果 */
     public static final String SESKEY_ND102_SEARCHKEY = "ND102_SEARCHKEY";
-    /** 医師新規確認での初期結果 */
+     /** 医師削除での初期結果 */
+    public static final String SESKEY_ND105_SEARCHKEY = "ND105_SEARCHKEY";
+   /** 医師新規確認での初期結果 */
     public static final String SESKEY_ND301_SEARCHKEY = "ND301_SEARCHKEY";
     /** 医師情報更新新規確認での初期結果 */
     public static final String SESKEY_ND303_SEARCHKEY = "ND303_SEARCHKEY";
@@ -2837,6 +2839,8 @@ public interface AppConstant {
     public static final String SESKEY_ND307_SEARCHKEY = "ND307_SEARCHKEY";
     /** RDM医療機関以外への異動 - 申請内容確認での初期結果 */
     public static final String SESKEY_ND309_SEARCHKEY = "ND309_SEARCHKEY";
+    /** 医師削除確認での初期結果 */
+    public static final String SESKEY_ND315_SEARCHKEY = "ND315_SEARCHKEY";
     /** 医師勤務先情報一括更新での初期結果 */
     public static final String SESKEY_ND401_SEARCHKEY = "ND401_SEARCHKEY";
 
@@ -2884,6 +2888,7 @@ public interface AppConstant {
     public static final String SESKEY_NC205_SEARCHKEY = "NC205_SEARCHKEY";
     public static final String SESKEY_NM001_SEARCHKEY = "NM001_SEARCHKEY";
     public static final String SESKEY_NM011_SEARCHKEY = "NM011_SEARCHKEY";
+    public static final String SESKEY_ND311_SEARCHKEY = "ND311_SEARCHKEY";
 
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;

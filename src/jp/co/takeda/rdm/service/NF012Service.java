@@ -1253,12 +1253,12 @@ public class NF012Service extends BaseService {
     		indto.setCapaType(getViewValue(mainDataEntity.getPreCapaType(), mainDataEntity.getCapaType()));
 
     		// ULT施設情報
+    		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getPreUltInsCd(), ""));
+    		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getPreShisetsuNmRyaku(), ""));
+    		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getPreShisetsuNm(), ""));
     		indto.setUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
-    		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
     		indto.setShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
-    		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
     		indto.setShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
-    		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
 
     		// 病床数
     		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));

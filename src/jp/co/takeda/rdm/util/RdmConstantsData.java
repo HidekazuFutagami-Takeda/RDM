@@ -13,9 +13,7 @@ public class RdmConstantsData {
     /***条件設定 : 適用日設定可能本部権限 */
 //    public static final String RDM_JKN_HONBU_COMMIT = "JKN0163";
 
-	//TODO 二神　JKN0163を正しく設定する
     /**条件設定 : MDM管理者権限 */
-	//TODO二神　MDM管理者：JKN0850  全MR：JKN0023
     public static final String RDM_JKN_ADMIN = "JKN0850";
 
     /**条件設定 : 全MR権限 */

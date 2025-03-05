@@ -102,7 +102,7 @@ public class NC203Service extends BaseService {
     		selectParamSelectHcoEntity.setSqlId("selectCntHco");
     	}
 
-    	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+    	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
     		// 管理者権限
     		selectinsListEntity.setKnrFlg(true);
     		selectParamSelectHcoEntity.setKnrFlg(true);

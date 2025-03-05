@@ -474,7 +474,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItem"><nobr>基本情報</nobr></td>
 	<tr>
 		<td class="comFormTableItem">施設区分</td>
-	   	<td class="comFormTableItemNf012"><s:label key="pharmType" /><s:hidden name="pharmType" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="pharmTypeNm" /><s:hidden name="pharmType" /><s:hidden name="pharmTypeNm" /></td>
 	   	<td class="comFormTableItemNf012"><s:label key="shisetsuKbn" /><s:hidden name="shisetsuKbn" /></td>
 	   	<td class="comFormTableItemNf012">
 	   	<s:label key="nextPharmTypeNm" /><s:hidden key="nextPharmType" /><s:hidden name="nextPharmTypeNm" />
@@ -482,7 +482,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 		<td class="comFormTableItem">階級区分</td>
-		<td class="comFormTableItemNf012"><s:label key="insRank" /><s:hidden name="insRank" /></td>
+		<td class="comFormTableItemNf012"><s:label key="insRankNm" /><s:hidden name="insRank" /><s:hidden name="insRankNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 	   	<s:label key="nextInsRankNm" /><s:hidden key="nextInsRank" /><s:hidden name="nextInsRankNm" />
@@ -490,7 +490,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 		<td class="comFormTableItem">定訪先区分</td>
-		<td class="comFormTableItemNf012"><s:label key="regVisType" /><s:hidden name="regVisType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="regVisTypeNm" /><s:hidden name="regVisType" /><s:hidden name="regVisTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 		<s:label key="nextRegVisTypeNm" /><s:hidden key="nextRegVisType" /><s:hidden name="nextRegVisTypeNm" />
@@ -498,7 +498,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 		<td class="comFormTableItem">重点病院区分</td>
-		<td class="comFormTableItemNf012"><s:label key="impHosType" /><s:hidden name="impHosType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="impHosTypeNm" /><s:hidden name="impHosType" /><s:hidden name="impHosTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 	   		<s:label key="nextImpHosTypeNm" /><s:hidden key="nextImpHosType" /><s:hidden name="nextImpHosTypeNm" />
@@ -506,7 +506,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 		<td class="comFormTableItem">対象区分</td>
-		<td class="comFormTableItemNf012"><s:label key="hoInsType" /><s:hidden name="hoInsType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="hoInsTypeNm" /><s:hidden name="hoInsType" /><s:hidden name="hoInsTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 	   		<s:label key="nextHoInsTypeNm" /><s:hidden key="nextHoInsType" /><s:hidden name="nextHoInsTypeNm" />
@@ -514,7 +514,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 		<td class="comFormTableItem">経営主体</td>
-		<td class="comFormTableItemNf012"><s:label key="manageCd" /><s:hidden name="manageCd" /></td>
+		<td class="comFormTableItemNf012"><s:label key="manageNm" /><s:hidden name="manageCd" /><s:hidden name="manageNm" /></td>
 	   	<td class="comFormTableItemNf012"><s:label key="keieitaiNm" /><s:hidden name="keieitaiNm" /></td>
 	   	<td class="comFormTableItemNf012">
 	   	<s:label key="nextManageNm" /><s:hidden key="nextManageCd" /><s:hidden name="nextManageNm" />
@@ -522,7 +522,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr <s:if test="insType != '08'">style="visibility:collapse"</s:if>>
 		<td class="comFormTableItem">ワクチン対象区分</td>
-		<td class="comFormTableItemNf012"><s:label key="vacInsType" /><s:hidden name="vacInsType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="vacInsTypeNm" /><s:hidden name="vacInsType" /><s:hidden name="vacInsTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 		<s:label key="nextVacInsTypeNm" /><s:hidden key="nextVacInsType" /><s:hidden name="nextVacInsTypeNm" />
@@ -530,7 +530,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr <s:if test="insType != '08'">style="visibility:collapse"</s:if>>
 		<td class="comFormTableItem">ワクチン定訪先区分</td>
-		<td class="comFormTableItemNf012"><s:label key="vacVisitType" /><s:hidden name="vacVisitType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="vacVisitTypeNm" /><s:hidden name="vacVisitType" /><s:hidden name="vacVisitTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 	   	<s:label key="nextVacVisitTypeNm" /><s:hidden key="nextVacVisitType" /><s:hidden name="nextVacVisitTypeNm" />

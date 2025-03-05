@@ -159,6 +159,12 @@
         <result column="APR_MEMO" property="aprMemo"/>
         <result column="SHN_FLG" property="shnFlg"/>
     </resultMap>
+    <resultMap id="nF102MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF102MainDataEntity">
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
+        <result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
+    </resultMap>
 	<resultMap id="nF211MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
         <result column="REQ_CHL" property="reqChl"/>
@@ -1449,6 +1455,20 @@
 		WHERE 1=1
 		AND KNR.REQ_ID = #{inReqId}
 	</select>
+    <select id="selectNF102Data" parameterType="jp.co.takeda.rdm.entity.join.SelectNF102MainDataEntity" resultMap="nF102MainDataResultMap">
+		SELECT
+		  MST.INS_NO
+		, MST.INS_ABBR_NAME
+		, MST.ULT_INS_NO
+		, MDB.SHISETSU_NM_RYAKU
+		FROM
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST MDB -- ULT_MDB施設マスタ
+		ON MDB.DCF_SHISETSU_CD = MST.ULT_INS_NO
+		WHERE
+		MST.INS_NO = #{inInsNo}
+    </select>
     <select id="selectNF211ReqTkdData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity" resultMap="nF211MainDataResultMap">
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID

@@ -97,6 +97,14 @@ public class NF101Service extends BaseService {
     		indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
     		indto.setVacInsType(StringUtils.nvl(mainDataEntity.getVacInsType(), ""));
     		indto.setVacVisitType(StringUtils.nvl(mainDataEntity.getVacVisitType(), ""));
+    		indto.setPharmTypeNm(StringUtils.nvl(mainDataEntity.getPharmTypeNm(), ""));
+    		indto.setInsRankNm(StringUtils.nvl(mainDataEntity.getInsRankNm(), ""));
+    		indto.setRegVisTypeNm(StringUtils.nvl(mainDataEntity.getRegVisTypeNm(), ""));
+    		indto.setImpHosTypeNm(StringUtils.nvl(mainDataEntity.getImpHosTypeNm(), ""));
+    		indto.setHoInsTypeNm(StringUtils.nvl(mainDataEntity.getHoInsTypeNm(), ""));
+    		indto.setManageNm(StringUtils.nvl(mainDataEntity.getManageNm(), ""));
+    		indto.setVacInsTypeNm(StringUtils.nvl(mainDataEntity.getVacInsTypeNm(), ""));
+    		indto.setVacVisitTypeNm(StringUtils.nvl(mainDataEntity.getVacVisitTypeNm(), ""));
 
     		// 基本情報(ULT)
     		indto.setShisetsuKbn(StringUtils.nvl(mainDataEntity.getShisetsuKbn(), ""));
@@ -113,25 +121,25 @@ public class NF101Service extends BaseService {
     		indto.setNextVacVisitType(StringUtils.nvl(mainDataEntity.getNextVacVisitType(), ""));
 
     		// 病床数
-    		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), "0"));
-    		indto.setBedCnt01(StringUtils.nvl(mainDataEntity.getBedCnt01(), "0"));
-    		indto.setBedCnt02(StringUtils.nvl(mainDataEntity.getBedCnt02(), "0"));
-    		indto.setBedCnt03(StringUtils.nvl(mainDataEntity.getBedCnt03(), "0"));
-    		indto.setBedCnt04(StringUtils.nvl(mainDataEntity.getBedCnt04(), "0"));
-    		indto.setBedCnt05(StringUtils.nvl(mainDataEntity.getBedCnt05(), "0"));
-    		indto.setBedCnt06(StringUtils.nvl(mainDataEntity.getBedCnt06(), "0"));
-    		indto.setBedCnt07(StringUtils.nvl(mainDataEntity.getBedCnt07(), "0"));
-    		indto.setBedsTot(StringUtils.nvl(mainDataEntity.getBedsTot(), "0"));
-    		indto.setMedBedsTot(StringUtils.nvl(mainDataEntity.getMedBedsTot(), "0"));
+    		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));
+    		indto.setBedCnt01(StringUtils.nvl(mainDataEntity.getBedCnt01(), ""));
+    		indto.setBedCnt02(StringUtils.nvl(mainDataEntity.getBedCnt02(), ""));
+    		indto.setBedCnt03(StringUtils.nvl(mainDataEntity.getBedCnt03(), ""));
+    		indto.setBedCnt04(StringUtils.nvl(mainDataEntity.getBedCnt04(), ""));
+    		indto.setBedCnt05(StringUtils.nvl(mainDataEntity.getBedCnt05(), ""));
+    		indto.setBedCnt06(StringUtils.nvl(mainDataEntity.getBedCnt06(), ""));
+    		indto.setBedCnt07(StringUtils.nvl(mainDataEntity.getBedCnt07(), ""));
+    		indto.setBedsTot(StringUtils.nvl(mainDataEntity.getBedsTot(), ""));
+    		indto.setMedBedsTot(StringUtils.nvl(mainDataEntity.getMedBedsTot(), ""));
 
-    		indto.setUltBedCntBase(StringUtils.nvl(mainDataEntity.getUltBedCntBase(), "0"));
-    		indto.setUltBedCnt01(StringUtils.nvl(mainDataEntity.getUltBedCnt01(), "0"));
-    		indto.setUltBedCnt03(StringUtils.nvl(mainDataEntity.getUltBedCnt03(), "0"));
-    		indto.setUltBedCnt04(StringUtils.nvl(mainDataEntity.getUltBedCnt04(), "0"));
-    		indto.setUltBedCnt05(StringUtils.nvl(mainDataEntity.getUltBedCnt05(), "0"));
-    		indto.setUltBedCnt07(StringUtils.nvl(mainDataEntity.getUltBedCnt07(), "0"));
-    		indto.setUltBedCnt02("0");
-    		indto.setUltBedCnt06("0");
+    		indto.setUltBedCntBase(StringUtils.nvl(mainDataEntity.getUltBedCntBase(), ""));
+    		indto.setUltBedCnt01(StringUtils.nvl(mainDataEntity.getUltBedCnt01(), ""));
+    		indto.setUltBedCnt03(StringUtils.nvl(mainDataEntity.getUltBedCnt03(), ""));
+    		indto.setUltBedCnt04(StringUtils.nvl(mainDataEntity.getUltBedCnt04(), ""));
+    		indto.setUltBedCnt05(StringUtils.nvl(mainDataEntity.getUltBedCnt05(), ""));
+    		indto.setUltBedCnt07(StringUtils.nvl(mainDataEntity.getUltBedCnt07(), ""));
+    		indto.setUltBedCnt02("");
+    		indto.setUltBedCnt06("");
 
     		Integer bedcntIppan = Integer.parseInt(StringUtils.nvl(mainDataEntity.getUltBedCnt01(), "0"));
     		Integer bedcntSeshin = Integer.parseInt(StringUtils.nvl(mainDataEntity.getUltBedCnt03(), "0"));
@@ -144,16 +152,16 @@ public class NF101Service extends BaseService {
     		indto.setUltBedsTot(Integer.toString(bedsTot));
     		indto.setUltMedBedsTot(Integer.toString(medBedsTot));
 
-    		indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), "0"));
-    		indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), "0"));
-    		indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), "0"));
-    		indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), "0"));
-    		indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), "0"));
-    		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), "0"));
-    		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), "0"));
-    		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), "0"));
-    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
-    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
+    		indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), ""));
+    		indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), ""));
+    		indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), ""));
+    		indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), ""));
+    		indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), ""));
+    		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
+    		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
+    		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
+    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), ""));
+    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
 
     		// カラーフラグ
     		indto.setPharmTypeFlg(StringUtils.nvl(mainDataEntity.getPharmTypeFlg(), "0"));
@@ -268,6 +276,14 @@ public class NF101Service extends BaseService {
     		indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
     		indto.setVacInsType(StringUtils.nvl(mainDataEntity.getVacInsType(), ""));
     		indto.setVacVisitType(StringUtils.nvl(mainDataEntity.getVacVisitType(), ""));
+    		indto.setPharmTypeNm(StringUtils.nvl(mainDataEntity.getPharmTypeNm(), ""));
+    		indto.setInsRankNm(StringUtils.nvl(mainDataEntity.getInsRankNm(), ""));
+    		indto.setRegVisTypeNm(StringUtils.nvl(mainDataEntity.getRegVisTypeNm(), ""));
+    		indto.setImpHosTypeNm(StringUtils.nvl(mainDataEntity.getImpHosTypeNm(), ""));
+    		indto.setHoInsTypeNm(StringUtils.nvl(mainDataEntity.getHoInsTypeNm(), ""));
+    		indto.setManageNm(StringUtils.nvl(mainDataEntity.getManageNm(), ""));
+    		indto.setVacInsTypeNm(StringUtils.nvl(mainDataEntity.getVacInsTypeNm(), ""));
+    		indto.setVacVisitTypeNm(StringUtils.nvl(mainDataEntity.getVacVisitTypeNm(), ""));
 
     		// 基本情報(ULT)
     		indto.setShisetsuKbn(StringUtils.nvl(mainDataEntity.getShisetsuKbn(), ""));
@@ -284,25 +300,25 @@ public class NF101Service extends BaseService {
     		indto.setNextVacVisitType(StringUtils.nvl(mainDataEntity.getNextVacVisitType(), ""));
 
     		// 病床数
-    		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), "0"));
-    		indto.setBedCnt01(StringUtils.nvl(mainDataEntity.getBedCnt01(), "0"));
-    		indto.setBedCnt02(StringUtils.nvl(mainDataEntity.getBedCnt02(), "0"));
-    		indto.setBedCnt03(StringUtils.nvl(mainDataEntity.getBedCnt03(), "0"));
-    		indto.setBedCnt04(StringUtils.nvl(mainDataEntity.getBedCnt04(), "0"));
-    		indto.setBedCnt05(StringUtils.nvl(mainDataEntity.getBedCnt05(), "0"));
-    		indto.setBedCnt06(StringUtils.nvl(mainDataEntity.getBedCnt06(), "0"));
-    		indto.setBedCnt07(StringUtils.nvl(mainDataEntity.getBedCnt07(), "0"));
-    		indto.setBedsTot(StringUtils.nvl(mainDataEntity.getBedsTot(), "0"));
-    		indto.setMedBedsTot(StringUtils.nvl(mainDataEntity.getMedBedsTot(), "0"));
+    		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));
+    		indto.setBedCnt01(StringUtils.nvl(mainDataEntity.getBedCnt01(), ""));
+    		indto.setBedCnt02(StringUtils.nvl(mainDataEntity.getBedCnt02(), ""));
+    		indto.setBedCnt03(StringUtils.nvl(mainDataEntity.getBedCnt03(), ""));
+    		indto.setBedCnt04(StringUtils.nvl(mainDataEntity.getBedCnt04(), ""));
+    		indto.setBedCnt05(StringUtils.nvl(mainDataEntity.getBedCnt05(), ""));
+    		indto.setBedCnt06(StringUtils.nvl(mainDataEntity.getBedCnt06(), ""));
+    		indto.setBedCnt07(StringUtils.nvl(mainDataEntity.getBedCnt07(), ""));
+    		indto.setBedsTot(StringUtils.nvl(mainDataEntity.getBedsTot(), ""));
+    		indto.setMedBedsTot(StringUtils.nvl(mainDataEntity.getMedBedsTot(), ""));
 
-    		indto.setUltBedCntBase(StringUtils.nvl(mainDataEntity.getUltBedCntBase(), "0"));
-    		indto.setUltBedCnt01(StringUtils.nvl(mainDataEntity.getUltBedCnt01(), "0"));
-    		indto.setUltBedCnt03(StringUtils.nvl(mainDataEntity.getUltBedCnt03(), "0"));
-    		indto.setUltBedCnt04(StringUtils.nvl(mainDataEntity.getUltBedCnt04(), "0"));
-    		indto.setUltBedCnt05(StringUtils.nvl(mainDataEntity.getUltBedCnt05(), "0"));
-    		indto.setUltBedCnt07(StringUtils.nvl(mainDataEntity.getUltBedCnt07(), "0"));
-    		indto.setUltBedCnt02("0");
-    		indto.setUltBedCnt06("0");
+    		indto.setUltBedCntBase(StringUtils.nvl(mainDataEntity.getUltBedCntBase(), ""));
+    		indto.setUltBedCnt01(StringUtils.nvl(mainDataEntity.getUltBedCnt01(), ""));
+    		indto.setUltBedCnt03(StringUtils.nvl(mainDataEntity.getUltBedCnt03(), ""));
+    		indto.setUltBedCnt04(StringUtils.nvl(mainDataEntity.getUltBedCnt04(), ""));
+    		indto.setUltBedCnt05(StringUtils.nvl(mainDataEntity.getUltBedCnt05(), ""));
+    		indto.setUltBedCnt07(StringUtils.nvl(mainDataEntity.getUltBedCnt07(), ""));
+    		indto.setUltBedCnt02("");
+    		indto.setUltBedCnt06("");
 
     		Integer bedcntIppan = Integer.parseInt(StringUtils.nvl(mainDataEntity.getUltBedCnt01(), "0"));
     		Integer bedcntSeshin = Integer.parseInt(StringUtils.nvl(mainDataEntity.getUltBedCnt03(), "0"));
@@ -315,16 +331,16 @@ public class NF101Service extends BaseService {
     		indto.setUltBedsTot(Integer.toString(bedsTot));
     		indto.setUltMedBedsTot(Integer.toString(medBedsTot));
 
-			indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), "0"));
-			indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), "0"));
-			indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), "0"));
-			indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), "0"));
-			indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), "0"));
-			indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), "0"));
-			indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), "0"));
-			indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), "0"));
-			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
-			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
+			indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), ""));
+			indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), ""));
+			indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), ""));
+			indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), ""));
+			indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), ""));
+			indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
+			indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
+			indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
+			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), ""));
+			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
 
     		// コメント
     		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));

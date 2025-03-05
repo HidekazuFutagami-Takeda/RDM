@@ -232,6 +232,12 @@ public class NF101DTO extends BaseDTO implements Serializable {
 	private String pharmType;
 
 	/**
+	 * 施設区分
+	 * @generated
+	 */
+	private String pharmTypeNm;
+
+	/**
 	 * ULT施設区分
 	 * @generated
 	 */
@@ -253,6 +259,12 @@ public class NF101DTO extends BaseDTO implements Serializable {
 	 * 階級区分
 	 * @generated
 	 */
+	private String insRankNm;
+
+	/**
+	 * 階級区分
+	 * @generated
+	 */
 	private String nextInsRank;
 
 	/**
@@ -260,6 +272,12 @@ public class NF101DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String regVisType;
+
+	/**
+	 * 定訪先区分
+	 * @generated
+	 */
+	private String regVisTypeNm;
 
 	/**
 	 * 定訪先区分
@@ -277,6 +295,12 @@ public class NF101DTO extends BaseDTO implements Serializable {
 	 * 重点病院区分
 	 * @generated
 	 */
+	private String impHosTypeNm;
+
+	/**
+	 * 重点病院区分
+	 * @generated
+	 */
 	private String nextImpHosType;
 
 	/**
@@ -284,6 +308,12 @@ public class NF101DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String hoInsType;
+
+	/**
+	 * 対象区分
+	 * @generated
+	 */
+	private String hoInsTypeNm;
 
 	/**
 	 * 対象区分
@@ -325,6 +355,12 @@ public class NF101DTO extends BaseDTO implements Serializable {
 	 * ワクチン対象区分
 	 * @generated
 	 */
+	private String vacInsTypeNm;
+
+	/**
+	 * ワクチン対象区分
+	 * @generated
+	 */
 	private String nextVacInsType;
 
 	/**
@@ -337,7 +373,118 @@ public class NF101DTO extends BaseDTO implements Serializable {
 	 * ワクチン定訪先区分
 	 * @generated
 	 */
+	private String vacVisitTypeNm;
+
+	/**
+	 * ワクチン定訪先区分
+	 * @generated
+	 */
 	private String nextVacVisitType;
+
+	/**
+	 * NF101DTO.javapharmTypeNmを設定
+	 * @return pharmTypeNm
+	 */
+	public String getPharmTypeNm() {
+		return pharmTypeNm;
+	}
+
+	/**
+	 * @param pharmTypeNm セットする pharmTypeNm
+	 */
+	public void setPharmTypeNm(String pharmTypeNm) {
+		this.pharmTypeNm = pharmTypeNm;
+	}
+
+	/**
+	 * NF101DTO.javainsRankNmを設定
+	 * @return insRankNm
+	 */
+	public String getInsRankNm() {
+		return insRankNm;
+	}
+
+	/**
+	 * @param insRankNm セットする insRankNm
+	 */
+	public void setInsRankNm(String insRankNm) {
+		this.insRankNm = insRankNm;
+	}
+
+	/**
+	 * NF101DTO.javaregVisTypeNmを設定
+	 * @return regVisTypeNm
+	 */
+	public String getRegVisTypeNm() {
+		return regVisTypeNm;
+	}
+
+	/**
+	 * @param regVisTypeNm セットする regVisTypeNm
+	 */
+	public void setRegVisTypeNm(String regVisTypeNm) {
+		this.regVisTypeNm = regVisTypeNm;
+	}
+
+	/**
+	 * NF101DTO.javaimpHosTypeNmを設定
+	 * @return impHosTypeNm
+	 */
+	public String getImpHosTypeNm() {
+		return impHosTypeNm;
+	}
+
+	/**
+	 * @param impHosTypeNm セットする impHosTypeNm
+	 */
+	public void setImpHosTypeNm(String impHosTypeNm) {
+		this.impHosTypeNm = impHosTypeNm;
+	}
+
+	/**
+	 * NF101DTO.javahoInsTypeNmを設定
+	 * @return hoInsTypeNm
+	 */
+	public String getHoInsTypeNm() {
+		return hoInsTypeNm;
+	}
+
+	/**
+	 * @param hoInsTypeNm セットする hoInsTypeNm
+	 */
+	public void setHoInsTypeNm(String hoInsTypeNm) {
+		this.hoInsTypeNm = hoInsTypeNm;
+	}
+
+	/**
+	 * NF101DTO.javavacInsTypeNmを設定
+	 * @return vacInsTypeNm
+	 */
+	public String getVacInsTypeNm() {
+		return vacInsTypeNm;
+	}
+
+	/**
+	 * @param vacInsTypeNm セットする vacInsTypeNm
+	 */
+	public void setVacInsTypeNm(String vacInsTypeNm) {
+		this.vacInsTypeNm = vacInsTypeNm;
+	}
+
+	/**
+	 * NF101DTO.javavacVisitTypeNmを設定
+	 * @return vacVisitTypeNm
+	 */
+	public String getVacVisitTypeNm() {
+		return vacVisitTypeNm;
+	}
+
+	/**
+	 * @param vacVisitTypeNm セットする vacVisitTypeNm
+	 */
+	public void setVacVisitTypeNm(String vacVisitTypeNm) {
+		this.vacVisitTypeNm = vacVisitTypeNm;
+	}
 
 	/**
 	 * 病床(基準)

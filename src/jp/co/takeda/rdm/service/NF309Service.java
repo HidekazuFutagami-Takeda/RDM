@@ -615,38 +615,38 @@ public class NF309Service extends BaseService {
         	TRdmHcoNxtReqEntity tRdmHcoNxtReqInsData = new TRdmHcoNxtReqEntity();
         	tRdmHcoNxtReqInsData.setReqId(reqId);
         	tRdmHcoNxtReqInsData.setInsNo(indto.getInsNo());
-        	tRdmHcoNxtReqInsData.setPharmType(StringUtils.nvl(indto.getNextPharmType(), ""));
-        	tRdmHcoNxtReqInsData.setHoInsType(StringUtils.nvl(indto.getNextHoInsType(), ""));
-        	tRdmHcoNxtReqInsData.setRegVisType(StringUtils.nvl(indto.getNextRegVisType(), ""));
-        	tRdmHcoNxtReqInsData.setInsRank(StringUtils.nvl(indto.getNextInsRank(), ""));
-        	tRdmHcoNxtReqInsData.setImpHosType(StringUtils.nvl(indto.getNextImpHosType(), ""));
-        	tRdmHcoNxtReqInsData.setManageCd(StringUtils.nvl(indto.getNextManageCd(), ""));
-        	tRdmHcoNxtReqInsData.setVacInsType(StringUtils.nvl(indto.getNextVacInsType(), ""));
-        	tRdmHcoNxtReqInsData.setVacVisitType(StringUtils.nvl(indto.getNextVacVisitType(), ""));
+        	tRdmHcoNxtReqInsData.setPharmType(getUpdValue(indto.getPharmType(), indto.getNextPharmType()));
+        	tRdmHcoNxtReqInsData.setHoInsType(getUpdValue(indto.getHoInsType(), indto.getNextHoInsType()));
+        	tRdmHcoNxtReqInsData.setRegVisType(getUpdValue(indto.getRegVisType(), indto.getNextRegVisType()));
+        	tRdmHcoNxtReqInsData.setInsRank(getUpdValue(indto.getInsRank(), indto.getNextInsRank()));
+        	tRdmHcoNxtReqInsData.setImpHosType(getUpdValue(indto.getImpHosType(), indto.getNextImpHosType()));
+        	tRdmHcoNxtReqInsData.setManageCd(getUpdValue(indto.getManageCd(), indto.getNextManageCd()));
+        	tRdmHcoNxtReqInsData.setVacInsType(getUpdValue(indto.getVacInsType(), indto.getNextVacInsType()));
+        	tRdmHcoNxtReqInsData.setVacVisitType(getUpdValue(indto.getVacVisitType(), indto.getNextVacVisitType()));
 
         	if(!"01".equals(indto.getInsType()) && !"02".equals(indto.getInsType())) {
         		// 病床数非表示、0扱い
-        		tRdmHcoNxtReqInsData.setBedcntBase("0");
-	        	tRdmHcoNxtReqInsData.setBedcnt04("0");
-	        	tRdmHcoNxtReqInsData.setBedcnt01("0");
-	        	tRdmHcoNxtReqInsData.setBedcnt05("0");
-	        	tRdmHcoNxtReqInsData.setBedcnt07("0");
-	        	tRdmHcoNxtReqInsData.setBedcnt02("0");
-	        	tRdmHcoNxtReqInsData.setBedcnt03("0");
-	        	tRdmHcoNxtReqInsData.setBedcnt06("0");
-	        	tRdmHcoNxtReqInsData.setBedsTot("0");
-	        	tRdmHcoNxtReqInsData.setMedBedsTot("0");
+        		tRdmHcoNxtReqInsData.setBedcntBase(getUpdValue(indto.getBedCntBase(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedcnt04(getUpdValue(indto.getBedCnt04(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedcnt01(getUpdValue(indto.getBedCnt01(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedcnt05(getUpdValue(indto.getBedCnt05(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedcnt07(getUpdValue(indto.getBedCnt07(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedcnt02(getUpdValue(indto.getBedCnt02(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedcnt03(getUpdValue(indto.getBedCnt03(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedcnt06(getUpdValue(indto.getBedCnt06(), "0"));
+	        	tRdmHcoNxtReqInsData.setBedsTot(getUpdValue(indto.getBedsTot(), "0"));
+	        	tRdmHcoNxtReqInsData.setMedBedsTot(getUpdValue(indto.getMedBedsTot(), "0"));
         	} else {
-	        	tRdmHcoNxtReqInsData.setBedcntBase(StringUtils.nvl(indto.getNextBedCntBase(), ""));
-	        	tRdmHcoNxtReqInsData.setBedcnt04(StringUtils.nvl(indto.getNextBedCnt04(), ""));
-	        	tRdmHcoNxtReqInsData.setBedcnt01(StringUtils.nvl(indto.getNextBedCnt01(), ""));
-	        	tRdmHcoNxtReqInsData.setBedcnt05(StringUtils.nvl(indto.getNextBedCnt05(), ""));
-	        	tRdmHcoNxtReqInsData.setBedcnt07(StringUtils.nvl(indto.getNextBedCnt07(), ""));
-	        	tRdmHcoNxtReqInsData.setBedcnt02(StringUtils.nvl(indto.getNextBedCnt02(), ""));
-	        	tRdmHcoNxtReqInsData.setBedcnt03(StringUtils.nvl(indto.getNextBedCnt03(), ""));
-	        	tRdmHcoNxtReqInsData.setBedcnt06(StringUtils.nvl(indto.getNextBedCnt06(), ""));
-	        	tRdmHcoNxtReqInsData.setBedsTot(StringUtils.nvl(indto.getNextBedsTot(), ""));
-	        	tRdmHcoNxtReqInsData.setMedBedsTot(StringUtils.nvl(indto.getNextMedBedsTot(), ""));
+	        	tRdmHcoNxtReqInsData.setBedcntBase(getUpdValue(indto.getBedCntBase(), indto.getNextBedCntBase()));
+	        	tRdmHcoNxtReqInsData.setBedcnt04(getUpdValue(indto.getBedCnt04(), indto.getNextBedCnt04()));
+	        	tRdmHcoNxtReqInsData.setBedcnt01(getUpdValue(indto.getBedCnt01(), indto.getNextBedCnt01()));
+	        	tRdmHcoNxtReqInsData.setBedcnt05(getUpdValue(indto.getBedCnt05(), indto.getNextBedCnt05()));
+	        	tRdmHcoNxtReqInsData.setBedcnt07(getUpdValue(indto.getBedCnt07(), indto.getNextBedCnt07()));
+	        	tRdmHcoNxtReqInsData.setBedcnt02(getUpdValue(indto.getBedCnt02(), indto.getNextBedCnt02()));
+	        	tRdmHcoNxtReqInsData.setBedcnt03(getUpdValue(indto.getBedCnt03(), indto.getNextBedCnt03()));
+	        	tRdmHcoNxtReqInsData.setBedcnt06(getUpdValue(indto.getBedCnt06(), indto.getNextBedCnt06()));
+	        	tRdmHcoNxtReqInsData.setBedsTot(getUpdValue(indto.getBedsTot(), indto.getNextBedsTot()));
+	        	tRdmHcoNxtReqInsData.setMedBedsTot(getUpdValue(indto.getMedBedsTot(), indto.getNextMedBedsTot()));
         	}
 
         	tRdmHcoNxtReqInsData.setInsShaYmd(sysDate);
@@ -661,38 +661,38 @@ public class NF309Service extends BaseService {
         	TRdmHcoNxtReqEntity tRdmHcoNxtReqUpdData = new TRdmHcoNxtReqEntity("updateNF101Data");
         	tRdmHcoNxtReqUpdData.setReqId(reqId);
 
-        	tRdmHcoNxtReqUpdData.setPharmType(StringUtils.nvl(indto.getNextPharmType(), ""));
-        	tRdmHcoNxtReqUpdData.setHoInsType(StringUtils.nvl(indto.getNextHoInsType(), ""));
-        	tRdmHcoNxtReqUpdData.setRegVisType(StringUtils.nvl(indto.getNextRegVisType(), ""));
-        	tRdmHcoNxtReqUpdData.setInsRank(StringUtils.nvl(indto.getNextInsRank(), ""));
-        	tRdmHcoNxtReqUpdData.setImpHosType(StringUtils.nvl(indto.getNextImpHosType(), ""));
-        	tRdmHcoNxtReqUpdData.setManageCd(StringUtils.nvl(indto.getNextManageCd(), ""));
-        	tRdmHcoNxtReqUpdData.setVacInsType(StringUtils.nvl(indto.getNextVacInsType(), ""));
-        	tRdmHcoNxtReqUpdData.setVacVisitType(StringUtils.nvl(indto.getNextVacVisitType(), ""));
+        	tRdmHcoNxtReqUpdData.setPharmType(getUpdValue(indto.getPharmType(), indto.getNextPharmType()));
+        	tRdmHcoNxtReqUpdData.setHoInsType(getUpdValue(indto.getHoInsType(), indto.getNextHoInsType()));
+        	tRdmHcoNxtReqUpdData.setRegVisType(getUpdValue(indto.getRegVisType(), indto.getNextRegVisType()));
+        	tRdmHcoNxtReqUpdData.setInsRank(getUpdValue(indto.getInsRank(), indto.getNextInsRank()));
+        	tRdmHcoNxtReqUpdData.setImpHosType(getUpdValue(indto.getImpHosType(), indto.getNextImpHosType()));
+        	tRdmHcoNxtReqUpdData.setManageCd(getUpdValue(indto.getManageCd(), indto.getNextManageCd()));
+        	tRdmHcoNxtReqUpdData.setVacInsType(getUpdValue(indto.getVacInsType(), indto.getNextVacInsType()));
+        	tRdmHcoNxtReqUpdData.setVacVisitType(getUpdValue(indto.getVacVisitType(), indto.getNextVacVisitType()));
 
         	if(!"01".equals(indto.getInsType()) && !"02".equals(indto.getInsType())) {
         		// 病床数非表示、0扱い
-        		tRdmHcoNxtReqUpdData.setBedcntBase("0");
-	        	tRdmHcoNxtReqUpdData.setBedcnt04("0");
-	        	tRdmHcoNxtReqUpdData.setBedcnt01("0");
-	        	tRdmHcoNxtReqUpdData.setBedcnt05("0");
-	        	tRdmHcoNxtReqUpdData.setBedcnt07("0");
-	        	tRdmHcoNxtReqUpdData.setBedcnt02("0");
-	        	tRdmHcoNxtReqUpdData.setBedcnt03("0");
-	        	tRdmHcoNxtReqUpdData.setBedcnt06("0");
-	        	tRdmHcoNxtReqUpdData.setBedsTot("0");
-	        	tRdmHcoNxtReqUpdData.setMedBedsTot("0");
+        		tRdmHcoNxtReqUpdData.setBedcntBase(getUpdValue(indto.getBedCntBase(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedcnt04(getUpdValue(indto.getBedCnt04(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedcnt01(getUpdValue(indto.getBedCnt01(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedcnt05(getUpdValue(indto.getBedCnt05(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedcnt07(getUpdValue(indto.getBedCnt07(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedcnt02(getUpdValue(indto.getBedCnt02(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedcnt03(getUpdValue(indto.getBedCnt03(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedcnt06(getUpdValue(indto.getBedCnt06(), "0"));
+	        	tRdmHcoNxtReqUpdData.setBedsTot(getUpdValue(indto.getBedsTot(), "0"));
+	        	tRdmHcoNxtReqUpdData.setMedBedsTot(getUpdValue(indto.getMedBedsTot(), "0"));
         	} else {
-	        	tRdmHcoNxtReqUpdData.setBedcntBase(StringUtils.nvl(indto.getNextBedCntBase(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedcnt04(StringUtils.nvl(indto.getNextBedCnt04(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedcnt01(StringUtils.nvl(indto.getNextBedCnt01(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedcnt05(StringUtils.nvl(indto.getNextBedCnt05(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedcnt07(StringUtils.nvl(indto.getNextBedCnt07(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedcnt02(StringUtils.nvl(indto.getNextBedCnt02(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedcnt03(StringUtils.nvl(indto.getNextBedCnt03(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedcnt06(StringUtils.nvl(indto.getNextBedCnt06(), ""));
-	        	tRdmHcoNxtReqUpdData.setBedsTot(StringUtils.nvl(indto.getNextBedsTot(), ""));
-	        	tRdmHcoNxtReqUpdData.setMedBedsTot(StringUtils.nvl(indto.getNextMedBedsTot(), ""));
+        		tRdmHcoNxtReqUpdData.setBedcntBase(getUpdValue(indto.getBedCntBase(), indto.getNextBedCntBase()));
+	        	tRdmHcoNxtReqUpdData.setBedcnt04(getUpdValue(indto.getBedCnt04(), indto.getNextBedCnt04()));
+	        	tRdmHcoNxtReqUpdData.setBedcnt01(getUpdValue(indto.getBedCnt01(), indto.getNextBedCnt01()));
+	        	tRdmHcoNxtReqUpdData.setBedcnt05(getUpdValue(indto.getBedCnt05(), indto.getNextBedCnt05()));
+	        	tRdmHcoNxtReqUpdData.setBedcnt07(getUpdValue(indto.getBedCnt07(), indto.getNextBedCnt07()));
+	        	tRdmHcoNxtReqUpdData.setBedcnt02(getUpdValue(indto.getBedCnt02(), indto.getNextBedCnt02()));
+	        	tRdmHcoNxtReqUpdData.setBedcnt03(getUpdValue(indto.getBedCnt03(), indto.getNextBedCnt03()));
+	        	tRdmHcoNxtReqUpdData.setBedcnt06(getUpdValue(indto.getBedCnt06(), indto.getNextBedCnt06()));
+	        	tRdmHcoNxtReqUpdData.setBedsTot(getUpdValue(indto.getBedsTot(), indto.getNextBedsTot()));
+	        	tRdmHcoNxtReqUpdData.setMedBedsTot(getUpdValue(indto.getMedBedsTot(), indto.getNextMedBedsTot()));
         	}
 
         	tRdmHcoNxtReqUpdData.setUpdShaYmd(sysDate);
@@ -721,4 +721,23 @@ public class NF309Service extends BaseService {
 		}
 		return false;
 	}
+
+	/**
+     * 変更前と値が同一の場合はNULL、値無の場合は'Z'を返却
+     * @param preValue
+     * @param value
+     * @return
+     */
+    public String getUpdValue(String preValue, String value){
+    	String rtnValue = value;
+
+    	if(value != null && value.equals(preValue)
+    			|| (value == null && (preValue == null || preValue.isEmpty()))) {
+    		rtnValue = null;
+    	} else if(value == null || value.equals("")) {
+    		rtnValue = "Z";
+    	}
+
+    	return rtnValue;
+    }
 }

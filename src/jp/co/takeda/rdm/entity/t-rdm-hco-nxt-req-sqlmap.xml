@@ -58,6 +58,14 @@
         <result column="MANAGE_CD" property="manageCd"/>
         <result column="VAC_INS_TYPE" property="vacInsType"/>
         <result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+        <result column="PHARM_TYPE_NM" property="pharmTypeNm"/>
+        <result column="INS_RANK_NM" property="insRankNm"/>
+        <result column="REG_VIS_TYPE_NM" property="regVisTypeNm"/>
+        <result column="IMP_HOS_TYPE_NM" property="impHosTypeNm"/>
+        <result column="HO_INS_TYPE_NM" property="hoInsTypeNm"/>
+        <result column="MANAGE_NM" property="manageNm"/>
+        <result column="VAC_INS_TYPE_NM" property="vacInsTypeNm"/>
+        <result column="VAC_VISIT_TYPE_NM" property="vacVisitTypeNm"/>
         <result column="ULT_PHARM_TYPE" property="shisetsuKbn"/>
         <result column="ULT_MANAGE_CD" property="keieitaiNm"/>
         <result column="NEXT_PHARM_TYPE" property="nextPharmType"/>
@@ -193,14 +201,22 @@
 		, MST.INS_ABBR_NAME -- 施設_基本情報.施設略式漢字名
 		, MST.ULT_INS_NO -- 施設_基本情報.ULT施設コード
 		, MDB.SHISETSU_NM_RYAKU -- ULT_MDB施設マスタ.施設名略名
-		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE -- 施設_基本情報.施設区分
-		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK -- 施設_基本情報.階級区分
-		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE -- 施設_基本情報.定訪先区分
-		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE -- 施設_基本情報.重点病院区分
-		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE -- 施設_基本情報.対象区分
-		, KEIEITAI.KEIEITAI_KJ AS MANAGE_CD -- 施設_経営主体マスタ.経営主体
-		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE -- 施設_基本情報.ワクチン対象区分
-		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE -- 施設_基本情報.ワクチン定訪先区分
+		, MST.PHARM_TYPE
+		, MST.INS_RANK
+		, MST.REG_VIS_TYPE
+		, MST.IMP_HOS_TYPE
+		, MST.HO_INS_TYPE
+		, MST.MANAGE_CD
+		, VAC.VAC_INS_TYPE
+		, VAC.VAC_VISIT_TYPE
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE_NM -- 施設_基本情報.施設区分
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK_NM -- 施設_基本情報.階級区分
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM -- 施設_基本情報.定訪先区分
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE_NM -- 施設_基本情報.重点病院区分
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE_NM -- 施設_基本情報.対象区分
+		, KEIEITAI.KEIEITAI_KJ AS MANAGE_NM -- 施設_経営主体マスタ.経営主体
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE_NM -- 施設_基本情報.ワクチン対象区分
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE_NM -- 施設_基本情報.ワクチン定訪先区分
 		, CDM_ULTPHARMTYPE.VALUE1_KANJ AS ULT_PHARM_TYPE -- ULT_MDB施設マスタ.施設区分
 		, ULT_KEIEITAI.KEIEITAI_KJ AS ULT_MANAGE_CD -- 施設_経営主体マスタ.経営主体
 		, VHCO.PHARM_TYPE AS NEXT_PHARM_TYPE -- 施設_来期用_申請管理.施設区分
@@ -434,14 +450,22 @@
 		, MST.INS_ABBR_NAME -- 施設_基本情報.施設略式漢字名
 		, MST.ULT_INS_NO -- 施設_申請管理.ULT施設コード
 		, MDB.SHISETSU_NM_RYAKU -- ULT_MDB施設マスタ.施設名略名
-		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE -- 施設_基本情報.施設区分
-		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK -- 施設_基本情報.階級区分
-		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE -- 施設_基本情報.定訪先区分
-		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE -- 施設_基本情報.重点病院区分
-		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE -- 施設_基本情報.対象区分
-		, KEIEITAI.KEIEITAI_KJ AS MANAGE_CD -- 施設_経営主体マスタ.経営主体
-		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE -- 施設_基本情報.ワクチン対象区分
-		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE -- 施設_基本情報.ワクチン定訪先区分
+		, MST.PHARM_TYPE
+		, MST.INS_RANK
+		, MST.REG_VIS_TYPE
+		, MST.IMP_HOS_TYPE
+		, MST.HO_INS_TYPE
+		, MST.MANAGE_CD
+		, VAC.VAC_INS_TYPE
+		, VAC.VAC_VISIT_TYPE
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE_NM -- 施設_基本情報.施設区分
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK_NM -- 施設_基本情報.階級区分
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM -- 施設_基本情報.定訪先区分
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE_NM -- 施設_基本情報.重点病院区分
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE_NM -- 施設_基本情報.対象区分
+		, KEIEITAI.KEIEITAI_KJ AS MANAGE_NM -- 施設_経営主体マスタ.経営主体
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE_NM -- 施設_基本情報.ワクチン対象区分
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE_NM -- 施設_基本情報.ワクチン定訪先区分
 		, CDM_ULTPHARMTYPE.VALUE1_KANJ AS ULT_PHARM_TYPE -- ULT_MDB施設マスタ.施設区分
 		, ULT_KEIEITAI.KEIEITAI_KJ AS ULT_MANAGE_CD -- 施設_経営主体マスタ.経営主体
 		, HCO.PHARM_TYPE AS NEXT_PHARM_TYPE -- 施設_来期用_申請管理.施設区分

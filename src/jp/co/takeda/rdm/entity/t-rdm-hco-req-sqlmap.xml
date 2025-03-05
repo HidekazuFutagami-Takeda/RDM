@@ -374,6 +374,9 @@
 		<result column="ULT_INS_NO" property="ultInsCd"/>
 		<result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
 		<result column="SHISETSU_NM" property="shisetsuNm"/>
+		<result column="PRE_ULT_INS_NO" property="preUltInsCd"/>
+		<result column="PRE_SHISETSU_NM_RYAKU" property="preShisetsuNmRyaku"/>
+		<result column="PRE_SHISETSU_NM" property="preShisetsuNm"/>
         <result column="BEDCNT_BASE" property="bedCntBase"/>
         <result column="BEDCNT01" property="bedCnt01"/>
         <result column="BEDCNT02" property="bedCnt02"/>
@@ -1011,6 +1014,9 @@
         <result column="UNIV_SUBDIV_NM" property="univSubdivNm"/>
         <result column="CAPA_TYPE" property="capaType"/>
         <result column="CAPA_TYPE_NM" property="capaTypeNm"/>
+		<result column="PRE_ULT_INS_NO" property="preUltInsCd"/>
+		<result column="PRE_SHISETSU_NM_RYAKU" property="preShisetsuNmRyaku"/>
+		<result column="PRE_SHISETSU_NM" property="preShisetsuNm"/>
 		<result column="ULT_INS_NO" property="ultInsCd"/>
 		<result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
 		<result column="SHISETSU_NM" property="shisetsuNm"/>
@@ -3291,6 +3297,9 @@
 		, HCO.UNIV_SUBDIV		-- 施設_申請管理.大学細分類
 		, HCO.CAPA_TYPE			-- 施設_申請管理.容量別実績把握病院区分
 		-- ★ULT施設情報
+		, MST.ULT_INS_NO AS PRE_ULT_INS_NO
+		, PULT.SHISETSU_NM_RYAKU AS PRE_SHISETSU_NM_RYAKU	-- ULT_MDB施設マスタ.施設名略名
+		, PULT.SHISETSU_NM AS PRE_SHISETSU_NM		-- ULT_MDB施設マスタ.施設名
 		, HCO.ULT_INS_NO		-- 施設_申請管理.ULT施設コード
 		, ULT.SHISETSU_NM_RYAKU	-- ULT_MDB施設マスタ.施設名略名
 		, ULT.SHISETSU_NM		-- ULT_MDB施設マスタ.施設名
@@ -3780,6 +3789,10 @@
 		T_RDM_M_MDB_HCO_MST ULT -- ULT_MDB施設マスタ
 		ON 1=1
 		AND ULT.DCF_SHISETSU_CD = HCO.ULT_INS_NO
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST PULT -- ULT_MDB施設マスタ
+		ON 1=1
+		AND PULT.DCF_SHISETSU_CD = MST.ULT_INS_NO
 		LEFT JOIN
 		M_RDM_CODE_MST CDM -- コード情報
 		ON 1=1
@@ -5334,6 +5347,9 @@
 		, HCO.CAPA_TYPE			-- 施設_申請管理.容量別実績把握病院区分
 		, CDM_CAPATYPE.VALUE1_KANJ AS CAPA_TYPE_NM	-- コード情報.容量別実績把握病院区分
 		-- ★ULT施設情報
+		, MST.ULT_INS_NO AS PRE_ULT_INS_NO
+		, PULT.SHISETSU_NM_RYAKU AS PRE_SHISETSU_NM_RYAKU	-- ULT_MDB施設マスタ.施設名略名
+		, PULT.SHISETSU_NM AS PRE_SHISETSU_NM		-- ULT_MDB施設マスタ.施設名
 		, HCO.ULT_INS_NO		-- 施設_申請管理.ULT施設コード
 		, ULT.SHISETSU_NM_RYAKU	-- ULT_MDB施設マスタ.施設名略名
 		, ULT.SHISETSU_NM		-- ULT_MDB施設マスタ.施設名
@@ -5935,6 +5951,10 @@
 		T_RDM_M_MDB_HCO_MST ULT -- ULT_MDB施設マスタ
 		ON 1=1
 		AND ULT.DCF_SHISETSU_CD = HCO.ULT_INS_NO
+		LEFT JOIN
+		T_RDM_M_MDB_HCO_MST PULT -- ULT_MDB施設マスタ
+		ON 1=1
+		AND PULT.DCF_SHISETSU_CD = MST.ULT_INS_NO
 		LEFT JOIN
 		M_RDM_CODE_MST CDM -- コード情報
 		ON 1=1

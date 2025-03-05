@@ -459,6 +459,24 @@ public class SelectNF303MainDataEntity extends BaseEntity implements Serializabl
 	private String shisetsuNm;
 
 	/**
+	 * ULT施設C
+	 * @generated
+	 */
+	private String preUltInsCd;
+
+	/**
+	 * ULT施設略名
+	 * @generated
+	 */
+	private String preShisetsuNmRyaku;
+
+	/**
+	 * ULT施設名
+	 * @generated
+	 */
+	private String preShisetsuNm;
+
+	/**
 	 * 病床(基準)
 	 * @generated
 	 */
@@ -4949,6 +4967,51 @@ public class SelectNF303MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setShisetsuNm(String shisetsuNm) {
 		this.shisetsuNm = shisetsuNm;
+	}
+
+	/**
+	 * SelectNF303MainDataEntity.javapreUltInsCdを設定
+	 * @return preUltInsCd
+	 */
+	public String getPreUltInsCd() {
+		return preUltInsCd;
+	}
+
+	/**
+	 * @param preUltInsCd セットする preUltInsCd
+	 */
+	public void setPreUltInsCd(String preUltInsCd) {
+		this.preUltInsCd = preUltInsCd;
+	}
+
+	/**
+	 * SelectNF303MainDataEntity.javapreShisetsuNmRyakuを設定
+	 * @return preShisetsuNmRyaku
+	 */
+	public String getPreShisetsuNmRyaku() {
+		return preShisetsuNmRyaku;
+	}
+
+	/**
+	 * @param preShisetsuNmRyaku セットする preShisetsuNmRyaku
+	 */
+	public void setPreShisetsuNmRyaku(String preShisetsuNmRyaku) {
+		this.preShisetsuNmRyaku = preShisetsuNmRyaku;
+	}
+
+	/**
+	 * SelectNF303MainDataEntity.javapreShisetsuNmを設定
+	 * @return preShisetsuNm
+	 */
+	public String getPreShisetsuNm() {
+		return preShisetsuNm;
+	}
+
+	/**
+	 * @param preShisetsuNm セットする preShisetsuNm
+	 */
+	public void setPreShisetsuNm(String preShisetsuNm) {
+		this.preShisetsuNm = preShisetsuNm;
 	}
 
 	/**

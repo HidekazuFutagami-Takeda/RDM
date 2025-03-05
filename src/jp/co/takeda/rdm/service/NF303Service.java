@@ -878,16 +878,16 @@ public class NF303Service extends BaseService {
 			indto.setPreCapaTypeNm("--なし--");
 		}
 
-		indto.setInsAbbrName(getViewValue(mainDataEntity.getInsAbbrName()));
-		indto.setInsKana(getViewValue(mainDataEntity.getInsKana()));
-		indto.setInsFormalName(getViewValue(mainDataEntity.getInsFormalName()));
+		indto.setInsAbbrName(getViewValue(mainDataEntity.getPreInsAbbrName(), mainDataEntity.getInsAbbrName()));
+		indto.setInsKana(getViewValue(mainDataEntity.getPreInsKana(), mainDataEntity.getInsKana()));
+		indto.setInsFormalName(getViewValue(mainDataEntity.getPreInsFormalName(), mainDataEntity.getInsFormalName()));
 		indto.setTradeType(StringUtils.nvl(mainDataEntity.getTradeType(), ""));
 
-		indto.setTradeTypeNm(getViewValue(mainDataEntity.getTradeType(),mainDataEntity.getTradeTypeNm()));
+		indto.setTradeTypeNm(getViewValue(mainDataEntity.getTradeType(), mainDataEntity.getPreTradeType(), mainDataEntity.getTradeTypeNm()));
 
-		indto.setInsOpenYear(getViewValue(mainDataEntity.getInsOpenYear()));
-		indto.setInsOpenMonth(getViewValue(mainDataEntity.getInsOpenMonth()));
-		indto.setInsOpenDay(getViewValue(mainDataEntity.getInsOpenDay()));
+		indto.setInsOpenYear(getViewValue(mainDataEntity.getPreInsOpenYear(), mainDataEntity.getInsOpenYear()));
+		indto.setInsOpenMonth(getViewValue(mainDataEntity.getPreInsOpenMonth(), mainDataEntity.getInsOpenMonth()));
+		indto.setInsOpenDay(getViewValue(mainDataEntity.getPreInsOpenDay(), mainDataEntity.getInsOpenDay()));
 		indto.setPharmType(StringUtils.nvl(mainDataEntity.getPharmType(), ""));
 		indto.setPharmTypeNm(StringUtils.nvl(mainDataEntity.getPharmTypeNm(), ""));
 		indto.setInsRank(StringUtils.nvl(mainDataEntity.getInsRank(), ""));
@@ -897,21 +897,21 @@ public class NF303Service extends BaseService {
 		indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
 		indto.setManageNm(StringUtils.nvl(mainDataEntity.getManageNm(), ""));
 		indto.setWsType(StringUtils.nvl(mainDataEntity.getWsType(), ""));
-		indto.setWsTypeNm(getViewValue(mainDataEntity.getWsType(),mainDataEntity.getWsTypeNm()));
+		indto.setWsTypeNm(getViewValue(mainDataEntity.getWsType(), mainDataEntity.getPreWsType(), mainDataEntity.getWsTypeNm()));
 		indto.setBasketPurchase(StringUtils.nvl(mainDataEntity.getBasketPurchase(), ""));
-		indto.setBasketPurchaseNm(getViewNmValue(mainDataEntity.getBasketPurchase(),mainDataEntity.getBasketPurchaseNm()));
+		indto.setBasketPurchaseNm(getViewNmValue(mainDataEntity.getBasketPurchase(), mainDataEntity.getPreBasketPurchase(), mainDataEntity.getBasketPurchaseNm()));
 		indto.setUnivSubdiv(StringUtils.nvl(mainDataEntity.getUnivSubdiv(), ""));
-		indto.setUnivSubdivNm(getViewValue(mainDataEntity.getUnivSubdiv(),mainDataEntity.getUnivSubdivNm()));
+		indto.setUnivSubdivNm(getViewValue(mainDataEntity.getUnivSubdiv(), mainDataEntity.getPreUnivSubdiv(), mainDataEntity.getUnivSubdivNm()));
 		indto.setCapaType(StringUtils.nvl(mainDataEntity.getCapaType(), ""));
-		indto.setCapaTypeNm(getViewNmValue(mainDataEntity.getCapaType(),mainDataEntity.getCapaTypeNm()));
+		indto.setCapaTypeNm(getViewNmValue(mainDataEntity.getCapaType(), mainDataEntity.getPreCapaType(), mainDataEntity.getCapaTypeNm()));
 
 		// ULT施設情報
-		indto.setUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
-		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
-		indto.setShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
-		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
-		indto.setShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
-		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
+		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getPreUltInsCd(), ""));
+		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getPreShisetsuNmRyaku(), ""));
+		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getPreShisetsuNm(), ""));
+		indto.setUltInsCd(getViewValue(mainDataEntity.getPreUltInsCd(), mainDataEntity.getUltInsCd()));
+		indto.setShisetsuNmRyaku(getViewValue(mainDataEntity.getPreShisetsuNmRyaku(), mainDataEntity.getShisetsuNmRyaku()));
+		indto.setShisetsuNm(getViewValue(mainDataEntity.getPreShisetsuNm(), mainDataEntity.getShisetsuNm()));
 
 		// 病床数
 		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));
@@ -969,22 +969,22 @@ public class NF303Service extends BaseService {
 			indto.setPreInsUrlYmd("");
 		}
 
-		indto.setInsPcode(getViewValue(mainDataEntity.getInsPcode()));
-		indto.setAddrCodePref(getViewValue(mainDataEntity.getAddrCodePref()));
-		indto.setAddrCodePrefName(getViewValue(mainDataEntity.getAddrCodePrefName()));
-		indto.setAddrCodeCity(getViewValue(mainDataEntity.getAddrCodeCity()));
-		indto.setAddrCodeCityName(getViewValue(mainDataEntity.getAddrCodeCityName()));
-		indto.setInsAddrDt(getViewValue(mainDataEntity.getInsAddrDt()));
-		indto.setTkCityCd(getViewValue(mainDataEntity.getTkCityCd()));
-		indto.setTkCityName(getViewValue(mainDataEntity.getTkCityName()));
-		indto.setInsPhone1(getViewValue(mainDataEntity.getInsPhone1()));
-		indto.setInsPhone2(getViewValue(mainDataEntity.getInsPhone2()));
-		indto.setInsFax1(getViewValue(mainDataEntity.getInsFax1()));
-		indto.setInsFax2(getViewValue(mainDataEntity.getInsFax2()));
-		indto.setInsUrl(getViewValue(mainDataEntity.getInsUrl()));
+		indto.setInsPcode(getViewValue(mainDataEntity.getPreInsPcode(), mainDataEntity.getInsPcode()));
+		indto.setAddrCodePref(getViewValue(mainDataEntity.getPreAddrCodePref(), mainDataEntity.getAddrCodePref()));
+		indto.setAddrCodePrefName(getViewValue(mainDataEntity.getPreAddrCodePrefName(), mainDataEntity.getAddrCodePrefName()));
+		indto.setAddrCodeCity(getViewValue(mainDataEntity.getPreAddrCodeCity(), mainDataEntity.getAddrCodeCity()));
+		indto.setAddrCodeCityName(getViewValue(mainDataEntity.getPreAddrCodeCityName(), mainDataEntity.getAddrCodeCityName()));
+		indto.setInsAddrDt(getViewValue(mainDataEntity.getPreInsAddrDt(), mainDataEntity.getInsAddrDt()));
+		indto.setTkCityCd(getViewValue(mainDataEntity.getPreTkCityCd(), mainDataEntity.getTkCityCd()));
+		indto.setTkCityName(getViewValue(mainDataEntity.getPreTkCityName(), mainDataEntity.getTkCityName()));
+		indto.setInsPhone1(getViewValue(mainDataEntity.getPreInsPhone1(), mainDataEntity.getInsPhone1()));
+		indto.setInsPhone2(getViewValue(mainDataEntity.getPreInsPhone2(), mainDataEntity.getInsPhone2()));
+		indto.setInsFax1(getViewValue(mainDataEntity.getPreInsFax1(), mainDataEntity.getInsFax1()));
+		indto.setInsFax2(getViewValue(mainDataEntity.getPreInsFax2(), mainDataEntity.getInsFax2()));
+		indto.setInsUrl(getViewValue(mainDataEntity.getPreInsUrl(), mainDataEntity.getInsUrl()));
 
 		// ホームページアドレス更新日を"yyyy/MM/dd"に変換
-		String urlYmd = getViewValue(mainDataEntity.getInsUrlYmd());
+		String urlYmd = getViewValue(mainDataEntity.getPreInsUrlYmd(), mainDataEntity.getInsUrlYmd());
 		if(urlYmd != null && urlYmd.length() == 8) {
 			StringBuilder sbUrlYmd = new StringBuilder();
 			sbUrlYmd.append(mainDataEntity.getInsUrlYmd().substring(0,4));
@@ -1016,21 +1016,21 @@ public class NF303Service extends BaseService {
 		indto.setPreFree0013(StringUtils.nvl(mainDataEntity.getPreFree0013(), ""));
 		indto.setPreFree0014(StringUtils.nvl(mainDataEntity.getPreFree0014(), ""));
 		indto.setPreFree0015(StringUtils.nvl(mainDataEntity.getPreFree0015(), ""));
-		indto.setFree0001(getViewValue(mainDataEntity.getFree0001()));
-		indto.setFree0002(getViewValue(mainDataEntity.getFree0002()));
-		indto.setFree0003(getViewValue(mainDataEntity.getFree0003()));
-		indto.setFree0004(getViewValue(mainDataEntity.getFree0004()));
-		indto.setFree0005(getViewValue(mainDataEntity.getFree0005()));
-		indto.setFree0006(getViewValue(mainDataEntity.getFree0006()));
-		indto.setFree0007(getViewValue(mainDataEntity.getFree0007()));
-		indto.setFree0008(getViewValue(mainDataEntity.getFree0008()));
-		indto.setFree0009(getViewValue(mainDataEntity.getFree0009()));
-		indto.setFree0010(getViewValue(mainDataEntity.getFree0010()));
-		indto.setFree0011(getViewValue(mainDataEntity.getFree0011()));
-		indto.setFree0012(getViewValue(mainDataEntity.getFree0012()));
-		indto.setFree0013(getViewValue(mainDataEntity.getFree0013()));
-		indto.setFree0014(getViewValue(mainDataEntity.getFree0014()));
-		indto.setFree0015(getViewValue(mainDataEntity.getFree0015()));
+		indto.setFree0001(getViewValue(mainDataEntity.getPreFree0001(), mainDataEntity.getFree0001()));
+		indto.setFree0002(getViewValue(mainDataEntity.getPreFree0002(), mainDataEntity.getFree0002()));
+		indto.setFree0003(getViewValue(mainDataEntity.getPreFree0003(), mainDataEntity.getFree0003()));
+		indto.setFree0004(getViewValue(mainDataEntity.getPreFree0004(), mainDataEntity.getFree0004()));
+		indto.setFree0005(getViewValue(mainDataEntity.getPreFree0005(), mainDataEntity.getFree0005()));
+		indto.setFree0006(getViewValue(mainDataEntity.getPreFree0006(), mainDataEntity.getFree0006()));
+		indto.setFree0007(getViewValue(mainDataEntity.getPreFree0007(), mainDataEntity.getFree0007()));
+		indto.setFree0008(getViewValue(mainDataEntity.getPreFree0008(), mainDataEntity.getFree0008()));
+		indto.setFree0009(getViewValue(mainDataEntity.getPreFree0009(), mainDataEntity.getFree0009()));
+		indto.setFree0010(getViewValue(mainDataEntity.getPreFree0010(), mainDataEntity.getFree0010()));
+		indto.setFree0011(getViewValue(mainDataEntity.getPreFree0011(), mainDataEntity.getFree0011()));
+		indto.setFree0012(getViewValue(mainDataEntity.getPreFree0012(), mainDataEntity.getFree0012()));
+		indto.setFree0013(getViewValue(mainDataEntity.getPreFree0013(), mainDataEntity.getFree0013()));
+		indto.setFree0014(getViewValue(mainDataEntity.getPreFree0014(), mainDataEntity.getFree0014()));
+		indto.setFree0015(getViewValue(mainDataEntity.getPreFree0015(), mainDataEntity.getFree0015()));
 
 		// 老人福祉法関連分類情報
 		indto.setPreWelfare02(StringUtils.nvl(mainDataEntity.getPreWelfare02(), ""));
@@ -1049,8 +1049,8 @@ public class NF303Service extends BaseService {
 
 		indto.setWelfare02(StringUtils.nvl(mainDataEntity.getWelfare02(), ""));
 		indto.setWelfare08(StringUtils.nvl(mainDataEntity.getWelfare08(), ""));
-		indto.setWelfare02Nm(getViewNmValue(mainDataEntity.getWelfare02(), mainDataEntity.getWelfare02Nm()));
-		indto.setWelfare08Nm(getViewNmValue(mainDataEntity.getWelfare08(), mainDataEntity.getWelfare08Nm()));
+		indto.setWelfare02Nm(getViewNmValue(mainDataEntity.getWelfare02(), mainDataEntity.getPreWelfare02(), mainDataEntity.getWelfare02Nm()));
+		indto.setWelfare08Nm(getViewNmValue(mainDataEntity.getWelfare08(), mainDataEntity.getPreWelfare08(), mainDataEntity.getWelfare08Nm()));
 
 		// 実績把握区分情報
 		indto.setPreResult01(StringUtils.nvl(mainDataEntity.getPreResult01(), ""));
@@ -1308,43 +1308,42 @@ public class NF303Service extends BaseService {
 		indto.setResult35(StringUtils.nvl(mainDataEntity.getResult35(), ""));
 		indto.setResult36(StringUtils.nvl(mainDataEntity.getResult36(), ""));
 
-		indto.setResult01Nm(getViewNmValue(mainDataEntity.getResult01(), mainDataEntity.getResult01Nm()));
-		indto.setResult02Nm(getViewNmValue(mainDataEntity.getResult02(), mainDataEntity.getResult02Nm()));
-		indto.setResult03Nm(getViewNmValue(mainDataEntity.getResult03(), mainDataEntity.getResult03Nm()));
-		indto.setResult04Nm(getViewNmValue(mainDataEntity.getResult04(), mainDataEntity.getResult04Nm()));
-		indto.setResult05Nm(getViewNmValue(mainDataEntity.getResult05(), mainDataEntity.getResult05Nm()));
-		indto.setResult06Nm(getViewNmValue(mainDataEntity.getResult06(), mainDataEntity.getResult06Nm()));
-		indto.setResult07Nm(getViewNmValue(mainDataEntity.getResult07(), mainDataEntity.getResult07Nm()));
-		indto.setResult08Nm(getViewNmValue(mainDataEntity.getResult08(), mainDataEntity.getResult08Nm()));
-		indto.setResult09Nm(getViewNmValue(mainDataEntity.getResult09(), mainDataEntity.getResult09Nm()));
-		indto.setResult10Nm(getViewNmValue(mainDataEntity.getResult10(), mainDataEntity.getResult10Nm()));
-		indto.setResult11Nm(getViewNmValue(mainDataEntity.getResult11(), mainDataEntity.getResult11Nm()));
-		indto.setResult12Nm(getViewNmValue(mainDataEntity.getResult12(), mainDataEntity.getResult12Nm()));
-		indto.setResult13Nm(getViewNmValue(mainDataEntity.getResult13(), mainDataEntity.getResult13Nm()));
-		indto.setResult14Nm(getViewNmValue(mainDataEntity.getResult14(), mainDataEntity.getResult14Nm()));
-		indto.setResult15Nm(getViewNmValue(mainDataEntity.getResult15(), mainDataEntity.getResult15Nm()));
-		indto.setResult16Nm(getViewNmValue(mainDataEntity.getResult16(), mainDataEntity.getResult16Nm()));
-		indto.setResult17Nm(getViewNmValue(mainDataEntity.getResult17(), mainDataEntity.getResult17Nm()));
-		indto.setResult18Nm(getViewNmValue(mainDataEntity.getResult18(), mainDataEntity.getResult18Nm()));
-		indto.setResult19Nm(getViewNmValue(mainDataEntity.getResult19(), mainDataEntity.getResult19Nm()));
-		indto.setResult20Nm(getViewNmValue(mainDataEntity.getResult20(), mainDataEntity.getResult20Nm()));
-		indto.setResult21Nm(getViewNmValue(mainDataEntity.getResult21(), mainDataEntity.getResult21Nm()));
-		indto.setResult22Nm(getViewNmValue(mainDataEntity.getResult22(), mainDataEntity.getResult22Nm()));
-		indto.setResult23Nm(getViewNmValue(mainDataEntity.getResult23(), mainDataEntity.getResult23Nm()));
-		indto.setResult24Nm(getViewNmValue(mainDataEntity.getResult24(), mainDataEntity.getResult24Nm()));
-		indto.setResult25Nm(getViewNmValue(mainDataEntity.getResult25(), mainDataEntity.getResult25Nm()));
-		indto.setResult26Nm(getViewNmValue(mainDataEntity.getResult26(), mainDataEntity.getResult26Nm()));
-		indto.setResult27Nm(getViewNmValue(mainDataEntity.getResult27(), mainDataEntity.getResult27Nm()));
-		indto.setResult28Nm(getViewNmValue(mainDataEntity.getResult28(), mainDataEntity.getResult28Nm()));
-		indto.setResult29Nm(getViewNmValue(mainDataEntity.getResult29(), mainDataEntity.getResult29Nm()));
-		indto.setResult30Nm(getViewNmValue(mainDataEntity.getResult30(), mainDataEntity.getResult30Nm()));
-		indto.setResult31Nm(getViewNmValue(mainDataEntity.getResult31(), mainDataEntity.getResult31Nm()));
-		indto.setResult32Nm(getViewNmValue(mainDataEntity.getResult32(), mainDataEntity.getResult32Nm()));
-		indto.setResult33Nm(getViewNmValue(mainDataEntity.getResult33(), mainDataEntity.getResult33Nm()));
-		indto.setResult34Nm(getViewNmValue(mainDataEntity.getResult34(), mainDataEntity.getResult34Nm()));
-		indto.setResult35Nm(getViewNmValue(mainDataEntity.getResult35(), mainDataEntity.getResult35Nm()));
-		indto.setResult36Nm(getViewNmValue(mainDataEntity.getResult36(), mainDataEntity.getResult36Nm()));
-
+		indto.setResult01Nm(getViewNmValue(mainDataEntity.getResult01(), mainDataEntity.getPreResult01(), mainDataEntity.getResult01Nm()));
+		indto.setResult02Nm(getViewNmValue(mainDataEntity.getResult02(), mainDataEntity.getPreResult02(), mainDataEntity.getResult02Nm()));
+		indto.setResult03Nm(getViewNmValue(mainDataEntity.getResult03(), mainDataEntity.getPreResult03(), mainDataEntity.getResult03Nm()));
+		indto.setResult04Nm(getViewNmValue(mainDataEntity.getResult04(), mainDataEntity.getPreResult04(), mainDataEntity.getResult04Nm()));
+		indto.setResult05Nm(getViewNmValue(mainDataEntity.getResult05(), mainDataEntity.getPreResult05(), mainDataEntity.getResult05Nm()));
+		indto.setResult06Nm(getViewNmValue(mainDataEntity.getResult06(), mainDataEntity.getPreResult06(), mainDataEntity.getResult06Nm()));
+		indto.setResult07Nm(getViewNmValue(mainDataEntity.getResult07(), mainDataEntity.getPreResult07(), mainDataEntity.getResult07Nm()));
+		indto.setResult08Nm(getViewNmValue(mainDataEntity.getResult08(), mainDataEntity.getPreResult08(), mainDataEntity.getResult08Nm()));
+		indto.setResult09Nm(getViewNmValue(mainDataEntity.getResult09(), mainDataEntity.getPreResult09(), mainDataEntity.getResult09Nm()));
+		indto.setResult10Nm(getViewNmValue(mainDataEntity.getResult10(), mainDataEntity.getPreResult10(), mainDataEntity.getResult10Nm()));
+		indto.setResult11Nm(getViewNmValue(mainDataEntity.getResult11(), mainDataEntity.getPreResult11(), mainDataEntity.getResult11Nm()));
+		indto.setResult12Nm(getViewNmValue(mainDataEntity.getResult12(), mainDataEntity.getPreResult12(), mainDataEntity.getResult12Nm()));
+		indto.setResult13Nm(getViewNmValue(mainDataEntity.getResult13(), mainDataEntity.getPreResult13(), mainDataEntity.getResult13Nm()));
+		indto.setResult14Nm(getViewNmValue(mainDataEntity.getResult14(), mainDataEntity.getPreResult14(), mainDataEntity.getResult14Nm()));
+		indto.setResult15Nm(getViewNmValue(mainDataEntity.getResult15(), mainDataEntity.getPreResult15(), mainDataEntity.getResult15Nm()));
+		indto.setResult16Nm(getViewNmValue(mainDataEntity.getResult16(), mainDataEntity.getPreResult16(), mainDataEntity.getResult16Nm()));
+		indto.setResult17Nm(getViewNmValue(mainDataEntity.getResult17(), mainDataEntity.getPreResult17(), mainDataEntity.getResult17Nm()));
+		indto.setResult18Nm(getViewNmValue(mainDataEntity.getResult18(), mainDataEntity.getPreResult18(), mainDataEntity.getResult18Nm()));
+		indto.setResult19Nm(getViewNmValue(mainDataEntity.getResult19(), mainDataEntity.getPreResult19(), mainDataEntity.getResult19Nm()));
+		indto.setResult20Nm(getViewNmValue(mainDataEntity.getResult20(), mainDataEntity.getPreResult20(), mainDataEntity.getResult20Nm()));
+		indto.setResult21Nm(getViewNmValue(mainDataEntity.getResult21(), mainDataEntity.getPreResult21(), mainDataEntity.getResult21Nm()));
+		indto.setResult22Nm(getViewNmValue(mainDataEntity.getResult22(), mainDataEntity.getPreResult22(), mainDataEntity.getResult22Nm()));
+		indto.setResult23Nm(getViewNmValue(mainDataEntity.getResult23(), mainDataEntity.getPreResult23(), mainDataEntity.getResult23Nm()));
+		indto.setResult24Nm(getViewNmValue(mainDataEntity.getResult24(), mainDataEntity.getPreResult24(), mainDataEntity.getResult24Nm()));
+		indto.setResult25Nm(getViewNmValue(mainDataEntity.getResult25(), mainDataEntity.getPreResult25(), mainDataEntity.getResult25Nm()));
+		indto.setResult26Nm(getViewNmValue(mainDataEntity.getResult26(), mainDataEntity.getPreResult26(), mainDataEntity.getResult26Nm()));
+		indto.setResult27Nm(getViewNmValue(mainDataEntity.getResult27(), mainDataEntity.getPreResult27(), mainDataEntity.getResult27Nm()));
+		indto.setResult28Nm(getViewNmValue(mainDataEntity.getResult28(), mainDataEntity.getPreResult28(), mainDataEntity.getResult28Nm()));
+		indto.setResult29Nm(getViewNmValue(mainDataEntity.getResult29(), mainDataEntity.getPreResult29(), mainDataEntity.getResult29Nm()));
+		indto.setResult30Nm(getViewNmValue(mainDataEntity.getResult30(), mainDataEntity.getPreResult30(), mainDataEntity.getResult30Nm()));
+		indto.setResult31Nm(getViewNmValue(mainDataEntity.getResult31(), mainDataEntity.getPreResult31(), mainDataEntity.getResult31Nm()));
+		indto.setResult32Nm(getViewNmValue(mainDataEntity.getResult32(), mainDataEntity.getPreResult32(), mainDataEntity.getResult32Nm()));
+		indto.setResult33Nm(getViewNmValue(mainDataEntity.getResult33(), mainDataEntity.getPreResult33(), mainDataEntity.getResult33Nm()));
+		indto.setResult34Nm(getViewNmValue(mainDataEntity.getResult34(), mainDataEntity.getPreResult34(), mainDataEntity.getResult34Nm()));
+		indto.setResult35Nm(getViewNmValue(mainDataEntity.getResult35(), mainDataEntity.getPreResult35(), mainDataEntity.getResult35Nm()));
+		indto.setResult36Nm(getViewNmValue(mainDataEntity.getResult36(), mainDataEntity.getPreResult36(), mainDataEntity.getResult36Nm()));
 
 		// 病院設備情報
 		indto.setPreEquip01(StringUtils.nvl(mainDataEntity.getPreEquip01(), ""));
@@ -1385,11 +1384,11 @@ public class NF303Service extends BaseService {
 		indto.setEquip07(StringUtils.nvl(mainDataEntity.getEquip07(), ""));
 		indto.setEquip09(StringUtils.nvl(mainDataEntity.getEquip09(), ""));
 
-		indto.setEquip01Nm(getViewNmValue(mainDataEntity.getEquip01(), mainDataEntity.getEquip01Nm()));
-		indto.setEquip02Nm(getViewNmValue(mainDataEntity.getEquip02(), mainDataEntity.getEquip02Nm()));
-		indto.setEquip03Nm(getViewNmValue(mainDataEntity.getEquip03(), mainDataEntity.getEquip03Nm()));
-		indto.setEquip07Nm(getViewNmValue(mainDataEntity.getEquip07(), mainDataEntity.getEquip07Nm()));
-		indto.setEquip09Nm(getViewNmValue(mainDataEntity.getEquip09(), mainDataEntity.getEquip09Nm()));
+		indto.setEquip01Nm(getViewNmValue(mainDataEntity.getEquip01(), mainDataEntity.getPreEquip01(), mainDataEntity.getEquip01Nm()));
+		indto.setEquip02Nm(getViewNmValue(mainDataEntity.getEquip02(), mainDataEntity.getPreEquip02(), mainDataEntity.getEquip02Nm()));
+		indto.setEquip03Nm(getViewNmValue(mainDataEntity.getEquip03(), mainDataEntity.getPreEquip03(), mainDataEntity.getEquip03Nm()));
+		indto.setEquip07Nm(getViewNmValue(mainDataEntity.getEquip07(), mainDataEntity.getPreEquip07(), mainDataEntity.getEquip07Nm()));
+		indto.setEquip09Nm(getViewNmValue(mainDataEntity.getEquip09(), mainDataEntity.getPreEquip09(), mainDataEntity.getEquip09Nm()));
 
 		// 市場規模情報
 		indto.setPreMarket01(StringUtils.nvl(mainDataEntity.getPreMarket01(), ""));
@@ -1444,13 +1443,13 @@ public class NF303Service extends BaseService {
 		indto.setMarket07(StringUtils.nvl(mainDataEntity.getMarket07(), ""));
 		indto.setMarket09(StringUtils.nvl(mainDataEntity.getMarket09(), ""));
 
-		indto.setMarket01Nm(getViewNmValue(mainDataEntity.getMarket01(), mainDataEntity.getMarket01Nm()));
-		indto.setMarket02Nm(getViewNmValue(mainDataEntity.getMarket02(), mainDataEntity.getMarket02Nm()));
-		indto.setMarket03Nm(getViewNmValue(mainDataEntity.getMarket03(), mainDataEntity.getMarket03Nm()));
-		indto.setMarket04Nm(getViewNmValue(mainDataEntity.getMarket04(), mainDataEntity.getMarket04Nm()));
-		indto.setMarket06Nm(getViewNmValue(mainDataEntity.getMarket06(), mainDataEntity.getMarket06Nm()));
-		indto.setMarket07Nm(getViewNmValue(mainDataEntity.getMarket07(), mainDataEntity.getMarket07Nm()));
-		indto.setMarket09Nm(getViewNmValue(mainDataEntity.getMarket09(), mainDataEntity.getMarket09Nm()));
+		indto.setMarket01Nm(getViewNmValue(mainDataEntity.getMarket01(), mainDataEntity.getPreMarket01(), mainDataEntity.getMarket01Nm()));
+		indto.setMarket02Nm(getViewNmValue(mainDataEntity.getMarket02(), mainDataEntity.getPreMarket02(), mainDataEntity.getMarket02Nm()));
+		indto.setMarket03Nm(getViewNmValue(mainDataEntity.getMarket03(), mainDataEntity.getPreMarket03(), mainDataEntity.getMarket03Nm()));
+		indto.setMarket04Nm(getViewNmValue(mainDataEntity.getMarket04(), mainDataEntity.getPreMarket04(), mainDataEntity.getMarket04Nm()));
+		indto.setMarket06Nm(getViewNmValue(mainDataEntity.getMarket06(), mainDataEntity.getPreMarket06(), mainDataEntity.getMarket06Nm()));
+		indto.setMarket07Nm(getViewNmValue(mainDataEntity.getMarket07(), mainDataEntity.getPreMarket07(), mainDataEntity.getMarket07Nm()));
+		indto.setMarket09Nm(getViewNmValue(mainDataEntity.getMarket09(), mainDataEntity.getPreMarket09(), mainDataEntity.getMarket09Nm()));
 
 		// 医療法関連分類情報
 		indto.setPreMedical12(StringUtils.nvl(mainDataEntity.getPreMedical12(), ""));
@@ -1463,7 +1462,7 @@ public class NF303Service extends BaseService {
 
 		indto.setMedical12(StringUtils.nvl(mainDataEntity.getMedical12(), ""));
 
-		indto.setMedical12Nm(getViewNmValue(mainDataEntity.getMedical12(), mainDataEntity.getMedical12Nm()));
+		indto.setMedical12Nm(getViewNmValue(mainDataEntity.getMedical12(), mainDataEntity.getPreMedical12(), mainDataEntity.getMedical12Nm()));
 
 		// 特別な機能情報
 		indto.setPreSpfunc01(StringUtils.nvl(mainDataEntity.getPreSpfunc01(), ""));
@@ -1490,9 +1489,9 @@ public class NF303Service extends BaseService {
 		indto.setSpfunc03(StringUtils.nvl(mainDataEntity.getSpfunc03(), ""));
 		indto.setSpfunc04(StringUtils.nvl(mainDataEntity.getSpfunc04(), ""));
 
-		indto.setSpfunc01Nm(getViewNmValue(mainDataEntity.getSpfunc01(), mainDataEntity.getSpfunc01Nm()));
-		indto.setSpfunc03Nm(getViewNmValue(mainDataEntity.getSpfunc03(), mainDataEntity.getSpfunc03Nm()));
-		indto.setSpfunc04Nm(getViewNmValue(mainDataEntity.getSpfunc04(), mainDataEntity.getSpfunc04Nm()));
+		indto.setSpfunc01Nm(getViewNmValue(mainDataEntity.getSpfunc01(), mainDataEntity.getPreSpfunc01(), mainDataEntity.getSpfunc01Nm()));
+		indto.setSpfunc03Nm(getViewNmValue(mainDataEntity.getSpfunc03(), mainDataEntity.getPreSpfunc03(), mainDataEntity.getSpfunc03Nm()));
+		indto.setSpfunc04Nm(getViewNmValue(mainDataEntity.getSpfunc04(), mainDataEntity.getPreSpfunc04(), mainDataEntity.getSpfunc04Nm()));
 
 		// 医療連携関連情報
 		indto.setPreTieup10(StringUtils.nvl(mainDataEntity.getPreTieup10(), ""));
@@ -1519,9 +1518,9 @@ public class NF303Service extends BaseService {
 		indto.setTieup11(StringUtils.nvl(mainDataEntity.getTieup11(), ""));
 		indto.setTieup12(StringUtils.nvl(mainDataEntity.getTieup12(), ""));
 
-		indto.setTieup10Nm(getViewNmValue(mainDataEntity.getTieup10(), mainDataEntity.getTieup10Nm()));
-		indto.setTieup11Nm(getViewNmValue(mainDataEntity.getTieup11(), mainDataEntity.getTieup11Nm()));
-		indto.setTieup12Nm(getViewNmValue(mainDataEntity.getTieup12(), mainDataEntity.getTieup12Nm()));
+		indto.setTieup10Nm(getViewNmValue(mainDataEntity.getTieup10(), mainDataEntity.getPreTieup10(), mainDataEntity.getTieup10Nm()));
+		indto.setTieup11Nm(getViewNmValue(mainDataEntity.getTieup11(), mainDataEntity.getPreTieup11(), mainDataEntity.getTieup11Nm()));
+		indto.setTieup12Nm(getViewNmValue(mainDataEntity.getTieup12(), mainDataEntity.getPreTieup12(), mainDataEntity.getTieup12Nm()));
 
 		// ユーザーコード情報
 		indto.setPreUsercd0001(StringUtils.nvl(mainDataEntity.getPreUsercd0001(), ""));
@@ -1794,42 +1793,42 @@ public class NF303Service extends BaseService {
 		indto.setUsercd0035(StringUtils.nvl(mainDataEntity.getUsercd0035(), ""));
 		indto.setUsercd0036(StringUtils.nvl(mainDataEntity.getUsercd0036(), ""));
 
-		indto.setUsercd0001Nm(getViewNmValue(mainDataEntity.getUsercd0001(), mainDataEntity.getUsercd0001Nm()));
-		indto.setUsercd0002Nm(getViewNmValue(mainDataEntity.getUsercd0002(), mainDataEntity.getUsercd0002Nm()));
-		indto.setUsercd0003Nm(getViewNmValue(mainDataEntity.getUsercd0003(), mainDataEntity.getUsercd0003Nm()));
-		indto.setUsercd0004Nm(getViewNmValue(mainDataEntity.getUsercd0004(), mainDataEntity.getUsercd0004Nm()));
-		indto.setUsercd0005Nm(getViewNmValue(mainDataEntity.getUsercd0005(), mainDataEntity.getUsercd0005Nm()));
-		indto.setUsercd0006Nm(getViewNmValue(mainDataEntity.getUsercd0006(), mainDataEntity.getUsercd0006Nm()));
-		indto.setUsercd0007Nm(getViewNmValue(mainDataEntity.getUsercd0007(), mainDataEntity.getUsercd0007Nm()));
-		indto.setUsercd0008Nm(getViewNmValue(mainDataEntity.getUsercd0008(), mainDataEntity.getUsercd0008Nm()));
-		indto.setUsercd0009Nm(getViewNmValue(mainDataEntity.getUsercd0009(), mainDataEntity.getUsercd0009Nm()));
-		indto.setUsercd0010Nm(getViewNmValue(mainDataEntity.getUsercd0010(), mainDataEntity.getUsercd0010Nm()));
-		indto.setUsercd0011Nm(getViewNmValue(mainDataEntity.getUsercd0011(), mainDataEntity.getUsercd0011Nm()));
-		indto.setUsercd0012Nm(getViewNmValue(mainDataEntity.getUsercd0012(), mainDataEntity.getUsercd0012Nm()));
-		indto.setUsercd0013Nm(getViewNmValue(mainDataEntity.getUsercd0013(), mainDataEntity.getUsercd0013Nm()));
-		indto.setUsercd0014Nm(getViewNmValue(mainDataEntity.getUsercd0014(), mainDataEntity.getUsercd0014Nm()));
-		indto.setUsercd0015Nm(getViewNmValue(mainDataEntity.getUsercd0015(), mainDataEntity.getUsercd0015Nm()));
-		indto.setUsercd0016Nm(getViewNmValue(mainDataEntity.getUsercd0016(), mainDataEntity.getUsercd0016Nm()));
-		indto.setUsercd0017Nm(getViewNmValue(mainDataEntity.getUsercd0017(), mainDataEntity.getUsercd0017Nm()));
-		indto.setUsercd0018Nm(getViewNmValue(mainDataEntity.getUsercd0018(), mainDataEntity.getUsercd0018Nm()));
-		indto.setUsercd0019Nm(getViewNmValue(mainDataEntity.getUsercd0019(), mainDataEntity.getUsercd0019Nm()));
-		indto.setUsercd0020Nm(getViewNmValue(mainDataEntity.getUsercd0020(), mainDataEntity.getUsercd0020Nm()));
-		indto.setUsercd0021Nm(getViewNmValue(mainDataEntity.getUsercd0021(), mainDataEntity.getUsercd0021Nm()));
-		indto.setUsercd0022Nm(getViewNmValue(mainDataEntity.getUsercd0022(), mainDataEntity.getUsercd0022Nm()));
-		indto.setUsercd0023Nm(getViewNmValue(mainDataEntity.getUsercd0023(), mainDataEntity.getUsercd0023Nm()));
-		indto.setUsercd0024Nm(getViewNmValue(mainDataEntity.getUsercd0024(), mainDataEntity.getUsercd0024Nm()));
-		indto.setUsercd0025Nm(getViewNmValue(mainDataEntity.getUsercd0025(), mainDataEntity.getUsercd0025Nm()));
-		indto.setUsercd0026Nm(getViewNmValue(mainDataEntity.getUsercd0026(), mainDataEntity.getUsercd0026Nm()));
-		indto.setUsercd0027Nm(getViewNmValue(mainDataEntity.getUsercd0027(), mainDataEntity.getUsercd0027Nm()));
-		indto.setUsercd0028Nm(getViewNmValue(mainDataEntity.getUsercd0028(), mainDataEntity.getUsercd0028Nm()));
-		indto.setUsercd0029Nm(getViewNmValue(mainDataEntity.getUsercd0029(), mainDataEntity.getUsercd0029Nm()));
-		indto.setUsercd0030Nm(getViewNmValue(mainDataEntity.getUsercd0030(), mainDataEntity.getUsercd0030Nm()));
-		indto.setUsercd0031Nm(getViewNmValue(mainDataEntity.getUsercd0031(), mainDataEntity.getUsercd0031Nm()));
-		indto.setUsercd0032Nm(getViewNmValue(mainDataEntity.getUsercd0032(), mainDataEntity.getUsercd0032Nm()));
-		indto.setUsercd0033Nm(getViewNmValue(mainDataEntity.getUsercd0033(), mainDataEntity.getUsercd0033Nm()));
-		indto.setUsercd0034Nm(getViewNmValue(mainDataEntity.getUsercd0034(), mainDataEntity.getUsercd0034Nm()));
-		indto.setUsercd0035Nm(getViewNmValue(mainDataEntity.getUsercd0035(), mainDataEntity.getUsercd0035Nm()));
-		indto.setUsercd0036Nm(getViewNmValue(mainDataEntity.getUsercd0036(), mainDataEntity.getUsercd0036Nm()));
+		indto.setUsercd0001Nm(getViewNmValue(mainDataEntity.getUsercd0001(),mainDataEntity.getPreUsercd0001(), mainDataEntity.getUsercd0001Nm()));
+		indto.setUsercd0002Nm(getViewNmValue(mainDataEntity.getUsercd0002(),mainDataEntity.getPreUsercd0002(), mainDataEntity.getUsercd0002Nm()));
+		indto.setUsercd0003Nm(getViewNmValue(mainDataEntity.getUsercd0003(),mainDataEntity.getPreUsercd0003(), mainDataEntity.getUsercd0003Nm()));
+		indto.setUsercd0004Nm(getViewNmValue(mainDataEntity.getUsercd0004(),mainDataEntity.getPreUsercd0004(), mainDataEntity.getUsercd0004Nm()));
+		indto.setUsercd0005Nm(getViewNmValue(mainDataEntity.getUsercd0005(),mainDataEntity.getPreUsercd0005(), mainDataEntity.getUsercd0005Nm()));
+		indto.setUsercd0006Nm(getViewNmValue(mainDataEntity.getUsercd0006(),mainDataEntity.getPreUsercd0006(), mainDataEntity.getUsercd0006Nm()));
+		indto.setUsercd0007Nm(getViewNmValue(mainDataEntity.getUsercd0007(),mainDataEntity.getPreUsercd0007(), mainDataEntity.getUsercd0007Nm()));
+		indto.setUsercd0008Nm(getViewNmValue(mainDataEntity.getUsercd0008(),mainDataEntity.getPreUsercd0008(), mainDataEntity.getUsercd0008Nm()));
+		indto.setUsercd0009Nm(getViewNmValue(mainDataEntity.getUsercd0009(),mainDataEntity.getPreUsercd0009(), mainDataEntity.getUsercd0009Nm()));
+		indto.setUsercd0010Nm(getViewNmValue(mainDataEntity.getUsercd0010(),mainDataEntity.getPreUsercd0010(), mainDataEntity.getUsercd0010Nm()));
+		indto.setUsercd0011Nm(getViewNmValue(mainDataEntity.getUsercd0011(),mainDataEntity.getPreUsercd0011(), mainDataEntity.getUsercd0011Nm()));
+		indto.setUsercd0012Nm(getViewNmValue(mainDataEntity.getUsercd0012(),mainDataEntity.getPreUsercd0012(), mainDataEntity.getUsercd0012Nm()));
+		indto.setUsercd0013Nm(getViewNmValue(mainDataEntity.getUsercd0013(),mainDataEntity.getPreUsercd0013(), mainDataEntity.getUsercd0013Nm()));
+		indto.setUsercd0014Nm(getViewNmValue(mainDataEntity.getUsercd0014(),mainDataEntity.getPreUsercd0014(), mainDataEntity.getUsercd0014Nm()));
+		indto.setUsercd0015Nm(getViewNmValue(mainDataEntity.getUsercd0015(),mainDataEntity.getPreUsercd0015(), mainDataEntity.getUsercd0015Nm()));
+		indto.setUsercd0016Nm(getViewNmValue(mainDataEntity.getUsercd0016(),mainDataEntity.getPreUsercd0016(), mainDataEntity.getUsercd0016Nm()));
+		indto.setUsercd0017Nm(getViewNmValue(mainDataEntity.getUsercd0017(),mainDataEntity.getPreUsercd0017(), mainDataEntity.getUsercd0017Nm()));
+		indto.setUsercd0018Nm(getViewNmValue(mainDataEntity.getUsercd0018(),mainDataEntity.getPreUsercd0018(), mainDataEntity.getUsercd0018Nm()));
+		indto.setUsercd0019Nm(getViewNmValue(mainDataEntity.getUsercd0019(),mainDataEntity.getPreUsercd0019(), mainDataEntity.getUsercd0019Nm()));
+		indto.setUsercd0020Nm(getViewNmValue(mainDataEntity.getUsercd0020(),mainDataEntity.getPreUsercd0020(), mainDataEntity.getUsercd0020Nm()));
+		indto.setUsercd0021Nm(getViewNmValue(mainDataEntity.getUsercd0021(),mainDataEntity.getPreUsercd0021(), mainDataEntity.getUsercd0021Nm()));
+		indto.setUsercd0022Nm(getViewNmValue(mainDataEntity.getUsercd0022(),mainDataEntity.getPreUsercd0022(), mainDataEntity.getUsercd0022Nm()));
+		indto.setUsercd0023Nm(getViewNmValue(mainDataEntity.getUsercd0023(),mainDataEntity.getPreUsercd0023(), mainDataEntity.getUsercd0023Nm()));
+		indto.setUsercd0024Nm(getViewNmValue(mainDataEntity.getUsercd0024(),mainDataEntity.getPreUsercd0024(), mainDataEntity.getUsercd0024Nm()));
+		indto.setUsercd0025Nm(getViewNmValue(mainDataEntity.getUsercd0025(),mainDataEntity.getPreUsercd0025(), mainDataEntity.getUsercd0025Nm()));
+		indto.setUsercd0026Nm(getViewNmValue(mainDataEntity.getUsercd0026(),mainDataEntity.getPreUsercd0026(), mainDataEntity.getUsercd0026Nm()));
+		indto.setUsercd0027Nm(getViewNmValue(mainDataEntity.getUsercd0027(),mainDataEntity.getPreUsercd0027(), mainDataEntity.getUsercd0027Nm()));
+		indto.setUsercd0028Nm(getViewNmValue(mainDataEntity.getUsercd0028(),mainDataEntity.getPreUsercd0028(), mainDataEntity.getUsercd0028Nm()));
+		indto.setUsercd0029Nm(getViewNmValue(mainDataEntity.getUsercd0029(),mainDataEntity.getPreUsercd0029(), mainDataEntity.getUsercd0029Nm()));
+		indto.setUsercd0030Nm(getViewNmValue(mainDataEntity.getUsercd0030(),mainDataEntity.getPreUsercd0030(), mainDataEntity.getUsercd0030Nm()));
+		indto.setUsercd0031Nm(getViewNmValue(mainDataEntity.getUsercd0031(),mainDataEntity.getPreUsercd0031(), mainDataEntity.getUsercd0031Nm()));
+		indto.setUsercd0032Nm(getViewNmValue(mainDataEntity.getUsercd0032(),mainDataEntity.getPreUsercd0032(), mainDataEntity.getUsercd0032Nm()));
+		indto.setUsercd0033Nm(getViewNmValue(mainDataEntity.getUsercd0033(),mainDataEntity.getPreUsercd0033(), mainDataEntity.getUsercd0033Nm()));
+		indto.setUsercd0034Nm(getViewNmValue(mainDataEntity.getUsercd0034(),mainDataEntity.getPreUsercd0034(), mainDataEntity.getUsercd0034Nm()));
+		indto.setUsercd0035Nm(getViewNmValue(mainDataEntity.getUsercd0035(),mainDataEntity.getPreUsercd0035(), mainDataEntity.getUsercd0035Nm()));
+		indto.setUsercd0036Nm(getViewNmValue(mainDataEntity.getUsercd0036(),mainDataEntity.getPreUsercd0036(), mainDataEntity.getUsercd0036Nm()));
 
 		indto.setUsercd0101(StringUtils.nvl(mainDataEntity.getUsercd0101(), ""));
 		indto.setUsercd0102(StringUtils.nvl(mainDataEntity.getUsercd0102(), ""));
@@ -1970,23 +1969,23 @@ public class NF303Service extends BaseService {
 		indto.setReward37(StringUtils.nvl(mainDataEntity.getReward37(), ""));
 		indto.setReward44(StringUtils.nvl(mainDataEntity.getReward44(), ""));
 
-		indto.setReward04Nm(getViewNmValue(mainDataEntity.getReward04(), mainDataEntity.getReward04Nm()));
-		indto.setReward05Nm(getViewNmValue(mainDataEntity.getReward05(), mainDataEntity.getReward05Nm()));
-		indto.setReward08Nm(getViewNmValue(mainDataEntity.getReward08(), mainDataEntity.getReward08Nm()));
-		indto.setReward09Nm(getViewNmValue(mainDataEntity.getReward09(), mainDataEntity.getReward09Nm()));
-		indto.setReward16Nm(getViewNmValue(mainDataEntity.getReward16(), mainDataEntity.getReward16Nm()));
-		indto.setReward17Nm(getViewNmValue(mainDataEntity.getReward17(), mainDataEntity.getReward17Nm()));
-		indto.setReward18Nm(getViewNmValue(mainDataEntity.getReward18(), mainDataEntity.getReward18Nm()));
-		indto.setReward21Nm(getViewNmValue(mainDataEntity.getReward21(), mainDataEntity.getReward21Nm()));
-		indto.setReward23Nm(getViewNmValue(mainDataEntity.getReward23(), mainDataEntity.getReward23Nm()));
-		indto.setReward25Nm(getViewNmValue(mainDataEntity.getReward25(), mainDataEntity.getReward25Nm()));
-		indto.setReward26Nm(getViewNmValue(mainDataEntity.getReward26(), mainDataEntity.getReward26Nm()));
-		indto.setReward27Nm(getViewNmValue(mainDataEntity.getReward27(), mainDataEntity.getReward27Nm()));
-		indto.setReward29Nm(getViewNmValue(mainDataEntity.getReward29(), mainDataEntity.getReward29Nm()));
-		indto.setReward35Nm(getViewNmValue(mainDataEntity.getReward35(), mainDataEntity.getReward35Nm()));
-		indto.setReward36Nm(getViewNmValue(mainDataEntity.getReward36(), mainDataEntity.getReward36Nm()));
-		indto.setReward37Nm(getViewNmValue(mainDataEntity.getReward37(), mainDataEntity.getReward37Nm()));
-		indto.setReward44Nm(getViewNmValue(mainDataEntity.getReward44(), mainDataEntity.getReward44Nm()));
+		indto.setReward04Nm(getViewNmValue(mainDataEntity.getReward04(), mainDataEntity.getPreReward04(), mainDataEntity.getReward04Nm()));
+		indto.setReward05Nm(getViewNmValue(mainDataEntity.getReward05(), mainDataEntity.getPreReward05(), mainDataEntity.getReward05Nm()));
+		indto.setReward08Nm(getViewNmValue(mainDataEntity.getReward08(), mainDataEntity.getPreReward08(), mainDataEntity.getReward08Nm()));
+		indto.setReward09Nm(getViewNmValue(mainDataEntity.getReward09(), mainDataEntity.getPreReward09(), mainDataEntity.getReward09Nm()));
+		indto.setReward16Nm(getViewNmValue(mainDataEntity.getReward16(), mainDataEntity.getPreReward16(), mainDataEntity.getReward16Nm()));
+		indto.setReward17Nm(getViewNmValue(mainDataEntity.getReward17(), mainDataEntity.getPreReward17(), mainDataEntity.getReward17Nm()));
+		indto.setReward18Nm(getViewNmValue(mainDataEntity.getReward18(), mainDataEntity.getPreReward18(), mainDataEntity.getReward18Nm()));
+		indto.setReward21Nm(getViewNmValue(mainDataEntity.getReward21(), mainDataEntity.getPreReward21(), mainDataEntity.getReward21Nm()));
+		indto.setReward23Nm(getViewNmValue(mainDataEntity.getReward23(), mainDataEntity.getPreReward23(), mainDataEntity.getReward23Nm()));
+		indto.setReward25Nm(getViewNmValue(mainDataEntity.getReward25(), mainDataEntity.getPreReward25(), mainDataEntity.getReward25Nm()));
+		indto.setReward26Nm(getViewNmValue(mainDataEntity.getReward26(), mainDataEntity.getPreReward26(), mainDataEntity.getReward26Nm()));
+		indto.setReward27Nm(getViewNmValue(mainDataEntity.getReward27(), mainDataEntity.getPreReward27(), mainDataEntity.getReward27Nm()));
+		indto.setReward29Nm(getViewNmValue(mainDataEntity.getReward29(), mainDataEntity.getPreReward29(), mainDataEntity.getReward29Nm()));
+		indto.setReward35Nm(getViewNmValue(mainDataEntity.getReward35(), mainDataEntity.getPreReward35(), mainDataEntity.getReward35Nm()));
+		indto.setReward36Nm(getViewNmValue(mainDataEntity.getReward36(), mainDataEntity.getPreReward36(), mainDataEntity.getReward36Nm()));
+		indto.setReward37Nm(getViewNmValue(mainDataEntity.getReward37(), mainDataEntity.getPreReward37(), mainDataEntity.getReward37Nm()));
+		indto.setReward44Nm(getViewNmValue(mainDataEntity.getReward44(), mainDataEntity.getPreReward44(), mainDataEntity.getReward44Nm()));
 
 		// コメント
 		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -2567,21 +2566,21 @@ public class NF303Service extends BaseService {
         	tRdmHcoReqInsData.setReqId(reqId);
         	tRdmHcoReqInsData.setInsNo(indto.getInsNo());
 
-        	tRdmHcoReqInsData.setInsKana(getUpdValue(indto.getPreInsKana(), indto.getInsKana()));
-        	tRdmHcoReqInsData.setInsAbbrName(getUpdValue(indto.getPreInsAbbrName(), indto.getInsAbbrName()));
-        	tRdmHcoReqInsData.setInsFormalName(getUpdValue(indto.getPreInsFormalName(), indto.getInsFormalName()));
-        	tRdmHcoReqInsData.setInsPcode(getUpdValue(indto.getPreInsPcode(), indto.getInsPcode()));
-        	tRdmHcoReqInsData.setAddrCodePref(getUpdValue(indto.getPreAddrCodePref(), indto.getAddrCodePref()));
-        	tRdmHcoReqInsData.setAddrCodeCity(getUpdValue(indto.getPreAddrCodeCity(), indto.getAddrCodeCity()));
-        	tRdmHcoReqInsData.setTkCityCd(getUpdValue(indto.getPreTkCityCd(), indto.getTkCityCd()));
-        	tRdmHcoReqInsData.setInsAddrDt(getUpdValue(indto.getPreInsAddrDt(), indto.getInsAddrDt()));
+        	tRdmHcoReqInsData.setInsKana(getUpdValue(indto.getInsKana()));
+        	tRdmHcoReqInsData.setInsAbbrName(getUpdValue(indto.getInsAbbrName()));
+        	tRdmHcoReqInsData.setInsFormalName(getUpdValue(indto.getInsFormalName()));
+        	tRdmHcoReqInsData.setInsPcode(getUpdValue(indto.getInsPcode()));
+        	tRdmHcoReqInsData.setAddrCodePref(getUpdValue(indto.getAddrCodePref()));
+        	tRdmHcoReqInsData.setAddrCodeCity(getUpdValue(indto.getAddrCodeCity()));
+        	tRdmHcoReqInsData.setTkCityCd(getUpdValue(indto.getTkCityCd()));
+        	tRdmHcoReqInsData.setInsAddrDt(getUpdValue(indto.getInsAddrDt()));
         	tRdmHcoReqInsData.setInsAddr(getUpdValue(indto.getPreInsAddr(), indto.getInsAddr()));
-        	tRdmHcoReqInsData.setInsAddrKana(getUpdValue(indto.getPreInsAddrKana(), indto.getInsAddrKana()));
-        	tRdmHcoReqInsData.setInsPhone1(getUpdValue(indto.getPreInsPhone1(), indto.getInsPhone1()));
-        	tRdmHcoReqInsData.setInsFax1(getUpdValue(indto.getPreInsFax1(), indto.getInsFax1()));
-        	tRdmHcoReqInsData.setInsPhone2(getUpdValue(indto.getPreInsPhone2(), indto.getInsPhone2()));
-        	tRdmHcoReqInsData.setInsFax2(getUpdValue(indto.getPreInsFax2(), indto.getInsFax2()));
-        	tRdmHcoReqInsData.setInsUrl(getUpdValue(indto.getPreInsUrl(), indto.getInsUrl()));
+        	tRdmHcoReqInsData.setInsAddrKana(getUpdValue(indto.getInsAddrKana()));
+        	tRdmHcoReqInsData.setInsPhone1(getUpdValue(indto.getInsPhone1()));
+        	tRdmHcoReqInsData.setInsFax1(getUpdValue(indto.getInsFax1()));
+        	tRdmHcoReqInsData.setInsPhone2(getUpdValue(indto.getInsPhone2()));
+        	tRdmHcoReqInsData.setInsFax2(getUpdValue(indto.getInsFax2()));
+        	tRdmHcoReqInsData.setInsUrl(getUpdValue(indto.getInsUrl()));
 
         	String preUrlYmd = indto.getPreInsUrlYmd();
         	String urlYmd = indto.getInsUrlYmd();
@@ -2589,36 +2588,36 @@ public class NF303Service extends BaseService {
         		preUrlYmd = preUrlYmd.replace("/", "");
         	}
         	if(urlYmd != null) {
-        		urlYmd = urlYmd.replace("-", "");
+        		urlYmd = urlYmd.replace("/", "");
         	}
-        	tRdmHcoReqInsData.setInsUrlYmd(getUpdValue(preUrlYmd, urlYmd));
+        	tRdmHcoReqInsData.setInsUrlYmd(getUpdValue(urlYmd));
 
         	tRdmHcoReqInsData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
         	tRdmHcoReqInsData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
         	tRdmHcoReqInsData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));
-        	tRdmHcoReqInsData.setInsOpenYear(getUpdValue(indto.getPreInsOpenYear(), indto.getInsOpenYear()));
-        	tRdmHcoReqInsData.setInsOpenMonth(getUpdValue(indto.getPreInsOpenMonth(), indto.getInsOpenMonth()));
-        	tRdmHcoReqInsData.setInsOpenDay(getUpdValue(indto.getPreInsOpenDay(), indto.getInsOpenDay()));
+        	tRdmHcoReqInsData.setInsOpenYear(getUpdValue(indto.getInsOpenYear()));
+        	tRdmHcoReqInsData.setInsOpenMonth(getUpdValue(indto.getInsOpenMonth()));
+        	tRdmHcoReqInsData.setInsOpenDay(getUpdValue(indto.getInsOpenDay()));
         	tRdmHcoReqInsData.setCapaType(getUpdValue(indto.getPreCapaType(), indto.getCapaType()));
 
         	if(knr) {
-        		tRdmHcoReqInsData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
+        		tRdmHcoReqInsData.setUltInsNo(getUpdValue(indto.getUltInsCd()));
 
-        		tRdmHcoReqInsData.setFree0001(getUpdValue(indto.getPreFree0001(), indto.getFree0001()));
-	        	tRdmHcoReqInsData.setFree0002(getUpdValue(indto.getPreFree0002(), indto.getFree0002()));
-	        	tRdmHcoReqInsData.setFree0003(getUpdValue(indto.getPreFree0003(), indto.getFree0003()));
-	        	tRdmHcoReqInsData.setFree0004(getUpdValue(indto.getPreFree0004(), indto.getFree0004()));
-	        	tRdmHcoReqInsData.setFree0005(getUpdValue(indto.getPreFree0005(), indto.getFree0005()));
-	        	tRdmHcoReqInsData.setFree0006(getUpdValue(indto.getPreFree0006(), indto.getFree0006()));
-	        	tRdmHcoReqInsData.setFree0007(getUpdValue(indto.getPreFree0007(), indto.getFree0007()));
-	        	tRdmHcoReqInsData.setFree0008(getUpdValue(indto.getPreFree0008(), indto.getFree0008()));
-	        	tRdmHcoReqInsData.setFree0009(getUpdValue(indto.getPreFree0009(), indto.getFree0009()));
-	        	tRdmHcoReqInsData.setFree0010(getUpdValue(indto.getPreFree0010(), indto.getFree0010()));
-	        	tRdmHcoReqInsData.setFree0011(getUpdValue(indto.getPreFree0001(), indto.getFree0011()));
-	        	tRdmHcoReqInsData.setFree0012(getUpdValue(indto.getPreFree0002(), indto.getFree0012()));
-	        	tRdmHcoReqInsData.setFree0013(getUpdValue(indto.getPreFree0003(), indto.getFree0013()));
-	        	tRdmHcoReqInsData.setFree0014(getUpdValue(indto.getPreFree0004(), indto.getFree0014()));
-	        	tRdmHcoReqInsData.setFree0015(getUpdValue(indto.getPreFree0005(), indto.getFree0015()));
+        		tRdmHcoReqInsData.setFree0001(getUpdValue(indto.getFree0001()));
+	        	tRdmHcoReqInsData.setFree0002(getUpdValue(indto.getFree0002()));
+	        	tRdmHcoReqInsData.setFree0003(getUpdValue(indto.getFree0003()));
+	        	tRdmHcoReqInsData.setFree0004(getUpdValue(indto.getFree0004()));
+	        	tRdmHcoReqInsData.setFree0005(getUpdValue(indto.getFree0005()));
+	        	tRdmHcoReqInsData.setFree0006(getUpdValue(indto.getFree0006()));
+	        	tRdmHcoReqInsData.setFree0007(getUpdValue(indto.getFree0007()));
+	        	tRdmHcoReqInsData.setFree0008(getUpdValue(indto.getFree0008()));
+	        	tRdmHcoReqInsData.setFree0009(getUpdValue(indto.getFree0009()));
+	        	tRdmHcoReqInsData.setFree0010(getUpdValue(indto.getFree0010()));
+	        	tRdmHcoReqInsData.setFree0011(getUpdValue(indto.getFree0011()));
+	        	tRdmHcoReqInsData.setFree0012(getUpdValue(indto.getFree0012()));
+	        	tRdmHcoReqInsData.setFree0013(getUpdValue(indto.getFree0013()));
+	        	tRdmHcoReqInsData.setFree0014(getUpdValue(indto.getFree0014()));
+	        	tRdmHcoReqInsData.setFree0015(getUpdValue(indto.getFree0015()));
 
 	        	tRdmHcoReqInsData.setWelfare02(getUpdValue(indto.getPreWelfare02(), indto.getWelfare02()));
 	        	tRdmHcoReqInsData.setWelfare08(getUpdValue(indto.getPreWelfare08(), indto.getWelfare08()));
@@ -2724,21 +2723,21 @@ public class NF303Service extends BaseService {
 	        	tRdmHcoReqInsData.setUsercd0034(getUpdValue(indto.getPreUsercd0034(), indto.getUsercd0034()));
 	        	tRdmHcoReqInsData.setUsercd0035(getUpdValue(indto.getPreUsercd0035(), indto.getUsercd0035()));
 	        	tRdmHcoReqInsData.setUsercd0036(getUpdValue(indto.getPreUsercd0036(), indto.getUsercd0036()));
-	        	tRdmHcoReqInsData.setUsercd0101(getUpdValue(indto.getPreUsercd0101(), indto.getUsercd0101()));
-	        	tRdmHcoReqInsData.setUsercd0102(getUpdValue(indto.getPreUsercd0102(), indto.getUsercd0102()));
-	        	tRdmHcoReqInsData.setUsercd0103(getUpdValue(indto.getPreUsercd0103(), indto.getUsercd0103()));
-	        	tRdmHcoReqInsData.setUsercd0104(getUpdValue(indto.getPreUsercd0104(), indto.getUsercd0104()));
-	        	tRdmHcoReqInsData.setUsercd0105(getUpdValue(indto.getPreUsercd0105(), indto.getUsercd0105()));
-	        	tRdmHcoReqInsData.setUsercd0106(getUpdValue(indto.getPreUsercd0106(), indto.getUsercd0106()));
-	        	tRdmHcoReqInsData.setUsercd0107(getUpdValue(indto.getPreUsercd0107(), indto.getUsercd0107()));
-	        	tRdmHcoReqInsData.setUsercd0108(getUpdValue(indto.getPreUsercd0108(), indto.getUsercd0108()));
-	        	tRdmHcoReqInsData.setUsercd0109(getUpdValue(indto.getPreUsercd0109(), indto.getUsercd0109()));
-	        	tRdmHcoReqInsData.setUsercd0201(getUpdValue(indto.getPreUsercd0201(), indto.getUsercd0201()));
-	        	tRdmHcoReqInsData.setUsercd0202(getUpdValue(indto.getPreUsercd0202(), indto.getUsercd0202()));
-	        	tRdmHcoReqInsData.setUsercd0203(getUpdValue(indto.getPreUsercd0203(), indto.getUsercd0203()));
-	        	tRdmHcoReqInsData.setUsercd0204(getUpdValue(indto.getPreUsercd0204(), indto.getUsercd0204()));
-	        	tRdmHcoReqInsData.setUsercd0205(getUpdValue(indto.getPreUsercd0205(), indto.getUsercd0205()));
-	        	tRdmHcoReqInsData.setUsercd0206(getUpdValue(indto.getPreUsercd0206(), indto.getUsercd0206()));
+	        	tRdmHcoReqInsData.setUsercd0101(getUpdValue(indto.getUsercd0101()));
+	        	tRdmHcoReqInsData.setUsercd0102(getUpdValue(indto.getUsercd0102()));
+	        	tRdmHcoReqInsData.setUsercd0103(getUpdValue(indto.getUsercd0103()));
+	        	tRdmHcoReqInsData.setUsercd0104(getUpdValue(indto.getUsercd0104()));
+	        	tRdmHcoReqInsData.setUsercd0105(getUpdValue(indto.getUsercd0105()));
+	        	tRdmHcoReqInsData.setUsercd0106(getUpdValue(indto.getUsercd0106()));
+	        	tRdmHcoReqInsData.setUsercd0107(getUpdValue(indto.getUsercd0107()));
+	        	tRdmHcoReqInsData.setUsercd0108(getUpdValue(indto.getUsercd0108()));
+	        	tRdmHcoReqInsData.setUsercd0109(getUpdValue(indto.getUsercd0109()));
+	        	tRdmHcoReqInsData.setUsercd0201(getUpdValue(indto.getUsercd0201()));
+	        	tRdmHcoReqInsData.setUsercd0202(getUpdValue(indto.getUsercd0202()));
+	        	tRdmHcoReqInsData.setUsercd0203(getUpdValue(indto.getUsercd0203()));
+	        	tRdmHcoReqInsData.setUsercd0204(getUpdValue(indto.getUsercd0204()));
+	        	tRdmHcoReqInsData.setUsercd0205(getUpdValue(indto.getUsercd0205()));
+	        	tRdmHcoReqInsData.setUsercd0206(getUpdValue(indto.getUsercd0206()));
 
 	        	tRdmHcoReqInsData.setReward04(getUpdValue(indto.getPreReward04(), indto.getReward04()));
 	        	tRdmHcoReqInsData.setReward05(getUpdValue(indto.getPreReward05(), indto.getReward05()));
@@ -2771,21 +2770,21 @@ public class NF303Service extends BaseService {
         	TRdmHcoReqEntity tRdmHcoReqUpdData = new TRdmHcoReqEntity("updateNF012Data");
         	tRdmHcoReqUpdData.setReqId(reqId);
 
-        	tRdmHcoReqUpdData.setInsKana(getUpdValue(indto.getPreInsKana(), indto.getInsKana()));
-        	tRdmHcoReqUpdData.setInsAbbrName(getUpdValue(indto.getPreInsAbbrName(), indto.getInsAbbrName()));
-        	tRdmHcoReqUpdData.setInsFormalName(getUpdValue(indto.getPreInsFormalName(), indto.getInsFormalName()));
-        	tRdmHcoReqUpdData.setInsPcode(getUpdValue(indto.getPreInsPcode(), indto.getInsPcode()));
-        	tRdmHcoReqUpdData.setAddrCodePref(getUpdValue(indto.getPreAddrCodePref(), indto.getAddrCodePref()));
-        	tRdmHcoReqUpdData.setAddrCodeCity(getUpdValue(indto.getPreAddrCodeCity(), indto.getAddrCodeCity()));
-        	tRdmHcoReqUpdData.setTkCityCd(getUpdValue(indto.getPreTkCityCd(), indto.getTkCityCd()));
-        	tRdmHcoReqUpdData.setInsAddrDt(getUpdValue(indto.getPreInsAddrDt(), indto.getInsAddrDt()));
+        	tRdmHcoReqUpdData.setInsKana(getUpdValue(indto.getInsKana()));
+        	tRdmHcoReqUpdData.setInsAbbrName(getUpdValue(indto.getInsAbbrName()));
+        	tRdmHcoReqUpdData.setInsFormalName(getUpdValue(indto.getInsFormalName()));
+        	tRdmHcoReqUpdData.setInsPcode(getUpdValue(indto.getInsPcode()));
+        	tRdmHcoReqUpdData.setAddrCodePref(getUpdValue(indto.getAddrCodePref()));
+        	tRdmHcoReqUpdData.setAddrCodeCity(getUpdValue(indto.getAddrCodeCity()));
+        	tRdmHcoReqUpdData.setTkCityCd(getUpdValue(indto.getTkCityCd()));
+        	tRdmHcoReqUpdData.setInsAddrDt(getUpdValue(indto.getInsAddrDt()));
         	tRdmHcoReqUpdData.setInsAddr(getUpdValue(indto.getPreInsAddr(), indto.getInsAddr()));
-        	tRdmHcoReqUpdData.setInsAddrKana(getUpdValue(indto.getPreInsAddrKana(), indto.getInsAddrKana()));
-        	tRdmHcoReqUpdData.setInsPhone1(getUpdValue(indto.getPreInsPhone1(), indto.getInsPhone1()));
-        	tRdmHcoReqUpdData.setInsFax1(getUpdValue(indto.getPreInsFax1(), indto.getInsFax1()));
-        	tRdmHcoReqUpdData.setInsPhone2(getUpdValue(indto.getPreInsPhone2(), indto.getInsPhone2()));
-        	tRdmHcoReqUpdData.setInsFax2(getUpdValue(indto.getPreInsFax2(), indto.getInsFax2()));
-        	tRdmHcoReqUpdData.setInsUrl(getUpdValue(indto.getPreInsUrl(), indto.getInsUrl()));
+        	tRdmHcoReqUpdData.setInsAddrKana(getUpdValue(indto.getInsAddrKana()));
+        	tRdmHcoReqUpdData.setInsPhone1(getUpdValue(indto.getInsPhone1()));
+        	tRdmHcoReqUpdData.setInsFax1(getUpdValue(indto.getInsFax1()));
+        	tRdmHcoReqUpdData.setInsPhone2(getUpdValue(indto.getInsPhone2()));
+        	tRdmHcoReqUpdData.setInsFax2(getUpdValue(indto.getInsFax2()));
+        	tRdmHcoReqUpdData.setInsUrl(getUpdValue(indto.getInsUrl()));
 
         	String preInsUrlYmd = indto.getPreInsUrlYmd();
         	String insUrlYmd = indto.getInsUrlYmd();
@@ -2793,38 +2792,38 @@ public class NF303Service extends BaseService {
         		preInsUrlYmd = preInsUrlYmd.replace("/", "");
         	}
         	if(insUrlYmd != null) {
-        		insUrlYmd = insUrlYmd.replace("-", "");
+        		insUrlYmd = insUrlYmd.replace("/", "");
         	}
 
-        	tRdmHcoReqUpdData.setInsUrlYmd(getUpdValue(preInsUrlYmd,insUrlYmd));
+        	tRdmHcoReqUpdData.setInsUrlYmd(getUpdValue(insUrlYmd));
 
         	tRdmHcoReqUpdData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
         	tRdmHcoReqUpdData.setWsType(getUpdValue(indto.getPreWsType(), indto.getWsType()));
         	tRdmHcoReqUpdData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
         	tRdmHcoReqUpdData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));
-        	tRdmHcoReqUpdData.setInsOpenYear(getUpdValue(indto.getPreInsOpenYear(), indto.getInsOpenYear()));
-        	tRdmHcoReqUpdData.setInsOpenMonth(getUpdValue(indto.getPreInsOpenMonth(), indto.getInsOpenMonth()));
-        	tRdmHcoReqUpdData.setInsOpenDay(getUpdValue(indto.getPreInsOpenDay(), indto.getInsOpenDay()));
+        	tRdmHcoReqUpdData.setInsOpenYear(getUpdValue(indto.getInsOpenYear()));
+        	tRdmHcoReqUpdData.setInsOpenMonth(getUpdValue(indto.getInsOpenMonth()));
+        	tRdmHcoReqUpdData.setInsOpenDay(getUpdValue(indto.getInsOpenDay()));
         	tRdmHcoReqUpdData.setCapaType(getUpdValue(indto.getPreCapaType(), indto.getCapaType()));
 
         	if(knr) {
-        		tRdmHcoReqUpdData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
+        		tRdmHcoReqUpdData.setUltInsNo(getUpdValue(indto.getUltInsCd()));
 
-        		tRdmHcoReqUpdData.setFree0001(getUpdValue(indto.getPreFree0001(), indto.getFree0001()));
-	        	tRdmHcoReqUpdData.setFree0002(getUpdValue(indto.getPreFree0002(), indto.getFree0002()));
-	        	tRdmHcoReqUpdData.setFree0003(getUpdValue(indto.getPreFree0003(), indto.getFree0003()));
-	        	tRdmHcoReqUpdData.setFree0004(getUpdValue(indto.getPreFree0004(), indto.getFree0004()));
-	        	tRdmHcoReqUpdData.setFree0005(getUpdValue(indto.getPreFree0005(), indto.getFree0005()));
-	        	tRdmHcoReqUpdData.setFree0006(getUpdValue(indto.getPreFree0006(), indto.getFree0006()));
-	        	tRdmHcoReqUpdData.setFree0007(getUpdValue(indto.getPreFree0007(), indto.getFree0007()));
-	        	tRdmHcoReqUpdData.setFree0008(getUpdValue(indto.getPreFree0008(), indto.getFree0008()));
-	        	tRdmHcoReqUpdData.setFree0009(getUpdValue(indto.getPreFree0009(), indto.getFree0009()));
-	        	tRdmHcoReqUpdData.setFree0010(getUpdValue(indto.getPreFree0010(), indto.getFree0010()));
-	        	tRdmHcoReqUpdData.setFree0011(getUpdValue(indto.getPreFree0011(), indto.getFree0011()));
-	        	tRdmHcoReqUpdData.setFree0012(getUpdValue(indto.getPreFree0012(), indto.getFree0012()));
-	        	tRdmHcoReqUpdData.setFree0013(getUpdValue(indto.getPreFree0013(), indto.getFree0013()));
-	        	tRdmHcoReqUpdData.setFree0014(getUpdValue(indto.getPreFree0014(), indto.getFree0014()));
-	        	tRdmHcoReqUpdData.setFree0015(getUpdValue(indto.getPreFree0015(), indto.getFree0015()));
+        		tRdmHcoReqUpdData.setFree0001(getUpdValue(indto.getFree0001()));
+	        	tRdmHcoReqUpdData.setFree0002(getUpdValue(indto.getFree0002()));
+	        	tRdmHcoReqUpdData.setFree0003(getUpdValue(indto.getFree0003()));
+	        	tRdmHcoReqUpdData.setFree0004(getUpdValue(indto.getFree0004()));
+	        	tRdmHcoReqUpdData.setFree0005(getUpdValue(indto.getFree0005()));
+	        	tRdmHcoReqUpdData.setFree0006(getUpdValue(indto.getFree0006()));
+	        	tRdmHcoReqUpdData.setFree0007(getUpdValue(indto.getFree0007()));
+	        	tRdmHcoReqUpdData.setFree0008(getUpdValue(indto.getFree0008()));
+	        	tRdmHcoReqUpdData.setFree0009(getUpdValue(indto.getFree0009()));
+	        	tRdmHcoReqUpdData.setFree0010(getUpdValue(indto.getFree0010()));
+	        	tRdmHcoReqUpdData.setFree0011(getUpdValue(indto.getFree0011()));
+	        	tRdmHcoReqUpdData.setFree0012(getUpdValue(indto.getFree0012()));
+	        	tRdmHcoReqUpdData.setFree0013(getUpdValue(indto.getFree0013()));
+	        	tRdmHcoReqUpdData.setFree0014(getUpdValue(indto.getFree0014()));
+	        	tRdmHcoReqUpdData.setFree0015(getUpdValue(indto.getFree0015()));
 
 	        	tRdmHcoReqUpdData.setWelfare02(getUpdValue(indto.getPreWelfare02(), indto.getWelfare02()));
 	        	tRdmHcoReqUpdData.setWelfare08(getUpdValue(indto.getPreWelfare08(), indto.getWelfare08()));
@@ -2930,21 +2929,21 @@ public class NF303Service extends BaseService {
 	        	tRdmHcoReqUpdData.setUsercd0034(getUpdValue(indto.getPreUsercd0034(), indto.getUsercd0034()));
 	        	tRdmHcoReqUpdData.setUsercd0035(getUpdValue(indto.getPreUsercd0035(), indto.getUsercd0035()));
 	        	tRdmHcoReqUpdData.setUsercd0036(getUpdValue(indto.getPreUsercd0036(), indto.getUsercd0036()));
-	        	tRdmHcoReqUpdData.setUsercd0101(getUpdValue(indto.getPreUsercd0101(), indto.getUsercd0101()));
-	        	tRdmHcoReqUpdData.setUsercd0102(getUpdValue(indto.getPreUsercd0102(), indto.getUsercd0102()));
-	        	tRdmHcoReqUpdData.setUsercd0103(getUpdValue(indto.getPreUsercd0103(), indto.getUsercd0103()));
-	        	tRdmHcoReqUpdData.setUsercd0104(getUpdValue(indto.getPreUsercd0104(), indto.getUsercd0104()));
-	        	tRdmHcoReqUpdData.setUsercd0105(getUpdValue(indto.getPreUsercd0105(), indto.getUsercd0105()));
-	        	tRdmHcoReqUpdData.setUsercd0106(getUpdValue(indto.getPreUsercd0106(), indto.getUsercd0106()));
-	        	tRdmHcoReqUpdData.setUsercd0107(getUpdValue(indto.getPreUsercd0107(), indto.getUsercd0107()));
-	        	tRdmHcoReqUpdData.setUsercd0108(getUpdValue(indto.getPreUsercd0108(), indto.getUsercd0108()));
-	        	tRdmHcoReqUpdData.setUsercd0109(getUpdValue(indto.getPreUsercd0109(), indto.getUsercd0109()));
-	        	tRdmHcoReqUpdData.setUsercd0201(getUpdValue(indto.getPreUsercd0201(), indto.getUsercd0201()));
-	        	tRdmHcoReqUpdData.setUsercd0202(getUpdValue(indto.getPreUsercd0202(), indto.getUsercd0202()));
-	        	tRdmHcoReqUpdData.setUsercd0203(getUpdValue(indto.getPreUsercd0203(), indto.getUsercd0203()));
-	        	tRdmHcoReqUpdData.setUsercd0204(getUpdValue(indto.getPreUsercd0204(), indto.getUsercd0204()));
-	        	tRdmHcoReqUpdData.setUsercd0205(getUpdValue(indto.getPreUsercd0205(), indto.getUsercd0205()));
-	        	tRdmHcoReqUpdData.setUsercd0206(getUpdValue(indto.getPreUsercd0206(), indto.getUsercd0206()));
+	        	tRdmHcoReqUpdData.setUsercd0101(getUpdValue(indto.getUsercd0101()));
+	        	tRdmHcoReqUpdData.setUsercd0102(getUpdValue(indto.getUsercd0102()));
+	        	tRdmHcoReqUpdData.setUsercd0103(getUpdValue(indto.getUsercd0103()));
+	        	tRdmHcoReqUpdData.setUsercd0104(getUpdValue(indto.getUsercd0104()));
+	        	tRdmHcoReqUpdData.setUsercd0105(getUpdValue(indto.getUsercd0105()));
+	        	tRdmHcoReqUpdData.setUsercd0106(getUpdValue(indto.getUsercd0106()));
+	        	tRdmHcoReqUpdData.setUsercd0107(getUpdValue(indto.getUsercd0107()));
+	        	tRdmHcoReqUpdData.setUsercd0108(getUpdValue(indto.getUsercd0108()));
+	        	tRdmHcoReqUpdData.setUsercd0109(getUpdValue(indto.getUsercd0109()));
+	        	tRdmHcoReqUpdData.setUsercd0201(getUpdValue(indto.getUsercd0201()));
+	        	tRdmHcoReqUpdData.setUsercd0202(getUpdValue(indto.getUsercd0202()));
+	        	tRdmHcoReqUpdData.setUsercd0203(getUpdValue(indto.getUsercd0203()));
+	        	tRdmHcoReqUpdData.setUsercd0204(getUpdValue(indto.getUsercd0204()));
+	        	tRdmHcoReqUpdData.setUsercd0205(getUpdValue(indto.getUsercd0205()));
+	        	tRdmHcoReqUpdData.setUsercd0206(getUpdValue(indto.getUsercd0206()));
 
 	        	tRdmHcoReqUpdData.setReward04(getUpdValue(indto.getPreReward04(), indto.getReward04()));
 	        	tRdmHcoReqUpdData.setReward05(getUpdValue(indto.getPreReward05(), indto.getReward05()));
@@ -3540,16 +3539,16 @@ public class NF303Service extends BaseService {
 			indto.setPreCapaTypeNm("--なし--");
 		}
 
-		indto.setInsAbbrName(getViewValue(mainDataEntity.getInsAbbrName()));
-		indto.setInsKana(getViewValue(mainDataEntity.getInsKana()));
-		indto.setInsFormalName(getViewValue(mainDataEntity.getInsFormalName()));
+		indto.setInsAbbrName(getViewValue(mainDataEntity.getPreInsAbbrName(), mainDataEntity.getInsAbbrName()));
+		indto.setInsKana(getViewValue(mainDataEntity.getPreInsKana(), mainDataEntity.getInsKana()));
+		indto.setInsFormalName(getViewValue(mainDataEntity.getPreInsFormalName(), mainDataEntity.getInsFormalName()));
 		indto.setTradeType(StringUtils.nvl(mainDataEntity.getTradeType(), ""));
 
-		indto.setTradeTypeNm(getViewValue(mainDataEntity.getTradeType(),mainDataEntity.getTradeTypeNm()));
+		indto.setTradeTypeNm(getViewValue(mainDataEntity.getTradeType(),mainDataEntity.getPreTradeType(),mainDataEntity.getTradeTypeNm()));
 
-		indto.setInsOpenYear(getViewValue(mainDataEntity.getInsOpenYear()));
-		indto.setInsOpenMonth(getViewValue(mainDataEntity.getInsOpenMonth()));
-		indto.setInsOpenDay(getViewValue(mainDataEntity.getInsOpenDay()));
+		indto.setInsOpenYear(getViewValue(mainDataEntity.getPreInsOpenYear(), mainDataEntity.getInsOpenYear()));
+		indto.setInsOpenMonth(getViewValue(mainDataEntity.getPreInsOpenMonth(), mainDataEntity.getInsOpenMonth()));
+		indto.setInsOpenDay(getViewValue(mainDataEntity.getPreInsOpenDay(), mainDataEntity.getInsOpenDay()));
 		indto.setPharmType(StringUtils.nvl(mainDataEntity.getPharmType(), ""));
 		indto.setPharmTypeNm(StringUtils.nvl(mainDataEntity.getPharmTypeNm(), ""));
 		indto.setInsRank(StringUtils.nvl(mainDataEntity.getInsRank(), ""));
@@ -3559,21 +3558,21 @@ public class NF303Service extends BaseService {
 		indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
 		indto.setManageNm(StringUtils.nvl(mainDataEntity.getManageNm(), ""));
 		indto.setWsType(StringUtils.nvl(mainDataEntity.getWsType(), ""));
-		indto.setWsTypeNm(getViewValue(mainDataEntity.getWsType(),mainDataEntity.getWsTypeNm()));
+		indto.setWsTypeNm(getViewValue(mainDataEntity.getWsType(),mainDataEntity.getPreWsType(),mainDataEntity.getWsTypeNm()));
 		indto.setBasketPurchase(StringUtils.nvl(mainDataEntity.getBasketPurchase(), ""));
-		indto.setBasketPurchaseNm(getViewNmValue(mainDataEntity.getBasketPurchase(),mainDataEntity.getBasketPurchaseNm()));
+		indto.setBasketPurchaseNm(getViewNmValue(mainDataEntity.getBasketPurchase(),mainDataEntity.getPreBasketPurchase(),mainDataEntity.getBasketPurchaseNm()));
 		indto.setUnivSubdiv(StringUtils.nvl(mainDataEntity.getUnivSubdiv(), ""));
-		indto.setUnivSubdivNm(getViewValue(mainDataEntity.getUnivSubdiv(),mainDataEntity.getUnivSubdivNm()));
+		indto.setUnivSubdivNm(getViewValue(mainDataEntity.getUnivSubdiv(),mainDataEntity.getPreUnivSubdiv(),mainDataEntity.getUnivSubdivNm()));
 		indto.setCapaType(StringUtils.nvl(mainDataEntity.getCapaType(), ""));
-		indto.setCapaTypeNm(getViewNmValue(mainDataEntity.getCapaType(),mainDataEntity.getCapaTypeNm()));
+		indto.setCapaTypeNm(getViewNmValue(mainDataEntity.getCapaType(),mainDataEntity.getPreCapaType(),mainDataEntity.getCapaTypeNm()));
 
 		// ULT施設情報
-		indto.setUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
-		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
-		indto.setShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
-		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
-		indto.setShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
-		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
+		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getPreUltInsCd(), ""));
+		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getPreShisetsuNmRyaku(), ""));
+		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getPreShisetsuNm(), ""));
+		indto.setUltInsCd(getViewValue(mainDataEntity.getPreUltInsCd(), mainDataEntity.getUltInsCd()));
+		indto.setShisetsuNmRyaku(getViewValue(mainDataEntity.getPreShisetsuNmRyaku(), mainDataEntity.getShisetsuNmRyaku()));
+		indto.setShisetsuNm(getViewValue(mainDataEntity.getPreShisetsuNm(), mainDataEntity.getShisetsuNm()));
 
 		// 病床数
 		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));
@@ -3631,22 +3630,22 @@ public class NF303Service extends BaseService {
 			indto.setPreInsUrlYmd("");
 		}
 
-		indto.setInsPcode(getViewValue(mainDataEntity.getInsPcode()));
-		indto.setAddrCodePref(getViewValue(mainDataEntity.getAddrCodePref()));
-		indto.setAddrCodePrefName(getViewValue(mainDataEntity.getAddrCodePrefName()));
-		indto.setAddrCodeCity(getViewValue(mainDataEntity.getAddrCodeCity()));
-		indto.setAddrCodeCityName(getViewValue(mainDataEntity.getAddrCodeCityName()));
-		indto.setInsAddrDt(getViewValue(mainDataEntity.getInsAddrDt()));
-		indto.setTkCityCd(getViewValue(mainDataEntity.getTkCityCd()));
-		indto.setTkCityName(getViewValue(mainDataEntity.getTkCityName()));
-		indto.setInsPhone1(getViewValue(mainDataEntity.getInsPhone1()));
-		indto.setInsPhone2(getViewValue(mainDataEntity.getInsPhone2()));
-		indto.setInsFax1(getViewValue(mainDataEntity.getInsFax1()));
-		indto.setInsFax2(getViewValue(mainDataEntity.getInsFax2()));
-		indto.setInsUrl(getViewValue(mainDataEntity.getInsUrl()));
+		indto.setInsPcode(getViewValue(mainDataEntity.getPreInsPcode(), mainDataEntity.getInsPcode()));
+		indto.setAddrCodePref(getViewValue(mainDataEntity.getPreAddrCodePref(), mainDataEntity.getAddrCodePref()));
+		indto.setAddrCodePrefName(getViewValue(mainDataEntity.getPreAddrCodePrefName(), mainDataEntity.getAddrCodePrefName()));
+		indto.setAddrCodeCity(getViewValue(mainDataEntity.getPreAddrCodeCity(), mainDataEntity.getAddrCodeCity()));
+		indto.setAddrCodeCityName(getViewValue(mainDataEntity.getPreAddrCodeCityName(), mainDataEntity.getAddrCodeCityName()));
+		indto.setInsAddrDt(getViewValue(mainDataEntity.getPreInsAddrDt(), mainDataEntity.getInsAddrDt()));
+		indto.setTkCityCd(getViewValue(mainDataEntity.getPreTkCityCd(), mainDataEntity.getTkCityCd()));
+		indto.setTkCityName(getViewValue(mainDataEntity.getPreTkCityName(), mainDataEntity.getTkCityName()));
+		indto.setInsPhone1(getViewValue(mainDataEntity.getPreInsPhone1(), mainDataEntity.getInsPhone1()));
+		indto.setInsPhone2(getViewValue(mainDataEntity.getPreInsPhone2(), mainDataEntity.getInsPhone2()));
+		indto.setInsFax1(getViewValue(mainDataEntity.getPreInsFax1(), mainDataEntity.getInsFax1()));
+		indto.setInsFax2(getViewValue(mainDataEntity.getPreInsFax2(), mainDataEntity.getInsFax2()));
+		indto.setInsUrl(getViewValue(mainDataEntity.getPreInsUrl(), mainDataEntity.getInsUrl()));
 
 		// ホームページアドレス更新日を"yyyy/MM/dd"に変換
-		String urlYmd = getViewValue(mainDataEntity.getInsUrlYmd());
+		String urlYmd = getViewValue(mainDataEntity.getPreInsUrlYmd(), mainDataEntity.getInsUrlYmd());
 		if(urlYmd != null && urlYmd.length() == 8) {
 			StringBuilder sbUrlYmd = new StringBuilder();
 			sbUrlYmd.append(mainDataEntity.getInsUrlYmd().substring(0,4));
@@ -3678,21 +3677,21 @@ public class NF303Service extends BaseService {
 		indto.setPreFree0013(StringUtils.nvl(mainDataEntity.getPreFree0013(), ""));
 		indto.setPreFree0014(StringUtils.nvl(mainDataEntity.getPreFree0014(), ""));
 		indto.setPreFree0015(StringUtils.nvl(mainDataEntity.getPreFree0015(), ""));
-		indto.setFree0001(getViewValue(mainDataEntity.getFree0001()));
-		indto.setFree0002(getViewValue(mainDataEntity.getFree0002()));
-		indto.setFree0003(getViewValue(mainDataEntity.getFree0003()));
-		indto.setFree0004(getViewValue(mainDataEntity.getFree0004()));
-		indto.setFree0005(getViewValue(mainDataEntity.getFree0005()));
-		indto.setFree0006(getViewValue(mainDataEntity.getFree0006()));
-		indto.setFree0007(getViewValue(mainDataEntity.getFree0007()));
-		indto.setFree0008(getViewValue(mainDataEntity.getFree0008()));
-		indto.setFree0009(getViewValue(mainDataEntity.getFree0009()));
-		indto.setFree0010(getViewValue(mainDataEntity.getFree0010()));
-		indto.setFree0011(getViewValue(mainDataEntity.getFree0011()));
-		indto.setFree0012(getViewValue(mainDataEntity.getFree0012()));
-		indto.setFree0013(getViewValue(mainDataEntity.getFree0013()));
-		indto.setFree0014(getViewValue(mainDataEntity.getFree0014()));
-		indto.setFree0015(getViewValue(mainDataEntity.getFree0015()));
+		indto.setFree0001(getViewValue(mainDataEntity.getPreFree0001(), mainDataEntity.getFree0001()));
+		indto.setFree0002(getViewValue(mainDataEntity.getPreFree0002(), mainDataEntity.getFree0002()));
+		indto.setFree0003(getViewValue(mainDataEntity.getPreFree0003(), mainDataEntity.getFree0003()));
+		indto.setFree0004(getViewValue(mainDataEntity.getPreFree0004(), mainDataEntity.getFree0004()));
+		indto.setFree0005(getViewValue(mainDataEntity.getPreFree0005(), mainDataEntity.getFree0005()));
+		indto.setFree0006(getViewValue(mainDataEntity.getPreFree0006(), mainDataEntity.getFree0006()));
+		indto.setFree0007(getViewValue(mainDataEntity.getPreFree0007(), mainDataEntity.getFree0007()));
+		indto.setFree0008(getViewValue(mainDataEntity.getPreFree0008(), mainDataEntity.getFree0008()));
+		indto.setFree0009(getViewValue(mainDataEntity.getPreFree0009(), mainDataEntity.getFree0009()));
+		indto.setFree0010(getViewValue(mainDataEntity.getPreFree0010(), mainDataEntity.getFree0010()));
+		indto.setFree0011(getViewValue(mainDataEntity.getPreFree0011(), mainDataEntity.getFree0011()));
+		indto.setFree0012(getViewValue(mainDataEntity.getPreFree0012(), mainDataEntity.getFree0012()));
+		indto.setFree0013(getViewValue(mainDataEntity.getPreFree0013(), mainDataEntity.getFree0013()));
+		indto.setFree0014(getViewValue(mainDataEntity.getPreFree0014(), mainDataEntity.getFree0014()));
+		indto.setFree0015(getViewValue(mainDataEntity.getPreFree0015(), mainDataEntity.getFree0015()));
 
 		// 老人福祉法関連分類情報
 		indto.setPreWelfare02(StringUtils.nvl(mainDataEntity.getPreWelfare02(), ""));
@@ -3711,8 +3710,8 @@ public class NF303Service extends BaseService {
 
 		indto.setWelfare02(StringUtils.nvl(mainDataEntity.getWelfare02(), ""));
 		indto.setWelfare08(StringUtils.nvl(mainDataEntity.getWelfare08(), ""));
-		indto.setWelfare02Nm(getViewNmValue(mainDataEntity.getWelfare02(), mainDataEntity.getWelfare02Nm()));
-		indto.setWelfare08Nm(getViewNmValue(mainDataEntity.getWelfare08(), mainDataEntity.getWelfare08Nm()));
+		indto.setWelfare02Nm(getViewNmValue(mainDataEntity.getWelfare02(), mainDataEntity.getPreWelfare02(), mainDataEntity.getWelfare02Nm()));
+		indto.setWelfare08Nm(getViewNmValue(mainDataEntity.getWelfare08(), mainDataEntity.getPreWelfare08(), mainDataEntity.getWelfare08Nm()));
 
 		// 実績把握区分情報
 		indto.setPreResult01(StringUtils.nvl(mainDataEntity.getPreResult01(), ""));
@@ -3970,42 +3969,42 @@ public class NF303Service extends BaseService {
 		indto.setResult35(StringUtils.nvl(mainDataEntity.getResult35(), ""));
 		indto.setResult36(StringUtils.nvl(mainDataEntity.getResult36(), ""));
 
-		indto.setResult01Nm(getViewNmValue(mainDataEntity.getResult01(), mainDataEntity.getResult01Nm()));
-		indto.setResult02Nm(getViewNmValue(mainDataEntity.getResult02(), mainDataEntity.getResult02Nm()));
-		indto.setResult03Nm(getViewNmValue(mainDataEntity.getResult03(), mainDataEntity.getResult03Nm()));
-		indto.setResult04Nm(getViewNmValue(mainDataEntity.getResult04(), mainDataEntity.getResult04Nm()));
-		indto.setResult05Nm(getViewNmValue(mainDataEntity.getResult05(), mainDataEntity.getResult05Nm()));
-		indto.setResult06Nm(getViewNmValue(mainDataEntity.getResult06(), mainDataEntity.getResult06Nm()));
-		indto.setResult07Nm(getViewNmValue(mainDataEntity.getResult07(), mainDataEntity.getResult07Nm()));
-		indto.setResult08Nm(getViewNmValue(mainDataEntity.getResult08(), mainDataEntity.getResult08Nm()));
-		indto.setResult09Nm(getViewNmValue(mainDataEntity.getResult09(), mainDataEntity.getResult09Nm()));
-		indto.setResult10Nm(getViewNmValue(mainDataEntity.getResult10(), mainDataEntity.getResult10Nm()));
-		indto.setResult11Nm(getViewNmValue(mainDataEntity.getResult11(), mainDataEntity.getResult11Nm()));
-		indto.setResult12Nm(getViewNmValue(mainDataEntity.getResult12(), mainDataEntity.getResult12Nm()));
-		indto.setResult13Nm(getViewNmValue(mainDataEntity.getResult13(), mainDataEntity.getResult13Nm()));
-		indto.setResult14Nm(getViewNmValue(mainDataEntity.getResult14(), mainDataEntity.getResult14Nm()));
-		indto.setResult15Nm(getViewNmValue(mainDataEntity.getResult15(), mainDataEntity.getResult15Nm()));
-		indto.setResult16Nm(getViewNmValue(mainDataEntity.getResult16(), mainDataEntity.getResult16Nm()));
-		indto.setResult17Nm(getViewNmValue(mainDataEntity.getResult17(), mainDataEntity.getResult17Nm()));
-		indto.setResult18Nm(getViewNmValue(mainDataEntity.getResult18(), mainDataEntity.getResult18Nm()));
-		indto.setResult19Nm(getViewNmValue(mainDataEntity.getResult19(), mainDataEntity.getResult19Nm()));
-		indto.setResult20Nm(getViewNmValue(mainDataEntity.getResult20(), mainDataEntity.getResult20Nm()));
-		indto.setResult21Nm(getViewNmValue(mainDataEntity.getResult21(), mainDataEntity.getResult21Nm()));
-		indto.setResult22Nm(getViewNmValue(mainDataEntity.getResult22(), mainDataEntity.getResult22Nm()));
-		indto.setResult23Nm(getViewNmValue(mainDataEntity.getResult23(), mainDataEntity.getResult23Nm()));
-		indto.setResult24Nm(getViewNmValue(mainDataEntity.getResult24(), mainDataEntity.getResult24Nm()));
-		indto.setResult25Nm(getViewNmValue(mainDataEntity.getResult25(), mainDataEntity.getResult25Nm()));
-		indto.setResult26Nm(getViewNmValue(mainDataEntity.getResult26(), mainDataEntity.getResult26Nm()));
-		indto.setResult27Nm(getViewNmValue(mainDataEntity.getResult27(), mainDataEntity.getResult27Nm()));
-		indto.setResult28Nm(getViewNmValue(mainDataEntity.getResult28(), mainDataEntity.getResult28Nm()));
-		indto.setResult29Nm(getViewNmValue(mainDataEntity.getResult29(), mainDataEntity.getResult29Nm()));
-		indto.setResult30Nm(getViewNmValue(mainDataEntity.getResult30(), mainDataEntity.getResult30Nm()));
-		indto.setResult31Nm(getViewNmValue(mainDataEntity.getResult31(), mainDataEntity.getResult31Nm()));
-		indto.setResult32Nm(getViewNmValue(mainDataEntity.getResult32(), mainDataEntity.getResult32Nm()));
-		indto.setResult33Nm(getViewNmValue(mainDataEntity.getResult33(), mainDataEntity.getResult33Nm()));
-		indto.setResult34Nm(getViewNmValue(mainDataEntity.getResult34(), mainDataEntity.getResult34Nm()));
-		indto.setResult35Nm(getViewNmValue(mainDataEntity.getResult35(), mainDataEntity.getResult35Nm()));
-		indto.setResult36Nm(getViewNmValue(mainDataEntity.getResult36(), mainDataEntity.getResult36Nm()));
+		indto.setResult01Nm(getViewNmValue(mainDataEntity.getResult01(), mainDataEntity.getPreResult01(), mainDataEntity.getResult01Nm()));
+		indto.setResult02Nm(getViewNmValue(mainDataEntity.getResult02(), mainDataEntity.getPreResult02(), mainDataEntity.getResult02Nm()));
+		indto.setResult03Nm(getViewNmValue(mainDataEntity.getResult03(), mainDataEntity.getPreResult03(), mainDataEntity.getResult03Nm()));
+		indto.setResult04Nm(getViewNmValue(mainDataEntity.getResult04(), mainDataEntity.getPreResult04(), mainDataEntity.getResult04Nm()));
+		indto.setResult05Nm(getViewNmValue(mainDataEntity.getResult05(), mainDataEntity.getPreResult05(), mainDataEntity.getResult05Nm()));
+		indto.setResult06Nm(getViewNmValue(mainDataEntity.getResult06(), mainDataEntity.getPreResult06(), mainDataEntity.getResult06Nm()));
+		indto.setResult07Nm(getViewNmValue(mainDataEntity.getResult07(), mainDataEntity.getPreResult07(), mainDataEntity.getResult07Nm()));
+		indto.setResult08Nm(getViewNmValue(mainDataEntity.getResult08(), mainDataEntity.getPreResult08(), mainDataEntity.getResult08Nm()));
+		indto.setResult09Nm(getViewNmValue(mainDataEntity.getResult09(), mainDataEntity.getPreResult09(), mainDataEntity.getResult09Nm()));
+		indto.setResult10Nm(getViewNmValue(mainDataEntity.getResult10(), mainDataEntity.getPreResult10(), mainDataEntity.getResult10Nm()));
+		indto.setResult11Nm(getViewNmValue(mainDataEntity.getResult11(), mainDataEntity.getPreResult11(), mainDataEntity.getResult11Nm()));
+		indto.setResult12Nm(getViewNmValue(mainDataEntity.getResult12(), mainDataEntity.getPreResult12(), mainDataEntity.getResult12Nm()));
+		indto.setResult13Nm(getViewNmValue(mainDataEntity.getResult13(), mainDataEntity.getPreResult13(), mainDataEntity.getResult13Nm()));
+		indto.setResult14Nm(getViewNmValue(mainDataEntity.getResult14(), mainDataEntity.getPreResult14(), mainDataEntity.getResult14Nm()));
+		indto.setResult15Nm(getViewNmValue(mainDataEntity.getResult15(), mainDataEntity.getPreResult15(), mainDataEntity.getResult15Nm()));
+		indto.setResult16Nm(getViewNmValue(mainDataEntity.getResult16(), mainDataEntity.getPreResult16(), mainDataEntity.getResult16Nm()));
+		indto.setResult17Nm(getViewNmValue(mainDataEntity.getResult17(), mainDataEntity.getPreResult17(), mainDataEntity.getResult17Nm()));
+		indto.setResult18Nm(getViewNmValue(mainDataEntity.getResult18(), mainDataEntity.getPreResult18(), mainDataEntity.getResult18Nm()));
+		indto.setResult19Nm(getViewNmValue(mainDataEntity.getResult19(), mainDataEntity.getPreResult19(), mainDataEntity.getResult19Nm()));
+		indto.setResult20Nm(getViewNmValue(mainDataEntity.getResult20(), mainDataEntity.getPreResult20(), mainDataEntity.getResult20Nm()));
+		indto.setResult21Nm(getViewNmValue(mainDataEntity.getResult21(), mainDataEntity.getPreResult21(), mainDataEntity.getResult21Nm()));
+		indto.setResult22Nm(getViewNmValue(mainDataEntity.getResult22(), mainDataEntity.getPreResult22(), mainDataEntity.getResult22Nm()));
+		indto.setResult23Nm(getViewNmValue(mainDataEntity.getResult23(), mainDataEntity.getPreResult23(), mainDataEntity.getResult23Nm()));
+		indto.setResult24Nm(getViewNmValue(mainDataEntity.getResult24(), mainDataEntity.getPreResult24(), mainDataEntity.getResult24Nm()));
+		indto.setResult25Nm(getViewNmValue(mainDataEntity.getResult25(), mainDataEntity.getPreResult25(), mainDataEntity.getResult25Nm()));
+		indto.setResult26Nm(getViewNmValue(mainDataEntity.getResult26(), mainDataEntity.getPreResult26(), mainDataEntity.getResult26Nm()));
+		indto.setResult27Nm(getViewNmValue(mainDataEntity.getResult27(), mainDataEntity.getPreResult27(), mainDataEntity.getResult27Nm()));
+		indto.setResult28Nm(getViewNmValue(mainDataEntity.getResult28(), mainDataEntity.getPreResult28(), mainDataEntity.getResult28Nm()));
+		indto.setResult29Nm(getViewNmValue(mainDataEntity.getResult29(), mainDataEntity.getPreResult29(), mainDataEntity.getResult29Nm()));
+		indto.setResult30Nm(getViewNmValue(mainDataEntity.getResult30(), mainDataEntity.getPreResult30(), mainDataEntity.getResult30Nm()));
+		indto.setResult31Nm(getViewNmValue(mainDataEntity.getResult31(), mainDataEntity.getPreResult31(), mainDataEntity.getResult31Nm()));
+		indto.setResult32Nm(getViewNmValue(mainDataEntity.getResult32(), mainDataEntity.getPreResult32(), mainDataEntity.getResult32Nm()));
+		indto.setResult33Nm(getViewNmValue(mainDataEntity.getResult33(), mainDataEntity.getPreResult33(), mainDataEntity.getResult33Nm()));
+		indto.setResult34Nm(getViewNmValue(mainDataEntity.getResult34(), mainDataEntity.getPreResult34(), mainDataEntity.getResult34Nm()));
+		indto.setResult35Nm(getViewNmValue(mainDataEntity.getResult35(), mainDataEntity.getPreResult35(), mainDataEntity.getResult35Nm()));
+		indto.setResult36Nm(getViewNmValue(mainDataEntity.getResult36(), mainDataEntity.getPreResult36(), mainDataEntity.getResult36Nm()));
 
 
 		// 病院設備情報
@@ -4047,11 +4046,11 @@ public class NF303Service extends BaseService {
 		indto.setEquip07(StringUtils.nvl(mainDataEntity.getEquip07(), ""));
 		indto.setEquip09(StringUtils.nvl(mainDataEntity.getEquip09(), ""));
 
-		indto.setEquip01Nm(getViewNmValue(mainDataEntity.getEquip01(), mainDataEntity.getEquip01Nm()));
-		indto.setEquip02Nm(getViewNmValue(mainDataEntity.getEquip02(), mainDataEntity.getEquip02Nm()));
-		indto.setEquip03Nm(getViewNmValue(mainDataEntity.getEquip03(), mainDataEntity.getEquip03Nm()));
-		indto.setEquip07Nm(getViewNmValue(mainDataEntity.getEquip07(), mainDataEntity.getEquip07Nm()));
-		indto.setEquip09Nm(getViewNmValue(mainDataEntity.getEquip09(), mainDataEntity.getEquip09Nm()));
+		indto.setEquip01Nm(getViewNmValue(mainDataEntity.getEquip01(), mainDataEntity.getPreEquip01(), mainDataEntity.getEquip01Nm()));
+		indto.setEquip02Nm(getViewNmValue(mainDataEntity.getEquip02(), mainDataEntity.getPreEquip02(), mainDataEntity.getEquip02Nm()));
+		indto.setEquip03Nm(getViewNmValue(mainDataEntity.getEquip03(), mainDataEntity.getPreEquip03(), mainDataEntity.getEquip03Nm()));
+		indto.setEquip07Nm(getViewNmValue(mainDataEntity.getEquip07(), mainDataEntity.getPreEquip07(), mainDataEntity.getEquip07Nm()));
+		indto.setEquip09Nm(getViewNmValue(mainDataEntity.getEquip09(), mainDataEntity.getPreEquip09(), mainDataEntity.getEquip09Nm()));
 
 		// 市場規模情報
 		indto.setPreMarket01(StringUtils.nvl(mainDataEntity.getPreMarket01(), ""));
@@ -4106,13 +4105,13 @@ public class NF303Service extends BaseService {
 		indto.setMarket07(StringUtils.nvl(mainDataEntity.getMarket07(), ""));
 		indto.setMarket09(StringUtils.nvl(mainDataEntity.getMarket09(), ""));
 
-		indto.setMarket01Nm(getViewNmValue(mainDataEntity.getMarket01(), mainDataEntity.getMarket01Nm()));
-		indto.setMarket02Nm(getViewNmValue(mainDataEntity.getMarket02(), mainDataEntity.getMarket02Nm()));
-		indto.setMarket03Nm(getViewNmValue(mainDataEntity.getMarket03(), mainDataEntity.getMarket03Nm()));
-		indto.setMarket04Nm(getViewNmValue(mainDataEntity.getMarket04(), mainDataEntity.getMarket04Nm()));
-		indto.setMarket06Nm(getViewNmValue(mainDataEntity.getMarket06(), mainDataEntity.getMarket06Nm()));
-		indto.setMarket07Nm(getViewNmValue(mainDataEntity.getMarket07(), mainDataEntity.getMarket07Nm()));
-		indto.setMarket09Nm(getViewNmValue(mainDataEntity.getMarket09(), mainDataEntity.getMarket09Nm()));
+		indto.setMarket01Nm(getViewNmValue(mainDataEntity.getMarket01(), mainDataEntity.getPreMarket01(), mainDataEntity.getMarket01Nm()));
+		indto.setMarket02Nm(getViewNmValue(mainDataEntity.getMarket02(), mainDataEntity.getPreMarket02(), mainDataEntity.getMarket02Nm()));
+		indto.setMarket03Nm(getViewNmValue(mainDataEntity.getMarket03(), mainDataEntity.getPreMarket03(), mainDataEntity.getMarket03Nm()));
+		indto.setMarket04Nm(getViewNmValue(mainDataEntity.getMarket04(), mainDataEntity.getPreMarket04(), mainDataEntity.getMarket04Nm()));
+		indto.setMarket06Nm(getViewNmValue(mainDataEntity.getMarket06(), mainDataEntity.getPreMarket06(), mainDataEntity.getMarket06Nm()));
+		indto.setMarket07Nm(getViewNmValue(mainDataEntity.getMarket07(), mainDataEntity.getPreMarket07(), mainDataEntity.getMarket07Nm()));
+		indto.setMarket09Nm(getViewNmValue(mainDataEntity.getMarket09(), mainDataEntity.getPreMarket09(), mainDataEntity.getMarket09Nm()));
 
 		// 医療法関連分類情報
 		indto.setPreMedical12(StringUtils.nvl(mainDataEntity.getPreMedical12(), ""));
@@ -4125,7 +4124,7 @@ public class NF303Service extends BaseService {
 
 		indto.setMedical12(StringUtils.nvl(mainDataEntity.getMedical12(), ""));
 
-		indto.setMedical12Nm(getViewNmValue(mainDataEntity.getMedical12(), mainDataEntity.getMedical12Nm()));
+		indto.setMedical12Nm(getViewNmValue(mainDataEntity.getMedical12(), mainDataEntity.getPreMedical12(), mainDataEntity.getMedical12Nm()));
 
 		// 特別な機能情報
 		indto.setPreSpfunc01(StringUtils.nvl(mainDataEntity.getPreSpfunc01(), ""));
@@ -4152,9 +4151,9 @@ public class NF303Service extends BaseService {
 		indto.setSpfunc03(StringUtils.nvl(mainDataEntity.getSpfunc03(), ""));
 		indto.setSpfunc04(StringUtils.nvl(mainDataEntity.getSpfunc04(), ""));
 
-		indto.setSpfunc01Nm(getViewNmValue(mainDataEntity.getSpfunc01(), mainDataEntity.getSpfunc01Nm()));
-		indto.setSpfunc03Nm(getViewNmValue(mainDataEntity.getSpfunc03(), mainDataEntity.getSpfunc03Nm()));
-		indto.setSpfunc04Nm(getViewNmValue(mainDataEntity.getSpfunc04(), mainDataEntity.getSpfunc04Nm()));
+		indto.setSpfunc01Nm(getViewNmValue(mainDataEntity.getSpfunc01(), mainDataEntity.getPreSpfunc01(), mainDataEntity.getSpfunc01Nm()));
+		indto.setSpfunc03Nm(getViewNmValue(mainDataEntity.getSpfunc03(), mainDataEntity.getPreSpfunc03(), mainDataEntity.getSpfunc03Nm()));
+		indto.setSpfunc04Nm(getViewNmValue(mainDataEntity.getSpfunc04(), mainDataEntity.getPreSpfunc04(), mainDataEntity.getSpfunc04Nm()));
 
 		// 医療連携関連情報
 		indto.setPreTieup10(StringUtils.nvl(mainDataEntity.getPreTieup10(), ""));
@@ -4181,9 +4180,9 @@ public class NF303Service extends BaseService {
 		indto.setTieup11(StringUtils.nvl(mainDataEntity.getTieup11(), ""));
 		indto.setTieup12(StringUtils.nvl(mainDataEntity.getTieup12(), ""));
 
-		indto.setTieup10Nm(getViewNmValue(mainDataEntity.getTieup10(), mainDataEntity.getTieup10Nm()));
-		indto.setTieup11Nm(getViewNmValue(mainDataEntity.getTieup11(), mainDataEntity.getTieup11Nm()));
-		indto.setTieup12Nm(getViewNmValue(mainDataEntity.getTieup12(), mainDataEntity.getTieup12Nm()));
+		indto.setTieup10Nm(getViewNmValue(mainDataEntity.getTieup10(), mainDataEntity.getPreTieup10(), mainDataEntity.getTieup10Nm()));
+		indto.setTieup11Nm(getViewNmValue(mainDataEntity.getTieup11(), mainDataEntity.getPreTieup11(), mainDataEntity.getTieup11Nm()));
+		indto.setTieup12Nm(getViewNmValue(mainDataEntity.getTieup12(), mainDataEntity.getPreTieup12(), mainDataEntity.getTieup12Nm()));
 
 		// ユーザーコード情報
 		indto.setPreUsercd0001(StringUtils.nvl(mainDataEntity.getPreUsercd0001(), ""));
@@ -4456,42 +4455,42 @@ public class NF303Service extends BaseService {
 		indto.setUsercd0035(StringUtils.nvl(mainDataEntity.getUsercd0035(), ""));
 		indto.setUsercd0036(StringUtils.nvl(mainDataEntity.getUsercd0036(), ""));
 
-		indto.setUsercd0001Nm(getViewNmValue(mainDataEntity.getUsercd0001(), mainDataEntity.getUsercd0001Nm()));
-		indto.setUsercd0002Nm(getViewNmValue(mainDataEntity.getUsercd0002(), mainDataEntity.getUsercd0002Nm()));
-		indto.setUsercd0003Nm(getViewNmValue(mainDataEntity.getUsercd0003(), mainDataEntity.getUsercd0003Nm()));
-		indto.setUsercd0004Nm(getViewNmValue(mainDataEntity.getUsercd0004(), mainDataEntity.getUsercd0004Nm()));
-		indto.setUsercd0005Nm(getViewNmValue(mainDataEntity.getUsercd0005(), mainDataEntity.getUsercd0005Nm()));
-		indto.setUsercd0006Nm(getViewNmValue(mainDataEntity.getUsercd0006(), mainDataEntity.getUsercd0006Nm()));
-		indto.setUsercd0007Nm(getViewNmValue(mainDataEntity.getUsercd0007(), mainDataEntity.getUsercd0007Nm()));
-		indto.setUsercd0008Nm(getViewNmValue(mainDataEntity.getUsercd0008(), mainDataEntity.getUsercd0008Nm()));
-		indto.setUsercd0009Nm(getViewNmValue(mainDataEntity.getUsercd0009(), mainDataEntity.getUsercd0009Nm()));
-		indto.setUsercd0010Nm(getViewNmValue(mainDataEntity.getUsercd0010(), mainDataEntity.getUsercd0010Nm()));
-		indto.setUsercd0011Nm(getViewNmValue(mainDataEntity.getUsercd0011(), mainDataEntity.getUsercd0011Nm()));
-		indto.setUsercd0012Nm(getViewNmValue(mainDataEntity.getUsercd0012(), mainDataEntity.getUsercd0012Nm()));
-		indto.setUsercd0013Nm(getViewNmValue(mainDataEntity.getUsercd0013(), mainDataEntity.getUsercd0013Nm()));
-		indto.setUsercd0014Nm(getViewNmValue(mainDataEntity.getUsercd0014(), mainDataEntity.getUsercd0014Nm()));
-		indto.setUsercd0015Nm(getViewNmValue(mainDataEntity.getUsercd0015(), mainDataEntity.getUsercd0015Nm()));
-		indto.setUsercd0016Nm(getViewNmValue(mainDataEntity.getUsercd0016(), mainDataEntity.getUsercd0016Nm()));
-		indto.setUsercd0017Nm(getViewNmValue(mainDataEntity.getUsercd0017(), mainDataEntity.getUsercd0017Nm()));
-		indto.setUsercd0018Nm(getViewNmValue(mainDataEntity.getUsercd0018(), mainDataEntity.getUsercd0018Nm()));
-		indto.setUsercd0019Nm(getViewNmValue(mainDataEntity.getUsercd0019(), mainDataEntity.getUsercd0019Nm()));
-		indto.setUsercd0020Nm(getViewNmValue(mainDataEntity.getUsercd0020(), mainDataEntity.getUsercd0020Nm()));
-		indto.setUsercd0021Nm(getViewNmValue(mainDataEntity.getUsercd0021(), mainDataEntity.getUsercd0021Nm()));
-		indto.setUsercd0022Nm(getViewNmValue(mainDataEntity.getUsercd0022(), mainDataEntity.getUsercd0022Nm()));
-		indto.setUsercd0023Nm(getViewNmValue(mainDataEntity.getUsercd0023(), mainDataEntity.getUsercd0023Nm()));
-		indto.setUsercd0024Nm(getViewNmValue(mainDataEntity.getUsercd0024(), mainDataEntity.getUsercd0024Nm()));
-		indto.setUsercd0025Nm(getViewNmValue(mainDataEntity.getUsercd0025(), mainDataEntity.getUsercd0025Nm()));
-		indto.setUsercd0026Nm(getViewNmValue(mainDataEntity.getUsercd0026(), mainDataEntity.getUsercd0026Nm()));
-		indto.setUsercd0027Nm(getViewNmValue(mainDataEntity.getUsercd0027(), mainDataEntity.getUsercd0027Nm()));
-		indto.setUsercd0028Nm(getViewNmValue(mainDataEntity.getUsercd0028(), mainDataEntity.getUsercd0028Nm()));
-		indto.setUsercd0029Nm(getViewNmValue(mainDataEntity.getUsercd0029(), mainDataEntity.getUsercd0029Nm()));
-		indto.setUsercd0030Nm(getViewNmValue(mainDataEntity.getUsercd0030(), mainDataEntity.getUsercd0030Nm()));
-		indto.setUsercd0031Nm(getViewNmValue(mainDataEntity.getUsercd0031(), mainDataEntity.getUsercd0031Nm()));
-		indto.setUsercd0032Nm(getViewNmValue(mainDataEntity.getUsercd0032(), mainDataEntity.getUsercd0032Nm()));
-		indto.setUsercd0033Nm(getViewNmValue(mainDataEntity.getUsercd0033(), mainDataEntity.getUsercd0033Nm()));
-		indto.setUsercd0034Nm(getViewNmValue(mainDataEntity.getUsercd0034(), mainDataEntity.getUsercd0034Nm()));
-		indto.setUsercd0035Nm(getViewNmValue(mainDataEntity.getUsercd0035(), mainDataEntity.getUsercd0035Nm()));
-		indto.setUsercd0036Nm(getViewNmValue(mainDataEntity.getUsercd0036(), mainDataEntity.getUsercd0036Nm()));
+		indto.setUsercd0001Nm(getViewNmValue(mainDataEntity.getUsercd0001(), mainDataEntity.getPreUsercd0001(), mainDataEntity.getUsercd0001Nm()));
+		indto.setUsercd0002Nm(getViewNmValue(mainDataEntity.getUsercd0002(), mainDataEntity.getPreUsercd0002(), mainDataEntity.getUsercd0002Nm()));
+		indto.setUsercd0003Nm(getViewNmValue(mainDataEntity.getUsercd0003(), mainDataEntity.getPreUsercd0003(), mainDataEntity.getUsercd0003Nm()));
+		indto.setUsercd0004Nm(getViewNmValue(mainDataEntity.getUsercd0004(), mainDataEntity.getPreUsercd0004(), mainDataEntity.getUsercd0004Nm()));
+		indto.setUsercd0005Nm(getViewNmValue(mainDataEntity.getUsercd0005(), mainDataEntity.getPreUsercd0005(), mainDataEntity.getUsercd0005Nm()));
+		indto.setUsercd0006Nm(getViewNmValue(mainDataEntity.getUsercd0006(), mainDataEntity.getPreUsercd0006(), mainDataEntity.getUsercd0006Nm()));
+		indto.setUsercd0007Nm(getViewNmValue(mainDataEntity.getUsercd0007(), mainDataEntity.getPreUsercd0007(), mainDataEntity.getUsercd0007Nm()));
+		indto.setUsercd0008Nm(getViewNmValue(mainDataEntity.getUsercd0008(), mainDataEntity.getPreUsercd0008(), mainDataEntity.getUsercd0008Nm()));
+		indto.setUsercd0009Nm(getViewNmValue(mainDataEntity.getUsercd0009(), mainDataEntity.getPreUsercd0009(), mainDataEntity.getUsercd0009Nm()));
+		indto.setUsercd0010Nm(getViewNmValue(mainDataEntity.getUsercd0010(), mainDataEntity.getPreUsercd0010(), mainDataEntity.getUsercd0010Nm()));
+		indto.setUsercd0011Nm(getViewNmValue(mainDataEntity.getUsercd0011(), mainDataEntity.getPreUsercd0011(), mainDataEntity.getUsercd0011Nm()));
+		indto.setUsercd0012Nm(getViewNmValue(mainDataEntity.getUsercd0012(), mainDataEntity.getPreUsercd0012(), mainDataEntity.getUsercd0012Nm()));
+		indto.setUsercd0013Nm(getViewNmValue(mainDataEntity.getUsercd0013(), mainDataEntity.getPreUsercd0013(), mainDataEntity.getUsercd0013Nm()));
+		indto.setUsercd0014Nm(getViewNmValue(mainDataEntity.getUsercd0014(), mainDataEntity.getPreUsercd0014(), mainDataEntity.getUsercd0014Nm()));
+		indto.setUsercd0015Nm(getViewNmValue(mainDataEntity.getUsercd0015(), mainDataEntity.getPreUsercd0015(), mainDataEntity.getUsercd0015Nm()));
+		indto.setUsercd0016Nm(getViewNmValue(mainDataEntity.getUsercd0016(), mainDataEntity.getPreUsercd0016(), mainDataEntity.getUsercd0016Nm()));
+		indto.setUsercd0017Nm(getViewNmValue(mainDataEntity.getUsercd0017(), mainDataEntity.getPreUsercd0017(), mainDataEntity.getUsercd0017Nm()));
+		indto.setUsercd0018Nm(getViewNmValue(mainDataEntity.getUsercd0018(), mainDataEntity.getPreUsercd0018(), mainDataEntity.getUsercd0018Nm()));
+		indto.setUsercd0019Nm(getViewNmValue(mainDataEntity.getUsercd0019(), mainDataEntity.getPreUsercd0019(), mainDataEntity.getUsercd0019Nm()));
+		indto.setUsercd0020Nm(getViewNmValue(mainDataEntity.getUsercd0020(), mainDataEntity.getPreUsercd0020(), mainDataEntity.getUsercd0020Nm()));
+		indto.setUsercd0021Nm(getViewNmValue(mainDataEntity.getUsercd0021(), mainDataEntity.getPreUsercd0021(), mainDataEntity.getUsercd0021Nm()));
+		indto.setUsercd0022Nm(getViewNmValue(mainDataEntity.getUsercd0022(), mainDataEntity.getPreUsercd0022(), mainDataEntity.getUsercd0022Nm()));
+		indto.setUsercd0023Nm(getViewNmValue(mainDataEntity.getUsercd0023(), mainDataEntity.getPreUsercd0023(), mainDataEntity.getUsercd0023Nm()));
+		indto.setUsercd0024Nm(getViewNmValue(mainDataEntity.getUsercd0024(), mainDataEntity.getPreUsercd0024(), mainDataEntity.getUsercd0024Nm()));
+		indto.setUsercd0025Nm(getViewNmValue(mainDataEntity.getUsercd0025(), mainDataEntity.getPreUsercd0025(), mainDataEntity.getUsercd0025Nm()));
+		indto.setUsercd0026Nm(getViewNmValue(mainDataEntity.getUsercd0026(), mainDataEntity.getPreUsercd0026(), mainDataEntity.getUsercd0026Nm()));
+		indto.setUsercd0027Nm(getViewNmValue(mainDataEntity.getUsercd0027(), mainDataEntity.getPreUsercd0027(), mainDataEntity.getUsercd0027Nm()));
+		indto.setUsercd0028Nm(getViewNmValue(mainDataEntity.getUsercd0028(), mainDataEntity.getPreUsercd0028(), mainDataEntity.getUsercd0028Nm()));
+		indto.setUsercd0029Nm(getViewNmValue(mainDataEntity.getUsercd0029(), mainDataEntity.getPreUsercd0029(), mainDataEntity.getUsercd0029Nm()));
+		indto.setUsercd0030Nm(getViewNmValue(mainDataEntity.getUsercd0030(), mainDataEntity.getPreUsercd0030(), mainDataEntity.getUsercd0030Nm()));
+		indto.setUsercd0031Nm(getViewNmValue(mainDataEntity.getUsercd0031(), mainDataEntity.getPreUsercd0031(), mainDataEntity.getUsercd0031Nm()));
+		indto.setUsercd0032Nm(getViewNmValue(mainDataEntity.getUsercd0032(), mainDataEntity.getPreUsercd0032(), mainDataEntity.getUsercd0032Nm()));
+		indto.setUsercd0033Nm(getViewNmValue(mainDataEntity.getUsercd0033(), mainDataEntity.getPreUsercd0033(), mainDataEntity.getUsercd0033Nm()));
+		indto.setUsercd0034Nm(getViewNmValue(mainDataEntity.getUsercd0034(), mainDataEntity.getPreUsercd0034(), mainDataEntity.getUsercd0034Nm()));
+		indto.setUsercd0035Nm(getViewNmValue(mainDataEntity.getUsercd0035(), mainDataEntity.getPreUsercd0035(), mainDataEntity.getUsercd0035Nm()));
+		indto.setUsercd0036Nm(getViewNmValue(mainDataEntity.getUsercd0036(), mainDataEntity.getPreUsercd0036(), mainDataEntity.getUsercd0036Nm()));
 
 		indto.setUsercd0101(StringUtils.nvl(mainDataEntity.getUsercd0101(), ""));
 		indto.setUsercd0102(StringUtils.nvl(mainDataEntity.getUsercd0102(), ""));
@@ -4632,23 +4631,23 @@ public class NF303Service extends BaseService {
 		indto.setReward37(StringUtils.nvl(mainDataEntity.getReward37(), ""));
 		indto.setReward44(StringUtils.nvl(mainDataEntity.getReward44(), ""));
 
-		indto.setReward04Nm(getViewNmValue(mainDataEntity.getReward04(), mainDataEntity.getReward04Nm()));
-		indto.setReward05Nm(getViewNmValue(mainDataEntity.getReward05(), mainDataEntity.getReward05Nm()));
-		indto.setReward08Nm(getViewNmValue(mainDataEntity.getReward08(), mainDataEntity.getReward08Nm()));
-		indto.setReward09Nm(getViewNmValue(mainDataEntity.getReward09(), mainDataEntity.getReward09Nm()));
-		indto.setReward16Nm(getViewNmValue(mainDataEntity.getReward16(), mainDataEntity.getReward16Nm()));
-		indto.setReward17Nm(getViewNmValue(mainDataEntity.getReward17(), mainDataEntity.getReward17Nm()));
-		indto.setReward18Nm(getViewNmValue(mainDataEntity.getReward18(), mainDataEntity.getReward18Nm()));
-		indto.setReward21Nm(getViewNmValue(mainDataEntity.getReward21(), mainDataEntity.getReward21Nm()));
-		indto.setReward23Nm(getViewNmValue(mainDataEntity.getReward23(), mainDataEntity.getReward23Nm()));
-		indto.setReward25Nm(getViewNmValue(mainDataEntity.getReward25(), mainDataEntity.getReward25Nm()));
-		indto.setReward26Nm(getViewNmValue(mainDataEntity.getReward26(), mainDataEntity.getReward26Nm()));
-		indto.setReward27Nm(getViewNmValue(mainDataEntity.getReward27(), mainDataEntity.getReward27Nm()));
-		indto.setReward29Nm(getViewNmValue(mainDataEntity.getReward29(), mainDataEntity.getReward29Nm()));
-		indto.setReward35Nm(getViewNmValue(mainDataEntity.getReward35(), mainDataEntity.getReward35Nm()));
-		indto.setReward36Nm(getViewNmValue(mainDataEntity.getReward36(), mainDataEntity.getReward36Nm()));
-		indto.setReward37Nm(getViewNmValue(mainDataEntity.getReward37(), mainDataEntity.getReward37Nm()));
-		indto.setReward44Nm(getViewNmValue(mainDataEntity.getReward44(), mainDataEntity.getReward44Nm()));
+		indto.setReward04Nm(getViewNmValue(mainDataEntity.getReward04(), mainDataEntity.getPreReward04(), mainDataEntity.getReward04Nm()));
+		indto.setReward05Nm(getViewNmValue(mainDataEntity.getReward05(), mainDataEntity.getPreReward05(), mainDataEntity.getReward05Nm()));
+		indto.setReward08Nm(getViewNmValue(mainDataEntity.getReward08(), mainDataEntity.getPreReward08(), mainDataEntity.getReward08Nm()));
+		indto.setReward09Nm(getViewNmValue(mainDataEntity.getReward09(), mainDataEntity.getPreReward09(), mainDataEntity.getReward09Nm()));
+		indto.setReward16Nm(getViewNmValue(mainDataEntity.getReward16(), mainDataEntity.getPreReward16(), mainDataEntity.getReward16Nm()));
+		indto.setReward17Nm(getViewNmValue(mainDataEntity.getReward17(), mainDataEntity.getPreReward17(), mainDataEntity.getReward17Nm()));
+		indto.setReward18Nm(getViewNmValue(mainDataEntity.getReward18(), mainDataEntity.getPreReward18(), mainDataEntity.getReward18Nm()));
+		indto.setReward21Nm(getViewNmValue(mainDataEntity.getReward21(), mainDataEntity.getPreReward21(), mainDataEntity.getReward21Nm()));
+		indto.setReward23Nm(getViewNmValue(mainDataEntity.getReward23(), mainDataEntity.getPreReward23(), mainDataEntity.getReward23Nm()));
+		indto.setReward25Nm(getViewNmValue(mainDataEntity.getReward25(), mainDataEntity.getPreReward25(), mainDataEntity.getReward25Nm()));
+		indto.setReward26Nm(getViewNmValue(mainDataEntity.getReward26(), mainDataEntity.getPreReward26(), mainDataEntity.getReward26Nm()));
+		indto.setReward27Nm(getViewNmValue(mainDataEntity.getReward27(), mainDataEntity.getPreReward27(), mainDataEntity.getReward27Nm()));
+		indto.setReward29Nm(getViewNmValue(mainDataEntity.getReward29(), mainDataEntity.getPreReward29(), mainDataEntity.getReward29Nm()));
+		indto.setReward35Nm(getViewNmValue(mainDataEntity.getReward35(), mainDataEntity.getPreReward35(), mainDataEntity.getReward35Nm()));
+		indto.setReward36Nm(getViewNmValue(mainDataEntity.getReward36(), mainDataEntity.getPreReward36(), mainDataEntity.getReward36Nm()));
+		indto.setReward37Nm(getViewNmValue(mainDataEntity.getReward37(), mainDataEntity.getPreReward37(), mainDataEntity.getReward37Nm()));
+		indto.setReward44Nm(getViewNmValue(mainDataEntity.getReward44(), mainDataEntity.getPreReward44(), mainDataEntity.getReward44Nm()));
 
 		// コメント
 		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -4677,35 +4676,36 @@ public class NF303Service extends BaseService {
     }
 
     /**
-     * 値がNULLの場合は空白、'Z'の場合は'--なし--'を返却
+     * valueがpreValueと同一の場合は空白、同一でなくvalueが空白の場合は'--なし--'を返却
      * @param preValue
      * @param value
      * @return
      */
-    public String getViewValue(String value){
+    public String getViewValue(String preValue, String value){
     	String rtnValue = value;
 
-    	if(value == null) {
+    	if(value != null && value.equals(preValue)
+    			|| (value == null && StringUtils.isEmpty(preValue))) {
     		rtnValue = "";
-    	} else if("Z".equals(value)) {
+    	} else if(StringUtils.isEmpty(value)) {
     		rtnValue = "--なし--";
     	}
-
     	return rtnValue;
     }
 
     /**
-     * cd値がNULLの場合は空白、'Z'の場合は'--なし--'、それ以外の場合はnmを返却
+     * cd値がpreCd値と同一の場合は空白、同一でなくcdが空白の場合は'--なし--'、それ以外の場合はnmを返却
      * @param preValue
      * @param value
      * @return
      */
-    public String getViewNmValue(String cdValue, String nmValue){
+    public String getViewNmValue(String cdValue, String preCdValue, String nmValue){
     	String rtnValue = nmValue;
 
-    	if(cdValue == null) {
+    	if(cdValue != null && cdValue.equals(preCdValue)
+    			|| (cdValue == null && StringUtils.isEmpty(preCdValue))) {
     		rtnValue = "";
-    	} else if("Z".equals(cdValue)) {
+    	} else if(StringUtils.isEmpty(cdValue)) {
     		rtnValue = "--なし--";
     	}
 
@@ -4713,20 +4713,39 @@ public class NF303Service extends BaseService {
     }
 
     /**
-     * cd値がNULLの場合は空白、'Z'の場合は'--なし--'、それ以外の場合はcd:nmを返却
+     * cd値がpreCd値と同一の場合は空白、同一でなくcdが空白の場合は'--なし--'、それ以外の場合はcd:nmを返却
      * @param preValue
      * @param value
      * @return
      */
-    public String getViewValue(String cdValue, String nmValue){
+    public String getViewValue(String cdValue, String preCdValue, String nmValue){
     	String rtnValue = "";
 
-    	if(cdValue == null) {
+    	if(cdValue != null && cdValue.equals(preCdValue)
+    			|| (cdValue == null && StringUtils.isEmpty(preCdValue))) {
     		rtnValue = "";
-    	} else if("Z".equals(cdValue)) {
+    	} else if(StringUtils.isEmpty(cdValue)) {
     		rtnValue = "--なし--";
     	} else {
     		rtnValue = cdValue + ":" + nmValue;
+    	}
+
+    	return rtnValue;
+    }
+
+    /**
+     * 値が--なし--の場合はZ、値無の場合は''を返却
+     * @param preValue
+     * @param value
+     * @return
+     */
+    public String getUpdValue(String value){
+    	String rtnValue = value;
+
+    	if("--なし--".equals(value)) {
+    		rtnValue = "Z";
+    	} else if(StringUtils.isEmpty(value)) {
+    		rtnValue = null;
     	}
 
     	return rtnValue;

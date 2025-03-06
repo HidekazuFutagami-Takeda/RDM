@@ -1320,7 +1320,7 @@ function tmpCseView(){
   hcpClosePopUp(gCseViewWin, "gCseViewWin");
 
  // パラメータの設定
-  //document.fm1.backScreenId.value = "ND011";
+  document.fm1.backScreenId.value = "ND011";
   gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
   return(true);
 }
@@ -1332,6 +1332,6 @@ function tmpCseView(){
  */
 function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
     document.fm1.skInsNo.value = insNo;
-    document.fm1.skInsNm.value = shisetsuNm;
+    document.fm1.skInsNm.value = insAbbrName;
 
 }

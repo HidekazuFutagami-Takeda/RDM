@@ -31,13 +31,27 @@
         <result column="NTY_MEMO" property="ntyMemo"/>
         <result column="YOU_FLG" property="youFlg"/>
     </resultMap>
+        <resultMap id="sJkrJkrAuthKnrUpResultMap" type="jp.co.takeda.rdm.entity.SRdmNtyUpdateEntity">
+        <result column="NTY_ID" property="ntyId"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsFrom"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsTo"/>
+        <result column="NTY_BRI" property="ntyBri"/>
+        <result column="NTY_STS" property="ntySts"/>
+        <result column="NTY_PRI" property="ntyPri"/>
+        <result column="SS_UPD_YMDHMS" property="ssUpdYmdhms"/>
+        <result column="NTY_SUBJECT" property="ntySubject"/>
+        <result column="NTY_DATA1" property="ntyData"/>
+        <result column="NTY_MEMO" property="ntyMemo"/>
+        <result column="YOU_FLG" property="youFlg"/>
+        <result column="INSORTID" property="inSortId"/>
+    </resultMap>
   <select id="selectNtyKnr" parameterType="jp.co.takeda.rdm.entity.SRdmNtyListEntity" resultMap="sJkrJkrAuthKnrResultMap">
 	SELECT   DISTINCT
 	            NTY_ID,                        --通知ID
 	            HIS_YMDHMS,                    --発生日時
 	            CODE_MST_BRI.VALUE1_KANJ NTY_BRI,  --コード情報から値を取得？　通知分類
 	            NTY_SUBJECT,                   --通知件名
-	            REPLACE(NTY_DATA1, CHR(10), '\\n') NTY_DATA1,                     --通知内容1
+	            NTY_DATA1,                    --通知内容1
 	            NTY_MEMO,                      --メモ
 	            CODE_MST_STS.VALUE1_KANJ NTY_STS,  --コード情報から　通知ステータス
 	            CODE_MST_PRI.VALUE1_KANJ NTY_PRI,  --コード情報から　通知優先度
@@ -61,15 +75,57 @@
 	            AND  CODE_MST_SUBJECT.VALUE1_KANJ = NTY_KNR.NTY_SUBJECT
 	WHERE
 	1=1
-	<if test="youFlg !='0'">
+	<if test="onlyCheck == false">
 		<if test="ntyBri != null">
-	            AND NTY_KNR.NTY_BRI IN('001','002','003','004','005','006','007')
+	            AND NTY_KNR.NTY_BRI IN(
+	         <if test="dataDupCheck == true">
+	         '001'</if>
+	         <if test="dataDupCheck == true">
+		         <if test='ultRnkCheck == true'>
+		         ,'002'</if>
+	         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == true '>
+	         '002'</if>
+	         <if test='dataDupCheck == true || ultRnkCheck == true '>
+		         <if test='fbResCheck == true '>
+		         ,'003'</if>
+	         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == false &amp;&amp; fbResCheck == true '>
+	         '003'</if>
+	         <if test='dataDupCheck == true || ultRnkCheck == true || fbResCheck == true '>
+		         <if test='consCheck == true'>
+		         ,'004'</if>
+	         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == false &amp;&amp; fbResCheck == false &amp;&amp; consCheck == true'>
+	         '004'</if>
+	         <if test='dataDupCheck == true || ultRnkCheck == true || fbResCheck == true || consCheck == true'>
+	         <if test='othersCheck == true'>
+	         ,'005','006','007'</if>
+	         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == false &amp;&amp; fbResCheck == false &amp;&amp; consCheck == false &amp;&amp; othersCheck == true'>
+	         '005','006','007'</if>
+	            )
 	    </if>
 	    <if test="ntySubject != null">
 	            AND NTY_KNR.NTY_SUBJECT = #{ntySubject}
 	    </if>
 	    <if test="ntySts != null">
-	            AND NTY_KNR.NTY_STS IN ('0','1','2')
+	            AND NTY_KNR.NTY_STS IN (
+	         <if test="unconCheck == true">
+	         '0'</if>
+	         <if test="unconCheck == true">
+		         <if test='ubderCheck == true'>
+		         ,'1'</if>
+	         </if>
+	         <if test='unconCheck == false &amp;&amp; ubderCheck == true '>
+	         '1'</if>
+	         <if test='unconCheck == true || ubderCheck == true '>
+		         <if test='resolvCheck == true '>
+		         ,'2'</if>
+	         </if>
+	         <if test='unconCheck == false &amp;&amp; ubderCheck == false &amp;&amp; resolvCheck == true '>
+	         '2'</if>
+	            )
 	    </if>
 	    <if test="ntyPri != null">
 	            AND NTY_KNR.NTY_PRI = #{ntyPri}
@@ -81,16 +137,14 @@
 	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
 		</if>
 	</if>
-	<if test="youFlg !='1'">
+	<if test="onlyCheck == true">
 	            AND NTY_KNR.NTY_PRI = '3'   --高 固定値
-
 	    <if test="hisYmdhmsFrom != null">
 	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &gt;= #{hisYmdhmsFrom}
 	    </if>
 	    <if test="hisYmdhmsTo != null">
 	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
 	    </if>
-
 	            AND CODE_MST_SUBJECT.VALUE2 = 2  --対策要 固定値
 	</if>
 
@@ -99,29 +153,10 @@
 		--ソートID '1'
         <if test="inSortId == 1 ">ORDER BY NTY_KNR.NTY_ID DESC NULLS LAST</if>
 		--ソートID '2'
-        <if test="inSortId == 2 ">ORDER BY REQ_KNR.REQ_YMDHMS ASC NULLS FIRST</if>
+        <if test="inSortId == 2 ">ORDER BY NTY_KNR.HIS_YMDHMS ASC NULLS FIRST</if>
         --ソートID '3'
-        <if test="inSortId == 3 ">ORDER BY REQ_KNR.REQ_YMDHMS DESC NULLS LAST</if>
-        --ソートID '4'
-        <if test="inSortId == 4 ">ORDER BY REQ_KNR.REQ_CHL ASC NULLS FIRST</if>
-        --ソートID '5'
-        <if test="inSortId == 5 ">ORDER BY REQ_KNR.REQ_CHL DESC NULLS LAST</if>
-        --ソートID '6'
-        <if test="inSortId == 6 ">ORDER BY REQ_KNR.REQ_TYPE ASC NULLS FIRST</if>
-        --ソートID '7'
-        <if test="inSortId == 7 ">ORDER BY REQ_KNR.REQ_TYPE DESC NULLS LAST</if>
-        --ソートID '8'
-        <if test="inSortId == 8 ">ORDER BY REQ_KNR.REQ_STS ASC NULLS FIRST</if>
-        --ソートID '9'
-        <if test="inSortId == 9 ">ORDER BY REQ_KNR.REQ_STS DESC NULLS LAST</if>
-        --ソートID '10'
-        <if test="inSortId == 10 ">ORDER BY REQ_KNR.REQ_TYPE ASC NULLS FIRST</if>
-        --ソートID '11'
-        <if test="inSortId == 11 ">ORDER BY REQ_KNR.REQ_TYPE DESC NULLS LAST</if>
-        --ソートID '12'
-        <if test="inSortId == 12 ">ORDER BY REQ_KNR.REQ_JGI_NAME ASC NULLS FIRST</if>
-        --ソートID '13'
-        <if test="inSortId == 13 ">ORDER BY REQ_KNR.REQ_JGI_NAME DESC NULLS LAST</if>
+        <if test="inSortId == 3 ">ORDER BY NTY_KNR.HIS_YMDHMS DESC NULLS LAST</if>
+
     	OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
 	</select>
   <select id="countNtyKnr" parameterType="jp.co.takeda.rdm.entity.SRdmNtyListEntity" resultMap="selectCntNtyListResultMap">
@@ -132,7 +167,7 @@
 	            HIS_YMDHMS,                    --発生日時
 	            CODE_MST_BRI.VALUE1_KANJ NTY_BRI,  --コード情報から値を取得？　通知分類
 	            NTY_SUBJECT,                   --通知件名
-	            REPLACE(NTY_DATA1, CHR(10), '\\n') NTY_DATA1,                    --通知内容1
+	            NTY_DATA1,                    --通知内容1
 	            NTY_MEMO,                      --メモ
 	            CODE_MST_STS.VALUE1_KANJ NTY_STS,  --コード情報から　通知ステータス
 	            CODE_MST_PRI.VALUE1_KANJ NTY_PRI,  --コード情報から　通知優先度
@@ -156,15 +191,57 @@
 	            AND  CODE_MST_SUBJECT.VALUE1_KANJ = NTY_KNR.NTY_SUBJECT
 	WHERE
 	1=1
-	<if test="youFlg !='0'">
+	<if test="onlyCheck == false">
 		<if test="ntyBri != null">
-	            AND NTY_KNR.NTY_BRI IN('001','002','003','004','005','006','007')
+	            AND NTY_KNR.NTY_BRI IN(
+	         <if test="dataDupCheck == true">
+	         '001'</if>
+	         <if test="dataDupCheck == true">
+		         <if test='ultRnkCheck == true'>
+		         ,'002'</if>
+	         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == true '>
+	         '002'</if>
+	         <if test='dataDupCheck == true || ultRnkCheck == true '>
+		         <if test='fbResCheck == true '>
+		         ,'003'</if>
+	         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == false &amp;&amp; fbResCheck == true '>
+	         '003'</if>
+	         <if test='dataDupCheck == true || ultRnkCheck == true || fbResCheck == true '>
+		         <if test='consCheck == true'>
+		         ,'004'</if>
+	         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == false &amp;&amp; fbResCheck == false &amp;&amp; consCheck == true'>
+	         '004'</if>
+	         <if test='dataDupCheck == true || ultRnkCheck == true || fbResCheck == true || consCheck == true'>
+	         <if test='othersCheck == true'>
+		         ,'005','006','007'</if>
+		         </if>
+	         <if test='dataDupCheck == false &amp;&amp; ultRnkCheck == false &amp;&amp; fbResCheck == false &amp;&amp; consCheck == false &amp;&amp; othersCheck == true'>
+	         '005','006','007'</if>
+	            )
 	    </if>
 	    <if test="ntySubject != null">
 	            AND NTY_KNR.NTY_SUBJECT = #{ntySubject}
 	    </if>
 	    <if test="ntySts != null">
-	            AND NTY_KNR.NTY_STS IN ('0','1','2')
+	            AND NTY_KNR.NTY_STS IN (
+	         <if test="unconCheck == true">
+	         '0'</if>
+	         <if test="unconCheck == true">
+		         <if test='ubderCheck == true'>
+		         ,'1'</if>
+	         </if>
+	         <if test='unconCheck == false &amp;&amp; ubderCheck == true '>
+	         '1'</if>
+	         <if test='unconCheck == true || ubderCheck == true '>
+		         <if test='resolvCheck == true '>
+		         ,'2'</if>
+	         </if>
+	         <if test='unconCheck == false &amp;&amp; ubderCheck == false &amp;&amp; resolvCheck == true '>
+	         '2'</if>
+	            )
 	    </if>
 	    <if test="ntyPri != null">
 	            AND NTY_KNR.NTY_PRI = #{ntyPri}
@@ -176,18 +253,48 @@
 	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
 		</if>
 	</if>
-	<if test="youFlg !='1'">
+	<if test="onlyCheck == true">
 	            AND NTY_KNR.NTY_PRI = '3'   --高 固定値
-
 	    <if test="hisYmdhmsFrom != null">
 	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &gt;= #{hisYmdhmsFrom}
 	    </if>
 	    <if test="hisYmdhmsTo != null">
 	            AND SUBSTR(NTY_KNR.HIS_YMDHMS,1,8) &lt;= #{hisYmdhmsTo}
 	    </if>
-
 	            AND CODE_MST_SUBJECT.VALUE2 = 2  --対策要 固定値
 	</if>
 		)SELECT_REQ
+	</select>
+	<select id="selectNtyKnrId" parameterType="jp.co.takeda.rdm.entity.SRdmNtyUpdateEntity" resultMap="sJkrJkrAuthKnrUpResultMap">
+	SELECT   DISTINCT
+	            NTY_ID,                        --通知ID
+	            HIS_YMDHMS,                    --発生日時
+	            CODE_MST_BRI.VALUE1_KANJ NTY_BRI,  --コード情報から値を取得？　通知分類
+	            NTY_SUBJECT,                   --通知件名
+	            NTY_DATA1,                    --通知内容1
+	            NTY_MEMO,                      --メモ
+	            CODE_MST_STS.VALUE1_KANJ NTY_STS,  --コード情報から　通知ステータス
+	            CODE_MST_PRI.VALUE1_KANJ NTY_PRI,  --コード情報から　通知優先度
+	            SS_UPD_YMDHMS                  --所属部科漢字名？最終更新日時
+	FROM        ORAUSR01.T_RDM_NTY_KNR NTY_KNR
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_BRI--コード情報 通知分類
+	            ON    CODE_MST_BRI.CODE_NAME = 'NTY_BRI'
+	            AND  CODE_MST_BRI.DEL_FLG = '0'
+	            AND  CODE_MST_BRI.VALUE1 = NTY_KNR.NTY_BRI
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_STS--コード情報 通知ステータス
+	            ON  CODE_MST_STS.CODE_NAME = 'NTY_STS'
+	            AND  CODE_MST_STS.DEL_FLG = '0'
+	            AND  CODE_MST_STS.VALUE1 = NTY_KNR.NTY_STS
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_PRI--コード情報 通知優先度
+	            ON  CODE_MST_PRI.CODE_NAME = 'NTY_PRI'
+	            AND  CODE_MST_PRI.DEL_FLG = '0'
+	            AND  CODE_MST_PRI.VALUE1 = NTY_KNR.NTY_PRI
+	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_SUBJECT--コード情報 通知件名
+	            ON  CODE_MST_SUBJECT.CODE_NAME = 'NTY_SUBJECT'
+	            AND  CODE_MST_SUBJECT.DEL_FLG = '0'
+	            AND  CODE_MST_SUBJECT.VALUE1_KANJ = NTY_KNR.NTY_SUBJECT
+	WHERE
+	1=1
+	             AND NTY_KNR.NTY_ID = #{ntyId}
 	</select>
 </mapper>

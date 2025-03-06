@@ -154,6 +154,10 @@ public class NM011DTO extends BaseDTO implements Serializable {
 	 * ソート部の宣言 + get,set
 	 */
 	private String sortCondition;
+    private String ntyIdAscClass;
+    private String ntyIdDescClass;
+    private String hisYmdhmsAscClass;
+    private String hisYmdhmsDescClass;
     private String reqIdAscClass;
     private String reqIdDescClass;
     private String reqYmdhmsAscClass;
@@ -286,6 +290,23 @@ public class NM011DTO extends BaseDTO implements Serializable {
 
 	private String knYmdhmsTo;
 
+	private boolean dataDupCheck;
+
+	private boolean ultRnkCheck;
+
+	private boolean fbResCheck;
+
+	private boolean consCheck;
+
+	private boolean othersCheck;
+
+	private boolean onlyCheck;
+
+	private boolean unconCheck;
+
+	private boolean ubderCheck;
+
+	private boolean resolvCheck;
 
 	    /**
 	 * reqJgiName --申請者氏名
@@ -531,6 +552,59 @@ public class NM011DTO extends BaseDTO implements Serializable {
 	public void setSortCondition(String sortCondition) {
 		this.sortCondition = sortCondition;
 	}
+
+	/**
+	 * NM011DTO.javantyIdAscClassを設定
+	 * @return ntyIdAscClass
+	 */
+	public String getNtyIdAscClass() {
+		return ntyIdAscClass;
+	}
+	/**
+	 * @param ntyIdAscClass セットする ntyIdAscClass
+	 */
+	public void setNtyIdAscClass(String ntyIdAscClass) {
+		this.ntyIdAscClass = ntyIdAscClass;
+	}
+	/**
+	 * NM011DTO.javantyIdDescClassを設定
+	 * @return ntyIdDescClass
+	 */
+	public String getNtyIdDescClass() {
+		return ntyIdDescClass;
+	}
+	/**
+	 * @param ntyIdDescClass セットする ntyIdDescClass
+	 */
+	public void setNtyIdDescClass(String ntyIdDescClass) {
+		this.ntyIdDescClass = ntyIdDescClass;
+	}
+	/**
+	 * NM011DTO.javahisYmdhmsAscClassを設定
+	 * @return hisYmdhmsAscClass
+	 */
+	public String getHisYmdhmsAscClass() {
+		return hisYmdhmsAscClass;
+	}
+	/**
+	 * @param hisYmdhmsAscClass セットする hisYmdhmsAscClass
+	 */
+	public void setHisYmdhmsAscClass(String hisYmdhmsAscClass) {
+		this.hisYmdhmsAscClass = hisYmdhmsAscClass;
+	}
+	/**
+	 * NM011DTO.javahisYmdhmsDescClassを設定
+	 * @return hisYmdhmsDescClass
+	 */
+	public String getHisYmdhmsDescClass() {
+		return hisYmdhmsDescClass;
+	}
+	/**
+	 * @param hisYmdhmsDescClass セットする hisYmdhmsDescClass
+	 */
+	public void setHisYmdhmsDescClass(String hisYmdhmsDescClass) {
+		this.hisYmdhmsDescClass = hisYmdhmsDescClass;
+	}
 	public String getReqIdAscClass() {
 		return reqIdAscClass;
 	}
@@ -751,6 +825,143 @@ public class NM011DTO extends BaseDTO implements Serializable {
 		this.knYmdhmsTo = knYmdhmsTo;
 	}
 
+	/**
+	 * NM011DTO.javaaDdrCodePrefを設定
+	 * @return aDdrCodePref
+	 */
+	public String getaDdrCodePref() {
+		return aDdrCodePref;
+	}
+	/**
+	 * @param aDdrCodePref セットする aDdrCodePref
+	 */
+	public void setaDdrCodePref(String aDdrCodePref) {
+		this.aDdrCodePref = aDdrCodePref;
+	}
+	/**
+	 * NM011DTO.javadataDupCheckを設定
+	 * @return dataDupCheck
+	 */
+	public boolean isDataDupCheck() {
+		return dataDupCheck;
+	}
+	/**
+	 * @param dataDupCheck セットする dataDupCheck
+	 */
+	public void setDataDupCheck(boolean dataDupCheck) {
+		this.dataDupCheck = dataDupCheck;
+	}
+	/**
+	 * NM011DTO.javaultRnkCheckを設定
+	 * @return ultRnkCheck
+	 */
+	public boolean isUltRnkCheck() {
+		return ultRnkCheck;
+	}
+	/**
+	 * @param ultRnkCheck セットする ultRnkCheck
+	 */
+	public void setUltRnkCheck(boolean ultRnkCheck) {
+		this.ultRnkCheck = ultRnkCheck;
+	}
+	/**
+	 * NM011DTO.javafbResCheckを設定
+	 * @return fbResCheck
+	 */
+	public boolean isFbResCheck() {
+		return fbResCheck;
+	}
+	/**
+	 * @param fbResCheck セットする fbResCheck
+	 */
+	public void setFbResCheck(boolean fbResCheck) {
+		this.fbResCheck = fbResCheck;
+	}
+	/**
+	 * NM011DTO.javaconsCheckを設定
+	 * @return consCheck
+	 */
+	public boolean isConsCheck() {
+		return consCheck;
+	}
+	/**
+	 * @param consCheck セットする consCheck
+	 */
+	public void setConsCheck(boolean consCheck) {
+		this.consCheck = consCheck;
+	}
+	/**
+	 * NM011DTO.javaothersCheckを設定
+	 * @return othersCheck
+	 */
+	public boolean isOthersCheck() {
+		return othersCheck;
+	}
+	/**
+	 * @param othersCheck セットする othersCheck
+	 */
+	public void setOthersCheck(boolean othersCheck) {
+		this.othersCheck = othersCheck;
+	}
+	/**
+	 * NM011DTO.javaonlyCheckを設定
+	 * @return onlyCheck
+	 */
+	public boolean isOnlyCheck() {
+		return onlyCheck;
+	}
+	/**
+	 * @param onlyCheck セットする onlyCheck
+	 */
+	public void setOnlyCheck(boolean onlyCheck) {
+		this.onlyCheck = onlyCheck;
+	}
+	/**
+	 * NM011DTO.javaunconCheckを設定
+	 * @return unconCheck
+	 */
+	public boolean isUnconCheck() {
+		return unconCheck;
+	}
+	/**
+	 * @param unconCheck セットする unconCheck
+	 */
+	public void setUnconCheck(boolean unconCheck) {
+		this.unconCheck = unconCheck;
+	}
+	/**
+	 * NM011DTO.javaubderCheckを設定
+	 * @return ubderCheck
+	 */
+	public boolean isUbderCheck() {
+		return ubderCheck;
+	}
+	/**
+	 * @param ubderCheck セットする ubderCheck
+	 */
+	public void setUbderCheck(boolean ubderCheck) {
+		this.ubderCheck = ubderCheck;
+	}
+	/**
+	 * NM011DTO.javaresolvCheckを設定
+	 * @return resolvCheck
+	 */
+	public boolean isResolvCheck() {
+		return resolvCheck;
+	}
+	/**
+	 * @param resolvCheck セットする resolvCheck
+	 */
+	public void setResolvCheck(boolean resolvCheck) {
+		this.resolvCheck = resolvCheck;
+	}
+	/**
+	 * NM011DTO.javamsgDataを設定
+	 * @return msgData
+	 */
+	public String getMsgData() {
+		return msgData;
+	}
 	/**
 	 * @generatedを取得します。
 	 * @return @generated

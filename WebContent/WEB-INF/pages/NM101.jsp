@@ -39,7 +39,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title>NM011_通知一覧</title>
+    <title>NM101_通知内容詳細</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="css/common2.css" rel="Stylesheet" type="text/css" />
     <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -49,7 +49,7 @@
     <%-- 040C共通のjs --%>
     <!-- <script type="text/javascript" src="js/JKR040C000.js"></script>-->
 
-    <script type="text/javascript" src="js/NM011.js"></script>
+    <script type="text/javascript" src="js/NM101.js"></script>
     <script type="text/javascript" src="js/jkrSosStatus.js"></script>
     <script type="text/javascript" src="js/JKR040C010.js"></script>
     <!--<script type="text/javascript" src="js/RDMNC011.js"></script>-->
@@ -301,7 +301,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <s:hidden id="mrAdminFlg" name="mrAdminFlg"/>
     <s:hidden id="preScreenId" name="preScreenId"/>
 
-
+	<s:hidden name="ntyId" />
 	<s:hidden id="jgiNo" name="jgiNo"/>
     <s:hidden id="jgiName" name="jgiName"/>
     <s:hidden id="reqJgiName"/>
@@ -313,8 +313,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
 
 <!--  	<s:hidden id="reqId" name="reqId"/>
-	<s:hidden id="reqType" name="reqType"/> -->
-	<s:hidden name="ntyId"/>
+	<s:hidden id="reqType" name="reqType"/>-->
+
 	<s:hidden id="sortCondition" name="sortCondition" />
 	<s:hidden name="title" />
 	<s:hidden id="bumonRank" name="bumonRank"/>
@@ -355,211 +355,86 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			    </tbody>
 			</table>
 	<table style="align:cener;">
-		<tr>
-					<%-- 通知分類--%>
-		    <td class="pupControlItem" ><nobr>&nbsp;通知分類</nobr></td>
-			<td style="width:10pt;"><s:checkbox id="dataDupCheck" name="dataDupCheck" tabIndex="-1"/>データ重複検知</td>
-            <td style="width:10pt;"><s:checkbox id="ultRnkCheck" name="ultRnkCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>アルトマーク連携</nobr></td>
-            <td style="width:10pt;"><s:checkbox id="fbResCheck" name="fbResCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>FB回答確認</nobr></td>
-            <td style="width:10pt;"><s:checkbox id="consCheck" name="consCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>整合性チェック</nobr></td>
-            <td style="width:10pt;"><s:checkbox id="othersCheck" name="othersCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>その他</nobr></td>
-            <td style="width:10pt;"><s:checkbox id="onlyCheck" name="onlyCheck" tabIndex="-1" onchange="handleCheckboxChange(this)"/></td>
-            <td style="width:100pt;"><nobr>要確認のみ</nobr></td>
+		<tr>	<%-- 申請者 --%>
+			<td class="comPortalTable"><nobr>通知ID</nobr></td>
+		      <td class="comPortalTable"><nobr><s:label name="ntyId"/></nobr></td>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 <td class="comPortalTable"><nobr>最終更新日</nobr></td>
+		      <td class="comPortalTable"><nobr><s:label name="ssUpdYmdhms"/></nobr></td>
+			</tr>
+			<tr>	<%-- 申請者 --%>
+			<td class="comPortalTable"><nobr>発生日</nobr></td>
+		      <td class="comPortalTable"><nobr><s:label name="hisYmdhmsTo"/></nobr></td>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 <td class="comPortalTable"><nobr>最終更新者</nobr></td>
+		      <td class="comPortalTable"><nobr><s:label name="ntySts"/></nobr></td>
 		</tr>
-		<tr>
-						<%-- 通知件名 --%>
-			<td class="pupControlItem"><nobr>&nbsp;通知件名</nobr><!-- ReqShz,bumonRyakuName --></td>
-	            <td class="comTableSearchItem">
-				<s:select id="jkrSosNtySubject" name="ntySubject" cssStyle="width:80pt" list ="jkrSosNtySubject" />
+		<tr>	<%-- 申請者 --%>
+
+							<%-- 優先度--%>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td class="comPortalTable"><nobr>&nbsp;通知ステータス</nobr></td>
+	            <td class="comPortalTable">
+				<s:select id="jkrSosNtySts" name="ntySts" cssStyle="width:80pt" list ="jkrSosNtySts" />
 			    </td>
 		</tr>
-		<tr>	<%-- ステータス --%>
-			<td class="pupControlItem"><nobr>&nbsp;ステータス</nobr></td>
-			<td style="width:10pt;"><s:checkbox id="unconCheck" name="unconCheck" tabIndex="-1"/>未確認</td>
-            <td style="width:10pt;"><s:checkbox id="ubderCheck" name="ubderCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>確認中</nobr></td>
-            <td style="width:10pt;"><s:checkbox id="resolvCheck" name="resolvCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>解消済</nobr></td>
+		<tr>	<%-- 申請者 --%>
+		<td class="comPortalTable"><nobr>通知分類</nobr></td>
+	      <td class="comPortalTable"><nobr><s:label name="ntyBri"/></nobr></td>
+		</tr>
+		<tr>	<%-- 申請者 --%>
+		<td class="comPortalTable"><nobr>通知件名</nobr></td>
+	      <td class="comPortalTable"><nobr><s:label name="ntySubject"/></nobr></td>
 		</tr>
 		<tr>
-							<%-- 優先度 --%>
-			<td class="pupControlItem"><nobr>&nbsp;優先度</nobr></td>
-	            <td class="comTableSearchItem">
-				<s:select id="jkrSosNtyPri" name="ntyPri" cssStyle="width:80pt" list ="jkrSosNtyPri" />
-			    </td>
-		</tr>
-		<tr>
-			<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
-				<td>
-				<nobr><input type="date" name ="hisYmdhmsFrom"id="inHisYmdhmsFrom" value="${inhisYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
-				<input type="date" name ="hisYmdhmsTo"  id="inHisYmdhmsTo" value="${inhisYmdhmsTo}" pattern="yyyy-MM-dd" /></nobr>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
+			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init')"/>
+			   </nobr>
 			</td>
-		</tr>
-		<tr>
-		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			   <td>
-				   <input type="button" name="search" value="検索" onclick="rdmSearch();">
-				   <input type="button" name="クリア" value="クリア" onclick="rdmCler();return false;" />
-			   </td>
+				<td>
+					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" />
+				</td>
 		</tr>
 	</table>
-	<%-- ページャー表示 開始 --%>
-          <s:if test='pageFlag == "1" '>
-          </s:if>
-          <s:if test='pageFlag !="1"'>
-                 <!-- 改ページ -->
-                  <table width="95%" >
-                      <tbody>
-                      <tr align="right">
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="NM011Page(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
+	<table style="align:left;">
+		<tr>	<%-- 申請者 --%>
+		<td class="comPortalTable"><nobr>通知内容</nobr></td>
+		</tr>
+	</table>
+				<div style="max-height:80px;width:1000px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<table>
+	<tr>
+		      <td class="comPortalTable"><nobr><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /></nobr></td>
+	</tr>
+	</table>
+		</div>
+	<table style="align:left;">
+		<tr>	<%-- 申請者 --%>
+		<td class="comPortalTable"><nobr>メモ</nobr></td>
+		</tr>
+	</table>
+		<div style="max-height:80px;width:1000px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<table>
+	<tr>
+		     	      <td class="comPortalTable"><nobr><s:label name="ntyMemo"/></nobr></td>
+		     	      <td class="comPortalTable"><nobr><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /></nobr></td>
 
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="NM011Page(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0','1','2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="NM011Page(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="NM011Page(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="NM011Page(<s:property value="pageCntCur+1"/>);return false;">
-                                  次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                  </s:if>
-          <%-- ページャー表示 終了 --%>
-          <s:if test='pageFlag == "1" '>
-          <!-- なにも表示しない -->
-      	  </s:if>
-      	  <s:else>
-              <div style="max-height:300px;width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-              <table class="siz">
-              		<thead style="z-index:3;">
-              <%-- ヘッダー行 --%>
-												<tr>
-													<!-- style="resize : horizontal;overflow : hidden;   " -->
-
-													<td rowspan="4" class="comTableTitle container tkdUlt" width="120px"
-														style="border: none;z-index:3;" id="styles">通知ID <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=ntyIdAscClass%>" href=""
-														onclick="NM011Sort(0);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=ntyIdDescClass%>" href=""
-														onclick="NM011Sort(1);return false;">▼</a>
-													</td>
-													<td rowspan="4" class="comTableTitle container tkdUlt" width="180px"
-														style="border: none;">発生日時 <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=hisYmdhmsAscClass%>" href=""
-														onclick="NM011Sort(2);return false;">▲</a> <span
-														style="font-size: 1pt;"> </span> <a
-														class="<%=hisYmdhmsDescClass%>" href=""
-														onclick="NM011Sort(3);return false;">▼</a>
-													</td>
-													<td rowspan="4" class="comTableTitle container tkdUlt" width="120px"
-														style="border: none;">通知分類
-													</td>
-													<td class="comTableTitle container"
-														style="width: 140px; border: none;">通知件名
-													</td>
-													<td class="comTableTitle container"
-														style="width: 500px; border: none;">通知内容</td>
-													<td class="comTableTitle container"
-														style="width: 500px; border: none;">通知メモ</td>											</td>
-													<td class="comTableTitle container"
-														style="width: 90px; border: none;">通知ステータス</td>
-													<td class="comTableTitle container"
-														style="width: 80px; border: none;">通知優先度</td>
-													<td class="comTableTitle container"
-														style="width: 180px; border: none;">最終更新日時</td>
-												</tr>
-								</thead>
-												<%-- 内容 --%>
-				<s:iterator value="catTuuchiComboDataList" status="status" var="rowBean">
-					<tr>
-						 <td class="comTableItem tkdUlt"style="z-index:2;">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NM011Seni('<s:property  value="ntyId" />');return false;">
-						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
-						            <s:label  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
-						            <s:hidden  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
-						          </acronym>
-			              </a>
-				  		 </td>
-				  		 <td class="comTableItem tkdUlt" style="z-index:2;"><s:label  name="catTuuchiComboDataList[%{#status.index}].hisYmdhmsTo"  key="catTuuchiComboDataList[%{#status.index}].hisYmdhmsTo" /></td>
-				         <td class="comTableItem tkdUlt" style="z-index:2;"><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyBri"  key="catTuuchiComboDataList[%{#status.index}].ntyBri" /></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySubject"  key="catTuuchiComboDataList[%{#status.index}].ntySubject" /></td>
-				         <td class="comTableItem" ><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyMemo"  key="catTuuchiComboDataList[%{#status.index}].ntyMemo"/></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySts"  key="catTuuchiComboDataList[%{#status.index}].ntySts" /></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyPri"  key="catTuuchiComboDataList[%{#status.index}].ntyPri" /></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms"  key="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms" /></td>
-					</tr>
-				</s:iterator>
-
-				</table>
-				</div>
-	 	 		 </s:else>
-
+	</tr>
+	</table>
+		</div>
 			<table>
-												<tr>
-													<td class="comFormTableItem"><nobr>
-															<input class="comButton" type="button" name="buttonF1"
-																value="戻る" onClick="JavaScript:backBtn();return false;" />
-														</nobr></td>
-												</tr>
+						<tr>
+							<td class="comFormTableItem"align="left"><nobr>
+									<input class="comButton" type="button" name="buttonF1"
+										value="戻る" onClick="JavaScript:backBtn();return false;" />
+								</nobr></td>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+							<td class="comFormTableItem"align="right"><nobr>
+									<input class="comButton" type="button" name="buttonF1"
+										value="保存" onClick="JavaScript:backBtn();return false;" />
+								</nobr></td>
+						</tr>
 			</table>
 
 									<%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>

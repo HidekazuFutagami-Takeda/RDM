@@ -74,7 +74,23 @@ public class CatTuuchiComboDataList implements Serializable {
 
 	private String hisYmdhmsTo;
 
+	private boolean dataDupCheck;
 
+	private boolean ultRnkCheck;
+
+	private boolean fbResCheck;
+
+	private boolean consCheck;
+
+	private boolean othersCheck;
+
+	private boolean onlyCheck;
+
+	private boolean unconCheck;
+
+	private boolean ubderCheck;
+
+	private boolean resolvCheck;
 
         /**
      * reqJgiName
@@ -82,6 +98,8 @@ public class CatTuuchiComboDataList implements Serializable {
      */
 
     private String reqJgiName;
+
+
 
 	    /**
 	 * reqJgiNo
@@ -354,6 +372,141 @@ public class CatTuuchiComboDataList implements Serializable {
 	 */
 	public void setHisYmdhmsTo(String hisYmdhmsTo) {
 		this.hisYmdhmsTo = hisYmdhmsTo;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javadataDupCheckを設定
+	 * @return dataDupCheck
+	 */
+	public boolean isDataDupCheck() {
+		return dataDupCheck;
+	}
+
+	/**
+	 * @param dataDupCheck セットする dataDupCheck
+	 */
+	public void setDataDupCheck(boolean dataDupCheck) {
+		this.dataDupCheck = dataDupCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javaultRnkCheckを設定
+	 * @return ultRnkCheck
+	 */
+	public boolean isUltRnkCheck() {
+		return ultRnkCheck;
+	}
+
+	/**
+	 * @param ultRnkCheck セットする ultRnkCheck
+	 */
+	public void setUltRnkCheck(boolean ultRnkCheck) {
+		this.ultRnkCheck = ultRnkCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javafbResCheckを設定
+	 * @return fbResCheck
+	 */
+	public boolean isFbResCheck() {
+		return fbResCheck;
+	}
+
+	/**
+	 * @param fbResCheck セットする fbResCheck
+	 */
+	public void setFbResCheck(boolean fbResCheck) {
+		this.fbResCheck = fbResCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javaconsCheckを設定
+	 * @return consCheck
+	 */
+	public boolean isConsCheck() {
+		return consCheck;
+	}
+
+	/**
+	 * @param consCheck セットする consCheck
+	 */
+	public void setConsCheck(boolean consCheck) {
+		this.consCheck = consCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javaothersCheckを設定
+	 * @return othersCheck
+	 */
+	public boolean isOthersCheck() {
+		return othersCheck;
+	}
+
+	/**
+	 * @param othersCheck セットする othersCheck
+	 */
+	public void setOthersCheck(boolean othersCheck) {
+		this.othersCheck = othersCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javaonlyCheckを設定
+	 * @return onlyCheck
+	 */
+	public boolean isOnlyCheck() {
+		return onlyCheck;
+	}
+
+	/**
+	 * @param onlyCheck セットする onlyCheck
+	 */
+	public void setOnlyCheck(boolean onlyCheck) {
+		this.onlyCheck = onlyCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javaunconCheckを設定
+	 * @return unconCheck
+	 */
+	public boolean isUnconCheck() {
+		return unconCheck;
+	}
+
+	/**
+	 * @param unconCheck セットする unconCheck
+	 */
+	public void setUnconCheck(boolean unconCheck) {
+		this.unconCheck = unconCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javaubderCheckを設定
+	 * @return ubderCheck
+	 */
+	public boolean isUbderCheck() {
+		return ubderCheck;
+	}
+
+	/**
+	 * @param ubderCheck セットする ubderCheck
+	 */
+	public void setUbderCheck(boolean ubderCheck) {
+		this.ubderCheck = ubderCheck;
+	}
+
+	/**
+	 * CatTuuchiComboDataList.javaresolvCheckを設定
+	 * @return resolvCheck
+	 */
+	public boolean isResolvCheck() {
+		return resolvCheck;
+	}
+
+	/**
+	 * @param resolvCheck セットする resolvCheck
+	 */
+	public void setResolvCheck(boolean resolvCheck) {
+		this.resolvCheck = resolvCheck;
 	}
 
 }

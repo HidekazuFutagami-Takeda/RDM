@@ -132,9 +132,7 @@
          border-right-width : 1px;
          border-bottom-width : 1px;
                             /*テーブル幅可変*/
-	      resize : horizontal;
-		  overflow : hidden;
-		  font-weight:normal;
+
        }
        TD.comTableTitleMini		/* テーブル形式のタイトル項目 */
        {
@@ -287,35 +285,35 @@
               <%-- ヘッダー行 --%>
 				<tr >
 					<td rowspan="4" class="comTableTitle container tkdUlt" id="tkdUlt"width="180px"
-						style="border: none;" id="styles">都道府県
+						style="border: none;resize : horizontal;overflow : hidden; font-weight:normal;" id="styles">都道府県
 					</td>
 				</tr>
 					<tr><!-- 枠組み　大 -->
-							<th colspan="4" class="comTableTitle container" width="150px"
-							style="border: none;" id="styles">施設新規</th>
-							<th colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設更新</th>
-							<th colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設削除</th>
-							<th rowspan="2" colspan="2" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">領域別親子紐付け<br>(当期)<br>承認待ち</th>
-							<th rowspan="2" colspan="2" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設復活<br><br>承認待ち</th>
-							<th colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">医師新規</th>
-							<th colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">医師削除</th>
-							<th colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">医師復活</th>
-							<th colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設更新来期</th>
-							<th rowspan="2" colspan="2" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">武田親子紐づけ<br>(来期)<br>承認待ち</th>
+							<td colspan="4" class="comTableTitle container" width="150px"
+							style="border: none;" id="styles">施設新規</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設更新</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設削除</td>
+							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">領域別親子紐付け<br>(当期)<br>承認待ち</td>
+							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設復活<br><br>承認待ち</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">医師新規</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">医師削除</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">医師復活</td>
+							<td colspan="4" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">施設更新来期</td>
+							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
+							style="border: none;" id="styles">武田親子紐づけ<br>(来期)<br>承認待ち</td>
 					</tr>
 						<tr>　<!-- 枠組み　中 -->
-							<th colspan="2" class="comTableTitle container" width="100px"
+							<td colspan="2" class="comTableTitle container" width="100px"
 								style="border: none;" id="styles"><br>承認待ち
-							</th>
+							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
 								style="border: none;" id="styles">ULT<br>申請待ち
 							</td>

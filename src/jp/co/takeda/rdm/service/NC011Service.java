@@ -343,6 +343,7 @@ public class NC011Service extends BaseService {
     public BaseDTO init(NC011DTO indto) throws ParseException{
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
     	indto.setPreScreenId(loginInfo.getPreScreenId());
+    	indto.setJokenFlg(loginInfo.getJokenFlg());
 
         BaseDTO outdto = indto;
         // START UOC
@@ -950,7 +951,6 @@ public class NC011Service extends BaseService {
               if(check == true) {
             	  System.out.print("1000件エラー");
               }
-
 
           indto.setCatSnseiComboDataList(catSnseiComboDataList);
 

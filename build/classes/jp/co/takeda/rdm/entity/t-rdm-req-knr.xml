@@ -222,15 +222,15 @@
 	WHERE
 		1=1
 		<if test="insNo != null">
-	    AND HCO_MST.INS_NO = #{insNo}
+	   		 AND HCO_MST.INS_NO = #{insNo}
 	    </if>
 	    <if test="reqType != null">
-		    <if test='reqType != "1X"'>
-		    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+			<if test='reqType != "1X"'>
+			    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
 		    </if>
 		    <if test='reqType == "1X"'>
-		    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
-		    </if>
+			    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
+			</if>
 	    </if>
 	    <if test="aDdrCodePref != null">
 	    	<if test="reqType != null">
@@ -272,26 +272,26 @@
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="jgiNo != null">
-		AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
+			AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
 	    <if test="brCode != null">
-	    AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
+	    	AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
 	    <if test="distCode != null">
-		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)		</if>
+			AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)		</if>
 	    <if test="reqJgiName != null">
-	    AND REQ_KNR.REQ_JGI_NAME LIKE  '%' || #{reqJgiName} || '%'
+	    	AND REQ_KNR.REQ_JGI_NAME LIKE  '%' || #{reqJgiName} || '%'
 	    </if>
 	   	<if test="reqShz != null">
-	    AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
+	    	AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
 	    </if><!-- 管理者 -->
 
 	    <if test=" insKanjiSrch != null">
-	    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'
-		OR  HCO_REQ.INS_FORMAL_NAME LIKE'%' || #{insKanjiSrch} || '%'
-		OR  HCO_REQ.INS_CONT_NAME LIKE  '%' || #{insKanjiSrch} || '%'
-		OR  HCO_MST.INS_KANJ_SRCH LIKE  '%' || #{insKanjiSrch} || '%'
-	    )
+		    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'
+			OR  HCO_REQ.INS_FORMAL_NAME LIKE'%' || #{insKanjiSrch} || '%'
+			OR  HCO_REQ.INS_CONT_NAME LIKE  '%' || #{insKanjiSrch} || '%'
+			OR  HCO_MST.INS_KANJ_SRCH LIKE  '%' || #{insKanjiSrch} || '%'
+		    )
 	    </if>
 	    <if test="insNo != null">
 	    AND HCO_MST.INS_NO = #{insNo}

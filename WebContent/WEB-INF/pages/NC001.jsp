@@ -85,6 +85,29 @@ function shwoInit() {
 
 }
 
+function actBtn(screenId){
+
+	var nc001Tab;
+
+	if(nc001Tab && !nc001Tab.closed){
+		nc001Tab.close();
+	}
+
+	nc001Tab = window.open("","NC001Tab");
+	document.fm1.target="NC001Tab";
+
+	fm1.screenId.value=screenId;
+	fm1.functionId.value="Init";
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+
+}
+
+function comSetFormWindowInfo(){
+	comClickFlgInit();
+}
+
+
 </script>
 <body class="comPage" onLoad="comSetFormWindowName('JMN');jmnViewLoad();showInit();"  onmousemove="resetTimer();">
 
@@ -307,6 +330,13 @@ function shwoInit() {
                  <a href="" class="contentsTitle" onclick="gotoNext('ND103','Init'); return false;">医師勤務先追加（開発中）</a>
               　　　　　　　　　</td>
                 <td>医師勤務先追加直リンク（開発中）</td>
+              </tr>
+              <tr>
+                <td></td>
+              　　　　　　　　　<td>
+                 <a href="" class="contentsTitle" onclick="gotoNext('NF001','Init'); return false;">施設情報の新規登録・更新・削除(タブ遷移)</a>
+              　　　　　　　　　</td>
+                <td>速度確認。遅い</td>
               </tr>
              <tr><td>入力項目</td>
               　　　　　　　　　<td><label>申請ID</label></td>

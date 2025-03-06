@@ -102,7 +102,7 @@ public class NC203Service extends BaseService {
     		selectParamSelectHcoEntity.setSqlId("selectCntHco");
     	}
 
-    	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+    	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
     		// 管理者権限
     		selectinsListEntity.setKnrFlg(true);
     		selectParamSelectHcoEntity.setKnrFlg(true);
@@ -182,7 +182,19 @@ public class NC203Service extends BaseService {
 
 		//1-4-2 件数取得
         List<SelectCntSelectHcoEntity> selectParamSelectHcoList;
-        selectParamSelectHcoEntity.setKensakuHaiinKbn(StringUtils.setEmptyToNull(indto.getKensakuHaiinKbn()));
+        String backScreenId = indto.getBackScreenId();
+
+        // 廃院区分
+        if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)
+        		|| "ND103".equals(backScreenId) || "ND501".equals(backScreenId) || "NF011".equals(backScreenId)
+        		|| "NF012".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId)
+        		|| "NF401".equals(backScreenId) || "NF403".equals(backScreenId)) {
+        	selectParamSelectHcoEntity.setKensakuHaiinKbnNullFlg("1");
+        } else {
+        	selectinsListEntity.setKensakuHaiinKbnNullFlg("0");
+        	selectParamSelectHcoEntity.setKensakuHaiinKbn(StringUtils.setEmptyToNull(indto.getKensakuHaiinKbn()));
+        }
+
         selectParamSelectHcoEntity.setKensakuDelFlg(StringUtils.setEmptyToNull(indto.getKensakuDelFlg()));
         selectParamSelectHcoEntity.setInsNoSrch(StringUtils.setEmptyToNull(indto.getInsNoSrch()));
         selectParamSelectHcoEntity.setUltNo(StringUtils.setEmptyToNull(indto.getUltNo()));
@@ -214,7 +226,15 @@ public class NC203Service extends BaseService {
         selectinsListEntity.setInLimit(selectParamNc203List.get(1).getValue());
 
         //検索結果取得
-        selectinsListEntity.setKensakuHaiinKbn(StringUtils.setEmptyToNull(indto.getKensakuHaiinKbn()));
+        if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)
+        		|| "ND103".equals(backScreenId) || "ND501".equals(backScreenId) || "NF011".equals(backScreenId)
+        		|| "NF012".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId)
+        		|| "NF401".equals(backScreenId) || "NF403".equals(backScreenId)) {
+        	selectinsListEntity.setKensakuHaiinKbnNullFlg("1");
+        } else {
+        	selectinsListEntity.setKensakuHaiinKbnNullFlg("0");
+        	selectinsListEntity.setKensakuHaiinKbn(StringUtils.setEmptyToNull(indto.getKensakuHaiinKbn()));
+        }
         selectinsListEntity.setKensakuDelFlg(StringUtils.setEmptyToNull(indto.getKensakuDelFlg()));
         selectinsListEntity.setInsNoSrch(StringUtils.setEmptyToNull(indto.getInsNoSrch()));
         selectinsListEntity.setUltNo(StringUtils.setEmptyToNull(indto.getUltNo()));
@@ -384,27 +404,23 @@ public class NC203Service extends BaseService {
         // START UOC
         String backScreenId = indto.getBackScreenId();
 
-        //廃院区分_生成用エンティティ
-        MRdmCodeMstEntity paramHaiinKbn = new MRdmCodeMstEntity();
-        //検索条件_廃院区分
-        paramHaiinKbn.setCodeName("DEL_KBN");
-        //廃院区分の帳票一覧を取得する
-        List<MRdmCodeMstEntity> SelectHaiinKbn = dao.selectByValue(paramHaiinKbn);
-
+        // 廃院区分
         LinkedHashMap<String, String> mapHaiinKbn = new LinkedHashMap<String, String>();
-
         if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)
         		|| "ND103".equals(backScreenId) || "ND501".equals(backScreenId) || "NF011".equals(backScreenId)
         		|| "NF012".equals(backScreenId) || "NF211".equals(backScreenId) || "NF212".equals(backScreenId)
         		|| "NF401".equals(backScreenId) || "NF403".equals(backScreenId)) {
-        	for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
-		    	if("0".equals(outEntity.getValue1())) {
-		    		// 「0:通常」を選択し変更不可とする
-		    		mapHaiinKbn.put(outEntity.getValue1(), outEntity.getValue1Kanj());
-		    		indto.setKensakuHaiinKbn("0");
-		    	}
-		    }
+        	// --なし--固定
+		    mapHaiinKbn.put("", "--なし--");
+        	indto.setKensakuHaiinKbn("");
         } else {
+            //廃院区分_生成用エンティティ
+            MRdmCodeMstEntity paramHaiinKbn = new MRdmCodeMstEntity();
+            //検索条件_廃院区分
+            paramHaiinKbn.setCodeName("DEL_KBN");
+            //廃院区分の帳票一覧を取得する
+            List<MRdmCodeMstEntity> SelectHaiinKbn = dao.selectByValue(paramHaiinKbn);
+
 		    mapHaiinKbn.put("", "--なし--");
 		    for (MRdmCodeMstEntity outEntity : SelectHaiinKbn) {
 		    	mapHaiinKbn.put(outEntity.getValue1(), outEntity.getValue1Kanj());

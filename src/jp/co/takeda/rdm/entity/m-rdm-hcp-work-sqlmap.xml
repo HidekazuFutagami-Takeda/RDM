@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_hcp_work">
+    <resultMap id="selectNd401InitResultMap" type="jp.co.takeda.rdm.entity.join.SelectNd401InitEntity">
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="DOC_KANJ" property="docKanj"/>
+        <result column="PRE_TITLE_KJ" property="preTitleKj"/>
+        <result column="POST_TITLE_KJ" property="postTitleKj"/>
+        <result column="PRE_DEPT_KANJI" property="preDeptKanji"/>
+        <result column="POST_DEPT_KANJI" property="postDeptKanji"/>
+        <result column="PRE_TITLE_CODE" property="preTitleCode"/>
+        <result column="POST_TITLE_CODE" property="postTitleCode"/>
+        <result column="PRE_DEPT_CODE" property="preDeptCode"/>
+        <result column="POST_DEPT_CODE" property="postDeptCode"/>
+        <result column="PRE_DEPT_KANA" property="preDeptKana"/>
+        <result column="POST_DEPT_KANA" property="postDeptKana"/>
+        <result column="JOB_FORM" property="jobForm"/>
+        <result column="UNIV_POS_CODE" property="univPosCode"/>
+        <result column="DCC" property="dcc"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
+        <result column="SORT_NUM1" property="sortNum1"/>
+        <result column="SORT_NUM2" property="sortNum2"/>
+        <result column="SORT_NUM3" property="sortNum3"/>
+        <result column="SORT_NUM" property="sortNum"/>
+    </resultMap>
+    <resultMap id="selectCntNd401InitResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity">
+        <result column="CNT_KMU" property="cntKmu"/>
+    </resultMap>
+    <resultMap id="selectHcpWorkResultMap" type="jp.co.takeda.rdm.entity.join.SelectHcpWorkEntity">
+        <result column="INS_NO" property="insNo"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="JOB_FORM" property="jobForm"/>
+        <result column="DEPT_CODE" property="deptCode"/>
+        <result column="DEPT_KANJI" property="deptKanji"/>
+        <result column="DEPT_KANA" property="deptKana"/>
+        <result column="UNIV_POS_CODE" property="univPosCode"/>
+        <result column="TITLE_CODE" property="titleCode"/>
+        <result column="DCC" property="dccType"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
+        <result column="NEXT_BIZDAY" property="nextBizday"/>
+    </resultMap>
+   <select id="selectCntNd401Init" parameterType="jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity" resultMap="selectCntNd401InitResultMap">
+        SELECT COUNT(*) CNT_KMU
+        FROM (
+        SELECT DISTINCT
+            HCO_MST.INS_NO
+           ,HCO_MST.INS_ABBR_NAME
+           ,HCP_MST.DOC_NO
+           ,HCP_MST.DOC_KANJ
+           ,HCP_YAKUSHOKU.TITLE_KJ PRE_TITLE_KJ
+           ,HCP_YAKUSHOKU.TITLE_KJ POST_TITLE_KJ
+           ,HCP_WORK.DEPT_KANJI PRE_DEPT_KANJI
+           ,HCP_WORK.DEPT_KANJI POST_DEPT_KANJI
+           ,HCP_WORK.TITLE_CODE PRE_TITLE_CODE
+           ,HCP_WORK.TITLE_CODE POST_TITLE_CODE
+           ,HCP_WORK.DEPT_CODE PRE_DEPT_CODE
+           ,HCP_WORK.DEPT_CODE POST_DEPT_CODE
+           ,HCP_WORK.DEPT_KANA PRE_DEPT_KANA
+           ,HCP_WORK.DEPT_KANA POST_DEPT_KANA
+           ,HCP_WORK.JOB_FORM
+           ,HCP_WORK.UNIV_POS_CODE
+           ,HCP_WORK.DCC
+           ,HCO_MST.ULT_INS_NO
+           ,HCP_MST.ULT_DOC_NO
+           ,HCP_SHOZOKU_BUKA.SORT_NUM1
+           ,HCP_SHOZOKU_BUKA.SORT_NUM2
+           ,HCP_SHOZOKU_BUKA.SORT_NUM3
+           ,HCP_YAKUSHOKU.SORT_NUM
+        FROM M_RDM_HCP_MST HCP_MST
+        INNER JOIN
+            M_RDM_HCP_WORK HCP_WORK
+        ON
+            HCP_MST.DOC_NO = HCP_WORK.DOC_NO
+        INNER JOIN
+            M_RDM_HCO_MST HCO_MST
+        ON
+            HCO_MST.INS_NO = HCP_WORK.INS_NO
+        INNER JOIN
+            M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU
+        ON
+            HCP_YAKUSHOKU.TITLE_CODE = HCP_WORK.TITLE_CODE
+        AND HCP_YAKUSHOKU.UNIV_TITLE_FLG = '0'
+        AND HCP_YAKUSHOKU.DEL_FLG = '0'
+        INNER JOIN
+            M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA
+        ON
+            HCP_SHOZOKU_BUKA.DEPT_CODE = HCP_WORK.DEPT_CODE
+        AND HCP_SHOZOKU_BUKA.DEL_FLG = '0'
+        INNER JOIN
+            M_RDM_JKR_MR_INS_DOC_TRT MR_INS_DOC_TRT
+        ON
+            MR_INS_DOC_TRT.DOC_NO = HCP_WORK.DOC_NO
+        INNER JOIN
+            M_RDM_JGI_SOS_MST JGI_SOS_MST
+        ON
+            JGI_SOS_MST.JGI_NO = MR_INS_DOC_TRT.JGI_NO
+        LEFT JOIN
+            M_RDM_CODE_MST DUMMY_CODE_MST
+        ON
+            DUMMY_CODE_MST.CODE_NAME = 'DUMMY_HCO'
+        AND DUMMY_CODE_MST.DEL_FLG = '0'
+        AND DUMMY_CODE_MST.VALUE1 = HCP_WORK.INS_NO
+        WHERE 1 = 1
+        AND HCP_MST.DEL_FLG = '0'
+        --No0
+        AND DUMMY_CODE_MST.VALUE1 IS NULL
+        --No1
+        --AND HCO_MST.INS_KANJ_SRCH　like '%%'
+        --No2
+        AND HCO_MST.INS_NO = '001004075'
+        --No3
+        --AND HCP_MST.DOC_KANJI_SRCH = LIKE '%%'
+        --No4
+        --AND HCP_MST.DOC_NO = ''
+        --No5
+        --AND HCP_WORK.DEPT_CODE = ''
+        --組織が選択されている場合
+        --No6
+        --AND JGI_SOS_MST.UP_SOS_CD = ''
+        --No7
+        --AND JGI_SOS_MST.SOS_CD = ''
+        --担当者が選択されている場合
+        --No8
+        --AND JGI_SOS_MST.BR_CODE = ''
+        --No9
+        --AND JGI_SOS_MST.DIST_CODE = ''
+        --No10
+        --AND JGI_SOS_MST.JGI_NO = ''
+        ) SELECT_KMU
+    </select>
+   <select id="selectNd401Init" parameterType="jp.co.takeda.rdm.entity.join.SelectNd401InitEntity" resultMap="selectNd401InitResultMap">
+        SELECT DISTINCT
+            HCO_MST.INS_NO
+           ,HCO_MST.INS_ABBR_NAME
+           ,HCP_MST.DOC_NO
+           ,HCP_MST.DOC_KANJ
+           ,HCP_YAKUSHOKU.TITLE_KJ PRE_TITLE_KJ
+           ,HCP_YAKUSHOKU.TITLE_KJ POST_TITLE_KJ
+           ,HCP_WORK.DEPT_KANJI PRE_DEPT_KANJI
+           ,HCP_WORK.DEPT_KANJI POST_DEPT_KANJI
+           ,HCP_WORK.TITLE_CODE PRE_TITLE_CODE
+           ,HCP_WORK.TITLE_CODE POST_TITLE_CODE
+           ,HCP_WORK.DEPT_CODE PRE_DEPT_CODE
+           ,HCP_WORK.DEPT_CODE POST_DEPT_CODE
+           ,HCP_WORK.DEPT_KANA PRE_DEPT_KANA
+           ,HCP_WORK.DEPT_KANA POST_DEPT_KANA
+           ,HCP_WORK.JOB_FORM
+           ,HCP_WORK.UNIV_POS_CODE
+           ,HCP_WORK.DCC
+           ,HCO_MST.ULT_INS_NO
+           ,HCP_MST.ULT_DOC_NO
+           ,HCP_SHOZOKU_BUKA.SORT_NUM1
+           ,HCP_SHOZOKU_BUKA.SORT_NUM2
+           ,HCP_SHOZOKU_BUKA.SORT_NUM3
+           ,HCP_YAKUSHOKU.SORT_NUM
+        FROM M_RDM_HCP_MST HCP_MST
+        INNER JOIN
+            M_RDM_HCP_WORK HCP_WORK
+        ON
+            HCP_MST.DOC_NO = HCP_WORK.DOC_NO
+        INNER JOIN
+            M_RDM_HCO_MST HCO_MST
+        ON
+            HCO_MST.INS_NO = HCP_WORK.INS_NO
+        INNER JOIN
+            M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU
+        ON
+            HCP_YAKUSHOKU.TITLE_CODE = HCP_WORK.TITLE_CODE
+        AND HCP_YAKUSHOKU.UNIV_TITLE_FLG = '0'
+        AND HCP_YAKUSHOKU.DEL_FLG = '0'
+        INNER JOIN
+            M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA
+        ON
+            HCP_SHOZOKU_BUKA.DEPT_CODE = HCP_WORK.DEPT_CODE
+        AND HCP_SHOZOKU_BUKA.DEL_FLG = '0'
+        INNER JOIN
+            M_RDM_JKR_MR_INS_DOC_TRT MR_INS_DOC_TRT
+        ON
+            MR_INS_DOC_TRT.DOC_NO = HCP_WORK.DOC_NO
+        INNER JOIN
+            M_RDM_JGI_SOS_MST JGI_SOS_MST
+        ON
+            JGI_SOS_MST.JGI_NO = MR_INS_DOC_TRT.JGI_NO
+        LEFT JOIN
+            M_RDM_CODE_MST DUMMY_CODE_MST
+        ON
+            DUMMY_CODE_MST.CODE_NAME = 'DUMMY_HCO'
+        AND DUMMY_CODE_MST.DEL_FLG = '0'
+        AND DUMMY_CODE_MST.VALUE1 = HCP_WORK.INS_NO
+        WHERE 1 = 1
+        AND HCP_MST.DEL_FLG = '0'
+        --No0
+        AND DUMMY_CODE_MST.VALUE1 IS NULL
+        --No1
+        --AND HCO_MST.INS_KANJ_SRCH　like '%%'
+        --No2
+        AND HCO_MST.INS_NO = '001004075'
+        --No3
+        --AND HCP_MST.DOC_KANJI_SRCH = LIKE '%%'
+        --No4
+        --AND HCP_MST.DOC_NO = ''
+        --No5
+        --AND HCP_WORK.DEPT_CODE = ''
+        --組織が選択されている場合
+        --No6
+        --AND JGI_SOS_MST.UP_SOS_CD = ''
+        --No7
+        --AND JGI_SOS_MST.SOS_CD = ''
+        --担当者が選択されている場合
+        --No8
+        --AND JGI_SOS_MST.BR_CODE = ''
+        --No9
+        --AND JGI_SOS_MST.DIST_CODE = ''
+        --No10
+        --AND JGI_SOS_MST.JGI_NO = ''
+        ORDER BY
+            HCO_MST.INS_NO, HCP_SHOZOKU_BUKA.SORT_NUM1, HCP_SHOZOKU_BUKA.SORT_NUM2, HCP_SHOZOKU_BUKA.SORT_NUM3, HCP_YAKUSHOKU.SORT_NUM, HCP_MST.DOC_NO
+        OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
+    </select>
+    <select id="selectND315WorkData" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpWorkEntity" resultMap="selectHcpWorkResultMap">
+        SELECT
+            WOR.INS_NO
+          , NVL(WOR.JOB_FORM, 'Z') AS JOB_FORM
+          , NVL(WOR.DEPT_CODE, 'Z') AS DEPT_CODE
+          , NVL(WOR.DEPT_KANJI, 'Z') AS DEPT_KANJI
+          , NVL(WOR.DEPT_KANA, 'Z') AS DEPT_KANA
+          , WOR.UNIV_POS_CODE
+          , WOR.TITLE_CODE
+          , WOR.DCC
+          , HCP.ULT_DOC_NO
+          , RDM_COMMON.GET_NEXT_BIZDAY(RDM_COMMON.GET_TODAY) AS NEXT_BIZDAY
+        FROM
+           M_RDM_HCP_WORK WOR
+        INNER JOIN
+           M_RDM_HCP_MST  HCP
+           ON 1 = 1
+          AND HCP.DOC_NO = WOR.DOC_NO
+        WHERE 1 = 1
+          AND WOR.DOC_NO = #{inDocNo}
+    </select>
+</mapper>

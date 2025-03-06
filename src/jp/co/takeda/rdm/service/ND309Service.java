@@ -657,7 +657,7 @@ public class ND309Service extends BaseService {
         	tRdmReqKnrEntity.setReqYmdhms(sysDateTime);
         	tRdmReqKnrEntity.setReqComment(indto.getReqComment());
 
-        	if(loginInfo.getJokenSetCd().equals("JKN0813")) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
         		tRdmReqKnrEntity.setReqKngKbn("2");
         	} else {
         		tRdmReqKnrEntity.setReqKngKbn("1");
@@ -691,7 +691,7 @@ public class ND309Service extends BaseService {
         	tRdmReqKnrEntity.setUpdShaYmd(systemDate);
         	tRdmReqKnrEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 
-        	if(loginInfo.getJokenSetCd().equals("JKN0813")) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
         		tRdmReqKnrEntity.setReqKngKbn("2");
         	} else {
         		tRdmReqKnrEntity.setReqKngKbn("1");

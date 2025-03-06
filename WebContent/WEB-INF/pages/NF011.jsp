@@ -1069,24 +1069,32 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 		let trtCdInp = document.createElement("input");
 		let jgiNoInp = document.createElement("input");
+		let trtNmInp = document.createElement("input");
+		let jgiNmInp = document.createElement("input");
 		let trtGrpInp = document.createElement("input");
 		let mrCatInp = document.createElement("input");
 		let delFlgInp = document.createElement("input");
 
 		trtCdInp.setAttribute("type", "hidden");
 		jgiNoInp.setAttribute("type", "hidden");
+		trtNmInp.setAttribute("type", "hidden");
+		jgiNmInp.setAttribute("type", "hidden");
 		trtGrpInp.setAttribute("type", "hidden");
 		mrCatInp.setAttribute("type", "hidden");
 		delFlgInp.setAttribute("type", "hidden");
 
 		trtCdInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].trtCd");
 		jgiNoInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].jgiNo");
+		trtNmInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].trtNm");
+		jgiNmInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].jgiNm");
 		trtGrpInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].trtGrpCd");
 		mrCatInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].mrCat");
 		delFlgInp.setAttribute("name", "hcoJkrDataList["+trtRow+"].deleteFlg");
 
 		trtCdInp.setAttribute("value", trtCd);
 		jgiNoInp.setAttribute("value", jgiNo);
+		trtNmInp.setAttribute("value", trtNm);
+		jgiNmInp.setAttribute("value", jgiNm);
 		trtGrpInp.setAttribute("value", trtGrpCd);
 		mrCatInp.setAttribute("value", mrCat);
 		delFlgInp.setAttribute("value", "0");
@@ -1100,6 +1108,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 		tr.appendChild(trtCdInp);
 		tr.appendChild(jgiNoInp);
+		tr.appendChild(trtNmInp);
+		tr.appendChild(jgiNmInp);
 		tr.appendChild(trtGrpInp);
 		tr.appendChild(mrCatInp);
 		tr.appendChild(delFlgInp);
@@ -1148,17 +1158,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		const preScreenId = document.fm1.preScreenId.value;
 		if(preScreenId == "NF001"){
 			if(window.confirm("施設検索画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
+				window.close();
 			}
 		} else if(preScreenId == "NC011"){
 			if(window.confirm("申請一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
+				window.close();
 			}
 		}
 	}
@@ -2047,7 +2051,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			        <%--領域担当者データ取得項目--%>
 			        <%--領域担当者データ保持用のHIDDEN項目--%>
 			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtCd"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtNm"/>
 			        <s:hidden name="hcoJkrDataList[%{#status.index}].jgiNo"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].jgiNm"/>
 			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtGrpCd"/>
 			        <s:hidden name="hcoJkrDataList[%{#status.index}].mrCat"/>
 			        <s:hidden name="hcoJkrDataList[%{#status.index}].deleteFlg"/>
@@ -2086,7 +2092,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <tr>
 	      <td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
       </tr>
-      <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+      <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
       <tr>
 	      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
       </tr>
@@ -2143,7 +2149,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="JavaScript:shnCompBtn();return false;"  disabled/>
 					</s:if>
@@ -2162,7 +2168,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/>
 				</s:if>
 				<s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13")}'>
-					<s:if test='%{(loginJokenSetCd == "JKN0813")}'>
+					<s:if test='%{(loginJokenSetCd == "JKN0850")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;" />
 					</s:if>
 					<s:else>

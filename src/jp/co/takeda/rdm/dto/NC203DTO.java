@@ -198,6 +198,12 @@ public class NC203DTO extends BaseDTO implements Serializable {
     private String addrCodeCity;
 
     /**
+	 * JIS市区町村
+	 * @generated
+	 */
+	private String tmpAddrCodeCity;
+
+    /**
      * 検索条件_子施設を除く
      * @generated
      */
@@ -793,6 +799,21 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAddrCodeCity(String addrCodeCity) {
 		this.addrCodeCity = addrCodeCity;
+	}
+
+	/**
+	 * NC203DTO.javatmpAddrCodeCityを設定
+	 * @return tmpAddrCodeCity
+	 */
+	public String getTmpAddrCodeCity() {
+		return tmpAddrCodeCity;
+	}
+
+	/**
+	 * @param tmpAddrCodeCity セットする tmpAddrCodeCity
+	 */
+	public void setTmpAddrCodeCity(String tmpAddrCodeCity) {
+		this.tmpAddrCodeCity = tmpAddrCodeCity;
 	}
 
 	/**

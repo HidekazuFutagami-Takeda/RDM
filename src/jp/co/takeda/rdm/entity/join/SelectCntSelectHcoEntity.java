@@ -50,6 +50,12 @@ public class SelectCntSelectHcoEntity extends BaseEntity implements Serializable
     private String kensakuHaiinKbn;
 
     /**
+     * 廃院区分 IS NULL 判定用
+     * @generated
+     */
+    private String kensakuHaiinKbnNullFlg;
+
+    /**
      * 検索用＿廃院区分
      * @generated
      */
@@ -343,6 +349,21 @@ public class SelectCntSelectHcoEntity extends BaseEntity implements Serializable
 	 */
 	public void setKensakuHaiinKbn(String kensakuHaiinKbn) {
 		this.kensakuHaiinKbn = kensakuHaiinKbn;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javakensakuHaiinKbnNullFlgを設定
+	 * @return kensakuHaiinKbnNullFlg
+	 */
+	public String getKensakuHaiinKbnNullFlg() {
+		return kensakuHaiinKbnNullFlg;
+	}
+
+	/**
+	 * @param kensakuHaiinKbnNullFlg セットする kensakuHaiinKbnNullFlg
+	 */
+	public void setKensakuHaiinKbnNullFlg(String kensakuHaiinKbnNullFlg) {
+		this.kensakuHaiinKbnNullFlg = kensakuHaiinKbnNullFlg;
 	}
 
 	/**

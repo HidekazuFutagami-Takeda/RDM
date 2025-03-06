@@ -117,9 +117,6 @@ public class NF301Action extends BaseAction<NF301DTO> {
 
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
-
         dto.setMsgId(null);
 
         // END UOC
@@ -164,9 +161,6 @@ public class NF301Action extends BaseAction<NF301DTO> {
 //        String title = "NF301_施設新規作成 - 申請内容確認";
 
 //        dto.setTitle(title);
-
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
 
         dto.setMsgId(null);
 

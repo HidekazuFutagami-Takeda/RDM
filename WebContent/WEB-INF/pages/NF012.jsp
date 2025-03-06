@@ -62,7 +62,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 		insClass = document.fm1.insClass.value;
 		knrFlg = "0";
-		if(document.fm1.loginJokenSetCd.value == "JKN0813"){
+		if(document.fm1.loginJokenSetCd.value == "JKN0850"){
 			knrFlg = "1";
 		}
 
@@ -107,7 +107,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		editFlg = document.fm1.editApprFlg.value;
 		insClass = document.fm1.insClass.value;
 		knrFlg = "0";
-		if(document.fm1.loginJokenSetCd.value == "JKN0813"){
+		if(document.fm1.loginJokenSetCd.value == "JKN0850"){
 			knrFlg = "1";
 		}
 
@@ -1567,7 +1567,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="ultInsCd" /></td>
 		<td class="comFormTableItemNf012">
 			<nobr>
-				<s:if test='%{loginJokenSetCd == "JKN0813"}'>
+				<s:if test='%{loginJokenSetCd == "JKN0850"}'>
 					<s:if test='%{editApprFlg == "1"}'>
 						<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:ultInsPopBtn(); return false;" />
                 	</s:if>
@@ -3595,7 +3595,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		  	</s:else>
 		  </nobr></td>
       </tr>
-      <s:if test='%{loginJokenSetCd == "JKN0813"}'>
+      <s:if test='%{loginJokenSetCd == "JKN0850"}'>
       <tr>
 	      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
       </tr>
@@ -3647,7 +3647,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="JavaScript:shnCompBtn();return false;"  disabled/>
 					</s:if>
@@ -3666,7 +3666,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/>
 				</s:if>
 				<s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13")}'>
-					<s:if test='%{(loginJokenSetCd == "JKN0813")}'>
+					<s:if test='%{(loginJokenSetCd == "JKN0850")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;" />
 					</s:if>
 					<s:else>

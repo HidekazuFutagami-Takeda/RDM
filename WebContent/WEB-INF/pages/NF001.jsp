@@ -212,6 +212,27 @@
 		  	fm1.insNo.value = tmpIns;
 		}
 
+		 // 新規作成ボタン
+	    function newBtn(){
+	    	var tmpIns = fm1.insNo.value;
+	    	fm1.insNo.value = "";
+
+	    	document.fm1.target="";
+		 	fm1.screenId.value="NF011";
+		  	fm1.functionId.value="Init";
+
+			if(nf001Tab && !nf001Tab.closed){
+	 			nf001Tab.close();
+	 		}
+
+	 		nf001Tab = window.open("","NF001Tab");
+			document.fm1.target="NF001Tab";
+	  	  	comSubmitForAnyWarp(fm1);
+	  	  	comClickFlgInit();
+
+		  	fm1.insNo.value = tmpIns;
+		}
+
 	 	// ソートボタン
 	    function sortBtn(sortCondition) {
 			//ソート区分設定
@@ -508,10 +529,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	    <%-- 新規作成 --%>
 	    <td colspan=2><nobr>
 		    <s:if test='srchFlg == "1" '>
-	    		<input type="button" name="新規作成" value="新規作成" onclick="gotoNext('NF011','Init')" />
+	    		<input type="button" name="新規作成" value="新規作成" onclick="newBtn()" />
 	    	</s:if>
 	    	<s:else>
-	    		<input type="button" name="新規作成" value="新規作成" onclick="gotoNext('NF011','Init')" disabled />
+	    		<input type="button" name="新規作成" value="新規作成" onclick="newBtn()" disabled />
 	    	</s:else>
 			※新規作成の前に検索してください
 		</nobr></td>
@@ -767,7 +788,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
             <tr>
         	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="gotoNext('NC001','Init')" />
+                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="window.close();" />
                 </nobr>
 	      </td>
 

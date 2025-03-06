@@ -261,9 +261,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="shisetsuNm"/>
 	<s:hidden name="preInsPcode"/>
 	<s:hidden name="insPcode"/>
+	<s:hidden name="addrCodePref"/>
 	<s:hidden name="preAddrCodePref"/>
 	<s:hidden name="preAddrCodePrefName"/>
 	<s:hidden name="addrCodePrefName"/>
+	<s:hidden name="addrCodeCity"/>
 	<s:hidden name="preAddrCodeCity"/>
 	<s:hidden name="preAddrCodeCityName"/>
 	<s:hidden name="addrCodeCityName"/>
@@ -465,7 +467,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="preUnivSubdiv"/>
 	<s:hidden name="preUnivSubdivNm"/>
 	<s:hidden name="preCapaTypeNm"/>
+	<s:hidden name="univSubdiv"/>
 	<s:hidden name="univSubdivNm"/>
+	<s:hidden name="capaType"/>
 	<s:hidden name="capaTypeNm"/>
 	<s:hidden name="bedCntBase"/>
 	<s:hidden name="bedCnt01"/>
@@ -697,21 +701,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="usercd0034Nm"/>
 	<s:hidden name="usercd0035Nm"/>
 	<s:hidden name="usercd0036Nm"/>
-	<s:hidden name="usercd0101"/>
-	<s:hidden name="usercd0102"/>
-	<s:hidden name="usercd0103"/>
-	<s:hidden name="usercd0104"/>
-	<s:hidden name="usercd0105"/>
-	<s:hidden name="usercd0106"/>
-	<s:hidden name="usercd0107"/>
-	<s:hidden name="usercd0108"/>
-	<s:hidden name="usercd0109"/>
-	<s:hidden name="usercd0201"/>
-	<s:hidden name="usercd0202"/>
-	<s:hidden name="usercd0203"/>
-	<s:hidden name="usercd0204"/>
-	<s:hidden name="usercd0205"/>
-	<s:hidden name="usercd0206"/>
 	<s:hidden name="reward04Nm"/>
 	<s:hidden name="reward05Nm"/>
 	<s:hidden name="reward08Nm"/>
@@ -729,6 +718,131 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="reward36Nm"/>
 	<s:hidden name="reward37Nm"/>
 	<s:hidden name="reward44Nm"/>
+	<s:hidden name="welfare02"/>
+	<s:hidden name="welfare08"/>
+	<s:hidden name="result01"/>
+	<s:hidden name="result02"/>
+	<s:hidden name="result03"/>
+	<s:hidden name="result04"/>
+	<s:hidden name="result05"/>
+	<s:hidden name="result06"/>
+	<s:hidden name="result07"/>
+	<s:hidden name="result08"/>
+	<s:hidden name="result09"/>
+	<s:hidden name="result10"/>
+	<s:hidden name="result11"/>
+	<s:hidden name="result12"/>
+	<s:hidden name="result13"/>
+	<s:hidden name="result14"/>
+	<s:hidden name="result15"/>
+	<s:hidden name="result16"/>
+	<s:hidden name="result17"/>
+	<s:hidden name="result18"/>
+	<s:hidden name="result19"/>
+	<s:hidden name="result20"/>
+	<s:hidden name="result21"/>
+	<s:hidden name="result22"/>
+	<s:hidden name="result23"/>
+	<s:hidden name="result24"/>
+	<s:hidden name="result25"/>
+	<s:hidden name="result26"/>
+	<s:hidden name="result27"/>
+	<s:hidden name="result28"/>
+	<s:hidden name="result29"/>
+	<s:hidden name="result30"/>
+	<s:hidden name="result31"/>
+	<s:hidden name="result32"/>
+	<s:hidden name="result33"/>
+	<s:hidden name="result34"/>
+	<s:hidden name="result35"/>
+	<s:hidden name="result36"/>
+	<s:hidden name="equip01"/>
+	<s:hidden name="equip02"/>
+	<s:hidden name="equip03"/>
+	<s:hidden name="equip07"/>
+	<s:hidden name="equip09"/>
+	<s:hidden name="market01"/>
+	<s:hidden name="market02"/>
+	<s:hidden name="market03"/>
+	<s:hidden name="market04"/>
+	<s:hidden name="market06"/>
+	<s:hidden name="market07"/>
+	<s:hidden name="market09"/>
+	<s:hidden name="medical12"/>
+	<s:hidden name="spfunc01"/>
+	<s:hidden name="spfunc03"/>
+	<s:hidden name="spfunc04"/>
+	<s:hidden name="tieup10"/>
+	<s:hidden name="tieup11"/>
+	<s:hidden name="tieup12"/>
+	<s:hidden name="usercd0001"/>
+	<s:hidden name="usercd0002"/>
+	<s:hidden name="usercd0003"/>
+	<s:hidden name="usercd0004"/>
+	<s:hidden name="usercd0005"/>
+	<s:hidden name="usercd0006"/>
+	<s:hidden name="usercd0007"/>
+	<s:hidden name="usercd0008"/>
+	<s:hidden name="usercd0009"/>
+	<s:hidden name="usercd0010"/>
+	<s:hidden name="usercd0011"/>
+	<s:hidden name="usercd0012"/>
+	<s:hidden name="usercd0013"/>
+	<s:hidden name="usercd0014"/>
+	<s:hidden name="usercd0015"/>
+	<s:hidden name="usercd0016"/>
+	<s:hidden name="usercd0017"/>
+	<s:hidden name="usercd0018"/>
+	<s:hidden name="usercd0019"/>
+	<s:hidden name="usercd0020"/>
+	<s:hidden name="usercd0021"/>
+	<s:hidden name="usercd0022"/>
+	<s:hidden name="usercd0023"/>
+	<s:hidden name="usercd0024"/>
+	<s:hidden name="usercd0025"/>
+	<s:hidden name="usercd0026"/>
+	<s:hidden name="usercd0027"/>
+	<s:hidden name="usercd0028"/>
+	<s:hidden name="usercd0029"/>
+	<s:hidden name="usercd0030"/>
+	<s:hidden name="usercd0031"/>
+	<s:hidden name="usercd0032"/>
+	<s:hidden name="usercd0033"/>
+	<s:hidden name="usercd0034"/>
+	<s:hidden name="usercd0035"/>
+	<s:hidden name="usercd0036"/>
+	<s:hidden name="usercd0101"/>
+	<s:hidden name="usercd0102"/>
+	<s:hidden name="usercd0103"/>
+	<s:hidden name="usercd0104"/>
+	<s:hidden name="usercd0105"/>
+	<s:hidden name="usercd0106"/>
+	<s:hidden name="usercd0107"/>
+	<s:hidden name="usercd0108"/>
+	<s:hidden name="usercd0109"/>
+	<s:hidden name="usercd0201"/>
+	<s:hidden name="usercd0202"/>
+	<s:hidden name="usercd0203"/>
+	<s:hidden name="usercd0204"/>
+	<s:hidden name="usercd0205"/>
+	<s:hidden name="usercd0206"/>
+	<s:hidden name="reward04"/>
+	<s:hidden name="reward05"/>
+	<s:hidden name="reward08"/>
+	<s:hidden name="reward09"/>
+	<s:hidden name="reward16"/>
+	<s:hidden name="reward17"/>
+	<s:hidden name="reward18"/>
+	<s:hidden name="reward21"/>
+	<s:hidden name="reward23"/>
+	<s:hidden name="reward25"/>
+	<s:hidden name="reward26"/>
+	<s:hidden name="reward27"/>
+	<s:hidden name="reward29"/>
+	<s:hidden name="reward35"/>
+	<s:hidden name="reward36"/>
+	<s:hidden name="reward37"/>
+	<s:hidden name="reward44"/>
 
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>
@@ -2119,7 +2233,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
       	</s:else>
       </tr>
-      <s:if test='%{loginJokenSetCd == "JKN0813"}'>
+      <s:if test='%{loginJokenSetCd == "JKN0850"}'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
@@ -2147,7 +2261,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">
                 <nobr>
                 <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
-                <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
+                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 	                	<input class="comButton" type="button"name="buttonF2" value="却下" onClick="JavaScript:rejectBtn();return false;" />
 	                </s:if>
@@ -2162,7 +2276,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">&nbsp;</td>
 	      <td class="comFormTableItem">
                <nobr>
-               	<s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
+               	<s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 	               		<s:if test='%{reqStsCd == "03"}'>
 	               			<input type="checkbox" id="fbReqFlg" name="fbReqFlg" /><label for="fbReqFlg">アルトマークへの情報連携</label>

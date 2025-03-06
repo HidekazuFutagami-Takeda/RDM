@@ -6,25 +6,30 @@
 */
 	function sosAddrChange() {
 
-	//市区町村配列
-	 var val2 = document.getElementById("jkrCityNameCd");
-	 val2.value = '';
-	 //選択されたっ都道府県のCD
-     var val1 = document.getElementById("jkrSosAddrCd").value;
+		//市区町村配列
+		 var val2 = document.getElementById("jkrCityNameCd");
+		 val2.value = '';
+		 //選択されたっ都道府県のCD
+	     var val1 = document.getElementById("jkrSosAddrCd").value;
 
-     for (i = 0; i < val2.length; i++) {
-    	 //表示
-    	 val2.options[i].style.display = "block";
-    	 var val2Cd = val2[i].value;
-    	 //市区町村コードの頭2つ切り取る
-    	 var val2cut = val2Cd.toString().substr( 0, 2);
-    	 if (val1 != val2cut) {
-    		 val2.options[i];
-    		 val2.options[i].style.display = "none";
-         }
-
-     }
+	     for (i = 0; i < val2.length; i++) {
+	    	 //表示
+	    	 val2.options[i].style.display = "block";
+	    	 var val2Cd = val2[i].value;
+	    	 if(val2Cd != ""){
+		    	 //市区町村コードの頭2つ切り取る
+		    	 var val2cut = val2Cd.toString().substr( 0, 2);
+		    	 if (val1 != val2cut) {
+		    		 val2.options[i];
+		    		 val2.options[i].style.display = "none";
+		         }
+	    	 }
+	    }
 	}
+
+	function addrCodeCityChange(){
+    	document.fm1.tmpAddrCodeCity.value = document.fm1.kensakuAddrCodeCity.value;
+    }
 
      function jimSort(sortCondition){
     	  // 変更内容破棄確認チェック

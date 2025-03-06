@@ -263,7 +263,7 @@ public class ND011Service extends BaseService {
 		}
 		indto.setHcpSocietyDataChgFlg("0");
 		indto.setHcpPublicDataChgFlg("0");
-		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0813 全MR：JKN0023
+		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
 		// DropDownList作成
 		createCombo(indto);
@@ -272,10 +272,10 @@ public class ND011Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
@@ -722,10 +722,10 @@ public class ND011Service extends BaseService {
 		        if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 		        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
 		        	indto.setEditApprFlg("1");
-		        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
-		        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+		        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
 		        			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
 		        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
@@ -743,10 +743,10 @@ public class ND011Service extends BaseService {
 		        if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 		        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
 		        	indto.setEditApprFlg("1");
-		        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
-		        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+		        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
 		        			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
 		        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
@@ -1200,7 +1200,7 @@ public class ND011Service extends BaseService {
 				// 申請管理
 				TRdmReqKnrEntity insEntity1 =  new TRdmReqKnrEntity();
 				insEntity1.setReqId(reqId); //申請ID
-				if("JKN0813".equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0813 全MR：JKN0023)
+				if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0850 全MR：JKN0023)
 					insEntity1.setReqChl("2");//申請チャネル
 					insEntity1.setReqKngKbn("2");//申請者権限区分
 				} else {
@@ -1402,10 +1402,10 @@ public class ND011Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");

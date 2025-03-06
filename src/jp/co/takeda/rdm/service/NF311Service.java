@@ -257,7 +257,7 @@ public class NF311Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -650,7 +650,7 @@ public class NF311Service extends BaseService {
     	// 領域・品目グループ
     	SelectLnkTrtDataEntity inEntityCmb = new SelectLnkTrtDataEntity("selectTrtPrdComboData");
     	inEntityCmb.setInInsNo(indto.getInsNo());
-    	if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+    	if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
     		// ※MR権限の場合のみ ログインユーザ情報.領域コード
     		inEntityCmb.setInTrtCd(indto.getLoginTrtCd());
     	}
@@ -787,7 +787,7 @@ public class NF311Service extends BaseService {
         	tRdmReqKnrEntity.setReqYmdhms(sysDateTime);
         	tRdmReqKnrEntity.setReqComment(indto.getReqComment());
 
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		tRdmReqKnrEntity.setReqKngKbn("2");
         	} else {
         		tRdmReqKnrEntity.setReqKngKbn("1");

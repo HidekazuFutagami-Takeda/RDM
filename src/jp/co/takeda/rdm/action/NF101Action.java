@@ -21,6 +21,7 @@ import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF101DTO;
 import jp.co.takeda.rdm.service.NF101Service;
 import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 
 /**
  * Actionクラス
@@ -116,16 +117,15 @@ public class NF101Action extends BaseAction<NF101DTO> {
 
         dto.setTitle(title);
 
-        //モック
-        //dto.setInsNo("101172360");
-        //dto.setInsNo("101108002"); // 施設種別06
-        dto.setInsNo("623000112"); // 施設種別08
-        dto.setReqId("250220-000333");
-
-        String preScreenId = loginInfo.getPreScreenId();
         String reqId = dto.getReqId();
         String insNo = dto.getInsNo();
-        dto.setPreScreenId(preScreenId);
+
+        String preScreenId = dto.getBackScreenId();
+        if("NF309".equals(preScreenId)) {
+        	preScreenId = dto.getPreScreenId();
+        } else {
+        	dto.setPreScreenId(preScreenId);
+        }
 
         dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
         dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
@@ -135,25 +135,10 @@ public class NF101Action extends BaseAction<NF101DTO> {
         dto.setLoginShzNm(loginInfo.getBumonRyakuName());
         dto.setLoginTrtCd(loginInfo.getTrtCd());
 
-        //モック
-        String kbn = "0";
-        if(kbn.equals("0")) {
-	        preScreenId = "NF001";
-	       // dto.setLoginJgiNo("8830034");
-	        dto.setReqId("");
-        } else {
-	        preScreenId = "NC011";
-	        dto.setInsNo("");
-	        //dto.setLoginJgiNo("8830034");
-	        //dto.setLoginJgiNo("0");
-	        //dto.setLoginJokenSetCd("JKN0813");	// 管理者
-	        //dto.setLoginJokenSetCd("JKN0023");	// MR
-        }
-
         // 遷移パターン　1:施設固定コードから作成、2：申請データあり
         // 施設固定コード　ありなしで分岐
         // NF001_施設検索
-        if ("NF001".equals(preScreenId) || "NF102".equals(preScreenId)) {
+        if ("NF001".equals(preScreenId)) {
         	if (insNo != null && insNo.length() > 0) {
         		// 施設固定コードで初期データ作成
         		dto.setDisplayKbn("1");
@@ -162,7 +147,7 @@ public class NF101Action extends BaseAction<NF101DTO> {
         }
         // 申請ID
         // NC011_申請一覧
-        if ("NC011".equals(preScreenId)) {
+        if ("NC011".equals(preScreenId) || "NF102".equals(preScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
         		dto.setDisplayKbn("2");
@@ -252,8 +237,8 @@ public class NF101Action extends BaseAction<NF101DTO> {
     protected String cancelNext(BaseDTO outdto) throws Exception {
         // START UOC
 
-    	// 前画面に遷移
-        outdto.setForward(outdto.getPreScreenId());
+    	// 完了画面に遷移
+        outdto.setForward("NC101");
 
         // END UOC
         setNextDTO(outdto);

@@ -107,6 +107,8 @@ public class NF011Service extends BaseService {
 				indto.setAddrCodePrefName(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""));
 				indto.setAddrCodeCity(StringUtils.nvl(mainDataEntity.getShikuchosonCd(), ""));
 				indto.setAddrCodeCityName(StringUtils.nvl(mainDataEntity.getShikuchosonNm(), ""));
+				indto.setTkCityCd(StringUtils.nvl(mainDataEntity.getTkCityCd(), ""));
+				indto.setTkCityName(StringUtils.nvl(mainDataEntity.getTkCityNm(), ""));
 				indto.setInsPhone1(StringUtils.nvl(mainDataEntity.getShisetsuTel(), ""));
 
 				// 経営主体
@@ -341,10 +343,10 @@ public class NF011Service extends BaseService {
 		if ("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 			// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
 			indto.setEditApprFlg("1");
-		} else if (!"JKN0813".equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		} else if (!RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 			// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 			indto.setEditApprFlg("0");
-		} else if ("JKN0813".equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+		} else if (RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
 				&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
 			// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
 			indto.setEditApprFlg("0");
@@ -497,7 +499,7 @@ public class NF011Service extends BaseService {
 
 		// 領域
 		SelectRdmComTrtgrpDataEntity inTrtEntityCmb = new SelectRdmComTrtgrpDataEntity();
-		if ("JKN0023".equals(indto.getLoginJokenSetCd())) {
+		if (RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
 			inTrtEntityCmb.setTrtCd(indto.getLoginTrtCd());
 		}
 		List<SelectRdmComTrtgrpDataEntity> outTrtList = dao.select(inTrtEntityCmb);
@@ -687,8 +689,8 @@ public class NF011Service extends BaseService {
 			errFlg = true;
 		}
 		if (!StringUtils.isNumeric(indto.getBedCnt04())) {
-			// 入力文字種が不正です。（基準）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "基準") + "\n";
+			// 入力文字種が不正です。（結核）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "結核") + "\n";
 			errFlg = true;
 		}
 		if (!StringUtils.isNumeric(indto.getBedCnt01())) {
@@ -842,7 +844,7 @@ public class NF011Service extends BaseService {
 		HashSet<String> trtSet = new HashSet<>();
 
 		for (int i = 0; i < hcoJkrDataList.size(); i++) {
-			HcoJkrData hcoJkrData = hcoJkrDataList.get(0);
+			HcoJkrData hcoJkrData = hcoJkrDataList.get(i);
 			if (!"1".equals(hcoJkrData.getDeleteFlg())) {
 				if (!trtSet.add(hcoJkrData.getTrtCd())) {
 					// 領域に対して担当者は1名のみ設定してください。
@@ -875,7 +877,7 @@ public class NF011Service extends BaseService {
 			// レコードを登録
 			TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
 			tRdmReqKnrInsData.setReqId(reqId);
-			if ("JKN0813".equals(indto.getLoginJokenSetCd())) {
+			if (RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
 				// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
 				tRdmReqKnrInsData.setReqChl("2");
 				tRdmReqKnrInsData.setReqKngKbn("2");

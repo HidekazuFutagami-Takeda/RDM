@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="t_rdm_hco_nxt_req">
+    <resultMap id="tRdmHcoNxtReqResultMap" type="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+		<result column="REQ_ID" property="reqId"/>
+		<result column="INS_NO" property="insNo"/>
+		<result column="PHARM_TYPE" property="pharmType"/>
+		<result column="HO_INS_TYPE" property="hoInsType"/>
+		<result column="REG_VIS_TYPE" property="regVisType"/>
+		<result column="INS_RANK" property="insRank"/>
+		<result column="IMP_HOS_TYPE" property="impHosType"/>
+		<result column="MANAGE_CD" property="manageCd"/>
+		<result column="VAC_INS_TYPE" property="vacInsType"/>
+		<result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+		<result column="BEDCNT_BASE" property="bedcntBase"/>
+		<result column="BEDCNT04" property="bedcnt04"/>
+		<result column="BEDCNT01" property="bedcnt01"/>
+		<result column="BEDCNT05" property="bedcnt05"/>
+		<result column="BEDCNT07" property="bedcnt07"/>
+		<result column="BEDCNT02" property="bedcnt02"/>
+		<result column="BEDCNT03" property="bedcnt03"/>
+		<result column="BEDCNT06" property="bedcnt06"/>
+		<result column="BEDS_TOT" property="bedsTot"/>
+		<result column="MED_BEDS_TOT" property="medBedsTot"/>
+		<result column="INS_SHA_YMD" property="insShaYmd"/>
+		<result column="INS_SHA_ID" property="insShaId"/>
+		<result column="UPD_SHA_YMD" property="updShaYmd"/>
+		<result column="UPD_SHA_ID" property="updShaId"/>
+    </resultMap>
     <resultMap id="nF101MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_SHZ" property="reqShzNm"/>
         <result column="REQ_STS_NM" property="reqStsNm"/>
         <result column="REQ_JGI_NAME" property="reqJgiName"/>
@@ -31,6 +58,14 @@
         <result column="MANAGE_CD" property="manageCd"/>
         <result column="VAC_INS_TYPE" property="vacInsType"/>
         <result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+        <result column="PHARM_TYPE_NM" property="pharmTypeNm"/>
+        <result column="INS_RANK_NM" property="insRankNm"/>
+        <result column="REG_VIS_TYPE_NM" property="regVisTypeNm"/>
+        <result column="IMP_HOS_TYPE_NM" property="impHosTypeNm"/>
+        <result column="HO_INS_TYPE_NM" property="hoInsTypeNm"/>
+        <result column="MANAGE_NM" property="manageNm"/>
+        <result column="VAC_INS_TYPE_NM" property="vacInsTypeNm"/>
+        <result column="VAC_VISIT_TYPE_NM" property="vacVisitTypeNm"/>
         <result column="ULT_PHARM_TYPE" property="shisetsuKbn"/>
         <result column="ULT_MANAGE_CD" property="keieitaiNm"/>
         <result column="NEXT_PHARM_TYPE" property="nextPharmType"/>
@@ -57,6 +92,7 @@
         <result column="ULT_BEDCNT05" property="ultBedCnt05"/>
         <result column="ULT_BEDCNT03" property="ultBedCnt03"/>
         <result column="ULT_BEDCNT07" property="ultBedCnt07"/>
+        <result column="NEXT_BEDCNT_BASE" property="nextBedCntBase"/>
         <result column="NEXT_BEDCNT04" property="nextBedCnt04"/>
         <result column="NEXT_BEDCNT01" property="nextBedCnt01"/>
         <result column="NEXT_BEDCNT05" property="nextBedCnt05"/>
@@ -64,6 +100,8 @@
         <result column="NEXT_BEDCNT07" property="nextBedCnt07"/>
         <result column="NEXT_BEDCNT02" property="nextBedCnt02"/>
         <result column="NEXT_BEDCNT06" property="nextBedCnt06"/>
+        <result column="NEXT_BEDS_TOT" property="nextBedsTot"/>
+        <result column="NEXT_MED_BEDS_TOT" property="nextMedBedsTot"/>
         <result column="REQ_COMMENT" property="reqComment"/>
         <result column="APR_MEMO" property="aprMemo"/>
         <result column="SHN_FLG" property="shnFlg"/>
@@ -85,6 +123,47 @@
         <result column="BEDS_TOT_FLG" property="bedsTotFlg"/>
         <result column="MED_BEDS_TOT_FLG" property="medBedsTotFlg"/>
     </resultMap>
+    <resultMap id="nF102MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF102MainDataListEntity">
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="PHARM_TYPE" property="pharmType"/>
+        <result column="INS_RANK" property="insRank"/>
+        <result column="REG_VIS_TYPE" property="regVisType"/>
+        <result column="IMP_HOS_TYPE" property="impHosType"/>
+        <result column="HO_INS_TYPE" property="hoInsType"/>
+        <result column="MANAGE_NM" property="manageNm"/>
+        <result column="VAC_INS_TYPE" property="vacInsType"/>
+        <result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+        <result column="BEDCNT_BASE" property="bedCntBase"/>
+        <result column="BEDCNT04" property="bedCnt04"/>
+        <result column="BEDCNT01" property="bedCnt01"/>
+        <result column="BEDCNT05" property="bedCnt05"/>
+        <result column="BEDCNT03" property="bedCnt03"/>
+        <result column="BEDCNT07" property="bedCnt07"/>
+        <result column="BEDCNT02" property="bedCnt02"/>
+        <result column="BEDCNT06" property="bedCnt06"/>
+        <result column="BEDS_TOT" property="bedsTot"/>
+        <result column="MED_BEDS_TOT" property="medBedsTot"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_SHZ" property="reqShzNm"/>
+    </resultMap>
+    <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+        INSERT INTO
+            T_RDM_HCO_NXT_REQ(<trim suffixOverrides=",">REQ_ID,<if test="insNo != null">INS_NO,</if><if test="pharmType != null">PHARM_TYPE,</if><if test="hoInsType != null">HO_INS_TYPE,</if><if test="regVisType != null">REG_VIS_TYPE,</if><if test="insRank != null">INS_RANK,</if><if test="impHosType != null">IMP_HOS_TYPE,</if><if test="manageCd != null">MANAGE_CD,</if><if test="vacInsType != null">VAC_INS_TYPE,</if><if test="vacVisitType != null">VAC_VISIT_TYPE,</if><if test="bedcntBase != null">BEDCNT_BASE,</if><if test="bedcnt04 != null">BEDCNT04,</if><if test="bedcnt01 != null">BEDCNT01,</if><if test="bedcnt05 != null">BEDCNT05,</if><if test="bedcnt07 != null">BEDCNT07,</if><if test="bedcnt02 != null">BEDCNT02,</if><if test="bedcnt03 != null">BEDCNT03,</if><if test="bedcnt06 != null">BEDCNT06,</if><if test="bedsTot != null">BEDS_TOT,</if><if test="medBedsTot != null">MED_BEDS_TOT,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
+        VALUES
+            (<trim suffixOverrides=",">#{reqId},<if test="insNo != null">#{insNo},</if><if test="pharmType != null">#{pharmType},</if><if test="hoInsType != null">#{hoInsType},</if><if test="regVisType != null">#{regVisType},</if><if test="insRank != null">#{insRank},</if><if test="impHosType != null">#{impHosType},</if><if test="manageCd != null">#{manageCd},</if><if test="vacInsType != null">#{vacInsType},</if><if test="vacVisitType != null">#{vacVisitType},</if><if test="bedcntBase != null">#{bedcntBase},</if><if test="bedcnt04 != null">#{bedcnt04},</if><if test="bedcnt01 != null">#{bedcnt01},</if><if test="bedcnt05 != null">#{bedcnt05},</if><if test="bedcnt07 != null">#{bedcnt07},</if><if test="bedcnt02 != null">#{bedcnt02},</if><if test="bedcnt03 != null">#{bedcnt03},</if><if test="bedcnt06 != null">#{bedcnt06},</if><if test="bedsTot != null">#{bedsTot},</if><if test="medBedsTot != null">#{medBedsTot},</if><if test="insShaYmd != null">#{insShaYmd},</if><if test="insShaId != null">#{insShaId},</if><if test="updShaYmd != null">#{updShaYmd},</if><if test="updShaId != null">#{updShaId},</if></trim>)
+    </insert>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity" resultMap="tRdmHcoNxtReqResultMap">
+        SELECT
+            REQ_ID, INS_NO, PHARM_TYPE, HO_INS_TYPE, REG_VIS_TYPE, INS_RANK, IMP_HOS_TYPE, MANAGE_CD, VAC_INS_TYPE, VAC_VISIT_TYPE, BEDCNT_BASE, BEDCNT04, BEDCNT01, BEDCNT05, BEDCNT07, BEDCNT02, BEDCNT03, BEDCNT06, BEDS_TOT, MED_BEDS_TOT, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
+		FROM
+            T_RDM_HCO_NXT_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </select>
     <select id="selectNF101INSData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity" resultMap="nF101MainDataResultMap">
 		WITH COLOR AS (
 		SELECT
@@ -149,14 +228,22 @@
 		, MST.INS_ABBR_NAME -- 施設_基本情報.施設略式漢字名
 		, MST.ULT_INS_NO -- 施設_基本情報.ULT施設コード
 		, MDB.SHISETSU_NM_RYAKU -- ULT_MDB施設マスタ.施設名略名
-		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE -- 施設_基本情報.施設区分
-		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK -- 施設_基本情報.階級区分
-		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE -- 施設_基本情報.定訪先区分
-		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE -- 施設_基本情報.重点病院区分
-		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE -- 施設_基本情報.対象区分
-		, KEIEITAI.KEIEITAI_KJ AS MANAGE_CD -- 施設_経営主体マスタ.経営主体
-		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE -- 施設_基本情報.ワクチン対象区分
-		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE -- 施設_基本情報.ワクチン定訪先区分
+		, MST.PHARM_TYPE
+		, MST.INS_RANK
+		, MST.REG_VIS_TYPE
+		, MST.IMP_HOS_TYPE
+		, MST.HO_INS_TYPE
+		, MST.MANAGE_CD
+		, VAC.VAC_INS_TYPE
+		, VAC.VAC_VISIT_TYPE
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE_NM -- 施設_基本情報.施設区分
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK_NM -- 施設_基本情報.階級区分
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM -- 施設_基本情報.定訪先区分
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE_NM -- 施設_基本情報.重点病院区分
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE_NM -- 施設_基本情報.対象区分
+		, KEIEITAI.KEIEITAI_KJ AS MANAGE_NM -- 施設_経営主体マスタ.経営主体
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE_NM -- 施設_基本情報.ワクチン対象区分
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE_NM -- 施設_基本情報.ワクチン定訪先区分
 		, CDM_ULTPHARMTYPE.VALUE1_KANJ AS ULT_PHARM_TYPE -- ULT_MDB施設マスタ.施設区分
 		, ULT_KEIEITAI.KEIEITAI_KJ AS ULT_MANAGE_CD -- 施設_経営主体マスタ.経営主体
 		, VHCO.PHARM_TYPE AS NEXT_PHARM_TYPE -- 施設_来期用_申請管理.施設区分
@@ -369,6 +456,7 @@
 
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL -- 申請管理.申請チャネル
 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
 		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
 		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
@@ -389,14 +477,22 @@
 		, MST.INS_ABBR_NAME -- 施設_基本情報.施設略式漢字名
 		, MST.ULT_INS_NO -- 施設_申請管理.ULT施設コード
 		, MDB.SHISETSU_NM_RYAKU -- ULT_MDB施設マスタ.施設名略名
-		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE -- 施設_基本情報.施設区分
-		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK -- 施設_基本情報.階級区分
-		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE -- 施設_基本情報.定訪先区分
-		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE -- 施設_基本情報.重点病院区分
-		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE -- 施設_基本情報.対象区分
-		, KEIEITAI.KEIEITAI_KJ AS MANAGE_CD -- 施設_経営主体マスタ.経営主体
-		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE -- 施設_基本情報.ワクチン対象区分
-		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE -- 施設_基本情報.ワクチン定訪先区分
+		, MST.PHARM_TYPE
+		, MST.INS_RANK
+		, MST.REG_VIS_TYPE
+		, MST.IMP_HOS_TYPE
+		, MST.HO_INS_TYPE
+		, MST.MANAGE_CD
+		, VAC.VAC_INS_TYPE
+		, VAC.VAC_VISIT_TYPE
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE_NM -- 施設_基本情報.施設区分
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK_NM -- 施設_基本情報.階級区分
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM -- 施設_基本情報.定訪先区分
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE_NM -- 施設_基本情報.重点病院区分
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE_NM -- 施設_基本情報.対象区分
+		, KEIEITAI.KEIEITAI_KJ AS MANAGE_NM -- 施設_経営主体マスタ.経営主体
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE_NM -- 施設_基本情報.ワクチン対象区分
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE_NM -- 施設_基本情報.ワクチン定訪先区分
 		, CDM_ULTPHARMTYPE.VALUE1_KANJ AS ULT_PHARM_TYPE -- ULT_MDB施設マスタ.施設区分
 		, ULT_KEIEITAI.KEIEITAI_KJ AS ULT_MANAGE_CD -- 施設_経営主体マスタ.経営主体
 		, HCO.PHARM_TYPE AS NEXT_PHARM_TYPE -- 施設_来期用_申請管理.施設区分
@@ -423,6 +519,7 @@
 		, MDB.KYOKABYOSHOSU_KANSEN AS ULT_BEDCNT05	-- ULT_MDB施設マスタ.許可病床数感染症
 		, MDB.KYOKABYOSHOSU_SEISHIN AS ULT_BEDCNT03	-- ULT_MDB施設マスタ.許可病床数精神
 		, MDB.KYOKABYOSHOSU_RYOYO AS ULT_BEDCNT07	-- ULT_MDB施設マスタ.許可病床数療養病床
+		, HCO.BEDCNT_BASE AS NEXT_BEDCNT_BASE
 		, HCO.BEDCNT04 AS NEXT_BEDCNT04
 		, HCO.BEDCNT01 AS NEXT_BEDCNT01
 		, HCO.BEDCNT05 AS NEXT_BEDCNT05
@@ -430,6 +527,8 @@
 		, HCO.BEDCNT07 AS NEXT_BEDCNT07
 		, HCO.BEDCNT02 AS NEXT_BEDCNT02
 		, HCO.BEDCNT06 AS NEXT_BEDCNT06
+		, HCO.BEDS_TOT AS NEXT_BEDS_TOT
+		, HCO.MED_BEDS_TOT AS NEXT_MED_BEDS_TOT
 		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
 		, KNR.APR_MEMO  -- 申請管理.承認者メモ
 		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
@@ -565,4 +664,213 @@
 		WHERE 1=1
         AND KNR.REQ_ID = #{inReqId}
     </select>
+	<select id="selectNF102Data" parameterType="jp.co.takeda.rdm.entity.join.SelectNF102MainDataListEntity" resultMap="nF102MainDataResultMap">
+		WITH MAIN AS(
+		SELECT
+		  KNR.REQ_ID
+		, KNR.REQ_YMDHMS
+		, KNR.REQ_STS
+		, KNR.REQ_JGI_NO
+		, KNR.REQ_JGI_NAME
+		, KNR.REQ_SHZ
+		, KNR.REQ_COMMENT
+		, NXT.PHARM_TYPE
+		, NXT.INS_RANK
+		, NXT.REG_VIS_TYPE
+		, NXT.IMP_HOS_TYPE
+		, NXT.HO_INS_TYPE
+		, NXT.MANAGE_CD
+		, NXT.VAC_INS_TYPE
+		, NXT.VAC_VISIT_TYPE
+		, NXT.BEDCNT_BASE
+		, NXT.BEDCNT04
+		, NXT.BEDCNT01
+		, NXT.BEDCNT05
+		, NXT.BEDCNT03
+		, NXT.BEDCNT07
+		, NXT.BEDCNT02
+		, NXT.BEDCNT06
+		, NXT.BEDS_TOT
+		, NXT.MED_BEDS_TOT
+		FROM
+		T_RDM_HCO_NXT_REQ NXT -- 施設_来期用_申請管理
+		INNER JOIN
+		T_RDM_REQ_KNR KNR -- 申請管理
+		ON  KNR.REQ_ID = NXT.REQ_ID
+		AND KNR.REQ_TYPE = '21'
+		AND KNR.REQ_STS IN ('03', '13')
+		WHERE
+		NXT.INS_NO = #{inInsNo}
+
+		UNION
+
+		SELECT
+		  null AS REQ_ID
+		, null AS REQ_YMDHMS
+		, null AS REQ_STS
+		, null AS REQ_JGI_NO
+		, null AS REQ_JGI_NAME
+		, null AS REQ_SHZ
+		, null AS REQ_COMMENT
+		, MST.PHARM_TYPE
+		, MST.INS_RANK
+		, MST.REG_VIS_TYPE
+		, MST.IMP_HOS_TYPE
+		, MST.HO_INS_TYPE
+		, MST.MANAGE_CD
+		, VAC.VAC_INS_TYPE
+		, VAC.VAC_VISIT_TYPE
+		, TO_CHAR(MST.BEDCNT_BASE) AS BEDCNT_BASE
+		, CNT.BEDCNT04
+		, CNT.BEDCNT01
+		, CNT.BEDCNT05
+		, CNT.BEDCNT03
+		, CNT.BEDCNT07
+		, CNT.BEDCNT02
+		, CNT.BEDCNT06
+		, TO_CHAR(MST.BEDS_TOT) AS BEDS_TOT
+		, TO_CHAR(MST.MED_BEDS_TOT) AS MED_BEDS_TOT
+		FROM
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		LEFT JOIN
+		M_RDM_HCO_VAC VAC -- 施設_ワクチン情報
+		ON MST.INS_NO = VAC.INS_NO
+		LEFT JOIN
+		( SELECT
+		   INS_NO
+		  , MAX(CASE SET_CD WHEN '001' THEN SET_VALUE ELSE null END) AS BEDCNT01
+		  , MAX(CASE SET_CD WHEN '002' THEN SET_VALUE ELSE null END) AS BEDCNT02
+		  , MAX(CASE SET_CD WHEN '003' THEN SET_VALUE ELSE null END) AS BEDCNT03
+		  , MAX(CASE SET_CD WHEN '004' THEN SET_VALUE ELSE null END) AS BEDCNT04
+		  , MAX(CASE SET_CD WHEN '005' THEN SET_VALUE ELSE null END) AS BEDCNT05
+		  , MAX(CASE SET_CD WHEN '006' THEN SET_VALUE ELSE null END) AS BEDCNT06
+		  , MAX(CASE SET_CD WHEN '007' THEN SET_VALUE ELSE null END) AS BEDCNT07
+		FROM
+		  M_RDM_HCO_BEDCNT
+		WHERE
+		  RELEV_TYPE = '008'
+		AND RELEV_CD = '00'
+		GROUP BY
+		  INS_NO
+		) CNT -- 施設_病床数情報
+		ON MST.INS_NO = CNT.INS_NO
+		WHERE MST.INS_NO = #{inInsNo}
+		)
+
+		SELECT
+		  MAIN.REQ_ID
+		, MAIN.REQ_YMDHMS
+		, CDM.VALUE1_KANJ AS REQ_STS_NM
+		, MAIN.REQ_JGI_NO
+		, MAIN.REQ_JGI_NAME
+		, MAIN.REQ_SHZ
+		, MAIN.REQ_COMMENT
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE
+		, KEIEITAI.KEIEITAI_KJ AS MANAGE_NM
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE
+		, MAIN.BEDCNT_BASE
+		, MAIN.BEDCNT04
+		, MAIN.BEDCNT01
+		, MAIN.BEDCNT05
+		, MAIN.BEDCNT03
+		, MAIN.BEDCNT07
+		, MAIN.BEDCNT02
+		, MAIN.BEDCNT06
+		, MAIN.BEDS_TOT
+		, MAIN.MED_BEDS_TOT
+		FROM
+		MAIN -- サブクエリ（一覧データ）
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = MAIN.REQ_STS
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_PHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_PHARMTYPE.CODE_NAME = 'PHARM_TYPE'
+		AND CDM_PHARMTYPE.DEL_FLG = '0'
+		AND CDM_PHARMTYPE.VALUE1 = MAIN.PHARM_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_INSRANK -- コード情報
+		ON 1=1
+		AND CDM_INSRANK.CODE_NAME = 'INS_RANK'
+		AND CDM_INSRANK.DEL_FLG = '0'
+		AND CDM_INSRANK.VALUE1 = MAIN.INS_RANK
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_REGVISTYPE -- コード情報
+		ON 1=1
+		AND CDM_REGVISTYPE.CODE_NAME = 'REG_VIS_TYPE'
+		AND CDM_REGVISTYPE.DEL_FLG = '0'
+		AND CDM_REGVISTYPE.VALUE1 = MAIN.REG_VIS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_IMPHOSTYPE -- コード情報
+		ON 1=1
+		AND CDM_IMPHOSTYPE.CODE_NAME = 'IMP_HOS_TYPE'
+		AND CDM_IMPHOSTYPE.DEL_FLG = '0'
+		AND CDM_IMPHOSTYPE.VALUE1 = MAIN.IMP_HOS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_HOINSTYPE -- コード情報
+		ON 1=1
+		AND CDM_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
+		AND CDM_HOINSTYPE.DEL_FLG = '0'
+		AND CDM_HOINSTYPE.VALUE1 = MAIN.HO_INS_TYPE
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEITAI -- 施設_経営主体マスタ
+		ON 1=1
+		AND KEIEITAI.SET_DT_CD = MAIN.MANAGE_CD
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_VACINSTYPE -- コード情報
+		ON 1=1
+		AND CDM_VACINSTYPE.CODE_NAME = 'VAC_INS_TYPE'
+		AND CDM_VACINSTYPE.DEL_FLG = '0'
+		AND CDM_VACINSTYPE.VALUE1 = MAIN.VAC_INS_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_VACVISITTYPE -- コード情報
+		ON 1=1
+		AND CDM_VACVISITTYPE.CODE_NAME = 'VAC_VISIT_TYPE'
+		AND CDM_VACVISITTYPE.DEL_FLG = '0'
+		AND CDM_VACVISITTYPE.VALUE1 = MAIN.VAC_VISIT_TYPE
+		<if test="inSortId == 0">ORDER BY MAIN.REQ_YMDHMS ASC NULLS FIRST, REQ_ID DESC</if>
+        <if test="inSortId == 1">ORDER BY MAIN.REQ_YMDHMS DESC NULLS LAST, REQ_ID DESC</if>
+	</select>
+    <update id="updateNF101Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+        UPDATE
+            T_RDM_HCO_NXT_REQ
+        SET
+			<if test="pharmType != null">PHARM_TYPE = #{pharmType},</if><if test="pharmType == null">PHARM_TYPE = null,</if>
+			<if test="hoInsType != null">HO_INS_TYPE = #{hoInsType},</if><if test="hoInsType == null">HO_INS_TYPE = null,</if>
+			<if test="regVisType != null">REG_VIS_TYPE = #{regVisType},</if><if test="regVisType == null">REG_VIS_TYPE = null,</if>
+			<if test="insRank != null">INS_RANK = #{insRank},</if><if test="insRank == null">INS_RANK = null,</if>
+			<if test="impHosType != null">IMP_HOS_TYPE = #{impHosType},</if><if test="impHosType == null">IMP_HOS_TYPE = null,</if>
+			<if test="manageCd != null">MANAGE_CD = #{manageCd},</if><if test="manageCd == null">MANAGE_CD = null,</if>
+			<if test="vacInsType != null">VAC_INS_TYPE = #{vacInsType},</if><if test="vacInsType == null">VAC_INS_TYPE = null,</if>
+			<if test="vacVisitType != null">VAC_VISIT_TYPE = #{vacVisitType},</if><if test="vacVisitType == null">VAC_VISIT_TYPE = null,</if>
+			<if test="bedcntBase != null">BEDCNT_BASE = #{bedcntBase},</if><if test="bedcntBase == null">BEDCNT_BASE = null,</if>
+			<if test="bedcnt04 != null">BEDCNT04 = #{bedcnt04},</if><if test="bedcnt04 == null">BEDCNT04 = null,</if>
+			<if test="bedcnt01 != null">BEDCNT01 = #{bedcnt01},</if><if test="bedcnt01 == null">BEDCNT01 = null,</if>
+			<if test="bedcnt05 != null">BEDCNT05 = #{bedcnt05},</if><if test="bedcnt05 == null">BEDCNT05 = null,</if>
+			<if test="bedcnt07 != null">BEDCNT07 = #{bedcnt07},</if><if test="bedcnt07 == null">BEDCNT07 = null,</if>
+			<if test="bedcnt02 != null">BEDCNT02 = #{bedcnt02},</if><if test="bedcnt02 == null">BEDCNT02 = null,</if>
+			<if test="bedcnt03 != null">BEDCNT03 = #{bedcnt03},</if><if test="bedcnt03 == null">BEDCNT03 = null,</if>
+			<if test="bedcnt06 != null">BEDCNT06 = #{bedcnt06},</if><if test="bedcnt06 == null">BEDCNT06 = null,</if>
+			<if test="bedsTot != null">BEDS_TOT = #{bedsTot},</if><if test="bedsTot == null">BEDS_TOT = null,</if>
+			<if test="medBedsTot != null">MED_BEDS_TOT = #{medBedsTot},</if><if test="medBedsTot == null">MED_BEDS_TOT = null,</if>
+			UPD_SHA_YMD = #{updShaYmd},
+			UPD_SHA_ID = #{updShaId}
+        WHERE
+            REQ_ID = #{reqId}
+    </update>
+    <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
+        DELETE FROM
+            T_RDM_HCO_NXT_REQ
+        WHERE
+            REQ_ID = #{reqId}
+    </delete>
 </mapper>

@@ -944,7 +944,7 @@
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
-<%-- 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'> --%>
+<%-- 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'> --%>
 <!-- 	      <tr> -->
 <!-- 		      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td> -->
 <!-- 	      </tr> -->
@@ -956,7 +956,7 @@
 </s:if>
 <s:else>
 		 <tr>
-		      <td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
+		      <td class="comFormTableItem"><nobr>却下コメント</nobr></td>
 	     </tr>
 	     <tr>
 		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
@@ -1010,7 +1010,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-<%-- 				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'> --%>
+<%-- 				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'> --%>
 <%-- 					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'> --%>
 <!-- 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" disabled/> -->
 <%-- 					</s:if> --%>
@@ -1029,11 +1029,11 @@
 		                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" onClick="register('1');return false;" />
 			   </s:if>
 				<s:else>
-				   <s:if test='%{reqStsCd != null && reqStsCd != "" && (reqStsCd == "03" || reqStsCd == "13") &&  loginJokenSetCd == "JKN0813"}'>
+				   <s:if test='%{reqStsCd != null && reqStsCd != "" && (reqStsCd == "03" || reqStsCd == "13") &&  loginJokenSetCd == "JKN0850"}'>
 		                <input class="comButton" type="button"name="buttonF4" value="却下画面へ" onClick="register('3');return false;" />
 				   </s:if>
 					<s:else>
-						<s:if test='%{loginJokenSetCd == "JKN0813"}'>
+						<s:if test='%{loginJokenSetCd == "JKN0850"}'>
 			                <input class="comButton" type="button"name="buttonF4" value="却下画面へ" disabled/>
 						</s:if>
 						<s:else>

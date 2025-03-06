@@ -109,7 +109,7 @@ public class NF012Service extends BaseService {
     		indto.setPreWsType(StringUtils.nvl(mainDataEntity.getPreWsType(), ""));
 
     		if(mainDataEntity.getPreWsType() != null && !mainDataEntity.getPreWsType().isEmpty()) {
-    			indto.setPreWsTypeNm(StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
+    			indto.setPreWsTypeNm(mainDataEntity.getPreWsType() + "：" + StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
     		} else {
     			indto.setPreWsTypeNm("--なし--");
     		}
@@ -117,7 +117,7 @@ public class NF012Service extends BaseService {
     		indto.setPreBasketPurchase(StringUtils.nvl(mainDataEntity.getPreBasketPurchase(), ""));
 
     		if(mainDataEntity.getPreBasketPurchase() != null && !mainDataEntity.getPreBasketPurchase().isEmpty()) {
-    			indto.setPreBasketPurchaseNm(mainDataEntity.getPreBasketPurchase() + "：" + StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
+    			indto.setPreBasketPurchaseNm(StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
     		} else {
     			indto.setPreBasketPurchaseNm("--なし--");
     		}
@@ -605,37 +605,37 @@ public class NF012Service extends BaseService {
     		indto.setPreMarket09(StringUtils.nvl(mainDataEntity.getPreMarket09(), ""));
 
     		if(mainDataEntity.getPreMarket01() != null && !mainDataEntity.getPreMarket01().isEmpty()) {
-    			indto.setPreMarket01Nm(mainDataEntity.getPreMarket01() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
+    			indto.setPreMarket01Nm(StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
     		} else {
     			indto.setPreMarket01Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket02() != null && !mainDataEntity.getPreMarket02().isEmpty()) {
-    			indto.setPreMarket02Nm(mainDataEntity.getPreMarket02() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
+    			indto.setPreMarket02Nm(StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
     		} else {
     			indto.setPreMarket02Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket03() != null && !mainDataEntity.getPreMarket03().isEmpty()) {
-    			indto.setPreMarket03Nm(mainDataEntity.getPreMarket03() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
+    			indto.setPreMarket03Nm(StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
     		} else {
     			indto.setPreMarket03Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket04() != null && !mainDataEntity.getPreMarket04().isEmpty()) {
-    			indto.setPreMarket04Nm(mainDataEntity.getPreMarket04() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
+    			indto.setPreMarket04Nm(StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
     		} else {
     			indto.setPreMarket04Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket06() != null && !mainDataEntity.getPreMarket06().isEmpty()) {
-    			indto.setPreMarket06Nm(mainDataEntity.getPreMarket06() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
+    			indto.setPreMarket06Nm(StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
     		} else {
     			indto.setPreMarket06Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket07() != null && !mainDataEntity.getPreMarket07().isEmpty()) {
-    			indto.setPreMarket07Nm(mainDataEntity.getPreMarket07() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
+    			indto.setPreMarket07Nm(StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
     		} else {
     			indto.setPreMarket07Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket09() != null && !mainDataEntity.getPreMarket09().isEmpty()) {
-    			indto.setPreMarket09Nm(mainDataEntity.getPreMarket09() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
+    			indto.setPreMarket09Nm(StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
     		} else {
     			indto.setPreMarket09Nm("--なし--");
     		}
@@ -665,17 +665,17 @@ public class NF012Service extends BaseService {
     		indto.setPreSpfunc04(StringUtils.nvl(mainDataEntity.getPreSpfunc04(), ""));
 
     		if(mainDataEntity.getPreSpfunc01() != null && !mainDataEntity.getPreSpfunc01().isEmpty()) {
-    			indto.setPreSpfunc01Nm(mainDataEntity.getPreSpfunc01() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
+    			indto.setPreSpfunc01Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
     		} else {
     			indto.setPreSpfunc01Nm("--なし--");
     		}
     		if(mainDataEntity.getPreSpfunc03() != null && !mainDataEntity.getPreSpfunc03().isEmpty()) {
-    			indto.setPreSpfunc03Nm(mainDataEntity.getPreSpfunc03() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
+    			indto.setPreSpfunc03Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
     		} else {
     			indto.setPreSpfunc03Nm("--なし--");
     		}
     		if(mainDataEntity.getPreSpfunc04() != null && !mainDataEntity.getPreSpfunc04().isEmpty()) {
-    			indto.setPreSpfunc04Nm(mainDataEntity.getPreSpfunc04() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
+    			indto.setPreSpfunc04Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
     		} else {
     			indto.setPreSpfunc04Nm("--なし--");
     		}
@@ -690,17 +690,17 @@ public class NF012Service extends BaseService {
     		indto.setPreTieup12(StringUtils.nvl(mainDataEntity.getPreTieup12(), ""));
 
     		if(mainDataEntity.getPreTieup10() != null && !mainDataEntity.getPreTieup10().isEmpty()) {
-    			indto.setPreTieup10Nm(mainDataEntity.getPreTieup10() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
+    			indto.setPreTieup10Nm(StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
     		} else {
     			indto.setPreTieup10Nm("--なし--");
     		}
     		if(mainDataEntity.getPreTieup11() != null && !mainDataEntity.getPreTieup11().isEmpty()) {
-    			indto.setPreTieup11Nm(mainDataEntity.getPreTieup11() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
+    			indto.setPreTieup11Nm(StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
     		} else {
     			indto.setPreTieup11Nm("--なし--");
     		}
     		if(mainDataEntity.getPreTieup12() != null && !mainDataEntity.getPreTieup12().isEmpty()) {
-    			indto.setPreTieup12Nm(mainDataEntity.getPreTieup12() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
+    			indto.setPreTieup12Nm(StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
     		} else {
     			indto.setPreTieup12Nm("--なし--");
     		}
@@ -1015,87 +1015,87 @@ public class NF012Service extends BaseService {
     		indto.setPreReward44(StringUtils.nvl(mainDataEntity.getPreReward44(), ""));
 
     		if(mainDataEntity.getPreReward04() != null && !mainDataEntity.getPreReward04().isEmpty()) {
-    			indto.setPreReward04Nm(mainDataEntity.getPreReward04() + "：" + StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
+    			indto.setPreReward04Nm(StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
     		} else {
     			indto.setPreReward04Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward05() != null && !mainDataEntity.getPreReward05().isEmpty()) {
-    			indto.setPreReward05Nm(mainDataEntity.getPreReward05() + "：" + StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
+    			indto.setPreReward05Nm(StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
     		} else {
     			indto.setPreReward05Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward08() != null && !mainDataEntity.getPreReward08().isEmpty()) {
-    			indto.setPreReward08Nm(mainDataEntity.getPreReward08() + "：" + StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
+    			indto.setPreReward08Nm(StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
     		} else {
     			indto.setPreReward08Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward09() != null && !mainDataEntity.getPreReward09().isEmpty()) {
-    			indto.setPreReward09Nm(mainDataEntity.getPreReward09() + "：" + StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
+    			indto.setPreReward09Nm(StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
     		} else {
     			indto.setPreReward09Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward16() != null && !mainDataEntity.getPreReward16().isEmpty()) {
-    			indto.setPreReward16Nm(mainDataEntity.getPreReward16() + "：" + StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
+    			indto.setPreReward16Nm(StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
     		} else {
     			indto.setPreReward16Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward17() != null && !mainDataEntity.getPreReward17().isEmpty()) {
-    			indto.setPreReward17Nm(mainDataEntity.getPreReward17() + "：" + StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
+    			indto.setPreReward17Nm(StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
     		} else {
     			indto.setPreReward17Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward18() != null && !mainDataEntity.getPreReward18().isEmpty()) {
-    			indto.setPreReward18Nm(mainDataEntity.getPreReward18() + "：" + StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
+    			indto.setPreReward18Nm(StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
     		} else {
     			indto.setPreReward18Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward21() != null && !mainDataEntity.getPreReward21().isEmpty()) {
-    			indto.setPreReward21Nm(mainDataEntity.getPreReward21() + "：" + StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
+    			indto.setPreReward21Nm(StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
     		} else {
     			indto.setPreReward21Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward23() != null && !mainDataEntity.getPreReward23().isEmpty()) {
-    			indto.setPreReward23Nm(mainDataEntity.getPreReward23() + "：" + StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
+    			indto.setPreReward23Nm(StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
     		} else {
     			indto.setPreReward23Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward25() != null && !mainDataEntity.getPreReward25().isEmpty()) {
-    			indto.setPreReward25Nm(mainDataEntity.getPreReward25() + "：" + StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
+    			indto.setPreReward25Nm(StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
     		} else {
     			indto.setPreReward25Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward26() != null && !mainDataEntity.getPreReward26().isEmpty()) {
-    			indto.setPreReward26Nm(mainDataEntity.getPreReward26() + "：" + StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
+    			indto.setPreReward26Nm(StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
     		} else {
     			indto.setPreReward26Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward27() != null && !mainDataEntity.getPreReward27().isEmpty()) {
-    			indto.setPreReward27Nm(mainDataEntity.getPreReward27() + "：" + StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
+    			indto.setPreReward27Nm(StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
     		} else {
     			indto.setPreReward27Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward29() != null && !mainDataEntity.getPreReward29().isEmpty()) {
-    			indto.setPreReward29Nm(mainDataEntity.getPreReward29() + "：" + StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
+    			indto.setPreReward29Nm(StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
     		} else {
     			indto.setPreReward29Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward35() != null && !mainDataEntity.getPreReward35().isEmpty()) {
-    			indto.setPreReward35Nm(mainDataEntity.getPreReward35() + "：" + StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
+    			indto.setPreReward35Nm(StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
     		} else {
     			indto.setPreReward35Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward36() != null && !mainDataEntity.getPreReward36().isEmpty()) {
-    			indto.setPreReward36Nm(mainDataEntity.getPreReward36() + "：" + StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
+    			indto.setPreReward36Nm(StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
     		} else {
     			indto.setPreReward36Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward37() != null && !mainDataEntity.getPreReward37().isEmpty()) {
-    			indto.setPreReward37Nm(mainDataEntity.getPreReward37() + "：" + StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
+    			indto.setPreReward37Nm(StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
     		} else {
     			indto.setPreReward37Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward44() != null && !mainDataEntity.getPreReward44().isEmpty()) {
-    			indto.setPreReward44Nm(mainDataEntity.getPreReward44() + "：" + StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
+    			indto.setPreReward44Nm(StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
     		} else {
     			indto.setPreReward44Nm("--なし--");
     		}
@@ -1203,7 +1203,7 @@ public class NF012Service extends BaseService {
     		indto.setPreWsType(StringUtils.nvl(mainDataEntity.getPreWsType(), ""));
 
     		if(mainDataEntity.getPreWsType() != null && !mainDataEntity.getPreWsType().isEmpty()) {
-    			indto.setPreWsTypeNm(StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
+    			indto.setPreWsTypeNm(mainDataEntity.getPreWsType() + "：" + StringUtils.nvl(mainDataEntity.getPreWsTypeNm(), ""));
     		} else {
     			indto.setPreWsTypeNm("--なし--");
     		}
@@ -1211,7 +1211,7 @@ public class NF012Service extends BaseService {
     		indto.setPreBasketPurchase(StringUtils.nvl(mainDataEntity.getPreBasketPurchase(), ""));
 
     		if(mainDataEntity.getPreBasketPurchase() != null && !mainDataEntity.getPreBasketPurchase().isEmpty()) {
-    			indto.setPreBasketPurchaseNm(mainDataEntity.getPreBasketPurchase() + "：" + StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
+    			indto.setPreBasketPurchaseNm(StringUtils.nvl(mainDataEntity.getPreBasketPurchaseNm(), ""));
     		} else {
     			indto.setPreBasketPurchaseNm("--なし--");
     		}
@@ -1253,12 +1253,12 @@ public class NF012Service extends BaseService {
     		indto.setCapaType(getViewValue(mainDataEntity.getPreCapaType(), mainDataEntity.getCapaType()));
 
     		// ULT施設情報
+    		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getPreUltInsCd(), ""));
+    		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getPreShisetsuNmRyaku(), ""));
+    		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getPreShisetsuNm(), ""));
     		indto.setUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
-    		indto.setPreUltInsCd(StringUtils.nvl(mainDataEntity.getUltInsCd(), ""));
     		indto.setShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
-    		indto.setPreShisetsuNmRyaku(StringUtils.nvl(mainDataEntity.getShisetsuNmRyaku(), ""));
     		indto.setShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
-    		indto.setPreShisetsuNm(StringUtils.nvl(mainDataEntity.getShisetsuNm(), ""));
 
     		// 病床数
     		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));
@@ -1700,37 +1700,37 @@ public class NF012Service extends BaseService {
     		indto.setPreMarket09(StringUtils.nvl(mainDataEntity.getPreMarket09(), ""));
 
     		if(mainDataEntity.getPreMarket01() != null && !mainDataEntity.getPreMarket01().isEmpty()) {
-    			indto.setPreMarket01Nm(mainDataEntity.getPreMarket01() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
+    			indto.setPreMarket01Nm(StringUtils.nvl(mainDataEntity.getPreMarket01Nm(), ""));
     		} else {
     			indto.setPreMarket01Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket02() != null && !mainDataEntity.getPreMarket02().isEmpty()) {
-    			indto.setPreMarket02Nm(mainDataEntity.getPreMarket02() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
+    			indto.setPreMarket02Nm(StringUtils.nvl(mainDataEntity.getPreMarket02Nm(), ""));
     		} else {
     			indto.setPreMarket02Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket03() != null && !mainDataEntity.getPreMarket03().isEmpty()) {
-    			indto.setPreMarket03Nm(mainDataEntity.getPreMarket03() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
+    			indto.setPreMarket03Nm(StringUtils.nvl(mainDataEntity.getPreMarket03Nm(), ""));
     		} else {
     			indto.setPreMarket03Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket04() != null && !mainDataEntity.getPreMarket04().isEmpty()) {
-    			indto.setPreMarket04Nm(mainDataEntity.getPreMarket04() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
+    			indto.setPreMarket04Nm(StringUtils.nvl(mainDataEntity.getPreMarket04Nm(), ""));
     		} else {
     			indto.setPreMarket04Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket06() != null && !mainDataEntity.getPreMarket06().isEmpty()) {
-    			indto.setPreMarket06Nm(mainDataEntity.getPreMarket06() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
+    			indto.setPreMarket06Nm(StringUtils.nvl(mainDataEntity.getPreMarket06Nm(), ""));
     		} else {
     			indto.setPreMarket06Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket07() != null && !mainDataEntity.getPreMarket07().isEmpty()) {
-    			indto.setPreMarket07Nm(mainDataEntity.getPreMarket07() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
+    			indto.setPreMarket07Nm(StringUtils.nvl(mainDataEntity.getPreMarket07Nm(), ""));
     		} else {
     			indto.setPreMarket07Nm("--なし--");
     		}
     		if(mainDataEntity.getPreMarket09() != null && !mainDataEntity.getPreMarket09().isEmpty()) {
-    			indto.setPreMarket09Nm(mainDataEntity.getPreMarket09() + "：" + StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
+    			indto.setPreMarket09Nm(StringUtils.nvl(mainDataEntity.getPreMarket09Nm(), ""));
     		} else {
     			indto.setPreMarket09Nm("--なし--");
     		}
@@ -1760,17 +1760,17 @@ public class NF012Service extends BaseService {
     		indto.setPreSpfunc04(StringUtils.nvl(mainDataEntity.getPreSpfunc04(), ""));
 
     		if(mainDataEntity.getPreSpfunc01() != null && !mainDataEntity.getPreSpfunc01().isEmpty()) {
-    			indto.setPreSpfunc01Nm(mainDataEntity.getPreSpfunc01() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
+    			indto.setPreSpfunc01Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc01Nm(), ""));
     		} else {
     			indto.setPreSpfunc01Nm("--なし--");
     		}
     		if(mainDataEntity.getPreSpfunc03() != null && !mainDataEntity.getPreSpfunc03().isEmpty()) {
-    			indto.setPreSpfunc03Nm(mainDataEntity.getPreSpfunc03() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
+    			indto.setPreSpfunc03Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc03Nm(), ""));
     		} else {
     			indto.setPreSpfunc03Nm("--なし--");
     		}
     		if(mainDataEntity.getPreSpfunc04() != null && !mainDataEntity.getPreSpfunc04().isEmpty()) {
-    			indto.setPreSpfunc04Nm(mainDataEntity.getPreSpfunc04() + "：" + StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
+    			indto.setPreSpfunc04Nm(StringUtils.nvl(mainDataEntity.getPreSpfunc04Nm(), ""));
     		} else {
     			indto.setPreSpfunc04Nm("--なし--");
     		}
@@ -1785,17 +1785,17 @@ public class NF012Service extends BaseService {
     		indto.setPreTieup12(StringUtils.nvl(mainDataEntity.getPreTieup12(), ""));
 
     		if(mainDataEntity.getPreTieup10() != null && !mainDataEntity.getPreTieup10().isEmpty()) {
-    			indto.setPreTieup10Nm(mainDataEntity.getPreTieup10() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
+    			indto.setPreTieup10Nm(StringUtils.nvl(mainDataEntity.getPreTieup10Nm(), ""));
     		} else {
     			indto.setPreTieup10Nm("--なし--");
     		}
     		if(mainDataEntity.getPreTieup11() != null && !mainDataEntity.getPreTieup11().isEmpty()) {
-    			indto.setPreTieup11Nm(mainDataEntity.getPreTieup11() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
+    			indto.setPreTieup11Nm(StringUtils.nvl(mainDataEntity.getPreTieup11Nm(), ""));
     		} else {
     			indto.setPreTieup11Nm("--なし--");
     		}
     		if(mainDataEntity.getPreTieup12() != null && !mainDataEntity.getPreTieup12().isEmpty()) {
-    			indto.setPreTieup12Nm(mainDataEntity.getPreTieup12() + "：" + StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
+    			indto.setPreTieup12Nm(StringUtils.nvl(mainDataEntity.getPreTieup12Nm(), ""));
     		} else {
     			indto.setPreTieup12Nm("--なし--");
     		}
@@ -2110,87 +2110,87 @@ public class NF012Service extends BaseService {
     		indto.setPreReward44(StringUtils.nvl(mainDataEntity.getPreReward44(), ""));
 
     		if(mainDataEntity.getPreReward04() != null && !mainDataEntity.getPreReward04().isEmpty()) {
-    			indto.setPreReward04Nm(mainDataEntity.getPreReward04() + "：" + StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
+    			indto.setPreReward04Nm(StringUtils.nvl(mainDataEntity.getPreReward04Nm(), ""));
     		} else {
     			indto.setPreReward04Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward05() != null && !mainDataEntity.getPreReward05().isEmpty()) {
-    			indto.setPreReward05Nm(mainDataEntity.getPreReward05() + "：" + StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
+    			indto.setPreReward05Nm(StringUtils.nvl(mainDataEntity.getPreReward05Nm(), ""));
     		} else {
     			indto.setPreReward05Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward08() != null && !mainDataEntity.getPreReward08().isEmpty()) {
-    			indto.setPreReward08Nm(mainDataEntity.getPreReward08() + "：" + StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
+    			indto.setPreReward08Nm(StringUtils.nvl(mainDataEntity.getPreReward08Nm(), ""));
     		} else {
     			indto.setPreReward08Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward09() != null && !mainDataEntity.getPreReward09().isEmpty()) {
-    			indto.setPreReward09Nm(mainDataEntity.getPreReward09() + "：" + StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
+    			indto.setPreReward09Nm(StringUtils.nvl(mainDataEntity.getPreReward09Nm(), ""));
     		} else {
     			indto.setPreReward09Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward16() != null && !mainDataEntity.getPreReward16().isEmpty()) {
-    			indto.setPreReward16Nm(mainDataEntity.getPreReward16() + "：" + StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
+    			indto.setPreReward16Nm(StringUtils.nvl(mainDataEntity.getPreReward16Nm(), ""));
     		} else {
     			indto.setPreReward16Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward17() != null && !mainDataEntity.getPreReward17().isEmpty()) {
-    			indto.setPreReward17Nm(mainDataEntity.getPreReward17() + "：" + StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
+    			indto.setPreReward17Nm(StringUtils.nvl(mainDataEntity.getPreReward17Nm(), ""));
     		} else {
     			indto.setPreReward17Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward18() != null && !mainDataEntity.getPreReward18().isEmpty()) {
-    			indto.setPreReward18Nm(mainDataEntity.getPreReward18() + "：" + StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
+    			indto.setPreReward18Nm(StringUtils.nvl(mainDataEntity.getPreReward18Nm(), ""));
     		} else {
     			indto.setPreReward18Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward21() != null && !mainDataEntity.getPreReward21().isEmpty()) {
-    			indto.setPreReward21Nm(mainDataEntity.getPreReward21() + "：" + StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
+    			indto.setPreReward21Nm(StringUtils.nvl(mainDataEntity.getPreReward21Nm(), ""));
     		} else {
     			indto.setPreReward21Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward23() != null && !mainDataEntity.getPreReward23().isEmpty()) {
-    			indto.setPreReward23Nm(mainDataEntity.getPreReward23() + "：" + StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
+    			indto.setPreReward23Nm(StringUtils.nvl(mainDataEntity.getPreReward23Nm(), ""));
     		} else {
     			indto.setPreReward23Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward25() != null && !mainDataEntity.getPreReward25().isEmpty()) {
-    			indto.setPreReward25Nm(mainDataEntity.getPreReward25() + "：" + StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
+    			indto.setPreReward25Nm(StringUtils.nvl(mainDataEntity.getPreReward25Nm(), ""));
     		} else {
     			indto.setPreReward25Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward26() != null && !mainDataEntity.getPreReward26().isEmpty()) {
-    			indto.setPreReward26Nm(mainDataEntity.getPreReward26() + "：" + StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
+    			indto.setPreReward26Nm(StringUtils.nvl(mainDataEntity.getPreReward26Nm(), ""));
     		} else {
     			indto.setPreReward26Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward27() != null && !mainDataEntity.getPreReward27().isEmpty()) {
-    			indto.setPreReward27Nm(mainDataEntity.getPreReward27() + "：" + StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
+    			indto.setPreReward27Nm(StringUtils.nvl(mainDataEntity.getPreReward27Nm(), ""));
     		} else {
     			indto.setPreReward27Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward29() != null && !mainDataEntity.getPreReward29().isEmpty()) {
-    			indto.setPreReward29Nm(mainDataEntity.getPreReward29() + "：" + StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
+    			indto.setPreReward29Nm(StringUtils.nvl(mainDataEntity.getPreReward29Nm(), ""));
     		} else {
     			indto.setPreReward29Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward35() != null && !mainDataEntity.getPreReward35().isEmpty()) {
-    			indto.setPreReward35Nm(mainDataEntity.getPreReward35() + "：" + StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
+    			indto.setPreReward35Nm(StringUtils.nvl(mainDataEntity.getPreReward35Nm(), ""));
     		} else {
     			indto.setPreReward35Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward36() != null && !mainDataEntity.getPreReward36().isEmpty()) {
-    			indto.setPreReward36Nm(mainDataEntity.getPreReward36() + "：" + StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
+    			indto.setPreReward36Nm(StringUtils.nvl(mainDataEntity.getPreReward36Nm(), ""));
     		} else {
     			indto.setPreReward36Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward37() != null && !mainDataEntity.getPreReward37().isEmpty()) {
-    			indto.setPreReward37Nm(mainDataEntity.getPreReward37() + "：" + StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
+    			indto.setPreReward37Nm(StringUtils.nvl(mainDataEntity.getPreReward37Nm(), ""));
     		} else {
     			indto.setPreReward37Nm("--なし--");
     		}
     		if(mainDataEntity.getPreReward44() != null && !mainDataEntity.getPreReward44().isEmpty()) {
-    			indto.setPreReward44Nm(mainDataEntity.getPreReward44() + "：" + StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
+    			indto.setPreReward44Nm(StringUtils.nvl(mainDataEntity.getPreReward44Nm(), ""));
     		} else {
     			indto.setPreReward44Nm("--なし--");
     		}
@@ -2226,10 +2226,10 @@ public class NF012Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
@@ -2277,7 +2277,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapBasketPurchase = new LinkedHashMap<String, String>();
 		mapBasketPurchase.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapBasketPurchase.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapBasketPurchase.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setBasketPurchaseCombo(mapBasketPurchase);
 
@@ -2299,7 +2299,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapCapaType = new LinkedHashMap<String, String>();
 		mapCapaType.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapCapaType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapCapaType.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setCapaTypeCombo(mapCapaType);
 
@@ -2310,7 +2310,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapWelfareList = new LinkedHashMap<String, String>();
 		mapWelfareList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapWelfareList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapWelfareList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setWelfare02Combo(mapWelfareList);
 		indto.setWelfare08Combo(mapWelfareList);
@@ -2322,7 +2322,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapResultList = new LinkedHashMap<String, String>();
 		mapResultList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapResultList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapResultList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setResult01Combo(mapResultList);
 		indto.setResult02Combo(mapResultList);
@@ -2368,7 +2368,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapEquipList = new LinkedHashMap<String, String>();
 		mapEquipList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapEquipList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapEquipList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setEquip01Combo(mapEquipList);
 		indto.setEquip02Combo(mapEquipList);
@@ -2383,7 +2383,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapMarket01 = new LinkedHashMap<String, String>();
 		mapMarket01.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapMarket01.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapMarket01.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setMarket01Combo(mapMarket01);
 
@@ -2394,7 +2394,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapMarketList = new LinkedHashMap<String, String>();
 		mapMarketList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapMarketList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapMarketList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setMarket02Combo(mapMarketList);
 		indto.setMarket03Combo(mapMarketList);
@@ -2410,7 +2410,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapMedicalList = new LinkedHashMap<String, String>();
 		mapMedicalList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapMedicalList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapMedicalList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setMedical12Combo(mapMedicalList);
 
@@ -2421,7 +2421,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapSpFuncList = new LinkedHashMap<String, String>();
 		mapSpFuncList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapSpFuncList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapSpFuncList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setSpfunc01Combo(mapSpFuncList);
 		indto.setSpfunc04Combo(mapSpFuncList);
@@ -2433,7 +2433,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapSpFunc03 = new LinkedHashMap<String, String>();
 		mapSpFunc03.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapSpFunc03.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapSpFunc03.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setSpfunc03Combo(mapSpFunc03);
 
@@ -2444,7 +2444,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapTieupList = new LinkedHashMap<String, String>();
 		mapTieupList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapTieupList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapTieupList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setTieup10Combo(mapTieupList);
 		indto.setTieup11Combo(mapTieupList);
@@ -2457,7 +2457,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapUsercdList = new LinkedHashMap<String, String>();
 		mapUsercdList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapUsercdList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapUsercdList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setUsercd0001Combo(mapUsercdList);
 		indto.setUsercd0002Combo(mapUsercdList);
@@ -2503,7 +2503,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapRewardList = new LinkedHashMap<String, String>();
 		mapRewardList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapRewardList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapRewardList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setReward04Combo(mapRewardList);
 		indto.setReward05Combo(mapRewardList);
@@ -2527,7 +2527,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapReward21 = new LinkedHashMap<String, String>();
 		mapReward21.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward21.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapReward21.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setReward21Combo(mapReward21);
 
@@ -2538,7 +2538,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapReward27 = new LinkedHashMap<String, String>();
 		mapReward27.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward27.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapReward27.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setReward27Combo(mapReward27);
 
@@ -2549,7 +2549,7 @@ public class NF012Service extends BaseService {
 		LinkedHashMap<String, String> mapReward29 = new LinkedHashMap<String, String>();
 		mapReward29.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward29.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapReward29.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setReward29Combo(mapReward29);
 
@@ -2788,7 +2788,7 @@ public class NF012Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -2837,7 +2837,7 @@ public class NF012Service extends BaseService {
         TRdmHcoReqEntity tRdmHcoReqData = dao.selectByPK(tRdmHcoReqEntity);
 
         // 管理者権限
-        boolean knr = "JKN0813".equals(indto.getLoginJokenSetCd());
+        boolean knr = RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd());
 
         if(tRdmHcoReqData == null) {
         	// 新規登録
@@ -2845,21 +2845,21 @@ public class NF012Service extends BaseService {
         	tRdmHcoReqInsData.setReqId(reqId);
         	tRdmHcoReqInsData.setInsNo(indto.getInsNo());
 
-        	tRdmHcoReqInsData.setInsKana(getUpdValue(indto.getPreInsKana(), indto.getInsKana()));
-        	tRdmHcoReqInsData.setInsAbbrName(getUpdValue(indto.getPreInsAbbrName(), indto.getInsAbbrName()));
-        	tRdmHcoReqInsData.setInsFormalName(getUpdValue(indto.getPreInsFormalName(), indto.getInsFormalName()));
-        	tRdmHcoReqInsData.setInsPcode(getUpdValue(indto.getPreInsPcode(), indto.getInsPcode()));
-        	tRdmHcoReqInsData.setAddrCodePref(getUpdValue(indto.getPreAddrCodePref(), indto.getAddrCodePref()));
-        	tRdmHcoReqInsData.setAddrCodeCity(getUpdValue(indto.getPreAddrCodeCity(), indto.getAddrCodeCity()));
-        	tRdmHcoReqInsData.setTkCityCd(getUpdValue(indto.getPreTkCityCd(), indto.getTkCityCd()));
-        	tRdmHcoReqInsData.setInsAddrDt(getUpdValue(indto.getPreInsAddrDt(), indto.getInsAddrDt()));
-        	tRdmHcoReqInsData.setInsAddr(getUpdValue(indto.getPreInsAddr(), indto.getInsAddr()));
-        	tRdmHcoReqInsData.setInsAddrKana(getUpdValue(indto.getPreInsAddrKana(), indto.getInsAddrKana()));
-        	tRdmHcoReqInsData.setInsPhone1(getUpdValue(indto.getPreInsPhone1(), indto.getInsPhone1()));
-        	tRdmHcoReqInsData.setInsFax1(getUpdValue(indto.getPreInsFax1(), indto.getInsFax1()));
-        	tRdmHcoReqInsData.setInsPhone2(getUpdValue(indto.getPreInsPhone2(), indto.getInsPhone2()));
-        	tRdmHcoReqInsData.setInsFax2(getUpdValue(indto.getPreInsFax2(), indto.getInsFax2()));
-        	tRdmHcoReqInsData.setInsUrl(getUpdValue(indto.getPreInsUrl(), indto.getInsUrl()));
+        	tRdmHcoReqInsData.setInsKana(indto.getInsKana());
+        	tRdmHcoReqInsData.setInsAbbrName(indto.getInsAbbrName());
+        	tRdmHcoReqInsData.setInsFormalName(indto.getInsFormalName());
+        	tRdmHcoReqInsData.setInsPcode(indto.getInsPcode());
+        	tRdmHcoReqInsData.setAddrCodePref(indto.getAddrCodePref());
+        	tRdmHcoReqInsData.setAddrCodeCity(indto.getAddrCodeCity());
+        	tRdmHcoReqInsData.setTkCityCd(indto.getTkCityCd());
+        	tRdmHcoReqInsData.setInsAddrDt(indto.getInsAddrDt());
+        	tRdmHcoReqInsData.setInsAddr(indto.getInsAddr());
+        	tRdmHcoReqInsData.setInsAddrKana(indto.getInsAddrKana());
+        	tRdmHcoReqInsData.setInsPhone1(indto.getInsPhone1());
+        	tRdmHcoReqInsData.setInsFax1(indto.getInsFax1());
+        	tRdmHcoReqInsData.setInsPhone2(indto.getInsPhone2());
+        	tRdmHcoReqInsData.setInsFax2(indto.getInsFax2());
+        	tRdmHcoReqInsData.setInsUrl(indto.getInsUrl());
 
         	String preUrlYmd = indto.getPreInsUrlYmd();
         	String urlYmd = indto.getInsUrlYmd();
@@ -2869,173 +2869,173 @@ public class NF012Service extends BaseService {
         	if(urlYmd != null) {
         		urlYmd = urlYmd.replace("-", "");
         	}
-        	tRdmHcoReqInsData.setInsUrlYmd(getUpdValue(preUrlYmd, urlYmd));
+        	tRdmHcoReqInsData.setInsUrlYmd(urlYmd);
 
-        	tRdmHcoReqInsData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
-        	tRdmHcoReqInsData.setWsType(getUpdValue(indto.getPreWsType(), indto.getWsType()));
-        	tRdmHcoReqInsData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
-        	tRdmHcoReqInsData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));
-        	tRdmHcoReqInsData.setInsOpenYear(getUpdValue(indto.getPreInsOpenYear(), indto.getInsOpenYear()));
-        	tRdmHcoReqInsData.setInsOpenMonth(getUpdValue(indto.getPreInsOpenMonth(), indto.getInsOpenMonth()));
-        	tRdmHcoReqInsData.setInsOpenDay(getUpdValue(indto.getPreInsOpenDay(), indto.getInsOpenDay()));
-        	tRdmHcoReqInsData.setCapaType(getUpdValue(indto.getPreCapaType(), indto.getCapaType()));
+        	tRdmHcoReqInsData.setTradeType(indto.getTradeType());
+        	tRdmHcoReqInsData.setWsType(indto.getWsType());
+        	tRdmHcoReqInsData.setBasketPurchase(indto.getBasketPurchase());
+        	tRdmHcoReqInsData.setUnivSubdiv(indto.getUnivSubdiv());
+        	tRdmHcoReqInsData.setInsOpenYear(indto.getInsOpenYear());
+        	tRdmHcoReqInsData.setInsOpenMonth(indto.getInsOpenMonth());
+        	tRdmHcoReqInsData.setInsOpenDay(indto.getInsOpenDay());
+        	tRdmHcoReqInsData.setCapaType(indto.getCapaType());
 
         	if(knr) {
-        		tRdmHcoReqInsData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
+        		tRdmHcoReqInsData.setUltInsNo(indto.getUltInsCd());
 
-        		tRdmHcoReqInsData.setFree0001(getUpdValue(indto.getPreFree0001(), indto.getFree0001()));
-	        	tRdmHcoReqInsData.setFree0002(getUpdValue(indto.getPreFree0002(), indto.getFree0002()));
-	        	tRdmHcoReqInsData.setFree0003(getUpdValue(indto.getPreFree0003(), indto.getFree0003()));
-	        	tRdmHcoReqInsData.setFree0004(getUpdValue(indto.getPreFree0004(), indto.getFree0004()));
-	        	tRdmHcoReqInsData.setFree0005(getUpdValue(indto.getPreFree0005(), indto.getFree0005()));
-	        	tRdmHcoReqInsData.setFree0006(getUpdValue(indto.getPreFree0006(), indto.getFree0006()));
-	        	tRdmHcoReqInsData.setFree0007(getUpdValue(indto.getPreFree0007(), indto.getFree0007()));
-	        	tRdmHcoReqInsData.setFree0008(getUpdValue(indto.getPreFree0008(), indto.getFree0008()));
-	        	tRdmHcoReqInsData.setFree0009(getUpdValue(indto.getPreFree0009(), indto.getFree0009()));
-	        	tRdmHcoReqInsData.setFree0010(getUpdValue(indto.getPreFree0010(), indto.getFree0010()));
-	        	tRdmHcoReqInsData.setFree0011(getUpdValue(indto.getPreFree0001(), indto.getFree0011()));
-	        	tRdmHcoReqInsData.setFree0012(getUpdValue(indto.getPreFree0002(), indto.getFree0012()));
-	        	tRdmHcoReqInsData.setFree0013(getUpdValue(indto.getPreFree0003(), indto.getFree0013()));
-	        	tRdmHcoReqInsData.setFree0014(getUpdValue(indto.getPreFree0004(), indto.getFree0014()));
-	        	tRdmHcoReqInsData.setFree0015(getUpdValue(indto.getPreFree0005(), indto.getFree0015()));
+        		tRdmHcoReqInsData.setFree0001(indto.getFree0001());
+	        	tRdmHcoReqInsData.setFree0002(indto.getFree0002());
+	        	tRdmHcoReqInsData.setFree0003(indto.getFree0003());
+	        	tRdmHcoReqInsData.setFree0004(indto.getFree0004());
+	        	tRdmHcoReqInsData.setFree0005(indto.getFree0005());
+	        	tRdmHcoReqInsData.setFree0006(indto.getFree0006());
+	        	tRdmHcoReqInsData.setFree0007(indto.getFree0007());
+	        	tRdmHcoReqInsData.setFree0008(indto.getFree0008());
+	        	tRdmHcoReqInsData.setFree0009(indto.getFree0009());
+	        	tRdmHcoReqInsData.setFree0010(indto.getFree0010());
+	        	tRdmHcoReqInsData.setFree0011(indto.getFree0011());
+	        	tRdmHcoReqInsData.setFree0012(indto.getFree0012());
+	        	tRdmHcoReqInsData.setFree0013(indto.getFree0013());
+	        	tRdmHcoReqInsData.setFree0014(indto.getFree0014());
+	        	tRdmHcoReqInsData.setFree0015(indto.getFree0015());
 
-	        	tRdmHcoReqInsData.setWelfare02(getUpdValue(indto.getPreWelfare02(), indto.getWelfare02()));
-	        	tRdmHcoReqInsData.setWelfare08(getUpdValue(indto.getPreWelfare08(), indto.getWelfare08()));
+	        	tRdmHcoReqInsData.setWelfare02(indto.getWelfare02());
+	        	tRdmHcoReqInsData.setWelfare08(indto.getWelfare08());
 
-	        	tRdmHcoReqInsData.setResult01(getUpdValue(indto.getPreResult01(), indto.getResult01()));
-	        	tRdmHcoReqInsData.setResult02(getUpdValue(indto.getPreResult02(), indto.getResult02()));
-	        	tRdmHcoReqInsData.setResult03(getUpdValue(indto.getPreResult03(), indto.getResult03()));
-	        	tRdmHcoReqInsData.setResult04(getUpdValue(indto.getPreResult04(), indto.getResult04()));
-	        	tRdmHcoReqInsData.setResult05(getUpdValue(indto.getPreResult05(), indto.getResult05()));
-	        	tRdmHcoReqInsData.setResult06(getUpdValue(indto.getPreResult06(), indto.getResult06()));
-	        	tRdmHcoReqInsData.setResult07(getUpdValue(indto.getPreResult07(), indto.getResult07()));
-	        	tRdmHcoReqInsData.setResult08(getUpdValue(indto.getPreResult08(), indto.getResult08()));
-	        	tRdmHcoReqInsData.setResult09(getUpdValue(indto.getPreResult09(), indto.getResult09()));
-	        	tRdmHcoReqInsData.setResult10(getUpdValue(indto.getPreResult10(), indto.getResult10()));
-	        	tRdmHcoReqInsData.setResult11(getUpdValue(indto.getPreResult11(), indto.getResult11()));
-	        	tRdmHcoReqInsData.setResult12(getUpdValue(indto.getPreResult12(), indto.getResult12()));
-	        	tRdmHcoReqInsData.setResult13(getUpdValue(indto.getPreResult13(), indto.getResult13()));
-	        	tRdmHcoReqInsData.setResult14(getUpdValue(indto.getPreResult14(), indto.getResult14()));
-	        	tRdmHcoReqInsData.setResult15(getUpdValue(indto.getPreResult15(), indto.getResult15()));
-	        	tRdmHcoReqInsData.setResult16(getUpdValue(indto.getPreResult16(), indto.getResult16()));
-	        	tRdmHcoReqInsData.setResult17(getUpdValue(indto.getPreResult17(), indto.getResult17()));
-	        	tRdmHcoReqInsData.setResult18(getUpdValue(indto.getPreResult18(), indto.getResult18()));
-	        	tRdmHcoReqInsData.setResult19(getUpdValue(indto.getPreResult19(), indto.getResult19()));
-	        	tRdmHcoReqInsData.setResult20(getUpdValue(indto.getPreResult20(), indto.getResult20()));
-	        	tRdmHcoReqInsData.setResult21(getUpdValue(indto.getPreResult21(), indto.getResult21()));
-	        	tRdmHcoReqInsData.setResult22(getUpdValue(indto.getPreResult22(), indto.getResult22()));
-	        	tRdmHcoReqInsData.setResult23(getUpdValue(indto.getPreResult23(), indto.getResult23()));
-	        	tRdmHcoReqInsData.setResult24(getUpdValue(indto.getPreResult24(), indto.getResult24()));
-	        	tRdmHcoReqInsData.setResult25(getUpdValue(indto.getPreResult25(), indto.getResult25()));
-	        	tRdmHcoReqInsData.setResult26(getUpdValue(indto.getPreResult26(), indto.getResult26()));
-	        	tRdmHcoReqInsData.setResult27(getUpdValue(indto.getPreResult27(), indto.getResult27()));
-	        	tRdmHcoReqInsData.setResult28(getUpdValue(indto.getPreResult28(), indto.getResult28()));
-	        	tRdmHcoReqInsData.setResult29(getUpdValue(indto.getPreResult29(), indto.getResult29()));
-	        	tRdmHcoReqInsData.setResult30(getUpdValue(indto.getPreResult30(), indto.getResult30()));
-	        	tRdmHcoReqInsData.setResult31(getUpdValue(indto.getPreResult31(), indto.getResult31()));
-	        	tRdmHcoReqInsData.setResult32(getUpdValue(indto.getPreResult32(), indto.getResult32()));
-	        	tRdmHcoReqInsData.setResult33(getUpdValue(indto.getPreResult33(), indto.getResult33()));
-	        	tRdmHcoReqInsData.setResult34(getUpdValue(indto.getPreResult34(), indto.getResult34()));
-	        	tRdmHcoReqInsData.setResult35(getUpdValue(indto.getPreResult35(), indto.getResult35()));
-	        	tRdmHcoReqInsData.setResult36(getUpdValue(indto.getPreResult36(), indto.getResult36()));
+	        	tRdmHcoReqInsData.setResult01(indto.getResult01());
+	        	tRdmHcoReqInsData.setResult02(indto.getResult02());
+	        	tRdmHcoReqInsData.setResult03(indto.getResult03());
+	        	tRdmHcoReqInsData.setResult04(indto.getResult04());
+	        	tRdmHcoReqInsData.setResult05(indto.getResult05());
+	        	tRdmHcoReqInsData.setResult06(indto.getResult06());
+	        	tRdmHcoReqInsData.setResult07(indto.getResult07());
+	        	tRdmHcoReqInsData.setResult08(indto.getResult08());
+	        	tRdmHcoReqInsData.setResult09(indto.getResult09());
+	        	tRdmHcoReqInsData.setResult10(indto.getResult10());
+	        	tRdmHcoReqInsData.setResult11(indto.getResult11());
+	        	tRdmHcoReqInsData.setResult12(indto.getResult12());
+	        	tRdmHcoReqInsData.setResult13(indto.getResult13());
+	        	tRdmHcoReqInsData.setResult14(indto.getResult14());
+	        	tRdmHcoReqInsData.setResult15(indto.getResult15());
+	        	tRdmHcoReqInsData.setResult16(indto.getResult16());
+	        	tRdmHcoReqInsData.setResult17(indto.getResult17());
+	        	tRdmHcoReqInsData.setResult18(indto.getResult18());
+	        	tRdmHcoReqInsData.setResult19(indto.getResult19());
+	        	tRdmHcoReqInsData.setResult20(indto.getResult20());
+	        	tRdmHcoReqInsData.setResult21(indto.getResult21());
+	        	tRdmHcoReqInsData.setResult22(indto.getResult22());
+	        	tRdmHcoReqInsData.setResult23(indto.getResult23());
+	        	tRdmHcoReqInsData.setResult24(indto.getResult24());
+	        	tRdmHcoReqInsData.setResult25(indto.getResult25());
+	        	tRdmHcoReqInsData.setResult26(indto.getResult26());
+	        	tRdmHcoReqInsData.setResult27(indto.getResult27());
+	        	tRdmHcoReqInsData.setResult28(indto.getResult28());
+	        	tRdmHcoReqInsData.setResult29(indto.getResult29());
+	        	tRdmHcoReqInsData.setResult30(indto.getResult30());
+	        	tRdmHcoReqInsData.setResult31(indto.getResult31());
+	        	tRdmHcoReqInsData.setResult32(indto.getResult32());
+	        	tRdmHcoReqInsData.setResult33(indto.getResult33());
+	        	tRdmHcoReqInsData.setResult34(indto.getResult34());
+	        	tRdmHcoReqInsData.setResult35(indto.getResult35());
+	        	tRdmHcoReqInsData.setResult36(indto.getResult36());
         	}
 
-        	tRdmHcoReqInsData.setEquip01(getUpdValue(indto.getPreEquip01(), indto.getEquip01()));
-        	tRdmHcoReqInsData.setEquip02(getUpdValue(indto.getPreEquip02(), indto.getEquip02()));
-        	tRdmHcoReqInsData.setEquip03(getUpdValue(indto.getPreEquip03(), indto.getEquip03()));
-        	tRdmHcoReqInsData.setEquip07(getUpdValue(indto.getPreEquip07(), indto.getEquip07()));
-        	tRdmHcoReqInsData.setEquip09(getUpdValue(indto.getPreEquip09(), indto.getEquip09()));
+        	tRdmHcoReqInsData.setEquip01(indto.getEquip01());
+        	tRdmHcoReqInsData.setEquip02(indto.getEquip02());
+        	tRdmHcoReqInsData.setEquip03(indto.getEquip03());
+        	tRdmHcoReqInsData.setEquip07(indto.getEquip07());
+        	tRdmHcoReqInsData.setEquip09(indto.getEquip09());
 
         	if(knr) {
-	        	tRdmHcoReqInsData.setMarket01(getUpdValue(indto.getPreMarket01(), indto.getMarket01()));
-	        	tRdmHcoReqInsData.setMarket02(getUpdValue(indto.getPreMarket02(), indto.getMarket02()));
-	        	tRdmHcoReqInsData.setMarket03(getUpdValue(indto.getPreMarket03(), indto.getMarket03()));
-	        	tRdmHcoReqInsData.setMarket04(getUpdValue(indto.getPreMarket04(), indto.getMarket04()));
-	        	tRdmHcoReqInsData.setMarket06(getUpdValue(indto.getPreMarket06(), indto.getMarket06()));
-	        	tRdmHcoReqInsData.setMarket07(getUpdValue(indto.getPreMarket07(), indto.getMarket07()));
-	        	tRdmHcoReqInsData.setMarket09(getUpdValue(indto.getPreMarket09(), indto.getMarket09()));
+	        	tRdmHcoReqInsData.setMarket01(indto.getMarket01());
+	        	tRdmHcoReqInsData.setMarket02(indto.getMarket02());
+	        	tRdmHcoReqInsData.setMarket03(indto.getMarket03());
+	        	tRdmHcoReqInsData.setMarket04(indto.getMarket04());
+	        	tRdmHcoReqInsData.setMarket06(indto.getMarket06());
+	        	tRdmHcoReqInsData.setMarket07(indto.getMarket07());
+	        	tRdmHcoReqInsData.setMarket09(indto.getMarket09());
 
-	        	tRdmHcoReqInsData.setMedical12(getUpdValue(indto.getPreMedical12(), indto.getMedical12()));
+	        	tRdmHcoReqInsData.setMedical12(indto.getMedical12());
         	}
 
-        	tRdmHcoReqInsData.setSpfunc01(getUpdValue(indto.getPreSpfunc01(), indto.getSpfunc01()));
-        	tRdmHcoReqInsData.setSpfunc03(getUpdValue(indto.getPreSpfunc03(), indto.getSpfunc03()));
-        	tRdmHcoReqInsData.setSpfunc04(getUpdValue(indto.getPreSpfunc04(), indto.getSpfunc04()));
+        	tRdmHcoReqInsData.setSpfunc01(indto.getSpfunc01());
+        	tRdmHcoReqInsData.setSpfunc03(indto.getSpfunc03());
+        	tRdmHcoReqInsData.setSpfunc04(indto.getSpfunc04());
 
-        	tRdmHcoReqInsData.setTieup10(getUpdValue(indto.getPreTieup10(), indto.getTieup10()));
-        	tRdmHcoReqInsData.setTieup11(getUpdValue(indto.getPreTieup11(), indto.getTieup11()));
-        	tRdmHcoReqInsData.setTieup12(getUpdValue(indto.getPreTieup12(), indto.getTieup12()));
+        	tRdmHcoReqInsData.setTieup10(indto.getTieup10());
+        	tRdmHcoReqInsData.setTieup11(indto.getTieup11());
+        	tRdmHcoReqInsData.setTieup12(indto.getTieup12());
 
         	if(knr) {
-	        	tRdmHcoReqInsData.setUsercd0001(getUpdValue(indto.getPreUsercd0001(), indto.getUsercd0001()));
-	        	tRdmHcoReqInsData.setUsercd0002(getUpdValue(indto.getPreUsercd0002(), indto.getUsercd0002()));
-	        	tRdmHcoReqInsData.setUsercd0003(getUpdValue(indto.getPreUsercd0003(), indto.getUsercd0003()));
-	        	tRdmHcoReqInsData.setUsercd0004(getUpdValue(indto.getPreUsercd0004(), indto.getUsercd0004()));
-	        	tRdmHcoReqInsData.setUsercd0005(getUpdValue(indto.getPreUsercd0005(), indto.getUsercd0005()));
-	        	tRdmHcoReqInsData.setUsercd0006(getUpdValue(indto.getPreUsercd0006(), indto.getUsercd0006()));
-	        	tRdmHcoReqInsData.setUsercd0007(getUpdValue(indto.getPreUsercd0007(), indto.getUsercd0007()));
-	        	tRdmHcoReqInsData.setUsercd0008(getUpdValue(indto.getPreUsercd0008(), indto.getUsercd0008()));
-	        	tRdmHcoReqInsData.setUsercd0009(getUpdValue(indto.getPreUsercd0009(), indto.getUsercd0009()));
-	        	tRdmHcoReqInsData.setUsercd0010(getUpdValue(indto.getPreUsercd0010(), indto.getUsercd0010()));
-	        	tRdmHcoReqInsData.setUsercd0011(getUpdValue(indto.getPreUsercd0011(), indto.getUsercd0011()));
-	        	tRdmHcoReqInsData.setUsercd0012(getUpdValue(indto.getPreUsercd0012(), indto.getUsercd0012()));
-	        	tRdmHcoReqInsData.setUsercd0013(getUpdValue(indto.getPreUsercd0013(), indto.getUsercd0013()));
-	        	tRdmHcoReqInsData.setUsercd0014(getUpdValue(indto.getPreUsercd0014(), indto.getUsercd0014()));
-	        	tRdmHcoReqInsData.setUsercd0015(getUpdValue(indto.getPreUsercd0015(), indto.getUsercd0015()));
-	        	tRdmHcoReqInsData.setUsercd0016(getUpdValue(indto.getPreUsercd0016(), indto.getUsercd0016()));
-	        	tRdmHcoReqInsData.setUsercd0017(getUpdValue(indto.getPreUsercd0017(), indto.getUsercd0017()));
-	        	tRdmHcoReqInsData.setUsercd0018(getUpdValue(indto.getPreUsercd0018(), indto.getUsercd0018()));
-	        	tRdmHcoReqInsData.setUsercd0019(getUpdValue(indto.getPreUsercd0019(), indto.getUsercd0019()));
-	        	tRdmHcoReqInsData.setUsercd0020(getUpdValue(indto.getPreUsercd0020(), indto.getUsercd0020()));
-	        	tRdmHcoReqInsData.setUsercd0021(getUpdValue(indto.getPreUsercd0021(), indto.getUsercd0021()));
-	        	tRdmHcoReqInsData.setUsercd0022(getUpdValue(indto.getPreUsercd0022(), indto.getUsercd0022()));
-	        	tRdmHcoReqInsData.setUsercd0023(getUpdValue(indto.getPreUsercd0023(), indto.getUsercd0023()));
-	        	tRdmHcoReqInsData.setUsercd0024(getUpdValue(indto.getPreUsercd0024(), indto.getUsercd0024()));
-	        	tRdmHcoReqInsData.setUsercd0025(getUpdValue(indto.getPreUsercd0025(), indto.getUsercd0025()));
-	        	tRdmHcoReqInsData.setUsercd0026(getUpdValue(indto.getPreUsercd0026(), indto.getUsercd0026()));
-	        	tRdmHcoReqInsData.setUsercd0027(getUpdValue(indto.getPreUsercd0027(), indto.getUsercd0027()));
-	        	tRdmHcoReqInsData.setUsercd0028(getUpdValue(indto.getPreUsercd0028(), indto.getUsercd0028()));
-	        	tRdmHcoReqInsData.setUsercd0029(getUpdValue(indto.getPreUsercd0029(), indto.getUsercd0029()));
-	        	tRdmHcoReqInsData.setUsercd0030(getUpdValue(indto.getPreUsercd0030(), indto.getUsercd0030()));
-	        	tRdmHcoReqInsData.setUsercd0031(getUpdValue(indto.getPreUsercd0031(), indto.getUsercd0031()));
-	        	tRdmHcoReqInsData.setUsercd0032(getUpdValue(indto.getPreUsercd0032(), indto.getUsercd0032()));
-	        	tRdmHcoReqInsData.setUsercd0033(getUpdValue(indto.getPreUsercd0033(), indto.getUsercd0033()));
-	        	tRdmHcoReqInsData.setUsercd0034(getUpdValue(indto.getPreUsercd0034(), indto.getUsercd0034()));
-	        	tRdmHcoReqInsData.setUsercd0035(getUpdValue(indto.getPreUsercd0035(), indto.getUsercd0035()));
-	        	tRdmHcoReqInsData.setUsercd0036(getUpdValue(indto.getPreUsercd0036(), indto.getUsercd0036()));
-	        	tRdmHcoReqInsData.setUsercd0101(getUpdValue(indto.getPreUsercd0101(), indto.getUsercd0101()));
-	        	tRdmHcoReqInsData.setUsercd0102(getUpdValue(indto.getPreUsercd0102(), indto.getUsercd0102()));
-	        	tRdmHcoReqInsData.setUsercd0103(getUpdValue(indto.getPreUsercd0103(), indto.getUsercd0103()));
-	        	tRdmHcoReqInsData.setUsercd0104(getUpdValue(indto.getPreUsercd0104(), indto.getUsercd0104()));
-	        	tRdmHcoReqInsData.setUsercd0105(getUpdValue(indto.getPreUsercd0105(), indto.getUsercd0105()));
-	        	tRdmHcoReqInsData.setUsercd0106(getUpdValue(indto.getPreUsercd0106(), indto.getUsercd0106()));
-	        	tRdmHcoReqInsData.setUsercd0107(getUpdValue(indto.getPreUsercd0107(), indto.getUsercd0107()));
-	        	tRdmHcoReqInsData.setUsercd0108(getUpdValue(indto.getPreUsercd0108(), indto.getUsercd0108()));
-	        	tRdmHcoReqInsData.setUsercd0109(getUpdValue(indto.getPreUsercd0109(), indto.getUsercd0109()));
-	        	tRdmHcoReqInsData.setUsercd0201(getUpdValue(indto.getPreUsercd0201(), indto.getUsercd0201()));
-	        	tRdmHcoReqInsData.setUsercd0202(getUpdValue(indto.getPreUsercd0202(), indto.getUsercd0202()));
-	        	tRdmHcoReqInsData.setUsercd0203(getUpdValue(indto.getPreUsercd0203(), indto.getUsercd0203()));
-	        	tRdmHcoReqInsData.setUsercd0204(getUpdValue(indto.getPreUsercd0204(), indto.getUsercd0204()));
-	        	tRdmHcoReqInsData.setUsercd0205(getUpdValue(indto.getPreUsercd0205(), indto.getUsercd0205()));
-	        	tRdmHcoReqInsData.setUsercd0206(getUpdValue(indto.getPreUsercd0206(), indto.getUsercd0206()));
+	        	tRdmHcoReqInsData.setUsercd0001(indto.getUsercd0001());
+	        	tRdmHcoReqInsData.setUsercd0002(indto.getUsercd0002());
+	        	tRdmHcoReqInsData.setUsercd0003(indto.getUsercd0003());
+	        	tRdmHcoReqInsData.setUsercd0004(indto.getUsercd0004());
+	        	tRdmHcoReqInsData.setUsercd0005(indto.getUsercd0005());
+	        	tRdmHcoReqInsData.setUsercd0006(indto.getUsercd0006());
+	        	tRdmHcoReqInsData.setUsercd0007(indto.getUsercd0007());
+	        	tRdmHcoReqInsData.setUsercd0008(indto.getUsercd0008());
+	        	tRdmHcoReqInsData.setUsercd0009(indto.getUsercd0009());
+	        	tRdmHcoReqInsData.setUsercd0010(indto.getUsercd0010());
+	        	tRdmHcoReqInsData.setUsercd0011(indto.getUsercd0011());
+	        	tRdmHcoReqInsData.setUsercd0012(indto.getUsercd0012());
+	        	tRdmHcoReqInsData.setUsercd0013(indto.getUsercd0013());
+	        	tRdmHcoReqInsData.setUsercd0014(indto.getUsercd0014());
+	        	tRdmHcoReqInsData.setUsercd0015(indto.getUsercd0015());
+	        	tRdmHcoReqInsData.setUsercd0016(indto.getUsercd0016());
+	        	tRdmHcoReqInsData.setUsercd0017(indto.getUsercd0017());
+	        	tRdmHcoReqInsData.setUsercd0018(indto.getUsercd0018());
+	        	tRdmHcoReqInsData.setUsercd0019(indto.getUsercd0019());
+	        	tRdmHcoReqInsData.setUsercd0020(indto.getUsercd0020());
+	        	tRdmHcoReqInsData.setUsercd0021(indto.getUsercd0021());
+	        	tRdmHcoReqInsData.setUsercd0022(indto.getUsercd0022());
+	        	tRdmHcoReqInsData.setUsercd0023(indto.getUsercd0023());
+	        	tRdmHcoReqInsData.setUsercd0024(indto.getUsercd0024());
+	        	tRdmHcoReqInsData.setUsercd0025(indto.getUsercd0025());
+	        	tRdmHcoReqInsData.setUsercd0026(indto.getUsercd0026());
+	        	tRdmHcoReqInsData.setUsercd0027(indto.getUsercd0027());
+	        	tRdmHcoReqInsData.setUsercd0028(indto.getUsercd0028());
+	        	tRdmHcoReqInsData.setUsercd0029(indto.getUsercd0029());
+	        	tRdmHcoReqInsData.setUsercd0030(indto.getUsercd0030());
+	        	tRdmHcoReqInsData.setUsercd0031(indto.getUsercd0031());
+	        	tRdmHcoReqInsData.setUsercd0032(indto.getUsercd0032());
+	        	tRdmHcoReqInsData.setUsercd0033(indto.getUsercd0033());
+	        	tRdmHcoReqInsData.setUsercd0034(indto.getUsercd0034());
+	        	tRdmHcoReqInsData.setUsercd0035(indto.getUsercd0035());
+	        	tRdmHcoReqInsData.setUsercd0036(indto.getUsercd0036());
+	        	tRdmHcoReqInsData.setUsercd0101(indto.getUsercd0101());
+	        	tRdmHcoReqInsData.setUsercd0102(indto.getUsercd0102());
+	        	tRdmHcoReqInsData.setUsercd0103(indto.getUsercd0103());
+	        	tRdmHcoReqInsData.setUsercd0104(indto.getUsercd0104());
+	        	tRdmHcoReqInsData.setUsercd0105(indto.getUsercd0105());
+	        	tRdmHcoReqInsData.setUsercd0106(indto.getUsercd0106());
+	        	tRdmHcoReqInsData.setUsercd0107(indto.getUsercd0107());
+	        	tRdmHcoReqInsData.setUsercd0108(indto.getUsercd0108());
+	        	tRdmHcoReqInsData.setUsercd0109(indto.getUsercd0109());
+	        	tRdmHcoReqInsData.setUsercd0201(indto.getUsercd0201());
+	        	tRdmHcoReqInsData.setUsercd0202(indto.getUsercd0202());
+	        	tRdmHcoReqInsData.setUsercd0203(indto.getUsercd0203());
+	        	tRdmHcoReqInsData.setUsercd0204(indto.getUsercd0204());
+	        	tRdmHcoReqInsData.setUsercd0205(indto.getUsercd0205());
+	        	tRdmHcoReqInsData.setUsercd0206(indto.getUsercd0206());
 
-	        	tRdmHcoReqInsData.setReward04(getUpdValue(indto.getPreReward04(), indto.getReward04()));
-	        	tRdmHcoReqInsData.setReward05(getUpdValue(indto.getPreReward05(), indto.getReward05()));
-	        	tRdmHcoReqInsData.setReward08(getUpdValue(indto.getPreReward08(), indto.getReward08()));
-	        	tRdmHcoReqInsData.setReward09(getUpdValue(indto.getPreReward09(), indto.getReward09()));
-	        	tRdmHcoReqInsData.setReward16(getUpdValue(indto.getPreReward16(), indto.getReward16()));
-	        	tRdmHcoReqInsData.setReward17(getUpdValue(indto.getPreReward17(), indto.getReward17()));
-	        	tRdmHcoReqInsData.setReward18(getUpdValue(indto.getPreReward18(), indto.getReward18()));
-	        	tRdmHcoReqInsData.setReward21(getUpdValue(indto.getPreReward21(), indto.getReward21()));
-	        	tRdmHcoReqInsData.setReward23(getUpdValue(indto.getPreReward23(), indto.getReward23()));
-	        	tRdmHcoReqInsData.setReward25(getUpdValue(indto.getPreReward25(), indto.getReward25()));
-	        	tRdmHcoReqInsData.setReward26(getUpdValue(indto.getPreReward26(), indto.getReward26()));
-	        	tRdmHcoReqInsData.setReward27(getUpdValue(indto.getPreReward27(), indto.getReward27()));
-	        	tRdmHcoReqInsData.setReward29(getUpdValue(indto.getPreReward29(), indto.getReward29()));
-	        	tRdmHcoReqInsData.setReward35(getUpdValue(indto.getPreReward35(), indto.getReward35()));
-	        	tRdmHcoReqInsData.setReward36(getUpdValue(indto.getPreReward36(), indto.getReward36()));
-	        	tRdmHcoReqInsData.setReward37(getUpdValue(indto.getPreReward37(), indto.getReward37()));
-	        	tRdmHcoReqInsData.setReward44(getUpdValue(indto.getPreReward44(), indto.getReward44()));
+	        	tRdmHcoReqInsData.setReward04(indto.getReward04());
+	        	tRdmHcoReqInsData.setReward05(indto.getReward05());
+	        	tRdmHcoReqInsData.setReward08(indto.getReward08());
+	        	tRdmHcoReqInsData.setReward09(indto.getReward09());
+	        	tRdmHcoReqInsData.setReward16(indto.getReward16());
+	        	tRdmHcoReqInsData.setReward17(indto.getReward17());
+	        	tRdmHcoReqInsData.setReward18(indto.getReward18());
+	        	tRdmHcoReqInsData.setReward21(indto.getReward21());
+	        	tRdmHcoReqInsData.setReward23(indto.getReward23());
+	        	tRdmHcoReqInsData.setReward25(indto.getReward25());
+	        	tRdmHcoReqInsData.setReward26(indto.getReward26());
+	        	tRdmHcoReqInsData.setReward27(indto.getReward27());
+	        	tRdmHcoReqInsData.setReward29(indto.getReward29());
+	        	tRdmHcoReqInsData.setReward35(indto.getReward35());
+	        	tRdmHcoReqInsData.setReward36(indto.getReward36());
+	        	tRdmHcoReqInsData.setReward37(indto.getReward37());
+	        	tRdmHcoReqInsData.setReward44(indto.getReward44());
         	}
 
         	tRdmHcoReqInsData.setInsShaYmd(sysDate);
@@ -3050,21 +3050,21 @@ public class NF012Service extends BaseService {
         	TRdmHcoReqEntity tRdmHcoReqUpdData = new TRdmHcoReqEntity("updateNF012Data");
         	tRdmHcoReqUpdData.setReqId(reqId);
 
-        	tRdmHcoReqUpdData.setInsKana(getUpdValue(indto.getPreInsKana(), indto.getInsKana()));
-        	tRdmHcoReqUpdData.setInsAbbrName(getUpdValue(indto.getPreInsAbbrName(), indto.getInsAbbrName()));
-        	tRdmHcoReqUpdData.setInsFormalName(getUpdValue(indto.getPreInsFormalName(), indto.getInsFormalName()));
-        	tRdmHcoReqUpdData.setInsPcode(getUpdValue(indto.getPreInsPcode(), indto.getInsPcode()));
-        	tRdmHcoReqUpdData.setAddrCodePref(getUpdValue(indto.getPreAddrCodePref(), indto.getAddrCodePref()));
-        	tRdmHcoReqUpdData.setAddrCodeCity(getUpdValue(indto.getPreAddrCodeCity(), indto.getAddrCodeCity()));
-        	tRdmHcoReqUpdData.setTkCityCd(getUpdValue(indto.getPreTkCityCd(), indto.getTkCityCd()));
-        	tRdmHcoReqUpdData.setInsAddrDt(getUpdValue(indto.getPreInsAddrDt(), indto.getInsAddrDt()));
-        	tRdmHcoReqUpdData.setInsAddr(getUpdValue(indto.getPreInsAddr(), indto.getInsAddr()));
-        	tRdmHcoReqUpdData.setInsAddrKana(getUpdValue(indto.getPreInsAddrKana(), indto.getInsAddrKana()));
-        	tRdmHcoReqUpdData.setInsPhone1(getUpdValue(indto.getPreInsPhone1(), indto.getInsPhone1()));
-        	tRdmHcoReqUpdData.setInsFax1(getUpdValue(indto.getPreInsFax1(), indto.getInsFax1()));
-        	tRdmHcoReqUpdData.setInsPhone2(getUpdValue(indto.getPreInsPhone2(), indto.getInsPhone2()));
-        	tRdmHcoReqUpdData.setInsFax2(getUpdValue(indto.getPreInsFax2(), indto.getInsFax2()));
-        	tRdmHcoReqUpdData.setInsUrl(getUpdValue(indto.getPreInsUrl(), indto.getInsUrl()));
+        	tRdmHcoReqUpdData.setInsKana(indto.getInsKana());
+        	tRdmHcoReqUpdData.setInsAbbrName(indto.getInsAbbrName());
+        	tRdmHcoReqUpdData.setInsFormalName(indto.getInsFormalName());
+        	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode());
+        	tRdmHcoReqUpdData.setAddrCodePref(indto.getAddrCodePref());
+        	tRdmHcoReqUpdData.setAddrCodeCity(indto.getAddrCodeCity());
+        	tRdmHcoReqUpdData.setTkCityCd(indto.getTkCityCd());
+        	tRdmHcoReqUpdData.setInsAddrDt(indto.getInsAddrDt());
+        	tRdmHcoReqUpdData.setInsAddr(indto.getInsAddr());
+        	tRdmHcoReqUpdData.setInsAddrKana(indto.getInsAddrKana());
+        	tRdmHcoReqUpdData.setInsPhone1(indto.getInsPhone1());
+        	tRdmHcoReqUpdData.setInsFax1(indto.getInsFax1());
+        	tRdmHcoReqUpdData.setInsPhone2(indto.getInsPhone2());
+        	tRdmHcoReqUpdData.setInsFax2(indto.getInsFax2());
+        	tRdmHcoReqUpdData.setInsUrl(indto.getInsUrl());
 
         	String preInsUrlYmd = indto.getPreInsUrlYmd();
         	String insUrlYmd = indto.getInsUrlYmd();
@@ -3075,173 +3075,173 @@ public class NF012Service extends BaseService {
         		insUrlYmd = insUrlYmd.replace("-", "");
         	}
 
-        	tRdmHcoReqUpdData.setInsUrlYmd(getUpdValue(preInsUrlYmd,insUrlYmd));
+        	tRdmHcoReqUpdData.setInsUrlYmd(insUrlYmd);
 
-        	tRdmHcoReqUpdData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
-        	tRdmHcoReqUpdData.setWsType(getUpdValue(indto.getPreWsType(), indto.getWsType()));
-        	tRdmHcoReqUpdData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
-        	tRdmHcoReqUpdData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));
-        	tRdmHcoReqUpdData.setInsOpenYear(getUpdValue(indto.getPreInsOpenYear(), indto.getInsOpenYear()));
-        	tRdmHcoReqUpdData.setInsOpenMonth(getUpdValue(indto.getPreInsOpenMonth(), indto.getInsOpenMonth()));
-        	tRdmHcoReqUpdData.setInsOpenDay(getUpdValue(indto.getPreInsOpenDay(), indto.getInsOpenDay()));
-        	tRdmHcoReqUpdData.setCapaType(getUpdValue(indto.getPreCapaType(), indto.getCapaType()));
+        	tRdmHcoReqUpdData.setTradeType(indto.getTradeType());
+        	tRdmHcoReqUpdData.setWsType(indto.getWsType());
+        	tRdmHcoReqUpdData.setBasketPurchase(indto.getBasketPurchase());
+        	tRdmHcoReqUpdData.setUnivSubdiv(indto.getUnivSubdiv());
+        	tRdmHcoReqUpdData.setInsOpenYear(indto.getInsOpenYear());
+        	tRdmHcoReqUpdData.setInsOpenMonth(indto.getInsOpenMonth());
+        	tRdmHcoReqUpdData.setInsOpenDay(indto.getInsOpenDay());
+        	tRdmHcoReqUpdData.setCapaType(indto.getCapaType());
 
         	if(knr) {
-        		tRdmHcoReqUpdData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
+        		tRdmHcoReqUpdData.setUltInsNo(indto.getUltInsCd());
 
-        		tRdmHcoReqUpdData.setFree0001(getUpdValue(indto.getPreFree0001(), indto.getFree0001()));
-	        	tRdmHcoReqUpdData.setFree0002(getUpdValue(indto.getPreFree0002(), indto.getFree0002()));
-	        	tRdmHcoReqUpdData.setFree0003(getUpdValue(indto.getPreFree0003(), indto.getFree0003()));
-	        	tRdmHcoReqUpdData.setFree0004(getUpdValue(indto.getPreFree0004(), indto.getFree0004()));
-	        	tRdmHcoReqUpdData.setFree0005(getUpdValue(indto.getPreFree0005(), indto.getFree0005()));
-	        	tRdmHcoReqUpdData.setFree0006(getUpdValue(indto.getPreFree0006(), indto.getFree0006()));
-	        	tRdmHcoReqUpdData.setFree0007(getUpdValue(indto.getPreFree0007(), indto.getFree0007()));
-	        	tRdmHcoReqUpdData.setFree0008(getUpdValue(indto.getPreFree0008(), indto.getFree0008()));
-	        	tRdmHcoReqUpdData.setFree0009(getUpdValue(indto.getPreFree0009(), indto.getFree0009()));
-	        	tRdmHcoReqUpdData.setFree0010(getUpdValue(indto.getPreFree0010(), indto.getFree0010()));
-	        	tRdmHcoReqUpdData.setFree0011(getUpdValue(indto.getPreFree0011(), indto.getFree0011()));
-	        	tRdmHcoReqUpdData.setFree0012(getUpdValue(indto.getPreFree0012(), indto.getFree0012()));
-	        	tRdmHcoReqUpdData.setFree0013(getUpdValue(indto.getPreFree0013(), indto.getFree0013()));
-	        	tRdmHcoReqUpdData.setFree0014(getUpdValue(indto.getPreFree0014(), indto.getFree0014()));
-	        	tRdmHcoReqUpdData.setFree0015(getUpdValue(indto.getPreFree0015(), indto.getFree0015()));
+        		tRdmHcoReqUpdData.setFree0001(indto.getFree0001());
+	        	tRdmHcoReqUpdData.setFree0002(indto.getFree0002());
+	        	tRdmHcoReqUpdData.setFree0003(indto.getFree0003());
+	        	tRdmHcoReqUpdData.setFree0004(indto.getFree0004());
+	        	tRdmHcoReqUpdData.setFree0005(indto.getFree0005());
+	        	tRdmHcoReqUpdData.setFree0006(indto.getFree0006());
+	        	tRdmHcoReqUpdData.setFree0007(indto.getFree0007());
+	        	tRdmHcoReqUpdData.setFree0008(indto.getFree0008());
+	        	tRdmHcoReqUpdData.setFree0009(indto.getFree0009());
+	        	tRdmHcoReqUpdData.setFree0010(indto.getFree0010());
+	        	tRdmHcoReqUpdData.setFree0011(indto.getFree0011());
+	        	tRdmHcoReqUpdData.setFree0012(indto.getFree0012());
+	        	tRdmHcoReqUpdData.setFree0013(indto.getFree0013());
+	        	tRdmHcoReqUpdData.setFree0014(indto.getFree0014());
+	        	tRdmHcoReqUpdData.setFree0015(indto.getFree0015());
 
-	        	tRdmHcoReqUpdData.setWelfare02(getUpdValue(indto.getPreWelfare02(), indto.getWelfare02()));
-	        	tRdmHcoReqUpdData.setWelfare08(getUpdValue(indto.getPreWelfare08(), indto.getWelfare08()));
+	        	tRdmHcoReqUpdData.setWelfare02(indto.getWelfare02());
+	        	tRdmHcoReqUpdData.setWelfare08(indto.getWelfare08());
 
-	        	tRdmHcoReqUpdData.setResult01(getUpdValue(indto.getPreResult01(), indto.getResult01()));
-	        	tRdmHcoReqUpdData.setResult02(getUpdValue(indto.getPreResult02(), indto.getResult02()));
-	        	tRdmHcoReqUpdData.setResult03(getUpdValue(indto.getPreResult03(), indto.getResult03()));
-	        	tRdmHcoReqUpdData.setResult04(getUpdValue(indto.getPreResult04(), indto.getResult04()));
-	        	tRdmHcoReqUpdData.setResult05(getUpdValue(indto.getPreResult05(), indto.getResult05()));
-	        	tRdmHcoReqUpdData.setResult06(getUpdValue(indto.getPreResult06(), indto.getResult06()));
-	        	tRdmHcoReqUpdData.setResult07(getUpdValue(indto.getPreResult07(), indto.getResult07()));
-	        	tRdmHcoReqUpdData.setResult08(getUpdValue(indto.getPreResult08(), indto.getResult08()));
-	        	tRdmHcoReqUpdData.setResult09(getUpdValue(indto.getPreResult09(), indto.getResult09()));
-	        	tRdmHcoReqUpdData.setResult10(getUpdValue(indto.getPreResult10(), indto.getResult10()));
-	        	tRdmHcoReqUpdData.setResult11(getUpdValue(indto.getPreResult11(), indto.getResult11()));
-	        	tRdmHcoReqUpdData.setResult12(getUpdValue(indto.getPreResult12(), indto.getResult12()));
-	        	tRdmHcoReqUpdData.setResult13(getUpdValue(indto.getPreResult13(), indto.getResult13()));
-	        	tRdmHcoReqUpdData.setResult14(getUpdValue(indto.getPreResult14(), indto.getResult14()));
-	        	tRdmHcoReqUpdData.setResult15(getUpdValue(indto.getPreResult15(), indto.getResult15()));
-	        	tRdmHcoReqUpdData.setResult16(getUpdValue(indto.getPreResult16(), indto.getResult16()));
-	        	tRdmHcoReqUpdData.setResult17(getUpdValue(indto.getPreResult17(), indto.getResult17()));
-	        	tRdmHcoReqUpdData.setResult18(getUpdValue(indto.getPreResult18(), indto.getResult18()));
-	        	tRdmHcoReqUpdData.setResult19(getUpdValue(indto.getPreResult19(), indto.getResult19()));
-	        	tRdmHcoReqUpdData.setResult20(getUpdValue(indto.getPreResult20(), indto.getResult20()));
-	        	tRdmHcoReqUpdData.setResult21(getUpdValue(indto.getPreResult21(), indto.getResult21()));
-	        	tRdmHcoReqUpdData.setResult22(getUpdValue(indto.getPreResult22(), indto.getResult22()));
-	        	tRdmHcoReqUpdData.setResult23(getUpdValue(indto.getPreResult23(), indto.getResult23()));
-	        	tRdmHcoReqUpdData.setResult24(getUpdValue(indto.getPreResult24(), indto.getResult24()));
-	        	tRdmHcoReqUpdData.setResult25(getUpdValue(indto.getPreResult25(), indto.getResult25()));
-	        	tRdmHcoReqUpdData.setResult26(getUpdValue(indto.getPreResult26(), indto.getResult26()));
-	        	tRdmHcoReqUpdData.setResult27(getUpdValue(indto.getPreResult27(), indto.getResult27()));
-	        	tRdmHcoReqUpdData.setResult28(getUpdValue(indto.getPreResult28(), indto.getResult28()));
-	        	tRdmHcoReqUpdData.setResult29(getUpdValue(indto.getPreResult29(), indto.getResult29()));
-	        	tRdmHcoReqUpdData.setResult30(getUpdValue(indto.getPreResult30(), indto.getResult30()));
-	        	tRdmHcoReqUpdData.setResult31(getUpdValue(indto.getPreResult31(), indto.getResult31()));
-	        	tRdmHcoReqUpdData.setResult32(getUpdValue(indto.getPreResult32(), indto.getResult32()));
-	        	tRdmHcoReqUpdData.setResult33(getUpdValue(indto.getPreResult33(), indto.getResult33()));
-	        	tRdmHcoReqUpdData.setResult34(getUpdValue(indto.getPreResult34(), indto.getResult34()));
-	        	tRdmHcoReqUpdData.setResult35(getUpdValue(indto.getPreResult35(), indto.getResult35()));
-	        	tRdmHcoReqUpdData.setResult36(getUpdValue(indto.getPreResult36(), indto.getResult36()));
+	        	tRdmHcoReqUpdData.setResult01(indto.getResult01());
+	        	tRdmHcoReqUpdData.setResult02(indto.getResult02());
+	        	tRdmHcoReqUpdData.setResult03(indto.getResult03());
+	        	tRdmHcoReqUpdData.setResult04(indto.getResult04());
+	        	tRdmHcoReqUpdData.setResult05(indto.getResult05());
+	        	tRdmHcoReqUpdData.setResult06(indto.getResult06());
+	        	tRdmHcoReqUpdData.setResult07(indto.getResult07());
+	        	tRdmHcoReqUpdData.setResult08(indto.getResult08());
+	        	tRdmHcoReqUpdData.setResult09(indto.getResult09());
+	        	tRdmHcoReqUpdData.setResult10(indto.getResult10());
+	        	tRdmHcoReqUpdData.setResult11(indto.getResult11());
+	        	tRdmHcoReqUpdData.setResult12(indto.getResult12());
+	        	tRdmHcoReqUpdData.setResult13(indto.getResult13());
+	        	tRdmHcoReqUpdData.setResult14(indto.getResult14());
+	        	tRdmHcoReqUpdData.setResult15(indto.getResult15());
+	        	tRdmHcoReqUpdData.setResult16(indto.getResult16());
+	        	tRdmHcoReqUpdData.setResult17(indto.getResult17());
+	        	tRdmHcoReqUpdData.setResult18(indto.getResult18());
+	        	tRdmHcoReqUpdData.setResult19(indto.getResult19());
+	        	tRdmHcoReqUpdData.setResult20(indto.getResult20());
+	        	tRdmHcoReqUpdData.setResult21(indto.getResult21());
+	        	tRdmHcoReqUpdData.setResult22(indto.getResult22());
+	        	tRdmHcoReqUpdData.setResult23(indto.getResult23());
+	        	tRdmHcoReqUpdData.setResult24(indto.getResult24());
+	        	tRdmHcoReqUpdData.setResult25(indto.getResult25());
+	        	tRdmHcoReqUpdData.setResult26(indto.getResult26());
+	        	tRdmHcoReqUpdData.setResult27(indto.getResult27());
+	        	tRdmHcoReqUpdData.setResult28(indto.getResult28());
+	        	tRdmHcoReqUpdData.setResult29(indto.getResult29());
+	        	tRdmHcoReqUpdData.setResult30(indto.getResult30());
+	        	tRdmHcoReqUpdData.setResult31(indto.getResult31());
+	        	tRdmHcoReqUpdData.setResult32(indto.getResult32());
+	        	tRdmHcoReqUpdData.setResult33(indto.getResult33());
+	        	tRdmHcoReqUpdData.setResult34(indto.getResult34());
+	        	tRdmHcoReqUpdData.setResult35(indto.getResult35());
+	        	tRdmHcoReqUpdData.setResult36(indto.getResult36());
         	}
 
-        	tRdmHcoReqUpdData.setEquip01(getUpdValue(indto.getPreEquip01(), indto.getEquip01()));
-        	tRdmHcoReqUpdData.setEquip02(getUpdValue(indto.getPreEquip02(), indto.getEquip02()));
-        	tRdmHcoReqUpdData.setEquip03(getUpdValue(indto.getPreEquip03(), indto.getEquip03()));
-        	tRdmHcoReqUpdData.setEquip07(getUpdValue(indto.getPreEquip07(), indto.getEquip07()));
-        	tRdmHcoReqUpdData.setEquip09(getUpdValue(indto.getPreEquip09(), indto.getEquip09()));
+        	tRdmHcoReqUpdData.setEquip01(indto.getEquip01());
+        	tRdmHcoReqUpdData.setEquip02(indto.getEquip02());
+        	tRdmHcoReqUpdData.setEquip03(indto.getEquip03());
+        	tRdmHcoReqUpdData.setEquip07(indto.getEquip07());
+        	tRdmHcoReqUpdData.setEquip09(indto.getEquip09());
 
         	if(knr) {
-	        	tRdmHcoReqUpdData.setMarket01(getUpdValue(indto.getPreMarket01(), indto.getMarket01()));
-	        	tRdmHcoReqUpdData.setMarket02(getUpdValue(indto.getPreMarket02(), indto.getMarket02()));
-	        	tRdmHcoReqUpdData.setMarket03(getUpdValue(indto.getPreMarket03(), indto.getMarket03()));
-	        	tRdmHcoReqUpdData.setMarket04(getUpdValue(indto.getPreMarket04(), indto.getMarket04()));
-	        	tRdmHcoReqUpdData.setMarket06(getUpdValue(indto.getPreMarket06(), indto.getMarket06()));
-	        	tRdmHcoReqUpdData.setMarket07(getUpdValue(indto.getPreMarket07(), indto.getMarket07()));
-	        	tRdmHcoReqUpdData.setMarket09(getUpdValue(indto.getPreMarket09(), indto.getMarket09()));
+	        	tRdmHcoReqUpdData.setMarket01(indto.getMarket01());
+	        	tRdmHcoReqUpdData.setMarket02(indto.getMarket02());
+	        	tRdmHcoReqUpdData.setMarket03(indto.getMarket03());
+	        	tRdmHcoReqUpdData.setMarket04(indto.getMarket04());
+	        	tRdmHcoReqUpdData.setMarket06(indto.getMarket06());
+	        	tRdmHcoReqUpdData.setMarket07(indto.getMarket07());
+	        	tRdmHcoReqUpdData.setMarket09(indto.getMarket09());
 
-	        	tRdmHcoReqUpdData.setMedical12(getUpdValue(indto.getPreMedical12(), indto.getMedical12()));
+	        	tRdmHcoReqUpdData.setMedical12(indto.getMedical12());
         	}
 
-        	tRdmHcoReqUpdData.setSpfunc01(getUpdValue(indto.getPreSpfunc01(), indto.getSpfunc01()));
-        	tRdmHcoReqUpdData.setSpfunc03(getUpdValue(indto.getPreSpfunc03(), indto.getSpfunc03()));
-        	tRdmHcoReqUpdData.setSpfunc04(getUpdValue(indto.getPreSpfunc04(), indto.getSpfunc04()));
+        	tRdmHcoReqUpdData.setSpfunc01(indto.getSpfunc01());
+        	tRdmHcoReqUpdData.setSpfunc03(indto.getSpfunc03());
+        	tRdmHcoReqUpdData.setSpfunc04(indto.getSpfunc04());
 
-        	tRdmHcoReqUpdData.setTieup10(getUpdValue(indto.getPreTieup10(), indto.getTieup10()));
-        	tRdmHcoReqUpdData.setTieup11(getUpdValue(indto.getPreTieup11(), indto.getTieup11()));
-        	tRdmHcoReqUpdData.setTieup12(getUpdValue(indto.getPreTieup12(), indto.getTieup12()));
+        	tRdmHcoReqUpdData.setTieup10(indto.getTieup10());
+        	tRdmHcoReqUpdData.setTieup11(indto.getTieup11());
+        	tRdmHcoReqUpdData.setTieup12(indto.getTieup12());
 
         	if(knr) {
-	        	tRdmHcoReqUpdData.setUsercd0001(getUpdValue(indto.getPreUsercd0001(), indto.getUsercd0001()));
-	        	tRdmHcoReqUpdData.setUsercd0002(getUpdValue(indto.getPreUsercd0002(), indto.getUsercd0002()));
-	        	tRdmHcoReqUpdData.setUsercd0003(getUpdValue(indto.getPreUsercd0003(), indto.getUsercd0003()));
-	        	tRdmHcoReqUpdData.setUsercd0004(getUpdValue(indto.getPreUsercd0004(), indto.getUsercd0004()));
-	        	tRdmHcoReqUpdData.setUsercd0005(getUpdValue(indto.getPreUsercd0005(), indto.getUsercd0005()));
-	        	tRdmHcoReqUpdData.setUsercd0006(getUpdValue(indto.getPreUsercd0006(), indto.getUsercd0006()));
-	        	tRdmHcoReqUpdData.setUsercd0007(getUpdValue(indto.getPreUsercd0007(), indto.getUsercd0007()));
-	        	tRdmHcoReqUpdData.setUsercd0008(getUpdValue(indto.getPreUsercd0008(), indto.getUsercd0008()));
-	        	tRdmHcoReqUpdData.setUsercd0009(getUpdValue(indto.getPreUsercd0009(), indto.getUsercd0009()));
-	        	tRdmHcoReqUpdData.setUsercd0010(getUpdValue(indto.getPreUsercd0010(), indto.getUsercd0010()));
-	        	tRdmHcoReqUpdData.setUsercd0011(getUpdValue(indto.getPreUsercd0011(), indto.getUsercd0011()));
-	        	tRdmHcoReqUpdData.setUsercd0012(getUpdValue(indto.getPreUsercd0012(), indto.getUsercd0012()));
-	        	tRdmHcoReqUpdData.setUsercd0013(getUpdValue(indto.getPreUsercd0013(), indto.getUsercd0013()));
-	        	tRdmHcoReqUpdData.setUsercd0014(getUpdValue(indto.getPreUsercd0014(), indto.getUsercd0014()));
-	        	tRdmHcoReqUpdData.setUsercd0015(getUpdValue(indto.getPreUsercd0015(), indto.getUsercd0015()));
-	        	tRdmHcoReqUpdData.setUsercd0016(getUpdValue(indto.getPreUsercd0016(), indto.getUsercd0016()));
-	        	tRdmHcoReqUpdData.setUsercd0017(getUpdValue(indto.getPreUsercd0017(), indto.getUsercd0017()));
-	        	tRdmHcoReqUpdData.setUsercd0018(getUpdValue(indto.getPreUsercd0018(), indto.getUsercd0018()));
-	        	tRdmHcoReqUpdData.setUsercd0019(getUpdValue(indto.getPreUsercd0019(), indto.getUsercd0019()));
-	        	tRdmHcoReqUpdData.setUsercd0020(getUpdValue(indto.getPreUsercd0020(), indto.getUsercd0020()));
-	        	tRdmHcoReqUpdData.setUsercd0021(getUpdValue(indto.getPreUsercd0021(), indto.getUsercd0021()));
-	        	tRdmHcoReqUpdData.setUsercd0022(getUpdValue(indto.getPreUsercd0022(), indto.getUsercd0022()));
-	        	tRdmHcoReqUpdData.setUsercd0023(getUpdValue(indto.getPreUsercd0023(), indto.getUsercd0023()));
-	        	tRdmHcoReqUpdData.setUsercd0024(getUpdValue(indto.getPreUsercd0024(), indto.getUsercd0024()));
-	        	tRdmHcoReqUpdData.setUsercd0025(getUpdValue(indto.getPreUsercd0025(), indto.getUsercd0025()));
-	        	tRdmHcoReqUpdData.setUsercd0026(getUpdValue(indto.getPreUsercd0026(), indto.getUsercd0026()));
-	        	tRdmHcoReqUpdData.setUsercd0027(getUpdValue(indto.getPreUsercd0027(), indto.getUsercd0027()));
-	        	tRdmHcoReqUpdData.setUsercd0028(getUpdValue(indto.getPreUsercd0028(), indto.getUsercd0028()));
-	        	tRdmHcoReqUpdData.setUsercd0029(getUpdValue(indto.getPreUsercd0029(), indto.getUsercd0029()));
-	        	tRdmHcoReqUpdData.setUsercd0030(getUpdValue(indto.getPreUsercd0030(), indto.getUsercd0030()));
-	        	tRdmHcoReqUpdData.setUsercd0031(getUpdValue(indto.getPreUsercd0031(), indto.getUsercd0031()));
-	        	tRdmHcoReqUpdData.setUsercd0032(getUpdValue(indto.getPreUsercd0032(), indto.getUsercd0032()));
-	        	tRdmHcoReqUpdData.setUsercd0033(getUpdValue(indto.getPreUsercd0033(), indto.getUsercd0033()));
-	        	tRdmHcoReqUpdData.setUsercd0034(getUpdValue(indto.getPreUsercd0034(), indto.getUsercd0034()));
-	        	tRdmHcoReqUpdData.setUsercd0035(getUpdValue(indto.getPreUsercd0035(), indto.getUsercd0035()));
-	        	tRdmHcoReqUpdData.setUsercd0036(getUpdValue(indto.getPreUsercd0036(), indto.getUsercd0036()));
-	        	tRdmHcoReqUpdData.setUsercd0101(getUpdValue(indto.getPreUsercd0101(), indto.getUsercd0101()));
-	        	tRdmHcoReqUpdData.setUsercd0102(getUpdValue(indto.getPreUsercd0102(), indto.getUsercd0102()));
-	        	tRdmHcoReqUpdData.setUsercd0103(getUpdValue(indto.getPreUsercd0103(), indto.getUsercd0103()));
-	        	tRdmHcoReqUpdData.setUsercd0104(getUpdValue(indto.getPreUsercd0104(), indto.getUsercd0104()));
-	        	tRdmHcoReqUpdData.setUsercd0105(getUpdValue(indto.getPreUsercd0105(), indto.getUsercd0105()));
-	        	tRdmHcoReqUpdData.setUsercd0106(getUpdValue(indto.getPreUsercd0106(), indto.getUsercd0106()));
-	        	tRdmHcoReqUpdData.setUsercd0107(getUpdValue(indto.getPreUsercd0107(), indto.getUsercd0107()));
-	        	tRdmHcoReqUpdData.setUsercd0108(getUpdValue(indto.getPreUsercd0108(), indto.getUsercd0108()));
-	        	tRdmHcoReqUpdData.setUsercd0109(getUpdValue(indto.getPreUsercd0109(), indto.getUsercd0109()));
-	        	tRdmHcoReqUpdData.setUsercd0201(getUpdValue(indto.getPreUsercd0201(), indto.getUsercd0201()));
-	        	tRdmHcoReqUpdData.setUsercd0202(getUpdValue(indto.getPreUsercd0202(), indto.getUsercd0202()));
-	        	tRdmHcoReqUpdData.setUsercd0203(getUpdValue(indto.getPreUsercd0203(), indto.getUsercd0203()));
-	        	tRdmHcoReqUpdData.setUsercd0204(getUpdValue(indto.getPreUsercd0204(), indto.getUsercd0204()));
-	        	tRdmHcoReqUpdData.setUsercd0205(getUpdValue(indto.getPreUsercd0205(), indto.getUsercd0205()));
-	        	tRdmHcoReqUpdData.setUsercd0206(getUpdValue(indto.getPreUsercd0206(), indto.getUsercd0206()));
+	        	tRdmHcoReqUpdData.setUsercd0001(indto.getUsercd0001());
+	        	tRdmHcoReqUpdData.setUsercd0002(indto.getUsercd0002());
+	        	tRdmHcoReqUpdData.setUsercd0003(indto.getUsercd0003());
+	        	tRdmHcoReqUpdData.setUsercd0004(indto.getUsercd0004());
+	        	tRdmHcoReqUpdData.setUsercd0005(indto.getUsercd0005());
+	        	tRdmHcoReqUpdData.setUsercd0006(indto.getUsercd0006());
+	        	tRdmHcoReqUpdData.setUsercd0007(indto.getUsercd0007());
+	        	tRdmHcoReqUpdData.setUsercd0008(indto.getUsercd0008());
+	        	tRdmHcoReqUpdData.setUsercd0009(indto.getUsercd0009());
+	        	tRdmHcoReqUpdData.setUsercd0010(indto.getUsercd0010());
+	        	tRdmHcoReqUpdData.setUsercd0011(indto.getUsercd0011());
+	        	tRdmHcoReqUpdData.setUsercd0012(indto.getUsercd0012());
+	        	tRdmHcoReqUpdData.setUsercd0013(indto.getUsercd0013());
+	        	tRdmHcoReqUpdData.setUsercd0014(indto.getUsercd0014());
+	        	tRdmHcoReqUpdData.setUsercd0015(indto.getUsercd0015());
+	        	tRdmHcoReqUpdData.setUsercd0016(indto.getUsercd0016());
+	        	tRdmHcoReqUpdData.setUsercd0017(indto.getUsercd0017());
+	        	tRdmHcoReqUpdData.setUsercd0018(indto.getUsercd0018());
+	        	tRdmHcoReqUpdData.setUsercd0019(indto.getUsercd0019());
+	        	tRdmHcoReqUpdData.setUsercd0020(indto.getUsercd0020());
+	        	tRdmHcoReqUpdData.setUsercd0021(indto.getUsercd0021());
+	        	tRdmHcoReqUpdData.setUsercd0022(indto.getUsercd0022());
+	        	tRdmHcoReqUpdData.setUsercd0023(indto.getUsercd0023());
+	        	tRdmHcoReqUpdData.setUsercd0024(indto.getUsercd0024());
+	        	tRdmHcoReqUpdData.setUsercd0025(indto.getUsercd0025());
+	        	tRdmHcoReqUpdData.setUsercd0026(indto.getUsercd0026());
+	        	tRdmHcoReqUpdData.setUsercd0027(indto.getUsercd0027());
+	        	tRdmHcoReqUpdData.setUsercd0028(indto.getUsercd0028());
+	        	tRdmHcoReqUpdData.setUsercd0029(indto.getUsercd0029());
+	        	tRdmHcoReqUpdData.setUsercd0030(indto.getUsercd0030());
+	        	tRdmHcoReqUpdData.setUsercd0031(indto.getUsercd0031());
+	        	tRdmHcoReqUpdData.setUsercd0032(indto.getUsercd0032());
+	        	tRdmHcoReqUpdData.setUsercd0033(indto.getUsercd0033());
+	        	tRdmHcoReqUpdData.setUsercd0034(indto.getUsercd0034());
+	        	tRdmHcoReqUpdData.setUsercd0035(indto.getUsercd0035());
+	        	tRdmHcoReqUpdData.setUsercd0036(indto.getUsercd0036());
+	        	tRdmHcoReqUpdData.setUsercd0101(indto.getUsercd0101());
+	        	tRdmHcoReqUpdData.setUsercd0102(indto.getUsercd0102());
+	        	tRdmHcoReqUpdData.setUsercd0103(indto.getUsercd0103());
+	        	tRdmHcoReqUpdData.setUsercd0104(indto.getUsercd0104());
+	        	tRdmHcoReqUpdData.setUsercd0105(indto.getUsercd0105());
+	        	tRdmHcoReqUpdData.setUsercd0106(indto.getUsercd0106());
+	        	tRdmHcoReqUpdData.setUsercd0107(indto.getUsercd0107());
+	        	tRdmHcoReqUpdData.setUsercd0108(indto.getUsercd0108());
+	        	tRdmHcoReqUpdData.setUsercd0109(indto.getUsercd0109());
+	        	tRdmHcoReqUpdData.setUsercd0201(indto.getUsercd0201());
+	        	tRdmHcoReqUpdData.setUsercd0202(indto.getUsercd0202());
+	        	tRdmHcoReqUpdData.setUsercd0203(indto.getUsercd0203());
+	        	tRdmHcoReqUpdData.setUsercd0204(indto.getUsercd0204());
+	        	tRdmHcoReqUpdData.setUsercd0205(indto.getUsercd0205());
+	        	tRdmHcoReqUpdData.setUsercd0206(indto.getUsercd0206());
 
-	        	tRdmHcoReqUpdData.setReward04(getUpdValue(indto.getPreReward04(), indto.getReward04()));
-	        	tRdmHcoReqUpdData.setReward05(getUpdValue(indto.getPreReward05(), indto.getReward05()));
-	        	tRdmHcoReqUpdData.setReward08(getUpdValue(indto.getPreReward08(), indto.getReward08()));
-	        	tRdmHcoReqUpdData.setReward09(getUpdValue(indto.getPreReward09(), indto.getReward09()));
-	        	tRdmHcoReqUpdData.setReward16(getUpdValue(indto.getPreReward16(), indto.getReward16()));
-	        	tRdmHcoReqUpdData.setReward17(getUpdValue(indto.getPreReward17(), indto.getReward17()));
-	        	tRdmHcoReqUpdData.setReward18(getUpdValue(indto.getPreReward18(), indto.getReward18()));
-	        	tRdmHcoReqUpdData.setReward21(getUpdValue(indto.getPreReward21(), indto.getReward21()));
-	        	tRdmHcoReqUpdData.setReward23(getUpdValue(indto.getPreReward23(), indto.getReward23()));
-	        	tRdmHcoReqUpdData.setReward25(getUpdValue(indto.getPreReward25(), indto.getReward25()));
-	        	tRdmHcoReqUpdData.setReward26(getUpdValue(indto.getPreReward26(), indto.getReward26()));
-	        	tRdmHcoReqUpdData.setReward27(getUpdValue(indto.getPreReward27(), indto.getReward27()));
-	        	tRdmHcoReqUpdData.setReward29(getUpdValue(indto.getPreReward29(), indto.getReward29()));
-	        	tRdmHcoReqUpdData.setReward35(getUpdValue(indto.getPreReward35(), indto.getReward35()));
-	        	tRdmHcoReqUpdData.setReward36(getUpdValue(indto.getPreReward36(), indto.getReward36()));
-	        	tRdmHcoReqUpdData.setReward37(getUpdValue(indto.getPreReward37(), indto.getReward37()));
-	        	tRdmHcoReqUpdData.setReward44(getUpdValue(indto.getPreReward44(), indto.getReward44()));
+	        	tRdmHcoReqUpdData.setReward04(indto.getReward04());
+	        	tRdmHcoReqUpdData.setReward05(indto.getReward05());
+	        	tRdmHcoReqUpdData.setReward08(indto.getReward08());
+	        	tRdmHcoReqUpdData.setReward09(indto.getReward09());
+	        	tRdmHcoReqUpdData.setReward16(indto.getReward16());
+	        	tRdmHcoReqUpdData.setReward17(indto.getReward17());
+	        	tRdmHcoReqUpdData.setReward18(indto.getReward18());
+	        	tRdmHcoReqUpdData.setReward21(indto.getReward21());
+	        	tRdmHcoReqUpdData.setReward23(indto.getReward23());
+	        	tRdmHcoReqUpdData.setReward25(indto.getReward25());
+	        	tRdmHcoReqUpdData.setReward26(indto.getReward26());
+	        	tRdmHcoReqUpdData.setReward27(indto.getReward27());
+	        	tRdmHcoReqUpdData.setReward29(indto.getReward29());
+	        	tRdmHcoReqUpdData.setReward35(indto.getReward35());
+	        	tRdmHcoReqUpdData.setReward36(indto.getReward36());
+	        	tRdmHcoReqUpdData.setReward37(indto.getReward37());
+	        	tRdmHcoReqUpdData.setReward44(indto.getReward44());
         	}
 
         	tRdmHcoReqUpdData.setInsShaYmd(sysDate);

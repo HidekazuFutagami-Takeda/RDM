@@ -13,10 +13,8 @@ public class RdmConstantsData {
     /***条件設定 : 適用日設定可能本部権限 */
 //    public static final String RDM_JKN_HONBU_COMMIT = "JKN0163";
 
-	//TODO 二神　JKN0163を正しく設定する
     /**条件設定 : MDM管理者権限 */
-	//TODO二神　MDM管理者：JKN0813  全MR：JKN0023
-    public static final String RDM_JKN_ADMIN = "JKN0813";
+    public static final String RDM_JKN_ADMIN = "JKN0850";
 
     /**条件設定 : 全MR権限 */
     public static final String RDM_JKN_MR = "JKN0023";
@@ -595,6 +593,11 @@ public class RdmConstantsData {
     public static final String CODE_NAME_HCO_RST_REASON = "HCO_RST_REASON";
     /**コード情報コード名 : 削除理由 */
     public static final String CODE_NAME_HCO_DEL_REASON = "HCO_DEL_REASON";
+    /**コード情報コード名 : 医師復活理由 */
+    public static final String CODE_NAME_HCP_RST_REASON = "HCP_RST_REASON";
+    /**コード情報コード名 : 医師削除理由 */
+    public static final String CODE_NAME_HCP_DEL_REASON = "HCP_DEL_REASON";
+
 
     /**パラメタ情報パラメタ名 : 医師メニュースイッチ */
     public static final String PARAM_NAME_MN_DOC = "MN_DOC";

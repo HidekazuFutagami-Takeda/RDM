@@ -61,18 +61,119 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	document.fm1.nextHoInsTypeView.value = document.fm1.nextHoInsType.options[document.fm1.nextHoInsType.selectedIndex].textContent;
     	// 編集不可設定
 		onLoadEditSet();
+
+		// カラーフラグ設定
+		onLoadColorSet();
     }
 
     function onLoadEditSet(){
 		editFlg = document.fm1.editApprFlg.value;
+		insType = document.fm1.insType.value;
 
 		if(editFlg == "0") {
+			// 施設区分
+			document.fm1.pharmTypeView.value = document.fm1.nextPharmType.options[document.fm1.nextPharmType.selectedIndex].textContent;
+			document.fm1.nextPharmType.hidden = "true";
 
-			// 取引区分
-//			document.fm1.tradeTypeView.value = document.fm1.tradeType.options[document.fm1.tradeType.selectedIndex].textContent;
-//			document.fm1.tradeType.hidden = "true";
+			// 階級区分
+			document.fm1.insRankView.value = document.fm1.nextInsRank.options[document.fm1.nextInsRank.selectedIndex].textContent;
+			document.fm1.nextInsRank.hidden = "true";
+
+			// 定訪先区分
+			document.fm1.regVisTypeView.value = document.fm1.nextRegVisType.options[document.fm1.nextRegVisType.selectedIndex].textContent;
+			document.fm1.nextRegVisType.hidden = "true";
+
+			// 重点病院区分
+			document.fm1.impHosTypeView.value = document.fm1.nextImpHosType.options[document.fm1.nextImpHosType.selectedIndex].textContent;
+			document.fm1.nextImpHosType.hidden = "true";
+
+			// 経営主体
+			document.fm1.manageCdView.value = document.fm1.nextManageCd.options[document.fm1.nextManageCd.selectedIndex].textContent;
+			document.fm1.nextManageCd.hidden = "true";
+
+			// ワクチン対象区分
+			document.fm1.vacInsTypeView.value = document.fm1.nextVacInsType.options[document.fm1.nextVacInsType.selectedIndex].textContent;
+			document.fm1.nextVacInsType.hidden = "true";
+
+			// ワクチン定訪先区分
+			document.fm1.vacVisitTypeView.value = document.fm1.nextVacVisitType.options[document.fm1.nextVacVisitType.selectedIndex].textContent;
+			document.fm1.nextVacVisitType.hidden = "true";
+
+			if(insType =="01" || insType == "02"){
+				// 病床数
+				document.fm1.nextBedCntBase.readOnly = true;
+				document.fm1.nextBedCnt04.readOnly = true;
+				document.fm1.nextBedCnt01.readOnly = true;
+				document.fm1.nextBedCnt05.readOnly = true;
+				document.fm1.nextBedCnt03.readOnly = true;
+				document.fm1.nextBedCnt07.readOnly = true;
+				document.fm1.nextBedCnt02.readOnly = true;
+				document.fm1.nextBedCnt06.readOnly = true;
+				document.fm1.nextBedsTot.readOnly = true;
+				document.fm1.nextMedBedsTot.readOnly = true;
+			}
+
 		} else {
-//			document.fm1.tradeTypeView.hidden = "true";
+			document.fm1.pharmTypeView.hidden = "true";
+			document.fm1.insRankView.hidden = "true";
+			document.fm1.regVisTypeView.hidden = "true";
+			document.fm1.impHosTypeView.hidden = "true";
+			document.fm1.manageCdView.hidden = "true";
+			document.fm1.vacInsTypeView.hidden = "true";
+			document.fm1.vacVisitTypeView.hidden = "true";
+		}
+    }
+
+    function onLoadColorSet(){
+		// 黄色設定
+		if(document.fm1.pharmTypeFlg.value == "1"){
+			document.fm1.nextPharmType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.insRankFlg.value == "1"){
+			document.fm1.nextInsRank.className = "comTableSelectYellow";
+		}
+		if(document.fm1.regVisTypeFlg.value == "1"){
+			document.fm1.nextRegVisType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.impHosTypeFlg.value == "1"){
+			document.fm1.nextImpHosType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.manageCdFlg.value == "1"){
+			document.fm1.nextManageCd.className = "comTableSelectYellow";
+		}
+		if(document.fm1.bedCntBaseFlg.value == "1"){
+			document.fm1.nextBedCntBase.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt04Flg.value == "1"){
+			document.fm1.nextBedCnt04.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt01Flg.value == "1"){
+			document.fm1.nextBedCnt01.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt05Flg.value == "1"){
+			document.fm1.nextBedCnt05.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt03Flg.value == "1"){
+			document.fm1.nextBedCnt03.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt07Flg.value == "1"){
+			document.fm1.nextBedCnt07.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt02Flg.value == "1"){
+			document.fm1.nextBedCnt02.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt06Flg.value == "1"){
+			document.fm1.nextBedCnt06.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedsTotFlg.value == "1"){
+			document.fm1.nextBedsTot.className = "comTableInputYellow";
+		} else {
+			document.fm1.nextBedsTot.style = "background-color:#D4D0C8; text-align:right;"
+		}
+		if(document.fm1.medBedsTotFlg.value == "1"){
+			document.fm1.nextMedBedsTot.className = "comTableInputYellow";
+		} else {
+			document.fm1.nextMedBedsTot.style = "background-color:#D4D0C8; text-align:right;"
 		}
     }
 
@@ -607,32 +708,50 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	}
 
     	// 階級区分
-    	if(changeItem == "2" || changeItem == "4"){
+    	if(changeItem == "2"){
+        	var box = document.fm1.nextInsRank;
+        	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextInsRank;
         	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value);
         	box.value = document.fm1.tmpInsRank.value;
     	}
 
     	// 定訪先区分
-    	if(changeItem == "2" || changeItem == "3" || changeItem == "4"){
+    	if(changeItem == "2" || changeItem == "3"){
+        	var box = document.fm1.nextRegVisType;
+        	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextRegVisType;
         	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
         	box.value = document.fm1.tmpRegVisType.value;
     	}
 
     	//  重点病院区分
-    	if(changeItem == "2" || changeItem == "3" || changeItem == "4"){
+    	if(changeItem == "2" || changeItem == "3"){
+        	var box = document.fm1.nextImpHosType;
+        	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextImpHosType;
         	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
         	box.value = document.fm1.tmpImpHosType.value;
     	}
 
     	// 経営主体
-    	if(changeItem == "3" || changeItem == "4"){
+    	if(changeItem == "2" || changeItem == "3"){
+        	var box = document.fm1.nextManageCd;
+        	box = makeManageCdBox(box,document.fm1.nextInsRank.value);
+        	box.value = "";
+    	} else if(changeItem == "4"){
         	var box = document.fm1.nextManageCd;
         	box = makeManageCdBox(box,document.fm1.nextInsRank.value);
         	box.value = document.fm1.tmpManageCd.value;
     	}
+
+    	setHoInsType();
     }
 
 	// 対象区分値設定
@@ -657,24 +776,63 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.nextHoInsTypeView.value = document.fm1.nextHoInsType.options[document.fm1.nextHoInsType.selectedIndex].textContent;
 	}
 
+	// 病床数再計算
+	function calcBedCnt(){
+		var bedsTot = 0;
+		var medBedsTot = 0;
+
+		// 一般
+		if(document.fm1.nextBedCnt01.value != "" && comChkNum(document.fm1.nextBedCnt01.value)) {
+			bedsTot += parseInt(document.fm1.nextBedCnt01.value);
+			medBedsTot += parseInt(document.fm1.nextBedCnt01.value);
+		}
+
+		// 精神
+		if(document.fm1.nextBedCnt03.value != "" && comChkNum(document.fm1.nextBedCnt03.value)) {
+			bedsTot += parseInt(document.fm1.nextBedCnt03.value);
+			medBedsTot += parseInt(document.fm1.nextBedCnt03.value);
+		}
+
+		// 結核
+		if(document.fm1.nextBedCnt04.value != "" && comChkNum(document.fm1.nextBedCnt04.value)) {
+			bedsTot += parseInt(document.fm1.nextBedCnt04.value);
+			medBedsTot += parseInt(document.fm1.nextBedCnt04.value);
+		}
+
+		// 感染症
+		if(document.fm1.nextBedCnt05.value != "" && comChkNum(document.fm1.nextBedCnt05.value)) {
+			bedsTot += parseInt(document.fm1.nextBedCnt05.value);
+			medBedsTot += parseInt(document.fm1.nextBedCnt05.value);
+		}
+
+		// 療養
+		if(document.fm1.nextBedCnt07.value != "" && comChkNum(document.fm1.nextBedCnt07.value)) {
+			bedsTot += parseInt(document.fm1.nextBedCnt07.value);
+		}
+
+		// 医療療養
+		if(document.fm1.nextBedCnt02.value != "" && comChkNum(document.fm1.nextBedCnt02.value)) {
+			medBedsTot += parseInt(document.fm1.nextBedCnt02.value);
+		}
+
+		document.fm1.nextBedsTot.value = bedsTot;
+		document.fm1.nextMedBedsTot.value = medBedsTot;
+	}
+
 	// 戻るボタン
 	function backBtn(){
 		document.fm1.target="";
 		const preScreenId = document.fm1.preScreenId.value;
 		if(preScreenId == "NF001"){
 			if(window.confirm("施設検索画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
+				window.close();
 			}
 		} else if(preScreenId == "NC011"){
 			if(window.confirm("申請一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				document.fm1.screenId.value = preScreenId;
-				document.fm1.functionId.value="Init";
-
-				comSubmitForAnyWarp(fm1);
+				window.close();
 			}
+		} else {
+			window.close();
 		}
 	}
 
@@ -685,7 +843,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 申請データを破棄（＝物理的に削除）し、遷移元画面へ遷移する（本画面のタブを閉じる）
 			// 申請IDで対象を絞り込み申請管理、施設_申請管理を削除
 
-			document.fm1.screenId.value="NF012";
+			document.fm1.screenId.value="NF101";
 			document.fm1.functionId.value="Cancel";
 
 			comSubmitForAnyWarp(fm1);
@@ -695,19 +853,24 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	// 一時保存ボタン、申請画面へ、承認・却下画面へボタン
 	function submitBtn(funcId){
 		document.fm1.funcId.value = funcId;
-		document.fm1.screenId.value="NF012";
+		document.fm1.screenId.value="NF101";
+
+		document.fm1.nextPharmTypeNm.value = document.fm1.nextPharmType.options[document.fm1.nextPharmType.selectedIndex].textContent;
+		document.fm1.nextInsRankNm.value = document.fm1.nextInsRank.options[document.fm1.nextInsRank.selectedIndex].textContent;
+		document.fm1.nextRegVisTypeNm.value = document.fm1.nextRegVisType.options[document.fm1.nextRegVisType.selectedIndex].textContent;
+		document.fm1.nextImpHosTypeNm.value = document.fm1.nextImpHosType.options[document.fm1.nextImpHosType.selectedIndex].textContent;
+		document.fm1.nextHoInsTypeNm.value = document.fm1.nextHoInsType.options[document.fm1.nextHoInsType.selectedIndex].textContent;
+		document.fm1.nextManageNm.value = document.fm1.nextManageCd.options[document.fm1.nextManageCd.selectedIndex].textContent;
+		document.fm1.nextVacInsTypeNm.value = document.fm1.nextVacInsType.options[document.fm1.nextVacInsType.selectedIndex].textContent;
+		document.fm1.nextVacVisitTypeNm.value = document.fm1.nextVacVisitType.options[document.fm1.nextVacVisitType.selectedIndex].textContent;
 
 		if(funcId == "0") {
 			// 一時保存
-			document.fm1.screenId.value="NF012";
+			document.fm1.screenId.value="NF101";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF303";
-			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請画面へ
-			document.fm1.screenId.value="NF303";
+			// 申請画面へ、承認・却下画面へ
+			document.fm1.screenId.value="NF309";
 			document.fm1.functionId.value="Init";
 		}
 
@@ -718,12 +881,28 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	// 審査完了ボタン
 	function shnCompBtn(){
 
-		document.fm1.screenId.value="NF012";
+		document.fm1.screenId.value="NF101";
 		document.fm1.functionId.value="ShnComp";
 
 		document.fm1.target="";
 		comSubmitForAnyWarp(fm1);
 
+	}
+
+	var nf101Tab;
+ 	// 申請歴ボタン
+    function histBtn(){
+ 		if(nf101Tab && !nf101Tab.closed){
+ 			nf101Tab.close();
+ 		}
+
+ 		nf101Tab = window.open("","NF101Tab");
+		document.fm1.target="NF101Tab";
+
+  		fm1.screenId.value="NF102";
+	  	fm1.functionId.value="Init";
+	  	comSubmitForAnyWarp(fm1);
+	  	comClickFlgInit();
 	}
 
     </script>
@@ -867,8 +1046,35 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosSelFlg"/>
     <s:hidden name="sosRyakuName"/>
 
+	<s:hidden name="reqChl"/>
 	<s:hidden name="insType"/>
 	<s:hidden name="editApprFlg"/>
+	<s:hidden name="pharmTypeFlg"/>
+	<s:hidden name="insRankFlg"/>
+	<s:hidden name="regVisTypeFlg"/>
+	<s:hidden name="impHosTypeFlg"/>
+	<s:hidden name="manageCdFlg"/>
+	<s:hidden name="vacInsTypeFlg"/>
+	<s:hidden name="vacVisitTypeFlg"/>
+	<s:hidden name="bedCntBaseFlg"/>
+	<s:hidden name="bedCnt04Flg"/>
+	<s:hidden name="bedCnt01Flg"/>
+	<s:hidden name="bedCnt05Flg"/>
+	<s:hidden name="bedCnt03Flg"/>
+	<s:hidden name="bedCnt07Flg"/>
+	<s:hidden name="bedCnt02Flg"/>
+	<s:hidden name="bedCnt06Flg"/>
+	<s:hidden name="bedsTotFlg"/>
+	<s:hidden name="medBedsTotFlg"/>
+
+	<s:hidden name="nextPharmTypeNm"/>
+	<s:hidden name="nextInsRankNm"/>
+	<s:hidden name="nextRegVisTypeNm"/>
+	<s:hidden name="nextImpHosTypeNm"/>
+	<s:hidden name="nextHoInsTypeNm"/>
+	<s:hidden name="nextManageNm"/>
+	<s:hidden name="nextVacInsTypeNm"/>
+	<s:hidden name="nextVacVisitTypeNm"/>
 
 	<input type="hidden" name="tmpPharmType" value="<s:property value="%{nextPharmType}"/>" />
     <input type="hidden" name="tmpInsRank" value="<s:property value="%{nextInsRank}"/>" />
@@ -1046,16 +1252,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
 	      <td class="comFormTableItem"><nobr>施設情報</nobr></td>
 	      <td class="comFormTableItem"><nobr>施設固定コード</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:label key="insNo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="insNo"/><s:hidden name="insNo"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>ULT施設コード</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:label key="ultInsNo"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="ultInsNo"/><s:hidden name="ultInsNo"/></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>施設略式漢字名</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:label key="insAbbrName"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="insAbbrName"/><s:hidden name="insAbbrName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>ULT施設名</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:label key="shisetsuNmRyaku"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="shisetsuNmRyaku"/><s:hidden name="shisetsuNmRyaku"/></nobr></td>
       </tr>
   </table>
   <br/>
@@ -1089,31 +1295,35 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItem"><nobr>基本情報</nobr></td>
 	<tr>
 		<td class="comFormTableItem">施設区分</td>
-	   	<td class="comFormTableItemNf012"><s:label key="pharmType" /><s:hidden name="pharmType" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="pharmTypeNm" /><s:hidden name="pharmType" /><s:hidden name="pharmTypeNm" /></td>
 	   	<td class="comFormTableItemNf012"><s:label key="shisetsuKbn" /><s:hidden name="shisetsuKbn" /></td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextPharmType" name="nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onchange="changeBox('2')" /></td>
+	   	<td class="comFormTableItemNf012"><s:select id="nextPharmType" name="nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onchange="changeBox('2')" />
+	   	<s:textfield id="pharmTypeView" name="pharmTypeView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">階級区分</td>
-		<td class="comFormTableItemNf012"><s:label key="insRank" /><s:hidden name="insRank" /></td>
+		<td class="comFormTableItemNf012"><s:label key="insRankNm" /><s:hidden name="insRank" /><s:hidden name="insRankNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextInsRank" name="nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onchange="changeBox('3'); setHoInsType();" /></td>
+	   	<td class="comFormTableItemNf012"><s:select id="nextInsRank" name="nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onchange="changeBox('3'); setHoInsType();" />
+	   	<s:textfield id="insRankView" name="insRankView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">定訪先区分</td>
-		<td class="comFormTableItemNf012"><s:label key="regVisType" /><s:hidden name="regVisType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="regVisTypeNm" /><s:hidden name="regVisType" /><s:hidden name="regVisTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextRegVisType" name="nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo"/></td>
+	   	<td class="comFormTableItemNf012"><s:select id="nextRegVisType" name="nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo"/>
+	   	<s:textfield id="regVisTypeView" name="regVisTypeView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">重点病院区分</td>
-		<td class="comFormTableItemNf012"><s:label key="impHosType" /><s:hidden name="impHosType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="impHosTypeNm" /><s:hidden name="impHosType" /><s:hidden name="impHosTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextImpHosType" name="nextImpHosType" cssStyle="width:120pt" list ="impHosTypeCombo"/></td>
+	   	<td class="comFormTableItemNf012"><s:select id="nextImpHosType" name="nextImpHosType" cssStyle="width:120pt" list ="impHosTypeCombo"/>
+	   	<s:textfield id="impHosTypeView" name="impHosTypeView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">対象区分</td>
-		<td class="comFormTableItemNf012"><s:label key="hoInsType" /><s:hidden name="hoInsType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="hoInsTypeNm" /><s:hidden name="hoInsType" /><s:hidden name="hoInsTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 	   		<s:select id="nextHoInsType" name="nextHoInsType" cssStyle="width:120pt" list ="hoInsTypeCombo"  hidden="true"/>
@@ -1122,21 +1332,24 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 		<td class="comFormTableItem">経営主体</td>
-		<td class="comFormTableItemNf012"><s:label key="manageCd" /><s:hidden name="manageCd" /></td>
+		<td class="comFormTableItemNf012"><s:label key="manageNm" /><s:hidden name="manageCd" /><s:hidden name="manageNm" /></td>
 	   	<td class="comFormTableItemNf012"><s:label key="keieitaiNm" /><s:hidden name="keieitaiNm" /></td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextManageCd" name="nextManageCd" cssStyle="width:120pt" list ="manageCdCombo"/></td>
+	   	<td class="comFormTableItemNf012"><s:select id="nextManageCd" name="nextManageCd" cssStyle="width:120pt" list ="manageCdCombo"/>
+	   	<s:textfield id="manageCdView" name="manageCdView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr <s:if test="insType != '08'">style="visibility:collapse"</s:if>>
 		<td class="comFormTableItem">ワクチン対象区分</td>
-		<td class="comFormTableItemNf012"><s:label key="vacInsType" /><s:hidden name="vacInsType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="vacInsTypeNm" /><s:hidden name="vacInsType" /><s:hidden name="vacInsTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextVacInsType" name="nextVacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo"/></td>
+	   	<td class="comFormTableItemNf012"><s:select id="nextVacInsType" name="nextVacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo"/>
+	   	<s:textfield id="vacInsTypeView" name="vacInsTypeView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr <s:if test="insType != '08'">style="visibility:collapse"</s:if>>
 		<td class="comFormTableItem">ワクチン定訪先区分</td>
-		<td class="comFormTableItemNf012"><s:label key="vacVisitType" /><s:hidden name="vacVisitType" /></td>
+		<td class="comFormTableItemNf012"><s:label key="vacVisitTypeNm" /><s:hidden name="vacVisitType" /><s:hidden name="vacVisitTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextVacVisitType" name="nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo"/></td>
+	   	<td class="comFormTableItemNf012"><s:select id="nextVacVisitType" name="nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo"/>
+	   	<s:textfield id="vacVisitTypeView" name="vacVisitTypeView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
   </table>
   	<s:if test="insType == '01' || insType == '02'">
@@ -1158,63 +1371,63 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">基準</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCntBase" /></td>
-	   	<td class="comFormTableItemNf012"><s:label key="ultBedCntBase" /></td>
-	   	<td class="comFormTableItemNf012"><s:textfield name="nextBedCntBase" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCntBase" /><s:hidden name="bedCntBase"/></td>
+	   	<td class="comFormTableItemNf012"><s:label key="ultBedCntBase" /><s:hidden name="ultBedCntBase"/></td>
+	   	<td class="comFormTableItemNf012"><s:textfield name="nextBedCntBase" size="4" maxlength="4" style="text-align:right;" /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">結核</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCnt04" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedCnt04" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt04" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCnt04" /><s:hidden name="bedCnt04"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedCnt04" /><s:hidden name="ultBedCnt04"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">一般</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCnt01" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedCnt01" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt01" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCnt01" /><s:hidden name="bedCnt01"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedCnt01" /><s:hidden name="ultBedCnt01"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">感染症</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCnt05" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedCnt05" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt05" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCnt05" /><s:hidden name="bedCnt05"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedCnt05" /><s:hidden name="ultBedCnt05"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">精神</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCnt03" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedCnt03" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt03" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCnt03" /><s:hidden name="bedCnt03"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedCnt03" /><s:hidden name="ultBedCnt03"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">療養</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCnt07" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedCnt07" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt07" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCnt07" /><s:hidden name="bedCnt07"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedCnt07" /><s:hidden name="ultBedCnt07"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">医療療養</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCnt02" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedCnt02" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt02" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCnt02" /><s:hidden name="bedCnt02"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedCnt02" /><s:hidden name="ultBedCnt02"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">介護療養</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedCnt06" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedCnt06" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt06" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedCnt06" /><s:hidden name="bedCnt06"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedCnt06" /><s:hidden name="ultBedCnt06"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedCnt06" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ベッド数計</td>
-	   	<td class="comFormTableItemNf012"><s:label key="bedsTot" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultBedsTot" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextBedsTot" readonly="true" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="bedsTot" /><s:hidden name="bedsTot"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultBedsTot" /><s:hidden name="ultBedsTot"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" /></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">医療ベッド数計</td>
-	   	<td class="comFormTableItemNf012"><s:label key="medBedsTot" /></td>
-		<td class="comFormTableItemNf012"><s:label key="ultMedBedsTot" /></td>
-		<td class="comFormTableItemNf012"><s:textfield name="nextMedBedsTot" readonly="true" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="medBedsTot" /><s:hidden name="medBedsTot"/></td>
+		<td class="comFormTableItemNf012"><s:label key="ultMedBedsTot" /><s:hidden name="ultMedBedsTot"/></td>
+		<td class="comFormTableItemNf012"><s:textfield name="nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" /></td>
 	</tr>
 	</table>
 	</s:if>
@@ -1239,10 +1452,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		  	</s:else>
 		  </nobr></td>
 		  <td class="comFormTableItem">
-		  	<input class="comButton" type="button" name="button" value="申請歴" onClick="JavaScript:return false;" />
+		  	<input class="comButton" type="button" name="button" value="申請歴" onClick="histBtn(); JavaScript:return false;" />
 		  </td>
       </tr>
-      <s:if test='%{loginJokenSetCd == "JKN0813"}'>
+      <s:if test='%{loginJokenSetCd == "JKN0850"}'>
       <tr>
 	      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
       </tr>
@@ -1294,7 +1507,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="JavaScript:shnCompBtn();return false;"  disabled/>
 					</s:if>
@@ -1313,7 +1526,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/>
 				</s:if>
 				<s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13")}'>
-					<s:if test='%{(loginJokenSetCd == "JKN0813")}'>
+					<s:if test='%{(loginJokenSetCd == "JKN0850")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="承認・却下画面へ" onClick="submitBtn('2');JavaScript:return false;" />
 					</s:if>
 					<s:else>

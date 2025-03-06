@@ -16,6 +16,17 @@
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
         <result column="UPD_SHA_ID" property="updShaId"/>
     </resultMap>
+    <resultMap id="selectNF201OyakoNextDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF201OyakoNextDataListEntity">
+		<result column="TEKIYO_YMD" property="tekiyoYmd"/>
+		<result column="ACTION" property="action"/>
+		<result column="TRT_CD" property="trtCd"/>
+		<result column="TRT_NM" property="trtNm"/>
+		<result column="HIN_G_CD" property="hinGCd"/>
+		<result column="HIN_G_NM" property="hinGNm"/>
+		<result column="INS_ABBR_NAME" property="insAbbrName"/>
+		<result column="INS_ADDR" property="insAddr"/>
+		<result column="MAIN_INS_NO" property="mainInsNo"/>
+    </resultMap>
     <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkNxtReqEntity">
         INSERT INTO
             T_RDM_HCO_LNK_NXT_REQ(<trim suffixOverrides=",">REQ_ID,<if test="trtCd != null">TRT_CD,</if><if test="insNo != null">INS_NO,</if><if test="mainInsNoBf != null">MAIN_INS_NO_BF,</if><if test="mainInsFlgBf != null">MAIN_INS_FLG_BF,</if><if test="insSbtBf != null">INS_SBT_BF,</if><if test="mainInsNoAf != null">MAIN_INS_NO_AF,</if><if test="mainInsFlgAf != null">MAIN_INS_FLG_AF,</if><if test="insSbtAf != null">INS_SBT_AF,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
@@ -29,6 +40,151 @@
             T_RDM_HCO_LNK_NXT_REQ
         WHERE
             REQ_ID = #{reqId}
+    </select>
+    <select id="selectNF201TkdDataList" parameterType="jp.co.takeda.rdm.entity.join.SelectNF201OyakoNextDataListEntity" resultMap="selectNF201OyakoNextDataResultMap">
+		SELECT
+		  KNR.TEKIYO_YMD
+		, CDM.VALUE1_KANJ AS ACTION
+		, '-' AS TRT_NM
+		, '武田紐' AS HIN_G_NM
+		, MST.INS_ABBR_NAME
+		, MST.INS_ADDR
+		FROM
+		M_RDM_COM_CAL_USR CAL	-- RDM用カレンダー(オンライン用)
+		INNER JOIN
+		T_RDM_HCO_LNK_NXT_REQ NXT -- 武田紐親子_来期用_申請管理
+		ON  NXT.INS_NO = #{inInsNo}
+		AND NXT.TRT_CD = '00'
+		INNER JOIN
+		T_RDM_REQ_KNR KNR -- 申請管理
+		ON  KNR.REQ_ID = NXT.REQ_ID
+		AND KNR.REQ_TYPE IN ('11', '12', '13')
+		AND KNR.REQ_STS IN ('04', '14')
+		AND KNR.TEKIYO_YMD <![CDATA[>]]> CAL.CAL_DATE
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON  MST.INS_NO = NXT.MAIN_INS_NO_AF
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON  CDM.CODE_NAME = 'REQ_KBN'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_TYPE
+		WHERE 1=1
+		AND CAL.TODAY = '1'
+		ORDER BY
+		TEKIYO_YMD ASC, APR_YMDHMS ASC
+    </select>
+    <select id="selectNF201TrtDataList" parameterType="jp.co.takeda.rdm.entity.join.SelectNF201OyakoNextDataListEntity" resultMap="selectNF201OyakoNextDataResultMap">
+		WITH TRT_PRD_G AS (
+			SELECT
+			  TRT.TRT_GRP_CD
+			, PRD.TRT_CD
+			, TRT.TRT_NM
+			, PRD.HIN_G_CD
+			, PRD.HIN_G_NAME
+			, MIN(TRT.DISP_SORT) AS TRT_DISP_SORT
+			, MIN(PRD.DISP_SORT) AS PRD_DISP_SORT
+			FROM
+			M_RDM_COM_CAL_USR CAL	-- RDM用カレンダー(オンライン用)
+			LEFT JOIN
+			S_RDM_COM_LNK_TRT_PRDGRP_PRD PRD	-- 領域別品目グループ品目
+			ON 1=1
+			AND PRD.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+			AND PRD.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+			LEFT JOIN
+			S_RDM_COM_LNK_TRTGRP_TRT TRT	-- 領域グループ・領域関連定義
+			ON 1=1
+			AND TRT.TRT_CD = PRD.TRT_CD
+			AND TRT.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+			AND TRT.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+			WHERE 1=1
+			AND CAL.TODAY = '1'
+			GROUP BY
+			  TRT.TRT_GRP_CD
+			, PRD.TRT_CD
+			, TRT.TRT_NM
+			, PRD.HIN_G_CD
+			, PRD.HIN_G_NAME
+
+			UNION
+
+			SELECT
+			  'Z'
+			, '00'
+			, '-'
+			, 'Z'
+			, '武田紐'
+			, 0
+			, 0
+			FROM
+			DUAL
+		),
+		REQ_INF AS (
+			SELECT
+			  LNK.REQ_ID
+			, LNK.TRT_CD
+			, LNK.HIN_G_CD
+			, LNK.INS_NO
+			, CASE LNK.MAIN_INS_FLG_AF WHEN 'Z' THEN LNK.MAIN_INS_NO_BF ELSE LNK.MAIN_INS_NO_AF END AS MAIN_INS_NO
+			FROM
+			T_RDM_HCO_LNK_REQ LNK -- 領域品目グループ別親子_申請管理
+			WHERE
+			LNK.INS_NO = #{inInsNo}
+
+			UNION
+
+			SELECT
+			  NXT.REQ_ID
+			, NXT.TRT_CD
+			, 'Z' AS HIN_G_CD
+			, NXT.INS_NO
+			, CASE NXT.MAIN_INS_FLG_AF WHEN 'Z' THEN NXT.MAIN_INS_NO_BF ELSE NXT.MAIN_INS_NO_AF END AS MAIN_INS_NO
+			FROM
+			T_RDM_HCO_LNK_NXT_REQ NXT -- 武田紐親子_来期用_申請管理
+			WHERE
+			NXT.INS_NO = #{inInsNo}
+		)
+
+		SELECT
+		  KNR.TEKIYO_YMD
+		, CDM.VALUE1_KANJ AS ACTION
+		, TRT_PRD_G.TRT_CD
+		, TRT_PRD_G.TRT_NM
+		, TRT_PRD_G.HIN_G_CD
+		, TRT_PRD_G.HIN_G_NAME AS HIN_G_NM
+		, MST.INS_ABBR_NAME
+		, MST.INS_ADDR
+		, REQ_INF.MAIN_INS_NO
+		FROM
+		M_RDM_COM_CAL_USR CAL	-- RDM用カレンダー(オンライン用)
+		INNER JOIN
+		REQ_INF -- サブクエリ（親子紐申請情報）
+		ON REQ_INF.INS_NO = #{inInsNo}
+		LEFT JOIN
+		T_RDM_REQ_KNR KNR -- 申請管理
+		ON  KNR.REQ_ID = REQ_INF.REQ_ID
+		AND KNR.REQ_TYPE  IN ('11', '12', '13')
+		AND KNR.REQ_STS IN ('04', '14')
+		AND KNR.TEKIYO_YMD <![CDATA[>]]> CAL.CAL_DATE
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON  MST.INS_NO = REQ_INF.MAIN_INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON  CDM.CODE_NAME = 'REQ_KBN'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_TYPE
+		LEFT JOIN
+		TRT_PRD_G -- サブクエリ（領域・品目グループ）
+		ON  TRT_PRD_G.TRT_CD = REQ_INF.TRT_CD
+		AND TRT_PRD_G.HIN_G_CD = REQ_INF.HIN_G_CD
+		WHERE 1=1
+		AND CAL.TODAY = '1'
+		ORDER BY
+		  TRT_DISP_SORT ASC
+		, PRD_DISP_SORT ASC
+		, KNR.TEKIYO_YMD ASC
+		, KNR.APR_YMDHMS ASC
     </select>
     <select id="selectNF211TrtChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoLnkNxtReqEntity" resultMap="tRdmHcoLnkNxtReqResultMap">
 		SELECT

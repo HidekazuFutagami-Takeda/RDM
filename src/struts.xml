@@ -279,6 +279,9 @@
         <action name="NF102Init" class="nF102Action" method="init">
             <result name="NF102">/WEB-INF/pages/NF102.jsp</result>
         </action>
+        <action name="NF201Init" class="nF201Action" method="init">
+            <result name="NF201">/WEB-INF/pages/NF201.jsp</result>
+        </action>
         <action name="NF211Init" class="nF211Action" method="init">
             <result name="NF211">/WEB-INF/pages/NF211.jsp</result>
         </action>

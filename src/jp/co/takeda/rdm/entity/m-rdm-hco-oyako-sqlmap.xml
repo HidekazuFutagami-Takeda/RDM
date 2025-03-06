@@ -23,6 +23,24 @@
         <result column="INS_ADDR" property="insAddr"/>
         <result column="JGI_NAME" property="jgiName"/>
     </resultMap>
+    <resultMap id="selectNF201OyakoDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF201OyakoDataListEntity">
+        <result column="NT_VALUE" property="ntValue"/>
+        <result column="FAC_VALUE" property="facValue"/>
+        <result column="TRT_CD" property="trtCd"/>
+        <result column="TRT_NM" property="trtNm"/>
+        <result column="HIN_G_CD" property="hinGCd"/>
+        <result column="HIN_G_NM" property="hinGNm"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="HO_INS_TYPE" property="hoInsType"/>
+        <result column="INS_ADDR" property="insAddr"/>
+        <result column="JGI_NO" property="jgiNo"/>
+        <result column="JGI_NAME" property="jgiName"/>
+        <result column="MAIN_INS_NO" property="mainInsNo"/>
+    </resultMap>
+    <resultMap id="selectNF201ChkDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF201ChkDataEntity">
+    	<result column="TRT_PRD_CNT" property="trtPrdCnt"/>
+    	<result column="MAIN_INS_CNT" property="mainInsCnt"/>
+    </resultMap>
     <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcoOyakoEntity" resultMap="mRdmHcoOyakoResultMap">
         SELECT
             TRT_CD, HIN_G_CD, INS_NO, MAIN_INS_NO, MAIN_INS_FLG, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -181,5 +199,167 @@
 		ORDER BY
 		  TRT_DISP_SORT ASC
 		, PRD_DISP_SORT ASC
+    </select>
+    <select id="selectNF201TkdDataList" parameterType="jp.co.takeda.rdm.entity.join.SelectNF201OyakoDataListEntity" resultMap="selectNF201OyakoDataResultMap">
+		SELECT
+		  PRM_NT.VALUE AS NT_VALUE
+		, PRM_FAC.VALUE AS FAC_VALUE
+		, '-' AS TRT_NM
+		, '武田紐' AS HIN_G_NM
+		, MST.INS_ABBR_NAME
+		, CDM.VALUE1_KANJ AS HO_INS_TYPE
+		, MST.INS_ADDR
+		, '-' AS JGI_NAME
+		, OYAKO.MAIN_INS_NO
+		FROM
+		M_RDM_PARAM_MST PRM_NT -- パラメタ情報 親子紐づけ(来期)メニュースイッチ
+		INNER JOIN
+		M_RDM_PARAM_MST PRM_FAC -- パラメタ情報 施設メニュースイッチ
+		ON  PRM_FAC.PARAM_NAME = 'MN_FAC'
+		LEFT JOIN
+		M_RDM_HCO_OYAKO OYAKO -- 施設_領域別親子情報
+		ON  OYAKO.INS_NO = #{inInsNo}
+		AND OYAKO.TRT_CD = '00'
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON  MST.INS_NO = OYAKO.MAIN_INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON  CDM.CODE_NAME = 'HO_INS_TYPE'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = MST.HO_INS_TYPE
+		WHERE
+		PRM_NT.PARAM_NAME = 'MN_NT_OYA'
+
+    </select>
+    <select id="selectNF201TrtDataList" parameterType="jp.co.takeda.rdm.entity.join.SelectNF201OyakoDataListEntity" resultMap="selectNF201OyakoDataResultMap">
+		WITH TRT_PRD_G AS (
+			SELECT
+			  TRT.TRT_GRP_CD
+			, PRD.TRT_CD
+			, TRT.TRT_NM
+			, PRD.HIN_G_CD
+			, PRD.HIN_G_NAME
+			, MIN(TRT.DISP_SORT) AS TRT_DISP_SORT
+			, MIN(PRD.DISP_SORT) AS PRD_DISP_SORT
+			FROM
+			M_RDM_COM_CAL_USR CAL	-- RDM用カレンダー(オンライン用)
+			LEFT JOIN
+			S_RDM_COM_LNK_TRT_PRDGRP_PRD PRD	-- 領域別品目グループ品目
+			ON 1=1
+			AND PRD.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+			AND PRD.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+			LEFT JOIN
+			S_RDM_COM_LNK_TRTGRP_TRT TRT	-- 領域グループ・領域関連定義
+			ON 1=1
+			AND TRT.TRT_CD = PRD.TRT_CD
+			AND TRT.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+			AND TRT.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+			WHERE 1=1
+			AND CAL.TODAY = '1'
+			GROUP BY
+			  TRT.TRT_GRP_CD
+			, PRD.TRT_CD
+			, TRT.TRT_NM
+			, PRD.HIN_G_CD
+			, PRD.HIN_G_NAME
+
+			UNION
+
+			SELECT
+			  'Z'
+			, '00'
+			, '-'
+			, 'Z'
+			, '武田紐'
+			, 0
+			, 0
+			FROM
+			DUAL
+		)
+
+		SELECT
+		  PRM_NT.VALUE AS NT_VALUE
+		, PRM_FAC.VALUE AS FAC_VALUE
+		, TRT_PRD_G.TRT_CD
+		, TRT_PRD_G.TRT_NM
+		, TRT_PRD_G.HIN_G_CD
+		, TRT_PRD_G.HIN_G_NAME AS HIN_G_NM
+		, MST.INS_ABBR_NAME
+		, CDM.VALUE1_KANJ AS HO_INS_TYPE
+		, MST.INS_ADDR
+		, JGI.JGI_NAME
+		, OYAKO.MAIN_INS_NO
+		FROM
+		M_RDM_PARAM_MST PRM_NT -- パラメタ情報 親子紐づけ(来期)メニュースイッチ
+		INNER JOIN
+		M_RDM_PARAM_MST PRM_FAC -- パラメタ情報 施設メニュースイッチ
+		ON  PRM_FAC.PARAM_NAME = 'MN_FAC'
+		LEFT JOIN
+		M_RDM_HCO_OYAKO OYAKO -- 施設_領域別親子情報
+		ON  OYAKO.INS_NO = #{inInsNo}
+		LEFT JOIN
+		M_RDM_HCO_MST MST -- 施設_基本情報
+		ON  MST.INS_NO = OYAKO.MAIN_INS_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON  CDM.CODE_NAME = 'HO_INS_TYPE'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = MST.HO_INS_TYPE
+		LEFT JOIN
+		TRT_PRD_G -- サブクエリ（領域・品目グループ）
+		ON  TRT_PRD_G.TRT_CD = OYAKO.TRT_CD
+		AND TRT_PRD_G.HIN_G_CD = OYAKO.HIN_G_CD
+		LEFT JOIN
+		M_RDM_JKR_MR_INS_TRT MR -- RDM用施設担当者情報
+		ON 1=1
+		AND MR.INS_NO = OYAKO.MAIN_INS_NO
+		AND MR.TRT_GRP_CD = TRT_PRD_G.TRT_GRP_CD
+		AND MR.TRT_CD = TRT_PRD_G.TRT_CD
+		AND MR.MAIN_MR = '0'
+		LEFT JOIN
+		M_RDM_JGI_SOS_MST JGI -- RDM用組織従業員情報
+		ON 1=1
+		AND JGI.JGI_NO = MR.JGI_NO
+		WHERE
+		PRM_NT.PARAM_NAME = 'MN_NT_OYA'
+		ORDER BY
+		TRT_PRD_G.TRT_DISP_SORT ASC, TRT_PRD_G.PRD_DISP_SORT ASC
+    </select>
+    <select id="selectNF201ChkData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF201ChkDataEntity" resultMap="selectNF201ChkDataResultMap">
+		WITH TRT_PRD_G AS (
+			SELECT
+			COUNT(*) AS TRT_PRD_CNT
+			FROM(
+				SELECT DISTINCT
+				  PRD.TRT_CD
+				, PRD.HIN_G_CD
+				FROM
+				M_RDM_COM_CAL_USR CAL	-- RDM用カレンダー(オンライン用)
+				LEFT JOIN
+				S_RDM_COM_LNK_TRT_PRDGRP_PRD PRD	-- 領域別品目グループ品目
+				ON 1=1
+				AND PRD.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+				AND PRD.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+				WHERE 1=1
+				AND CAL.TODAY = '1'
+			)
+		)
+
+		SELECT
+		  TRT_PRD_G.TRT_PRD_CNT
+		, MAIN_INS.MAIN_INS_CNT
+		FROM
+		(SELECT
+		COUNT(*) AS MAIN_INS_CNT
+		FROM
+		M_RDM_HCO_OYAKO OYAKO -- 施設_領域別親子情報
+		WHERE 1=1
+		AND OYAKO.INS_NO = #{inInsNo}
+		<if test="inTrtCd != null">AND OYAKO.TRT_CD = #{inTrtCd}</if>
+		) MAIN_INS
+		LEFT JOIN
+		TRT_PRD_G
+		ON 1=1
     </select>
 </mapper>

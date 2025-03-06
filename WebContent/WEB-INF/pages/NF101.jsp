@@ -831,6 +831,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			if(window.confirm("申請一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 				window.close();
 			}
+		} else {
+			window.close();
 		}
 	}
 

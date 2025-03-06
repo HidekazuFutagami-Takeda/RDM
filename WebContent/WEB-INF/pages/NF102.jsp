@@ -59,7 +59,37 @@
 
 	      comSubmitForAnyWarp(fm1);
 	    }
+
+	    var nf102Tab;
+	 	// 申請IDリンク
+	    function selectReqId(reqId){
+	 		if(nf102Tab && !nf102Tab.closed){
+	 			nf102Tab.close();
+	 		}
+
+	 		nf102Tab = window.open("","NF102Tab");
+			document.fm1.target="NF102Tab";
+
+			fm1.reqId.value = reqId;
+
+	  		fm1.screenId.value="NF101";
+		  	fm1.functionId.value="Init";
+		  	comSubmitForAnyWarp(fm1);
+		  	comClickFlgInit();
+		}
+
     </script>
+    <style>
+    	.siz{
+		width:2500px;
+		}
+		thead {
+        position:Sticky;
+        top:0;
+        background-color: #fff;
+        left: 2;
+        }
+    </style>
 <%
 // ソート順状態制御用
 String sortCondition = StringUtils.nvl((String)request.getAttribute("sortCondition"), "");
@@ -137,19 +167,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="callBack" name="callBack" />
 	<s:hidden id="title" name="title" />
 
-	<s:hidden id="upSosCd" name="upSosCd"/>
-	<s:hidden id="sosCdPop" name="sosCdPop"/>
-	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
-	<s:hidden id="bumonRankPop" name="bumonRankPop"/>
-	<s:hidden id="selectFlgPop" name="selectFlgPop"/>
-
-	<s:hidden id="bumonRank" name="bumonRank"/>
-	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
-    <s:hidden id="brCode" name="brCode"/>
-	<s:hidden id="distCode" name="distCode"/>
-	<s:hidden id="trtCd" name="trtCd"/>
-	<s:hidden id="trtNm" name="trtNm"/>
-	<s:hidden id="mrCat" name="mrCat"/>
+	<s:hidden id="reqId" name="reqId" />
 
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
@@ -192,78 +210,145 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
       </tr>
   </table>
 
-<div style="max-height:270px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-<table>
+<div style="max-height:400px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+<table class="siz">
+	<thead style="z-index:3;">
 	<tr>
 	    <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
 
 	<%-- ヘッダー行 --%>
 	<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
-		<td style="background-color:#FFFFFF;" colspan=2>&nbsp;</td>
+		<td style="background-color:#FFFFFF; position:sticky; left:0;" colspan=2>&nbsp;</td>
 		<td class="comTableTitle" colspan=8>施設情報</td>
 		<td class="comTableTitle" colspan=10>病床数情報</td>
 		<td class="comTableTitle" style="width:80px;" rowspan=2>申請コメント</td>
 		<td class="comTableTitle" style="width:80px;" rowspan=2>申請ID</td>
-		<td class="comTableTitle" style="width:80px;" rowspan=2>申請者</td>
-		<td class="comTableTitle" style="width:80px;" rowspan=2>申請者所属</td>
+		<td class="comTableTitle" style="width:60px;" rowspan=2>申請者</td>
+		<td class="comTableTitle" style="width:60px;" rowspan=2>申請者所属</td>
 	</tr>
-	<tr class="comTableTitle" style="position: sticky; top:16; left:0;">
-		<td class="comTableTitle" style="width:80px;">申請ステータス</td>
-		<td class="comTableTitle" style="width:80px;">申請日時
+	<tr class="comTableTitle" style="position:sticky; top:16;">
+		<td class="comTableTitle" style="width:80px; position: sticky; left:0;">申請ステータス</td>
+		<td class="comTableTitle" style="width:80px; position: sticky; left:136;"">申請日時
 			 <span style="font-size: 1pt;"> </span>
 		     <a class="<%=reqYmdhmsAscClass %>" href="" onclick="sortBtn(0);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
 		     <a class="<%=reqYmdhmsDescClass %>" href="" onclick="sortBtn(1);return false;">▼</a>
 		</td>
-		<td class="comTableTitle" style="width:80px;">施設区分</td>
-		<td class="comTableTitle" style="width:80px;">階級区分</td>
-		<td class="comTableTitle" style="width:80px;">定訪先区分</td>
-		<td class="comTableTitle" style="width:80px;">重点病院区分</td>
-		<td class="comTableTitle" style="width:80px;">対象区分</td>
+		<td class="comTableTitle" style="width:50px;">施設区分</td>
+		<td class="comTableTitle" style="width:110px;">階級区分</td>
+		<td class="comTableTitle" style="width:60px;">定訪先区分</td>
+		<td class="comTableTitle" style="width:70px;">重点病院区分</td>
+		<td class="comTableTitle" style="width:50px;">対象区分</td>
 		<td class="comTableTitle" style="width:80px;">経営主体</td>
 		<td class="comTableTitle" style="width:80px;">ワクチン対象区分</td>
 		<td class="comTableTitle" style="width:90px;">ワクチン定訪先区分</td>
-		<td class="comTableTitle" style="width:80px;">基準</td>
-		<td class="comTableTitle" style="width:80px;">結核</td>
-		<td class="comTableTitle" style="width:80px;">一般</td>
-		<td class="comTableTitle" style="width:80px;">感染症</td>
-		<td class="comTableTitle" style="width:80px;">精神</td>
-		<td class="comTableTitle" style="width:80px;">療養</td>
-		<td class="comTableTitle" style="width:80px;">医療療養</td>
-		<td class="comTableTitle" style="width:80px;">介護医療</td>
-		<td class="comTableTitle" style="width:80px;">ベッド数計</td>
-		<td class="comTableTitle" style="width:80px;">医療ベッド数計</td>
+		<td class="comTableTitle" style="width:40px;">基準</td>
+		<td class="comTableTitle" style="width:40px;">結核</td>
+		<td class="comTableTitle" style="width:40px;">一般</td>
+		<td class="comTableTitle" style="width:40px;">感染症</td>
+		<td class="comTableTitle" style="width:40px;">精神</td>
+		<td class="comTableTitle" style="width:40px;">療養</td>
+		<td class="comTableTitle" style="width:40px;">医療療養</td>
+		<td class="comTableTitle" style="width:40px;">介護医療</td>
+		<td class="comTableTitle" style="width:40px;">ベッド数計</td>
+		<td class="comTableTitle" style="width:40px;">医療ベッド数計</td>
 	</tr>
-
+	</thead>
     <%-- 内容 --%>
 
 	<s:iterator value="hcoNxtReqDataList" status="status" var="rowBean">
 		<tr style="min-height:30px;">
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].reqStsNm" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].reqYmdhms" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].pharmType" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].insRank" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].regVisType" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].impHosType" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].hoInsType" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].manageNm" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].vacInsType" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].vacVisitType" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCntBase" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt04" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt01" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt05" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt03" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt07" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt02" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt06" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].bedsTot" /></td>
-	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].medBedsTot" /></td>
+	        <td class="comTableItem" style="position:sticky; left:0; z-index:2;"><s:label key="hcoNxtReqDataList[%{#status.index}].reqStsNm" /></td>
+	        <td class="comTableItem" style="position:sticky; left:136; z-index:2;"><s:label key="hcoNxtReqDataList[%{#status.index}].reqYmdhms" /></td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].pharmType" /></font></s:if>
+				<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].pharmType" /></s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].insRank" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].insRank" /></s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].regVisType" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].regVisType" /></s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].impHosType" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].impHosType" /></s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].hoInsType" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].hoInsType" /></s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].manageNm" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].manageNm" /></s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].vacInsType" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].vacInsType" /></s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].vacVisitType" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].vacVisitType" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCntBase" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCntBase" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt04" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt04" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt01" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt01" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt05" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt05" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt03" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt03" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt07" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt07" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt02" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt02" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt06" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedCnt06" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].bedsTot" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].bedsTot" /></s:else>
+	        </td>
+	        <td class="comTableItem" style="text-align:right;">
+	        	<s:if test='#rowBean.reqYmdhms != " "'><font color="red"><s:label key="hcoNxtReqDataList[%{#status.index}].medBedsTot" /></font></s:if>
+	        	<s:else><s:label key="hcoNxtReqDataList[%{#status.index}].medBedsTot" /></s:else>
+	        </td>
 	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].reqComment" /></td>
 	        <td class="comTableItem">
-		        <a href ="#" onClick="return false;">
-		        <s:label key="hcoNxtReqDataList[%{#status.index}].reqId" />
+	        <s:if test='loginJokenSetCd == "JKN0850"'>
+				<a href ="#" onClick="selectReqId('<s:property value="#rowBean.reqId" />');">
+			    <s:label key="hcoNxtReqDataList[%{#status.index}].reqId" />
 		        </a>
+	        </s:if>
+	        <s:if test='loginJokenSetCd != "JKN0850"'>
+	        	<s:if test='#rowBean.reqJgiNo == loginJgiNo'>
+			        <a href ="#" onClick="selectReqId('<s:property value="#rowBean.reqId" />');">
+			        <s:label key="hcoNxtReqDataList[%{#status.index}].reqId" />
+			        </a>
+			    </s:if>
+			    <s:else>
+			    	<s:label key="hcoNxtReqDataList[%{#status.index}].reqId" />
+			    </s:else>
+		    </s:if>
 	        </td>
 	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].reqJgiName" /></td>
 	        <td class="comTableItem"><s:label key="hcoNxtReqDataList[%{#status.index}].reqShzNm" /></td>

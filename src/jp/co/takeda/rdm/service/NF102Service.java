@@ -115,6 +115,7 @@ public class NF102Service extends BaseService {
     		dataRecord.setReqId(getSetValue(entity.getReqId()));
     		dataRecord.setReqJgiName(getSetValue(entity.getReqJgiName()));
     		dataRecord.setReqShzNm(getSetValue(entity.getReqShzNm()));
+    		dataRecord.setReqJgiNo(getSetValue(entity.getReqJgiNo()));
 
         	hcoNxtReqDataList.add(dataRecord);
         }

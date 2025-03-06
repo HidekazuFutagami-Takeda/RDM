@@ -121,7 +121,7 @@ public class NF101Action extends BaseAction<NF101DTO> {
         String insNo = dto.getInsNo();
 
         String preScreenId = dto.getBackScreenId();
-        if("NF102".equals(preScreenId) || "NF309".equals(preScreenId)) {
+        if("NF309".equals(preScreenId)) {
         	preScreenId = dto.getPreScreenId();
         } else {
         	dto.setPreScreenId(preScreenId);
@@ -138,7 +138,7 @@ public class NF101Action extends BaseAction<NF101DTO> {
         // 遷移パターン　1:施設固定コードから作成、2：申請データあり
         // 施設固定コード　ありなしで分岐
         // NF001_施設検索
-        if ("NF001".equals(preScreenId) || "NF102".equals(preScreenId)) {
+        if ("NF001".equals(preScreenId)) {
         	if (insNo != null && insNo.length() > 0) {
         		// 施設固定コードで初期データ作成
         		dto.setDisplayKbn("1");
@@ -147,7 +147,7 @@ public class NF101Action extends BaseAction<NF101DTO> {
         }
         // 申請ID
         // NC011_申請一覧
-        if ("NC011".equals(preScreenId)) {
+        if ("NC011".equals(preScreenId) || "NF102".equals(preScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
         		dto.setDisplayKbn("2");

@@ -161,71 +161,83 @@ public class NC204Service extends BaseService {
         List<CatDeptsComboDataList> catDeptsComboDataList = new ArrayList<CatDeptsComboDataList>();
 
             //画面初期表示時の帳票一覧を取得する
-            List<SelectDeptListEntityRDM> deptListEntity = dao.select(paramEntity);
+        List<SelectDeptListEntityRDM> deptListEntity = dao.select(paramEntity);
 
-            if(paramEntity.getScreenId().equals("ND011")) {
-            	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
-                     CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
+        if(paramEntity.getScreenId().equals("ND011")) {
+        	for (SelectDeptListEntityRDM entiry : deptListEntity) {
+        		CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
-                     // 所属部科コード
-                     dataRecord.setDeptCode(entiry.getDeptCode());
+        		// 所属部科コード
+        		dataRecord.setDeptCode(entiry.getDeptCode());
 
-                     // 所属部科名漢字
-                     dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+        		// 所属部科名漢字
+        		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
-                     catDeptsComboDataList.add(dataRecord);
-             }
-            }else if(paramEntity.getScreenId().equals("ND012")) {
-            	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
-                     CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
+        		catDeptsComboDataList.add(dataRecord);
+        	}
+        }else if(paramEntity.getScreenId().equals("ND012")) {
+        	for (SelectDeptListEntityRDM entiry : deptListEntity) {
+        		CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
-                     // 所属部科コード
-                     dataRecord.setDeptCode(entiry.getDeptCode());
+        		// 所属部科コード
+        		dataRecord.setDeptCode(entiry.getDeptCode());
 
-                     // 所属部科名漢字
-                     dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+        		// 所属部科名漢字
+        		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
-                     catDeptsComboDataList.add(dataRecord);
-             }
-            }else if(paramEntity.getScreenId().equals("ND101")) {
-            	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
-                     CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
+        		catDeptsComboDataList.add(dataRecord);
+        	}
+        }else if(paramEntity.getScreenId().equals("ND101")) {
+        	for (SelectDeptListEntityRDM entiry : deptListEntity) {
+        		CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
-                     // 所属部科コード
-                     dataRecord.setDeptCode(entiry.getDeptCode());
-                     // 所属部科名カナ
-                     dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
-                     // 所属部科名漢字
-                     dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+        		// 所属部科コード
+        		dataRecord.setDeptCode(entiry.getDeptCode());
+        		// 所属部科名カナ
+        		dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
+        		// 所属部科名漢字
+        		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
-                     catDeptsComboDataList.add(dataRecord);
-             }
-            }else if(paramEntity.getScreenId().equals("ND102")) {
-            	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
-                     CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
+        		catDeptsComboDataList.add(dataRecord);
+        	}
+        }else if(paramEntity.getScreenId().equals("ND102")) {
+        	for (SelectDeptListEntityRDM entiry : deptListEntity) {
+        		CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
-                     // 所属部科コード
-                     dataRecord.setDeptCode(entiry.getDeptCode());
-                     // 所属部科名カナ
-                     dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
-                     // 所属部科名漢字
-                     dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+        		// 所属部科コード
+        		dataRecord.setDeptCode(entiry.getDeptCode());
+        		// 所属部科名カナ
+        		dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
+        		// 所属部科名漢字
+        		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
-                     catDeptsComboDataList.add(dataRecord);
-             }
-            }else if(paramEntity.getScreenId().equals("ND103")) {
-           	 for (SelectDeptListEntityRDM entiry : deptListEntity) {
-                 CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
+        		catDeptsComboDataList.add(dataRecord);
+        	}
+        }else if(paramEntity.getScreenId().equals("ND103")) {
+        	for (SelectDeptListEntityRDM entiry : deptListEntity) {
+        		CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
 
-                 // 所属部科コード
-                 dataRecord.setDeptCode(entiry.getDeptCode());
-                 // 所属部科名カナ
-                 dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
-                 // 所属部科名漢字
-                 dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+        		// 所属部科コード
+        		dataRecord.setDeptCode(entiry.getDeptCode());
+        		// 所属部科名カナ
+        		dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
+        		// 所属部科名漢字
+        		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
-                 catDeptsComboDataList.add(dataRecord);
-         }
+        		catDeptsComboDataList.add(dataRecord);
+        	}
+        }else if(paramEntity.getScreenId().equals("ND014")) {
+        	for (SelectDeptListEntityRDM entiry : deptListEntity) {
+        		CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
+
+        		// 所属部科コード
+        		dataRecord.setDeptCode(entiry.getDeptCode());
+
+        		// 所属部科名漢字
+        		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+
+        		catDeptsComboDataList.add(dataRecord);
+        	}
         }
 
         indto.setParamInsNo(paramEntity.getInInsNo());

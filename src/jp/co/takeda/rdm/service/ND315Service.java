@@ -92,11 +92,11 @@ public class ND315Service extends BaseService {
 			indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 			indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 			indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
-			indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+			indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 			indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
-			indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+			indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
 			indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
-			indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+			indto.setAprYmdhms(StringUtils.dispYmdhms(mainDataEntity.getAprYmdhms()));
 			indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
 			indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
 			indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -548,16 +548,49 @@ public class ND315Service extends BaseService {
 		SelectND315MainDataEntity paramChkEntity = new SelectND315MainDataEntity();
 		paramChkEntity.setSqlId("selectND315CheckDelData");
 		paramChkEntity.setInDocNo(indto.getTkdDocNo());
-		paramChkEntity.setInReqId(indto.getReqId());
+		paramChkEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
 		List<SelectND315MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
-		if(!chkEntityList1.isEmpty()) {
+		if(chkEntityList1.size() > 0) {
 			errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);//重複する申請が行われています。（項目名）
 			tmpMsgStr = tmpMsgStr.replace("項目名", "医師固定C");
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
 
+		// 整合性チェック 削除理由が「医師免許返納・死亡」以外で、所属施設が2つの以上の場合    W033    勤務先が2件以上存在するため申請できません。
+		if(!StringUtils.isEmpty(indto.getDelReason())) {
+			if(!indto.getDelReason().equals("01") && !indto.getDelReason().equals("03")) {
+				paramChkEntity.setSqlId("selectND315CheckKinmuData");
+				paramChkEntity.setInDocNo(indto.getTkdDocNo());
+				List<SelectND315MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
+				if(chkEntityList2.size() > 1){
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W056);//勤務先が2件以上存在するため申請できません。
+					msgStr = msgStr + tmpMsgStr + "\n";
+				}
+			}
+		}
+		// 整合性チェック MR権限で医師の所属施設がダミー施設の場合    W034     医療機関外へ異動されている医師は削除できません。
+		if(RdmConstantsData.RDM_JKN_MR.equals(loginInfo.getJokenSetCd())){
+			paramChkEntity.setSqlId("selectND315CheckKinmuDummyData");
+			paramChkEntity.setInDocNo(indto.getTkdDocNo());
+			List<SelectND315MainDataEntity> chkEntityList3 = dao.select(paramChkEntity);
+			if(chkEntityList3.size() > 0){
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W057);// 医療機関外へ異動されている医師は削除できません。
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
 
+		}
+		// 適用日チェック 勤務先変更の申請（承認済みで適用日が未来日）が1件以上存在する場合    W035    医師は異動が予定されています。
+		paramChkEntity.setSqlId("selectND315CheckKinmuChangeData");
+		paramChkEntity.setInDocNo(indto.getTkdDocNo());
+		List<SelectND315MainDataEntity> chkEntityList4 = dao.select(paramChkEntity);
+		if(chkEntityList4.size() > 0){
+			errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W058);//  医師は異動が予定されています。
+			msgStr = msgStr + tmpMsgStr + "\n";
+		}
 		if(errChk) {//エラーありなのでメッセージをセットする
 			indto.setMsgStr(msgStr);
 		}

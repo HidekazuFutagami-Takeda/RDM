@@ -176,7 +176,7 @@ public class ND012Service extends BaseService {
 				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(),loginInfo.getBrCode()));
 				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(),loginInfo.getDistCode()));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(),""));
-				indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(),""));
+				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 
 				// マスタから取得
 				// 所属学会リスト
@@ -231,11 +231,11 @@ public class ND012Service extends BaseService {
 				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
-				indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 				indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
-				indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+				indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
 				indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
-				indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+				indto.setAprYmdhms(StringUtils.dispYmdhms(mainDataEntity.getAprYmdhms()));
 				indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
 				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
 				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -1721,6 +1721,10 @@ public class ND012Service extends BaseService {
 			dao.deleteByValue(deleteEntity4);
 		}
 		// 後処理
+		if ("0".equals(indto.getButtonFlg())) {
+			// 一時保存の場合完了メッセージセット
+			indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I005)); // 保存が完了しました。
+		}
 		if ("1".equals(indto.getButtonFlg()) || "3".equals(indto.getButtonFlg())) {
 		// 申請または承認ボタン押下でエラーなしならボタンフラグを9完了にする
 			indto.setButtonFlg("9");
@@ -2073,9 +2077,9 @@ public class ND012Service extends BaseService {
 			SelectND012MainDataEntity paramChkEntity = new SelectND012MainDataEntity();
 			paramChkEntity.setSqlId("selectND012CheckTkdData");
 			paramChkEntity.setInDocNo(indto.getTkdDocNo());
-			paramChkEntity.setInReqId(indto.getReqId());
+			paramChkEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
 			List<SelectND012MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
-			if(!chkEntityList1.isEmpty()) {
+			if(chkEntityList1.size() > 0) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W035);//医師は異動が予定されています。
 				msgStr = msgStr + tmpMsgStr + "\n";

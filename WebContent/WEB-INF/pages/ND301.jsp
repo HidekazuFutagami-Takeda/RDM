@@ -650,6 +650,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skInsNm"/>
 			  <s:hidden name="skInsNo"/><s:hidden name="skInsNm"/>
+		      <s:hidden name="skInsHoInsType"/><s:hidden name="skInsInsClass"/>
           </nobr></td>
 	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
 	      <td class="comFormTableItem"><nobr>

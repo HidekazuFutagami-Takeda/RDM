@@ -49,6 +49,39 @@
 	    	comClickFlgInit();
 	    }
 
+	    var nf201Tab;
+	 	// 追加ボタン
+	    function addBtn(){
+	 		if(nf201Tab && !nf201Tab.closed){
+	 			nf201Tab.close();
+	 		}
+
+	 		nf201Tab = window.open("","NF201Tab");
+			document.fm1.target="NF201Tab";
+
+	  		fm1.screenId.value="NF211";
+		  	fm1.functionId.value="Init";
+		  	comSubmitForAnyWarp(fm1);
+		  	comClickFlgInit();
+		}
+
+	 	// アクションボタン
+	    function actBtn(screenId, trtCd, hinGCd){
+	 		if(nf201Tab && !nf201Tab.closed){
+	 			nf201Tab.close();
+	 		}
+
+	 		nf201Tab = window.open("","NF201Tab");
+			document.fm1.target="NF201Tab";
+
+			fm1.trtCd.value = trtCd;
+			fm1.hinGCd.value = hinGCd;
+
+	  		fm1.screenId.value=screenId;
+		  	fm1.functionId.value="Init";
+		  	comSubmitForAnyWarp(fm1);
+		  	comClickFlgInit();
+		}
     </script>
 
 </head>
@@ -75,7 +108,7 @@
 <%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
 
- <table class="comPortalBody">
+ <table class="comPortalBody" <s:if test='tkdTrtKbn == "0"'>style="background-color: #D7EEFF;"</s:if>>
     <tbody>
       <tr>
         <td>
@@ -94,7 +127,7 @@
 		</tbody>
 	</table>
 
-<table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
+<table <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> align="center" style="width:95%;margin-top:0pt">
   <tbody>
   <tr/>
     <s:form name="fm0" theme="simple">
@@ -122,12 +155,18 @@
 
 	<s:hidden id="title" name="title" />
 
+	<s:hidden id="tkdTrtKbn" name="tkdTrtKbn" />
+	<s:hidden id="addFlg" name="addFlg" />
+
+	<s:hidden id="trtCd" name="trtCd" />
+	<s:hidden id="hinGCd" name="hinGCd" />
+
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
 	<tr><td>
 <%-- 検索部 開始 --%>
 
-  <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
+  <table id="formTable01" border="0" <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> align="center" style="width:75%;">
       <tr>
         <%--施設情報--%>
 		<td style="width: 50px; height: 0px; border-width: 0px;"></td>
@@ -137,19 +176,20 @@
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr></nobr></td>
-	      <td class="comFormTableItem"><nobr>施設固定C</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:label key="insNo"/><s:hidden name="insNo"/></nobr></td>
-	      <td class="comFormTableItem"><nobr>施設略式漢字名</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:label key="insAbbrName"/><s:hidden name="insAbbrName"/></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設固定C</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="insNo"/><s:hidden name="insNo"/></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設略式漢字名</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="insAbbrName"/><s:hidden name="insAbbrName"/></nobr></td>
       </tr>
       <tr>
-	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>住所</nobr></td>
-	      <td class="comFormTableItem" colspan=3><nobr><s:label key="insAddr"/><s:hidden name="insAddr"/></nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>住所</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFromTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colspan=3><nobr><s:label key="insAddr"/><s:hidden name="insAddr"/></nobr></td>
       </tr>
   </table>
 
+<s:if test='tkdTrtKbn != "0"'>
 	<table id="formTable02" border="0" class="comPortalTable" align="center" style="width:98%;">
     	<tr>
         	<td style="width: 30%; height: 0px; border-width: 0px;"></td>
@@ -163,20 +203,26 @@
 	    	<td class="comFormTableItem"></td>
 	    	<td class="comFormTableItem">
             	<nobr>
-	                <input class="comButton" type="button"name="buttonF3" value="追加" onClick="JavaScript;return false;" />
+	                <input class="comButton" type="button"name="buttonF3" value="追加" onClick="JavaScript:addBtn();return false;" />
                 </nobr>
 	      	</td>
 	      	<td class="comFormTableItem"></td>
 	      	<td class="comFormTableItem"></td>
 		</tr>
 	</table>
+</s:if>
 
 <%-- 当期親施設一覧 --%>
 <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
-	<table class="comCustomTable" id="formTable03">
+	<table <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> id="formTable03">
 		<tr>
 			<td>&nbsp;</td>
-			<td colspan=6>当期<br>親施設一覧</td>
+			<s:if test='tkdTrtKbn == "0" and addFlg == "1"'>
+				<td colspan=6>当期<br>親施設一覧</td>
+			</s:if>
+			<s:else>
+				<td colspan=6>親施設一覧</td>
+			</s:else>
 		</tr>
 		<tr>
 			<%-- ヘッダ行 --%>
@@ -193,12 +239,16 @@
 		<%--当期親施設データ取得項目--%>
 			<td><%-- アクションボタン --%>
 				<nobr>
-				<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF012','<s:property value="#rowBean.trtCd"/>');" >
+				<s:if test='#rowBean.editFlg == "1"'>
+				<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF212','<s:property value="#rowBean.trtCd"/>','<s:property value="#rowBean.hinGCd"/>');" >
    		            <img border="0" src="img/button_update.gif">
                 </a>
-				<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF012','<s:property value="#rowBean.trtCd"/>');" >
+                </s:if>
+                <s:if test='#rowBean.deleteFlg == "1"'>
+				<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF213','<s:property value="#rowBean.trtCd"/>','<s:property value="#rowBean.hinGCd"/>');" >
 					<img border="0" src="img/button_delete.gif">
 				</a>
+				</s:if>
 				</nobr>
 			</td>
 			<td><nobr><s:label key="hcoOyakoDataList[%{#status.index}].trtNm"/></nobr></td>
@@ -212,12 +262,40 @@
 	</table>
 </div>
 
+<s:if test='tkdTrtKbn == "0" and addFlg == "1"'>
+	<table id="formTable04" border="0" class="comPortalTableBlue" align="center" style="width:98%;">
+    	<tr>
+        	<td style="width: 30%; height: 0px; border-width: 0px;"></td>
+	        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+	        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+	        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+	        <td style="width: 38%; height: 0px; border-width: 0px;"></td>
+    	</tr>
+		<tr>
+	    	<td class="comFormTableItemBlue"></td>
+	    	<td class="comFormTableItemBlue"></td>
+	    	<td class="comFormTableItemBlue">
+            	<nobr>
+	                <input class="comButton" type="button"name="buttonF3" value="追加" onClick="JavaScript:addBtn();" />
+                </nobr>
+	      	</td>
+	      	<td class="comFormTableItemBlue"></td>
+	      	<td class="comFormTableItemBlue"></td>
+		</tr>
+	</table>
+</s:if>
+
 <%-- 来期親施設一覧 --%>
 <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
-	<table class="comCustomTable" id="formTable03">
+	<table <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> id="formTable05">
 		<tr>
 			<td>&nbsp;</td>
-			<td colspan=4>来期<br>親施設一覧</td>
+			<s:if test='tkdTrtKbn == "0"'>
+				<td colspan=4>来期<br>親施設一覧</td>
+			</s:if>
+			<s:else>
+				<td colspan=4>未来日申請<br>親施設一覧</td>
+			</s:else>
 		</tr>
 		<tr>
 			<%-- ヘッダ行 --%>
@@ -232,13 +310,7 @@
 		<tr>
 		<%--来期親施設データ取得項目--%>
 			<td><nobr><s:label key="hcoOyakoNextDataList[%{#status.index}].tekiyoYmd"/></nobr></td>
-			<td><%-- アクション --%>
-				<nobr>
-				<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF012','<s:property value="#rowBean.trtCd"/>');" >
-					変更
-                </a>
-				</nobr>
-			</td>
+			<td><nobr><s:label key="hcoOyakoNextDataList[%{#status.index}].action"/></nobr></td>
 			<td><nobr><s:label key="hcoOyakoNextDataList[%{#status.index}].trtNm"/></nobr></td>
 			<td><nobr><s:label key="hcoOyakoNextDataList[%{#status.index}].hinGNm"/></nobr></td>
 			<td><nobr><s:label key="hcoOyakoNextDataList[%{#status.index}].insAbbrName"/></nobr></td>
@@ -252,7 +324,7 @@
     </td>
     </tr>
 	<tr>
-		<td class="comFormTableItem">
+		<td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
 			<nobr>
 	    	<input class="comButton" type="button"name="buttonF1" value="戻る" onClick="window.close();" />
 	        </nobr>

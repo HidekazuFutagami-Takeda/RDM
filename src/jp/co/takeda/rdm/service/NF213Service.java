@@ -77,6 +77,7 @@ public class NF213Service extends BaseService {
     		List<SelectNF213MainDataEntity> mainDataEntityList = dao.select(paramEntity);
     		SelectNF213MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
     		// 施設
@@ -135,6 +136,7 @@ public class NF213Service extends BaseService {
     		List<SelectNF213MainDataEntity> mainDataEntityList = dao.select(paramEntity);
     		SelectNF213MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
     		// 施設

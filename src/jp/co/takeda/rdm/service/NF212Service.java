@@ -80,6 +80,7 @@ public class NF212Service extends BaseService {
     		List<SelectNF212MainDataEntity> mainDataEntityList = dao.select(paramEntity);
     		SelectNF212MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
 
@@ -148,6 +149,7 @@ public class NF212Service extends BaseService {
     		List<SelectNF212MainDataEntity> mainDataEntityList = dao.select(paramEntity);
     		SelectNF212MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
     		// 施設

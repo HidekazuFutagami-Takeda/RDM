@@ -114,9 +114,9 @@ public class NF201Service extends BaseService {
         		}
         	}
 
-        	dataRecord.setTrtCd(getSetValue(entity.getTrtCd()));
+        	dataRecord.setTrtCd(entity.getTrtCd());
     		dataRecord.setTrtNm(getSetValue(entity.getTrtNm()));
-    		dataRecord.setHinGCd(getSetValue(entity.getHinGCd()));
+    		dataRecord.setHinGCd(entity.getHinGCd());
     		dataRecord.setHinGNm(getSetValue(entity.getHinGNm()));
     		dataRecord.setInsAbbrName(getSetValue(entity.getInsAbbrName()));
     		dataRecord.setHoInsType(getSetValue(entity.getHoInsType()));

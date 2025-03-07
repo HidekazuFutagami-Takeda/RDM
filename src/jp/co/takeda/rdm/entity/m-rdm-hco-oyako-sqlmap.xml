@@ -216,7 +216,7 @@
 		INNER JOIN
 		M_RDM_PARAM_MST PRM_FAC -- パラメタ情報 施設メニュースイッチ
 		ON  PRM_FAC.PARAM_NAME = 'MN_FAC'
-		LEFT JOIN
+		INNER JOIN
 		M_RDM_HCO_OYAKO OYAKO -- 施設_領域別親子情報
 		ON  OYAKO.INS_NO = #{inInsNo}
 		AND OYAKO.TRT_CD = '00'
@@ -295,7 +295,7 @@
 		INNER JOIN
 		M_RDM_PARAM_MST PRM_FAC -- パラメタ情報 施設メニュースイッチ
 		ON  PRM_FAC.PARAM_NAME = 'MN_FAC'
-		LEFT JOIN
+		INNER JOIN
 		M_RDM_HCO_OYAKO OYAKO -- 施設_領域別親子情報
 		ON  OYAKO.INS_NO = #{inInsNo}
 		LEFT JOIN

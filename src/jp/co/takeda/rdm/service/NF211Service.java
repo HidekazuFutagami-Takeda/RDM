@@ -78,6 +78,7 @@ public class NF211Service extends BaseService {
     		paramEntity.setInsNo(indto.getInsNo());
     		MRdmHcoMstEntity mainDataEntity = dao.selectByPK(paramEntity);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
     		// 施設
@@ -128,6 +129,7 @@ public class NF211Service extends BaseService {
     		paramEntity.setInsNo(indto.getInsNo());
     		MRdmHcoMstEntity mainDataEntity = dao.selectByPK(paramEntity);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
     		// 施設

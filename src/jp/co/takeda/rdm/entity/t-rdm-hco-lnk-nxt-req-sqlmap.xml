@@ -160,7 +160,7 @@
 		INNER JOIN
 		REQ_INF -- サブクエリ（親子紐申請情報）
 		ON REQ_INF.INS_NO = #{inInsNo}
-		LEFT JOIN
+		INNER JOIN
 		T_RDM_REQ_KNR KNR -- 申請管理
 		ON  KNR.REQ_ID = REQ_INF.REQ_ID
 		AND KNR.REQ_TYPE  IN ('11', '12', '13')

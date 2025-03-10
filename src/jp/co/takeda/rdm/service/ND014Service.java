@@ -24,12 +24,13 @@ import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.BeanUtil;
-import jp.co.takeda.rdm.dto.ND105DTO;
+import jp.co.takeda.rdm.dto.ND014DTO;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
+import jp.co.takeda.rdm.entity.join.MRdmHcpYakushokuEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity;
+import jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
@@ -46,17 +47,17 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Serviceクラス（ND105)
+ * Serviceクラス（ND014)
  * @generated
  */
 @Named
-public class ND105Service extends BaseService {
+public class ND014Service extends BaseService {
 
 	/**
 	 * ログインスタンス
 	 * @generated
 	 */
-	private static Log log = LogFactory.getLog(ND105Service.class);
+	private static Log log = LogFactory.getLog(ND014Service.class);
 
 	//20150303 ST-B-367対応 HISOL鈴木 ADD START
 	/**
@@ -69,12 +70,12 @@ public class ND105Service extends BaseService {
 
 	/**
 	 * イベント処理
-	 * @param indto ND105DTO
+	 * @param indto ND014DTO
 	 * @return 遷移先DTO
 	 * @customizable
 	 */
 	@Transactional
-	public BaseDTO init(ND105DTO indto) {
+	public BaseDTO init(ND014DTO indto) {
 		BaseDTO outdto = indto;
 		// START UOC
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -82,19 +83,19 @@ public class ND105Service extends BaseService {
 		if ("1".equals(indto.getDisplayKbn())) {
 			if (indto.getTkdDocNo() != null) {
 				// 医師コードで初期データ作成
-				SelectND105MainDataEntity paramEntity = new SelectND105MainDataEntity();
-				paramEntity.setSqlId("selectND105TKDData");
+				SelectND014MainDataEntity paramEntity = new SelectND014MainDataEntity();
+				paramEntity.setSqlId("selectND014TKDData");
 				paramEntity.setInDocNo(indto.getTkdDocNo());
-				List<SelectND105MainDataEntity> mainDataEntityList = dao.select(paramEntity);
-				SelectND105MainDataEntity mainDataEntity = mainDataEntityList.get(0);
+				List<SelectND014MainDataEntity> mainDataEntityList = dao.select(paramEntity);
+				SelectND014MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 				indto.setTkdDocNo(StringUtils.nvl(mainDataEntity.getTkdDocNo(), ""));
 				indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
 				indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
 
 				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
-				indto.setDocAttribute(StringUtils.nvl(mainDataEntity.getDocAttribute(), ""));
-				indto.setDocAttributeNm(StringUtils.nvl(mainDataEntity.getDocAttributeNm(), ""));
+				indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
+				indto.setDelReasonNm(StringUtils.nvl(mainDataEntity.getDelReasonNm(), ""));
 
 				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(),loginInfo.getBumonRyakuName()));
 				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(),loginInfo.getJgiName()));
@@ -113,10 +114,10 @@ public class ND105Service extends BaseService {
 		} else if ("2".equals(indto.getDisplayKbn())) {
 			if (indto.getReqId() != null) {
 				// 申請データ（一時保存含む）を参照
-				SelectND105MainDataEntity paramEntity = new SelectND105MainDataEntity();
+				SelectND014MainDataEntity paramEntity = new SelectND014MainDataEntity();
 				paramEntity.setInReqId(indto.getReqId());
-				List<SelectND105MainDataEntity> mainDataEntityList = dao.select(paramEntity);
-				SelectND105MainDataEntity mainDataEntity = mainDataEntityList.get(0);
+				List<SelectND014MainDataEntity> mainDataEntityList = dao.select(paramEntity);
+				SelectND014MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -138,20 +139,36 @@ public class ND105Service extends BaseService {
 
 				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
-				indto.setDocAttribute(StringUtils.nvl(mainDataEntity.getDocAttribute(), ""));
-				indto.setDocAttributeNm(StringUtils.nvl(mainDataEntity.getDocAttributeNm(), ""));
+
 				indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
-				indto.setDupDocNo(StringUtils.nvl(mainDataEntity.getDupDocNo(), ""));
-				indto.setDupDocNm(StringUtils.nvl(mainDataEntity.getDupDocNm(), ""));
+				indto.setDelReasonNm(StringUtils.nvl(mainDataEntity.getDelReasonNm(), ""));
+				indto.setRstReason(StringUtils.nvl(mainDataEntity.getRstReason(), ""));
+				indto.setSkInsNm(StringUtils.nvl(mainDataEntity.getSkInsNm(), ""));
+				indto.setSkUnivPosCd(StringUtils.nvlUpd(mainDataEntity.getSkUnivPosCd(), ""));
+				indto.setSkDeptNm(StringUtils.nvl(mainDataEntity.getSkDeptNm(), ""));
+				indto.setSkTitleCd(StringUtils.nvlUpd(mainDataEntity.getSkTitleCd(), ""));
+				indto.setSkJobForm(StringUtils.nvlUpd(mainDataEntity.getSkJobForm(), ""));
+				indto.setSkDcctype(StringUtils.nvlUpd(mainDataEntity.getSkDcctype(), ""));
+				indto.setSkInsNo(StringUtils.nvl(mainDataEntity.getSkInsNo(), ""));
+				indto.setSkDeptCd(StringUtils.nvl(mainDataEntity.getSkDeptCd(), ""));
+				indto.setSkInsHoInsType(StringUtils.nvl(mainDataEntity.getSkInsHoInsType(), ""));
+				indto.setSkInsInsClass(StringUtils.nvl(mainDataEntity.getSkInsInsClass(), ""));
 
 				indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
 				indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
 				indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
 				indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
-
+				if(indto.getSkInsNo().equals(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9)) {
+					indto.setUnknownFlg(true);
+					indto.setSkInsNm(RdmConstantsData.CODE_VALUENM_DUMMY_HCO_9);
+				}else {
+					indto.setUnknownFlg(false);
+				}
 			} else {
+				//ここには来ない
 			}
 		} else if ("0".equals(indto.getDisplayKbn())) {
+			//ここには来ない
 		}
 
 		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
@@ -180,33 +197,92 @@ public class ND105Service extends BaseService {
 
 	/**
 	 * コンボ作成
-	 * @param indto ND105DTO
+	 * @param indto ND014DTO
 	 * @return なし
 	 * @customizable
 	 */
-	private void createCombo(ND105DTO indto){
-		//1-2-1     医師削除理由
+	private void createCombo(ND014DTO indto){
+		//1-2-1    大学職位
+		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
+		//        大学職位利用フラグ=1
+		//        削除フラグ=0
+		MRdmHcpYakushokuEntity inEntityPosCmb = new MRdmHcpYakushokuEntity();
+		inEntityPosCmb.setUnivTitleFlg(1);
+		inEntityPosCmb.setDelFlg(0);
+		List<MRdmHcpYakushokuEntity> outMainPosList = dao.selectByValue(inEntityPosCmb);
+		LinkedHashMap<String, String> mapSkUnivPosCd = new LinkedHashMap<String, String>();
+		mapSkUnivPosCd.put("", "--なし--");
+		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
+			mapSkUnivPosCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
+		}
+		indto.setSkUnivPosCdCombo(mapSkUnivPosCd);
+
+		//1-2-2    役職
+		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
+		//        大学職位利用フラグ=0
+		//        削除フラグ=0
+		inEntityPosCmb.setUnivTitleFlg(0);
+		inEntityPosCmb.setDelFlg(0);
+		outMainPosList.clear();
+		outMainPosList = dao.selectByValue(inEntityPosCmb);
+		LinkedHashMap<String, String> mapSkTitleCd = new LinkedHashMap<String, String>();
+		mapSkTitleCd.put("", "--なし--");
+		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
+			mapSkTitleCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
+		}
+		indto.setSkTitleCdCombo(mapSkTitleCd);
+
+		//1-2-3    勤務形態
 		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-		//            コード名＝HCP_DEL_REASON（医師削除理由）
+		//            コード名＝JOB_FORM（勤務形態）
 		//            削除フラグ=0
 		SelectComboListEntity inEntityCmb = new SelectComboListEntity();
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_HCP_DEL_REASON);
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_JOB_FORM);
 		List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapDelReason = new LinkedHashMap<String, String>();
-		mapDelReason.put("", "--なし--");
+		LinkedHashMap<String, String> mapJobForm = new LinkedHashMap<String, String>();
+		mapJobForm.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapDelReason.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+			mapJobForm.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
-		indto.setDelReasonCombo(mapDelReason);
+		indto.setSkJobFormCombo(mapJobForm);
+
+		//1-2-4    薬審メンバー区分
+		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
+		//            コード名＝DCC（薬審メンバー区分）
+		//            削除フラグ=0
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_DCC);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapDCC = new LinkedHashMap<String, String>();
+		mapDCC.put("", "--なし--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapDCC.put(outEntity.getValue(), outEntity.getValueKanji());
+		}
+		indto.setSkDcctypeCombo(mapDCC);
+
+		//1-2-5     医師復活理由
+		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
+		//            コード名＝HCP_RST_REASON（医師復活理由）
+		//            削除フラグ=0
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_HCP_RST_REASON);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapRstReason = new LinkedHashMap<String, String>();
+		mapRstReason.put("", "--なし--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapRstReason.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setRstReasonCombo(mapRstReason);
+
 	}
 	/**
 	 * イベント処理
-	 * @param indto ND105DTO
+	 * @param indto ND014DTO
 	 * @return 遷移先DTO
 	 * @customizable
 	 */
 	@Transactional
-	public BaseDTO register(ND105DTO indto) {
+	public BaseDTO register(ND014DTO indto) {
 		BaseDTO outdto = indto;
 		// START UOC
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -376,13 +452,27 @@ public class ND105Service extends BaseService {
 				UpdateTRdmHcpReqEntity updateEntity2 = new UpdateTRdmHcpReqEntity();
 				updateEntity2.setSqlId("updateData");
 				updateEntity2.setReqId(indto.getReqId());
-				updateEntity2.setDelReason(indto.getDelReason());//削除理由
-				updateEntity2.setDupDocNo(StringUtils.setEmptyToNull(indto.getDupDocNo()));//重複医師コード
-				if(!indto.getDocKanjiMei().endsWith("●")) {
-					updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei() + "●");//氏名（漢字）
-					updateEntity2.setDocKanjiMei(indto.getDocKanjiMei() + "●");//氏名（漢字）名
+				updateEntity2.setRstReason(indto.getRstReason());//復活理由
+				if(indto.getDocKanjiMei().endsWith("●")) {
+					updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
+					updateEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
 				}
 
+				if(indto.getUnknownFlg()) {
+					updateEntity2.setSkInsNo(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9);//勤務先施設固定コード
+					updateEntity2.setSkJobForm("Z");//勤務形態
+					updateEntity2.setSkDeptCd(RdmConstantsData.CODE_VALUE_DUMMY_DEPT_CODE);//所属部科コード
+					updateEntity2.setSkUnivPosCd("Z");//大学職位コード
+					updateEntity2.setSkTitleCd("Z");//役職コード
+					updateEntity2.setSkDcctype("Z");//薬審メンバー区分
+				}else {
+					updateEntity2.setSkInsNo(indto.getSkInsNo());//勤務先施設固定コード
+					updateEntity2.setSkJobForm(StringUtils.setEmptyToNull(indto.getSkJobForm()));//勤務形態
+					updateEntity2.setSkDeptCd(indto.getSkDeptCd());//所属部科コード
+					updateEntity2.setSkUnivPosCd(StringUtils.setEmptyToNull(indto.getSkUnivPosCd()));//大学職位コード
+					updateEntity2.setSkTitleCd(indto.getSkTitleCd());//役職コード
+					updateEntity2.setSkDcctype(StringUtils.setEmptyToNull(indto.getSkDcctype()));//薬審メンバー区分
+				}
 				updateEntity2.setUpdShaYmd(currentDt);//更新日
 				updateEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 				updateEntity2.checkSetNull();
@@ -406,7 +496,7 @@ public class ND105Service extends BaseService {
 					insEntity1.setReqChl("1");//申請チャネル
 					insEntity1.setReqKngKbn("1");//申請者権限区分
 				}
-				insEntity1.setReqType("33");//申請区分
+				insEntity1.setReqType("34");//申請区分
 				insEntity1.setReqStsCd("01");//申請ステータス
 				insEntity1.setReqBrCd(loginInfo.getBrCode());//申請者所属リージョン
 				insEntity1.setReqDistCd(loginInfo.getDistCode());//申請者所属エリア
@@ -439,12 +529,29 @@ public class ND105Service extends BaseService {
 				TRdmHcpReqEntity insEntity2 = new TRdmHcpReqEntity();
 				insEntity2.setReqId(reqId);//申請ID
 				insEntity2.setDocNo(indto.getTkdDocNo());//医師固定コード
-				insEntity2.setDelReason(indto.getDelReason());//削除理由
-				insEntity2.setDupDocNo(StringUtils.setEmptyToNull(indto.getDupDocNo()));//重複医師コード
-				if(!indto.getDocKanjiMei().endsWith("●")) {
-					insEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei() + "●");//氏名（漢字）
-					insEntity2.setDocKanjiMei(indto.getDocKanjiMei() + "●");//氏名（漢字）名
+				insEntity2.setRstReason(indto.getRstReason());//復活理由
+				if(indto.getDocKanjiMei().endsWith("●")) {
+					insEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
+					insEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
 				}
+
+				//TODO
+				if(indto.getUnknownFlg()) {
+					insEntity2.setSkInsNo(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9);//勤務先施設固定コード
+					insEntity2.setSkJobForm("Z");//勤務形態
+					insEntity2.setSkDeptCd(RdmConstantsData.CODE_VALUE_DUMMY_DEPT_CODE);//所属部科コード
+					insEntity2.setSkUnivPosCd("Z");//大学職位コード
+					insEntity2.setSkTitleCd("Z");//役職コード
+					insEntity2.setSkDcctype("Z");//薬審メンバー区分
+				}else {
+					insEntity2.setSkInsNo(indto.getSkInsNo());//勤務先施設固定コード
+					insEntity2.setSkJobForm(StringUtils.setEmptyToNull(indto.getSkJobForm()));//勤務形態
+					insEntity2.setSkDeptCd(indto.getSkDeptCd());//所属部科コード
+					insEntity2.setSkUnivPosCd(StringUtils.setEmptyToNull(indto.getSkUnivPosCd()));//大学職位コード
+					insEntity2.setSkTitleCd(indto.getSkTitleCd());//役職コード
+					insEntity2.setSkDcctype(StringUtils.setEmptyToNull(indto.getSkDcctype()));//薬審メンバー区分
+				}
+
 				insEntity2.setInsShaYmd(currentDt);//作成日
 				insEntity2.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity2.setUpdShaYmd(currentDt);//更新日
@@ -480,7 +587,7 @@ public class ND105Service extends BaseService {
 		}
 		//破棄ボタン押下の場合（申請IDがあり、本人しか操作できない状態なのでそのまま削除）
 		if ("4".equals(indto.getButtonFlg())) {
-			//TODO 物理削除
+			// 物理削除
 			TRdmReqKnrEntity deleteEntity1 = new TRdmReqKnrEntity();
 			deleteEntity1.setReqId(indto.getReqId());
 			dao.deleteByPK(deleteEntity1);
@@ -523,36 +630,68 @@ public class ND105Service extends BaseService {
 	/*
 	 * エラーありならtrueとし、エラーメッセージをmsgStrにセットする
 	 */
-	private boolean checkInput(LoginInfo loginInfo, ND105DTO indto, boolean fullchkFlg) {
+	private boolean checkInput(LoginInfo loginInfo, ND014DTO indto, boolean fullchkFlg) {
 		boolean errChk = false;
 		String msgStr = "";
 		String tmpMsgStr = "";
 		if(fullchkFlg) {
 			//	１：必須入力チェック
 			//	項目
-			//	削除理由
-			if(StringUtils.isEmpty(indto.getDelReason())) {
+			//	復活理由
+			if(StringUtils.isEmpty(indto.getRstReason())) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "削除理由");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "復活理由");
 				msgStr = msgStr + tmpMsgStr + "\n";
-			} else {
-				//	申請コメント
-				// 削除理由が「その他（削除理由コメント・必須）」の場合、必須項目に値が入力されているか確認
-				if(indto.getDelReason().equals("04") && StringUtils.isEmpty(indto.getReqComment())) {
+			}else {
+				// 削除理由が「その他（復活理由コメント・必須）」の場合、必須項目に値が入力されているか確認
+				if(indto.getRstReason().equals("02") && StringUtils.isEmpty(indto.getReqComment())) {
 					errChk = true;
 					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
 					tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
 					msgStr = msgStr + tmpMsgStr + "\n";
 				}
-				//	重複医師コード
-				// 削除理由が「医師の重複登録」の場合、必須項目に値が入力されているか確認
-				if(indto.getDelReason().equals("02") && StringUtils.isEmpty(indto.getDupDocNo())) {
+			}
+			if(!indto.getUnknownFlg()){
+				//	勤務先情報．施設
+				if(StringUtils.isEmpty(indto.getSkInsNo())) {
 					errChk = true;
 					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-					tmpMsgStr = tmpMsgStr.replace("項目名", "重複医師コード");
+					tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．施設");
+					msgStr = msgStr + tmpMsgStr + "\n";
+				} else {
+//					勤務先情報．大学職位
+					if(indto.getSkInsHoInsType().equals(RdmConstantsData.HCO_HO_INS_TYPE_1)
+							&& indto.getSkInsInsClass().equals(RdmConstantsData.HCO_INS_CLASS_01)) {
+						if(StringUtils.isEmpty(indto.getSkUnivPosCd())) {
+							errChk = true;
+							tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W031);//勤務先が大学附属病院の場合、大学職位を入力してください。
+							msgStr = msgStr + tmpMsgStr + "\n";
+						}
+					}
+				}
+				//	勤務先情報．所属部科
+				if(StringUtils.isEmpty(indto.getSkDeptCd())) {
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
+					tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．所属部科");
 					msgStr = msgStr + tmpMsgStr + "\n";
 				}
+				//	勤務先情報．大学職位
+				if(StringUtils.isEmpty(indto.getSkUnivPosCd())) {
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
+					tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．大学職位");
+					msgStr = msgStr + tmpMsgStr + "\n";
+				}
+				//	勤務先情報．役職
+				if(StringUtils.isEmpty(indto.getSkTitleCd())) {
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
+					tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．役職");
+					msgStr = msgStr + tmpMsgStr + "\n";
+				}
+
 			}
 		}
 		//      ２：レングスチェック
@@ -584,52 +723,18 @@ public class ND105Service extends BaseService {
 
 			//		項目                                チェック内容
 			//		重複申請チェック 同じ医師固定コードに紐づく医師削除申請がすでに存在している場合    W008     重複する申請が行われています。（医師固定C）
-			SelectND105MainDataEntity paramChkEntity = new SelectND105MainDataEntity();
-			paramChkEntity.setSqlId("selectND105CheckDelData");
+			SelectND014MainDataEntity paramChkEntity = new SelectND014MainDataEntity();
+			paramChkEntity.setSqlId("selectND014CheckRstData");
 			paramChkEntity.setInDocNo(indto.getTkdDocNo());
 			paramChkEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
-			List<SelectND105MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
+			List<SelectND014MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
 			if(chkEntityList1.size() > 0) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);//重複する申請が行われています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "医師固定C");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
-//TODO
-			// 整合性チェック 削除理由が「医師免許返納・死亡」以外で、所属施設が2つの以上の場合    W033    勤務先が2件以上存在するため申請できません。
-			if(!StringUtils.isEmpty(indto.getDelReason())) {
-				if(!indto.getDelReason().equals("01") && !indto.getDelReason().equals("03")) {
-					paramChkEntity.setSqlId("selectND105CheckKinmuData");
-					paramChkEntity.setInDocNo(indto.getTkdDocNo());
-					List<SelectND105MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
-					if(chkEntityList2.size() > 1){
-						errChk = true;
-						tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W056);//勤務先が2件以上存在するため申請できません。
-						msgStr = msgStr + tmpMsgStr + "\n";
-					}
-				}
-			}
-			// 整合性チェック MR権限で医師の所属施設がダミー施設の場合    W034     医療機関外へ異動されている医師は削除できません。
-			if(RdmConstantsData.RDM_JKN_MR.equals(loginInfo.getJokenSetCd())){
-				paramChkEntity.setSqlId("selectND105CheckKinmuDummyData");
-				paramChkEntity.setInDocNo(indto.getTkdDocNo());
-				List<SelectND105MainDataEntity> chkEntityList3 = dao.select(paramChkEntity);
-				if(chkEntityList3.size() > 0){
-					errChk = true;
-					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W057);// 医療機関外へ異動されている医師は削除できません。
-					msgStr = msgStr + tmpMsgStr + "\n";
-				}
 
-			}
-			// 適用日チェック 勤務先変更の申請（承認済みで適用日が未来日）が1件以上存在する場合    W035    医師は異動が予定されています。
-			paramChkEntity.setSqlId("selectND105CheckKinmuChangeData");
-			paramChkEntity.setInDocNo(indto.getTkdDocNo());
-			List<SelectND105MainDataEntity> chkEntityList4 = dao.select(paramChkEntity);
-			if(chkEntityList4.size() > 0){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W058);//  医師は異動が予定されています。
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
 		}
 
 		if(errChk) {//エラーありなのでメッセージをセットする

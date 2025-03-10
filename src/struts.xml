@@ -279,6 +279,9 @@
         <action name="NF102Init" class="nF102Action" method="init">
             <result name="NF102">/WEB-INF/pages/NF102.jsp</result>
         </action>
+        <action name="NF201Init" class="nF201Action" method="init">
+            <result name="NF201">/WEB-INF/pages/NF201.jsp</result>
+        </action>
         <action name="NF211Init" class="nF211Action" method="init">
             <result name="NF211">/WEB-INF/pages/NF211.jsp</result>
         </action>
@@ -406,6 +409,13 @@
         <action name="NF315ApprRej" class="nF315Action" method="apprRej">
         	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
         	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
+        <action name="NF401Init" class="nF401Action" method="init">
+            <result name="NC109" type="chain">NC109Init</result>
+            <result name="NF401">/WEB-INF/pages/NF401.jsp</result>
+        </action>
+        <action name="NF401Search" class="nF401Action" method="search">
+            <result name="NF401">/WEB-INF/pages/NF401.jsp</result>
         </action>
         <action name="NC203Init" class="nC203Action" method="init">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
@@ -573,6 +583,24 @@
         <action name="ND315Register" class="nD315Action" method="register">
             <result name="ND315">/WEB-INF/pages/ND315.jsp</result>
             <result name="ND315Init" type="chain">ND315Init</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
+        </action>
+        <action name="ND014Init" class="nD014Action" method="init">
+            <result name="ND014">/WEB-INF/pages/ND014.jsp</result>
+        </action>
+        <action name="ND014Register" class="nD014Action" method="register">
+            <result name="ND014">/WEB-INF/pages/ND014.jsp</result>
+            <result name="ND014Init" type="chain">ND014Init</result>
+            <result name="ND305Init" type="chain">ND305Init</result>
+            <result name="ND305Register" type="chain">ND305Register</result>
+        </action>
+        <action name="ND305Init" class="nD305Action" method="init">
+            <result name="ND305">/WEB-INF/pages/ND305.jsp</result>
+            <result name="ND014Init" type="chain">ND014Init</result>
+        </action>
+        <action name="ND305Register" class="nD305Action" method="register">
+            <result name="ND305">/WEB-INF/pages/ND305.jsp</result>
+            <result name="ND305Init" type="chain">ND305Init</result>
             <result name="NC101Init" type="chain">NC101Init</result>
         </action>
     </package>

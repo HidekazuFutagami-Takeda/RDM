@@ -52,7 +52,7 @@
 	    		document.fm1.functionId.value="Init";
   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -63,7 +63,7 @@
 	    		document.fm1.functionId.value="Init";
   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -74,7 +74,7 @@
 	    		document.fm1.functionId.value="Init";
   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -113,7 +113,7 @@
 //         }
 		const returnFlg = document.fm1.buttonFlg.value;
 		if(returnFlg == "8"){//削除完了時画面を閉じろ
-// 			window.close();ではjsで開いた画面しか無理
+ 			window.close();ではjsで開いた画面しか無理
 		}
         return false;
       }
@@ -949,12 +949,16 @@
 		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCseView();return false;" />
 		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
 		                <s:hidden name="skInsNo" id="skInsNo"/>
+		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
+		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skIns');return false;">Clear</a>
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button2" value="選択" disabled />
 		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
 		                <s:hidden name="skInsNo" id="skInsNo"/>
+		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
+		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
 					</s:else>
                 </nobr>
 	      </td>

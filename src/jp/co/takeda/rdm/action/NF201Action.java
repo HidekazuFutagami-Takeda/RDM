@@ -8,29 +8,27 @@ package jp.co.takeda.rdm.action;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.context.annotation.Scope;
+
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.springframework.context.annotation.Scope;
-
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
-import jp.co.takeda.rdm.service.ND309Service;
-import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.ND309DTO;
+import jp.co.takeda.rdm.dto.NF201DTO;
+import jp.co.takeda.rdm.service.NF201Service;
+import jp.co.takeda.rdm.util.AppConstant;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nD309Action")
+@Named("nF201Action")
 @Scope("request")
-public class ND309Action extends BaseAction<ND309DTO> {
+public class NF201Action extends BaseAction<NF201DTO> {
 
     /**
      * シリアルバージョンID
@@ -43,18 +41,26 @@ public class ND309Action extends BaseAction<ND309DTO> {
      * @generated
      */
     @Inject
-    private ND309Service nD309Service;
+    private NF201Service NF201Service;
 
     // START UOC
 
+
+  //ログインユーザ情報取得
+      LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+
+      boolean errChk = false;
+  	String msgStr = "";
+  	String tmpMsgStr = "";
+  	int len = 0;
     // END UOC
 
     /**
      * コンストラクタ
      * @generated
      */
-    public ND309Action() {
-        dto = new ND309DTO();
+    public NF201Action() {
+        dto = new NF201DTO();
     }
 
     /**
@@ -82,6 +88,18 @@ public class ND309Action extends BaseAction<ND309DTO> {
         // END UOC
     }
 
+
+
+    /**
+     * validationエラー時に実行する処理。<br/>
+     * @customizable
+     */
+    @InputConfig
+    public String validationError() {
+        // START UOC
+        return "input";
+        // END UOC
+    }
     /**
      * 業務処理
      * @customizable
@@ -89,7 +107,7 @@ public class ND309Action extends BaseAction<ND309DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nD309Service.init(dto);
+        BaseDTO outdto = NF201Service.init(dto);
         return initNext(outdto);
     }
 
@@ -99,14 +117,20 @@ public class ND309Action extends BaseAction<ND309DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
-    	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+    	// 画面タイトル制御処理
+        String title = "NF201_親子紐付け一覧";
 
-        String preScreenId = loginInfo.getPreScreenId();
-        dto.setPreScreenId(preScreenId);
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
-		String title = "ND309_医療機関以外への異動 - 申請内容確認";
+        dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
 
-		dto.setTitle(title);
+        dto.setTitle(title);
         // END UOC
     }
 
@@ -116,45 +140,10 @@ public class ND309Action extends BaseAction<ND309DTO> {
      */
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
-        // 検索条件をセッションに格納する（更新やソートリンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_ND309_SEARCHKEY, outdto);
+    	// 検索条件をセッションに格納する（ページャ押下時に使用）
+    	sessionMap.put(AppConstant.SESKEY_NF201_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
     }
-
-    /**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String register() throws Exception {
-        registerSetup();
-        // F層呼び出し
-        BaseDTO outdto = nD309Service.register(dto);
-        return registerNext(outdto);
-    }
-
-    /**
-     * 前処理
-     * @customizable
-     */
-    protected void registerSetup() throws Exception {
-        // START UOC
-        // END UOC
-    }
-
-    /**
-     * 後処理
-     * @customizable
-     */
-    protected String registerNext(BaseDTO outdto) throws Exception {
-        // START UOC
-        // END UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
-
 }

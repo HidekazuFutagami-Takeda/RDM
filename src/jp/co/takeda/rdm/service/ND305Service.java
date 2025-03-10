@@ -26,7 +26,7 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.dto.HcpPublicData;
 import jp.co.takeda.rdm.dto.HcpSocietyData;
-import jp.co.takeda.rdm.dto.ND301DTO;
+import jp.co.takeda.rdm.dto.ND305DTO;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcpShusshinkoEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcpSpDiseaseEntity;
@@ -36,7 +36,7 @@ import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectND301MainDataEntity;
+import jp.co.takeda.rdm.entity.join.SelectND305MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpPublicReqEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
@@ -57,17 +57,17 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Serviceクラス（ND301)
+ * Serviceクラス（ND305)
  * @generated
  */
 @Named
-public class ND301Service extends BaseService {
+public class ND305Service extends BaseService {
 
 	/**
 	 * ログインスタンス
 	 * @generated
 	 */
-	private static Log log = LogFactory.getLog(ND301Service.class);
+	private static Log log = LogFactory.getLog(ND305Service.class);
 
 	//20150303 ST-B-367対応 HISOL鈴木 ADD START
 	/**
@@ -80,12 +80,12 @@ public class ND301Service extends BaseService {
 
 	/**
 	 * イベント処理
-	 * @param indto ND301DTO
+	 * @param indto ND305DTO
 	 * @return 遷移先DTO
 	 * @customizable
 	 */
 	@Transactional
-	public BaseDTO init(ND301DTO indto) {
+	public BaseDTO init(ND305DTO indto) {
 		BaseDTO outdto = indto;
 		// START UOC
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -96,10 +96,10 @@ public class ND301Service extends BaseService {
 //		登録画面から申請IDを連携
 		if (indto.getReqId() != null) {
 			// 申請データ（一時保存含む）を参照
-			SelectND301MainDataEntity paramEntity = new SelectND301MainDataEntity();
+			SelectND305MainDataEntity paramEntity = new SelectND305MainDataEntity();
 			paramEntity.setInReqId(indto.getReqId());
-			List<SelectND301MainDataEntity> mainDataEntityList = dao.select(paramEntity);
-			SelectND301MainDataEntity mainDataEntity = mainDataEntityList.get(0);
+			List<SelectND305MainDataEntity> mainDataEntityList = dao.select(paramEntity);
+			SelectND305MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 			indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 			indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 			indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -115,86 +115,43 @@ public class ND301Service extends BaseService {
 			indto.setShnJgiNo(mainDataEntity.getShnJgiNo());
 			indto.setAprJgiNo(mainDataEntity.getAprJgiNo());
 			indto.setUpdShaYmd(StringUtils.nvl(mainDataEntity.getUpdShaYmd(), ""));
-			indto.setUltDocNo(StringUtils.nvl(mainDataEntity.getUltDocNo(), ""));
-			indto.setUltDocNm(StringUtils.nvl(mainDataEntity.getUltDocNm(), ""));
-			indto.setUltDocKana(StringUtils.nvl(mainDataEntity.getUltDocKana(), ""));
-			indto.setDocType(StringUtils.nvl(mainDataEntity.getDocType(), ""));
-			indto.setDocTypeNm(StringUtils.nvl(mainDataEntity.getDocTypeNm(), ""));
-			indto.setSexCd(StringUtils.nvl(mainDataEntity.getSexCd(), ""));
-			indto.setSexNm(StringUtils.nvl(mainDataEntity.getSexNm(), ""));
+
+			indto.setTkdDocNo(StringUtils.nvl(mainDataEntity.getTkdDocNo(), ""));
+			indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
+			indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
+
 			indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 			indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
-			indto.setDocKanaSei(StringUtils.nvl(mainDataEntity.getDocKanaSei(), ""));
-			indto.setDocKanaMei(StringUtils.nvl(mainDataEntity.getDocKanaMei(), ""));
-			indto.setOldKanjSei(StringUtils.nvl(mainDataEntity.getOldKanjSei(), ""));
-			indto.setOldKanaSei(StringUtils.nvl(mainDataEntity.getOldKanaSei(), ""));
-			indto.setNewNameStYear(StringUtils.nvl(mainDataEntity.getNewNameStYear(), ""));
-			indto.setNewNameStMonth(StringUtils.nvl(mainDataEntity.getNewNameStMonth(), ""));
-			indto.setNewNameStDay(StringUtils.nvl(mainDataEntity.getNewNameStDay(), ""));
-			indto.setDobYear(StringUtils.nvl(mainDataEntity.getDobYear(), ""));
-			indto.setDobMonth(StringUtils.nvl(mainDataEntity.getDobMonth(), ""));
-			indto.setDobDay(StringUtils.nvl(mainDataEntity.getDobDay(), ""));
-			indto.setHomeTownCd(StringUtils.nvl(mainDataEntity.getHomeTownCd(), ""));
-			indto.setHomeTownNm(StringUtils.nvl(mainDataEntity.getHomeTownNm(), ""));
-			indto.setMedSchoolCd(StringUtils.nvl(mainDataEntity.getMedSchoolCd(), ""));
-			indto.setMedSchoolNm(StringUtils.nvl(mainDataEntity.getMedSchoolNm(), ""));
-			indto.setGradYear(StringUtils.nvl(mainDataEntity.getGradYear(), ""));
-			indto.setEmplYear(StringUtils.nvl(mainDataEntity.getEmplYear(), ""));
-			indto.setHomeUnivCd(StringUtils.nvl(mainDataEntity.getHomeUnivCd(), ""));
-			indto.setHomeUnivNm(StringUtils.nvl(mainDataEntity.getHomeUnivNm(), ""));
-			indto.setHomeDeptNm(StringUtils.nvl(mainDataEntity.getHomeDeptNm(), ""));
-			indto.setSpLiverCd(StringUtils.nvl(mainDataEntity.getSpLiverCd(), ""));
-			indto.setSpLiverNm(StringUtils.nvl(mainDataEntity.getSpLiverNm(), ""));
-			indto.setSpDiseaseCd(StringUtils.nvl(mainDataEntity.getSpDiseaseCd(), ""));
-			indto.setSpDiseaseNm(StringUtils.nvl(mainDataEntity.getSpDiseaseNm(), ""));
-			indto.setSpCom(StringUtils.nvl(mainDataEntity.getSpCom(), ""));
-			indto.setHomeDeptCd(StringUtils.nvl(mainDataEntity.getHomeDeptCd(), ""));
+
+			indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
+			indto.setDelReasonNm(StringUtils.nvl(mainDataEntity.getDelReasonNm(), ""));
+			indto.setRstReason(StringUtils.nvl(mainDataEntity.getRstReason(), ""));
+			indto.setRstReasonNm(StringUtils.nvl(mainDataEntity.getRstReasonNm(), ""));
 			indto.setSkInsNm(StringUtils.nvl(mainDataEntity.getSkInsNm(), ""));
-			indto.setSkUnivPosCd(StringUtils.nvl(mainDataEntity.getSkUnivPosCd(), ""));
-			indto.setSkUnivPosNm(StringUtils.nvl(mainDataEntity.getSkUnivPosNm(), ""));
+			indto.setSkUnivPosCd(StringUtils.nvlUpd(mainDataEntity.getSkUnivPosCd(), ""));
 			indto.setSkDeptNm(StringUtils.nvl(mainDataEntity.getSkDeptNm(), ""));
-			indto.setSkTitleCd(StringUtils.nvl(mainDataEntity.getSkTitleCd(), ""));
-			indto.setSkTitleNm(StringUtils.nvl(mainDataEntity.getSkTitleNm(), ""));
-			indto.setSkJobForm(StringUtils.nvl(mainDataEntity.getSkJobForm(), ""));
-			indto.setSkJobFormNm(StringUtils.nvl(mainDataEntity.getSkJobFormNm(), ""));
-			indto.setSkDcctype(StringUtils.nvl(mainDataEntity.getSkDcctype(), ""));
-			indto.setSkDcctypeNm(StringUtils.nvl(mainDataEntity.getSkDcctypeNm(), ""));
+			indto.setSkTitleCd(StringUtils.nvlUpd(mainDataEntity.getSkTitleCd(), ""));
+			indto.setSkJobForm(StringUtils.nvlUpd(mainDataEntity.getSkJobForm(), ""));
+			indto.setSkDcctype(StringUtils.nvlUpd(mainDataEntity.getSkDcctype(), ""));
 			indto.setSkInsNo(StringUtils.nvl(mainDataEntity.getSkInsNo(), ""));
 			indto.setSkDeptCd(StringUtils.nvl(mainDataEntity.getSkDeptCd(), ""));
+
+			indto.setSkUnivPosNm(StringUtils.nvl(mainDataEntity.getSkUnivPosNm(), ""));
+			indto.setSkTitleNm(StringUtils.nvl(mainDataEntity.getSkTitleNm(), ""));
+			indto.setSkJobFormNm(StringUtils.nvl(mainDataEntity.getSkJobFormNm(), ""));
+			indto.setSkDcctypeNm(StringUtils.nvl(mainDataEntity.getSkDcctypeNm(), ""));
+			indto.setSkInsHoInsType(StringUtils.nvl(mainDataEntity.getSkInsHoInsType(), ""));
+			indto.setSkInsInsClass(StringUtils.nvl(mainDataEntity.getSkInsInsClass(), ""));
+
+			if(indto.getSkInsNo().equals(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9)) {
+				indto.setSkInsNm(RdmConstantsData.CODE_VALUENM_DUMMY_HCO_9);
+			}
 			indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
 			indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
 			indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
 			indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
 			indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
-			indto.setSkInsHoInsType(StringUtils.nvl(mainDataEntity.getSkInsHoInsType(), ""));
-			indto.setSkInsInsClass(StringUtils.nvl(mainDataEntity.getSkInsInsClass(), ""));
 
-			// 所属学会リスト
-			SelectHcpSocietyDataEntity societyParamEntity = new SelectHcpSocietyDataEntity();
-			societyParamEntity.setInReqId(indto.getReqId());
-			List<SelectHcpSocietyDataEntity> societyDataEntityList = dao.select(societyParamEntity);
-			for (SelectHcpSocietyDataEntity sEntity : societyDataEntityList) {
-				HcpSocietyData sData = new HcpSocietyData();
-				HcpSocietyData sbData = new HcpSocietyData();
-				setHcpSocietyData(sEntity,sData);
-				setHcpSocietyData(sEntity,sbData);
-				hcpSocietyDataList.add(sData);
-				beforeHcpSocietyDataList.add(sbData);
-			}
-			indto.setHcpSocietyDataList(hcpSocietyDataList);
-			// 公的機関リスト
-			SelectHcpPublicDataEntity publicParamEntity = new SelectHcpPublicDataEntity();
-			publicParamEntity.setInReqId(indto.getReqId());
-			List<SelectHcpPublicDataEntity> publicDataEntityList = dao.select(publicParamEntity);
-			for (SelectHcpPublicDataEntity sEntity : publicDataEntityList) {
-				HcpPublicData pData = new HcpPublicData();
-				HcpPublicData pbData = new HcpPublicData();
-				setHcpPublicData(sEntity,pData);
-				setHcpPublicData(sEntity,pbData);
-				hcpPublicDataList.add(pData);
-				beforeHcpPublicDataList.add(pbData);
-			}
-			indto.setHcpPublicDataList(hcpPublicDataList);
 			if(indto.getReqStsCd().equals("01")) {
 				//申請者の初期操作では申請者情報が無いのでログイン情報をセットしておく
 				indto.setReqShzNm(loginInfo.getBumonRyakuName());
@@ -225,8 +182,6 @@ public class ND301Service extends BaseService {
 		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
 			indto.setFbReqFlg(true);//初期値はチェックON
 		}
-//		indto.setHcpSocietyDataChgFlg("0");
-//		indto.setHcpPublicDataChgFlg("0");
 		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
 //		// DropDownList作成
@@ -236,215 +191,15 @@ public class ND301Service extends BaseService {
 		return outdto;
 	}
 
-	private void setHcpPublicData(SelectHcpPublicDataEntity pEntity, HcpPublicData pData) {
-		pData.setClassCategoryCd(StringUtils.nvl(pEntity.getClassCategoryCd(), ""));
-		pData.setClassCategoryNm(StringUtils.nvl(pEntity.getClassCategoryNm(), ""));
-		pData.setPubInstitutionCd(StringUtils.nvl(pEntity.getPubInstitutionCd(), ""));
-		pData.setPubInstitutionNm(StringUtils.nvl(pEntity.getPubInstitutionNm(), ""));
-		pData.setPubInstStYYYY(StringUtils.nvl(pEntity.getPubInstStYYYY(), ""));
-		pData.setPubInstStMM(StringUtils.nvl(pEntity.getPubInstStMM(), ""));
-		pData.setPubInstStDD(StringUtils.nvl(pEntity.getPubInstStDD(), ""));
-		String pubInstStYMD = "";
-		if(!StringUtils.isEmpty(pData.getPubInstStYYYY())) {
-			pubInstStYMD += pData.getPubInstStYYYY();
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstStMM())) {
-			pubInstStYMD += ("/" + pData.getPubInstStMM());
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstStDD())) {
-			pubInstStYMD += ("/" + pData.getPubInstStDD());
-		}
-		pData.setPubInstStYMD(pubInstStYMD);
-		pData.setPubInstEdYYYY(StringUtils.nvl(pEntity.getPubInstEdYYYY(), ""));
-		pData.setPubInstEdMM(StringUtils.nvl(pEntity.getPubInstEdMM(), ""));
-		pData.setPubInstEdDD(StringUtils.nvl(pEntity.getPubInstEdDD(), ""));
-		String pubInstEdYMD = "";
-		if(!StringUtils.isEmpty(pData.getPubInstEdYYYY())) {
-			pubInstEdYMD += pData.getPubInstEdYYYY();
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstEdMM())) {
-			pubInstEdYMD += ("/" + pData.getPubInstEdMM());
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstEdDD())) {
-			pubInstEdYMD += ("/" + pData.getPubInstEdDD());
-		}
-		pData.setPubInstEdYMD(pubInstEdYMD);
-		pData.setPubInstPositionCd(StringUtils.nvl(pEntity.getPubInstPositionCd(), ""));
-		pData.setPubInstPositionNm(StringUtils.nvl(pEntity.getPubInstPositionNm(), ""));
-		pData.setPubInstposStYYYY(StringUtils.nvl(pEntity.getPubInstposStYYYY(), ""));
-		pData.setPubInstposStMM(StringUtils.nvl(pEntity.getPubInstposStMM(), ""));
-		pData.setPubInstposStDD(StringUtils.nvl(pEntity.getPubInstposStDD(), ""));
-		String pubInstposStYMD = "";
-		if(!StringUtils.isEmpty(pData.getPubInstposStYYYY())) {
-			pubInstposStYMD += pData.getPubInstposStYYYY();
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstposStMM())) {
-			pubInstposStYMD += ("/" + pData.getPubInstposStMM());
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstposStDD())) {
-			pubInstposStYMD += ("/" + pData.getPubInstposStDD());
-		}
-		pData.setPubInstposStYMD(pubInstposStYMD);
-		pData.setPubInstposEdYYYY(StringUtils.nvl(pEntity.getPubInstposEdYYYY(), ""));
-		pData.setPubInstposEdMM(StringUtils.nvl(pEntity.getPubInstposEdMM(), ""));
-		pData.setPubInstposEdDD(StringUtils.nvl(pEntity.getPubInstposEdDD(), ""));
-		String pubInstposEdYMD = "";
-		if(!StringUtils.isEmpty(pData.getPubInstposEdYYYY())) {
-			pubInstposEdYMD += pData.getPubInstposEdYYYY();
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstposEdMM())) {
-			pubInstposEdYMD += ("/" + pData.getPubInstposEdMM());
-		}
-		if(!StringUtils.isEmpty(pData.getPubInstposEdDD())) {
-			pubInstposEdYMD += ("/" + pData.getPubInstposEdDD());
-		}
-		pData.setPubInstposEdYMD(pubInstposEdYMD);
-	}
-
-	private void setHcpSocietyData(SelectHcpSocietyDataEntity sEntity, HcpSocietyData sData) {
-		sData.setMedicalSocietyNm(StringUtils.nvl(sEntity.getMedicalSocietyNm(), ""));
-		sData.setAdmissionYYYY(StringUtils.nvl(sEntity.getAdmissionYYYY(), ""));
-		sData.setAdmissionMM(StringUtils.nvl(sEntity.getAdmissionMM(), ""));
-		sData.setAdmissionDD(StringUtils.nvl(sEntity.getAdmissionDD(), ""));
-		String admissionYMD = "";
-		if(!StringUtils.isEmpty(sData.getAdmissionYYYY())) {
-			admissionYMD += sData.getAdmissionYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getAdmissionMM())) {
-			admissionYMD += ("/" + sData.getAdmissionMM());
-		}
-		if(!StringUtils.isEmpty(sData.getAdmissionDD())) {
-			admissionYMD += ("/" + sData.getAdmissionDD());
-		}
-		sData.setAdmissionYMD(admissionYMD);
-		sData.setQuitYYYY(StringUtils.nvl(sEntity.getQuitYYYY(), ""));
-		sData.setQuitMM(StringUtils.nvl(sEntity.getQuitMM(), ""));
-		sData.setQuitDD(StringUtils.nvl(sEntity.getQuitDD(), ""));
-		String quitYMD = "";
-		if(!StringUtils.isEmpty(sData.getQuitYYYY())) {
-			quitYMD += sData.getQuitYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getQuitMM())) {
-			quitYMD += ("/" + sData.getQuitMM());
-		}
-		if(!StringUtils.isEmpty(sData.getQuitDD())) {
-			quitYMD += ("/" + sData.getQuitDD());
-		}
-		sData.setQuitYMD(quitYMD);
-		sData.setPositionCode(StringUtils.nvl(sEntity.getPositionCode(), ""));
-		sData.setPositionName(StringUtils.nvl(sEntity.getPositionName(), ""));
-		sData.setSocietyPosiStYYYY(StringUtils.nvl(sEntity.getSocietyPosiStYYYY(), ""));
-		sData.setSocietyPosiStMM(StringUtils.nvl(sEntity.getSocietyPosiStMM(), ""));
-		sData.setSocietyPosiStDD(StringUtils.nvl(sEntity.getSocietyPosiStDD(), ""));
-		String societyPosiStYMD = "";
-		if(!StringUtils.isEmpty(sData.getSocietyPosiStYYYY())) {
-			societyPosiStYMD += sData.getSocietyPosiStYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getSocietyPosiStMM())) {
-			societyPosiStYMD += ("/" + sData.getSocietyPosiStMM());
-		}
-		if(!StringUtils.isEmpty(sData.getSocietyPosiStDD())) {
-			societyPosiStYMD += ("/" + sData.getSocietyPosiStDD());
-		}
-		sData.setSocietyPosiStYMD(societyPosiStYMD);
-		sData.setSocietyPosiEdYYYY(StringUtils.nvl(sEntity.getSocietyPosiEdYYYY(), ""));
-		sData.setSocietyPosiEdMM(StringUtils.nvl(sEntity.getSocietyPosiEdMM(), ""));
-		sData.setSocietyPosiEdDD(StringUtils.nvl(sEntity.getSocietyPosiEdDD(), ""));
-		String societyPosiEdYMD = "";
-		if(!StringUtils.isEmpty(sData.getSocietyPosiEdYYYY())) {
-			societyPosiEdYMD += sData.getSocietyPosiEdYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getSocietyPosiEdMM())) {
-			societyPosiEdYMD += ("/" + sData.getSocietyPosiEdMM());
-		}
-		if(!StringUtils.isEmpty(sData.getSocietyPosiEdDD())) {
-			societyPosiEdYMD += ("/" + sData.getSocietyPosiEdDD());
-		}
-		sData.setSocietyPosiEdYMD(societyPosiEdYMD);
-		sData.setAdvisingDoctorCd(StringUtils.nvl(sEntity.getAdvisingDoctorCd(), ""));
-		sData.setAdvisingDoctorNm(StringUtils.nvl(sEntity.getAdvisingDoctorNm(), ""));
-		sData.setCoachingAcquisiYYYY(StringUtils.nvl(sEntity.getCoachingAcquisiYYYY(), ""));
-		sData.setCoachingAcquisiMM(StringUtils.nvl(sEntity.getCoachingAcquisiMM(), ""));
-		sData.setCoachingAcquisiDD(StringUtils.nvl(sEntity.getCoachingAcquisiDD(), ""));
-		String coachingAcquisiYMD = "";
-		if(!StringUtils.isEmpty(sData.getCoachingAcquisiYYYY())) {
-			coachingAcquisiYMD += sData.getCoachingAcquisiYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getCoachingAcquisiMM())) {
-			coachingAcquisiYMD += ("/" + sData.getCoachingAcquisiMM());
-		}
-		if(!StringUtils.isEmpty(sData.getCoachingAcquisiDD())) {
-			coachingAcquisiYMD += ("/" + sData.getCoachingAcquisiDD());
-		}
-		sData.setCoachingAcquisiYMD(coachingAcquisiYMD);
-		sData.setCoachingStYYYY(StringUtils.nvl(sEntity.getCoachingStYYYY(), ""));
-		sData.setCoachingStMM(StringUtils.nvl(sEntity.getCoachingStMM(), ""));
-		sData.setCoachingStDD(StringUtils.nvl(sEntity.getCoachingStDD(), ""));
-		String coachingStYMD = "";
-		if(!StringUtils.isEmpty(sData.getCoachingStYYYY())) {
-			coachingStYMD += sData.getCoachingStYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getCoachingStMM())) {
-			coachingStYMD += ("/" + sData.getCoachingStMM());
-		}
-		if(!StringUtils.isEmpty(sData.getCoachingStDD())) {
-			coachingStYMD += ("/" + sData.getCoachingStDD());
-		}
-		sData.setCoachingStYMD(coachingStYMD);
-		sData.setCoachingEdYYYY(StringUtils.nvl(sEntity.getCoachingEdYYYY(), ""));
-		sData.setCoachingEdMM(StringUtils.nvl(sEntity.getCoachingEdMM(), ""));
-		sData.setCoachingEdDD(StringUtils.nvl(sEntity.getCoachingEdDD(), ""));
-		String coachingEdYMD = "";
-		if(!StringUtils.isEmpty(sData.getCoachingEdYYYY())) {
-			coachingEdYMD += sData.getCoachingEdYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getCoachingEdMM())) {
-			coachingEdYMD += ("/" + sData.getCoachingEdMM());
-		}
-		if(!StringUtils.isEmpty(sData.getCoachingEdDD())) {
-			coachingEdYMD += ("/" + sData.getCoachingEdDD());
-		}
-		sData.setCoachingEdYMD(coachingEdYMD);
-		sData.setCertifyingPhysicianCd(StringUtils.nvl(sEntity.getCertifyingPhysicianCd(), ""));
-		sData.setCertifyingPhysicianNm(StringUtils.nvl(sEntity.getCertifyingPhysicianNm(), ""));
-		sData.setCertifyStYYYY(StringUtils.nvl(sEntity.getCertifyStYYYY(), ""));
-		sData.setCertifyStMM(StringUtils.nvl(sEntity.getCertifyStMM(), ""));
-		sData.setCertifyStDD(StringUtils.nvl(sEntity.getCertifyStDD(), ""));
-		String certifyStYMD = "";
-		if(!StringUtils.isEmpty(sData.getCertifyStYYYY())) {
-			certifyStYMD += sData.getCertifyStYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getCertifyStMM())) {
-			certifyStYMD += ("/" + sData.getCertifyStMM());
-		}
-		if(!StringUtils.isEmpty(sData.getCertifyStDD())) {
-			certifyStYMD += ("/" + sData.getCertifyStDD());
-		}
-		sData.setCertifyStYMD(certifyStYMD);
-		sData.setCertifyEdYYYY(StringUtils.nvl(sEntity.getCertifyEdYYYY(), ""));
-		sData.setCertifyEdMM(StringUtils.nvl(sEntity.getCertifyEdMM(), ""));
-		sData.setCertifyEdDD(StringUtils.nvl(sEntity.getCertifyEdDD(), ""));
-		String certifyEdYMD = "";
-		if(!StringUtils.isEmpty(sData.getCertifyEdYYYY())) {
-			certifyEdYMD += sData.getCertifyEdYYYY();
-		}
-		if(!StringUtils.isEmpty(sData.getCertifyEdMM())) {
-			certifyEdYMD += ("/" + sData.getCertifyEdMM());
-		}
-		if(!StringUtils.isEmpty(sData.getCertifyEdDD())) {
-			certifyEdYMD += ("/" + sData.getCertifyEdDD());
-		}
-		sData.setCertifyEdYMD(certifyEdYMD);
-	}
 
 	/**
 	 * イベント処理
-	 * @param indto ND301DTO
+	 * @param indto ND305DTO
 	 * @return 遷移先DTO
 	 * @customizable
 	 */
 	@Transactional
-	public BaseDTO register(ND301DTO indto) {
+	public BaseDTO register(ND305DTO indto) {
 		BaseDTO outdto = indto;
 		// START UOC
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -630,7 +385,7 @@ public class ND301Service extends BaseService {
 	/*
 	 * エラーありならtrueとし、エラーメッセージをmsgStrにセットする
 	 */
-	private boolean checkInput(LoginInfo loginInfo, ND301DTO indto, boolean fullchkFlg) {
+	private boolean checkInput(LoginInfo loginInfo, ND305DTO indto, boolean fullchkFlg) {
 		boolean errChk = false;
 		String msgStr = "";
 		String tmpMsgStr = "";
@@ -670,26 +425,16 @@ public class ND301Service extends BaseService {
 		}
 
 		//		項目                                チェック内容
-		//		重複申請チェック                                同じULTコードに紐づく医師新規作成申請がすでに存在している場合
-		SelectND301MainDataEntity paramChkEntity = new SelectND301MainDataEntity();
-		paramChkEntity.setSqlId("selectND301CheckUltData");
-		paramChkEntity.setInUltDocNo(indto.getUltDocNo());
+		//		重複申請チェック 同じ医師固定コードに紐づく医師削除申請がすでに存在している場合    W008     重複する申請が行われています。（医師固定C）
+		SelectND305MainDataEntity paramChkEntity = new SelectND305MainDataEntity();
+		paramChkEntity.setSqlId("selectND305CheckRstData");
+		paramChkEntity.setInDocNo(indto.getTkdDocNo());
 		paramChkEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
-		List<SelectND301MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
+		List<SelectND305MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
 		if(chkEntityList1.size() > 0) {
 			errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);//重複する申請が行われています。（項目名）
-			tmpMsgStr = tmpMsgStr.replace("項目名", "ULT医師");
-			msgStr = msgStr + tmpMsgStr + "\n";
-		}
-
-		//		整合性チェック                              廃院を勤務先施設に選択して申請している場合
-		paramChkEntity.setSqlId("selectND301CheckDelInsData");
-		paramChkEntity.setSkInsNo(indto.getSkInsNo());
-		List<SelectND301MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
-		if(!chkEntityList2.isEmpty()) {
-			errChk = true;
-			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W040);//廃業・死亡状態で、申請できません。
+			tmpMsgStr = tmpMsgStr.replace("項目名", "医師固定C");
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
 

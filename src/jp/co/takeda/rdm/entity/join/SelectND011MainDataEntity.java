@@ -369,6 +369,18 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String shnFlg;
 
+	/**
+	 * 施設_対象区分
+	 * @generated
+	 */
+	private String skInsHoInsType;
+
+	/**
+	 * 施設_施設分類
+	 * @generated
+	 */
+	private String skInsInsClass;
+
     /**
      * コンストラクタ
      * @generated
@@ -1238,6 +1250,36 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setShnFlg(String shnFlg) {
 		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * SelectND011MainDataEntity.javaskInsHoInsTypeを設定
+	 * @return skInsHoInsType
+	 */
+	public String getSkInsHoInsType() {
+		return skInsHoInsType;
+	}
+
+	/**
+	 * @param skInsHoInsType セットする skInsHoInsType
+	 */
+	public void setSkInsHoInsType(String skInsHoInsType) {
+		this.skInsHoInsType = skInsHoInsType;
+	}
+
+	/**
+	 * SelectND011MainDataEntity.javaskInsInsClassを設定
+	 * @return skInsInsClass
+	 */
+	public String getSkInsInsClass() {
+		return skInsInsClass;
+	}
+
+	/**
+	 * @param skInsInsClass セットする skInsInsClass
+	 */
+	public void setSkInsInsClass(String skInsInsClass) {
+		this.skInsInsClass = skInsInsClass;
 	}
 
 	/**

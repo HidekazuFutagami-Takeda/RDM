@@ -687,6 +687,18 @@ public class ND301DTO extends BaseDTO implements Serializable {
 	 */
 	private String funcId;
 
+	/**
+	 * 施設_対象区分
+	 * @generated
+	 */
+	private String skInsHoInsType;
+
+	/**
+	 * 施設_施設分類
+	 * @generated
+	 */
+	private String skInsInsClass;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
@@ -2335,6 +2347,36 @@ public class ND301DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReturnFlg(String returnFlg) {
 		this.returnFlg = returnFlg;
+	}
+
+	/**
+	 * ND301DTO.javaskInsHoInsTypeを設定
+	 * @return skInsHoInsType
+	 */
+	public String getSkInsHoInsType() {
+		return skInsHoInsType;
+	}
+
+	/**
+	 * @param skInsHoInsType セットする skInsHoInsType
+	 */
+	public void setSkInsHoInsType(String skInsHoInsType) {
+		this.skInsHoInsType = skInsHoInsType;
+	}
+
+	/**
+	 * ND301DTO.javaskInsInsClassを設定
+	 * @return skInsInsClass
+	 */
+	public String getSkInsInsClass() {
+		return skInsInsClass;
+	}
+
+	/**
+	 * @param skInsInsClass セットする skInsInsClass
+	 */
+	public void setSkInsInsClass(String skInsInsClass) {
+		this.skInsInsClass = skInsInsClass;
 	}
 
 	/**

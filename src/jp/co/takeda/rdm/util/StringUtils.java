@@ -1669,4 +1669,37 @@ public class StringUtils {
     		}
     	}
     }
+
+    /**
+     * 日時から画面表示用文字列に変換
+     *
+     * @param str
+     *            文字列 YYYYMMDDhhmmss
+     * @return    文字列 YYYY/MM/DD hh:mm:ss
+     */
+    public static String dispYmdhms(String str) {
+        if (isEmpty(str)) {
+            return "";
+        } else {
+        	if(str.length() == 14) {
+        		String dispStr = "";
+        		dispStr = str.substring(0, 4);
+        		dispStr = dispStr + "/";
+        		dispStr = dispStr + str.substring(4, 6);
+        		dispStr = dispStr + "/";
+        		dispStr = dispStr + str.substring(6, 8);
+        		dispStr = dispStr + " ";
+        		dispStr = dispStr + str.substring(8, 10);
+        		dispStr = dispStr + ":";
+        		dispStr = dispStr + str.substring(10, 12);
+        		dispStr = dispStr + ":";
+        		dispStr = dispStr + str.substring(12, 14);
+
+        		return dispStr;
+        	}else {
+        		return str;
+        	}
+        }
+    }
+
 }

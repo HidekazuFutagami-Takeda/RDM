@@ -11,13 +11,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<title><s:property value="browerTitle"/></title>
+<title>NC101_完了</title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 <link href="css/common.css" rel="Stylesheet" type="text/css" />
 <link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jkrMenu.js"></script>
 <script type="text/javascript" src="js/jgiKanren.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+
 <style type="text/css">
 <!--
 /*-----------------------------------------*/
@@ -83,7 +84,17 @@ function returnButtonGo(action){
   document.fm1.action = action + ".action";
   document.fm1.submit();
 }
+
+// 閉じるボタン
+function backBtn(){
+	document.fm1.target="";
+	const preScreenId = document.fm1.preScreenId.value;
+	window.close();
+}
 </script>
+
+</head>
+
 <body class="comPage" onLoad="JavaScript:comSetFormWindowName('JLC');">
 <%-- submit用フォーム 開始 --%>
   <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
@@ -133,6 +144,9 @@ function returnButtonGo(action){
     <td>
       <s:form name="fm1" theme="simple" >
       <s:hidden name="NC101Finish" value="1" />
+      <s:hidden name="backScreenId" value="NC101" />
+      <s:hidden name="preScreenId"/>
+
       <table class="comPortalTitle">
         <tr>
           <td class="comPortalTitleIcon"></td>
@@ -218,6 +232,21 @@ function returnButtonGo(action){
     </td>
   </tr>
 </table>
+
+  <%--ボタン類 --%>
+  <table id="formTable19" border="0" class="comPortalTable" align="center" style="width:98%;">
+      <tr>
+        <td style="width: 100%; height: 0px; border-width: 0px;"></td>
+      </tr>
+		<tr>
+	      <td class="comFormTableItem">
+                <nobr>
+                <input class="comButton" type="button"name="buttonF1" value="閉じる" onClick="JavaScript:backBtn();return false;" />
+                </nobr>
+	      </td>
+	  </tr>
+  </table>
+
 <%-- ボトム部分をインクルード 開始 --%>
    <jsp:include page="common/jkrBottom.jsp" flush="true" />
 <%-- ボトム部分をインクルード 終了 --%>

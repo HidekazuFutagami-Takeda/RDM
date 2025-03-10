@@ -983,8 +983,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		// 郵便番号が未入力の場合
 			window.alert("必須項目にデータを入力してください。（郵便番号）");
 			return false;
-		} else if(pCode.length <= 6 || pCode.length >= 9){
-			// 郵便番号が６文字以下または９文字以上の場合
+		} else if(pCode.length >= 9){
+			// ９文字以上の場合
 			window.alert("最大文字数を超えています。（郵便番号）");
 			return false;
 		} else if(!chkNumhyph(pCode)){
@@ -995,7 +995,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 郵便番号に全角文字が含まれている場合
 			window.alert("半角で入力してください。（郵便番号）");
 			return false;
-		} else if((pCode.length == 8 && !comChkPostcode_IE(pCode))
+		} else if((pCode.length != 7 && pCode.length != 8) ||
+				(pCode.length == 8 && !comChkPostcode_IE(pCode))
 					|| (pCode.length == 7 && !comChkNum(pCode))){
 			// 郵便番号が３桁数字ー４桁数字　の書式以外の場合
 			window.alert("正しい書式で入力してください。（郵便番号）");

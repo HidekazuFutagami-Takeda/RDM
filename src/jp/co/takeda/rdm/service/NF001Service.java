@@ -780,7 +780,8 @@ public class NF001Service extends BaseService {
 		//組織担当地区情報からJIS府県コード、JIS府県名を集約して取得しドロップダウンリストを作成する
 		//※MR権限の場合、親画面．領域区分を検索条件とする
         SRdmJkrSosAddrEntity inEntityAddrCmb = new SRdmJkrSosAddrEntity("selectAddrPrefComboList");
-		if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
+		if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())
+				&& !StringUtils.isEmpty(indto.getTrtCd())) {
 			//※MR権限の場合、親画面．領域区分を検索条件とする
 			inEntityAddrCmb.setTrtCd(indto.getTrtCd());
 		}

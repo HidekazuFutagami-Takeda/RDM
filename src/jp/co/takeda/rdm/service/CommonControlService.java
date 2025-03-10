@@ -24,11 +24,14 @@ import jp.co.takeda.rdm.common.MainMenuData;
 import jp.co.takeda.rdm.entity.MRdmFwHelperMatrixEntity;
 import jp.co.takeda.rdm.entity.MRdmFwTransitionEntity;
 import jp.co.takeda.rdm.entity.RdmMsgMstEntity;
+import jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity;
 import jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectLoginJgiNoByUserIdEntity;
 import jp.co.takeda.rdm.entity.join.SelectLoginUserIdByJgiNoEntity;
+import jp.co.takeda.rdm.exception.UnauthorizedException;
 import jp.co.takeda.rdm.util.DateUtils;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -116,7 +119,36 @@ public class CommonControlService extends BaseService {
                 loginInfo.setUpSosCd(rdmJgiSosMstEntity.getUpSosCd());
                 loginInfo.setTrtCd(rdmJgiSosMstEntity.getTrtCd());
 
+                SRdmMJgiJokenEntity jokenParam = new SRdmMJgiJokenEntity();
+                //従業員番号設定
+                jokenParam.setJgiNo(loginInfo.getJgiNo());
+                //条件設定検索
+                List<SRdmMJgiJokenEntity> jokenList = dao.selectByValue(jokenParam);
 
+                boolean jokenAdminFlg = false;  //1:管理者権限
+                boolean jokenMrFlg = false;  //2:MR権限
+
+                for(SRdmMJgiJokenEntity jokenEntity : jokenList){
+                    String strJokenSet = jokenEntity.getJokenSetCd();
+                    if(RdmConstantsData.RDM_JKN_ADMIN.equals(strJokenSet)){
+                    	jokenAdminFlg = true;  //管理者権限
+                    }
+                    if(RdmConstantsData.RDM_JKN_MR.equals(strJokenSet)){
+                    	jokenMrFlg = true;  //MR権限
+                    }
+
+                }
+
+                //管理者権限
+                if(jokenAdminFlg){
+                    loginInfo.setJokenSetCd(RdmConstantsData.RDM_JKN_ADMIN);
+                    loginInfo.setJokenFlg(RdmConstantsData.RDM_JKN_ADMIN_FLG);
+
+                //MR権限
+                }else if(jokenMrFlg){
+                    loginInfo.setJokenSetCd(RdmConstantsData.RDM_JKN_MR);
+                    loginInfo.setJokenFlg(RdmConstantsData.RDM_JKN_MR_FLG);
+                }
 
                 //TODO二神　これ必要か確認二神ここから
                 //代行中なら、本ユーザの名称も取得する
@@ -131,6 +163,8 @@ public class CommonControlService extends BaseService {
                     loginInfo.setActorJgiName(jgiEntity2.getJgiName());
                 }
                 */
+
+
 
                 //従業員名称設定済みとする
                 loginInfo.setJgiNameGetFlag(true);

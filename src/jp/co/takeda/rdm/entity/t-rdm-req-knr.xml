@@ -272,9 +272,12 @@
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="jgiNo != null">
-			AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
+	    	<if test='mrAdminFlg == "1"'>
+				AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
+			</if>
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
+	    <if test='mrAdminFlg == "0"'>
 	    <if test="brCode != null">
 	    	AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
 	    <if test="distCode != null">
@@ -285,7 +288,7 @@
 	   	<if test="reqShz != null">
 	    	AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
 	    </if><!-- 管理者 -->
-
+		</if>
 	    <if test=" insKanjiSrch != null">
 		    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'
 			OR  HCO_REQ.INS_FORMAL_NAME LIKE'%' || #{insKanjiSrch} || '%'
@@ -576,9 +579,12 @@
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="jgiNo != null">
-		AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
+	    	<if test='mrAdminFlg == "1"'>
+			AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
+			</if>
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
+	    <if test='mrAdminFlg == "0"'>
 	    <if test="brCode != null">
 	    AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
 	    <if test="distCode != null">
@@ -589,7 +595,7 @@
 	   	<if test="reqShz != null">
 	    AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
 	    </if><!-- 管理者 -->
-
+		</if>
 	    <if test=" insKanjiSrch != null">
 	    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'
 		OR  HCO_REQ.INS_FORMAL_NAME LIKE'%' || #{insKanjiSrch} || '%'

@@ -222,10 +222,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
 
 	<s:hidden name="backScreenId" value="NC011" />
-<<<<<<< HEAD
 	<s:hidden name="callBack" />
-=======
->>>>>>> da610284e8024c9938d8b7857d6babf97a1c5998
 
 <!--  	<s:hidden id="reqId" name="reqId"/>
 	<s:hidden id="reqType" name="reqType"/>-->

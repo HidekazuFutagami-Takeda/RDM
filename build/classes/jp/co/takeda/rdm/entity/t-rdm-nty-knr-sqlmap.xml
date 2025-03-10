@@ -41,6 +41,10 @@
         <result column="SS_UPD_YMDHMS" property="ssUpdYmdhms"/>
         <result column="NTY_SUBJECT" property="ntySubject"/>
         <result column="NTY_DATA1" property="ntyData"/>
+        <result column="NTY_DATA2" property="ntyData2"/>
+        <result column="NTY_DATA3" property="ntyData3"/>
+        <result column="NTY_DATA4" property="ntyData4"/>
+        <result column="NTY_DATA5" property="ntyData5"/>
         <result column="NTY_MEMO" property="ntyMemo"/>
         <result column="YOU_FLG" property="youFlg"/>
         <result column="INSORTID" property="inSortId"/>
@@ -266,33 +270,33 @@
 		)SELECT_REQ
 	</select>
 	<select id="selectNtyKnrId" parameterType="jp.co.takeda.rdm.entity.SRdmNtyUpdateEntity" resultMap="sJkrJkrAuthKnrUpResultMap">
-	SELECT   DISTINCT
-	            NTY_ID,                        --通知ID
-	            HIS_YMDHMS,                    --発生日時
-	            CODE_MST_BRI.VALUE1_KANJ NTY_BRI,  --コード情報から値を取得？　通知分類
-	            NTY_SUBJECT,                   --通知件名
+		SELECT
+	            NTY_ID,                       --通知ID
+	            SS_UPD_YMDHMS,                --最終更新日時
+	            HIS_YMDHMS,                   --発生日時
+		    	JGI_SOS_MST.JGI_NAME,         --最終更新者
+	            NTY_BRI,  					  --コード情報から値を取得？　通知分類
+				NTY_STS,                      --コード情報から　通知ステータス
+	            NTY_SUBJECT,                  --通知件名
 	            NTY_DATA1,                    --通知内容1
-	            NTY_MEMO,                      --メモ
-	            CODE_MST_STS.VALUE1_KANJ NTY_STS,  --コード情報から　通知ステータス
-	            CODE_MST_PRI.VALUE1_KANJ NTY_PRI,  --コード情報から　通知優先度
-	            SS_UPD_YMDHMS                  --所属部科漢字名？最終更新日時
+				NTY_DATA2,                    --通知内容2
+				NTY_DATA3,                    --通知内容3
+				NTY_DATA4,                    --通知内容4
+				NTY_DATA5,                    --通知内容5
+	            NTY_MEMO                      --メモ
+
+
 	FROM        ORAUSR01.T_RDM_NTY_KNR NTY_KNR
-	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_BRI--コード情報 通知分類
-	            ON    CODE_MST_BRI.CODE_NAME = 'NTY_BRI'
-	            AND  CODE_MST_BRI.DEL_FLG = '0'
-	            AND  CODE_MST_BRI.VALUE1 = NTY_KNR.NTY_BRI
-	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_STS--コード情報 通知ステータス
-	            ON  CODE_MST_STS.CODE_NAME = 'NTY_STS'
-	            AND  CODE_MST_STS.DEL_FLG = '0'
-	            AND  CODE_MST_STS.VALUE1 = NTY_KNR.NTY_STS
-	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_PRI--コード情報 通知優先度
-	            ON  CODE_MST_PRI.CODE_NAME = 'NTY_PRI'
-	            AND  CODE_MST_PRI.DEL_FLG = '0'
-	            AND  CODE_MST_PRI.VALUE1 = NTY_KNR.NTY_PRI
-	LEFT JOIN   ORAUSR01.M_RDM_CODE_MST CODE_MST_SUBJECT--コード情報 通知件名
-	            ON  CODE_MST_SUBJECT.CODE_NAME = 'NTY_SUBJECT'
-	            AND  CODE_MST_SUBJECT.DEL_FLG = '0'
-	            AND  CODE_MST_SUBJECT.VALUE1_KANJ = NTY_KNR.NTY_SUBJECT
+	LEFT JOIN
+				ORAUSR01.M_RDM_JGI_SOS_MST JGI_SOS_MST
+			ON
+				JGI_SOS_MST.JGI_NO = NTY_KNR.SS_UPD_JGI_NO
+	LEFT JOIN
+				ORAUSR01.M_RDM_CODE_MST CODE_MST
+			ON
+				         CODE_MST.VALUE1 = NTY_KNR.NTY_BRI
+				AND CODE_MST.CODE_NAME = 'NTY_BRI'
+				AND CODE_MST.DEL_FLG = '0'
 	WHERE
 	1=1
 	             AND NTY_KNR.NTY_ID = #{ntyId}

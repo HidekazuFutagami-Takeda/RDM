@@ -283,6 +283,14 @@ public class NM101DTO extends BaseDTO implements Serializable {
 
 	private String ntyData;
 
+	private String ntyData2;
+
+	private String ntyData3;
+
+	private String ntyData4;
+
+	private String ntyData5;
+
 	private String ntyMemo;
 
 	private String youFlg;
@@ -467,6 +475,8 @@ public class NM101DTO extends BaseDTO implements Serializable {
 
 	private String reqJgiNo;
 
+	private int ssUpdJgiNo;
+
 
 	private boolean isKensakuBool;
 
@@ -565,6 +575,20 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	public void setSsUpdYmdhms(String ssUpdYmdhms) {
 		this.ssUpdYmdhms = ssUpdYmdhms;
 	}
+
+	/**
+	 * NM101DTO.javassUpdJgiNoを設定
+	 * @return ssUpdJgiNo
+	 */
+	public int getSsUpdJgiNo() {
+		return ssUpdJgiNo;
+	}
+	/**
+	 * @param ssUpdJgiNo セットする ssUpdJgiNo
+	 */
+	public void setSsUpdJgiNo(int ssUpdJgiNo) {
+		this.ssUpdJgiNo = ssUpdJgiNo;
+	}
 	/**
 	 * NM101DTO.javantySubjectを設定
 	 * @return ntySubject
@@ -590,6 +614,59 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	 */
 	public void setNtyData(String ntyData) {
 		this.ntyData = ntyData;
+	}
+
+	/**
+	 * NM101DTO.javantyData2を設定
+	 * @return ntyData2
+	 */
+	public String getNtyData2() {
+		return ntyData2;
+	}
+	/**
+	 * @param ntyData2 セットする ntyData2
+	 */
+	public void setNtyData2(String ntyData2) {
+		this.ntyData2 = ntyData2;
+	}
+	/**
+	 * NM101DTO.javantyData3を設定
+	 * @return ntyData3
+	 */
+	public String getNtyData3() {
+		return ntyData3;
+	}
+	/**
+	 * @param ntyData3 セットする ntyData3
+	 */
+	public void setNtyData3(String ntyData3) {
+		this.ntyData3 = ntyData3;
+	}
+	/**
+	 * NM101DTO.javantyData4を設定
+	 * @return ntyData4
+	 */
+	public String getNtyData4() {
+		return ntyData4;
+	}
+	/**
+	 * @param ntyData4 セットする ntyData4
+	 */
+	public void setNtyData4(String ntyData4) {
+		this.ntyData4 = ntyData4;
+	}
+	/**
+	 * NM101DTO.javantyData5を設定
+	 * @return ntyData5
+	 */
+	public String getNtyData5() {
+		return ntyData5;
+	}
+	/**
+	 * @param ntyData5 セットする ntyData5
+	 */
+	public void setNtyData5(String ntyData5) {
+		this.ntyData5 = ntyData5;
 	}
 	/**
 	 * NM101DTO.javantyMemoを設定

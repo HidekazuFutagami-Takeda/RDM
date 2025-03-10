@@ -367,7 +367,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		      <td class="comPortalTable"><nobr><s:label name="hisYmdhmsTo"/></nobr></td>
 				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			 <td class="comPortalTable"><nobr>最終更新者</nobr></td>
-		      <td class="comPortalTable"><nobr><s:label name="ntySts"/></nobr></td>
+		      <td class="comPortalTable"><nobr><s:label name="JgiName"/></nobr></td>
 		</tr>
 		<tr>	<%-- 申請者 --%>
 
@@ -389,11 +389,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<tr>
 		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="gotoNext('NC201','Init')"/>
-			   </nobr>
+
 			</td>
 				<td>
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" />
+					<s:textfield size="20" maxlength="40" name="reqId" STYLE="ime-mode:active" />
+					 <nobr><s:submit value="表示" name="表示" onclick="NM011Seni('reqId')"/>
+			   		</nobr>
 				</td>
 		</tr>
 	</table>
@@ -402,27 +403,37 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td class="comPortalTable"><nobr>通知内容</nobr></td>
 		</tr>
 	</table>
-				<div style="max-height:80px;width:1000px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<div style="max-height:320px;border: 1px solid black;width:650px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 	<table>
 	<tr>
-		      <td class="comPortalTable"><nobr><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /></nobr></td>
+		      <td class="comPortalTable"><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /><br></td><br>
 	</tr>
 	</table>
+	<!--	  <td class="comPortalTable"><s:property  value="ntyData2.replaceAll('\\n', '<br/>')" escape="false" /><br></td>
+		      <td class="comPortalTable"><s:property  value="ntyData3.replaceAll('\\n', '<br/>')" escape="false" /><br></td>
+		      <td class="comPortalTable"><s:property  value="ntyData4.replaceAll('\\n', '<br/>')" escape="false" /><br></td>
+		      <td class="comPortalTable"><s:property  value="ntyData5.replaceAll('\\n', '<br/>')" escape="false" /><br></td>
+	  -->
 		</div>
 	<table style="align:left;">
 		<tr>	<%-- 申請者 --%>
 		<td class="comPortalTable"><nobr>メモ</nobr></td>
 		</tr>
+      <tr>
+	      <td class="comPortalTable"><nobr><s:textarea name="ntyMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" escape="false" /></nobr></td>
+      </tr>
 	</table>
-		<div style="max-height:80px;width:1000px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<!-- <div style="max-height:160px;width:1000px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 	<table>
 	<tr>
+		      <td class="comPortalTable"><nobr><s:textarea name="ntyMemo.replaceAll('\\n', '<br/>')"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" escape="false" /></nobr></td>
+
 		     	      <td class="comPortalTable"><nobr><s:label name="ntyMemo"/></nobr></td>
 		     	      <td class="comPortalTable"><nobr><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /></nobr></td>
 
 	</tr>
 	</table>
-		</div>
+		</div> -->
 			<table>
 						<tr>
 							<td class="comFormTableItem"align="left"><nobr>
@@ -432,7 +443,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 							<td class="comFormTableItem"align="right"><nobr>
 									<input class="comButton" type="button" name="buttonF1"
-										value="保存" onClick="JavaScript:backBtn();return false;" />
+										value="保存" onClick="JavaScript:rdmRegister();return false;" />
 								</nobr></td>
 						</tr>
 			</table>

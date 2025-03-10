@@ -501,6 +501,12 @@
         	<result name="NM101">/WEB-INF/pages/NM101.jsp</result>
             <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
         </action>
+        <action name="NM101Register" class="nM101Action" method="register">
+        	<result name="NM101">/WEB-INF/pages/NM101.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NM001.jsp</result>
+            <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
+        </action>
         <action name="NM011Register" class="nM011Action" method="register">
         	<result name="NM011">/WEB-INF/pages/NM011.jsp</result>
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>

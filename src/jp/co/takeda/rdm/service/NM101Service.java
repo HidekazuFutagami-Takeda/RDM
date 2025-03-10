@@ -20,6 +20,7 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.CatSnseiComboDataList;
 import jp.co.takeda.rdm.dto.CatTuuchiComboDataList;
+import jp.co.takeda.rdm.dto.NF301DTO;
 import jp.co.takeda.rdm.dto.CatTuuchiComboDataList;
 import jp.co.takeda.rdm.dto.NM101DTO;
 import jp.co.takeda.rdm.entity.MRdmComCalUsrEntity;
@@ -40,10 +41,14 @@ import jp.co.takeda.rdm.entity.SRdmJkrSosReqStsEntiry;
 import jp.co.takeda.rdm.entity.SRdmJkrSosReqTypeEntiry;
 import jp.co.takeda.rdm.entity.SRdmNtyListEntity;
 import jp.co.takeda.rdm.entity.SRdmNtyUpdateEntity;
+import jp.co.takeda.rdm.entity.SRdmNtyUpdateUpEntity;
 import jp.co.takeda.rdm.entity.join.SelectCntSelectNtyListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamNC011Entity;
 import jp.co.takeda.rdm.entity.join.SelectParamNM101Entity;
+import jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity;
+import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
+import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
@@ -137,7 +142,7 @@ public class NM101Service extends BaseService {
     		SRdmJkrSosNtyStsEntiry sRdmJkrSosNtyStsEntiry = new SRdmJkrSosNtyStsEntiry();
             List<SRdmJkrSosNtyStsEntiry> jkrSosNtyStsMap = dao.select(sRdmJkrSosNtyStsEntiry);
             LinkedHashMap<String, String> mapReqType = new LinkedHashMap<String, String>();
-            mapReqType.put("","--なし--");//nullの確認
+            //mapReqType.put("","--なし--");//nullの確認
             for (SRdmJkrSosNtyStsEntiry outEntity : jkrSosNtyStsMap) {
             	mapReqType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
             }
@@ -373,12 +378,42 @@ public class NM101Service extends BaseService {
                 	}
 
               		// 通知内容
-                	if(entity.getNtyData() != null) {
-                	dataRecord.setNtyData(entity.getNtyData());
-                	indto.setNtyData(entity.getNtyData());
+
+              		// 通知内容2
+                	if(entity.getNtyData2() != null) {
+                	indto.setNtyData2(entity.getNtyData2());
                 	//dataRecord.setNtyData(entity.getNtyData().replace("\\n", "<br>"));
                 	}else {
-                	dataRecord.setNtyData(" ");
+                		indto.setNtyData2(" ");
+                	}
+              		// 通知内容3
+                	if(entity.getNtyData3() != null) {
+                	indto.setNtyData3(entity.getNtyData3());
+                	//dataRecord.setNtyData(entity.getNtyData().replace("\\n", "<br>"));
+                	}else {
+                		indto.setNtyData3(" ");
+                	}
+              		// 通知内容4
+                	if(entity.getNtyData4() != null) {
+                	indto.setNtyData4(entity.getNtyData4());
+                	//dataRecord.setNtyData(entity.getNtyData().replace("\\n", "<br>"));
+                	}else {
+                		indto.setNtyData4(" ");
+                	}
+              		// 通知内容5
+                	if(entity.getNtyData5() != null) {
+                	indto.setNtyData5(entity.getNtyData5());
+                	//dataRecord.setNtyData(entity.getNtyData().replace("\\n", "<br>"));
+                	}else {
+                		indto.setNtyData5(" ");
+                	}
+              		// 通知内容
+                	if(entity.getNtyData() != null) {
+                	dataRecord.setNtyData(entity.getNtyData());
+                	indto.setNtyData(entity.getNtyData() +"" +" "+"<br>" + indto.getNtyData2() +"<br>" +" "+"<br>" + indto.getNtyData3()+"<br>" +" "+"<br>" + indto.getNtyData4()  +" "+"<br>" + indto.getNtyData5());
+                	//dataRecord.setNtyData(entity.getNtyData().replace("\\n", "<br>"));
+                	}else {
+                		indto.setNtyData(" ");
                 	}
 
               		// メモ
@@ -386,16 +421,25 @@ public class NM101Service extends BaseService {
                 	dataRecord.setNtyMemo(entity.getNtyMemo());
                 	indto.setNtyMemo(entity.getNtyMemo());
                 	}else {
-                	dataRecord.setNtyMemo(" ");
+                		indto.setNtyMemo(" ");
                 	}
 
               		// 通知ステータス
                 	if(entity.getNtySts() != null) {
-                	dataRecord.setNtySts(entity.getNtySts());
-                	indto.setNtySts(entity.getNtySts());
-                	}else {
-                	dataRecord.setNtySts(" ");
+                		if(entity.getNtySts().equals("0") || entity.getNtySts().equals("未確認")) {
+		                	dataRecord.setNtySts("0");
+		                	indto.setNtySts("0");
+	                	}else if(entity.getNtySts().equals("1") || entity.getNtySts().equals("確認中")) {
+	                    	dataRecord.setNtySts("1");
+	                    	indto.setNtySts("1");
+                    	}else if(entity.getNtySts().equals("2") || entity.getNtySts().equals("解消済")) {
+                        	dataRecord.setNtySts("2");
+                        	indto.setNtySts("2");
+                        }else{
+                		indto.setNtySts(" ");
+                        }
                 	}
+
 
               		// 通知優先度
                 	if(entity.getNtyPri() != null) {
@@ -422,8 +466,8 @@ public class NM101Service extends BaseService {
 
                        //dataRecord.setInsFormalName(entity.getInsFormalName());
                     // 申請者名
-                   	if(entity.getReqJgiName() != null) {
-                    	dataRecord.setReqJgiName(entity.getReqJgiName());
+                   	if(entity.getJgiName() != null) {
+                    	dataRecord.setReqJgiName(entity.getJgiName());
                     	//indto.setReqJgiName(entity.getReqJgiName());
                     	}else {
                     		dataRecord.setReqJgiName(" ");
@@ -468,4 +512,94 @@ public class NM101Service extends BaseService {
         // END UOC
         return outdto;
     }
+
+    /**
+     * イベント処理
+     * @param indto NF301DTO
+     * @return 遷移先DTO
+     * @throws ParseException
+     * @customizable
+     */
+    @Transactional
+    public BaseDTO register(NM101DTO indto) throws ParseException {
+        BaseDTO outdto = indto;
+        // START UOC
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        indto.setJgiNo(loginInfo.getJgiNo());
+        //outdto.setForward("NF301");
+        ntyStsDrop(indto);
+        ntySubjectDrop(indto);
+
+
+        // 現在日付を取得
+        Date systemDate = DateUtils.getNowDate();
+        SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+        String sysDate = fmtDate.format(systemDate);
+        SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+        String sysDateTime = fmtDateTime.format(systemDate);
+
+        boolean errFlg = false;
+        String errMsg = "";
+
+        //indto.getNtyMemo() != null &&
+        if(indto.getNtyMemo().length() > 250) {
+        	// 最大文字数を超えています。（メモ）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "メモ") + "\n";
+			errFlg = true;
+        }
+
+        // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
+//		if(indto.getSsUpdYmdhms() != null && !indto.getSsUpdYmdhms().equals("")) {
+//			TRdmReqKnrEntity tRdmReqKnrChkEntity = new TRdmReqKnrEntity("selectNF011DateChkData");
+//			tRdmReqKnrChkEntity.setReqId(indto.getReqId());
+//
+//			List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
+//
+//			if(tRdmReqKnrEntityList.size() > 0) {
+//        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+//        		Date updDate = null;
+//                try {
+//					updDate = sdFormat.parse(indto.getUpdShaYmd());
+//				} catch (ParseException e) {
+//					// TODO 自動生成された catch ブロック
+//					e.printStackTrace();
+//				}
+//        		if(!tRdmReqKnrEntityList.get(0).getUpdShaYmd().equals(updDate)) {
+//        			// 既に他のユーザーによってデータが処理されています。
+//        			errMsg += loginInfo.getMsgData(RdmConstantsData.E003) + "\n";
+//    	        	errFlg = true;
+//        		}
+//        	}
+//		}
+
+        // エラー時処理
+        if(errFlg) {
+        	indto.setMsgStr(errMsg);
+        	outdto = search(indto);
+        	return outdto;
+        }
+
+
+
+			// 申請
+        SRdmNtyUpdateUpEntity sRdmNtyUpdateUpEntity = new SRdmNtyUpdateUpEntity();
+
+        sRdmNtyUpdateUpEntity.setNtyId(indto.getNtyId());//NTY2568709
+      //通知ステータスの検索値のセット、setEmptyToNullで空文字をNullに置換している。
+        sRdmNtyUpdateUpEntity.setNtySts(StringUtils.setEmptyToNull(indto.getNtySts()));
+        sRdmNtyUpdateUpEntity.setNtyMemo(StringUtils.setEmptyToNull(indto.getNtyMemo()));
+        //sRdmNtyUpdateUpEntity.setNtySts(indto.getNtySts());
+    	sRdmNtyUpdateUpEntity.setSsUpdYmdhms(sysDateTime);
+    	sRdmNtyUpdateUpEntity.setSsUpdJgiNo(indto.getJgiNo());
+
+    	dao.update(sRdmNtyUpdateUpEntity);
+    	indto.setMsgStr("保存が完了しました。");
+    	outdto = search(indto);
+
+    	//outdto.setForward("NC101");
+
+		// END UOC
+		return outdto;
+    }
+
 }

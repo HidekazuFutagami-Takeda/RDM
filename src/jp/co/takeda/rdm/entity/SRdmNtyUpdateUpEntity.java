@@ -18,7 +18,7 @@ import java.util.LinkedHashMap;
  * テーブル論理名 : 帳票基本情報
  * @generated
  */
-public class SRdmNtyUpdateEntity extends BaseEntity implements Serializable {
+public class SRdmNtyUpdateUpEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -47,6 +47,8 @@ public class SRdmNtyUpdateEntity extends BaseEntity implements Serializable {
 	private String ntyPri;
 
 	private String ssUpdYmdhms;
+
+	private int ssUpdJgiNo;
 
 	private String ntySubject;
 
@@ -118,8 +120,8 @@ public class SRdmNtyUpdateEntity extends BaseEntity implements Serializable {
      *
      */
 
-    public SRdmNtyUpdateEntity() {
-        super("t-rdm-nty-knr","selectNtyKnrId");
+    public SRdmNtyUpdateUpEntity() {
+        super("t-rdm-nty-update","selectNtyUpdateId");
     }
 
     /**
@@ -259,6 +261,20 @@ public class SRdmNtyUpdateEntity extends BaseEntity implements Serializable {
 	 */
 	public void setSsUpdYmdhms(String ssUpdYmdhms) {
 		this.ssUpdYmdhms = ssUpdYmdhms;
+	}
+
+	/**
+	 * SRdmNtyUpdateUpEntity.javassUpdJgiNoを設定
+	 * @return ssUpdJgiNo
+	 */
+	public int getSsUpdJgiNo() {
+		return ssUpdJgiNo;
+	}
+	/**
+	 * @param ssUpdJgiNo セットする ssUpdJgiNo
+	 */
+	public void setSsUpdJgiNo(int ssUpdJgiNo) {
+		this.ssUpdJgiNo = ssUpdJgiNo;
 	}
 	/**
 	 * SRdmNtyListEntity.javantySubjectを設定

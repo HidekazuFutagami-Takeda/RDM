@@ -59,6 +59,32 @@ function rdmSearch() {
 
 }
 
+function rdmRegister() {
+
+	if (!jkrDestructChack()) return false;
+
+      //document.fm1.jkrSosNtyPri.disabled = false;
+      //document.fm1.inHisYmdhmsFrom.disabled = false;
+      //document.fm1.inHisYmdhmsTo.disabled = false;
+
+      document.fm1.screenId.value	= "NM101";
+      document.fm1.functionId.value = 'Register';
+
+
+
+    //選択された組織情報格納（表示押下前→表示押下後）
+//    setTopChangedSos();
+//
+//    //20150202 HISOL Suzuki 本番課題No.25対応 ADD START
+//    //選択された組織情報格納（ポップアップ用）
+//    setSearchSosCdPop();
+    //20150202 HISOL Suzuki 本番課題No.25対応 ADD END
+
+    // 検索イベント呼び出し
+    comSubmitForAnyWarp(fm1);
+
+}
+
 function NM011Sort(sortCondition) {
 	if (!jkrDestructChack()) return false;
 
@@ -165,17 +191,27 @@ function gotoNext(screenId,functionId){
 	  fm1.functionId.value=functionId;
 	  comSubmitForAnyWarp(fm1);
 	}
-function NM011Seni(ntyId) {
+function NM011Seni(reqId) {
 	if (!jkrDestructChack()) return false;
-	  //申請区分遷移先設定
+	var tmpReq = fm1.reqId.value;
+	var reqIdcell = fm1.reqId.value;
+	var nm011Tab;
 
-	//var ntyIdcell = fm1.ntyId.value;
+	fm1.reqId.value=reqId;
 
-		fm1.ntyId.value=ntyId;
+	if(nm011Tab && !nm011Tab.closed){
+		nm011Tab.close();
+	}
 
-		alert("NM101_通知内容詳細に遷移します")
-		gotoNext('NM101','Init');
-		//fm1.ntyId.value=ntyIdcell;
+	nc001Tab = window.open("","NM101Tab");
+	document.fm1.target="NM101Tab";
+
+	fm1.screenId.value='NC011';
+	fm1.functionId.value="Search";
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+
+	fm1.reqId.value=reqIdcell;
 }
 
 
@@ -592,7 +628,8 @@ function backBtn(){
 	document.fm1.target="";
 	const preScreenId = document.fm1.preScreenId.value;
 	if(preScreenId == "NM011"){
-		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+		if(window.confirm("通知一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			window.close();
 			document.fm1.screenId.value = preScreenId;
 			document.fm1.functionId.value="Init";
 
@@ -600,6 +637,7 @@ function backBtn(){
 		}
 	} else if(preScreenId == "NM001"){
 		if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			window.close();
 			document.fm1.screenId.value = preScreenId;
 			document.fm1.functionId.value="Init";
 

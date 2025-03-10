@@ -350,4 +350,51 @@ public class NM101Action extends BaseAction<NM101DTO> {
     private void setSearchCon() {
 
     }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    public String register() throws Exception {
+    	registerSetup();
+        // F層呼び出し
+        BaseDTO outdto = NM101Service.register(dto);
+        return registerNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void registerSetup() throws Exception {
+        // START UOC
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+    	//改ページ設定
+        dto.setPageCntCur(1);
+
+        // 画面タイトル制御処理
+//        String title = "NF301_施設新規作成 - 申請内容確認";
+
+//        dto.setTitle(title);
+
+        //dto.setMsgId(null);
+
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String registerNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        // 検索条件をセッションに格納する（リンク押下時に使用）
+        sessionMap.put(AppConstant.SESKEY_NM101_SEARCHKEY, outdto);
+        // END UOC
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
+
+
 }

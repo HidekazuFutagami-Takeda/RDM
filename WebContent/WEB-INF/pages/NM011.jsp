@@ -315,6 +315,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 <!--  	<s:hidden id="reqId" name="reqId"/>
 	<s:hidden id="reqType" name="reqType"/> -->
 	<s:hidden name="ntyId"/>
+	<s:hidden name="ntySts"/>
 	<s:hidden id="sortCondition" name="sortCondition" />
 	<s:hidden name="title" />
 	<s:hidden id="bumonRank" name="bumonRank"/>
@@ -531,7 +532,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				<s:iterator value="catTuuchiComboDataList" status="status" var="rowBean">
 					<tr>
 						 <td class="comTableItem tkdUlt"style="z-index:2;">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NM011Seni('<s:property  value="ntyId" />');return false;">
+						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NM011Seni('<s:property  value="ntyId" />','<s:property  value="ntySts" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
 						            <s:hidden  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
@@ -542,7 +543,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				         <td class="comTableItem tkdUlt" style="z-index:2;"><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyBri"  key="catTuuchiComboDataList[%{#status.index}].ntyBri" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySubject"  key="catTuuchiComboDataList[%{#status.index}].ntySubject" /></td>
 				         <td class="comTableItem" ><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyMemo"  key="catTuuchiComboDataList[%{#status.index}].ntyMemo"/></td>
+				         <td class="comTableItem" ><s:property  value="ntyMemo.replaceAll('\\n', '<br/>')" escape="false" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySts"  key="catTuuchiComboDataList[%{#status.index}].ntySts" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyPri"  key="catTuuchiComboDataList[%{#status.index}].ntyPri" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms"  key="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms" /></td>

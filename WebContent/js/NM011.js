@@ -36,7 +36,7 @@ var gMsg = new Array();
 function rdmSearch() {
 
 	if (!jkrDestructChack()) return false;
-
+	document.fm1.target = "";
       document.fm1.jkrSosNtyPri.disabled = false;
       document.fm1.inHisYmdhmsFrom.disabled = false;
       document.fm1.inHisYmdhmsTo.disabled = false;
@@ -63,6 +63,7 @@ function NM011Sort(sortCondition) {
 	if (!jkrDestructChack()) return false;
 
 	  //ソート区分設定
+	document.fm1.target = "";
 	  document.fm1.sortCondition.value = sortCondition;
     document.fm1.screenId.value	= "NM011";
     document.fm1.functionId.value = 'Sort';
@@ -81,6 +82,7 @@ function NM011Page( pageCntCur ){
   // 変更内容破棄確認チェック
   if (!jkrDestructChack()) return false;
   //現在ページ番号変更（遷移）
+  document.fm1.target = "";
   document.fm1.pageCntCur.value = pageCntCur;
   document.fm1.screenId.value	= "NM011";
   document.fm1.functionId.value = 'Page';
@@ -89,6 +91,7 @@ function NM011Page( pageCntCur ){
 }
 function popClear(){
 	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	document.fm1.target = "";
 	document.fm1.bumonRank.value = "";
 	document.fm1.sosCd.value = "";
 	document.fm1.bumonRyakuName.value = "";
@@ -98,7 +101,7 @@ function popClear(){
 
 function rdmCler(){
 	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
-
+	document.fm1.target = "";
 	document.fm1.inHisYmdhmsFrom.value = "";
 	document.fm1.inHisYmdhmsTo.value = "";
 	document.fm1.ntySubject.value = "";
@@ -161,20 +164,46 @@ function rdmCler(){
 }
 function gotoNext(screenId,functionId){
 	  //getParam();
+	  document.fm1.target = "";
 	  fm1.screenId.value=screenId;
 	  fm1.functionId.value=functionId;
 	  comSubmitForAnyWarp(fm1);
 	}
-function NM011Seni(ntyId) {
+function NM011Seni(ntyId,ntySts) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
 
 	//var ntyIdcell = fm1.ntyId.value;
 
-		fm1.ntyId.value=ntyId;
+	var tmpNty = fm1.ntyId.value;
+	var nm011Tab;
 
-		alert("NM101_通知内容詳細に遷移します")
-		gotoNext('NM101','Init');
+	fm1.ntyId.value=ntyId;
+	if(ntySts == "未確認"){
+		fm1.ntySts.value= "0";
+	}
+	if(ntySts == "確認中"){
+		fm1.ntySts.value="1";
+	}
+	if(ntySts == "解消済"){
+		fm1.ntySts.value="2";
+	}
+
+	if(nm011Tab && !nm011Tab.closed){
+		nm011Tab.close();
+	}
+
+	nc001Tab = window.open("","NM011Tab");
+	document.fm1.target="NM011Tab";
+
+	fm1.screenId.value='NM101';
+	fm1.functionId.value="Init";
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+
+
+		//alert("NM101_通知内容詳細に遷移します")
+		//gotoNext('NM101','Init');
 		//fm1.ntyId.value=ntyIdcell;
 }
 
@@ -231,7 +260,7 @@ function sosReqSbt(){
  function sosSbt(){
 
 	 var val1 = document.getElementById("onlyCheck").checked;
-
+	 document.fm1.target = "";
      if (val1 == true) {
 
 			document.fm1.dataDupCheck.disabled = true;
@@ -540,7 +569,7 @@ function jimSort(sortCondition){
 
 	  //現在ページ番号変更（遷移）
 	  //document.fm1.pageCntCur.value = 1;
-
+	  document.fm1.target = "";
 	  //ソート区分設定
 	  document.fm1.sortCondition.value = sortCondition;
 

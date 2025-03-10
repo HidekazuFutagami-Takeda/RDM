@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t-rdm-nty-update">
+
+
+    <resultMap id="sJkrJkrAuthKnrUpResultMap" type="jp.co.takeda.rdm.entity.SRdmNtyUpdateEntity">
+        <result column="NTY_ID" property="ntyId"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsFrom"/>
+        <result column="HIS_YMDHMS" property="hisYmdhmsTo"/>
+        <result column="NTY_BRI" property="ntyBri"/>
+        <result column="NTY_STS" property="ntySts"/>
+        <result column="NTY_PRI" property="ntyPri"/>
+        <result column="SS_UPD_YMDHMS" property="ssUpdYmdhms"/>
+        <result column="SS_UPD_JGI_NO" property="ssUpdJgiNo"/>
+        <result column="NTY_SUBJECT" property="ntySubject"/>
+        <result column="NTY_DATA1" property="ntyData"/>
+        <result column="NTY_DATA2" property="ntyData2"/>
+        <result column="NTY_DATA3" property="ntyData3"/>
+        <result column="NTY_DATA4" property="ntyData4"/>
+        <result column="NTY_DATA5" property="ntyData5"/>
+        <result column="NTY_MEMO" property="ntyMemo"/>
+        <result column="YOU_FLG" property="youFlg"/>
+        <result column="INSORTID" property="inSortId"/>
+    </resultMap>
+	<update id="selectNtyUpdateId" parameterType="jp.co.takeda.rdm.entity.SRdmNtyUpdateUpEntity" >
+        UPDATE
+            ORAUSR01.T_RDM_NTY_KNR NTY_KNR
+        SET
+        	<trim suffixOverrides=",">
+	        	<if test="ntySts != null">
+	            	NTY_STS = #{ntySts},
+	            </if>
+	            <if test="ntyMemo != null">
+	            NTY_MEMO=#{ntyMemo},
+	            </if>
+	            SS_UPD_YMDHMS = #{ssUpdYmdhms},
+	            SS_UPD_JGI_NO = #{ssUpdJgiNo}
+            </trim>
+        WHERE
+            NTY_KNR.NTY_ID = #{ntyId}
+
+        <!--  UPDATE
+            ORAUSR01.T_RDM_NTY_KNR NTY_KNR
+        SET
+            NTY_STS = #{update.ntySts}
+            ,NTY_MEMO=#{update.ntyMemo}
+            ,SS_UPD_YMDHMS = #{update.ssUpdYmdhms}
+            ,SS_UPD_JGI_NO = #{update.ssUpdJgiNo}
+        WHERE
+            NTY_KNR.NTY_ID = #{update.ntyId}-->
+
+	</update>
+</mapper>

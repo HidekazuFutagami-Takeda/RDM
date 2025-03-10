@@ -111,6 +111,10 @@ public class NF011Service extends BaseService {
 				indto.setTkCityName(StringUtils.nvl(mainDataEntity.getTkCityNm(), ""));
 				indto.setInsPhone1(StringUtils.nvl(mainDataEntity.getShisetsuTel(), ""));
 
+				if(!StringUtils.isEmpty(mainDataEntity.getAddress())) {
+					indto.setInsAddrDt(mainDataEntity.getAddress().replace(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""), "").replace(StringUtils.nvl(mainDataEntity.getShikuchosonNm(), ""),""));
+				}
+
 				// 経営主体
 				indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
 

@@ -706,4 +706,5 @@ public class RdmConstantsData {
     public static final String W056 = "W056"; // 勤務先が2件以上存在するため申請できません。
     public static final String W057 = "W057"; // 医療機関外へ異動されている医師は削除できません。
     public static final String W058 = "W058"; // 医師は異動が予定されています。
+    public static final String W059 = "W059"; // 同一の施設が重複先に指定されています。
 }

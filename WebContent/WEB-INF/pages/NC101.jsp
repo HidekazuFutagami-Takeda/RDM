@@ -96,41 +96,6 @@ function backBtn(){
 </head>
 
 <body class="comPage" onLoad="JavaScript:comSetFormWindowName('JLC');">
-<%-- submit用フォーム 開始 --%>
-  <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
-    <input type="text" name="screenId"			value="" />
-    <input type="text" name="functionId"		value="" />
-    <input type="text" name="windowName"		value="" />
-    <input type="text" name="openerName"		value="" />
-    <input type="text" name="systemId1"			value="" />
-    <input type="text" name="backScreenId1"		value="" />
-    <input type="text" name="backFunctionId1"	value="" />
-    <input type="text" name="backScreenName1"	value="" />
-    <input type="text" name="backParamName1"	value="" />
-    <input type="text" name="backParamValue1"	value="" />
-    <input type="text" name="backParamName2"	value="" />
-    <input type="text" name="backParamValue2"	value="" />
-    <input type="text" name="fromScreenId1"		value="" />
-    <input type="text" name="fromFunctionId1"	value="" />
-    <input type="text" name="kensakuSosCd1"		value="" />
-    <input type="text" name="pageNextBackFlag1"	value="" />
-    <input type="text" name="sortFieldNo1"		value="" />
-    <input type="text" name="sortFLG1"			value="" />
-    <input type="text" name="sosCd1"			value="" />
-    <input type="text" name="sosName1"			value="" />
-    <input type="text" name="selectedSosCd1"	value="" />
-    <input type="text" name="selectedSosName1"	value="" />
-    <input type="text" name="wkCat1"			value="" />
-    <input type="text" name="mrCat1"			value="" />
-    <input type="text" name="dispSosName1"		value="" />
-    <input type="text" name="jokenSetCd1"		value="" />
-    <input type="text" name="insDevFlg"			value="" />
-    <input type="text" name="msgId"				value="" />
-    <input type="text" name="subSystemId"		value="3" />
-    <input type="text" name="no1"				value="1" />
-    <input type="text" name="dummy"				value="dummy" />
-  </form>
-<%-- submit用フォーム 終了 --%>
 
   <%-- バナー部分をインクルード 開始 --%>
   <jsp:include page="common/jkrTop.jsp" flush="true" />
@@ -182,10 +147,7 @@ function backBtn(){
                   </td>
                 </tr>
                 </s:if>
-                <!-- トップメニューからの遷移 -->
-                <s:if test="%{#session.UserInfoKey.screenId == 'NC001'}">
 
-                </s:if>
                 <s:if test="message3 != null">
                 <tr>
                   <td class="comMessage3" style="width:40%;">

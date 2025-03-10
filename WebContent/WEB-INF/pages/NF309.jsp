@@ -479,7 +479,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="pharmTypeNm" /><s:hidden name="pharmType" /><s:hidden name="pharmTypeNm" /></td>
 	   	<td class="comFormTableItemNf012"><s:label key="shisetsuKbn" /><s:hidden name="shisetsuKbn" /></td>
 	   	<td class="comFormTableItemNf012">
-	   	<s:label key="nextPharmTypeNm" /><s:hidden key="nextPharmType" /><s:hidden name="nextPharmTypeNm" />
+	   	<s:if test="pharmType == nextPharmType">
+	   		<s:label key="nextPharmTypeNm" />
+	   	</s:if>
+	   	<s:else>
+	   		<font color="red"><s:label key="nextPharmTypeNm" /></font>
+	   	</s:else>
+	   		<s:hidden key="nextPharmType" /><s:hidden name="nextPharmTypeNm" />
 	   	</td>
 	</tr>
 	<tr>
@@ -487,7 +493,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012"><s:label key="insRankNm" /><s:hidden name="insRank" /><s:hidden name="insRankNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
-	   	<s:label key="nextInsRankNm" /><s:hidden key="nextInsRank" /><s:hidden name="nextInsRankNm" />
+	   	<s:if test="insRank == nextInsRank">
+		   	<s:label key="nextInsRankNm" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextInsRankNm" /></font>
+		</s:else>
+		   	<s:hidden key="nextInsRank" /><s:hidden name="nextInsRankNm" />
 		</td>
 	</tr>
 	<tr>
@@ -495,7 +507,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012"><s:label key="regVisTypeNm" /><s:hidden name="regVisType" /><s:hidden name="regVisTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
-		<s:label key="nextRegVisTypeNm" /><s:hidden key="nextRegVisType" /><s:hidden name="nextRegVisTypeNm" />
+		<s:if test="regVisType == nextRegVisType">
+		   	<s:label key="nextRegVisTypeNm" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextRegVisTypeNm" /></font>
+		</s:else>
+		<s:hidden key="nextRegVisType" /><s:hidden name="nextRegVisTypeNm" />
 		</td>
 	</tr>
 	<tr>
@@ -503,7 +521,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012"><s:label key="impHosTypeNm" /><s:hidden name="impHosType" /><s:hidden name="impHosTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
-	   		<s:label key="nextImpHosTypeNm" /><s:hidden key="nextImpHosType" /><s:hidden name="nextImpHosTypeNm" />
+   		<s:if test="impHosType == nextImpHosType">
+		   	<s:label key="nextImpHosTypeNm" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextImpHosTypeNm" /></font>
+		</s:else>
+	   		<s:hidden key="nextImpHosType" /><s:hidden name="nextImpHosTypeNm" />
 		</td>
 	</tr>
 	<tr>
@@ -511,7 +535,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012"><s:label key="hoInsTypeNm" /><s:hidden name="hoInsType" /><s:hidden name="hoInsTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
-	   		<s:label key="nextHoInsTypeNm" /><s:hidden key="nextHoInsType" /><s:hidden name="nextHoInsTypeNm" />
+	   	<s:if test="hoInsType == nextHoInsType">
+		   	<s:label key="nextHoInsTypeNm" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextHoInsTypeNm" /></font>
+		</s:else>
+	   		<s:hidden key="nextHoInsType" /><s:hidden name="nextHoInsTypeNm" />
 	   	</td>
 	</tr>
 	<tr>
@@ -519,7 +549,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012"><s:label key="manageNm" /><s:hidden name="manageCd" /><s:hidden name="manageNm" /></td>
 	   	<td class="comFormTableItemNf012"><s:label key="keieitaiNm" /><s:hidden name="keieitaiNm" /></td>
 	   	<td class="comFormTableItemNf012">
-	   	<s:label key="nextManageNm" /><s:hidden key="nextManageCd" /><s:hidden name="nextManageNm" />
+	   	<s:if test="manageCd == nextManageCd">
+		   	<s:label key="nextManageNm" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextManageNm" /></font>
+		</s:else>
+	   	<s:hidden key="nextManageCd" /><s:hidden name="nextManageNm" />
 	   	</td>
 	</tr>
 	<tr <s:if test="insType != '08'">style="visibility:collapse"</s:if>>
@@ -527,7 +563,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012"><s:label key="vacInsTypeNm" /><s:hidden name="vacInsType" /><s:hidden name="vacInsTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
-		<s:label key="nextVacInsTypeNm" /><s:hidden key="nextVacInsType" /><s:hidden name="nextVacInsTypeNm" />
+		<s:if test="vacInsType == nextVacInsType">
+		   	<s:label key="nextVacInsTypeNm" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextVacInsTypeNm" /></font>
+		</s:else>
+		<s:hidden key="nextVacInsType" /><s:hidden name="nextVacInsTypeNm" />
 		</td>
 	</tr>
 	<tr <s:if test="insType != '08'">style="visibility:collapse"</s:if>>
@@ -535,7 +577,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012"><s:label key="vacVisitTypeNm" /><s:hidden name="vacVisitType" /><s:hidden name="vacVisitTypeNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
-	   	<s:label key="nextVacVisitTypeNm" /><s:hidden key="nextVacVisitType" /><s:hidden name="nextVacVisitTypeNm" />
+	   	<s:if test="vacVisitType == nextVacVisitType">
+		   	<s:label key="nextVacVisitTypeNm" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextVacVisitTypeNm" /></font>
+		</s:else>
+	   	<s:hidden key="nextVacVisitType" /><s:hidden name="nextVacVisitTypeNm" />
 	   	</td>
 	</tr>
   </table>
@@ -560,61 +608,131 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItem">基準</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCntBase" /><s:hidden name="bedCntBase"/></td>
 	   	<td class="comFormTableItemNf012"><s:label key="ultBedCntBase" /><s:hidden name="ultBedCntBase"/></td>
-	   	<td class="comFormTableItemNf012"><s:label key="nextBedCntBase" /><s:hidden name="nextBedCntBase"/></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="bedCntBase == nextBedCntBase">
+		   	<s:label key="nextBedCntBase" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCntBase" /></font>
+		</s:else>
+	   	<s:hidden name="nextBedCntBase"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">結核</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCnt04" /><s:hidden name="bedCnt04"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedCnt04" /><s:hidden name="ultBedCnt04"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedCnt04" /><s:hidden name="nextBedCnt04"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedCnt04 == nextBedCnt04">
+		   	<s:label key="nextBedCnt04" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCnt04" /></font>
+		</s:else>
+		<s:hidden name="nextBedCnt04"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">一般</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCnt01" /><s:hidden name="bedCnt01"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedCnt01" /><s:hidden name="ultBedCnt01"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedCnt01" /><s:hidden name="nextBedCnt01"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedCnt01 == nextBedCnt01">
+		   	<s:label key="nextBedCnt01" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCnt01" /></font>
+		</s:else>
+		<s:hidden name="nextBedCnt01"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">感染症</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCnt05" /><s:hidden name="bedCnt05"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedCnt05" /><s:hidden name="ultBedCnt05"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedCnt05" /><s:hidden name="nextBedCnt05"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedCnt05 == nextBedCnt05">
+		   	<s:label key="nextBedCnt05" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCnt05" /></font>
+		</s:else>
+		<s:hidden name="nextBedCnt05"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">精神</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCnt03" /><s:hidden name="bedCnt03"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedCnt03" /><s:hidden name="ultBedCnt03"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedCnt03" /><s:hidden name="nextBedCnt03"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedCnt03 == nextBedCnt03">
+		   	<s:label key="nextBedCnt03" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCnt03" /></font>
+		</s:else>
+		<s:hidden name="nextBedCnt03"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">療養</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCnt07" /><s:hidden name="bedCnt07"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedCnt07" /><s:hidden name="ultBedCnt07"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedCnt07" /><s:hidden name="nextBedCnt07"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedCnt07 == nextBedCnt07">
+		   	<s:label key="nextBedCnt07" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCnt07" /></font>
+		</s:else>
+		<s:hidden name="nextBedCnt07"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">医療療養</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCnt02" /><s:hidden name="bedCnt02"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedCnt02" /><s:hidden name="ultBedCnt02"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedCnt02" /><s:hidden name="nextBedCnt02"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedCnt02 == nextBedCnt02">
+		   	<s:label key="nextBedCnt02" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCnt02" /></font>
+		</s:else>
+		<s:hidden name="nextBedCnt02"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">介護療養</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedCnt06" /><s:hidden name="bedCnt06"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedCnt06" /><s:hidden name="ultBedCnt06"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedCnt06" /><s:hidden name="nextBedCnt06"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedCnt06 == nextBedCnt06">
+		   	<s:label key="nextBedCnt06" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedCnt06" /></font>
+		</s:else>
+		<s:hidden name="nextBedCnt06"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ベッド数計</td>
 	   	<td class="comFormTableItemNf012"><s:label key="bedsTot" /><s:hidden name="bedsTot"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultBedsTot" /><s:hidden name="ultBedsTot"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextBedsTot" /><s:hidden name="nextBedsTot"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="bedsTot == nextBedsTot">
+		   	<s:label key="nextBedsTot" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextBedsTot" /></font>
+		</s:else>
+		<s:hidden name="nextBedsTot"/></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">医療ベッド数計</td>
 	   	<td class="comFormTableItemNf012"><s:label key="medBedsTot" /><s:hidden name="medBedsTot"/></td>
 		<td class="comFormTableItemNf012"><s:label key="ultMedBedsTot" /><s:hidden name="ultMedBedsTot"/></td>
-		<td class="comFormTableItemNf012"><s:label key="nextMedBedsTot" /><s:hidden name="nextMedBedsTot"/></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="medBedsTot == nextMedBedsTot">
+		   	<s:label key="nextMedBedsTot" />
+		</s:if>
+		<s:else>
+			<font color="red"><s:label key="nextMedBedsTot" /></font>
+		</s:else>
+		<s:hidden name="nextMedBedsTot"/></td>
 	</tr>
 	</table>
 	</s:if>

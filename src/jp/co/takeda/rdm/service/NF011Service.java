@@ -319,6 +319,9 @@ public class NF011Service extends BaseService {
         		indto.setReqBrCd(loginInfo.getBrCode());
         		indto.setReqDistCd(loginInfo.getDistCode());
 
+        		indto.setBedsTot("0");
+				indto.setMedBedsTot("0");
+
 				indto.setUltInsCd("");
 				indto.setUltInsNm("");
 				indto.setReqYmdhms("");
@@ -331,6 +334,9 @@ public class NF011Service extends BaseService {
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());
     		indto.setReqDistCd(loginInfo.getDistCode());
+
+    		indto.setBedsTot("0");
+			indto.setMedBedsTot("0");
 
 			indto.setReqId("");
 			indto.setUltInsCd("");

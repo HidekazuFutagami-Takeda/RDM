@@ -72,6 +72,7 @@ public class NF001Service extends BaseService {
         	indto.setJgiNm(loginInfo.getJgiName());
         	indto.setBrCode(loginInfo.getBrCode());
         	indto.setDistCode(loginInfo.getDistCode());
+        	indto.setBumonRank(loginInfo.getBumonRank());
         }
 
         // END UOC

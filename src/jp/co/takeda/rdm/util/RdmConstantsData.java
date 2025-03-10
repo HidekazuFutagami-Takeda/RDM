@@ -525,6 +525,8 @@ public class RdmConstantsData {
 
     /**コード情報コード名 : 医師／薬剤師区分 */
     public static final String CODE_NAME_DOC_TYPE = "DOC_TYPE";
+    /**コード情報コード名 : 施設分類 */
+    public static final String CODE_NAME_INS_CLASS = "INS_CLASS";
     /**コード情報コード名 : 施設種別 */
     public static final String CODE_NAME_INS_TYPE = "INS_TYPE";
     /**コード情報コード名 : 取引区分 */

@@ -642,7 +642,7 @@ public class NF301Service extends BaseService {
         HashSet<String> trtSet = new HashSet<>();
 
         for(int i=0; i<hcoJkrDataChkList.size(); i++) {
-        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(0);
+        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(i);
         	if(!"1".equals(hcoJkrData.getDeleteFlg())) {
         		if(!trtSet.add(hcoJkrData.getTrtCd())) {
         			// 領域に対して担当者は1名のみ設定してください。
@@ -1268,6 +1268,7 @@ public class NF301Service extends BaseService {
 		}
 		indto.setHcoJkrDataList(hcoJkrDataList);
 		indto.setBeforeHcoJkrDataList(beforeHcoJkrDataList);
+
 
 		// 申請ボタン活性フラグ取得
 		indto.setBtnEnableFlg("0");
@@ -2190,7 +2191,7 @@ public class NF301Service extends BaseService {
         HashSet<String> trtSet = new HashSet<>();
 
         for(int i=0; i<hcoJkrDataChkList.size(); i++) {
-        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(0);
+        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(i);
         	if(!"1".equals(hcoJkrData.getDeleteFlg())) {
         		if(!trtSet.add(hcoJkrData.getTrtCd())) {
         			// 領域に対して担当者は1名のみ設定してください。

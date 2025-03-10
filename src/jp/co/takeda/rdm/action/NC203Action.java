@@ -143,7 +143,6 @@ public class NC203Action extends BaseAction<NC203DTO> {
         dto.setLoginJgiNo(loginInfo.getJgiNo() + "");
         dto.setLoginBrCd(loginInfo.getBrCode());
         dto.setLoginDistCd(loginInfo.getDistCode());
-        dto.setTrtCd(loginInfo.getTrtCd());
 
         // END UOC
     }

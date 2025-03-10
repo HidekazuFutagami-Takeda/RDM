@@ -844,18 +844,18 @@ public class NF011Service extends BaseService {
 
 		// 整合性チェック
 		// 主担当重複チェック
+		indto.setHcoJkrDataList(delDeleteFlgRow(indto.getHcoJkrDataList()));
+
 		List<HcoJkrData> hcoJkrDataList = indto.getHcoJkrDataList();
 		HashSet<String> trtSet = new HashSet<>();
 
 		for (int i = 0; i < hcoJkrDataList.size(); i++) {
 			HcoJkrData hcoJkrData = hcoJkrDataList.get(i);
-			if (!"1".equals(hcoJkrData.getDeleteFlg())) {
-				if (!trtSet.add(hcoJkrData.getTrtCd())) {
-					// 領域に対して担当者は1名のみ設定してください。
-					errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
-					errFlg = true;
-					break;
-				}
+			if (!trtSet.add(hcoJkrData.getTrtCd())) {
+				// 領域に対して担当者は1名のみ設定してください。
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
+				errFlg = true;
+				break;
 			}
 		}
 
@@ -1383,5 +1383,24 @@ public class NF011Service extends BaseService {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * hcoJkrDataからDeleteFlg=1のデータを削除
+	 */
+	public static List<HcoJkrData> delDeleteFlgRow(List<HcoJkrData> hcoJkrDataList){
+		int i = 0;
+		int j = hcoJkrDataList.size();
+
+		while(i < j) {
+			if("1".equals(hcoJkrDataList.get(i).getDeleteFlg())) {
+				hcoJkrDataList.remove(i);
+				j--;
+			} else {
+				i++;
+			}
+		}
+
+		return hcoJkrDataList;
 	}
 }

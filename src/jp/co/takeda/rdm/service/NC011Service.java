@@ -407,14 +407,15 @@ public class NC011Service extends BaseService {
 
   		//241002-000014 テスト用申請ID
 
+
           SelectCntSelectReqListEntity selectCntSelectReqListEntity = new SelectCntSelectReqListEntity();
           List<SelectCntSelectReqListEntity> selectParamSelectReqList;
 
           paramEntity.setJgiNo(loginInfo.getJgiNo());
           selectCntSelectReqListEntity.setJgiNo(loginInfo.getJgiNo());
           //アドミンflagの検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setMrAdminFlg(StringUtils.setEmptyToNull(indto.getMrAdminFlg()));
-          selectCntSelectReqListEntity.setMrAdminFlg(StringUtils.setEmptyToNull(indto.getMrAdminFlg()));
+          paramEntity.setMrAdminFlg(StringUtils.setEmptyToNull(loginInfo.getJokenFlg()));
+          selectCntSelectReqListEntity.setMrAdminFlg(StringUtils.setEmptyToNull(loginInfo.getJokenFlg()));
 
           //アドミンflagの検索値のセット、setEmptyToNullで空文字をNullに置換している。
          // paramEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
@@ -423,7 +424,7 @@ public class NC011Service extends BaseService {
           //申請IDの検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
           selectCntSelectReqListEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
-
+          if(!loginInfo.getPreScreenId().equals("NM101")) {
           //種別の検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setSbt(StringUtils.setEmptyToNull(indto.getSbt()));
           selectCntSelectReqListEntity.setSbt(StringUtils.setEmptyToNull(indto.getSbt()));
@@ -436,6 +437,8 @@ public class NC011Service extends BaseService {
           paramEntity.setBumonRyakuName(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
           selectCntSelectReqListEntity.setBumonRyakuName(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
          //paramEntity.setReqBrCode("010");
+
+
 
           //組織名称の検索値のセット、setEmptyToNullで空文字をNullに置換している。-管理者のみ
           paramEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
@@ -503,7 +506,7 @@ public class NC011Service extends BaseService {
           //連携種別の検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setReqSbt(StringUtils.setEmptyToNull(indto.getReqSbt()));
           selectCntSelectReqListEntity.setReqSbt(StringUtils.setEmptyToNull(indto.getReqSbt()));
-
+          }
           //申請チャネルの検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setReqChl(StringUtils.setEmptyToNull(indto.getReqChl()));
           selectCntSelectReqListEntity.setReqChl(StringUtils.setEmptyToNull(indto.getReqChl()));
@@ -566,6 +569,7 @@ public class NC011Service extends BaseService {
 
           String workSortCondition = indto.getSortCondition();
 
+          if(indto.getReqYmdhmsTo() != null || indto.getReqYmdhmsFrom() != null) {
         //SimpleDateFormatで日付フォーマット設定
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           //日付チェック 開始日が終了日より後の場合
@@ -579,6 +583,7 @@ public class NC011Service extends BaseService {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
+          }
 
           //入力_検索文字列  申請日がnullでないかのチェック。
           if(paramEntity.getReqYmdhmsFrom() != null) {

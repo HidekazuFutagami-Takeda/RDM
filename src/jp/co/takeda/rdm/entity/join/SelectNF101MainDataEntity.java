@@ -74,6 +74,13 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String pharmType;
 
+
+	/**
+	 * 施設区分
+	 * @generated
+	 */
+	private String pharmTypeNm;
+
 	/**
 	 * ULT施設区分
 	 * @generated
@@ -96,6 +103,12 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 * 階級区分
 	 * @generated
 	 */
+	private String insRankNm;
+
+	/**
+	 * 階級区分
+	 * @generated
+	 */
 	private String nextInsRank;
 
 	/**
@@ -103,6 +116,12 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 * @generated
 	 */
 	private String regVisType;
+
+	/**
+	 * 定訪先区分
+	 * @generated
+	 */
+	private String regVisTypeNm;
 
 	/**
 	 * 定訪先区分
@@ -120,6 +139,12 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 * 重点病院区分
 	 * @generated
 	 */
+	private String impHosTypeNm;
+
+	/**
+	 * 重点病院区分
+	 * @generated
+	 */
 	private String nextImpHosType;
 
 	/**
@@ -127,6 +152,12 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 * @generated
 	 */
 	private String hoInsType;
+
+	/**
+	 * 対象区分
+	 * @generated
+	 */
+	private String hoInsTypeNm;
 
 	/**
 	 * 対象区分
@@ -168,6 +199,12 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 * ワクチン対象区分
 	 * @generated
 	 */
+	private String vacInsTypeNm;
+
+	/**
+	 * ワクチン対象区分
+	 * @generated
+	 */
 	private String nextVacInsType;
 
 	/**
@@ -175,6 +212,12 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 * @generated
 	 */
 	private String vacVisitType;
+
+	/**
+	 * ワクチン定訪先区分
+	 * @generated
+	 */
+	private String vacVisitTypeNm;
 
 	/**
 	 * ワクチン定訪先区分
@@ -367,6 +410,12 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
      * @generated
      */
     private String reqId;
+
+    /**
+     * 申請チャネル
+     * @generated
+     */
+    private String reqChl;
 
     /**
      * 申請者所属名称
@@ -986,6 +1035,111 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	}
 
 	/**
+	 * SelectNF101MainDataEntity.javapharmTypeNmを設定
+	 * @return pharmTypeNm
+	 */
+	public String getPharmTypeNm() {
+		return pharmTypeNm;
+	}
+
+	/**
+	 * @param pharmTypeNm セットする pharmTypeNm
+	 */
+	public void setPharmTypeNm(String pharmTypeNm) {
+		this.pharmTypeNm = pharmTypeNm;
+	}
+
+	/**
+	 * SelectNF101MainDataEntity.javainsRankNmを設定
+	 * @return insRankNm
+	 */
+	public String getInsRankNm() {
+		return insRankNm;
+	}
+
+	/**
+	 * @param insRankNm セットする insRankNm
+	 */
+	public void setInsRankNm(String insRankNm) {
+		this.insRankNm = insRankNm;
+	}
+
+	/**
+	 * SelectNF101MainDataEntity.javaregVisTypeNmを設定
+	 * @return regVisTypeNm
+	 */
+	public String getRegVisTypeNm() {
+		return regVisTypeNm;
+	}
+
+	/**
+	 * @param regVisTypeNm セットする regVisTypeNm
+	 */
+	public void setRegVisTypeNm(String regVisTypeNm) {
+		this.regVisTypeNm = regVisTypeNm;
+	}
+
+	/**
+	 * SelectNF101MainDataEntity.javaimpHosTypeNmを設定
+	 * @return impHosTypeNm
+	 */
+	public String getImpHosTypeNm() {
+		return impHosTypeNm;
+	}
+
+	/**
+	 * @param impHosTypeNm セットする impHosTypeNm
+	 */
+	public void setImpHosTypeNm(String impHosTypeNm) {
+		this.impHosTypeNm = impHosTypeNm;
+	}
+
+	/**
+	 * SelectNF101MainDataEntity.javahoInsTypeNmを設定
+	 * @return hoInsTypeNm
+	 */
+	public String getHoInsTypeNm() {
+		return hoInsTypeNm;
+	}
+
+	/**
+	 * @param hoInsTypeNm セットする hoInsTypeNm
+	 */
+	public void setHoInsTypeNm(String hoInsTypeNm) {
+		this.hoInsTypeNm = hoInsTypeNm;
+	}
+
+	/**
+	 * SelectNF101MainDataEntity.javavacInsTypeNmを設定
+	 * @return vacInsTypeNm
+	 */
+	public String getVacInsTypeNm() {
+		return vacInsTypeNm;
+	}
+
+	/**
+	 * @param vacInsTypeNm セットする vacInsTypeNm
+	 */
+	public void setVacInsTypeNm(String vacInsTypeNm) {
+		this.vacInsTypeNm = vacInsTypeNm;
+	}
+
+	/**
+	 * SelectNF101MainDataEntity.javavacVisitTypeNmを設定
+	 * @return vacVisitTypeNm
+	 */
+	public String getVacVisitTypeNm() {
+		return vacVisitTypeNm;
+	}
+
+	/**
+	 * @param vacVisitTypeNm セットする vacVisitTypeNm
+	 */
+	public void setVacVisitTypeNm(String vacVisitTypeNm) {
+		this.vacVisitTypeNm = vacVisitTypeNm;
+	}
+
+	/**
 	 * SelectNF101MainDataEntity.javabedCntBaseを設定
 	 * @return bedCntBase
 	 */
@@ -1448,6 +1602,21 @@ public class SelectNF101MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setReqId(String reqId) {
 		this.reqId = reqId;
+	}
+
+	/**
+	 * SelectNF101MainDataEntity.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

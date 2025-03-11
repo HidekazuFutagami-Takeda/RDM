@@ -1,0 +1,737 @@
+<%--
+/**
+ * <pre>
+ *  施設来期項目一括承認のJSP
+ * </pre>
+ * @since 1.0
+ * @version $Revision:
+ * @author
+ * @see jp.co.takeda.maps.command.jgikanren.jkrinsmrchange.JkrInsMrChangeViewFrontCommand
+ */
+ --%>
+<%@page import="jp.co.takeda.rdm.util.StringUtils"%>
+<%@page import="java.util.Enumeration"%>
+<%@page import="org.apache.struts2.ServletActionContext"%>
+<%@page import="jp.co.takeda.rdm.util.AppMethods"%>
+<%@page import="com.opensymphony.xwork2.util.ValueStack"%>
+
+
+<%@ page
+  language="java"
+  session="true"
+  buffer="8kb"
+  autoFlush="true"
+  isThreadSafe="true"
+  contentType="text/html;charset=UTF-8"
+%>
+
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%
+//String title = (String)request.getAttribute("title");
+//String execDate = (String)request.getAttribute("execDate");
+//ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
+//JKR040C010DTO dto = new JKR040C010DTO();
+//if (stack.peek() instanceof JKR040C010DTO) {
+//  dto = (JKR040C010DTO)stack.peek();
+//}
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>NF401_施設来期項目一括承認</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="css/common2.css" rel="Stylesheet" type="text/css" />
+    <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jkrSosStatus.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+
+    <script type="text/javascript" src="js/jkrSosStatus.js"></script>
+    <script type="text/javascript" src="js/catTkCityCombo.js"></script>
+    <script type="text/javascript" src="js/imtInsInputCategores.js"></script>
+    <script type="text/javascript" src="js/jgiKanren.js"></script>
+    <script type="text/javascript" src="js/catSosJgiExpand.js"></script>
+    <script type="text/javascript" src="js/jkrMenu.js"></script>
+    <script>
+	    function comSetFormWindowInfo(){
+	    	comClickFlgInit();
+
+	    }
+
+	    // TODO サイズ調整
+	    var sosSubScreenSize = "left=0, top=0, width=1100, height=800";
+	 	// 組織選択ボタン
+	    function sosPopBtn(){
+			// NC201_組織検索ポップアップを開く
+			window.open("","sosPopWindow",sosSubScreenSize);
+			document.fm1.screenId.value = "NC201";
+			document.fm1.functionId.value="Init";
+			document.fm1.target="sosPopWindow";
+
+			document.fm1.callBack.value = "callBackSosPop";
+
+			comSubmitForAnyWarp(fm1);
+	    }
+
+	 	// 組織検索ポップアップから値受け取り
+	 	// TODO
+	    function callBackSosPop(sosCd, sosNm){
+			document.fm1.sosCd.value = sosCd;
+			document.fm1.sosNm.value = sosNm;
+
+			if(document.fm1.bumonRank == "2"){
+				tantoClearBtn();
+			}
+	 	}
+
+	 	// 担当者選択ボタン
+	    function tantoPopBtn(){
+			// NC202_担当者検索ポップアップ画面を表示
+	    	window.open("","tantoPopWindow",tantoSubScreenSize);
+			document.fm1.screenId.value = "NC202";
+			document.fm1.functionId.value="Init";
+			document.fm1.target="tantoPopWindow";
+
+			document.fm1.sosCdPop.value = document.fm1.sosCd.value;
+			document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
+			document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+
+			document.fm1.selectFlgPop.value="1";
+			document.fm1.callBack.value="callBackTantoPop";
+
+			comSubmitForAnyWarp(fm1);
+			comClickFlgInit();
+	    }
+
+		// 担当者検索ポップアップから値受け取り
+	    function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+	    							distCode, trtGrpCd, trtNm, mrCat){
+			document.fm1.sosCd.value = sosCd;
+			document.fm1.bumonRyakuName.value = bumonSeiName;
+			document.fm1.jgiNo.value = jgiNo;
+			document.fm1.jgiNm.value = jgiName;
+			document.fm1.trtCd.value = trtCd;
+			document.fm1.trtNm.value = trtNm;
+			document.fm1.mrCat.value = mrCat;
+			document.fm1.brCode.value = brCode;
+			document.fm1.distCode.value = distCode;
+	    }
+
+		// 施設選択ボタン
+	    function insPopBtn(){
+			// NC203_施設検索ポップアップ画面を表示
+			window.open("","insPopWindow",insSubScreenSize);
+			document.fm1.screenId.value = "NC203";
+			document.fm1.functionId.value="Init";
+			document.fm1.target="insPopWindow";
+
+			document.fm1.viewKbn.value = "0";
+			document.fm1.callBack.value = "callBackInsPop";
+
+			comSubmitForAnyWarp(fm1);
+			comClickFlgInit();
+	    }
+
+		// 施設ポップアップから施設受け取り
+	    function callBackInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType, insClass){
+
+	    	document.fm1.insNo.value = insNo;
+	    	document.fm1.insNm.value = insAbbrName;
+
+	    }
+
+		// 組織Clearボタン
+	    function sosClearBtn(){
+			document.fm1.sosCd.value = "";
+			document.fm1.sosNm.value = "";
+			document.fm1.bumonRyakuName.value = "";
+			document.fm1.jgiNo.value = "";
+			document.fm1.jgiNm.value = "";
+			document.fm1.trtCd.value = "";
+			document.fm1.trtNm.value = "";
+			document.fm1.mrCat.value = "";
+			document.fm1.brCode.value = "";
+			document.fm1.distCode.value = "";
+			document.fm1.bumonRank.value = "";
+			document.fm1.upSosCd.value = "";
+		}
+
+	 	// 担当者Clearボタン
+	    function tantoClearBtn(){
+			document.fm1.bumonRyakuName.value = "";
+			document.fm1.jgiNo.value = "";
+			document.fm1.jgiNm.value = "";
+			document.fm1.trtCd.value = "";
+			document.fm1.trtNm.value = "";
+			document.fm1.mrCat.value = "";
+			document.fm1.brCode.value = "";
+			document.fm1.distCode.value = "";
+		}
+
+	 	// 施設Clearボタン
+	    function insClearBtn(){
+			document.fm1.insNo.value = "";
+			document.fm1.insNm.value = "";
+			document.fm1.insKanjSrch.value = "";
+		}
+
+	 	// Clearボタン
+	    function clearBtn(){
+			document.fm1.sosCd.value = "";
+			document.fm1.sosNm.value = "";
+			document.fm1.bumonRyakuName.value = "";
+			document.fm1.jgiNo.value = "";
+			document.fm1.jgiNm.value = "";
+			document.fm1.trtCd.value = "";
+			document.fm1.trtNm.value = "";
+			document.fm1.mrCat.value = "";
+			document.fm1.brCode.value = "";
+			document.fm1.distCode.value = "";
+			document.fm1.bumonRank.value = "";
+			document.fm1.upSosCd.value = "";
+
+			document.fm1.insNm.value = "";
+
+			document.fm1.insNo.value = "";
+			document.fm1.ultInsNo.value = "";
+			document.fm1.insKanjSrch.value = "";
+			document.fm1.shisetsuNmSrch.value = "";
+			document.fm1.insClass.value = "";
+			document.fm1.insType.value = "";
+			document.fm1.hoInsType.value = "";
+
+			document.fm1.shnFlgChk.checked = false;
+		}
+
+		// 画面遷移処理
+	    function gotoNext(screenId,functionId){
+	   		document.fm1.target="";
+	  	 	fm1.screenId.value=screenId;
+	  	  	fm1.functionId.value=functionId;
+	  	  	comSubmitForAnyWarp(fm1);
+	  	}
+
+	 	var nf401Tab;
+	 	// 申請歴ボタン
+	    function actBtn(insNo){
+	 		var tmpIns = fm1.insNo.value;
+
+	 		fm1.insNo.value = insNo;
+
+	 		if(nf401Tab && !nf401Tab.closed){
+	 			nf401Tab.close();
+	 		}
+
+	 		nf401Tab = window.open("","NF401Tab");
+			document.fm1.target="NF401Tab";
+
+
+	  		fm1.screenId.value="NF102";
+		  	fm1.functionId.value="Init";
+		  	comSubmitForAnyWarp(fm1);
+		  	comClickFlgInit();
+
+		  	fm1.insNo.value = tmpIns;
+		}
+
+	 	// ページボタン
+	    function pageBtn( pageCntCur ){
+			//現在ページ番号変更（遷移）
+			document.fm1.pageCntCur.value = pageCntCur;
+			document.fm1.target="";
+			document.fm1.screenId.value	= "NF401";
+			document.fm1.functionId.value = "Search";
+			// 検索イベント呼び出し
+			comSubmitForAnyWarp(fm1);
+    	}
+
+    </script>
+    <style>
+    	.siz{
+		width:2500px;
+		}
+		thead {
+        position:Sticky;
+        top:0;
+        background-color: #fff;
+        left: 2;
+        }
+    </style>
+</head>
+
+  <%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
+<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設来期項目一括承認"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+
+ <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
+	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
+		<tbody>
+		<s:if test="msgStr != null">
+			<tr>
+				<td>
+					<nobr>
+					<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
+					</nobr>
+				</td>
+			</tr>
+		</s:if>
+		</tbody>
+	</table>
+
+<table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
+  <tbody>
+  <tr/>
+    <s:form name="fm0" theme="simple">
+         <input type="hidden" name="endRecordNo1"   value=""  />
+    </s:form>
+    <s:form name="fm1" theme="simple" >
+    <s:hidden name="screenId"  />
+    <s:hidden name="functionId" />
+
+    <s:hidden id="pageFlag" name="pageFlag" />
+
+    <input type="hidden" name="windowName" value="" />
+    <input type="hidden" name="openerName" value="" />
+
+	<s:hidden name="loginJokenSetCd"/>
+	<s:hidden name="loginJgiNo"/>
+    <s:hidden name="loginNm"/>
+    <s:hidden name="loginShzNm"/>
+    <s:hidden name="loginTrtCd"/>
+    <s:hidden name="loginBrCd"/>
+    <s:hidden name="loginDistCd"/>
+    <s:hidden name="backScreenId" value="NF401" />
+    <s:hidden id="preScreenId" name="preScreenId"/>
+	<s:hidden id="pageCntCur" name="pageCntCur"/>
+
+	<s:hidden id="callBack" name="callBack" />
+	<s:hidden id="viewKbn" name="viewKbn" />
+	<s:hidden id="title" name="title" />
+	<s:hidden id="srchFlg" name="srchFlg" />
+
+	<s:hidden id="btnEnableFlg" name="btnEnableFlg" />
+
+	<s:hidden id="upSosCd" name="upSosCd"/>
+	<s:hidden id="sosCdPop" name="sosCdPop"/>
+	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
+	<s:hidden id="bumonRankPop" name="bumonRankPop"/>
+	<s:hidden id="selectFlgPop" name="selectFlgPop"/>
+
+	<s:hidden id="bumonRank" name="bumonRank"/>
+	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
+    <s:hidden id="brCode" name="brCode"/>
+	<s:hidden id="distCode" name="distCode"/>
+	<s:hidden id="trtCd" name="trtCd"/>
+	<s:hidden id="trtNm" name="trtNm"/>
+	<s:hidden id="mrCat" name="mrCat"/>
+
+<%-- ポータルボディー 開始 --%>
+	<table class="pupBodyTable" align="center">
+	<tr><td>
+<%-- 検索部 開始 --%>
+
+	<tr>
+		<%-- 組織 --%>
+		<td class="pupControlItem"><nobr>&nbsp;組織</nobr>
+		   <nobr>
+		   <input class="comButton" type="button" name="button1" value="選択" onClick="JavaScript:sosPopBtn(); return false;" />
+		   </nobr>
+		</td>
+		<td>
+			<s:textfield size="20" maxlength="40" name="sosNm" style="background-color:#D4D0C8" readonly="true" />
+			<s:hidden key="sosCd" />
+			<a href ="#" onClick="sosClearBtn();return false;">Clear</a>
+		</td>
+		<%-- 担当者 --%>
+		<td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
+		   <nobr>
+		   <s:if test="bumonRank == '2'">
+		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
+		   </s:if>
+		   <s:else>
+		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
+		   </s:else>
+		   </nobr>
+		</td>
+		<td>
+			<s:textfield size="20" maxlength="40" name="jgiNm" style="background-color:#D4D0C8" readonly="true" />
+			<s:hidden key="jgiNo" />
+			<a href ="#" onClick="tantoClearBtn();return false;">Clear</a>
+		</td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+		<%-- 施設 --%>
+		<td class="pupControlItem"><nobr>&nbsp;施設</nobr>
+		   <nobr>
+		   <input class="comButton" type="button" name="button1" value="選択" onClick="JavaScript:insPopBtn(); return false;" />
+		   </nobr>
+		</td>
+		<td>
+			<s:textfield size="20" maxlength="40" name="insNm" style="background-color:#D4D0C8" readonly="true" />
+			<a href ="#" onClick="insClearBtn();return false;">Clear</a>
+		</td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+		<%-- 施設固定C --%>
+		<td class="pupControlItem"><nobr>&nbsp;施設固定C</nobr></td>
+		<td>
+			<s:textfield size="20" maxlength="40" name="insNo" />
+		</td>
+		<%-- ULT施設コード --%>
+		<td class="pupControlItem"><nobr>&nbsp;ULT施設コード</nobr></td>
+		<td>
+			<s:textfield size="20" maxlength="40" name="ultInsNo" />
+		</td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+		<%-- 施設略式漢字名 --%>
+		<td class="pupControlItem"><nobr>&nbsp;施設略式漢字名</nobr></td>
+		<td>
+			<s:textfield size="20" maxlength="40" name="insKanjSrch" />
+		</td>
+		<%-- ULT施設名 --%>
+		<td class="pupControlItem"><nobr>&nbsp;ULT施設名</nobr></td>
+		<td>
+			<s:textfield size="20" maxlength="40" name="shisetsuNmSrch" />
+		</td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+		<%-- 施設分類 --%>
+		<td class="pupControlItem"><nobr>&nbsp;施設分類</nobr></td>
+        <td class="comTableSearchItem">
+			<s:select id="insClass" name="insClass" cssStyle="width:80pt" list ="insClassCombo" />
+	    </td>
+	    <%-- 施設種別 --%>
+		<td class="pupControlItem"><nobr>&nbsp;施設種別</nobr></td>
+        <td class="comTableSearchItem">
+			<s:select id="insType" name="insType" cssStyle="width:80pt" list ="insTypeCombo" />
+	    </td>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+		<%-- 対象区分 --%>
+		<td class="pupControlItem"><nobr>&nbsp;対象区分</nobr></td>
+        <td class="comTableSearchItem">
+			<s:select id="hoInsType" name="hoInsType" cssStyle="width:80pt" list ="hoInsTypeCombo" />
+	    </td>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	    <td class="pupControlItem"><nobr>
+	    <input type="checkbox" id="shnFlgChk" name="shnFlgChk" /><label for="shnFlgChk">未審査申請数0のみ対象</label></nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
+		<td>
+			<input type="button" name="クリア" value="クリア" onclick="clearBtn();return false;" />
+			<input type="button" value="検索" name="検索" onclick="gotoNext('NF401','Search')"/>
+		</td>
+	</tr>
+
+<%-- ページャー表示 開始 --%>
+          <s:if test='pageFlag == "1" '>
+          </s:if>
+          <s:if test='pageFlag !="1"'>
+                 <!-- 改ページ -->
+                  <table width="95%" >
+                      <tbody>
+                      <tr align="right">
+                          <td>
+                            <!-- 前頁リンク -->
+                            <s:if test="pageCntCur > 1">
+                            <nobr>
+                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur-1"/>);return false;">
+                                &lt;&lt; 前
+                                </a>&nbsp;
+                            </nobr>
+                            </s:if>
+
+                            <!-- ページ基準の前頁リンク -->
+                            <s:if test="pageCntBase > 1">
+                              <a class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="pageCntBase-1"/>);return false;">
+                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
+                            </s:if>
+
+                            <!-- 各ページリンク作成 -->
+                            <s:if test="pageCntAll > 1">
+                              <s:iterator value="{'0','1','2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
+                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
+                                <s:if test="#pageCntCurTemp <= pageCntAll">
+                                  <s:if test="#pageCntCurTemp != pageCntCur">
+                                    <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp"/>);return false;">
+                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
+                                  </s:if>
+                                  <s:else>
+                                    <!-- 現在ページはリンクではない -->
+                                    <a  class="comMiniLink"  style="text-decoration:none;">
+                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
+                                  </s:else>
+                                </s:if>
+                              </s:iterator>
+                            </s:if>
+                            <!-- 次のグループ -->
+                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
+                                &nbsp;
+                                <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp-1"/>);return false;">
+                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
+                            </s:if>
+
+                            <!-- 次頁  -->
+                            <s:if test="pageCntCur < pageCntAll">
+                              <nobr>&nbsp;
+                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur+1"/>);return false;">
+                                  次&gt;&gt;
+                                </a>
+                              </nobr>
+                            </s:if>
+
+                                 <nobr>
+                            <s:if test="lineCntAll > 0">
+                              &nbsp;&nbsp;
+                              <s:property value="lineCntAll"/>件中
+                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
+                            </s:if>
+                            <s:else>
+                              &nbsp;0件
+                            </s:else>
+                            </nobr>
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+                  </s:if>
+          <%-- ページャー表示 終了 --%>
+
+<div style="max-height:400px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+<table class="siz">
+   <s:if test='pageFlag == "1" '>
+          <!-- なにも表示しない -->
+      </s:if>
+   <s:else>
+   <thead style="z-index:3;">
+	<tr>
+	    <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
+
+	<%-- ヘッダー行 --%>
+	<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
+		<td class="comTableTitle" style="width:50px" rowspan=2>承認</td>
+		<td class="comTableTitle" style="width:80px;">施設固定C</td>
+		<td class="comTableTitle" style="width:50px" rowspan=2>期</td>
+		<td class="comTableTitle" style="width:130px" colspan=8>施設情報</td>
+		<td class="comTableTitle" style="width:130px" colspan=10>病床数</td>
+		<td class="comTableTitle" style="width:50px" rowspan=2>未審査<br>申請数</td>
+		<td class="comTableTitle" style="width:50px" rowspan=2>申請コメント</td>
+		<td class="comTableTitle" style="width:50px" rowspan=2>承認・却下コメント</td>
+		<td class="comTableTitle" style="width:50px" rowspan=2>却下</td>
+	</tr>
+	<tr class="comTableTitle" style="position: sticky; top:20; left:0;">
+		<td class="comTableTitle">施設略式漢字名</td>
+		<td class="comTableTitle">施設区分</td>
+		<td class="comTableTitle">階級区分</td>
+		<td class="comTableTitle">定訪先区分</td>
+		<td class="comTableTitle">重点病院区分</td>
+		<td class="comTableTitle">対象区分</td>
+		<td class="comTableTitle">経営主体</td>
+		<td class="comTableTitle">ワクチン対象区分</td>
+		<td class="comTableTitle">ワクチン定訪先区分</td>
+		<td class="comTableTitle">基準</td>
+		<td class="comTableTitle">結核</td>
+		<td class="comTableTitle">一般</td>
+		<td class="comTableTitle">感染症</td>
+		<td class="comTableTitle">精神</td>
+		<td class="comTableTitle">療養</td>
+		<td class="comTableTitle">医療療養</td>
+		<td class="comTableTitle">介護医療</td>
+		<td class="comTableTitle">ベッド数計</td>
+		<td class="comTableTitle">医療ベッド数計</td>
+	</tr>
+	</thead>
+
+    <%-- 内容 --%>
+
+	<s:iterator value="HcoReqDataList" status="status" var="rowBean">
+		<tr style="min-height:30px;">
+			<td class="comTableItem" rowspan=3>
+				<s:if test='#rowBean.waitAppFlg == "1"'>
+					<input type="checkbox" name="apprChk" />
+				</s:if>
+			</td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].insNo" /></td>
+	        <td class="comTableItem">当期</td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].pharmType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].insRank" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].regVisType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].impHosType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].hoInsType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].manageNm" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].vacInsType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].vacVisitType" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCntBase" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt04" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt01" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt05" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt03" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt07" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt02" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt06" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedsTot" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].medBedsTot" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].noShnNum" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].reqComment" /></td>
+	        <td class="comTableItem">
+				<s:if test='#rowBean.waitAppFlg == "1"'>
+		        	<s:textarea name="aprComment" maxlength="300" style="resize:none" />
+		        </s:if>
+		        <s:else>
+		        	<s:label key="HcoReqDataList[%{#status.index}].aprComment" />
+				</s:else>
+	        </td>
+	        <td class="comTableItem">
+	        	<input type="button" value="却下" onclick="rejBtn('<s:property value="#rowBean.insNo"/>');return false;" />
+	        </td>
+		</tr>
+		<tr>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].insAbbrName" /></td>
+	        <td class="comTableItem">ULT</td>
+	        <td class="comTableItemNF401"><s:label key="HcoReqDataList[%{#status.index}].shisetsuKbn" /></td>
+	        <td class="comTableItemNF401">&nbsp;</td>
+	        <td class="comTableItemNF401">&nbsp;</td>
+	        <td class="comTableItemNF401">&nbsp;</td>
+	        <td class="comTableItemNF401">&nbsp;</td>
+	        <td class="comTableItemNF401"><s:label key="HcoReqDataList[%{#status.index}].keieitai" /></td>
+	        <td class="comTableItemNF401">&nbsp;</td>
+	        <td class="comTableItemNF401">&nbsp;</td>
+
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCntBase" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt04" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt01" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt05" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt03" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt07" /></td>
+	        <td class="comTableItemNF401" style="text-align:right">&nbsp;</td>
+	        <td class="comTableItemNF401" style="text-align:right">&nbsp;</td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedsTot" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultMedBedsTot" /></td>
+		</tr>
+		<tr style="min-height:30px;">
+	        <td class="comTableItem">
+	        	<input type="button" value="申請歴" onclick="histBtn('<s:property value="#rowBean.insNo"/>');return false;" />
+	        </td>
+	        <td class="comTableItem">来期</td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextPharmType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextInsRank" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextRegVisType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextImpHosType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextHoInsType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextManageNm" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextVacInsType" /></td>
+	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextVacVisitType" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCntBase" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt04" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt01" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt05" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt03" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt07" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt02" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt06" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedsTot" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextMedBedsTot" /></td>
+		</tr>
+	</s:iterator>
+    </table>
+</div>
+</s:else>
+    </td>
+    </tr>
+    <tr>
+      	<td class="comFormTableItem">
+              <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:98%;">
+      <tr>
+        <td style="width: 30%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 38%; height: 0px; border-width: 0px;"></td>
+      </tr>
+		<tr>
+	      <td class="comFormTableItem">
+                <nobr>
+                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
+                </nobr>
+	      </td>
+	      <td class="comFormTableItem">&nbsp;</td>
+	      <td class="comFormTableItem">&nbsp;</td>
+	      <td class="comFormTableItem">&nbsp;</td>
+	      <td class="comFormTableItem">
+               <nobr>
+               	<s:if test='%{btnEnableFlg == "1"}'>
+					<input class="comButton" type="button"name="buttonF3" value="一括承認" onClick="apprBtn();JavaScript:return false;" />
+				</s:if>
+				<s:else>
+					&nbsp;
+               	</s:else>
+               </nobr>
+	      </td>
+	  </tr>
+  </table>
+     	</td>
+    </tr>
+
+<%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>
+<!--  <hr class="comSplit" /> -->
+<%-- 後制御部 --%>
+
+	</table>
+
+    </tbody>
+    </table>
+    </s:form>
+    </table>
+<%-- ポータルボディー 終了 --%>
+
+
+<%-- メイン部 一覧 終了 --%>
+<%-- ポータル大枠 終了 --%>
+	<jsp:include page="common/jkrBottom.jsp" flush="true" />
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
+</body>
+</html>

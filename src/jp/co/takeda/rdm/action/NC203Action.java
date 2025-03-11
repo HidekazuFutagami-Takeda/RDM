@@ -138,6 +138,12 @@ public class NC203Action extends BaseAction<NC203DTO> {
         String title = "NC203_施設検索ポップアップ";
         dto.setTitle(title);
 
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginJgiNo(loginInfo.getJgiNo() + "");
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+
         // END UOC
     }
 

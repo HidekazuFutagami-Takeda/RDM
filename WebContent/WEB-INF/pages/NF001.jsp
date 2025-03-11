@@ -188,7 +188,7 @@
 
 	 	var nf001Tab;
 	 	// アクションボタン
-	    function actBtn(screenId, insNo){
+	    function actBtn(screenId, insNo, tkdTrtKbn){
 	 		var tmpIns = fm1.insNo.value;
 	 		// 新規
 	 		if(screenId == "NF011"){
@@ -196,6 +196,7 @@
 	 		} else {
 	 			fm1.insNo.value = insNo;
 	 		}
+			fm1.tkdTrtKbn.value = tkdTrtKbn;
 
 	 		if(nf001Tab && !nf001Tab.closed){
 	 			nf001Tab.close();
@@ -204,19 +205,18 @@
 	 		nf001Tab = window.open("","NF001Tab");
 			document.fm1.target="NF001Tab";
 
+
 	  		fm1.screenId.value=screenId;
 		  	fm1.functionId.value="Init";
 		  	comSubmitForAnyWarp(fm1);
 		  	comClickFlgInit();
 
 		  	fm1.insNo.value = tmpIns;
+		  	fm1.ultInsCd.value = "";
 		}
 
 		 // 新規作成ボタン
 	    function newBtn(){
-	    	var tmpIns = fm1.insNo.value;
-	    	fm1.insNo.value = "";
-
 	    	document.fm1.target="";
 		 	fm1.screenId.value="NF011";
 		  	fm1.functionId.value="Init";
@@ -229,8 +229,6 @@
 			document.fm1.target="NF001Tab";
 	  	  	comSubmitForAnyWarp(fm1);
 	  	  	comClickFlgInit();
-
-		  	fm1.insNo.value = tmpIns;
 		}
 
 	 	// ソートボタン
@@ -366,6 +364,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="selectFlgPop" name="selectFlgPop"/>
 
 	<s:hidden id="ultInsCd" name="ultInsCd"/>
+	<s:hidden id="tkdTrtKbn" name="tkdTrtKbn"/>
 
 	<s:hidden id="tmpAddrCodeCity" name="tmpAddrCodeCity" />
 
@@ -700,7 +699,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 					<%-- 新規作成 --%>
 					<td style="width:18px;">
 					<s:if test="#rowBean.funcFlg1 == 1">
-	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF011','<s:property value="#rowBean.dcfShisetsuCd"/>');" >
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF011','<s:property value="#rowBean.dcfShisetsuCd"/>','');" >
 	   		            <img border="0" src="img/button_insert.gif">
 		                </a>
 	                </s:if>
@@ -708,7 +707,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	                <%-- 編集 --%>
 	                <td style="width:18px;">
 	                <s:if test="#rowBean.funcFlg2 == 1">
-	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF012','<s:property value="#rowBean.insNo"/>');" >
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF012','<s:property value="#rowBean.insNo"/>','');" >
 	   		            <img border="0" src="img/button_update.gif">
 		                </a>
 	                </s:if>
@@ -716,7 +715,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	                <%-- 削除 --%>
 	                <td style="width:18px;">
         	        <s:if test="#rowBean.funcFlg3 == 1">
-	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF013','<s:property value="#rowBean.insNo"/>');" >
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF013','<s:property value="#rowBean.insNo"/>','');" >
 	   		            <img border="0" src="img/button_delete.gif">
 		                </a>
 		            </s:if>
@@ -724,7 +723,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	                <%-- 復活 --%>
 	                <td style="width:18px;">
 	                <s:if test="#rowBean.funcFlg4 == 1">
-        	        	<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF014','<s:property value="#rowBean.insNo"/>');" >
+        	        	<a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF014','<s:property value="#rowBean.insNo"/>','');" >
    		            	<img border="0" src="img/button_restoration.gif">
 	                	</a>
 	                </s:if>
@@ -734,7 +733,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                 	<td>
 					<%-- 親子紐づけ --%>
 					<s:if test="#rowBean.funcFlg5 == 1">
-	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF201','<s:property value="#rowBean.insNo"/>');" >
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF201','<s:property value="#rowBean.insNo"/>','1');" >
 	   		            <img border="0" src="img/button_linkcurrent.gif">
 		                </a>
 	                </s:if>
@@ -742,7 +741,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	                <td>
 	                <%-- 来期用項目更新 --%>
 	                <s:if test="#rowBean.funcFlg6 == 1">
-	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF101','<s:property value="#rowBean.insNo"/>');" >
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF101','<s:property value="#rowBean.insNo"/>','');" >
 	   		            <img border="0" src="img/button_updatenext.gif">
 		                </a>
 		            </s:if>
@@ -750,7 +749,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	                <td>
 	                <%-- 親子紐付け（来期） --%>
 	                <s:if test="#rowBean.funcFlg7 == 1">
-	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF202','<s:property value="#rowBean.insNo"/>');" >
+	        	        <a class="comMiniLink" href="#" onClick="JavaScript:actBtn('NF201','<s:property value="#rowBean.insNo"/>','0');" >
 	   		            <img border="0" src="img/buttun_linknext.gif">
 		                </a>
 		            </s:if>
@@ -788,7 +787,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
             <tr>
         	      <td class="comFormTableItem">
                 <nobr>
-                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="gotoNext('NC001','Init')" />
+                <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="window.close();" />
                 </nobr>
 	      </td>
 

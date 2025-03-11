@@ -11,13 +11,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<title><s:property value="browerTitle"/></title>
+<title>NC101_完了</title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 <link href="css/common.css" rel="Stylesheet" type="text/css" />
+<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 <link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jkrMenu.js"></script>
 <script type="text/javascript" src="js/jgiKanren.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+
 <style type="text/css">
 <!--
 /*-----------------------------------------*/
@@ -83,43 +85,18 @@ function returnButtonGo(action){
   document.fm1.action = action + ".action";
   document.fm1.submit();
 }
+
+// 閉じるボタン
+function backBtn(){
+	document.fm1.target="";
+	const preScreenId = document.fm1.preScreenId.value;
+	window.close();
+}
 </script>
+
+</head>
+
 <body class="comPage" onLoad="JavaScript:comSetFormWindowName('JLC');">
-<%-- submit用フォーム 開始 --%>
-  <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
-    <input type="text" name="screenId"			value="" />
-    <input type="text" name="functionId"		value="" />
-    <input type="text" name="windowName"		value="" />
-    <input type="text" name="openerName"		value="" />
-    <input type="text" name="systemId1"			value="" />
-    <input type="text" name="backScreenId1"		value="" />
-    <input type="text" name="backFunctionId1"	value="" />
-    <input type="text" name="backScreenName1"	value="" />
-    <input type="text" name="backParamName1"	value="" />
-    <input type="text" name="backParamValue1"	value="" />
-    <input type="text" name="backParamName2"	value="" />
-    <input type="text" name="backParamValue2"	value="" />
-    <input type="text" name="fromScreenId1"		value="" />
-    <input type="text" name="fromFunctionId1"	value="" />
-    <input type="text" name="kensakuSosCd1"		value="" />
-    <input type="text" name="pageNextBackFlag1"	value="" />
-    <input type="text" name="sortFieldNo1"		value="" />
-    <input type="text" name="sortFLG1"			value="" />
-    <input type="text" name="sosCd1"			value="" />
-    <input type="text" name="sosName1"			value="" />
-    <input type="text" name="selectedSosCd1"	value="" />
-    <input type="text" name="selectedSosName1"	value="" />
-    <input type="text" name="wkCat1"			value="" />
-    <input type="text" name="mrCat1"			value="" />
-    <input type="text" name="dispSosName1"		value="" />
-    <input type="text" name="jokenSetCd1"		value="" />
-    <input type="text" name="insDevFlg"			value="" />
-    <input type="text" name="msgId"				value="" />
-    <input type="text" name="subSystemId"		value="3" />
-    <input type="text" name="no1"				value="1" />
-    <input type="text" name="dummy"				value="dummy" />
-  </form>
-<%-- submit用フォーム 終了 --%>
 
   <%-- バナー部分をインクルード 開始 --%>
   <jsp:include page="common/jkrTop.jsp" flush="true" />
@@ -128,19 +105,35 @@ function returnButtonGo(action){
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
   <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="完了"></td>
+        <td class="comPortalTitle"><nobr>NC101_完了</nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+
 <table border="0" class="comPortalTable" align="center" style="width:98%;">
   <tr>
     <td>
       <s:form name="fm1" theme="simple" >
       <s:hidden name="NC101Finish" value="1" />
-      <table class="comPortalTitle">
+      <s:hidden name="backScreenId" value="NC101" />
+      <s:hidden name="preScreenId"/>
+
+      <table>
         <tr>
           <td class="comPortalTitleIcon"></td>
-          <td class="comPortalTitle"><nobr><s:property value="title"/></nobr></td>
+          <td><nobr><s:property value="title"/></nobr></td>
           <td class="comPortalTitleRight"><nobr></nobr></td>
         </tr>
       </table>
-      <table class="comPortalBody">
+      <table>
 <!-- 一覧表示処理 START-->
         <tr>
           <td valign="top" align="center" style="padding-left:5px;">
@@ -168,10 +161,7 @@ function returnButtonGo(action){
                   </td>
                 </tr>
                 </s:if>
-                <!-- トップメニューからの遷移 -->
-                <s:if test="%{#session.UserInfoKey.screenId == 'NC001'}">
 
-                </s:if>
                 <s:if test="message3 != null">
                 <tr>
                   <td class="comMessage3" style="width:40%;">
@@ -218,6 +208,21 @@ function returnButtonGo(action){
     </td>
   </tr>
 </table>
+
+  <%--ボタン類 --%>
+  <table id="formTable19" border="0" class="comPortalTable" align="center" style="width:98%;">
+      <tr>
+        <td style="width: 100%; height: 0px; border-width: 0px;"></td>
+      </tr>
+		<tr>
+	      <td class="comFormTableItem">
+                <nobr>
+                <input class="comButton" type="button"name="buttonF1" value="閉じる" onClick="JavaScript:backBtn();return false;" />
+                </nobr>
+	      </td>
+	  </tr>
+  </table>
+
 <%-- ボトム部分をインクルード 開始 --%>
    <jsp:include page="common/jkrBottom.jsp" flush="true" />
 <%-- ボトム部分をインクルード 終了 --%>

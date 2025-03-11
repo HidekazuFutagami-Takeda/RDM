@@ -44,6 +44,11 @@ public class NC011DTO extends BaseDTO implements Serializable {
      */
 	private String preScreenId;
 
+    /**
+     * 管理者・MR権限判定
+     */
+	private String jokenFlg;
+
 	/**
 	 * 画面タイトル
 	 * @generated
@@ -628,7 +633,22 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	}
 
 
-    public String getJgiNo() {
+
+    /**
+	 * NC011DTO.javajokenFlgを設定
+	 * @return jokenFlg
+	 */
+	public String getJokenFlg() {
+		return jokenFlg;
+	}
+	/**
+	 * @param jokenFlg セットする jokenFlg
+	 */
+	public void setJokenFlg(String jokenFlg) {
+		this.jokenFlg = jokenFlg;
+	}
+
+	public String getJgiNo() {
 		return jgiNo;
 	}
 	public void setJgiNo(String jgiNo) {

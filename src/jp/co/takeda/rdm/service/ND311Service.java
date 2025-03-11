@@ -30,6 +30,7 @@ import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
 import jp.co.takeda.rdm.util.DateUtils;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
 
@@ -270,7 +271,7 @@ public class ND311Service extends BaseService {
 		   	// レコードを登録
 	       	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
 	       	tRdmReqKnrInsData.setReqId(reqId);
-	       	if("JKN0813".equals(dto.getLoginJokenSetCd())) {
+	       	if(RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {
 	       		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
 	       		tRdmReqKnrInsData.setReqChl("2");
 	       		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -439,7 +440,7 @@ public class ND311Service extends BaseService {
            	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateTRdmReqKnrData");
 
            	tRdmReqKnrUpdData.setReqId(dto.getParamReqId());//申請ID
-           	if("JKN0813".equals(dto.getLoginJokenSetCd())) {
+           	if(RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {
            		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
            		tRdmReqKnrUpdData.setReqKngKbn("2");//申請者権限区分
            	} else {

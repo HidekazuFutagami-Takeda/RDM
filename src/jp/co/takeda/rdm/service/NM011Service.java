@@ -351,6 +351,8 @@ public class NM011Service extends BaseService {
 		SRdmNtyListEntity paramEntity = new SRdmNtyListEntity();
       //  List<NM011Entity> selectTestEntity = dao.select(paramEntity);
       //  indto.setTest(selectTestEntity.get(0).getTest());
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+    	indto.setPreScreenId(loginInfo.getPreScreenId());
 		indto.setPageFlag("0");
         addrDrop(indto);
 
@@ -419,6 +421,75 @@ public class NM011Service extends BaseService {
           paramEntity.setNtySubject(StringUtils.setEmptyToNull(indto.getNtySubject()));
           selectCntSelectNtyListEntity.setNtySubject(StringUtils.setEmptyToNull(indto.getNtySubject()));
 
+          if(paramEntity.getNtySubject() != null) {
+        	  switch (paramEntity.getNtySubject()){
+        	  case "1":
+        	    // 式を評価した値が定数1と一致したときに実行される処理
+        		  paramEntity.setNtySubject("重複登録アラート");
+        		  selectCntSelectNtyListEntity.setNtySubject("重複登録アラート");
+        	    break;
+        	  case "2":
+        	    // 式を評価した値が定数2と一致したときに実行される処理
+        		  paramEntity.setNtySubject("重複申請アラート");
+        		  selectCntSelectNtyListEntity.setNtySubject("重複申請アラート");
+        	    break;
+        	  case "3":
+          	    // 式を評価した値が定数3と一致したときに実行される処理
+          		  paramEntity.setNtySubject("ULT接続保留");
+          		  selectCntSelectNtyListEntity.setNtySubject("ULT接続保留");
+          	    break;
+        	  case "4":
+          	    // 式を評価した値が定数4と一致したときに実行される処理
+          		  paramEntity.setNtySubject("FB回答(重複)");
+          		  selectCntSelectNtyListEntity.setNtySubject("FB回答(重複)");
+          	    break;
+        	  case "5":
+          	    // 式を評価した値が定数5と一致したときに実行される処理
+          		  paramEntity.setNtySubject("FB回答(要確認)");
+          		  selectCntSelectNtyListEntity.setNtySubject("FB回答(要確認)");
+          	    break;
+        	  case "6":
+          	    // 式を評価した値が定数6と一致したときに実行される処理
+          		  paramEntity.setNtySubject("FB回答(想定外)");
+          		  selectCntSelectNtyListEntity.setNtySubject("FB回答(想定外)");
+          	    break;
+        	  case "7":
+          	    // 式を評価した値が定数7と一致したときに実行される処理
+          		  paramEntity.setNtySubject("親子整合性アラート");
+          		  selectCntSelectNtyListEntity.setNtySubject("親子整合性アラート");
+          	    break;
+        	  case "8":
+          	    // 式を評価した値が定数8と一致したときに実行される処理
+          		  paramEntity.setNtySubject("グルーピング整合性アラート");
+          		  selectCntSelectNtyListEntity.setNtySubject("グルーピング整合性アラート");
+          	    break;
+        	  case "9":
+          	    // 式を評価した値が定数9と一致したときに実行される処理
+          		  paramEntity.setNtySubject("自動承認アラート");
+          		  selectCntSelectNtyListEntity.setNtySubject("自動承認アラート");
+          	    break;
+        	  case "10":
+          	    // 式を評価した値が定数10と一致したときに実行される処理
+          		  paramEntity.setNtySubject("実績整合性アラート");
+          		  selectCntSelectNtyListEntity.setNtySubject("実績整合性アラート");
+          	    break;
+        	  case "11":
+          	    // 式を評価した値が定数11と一致したときに実行される処理
+          		  paramEntity.setNtySubject("データ整合性アラート");
+          		  selectCntSelectNtyListEntity.setNtySubject("データ整合性アラート");
+          	    break;
+        	  case "12":
+          	    // 式を評価した値が定数12と一致したときに実行される処理
+          		  paramEntity.setNtySubject("担当外アラート");
+          		  selectCntSelectNtyListEntity.setNtySubject("担当外アラート");
+          	    break;
+        	  case "13":
+          	    // 式を評価した値が定数13と一致したときに実行される処理
+          		  paramEntity.setNtySubject("長期承認待ち");
+          		  selectCntSelectNtyListEntity.setNtySubject("長期承認待ち");
+          	    break;
+          }
+        }
           //通知内容の検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setNtyData(StringUtils.setEmptyToNull(indto.getNtyData()));
           selectCntSelectNtyListEntity.setNtyData(StringUtils.setEmptyToNull(indto.getNtyData()));
@@ -427,9 +498,43 @@ public class NM011Service extends BaseService {
           paramEntity.setNtyMemo(StringUtils.setEmptyToNull(indto.getNtyMemo()));
           selectCntSelectNtyListEntity.setNtyMemo(StringUtils.setEmptyToNull(indto.getNtyMemo()));
 
-          //要チェックフラグのセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setYouFlg(StringUtils.setEmptyToNull(indto.getYouFlg()));
-          selectCntSelectNtyListEntity.setYouFlg(StringUtils.setEmptyToNull(indto.getYouFlg()));
+          //要チェックフラグのセット、
+          paramEntity.setDataDupCheck(indto.isDataDupCheck());
+          selectCntSelectNtyListEntity.setDataDupCheck(indto.isDataDupCheck());
+          //要チェックフラグのセット、
+          paramEntity.setUltRnkCheck(indto.isUltRnkCheck());
+          selectCntSelectNtyListEntity.setUltRnkCheck(indto.isUltRnkCheck());
+          //要チェックフラグのセット、
+          paramEntity.setFbResCheck(indto.isFbResCheck());
+          selectCntSelectNtyListEntity.setFbResCheck(indto.isFbResCheck());
+          //要チェックフラグのセット、
+          paramEntity.setConsCheck(indto.isConsCheck());
+          selectCntSelectNtyListEntity.setConsCheck(indto.isConsCheck());
+          //要チェックフラグのセット、
+          paramEntity.setOthersCheck(indto.isOthersCheck());
+          selectCntSelectNtyListEntity.setOthersCheck(indto.isOthersCheck());
+          //要チェックフラグのセット、
+          paramEntity.setOnlyCheck(indto.isOnlyCheck());
+          selectCntSelectNtyListEntity.setOnlyCheck(indto.isOnlyCheck());
+          //要チェックフラグのセット、
+          paramEntity.setUnconCheck(indto.isUnconCheck());
+          selectCntSelectNtyListEntity.setUnconCheck(indto.isUnconCheck());
+          //要チェックフラグのセット、
+          paramEntity.setUbderCheck(indto.isUbderCheck());
+          selectCntSelectNtyListEntity.setUbderCheck(indto.isUbderCheck());
+          //要チェックフラグのセット、
+          paramEntity.setResolvCheck(indto.isResolvCheck());
+          selectCntSelectNtyListEntity.setResolvCheck(indto.isResolvCheck());
+
+          if(paramEntity.isDataDupCheck() == true ||  paramEntity.isUltRnkCheck()  == true ||  paramEntity.isFbResCheck()  == true || paramEntity.isConsCheck() == true || paramEntity.isOthersCheck() == true|| paramEntity.isOnlyCheck() == true) {
+        	  paramEntity.setNtyBri("001");
+        	  selectCntSelectNtyListEntity.setNtyBri("001");
+          }
+
+          if(paramEntity.isUnconCheck() == true || paramEntity.isUbderCheck() == true || paramEntity.isResolvCheck() == true) {
+        	  paramEntity.setNtySts("1");
+        	  selectCntSelectNtyListEntity.setNtySts("1");
+          }
 
 
           //申請チャネルの検索値のセット、setEmptyToNullで空文字をNullに置換している。
@@ -476,20 +581,22 @@ public class NM011Service extends BaseService {
 
           String workSortCondition = indto.getSortCondition();
 
-        //SimpleDateFormatで日付フォーマット設定
-          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-          //日付チェック 開始日が終了日より後の場合
-          try {
-			if (sdf.parse(indto.getHisYmdhmsFrom()).compareTo((sdf.parse(indto.getHisYmdhmsTo()))) == 1) {
-				indto.setBoolKnb("1");
-				indto.setKensakuBool(false);
-        		return outdto;
-			  }
-		} catch (ParseException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
 
+          //日付チェック 開始日が終了日より後の場合
+         if(indto.getHisYmdhmsTo() != null || indto.getHisYmdhmsFrom() != null) {
+             //SimpleDateFormatで日付フォーマット設定
+             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+          try {
+				if (sdf.parse(indto.getHisYmdhmsFrom()).compareTo((sdf.parse(indto.getHisYmdhmsTo()))) == 1) {
+					indto.setBoolKnb("1");
+					indto.setKensakuBool(false);
+	        		return outdto;
+				  }
+			} catch (ParseException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+         }
           //入力_検索文字列  申請日がnullでないかのチェック。
           if(paramEntity.getHisYmdhmsFrom() != null) {
         	  indto.setInhisYmdhmsFrom(paramEntity.getHisYmdhmsFrom());
@@ -526,17 +633,18 @@ public class NM011Service extends BaseService {
          // selectParamSelectReqList =dao.select(paramEntity);
 
           selectParamSelectReqList  = dao.select(selectCntSelectNtyListEntity);
+          //1000件以上の場合のエラー
+    	    if (selectParamSelectReqList.get(0).getCntReq() > selectParamNM011List.get(0).getValue()) {//deptListEntity.size()
+    	    	indto.setBoolKnb("2");
+        		return outdto;
+    	    }
           indto.initPageInfo(indto.getPageCntCur(), selectParamSelectReqList.get(0).getCntReq(), selectParamNM011List.get(1).getValue());
           paramEntity.setInOffset(indto.getLineCntStart() - 1);
           paramEntity.setInLimit(selectParamNM011List.get(1).getValue());
               //画面初期表示時の帳票一覧を取得する
               List<SRdmNtyListEntity> deptListEntity = dao.select(paramEntity);
 
-              //1000件以上の場合のエラー
-        	    if (deptListEntity.size() > selectParamNM011List.get(0).getValue()) {//deptListEntity.size()
-        	    	indto.setBoolKnb("2");
-            		return outdto;
-        	    }
+
 
              // for(int i = 0;i < 11; i++) {
               	 for (SRdmNtyListEntity entity : deptListEntity) {
@@ -580,6 +688,7 @@ public class NM011Service extends BaseService {
               		// 通知内容
                 	if(entity.getNtyData() != null) {
                 	dataRecord.setNtyData(entity.getNtyData());
+                	//dataRecord.setNtyData(entity.getNtyData().replace("\\n", "<br>"));
                 	}else {
                 	dataRecord.setNtyData(" ");
                 	}

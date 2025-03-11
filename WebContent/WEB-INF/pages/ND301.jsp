@@ -650,6 +650,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>
 		      <s:label key="skInsNm"/>
 			  <s:hidden name="skInsNo"/><s:hidden name="skInsNm"/>
+		      <s:hidden name="skInsHoInsType"/><s:hidden name="skInsInsClass"/>
           </nobr></td>
 	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
 	      <td class="comFormTableItem"><nobr>
@@ -701,7 +702,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
-	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
@@ -727,7 +728,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>
-                <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
+                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 	                	<input class="comButton" type="button"name="buttonF2" value="却下" onClick="register('2');return false;" />
 	                </s:if>
@@ -742,7 +743,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <s:if test='%{loginJokenSetCd == "JKN0813" && (reqStsCd == "03" || reqStsCd == "13")}'>
+                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
                 		<s:if test='%{reqStsCd == "03"}'>
 	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>

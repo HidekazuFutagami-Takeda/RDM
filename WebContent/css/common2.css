@@ -447,6 +447,19 @@ TD.comTableItemBlue				/* テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
+TD.comTableItemNF401				/* テーブル形式の各項目 */
+{
+  color : #000000;
+  background-color: #CEF9DC;
+  text-align : left;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
 TD.comTableItemNF001				/* テーブル形式の各項目 */
 {
   color : #000000;
@@ -694,6 +707,14 @@ SELECT
 {
   font-family: "Meiryo UI";
   font-size: 8pt;
+}
+INPUT.comTableInputYellow
+{
+  background-color: lemonchiffon;
+}
+SELECT.comTableSelectYellow
+{
+  background-color: lemonchiffon;
 }
 TD.comSubjectBolder		/* 参照画面の件名を大きく見せる */
 {

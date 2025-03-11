@@ -36,9 +36,14 @@ var gMsg = new Array();
 function rdmSearch() {
 
 	if (!jkrDestructChack()) return false;
+	document.fm1.target = "";
+      document.fm1.jkrSosNtyPri.disabled = false;
+      document.fm1.inHisYmdhmsFrom.disabled = false;
+      document.fm1.inHisYmdhmsTo.disabled = false;
 
       document.fm1.screenId.value	= "NM011";
       document.fm1.functionId.value = 'Search';
+
 
 
     //選択された組織情報格納（表示押下前→表示押下後）
@@ -58,6 +63,7 @@ function NM011Sort(sortCondition) {
 	if (!jkrDestructChack()) return false;
 
 	  //ソート区分設定
+	document.fm1.target = "";
 	  document.fm1.sortCondition.value = sortCondition;
     document.fm1.screenId.value	= "NM011";
     document.fm1.functionId.value = 'Sort';
@@ -76,6 +82,7 @@ function NM011Page( pageCntCur ){
   // 変更内容破棄確認チェック
   if (!jkrDestructChack()) return false;
   //現在ページ番号変更（遷移）
+  document.fm1.target = "";
   document.fm1.pageCntCur.value = pageCntCur;
   document.fm1.screenId.value	= "NM011";
   document.fm1.functionId.value = 'Page';
@@ -84,6 +91,7 @@ function NM011Page( pageCntCur ){
 }
 function popClear(){
 	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	document.fm1.target = "";
 	document.fm1.bumonRank.value = "";
 	document.fm1.sosCd.value = "";
 	document.fm1.bumonRyakuName.value = "";
@@ -93,109 +101,110 @@ function popClear(){
 
 function rdmCler(){
 	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
-	document.fm1.aDdrCodePref.value = "";
-	document.fm1.sbt.value = "";
-	document.fm1.bumonRyakuName.value = "";
-	document.fm1.insNo.value = "";
-	document.fm1.docNo.value = "";
-	document.fm1.reqJgiName.value = "";
-	document.fm1.insKanjiSrch.value = "";
-	document.fm1.docKanj.value = "";
-	document.fm1.inreqYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
-	document.fm1.inreqYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
-	document.fm1.insClass.value = "";
-	document.fm1.docType.value = "";
-	document.fm1.reqSbt.value = "";
-	document.fm1.insSbt.value = "";
-	document.fm1.jobForm.value = "";
-	document.fm1.reqType.value = "";
-	document.fm1.hoInsType.value = "";
-	document.fm1.reqSts.value = "";
-	document.fm1.reqId.value = "";
-	document.fm1.reqComment.value = "";
-	document.fm1.aprComment.value = "";
-	document.fm1.reqChl.value = "";
+	document.fm1.target = "";
+	document.fm1.inHisYmdhmsFrom.value = "";
+	document.fm1.inHisYmdhmsTo.value = "";
+	document.fm1.ntySubject.value = "";
+	document.fm1.ntyPri.value = "";
+	document.fm1.dataDupCheck.checked = false;
+	document.fm1.ultRnkCheck.checked = false;
+	document.fm1.fbResCheck.checked = false;
+	document.fm1.consCheck.checked = false;
+	document.fm1.othersCheck.checked = false;
+	document.fm1.unconCheck.checked = false;
+	document.fm1.ubderCheck.checked = false;
+	document.fm1.resolvCheck.checked = false;
+	document.fm1.onlyCheck.checked = false;
+
+	document.fm1.dataDupCheck.disabled = false;
+		document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.ultRnkCheck.disabled = false;
+		document.fm1.ultRnkCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.fbResCheck.disabled = false;
+		document.fm1.fbResCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.consCheck.disabled = false;
+		document.fm1.consCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.othersCheck.disabled = false;
+		document.fm1.othersCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.unconCheck.disabled = false;
+		document.fm1.unconCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.ubderCheck.disabled = false;
+		document.fm1.ubderCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.resolvCheck.disabled = false;
+		document.fm1.resolvCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.dataDupCheck.disabled = false;
+		document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.inHisYmdhmsFrom.disabled = false;
+		document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.inHisYmdhmsTo.disabled = false;
+		document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.jkrSosNtySubject.disabled = false;
+		document.fm1.jkrSosNtySubject.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.fm1.jkrSosNtyPri.disabled = false;
+		document.fm1.jkrSosNtyPri.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+		document.getElementById('jkrSosNtySubject').options[1].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[2].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[3].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[4].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[5].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[6].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[7].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[8].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[9].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[10].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[11].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[12].hidden=false;
+		document.getElementById('jkrSosNtySubject').options[13].hidden=false;
+
+		document.getElementById('jkrSosNtyPri').options[1].hidden=false;
+		document.getElementById('jkrSosNtyPri').options[2].hidden=false;
+		document.getElementById('jkrSosNtyPri').options[3].hidden=false;
 
 
 }
 function gotoNext(screenId,functionId){
 	  //getParam();
+	  document.fm1.target = "";
 	  fm1.screenId.value=screenId;
 	  fm1.functionId.value=functionId;
 	  comSubmitForAnyWarp(fm1);
 	}
-function NM011Seni(reqType) {
+function NM011Seni(ntyId,ntySts) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-	if(reqType == "01"){
-		alert("NF011_施設新規作成に遷移します")
-		gotoNext('NF011','Init');
+
+	//var ntyIdcell = fm1.ntyId.value;
+
+	var tmpNty = fm1.ntyId.value;
+	var nm011Tab;
+
+	fm1.ntyId.value=ntyId;
+	if(ntySts == "未確認"){
+		fm1.ntySts.value= "0";
 	}
-	if(reqType == "02"){
-		alert("NF012_施設情報更新に遷移します")
-		gotoNext('NF012','Init');
+	if(ntySts == "確認中"){
+		fm1.ntySts.value="1";
 	}
-	if(reqType == "03"){
-		alert("NF013_施設削除に遷移します")
-		gotoNext('NF013','Init');
+	if(ntySts == "解消済"){
+		fm1.ntySts.value="2";
 	}
-	if(reqType == "04"){
-		alert("NF014_施設復活に遷移します")
-		gotoNext('NF014','Init');
+
+	if(nm011Tab && !nm011Tab.closed){
+		nm011Tab.close();
 	}
-	if(reqType == "11"){
-		alert("NF211_施設紐づけ作成に遷移します")
-		gotoNext('NF211','Init');
-	}
-	if(reqType == "12"){
-		alert("NF212_親施設の変更に遷移します")
-		gotoNext('NF212','Init');
-	}
-	if(reqType == "13"){
-		alert("NF213_施設紐づけの削除に遷移します")
-		gotoNext('NF213','Init');
-	}
-	if(reqType == "21"){
-		alert("NF101_施設来期情報更新に遷移します")
-		gotoNext('NF101','Init');
-	}
-	if(reqType == "31"){
-		alert("ND011_医師新規作成に遷移します")
-		gotoNext('ND011','Init');
-	}
-	if(reqType == "32"){
-		alert("ND012_医師情報更新に遷移します")
-		gotoNext('ND012','Init');
-	}
-	if(reqType == "33"){
-		alert("ND105_医師削除に遷移します")
-		gotoNext('ND015','Init');
-	}
-	if(reqType == "34"){
-		alert("ND014_医師復活に遷移します")
-		gotoNext('ND014','Init');
-	}
-	if(reqType == "41"){
-		alert("ND103_医師勤務先追加に遷移します")
-		//gotoNext('ND113','Init');
-		gotoNext('ND103','Init');
-	}
-	if(reqType == "42"){
-		alert("ND101_医療機関への異動に遷移します")
-		gotoNext('ND101','Init');
-	}
-	if(reqType == "43"){
-		alert("ND102_医療機関以外への異動に遷移します")
-		gotoNext('ND102','Init');
-	}
-	if(reqType == "44"){
-		alert("ND104_医師勤務先削除に遷移します")
-		gotoNext('ND104','Init');
-	}
-	if(reqType == "51"){
-		alert("ND013_勤務先情報更新に遷移します")
-		gotoNext('ND014','Init');
-	}
+
+	nc001Tab = window.open("","NM011Tab");
+	document.fm1.target="NM011Tab";
+
+	fm1.screenId.value='NM101';
+	fm1.functionId.value="Init";
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+
+
+		//alert("NM101_通知内容詳細に遷移します")
+		//gotoNext('NM101','Init');
+		//fm1.ntyId.value=ntyIdcell;
 }
 
 
@@ -250,7 +259,116 @@ function sosReqSbt(){
   */
  function sosSbt(){
 
-	 var val1 = document.getElementById("jkrSosSbtMap").value;
+	 var val1 = document.getElementById("onlyCheck").checked;
+	 document.fm1.target = "";
+     if (val1 == true) {
+
+			document.fm1.dataDupCheck.disabled = true;
+			document.fm1.dataDupCheck.checked = false;
+			document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.ultRnkCheck.disabled = true;
+			document.fm1.ultRnkCheck.checked = false;
+			document.fm1.ultRnkCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.fbResCheck.disabled = true;
+			document.fm1.fbResCheck.checked = false;
+			document.fm1.fbResCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.consCheck.disabled = true;
+			document.fm1.consCheck.checked = false;
+			document.fm1.consCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.othersCheck.disabled = true;
+			document.fm1.othersCheck.checked = false;
+			document.fm1.othersCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.unconCheck.disabled = true;
+			document.fm1.unconCheck.checked = false;
+			document.fm1.unconCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.ubderCheck.disabled = true;
+			document.fm1.ubderCheck.checked = false;
+			document.fm1.ubderCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.resolvCheck.disabled = true;
+			document.fm1.resolvCheck.checked = false;
+			document.fm1.resolvCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.dataDupCheck.disabled = true;
+			document.fm1.dataDupCheck.checked = false;
+			document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.jkrSosNtySubject.disabled = true;
+			document.fm1.jkrSosNtySubject.value = "";
+			document.fm1.jkrSosNtySubject.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.jkrSosNtyPri.disabled = true;
+			//document.fm1.jkrSosNtyPri.value = "3";
+			document.fm1.jkrSosNtyPri.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+
+			//document.fm1.inHisYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
+			//document.fm1.inHisYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
+			document.fm1.inHisYmdhmsFrom.disabled = true;
+			document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			document.fm1.inHisYmdhmsTo.disabled = true;
+			document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+
+ 		document.getElementById('jkrSosNtySubject').options[1].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[2].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[3].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[4].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[5].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[6].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[7].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[8].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[9].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[10].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[11].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[12].hidden=true;
+ 		document.getElementById('jkrSosNtySubject').options[13].hidden=true;
+
+ 		document.getElementById('jkrSosNtyPri').options[1].hidden=true;
+ 		document.getElementById('jkrSosNtyPri').options[2].hidden=true;
+ 		document.getElementById('jkrSosNtyPri').options[3].hidden=true;
+
+     } else {
+
+ 		document.fm1.dataDupCheck.disabled = false;
+ 		document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.ultRnkCheck.disabled = false;
+			document.fm1.ultRnkCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.fbResCheck.disabled = false;
+			document.fm1.fbResCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.consCheck.disabled = false;
+			document.fm1.consCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.othersCheck.disabled = false;
+			document.fm1.othersCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.unconCheck.disabled = false;
+			document.fm1.unconCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.ubderCheck.disabled = false;
+			document.fm1.ubderCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.resolvCheck.disabled = false;
+			document.fm1.resolvCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.dataDupCheck.disabled = false;
+			document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.inHisYmdhmsFrom.disabled = false;
+			document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+			document.fm1.inHisYmdhmsTo.disabled = false;
+			document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+ 		document.fm1.jkrSosNtySubject.disabled = false;
+ 		document.fm1.jkrSosNtySubject.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+ 		document.fm1.jkrSosNtyPri.disabled = false;
+ 		document.fm1.jkrSosNtyPri.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+ 		document.getElementById('jkrSosNtySubject').options[1].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[2].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[3].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[4].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[5].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[6].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[7].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[8].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[9].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[10].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[11].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[12].hidden=false;
+ 		document.getElementById('jkrSosNtySubject').options[13].hidden=false;
+
+ 		document.getElementById('jkrSosNtyPri').options[1].hidden=false;
+ 		document.getElementById('jkrSosNtyPri').options[2].hidden=false;
+ 		document.getElementById('jkrSosNtyPri').options[3].hidden=false;
+
+     }
 
 	 if(val1 == ''){
 			document.fm1.insNo.disabled = true;
@@ -451,7 +569,7 @@ function jimSort(sortCondition){
 
 	  //現在ページ番号変更（遷移）
 	  //document.fm1.pageCntCur.value = 1;
-
+	  document.fm1.target = "";
 	  //ソート区分設定
 	  document.fm1.sortCondition.value = sortCondition;
 

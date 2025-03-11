@@ -176,7 +176,7 @@ public class ND012Service extends BaseService {
 				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(),loginInfo.getBrCode()));
 				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(),loginInfo.getDistCode()));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(),""));
-				indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(),""));
+				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 
 				// マスタから取得
 				// 所属学会リスト
@@ -231,11 +231,11 @@ public class ND012Service extends BaseService {
 				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
-				indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 				indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
-				indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+				indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
 				indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
-				indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+				indto.setAprYmdhms(StringUtils.dispYmdhms(mainDataEntity.getAprYmdhms()));
 				indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
 				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
 				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -367,7 +367,7 @@ public class ND012Service extends BaseService {
 
 		indto.setHcpSocietyDataChgFlg("0");
 		indto.setHcpPublicDataChgFlg("0");
-		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0813 全MR：JKN0023
+		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
 		// DropDownList作成
 		createCombo(indto);
@@ -376,10 +376,10 @@ public class ND012Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
         } else {
@@ -838,10 +838,10 @@ public class ND012Service extends BaseService {
 		        if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 		        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
 		        	indto.setEditApprFlg("1");
-		        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
-		        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
 		        } else {
@@ -871,10 +871,10 @@ public class ND012Service extends BaseService {
 		        if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 		        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
 		        	indto.setEditApprFlg("1");
-		        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
-		        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
 		        } else {
@@ -1458,7 +1458,7 @@ public class ND012Service extends BaseService {
 				// 申請管理
 				TRdmReqKnrEntity insEntity1 =  new TRdmReqKnrEntity();
 				insEntity1.setReqId(reqId); //申請ID
-				if("JKN0813".equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0813 全MR：JKN0023)
+				if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0850 全MR：JKN0023)
 					insEntity1.setReqChl("2");//申請チャネル
 					insEntity1.setReqKngKbn("2");//申請者権限区分
 				} else {
@@ -1721,6 +1721,10 @@ public class ND012Service extends BaseService {
 			dao.deleteByValue(deleteEntity4);
 		}
 		// 後処理
+		if ("0".equals(indto.getButtonFlg())) {
+			// 一時保存の場合完了メッセージセット
+			indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I005)); // 保存が完了しました。
+		}
 		if ("1".equals(indto.getButtonFlg()) || "3".equals(indto.getButtonFlg())) {
 		// 申請または承認ボタン押下でエラーなしならボタンフラグを9完了にする
 			indto.setButtonFlg("9");
@@ -1733,10 +1737,10 @@ public class ND012Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
         } else {
@@ -2073,9 +2077,9 @@ public class ND012Service extends BaseService {
 			SelectND012MainDataEntity paramChkEntity = new SelectND012MainDataEntity();
 			paramChkEntity.setSqlId("selectND012CheckTkdData");
 			paramChkEntity.setInDocNo(indto.getTkdDocNo());
-			paramChkEntity.setInReqId(indto.getReqId());
+			paramChkEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
 			List<SelectND012MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
-			if(!chkEntityList1.isEmpty()) {
+			if(chkEntityList1.size() > 0) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W035);//医師は異動が予定されています。
 				msgStr = msgStr + tmpMsgStr + "\n";

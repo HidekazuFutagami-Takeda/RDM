@@ -512,39 +512,39 @@ public class NF301Service extends BaseService {
         // 病床数チェック
 		if(indto.getInsRank() == null) {
 
-		} else if(indto.getInsRank() == "01" || indto.getInsRank() == "02" || indto.getInsRank() == "03"
-				 || indto.getInsRank() == "04" || indto.getInsRank() == "05" || indto.getInsRank() == "06"
+		} else if(("01".equals(indto.getInsRank()) || "02".equals(indto.getInsRank()) || "03".equals(indto.getInsRank())
+				 || "04".equals(indto.getInsRank()) || "05".equals(indto.getInsRank()) || "06".equals(indto.getInsRank()))
 				 && !chkNumRange(indto.getBedsTot(), 0, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "12" || indto.getInsRank() == "13" || indto.getInsRank() == "15"
+		} else if(("12".equals(indto.getInsRank()) || "13".equals(indto.getInsRank()) || "15".equals(indto.getInsRank()))
 				 && !"0".equals(indto.getBedsTot())){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "11" || indto.getInsRank() == "14"
+		} else if(("11".equals(indto.getInsRank()) || "14".equals(indto.getInsRank()))
 				 && !chkNumRange(indto.getBedsTot(), 1, 19)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "07" && !chkNumRange(indto.getBedsTot(), 100, 9999)){
+		} else if("07".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 100, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "08" && !chkNumRange(indto.getBedsTot(), 200, 9999)){
+		} else if("08".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 200, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "09" && !chkNumRange(indto.getBedsTot(), 20, 99)){
+		} else if("09".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 99)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "10" && !chkNumRange(indto.getBedsTot(), 20, 199)){
+		} else if("10".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "16" && !chkNumRange(indto.getBedsTot(), 20, 199)
+		} else if("16".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)
 					&& !("0".equals(indto.getBedCnt01()) && "0".equals(indto.getBedCnt07()) && "0".equals(indto.getBedCnt04())
 							&& "0".equals(indto.getBedCnt05()) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
@@ -622,7 +622,7 @@ public class NF301Service extends BaseService {
         }
 
         // MR権限の場合、ログインユーザ情報．組織コードが施設のJIS府県＋武田市区郡を担当可能か判定する
-        if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
         	SRdmJkrSosAddrEntity sRdmJkrSosAddrChkEntity = new SRdmJkrSosAddrEntity("selectNF011sosAddrChkData");
         	sRdmJkrSosAddrChkEntity.setSosCd(loginInfo.getSosCd());
         	sRdmJkrSosAddrChkEntity.setAddrCodePref(indto.getAddrCodePref());
@@ -638,19 +638,19 @@ public class NF301Service extends BaseService {
         }
 
         // 主担当重複チェック
+        indto.setHcoJkrDataList(delDeleteFlgRow(indto.getHcoJkrDataList()));
+
         List<HcoJkrData> hcoJkrDataChkList = indto.getHcoJkrDataList();
         HashSet<String> trtSet = new HashSet<>();
 
         for(int i=0; i<hcoJkrDataChkList.size(); i++) {
-        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(0);
-        	if(!"1".equals(hcoJkrData.getDeleteFlg())) {
-        		if(!trtSet.add(hcoJkrData.getTrtCd())) {
-        			// 領域に対して担当者は1名のみ設定してください。
-        			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
-        			errFlg = true;
-        			break;
-        		}
-        	}
+        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(i);
+    		if(!trtSet.add(hcoJkrData.getTrtCd())) {
+    			// 領域に対して担当者は1名のみ設定してください。
+    			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
+    			errFlg = true;
+    			break;
+    		}
         }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
@@ -703,7 +703,7 @@ public class NF301Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -1269,6 +1269,7 @@ public class NF301Service extends BaseService {
 		indto.setHcoJkrDataList(hcoJkrDataList);
 		indto.setBeforeHcoJkrDataList(beforeHcoJkrDataList);
 
+
 		// 申請ボタン活性フラグ取得
 		indto.setBtnEnableFlg("0");
 		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
@@ -1542,7 +1543,7 @@ public class NF301Service extends BaseService {
         	tRdmReqKnrEntity.setReqYmdhms(sysDateTime);
         	tRdmReqKnrEntity.setReqComment(indto.getReqComment());
 
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		tRdmReqKnrEntity.setReqKngKbn("2");
         	} else {
         		tRdmReqKnrEntity.setReqKngKbn("1");
@@ -2060,39 +2061,39 @@ public class NF301Service extends BaseService {
         // 病床数チェック
 		if(indto.getInsRank() == null) {
 
-		} else if(indto.getInsRank() == "01" || indto.getInsRank() == "02" || indto.getInsRank() == "03"
-				 || indto.getInsRank() == "04" || indto.getInsRank() == "05" || indto.getInsRank() == "06"
+		} else if(("01".equals(indto.getInsRank()) || "02".equals(indto.getInsRank()) || "03".equals(indto.getInsRank())
+				 || "04".equals(indto.getInsRank()) || "05".equals(indto.getInsRank()) || "06".equals(indto.getInsRank()))
 				 && !chkNumRange(indto.getBedsTot(), 0, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "12" || indto.getInsRank() == "13" || indto.getInsRank() == "15"
+		} else if(("12".equals(indto.getInsRank()) || "13".equals(indto.getInsRank()) || "15".equals(indto.getInsRank()))
 				 && !"0".equals(indto.getBedsTot())){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "11" || indto.getInsRank() == "14"
+		} else if(("11".equals(indto.getInsRank()) || "14".equals(indto.getInsRank()))
 				 && !chkNumRange(indto.getBedsTot(), 1, 19)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "07" && !chkNumRange(indto.getBedsTot(), 100, 9999)){
+		} else if("07".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 100, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "08" && !chkNumRange(indto.getBedsTot(), 200, 9999)){
+		} else if("08".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 200, 9999)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "09" && !chkNumRange(indto.getBedsTot(), 20, 99)){
+		} else if("09".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 99)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "10" && !chkNumRange(indto.getBedsTot(), 20, 199)){
+		} else if("10".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if(indto.getInsRank() == "16" && !chkNumRange(indto.getBedsTot(), 20, 199)
+		} else if("16".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)
 					&& !("0".equals(indto.getBedCnt01()) && "0".equals(indto.getBedCnt07()) && "0".equals(indto.getBedCnt04())
 							&& "0".equals(indto.getBedCnt05()) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
@@ -2170,7 +2171,7 @@ public class NF301Service extends BaseService {
         }
 
         // MR権限の場合、ログインユーザ情報．組織コードが施設のJIS府県＋武田市区郡を担当可能か判定する
-        if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
         	SRdmJkrSosAddrEntity sRdmJkrSosAddrChkEntity = new SRdmJkrSosAddrEntity("selectNF011sosAddrChkData");
         	sRdmJkrSosAddrChkEntity.setSosCd(loginInfo.getSosCd());
         	sRdmJkrSosAddrChkEntity.setAddrCodePref(indto.getAddrCodePref());
@@ -2186,19 +2187,19 @@ public class NF301Service extends BaseService {
         }
 
         // 主担当重複チェック
+        indto.setHcoJkrDataList(delDeleteFlgRow(indto.getHcoJkrDataList()));
+
         List<HcoJkrData> hcoJkrDataChkList = indto.getHcoJkrDataList();
         HashSet<String> trtSet = new HashSet<>();
 
         for(int i=0; i<hcoJkrDataChkList.size(); i++) {
-        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(0);
-        	if(!"1".equals(hcoJkrData.getDeleteFlg())) {
-        		if(!trtSet.add(hcoJkrData.getTrtCd())) {
-        			// 領域に対して担当者は1名のみ設定してください。
-        			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
-        			errFlg = true;
-        			break;
-        		}
-        	}
+        	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(i);
+    		if(!trtSet.add(hcoJkrData.getTrtCd())) {
+    			// 領域に対して担当者は1名のみ設定してください。
+    			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
+    			errFlg = true;
+    			break;
+    		}
         }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
@@ -2589,5 +2590,24 @@ public class NF301Service extends BaseService {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * hcoJkrDataからDeleteFlg=1のデータを削除
+	 */
+	public static List<HcoJkrData> delDeleteFlgRow(List<HcoJkrData> hcoJkrDataList){
+		int i = 0;
+		int j = hcoJkrDataList.size();
+
+		while(i < j) {
+			if("1".equals(hcoJkrDataList.get(i).getDeleteFlg())) {
+				hcoJkrDataList.remove(i);
+				j--;
+			} else {
+				i++;
+			}
+		}
+
+		return hcoJkrDataList;
 	}
 }

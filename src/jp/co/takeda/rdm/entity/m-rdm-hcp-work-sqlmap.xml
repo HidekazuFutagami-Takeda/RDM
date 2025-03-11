@@ -29,6 +29,19 @@
     <resultMap id="selectCntNd401InitResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity">
         <result column="CNT_KMU" property="cntKmu"/>
     </resultMap>
+    <resultMap id="selectHcpWorkResultMap" type="jp.co.takeda.rdm.entity.join.SelectHcpWorkEntity">
+        <result column="INS_NO" property="insNo"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="JOB_FORM" property="jobForm"/>
+        <result column="DEPT_CODE" property="deptCode"/>
+        <result column="DEPT_KANJI" property="deptKanji"/>
+        <result column="DEPT_KANA" property="deptKana"/>
+        <result column="UNIV_POS_CODE" property="univPosCode"/>
+        <result column="TITLE_CODE" property="titleCode"/>
+        <result column="DCC" property="dccType"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
+        <result column="NEXT_BIZDAY" property="nextBizday"/>
+    </resultMap>
    <select id="selectCntNd401Init" parameterType="jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity" resultMap="selectCntNd401InitResultMap">
         SELECT COUNT(*) CNT_KMU
         FROM (
@@ -206,5 +219,26 @@
         ORDER BY
             HCO_MST.INS_NO, HCP_SHOZOKU_BUKA.SORT_NUM1, HCP_SHOZOKU_BUKA.SORT_NUM2, HCP_SHOZOKU_BUKA.SORT_NUM3, HCP_YAKUSHOKU.SORT_NUM, HCP_MST.DOC_NO
         OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
+    </select>
+    <select id="selectND315WorkData" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpWorkEntity" resultMap="selectHcpWorkResultMap">
+        SELECT
+            WOR.INS_NO
+          , NVL(WOR.JOB_FORM, 'Z') AS JOB_FORM
+          , NVL(WOR.DEPT_CODE, 'Z') AS DEPT_CODE
+          , NVL(WOR.DEPT_KANJI, 'Z') AS DEPT_KANJI
+          , NVL(WOR.DEPT_KANA, 'Z') AS DEPT_KANA
+          , WOR.UNIV_POS_CODE
+          , WOR.TITLE_CODE
+          , WOR.DCC
+          , HCP.ULT_DOC_NO
+          , RDM_COMMON.GET_NEXT_BIZDAY(RDM_COMMON.GET_TODAY) AS NEXT_BIZDAY
+        FROM
+           M_RDM_HCP_WORK WOR
+        INNER JOIN
+           M_RDM_HCP_MST  HCP
+           ON 1 = 1
+          AND HCP.DOC_NO = WOR.DOC_NO
+        WHERE 1 = 1
+          AND WOR.DOC_NO = #{inDocNo}
     </select>
 </mapper>

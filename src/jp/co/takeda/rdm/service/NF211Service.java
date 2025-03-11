@@ -78,6 +78,7 @@ public class NF211Service extends BaseService {
     		paramEntity.setInsNo(indto.getInsNo());
     		MRdmHcoMstEntity mainDataEntity = dao.selectByPK(paramEntity);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
     		// 施設
@@ -128,6 +129,7 @@ public class NF211Service extends BaseService {
     		paramEntity.setInsNo(indto.getInsNo());
     		MRdmHcoMstEntity mainDataEntity = dao.selectByPK(paramEntity);
 
+    		indto.setReqId("");
     		indto.setReqStsNm("");
     		indto.setReqYmdhms("");
     		// 施設
@@ -395,10 +397,10 @@ public class NF211Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
@@ -439,7 +441,7 @@ public class NF211Service extends BaseService {
     	// 領域・品目グループ
     	SelectLnkTrtDataEntity inEntityCmb = new SelectLnkTrtDataEntity("selectTrtPrdComboData");
     	inEntityCmb.setInInsNo(indto.getInsNo());
-    	if("JKN0023".equals(indto.getLoginJokenSetCd())) {
+    	if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
     		// ※MR権限の場合のみ ログインユーザ情報.領域コード
     		inEntityCmb.setInTrtCd(indto.getLoginTrtCd());
     	}
@@ -542,7 +544,7 @@ public class NF211Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");

@@ -20,7 +20,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.service.ND307Service;
 import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.JkrConstantsData;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.ND307DTO;
 

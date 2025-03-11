@@ -103,11 +103,11 @@ public class ND301Service extends BaseService {
 			indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 			indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 			indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
-			indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+			indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 			indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
-			indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+			indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
 			indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
-			indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+			indto.setAprYmdhms(StringUtils.dispYmdhms(mainDataEntity.getAprYmdhms()));
 			indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
 			indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
 			indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -166,6 +166,8 @@ public class ND301Service extends BaseService {
 			indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
 			indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
 			indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
+			indto.setSkInsHoInsType(StringUtils.nvl(mainDataEntity.getSkInsHoInsType(), ""));
+			indto.setSkInsInsClass(StringUtils.nvl(mainDataEntity.getSkInsInsClass(), ""));
 
 			// 所属学会リスト
 			SelectHcpSocietyDataEntity societyParamEntity = new SelectHcpSocietyDataEntity();
@@ -220,12 +222,12 @@ public class ND301Service extends BaseService {
 				indto.setBtnEnableFlg("1");
 			}
 		}
-		if(loginInfo.getJokenSetCd().equals("JKN0813")) {
+		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
 			indto.setFbReqFlg(true);//初期値はチェックON
 		}
 //		indto.setHcpSocietyDataChgFlg("0");
 //		indto.setHcpPublicDataChgFlg("0");
-		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0813 全MR：JKN0023
+		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
 //		// DropDownList作成
 //		createCombo(indto);
@@ -552,8 +554,8 @@ public class ND301Service extends BaseService {
 					}else {
 						updateEntity1.setReqStsCd("03");//　申請ステータス
 						// 申請者権限区分
-						if("JKN0813".equals(loginInfo.getJokenSetCd())) {
-							//MDM管理者：JKN0813 全MR：JKN0023)
+						if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
+							//MDM管理者：JKN0850 全MR：JKN0023)
 							updateEntity1.setReqKngKbn("2");
 							updateEntity1.setReqChl("2");
 						}else {
@@ -672,9 +674,9 @@ public class ND301Service extends BaseService {
 		SelectND301MainDataEntity paramChkEntity = new SelectND301MainDataEntity();
 		paramChkEntity.setSqlId("selectND301CheckUltData");
 		paramChkEntity.setInUltDocNo(indto.getUltDocNo());
-		paramChkEntity.setInReqId(indto.getReqId());
+		paramChkEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
 		List<SelectND301MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
-		if(!chkEntityList1.isEmpty()) {
+		if(chkEntityList1.size() > 0) {
 			errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);//重複する申請が行われています。（項目名）
 			tmpMsgStr = tmpMsgStr.replace("項目名", "ULT医師");

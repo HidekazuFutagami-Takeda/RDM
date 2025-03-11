@@ -136,6 +136,13 @@ public class NF305Service extends BaseService {
         	errFlg = true;
         }
 
+        // 削除理由＝重複登録で、施設固定C＝重複施設コード　の場合
+        if("03".equals(indto.getDelReason()) && indto.getInsNo().equals(indto.getDupInsNo())) {
+        	// 同一の施設が重複先に指定されています。
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W059) + "\n";
+			errFlg = true;
+        }
+
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
         if(indto.getUpdShaYmd() != null && !indto.getUpdShaYmd().equals("")) {
         	TRdmReqKnrEntity tRdmReqKnrChkEntity = new TRdmReqKnrEntity("selectNF011DateChkData");
@@ -186,7 +193,7 @@ public class NF305Service extends BaseService {
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
         		tRdmReqKnrInsData.setReqChl("2");
         		tRdmReqKnrInsData.setReqKngKbn("2");
@@ -630,7 +637,7 @@ public class NF305Service extends BaseService {
         	tRdmReqKnrEntity.setReqYmdhms(sysDateTime);
         	tRdmReqKnrEntity.setReqComment(indto.getReqComment());
 
-        	if("JKN0813".equals(indto.getLoginJokenSetCd())) {
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         		tRdmReqKnrEntity.setReqKngKbn("2");
         	} else {
         		tRdmReqKnrEntity.setReqKngKbn("1");
@@ -782,6 +789,13 @@ public class NF305Service extends BaseService {
         	// 重複する申請が行われています。（施設コード）
         	errMsg += loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "施設コード") + "\n";
         	errFlg = true;
+        }
+
+        // 削除理由＝重複登録で、施設固定C＝重複施設コード　の場合
+        if("03".equals(indto.getDelReason()) && indto.getInsNo().equals(indto.getDupInsNo())) {
+        	// 同一の施設が重複先に指定されています。
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W059) + "\n";
+			errFlg = true;
         }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合

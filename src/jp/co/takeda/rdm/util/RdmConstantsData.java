@@ -13,10 +13,8 @@ public class RdmConstantsData {
     /***条件設定 : 適用日設定可能本部権限 */
 //    public static final String RDM_JKN_HONBU_COMMIT = "JKN0163";
 
-	//TODO 二神　JKN0163を正しく設定する
     /**条件設定 : MDM管理者権限 */
-	//TODO二神　MDM管理者：JKN0813  全MR：JKN0023
-    public static final String RDM_JKN_ADMIN = "JKN0813";
+    public static final String RDM_JKN_ADMIN = "JKN0850";
 
     /**条件設定 : 全MR権限 */
     public static final String RDM_JKN_MR = "JKN0023";
@@ -527,6 +525,8 @@ public class RdmConstantsData {
 
     /**コード情報コード名 : 医師／薬剤師区分 */
     public static final String CODE_NAME_DOC_TYPE = "DOC_TYPE";
+    /**コード情報コード名 : 施設分類 */
+    public static final String CODE_NAME_INS_CLASS = "INS_CLASS";
     /**コード情報コード名 : 施設種別 */
     public static final String CODE_NAME_INS_TYPE = "INS_TYPE";
     /**コード情報コード名 : 取引区分 */
@@ -595,6 +595,19 @@ public class RdmConstantsData {
     public static final String CODE_NAME_HCO_RST_REASON = "HCO_RST_REASON";
     /**コード情報コード名 : 削除理由 */
     public static final String CODE_NAME_HCO_DEL_REASON = "HCO_DEL_REASON";
+    /**コード情報コード名 : 医師復活理由 */
+    public static final String CODE_NAME_HCP_RST_REASON = "HCP_RST_REASON";
+    /**コード情報コード名 : 医師削除理由 */
+    public static final String CODE_NAME_HCP_DEL_REASON = "HCP_DEL_REASON";
+
+    /**コード情報コード値１ : 異動先施設不明用ダミー施設 */
+    public static final String CODE_VALUE_DUMMY_HCO_9 = "959000000";
+    public static final String CODE_VALUENM_DUMMY_HCO_9 = "異動先施設不明";
+    /**コード情報コード値１ : 異動先施設不明用未登録所属部科 */
+    public static final String CODE_VALUE_DUMMY_DEPT_CODE = "9999";
+    /** 大学判定用 **/
+    public static final String HCO_HO_INS_TYPE_1 = "1";
+    public static final String HCO_INS_CLASS_01 = "01";
 
     /**パラメタ情報パラメタ名 : 医師メニュースイッチ */
     public static final String PARAM_NAME_MN_DOC = "MN_DOC";
@@ -690,5 +703,8 @@ public class RdmConstantsData {
     public static final String W053 = "W053"; // 既に削除申請されている施設です。
     public static final String W054 = "W054"; // エリア階層の組織を選択してください。
     public static final String W055 = "W055"; // 医師情報の更新申請ができない状態です。
-
+    public static final String W056 = "W056"; // 勤務先が2件以上存在するため申請できません。
+    public static final String W057 = "W057"; // 医療機関外へ異動されている医師は削除できません。
+    public static final String W058 = "W058"; // 医師は異動が予定されています。
+    public static final String W059 = "W059"; // 同一の施設が重複先に指定されています。
 }

@@ -24,19 +24,7 @@
 
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-String regEnabedFlg = StringUtils.nvl((String)request.getAttribute("regEnabedFlg"), "");
-//20180406 HISOL ISHIDA START
-String sosSelFlg = StringUtils.nvl((String)request.getAttribute("sosSelFlg"), "");
-//20180406 HISOL ISHIDA END
-String strRegDisabled = "";
-//20180406 HISOL ISHIDA START
-//if (!"1".equals(regEnabedFlg)) {
-if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
-//20180406 HISOL ISHIDA END
-    strRegDisabled = "disabled";
-}
-%>
+
 <%-- オブジェクト読み込み --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -64,7 +52,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    		document.fm1.functionId.value="Init";
   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -75,7 +63,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    		document.fm1.functionId.value="Init";
   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -86,7 +74,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    		document.fm1.functionId.value="Init";
   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -125,7 +113,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 //         }
 		const returnFlg = document.fm1.buttonFlg.value;
 		if(returnFlg == "8"){//削除完了時画面を閉じろ
-// 			window.close();ではjsで開いた画面しか無理
+ 			window.close();ではjsで開いた画面しか無理
 		}
         return false;
       }
@@ -961,12 +949,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCseView();return false;" />
 		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
 		                <s:hidden name="skInsNo" id="skInsNo"/>
+		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
+		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skIns');return false;">Clear</a>
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button2" value="選択" disabled />
 		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
 		                <s:hidden name="skInsNo" id="skInsNo"/>
+		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
+		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
 					</s:else>
                 </nobr>
 	      </td>
@@ -1047,7 +1039,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
-	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
 	      </tr>
@@ -1113,7 +1105,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0813"}'>
+				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" disabled/>
 					</s:if>
@@ -1132,11 +1124,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" onClick="register('1');return false;" />
 			   </s:if>
 				<s:else>
-				   <s:if test='%{reqStsCd != null && reqStsCd != "" && (reqStsCd == "03" || reqStsCd == "13") &&  loginJokenSetCd == "JKN0813"}'>
+				   <s:if test='%{reqStsCd != null && reqStsCd != "" && (reqStsCd == "03" || reqStsCd == "13") &&  loginJokenSetCd == "JKN0850"}'>
 		                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" onClick="register('3');return false;" />
 				   </s:if>
 					<s:else>
-						<s:if test='%{loginJokenSetCd == "JKN0813"}'>
+						<s:if test='%{loginJokenSetCd == "JKN0850"}'>
 			                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" disabled/>
 						</s:if>
 						<s:else>

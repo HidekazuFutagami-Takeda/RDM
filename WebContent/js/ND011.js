@@ -55,6 +55,8 @@ function nd011Clear( name ) {
   } else if ( name == 'skIns' ) {
     document.fm1.skInsNo.value = "";
     document.fm1.skInsNm.value = "";
+    document.fm1.skInsHoInsType.value = "";
+    document.fm1.skInsInsClass.value = "";
   // 勤務先情報 所属部科
   } else if ( name == 'skDept' ) {
     document.fm1.skDeptCd.value = "";
@@ -1320,7 +1322,7 @@ function tmpCseView(){
   hcpClosePopUp(gCseViewWin, "gCseViewWin");
 
  // パラメータの設定
-  //document.fm1.backScreenId.value = "ND011";
+  document.fm1.backScreenId.value = "ND011";
   gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
   return(true);
 }
@@ -1332,6 +1334,8 @@ function tmpCseView(){
  */
 function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
     document.fm1.skInsNo.value = insNo;
-    document.fm1.skInsNm.value = shisetsuNm;
+    document.fm1.skInsNm.value = insAbbrName;
+    document.fm1.skInsHoInsType.value = hoInsType;
+    document.fm1.skInsInsClass.value = insClass;
 
 }

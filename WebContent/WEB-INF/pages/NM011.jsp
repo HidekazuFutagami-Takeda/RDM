@@ -63,6 +63,122 @@
     	comClickFlgInit();
     }
     </script>
+     <script>
+        function handleCheckboxChange(checkbox) {
+            if (checkbox.checked) {
+
+    			document.fm1.dataDupCheck.disabled = true;
+    			document.fm1.dataDupCheck.checked = false;
+    			document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.ultRnkCheck.disabled = true;
+    			document.fm1.ultRnkCheck.checked = false;
+    			document.fm1.ultRnkCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.fbResCheck.disabled = true;
+    			document.fm1.fbResCheck.checked = false;
+    			document.fm1.fbResCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.consCheck.disabled = true;
+    			document.fm1.consCheck.checked = false;
+    			document.fm1.consCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.othersCheck.disabled = true;
+    			document.fm1.othersCheck.checked = false;
+    			document.fm1.othersCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.unconCheck.disabled = true;
+    			document.fm1.unconCheck.checked = false;
+    			document.fm1.unconCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.ubderCheck.disabled = true;
+    			document.fm1.ubderCheck.checked = false;
+    			document.fm1.ubderCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.resolvCheck.disabled = true;
+    			document.fm1.resolvCheck.checked = false;
+    			document.fm1.resolvCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.dataDupCheck.disabled = true;
+    			document.fm1.dataDupCheck.checked = false;
+    			document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.jkrSosNtySubject.disabled = true;
+    			document.fm1.jkrSosNtySubject.value = "";
+    			document.fm1.jkrSosNtySubject.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.jkrSosNtyPri.disabled = true;
+    			//document.getElementById("jkrSosNtyPri").readOnly = true;
+
+    			document.fm1.jkrSosNtyPri.value = "3";
+    			document.fm1.jkrSosNtyPri.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+
+    			document.fm1.inHisYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
+    			document.fm1.inHisYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
+    			document.fm1.inHisYmdhmsFrom.disabled = true;
+    			//document.getElementById("inHisYmdhmsFrom").readOnly = true;
+    			document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			document.fm1.inHisYmdhmsTo.disabled = true;
+    			//document.getElementById("inHisYmdhmsTo").readOnly = true;
+    			document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+
+        		document.getElementById('jkrSosNtySubject').options[1].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[2].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[3].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[4].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[5].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[6].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[7].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[8].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[9].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[10].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[11].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[12].hidden=true;
+        		document.getElementById('jkrSosNtySubject').options[13].hidden=true;
+
+        		document.getElementById('jkrSosNtyPri').options[1].hidden=true;
+        		document.getElementById('jkrSosNtyPri').options[2].hidden=true;
+        		document.getElementById('jkrSosNtyPri').options[3].hidden=true;
+
+            } else {
+
+        		document.fm1.dataDupCheck.disabled = false;
+        		document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.ultRnkCheck.disabled = false;
+    			document.fm1.ultRnkCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.fbResCheck.disabled = false;
+    			document.fm1.fbResCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.consCheck.disabled = false;
+    			document.fm1.consCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.othersCheck.disabled = false;
+    			document.fm1.othersCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.unconCheck.disabled = false;
+    			document.fm1.unconCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.ubderCheck.disabled = false;
+    			document.fm1.ubderCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.resolvCheck.disabled = false;
+    			document.fm1.resolvCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.dataDupCheck.disabled = false;
+    			document.fm1.dataDupCheck.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.inHisYmdhmsFrom.disabled = false;
+    			document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+    			document.fm1.inHisYmdhmsTo.disabled = false;
+    			document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+        		document.fm1.jkrSosNtySubject.disabled = false;
+        		document.fm1.jkrSosNtySubject.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+        		document.fm1.jkrSosNtyPri.disabled = false;
+        		document.fm1.jkrSosNtyPri.style.backgroundColor = JKR_BG_COLOR_NORMAL;
+        		document.getElementById('jkrSosNtySubject').options[1].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[2].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[3].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[4].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[5].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[6].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[7].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[8].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[9].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[10].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[11].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[12].hidden=false;
+        		document.getElementById('jkrSosNtySubject').options[13].hidden=false;
+
+        		document.getElementById('jkrSosNtyPri').options[1].hidden=false;
+        		document.getElementById('jkrSosNtyPri').options[2].hidden=false;
+        		document.getElementById('jkrSosNtyPri').options[3].hidden=false;
+
+            }
+        }
+    </script>
         <style>
     .parent {
         display:flex;
@@ -144,46 +260,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 %>
 	 <%
 	  // ソート表示状態制御
-	  String reqIdAscClass = "comTableNoSort";
-	  String reqIdDescClass = "comTableNoSort";
-	  String reqYmdhmsAscClass = "comTableNoSort";
-	  String reqYmdhmsDescClass = "comTableNoSort";
-	  String reqSbtAscClass = "comTableNoSort";
-	  String reqSbtDescClass = "comTableNoSort";
-	  String reqTypeAscClass = "comTableNoSort";
-	  String reqTypeDescClass = "comTableNoSort";
-	  String reqStsAscClass = "comTableNoSort";
-	  String reqStsDescClass = "comTableNoSort";
-	  String sbtAscClass = "comTableNoSort";
-	  String sbtDescClass = "comTableNoSort";
-	  String reqJgiNameAscClass = "comTableNoSort";
-	  String reqJgiNameDescClass = "comTableNoSort";
+	  String ntyIdAscClass = "comTableNoSort";
+	  String ntyIdDescClass = "comTableNoSort";
+	  String hisYmdhmsAscClass = "comTableNoSort";
+	  String hisYmdhmsDescClass = "comTableNoSort";
+
 	  if ("1".equals(sortCondition)) {
-		  reqIdDescClass = "comTableSort";
+		  ntyIdDescClass = "comTableSort";
 	  } else if ("2".equals(sortCondition)) {
-		  reqYmdhmsAscClass = "comTableSort";
+		  hisYmdhmsAscClass = "comTableSort";
 	  } else if ("3".equals(sortCondition)) {
-		  reqYmdhmsDescClass = "comTableSort";
-	  } else if ("4".equals(sortCondition)) {
-		  reqSbtAscClass = "comTableSort";
-	  } else if ("5".equals(sortCondition)) {
-		  reqSbtDescClass = "comTableSort";
-	  } else if ("6".equals(sortCondition)) {
-		  reqTypeAscClass = "comTableSort";
-	  } else if ("7".equals(sortCondition)) {
-		  reqTypeDescClass = "comTableSort";
-	  } else if ("8".equals(sortCondition)) {
-		  reqStsAscClass = "comTableSort";
-	  } else if ("9".equals(sortCondition)) {
-		  reqStsDescClass = "comTableSort";
-	  } else if ("10".equals(sortCondition)) {
-		  sbtAscClass = "comTableSort";
-	  } else if ("11".equals(sortCondition)) {
-		  sbtDescClass = "comTableSort";
-	  } else if ("12".equals(sortCondition)) {
-		  reqJgiNameAscClass = "comTableSort";
-	  } else if ("13".equals(sortCondition)) {
-		  reqJgiNameDescClass = "comTableSort";
+		  hisYmdhmsDescClass = "comTableSort";
 	  }
 	%>
 </head>
@@ -226,8 +313,9 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
 
 <!--  	<s:hidden id="reqId" name="reqId"/>
-	<s:hidden id="reqType" name="reqType"/>-->
-
+	<s:hidden id="reqType" name="reqType"/> -->
+	<s:hidden name="ntyId"/>
+	<s:hidden name="ntySts"/>
 	<s:hidden id="sortCondition" name="sortCondition" />
 	<s:hidden name="title" />
 	<s:hidden id="bumonRank" name="bumonRank"/>
@@ -270,10 +358,18 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<table style="align:cener;">
 		<tr>
 					<%-- 通知分類--%>
-			    <td class="pupControlItem" ><nobr>&nbsp;通知分類</nobr></td>
-	            <td class="comTableSearchItem">
-				<s:select id="jkrSosAddrCd" name="aDdrCodePref" cssStyle="width:80pt" list ="jkrSosAddrMap" />
-			    </td>
+		    <td class="pupControlItem" ><nobr>&nbsp;通知分類</nobr></td>
+			<td style="width:10pt;"><s:checkbox id="dataDupCheck" name="dataDupCheck" tabIndex="-1"/>データ重複検知</td>
+            <td style="width:10pt;"><s:checkbox id="ultRnkCheck" name="ultRnkCheck" tabIndex="-1"/></td>
+            <td style="width:100pt;"><nobr>アルトマーク連携</nobr></td>
+            <td style="width:10pt;"><s:checkbox id="fbResCheck" name="fbResCheck" tabIndex="-1"/></td>
+            <td style="width:100pt;"><nobr>FB回答確認</nobr></td>
+            <td style="width:10pt;"><s:checkbox id="consCheck" name="consCheck" tabIndex="-1"/></td>
+            <td style="width:100pt;"><nobr>整合性チェック</nobr></td>
+            <td style="width:10pt;"><s:checkbox id="othersCheck" name="othersCheck" tabIndex="-1"/></td>
+            <td style="width:100pt;"><nobr>その他</nobr></td>
+            <td style="width:10pt;"><s:checkbox id="onlyCheck" name="onlyCheck" tabIndex="-1" onchange="handleCheckboxChange(this)"/></td>
+            <td style="width:100pt;"><nobr>要確認のみ</nobr></td>
 		</tr>
 		<tr>
 						<%-- 通知件名 --%>
@@ -284,9 +380,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		</tr>
 		<tr>	<%-- ステータス --%>
 			<td class="pupControlItem"><nobr>&nbsp;ステータス</nobr></td>
-				<td>
-					 <s:textfield size="20" maxlength="40" name="insKanjiSrch" STYLE="ime-mode:active" />
-				</td>
+			<td style="width:10pt;"><s:checkbox id="unconCheck" name="unconCheck" tabIndex="-1"/>未確認</td>
+            <td style="width:10pt;"><s:checkbox id="ubderCheck" name="ubderCheck" tabIndex="-1"/></td>
+            <td style="width:100pt;"><nobr>確認中</nobr></td>
+            <td style="width:10pt;"><s:checkbox id="resolvCheck" name="resolvCheck" tabIndex="-1"/></td>
+            <td style="width:100pt;"><nobr>解消済</nobr></td>
 		</tr>
 		<tr>
 							<%-- 優先度 --%>
@@ -298,11 +396,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<tr>
 			<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
 				<td>
-				<input type="date" name ="hisYmdhmsFrom"id="inHisYmdhmsFrom" value="${inhisYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
-				<input type="date" name ="hisYmdhmsTo"  id="inHisYmdhmsTo" value="${inhisYmdhmsTo}" pattern="yyyy-MM-dd" />
+				<nobr><input type="date" name ="hisYmdhmsFrom"id="inHisYmdhmsFrom" value="${inhisYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
+				<input type="date" name ="hisYmdhmsTo"  id="inHisYmdhmsTo" value="${inhisYmdhmsTo}" pattern="yyyy-MM-dd" /></nobr>
 			</td>
 		</tr>
 		<tr>
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			   <td>
 				   <input type="button" name="search" value="検索" onclick="rdmSearch();">
 				   <input type="button" name="クリア" value="クリア" onclick="rdmCler();return false;" />
@@ -396,20 +495,20 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 													<td rowspan="4" class="comTableTitle container tkdUlt" width="120px"
 														style="border: none;z-index:3;" id="styles">通知ID <span
 														style="font-size: 1pt;"> </span> <a
-														class="<%=reqIdAscClass%>" href=""
-														onclick="NC011Sort(0);return false;">▲</a> <span
+														class="<%=ntyIdAscClass%>" href=""
+														onclick="NM011Sort(0);return false;">▲</a> <span
 														style="font-size: 1pt;"> </span> <a
-														class="<%=reqIdDescClass%>" href=""
-														onclick="NC011Sort(1);return false;">▼</a>
+														class="<%=ntyIdDescClass%>" href=""
+														onclick="NM011Sort(1);return false;">▼</a>
 													</td>
 													<td rowspan="4" class="comTableTitle container tkdUlt" width="180px"
 														style="border: none;">発生日時 <span
 														style="font-size: 1pt;"> </span> <a
-														class="<%=reqYmdhmsAscClass%>" href=""
-														onclick="NC011Sort(2);return false;">▲</a> <span
+														class="<%=hisYmdhmsAscClass%>" href=""
+														onclick="NM011Sort(2);return false;">▲</a> <span
 														style="font-size: 1pt;"> </span> <a
-														class="<%=reqYmdhmsDescClass%>" href=""
-														onclick="NC011Sort(3);return false;">▼</a>
+														class="<%=hisYmdhmsDescClass%>" href=""
+														onclick="NM011Sort(3);return false;">▼</a>
 													</td>
 													<td rowspan="4" class="comTableTitle container tkdUlt" width="120px"
 														style="border: none;">通知分類
@@ -433,7 +532,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				<s:iterator value="catTuuchiComboDataList" status="status" var="rowBean">
 					<tr>
 						 <td class="comTableItem tkdUlt"style="z-index:2;">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="ntyId" />','<s:property  value="reqId" />');return false;">
+						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NM011Seni('<s:property  value="ntyId" />','<s:property  value="ntySts" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
 						            <s:hidden  name="catTuuchiComboDataList[%{#status.index}].ntyId"  key="catTuuchiComboDataList[%{#status.index}].ntyId" />
@@ -443,8 +542,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				  		 <td class="comTableItem tkdUlt" style="z-index:2;"><s:label  name="catTuuchiComboDataList[%{#status.index}].hisYmdhmsTo"  key="catTuuchiComboDataList[%{#status.index}].hisYmdhmsTo" /></td>
 				         <td class="comTableItem tkdUlt" style="z-index:2;"><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyBri"  key="catTuuchiComboDataList[%{#status.index}].ntyBri" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySubject"  key="catTuuchiComboDataList[%{#status.index}].ntySubject" /></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyData.replaceAll('\\n', '<br />')"  key="catTuuchiComboDataList[%{#status.index}].ntyData.replaceAll('\\n', '<br />')" /></td>
-				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyMemo"  key="catTuuchiComboDataList[%{#status.index}].ntyMemo"/></td>
+				         <td class="comTableItem" ><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /></td>
+				         <td class="comTableItem" ><s:property  value="ntyMemo.replaceAll('\\n', '<br/>')" escape="false" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntySts"  key="catTuuchiComboDataList[%{#status.index}].ntySts" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyPri"  key="catTuuchiComboDataList[%{#status.index}].ntyPri" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms"  key="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms" /></td>

@@ -27,6 +27,10 @@
 	    }
 	}
 
+	function addrCodeCityChange(){
+    	document.fm1.tmpAddrCodeCity.value = document.fm1.kensakuAddrCodeCity.value;
+    }
+
      function jimSort(sortCondition){
     	  // 変更内容破棄確認チェック
     	  if (!jkrDestructChack()) return false;

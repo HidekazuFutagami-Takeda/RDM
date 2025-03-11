@@ -104,7 +104,7 @@ public class ND103Service extends BaseService {
         	else {//その他非活
 
         	}
-        	if("JKN0813".equals(dto.getLoginJokenSetCd())) {//管理者
+        	if(RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {//管理者
         		//'01'(保存済み)、'03'（承認待ち）、'13'(ULT承認待ち)の場合　活性
             	if (Objects.deepEquals(entity.getReqSts(), "01") ||
         			Objects.deepEquals(entity.getReqSts(), "03") ||
@@ -283,7 +283,7 @@ public class ND103Service extends BaseService {
 	           	// レコードを登録
 	           	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
 	           	tRdmReqKnrInsData.setReqId(dto.getParamReqId());
-	           	if("JKN0813".equals(dto.getLoginJokenSetCd())) {
+	           	if(RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {
 	           		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
 	           		tRdmReqKnrInsData.setReqChl("2");
 	           		tRdmReqKnrInsData.setReqKngKbn("2");

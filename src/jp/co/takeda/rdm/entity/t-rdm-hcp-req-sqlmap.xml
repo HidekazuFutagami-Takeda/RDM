@@ -102,6 +102,8 @@
         <result column="JOB_FORM" property="skJobForm"/>
         <result column="DCC_TYPE" property="skDcctype"/>
         <result column="INS_NO_SK" property="skInsNo"/>
+        <result column="HO_INS_TYPE" property="skInsHoInsType"/>
+        <result column="INS_CLASS" property="skInsInsClass"/>
         <result column="DEPT_CODE" property="skDeptCd"/>
         <result column="REQ_COMMENT" property="reqComment"/>
         <result column="APR_MEMO" property="aprMemo"/>
@@ -128,6 +130,8 @@
         <result column="SK_DEPT_NM" property="skDeptNm"/>
         <result column="TITLE_CODE" property="skTitleCd"/>
         <result column="INS_NO_SK" property="skInsNo"/>
+        <result column="HO_INS_TYPE" property="skInsHoInsType"/>
+        <result column="INS_CLASS" property="skInsInsClass"/>
         <result column="DEPT_CODE" property="skDeptCd"/>
     </resultMap>
     <resultMap id="nD011CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND011MainDataEntity">
@@ -196,6 +200,8 @@
         <result column="DCC_TYPE" property="skDcctype"/>
         <result column="DCC_TYPE_NM" property="skDcctypeNm"/>
         <result column="INS_NO_SK" property="skInsNo"/>
+        <result column="HO_INS_TYPE" property="skInsHoInsType"/>
+        <result column="INS_CLASS" property="skInsInsClass"/>
         <result column="DEPT_CODE" property="skDeptCd"/>
         <result column="REQ_COMMENT" property="reqComment"/>
         <result column="APR_COMMENT" property="aprComment"/>
@@ -385,7 +391,176 @@
     <resultMap id="nD303CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND303MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
     </resultMap>
-
+    <resultMap id="nD105MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="MST_DOC_NO" property="tkdDocNo"/>
+        <result column="MST_DOC_KANJ" property="tkdDocNm"/>
+        <result column="MST_DOC_KANA" property="tkdDocKana"/>
+        <result column="DOC_KANJ_SEI" property="docKanjiSei"/>
+        <result column="DOC_KANJ_MEI" property="docKanjiMei"/>
+        <result column="DOC_ATTRIBUTE" property="docAttribute"/>
+        <result column="DOC_ATTRIBUTE_NM" property="docAttributeNm"/>
+        <result column="DEL_REASON" property="delReason"/>
+        <result column="DUP_DOC_NO" property="dupDocNo"/>
+        <result column="DUP_DOC_NM" property="dupDocNm"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+    </resultMap>
+    <resultMap id="nD105CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
+    <resultMap id="nD105CheckKinmuResultMap" type="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity">
+         <result column="DOC_NO" property="tkdDocNo"/>
+   </resultMap>
+    <resultMap id="nD315MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="MST_DOC_NO" property="tkdDocNo"/>
+        <result column="MST_DOC_KANJ" property="tkdDocNm"/>
+        <result column="MST_DOC_KANA" property="tkdDocKana"/>
+        <result column="DOC_KANJ_SEI" property="docKanjiSei"/>
+        <result column="DOC_KANJ_MEI" property="docKanjiMei"/>
+        <result column="DOC_ATTRIBUTE" property="docAttribute"/>
+        <result column="DOC_ATTRIBUTE_NM" property="docAttributeNm"/>
+        <result column="DEL_REASON" property="delReason"/>
+        <result column="DEL_REASON_NM" property="delReasonNm"/>
+        <result column="DUP_DOC_NO" property="dupDocNo"/>
+        <result column="DUP_DOC_NM" property="dupDocNm"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+    </resultMap>
+    <resultMap id="nD315CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
+    <resultMap id="nD315CheckKinmuResultMap" type="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity">
+         <result column="DOC_NO" property="tkdDocNo"/>
+    </resultMap>
+    <resultMap id="nD014MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="MST_DOC_NO" property="tkdDocNo"/>
+        <result column="MST_DOC_KANJ" property="tkdDocNm"/>
+        <result column="MST_DOC_KANA" property="tkdDocKana"/>
+        <result column="DOC_KANJ_SEI" property="docKanjiSei"/>
+        <result column="DOC_KANJ_MEI" property="docKanjiMei"/>
+        <result column="DEL_REASON" property="delReason"/>
+        <result column="DEL_REASON_NM" property="delReasonNm"/>
+        <result column="RST_REASON" property="rstReason"/>
+        <result column="INS_NO_SK" property="skInsNo"/>
+        <result column="SK_INS_NM" property="skInsNm"/>
+        <result column="HO_INS_TYPE" property="skInsHoInsType"/>
+        <result column="INS_CLASS" property="skInsInsClass"/>
+        <result column="DEPT_CODE" property="skDeptCd"/>
+        <result column="SK_DEPT_NM" property="skDeptNm"/>
+        <result column="UNIV_POS_CODE" property="skUnivPosCd"/>
+        <result column="TITLE_CODE" property="skTitleCd"/>
+        <result column="JOB_FORM" property="skJobForm"/>
+        <result column="DCC_TYPE" property="skDcctype"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+    </resultMap>
+    <resultMap id="nD014CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
+    <resultMap id="nD305MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectND305MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_SHZ" property="reqShzNm"/>
+        <result column="REQ_STS_NM" property="reqStsNm"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="reqBrCd"/>
+        <result column="REQ_DIST_CODE" property="reqDistCd"/>
+        <result column="REQ_STS" property="reqStsCd"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="MST_DOC_NO" property="tkdDocNo"/>
+        <result column="MST_DOC_KANJ" property="tkdDocNm"/>
+        <result column="MST_DOC_KANA" property="tkdDocKana"/>
+        <result column="DOC_KANJ_SEI" property="docKanjiSei"/>
+        <result column="DOC_KANJ_MEI" property="docKanjiMei"/>
+        <result column="DEL_REASON" property="delReason"/>
+        <result column="DEL_REASON_NM" property="delReasonNm"/>
+        <result column="RST_REASON" property="rstReason"/>
+        <result column="RST_REASON_NM" property="rstReasonNm"/>
+        <result column="INS_NO_SK" property="skInsNo"/>
+        <result column="SK_INS_NM" property="skInsNm"/>
+        <result column="HO_INS_TYPE" property="skInsHoInsType"/>
+        <result column="INS_CLASS" property="skInsInsClass"/>
+        <result column="DEPT_CODE" property="skDeptCd"/>
+        <result column="SK_DEPT_NM" property="skDeptNm"/>
+        <result column="UNIV_POS_CODE" property="skUnivPosCd"/>
+        <result column="UNIV_POS_CODE_NM" property="skUnivPosNm"/>
+        <result column="TITLE_CODE" property="skTitleCd"/>
+        <result column="TITLE_CODE_NM" property="skTitleNm"/>
+        <result column="JOB_FORM" property="skJobForm"/>
+        <result column="JOB_FORM_NM" property="skJobFormNm"/>
+        <result column="DCC_TYPE" property="skDcctype"/>
+        <result column="DCC_TYPE_NM" property="skDcctypeNm"/>
+        <result column="REQ_COMMENT" property="reqComment"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="APR_COMMENT" property="aprComment"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+    </resultMap>
+    <resultMap id="nD305CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND305MainDataEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity" resultMap="tRdmHcpReqResultMap">
         SELECT
             REQ_ID, DOC_NO, DOC_TYPE, DOC_KANJ, DOC_KANA, DOC_KANJ_SEI, DOC_KANJ_MEI, DOC_KANA_SEI, DOC_KANA_MEI, OLD_KANJ_SEI, OLD_KANA_SEI, NEW_NAME_ST_YYYY, NEW_NAME_ST_MM, NEW_NAME_ST_DD, DOB_YYYY, DOB_MM, DOB_DD, SEX, HOME_TOWN, MED_SCH, GRAD_YEAR, HOME_DEPT_CODE, H_UNIV, EMPL_YEAR, SP_LIVER, SP_DISEASE, SP_COM, INS_NO_SK, JOB_FORM, DEPT_CODE, UNIV_POS_CODE, TITLE_CODE, DCC_TYPE, ULT_DOC_NO, MDM_ID, DOC_ATTRIBUTE, DEL_REASON, DEL_YMD, DUP_DOC_NO, RST_REASON, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -688,6 +863,8 @@
 		, HCP.SP_COM  -- 医師_申請管理.専門追加情報
 		, HCP.HOME_DEPT_CODE  -- 医師_申請管理.出身所属コード
 		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.HO_INS_TYPE
+		, HCO.INS_CLASS
 		, HCP.UNIV_POS_CODE  -- 医師_申請管理.大学職位コード
 		, SBK.DEPT_KJ AS SK_DEPT_NM  -- 医師_所属部科マスタ(勤務).所属部科漢字名
 		, HCP.TITLE_CODE  -- 医師_申請管理.役職コード
@@ -760,6 +937,8 @@
 		, SJM.UNIV_CODE AS MED_SCH  -- 医師_出身校紐付けマスタ.武田出身大学コード
 		, ULT.SOTSUNEN_SR AS GRAD_YEAR  -- ULT_MDB個人マスタ.卒年(西暦)
 		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.HO_INS_TYPE
+		, HCO.INS_CLASS
 		, YUV.TITLE_CODE AS UNIV_POS_CODE  -- 医師_役職紐付けマスタ(大学職位).武田役職コード
 		, SBK.DEPT_KJ AS SK_DEPT_NM  -- 医師_所属部科マスタ(勤務).所属部科漢字名
 		, YAK.TITLE_CODE AS TITLE_CODE  -- 医師_役職紐付けマスタ(役職).武田役職コード
@@ -880,7 +1059,7 @@
 			WHERE KNR.REQ_TYPE = '31'
 			AND KNR.REQ_STS IN ('03','13','04','14')
 			AND HCP.ULT_DOC_NO = #{inUltDocNo}
-			AND KNR.REQ_ID != #{inReqId}
+			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
     </select>
     <select id="selectND011CheckDelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectND011MainDataEntity" resultMap="nD011CheckResultMap">
 			SELECT KNR.REQ_ID
@@ -946,6 +1125,8 @@
 		, HCP.SP_COM  -- 医師_申請管理.専門追加情報
 		, HCP.HOME_DEPT_CODE  -- 医師_申請管理.出身所属コード
 		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.HO_INS_TYPE
+		, HCO.INS_CLASS
 		, HCP.UNIV_POS_CODE  -- 医師_申請管理.大学職位コード
 		, SBK.DEPT_KJ AS SK_DEPT_NM  -- 医師_所属部科マスタ(勤務).所属部科漢字名
 		, HCP.TITLE_CODE  -- 医師_申請管理.役職コード
@@ -1078,7 +1259,7 @@
 			WHERE KNR.REQ_TYPE = '31'
 			AND KNR.REQ_STS IN ('03','13','04','14')
 			AND HCP.ULT_DOC_NO = #{inUltDocNo}
-			AND KNR.REQ_ID != #{inReqId}
+			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
     </select>
     <select id="selectND301CheckDelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectND301MainDataEntity" resultMap="nD011CheckResultMap">
 			SELECT KNR.REQ_ID
@@ -1587,5 +1768,476 @@
 			AND KNR.REQ_STS IN ('03','13','04','14')
 			AND HCP.DOC_NO = #{inDocNo}
             AND KNR.TEKIYO_YMD >= RDM_COMMON.GET_NEXT_BIZDAY(RDM_COMMON.GET_TODAY())
+    </select>
+    <select id="selectND105REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity" resultMap="nD105MainDataResultMap">
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, MST.DOC_NO AS MST_DOC_NO
+		, MST.DOC_KANJ AS MST_DOC_KANJ
+		, MST.DOC_KANA AS MST_DOC_KANA
+		, MST.DOC_ATTRIBUTE
+		, CDMDAT.VALUE1_KANJ AS DOC_ATTRIBUTE_NM
+		, HCP.DOC_KANJ_SEI  -- 医師_申請管理.氏名（漢字）姓
+		, HCP.DOC_KANJ_MEI  -- 医師_申請管理.氏名（漢字）名
+		, HCP.DEL_REASON  -- 医師_申請管理.削除理由
+		, HCP.DUP_DOC_NO  -- 医師_申請管理.重複医師コード
+		, DUP.DOC_KANJ AS DUP_DOC_NM
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
+		, KNR.REQ_CHL -- 申請管理.申請チャネル
+		, KNR.APR_COMMENT -- 申請管理.承認却下コメント
+		FROM
+		M_RDM_HCP_MST MST ---医師_基本情報
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND KNR.DOC_NO = MST.DOC_NO
+		INNER JOIN
+		T_RDM_HCP_REQ HCP ---医師_申請管理
+		ON 1=1
+		AND HCP.REQ_ID = KNR.REQ_ID
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDAT -- コード情報医師属性
+		ON 1=1
+		AND CDMDAT.CODE_NAME = 'DOC_ATTRIBUTE'
+		AND CDMDAT.DEL_FLG = '0'
+		AND CDMDAT.VALUE1 = MST.DOC_ATTRIBUTE
+		LEFT JOIN
+		M_RDM_HCP_MST DUP ---医師_基本情報（重複）
+		ON 1=1
+		AND DUP.DOC_NO = HCP.DUP_DOC_NO
+        WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectND105TKDData" parameterType="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity" resultMap="nD105MainDataResultMap">
+		SELECT
+		  MST.DOC_NO AS MST_DOC_NO
+		, MST.DOC_KANJ AS MST_DOC_KANJ
+		, MST.DOC_KANA AS MST_DOC_KANA
+		, MST.DOC_ATTRIBUTE
+		, CDMDAT.VALUE1_KANJ AS DOC_ATTRIBUTE_NM
+		, MST.DOC_KANJ_SEI
+		, MST.DOC_KANJ_MEI
+		FROM
+		M_RDM_HCP_MST MST ---医師_基本情報
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDAT -- コード情報医師属性
+		ON 1=1
+		AND CDMDAT.CODE_NAME = 'DOC_ATTRIBUTE'
+		AND CDMDAT.DEL_FLG = '0'
+		AND CDMDAT.VALUE1 = MST.DOC_ATTRIBUTE
+        WHERE 1=1
+        AND MST.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND105CheckDelData" parameterType="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity" resultMap="nD315CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP --医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCP.REQ_ID
+			WHERE KNR.REQ_TYPE = '33'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCP.DOC_NO = #{inDocNo}
+			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
+    </select>
+    <select id="selectND105CheckKinmuData" parameterType="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity" resultMap="nD105CheckKinmuResultMap">
+			SELECT WOR.DOC_NO
+			FROM
+			M_RDM_HCP_WORK WOR --医師_勤務先情報
+			WHERE 1 = 1
+			AND WOR.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND105CheckKinmuDummyData" parameterType="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity" resultMap="nD105CheckKinmuResultMap">
+		SELECT WOR.DOC_NO
+		FROM
+		  M_RDM_HCP_WORK WOR --医師_勤務先情報
+		INNER JOIN
+		  M_RDM_CODE_MST CDM -- コード情報
+		   ON 1=1
+		  AND CDM.CODE_NAME = 'DUMMY_HCO'
+		  AND CDM.DEL_FLG = '0'
+		  AND CDM.VALUE1 = WOR.INS_NO
+		WHERE 1 = 1
+		  AND WOR.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND105CheckKinmuChangeData" parameterType="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity" resultMap="nD105CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP --医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCP.REQ_ID
+			WHERE KNR.REQ_TYPE IN ('41','42','43','44')
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCP.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND315REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity" resultMap="nD315MainDataResultMap">
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, MST.DOC_NO AS MST_DOC_NO
+		, MST.DOC_KANJ AS MST_DOC_KANJ
+		, MST.DOC_KANA AS MST_DOC_KANA
+		, MST.DOC_ATTRIBUTE
+		, CDMDAT.VALUE1_KANJ AS DOC_ATTRIBUTE_NM
+		, HCP.DOC_KANJ_SEI  -- 医師_申請管理.氏名（漢字）姓
+		, HCP.DOC_KANJ_MEI  -- 医師_申請管理.氏名（漢字）名
+		, HCP.DEL_REASON  -- 医師_申請管理.削除理由
+		, CDMDRE.VALUE1_KANJ AS DEL_REASON_NM
+		, HCP.DUP_DOC_NO  -- 医師_申請管理.重複医師コード
+		, DUP.DOC_KANJ AS DUP_DOC_NM
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
+		, KNR.REQ_CHL -- 申請管理.申請チャネル
+		, KNR.APR_COMMENT -- 申請管理.承認却下コメント
+		FROM
+		M_RDM_HCP_MST MST ---医師_基本情報
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND KNR.DOC_NO = MST.DOC_NO
+		INNER JOIN
+		T_RDM_HCP_REQ HCP ---医師_申請管理
+		ON 1=1
+		AND HCP.REQ_ID = KNR.REQ_ID
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDAT -- コード情報医師属性
+		ON 1=1
+		AND CDMDAT.CODE_NAME = 'DOC_ATTRIBUTE'
+		AND CDMDAT.DEL_FLG = '0'
+		AND CDMDAT.VALUE1 = MST.DOC_ATTRIBUTE
+		LEFT JOIN
+		M_RDM_HCP_MST DUP ---医師_基本情報（重複）
+		ON 1=1
+		AND DUP.DOC_NO = HCP.DUP_DOC_NO
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDRE -- コード情報
+		ON 1=1
+		AND CDMDRE.CODE_NAME = 'HCP_DEL_REASON'
+		AND CDMDRE.DEL_FLG = '0'
+		AND CDMDRE.VALUE1 = HCP.DEL_REASON
+        WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectND315CheckDelData" parameterType="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity" resultMap="nD315CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP --医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCP.REQ_ID
+			WHERE KNR.REQ_TYPE = '33'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCP.DOC_NO = #{inDocNo}
+			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
+    </select>
+        <select id="selectND315CheckKinmuData" parameterType="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity" resultMap="nD315CheckKinmuResultMap">
+			SELECT WOR.DOC_NO
+			FROM
+			M_RDM_HCP_WORK WOR --医師_勤務先情報
+			WHERE 1 = 1
+			AND WOR.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND315CheckKinmuDummyData" parameterType="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity" resultMap="nD315CheckKinmuResultMap">
+		SELECT WOR.DOC_NO
+		FROM
+		  M_RDM_HCP_WORK WOR --医師_勤務先情報
+		INNER JOIN
+		  M_RDM_CODE_MST CDM -- コード情報
+		   ON 1=1
+		  AND CDM.CODE_NAME = 'DUMMY_HCO'
+		  AND CDM.DEL_FLG = '0'
+		  AND CDM.VALUE1 = WOR.INS_NO
+		WHERE 1 = 1
+		  AND WOR.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND315CheckKinmuChangeData" parameterType="jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity" resultMap="nD315CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP --医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCP.REQ_ID
+			WHERE KNR.REQ_TYPE IN ('41','42','43','44')
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCP.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND014REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity" resultMap="nD014MainDataResultMap">
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, MST.DOC_NO AS MST_DOC_NO
+		, MST.DOC_KANJ AS MST_DOC_KANJ
+		, MST.DOC_KANA AS MST_DOC_KANA
+		, HCP.DOC_KANJ_SEI  -- 医師_申請管理.氏名（漢字）姓
+		, HCP.DOC_KANJ_MEI  -- 医師_申請管理.氏名（漢字）名
+		, MST.DEL_REASON
+		, CDMDRE.VALUE1_KANJ AS DEL_REASON_NM
+		, HCP.RST_REASON  -- 医師_申請管理.復活理由
+		, HCP.INS_NO_SK  -- 医師_申請管理.勤務先施設固定コード
+		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.HO_INS_TYPE
+		, HCO.INS_CLASS
+		, HCP.DEPT_CODE  -- 医師_申請管理.所属部科コード
+		, SBK.DEPT_KJ AS SK_DEPT_NM  -- 医師_所属部科マスタ(勤務).所属部科漢字名
+		, HCP.UNIV_POS_CODE  -- 医師_申請管理.大学職位コード
+		, HCP.TITLE_CODE  -- 医師_申請管理.役職コード
+		, HCP.JOB_FORM  -- 医師_申請管理.勤務形態
+		, HCP.DCC_TYPE  -- 医師_申請管理.薬審メンバー区分
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
+		, KNR.APR_COMMENT -- 申請管理.承認却下コメント
+		FROM
+		M_RDM_HCP_MST MST ---医師_基本情報
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND KNR.DOC_NO = MST.DOC_NO
+		INNER JOIN
+		T_RDM_HCP_REQ HCP ---医師_申請管理
+		ON 1=1
+		AND HCP.REQ_ID = KNR.REQ_ID
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDRE -- コード情報
+		ON 1=1
+		AND CDMDRE.CODE_NAME = 'HCP_DEL_REASON'
+		AND CDMDRE.DEL_FLG = '0'
+		AND CDMDRE.VALUE1 = MST.DEL_REASON
+		LEFT JOIN
+		M_RDM_HCO_MST HCO ---施設_基本情報
+		ON 1=1
+		AND HCO.INS_NO = HCP.INS_NO_SK
+		LEFT JOIN
+		M_RDM_HCP_SHOZOKU_BUKA SBK -- 医師_所属部科マスタ 勤務
+		ON
+		SBK.DEPT_CODE = HCP.DEPT_CODE
+		AND SBK.DEL_FLG = '0'
+        WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectND014TKDData" parameterType="jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity" resultMap="nD014MainDataResultMap">
+		SELECT
+		  MST.DOC_NO AS MST_DOC_NO
+		, MST.DOC_KANJ AS MST_DOC_KANJ
+		, MST.DOC_KANA AS MST_DOC_KANA
+		, MST.DEL_REASON
+		, CDMDRE.VALUE1_KANJ AS DEL_REASON_NM
+		, MST.DOC_KANJ_SEI
+		, MST.DOC_KANJ_MEI
+		FROM
+		M_RDM_HCP_MST MST ---医師_基本情報
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDRE -- コード情報
+		ON 1=1
+		AND CDMDRE.CODE_NAME = 'HCP_DEL_REASON'
+		AND CDMDRE.DEL_FLG = '0'
+		AND CDMDRE.VALUE1 = MST.DEL_REASON
+        WHERE 1=1
+        AND MST.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectND014CheckRstData" parameterType="jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity" resultMap="nD014CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP --医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCP.REQ_ID
+			WHERE KNR.REQ_TYPE = '34'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCP.DOC_NO = #{inDocNo}
+			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
+    </select>
+    <select id="selectND305REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND305MainDataEntity" resultMap="nD305MainDataResultMap">
+		SELECT
+		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
+		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, KNR.REQ_JGI_NO  -- 申請管理.申請者従業員番号
+		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
+		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
+		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
+		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
+		, MST.DOC_NO AS MST_DOC_NO
+		, MST.DOC_KANJ AS MST_DOC_KANJ
+		, MST.DOC_KANA AS MST_DOC_KANA
+		, HCP.DOC_KANJ_SEI  -- 医師_申請管理.氏名（漢字）姓
+		, HCP.DOC_KANJ_MEI  -- 医師_申請管理.氏名（漢字）名
+		, MST.DEL_REASON  -- 医師_申請管理.削除理由
+		, CDMDRE.VALUE1_KANJ AS DEL_REASON_NM
+		, HCP.RST_REASON  -- 医師_申請管理.復活理由
+		, HCP.INS_NO_SK  -- 医師_申請管理.勤務先施設固定コード
+		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.HO_INS_TYPE
+		, HCO.INS_CLASS
+		, HCP.DEPT_CODE  -- 医師_申請管理.所属部科コード
+		, SBK.DEPT_KJ AS SK_DEPT_NM  -- 医師_所属部科マスタ(勤務).所属部科漢字名
+		, HCP.UNIV_POS_CODE  -- 医師_申請管理.大学職位コード
+		, HCP.TITLE_CODE  -- 医師_申請管理.役職コード
+		, HCP.JOB_FORM  -- 医師_申請管理.勤務形態
+		, HCP.DCC_TYPE  -- 医師_申請管理.薬審メンバー区分
+		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
+		, KNR.APR_MEMO  -- 申請管理.承認者メモ
+		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
+		, KNR.APR_COMMENT -- 申請管理.承認却下コメント
+		, KNR.REQ_CHL -- 申請管理.申請チャネル
+		, MYU.TITLE_KJ AS UNIV_POS_CODE_NM
+		, MYT.TITLE_KJ AS TITLE_CODE_NM
+		, CDMJF.VALUE1_KANJ AS JOB_FORM_NM
+		, CDMDC.VALUE1_KANJ AS DCC_TYPE_NM
+		, CDMRRE.VALUE1_KANJ AS RST_REASON_NM
+		FROM
+		M_RDM_HCP_MST MST ---医師_基本情報
+		INNER JOIN
+		T_RDM_REQ_KNR KNR ---申請管理
+		ON 1=1
+		AND KNR.DOC_NO = MST.DOC_NO
+		INNER JOIN
+		T_RDM_HCP_REQ HCP ---医師_申請管理
+		ON 1=1
+		AND HCP.REQ_ID = KNR.REQ_ID
+		LEFT JOIN
+		M_RDM_CODE_MST CDM -- コード情報
+		ON 1=1
+		AND CDM.CODE_NAME = 'REQ_STS'
+		AND CDM.DEL_FLG = '0'
+		AND CDM.VALUE1 = KNR.REQ_STS
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDRE -- コード情報
+		ON 1=1
+		AND CDMDRE.CODE_NAME = 'HCP_DEL_REASON'
+		AND CDMDRE.DEL_FLG = '0'
+		AND CDMDRE.VALUE1 = MST.DEL_REASON
+		LEFT JOIN
+		M_RDM_HCO_MST HCO ---施設_基本情報
+		ON 1=1
+		AND HCO.INS_NO = HCP.INS_NO_SK
+		LEFT JOIN
+		M_RDM_HCP_SHOZOKU_BUKA SBK -- 医師_所属部科マスタ 勤務
+		ON
+		SBK.DEPT_CODE = HCP.DEPT_CODE
+		AND SBK.DEL_FLG = '0'
+		LEFT JOIN
+		M_RDM_CODE_MST CDMRRE -- コード情報
+		ON 1=1
+		AND CDMRRE.CODE_NAME = 'HCP_RST_REASON'
+		AND CDMRRE.DEL_FLG = '0'
+		AND CDMRRE.VALUE1 = HCP.RST_REASON
+		LEFT JOIN
+		M_RDM_CODE_MST CDMJF -- コード情報
+		ON 1=1
+		AND CDMJF.CODE_NAME = 'JOB_FORM'
+		AND CDMJF.DEL_FLG = '0'
+		AND CDMJF.VALUE1 = HCP.JOB_FORM
+		LEFT JOIN
+		M_RDM_CODE_MST CDMDC -- コード情報
+		ON 1=1
+		AND CDMDC.CODE_NAME = 'DCC'
+		AND CDMDC.DEL_FLG = '0'
+		AND CDMDC.VALUE1 = HCP.DCC_TYPE
+		LEFT JOIN
+		M_RDM_HCP_YAKUSHOKU MYU -- 医師_役職マスタ大学職位
+		ON 1=1
+		AND MYU.UNIV_TITLE_FLG = '1'
+		AND MYU.DEL_FLG = '0'
+		AND MYU.TITLE_CODE = HCP.UNIV_POS_CODE
+		LEFT JOIN
+		M_RDM_HCP_YAKUSHOKU MYT -- 医師_役職マスタ役職
+		ON 1=1
+		AND MYT.UNIV_TITLE_FLG = '0'
+		AND MYT.DEL_FLG = '0'
+		AND MYT.TITLE_CODE = HCP.TITLE_CODE
+        WHERE 1=1
+        AND KNR.REQ_ID = #{inReqId}
+    </select>
+    <select id="selectND305CheckRstData" parameterType="jp.co.takeda.rdm.entity.join.SelectND305MainDataEntity" resultMap="nD305CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCP_REQ HCP --医師_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCP.REQ_ID
+			WHERE KNR.REQ_TYPE = '34'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCP.DOC_NO = #{inDocNo}
+			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
     </select>
 </mapper>

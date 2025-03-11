@@ -53,6 +53,11 @@ function cseView(w, callBack, winVarName, clearProc){
   jokenName = new Array();	//パラメタの名前を1次元配列で指定
   joken = new Array();		//パラメタの値を2次元配列で指定
 
+  jokenName[ix1] = "loginJokenSetCd";
+  joken[ix1++] = new Array(document.fm1.loginJokenSetCd.value);
+  jokenName[ix1] = "backScreenId";
+  joken[ix1++] = new Array(document.fm1.backScreenId.value);
+
 //  jokenName[ix1] = "selectFlgPop";
 //  joken[ix1++] = new Array(document.fm1.selectFlgPop.value);
 //  jokenName[ix1] = "initSosCdPop";

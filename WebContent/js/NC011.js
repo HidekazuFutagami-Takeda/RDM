@@ -36,7 +36,7 @@ var gMsg = new Array();
 function rdmSearch() {
 
 	if (!jkrDestructChack()) return false;
-
+	document.fm1.target = "";
       document.fm1.screenId.value	= "NC011";
       document.fm1.functionId.value = 'Search';
 
@@ -54,11 +54,50 @@ function rdmSearch() {
 
 }
 
+
+
+function rdmSearch() {
+
+	if (!jkrDestructChack()) return false;
+
+	  document.fm1.target = "";
+      document.fm1.screenId.value	= "NC011";
+      document.fm1.functionId.value = 'Search';
+
+
+    //選択された組織情報格納（表示押下前→表示押下後）
+//    setTopChangedSos();
+//
+//    //20150202 HISOL Suzuki 本番課題No.25対応 ADD START
+//    //選択された組織情報格納（ポップアップ用）
+//    setSearchSosCdPop();
+    //20150202 HISOL Suzuki 本番課題No.25対応 ADD END
+
+    // 検索イベント呼び出し
+    comSubmitForAnyWarp(fm1);
+
+}
+
+// 住所候補ボタン
+function addrPopBtn(){
+
+	// NC205_住所候補ポップアップ画面を表示
+	window.open("","addrPopWindow",addrSubScreenSize);
+	document.fm1.screenId.value = "NC201";
+	document.fm1.functionId.value="Init";
+	document.fm1.target="addrPopWindow";
+
+	document.fm1.callBack.value="callBackAddrPop";
+
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+}
 function NC011Sort(sortCondition) {
 	if (!jkrDestructChack()) return false;
 
 	  //ソート区分設定
-	  document.fm1.sortCondition.value = sortCondition;
+    document.fm1.sortCondition.value = sortCondition;
+	document.fm1.target = "";
     document.fm1.screenId.value	= "NC011";
     document.fm1.functionId.value = 'Sort';
 
@@ -76,6 +115,7 @@ function NC011Page( pageCntCur ){
   // 変更内容破棄確認チェック
   if (!jkrDestructChack()) return false;
   //現在ページ番号変更（遷移）
+  document.fm1.target = "";
   document.fm1.pageCntCur.value = pageCntCur;
   document.fm1.screenId.value	= "NC011";
   document.fm1.functionId.value = 'Page';
@@ -84,6 +124,7 @@ function NC011Page( pageCntCur ){
 }
 function popClear(){
 	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	document.fm1.target = "";
 	document.fm1.bumonRank.value = "";
 	document.fm1.sosCd.value = "";
 	document.fm1.bumonRyakuName.value = "";
@@ -93,6 +134,7 @@ function popClear(){
 
 function rdmCler(){
 	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	document.fm1.target = "";
 	document.fm1.aDdrCodePref.value = "";
 	document.fm1.sbt.value = "";
 	document.fm1.bumonRyakuName.value = "";
@@ -126,12 +168,43 @@ function gotoNext(screenId,functionId){
 	  fm1.functionId.value=functionId;
 	  comSubmitForAnyWarp(fm1);
 	}
+
+function reqBtn(screenId, insNo){
+	var tmpIns = fm1.insNo.value;
+	var nc011Tab;
+	// 新規
+	//if(screenId == "NF011"){
+		//fm1.ultInsCd.value = insNo;
+	//} else {
+		//fm1.insNo.value = insNo;
+	//}
+
+	if(nc011Tab && !nc011Tab.closed){
+		nc011Tab.close();
+	}
+
+	nf001Tab = window.open("","NC011Tab");
+	document.fm1.target="NC011Tab";
+
+	fm1.screenId.value=screenId;
+	fm1.functionId.value="Init";
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+
+	fm1.insNo.value = tmpIns;
+}
+
 function NC011Seni(reqType,reqId) {
 	if (!jkrDestructChack()) return false;
 
 	var reqIdcell = fm1.reqId.value;
 
+	var tmpReq = fm1.reqId.value;
+	var nc011Tab;
+
 	fm1.reqId.value=reqId;
+
+
 
 	  //申請区分遷移先設定
 //	if(reqType == "01"){
@@ -205,72 +278,247 @@ function NC011Seni(reqType,reqId) {
 //	}
 	if(reqType == "施設新規作成"){
 		alert("NF011_施設新規作成に遷移します")
-		gotoNext('NF011','Init');
+
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF011';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+
+		//fm1.insNo.value = tmpIns;
+
+		//gotoNext('NF011','Init');
 	}
 	if(reqType == "施設情報更新"){
 		alert("NF012_施設情報更新に遷移します")
-		gotoNext('NF012','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF012';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "施設削除"){
 		alert("NF013_施設削除に遷移します")
-		gotoNext('NF013','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF013';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "施設復活"){
 		alert("NF014_施設復活に遷移します")
-		gotoNext('NF014','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF014';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "施設紐付け新規"){
 		alert("NF211_施設紐づけ作成に遷移します")
-		gotoNext('NF211','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC211Tab";
+
+		fm1.screenId.value='NF011';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "施設紐付け変更"){
 		alert("NF212_親施設の変更に遷移します")
-		gotoNext('NF212','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF212';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "施設紐付け削除"){
 		alert("NF213_施設紐づけの削除に遷移します")
-		gotoNext('NF213','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF213';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "施設来期用項目更新"){
 		alert("NF101_施設来期情報更新に遷移します")
-		gotoNext('NF101','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF101';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医師新規作成"){
 		alert("ND011_医師新規作成に遷移します")
-		gotoNext('ND011','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND011';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医師情報更新"){
 		alert("ND012_医師情報更新に遷移します")
-		gotoNext('ND012','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND012';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医師削除"){
 		alert("ND105_医師削除に遷移します")
-		gotoNext('ND015','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND105';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医師復活"){
 		alert("ND014_医師復活に遷移します")
-		gotoNext('ND014','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND014';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医師勤務先追加"){
 		alert("ND103_医師勤務先追加に遷移します")
 		//gotoNext('ND113','Init');
-		gotoNext('ND103','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND103';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医療機関への異動"){
 		alert("ND101_医療機関への異動に遷移します")
-		gotoNext('ND101','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND101';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医療機関以外への異動"){
 		alert("ND102_医療機関以外への異動に遷移します")
-		gotoNext('ND102','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND102';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "医師勤務先削除"){
 		alert("ND104_医師勤務先削除に遷移します")
-		gotoNext('ND104','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND104';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	if(reqType == "勤務先情報更新"){
 		alert("ND013_勤務先情報更新に遷移します")
-		gotoNext('ND014','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND013';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 	}
 	fm1.reqId.value=reqIdcell;
 }
@@ -284,7 +532,7 @@ function NC011Seni(reqType,reqId) {
  */
 
 function sosReqSbt(){
-
+	document.fm1.target = "";
  	 //申請チャネル
       document.getElementById("jkrSosReqChlMap").value = "";
       //document.getElementById("jkrSosReqChlMap").value = null; //nullにしなければならない場合はこれ。
@@ -298,7 +546,7 @@ function sosReqSbt(){
  * </pre>
  */
  function sosAddrChange() {
-
+	 document.fm1.target = "";
  	//連携種別
  	 var val2 = document.getElementById("jkrSosReqSbtMap");
  	 //選択された申請チャネル
@@ -319,6 +567,7 @@ function sosReqSbt(){
  }
 
  function reqDisable(){
+	 document.fm1.target = "";
 	  // 変更内容破棄確認チェック
 	 document.fm1.bumonRyakuName.style.backgroundColor = JKR_BG_COLOR_DISABLED;
 	 document.fm1.reqjgiName.style.backgroundColor = JKR_BG_COLOR_DISABLED;
@@ -332,7 +581,7 @@ function sosReqSbt(){
   * @returns
   */
  function sosSbt(){
-
+	 document.fm1.target = "";
 	 var val1 = document.getElementById("jkrSosSbtMap").value;
 
 	 if(val1 == ''){
@@ -529,6 +778,7 @@ function jimGotoErr() {
  * </pre>
  */
 function jimSort(sortCondition){
+	document.fm1.target = "";
 	  // 変更内容破棄確認チェック
 	  if (!jkrDestructChack()) return false;
 
@@ -598,6 +848,14 @@ function backBtn(){
 			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
+		}
+	}else if(preScreenId == "NM101"){
+		if(window.confirm("画面を閉じます。よろしいですか？（入力内容は破棄されます。）")){
+			window.close();
+		}
+	}else if(preScreenId == "NM011"){
+		if(window.confirm("画面を閉じます。よろしいですか？（入力内容は破棄されます。）")){
+			window.close();
 		}
 	}
 }

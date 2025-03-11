@@ -123,6 +123,8 @@ public class ND011Service extends BaseService {
 				indto.setSkTitleCd(StringUtils.nvl(mainDataEntity.getSkTitleCd(), ""));
 				indto.setSkInsNo(StringUtils.nvl(mainDataEntity.getSkInsNo(), ""));
 				indto.setSkDeptCd(StringUtils.nvl(mainDataEntity.getSkDeptCd(), ""));
+				indto.setSkInsHoInsType(StringUtils.nvl(mainDataEntity.getSkInsHoInsType(), ""));
+				indto.setSkInsInsClass(StringUtils.nvl(mainDataEntity.getSkInsInsClass(), ""));
 
 				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(),loginInfo.getBumonRyakuName()));
 				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(),loginInfo.getJgiName()));
@@ -134,7 +136,7 @@ public class ND011Service extends BaseService {
 				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(),loginInfo.getBrCode()));
 				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(),loginInfo.getDistCode()));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(),""));
-				indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(),""));
+				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 			} else {
 				// 完全新規 ログイン情報から申請者セット
 				indto.setReqShzNm(loginInfo.getBumonRyakuName());
@@ -157,11 +159,11 @@ public class ND011Service extends BaseService {
 				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
-				indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 				indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
-				indto.setShnYmdhms(StringUtils.nvl(mainDataEntity.getShnYmdhms(), ""));
+				indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
 				indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
-				indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
+				indto.setAprYmdhms(StringUtils.dispYmdhms(mainDataEntity.getAprYmdhms()));
 				indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
 				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
 				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -208,6 +210,8 @@ public class ND011Service extends BaseService {
 				indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
 				indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
 				indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
+				indto.setSkInsHoInsType(StringUtils.nvl(mainDataEntity.getSkInsHoInsType(), ""));
+				indto.setSkInsInsClass(StringUtils.nvl(mainDataEntity.getSkInsInsClass(), ""));
 
 				// 所属学会リスト
 				SelectHcpSocietyDataEntity societyParamEntity = new SelectHcpSocietyDataEntity();
@@ -263,7 +267,7 @@ public class ND011Service extends BaseService {
 		}
 		indto.setHcpSocietyDataChgFlg("0");
 		indto.setHcpPublicDataChgFlg("0");
-		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0813 全MR：JKN0023
+		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
 		// DropDownList作成
 		createCombo(indto);
@@ -272,10 +276,10 @@ public class ND011Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
@@ -722,10 +726,10 @@ public class ND011Service extends BaseService {
 		        if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 		        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
 		        	indto.setEditApprFlg("1");
-		        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
-		        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+		        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
 		        			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
 		        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
@@ -743,10 +747,10 @@ public class ND011Service extends BaseService {
 		        if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 		        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
 		        	indto.setEditApprFlg("1");
-		        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+		        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
 		        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
-		        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+		        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
 		        			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
 		        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
 		        	indto.setEditApprFlg("0");
@@ -1200,7 +1204,7 @@ public class ND011Service extends BaseService {
 				// 申請管理
 				TRdmReqKnrEntity insEntity1 =  new TRdmReqKnrEntity();
 				insEntity1.setReqId(reqId); //申請ID
-				if("JKN0813".equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0813 全MR：JKN0023)
+				if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0850 全MR：JKN0023)
 					insEntity1.setReqChl("2");//申請チャネル
 					insEntity1.setReqKngKbn("2");//申請者権限区分
 				} else {
@@ -1390,6 +1394,10 @@ public class ND011Service extends BaseService {
 			dao.deleteByValue(deleteEntity4);
 		}
 		// 後処理
+		if ("0".equals(indto.getButtonFlg())) {
+			// 一時保存の場合完了メッセージセット
+			indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I005)); // 保存が完了しました。
+		}
 		if ("1".equals(indto.getButtonFlg()) || "3".equals(indto.getButtonFlg())) {
 		// 申請または承認ボタン押下でエラーなしならボタンフラグを9完了にする
 			indto.setButtonFlg("9");
@@ -1402,10 +1410,10 @@ public class ND011Service extends BaseService {
         if("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
         	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
         	indto.setEditApprFlg("1");
-        } else if(!"JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if("JKN0813".equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
         	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
@@ -1474,6 +1482,16 @@ public class ND011Service extends BaseService {
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．施設");
 				msgStr = msgStr + tmpMsgStr + "\n";
+			} else {
+//				勤務先情報．大学職位
+				if(indto.getSkInsHoInsType().equals(RdmConstantsData.HCO_HO_INS_TYPE_1)
+						&& indto.getSkInsInsClass().equals(RdmConstantsData.HCO_INS_CLASS_01)) {
+					if(StringUtils.isEmpty(indto.getSkUnivPosCd())) {
+						errChk = true;
+						tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W031);//勤務先が大学附属病院の場合、大学職位を入力してください。
+						msgStr = msgStr + tmpMsgStr + "\n";
+					}
+				}
 			}
 			//	勤務先情報．所属部科
 			if(StringUtils.isEmpty(indto.getSkDeptCd())) {
@@ -1683,9 +1701,9 @@ public class ND011Service extends BaseService {
 			SelectND011MainDataEntity paramChkEntity = new SelectND011MainDataEntity();
 			paramChkEntity.setSqlId("selectND011CheckUltData");
 			paramChkEntity.setInUltDocNo(indto.getUltDocNo());
-			paramChkEntity.setInReqId(indto.getReqId());
+			paramChkEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
 			List<SelectND011MainDataEntity> chkEntityList1 = dao.select(paramChkEntity);
-			if(!chkEntityList1.isEmpty()) {
+			if(chkEntityList1.size() > 0) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);//重複する申請が行われています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "ULT医師");

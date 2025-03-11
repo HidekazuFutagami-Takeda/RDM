@@ -665,7 +665,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			document.fm1.functionId.value="Cancel";
 
 			comSubmitForAnyWarp(fm1);
-			window.close();
 		}
 	}
 

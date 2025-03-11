@@ -93,7 +93,7 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設種別") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsType() == null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
+        if(indto.getInsType() != null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
         		|| "05".equals(indto.getInsType()) || "07".equals(indto.getInsType()))
         		&& (indto.getMainInsCd() == null || indto.getMainInsCd().isEmpty())) {
         	// 必須項目にデータを入力してください。（親施設）
@@ -1642,7 +1642,7 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設種別") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsType() == null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
+        if(indto.getInsType() != null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
         		|| "05".equals(indto.getInsType()) || "07".equals(indto.getInsType()))
         		&& (indto.getMainInsCd() == null || indto.getMainInsCd().isEmpty())) {
         	// 必須項目にデータを入力してください。（親施設）

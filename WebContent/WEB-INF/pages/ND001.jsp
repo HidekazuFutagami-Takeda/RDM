@@ -77,6 +77,33 @@ if (stack.peek() instanceof ND001DTO) {
     	  comSubmitForAnyWarp(fm1);
     }
 
+ 	var nd001Tab;
+ 	// アクションボタン
+    function actBtn(screenId, docNo){
+ 		var tmpDoc = fm1.docNo.value;
+ 		// 新規
+ 		if(screenId == "ND011"){
+ 			fm1.ultDocNo.value = docNo;
+ 		} else {
+ 			fm1.docNo.value = docNo;
+ 			fm1.tkdDocNo.value = docNo;
+ 		}
+
+ 		if(nd001Tab && !nd001Tab.closed){
+ 			nd001Tab.close();
+ 		}
+
+ 		nf001Tab = window.open("","ND001Tab");
+		document.fm1.target="ND001Tab";
+
+  		fm1.screenId.value=screenId;
+	  	fm1.functionId.value="Init";
+	  	comSubmitForAnyWarp(fm1);
+	  	comClickFlgInit();
+
+	  	fm1.docNo.value = tmpDoc;
+	}
+
 
     </script>
     <style>
@@ -155,6 +182,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 </head>
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
 
+  <%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
+<table border="0" class="comPortalTable" align="center" style="width:98%;">
+  <tr>
+    <td>
     <s:form name="fm1" theme="simple" onSubmit="JavaScript:return false;" >
           <s:hidden name="screenId" value="ND001"/>
           <s:hidden name="functionId" value="Search"/>
@@ -170,8 +208,33 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <s:hidden name="selectFlg"/>
           <s:hidden name="sortCondition" />
 
-          <s:hidden name="docNo" id="docNo"/>
+		  <s:hidden name="backScreenId" value="ND001" />
+    	  <s:hidden id="preScreenId" name="preScreenId" value="ND001"/>
 
+          <s:hidden name="docNo" id="docNo"/>
+          <s:hidden name="ultDocNo" id="ultDocNo"/>
+          <s:hidden name="tkdDocNo" id="tkdDocNo"/>
+
+           <%-- 組織検索ポップアップ用 --%>
+              <input type="hidden" name="selectFlgPop"           value="" />
+  <input type="hidden" name="initSosCdPop"           value="" />
+  <input type="hidden" name="trtCdPop"               value="" />
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+    <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
           <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
               <tbody>
                   <s:if test="msgStr != null">
@@ -486,58 +549,61 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
                                   <td class="actionButton" style="height:90%; width:90px;" rowspan="2">
                                   <div class="testDiv">
+                                      <table>
+                                      <tbody>
+                                      <tr>
+                                      <td style="width:18px;">
                                       <s:if test='#rowBean.gamenShinkiFlg == "1"'>
                                           <img
                                             src="img/button_insert.gif"
                                             name="a"
-                                            onclick="testAlert(test1)"
+                                            onclick="JavaScript:actBtn('ND011','<s:property value="#rowBean.dcfIshiCd"/>');"
                                           >
                                       </s:if>
                                       <s:else>
-                                          <img
-                                              src="img/space.gif"
-                                          >
                                       </s:else>
+                                      </td>
+                                      <td style="width:18px;">
                                       <s:if test='#rowBean.gamenKoushinFlg == "1"'>
                                           <img
                                             src="img/button_update.gif"
                                             name="b"
-                                            onclick="testAlert(test2)"
+                                            onclick="JavaScript:actBtn('ND012','<s:property value="#rowBean.docNo"/>');"
                                           >
                                       </s:if>
                                       <s:else>
-                                          <img
-                                              src="img/space.gif"
-                                          >
                                       </s:else>
+                                      </td>
+                                      <td style="width:18px;">
                                       <s:if test='#rowBean.gamenKinmuKoushinFlg == "1"'>
                                           <img
                                             src="img/button_movemed.gif"
                                             name="c"
-                                            onclick="gotoNext('ND013','Init','<s:property value="#rowBean.docNo"/>');"
+                                            onClick="JavaScript:actBtn('ND013','<s:property value="#rowBean.docNo"/>');"
                                           >
                                       </s:if>
                                       <s:else>
-                                          <img
-                                              src="img/space.gif"
-                                          >
                                       </s:else>
+                                      </td>
+                                      <td style="width:18px;">
                                       <s:if test='#rowBean.gamenFukkatsuFlg == "1"'>
                                           <img
                                             src="img/button_restoration.gif"
                                             name="d"
-                                            onclick="testAlert(test4)"
+                                            onClick="JavaScript:actBtn('ND014','<s:property value="#rowBean.docNo"/>');"
                                           >
                                       </s:if>
                                       <s:else>
-                                          <img
-                                              src="img/space.gif"
-                                          >
                                       </s:else>
+                                      <td>
                                           <img
                                             class="hoverImg"
                                             src="img/toolTip.gif"
                                           >
+                                      </td>
+                                      </tr>
+                                      </tbody>
+                                      </table>
                                   </div>
         						  </td>
 
@@ -581,6 +647,16 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               </table>
           </div>
           <%-- データ部表示 終了 --%>
+          </td>
+          </tr>
+          </tbody>
+          </table>
     </s:form>
+    </td>
+    </tr>
+    </table>
+      <jsp:include page="common/jkrBottom.jsp" flush="true" />
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
 </body>
 </html>

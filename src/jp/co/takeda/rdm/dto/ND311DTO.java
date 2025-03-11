@@ -33,6 +33,12 @@ public class ND311DTO extends BaseDTO implements Serializable {
     private String ND311 = "ND311";
 
     /**
+     * 親画面名
+     * @generated
+     */
+    private String title;
+
+    /**
      * 親画面コールバックメソッド名
      * @generated
      */
@@ -272,7 +278,7 @@ public class ND311DTO extends BaseDTO implements Serializable {
     private String titleCodeAf;
 
     /**
-     * 役職名称(異動先)
+     * 役職名称(異動先)名称
      * @generated
      */
     private String titleCodeName;
@@ -1331,6 +1337,21 @@ public class ND311DTO extends BaseDTO implements Serializable {
 	 */
 	public void setHoInsType(String hoInsType) {
 		this.hoInsType = hoInsType;
+	}
+
+	/**
+	 * ND311DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 

@@ -10,7 +10,6 @@
  */
 --%>
 <%@page import="jp.co.takeda.rdm.util.StringUtils"%>
-<%@page import="jp.co.takeda.rdm.dto.ND307DTO"%>
 <%@page import="jp.co.takeda.rdm.dto.ND103DTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.opensymphony.xwork2.util.ValueStack"%>
@@ -33,6 +32,8 @@
 	<title>ND103_医師勤務先追加</title>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 	<link href="WebContent/css/common2.css" rel="Stylesheet" type="text/css" />
+	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
+	<link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
 	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
 	<link href="css/catDeptsCombo.css" rel="Stylesheet" type="text/css" />
 	<link href="css/common.css" rel="Stylesheet" type="text/css" />
@@ -93,6 +94,14 @@
 </head>
 <body class="comPage">
 
+<%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
 
 <%-- submit用フォーム 開始 　まるっといらないかもって話がある--%>
 	<form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
@@ -138,6 +147,7 @@
 	<s:hidden name="reqShz" />
 	<s:hidden name="paramReqId" />
 	<s:hidden name="ReqId" />
+	<s:hidden name="loginJokenSetCd" />
 	<s:hidden name="reqSts" />
 	<s:hidden name="jgiName" />
 	<s:hidden name="reqYmdhms" />
@@ -151,6 +161,8 @@
 	<s:hidden name="urlDocNo" />
 	<s:hidden name="insClass" />
 	<s:hidden name="hoInsType" />
+	<s:hidden name="title" />
+
 
 	<s:hidden name="tekiyoYmd" />
 	<s:hidden name="insNoSk" />
@@ -227,6 +239,15 @@
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
 	<tr><td>
+		<table class="comPortalTitle">
+			<tbody>
+				<tr>
+					<td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+					<td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+					<td class="comPortalTitleRight"><nobr></nobr></td>
+				</tr>
+			</tbody>
+		</table>
 
 		<!-- エラー表示部  開始 -->
 		<center>
@@ -318,7 +339,7 @@
 			<td class="comTableSearchItem" style="width:50pt;">
 	          	<nobr>施設名<span style="color:red;">*</span></nobr>
           	</td>
-          	<td colspan="3" style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onclick="insAbbrPop();"/>
+          	<td colspan="3" style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onclick="JavaScript:tmpCseView();return false;"/>
           		<s:textfield id="sosNameUser" name="insAbbrName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
           		<span onclick="sosClear();">clear</span>
           	</td>
@@ -339,7 +360,10 @@
 	        <td></td>
 
 		</tr>
-		<tr><td>※施設を先に選択してください</td></tr>
+		<tr>
+			<td colspan="2">※施設を先に選択してください</td>
+			<td></td>
+		</tr>
 		<tr>
             <%-- 役職 --%>
 	          <td class="comTableSearchItem" >
@@ -383,16 +407,15 @@
 	          </td>
         </tr>
         <tr>
-        	<td></td>
         	<td>申請コメント</td>
         </tr>
         <tr>
-        	<td></td>
-        	<td colspan="4">
+        	<td colspan="5">
         		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"  />
         	</td>
         	<td></td>
 	       	<td></td>
+	        <td></td>
 	        <td></td>
         </tr>
  		<s:if test='%{reqStsCd == 01 }'>
@@ -403,14 +426,13 @@
  		</s:elseif>
  		<s:else>
  			<tr>
-	        	<td></td>
 	        	<td>承認却下コメント</td>
 	        </tr>
 	        <tr>
-	        	<td></td>
-	        	<td colspan="4">
+	        	<td colspan="5">
 	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="background-color:#D4D0C8; width: 650px; height: 80px;" readonly="true" />
 	        	</td>
+	        	<td></td>
 	        	<td></td>
 	        	<td></td>
 	        	<td></td>
@@ -464,7 +486,28 @@
 	</table>
 
 	<script>
-	// 申請破棄ボタン
+
+	//戻るボタン押下
+	function backPage(){
+
+		destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
+		var winVarName = document.fm1.winVarName.value;
+		if (winVarName == "ND013") {
+			var gamenId = "医師勤務先情報更新"
+		}
+		if (winVarName == "NC011") {
+			var gamenId = "申請一覧"
+		}
+		if(window.confirm(destructMsg.replace("（遷移元）", gamenId))){
+
+			document.fm1.screenId.value	= winVarName;
+		    document.fm1.functionId.value = "Init"
+
+		 	comSubmitForAnyWarp(fm1);
+		}
+	}
+
+	//申請破棄ボタン
 	function reqCancelBtn(){
 		destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I007.msgData" />';
 
@@ -476,30 +519,6 @@
 			comSubmitForAnyWarp(fm1);
 		}
 	}
-	// 申請画面へボタン
-	function ND311Page(){
-
-		//ND311_医師勤務先追加 - 申請内容確認
-		document.fm1.screenId.value	= "ND311";
-	    document.fm1.functionId.value = "Init"
-
-	 	comSubmitForAnyWarp(fm1);
-
-	}
-
-	// 戻るボタン押下
-	function backPage(){
-
-		destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
-		if(window.confirm(destructMsg)){
-
-			document.fm1.screenId.value	= document.fm1.screenId.value.winVarName;
-		    document.fm1.functionId.value = "Init"
-
-		 	comSubmitForAnyWarp(fm1);
-		}
-	}
-
 
 	</script>
 	<%--フッター部　終了 --%>
@@ -507,5 +526,8 @@
 	<%-- ポータルボディー 終了 --%>
   </s:form>
 <%-- input用フォーム 終了 --%>
+<jsp:include page="common/jkrBottom.jsp" flush="true" />
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
 </body>
 </html>

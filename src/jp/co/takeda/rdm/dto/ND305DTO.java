@@ -419,6 +419,36 @@ public class ND305DTO extends BaseDTO implements Serializable {
 	private String skInsInsClass;
 
 	/**
+	 * コンボボックス_復活理由
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> rstReasonCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_大学職位
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skUnivPosCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_役職
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skTitleCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_勤務形態
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skJobFormCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_薬審メンバー区分
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skDcctypeCombo = new LinkedHashMap<String,String>();
+
+	/**
      * デフォルトのコンストラクタ。
      * @generated
      */
@@ -1393,6 +1423,81 @@ public class ND305DTO extends BaseDTO implements Serializable {
 	 */
 	public void setSkInsInsClass(String skInsInsClass) {
 		this.skInsInsClass = skInsInsClass;
+	}
+
+	/**
+	 * ND305DTO.javarstReasonComboを設定
+	 * @return rstReasonCombo
+	 */
+	public LinkedHashMap<String, String> getRstReasonCombo() {
+		return rstReasonCombo;
+	}
+
+	/**
+	 * @param rstReasonCombo セットする rstReasonCombo
+	 */
+	public void setRstReasonCombo(LinkedHashMap<String, String> rstReasonCombo) {
+		this.rstReasonCombo = rstReasonCombo;
+	}
+
+	/**
+	 * ND305DTO.javaskUnivPosCdComboを設定
+	 * @return skUnivPosCdCombo
+	 */
+	public LinkedHashMap<String, String> getSkUnivPosCdCombo() {
+		return skUnivPosCdCombo;
+	}
+
+	/**
+	 * @param skUnivPosCdCombo セットする skUnivPosCdCombo
+	 */
+	public void setSkUnivPosCdCombo(LinkedHashMap<String, String> skUnivPosCdCombo) {
+		this.skUnivPosCdCombo = skUnivPosCdCombo;
+	}
+
+	/**
+	 * ND305DTO.javaskTitleCdComboを設定
+	 * @return skTitleCdCombo
+	 */
+	public LinkedHashMap<String, String> getSkTitleCdCombo() {
+		return skTitleCdCombo;
+	}
+
+	/**
+	 * @param skTitleCdCombo セットする skTitleCdCombo
+	 */
+	public void setSkTitleCdCombo(LinkedHashMap<String, String> skTitleCdCombo) {
+		this.skTitleCdCombo = skTitleCdCombo;
+	}
+
+	/**
+	 * ND305DTO.javaskJobFormComboを設定
+	 * @return skJobFormCombo
+	 */
+	public LinkedHashMap<String, String> getSkJobFormCombo() {
+		return skJobFormCombo;
+	}
+
+	/**
+	 * @param skJobFormCombo セットする skJobFormCombo
+	 */
+	public void setSkJobFormCombo(LinkedHashMap<String, String> skJobFormCombo) {
+		this.skJobFormCombo = skJobFormCombo;
+	}
+
+	/**
+	 * ND305DTO.javaskDcctypeComboを設定
+	 * @return skDcctypeCombo
+	 */
+	public LinkedHashMap<String, String> getSkDcctypeCombo() {
+		return skDcctypeCombo;
+	}
+
+	/**
+	 * @param skDcctypeCombo セットする skDcctypeCombo
+	 */
+	public void setSkDcctypeCombo(LinkedHashMap<String, String> skDcctypeCombo) {
+		this.skDcctypeCombo = skDcctypeCombo;
 	}
 
 	/**

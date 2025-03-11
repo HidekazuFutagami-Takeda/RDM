@@ -738,25 +738,25 @@ public class ND303DTO extends BaseDTO implements Serializable {
 	 */
 	private String returnFlg;
 
-//	/**
-//	 * 表示分岐
-//	 * 0:完全新規、1:ULTから作成、2：申請データあり
-//	 * @generated
-//	 */
-//	private String displayKbn;
+	/**
+	 * 表示分岐
+	 * 0:完全新規、1:ULTから作成、2：申請データあり
+	 * @generated
+	 */
+	private String displayKbn;
 
-//	/**
-//	 * コンボボックス_医師／薬剤師区分
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> docTypeCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_性別
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> sexCdCombo = new LinkedHashMap<String,String>();
-//
+	/**
+	 * コンボボックス_医師／薬剤師区分
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> docTypeCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_性別
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> sexCdCombo = new LinkedHashMap<String,String>();
+
 //	/**
 //	 * コンボボックス_改姓日（年）
 //	 * @generated
@@ -792,19 +792,19 @@ public class ND303DTO extends BaseDTO implements Serializable {
 //	 * @generated
 //	 */
 //	private LinkedHashMap<String,String> dobDayCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_出身地
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> homeTownCdCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_出身校
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> medSchoolCdCombo = new LinkedHashMap<String,String>();
-//
+
+	/**
+	 * コンボボックス_出身地
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> homeTownCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_出身校
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> medSchoolCdCombo = new LinkedHashMap<String,String>();
+
 //	/**
 //	 * コンボボックス_卒年（西暦）
 //	 * @generated
@@ -817,47 +817,47 @@ public class ND303DTO extends BaseDTO implements Serializable {
 //	 */
 //	private LinkedHashMap<String,String> emplYearCombo = new LinkedHashMap<String,String>();
 //
-//	/**
-//	 * コンボボックス_出身医局校
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> homeUnivCdCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_専門臓器
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> spLiverCdCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_専門詳細
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> spDiseaseCdCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_大学職位
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> skUnivPosCdCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_役職
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> skTitleCdCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_勤務形態
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> skJobFormCombo = new LinkedHashMap<String,String>();
-//
-//	/**
-//	 * コンボボックス_薬審メンバー区分
-//	 * @generated
-//	 */
-//	private LinkedHashMap<String,String> skDcctypeCombo = new LinkedHashMap<String,String>();
+	/**
+	 * コンボボックス_出身医局校
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> homeUnivCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_専門臓器
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> spLiverCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_専門詳細
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> spDiseaseCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_大学職位
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skUnivPosCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_役職
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skTitleCdCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_勤務形態
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skJobFormCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_薬審メンバー区分
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> skDcctypeCombo = new LinkedHashMap<String,String>();
 
 	/**
 	 * 審査済みフラグ
@@ -3049,6 +3049,186 @@ public class ND303DTO extends BaseDTO implements Serializable {
 	 */
 	public void setMstSpCom(String mstSpCom) {
 		this.mstSpCom = mstSpCom;
+	}
+
+	/**
+	 * ND303DTO.javadisplayKbnを設定
+	 * @return displayKbn
+	 */
+	public String getDisplayKbn() {
+		return displayKbn;
+	}
+
+	/**
+	 * @param displayKbn セットする displayKbn
+	 */
+	public void setDisplayKbn(String displayKbn) {
+		this.displayKbn = displayKbn;
+	}
+
+	/**
+	 * ND303DTO.javadocTypeComboを設定
+	 * @return docTypeCombo
+	 */
+	public LinkedHashMap<String, String> getDocTypeCombo() {
+		return docTypeCombo;
+	}
+
+	/**
+	 * @param docTypeCombo セットする docTypeCombo
+	 */
+	public void setDocTypeCombo(LinkedHashMap<String, String> docTypeCombo) {
+		this.docTypeCombo = docTypeCombo;
+	}
+
+	/**
+	 * ND303DTO.javasexCdComboを設定
+	 * @return sexCdCombo
+	 */
+	public LinkedHashMap<String, String> getSexCdCombo() {
+		return sexCdCombo;
+	}
+
+	/**
+	 * @param sexCdCombo セットする sexCdCombo
+	 */
+	public void setSexCdCombo(LinkedHashMap<String, String> sexCdCombo) {
+		this.sexCdCombo = sexCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javahomeTownCdComboを設定
+	 * @return homeTownCdCombo
+	 */
+	public LinkedHashMap<String, String> getHomeTownCdCombo() {
+		return homeTownCdCombo;
+	}
+
+	/**
+	 * @param homeTownCdCombo セットする homeTownCdCombo
+	 */
+	public void setHomeTownCdCombo(LinkedHashMap<String, String> homeTownCdCombo) {
+		this.homeTownCdCombo = homeTownCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javamedSchoolCdComboを設定
+	 * @return medSchoolCdCombo
+	 */
+	public LinkedHashMap<String, String> getMedSchoolCdCombo() {
+		return medSchoolCdCombo;
+	}
+
+	/**
+	 * @param medSchoolCdCombo セットする medSchoolCdCombo
+	 */
+	public void setMedSchoolCdCombo(LinkedHashMap<String, String> medSchoolCdCombo) {
+		this.medSchoolCdCombo = medSchoolCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javahomeUnivCdComboを設定
+	 * @return homeUnivCdCombo
+	 */
+	public LinkedHashMap<String, String> getHomeUnivCdCombo() {
+		return homeUnivCdCombo;
+	}
+
+	/**
+	 * @param homeUnivCdCombo セットする homeUnivCdCombo
+	 */
+	public void setHomeUnivCdCombo(LinkedHashMap<String, String> homeUnivCdCombo) {
+		this.homeUnivCdCombo = homeUnivCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javaspLiverCdComboを設定
+	 * @return spLiverCdCombo
+	 */
+	public LinkedHashMap<String, String> getSpLiverCdCombo() {
+		return spLiverCdCombo;
+	}
+
+	/**
+	 * @param spLiverCdCombo セットする spLiverCdCombo
+	 */
+	public void setSpLiverCdCombo(LinkedHashMap<String, String> spLiverCdCombo) {
+		this.spLiverCdCombo = spLiverCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javaspDiseaseCdComboを設定
+	 * @return spDiseaseCdCombo
+	 */
+	public LinkedHashMap<String, String> getSpDiseaseCdCombo() {
+		return spDiseaseCdCombo;
+	}
+
+	/**
+	 * @param spDiseaseCdCombo セットする spDiseaseCdCombo
+	 */
+	public void setSpDiseaseCdCombo(LinkedHashMap<String, String> spDiseaseCdCombo) {
+		this.spDiseaseCdCombo = spDiseaseCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javaskUnivPosCdComboを設定
+	 * @return skUnivPosCdCombo
+	 */
+	public LinkedHashMap<String, String> getSkUnivPosCdCombo() {
+		return skUnivPosCdCombo;
+	}
+
+	/**
+	 * @param skUnivPosCdCombo セットする skUnivPosCdCombo
+	 */
+	public void setSkUnivPosCdCombo(LinkedHashMap<String, String> skUnivPosCdCombo) {
+		this.skUnivPosCdCombo = skUnivPosCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javaskTitleCdComboを設定
+	 * @return skTitleCdCombo
+	 */
+	public LinkedHashMap<String, String> getSkTitleCdCombo() {
+		return skTitleCdCombo;
+	}
+
+	/**
+	 * @param skTitleCdCombo セットする skTitleCdCombo
+	 */
+	public void setSkTitleCdCombo(LinkedHashMap<String, String> skTitleCdCombo) {
+		this.skTitleCdCombo = skTitleCdCombo;
+	}
+
+	/**
+	 * ND303DTO.javaskJobFormComboを設定
+	 * @return skJobFormCombo
+	 */
+	public LinkedHashMap<String, String> getSkJobFormCombo() {
+		return skJobFormCombo;
+	}
+
+	/**
+	 * @param skJobFormCombo セットする skJobFormCombo
+	 */
+	public void setSkJobFormCombo(LinkedHashMap<String, String> skJobFormCombo) {
+		this.skJobFormCombo = skJobFormCombo;
+	}
+
+	/**
+	 * ND303DTO.javaskDcctypeComboを設定
+	 * @return skDcctypeCombo
+	 */
+	public LinkedHashMap<String, String> getSkDcctypeCombo() {
+		return skDcctypeCombo;
+	}
+
+	/**
+	 * @param skDcctypeCombo セットする skDcctypeCombo
+	 */
+	public void setSkDcctypeCombo(LinkedHashMap<String, String> skDcctypeCombo) {
+		this.skDcctypeCombo = skDcctypeCombo;
 	}
 
 	/**

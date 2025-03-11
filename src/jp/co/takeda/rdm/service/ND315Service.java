@@ -37,6 +37,7 @@ import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
+import jp.co.takeda.rdm.entity.join.UpdateTRdmHcpReqEntity;
 import jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.DateUtils;
@@ -81,51 +82,54 @@ public class ND315Service extends BaseService {
 		BaseDTO outdto = indto;
 		// START UOC
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
-//		登録画面から申請IDを連携
-		if (indto.getReqId() != null) {
-			// 申請データ（一時保存含む）を参照
-			SelectND315MainDataEntity paramEntity = new SelectND315MainDataEntity();
-			paramEntity.setInReqId(indto.getReqId());
-			List<SelectND315MainDataEntity> mainDataEntityList = dao.select(paramEntity);
-			SelectND315MainDataEntity mainDataEntity = mainDataEntityList.get(0);
-			indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
-			indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
-			indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
-			indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
-			indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
-			indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
-			indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
-			indto.setAprYmdhms(StringUtils.dispYmdhms(mainDataEntity.getAprYmdhms()));
-			indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
-			indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
-			indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
-			indto.setReqStsCd(StringUtils.nvl(mainDataEntity.getReqStsCd(), ""));
-			indto.setShnJgiNo(mainDataEntity.getShnJgiNo());
-			indto.setAprJgiNo(mainDataEntity.getAprJgiNo());
-			indto.setUpdShaYmd(StringUtils.nvl(mainDataEntity.getUpdShaYmd(), ""));
-			indto.setTkdDocNo(StringUtils.nvl(mainDataEntity.getTkdDocNo(), ""));
-			indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
-			indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
-			indto.setDocAttribute(StringUtils.nvl(mainDataEntity.getDocAttribute(), ""));
-			indto.setDocAttributeNm(StringUtils.nvl(mainDataEntity.getDocAttributeNm(), ""));
-			indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
-			indto.setDelReasonNm(StringUtils.nvl(mainDataEntity.getDelReasonNm(), ""));
-			indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
-			indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
-			indto.setDupDocNo(StringUtils.nvl(mainDataEntity.getDupDocNo(), ""));
-			indto.setDupDocNm(StringUtils.nvl(mainDataEntity.getDupDocNm(), ""));
-
-			indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
-			indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
-			indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
-			indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
-			indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
-
+		if("9".equals(indto.getDisplayKbn())) {
+			createCombo(indto);
+			indto.setDelReasonNm(StringUtils.nvl(indto.getDelReasonCombo().get(indto.getDelReason()), ""));
 		} else {
-			//TODO 遷移エラー
-		}
+			//		登録画面から申請IDを連携
+			if (indto.getReqId() != null) {
+				// 申請データ（一時保存含む）を参照
+				SelectND315MainDataEntity paramEntity = new SelectND315MainDataEntity();
+				paramEntity.setInReqId(indto.getReqId());
+				List<SelectND315MainDataEntity> mainDataEntityList = dao.select(paramEntity);
+				SelectND315MainDataEntity mainDataEntity = mainDataEntityList.get(0);
+				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
+				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
+				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
+				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
+				indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
+				indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
+				indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
+				indto.setAprYmdhms(StringUtils.dispYmdhms(mainDataEntity.getAprYmdhms()));
+				indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
+				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
+				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
+				indto.setReqStsCd(StringUtils.nvl(mainDataEntity.getReqStsCd(), ""));
+				indto.setShnJgiNo(mainDataEntity.getShnJgiNo());
+				indto.setAprJgiNo(mainDataEntity.getAprJgiNo());
+				indto.setUpdShaYmd(StringUtils.nvl(mainDataEntity.getUpdShaYmd(), ""));
+				indto.setTkdDocNo(StringUtils.nvl(mainDataEntity.getTkdDocNo(), ""));
+				indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
+				indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
+				indto.setDocAttribute(StringUtils.nvl(mainDataEntity.getDocAttribute(), ""));
+				indto.setDocAttributeNm(StringUtils.nvl(mainDataEntity.getDocAttributeNm(), ""));
+				indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
+				indto.setDelReasonNm(StringUtils.nvl(mainDataEntity.getDelReasonNm(), ""));
+				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
+				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
+				indto.setDupDocNo(StringUtils.nvl(mainDataEntity.getDupDocNo(), ""));
+				indto.setDupDocNm(StringUtils.nvl(mainDataEntity.getDupDocNm(), ""));
 
+				indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
+				indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
+				indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
+				indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
+				indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
+
+			} else {
+				//TODO 遷移エラー
+			}
+		}
 		// パラメタ医師メニュー取得
 		indto.setBtnEnableFlg("0");
 		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
@@ -195,7 +199,6 @@ public class ND315Service extends BaseService {
 			}
 		}
 		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg()) || "2".equals(indto.getButtonFlg())) {
-			// 更新処理
 			// 現在日付を取得する
 			Date currentDt = DateUtils.getNowDate();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -207,122 +210,244 @@ public class ND315Service extends BaseService {
 				// TODO 自動生成された catch ブロック
 				e.printStackTrace();
 			}
-			//申請管理/////////////////////////////////////////////////////////////////////////////////////
-			UpdateTRdmReqKnrEntity selectUpdateEntity = new UpdateTRdmReqKnrEntity();
-			selectUpdateEntity.setSqlId("selectUpDate");
-			selectUpdateEntity.setReqId(indto.getReqId());
-			//ロック処理
-			List<UpdateTRdmReqKnrEntity> outEntity1 = new ArrayList<UpdateTRdmReqKnrEntity>();
-			try {
-				//SQL実行
-				outEntity1 = dao.select(selectUpdateEntity);
-			} catch (Exception pe) {
-				log.error(pe.toString());
-				Throwable cause = pe.getCause();
-				if (cause instanceof SQLException) {
-					SQLException sqle = (SQLException)cause;
-					//SQLエラーの場合はエラーコードをチェックし、業務的なエラー以外は InternalException をスローする
-					int sqlCode = sqle.getErrorCode();
-					//SQL業務エラーのチェック
-					if (sqlCode == AppConstant.ORA_ROWLOCK_ERROR) {
-						//追加、更新、削除の行ロック(for update nowait)時に発生するエラー
-						//メッセージ(M0001101:他のユーザによって使用されています。)
-						//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
-						indto.setMsgId(RdmConstantsData.E003);
-						indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+			String reqChl = indto.getReqChl();
+
+			// 登録か更新か申請IDで判定
+			if(indto.getReqId() != null && !StringUtils.isEmpty(indto.getReqId())) {
+				// 更新処理
+				//申請管理/////////////////////////////////////////////////////////////////////////////////////
+				UpdateTRdmReqKnrEntity selectUpdateEntity = new UpdateTRdmReqKnrEntity();
+				selectUpdateEntity.setSqlId("selectUpDate");
+				selectUpdateEntity.setReqId(indto.getReqId());
+				//ロック処理
+				List<UpdateTRdmReqKnrEntity> outEntity1 = new ArrayList<UpdateTRdmReqKnrEntity>();
+				try {
+					//SQL実行
+					outEntity1 = dao.select(selectUpdateEntity);
+				} catch (Exception pe) {
+					log.error(pe.toString());
+					Throwable cause = pe.getCause();
+					if (cause instanceof SQLException) {
+						SQLException sqle = (SQLException)cause;
+						//SQLエラーの場合はエラーコードをチェックし、業務的なエラー以外は InternalException をスローする
+						int sqlCode = sqle.getErrorCode();
+						//SQL業務エラーのチェック
+						if (sqlCode == AppConstant.ORA_ROWLOCK_ERROR) {
+							//追加、更新、削除の行ロック(for update nowait)時に発生するエラー
+							//メッセージ(M0001101:他のユーザによって使用されています。)
+							//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+							indto.setMsgId(RdmConstantsData.E003);
+							indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+						} else {
+							indto.setForward("exception");
+						}
 					} else {
 						indto.setForward("exception");
 					}
-				} else {
-					indto.setForward("exception");
+					indto.setReturnFlg("0");
+					return outdto;
 				}
-				indto.setReturnFlg("0");
-				return outdto;
-			}
 
-			if (outEntity1 == null || outEntity1.size() == 0){
-				//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
-				indto.setMsgId(RdmConstantsData.E003);
-				indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
-				indto.setReturnFlg("0");
-				return outdto;
-			} else {
-				if (outEntity1.get(0).getUpdShaYmd().compareTo(dtoUpdShaYmddate) > 0) {
+				if (outEntity1 == null || outEntity1.size() == 0){
 					//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 					indto.setMsgId(RdmConstantsData.E003);
 					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
 					indto.setReturnFlg("0");
 					return outdto;
-				}
-			}
-
-			UpdateTRdmReqKnrEntity updateEntity1 = new UpdateTRdmReqKnrEntity();
-			updateEntity1.setSqlId("updateData");
-			updateEntity1.setReqId(indto.getReqId());
-			String reqChl = indto.getReqChl();
-			if ("0".equals(indto.getButtonFlg())) {//申請
-				if(reqChl.equals("3")) {//ULT起因
-					updateEntity1.setReqStsCd("13");//　申請ステータス
-				}else {
-					updateEntity1.setReqStsCd("03");//　申請ステータス
-					// 申請者権限区分
-					if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
-						//MDM管理者：JKN0850 全MR：JKN0023)
-						updateEntity1.setReqKngKbn("2");
-						updateEntity1.setReqChl("2");
-					}else {
-						updateEntity1.setReqKngKbn("1");
-						updateEntity1.setReqChl("1");
+				} else {
+					if (outEntity1.get(0).getUpdShaYmd().compareTo(dtoUpdShaYmddate) > 0) {
+						//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+						indto.setMsgId(RdmConstantsData.E003);
+						indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+						indto.setReturnFlg("0");
+						return outdto;
 					}
 				}
-				updateEntity1.setReqBrCd(loginInfo.getBrCode());// 申請者所属リージョン
-				updateEntity1.setReqDistCd(loginInfo.getDistCode());// 申請者所属エリア
-				updateEntity1.setReqShzNm(loginInfo.getBumonRyakuName());// 申請者所属
-				updateEntity1.setReqJgiNo(loginInfo.getJgiNo());// 申請者従業員番号
-				updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
-				updateEntity1.setReqYmdhms(strDate); // 申請日時
-				updateEntity1.setReqComment(indto.getReqComment());//　申請コメント
-			}
-			if ("1".equals(indto.getButtonFlg())) {//承認
-				if(reqChl.equals("3")) {//ULT起因
-					updateEntity1.setReqStsCd("14");//　申請ステータス
-				}else {
-					updateEntity1.setReqStsCd("04");//　申請ステータス
+
+				UpdateTRdmReqKnrEntity updateEntity1 = new UpdateTRdmReqKnrEntity();
+				updateEntity1.setSqlId("updateData");
+				updateEntity1.setReqId(indto.getReqId());
+
+				if ("0".equals(indto.getButtonFlg())) {//申請
+					if(reqChl.equals("3")) {//ULT起因
+						updateEntity1.setReqStsCd("13");//　申請ステータス
+					}else {
+						updateEntity1.setReqStsCd("03");//　申請ステータス
+						// 申請者権限区分
+						if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
+							//MDM管理者：JKN0850 全MR：JKN0023)
+							updateEntity1.setReqKngKbn("2");
+							updateEntity1.setReqChl("2");
+						}else {
+							updateEntity1.setReqKngKbn("1");
+							updateEntity1.setReqChl("1");
+						}
+					}
+					updateEntity1.setReqBrCd(loginInfo.getBrCode());// 申請者所属リージョン
+					updateEntity1.setReqDistCd(loginInfo.getDistCode());// 申請者所属エリア
+					updateEntity1.setReqShzNm(loginInfo.getBumonRyakuName());// 申請者所属
+					updateEntity1.setReqJgiNo(loginInfo.getJgiNo());// 申請者従業員番号
+					updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
+					updateEntity1.setReqYmdhms(strDate); // 申請日時
+					updateEntity1.setReqComment(indto.getReqComment());//　申請コメント
 				}
-				updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
-				updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
-				updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
-				updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
-				updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
-				updateEntity1.setAprYmdhms(strDate);// 承認日時
-				//※削除理由が'01'(医療従事者の死亡)の場合、申請時に'1'を設定
-				if(indto.getDelReason().equals("01")) {
-					updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
-				}else {
-					updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				if ("1".equals(indto.getButtonFlg())) {//承認
+					if(reqChl.equals("3")) {//ULT起因
+						updateEntity1.setReqStsCd("14");//　申請ステータス
+					}else {
+						updateEntity1.setReqStsCd("04");//　申請ステータス
+					}
+					updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
+					updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
+					updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
+					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
+					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
+					updateEntity1.setAprYmdhms(strDate);// 承認日時
+					//※削除理由が'01'(医療従事者の死亡)の場合、申請時に'1'を設定
+					if(indto.getDelReason().equals("01")) {
+						updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+					}else {
+						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+					}
+
+					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
+					updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
+				}
+				if ("2".equals(indto.getButtonFlg())) {//却下
+					if(reqChl.equals("3")) {//ULT起因
+						updateEntity1.setReqStsCd("12");//　申請ステータス
+					}else {
+						updateEntity1.setReqStsCd("02");//　申請ステータス
+					}
+					updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
+					updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
+					updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
+					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
+					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
+					updateEntity1.setAprYmdhms(strDate);// 承認日時
+					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
+					updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
+				}
+				updateEntity1.setUpdShaYmd(currentDt);//更新日
+				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				dao.update(updateEntity1);
+				//医師申請管理/////////////////////////////////////////////////////////////////////////
+				UpdateTRdmHcpReqEntity selectUpdateEntity2 = new UpdateTRdmHcpReqEntity();
+				selectUpdateEntity2.setSqlId("selectUpDate");
+				selectUpdateEntity2.setReqId(indto.getReqId());
+				//ロック処理
+				List<UpdateTRdmHcpReqEntity> outEntity2 = new ArrayList<UpdateTRdmHcpReqEntity>();
+				try {
+					//SQL実行
+					outEntity2 = dao.select(selectUpdateEntity2);
+				} catch (Exception pe) {
+					log.error(pe.toString());
+					Throwable cause = pe.getCause();
+					if (cause instanceof SQLException) {
+						SQLException sqle = (SQLException)cause;
+						//SQLエラーの場合はエラーコードをチェックし、業務的なエラー以外は InternalException をスローする
+						int sqlCode = sqle.getErrorCode();
+						//SQL業務エラーのチェック
+						if (sqlCode == AppConstant.ORA_ROWLOCK_ERROR) {
+							//追加、更新、削除の行ロック(for update nowait)時に発生するエラー
+							//メッセージ(M0001101:他のユーザによって使用されています。)
+							//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+							indto.setMsgId(RdmConstantsData.E003);
+							indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+						} else {
+							indto.setForward("exception");
+						}
+					} else {
+						indto.setForward("exception");
+					}
+					return outdto;
 				}
 
-				updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
-
-			}
-			if ("2".equals(indto.getButtonFlg())) {//却下
-				if(reqChl.equals("3")) {//ULT起因
-					updateEntity1.setReqStsCd("12");//　申請ステータス
-				}else {
-					updateEntity1.setReqStsCd("02");//　申請ステータス
+				if (outEntity2 == null || outEntity2.size() == 0){
+					//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+					indto.setMsgId(RdmConstantsData.E003);
+					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+					return outdto;
+				} else {
+					if (outEntity2.get(0).getUpdShaYmd().compareTo(dtoUpdShaYmddate) > 0) {
+						//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+						indto.setMsgId(RdmConstantsData.E003);
+						indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+						return outdto;
+					}
 				}
-				updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
-				updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
-				updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
-				updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
-				updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
-				updateEntity1.setAprYmdhms(strDate);// 承認日時
-				updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
-			}
-			updateEntity1.setUpdShaYmd(currentDt);//更新日
-			updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-			dao.update(updateEntity1);
+				UpdateTRdmHcpReqEntity updateEntity2 = new UpdateTRdmHcpReqEntity();
+				updateEntity2.setSqlId("updateData");
+				updateEntity2.setReqId(indto.getReqId());
+				updateEntity2.setDelReason(indto.getDelReason());//削除理由
+				updateEntity2.setDupDocNo(StringUtils.setEmptyToNull(indto.getDupDocNo()));//重複医師コード
+				if(!indto.getDocKanjiMei().endsWith("●")) {
+					updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei() + "●");//氏名（漢字）
+					updateEntity2.setDocKanjiMei(indto.getDocKanjiMei() + "●");//氏名（漢字）名
+				}
 
+				updateEntity2.setUpdShaYmd(currentDt);//更新日
+				updateEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				updateEntity2.checkSetNull();
+				dao.update(updateEntity2);
+
+				indto.setUpdShaYmd(strDate);
+			}else {
+				//　登録
+				// 申請ID発行
+				SeqRdmReqIdEntity idEntity = new SeqRdmReqIdEntity();
+				List<SeqRdmReqIdEntity> outIdList = dao.select(idEntity);
+				String reqId = outIdList.get(0).getReqId();
+				// 登録処理
+				// 申請管理
+				TRdmReqKnrEntity insEntity1 =  new TRdmReqKnrEntity();
+				insEntity1.setReqId(reqId); //申請ID
+				if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0850 全MR：JKN0023)
+					insEntity1.setReqChl("2");//申請チャネル
+					insEntity1.setReqKngKbn("2");//申請者権限区分
+				} else {
+					insEntity1.setReqChl("1");//申請チャネル
+					insEntity1.setReqKngKbn("1");//申請者権限区分
+				}
+				insEntity1.setReqType("33");//申請区分
+				insEntity1.setReqStsCd("03");//申請ステータス
+				insEntity1.setReqBrCd(loginInfo.getBrCode());//申請者所属リージョン
+				insEntity1.setReqDistCd(loginInfo.getDistCode());//申請者所属エリア
+				insEntity1.setReqShzNm(loginInfo.getBumonRyakuName());//申請者所属
+				insEntity1.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
+				insEntity1.setReqJgiName(loginInfo.getJgiName());//申請者氏名
+				insEntity1.setReqComment(indto.getReqComment());//申請コメント
+				insEntity1.setDocNo(indto.getTkdDocNo());//医師固定コード
+				insEntity1.setReqYmdhms(strDate); // 申請日時
+
+				insEntity1.setInsShaYmd(currentDt);//作成日
+				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
+				insEntity1.setUpdShaYmd(currentDt);//更新日
+				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+
+				dao.insertByValue(insEntity1);
+
+				// 医師_申請管理
+				TRdmHcpReqEntity insEntity2 = new TRdmHcpReqEntity();
+				insEntity2.setReqId(reqId);//申請ID
+				insEntity2.setDocNo(indto.getTkdDocNo());//医師固定コード
+				insEntity2.setDelReason(indto.getDelReason());//削除理由
+				insEntity2.setDupDocNo(StringUtils.setEmptyToNull(indto.getDupDocNo()));//重複医師コード
+				if(!indto.getDocKanjiMei().endsWith("●")) {
+					insEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei() + "●");//氏名（漢字）
+					insEntity2.setDocKanjiMei(indto.getDocKanjiMei() + "●");//氏名（漢字）名
+				}
+				insEntity2.setInsShaYmd(currentDt);//作成日
+				insEntity2.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
+				insEntity2.setUpdShaYmd(currentDt);//更新日
+				insEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				dao.insertByValue(insEntity2);
+
+				indto.setUpdShaYmd(strDate);
+				indto.setReqId(reqId);
+				indto.setReqStsCd("03");
+				indto.setReqStsNm("承認待ち");
+			}
 			//勤務先の削除申請の発行
 			if ("0".equals(indto.getButtonFlg())) {//申請
 				//未削除の削除申請の取得(一緒に翌営業日取得)
@@ -597,4 +722,25 @@ public class ND315Service extends BaseService {
 		return errChk;
 	}
 
+	/**
+	 * コンボ作成
+	 * @param indto ND315DTO
+	 * @return なし
+	 * @customizable
+	 */
+	private void createCombo(ND315DTO indto){
+		//1-2-1     医師削除理由
+		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
+		//            コード名＝HCP_DEL_REASON（医師削除理由）
+		//            削除フラグ=0
+		SelectComboListEntity inEntityCmb = new SelectComboListEntity();
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_HCP_DEL_REASON);
+		List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapDelReason = new LinkedHashMap<String, String>();
+		mapDelReason.put("", "--なし--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapDelReason.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setDelReasonCombo(mapDelReason);
+	}
 }

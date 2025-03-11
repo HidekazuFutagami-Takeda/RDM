@@ -154,7 +154,10 @@ public class ND305Action extends BaseAction<ND305DTO> {
         ND014DTO searchKey = (ND014DTO)sessionMap.get(AppConstant.SESKEY_ND014_SEARCHKEY);
         String reqId = searchKey.getReqId();
         dto.setReqId(reqId);
-
+		if("ND014".equals(preScreenId)) {
+			//一時保存なし申請後に確認画面から遷移
+			dto.setDisplayKbn("9");
+		}
         //モック
         preScreenId = "ND305";
 

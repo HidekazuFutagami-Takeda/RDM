@@ -786,7 +786,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
    		   	} else if(insType == "02"){
    			   	document.getElementById("univSubdivTd01").style.visibility = "hidden";
 				document.getElementById("univSubdivTd02").style.visibility = "hidden";
-   		   	} else {
+   		   	} else if(insType != "01"){
 	   		   	document.getElementById("univSubdivTd01").style.visibility = "hidden";
 				document.getElementById("univSubdivTd02").style.visibility = "hidden";
 				bedCntView(0);

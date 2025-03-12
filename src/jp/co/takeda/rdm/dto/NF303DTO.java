@@ -262,6 +262,12 @@ public class NF303DTO extends BaseDTO implements Serializable {
 	private String insOpenDay;
 
 	/**
+	 * 表示用開業年月日
+	 * @generated
+	 */
+	private String insOpenYmd;
+
+	/**
 	 * 施設略式漢字名
 	 * @generated
 	 */
@@ -5371,6 +5377,21 @@ public class NF303DTO extends BaseDTO implements Serializable {
 	 */
 	public void setInsOpenDay(String insOpenDay) {
 		this.insOpenDay = insOpenDay;
+	}
+
+	/**
+	 * NF303DTO.javainsOpenYmdを設定
+	 * @return insOpenYmd
+	 */
+	public String getInsOpenYmd() {
+		return insOpenYmd;
+	}
+
+	/**
+	 * @param insOpenYmd セットする insOpenYmd
+	 */
+	public void setInsOpenYmd(String insOpenYmd) {
+		this.insOpenYmd = insOpenYmd;
 	}
 
 	/**

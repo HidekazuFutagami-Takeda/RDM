@@ -984,6 +984,7 @@
         <result column="PRE_MANAGE_CD" property="preManageCd"/>
         <result column="PRE_MANAGE_NM" property="preManageNm"/>
         <result column="PRE_WS_TYPE" property="preWsType"/>
+        <result column="PRE_WS_TYPE_NM" property="preWsTypeNm"/>
         <result column="PRE_BASKET_PURCHASE" property="preBasketPurchase"/>
         <result column="PRE_BASKET_PURCHASE_NM" property="preBasketPurchaseNm"/>
         <result column="PRE_UNIV_SUBDIV" property="preUnivSubdiv"/>

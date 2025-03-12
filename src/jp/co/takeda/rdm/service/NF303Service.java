@@ -378,6 +378,7 @@ public class NF303Service extends BaseService {
         	tRdmHcoReqInsData.setInsUrlYmd(urlYmd);
 
         	tRdmHcoReqInsData.setTradeType(indto.getTradeType());
+        	tRdmHcoReqInsData.setWsType(indto.getWsType());
         	tRdmHcoReqInsData.setBasketPurchase(indto.getBasketPurchase());
         	tRdmHcoReqInsData.setUnivSubdiv(indto.getUnivSubdiv());
         	tRdmHcoReqInsData.setInsOpenYear(indto.getInsOpenYear());
@@ -888,6 +889,39 @@ public class NF303Service extends BaseService {
 		indto.setInsOpenYear(getViewValue(mainDataEntity.getPreInsOpenYear(), mainDataEntity.getInsOpenYear()));
 		indto.setInsOpenMonth(getViewValue(mainDataEntity.getPreInsOpenMonth(), mainDataEntity.getInsOpenMonth()));
 		indto.setInsOpenDay(getViewValue(mainDataEntity.getPreInsOpenDay(), mainDataEntity.getInsOpenDay()));
+
+		StringBuilder sbYmd = new StringBuilder();
+		StringBuilder sbPreYmd = new StringBuilder();
+		if(!StringUtils.isEmpty(mainDataEntity.getInsOpenYear())) {
+			sbYmd.append(mainDataEntity.getInsOpenYear());
+			sbYmd.append("年");
+		}
+		if(!StringUtils.isEmpty(mainDataEntity.getInsOpenMonth())) {
+			sbYmd.append(mainDataEntity.getInsOpenMonth());
+			sbYmd.append("月");
+		}
+		if(!StringUtils.isEmpty(mainDataEntity.getInsOpenDay())) {
+			sbYmd.append(mainDataEntity.getInsOpenDay());
+			sbYmd.append("日");
+		}
+		if(!StringUtils.isEmpty(mainDataEntity.getPreInsOpenYear())) {
+			sbPreYmd.append(mainDataEntity.getPreInsOpenYear());
+			sbPreYmd.append("年");
+		}
+		if(!StringUtils.isEmpty(mainDataEntity.getPreInsOpenMonth())) {
+			sbPreYmd.append(mainDataEntity.getPreInsOpenMonth());
+			sbPreYmd.append("月");
+		}
+		if(!StringUtils.isEmpty(mainDataEntity.getPreInsOpenDay())) {
+			sbPreYmd.append(mainDataEntity.getPreInsOpenDay());
+			sbPreYmd.append("日");
+		}
+
+		String insOpenYmd = sbYmd.toString();
+		String preInsOpenYmd = sbPreYmd.toString();
+
+		indto.setInsOpenYmd(getViewValue(preInsOpenYmd,insOpenYmd));
+
 		indto.setPharmType(StringUtils.nvl(mainDataEntity.getPharmType(), ""));
 		indto.setPharmTypeNm(StringUtils.nvl(mainDataEntity.getPharmTypeNm(), ""));
 		indto.setInsRank(StringUtils.nvl(mainDataEntity.getInsRank(), ""));

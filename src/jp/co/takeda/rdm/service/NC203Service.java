@@ -106,15 +106,18 @@ public class NC203Service extends BaseService {
     		// 管理者権限
     		selectinsListEntity.setKnrFlg(true);
     		selectParamSelectHcoEntity.setKnrFlg(true);
+    		/*
     		if(("NF211".equals(indto.getBackScreenId()) || "NF212".equals(indto.getBackScreenId()))
     				&& "1".equals(indto.getTkdTrtKbn()) && !indto.getTrtCd().isEmpty()){
     			selectinsListEntity.setTrtCd(indto.getTrtCd());
     			selectParamSelectHcoEntity.setTrtCd(indto.getTrtCd());
     		}
+    		*/
     	} else {
     		// MR権限
     		selectinsListEntity.setKnrFlg(false);
     		selectParamSelectHcoEntity.setKnrFlg(false);
+    		/*
     		if(!indto.getTrtCd().isEmpty()){
     			selectinsListEntity.setTrtCd(indto.getTrtCd());
     			selectParamSelectHcoEntity.setTrtCd(indto.getTrtCd());
@@ -125,6 +128,10 @@ public class NC203Service extends BaseService {
     		selectParamSelectHcoEntity.setBrCd(indto.getLoginBrCd());
     		selectinsListEntity.setDistCd(indto.getLoginDistCd());
     		selectParamSelectHcoEntity.setDistCd(indto.getLoginDistCd());
+    		*/
+
+    		selectinsListEntity.setSosCd(loginInfo.getSosCd());
+    		selectParamSelectHcoEntity.setSosCd(loginInfo.getSosCd());
     	}
 
     	//検索条件_施設名（全角）

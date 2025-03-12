@@ -477,6 +477,12 @@
 		AND CODE_MST4.DEL_FLG = '0'
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
+		<if test="knrFlg == false and sosCd != null">
+		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
+		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
+		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+		</if>
+
 		<where>
 		<if test="kensakuHaiinKbnNullFlg == '1' ">
 			AND HCO_MST.DEL_KBN IS NULL
@@ -514,14 +520,17 @@
 			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
 		</if>
 		<if test="ultNo != null">AND HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' --ULTコード</if>
-		<if test="knrFlg == false">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
-			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
-			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
-			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
-		</if>
-		<if test="knrFlg == true">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		<if test="knrFlg == false">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+--			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+--			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+--		</if>
+--		<if test="knrFlg == true">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		</if>
+		<if test="knrFlg == false and sosCd != null">
+			AND ADDR.SOS_CD = #{sosCd}
 		</if>
 		</where>
 		--ソートID NULL OR '0'
@@ -579,6 +588,12 @@
 		AND CODE_MST4.DEL_FLG = '0'
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
+		<if test="knrFlg == false and sosCd != null">
+		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
+		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
+		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+		</if>
+
 		<where>
 		<if test="kensakuHaiinKbnNullFlg == '1' ">
 			AND HCO_MST.DEL_KBN IS NULL
@@ -603,14 +618,17 @@
 		<if test="kensakuAddrCodePref != null">AND HCO_MST.ADDR_CODE_PREF LIKE '%' ||#{kensakuAddrCodePref}|| '%' --JIS府県コード</if>
 		<if test="kensakuAddrCodeCity != null">AND HCO_MST.ADDR_CODE_CITY LIKE '%' ||#{kensakuAddrCodeCity}|| '%' --JIS市区町村コード</if>
 		<if test="address != null">AND HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所</if>
-		<if test="knrFlg == false">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
-			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
-			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
-			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
-		</if>
-		<if test="knrFlg == true">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		<if test="knrFlg == false">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+--			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+--			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+--		</if>
+--		<if test="knrFlg == true">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		</if>
+		<if test="knrFlg == false and sosCd != null">
+			AND ADDR.SOS_CD = #{sosCd}
 		</if>
 		</where>
 		--ソートID NULL OR '0'
@@ -722,6 +740,12 @@
 		AND CODE_MST4.DEL_FLG = '0'
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
+		<if test="knrFlg == false and sosCd != null">
+		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
+		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
+		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+		</if>
+
 		<where>
 		<if test="kensakuHaiinKbnNullFlg == '1' ">
 			AND HCO_MST.DEL_KBN IS NULL
@@ -759,14 +783,17 @@
 			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
 		</if>
 		<if test="ultNo != null">AND HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' --ULTコード</if>
-		<if test="knrFlg == false">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
-			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
-			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
-			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
-		</if>
-		<if test="knrFlg == true">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		<if test="knrFlg == false">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+--			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+--			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+--		</if>
+--		<if test="knrFlg == true">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		</if>
+		<if test="knrFlg == false and sosCd != null">
+			AND ADDR.SOS_CD = #{sosCd}
 		</if>
 		</where>
 		) SELECT_HCO
@@ -804,6 +831,12 @@
 		AND CODE_MST4.DEL_FLG = '0'
 		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
+		<if test="knrFlg == false and sosCd != null">
+		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
+		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
+		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+		</if>
+
 		<where>
 		<if test="kensakuHaiinKbnNullFlg == '1' ">
 			AND HCO_MST.DEL_KBN IS NULL
@@ -828,14 +861,17 @@
 		<if test="kensakuAddrCodePref != null">AND HCO_MST.ADDR_CODE_PREF LIKE '%' ||#{kensakuAddrCodePref}|| '%' --JIS府県コード</if>
 		<if test="kensakuAddrCodeCity != null">AND HCO_MST.ADDR_CODE_CITY LIKE '%' ||#{kensakuAddrCodeCity}|| '%' --JIS市区町村コード</if>
 		<if test="address != null">AND HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所</if>
-		<if test="knrFlg == false">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
-			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
-			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
-			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
-		</if>
-		<if test="knrFlg == true">
-			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		<if test="knrFlg == false">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+--			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+--			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+--		</if>
+--		<if test="knrFlg == true">
+--			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+--		</if>
+		<if test="knrFlg == false and sosCd != null">
+			AND ADDR.SOS_CD = #{sosCd}
 		</if>
 		</where>
 		) SELECT_HCO

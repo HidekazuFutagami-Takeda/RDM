@@ -34,6 +34,7 @@
         <result column="TRT_GRP_CD" property="trtGrpCd"/>
         <result column="TRT_NM" property="trtNm"/>
         <result column="MR_CAT" property="mrCat"/>
+        <result column="TRT_CD" property="trtCd"/>
     </resultMap>
     <select id="selectByValue" parameterType="jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity" resultMap="mRdmJgiSosMstResultMap">
         SELECT
@@ -127,7 +128,8 @@
                 JGI_SOS_MST.JGI_NAME || '（' || JGI_SOS_MST.SHOKUSHU_NAME || '）'JGI_NAME,
                 COM_LNK_TGT.TRT_GRP_CD,
                 COM_LNK_TGT.TRT_NM,
-                MR_INS_TRT.MR_CAT
+                MR_INS_TRT.MR_CAT,
+                COM_LNK_TGT.TRT_CD
               </if>
               FROM
                   M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報

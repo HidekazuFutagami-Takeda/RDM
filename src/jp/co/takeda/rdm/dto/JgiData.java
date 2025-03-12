@@ -117,6 +117,13 @@ public class JgiData implements Serializable {
      * @generated
      */
     private String mrCat;
+
+    /**
+     * 領域コード
+     * @generated
+     */
+    private String trtCd;
+
     /**
      * コンストラクタ
      * @customizable
@@ -403,6 +410,21 @@ public class JgiData implements Serializable {
 	 */
 	public void setMrCat(String mrCat) {
 		this.mrCat = mrCat;
+	}
+
+	/**
+	 * JgiData.javatrtCdを設定
+	 * @return trtCd
+	 */
+	public String getTrtCd() {
+		return trtCd;
+	}
+
+	/**
+	 * @param trtCd セットする trtCd
+	 */
+	public void setTrtCd(String trtCd) {
+		this.trtCd = trtCd;
 	}
 
 	/**

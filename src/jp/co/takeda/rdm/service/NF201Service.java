@@ -225,29 +225,45 @@ public class NF201Service extends BaseService {
         // 一覧を取得する
         List<SelectNF201OyakoNextDataListEntity> selectNF201OyakoNextDataList = dao.select(selectNF201OyakoNextDataListEntity);
 
-        for (SelectNF201OyakoNextDataListEntity entity : selectNF201OyakoNextDataList) {
-        	HcoOyakoNextDataList dataRecord = new HcoOyakoNextDataList();
+        if("1".equals(indto.getTkdTrtKbn()) || selectNF201OyakoNextDataList.size() > 0) {
+		    for (SelectNF201OyakoNextDataListEntity entity : selectNF201OyakoNextDataList) {
+		    	HcoOyakoNextDataList dataRecord = new HcoOyakoNextDataList();
 
-        	if(entity.getTekiyoYmd() != null && entity.getTekiyoYmd().length() == 8) {
-        		SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMdd");
-				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd");
-				try {
-					Date reqYmd = sdfDateTime.parse(entity.getTekiyoYmd());
-					String strReqYmd = sdfDateTime2.format(reqYmd);
-					dataRecord.setTekiyoYmd(strReqYmd);
-				} catch (ParseException e) {
-					e.printStackTrace();
-					dataRecord.setTekiyoYmd(getSetValue(entity.getTekiyoYmd()));
-				}
+		    	if(entity.getTekiyoYmd() != null && entity.getTekiyoYmd().length() == 8) {
+		    		SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMdd");
+					SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd");
+					try {
+						Date reqYmd = sdfDateTime.parse(entity.getTekiyoYmd());
+						String strReqYmd = sdfDateTime2.format(reqYmd);
+						dataRecord.setTekiyoYmd(strReqYmd);
+					} catch (ParseException e) {
+						e.printStackTrace();
+						dataRecord.setTekiyoYmd(getSetValue(entity.getTekiyoYmd()));
+					}
+		    	}
+
+		    	dataRecord.setAction(getSetValue(entity.getAction()));
+		    	dataRecord.setTrtNm(getSetValue(entity.getTrtNm()));
+		    	dataRecord.setHinGNm(getSetValue(entity.getHinGNm()));
+		    	dataRecord.setInsAbbrName(getSetValue(entity.getInsAbbrName()));
+		    	dataRecord.setInsAddr(getSetValue(entity.getInsAddr()));
+
+		    	hcoOyakoNextDataList.add(dataRecord);
+		    }
+        } else {
+        	for (HcoOyakoDataList entity : indto.getHcoOyakoDataList()) {
+		    	// 来期データない場合当期データを表示する
+		    	HcoOyakoNextDataList dataRecord = new HcoOyakoNextDataList();
+
+		    	dataRecord.setTekiyoYmd(" ");
+		    	dataRecord.setAction(" ");
+		    	dataRecord.setTrtNm(entity.getTrtNm());
+		    	dataRecord.setHinGNm(entity.getHinGNm());
+		    	dataRecord.setInsAbbrName(entity.getInsAbbrName());
+		    	dataRecord.setInsAddr(entity.getInsAddr());
+
+		    	hcoOyakoNextDataList.add(dataRecord);
         	}
-
-        	dataRecord.setAction(getSetValue(entity.getAction()));
-        	dataRecord.setTrtNm(getSetValue(entity.getTrtNm()));
-        	dataRecord.setHinGNm(getSetValue(entity.getHinGNm()));
-        	dataRecord.setInsAbbrName(getSetValue(entity.getInsAbbrName()));
-        	dataRecord.setInsAddr(getSetValue(entity.getInsAddr()));
-
-        	hcoOyakoNextDataList.add(dataRecord);
         }
 
         indto.setHcoOyakoNextDataList(hcoOyakoNextDataList);

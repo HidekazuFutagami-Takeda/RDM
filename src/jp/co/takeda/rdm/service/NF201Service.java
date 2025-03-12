@@ -131,7 +131,7 @@ public class NF201Service extends BaseService {
         indto.setHcoOyakoDataList(hcoOyakoDataList);
 
         // 追加ボタン活性フラグ取得
-        if("0".equals(indto.getTkdTrtKbn()) && StringUtils.isEmpty(mainInsNo)) {
+        if("0".equals(indto.getTkdTrtKbn()) && !StringUtils.isEmpty(mainInsNo)) {
         	// 親画面．武田紐領域別区分が'0'（武田紐）の場合かつ、1-3-1で取得した隠し項目．親施設コードがNULLではない場合
         	indto.setAddFlg("0");
 

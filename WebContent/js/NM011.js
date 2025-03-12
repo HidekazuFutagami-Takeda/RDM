@@ -627,13 +627,20 @@ function backBtn(){
 
 			comSubmitForAnyWarp(fm1);
 		}
-	} else if(preScreenId == "NM001"){
-		if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-			document.fm1.screenId.value = preScreenId;
+	} else if(preScreenId == "NM011"){
+		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			document.fm1.screenId.value = "NC001";
+			document.fm1.functionId.value="Init";
+
+			comSubmitForAnyWarp(fm1);
+	} else if(preScreenId == "NM101"){
+		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			document.fm1.screenId.value = "NC001";
 			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
 		}
+	}
 	}
 }
 function jimClear( name ) {

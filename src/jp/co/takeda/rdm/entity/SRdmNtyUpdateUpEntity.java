@@ -40,6 +40,8 @@ public class SRdmNtyUpdateUpEntity extends BaseEntity implements Serializable {
 
 	private String ntyId;
 
+	private String reqId;
+
 	private String ntyBri;
 
 	private String ntySts;
@@ -65,6 +67,8 @@ public class SRdmNtyUpdateUpEntity extends BaseEntity implements Serializable {
 	private String ntyMemo;
 
 	private String youFlg;
+
+	private String UpdShaYmd;
 
 	private String inhisYmdhmsFrom;
 
@@ -124,6 +128,10 @@ public class SRdmNtyUpdateUpEntity extends BaseEntity implements Serializable {
         super("t-rdm-nty-update","selectNtyUpdateId");
     }
 
+    public SRdmNtyUpdateUpEntity(String sqlId) {
+        super("t-rdm-nty-update", sqlId);
+    }
+
     /**
      * 親画面から受け取るMR/管理者のflag
      */
@@ -177,6 +185,19 @@ public class SRdmNtyUpdateUpEntity extends BaseEntity implements Serializable {
 	}
 	public void setJgiName(String jgiName) {
 		this.jgiName = jgiName;
+	}
+	/**
+	 * SRdmNtyUpdateUpEntity.javareqIdを設定
+	 * @return reqId
+	 */
+	public String getReqId() {
+		return reqId;
+	}
+	/**
+	 * @param reqId セットする reqId
+	 */
+	public void setReqId(String reqId) {
+		this.reqId = reqId;
 	}
 
 	private String mrAdminFlg;
@@ -263,6 +284,19 @@ public class SRdmNtyUpdateUpEntity extends BaseEntity implements Serializable {
 		this.ssUpdYmdhms = ssUpdYmdhms;
 	}
 
+	/**
+	 * SRdmNtyUpdateUpEntity.javaUpdShaYmdを設定
+	 * @return updShaYmd
+	 */
+	public String getUpdShaYmd() {
+		return UpdShaYmd;
+	}
+	/**
+	 * @param updShaYmd セットする updShaYmd
+	 */
+	public void setUpdShaYmd(String updShaYmd) {
+		UpdShaYmd = updShaYmd;
+	}
 	/**
 	 * SRdmNtyUpdateUpEntity.javassUpdJgiNoを設定
 	 * @return ssUpdJgiNo

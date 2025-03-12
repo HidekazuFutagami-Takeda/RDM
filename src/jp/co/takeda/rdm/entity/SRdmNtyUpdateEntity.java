@@ -40,6 +40,8 @@ public class SRdmNtyUpdateEntity extends BaseEntity implements Serializable {
 
 	private String ntyId;
 
+	private String reqId;
+
 	private String ntyBri;
 
 	private String ntySts;
@@ -207,6 +209,19 @@ public class SRdmNtyUpdateEntity extends BaseEntity implements Serializable {
 	 */
 	public void setNtyId(String ntyId) {
 		this.ntyId = ntyId;
+	}
+	/**
+	 * SRdmNtyUpdateEntity.javareqIdを設定
+	 * @return reqId
+	 */
+	public String getReqId() {
+		return reqId;
+	}
+	/**
+	 * @param reqId セットする reqId
+	 */
+	public void setReqId(String reqId) {
+		this.reqId = reqId;
 	}
 	/**
 	 * SRdmNtyListEntity.javantyBriを設定

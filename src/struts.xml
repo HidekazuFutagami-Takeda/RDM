@@ -501,6 +501,8 @@
         </action>
         <action name="NM101Search" class="nM101Action" method="search">
         	<result name="NM101">/WEB-INF/pages/NM101.jsp</result>
+        	<result name="NC011Init" type="chain">NC011Init</result>
+        	<result name="NC011">/WEB-INF/pages/NC011.jsp</result>
             <result name="ND001">/WEB-INF/pages/ND001.jsp</result>
         </action>
         <action name="NM101Page" class="nM101Action" method="page">

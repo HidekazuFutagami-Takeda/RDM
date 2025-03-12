@@ -55,6 +55,7 @@ import jp.co.takeda.rdm.util.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 /**
  * Serviceクラス（NM101)
@@ -199,6 +200,7 @@ public class NM101Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
+        indto.setReqFlg("0");
         //検索を行う
         outdto = search(indto);
 
@@ -210,6 +212,11 @@ public class NM101Service extends BaseService {
 	public BaseDTO search(NM101DTO indto) throws ParseException{
 		BaseDTO outdto = indto;
 		SRdmNtyUpdateEntity paramEntity = new SRdmNtyUpdateEntity();
+		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+
+
+        boolean errFlg = false;
+        String errMsg = "";
       //  List<NM101Entity> selectTestEntity = dao.select(paramEntity);
       //  indto.setTest(selectTestEntity.get(0).getTest());
 		indto.setPageFlag("0");
@@ -218,6 +225,7 @@ public class NM101Service extends BaseService {
 
         ntyStsDrop(indto);
         ntySubjectDrop(indto);
+
 
 
         //paramEntity.setScreenId("RDMND101");
@@ -486,6 +494,35 @@ public class NM101Service extends BaseService {
             	  System.out.print("1000件エラー");
               }
 
+        		paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
+
+          		if(paramEntity.getReqId() != null) {
+
+        			SRdmNtyUpdateUpEntity sRdmNtyUpdateUpEntity = new SRdmNtyUpdateUpEntity("selectByPK");
+        			sRdmNtyUpdateUpEntity.setReqId(indto.getReqId());
+
+        			List<SRdmNtyUpdateUpEntity> sRdmNtyUpdateCnrEntity = dao.select(sRdmNtyUpdateUpEntity);
+        			if(!CollectionUtils.isEmpty(sRdmNtyUpdateCnrEntity)) {
+        				//indto.setForward("NC011Init");
+        	        	indto.setReqId(paramEntity.getReqId());
+        	        	if(!indto.getReqFlg().equals("0")) {
+        	        		indto.setReqFlg("1");
+	        	        	outdto = indto;
+	        				return outdto;
+        			}
+        			if(CollectionUtils.isEmpty(sRdmNtyUpdateCnrEntity)) {
+        			errMsg += loginInfo.getMsgData(RdmConstantsData.I001).replace("項目名", "申請IDなし") + "\n";
+        			errFlg = true;
+        	        // エラー時処理
+        	        if(errFlg) {
+        	        	indto.setMsgStr(errMsg);
+        	        	return outdto;
+        	        }
+        			}
+        			return outdto;
+          			}
+          		}
+
 
           indto.setCatTuuchiComboDataList(catTuuchiComboDataList);
 
@@ -520,7 +557,8 @@ public class NM101Service extends BaseService {
      * @throws ParseException
      * @customizable
      */
-    @Transactional
+    @SuppressWarnings("unlikely-arg-type")
+	@Transactional
     public BaseDTO register(NM101DTO indto) throws ParseException {
         BaseDTO outdto = indto;
         // START UOC
@@ -549,28 +587,28 @@ public class NM101Service extends BaseService {
         }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
-//		if(indto.getSsUpdYmdhms() != null && !indto.getSsUpdYmdhms().equals("")) {
-//			TRdmReqKnrEntity tRdmReqKnrChkEntity = new TRdmReqKnrEntity("selectNF011DateChkData");
-//			tRdmReqKnrChkEntity.setReqId(indto.getReqId());
-//
-//			List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
-//
-//			if(tRdmReqKnrEntityList.size() > 0) {
-//        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
-//        		Date updDate = null;
-//                try {
-//					updDate = sdFormat.parse(indto.getUpdShaYmd());
-//				} catch (ParseException e) {
-//					// TODO 自動生成された catch ブロック
-//					e.printStackTrace();
-//				}
-//        		if(!tRdmReqKnrEntityList.get(0).getUpdShaYmd().equals(updDate)) {
-//        			// 既に他のユーザーによってデータが処理されています。
-//        			errMsg += loginInfo.getMsgData(RdmConstantsData.E003) + "\n";
-//    	        	errFlg = true;
-//        		}
-//        	}
-//		}
+		if(indto.getSsUpdYmdhms() != null && !indto.getSsUpdYmdhms().equals("")) {
+			SRdmNtyUpdateUpEntity sRdmNtyUpdateUpEntity = new SRdmNtyUpdateUpEntity("selectNM101DateChkData");
+			sRdmNtyUpdateUpEntity.setNtyId(indto.getNtyId());
+
+			List<SRdmNtyUpdateUpEntity> sRdmNtyUpdateCnrEntity = dao.select(sRdmNtyUpdateUpEntity);
+
+			if(sRdmNtyUpdateCnrEntity.size() > 0) {
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		Date updDate = null;
+                try {
+					updDate = sdFormat.parse(indto.getUpdShaYmd());
+				} catch (ParseException e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+					}
+        		if(!sRdmNtyUpdateCnrEntity.get(0).getUpdShaYmd().equals(updDate)) {
+        			// 既に他のユーザーによってデータが処理されています。
+        			errMsg += loginInfo.getMsgData(RdmConstantsData.E003) + "\n";
+    	        	errFlg = true;
+        		}
+        	}
+		}
 
         // エラー時処理
         if(errFlg) {
@@ -592,7 +630,9 @@ public class NM101Service extends BaseService {
     	sRdmNtyUpdateUpEntity.setSsUpdYmdhms(sysDateTime);
     	sRdmNtyUpdateUpEntity.setSsUpdJgiNo(indto.getJgiNo());
 
+
     	dao.update(sRdmNtyUpdateUpEntity);
+    	indto.setReqFlg("0");
     	indto.setMsgStr("保存が完了しました。");
     	outdto = search(indto);
 

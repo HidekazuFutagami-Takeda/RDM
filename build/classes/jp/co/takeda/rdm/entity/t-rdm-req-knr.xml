@@ -170,7 +170,7 @@
 		    ,REQ_KNR.APR_SHA_ID
 		    ,REQ_KNR.APR_MEMO
 		    ,REQ_KNR.APR_COMMENT
-		<if test='mrAdminFlg == "1"'>
+		<if test='mrAdminFlg == "0"'>
 		   ,REQ_KNR.SHN_FLG
 		   ,REQ_KNR.SHN_YMDHMS
 		   ,REQ_KNR.SHN_SHA_ID
@@ -211,7 +211,7 @@
 			AND CODE_LBV.DEL_FLG = '0'
 			AND CODE_LBV.VALUE2 = CODE_LB.VALUE1
 			AND CODE_LBV.VALUE3 = REQ_KNR.REQ_TYPE
-			<if test='mrAdminFlg == "1"'>
+			<if test='mrAdminFlg == "0"'>
 		    left join  ORAUSR01.M_RDM_CODE_MST CODE_REQ_FLG --コード情報FB申請要否
 			ON CODE_REQ_FLG.VALUE1 = REQ_KNR.FB_REQ_FLG
 		    AND CODE_REQ_FLG.CODE_NAME ='FB_REQ_FLG'
@@ -478,7 +478,7 @@
 			END AS DOC_KANJ
 		    ,REQ_KNR.REQ_JGI_NAME,REQ_KNR.REQ_SHZ,REQ_KNR.REQ_COMMENT,REQ_KNR.APR_YMDHMS,REQ_KNR.APR_SHA_ID,
 		    REQ_KNR.APR_MEMO,REQ_KNR.APR_COMMENT
-		<if test='mrAdminFlg == "1"'>
+		<if test='mrAdminFlg == "0"'>
 		   ,REQ_KNR.SHN_FLG,
 		    REQ_KNR.SHN_YMDHMS,
 		    REQ_KNR.SHN_SHA_ID,
@@ -518,7 +518,7 @@
 			AND CODE_LBV.DEL_FLG = '0'
 			AND CODE_LBV.VALUE2 = CODE_LB.VALUE1
 			AND CODE_LBV.VALUE3 = REQ_KNR.REQ_TYPE
-			<if test='mrAdminFlg == "1"'>
+			<if test='mrAdminFlg == "0"'>
 		    left join  ORAUSR01.M_RDM_CODE_MST CODE_REQ_FLG --コード情報FB申請要否
 			ON CODE_REQ_FLG.VALUE1 = REQ_KNR.FB_REQ_FLG
 		    AND CODE_REQ_FLG.CODE_NAME ='FB_REQ_FLG'

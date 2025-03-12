@@ -96,6 +96,8 @@ public class NM101DTO extends BaseDTO implements Serializable {
      */
     private Integer inOffset;
 
+    private String UpdShaYmd;
+
     /**
      * Limit値
      * @generated
@@ -112,6 +114,9 @@ public class NM101DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private String sbt;
+
+    private String reqFlg;
+
     /**
      * 検索-連携種別
      * @generated
@@ -268,6 +273,7 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	 */
 	private String test;
 
+	private String reqId;
 
 	private String ntyId;
 
@@ -294,6 +300,8 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	private String ntyMemo;
 
 	private String youFlg;
+
+	private String Nc011PreScreenId;
 
 	/**
 	 * NM101DTO.javajgiNoを設定
@@ -399,6 +407,21 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	public void setJokenSetCd(String jokenSetCd) {
 		this.jokenSetCd = jokenSetCd;
 	}
+
+	/**
+	 * NM101DTO.javaUpdShaYmdを設定
+	 * @return updShaYmd
+	 */
+	public String getUpdShaYmd() {
+		return UpdShaYmd;
+	}
+	/**
+	 * @param updShaYmd セットする updShaYmd
+	 */
+	public void setUpdShaYmd(String updShaYmd) {
+		UpdShaYmd = updShaYmd;
+	}
+
 
 	/**
 	 * 検索-申請日時
@@ -522,6 +545,20 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	 */
 	public void setNtyId(String ntyId) {
 		this.ntyId = ntyId;
+	}
+
+	/**
+	 * NM101DTO.javareqIdを設定
+	 * @return reqId
+	 */
+	public String getReqId() {
+		return reqId;
+	}
+	/**
+	 * @param reqId セットする reqId
+	 */
+	public void setReqId(String reqId) {
+		this.reqId = reqId;
 	}
 	/**
 	 * NM101DTO.javantyBriを設定
@@ -987,6 +1024,19 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	}
 
 
+	/**
+	 * NM101DTO.javareqFlgを設定
+	 * @return reqFlg
+	 */
+	public String getReqFlg() {
+		return reqFlg;
+	}
+	/**
+	 * @param reqFlg セットする reqFlg
+	 */
+	public void setReqFlg(String reqFlg) {
+		this.reqFlg = reqFlg;
+	}
 	/**
 	 * メッセージ中身を取得します。
 	 * @return メッセージ中身
@@ -1583,6 +1633,19 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	}
 	public void setPageFlag(String pageFlag) {
 		this.pageFlag = pageFlag;
+	}
+	/**
+	 * NM101DTO.javaNc011PreScreenIdを設定
+	 * @return nc011PreScreenId
+	 */
+	public String getNc011PreScreenId() {
+		return Nc011PreScreenId;
+	}
+	/**
+	 * @param nc011PreScreenId セットする nc011PreScreenId
+	 */
+	public void setNc011PreScreenId(String nc011PreScreenId) {
+		Nc011PreScreenId = nc011PreScreenId;
 	}
 
 }

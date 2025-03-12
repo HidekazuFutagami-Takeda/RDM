@@ -198,10 +198,17 @@
     }
     </style>
     <style>
+   TABLE.comPortalTable{
+    width:900px;
+    }
+   TABLE.comPortalTable2{
+    width:1400px;
+    style="align:center"
+    }
 	    .testlayout {
 	    }
 		.siz{
-		width:1500px;
+		width:1700px;
 		}
 	TH.comTableTitle			/* テーブル形式のタイトル項目 */
        {
@@ -274,7 +281,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	  }
 	%>
 </head>
-<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo(); sosSbt();">
+<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript: NM011Seni();comSetFormWindowInfo();">
 
   <%-- バナー部分をインクルード --%>
   <%-- サブシステムIDが３:(従業員関連)の時 --%>
@@ -301,6 +308,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <s:hidden id="mrAdminFlg" name="mrAdminFlg"/>
     <s:hidden id="preScreenId" name="preScreenId"/>
 
+	<s:hidden name="reqFlg" />
 	<s:hidden name="ntyId" />
 	<s:hidden id="jgiNo" name="jgiNo"/>
     <s:hidden id="jgiName" name="jgiName"/>
@@ -354,58 +362,57 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			      </s:if>
 			    </tbody>
 			</table>
-	<table style="align:cener;">
-		<tr>	<%-- 申請者 --%>
+	<table class="comPortalTable" style="align:left;">
+		<tr style="align:left;">	<%-- 申請者 --%>
 			<td class="comPortalTable"><nobr>通知ID</nobr></td>
 		      <td class="comPortalTable"><nobr><s:label name="ntyId"/></nobr></td>
-				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			 <td class="comPortalTable"><nobr>最終更新日</nobr></td>
 		      <td class="comPortalTable"><nobr><s:label name="ssUpdYmdhms"/></nobr></td>
 			</tr>
 			<tr>	<%-- 申請者 --%>
 			<td class="comPortalTable"><nobr>発生日</nobr></td>
 		      <td class="comPortalTable"><nobr><s:label name="hisYmdhmsTo"/></nobr></td>
-				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			 <td class="comPortalTable"><nobr>最終更新者</nobr></td>
 		      <td class="comPortalTable"><nobr><s:label name="JgiName"/></nobr></td>
 		</tr>
-		<tr>	<%-- 申請者 --%>
+		<tr style="align:left;">	<%-- 申請者 --%>
 
 							<%-- 優先度--%>
-			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 			<td class="comPortalTable"><nobr>&nbsp;通知ステータス</nobr></td>
 	            <td class="comPortalTable">
 				<s:select id="jkrSosNtySts" name="ntySts" cssStyle="width:80pt" list ="jkrSosNtySts" />
 			    </td>
 		</tr>
-		<tr>	<%-- 申請者 --%>
+		<tr style="align:left;">	<%-- 申請者 --%>
 		<td class="comPortalTable"><nobr>通知分類</nobr></td>
 	      <td class="comPortalTable"><nobr><s:label name="ntyBri"/></nobr></td>
 		</tr>
-		<tr>	<%-- 申請者 --%>
+		<tr style="align:left;">	<%-- 申請者 --%>
 		<td class="comPortalTable"><nobr>通知件名</nobr></td>
 	      <td class="comPortalTable"><nobr><s:label name="ntySubject"/></nobr></td>
 		</tr>
-		<tr>
-		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-
+		<tr style="align:left;">
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			<td class="pupControlItem"><nobr>&nbsp;申請ID検索</nobr><!-- ReqShz,bumonRyakuName -->
 			</td>
 				<td>
 					<s:textfield size="20" maxlength="40" name="reqId" STYLE="ime-mode:active" />
-					 <nobr><s:submit value="表示" name="表示" onclick="NM011Seni('reqId')"/>
+					 <nobr><s:submit value="表示" name="表示" onclick="rdmSearch('reqId')"/>
 			   		</nobr>
 				</td>
 		</tr>
 	</table>
-	<table style="align:left;">
-		<tr>	<%-- 申請者 --%>
+	<table class="comPortalTable" style="align:left;">
+		<tr style="align:left;">	<%-- 申請者 --%>
 		<td class="comPortalTable"><nobr>通知内容</nobr></td>
 		</tr>
 	</table>
-	<div style="max-height:320px;border: 1px solid black;width:650px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-	<table>
-	<tr>
+	<div style="max-height:320px;border: 1px solid black;width:850px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<table class="comPortalTable" style="align:left;">
+	<tr style="align:left;">
 		      <td class="comPortalTable"><s:property  value="ntyData.replaceAll('\\n', '<br/>')" escape="false" /><br></td><br>
 	</tr>
 	</table>
@@ -415,12 +422,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		      <td class="comPortalTable"><s:property  value="ntyData5.replaceAll('\\n', '<br/>')" escape="false" /><br></td>
 	  -->
 		</div>
-	<table style="align:left;">
-		<tr>	<%-- 申請者 --%>
+	<table class="comPortalTable" >
+		<tr >	<%-- 申請者 --%>
 		<td class="comPortalTable"><nobr>メモ</nobr></td>
 		</tr>
+	</table>
+	<table>
       <tr>
-	      <td class="comPortalTable"><nobr><s:textarea name="ntyMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" escape="false" /></nobr></td>
+	      <td ><nobr><s:textarea name="ntyMemo"  cols="50" rows="3" maxlength="300" style="width: 850px; height: 80px;" escape="false" /></nobr></td>
       </tr>
 	</table>
 	<!-- <div style="max-height:160px;width:1000px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
@@ -434,14 +443,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	</tr>
 	</table>
 		</div> -->
-			<table>
+			<table  class="comPortalTable" style="align:center">
 						<tr>
-							<td class="comFormTableItem"align="left"><nobr>
+							<td class="comFormTableItem"align="center"><nobr>
 									<input class="comButton" type="button" name="buttonF1"
 										value="戻る" onClick="JavaScript:backBtn();return false;" />
 								</nobr></td>
-								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							<td class="comFormTableItem"align="right"><nobr>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+								<td class="comFormTableItem"align="right"><nobr>
+
 									<input class="comButton" type="button" name="buttonF1"
 										value="保存" onClick="JavaScript:rdmRegister();return false;" />
 								</nobr></td>

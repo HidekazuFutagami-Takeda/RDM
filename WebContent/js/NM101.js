@@ -26,24 +26,51 @@ var gCseViewSosWin=null;       // 組織従業員選択(組織)
  */
 var gMsg = new Array();
 
+function NM011Seni() {
+	var val1 = fm1.reqFlg.value;
 
+	if(val1 == "1"){
+	if (!jkrDestructChack()) return false;
+	COM_Click_flg = true;
+	var tmpReq = fm1.reqId.value;
+	var reqIdcell = fm1.reqId.value;
+	var nm101Tab;
+
+	fm1.reqId.value=reqIdcell;
+
+
+	if(nm101Tab && !nm101Tab.closed){
+		nm101Tab.close();
+	}
+
+	nc001Tab = window.open("","NM101Tab");
+	document.fm1.target="NM101Tab";
+
+	fm1.screenId.value='NC011';
+	fm1.functionId.value="Search";
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+	}
+}
 /**
  * <pre>
  *  検索
  * 検索(ボタン)押下時に呼ばれます。
  * </pre>
  */
-function rdmSearch() {
+function rdmSearch(reqId) {
 
 	if (!jkrDestructChack()) return false;
+	var reqIdcell = fm1.reqId.value;
 
-      document.fm1.jkrSosNtyPri.disabled = false;
-      document.fm1.inHisYmdhmsFrom.disabled = false;
-      document.fm1.inHisYmdhmsTo.disabled = false;
 
-      document.fm1.screenId.value	= "NM011";
+	fm1.reqId.value=reqId;
+	fm1.reqId.value=reqIdcell;
+	fm1.reqFlg.value="1";
+
+	document.fm1.target = "";
+      document.fm1.screenId.value	= "NM101";
       document.fm1.functionId.value = 'Search';
-
 
 
     //選択された組織情報格納（表示押下前→表示押下後）
@@ -56,6 +83,7 @@ function rdmSearch() {
 
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
+
 
 }
 
@@ -191,28 +219,7 @@ function gotoNext(screenId,functionId){
 	  fm1.functionId.value=functionId;
 	  comSubmitForAnyWarp(fm1);
 	}
-function NM011Seni(reqId) {
-	if (!jkrDestructChack()) return false;
-	var tmpReq = fm1.reqId.value;
-	var reqIdcell = fm1.reqId.value;
-	var nm011Tab;
 
-	fm1.reqId.value=reqId;
-
-	if(nm011Tab && !nm011Tab.closed){
-		nm011Tab.close();
-	}
-
-	nc001Tab = window.open("","NM101Tab");
-	document.fm1.target="NM101Tab";
-
-	fm1.screenId.value='NC011';
-	fm1.functionId.value="Search";
-	comSubmitForAnyWarp(fm1);
-	comClickFlgInit();
-
-	fm1.reqId.value=reqIdcell;
-}
 
 
 /**
@@ -635,8 +642,8 @@ function backBtn(){
 
 			comSubmitForAnyWarp(fm1);
 		}
-	} else if(preScreenId == "NM001"){
-		if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+	} else if(preScreenId == "NM101"){
+		if(window.confirm("通知一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 			window.close();
 			document.fm1.screenId.value = preScreenId;
 			document.fm1.functionId.value="Init";

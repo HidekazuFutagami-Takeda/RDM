@@ -22,6 +22,23 @@
         <result column="YOU_FLG" property="youFlg"/>
         <result column="INSORTID" property="inSortId"/>
     </resultMap>
+    <resultMap id="sJkrJkrAuthKnrCelResultMap" type="jp.co.takeda.rdm.entity.SRdmNtyUpdateEntity">
+        <result column="REQ_ID" property="reqId"/>
+    </resultMap>
+    <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.SRdmNtyUpdateUpEntity" resultMap="sJkrJkrAuthKnrCelResultMap">
+        SELECT
+            REQ_ID
+   		FROM
+            T_RDM_REQ_KNR
+        WHERE
+            REQ_ID = #{reqId}
+    </select>
+    <select id="selectNM101DateChkData" parameterType="jp.co.takeda.rdm.entity.SRdmNtyUpdateUpEntity" resultMap="sJkrJkrAuthKnrUpResultMap">
+		SELECT
+		UPD_SHA_YMD --　通知管理.更新日
+		FROM
+		T_RDM_NTY_KNR WHERE NTY_ID #{ntyId}  --'NTY2568709'
+	</select>
 	<update id="selectNtyUpdateId" parameterType="jp.co.takeda.rdm.entity.SRdmNtyUpdateUpEntity" >
         UPDATE
             ORAUSR01.T_RDM_NTY_KNR NTY_KNR
@@ -48,6 +65,5 @@
             ,SS_UPD_JGI_NO = #{update.ssUpdJgiNo}
         WHERE
             NTY_KNR.NTY_ID = #{update.ntyId}-->
-
 	</update>
 </mapper>

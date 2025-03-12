@@ -394,7 +394,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			    </td>
 		</tr>
 		<tr>
-			<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
+			<td class="pupControlItem"><nobr>&nbsp;発生日</nobr></td>
 				<td>
 				<nobr><input type="date" name ="hisYmdhmsFrom"id="inHisYmdhmsFrom" value="${inhisYmdhmsFrom}" pattern="yyyy-MM-dd" />　～　
 				<input type="date" name ="hisYmdhmsTo"  id="inHisYmdhmsTo" value="${inhisYmdhmsTo}" pattern="yyyy-MM-dd" /></nobr>

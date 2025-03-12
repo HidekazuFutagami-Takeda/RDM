@@ -114,6 +114,7 @@
 	            AND NTY_KNR.NTY_SUBJECT = #{ntySubject}
 	    </if>
 	    <if test="ntySts != null">
+	    	<if test='unconCheck == true || ubderCheck == true || resolvCheck == true '>
 	            AND NTY_KNR.NTY_STS IN (
 	         <if test="unconCheck == true">
 	         '0'</if>
@@ -130,6 +131,7 @@
 	         <if test='unconCheck == false &amp;&amp; ubderCheck == false &amp;&amp; resolvCheck == true '>
 	         '2'</if>
 	            )
+	          </if>
 	    </if>
 	    <if test="ntyPri != null">
 	            AND NTY_KNR.NTY_PRI = #{ntyPri}
@@ -230,6 +232,7 @@
 	            AND NTY_KNR.NTY_SUBJECT = #{ntySubject}
 	    </if>
 	    <if test="ntySts != null">
+	    	<if test='unconCheck == true || ubderCheck == true || resolvCheck == true '>
 	            AND NTY_KNR.NTY_STS IN (
 	         <if test="unconCheck == true">
 	         '0'</if>
@@ -246,6 +249,7 @@
 	         <if test='unconCheck == false &amp;&amp; ubderCheck == false &amp;&amp; resolvCheck == true '>
 	         '2'</if>
 	            )
+	            </if>
 	    </if>
 	    <if test="ntyPri != null">
 	            AND NTY_KNR.NTY_PRI = #{ntyPri}

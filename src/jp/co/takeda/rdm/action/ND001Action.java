@@ -98,6 +98,9 @@ public class ND001Action extends BaseAction<ND001DTO> {
     protected void initSetup() throws Exception {
         // START UOC
 
+		String title = "ND001_医師検索";
+
+		dto.setTitle(title);
         // END UOC
     }
 

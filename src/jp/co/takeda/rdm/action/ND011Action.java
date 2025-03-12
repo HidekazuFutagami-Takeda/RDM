@@ -183,8 +183,13 @@ public class ND011Action extends BaseAction<ND011DTO> {
         		if (reqId != null && reqId.length() > 0) {
         			// 申請データ（一時保存含む）を参照
         			dto.setDisplayKbn("2");
-        		} else { //遷移エラー
-        			throw new InvalidRequestException();
+        		} else {
+        			if("ND301".equals(preScreenId)) {
+        				//一時保存なし申請後に確認画面から遷移
+        				dto.setDisplayKbn("9");
+        			}else {//遷移エラー
+        				throw new InvalidRequestException();
+        			}
         		}
         	}else {//遷移エラー
         		throw new InvalidRequestException();

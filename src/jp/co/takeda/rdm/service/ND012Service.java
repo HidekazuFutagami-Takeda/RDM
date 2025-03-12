@@ -758,63 +758,63 @@ public class ND012Service extends BaseService {
 		}
 		indto.setSpDiseaseCdCombo(mapSpDiseaseCd);
 
-		//1-2-12    大学職位
-		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-		//        大学職位利用フラグ=1
-		//        削除フラグ=0
-		MRdmHcpYakushokuEntity inEntityPosCmb = new MRdmHcpYakushokuEntity();
-		inEntityPosCmb.setUnivTitleFlg(1);
-		inEntityPosCmb.setDelFlg(0);
-		List<MRdmHcpYakushokuEntity> outMainPosList = dao.selectByValue(inEntityPosCmb);
-		LinkedHashMap<String, String> mapSkUnivPosCd = new LinkedHashMap<String, String>();
-		mapSkUnivPosCd.put("", "--なし--");
-		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
-			mapSkUnivPosCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
-		}
-		indto.setSkUnivPosCdCombo(mapSkUnivPosCd);
-
-		//1-2-13    役職
-		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
-		//        大学職位利用フラグ=0
-		//        削除フラグ=0
-		inEntityPosCmb.setUnivTitleFlg(0);
-		inEntityPosCmb.setDelFlg(0);
-		outMainPosList.clear();
-		outMainPosList = dao.selectByValue(inEntityPosCmb);
-		LinkedHashMap<String, String> mapSkTitleCd = new LinkedHashMap<String, String>();
-		mapSkTitleCd.put("", "--なし--");
-		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
-			mapSkTitleCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
-		}
-		indto.setSkTitleCdCombo(mapSkTitleCd);
-
-		//1-2-14    勤務形態
-		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-		//            コード名＝JOB_FORM（勤務形態）
-		//            削除フラグ=0
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_JOB_FORM);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapJobForm = new LinkedHashMap<String, String>();
-		mapJobForm.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapJobForm.put(outEntity.getValue(), outEntity.getValueKanji());
-		}
-		indto.setSkJobFormCombo(mapJobForm);
-
-		//1-2-15    薬審メンバー区分
-		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
-		//            コード名＝DCC（薬審メンバー区分）
-		//            削除フラグ=0
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_DCC);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapDCC = new LinkedHashMap<String, String>();
-		mapDCC.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapDCC.put(outEntity.getValue(), outEntity.getValueKanji());
-		}
-		indto.setSkDcctypeCombo(mapDCC);
+//		//1-2-12    大学職位
+//		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
+//		//        大学職位利用フラグ=1
+//		//        削除フラグ=0
+//		MRdmHcpYakushokuEntity inEntityPosCmb = new MRdmHcpYakushokuEntity();
+//		inEntityPosCmb.setUnivTitleFlg(1);
+//		inEntityPosCmb.setDelFlg(0);
+//		List<MRdmHcpYakushokuEntity> outMainPosList = dao.selectByValue(inEntityPosCmb);
+//		LinkedHashMap<String, String> mapSkUnivPosCd = new LinkedHashMap<String, String>();
+//		mapSkUnivPosCd.put("", "--なし--");
+//		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
+//			mapSkUnivPosCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
+//		}
+//		indto.setSkUnivPosCdCombo(mapSkUnivPosCd);
+//
+//		//1-2-13    役職
+//		//医師_役職マスタから下記条件で「武田役職コード：役職漢字名」を並び順の昇順に取得しドロップダウンリストを作成する
+//		//        大学職位利用フラグ=0
+//		//        削除フラグ=0
+//		inEntityPosCmb.setUnivTitleFlg(0);
+//		inEntityPosCmb.setDelFlg(0);
+//		outMainPosList.clear();
+//		outMainPosList = dao.selectByValue(inEntityPosCmb);
+//		LinkedHashMap<String, String> mapSkTitleCd = new LinkedHashMap<String, String>();
+//		mapSkTitleCd.put("", "--なし--");
+//		for (MRdmHcpYakushokuEntity outEntity : outMainPosList) {
+//			mapSkTitleCd.put(outEntity.getTitleCode(), outEntity.getTitleKj());
+//		}
+//		indto.setSkTitleCdCombo(mapSkTitleCd);
+//
+//		//1-2-14    勤務形態
+//		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
+//		//            コード名＝JOB_FORM（勤務形態）
+//		//            削除フラグ=0
+//		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_JOB_FORM);
+//		outMainList.clear();
+//		outMainList = dao.select(inEntityCmb);
+//		LinkedHashMap<String, String> mapJobForm = new LinkedHashMap<String, String>();
+//		mapJobForm.put("", "--なし--");
+//		for (SelectComboListEntity outEntity : outMainList) {
+//			mapJobForm.put(outEntity.getValue(), outEntity.getValueKanji());
+//		}
+//		indto.setSkJobFormCombo(mapJobForm);
+//
+//		//1-2-15    薬審メンバー区分
+//		//    コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
+//		//            コード名＝DCC（薬審メンバー区分）
+//		//            削除フラグ=0
+//		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_DCC);
+//		outMainList.clear();
+//		outMainList = dao.select(inEntityCmb);
+//		LinkedHashMap<String, String> mapDCC = new LinkedHashMap<String, String>();
+//		mapDCC.put("", "--なし--");
+//		for (SelectComboListEntity outEntity : outMainList) {
+//			mapDCC.put(outEntity.getValue(), outEntity.getValueKanji());
+//		}
+//		indto.setSkDcctypeCombo(mapDCC);
 	}
 	/**
 	 * イベント処理
@@ -896,8 +896,9 @@ public class ND012Service extends BaseService {
 				return outdto;
 			}
 		}
-		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg()) ) {
-			// 登録か更新か申請IDで判定
+//		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg()) ) {
+		if ("0".equals(indto.getButtonFlg())) {
+		// 登録か更新か申請IDで判定
 			if(indto.getReqId() != null && !StringUtils.isEmpty(indto.getReqId())) {
 				// 更新処理
 				// 現在日付を取得する

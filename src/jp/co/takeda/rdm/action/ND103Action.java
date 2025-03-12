@@ -122,11 +122,7 @@ public class ND103Action extends BaseAction<ND103DTO> {
 
         BaseDTO outdto = dto;
 
-        //仮
-        dto.setInsAbbrName("テスト");
-        dto.setInsNoSk("001303001");
-        dto.setParamInsNo("001303001");
-        dto.setUltInsNo("001101813");
+        dto.setTitle("ND103_医師勤務先追加");
 
         //エラーメッセージが定義されている場合
         if (!StringUtils.isEmpty(dto.getMsgStr())) {
@@ -142,6 +138,8 @@ public class ND103Action extends BaseAction<ND103DTO> {
         Date systemDate = DateUtils.getNowDate();
         SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
         String sysDate = fmtDate.format(systemDate);
+
+        dto.setLoginJokenSetCd("JKN0813");
 
         //ユーザー
         if (loginInfo.getJokenSetCd() == "0") {
@@ -236,7 +234,6 @@ public class ND103Action extends BaseAction<ND103DTO> {
         cancelSetup();
         // F層呼び出し
         BaseDTO outdto = nD103Service.cancel(dto);
-        outdto = nD103Service.initReq(dto);
         return cancelNext(outdto);
     }
 
@@ -259,6 +256,8 @@ public class ND103Action extends BaseAction<ND103DTO> {
 
         // END UOC
         setNextDTO(outdto);
+        //親画面へ遷移
+        outdto.setForward(dto.getWinVarName());
         return outdto.getForward();
     }
 

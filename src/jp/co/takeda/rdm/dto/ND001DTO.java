@@ -24,6 +24,11 @@ public class ND001DTO extends BaseDTO implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
+	/**
+     * タイトル
+     */
+    private String Title;
+
     /**
      * このDTOが関連付けられている画面ID
      */
@@ -668,6 +673,21 @@ public class ND001DTO extends BaseDTO implements Serializable {
 	}
 
     /**
+	 * ND001DTO.javaTitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return Title;
+	}
+
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		Title = title;
+	}
+
+	/**
      * このDTOの値を返す
      * @return DTOの値
      * @generated

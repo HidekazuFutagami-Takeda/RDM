@@ -93,7 +93,7 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設種別") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsType() == null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
+        if(indto.getInsType() != null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
         		|| "05".equals(indto.getInsType()) || "07".equals(indto.getInsType()))
         		&& (indto.getMainInsCd() == null || indto.getMainInsCd().isEmpty())) {
         	// 必須項目にデータを入力してください。（親施設）
@@ -638,19 +638,19 @@ public class NF301Service extends BaseService {
         }
 
         // 主担当重複チェック
+        indto.setHcoJkrDataList(delDeleteFlgRow(indto.getHcoJkrDataList()));
+
         List<HcoJkrData> hcoJkrDataChkList = indto.getHcoJkrDataList();
         HashSet<String> trtSet = new HashSet<>();
 
         for(int i=0; i<hcoJkrDataChkList.size(); i++) {
         	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(i);
-        	if(!"1".equals(hcoJkrData.getDeleteFlg())) {
-        		if(!trtSet.add(hcoJkrData.getTrtCd())) {
-        			// 領域に対して担当者は1名のみ設定してください。
-        			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
-        			errFlg = true;
-        			break;
-        		}
-        	}
+    		if(!trtSet.add(hcoJkrData.getTrtCd())) {
+    			// 領域に対して担当者は1名のみ設定してください。
+    			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
+    			errFlg = true;
+    			break;
+    		}
         }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
@@ -764,7 +764,7 @@ public class NF301Service extends BaseService {
         	tRdmHcoReqInsData.setInsAbbrName(indto.getInsAbbrName());
         	tRdmHcoReqInsData.setInsFormalName(indto.getInsFormalName());
         	tRdmHcoReqInsData.setInsContName(indto.getInsContName());
-        	tRdmHcoReqInsData.setInsPcode(indto.getInsPcode());
+        	tRdmHcoReqInsData.setInsPcode(indto.getInsPcode().replace("-", ""));
         	tRdmHcoReqInsData.setAddrCodePref(indto.getAddrCodePref());
         	tRdmHcoReqInsData.setAddrCodeCity(indto.getAddrCodeCity());
         	tRdmHcoReqInsData.setTkCityCd(indto.getTkCityCd());
@@ -1018,7 +1018,7 @@ public class NF301Service extends BaseService {
         	tRdmHcoReqUpdData.setInsAbbrName(indto.getInsAbbrName());
         	tRdmHcoReqUpdData.setInsFormalName(indto.getInsFormalName());
         	tRdmHcoReqUpdData.setInsContName(indto.getInsContName());
-        	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode());
+        	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode().replace("-", ""));
         	tRdmHcoReqUpdData.setAddrCodePref(indto.getAddrCodePref());
         	tRdmHcoReqUpdData.setAddrCodeCity(indto.getAddrCodeCity());
         	tRdmHcoReqUpdData.setTkCityCd(indto.getTkCityCd());
@@ -1642,7 +1642,7 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設種別") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsType() == null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
+        if(indto.getInsType() != null && ("02".equals(indto.getInsType()) || "04".equals(indto.getInsType())
         		|| "05".equals(indto.getInsType()) || "07".equals(indto.getInsType()))
         		&& (indto.getMainInsCd() == null || indto.getMainInsCd().isEmpty())) {
         	// 必須項目にデータを入力してください。（親施設）
@@ -2187,19 +2187,19 @@ public class NF301Service extends BaseService {
         }
 
         // 主担当重複チェック
+        indto.setHcoJkrDataList(delDeleteFlgRow(indto.getHcoJkrDataList()));
+
         List<HcoJkrData> hcoJkrDataChkList = indto.getHcoJkrDataList();
         HashSet<String> trtSet = new HashSet<>();
 
         for(int i=0; i<hcoJkrDataChkList.size(); i++) {
         	HcoJkrData hcoJkrData = hcoJkrDataChkList.get(i);
-        	if(!"1".equals(hcoJkrData.getDeleteFlg())) {
-        		if(!trtSet.add(hcoJkrData.getTrtCd())) {
-        			// 領域に対して担当者は1名のみ設定してください。
-        			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
-        			errFlg = true;
-        			break;
-        		}
-        	}
+    		if(!trtSet.add(hcoJkrData.getTrtCd())) {
+    			// 領域に対して担当者は1名のみ設定してください。
+    			errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
+    			errFlg = true;
+    			break;
+    		}
         }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
@@ -2268,7 +2268,7 @@ public class NF301Service extends BaseService {
     	tRdmHcoReqUpdData.setInsAbbrName(indto.getInsAbbrName());
     	tRdmHcoReqUpdData.setInsFormalName(indto.getInsFormalName());
     	tRdmHcoReqUpdData.setInsContName(indto.getInsContName());
-    	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode());
+    	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode().replace("-",""));
     	tRdmHcoReqUpdData.setAddrCodePref(indto.getAddrCodePref());
     	tRdmHcoReqUpdData.setAddrCodeCity(indto.getAddrCodeCity());
     	tRdmHcoReqUpdData.setTkCityCd(indto.getTkCityCd());
@@ -2590,5 +2590,24 @@ public class NF301Service extends BaseService {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * hcoJkrDataからDeleteFlg=1のデータを削除
+	 */
+	public static List<HcoJkrData> delDeleteFlgRow(List<HcoJkrData> hcoJkrDataList){
+		int i = 0;
+		int j = hcoJkrDataList.size();
+
+		while(i < j) {
+			if("1".equals(hcoJkrDataList.get(i).getDeleteFlg())) {
+				hcoJkrDataList.remove(i);
+				j--;
+			} else {
+				i++;
+			}
+		}
+
+		return hcoJkrDataList;
 	}
 }

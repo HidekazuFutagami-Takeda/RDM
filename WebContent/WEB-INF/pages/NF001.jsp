@@ -212,13 +212,11 @@
 		  	comClickFlgInit();
 
 		  	fm1.insNo.value = tmpIns;
+		  	fm1.ultInsCd.value = "";
 		}
 
 		 // 新規作成ボタン
 	    function newBtn(){
-	    	var tmpIns = fm1.insNo.value;
-	    	fm1.insNo.value = "";
-
 	    	document.fm1.target="";
 		 	fm1.screenId.value="NF011";
 		  	fm1.functionId.value="Init";
@@ -231,8 +229,6 @@
 			document.fm1.target="NF001Tab";
 	  	  	comSubmitForAnyWarp(fm1);
 	  	  	comClickFlgInit();
-
-		  	fm1.insNo.value = tmpIns;
 		}
 
 	 	// ソートボタン

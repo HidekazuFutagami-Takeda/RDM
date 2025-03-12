@@ -205,6 +205,7 @@
         <s:hidden name="delReasonNm"/>
         <s:hidden name="docKanjiSei"/>
         <s:hidden name="docKanjiMei"/>
+        <s:hidden name="unknownFlg"/>
 
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
@@ -343,7 +344,7 @@
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
-	     	<s:if test='%{reqStsCd == "01"}'>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
@@ -355,7 +356,10 @@
 		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
 	      <tr>
-		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="150" style="width: 650px; height: 80px;"/></nobr></td>
+		      <td class="comFormTableItem"><nobr>
+		      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="150" style="width: 650px; height: 80px;"/>
+		      <s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="display:none;"/>
+		      </nobr></td>
 	      </tr>
       </s:if>
   </table>
@@ -409,7 +413,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-			   <s:if test='%{ reqStsCd == "01" }'>
+			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 		                <input class="comButton" type="button"name="buttonF4" value="申請" onClick="register('0');return false;" />
 	                </s:if>

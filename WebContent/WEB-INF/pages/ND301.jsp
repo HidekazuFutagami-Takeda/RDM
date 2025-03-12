@@ -24,19 +24,7 @@
 
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-String regEnabedFlg = StringUtils.nvl((String)request.getAttribute("regEnabedFlg"), "");
-//20180406 HISOL ISHIDA START
-String sosSelFlg = StringUtils.nvl((String)request.getAttribute("sosSelFlg"), "");
-//20180406 HISOL ISHIDA END
-String strRegDisabled = "";
-//20180406 HISOL ISHIDA START
-//if (!"1".equals(regEnabedFlg)) {
-if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
-//20180406 HISOL ISHIDA END
-    strRegDisabled = "disabled";
-}
-%>
+
 <%-- オブジェクト読み込み --%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -100,29 +88,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <input type="text" name="functionId"         value="" />
     <input type="text" name="windowName"         value="" />
     <input type="text" name="openerName"         value="" />
-<!--     <input type="text" name="infoId1"            value="" /> -->
-<!--     <input type="text" name="systemId1"          value="" /> -->
-<!--     <input type="text" name="backScreenId1"      value="JkrMrChange" /> -->
-<!--     <input type="text" name="backFunctionId1"    value="" /> -->
-<!--     <input type="text" name="backScreenName1"    value="" /> -->
-<!--     <input type="text" name="backParamName1"     value="" /> -->
-<!--     <input type="text" name="backParamValue1"    value="" /> -->
-<!--     <input type="text" name="backParamName2"     value="" /> -->
-<!--     <input type="text" name="backParamValue2"    value="" /> -->
-<!--     <input type="text" name="fromScreenId1"      value="" /> -->
-<!--     <input type="text" name="fromFunctionId1"    value="" /> -->
-<!--     <input type="text" name="kensakuChar1"       value="" /> -->
-<!--     <input type="text" name="kensakuAndOr1"      value="" /> -->
-<!--     <input type="text" name="pageNextBackFlag1"  value="" /> -->
-<!--     <input type="text" name="sortFieldNo1"       value="" /> -->
-<!--     <input type="text" name="sortFLG1"           value="" /> -->
-<!--     <input type="text" name="startRecordNo1"     value="" /> -->
-<!--     <input type="text" name="pageLines1"         value="" /> -->
-<!--     <input type="hidden" name="endRecordNo1"	value="" /> -->
-<!--     <input type="text" name="no1"                value="1" /> -->
-
-    <%-- フレーム対応で発生したPOST用 引数1:frame(フレーム対応),以外(何もしない) 引数２:オブジェクトの型 --%>
-
   </form>
 
   <%-- バナー部分をインクルード --%>
@@ -369,7 +334,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>出身地</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-		      <s:label key="homeTownCd"/>：<s:label key="homeTownNm"/>
+		      <s:label key="homeTownNm"/>
 			  <s:hidden name="homeTownCd"/><s:hidden name="homeTownNm"/>
 	      </nobr></td>
       </tr>
@@ -569,7 +534,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><%-- スクロールバー用のテーブルクラスにすること --%>
-              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
+              <div id="rdmHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
 			  <table id="formTable07">
 				<tr>
 			        <%-- ヘッダ行 --%>
@@ -695,7 +660,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
-	     	<s:if test='%{reqStsCd == "01"}'>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
@@ -707,7 +672,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
 	      <tr>
-		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="150" style="width: 650px; height: 80px;"/></nobr></td>
+		      <td class="comFormTableItem"><nobr>
+		      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/>
+		      <s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="display:none;"/>
+		      </nobr></td>
 	      </tr>
       </s:if>
   </table>
@@ -761,7 +729,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-			   <s:if test='%{ reqStsCd == "01" }'>
+			   <s:if test='%{reqStsCd == null || reqStsCd == "" ||  reqStsCd == "01"}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 		                <input class="comButton" type="button"name="buttonF4" value="申請" onClick="register('0');return false;" />
 	                </s:if>

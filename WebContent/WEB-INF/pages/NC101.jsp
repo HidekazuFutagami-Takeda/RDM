@@ -14,6 +14,7 @@
 <title>NC101_完了</title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 <link href="css/common.css" rel="Stylesheet" type="text/css" />
+<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 <link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jkrMenu.js"></script>
 <script type="text/javascript" src="js/jgiKanren.js"></script>
@@ -104,6 +105,19 @@ function backBtn(){
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
   <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="完了"></td>
+        <td class="comPortalTitle"><nobr>NC101_完了</nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+
 <table border="0" class="comPortalTable" align="center" style="width:98%;">
   <tr>
     <td>
@@ -112,14 +126,14 @@ function backBtn(){
       <s:hidden name="backScreenId" value="NC101" />
       <s:hidden name="preScreenId"/>
 
-      <table class="comPortalTitle">
+      <table>
         <tr>
           <td class="comPortalTitleIcon"></td>
-          <td class="comPortalTitle"><nobr><s:property value="title"/></nobr></td>
+          <td><nobr><s:property value="title"/></nobr></td>
           <td class="comPortalTitleRight"><nobr></nobr></td>
         </tr>
       </table>
-      <table class="comPortalBody">
+      <table>
 <!-- 一覧表示処理 START-->
         <tr>
           <td valign="top" align="center" style="padding-left:5px;">

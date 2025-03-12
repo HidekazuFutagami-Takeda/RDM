@@ -223,6 +223,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    	box.appendChild(option1);
 	    	box.appendChild(option2);
     	} else if((insType == "08" && pharmType == "07" && insRank == "00")
+    			|| (insType == "09" && pharmType == "08" && insRank == "18")
     			|| (insType == "09" && pharmType == "08" && insRank == "19")
     			|| (insType == "09" && pharmType == "09" && insRank == "00")){
     		box.appendChild(option3);
@@ -257,7 +258,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     			|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
     			|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
     			|| (insType == "03" && pharmType == "06" && insRank == "17")
-    			|| (insType == "03" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+    			|| (insType == "06" && pharmType == "03" && (insRank == "11" || insRank == "12"))
     			|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
     			|| (insType == "08" && pharmType == "07" && insRank == "00")
     			|| (insType == "09" && pharmType == "08" && (insRank == "18" || insRank == "19"))
@@ -576,63 +577,499 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	return box;
     }
 
-    // セレクトボックスの設定
+	// セレクトボックスの設定
     function changeBox(changeItem){
-    	// 施設区分
-    	if(changeItem == "1" || changeItem == "4"){
-        	var box = document.fm1.pharmType;
-        	box = makePharmTypeBox(box,document.fm1.insType.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpPharmType.value;
-        	}
-    	}
+   		var insType = document.fm1.insType.value;
+   		var pharmType = document.fm1.pharmType.value;
+   		var insRank = document.fm1.insRank.value;
+   		var regVisType = document.fm1.regVisType.value;
+   		var impHosType = document.fm1.impHosType.value;
+   		var manageCd = document.fm1.manageCd.value;
 
-    	// 階級区分
-    	if(changeItem == "1" || changeItem == "2" || changeItem == "4"){
-        	var box = document.fm1.insRank;
-        	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.pharmType.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpInsRank.value;
-        	}
-    	}
+   		var pharmTypeBox = document.fm1.pharmType;
+   		var insRankBox = document.fm1.insRank;
+   		var regVisTypeBox = document.fm1.regVisType;
+   		var impHosTypeBox = document.fm1.impHosType;
+   		var univSubdivBox = document.fm1.univSubdiv;
+   		var manageCdBox = document.fm1.manageCd;
 
-    	// 定訪先区分
-    	if(changeItem == "1" || changeItem == "2" || changeItem == "3" || changeItem == "4"){
-        	var box = document.fm1.regVisType;
-        	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.pharmType.value, document.fm1.insRank.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpRegVisType.value;
-        	}
-    	}
+    	if(changeItem == "1"){
+	   		// 施設種別を変更
+    		if(insType == ""){
+    			document.getElementById("pharmType").disabled = true;
+    			document.getElementById("insRank").disabled = true;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("manageCd").disabled = true;
+    			document.fm1.univSubdiv.value = "";
+    			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+    			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+    			document.getElementById("pharmTypeAst").hidden = false;
+    			document.getElementById("insRankAst").hidden = false;
+    			document.getElementById("regVisTypeAst").hidden = false;
+    			document.getElementById("impHosTypeAst").hidden = false;
+    			document.getElementById("manageCdAst").hidden = false;
 
-    	//  重点病院区分
-    	if(changeItem == "1" || changeItem == "2" || changeItem == "3" || changeItem == "4"){
-        	var box = document.fm1.impHosType;
-        	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.pharmType.value, document.fm1.insRank.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpImpHosType.value;
-        	}
-    	}
+    			bedCntView(2);
+    		} else if(insType == "01"){
+    			document.getElementById("pharmType").disabled = false;
+    			document.getElementById("insRank").disabled = true;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("manageCd").disabled = true;
+    			document.getElementById("univSubdivTd01").style.visibility = "visible";
+    			document.getElementById("univSubdivTd02").style.visibility = "visible";
+    			document.getElementById("univSubdiv").disabled = true;
+    			document.getElementById("pharmTypeAst").hidden = false;
+    			document.getElementById("insRankAst").hidden = false;
+    			document.getElementById("regVisTypeAst").hidden = false;
+    			document.getElementById("impHosTypeAst").hidden = false;
+    			document.getElementById("manageCdAst").hidden = false;
 
-    	// 経営主体
-    	if(changeItem == "3" || changeItem == "4"){
-        	var box = document.fm1.manageCd;
-        	box = makeManageCdBox(box,document.fm1.insRank.value);
-        	if(changeItem != "4"){
-        		box.value = "";
-        	} else{
-        		box.value = document.fm1.tmpManageCd.value;
-        	}
+    			bedCntView(2);
+    		} else if(insType == "02"){
+    			document.getElementById("pharmType").disabled = false;
+    			document.getElementById("insRank").disabled = true;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("manageCd").disabled = true;
+    			document.fm1.univSubdiv.value = "";
+    			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+    			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+    			document.getElementById("pharmTypeAst").hidden = false;
+    			document.getElementById("insRankAst").hidden = false;
+    			document.getElementById("regVisTypeAst").hidden = false;
+    			document.getElementById("impHosTypeAst").hidden = false;
+    			document.getElementById("manageCdAst").hidden = false;
+
+    			bedCntView(2);
+    		} else if(insType == "03" || insType == "06" || insType == "08" || insType == "09" || insType == "10"){
+    			document.getElementById("pharmType").disabled = false;
+    			document.getElementById("insRank").disabled = true;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("manageCd").disabled = true;
+    			document.fm1.univSubdiv.value = "";
+    			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+    			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+    			document.getElementById("pharmTypeAst").hidden = false;
+    			document.getElementById("insRankAst").hidden = false;
+    			document.getElementById("regVisTypeAst").hidden = false;
+    			document.getElementById("impHosTypeAst").hidden = false;
+    			document.getElementById("manageCdAst").hidden = false;
+
+    			bedCntView(0);
+    		} else if(insType == "04" || insType == "05" || insType == "07"){
+    			document.getElementById("pharmType").disabled = true;
+    			document.getElementById("insRank").disabled = true;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("manageCd").disabled = true;
+    			document.fm1.univSubdiv.value = "";
+    			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+    			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+    			document.getElementById("pharmTypeAst").hidden = true;
+    			document.getElementById("insRankAst").hidden = true;
+    			document.getElementById("regVisTypeAst").hidden = true;
+    			document.getElementById("impHosTypeAst").hidden = true;
+    			document.getElementById("manageCdAst").hidden = true;
+
+    			bedCntView(1);
+    		}
+
+    		pharmTypeBox = makePharmTypeBox(pharmTypeBox,insType);
+			insRankBox = makeInsRankBox(insRankBox,insType, pharmType);
+			regVisTypeBox = makeRegVisTypeBox(regVisTypeBox,insType, pharmType, insRank);
+			impHosTypeBox = makeImpHosTypeBox(impHosTypeBox,insType, pharmType, insRank);
+			manageCdBox = makeManageCdBox(manageCdBox,insRank);
+
+        	pharmType = "";
+       		insRank = "";
+       		regVisType = "";
+       		impHosType = "";
+       		manageCd = "";
+       		setHoInsType();
+
+    	} else if(changeItem == "2"){
+    		// 施設区分を変更
+    		if(insType == "01" && pharmType == "01"){
+    			document.getElementById("insRank").disabled = false;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("univSubdiv").disabled = false;
+    			document.getElementById("manageCd").disabled = true;
+    			document.getElementById("insRankAst").hidden = false;
+    			document.getElementById("regVisTypeAst").hidden = false;
+    			document.getElementById("impHosTypeAst").hidden = false;
+    			document.getElementById("manageCdAst").hidden = false;
+
+    		} else if(insType == "01" && pharmType != "01"){
+    			document.getElementById("insRank").disabled = false;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("univSubdiv").disabled = true;
+    			document.getElementById("manageCd").disabled = true;
+    			document.getElementById("insRankAst").hidden = false;
+    			document.getElementById("regVisTypeAst").hidden = false;
+    			document.getElementById("impHosTypeAst").hidden = false;
+    			document.getElementById("manageCdAst").hidden = false;
+
+    		} else {
+    			document.getElementById("insRank").disabled = false;
+    			document.getElementById("regVisType").disabled = true;
+    			document.getElementById("impHosType").disabled = true;
+    			document.getElementById("univSubdiv").disabled = true;
+    			document.getElementById("manageCd").disabled = true;
+    		}
+
+    		insRankBox = makeInsRankBox(insRankBox,insType, pharmType);
+			regVisTypeBox = makeRegVisTypeBox(regVisTypeBox,insType, pharmType, insRank);
+			impHosTypeBox = makeImpHosTypeBox(impHosTypeBox,insType, pharmType, insRank);
+			manageCdBox = makeManageCdBox(manageCdBox,insRank);
+
+       		insRank = "";
+       		regVisType = "";
+       		impHosType = "";
+       		univSubdiv = "";
+       		manageCd = "";
+       		setHoInsType();
+
+    	} else if(changeItem == "3"){
+    		// 階級区分を変更
+   			document.getElementById("regVisType").disabled = false;
+   			document.getElementById("impHosType").disabled = false;
+   			document.getElementById("manageCd").disabled = false;
+
+	    	regVisTypeBox = makeRegVisTypeBox(regVisTypeBox,insType, pharmType, insRank);
+			impHosTypeBox = makeImpHosTypeBox(impHosTypeBox,insType, pharmType, insRank);
+			manageCdBox = makeManageCdBox(manageCdBox,insRank);
+
+	   		regVisType = "";
+	   		impHosType = "";
+	   		manageCd = "";
+	   		setHoInsType();
+
     	}
     }
+
+	// 初期表示時のセレクトボックスの設定
+    function onLoadChangeBox(){
+   		var insType = document.fm1.insType.value;
+   		var pharmType = document.fm1.tmpPharmType.value;
+   		var insRank = document.fm1.tmpInsRank.value;
+   		var regVisType = document.fm1.tmpRegVisType.value;
+   		var impHosType = document.fm1.tmpImpHosType.value;
+   		var manageCd = document.fm1.tmpManageCd.value;
+
+   		var pharmTypeBox = document.fm1.pharmType;
+   		var insRankBox = document.fm1.insRank;
+   		var regVisTypeBox = document.fm1.regVisType;
+   		var impHosTypeBox = document.fm1.impHosType;
+   		var univSubdivBox = document.fm1.univSubdiv;
+   		var manageCdBox = document.fm1.manageCd;
+
+ 		pharmTypeBox = makePharmTypeBox(pharmTypeBox,insType);
+ 		insRankBox = makeInsRankBox(insRankBox,insType, pharmType);
+ 		regVisTypeBox = makeRegVisTypeBox(regVisTypeBox,insType, pharmType, insRank);
+ 		impHosTypeBox = makeImpHosTypeBox(impHosTypeBox,insType, pharmType, insRank);
+ 		manageCdBox = makeManageCdBox(manageCdBox,insRank);
+
+		document.fm1.pharmType.value = pharmType;
+		document.fm1.insRank.value = insRank;
+		document.fm1.regVisType.value = document.fm1.tmpRegVisType.value;
+		document.fm1.impHosType.value = document.fm1.tmpImpHosType.value;
+		document.fm1.manageCd.value = document.fm1.tmpManageCd.value;
+
+  		if(insRank != ""){
+   		   	if(insType == "01" && insRank != "01"){
+   		   		document.getElementById("univSubdiv").disabled = true;
+   		   	} else if(insType == "02"){
+   			   	document.getElementById("univSubdivTd01").style.visibility = "hidden";
+				document.getElementById("univSubdivTd02").style.visibility = "hidden";
+   		   	} else if(insType != "01"){
+	   		   	document.getElementById("univSubdivTd01").style.visibility = "hidden";
+				document.getElementById("univSubdivTd02").style.visibility = "hidden";
+				bedCntView(0);
+   		   	}
+   		} else if(pharmType != ""){
+   		   	if(insType == "01" && pharmType == "01"){
+   		   		document.getElementById("regVisType").disabled = true;
+   		   		document.getElementById("impHosType").disabled = true;
+   		   		document.getElementById("manageCd").disabled = true;
+   			} else if(insType == "01" && pharmType != "01"){
+   				document.getElementById("regVisType").disabled = true;
+   		   		document.getElementById("impHosType").disabled = true;
+   		   		document.getElementById("univSubdiv").disabled = true;
+   		   		document.getElementById("manageCd").disabled = true;
+   			} else if(insType == "02"){
+   				document.getElementById("regVisType").disabled = true;
+   		   		document.getElementById("impHosType").disabled = true;
+   		   		document.getElementById("univSubdivTd01").style.visibility = "hidden";
+				document.getElementById("univSubdivTd02").style.visibility = "hidden";
+   		   		document.getElementById("manageCd").disabled = true;
+   			} else {
+   				document.getElementById("regVisType").disabled = true;
+   		   		document.getElementById("impHosType").disabled = true;
+   		   		document.getElementById("manageCd").disabled = true;
+   		   		bedCntView(0);
+   			}
+   		} else if(insType == "01"){
+   			document.getElementById("insRank").disabled = true;
+   			document.getElementById("regVisType").disabled = true;
+   			document.getElementById("impHosType").disabled = true;
+   			document.getElementById("univSubdiv").disabled = true;
+   			document.getElementById("manageCd").disabled = true;
+
+   		} else if(insType == "02"){
+   			document.getElementById("insRank").disabled = true;
+   			document.getElementById("regVisType").disabled = true;
+   			document.getElementById("impHosType").disabled = true;
+   			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+   			document.getElementById("manageCd").disabled = true;
+   		} else if(insType == "03" || insType == "06" || insType == "08" || insType == "09" || insType == "10"){
+   			document.getElementById("insRank").disabled = true;
+   			document.getElementById("regVisType").disabled = true;
+   			document.getElementById("impHosType").disabled = true;
+   			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+   			document.getElementById("manageCd").disabled = true;
+   			bedCntView(0);
+   		} else if(insType == "04" || insType == "05" || insType == "07"){
+   			document.getElementById("pharmType").disabled = true;
+   			document.getElementById("insRank").disabled = true;
+   			document.getElementById("regVisType").disabled = true;
+   			document.getElementById("impHosType").disabled = true;
+   			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+   			document.getElementById("manageCd").disabled = true;
+   			document.getElementById("pharmTypeAst").hidden = true;
+   			document.getElementById("insRankAst").hidden = true;
+			document.getElementById("regVisTypeAst").hidden = true;
+			document.getElementById("impHosTypeAst").hidden = true;
+			document.getElementById("manageCdAst").hidden = true;
+   			bedCntView(1);
+   		} else {
+   			document.getElementById("pharmType").disabled = true;
+   			document.getElementById("insRank").disabled = true;
+   			document.getElementById("regVisType").disabled = true;
+   			document.getElementById("impHosType").disabled = true;
+   			document.getElementById("univSubdivTd01").style.visibility = "hidden";
+			document.getElementById("univSubdivTd02").style.visibility = "hidden";
+   			document.getElementById("manageCd").disabled = true;
+   		}
+
+  		// 入所定員情報
+  		if(insType != "06" && insType != "07"){
+  			document.getElementById("entcapaNumTr").style.visibility = "collapse";
+  		}
+	}
+
+	// 病床数表示設定
+	// kbn 0:非表示、 1:非活性、2:活性
+	function bedCntView(kbn){
+		if(kbn == 0){
+			// 病床数非表示
+			if(document.fm1.insType.value == "06"){
+				// 入所定員数表示
+				document.getElementById("bedCntHr").style.visibility = "visible";
+				document.getElementById("formTable08").style.visibility = "visible";
+				document.getElementById("bedCntTr01").style.visibility = "visible";
+
+				document.getElementById("bedCntTd01").style.visibility = "collapse";
+				document.getElementById("bedCntTd02").style.visibility = "collapse";
+				document.getElementById("bedCntTd03").style.visibility = "collapse";
+				document.getElementById("bedCntTd04").style.visibility = "collapse";
+
+				document.getElementById("bedCntTr02").style.visibility = "collapse";
+				document.getElementById("bedCntTr03").style.visibility = "collapse";
+				document.getElementById("bedCntTr04").style.visibility = "collapse";
+				document.getElementById("bedCntTr05").style.visibility = "collapse";
+
+				document.getElementById("entcapaNumTr").style.visibility = "visible";
+
+				document.fm1.bedCntBase.value = "";
+	    		document.fm1.bedCnt01.value = "";
+	    		document.fm1.bedCnt02.value = "";
+	    		document.fm1.bedCnt03.value = "";
+	    		document.fm1.bedCnt04.value = "";
+	    		document.fm1.bedCnt05.value = "";
+	    		document.fm1.bedCnt06.value = "";
+	    		document.fm1.bedCnt07.value = "";
+	    		document.fm1.bedsTot.value = "0";
+	    		document.fm1.medBedsTot.value = "0";
+
+			} else {
+				// 入所定員数非表示
+				document.getElementById("bedCntHr").style.visibility = "collapse";
+				document.getElementById("formTable08").style.visibility = "collapse";
+
+				document.fm1.bedCntBase.value = "";
+	    		document.fm1.bedCnt01.value = "";
+	    		document.fm1.bedCnt02.value = "";
+	    		document.fm1.bedCnt03.value = "";
+	    		document.fm1.bedCnt04.value = "";
+	    		document.fm1.bedCnt05.value = "";
+	    		document.fm1.bedCnt06.value = "";
+	    		document.fm1.bedCnt07.value = "";
+	    		document.fm1.bedsTot.value = "0";
+	    		document.fm1.medBedsTot.value = "0";
+	    		document.fm1.entcapaNum.value = "";
+			}
+		} else if(kbn == 1){
+			// 病床数非活性
+			if(document.fm1.insType.value == "07"){
+				// 入所定員数表示
+				document.fm1.bedCntBase.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt01.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt02.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt03.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt04.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt05.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt06.style = "background-color:#D4D0C8; text-align:right;";
+				document.fm1.bedCnt07.style = "background-color:#D4D0C8; text-align:right;";
+
+				document.getElementById("bedCntHr").style.visibility = "visible";
+				document.getElementById("formTable08").style.visibility = "visible";
+				document.getElementById("bedCntTr01").style.visibility = "visible";
+
+				document.getElementById("bedCntTd01").style.visibility = "visible";
+				document.getElementById("bedCntTd02").style.visibility = "visible";
+				document.getElementById("bedCntTd03").style.visibility = "visible";
+				document.getElementById("bedCntTd04").style.visibility = "visible";
+
+				document.getElementById("bedCntTr02").style.visibility = "visible";
+				document.getElementById("bedCntTr03").style.visibility = "visible";
+				document.getElementById("bedCntTr04").style.visibility = "visible";
+				document.getElementById("bedCntTr05").style.visibility = "visible";
+
+				document.fm1.bedCntBase.readOnly = true;
+	    		document.fm1.bedCnt01.readOnly = true;
+	    		document.fm1.bedCnt02.readOnly = true;
+	    		document.fm1.bedCnt03.readOnly = true;
+	    		document.fm1.bedCnt04.readOnly = true;
+	    		document.fm1.bedCnt05.readOnly = true;
+	    		document.fm1.bedCnt06.readOnly = true;
+	    		document.fm1.bedCnt07.readOnly = true;
+
+				document.getElementById("entcapaNumTr").style.visibility = "visible";
+
+				document.fm1.bedCntBase.value = "";
+	    		document.fm1.bedCnt01.value = "";
+	    		document.fm1.bedCnt02.value = "";
+	    		document.fm1.bedCnt03.value = "";
+	    		document.fm1.bedCnt04.value = "";
+	    		document.fm1.bedCnt05.value = "";
+	    		document.fm1.bedCnt06.value = "";
+	    		document.fm1.bedCnt07.value = "";
+	    		document.fm1.bedsTot.value = "0";
+	    		document.fm1.medBedsTot.value = "0";
+
+			} else {
+				// 入所定員数非表示
+				document.fm1.bedCntBase.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt01.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt02.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt03.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt04.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt05.style = "background-color:#D4D0C8; text-align:right;";
+	    		document.fm1.bedCnt06.style = "background-color:#D4D0C8; text-align:right;";
+				document.fm1.bedCnt07.style = "background-color:#D4D0C8; text-align:right;";
+
+				document.getElementById("bedCntHr").style.visibility = "visible";
+				document.getElementById("formTable08").style.visibility = "visible";
+				document.getElementById("bedCntTr01").style.visibility = "visible";
+
+				document.getElementById("bedCntTd01").style.visibility = "visible";
+				document.getElementById("bedCntTd02").style.visibility = "visible";
+				document.getElementById("bedCntTd03").style.visibility = "visible";
+				document.getElementById("bedCntTd04").style.visibility = "visible";
+
+				document.getElementById("bedCntTr02").style.visibility = "visible";
+				document.getElementById("bedCntTr03").style.visibility = "visible";
+				document.getElementById("bedCntTr04").style.visibility = "visible";
+				document.getElementById("bedCntTr05").style.visibility = "visible";
+
+				document.getElementById("bedCntBaseAst").hidden = true;
+				document.getElementById("bedCnt04Ast").hidden = true;
+				document.getElementById("bedCnt01Ast").hidden = true;
+				document.getElementById("bedCnt05Ast").hidden = true;
+				document.getElementById("bedCnt03Ast").hidden = true;
+				document.getElementById("bedCnt07Ast").hidden = true;
+				document.getElementById("bedCnt02Ast").hidden = true;
+				document.getElementById("bedCnt06Ast").hidden = true;
+
+				document.fm1.bedCntBase.readOnly = true;
+	    		document.fm1.bedCnt01.readOnly = true;
+	    		document.fm1.bedCnt02.readOnly = true;
+	    		document.fm1.bedCnt03.readOnly = true;
+	    		document.fm1.bedCnt04.readOnly = true;
+	    		document.fm1.bedCnt05.readOnly = true;
+	    		document.fm1.bedCnt06.readOnly = true;
+	    		document.fm1.bedCnt07.readOnly = true;
+
+				document.getElementById("entcapaNumTr").style.visibility = "collapse";
+
+				document.fm1.bedCntBase.value = "";
+	    		document.fm1.bedCnt01.value = "";
+	    		document.fm1.bedCnt02.value = "";
+	    		document.fm1.bedCnt03.value = "";
+	    		document.fm1.bedCnt04.value = "";
+	    		document.fm1.bedCnt05.value = "";
+	    		document.fm1.bedCnt06.value = "";
+	    		document.fm1.bedCnt07.value = "";
+	    		document.fm1.bedsTot.value = "0";
+	    		document.fm1.medBedsTot.value = "0";
+	    		document.fm1.entcapaNum.value = "";
+			}
+		} else {
+			// 活性
+			document.fm1.bedCntBase.style = "text-align:right;";
+	    	document.fm1.bedCnt01.style = "text-align:right;";
+	    	document.fm1.bedCnt02.style = "text-align:right;";
+	    	document.fm1.bedCnt03.style = "text-align:right;";
+	    	document.fm1.bedCnt04.style = "text-align:right;";
+	    	document.fm1.bedCnt05.style = "text-align:right;";
+	    	document.fm1.bedCnt06.style = "text-align:right;";
+			document.fm1.bedCnt07.style = "text-align:right;";
+
+			document.getElementById("bedCntHr").style.visibility = "visible";
+			document.getElementById("formTable08").style.visibility = "visible";
+			document.getElementById("bedCntTr01").style.visibility = "visible";
+
+			document.getElementById("bedCntTd01").style.visibility = "visible";
+			document.getElementById("bedCntTd02").style.visibility = "visible";
+			document.getElementById("bedCntTd03").style.visibility = "visible";
+			document.getElementById("bedCntTd04").style.visibility = "visible";
+
+			document.getElementById("bedCntTr02").style.visibility = "visible";
+			document.getElementById("bedCntTr03").style.visibility = "visible";
+			document.getElementById("bedCntTr04").style.visibility = "visible";
+			document.getElementById("bedCntTr05").style.visibility = "visible";
+
+			document.getElementById("bedCntBaseAst").hidden = false;
+			document.getElementById("bedCnt04Ast").hidden = false;
+			document.getElementById("bedCnt01Ast").hidden = false;
+			document.getElementById("bedCnt05Ast").hidden = false;
+			document.getElementById("bedCnt03Ast").hidden = false;
+			document.getElementById("bedCnt07Ast").hidden = false;
+			document.getElementById("bedCnt02Ast").hidden = false;
+			document.getElementById("bedCnt06Ast").hidden = false;
+
+			document.fm1.bedCntBase.readOnly = false;
+    		document.fm1.bedCnt01.readOnly = false;
+    		document.fm1.bedCnt02.readOnly = false;
+    		document.fm1.bedCnt03.readOnly = false;
+    		document.fm1.bedCnt04.readOnly = false;
+    		document.fm1.bedCnt05.readOnly = false;
+    		document.fm1.bedCnt06.readOnly = false;
+    		document.fm1.bedCnt07.readOnly = false;
+
+			document.getElementById("entcapaNumTr").style.visibility = "collapse";
+
+    		document.fm1.entcapaNum.value = "";
+		}
+	}
 
     // 親施設表示設定
     function mainInsView(){
@@ -671,100 +1108,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		document.getElementById("formTable10").style.visibility = "hidden";
     	}
     }
-
-	// 病床数表示設定
-	function bedCntView(){
-		const insType = document.fm1.insType.value;
-
-		if(insType == "01" || insType == "02"){
-    		document.getElementById("bedCntTr").style.visibility = "visible";
-    		document.getElementById("formTable08").style.visibility = "visible";
-
-    		// 活性
-    		document.fm1.bedCntBase.readOnly = false;
-    		document.fm1.bedCnt01.readOnly = false;
-    		document.fm1.bedCnt02.readOnly = false;
-    		document.fm1.bedCnt03.readOnly = false;
-    		document.fm1.bedCnt04.readOnly = false;
-    		document.fm1.bedCnt05.readOnly = false;
-    		document.fm1.bedCnt06.readOnly = false;
-    		document.fm1.bedCnt07.readOnly = false;
-    		document.fm1.bedCntBase.style = "text-align:right;";
-    		document.fm1.bedCnt01.style = "text-align:right;";
-    		document.fm1.bedCnt02.style = "text-align:right;";
-    		document.fm1.bedCnt03.style = "text-align:right;";
-    		document.fm1.bedCnt04.style = "text-align:right;";
-    		document.fm1.bedCnt05.style = "text-align:right;";
-    		document.fm1.bedCnt06.style = "text-align:right;";
-    		document.fm1.bedCnt07.style = "text-align:right;";
-
-    	}else if(insType == "03" || insType == "06" || insType == "08"
-    				|| insType == "09" || insType == "10"){
-    		document.getElementById("bedCntTr").style.visibility = "hidden";
-    		document.getElementById("formTable08").style.visibility = "hidden";
-
-    		// 非活性
-    		document.fm1.bedCntBase.readOnly = true;
-    		document.fm1.bedCnt01.readOnly = true;
-    		document.fm1.bedCnt02.readOnly = true;
-    		document.fm1.bedCnt03.readOnly = true;
-    		document.fm1.bedCnt04.readOnly = true;
-    		document.fm1.bedCnt05.readOnly = true;
-    		document.fm1.bedCnt06.readOnly = true;
-    		document.fm1.bedCnt07.readOnly = true;
-
-    		document.fm1.bedCntBase.value = "";
-    		document.fm1.bedCnt01.value = "";
-    		document.fm1.bedCnt02.value = "";
-    		document.fm1.bedCnt03.value = "";
-    		document.fm1.bedCnt04.value = "";
-    		document.fm1.bedCnt05.value = "";
-    		document.fm1.bedCnt06.value = "";
-    		document.fm1.bedCnt07.value = "";
-    		document.fm1.bedsTot.value = "";
-    		document.fm1.medBedsTot.value = "";
-    	} else if(insType == "04" || insType == "05" || insType == "07"){
-    		document.getElementById("bedCntTr").style.visibility = "visible";
-    		document.getElementById("formTable08").style.visibility = "visible";
-
-    		// 非活性
-    		document.fm1.bedCntBase.readOnly = true;
-    		document.fm1.bedCnt01.readOnly = true;
-    		document.fm1.bedCnt02.readOnly = true;
-    		document.fm1.bedCnt03.readOnly = true;
-    		document.fm1.bedCnt04.readOnly = true;
-    		document.fm1.bedCnt05.readOnly = true;
-    		document.fm1.bedCnt06.readOnly = true;
-    		document.fm1.bedCnt07.readOnly = true;
-    		document.fm1.bedCntBase.style = "background-color:#D4D0C8; text-align:right;";
-    		document.fm1.bedCnt01.style = "background-color:#D4D0C8; text-align:right;";
-    		document.fm1.bedCnt02.style = "background-color:#D4D0C8; text-align:right;";
-    		document.fm1.bedCnt03.style = "background-color:#D4D0C8; text-align:right;";
-    		document.fm1.bedCnt04.style = "background-color:#D4D0C8; text-align:right;";
-    		document.fm1.bedCnt05.style = "background-color:#D4D0C8; text-align:right;";
-    		document.fm1.bedCnt06.style = "background-color:#D4D0C8; text-align:right;";
-    		document.fm1.bedCnt07.style = "background-color:#D4D0C8; text-align:right;";
-
-    		document.fm1.bedCntBase.value = "0";
-    		document.fm1.bedCnt01.value = "0";
-    		document.fm1.bedCnt02.value = "0";
-    		document.fm1.bedCnt03.value = "0";
-    		document.fm1.bedCnt04.value = "0";
-    		document.fm1.bedCnt05.value = "0";
-    		document.fm1.bedCnt06.value = "0";
-    		document.fm1.bedCnt07.value = "0";
-    		document.fm1.bedsTot.value = "0";
-    		document.fm1.medBedsTot.value = "0";
-    	}
-
-		// 入所定員情報
-		if(insType == "06" || insType == "07"){
-			document.getElementById("entcapaNumTr").style.visibility = "visible";
-		} else {
-			document.getElementById("entcapaNumTr").style.visibility = "hidden";
-			document.fm1.entcapaNum.value = "";
-		}
-	}
 
 	// 病床数再計算
 	function calcBedCnt(){
@@ -833,11 +1176,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 初期表示処理
     function onLoadFunc(){
-    	changeBox("4");
+    	onLoadChangeBox();
     	mainInsView();
     	vacView();
     	trtView();
-    	bedCntView();
 
     	// 編集不可設定
 		onLoadEditSet();
@@ -1573,7 +1915,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-	      		<s:select id="insType" name="insType" cssStyle="width:120pt" list ="insTypeCombo" onchange='changeBox("1"); mainInsView(); vacView(); bedCntView();　trtView();;'/>
+	      		<s:select id="insType" name="insType" cssStyle="width:120pt" list ="insTypeCombo" onchange='changeBox("1"); mainInsView(); vacView(); trtView();'/>
 	      		<s:textfield id="insTypeView" name="insTypeView" cssStyle="width:120pt" readonly="true" />
       		</nobr>
       	　　</td>
@@ -1871,27 +2213,27 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>区分情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>施設区分<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>施設区分<label id="pharmTypeAst"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:select id="pharmType" name="pharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onchange='changeBox("2")'/>
 	      	<s:textfield id="pharmTypeView" name="pharmTypeView" cssStyle="width:120pt" readonly="true" />
 	      	</nobr>
 	      </td>
-	      <td class="comFormTableItem"><nobr>階級区分<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>階級区分<label id="insRankAst"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="insRank" name="insRank" cssStyle="width:120pt" list ="insRankCombo" onchange='changeBox("3"); setHoInsType();'/>
+	      	<s:select id="insRank" name="insRank" cssStyle="width:120pt" list ="insRankCombo" onchange='changeBox("3");'/>
 	      	<s:textfield id="insRankView" name="insRankView" cssStyle="width:120pt" readonly="true" />
 	      	</nobr>
 	      </td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>定訪先区分<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>定訪先区分<label id="regVisTypeAst"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:select id="regVisType" name="regVisType" cssStyle="width:120pt" list ="regVisTypeCombo"/>
 	      	<s:textfield id="regVisTypeView" name="regVisTypeView" cssStyle="width:120pt" readonly="true" />
 	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>重点病院区分<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>重点病院区分<label id="impHosTypeAst"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:select id="impHosType" name="impHosType" cssStyle="width:120pt" list ="impHosTypeCombo"/>
 	      	<s:textfield id="impHosTypeView" name="impHosTypeView" cssStyle="width:120pt" readonly="true" />
@@ -1899,8 +2241,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>大学細分類</nobr></td>
-	      <td class="comFormTableItem"><nobr>
+	      <td class="comFormTableItem" id="univSubdivTd01"><nobr>大学細分類</nobr></td>
+	      <td class="comFormTableItem" id="univSubdivTd02"><nobr>
 	      	<s:select id="univSubdiv" name="univSubdiv" cssStyle="width:120pt" list ="univSubdivCombo"/>
 	      	<s:textfield id="univSubdivView" name="univSubdivView" cssStyle="width:120pt" readonly="true" />
 	      </nobr></td>
@@ -1926,7 +2268,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>経営主体</nobr></td>
-	      <td class="comFormTableItem"><nobr>経営主体<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>経営主体<label id="manageCdAst"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:select id="manageCd" name="manageCd" cssStyle="width:120pt" list ="manageCdCombo"/>
 	      	<s:textfield id="manageCdView" name="manageCdView" cssStyle="width:120pt" readonly="true" />
@@ -1935,7 +2277,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
           <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>
   　</table>
-  <hr class="comTitle" id="bedCntTr" style="margin-top:2px;width:75%"/><br/>
+  <hr class="comTitle" id="bedCntHr" style="margin-top:2px;width:75%"/><br/>
     <table id="formTable08" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--病床数情報--%>
@@ -1945,35 +2287,35 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 220px; height: 0px; border-width: 0px;"></td>
       </tr>
-      <tr>
+      <tr id="bedCntTr01">
 	      <td class="comFormTableItem"><nobr>病床数情報</nobr></td>
-	      <td class="comFormTableItem"><nobr>基準<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCntBase" size="4" maxlength="4" style="text-align:right;" /></nobr></td>
-	      <td class="comFormTableItem"><nobr>結核<font color="red" size="3">*</font></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt04" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
+	      <td class="comFormTableItem" id="bedCntTd01"><nobr>基準<label id="bedCntBaseAst"><font color="red" size="3">*</font></label></nobr></td>
+	      <td class="comFormTableItem" id="bedCntTd02"><nobr><s:textfield name="bedCntBase" size="4" maxlength="4" style="text-align:right;" /></nobr></td>
+	      <td class="comFormTableItem" id="bedCntTd03"><nobr>結核<label id="bedCnt04Ast"><font color="red" size="3">*</font></label></nobr></td>
+	      <td class="comFormTableItem" id="bedCntTd04"><nobr><s:textfield name="bedCnt04" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
       </tr>
-      <tr>
+      <tr id="bedCntTr02">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>一般<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>一般<label id="bedCnt01Ast"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt01" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
-	      <td class="comFormTableItem"><nobr>感染症<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>感染症<label id="bedCnt05Ast"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt05" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
       </tr>
-      <tr>
+      <tr id="bedCntTr03">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>精神<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>精神<label id="bedCnt03Ast"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt03" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
-	      <td class="comFormTableItem"><nobr>療養<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>療養<label id="bedCnt07Ast"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt07" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
       </tr>
-      <tr>
+      <tr id="bedCntTr04">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>医療療養<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>医療療養<label id="bedCnt02Ast"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt02" size="4" maxlength="4" style="text-align:right;" onchange='javascript:calcBedCnt();' /></nobr></td>
-	      <td class="comFormTableItem"><nobr>介護療養<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>介護療養<label id="bedCnt06Ast"><font color="red" size="3">*</font></label></nobr></td>
 	      <td class="comFormTableItem"><nobr><s:textfield name="bedCnt06" size="4" maxlength="4" style="text-align:right;" /></nobr></td>
       </tr>
-      <tr>
+      <tr id="bedCntTr05">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>ベッド数計</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:textfield name="bedsTot" size="4" maxlength="4" style="background-color:#D4D0C8; text-align:right;" readonly="true" /></nobr></td>
@@ -1983,7 +2325,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr id="entcapaNumTr">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>入所定員情報</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="entcapaNum" size="4" maxlength="4" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="entcapaNum" size="4" maxlength="4" style="text-align:right;" /></nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>

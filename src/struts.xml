@@ -438,6 +438,15 @@
         <action name="ND103Init" class="ND103Action" method="init">
             <result name="ND103">/WEB-INF/pages/ND103.jsp</result>
         </action>
+        <action name="ND501Search" class="ND501Action" method="search">
+            <result name="ND501">/WEB-INF/pages/ND501.jsp</result>
+        </action>
+        <action name="ND501Page" class="ND501Action" method="page">
+            <result name="ND501">/WEB-INF/pages/ND501.jsp</result>
+        </action>
+        <action name="ND501Init" class="ND501Action" method="init">
+            <result name="ND501">/WEB-INF/pages/ND501.jsp</result>
+        </action>
         <action name="ND311Init" class="ND311Action" method="init">
             <result name="ND311">/WEB-INF/pages/ND311.jsp</result>
             <result name="ND103">/WEB-INF/pages/ND103.jsp</result>

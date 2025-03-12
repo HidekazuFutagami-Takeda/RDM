@@ -460,6 +460,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="preManageNm"/>
 	<s:hidden name="manageCd"/>
 	<s:hidden name="manageNm"/>
+	<s:hidden name="wsType"/>
 	<s:hidden name="preWsTypeNm"/>
 	<s:hidden name="preBasketPurchaseNm"/>
 	<s:hidden name="wsTypeNm"/>
@@ -1084,17 +1085,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	</td>
 		<td class="comFormTableItemNf012">
 			<nobr><font color="red">
-			<s:if test='%{(insOpenYear != null && insOpenYear != "") || (insOpenMonth != null && insOpenMonth != "") || (insOpenDay != null && insOpenDay != "")}'>
-	      		<s:label key="insOpenYear"/>
-	      		年
-	      		<s:label key="insOpenMonth"/>
-	      		月
-	      		<s:label key="insOpenDay"/>
-	      		日
-	      	</s:if>
-	      	<s:else>
-	      		&nbsp;
-	      	</s:else>
+	      		<s:label key="insOpenYmd"/><s:hidden name="insOpenYmd"/>
       		</font></nobr>
 		</td>
 	</tr>

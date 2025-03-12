@@ -145,8 +145,8 @@ public class ND001Service extends BaseService {
 
         //検索条件
         //直書きは仮置き、検索部作成出来次第indtoから取得すること
-        selectParamSelectHcpEntity.setInSosCd("00127");
-        selectParamSelectHcpEntity.setInJgiNo("8830034");
+        selectParamSelectHcpEntity.setInSosCd(loginInfo.getSosCd());
+        selectParamSelectHcpEntity.setInJgiNo(Integer.toString(loginInfo.getJgiNo()));
         selectParamSelectHcpEntity.setInKanjiSrch(StringUtils.setEmptyToNull(indto.getSearchDocName()));
         selectParamSelectHcpEntity.setInKanaSrch(StringUtils.setEmptyToNull(indto.getSearchDocKana()));
         selectParamSelectHcpEntity.setInDocType(StringUtils.setEmptyToNull(indto.getSearchDocType()));
@@ -216,10 +216,6 @@ public class ND001Service extends BaseService {
         selectHcpEntity.setInGmnJgiNo(selectParamSelectHcpEntity.getInGmnJgiNo());
         selectHcpEntity.setInInsNo(selectParamSelectHcpEntity.getInInsNo());
         selectHcpEntity.setInSortId(selectParamSelectHcpEntity.getInSortId());
-
-
-
-
 
 		List<SelectHcpEntity> selectHcpList = dao.select(selectHcpEntity);
 		List<HcpData> hcpDataList = new ArrayList<HcpData>(selectHcpList.size());

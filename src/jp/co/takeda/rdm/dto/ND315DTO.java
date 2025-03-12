@@ -340,6 +340,12 @@ public class ND315DTO extends BaseDTO implements Serializable {
 	private String funcId;
 
 	/**
+	 * コンボボックス_削除理由
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> delReasonCombo = new LinkedHashMap<String,String>();
+
+	/**
      * デフォルトのコンストラクタ。
      * @generated
      */
@@ -1117,6 +1123,21 @@ public class ND315DTO extends BaseDTO implements Serializable {
 	 */
 	public void setFuncId(String funcId) {
 		this.funcId = funcId;
+	}
+
+	/**
+	 * ND315DTO.javadelReasonComboを設定
+	 * @return delReasonCombo
+	 */
+	public LinkedHashMap<String,String> getDelReasonCombo() {
+		return delReasonCombo;
+	}
+
+	/**
+	 * @param delReasonCombo セットする delReasonCombo
+	 */
+	public void setDelReasonCombo(LinkedHashMap<String,String> delReasonCombo) {
+		this.delReasonCombo = delReasonCombo;
 	}
 
 	/**

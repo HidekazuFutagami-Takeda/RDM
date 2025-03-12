@@ -760,7 +760,8 @@ public class ND011Service extends BaseService {
 				return outdto;
 			}
 		}
-		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg()) || "3".equals(indto.getButtonFlg())) {
+//		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg()) || "3".equals(indto.getButtonFlg())) {
+		if ("0".equals(indto.getButtonFlg())) {
 			// 登録か更新か申請IDで判定
 			if(indto.getReqId() != null && !StringUtils.isEmpty(indto.getReqId())) {
 				// 更新処理

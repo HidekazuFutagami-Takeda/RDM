@@ -102,7 +102,14 @@ public class NF011Service extends BaseService {
 				}
 
 				// 住所
-				indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				if(mainDataEntity.getYubinNo() != null && mainDataEntity.getYubinNo().length() == 7) {
+					String yubinNo = mainDataEntity.getYubinNo().substring(0,3) + "-"
+										+ mainDataEntity.getYubinNo().substring(3);
+					indto.setInsPcode(yubinNo);
+				} else {
+					indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				}
+
 				indto.setAddrCodePref(StringUtils.nvl(mainDataEntity.getTodofukenCd(), ""));
 				indto.setAddrCodePrefName(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""));
 				indto.setAddrCodeCity(StringUtils.nvl(mainDataEntity.getShikuchosonCd(), ""));
@@ -110,6 +117,10 @@ public class NF011Service extends BaseService {
 				indto.setTkCityCd(StringUtils.nvl(mainDataEntity.getTkCityCd(), ""));
 				indto.setTkCityName(StringUtils.nvl(mainDataEntity.getTkCityNm(), ""));
 				indto.setInsPhone1(StringUtils.nvl(mainDataEntity.getShisetsuTel(), ""));
+
+				if(!StringUtils.isEmpty(mainDataEntity.getAddress())) {
+					indto.setInsAddrDt(mainDataEntity.getAddress().replace(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""), "").replace(StringUtils.nvl(mainDataEntity.getShikuchosonNm(), ""),""));
+				}
 
 				// 経営主体
 				indto.setManageCd(StringUtils.nvl(mainDataEntity.getManageCd(), ""));
@@ -232,7 +243,14 @@ public class NF011Service extends BaseService {
 				indto.setInsOpenDay(StringUtils.nvl(mainDataEntity.getInsOpenDay(), ""));
 
 				// 住所詳細
-				indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				if(mainDataEntity.getYubinNo() != null && mainDataEntity.getYubinNo().length() == 7) {
+					String yubinNo = mainDataEntity.getYubinNo().substring(0,3) + "-"
+										+ mainDataEntity.getYubinNo().substring(3);
+					indto.setInsPcode(yubinNo);
+				} else {
+					indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				}
+
 				indto.setAddrCodePref(StringUtils.nvl(mainDataEntity.getTodofukenCd(), ""));
 				indto.setAddrCodePrefName(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""));
 				indto.setAddrCodeCity(StringUtils.nvl(mainDataEntity.getShikuchosonCd(), ""));
@@ -315,6 +333,9 @@ public class NF011Service extends BaseService {
         		indto.setReqBrCd(loginInfo.getBrCode());
         		indto.setReqDistCd(loginInfo.getDistCode());
 
+        		indto.setBedsTot("0");
+				indto.setMedBedsTot("0");
+
 				indto.setUltInsCd("");
 				indto.setUltInsNm("");
 				indto.setReqYmdhms("");
@@ -327,6 +348,9 @@ public class NF011Service extends BaseService {
 			indto.setReqJgiNo(loginInfo.getJgiNo());
     		indto.setReqBrCd(loginInfo.getBrCode());
     		indto.setReqDistCd(loginInfo.getDistCode());
+
+    		indto.setBedsTot("0");
+			indto.setMedBedsTot("0");
 
 			indto.setReqId("");
 			indto.setUltInsCd("");
@@ -840,18 +864,18 @@ public class NF011Service extends BaseService {
 
 		// 整合性チェック
 		// 主担当重複チェック
+		indto.setHcoJkrDataList(delDeleteFlgRow(indto.getHcoJkrDataList()));
+
 		List<HcoJkrData> hcoJkrDataList = indto.getHcoJkrDataList();
 		HashSet<String> trtSet = new HashSet<>();
 
 		for (int i = 0; i < hcoJkrDataList.size(); i++) {
 			HcoJkrData hcoJkrData = hcoJkrDataList.get(i);
-			if (!"1".equals(hcoJkrData.getDeleteFlg())) {
-				if (!trtSet.add(hcoJkrData.getTrtCd())) {
-					// 領域に対して担当者は1名のみ設定してください。
-					errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
-					errFlg = true;
-					break;
-				}
+			if (!trtSet.add(hcoJkrData.getTrtCd())) {
+				// 領域に対して担当者は1名のみ設定してください。
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W034) + "\n";
+				errFlg = true;
+				break;
 			}
 		}
 
@@ -938,7 +962,7 @@ public class NF011Service extends BaseService {
 			tRdmHcoReqInsData.setInsAbbrName(indto.getInsAbbrName());
 			tRdmHcoReqInsData.setInsFormalName(indto.getInsFormalName());
 			tRdmHcoReqInsData.setInsContName(indto.getInsContName());
-			tRdmHcoReqInsData.setInsPcode(indto.getInsPcode());
+			tRdmHcoReqInsData.setInsPcode(indto.getInsPcode().replace("-", ""));
 			tRdmHcoReqInsData.setAddrCodePref(indto.getAddrCodePref());
 			tRdmHcoReqInsData.setAddrCodeCity(indto.getAddrCodeCity());
 			tRdmHcoReqInsData.setTkCityCd(indto.getTkCityCd());
@@ -1192,7 +1216,7 @@ public class NF011Service extends BaseService {
 			tRdmHcoReqUpdData.setInsAbbrName(indto.getInsAbbrName());
 			tRdmHcoReqUpdData.setInsFormalName(indto.getInsFormalName());
 			tRdmHcoReqUpdData.setInsContName(indto.getInsContName());
-			tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode());
+			tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode().replace("-", ""));
 			tRdmHcoReqUpdData.setAddrCodePref(indto.getAddrCodePref());
 			tRdmHcoReqUpdData.setAddrCodeCity(indto.getAddrCodeCity());
 			tRdmHcoReqUpdData.setTkCityCd(indto.getTkCityCd());
@@ -1379,5 +1403,24 @@ public class NF011Service extends BaseService {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * hcoJkrDataからDeleteFlg=1のデータを削除
+	 */
+	public static List<HcoJkrData> delDeleteFlgRow(List<HcoJkrData> hcoJkrDataList){
+		int i = 0;
+		int j = hcoJkrDataList.size();
+
+		while(i < j) {
+			if("1".equals(hcoJkrDataList.get(i).getDeleteFlg())) {
+				hcoJkrDataList.remove(i);
+				j--;
+			} else {
+				i++;
+			}
+		}
+
+		return hcoJkrDataList;
 	}
 }

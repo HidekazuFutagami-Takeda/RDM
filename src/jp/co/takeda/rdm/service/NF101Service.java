@@ -111,14 +111,14 @@ public class NF101Service extends BaseService {
     		indto.setKeieitaiNm(StringUtils.nvl(mainDataEntity.getKeieitaiNm(), ""));
 
     		// 基本情報(来期)
-    		indto.setNextPharmType(StringUtils.nvl(mainDataEntity.getNextPharmType(), ""));
-    		indto.setNextInsRank(StringUtils.nvl(mainDataEntity.getNextInsRank(), ""));
-    		indto.setNextRegVisType(StringUtils.nvl(mainDataEntity.getNextRegVisType(), ""));
-    		indto.setNextImpHosType(StringUtils.nvl(mainDataEntity.getNextImpHosType(), ""));
-    		indto.setNextHoInsType(StringUtils.nvl(mainDataEntity.getNextHoInsType(), ""));
-    		indto.setNextManageCd(StringUtils.nvl(mainDataEntity.getNextManageCd(), ""));
-    		indto.setNextVacInsType(StringUtils.nvl(mainDataEntity.getNextVacInsType(), ""));
-    		indto.setNextVacVisitType(StringUtils.nvl(mainDataEntity.getNextVacVisitType(), ""));
+    		indto.setNextPharmType(StringUtils.nvl(mainDataEntity.getNextPharmType(), mainDataEntity.getPharmType()));
+    		indto.setNextInsRank(StringUtils.nvl(mainDataEntity.getNextInsRank(), mainDataEntity.getInsRank()));
+    		indto.setNextRegVisType(StringUtils.nvl(mainDataEntity.getNextRegVisType(), mainDataEntity.getRegVisType()));
+    		indto.setNextImpHosType(StringUtils.nvl(mainDataEntity.getNextImpHosType(), mainDataEntity.getImpHosType()));
+    		indto.setNextHoInsType(StringUtils.nvl(mainDataEntity.getNextHoInsType(), mainDataEntity.getHoInsType()));
+    		indto.setNextManageCd(StringUtils.nvl(mainDataEntity.getNextManageCd(), mainDataEntity.getManageCd()));
+    		indto.setNextVacInsType(StringUtils.nvl(mainDataEntity.getNextVacInsType(), mainDataEntity.getVacInsType()));
+    		indto.setNextVacVisitType(StringUtils.nvl(mainDataEntity.getNextVacVisitType(), mainDataEntity.getVacVisitType()));
 
     		// 病床数
     		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));

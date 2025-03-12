@@ -219,6 +219,18 @@ function reqDel() {
 }
 
 
+// 申請画面へボタン
+function ND311Page(){
+
+	//ND311_医師勤務先追加 - 申請内容確認
+	document.fm1.screenId.value	= "ND311";
+    document.fm1.functionId.value = "Init"
+
+ 	comSubmitForAnyWarp(fm1);
+
+}
+
+
 /**
  * 所属部科POPUP画面を呼び出します。
  *
@@ -232,10 +244,75 @@ function tmpCdcView(){
   hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
 
 
-  document.fm1.backScreenId.value = "ND103";
+  document.fm1.callBack.value = "ND103";
   gCdcViewWin = cdcView(gCdcViewWin,"tmpCallBackShozokuViewRDM","gCdcViewWin");
   return(true);
 }
+
+/**
+ * 施設検索POPUP画面を呼び出します。
+ *
+ */
+function tmpCseView(){
+
+// 2度押し対策
+  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+
+  // 全てのポップアップを閉じる
+  hcpClosePopUp(gCseViewWin, "gCseViewWin");
+
+ // パラメータの設定
+  document.fm1.backScreenId.value = "ND103";
+  gCseViewWin = cseAbbrView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
+  return(true);
+}
+
+/**
+ * 親ウインドウから呼び出す画面表示関数
+ * @param w 今から呼び出すwindowオブジェクトを受け取ります。既に存在した場合はフォーカスをあてるだけです。
+ * @param callBack コールバック関数の名前をStringで受け取ります。
+ * @param winVarName windowの名前を保存するエリアの名前をStringで受け取ります。
+ *           このエリアはUnLoad処理でクリアします。
+ * @return 呼び出したwindowオブジェクトを返します。
+ */
+function cseAbbrView(w,callBack,winVarName){
+
+  //****************************************************************
+  // ポップアップ起動中にウィンドウが閉じられると
+  // windowオブジェクトがString型に変換されてしまう場合があるため
+  // 型変換された場合はNULLをセットして初期化する
+  //****************************************************************
+  if(typeof(w) == 'string') {
+    w = null;
+  } else {
+    if(!comPopupPreCheck(w, winVarName)){
+      return(w);
+    }
+  }
+
+  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=530,height=660,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
+
+  // パラメタの設定
+  var checkedCodes = document.fm1.cdcCheckedCodes;
+  var jokenName = [];
+  var joken = [];
+//  for (var i = 0; i < checkedCodes.length; i++) {
+//    jokenName[jokenName.length] = "cdcCheckedCodes";
+//    joken[joken.length] = new Array(checkedCodes[i].value);
+//  }
+
+
+  jokenName[jokenName.length] = "backScreenId";
+  joken[joken.length] = new Array(document.fm1.backScreenId.value);
+  jokenName[jokenName.length] = "loginJokenSetCd";
+  joken[joken.length] = new Array(document.fm1.loginJokenSetCd.value);
+
+  comPostPopup(w,"NC203Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
+
+  w.focus();
+  return(w);
+}
+
 
 /**
  * 親ウインドウから呼び出す画面表示関数
@@ -276,6 +353,11 @@ function cdcView(w,callBack,winVarName){
   jokenName[jokenName.length] = "backScreenId";
   joken[joken.length] = new Array(document.fm1.backScreenId.value);
 
+  jokenName[jokenName.length] = "callBack";
+  joken[joken.length] = new Array(document.fm1.callBack.value);
+
+
+
   comPostPopup(w,"NC204Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 
   w.focus();
@@ -283,21 +365,17 @@ function cdcView(w,callBack,winVarName){
 }
 
 /**
- * 施設検索POPUP画面を呼び出します。
- *
+ * <pre>
+ * 施設検索POPUP　コールバック関数。
+ * </pre>
  */
-function tmpCseView(){
+function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
 
-// 2度押し対策
-  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+    document.fm1.insNoSk.value = insNo;
+    document.fm1.insAbbrName.value = insAbbrName;
+    document.fm1.insClass.value = insClass;
+    document.fm1.hoInsType.value = hoInsType;
 
-  // 全てのポップアップを閉じる
-  nd101ClosePopUp(gCseViewWin, "gCseViewWin");
-
- // パラメータの設定
-  //document.fm1.backScreenId.value = "ND011";
-  gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
-  return(true);
 }
 
 /**
@@ -330,16 +408,6 @@ function jimClear(name) {
 	}
 }
 
-/**
- * <pre>
- * 施設検索POPUP　コールバック関数。
- * </pre>
- */
-function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
-    document.fm1.postInsNo.value = insNo;
-    document.fm1.postInsAbbrName.value = shisetsuNm;
-    //TODO 改修してhoInsType（対象区分） insClass（施設分類）を取得するよう変更すること
-}
 
 /**
  * <pre>

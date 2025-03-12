@@ -195,7 +195,12 @@ public class NF012Service extends BaseService {
     		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
 
     		// 住所詳細
-    		indto.setPreInsPcode(StringUtils.nvl(mainDataEntity.getPreInsPcode(), ""));
+    		String preInsPcode = StringUtils.nvl(mainDataEntity.getPreInsPcode(), "");
+    		if(preInsPcode.length() == 7) {
+				preInsPcode = mainDataEntity.getPreInsPcode().substring(0,3) + "-"
+									+ mainDataEntity.getPreInsPcode().substring(3);
+			}
+    		indto.setPreInsPcode(preInsPcode);
     		indto.setPreAddrCodePref(StringUtils.nvl(mainDataEntity.getPreAddrCodePref(), ""));
     		indto.setPreAddrCodePrefName(StringUtils.nvl(mainDataEntity.getPreAddrCodePrefName(), ""));
     		indto.setPreAddrCodeCity(StringUtils.nvl(mainDataEntity.getPreAddrCodeCity(), ""));
@@ -222,7 +227,7 @@ public class NF012Service extends BaseService {
     			indto.setPreInsUrlYmd("");
     		}
 
-    		indto.setInsPcode(StringUtils.nvl(mainDataEntity.getPreInsPcode(), ""));
+    		indto.setInsPcode(preInsPcode);
     		indto.setAddrCodePref(StringUtils.nvl(mainDataEntity.getPreAddrCodePref(), ""));
     		indto.setAddrCodePrefName(StringUtils.nvl(mainDataEntity.getPreAddrCodePrefName(), ""));
     		indto.setAddrCodeCity(StringUtils.nvl(mainDataEntity.getPreAddrCodeCity(), ""));
@@ -1291,7 +1296,12 @@ public class NF012Service extends BaseService {
     			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
 
     			// 住所詳細
-    			indto.setPreInsPcode(StringUtils.nvl(mainDataEntity.getPreInsPcode(), ""));
+    			String preInsPcode = StringUtils.nvl(mainDataEntity.getPreInsPcode(), "");
+        		if(preInsPcode.length() == 7) {
+    				preInsPcode = mainDataEntity.getPreInsPcode().substring(0,3) + "-"
+    									+ mainDataEntity.getPreInsPcode().substring(3);
+    			}
+    			indto.setPreInsPcode(preInsPcode);
     			indto.setPreAddrCodePref(StringUtils.nvl(mainDataEntity.getPreAddrCodePref(), ""));
     			indto.setPreAddrCodePrefName(StringUtils.nvl(mainDataEntity.getPreAddrCodePrefName(), ""));
     			indto.setPreAddrCodeCity(StringUtils.nvl(mainDataEntity.getPreAddrCodeCity(), ""));
@@ -1318,7 +1328,12 @@ public class NF012Service extends BaseService {
     				indto.setPreInsUrlYmd("");
     			}
 
-    			indto.setInsPcode(getViewValue(mainDataEntity.getPreInsPcode(), mainDataEntity.getInsPcode()));
+    			String insPcode = getViewValue(mainDataEntity.getPreInsPcode(), mainDataEntity.getInsPcode());
+    			if(insPcode.length() == 7) {
+    				insPcode = insPcode.substring(0,3) + "-"
+    									+ insPcode.substring(3);
+    			}
+    			indto.setInsPcode(insPcode);
     			indto.setAddrCodePref(getViewValue(mainDataEntity.getPreAddrCodePref(), mainDataEntity.getAddrCodePref()));
     			indto.setAddrCodePrefName(getViewValue(mainDataEntity.getPreAddrCodePrefName(), mainDataEntity.getAddrCodePrefName()));
     			indto.setAddrCodeCity(getViewValue(mainDataEntity.getPreAddrCodeCity(), mainDataEntity.getAddrCodeCity()));
@@ -2396,7 +2411,12 @@ public class NF012Service extends BaseService {
     			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
 
     			// 住所詳細
-    			indto.setPreInsPcode(StringUtils.nvl(mainDataEntity.getPreInsPcode(), ""));
+    			String preInsPcode = StringUtils.nvl(mainDataEntity.getPreInsPcode(), "");
+    			if(preInsPcode.length() == 7) {
+    				preInsPcode = preInsPcode.substring(0,3) + "-"
+    									+ preInsPcode.substring(3);
+    			}
+    			indto.setPreInsPcode(preInsPcode);
     			indto.setPreAddrCodePref(StringUtils.nvl(mainDataEntity.getPreAddrCodePref(), ""));
     			indto.setPreAddrCodePrefName(StringUtils.nvl(mainDataEntity.getPreAddrCodePrefName(), ""));
     			indto.setPreAddrCodeCity(StringUtils.nvl(mainDataEntity.getPreAddrCodeCity(), ""));
@@ -2423,7 +2443,12 @@ public class NF012Service extends BaseService {
     				indto.setPreInsUrlYmd("");
     			}
 
-    			indto.setInsPcode(getReqViewValue(mainDataEntity.getPreInsPcode(), mainDataEntity.getInsPcode()));
+    			String insPcode = getReqViewValue(mainDataEntity.getPreInsPcode(), mainDataEntity.getInsPcode());
+    			if(insPcode.length() == 7) {
+    				insPcode = insPcode.substring(0,3) + "-"
+    									+ insPcode.substring(3);
+    			}
+    			indto.setInsPcode(insPcode);
     			indto.setAddrCodePref(getReqViewValue(mainDataEntity.getPreAddrCodePref(), mainDataEntity.getAddrCodePref()));
     			indto.setAddrCodePrefName(getReqViewValue(mainDataEntity.getPreAddrCodePrefName(), mainDataEntity.getAddrCodePrefName()));
     			indto.setAddrCodeCity(getReqViewValue(mainDataEntity.getPreAddrCodeCity(), mainDataEntity.getAddrCodeCity()));
@@ -3956,7 +3981,7 @@ public class NF012Service extends BaseService {
         	tRdmHcoReqInsData.setInsKana(indto.getInsKana());
         	tRdmHcoReqInsData.setInsAbbrName(indto.getInsAbbrName());
         	tRdmHcoReqInsData.setInsFormalName(indto.getInsFormalName());
-        	tRdmHcoReqInsData.setInsPcode(indto.getInsPcode());
+        	tRdmHcoReqInsData.setInsPcode(indto.getInsPcode().replace("-", ""));
         	tRdmHcoReqInsData.setAddrCodePref(indto.getAddrCodePref());
         	tRdmHcoReqInsData.setAddrCodeCity(indto.getAddrCodeCity());
         	tRdmHcoReqInsData.setTkCityCd(indto.getTkCityCd());
@@ -4161,7 +4186,7 @@ public class NF012Service extends BaseService {
         	tRdmHcoReqUpdData.setInsKana(indto.getInsKana());
         	tRdmHcoReqUpdData.setInsAbbrName(indto.getInsAbbrName());
         	tRdmHcoReqUpdData.setInsFormalName(indto.getInsFormalName());
-        	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode());
+        	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode().replace("-", ""));
         	tRdmHcoReqUpdData.setAddrCodePref(indto.getAddrCodePref());
         	tRdmHcoReqUpdData.setAddrCodeCity(indto.getAddrCodeCity());
         	tRdmHcoReqUpdData.setTkCityCd(indto.getTkCityCd());

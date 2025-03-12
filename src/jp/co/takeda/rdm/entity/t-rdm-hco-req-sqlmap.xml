@@ -8149,8 +8149,6 @@
 			<if test="reward37 != null">REWARD37 = #{reward37},</if><if test="reward37 == null">REWARD37 = null,</if>
 			<if test="reward44 != null">REWARD44 = #{reward44},</if><if test="reward44 == null">REWARD44 = null,</if>
 			</if>
-			INS_SHA_YMD = #{insShaYmd},
-			INS_SHA_ID = #{insShaId},
 			UPD_SHA_YMD = #{updShaYmd},
 			UPD_SHA_ID = #{updShaId}
         WHERE

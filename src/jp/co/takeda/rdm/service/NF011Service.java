@@ -102,7 +102,14 @@ public class NF011Service extends BaseService {
 				}
 
 				// 住所
-				indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				if(mainDataEntity.getYubinNo() != null && mainDataEntity.getYubinNo().length() == 7) {
+					String yubinNo = mainDataEntity.getYubinNo().substring(0,3) + "-"
+										+ mainDataEntity.getYubinNo().substring(3);
+					indto.setInsPcode(yubinNo);
+				} else {
+					indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				}
+
 				indto.setAddrCodePref(StringUtils.nvl(mainDataEntity.getTodofukenCd(), ""));
 				indto.setAddrCodePrefName(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""));
 				indto.setAddrCodeCity(StringUtils.nvl(mainDataEntity.getShikuchosonCd(), ""));
@@ -236,7 +243,14 @@ public class NF011Service extends BaseService {
 				indto.setInsOpenDay(StringUtils.nvl(mainDataEntity.getInsOpenDay(), ""));
 
 				// 住所詳細
-				indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				if(mainDataEntity.getYubinNo() != null && mainDataEntity.getYubinNo().length() == 7) {
+					String yubinNo = mainDataEntity.getYubinNo().substring(0,3) + "-"
+										+ mainDataEntity.getYubinNo().substring(3);
+					indto.setInsPcode(yubinNo);
+				} else {
+					indto.setInsPcode(StringUtils.nvl(mainDataEntity.getYubinNo(), ""));
+				}
+
 				indto.setAddrCodePref(StringUtils.nvl(mainDataEntity.getTodofukenCd(), ""));
 				indto.setAddrCodePrefName(StringUtils.nvl(mainDataEntity.getTodofukenNm(), ""));
 				indto.setAddrCodeCity(StringUtils.nvl(mainDataEntity.getShikuchosonCd(), ""));
@@ -948,7 +962,7 @@ public class NF011Service extends BaseService {
 			tRdmHcoReqInsData.setInsAbbrName(indto.getInsAbbrName());
 			tRdmHcoReqInsData.setInsFormalName(indto.getInsFormalName());
 			tRdmHcoReqInsData.setInsContName(indto.getInsContName());
-			tRdmHcoReqInsData.setInsPcode(indto.getInsPcode());
+			tRdmHcoReqInsData.setInsPcode(indto.getInsPcode().replace("-", ""));
 			tRdmHcoReqInsData.setAddrCodePref(indto.getAddrCodePref());
 			tRdmHcoReqInsData.setAddrCodeCity(indto.getAddrCodeCity());
 			tRdmHcoReqInsData.setTkCityCd(indto.getTkCityCd());
@@ -1202,7 +1216,7 @@ public class NF011Service extends BaseService {
 			tRdmHcoReqUpdData.setInsAbbrName(indto.getInsAbbrName());
 			tRdmHcoReqUpdData.setInsFormalName(indto.getInsFormalName());
 			tRdmHcoReqUpdData.setInsContName(indto.getInsContName());
-			tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode());
+			tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode().replace("-", ""));
 			tRdmHcoReqUpdData.setAddrCodePref(indto.getAddrCodePref());
 			tRdmHcoReqUpdData.setAddrCodeCity(indto.getAddrCodeCity());
 			tRdmHcoReqUpdData.setTkCityCd(indto.getTkCityCd());

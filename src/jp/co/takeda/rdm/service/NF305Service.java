@@ -427,7 +427,13 @@ public class NF305Service extends BaseService {
 		// 施設
 		indto.setInsAbbrName(StringUtils.nvl(mainDataEntity.getInsAbbrName(), ""));
 		indto.setInsFormalName(StringUtils.nvl(mainDataEntity.getInsFormalName(), ""));
-		indto.setInsPcode(StringUtils.nvl(mainDataEntity.getInsPcode(), ""));
+
+		String insPcode = StringUtils.nvl(mainDataEntity.getInsPcode(), "");
+		if(insPcode.length() == 7) {
+			insPcode = insPcode.substring(0,3) + "-"
+								+ insPcode.substring(3);
+		}
+		indto.setInsPcode(insPcode);
 		indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 
 		indto.setDocCount(StringUtils.nvl(mainDataEntity.getDocCount(), "0"));
@@ -968,7 +974,13 @@ public class NF305Service extends BaseService {
 		// 施設
 		indto.setInsAbbrName(StringUtils.nvl(mainDataEntity.getInsAbbrName(), ""));
 		indto.setInsFormalName(StringUtils.nvl(mainDataEntity.getInsFormalName(), ""));
-		indto.setInsPcode(StringUtils.nvl(mainDataEntity.getInsPcode(), ""));
+
+		String insPcode = StringUtils.nvl(mainDataEntity.getInsPcode(), "");
+		if(insPcode.length() == 7) {
+			insPcode = insPcode.substring(0,3) + "-"
+								+ insPcode.substring(3);
+		}
+		indto.setInsPcode(insPcode);
 		indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 
 		indto.setDocCount(StringUtils.nvl(mainDataEntity.getDocCount(), "0"));

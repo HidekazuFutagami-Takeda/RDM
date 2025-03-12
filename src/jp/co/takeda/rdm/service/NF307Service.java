@@ -331,7 +331,13 @@ public class NF307Service extends BaseService {
 		indto.setInsNo(StringUtils.nvl(mainDataEntity.getInsNo(), ""));
 		indto.setInsAbbrName(StringUtils.nvl(mainDataEntity.getInsAbbrName(), ""));
 		indto.setInsFormalName(StringUtils.nvl(mainDataEntity.getInsFormalName(), ""));
-		indto.setInsPcode(StringUtils.nvl(mainDataEntity.getInsPcode(), ""));
+
+		String insPcode = StringUtils.nvl(mainDataEntity.getInsPcode(), "");
+		if(insPcode.length() == 7) {
+			insPcode = insPcode.substring(0,3) + "-"
+								+ insPcode.substring(3);
+		}
+		indto.setInsPcode(insPcode);
 		indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 		indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
 		indto.setRstReason(StringUtils.nvl(mainDataEntity.getRstReason(), ""));
@@ -739,7 +745,13 @@ public class NF307Service extends BaseService {
 		indto.setInsNo(StringUtils.nvl(mainDataEntity.getInsNo(), ""));
 		indto.setInsAbbrName(StringUtils.nvl(mainDataEntity.getInsAbbrName(), ""));
 		indto.setInsFormalName(StringUtils.nvl(mainDataEntity.getInsFormalName(), ""));
-		indto.setInsPcode(StringUtils.nvl(mainDataEntity.getInsPcode(), ""));
+
+		String insPcode = StringUtils.nvl(mainDataEntity.getInsPcode(), "");
+		if(insPcode.length() == 7) {
+			insPcode = insPcode.substring(0,3) + "-"
+								+ insPcode.substring(3);
+		}
+		indto.setInsPcode(insPcode);
 		indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 		indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
 		indto.setRstReason(StringUtils.nvl(mainDataEntity.getRstReason(), ""));

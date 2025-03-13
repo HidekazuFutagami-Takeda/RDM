@@ -45,6 +45,12 @@ public class SelectNF013MainDataEntity extends BaseEntity implements Serializabl
     private String reqId;
 
     /**
+     * 申請チャネル
+     * @generated
+     */
+    private String reqChl;
+
+    /**
      * 申請者所属名称
      * @generated
      */
@@ -312,6 +318,21 @@ public class SelectNF013MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setReqId(String reqId) {
 		this.reqId = reqId;
+	}
+
+	/**
+	 * SelectNF013MainDataEntity.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

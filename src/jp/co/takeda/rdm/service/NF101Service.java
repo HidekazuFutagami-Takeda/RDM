@@ -160,8 +160,8 @@ public class NF101Service extends BaseService {
     		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
     		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
     		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
-    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), ""));
-    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
+    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
+    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
 
     		// カラーフラグ
     		indto.setPharmTypeFlg(StringUtils.nvl(mainDataEntity.getPharmTypeFlg(), "0"));
@@ -339,8 +339,8 @@ public class NF101Service extends BaseService {
 			indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
 			indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
 			indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
-			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), ""));
-			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
+			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
+			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
 
     		// コメント
     		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));

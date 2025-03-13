@@ -137,6 +137,7 @@ public class NF013Service extends BaseService {
     		SelectNF013MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
     		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
     		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
     		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -239,6 +240,11 @@ public class NF013Service extends BaseService {
 
     		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
     		indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
+        } else {
+        	// 廃院日表示設定
+            if(indto.getDelYmd() != null) {
+            	indto.setDelYmd(indto.getDelYmd().replace("/", "-"));
+            }
         }
 
         // DropDownList作成

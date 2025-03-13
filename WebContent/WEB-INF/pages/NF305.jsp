@@ -231,6 +231,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="reqChl"/>
 	<s:hidden name="btnEnableFlg"/>
 
+	<s:hidden name="insFormalName"/>
+	<s:hidden name="dupInsAbbrName"/>
+	<s:hidden name="dupInsAddr"/>
+
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>
     <s:hidden name="selectedBumonRank"/>
@@ -580,7 +584,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:else>
 					&nbsp;
                	</s:else>
-               	<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+               	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" />
 					</s:if>

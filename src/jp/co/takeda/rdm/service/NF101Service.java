@@ -152,16 +152,16 @@ public class NF101Service extends BaseService {
     		indto.setUltBedsTot(Integer.toString(bedsTot));
     		indto.setUltMedBedsTot(Integer.toString(medBedsTot));
 
-    		indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), ""));
-    		indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), ""));
-    		indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), ""));
-    		indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), ""));
-    		indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), ""));
-    		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
-    		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
-    		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
-    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
-    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
+    		indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), mainDataEntity.getBedCntBase()));
+    		indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), mainDataEntity.getBedCnt01()));
+    		indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), mainDataEntity.getBedCnt02()));
+    		indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), mainDataEntity.getBedCnt03()));
+    		indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), mainDataEntity.getBedCnt04()));
+    		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), mainDataEntity.getBedCnt05()));
+    		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), mainDataEntity.getBedCnt06()));
+    		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), mainDataEntity.getBedCnt07()));
+    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), StringUtils.nvl(mainDataEntity.getBedsTot(), "0")));
+    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), StringUtils.nvl(mainDataEntity.getMedBedsTot(), "0")));
 
     		// カラーフラグ
     		indto.setPharmTypeFlg(StringUtils.nvl(mainDataEntity.getPharmTypeFlg(), "0"));

@@ -251,6 +251,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="insOpenDay"/>
 	<s:hidden name="preWsType"/>
 	<s:hidden name="preBasketPurchase"/>
+	<s:hidden name="basketPurchase"/>
 	<s:hidden name="preUnivSudiv"/>
 	<s:hidden name="preCapaType"/>
 	<s:hidden name="preUltInsCd"/>
@@ -274,6 +275,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="preInsAddr"/>
 	<s:hidden name="preInsAddrKana"/>
 	<s:hidden name="preTkCityCd"/>
+	<s:hidden name="tkCityCd"/>
 	<s:hidden name="tkCityName"/>
 	<s:hidden name="preInsPhone1"/>
 	<s:hidden name="preInsFax1"/>
@@ -1052,22 +1054,50 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 	   	<td class="comFormTableItem">施設略式漢字名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsAbbrName" /></td>
-		<td class="comFormTableItemNf012"><font color="red"><s:label key="insAbbrName" /></font></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="preInsAbbrName != insAbbrName">
+			<font color="red"><s:label key="insAbbrName" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insAbbrName" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">施設カナ名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsKana" /></td>
-		<td class="comFormTableItemNf012"><font color="red"><s:label key="insKana" /></font></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="preInsKana != insKana">
+			<font color="red"><s:label key="insKana" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insKana" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">施設正式漢字名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsFormalName" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insFormalName" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preInsFormalName != insFormalName">
+			<font color="red"><s:label key="insFormalName" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insFormalName" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">取引区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preTradeType" />：<s:label key="preTradeTypeNm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="tradeTypeNm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preTradeType != tradeType">
+			<font color="red"><s:label key="tradeTypeNm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="tradeTypeNm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">開業年月日</td>
@@ -1084,9 +1114,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   		</nobr>
 	   	</td>
 		<td class="comFormTableItemNf012">
-			<nobr><font color="red">
-	      		<s:label key="insOpenYmd"/><s:hidden name="insOpenYmd"/>
-      		</font></nobr>
+			<nobr>
+			<s:if test="preInsOpenYear != insOpenYear or preInsOpenMonth != insOpenMonth or preInsOpenDay != insOpenDay">
+				<font color="red">
+		      		<s:label key="insOpenYmd"/><s:hidden name="insOpenYmd"/>
+      			</font>
+      		</s:if>
+      		<s:else>
+      			<s:label key="insOpenYmd"/><s:hidden name="insOpenYmd"/>
+      		</s:else>
+      		</nobr>
 		</td>
 	</tr>
 	<tr>
@@ -1112,22 +1149,50 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">卸色区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preWsTypeNm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="wsTypeNm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preWsType != wsType">
+			<font color="red"><s:label key="wsTypeNm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="wsTypeNm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">本部一括購入</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preBasketPurchaseNm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="basketPurchaseNm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preBasketPurchase != basketPurchase">
+			<font color="red"><s:label key="basketPurchaseNm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="basketPurchaseNm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">大学細分類</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUnivSubdivNm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="univSubdivNm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUnivSubdiv != univSubdiv">
+			<font color="red"><s:label key="univSubdivNm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="univSubdivNm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">容量別実績把握病院区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preCapaTypeNm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="capaTypeNm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preCapaType != capaType">
+			<font color="red"><s:label key="capaTypeNm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="capaTypeNm" />
+		</s:else>
+	   	</td>
 	</tr>
   </table>
 	<br/>
@@ -1147,17 +1212,38 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 	   	<td class="comFormTableItem">ULT施設コード</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUltInsCd" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="ultInsCd" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUltInsCd != ultInsCd">
+			<font color="red"><s:label key="ultInsCd" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="ultInsCd" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ULT施設略名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preShisetsuNmRyaku" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="shisetsuNmRyaku" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUltInsCd != ultInsCd">
+			<font color="red"><s:label key="shisetsuNmRyaku" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="shisetsuNmRyaku" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ULT施設名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preShisetsuNm" /></td>
-		<td class="comFormTableItemNf012"><font color="red"><s:label key="shisetsuNm" /></font></td>
+		<td class="comFormTableItemNf012">
+		<s:if test="preUltInsCd != ultInsCd">
+			<font color="red"><s:label key="shisetsuNm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="shisetsuNm" />
+		</s:else>
+		</td>
 	</tr>
 	</table>
 	<br/>
@@ -1261,47 +1347,110 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 	   	<td class="comFormTableItem">郵便番号</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsPcode" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insPcode" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preInsPcode != insPcode">
+			<font color="red"><s:label key="insPcode" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insPcode" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">JIS県名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preAddrCodePrefName" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="addrCodePrefName" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preAddrCodePref != addrCodePref">
+			<font color="red"><s:label key="addrCodePrefName" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="addrCodePrefName" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">JIS市区町村名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preAddrCodeCityName" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="addrCodeCityName" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preAddrCodeCity != addrCodeCity">
+			<font color="red"><s:label key="addrCodeCityName" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="addrCodeCityName" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">町名地番</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsAddrDt" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insAddrDt" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   <s:if test="preInsAddrDt != insAddrDt">
+			<font color="red"><s:label key="insAddrDt" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insAddrDt" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">武田市区郡名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preTkCityName" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="tkCityName" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preTkCityCd != tkCityCd">
+			<font color="red"><s:label key="tkCityName" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="tkCityName" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">電話番号(代表)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsPhone1" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insPhone1" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preInsPhone1 != insPhone1">
+			<font color="red"><s:label key="insPhone1" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insPhone1" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">電話番号(薬局/DI室)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsPhone2" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insPhone2" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preInsPhone2 != insPhone2">
+			<font color="red"><s:label key="insPhone2" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insPhone2" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">FAX番号(代表)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsFax1" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insFax1" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preInsFax1 != insFax1">
+			<font color="red"><s:label key="insFax1" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insFax1" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">FAX番号(薬局/DI室)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsFax2" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insFax2" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preInsFax2 != insFax2">
+			<font color="red"><s:label key="insFax2" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insFax2" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ホームページアドレス(変更前)</td>
@@ -1315,14 +1464,26 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItem">　　　　　　　　　　　　(変更後)</td>
 	   	<td class="comFormTableItemNf012" colSpan="2">
 	   		<nobr>
-	   		<font color="red"><s:label key="insUrl" /></font>
+		   		<s:if test="preInsUrl != insUrl">
+					<font color="red"><s:label key="insUrl" /></font>
+				</s:if>
+				<s:else>
+					<s:label key="insUrl" />
+				</s:else>
 	   		</nobr>
 	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ホームページアドレス更新日</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preInsUrlYmd" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="insUrlYmd" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preInsUrlYmd != insUrlYmd">
+			<font color="red"><s:label key="insUrlYmd" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="insUrlYmd" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1344,77 +1505,182 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 	   	<td class="comFormTableItem">DM先(TKP-LDA)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0001" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0001" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0001 != free0001">
+			<font color="red"><s:label key="free0001" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0001" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">LEUあすか</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0002" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0002" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0002 != free0002">
+			<font color="red"><s:label key="free0002" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0002" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">DM先(TKP-NSAID)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0003" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0003" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0003 != free0003">
+			<font color="red"><s:label key="free0003" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0003" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">（O：未使用）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0015" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0015" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0015 != free0015">
+			<font color="red"><s:label key="free0015" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0015" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">TRIアロ登録（当期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0008" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0008" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0008 != free0008">
+			<font color="red"><s:label key="free0008" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0008" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">TRIアロ登録（来期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0009" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0009" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0009 != free0009">
+			<font color="red"><s:label key="free0009" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0009" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">REMアロ登録（当期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0004" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0004" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0004 != free0004">
+			<font color="red"><s:label key="free0004" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0004" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">REMアロ登録（来期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0005" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0005" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0005 != free0005">
+			<font color="red"><s:label key="free0005" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0005" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ENBアロ登録（当期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0006" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0006" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0006 != free0006">
+			<font color="red"><s:label key="free0006" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0006" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ENBアロ登録（来期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0007" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0007" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0007 != free0007">
+			<font color="red"><s:label key="free0007" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0007" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">XELアロ登録（当期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0010" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0010" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0010 != free0010">
+			<font color="red"><s:label key="free0010" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0010" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">XELアロ登録（来期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0011" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0011" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0011 != free0011">
+			<font color="red"><s:label key="free0011" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0011" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ROZアロ登録（当期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0013" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0013" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0013 != free0013">
+			<font color="red"><s:label key="free0013" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0013" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ROZアロ登録（来期）</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0014" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0014" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0014 != free0014">
+			<font color="red"><s:label key="free0014" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0014" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">振替先1310</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preFree0012" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="free0012" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preFree0012 != free0012">
+			<font color="red"><s:label key="free0012" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="free0012" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1437,12 +1703,26 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">老人短期入所施設</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preWelfare02Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="welfare02Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preWelfare02 != welfare02">
+			<font color="red"><s:label key="welfare02Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="welfare02Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">その他</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preWelfare08Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="welfare08Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preWelfare08 != welfare08">
+			<font color="red"><s:label key="welfare08Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="welfare08Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1465,182 +1745,434 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">En-T ARB ('18.11)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult01Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result01Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult01 != result01">
+			<font color="red"><s:label key="result01Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result01Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">En-T DPP4 ('18.11)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult02Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result02Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult02 != result02">
+			<font color="red"><s:label key="result02Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result02Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">En-T ω3 ('18.11)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult03Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result03Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult03 != result03">
+			<font color="red"><s:label key="result03Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result03Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">En-T PPI ('18.11)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult04Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result04Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult04 != result04">
+			<font color="red"><s:label key="result04Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result04Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">En-T 睡眠 ('18.11)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult05Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result05Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult05 != result05">
+			<font color="red"><s:label key="result05Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result05Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">En-T アルツハイマー ('18.11)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult06Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result06Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult06 != result06">
+			<font color="red"><s:label key="result06Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result06Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">En-T 骨粗鬆症 ('18.11)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult07Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result07Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult07 != result07">
+			<font color="red"><s:label key="result07Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result07Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">REMターゲット</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult08Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result08Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult08 != result08">
+			<font color="red"><s:label key="result08Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result08Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">BLP未獲得市場区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult09Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result09Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult09 != result09">
+			<font color="red"><s:label key="result09Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result09Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">整形育成先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult10Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result10Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult10 != result10">
+			<font color="red"><s:label key="result10Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result10Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">TKP・MSコールUP</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult11Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result11Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult11 != result11">
+			<font color="red"><s:label key="result11Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result11Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ALC Core1・2('19.10)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult12Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result12Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult12 != result12">
+			<font color="red"><s:label key="result12Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result12Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ENT Tier1-4('19.4)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult13Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result13Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult13 != result13">
+			<font color="red"><s:label key="result13Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result13Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">JIA厚労省施設</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult14Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result14Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult14 != result14">
+			<font color="red"><s:label key="result14Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result14Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">注力先('18.12)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult15Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result15Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult15 != result15">
+			<font color="red"><s:label key="result15Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result15Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ENBターゲット先('19.4)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult16Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result16Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult16 != result16">
+			<font color="red"><s:label key="result16Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result16Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">骨G</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult17Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result17Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult17 != result17">
+			<font color="red"><s:label key="result17Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result17Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ナテグリニド繁用先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult18Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result18Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult18 != result18">
+			<font color="red"><s:label key="result18Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result18Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">GLUターゲット先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult19Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result19Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult19 != result19">
+			<font color="red"><s:label key="result19Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result19Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">骨G2</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult20Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result20Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult20 != result20">
+			<font color="red"><s:label key="result20Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result20Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(U:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult21Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result21Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult21 != result21">
+			<font color="red"><s:label key="result21Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result21Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">DOIT3</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult22Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result22Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult22 != result22">
+			<font color="red"><s:label key="result22Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result22Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">PCI300</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult23Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result23Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult23 != result23">
+			<font color="red"><s:label key="result23Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result23Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">JDEsART</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult24Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result24Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult24 != result24">
+			<font color="red"><s:label key="result24Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result24Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(Y:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult25Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result25Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult25 != result25">
+			<font color="red"><s:label key="result25Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result25Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">TAP先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult26Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result26Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult26 != result26">
+			<font color="red"><s:label key="result26Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result26Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">QOL2005TKP</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult27Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result27Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult27 != result27">
+			<font color="red"><s:label key="result27Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result27Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">TKP未獲得市場区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult28Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result28Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult28 != result28">
+			<font color="red"><s:label key="result28Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result28Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ACT未獲得市場区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult29Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result29Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult29 != result29">
+			<font color="red"><s:label key="result29Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result29Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(4:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult30Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result30Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult30 != result30">
+			<font color="red"><s:label key="result30Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result30Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">旧LMR</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult31Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result31Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult31 != result31">
+			<font color="red"><s:label key="result31Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result31Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(6:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult32Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result32Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult32 != result32">
+			<font color="red"><s:label key="result32Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result32Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">LEU乳癌</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult33Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result33Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult33 != result33">
+			<font color="red"><s:label key="result33Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result33Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ONC担当区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult34Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result34Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult34 != result34">
+			<font color="red"><s:label key="result34Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result34Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">RPL(CVM)担当区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult35Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result35Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult35 != result35">
+			<font color="red"><s:label key="result35Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result35Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(10:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preResult36Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="result36Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preResult36 != result36">
+			<font color="red"><s:label key="result36Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="result36Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1663,27 +2195,62 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">内視鏡</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preEquip01Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="equip01Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preEquip01 != equip01">
+			<font color="red"><s:label key="equip01Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="equip01Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">骨量測定器</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preEquip02Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="equip02Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preEquip02 != equip02">
+			<font color="red"><s:label key="equip02Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="equip02Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ICD</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preEquip03Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="equip03Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preEquip03 != equip03">
+			<font color="red"><s:label key="equip03Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="equip03Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">CCU</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preEquip07Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="equip07Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preEquip07 != equip07">
+			<font color="red"><s:label key="equip07Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="equip07Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">NCU</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preEquip09Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="equip09Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preEquip09 != equip09">
+			<font color="red"><s:label key="equip09Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="equip09Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1706,37 +2273,86 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">T先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMarket01Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="market01Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMarket01 != market01">
+			<font color="red"><s:label key="market01Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="market01Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">酸抑制剤</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMarket02Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="market02Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMarket02 != market02">
+			<font color="red"><s:label key="market02Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="market02Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">高脂血症</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMarket03Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="market03Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMarket03 != market03">
+			<font color="red"><s:label key="market03Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="market03Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">高血圧</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMarket04Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="market04Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMarket04 != market04">
+			<font color="red"><s:label key="market04Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="market04Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">糖尿病</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMarket06Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="market06Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMarket06 != market06">
+			<font color="red"><s:label key="market06Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="market06Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">骨粗鬆症</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMarket07Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="market07Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMarket07 != market07">
+			<font color="red"><s:label key="market07Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="market07Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">CVMターゲット</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMarket09Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="market09Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMarket09 != market09">
+			<font color="red"><s:label key="market09Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="market09Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1759,7 +2375,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">社会医療法人</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preMedical12Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="medical12Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preMedical12 != medical12">
+			<font color="red"><s:label key="medical12Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="medical12Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1782,17 +2405,38 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">入院包括化実施病院</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preSpfunc01Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="spfunc01Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preSpfunc01 != spfunc01">
+			<font color="red"><s:label key="spfunc01Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="spfunc01Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">救命救急センター</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preSpfunc03Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="spfunc03Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preSpfunc03 != spfunc03">
+			<font color="red"><s:label key="spfunc03Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="spfunc03Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">大学院大学</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preSpfunc04Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="spfunc04Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preSpfunc04 != spfunc04">
+			<font color="red"><s:label key="spfunc04Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="spfunc04Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	</table>
 	<br/>
@@ -1815,17 +2459,36 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">がん連携パス</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preTieup10Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="tieup10Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preTieup10 != tieup10">
+			<font color="red"><s:label key="tieup10Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="tieup10Nm" />
+		</s:else>
+	   	</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">心疾患連携パス</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preTieup11Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="tieup11Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preTieup11 != tieup11">
+			<font color="red"><s:label key="tieup11Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="tieup11Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">糖尿病連携パス</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preTieup12Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="tieup12Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preTieup12 != tieup12">
+			<font color="red"><s:label key="tieup12Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="tieup12Nm" />
+		</s:else>
 	</tr>
 	</table>
 	<br/>
@@ -1848,257 +2511,577 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">(A:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0001Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0001Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0001 != usercd0001">
+			<font color="red"><s:label key="usercd0001Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0001Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">VCT・V先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0002Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0002Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0002 != usercd0002">
+			<font color="red"><s:label key="usercd0002Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0002Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(C:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0003Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0003Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0003 != usercd0003">
+			<font color="red"><s:label key="usercd0003Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0003Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">NEXアーリーアダプタ</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0004Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0004Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0004 != usercd0004">
+			<font color="red"><s:label key="usercd0004Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0004Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem"><nobr>(E:未使用)</nobr></td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0005Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0005Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0005 != usercd0005">
+			<font color="red"><s:label key="usercd0005Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0005Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">テルモ・コプロ</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0006Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0006Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0006 != usercd0006">
+			<font color="red"><s:label key="usercd0006Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0006Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(G:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0007Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0007Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0007 != usercd0007">
+			<font color="red"><s:label key="usercd0007Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0007Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">リュープリン・コプロ12/10</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0008Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0008Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0008 != usercd0008">
+			<font color="red"><s:label key="usercd0008Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0008Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">アクトス・コプロ</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0009Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0009Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0009 != usercd0009">
+			<font color="red"><s:label key="usercd0009Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0009Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ベネット・コプロ</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0010Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0010Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0010 != usercd0010">
+			<font color="red"><s:label key="usercd0010Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0010Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">グルファスト</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0011Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0011Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0011 != usercd0011">
+			<font color="red"><s:label key="usercd0011Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0011Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">リュープリンコプロ08/10</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0012Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0012Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0012 != usercd0012">
+			<font color="red"><s:label key="usercd0012Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0012Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(M:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0013Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0013Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0013 != usercd0013">
+			<font color="red"><s:label key="usercd0013Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0013Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">COP活動先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0014Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0014Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0014 != usercd0014">
+			<font color="red"><s:label key="usercd0014Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0014Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ω3製剤市場</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0015Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0015Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0015 != usercd0015">
+			<font color="red"><s:label key="usercd0015Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0015Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">TCB RW在籍施設</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0016Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0016Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0016 != usercd0016">
+			<font color="red"><s:label key="usercd0016Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0016Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">DPP4アーリーアダプタ</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0017Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0017Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0017 != usercd0017">
+			<font color="red"><s:label key="usercd0017Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0017Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">DPP4阻害薬('16.2)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0018Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0018Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0018 != usercd0018">
+			<font color="red"><s:label key="usercd0018Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0018Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">DPP4阻害薬市場</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0019Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0019Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0019 != usercd0019">
+			<font color="red"><s:label key="usercd0019Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0019Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ARB/CCB配合剤市場</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0020Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0020Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0020 != usercd0020">
+			<font color="red"><s:label key="usercd0020Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0020Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">抗潰瘍(PPI)市場</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0021Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0021Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0021 != usercd0021">
+			<font color="red"><s:label key="usercd0021Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0021Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">骨粗鬆症市場</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0022Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0022Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0022 != usercd0022">
+			<font color="red"><s:label key="usercd0022Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0022Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem"><nobr>睡眠市場</nobr></td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0023Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0023Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0023 != usercd0023">
+			<font color="red"><s:label key="usercd0023Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0023Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">X雑・災害</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0024Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0024Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0024 != usercd0024">
+			<font color="red"><s:label key="usercd0024Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0024Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">アルツハイマー市場</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0025Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0025Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0025 != usercd0025">
+			<font color="red"><s:label key="usercd0025Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0025Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">ARB総市場</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0026Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0026Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0026 != usercd0026">
+			<font color="red"><s:label key="usercd0026Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0026Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">施設責任者</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0027Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0027Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0027 != usercd0027">
+			<font color="red"><s:label key="usercd0027Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0027Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">タケプロン・コプロ</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0028Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0028Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0028 != usercd0028">
+			<font color="red"><s:label key="usercd0028Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0028Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">抗潰瘍(PPI)市場('16.6)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0029Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0029Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0029 != usercd0029">
+			<font color="red"><s:label key="usercd0029Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0029Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(4:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0030Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0030Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0030 != usercd0030">
+			<font color="red"><s:label key="usercd0030Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0030Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">インフル・セオリア</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0031Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0031Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0031 != usercd0031">
+			<font color="red"><s:label key="usercd0031Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0031Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">インフル・あすか</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0032Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0032Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0032 != usercd0032">
+			<font color="red"><s:label key="usercd0032Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0032Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">マーケティングG・T</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0033Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0033Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0033 != usercd0033">
+			<font color="red"><s:label key="usercd0033Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0033Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(8:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0034Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0034Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0034 != usercd0034">
+			<font color="red"><s:label key="usercd0034Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0034Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">セルタッチ・ベネット</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0035Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0035Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0035 != usercd0035">
+			<font color="red"><s:label key="usercd0035Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0035Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">(10:未使用)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0036Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0036Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0036 != usercd0036">
+			<font color="red"><s:label key="usercd0036Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0036Nm" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">A(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0101" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0101" /></font></td>
+	   	<td class="comFormTableItemNf012">
+		<s:if test="preUsercd0101 != usercd0101">
+			<font color="red"><s:label key="usercd0101" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0101" />
+		</s:else>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">B(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0102" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0102" /></font></td>
+	   	<td class="comFormTableItemNf012">
+		<s:if test="preUsercd0102 != usercd0102">
+			<font color="red"><s:label key="usercd0102" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0102" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">C(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0103" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0103" /></font></td>
+	   	<td class="comFormTableItemNf012">
+		<s:if test="preUsercd0103 != usercd0103">
+			<font color="red"><s:label key="usercd0103" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0103" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">D(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0104" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0104" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0104 != usercd0104">
+			<font color="red"><s:label key="usercd0104" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0104" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">E(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0105" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0105" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0105 != usercd0105">
+			<font color="red"><s:label key="usercd0105" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0105" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">F(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0106" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0106" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0106 != usercd0106">
+			<font color="red"><s:label key="usercd0106" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0106" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">G(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0107" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0107" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0107 != usercd0107">
+			<font color="red"><s:label key="usercd0107" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0107" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">H(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0108" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0108" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0108 != usercd0108">
+			<font color="red"><s:label key="usercd0108" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0108" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">I(支店)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0109" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0109" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0109 != usercd0109">
+			<font color="red"><s:label key="usercd0109" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0109" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">A(営業所)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0201" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0201" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0201 != usercd0201">
+			<font color="red"><s:label key="usercd0201" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0201" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">LEUターゲット先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0202" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0202" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0202 != usercd0202">
+			<font color="red"><s:label key="usercd0202" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0202" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">C(営業所)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0203" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0203" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0203 != usercd0203">
+			<font color="red"><s:label key="usercd0203" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0203" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">次期院長ターゲット先</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0204" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0204" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0204 != usercd0204">
+			<font color="red"><s:label key="usercd0204" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0204" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">E(営業所)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0205" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0205" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0205 != usercd0205">
+			<font color="red"><s:label key="usercd0205" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0205" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">F:なんでもフォロー表</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preUsercd0206" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="usercd0206" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preUsercd0206 != usercd0206">
+			<font color="red"><s:label key="usercd0206" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="usercd0206" />
+		</s:else>
+		</td>
 	</tr>
 	</table>
 	<br/>
@@ -2121,87 +3104,206 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 		<td class="comFormTableItem">入院診療計画</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward04Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward04Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward04 != reward04">
+			<font color="red"><s:label key="reward04Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward04Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">院内感染防止対策</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward05Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward05Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward05 != reward05">
+			<font color="red"><s:label key="reward05Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward05Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">地域連携小児夜間・休日診療料1</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward08Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward08Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward08 != reward08">
+			<font color="red"><s:label key="reward08Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward08Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">小児入院医療管理料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward09Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward09Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward09 != reward09">
+			<font color="red"><s:label key="reward09Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward09Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">緩和ケア診療加算</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward18Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward18Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward18 != reward18">
+			<font color="red"><s:label key="reward18Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward18Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">短期滞在手術基本料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward21Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward21Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward21 != reward21">
+			<font color="red"><s:label key="reward21Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward21Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">在宅患者訪問診療料又は在総診</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward23Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward23Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward23 != reward23">
+			<font color="red"><s:label key="reward23Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward23Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">生活習慣病指導管理料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward25Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward25Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward25 != reward25">
+			<font color="red"><s:label key="reward25Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward25Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">慢性疼痛疾患管理料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward26Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward26Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward26 != reward26">
+			<font color="red"><s:label key="reward26Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward26Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">看護配置(有床診療所)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward27Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward27Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward27 != reward27">
+			<font color="red"><s:label key="reward27Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward27Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">老人入院基本料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward29Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward29Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward29 != reward29">
+			<font color="red"><s:label key="reward29Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward29Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">地域連携時間外診療(有無)</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward35Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward35Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward35 != reward35">
+			<font color="red"><s:label key="reward35Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward35Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">地域連携診療計画管理料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward36Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward36Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward36 != reward36">
+			<font color="red"><s:label key="reward36Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward36Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">地域連携診療計画退院時指導料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward37Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward37Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward37 != reward37">
+			<font color="red"><s:label key="reward37Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward37Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">病理診断料</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward44Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward44Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward44 != reward44">
+			<font color="red"><s:label key="reward44Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward44Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">急性期入院加算</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward16Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward16Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward04 != reward04">
+			<font color="red"><s:label key="reward16Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward16Nm" />
+		</s:else>
+		</td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">急性期特定入院加算</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward17Nm" /></td>
-	   	<td class="comFormTableItemNf012"><font color="red"><s:label key="reward17Nm" /></font></td>
+	   	<td class="comFormTableItemNf012">
+	   	<s:if test="preReward17 != reward17">
+			<font color="red"><s:label key="reward17Nm" /></font>
+		</s:if>
+		<s:else>
+			<s:label key="reward17Nm" />
+		</s:else>
+		</td>
 	</tr>
 	</table>
 	</s:if>
@@ -2284,7 +3386,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:else>
 					&nbsp;
                	</s:else>
-               	<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+               	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" />
 					</s:if>

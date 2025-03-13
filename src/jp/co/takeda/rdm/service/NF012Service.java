@@ -1180,6 +1180,7 @@ public class NF012Service extends BaseService {
     				indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
     			}
 
+    			indto.setReqChl(mainDataEntity.getReqChl());
     			indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
     			indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
     			indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -2284,6 +2285,7 @@ public class NF012Service extends BaseService {
     				indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
     			}
 
+    			indto.setReqChl(mainDataEntity.getReqChl());
     			indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
     			indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
     			indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));
@@ -3350,6 +3352,10 @@ public class NF012Service extends BaseService {
     			indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
     			indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), ""));
     		}
+        } else {
+        	if(indto.getInsUrlYmd() != null) {
+        		indto.setInsUrlYmd(indto.getInsUrlYmd().replace("/", "-"));
+        	}
         }
 
         // DropDownList作成

@@ -227,7 +227,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 <!--  	<s:hidden id="reqId" name="reqId"/>
 	<s:hidden id="reqType" name="reqType"/>-->
 
-	<s:hidden id="sortCondition" name="sortCondition" />
+	<s:hidden id="sortCondition" name="sortCondition" value ="1"/>
 	<s:hidden name="title" />
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="sosCd" name="sosCd"/>

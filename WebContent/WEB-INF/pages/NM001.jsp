@@ -209,6 +209,8 @@
 	<s:hidden id="knYmdhmsFrom" name="knYmdhmsFrom"/>
 	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
 
+	<s:hidden id="sortCondition" name="sortCondition" value ="1"/>
+
 	<s:hidden name="inreqYmdhmsFrom"/>
 	<s:hidden name="inreqYmdhmsTo"/>
 	<s:hidden name="reqType" />

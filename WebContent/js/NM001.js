@@ -105,7 +105,7 @@ function gotoNext(screenId,functionId){
 function NC011Seni1(reqType1,reqChl1,reqSts1,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType1;
 		document.fm1.reqChl.value = reqChl1;
 		document.fm1.reqSts.value = reqSts1;
@@ -115,7 +115,7 @@ function NC011Seni1(reqType1,reqChl1,reqSts1,addrCodePref) {
 function NC011Seni2(reqType2,reqChl2,reqSts2,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType2;
 		document.fm1.reqChl.value = reqChl2;
 		document.fm1.reqSts.value = reqSts2;
@@ -125,7 +125,7 @@ function NC011Seni2(reqType2,reqChl2,reqSts2,addrCodePref) {
 function NC011Seni3(reqType3,reqChl3,reqSts3,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType3;
 		document.fm1.reqChl.value = reqChl3;
 		document.fm1.reqSts.value = reqSts3;
@@ -135,7 +135,7 @@ function NC011Seni3(reqType3,reqChl3,reqSts3,addrCodePref) {
 function NC011Seni4(reqType4,reqChl4,reqSts4,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType4;
 		document.fm1.reqChl.value = reqChl4;
 		document.fm1.reqSts.value = reqSts4;
@@ -145,7 +145,7 @@ function NC011Seni4(reqType4,reqChl4,reqSts4,addrCodePref) {
 function NC011Seni5(reqType5,reqChl5,reqSts5,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType5;
 		document.fm1.reqChl.value = reqChl5;
 		document.fm1.reqSts.value = reqSts5;
@@ -155,7 +155,7 @@ function NC011Seni5(reqType5,reqChl5,reqSts5,addrCodePref) {
 function NC011Seni6(reqType6,reqChl6,reqSts6,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType6;
 		document.fm1.reqChl.value = reqChl6;
 		document.fm1.reqSts.value = reqSts6;
@@ -165,7 +165,7 @@ function NC011Seni6(reqType6,reqChl6,reqSts6,addrCodePref) {
 function NC011Seni7(reqType7,reqChl7,reqSts7,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType7;
 		document.fm1.reqChl.value = reqChl7;
 		document.fm1.reqSts.value = reqSts7;
@@ -175,7 +175,7 @@ function NC011Seni7(reqType7,reqChl7,reqSts7,addrCodePref) {
 function NC011Seni8(reqType8,reqChl8,reqSts8,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType8;
 		document.fm1.reqChl.value = reqChl8;
 		document.fm1.reqSts.value = reqSts8;
@@ -185,7 +185,7 @@ function NC011Seni8(reqType8,reqChl8,reqSts8,addrCodePref) {
 function NC011Seni9(reqType9,reqChl9,reqSts9,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType9;
 		document.fm1.reqChl.value = reqChl9;
 		document.fm1.reqSts.value = reqSts9;
@@ -195,7 +195,7 @@ function NC011Seni9(reqType9,reqChl9,reqSts9,addrCodePref) {
 function NC011Seni10(reqType10,reqChl10,reqSts10,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType10;
 		document.fm1.reqChl.value = reqChl10;
 		document.fm1.reqSts.value = reqSts10;
@@ -205,7 +205,7 @@ function NC011Seni10(reqType10,reqChl10,reqSts10,addrCodePref) {
 function NC011Seni11(reqType11,reqChl11,reqSts11,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType11;
 		document.fm1.reqChl.value = reqChl11;
 		document.fm1.reqSts.value = reqSts11;
@@ -215,7 +215,7 @@ function NC011Seni11(reqType11,reqChl11,reqSts11,addrCodePref) {
 function NC011Seni12(reqType12,reqChl12,reqSts12,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType12;
 		document.fm1.reqChl.value = reqChl12;
 		document.fm1.reqSts.value = reqSts12;
@@ -225,7 +225,7 @@ function NC011Seni12(reqType12,reqChl12,reqSts12,addrCodePref) {
 function NC011Seni13(reqType13,reqChl13,reqSts13,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType13;
 		document.fm1.reqChl.value = reqChl13;
 		document.fm1.reqSts.value = reqSts13;
@@ -235,7 +235,7 @@ function NC011Seni13(reqType13,reqChl13,reqSts13,addrCodePref) {
 function NC011Seni14(reqType14,reqChl14,reqSts14,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType14;
 		document.fm1.reqChl.value = reqChl14;
 		document.fm1.reqSts.value = reqSts14;
@@ -245,7 +245,7 @@ function NC011Seni14(reqType14,reqChl14,reqSts14,addrCodePref) {
 function NC011Seni15(reqType15,reqChl15,reqSts15,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType15;
 		document.fm1.reqChl.value = reqChl15;
 		document.fm1.reqSts.value = reqSts15;
@@ -255,7 +255,7 @@ function NC011Seni15(reqType15,reqChl15,reqSts15,addrCodePref) {
 function NC011Seni16(reqType16,reqChl16,reqSts16,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType16;
 		document.fm1.reqChl.value = reqChl16;
 		document.fm1.reqSts.value = reqSts16;
@@ -265,7 +265,7 @@ function NC011Seni16(reqType16,reqChl16,reqSts16,addrCodePref) {
 function NC011Seni17(reqType17,reqChl17,reqSts17,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType17;
 		document.fm1.reqChl.value = reqChl17;
 		document.fm1.reqSts.value = reqSts17;
@@ -275,7 +275,7 @@ function NC011Seni17(reqType17,reqChl17,reqSts17,addrCodePref) {
 function NC011Seni18(reqType18,reqChl18,reqSts18,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType18;
 		document.fm1.reqChl.value = reqChl18;
 		document.fm1.reqSts.value = reqSts18;
@@ -285,7 +285,7 @@ function NC011Seni18(reqType18,reqChl18,reqSts18,addrCodePref) {
 function NC011Seni19(reqType19,reqChl19,reqSts19,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType19;
 		document.fm1.reqChl.value = reqChl19;
 		document.fm1.reqSts.value = reqSts19;
@@ -295,7 +295,7 @@ function NC011Seni19(reqType19,reqChl19,reqSts19,addrCodePref) {
 function NC011Seni20(reqType20,reqChl20,reqSts20,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType20;
 		document.fm1.reqChl.value = reqChl20;
 		document.fm1.reqSts.value = reqSts20;
@@ -305,7 +305,7 @@ function NC011Seni20(reqType20,reqChl20,reqSts20,addrCodePref) {
 function NC011Seni21(reqType21,reqChl21,reqSts21,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType21;
 		document.fm1.reqChl.value = reqChl21;
 		document.fm1.reqSts.value = reqSts21;
@@ -315,7 +315,7 @@ function NC011Seni21(reqType21,reqChl21,reqSts21,addrCodePref) {
 function NC011Seni22(reqType22,reqChl22,reqSts22,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType22;
 		document.fm1.reqChl.value = reqChl22;
 		document.fm1.reqSts.value = reqSts22;
@@ -325,7 +325,7 @@ function NC011Seni22(reqType22,reqChl22,reqSts22,addrCodePref) {
 function NC011Seni23(reqType23,reqChl23,reqSts23,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType23;
 		document.fm1.reqChl.value = reqChl23;
 		document.fm1.reqSts.value = reqSts23;
@@ -335,7 +335,7 @@ function NC011Seni23(reqType23,reqChl23,reqSts23,addrCodePref) {
 function NC011Seni24(reqType24,reqChl24,reqSts24,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType24;
 		document.fm1.reqChl.value = reqChl24;
 		document.fm1.reqSts.value = reqSts24;
@@ -345,7 +345,7 @@ function NC011Seni24(reqType24,reqChl24,reqSts24,addrCodePref) {
 function NC011Seni25(reqType25,reqChl25,reqSts25,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType25;
 		document.fm1.reqChl.value = reqChl25;
 		document.fm1.reqSts.value = reqSts25;
@@ -355,7 +355,7 @@ function NC011Seni25(reqType25,reqChl25,reqSts25,addrCodePref) {
 function NC011Seni26(reqType26,reqChl26,reqSts26,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType26;
 		document.fm1.reqChl.value = reqChl26;
 		document.fm1.reqSts.value = reqSts26;
@@ -365,7 +365,7 @@ function NC011Seni26(reqType26,reqChl26,reqSts26,addrCodePref) {
 function NC011Seni27(reqType27,reqChl27,reqSts27,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType27;
 		document.fm1.reqChl.value = reqChl27;
 		document.fm1.reqSts.value = reqSts27;
@@ -375,7 +375,7 @@ function NC011Seni27(reqType27,reqChl27,reqSts27,addrCodePref) {
 function NC011Seni28(reqType28,reqChl28,reqSts28,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType28;
 		document.fm1.reqChl.value = reqChl28;
 		document.fm1.reqSts.value = reqSts28;
@@ -385,7 +385,7 @@ function NC011Seni28(reqType28,reqChl28,reqSts28,addrCodePref) {
 function NC011Seni29(reqType29,reqChl29,reqSts29,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType29;
 		document.fm1.reqChl.value = reqChl29;
 		document.fm1.reqSts.value = reqSts29;
@@ -395,7 +395,7 @@ function NC011Seni29(reqType29,reqChl29,reqSts29,addrCodePref) {
 function NC011Seni30(reqType30,reqChl30,reqSts30,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType30;
 		document.fm1.reqChl.value = reqChl30;
 		document.fm1.reqSts.value = reqSts30;
@@ -405,7 +405,7 @@ function NC011Seni30(reqType30,reqChl30,reqSts30,addrCodePref) {
 function NC011Seni31(reqType31,reqChl31,reqSts31,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType31;
 		document.fm1.reqChl.value = reqChl31;
 		document.fm1.reqSts.value = reqSts31;
@@ -415,7 +415,7 @@ function NC011Seni31(reqType31,reqChl31,reqSts31,addrCodePref) {
 function NC011Seni32(reqType32,reqChl32,reqSts32,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType32;
 		document.fm1.reqChl.value = reqChl32;
 		document.fm1.reqSts.value = reqSts32;
@@ -425,7 +425,7 @@ function NC011Seni32(reqType32,reqChl32,reqSts32,addrCodePref) {
 function NC011Seni33(reqType33,reqChl33,reqSts33,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType33;
 		document.fm1.reqChl.value = reqChl33;
 		document.fm1.reqSts.value = reqSts33;
@@ -435,7 +435,7 @@ function NC011Seni33(reqType33,reqChl33,reqSts33,addrCodePref) {
 function NC011Seni34(reqType34,reqChl34,reqSts34,addrCodePref) {
 	if (!jkrDestructChack()) return false;
 	  //申請区分遷移先設定
-		alert("NC011_申請一覧に遷移します")
+		//alert("NC011_申請一覧に遷移します")
 		document.fm1.reqType.value = reqType34;
 		document.fm1.reqChl.value = reqChl34;
 		document.fm1.reqSts.value = reqSts34;

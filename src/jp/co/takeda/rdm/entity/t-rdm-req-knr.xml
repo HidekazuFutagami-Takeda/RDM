@@ -226,7 +226,7 @@
 	    </if>
 	    <if test="reqType != null">
 			<if test='reqType != "1X"'>
-			    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+			    AND REQ_KNR.REQ_TYPE = #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
 		    </if>
 		    <if test='reqType == "1X"'>
 			    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
@@ -235,15 +235,25 @@
 	    <if test="aDdrCodePref != null">
 	    	<if test="reqType != null">
 			    <if test='aDdrCodePref != "99"'>
-				   <if test='reqType == "01" &amp;&amp; reqType == "31"'><!-- &amp;で&になる -->
+				   <if test='reqType == "01"'><!-- &amp;で&になる -->
 					    AND HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
+				   </if>
+				   <if test='reqType == "31"'><!-- &amp;で&になる -->
+					    AND (HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
+				  		OR   HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}
+				  		)
 				   </if>
 				   <if test='reqType != "01" &amp;&amp; reqType != "31"'>
 						AND  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別	  --//施設マスタ
 			       </if>
 			    </if>
 			    <if test='aDdrCodePref == "99"'>
-				    <if test='reqType == "01" &amp;&amp; reqType == "31"'>
+				    <if test='reqType == "01"'>
+					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
+					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
+					    )
+				    </if>
+				    <if test='reqType == "31"'>
 					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
 					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
 					    )
@@ -251,6 +261,8 @@
 				    <if test='reqType != "01" &amp;&amp; reqType != "31"'>
 						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
 						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+						OR   HCO_MST.ADDR_CODE_PREF = '00'
+						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    </if>
 				</if>
@@ -533,7 +545,7 @@
 	    </if>
 	    <if test="reqType != null">
 		    <if test='reqType != "1X"'>
-		    AND REQ_KNR.REQ_TYPE IN #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+		    AND REQ_KNR.REQ_TYPE = #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
 		    </if>
 		    <if test='reqType == "1X"'>
 		    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
@@ -542,15 +554,25 @@
 	    <if test="aDdrCodePref != null">
 	    	<if test="reqType != null">
 			    <if test='aDdrCodePref != "99"'>
-				   <if test='reqType == "01" &amp;&amp; reqType == "31"'><!-- &amp;で&になる -->
+				   <if test='reqType == "01"'><!-- &amp;で&になる -->
 					    AND HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
+				   </if>
+				   <if test='reqType == "31"'><!-- &amp;で&になる -->
+					    AND (HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
+				  		OR   HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}
+				  		)
 				   </if>
 				   <if test='reqType != "01" &amp;&amp; reqType != "31"'>
 						AND  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別	  --//施設マスタ
 			       </if>
 			    </if>
 			    <if test='aDdrCodePref == "99"'>
-				    <if test='reqType == "01" &amp;&amp; reqType == "31"'>
+				    <if test='reqType == "01"'>
+					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
+					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
+					    )
+				    </if>
+				    <if test='reqType == "31"'>
 					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
 					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
 					    )
@@ -558,6 +580,8 @@
 				    <if test='reqType != "01" &amp;&amp; reqType != "31"'>
 						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
 						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
+						OR   HCO_MST.ADDR_CODE_PREF = '00'
+						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    </if>
 				</if>

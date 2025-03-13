@@ -4,6 +4,6 @@
     <wls:context-root>rdm</wls:context-root>
     <session-descriptor>
         <cookie-name>JSESSIONID</cookie-name>
-        <cookie-path>/rdm/cookie-path>
+        <cookie-path>/rdm</cookie-path>
     </session-descriptor>
 </wls:weblogic-web-app>

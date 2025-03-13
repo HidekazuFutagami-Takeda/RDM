@@ -66,6 +66,7 @@ public class NF001Service extends BaseService {
         // MR権限の場合、親画面．ログインユーザ情報からログインユーザの従業員番号、氏名、組織コード、医薬支店C、医薬営業所C、所属組織名を取得し
         // 検索条件．組織、検索条件．担当者に設定する
         if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
+        	indto.setUpSosCd(loginInfo.getUpSosCd());
         	indto.setSosCd(loginInfo.getSosCd());
         	indto.setSosNm(indto.getLoginShzNm());
         	indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));

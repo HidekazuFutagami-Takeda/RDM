@@ -206,6 +206,12 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	private String bumonRank;
 
 	/**
+	 * 上位組織
+	 * @generated
+	 */
+	private String upSosCd;
+
+	/**
 	 * 組織
 	 * @generated
 	 */
@@ -763,6 +769,21 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setBumonRank(String bumonRank) {
 		this.bumonRank = bumonRank;
+	}
+
+	/**
+	 * NF001DTO.javaupSosCdを設定
+	 * @return upSosCd
+	 */
+	public String getUpSosCd() {
+		return upSosCd;
+	}
+
+	/**
+	 * @param upSosCd セットする upSosCd
+	 */
+	public void setUpSosCd(String upSosCd) {
+		this.upSosCd = upSosCd;
 	}
 
 	/**

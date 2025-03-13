@@ -1538,14 +1538,44 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 一時保存
 			document.fm1.screenId.value="NF011";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF301";
-			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請
+			// 申請、承認・却下
 			document.fm1.screenId.value="NF301";
 			document.fm1.functionId.value="Init";
+
+			if(document.fm1.insType != undefined && document.fm1.insType.value != ""){
+				document.fm1.insTypeNm.value = document.fm1.insType.options[document.fm1.insType.selectedIndex].textContent;
+			}
+			if(document.fm1.tradeType != undefined && document.fm1.tradeType.value != ""){
+				document.fm1.tradeTypeNm.value = document.fm1.tradeType.options[document.fm1.tradeType.selectedIndex].textContent;
+			}
+			if(document.fm1.pharmType != undefined && document.fm1.pharmType.value != ""){
+				document.fm1.pharmTypeNm.value = document.fm1.pharmType.options[document.fm1.pharmType.selectedIndex].textContent;
+			}
+			if(document.fm1.insRank != undefined && document.fm1.insRank.value != ""){
+				document.fm1.insRankNm.value = document.fm1.insRank.options[document.fm1.insRank.selectedIndex].textContent;
+			}
+			if(document.fm1.regVisType != undefined && document.fm1.regVisType.value != ""){
+				document.fm1.regVisTypeNm.value = document.fm1.regVisType.options[document.fm1.regVisType.selectedIndex].textContent;
+			}
+			if(document.fm1.impHosType != undefined && document.fm1.impHosType.value != ""){
+				document.fm1.impHosTypeNm.value = document.fm1.impHosType.options[document.fm1.impHosType.selectedIndex].textContent;
+			}
+			if(document.fm1.univSubdiv != undefined && document.fm1.univSubdiv.value != ""){
+				document.fm1.univSubdivNm.value = document.fm1.univSubdiv.options[document.fm1.univSubdiv.selectedIndex].textContent;
+			}
+			if(document.fm1.hoInsType != undefined && document.fm1.hoInsType.value != ""){
+				document.fm1.hoInsTypeNm.value = document.fm1.hoInsType.options[document.fm1.hoInsType.selectedIndex].textContent;
+			}
+			if(document.fm1.manageCd != undefined && document.fm1.manageCd.value != ""){
+				document.fm1.manageNm.value = document.fm1.manageCd.options[document.fm1.manageCd.selectedIndex].textContent;
+			}
+			if(document.fm1.vacInsType != undefined && document.fm1.vacInsType.value != ""){
+				document.fm1.vacInsTypeNm.value = document.fm1.vacInsType.options[document.fm1.vacInsType.selectedIndex].textContent;
+			}
+			if(document.fm1.vacVisitType != undefined && document.fm1.vacVisitType.value != ""){
+				document.fm1.vacVisitTypeNm.value = document.fm1.vacVisitType.options[document.fm1.vacVisitType.selectedIndex].textContent;
+			}
 		}
 
 		document.fm1.target="";
@@ -1708,6 +1738,18 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="ultInsNm"/>
 	<s:hidden name="editApprFlg"/>
 
+	<s:hidden name="insTypeNm"/>
+	<s:hidden name="tradeTypeNm"/>
+	<s:hidden name="pharmTypeNm"/>
+	<s:hidden name="insRankNm"/>
+	<s:hidden name="regVisTypeNm"/>
+	<s:hidden name="impHosTypeNm"/>
+	<s:hidden name="univSubdivNm"/>
+	<s:hidden name="hoInsTypeNm"/>
+	<s:hidden name="manageNm"/>
+	<s:hidden name="vacInsTypeNm"/>
+	<s:hidden name="vacVisitTypeNm"/>
+
 	<s:hidden name="addrCodePrefPop"/>
 	<s:hidden name="tkCityCdPop"/>
 	<s:hidden name="winVarName" value="NF011" />
@@ -1815,6 +1857,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--申請情報--%>
         <%--申請情報のHIDDEN項目--%>
         <s:hidden name="reqId"/>
+        <s:hidden name="reqChl"/>
         <s:hidden name="reqJgiNo"/>
         <s:hidden name="reqJgiName"/>
         <s:hidden name="reqBrCd"/>
@@ -2344,13 +2387,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>ワクチン情報</nobr></td>
 	      <td class="comFormTableItem"><nobr>ワクチン対象区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="vacInsType" name="vacInsType" cssStyle="width:80pt" list ="vacInsTypeCombo"/>
-	      	<s:textfield id="vacInsTypeView" name="vacInsTypeView" cssStyle="width:80pt" readonly="true" />
+	      	<s:select id="vacInsType" name="vacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo"/>
+	      	<s:textfield id="vacInsTypeView" name="vacInsTypeView" cssStyle="width:120pt" readonly="true" />
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>ワクチン定訪先区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:select id="vacVisitType" name="vacVisitType" cssStyle="width:80pt" list ="vacVisitTypeCombo"/>
-	      	<s:textfield id="vacVisitTypeView" name="vacVisitTypeView" cssStyle="width:80pt" readonly="true" />
+	      	<s:select id="vacVisitType" name="vacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo"/>
+	      	<s:textfield id="vacVisitTypeView" name="vacVisitTypeView" cssStyle="width:120pt" readonly="true" />
 	      </nobr></td>
       </tr>
   　</table>

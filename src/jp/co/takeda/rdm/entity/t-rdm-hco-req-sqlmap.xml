@@ -217,6 +217,7 @@
 	</resultMap>
     <resultMap id="nF011MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF011MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_SHZ" property="reqShzNm"/>
         <result column="REQ_STS_NM" property="reqStsNm"/>
         <result column="REQ_JGI_NAME" property="reqJgiName"/>
@@ -1684,6 +1685,7 @@
     <select id="selectNF011REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF011MainDataEntity" resultMap="nF011MainDataResultMap">
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL  -- 申請管理.申請チャネル
 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
 		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
 		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名

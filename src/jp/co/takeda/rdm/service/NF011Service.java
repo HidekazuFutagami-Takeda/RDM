@@ -81,7 +81,6 @@ public class NF011Service extends BaseService {
 		if ("1".equals(indto.getDisplayKbn())) {
 			if (indto.getUltInsCd() != null && indto.getUltInsCd() != "") {
 				// ULT施設コードで初期データ作成
-				// 申請データ（一時保存含む）を参照
 				SelectNF011MainDataEntity paramEntity = new SelectNF011MainDataEntity();
 				paramEntity.setSqlId("selectNF011ULTData");
 				paramEntity.setInUltInsNo(indto.getUltInsCd());
@@ -219,6 +218,7 @@ public class NF011Service extends BaseService {
 					indto.setAprYmdhms(StringUtils.nvl(mainDataEntity.getAprYmdhms(), ""));
 				}
 
+				indto.setReqChl(mainDataEntity.getReqChl());
 				indto.setReqJgiNo(mainDataEntity.getReqJgiNo());
 				indto.setReqBrCd(StringUtils.nvl(mainDataEntity.getReqBrCd(), ""));
 				indto.setReqDistCd(StringUtils.nvl(mainDataEntity.getReqDistCd(), ""));

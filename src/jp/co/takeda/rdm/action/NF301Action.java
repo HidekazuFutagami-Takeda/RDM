@@ -179,40 +179,4 @@ public class NF301Action extends BaseAction<NF301DTO> {
         setNextDTO(outdto);
         return outdto.getForward();
     }
-
-    /**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String apprRej() throws Exception {
-        apprRejSetup();
-        // F層呼び出し
-        BaseDTO outdto = nF301Service.apprRej(dto);
-        return apprRejNext(outdto);
-    }
-
-    /**
-     * 前処理
-     * @customizable
-     */
-    protected void apprRejSetup() throws Exception {
-        // START UOC
-        dto.setMsgId(null);
-        // 画面タイトル制御処理
-        String title = "NF301_施設新規作成 - 申請内容確認";
-        dto.setTitle(title);
-        // END UOC
-    }
-
-    /**
-     * 後処理
-     * @customizable
-     */
-    protected String apprRejNext(BaseDTO outdto) throws Exception {
-    	// START UOC
-    	// END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
 }

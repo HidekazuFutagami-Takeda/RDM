@@ -142,6 +142,11 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
      */
     private String mrCat;
 
+    /**
+     * 領域コード
+     * @generated
+     */
+    private String trtCd;
 
     public SelectJgiEntity() {
         super("m_rdm_jgi_sos_mst","selectJgi");
@@ -478,6 +483,21 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
 	 */
 	public void setMrCat(String mrCat) {
 		this.mrCat = mrCat;
+	}
+
+	/**
+	 * SelectJgiEntity.javatrtCdを設定
+	 * @return trtCd
+	 */
+	public String getTrtCd() {
+		return trtCd;
+	}
+
+	/**
+	 * @param trtCd セットする trtCd
+	 */
+	public void setTrtCd(String trtCd) {
+		this.trtCd = trtCd;
 	}
 
 	/**

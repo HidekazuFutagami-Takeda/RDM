@@ -295,6 +295,12 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
     private String DistCd;
 
     /**
+     * 組織コード
+     * @generated
+     */
+    private String sosCd;
+
+    /**
      * 対象区分
      * @generated
      */
@@ -850,6 +856,19 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
 	 */
 	public void setDistCd(String distCd) {
 		DistCd = distCd;
+	}
+	/**
+	 * SelectInsListEntity.javasosCdを設定
+	 * @return sosCd
+	 */
+	public String getSosCd() {
+		return sosCd;
+	}
+	/**
+	 * @param sosCd セットする sosCd
+	 */
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
 	}
 	/**
 	 * SelectInsListEntity.javahoInsTypeを設定

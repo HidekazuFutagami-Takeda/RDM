@@ -430,7 +430,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>施設種別</nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-	      		<s:label key="insType"/>：<s:label key="insTypeNm"/>
+	      		<s:label key="insTypeNm"/>
 	      		<s:hidden name="insType"/><s:hidden name="insTypeNm"/>
       		</nobr>
       	　　</td>
@@ -499,7 +499,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	  	  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>取引区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="tradeType"/>：<s:label key="tradeTypeNm"/>
+	      	<s:label key="tradeTypeNm"/>
 	      	<s:hidden name="tradeType"/><s:hidden name="tradeTypeNm"/>
 	      	</nobr>
 	      </td>
@@ -658,13 +658,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>区分情報</nobr></td>
 	      <td class="comFormTableItem"><nobr>施設区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="pharmType"/>：<s:label key="pharmTypeNm"/>
+	      	<s:label key="pharmTypeNm"/>
 	      	<s:hidden name="pharmType"/><s:hidden name="pharmTypeNm"/>
 	      	</nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>階級区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="insRank"/>：<s:label key="insRankNm"/>
+	      	<s:label key="insRankNm"/>
 	      	<s:hidden name="insRank"/><s:hidden name="insRankNm"/>
 	      	</nobr>
 	      </td>
@@ -673,12 +673,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>定訪先区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="regVisType"/>：<s:label key="regVisTypeNm"/>
+	      	<s:label key="regVisTypeNm"/>
 	      	<s:hidden name="regVisType"/><s:hidden name="regVisTypeNm"/>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>重点病院区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="impHosType"/>：<s:label key="impHosTypeNm"/>
+	      	<s:label key="impHosTypeNm"/>
 	      	<s:hidden name="impHosType"/><s:hidden name="impHosTypeNm"/>
 	      </nobr></td>
       </tr>
@@ -686,15 +686,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>大学細分類</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-			<s:if test='%{univSubdiv != null && univSubdiv != ""}'>
-		      	<s:label key="univSubdiv"/>：<s:label key="univSubdivNm"/>
-	      	</s:if>
+		  	<s:label key="univSubdivNm"/>
 	      	<s:hidden name="univSubdiv"/><s:hidden name="univSubdivNm"/>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>対象区分</nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-	      		<s:label key="hoInsType"/>：<s:label key="hoInsTypeNm"/>
+	      		<s:label key="hoInsTypeNm"/>
 	      		<s:hidden name="hoInsType"/><s:hidden name="hoInsTypeNm"/>
 	      	</nobr>
 	      </td>
@@ -714,7 +712,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>経営主体</nobr></td>
 	      <td class="comFormTableItem"><nobr>経営主体</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="manageCd"/>：<s:label key="manageNm"/>
+	      	<s:label key="manageNm"/>
 	      	<s:hidden name="manageCd"/><s:hidden name="manageNm"/>
 	      </nobr></td>
           <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -802,12 +800,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>ワクチン情報</nobr></td>
 	      <td class="comFormTableItem"><nobr>ワクチン対象区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="vacInsType"/>：<s:label key="vacInsTypeNm"/>
+	      	<s:label key="vacInsTypeNm"/>
 	      	<s:hidden name="vacInsType"/><s:hidden name="vacInsTypeNm"/>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>ワクチン定訪先区分</nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:label key="vacVisitType"/>：<s:label key="vacVisitTypeNm"/>
+	      	<s:label key="vacVisitTypeNm"/>
 	      	<s:hidden name="vacVisitType"/><s:hidden name="vacVisitTypeNm"/>
 	      </nobr></td>
       </tr>
@@ -836,6 +834,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			    <s:iterator value="hcoJkrDataList" status="status" var="rowBean">
 			      <tr>
 			        <%--領域担当者データ取得項目--%>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtCd"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtNm"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].jgiNo"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].jgiNm"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].trtGrpCd"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].mrCat"/>
+			        <s:hidden name="hcoJkrDataList[%{#status.index}].deleteFlg"/>
+
 					<td><nobr><s:label key="hcoJkrDataList[%{#status.index}].trtNm"/></nobr></td>
 					<td><nobr><s:label key="hcoJkrDataList[%{#status.index}].jgiNm"/></nobr></td>
 			      </tr>
@@ -926,7 +932,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:else>
 					&nbsp;
                	</s:else>
-               	<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+               	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" />
 					</s:if>

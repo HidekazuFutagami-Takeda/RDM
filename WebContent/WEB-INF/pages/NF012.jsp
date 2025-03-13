@@ -685,14 +685,139 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 一時保存
 			document.fm1.screenId.value="NF012";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF303";
-			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請画面へ
+			// 申請、承認・却下
 			document.fm1.screenId.value="NF303";
 			document.fm1.functionId.value="Init";
+
+			document.fm1.tradeTypeNm.value = document.fm1.tradeType.options[document.fm1.tradeType.selectedIndex].textContent;
+			document.fm1.wsTypeNm.value = document.fm1.wsType.options[document.fm1.wsType.selectedIndex].textContent;
+			document.fm1.basketPurchaseNm.value = document.fm1.basketPurchase.options[document.fm1.basketPurchase.selectedIndex].textContent;
+			document.fm1.univSubdivNm.value = document.fm1.univSubdiv.options[document.fm1.univSubdiv.selectedIndex].textContent;
+			document.fm1.capaTypeNm.value = document.fm1.capaType.options[document.fm1.capaType.selectedIndex].textContent;
+
+			if(document.fm1.loginJokenSetCd.value != "JKN0023"){
+				document.fm1.welfare02Nm.value = document.fm1.welfare02.options[document.fm1.welfare02.selectedIndex].textContent;
+				document.fm1.welfare08Nm.value = document.fm1.welfare08.options[document.fm1.welfare08.selectedIndex].textContent;
+				document.fm1.result01Nm.value = document.fm1.result01.options[document.fm1.result01.selectedIndex].textContent;
+				document.fm1.result02Nm.value = document.fm1.result02.options[document.fm1.result02.selectedIndex].textContent;
+				document.fm1.result03Nm.value = document.fm1.result03.options[document.fm1.result03.selectedIndex].textContent;
+				document.fm1.result04Nm.value = document.fm1.result04.options[document.fm1.result04.selectedIndex].textContent;
+				document.fm1.result05Nm.value = document.fm1.result05.options[document.fm1.result05.selectedIndex].textContent;
+				document.fm1.result06Nm.value = document.fm1.result06.options[document.fm1.result06.selectedIndex].textContent;
+				document.fm1.result07Nm.value = document.fm1.result07.options[document.fm1.result07.selectedIndex].textContent;
+				document.fm1.result08Nm.value = document.fm1.result08.options[document.fm1.result08.selectedIndex].textContent;
+				document.fm1.result09Nm.value = document.fm1.result09.options[document.fm1.result09.selectedIndex].textContent;
+				document.fm1.result10Nm.value = document.fm1.result10.options[document.fm1.result10.selectedIndex].textContent;
+				document.fm1.result11Nm.value = document.fm1.result11.options[document.fm1.result11.selectedIndex].textContent;
+				document.fm1.result12Nm.value = document.fm1.result12.options[document.fm1.result12.selectedIndex].textContent;
+				document.fm1.result13Nm.value = document.fm1.result13.options[document.fm1.result13.selectedIndex].textContent;
+				document.fm1.result14Nm.value = document.fm1.result14.options[document.fm1.result14.selectedIndex].textContent;
+				document.fm1.result15Nm.value = document.fm1.result15.options[document.fm1.result15.selectedIndex].textContent;
+				document.fm1.result16Nm.value = document.fm1.result16.options[document.fm1.result16.selectedIndex].textContent;
+				document.fm1.result17Nm.value = document.fm1.result17.options[document.fm1.result17.selectedIndex].textContent;
+				document.fm1.result18Nm.value = document.fm1.result18.options[document.fm1.result18.selectedIndex].textContent;
+				document.fm1.result19Nm.value = document.fm1.result19.options[document.fm1.result19.selectedIndex].textContent;
+				document.fm1.result20Nm.value = document.fm1.result20.options[document.fm1.result20.selectedIndex].textContent;
+				document.fm1.result21Nm.value = document.fm1.result21.options[document.fm1.result21.selectedIndex].textContent;
+				document.fm1.result22Nm.value = document.fm1.result22.options[document.fm1.result22.selectedIndex].textContent;
+				document.fm1.result23Nm.value = document.fm1.result23.options[document.fm1.result23.selectedIndex].textContent;
+				document.fm1.result24Nm.value = document.fm1.result24.options[document.fm1.result24.selectedIndex].textContent;
+				document.fm1.result25Nm.value = document.fm1.result25.options[document.fm1.result25.selectedIndex].textContent;
+				document.fm1.result26Nm.value = document.fm1.result26.options[document.fm1.result26.selectedIndex].textContent;
+				document.fm1.result27Nm.value = document.fm1.result27.options[document.fm1.result27.selectedIndex].textContent;
+				document.fm1.result28Nm.value = document.fm1.result28.options[document.fm1.result28.selectedIndex].textContent;
+				document.fm1.result29Nm.value = document.fm1.result29.options[document.fm1.result29.selectedIndex].textContent;
+				document.fm1.result30Nm.value = document.fm1.result30.options[document.fm1.result30.selectedIndex].textContent;
+				document.fm1.result31Nm.value = document.fm1.result31.options[document.fm1.result31.selectedIndex].textContent;
+				document.fm1.result32Nm.value = document.fm1.result32.options[document.fm1.result32.selectedIndex].textContent;
+				document.fm1.result33Nm.value = document.fm1.result33.options[document.fm1.result33.selectedIndex].textContent;
+				document.fm1.result34Nm.value = document.fm1.result34.options[document.fm1.result34.selectedIndex].textContent;
+				document.fm1.result35Nm.value = document.fm1.result35.options[document.fm1.result35.selectedIndex].textContent;
+				document.fm1.result36Nm.value = document.fm1.result36.options[document.fm1.result36.selectedIndex].textContent;
+				document.fm1.medical12Nm.value = document.fm1.medical12.options[document.fm1.medical12.selectedIndex].textContent;
+				document.fm1.usercd0001Nm.value = document.fm1.usercd0001.options[document.fm1.usercd0001.selectedIndex].textContent;
+				document.fm1.usercd0002Nm.value = document.fm1.usercd0002.options[document.fm1.usercd0002.selectedIndex].textContent;
+				document.fm1.usercd0003Nm.value = document.fm1.usercd0003.options[document.fm1.usercd0003.selectedIndex].textContent;
+				document.fm1.usercd0004Nm.value = document.fm1.usercd0004.options[document.fm1.usercd0004.selectedIndex].textContent;
+				document.fm1.usercd0005Nm.value = document.fm1.usercd0005.options[document.fm1.usercd0005.selectedIndex].textContent;
+				document.fm1.usercd0006Nm.value = document.fm1.usercd0006.options[document.fm1.usercd0006.selectedIndex].textContent;
+				document.fm1.usercd0007Nm.value = document.fm1.usercd0007.options[document.fm1.usercd0007.selectedIndex].textContent;
+				document.fm1.usercd0008Nm.value = document.fm1.usercd0008.options[document.fm1.usercd0008.selectedIndex].textContent;
+				document.fm1.usercd0009Nm.value = document.fm1.usercd0009.options[document.fm1.usercd0009.selectedIndex].textContent;
+				document.fm1.usercd0010Nm.value = document.fm1.usercd0010.options[document.fm1.usercd0010.selectedIndex].textContent;
+				document.fm1.usercd0011Nm.value = document.fm1.usercd0011.options[document.fm1.usercd0011.selectedIndex].textContent;
+				document.fm1.usercd0012Nm.value = document.fm1.usercd0012.options[document.fm1.usercd0012.selectedIndex].textContent;
+				document.fm1.usercd0013Nm.value = document.fm1.usercd0013.options[document.fm1.usercd0013.selectedIndex].textContent;
+				document.fm1.usercd0014Nm.value = document.fm1.usercd0014.options[document.fm1.usercd0014.selectedIndex].textContent;
+				document.fm1.usercd0015Nm.value = document.fm1.usercd0015.options[document.fm1.usercd0015.selectedIndex].textContent;
+				document.fm1.usercd0016Nm.value = document.fm1.usercd0016.options[document.fm1.usercd0016.selectedIndex].textContent;
+				document.fm1.usercd0017Nm.value = document.fm1.usercd0017.options[document.fm1.usercd0017.selectedIndex].textContent;
+				document.fm1.usercd0018Nm.value = document.fm1.usercd0018.options[document.fm1.usercd0018.selectedIndex].textContent;
+				document.fm1.usercd0019Nm.value = document.fm1.usercd0019.options[document.fm1.usercd0019.selectedIndex].textContent;
+				document.fm1.usercd0020Nm.value = document.fm1.usercd0020.options[document.fm1.usercd0020.selectedIndex].textContent;
+				document.fm1.usercd0021Nm.value = document.fm1.usercd0021.options[document.fm1.usercd0021.selectedIndex].textContent;
+				document.fm1.usercd0022Nm.value = document.fm1.usercd0022.options[document.fm1.usercd0022.selectedIndex].textContent;
+				document.fm1.usercd0023Nm.value = document.fm1.usercd0023.options[document.fm1.usercd0023.selectedIndex].textContent;
+				document.fm1.usercd0024Nm.value = document.fm1.usercd0024.options[document.fm1.usercd0024.selectedIndex].textContent;
+				document.fm1.usercd0025Nm.value = document.fm1.usercd0025.options[document.fm1.usercd0025.selectedIndex].textContent;
+				document.fm1.usercd0026Nm.value = document.fm1.usercd0026.options[document.fm1.usercd0026.selectedIndex].textContent;
+				document.fm1.usercd0027Nm.value = document.fm1.usercd0027.options[document.fm1.usercd0027.selectedIndex].textContent;
+				document.fm1.usercd0028Nm.value = document.fm1.usercd0028.options[document.fm1.usercd0028.selectedIndex].textContent;
+				document.fm1.usercd0029Nm.value = document.fm1.usercd0029.options[document.fm1.usercd0029.selectedIndex].textContent;
+				document.fm1.usercd0030Nm.value = document.fm1.usercd0030.options[document.fm1.usercd0030.selectedIndex].textContent;
+				document.fm1.usercd0031Nm.value = document.fm1.usercd0031.options[document.fm1.usercd0031.selectedIndex].textContent;
+				document.fm1.usercd0032Nm.value = document.fm1.usercd0032.options[document.fm1.usercd0032.selectedIndex].textContent;
+				document.fm1.usercd0033Nm.value = document.fm1.usercd0033.options[document.fm1.usercd0033.selectedIndex].textContent;
+				document.fm1.usercd0034Nm.value = document.fm1.usercd0034.options[document.fm1.usercd0034.selectedIndex].textContent;
+				document.fm1.usercd0035Nm.value = document.fm1.usercd0035.options[document.fm1.usercd0035.selectedIndex].textContent;
+				document.fm1.usercd0036Nm.value = document.fm1.usercd0036.options[document.fm1.usercd0036.selectedIndex].textContent;
+
+				if(document.fm1.insClass.value == "01"){
+					document.fm1.market01Nm.value = document.fm1.market01.options[document.fm1.market01.selectedIndex].textContent;
+					document.fm1.market02Nm.value = document.fm1.market02.options[document.fm1.market02.selectedIndex].textContent;
+					document.fm1.market03Nm.value = document.fm1.market03.options[document.fm1.market03.selectedIndex].textContent;
+					document.fm1.market04Nm.value = document.fm1.market04.options[document.fm1.market04.selectedIndex].textContent;
+					document.fm1.market06Nm.value = document.fm1.market06.options[document.fm1.market06.selectedIndex].textContent;
+					document.fm1.market07Nm.value = document.fm1.market07.options[document.fm1.market07.selectedIndex].textContent;
+					document.fm1.market09Nm.value = document.fm1.market09.options[document.fm1.market09.selectedIndex].textContent;
+
+					document.fm1.reward04Nm.value = document.fm1.reward04.options[document.fm1.reward04.selectedIndex].textContent;
+					document.fm1.reward05Nm.value = document.fm1.reward05.options[document.fm1.reward05.selectedIndex].textContent;
+					document.fm1.reward08Nm.value = document.fm1.reward08.options[document.fm1.reward08.selectedIndex].textContent;
+					document.fm1.reward09Nm.value = document.fm1.reward09.options[document.fm1.reward09.selectedIndex].textContent;
+					document.fm1.reward18Nm.value = document.fm1.reward18.options[document.fm1.reward18.selectedIndex].textContent;
+					document.fm1.reward21Nm.value = document.fm1.reward21.options[document.fm1.reward21.selectedIndex].textContent;
+					document.fm1.reward23Nm.value = document.fm1.reward23.options[document.fm1.reward23.selectedIndex].textContent;
+					document.fm1.reward25Nm.value = document.fm1.reward25.options[document.fm1.reward25.selectedIndex].textContent;
+					document.fm1.reward26Nm.value = document.fm1.reward26.options[document.fm1.reward26.selectedIndex].textContent;
+					document.fm1.reward27Nm.value = document.fm1.reward27.options[document.fm1.reward27.selectedIndex].textContent;
+					document.fm1.reward29Nm.value = document.fm1.reward29.options[document.fm1.reward29.selectedIndex].textContent;
+					document.fm1.reward35Nm.value = document.fm1.reward35.options[document.fm1.reward35.selectedIndex].textContent;
+					document.fm1.reward36Nm.value = document.fm1.reward36.options[document.fm1.reward36.selectedIndex].textContent;
+					document.fm1.reward37Nm.value = document.fm1.reward37.options[document.fm1.reward37.selectedIndex].textContent;
+					document.fm1.reward44Nm.value = document.fm1.reward44.options[document.fm1.reward44.selectedIndex].textContent;
+					document.fm1.reward16Nm.value = document.fm1.reward16.options[document.fm1.reward16.selectedIndex].textContent;
+					document.fm1.reward17Nm.value = document.fm1.reward17.options[document.fm1.reward17.selectedIndex].textContent;
+				}
+			}
+
+			if(document.fm1.insClass.value == "01"){
+				document.fm1.equip01Nm.value = document.fm1.equip01.options[document.fm1.equip01.selectedIndex].textContent;
+				document.fm1.equip02Nm.value = document.fm1.equip02.options[document.fm1.equip02.selectedIndex].textContent;
+				document.fm1.equip03Nm.value = document.fm1.equip03.options[document.fm1.equip03.selectedIndex].textContent;
+				document.fm1.equip07Nm.value = document.fm1.equip07.options[document.fm1.equip07.selectedIndex].textContent;
+				document.fm1.equip09Nm.value = document.fm1.equip09.options[document.fm1.equip09.selectedIndex].textContent;
+
+				document.fm1.spfunc01Nm.value = document.fm1.spfunc01.options[document.fm1.spfunc01.selectedIndex].textContent;
+				document.fm1.spfunc03Nm.value = document.fm1.spfunc03.options[document.fm1.spfunc03.selectedIndex].textContent;
+				document.fm1.spfunc04Nm.value = document.fm1.spfunc04.options[document.fm1.spfunc04.selectedIndex].textContent;
+
+				document.fm1.tieup10Nm.value = document.fm1.tieup10.options[document.fm1.tieup10.selectedIndex].textContent;
+				document.fm1.tieup11Nm.value = document.fm1.tieup11.options[document.fm1.tieup11.selectedIndex].textContent;
+				document.fm1.tieup12Nm.value = document.fm1.tieup12.options[document.fm1.tieup12.selectedIndex].textContent;
+
+			}
 		}
 
 		document.fm1.target="";
@@ -963,6 +1088,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="preResult26"/>
 	<s:hidden name="preResult27"/>
 	<s:hidden name="preResult28"/>
+	<s:hidden name="preResult29"/>
 	<s:hidden name="preResult30"/>
 	<s:hidden name="preResult31"/>
 	<s:hidden name="preResult32"/>
@@ -1136,6 +1262,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="preResult26Nm"/>
 	<s:hidden name="preResult27Nm"/>
 	<s:hidden name="preResult28Nm"/>
+	<s:hidden name="preResult29Nm"/>
 	<s:hidden name="preResult30Nm"/>
 	<s:hidden name="preResult31Nm"/>
 	<s:hidden name="preResult32Nm"/>
@@ -1215,6 +1342,122 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="preReward36Nm"/>
 	<s:hidden name="preReward37Nm"/>
 	<s:hidden name="preReward44Nm"/>
+
+	<s:hidden name="tradeTypeNm"/>
+	<s:hidden name="wsTypeNm"/>
+	<s:hidden name="basketPurchaseNm"/>
+	<s:hidden name="univSubdivNm"/>
+	<s:hidden name="capaTypeNm"/>
+	<s:hidden name="welfare02Nm"/>
+	<s:hidden name="welfare08Nm"/>
+	<s:hidden name="result01Nm"/>
+	<s:hidden name="result02Nm"/>
+	<s:hidden name="result03Nm"/>
+	<s:hidden name="result04Nm"/>
+	<s:hidden name="result05Nm"/>
+	<s:hidden name="result06Nm"/>
+	<s:hidden name="result07Nm"/>
+	<s:hidden name="result08Nm"/>
+	<s:hidden name="result09Nm"/>
+	<s:hidden name="result10Nm"/>
+	<s:hidden name="result11Nm"/>
+	<s:hidden name="result12Nm"/>
+	<s:hidden name="result13Nm"/>
+	<s:hidden name="result14Nm"/>
+	<s:hidden name="result15Nm"/>
+	<s:hidden name="result16Nm"/>
+	<s:hidden name="result17Nm"/>
+	<s:hidden name="result18Nm"/>
+	<s:hidden name="result19Nm"/>
+	<s:hidden name="result20Nm"/>
+	<s:hidden name="result21Nm"/>
+	<s:hidden name="result22Nm"/>
+	<s:hidden name="result23Nm"/>
+	<s:hidden name="result24Nm"/>
+	<s:hidden name="result25Nm"/>
+	<s:hidden name="result26Nm"/>
+	<s:hidden name="result27Nm"/>
+	<s:hidden name="result28Nm"/>
+	<s:hidden name="result29Nm"/>
+	<s:hidden name="result30Nm"/>
+	<s:hidden name="result31Nm"/>
+	<s:hidden name="result32Nm"/>
+	<s:hidden name="result33Nm"/>
+	<s:hidden name="result34Nm"/>
+	<s:hidden name="result35Nm"/>
+	<s:hidden name="result36Nm"/>
+	<s:hidden name="equip01Nm"/>
+	<s:hidden name="equip02Nm"/>
+	<s:hidden name="equip03Nm"/>
+	<s:hidden name="equip07Nm"/>
+	<s:hidden name="equip09Nm"/>
+	<s:hidden name="market01Nm"/>
+	<s:hidden name="market02Nm"/>
+	<s:hidden name="market03Nm"/>
+	<s:hidden name="market04Nm"/>
+	<s:hidden name="market06Nm"/>
+	<s:hidden name="market07Nm"/>
+	<s:hidden name="market09Nm"/>
+	<s:hidden name="medical12Nm"/>
+	<s:hidden name="spfunc01Nm"/>
+	<s:hidden name="spfunc03Nm"/>
+	<s:hidden name="spfunc04Nm"/>
+	<s:hidden name="tieup10Nm"/>
+	<s:hidden name="tieup11Nm"/>
+	<s:hidden name="tieup12Nm"/>
+	<s:hidden name="usercd0001Nm"/>
+	<s:hidden name="usercd0002Nm"/>
+	<s:hidden name="usercd0003Nm"/>
+	<s:hidden name="usercd0004Nm"/>
+	<s:hidden name="usercd0005Nm"/>
+	<s:hidden name="usercd0006Nm"/>
+	<s:hidden name="usercd0007Nm"/>
+	<s:hidden name="usercd0008Nm"/>
+	<s:hidden name="usercd0009Nm"/>
+	<s:hidden name="usercd0010Nm"/>
+	<s:hidden name="usercd0011Nm"/>
+	<s:hidden name="usercd0012Nm"/>
+	<s:hidden name="usercd0013Nm"/>
+	<s:hidden name="usercd0014Nm"/>
+	<s:hidden name="usercd0015Nm"/>
+	<s:hidden name="usercd0016Nm"/>
+	<s:hidden name="usercd0017Nm"/>
+	<s:hidden name="usercd0018Nm"/>
+	<s:hidden name="usercd0019Nm"/>
+	<s:hidden name="usercd0020Nm"/>
+	<s:hidden name="usercd0021Nm"/>
+	<s:hidden name="usercd0022Nm"/>
+	<s:hidden name="usercd0023Nm"/>
+	<s:hidden name="usercd0024Nm"/>
+	<s:hidden name="usercd0025Nm"/>
+	<s:hidden name="usercd0026Nm"/>
+	<s:hidden name="usercd0027Nm"/>
+	<s:hidden name="usercd0028Nm"/>
+	<s:hidden name="usercd0029Nm"/>
+	<s:hidden name="usercd0030Nm"/>
+	<s:hidden name="usercd0031Nm"/>
+	<s:hidden name="usercd0032Nm"/>
+	<s:hidden name="usercd0033Nm"/>
+	<s:hidden name="usercd0034Nm"/>
+	<s:hidden name="usercd0035Nm"/>
+	<s:hidden name="usercd0036Nm"/>
+	<s:hidden name="reward04Nm"/>
+	<s:hidden name="reward05Nm"/>
+	<s:hidden name="reward08Nm"/>
+	<s:hidden name="reward09Nm"/>
+	<s:hidden name="reward16Nm"/>
+	<s:hidden name="reward17Nm"/>
+	<s:hidden name="reward18Nm"/>
+	<s:hidden name="reward21Nm"/>
+	<s:hidden name="reward23Nm"/>
+	<s:hidden name="reward25Nm"/>
+	<s:hidden name="reward26Nm"/>
+	<s:hidden name="reward27Nm"/>
+	<s:hidden name="reward29Nm"/>
+	<s:hidden name="reward35Nm"/>
+	<s:hidden name="reward36Nm"/>
+	<s:hidden name="reward37Nm"/>
+	<s:hidden name="reward44Nm"/>
 
 
     <%-- トップメニューからの共通パラメータ --%>
@@ -1314,6 +1557,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--申請情報--%>
         <%--申請情報のHIDDEN項目--%>
         <s:hidden name="reqId"/>
+        <s:hidden name="reqChl"/>
         <s:hidden name="reqJgiNo"/>
         <s:hidden name="reqJgiName"/>
         <s:hidden name="reqBrCd"/>

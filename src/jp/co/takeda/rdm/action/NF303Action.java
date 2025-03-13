@@ -107,11 +107,6 @@ public class NF303Action extends BaseAction<NF303DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
-        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-
-    	//改ページ設定
-        dto.setPageCntCur(1);
-
         // 画面タイトル制御処理
         String title = "NF303_施設情報更新 - 申請内容確認";
         dto.setTitle(title);
@@ -151,10 +146,6 @@ public class NF303Action extends BaseAction<NF303DTO> {
      */
     protected void registerSetup() throws Exception {
         // START UOC
-        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-
-    	//改ページ設定
-        dto.setPageCntCur(1);
 
         dto.setMsgId(null);
 
@@ -170,42 +161,6 @@ public class NF303Action extends BaseAction<NF303DTO> {
         // 検索条件をセッションに格納する（リンク押下時に使用）
         sessionMap.put(AppConstant.SESKEY_NF303_SEARCHKEY, outdto);
         // END UOC
-        setNextDTO(outdto);
-        return outdto.getForward();
-    }
-
-    /**
-     * 業務処理
-     * @customizable
-     */
-    @InputConfig(methodName="validationError")
-    public String apprRej() throws Exception {
-        apprRejSetup();
-        // F層呼び出し
-        BaseDTO outdto = nF303Service.apprRej(dto);
-        return apprRejNext(outdto);
-    }
-
-    /**
-     * 前処理
-     * @customizable
-     */
-    protected void apprRejSetup() throws Exception {
-        // START UOC
-        dto.setMsgId(null);
-        // 画面タイトル制御処理
-        String title = "NF303_施設情報更新 - 申請内容確認";
-        dto.setTitle(title);
-        // END UOC
-    }
-
-    /**
-     * 後処理
-     * @customizable
-     */
-    protected String apprRejNext(BaseDTO outdto) throws Exception {
-    	// START UOC
-    	// END UOC
         setNextDTO(outdto);
         return outdto.getForward();
     }

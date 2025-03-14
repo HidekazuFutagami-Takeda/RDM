@@ -536,7 +536,6 @@ public class ND014Service extends BaseService {
 					insEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
 				}
 
-				//TODO
 				if(indto.getUnknownFlg()) {
 					insEntity2.setSkInsNo(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9);//勤務先施設固定コード
 					insEntity2.setSkJobForm("Z");//勤務形態
@@ -551,6 +550,7 @@ public class ND014Service extends BaseService {
 					insEntity2.setSkUnivPosCd(StringUtils.setEmptyToNull(indto.getSkUnivPosCd()));//大学職位コード
 					insEntity2.setSkTitleCd(indto.getSkTitleCd());//役職コード
 					insEntity2.setSkDcctype(StringUtils.setEmptyToNull(indto.getSkDcctype()));//薬審メンバー区分
+
 				}
 
 				insEntity2.setInsShaYmd(currentDt);//作成日
@@ -676,13 +676,6 @@ public class ND014Service extends BaseService {
 					errChk = true;
 					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
 					tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．所属部科");
-					msgStr = msgStr + tmpMsgStr + "\n";
-				}
-				//	勤務先情報．大学職位
-				if(StringUtils.isEmpty(indto.getSkUnivPosCd())) {
-					errChk = true;
-					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-					tmpMsgStr = tmpMsgStr.replace("項目名", "勤務先情報．大学職位");
 					msgStr = msgStr + tmpMsgStr + "\n";
 				}
 				//	勤務先情報．役職

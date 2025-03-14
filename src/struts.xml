@@ -366,10 +366,6 @@
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF311">/WEB-INF/pages/NF311.jsp</result>
         </action>
-        <action name="NF311ApprRej" class="nF311Action" method="apprRej">
-        	<result name="NF211">/WEB-INF/pages/NF211.jsp</result>
-        	<result name="NF311">/WEB-INF/pages/NF311.jsp</result>
-        </action>
         <action name="NF313Init" class="nF313Action" method="init">
             <result name="NF212">/WEB-INF/pages/NF212.jsp</result>
             <result name="NF313">/WEB-INF/pages/NF313.jsp</result>

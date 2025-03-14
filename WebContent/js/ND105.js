@@ -16,7 +16,7 @@
 var ND105_APPLICATION_ID = "ND105";
 var msgContent = ""; //確認メッセージ
 
-var gChdViewWin = null;        // 医師検索POPUP用
+var gCdrViewWin = null;        // 医師検索POPUP用
 
 ///**
 // * <pre>
@@ -105,9 +105,9 @@ function hcpClosePopUp(targetWin,targetWinName){
 	  }
 
 	  // 医師検索ポップアップ
-	  if(gChdViewWin != null && targetWinName != "gChdViewWin"){
-		  gChdViewWin.close();
-		  gChdViewWin = null;
+	  if(gCdrViewWin != null && targetWinName != "gCdrViewWin"){
+		  gCdrViewWin.close();
+		  gCdrViewWin = null;
 	  }
 
   }
@@ -126,7 +126,7 @@ function hcpClosePopUp(targetWin,targetWinName){
 function hcpCheckPopUp() {
 
   // 本画面で使用する全ポップアップウィンドウオブジェクトを対象にチェック
-  if(typeof(gChdViewWin) == 'string') return false;     // 医師検索ポップアップ
+  if(typeof(gCdrViewWin) == 'string') return false;     // 医師検索ポップアップ
 
   // 全ウィンドウが正常ならばtrue
   return true;
@@ -137,17 +137,17 @@ function hcpCheckPopUp() {
  * 施設検索POPUP画面を呼び出します。
  *
  */
-function tmpChdView(){
+function tmpCdrView(){
 
 // 2度押し対策
   if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 
   // 全てのポップアップを閉じる
-  hcpClosePopUp(gChdViewWin, "gChdViewWin");
+  hcpClosePopUp(gCdrViewWin, "gCdrViewWin");
 
  // パラメータの設定
   //document.fm1.backScreenId.value = "ND105";
-  gChdViewWin = chdView(gChdViewWin,"tmpCallBackDoctorView","gChdViewWin");
+  gCdrViewWin = cdrView(gCdrViewWin,"tmpCallBackDoctorView","gCdrViewWin");
   return(true);
 }
 
@@ -156,8 +156,8 @@ function tmpChdView(){
  * 施設検索POPUP　コールバック関数。
  * </pre>
  */
-function tmpCallBackDoctorView(docNo,docNm){
+function tmpCallBackDoctorView(docNo,docKanj){
     document.fm1.dupDocNo.value = docNo;
-    document.fm1.dupDocNm.value = docNm;
+    document.fm1.dupDocNm.value = docKanj;
 
 }

@@ -37,7 +37,7 @@
   <link href="css/reqDisplay.css" rel="Stylesheet" type="text/css" />
   <script type="text/javascript" src="js/common.js"></script>
   <script type="text/javascript" src="js/jgiKanren.js"></script>
-
+  <script type="text/javascript" src="js/catDoctor.js"></script>
   <script type="text/javascript" src="js/ND105.js"></script>
     <script>
     destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
@@ -404,7 +404,7 @@
 	      <td class="comFormTableItem"><nobr>重複医師コード<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpChdView();return false;" />
+		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCdrView();return false;" />
 		                <s:textfield name="dupDocNo" id="dupDocNo" size="20" maxlength="40" style="background-color:#D4D0C8"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd105Clear('dupDoc');return false;">Clear</a>
                 </nobr>

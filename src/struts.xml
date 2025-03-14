@@ -594,5 +594,17 @@
             <result name="ND305Init" type="chain">ND305Init</result>
             <result name="NC101Init" type="chain">NC101Init</result>
         </action>
+        <action name="NC209Init" class="nC209Action" method="init">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
+        </action>
+        <action name="NC209Search" class="nC209Action" method="search">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
+        </action>
+        <action name="NC209Page" class="nC209Action" method="page">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
+        </action>
+        <action name="NC209Sort" class="nC209Action" method="sort">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
+        </action>
     </package>
 </struts>

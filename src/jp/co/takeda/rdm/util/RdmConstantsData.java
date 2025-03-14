@@ -599,6 +599,8 @@ public class RdmConstantsData {
     public static final String CODE_NAME_HCP_RST_REASON = "HCP_RST_REASON";
     /**コード情報コード名 : 医師削除理由 */
     public static final String CODE_NAME_HCP_DEL_REASON = "HCP_DEL_REASON";
+    /**コード情報コード名 : 医師属性*/
+    public static final String CODE_NAME_DOC_ATTRIBUTE = "DOC_ATTRIBUTE";
 
     /**コード情報コード値１ : 異動先施設不明用ダミー施設 */
     public static final String CODE_VALUE_DUMMY_HCO_9 = "959000000";
@@ -613,6 +615,12 @@ public class RdmConstantsData {
     public static final String PARAM_NAME_MN_DOC = "MN_DOC";
     /**パラメタ情報パラメタ名 : 医師勤務先メニュースイッチ */
     public static final String PARAM_NAME_MN_KMU = "MN_KMU";
+    /**パラメタ情報パラメタ名 : 検索時の上限件数 */
+    public static final String PARAM_NAME_MAX_ROWNUM = "MAX_ROWNUM";
+    /**パラメタ情報パラメタ名 : 1画面内の表示件数　デフォルト値 */
+    public static final String PARAM_NAME_PAGE_ROWNUM = "PAGE_ROWNUM";
+    /**パラメタ情報パラメタ名 : 1画面内の表示件数　医師検索ポップアップ */
+    public static final String PARAM_NAME_NC209_ROWNUM = "NC209_ROWNUM";
 
     /** MDMシステムトップメニューボタン押下 : 戻るためのDTOセッション格納キー */
     public static final String NC001_RETURN_DTO_KEY = "NC001_RETURN_DTO_KEY";

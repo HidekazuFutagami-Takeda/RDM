@@ -126,6 +126,13 @@
         return false;
       }
     </script>
+    <style>
+	/*テーブル幅可変*/
+		TD.comTableTitle{
+			resize : horizontal;
+			overflow : hidden;
+			}
+	</style>
 </head>
 
 <body class="comPage" onLoad="JavaScript:comSetFormWindowInfo();">
@@ -705,7 +712,7 @@
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><%-- スクロールバー用のテーブルクラスにすること --%>
               <div id="societyHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
-			  <table class="comCustomTable" id="formTable05">
+			  <table id="formTable05">
 				<tr>
 			        <%-- ヘッダ行 --%>
 			      <td class="comTableTitle" width="20px"><nobr>&nbsp;</nobr></td>

@@ -2903,6 +2903,7 @@ public interface AppConstant {
     public static final String SESKEY_NM011_SEARCHKEY = "NM011_SEARCHKEY";
     public static final String SESKEY_ND311_SEARCHKEY = "ND311_SEARCHKEY";
     public static final String SESKEY_NM101_SEARCHKEY = "NM101_SEARCHKEY";
+    public static final String SESKEY_NC209_SEARCHKEY = "NC209_SEARCHKEY";
 
     /** １ページで表示されるレコード件数 */
     public static final Integer SHOW_COUNT = 50;

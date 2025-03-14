@@ -109,6 +109,7 @@ public class NF014Service extends BaseService {
 			SelectNF014MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
 			// 申請情報
+			indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
 			indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 			indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
 			indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));

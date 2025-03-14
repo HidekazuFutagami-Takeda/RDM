@@ -350,10 +350,6 @@
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF307">/WEB-INF/pages/NF307.jsp</result>
         </action>
-        <action name="NF307ApprRej" class="nF307Action" method="apprRej">
-        	<result name="NF014">/WEB-INF/pages/NF014.jsp</result>
-        	<result name="NF307">/WEB-INF/pages/NF307.jsp</result>
-        </action>
         <action name="NF309Init" class="nF309Action" method="init">
             <result name="NF101">/WEB-INF/pages/NF101.jsp</result>
             <result name="NF309">/WEB-INF/pages/NF309.jsp</result>
@@ -421,6 +417,12 @@
             <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
         </action>
         <action name="NF501Init" class="NF501Action" method="init">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
+        <action name="NF501Search" class="NF501Action" method="search">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
+        <action name="NF501Page" class="NF501Action" method="page">
             <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
         </action>
         <action name="ND103Init" class="ND103Action" method="init">

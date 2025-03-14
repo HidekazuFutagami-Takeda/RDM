@@ -175,14 +175,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 一時保存
 			document.fm1.screenId.value="NF211";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF311";
-			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請
+			// 申請、承認・却下
 			document.fm1.screenId.value="NF311";
 			document.fm1.functionId.value="Init";
+
+			if(document.fm1.tkdTrtKbn.value == "1"){
+				document.fm1.trtPrdGrpNm.value = document.fm1.trtPrdGrp.options[document.fm1.trtPrdGrp.selectedIndex].textContent;
+			}
 		}
 
 		document.fm1.target="";
@@ -351,6 +351,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="callBack"/>
 	<s:hidden name="editApprFlg"/>
 
+	<s:hidden name="trtPrdGrpNm"/>
+
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>
     <s:hidden name="selectedBumonRank"/>
@@ -448,6 +450,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--申請情報--%>
         <%--申請情報のHIDDEN項目--%>
         <s:hidden name="reqId"/>
+        <s:hidden name="reqChl"/>
         <s:hidden name="reqJgiNo"/>
         <s:hidden name="reqJgiName"/>
         <s:hidden name="reqBrCd"/>

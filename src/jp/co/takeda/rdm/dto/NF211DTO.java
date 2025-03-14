@@ -100,6 +100,12 @@ public class NF211DTO extends BaseDTO implements Serializable {
 	private String reqId;
 
 	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
+	/**
 	 * 申請者所属名称
 	 * @generated
 	 */
@@ -518,6 +524,21 @@ public class NF211DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReqId(String reqId) {
 		this.reqId = reqId;
+	}
+
+	/**
+	 * NF211DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

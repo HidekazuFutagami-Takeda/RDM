@@ -237,6 +237,12 @@ public class NF307DTO extends BaseDTO implements Serializable {
      */
     private String rstReason;
 
+    /**
+     * 復活理由
+     * @generated
+     */
+    private String rstReasonNm;
+
 	/**
 	 * 申請コメント
 	 * @generated
@@ -846,6 +852,21 @@ public class NF307DTO extends BaseDTO implements Serializable {
 	 */
 	public void setRstReason(String rstReason) {
 		this.rstReason = rstReason;
+	}
+
+	/**
+	 * NF307DTO.javarstReasonNmを設定
+	 * @return rstReasonNm
+	 */
+	public String getRstReasonNm() {
+		return rstReasonNm;
+	}
+
+	/**
+	 * @param rstReasonNm セットする rstReasonNm
+	 */
+	public void setRstReasonNm(String rstReasonNm) {
+		this.rstReasonNm = rstReasonNm;
 	}
 
 	/**

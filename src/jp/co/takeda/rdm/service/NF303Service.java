@@ -827,6 +827,12 @@ public class NF303Service extends BaseService {
             	tRdmReqKnrUpdData.setReqJgiName(indto.getReqJgiName());
             	tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
             	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+
+            	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
+            		tRdmReqKnrUpdData.setReqKngKbn("2");
+            	} else {
+            		tRdmReqKnrUpdData.setReqKngKbn("1");
+            	}
         	} else if("2".equals(indto.getFuncId())) {
         		// 承認
             	if("1".equals(indto.getReqChl()) || "2".equals(indto.getReqChl())) {

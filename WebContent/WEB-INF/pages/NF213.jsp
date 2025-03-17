@@ -92,12 +92,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 一時保存
 			document.fm1.screenId.value="NF213";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF315";
-			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請
+			// 申請、承認・却下
 			document.fm1.screenId.value="NF315";
 			document.fm1.functionId.value="Init";
 		}
@@ -364,6 +360,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--申請情報--%>
         <%--申請情報のHIDDEN項目--%>
         <s:hidden name="reqId"/>
+        <s:hidden name="reqChl"/>
         <s:hidden name="reqJgiNo"/>
         <s:hidden name="reqJgiName"/>
         <s:hidden name="reqBrCd"/>

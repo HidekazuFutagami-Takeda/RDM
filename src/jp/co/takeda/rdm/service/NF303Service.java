@@ -922,6 +922,7 @@ public class NF303Service extends BaseService {
         	}
         	tRdmHcoReqInsData.setInsUrlYmd(getUpdValue(preUrlYmd, urlYmd));
 
+        	tRdmHcoReqInsData.setWsType(getUpdValue(indto.getPreWsType(), indto.getWsType()));
         	tRdmHcoReqInsData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
         	tRdmHcoReqInsData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
         	tRdmHcoReqInsData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));
@@ -1135,6 +1136,7 @@ public class NF303Service extends BaseService {
         	}
         	tRdmHcoReqUpdData.setInsUrlYmd(getUpdValue(preUrlYmd, urlYmd));
 
+        	tRdmHcoReqUpdData.setWsType(getUpdValue(indto.getPreWsType(), indto.getWsType()));
         	tRdmHcoReqUpdData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
         	tRdmHcoReqUpdData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
         	tRdmHcoReqUpdData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));

@@ -103,8 +103,6 @@ if (stack.peek() instanceof ND001DTO) {
 
 	  	fm1.docNo.value = tmpDoc;
 	}
-
-
     </script>
     <style>
     .parent {
@@ -217,8 +215,18 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
            <%-- 組織検索ポップアップ用 --%>
               <input type="hidden" name="selectFlgPop"           value="" />
-  <input type="hidden" name="initSosCdPop"           value="" />
-  <input type="hidden" name="trtCdPop"               value="" />
+  			　　<input type="hidden" name="initSosCdPop"           value="" />
+  			　　<input type="hidden" name="trtCdPop"               value="" />
+
+
+	<s:hidden id="sosCdPop" name="sosCdPop"/>
+	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
+	<s:hidden id="bumonRankPop" name="bumonRankPop"/>
+	<s:hidden id="sosCd" name="sosCd"/>
+	<s:hidden id="upSosCd" name="upSosCd"/>
+	<s:hidden id="bumonRank" name="bumonRank"/>
+
+
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>
@@ -366,7 +374,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               </s:if>
               <s:else>
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="jmnSearchSosCd();" /></td>
+                  <td align="right"><input class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
                   <td class="comPortalControlItem">
                        <s:textfield name="" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
                    </td>

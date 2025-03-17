@@ -61,19 +61,27 @@ public class ND001Service extends BaseService {
     	//1-1 権限判定
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
-        //ドロップダウン用に組織名、担当者名を取得する
+        //1-2 ドロップダウンリストの生成
         setCombo(indto);
 
-
-
-        //1-2 ドロップダウンリストの生成
-        //未作成
         //初期表示画面フラグ = 1(初期化)
         indto.setPageFlag("1");
 
-
         //ページNO
         indto.setPageCntCur(1);
+
+        // MR権限の場合、親画面．ログインユーザ情報からログインユーザの従業員番号、氏名、組織コード、医薬支店C、医薬営業所C、所属組織名を取得し
+        // 検索条件．組織、検索条件．担当者に設定する
+        if(RdmConstantsData.RDM_JKN_MR.equals(loginInfo.getJokenSetCd())) {
+        	indto.setUpSosCd(loginInfo.getUpSosCd());
+        	indto.setSosCd(loginInfo.getSosCd());
+        	indto.setBumonSeiName((loginInfo.getBumonRyakuName()));
+        	indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        	indto.setJgiName(loginInfo.getJgiName());
+        	indto.setBrCode(loginInfo.getBrCode());
+        	indto.setDistCode(loginInfo.getDistCode());
+        	indto.setBumonRank(loginInfo.getBumonRank());
+        }
 
         return outdto;
     }

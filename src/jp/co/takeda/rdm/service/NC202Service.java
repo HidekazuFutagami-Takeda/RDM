@@ -126,7 +126,7 @@ public class NC202Service extends BaseService {
 //    	   selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
     	   selectJgiEntity.setInUpSosCd(indto.getSosCdPop());
        }
-       loginInfo.setPreScreenId("NF011");
+
        if (loginInfo.getPreScreenId().equals("NF011")) {
     	   selectJgiEntity.setInGmnFlg(0);
 //    	   selectJgiEntity.setInTrtCd("02");
@@ -138,8 +138,11 @@ public class NC202Service extends BaseService {
 
        }else {
     	   selectJgiEntity.setInGmnFlg(1);
-    	   selectJgiEntity.setInTrtCd("02");
-    	   selectJgiEntity.setInSosCd("04199");
+    	   selectJgiEntity.setInSosCdPop(indto.getSosCdPop());
+    	   selectJgiEntity.setInUpSosCdPop(indto.getUpSosCdPop());
+    	   selectJgiEntity.setInBumonRankPop(indto.getBumonRankPop());
+//    	   selectJgiEntity.setInTrtCd("02");
+//    	   selectJgiEntity.setInSosCd("04199");
     	   //selectJgiEntity.setInTrtCd(indto.getTrtCdPop());
     	   //selectJgiEntity.setInSosCd(indto.getSosCdPop());
        }

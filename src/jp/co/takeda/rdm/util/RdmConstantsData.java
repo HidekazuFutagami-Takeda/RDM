@@ -20,10 +20,10 @@ public class RdmConstantsData {
     public static final String RDM_JKN_MR = "JKN0023";
 
     /**MR権限/管理者権限判定 : MDM管理者権限 */
-    public static final String RDM_JKN_ADMIN_FLG = "0";
+    public static final String RDM_JKN_ADMIN_FLG = "1";
 
     /**MR権限/管理者権限判定 : 全MR権限 */
-    public static final String RDM_JKN_MR_FLG = "1";
+    public static final String RDM_JKN_MR_FLG = "0";
 
     /**メニュー権限 : 施設一括 */
     public static final String RDM_PARAM_MST_MENU_MN_IKT_FAC = "MN_IKT_FAC";

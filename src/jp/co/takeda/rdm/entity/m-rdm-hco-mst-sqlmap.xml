@@ -1440,6 +1440,7 @@
 	<select id="selectNF014REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF014MainDataEntity" resultMap="nF014MainDataResultMap">
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL  -- 申請管理.申請チャネル
 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
 		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
 		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
@@ -1563,6 +1564,7 @@
     <select id="selectNF211ReqTrtData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity" resultMap="nF211MainDataResultMap">
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL  -- 申請管理.申請チャネル
 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
 		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
 		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名

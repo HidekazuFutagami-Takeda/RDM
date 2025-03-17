@@ -106,14 +106,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 一時保存
 			document.fm1.screenId.value="NF014";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF307";
-			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請
+			// 申請、承認・却下
 			document.fm1.screenId.value="NF307";
 			document.fm1.functionId.value="Init";
+
+			document.fm1.rstReasonNm.value = document.fm1.rstReason.options[document.fm1.rstReason.selectedIndex].textContent;
 		}
 
 		document.fm1.target="";
@@ -374,6 +372,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--申請情報--%>
         <%--申請情報のHIDDEN項目--%>
         <s:hidden name="reqId"/>
+        <s:hidden name="reqChl"/>
         <s:hidden name="reqJgiNo"/>
         <s:hidden name="reqJgiName"/>
         <s:hidden name="reqBrCd"/>
@@ -443,6 +442,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       	<s:hidden name="insPcode"/>
       	<s:hidden name="insAddr"/>
       	<s:hidden name="delReason"/>
+      	<s:hidden name="rstReasonNm"/>
         <%--申請内容--%>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>

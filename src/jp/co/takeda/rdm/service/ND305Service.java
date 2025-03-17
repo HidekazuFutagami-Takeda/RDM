@@ -356,6 +356,7 @@ public class ND305Service extends BaseService {
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 				dao.update(updateEntity1);
+
 				//医師申請管理/////////////////////////////////////////////////////////////////////////
 				UpdateTRdmHcpReqEntity selectUpdateEntity2 = new UpdateTRdmHcpReqEntity();
 				selectUpdateEntity2.setSqlId("selectUpDate");
@@ -404,26 +405,34 @@ public class ND305Service extends BaseService {
 				UpdateTRdmHcpReqEntity updateEntity2 = new UpdateTRdmHcpReqEntity();
 				updateEntity2.setSqlId("updateData");
 				updateEntity2.setReqId(indto.getReqId());
-				updateEntity2.setRstReason(indto.getRstReason());//復活理由
-				if(indto.getDocKanjiMei().endsWith("●")) {
-					updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
-					updateEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
-				}
+				if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg())) {
+					updateEntity2.setRstReason(indto.getRstReason());//復活理由
+					if(indto.getDocKanjiMei().endsWith("●")) {
+						updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
+						updateEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
+					}
 
-				if(indto.getUnknownFlg()) {
-					updateEntity2.setSkInsNo(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9);//勤務先施設固定コード
-					updateEntity2.setSkJobForm("Z");//勤務形態
-					updateEntity2.setSkDeptCd(RdmConstantsData.CODE_VALUE_DUMMY_DEPT_CODE);//所属部科コード
-					updateEntity2.setSkUnivPosCd("Z");//大学職位コード
-					updateEntity2.setSkTitleCd("Z");//役職コード
-					updateEntity2.setSkDcctype("Z");//薬審メンバー区分
-				}else {
-					updateEntity2.setSkInsNo(indto.getSkInsNo());//勤務先施設固定コード
-					updateEntity2.setSkJobForm(StringUtils.setEmptyToNull(indto.getSkJobForm()));//勤務形態
-					updateEntity2.setSkDeptCd(indto.getSkDeptCd());//所属部科コード
-					updateEntity2.setSkUnivPosCd(StringUtils.setEmptyToNull(indto.getSkUnivPosCd()));//大学職位コード
-					updateEntity2.setSkTitleCd(indto.getSkTitleCd());//役職コード
-					updateEntity2.setSkDcctype(StringUtils.setEmptyToNull(indto.getSkDcctype()));//薬審メンバー区分
+					if(indto.getUnknownFlg()) {
+						updateEntity2.setSkInsNo(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9);//勤務先施設固定コード
+						updateEntity2.setSkJobForm("Z");//勤務形態
+						updateEntity2.setSkDeptCd(RdmConstantsData.CODE_VALUE_DUMMY_DEPT_CODE);//所属部科コード
+						updateEntity2.setSkUnivPosCd("Z");//大学職位コード
+						updateEntity2.setSkTitleCd("Z");//役職コード
+						updateEntity2.setSkDcctype("Z");//薬審メンバー区分
+					}else {
+						updateEntity2.setSkInsNo(indto.getSkInsNo());//勤務先施設固定コード
+						updateEntity2.setSkJobForm(StringUtils.setEmptyToNull(indto.getSkJobForm()));//勤務形態
+						updateEntity2.setSkDeptCd(indto.getSkDeptCd());//所属部科コード
+						updateEntity2.setSkUnivPosCd(StringUtils.setEmptyToNull(indto.getSkUnivPosCd()));//大学職位コード
+						updateEntity2.setSkTitleCd(indto.getSkTitleCd());//役職コード
+						updateEntity2.setSkDcctype(StringUtils.setEmptyToNull(indto.getSkDcctype()));//薬審メンバー区分
+					}
+				}
+				if ("2".equals(indto.getButtonFlg())) {
+					updateEntity2.setDocKanj(null);
+					updateEntity2.setDocKanjiMei(null);
+					updateEntity2.setDocKanjNullFlag(true);
+					updateEntity2.setDocKanjiMeiNullFlag(true);
 				}
 				updateEntity2.setUpdShaYmd(currentDt);//更新日
 				updateEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者

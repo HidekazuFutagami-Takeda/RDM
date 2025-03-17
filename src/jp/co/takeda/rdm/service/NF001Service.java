@@ -63,6 +63,8 @@ public class NF001Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
 
+        indto.setPageFlag("1");
+
         // MR権限の場合、親画面．ログインユーザ情報からログインユーザの従業員番号、氏名、組織コード、医薬支店C、医薬営業所C、所属組織名を取得し
         // 検索条件．組織、検索条件．担当者に設定する
         if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
@@ -312,6 +314,7 @@ public class NF001Service extends BaseService {
         indto.initPageInfo(indto.getPageCntCur(), selectNF001MainDataCntList.get(0).getCnt(), selectParamNF001List.get(1).getValue());
         selectNF001MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
         selectNF001MainDataEntity.setInLimit(selectParamNF001List.get(1).getValue());
+        indto.setPageFlag("0");
 
         // 機能定義取得
         String newValue = "0";

@@ -442,11 +442,15 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <s:if test='pageFlag == "1" '>
           </s:if>
           <s:else>
+          	<table width="80%">
+          		<tr>
                     <td align="right">
                       <jsp:include page="common/rdmPage.jsp">
                       <jsp:param name="" value="" />
                       </jsp:include>
                     </td>
+                </tr>
+             </table>
           </s:else>
           <%-- ページャー表示 終了 --%>
           <%-- データ部表示 開始 --%>

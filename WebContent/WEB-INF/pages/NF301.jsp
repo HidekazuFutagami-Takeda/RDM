@@ -824,7 +824,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr>
 	      <td class="comFormTableItem"><nobr>担当者情報</nobr></td>
 	      <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
-              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
+              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
 			  <table class="comCustomTable" id="formTable11">
 				<tr>
 				  <%-- ヘッダ行 --%>

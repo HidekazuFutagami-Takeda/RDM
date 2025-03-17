@@ -231,6 +231,7 @@ public class NF212Service extends BaseService {
     		SelectNF212MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
     		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
     		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
     		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -330,6 +331,7 @@ public class NF212Service extends BaseService {
     		SelectNF212MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
     		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
     		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
     		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -434,6 +436,10 @@ public class NF212Service extends BaseService {
     		}
 
     		indto.setLnkTrtDataList(lnkTrtDataList);
+        } else {
+        	if("1".equals(indto.getTkdTrtKbn()) && indto.getTekiyoYmd() != null) {
+            	indto.setTekiyoYmd(indto.getTekiyoYmd().replace("/", "-"));
+            }
         }
 
         // 編集可能判定

@@ -218,6 +218,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="funcId"/>
      <s:hidden name="tkdTrtKbn"/>
 
+     <s:hidden name="trtCd"/>
+     <s:hidden name="hinGCd"/>
+
     <s:hidden name="defaultSosCd"/>
     <s:hidden name="defaultSosName"/>
     <s:hidden name="defaultBumonRank"/>
@@ -444,10 +447,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       	<s:hidden name="preMainInsNm"/>
       	<s:hidden name="preMainInsAddr"/>
       	<s:hidden name="preInsTanto"/>
-      	<s:hidden name="mainInsCd"/>
       	<s:hidden name="mainInsNm"/>
       	<s:hidden name="mainInsAddr"/>
-      	<s:hidden name="insTanto"/>
+      	<s:hidden name="preMainInsSbt"/>
+      	<s:hidden name="mainInsSbt"/>
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Left"</s:if><s:else>class="comFormTableItemNf212Left"</s:else>><nobr>親施設</nobr></td>
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Right"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><nobr><s:label key="preMainInsCd" /></nobr></td>
@@ -564,7 +567,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:else>
 					&nbsp;
                	</s:else>
-               	<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+               	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" />
 					</s:if>

@@ -679,7 +679,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		  	</s:else>
 		  </nobr></td>
       </tr>
-      <s:if test='%{loginJokenSetCd == "JKN0850"}'>
+      <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>審査・承認メモ</nobr></td>
       </tr>

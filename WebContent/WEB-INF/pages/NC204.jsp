@@ -36,8 +36,7 @@
     <script type="text/javascript" src="js/pdfReportList.js"></script>
     <script type="text/javascript" src="js/catDeptsComboRDM.js"></script>
     <script type="text/javascript" src="js/dmcDocInputCategoriesRDM.js"></script>
-    <script type="text/javascript" src="js/jkrMenu.js"></script>
-    <script type="text/javascript" src="js/JKR050C000.js"></script>
+<%--     <script type="text/javascript" src="js/jkrMenu.js"></script> --%>
 </head>
 <script type="text/javascript">
 
@@ -78,7 +77,8 @@
 	<s:hidden id="backScreenId" name ="backScreenId"/>
 	<s:hidden id="preScreenId" name ="preScreenId"/>
     <s:hidden id="paramInsNo" name="paramInsNo"/>
-
+    <s:hidden name="maxPageCnt" />
+    <s:hidden name="pageRowNum" />
 
     <s:hidden name="pageCntAll" />
     <s:hidden name="pageCntCur" />
@@ -111,6 +111,19 @@
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
 	<tr><td>
+		<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
+		<tbody>
+		<s:if test="msgStr != null">
+		<tr>
+		<td>
+		<nobr>
+		<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
+		</nobr>
+		</td>
+		</tr>
+		</s:if>
+		</tbody>
+	</table>
 <%-- 検索部 開始 --%>
 
 	<CENTER>
@@ -129,7 +142,7 @@
         <td>
             <nobr><s:textfield name="searchInput" align="left"  size="40" maxlength="40" type="search" onsubmit="return false;"/></nobr>
             <s:submit value="検索" name="検索" onclick="this.form.action='%{inSearchInput}';  this.form.submit();return false;" onkeypress="if(event.keyCode==13){event.returnValue=false}" />
-            <br> ※部分一致で検索されます。</br><%-- 検索ボタン --%>
+            <br> ※部分一致で検索されます。<%-- 検索ボタン --%>
         </td>
 		</tr>
 	</table>
@@ -139,18 +152,21 @@
 <%-- 検索部 終了 --%>
 <%-- ページ情報 --%>
     <!-- 「更新」リンク表示フラグ 1:表示 0:非表示 -->
-   <jsp:include page="common/popPage.jsp" >
-      <jsp:param name="showPagerFlg" value="0" />
+          <s:if test='pageFlg == "1" '>
+          </s:if>
+          <s:else>
+             <jsp:include page="common/popPage.jsp" >
+      <jsp:param name="showPagerFlg" value="1" />
       <jsp:param name="pagerSize" value="300" />
     </jsp:include>
-
+          </s:else>
     <table >
 	<tr class="comTableTitle" >
 	<td class="comTableTitle" align="left" style="width:400px; text-align: left;  border:none;">所属部科名</td>
 	</tr>
 </table>
 	<div id="osirase" align="center"  style="background-color:#ffffff; width:417px; height:300px; overflow-y:scroll; border-width:1px; border-style:solid;">
-    <table  align="center" border:none; cellpadding="2" cellspacing="0" style="width:300pt;">
+    <table  align="center" border="0" cellpadding="2" cellspacing="0" style="width:300pt;">
     <%-- 項目 --%>
 
     <%-- 内容 --%>
@@ -185,7 +201,7 @@
              <td class="comPortalControlItem">
             <%--    <nobr style="position: fixed; bottom: 20; left: 20;width: 100%; text-align: left;">  --%>
                 <input type="button" value="閉じる" OnClick="cdcClose();">
-                </nobr>
+<!--                 </nobr> -->
             </td>
         </tr>
     </table>

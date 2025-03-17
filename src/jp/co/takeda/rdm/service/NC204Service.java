@@ -11,16 +11,22 @@ import java.util.List;
 import javax.inject.Named;
 
 import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.CatDeptsComboDataList;
 import jp.co.takeda.rdm.dto.NC204DTO;
+import jp.co.takeda.rdm.dto.NC209DTO;
 import jp.co.takeda.rdm.entity.SRdmDmcMstDeptEntity;
 import jp.co.takeda.rdm.entity.SRdmJkrSosInsAbbrNameEntiry;
+import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectDeptListEntity;
 import jp.co.takeda.rdm.util.AppMethods;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 import jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
+import jp.co.takeda.rdm.entity.join.SelectNC209MainDataEntity;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -67,8 +73,49 @@ public class NC204Service extends BaseService {
         BaseDTO outdto = indto;
         // START UOC
 
+        //初期表示画面フラグ = 1(初期化)
+        indto.setPageFlg(1);
+
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
+
+        //最大件数（エラーチェック用）をパラメータから取得
+        if(indto.getMaxPageCnt() == null) {
+        	MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
+        	mRdmParamMstEntity.setParamName(RdmConstantsData.PARAM_NAME_MAX_ROWNUM);
+        	mRdmParamMstEntity.setDelFlg("0");
+
+        	List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
+        	if(mRdmParamMstEntityList.size() > 0) {
+        		String value = mRdmParamMstEntityList.get(0).getValue();
+        		indto.setMaxPageCnt(Integer.parseInt(value));
+        	}else {
+        		indto.setMaxPageCnt(1000);
+        	}
+        }
+
+        //1画面内の表示件数をパラメータから取得
+        if(indto.getPageRowNum() == null) {
+        	MRdmParamMstEntity mRdmParamMstEntity2 = new MRdmParamMstEntity();
+        	mRdmParamMstEntity2.setParamName(RdmConstantsData.PARAM_NAME_NC204_ROWNUM);
+        	mRdmParamMstEntity2.setDelFlg("0");
+
+        	List<MRdmParamMstEntity> mRdmParamMstEntityList2 = dao.selectByValue(mRdmParamMstEntity2);
+        	if(mRdmParamMstEntityList2.size() > 0) {
+        		String value = mRdmParamMstEntityList2.get(0).getValue();
+        		indto.setPageRowNum(Integer.parseInt(value));
+        	}else {
+               	mRdmParamMstEntity2.setParamName(RdmConstantsData.PARAM_NAME_PAGE_ROWNUM);
+               	mRdmParamMstEntityList2 = dao.selectByValue(mRdmParamMstEntity2);
+            	if(mRdmParamMstEntityList2.size() > 0) {
+            		String value = mRdmParamMstEntityList2.get(0).getValue();
+            		indto.setPageRowNum(Integer.parseInt(value));
+            	}else {
+            		indto.setPageRowNum(100);
+            	}
+        	}
+        }
+
 
         //検索を行う
         outdto = search(indto);
@@ -87,6 +134,7 @@ public class NC204Service extends BaseService {
      */
     @Transactional
     public BaseDTO search(NC204DTO indto) {
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
         BaseDTO outdto = indto;
         insAbbrNameDrop(indto);
         // START UOC
@@ -133,7 +181,7 @@ public class NC204Service extends BaseService {
           }
       }
         //入力_SELECT区分 (パラメータ1)
-       // paramEntity.setInSelectKbn(0);
+        paramEntity.setInSelectKbn(0);
         //入力_施設固定コード (パラメータ2)
         //paramEntity.setInInsNo("004001005");//消化器内科344001289//高血圧004001005
         //paramEntity.setInsNo("004001005");//消化器内科344001289//高血圧004001005
@@ -156,7 +204,21 @@ public class NC204Service extends BaseService {
         //ページャー情報設定
         //indto.initPageInfo(indto.getPageCntCur(), selectCntEntity.getRecCnt(), 20);
 
+		List<SelectDeptListEntityRDM> mainCntEntityList = dao.select(paramEntity);
 
+		//件数なので必ず1レコード取得される
+        indto.setPageCnt(mainCntEntityList.get(0).getRecCnt());
+
+        //最大件数エラーチェック
+        if (checkSearchResults(loginInfo, indto, false)) {
+        	return outdto;
+        }
+        //入力_SELECT区分 (パラメータ1)
+        paramEntity.setInSelectKbn(1);
+        //共通　明細行番号(開始)を生成
+        indto.initPageInfo(indto.getPageCntCur(), indto.getPageCnt(), indto.getPageRowNum());
+        paramEntity.setInOffset(indto.getLineCntStart() - 1);//現ページのオフセット値
+        paramEntity.setInLimit(indto.getPageRowNum());//1ページ件数
 
         List<CatDeptsComboDataList> catDeptsComboDataList = new ArrayList<CatDeptsComboDataList>();
 
@@ -244,6 +306,7 @@ public class NC204Service extends BaseService {
         //indto.setInsAbbrName("東北大学病院");
         //検索された帳票一覧をDTOに設定する
         indto.setCatDeptsComboDataList(catDeptsComboDataList);
+        indto.setPageFlg(0);
         // END UOC
 //        }
         return outdto;
@@ -267,4 +330,31 @@ public class NC204Service extends BaseService {
         return outdto;
     }
 
+	/*
+	 * ６：範囲チェック　
+	 * 検索結果件数
+	 * エラーありならtrueとし、エラーメッセージをmsgStrにセットする
+	 */
+	private boolean checkSearchResults(LoginInfo loginInfo, NC204DTO indto, boolean fullchkFlg) {
+
+		boolean errChk = false;
+		String msgStr = "";
+		String tmpMsgStr = "";
+
+		//６：範囲チェック　
+		//検索結果件数
+		int pageCnt = 0;
+		int maxPageCnt = 0;
+		pageCnt = indto.getPageCnt();
+		maxPageCnt = indto.getMaxPageCnt();
+		if (pageCnt > maxPageCnt) {
+			errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W002);// 検索結果が表示上限を超えています。検索条件を絞って再検索してください。
+			msgStr = msgStr + tmpMsgStr + "\n";
+		}
+		if (errChk) {// エラーありなのでメッセージをセットする
+			indto.setMsgStr(msgStr);
+		}
+		return errChk;
+	}
 }

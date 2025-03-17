@@ -44,6 +44,16 @@ public class SelectDeptListEntityRDM extends BaseEntity implements Serializable 
     private Integer inSelectKbn;
 
     /**
+     * Offset値
+     */
+    private Integer inOffset;
+
+    /**
+     * Limit値
+     */
+    private Integer inLimit;
+
+    /**
      * 入力_施設固定コード (パラメータ2)_rdm流用
      * @generated
      */
@@ -172,6 +182,36 @@ public class SelectDeptListEntityRDM extends BaseEntity implements Serializable 
         this.inSelectKbn = inSelectKbn;
     }
     /**
+	 * SelectDeptListEntityRDM.javainOffsetを設定
+	 * @return inOffset
+	 */
+	public Integer getInOffset() {
+		return inOffset;
+	}
+
+	/**
+	 * @param inOffset セットする inOffset
+	 */
+	public void setInOffset(Integer inOffset) {
+		this.inOffset = inOffset;
+	}
+
+	/**
+	 * SelectDeptListEntityRDM.javainLimitを設定
+	 * @return inLimit
+	 */
+	public Integer getInLimit() {
+		return inLimit;
+	}
+
+	/**
+	 * @param inLimit セットする inLimit
+	 */
+	public void setInLimit(Integer inLimit) {
+		this.inLimit = inLimit;
+	}
+
+	/**
      * 入力_スクリーンIDの取得
      * @return 入力_スクリーンID
      * @generated

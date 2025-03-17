@@ -404,6 +404,12 @@
         <action name="NC204Init" class="nC204Action" method="init">
             <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
         </action>
+        <action name="NC204Search" class="nC204Action" method="search">
+            <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
+        </action>
+        <action name="NC204Page" class="nC204Action" method="page">
+            <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
+        </action>
         <action name="NF501Init" class="NF501Action" method="init">
             <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
         </action>

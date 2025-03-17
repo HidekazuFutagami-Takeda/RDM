@@ -619,6 +619,8 @@ public class RdmConstantsData {
     public static final String PARAM_NAME_MAX_ROWNUM = "MAX_ROWNUM";
     /**パラメタ情報パラメタ名 : 1画面内の表示件数　デフォルト値 */
     public static final String PARAM_NAME_PAGE_ROWNUM = "PAGE_ROWNUM";
+    /**パラメタ情報パラメタ名 : 1画面内の表示件数　所属部科選択ポップアップ */
+    public static final String PARAM_NAME_NC204_ROWNUM = "NC204_ROWNUM";
     /**パラメタ情報パラメタ名 : 1画面内の表示件数　医師検索ポップアップ */
     public static final String PARAM_NAME_NC209_ROWNUM = "NC209_ROWNUM";
 

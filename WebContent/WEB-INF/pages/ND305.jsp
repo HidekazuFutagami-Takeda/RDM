@@ -88,26 +88,6 @@
     <input type="text" name="functionId"         value="" />
     <input type="text" name="windowName"         value="" />
     <input type="text" name="openerName"         value="" />
-<!--     <input type="text" name="infoId1"            value="" /> -->
-<!--     <input type="text" name="systemId1"          value="" /> -->
-<!--     <input type="text" name="backScreenId1"      value="JkrMrChange" /> -->
-<!--     <input type="text" name="backFunctionId1"    value="" /> -->
-<!--     <input type="text" name="backScreenName1"    value="" /> -->
-<!--     <input type="text" name="backParamName1"     value="" /> -->
-<!--     <input type="text" name="backParamValue1"    value="" /> -->
-<!--     <input type="text" name="backParamName2"     value="" /> -->
-<!--     <input type="text" name="backParamValue2"    value="" /> -->
-<!--     <input type="text" name="fromScreenId1"      value="" /> -->
-<!--     <input type="text" name="fromFunctionId1"    value="" /> -->
-<!--     <input type="text" name="kensakuChar1"       value="" /> -->
-<!--     <input type="text" name="kensakuAndOr1"      value="" /> -->
-<!--     <input type="text" name="pageNextBackFlag1"  value="" /> -->
-<!--     <input type="text" name="sortFieldNo1"       value="" /> -->
-<!--     <input type="text" name="sortFLG1"           value="" /> -->
-<!--     <input type="text" name="startRecordNo1"     value="" /> -->
-<!--     <input type="text" name="pageLines1"         value="" /> -->
-<!--     <input type="hidden" name="endRecordNo1"	value="" /> -->
-<!--     <input type="text" name="no1"                value="1" /> -->
 
     <%-- フレーム対応で発生したPOST用 引数1:frame(フレーム対応),以外(何もしない) 引数２:オブジェクトの型 --%>
 

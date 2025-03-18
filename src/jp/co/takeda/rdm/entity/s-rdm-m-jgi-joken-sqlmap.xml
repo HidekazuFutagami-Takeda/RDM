@@ -53,19 +53,19 @@
     </select>
     <insert id="insertByPK" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
         INSERT INTO
-            S_JKR_M_JGI_JOKEN(JGI_NO, JOKEN_SET_CD)
+            S_RDM_M_JGI_JOKEN(JGI_NO, JOKEN_SET_CD)
         VALUES
             (#{jgiNo}, #{jokenSetCd})
     </insert>
     <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
         INSERT INTO
-            S_JKR_M_JGI_JOKEN(<trim suffixOverrides=",">JGI_NO,JOKEN_SET_CD,</trim>)
+            S_RDM_M_JGI_JOKEN(<trim suffixOverrides=",">JGI_NO,JOKEN_SET_CD,</trim>)
         VALUES
             (<trim suffixOverrides=",">#{jgiNo},#{jokenSetCd},</trim>)
     </insert>
     <update id="updateByPK" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
         UPDATE
-            S_JKR_M_JGI_JOKEN
+            S_RDM_M_JGI_JOKEN
         SET
             <trim suffixOverrides=","></trim>
         WHERE
@@ -73,7 +73,7 @@
     </update>
     <update id="updateByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
         UPDATE
-            S_JKR_M_JGI_JOKEN
+            S_RDM_M_JGI_JOKEN
         <set>
         </set>
         WHERE
@@ -81,13 +81,13 @@
     </update>
     <delete id="deleteByPK" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
         DELETE FROM
-            S_JKR_M_JGI_JOKEN
+            S_RDM_M_JGI_JOKEN
         WHERE
             JGI_NO = #{jgiNo} AND JOKEN_SET_CD = #{jokenSetCd}
     </delete>
     <delete id="deleteByValue" parameterType="jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity">
         DELETE FROM
-            S_JKR_M_JGI_JOKEN
+            S_RDM_M_JGI_JOKEN
         <where>
             <if test="jgiNo != null">AND JGI_NO = #{jgiNo}</if>
             <if test="jokenSetCd != null">AND JOKEN_SET_CD = #{jokenSetCd}</if>
@@ -97,7 +97,7 @@
             SELECT
               A.JOKEN_SET_CD --条件セット
             FROM
-              M_JGI_JOKEN A
+              S_RDM_M_JGI_JOKEN A
             WHERE A.JGI_NO = #{inJgiNo}
               ORDER BY
                   A.JOKEN_SET_CD

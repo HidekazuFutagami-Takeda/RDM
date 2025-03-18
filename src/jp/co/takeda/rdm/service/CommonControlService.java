@@ -26,6 +26,7 @@ import jp.co.takeda.rdm.entity.MRdmFwTransitionEntity;
 import jp.co.takeda.rdm.entity.RdmMsgMstEntity;
 import jp.co.takeda.rdm.entity.SRdmMJgiJokenEntity;
 import jp.co.takeda.rdm.entity.MRdmJgiSosMstEntity;
+import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectLoginJgiNoByUserIdEntity;
 import jp.co.takeda.rdm.entity.join.SelectLoginUserIdByJgiNoEntity;
@@ -169,16 +170,22 @@ public class CommonControlService extends BaseService {
                 //従業員名称設定済みとする
                 loginInfo.setJgiNameGetFlag(true);
 
-                //従業員関連汎用マスタからジョブ管理時刻を取得
-                SelectCodeMstEntity codeParam = new SelectCodeMstEntity();
-                //データ区分 (パラメータ1)
-                codeParam.setInDataKbn("time_limit");
-                //コード (パラメータ2)
-                codeParam.setInDataCd("0");
-                //担当変更システムコードマスタ検索
-                SelectCodeMstEntity codeMstEntity = (SelectCodeMstEntity)dao.select(codeParam).get(0);
-                //ジョブ管理時刻
-                loginInfo.setTimeData(codeMstEntity.getDataName());
+//                //従業員関連汎用マスタからジョブ管理時刻を取得
+//                SelectCodeMstEntity codeParam = new SelectCodeMstEntity();
+//                //データ区分 (パラメータ1)
+//                codeParam.setInDataKbn("time_limit");
+//                //コード (パラメータ2)
+//                codeParam.setInDataCd("0");
+//                //担当変更システムコードマスタ検索
+//                SelectCodeMstEntity codeMstEntity = (SelectCodeMstEntity)dao.select(codeParam).get(0);
+//                //ジョブ管理時刻
+//                loginInfo.setTimeData(codeMstEntity.getDataName());
+            	MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
+            	mRdmParamMstEntity.setParamName(RdmConstantsData.PARAM_NAME_TIME_LIMIT);
+            	mRdmParamMstEntity.setDelFlg("0");
+            	List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
+            	//ジョブ管理時刻
+            	loginInfo.setTimeData(mRdmParamMstEntityList.get(0).getValue());
                 //TODO二神 これ必要か確認二神ここまで
 
                 //RDMシステムメッセージ一覧取得

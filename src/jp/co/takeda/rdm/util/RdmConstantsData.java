@@ -623,6 +623,8 @@ public class RdmConstantsData {
     public static final String PARAM_NAME_NC204_ROWNUM = "NC204_ROWNUM";
     /**パラメタ情報パラメタ名 : 1画面内の表示件数　医師検索ポップアップ */
     public static final String PARAM_NAME_NC209_ROWNUM = "NC209_ROWNUM";
+    /**パラメタ情報パラメタ名 : 画面利用警告表示時間 */
+    public static final String PARAM_NAME_TIME_LIMIT = "TIME_LIMIT";
 
     /** MDMシステムトップメニューボタン押下 : 戻るためのDTOセッション格納キー */
     public static final String NC001_RETURN_DTO_KEY = "NC001_RETURN_DTO_KEY";

@@ -233,7 +233,6 @@ public class ND012Action extends BaseAction<ND012DTO> {
         if (!RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
                 && !"exception".equals(outdto.getForward())){
             setJumpInfo(dto.getMsgId());
-//            outdto.setForward("JKR090C020Init");
         }
         // END UOC
         // buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する

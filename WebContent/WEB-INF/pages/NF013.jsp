@@ -670,7 +670,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
+	      <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
 	      <td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
+		</s:if>
+		<s:else>
+			<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
+		</s:else>
       </tr>
       <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
       <tr>
@@ -715,7 +720,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">
                 <nobr>
 				<s:if test='%{loginJgiNo == reqJgiNo}'>
-					<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01" && reqStsCd != "03" && reqStsCd != "13")}'>
+					<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/>
 		            </s:if>
 		            <s:else>

@@ -3785,7 +3785,7 @@ public class NF012Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
 			errFlg = true;
         }
-        if(indto.getReqComment() != null && indto.getReqComment().length() > 300) {
+        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;

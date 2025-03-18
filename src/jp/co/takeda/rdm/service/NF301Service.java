@@ -314,7 +314,7 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "介護療養") + "\n";
 			errFlg = true;
         }
-        if(indto.getReqComment() != null && indto.getReqComment().length() > 300) {
+        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;
@@ -883,7 +883,7 @@ public class NF301Service extends BaseService {
         boolean errFlg = false;
         String errMsg = "";
 
-        if(indto.getAprComment() != null && indto.getAprComment().length() > 300) {
+        if(indto.getAprComment() != null && StringUtils.getByteLength(indto.getAprComment()) > 300) {
         	// 最大文字数を超えています。（承認・却下コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "承認・却下コメント") + "\n";
 			errFlg = true;

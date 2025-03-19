@@ -1099,13 +1099,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	// 担当者情報表示設定
     function trtView(){
-    	const mainInsCd = document.fm1.mainInsCd.value;
-    	if(mainInsCd == ""){
-    		document.getElementById("trtHr").style.visibility = "visible";
-    		document.getElementById("formTable10").style.visibility = "visible";
-    	} else {
+    	const insType = document.fm1.insType.value;
+    	if(insType == "02" || insType == "04" || insType == "05" || insType == "07"){
     		document.getElementById("trtHr").style.visibility = "hidden";
     		document.getElementById("formTable10").style.visibility = "hidden";
+    	} else {
+    		document.getElementById("trtHr").style.visibility = "visible";
+    		document.getElementById("formTable10").style.visibility = "visible";
     	}
     }
 
@@ -1301,7 +1301,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	document.fm1.mainInsCd.value = insNo;
     	document.fm1.mainInsNm.value = insAbbrName;
 
-    	trtView();
     }
 
 	// 数値とﾊｲﾌﾝのみかチェック
@@ -1980,8 +1979,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
           <td class="comFormTableItem">
           	    <nobr>
                 <s:textfield name="mainInsNm" id="mainInsNm" size="20" maxlength="150" style="background-color:#D4D0C8" readonly="true" />
-                <s:hidden name="mainInsCd" id="mainInsCd" onchange='trtView();'/>
-                <a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.mainInsCd.value='';document.fm1.mainInsNm.value='';trtView();return false;">Clear</a>
+                <s:hidden name="mainInsCd" id="mainInsCd"/>
+                <a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.mainInsCd.value='';document.fm1.mainInsNm.value='';return false;">Clear</a>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

@@ -161,7 +161,7 @@ public class NF301Service extends BaseService {
         }
         if(indto.getInsType() != null && !"04".equals(indto.getInsType())
         		&& !"05".equals(indto.getInsType()) && !"07".equals(indto.getInsType())) {
-	        if(indto.getPharmType() == null || indto.getInsPhone1().isEmpty()) {
+	        if(indto.getPharmType() == null || indto.getPharmType().isEmpty()) {
 	        	// 必須項目にデータを入力してください。（施設区分）
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
 				errFlg = true;
@@ -188,9 +188,8 @@ public class NF301Service extends BaseService {
 	        }
         }
 
-        if(indto.getInsRank() != null && ("01".equals(indto.getInsRank())
-        		 || "02".equals(indto.getInsRank()) || "04".equals(indto.getInsRank())
-        		 || "05".equals(indto.getInsRank()) || "07".equals(indto.getInsRank()))) {
+        if(indto.getInsType() != null && ("01".equals(indto.getInsType())
+        		 || "02".equals(indto.getInsType()))) {
         	if(indto.getBedCntBase() == null || indto.getBedCntBase().isEmpty()) {
             	// 必須項目にデータを入力してください。（基準）
     			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "基準") + "\n";
@@ -515,7 +514,7 @@ public class NF301Service extends BaseService {
         // 整合性チェック
 
         // 病床数チェック
-		if(indto.getInsRank() == null) {
+		if((!"01".equals(indto.getInsType()) && !"02".equals(indto.getInsType())) || indto.getInsRank() == null) {
 
 		} else if(("01".equals(indto.getInsRank()) || "02".equals(indto.getInsRank()) || "03".equals(indto.getInsRank())
 				 || "04".equals(indto.getInsRank()) || "05".equals(indto.getInsRank()) || "06".equals(indto.getInsRank()))

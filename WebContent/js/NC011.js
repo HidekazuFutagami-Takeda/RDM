@@ -193,9 +193,15 @@ function popClear(){
 	document.fm1.bumonRank.value = "";
 	document.fm1.sosCd.value = "";
 	document.fm1.bumonRyakuName.value = "";
+	//document.getElementById("bumonRyakuName").reset();
 	document.fm1.reqJgiName.value = "";
+	document.getElementById("inreqJgiName").value = "";
 	document.fm1.brCode.value = "";
 	document.fm1.distCode.value = "";
+}
+function popClearnull(){
+	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	document.fm1.target = "";
 }
 
 function rdmCler(){

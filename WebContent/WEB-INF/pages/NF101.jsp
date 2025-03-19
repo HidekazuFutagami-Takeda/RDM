@@ -394,6 +394,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 経営主体セレクトボックス設定
     function makeManageCdBox(box, insRank){
+    	/*
     	removeBox(box);
 
     	const option0 = makeOption("","--なし--");
@@ -695,6 +696,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		box.appendChild(option55);
     	}
 
+    	*/
     	return box;
     }
 

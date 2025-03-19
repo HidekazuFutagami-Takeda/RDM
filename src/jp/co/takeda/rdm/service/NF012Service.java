@@ -3874,7 +3874,7 @@ public class NF012Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W016).replace("項目名", "郵便番号") + "\n";
 			errFlg = true;
         }
-        if("10".equals(indto.getInsSbt()) && "00-0000-0000".equals(indto.getInsPhone1())) {
+        if("10".equals(indto.getInsSbt()) && !"00-0000-0000".equals(indto.getInsPhone1())) {
         	// 医療モールを新規作成する場合は「00-0000-0000」と入力してください。電話番号(代表)
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W017) + "\n";
 			errFlg = true;

@@ -181,6 +181,11 @@ public class NF301Service extends BaseService {
 	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
 	        	errFlg = true;
 	        }
+	        if(indto.getManageCd() == null || indto.getManageCd().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（経営主体）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
+	        	errFlg = true;
+	        }
         }
 
         if(indto.getInsRank() != null && ("01".equals(indto.getInsRank())

@@ -22,6 +22,7 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF101DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
@@ -406,6 +407,16 @@ public class NF101Service extends BaseService {
 			mapHoInsType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
+
+		// 経営主体
+		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
+		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
+		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
+		mapManageCd.put("", "--なし--");
+		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
+			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
+		}
+		indto.setManageCdCombo(mapManageCd);
 
 		// ワクチン対象区分
 		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_VAC_INS_TYPE);

@@ -45,7 +45,7 @@ function NM011Seni() {
 
 	nc001Tab = window.open("","NM101Tab");
 	document.fm1.target="NM101Tab";
-
+	fm1.jokenFlg.value='0'
 	fm1.screenId.value='NC011';
 	fm1.functionId.value="Search";
 	comSubmitForAnyWarp(fm1);
@@ -66,7 +66,7 @@ function rdmSearch(reqId) {
 
 	fm1.reqId.value=reqId;
 	fm1.reqId.value=reqIdcell;
-	fm1.reqFlg.value="1";
+	fm1.reqFlg.value="2";
 
 	document.fm1.target = "";
       document.fm1.screenId.value	= "NM101";
@@ -95,6 +95,7 @@ function rdmRegister() {
       //document.fm1.inHisYmdhmsFrom.disabled = false;
       //document.fm1.inHisYmdhmsTo.disabled = false;
 
+	document.fm1.target = "";
       document.fm1.screenId.value	= "NM101";
       document.fm1.functionId.value = 'Register';
 

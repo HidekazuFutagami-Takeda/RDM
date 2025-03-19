@@ -114,15 +114,13 @@ public class NM001Service extends BaseService {
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           //日付チェック 開始日が終了日より後の場合
           if (indto.getReqYmdhmsFrom() != null){
-          try {
-
-			if (!sdf.parse(indto.getReqYmdhmsFrom()).before(sdf.parse(indto.getReqYmdhmsTo()))) {
-				indto.setBoolKnb("1");
-				indto.setKensakuBool(false);
-        		return outdto;
-			  }
-
-		} catch (ParseException e) {
+              try {
+      			if (sdf.parse(indto.getReqYmdhmsFrom()).compareTo(sdf.parse(indto.getReqYmdhmsTo())) == 1) {
+      				indto.setBoolKnb("1");
+      				indto.setKensakuBool(false);
+              		return outdto;
+      			  }
+      		} catch (ParseException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}

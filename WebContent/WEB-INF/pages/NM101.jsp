@@ -300,6 +300,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <s:hidden name="functionId" />
 
     <s:hidden id="pageFlag" name="pageFlag" />
+    <s:hidden id="jokenFlg" name="jokenFlg" />
 
     <input type="hidden" name="windowName" value="" />
     <input type="hidden" name="openerName" value="" />

@@ -49,6 +49,11 @@ public class NC011DTO extends BaseDTO implements Serializable {
      */
 	private String jokenFlg;
 
+    /**
+     * 申請ID有無判定
+     */
+	private String reqFlg;
+
 	/**
 	 * 画面タイトル
 	 * @generated
@@ -327,6 +332,18 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String test;
+	/**
+	 * rEQ_ID
+	 * @generated
+	 */
+
+	private String reqIdCell;
+	/**
+	 * rEQ_ID
+	 * @generated
+	 */
+
+	private String reqTypeCell;
 
 	/**
 	 * rEQ_ID
@@ -539,6 +556,34 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setSortCondition(String sortCondition) {
 		this.sortCondition = sortCondition;
 	}
+
+
+	/**
+	 * NC011DTO.javareqIdCellを設定
+	 * @return reqIdCell
+	 */
+	public String getReqIdCell() {
+		return reqIdCell;
+	}
+	/**
+	 * @param reqIdCell セットする reqIdCell
+	 */
+	public void setReqIdCell(String reqIdCell) {
+		this.reqIdCell = reqIdCell;
+	}
+	/**
+	 * NC011DTO.javareqTypeCellを設定
+	 * @return reqTypeCell
+	 */
+	public String getReqTypeCell() {
+		return reqTypeCell;
+	}
+	/**
+	 * @param reqTypeCell セットする reqTypeCell
+	 */
+	public void setReqTypeCell(String reqTypeCell) {
+		this.reqTypeCell = reqTypeCell;
+	}
 	public String getReqIdAscClass() {
 		return reqIdAscClass;
 	}
@@ -632,9 +677,20 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	    this.searchInsChgCombo = searchInsChgCombo;
 	}
 
-
-
     /**
+	 * NC011DTO.javareqFlgを設定
+	 * @return reqFlg
+	 */
+	public String getReqFlg() {
+		return reqFlg;
+	}
+	/**
+	 * @param reqFlg セットする reqFlg
+	 */
+	public void setReqFlg(String reqFlg) {
+		this.reqFlg = reqFlg;
+	}
+	/**
 	 * NC011DTO.javajokenFlgを設定
 	 * @return jokenFlg
 	 */

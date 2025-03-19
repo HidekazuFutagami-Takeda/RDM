@@ -271,6 +271,51 @@ public class NC011Action extends BaseAction<NC011DTO> {
         }
         return searchNext(outdto);
     }
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String check() throws Exception {
+    	BaseDTO outdto = dto;
+    	//画面タイト制御処理
+        String title = "NC011_申請一覧";
+        dto.setTitle(title);
+    	searchSetup();
+        // F層呼び出し
+    	outdto = NC011Service.check(dto);
+
+    	//日付チェック
+    	if (Objects.equals(dto.getBoolKnb(), "1")) {
+    		errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W003);// 終了日は開始日以降を選択してください。
+    		if(errChk) {//エラーありなのでメッセージをセットする
+    			dto.setMsgStr(tmpMsgStr);
+    		}
+    		//入力された日付を保持
+    		dto.setInreqYmdhmsFrom(dto.getReqYmdhmsFrom());
+    		dto.setInreqYmdhmsTo(dto.getReqYmdhmsTo());
+
+    		//return searchNext(dto);
+    		//return outdto.getForward();
+    	}
+
+    	//検索結果にエラーがある場合
+    	if (Objects.equals(dto.getBoolKnb(), "2")){//エラーありなのでメッセージをセットする
+    		tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W002);// 検索結果が表示上限を超えています。検索条件を絞って再検索してください。。
+    		//エラーメッセージをdtoに格納
+    		dto.setMsgStr(tmpMsgStr);
+    		//return outdto.getForward();
+    	}
+
+
+        if (outdto instanceof NC011DTO) {
+            // START UOC
+
+            // END UOC
+        }
+        return searchNext(outdto);
+    }
 
     /**
      * 前処理

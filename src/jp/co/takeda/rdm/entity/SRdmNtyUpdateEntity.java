@@ -726,7 +726,20 @@ public class SRdmNtyUpdateEntity extends BaseEntity implements Serializable {
 	public void setBumonRyakuName(String bumonRyakuName) {
 		this.bumonRyakuName = bumonRyakuName;
 	}
-
+	private String reqType;
+	/**
+	 * SRdmNtyUpdateEntity.javareqTypeを設定
+	 * @return reqType
+	 */
+	public String getReqType() {
+		return reqType;
+	}
+	/**
+	 * @param reqType セットする reqType
+	 */
+	public void setReqType(String reqType) {
+		this.reqType = reqType;
+	}
 	/**
      * このEntityの値を返す
      * @return DTOの値

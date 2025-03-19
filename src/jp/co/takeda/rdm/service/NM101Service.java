@@ -505,10 +505,11 @@ public class NM101Service extends BaseService {
         			if(!CollectionUtils.isEmpty(sRdmNtyUpdateCnrEntity)) {
         				//indto.setForward("NC011Init");
         	        	indto.setReqId(paramEntity.getReqId());
-        	        	if(!indto.getReqFlg().equals("0")) {
+        	        	if(indto.getReqFlg().equals("2")) {
         	        		indto.setReqFlg("1");
 	        	        	outdto = indto;
 	        				return outdto;
+        			}
         			}
         			if(CollectionUtils.isEmpty(sRdmNtyUpdateCnrEntity)) {
         			errMsg += loginInfo.getMsgData(RdmConstantsData.I001).replace("項目名", "申請IDなし") + "\n";
@@ -518,9 +519,9 @@ public class NM101Service extends BaseService {
         	        	indto.setMsgStr(errMsg);
         	        	return outdto;
         	        }
-        			}
+        		}
         			return outdto;
-          			}
+
           		}
 
 

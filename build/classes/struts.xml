@@ -96,6 +96,9 @@
         <action name="NC011Page" class="nC011Action" method="page">
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
         </action>
+        <action name="NC011Check" class="nC011Action" method="check">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
 		<action name="NC011Page" class="nC011Action" method="page">
 			<result name="NC011">/WEB-INF/pages/NC011.jsp</result>
 		</action>
@@ -326,10 +329,6 @@
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF301">/WEB-INF/pages/NF301.jsp</result>
         </action>
-        <action name="NF301ApprRej" class="nF301Action" method="apprRej">
-        	<result name="NF011">/WEB-INF/pages/NF011.jsp</result>
-        	<result name="NF301">/WEB-INF/pages/NF301.jsp</result>
-        </action>
         <action name="NF303Init" class="nF303Action" method="init">
             <result name="NF012">/WEB-INF/pages/NF012.jsp</result>
             <result name="NF303">/WEB-INF/pages/NF303.jsp</result>
@@ -337,10 +336,6 @@
         <action name="NF303Register" class="nF303Action" method="register">
 			<result name="NC101" type="chain">NC101Init</result>
             <result name="NF303">/WEB-INF/pages/NF303.jsp</result>
-        </action>
-        <action name="NF303ApprRej" class="nF303Action" method="apprRej">
-        	<result name="NF012">/WEB-INF/pages/NF012.jsp</result>
-        	<result name="NF303">/WEB-INF/pages/NF303.jsp</result>
         </action>
         <action name="NF305Init" class="nF305Action" method="init">
             <result name="NF013">/WEB-INF/pages/NF013.jsp</result>

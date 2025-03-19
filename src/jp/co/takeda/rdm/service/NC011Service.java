@@ -33,7 +33,8 @@ import jp.co.takeda.rdm.entity.SRdmJkrSosJobFormEntiry;
 import jp.co.takeda.rdm.entity.SRdmJkrSosReqChlEntiry;
 import jp.co.takeda.rdm.entity.SRdmJkrSosReqStsEntiry;
 import jp.co.takeda.rdm.entity.SRdmJkrSosReqTypeEntiry;
-
+import jp.co.takeda.rdm.entity.SRdmNtyUpdateEntity;
+import jp.co.takeda.rdm.entity.SRdmNtyUpdateUpEntity;
 import jp.co.takeda.rdm.entity.join.SelectCntSelectReqListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamNC011Entity;
@@ -43,6 +44,7 @@ import jp.co.takeda.rdm.util.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 /**
  * Serviceクラス（NC011)
@@ -344,6 +346,11 @@ public class NC011Service extends BaseService {
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
     	indto.setPreScreenId(loginInfo.getPreScreenId());
     	indto.setJokenFlg(loginInfo.getJokenFlg());
+    	if(indto.getJokenFlg().equals("1")) {
+    		indto.setBumonRyakuName(loginInfo.getBumonRyakuName());
+    		indto.setReqJgiName(loginInfo.getJgiName());
+    	}
+
 
         BaseDTO outdto = indto;
         // START UOC
@@ -364,10 +371,11 @@ public class NC011Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
+        indto.setReqId("");
         if("NM001".equals(indto.getPreScreenId())) {
         	outdto = search(indto);
         }
-
+        indto.setReqFlg("0");
         // END UOC
         return outdto;
 
@@ -406,12 +414,24 @@ public class NC011Service extends BaseService {
   		selectParamNC011List = dao.select(selectParamReqNC011Entity);
 
   		//241002-000014 テスト用申請ID
+  		if(indto.getReqFlg().equals("1")) {
+  			indto.setReqId("");
+  			indto.setReqType("");
+  		}
 
 
           SelectCntSelectReqListEntity selectCntSelectReqListEntity = new SelectCntSelectReqListEntity();
           List<SelectCntSelectReqListEntity> selectParamSelectReqList;
 
+      	if(indto.getJokenFlg().equals("1")) {
+    		indto.setBumonRyakuName(loginInfo.getBumonRyakuName());
+    		indto.setReqJgiName(loginInfo.getJgiName());
+    	}
           paramEntity.setJgiNo(loginInfo.getJgiNo());
+          //paramEntity.setBumonRyakuName(loginInfo.getBumonRyakuName());
+          paramEntity.setBumonRyakuName(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
+          selectCntSelectReqListEntity.setBumonRyakuName(StringUtils.setEmptyToNull(indto.getBumonRyakuName()));
+
           selectCntSelectReqListEntity.setJgiNo(loginInfo.getJgiNo());
           //アドミンflagの検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setMrAdminFlg(StringUtils.setEmptyToNull(loginInfo.getJokenFlg()));
@@ -569,21 +589,27 @@ public class NC011Service extends BaseService {
 
           String workSortCondition = indto.getSortCondition();
 
+          boolean errFlg = false;
+          String errMsg = "";
           if(indto.getReqYmdhmsTo() != null || indto.getReqYmdhmsFrom() != null) {
         //SimpleDateFormatで日付フォーマット設定
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           //日付チェック 開始日が終了日より後の場合
           try {
 			if (sdf.parse(indto.getReqYmdhmsFrom()).compareTo(sdf.parse(indto.getReqYmdhmsTo())) == 1) {
-				indto.setBoolKnb("1");
-				indto.setKensakuBool(false);
-        		return outdto;
+				//indto.setBoolKnb("1");
+				//indto.setKensakuBool(false);
+        		//return outdto;
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W003) + "\n";
+				errFlg = true;
 			  }
 		} catch (ParseException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
           }
+
+
 
           //入力_検索文字列  申請日がnullでないかのチェック。
           if(paramEntity.getReqYmdhmsFrom() != null) {
@@ -640,18 +666,27 @@ public class NC011Service extends BaseService {
           //入力_検索文字列  施設名がnullでないかのチェック。
          // selectParamSelectReqList =dao.select(paramEntity);
 
-          selectParamSelectReqList  = dao.select(selectCntSelectReqListEntity);
-          indto.initPageInfo(indto.getPageCntCur(), selectParamSelectReqList.get(0).getCntReq(), selectParamNC011List.get(1).getValue());
-          paramEntity.setInOffset(indto.getLineCntStart() - 1);
-          paramEntity.setInLimit(selectParamNC011List.get(1).getValue());
-              //画面初期表示時の帳票一覧を取得する
-              List<SRdmReqListEntity> deptListEntity = dao.select(paramEntity);
 
-              //1000件以上の場合のエラー
-        	    if (deptListEntity.size() > selectParamNC011List.get(0).getValue()) {//deptListEntity.size()
-        	    	indto.setBoolKnb("2");
-            		return outdto;
+
+              selectParamSelectReqList  = dao.select(selectCntSelectReqListEntity);
+              //1000件以上の場合のエラー     selectParamSelectReqList.size()  or 1001
+        	    if (selectParamSelectReqList.size() > selectParamNC011List.get(0).getValue()) {//deptListEntity.size()
+        	    	//indto.setBoolKnb("2");
+            		//return outdto;
+        			errMsg += loginInfo.getMsgData(RdmConstantsData.W002) + "\n";
+        			errFlg = true;
         	    }
+                // エラー時処理
+                if(errFlg) {
+                	indto.setMsgStr(errMsg);
+                	//outdto = search(indto);
+                	return outdto;
+                }
+                indto.initPageInfo(indto.getPageCntCur(), selectParamSelectReqList.get(0).getCntReq(), selectParamNC011List.get(1).getValue());
+                paramEntity.setInOffset(indto.getLineCntStart() - 1);
+                paramEntity.setInLimit(selectParamNC011List.get(1).getValue());
+                //画面初期表示時の帳票一覧を取得する
+                List<SRdmReqListEntity> deptListEntity = dao.select(paramEntity);
 
              // for(int i = 0;i < 11; i++) {
               	 for (SRdmReqListEntity entiry : deptListEntity) {
@@ -956,7 +991,14 @@ public class NC011Service extends BaseService {
               if(check == true) {
             	  System.out.print("1000件エラー");
               }
-
+         // 	if(indto.getJokenFlg().equals("1")) {
+        	//	indto.setBumonRyakuName(indto.getBumonRyakuName());
+        	//	indto.setReqJgiName(indto.getJgiName());
+        //	}
+              if(!indto.getReqFlg().equals("1")) {
+              indto.setReqFlg("0");
+              indto.setReqId("");
+              }
           indto.setCatSnseiComboDataList(catSnseiComboDataList);
 
           indto.setSortCondition(workSortCondition);
@@ -965,6 +1007,81 @@ public class NC011Service extends BaseService {
           return outdto;
           }
 
+    /**
+     * イベント処理
+     * @param indto ND001DTO
+     * @return 遷移先DTO
+     * @throws ParseException
+     * @customizable
+     */
+    @Transactional
+    public BaseDTO check(NC011DTO indto) throws ParseException {
+        BaseDTO outdto = indto;
+		SRdmNtyUpdateEntity paramEntity = new SRdmNtyUpdateEntity();
+		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+		indto.setPageFlag("0");
+        addrDrop(indto);
+       // cal(indto);
+        sbtDrop(indto);
+        reqChlDrop(indto);
+        reqSbtDrop(indto);
+        reqTypeDrop(indto);
+        reqStsDrop(indto);
+        insSbtDrop(indto);
+        insClassDrop(indto);
+        hoInsTypeDrop(indto);
+        docTypeDrop(indto);
+        jobFormDrop(indto);
+
+        FbReqFlg(indto);
+        FbPrcType(indto);
+
+
+        boolean errFlg = false;
+        String errMsg = "";
+        // START UOC
+        paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
+        paramEntity.setReqType(StringUtils.setEmptyToNull(indto.getReqType()));
+
+  		if(paramEntity.getReqId() != null) {
+
+			SRdmNtyUpdateUpEntity sRdmNtyUpdateUpEntity = new SRdmNtyUpdateUpEntity("selectByPK");
+			sRdmNtyUpdateUpEntity.setReqId(indto.getReqId());
+
+			List<SRdmNtyUpdateUpEntity> sRdmNtyUpdateCnrEntity = dao.select(sRdmNtyUpdateUpEntity);
+			if(!CollectionUtils.isEmpty(sRdmNtyUpdateCnrEntity)) {
+				//indto.setForward("NC011Init");
+	        	indto.setReqId(paramEntity.getReqId());
+	        	if(indto.getReqFlg().equals("2")) {
+	        		indto.setReqFlg("1");
+	        		indto.setReqIdCell(paramEntity.getReqId());
+	        		indto.setReqTypeCell(paramEntity.getReqType());
+    	        	outdto = indto;
+    	        	outdto = search(indto);
+    				return outdto;
+			}
+			}
+			if(CollectionUtils.isEmpty(sRdmNtyUpdateCnrEntity)) {
+			errMsg += loginInfo.getMsgData(RdmConstantsData.I001).replace("項目名", "申請IDなし") + "\n";
+			errFlg = true;
+	        // エラー時処理
+	        if(errFlg) {
+	        	indto.setReqId("");
+	        	indto.setReqType("");
+	        	indto.setMsgStr(errMsg);
+	        	outdto = search(indto);
+	        	return outdto;
+	        }
+		}
+			return outdto;
+
+  		}
+  		indto.setReqId("");
+        outdto = search(indto);
+
+        // END UOC
+        return outdto;
+    }
     /**
      * イベント処理
      * @param indto ND001DTO

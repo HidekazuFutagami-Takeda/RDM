@@ -183,7 +183,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	  }
 	%>
 </head>
-<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo(); sosSbt();">
+<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:NC011Seni();comSetFormWindowInfo(); sosSbt();">
 
   <%-- バナー部分をインクルード --%>
   <%-- サブシステムIDが３:(従業員関連)の時 --%>
@@ -200,6 +200,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <s:form name="fm1" theme="simple" >
     <s:hidden name="screenId"  />
     <s:hidden name="functionId" />
+    <s:hidden name="reqIdCell" />
+    <s:hidden name="reqTypeCell" />
 
     <s:hidden id="pageFlag" name="pageFlag" />
 
@@ -208,6 +210,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
 	<s:hidden id="mrAdminCd" name="mrAdminCd"/>
     <s:hidden id="jokenFlg" name="jokenFlg"/>
+     <s:hidden id="reqFlg" name="reqFlg"/>
     <s:hidden id="preScreenId" name="preScreenId"/>
 
 
@@ -231,7 +234,6 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden name="title" />
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="sosCd" name="sosCd"/>
-<!--  <s:hidden id="bumonRyakuName" name="bumonRyakuName"/>  申請者所属-->
     <s:hidden id="brCode" name="brCode"/><!-- 申請者所属リージョン -->
 	<s:hidden id="distCode" name="distCode"/><!-- 申請者所属エリア -->
 <%-- ポータルタイトル 開始 --%>
@@ -319,7 +321,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			<s:if test='jokenFlg != "0"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
 				<td>
-					 <s:textfield readonly="true" Style="width:100pt" name="reqjgiName" cssStyle="background-color:#D4D0C8;"/>
+					 <s:textfield readonly="true" Style="width:100pt" name="reqJgiName" cssStyle="background-color:#D4D0C8;"/>
 				</td>
 				</s:if>
 			<s:if test='jokenFlg == "0"'>
@@ -630,8 +632,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 												<%-- 内容 --%>
 				<s:iterator value="catSnseiComboDataList" status="status" var="rowBean">
 					<tr>
-						 <td class="comTableItem tkdUlt"style="z-index:2;">
-						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="NC011Seni('<s:property  value="reqType" />','<s:property  value="reqId" />');return false;">
+						 <td class="comTableItem tkdUlt"style="z-index:2;">																										<!--NC011Seni('<s:property  value="reqType" />','<s:property  value="reqId" />') rdmCheck('<s:property  value="reqId" />') -->
+						  <a class="comLink" href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'" onClick="rdmCheck('<s:property  value="reqId" />','<s:property  value="reqType" />');return false;">
 						          <acronym title='<s:property value="%{#rowBean1.toMrNameAft}"/>'>
 						            <s:label  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
 						            <s:hidden  name="catSnseiComboDataList[%{#status.index}].reqId"  key="catSnseiComboDataList[%{#status.index}].reqId" />
@@ -669,13 +671,29 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				</div>
 	 	 		 </s:else>
 
-			<table style="align:left;">
+			<table >
 												<tr style="align:left;">
-													<td class="comFormTableItem" style="align:left;"><nobr>
+													<td class="comFormTableItem"><nobr>
 															<input class="comButton" type="button" name="buttonF1"
 																value="戻る" onClick="JavaScript:backBtn();return false;"  style="align:left;"/>
 														</nobr></td>
 												</tr>
+			</table>
+						<table  class="comPortalTable" style="align:center">
+						<tr>
+							<td class="comFormTableItem"align="center"><nobr>
+									<input class="comButton" type="button" name="buttonF1"
+										value="戻る" onClick="JavaScript:backBtn();return false;" />
+								</nobr></td>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+								<td class="comFormTableItem"align="right"><nobr>
+
+									<input class="comButton" type="button" name="buttonF1"
+										value="保存" onClick="JavaScript:rdmRegister();return false;" />
+								</nobr></td>
+						</tr>
 			</table>
 
 									<%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>

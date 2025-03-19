@@ -33,12 +33,73 @@ var gMsg = new Array();
  * 検索(ボタン)押下時に呼ばれます。
  * </pre>
  */
-function rdmSearch() {
+function rdmCheck(reqId,reqType) {
 
 	if (!jkrDestructChack()) return false;
+
+	var reqIdcell = fm1.reqId.value;
+
+
+	fm1.reqId.value=reqId;
+	if(reqType == '施設新規作成'){
+	fm1.reqType.value='01';
+	}
+	if(reqType == '施設情報更新'){
+		fm1.reqType.value='02';
+		}
+	if(reqType == '施設削除'){
+		fm1.reqType.value='03';
+		}
+	if(reqType == '施設復活'){
+		fm1.reqType.value='04';
+		}
+	if(reqType == '施設紐づけ作成'){
+		fm1.reqType.value='11';
+		}
+	if(reqType == '親施設の変更'){
+		fm1.reqType.value='12';
+		}
+	if(reqType == '施設紐づけの削除'){
+		fm1.reqType.value='13';
+		}
+	if(reqType == '施設来期情報更新'){
+		fm1.reqType.value='21';
+		}
+	if(reqType == '医師新規作成'){
+		fm1.reqType.value='31';
+		}
+	if(reqType == '医師情報更新'){
+		fm1.reqType.value='32';
+		}
+	if(reqType == '医師削除'){
+		fm1.reqType.value='33';
+		}
+	if(reqType == '医師復活'){
+		fm1.reqType.value='34';
+		}
+	if(reqType == '医師勤務先追加'){
+		fm1.reqType.value='41';
+		}
+	if(reqType == '医療機関への異動'){
+		fm1.reqType.value='42';
+		}
+	if(reqType == '医療機関以外への異動'){
+		fm1.reqType.value='43';
+		}
+	if(reqType == '医師勤務先削除'){
+		fm1.reqType.value='44';
+		}
+	if(reqType == '勤務先情報更新'){
+		fm1.reqType.value='51';
+		}
+
+	fm1.reqFlg.value="2";
+
 	document.fm1.target = "";
       document.fm1.screenId.value	= "NC011";
-      document.fm1.functionId.value = 'Search';
+      document.fm1.functionId.value = 'Check';
+      bumonRyakuName = document.fm1.bumonRyakuName.value;
+
 
 
     //選択された組織情報格納（表示押下前→表示押下後）
@@ -51,7 +112,7 @@ function rdmSearch() {
 
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
-
+    fm1.reqId.value=reqIdcell;
 }
 
 
@@ -61,9 +122,10 @@ function rdmSearch() {
 	if (!jkrDestructChack()) return false;
 
 	  document.fm1.target = "";
+	  document.fm1.reqFlg.value = "0";
       document.fm1.screenId.value	= "NC011";
       document.fm1.functionId.value = 'Search';
-
+      //document.fm1.bumonRyakuName.value = bumonRyakuName;
 
     //選択された組織情報格納（表示押下前→表示押下後）
 //    setTopChangedSos();
@@ -128,6 +190,7 @@ function popClear(){
 	document.fm1.bumonRank.value = "";
 	document.fm1.sosCd.value = "";
 	document.fm1.bumonRyakuName.value = "";
+	document.fm1.reqJgiName.value = "";
 	document.fm1.brCode.value = "";
 	document.fm1.distCode.value = "";
 }
@@ -137,10 +200,10 @@ function rdmCler(){
 	document.fm1.target = "";
 	document.fm1.aDdrCodePref.value = "";
 	document.fm1.sbt.value = "";
-	document.fm1.bumonRyakuName.value = "";
+	//document.fm1.bumonRyakuName.value = "";
 	document.fm1.insNo.value = "";
 	document.fm1.docNo.value = "";
-	document.fm1.reqJgiName.value = "";
+
 	document.fm1.insKanjiSrch.value = "";
 	document.fm1.docKanj.value = "";
 	//document.fm1.inreqYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
@@ -194,15 +257,23 @@ function reqBtn(screenId, insNo){
 	fm1.insNo.value = tmpIns;
 }
 
-function NC011Seni(reqType,reqId) {
+function NC011Seni() {
 	if (!jkrDestructChack()) return false;
+	document.fm1.target = "";
+	var val1 = fm1.reqFlg.value;
+	COM_Click_flg = true;
+	if(val1 != "1"){
+		fm1.reqId.value = "";
+	}
+	if(val1 == "1"){
+	var reqIdcell = fm1.reqIdCell.value;
 
-	var reqIdcell = fm1.reqId.value;
+	var reqTypecell = fm1.reqTypeCell.value;
 
 	var tmpReq = fm1.reqId.value;
 	var nc011Tab;
 
-	fm1.reqId.value=reqId;
+	fm1.reqId.value=reqIdcell;
 
 
 
@@ -276,7 +347,27 @@ function NC011Seni(reqType,reqId) {
 //		alert("ND013_勤務先情報更新に遷移します")
 //		gotoNext('ND014','Init');
 //	}
-	if(reqType == "施設新規作成"){
+	if(reqTypecell == "01"){
+		//alert("NF011_施設新規作成に遷移します")
+
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF011';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+
+		//fm1.insNo.value = tmpIns;
+
+		//gotoNext('NF011','Init');
+	}
+	if(reqTypecell == "施設新規作成"){
 		alert("NF011_施設新規作成に遷移します")
 
 		if(nc011Tab && !nc011Tab.closed){
@@ -295,7 +386,22 @@ function NC011Seni(reqType,reqId) {
 
 		//gotoNext('NF011','Init');
 	}
-	if(reqType == "施設情報更新"){
+	if(reqTypecell == "02"){
+		alert("NF012_施設情報更新に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF012';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "施設情報更新"){
 		alert("NF012_施設情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -309,7 +415,22 @@ function NC011Seni(reqType,reqId) {
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
 	}
-	if(reqType == "施設削除"){
+	if(reqTypecell == "03"){
+		alert("NF013_施設削除に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF013';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "施設削除"){
 		alert("NF013_施設削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -323,7 +444,22 @@ function NC011Seni(reqType,reqId) {
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
 	}
-	if(reqType == "施設復活"){
+	if(reqTypecell == "04"){
+		alert("NF014_施設復活に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF014';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "施設復活"){
 		alert("NF014_施設復活に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -337,7 +473,7 @@ function NC011Seni(reqType,reqId) {
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
 	}
-	if(reqType == "施設紐付け新規"){
+	if(reqTypecell == "11"){
 		alert("NF211_施設紐づけ作成に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -350,8 +486,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "施設紐付け変更"){
+	if(reqTypecell == "施設紐付け新規"){
+		alert("NF211_施設紐づけ作成に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC211Tab";
+
+		fm1.screenId.value='NF011';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "12"){
 		alert("NF212_親施設の変更に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -364,8 +516,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "施設紐付け削除"){
+	if(reqTypecell == "施設紐付け変更"){
+		alert("NF212_親施設の変更に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF212';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "13"){
 		alert("NF213_施設紐づけの削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -378,8 +546,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "施設来期用項目更新"){
+	if(reqTypecell == "施設紐付け削除"){
+		alert("NF213_施設紐づけの削除に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF213';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "21"){
 		alert("NF101_施設来期情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -392,8 +576,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医師新規作成"){
+	if(reqTypecell == "施設来期用項目更新"){
+		alert("NF101_施設来期情報更新に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='NF101';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "31"){
 		alert("ND011_医師新規作成に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -406,8 +606,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医師情報更新"){
+	if(reqTypecell == "医師新規作成"){
+		alert("ND011_医師新規作成に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND011';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "32"){
 		alert("ND012_医師情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -420,8 +636,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医師削除"){
+	if(reqTypecell == "医師情報更新"){
+		alert("ND012_医師情報更新に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND012';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "33"){
 		alert("ND105_医師削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -434,8 +666,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医師復活"){
+	if(reqTypecell == "医師削除"){
+		alert("ND105_医師削除に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND105';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "34"){
 		alert("ND014_医師復活に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -448,8 +696,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医師勤務先追加"){
+	if(reqTypecell == "医師復活"){
+		alert("ND014_医師復活に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND014';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "41"){
 		alert("ND103_医師勤務先追加に遷移します")
 		//gotoNext('ND113','Init');
 		if(nc011Tab && !nc011Tab.closed){
@@ -463,8 +727,25 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医療機関への異動"){
+	if(reqTypecell == "医師勤務先追加"){
+		alert("ND103_医師勤務先追加に遷移します")
+		//gotoNext('ND113','Init');
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND103';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "42"){
 		alert("ND101_医療機関への異動に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -477,8 +758,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医療機関以外への異動"){
+	if(reqTypecell == "医療機関への異動"){
+		alert("ND101_医療機関への異動に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND101';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "43"){
 		alert("ND102_医療機関以外への異動に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -491,8 +788,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "医師勤務先削除"){
+	if(reqTypecell == "医療機関以外への異動"){
+		alert("ND102_医療機関以外への異動に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND102';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "44"){
 		alert("ND104_医師勤務先削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -505,8 +818,24 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	if(reqType == "勤務先情報更新"){
+	if(reqTypecell == "医師勤務先削除"){
+		alert("ND104_医師勤務先削除に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND104';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	if(reqTypecell == "51"){
 		alert("ND013_勤務先情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -519,8 +848,28 @@ function NC011Seni(reqType,reqId) {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
+		fm1.reqId.value="";
 	}
-	fm1.reqId.value=reqIdcell;
+	if(reqTypecell == "勤務先情報更新"){
+		alert("ND013_勤務先情報更新に遷移します")
+		if(nc011Tab && !nc011Tab.closed){
+			nc011Tab.close();
+		}
+
+		nc001Tab = window.open("","NC011Tab");
+		document.fm1.target="NC011Tab";
+
+		fm1.screenId.value='ND013';
+		fm1.functionId.value="Init";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+		fm1.reqId.value="";
+	}
+	fm1.reqId.value="";
+	}
+	fm1.reqId.value = "";
+	//fm1.reqId.value=reqIdcell;
+
 }
 
 

@@ -1855,7 +1855,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 	   	<td class="comFormTableItem">基準</td>
 	   	<td class="comFormTableItemNf012" style="text-align : center;"><s:label key="bedCntBase" /></td>
-		<td class="comFormTableItem" style="text-align : center;">&nbsp;</td>
+		<td class="comFormTableItem" style="text-align : center;"><s:label key="ultBedCntBase" /></td>
 		<td class="comFormTableItem" style="text-align : center;"><font color="dodgerblue"><s:label key="nextBedCntBase" /></font></td>
 	</tr>
 	<tr>
@@ -1903,7 +1903,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<tr>
 	   	<td class="comFormTableItem">ベッド数計</td>
 	   	<td class="comFormTableItemNf012" style="text-align : center;"><s:label key="bedsTot" /></td>
-		<td class="comFormTableItem" style="text-align : center;"><s:label key="ultBedsTot" /></td>
+		<td class="comFormTableItem" style="text-align : center;">&nbsp;</td>
 		<td class="comFormTableItem" style="text-align : center;"><font color="dodgerblue"><s:label key="nextBedsTot" /></font></td>
 	</tr>
 	<tr>

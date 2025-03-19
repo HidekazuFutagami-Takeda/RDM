@@ -563,9 +563,9 @@ public class NF301Service extends BaseService {
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if("16".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)
-					&& !("0".equals(indto.getBedCnt01()) && "0".equals(indto.getBedCnt07()) && "0".equals(indto.getBedCnt04())
-							&& "0".equals(indto.getBedCnt05()) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
+		} else if("16".equals(indto.getInsRank())
+					&& !("0".equals(StringUtils.nvl(indto.getBedCnt01(),"0")) && "0".equals(StringUtils.nvl(indto.getBedCnt07(), "0")) && "0".equals(StringUtils.nvl(indto.getBedCnt04(),"0"))
+							&& "0".equals(StringUtils.nvl(indto.getBedCnt05(),"0")) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;

@@ -394,8 +394,8 @@
         <result column="KYOKABYOSHOSU_KEKKAKU" property="ultBedCnt04"/>
         <result column="KYOKABYOSHOSU_KANSEN" property="ultBedCnt05"/>
         <result column="KYOKABYOSHOSU_RYOYO" property="ultBedCnt07"/>
-        <result column="KYOKABYOSHOSU_SUM" property="ultBedsTot"/>
-        <result column="NEXT_BEDCNT_BASE" property="bedCntBase"/>
+        <result column="KYOKABYOSHOSU_SUM" property="ultBedCntBase"/>
+        <result column="NEXT_BEDCNT_BASE" property="nextBedCntBase"/>
         <result column="NEXT_BEDCNT01" property="nextBedCnt01"/>
         <result column="NEXT_BEDCNT02" property="nextBedCnt02"/>
         <result column="NEXT_BEDCNT03" property="nextBedCnt03"/>
@@ -1909,6 +1909,7 @@
 		, ULT.KYOKABYOSHOSU_SEISHIN	-- ULT_MDB施設マスタ.許可病床数精神
 		, ULT.KYOKABYOSHOSU_RYOYO	-- ULT_MDB施設マスタ.許可病床数療養病床
 		-- ★病床数来期
+		, NEXT.BEDCNT_BASE AS NEXT_BEDCNT_BASE			-- 施設_来期用項目情報.基準
 		, BEDCNT_NEXT.BEDCNT_KEKKAKU AS NEXT_BEDCNT04	-- 施設_病床数情報(来期用).設定値(結核)
 		, BEDCNT_NEXT.BEDCNT_IPPAN AS NEXT_BEDCNT01		-- 施設_病床数情報(来期用).設定値(一般)
 		, BEDCNT_NEXT.BEDCNT_KANSEN AS NEXT_BEDCNT05	-- 施設_病床数情報(来期用).設定値(感染症)
@@ -3337,6 +3338,7 @@
 		, ULT.KYOKABYOSHOSU_SEISHIN	-- ULT_MDB施設マスタ.許可病床数精神
 		, ULT.KYOKABYOSHOSU_RYOYO	-- ULT_MDB施設マスタ.許可病床数療養病床
 		-- ★病床数来期
+		, NEXT.BEDCNT_BASE AS NEXT_BEDCNT_BASE			-- 施設_来期用項目情報.基準
 		, BEDCNT_NEXT.BEDCNT_KEKKAKU AS NEXT_BEDCNT04	-- 施設_病床数情報(来期用).設定値(結核)
 		, BEDCNT_NEXT.BEDCNT_IPPAN AS NEXT_BEDCNT01		-- 施設_病床数情報(来期用).設定値(一般)
 		, BEDCNT_NEXT.BEDCNT_KANSEN AS NEXT_BEDCNT05	-- 施設_病床数情報(来期用).設定値(感染症)

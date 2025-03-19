@@ -25,6 +25,7 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoJkrData;
 import jp.co.takeda.rdm.dto.NF011DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcoJkrWkEntity;
@@ -463,6 +464,16 @@ public class NF011Service extends BaseService {
 			mapHoInsType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
+
+		// 経営主体
+		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
+		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
+		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
+		mapManageCd.put("", "--なし--");
+		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
+			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
+		}
+		indto.setManageCdCombo(mapManageCd);
 
 		// 1-2-10 ワクチン対象区分
 		// コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する

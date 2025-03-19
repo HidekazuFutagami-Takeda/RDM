@@ -271,8 +271,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     }
 
     // 経営主体セレクトボックス設定
-    // TODO M_RDM_HCO_KEIEITAIから取得か保留中
     function makeManageCdBox(box, insRank){
+    	/*
     	removeBox(box);
 
     	const option0 = makeOption("","--選択してください--");
@@ -574,6 +574,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		box.appendChild(option55);
     	}
 
+    	*/
     	return box;
     }
 

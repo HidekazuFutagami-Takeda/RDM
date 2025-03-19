@@ -121,6 +121,7 @@ function rdmSearch() {
 
 	if (!jkrDestructChack()) return false;
 
+	fm1.reqFlg.value="2";
 	  document.fm1.target = "";
 	  document.fm1.reqFlg.value = "0";
       document.fm1.screenId.value	= "NC011";
@@ -160,6 +161,7 @@ function NC011Sort(sortCondition) {
 	  //ソート区分設定
     document.fm1.sortCondition.value = sortCondition;
 	document.fm1.target = "";
+	fm1.reqFlg.value="2";
     document.fm1.screenId.value	= "NC011";
     document.fm1.functionId.value = 'Sort';
 
@@ -178,6 +180,7 @@ function NC011Page( pageCntCur ){
   if (!jkrDestructChack()) return false;
   //現在ページ番号変更（遷移）
   document.fm1.target = "";
+  fm1.reqFlg.value="2";
   document.fm1.pageCntCur.value = pageCntCur;
   document.fm1.screenId.value	= "NC011";
   document.fm1.functionId.value = 'Page';

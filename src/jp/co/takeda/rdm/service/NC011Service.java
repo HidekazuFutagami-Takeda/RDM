@@ -346,7 +346,7 @@ public class NC011Service extends BaseService {
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
     	indto.setPreScreenId(loginInfo.getPreScreenId());
     	indto.setJokenFlg(loginInfo.getJokenFlg());
-    	if(indto.getJokenFlg().equals("1")) {
+    	if(indto.getJokenFlg().equals("0")) {
     		indto.setBumonRyakuName(loginInfo.getBumonRyakuName());
     		indto.setReqJgiName(loginInfo.getJgiName());
     	}
@@ -423,7 +423,7 @@ public class NC011Service extends BaseService {
           SelectCntSelectReqListEntity selectCntSelectReqListEntity = new SelectCntSelectReqListEntity();
           List<SelectCntSelectReqListEntity> selectParamSelectReqList;
 
-      	if(indto.getJokenFlg().equals("1")) {
+      	if(indto.getJokenFlg().equals("0")) {
     		indto.setBumonRyakuName(loginInfo.getBumonRyakuName());
     		indto.setReqJgiName(loginInfo.getJgiName());
     	}

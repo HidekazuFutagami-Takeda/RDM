@@ -170,7 +170,7 @@
 		    ,REQ_KNR.APR_SHA_ID
 		    ,REQ_KNR.APR_MEMO
 		    ,REQ_KNR.APR_COMMENT
-		<if test='mrAdminFlg == "0"'>
+		<if test='mrAdminFlg == "1"'>
 		   ,REQ_KNR.SHN_FLG
 		   ,REQ_KNR.SHN_YMDHMS
 		   ,REQ_KNR.SHN_SHA_ID
@@ -211,7 +211,7 @@
 			AND CODE_LBV.DEL_FLG = '0'
 			AND CODE_LBV.VALUE2 = CODE_LB.VALUE1
 			AND CODE_LBV.VALUE3 = REQ_KNR.REQ_TYPE
-			<if test='mrAdminFlg == "0"'>
+			<if test='mrAdminFlg == "1"'>
 		    left join  ORAUSR01.M_RDM_CODE_MST CODE_REQ_FLG --コード情報FB申請要否
 			ON CODE_REQ_FLG.VALUE1 = REQ_KNR.FB_REQ_FLG
 		    AND CODE_REQ_FLG.CODE_NAME ='FB_REQ_FLG'
@@ -284,12 +284,12 @@
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="jgiNo != null">
-	    	<if test='mrAdminFlg == "1"'>
+	    	<if test='mrAdminFlg == "0"'>
 				AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
 			</if>
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
-	    <if test='mrAdminFlg == "0"'>
+	    <if test='mrAdminFlg == "1"'>
 	    <if test="brCode != null">
 	    	AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
 	    <if test="distCode != null">
@@ -490,7 +490,7 @@
 			END AS DOC_KANJ
 		    ,REQ_KNR.REQ_JGI_NAME,REQ_KNR.REQ_SHZ,REQ_KNR.REQ_COMMENT,REQ_KNR.APR_YMDHMS,REQ_KNR.APR_SHA_ID,
 		    REQ_KNR.APR_MEMO,REQ_KNR.APR_COMMENT
-		<if test='mrAdminFlg == "0"'>
+		<if test='mrAdminFlg == "1"'>
 		   ,REQ_KNR.SHN_FLG,
 		    REQ_KNR.SHN_YMDHMS,
 		    REQ_KNR.SHN_SHA_ID,
@@ -530,7 +530,7 @@
 			AND CODE_LBV.DEL_FLG = '0'
 			AND CODE_LBV.VALUE2 = CODE_LB.VALUE1
 			AND CODE_LBV.VALUE3 = REQ_KNR.REQ_TYPE
-			<if test='mrAdminFlg == "0"'>
+			<if test='mrAdminFlg == "1"'>
 		    left join  ORAUSR01.M_RDM_CODE_MST CODE_REQ_FLG --コード情報FB申請要否
 			ON CODE_REQ_FLG.VALUE1 = REQ_KNR.FB_REQ_FLG
 		    AND CODE_REQ_FLG.CODE_NAME ='FB_REQ_FLG'
@@ -603,12 +603,12 @@
 	    </if>
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="jgiNo != null">
-	    	<if test='mrAdminFlg == "1"'>
+	    	<if test='mrAdminFlg == "0"'>
 			AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
 			</if>
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
-	    <if test='mrAdminFlg == "0"'>
+	    <if test='mrAdminFlg == "1"'>
 	    <if test="brCode != null">
 	    AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
 	    <if test="distCode != null">

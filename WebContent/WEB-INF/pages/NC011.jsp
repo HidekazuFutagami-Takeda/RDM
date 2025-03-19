@@ -284,7 +284,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			    </td>
 		</tr>
 		<tr>
-		<s:if test='jokenFlg != "0"'>
+		<s:if test='jokenFlg != "1"'>
 								<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
 			   <nobr><s:submit  value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true" cssStyle="background-color:#D4D0C8;"/>
@@ -295,7 +295,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 					<a href ="" onClick="popClear();return false;"disabled="true" >Clear</a>
 				</td>
 		</s:if>
-		<s:if test='jokenFlg == "0"'>
+		<s:if test='jokenFlg == "1"'>
 						<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
 			   <nobr><s:submit value="選択" name="選択" onclick="addrPopBtn()"/>
@@ -318,13 +318,13 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				</td>
 		</tr>
 		<tr>	<%-- 申請者 --%>
-			<s:if test='jokenFlg != "0"'>
+			<s:if test='jokenFlg != "1"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
 				<td>
 					 <s:textfield readonly="true" Style="width:100pt" name="reqJgiName" cssStyle="background-color:#D4D0C8;"/>
 				</td>
 				</s:if>
-			<s:if test='jokenFlg == "0"'>
+			<s:if test='jokenFlg == "1"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
 				<td>
 					<s:textfield size="20" maxlength="40" name="reqJgiName" STYLE="ime-mode:active" />
@@ -428,10 +428,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		</tr>
 		<tr>
 					<!-- 申請チャネル -->
-					<s:if test='jokenFlg != "0"'>
+					<s:if test='jokenFlg != "1"'>
 					<s:hidden id="jkrSosReqChlMap" name="reqChl" list ="jkrSosReqChlMap" />
 					</s:if>
-					<s:if test='jokenFlg == "0"'>
+					<s:if test='jokenFlg == "1"'>
 					<td class="pupControlItem"><nobr>&nbsp;申請チャネル</nobr></td>
 		            <td class="comTableSearchItem">
 		            <span onchange="sosAddrChange(); return false;">
@@ -603,7 +603,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 														style="width: 300px; border: none;">申請者所属</td>
 													<td class="comTableTitle container"
 														style="width: 120px; border: none;">申請コメント</td>
-													<s:if test='jokenFlg == "0"'>
+													<s:if test='jokenFlg == "1"'>
 														<td class="comTableTitle container"
 															style="width: 30px; border: none;">審査</td>
 														<td class="comTableTitle container"
@@ -619,7 +619,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 														style="width: 120px; border: none;">審査・承認メモ</td>
 													<td class="comTableTitle container"
 														style="width: 120px; border: none;">承認・却下コメント</td>
-													<s:if test='jokenFlg == "0"'>
+													<s:if test='jokenFlg == "1"'>
 														<td class="comTableTitle container"
 															style="width: 80px; border: none;">FB申請要否</td>
 														<td class="comTableTitle container"
@@ -650,7 +650,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqJgiName"  key="catSnseiComboDataList[%{#status.index}].reqJgiName" /></td>
 				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqShz"  key="catSnseiComboDataList[%{#status.index}].reqShz" /></td>
 				         <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].reqComment"  key="catSnseiComboDataList[%{#status.index}].reqComment" /></td>
-					 <s:if test='jokenFlg == "0"'>
+					 <s:if test='jokenFlg == "1"'>
 				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnFlg"  key="catSnseiComboDataList[%{#status.index}].shnFlg" /></td>
 				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnYmdhms"  key="catSnseiComboDataList[%{#status.index}].shnYmdhms" /></td>
 				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].shnShaId"  key="catSnseiComboDataList[%{#status.index}].shnShaId" /></td>
@@ -659,7 +659,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID"  key="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID" /></td>
 		  		          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_MEMO"  key="catSnseiComboDataList[%{#status.index}].aPR_MEMO" /></td>
 		       		      <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aprComment"  key="catSnseiComboDataList[%{#status.index}].aprComment" /></td>
-			      	 <s:if test='jokenFlg == "0"'>
+			      	 <s:if test='jokenFlg == "1"'>
 			          	  <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbReqFlg"  key="catSnseiComboDataList[%{#status.index}].fbReqFlg" /></td>
 			              <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbAnsId"  key="catSnseiComboDataList[%{#status.index}].fbAnsId" /></td>
 			              <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbPrcType"  key="catSnseiComboDataList[%{#status.index}].fbPrcType" /></td>

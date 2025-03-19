@@ -623,7 +623,7 @@ public class NF301Service extends BaseService {
 	        String date = sbDate.toString();
 	        if(!DateUtils.isDate(date)) {
 	        	// 有効な年月日を入力してください。（開業年月日）
-	        	errMsg = loginInfo.getMsgData(RdmConstantsData.W022).replace("項目名", "開業年月日") + "\n";
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W022).replace("項目名", "開業年月日") + "\n";
 	        	errFlg = true;
 	        }
         }
@@ -883,7 +883,6 @@ public class NF301Service extends BaseService {
         SelectRdmComTrtgrpDataEntity inTrtEntityCmb = new SelectRdmComTrtgrpDataEntity();
         List<SelectRdmComTrtgrpDataEntity> outTrtList = dao.select(inTrtEntityCmb);
         LinkedHashMap<String, String> mapTrt = new LinkedHashMap<String, String>();
-        mapTrt.put("", "--なし--");
         for (SelectRdmComTrtgrpDataEntity outEntity : outTrtList) {
         	mapTrt.put(outEntity.getTrtCd(), outEntity.getTrtCd()+":"+outEntity.getTrtNm());
         }

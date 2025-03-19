@@ -103,6 +103,39 @@ if (stack.peek() instanceof ND001DTO) {
 
 	  	fm1.docNo.value = tmpDoc;
 	}
+
+ // 担当者選択ボタン
+    function tantoPopBtn(){
+    		// NC202_担当者検索ポップアップ画面を表示
+    		window.open("","tantoPopWindow",tantoSubScreenSize);
+    		document.fm1.screenId.value = "NC202";
+    		document.fm1.functionId.value="Init";
+    		document.fm1.target="tantoPopWindow";
+
+    		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
+    		document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
+    		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+
+    		document.fm1.selectFlgPop.value="1";
+    		document.fm1.callBack.value="callBackTantoPop";
+
+    		comSubmitForAnyWarp(fm1);
+    		comClickFlgInit();
+    }
+
+	// 担当者検索ポップアップから値受け取り
+    function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+    							distCode, trtGrpCd, trtNm, mrCat){
+		document.fm1.sosCd.value = sosCd;
+		document.fm1.bumonRyakuName.value = bumonSeiName;
+		document.fm1.jgiNo.value = jgiNo;
+		document.fm1.jgiNm.value = jgiName;
+		document.fm1.trtCd.value = trtCd;
+		document.fm1.trtNm.value = trtNm;
+		document.fm1.mrCat.value = mrCat;
+		document.fm1.brCode.value = brCode;
+		document.fm1.distCode.value = distCode;
+    }
     </script>
     <style>
     .parent {
@@ -217,6 +250,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <input type="hidden" name="selectFlgPop"           value="" />
   			　　<input type="hidden" name="initSosCdPop"           value="" />
   			　　<input type="hidden" name="trtCdPop"               value="" />
+  			<s:hidden id="callBack" name="callBack" />
 
 
 	<s:hidden id="sosCdPop" name="sosCdPop"/>
@@ -225,7 +259,9 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="sosCd" name="sosCd"/>
 	<s:hidden id="upSosCd" name="upSosCd"/>
 	<s:hidden id="bumonRank" name="bumonRank"/>
-
+	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
+	<s:hidden id="jgiNo" name="jgiNo"/>
+	<s:hidden id="jgiName" name="jgiName"/>
 
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">

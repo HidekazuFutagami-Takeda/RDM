@@ -127,7 +127,7 @@ public class NC202Service extends BaseService {
     	   selectJgiEntity.setInUpSosCd(indto.getSosCdPop());
        }
 
-       if (loginInfo.getPreScreenId().equals("NF011")) {
+       if (indto.getBackScreenId().equals("NF011")) {
     	   selectJgiEntity.setInGmnFlg(0);
 //    	   selectJgiEntity.setInTrtCd("02");
 //    	   selectJgiEntity.setInAddrCodePref("01");

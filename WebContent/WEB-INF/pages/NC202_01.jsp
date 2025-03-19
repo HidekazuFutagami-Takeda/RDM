@@ -56,7 +56,9 @@
     <s:hidden name="winVarName" />
     <s:hidden name="bumonRyakuName" />
     <s:hidden name="bumonRankPop"/>
-    <s:hidden name="SosCdPop"/>
+    <s:hidden name="sosCdPop"/>
+    <s:hidden name="upSosCdPop"/>
+    <s:hidden name="bumonRankPop"/>
 <%-- ポータルボディー 開始 --%>
   <table class="pupBodyTable" align="center" cellspacing="0" cellpadding="0">
   <tr>

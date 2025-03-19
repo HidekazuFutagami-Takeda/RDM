@@ -830,6 +830,7 @@
     </resultMap>
     <resultMap id="nF013MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF013MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_SHZ" property="reqShzNm"/>
         <result column="REQ_STS_NM" property="reqStsNm"/>
         <result column="REQ_JGI_NAME" property="reqJgiName"/>
@@ -1868,7 +1869,7 @@
 		, MST.REG_VIS_TYPE AS PRE_REG_VIS_TYPE			-- 施設_基本情報.定訪先区分
 		, CDM_PREGVISTYPE.VALUE1_KANJ AS PRE_REG_VIS_TYPE_NM	-- 施設_基本情報.定訪先区分
 		, MST.MANAGE_CD AS PRE_MANAGE_CD				-- 施設_基本情報.経営主体コード
-			-- 経営主体名
+		, KEIEI.KEIEITAI_KJ AS PRE_MANAGE_NM			-- 経営主体名
 		, MST.WS_TYPE AS PRE_WS_TYPE					-- 施設_基本情報.卸色区分
 		, CDM_WSTYPE.VALUE1_KANJ AS PRE_WS_TYPE_NM		-- 施設_来期用項目情報.施設区分
 		, MST.BASKET_PURCHASE AS PRE_BASKET_PURCHASE	-- 施設_基本情報.本部一括購入
@@ -1885,7 +1886,7 @@
 		, NEXT.REG_VIS_TYPE		-- 施設_来期用項目情報.定訪先区分
 		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM	-- 施設_来期用項目情報.施設区分
 		, NEXT.MANAGE_CD		-- 施設_来期用項目情報.経営主体コード
-		-- ★ULT施設情報
+		, NXT_KEIEI.KEIEITAI_KJ AS MANAGE_NM			-- 経営主体名
 		, MST.ULT_INS_NO		-- 施設_基本情報.ULT施設コード
 		, ULT.SHISETSU_NM_RYAKU	-- ULT_MDB施設マスタ.施設名略名
 		, ULT.SHISETSU_NM		-- ULT_MDB施設マスタ.施設名
@@ -2207,6 +2208,14 @@
 		M_RDM_HCO_ITEM_NEXT NEXT -- 施設_来期用項目情報
 		ON 1=1
 		AND NEXT.INS_NO = MST.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEI --施設_経営主体マスタ
+		ON KEIEI.DEL_FLG = '0'
+		AND KEIEI.SET_DT_CD = MST.MANAGE_CD
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI NXT_KEIEI --施設_経営主体マスタ
+		ON NXT_KEIEI.DEL_FLG = '0'
+		AND NXT_KEIEI.SET_DT_CD = NEXT.MANAGE_CD
 		LEFT JOIN
 		( SELECT
 		   INS_NO
@@ -3273,7 +3282,7 @@
 		, MST.REG_VIS_TYPE AS PRE_REG_VIS_TYPE			-- 施設_基本情報.定訪先区分
 		, CDM_PREGVISTYPE.VALUE1_KANJ AS PRE_REG_VIS_TYPE_NM	-- 施設_基本情報.定訪先区分
 		, MST.MANAGE_CD AS PRE_MANAGE_CD				-- 施設_基本情報.経営主体コード
-			-- 経営主体名
+		, KEIEI.KEIEITAI_KJ AS PRE_MANAGE_NM			-- 経営主体名
 		, MST.WS_TYPE AS PRE_WS_TYPE					-- 施設_基本情報.卸色区分
 		, CDM_WSTYPE.VALUE1_KANJ AS PRE_WS_TYPE_NM		-- 施設_来期用項目情報.施設区分
 		, MST.BASKET_PURCHASE AS PRE_BASKET_PURCHASE	-- 施設_基本情報.本部一括購入
@@ -3297,6 +3306,7 @@
 		, NEXT.REG_VIS_TYPE		-- 施設_来期用項目情報.定訪先区分
 		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM	-- 施設_来期用項目情報.施設区分
 		, NEXT.MANAGE_CD		-- 施設_来期用項目情報.経営主体コード
+		, NXT_KEIEI.KEIEITAI_KJ AS MANAGE_NM			-- 経営主体名
 		, HCO.WS_TYPE			-- 施設_申請管理.卸色区分
 		, HCO.BASKET_PURCHASE	-- 施設_申請管理.本部一括購入
 		, HCO.UNIV_SUBDIV		-- 施設_申請管理.大学細分類
@@ -3816,6 +3826,14 @@
 		M_RDM_HCO_ITEM_NEXT NEXT -- 施設_来期用項目情報
 		ON 1=1
 		AND NEXT.INS_NO = HCO.INS_NO
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI KEIEI --施設_経営主体マスタ
+		ON KEIEI.DEL_FLG = '0'
+		AND KEIEI.SET_DT_CD = MST.MANAGE_CD
+		LEFT JOIN
+		M_RDM_HCO_KEIEITAI NXT_KEIEI --施設_経営主体マスタ
+		ON NXT_KEIEI.DEL_FLG = '0'
+		AND NXT_KEIEI.SET_DT_CD = NEXT.MANAGE_CD
 		LEFT JOIN
 		( SELECT
 		   INS_NO
@@ -4999,6 +5017,7 @@
 
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID
+		, KNR.REQ_CHL  -- 申請管理.申請チャネル
 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
 		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
 		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名

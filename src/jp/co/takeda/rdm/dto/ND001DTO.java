@@ -88,6 +88,24 @@ public class ND001DTO extends BaseDTO implements Serializable {
     private Integer pageCnt;
 
 	/**
+	 * 部門ランク
+	 * @generated
+	 */
+	private String bumonRank;
+
+	/**
+	 * 上位組織
+	 * @generated
+	 */
+	private String upSosCd;
+
+	/**
+	 * 組織
+	 * @generated
+	 */
+	private String sosCd;
+
+	/**
      * 氏名漢字(全角)※
      */
     private String searchDocName;
@@ -182,6 +200,24 @@ public class ND001DTO extends BaseDTO implements Serializable {
      */
     private String jgiName;
 
+	/**
+	 * 担当者
+	 * @generated
+	 */
+	private String jgiNo;
+
+
+	/**
+	 * 医薬支店C
+	 * @generated
+	 */
+	private String brCode;
+
+	/**
+	 * 医薬営業所C
+	 * @generated
+	 */
+	private String distCode;
 
 //    /**
 //     * @generated
@@ -685,6 +721,96 @@ public class ND001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setTitle(String title) {
 		Title = title;
+	}
+
+	/**
+	 * ND001DTO.javabumonRankを設定
+	 * @return bumonRank
+	 */
+	public String getBumonRank() {
+		return bumonRank;
+	}
+
+	/**
+	 * @param bumonRank セットする bumonRank
+	 */
+	public void setBumonRank(String bumonRank) {
+		this.bumonRank = bumonRank;
+	}
+
+	/**
+	 * ND001DTO.javaupSosCdを設定
+	 * @return upSosCd
+	 */
+	public String getUpSosCd() {
+		return upSosCd;
+	}
+
+	/**
+	 * @param upSosCd セットする upSosCd
+	 */
+	public void setUpSosCd(String upSosCd) {
+		this.upSosCd = upSosCd;
+	}
+
+	/**
+	 * ND001DTO.javasosCdを設定
+	 * @return sosCd
+	 */
+	public String getSosCd() {
+		return sosCd;
+	}
+
+	/**
+	 * @param sosCd セットする sosCd
+	 */
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
+	}
+
+	/**
+	 * ND001DTO.javajgiNoを設定
+	 * @return jgiNo
+	 */
+	public String getJgiNo() {
+		return jgiNo;
+	}
+
+	/**
+	 * @param jgiNo セットする jgiNo
+	 */
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
+
+	/**
+	 * ND001DTO.javabrCodeを設定
+	 * @return brCode
+	 */
+	public String getBrCode() {
+		return brCode;
+	}
+
+	/**
+	 * @param brCode セットする brCode
+	 */
+	public void setBrCode(String brCode) {
+		this.brCode = brCode;
+	}
+
+	/**
+	 * ND001DTO.javadistCodeを設定
+	 * @return distCode
+	 */
+	public String getDistCode() {
+		return distCode;
+	}
+
+	/**
+	 * @param distCode セットする distCode
+	 */
+	public void setDistCode(String distCode) {
+		this.distCode = distCode;
 	}
 
 	/**

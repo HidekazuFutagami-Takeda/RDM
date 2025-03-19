@@ -213,7 +213,7 @@
 </s:if>
 
 <%-- 当期親施設一覧 --%>
-<div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
+<div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
 	<table <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> id="formTable03">
 		<tr>
 			<td>&nbsp;</td>
@@ -286,7 +286,7 @@
 </s:if>
 
 <%-- 来期親施設一覧 --%>
-<div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
+<div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
 	<table <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> id="formTable05">
 		<tr>
 			<td>&nbsp;</td>

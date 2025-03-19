@@ -126,22 +126,6 @@ public class ND305Action extends BaseAction<ND305DTO> {
     	//改ページ設定
         dto.setPageCntCur(1);
 
-//        // 登録完了画面から戻る場合、遷移前の検索条件をセッションから取得する。
-//        //　遷移元画面IDを取得
-//        String finishFlg = (String)request.getParameter(RdmConstantsData.JKR090C020_FINISH_FLG);
-//        // 遷移元画面が登録完了画面の場合
-//        if (RdmConstantsData.JKR090C020_FINISH_VALUE.equals(finishFlg)) {
-//            ND305DTO searchKey = (ND305DTO)sessionMap.get(AppConstant.SESKEY_ND305_SEARCHKEY);
-//            BeanUtils.copyProperties(dto, searchKey);
-//
-//        } else if (!dto.getBackScreenId().startsWith("JKR030C0")) {
-//            //前画面から組織関連パラメータ設定
-//            setSosInfo(sessionMap, dto);
-//        }
-
-//        dto.setStatus("FirstTab");
-
-//        dto.setActionMtKbn("1");
       //画面タイト制御処理
         String title = "ND305_医師復活 - 申請内容確認";
         //ユーザ権限

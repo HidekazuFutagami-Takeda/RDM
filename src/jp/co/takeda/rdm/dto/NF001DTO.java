@@ -314,6 +314,12 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	private String srchFlg;
 
 	/**
+	 * ページフラグ
+	 * @generated
+	 */
+	private String pageFlag;
+
+	/**
      * デフォルトのコンストラクタ。
      * @generated
      */
@@ -1039,6 +1045,21 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setSrchFlg(String srchFlg) {
 		this.srchFlg = srchFlg;
+	}
+
+	/**
+	 * NF001DTO.javapageFlagを設定
+	 * @return pageFlag
+	 */
+	public String getPageFlag() {
+		return pageFlag;
+	}
+
+	/**
+	 * @param pageFlag セットする pageFlag
+	 */
+	public void setPageFlag(String pageFlag) {
+		this.pageFlag = pageFlag;
 	}
 
 	/**

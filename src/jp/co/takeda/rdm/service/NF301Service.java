@@ -161,7 +161,7 @@ public class NF301Service extends BaseService {
         }
         if(indto.getInsType() != null && !"04".equals(indto.getInsType())
         		&& !"05".equals(indto.getInsType()) && !"07".equals(indto.getInsType())) {
-	        if(indto.getPharmType() == null || indto.getInsPhone1().isEmpty()) {
+	        if(indto.getPharmType() == null || indto.getPharmType().isEmpty()) {
 	        	// 必須項目にデータを入力してください。（施設区分）
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
 				errFlg = true;
@@ -181,11 +181,15 @@ public class NF301Service extends BaseService {
 	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
 	        	errFlg = true;
 	        }
+	        if(indto.getManageCd() == null || indto.getManageCd().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（経営主体）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
+	        	errFlg = true;
+	        }
         }
 
-        if(indto.getInsRank() != null && ("01".equals(indto.getInsRank())
-        		 || "02".equals(indto.getInsRank()) || "04".equals(indto.getInsRank())
-        		 || "05".equals(indto.getInsRank()) || "07".equals(indto.getInsRank()))) {
+        if(indto.getInsType() != null && ("01".equals(indto.getInsType())
+        		 || "02".equals(indto.getInsType()))) {
         	if(indto.getBedCntBase() == null || indto.getBedCntBase().isEmpty()) {
             	// 必須項目にデータを入力してください。（基準）
     			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "基準") + "\n";
@@ -314,7 +318,7 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "介護療養") + "\n";
 			errFlg = true;
         }
-        if(indto.getReqComment() != null && indto.getReqComment().length() > 300) {
+        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;
@@ -510,7 +514,7 @@ public class NF301Service extends BaseService {
         // 整合性チェック
 
         // 病床数チェック
-		if(indto.getInsRank() == null) {
+		if((!"01".equals(indto.getInsType()) && !"02".equals(indto.getInsType())) || indto.getInsRank() == null) {
 
 		} else if(("01".equals(indto.getInsRank()) || "02".equals(indto.getInsRank()) || "03".equals(indto.getInsRank())
 				 || "04".equals(indto.getInsRank()) || "05".equals(indto.getInsRank()) || "06".equals(indto.getInsRank()))
@@ -883,7 +887,7 @@ public class NF301Service extends BaseService {
         boolean errFlg = false;
         String errMsg = "";
 
-        if(indto.getAprComment() != null && indto.getAprComment().length() > 300) {
+        if(indto.getAprComment() != null && StringUtils.getByteLength(indto.getAprComment()) > 300) {
         	// 最大文字数を超えています。（承認・却下コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "承認・却下コメント") + "\n";
 			errFlg = true;

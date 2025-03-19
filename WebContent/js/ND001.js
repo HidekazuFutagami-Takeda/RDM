@@ -4068,3 +4068,22 @@ function setSubTantoHazusu(listName, rowno, trtno){
     delTan.disabled = true;
   }
 }
+
+// 担当者選択ボタン
+function tantoPopBtn(){
+		// NC202_担当者検索ポップアップ画面を表示
+		window.open("","tantoPopWindow",tantoSubScreenSize);
+		document.fm1.screenId.value = "NC202";
+		document.fm1.functionId.value="Init";
+		document.fm1.target="tantoPopWindow";
+
+		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
+		document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
+		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+
+		document.fm1.selectFlgPop.value="1";
+		document.fm1.callBack.value="callBackTantoPop";
+
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+}

@@ -123,6 +123,37 @@ public class NC204DTO extends BaseDTO implements Serializable {
   private String Count;
 
 
+  /**
+   * ヘッダ表示フラグ
+   * @generated
+   */
+  private int pageFlg;
+
+  /**
+   * メッセージ中身
+   */
+  private String msgStr;
+
+  /**
+   * 最大表示件数（エラーチェック用）
+   */
+  private Integer maxPageCnt;
+
+  /**
+   * 最大表示件数（ページング用）
+   */
+  private Integer pageRowNum;
+
+  /**
+   * ソート順序区分
+   * @generated
+   */
+  private Integer orderKbn;
+
+  /**
+   * 検索結果件数（エラーチェック用）
+   */
+  private Integer pageCnt;
 
 	/**
      * @generated
@@ -448,6 +479,96 @@ public class NC204DTO extends BaseDTO implements Serializable {
 	public void setJkrSosInsAbbrNameMap(List<CatDeptsComboDataList> catDeptsComboDataList2) {
 		// TODO 自動生成されたメソッド・スタブ
 
+	}
+
+	/**
+	 * NC204DTO.javapageFlgを設定
+	 * @return pageFlg
+	 */
+	public int getPageFlg() {
+		return pageFlg;
+	}
+
+	/**
+	 * @param pageFlg セットする pageFlg
+	 */
+	public void setPageFlg(int pageFlg) {
+		this.pageFlg = pageFlg;
+	}
+
+	/**
+	 * NC204DTO.javamsgStrを設定
+	 * @return msgStr
+	 */
+	public String getMsgStr() {
+		return msgStr;
+	}
+
+	/**
+	 * @param msgStr セットする msgStr
+	 */
+	public void setMsgStr(String msgStr) {
+		this.msgStr = msgStr;
+	}
+
+	/**
+	 * NC204DTO.javamaxPageCntを設定
+	 * @return maxPageCnt
+	 */
+	public Integer getMaxPageCnt() {
+		return maxPageCnt;
+	}
+
+	/**
+	 * @param maxPageCnt セットする maxPageCnt
+	 */
+	public void setMaxPageCnt(Integer maxPageCnt) {
+		this.maxPageCnt = maxPageCnt;
+	}
+
+	/**
+	 * NC204DTO.javapageRowNumを設定
+	 * @return pageRowNum
+	 */
+	public Integer getPageRowNum() {
+		return pageRowNum;
+	}
+
+	/**
+	 * @param pageRowNum セットする pageRowNum
+	 */
+	public void setPageRowNum(Integer pageRowNum) {
+		this.pageRowNum = pageRowNum;
+	}
+
+	/**
+	 * NC204DTO.javaorderKbnを設定
+	 * @return orderKbn
+	 */
+	public Integer getOrderKbn() {
+		return orderKbn;
+	}
+
+	/**
+	 * @param orderKbn セットする orderKbn
+	 */
+	public void setOrderKbn(Integer orderKbn) {
+		this.orderKbn = orderKbn;
+	}
+
+	/**
+	 * NC204DTO.javapageCntを設定
+	 * @return pageCnt
+	 */
+	public Integer getPageCnt() {
+		return pageCnt;
+	}
+
+	/**
+	 * @param pageCnt セットする pageCnt
+	 */
+	public void setPageCnt(Integer pageCnt) {
+		this.pageCnt = pageCnt;
 	}
 
 

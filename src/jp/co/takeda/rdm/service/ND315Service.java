@@ -379,13 +379,23 @@ public class ND315Service extends BaseService {
 				UpdateTRdmHcpReqEntity updateEntity2 = new UpdateTRdmHcpReqEntity();
 				updateEntity2.setSqlId("updateData");
 				updateEntity2.setReqId(indto.getReqId());
-				updateEntity2.setDelReason(indto.getDelReason());//削除理由
-				updateEntity2.setDupDocNo(StringUtils.setEmptyToNull(indto.getDupDocNo()));//重複医師コード
-				if(!indto.getDocKanjiMei().endsWith("●")) {
-					updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei() + "●");//氏名（漢字）
-					updateEntity2.setDocKanjiMei(indto.getDocKanjiMei() + "●");//氏名（漢字）名
+				if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg())) {
+					updateEntity2.setDelReason(indto.getDelReason());//削除理由
+					updateEntity2.setDupDocNo(StringUtils.setEmptyToNull(indto.getDupDocNo()));//重複医師コード
+					if(StringUtils.isEmpty(updateEntity2.getDupDocNo())) {
+						updateEntity2.setDupDocNoNullFlag(true);
+					}
+					if(!indto.getDocKanjiMei().endsWith("●")) {
+						updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei() + "●");//氏名（漢字）
+						updateEntity2.setDocKanjiMei(indto.getDocKanjiMei() + "●");//氏名（漢字）名
+					}
 				}
-
+				if ("2".equals(indto.getButtonFlg())) {
+					updateEntity2.setDocKanj(null);
+					updateEntity2.setDocKanjiMei(null);
+					updateEntity2.setDocKanjNullFlag(true);
+					updateEntity2.setDocKanjiMeiNullFlag(true);
+				}
 				updateEntity2.setUpdShaYmd(currentDt);//更新日
 				updateEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 				updateEntity2.checkSetNull();

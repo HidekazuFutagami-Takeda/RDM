@@ -90,7 +90,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     </script>
 </head>
 
-<body class="comPage" onUnload="JavaScript:jmsUnLoad();" onLoad="JavaScript:onLoadFunc();">
+<body class="comPage" onUnload="JavaScript:jmsUnLoad();">
   <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
     <input type="text" name="screenId"           value="" />
     <input type="text" name="functionId"         value="" />
@@ -399,6 +399,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       	<s:hidden name="insAddr"/>
       	<s:hidden name="delReason"/>
       	<s:hidden name="rstReason"/>
+      	<s:hidden name="rstReasonNm"/>
         <%--申請内容--%>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
@@ -430,7 +431,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>削除理由</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="delReason"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>復活理由</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:label key="rstReason"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="rstReasonNm"/></nobr></td>
       </tr>
   </table>
 
@@ -443,8 +444,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
       <tr>
-      	<s:if test='%{reqStsCd == "01"}'>
-	    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" /></nobr></td>
+      	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+	    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
       	</s:if>
       	<s:else>
       		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
@@ -510,7 +511,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:else>
 					&nbsp;
                	</s:else>
-               	<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+               	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" />
 					</s:if>

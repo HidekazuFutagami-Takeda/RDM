@@ -54,18 +54,6 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	comClickFlgInit();
 
-    function onLoadFunc(){
-		tkdTrtKbn = document.fm1.tkdTrtKbn.value;
-
-		if(tkdTrtKbn == "1") {
-			// 領域・品目グループ
-			if(document.fm1.trtPrdGrp.selectedIndex != 0){
-				document.fm1.trtPrdGrpView.value = document.fm1.trtPrdGrp.options[document.fm1.trtPrdGrp.selectedIndex].textContent;
-			}
-			document.fm1.trtPrdGrp.hidden = "true";
-		}
-    }
-
     // 戻るボタン
     function backBtn(){
     	if(window.confirm("施設紐付け新規画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
@@ -246,6 +234,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	<s:hidden name="reqChl"/>
 	<s:hidden name="btnEnableFlg"/>
+
+	<s:hidden name="mainInsAddr"/>
+	<s:hidden name="trtPrdGrp"/>
 
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>
@@ -476,7 +467,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請コメント</nobr></td>
       </tr>
       <tr>
-    	<td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+      	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+	    	<td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
+      	</s:if>
+      	<s:else>
+	    	<td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+      	</s:else>
       </tr>
       <s:if test='%{loginJokenSetCd == "JKN0850"}'>
 	      <tr>
@@ -532,7 +528,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 				<s:else>
 					&nbsp;
                	</s:else>
-               	<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+               	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 						<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqApprBtn('1');JavaScript:return false;" />
 					</s:if>

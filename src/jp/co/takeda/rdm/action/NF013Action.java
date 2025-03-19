@@ -19,6 +19,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF013DTO;
+import jp.co.takeda.rdm.exception.InvalidRequestException;
 import jp.co.takeda.rdm.service.NF013Service;
 import jp.co.takeda.rdm.util.AppConstant;
 
@@ -120,6 +121,7 @@ public class NF013Action extends BaseAction<NF013DTO> {
         String insNo = dto.getInsNo();
 
         String preScreenId = dto.getBackScreenId();
+        String backScreenId = dto.getBackScreenId();
         if("NF305".equals(preScreenId)) {
         	preScreenId = dto.getPreScreenId();
         } else {
@@ -137,20 +139,25 @@ public class NF013Action extends BaseAction<NF013DTO> {
         // 遷移パターン　0:施設固定コードから作成、1：申請データあり
         // 施設固定コード　ありなしで分岐
         // NF001_施設検索
-        if ("NF001".equals(preScreenId)) {
+        if ("NF001".equals(backScreenId)) {
         	if (insNo != null && insNo.length() > 0) {
         		// 施設固定コードで初期データ作成
         		dto.setDisplayKbn("0");
         	} else { //遷移エラー
+        		throw new InvalidRequestException();
         	}
         }
         // 申請ID
         // NC011_申請一覧
-        if ("NC011".equals(preScreenId)) {
+        if ("NC011".equals(backScreenId) || "NF305".equals(backScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
         		dto.setDisplayKbn("1");
+        	} else if("NF305".equals(backScreenId)) {
+				// 一時保存なし申請後に確認画面から遷移
+				dto.setDisplayKbn("9");
         	} else { //遷移エラー
+        		throw new InvalidRequestException();
         	}
         }
 

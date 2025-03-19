@@ -394,6 +394,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 経営主体セレクトボックス設定
     function makeManageCdBox(box, insRank){
+    	/*
     	removeBox(box);
 
     	const option0 = makeOption("","--なし--");
@@ -695,6 +696,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		box.appendChild(option55);
     	}
 
+    	*/
     	return box;
     }
 
@@ -1444,7 +1446,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <tr>
 	      <td class="comFormTableItem">
 	      <nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
+	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
 		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/>
 		  	</s:if>
 		  	<s:else>
@@ -1497,7 +1499,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01" && reqStsCd != "03" && reqStsCd != "13")}'>
+				<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01")}'>
 	                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/>
 	            </s:if>
 	            <s:else>

@@ -630,12 +630,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   </s:if>
           <%-- ページャー表示 終了 --%>
 
-    <div style="max-height:270px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-<table>
    <s:if test='pageFlag == "1" '>
           <!-- なにも表示しない -->
       </s:if>
    <s:else>
+    <div style="max-height:270px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+<table>
 	<tr>
 	    <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
 

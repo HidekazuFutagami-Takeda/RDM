@@ -120,7 +120,7 @@ public class NF303Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
 			errFlg = true;
         }
-        if(indto.getReqComment() != null && indto.getReqComment().length() > 300) {
+        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;
@@ -827,6 +827,12 @@ public class NF303Service extends BaseService {
             	tRdmReqKnrUpdData.setReqJgiName(indto.getReqJgiName());
             	tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
             	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+
+            	if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
+            		tRdmReqKnrUpdData.setReqKngKbn("2");
+            	} else {
+            		tRdmReqKnrUpdData.setReqKngKbn("1");
+            	}
         	} else if("2".equals(indto.getFuncId())) {
         		// 承認
             	if("1".equals(indto.getReqChl()) || "2".equals(indto.getReqChl())) {
@@ -916,6 +922,7 @@ public class NF303Service extends BaseService {
         	}
         	tRdmHcoReqInsData.setInsUrlYmd(getUpdValue(preUrlYmd, urlYmd));
 
+        	tRdmHcoReqInsData.setWsType(getUpdValue(indto.getPreWsType(), indto.getWsType()));
         	tRdmHcoReqInsData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
         	tRdmHcoReqInsData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
         	tRdmHcoReqInsData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));
@@ -1129,6 +1136,7 @@ public class NF303Service extends BaseService {
         	}
         	tRdmHcoReqUpdData.setInsUrlYmd(getUpdValue(preUrlYmd, urlYmd));
 
+        	tRdmHcoReqUpdData.setWsType(getUpdValue(indto.getPreWsType(), indto.getWsType()));
         	tRdmHcoReqUpdData.setTradeType(getUpdValue(indto.getPreTradeType(), indto.getTradeType()));
         	tRdmHcoReqUpdData.setBasketPurchase(getUpdValue(indto.getPreBasketPurchase(), indto.getBasketPurchase()));
         	tRdmHcoReqUpdData.setUnivSubdiv(getUpdValue(indto.getPreUnivSubdiv(), indto.getUnivSubdiv()));

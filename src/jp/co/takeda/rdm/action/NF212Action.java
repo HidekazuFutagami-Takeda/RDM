@@ -19,6 +19,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF212DTO;
+import jp.co.takeda.rdm.exception.InvalidRequestException;
 import jp.co.takeda.rdm.service.NF212Service;
 import jp.co.takeda.rdm.util.AppConstant;
 
@@ -108,18 +109,15 @@ public class NF212Action extends BaseAction<NF212DTO> {
         // START UOC
         LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-    	//改ページ設定
-        dto.setPageCntCur(1);
-
         // 画面タイトル制御処理
         String title = "NF212_施設紐付け変更";
         dto.setTitle(title);
-
         String reqId = dto.getReqId();
         String insNo = dto.getInsNo();
         String tkdTrtKbn = dto.getTkdTrtKbn();
 
         String preScreenId = dto.getBackScreenId();
+        String backScreenId = dto.getBackScreenId();
         if("NF313".equals(preScreenId)) {
         	preScreenId = dto.getPreScreenId();
         } else {
@@ -137,7 +135,7 @@ public class NF212Action extends BaseAction<NF212DTO> {
         // 遷移パターン　0:施設固定コード(区分0)、1:施設固定コード(区分1)、2：申請データあり(区分0)、3：申請データあり(区分1)
         // 武田紐領域別区分で初期データ作成
         // NF201_親子紐付け一覧
-        if ("NF201".equals(preScreenId)) {
+        if ("NF201".equals(backScreenId)) {
         	if (insNo != null && insNo.length() > 0) {
         		// 武田紐領域別区分で初期データ作成
         		if("0".equals(tkdTrtKbn)) {
@@ -146,11 +144,12 @@ public class NF212Action extends BaseAction<NF212DTO> {
         			dto.setDisplayKbn("1");
         		}
         	} else { //遷移エラー
+        		throw new InvalidRequestException();
         	}
         }
         // 申請ID
         // NC011_申請一覧
-        if ("NC011".equals(preScreenId)) {
+        if ("NC011".equals(backScreenId) || "NF313".equals(backScreenId)) {
         	if (reqId != null && reqId.length() > 0) {
         		// 申請データ（一時保存含む）を参照
         		if("0".equals(tkdTrtKbn)) {
@@ -158,7 +157,11 @@ public class NF212Action extends BaseAction<NF212DTO> {
         		} else {
         			dto.setDisplayKbn("3");
         		}
+        	} else if("NF313".equals(backScreenId)) {
+				// 一時保存なし申請後に確認画面から遷移
+				dto.setDisplayKbn("9");
         	} else { //遷移エラー
+        		throw new InvalidRequestException();
         	}
         }
 
@@ -209,8 +212,6 @@ public class NF212Action extends BaseAction<NF212DTO> {
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
         // END UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
 		// 本画面を再表示
 		outdto.setForward("NF212");
 
@@ -285,8 +286,6 @@ public class NF212Action extends BaseAction<NF212DTO> {
      */
     protected String shnCompNext(BaseDTO outdto) throws Exception {
     	// START UOC
-    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
     	// END UOC
     	outdto.setForward("NF212");
         setNextDTO(outdto);

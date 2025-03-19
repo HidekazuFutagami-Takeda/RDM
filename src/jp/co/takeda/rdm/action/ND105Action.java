@@ -128,22 +128,6 @@ public class ND105Action extends BaseAction<ND105DTO> {
     	//改ページ設定
         dto.setPageCntCur(1);
 
-//        // 登録完了画面から戻る場合、遷移前の検索条件をセッションから取得する。
-//        //　遷移元画面IDを取得
-//        String finishFlg = (String)request.getParameter(RdmConstantsData.JKR090C020_FINISH_FLG);
-//        // 遷移元画面が登録完了画面の場合
-//        if (RdmConstantsData.JKR090C020_FINISH_VALUE.equals(finishFlg)) {
-//            ND105DTO searchKey = (ND105DTO)sessionMap.get(AppConstant.SESKEY_ND105_SEARCHKEY);
-//            BeanUtils.copyProperties(dto, searchKey);
-//
-//        } else if (!dto.getBackScreenId().startsWith("JKR030C0")) {
-//            //前画面から組織関連パラメータ設定
-//            setSosInfo(sessionMap, dto);
-//        }
-
-//        dto.setStatus("FirstTab");
-
-//        dto.setActionMtKbn("1");
       //画面タイト制御処理
         String title = "ND105_医師削除";
         //ユーザ権限
@@ -252,7 +236,6 @@ public class ND105Action extends BaseAction<ND105DTO> {
         if (!RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
                 && !"exception".equals(outdto.getForward())){
             setJumpInfo(dto.getMsgId());
-//            outdto.setForward("JKR090C020Init");
         }
         // END UOC
         // buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する

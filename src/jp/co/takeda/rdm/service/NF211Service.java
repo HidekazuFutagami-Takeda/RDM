@@ -195,6 +195,7 @@ public class NF211Service extends BaseService {
     		SelectNF211MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
     		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
     		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
     		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -289,6 +290,7 @@ public class NF211Service extends BaseService {
     		SelectNF211MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 
     		// 申請情報
+    		indto.setReqChl(StringUtils.nvl(mainDataEntity.getReqChl(), ""));
     		indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
     		indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
     		indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
@@ -388,6 +390,10 @@ public class NF211Service extends BaseService {
     		}
 
     		indto.setLnkTrtDataList(lnkTrtDataList);
+        } else {
+	        if(indto.getTekiyoYmd() != null) {
+	        	indto.setTekiyoYmd(indto.getTekiyoYmd().replace("/", "-"));
+	        }
         }
 
         // DropDownList作成
@@ -511,12 +517,12 @@ public class NF211Service extends BaseService {
         String errMsg = "";
 
         // エラーチェック
-        if(indto.getReqComment() != null && indto.getReqComment().length() > 300) {
+        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;
         }
-        if(indto.getAprMemo() != null && indto.getAprMemo().length() > 300) {
+        if(indto.getAprMemo() != null && StringUtils.getByteLength(indto.getAprMemo()) > 300) {
         	// 最大文字数を超えています。（審査・承認メモ）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "審査・承認メモ") + "\n";
 			errFlg = true;

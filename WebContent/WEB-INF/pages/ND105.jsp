@@ -37,7 +37,7 @@
   <link href="css/reqDisplay.css" rel="Stylesheet" type="text/css" />
   <script type="text/javascript" src="js/common.js"></script>
   <script type="text/javascript" src="js/jgiKanren.js"></script>
-
+  <script type="text/javascript" src="js/catDoctor.js"></script>
   <script type="text/javascript" src="js/ND105.js"></script>
     <script>
     destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
@@ -116,86 +116,8 @@
     <input type="text" name="functionId"         value="" />
     <input type="text" name="windowName"         value="" />
     <input type="text" name="openerName"         value="" />
-<!--     <input type="text" name="infoId1"            value="" /> -->
-<!--     <input type="text" name="systemId1"          value="" /> -->
-<!--     <input type="text" name="backScreenId1"      value="JkrMrChange" /> -->
-<!--     <input type="text" name="backFunctionId1"    value="" /> -->
-<!--     <input type="text" name="backScreenName1"    value="" /> -->
-<!--     <input type="text" name="backParamName1"     value="" /> -->
-<!--     <input type="text" name="backParamValue1"    value="" /> -->
-<!--     <input type="text" name="backParamName2"     value="" /> -->
-<!--     <input type="text" name="backParamValue2"    value="" /> -->
-<!--     <input type="text" name="fromScreenId1"      value="" /> -->
-<!--     <input type="text" name="fromFunctionId1"    value="" /> -->
-<!--     <input type="text" name="kensakuChar1"       value="" /> -->
-<!--     <input type="text" name="kensakuAndOr1"      value="" /> -->
-<!--     <input type="text" name="pageNextBackFlag1"  value="" /> -->
-<!--     <input type="text" name="sortFieldNo1"       value="" /> -->
-<!--     <input type="text" name="sortFLG1"           value="" /> -->
-<!--     <input type="text" name="startRecordNo1"     value="" /> -->
-<!--     <input type="text" name="pageLines1"         value="" /> -->
-<!--     <input type="hidden" name="endRecordNo1"	value="" /> -->
-<!--     <input type="text" name="no1"                value="1" /> -->
 
     <%-- フレーム対応で発生したPOST用 引数1:frame(フレーム対応),以外(何もしない) 引数２:オブジェクトの型 --%>
-
-<%--     組織・従業員選択ポップアップ用 --%>
-<!--     <input type="hidden" name="selectFlg"			value="" /> -->
-<!--     <input type="hidden" name="topSosCd"			value="" /> -->
-<!--     <input type="hidden" name="initSosCd"			value="" /> -->
-<!--     <input type="hidden" name="openBumonRank"		value="" /> -->
-<!--     <input type="hidden" name="objData"				value="" /> -->
-<!--     <input type="hidden" name="dspSelPtn"			value="" /> -->
-<!--     <input type="hidden" name="dspSelSos"			value="" /> -->
-<!--     <input type="hidden" name="sosLevelType"		value="" /> -->
-<!--     <input type="hidden" name="dispJgiKb"			value="" /> -->
-<!--     <input type="hidden" name="shokushuCd"			value="" /> -->
-<!--     <input type="hidden" name="shokuseiCd"			value="" /> -->
-<!--     <input type="hidden" name="noDispJgiKb"			value="" /> -->
-<!--     <input type="hidden" name="noShokushuCd"		value="" /> -->
-<!--     <input type="hidden" name="noShokuseiCd"		value="" /> -->
-<!--     <input type="hidden" name="insNo1"				value="" /> -->
-<%--     <input type="hidden" name="dspClrBtn1"			value="" />クリアボタン表示フラグ  --%>
-<!--     <input type="hidden" name="openJgiFlg"			value="" /> -->
-<!--     <input type="text" name="sosSelFlg1"	value="" /> -->
-
-<!--     <input type="checkbox" name="delCheck" /> -->
-<!--     <input type="checkbox" name="hurikaeMr" /> -->
-<!--     <input type="checkbox" name="shokiHurikaeMr" /> -->
-
-<%--     組織・従業員選択ポップアップの表示判断の条件 取得パラメータ：（MR種類・業務種類） --%>
-<!--     <input type="hidden" name="mrCat"				value=""	/> -->
-<!--     <input type="hidden" name="registCat"			value=""	/> -->
-
-<%--     登録：排他処理用データ --%>
-<!--     <input type="hidden" name="ExUpDate"			value=""	/> -->
-
-<!--     <input type="text" name="userAuth1"		value="" /> -->
-<!--     <input type="text" name="jpjJgiNo1"		value="" /> -->
-<!--     <input type="text" name="sosCd1"		value="" /> -->
-<!--     <input type="text" name="sosName1"		value="" /> -->
-<!--     <input type="text" name="mrCat1"		value="" /> -->
-<!--     <input type="text" name="registCat1"	value="" /> -->
-<!--     <input type="text" name="jgiKb1"		value="" /> -->
-<!--     <input type="text" name="selectedSosName1"	value="" /> -->
-<!--     <input type="text" name="selectedSosCd1"	value="" /> -->
-<!--     <input type="text" name="jgiJoken1"		value="" /> -->
-<!--     <input type="text" name="sosName1"		value="" /> -->
-<!--     <input type="text" name="wkCat1"		value="" /> -->
-<!--     <input type="hidden" name="searchToSosCd1"		value="" /> -->
-<!--     <input type="hidden" name="searchToSosName1"	value="" /> -->
-<!--     <input type="hidden" name="shokikaSosName1"	value="" /> -->
-<!--     <input type="hidden" name="shokikaSosCd1"	value="" /> -->
-
-<%--     <input type="hidden" name="selectedPlanSosName1"		value="<bean:print name="menudata" property="selectedSosName"/>" /> --%>
-
-<%--     登録前の最終総行数 --%>
-<!--     <input type="hidden" name="allUltCount1"	value="" /> -->
-<%--     登録前の追加の総行数 --%>
-<!--     <input type="hidden" name="addUltCount1"	value="" /> -->
-
-<%--     追加用　MR種類 --%>
-<!--     <input type="hidden" name="takeMrCat"	value="" /> -->
 
   </form>
 
@@ -404,7 +326,7 @@
 	      <td class="comFormTableItem"><nobr>重複医師コード<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpChdView();return false;" />
+		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCdrView();return false;" />
 		                <s:textfield name="dupDocNo" id="dupDocNo" size="20" maxlength="40" style="background-color:#D4D0C8"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd105Clear('dupDoc');return false;">Clear</a>
                 </nobr>

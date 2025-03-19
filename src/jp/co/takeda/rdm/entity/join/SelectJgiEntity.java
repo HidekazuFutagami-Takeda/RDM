@@ -68,6 +68,24 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
      */
     private String inTkCityCd;
 
+    /**
+     * 上位組織コード親画面 (パラメータ)
+     * @generated
+     */
+    private String inUpSosCdPop;
+
+    /**
+     * 組織コード親画面 (パラメータ)
+     * @generated
+     */
+    private String inSosCdPop;
+
+    /**
+     * 部門ランク親画面 (パラメータ)
+     * @generated
+     */
+    private Integer inBumonRankPop;
+
 	/**
      * 部門ランク
      * @generated
@@ -152,171 +170,187 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
         super("m_rdm_jgi_sos_mst","selectJgi");
     }
 
-    /**
-     * 部門ランク (パラメータ)の取得
-     * @return 部門ランク (パラメータ)
-     * @generated
-     */
-    public Integer getInBumonRank() {
-        return inBumonRank;
-    }
+	/**
+	 * SelectJgiEntity.javainBumonRankを設定
+	 * @return inBumonRank
+	 */
+	public Integer getInBumonRank() {
+		return inBumonRank;
+	}
 
-    /**
-     * 部門ランク (パラメータ)の設定
-     * @param inBumonRank 部門ランク (パラメータ)
-     * @generated
-     */
-    public void setInBumonRank(Integer inBumonRank) {
-        this.inBumonRank = inBumonRank;
-    }
+	/**
+	 * @param inBumonRank セットする inBumonRank
+	 */
+	public void setInBumonRank(Integer inBumonRank) {
+		this.inBumonRank = inBumonRank;
+	}
 
-    /**
-     * 上位組織コード (パラメータ)の取得
-     * @return 上位組織コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javainUpSosCdを設定
+	 * @return inUpSosCd
+	 */
 	public String getInUpSosCd() {
 		return inUpSosCd;
 	}
 
-    /**
-     * 上位組織コード (パラメータ)の設定
-     * @param inUpSosCd 上位組織コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * @param inUpSosCd セットする inUpSosCd
+	 */
 	public void setInUpSosCd(String inUpSosCd) {
 		this.inUpSosCd = inUpSosCd;
 	}
 
-    /**
-     * 画面フラグ (パラメータ)の取得
-     * @return 画面フラグ (パラメータ)
-     * @generated
-     */
-    public Integer getInGmnFlg() {
-        return inGmnFlg;
-    }
+	/**
+	 * SelectJgiEntity.javainGmnFlgを設定
+	 * @return inGmnFlg
+	 */
+	public Integer getInGmnFlg() {
+		return inGmnFlg;
+	}
 
-    /**
-     * 画面フラグ(パラメータ)の設定
-     * @param inGmnFlg 画面フラグ (パラメータ)
-     * @generated
-     */
-    public void setInGmnFlg(Integer inGmnFlg) {
-        this.inGmnFlg = inGmnFlg;
-    }
+	/**
+	 * @param inGmnFlg セットする inGmnFlg
+	 */
+	public void setInGmnFlg(Integer inGmnFlg) {
+		this.inGmnFlg = inGmnFlg;
+	}
 
-    /**
-     * 組織コード (パラメータ)の取得
-     * @return 組織コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javainSosCdを設定
+	 * @return inSosCd
+	 */
 	public String getInSosCd() {
 		return inSosCd;
 	}
 
-    /**
-     * 組織コード (パラメータ)の設定
-     * @param inSosCd 組織コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * @param inSosCd セットする inSosCd
+	 */
 	public void setInSosCd(String inSosCd) {
 		this.inSosCd = inSosCd;
 	}
 
-
-    /**
-     * 領域コード (パラメータ)の取得
-     * @return 領域コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javainTrtCdを設定
+	 * @return inTrtCd
+	 */
 	public String getInTrtCd() {
 		return inTrtCd;
 	}
 
-    /**
-     * 領域コード (パラメータ)の設定
-     * @param inTrtCd 領域コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * @param inTrtCd セットする inTrtCd
+	 */
 	public void setInTrtCd(String inTrtCd) {
 		this.inTrtCd = inTrtCd;
 	}
 
-
-    /**
-     * JIS府県コード (パラメータ)の取得
-     * @return JIS府県コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javainAddrCodePrefを設定
+	 * @return inAddrCodePref
+	 */
 	public String getInAddrCodePref() {
 		return inAddrCodePref;
 	}
 
-    /**
-     * JIS府県コード (パラメータ)の設定
-     * @param inAddrCodePref JIS府県コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * @param inAddrCodePref セットする inAddrCodePref
+	 */
 	public void setInAddrCodePref(String inAddrCodePref) {
 		this.inAddrCodePref = inAddrCodePref;
 	}
 
-    /**
-     * 武田市区町村コード (パラメータ)の取得
-     * @return 武田市区町村コード (パラメータ)
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javainTkCityCdを設定
+	 * @return inTkCityCd
+	 */
 	public String getInTkCityCd() {
 		return inTkCityCd;
 	}
 
-    /**
-     * 武田市区町村コード (パラメータ)の設定
-     * @param inTkCityCd 武田市区町村コードド (パラメータ)
-     * @generated
-     */
+	/**
+	 * @param inTkCityCd セットする inTkCityCd
+	 */
 	public void setInTkCityCd(String inTkCityCd) {
 		this.inTkCityCd = inTkCityCd;
 	}
 
-    /**
-     * 部門ランクの取得
-     * @param bumonRank 部門ランク
-     * @generated
-     */
-    public Integer getBumonRank() {
+	/**
+	 * SelectJgiEntity.javainUpSosCdPopを設定
+	 * @return inUpSosCdPop
+	 */
+	public String getInUpSosCdPop() {
+		return inUpSosCdPop;
+	}
+
+	/**
+	 * @param inUpSosCdPop セットする inUpSosCdPop
+	 */
+	public void setInUpSosCdPop(String inUpSosCdPop) {
+		this.inUpSosCdPop = inUpSosCdPop;
+	}
+
+	/**
+	 * SelectJgiEntity.javainSosCdPopを設定
+	 * @return inSosCdPop
+	 */
+	public String getInSosCdPop() {
+		return inSosCdPop;
+	}
+
+	/**
+	 * @param inSosCdPop セットする inSosCdPop
+	 */
+	public void setInSosCdPop(String inSosCdPop) {
+		this.inSosCdPop = inSosCdPop;
+	}
+
+	/**
+	 * SelectJgiEntity.javainBumonRankPopを設定
+	 * @return inBumonRankPop
+	 */
+	public Integer getInBumonRankPop() {
+		return inBumonRankPop;
+	}
+
+	/**
+	 * @param inBumonRankPop セットする inBumonRankPop
+	 */
+	public void setInBumonRankPop(Integer inBumonRankPop) {
+		this.inBumonRankPop = inBumonRankPop;
+	}
+
+	/**
+	 * SelectJgiEntity.javabumonRankを設定
+	 * @return bumonRank
+	 */
+	public Integer getBumonRank() {
 		return bumonRank;
 	}
 
-    /**
-     * 部門ランクの設定
-     * @param bumonRank 部門ランク
-     * @generated
-     */
+	/**
+	 * @param bumonRank セットする bumonRank
+	 */
 	public void setBumonRank(Integer bumonRank) {
 		this.bumonRank = bumonRank;
 	}
 
-    /**
-     * 組織コードの取得
-     * @param sosCd 組織コード
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javasosCdを設定
+	 * @return sosCd
+	 */
 	public String getSosCd() {
 		return sosCd;
 	}
 
-    /**
-     * 組織コードの設定
-     * @param sosCd 組織コード
-     * @generated
-     */
+	/**
+	 * @param sosCd セットする sosCd
+	 */
 	public void setSosCd(String sosCd) {
 		this.sosCd = sosCd;
 	}
 
-    /**
+	/**
 	 * SelectJgiEntity.javabumonRyakuNameを設定
 	 * @return bumonRyakuName
 	 */
@@ -332,110 +366,91 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
 	}
 
 	/**
-     * 医薬支店Cの取得
-     * @param brCode 医薬支店C
-     * @generated
-     */
+	 * SelectJgiEntity.javabrCodeを設定
+	 * @return brCode
+	 */
 	public String getBrCode() {
 		return brCode;
 	}
 
-    /**
-     * 医薬支店Cの設定
-     * @param brCode 医薬支店C
-     * @generated
-     */
+	/**
+	 * @param brCode セットする brCode
+	 */
 	public void setBrCode(String brCode) {
 		this.brCode = brCode;
 	}
 
-    /**
-     * 医薬営業所Cの取得
-     * @param distCode 医薬営業所C
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javadistCodeを設定
+	 * @return distCode
+	 */
 	public String getDistCode() {
 		return distCode;
 	}
 
-    /**
-     * 医薬営業所Cの設定
-     * @param distCode 医薬営業所C
-     * @generated
-     */
+	/**
+	 * @param distCode セットする distCode
+	 */
 	public void setDistCode(String distCode) {
 		this.distCode = distCode;
 	}
 
 	/**
-	 * 医薬営業所配列の取得
-	 * @return　医薬営業所配列
-	 * @generated
+	 * SelectJgiEntity.javadistSeqを設定
+	 * @return distSeq
 	 */
 	public String getDistSeq() {
 		return distSeq;
 	}
 
 	/**
-	 * 医薬営業所配列の設定
-	　* @param distSeq　医薬営業所配列
-	 *　@generated
+	 * @param distSeq セットする distSeq
 	 */
 	public void setDistSeq(String distSeq) {
 		this.distSeq = distSeq;
 	}
 
-    /**
-     * 上位組織コードの取得
-     * @param upSosCode 上位組織コード
-     * @generated
-     */
+	/**
+	 * SelectJgiEntity.javaupSosCodeを設定
+	 * @return upSosCode
+	 */
 	public String getUpSosCode() {
 		return upSosCode;
 	}
 
-    /**
-     * 上位組織コードの設定
-     * @param upSosCode 上位組織コード
-     * @generated
-     */
+	/**
+	 * @param upSosCode セットする upSosCode
+	 */
 	public void setUpSosCode(String upSosCode) {
 		this.upSosCode = upSosCode;
 	}
 
-    /**
-     * 従業員番号の取得
-     * @param jgiNo 従業員番号
-     * @generated
-     */
-    public Integer getJgiNo() {
+	/**
+	 * SelectJgiEntity.javajgiNoを設定
+	 * @return jgiNo
+	 */
+	public Integer getJgiNo() {
 		return jgiNo;
 	}
 
-    /**
-     * 従業員番号の設定
-     * @param jgiNo 従業員番号
-     * @generated
-     */
+	/**
+	 * @param jgiNo セットする jgiNo
+	 */
 	public void setJgiNo(Integer jgiNo) {
 		this.jgiNo = jgiNo;
 	}
 
-
-    /**
-     * 氏名の取得
-     * @param jgiName 氏名
-     * @generated
-     */
-    public String getJgiName() {
+	/**
+	 * SelectJgiEntity.javajgiNameを設定
+	 * @return jgiName
+	 */
+	public String getJgiName() {
 		return jgiName;
 	}
 
-    /**
-     * 氏名の設定
-     * @param jgiName 氏名
-     * @generated
-     */
+	/**
+	 * @param jgiName セットする jgiName
+	 */
 	public void setJgiName(String jgiName) {
 		this.jgiName = jgiName;
 	}

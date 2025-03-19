@@ -22,6 +22,7 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF101DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
@@ -152,16 +153,16 @@ public class NF101Service extends BaseService {
     		indto.setUltBedsTot(Integer.toString(bedsTot));
     		indto.setUltMedBedsTot(Integer.toString(medBedsTot));
 
-    		indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), ""));
-    		indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), ""));
-    		indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), ""));
-    		indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), ""));
-    		indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), ""));
-    		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
-    		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
-    		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
-    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), ""));
-    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
+    		indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), mainDataEntity.getBedCntBase()));
+    		indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), mainDataEntity.getBedCnt01()));
+    		indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), mainDataEntity.getBedCnt02()));
+    		indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), mainDataEntity.getBedCnt03()));
+    		indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), mainDataEntity.getBedCnt04()));
+    		indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), mainDataEntity.getBedCnt05()));
+    		indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), mainDataEntity.getBedCnt06()));
+    		indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), mainDataEntity.getBedCnt07()));
+    		indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), StringUtils.nvl(mainDataEntity.getBedsTot(), "0")));
+    		indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), StringUtils.nvl(mainDataEntity.getMedBedsTot(), "0")));
 
     		// カラーフラグ
     		indto.setPharmTypeFlg(StringUtils.nvl(mainDataEntity.getPharmTypeFlg(), "0"));
@@ -339,8 +340,8 @@ public class NF101Service extends BaseService {
 			indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
 			indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
 			indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
-			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), ""));
-			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), ""));
+			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
+			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
 
     		// コメント
     		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -406,6 +407,16 @@ public class NF101Service extends BaseService {
 			mapHoInsType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
+
+		// 経営主体
+		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
+		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
+		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
+		mapManageCd.put("", "--なし--");
+		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
+			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
+		}
+		indto.setManageCdCombo(mapManageCd);
 
 		// ワクチン対象区分
 		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_VAC_INS_TYPE);
@@ -505,12 +516,12 @@ public class NF101Service extends BaseService {
 				errFlg = true;
 			}
         }
-        if(indto.getReqComment() != null && indto.getReqComment().length() > 300) {
+        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;
         }
-        if(indto.getAprMemo() != null && indto.getAprMemo().length() > 300) {
+        if(indto.getAprMemo() != null && StringUtils.getByteLength(indto.getAprMemo()) > 300) {
         	// 最大文字数を超えています。（審査・承認メモ）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "審査・承認メモ") + "\n";
 			errFlg = true;

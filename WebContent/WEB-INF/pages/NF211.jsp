@@ -175,14 +175,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 一時保存
 			document.fm1.screenId.value="NF211";
 			document.fm1.functionId.value="Register";
-		} else if(funcId == "2") {
-			// 承認・却下
-			document.fm1.screenId.value="NF311";
-			document.fm1.functionId.value="ApprRej";
 		} else {
-			// 申請
+			// 申請、承認・却下
 			document.fm1.screenId.value="NF311";
 			document.fm1.functionId.value="Init";
+
+			if(document.fm1.tkdTrtKbn.value == "1"){
+				document.fm1.trtPrdGrpNm.value = document.fm1.trtPrdGrp.options[document.fm1.trtPrdGrp.selectedIndex].textContent;
+			}
 		}
 
 		document.fm1.target="";
@@ -351,6 +351,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="callBack"/>
 	<s:hidden name="editApprFlg"/>
 
+	<s:hidden name="trtPrdGrpNm"/>
+
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>
     <s:hidden name="selectedBumonRank"/>
@@ -448,6 +450,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <%--申請情報--%>
         <%--申請情報のHIDDEN項目--%>
         <s:hidden name="reqId"/>
+        <s:hidden name="reqChl"/>
         <s:hidden name="reqJgiNo"/>
         <s:hidden name="reqJgiName"/>
         <s:hidden name="reqBrCd"/>
@@ -541,7 +544,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else> colSpan="5"><%-- スクロールバー用のテーブルクラスにすること --%>
-              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
+              <div id="jkrHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
 			  <table class="comCustomTable" id="formTable11">
 				<tr>
 				  <%-- ヘッダ行 --%>
@@ -661,7 +664,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
 	      <nobr>
-	      	<s:if test='%{editApprFlg == "1"}'>
+	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
 		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/>
 		  	</s:if>
 		  	<s:else>
@@ -669,7 +672,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		  	</s:else>
 		  </nobr></td>
       </tr>
-      <s:if test='%{loginJokenSetCd == "JKN0850"}'>
+      <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>審査・承認メモ</nobr></td>
       </tr>
@@ -711,7 +714,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
                 <nobr>
-					<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01" && reqStsCd != "03" && reqStsCd != "13")}'>
+					<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/>
 		            </s:if>
 		            <s:else>

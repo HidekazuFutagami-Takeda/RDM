@@ -69,10 +69,10 @@
         UPDATE
             T_RDM_HCO_LNK_REQ
         SET
-        	TRT_CD = #{trtCd},
-			HIN_G_CD = #{hinGCd},
-			MAIN_INS_NO_AF = #{mainInsNoAf},
-			INS_SBT_AF = #{insSbtAf},
+        	<if test="trtCd != null">TRT_CD = #{trtCd},</if>
+			<if test="hinGCd != null">HIN_G_CD = #{hinGCd},</if>
+			<if test="mainInsNoAf != null">MAIN_INS_NO_AF = #{mainInsNoAf},</if>
+			<if test="insSbtAf != null">INS_SBT_AF = #{insSbtAf},</if>
 			UPD_SHA_YMD = #{updShaYmd},
 			UPD_SHA_ID = #{updShaId}
         WHERE

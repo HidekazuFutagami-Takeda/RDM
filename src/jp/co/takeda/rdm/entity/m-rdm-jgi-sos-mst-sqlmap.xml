@@ -307,10 +307,16 @@
                   <if test="inTrtCd != null">
                   AND COM_MR_SOS.TRT_CD = #{inTrtCd}
                   </if>
-                  <if test="inBumonRank == 3 and inSosCd != null">
+                  <if test="inBumonRank == 2 and inBumonRankPop == 2 and inSosCdPop != null">
                   AND SOS_MST.SOS_CD = #{inSosCd}
                   </if>
-                  <if test="inBumonRank == 2 and inUpSosCd != null">
+                  <if test="inBumonRank == 2 and inBumonRankPop == 3 and inUpSosCdPop != null">
+                  AND SOS_MST.UP_SOS_CD = #{inUpSosCd}
+                  </if>
+                  <if test="inBumonRank == 3 and inBumonRankPop == 3 and inSosCdPop != null">
+                  AND SOS_MST.SOS_CD = #{inSosCd}
+                  </if>
+                  <if test="inBumonRank == 3 and inBumonRankPop == 2 and inSosCdPop != null">
                   AND SOS_MST.UP_SOS_CD = #{inUpSosCd}
                   </if>
               </where>

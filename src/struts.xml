@@ -345,10 +345,6 @@
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF305">/WEB-INF/pages/NF305.jsp</result>
         </action>
-        <action name="NF305ApprRej" class="nF305Action" method="apprRej">
-        	<result name="NF013">/WEB-INF/pages/NF013.jsp</result>
-        	<result name="NF305">/WEB-INF/pages/NF305.jsp</result>
-        </action>
         <action name="NF307Init" class="nF307Action" method="init">
             <result name="NF014">/WEB-INF/pages/NF014.jsp</result>
             <result name="NF307">/WEB-INF/pages/NF307.jsp</result>
@@ -356,10 +352,6 @@
         <action name="NF307Register" class="nF307Action" method="register">
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF307">/WEB-INF/pages/NF307.jsp</result>
-        </action>
-        <action name="NF307ApprRej" class="nF307Action" method="apprRej">
-        	<result name="NF014">/WEB-INF/pages/NF014.jsp</result>
-        	<result name="NF307">/WEB-INF/pages/NF307.jsp</result>
         </action>
         <action name="NF309Init" class="nF309Action" method="init">
             <result name="NF101">/WEB-INF/pages/NF101.jsp</result>
@@ -377,10 +369,6 @@
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF311">/WEB-INF/pages/NF311.jsp</result>
         </action>
-        <action name="NF311ApprRej" class="nF311Action" method="apprRej">
-        	<result name="NF211">/WEB-INF/pages/NF211.jsp</result>
-        	<result name="NF311">/WEB-INF/pages/NF311.jsp</result>
-        </action>
         <action name="NF313Init" class="nF313Action" method="init">
             <result name="NF212">/WEB-INF/pages/NF212.jsp</result>
             <result name="NF313">/WEB-INF/pages/NF313.jsp</result>
@@ -389,10 +377,6 @@
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF313">/WEB-INF/pages/NF313.jsp</result>
         </action>
-        <action name="NF313ApprRej" class="nF313Action" method="apprRej">
-        	<result name="NF212">/WEB-INF/pages/NF212.jsp</result>
-        	<result name="NF313">/WEB-INF/pages/NF313.jsp</result>
-        </action>
         <action name="NF315Init" class="nF315Action" method="init">
             <result name="NF213">/WEB-INF/pages/NF213.jsp</result>
             <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
@@ -400,10 +384,6 @@
         <action name="NF315Register" class="nF315Action" method="register">
             <result name="NC101" type="chain">NC101Init</result>
             <result name="NF315">/WEB-INF/pages/NF315.jsp</result>
-        </action>
-        <action name="NF315ApprRej" class="nF315Action" method="apprRej">
-        	<result name="NF213">/WEB-INF/pages/NF213.jsp</result>
-        	<result name="NF315">/WEB-INF/pages/NF315.jsp</result>
         </action>
         <action name="NF401Init" class="nF401Action" method="init">
             <result name="NC109" type="chain">NC109Init</result>
@@ -425,6 +405,12 @@
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>
         <action name="NC204Init" class="nC204Action" method="init">
+            <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
+        </action>
+        <action name="NC204Search" class="nC204Action" method="search">
+            <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
+        </action>
+        <action name="NC204Page" class="nC204Action" method="page">
             <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
         </action>
         <action name="NF501Init" class="NF501Action" method="init">
@@ -608,6 +594,18 @@
             <result name="ND305">/WEB-INF/pages/ND305.jsp</result>
             <result name="ND305Init" type="chain">ND305Init</result>
             <result name="NC101Init" type="chain">NC101Init</result>
+        </action>
+        <action name="NC209Init" class="nC209Action" method="init">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
+        </action>
+        <action name="NC209Search" class="nC209Action" method="search">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
+        </action>
+        <action name="NC209Page" class="nC209Action" method="page">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
+        </action>
+        <action name="NC209Sort" class="nC209Action" method="sort">
+            <result name="NC209">/WEB-INF/pages/NC209.jsp</result>
         </action>
     </package>
 </struts>

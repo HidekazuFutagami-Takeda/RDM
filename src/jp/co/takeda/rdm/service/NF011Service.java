@@ -25,6 +25,7 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoJkrData;
 import jp.co.takeda.rdm.dto.NF011DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcoJkrWkEntity;
@@ -464,6 +465,16 @@ public class NF011Service extends BaseService {
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
 
+		// 経営主体
+		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
+		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
+		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
+		mapManageCd.put("", "--なし--");
+		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
+			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
+		}
+		indto.setManageCdCombo(mapManageCd);
+
 		// 1-2-10 ワクチン対象区分
 		// コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
 		// コード名＝VAC_INS_TYPE（ワクチン対象区分）
@@ -528,7 +539,6 @@ public class NF011Service extends BaseService {
 		}
 		List<SelectRdmComTrtgrpDataEntity> outTrtList = dao.select(inTrtEntityCmb);
 		LinkedHashMap<String, String> mapTrt = new LinkedHashMap<String, String>();
-		mapTrt.put("", "--なし--");
 		for (SelectRdmComTrtgrpDataEntity outEntity : outTrtList) {
 			mapTrt.put(outEntity.getTrtCd(), outEntity.getTrtCd() + ":" + outEntity.getTrtNm());
 		}
@@ -603,6 +613,11 @@ public class NF011Service extends BaseService {
 		if (indto.getInsFormalName() != null && indto.getInsFormalName().length() > 40) {
 			// 最大文字数を超えています。（施設正式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設正式漢字名") + "\n";
+			errFlg = true;
+		}
+		if (indto.getInsContName() != null && indto.getInsContName().length() > 40) {
+			// 最大文字数を超えています。（施設契約用漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設契約用漢字名") + "\n";
 			errFlg = true;
 		}
 		if (indto.getEntcapaNum() != null && indto.getEntcapaNum().length() > 4) {
@@ -707,52 +722,52 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCntBase())) {
+		if (!isNumHyph(indto.getBedCntBase())) {
 			// 入力文字種が不正です。（基準）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "基準") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCnt04())) {
+		if (!isNumHyph(indto.getBedCnt04())) {
 			// 入力文字種が不正です。（結核）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "結核") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCnt01())) {
+		if (!isNumHyph(indto.getBedCnt01())) {
 			// 入力文字種が不正です。（一般）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "一般") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCnt05())) {
+		if (!isNumHyph(indto.getBedCnt05())) {
 			// 入力文字種が不正です。（感染症）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "感染症") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCnt03())) {
+		if (!isNumHyph(indto.getBedCnt03())) {
 			// 入力文字種が不正です。（精神）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "精神") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCnt07())) {
+		if (!isNumHyph(indto.getBedCnt07())) {
 			// 入力文字種が不正です。（療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "療養") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCnt02())) {
+		if (!isNumHyph(indto.getBedCnt02())) {
 			// 入力文字種が不正です。（医療療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "医療療養") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedCnt06())) {
+		if (!isNumHyph(indto.getBedCnt06())) {
 			// 入力文字種が不正です。（介護療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "介護療養") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getBedsTot())) {
+		if (!isNumHyph(indto.getBedsTot())) {
 			// 入力文字種が不正です。（ベッド数計）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "ベッド数計") + "\n";
 			errFlg = true;
 		}
-		if (!StringUtils.isNumeric(indto.getMedBedsTot())) {
+		if (!isNumHyph(indto.getMedBedsTot())) {
 			// 入力文字種が不正です。（医療ベッド数計）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "医療ベッド数計") + "\n";
 			errFlg = true;
@@ -797,6 +812,11 @@ public class NF011Service extends BaseService {
 		if (StringUtils.checkSingleByte(indto.getInsFormalName())) {
 			// 全角で入力してください。（施設正式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設正式漢字名") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkSingleByte(indto.getInsContName())) {
+			// 全角で入力してください。（施設契約用漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設契約用漢字名") + "\n";
 			errFlg = true;
 		}
 		if (StringUtils.checkSingleByte(indto.getInsAddrDt())) {
@@ -1397,8 +1417,9 @@ public class NF011Service extends BaseService {
 	public static boolean chkNumRange(String n, int min, int max) {
 		if (n == null || "".equals(n)) {
 			return true;
-		} else if (!StringUtils.isNumeric(n)) {
-			return false;
+		} else if (!isNumHyph(n)) {
+			// 文字種でエラーとなっているため範囲エラーは表示しない
+			return true;
 		} else if (Integer.parseInt(n) >= min && Integer.parseInt(n) <= max) {
 			return true;
 		}

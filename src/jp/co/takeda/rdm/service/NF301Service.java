@@ -25,6 +25,7 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoJkrData;
 import jp.co.takeda.rdm.dto.NF301DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcoJkrWkEntity;
@@ -113,6 +114,11 @@ public class NF301Service extends BaseService {
         if(indto.getInsFormalName() == null || indto.getInsFormalName().isEmpty()) {
         	// 必須項目にデータを入力してください。（施設正式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設正式漢字名") + "\n";
+			errFlg = true;
+        }
+        if(indto.getInsContName() == null || indto.getInsContName().isEmpty()) {
+        	// 必須項目にデータを入力してください。（施設契約用漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設契約用漢字名") + "\n";
 			errFlg = true;
         }
         if(indto.getTradeType() == null || indto.getTradeType().isEmpty()) {
@@ -246,6 +252,11 @@ public class NF301Service extends BaseService {
         if(indto.getInsFormalName() != null && indto.getInsFormalName().length() > 40) {
         	// 最大文字数を超えています。（施設正式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設正式漢字名") + "\n";
+			errFlg = true;
+        }
+        if(indto.getInsContName() != null && indto.getInsContName().length() > 40) {
+        	// 最大文字数を超えています。（施設契約用漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設契約用漢字名") + "\n";
 			errFlg = true;
         }
         if(indto.getEntcapaNum() != null && indto.getEntcapaNum().length() > 4) {
@@ -442,6 +453,11 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設正式漢字名") + "\n";
 			errFlg = true;
         }
+        if(StringUtils.checkSingleByte(indto.getInsContName())) {
+        	// 全角で入力してください。（施設契約用漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設契約用漢字名") + "\n";
+			errFlg = true;
+        }
         if(StringUtils.checkSingleByte(indto.getInsAddrDt())) {
         	// 全角で入力してください。（町名地番）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "町名地番") + "\n";
@@ -548,9 +564,9 @@ public class NF301Service extends BaseService {
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
-		} else if("16".equals(indto.getInsRank()) && !chkNumRange(indto.getBedsTot(), 20, 199)
-					&& !("0".equals(indto.getBedCnt01()) && "0".equals(indto.getBedCnt07()) && "0".equals(indto.getBedCnt04())
-							&& "0".equals(indto.getBedCnt05()) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
+		} else if("16".equals(indto.getInsRank())
+					&& !("0".equals(StringUtils.nvl(indto.getBedCnt01(),"0")) && "0".equals(StringUtils.nvl(indto.getBedCnt07(), "0")) && "0".equals(StringUtils.nvl(indto.getBedCnt04(),"0"))
+							&& "0".equals(StringUtils.nvl(indto.getBedCnt05(),"0")) &&chkNumRange(indto.getBedCnt03(), 1, 9999))){
 			// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
 			errFlg = true;
@@ -607,7 +623,7 @@ public class NF301Service extends BaseService {
 	        String date = sbDate.toString();
 	        if(!DateUtils.isDate(date)) {
 	        	// 有効な年月日を入力してください。（開業年月日）
-	        	errMsg = loginInfo.getMsgData(RdmConstantsData.W022).replace("項目名", "開業年月日") + "\n";
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W022).replace("項目名", "開業年月日") + "\n";
 	        	errFlg = true;
 	        }
         }
@@ -796,6 +812,16 @@ public class NF301Service extends BaseService {
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
 
+		// 経営主体
+		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
+		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
+		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
+		mapManageCd.put("", "--なし--");
+		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
+			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
+		}
+		indto.setManageCdCombo(mapManageCd);
+
 		//1-2-10			ワクチン対象区分
 		//コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
 		//		コード名＝VAC_INS_TYPE（ワクチン対象区分）
@@ -857,7 +883,6 @@ public class NF301Service extends BaseService {
         SelectRdmComTrtgrpDataEntity inTrtEntityCmb = new SelectRdmComTrtgrpDataEntity();
         List<SelectRdmComTrtgrpDataEntity> outTrtList = dao.select(inTrtEntityCmb);
         LinkedHashMap<String, String> mapTrt = new LinkedHashMap<String, String>();
-        mapTrt.put("", "--なし--");
         for (SelectRdmComTrtgrpDataEntity outEntity : outTrtList) {
         	mapTrt.put(outEntity.getTrtCd(), outEntity.getTrtCd()+":"+outEntity.getTrtNm());
         }

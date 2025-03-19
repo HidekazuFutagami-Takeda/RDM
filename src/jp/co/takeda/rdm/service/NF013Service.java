@@ -110,8 +110,8 @@ public class NF013Service extends BaseService {
 
     		// 重複施設
     		indto.setDupInsNo("");
-    		indto.setDupInsAbbrName(StringUtils.nvl(mainDataEntity.getInsAbbrName(), ""));
-    		indto.setDupInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
+    		indto.setDupInsAbbrName("");
+    		indto.setDupInsAddr("");
 
     		indto.setReqShzNm(loginInfo.getBumonRyakuName());
 			indto.setReqJgiName(loginInfo.getJgiName());

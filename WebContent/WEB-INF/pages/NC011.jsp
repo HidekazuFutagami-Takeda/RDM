@@ -671,28 +671,15 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				</div>
 	 	 		 </s:else>
 
-			<table >
-												<tr style="align:left;">
-													<td class="comFormTableItem"><nobr>
-															<input class="comButton" type="button" name="buttonF1"
-																value="戻る" onClick="JavaScript:backBtn();return false;"  style="align:left;"/>
-														</nobr></td>
-												</tr>
-			</table>
-						<table  class="comPortalTable" style="align:center">
+						<table  class="comPortalTable" style="align:left">
 						<tr>
-							<td class="comFormTableItem"align="center"><nobr>
+							<td class="comFormTableItem"align="left"><nobr>
 									<input class="comButton" type="button" name="buttonF1"
 										value="戻る" onClick="JavaScript:backBtn();return false;" />
 								</nobr></td>
 								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 								<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-								<td class="comFormTableItem"align="right"><nobr>
-
-									<input class="comButton" type="button" name="buttonF1"
-										value="保存" onClick="JavaScript:rdmRegister();return false;" />
-								</nobr></td>
 						</tr>
 			</table>
 

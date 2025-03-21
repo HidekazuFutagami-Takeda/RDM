@@ -243,7 +243,7 @@
 	    }
 
 	 	// ページボタン
-	    function pageBtn( pageCntCur ){
+	    function pltPage( pageCntCur ){
 			//現在ページ番号変更（遷移）
 			document.fm1.pageCntCur.value = pageCntCur;
 			document.fm1.target="";
@@ -559,75 +559,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 <%-- ページャー表示 開始 --%>
           <s:if test='pageFlag == "1" '>
           </s:if>
-          <s:if test='pageFlag !="1"'>
-                 <!-- 改ページ -->
-                  <table width="95%" >
-                      <tbody>
-                      <tr align="right">
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
-
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0','1','2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur+1"/>);return false;">
-                                  次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                  </s:if>
+		<s:else>
+          	<table width="80%">
+          		<tr>
+                    <td align="right">
+                      <jsp:include page="common/rdmPage.jsp">
+                      <jsp:param name="" value="" />
+                      </jsp:include>
+                    </td>
+                </tr>
+             </table>
+          </s:else>
           <%-- ページャー表示 終了 --%>
 
    <s:if test='pageFlag == "1" '>

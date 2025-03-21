@@ -299,7 +299,7 @@ function jmnSearchSosCd(){
   // 2度押し対策
   if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
   // 選択フラグ「1：組織」
-  document.fm1.selectFlgPop.value	 = "1";
+  document.fm1.selectFlg.value	 = "1";
 
   gCseViewWin = cseView(gCseViewWin,"rGenJmnCallBackCseView","gCseViewWin");
   return false;
@@ -313,7 +313,7 @@ function nc202JmnSearchSosCd(){
 
 	  gCseViewWin = nc202CseView(gCseViewWin,"rNc202CseViewGenJmnCallBackCseView","gCseViewWin");
 	  return false;
-}
+	}
 
 
 /**

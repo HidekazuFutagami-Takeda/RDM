@@ -8,7 +8,7 @@
  * @see
  */
 --%>
-<%@page import="jp.co.takeda.rdm.dto.NC201DTO"%>
+<!--<%@page import="jp.co.takeda.rdm.dto.NC201DTO"%>-->
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal,java.lang.String"
@@ -32,7 +32,7 @@
               type="button"
               value=""
               class="cseSosSelectButton"
-              onclick="nC201SelectSos(
+              onclick="rCseSelectSos(
                           '<s:property value="#rowBean.bumonRank"/>',
                           '<s:property value="#rowBean.sosCd"/>',
                           '<s:property value="#rowBean.bumonSeiName"/>',
@@ -53,7 +53,7 @@
             href=""
             name="focus<s:property value="#rowBean.sosCd"/>"
             class="comLink"
-            onclick="nC201CallAjax('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>'); return false;"
+            onclick="rcseCallAjax('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>'); return false;"
           ><s:property value="#rowBean.bumonSeiName"/></a>
         </s:if>
         <s:else>

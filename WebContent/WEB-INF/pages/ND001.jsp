@@ -54,7 +54,6 @@ if (stack.peek() instanceof ND001DTO) {
     <script type="text/javascript" src="js/jgiKanren.js"></script>
     <script type="text/javascript" src="js/rdmCatSosExpand.js"></script>
     <script type="text/javascript" src="js/jkrMenu.js"></script>
-    <script type="text/javascript" src="js/NC201.js"></script>
 
     <script>
 
@@ -124,31 +123,16 @@ if (stack.peek() instanceof ND001DTO) {
     		comClickFlgInit();
     }
 
-    function soshikiPopBtn(){
-		// NC201_担当者検索ポップアップ画面を表示
-		window.open("","soshikiPopWindow",tantoSubScreenSize);
-		document.fm1.screenId.value = "NC201";
-		document.fm1.functionId.value="Init";
-		document.fm1.target="soshikiPopWindow";
-
-//		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
-
-//		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
-		document.fm1.bumonRankPop.value="1";
-		document.fm1.selectFlgPop.value="1";
-		document.fm1.callBack.value="nc201CallBack";
-
-		comSubmitForAnyWarp(fm1);
-		comClickFlgInit();
-}
-
 	// 担当者検索ポップアップから値受け取り
     function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
     							distCode, trtGrpCd, trtNm, mrCat){
 		document.fm1.sosCd.value = sosCd;
 		document.fm1.bumonRyakuName.value = bumonSeiName;
 		document.fm1.jgiNo.value = jgiNo;
-		document.fm1.jgiName.value = jgiName;
+		document.fm1.jgiNm.value = jgiName;
+		document.fm1.trtCd.value = trtCd;
+		document.fm1.trtNm.value = trtNm;
+		document.fm1.mrCat.value = mrCat;
 		document.fm1.brCode.value = brCode;
 		document.fm1.distCode.value = distCode;
     }
@@ -263,27 +247,21 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <s:hidden name="tkdDocNo" id="tkdDocNo"/>
 
            <%-- 組織検索ポップアップ用 --%>
-  			<input type="hidden" name="selectFlgPop"           value="" />
-  			<input type="hidden" name="initSosCdPop"           value="" />
-  			<input type="hidden" name="trtCdPop"               value="" />
+              <input type="hidden" name="selectFlgPop"           value="" />
+  			　　<input type="hidden" name="initSosCdPop"           value="" />
+  			　　<input type="hidden" name="trtCdPop"               value="" />
   			<s:hidden id="callBack" name="callBack" />
-  			<input type="hidden" name="trtCdPop"               value="" />
-  			<s:hidden id="brCode" name="brCode"/>
-  			<s:hidden id="distCode" name="distCode"/>
-  			<s:hidden id="upSosCode" name="upSosCode"/>
-  			<s:hidden name="upBumonRank" id="upBumonRank" />
-  			<s:hidden name="upBrCode" id="upBrCode" />
-  			<s:hidden name="upDistCode" id="upDistCode" />
 
 
 	<s:hidden id="sosCdPop" name="sosCdPop"/>
 	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
-	<s:hidden id="bumonRankPop" name="bumonRankPop" value=""/>
+	<s:hidden id="bumonRankPop" name="bumonRankPop"/>
 	<s:hidden id="sosCd" name="sosCd"/>
 	<s:hidden id="upSosCd" name="upSosCd"/>
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
 	<s:hidden id="jgiNo" name="jgiNo"/>
+	<s:hidden id="jgiName" name="jgiName"/>
 
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
@@ -416,7 +394,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td><a class="comMiniLink" onclick="" style="color:lightgray">clear</a>&nbsp;</td>
               </s:if>
               <s:else>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></td>
+                  <td align="right"><input class="comButton" type="button" value="選択" onClick="jmnSearchSosCd();" /></td>
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
                   </td>
@@ -434,7 +412,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
                   <td align="right"><input class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
                   <td class="comPortalControlItem">
-                       <s:textfield name="jgiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                       <s:textfield name="" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
                    </td>
                    <td><a href="#" class="comMiniLink" onclick="jimClear('Sos');return false;">clear</a>&nbsp;</td>
               </s:else>

@@ -2899,6 +2899,7 @@ public interface AppConstant {
     public static final String SESKEY_NF401_SEARCHKEY = "NF401_SEARCHKEY";
 
     public static final String SESKEY_NC011_SEARCHKEY = "NC011_SEARCHKEY";
+	public static final String SESKEY_NC201_SEARCHKEY = "NC201_SEARCHKEY";
     public static final String SESKEY_NC202_SEARCHKEY = "NC202_SEARCHKEY";
     public static final String SESKEY_NC203_SEARCHKEY = "NC203_SEARCHKEY";
     public static final String SESKEY_NC204_SEARCHKEY = "NC204_SEARCHKEY";

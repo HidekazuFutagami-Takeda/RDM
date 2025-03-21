@@ -499,7 +499,10 @@ public class RdmConstantsData {
     public static final String SCREEN_ID_RDM000C010 = "RDM000C010";
     public static final String SCREEN_ID_NC001 = "NC001";
     public static final String SCREEN_ID_NC101 = "NC101";
-    public static final String SCREEN_ID_NC202_2 = "NC202_2";
+    public static final String SCREEN_ID_NC201_1 = "NC201_01";
+    public static final String SCREEN_ID_NC201_2 = "NC201_02";
+    public static final String SCREEN_ID_NC202_1 = "NC202_01";
+    public static final String SCREEN_ID_NC202_2 = "NC202_02";
     /**画面ＩＤエリア終了 */
 
     /**登録完了画面フラグ */

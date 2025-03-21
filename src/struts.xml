@@ -114,6 +114,12 @@
         <action name="NC205Init" class="nC205Action" method="init">
             <result name="NC205">/WEB-INF/pages/NC205.jsp</result>
         </action>
+        <action name="NC201Init" class="nC201Action" method="init">
+            <result name="NC201">/WEB-INF/pages/NC201_01.jsp</result>
+        </action>
+        <action name="NC201AjaxSos" class="nC201Action" method="ajaxSos">
+            <result name="NC201_02">/WEB-INF/pages/NC201_02.jsp</result>
+        </action>
         <action name="NC202Init" class="nC202Action" method="init">
             <result name="NC202">/WEB-INF/pages/NC202_01.jsp</result>
         </action>

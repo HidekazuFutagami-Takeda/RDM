@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_sos_mst">
+    <resultMap id="selectInitSosResultMap" type="jp.co.takeda.rdm.entity.join.SelectInitSosEntity">
+        <result column="BUMON_RANK" property="bumonRank"/>
+        <result column="SOS_CD" property="sosCd"/>
+        <result column="BUMON_SEI_NAME" property="bumonSeiName"/>
+        <result column="BR_CODE" property="brCode"/>
+        <result column="DIST_CODE" property="distCode"/>
+        <result column="DIST_SEQ" property="distSeq"/>
+        <result column="UP_SOS_CD" property="upSosCode"/>
+        <result column="UP_BUMON_SEI_NAME" property="upBumonRank"/>
+        <result column="UP_BR_CODE" property="upBrCode"/>
+        <result column="UP_DIST_CODE" property="upDistCode"/>
+    </resultMap>
+    <resultMap id="selectSosResultMap" type="jp.co.takeda.rdm.entity.join.SelectSosEntity">
+        <result column="BUMON_RANK" property="bumonRank"/>
+        <result column="SOS_CD" property="sosCd"/>
+        <result column="BUMON_SEI_NAME" property="bumonSeiName"/>
+        <result column="BR_CODE" property="brCode"/>
+        <result column="DIST_CODE" property="distCode"/>
+        <result column="DIST_SEQ" property="distSeq"/>
+        <result column="UP_SOS_CD" property="upSosCode"/>
+        <result column="UP_BUMON_SEI_NAME" property="upBumonSeiName"/>
+        <result column="UP_BR_CODE" property="upBrCode"/>
+        <result column="UP_DIST_CODE" property="upDistCode"/>
+    </resultMap>
+   <select id="selectInitSos" parameterType="jp.co.takeda.rdm.entity.join.SelectInitSosEntity" resultMap="selectInitSosResultMap">
+        SELECT DISTINCT
+            SOS_MST.BUMON_RANK BUMON_RANK,
+            SOS_MST.SOS_CD SOS_CD,
+            SOS_MST.BUMON_SEI_NAME BUMON_SEI_NAME,
+            SOS_MST.BR_CODE BR_CODE,
+            SOS_MST.DIST_CODE DIST_CODE,
+            SOS_MST.DIST_SEQ DIST_SEQ,
+            --部門ランクが2:リージョン 以上の場合
+            <if test="inBumonRank &gt;= 2">
+            SOS_MST.UP_SOS_CD UP_SOS_CD,
+            UP_SOS_MST.BUMON_SEI_NAME UP_BUMON_SEI_NAME,
+            UP_SOS_MST.BR_CODE UP_BR_CODE,
+            UP_SOS_MST.DIST_CODE UP_DIST_CODE
+            </if>
+            --部門ランクが1:JPBU の場合
+            <if test="inBumonRank == 1">
+            NULL,
+            NULL,
+            NULL,
+            NULL
+            </if>
+        FROM
+            ORAUSR01.M_RDM_SOS_MST SOS_MST
+        --部門ランクが2:リージョン 以上の場合
+        <if test="inBumonRank &gt;= 2">
+        INNER JOIN
+            ORAUSR01.S_RDM_COM_MR_SOS_TRT SOS_TRT
+        ON SOS_MST.SOS_CD = SOS_TRT.SOS_CD
+        LEFT JOIN
+            ORAUSR01.M_RDM_SOS_MST UP_SOS_MST
+        ON SOS_MST.UP_SOS_CD = UP_SOS_MST.SOS_CD
+        </if>
+        <where>
+            1 = 1
+            --領域コードが設定されている場合
+            <if test="inTrtCd != null">
+            AND SOS_TRT.TRT_CD = #{inTrtCd}
+            </if>
+            --部門ランクがセットされている場合
+            <if test="inBumonRank != null">
+            AND SOS_MST.BUMON_RANK = #{inBumonRank}
+            </if>
+            --部門ランクが1:JPBU の場合
+            <if test="inBumonRank == 1">
+            and SOS_MST.SOS_CD = '01050'
+            </if>
+        </where>
+        ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
+    </select>
+    <select id="selectSos" parameterType="jp.co.takeda.rdm.entity.join.SelectSosEntity" resultMap="selectSosResultMap">
+        SELECT DISTINCT
+            SOS_MST.BUMON_RANK BUMON_RANK,
+            SOS_MST.SOS_CD SOS_CD,
+            SOS_MST.BUMON_SEI_NAME BUMON_SEI_NAME,
+            SOS_MST.BR_CODE BR_CODE,
+            SOS_MST.DIST_CODE DIST_CODE,
+            SOS_MST.DIST_SEQ DIST_SEQ,
+            --部門ランクが2:リージョン 以上の場合
+            <if test="inBumonRank &gt;= 2">
+            SOS_MST.UP_SOS_CD UP_SOS_CD,
+            UP_SOS_MST.BUMON_SEI_NAME UP_BUMON_SEI_NAME,
+            UP_SOS_MST.BR_CODE UP_BR_CODE,
+            UP_SOS_MST.DIST_CODE UP_DIST_CODE
+            </if>
+            --部門ランクが1:JPBU の場合
+            <if test="inBumonRank == 1">
+            NULL UP_SOS_CD,
+            NULL UP_BUMON_SEI_NAME,
+            NULL UP_BR_CODE,
+            NULL UP_DIST_CODE
+            </if>
+        FROM
+            ORAUSR01.M_RDM_SOS_MST SOS_MST
+        --部門ランクが2:リージョン 以上の場合
+        <if test="inBumonRank &gt;= 2">
+        INNER JOIN
+            ORAUSR01.S_RDM_COM_MR_SOS_TRT SOS_TRT
+        ON SOS_MST.SOS_CD = SOS_TRT.SOS_CD
+        LEFT JOIN
+            ORAUSR01.M_RDM_SOS_MST UP_SOS_MST
+        ON SOS_MST.UP_SOS_CD = UP_SOS_MST.SOS_CD
+            </if>
+        <where>
+            1 = 1
+            <if test="inTrtCd != null">
+            AND SOS_TRT.TRT_CD = #{inTrtCd}
+            </if>
+            --領域コードが設定されている場合
+            --部門ランクがセットされている場合
+            <if test="inBumonRank != null">
+            AND SOS_MST.BUMON_RANK = #{inBumonRank}
+            </if>
+            --部門ランクが1:JPBU の場合
+            <if test="inBumonRank == 1">
+            AND SOS_MST.SOS_CD = '01050'
+            </if>
+            --上位組織コードが設定されている場合
+            <if test="inUpSosCd != null">
+            AND SOS_MST.UP_SOS_CD = #{inUpSosCd}
+            </if>
+        </where>
+        ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
+    </select>
+</mapper>

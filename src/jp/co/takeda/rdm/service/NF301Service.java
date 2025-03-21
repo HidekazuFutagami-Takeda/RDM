@@ -25,7 +25,6 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoJkrData;
 import jp.co.takeda.rdm.dto.NF301DTO;
-import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcoJkrWkEntity;
@@ -623,7 +622,7 @@ public class NF301Service extends BaseService {
 	        String date = sbDate.toString();
 	        if(!DateUtils.isDate(date)) {
 	        	// 有効な年月日を入力してください。（開業年月日）
-	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W022).replace("項目名", "開業年月日") + "\n";
+	        	errMsg = loginInfo.getMsgData(RdmConstantsData.W022).replace("項目名", "開業年月日") + "\n";
 	        	errFlg = true;
 	        }
         }
@@ -812,16 +811,6 @@ public class NF301Service extends BaseService {
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
 
-		// 経営主体
-		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
-		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
-		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
-		mapManageCd.put("", "--なし--");
-		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
-			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
-		}
-		indto.setManageCdCombo(mapManageCd);
-
 		//1-2-10			ワクチン対象区分
 		//コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
 		//		コード名＝VAC_INS_TYPE（ワクチン対象区分）
@@ -883,6 +872,7 @@ public class NF301Service extends BaseService {
         SelectRdmComTrtgrpDataEntity inTrtEntityCmb = new SelectRdmComTrtgrpDataEntity();
         List<SelectRdmComTrtgrpDataEntity> outTrtList = dao.select(inTrtEntityCmb);
         LinkedHashMap<String, String> mapTrt = new LinkedHashMap<String, String>();
+        mapTrt.put("", "--なし--");
         for (SelectRdmComTrtgrpDataEntity outEntity : outTrtList) {
         	mapTrt.put(outEntity.getTrtCd(), outEntity.getTrtCd()+":"+outEntity.getTrtNm());
         }

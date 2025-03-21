@@ -125,58 +125,56 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     }
 
     function onLoadColorSet(){
-    	if(document.fm1.insType.value == "01" || document.fm1.insType.value == "02"){
-			// 黄色設定
-			if(document.fm1.pharmTypeFlg.value == "1"){
-				document.fm1.nextPharmType.className = "comTableSelectYellow";
-			}
-			if(document.fm1.insRankFlg.value == "1"){
-				document.fm1.nextInsRank.className = "comTableSelectYellow";
-			}
-			if(document.fm1.regVisTypeFlg.value == "1"){
-				document.fm1.nextRegVisType.className = "comTableSelectYellow";
-			}
-			if(document.fm1.impHosTypeFlg.value == "1"){
-				document.fm1.nextImpHosType.className = "comTableSelectYellow";
-			}
-			if(document.fm1.manageCdFlg.value == "1"){
-				document.fm1.nextManageCd.className = "comTableSelectYellow";
-			}
-			if(document.fm1.bedCntBaseFlg.value == "1"){
-				document.fm1.nextBedCntBase.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedCnt04Flg.value == "1"){
-				document.fm1.nextBedCnt04.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedCnt01Flg.value == "1"){
-				document.fm1.nextBedCnt01.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedCnt05Flg.value == "1"){
-				document.fm1.nextBedCnt05.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedCnt03Flg.value == "1"){
-				document.fm1.nextBedCnt03.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedCnt07Flg.value == "1"){
-				document.fm1.nextBedCnt07.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedCnt02Flg.value == "1"){
-				document.fm1.nextBedCnt02.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedCnt06Flg.value == "1"){
-				document.fm1.nextBedCnt06.className = "comTableInputYellow";
-			}
-			if(document.fm1.bedsTotFlg.value == "1"){
-				document.fm1.nextBedsTot.className = "comTableInputYellow";
-			} else {
-				document.fm1.nextBedsTot.style = "background-color:#D4D0C8; text-align:right;"
-			}
-			if(document.fm1.medBedsTotFlg.value == "1"){
-				document.fm1.nextMedBedsTot.className = "comTableInputYellow";
-			} else {
-				document.fm1.nextMedBedsTot.style = "background-color:#D4D0C8; text-align:right;"
-			}
-    	}
+		// 黄色設定
+		if(document.fm1.pharmTypeFlg.value == "1"){
+			document.fm1.nextPharmType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.insRankFlg.value == "1"){
+			document.fm1.nextInsRank.className = "comTableSelectYellow";
+		}
+		if(document.fm1.regVisTypeFlg.value == "1"){
+			document.fm1.nextRegVisType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.impHosTypeFlg.value == "1"){
+			document.fm1.nextImpHosType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.manageCdFlg.value == "1"){
+			document.fm1.nextManageCd.className = "comTableSelectYellow";
+		}
+		if(document.fm1.bedCntBaseFlg.value == "1"){
+			document.fm1.nextBedCntBase.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt04Flg.value == "1"){
+			document.fm1.nextBedCnt04.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt01Flg.value == "1"){
+			document.fm1.nextBedCnt01.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt05Flg.value == "1"){
+			document.fm1.nextBedCnt05.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt03Flg.value == "1"){
+			document.fm1.nextBedCnt03.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt07Flg.value == "1"){
+			document.fm1.nextBedCnt07.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt02Flg.value == "1"){
+			document.fm1.nextBedCnt02.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedCnt06Flg.value == "1"){
+			document.fm1.nextBedCnt06.className = "comTableInputYellow";
+		}
+		if(document.fm1.bedsTotFlg.value == "1"){
+			document.fm1.nextBedsTot.className = "comTableInputYellow";
+		} else {
+			document.fm1.nextBedsTot.style = "background-color:#D4D0C8; text-align:right;"
+		}
+		if(document.fm1.medBedsTotFlg.value == "1"){
+			document.fm1.nextMedBedsTot.className = "comTableInputYellow";
+		} else {
+			document.fm1.nextMedBedsTot.style = "background-color:#D4D0C8; text-align:right;"
+		}
     }
 
 	// selectOption作成

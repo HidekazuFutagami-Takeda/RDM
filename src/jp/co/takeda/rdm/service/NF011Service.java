@@ -539,6 +539,7 @@ public class NF011Service extends BaseService {
 		}
 		List<SelectRdmComTrtgrpDataEntity> outTrtList = dao.select(inTrtEntityCmb);
 		LinkedHashMap<String, String> mapTrt = new LinkedHashMap<String, String>();
+		mapTrt.put("", "--なし--");
 		for (SelectRdmComTrtgrpDataEntity outEntity : outTrtList) {
 			mapTrt.put(outEntity.getTrtCd(), outEntity.getTrtCd() + ":" + outEntity.getTrtNm());
 		}

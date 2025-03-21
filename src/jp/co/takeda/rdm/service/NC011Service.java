@@ -414,11 +414,9 @@ public class NC011Service extends BaseService {
   		selectParamNC011List = dao.select(selectParamReqNC011Entity);
 
   		//241002-000014 テスト用申請ID
-  		if(indto.getReqFlg() != null) {
   		if(indto.getReqFlg().equals("1")) {
   			indto.setReqId("");
   			indto.setReqType("");
-  		}
   		}
 
 
@@ -997,11 +995,9 @@ public class NC011Service extends BaseService {
         	//	indto.setBumonRyakuName(indto.getBumonRyakuName());
         	//	indto.setReqJgiName(indto.getJgiName());
         //	}
-              if(indto.getReqFlg() != null) {
               if(!indto.getReqFlg().equals("1")) {
               indto.setReqFlg("0");
               indto.setReqId("");
-              }
               }
           indto.setCatSnseiComboDataList(catSnseiComboDataList);
 

@@ -2853,6 +2853,8 @@ public interface AppConstant {
     public static final String SESKEY_ND103_SEARCHKEY = "ND103_SEARCHKEY";
     /** 医師変更履歴での初期結果 */
     public static final String SESKEY_ND501_SEARCHKEY = "ND501_SEARCHKEY";
+    /** 領域別担当者一覧ポップアップでの初期結果 */
+    public static final String SESKEY_NC208_SEARCHKEY = "NC208_SEARCHKEY";
     /** 施設変更履歴での初期結果 */
     public static final String SESKEY_NF501_SEARCHKEY = "NF501_SEARCHKEY";
     /** 施設検索での初期結果 */

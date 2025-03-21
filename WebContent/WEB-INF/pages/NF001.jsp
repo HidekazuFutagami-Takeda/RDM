@@ -66,6 +66,7 @@
 	    var sosSubScreenSize = "left=0, top=0, width=1100, height=800";
 	 	// 組織選択ボタン
 	    function sosPopBtn(){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			// NC201_組織検索ポップアップを開く
 			window.open("","sosPopWindow",sosSubScreenSize);
 			document.fm1.screenId.value = "NC201";
@@ -75,6 +76,7 @@
 			document.fm1.callBack.value = "callBackSosPop";
 
 			comSubmitForAnyWarp(fm1);
+			comClickFlgInit();
 	    }
 
 	 	// 組織検索ポップアップから値受け取り
@@ -86,6 +88,7 @@
 
 	 	// 担当者選択ボタン
 	    function tantoPopBtn(){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			// NC202_担当者検索ポップアップ画面を表示
 	    	window.open("","tantoPopWindow",tantoSubScreenSize);
 			document.fm1.screenId.value = "NC202";
@@ -189,6 +192,7 @@
 	 	var nf001Tab;
 	 	// アクションボタン
 	    function actBtn(screenId, insNo, tkdTrtKbn){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	 		var tmpIns = fm1.insNo.value;
 	 		// 新規
 	 		if(screenId == "NF011"){
@@ -217,6 +221,7 @@
 
 		 // 新規作成ボタン
 	    function newBtn(){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	    	document.fm1.target="";
 		 	fm1.screenId.value="NF011";
 		  	fm1.functionId.value="Init";
@@ -233,17 +238,19 @@
 
 	 	// ソートボタン
 	    function sortBtn(sortCondition) {
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			//ソート区分設定
 	    	document.fm1.sortCondition.value = sortCondition;
 	    	document.fm1.target="";
 	        document.fm1.screenId.value	= "NF001";
 	        document.fm1.functionId.value = "Search";
 
-	      comSubmitForAnyWarp(fm1);
+	    	comSubmitForAnyWarp(fm1);
 	    }
 
 	 	// ページボタン
 	    function pltPage( pageCntCur ){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			//現在ページ番号変更（遷移）
 			document.fm1.pageCntCur.value = pageCntCur;
 			document.fm1.target="";

@@ -416,6 +416,12 @@
         <action name="NF501Init" class="NF501Action" method="init">
             <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
         </action>
+        <action name="NF501Search" class="NF501Action" method="search">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
+        <action name="NF501Page" class="NF501Action" method="page">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
         <action name="ND103Init" class="ND103Action" method="init">
             <result name="ND103">/WEB-INF/pages/ND103.jsp</result>
         </action>

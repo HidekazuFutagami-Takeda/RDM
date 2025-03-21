@@ -387,10 +387,12 @@ public class DateUtils {
            return false;
         }
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-
+    	Date dt;
         try {
-        	sdf.parse(s);
-            return true;
+        	dt = sdf.parse(s);
+
+        	String sDt = sdf.format(dt);
+            return sDt.equals(s);
         } catch (Exception e) {
             return false;
         }

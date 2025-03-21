@@ -1377,6 +1377,23 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.addrDtKana.value = addrKanaArea;
 	}
 
+	// 住所候補取得項目のクリア
+	function clearAddr(){
+
+		document.fm1.addrCodePrefName.value = "";
+		document.fm1.addrCodePref.value = "";
+		document.fm1.addrCodeCityName.value = "";
+		document.fm1.addrCodeCity.value = "";
+		document.fm1.insAddrDt.value = "";
+
+		document.fm1.tkCityName.value = "";
+		document.fm1.tkCityCd.value = "";
+
+		document.fm1.addrCodePrefKana.value = "";
+		document.fm1.addrCodeCityKana.value = "";
+		document.fm1.addrDtKana.value = "";
+	}
+
 	// 担当者検索ボタン
     function trtPopBtn(){
 		// NC202_担当者検索ポップアップ画面を表示
@@ -2105,7 +2122,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    <td class="comFormTableItem">
 	    	<nobr>
 	    		<s:if test='%{editApprFlg == "1"}'>
-		    		<s:textfield name="insPcode" size="15" maxlength="8" />
+		    		<s:textfield name="insPcode" size="15" maxlength="8" onChange="JavaScript:clearAddr();return false;" />
 		    		<input class="comButton" type="button"name="button2" value="住所候補" onClick="JavaScript:addrPopBtn();return false;" />
 				</s:if>
 				<s:else>

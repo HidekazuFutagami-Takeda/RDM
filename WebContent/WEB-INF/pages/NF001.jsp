@@ -62,8 +62,7 @@
 	    	document.fm1.addrCodeCity.value = document.fm1.tmpAddrCodeCity.value;
 	    }
 
-	    // TODO サイズ調整
-	    var sosSubScreenSize = "left=0, top=0, width=1100, height=800";
+	    var sosSubScreenSize = "left=0, top=0, width=600, height=600";
 	 	// 組織選択ボタン
 	    function sosPopBtn(){
 	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
@@ -73,6 +72,8 @@
 			document.fm1.functionId.value="Init";
 			document.fm1.target="sosPopWindow";
 
+			document.fm1.selectFlgPop.value="1";
+
 			document.fm1.callBack.value = "callBackSosPop";
 
 			comSubmitForAnyWarp(fm1);
@@ -80,10 +81,21 @@
 	    }
 
 	 	// 組織検索ポップアップから値受け取り
-	 	// TODO
-	    function callBackSosPop(sosCd, sosNm){
+	    function callBackSosPop(bumonRank, sosCd,
+	  		  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+			document.fm1.bumonRank.value = bumonRank;
 			document.fm1.sosCd.value = sosCd;
-			document.fm1.sosNm.value = sosNm;
+			document.fm1.sosNm.value = bumonSeiName;
+			document.fm1.brCode.value = brCode;
+			document.fm1.distCode.value = distCode;
+			document.fm1.upSosCd.value = upSosCode;
+
+			if(bumonRank == null || bumonRank == "3"){
+				document.getElementById("tantoButton").disabled = false;
+			} else if(bumonRank == "2"){
+				document.getElementById("tantoButton").disabled = true;
+				tantoClearBtn();
+			}
 	 	}
 
 	 	// 担当者選択ボタン
@@ -438,10 +450,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
 		   <nobr>
 		   <s:if test="bumonRank == '2'">
-		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
+		   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
 		   </s:if>
 		   <s:else>
-		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
+		   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
 		   </s:else>
 		   </nobr>
 		</td>

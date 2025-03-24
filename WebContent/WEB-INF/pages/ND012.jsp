@@ -84,6 +84,7 @@
 			//モック
     		document.fm1.screenId.value="ND013";
     		document.fm1.functionId.value="Init";
+    		document.fm1.paramDocNo.value=document.fm1.tkdDocNo.value
 			comSubmitForAnyWarp(fm1);
     	}
     }
@@ -238,7 +239,8 @@
     <input type="hidden" name="pubInstposEdDDPop" value="" />
 <!-- ボタン制御用 -->
     <s:hidden name="buttonFlg" />
-    	<s:hidden name="title" />
+    <s:hidden name="title" />
+   	<s:hidden name="paramDocNo" />
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>

@@ -508,6 +508,7 @@ public class NF309Service extends BaseService {
             	tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
             	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
             	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
+            	tRdmReqKnrInsData.setFbReqFlg("0");
 
         	} else if("2".equals(indto.getFuncId())) {
         		// 承認
@@ -537,6 +538,7 @@ public class NF309Service extends BaseService {
             	tRdmReqKnrInsData.setAprShaName(indto.getLoginNm());
             	tRdmReqKnrInsData.setAprYmdhms(sysDateTime);
             	tRdmReqKnrInsData.setAprComment(indto.getAprComment());
+            	tRdmReqKnrInsData.setFbReqFlg("0");
         	}
 
         	tRdmReqKnrInsData.setInsNo(indto.getInsNo());

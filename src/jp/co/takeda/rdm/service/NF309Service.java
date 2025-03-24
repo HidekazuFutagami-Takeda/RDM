@@ -72,30 +72,33 @@ public class NF309Service extends BaseService {
         String errMsg = "";
 
         // 必須入力チェック
-        if(indto.getNextPharmType() == null || indto.getNextPharmType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（施設区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextInsRank() == null || indto.getNextInsRank().isEmpty()) {
-        	// 必須項目にデータを入力してください。（階級区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextRegVisType() == null || indto.getNextRegVisType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（定訪先区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextImpHosType() == null || indto.getNextImpHosType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（重点病院区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextManageCd() == null || indto.getNextManageCd().isEmpty()) {
-        	// 必須項目にデータを入力してください。（経営主体）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
-        	errFlg = true;
+        if(!StringUtils.isEmpty(indto.getInsType())
+        	&& !"04".equals(indto.getInsType()) && !"05".equals(indto.getInsType()) && !"07".equals(indto.getInsType())) {
+	        if(indto.getNextPharmType() == null || indto.getNextPharmType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（施設区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextInsRank() == null || indto.getNextInsRank().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（階級区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextRegVisType() == null || indto.getNextRegVisType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（定訪先区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextImpHosType() == null || indto.getNextImpHosType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（重点病院区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextManageCd() == null || indto.getNextManageCd().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（経営主体）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
+	        	errFlg = true;
+	        }
         }
 
         if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {

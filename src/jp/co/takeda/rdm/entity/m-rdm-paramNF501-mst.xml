@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_param_mst">
+    <resultMap id="SelectParamNF501ResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamNF501Entity">
+        <result column="PARAM_NAME" property="paramName"/>
+        <result column="VALUE" property="value"/>
+    </resultMap>
+   <select id="selectParamNF501" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNF501Entity" resultMap="SelectParamNF501ResultMap">
+        SELECT
+            PARAM_NAME, VALUE
+        FROM
+            ORAUSR01.M_RDM_PARAM_MST
+        WHERE
+            PARAM_NAME in ('MAX_ROWNUM', 'NF501_ROWNUM')
+        ORDER BY PARAM_NAME
+    </select>
+</mapper>

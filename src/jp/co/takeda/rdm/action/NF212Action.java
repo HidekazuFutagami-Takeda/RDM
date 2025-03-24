@@ -18,10 +18,14 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.NF212DTO;
 import jp.co.takeda.rdm.exception.InvalidRequestException;
 import jp.co.takeda.rdm.service.NF212Service;
 import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Actionクラス
@@ -43,6 +47,10 @@ public class NF212Action extends BaseAction<NF212DTO> {
      */
     @Inject
     private NF212Service nF212Service;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
     // START UOC
     // END UOC
 
@@ -251,6 +259,7 @@ public class NF212Action extends BaseAction<NF212DTO> {
 
     	// 完了画面に遷移
         outdto.setForward("NC101");
+        setJumpInfo(RdmConstantsData.I016);
 
         // END UOC
         setNextDTO(outdto);
@@ -290,5 +299,24 @@ public class NF212Action extends BaseAction<NF212DTO> {
     	outdto.setForward("NF212");
         setNextDTO(outdto);
         return outdto.getForward();
+    }
+
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String msgId) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+		// 画面タイトル
+		paramDto.setTitle("施設紐付け変更");
+		// メッセージ１
+		if (msgId.equals(RdmConstantsData.I016)) {//I016	一時保存データを破棄しました。
+			paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I016));
+		}
     }
 }

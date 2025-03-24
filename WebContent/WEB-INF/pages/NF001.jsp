@@ -206,6 +206,7 @@
 	    function actBtn(screenId, insNo, tkdTrtKbn){
 	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	 		var tmpIns = fm1.insNo.value;
+
 	 		// 新規
 	 		if(screenId == "NF011"){
 	 			fm1.ultInsCd.value = insNo;
@@ -242,10 +243,18 @@
 	 			nf001Tab.close();
 	 		}
 
+			var tmpAddrCodePref = fm1.addrCodePref.value;
+			fm1.addrCodePref.value = "";
+			var tmpAddrCodeCity = fm1.addrCodeCity.value;
+			fm1.addrCodeCity.value = "";
+
 	 		nf001Tab = window.open("","NF001Tab");
 			document.fm1.target="NF001Tab";
 	  	  	comSubmitForAnyWarp(fm1);
 	  	  	comClickFlgInit();
+
+	  	  	fm1.addrCodePref.value = tmpAddrCodePref;
+	  	  	fm1.addrCodeCity.value = tmpAddrCodeVity;
 		}
 
 	 	// ソートボタン

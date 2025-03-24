@@ -54,8 +54,10 @@ public class ND105Action extends BaseAction<ND105DTO> {
      */
     @Inject
     private ND105Service nD105Service;
-    // 確認画面用にする
-    private ND315DTO paramDto;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
     // START UOC
     // END UOC
 
@@ -235,7 +237,7 @@ public class ND105Action extends BaseAction<ND105DTO> {
         // START UOC
         if (!RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
                 && !"exception".equals(outdto.getForward())){
-            setJumpInfo(dto.getMsgId());
+//            setJumpInfo(dto.getMsgId());
         }
         // END UOC
         // buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
@@ -248,9 +250,10 @@ public class ND105Action extends BaseAction<ND105DTO> {
             dto.setMsgId("");
             dto.setButtonFlg("");
         }
-        if ("8".equals(dto.getButtonFlg())) {
-            // どうにかして画面を閉じる
-
+        if ("8".equals(dto.getButtonFlg())) {//破棄の場合
+            // 完了画面へ遷移
+        	setJumpInfo(RdmConstantsData.I016);
+        	outdto.setForward("NC101Init");
         }
         setNextDTO(outdto);
         return outdto.getForward();
@@ -261,18 +264,6 @@ public class ND105Action extends BaseAction<ND105DTO> {
      * @param dto 登録完了画面DTO
      */
     private void setJumpInfo() {
-        // メッセージオブジェクト取得
-//        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-
-        paramDto = new ND315DTO();
-        // ブラウザタイトルと画面タイトル
-//        paramDto.setBrowerTitle("ND315_医師削除 - 申請内容確認");
-        paramDto.setTitle("ND315_医師削除 - 申請内容確認");
-        paramDto.setReqId(dto.getReqId());
-//        // 戻るリンク1(表示文言)
-//        paramDto.setReturnLinkNm1("ND105_医師削除画面へ戻る");
-//        // 戻るリンク1(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND105Init");
 
     }
 
@@ -290,22 +281,23 @@ public class ND105Action extends BaseAction<ND105DTO> {
         String jokenSetCd = dto.getLoginJokenSetCd();
 
         //画面タイトル内容設定
-        paramDto = new ND315DTO();
-//        // ブラウザタイトル
-//        paramDto.setBrowerTitle ("担当引継ぎ"+ subTitle);
-//        // 画面タイトル
-//        paramDto.setTitle("担当引継ぎ"+ subTitle);
-//        // 戻るリンク(表示文言)
-//        paramDto.setReturnLinkNm1("戻る");
-//        // 戻るリンク(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND105Init");
-//        // メッセージ１
-//        paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I0122706));
-//        paramDto.setMessage3(loginInfo.getMsgEntity(msgId));
+        paramDto = new NC101DTO();
+//      // ブラウザタイトル
+//      paramDto.setBrowerTitle ("ND105_医師削除");
+      // 画面タイトル
+      paramDto.setTitle("医師削除");
+//      // 戻るリンク(表示文言)
+//      paramDto.setReturnLinkNm1("医師検索画面へ");
+//      // 戻るリンク(遷移先URL)
+//      paramDto.setReturnLinkURL1("ND001Init");
+      // メッセージ１
+      if (msgId.equals(RdmConstantsData.I016)) {//I016	一時保存データを破棄しました。
+          paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I016));
+      }
 
-        ND105DTO searchKey = (ND105DTO)sessionMap.get(AppConstant.SESKEY_ND105_SEARCHKEY);
-        searchKey.setReqId(dto.getReqId());
-        sessionMap.put(AppConstant.SESKEY_ND105_SEARCHKEY, searchKey);
+//        ND105DTO searchKey = (ND105DTO)sessionMap.get(AppConstant.SESKEY_ND105_SEARCHKEY);
+//        searchKey.setReqId(dto.getReqId());
+//        sessionMap.put(AppConstant.SESKEY_ND105_SEARCHKEY, searchKey);
     }
 
 }

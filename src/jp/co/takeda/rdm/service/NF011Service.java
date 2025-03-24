@@ -938,6 +938,7 @@ public class NF011Service extends BaseService {
 			tRdmReqKnrInsData.setReqJgiNo(indto.getReqJgiNo());
 			tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
 			tRdmReqKnrInsData.setReqComment(indto.getReqComment());
+			tRdmReqKnrInsData.setFbReqFlg("0");
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
 			tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);

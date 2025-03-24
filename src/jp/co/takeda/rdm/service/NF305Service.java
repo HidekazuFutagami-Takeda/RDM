@@ -373,6 +373,7 @@ public class NF305Service extends BaseService {
             	tRdmReqKnrInsData.setReqJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
             	tRdmReqKnrInsData.setReqJgiName(indto.getLoginNm());
             	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
+            	tRdmReqKnrInsData.setFbReqFlg("0");
         	} else if("2".equals(indto.getFuncId())) {
         		tRdmReqKnrInsData.setReqStsCd("04");
 
@@ -399,6 +400,7 @@ public class NF305Service extends BaseService {
             	tRdmReqKnrInsData.setAprShaName(indto.getLoginNm());
             	tRdmReqKnrInsData.setAprYmdhms(sysDateTime);
             	tRdmReqKnrInsData.setAprComment(indto.getAprComment());
+            	tRdmReqKnrInsData.setFbReqFlg("0");
         	}
 
         	tRdmReqKnrInsData.setReqComment(indto.getReqComment());

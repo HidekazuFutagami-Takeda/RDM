@@ -18,9 +18,13 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.NF315DTO;
 import jp.co.takeda.rdm.service.NF315Service;
 import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Actionクラス
@@ -42,6 +46,10 @@ public class NF315Action extends BaseAction<NF315DTO> {
      */
     @Inject
     private NF315Service nF315Service;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
     // START UOC
     // END UOC
 
@@ -163,6 +171,36 @@ public class NF315Action extends BaseAction<NF315DTO> {
         sessionMap.put(AppConstant.SESKEY_NF315_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
+
+        if("NC101".equals(dto.getForward())) {
+        	setJumpInfo(dto.getFuncId());
+        }
+
         return outdto.getForward();
+    }
+
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String event) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+        // 画面タイトル
+        paramDto.setTitle("施設紐付け削除");
+        // メッセージ１
+        if (event.equals("1")) {//I002	申請が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
+        }
+        if (event.equals("2")) {//I003	承認が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I003));
+        }
+        if (event.equals("3")) {//I004	却下が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I004));
+        }
     }
 }

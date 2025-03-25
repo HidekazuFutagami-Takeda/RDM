@@ -54,8 +54,10 @@ public class ND012Action extends BaseAction<ND012DTO> {
      */
     @Inject
     private ND012Service nD012Service;
-    // 確認画面用にする
-    private ND303DTO paramDto;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
     // START UOC
     // END UOC
 
@@ -232,7 +234,7 @@ public class ND012Action extends BaseAction<ND012DTO> {
         // START UOC
         if (!RdmConstantsData.E003.equals(StringUtils.nvl(dto.getMsgId(),""))
                 && !"exception".equals(outdto.getForward())){
-            setJumpInfo(dto.getMsgId());
+//            setJumpInfo(dto.getMsgId());
         }
         // END UOC
         // buttonflgで初期表示＋メッセージ表示の処理か、確認画面遷移の処理する
@@ -245,9 +247,10 @@ public class ND012Action extends BaseAction<ND012DTO> {
             dto.setMsgId("");
             dto.setButtonFlg("");
         }
-        if ("8".equals(dto.getButtonFlg())) {
-            // どうにかして画面を閉じる
-
+        if ("8".equals(dto.getButtonFlg())) {//破棄の場合
+            // 完了画面へ遷移
+        	setJumpInfo(RdmConstantsData.I016);
+        	outdto.setForward("NC101Init");
         }
         setNextDTO(outdto);
         return outdto.getForward();
@@ -258,18 +261,6 @@ public class ND012Action extends BaseAction<ND012DTO> {
      * @param dto 登録完了画面DTO
      */
     private void setJumpInfo() {
-        // メッセージオブジェクト取得
-//        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-
-        paramDto = new ND303DTO();
-        // ブラウザタイトルと画面タイトル
-//        paramDto.setBrowerTitle("ND303_医師情報更新 - 申請内容確認");
-        paramDto.setTitle("ND303_医師情報更新 - 申請内容確認");
-        paramDto.setReqId(dto.getReqId());
-//        // 戻るリンク1(表示文言)
-//        paramDto.setReturnLinkNm1("ND012_医師新規作成画面へ戻る");
-//        // 戻るリンク1(遷移先URL)
-//        paramDto.setReturnLinkURL1("ND012Init");
 
     }
 
@@ -287,14 +278,23 @@ public class ND012Action extends BaseAction<ND012DTO> {
         String jokenSetCd = dto.getLoginJokenSetCd();
 
         //画面タイトル内容設定
-        paramDto = new ND303DTO();
-        paramDto.setTitle("ND303_医師情報更新 - 申請内容確認");
-        paramDto.setReqId(dto.getReqId());
+        paramDto = new NC101DTO();
+//      // ブラウザタイトル
+//      paramDto.setBrowerTitle ("ND012_医師情報更新");
+      // 画面タイトル
+      paramDto.setTitle("医師情報更新");
+//      // 戻るリンク(表示文言)
+//      paramDto.setReturnLinkNm1("医師検索画面へ");
+//      // 戻るリンク(遷移先URL)
+//      paramDto.setReturnLinkURL1("ND001Init");
+      // メッセージ１
+      if (msgId.equals(RdmConstantsData.I016)) {//I016	一時保存データを破棄しました。
+          paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I016));
+      }
 
-
-        ND012DTO searchKey = (ND012DTO)sessionMap.get(AppConstant.SESKEY_ND012_SEARCHKEY);
-        searchKey.setReqId(dto.getReqId());
-        sessionMap.put(AppConstant.SESKEY_ND012_SEARCHKEY, searchKey);
+//        ND012DTO searchKey = (ND012DTO)sessionMap.get(AppConstant.SESKEY_ND012_SEARCHKEY);
+//        searchKey.setReqId(dto.getReqId());
+//        sessionMap.put(AppConstant.SESKEY_ND012_SEARCHKEY, searchKey);
     }
 
 }

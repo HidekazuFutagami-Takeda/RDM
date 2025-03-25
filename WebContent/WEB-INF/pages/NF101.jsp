@@ -56,9 +56,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 初期表示処理
     function onLoadFunc(){
-    	changeBox("4");
-    	// 対象区分表示
-    	document.fm1.nextHoInsTypeView.value = document.fm1.nextHoInsType.options[document.fm1.nextHoInsType.selectedIndex].textContent;
+    	onLoadChangeBox();
     	// 編集不可設定
 		onLoadEditSet();
 
@@ -125,23 +123,23 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     }
 
     function onLoadColorSet(){
-    	if(document.fm1.insType.value == "01" || document.fm1.insType.value == "02"){
-			// 黄色設定
-			if(document.fm1.pharmTypeFlg.value == "1"){
-				document.fm1.nextPharmType.className = "comTableSelectYellow";
-			}
-			if(document.fm1.insRankFlg.value == "1"){
-				document.fm1.nextInsRank.className = "comTableSelectYellow";
-			}
-			if(document.fm1.regVisTypeFlg.value == "1"){
-				document.fm1.nextRegVisType.className = "comTableSelectYellow";
-			}
-			if(document.fm1.impHosTypeFlg.value == "1"){
-				document.fm1.nextImpHosType.className = "comTableSelectYellow";
-			}
-			if(document.fm1.manageCdFlg.value == "1"){
-				document.fm1.nextManageCd.className = "comTableSelectYellow";
-			}
+		// 黄色設定
+		if(document.fm1.pharmTypeFlg.value == "1"){
+			document.fm1.nextPharmType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.insRankFlg.value == "1"){
+			document.fm1.nextInsRank.className = "comTableSelectYellow";
+		}
+		if(document.fm1.regVisTypeFlg.value == "1"){
+			document.fm1.nextRegVisType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.impHosTypeFlg.value == "1"){
+			document.fm1.nextImpHosType.className = "comTableSelectYellow";
+		}
+		if(document.fm1.manageCdFlg.value == "1"){
+			document.fm1.nextManageCd.className = "comTableSelectYellow";
+		}
+		if(document.fm1.insType.value == "01" || document.fm1.insType.value == "02"){
 			if(document.fm1.bedCntBaseFlg.value == "1"){
 				document.fm1.nextBedCntBase.className = "comTableInputYellow";
 			}
@@ -176,8 +174,90 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			} else {
 				document.fm1.nextMedBedsTot.style = "background-color:#D4D0C8; text-align:right;"
 			}
-    	}
+		}
     }
+
+	// 初期表示時のセレクトボックスの設定
+    function onLoadChangeBox(){
+   		var insType = document.fm1.insType.value;
+   		var pharmType = document.fm1.pharmType.value;
+   		var insRank = document.fm1.insRank.value;
+   		var tmpPharmType = document.fm1.tmpPharmType.value;
+   		var tmpInsRank = document.fm1.tmpInsRank.value;
+   		var tmpRegVisType = document.fm1.tmpRegVisType.value;
+   		var tmpImpHosType = document.fm1.tmpImpHosType.value;
+   		var tmpManageCd = document.fm1.tmpManageCd.value;
+
+   		var pharmTypeBox = document.fm1.nextPharmType;
+   		var insRankBox = document.fm1.nextInsRank;
+   		var regVisTypeBox = document.fm1.nextRegVisType;
+   		var impHosTypeBox = document.fm1.nextImpHosType;
+   		var manageCdBox = document.fm1.nextManageCd;
+
+ 		pharmTypeBox = makePharmTypeBox(pharmTypeBox,insType);
+ 		insRankBox = makeInsRankBox(insRankBox, insType, tmpPharmType);
+ 		regVisTypeBox = makeRegVisTypeBox(regVisTypeBox,insType, tmpPharmType, tmpInsRank);
+ 		impHosTypeBox = makeImpHosTypeBox(impHosTypeBox,insType, tmpPharmType, tmpInsRank);
+ 		manageCdBox = makeManageCdBox(manageCdBox, tmpInsRank);
+
+ 		if(insType == "04" || insType == "05" || insType == "07"){
+ 			document.getElementById("nextPharmType").disabled = true;
+   			document.getElementById("nextInsRank").disabled = true;
+   			document.getElementById("nextRegVisType").disabled = true;
+   			document.getElementById("nextImpHosType").disabled = true;
+   			document.getElementById("nextManageCd").disabled = true;
+   			tmpPharmType = "";
+   			tmpInsRank = "";
+   			tmpRegVisType = "";
+   			tmpImpHosType = "";
+   			tmpManageCd = "";
+ 		} else {
+			if(tmpPharmType != ""){
+				if(tmpInsRank == ""){
+					document.getElementById("nextRegVisType").disabled = true;
+	   		   		document.getElementById("nextImpHosType").disabled = true;
+	   		   		document.getElementById("nextManageCd").disabled = true;
+		   			tmpRegVisType = "";
+		   			tmpImpHosType = "";
+		   			tmpManageCd = "";
+				}
+			} else {
+				document.getElementById("nextInsRank").disabled = true;
+				document.getElementById("nextRegVisType").disabled = true;
+   		   		document.getElementById("nextImpHosType").disabled = true;
+   		   		document.getElementById("nextManageCd").disabled = true;
+	   			tmpInsRank = "";
+	   			tmpRegVisType = "";
+	   			tmpImpHosType = "";
+	   			tmpManageCd = "";
+			}
+ 		}
+
+  		document.fm1.nextPharmType.value = tmpPharmType;
+  		document.fm1.nextInsRank.value = tmpInsRank;
+  		document.fm1.nextRegVisType.value = tmpRegVisType;
+  		document.fm1.nextImpHosType.value = tmpImpHosType;
+  		document.fm1.nextManageCd.value = tmpManageCd;
+
+  		if(document.fm1.nextPharmType.selectedIndex == -1){
+  			document.fm1.nextPharmType.value = "";
+  		}
+  		if(document.fm1.nextInsRank.selectedIndex == -1){
+  			document.fm1.nextInsRank.value = "";
+  		}
+  		if(document.fm1.nextRegVisType.selectedIndex == -1){
+  			document.fm1.nextRegVisType.value = "";
+  		}
+  		if(document.fm1.nextImpHosType.selectedIndex == -1){
+  			document.fm1.nextImpHosType.value = "";
+  		}
+  		if(document.fm1.nextManageCd.selectedIndex == -1){
+  			document.fm1.nextManageCd.value = "";
+  		}
+
+  		setHoInsType();
+	}
+
 
 	// selectOption作成
 	function makeOption(value, text){
@@ -704,55 +784,50 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // セレクトボックスの設定
     function changeBox(changeItem){
-    	// 施設区分
-    	if(changeItem == "4"){
-        	var box = document.fm1.nextPharmType;
-        	box = makePharmTypeBox(box,document.fm1.insType.value);
-        	box.value = document.fm1.tmpPharmType.value;
-    	}
+    	// 施設区分を変更
+    	if(changeItem == "1"){
+			if(document.fm1.nextPharmType.value == ""){
+	    		document.getElementById("nextInsRank").disabled = true;
+			} else {
+				document.getElementById("nextInsRank").disabled = false;
+			}
+   			document.getElementById("nextRegVisType").disabled = true;
+   			document.getElementById("nextImpHosType").disabled = true;
+   			document.getElementById("nextManageCd").disabled = true;
 
-    	// 階級区分
-    	if(changeItem == "2"){
-        	var box = document.fm1.nextInsRank;
-        	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value);
-        	box.value = "";
-    	} else if(changeItem == "4"){
-        	var box = document.fm1.nextInsRank;
-        	box = makeInsRankBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value);
-        	box.value = document.fm1.tmpInsRank.value;
-    	}
+        	var insRankBox = document.fm1.nextInsRank;
+        	insRankBox = makeInsRankBox(insRankBox,document.fm1.insType.value, document.fm1.nextPharmType.value);
+        	insRankBox.value = "";
+        	var regVisBox = document.fm1.nextRegVisType;
+        	regVisBox = makeRegVisTypeBox(regVisBox,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	regVisBox.value = "";
+        	var impHosBox = document.fm1.nextImpHosType;
+        	impHosBox = makeImpHosTypeBox(impHosBox,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	impHosBox.value = "";
+        	var manageBox = document.fm1.nextManageCd;
+        	manageBox = makeManageCdBox(manageBox,document.fm1.nextInsRank.value);
+        	manageBox.value = "";
+    	} else if(changeItem == "2"){
+			// 階級区分を変更
+			if(document.fm1.nextInsRank.value == ""){
+	   			document.getElementById("nextRegVisType").disabled = true;
+	   			document.getElementById("nextImpHosType").disabled = true;
+	   			document.getElementById("nextManageCd").disabled = true;
+			} else {
+				document.getElementById("nextRegVisType").disabled = false;
+	   			document.getElementById("nextImpHosType").disabled = false;
+	   			document.getElementById("nextManageCd").disabled = false;
+			}
 
-    	// 定訪先区分
-    	if(changeItem == "2" || changeItem == "3"){
-        	var box = document.fm1.nextRegVisType;
-        	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
-        	box.value = "";
-    	} else if(changeItem == "4"){
-        	var box = document.fm1.nextRegVisType;
-        	box = makeRegVisTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
-        	box.value = document.fm1.tmpRegVisType.value;
-    	}
-
-    	//  重点病院区分
-    	if(changeItem == "2" || changeItem == "3"){
-        	var box = document.fm1.nextImpHosType;
-        	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
-        	box.value = "";
-    	} else if(changeItem == "4"){
-        	var box = document.fm1.nextImpHosType;
-        	box = makeImpHosTypeBox(box,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
-        	box.value = document.fm1.tmpImpHosType.value;
-    	}
-
-    	// 経営主体
-    	if(changeItem == "2" || changeItem == "3"){
-        	var box = document.fm1.nextManageCd;
-        	box = makeManageCdBox(box,document.fm1.nextInsRank.value);
-        	box.value = "";
-    	} else if(changeItem == "4"){
-        	var box = document.fm1.nextManageCd;
-        	box = makeManageCdBox(box,document.fm1.nextInsRank.value);
-        	box.value = document.fm1.tmpManageCd.value;
+        	var regVisBox = document.fm1.nextRegVisType;
+        	regVisBox = makeRegVisTypeBox(regVisBox,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	regVisBox.value = "";
+        	var impHosBox = document.fm1.nextImpHosType;
+        	impHosBox = makeImpHosTypeBox(impHosBox,document.fm1.insType.value, document.fm1.nextPharmType.value, document.fm1.nextInsRank.value);
+        	impHosBox.value = "";
+        	var manageBox = document.fm1.nextManageCd;
+        	manageBox = makeManageCdBox(manageBox,document.fm1.nextInsRank.value);
+        	manageBox.value = "";
     	}
 
     	setHoInsType();
@@ -1301,14 +1376,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItem">施設区分</td>
 	   	<td class="comFormTableItemNf012"><s:label key="pharmTypeNm" /><s:hidden name="pharmType" /><s:hidden name="pharmTypeNm" /></td>
 	   	<td class="comFormTableItemNf012"><s:label key="shisetsuKbn" /><s:hidden name="shisetsuKbn" /></td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextPharmType" name="nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onchange="changeBox('2')" />
+	   	<td class="comFormTableItemNf012"><s:select id="nextPharmType" name="nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onchange="changeBox('1')" />
 	   	<s:textfield id="pharmTypeView" name="pharmTypeView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr>
 		<td class="comFormTableItem">階級区分</td>
 		<td class="comFormTableItemNf012"><s:label key="insRankNm" /><s:hidden name="insRank" /><s:hidden name="insRankNm" /></td>
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
-	   	<td class="comFormTableItemNf012"><s:select id="nextInsRank" name="nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onchange="changeBox('3'); setHoInsType();" />
+	   	<td class="comFormTableItemNf012"><s:select id="nextInsRank" name="nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onchange="changeBox('2'); setHoInsType();" />
 	   	<s:textfield id="insRankView" name="insRankView" cssStyle="width:120pt" readonly="true" /></td>
 	</tr>
 	<tr>
@@ -1448,7 +1523,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <tr>
 	      <td class="comFormTableItem">
 	      <nobr>
-	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
+	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11")}'>
 		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/>
 		  	</s:if>
 		  	<s:else>
@@ -1491,7 +1566,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{reqStsCd == "01"}'>
+				<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="JavaScript:reqCancelBtn();return false;" />
 				</s:if>
 				<s:else>
@@ -1501,12 +1576,15 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01")}'>
-	                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/>
-	            </s:if>
-	            <s:else>
-	            	<input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" />
-	           	</s:else>
+					<s:if test='%{loginJgiNo == reqJgiNo && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11")}'>
+		            	<input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" />
+		            </s:if>
+		            <s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
+						<input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" />
+		            </s:elseif>
+		            <s:elseif test='%{loginJgiNo == reqJgiNo}'>
+		                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/>
+		           	</s:elseif>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem">
@@ -1526,7 +1604,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-				<s:if test='%{(reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
+				<s:if test='%{(reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/>
 				</s:if>
 				<s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13")}'>

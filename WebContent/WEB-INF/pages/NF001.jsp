@@ -62,30 +62,45 @@
 	    	document.fm1.addrCodeCity.value = document.fm1.tmpAddrCodeCity.value;
 	    }
 
-	    // TODO サイズ調整
-	    var sosSubScreenSize = "left=0, top=0, width=1100, height=800";
+	    var sosSubScreenSize = "left=0, top=0, width=600, height=600";
 	 	// 組織選択ボタン
 	    function sosPopBtn(){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			// NC201_組織検索ポップアップを開く
 			window.open("","sosPopWindow",sosSubScreenSize);
 			document.fm1.screenId.value = "NC201";
 			document.fm1.functionId.value="Init";
 			document.fm1.target="sosPopWindow";
 
+			document.fm1.selectFlgPop.value="1";
+
 			document.fm1.callBack.value = "callBackSosPop";
 
 			comSubmitForAnyWarp(fm1);
+			comClickFlgInit();
 	    }
 
 	 	// 組織検索ポップアップから値受け取り
-	 	// TODO
-	    function callBackSosPop(sosCd, sosNm){
+	    function callBackSosPop(bumonRank, sosCd,
+	  		  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+			document.fm1.bumonRank.value = bumonRank;
 			document.fm1.sosCd.value = sosCd;
-			document.fm1.sosNm.value = sosNm;
+			document.fm1.sosNm.value = bumonSeiName;
+			document.fm1.brCode.value = brCode;
+			document.fm1.distCode.value = distCode;
+			document.fm1.upSosCd.value = upSosCode;
+
+			if(bumonRank == null || bumonRank == "3"){
+				document.getElementById("tantoButton").disabled = false;
+			} else if(bumonRank == "2"){
+				document.getElementById("tantoButton").disabled = true;
+				tantoClearBtn();
+			}
 	 	}
 
 	 	// 担当者選択ボタン
 	    function tantoPopBtn(){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			// NC202_担当者検索ポップアップ画面を表示
 	    	window.open("","tantoPopWindow",tantoSubScreenSize);
 			document.fm1.screenId.value = "NC202";
@@ -189,7 +204,9 @@
 	 	var nf001Tab;
 	 	// アクションボタン
 	    function actBtn(screenId, insNo, tkdTrtKbn){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	 		var tmpIns = fm1.insNo.value;
+
 	 		// 新規
 	 		if(screenId == "NF011"){
 	 			fm1.ultInsCd.value = insNo;
@@ -217,6 +234,7 @@
 
 		 // 新規作成ボタン
 	    function newBtn(){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	    	document.fm1.target="";
 		 	fm1.screenId.value="NF011";
 		  	fm1.functionId.value="Init";
@@ -225,25 +243,35 @@
 	 			nf001Tab.close();
 	 		}
 
+			var tmpAddrCodePref = fm1.addrCodePref.value;
+			fm1.addrCodePref.value = "";
+			var tmpAddrCodeCity = fm1.addrCodeCity.value;
+			fm1.addrCodeCity.value = "";
+
 	 		nf001Tab = window.open("","NF001Tab");
 			document.fm1.target="NF001Tab";
 	  	  	comSubmitForAnyWarp(fm1);
 	  	  	comClickFlgInit();
+
+	  	  	fm1.addrCodePref.value = tmpAddrCodePref;
+	  	  	fm1.addrCodeCity.value = tmpAddrCodeVity;
 		}
 
 	 	// ソートボタン
 	    function sortBtn(sortCondition) {
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			//ソート区分設定
 	    	document.fm1.sortCondition.value = sortCondition;
 	    	document.fm1.target="";
 	        document.fm1.screenId.value	= "NF001";
 	        document.fm1.functionId.value = "Search";
 
-	      comSubmitForAnyWarp(fm1);
+	    	comSubmitForAnyWarp(fm1);
 	    }
 
 	 	// ページボタン
 	    function pltPage( pageCntCur ){
+	    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 			//現在ページ番号変更（遷移）
 			document.fm1.pageCntCur.value = pageCntCur;
 			document.fm1.target="";
@@ -431,10 +459,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
 		   <nobr>
 		   <s:if test="bumonRank == '2'">
-		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
+		   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
 		   </s:if>
 		   <s:else>
-		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
+		   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
 		   </s:else>
 		   </nobr>
 		</td>
@@ -559,7 +587,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 <%-- ページャー表示 開始 --%>
           <s:if test='pageFlag == "1" '>
           </s:if>
-          <s:else>
+		<s:else>
           	<table width="80%">
           		<tr>
                     <td align="right">

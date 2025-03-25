@@ -57,9 +57,9 @@
     	if(backKbn == '1')	{
 	    	if(window.confirm(destructMsg.replace("（遷移元）", '申請一覧'))){
 				//モック
-	    		document.fm1.screenId.value="NC011";
-	    		document.fm1.functionId.value="Init";
-  				comSubmitForAnyWarp(fm1);
+// 	    		document.fm1.screenId.value="NC011";
+// 	    		document.fm1.functionId.value="Init";
+//   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
 				window.close();
 				//元タブにフォーカス
@@ -68,9 +68,9 @@
     	if(backKbn == '2')	{
 	    	if(window.confirm("画面を閉じます。よろしいですか？")){
 				//モック
-	    		document.fm1.screenId.value="NC001";
-	    		document.fm1.functionId.value="Init";
-  				comSubmitForAnyWarp(fm1);
+// 	    		document.fm1.screenId.value="NC001";
+// 	    		document.fm1.functionId.value="Init";
+//   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
 				window.close();
 				//元タブにフォーカス
@@ -110,10 +110,10 @@
             document.fm1.button2.disabled = true;
             document.fm1.button3.disabled = true;
           }
-		const returnFlg = document.fm1.buttonFlg.value;
-		if(returnFlg == "8"){//削除完了時画面を閉じろ
- 			window.close();ではjsで開いた画面しか無理
-		}
+// 		const returnFlg = document.fm1.buttonFlg.value;
+// 		if(returnFlg == "8"){//削除完了時画面を閉じろ
+//  			window.close();ではjsで開いた画面しか無理
+// 		}
         return false;
       }
     </script>

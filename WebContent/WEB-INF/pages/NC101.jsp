@@ -126,14 +126,14 @@ function backBtn(){
       <s:hidden name="backScreenId" value="NC101" />
       <s:hidden name="preScreenId"/>
 
-      <table>
+      <table class="comPortalTitle">
         <tr>
           <td class="comPortalTitleIcon"></td>
-          <td><nobr><s:property value="title"/></nobr></td>
+          <td class="comPortalTitle"><nobr><s:property value="title"/></nobr></td>
           <td class="comPortalTitleRight"><nobr></nobr></td>
         </tr>
       </table>
-      <table>
+      <table class="comPortalBody">
 <!-- 一覧表示処理 START-->
         <tr>
           <td valign="top" align="center" style="padding-left:5px;">

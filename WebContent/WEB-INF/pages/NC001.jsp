@@ -338,6 +338,27 @@ function comSetFormWindowInfo(){
               　　　　　　　　　</td>
                 <td>速度確認。遅い</td>
               </tr>
+              <tr>
+                <td></td>
+              　　　　　　　　　<td>
+                 <a href="" class="contentsTitle" onclick="gotoNext('ND012','Init'); return false;">医師情報更新（開発中）</a>
+              　　　　　　　　　</td>
+                <td>医師情報更新直リンク（開発中）</td>
+              </tr>
+              <tr>
+                <td></td>
+              　　　　　　　　　<td>
+                 <a href="" class="contentsTitle" onclick="gotoNext('ND105','Init'); return false;">医師削除（開発中）</a>
+              　　　　　　　　　</td>
+                <td>医師削除直リンク（開発中）</td>
+              </tr>
+              <tr>
+                <td></td>
+              　　　　　　　　　<td>
+                 <a href="" class="contentsTitle" onclick="gotoNext('ND014','Init'); return false;">医師復活（開発中）</a>
+              　　　　　　　　　</td>
+                <td>医師復活直リンク（開発中）</td>
+              </tr>
              <tr><td>入力項目</td>
               　　　　　　　　　<td><label>申請ID</label></td>
                 <td><s:textfield name="reqId" size="13" maxlength="13" /></td>
@@ -353,6 +374,14 @@ function comSetFormWindowInfo(){
             <tr><td></td>
               　　　　　　　　　<td><label>ULT医師コード</label></td>
                 <td><s:textfield name="ultDocNo" size="8" maxlength="8" /></td>
+              </tr>
+            <tr><td></td>
+              　　　　　　　　　<td><label>武田医師コード</label></td>
+                <td><s:textfield name="tkdDocNo" size="14" maxlength="14" /></td>
+              </tr>
+            <tr><td></td>
+              　　　　　　　　　<td><label>遷移元画面ID</label></td>
+                <td><s:textfield name="preScreenId" size="8" maxlength="8" /></td>
               </tr>
             </table>
           </s:if>

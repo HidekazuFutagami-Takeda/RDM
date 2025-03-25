@@ -9,7 +9,7 @@
  * @see
  */
 --%>
-<!--  <%@page import="jp.co.takeda.rdm.dto.NC201DTO"%>-->
+<%@page import="jp.co.takeda.rdm.dto.NC201DTO"%>
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal,java.lang.String"
@@ -32,7 +32,17 @@
   <link href="css/catSosJgiExpand.css" rel="Stylesheet" type="text/css" />
   <script type="text/javascript" src="js/common.js"></script>
   <script type="text/javascript" src="js/ajax.js"></script>
-  <script type="text/javascript" src="js/rdmCatSosExpand.js"></script>
+  <script type="text/javascript" src="js/NC201.js"></script>
+  <script>
+
+      function allClose() {
+    	  if (document.getElementById('initSos').style.display == "block") {
+    		  cseChangeIcon("right.gif", "img" + g_resultDivId);
+    	      document.getElementById(searchUpSosCd).style.display = "none";
+    	  }
+      }
+
+  </script>
 </head>
 <body class="comPage" onLoad="cseLoad('<s:property value="selectFlgPop"/>');" OnUnLoad="cseUnLoad();">
 <%-- submit用フォーム 開始 --%>
@@ -70,14 +80,11 @@
   <s:iterator value="sosInitSosData" status="status" var="rowBean">
   <%-- 上位組織はリストの下にあるので、後ろから取得するべき --%>
   <input type="hidden" name="initSosCd" value="<s:property value="#rowBean.sosCd"/>">
-  <input type="hidden" name="initBumonRank" value="<s:property value="#rowBean.bumonRank"/>">
+  <input type="hidden" name="initBumonRank" value="<s:property value="#rowBean.bumonRankPop"/>">
   </s:iterator>
 
   <%-- 従業員選択取得フェッチサイズ（デフォルト値用） --%>
   <s:hidden name="jgiFetchSizeDefault" />
-
-  <%-- 選択フラグ --%>
-  <s:hidden name="selectFlgPop" />
 
   <%-- 連続選択フラグ --%>
   <s:hidden name="conSelFlg" />
@@ -107,17 +114,18 @@
           <img
             src="img/right.gif"
             name="img<s:property value="#rowBean.sosCd"/>"
-            onclick="rcseCallAjax('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>', '<s:property value="#rowBean.trtCd"/>'); return false;"
+            onclick="nC201CallAjax('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRankPop"/>', '<s:property value="#rowBean.trtCd"/>'); return false;"
           >
         </s:if>
 
         <%-- 組織名 --%>
         <s:if test="%{(selectFlgPop == 1 )}">
           <a
+            id="initSos"
             href=""
             name="focus<s:property value="#rowBean.sosCd"/>"
             class="comLink"
-            onclick="rcseCallAjax('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>'); return false;"
+            onclick="nC201CallAjax('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRankPop"/>', '<s:property value="#rowBean.trtCd"/>'); return false;"
           ><s:property value="#rowBean.bumonSeiName"/></a>
         </s:if>
         <s:else>
@@ -128,10 +136,11 @@
       <br>
       <%-- 子組織の配置空間 --%>
       <div style="display:none" class="resultDiv" id="<s:property value="#rowBean.sosCd"/>"></div>
+      </div>
+      </s:iterator>
     </div>
-  </s:iterator>
-  </div>
-  </div>
+    </td></tr>
+
   </table>
 
 
@@ -140,18 +149,21 @@
 
   </div>
   <hr class="comSplit">
-  <table class="comPortalControlTable comPortalControlTablePopup" align="center">
+
+
+
+  </table>
+  <table style="margin:0; width:100vw; table-layout:fixed;" align="center">
     <tr>
-      <td width="100%"></td>
-      <td id="controlButton" class="comPortalControlItem">
+      <td id="controlButton" class="comPortalControlItem" align="left">
         <input type="button" value="閉じる" OnClick="cseClose();">
       </td>
+      <td id="controlButton" class="comPortalControlItem" align="center">
+        <input type="button" value="全てたたむ" OnClick="cseAllClose();">
+      </td>
+      <td></td>
     </tr>
   </table>
-
-  </td></tr>
-  </table>
-
 <%-- ポータルボディー 終了 --%>
   </form>
 <%-- input用フォーム 終了 --%>

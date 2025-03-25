@@ -1,6 +1,6 @@
 /**
  * <pre>
- *	施設選択のJavaScript
+ *	医師選択のJavaScript
  * </pre>
  * @since 1.0
  * @version $Revision: 1.2 $

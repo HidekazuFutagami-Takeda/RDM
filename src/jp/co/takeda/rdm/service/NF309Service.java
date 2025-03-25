@@ -22,6 +22,7 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.NF309DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
@@ -71,30 +72,33 @@ public class NF309Service extends BaseService {
         String errMsg = "";
 
         // 必須入力チェック
-        if(indto.getNextPharmType() == null || indto.getNextPharmType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（施設区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextInsRank() == null || indto.getNextInsRank().isEmpty()) {
-        	// 必須項目にデータを入力してください。（階級区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextRegVisType() == null || indto.getNextRegVisType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（定訪先区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextImpHosType() == null || indto.getNextImpHosType().isEmpty()) {
-        	// 必須項目にデータを入力してください。（重点病院区分）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
-        	errFlg = true;
-        }
-        if(indto.getNextManageCd() == null || indto.getNextManageCd().isEmpty()) {
-        	// 必須項目にデータを入力してください。（経営主体）
-        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
-        	errFlg = true;
+        if(!StringUtils.isEmpty(indto.getInsType())
+        	&& !"04".equals(indto.getInsType()) && !"05".equals(indto.getInsType()) && !"07".equals(indto.getInsType())) {
+	        if(indto.getNextPharmType() == null || indto.getNextPharmType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（施設区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextInsRank() == null || indto.getNextInsRank().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（階級区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextRegVisType() == null || indto.getNextRegVisType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（定訪先区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextImpHosType() == null || indto.getNextImpHosType().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（重点病院区分）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
+	        	errFlg = true;
+	        }
+	        if(indto.getNextManageCd() == null || indto.getNextManageCd().isEmpty()) {
+	        	// 必須項目にデータを入力してください。（経営主体）
+	        	errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
+	        	errFlg = true;
+	        }
         }
 
         if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
@@ -368,6 +372,16 @@ public class NF309Service extends BaseService {
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
 
+		// 経営主体
+		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
+		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
+		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
+		mapManageCd.put("", "--なし--");
+		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
+			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
+		}
+		indto.setManageCdCombo(mapManageCd);
+
 		// ワクチン対象区分
 		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_VAC_INS_TYPE);
 		outMainList.clear();
@@ -494,6 +508,7 @@ public class NF309Service extends BaseService {
             	tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
             	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
             	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
+            	tRdmReqKnrInsData.setFbReqFlg("0");
 
         	} else if("2".equals(indto.getFuncId())) {
         		// 承認
@@ -523,6 +538,7 @@ public class NF309Service extends BaseService {
             	tRdmReqKnrInsData.setAprShaName(indto.getLoginNm());
             	tRdmReqKnrInsData.setAprYmdhms(sysDateTime);
             	tRdmReqKnrInsData.setAprComment(indto.getAprComment());
+            	tRdmReqKnrInsData.setFbReqFlg("0");
         	}
 
         	tRdmReqKnrInsData.setInsNo(indto.getInsNo());

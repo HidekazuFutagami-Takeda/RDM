@@ -66,6 +66,8 @@ public class NF401Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
 
+        indto.setPageFlag("1");
+
         // 一括承認ボタンの活性設定
         String mnFac = "0";
     	String mnNt = "0";
@@ -116,6 +118,8 @@ public class NF401Service extends BaseService {
         	inputFlg = true;
         } else if(indto.getInsNo() != null && !indto.getInsNo().isEmpty()) {
         	inputFlg = true;
+        } else if(indto.getUltInsNo() != null && !indto.getUltInsNo().isEmpty()) {
+        	inputFlg = true;
         } else if(indto.getInsKanjSrch() != null && !indto.getInsKanjSrch().isEmpty()) {
         	inputFlg = true;
         } else if(indto.getShisetsuNmSrch() != null && !indto.getShisetsuNmSrch().isEmpty()) {
@@ -135,7 +139,7 @@ public class NF401Service extends BaseService {
       	  indto.setMsgStr(tmpMsgStr);
       	  return outdto;
       }
-/*
+
         // 一覧表示データ
         List<HcoReqDataList> hcoReqDataList = new ArrayList<HcoReqDataList>();
 
@@ -237,6 +241,7 @@ public class NF401Service extends BaseService {
         indto.initPageInfo(indto.getPageCntCur(), selectNF401MainDataCntList.get(0).getCnt(), selectParamNF401List.get(1).getValue());
         selectNF401MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
         selectNF401MainDataEntity.setInLimit(selectParamNF401List.get(1).getValue());
+        indto.setPageFlag("0");
 
         // 一覧を取得する
         List<SelectNF401MainDataEntity> selectNF401MainDataEntityList = dao.select(selectNF401MainDataEntity);
@@ -264,7 +269,232 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setPharmType(" ");
         	}
+        	if(entity.getShisetsuKbn() != null && !entity.getShisetsuKbn().isEmpty()) {
+        		dataRecord.setShisetsuKbn(entity.getShisetsuKbn());
+        	} else {
+        		dataRecord.setShisetsuKbn(" ");
+        	}
+        	if(entity.getNextPharmType() != null && !entity.getNextPharmType().isEmpty()) {
+        		dataRecord.setNextPharmType(entity.getNextPharmType());
+        	} else {
+        		dataRecord.setNextPharmType(" ");
+        	}
 
+        	// 階級区分
+        	if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
+        		dataRecord.setInsRank(entity.getInsRank());
+        	} else {
+        		dataRecord.setInsRank(" ");
+        	}
+        	if(entity.getNextInsRank() != null && !entity.getNextInsRank().isEmpty()) {
+        		dataRecord.setNextInsRank(entity.getNextInsRank());
+        	} else {
+        		dataRecord.setNextInsRank(" ");
+        	}
+
+        	// 定訪先区分
+        	if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
+        		dataRecord.setRegVisType(entity.getRegVisType());
+        	} else {
+        		dataRecord.setRegVisType(" ");
+        	}
+        	if(entity.getNextRegVisType() != null && !entity.getNextRegVisType().isEmpty()) {
+        		dataRecord.setNextRegVisType(entity.getNextRegVisType());
+        	} else {
+        		dataRecord.setNextRegVisType(" ");
+        	}
+
+        	// 重点病院区分
+        	if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
+        		dataRecord.setImpHosType(entity.getImpHosType());
+        	} else {
+        		dataRecord.setImpHosType(" ");
+        	}
+        	if(entity.getNextImpHosType() != null && !entity.getNextImpHosType().isEmpty()) {
+        		dataRecord.setNextImpHosType(entity.getNextImpHosType());
+        	} else {
+        		dataRecord.setNextImpHosType(" ");
+        	}
+
+        	// 対象区分
+        	if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
+        		dataRecord.setHoInsType(entity.getHoInsType());
+        	} else {
+        		dataRecord.setHoInsType(" ");
+        	}
+        	if(entity.getNextHoInsType() != null && !entity.getNextHoInsType().isEmpty()) {
+        		dataRecord.setNextHoInsType(entity.getNextHoInsType());
+        	} else {
+        		dataRecord.setNextHoInsType(" ");
+        	}
+
+        	// 経営主体
+        	if(entity.getManageNm() != null && !entity.getManageNm().isEmpty()) {
+        		dataRecord.setManageNm(entity.getManageNm());
+        	} else {
+        		dataRecord.setManageNm(" ");
+        	}
+        	if(entity.getKeieitai() != null && !entity.getKeieitai().isEmpty()) {
+        		dataRecord.setKeieitai(entity.getKeieitai());
+        	} else {
+        		dataRecord.setKeieitai(" ");
+        	}
+        	if(entity.getNextManageNm() != null && !entity.getNextManageNm().isEmpty()) {
+        		dataRecord.setNextManageNm(entity.getNextManageNm());
+        	} else {
+        		dataRecord.setNextManageNm(" ");
+        	}
+
+
+        	// ワクチン対象区分
+        	if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
+        		dataRecord.setVacInsType(entity.getVacInsType());
+        	} else {
+        		dataRecord.setVacInsType(" ");
+        	}
+        	if(entity.getNextVacInsType() != null && !entity.getNextVacInsType().isEmpty()) {
+        		dataRecord.setNextVacInsType(entity.getNextVacInsType());
+        	} else {
+        		dataRecord.setNextVacInsType(" ");
+        	}
+
+        	// ワクチン定訪先区分
+        	if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
+        		dataRecord.setVacVisitType(entity.getVacVisitType());
+        	} else {
+        		dataRecord.setVacVisitType(" ");
+        	}
+        	if(entity.getNextVacVisitType() != null && !entity.getNextVacVisitType().isEmpty()) {
+        		dataRecord.setNextVacVisitType(entity.getNextVacVisitType());
+        	} else {
+        		dataRecord.setNextVacVisitType(" ");
+        	}
+
+        	// 病床数基準
+        	if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
+        		dataRecord.setBedCntBase(entity.getBedCntBase());
+        	} else {
+        		dataRecord.setBedCntBase(" ");
+        	}
+        	if(entity.getUltBedCntBase() != null && !entity.getUltBedCntBase().isEmpty()) {
+        		dataRecord.setUltBedCntBase(entity.getUltBedCntBase());
+        	} else {
+        		dataRecord.setUltBedCntBase(" ");
+        	}
+        	if(entity.getNextBedCntBase() != null && !entity.getNextBedCntBase().isEmpty()) {
+        		dataRecord.setNextBedCntBase(entity.getNextBedCntBase());
+        	} else {
+        		dataRecord.setNextBedCntBase(" ");
+        	}
+
+        	// 結核
+        	if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
+        		dataRecord.setBedCnt04(entity.getBedCnt04());
+        	} else {
+        		dataRecord.setBedCnt04(" ");
+        	}
+        	if(entity.getUltBedCnt04() != null && !entity.getUltBedCnt04().isEmpty()) {
+        		dataRecord.setUltBedCnt04(entity.getUltBedCnt04());
+        	} else {
+        		dataRecord.setUltBedCnt04(" ");
+        	}
+        	if(entity.getNextBedCnt04() != null && !entity.getNextBedCnt04().isEmpty()) {
+        		dataRecord.setNextBedCnt04(entity.getNextBedCnt04());
+        	} else {
+        		dataRecord.setNextBedCnt04(" ");
+        	}
+
+        	// 一般
+        	if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
+        		dataRecord.setBedCnt01(entity.getBedCnt01());
+        	} else {
+        		dataRecord.setBedCnt01(" ");
+        	}
+        	if(entity.getUltBedCnt01() != null && !entity.getUltBedCnt01().isEmpty()) {
+        		dataRecord.setUltBedCnt01(entity.getUltBedCnt01());
+        	} else {
+        		dataRecord.setUltBedCnt01(" ");
+        	}
+        	if(entity.getNextBedCnt01() != null && !entity.getNextBedCnt01().isEmpty()) {
+        		dataRecord.setNextBedCnt01(entity.getNextBedCnt01());
+        	} else {
+        		dataRecord.setNextBedCnt01(" ");
+        	}
+
+        	// 感染症
+        	if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
+        		dataRecord.setBedCnt05(entity.getBedCnt05());
+        	} else {
+        		dataRecord.setBedCnt05(" ");
+        	}
+        	if(entity.getUltBedCnt05() != null && !entity.getUltBedCnt05().isEmpty()) {
+        		dataRecord.setUltBedCnt05(entity.getUltBedCnt05());
+        	} else {
+        		dataRecord.setUltBedCnt05(" ");
+        	}
+        	if(entity.getNextBedCnt05() != null && !entity.getNextBedCnt05().isEmpty()) {
+        		dataRecord.setNextBedCnt05(entity.getNextBedCnt05());
+        	} else {
+        		dataRecord.setNextBedCnt05(" ");
+        	}
+
+        	// 精神
+        	if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
+        		dataRecord.setBedCnt03(entity.getBedCnt03());
+        	} else {
+        		dataRecord.setBedCnt03(" ");
+        	}
+        	if(entity.getUltBedCnt03() != null && !entity.getUltBedCnt03().isEmpty()) {
+        		dataRecord.setUltBedCnt03(entity.getUltBedCnt03());
+        	} else {
+        		dataRecord.setUltBedCnt03(" ");
+        	}
+        	if(entity.getNextBedCnt03() != null && !entity.getNextBedCnt03().isEmpty()) {
+        		dataRecord.setNextBedCnt03(entity.getNextBedCnt03());
+        	} else {
+        		dataRecord.setNextBedCnt03(" ");
+        	}
+
+        	// 療養
+        	if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
+        		dataRecord.setBedCnt07(entity.getBedCnt07());
+        	} else {
+        		dataRecord.setBedCnt07(" ");
+        	}
+        	if(entity.getUltBedCnt07() != null && !entity.getUltBedCnt07().isEmpty()) {
+        		dataRecord.setUltBedCnt07(entity.getUltBedCnt07());
+        	} else {
+        		dataRecord.setUltBedCnt07(" ");
+        	}
+        	if(entity.getNextBedCnt07() != null && !entity.getNextBedCnt07().isEmpty()) {
+        		dataRecord.setNextBedCnt07(entity.getNextBedCnt07());
+        	} else {
+        		dataRecord.setNextBedCnt07(" ");
+        	}
+
+        	// 医療療養
+        	if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
+        		dataRecord.setBedCnt02(entity.getBedCnt02());
+        	} else {
+        		dataRecord.setBedCnt02(" ");
+        	}
+        	if(entity.getNextBedCnt02() != null && !entity.getNextBedCnt02().isEmpty()) {
+        		dataRecord.setNextBedCnt02(entity.getNextBedCnt02());
+        	} else {
+        		dataRecord.setNextBedCnt02(" ");
+        	}
+
+        	// 介護療養
+        	if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
+        		dataRecord.setBedCnt06(entity.getBedCnt06());
+        	} else {
+        		dataRecord.setBedCnt06(" ");
+        	}
+        	if(entity.getNextBedCnt06() != null && !entity.getNextBedCnt06().isEmpty()) {
+        		dataRecord.setNextBedCnt06(entity.getNextBedCnt06());
+        	} else {
+        		dataRecord.setNextBedCnt06(" ");
+        	}
 
         	// ベッド数計
         	if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
@@ -272,11 +502,59 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setBedsTot(" ");
         	}
+        	if(entity.getUltBedsTot() != null && !entity.getUltBedsTot().isEmpty()) {
+        		dataRecord.setUltBedsTot(entity.getUltBedsTot());
+        	} else {
+        		dataRecord.setUltBedsTot(" ");
+        	}
+        	if(entity.getNextBedsTot() != null && !entity.getNextBedsTot().isEmpty()) {
+        		dataRecord.setNextBedsTot(entity.getNextBedsTot());
+        	} else {
+        		dataRecord.setNextBedsTot(" ");
+        	}
+
+        	// 医療ベッド数計
+        	if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
+        		dataRecord.setMedBedsTot(entity.getMedBedsTot());
+        	} else {
+        		dataRecord.setMedBedsTot(" ");
+        	}
+        	if(entity.getUltMedBedsTot() != null && !entity.getUltMedBedsTot().isEmpty()) {
+        		dataRecord.setUltMedBedsTot(entity.getUltMedBedsTot());
+        	} else {
+        		dataRecord.setUltMedBedsTot(" ");
+        	}
+        	if(entity.getNextMedBedsTot() != null && !entity.getNextMedBedsTot().isEmpty()) {
+        		dataRecord.setNextMedBedsTot(entity.getNextMedBedsTot());
+        	} else {
+        		dataRecord.setNextMedBedsTot(" ");
+        	}
+
+        	// 未審査申請数
+        	if(entity.getNoShnCnt() != null) {
+        		dataRecord.setNoShnCnt(entity.getNoShnCnt());
+        	} else {
+        		dataRecord.setNoShnCnt(0);
+        	}
+
+        	// 申請コメント
+        	if(entity.getReqComment() != null && !entity.getReqComment().isEmpty()) {
+        		dataRecord.setReqComment(entity.getReqComment());
+        	} else {
+        		dataRecord.setReqComment(" ");
+        	}
+
+        	// 承認・却下コメント
+        	if(entity.getAprComment() != null && !entity.getAprComment().isEmpty()) {
+        		dataRecord.setAprComment(entity.getAprComment());
+        	} else {
+        		dataRecord.setAprComment(" ");
+        	}
 
         	hcoReqDataList.add(dataRecord);
         }
         indto.setHcoReqDataList(hcoReqDataList);
-*/
+
         indto.setSrchFlg("1");
 
         // END UOC

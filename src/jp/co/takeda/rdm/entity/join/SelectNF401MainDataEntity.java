@@ -129,6 +129,12 @@ public class SelectNF401MainDataEntity extends BaseEntity implements Serializabl
     private String insAbbrName;
 
     /**
+     * ULT施設名
+     * @generated
+     */
+    private String shisetsuNmRyaku;
+
+    /**
      * 施設区分
      * @generated
      */
@@ -705,6 +711,21 @@ public class SelectNF401MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setInsAbbrName(String insAbbrName) {
 		this.insAbbrName = insAbbrName;
+	}
+
+	/**
+	 * SelectNF401MainDataEntity.javashisetsuNmRyakuを設定
+	 * @return shisetsuNmRyaku
+	 */
+	public String getShisetsuNmRyaku() {
+		return shisetsuNmRyaku;
+	}
+
+	/**
+	 * @param shisetsuNmRyaku セットする shisetsuNmRyaku
+	 */
+	public void setShisetsuNmRyaku(String shisetsuNmRyaku) {
+		this.shisetsuNmRyaku = shisetsuNmRyaku;
 	}
 
 	/**

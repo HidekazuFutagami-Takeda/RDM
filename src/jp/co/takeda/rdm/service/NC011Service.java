@@ -417,7 +417,8 @@ public class NC011Service extends BaseService {
   		if(indto.getReqFlg() != null) {
   		if(indto.getReqFlg().equals("1")) {
   			indto.setReqId("");
-  			indto.setReqType("");
+  			//indto.setReqId(indto.getReqIdCell());
+  			indto.setReqType(indto.getReqTypeCell());
   		}
   		}
 
@@ -444,6 +445,8 @@ public class NC011Service extends BaseService {
           //selectCntSelectReqListEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
 
           //申請IDの検索値のセット、setEmptyToNullで空文字をNullに置換している。
+          //paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getInReqId()));
+          //selectCntSelectReqListEntity.setReqId(StringUtils.setEmptyToNull(indto.getInReqId()));
           paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
           selectCntSelectReqListEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
           if(!loginInfo.getPreScreenId().equals("NM101")) {
@@ -1000,7 +1003,13 @@ public class NC011Service extends BaseService {
               if(indto.getReqFlg() != null) {
               if(!indto.getReqFlg().equals("1")) {
               indto.setReqFlg("0");
-              indto.setReqId("");
+              //indto.setReqId("");
+              }
+              if(indto.getReqFlg().equals("1")) {
+              //indto.setReqFlg("0");
+              //indto.setReqId(indto.getReqIdCell());
+              //indto.setReqId("");
+              indto.setReqType(indto.getReqIdCell());
               }
               }
           indto.setCatSnseiComboDataList(catSnseiComboDataList);
@@ -1080,7 +1089,7 @@ public class NC011Service extends BaseService {
 			return outdto;
 
   		}
-  		indto.setReqId("");
+  		//indto.setReqId("");
         outdto = search(indto);
 
         // END UOC

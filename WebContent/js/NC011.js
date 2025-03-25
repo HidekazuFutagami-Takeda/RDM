@@ -38,6 +38,7 @@ function rdmCheck(reqId,reqType) {
 	if (!jkrDestructChack()) return false;
 
 	var reqIdcell = fm1.reqId.value;
+	var reqIdcell2 = fm1.reqId.value;
 
 
 	fm1.reqId.value=reqId;
@@ -62,7 +63,7 @@ function rdmCheck(reqId,reqType) {
 	if(reqType == '施設紐づけの削除'){
 		fm1.reqType.value='13';
 		}
-	if(reqType == '施設来期情報更新'){
+	if(reqType == '施設来期用項目更新'){
 		fm1.reqType.value='21';
 		}
 	if(reqType == '医師新規作成'){
@@ -120,11 +121,13 @@ function rdmCheck(reqId,reqType) {
 function rdmSearch() {
 
 	if (!jkrDestructChack()) return false;
-
+	var reqIdcell = fm1.reqId.value;
+	var reqIdcell2 = fm1.reqId.value;
 	fm1.reqFlg.value="2";
 	  document.fm1.target = "";
 	  document.fm1.reqFlg.value = "0";
       document.fm1.screenId.value	= "NC011";
+
       document.fm1.functionId.value = 'Search';
       //document.fm1.bumonRyakuName.value = bumonRyakuName;
 
@@ -138,6 +141,7 @@ function rdmSearch() {
 
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
+    fm1.reqId.value=reqIdcell;
 
 }
 
@@ -272,7 +276,7 @@ function NC011Seni() {
 	var val1 = fm1.reqFlg.value;
 	COM_Click_flg = true;
 	if(val1 != "1"){
-		fm1.reqId.value = "";
+		//fm1.reqId.value = "";
 	}
 	if(val1 == "1"){
 	var reqIdcell = fm1.reqIdCell.value;
@@ -280,9 +284,11 @@ function NC011Seni() {
 	var reqTypecell = fm1.reqTypeCell.value;
 
 	var tmpReq = fm1.reqId.value;
+	var tmpType = fm1.reqType.value;
 	var nc011Tab;
 
 	fm1.reqId.value=reqIdcell;
+	fm1.reqType.value=reqTypecell;
 
 
 
@@ -370,7 +376,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 
 		//fm1.insNo.value = tmpIns;
 
@@ -408,7 +414,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設情報更新"){
 		alert("NF012_施設情報更新に遷移します")
@@ -437,7 +443,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設削除"){
 		alert("NF013_施設削除に遷移します")
@@ -466,7 +472,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設復活"){
 		alert("NF014_施設復活に遷移します")
@@ -495,7 +501,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設紐付け新規"){
 		alert("NF211_施設紐づけ作成に遷移します")
@@ -510,7 +516,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "12"){
 		alert("NF212_親施設の変更に遷移します")
@@ -525,7 +531,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設紐付け変更"){
 		alert("NF212_親施設の変更に遷移します")
@@ -540,7 +546,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "13"){
 		alert("NF213_施設紐づけの削除に遷移します")
@@ -555,7 +561,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設紐付け削除"){
 		alert("NF213_施設紐づけの削除に遷移します")
@@ -570,7 +576,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "21"){
 		alert("NF101_施設来期情報更新に遷移します")
@@ -585,7 +591,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設来期用項目更新"){
 		alert("NF101_施設来期情報更新に遷移します")
@@ -600,7 +606,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "31"){
 		alert("ND011_医師新規作成に遷移します")
@@ -615,7 +621,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師新規作成"){
 		alert("ND011_医師新規作成に遷移します")
@@ -630,7 +636,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "32"){
 		alert("ND012_医師情報更新に遷移します")
@@ -645,7 +651,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師情報更新"){
 		alert("ND012_医師情報更新に遷移します")
@@ -660,7 +666,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "33"){
 		alert("ND105_医師削除に遷移します")
@@ -675,7 +681,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師削除"){
 		alert("ND105_医師削除に遷移します")
@@ -690,7 +696,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "34"){
 		alert("ND014_医師復活に遷移します")
@@ -705,7 +711,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師復活"){
 		alert("ND014_医師復活に遷移します")
@@ -720,7 +726,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "41"){
 		alert("ND103_医師勤務先追加に遷移します")
@@ -736,7 +742,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師勤務先追加"){
 		alert("ND103_医師勤務先追加に遷移します")
@@ -752,7 +758,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "42"){
 		alert("ND101_医療機関への異動に遷移します")
@@ -767,7 +773,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医療機関への異動"){
 		alert("ND101_医療機関への異動に遷移します")
@@ -782,7 +788,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "43"){
 		alert("ND102_医療機関以外への異動に遷移します")
@@ -797,7 +803,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医療機関以外への異動"){
 		alert("ND102_医療機関以外への異動に遷移します")
@@ -812,7 +818,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "44"){
 		alert("ND104_医師勤務先削除に遷移します")
@@ -827,7 +833,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師勤務先削除"){
 		alert("ND104_医師勤務先削除に遷移します")
@@ -842,7 +848,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "51"){
 		alert("ND013_勤務先情報更新に遷移します")
@@ -857,7 +863,7 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "勤務先情報更新"){
 		alert("ND013_勤務先情報更新に遷移します")
@@ -872,11 +878,14 @@ function NC011Seni() {
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
-		fm1.reqId.value="";
+		//fm1.reqId.value="";
 	}
-	fm1.reqId.value="";
+	//fm1.reqId.value="";
+	fm1.reqId.value = tmpReq;
+	fm1.reqType.value = tmpType;
 	}
-	fm1.reqId.value = "";
+
+	//fm1.reqId.value = "";
 	//fm1.reqId.value=reqIdcell;
 
 }

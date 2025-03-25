@@ -390,9 +390,9 @@ public class NF213Service extends BaseService {
         } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd()) && !"11".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
-        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
+        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'11'、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
         } else {
         	indto.setEditApprFlg("1");
@@ -522,7 +522,7 @@ public class NF213Service extends BaseService {
         	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF211Data");
         	tRdmReqKnrUpdData.setReqId(reqId);
 
-        	if("13".equals(indto.getReqStsCd())) {
+        	if("11".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
         		tRdmReqKnrUpdData.setReqStsCd("11");
         	} else {
         		tRdmReqKnrUpdData.setReqStsCd("01");

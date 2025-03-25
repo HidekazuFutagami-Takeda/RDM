@@ -509,7 +509,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
 	      <nobr>
-	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
+	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11")}'>
 		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/>
 		  	</s:if>
 		  	<s:else>
@@ -549,7 +549,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
                 <nobr>
-				<s:if test='%{reqStsCd == "01"}'>
+				<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="JavaScript:reqCancelBtn();return false;" />
 				</s:if>
 				<s:else>
@@ -559,7 +559,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
                 <nobr>
-					<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01")}'>
+					<s:if test='%{(reqStsCd != null && reqStsCd != "" && reqStsCd != "01" && reqStsCd != "11")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/>
 		            </s:if>
 		            <s:else>
@@ -584,7 +584,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
                <nobr>
-				<s:if test='%{(reqStsCd == null || reqStsCd == "" || reqStsCd == "01")}'>
+				<s:if test='%{(reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11")}'>
 		                <input class="comButton" type="button"name="buttonF3" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/>
 				</s:if>
 				<s:elseif test='%{(reqStsCd == "03" || reqStsCd == "13")}'>

@@ -124,8 +124,7 @@ public class NF401Action extends BaseAction<NF401DTO> {
         // START UOC
     	// 画面タイトル制御処理
 
-    	// TODO 後で直す
-        String title = "NF401_施設来期項目一括承認(開発途中)";
+        String title = "NF401_施設来期項目一括承認";
 
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 

@@ -332,7 +332,7 @@ public class HcoReqDataList implements Serializable {
      *
      * @generated
      */
-    private Integer noShnNum;
+    private Integer noShnCnt;
 
     /**
      * 申請コメント
@@ -1223,19 +1223,19 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanoShnNumを設定
-	 * @return noShnNum
+	 * HcoReqDataList.javanoShnCntを設定
+	 * @return noShnCnt
 	 */
-	public Integer getNoShnNum() {
-		return noShnNum;
+	public Integer getNoShnCnt() {
+		return noShnCnt;
 	}
 
 
 	/**
-	 * @param noShnNum セットする noShnNum
+	 * @param noShnCnt セットする noShnCnt
 	 */
-	public void setNoShnNum(Integer noShnNum) {
-		this.noShnNum = noShnNum;
+	public void setNoShnCnt(Integer noShnCnt) {
+		this.noShnCnt = noShnCnt;
 	}
 
 

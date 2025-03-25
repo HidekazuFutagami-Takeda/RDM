@@ -54,210 +54,223 @@
     <script type="text/javascript" src="js/catSosJgiExpand.js"></script>
     <script type="text/javascript" src="js/jkrMenu.js"></script>
     <script>
-	    function comSetFormWindowInfo(){
-	    	comClickFlgInit();
+    function comSetFormWindowInfo(){
+    	comClickFlgInit();
 
-	    }
+    }
 
-	    // TODO サイズ調整
-	    var sosSubScreenSize = "left=0, top=0, width=1100, height=800";
-	 	// 組織選択ボタン
-	    function sosPopBtn(){
-			// NC201_組織検索ポップアップを開く
-			window.open("","sosPopWindow",sosSubScreenSize);
-			document.fm1.screenId.value = "NC201";
-			document.fm1.functionId.value="Init";
-			document.fm1.target="sosPopWindow";
+    var sosSubScreenSize = "left=0, top=0, width=600, height=600";
+ 	// 組織選択ボタン
+    function sosPopBtn(){
+    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+		// NC201_組織検索ポップアップを開く
+		window.open("","sosPopWindow",sosSubScreenSize);
+		document.fm1.screenId.value = "NC201";
+		document.fm1.functionId.value="Init";
+		document.fm1.target="sosPopWindow";
 
-			document.fm1.callBack.value = "callBackSosPop";
+		document.fm1.selectFlgPop.value="1";
 
-			comSubmitForAnyWarp(fm1);
-	    }
+		document.fm1.callBack.value = "callBackSosPop";
 
-	 	// 組織検索ポップアップから値受け取り
-	 	// TODO
-	    function callBackSosPop(sosCd, sosNm){
-			document.fm1.sosCd.value = sosCd;
-			document.fm1.sosNm.value = sosNm;
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+    }
 
-			if(document.fm1.bumonRank == "2"){
-				tantoClearBtn();
-			}
-	 	}
+ 	// 組織検索ポップアップから値受け取り
+    function callBackSosPop(bumonRank, sosCd,
+	  		  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+    	document.fm1.bumonRank.value = bumonRank;
+		document.fm1.sosCd.value = sosCd;
+		document.fm1.sosNm.value = bumonSeiName;
+		document.fm1.brCode.value = brCode;
+		document.fm1.distCode.value = distCode;
+		document.fm1.upSosCd.value = upSosCode;
 
-	 	// 担当者選択ボタン
-	    function tantoPopBtn(){
-			// NC202_担当者検索ポップアップ画面を表示
-	    	window.open("","tantoPopWindow",tantoSubScreenSize);
-			document.fm1.screenId.value = "NC202";
-			document.fm1.functionId.value="Init";
-			document.fm1.target="tantoPopWindow";
-
-			document.fm1.sosCdPop.value = document.fm1.sosCd.value;
-			document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
-			document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
-
-			document.fm1.selectFlgPop.value="1";
-			document.fm1.callBack.value="callBackTantoPop";
-
-			comSubmitForAnyWarp(fm1);
-			comClickFlgInit();
-	    }
-
-		// 担当者検索ポップアップから値受け取り
-	    function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
-	    							distCode, trtGrpCd, trtNm, mrCat){
-			document.fm1.sosCd.value = sosCd;
-			document.fm1.bumonRyakuName.value = bumonSeiName;
-			document.fm1.jgiNo.value = jgiNo;
-			document.fm1.jgiNm.value = jgiName;
-			document.fm1.trtCd.value = trtCd;
-			document.fm1.trtNm.value = trtNm;
-			document.fm1.mrCat.value = mrCat;
-			document.fm1.brCode.value = brCode;
-			document.fm1.distCode.value = distCode;
-	    }
-
-		// 施設選択ボタン
-	    function insPopBtn(){
-			// NC203_施設検索ポップアップ画面を表示
-			window.open("","insPopWindow",insSubScreenSize);
-			document.fm1.screenId.value = "NC203";
-			document.fm1.functionId.value="Init";
-			document.fm1.target="insPopWindow";
-
-			document.fm1.viewKbn.value = "0";
-			document.fm1.callBack.value = "callBackInsPop";
-
-			comSubmitForAnyWarp(fm1);
-			comClickFlgInit();
-	    }
-
-		// 施設ポップアップから施設受け取り
-	    function callBackInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType, insClass){
-
-	    	document.fm1.insNo.value = insNo;
-	    	document.fm1.insNm.value = insAbbrName;
-
-	    }
-
-		// 組織Clearボタン
-	    function sosClearBtn(){
-			document.fm1.sosCd.value = "";
-			document.fm1.sosNm.value = "";
-			document.fm1.bumonRyakuName.value = "";
-			document.fm1.jgiNo.value = "";
-			document.fm1.jgiNm.value = "";
-			document.fm1.trtCd.value = "";
-			document.fm1.trtNm.value = "";
-			document.fm1.mrCat.value = "";
-			document.fm1.brCode.value = "";
-			document.fm1.distCode.value = "";
-			document.fm1.bumonRank.value = "";
-			document.fm1.upSosCd.value = "";
+		if(bumonRank == null || bumonRank == "3"){
+			document.getElementById("tantoButton").disabled = false;
+		} else if(bumonRank == "2"){
+			document.getElementById("tantoButton").disabled = true;
+			tantoClearBtn();
 		}
+ 	}
 
-	 	// 担当者Clearボタン
-	    function tantoClearBtn(){
-			document.fm1.bumonRyakuName.value = "";
-			document.fm1.jgiNo.value = "";
-			document.fm1.jgiNm.value = "";
-			document.fm1.trtCd.value = "";
-			document.fm1.trtNm.value = "";
-			document.fm1.mrCat.value = "";
-			document.fm1.brCode.value = "";
-			document.fm1.distCode.value = "";
-		}
+ 	// 担当者選択ボタン
+    function tantoPopBtn(){
+    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+		// NC202_担当者検索ポップアップ画面を表示
+    	window.open("","tantoPopWindow",tantoSubScreenSize);
+		document.fm1.screenId.value = "NC202";
+		document.fm1.functionId.value="Init";
+		document.fm1.target="tantoPopWindow";
 
-	 	// 施設Clearボタン
-	    function insClearBtn(){
-			document.fm1.insNo.value = "";
-			document.fm1.insNm.value = "";
-			document.fm1.insKanjSrch.value = "";
-		}
+		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
+		document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
+		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
 
-	 	// Clearボタン
-	    function clearBtn(){
-			document.fm1.sosCd.value = "";
-			document.fm1.sosNm.value = "";
-			document.fm1.bumonRyakuName.value = "";
-			document.fm1.jgiNo.value = "";
-			document.fm1.jgiNm.value = "";
-			document.fm1.trtCd.value = "";
-			document.fm1.trtNm.value = "";
-			document.fm1.mrCat.value = "";
-			document.fm1.brCode.value = "";
-			document.fm1.distCode.value = "";
-			document.fm1.bumonRank.value = "";
-			document.fm1.upSosCd.value = "";
+		document.fm1.selectFlgPop.value="1";
+		document.fm1.callBack.value="callBackTantoPop";
 
-			document.fm1.insNm.value = "";
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+    }
 
-			document.fm1.insNo.value = "";
-			document.fm1.ultInsNo.value = "";
-			document.fm1.insKanjSrch.value = "";
-			document.fm1.shisetsuNmSrch.value = "";
-			document.fm1.insClass.value = "";
-			document.fm1.insType.value = "";
-			document.fm1.hoInsType.value = "";
+	// 担当者検索ポップアップから値受け取り
+    function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+    							distCode, trtGrpCd, trtNm, mrCat){
+		document.fm1.sosCd.value = sosCd;
+		document.fm1.bumonRyakuName.value = bumonSeiName;
+		document.fm1.jgiNo.value = jgiNo;
+		document.fm1.jgiNm.value = jgiName;
+		document.fm1.trtCd.value = trtCd;
+		document.fm1.trtNm.value = trtNm;
+		document.fm1.mrCat.value = mrCat;
+		document.fm1.brCode.value = brCode;
+		document.fm1.distCode.value = distCode;
+    }
 
-			document.fm1.shnFlgChk.checked = false;
-		}
+	// 施設選択ボタン
+    function insPopBtn(){
+    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+		// NC203_施設検索ポップアップ画面を表示
+		window.open("","insPopWindow",insSubScreenSize);
+		document.fm1.screenId.value = "NC203";
+		document.fm1.functionId.value="Init";
+		document.fm1.target="insPopWindow";
 
-		// 画面遷移処理
-	    function gotoNext(screenId,functionId){
-	   		document.fm1.target="";
-	  	 	fm1.screenId.value=screenId;
-	  	  	fm1.functionId.value=functionId;
-	  	  	comSubmitForAnyWarp(fm1);
-	  	}
+		document.fm1.viewKbn.value = "0";
+		document.fm1.callBack.value = "callBackInsPop";
 
-	 	var nf401Tab;
-	 	// 申請歴ボタン
-	    function actBtn(insNo){
-	 		var tmpIns = fm1.insNo.value;
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+    }
 
-	 		fm1.insNo.value = insNo;
+	// 施設ポップアップから施設受け取り
+    function callBackInsPop(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType, insClass){
 
-	 		if(nf401Tab && !nf401Tab.closed){
-	 			nf401Tab.close();
-	 		}
+    	document.fm1.insNo.value = insNo;
+    	document.fm1.insNm.value = insAbbrName;
 
-	 		nf401Tab = window.open("","NF401Tab");
-			document.fm1.target="NF401Tab";
+    }
+
+	// 組織Clearボタン
+    function sosClearBtn(){
+		document.fm1.sosCd.value = "";
+		document.fm1.sosNm.value = "";
+		document.fm1.bumonRyakuName.value = "";
+		document.fm1.jgiNo.value = "";
+		document.fm1.jgiNm.value = "";
+		document.fm1.trtCd.value = "";
+		document.fm1.trtNm.value = "";
+		document.fm1.mrCat.value = "";
+		document.fm1.brCode.value = "";
+		document.fm1.distCode.value = "";
+		document.fm1.bumonRank.value = "";
+		document.fm1.upSosCd.value = "";
+	}
+
+ 	// 担当者Clearボタン
+    function tantoClearBtn(){
+		document.fm1.bumonRyakuName.value = "";
+		document.fm1.jgiNo.value = "";
+		document.fm1.jgiNm.value = "";
+		document.fm1.trtCd.value = "";
+		document.fm1.trtNm.value = "";
+		document.fm1.mrCat.value = "";
+		document.fm1.brCode.value = "";
+		document.fm1.distCode.value = "";
+	}
+
+ 	// 施設Clearボタン
+    function insClearBtn(){
+		document.fm1.insNo.value = "";
+		document.fm1.insNm.value = "";
+		document.fm1.insKanjSrch.value = "";
+	}
+
+ 	// Clearボタン
+    function clearBtn(){
+		document.fm1.sosCd.value = "";
+		document.fm1.sosNm.value = "";
+		document.fm1.bumonRyakuName.value = "";
+		document.fm1.jgiNo.value = "";
+		document.fm1.jgiNm.value = "";
+		document.fm1.trtCd.value = "";
+		document.fm1.trtNm.value = "";
+		document.fm1.mrCat.value = "";
+		document.fm1.brCode.value = "";
+		document.fm1.distCode.value = "";
+		document.fm1.bumonRank.value = "";
+		document.fm1.upSosCd.value = "";
+
+		document.fm1.insNm.value = "";
+
+		document.fm1.insNo.value = "";
+		document.fm1.ultInsNo.value = "";
+		document.fm1.insKanjSrch.value = "";
+		document.fm1.shisetsuNmSrch.value = "";
+		document.fm1.insClass.value = "";
+		document.fm1.insType.value = "";
+		document.fm1.hoInsType.value = "";
+
+		document.fm1.shnFlgChk.checked = false;
+	}
+
+	// 画面遷移処理
+    function gotoNext(screenId,functionId){
+   		document.fm1.target="";
+  	 	fm1.screenId.value=screenId;
+  	  	fm1.functionId.value=functionId;
+  	  	comSubmitForAnyWarp(fm1);
+  	}
+
+ 	var nf401Tab;
+ 	// 申請歴ボタン
+    function actBtn(insNo){
+    	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+ 		var tmpIns = fm1.insNo.value;
+
+ 		fm1.insNo.value = insNo;
+
+ 		if(nf401Tab && !nf401Tab.closed){
+ 			nf401Tab.close();
+ 		}
+
+ 		nf401Tab = window.open("","NF401Tab");
+		document.fm1.target="NF401Tab";
 
 
-	  		fm1.screenId.value="NF102";
-		  	fm1.functionId.value="Init";
-		  	comSubmitForAnyWarp(fm1);
-		  	comClickFlgInit();
+  		fm1.screenId.value="NF102";
+	  	fm1.functionId.value="Init";
+	  	comSubmitForAnyWarp(fm1);
+	  	comClickFlgInit();
 
-		  	fm1.insNo.value = tmpIns;
-		}
+	  	fm1.insNo.value = tmpIns;
+	}
 
-	 	// ページボタン
-	    function pageBtn( pageCntCur ){
-			//現在ページ番号変更（遷移）
-			document.fm1.pageCntCur.value = pageCntCur;
-			document.fm1.target="";
-			document.fm1.screenId.value	= "NF401";
-			document.fm1.functionId.value = "Search";
-			// 検索イベント呼び出し
-			comSubmitForAnyWarp(fm1);
-    	}
+ 	// ページボタン
+    function pageBtn( pageCntCur ){
+		//現在ページ番号変更（遷移）
+		document.fm1.pageCntCur.value = pageCntCur;
+		document.fm1.target="";
+		document.fm1.screenId.value	= "NF401";
+		document.fm1.functionId.value = "Search";
+		// 検索イベント呼び出し
+		comSubmitForAnyWarp(fm1);
+	}
 
-    </script>
-    <style>
-    	.siz{
-		width:2500px;
-		}
-		thead {
-        position:Sticky;
-        top:0;
-        background-color: #fff;
-        left: 2;
-        }
-    </style>
+</script>
+<style>
+	.siz{
+	width:2500px;
+	}
+	thead {
+    position:Sticky;
+    top:0;
+    background-color: #fff;
+    left: 2;
+    }
+</style>
 </head>
 
   <%-- バナー部分をインクルード --%>
@@ -369,10 +382,10 @@
 		<td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
 		   <nobr>
 		   <s:if test="bumonRank == '2'">
-		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
+		   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
 		   </s:if>
 		   <s:else>
-		   	<input class="comButton" type="button" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
+		   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
 		   </s:else>
 		   </nobr>
 		</td>
@@ -469,89 +482,31 @@
 <%-- ページャー表示 開始 --%>
           <s:if test='pageFlag == "1" '>
           </s:if>
-          <s:if test='pageFlag !="1"'>
-                 <!-- 改ページ -->
-                  <table width="95%" >
-                      <tbody>
-                      <tr align="right">
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
-
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0','1','2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="pageBtn(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="pageBtn(<s:property value="pageCntCur+1"/>);return false;">
-                                  次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                  </s:if>
+		<s:else>
+          	<table width="80%">
+          		<tr>
+                    <td align="right">
+                      <jsp:include page="common/rdmPage.jsp">
+                      <jsp:param name="" value="" />
+                      </jsp:include>
+                    </td>
+                </tr>
+             </table>
+          </s:else>
           <%-- ページャー表示 終了 --%>
 
-<div style="max-height:400px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-<table class="siz">
    <s:if test='pageFlag == "1" '>
           <!-- なにも表示しない -->
       </s:if>
    <s:else>
-   <thead style="z-index:3;">
+    <div style="max-height:270px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+<table class="siz">
+	<thead style="z-index:3;">
 	<tr>
 	    <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
 
 	<%-- ヘッダー行 --%>
-	<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
+<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
 		<td class="comTableTitle" style="width:50px" rowspan=2>承認</td>
 		<td class="comTableTitle" style="width:80px;">施設固定C</td>
 		<td class="comTableTitle" style="width:50px" rowspan=2>期</td>
@@ -614,9 +569,9 @@
 	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedCnt06" /></td>
 	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].bedsTot" /></td>
 	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].medBedsTot" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].noShnNum" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].reqComment" /></td>
-	        <td class="comTableItem">
+	        <td class="comTableItem" rowspan=3><s:label key="HcoReqDataList[%{#status.index}].noShnCnt" /></td>
+	        <td class="comTableItem" rowspan=3><s:label key="HcoReqDataList[%{#status.index}].reqComment" /></td>
+	        <td class="comTableItem" rowspan=3>
 				<s:if test='#rowBean.waitAppFlg == "1"'>
 		        	<s:textarea name="aprComment" maxlength="300" style="resize:none" />
 		        </s:if>
@@ -624,7 +579,7 @@
 		        	<s:label key="HcoReqDataList[%{#status.index}].aprComment" />
 				</s:else>
 	        </td>
-	        <td class="comTableItem">
+	        <td class="comTableItem" rowspan=3>
 	        	<input type="button" value="却下" onclick="rejBtn('<s:property value="#rowBean.insNo"/>');return false;" />
 	        </td>
 		</tr>
@@ -681,17 +636,7 @@
 </s:else>
     </td>
     </tr>
-    <tr>
-      	<td class="comFormTableItem">
-              <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:98%;">
-      <tr>
-        <td style="width: 30%; height: 0px; border-width: 0px;"></td>
-        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
-        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
-        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
-        <td style="width: 38%; height: 0px; border-width: 0px;"></td>
-      </tr>
-		<tr>
+            <tr>
 	      <td class="comFormTableItem">
                 <nobr>
                 <input class="comButton" type="button"name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
@@ -714,6 +659,7 @@
   </table>
      	</td>
     </tr>
+
 
 <%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>
 <!--  <hr class="comSplit" /> -->

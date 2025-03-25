@@ -520,15 +520,15 @@
  			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
  		</if>
  		<if test="ultNo != null">AND HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' --ULTコード</if>
- --		<if test="knrFlg == false">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
- --			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
- --			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
- --		</if>
- --		<if test="knrFlg == true">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --		</if>
+ 		<if test="knrFlg == false">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+ 			<if test="brCd != null">--AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+ 			<if test="distCd != null">--AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+ 		</if>
+ 		<if test="knrFlg == true">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 		</if>
  		<if test="knrFlg == false and sosCd != null">
  			AND ADDR.SOS_CD = #{sosCd}
  		</if>
@@ -617,15 +617,15 @@
  		<if test="kensakuAddrCodePref != null">AND HCO_MST.ADDR_CODE_PREF LIKE '%' ||#{kensakuAddrCodePref}|| '%' --JIS府県コード</if>
  		<if test="kensakuAddrCodeCity != null">AND HCO_MST.ADDR_CODE_CITY LIKE '%' ||#{kensakuAddrCodeCity}|| '%' --JIS市区町村コード</if>
  		<if test="address != null">AND HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所</if>
- --		<if test="knrFlg == false">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
- --			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
- --			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
- --		</if>
- --		<if test="knrFlg == true">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --		</if>
+ 		<if test="knrFlg == false">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+ 			<if test="brCd != null">--AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+ 			<if test="distCd != null">--AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+ 		</if>
+ 		<if test="knrFlg == true">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 		</if>
  		<if test="knrFlg == false and sosCd != null">
  			AND ADDR.SOS_CD = #{sosCd}
  		</if>
@@ -782,15 +782,15 @@
  			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
  		</if>
  		<if test="ultNo != null">AND HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' --ULTコード</if>
- --		<if test="knrFlg == false">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
- --			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
- --			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
- --		</if>
- --		<if test="knrFlg == true">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --		</if>
+ 		<if test="knrFlg == false">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+ 			<if test="brCd != null">--AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+ 			<if test="distCd != null">--AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+ 		</if>
+ 	<if test="knrFlg == true">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 		</if>
  		<if test="knrFlg == false and sosCd != null">
  			AND ADDR.SOS_CD = #{sosCd}
  		</if>
@@ -860,15 +860,15 @@
  		<if test="kensakuAddrCodePref != null">AND HCO_MST.ADDR_CODE_PREF LIKE '%' ||#{kensakuAddrCodePref}|| '%' --JIS府県コード</if>
  		<if test="kensakuAddrCodeCity != null">AND HCO_MST.ADDR_CODE_CITY LIKE '%' ||#{kensakuAddrCodeCity}|| '%' --JIS市区町村コード</if>
  		<if test="address != null">AND HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所</if>
- --		<if test="knrFlg == false">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --			<if test="jgiNo != null">AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
- --			<if test="brCd != null">AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
- --			<if test="distCd != null">AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
- --		</if>
- --		<if test="knrFlg == true">
- --			<if test="trtCd != null">AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- --		</if>
+ 		<if test="knrFlg == false">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
+ 			<if test="brCd != null">--AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
+ 			<if test="distCd != null">--AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
+ 		</if>
+ 		<if test="knrFlg == true">
+ 			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
+ 		</if>
  		<if test="knrFlg == false and sosCd != null">
  			AND ADDR.SOS_CD = #{sosCd}
  		</if>

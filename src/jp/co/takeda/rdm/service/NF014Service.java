@@ -342,12 +342,12 @@ public class NF014Service extends BaseService {
 			// 更新
 			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF013Data");
 			tRdmReqKnrUpdData.setReqId(reqId);
-			if("11".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
+			if("11".equals(indto.getReqStsCd())) {
 				tRdmReqKnrUpdData.setReqStsCd("11");
-				indto.setReqStsCd("11");
+			} else if("03".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd(indto.getReqStsCd());
 			} else {
 				tRdmReqKnrUpdData.setReqStsCd("01");
-				indto.setReqStsCd("01");
 			}
 			tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
 			tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());

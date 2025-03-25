@@ -599,17 +599,20 @@ public class NF212Service extends BaseService {
         	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF211Data");
         	tRdmReqKnrUpdData.setReqId(reqId);
 
-        	if("11".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
-        		tRdmReqKnrUpdData.setReqStsCd("11");
-        	} else {
-        		tRdmReqKnrUpdData.setReqStsCd("01");
-        	}
+        	if("11".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd("11");
+			} else if("03".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd(indto.getReqStsCd());
+			} else {
+				tRdmReqKnrUpdData.setReqStsCd("01");
+			}
         	String tekiyoYmd = indto.getTekiyoYmd();
         	if(tekiyoYmd != null) {
         		tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
         	}
         	tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);
         	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+        	tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());
         	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
 

@@ -653,13 +653,15 @@ public class NF101Service extends BaseService {
         	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF011Data");
         	tRdmReqKnrUpdData.setReqId(reqId);
 
-        	if("11".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
-        		tRdmReqKnrUpdData.setReqStsCd("11");
-        	} else {
-        		tRdmReqKnrUpdData.setReqStsCd("01");
-        	}
-
-        	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+        	if("11".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd("11");
+			} else if("03".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd(indto.getReqStsCd());
+			} else {
+				tRdmReqKnrUpdData.setReqStsCd("01");
+			}
+			tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+			tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());
         	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
 

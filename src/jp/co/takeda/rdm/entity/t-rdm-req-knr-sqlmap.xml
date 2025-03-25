@@ -446,6 +446,7 @@
 	SET
 		REQ_STS = #{reqStsCd},
 		REQ_COMMENT = #{reqComment},
+		<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if><if test="aprMemo == null">APR_MEMO = NULL,</if>
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE

@@ -22,6 +22,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.util.StringUtils;
+import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectCntSelectHcpEntity;
 import jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpEntity;
@@ -80,6 +81,9 @@ public class ND401Service extends BaseService {
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
 		BaseDTO outdto = indto;
+
+		indto.setSearchType("1");
+
 		SelectHcpEntity selectHcpEntity = new SelectHcpEntity();
 		//1-4 件数定義取得
 		SelectParamNd401Entity selectParamNd401Entity = new SelectParamNd401Entity();
@@ -90,6 +94,7 @@ public class ND401Service extends BaseService {
 		SelectParamSwitchEntity selectParamSwitchEntity =new SelectParamSwitchEntity();
 		//MN_DOC
 		selectParamSwitchEntity.setInParamName(1);
+
 		List<SelectParamSwitchEntity> selectParamSwitchIshiList;
 		selectParamSwitchIshiList = dao.select(selectParamSwitchEntity);
 
@@ -115,6 +120,47 @@ public class ND401Service extends BaseService {
 
 		SelectCntSelectNd401InitEntity selectParamSelectKmuEntity = new SelectCntSelectNd401InitEntity();
 
+		//検索条件_施設名
+        if (StringUtils.isEmpty(indto.getKensakuInsKanj())) {
+        	indto.setKensakuInsKanj(null);
+        }
+        selectParamSelectKmuEntity.setKensakuInsKanj(indto.getKensakuInsKanj());
+        //検索条件_施設固定C
+        if (StringUtils.isEmpty(indto.getKensakuInsNo())) {
+        	indto.setKensakuInsNo(null);
+        }
+        selectParamSelectKmuEntity.setKensakuInsNo(indto.getKensakuInsNo());
+    	//検索条件_医師名
+        if (StringUtils.isEmpty(indto.getKensakuDocKanj())) {
+        	indto.setKensakuDocKanj(null);
+        }
+        selectParamSelectKmuEntity.setKensakuDocKanj(indto.getKensakuDocKanj());
+        //検索条件_医師固定C
+        if (StringUtils.isEmpty(indto.getKensakuDocNo())) {
+        	indto.setKensakuDocNo(null);
+        }
+        selectParamSelectKmuEntity.setKensakuDocNo(indto.getKensakuDocNo());
+        //検索条件_所属部科コード
+        if (StringUtils.isEmpty(indto.getKensakuDeptCode())) {
+        	indto.setKensakuDeptCode(null);
+        }
+        selectParamSelectKmuEntity.setKensakuDeptCode(indto.getKensakuDeptCode());
+        //検索条件_組織コード
+        if (StringUtils.isEmpty(indto.getKensakuSosCd())) {
+        	indto.setKensakuSosCd(null);
+        }
+        selectParamSelectKmuEntity.setKensakuSosCd(indto.getKensakuSosCd());
+        //索条件_医薬支店C
+        if (StringUtils.isEmpty(indto.getKensakuBrCode())) {
+        	indto.setKensakuBrCode(null);
+        }
+        selectParamSelectKmuEntity.setKensakuBrCode(indto.getKensakuBrCode());
+        //検索条件_担当者コード(従業員番号)
+        if (StringUtils.isEmpty(indto.getKensakuJgiNo())) {
+        	indto.setKensakuJgiNo(null);
+        }
+        selectParamSelectKmuEntity.setKensakuJgiNo(indto.getKensakuJgiNo());
+
 
         //検索条件
         //直書きは仮置き、検索部作成出来次第indtoから取得すること
@@ -128,13 +174,6 @@ public class ND401Service extends BaseService {
         	return outdto;
         }
 
-        //inEntityMainselectHcpEntity.setInOffset(indto.getLineCntStart() - 1);
-        //inEntityMain.setInLimit(AppConstant.SHOW_COUNT);
-
-    	//SelectCntHcpEntity selectCntHcpEntity = new SelectCntHcpEntity();
-    	//SelectCntHcpEntity selectCntHcpList;
-    	//selectCntHcpList = dao.select(selectCntHcpEntity);
-
         indto.initPageInfo(indto.getPageCntCur(), selectParamSelectKmuList.get(0).getCntKmu(), selectParamNd401List.get(1).getValue());
 
         //検索条件
@@ -143,23 +182,101 @@ public class ND401Service extends BaseService {
 
     	SelectNd401InitEntity selectNd401InitEntity = new SelectNd401InitEntity();
 
-    	//offset limit設定
+    	//検索条件_施設名
+        if (StringUtils.isEmpty(indto.getKensakuInsKanj())) {
+        	indto.setKensakuInsKanj(null);
+        }
+        selectNd401InitEntity.setKensakuInsKanj(indto.getKensakuInsKanj());
+        //検索条件_施設固定C
+        if (StringUtils.isEmpty(indto.getKensakuInsNo())) {
+        	indto.setKensakuInsNo(null);
+        }
+        selectNd401InitEntity.setKensakuInsNo(indto.getKensakuInsNo());
+    	//検索条件_医師名
+        if (StringUtils.isEmpty(indto.getKensakuDocKanj())) {
+        	indto.setKensakuDocKanj(null);
+        }
+        selectNd401InitEntity.setKensakuDocKanj(indto.getKensakuDocKanj());
+        //検索条件_医師固定C
+        if (StringUtils.isEmpty(indto.getKensakuDocNo())) {
+        	indto.setKensakuDocNo(null);
+        }
+        selectNd401InitEntity.setKensakuDocNo(indto.getKensakuDocNo());
+        //検索条件_所属部科コード
+        if (StringUtils.isEmpty(indto.getKensakuDeptCode())) {
+        	indto.setKensakuDeptCode(null);
+        }
+        selectNd401InitEntity.setKensakuDeptCode(indto.getKensakuDeptCode());
+        //検索条件_組織コード
+        if (StringUtils.isEmpty(indto.getKensakuSosCd())) {
+        	indto.setKensakuSosCd(null);
+        }
+        selectNd401InitEntity.setKensakuSosCd(indto.getKensakuSosCd());
+        //索条件_医薬支店C
+        if (StringUtils.isEmpty(indto.getKensakuBrCode())) {
+        	indto.setKensakuBrCode(null);
+        }
+        selectNd401InitEntity.setKensakuBrCode(indto.getKensakuBrCode());
+        //検索条件_担当者コード(従業員番号)
+        if (StringUtils.isEmpty(indto.getKensakuJgiNo())) {
+        	indto.setKensakuJgiNo(null);
+        }
+        selectNd401InitEntity.setKensakuJgiNo(indto.getKensakuJgiNo());
+
+      //offset limit設定
     	selectNd401InitEntity.setInOffset(indto.getLineCntStart() - 1);
     	selectNd401InitEntity.setInLimit(selectParamNd401List.get(1).getValue());
 
     	List<SelectNd401InitEntity> selectNd401InitList;
     	selectNd401InitList = dao.select(selectNd401InitEntity);
 
+
     	List<KmuIkkatsuData> kmuIkkatsuDataList = new ArrayList<KmuIkkatsuData>(selectNd401InitList.size());
 
     	for(SelectNd401InitEntity entity : selectNd401InitList) {
     		KmuIkkatsuData data = new KmuIkkatsuData();
             BeanUtil.copyProperties(data, entity);
+
+            data.setInsAbbrName(entity.getInsAbbrName());//施設名
+            data.setInsNo(entity.getInsNo());//施設固定コード
+            data.setDocNo(entity.getDocNo());//医師固定コード
+            data.setDocKanj(entity.getDocKanj());//氏名（漢字）
+            data.setPreTitleKj(entity.getPreTitleKj());//役職（変更前）
+            data.setPostTitleKj(entity.getPostTitleKj());//役職（変更後）
+            data.setPreDeptKanji(entity.getPreDeptKanji());//所属部科名（漢字）（変更前）
+            data.setPostDeptKanji(entity.getPostDeptKanji());//所属部科名（漢字）（変更後）
+            data.setPreTitleCode(entity.getPreTitleCode());//役職コード（変更前）
+            data.setPostTitleCode(entity.getPostTitleCode());//役職コード（変更後）
+            data.setPreDeptCode(entity.getPreDeptCode());//所属部科コード（変更前）
+            data.setPostDeptCode(entity.getPostDeptCode());//所属部科コード（変更後）
+            data.setPreDeptKana(entity.getPreDeptKana());//所属部科名（カナ）（変更前）
+            data.setPostDeptKana(entity.getPostDeptKana());//所属部科名（カナ）（変更後）
+            data.setJobForm(entity.getJobForm());//勤務形態
+            data.setUnivPosCode(entity.getUnivPosCode());//大学職位コード
+            data.setDcc(entity.getDcc());//薬審メンバー区分
+            data.setUltInsNo(entity.getUltInsNo());//ULT施設コード
+            data.setUltDocNo(entity.getUltDocNo());//ULT医師コード
+
             kmuIkkatsuDataList.add(data);
     	}
 
     	indto.setPageFlag("0");
     	indto.setKmuIkkatsuDataList(kmuIkkatsuDataList);
+
+    	//役職プルダウン
+    	SelectNd401InitEntity selectNd401DmcMstPostEntity = new SelectNd401InitEntity();
+    	selectNd401DmcMstPostEntity.setSqlId("selectCntNd401DmcMstPost");
+    	List<SelectNd401InitEntity> selectNd401DmcMstPostListList = dao.select(selectNd401DmcMstPostEntity);
+
+    	//役職データ_取り出す
+        LinkedHashMap<String, String> mapTitleList = new LinkedHashMap<String, String>();
+        mapTitleList.put("", "--なし--");
+        for (SelectNd401InitEntity outEntity : selectNd401DmcMstPostListList) {
+        	mapTitleList.put(outEntity.getPuldownTitleCode(), outEntity.getPuldownTitleKj());
+        }
+        //役職を格納する
+        indto.setTitleMap(mapTitleList);
+
         return outdto;
 	}
 

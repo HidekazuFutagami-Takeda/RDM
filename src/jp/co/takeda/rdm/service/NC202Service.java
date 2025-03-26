@@ -99,10 +99,19 @@ public class NC202Service extends BaseService {
         // START UOC
         getJgiList(0, indto);
 
-        indto.setJgiFlg(0);
-        String jgiFlg = indto.getJgiData().get(0).getJgiNo();
-        if(!StringUtils.isEmpty(jgiFlg)) {
-        	indto.setJgiFlg(1);
+//        indto.setJgiFlg(0);
+//        String jgiFlg = indto.getJgiData().get(0).getJgiNo();
+//        if(!StringUtils.isEmpty(jgiFlg)) {
+//        	indto.setJgiFlg(1);
+//        }
+        if(indto.getJgiData().isEmpty()) {
+        	indto.setJgiFlg(0);
+        }else {
+        	if(indto.getJgiData().get(0).getJgiNo() == null) {
+        		indto.setJgiFlg(0);
+        	}else {
+        		indto.setJgiFlg(1);
+        	}
         }
         // END UOC
         return outdto;

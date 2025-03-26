@@ -352,6 +352,14 @@ public class NC011DTO extends BaseDTO implements Serializable {
 
 	private String reqId;
 
+
+	/**
+	 * rEQ_ID
+	 * @generated
+	 */
+
+	private String inReqId;
+
 	/**
 	 * 検索-申請日時
 	 * inreqYmdhmsFrom
@@ -1657,6 +1665,20 @@ public class NC011DTO extends BaseDTO implements Serializable {
 
 
 
+
+	/**
+	 * NC011DTO.javainReqIdを設定
+	 * @return inReqId
+	 */
+	public String getInReqId() {
+		return inReqId;
+	}
+	/**
+	 * @param inReqId セットする inReqId
+	 */
+	public void setInReqId(String inReqId) {
+		this.inReqId = inReqId;
+	}
 	public String getPageFlag() {
 		return pageFlag;
 	}

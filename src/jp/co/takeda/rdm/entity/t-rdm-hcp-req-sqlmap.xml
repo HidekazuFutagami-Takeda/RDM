@@ -1545,7 +1545,7 @@
 			WHERE KNR.REQ_TYPE IN ('42','43','51')
 			AND KNR.REQ_STS IN ('03','13','04','14')
 			AND HCP.DOC_NO = #{inDocNo}
-            AND KNR.TEKIYO_YMD >= RDM_COMMON.GET_NEXT_BIZDAY(RDM_COMMON.GET_TODAY())
+            AND KNR.TEKIYO_YMD >= RDM_COMMON.GET_NEXT_BIZDAY_ON(RDM_COMMON.GET_TODAY_ON)
     </select>
     <select id="selectND303REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND303MainDataEntity" resultMap="nD303MainDataResultMap">
 		SELECT
@@ -1767,7 +1767,7 @@
 			WHERE KNR.REQ_TYPE IN ('42','43','51')
 			AND KNR.REQ_STS IN ('03','13','04','14')
 			AND HCP.DOC_NO = #{inDocNo}
-            AND KNR.TEKIYO_YMD >= RDM_COMMON.GET_NEXT_BIZDAY(RDM_COMMON.GET_TODAY())
+            AND KNR.TEKIYO_YMD >= RDM_COMMON.GET_NEXT_BIZDAY_ON(RDM_COMMON.GET_TODAY_ON)
     </select>
     <select id="selectND105REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity" resultMap="nD105MainDataResultMap">
 		SELECT

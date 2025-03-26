@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m_rdm_hco_upd_hst_mst">
+	<!-- 施設一覧 -->
+    <resultMap id="SelectHcoUpdHstListEntityResultMap" type="jp.co.takeda.rdm.entity.join.SelectHcoUpdHstListEntity">
+    	<!-- 検索条件 -->
+    	<result column="SEARCH_HENKAN" property="searchHenkan"/>
+        <result column="INS_KANJ" property="kensakuInsKanj"/>
+        <result column="INS_KANA" property="kensakuInsKana"/>
+        <result column="INS_NO" property="kensakuInsNo"/>
+        <result column="ULT_INS_NO" property="kensakuUltInsNo"/>
+        <result column="MANAGE_CD" property="kensakuManageCd"/>
+        <result column="HO_INS_TYPE" property="kensakuHoInsType"/>
+        <result column="INS_SBT" property="kensakuInsSbt"/>
+        <result column="INS_PHONE" property="KensakuInsPhone"/>
+        <result column="INS_PCODE" property="kensakuInsPcode"/>
+        <result column="ADDR_CODE_PREF" property="kensakuAddrCodePref"/>
+        <result column="ADDR_CODE_CITY" property="kensakuAddrCodeCity"/>
+        <result column="INS_ADDR" property="kensakuInsAddr"/>
+        <result column="UPD_MST_FROM" property="kensakuUpdMstFrom"/>
+        <result column="UPD_MST_TO" property="kensakuUpdMstTo"/>
+        <!-- 検索結果 -->
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="MAIN_INS_NO" property="mainInsNo"/>
+        <result column="MAIN_INS_NM" property="mainInsNm"/>
+        <result column="TRT_NM" property="trtNm"/>
+        <result column="REQ_ID" property="reqId"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="HO_INS_TYPE" property="hoInsType"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_FORMAL_NAME" property="insFormalName"/>
+        <result column="INS_PCODE" property="insPcode"/>
+        <result column="INS_ADDR" property="insAddr"/>
+        <result column="INS_PHONE1" property="insPhone1"/>
+        <result column="INS_FAX1" property="insFax1"/>
+        <result column="HCO_NET" property="hcoNxt"/>
+        <result column="OTHER_CHANGES" property="otherChanges"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="APR_SHA_ID" property="aprShaId"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
+        <result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
+
+        <result column="UPD_SHA_YMD_UPD_FLG" property="updShaYmdUpdFlg"/>
+        <result column="MAIN_INS_NM_UPD_FLG" property="mainInsNmUpdFlg"/>
+        <result column="TRT_NM_UPD_FLG" property="trtNmUpdFlg"/>
+        <result column="HO_INS_TYPE_UPD_FLG" property="hoInsTypeUpdFlg"/>
+        <result column="INS_ABBR_NAME_UPD_FLG" property="insAbbrNameUpdFlg"/>
+        <result column="INS_FORMAL_NAME_UPD_FLG" property="insFormalNameUpdFlg"/>
+        <result column="INS_PCODE_UPD_FLG" property="insPcodeUpdFlg"/>
+        <result column="INS_ADDR_UPD_FLG" property="insAddrUpdFlg"/>
+        <result column="INS_PHONE1_UPD_FLG" property="insPhone1UpdFlg"/>
+        <result column="INS_FAX1_UPD_FLG" property="insFax1UpdFlg"/>
+        <result column="HCO_NET_UPD_FLG" property="hcoNxtUpdFlg"/>
+        <result column="OTHER_CHANGES_UPD_FLG" property="otherChangesUpdFlg"/>
+        <result column="REQ_JGI_NAME_UPD_FLG" property="reqJgiNameUpdFlg"/>
+        <result column="APR_SHA_ID_UPD_FLG" property="aprShaIdUpdFlg"/>
+        <result column="ULT_INS_NO_UPD_FLG" property="ultInsNoUpdFlg"/>
+        <result column="SHISETSU_NM_RYAKU_UPD_FLG" property="shisetsuNmRyakuUpdFlg"/>
+
+        <!-- 項目変更フラグ ここから -->
+        <result column="HO_INS_TYPE_UPD_FLG" property="hoInsTypeUpdFlg"/>
+        <result column="PHARM_TYPE_UPD_FLG" property="pharmTypeUpdFlg"/>
+        <result column="INS_RANK_UPD_FLG" property="insRankUpdFlg"/>
+        <result column="MANAGE_CD_UPD_FLG" property="ManageCdUpdFlg"/>
+        <result column="REG_VIS_TYPE_UPD_FLG" property="regVisTypeUpdFlg"/>
+        <result column="IMP_HOS_TYPE_UPD_FLG" property="impHosTypeUpdFlg"/>
+        <result column="VAC_INS_TYPE_UPD_FLG" property="vacInsTypeUpdFlg"/>
+        <result column="VAC_VISIT_TYPE_UPD_FLG" property="vacVisitTypeUpdFlg"/>
+        <result column="BEDCNT_BASE_UPD_FLG" property="bedcntBaseUpdFlg"/>
+        <result column="BEDS_TOT_UPD_FLG" property="bedsTotUpdFlg"/>
+        <result column="MED_BEDS_TOT_UPD_FLG" property="medBedsTotUpdFlg"/>
+        <result column="BEDCNT01_UPD_FLG" property="bedcnt01UpdFlg"/>
+        <result column="BEDCNT02_UPD_FLG" property="bedcnt02UpdFlg"/>
+        <result column="BEDCNT03_UPD_FLG" property="bedcnt03UpdFlg"/>
+        <result column="BEDCNT04_UPD_FLG" property="bedcnt04UpdFlg"/>
+        <result column="BEDCNT05_UPD_FLG" property="bedcnt05UpdFlg"/>
+        <result column="BEDCNT06_UPD_FLG" property="bedcnt06UpdFlg"/>
+        <result column="BEDCNT07_UPD_FLG" property="bedcnt07UpdFlg"/>
+        <!-- 項目変更フラグ ここまで -->
+        <result column="INS_CONT_NAME" property="insContName"/>
+        <result column="PHARM_TYPE" property="pharmType"/>
+        <result column="INS_RANK" property="insRank"/>
+        <result column="MANAGE_CD" property="ManageCd"/>
+        <result column="ADDR_CODE_PREF" property="addrCodePref"/>
+        <result column="ADDR_CODE_CITY" property="addrCodeCity"/>
+        <result column="TK_CITY_CD" property="tkCityCd"/>
+        <result column="INS_PHONE2" property="insPhone2"/>
+        <result column="INS_FAX2" property="insFax2"/>
+        <result column="INS_URL" property="insUrl"/>
+        <result column="INS_URL_YMD" property="insUrlYmd"/>
+        <result column="VAC_INS_TYPE" property="vacInsType"/>
+        <result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+        <result column="BEDCNT_BASE" property="bedcntBase"/>
+        <result column="BEDS_TOT" property="bedsTot"/>
+        <result column="MED_BEDS_TOT" property="medBedsTot"/>
+        <result column="BEDCNT01" property="bedcnt01"/>
+        <result column="BEDCNT02" property="bedcnt02"/>
+        <result column="BEDCNT03" property="bedcnt03"/>
+        <result column="BEDCNT04" property="bedcnt04"/>
+        <result column="BEDCNT05" property="bedcnt05"/>
+        <result column="BEDCNT06" property="bedcnt06"/>
+        <result column="BEDCNT07" property="bedcnt07"/>
+        <result column="INS_OPEN_YEAR" property="insOpenYear"/>
+        <result column="INS_OPEN_MONTH" property="insOpenMonth"/>
+        <result column="INS_OPEN_DAY" property="insOpenDay"/>
+        <result column="CLITEM_LIST" property="clitemList"/>
+        <result column="REQ_BR_COD" property="reqBrCod"/>
+        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="APR_SHZ" property="aprShz"/>
+        <result column="REC_CNT" property="recCnt"/>
+
+        <result column="INS_CONT_NAME_UPD_FLG" property="insContNameUpdFlg"/>
+        <result column="PHARM_TYPE_UPD_FLG" property="pharmTypeUpdFlg"/>
+        <result column="INS_RANK_UPD_FLG" property="insRankUpdFlg"/>
+        <result column="MANAGE_CD_UPD_FLG" property="ManageCdUpdFlg"/>
+        <result column="ADDR_CODE_PREF_UPD_FLG" property="addrCodePrefUpdFlg"/>
+        <result column="ADDR_CODE_CITY_UPD_FLG" property="addrCodeCityUpdFlg"/>
+        <result column="TK_CITY_CD_UPD_FLG" property="tkCityCdUpdFlg"/>
+        <result column="INS_PHONE2_UPD_FLG" property="insPhone2UpdFlg"/>
+        <result column="INS_FAX2_UPD_FLG" property="insFax2UpdFlg"/>
+        <result column="INS_URL_UPD_FLG" property="insUrlUpdFlg"/>
+        <result column="INS_URL_YMD_UPD_FLG" property="insUrlYmdUpdFlg"/>
+        <result column="VAC_INS_TYPE_UPD_FLG" property="vacInsTypeUpdFlg"/>
+        <result column="VAC_VISIT_TYPE_UPD_FLG" property="vacVisitTypeUpdFlg"/>
+        <result column="BEDCNT_BASE_UPD_FLG" property="bedcntBaseUpdFlg"/>
+        <result column="BEDS_TOT_UPD_FLG" property="bedsTotUpdFlg"/>
+        <result column="MED_BEDS_TOT_UPD_FLG" property="medBedsTotUpdFlg"/>
+        <result column="BEDCNT01_UPD_FLG" property="bedcnt01UpdFlg"/>
+        <result column="BEDCNT02_UPD_FLG" property="bedcnt02UpdFlg"/>
+        <result column="BEDCNT03_UPD_FLG" property="bedcnt03UpdFlg"/>
+        <result column="BEDCNT04_UPD_FLG" property="bedcnt04UpdFlg"/>
+        <result column="BEDCNT05_UPD_FLG" property="bedcnt05UpdFlg"/>
+        <result column="BEDCNT06_UPD_FLG" property="bedcnt06UpdFlg"/>
+        <result column="BEDCNT07_UPD_FLG" property="bedcnt07UpdFlg"/>
+        <result column="INS_OPEN_YMD_UPD_FLG" property="insOpenYmdUpdFlg"/>
+        <result column="CLITEM_LIST_UPD_FLG" property="clitemListUpdFlg"/>
+        <result column="REQ_BR_COD_UPD_FLG" property="reqBrCodUpdFlg"/>
+        <result column="REQ_DIST_CODE_UPD_FLG" property="reqDistCodeUpdFlg"/>
+        <result column="APR_SHZ_UPD_FLG" property="aprShzUpdFlg"/>
+        <result column="REC_CNT_UPD_FLG" property="recCntUpdFlg"/>
+
+    </resultMap>
+
+
+    <!-- 領域別担当者 -->
+    <resultMap id="SelectMainInsListEntityResultMap" type="jp.co.takeda.rdm.entity.join.SelectMainInsListEntity">
+    	<!-- 検索条件 -->
+     	<result column="SEARCH_HENKAN" property="searchHenkan"/>
+        <result column="INS_KANJ" property="kensakuInsKana"/>
+        <result column="INS_NO" property="kensakuInsNo"/>
+        <result column="ULT_INS_NO" property="kensakuUltInsNo"/>
+        <result column="MANAGE_CD" property="kensakuManageCd"/>
+        <result column="HO_INS_TYPE" property="kensakuHoInsType"/>
+        <result column="INS_SBT" property="kensakuInsSbt"/>
+        <result column="INS_PHONE" property="KensakuInsPhone"/>
+        <result column="INS_PCODE" property="kensakuInsPcode"/>
+        <result column="ADDR_CODE_PREF" property="kensakuAddrCodePref"/>
+        <result column="ADDR_CODE_CITY" property="kensakuAddrCodeCity"/>
+        <result column="INS_ADDR" property="kensakuInsAddr"/>
+        <result column="UPD_MST_FROM" property="kensakuUpdMstFrom"/>
+        <result column="UPD_MST_TO" property="kensakuUpdMstTo"/>
+        <!-- 検索結果 -->
+        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="APR_SHZ" property="aprShz"/>
+        <result column="REC_CNT" property="recCnt"/>
+        <result column="REQ_JGI_NAME" property="reqJgiName"/>
+        <result column="APR_SHA_ID" property="aprShaId"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="MAIN_INS_NO" property="mainInsNo"/>
+        <result column="MAIN_INS_NO_UPD_FLG" property="mainInsNoUpdFlg"/>
+        <result column="MAIN_INS_NM" property="mainInsNm"/>
+        <result column="MAIN_INS_NM_UPD_FLG" property="mainInsNmUpdFlg"/>
+        <result column="TRT_NM" property="trtNm"/>
+        <result column="REQ_ID" property="reqId"/>
+        <result column="INS_NO" property="insNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="INS_ABBR_NAME_UPD_FLG" property="insAbbrNameUpdFlg"/>
+        <result column="HO_INS_TYPE" property="hoInsType"/>
+		<result column="HO_INS_TYPE_UPD_FLG" property="hoInsTypeUpdFlg"/>
+
+    </resultMap>
+
+	<!-- 施設一覧_検索SQL -->
+    <select id="selectHcoUpdHstListEntity" parameterType="jp.co.takeda.rdm.entity.join.SelectHcoUpdHstListEntity" resultMap="SelectHcoUpdHstListEntityResultMap">
+		SELECT
+			HCO_UPD_HST.UPD_SHA_YMD AS UPD_SHA_YMD
+           	,HCO_UPD_HST.REQ_ID AS REQ_ID --申請ID
+	        ,HCO_UPD_HST.INS_NO AS INS_NO
+	        ,HCO_UPD_HST.HO_INS_TYPE AS HO_INS_TYPE --対象区分
+			,HCO_UPD_HST.HO_INS_TYPE_UPD_FLG--対象区分更新フラグ
+	        ,HCO_UPD_HST.INS_ABBR_NAME AS INS_ABBR_NAME --施設略式漢字名
+			,HCO_UPD_HST.INS_ABBR_NAME_UPD_FLG --施設略式漢字名更新フラグ
+	        ,HCO_UPD_HST.INS_FORMAL_NAME --施設正式漢字名
+	        ,HCO_UPD_HST.INS_FORMAL_NAME_UPD_FLG --施設正式漢字名更新フラグ
+	        ,HCO_UPD_HST.INS_PCODE --郵便番号
+	        ,HCO_UPD_HST.INS_PCODE_UPD_FLG --郵便番号更新フラグ
+	        ,HCO_UPD_HST.INS_ADDR --施設住所（漢字）
+			,HCO_UPD_HST.INS_ADDR_UPD_FLG --施設住所（漢字）更新フラグ
+	        ,HCO_UPD_HST.INS_PHONE1 --電話番号1
+			,HCO_UPD_HST.INS_PHONE1_UPD_FLG --電話番号1更新フラグ
+	        ,HCO_UPD_HST.INS_FAX1 --FAX番号1
+			,HCO_UPD_HST.INS_FAX1_UPD_FLG --FAX番号1更新フラグ
+	        --（来期）項目変更フラグ ここから
+			,HCO_UPD_HST.HO_INS_TYPE_UPD_FLG --対象区分更新フラグ
+			,HCO_UPD_HST.PHARM_TYPE_UPD_FLG --施設区分更新フラグ
+			,HCO_UPD_HST.INS_RANK_UPD_FLG --階級区分更新フラグ
+			,HCO_UPD_HST.MANAGE_CD_UPD_FLG --経営主体コード更新フラグ
+			,HCO_UPD_HST.REG_VIS_TYPE_UPD_FLG --定訪先区分更新フラグ
+			,HCO_UPD_HST.IMP_HOS_TYPE_UPD_FLG --重点病院区分更新フラグ
+			,HCO_UPD_HST.VAC_INS_TYPE_UPD_FLG --ワクチン対象区分(当期)更新フラグ
+			,HCO_UPD_HST.VAC_VISIT_TYPE_UPD_FLG --ワクチン定訪先区分(当期)更新フラグ
+			,HCO_UPD_HST.BEDCNT_BASE_UPD_FLG --病床(基準)更新フラグ
+			,HCO_UPD_HST.BEDS_TOT_UPD_FLG --ベッド数計更新フラグ
+			,HCO_UPD_HST.MED_BEDS_TOT_UPD_FLG --医療ベッド数計更新フラグ
+			,HCO_UPD_HST.BEDCNT01_UPD_FLG --病床数(一般)更新フラグ
+			,HCO_UPD_HST.BEDCNT02_UPD_FLG --病床数(医療療養)更新フラグ
+			,HCO_UPD_HST.BEDCNT03_UPD_FLG --病床数(精神)更新フラグ
+			,HCO_UPD_HST.BEDCNT04_UPD_FLG --病床数(結核)更新フラグ
+			,HCO_UPD_HST.BEDCNT05_UPD_FLG --病床数(感染症)更新フラグ
+			,HCO_UPD_HST.BEDCNT06_UPD_FLG --病床数(介護療養)更新フラグ
+			,HCO_UPD_HST.BEDCNT07_UPD_FLG --病床数(療養)更新フラグ
+			--（来期）項目変更フラグ ここまで
+	        --,HCO_UPD_HST.OTHER_CHANGES AS OTHER_CHANGES
+	        ,HCO_UPD_HST.REQ_JGI_NAME --申請者氏名
+	        ,HCO_UPD_HST.APR_SHA_ID --承認者氏名
+	        ,HCO_UPD_HST.ULT_INS_NO --ULT施設コード
+			,HCO_UPD_HST.ULT_INS_NO_UPD_FLG --ULT施設コード更新フラグ
+	        ,MDB_HCO_MST.SHISETSU_NM_RYAKU AS SHISETSU_NM_RYAKU --ULT施設名称
+	        ,HCO_UPD_HST.INS_CONT_NAME --契約用正式漢字名
+			,HCO_UPD_HST.INS_CONT_NAME_UPD_FLG --契約用正式漢字名更新フラグ
+	        ,HCO_UPD_HST.PHARM_TYPE --施設区分
+			,HCO_UPD_HST.PHARM_TYPE_UPD_FLG --施設区分更新フラグ
+	        ,HCO_UPD_HST.INS_RANK --階級区分
+			,HCO_UPD_HST.INS_RANK_UPD_FLG --階級区分更新フラグ
+	        ,HCO_UPD_HST.MANAGE_CD --経営主体コード
+			,HCO_UPD_HST.MANAGE_CD_UPD_FLG --経営主体コードフラグ
+			,POS_ADDR.ADDR_NAME_PREF --JIS府県名
+			,HCO_UPD_HST.ADDR_CODE_PREF_UPD_FLG --JIS府県コード更新フラグ
+	        ,POS_ADDR.ADDR_NAME_CITY --JIS市区町村名
+			,HCO_UPD_HST.ADDR_CODE_CITY_UPD_FLG --JIS市区町村コード更新フラグ
+	        ,POS_ADDR.TK_CITY_NAME --武田市区郡名
+			,HCO_UPD_HST.TK_CITY_CD_UPD_FLG --武田市区郡コード更新フラグ
+	        ,HCO_UPD_HST.INS_PHONE2 --電話番号2
+			,HCO_UPD_HST.INS_PHONE2_UPD_FLG --電話番号2更新フラグ
+	        ,HCO_UPD_HST.INS_FAX2 --FAX番号2
+			,HCO_UPD_HST.INS_FAX2_UPD_FLG --FAX番号2更新フラグ
+	        ,HCO_UPD_HST.INS_URL_YMD --ホームページアドレス最終更新日
+			,HCO_UPD_HST.INS_URL_YMD_UPD_FLG --ホームページアドレス最終更新日更新フラグ
+			,HCO_UPD_HST.VAC_INS_TYPE --ワクチン対象区分(当期)
+			,HCO_UPD_HST.VAC_INS_TYPE_UPD_FLG --ワクチン対象区分(当期)更新フラグ
+	        ,HCO_UPD_HST.VAC_VISIT_TYPE --ワクチン定訪先区分(当期)
+			,HCO_UPD_HST.VAC_VISIT_TYPE_UPD_FLG --ワクチン定訪先区分(当期)更新フラグ
+	        ,HCO_UPD_HST.BEDCNT_BASE --病床(基準)
+			,HCO_UPD_HST.BEDCNT_BASE_UPD_FLG --病床(基準)更新フラグ
+	        ,HCO_UPD_HST.BEDS_TOT --ベッド数計
+			,HCO_UPD_HST.BEDS_TOT_UPD_FLG --ベッド数計更新フラグ
+	        ,HCO_UPD_HST.BEDCNT01 --病床数(一般)
+			,HCO_UPD_HST.BEDCNT01_UPD_FLG --病床数(一般)更新フラグ
+	        ,HCO_UPD_HST.BEDCNT02 --病床数(医療療養)
+			,HCO_UPD_HST.BEDCNT02_UPD_FLG --病床数(医療療養)更新フラグ
+	        ,HCO_UPD_HST.BEDCNT03 --病床数(精神)
+			,HCO_UPD_HST.BEDCNT03_UPD_FLG --病床数(精神)更新フラグ
+	        ,HCO_UPD_HST.BEDCNT04 --病床数(結核)
+			,HCO_UPD_HST.BEDCNT04_UPD_FLG --病床数(結核)更新フラグ
+	        ,HCO_UPD_HST.BEDCNT05 --病床数(感染症)
+			,HCO_UPD_HST.BEDCNT05_UPD_FLG --病床数(感染症)更新フラグ
+	        ,HCO_UPD_HST.BEDCNT06 --病床数(介護療養)
+			,HCO_UPD_HST.BEDCNT06_UPD_FLG --病床数(介護療養)更新フラグ
+	        ,HCO_UPD_HST.BEDCNT07 --病床数(療養)
+			,HCO_UPD_HST.BEDCNT07_UPD_FLG --病床数(療養)更新フラグ
+	        ,HCO_UPD_HST.INS_OPEN_YEAR --開業年
+	        ,HCO_UPD_HST.INS_OPEN_MONTH --開業月
+	    	,HCO_UPD_HST.INS_OPEN_DAY --開業日
+			,HCO_UPD_HST.INS_OPEN_YMD_UPD_FLG --開業年月日更新フラグ
+	        ,HCO_UPD_HST.CLITEM_LIST --診療科目
+	        ,HCO_UPD_HST.REQ_BR_CODE --申請者所属リージョン
+	        ,HCO_UPD_HST.REQ_DIST_CODE --申請者所属エリア
+	        ,HCO_UPD_HST.APR_SHZ --承認者所属
+	FROM
+			ORAUSR01.T_RDM_HCO_UPD_HST  HCO_UPD_HST --施設_変更履歴テーブル
+		<if test="kensakuJgiNo != 0 || mrJgiNo != 0">
+		LEFT JOIN
+			ORAUSR01.M_RDM_JKR_MR_INS_TRT  INS_TRT --RDM用施設担当者情報テーブル
+		ON
+			HCO_UPD_HST.INS_NO = INS_TRT.INS_NO --施設固定コード
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報テーブル
+		ON
+			INS_TRT.JGI_NO = JGI_SOS_MST.JGI_NO --従業員番号
+
+		LEFT JOIN
+			ORAUSR01.S_RDM_JKR_SOS_ADDR SOS_ADDR --組織担当地区情報テーブル
+		ON
+			HCO_UPD_HST.TK_CITY_CD = SOS_ADDR.TK_CITY_CD --武田市区郡コード
+		AND
+			HCO_UPD_HST.ADDR_CODE_PREF = SOS_ADDR.ADDR_CODE_PREF--JIS府県コード
+		AND
+			INS_TRT.TRT_CD = SOS_ADDR.TRT_CD --追加_領域コード
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_SOS_MST SOS_MST --RDM用組織情報テーブル
+		ON
+			SOS_ADDR.SOS_CD = SOS_MST.SOS_CD --組織コード
+		</if>
+
+		LEFT JOIN
+			ORAUSR01.T_RDM_M_MDB_HCO_MST MDB_HCO_MST --ULT_MDB施設マスタテーブル
+		ON
+			HCO_UPD_HST.ULT_INS_NO = MDB_HCO_MST.DCF_SHISETSU_CD --ULT施設コード
+
+		LEFT JOIN
+			ORAUSR01.S_RDM_COM_POS_ADDR POS_ADDR --郵便番号－住所変換マスタテーブル
+		ON
+			HCO_UPD_HST.ADDR_CODE_PREF  = POS_ADDR.ADDR_CODE_PREF --JIS府県コード
+		AND
+			 HCO_UPD_HST.ADDR_CODE_CITY = POS_ADDR.ADDR_CODE_CITY --JIS市区町村コード
+		AND
+			 HCO_UPD_HST.TK_CITY_CD = POS_ADDR.TK_CITY_CD --武田市区郡コード
+		AND
+			HCO_UPD_HST.INS_PCODE = POS_ADDR.POST_CODE --追加＿郵便番号
+		<where>
+			<if test="kensakuInsKanj != null">
+			AND
+				HCO_UPD_HST.INS_ABBR_NAME LIKE '%' ||#{kensakuInsKanj}|| '%'
+			OR
+				 HCO_UPD_HST.INS_FORMAL_NAME LIKE '%' ||#{kensakuInsKanj}|| '%'
+			</if>
+			<if test="kensakuInsKana != null">
+			AND
+				HCO_UPD_HST.INS_KANA LIKE '%' ||#{kensakuInsKana}|| '%'
+			</if>
+
+			<if test="jokenSetCd == 0">
+				<if test="mrJgiNo != 0">
+				AND
+					INS_TRT.JGI_NO = #{mrJgiNo}
+				</if>
+				<if test="mrTrtCd != null">
+				AND
+					INS_TRT.TRT_CD = #{mrTrtCd}
+				</if>
+				<if test="mrJgiNo != 0">
+				AND
+					HCO_UPD_HST.REQ_JGI_NO = #{mrJgiNo}
+				</if>
+				<if test="mrDistCode != null">
+				AND
+					HCO_UPD_HST.REQ_DIST_CODE = #{mrDistCode}
+				</if>
+				<if test="mrBrCode != null">
+				AND
+					HCO_UPD_HST.REQ_BR_CODE = #{mrBrCode}
+				</if>
+			</if>
+
+			<if test="jokenSetCd == 1">
+				<if test="kensakuTantouDistCode != null">
+				AND
+					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
+				</if>
+				<if test="kensakuSTantouBrCode != null">
+				AND
+					SOS_MST.BR_CODE = #{kensakuSTantouBrCode}
+				</if>
+				<if test="kensakuJgiNo != 0">
+				AND
+					INS_TRT.JGI_NO = #{kensakuJgiNo}
+				</if>
+				<if test="kensakuShinseiBrCode != null">
+				AND
+					HCO_UPD_HST.REQ_BR_CODE = #{kensakuShinseiBrCode}
+				</if>
+				<if test="kensakuShinseiDistCode != null">
+				AND
+					HCO_UPD_HST.REQ_DIST_CODE  = #{kensakuShinseiDistCode}
+				</if>
+				<if test="kensakuReqJgiName != null">
+				AND
+					HCO_UPD_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
+				</if>
+			</if>
+
+			<if test="kensakuInsNo != null">AND HCO_UPD_HST.INS_NO = #{kensakuInsNo}</if>
+			<if test="kensakuUltInsNo != null">AND HCO_UPD_HST.ULT_INS_NO = #{kensakuUltInsNo}</if>
+			<if test="kensakuManageCd != null">AND HCO_UPD_HST.MANAGE_CD = #{kensakuManageCd}</if>
+			<if test="kensakuHoInsType != null">AND HCO_UPD_HST.HO_INS_TYPE = #{kensakuHoInsType}</if>
+			<if test="kensakuInsSbt != null">AND HCO_UPD_HST.INS_SBT = #{kensakuInsSbt}</if>
+			<if test="kensakuPharmType != null">AND HCO_UPD_HST.PHARM_TYPE = #{kensakuPharmType}</if>
+
+			<if test="kensakuInsPhone != null">
+			AND
+				HCO_UPD_HST.INS_PHONE1 LIKE '%' ||#{KensakuInsPhone}|| '%'
+			OR
+				HCO_UPD_HST.INS_PHONE2 LIKE '%' ||#{KensakuInsPhone}|| '%'
+			</if>
+			<if test="kensakuInsPcode != null">
+			AND
+				HCO_UPD_HST.INS_PCODE LIKE '%' ||#{kensakuInsPcode}|| '%'
+			</if>
+			<if test="kensakuAddrCodePref != null">AND HCO_UPD_HST.ADDR_CODE_PREF = #{kensakuAddrCodePref}</if>
+			<if test="kensakuAddrCodeCity != null">
+			AND
+				HCO_UPD_HST.ADDR_CODE_CITY = #{kensakuAddrCodeCity}
+			</if>
+			<if test="kensakuInsAddr != null">
+			AND
+				HCO_UPD_HST.INS_ADDR
+			LIKE
+				'%' ||#{kensakuInsAddr}|| '%'
+			</if>
+			<if test="kensakuUpdMstFrom != null">
+			AND
+				HCO_UPD_HST.UPD_SHA_YMD
+			BETWEEN
+				#{kensakuUpdMstFrom}
+			AND
+				#{kensakuUpdMstTo}
+			</if>
+		</where>
+		<if test="sortId == 0">
+			ORDER BY
+				HCO_UPD_HST.UPD_SHA_YMD, HCO_UPD_HST.REQ_ID
+		</if>
+		<if test="sortId == 1">
+			ORDER BY HCO_UPD_HST.UPD_SHA_YMD DESC, HCO_UPD_HST.REQ_ID
+		</if>
+    </select>
+
+    <!-- 施設一覧 _変換系-->
+    <select id="searchHenkanHcoUpd" parameterType="jp.co.takeda.rdm.entity.join.SelectHcoUpdHstListEntity" resultMap="SelectHcoUpdHstListEntityResultMap">
+    	SELECT
+    		<if test="henkanType == '漢字変換'">
+		 		ORAUSR01.F_RDM_KJ_HENKAN(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == '半角変換'">
+		 		ORAUSR01.F_RDM_HW_HENKAN(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == 'ハイフン変換'">
+		 		ORAUSR01.F_RDM_HY_HENKAN(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == 'ハイフン除去'">
+		 		ORAUSR01.F_RDM_HY_REMOVE(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		 	<if test="henkanType == '全角変換'">
+		 		ORAUSR01.F_RDM_HY_REMOVE(#{searchHenkan}) SEARCH_HENKAN
+		 	</if>
+		FROM
+		  dual
+    </select>
+
+    <!-- 領域別担当者一覧 -->
+	<select id="selectMainInsListEntity" parameterType="jp.co.takeda.rdm.entity.join.SelectMainInsListEntity" resultMap="SelectMainInsListEntityResultMap">
+	SELECT
+			 HCO_UPD_HST.UPD_SHA_YMD AS UPD_SHA_YMD --更新日
+          	,HCO_UPD_HST.REQ_ID AS REQ_ID --申請ID
+	        ,HCO_UPD_HST.INS_NO AS INS_NO --施設固定コード
+	        ,HCO_UPD_HST.HO_INS_TYPE --対象区分
+			,HCO_UPD_HST.HO_INS_TYPE_UPD_FLG --対象区分更新フラグ
+	        ,HCO_UPD_HST.INS_ABBR_NAME --施設略式漢字名
+			,HCO_UPD_HST.INS_ABBR_NAME_UPD_FLG --施設略式漢字名更新フラグ
+	        ,HCO_UPD_HST.MAIN_INS_NO --領域別親子_親施設コード
+			,HCO_UPD_HST.MAIN_INS_NO_UPD_FLG --領域別親子_親施設コード更新フラグ
+	        ,HCO_UPD_HST.MAIN_INS_NM --領域別親子_親施設名
+			,HCO_UPD_HST.MAIN_INS_NM_UPD_FLG --領域別親子_親施設名更新フラグ
+	        ,HCO_UPD_HST.TRT_NM --領域別親子_領域名
+	        ,HCO_UPD_HST.REQ_DIST_CODE AS REQ_DIST_CODE --申請者所属
+	        ,HCO_UPD_HST.REQ_JGI_NAME --申請者
+	        ,HCO_UPD_HST.APR_SHZ AS APR_SHZ --承認者所属
+	        ,HCO_UPD_HST.APR_SHA_ID --承認者氏名
+		FROM
+				ORAUSR01.T_RDM_HCO_UPD_HST  HCO_UPD_HST --施設_変更履歴テーブル
+
+		<if test="test=kensakuJgiNo != 0 || mrJgiNo != 0">
+		LEFT JOIN
+			ORAUSR01.M_RDM_JKR_MR_INS_TRT  INS_TRT --RDM用施設担当者情報テーブル
+		ON
+			HCO_UPD_HST.INS_NO = INS_TRT.INS_NO --施設固定コード
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報テーブル
+		ON
+			INS_TRT.JGI_NO = JGI_SOS_MST.JGI_NO --従業員番号
+
+		LEFT JOIN
+			ORAUSR01.S_RDM_JKR_SOS_ADDR SOS_ADDR --組織担当地区情報テーブル
+		ON
+			HCO_UPD_HST.TK_CITY_CD = SOS_ADDR.TK_CITY_CD --武田市区郡コード
+		AND
+			HCO_UPD_HST.ADDR_CODE_PREF = SOS_ADDR.ADDR_CODE_PREF--JIS府県コード
+		AND
+			INS_TRT.TRT_CD = SOS_ADDR.TRT_CD --追加_領域コード
+
+		LEFT JOIN
+			ORAUSR01.M_RDM_SOS_MST SOS_MST --RDM用組織情報テーブル
+		ON
+			SOS_ADDR.SOS_CD = SOS_MST.SOS_CD --組織コード
+		</if>
+
+		LEFT JOIN
+			ORAUSR01.T_RDM_M_MDB_HCO_MST MDB_HCO_MST --ULT_MDB施設マスタテーブル
+		ON
+			HCO_UPD_HST.ULT_INS_NO = MDB_HCO_MST.DCF_SHISETSU_CD --ULT施設コード
+
+		LEFT JOIN
+			ORAUSR01.S_RDM_COM_POS_ADDR POS_ADDR --郵便番号－住所変換マスタテーブル
+		ON
+			HCO_UPD_HST.ADDR_CODE_PREF  = POS_ADDR.ADDR_CODE_PREF --JIS府県コード
+		AND
+			 HCO_UPD_HST.ADDR_CODE_CITY = POS_ADDR.ADDR_CODE_CITY --JIS市区町村コード
+		AND
+			 HCO_UPD_HST.TK_CITY_CD = POS_ADDR.TK_CITY_CD --武田市区郡コード
+		AND
+			HCO_UPD_HST.INS_PCODE = POS_ADDR.POST_CODE --追加＿郵便番号
+		<where>
+			<if test="kensakuInsKanj != null">
+			AND
+				HCO_UPD_HST.INS_ABBR_NAME LIKE '%' ||#{kensakuInsKanj}|| '%'
+			OR
+				 HCO_UPD_HST.INS_FORMAL_NAME LIKE '%' ||#{kensakuInsKanj}|| '%'
+			</if>
+			<if test="kensakuInsKana != null">
+			AND
+				HCO_UPD_HST.INS_KANA LIKE '%' ||#{kensakuInsKana}|| '%'
+			</if>
+			<if test="jokenSetCd == 0">
+				<if test="mrJgiNo != 0">
+				AND
+					INS_TRT.JGI_NO = #{mrJgiNo}
+				</if>
+				<if test="mrTrtCd != null">
+				AND
+					INS_TRT.TRT_CD = #{mrTrtCd}
+				</if>
+				<if test="mrJgiNo != 0">
+				AND
+					HCO_UPD_HST.REQ_JGI_NO = #{mrJgiNo}
+				</if>
+				<if test="mrDistCode != null">
+				AND
+					HCO_UPD_HST.REQ_DIST_CODE = #{mrDistCode}
+				</if>
+				<if test="mrBrCode != null">
+				AND
+					HCO_UPD_HST.REQ_BR_CODE = #{mrBrCode}
+				</if>
+			</if>
+
+			<if test="jokenSetCd == 1">
+				<if test="kensakuTantouDistCode != null">
+				AND
+					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
+				</if>
+				<if test="kensakuSTantouBrCode != null">
+				AND
+					SOS_MST.BR_CODE = #{kensakuSTantouBrCode}
+				</if>
+				<if test="kensakuJgiNo != 0">
+				AND
+					INS_TRT.JGI_NO = #{kensakuJgiNo}
+				</if>
+				<if test="kensakuShinseiBrCode != null">
+				AND
+					HCO_UPD_HST.REQ_BR_CODE = #{kensakuShinseiBrCode}
+				</if>
+				<if test="kensakuShinseiDistCode != null">
+				AND
+					HCO_UPD_HST.REQ_DIST_CODE  = #{kensakuShinseiDistCode}
+				</if>
+				<if test="kensakuReqJgiName != null">
+				AND
+					HCO_UPD_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
+				</if>
+			</if>
+
+			<if test="kensakuInsNo != null">AND HCO_UPD_HST.INS_NO = #{kensakuInsNo}</if>
+			<if test="kensakuUltInsNo != null">AND HCO_UPD_HST.ULT_INS_NO = #{kensakuUltInsNo}</if>
+			<if test="kensakuManageCd != null">AND HCO_UPD_HST.MANAGE_CD = #{kensakuManageCd}</if>
+			<if test="kensakuHoInsType != null">AND HCO_UPD_HST.HO_INS_TYPE = #{kensakuHoInsType}</if>
+			<if test="kensakuInsSbt != null">AND HCO_UPD_HST.INS_SBT = #{kensakuInsSbt}</if>
+			<if test="kensakuPharmType != null">AND HCO_UPD_HST.PHARM_TYPE = #{kensakuPharmType}</if>
+
+			<if test="kensakuInsPhone != null">
+			AND
+				HCO_UPD_HST.INS_PHONE1 LIKE '%' ||#{KensakuInsPhone}|| '%'
+			OR
+				HCO_UPD_HST.INS_PHONE2 LIKE '%' ||#{KensakuInsPhone}|| '%'
+			</if>
+			<if test="kensakuInsPcode != null">
+			AND
+				HCO_UPD_HST.INS_PCODE LIKE '%' ||#{kensakuInsPcode}|| '%'
+			</if>
+			<if test="kensakuAddrCodePref != null">AND HCO_UPD_HST.ADDR_CODE_PREF = #{kensakuAddrCodePref}</if>
+			<if test="kensakuAddrCodeCity != null">
+			AND
+				HCO_UPD_HST.ADDR_CODE_CITY = #{kensakuAddrCodeCity}
+			</if>
+			<if test="kensakuInsAddr != null">
+			AND
+				HCO_UPD_HST.INS_ADDR
+			LIKE
+				'%' ||#{kensakuInsAddr}|| '%'
+			</if>
+			<if test="kensakuUpdMstFrom != null">
+			AND
+				HCO_UPD_HST.UPD_SHA_YMD
+			BETWEEN
+				#{kensakuUpdMstFrom}
+			AND
+				#{kensakuUpdMstTo}
+			</if>
+		</where>
+			<if test="sortId == 0">
+				ORDER BY
+					HCO_UPD_HST.UPD_SHA_YMD, HCO_UPD_HST.REQ_ID
+			</if>
+			<if test="sortId == 1">
+				ORDER BY HCO_UPD_HST.UPD_SHA_YMD DESC, HCO_UPD_HST.REQ_ID
+			</if>
+	</select>
+
+</mapper>

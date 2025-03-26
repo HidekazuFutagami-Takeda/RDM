@@ -275,7 +275,7 @@ public abstract class BaseAction<DTO extends BaseDTO> extends ActionSupport
         if (stack.peek() instanceof BaseDTO) {
             BaseDTO outdto = (BaseDTO)stack.peek();
             nextScreenForward = outdto != null ? outdto.getForward() : "";
-            isGettedNextScreen = (nextScreenForward.length() == 10);
+            isGettedNextScreen = (nextScreenForward.length() == 5);
         }
 
         //遷移元画面IDが取れる場合、該当画面IDの権限をチェックする

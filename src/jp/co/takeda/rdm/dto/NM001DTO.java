@@ -1727,22 +1727,6 @@ public void setPageFlag(String pageFlag) {
 	this.pageFlag = pageFlag;
 }
 
-private String reqFlg;
-
-/**
- * NM001DTO.javareqFlgを設定
- * @return reqFlg
- */
-public String getReqFlg() {
-	return reqFlg;
-}
-/**
- * @param reqFlg セットする reqFlg
- */
-public void setReqFlg(String reqFlg) {
-	this.reqFlg = reqFlg;
-}
-
 /**
  * @generated
  */

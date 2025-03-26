@@ -114,6 +114,12 @@
         <action name="NC205Init" class="nC205Action" method="init">
             <result name="NC205">/WEB-INF/pages/NC205.jsp</result>
         </action>
+        <action name="NC201Init" class="nC201Action" method="init">
+            <result name="NC201">/WEB-INF/pages/NC201_01.jsp</result>
+        </action>
+        <action name="NC201AjaxSos" class="nC201Action" method="ajaxSos">
+            <result name="NC201_02">/WEB-INF/pages/NC201_02.jsp</result>
+        </action>
         <action name="NC202Init" class="nC202Action" method="init">
             <result name="NC202">/WEB-INF/pages/NC202_01.jsp</result>
         </action>
@@ -414,6 +420,12 @@
             <result name="NC204">/WEB-INF/pages/NC204.jsp</result>
         </action>
         <action name="NF501Init" class="NF501Action" method="init">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
+        <action name="NF501Search" class="NF501Action" method="search">
+            <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
+        </action>
+        <action name="NF501Page" class="NF501Action" method="page">
             <result name="NF501">/WEB-INF/pages/NF501.jsp</result>
         </action>
         <action name="ND103Init" class="ND103Action" method="init">

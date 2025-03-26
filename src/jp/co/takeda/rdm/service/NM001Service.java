@@ -88,7 +88,6 @@ public class NM001Service extends BaseService {
 	public BaseDTO search(NM001DTO indto) throws ParseException{
 		BaseDTO outdto = indto;
 		SRdmReqSamariEntity paramEntity = new SRdmReqSamariEntity();
-		indto.setReqFlg("0");
       //  List<NM001Entity> selectTestEntity = dao.select(paramEntity);
       //  indto.setTest(selectTestEntity.get(0).getTest());
 

@@ -290,15 +290,27 @@ public class NF101Service extends BaseService {
     		indto.setShisetsuKbn(StringUtils.nvl(mainDataEntity.getShisetsuKbn(), ""));
     		indto.setKeieitaiNm(StringUtils.nvl(mainDataEntity.getKeieitaiNm(), ""));
 
-    		// 基本情報(来期)
-    		indto.setNextPharmType(StringUtils.nvl(mainDataEntity.getNextPharmType(), ""));
-    		indto.setNextInsRank(StringUtils.nvl(mainDataEntity.getNextInsRank(), ""));
-    		indto.setNextRegVisType(StringUtils.nvl(mainDataEntity.getNextRegVisType(), ""));
-    		indto.setNextImpHosType(StringUtils.nvl(mainDataEntity.getNextImpHosType(), ""));
-    		indto.setNextHoInsType(StringUtils.nvl(mainDataEntity.getNextHoInsType(), ""));
-    		indto.setNextManageCd(StringUtils.nvl(mainDataEntity.getNextManageCd(), ""));
-    		indto.setNextVacInsType(StringUtils.nvl(mainDataEntity.getNextVacInsType(), ""));
-    		indto.setNextVacVisitType(StringUtils.nvl(mainDataEntity.getNextVacVisitType(), ""));
+    		if("01".equals(mainDataEntity.getReqStsCd())) {
+				// 一時保存データ
+	    		// 基本情報(来期)
+	    		indto.setNextPharmType(getViewValue(mainDataEntity.getPharmType(), mainDataEntity.getNextPharmType()));
+	    		indto.setNextInsRank(getViewValue(mainDataEntity.getInsRank(), mainDataEntity.getNextInsRank()));
+	    		indto.setNextRegVisType(getViewValue(mainDataEntity.getRegVisType(), mainDataEntity.getNextRegVisType()));
+	    		indto.setNextImpHosType(getViewValue(mainDataEntity.getImpHosType(), mainDataEntity.getNextImpHosType()));
+	    		indto.setNextHoInsType(getViewValue(mainDataEntity.getHoInsType(), mainDataEntity.getNextHoInsType()));
+	    		indto.setNextManageCd(getViewValue(mainDataEntity.getManageCd(), mainDataEntity.getNextManageCd()));
+	    		indto.setNextVacInsType(getViewValue(mainDataEntity.getVacInsType(), mainDataEntity.getNextVacInsType()));
+	    		indto.setNextVacVisitType(getViewValue(mainDataEntity.getVacVisitType(), mainDataEntity.getNextVacVisitType()));
+    		} else {
+    			indto.setNextPharmType(getReqViewValue(mainDataEntity.getPharmType(), mainDataEntity.getNextPharmType()));
+	    		indto.setNextInsRank(getReqViewValue(mainDataEntity.getInsRank(), mainDataEntity.getNextInsRank()));
+	    		indto.setNextRegVisType(getReqViewValue(mainDataEntity.getRegVisType(), mainDataEntity.getNextRegVisType()));
+	    		indto.setNextImpHosType(getReqViewValue(mainDataEntity.getImpHosType(), mainDataEntity.getNextImpHosType()));
+	    		indto.setNextHoInsType(getReqViewValue(mainDataEntity.getHoInsType(), mainDataEntity.getNextHoInsType()));
+	    		indto.setNextManageCd(getReqViewValue(mainDataEntity.getManageCd(), mainDataEntity.getNextManageCd()));
+	    		indto.setNextVacInsType(getReqViewValue(mainDataEntity.getVacInsType(), mainDataEntity.getNextVacInsType()));
+	    		indto.setNextVacVisitType(getReqViewValue(mainDataEntity.getVacVisitType(), mainDataEntity.getNextVacVisitType()));
+    		}
 
     		// 病床数
     		indto.setBedCntBase(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""));
@@ -332,16 +344,30 @@ public class NF101Service extends BaseService {
     		indto.setUltBedsTot(Integer.toString(bedsTot));
     		indto.setUltMedBedsTot(Integer.toString(medBedsTot));
 
-			indto.setNextBedCntBase(StringUtils.nvl(mainDataEntity.getNextBedCntBase(), ""));
-			indto.setNextBedCnt01(StringUtils.nvl(mainDataEntity.getNextBedCnt01(), ""));
-			indto.setNextBedCnt02(StringUtils.nvl(mainDataEntity.getNextBedCnt02(), ""));
-			indto.setNextBedCnt03(StringUtils.nvl(mainDataEntity.getNextBedCnt03(), ""));
-			indto.setNextBedCnt04(StringUtils.nvl(mainDataEntity.getNextBedCnt04(), ""));
-			indto.setNextBedCnt05(StringUtils.nvl(mainDataEntity.getNextBedCnt05(), ""));
-			indto.setNextBedCnt06(StringUtils.nvl(mainDataEntity.getNextBedCnt06(), ""));
-			indto.setNextBedCnt07(StringUtils.nvl(mainDataEntity.getNextBedCnt07(), ""));
-			indto.setNextBedsTot(StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0"));
-			indto.setNextMedBedsTot(StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0"));
+    		if("01".equals(mainDataEntity.getReqStsCd())) {
+				// 一時保存データ
+    			indto.setNextBedCntBase(getViewValue(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""),StringUtils.nvl(mainDataEntity.getNextBedCntBase(), "")));
+    			indto.setNextBedCnt01(getViewValue(StringUtils.nvl(mainDataEntity.getBedCnt01(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt01(), "")));
+    			indto.setNextBedCnt02(getViewValue(StringUtils.nvl(mainDataEntity.getBedCnt02(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt02(), "")));
+    			indto.setNextBedCnt03(getViewValue(StringUtils.nvl(mainDataEntity.getBedCnt03(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt03(), "")));
+    			indto.setNextBedCnt04(getViewValue(StringUtils.nvl(mainDataEntity.getBedCnt04(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt04(), "")));
+    			indto.setNextBedCnt05(getViewValue(StringUtils.nvl(mainDataEntity.getBedCnt05(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt05(), "")));
+    			indto.setNextBedCnt06(getViewValue(StringUtils.nvl(mainDataEntity.getBedCnt06(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt06(), "")));
+    			indto.setNextBedCnt07(getViewValue(StringUtils.nvl(mainDataEntity.getBedCnt07(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt07(), "")));
+    			indto.setNextBedsTot(getViewValue(StringUtils.nvl(mainDataEntity.getBedsTot(), "0"),StringUtils.nvl(mainDataEntity.getNextBedsTot(), "0")));
+    			indto.setNextMedBedsTot(getViewValue(StringUtils.nvl(mainDataEntity.getMedBedsTot(), "0"),StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "0")));
+    		} else {
+    			indto.setNextBedCntBase(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCntBase(), ""),StringUtils.nvl(mainDataEntity.getNextBedCntBase(), "")));
+    			indto.setNextBedCnt01(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCnt01(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt01(), "")));
+    			indto.setNextBedCnt02(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCnt02(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt02(), "")));
+    			indto.setNextBedCnt03(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCnt03(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt03(), "")));
+    			indto.setNextBedCnt04(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCnt04(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt04(), "")));
+    			indto.setNextBedCnt05(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCnt05(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt05(), "")));
+    			indto.setNextBedCnt06(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCnt06(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt06(), "")));
+    			indto.setNextBedCnt07(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedCnt07(), ""),StringUtils.nvl(mainDataEntity.getNextBedCnt07(), "")));
+    			indto.setNextBedsTot(getReqViewValue(StringUtils.nvl(mainDataEntity.getBedsTot(), "0"),StringUtils.nvl(mainDataEntity.getNextBedsTot(), "")));
+    			indto.setNextMedBedsTot(getReqViewValue(StringUtils.nvl(mainDataEntity.getMedBedsTot(), "0"),StringUtils.nvl(mainDataEntity.getNextMedBedsTot(), "")));
+    		}
 
     		// コメント
     		indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -378,9 +404,9 @@ public class NF101Service extends BaseService {
         } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())) {
         	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
-        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd())
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd()) && !"01".equals(indto.getReqStsCd()) && !"11".equals(indto.getReqStsCd())
         			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
-        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
+        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'11'、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
         	indto.setEditApprFlg("0");
         } else {
         	indto.setEditApprFlg("1");
@@ -614,6 +640,7 @@ public class NF101Service extends BaseService {
         	tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
         	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
         	tRdmReqKnrInsData.setInsNo(indto.getInsNo());
+        	tRdmReqKnrInsData.setFbReqFlg("0");
         	tRdmReqKnrInsData.setInsShaYmd(systemDate);
         	tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
         	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
@@ -626,13 +653,15 @@ public class NF101Service extends BaseService {
         	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF011Data");
         	tRdmReqKnrUpdData.setReqId(reqId);
 
-        	if("13".equals(indto.getReqStsCd())) {
-        		tRdmReqKnrUpdData.setReqStsCd("11");
-        	} else {
-        		tRdmReqKnrUpdData.setReqStsCd("01");
-        	}
-
-        	tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+        	if("11".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd("11");
+			} else if("03".equals(indto.getReqStsCd()) || "13".equals(indto.getReqStsCd())) {
+				tRdmReqKnrUpdData.setReqStsCd(indto.getReqStsCd());
+			} else {
+				tRdmReqKnrUpdData.setReqStsCd("01");
+			}
+			tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+			tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());
         	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
 
@@ -821,5 +850,41 @@ public class NF101Service extends BaseService {
 
        // END UOC
        return outdto;
+   }
+
+   /**
+    * 変更前と値が同一の場合は変更前、'Z'の場合はブランクを返却
+    * @param preValue
+    * @param value
+    * @return
+    */
+   public String getViewValue(String preValue, String value){
+   	String rtnValue = value;
+
+   	if(value != null && value.equals(preValue)) {
+   		rtnValue = preValue;
+   	} else if("Z".equals(value)) {
+   		rtnValue = "";
+   	}
+
+   	return rtnValue;
+   }
+
+   /**
+    * NULLの場合変更前値、'Z'の場合はブランクを返却
+    * @param preValue
+    * @param value
+    * @return
+    */
+   public String getReqViewValue(String preValue, String value){
+   	String rtnValue = value;
+
+   	if(StringUtils.isEmpty(value)) {
+   		rtnValue = preValue;
+   	} else if("Z".equals(value)) {
+   		rtnValue = "";
+   	}
+
+   	return rtnValue;
    }
 }

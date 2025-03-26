@@ -53,7 +53,9 @@ public class ND315Action extends BaseAction<ND315DTO> {
      */
     @Inject
     private ND315Service nD315Service;
-    // 確認画面用にする
+    // 確認画面用
+    @Getter
+    @Setter
     private NC101DTO paramDto;
     // START UOC
     // END UOC
@@ -226,14 +228,14 @@ public class ND315Action extends BaseAction<ND315DTO> {
 
         //画面タイトル内容設定
         paramDto = new NC101DTO();
-        // ブラウザタイトル
-        paramDto.setBrowerTitle ("ND105_医師削除");
+//        // ブラウザタイトル
+//        paramDto.setBrowerTitle ("ND105_医師削除");
         // 画面タイトル
         paramDto.setTitle("医師削除");
-        // 戻るリンク(表示文言)
-        paramDto.setReturnLinkNm1("医師検索画面へ");
-        // 戻るリンク(遷移先URL)
-        paramDto.setReturnLinkURL1("ND001Init");
+//        // 戻るリンク(表示文言)
+//        paramDto.setReturnLinkNm1("医師検索画面へ");
+//        // 戻るリンク(遷移先URL)
+//        paramDto.setReturnLinkURL1("ND001Init");
         // メッセージ１
         if (event.equals("0")) {//I002	申請が完了しました。
             paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));

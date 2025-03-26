@@ -226,6 +226,12 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	private String srchFlg;
 
 	/**
+	 * ページフラグ
+	 * @generated
+	 */
+	private String pageFlag;
+
+	/**
 	 * 一括承認ボタン活性フラグ
 	 * @generated
 	 */
@@ -732,6 +738,21 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	 */
 	public void setSrchFlg(String srchFlg) {
 		this.srchFlg = srchFlg;
+	}
+
+	/**
+	 * NF401DTO.javapageFlagを設定
+	 * @return pageFlag
+	 */
+	public String getPageFlag() {
+		return pageFlag;
+	}
+
+	/**
+	 * @param pageFlag セットする pageFlag
+	 */
+	public void setPageFlag(String pageFlag) {
+		this.pageFlag = pageFlag;
 	}
 
 	/**

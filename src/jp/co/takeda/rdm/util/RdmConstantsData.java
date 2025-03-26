@@ -499,7 +499,10 @@ public class RdmConstantsData {
     public static final String SCREEN_ID_RDM000C010 = "RDM000C010";
     public static final String SCREEN_ID_NC001 = "NC001";
     public static final String SCREEN_ID_NC101 = "NC101";
-    public static final String SCREEN_ID_NC202_2 = "NC202_2";
+    public static final String SCREEN_ID_NC201_1 = "NC201_01";
+    public static final String SCREEN_ID_NC201_2 = "NC201_02";
+    public static final String SCREEN_ID_NC202_1 = "NC202_01";
+    public static final String SCREEN_ID_NC202_2 = "NC202_02";
     /**画面ＩＤエリア終了 */
 
     /**登録完了画面フラグ */
@@ -719,4 +722,5 @@ public class RdmConstantsData {
     public static final String W057 = "W057"; // 医療機関外へ異動されている医師は削除できません。
     public static final String W058 = "W058"; // 医師は異動が予定されています。
     public static final String W059 = "W059"; // 同一の施設が重複先に指定されています。
+    public static final String I016 = "I016"; // 一時保存データを破棄しました。
 }

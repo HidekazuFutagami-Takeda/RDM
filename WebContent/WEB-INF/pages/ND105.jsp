@@ -45,33 +45,33 @@
     	if(backKbn == '0')	{
 	    	if(window.confirm(destructMsg.replace("（遷移元）", '医師勤務先情報更新'))){
 				//モック
-	    		document.fm1.screenId.value="ND013";
-	    		document.fm1.functionId.value="Init";
-  				comSubmitForAnyWarp(fm1);
+// 	    		document.fm1.screenId.value="ND013";
+// 	    		document.fm1.functionId.value="Init";
+//   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
     	if(backKbn == '1')	{
 	    	if(window.confirm(destructMsg.replace("（遷移元）", '申請一覧'))){
 				//モック
-	    		document.fm1.screenId.value="NC011";
-	    		document.fm1.functionId.value="Init";
-  				comSubmitForAnyWarp(fm1);
+// 	    		document.fm1.screenId.value="NC011";
+// 	    		document.fm1.functionId.value="Init";
+//   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
     	if(backKbn == '2')	{
 	    	if(window.confirm("画面を閉じます。よろしいですか？")){
 				//モック
-	    		document.fm1.screenId.value="NC001";
-	    		document.fm1.functionId.value="Init";
-  				comSubmitForAnyWarp(fm1);
+// 	    		document.fm1.screenId.value="NC001";
+// 	    		document.fm1.functionId.value="Init";
+//   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
-//				window.close();
+				window.close();
 				//元タブにフォーカス
 	    	}
     	}
@@ -101,10 +101,10 @@
     function comSetFormWindowInfo(){
         comSetFormWindowName('ND105');
         changeBox();
-		const returnFlg = document.fm1.buttonFlg.value;
-		if(returnFlg == "8"){//削除完了時画面を閉じろ
-// 			window.close();ではjsで開いた画面しか無理
-		}
+// 		const returnFlg = document.fm1.buttonFlg.value;
+// 		if(returnFlg == "8"){//削除完了時画面を閉じろ
+// // 			window.close();ではjsで開いた画面しか無理
+// 		}
         return false;
       }
     </script>

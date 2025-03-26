@@ -162,26 +162,26 @@
         <result column="MANAGE_NM" property="manageNm"/>
         <result column="VAC_INS_TYPE" property="vacInsType"/>
         <result column="VAC_VISIT_TYPE" property="vacVisitType"/>
-        <result column="BEDCNT_BASE" property="bedcntBase"/>
-        <result column="BEDCNT04" property="bedcnt04"/>
-        <result column="BEDCNT01" property="bedcnt01"/>
-        <result column="BEDCNT05" property="bedcnt05"/>
-        <result column="BEDCNT03" property="bedcnt03"/>
-        <result column="BEDCNT07" property="bedcnt07"/>
-        <result column="BEDCNT02" property="bedcnt02"/>
-        <result column="BEDCNT06" property="bedcnt06"/>
+        <result column="BEDCNT_BASE" property="bedCntBase"/>
+        <result column="BEDCNT04" property="bedCnt04"/>
+        <result column="BEDCNT01" property="bedCnt01"/>
+        <result column="BEDCNT05" property="bedCnt05"/>
+        <result column="BEDCNT03" property="bedCnt03"/>
+        <result column="BEDCNT07" property="bedCnt07"/>
+        <result column="BEDCNT02" property="bedCnt02"/>
+        <result column="BEDCNT06" property="bedCnt06"/>
         <result column="BEDS_TOT" property="bedsTot"/>
         <result column="MED_BEDS_TOT" property="medBedsTot"/>
         <result column="ULT_INS_NO" property="ultInsNo"/>
         <result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
         <result column="SHISETSU_KBN" property="shisetsuKbn"/>
         <result column="KEIEITAI" property="keieitai"/>
-        <result column="ULT_BEDCNT_BASE" property="ultBedcntBase"/>
-        <result column="ULT_BEDCNT04" property="ultBedcnt04"/>
-        <result column="ULT_BEDCNT01" property="ultBedcnt01"/>
-        <result column="ULT_BEDCNT05" property="ultBedcnt05"/>
-        <result column="ULT_BEDCNT03" property="ultBedcnt03"/>
-        <result column="ULT_BEDCNT07" property="ultBedcnt07"/>
+        <result column="ULT_BEDCNT_BASE" property="ultBedCntBase"/>
+        <result column="ULT_BEDCNT04" property="ultBedCnt04"/>
+        <result column="ULT_BEDCNT01" property="ultBedCnt01"/>
+        <result column="ULT_BEDCNT05" property="ultBedCnt05"/>
+        <result column="ULT_BEDCNT03" property="ultBedCnt03"/>
+        <result column="ULT_BEDCNT07" property="ultBedCnt07"/>
         <result column="NEXT_PHARM_TYPE" property="nextPharmType"/>
         <result column="NEXT_INS_RANK" property="nextInsRank"/>
         <result column="NEXT_REG_VIS_TYPE" property="nextRegVisType"/>
@@ -190,14 +190,14 @@
         <result column="NEXT_MANAGE_NM" property="nextManageNm"/>
         <result column="NEXT_VAC_INS_TYPE" property="nextVacInsType"/>
         <result column="NEXT_VAC_VISIT_TYPE" property="nextVacVisitType"/>
-        <result column="NEXT_BEDCNT_BASE" property="nextBedcntBase"/>
-        <result column="NEXT_BEDCNT04" property="nextBedcnt04"/>
-        <result column="NEXT_BEDCNT01" property="nextBedcnt01"/>
-        <result column="NEXT_BEDCNT05" property="nextBedcnt05"/>
-        <result column="NEXT_BEDCNT03" property="nextBedcnt03"/>
-        <result column="NEXT_BEDCNT07" property="nextBedcnt07"/>
-        <result column="NEXT_BEDCNT02" property="nextBedcnt02"/>
-        <result column="NEXT_BEDCNT06" property="nextBedcnt06"/>
+        <result column="NEXT_BEDCNT_BASE" property="nextBedCntBase"/>
+        <result column="NEXT_BEDCNT04" property="nextBedCnt04"/>
+        <result column="NEXT_BEDCNT01" property="nextBedCnt01"/>
+        <result column="NEXT_BEDCNT05" property="nextBedCnt05"/>
+        <result column="NEXT_BEDCNT03" property="nextBedCnt03"/>
+        <result column="NEXT_BEDCNT07" property="nextBedCnt07"/>
+        <result column="NEXT_BEDCNT02" property="nextBedCnt02"/>
+        <result column="NEXT_BEDCNT06" property="nextBedCnt06"/>
         <result column="NEXT_BEDS_TOT" property="nextBedsTot"/>
         <result column="NEXT_MED_BEDS_TOT" property="nextMedBedsTot"/>
 		<result column="NO_SHN_CNT" property="noShnCnt"/>
@@ -939,7 +939,7 @@
 		APR_WAIT AS ( -- ■サブクエリ（承認待ち件数）
 			SELECT
 			  HCO.INS_NO
-			, COUNT(REQ_ID) AS APR_WAIT_CNT
+			, COUNT(KNR.REQ_ID) AS APR_WAIT_CNT
 			FROM
 			T_RDM_REQ_KNR KNR -- 申請管理
 			LEFT JOIN
@@ -947,11 +947,13 @@
 			ON HCO.REQ_ID = KNR.REQ_ID
 			WHERE KNR.REQ_TYPE = '21'
 			AND KNR.REQ_STS IN ('03', '13')
+			GROUP BY
+			HCO.INS_NO
 		),
 		NO_SHN AS ( -- ■サブクエリ（未審査申請数）
 			SELECT
 			  HCO.INS_NO
-			, COUNT(REQ_ID) AS NO_SHN_CNT
+			, COUNT(KNR.REQ_ID) AS NO_SHN_CNT
 			FROM
 			T_RDM_REQ_KNR KNR -- 申請管理
 			LEFT JOIN
@@ -960,6 +962,8 @@
 			WHERE KNR.REQ_TYPE = '21'
 			AND KNR.REQ_STS IN ('03', '13')
 			AND KNR.SHN_FLG = '0'
+			GROUP BY
+			HCO.INS_NO
 		)
 
 		SELECT DISTINCT
@@ -1032,6 +1036,7 @@
 		LEFT JOIN
 		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI -- 経営体紐付けマスタ
 		ON KEIEI.KEIEITAI_CD = MDB.KEIEITAI_CD
+		LEFT JOIN
 		M_RDM_HCO_KEIEITAI ULTKEIEI -- 施設_経営主体マスタ
 		ON ULTKEIEI.SET_DT_CD = KEIEI.SET_DT_CD
 		LEFT JOIN
@@ -1085,6 +1090,7 @@
 		AND CDM_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
 		AND CDM_HOINSTYPE.DEL_FLG = '0'
 		AND CDM_HOINSTYPE.VALUE1 = MST.HO_INS_TYPE
+		LEFT JOIN
 		M_RDM_HCO_KEIEITAI NXTKEIEI -- 施設_経営主体マスタ
 		ON NXTKEIEI.SET_DT_CD = MST.MANAGE_CD
 		LEFT JOIN
@@ -1092,13 +1098,19 @@
 		ON 1=1
 		AND CDM_VACINSTYPE.CODE_NAME = 'VAC_INS_TYPE'
 		AND CDM_VACINSTYPE.DEL_FLG = '0'
-		AND CDM_VACINSTYPE.VALUE1 = MST.VAC_INS_TYPE
+		AND CDM_VACINSTYPE.VALUE1 = VAC.VAC_INS_TYPE
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_VACVISITTYPE -- コード情報
 		ON 1=1
 		AND CDM_VACVISITTYPE.CODE_NAME = 'VAC_VISIT_TYPE'
 		AND CDM_VACVISITTYPE.DEL_FLG = '0'
-		AND CDM_VACVISITTYPE.VALUE1 = MST.VAC_VISIT_TYPE
+		AND CDM_VACVISITTYPE.VALUE1 = VAC.VAC_VISIT_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_UPHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_PHARMTYPE.CODE_NAME = 'PHARM_TYPE'
+		AND CDM_PHARMTYPE.DEL_FLG = '0'
+		AND CDM_PHARMTYPE.VALUE1 = MDB.SHISETSU_KBN
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_NXT_PHARMTYPE -- コード情報
 		ON 1=1
@@ -1129,6 +1141,7 @@
 		AND CDM_NXT_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
 		AND CDM_NXT_HOINSTYPE.DEL_FLG = '0'
 		AND CDM_NXT_HOINSTYPE.VALUE1 = COL.HO_INS_TYPE
+		LEFT JOIN
 		M_RDM_HCO_KEIEITAI HCOKEIEI -- 施設_経営主体マスタ
 		ON HCOKEIEI.SET_DT_CD = COL.MANAGE_CD
 		LEFT JOIN
@@ -1161,6 +1174,7 @@
 		<if test="insClass != null">AND MST.INS_CLASS = #{insClass}</if>
 		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="hoInsType != null">AND COL.HO_INS_TYPE = #{hoInsType}</if>
+		<if test="shnFlgChk == '1'">AND NO_SHN.NO_SHN_CNT = 0</if>
 		</where>
 		ORDER BY HCO.INS_NO ASC
 		OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
@@ -1209,7 +1223,7 @@
 		APR_WAIT AS ( -- ■サブクエリ（承認待ち件数）
 			SELECT
 			  HCO.INS_NO
-			, COUNT(REQ_ID) AS APR_WAIT_CNT
+			, COUNT(KNR.REQ_ID) AS APR_WAIT_CNT
 			FROM
 			T_RDM_REQ_KNR KNR -- 申請管理
 			LEFT JOIN
@@ -1217,11 +1231,13 @@
 			ON HCO.REQ_ID = KNR.REQ_ID
 			WHERE KNR.REQ_TYPE = '21'
 			AND KNR.REQ_STS IN ('03', '13')
+			GROUP BY
+			HCO.INS_NO
 		),
 		NO_SHN AS ( -- ■サブクエリ（未審査申請数）
 			SELECT
 			  HCO.INS_NO
-			, COUNT(REQ_ID) AS NO_SHN_CNT
+			, COUNT(KNR.REQ_ID) AS NO_SHN_CNT
 			FROM
 			T_RDM_REQ_KNR KNR -- 申請管理
 			LEFT JOIN
@@ -1230,10 +1246,12 @@
 			WHERE KNR.REQ_TYPE = '21'
 			AND KNR.REQ_STS IN ('03', '13')
 			AND KNR.SHN_FLG = '0'
+			GROUP BY
+			HCO.INS_NO
 		)
 
 		SELECT
-		COUNT(*) AS CNT
+			COUNT(*) AS CNT
 		FROM (
 		SELECT DISTINCT
 		  APR_WAIT.APR_WAIT_CNT
@@ -1305,6 +1323,7 @@
 		LEFT JOIN
 		M_RDM_HCO_KEIEITAI_LNK_MST KEIEI -- 経営体紐付けマスタ
 		ON KEIEI.KEIEITAI_CD = MDB.KEIEITAI_CD
+		LEFT JOIN
 		M_RDM_HCO_KEIEITAI ULTKEIEI -- 施設_経営主体マスタ
 		ON ULTKEIEI.SET_DT_CD = KEIEI.SET_DT_CD
 		LEFT JOIN
@@ -1358,6 +1377,7 @@
 		AND CDM_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
 		AND CDM_HOINSTYPE.DEL_FLG = '0'
 		AND CDM_HOINSTYPE.VALUE1 = MST.HO_INS_TYPE
+		LEFT JOIN
 		M_RDM_HCO_KEIEITAI NXTKEIEI -- 施設_経営主体マスタ
 		ON NXTKEIEI.SET_DT_CD = MST.MANAGE_CD
 		LEFT JOIN
@@ -1365,13 +1385,19 @@
 		ON 1=1
 		AND CDM_VACINSTYPE.CODE_NAME = 'VAC_INS_TYPE'
 		AND CDM_VACINSTYPE.DEL_FLG = '0'
-		AND CDM_VACINSTYPE.VALUE1 = MST.VAC_INS_TYPE
+		AND CDM_VACINSTYPE.VALUE1 = VAC.VAC_INS_TYPE
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_VACVISITTYPE -- コード情報
 		ON 1=1
 		AND CDM_VACVISITTYPE.CODE_NAME = 'VAC_VISIT_TYPE'
 		AND CDM_VACVISITTYPE.DEL_FLG = '0'
-		AND CDM_VACVISITTYPE.VALUE1 = MST.VAC_VISIT_TYPE
+		AND CDM_VACVISITTYPE.VALUE1 = VAC.VAC_VISIT_TYPE
+		LEFT JOIN
+		M_RDM_CODE_MST CDM_UPHARMTYPE -- コード情報
+		ON 1=1
+		AND CDM_PHARMTYPE.CODE_NAME = 'PHARM_TYPE'
+		AND CDM_PHARMTYPE.DEL_FLG = '0'
+		AND CDM_PHARMTYPE.VALUE1 = MDB.SHISETSU_KBN
 		LEFT JOIN
 		M_RDM_CODE_MST CDM_NXT_PHARMTYPE -- コード情報
 		ON 1=1
@@ -1402,6 +1428,7 @@
 		AND CDM_NXT_HOINSTYPE.CODE_NAME = 'HO_INS_TYPE'
 		AND CDM_NXT_HOINSTYPE.DEL_FLG = '0'
 		AND CDM_NXT_HOINSTYPE.VALUE1 = COL.HO_INS_TYPE
+		LEFT JOIN
 		M_RDM_HCO_KEIEITAI HCOKEIEI -- 施設_経営主体マスタ
 		ON HCOKEIEI.SET_DT_CD = COL.MANAGE_CD
 		LEFT JOIN
@@ -1434,6 +1461,7 @@
 		<if test="insClass != null">AND MST.INS_CLASS = #{insClass}</if>
 		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="hoInsType != null">AND COL.HO_INS_TYPE = #{hoInsType}</if>
+		<if test="shnFlgChk == '1'">AND NO_SHN.NO_SHN_CNT = 0</if>
 		</where>
 		)
 	</select>

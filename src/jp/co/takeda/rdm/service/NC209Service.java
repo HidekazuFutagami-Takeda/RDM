@@ -146,9 +146,10 @@ public class NC209Service extends BaseService {
         //検索条件
 		SelectNC209MainDataEntity paramEntity = new SelectNC209MainDataEntity();
 
-        paramEntity.setInSosCd(StringUtils.setEmptyToNull(indto.getSearchSosCd()));
+        paramEntity.setInGmnSosCd(StringUtils.setEmptyToNull(indto.getSearchSosCd()));
+        paramEntity.setInGmnBumonRank(StringUtils.setEmptyToNull(indto.getSearchSosRank()));
         if(indto.getSearchTantoCd() != null) {
-        	paramEntity.setInJgiNo(StringUtils.setEmptyToNull(Integer.toString(indto.getSearchTantoCd())));
+        	paramEntity.setInGmnJgiNo(StringUtils.setEmptyToNull(Integer.toString(indto.getSearchTantoCd())));
         }
         paramEntity.setInKanjiSrch(StringUtils.setEmptyToNull(indto.getSearchDocName()));
         paramEntity.setInKanaSrch(StringUtils.setEmptyToNull(indto.getSearchDocKana()));
@@ -344,8 +345,6 @@ public class NC209Service extends BaseService {
         		StringUtils.isEmpty(paramEntity.getInGmnBumonRank()) &&
         		StringUtils.isEmpty(paramEntity.getInGmnSosCd())     &&
         		StringUtils.isEmpty(paramEntity.getInGmnJgiNo())     &&
-        		StringUtils.isEmpty(paramEntity.getInGmnBrCode())    &&
-        		StringUtils.isEmpty(paramEntity.getInGmnDistCode())  &&
         		StringUtils.isEmpty(paramEntity.getInInsNo())        &&
         		StringUtils.isEmpty(paramEntity.getInDeptCode())
         		) {

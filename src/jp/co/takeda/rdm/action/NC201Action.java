@@ -20,7 +20,7 @@ import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.dto.NC201DTO;
 import jp.co.takeda.rdm.service.NC201Service;
 import jp.co.takeda.rdm.util.AppConstant;
-import jp.co.takeda.rdm.util.JkrConstantsData;
+//import jp.co.takeda.rdm.util.JkrConstantsData;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 
 /**

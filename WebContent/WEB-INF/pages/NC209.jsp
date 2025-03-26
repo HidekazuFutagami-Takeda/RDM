@@ -53,10 +53,10 @@ if (stack.peek() instanceof NC209DTO) {
 	<script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/catShisetsu.js"></script>
     <script type="text/javascript" src="js/catDeptsComboRDM.js"></script>
-    <script type="text/javascript" src="js/rdmCatSosExpand.js"></script>
 	<script type="text/javascript" src="js/catDoctor.js"></script>
 	<script type="text/javascript" src="js/jgiKanren.js"></script>
 	<script type="text/javascript" src="js/jkrMenu.js"></script>
+
 	<script>
 	function comSetFormWindowInfo(){
     	comClickFlgInit();
@@ -113,8 +113,6 @@ if (stack.peek() instanceof NC209DTO) {
 	<s:hidden name="screenId" value="NC209" />
 	<s:hidden name="gamenId" value="NC209" />
 	<s:hidden name="functionId"/>
-<%--     <s:hidden name="sosName" /> --%>
-<%--     <s:hidden name="jgiName" /> --%>
     <s:hidden name="orderKbn" />
     <s:hidden id="pageFlg"  name="pageFlg" />
     <s:hidden name="pageCntAll" />
@@ -126,9 +124,6 @@ if (stack.peek() instanceof NC209DTO) {
     <s:hidden name="maxPageCnt" />
     <s:hidden name="pageRowNum" />
     <s:hidden name="orderKbn" />
-<%--     <s:hidden name="sosCd" /> --%>
-<%--     <s:hidden name="jgiNo" /> --%>
-<%--     <s:hidden name="trtGrpCd" /> --%>
     <s:hidden name="callBack" />
     <s:hidden name="backScreenId" />
     <s:hidden name="winVarName" />
@@ -140,9 +135,30 @@ if (stack.peek() instanceof NC209DTO) {
     <s:hidden name="loginBrCd"/>
     <s:hidden name="loginDistCd"/>
     <s:hidden name="trtCd"/>
-<%--     <s:hidden name="tkdTrtKbn"/> --%>
-<%--     <s:hidden name="insSbtEditFlg"/> --%>
-<%--     <s:hidden id="tmpAddrCodeCity" name="tmpAddrCodeCity" /> --%>
+    <%-- 所属部科ポップアップ用パラメータ --%>
+    <input type="hidden" name="cdcCheckedCodes" value="" />
+    <input type="hidden" name="paramInsNo" value="" />
+
+           <%-- 組織検索ポップアップ用 --%>
+  			<input type="hidden" name="selectFlgPop"           value="" />
+  			<input type="hidden" name="initSosCdPop"           value="" />
+  			<input type="hidden" name="trtCdPop"               value="" />
+  			<input type="hidden" name="trtCdPop"               value="" />
+  			<s:hidden id="brCode" name="brCode"/>
+  			<s:hidden id="distCode" name="distCode"/>
+  			<s:hidden id="upSosCode" name="upSosCode"/>
+  			<s:hidden name="upBumonRank" id="upBumonRank" />
+  			<s:hidden name="upBrCode" id="upBrCode" />
+  			<s:hidden name="upDistCode" id="upDistCode" />
+			<s:hidden id="sosCdPop" name="sosCdPop"/>
+			<s:hidden id="upSosCdPop" name="upSosCdPop"/>
+			<s:hidden id="bumonRankPop" name="bumonRankPop" value=""/>
+			<s:hidden id="sosCd" name="sosCd"/>
+			<s:hidden id="upSosCd" name="upSosCd"/>
+			<s:hidden id="bumonRank" name="bumonRank"/>
+			<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
+			<s:hidden id="jgiNo" name="jgiNo"/>
+
      <s:url id="searchurl" action="NC209Search"/>
     <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
     <s:url id="sorturl" action="NC209Sort"/>
@@ -241,15 +257,18 @@ if (stack.peek() instanceof NC209DTO) {
             </tr>
             <tr>
               <td class="comTableSearchItem" style="width:50pt;">組織</td>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="jmnSearchSosCd();" /></td>
+                  <td align="right"><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></td>
                   <td class="comPortalControlItem">
-                         <s:textfield name="bumonSeiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                         <s:textfield name="searchSosNm" size="24" maxlength="24" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+						<s:hidden name="searchSosCd" id="searchSosCd"/>
+       					<s:hidden name="searchSosRank" id="searchSosRank"/>
                   </td>
                   <td><a href="#" class="comMiniLink" onclick="cdrClear('searchSos');return false;">clear</a>&nbsp;</td>
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="jmnSearchSosCd();" /></td>
+                  <td align="right"><input class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
                   <td class="comPortalControlItem">
-                       <s:textfield name="" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                       <s:textfield name="searchTantoNm" size="24" maxlength="24" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+       					<s:hidden name="searchTantoCd" id="searchTantoCd"/>
                    </td>
                    <td><a href="#" class="comMiniLink" onclick="cdrClear('searchTanto');return false;">clear</a>&nbsp;</td>
               <td></td>
@@ -271,7 +290,7 @@ if (stack.peek() instanceof NC209DTO) {
               <td class="comPortalControlItem">
 		        <s:textfield name="searchInsNm" id="searchInsNm" size="20" maxlength="40" style="background-color:#D4D0C8" readonly="true"/>
               </td>
-              <td ><a href="#" class="comMiniLink" onclick="cdrClear('searchIns');return false;" align="left">clear</a>&nbsp;
+              <td ><a href="#" class="comMiniLink" onclick="cdrClear('searchIns');return false;">clear</a>&nbsp;
               </td>
               <td class="comTableSearchItem" style="width:50pt;"><nobr>所属部科</nobr></td>
               <td align="right">

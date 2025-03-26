@@ -105,6 +105,7 @@ public class NF401Action extends BaseAction<NF401DTO> {
         return "input";
         // END UOC
     }
+
     /**
      * 業務処理
      * @customizable
@@ -182,6 +183,80 @@ public class NF401Action extends BaseAction<NF401DTO> {
      * @customizable
      */
     protected String searchNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        // 検索条件をセッションに格納する（ページャ押下時に使用）
+    	sessionMap.put(AppConstant.SESKEY_NF401_SEARCHKEY, outdto);
+        // END UOC
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String approve() throws Exception {
+    	BaseDTO outdto = dto;
+    	searchSetup();
+        // F層呼び出し
+    	outdto = NF401Service.approve(dto);
+
+        return approveNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void approveSetup() throws Exception {
+        // START UOC
+
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String approveNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        // 検索条件をセッションに格納する（ページャ押下時に使用）
+    	sessionMap.put(AppConstant.SESKEY_NF401_SEARCHKEY, outdto);
+        // END UOC
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String reject() throws Exception {
+    	BaseDTO outdto = dto;
+    	searchSetup();
+        // F層呼び出し
+    	outdto = NF401Service.reject(dto);
+
+        return searchNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void rejectSetup() throws Exception {
+        // START UOC
+
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String rejectNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（ページャ押下時に使用）
     	sessionMap.put(AppConstant.SESKEY_NF401_SEARCHKEY, outdto);

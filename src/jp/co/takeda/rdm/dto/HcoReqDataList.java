@@ -28,6 +28,12 @@ public class HcoReqDataList implements Serializable {
     private String waitAppFlg;
 
     /**
+     * 承認チェック
+     * @generated
+     */
+    private String apprChk;
+
+    /**
      * 施設固定C
      * @generated
      */
@@ -369,6 +375,23 @@ public class HcoReqDataList implements Serializable {
 	 */
 	public void setWaitAppFlg(String waitAppFlg) {
 		this.waitAppFlg = waitAppFlg;
+	}
+
+
+	/**
+	 * HcoReqDataList.javaapprChkを設定
+	 * @return apprChk
+	 */
+	public String getApprChk() {
+		return apprChk;
+	}
+
+
+	/**
+	 * @param apprChk セットする apprChk
+	 */
+	public void setApprChk(String apprChk) {
+		this.apprChk = apprChk;
 	}
 
 

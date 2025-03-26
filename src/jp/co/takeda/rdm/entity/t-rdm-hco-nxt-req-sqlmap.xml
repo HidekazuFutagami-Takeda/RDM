@@ -205,6 +205,12 @@
 		<result column="APR_COMMENT" property="aprComment"/>
         <result column="CNT" property="cnt"/>
     </resultMap>
+    <resultMap id="nF401ReqDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF401ReqDataEntity">
+		<result column="REQ_ID" property="reqId"/>
+		<result column="REQ_CHL" property="reqChl"/>
+		<result column="INS_NO" property="insNo"/>
+		<result column="UPD_SHA_YMD" property="updShaYmd"/>
+    </resultMap>
     <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
         INSERT INTO
             T_RDM_HCO_NXT_REQ(<trim suffixOverrides=",">REQ_ID,<if test="insNo != null">INS_NO,</if><if test="pharmType != null">PHARM_TYPE,</if><if test="hoInsType != null">HO_INS_TYPE,</if><if test="regVisType != null">REG_VIS_TYPE,</if><if test="insRank != null">INS_RANK,</if><if test="impHosType != null">IMP_HOS_TYPE,</if><if test="manageCd != null">MANAGE_CD,</if><if test="vacInsType != null">VAC_INS_TYPE,</if><if test="vacVisitType != null">VAC_VISIT_TYPE,</if><if test="bedcntBase != null">BEDCNT_BASE,</if><if test="bedcnt04 != null">BEDCNT04,</if><if test="bedcnt01 != null">BEDCNT01,</if><if test="bedcnt05 != null">BEDCNT05,</if><if test="bedcnt07 != null">BEDCNT07,</if><if test="bedcnt02 != null">BEDCNT02,</if><if test="bedcnt03 != null">BEDCNT03,</if><if test="bedcnt06 != null">BEDCNT06,</if><if test="bedsTot != null">BEDS_TOT,</if><if test="medBedsTot != null">MED_BEDS_TOT,</if><if test="insShaYmd != null">INS_SHA_YMD,</if><if test="insShaId != null">INS_SHA_ID,</if><if test="updShaYmd != null">UPD_SHA_YMD,</if><if test="updShaId != null">UPD_SHA_ID,</if></trim>)
@@ -1464,6 +1470,43 @@
 		<if test="shnFlgChk == '1'">AND NO_SHN.NO_SHN_CNT = 0</if>
 		</where>
 		)
+	</select>
+	<select id="selectNF401ReqDataList" parameterType="jp.co.takeda.rdm.entity.join.SelectNF401ReqDataEntity" resultMap="nF401ReqDataResultMap">
+		SELECT
+		  KNR.REQ_ID
+		, KNR.REQ_CHL
+		, NXT.INS_NO
+		, KNR.UPD_SHA_YMD
+		FROM
+		T_RDM_REQ_KNR KNR -- 申請管理
+		LEFT JOIN
+		T_RDM_HCO_NXT_REQ NXT -- 施設_来期用_申請管理
+		ON NXT.REQ_ID = KNR.REQ_ID
+		WHERE
+		KNR.REQ_TYPE = '21'
+		AND KNR.REQ_STS IN ('03','13')
+		<if test='inInsNoList.size != 0'>
+		AND NXT.INS_NO IN
+			<foreach item="insNo" collection="inInsNoList" open="(" separator="," close=")">
+            	#{insNo}
+            </foreach>
+		</if>
+	</select>
+	<select id="selectNF401ReqData" parameterType="jp.co.takeda.rdm.entity.join.SelectNF401ReqDataEntity" resultMap="nF401ReqDataResultMap">
+		SELECT
+		  KNR.REQ_ID
+		, KNR.REQ_CHL
+		, NXT.INS_NO
+		, KNR.UPD_SHA_YMD
+		FROM
+		T_RDM_REQ_KNR KNR -- 申請管理
+		LEFT JOIN
+		T_RDM_HCO_NXT_REQ NXT -- 施設_来期用_申請管理
+		ON NXT.REQ_ID = KNR.REQ_ID
+		WHERE
+		KNR.REQ_TYPE = '21'
+		AND KNR.REQ_STS IN ('03','13')
+		AND NXT.INS_NO = #{inInsNo}
 	</select>
     <update id="updateNF101Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
         UPDATE

@@ -6,13 +6,14 @@
 package jp.co.takeda.rdm.dto;
 
 import java.io.Serializable;
-
-import jp.co.takeda.rdm.common.BaseDTO;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import jp.co.takeda.rdm.common.BaseDTO;
 
 /**
  * DTOクラス
@@ -236,6 +237,30 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private String btnEnableFlg;
+
+	/**
+	 * 却下ボタン活性フラグ
+	 * @generated
+	 */
+	private String rejBtnEnableFlg;
+
+	/**
+	 * 最終検索日時
+	 * @generated
+	 */
+	private String srchSysDate;
+
+	/**
+	 * 却下施設固定コード
+	 * @generated
+	 */
+	private String rejectInsNo;
+
+	/**
+	 * 却下コメント
+	 * @generated
+	 */
+	private String rejectComment;
 
 	/**
      * デフォルトのコンストラクタ。
@@ -768,6 +793,66 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	 */
 	public void setBtnEnableFlg(String btnEnableFlg) {
 		this.btnEnableFlg = btnEnableFlg;
+	}
+
+	/**
+	 * NF401DTO.javarejBtnEnableFlgを設定
+	 * @return rejBtnEnableFlg
+	 */
+	public String getRejBtnEnableFlg() {
+		return rejBtnEnableFlg;
+	}
+
+	/**
+	 * @param rejBtnEnableFlg セットする rejBtnEnableFlg
+	 */
+	public void setRejBtnEnableFlg(String rejBtnEnableFlg) {
+		this.rejBtnEnableFlg = rejBtnEnableFlg;
+	}
+
+	/**
+	 * NF401DTO.javasrchSysDateを設定
+	 * @return srchSysDate
+	 */
+	public String getSrchSysDate() {
+		return srchSysDate;
+	}
+
+	/**
+	 * @param srchSysDate セットする srchSysDate
+	 */
+	public void setSrchSysDate(String srchSysDate) {
+		this.srchSysDate = srchSysDate;
+	}
+
+	/**
+	 * NF401DTO.javarejectInsNoを設定
+	 * @return rejectInsNo
+	 */
+	public String getRejectInsNo() {
+		return rejectInsNo;
+	}
+
+	/**
+	 * @param rejectInsNo セットする rejectInsNo
+	 */
+	public void setRejectInsNo(String rejectInsNo) {
+		this.rejectInsNo = rejectInsNo;
+	}
+
+	/**
+	 * NF401DTO.javarejectCommentを設定
+	 * @return rejectComment
+	 */
+	public String getRejectComment() {
+		return rejectComment;
+	}
+
+	/**
+	 * @param rejectComment セットする rejectComment
+	 */
+	public void setRejectComment(String rejectComment) {
+		this.rejectComment = rejectComment;
 	}
 
 	/**

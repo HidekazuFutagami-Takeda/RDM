@@ -996,6 +996,17 @@ public class NC011Service extends BaseService {
               if(check == true) {
             	  System.out.print("1000件エラー");
               }
+              if(paramEntity.getReqChl() !=null) {
+                  if(paramEntity.getReqChl().equals("1")) {
+                	  indto.setReqChl("01");
+                  }else if(paramEntity.getReqChl().equals("2")) {
+                	  indto.setReqChl("02");
+                  }else if(paramEntity.getReqChl().equals("3")) {
+                	  indto.setReqChl("13");
+                  }else if(paramEntity.getReqChl().equals("4")) {
+                	  indto.setReqChl("14");
+                  }
+                  }
          // 	if(indto.getJokenFlg().equals("1")) {
         	//	indto.setBumonRyakuName(indto.getBumonRyakuName());
         	//	indto.setReqJgiName(indto.getJgiName());

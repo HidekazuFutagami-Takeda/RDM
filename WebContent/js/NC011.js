@@ -1125,7 +1125,7 @@ function sosReqSbt(){
 		document.getElementById('jkrSosReqTypeMap').options[18].hidden=false;
 	 }
  	 //申請チャネル
-      document.getElementById("jkrSosReqChlMap").value = "";
+      //document.getElementById("jkrSosReqChlMap").value = "";
       //document.getElementById("jkrSosReqChlMap").value = null; //nullにしなければならない場合はこれ。
  }
  //コンテキスト メニューあり

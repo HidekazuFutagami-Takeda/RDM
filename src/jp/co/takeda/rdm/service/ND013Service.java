@@ -90,6 +90,7 @@ public class ND013Service extends BaseService {
         dto.setKinmuCount(2);
 
         List<HcpWorkData> SelectHcpWorkDataList = new ArrayList<>();
+        dto.setDummyHcoCount(0);
         for (MRdmHcpWorkEntity entity : SelectHcpWorkList) {
         	HcpWorkData dataRecord = new HcpWorkData();
 
@@ -232,9 +233,8 @@ public class ND013Service extends BaseService {
         	/*
         	 * nullでない実勤務先をカウント
         	 * */
-        	if (!Objects.equals(entity.getDummyHco(), null)) {
-        		int x = 0;
-        		dataRecord.setDummyHcoCount(++x);
+        	if (Objects.equals(entity.getDummyHco(), null)) {
+        		dto.setDummyHcoCount(dto.getDummyHcoCount() + 1);
         	}
         	dataRecord.setDummyHco(dataRecord.getDummyHco());
         	//仮

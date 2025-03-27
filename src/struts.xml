@@ -151,6 +151,7 @@
         </action>
         <action name="ND104Init" class="ND104Action" method="init">
             <result name="ND104">/WEB-INF/pages/ND104.jsp</result>
+            <result name="ND313">/WEB-INF/pages/ND313.jsp</result>
         </action>
         <action name="ND104Cancel" class="ND104Action" method="cancel">
             <result name="ND013">/WEB-INF/pages/ND013.jsp</result>

@@ -8,28 +8,27 @@ package jp.co.takeda.rdm.action;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.context.annotation.Scope;
+
 import com.opensymphony.xwork2.interceptor.annotations.Before;
 import com.opensymphony.xwork2.interceptor.annotations.BeforeResult;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 
-import org.springframework.context.annotation.Scope;
-
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
-import jp.co.takeda.rdm.common.BeanUtil;
-import jp.co.takeda.rdm.dto.NC201DTO;
-import jp.co.takeda.rdm.service.NC201Service;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NF403DTO;
+import jp.co.takeda.rdm.service.NF403Service;
 import jp.co.takeda.rdm.util.AppConstant;
-//import jp.co.takeda.rdm.util.JkrConstantsData;
-import jp.co.takeda.rdm.util.RdmConstantsData;
 
 /**
  * Actionクラス
  * @generated
  */
-@Named("nC201Action")
+@Named("nF403Action")
 @Scope("request")
-public class NC201Action extends BaseAction<NC201DTO> {
+public class NF403Action extends BaseAction<NF403DTO> {
 
     /**
      * シリアルバージョンID
@@ -42,18 +41,26 @@ public class NC201Action extends BaseAction<NC201DTO> {
      * @generated
      */
     @Inject
-    private NC201Service nC201Service;
+    private NF403Service NF403Service;
 
     // START UOC
 
+
+  //ログインユーザ情報取得
+      LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+
+      boolean errChk = false;
+  	String msgStr = "";
+  	String tmpMsgStr = "";
+  	int len = 0;
     // END UOC
 
     /**
      * コンストラクタ
      * @generated
      */
-    public NC201Action() {
-        dto = new NC201DTO();
+    public NF403Action() {
+        dto = new NF403DTO();
     }
 
     /**
@@ -81,6 +88,8 @@ public class NC201Action extends BaseAction<NC201DTO> {
         // END UOC
     }
 
+
+
     /**
      * validationエラー時に実行する処理。<br/>
      * @customizable
@@ -91,6 +100,7 @@ public class NC201Action extends BaseAction<NC201DTO> {
         return "input";
         // END UOC
     }
+
     /**
      * 業務処理
      * @customizable
@@ -98,7 +108,7 @@ public class NC201Action extends BaseAction<NC201DTO> {
     public String init() throws Exception {
         initSetup();
         // F層呼び出し
-        BaseDTO outdto = nC201Service.init(dto);
+        BaseDTO outdto = NF403Service.init(dto);
         return initNext(outdto);
     }
 
@@ -108,7 +118,21 @@ public class NC201Action extends BaseAction<NC201DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
+    	// 画面タイトル制御処理
 
+        String title = "NF403_施設来期項目一括申請";
+
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+
+        dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
+
+        dto.setTitle(title);
         // END UOC
     }
 
@@ -118,8 +142,8 @@ public class NC201Action extends BaseAction<NC201DTO> {
      */
     protected String initNext(BaseDTO outdto) throws Exception {
         // START UOC
-        // 検索条件をセッションに格納する（更新やソートリンク押下時に使用）
-        sessionMap.put(AppConstant.SESKEY_NC201_SEARCHKEY, outdto);
+    	// 検索条件をセッションに格納する（ページャ押下時に使用）
+    	sessionMap.put(AppConstant.SESKEY_NF403_SEARCHKEY, outdto);
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
@@ -130,36 +154,21 @@ public class NC201Action extends BaseAction<NC201DTO> {
      * @customizable
      */
     @InputConfig(methodName="validationError")
-    public String ajaxSos() throws Exception {
-        ajaxSosSetup();
+    public String search() throws Exception {
+    	BaseDTO outdto = dto;
+    	searchSetup();
         // F層呼び出し
-        BaseDTO outdto = nC201Service.ajaxSos(dto);
-        return ajaxSosJgiNext(outdto);
+    	outdto = NF403Service.search(dto);
+
+        return searchNext(outdto);
     }
 
     /**
      * 前処理
      * @customizable
      */
-    protected void ajaxSosSetup() throws Exception {
+    protected void searchSetup() throws Exception {
         // START UOC
-        NC201DTO searchKey = (NC201DTO)sessionMap.get(AppConstant.SESKEY_NC201_SEARCHKEY);
-
-        // ajaxのパラメータ退避
-        String searchTrtCd = dto.getTrtCdPop();
-        Integer searchBumonRank= dto.getBumonRankPop();
-        String searchSosCd = dto.getSosCdPop();
-
-        BeanUtil.copyProperties(dto, searchKey);
-
-        // Integer項目nullの場合、BeanUtil.copyPropertiesで0に変換されてしまうため、再設定
-        //dto.setBumonRankPop(searchBumonRank);
-
-        // 退避値の再設定
-
-        dto.setTrtCdPop(searchTrtCd);
-        dto.setBumonRankPop(searchBumonRank);
-        dto.setSosCdPop(searchSosCd);
 
         // END UOC
     }
@@ -168,8 +177,11 @@ public class NC201Action extends BaseAction<NC201DTO> {
      * 後処理
      * @customizable
      */
-    protected String ajaxSosJgiNext(BaseDTO outdto) throws Exception {
-        outdto.setForward(RdmConstantsData.SCREEN_ID_NC201_2);
+    protected String searchNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        // 検索条件をセッションに格納する（ページャ押下時に使用）
+    	sessionMap.put(AppConstant.SESKEY_NF403_SEARCHKEY, outdto);
+        // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
     }

@@ -1,18 +1,24 @@
 /*
  * ALL RIGHTS RESERVED,
- * COPYRIGHT (C) 2013, HITACHI SOLUTIONS, Ltd.
+ * COPYRIGHT (C) 2014, HITACHI SOLUTIONS, Ltd.
  */
 //## AutomaticGeneration
-package jp.co.takeda.rdm.dto;
+package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
 
+import jp.co.takeda.rdm.common.BaseEntity;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 
 /**
- * DTOクラス
+ * 結合Entityクラス
+ * テーブル物理名 : T_RDM_HCO_NXT_REQ
+ * SQLID : selectNF403DataList
  * @generated
  */
-public class HcoReqDataList implements Serializable {
+public class SelectNF403MainDataEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -20,18 +26,83 @@ public class HcoReqDataList implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-
     /**
-     * 承認待ちフラグ
+     * 件数
      * @generated
      */
-    private String waitAppFlg;
+    private Integer cnt;
 
     /**
-     * 承認チェック
+     * 入力_開始件数(パラメータ1)
      * @generated
      */
-    private String apprChk;
+    private Integer inOffset;
+
+    /**
+     * 入力_表示件数(パラメータ2)
+     * @generated
+     */
+    private Integer inLimit;
+
+    /**
+	 * 組織
+	 * @generated
+	 */
+	private String sosCd;
+
+	/**
+	 * 部門ランク
+	 * @generated
+	 */
+	private String bumonRank;
+
+	/**
+	 * 医薬支店C
+	 * @generated
+	 */
+	private String brCode;
+
+	/**
+	 * 医薬営業所C
+	 * @generated
+	 */
+	private String distCode;
+
+	/**
+	 * 担当者
+	 * @generated
+	 */
+	private String jgiNo;
+
+	/**
+     * ULT施設コード
+     * @generated
+     */
+    private String ultInsNo;
+
+    /**
+     * 施設略式漢字名
+     * @generated
+     */
+    private String insKanjSrch;
+
+    /**
+     * ULT施設名
+     * @generated
+     */
+    private String shisetsuNmSrch;
+
+    /**
+     * 施設分類
+     * @generated
+     */
+    private String insClass;
+
+    /**
+     * 施設種別
+     * @generated
+     */
+    private String insType;
 
     /**
      * 施設固定C
@@ -44,6 +115,12 @@ public class HcoReqDataList implements Serializable {
      * @generated
      */
     private String insAbbrName;
+
+    /**
+     * ULT施設名
+     * @generated
+     */
+    private String shisetsuNmRyaku;
 
     /**
      * 施設区分
@@ -334,11 +411,10 @@ public class HcoReqDataList implements Serializable {
     private String nextMedBedsTot;
 
     /**
-     * 未審査申請数
-     *
+     * ULT差分
      * @generated
      */
-    private Integer noShnCnt;
+    private String ultDif;
 
     /**
      * 申請コメント
@@ -347,62 +423,224 @@ public class HcoReqDataList implements Serializable {
     private String reqComment;
 
     /**
-     * 承認・却下コメント
+     * コンストラクタ
      * @generated
      */
-    private String aprComment;
-
+    public SelectNF403MainDataEntity() {
+        super("t_rdm_hco_nxt_req" , "selectNF403DataList");
+    }
 
     /**
      * コンストラクタ
-     * @customizable
+     * @generated
      */
-    public HcoReqDataList() {
+    public SelectNF403MainDataEntity(String sqlId) {
+        super("t_rdm_hco_nxt_req" , sqlId);
     }
 
 
 	/**
-	 * HcoReqDataList.javawaitAppFlgを設定
-	 * @return waitAppFlg
+	 * SelectNF403MainDataEntity.javacntを設定
+	 * @return cnt
 	 */
-	public String getWaitAppFlg() {
-		return waitAppFlg;
+	public Integer getCnt() {
+		return cnt;
 	}
 
-
 	/**
-	 * @param waitAppFlg セットする waitAppFlg
+	 * @param cnt セットする cnt
 	 */
-	public void setWaitAppFlg(String waitAppFlg) {
-		this.waitAppFlg = waitAppFlg;
+	public void setCnt(Integer cnt) {
+		this.cnt = cnt;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaapprChkを設定
-	 * @return apprChk
+	 * SelectNF403MainDataEntity.javainOffsetを設定
+	 * @return inOffset
 	 */
-	public String getApprChk() {
-		return apprChk;
+	public Integer getInOffset() {
+		return inOffset;
 	}
 
-
 	/**
-	 * @param apprChk セットする apprChk
+	 * @param inOffset セットする inOffset
 	 */
-	public void setApprChk(String apprChk) {
-		this.apprChk = apprChk;
+	public void setInOffset(Integer inOffset) {
+		this.inOffset = inOffset;
 	}
 
+	/**
+	 * SelectNF403MainDataEntity.javainLimitを設定
+	 * @return inLimit
+	 */
+	public Integer getInLimit() {
+		return inLimit;
+	}
 
 	/**
-	 * HcoReqDataList.javainsNoを設定
+	 * @param inLimit セットする inLimit
+	 */
+	public void setInLimit(Integer inLimit) {
+		this.inLimit = inLimit;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javasosCdを設定
+	 * @return sosCd
+	 */
+	public String getSosCd() {
+		return sosCd;
+	}
+
+	/**
+	 * @param sosCd セットする sosCd
+	 */
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabumonRankを設定
+	 * @return bumonRank
+	 */
+	public String getBumonRank() {
+		return bumonRank;
+	}
+
+	/**
+	 * @param bumonRank セットする bumonRank
+	 */
+	public void setBumonRank(String bumonRank) {
+		this.bumonRank = bumonRank;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabrCodeを設定
+	 * @return brCode
+	 */
+	public String getBrCode() {
+		return brCode;
+	}
+
+	/**
+	 * @param brCode セットする brCode
+	 */
+	public void setBrCode(String brCode) {
+		this.brCode = brCode;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javadistCodeを設定
+	 * @return distCode
+	 */
+	public String getDistCode() {
+		return distCode;
+	}
+
+	/**
+	 * @param distCode セットする distCode
+	 */
+	public void setDistCode(String distCode) {
+		this.distCode = distCode;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javajgiNoを設定
+	 * @return jgiNo
+	 */
+	public String getJgiNo() {
+		return jgiNo;
+	}
+
+	/**
+	 * @param jgiNo セットする jgiNo
+	 */
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javaultInsNoを設定
+	 * @return ultInsNo
+	 */
+	public String getUltInsNo() {
+		return ultInsNo;
+	}
+
+	/**
+	 * @param ultInsNo セットする ultInsNo
+	 */
+	public void setUltInsNo(String ultInsNo) {
+		this.ultInsNo = ultInsNo;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javainsKanjSrchを設定
+	 * @return insKanjSrch
+	 */
+	public String getInsKanjSrch() {
+		return insKanjSrch;
+	}
+
+	/**
+	 * @param insKanjSrch セットする insKanjSrch
+	 */
+	public void setInsKanjSrch(String insKanjSrch) {
+		this.insKanjSrch = insKanjSrch;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javashisetsuNmSrchを設定
+	 * @return shisetsuNmSrch
+	 */
+	public String getShisetsuNmSrch() {
+		return shisetsuNmSrch;
+	}
+
+	/**
+	 * @param shisetsuNmSrch セットする shisetsuNmSrch
+	 */
+	public void setShisetsuNmSrch(String shisetsuNmSrch) {
+		this.shisetsuNmSrch = shisetsuNmSrch;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javainsClassを設定
+	 * @return insClass
+	 */
+	public String getInsClass() {
+		return insClass;
+	}
+
+	/**
+	 * @param insClass セットする insClass
+	 */
+	public void setInsClass(String insClass) {
+		this.insClass = insClass;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javainsTypeを設定
+	 * @return insType
+	 */
+	public String getInsType() {
+		return insType;
+	}
+
+	/**
+	 * @param insType セットする insType
+	 */
+	public void setInsType(String insType) {
+		this.insType = insType;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javainsNoを設定
 	 * @return insNo
 	 */
 	public String getInsNo() {
 		return insNo;
 	}
-
 
 	/**
 	 * @param insNo セットする insNo
@@ -411,15 +649,13 @@ public class HcoReqDataList implements Serializable {
 		this.insNo = insNo;
 	}
 
-
 	/**
-	 * HcoReqDataList.javainsAbbrNameを設定
+	 * SelectNF403MainDataEntity.javainsAbbrNameを設定
 	 * @return insAbbrName
 	 */
 	public String getInsAbbrName() {
 		return insAbbrName;
 	}
-
 
 	/**
 	 * @param insAbbrName セットする insAbbrName
@@ -428,15 +664,28 @@ public class HcoReqDataList implements Serializable {
 		this.insAbbrName = insAbbrName;
 	}
 
+	/**
+	 * SelectNF403MainDataEntity.javashisetsuNmRyakuを設定
+	 * @return shisetsuNmRyaku
+	 */
+	public String getShisetsuNmRyaku() {
+		return shisetsuNmRyaku;
+	}
 
 	/**
-	 * HcoReqDataList.javapharmTypeを設定
+	 * @param shisetsuNmRyaku セットする shisetsuNmRyaku
+	 */
+	public void setShisetsuNmRyaku(String shisetsuNmRyaku) {
+		this.shisetsuNmRyaku = shisetsuNmRyaku;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javapharmTypeを設定
 	 * @return pharmType
 	 */
 	public String getPharmType() {
 		return pharmType;
 	}
-
 
 	/**
 	 * @param pharmType セットする pharmType
@@ -445,15 +694,13 @@ public class HcoReqDataList implements Serializable {
 		this.pharmType = pharmType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javainsRankを設定
+	 * SelectNF403MainDataEntity.javainsRankを設定
 	 * @return insRank
 	 */
 	public String getInsRank() {
 		return insRank;
 	}
-
 
 	/**
 	 * @param insRank セットする insRank
@@ -462,15 +709,13 @@ public class HcoReqDataList implements Serializable {
 		this.insRank = insRank;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaregVisTypeを設定
+	 * SelectNF403MainDataEntity.javaregVisTypeを設定
 	 * @return regVisType
 	 */
 	public String getRegVisType() {
 		return regVisType;
 	}
-
 
 	/**
 	 * @param regVisType セットする regVisType
@@ -479,15 +724,13 @@ public class HcoReqDataList implements Serializable {
 		this.regVisType = regVisType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaimpHosTypeを設定
+	 * SelectNF403MainDataEntity.javaimpHosTypeを設定
 	 * @return impHosType
 	 */
 	public String getImpHosType() {
 		return impHosType;
 	}
-
 
 	/**
 	 * @param impHosType セットする impHosType
@@ -496,15 +739,13 @@ public class HcoReqDataList implements Serializable {
 		this.impHosType = impHosType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javahoInsTypeを設定
+	 * SelectNF403MainDataEntity.javahoInsTypeを設定
 	 * @return hoInsType
 	 */
 	public String getHoInsType() {
 		return hoInsType;
 	}
-
 
 	/**
 	 * @param hoInsType セットする hoInsType
@@ -513,15 +754,13 @@ public class HcoReqDataList implements Serializable {
 		this.hoInsType = hoInsType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javamanageNmを設定
+	 * SelectNF403MainDataEntity.javamanageNmを設定
 	 * @return manageNm
 	 */
 	public String getManageNm() {
 		return manageNm;
 	}
-
 
 	/**
 	 * @param manageNm セットする manageNm
@@ -530,15 +769,13 @@ public class HcoReqDataList implements Serializable {
 		this.manageNm = manageNm;
 	}
 
-
 	/**
-	 * HcoReqDataList.javavacInsTypeを設定
+	 * SelectNF403MainDataEntity.javavacInsTypeを設定
 	 * @return vacInsType
 	 */
 	public String getVacInsType() {
 		return vacInsType;
 	}
-
 
 	/**
 	 * @param vacInsType セットする vacInsType
@@ -547,15 +784,13 @@ public class HcoReqDataList implements Serializable {
 		this.vacInsType = vacInsType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javavacVisitTypeを設定
+	 * SelectNF403MainDataEntity.javavacVisitTypeを設定
 	 * @return vacVisitType
 	 */
 	public String getVacVisitType() {
 		return vacVisitType;
 	}
-
 
 	/**
 	 * @param vacVisitType セットする vacVisitType
@@ -564,15 +799,13 @@ public class HcoReqDataList implements Serializable {
 		this.vacVisitType = vacVisitType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCntBaseを設定
+	 * SelectNF403MainDataEntity.javabedCntBaseを設定
 	 * @return bedCntBase
 	 */
 	public String getBedCntBase() {
 		return bedCntBase;
 	}
-
 
 	/**
 	 * @param bedCntBase セットする bedCntBase
@@ -581,15 +814,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCntBase = bedCntBase;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCnt04を設定
+	 * SelectNF403MainDataEntity.javabedCnt04を設定
 	 * @return bedCnt04
 	 */
 	public String getBedCnt04() {
 		return bedCnt04;
 	}
-
 
 	/**
 	 * @param bedCnt04 セットする bedCnt04
@@ -598,15 +829,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCnt04 = bedCnt04;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCnt01を設定
+	 * SelectNF403MainDataEntity.javabedCnt01を設定
 	 * @return bedCnt01
 	 */
 	public String getBedCnt01() {
 		return bedCnt01;
 	}
-
 
 	/**
 	 * @param bedCnt01 セットする bedCnt01
@@ -615,15 +844,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCnt01 = bedCnt01;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCnt05を設定
+	 * SelectNF403MainDataEntity.javabedCnt05を設定
 	 * @return bedCnt05
 	 */
 	public String getBedCnt05() {
 		return bedCnt05;
 	}
-
 
 	/**
 	 * @param bedCnt05 セットする bedCnt05
@@ -632,15 +859,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCnt05 = bedCnt05;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCnt03を設定
+	 * SelectNF403MainDataEntity.javabedCnt03を設定
 	 * @return bedCnt03
 	 */
 	public String getBedCnt03() {
 		return bedCnt03;
 	}
-
 
 	/**
 	 * @param bedCnt03 セットする bedCnt03
@@ -649,15 +874,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCnt03 = bedCnt03;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCnt07を設定
+	 * SelectNF403MainDataEntity.javabedCnt07を設定
 	 * @return bedCnt07
 	 */
 	public String getBedCnt07() {
 		return bedCnt07;
 	}
-
 
 	/**
 	 * @param bedCnt07 セットする bedCnt07
@@ -666,15 +889,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCnt07 = bedCnt07;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCnt02を設定
+	 * SelectNF403MainDataEntity.javabedCnt02を設定
 	 * @return bedCnt02
 	 */
 	public String getBedCnt02() {
 		return bedCnt02;
 	}
-
 
 	/**
 	 * @param bedCnt02 セットする bedCnt02
@@ -683,15 +904,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCnt02 = bedCnt02;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedCnt06を設定
+	 * SelectNF403MainDataEntity.javabedCnt06を設定
 	 * @return bedCnt06
 	 */
 	public String getBedCnt06() {
 		return bedCnt06;
 	}
-
 
 	/**
 	 * @param bedCnt06 セットする bedCnt06
@@ -700,15 +919,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedCnt06 = bedCnt06;
 	}
 
-
 	/**
-	 * HcoReqDataList.javabedsTotを設定
+	 * SelectNF403MainDataEntity.javabedsTotを設定
 	 * @return bedsTot
 	 */
 	public String getBedsTot() {
 		return bedsTot;
 	}
-
 
 	/**
 	 * @param bedsTot セットする bedsTot
@@ -717,15 +934,13 @@ public class HcoReqDataList implements Serializable {
 		this.bedsTot = bedsTot;
 	}
 
-
 	/**
-	 * HcoReqDataList.javamedBedsTotを設定
+	 * SelectNF403MainDataEntity.javamedBedsTotを設定
 	 * @return medBedsTot
 	 */
 	public String getMedBedsTot() {
 		return medBedsTot;
 	}
-
 
 	/**
 	 * @param medBedsTot セットする medBedsTot
@@ -734,15 +949,13 @@ public class HcoReqDataList implements Serializable {
 		this.medBedsTot = medBedsTot;
 	}
 
-
 	/**
-	 * HcoReqDataList.javashisetsuKbnを設定
+	 * SelectNF403MainDataEntity.javashisetsuKbnを設定
 	 * @return shisetsuKbn
 	 */
 	public String getShisetsuKbn() {
 		return shisetsuKbn;
 	}
-
 
 	/**
 	 * @param shisetsuKbn セットする shisetsuKbn
@@ -751,15 +964,13 @@ public class HcoReqDataList implements Serializable {
 		this.shisetsuKbn = shisetsuKbn;
 	}
 
-
 	/**
-	 * HcoReqDataList.javakeieitaiを設定
+	 * SelectNF403MainDataEntity.javakeieitaiを設定
 	 * @return keieitai
 	 */
 	public String getKeieitai() {
 		return keieitai;
 	}
-
 
 	/**
 	 * @param keieitai セットする keieitai
@@ -768,15 +979,13 @@ public class HcoReqDataList implements Serializable {
 		this.keieitai = keieitai;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCntBaseを設定
+	 * SelectNF403MainDataEntity.javaultBedCntBaseを設定
 	 * @return ultBedCntBase
 	 */
 	public String getUltBedCntBase() {
 		return ultBedCntBase;
 	}
-
 
 	/**
 	 * @param ultBedCntBase セットする ultBedCntBase
@@ -785,15 +994,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCntBase = ultBedCntBase;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCnt04を設定
+	 * SelectNF403MainDataEntity.javaultBedCnt04を設定
 	 * @return ultBedCnt04
 	 */
 	public String getUltBedCnt04() {
 		return ultBedCnt04;
 	}
-
 
 	/**
 	 * @param ultBedCnt04 セットする ultBedCnt04
@@ -802,15 +1009,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCnt04 = ultBedCnt04;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCnt01を設定
+	 * SelectNF403MainDataEntity.javaultBedCnt01を設定
 	 * @return ultBedCnt01
 	 */
 	public String getUltBedCnt01() {
 		return ultBedCnt01;
 	}
-
 
 	/**
 	 * @param ultBedCnt01 セットする ultBedCnt01
@@ -819,15 +1024,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCnt01 = ultBedCnt01;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCnt05を設定
+	 * SelectNF403MainDataEntity.javaultBedCnt05を設定
 	 * @return ultBedCnt05
 	 */
 	public String getUltBedCnt05() {
 		return ultBedCnt05;
 	}
-
 
 	/**
 	 * @param ultBedCnt05 セットする ultBedCnt05
@@ -836,15 +1039,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCnt05 = ultBedCnt05;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCnt03を設定
+	 * SelectNF403MainDataEntity.javaultBedCnt03を設定
 	 * @return ultBedCnt03
 	 */
 	public String getUltBedCnt03() {
 		return ultBedCnt03;
 	}
-
 
 	/**
 	 * @param ultBedCnt03 セットする ultBedCnt03
@@ -853,15 +1054,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCnt03 = ultBedCnt03;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCnt07を設定
+	 * SelectNF403MainDataEntity.javaultBedCnt07を設定
 	 * @return ultBedCnt07
 	 */
 	public String getUltBedCnt07() {
 		return ultBedCnt07;
 	}
-
 
 	/**
 	 * @param ultBedCnt07 セットする ultBedCnt07
@@ -870,15 +1069,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCnt07 = ultBedCnt07;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCnt02を設定
+	 * SelectNF403MainDataEntity.javaultBedCnt02を設定
 	 * @return ultBedCnt02
 	 */
 	public String getUltBedCnt02() {
 		return ultBedCnt02;
 	}
-
 
 	/**
 	 * @param ultBedCnt02 セットする ultBedCnt02
@@ -887,15 +1084,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCnt02 = ultBedCnt02;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedCnt06を設定
+	 * SelectNF403MainDataEntity.javaultBedCnt06を設定
 	 * @return ultBedCnt06
 	 */
 	public String getUltBedCnt06() {
 		return ultBedCnt06;
 	}
-
 
 	/**
 	 * @param ultBedCnt06 セットする ultBedCnt06
@@ -904,15 +1099,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedCnt06 = ultBedCnt06;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultBedsTotを設定
+	 * SelectNF403MainDataEntity.javaultBedsTotを設定
 	 * @return ultBedsTot
 	 */
 	public String getUltBedsTot() {
 		return ultBedsTot;
 	}
-
 
 	/**
 	 * @param ultBedsTot セットする ultBedsTot
@@ -921,15 +1114,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultBedsTot = ultBedsTot;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaultMedBedsTotを設定
+	 * SelectNF403MainDataEntity.javaultMedBedsTotを設定
 	 * @return ultMedBedsTot
 	 */
 	public String getUltMedBedsTot() {
 		return ultMedBedsTot;
 	}
-
 
 	/**
 	 * @param ultMedBedsTot セットする ultMedBedsTot
@@ -938,15 +1129,13 @@ public class HcoReqDataList implements Serializable {
 		this.ultMedBedsTot = ultMedBedsTot;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextPharmTypeを設定
+	 * SelectNF403MainDataEntity.javanextPharmTypeを設定
 	 * @return nextPharmType
 	 */
 	public String getNextPharmType() {
 		return nextPharmType;
 	}
-
 
 	/**
 	 * @param nextPharmType セットする nextPharmType
@@ -955,15 +1144,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextPharmType = nextPharmType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextInsRankを設定
+	 * SelectNF403MainDataEntity.javanextInsRankを設定
 	 * @return nextInsRank
 	 */
 	public String getNextInsRank() {
 		return nextInsRank;
 	}
-
 
 	/**
 	 * @param nextInsRank セットする nextInsRank
@@ -972,15 +1159,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextInsRank = nextInsRank;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextRegVisTypeを設定
+	 * SelectNF403MainDataEntity.javanextRegVisTypeを設定
 	 * @return nextRegVisType
 	 */
 	public String getNextRegVisType() {
 		return nextRegVisType;
 	}
-
 
 	/**
 	 * @param nextRegVisType セットする nextRegVisType
@@ -989,15 +1174,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextRegVisType = nextRegVisType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextImpHosTypeを設定
+	 * SelectNF403MainDataEntity.javanextImpHosTypeを設定
 	 * @return nextImpHosType
 	 */
 	public String getNextImpHosType() {
 		return nextImpHosType;
 	}
-
 
 	/**
 	 * @param nextImpHosType セットする nextImpHosType
@@ -1006,15 +1189,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextImpHosType = nextImpHosType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextHoInsTypeを設定
+	 * SelectNF403MainDataEntity.javanextHoInsTypeを設定
 	 * @return nextHoInsType
 	 */
 	public String getNextHoInsType() {
 		return nextHoInsType;
 	}
-
 
 	/**
 	 * @param nextHoInsType セットする nextHoInsType
@@ -1023,15 +1204,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextHoInsType = nextHoInsType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextManageNmを設定
+	 * SelectNF403MainDataEntity.javanextManageNmを設定
 	 * @return nextManageNm
 	 */
 	public String getNextManageNm() {
 		return nextManageNm;
 	}
-
 
 	/**
 	 * @param nextManageNm セットする nextManageNm
@@ -1040,15 +1219,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextManageNm = nextManageNm;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextVacInsTypeを設定
+	 * SelectNF403MainDataEntity.javanextVacInsTypeを設定
 	 * @return nextVacInsType
 	 */
 	public String getNextVacInsType() {
 		return nextVacInsType;
 	}
-
 
 	/**
 	 * @param nextVacInsType セットする nextVacInsType
@@ -1057,15 +1234,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextVacInsType = nextVacInsType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextVacVisitTypeを設定
+	 * SelectNF403MainDataEntity.javanextVacVisitTypeを設定
 	 * @return nextVacVisitType
 	 */
 	public String getNextVacVisitType() {
 		return nextVacVisitType;
 	}
-
 
 	/**
 	 * @param nextVacVisitType セットする nextVacVisitType
@@ -1074,15 +1249,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextVacVisitType = nextVacVisitType;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCntBaseを設定
+	 * SelectNF403MainDataEntity.javanextBedCntBaseを設定
 	 * @return nextBedCntBase
 	 */
 	public String getNextBedCntBase() {
 		return nextBedCntBase;
 	}
-
 
 	/**
 	 * @param nextBedCntBase セットする nextBedCntBase
@@ -1091,15 +1264,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCntBase = nextBedCntBase;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCnt04を設定
+	 * SelectNF403MainDataEntity.javanextBedCnt04を設定
 	 * @return nextBedCnt04
 	 */
 	public String getNextBedCnt04() {
 		return nextBedCnt04;
 	}
-
 
 	/**
 	 * @param nextBedCnt04 セットする nextBedCnt04
@@ -1108,15 +1279,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCnt04 = nextBedCnt04;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCnt01を設定
+	 * SelectNF403MainDataEntity.javanextBedCnt01を設定
 	 * @return nextBedCnt01
 	 */
 	public String getNextBedCnt01() {
 		return nextBedCnt01;
 	}
-
 
 	/**
 	 * @param nextBedCnt01 セットする nextBedCnt01
@@ -1125,15 +1294,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCnt01 = nextBedCnt01;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCnt05を設定
+	 * SelectNF403MainDataEntity.javanextBedCnt05を設定
 	 * @return nextBedCnt05
 	 */
 	public String getNextBedCnt05() {
 		return nextBedCnt05;
 	}
-
 
 	/**
 	 * @param nextBedCnt05 セットする nextBedCnt05
@@ -1142,15 +1309,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCnt05 = nextBedCnt05;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCnt03を設定
+	 * SelectNF403MainDataEntity.javanextBedCnt03を設定
 	 * @return nextBedCnt03
 	 */
 	public String getNextBedCnt03() {
 		return nextBedCnt03;
 	}
-
 
 	/**
 	 * @param nextBedCnt03 セットする nextBedCnt03
@@ -1159,15 +1324,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCnt03 = nextBedCnt03;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCnt07を設定
+	 * SelectNF403MainDataEntity.javanextBedCnt07を設定
 	 * @return nextBedCnt07
 	 */
 	public String getNextBedCnt07() {
 		return nextBedCnt07;
 	}
-
 
 	/**
 	 * @param nextBedCnt07 セットする nextBedCnt07
@@ -1176,15 +1339,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCnt07 = nextBedCnt07;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCnt02を設定
+	 * SelectNF403MainDataEntity.javanextBedCnt02を設定
 	 * @return nextBedCnt02
 	 */
 	public String getNextBedCnt02() {
 		return nextBedCnt02;
 	}
-
 
 	/**
 	 * @param nextBedCnt02 セットする nextBedCnt02
@@ -1193,15 +1354,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCnt02 = nextBedCnt02;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedCnt06を設定
+	 * SelectNF403MainDataEntity.javanextBedCnt06を設定
 	 * @return nextBedCnt06
 	 */
 	public String getNextBedCnt06() {
 		return nextBedCnt06;
 	}
-
 
 	/**
 	 * @param nextBedCnt06 セットする nextBedCnt06
@@ -1210,15 +1369,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedCnt06 = nextBedCnt06;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextBedsTotを設定
+	 * SelectNF403MainDataEntity.javanextBedsTotを設定
 	 * @return nextBedsTot
 	 */
 	public String getNextBedsTot() {
 		return nextBedsTot;
 	}
-
 
 	/**
 	 * @param nextBedsTot セットする nextBedsTot
@@ -1227,15 +1384,13 @@ public class HcoReqDataList implements Serializable {
 		this.nextBedsTot = nextBedsTot;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanextMedBedsTotを設定
+	 * SelectNF403MainDataEntity.javanextMedBedsTotを設定
 	 * @return nextMedBedsTot
 	 */
 	public String getNextMedBedsTot() {
 		return nextMedBedsTot;
 	}
-
 
 	/**
 	 * @param nextMedBedsTot セットする nextMedBedsTot
@@ -1244,32 +1399,28 @@ public class HcoReqDataList implements Serializable {
 		this.nextMedBedsTot = nextMedBedsTot;
 	}
 
-
 	/**
-	 * HcoReqDataList.javanoShnCntを設定
-	 * @return noShnCnt
+	 * SelectNF403MainDataEntity.javaultDifを設定
+	 * @return ultDif
 	 */
-	public Integer getNoShnCnt() {
-		return noShnCnt;
+	public String getUltDif() {
+		return ultDif;
 	}
 
-
 	/**
-	 * @param noShnCnt セットする noShnCnt
+	 * @param ultDif セットする ultDif
 	 */
-	public void setNoShnCnt(Integer noShnCnt) {
-		this.noShnCnt = noShnCnt;
+	public void setUltDif(String ultDif) {
+		this.ultDif = ultDif;
 	}
 
-
 	/**
-	 * HcoReqDataList.javareqCommentを設定
+	 * SelectNF403MainDataEntity.javareqCommentを設定
 	 * @return reqComment
 	 */
 	public String getReqComment() {
 		return reqComment;
 	}
-
 
 	/**
 	 * @param reqComment セットする reqComment
@@ -1278,21 +1429,12 @@ public class HcoReqDataList implements Serializable {
 		this.reqComment = reqComment;
 	}
 
-
 	/**
-	 * HcoReqDataList.javaaprCommentを設定
-	 * @return aprComment
-	 */
-	public String getAprComment() {
-		return aprComment;
-	}
-
-
-	/**
-	 * @param aprComment セットする aprComment
-	 */
-	public void setAprComment(String aprComment) {
-		this.aprComment = aprComment;
-	}
+     * このEntityの値を返す
+     * @return DTOの値
+     * @generated
+     */
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
+    }
 }
-

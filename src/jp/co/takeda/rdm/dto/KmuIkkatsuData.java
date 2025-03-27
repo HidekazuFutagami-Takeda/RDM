@@ -41,61 +41,61 @@ public class KmuIkkatsuData implements Serializable {
    private String docKanj;
 
    /**
-    * 役職漢字名
+    * 役職漢字名（変更前）
     * @generated
     */
    private String preTitleKj;
 
    /**
-    * 役職漢字名
+    * 役職漢字名（変更後）
     * @generated
     */
    private String postTitleKj;
 
    /**
-    * 所属部科名（漢字）
+    * 所属部科名（漢字）（変更前）
     * @generated
     */
    private String preDeptKanji;
 
    /**
-    * 所属部科名（漢字）
+    * 所属部科名（漢字）（変更後）
     * @generated
     */
    private String postDeptKanji;
 
    /**
-    * 役職コード
+    * 役職コード（変更前）
     * @generated
     */
    private String preTitleCode;
 
    /**
-    * 役職コード
+    * 役職コード（変更後）
     * @generated
     */
    private String postTitleCode;
 
    /**
-    * 所属部科コード
+    * 所属部科コード（変更前）
     * @generated
     */
    private String preDeptCode;
 
    /**
-    * 所属部科コード
+    * 所属部科コード（変更後）
     * @generated
     */
    private String postDeptCode;
 
    /**
-    * 所属部科名（カナ）
+    * 所属部科名（カナ）（変更前）
     * @generated
     */
    private String preDeptKana;
 
    /**
-    * 所属部科名（カナ）
+    * 所属部科名（カナ）（変更後）
     * @generated
     */
    private String postDeptKana;

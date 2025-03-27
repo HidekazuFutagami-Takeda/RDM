@@ -67,6 +67,66 @@ public class ND401DTO extends BaseDTO implements Serializable {
      */
     private String preScreenId;
 
+    /**
+     * 検索結果表示
+     */
+    private String searchType;
+
+    /**
+     * 検索条件_施設名
+     * @generated
+     */
+    private String kensakuInsKanj;
+
+    /**
+     * 検索条件_施設固定C
+     * @generated
+     */
+    private String kensakuInsNo;
+
+    /**
+     * 検索条件_医師名
+     * @generated
+     */
+    private String kensakuDocKanj;
+
+    /**
+     * 検索条件_医師固定C
+     * @generated
+     */
+    private String kensakuDocNo;
+
+    /**
+     * 検索条件_所属部科コード
+     * @generated
+     */
+    private String kensakuDeptCode;
+
+    /**
+     * 検索条件_組織コード
+     * @generated
+     */
+    private String kensakuSosCd;
+
+    /**
+     * 検索条件_医薬支店C
+     * @generated
+     */
+    private String kensakuBrCode;
+
+    /**
+     * 検索条件_医薬営業所C
+     * @generated
+     */
+    private String kensakuDistCode;
+
+    /**
+     * 検索条件_担当者コード(従業員番号)
+     * @generated
+     */
+    private String kensakuJgiNo;
+
+
 	/**
      * 申請フラグ
      */
@@ -439,6 +499,11 @@ public class ND401DTO extends BaseDTO implements Serializable {
      * 検索結果件数（エラーチェック用）
      */
     private Integer pageCnt;
+
+    /**
+     * @役職_ドロップダウンリスト
+     */
+	private LinkedHashMap<String,String> titleMap = new LinkedHashMap<String,String>();
 
     /**
      * @generated
@@ -1706,4 +1771,177 @@ public class ND401DTO extends BaseDTO implements Serializable {
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
+
+	/**
+	 * ND401DTO.javakensakuInsKanjを設定
+	 * @return kensakuInsKanj
+	 */
+	public String getKensakuInsKanj() {
+		return kensakuInsKanj;
+	}
+
+	/**
+	 * @param kensakuInsKanj セットする kensakuInsKanj
+	 */
+	public void setKensakuInsKanj(String kensakuInsKanj) {
+		this.kensakuInsKanj = kensakuInsKanj;
+	}
+
+	/**
+	 * ND401DTO.javakensakuInsNoを設定
+	 * @return kensakuInsNo
+	 */
+	public String getKensakuInsNo() {
+		return kensakuInsNo;
+	}
+
+	/**
+	 * @param kensakuInsNo セットする kensakuInsNo
+	 */
+	public void setKensakuInsNo(String kensakuInsNo) {
+		this.kensakuInsNo = kensakuInsNo;
+	}
+
+	/**
+	 * ND401DTO.javakensakuDocKanjを設定
+	 * @return kensakuDocKanj
+	 */
+	public String getKensakuDocKanj() {
+		return kensakuDocKanj;
+	}
+
+	/**
+	 * @param kensakuDocKanj セットする kensakuDocKanj
+	 */
+	public void setKensakuDocKanj(String kensakuDocKanj) {
+		this.kensakuDocKanj = kensakuDocKanj;
+	}
+
+	/**
+	 * ND401DTO.javakensakuDocNoを設定
+	 * @return kensakuDocNo
+	 */
+	public String getKensakuDocNo() {
+		return kensakuDocNo;
+	}
+
+	/**
+	 * @param kensakuDocNo セットする kensakuDocNo
+	 */
+	public void setKensakuDocNo(String kensakuDocNo) {
+		this.kensakuDocNo = kensakuDocNo;
+	}
+
+	/**
+	 * ND401DTO.javakensakuDeptCodeを設定
+	 * @return kensakuDeptCode
+	 */
+	public String getKensakuDeptCode() {
+		return kensakuDeptCode;
+	}
+
+	/**
+	 * @param kensakuDeptCode セットする kensakuDeptCode
+	 */
+	public void setKensakuDeptCode(String kensakuDeptCode) {
+		this.kensakuDeptCode = kensakuDeptCode;
+	}
+
+	/**
+	 * ND401DTO.javakensakuSosCdを設定
+	 * @return kensakuSosCd
+	 */
+	public String getKensakuSosCd() {
+		return kensakuSosCd;
+	}
+
+	/**
+	 * @param kensakuSosCd セットする kensakuSosCd
+	 */
+	public void setKensakuSosCd(String kensakuSosCd) {
+		this.kensakuSosCd = kensakuSosCd;
+	}
+
+	/**
+	 * ND401DTO.javakensakuBrCodeを設定
+	 * @return kensakuBrCode
+	 */
+	public String getKensakuBrCode() {
+		return kensakuBrCode;
+	}
+
+	/**
+	 * @param kensakuBrCode セットする kensakuBrCode
+	 */
+	public void setKensakuBrCode(String kensakuBrCode) {
+		this.kensakuBrCode = kensakuBrCode;
+	}
+
+	/**
+	 * ND401DTO.javakensakuDistCodeを設定
+	 * @return kensakuDistCode
+	 */
+	public String getKensakuDistCode() {
+		return kensakuDistCode;
+	}
+
+	/**
+	 * @param kensakuDistCode セットする kensakuDistCode
+	 */
+	public void setKensakuDistCode(String kensakuDistCode) {
+		this.kensakuDistCode = kensakuDistCode;
+	}
+
+	/**
+	 * ND401DTO.javakensakuJgiNoを設定
+	 * @return kensakuJgiNo
+	 */
+	public String getKensakuJgiNo() {
+		return kensakuJgiNo;
+	}
+
+	/**
+	 * @param kensakuJgiNo セットする kensakuJgiNo
+	 */
+	public void setKensakuJgiNo(String kensakuJgiNo) {
+		this.kensakuJgiNo = kensakuJgiNo;
+	}
+
+	/**
+	 * ND401DTO.javaserialVersionUIDを設定
+	 * @return serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * ND401DTO.javasearchTypeを設定
+	 * @return searchType
+	 */
+	public String getSearchType() {
+		return searchType;
+	}
+
+	/**
+	 * @param searchType セットする searchType
+	 */
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	/**
+	 * ND401DTO.javatitleMapを設定
+	 * @return titleMap
+	 */
+	public LinkedHashMap<String, String> getTitleMap() {
+		return titleMap;
+	}
+
+	/**
+	 * @param titleMap セットする titleMap
+	 */
+	public void setTitleMap(LinkedHashMap<String, String> titleMap) {
+		this.titleMap = titleMap;
+	}
 }

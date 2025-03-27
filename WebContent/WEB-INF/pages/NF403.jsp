@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  施設来期項目一括承認のJSP
+ *  施設来期項目一括申請のJSP
  * </pre>
  * @since 1.0
  * @version $Revision:
@@ -26,20 +26,11 @@
 %>
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-//String title = (String)request.getAttribute("title");
-//String execDate = (String)request.getAttribute("execDate");
-//ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
-//JKR040C010DTO dto = new JKR040C010DTO();
-//if (stack.peek() instanceof JKR040C010DTO) {
-//  dto = (JKR040C010DTO)stack.peek();
-//}
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title>NF401_施設来期項目一括承認</title>
+    <title>NF403_施設来期項目一括申請</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="css/common2.css" rel="Stylesheet" type="text/css" />
     <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -266,7 +257,7 @@
 
  	// 承認チェックボックス
  	function apprChk(chk, index){
- 		let key = "hcoReqDataList["+index+"].apprChk";
+ 		let key = "hcoBlkReqDataList["+index+"].apprChk";
  		let apprFlg = document.getElementsByName(key)[0];
 
 		if(chk.checked == true){
@@ -281,7 +272,7 @@
 		let chkFlg = false;
 
  		let i = 0;
- 		let key = "hcoReqDataList["+i+"].apprChk";
+ 		let key = "hcoBlkReqDataList["+i+"].apprChk";
  		let apprFlg = document.getElementsByName(key)[0];
 
  		while(apprFlg != undefined){
@@ -291,7 +282,7 @@
 			}
 
 			i++;
-			key = "hcoReqDataList["+i+"].apprChk";
+			key = "hcoBlkReqDataList["+i+"].apprChk";
 	 		apprFlg = document.getElementsByName(key)[0];
  		}
 
@@ -305,7 +296,7 @@
 			// ・隠し項目．承認対象フラグ＝'1'の行が1件以上の場合、（I012）「申請データを承認します。よろしいですか？」確認メッセージをポップアップで表示
 
 			i = 0;
-			key = "hcoReqDataList["+i+"].aprComment";
+			key = "hcoBlkReqDataList["+i+"].aprComment";
 			let aprComment = document.getElementsByName(key)[0];
 			let strCom = document.getElementsByName("aprComment")[i];
 
@@ -313,7 +304,7 @@
 				aprComment.value = strCom.value;
 
 				i++;
-				key = "hcoReqDataList["+i+"].aprComment";
+				key = "hcoBlkReqDataList["+i+"].aprComment";
 				aprComment = document.getElementsByName(key)[0];
 				strCom = document.getElementsByName("aprComment")[i];
 			}
@@ -421,7 +412,7 @@
     <s:hidden name="loginTrtCd"/>
     <s:hidden name="loginBrCd"/>
     <s:hidden name="loginDistCd"/>
-    <s:hidden name="backScreenId" value="NF401" />
+    <s:hidden name="backScreenId" value="NF403" />
     <s:hidden id="preScreenId" name="preScreenId"/>
 	<s:hidden id="pageCntCur" name="pageCntCur"/>
 
@@ -431,10 +422,7 @@
 	<s:hidden id="srchFlg" name="srchFlg" />
 
 	<s:hidden id="btnEnableFlg" name="btnEnableFlg" />
-	<s:hidden id="rejBtnEnableFlg" name="rejBtnEnableFlg" />
 	<s:hidden id="srchSysDate" name="srchSysDate" />
-	<s:hidden id="rejectInsNo" name="rejectInsNo" />
-	<s:hidden id="rejectComment" name="rejectComment" />
 
 	<s:hidden id="upSosCd" name="upSosCd"/>
 	<s:hidden id="sosCdPop" name="sosCdPop"/>
@@ -550,11 +538,13 @@
 	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
 	</tr>
 	<tr>
+	    <%-- ULT差分 --%>
+		<td class="pupControlItem"><nobr>&nbsp;ULT差分</nobr></td>
+        <td class="comTableSearchItem">
+			<s:select id="ultDif" name="ultDif" cssStyle="width:80pt" list ="ultDifCombo" />
+	    </td>
 	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
 	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
-	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
-	    <td class="pupControlItem"><nobr>
-	    <s:checkbox id="shnFlgChk" name="shnFlgChk" /><label for="shnFlgChk">未審査申請数0のみ対象</label></nobr></td>
 	    <td class="pupControlItem"><nobr>&nbsp;</nobr></td>
 	</tr>
 	<tr>
@@ -564,7 +554,7 @@
 		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>
 		<td>
 			<input type="button" name="クリア" value="クリア" onclick="clearBtn();return false;" />
-			<input type="button" value="検索" name="検索" onclick="gotoNext('NF401','Search')"/>
+			<input type="button" value="検索" name="検索" onclick="gotoNext('NF403','Search')"/>
 		</td>
 	</tr>
 
@@ -596,15 +586,13 @@
 
 	<%-- ヘッダー行 --%>
 	<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
-		<td class="comTableTitle" style="width:50px" rowspan=2>承認</td>
+		<td class="comTableTitle" style="width:50px" rowspan=2>申請</td>
 		<td class="comTableTitle" style="width:80px;">施設固定C</td>
 		<td class="comTableTitle" style="width:50px" rowspan=2>期</td>
 		<td class="comTableTitle" style="width:130px" colspan=8>施設情報</td>
-		<td class="comTableTitle" colspan=10>病床数</td>
-		<td class="comTableTitle" style="width:50px" rowspan=2>未審査<br>申請数</td>
+		<td class="comTableTitle" colspan=10>病床数情報</td>
+		<td class="comTableTitle" style="width:50px" rowspan=2>ULT<br>差分</td>
 		<td class="comTableTitle" style="width:70px" rowspan=2>申請コメント</td>
-		<td class="comTableTitle" style="width:50px" rowspan=2>承認・却下コメント</td>
-		<td class="comTableTitle" style="width:50px" rowspan=2>却下</td>
 	</tr>
 	<tr class="comTableTitle" style="position: sticky; top:20; left:0;">
 		<td class="comTableTitle">施設略式漢字名</td>
@@ -631,155 +619,134 @@
 
     <%-- 内容 --%>
 
-	<s:iterator value="HcoReqDataList" status="status" var="rowBean">
+	<s:iterator value="hcoBlkReqDataList" status="status" var="rowBean">
 		<tr style="min-height:30px;">
-			<s:hidden name="hcoReqDataList[%{#status.index}].waitAppFlg"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].apprChk"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].insNo"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].pharmType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].insRank"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].regVisType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].impHosType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].hoInsType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].manageNm"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].vacInsType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].vacVisitType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCntBase"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCnt04"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCnt01"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCnt05"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCnt03"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCnt07"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCnt02"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedCnt06"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].bedsTot"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].medBedsTot"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].noShnCnt"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].aprComment"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].insAbbrName"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].shisetsuKbn"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].keieitai"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultBedCntBase"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultBedCnt04"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultBedCnt01"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultBedCnt05"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultBedCnt03"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultBedCnt07"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultBedsTot"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].ultMedBedsTot"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextPharmType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextInsRank"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextRegVisType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextImpHosType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextHoInsType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextManageNm"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextVacInsType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextVacVisitType"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCntBase"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCnt04"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCnt01"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCnt05"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCnt03"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCnt07"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCnt02"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedCnt06"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextBedsTot"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].nextMedBedsTot"/>
-			<s:hidden name="hcoReqDataList[%{#status.index}].reqComment"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].reqChk"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insNo"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRank"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].regVisType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].impHosType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].hoInsType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].manageNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacInsType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacVisitType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCntBase"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt04"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt01"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt05"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt03"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt07"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt02"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt06"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedsTot"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].medBedsTot"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultDif"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].reqComment"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insAbbrName"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].shisetsuKbn"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].keieitai"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedCntBase"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedCnt04"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedCnt01"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedCnt05"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedCnt03"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedCnt07"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedsTot"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultMedBedsTot"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextPharmType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextInsRank"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextRegVisType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextImpHosType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextManageNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacInsType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedsTot"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot"/>
 
 			<td class="comTableItem" rowspan=3 style="text-align:center;">
 				<s:if test='#rowBean.waitAppFlg == "1"'>
 					<input type="checkbox" name="apprChkBox" onChange="JavaScript:apprChk(this,'<s:property value="%{#status.index}"/>'); return false;" />
 				</s:if>
 			</td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].insNo" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insNo" /></td>
 	        <td class="comTableItem">当期</td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].pharmType" /></td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].insRank" /></td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].regVisType" /></td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].impHosType" /></td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].hoInsType" /></td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].manageNm" /></td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].vacInsType" /></td>
-	        <td class="comTableItem"><s:label key="hcoReqDataList[%{#status.index}].vacVisitType" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCntBase" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCnt04" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCnt01" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCnt05" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCnt03" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCnt07" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCnt02" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedCnt06" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].bedsTot" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoReqDataList[%{#status.index}].medBedsTot" /></td>
-	        <td class="comTableItem" style="text-align:center" rowspan=3><s:label key="hcoReqDataList[%{#status.index}].noShnCnt" /></td>
-	        <td class="comTableItem" rowspan=3><s:label key="hcoReqDataList[%{#status.index}].reqComment" /></td>
-	        <td class="comTableItem" rowspan=3>
-				<s:if test='#rowBean.waitAppFlg == "1"'>
-		        	<s:textarea name="aprComment" maxlength="300" style="resize:none" />
-		        </s:if>
-		        <s:else>
-		        	<s:label key="hcoReqDataList[%{#status.index}].aprComment" />
-		        	<s:textarea name="aprComment" maxlength="300" style="resize:none; visibility:collapse" />
-				</s:else>
-	        </td>
-	        <td class="comTableItem" rowspan=3>
-	        	<s:if test='#rowBean.waitAppFlg == "1"'>
-	        		<s:if test='rejBtnEnableFlg == "1"'>
-		        		<input type="button" value="却下" onclick="rejBtn('<s:property value="#rowBean.insNo"/>', '<s:property value="%{#status.index}"/>');return false;" />
-		        	</s:if>
-		        	<s:else>
-		        		<input type="button" value="却下" disabled />
-		        	</s:else>
-		        </s:if>
-	        </td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].pharmType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insRank" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].regVisType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].impHosType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].hoInsType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].manageNm" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].vacInsType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].vacVisitType" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCntBase" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt04" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt01" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt05" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt03" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt07" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt02" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt06" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedsTot" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].medBedsTot" /></td>
+	        <td class="comTableItem" style="text-align:center" rowspan=3><s:label key="hcoBlkReqDataList[%{#status.index}].ultDif" /></td>
+	        <td class="comTableItem" rowspan=3><s:label key="hcoBlkReqDataList[%{#status.index}].reqComment" /></td>
 		</tr>
 		<tr>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].insAbbrName" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insAbbrName" /></td>
 	        <td class="comTableItem">ULT</td>
-	        <td class="comTableItemNF401"><s:label key="HcoReqDataList[%{#status.index}].shisetsuKbn" /></td>
+	        <td class="comTableItemNF401"><s:label key="hcoBlkReqDataList[%{#status.index}].shisetsuKbn" /></td>
 	        <td class="comTableItemNF401">&nbsp;</td>
 	        <td class="comTableItemNF401">&nbsp;</td>
 	        <td class="comTableItemNF401">&nbsp;</td>
 	        <td class="comTableItemNF401">&nbsp;</td>
-	        <td class="comTableItemNF401"><s:label key="HcoReqDataList[%{#status.index}].keieitai" /></td>
+	        <td class="comTableItemNF401"><s:label key="hcoBlkReqDataList[%{#status.index}].keieitai" /></td>
 	        <td class="comTableItemNF401">&nbsp;</td>
 	        <td class="comTableItemNF401">&nbsp;</td>
 
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCntBase" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt04" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt01" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt05" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt03" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedCnt07" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCntBase" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt04" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt01" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt05" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt03" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt07" /></td>
 	        <td class="comTableItemNF401" style="text-align:right">&nbsp;</td>
 	        <td class="comTableItemNF401" style="text-align:right">&nbsp;</td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultBedsTot" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].ultMedBedsTot" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedsTot" /></td>
+	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultMedBedsTot" /></td>
 		</tr>
 		<tr style="min-height:30px;">
 	        <td class="comTableItem">
 	        	<input type="button" value="申請歴" onclick="histBtn('<s:property value="#rowBean.insNo"/>');return false;" />
 	        </td>
 	        <td class="comTableItem">来期</td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextPharmType" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextInsRank" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextRegVisType" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextImpHosType" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextHoInsType" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextManageNm" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextVacInsType" /></td>
-	        <td class="comTableItem"><s:label key="HcoReqDataList[%{#status.index}].nextVacVisitType" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCntBase" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt04" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt01" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt05" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt03" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt07" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt02" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedCnt06" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextBedsTot" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="HcoReqDataList[%{#status.index}].nextMedBedsTot" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextPharmType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextInsRank" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextRegVisType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextImpHosType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextHoInsType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextManageNm" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextVacInsType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedsTot" /></td>
+	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" /></td>
 		</tr>
 	</s:iterator>
     </table>
@@ -809,7 +776,7 @@
                 <td>
                <nobr>
                	<s:if test='%{btnEnableFlg == "1"}'>
-					<input class="comButton" type="button"name="buttonF3" value="一括承認" onClick="apprBtn();JavaScript:return false;" />
+					<input class="comButton" type="button"name="buttonF3" value="一括申請" onClick="apprBtn();JavaScript:return false;" />
 				</s:if>
 				<s:else>
 					&nbsp;

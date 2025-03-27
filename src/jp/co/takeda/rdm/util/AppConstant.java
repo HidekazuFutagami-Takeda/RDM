@@ -2851,6 +2851,10 @@ public interface AppConstant {
     public static final String SESKEY_ND401_SEARCHKEY = "ND401_SEARCHKEY";
     /** 医師勤務先情報更新での初期結果 */
     public static final String SESKEY_ND103_SEARCHKEY = "ND103_SEARCHKEY";
+    /** 医師勤務先削除での初期結果 */
+    public static final String SESKEY_ND104_SEARCHKEY = "ND104_SEARCHKEY";
+    /** 医師勤務先削除 - 申請内容確認での初期結果 */
+    public static final String SESKEY_ND313_SEARCHKEY = "ND313_SEARCHKEY";
     /** 医師変更履歴での初期結果 */
     public static final String SESKEY_ND501_SEARCHKEY = "ND501_SEARCHKEY";
     /** 領域別担当者一覧ポップアップでの初期結果 */
@@ -2895,8 +2899,10 @@ public interface AppConstant {
     public static final String SESKEY_NF313_SEARCHKEY = "NF313_SEARCHKEY";
     /** 施設紐付け削除 - 申請内容確認での初期結果 */
     public static final String SESKEY_NF315_SEARCHKEY = "NF315_SEARCHKEY";
-    /** 施設来期項目一括承認 - 申請内容確認での初期結果 */
+    /** 施設来期項目一括承認での初期結果 */
     public static final String SESKEY_NF401_SEARCHKEY = "NF401_SEARCHKEY";
+    /** 施設来期項目一括申請での初期結果 */
+    public static final String SESKEY_NF403_SEARCHKEY = "NF403_SEARCHKEY";
 
     public static final String SESKEY_NC011_SEARCHKEY = "NC011_SEARCHKEY";
 	public static final String SESKEY_NC201_SEARCHKEY = "NC201_SEARCHKEY";

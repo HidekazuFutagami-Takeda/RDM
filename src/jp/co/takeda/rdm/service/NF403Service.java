@@ -5,14 +5,11 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Named;
 
@@ -24,40 +21,39 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.dto.HcoReqDataList;
-import jp.co.takeda.rdm.dto.NF401DTO;
+import jp.co.takeda.rdm.dto.HcoBlkReqDataList;
+import jp.co.takeda.rdm.dto.NF403DTO;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF401MainDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectNF401ReqDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectParamNF401Entity;
-import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
+import jp.co.takeda.rdm.entity.join.SelectNF403MainDataEntity;
+import jp.co.takeda.rdm.entity.join.SelectParamNF403Entity;
 import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
 /**
- * Serviceクラス（NF401)
+ * Serviceクラス（NF403)
  * @generated
  */
 @Named
-public class NF401Service extends BaseService {
+public class NF403Service extends BaseService {
 
     /**
      * ログインスタンス
      * @generated
      */
-    private static Log log = LogFactory.getLog(NF401Service.class);
+    private static Log log = LogFactory.getLog(NF403Service.class);
 
     /**
      * イベント処理
-     * @param indto RDMNF401DTO
+     * @param indto RDMNF403DTO
      * @return 遷移先DTO
      * @customizable
      */
     @Transactional
-    public BaseDTO init(NF401DTO indto) {
+    public BaseDTO init(NF403DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
         // MR権限の場合、権限エラーでエラー画面に遷移する
@@ -74,7 +70,8 @@ public class NF401Service extends BaseService {
 
         indto.setPageFlag("1");
 
-        // 一括承認ボタンの活性設定
+
+        // 一括申請ボタン・申請チェックボックスの活性設定
         String mnFac = "0";
     	String mnNt = "0";
 
@@ -98,18 +95,10 @@ public class NF401Service extends BaseService {
     		mnNt = mRdmParamMstOyaEntityList.get(0).getValue();
     	}
 
-    	// 一括承認ボタン
     	if(mnFac.equals("1") && mnNt.equals("1")) {
 			indto.setBtnEnableFlg("1");
 		} else {
 			indto.setBtnEnableFlg("0");
-		}
-
-    	// 却下ボタン
-    	if(mnFac.equals("1")) {
-			indto.setRejBtnEnableFlg("1");
-		} else {
-			indto.setRejBtnEnableFlg("0");
 		}
 
         // END UOC
@@ -117,7 +106,7 @@ public class NF401Service extends BaseService {
 
     }
 
-	public BaseDTO search(NF401DTO indto) {
+	public BaseDTO search(NF403DTO indto) {
 		BaseDTO outdto = indto;
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
@@ -151,6 +140,8 @@ public class NF401Service extends BaseService {
         	inputFlg = true;
         } else if(indto.getHoInsType() != null && !indto.getHoInsType().isEmpty()) {
         	inputFlg = true;
+        } else if(indto.getUltDif() != null && !indto.getUltDif().isEmpty()) {
+        	inputFlg = true;
         }
 
         if (!inputFlg) {
@@ -161,44 +152,45 @@ public class NF401Service extends BaseService {
       	  return outdto;
       }
 
+
         // 一覧表示データ
-        List<HcoReqDataList> hcoReqDataList = new ArrayList<HcoReqDataList>();
+        List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
 
         // 件数定義取得
-  		SelectParamNF401Entity selectParamReqNF401Entity = new SelectParamNF401Entity();
-  		List<SelectParamNF401Entity> selectParamNF401List = dao.select(selectParamReqNF401Entity);
+  		SelectParamNF403Entity selectParamReqNF403Entity = new SelectParamNF403Entity();
+  		List<SelectParamNF403Entity> selectParamNF403List = dao.select(selectParamReqNF403Entity);
 
   		// 表示データ取得
-  		SelectNF401MainDataEntity selectNF401MainDataCntEntity = new SelectNF401MainDataEntity("selectNF401DataListCnt");
-  		SelectNF401MainDataEntity selectNF401MainDataEntity = new SelectNF401MainDataEntity("selectNF401DataList");
+  		SelectNF403MainDataEntity selectNF403MainDataCntEntity = new SelectNF403MainDataEntity("selectNF403DataListCnt");
+  		SelectNF403MainDataEntity selectNF403MainDataEntity = new SelectNF403MainDataEntity("selectNF403DataList");
 
   		// 組織コード
-  		selectNF401MainDataCntEntity.setSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
-  		selectNF401MainDataEntity.setSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
+  		selectNF403MainDataCntEntity.setSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
+  		selectNF403MainDataEntity.setSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
 
   		// 部門ランク
-  		selectNF401MainDataCntEntity.setBumonRank(StringUtils.setEmptyToNull(indto.getBumonRank()));
-  		selectNF401MainDataEntity.setBumonRank(StringUtils.setEmptyToNull(indto.getBumonRank()));
+  		selectNF403MainDataCntEntity.setBumonRank(StringUtils.setEmptyToNull(indto.getBumonRank()));
+  		selectNF403MainDataEntity.setBumonRank(StringUtils.setEmptyToNull(indto.getBumonRank()));
 
   		// 医薬支店C
-  		selectNF401MainDataCntEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
-  		selectNF401MainDataEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
+  		selectNF403MainDataCntEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
+  		selectNF403MainDataEntity.setBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
 
   		// 医薬営業所C
-  		selectNF401MainDataCntEntity.setDistCode(StringUtils.setEmptyToNull(indto.getDistCode()));
-  		selectNF401MainDataEntity.setDistCode(StringUtils.setEmptyToNull(indto.getDistCode()));
+  		selectNF403MainDataCntEntity.setDistCode(StringUtils.setEmptyToNull(indto.getDistCode()));
+  		selectNF403MainDataEntity.setDistCode(StringUtils.setEmptyToNull(indto.getDistCode()));
 
   		// 担当者
-  		selectNF401MainDataCntEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
-  		selectNF401MainDataEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
+  		selectNF403MainDataCntEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
+  		selectNF403MainDataEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
 
   		// 施設固定コード
-  		selectNF401MainDataCntEntity.setInsNo(StringUtils.setEmptyToNull(indto.getInsNo()));
-  		selectNF401MainDataEntity.setInsNo(StringUtils.setEmptyToNull(indto.getInsNo()));
+  		selectNF403MainDataCntEntity.setInsNo(StringUtils.setEmptyToNull(indto.getInsNo()));
+  		selectNF403MainDataEntity.setInsNo(StringUtils.setEmptyToNull(indto.getInsNo()));
 
   		// ULT施設コード
-  		selectNF401MainDataCntEntity.setUltInsNo(StringUtils.setEmptyToNull(indto.getUltInsNo()));
-  		selectNF401MainDataEntity.setUltInsNo(StringUtils.setEmptyToNull(indto.getUltInsNo()));
+  		selectNF403MainDataCntEntity.setUltInsNo(StringUtils.setEmptyToNull(indto.getUltInsNo()));
+  		selectNF403MainDataEntity.setUltInsNo(StringUtils.setEmptyToNull(indto.getUltInsNo()));
 
   		// 施設略式漢字名
   		// 漢字変換(F_RDM_KJ_HENKAN)
@@ -209,8 +201,8 @@ public class NF401Service extends BaseService {
         	List<SelectHenkanListEntity> selectHenkanListEntity = dao.select(henkanEntity);
         	// 漢字変換後の値をセット
         	String zenkaku = selectHenkanListEntity.get(0).getSearchHenkan();
-    		selectNF401MainDataCntEntity.setInsKanjSrch(zenkaku);
-    		selectNF401MainDataEntity.setInsKanjSrch(zenkaku);
+    		selectNF403MainDataCntEntity.setInsKanjSrch(zenkaku);
+    		selectNF403MainDataEntity.setInsKanjSrch(zenkaku);
         }
 
         // ULT施設名
@@ -222,36 +214,31 @@ public class NF401Service extends BaseService {
         	List<SelectHenkanListEntity> selectHenkanListEntity = dao.select(henkanEntity);
         	// 漢字変換後の値をセット
         	String zenkaku = selectHenkanListEntity.get(0).getSearchHenkan();
-    		selectNF401MainDataCntEntity.setShisetsuNmSrch(zenkaku);
-    		selectNF401MainDataEntity.setShisetsuNmSrch(zenkaku);
+    		selectNF403MainDataCntEntity.setShisetsuNmSrch(zenkaku);
+    		selectNF403MainDataEntity.setShisetsuNmSrch(zenkaku);
         }
 
         // 施設分類
-        selectNF401MainDataCntEntity.setInsClass(StringUtils.setEmptyToNull(indto.getInsClass()));
-        selectNF401MainDataEntity.setInsClass(StringUtils.setEmptyToNull(indto.getInsClass()));
+        selectNF403MainDataCntEntity.setInsClass(StringUtils.setEmptyToNull(indto.getInsClass()));
+        selectNF403MainDataEntity.setInsClass(StringUtils.setEmptyToNull(indto.getInsClass()));
 
         // 施設種別
-        selectNF401MainDataCntEntity.setInsType(StringUtils.setEmptyToNull(indto.getInsType()));
-        selectNF401MainDataEntity.setInsType(StringUtils.setEmptyToNull(indto.getInsType()));
+        selectNF403MainDataCntEntity.setInsType(StringUtils.setEmptyToNull(indto.getInsType()));
+        selectNF403MainDataEntity.setInsType(StringUtils.setEmptyToNull(indto.getInsType()));
 
         // 対象区分
-  		selectNF401MainDataCntEntity.setHoInsType(StringUtils.setEmptyToNull(indto.getHoInsType()));
-  		selectNF401MainDataEntity.setHoInsType(StringUtils.setEmptyToNull(indto.getHoInsType()));
+  		selectNF403MainDataCntEntity.setHoInsType(StringUtils.setEmptyToNull(indto.getHoInsType()));
+  		selectNF403MainDataEntity.setHoInsType(StringUtils.setEmptyToNull(indto.getHoInsType()));
 
-  		// 未審査申請数0のみ対象
-  		if("true".equals(indto.getShnFlgChk())) {
-  			selectNF401MainDataCntEntity.setShnFlgChk("1");
-  	  		selectNF401MainDataEntity.setShnFlgChk("1");
-    	} else {
-    		selectNF401MainDataCntEntity.setShnFlgChk("0");
-  	  		selectNF401MainDataEntity.setShnFlgChk("0");
-    	}
+  		// ULT差分
+  		selectNF403MainDataCntEntity.setUltDif(StringUtils.setEmptyToNull(indto.getUltDif()));
+  		selectNF403MainDataEntity.setUltDif(StringUtils.setEmptyToNull(indto.getUltDif()));
 
         // 件数取得
-        List<SelectNF401MainDataEntity> selectNF401MainDataCntList  = dao.select(selectNF401MainDataCntEntity);
+        List<SelectNF403MainDataEntity> selectNF403MainDataCntList  = dao.select(selectNF403MainDataCntEntity);
 
         //1000件以上の場合のエラー
-        if (selectNF401MainDataCntList.get(0).getCnt() > selectParamNF401List.get(0).getValue()) {
+        if (selectNF403MainDataCntList.get(0).getCnt() > selectParamNF403List.get(0).getValue()) {
         	  // 検索結果が表示上限を超えています。検索条件を絞って再検索してください。。
         	  String tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W002);
         	  //エラーメッセージをdtoに格納
@@ -259,23 +246,16 @@ public class NF401Service extends BaseService {
         	  return outdto;
         }
 
-        indto.initPageInfo(indto.getPageCntCur(), selectNF401MainDataCntList.get(0).getCnt(), selectParamNF401List.get(1).getValue());
-        selectNF401MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
-        selectNF401MainDataEntity.setInLimit(selectParamNF401List.get(1).getValue());
+        indto.initPageInfo(indto.getPageCntCur(), selectNF403MainDataCntList.get(0).getCnt(), selectParamNF403List.get(1).getValue());
+        selectNF403MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
+        selectNF403MainDataEntity.setInLimit(selectParamNF403List.get(1).getValue());
         indto.setPageFlag("0");
 
         // 一覧を取得する
-        List<SelectNF401MainDataEntity> selectNF401MainDataEntityList = dao.select(selectNF401MainDataEntity);
-
-        for (SelectNF401MainDataEntity entity : selectNF401MainDataEntityList) {
-        	HcoReqDataList dataRecord = new HcoReqDataList();
-
-        	// 承認待ちフラグ
-        	if(entity.getAprWaitCnt() != null && entity.getAprWaitCnt() > 0) {
-        		dataRecord.setWaitAppFlg("1");
-        	} else {
-        		dataRecord.setWaitAppFlg("0");
-        	}
+        List<SelectNF403MainDataEntity> selectNF403MainDataEntityList = dao.select(selectNF403MainDataEntity);
+/*
+        for (SelectNF403MainDataEntity entity : selectNF403MainDataEntityList) {
+        	HcoBlkReqDataList dataRecord = new HcoBlkReqDataList();
 
         	// 施設固定コード
         	if(entity.getInsNo() != null && !entity.getInsNo().isEmpty()) {
@@ -630,13 +610,6 @@ public class NF401Service extends BaseService {
             	}
         	}
 
-        	// 未審査申請数
-        	if(entity.getNoShnCnt() != null) {
-        		dataRecord.setNoShnCnt(entity.getNoShnCnt());
-        	} else {
-        		dataRecord.setNoShnCnt(0);
-        	}
-
         	// 申請コメント
         	if(entity.getReqComment() != null && !entity.getReqComment().isEmpty()) {
         		dataRecord.setReqComment(entity.getReqComment());
@@ -644,165 +617,15 @@ public class NF401Service extends BaseService {
         		dataRecord.setReqComment(" ");
         	}
 
-        	// 承認・却下コメント
-        	if(entity.getAprComment() != null && !entity.getAprComment().isEmpty()) {
-        		dataRecord.setAprComment(entity.getAprComment());
-        	} else if("0".equals(dataRecord.getWaitAppFlg())){
-        		dataRecord.setAprComment(" ");
-        	} else {
-        		dataRecord.setAprComment("");
-        	}
 
-        	hcoReqDataList.add(dataRecord);
+        	hcoBlkReqDataList.add(dataRecord);
         }
-        indto.setHcoReqDataList(hcoReqDataList);
-
+        indto.setHcoReqDataList(hcoBlkReqDataList);
+*/
         indto.setSrchFlg("1");
 
         // END UOC
        	return outdto;
-	}
-
-	public BaseDTO approve(NF401DTO indto) {
-		BaseDTO outdto = indto;
-		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
-		// DropDownList作成
-        createCombo(indto);
-
-		// 現在日付を取得
-		Date systemDate = DateUtils.getNowDate();
-		SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
-        String sysDateTime = fmtDateTime.format(systemDate);
-
-		// 一括承認処理
-		List<HcoReqDataList> hcoReqDataList = indto.getHcoReqDataList();
-		List<String> inInsList = new ArrayList<String>();
-		Map<String, String> aprComMap = new HashMap<String, String>();
-
-		for(HcoReqDataList entity : hcoReqDataList) {
-			if("1".equals(entity.getApprChk())) {
-				inInsList.add(entity.getInsNo());
-
-				if(!aprComMap.containsKey(entity.getInsNo())) {
-					aprComMap.put(entity.getInsNo(), entity.getAprComment());
-				}
-			}
-		}
-
-		// 処理対象取得
-		SelectNF401ReqDataEntity selectNF401ReqDataEntity = new SelectNF401ReqDataEntity();
-		selectNF401ReqDataEntity.setInInsNoList(inInsList);
-		List<SelectNF401ReqDataEntity> selectNF401ReqDataEntityList = dao.select(selectNF401ReqDataEntity);
-
-		// 排他チェック
-		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date srchSysDate = null;
-		try {
-			srchSysDate = fmtDate.parse(indto.getSrchSysDate());
-		} catch (ParseException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-		for(SelectNF401ReqDataEntity entity : selectNF401ReqDataEntityList) {
-			if(srchSysDate.before(entity.getUpdShaYmd())) {
-				// 既に他のユーザーによってデータが処理されています。
-				indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
-				return outdto;
-			}
-		}
-
-		// 一括承認処理
-		for(SelectNF401ReqDataEntity entity : selectNF401ReqDataEntityList) {
-			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateNF401Data");
-
-			tRdmReqKnrEntity.setReqId(entity.getReqId());
-			if("1".equals(entity.getReqChl()) || "2".equals(entity.getReqChl())) {
-				tRdmReqKnrEntity.setReqStsCd("04");
-			} else if("3".equals(entity.getReqChl())) {
-				tRdmReqKnrEntity.setReqStsCd("14");
-			}
-
-			tRdmReqKnrEntity.setAprBrCode(indto.getLoginBrCd());
-        	tRdmReqKnrEntity.setAprDistCode(indto.getLoginDistCd());
-        	tRdmReqKnrEntity.setAprShz(indto.getLoginShzNm());
-        	tRdmReqKnrEntity.setAprJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
-        	tRdmReqKnrEntity.setAprShaName(indto.getLoginNm());
-        	tRdmReqKnrEntity.setAprYmdhms(sysDateTime);
-        	tRdmReqKnrEntity.setAprComment(aprComMap.get(entity.getInsNo()));
-        	tRdmReqKnrEntity.setFbReqFlg("1");
-        	tRdmReqKnrEntity.setUpdShaYmd(systemDate);
-			tRdmReqKnrEntity.setUpdShaId(indto.getLoginJgiNo());
-
-			dao.update(tRdmReqKnrEntity);
-		}
-
-		outdto = search(indto);
-
-		return outdto;
-	}
-
-	public BaseDTO reject(NF401DTO indto) {
-		BaseDTO outdto = indto;
-		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
-		// DropDownList作成
-        createCombo(indto);
-
-		// 現在日付を取得
-		Date systemDate = DateUtils.getNowDate();
-		SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
-        String sysDateTime = fmtDateTime.format(systemDate);
-
-        // 処理対象取得
-        SelectNF401ReqDataEntity selectNF401ReqDataEntity = new SelectNF401ReqDataEntity("selectNF401ReqData");
-        selectNF401ReqDataEntity.setInInsNo(indto.getRejectInsNo());
- 		List<SelectNF401ReqDataEntity> selectNF401ReqDataEntityList = dao.select(selectNF401ReqDataEntity);
-
- 		// 排他チェック
-		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date srchSysDate = null;
-		try {
-			srchSysDate = fmtDate.parse(indto.getSrchSysDate());
-		} catch (ParseException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-		for(SelectNF401ReqDataEntity entity : selectNF401ReqDataEntityList) {
-			if(srchSysDate.before(entity.getUpdShaYmd())) {
-				// 既に他のユーザーによってデータが処理されています。
-				indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
-				return outdto;
-			}
-		}
-
-		// 却下処理
-		for(SelectNF401ReqDataEntity entity : selectNF401ReqDataEntityList) {
-			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateNF401Data");
-
-			tRdmReqKnrEntity.setReqId(entity.getReqId());
-			if("1".equals(entity.getReqChl()) || "2".equals(entity.getReqChl())) {
-				tRdmReqKnrEntity.setReqStsCd("02");
-			} else if("3".equals(entity.getReqChl())) {
-				tRdmReqKnrEntity.setReqStsCd("12");
-			}
-
-			tRdmReqKnrEntity.setAprBrCode(indto.getLoginBrCd());
-        	tRdmReqKnrEntity.setAprDistCode(indto.getLoginDistCd());
-        	tRdmReqKnrEntity.setAprShz(indto.getLoginShzNm());
-        	tRdmReqKnrEntity.setAprJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
-        	tRdmReqKnrEntity.setAprShaName(indto.getLoginNm());
-        	tRdmReqKnrEntity.setAprYmdhms(sysDateTime);
-        	tRdmReqKnrEntity.setAprComment(indto.getRejectComment());
-        	tRdmReqKnrEntity.setUpdShaYmd(systemDate);
-			tRdmReqKnrEntity.setUpdShaId(indto.getLoginJgiNo());
-
-			dao.update(tRdmReqKnrEntity);
-		}
-
-		outdto = search(indto);
-
-		return outdto;
 	}
 
     /**
@@ -811,7 +634,7 @@ public class NF401Service extends BaseService {
      * @return なし
      * @customizable
      */
-    private void createCombo(NF401DTO indto){
+    private void createCombo(NF403DTO indto){
 		// 施設分類
     	SelectComboListEntity inEntityCmb = new SelectComboListEntity();
     	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_CLASS);
@@ -844,5 +667,12 @@ public class NF401Service extends BaseService {
         	mapHoInsType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
         }
         indto.setHoInsTypeCombo(mapHoInsType);
+
+        // ULT差分
+        LinkedHashMap<String, String> mapUltDif = new LinkedHashMap<String, String>();
+        mapUltDif.put("", "--なし--");
+        mapUltDif.put("0", "無");
+        mapUltDif.put("1", "有");
+        indto.setUltDifCombo(mapUltDif);
     }
 }

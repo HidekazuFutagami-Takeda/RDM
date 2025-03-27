@@ -12,7 +12,7 @@ import java.io.Serializable;
  * DTOクラス
  * @generated
  */
-public class HcoReqDataList implements Serializable {
+public class HcoBlkReqDataList implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -20,18 +20,17 @@ public class HcoReqDataList implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-
     /**
-     * 承認待ちフラグ
+     * 申請ステータス
      * @generated
      */
-    private String waitAppFlg;
+    private String reqSts;
 
     /**
-     * 承認チェック
+     * 申請チェック
      * @generated
      */
-    private String apprChk;
+    private String reqChk;
 
     /**
      * 施設固定C
@@ -334,11 +333,11 @@ public class HcoReqDataList implements Serializable {
     private String nextMedBedsTot;
 
     /**
-     * 未審査申請数
+     * ULT差分
      *
      * @generated
      */
-    private Integer noShnCnt;
+    private Integer ultDif;
 
     /**
      * 申請コメント
@@ -346,57 +345,51 @@ public class HcoReqDataList implements Serializable {
      */
     private String reqComment;
 
-    /**
-     * 承認・却下コメント
-     * @generated
-     */
-    private String aprComment;
-
 
     /**
      * コンストラクタ
      * @customizable
      */
-    public HcoReqDataList() {
+    public HcoBlkReqDataList() {
     }
 
 
 	/**
-	 * HcoReqDataList.javawaitAppFlgを設定
-	 * @return waitAppFlg
+	 * HcoBlkReqDataList.javareqStsを設定
+	 * @return reqSts
 	 */
-	public String getWaitAppFlg() {
-		return waitAppFlg;
+	public String getReqSts() {
+		return reqSts;
 	}
 
 
 	/**
-	 * @param waitAppFlg セットする waitAppFlg
+	 * @param reqSts セットする reqSts
 	 */
-	public void setWaitAppFlg(String waitAppFlg) {
-		this.waitAppFlg = waitAppFlg;
+	public void setReqSts(String reqSts) {
+		this.reqSts = reqSts;
 	}
 
 
 	/**
-	 * HcoReqDataList.javaapprChkを設定
-	 * @return apprChk
+	 * HcoBlkReqDataList.javareqChkを設定
+	 * @return reqChk
 	 */
-	public String getApprChk() {
-		return apprChk;
+	public String getReqChk() {
+		return reqChk;
 	}
 
 
 	/**
-	 * @param apprChk セットする apprChk
+	 * @param reqChk セットする reqChk
 	 */
-	public void setApprChk(String apprChk) {
-		this.apprChk = apprChk;
+	public void setReqChk(String reqChk) {
+		this.reqChk = reqChk;
 	}
 
 
 	/**
-	 * HcoReqDataList.javainsNoを設定
+	 * HcoBlkReqDataList.javainsNoを設定
 	 * @return insNo
 	 */
 	public String getInsNo() {
@@ -413,7 +406,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javainsAbbrNameを設定
+	 * HcoBlkReqDataList.javainsAbbrNameを設定
 	 * @return insAbbrName
 	 */
 	public String getInsAbbrName() {
@@ -430,7 +423,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javapharmTypeを設定
+	 * HcoBlkReqDataList.javapharmTypeを設定
 	 * @return pharmType
 	 */
 	public String getPharmType() {
@@ -447,7 +440,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javainsRankを設定
+	 * HcoBlkReqDataList.javainsRankを設定
 	 * @return insRank
 	 */
 	public String getInsRank() {
@@ -464,7 +457,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaregVisTypeを設定
+	 * HcoBlkReqDataList.javaregVisTypeを設定
 	 * @return regVisType
 	 */
 	public String getRegVisType() {
@@ -481,7 +474,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaimpHosTypeを設定
+	 * HcoBlkReqDataList.javaimpHosTypeを設定
 	 * @return impHosType
 	 */
 	public String getImpHosType() {
@@ -498,7 +491,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javahoInsTypeを設定
+	 * HcoBlkReqDataList.javahoInsTypeを設定
 	 * @return hoInsType
 	 */
 	public String getHoInsType() {
@@ -515,7 +508,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javamanageNmを設定
+	 * HcoBlkReqDataList.javamanageNmを設定
 	 * @return manageNm
 	 */
 	public String getManageNm() {
@@ -532,7 +525,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javavacInsTypeを設定
+	 * HcoBlkReqDataList.javavacInsTypeを設定
 	 * @return vacInsType
 	 */
 	public String getVacInsType() {
@@ -549,7 +542,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javavacVisitTypeを設定
+	 * HcoBlkReqDataList.javavacVisitTypeを設定
 	 * @return vacVisitType
 	 */
 	public String getVacVisitType() {
@@ -566,7 +559,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCntBaseを設定
+	 * HcoBlkReqDataList.javabedCntBaseを設定
 	 * @return bedCntBase
 	 */
 	public String getBedCntBase() {
@@ -583,7 +576,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCnt04を設定
+	 * HcoBlkReqDataList.javabedCnt04を設定
 	 * @return bedCnt04
 	 */
 	public String getBedCnt04() {
@@ -600,7 +593,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCnt01を設定
+	 * HcoBlkReqDataList.javabedCnt01を設定
 	 * @return bedCnt01
 	 */
 	public String getBedCnt01() {
@@ -617,7 +610,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCnt05を設定
+	 * HcoBlkReqDataList.javabedCnt05を設定
 	 * @return bedCnt05
 	 */
 	public String getBedCnt05() {
@@ -634,7 +627,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCnt03を設定
+	 * HcoBlkReqDataList.javabedCnt03を設定
 	 * @return bedCnt03
 	 */
 	public String getBedCnt03() {
@@ -651,7 +644,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCnt07を設定
+	 * HcoBlkReqDataList.javabedCnt07を設定
 	 * @return bedCnt07
 	 */
 	public String getBedCnt07() {
@@ -668,7 +661,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCnt02を設定
+	 * HcoBlkReqDataList.javabedCnt02を設定
 	 * @return bedCnt02
 	 */
 	public String getBedCnt02() {
@@ -685,7 +678,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedCnt06を設定
+	 * HcoBlkReqDataList.javabedCnt06を設定
 	 * @return bedCnt06
 	 */
 	public String getBedCnt06() {
@@ -702,7 +695,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javabedsTotを設定
+	 * HcoBlkReqDataList.javabedsTotを設定
 	 * @return bedsTot
 	 */
 	public String getBedsTot() {
@@ -719,7 +712,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javamedBedsTotを設定
+	 * HcoBlkReqDataList.javamedBedsTotを設定
 	 * @return medBedsTot
 	 */
 	public String getMedBedsTot() {
@@ -736,7 +729,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javashisetsuKbnを設定
+	 * HcoBlkReqDataList.javashisetsuKbnを設定
 	 * @return shisetsuKbn
 	 */
 	public String getShisetsuKbn() {
@@ -753,7 +746,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javakeieitaiを設定
+	 * HcoBlkReqDataList.javakeieitaiを設定
 	 * @return keieitai
 	 */
 	public String getKeieitai() {
@@ -770,7 +763,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCntBaseを設定
+	 * HcoBlkReqDataList.javaultBedCntBaseを設定
 	 * @return ultBedCntBase
 	 */
 	public String getUltBedCntBase() {
@@ -787,7 +780,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCnt04を設定
+	 * HcoBlkReqDataList.javaultBedCnt04を設定
 	 * @return ultBedCnt04
 	 */
 	public String getUltBedCnt04() {
@@ -804,7 +797,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCnt01を設定
+	 * HcoBlkReqDataList.javaultBedCnt01を設定
 	 * @return ultBedCnt01
 	 */
 	public String getUltBedCnt01() {
@@ -821,7 +814,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCnt05を設定
+	 * HcoBlkReqDataList.javaultBedCnt05を設定
 	 * @return ultBedCnt05
 	 */
 	public String getUltBedCnt05() {
@@ -838,7 +831,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCnt03を設定
+	 * HcoBlkReqDataList.javaultBedCnt03を設定
 	 * @return ultBedCnt03
 	 */
 	public String getUltBedCnt03() {
@@ -855,7 +848,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCnt07を設定
+	 * HcoBlkReqDataList.javaultBedCnt07を設定
 	 * @return ultBedCnt07
 	 */
 	public String getUltBedCnt07() {
@@ -872,7 +865,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCnt02を設定
+	 * HcoBlkReqDataList.javaultBedCnt02を設定
 	 * @return ultBedCnt02
 	 */
 	public String getUltBedCnt02() {
@@ -889,7 +882,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedCnt06を設定
+	 * HcoBlkReqDataList.javaultBedCnt06を設定
 	 * @return ultBedCnt06
 	 */
 	public String getUltBedCnt06() {
@@ -906,7 +899,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultBedsTotを設定
+	 * HcoBlkReqDataList.javaultBedsTotを設定
 	 * @return ultBedsTot
 	 */
 	public String getUltBedsTot() {
@@ -923,7 +916,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javaultMedBedsTotを設定
+	 * HcoBlkReqDataList.javaultMedBedsTotを設定
 	 * @return ultMedBedsTot
 	 */
 	public String getUltMedBedsTot() {
@@ -940,7 +933,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextPharmTypeを設定
+	 * HcoBlkReqDataList.javanextPharmTypeを設定
 	 * @return nextPharmType
 	 */
 	public String getNextPharmType() {
@@ -957,7 +950,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextInsRankを設定
+	 * HcoBlkReqDataList.javanextInsRankを設定
 	 * @return nextInsRank
 	 */
 	public String getNextInsRank() {
@@ -974,7 +967,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextRegVisTypeを設定
+	 * HcoBlkReqDataList.javanextRegVisTypeを設定
 	 * @return nextRegVisType
 	 */
 	public String getNextRegVisType() {
@@ -991,7 +984,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextImpHosTypeを設定
+	 * HcoBlkReqDataList.javanextImpHosTypeを設定
 	 * @return nextImpHosType
 	 */
 	public String getNextImpHosType() {
@@ -1008,7 +1001,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextHoInsTypeを設定
+	 * HcoBlkReqDataList.javanextHoInsTypeを設定
 	 * @return nextHoInsType
 	 */
 	public String getNextHoInsType() {
@@ -1025,7 +1018,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextManageNmを設定
+	 * HcoBlkReqDataList.javanextManageNmを設定
 	 * @return nextManageNm
 	 */
 	public String getNextManageNm() {
@@ -1042,7 +1035,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextVacInsTypeを設定
+	 * HcoBlkReqDataList.javanextVacInsTypeを設定
 	 * @return nextVacInsType
 	 */
 	public String getNextVacInsType() {
@@ -1059,7 +1052,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextVacVisitTypeを設定
+	 * HcoBlkReqDataList.javanextVacVisitTypeを設定
 	 * @return nextVacVisitType
 	 */
 	public String getNextVacVisitType() {
@@ -1076,7 +1069,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCntBaseを設定
+	 * HcoBlkReqDataList.javanextBedCntBaseを設定
 	 * @return nextBedCntBase
 	 */
 	public String getNextBedCntBase() {
@@ -1093,7 +1086,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCnt04を設定
+	 * HcoBlkReqDataList.javanextBedCnt04を設定
 	 * @return nextBedCnt04
 	 */
 	public String getNextBedCnt04() {
@@ -1110,7 +1103,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCnt01を設定
+	 * HcoBlkReqDataList.javanextBedCnt01を設定
 	 * @return nextBedCnt01
 	 */
 	public String getNextBedCnt01() {
@@ -1127,7 +1120,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCnt05を設定
+	 * HcoBlkReqDataList.javanextBedCnt05を設定
 	 * @return nextBedCnt05
 	 */
 	public String getNextBedCnt05() {
@@ -1144,7 +1137,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCnt03を設定
+	 * HcoBlkReqDataList.javanextBedCnt03を設定
 	 * @return nextBedCnt03
 	 */
 	public String getNextBedCnt03() {
@@ -1161,7 +1154,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCnt07を設定
+	 * HcoBlkReqDataList.javanextBedCnt07を設定
 	 * @return nextBedCnt07
 	 */
 	public String getNextBedCnt07() {
@@ -1178,7 +1171,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCnt02を設定
+	 * HcoBlkReqDataList.javanextBedCnt02を設定
 	 * @return nextBedCnt02
 	 */
 	public String getNextBedCnt02() {
@@ -1195,7 +1188,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedCnt06を設定
+	 * HcoBlkReqDataList.javanextBedCnt06を設定
 	 * @return nextBedCnt06
 	 */
 	public String getNextBedCnt06() {
@@ -1212,7 +1205,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextBedsTotを設定
+	 * HcoBlkReqDataList.javanextBedsTotを設定
 	 * @return nextBedsTot
 	 */
 	public String getNextBedsTot() {
@@ -1229,7 +1222,7 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanextMedBedsTotを設定
+	 * HcoBlkReqDataList.javanextMedBedsTotを設定
 	 * @return nextMedBedsTot
 	 */
 	public String getNextMedBedsTot() {
@@ -1246,24 +1239,24 @@ public class HcoReqDataList implements Serializable {
 
 
 	/**
-	 * HcoReqDataList.javanoShnCntを設定
-	 * @return noShnCnt
+	 * HcoBlkReqDataList.javaultDifを設定
+	 * @return ultDif
 	 */
-	public Integer getNoShnCnt() {
-		return noShnCnt;
+	public Integer getUltDif() {
+		return ultDif;
 	}
 
 
 	/**
-	 * @param noShnCnt セットする noShnCnt
+	 * @param ultDif セットする ultDif
 	 */
-	public void setNoShnCnt(Integer noShnCnt) {
-		this.noShnCnt = noShnCnt;
+	public void setUltDif(Integer ultDif) {
+		this.ultDif = ultDif;
 	}
 
 
 	/**
-	 * HcoReqDataList.javareqCommentを設定
+	 * HcoBlkReqDataList.javareqCommentを設定
 	 * @return reqComment
 	 */
 	public String getReqComment() {
@@ -1276,23 +1269,6 @@ public class HcoReqDataList implements Serializable {
 	 */
 	public void setReqComment(String reqComment) {
 		this.reqComment = reqComment;
-	}
-
-
-	/**
-	 * HcoReqDataList.javaaprCommentを設定
-	 * @return aprComment
-	 */
-	public String getAprComment() {
-		return aprComment;
-	}
-
-
-	/**
-	 * @param aprComment セットする aprComment
-	 */
-	public void setAprComment(String aprComment) {
-		this.aprComment = aprComment;
 	}
 }
 

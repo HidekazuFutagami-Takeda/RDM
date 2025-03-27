@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hcp_kmu_req_del">
+    <resultMap id="mRdmHcpKmuReqDelResultMap" type="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity">
+        <result column="REQ_SHZ" property="reqShz"/>
+        <result column="REQ_CHL" property="reqChl"/>
+        <result column="REQ_STS" property="reqSts"/>
+        <result column="REQ_JGI_NAME" property="jgiName"/>
+        <result column="REQ_YMDHMS" property="reqYmdhms"/>
+        <result column="REQ_JGI_NO" property="reqJgiNo"/>
+        <result column="REQ_BR_CODE" property="brCode"/>
+        <result column="REQ_DIST_CODE" property="reqDistCode"/>
+        <result column="REQ_STS_CD" property="reqStsCd"/>
+
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
+        <result column="DOC_KANJ" property="docKanj"/>
+        <result column="DOC_NO" property="docNo"/>
+        <result column="ULT_DOC_NO" property="urlDocNo"/>
+        <result column="INS_ABBR_NAME" property="insAbbrName"/>
+        <result column="DEPT_KJ" property="deptKj"/>
+        <result column="TITLE_CODE_BF" property="titleCodeBf"/>
+        <result column="TITLE_CODE" property="titleCodeBf"/>
+        <result column="JOB_FORM_BF" property="jobFormBf"/>
+        <result column="JOB_FORM" property="jobFormBf"/>
+        <result column="DCC_TYPE_BF" property="dccTypeBf"/>
+        <result column="DCC_TYPE" property="dccTypeBf"/>
+        <result column="UNIV_POS_CODE_BF" property="univPosCodeBf"/>
+        <result column="TITLE_CODE_BF_NAME" property="titleCodeName"/>
+        <result column="JOB_FORM_BF_NAME" property="jobFormBfName"/>
+        <result column="DCC_TYPE_BF_NAME" property="dccTypeBfName"/>
+        <result column="UNIV_POS_CODE_BF_NAME" property="univPosCodeBfName"/>
+
+        <result column="UNIV_POS_CODE" property="univPosCodeBf"/>
+        <result column="TEKIYO_YMD" property="tekiyoYmd"/>
+        <result column="INS_NO_MT" property="insNoMt"/>
+        <result column="INS_NO" property="insNoMt"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
+        <result column="DEPT_CODE_BF" property="deptCodeBf"/>
+        <result column="DEPT_CODE" property="deptCodeBf"/>
+        <result column="DEPT_KN" property="deptKn"/>
+
+        <result column="REQ_COMMENT" property="reqComment"/>
+       	<result column="APR_COMMENT" property="aprComment"/>
+       	<result column="ISHI_KINMU" property="ishiMenu"/>
+       	<result column="ISHI_MENU" property="ishiKinmu"/>
+
+       	<result column="INS_SHA_YMD" property="insShaYmd"/>
+       	<result column="INS_SHA_ID" property="insShaId"/>
+       	<result column="UPD_SHA_YMD" property="updShaYmd"/>
+       	<result column="UPD_SHA_ID" property="updShaId"/>
+
+       	<result column="INS_CLASS" property="insClass"/>
+       	<result column="HO_INS_TYPE" property="hoInsType"/>
+
+    </resultMap>
+
+    <select id="selectHcpKmuReqDelShinki" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity" resultMap="mRdmHcpKmuReqDelResultMap">
+    <!-- 新規の場合 -->
+		SELECT
+			 HCP_MST.DOC_KANJ	--医師・コメディカル名
+			,HCP_MST.DOC_NO	--医師固定C
+			,HCP_MST.ULT_DOC_NO	--ULT医師コード
+			,HCO_MST.INS_ABBR_NAME	--施設略式漢字名
+			,SHOZOKU_BUKA.DEPT_KJ	--所属部科漢字名
+			,YAKUSHOKU.TITLE_KJ AS TITLE_CODE_BF_NAME	--役職漢字名
+			,JOB_FORM.VALUE1_KANJ AS JOB_FORM_BF_NAME	--勤務形態
+			,YAKUSIN.VALUE1_KANJ AS DCC_TYPE_BF_NAME	--薬審メンバー名称
+			,HCP_UNIV.TITLE_KJ AS UNIV_POS_CODE_BF_NAME	--大学職位名称
+			,HCP_WORK.INS_NO	--施設固定コード
+			,HCP_WORK.DEPT_CODE	--所属部科コード
+			,SHOZOKU_BUKA.DEPT_KN	--所属部科カナ名
+			,HCP_WORK.TITLE_CODE AS TITLE_CODE_BF		--役職コード
+			,HCP_WORK.JOB_FORM AS JOB_FORM_BF	--勤務形態コード
+			,HCP_WORK.DCC AS DCC_TYPE_BF --薬審メンバー区分コード
+			,HCP_WORK.UNIV_POS_CODE AS UNIV_POS_CODE_BF	--大学職位コード
+		FROM
+		    M_RDM_PARAM_MST PARAM_MST_ISHI_KINMU --医師勤務先メニュースイッチ
+
+		INNER JOIN
+		    M_RDM_PARAM_MST PARAM_MST_ISHI_MENU --医師メニュースイッチ
+		ON
+		    PARAM_MST_ISHI_KINMU.PARAM_NAME = 'MN_KMU' --パラメータ名 医師勤務先メニュー
+		AND
+			PARAM_MST_ISHI_MENU.PARAM_NAME  = 'MN_DOC' --パラメータ名 医師メニュー
+
+		LEFT JOIN
+			M_RDM_HCP_MST HCP_MST --医師_基本情報
+		ON
+			HCP_MST.DOC_NO = #{paramDocNo} --医師固定コード 親画面
+
+		LEFT JOIN
+			M_RDM_HCP_WORK HCP_WORK --医師_勤務先情報
+		ON
+			HCP_WORK.DOC_NO = HCP_MST.DOC_NO --医師固定コード
+		AND
+			HCP_WORK.INS_NO = #{paramInsNo} --施設固定コード 親画面
+
+		LEFT JOIN
+			M_RDM_HCO_MST HCO_MST --施設_基本情報
+		ON
+			HCO_MST.INS_NO = HCP_WORK.INS_NO --施設固定コード
+
+		LEFT JOIN
+			M_RDM_HCP_SHOZOKU_BUKA SHOZOKU_BUKA --医師_所属部科マスタ
+		ON
+			SHOZOKU_BUKA.DEPT_CODE = HCP_WORK.DEPT_CODE --武田所属部科コード・所属部科コード
+
+		LEFT JOIN
+			 M_RDM_HCP_YAKUSHOKU HCP_UNIV --医師_役職マスタ(大学先)
+		ON
+			HCP_UNIV.TITLE_CODE = HCP_WORK.UNIV_POS_CODE --武田所属部科コード,大学職位コード
+		AND
+			HCP_UNIV.UNIV_TITLE_FLG = '1' --大学職位利用フラグ
+		AND
+			HCP_UNIV.DEL_FLG = '0' --削除フラグ
+
+		LEFT JOIN
+			M_RDM_HCP_YAKUSHOKU YAKUSHOKU --医師_役職マスタ(役職先)
+		ON
+			YAKUSHOKU.TITLE_CODE = HCP_WORK.TITLE_CODE  --武田所属部科コード,役職コード
+		AND
+			YAKUSHOKU.UNIV_TITLE_FLG = '0' --大学職位利用フラグ
+		AND
+			YAKUSHOKU.DEL_FLG = '0' --削除フラグ
+
+		LEFT JOIN
+			M_RDM_CODE_MST JOB_FORM --コード情報(勤務形態先)
+		ON
+			JOB_FORM.CODE_NAME = 'JOB_FORM' --コード名,'JOB_FORM'（勤務形態）
+		AND
+			JOB_FORM.DEL_FLG = '0' --削除フラグ
+		AND
+			JOB_FORM.VALUE1 = HCP_WORK.JOB_FORM --勤務形態
+
+		LEFT JOIN
+			M_RDM_CODE_MST YAKUSIN --コード情報(薬審先)
+		ON
+			YAKUSIN.CODE_NAME = 'DCC' --コード名,'DCC'（薬審メンバー区分）
+		AND
+			YAKUSIN.DEL_FLG = '0' --削除フラグ
+		AND
+			YAKUSIN.VALUE1 = HCP_WORK.DCC --薬審メンバー区分
+
+	</select>
+
+    <select id="selectHcpKmuReqDel" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity" resultMap="mRdmHcpKmuReqDelResultMap">
+
+
+
+		<!-- 申請データありの場合 -->
+		<if test="paramReqId != null">
+		SELECT
+			 PARAM_MST_ISHI_KINMU.VALUE AS ISHI_KINMU  --医師勤務先メニュースイッチ
+			,PARAM_MST_ISHI_MENU.VALUE AS ISHI_MENU --医師メニュースイッチ
+			,REQ_KNR.REQ_SHZ --申請者所属
+			,REQ_KNR.REQ_CHL --申請チャネル
+			,REQ_KNR.REQ_STS --申請ステータス(名称)
+			,REQ_KNR.REQ_JGI_NAME --申請者氏名
+			,REQ_KNR.REQ_YMDHMS --申請日時
+			,REQ_KNR.REQ_JGI_NO --申請者従業員番号
+			,REQ_KNR.REQ_BR_CODE --申請者所属リージョン
+			,REQ_KNR.REQ_DIST_CODE --申請者所属エリア
+			,REQ_KNR.REQ_STS AS REQ_STS_CD --申請ステータス(コード)
+			,REQ_KNR.UPD_SHA_YMD --更新日
+			,HCP_MST.DOC_KANJ --氏名（漢字）
+			,HCP_MST.DOC_NO --医師固定コード
+			,HCP_MST.ULT_DOC_NO --ULT医師コード
+			,HCO_MST.INS_ABBR_NAME --施設略式漢字名
+			,SHOZOKU_BUKA.DEPT_KJ --所属部科漢字名
+			,KMU_REQ.TITLE_CODE_BF --役職漢字名
+			,KMU_REQ.JOB_FORM_BF --勤務形態(異動元)
+			,KMU_REQ.DCC_TYPE_BF --薬審メンバー区分(異動元)
+			,KMU_REQ.UNIV_POS_CODE_BF --大学職位コード(異動元)
+			,REQ_KNR.TEKIYO_YMD --適用開始日
+			,KMU_REQ.INS_NO_SK --施設固定コード(異動元)
+			,HCO_MST.ULT_INS_NO --ULT施設コード
+			,KMU_REQ.DEPT_CODE_BF --所属部科コード(異動先)
+			,SHOZOKU_BUKA.DEPT_KN --所属部科カナ名
+			,REQ_KNR.REQ_COMMENT --申請コメント
+			,REQ_KNR.APR_COMMENT --却下コメント
+			,REQ_KNR.INS_SHA_YMD
+			,REQ_KNR.INS_SHA_ID
+			,REQ_KNR.UPD_SHA_YMD
+			,REQ_KNR.UPD_SHA_ID
+			,HCO_MST.INS_CLASS --施設分類
+			,HCO_MST.HO_INS_TYPE --対象区分
+		FROM
+		    M_RDM_PARAM_MST PARAM_MST_ISHI_KINMU --医師勤務先メニュースイッチ
+
+		INNER JOIN
+		    M_RDM_PARAM_MST PARAM_MST_ISHI_MENU --医師メニュースイッチ
+		ON
+		    PARAM_MST_ISHI_KINMU.PARAM_NAME = 'MN_KMU' --パラメータ名 医師勤務先メニュー
+		AND
+			PARAM_MST_ISHI_MENU.PARAM_NAME  = 'MN_DOC' --パラメータ名 医師メニュー
+
+		LEFT JOIN
+			T_RDM_REQ_KNR REQ_KNR --申請管理
+		ON
+		   REQ_KNR.REQ_ID = #{paramReqId}--申請ID（親画面）
+
+		LEFT JOIN
+			T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+		ON
+			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID --申請ID
+
+		LEFT JOIN
+			M_RDM_HCP_MST HCP_MST --医師_基本情報
+		ON
+			HCP_MST.DOC_NO = KMU_REQ.DOC_NO --医師固定コード
+
+		LEFT JOIN
+			M_RDM_HCO_MST HCO_MST --施設_基本情報
+		ON
+			HCO_MST.INS_NO = KMU_REQ.INS_NO_MT --施設固定コード,施設固定コード(異動元)
+
+		LEFT JOIN
+			M_RDM_HCP_SHOZOKU_BUKA SHOZOKU_BUKA --医師_所属部科マスタ
+		ON
+			SHOZOKU_BUKA.DEPT_CODE = KMU_REQ.DEPT_CODE_BF --武田所属部科コード・所属部科コード(異動元)
+
+		LEFT JOIN
+			 M_RDM_HCP_YAKUSHOKU HCP_UNIV --医師_役職マスタ(大学先)
+		ON
+			HCP_UNIV.TITLE_CODE = KMU_REQ.UNIV_POS_CODE_BF  --武田所属部科コード,大学職位コード(異動元)
+		AND
+			HCP_UNIV.UNIV_TITLE_FLG = '1' --大学職位利用フラグ
+		AND
+			HCP_UNIV.DEL_FLG = '0' --削除フラグ
+
+		LEFT JOIN
+			M_RDM_HCP_YAKUSHOKU YAKUSHOKU --医師_役職マスタ(役職先)
+		ON
+			YAKUSHOKU.TITLE_CODE = KMU_REQ.TITLE_CODE_BF  --武田所属部科コード,役職コード(異動元)
+		AND
+			YAKUSHOKU.UNIV_TITLE_FLG = '0' --大学職位利用フラグ
+		AND
+			YAKUSHOKU.DEL_FLG = '0' --削除フラグ
+
+		LEFT JOIN
+			M_RDM_CODE_MST JOB_FORM --コード情報(勤務形態先)
+		ON
+			JOB_FORM.CODE_NAME = 'JOB_FORM' --コード名,'JOB_FORM'（勤務形態）
+		AND
+			JOB_FORM.DEL_FLG = '0' --削除フラグ
+		AND
+			JOB_FORM.VALUE1 = KMU_REQ.JOB_FORM_BF --勤務形態(異動元)
+
+		LEFT JOIN
+			M_RDM_CODE_MST YAKUSIN --コード情報(薬審先)
+		ON
+			YAKUSIN.CODE_NAME = 'DCC' --コード名,'DCC'（薬審メンバー区分）
+		AND
+			YAKUSIN.DEL_FLG = '0' --削除フラグ
+		AND
+			YAKUSIN.VALUE1 = KMU_REQ.DCC_TYPE_AF --薬審メンバー区分(異動先)
+
+		</if>
+
+
+    </select>
+
+    <select id="errorCheck1" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity" resultMap="mRdmHcpKmuReqDelResultMap">
+		<!-- 重複申請チェック -->
+		SELECT
+			KMU_REQ.DOC_NO
+		FROM
+			ORAUSR01.T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+		INNER JOIN
+			ORAUSR01.T_RDM_REQ_KNR REQ_KNR	--申請管理
+		ON
+			KMU_REQ.REQ_ID = REQ_KNR.REQ_ID --申請ID
+		WHERE
+			REQ_KNR.REQ_TYPE IN ('42','43','44','51' )--申請区分 '42'(医療機関への異動)、'43'(医療機関以外への異動)、'44'(医師勤務先削除)、'51'(勤務先情報更新)
+		AND
+			REQ_KNR.REQ_STS IN ('03','13','04','14') --申請ステータス '03'(承認待ち)、'13'(ULT承認待ち)、'04'(承認済み)、'14'(ULT承認済み)
+		AND
+			KMU_REQ.DOC_NO = #{docNo} --医師固定コード　画面隠し項目
+		AND
+			KMU_REQ.INS_NO_MT = #{insNoMt} --施設固定コード 画面隠し項目
+	</select>
+
+    <select id="errorCheck2" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity" resultMap="mRdmHcpKmuReqDelResultMap">
+    <!-- 勤務先0件チェック -->
+		SELECT
+			DOC_NO, --医師C
+			INS_NO --施設固定コード
+		FROM
+			ORAUSR01.M_RDM_HCP_WORK --医師_勤務先情報
+		WHERE
+			 DOC_NO = #{docNo} --医師固定コード　画面隠し項目
+		MINUS
+		SELECT
+				KMU_REQ.DOC_NO, --医師C
+				KMU_REQ.INS_NO_MT AS INS_NO --施設固定コード(異動元)
+		FROM
+			ORAUSR01.T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+		INNER JOIN
+			ORAUSR01.T_RDM_REQ_KNR REQ_KNR	--申請管理
+		ON
+			 KMU_REQ.REQ_ID = REQ_KNR.REQ_ID --申請ID
+		WHERE
+			REQ_KNR.REQ_TYPE IN ('44')--申請区分 '44'(医師勤務先削除)
+		AND
+			REQ_KNR.REQ_STS IN ('03','13','04','14') --申請ステータス '03'(承認待ち)、'13'(ULT承認待ち)、'04'(承認済み)、'14'(ULT承認済み)
+		AND
+			 KMU_REQ.DOC_NO = #{docNo} --医師固定コード　画面隠し項目
+
+    </select>
+
+
+    <delete id="deleteRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity">
+       DELETE FROM
+           T_RDM_HCP_KMU_REQ
+       WHERE
+           REQ_ID = #{paramReqId}--申請ID
+   	</delete>
+
+   	<delete id="deleteRdmReqKnr" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity">
+       DELETE FROM
+           T_RDM_REQ_KNR
+       WHERE
+           REQ_ID = #{paramReqId}--申請ID
+   	</delete>
+
+
+</mapper>

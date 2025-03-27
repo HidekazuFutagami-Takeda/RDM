@@ -25,6 +25,9 @@
         <result column="SORT_NUM2" property="sortNum2"/>
         <result column="SORT_NUM3" property="sortNum3"/>
         <result column="SORT_NUM" property="sortNum"/>
+
+        <result column="TITLE_CODE" property="puldownTitleCode"/>
+        <result column="KANJ_NAME" property="puldownTitleKj"/>
     </resultMap>
     <resultMap id="selectCntNd401InitResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity">
         <result column="CNT_KMU" property="cntKmu"/>
@@ -42,6 +45,16 @@
         <result column="ULT_DOC_NO" property="ultDocNo"/>
         <result column="NEXT_BIZDAY" property="nextBizday"/>
     </resultMap>
+
+    <select id="selectCntNd401DmcMstPost" parameterType="jp.co.takeda.rdm.entity.join.SelectNd401InitEntity" resultMap="selectNd401InitResultMap">
+    select
+    	TITLE_CODE, KANA_NAME, KANJ_NAME, IS_JGI_NO, UP_JGI_NO, IS_DATE,
+		UP_DATE, UP_SCRN_ID, UP_FUNC_ID
+	from
+		DMC_MST_POST
+	</select>
+
+
    <select id="selectCntNd401Init" parameterType="jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity" resultMap="selectCntNd401InitResultMap">
         SELECT COUNT(*) CNT_KMU
         FROM (
@@ -103,32 +116,57 @@
             DUMMY_CODE_MST.CODE_NAME = 'DUMMY_HCO'
         AND DUMMY_CODE_MST.DEL_FLG = '0'
         AND DUMMY_CODE_MST.VALUE1 = HCP_WORK.INS_NO
-        WHERE 1 = 1
-        AND HCP_MST.DEL_FLG = '0'
-        --No0
-        AND DUMMY_CODE_MST.VALUE1 IS NULL
-        --No1
-        --AND HCO_MST.INS_KANJ_SRCH　like '%%'
-        --No2
-        AND HCO_MST.INS_NO = '001004075'
-        --No3
-        --AND HCP_MST.DOC_KANJI_SRCH = LIKE '%%'
-        --No4
-        --AND HCP_MST.DOC_NO = ''
-        --No5
-        --AND HCP_WORK.DEPT_CODE = ''
-        --組織が選択されている場合
-        --No6
-        --AND JGI_SOS_MST.UP_SOS_CD = ''
-        --No7
-        --AND JGI_SOS_MST.SOS_CD = ''
-        --担当者が選択されている場合
-        --No8
-        --AND JGI_SOS_MST.BR_CODE = ''
-        --No9
-        --AND JGI_SOS_MST.DIST_CODE = ''
-        --No10
-        --AND JGI_SOS_MST.JGI_NO = ''
+        <where>
+	        1 = 1
+	        AND HCP_MST.DEL_FLG = '0'
+
+	        --No0
+	        AND DUMMY_CODE_MST.VALUE1 IS NULL
+
+	        --No1
+	        <if test="kensakuInsKanj != null">
+				AND HCO_MST.INS_KANJ_SRCH　LIKE '%' ||#{kensakuInsKanj}|| '%'
+			</if>
+	        --No2
+	        <if test="kensakuInsNo != null">
+				AND HCO_MST.INS_NO = #{kensakuInsNo}
+			</if>
+	        --No3
+	        <if test="kensakuDocKanj != null">
+				AND HCP_MST.DOC_KANJI_SRCH = LIKE '%' ||#{kensakuDocKanj}|| '%'
+			</if>
+	        --No4
+	        <if test="kensakuDocNo != null">
+				AND HCP_MST.DOC_NO = #{kensakuDocNo}
+			</if>
+	        --No5
+	        <if test="kensakuDeptCode != null">
+				AND HCP_WORK.DEPT_CODE = #{kensakuDeptCode}
+			</if>
+	        --組織が選択されている場合
+	        --No6
+	        <if test="kensakuSosCd != null">
+				AND JGI_SOS_MST.UP_SOS_CD = #{kensakuSosCd}
+			</if>
+	        --No7
+	        <if test="kensakuSosCd != null">
+				AND JGI_SOS_MST.SOS_CD = #{kensakuSosCd}
+			</if>
+	        --担当者が選択されている場合
+	        --No8
+	        <if test="kensakuBrCode != null">
+				AND JGI_SOS_MST.BR_CODE = #{kensakuBrCode}
+			</if>
+	        --No9
+	        <if test="kensakuDistCode != null">
+				AND JGI_SOS_MST.DIST_CODE = #{kensakuDistCode}
+			</if>
+	        --No10
+	        <if test="kensakuJgiNo != null">
+				AND JGI_SOS_MST.JGI_NO = #{kensakuJgiNo}
+			</if>
+		</where>
+
         ) SELECT_KMU
     </select>
    <select id="selectNd401Init" parameterType="jp.co.takeda.rdm.entity.join.SelectNd401InitEntity" resultMap="selectNd401InitResultMap">
@@ -190,32 +228,57 @@
             DUMMY_CODE_MST.CODE_NAME = 'DUMMY_HCO'
         AND DUMMY_CODE_MST.DEL_FLG = '0'
         AND DUMMY_CODE_MST.VALUE1 = HCP_WORK.INS_NO
-        WHERE 1 = 1
-        AND HCP_MST.DEL_FLG = '0'
-        --No0
-        AND DUMMY_CODE_MST.VALUE1 IS NULL
-        --No1
-        --AND HCO_MST.INS_KANJ_SRCH　like '%%'
-        --No2
-        AND HCO_MST.INS_NO = '001004075'
-        --No3
-        --AND HCP_MST.DOC_KANJI_SRCH = LIKE '%%'
-        --No4
-        --AND HCP_MST.DOC_NO = ''
-        --No5
-        --AND HCP_WORK.DEPT_CODE = ''
-        --組織が選択されている場合
-        --No6
-        --AND JGI_SOS_MST.UP_SOS_CD = ''
-        --No7
-        --AND JGI_SOS_MST.SOS_CD = ''
-        --担当者が選択されている場合
-        --No8
-        --AND JGI_SOS_MST.BR_CODE = ''
-        --No9
-        --AND JGI_SOS_MST.DIST_CODE = ''
-        --No10
-        --AND JGI_SOS_MST.JGI_NO = ''
+        <where>
+	        1 = 1
+	        AND HCP_MST.DEL_FLG = '0'
+
+	        --No0
+	        AND DUMMY_CODE_MST.VALUE1 IS NULL
+
+	        --No1
+	        <if test="kensakuInsKanj != null">
+				AND HCO_MST.INS_KANJ_SRCH　LIKE '%' ||#{kensakuInsKanj}|| '%'
+			</if>
+	        --No2
+	        <if test="kensakuInsNo != null">
+				AND HCO_MST.INS_NO = #{kensakuInsNo}
+			</if>
+	        --No3
+	        <if test="kensakuDocKanj != null">
+				AND HCP_MST.DOC_KANJI_SRCH = LIKE '%' ||#{kensakuDocKanj}|| '%'
+			</if>
+	        --No4
+	        <if test="kensakuDocNo != null">
+				AND HCP_MST.DOC_NO = #{kensakuDocNo}
+			</if>
+	        --No5
+	        <if test="kensakuDeptCode != null">
+				AND HCP_WORK.DEPT_CODE = #{kensakuDeptCode}
+			</if>
+	        --組織が選択されている場合
+	        --No6
+	        <if test="kensakuSosCd != null">
+				AND JGI_SOS_MST.UP_SOS_CD = #{kensakuSosCd}
+			</if>
+	        --No7
+	        <if test="kensakuSosCd != null">
+				AND JGI_SOS_MST.SOS_CD = #{kensakuSosCd}
+			</if>
+	        --担当者が選択されている場合
+	        --No8
+	        <if test="kensakuBrCode != null">
+				AND JGI_SOS_MST.BR_CODE = #{kensakuBrCode}
+			</if>
+	        --No9
+	        <if test="kensakuDistCode != null">
+				AND JGI_SOS_MST.DIST_CODE = #{kensakuDistCode}
+			</if>
+	        --No10
+	        <if test="kensakuJgiNo != null">
+				AND JGI_SOS_MST.JGI_NO = #{kensakuJgiNo}
+			</if>
+		</where>
+
         ORDER BY
             HCO_MST.INS_NO, HCP_SHOZOKU_BUKA.SORT_NUM1, HCP_SHOZOKU_BUKA.SORT_NUM2, HCP_SHOZOKU_BUKA.SORT_NUM3, HCP_YAKUSHOKU.SORT_NUM, HCP_MST.DOC_NO
         OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY

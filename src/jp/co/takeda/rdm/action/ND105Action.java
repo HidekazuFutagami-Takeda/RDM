@@ -137,13 +137,14 @@ public class ND105Action extends BaseAction<ND105DTO> {
 
         dto.setTitle(title);
 
-        String preScreenId = loginInfo.getPreScreenId();
+        String preScreenId = dto.getBackScreenId();
         String reqId = dto.getReqId();
         String docNo = dto.getTkdDocNo();
 //TODO
         //モック
-        //preScreenId = "NC011";
-        preScreenId = dto.getPreScreenId();
+        if(preScreenId.equals("NC001")) {
+        	preScreenId = dto.getPreScreenId();
+        }
 
         dto.setPreScreenId(preScreenId);
 
@@ -153,6 +154,7 @@ public class ND105Action extends BaseAction<ND105DTO> {
         if ("ND013".equals(preScreenId)) {
         	if (docNo != null && docNo.length() > 0) {
         		// 医師コードで初期データ作成
+        		dto.setReqId("");
         		dto.setDisplayKbn("1");
         	} else { //遷移エラー
         		throw new InvalidRequestException();

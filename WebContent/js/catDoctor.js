@@ -25,6 +25,9 @@ var gCseViewWin = null;        // 検索条件 施設POPUP用
  */
 var CDR_SCREEN_ID		= "CatDoctor";
 
+var tmpCallback = null;
+var tmpTarget = null;
+
 /**
  * <pre>
  * clear(リンク)押下時に呼ばれます。
@@ -176,6 +179,85 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
 
 }
 
+
+// 担当者選択ボタン
+function tantoPopBtn(){
+	  // 全てのポップアップを閉じる
+	  hcpClosePopUp(gCtaViewWin, "gCtaViewWin");
+		// NC202_担当者検索ポップアップ画面を表示
+		window.open("","gCtaViewWin",tantoSubScreenSize);
+		document.fm1.screenId.value = "NC202";
+		document.fm1.functionId.value="Init";
+		if(tmpTarget == null){
+			tmpTarget = document.fm1.target;
+		}
+		document.fm1.target="gCtaViewWin";
+
+		document.fm1.sosCdPop.value = document.fm1.searchSosCd.value;
+		document.fm1.bumonRankPop.value = document.fm1.searchSosRank.value;
+		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+
+		document.fm1.selectFlgPop.value="1";
+		if(tmpCallback == null){
+			tmpCallback = document.fm1.callBack.value;
+		}
+		document.fm1.callBack.value="callBackTantoPop";
+
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+}
+
+function soshikiPopBtn(){
+	  hcpClosePopUp(gCsoViewWin, "gCsoViewWin");
+	// NC201_担当者検索ポップアップ画面を表示
+	window.open("","gCsoViewWin",tantoSubScreenSize);
+	document.fm1.screenId.value = "NC201";
+	document.fm1.functionId.value="Init";
+	if(tmpTarget == null){
+		tmpTarget = document.fm1.target;
+	}
+	document.fm1.target="gCsoViewWin";
+
+	document.fm1.bumonRankPop.value="1";
+	document.fm1.selectFlgPop.value="1";
+	if(tmpCallback == null){
+		tmpCallback = document.fm1.callBack.value;
+	}
+	document.fm1.callBack.value = "callBackSoshikiPop";
+
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+}
+
+// 担当者検索ポップアップから値受け取り
+function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+							distCode, trtGrpCd, trtNm, mrCat){
+	document.fm1.searchSosCd.value = sosCd;
+	document.fm1.searchSosNm.value = bumonSeiName;
+	document.fm1.searchTantoCd.value = jgiNo;
+	document.fm1.searchTantoNm.value = jgiName;
+	document.fm1.searchSosRank.value = "3";
+	document.fm1.brCode.value = brCode;
+	document.fm1.distCode.value = distCode;
+	document.fm1.callBack.value = tmpCallback;
+	document.fm1.target = tmpTarget;
+}
+
+function callBackSoshikiPop(bumonRank, sosCd, bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+		document.fm1.bumonRank.value    = bumonRank;
+		document.fm1.searchSosRank.value    = bumonRank;
+		document.fm1.searchSosNm.value = bumonSeiName;
+		document.fm1.sosCd.value        = sosCd;
+		document.fm1.searchSosCd.value        = sosCd;
+		document.fm1.brCode.value       = brCode;
+		document.fm1.distCode.value     = distCode;
+		document.fm1.upSosCode.value    = upSosCode;
+		document.fm1.upBumonRank.value  = upBumonRank;
+		document.fm1.upBrCode.value     = upBrCode;
+		document.fm1.upDistCode.value   = upDistCode;
+		document.fm1.callBack.value = tmpCallback;
+		document.fm1.target = tmpTarget;
+}
 /////////////////////////////////////////////////
 
 /**
@@ -225,10 +307,13 @@ function cdrLoad(){
 }
 
 /**
- * 施設を選択ボタン押下
+ * 医師を選択ボタン押下
  */
 function csdSelectDoc(docNo,docKanj) {
 	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
+	if(tmpCallback != null){
+		document.fm1.callBack.value = tmpCallback;
+	}
   eval("window.opener." + document.fm1.callBack.value + "(docNo,docKanj)"
   );
       cdrClose();
@@ -262,6 +347,9 @@ function cdrSearch(){
 
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 1;
+	if(tmpCallback != null){
+		document.fm1.target = tmpTarget;
+	}
 
     // 検索イベント呼び出し
     document.fm1.submit_search.click();
@@ -276,9 +364,12 @@ function cdrSearch(){
 function pltPage( pageCntCur ){
   //現在ページ番号変更（遷移）
   document.fm1.pageCntCur.value = pageCntCur;
-
+  document.fm1.screenId.value = "NC209";
   document.fm1.functionId.value = 'Page';
-  // 検索イベント呼び出し
+	if(tmpCallback != null){
+		document.fm1.target = tmpTarget;
+	}
+	// 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);
 }
 
@@ -294,9 +385,11 @@ function cdrSort( sortCondition ){
 
   //ソート区分設定
   document.fm1.sortCondition.value = sortCondition;
-
+  document.fm1.screenId.value = "NC209";
   document.fm1.functionId.value = 'Sort';
-
+	if(tmpCallback != null){
+		document.fm1.target = tmpTarget;
+	}
   // 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);
 }

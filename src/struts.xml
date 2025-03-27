@@ -134,6 +134,7 @@
             <result name="ND011Init" type="chain">ND011Init</result>
             <result name="ND301Init" type="chain">ND301Init</result>
             <result name="ND301Register" type="chain">ND301Register</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
         </action>
         <action name="ND301Init" class="nD301Action" method="init">
             <result name="ND011">/WEB-INF/pages/ND011.jsp</result>
@@ -398,6 +399,19 @@
         <action name="NF401Search" class="nF401Action" method="search">
             <result name="NF401">/WEB-INF/pages/NF401.jsp</result>
         </action>
+        <action name="NF401Approve" class="nF401Action" method="approve">
+            <result name="NF401">/WEB-INF/pages/NF401.jsp</result>
+        </action>
+        <action name="NF401Reject" class="nF401Action" method="reject">
+            <result name="NF401">/WEB-INF/pages/NF401.jsp</result>
+        </action>
+        <action name="NF403Init" class="nF403Action" method="init">
+            <result name="NC109" type="chain">NC109Init</result>
+            <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
+        </action>
+        <action name="NF403Search" class="nF403Action" method="search">
+            <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
+        </action>
         <action name="NC203Init" class="nC203Action" method="init">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>
@@ -561,6 +575,7 @@
             <result name="ND012Init" type="chain">ND012Init</result>
             <result name="ND303Init" type="chain">ND303Init</result>
             <result name="ND303Register" type="chain">ND303Register</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
         </action>
         <action name="ND303Init" class="nD303Action" method="init">
             <result name="ND303">/WEB-INF/pages/ND303.jsp</result>
@@ -579,6 +594,7 @@
             <result name="ND105Init" type="chain">ND105Init</result>
             <result name="ND315Init" type="chain">ND315Init</result>
             <result name="ND315Register" type="chain">ND315Register</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
         </action>
         <action name="ND315Init" class="nD315Action" method="init">
             <result name="ND315">/WEB-INF/pages/ND315.jsp</result>
@@ -597,6 +613,7 @@
             <result name="ND014Init" type="chain">ND014Init</result>
             <result name="ND305Init" type="chain">ND305Init</result>
             <result name="ND305Register" type="chain">ND305Register</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
         </action>
         <action name="ND305Init" class="nD305Action" method="init">
             <result name="ND305">/WEB-INF/pages/ND305.jsp</result>

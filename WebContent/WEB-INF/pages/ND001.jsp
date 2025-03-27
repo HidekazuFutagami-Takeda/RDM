@@ -105,6 +105,21 @@ if (stack.peek() instanceof ND001DTO) {
 	  	fm1.docNo.value = tmpDoc;
 	}
 
+ 	// 新規作成ボタン
+    function newBtn(){
+ 		if(nd001Tab && !nd001Tab.closed){
+ 			nd001Tab.close();
+ 		}
+
+ 		nf001Tab = window.open("","ND001Tab");
+		document.fm1.target="ND001Tab";
+		fm1.ultDocNo.value = "";
+  		fm1.screenId.value="ND011";
+	  	fm1.functionId.value="Init";
+	  	comSubmitForAnyWarp(fm1);
+	  	comClickFlgInit();
+
+	}
  // 担当者選択ボタン
     function tantoPopBtn(){
     		// NC202_担当者検索ポップアップ画面を表示
@@ -476,7 +491,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                 <%--<input type="hidden"> --%>
               </s:if>
               <s:else>
-                <input type="button" name="search" value="新規作成" onclick="testAlert(test1);">&nbsp;※新規作成の前に検索してください
+                <input type="button" name="search" value="新規作成" onclick="newBtn();">&nbsp;※新規作成の前に検索してください
               </s:else>
               </td>
               <td class="comTableSearchItem" style="width:50pt;"></td>

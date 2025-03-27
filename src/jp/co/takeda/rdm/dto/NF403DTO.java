@@ -19,7 +19,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
  * DTOクラス
  * @generated
  */
-public class NF401DTO extends BaseDTO implements Serializable {
+public class NF403DTO extends BaseDTO implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -31,7 +31,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
      * このDTOが関連付けられている画面ID
      * @generated
      */
-    private String NF401 = "NF401";
+    private String NF403 = "NF403";
 
     /**
 	 * メッセージID
@@ -184,16 +184,16 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	private String hoInsType;
 
 	/**
-	 * 未審査申請数0のみ対象
+	 * ULT差分
 	 * @generated
 	 */
-	private String shnFlgChk;
+	private String ultDif;
 
 	/**
 	 * 一覧表示
      * @generated
      */
-    private List<HcoReqDataList> hcoReqDataList = new ArrayList<HcoReqDataList>();
+    private List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
 
     /**
 	 * コンボボックス_施設分類
@@ -214,6 +214,12 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	 */
 	private LinkedHashMap<String,String> hoInsTypeCombo = new LinkedHashMap<String,String>();
 
+	/**
+	 * コンボボックス_ULT差分
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> ultDifCombo = new LinkedHashMap<String,String>();
+
     /**
 	 * メッセージ中身
 	 * @generated
@@ -233,16 +239,10 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	private String pageFlag;
 
 	/**
-	 * 一括承認ボタン活性フラグ
+	 * 一括申請ボタン活性フラグ
 	 * @generated
 	 */
 	private String btnEnableFlg;
-
-	/**
-	 * 却下ボタン活性フラグ
-	 * @generated
-	 */
-	private String rejBtnEnableFlg;
 
 	/**
 	 * 最終検索日時
@@ -251,42 +251,30 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	private String srchSysDate;
 
 	/**
-	 * 却下施設固定コード
-	 * @generated
-	 */
-	private String rejectInsNo;
-
-	/**
-	 * 却下コメント
-	 * @generated
-	 */
-	private String rejectComment;
-
-	/**
      * デフォルトのコンストラクタ。
      * @generated
      */
-    public NF401DTO() {
-        setForward(NF401);
+    public NF403DTO() {
+        setForward(NF403);
     }
 
 	/**
-	 * NF401DTO.javaNF401を設定
-	 * @return nF401
+	 * NF403DTO.javaNF403を設定
+	 * @return nF403
 	 */
-	public String getNF401() {
-		return NF401;
+	public String getNF403() {
+		return NF403;
 	}
 
 	/**
-	 * @param nF401 セットする nF401
+	 * @param nF403 セットする nF403
 	 */
-	public void setNF401(String nF401) {
-		NF401 = nF401;
+	public void setNF403(String nF403) {
+		NF403 = nF403;
 	}
 
 	/**
-	 * NF401DTO.javamsgIdを設定
+	 * NF403DTO.javamsgIdを設定
 	 * @return msgId
 	 */
 	public String getMsgId() {
@@ -301,7 +289,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaloginJokenSetCdを設定
+	 * NF403DTO.javaloginJokenSetCdを設定
 	 * @return loginJokenSetCd
 	 */
 	public String getLoginJokenSetCd() {
@@ -316,7 +304,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaloginJgiNoを設定
+	 * NF403DTO.javaloginJgiNoを設定
 	 * @return loginJgiNo
 	 */
 	public String getLoginJgiNo() {
@@ -331,7 +319,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaloginNmを設定
+	 * NF403DTO.javaloginNmを設定
 	 * @return loginNm
 	 */
 	public String getLoginNm() {
@@ -346,7 +334,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaloginBrCdを設定
+	 * NF403DTO.javaloginBrCdを設定
 	 * @return loginBrCd
 	 */
 	public String getLoginBrCd() {
@@ -361,7 +349,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaloginDistCdを設定
+	 * NF403DTO.javaloginDistCdを設定
 	 * @return loginDistCd
 	 */
 	public String getLoginDistCd() {
@@ -376,7 +364,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaloginShzNmを設定
+	 * NF403DTO.javaloginShzNmを設定
 	 * @return loginShzNm
 	 */
 	public String getLoginShzNm() {
@@ -391,7 +379,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaloginTrtCdを設定
+	 * NF403DTO.javaloginTrtCdを設定
 	 * @return loginTrtCd
 	 */
 	public String getLoginTrtCd() {
@@ -406,7 +394,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javagamenIdを設定
+	 * NF403DTO.javagamenIdを設定
 	 * @return gamenId
 	 */
 	public String getGamenId() {
@@ -421,7 +409,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javatitleを設定
+	 * NF403DTO.javatitleを設定
 	 * @return title
 	 */
 	public String getTitle() {
@@ -436,7 +424,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javasosCdを設定
+	 * NF403DTO.javasosCdを設定
 	 * @return sosCd
 	 */
 	public String getSosCd() {
@@ -451,7 +439,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javasosNmを設定
+	 * NF403DTO.javasosNmを設定
 	 * @return sosNm
 	 */
 	public String getSosNm() {
@@ -466,7 +454,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javabrCodeを設定
+	 * NF403DTO.javabrCodeを設定
 	 * @return brCode
 	 */
 	public String getBrCode() {
@@ -481,7 +469,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javadistCodeを設定
+	 * NF403DTO.javadistCodeを設定
 	 * @return distCode
 	 */
 	public String getDistCode() {
@@ -496,7 +484,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javabumonRankを設定
+	 * NF403DTO.javabumonRankを設定
 	 * @return bumonRank
 	 */
 	public String getBumonRank() {
@@ -511,7 +499,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javajgiNoを設定
+	 * NF403DTO.javajgiNoを設定
 	 * @return jgiNo
 	 */
 	public String getJgiNo() {
@@ -526,7 +514,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javajgiNmを設定
+	 * NF403DTO.javajgiNmを設定
 	 * @return jgiNm
 	 */
 	public String getJgiNm() {
@@ -541,7 +529,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javainsNmを設定
+	 * NF403DTO.javainsNmを設定
 	 * @return insNm
 	 */
 	public String getInsNm() {
@@ -556,7 +544,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javainsNoを設定
+	 * NF403DTO.javainsNoを設定
 	 * @return insNo
 	 */
 	public String getInsNo() {
@@ -571,7 +559,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javaultInsNoを設定
+	 * NF403DTO.javaultInsNoを設定
 	 * @return ultInsNo
 	 */
 	public String getUltInsNo() {
@@ -586,7 +574,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javainsKanjSrchを設定
+	 * NF403DTO.javainsKanjSrchを設定
 	 * @return insKanjSrch
 	 */
 	public String getInsKanjSrch() {
@@ -601,7 +589,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javashisetsuNmSrchを設定
+	 * NF403DTO.javashisetsuNmSrchを設定
 	 * @return shisetsuNmSrch
 	 */
 	public String getShisetsuNmSrch() {
@@ -616,7 +604,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javainsClassを設定
+	 * NF403DTO.javainsClassを設定
 	 * @return insClass
 	 */
 	public String getInsClass() {
@@ -631,7 +619,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javainsTypeを設定
+	 * NF403DTO.javainsTypeを設定
 	 * @return insType
 	 */
 	public String getInsType() {
@@ -646,7 +634,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javahoInsTypeを設定
+	 * NF403DTO.javahoInsTypeを設定
 	 * @return hoInsType
 	 */
 	public String getHoInsType() {
@@ -661,37 +649,37 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javashnFlgChkを設定
-	 * @return shnFlgChk
+	 * NF403DTO.javaultDifを設定
+	 * @return ultDif
 	 */
-	public String getShnFlgChk() {
-		return shnFlgChk;
+	public String getUltDif() {
+		return ultDif;
 	}
 
 	/**
-	 * @param shnFlgChk セットする shnFlgChk
+	 * @param ultDif セットする ultDif
 	 */
-	public void setShnFlgChk(String shnFlgChk) {
-		this.shnFlgChk = shnFlgChk;
+	public void setUltDif(String ultDif) {
+		this.ultDif = ultDif;
 	}
 
 	/**
-	 * NF401DTO.javahcoReqDataListを設定
-	 * @return hcoReqDataList
+	 * NF403DTO.javahcoBlkReqDataListを設定
+	 * @return hcoBlkReqDataList
 	 */
-	public List<HcoReqDataList> getHcoReqDataList() {
-		return hcoReqDataList;
+	public List<HcoBlkReqDataList> getHcoBlkReqDataList() {
+		return hcoBlkReqDataList;
 	}
 
 	/**
-	 * @param hcoReqDataList セットする hcoReqDataList
+	 * @param hcoBlkReqDataList セットする hcoBlkReqDataList
 	 */
-	public void setHcoReqDataList(List<HcoReqDataList> hcoReqDataList) {
-		this.hcoReqDataList = hcoReqDataList;
+	public void setHcoBlkReqDataList(List<HcoBlkReqDataList> hcoBlkReqDataList) {
+		this.hcoBlkReqDataList = hcoBlkReqDataList;
 	}
 
 	/**
-	 * NF401DTO.javainsClassComboを設定
+	 * NF403DTO.javainsClassComboを設定
 	 * @return insClassCombo
 	 */
 	public LinkedHashMap<String, String> getInsClassCombo() {
@@ -706,7 +694,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javainsTypeComboを設定
+	 * NF403DTO.javainsTypeComboを設定
 	 * @return insTypeCombo
 	 */
 	public LinkedHashMap<String, String> getInsTypeCombo() {
@@ -721,7 +709,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javahoInsTypeComboを設定
+	 * NF403DTO.javahoInsTypeComboを設定
 	 * @return hoInsTypeCombo
 	 */
 	public LinkedHashMap<String, String> getHoInsTypeCombo() {
@@ -736,7 +724,22 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javamsgStrを設定
+	 * NF403DTO.javaultDifComboを設定
+	 * @return ultDifCombo
+	 */
+	public LinkedHashMap<String, String> getUltDifCombo() {
+		return ultDifCombo;
+	}
+
+	/**
+	 * @param ultDifCombo セットする ultDifCombo
+	 */
+	public void setUltDifCombo(LinkedHashMap<String, String> ultDifCombo) {
+		this.ultDifCombo = ultDifCombo;
+	}
+
+	/**
+	 * NF403DTO.javamsgStrを設定
 	 * @return msgStr
 	 */
 	public String getMsgStr() {
@@ -751,7 +754,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javasrchFlgを設定
+	 * NF403DTO.javasrchFlgを設定
 	 * @return srchFlg
 	 */
 	public String getSrchFlg() {
@@ -766,7 +769,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javapageFlagを設定
+	 * NF403DTO.javapageFlagを設定
 	 * @return pageFlag
 	 */
 	public String getPageFlag() {
@@ -781,7 +784,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javabtnEnableFlgを設定
+	 * NF403DTO.javabtnEnableFlgを設定
 	 * @return btnEnableFlg
 	 */
 	public String getBtnEnableFlg() {
@@ -796,22 +799,7 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * NF401DTO.javarejBtnEnableFlgを設定
-	 * @return rejBtnEnableFlg
-	 */
-	public String getRejBtnEnableFlg() {
-		return rejBtnEnableFlg;
-	}
-
-	/**
-	 * @param rejBtnEnableFlg セットする rejBtnEnableFlg
-	 */
-	public void setRejBtnEnableFlg(String rejBtnEnableFlg) {
-		this.rejBtnEnableFlg = rejBtnEnableFlg;
-	}
-
-	/**
-	 * NF401DTO.javasrchSysDateを設定
+	 * NF403DTO.javasrchSysDateを設定
 	 * @return srchSysDate
 	 */
 	public String getSrchSysDate() {
@@ -823,36 +811,6 @@ public class NF401DTO extends BaseDTO implements Serializable {
 	 */
 	public void setSrchSysDate(String srchSysDate) {
 		this.srchSysDate = srchSysDate;
-	}
-
-	/**
-	 * NF401DTO.javarejectInsNoを設定
-	 * @return rejectInsNo
-	 */
-	public String getRejectInsNo() {
-		return rejectInsNo;
-	}
-
-	/**
-	 * @param rejectInsNo セットする rejectInsNo
-	 */
-	public void setRejectInsNo(String rejectInsNo) {
-		this.rejectInsNo = rejectInsNo;
-	}
-
-	/**
-	 * NF401DTO.javarejectCommentを設定
-	 * @return rejectComment
-	 */
-	public String getRejectComment() {
-		return rejectComment;
-	}
-
-	/**
-	 * @param rejectComment セットする rejectComment
-	 */
-	public void setRejectComment(String rejectComment) {
-		this.rejectComment = rejectComment;
 	}
 
 	/**

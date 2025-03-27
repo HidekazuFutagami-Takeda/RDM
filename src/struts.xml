@@ -405,6 +405,13 @@
         <action name="NF401Reject" class="nF401Action" method="reject">
             <result name="NF401">/WEB-INF/pages/NF401.jsp</result>
         </action>
+        <action name="NF403Init" class="nF403Action" method="init">
+            <result name="NC109" type="chain">NC109Init</result>
+            <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
+        </action>
+        <action name="NF403Search" class="nF403Action" method="search">
+            <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
+        </action>
         <action name="NC203Init" class="nC203Action" method="init">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>

@@ -33,6 +33,10 @@
         <result column="PARAM_NAME" property="paramName"/>
         <result column="VALUE" property="value"/>
     </resultMap>
+    <resultMap id="selectParamNF403ResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamNF403Entity">
+        <result column="PARAM_NAME" property="paramName"/>
+        <result column="VALUE" property="value"/>
+    </resultMap>
     <resultMap id="selectParamSwitchResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity">
         <result column="SHINKI_FLG" property="shinkiFlg"/>
         <result column="HENSHU_FLG" property="henshuFlg"/>
@@ -108,6 +112,15 @@
             M_RDM_PARAM_MST
         WHERE
             PARAM_NAME in ('MAX_ROWNUM', 'NF401_ROWNUM')
+        ORDER BY PARAM_NAME
+    </select>
+    <select id="selectParamNF403" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNF403Entity" resultMap="selectParamNF403ResultMap">
+        SELECT
+            PARAM_NAME, VALUE
+        FROM
+            M_RDM_PARAM_MST
+        WHERE
+            PARAM_NAME in ('MAX_ROWNUM', 'NF403_ROWNUM')
         ORDER BY PARAM_NAME
     </select>
     <select id="selectParamSwitch" parameterType="jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity" resultMap="selectParamSwitchResultMap">

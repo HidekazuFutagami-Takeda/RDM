@@ -43,55 +43,55 @@ function rdmCheck(reqId,reqType) {
 
 	fm1.reqId.value=reqId;
 	if(reqType == '施設新規作成'){
-	fm1.reqType.value='01';
+	fm1.reqTypeCell.value='01';
 	}
 	if(reqType == '施設情報更新'){
-		fm1.reqType.value='02';
+		fm1.reqTypeCell.value='02';
 		}
 	if(reqType == '施設削除'){
-		fm1.reqType.value='03';
+		fm1.reqTypeCell.value='03';
 		}
 	if(reqType == '施設復活'){
-		fm1.reqType.value='04';
+		fm1.reqTypeCell.value='04';
 		}
 	if(reqType == '施設紐づけ作成'){
-		fm1.reqType.value='11';
+		fm1.reqTypeCell.value='11';
 		}
 	if(reqType == '親施設の変更'){
-		fm1.reqType.value='12';
+		fm1.reqTypeCell.value='12';
 		}
 	if(reqType == '施設紐づけの削除'){
-		fm1.reqType.value='13';
+		fm1.reqTypeCell.value='13';
 		}
 	if(reqType == '施設来期用項目更新'){
-		fm1.reqType.value='21';
+		fm1.reqTypeCell.value='21';
 		}
 	if(reqType == '医師新規作成'){
-		fm1.reqType.value='31';
+		fm1.reqTypeCell.value='31';
 		}
 	if(reqType == '医師情報更新'){
-		fm1.reqType.value='32';
+		fm1.reqTypeCell.value='32';
 		}
 	if(reqType == '医師削除'){
-		fm1.reqType.value='33';
+		fm1.reqTypeCell.value='33';
 		}
 	if(reqType == '医師復活'){
-		fm1.reqType.value='34';
+		fm1.reqTypeCell.value='34';
 		}
 	if(reqType == '医師勤務先追加'){
-		fm1.reqType.value='41';
+		fm1.reqTypeCell.value='41';
 		}
 	if(reqType == '医療機関への異動'){
-		fm1.reqType.value='42';
+		fm1.reqTypeCell.value='42';
 		}
 	if(reqType == '医療機関以外への異動'){
-		fm1.reqType.value='43';
+		fm1.reqTypeCell.value='43';
 		}
 	if(reqType == '医師勤務先削除'){
-		fm1.reqType.value='44';
+		fm1.reqTypeCell.value='44';
 		}
 	if(reqType == '勤務先情報更新'){
-		fm1.reqType.value='51';
+		fm1.reqTypeCell.value='51';
 		}
 
 	fm1.reqFlg.value="2";
@@ -198,8 +198,13 @@ function popClear(){
 	document.fm1.sosCd.value = "";
 	document.fm1.bumonRyakuName.value = "";
 	document.fm1.reqJgiName.value = "";
+	reqJgiName = "";
 	document.fm1.brCode.value = "";
 	document.fm1.distCode.value = "";
+}
+
+function popClearDisabled(){
+
 }
 
 function rdmCler(){
@@ -208,6 +213,10 @@ function rdmCler(){
 	document.fm1.aDdrCodePref.value = "";
 	document.fm1.sbt.value = "";
 	//document.fm1.bumonRyakuName.value = "";
+if(document.fm1.jokenFlg.value == 1){
+	document.fm1.reqJgiName.value = "";
+	reqJgiName = "";
+}
 	document.fm1.insNo.value = "";
 	document.fm1.docNo.value = "";
 
@@ -229,6 +238,44 @@ function rdmCler(){
 	document.fm1.reqComment.value = "";
 	document.fm1.aprComment.value = "";
 	document.fm1.reqChl.value = "";
+
+	document.fm1.insNo.disabled = true;
+    document.fm1.insNo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.insKanjiSrch.disabled = true;
+	document.fm1.insKanjiSrch.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.insClass.disabled = true;
+	document.fm1.insClass.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.insSbt.disabled = true;
+	document.fm1.insSbt.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.hoInsType.disabled = true;
+	document.fm1.hoInsType.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.docNo.disabled = true;
+	document.fm1.docNo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.docKanj.disabled = true;
+	document.fm1.docKanj.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.docType.disabled = true;
+	document.fm1.docType.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.fm1.jobForm.disabled = true;
+	document.fm1.jobForm.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+	document.getElementById('jkrSosReqTypeMap').options[1].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[2].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[3].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[4].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[5].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[6].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[7].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[8].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[9].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[10].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[11].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[12].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[13].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[14].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[15].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[16].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[17].hidden=false;
+	document.getElementById('jkrSosReqTypeMap').options[18].hidden=false;
+
 
 
 }
@@ -377,7 +424,7 @@ function NC011Seni() {
 		//gotoNext('NF011','Init');
 	}
 	if(reqTypecell == "施設新規作成"){
-		alert("NF011_施設新規作成に遷移します")
+		//alert("NF011_施設新規作成に遷移します")
 
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -396,7 +443,7 @@ function NC011Seni() {
 		//gotoNext('NF011','Init');
 	}
 	if(reqTypecell == "02"){
-		alert("NF012_施設情報更新に遷移します")
+		//alert("NF012_施設情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -411,7 +458,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設情報更新"){
-		alert("NF012_施設情報更新に遷移します")
+		//alert("NF012_施設情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -425,7 +472,7 @@ function NC011Seni() {
 		comClickFlgInit();
 	}
 	if(reqTypecell == "03"){
-		alert("NF013_施設削除に遷移します")
+		//alert("NF013_施設削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -440,7 +487,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設削除"){
-		alert("NF013_施設削除に遷移します")
+		//alert("NF013_施設削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -454,7 +501,7 @@ function NC011Seni() {
 		comClickFlgInit();
 	}
 	if(reqTypecell == "04"){
-		alert("NF014_施設復活に遷移します")
+		//alert("NF014_施設復活に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -469,7 +516,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設復活"){
-		alert("NF014_施設復活に遷移します")
+		//alert("NF014_施設復活に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -483,7 +530,7 @@ function NC011Seni() {
 		comClickFlgInit();
 	}
 	if(reqTypecell == "11"){
-		alert("NF211_施設紐づけ作成に遷移します")
+		//alert("NF211_施設紐づけ作成に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -498,7 +545,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設紐付け新規"){
-		alert("NF211_施設紐づけ作成に遷移します")
+		//alert("NF211_施設紐づけ作成に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -513,7 +560,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "12"){
-		alert("NF212_親施設の変更に遷移します")
+		//alert("NF212_親施設の変更に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -528,7 +575,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設紐付け変更"){
-		alert("NF212_親施設の変更に遷移します")
+		//alert("NF212_親施設の変更に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -543,7 +590,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "13"){
-		alert("NF213_施設紐づけの削除に遷移します")
+		//alert("NF213_施設紐づけの削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -558,7 +605,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設紐付け削除"){
-		alert("NF213_施設紐づけの削除に遷移します")
+		//alert("NF213_施設紐づけの削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -573,7 +620,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "21"){
-		alert("NF101_施設来期情報更新に遷移します")
+		//alert("NF101_施設来期情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -588,7 +635,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "施設来期用項目更新"){
-		alert("NF101_施設来期情報更新に遷移します")
+		//alert("NF101_施設来期情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -603,7 +650,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "31"){
-		alert("ND011_医師新規作成に遷移します")
+		//alert("ND011_医師新規作成に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -618,7 +665,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師新規作成"){
-		alert("ND011_医師新規作成に遷移します")
+		//alert("ND011_医師新規作成に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -633,7 +680,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "32"){
-		alert("ND012_医師情報更新に遷移します")
+		//alert("ND012_医師情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -648,7 +695,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師情報更新"){
-		alert("ND012_医師情報更新に遷移します")
+		//alert("ND012_医師情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -663,7 +710,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "33"){
-		alert("ND105_医師削除に遷移します")
+		//alert("ND105_医師削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -678,7 +725,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師削除"){
-		alert("ND105_医師削除に遷移します")
+		//alert("ND105_医師削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -693,7 +740,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "34"){
-		alert("ND014_医師復活に遷移します")
+		//alert("ND014_医師復活に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -708,7 +755,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師復活"){
-		alert("ND014_医師復活に遷移します")
+		//alert("ND014_医師復活に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -723,7 +770,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "41"){
-		alert("ND103_医師勤務先追加に遷移します")
+		//alert("ND103_医師勤務先追加に遷移します")
 		//gotoNext('ND113','Init');
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -739,7 +786,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師勤務先追加"){
-		alert("ND103_医師勤務先追加に遷移します")
+		//alert("ND103_医師勤務先追加に遷移します")
 		//gotoNext('ND113','Init');
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
@@ -755,7 +802,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "42"){
-		alert("ND101_医療機関への異動に遷移します")
+		//alert("ND101_医療機関への異動に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -770,7 +817,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医療機関への異動"){
-		alert("ND101_医療機関への異動に遷移します")
+		//alert("ND101_医療機関への異動に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -785,7 +832,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "43"){
-		alert("ND102_医療機関以外への異動に遷移します")
+		//alert("ND102_医療機関以外への異動に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -800,7 +847,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医療機関以外への異動"){
-		alert("ND102_医療機関以外への異動に遷移します")
+		//alert("ND102_医療機関以外への異動に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -815,7 +862,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "44"){
-		alert("ND104_医師勤務先削除に遷移します")
+		//alert("ND104_医師勤務先削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -830,7 +877,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "医師勤務先削除"){
-		alert("ND104_医師勤務先削除に遷移します")
+		//alert("ND104_医師勤務先削除に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -845,7 +892,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "51"){
-		alert("ND013_勤務先情報更新に遷移します")
+		//alert("ND013_勤務先情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -860,7 +907,7 @@ function NC011Seni() {
 		//fm1.reqId.value="";
 	}
 	if(reqTypecell == "勤務先情報更新"){
-		alert("ND013_勤務先情報更新に遷移します")
+		//alert("ND013_勤務先情報更新に遷移します")
 		if(nc011Tab && !nc011Tab.closed){
 			nc011Tab.close();
 		}
@@ -980,6 +1027,8 @@ function sosReqSbt(){
 			document.getElementById('jkrSosReqTypeMap').options[14].hidden=false;
 			document.getElementById('jkrSosReqTypeMap').options[15].hidden=false;
 			document.getElementById('jkrSosReqTypeMap').options[16].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[17].hidden=false;
+			document.getElementById('jkrSosReqTypeMap').options[18].hidden=false;
 
 	 }
 
@@ -1008,7 +1057,7 @@ function sosReqSbt(){
 		document.fm1.hoInsType.disabled = false;
 		document.fm1.hoInsType.style.backgroundColor = JKR_BG_COLOR_NORMAL;
 
-		document.getElementById('jkrSosReqTypeMap').options[9].hidden=true;
+
 		document.getElementById('jkrSosReqTypeMap').options[10].hidden=true;
 		document.getElementById('jkrSosReqTypeMap').options[11].hidden=true;
 		document.getElementById('jkrSosReqTypeMap').options[12].hidden=true;
@@ -1016,6 +1065,9 @@ function sosReqSbt(){
 		document.getElementById('jkrSosReqTypeMap').options[14].hidden=true;
 		document.getElementById('jkrSosReqTypeMap').options[15].hidden=true;
 		document.getElementById('jkrSosReqTypeMap').options[16].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[17].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[18].hidden=true;
+
 		document.getElementById('jkrSosReqTypeMap').options[1].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[2].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[3].hidden=false;
@@ -1024,6 +1076,7 @@ function sosReqSbt(){
 		document.getElementById('jkrSosReqTypeMap').options[6].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[7].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[8].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[9].hidden=false;
 	 }
 	 if(val1 == '1'){
 		document.fm1.insNo.value = "";
@@ -1059,8 +1112,8 @@ function sosReqSbt(){
 		document.getElementById('jkrSosReqTypeMap').options[6].hidden=true;
 		document.getElementById('jkrSosReqTypeMap').options[7].hidden=true;
 		document.getElementById('jkrSosReqTypeMap').options[8].hidden=true;
+		document.getElementById('jkrSosReqTypeMap').options[9].hidden=true;
 
-		document.getElementById('jkrSosReqTypeMap').options[9].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[10].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[11].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[12].hidden=false;
@@ -1068,6 +1121,8 @@ function sosReqSbt(){
 		document.getElementById('jkrSosReqTypeMap').options[14].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[15].hidden=false;
 		document.getElementById('jkrSosReqTypeMap').options[16].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[17].hidden=false;
+		document.getElementById('jkrSosReqTypeMap').options[18].hidden=false;
 	 }
  	 //申請チャネル
       document.getElementById("jkrSosReqChlMap").value = "";

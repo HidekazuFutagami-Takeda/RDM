@@ -418,7 +418,7 @@ public class NC011Service extends BaseService {
   		if(indto.getReqFlg().equals("1")) {
   			indto.setReqId("");
   			//indto.setReqId(indto.getReqIdCell());
-  			indto.setReqType(indto.getReqTypeCell());
+  			//indto.setReqType(indto.getReqTypeCell());
   		}
   		}
 
@@ -1054,7 +1054,7 @@ public class NC011Service extends BaseService {
         String errMsg = "";
         // START UOC
         paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
-        paramEntity.setReqType(StringUtils.setEmptyToNull(indto.getReqType()));
+        paramEntity.setReqType(StringUtils.setEmptyToNull(indto.getReqTypeCell()));
 
   		if(paramEntity.getReqId() != null) {
 

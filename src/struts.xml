@@ -575,6 +575,7 @@
         </action>
         <action name="ND013Init" class="ND013Action" method="init">
             <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
+            <result name="ND105Init" type="chain">ND105Init</result>
         </action>
         <action name="NC208Init" class="NC208Action" method="init">
             <result name="NC208">/WEB-INF/pages/NC208.jsp</result>

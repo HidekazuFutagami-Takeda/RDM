@@ -175,6 +175,13 @@ public class ND013Action extends BaseAction<ND013DTO> {
         			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);// 重複する申請が行われています。（医師コード）
         			dto.setMsgStr(tmpMsgStr);
         		}
+            } else {
+            	//医師の廃業・死亡ボタン遷移
+            	if (Objects.equals(dto.getErrorCheckFlg(), "2")) {
+            		outdto.setForward("ND105Init");
+            		setNextDTO(outdto);
+                    return outdto.getForward();
+            	}
             }
         }
 

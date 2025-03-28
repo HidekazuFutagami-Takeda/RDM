@@ -190,7 +190,7 @@
       <s:hidden name="listName" />
       <s:hidden name="poprowno" />
       <s:hidden name="poptrtno" />
-
+      <s:hidden name="tkdDocNo" id="tkdDocNo"/>
       <%-- トップメニューから --%>
       <s:hidden name="trtGrpCd" />
       <s:hidden name="selectedJgiJoken" />

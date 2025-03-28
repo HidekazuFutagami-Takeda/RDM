@@ -30,7 +30,9 @@ var CDC_SCREEN_ID = "CatDeptsCombo";
  * </pre>
  */
 function errorCheck(checkFlg) {
-
+	if(checkFlg == "2"){//医師の廃業・死亡ボタン
+		document.fm1.tkdDocNo.value = document.fm1.paramDocNo.value;
+	}
 	//エラーチェックフラグ定義
 	document.fm1.errorCheckFlg.value = checkFlg;
 

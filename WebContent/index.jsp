@@ -51,9 +51,14 @@
 	                <!-- 20200527 HPI Kubota UNIXTIME処理 ADD END -->
                 </tr>
                 <tr>
+                    <!--
                 	<td>発行者</td>
                 	<td>：</td>
                     <td><s:textfield name="username" cssErrorStyle="background-color:red"  value="CTSTAKEDA"/></td>
+                    -->
+                	<td></td>
+                	<td></td>
+                    <td><s:hidden name="username" cssErrorStyle="background-color:red"  value="CTSTAKEDA"/></td>
                 </tr>
                 <tr>
                     <td></td>

@@ -137,6 +137,7 @@ if (stack.peek() instanceof NC203DTO) {
     <s:hidden name="title" />
     <s:hidden name="viewKbn" />
     <s:hidden name="loginJokenSetCd"/>
+    <s:hidden name="loginSosCd"/>
     <s:hidden name="loginJgiNo"/>
     <s:hidden name="loginBrCd"/>
     <s:hidden name="loginDistCd"/>

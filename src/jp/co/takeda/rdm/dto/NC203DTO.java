@@ -39,10 +39,40 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	private String loginJokenSetCd;
 
 	/**
+	 * ユーザ組織
+	 * @generated
+	 */
+	private String loginSosCd;
+
+	/**
 	 * ユーザ従業員番号
 	 * @generated
 	 */
 	private String loginJgiNo;
+
+	/**
+	 * ユーザ組織
+	 * @generated
+	 */
+	private String sosCd;
+
+	/**
+	 * ユーザ従業員番号
+	 * @generated
+	 */
+	private String jgiNo;
+
+	/**
+	 * ユーザ組織
+	 * @generated
+	 */
+	private String sosName;
+
+	/**
+	 * ユーザ従業員番号
+	 * @generated
+	 */
+	private String jgiName;
 
 	/**
 	 * ユーザ医薬支店C
@@ -409,6 +439,21 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NC203DTO.javaloginSosCdを設定
+	 * @return loginSosCd
+	 */
+	public String getLoginSosCd() {
+		return loginSosCd;
+	}
+
+	/**
+	 * @param loginSosCd セットする loginSosCd
+	 */
+	public void setLoginSosCd(String loginSosCd) {
+		this.loginSosCd = loginSosCd;
+	}
+
+	/**
 	 * NC203DTO.javaloginJgiNoを設定
 	 * @return loginJgiNo
 	 */
@@ -421,6 +466,66 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	 */
 	public void setLoginJgiNo(String loginJgiNo) {
 		this.loginJgiNo = loginJgiNo;
+	}
+
+	/**
+	 * NC203DTO.javasosCdを設定
+	 * @return sosCd
+	 */
+	public String getSosCd() {
+		return sosCd;
+	}
+
+	/**
+	 * @param sosCd セットする sosCd
+	 */
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
+	}
+
+	/**
+	 * NC203DTO.javajgiNoを設定
+	 * @return jgiNo
+	 */
+	public String getJgiNo() {
+		return jgiNo;
+	}
+
+	/**
+	 * @param jgiNo セットする jgiNo
+	 */
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
+
+	/**
+	 * NC203DTO.javasosNameを設定
+	 * @return sosName
+	 */
+	public String getSosName() {
+		return sosName;
+	}
+
+	/**
+	 * @param sosName セットする sosName
+	 */
+	public void setSosName(String sosName) {
+		this.sosName = sosName;
+	}
+
+	/**
+	 * NC203DTO.javajgiNameを設定
+	 * @return jgiName
+	 */
+	public String getJgiName() {
+		return jgiName;
+	}
+
+	/**
+	 * @param jgiName セットする jgiName
+	 */
+	public void setJgiName(String jgiName) {
+		this.jgiName = jgiName;
 	}
 
 	/**

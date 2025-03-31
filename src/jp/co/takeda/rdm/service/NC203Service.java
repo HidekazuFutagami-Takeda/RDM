@@ -68,6 +68,17 @@ public class NC203Service extends BaseService {
         outdto = this.list(indto);
         outdto = this.searchCityName(indto);
 
+     	// MR権限の場合検索条件．組織、検索条件．担当者設定する
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
+        	indto.setSosCd(loginInfo.getSosCd());
+        	indto.setSosName(loginInfo.getBumonRyakuName());
+        	indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        	indto.setJgiName(loginInfo.getJgiName());
+        	indto.setLoginBrCd(loginInfo.getBrCode());
+        	indto.setLoginDistCd(loginInfo.getDistCode());
+        	indto.setTrtCd(loginInfo.getTrtCd());
+        }
+
 
 
       //施設名(漢字)
@@ -182,6 +193,27 @@ public class NC203Service extends BaseService {
             }
         }
 
+        //検索条件_郵便番号
+        if (indto.getInsPcode().isEmpty()) {
+        	indto.setInsPcode(null);
+        }
+        else {
+        	 //ハイフン除去
+        	SelectHenkanListEntity haifunRemove = new SelectHenkanListEntity("ハイフン除去");
+        	haifunRemove.setSearchHenkan(indto.getInsPcode());
+            //ハイフン除去結果を格納
+            List<SelectHenkanListEntity> selectPcode = dao.select(haifunRemove);
+            for (SelectHenkanListEntity pcode : selectPcode) {
+            	selectinsListEntity.setInsPcode(pcode.getSearchHenkan());
+            	selectParamSelectHcoEntity.setInsPcode(pcode.getSearchHenkan());
+            }
+        }
+
+        if(!StringUtils.isEmpty(indto.getKensakuAddrCodeCity())){
+        	selectinsListEntity.setKensakuAddrCodeCity(StringUtils.setEmptyToNull(indto.getKensakuAddrCodeCity().substring(2)));
+        	selectParamSelectHcoEntity.setKensakuAddrCodeCity(StringUtils.setEmptyToNull(indto.getKensakuAddrCodeCity().substring(2)));
+  		}
+
 		//1-4-1 件数定義取得
 		SelectParamNc203Entity selectParamNc203Entity = new SelectParamNc203Entity();
 		List<SelectParamNc203Entity> selectParamNc203List;
@@ -209,9 +241,7 @@ public class NC203Service extends BaseService {
         selectParamSelectHcoEntity.setKensakuHoInsType(StringUtils.setEmptyToNull(indto.getKensakuHoInsType()));
         selectParamSelectHcoEntity.setKensakuInsSbt(StringUtils.setEmptyToNull(indto.getKensakuInsSbt()));
         selectParamSelectHcoEntity.setPharmType(StringUtils.setEmptyToNull(indto.getPharmType()));
-        selectParamSelectHcoEntity.setInsPcode(StringUtils.setEmptyToNull(indto.getInsPcode()));
         selectParamSelectHcoEntity.setKensakuAddrCodePref(StringUtils.setEmptyToNull(indto.getKensakuAddrCodePref()));
-        selectParamSelectHcoEntity.setKensakuAddrCodeCity(StringUtils.setEmptyToNull(indto.getKensakuAddrCodeCity()));
         selectParamSelectHcoEntity.setAddress(StringUtils.setEmptyToNull(indto.getAddress()));
         selectParamSelectHcoEntity.setKoshisetsuCheck(BooleanUtils.isTrue(indto.getKoshisetsuCheck()));
         selectParamSelectHcoEntity.setInSortId(StringUtils.setEmptyToNull(indto.getSortCondition()));
@@ -249,9 +279,7 @@ public class NC203Service extends BaseService {
         selectinsListEntity.setKensakuHoInsType(StringUtils.setEmptyToNull(indto.getKensakuHoInsType()));
         selectinsListEntity.setKensakuInsSbt(StringUtils.setEmptyToNull(indto.getKensakuInsSbt()));
         selectinsListEntity.setPharmType(StringUtils.setEmptyToNull(indto.getPharmType()));
-        selectinsListEntity.setInsPcode(StringUtils.setEmptyToNull(indto.getInsPcode()));
         selectinsListEntity.setKensakuAddrCodePref(StringUtils.setEmptyToNull(indto.getKensakuAddrCodePref()));
-        selectinsListEntity.setKensakuAddrCodeCity(StringUtils.setEmptyToNull(indto.getKensakuAddrCodeCity()));
         selectinsListEntity.setAddress(StringUtils.setEmptyToNull(indto.getAddress()));
         selectinsListEntity.setKoshisetsuCheck(BooleanUtils.isTrue(indto.getKoshisetsuCheck()));
         selectinsListEntity.setInSortId(StringUtils.setEmptyToNull(indto.getSortCondition()));

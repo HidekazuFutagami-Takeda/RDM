@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * DTOクラス
  */
-public class ND401DTO extends BaseDTO implements Serializable {
+public class ND403DTO extends BaseDTO implements Serializable {
 
     /**
      * テスト用JgiNo 製造終ったら消すこと
@@ -33,7 +33,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
     /**
      * このDTOが関連付けられている画面ID
      */
-    private String ND401 = "ND401";
+    private String ND403 = "ND403";
 
 	/**
 	 * 表示分岐
@@ -47,7 +47,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
     private String Title;
 
 	/**
-	 * ND401遷移元画面
+	 * ND403遷移元画面
 	 * 申請破棄ボタン押下時の遷移先保持用
 	 *
 	 */
@@ -101,12 +101,6 @@ public class ND401DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private String kensakuDeptCode;
-
-    /**
-     * 検索条件_所属部科漢字
-     * @generated
-     */
-    private String kensakuDeptKj;
 
     /**
      * 検索条件_組織コード
@@ -520,12 +514,12 @@ public class ND401DTO extends BaseDTO implements Serializable {
      * デフォルトのコンストラクタ。
      * @generated
      */
-    public ND401DTO() {
-        setForward(ND401);
+    public ND403DTO() {
+        setForward(ND403);
     }
 
 	/**
-	 * ND401DTO.javagamenJgiNoを設定
+	 * ND403DTO.javagamenJgiNoを設定
 	 * @return gamenJgiNo
 	 */
 	public String getGamenJgiNo() {
@@ -540,22 +534,22 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaND401を設定
+	 * ND403DTO.javaND403を設定
 	 * @return nD401
 	 */
-	public String getND401() {
-		return ND401;
+	public String getND403() {
+		return ND403;
 	}
 
 	/**
 	 * @param nD401 セットする nD401
 	 */
-	public void setND401(String nD401) {
-		ND401 = nD401;
+	public void setND403(String nD401) {
+		ND403 = nD401;
 	}
 
 	/**
-	 * ND401DTO.javadisplayKbnを設定
+	 * ND403DTO.javadisplayKbnを設定
 	 * @return displayKbn
 	 */
 	public String getDisplayKbn() {
@@ -570,7 +564,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaTitleを設定
+	 * ND403DTO.javaTitleを設定
 	 * @return title
 	 */
 	public String getTitle() {
@@ -585,7 +579,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javand401PreScreenIdを設定
+	 * ND403DTO.javand401PreScreenIdを設定
 	 * @return nd401PreScreenId
 	 */
 	public String getNd401PreScreenId() {
@@ -600,7 +594,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javajokenSetCdを設定
+	 * ND403DTO.javajokenSetCdを設定
 	 * @return jokenSetCd
 	 */
 	public String getJokenSetCd() {
@@ -615,7 +609,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javamrAdminFlgを設定
+	 * ND403DTO.javamrAdminFlgを設定
 	 * @return mrAdminFlg
 	 */
 	public String getMrAdminFlg() {
@@ -630,7 +624,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreScreenIdを設定
+	 * ND403DTO.javapreScreenIdを設定
 	 * @return preScreenId
 	 */
 	public String getPreScreenId() {
@@ -645,7 +639,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqFlgを設定
+	 * ND403DTO.javareqFlgを設定
 	 * @return reqFlg
 	 */
 	public String getReqFlg() {
@@ -660,7 +654,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqIdを設定
+	 * ND403DTO.javareqIdを設定
 	 * @return reqId
 	 */
 	public String getReqId() {
@@ -675,7 +669,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqShzを設定
+	 * ND403DTO.javareqShzを設定
 	 * @return reqShz
 	 */
 	public String getReqShz() {
@@ -690,7 +684,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqStsNmを設定
+	 * ND403DTO.javareqStsNmを設定
 	 * @return reqStsNm
 	 */
 	public String getReqStsNm() {
@@ -705,7 +699,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqStsを設定
+	 * ND403DTO.javareqStsを設定
 	 * @return reqSts
 	 */
 	public String getReqSts() {
@@ -720,7 +714,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqJgiNameを設定
+	 * ND403DTO.javareqJgiNameを設定
 	 * @return reqJgiName
 	 */
 	public String getReqJgiName() {
@@ -735,7 +729,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqJgiNoを設定
+	 * ND403DTO.javareqJgiNoを設定
 	 * @return reqJgiNo
 	 */
 	public String getReqJgiNo() {
@@ -750,7 +744,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqYmdhmsを設定
+	 * ND403DTO.javareqYmdhmsを設定
 	 * @return reqYmdhms
 	 */
 	public String getReqYmdhms() {
@@ -765,7 +759,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqBrCodeを設定
+	 * ND403DTO.javareqBrCodeを設定
 	 * @return reqBrCode
 	 */
 	public String getReqBrCode() {
@@ -780,7 +774,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqDistCodeを設定
+	 * ND403DTO.javareqDistCodeを設定
 	 * @return reqDistCode
 	 */
 	public String getReqDistCode() {
@@ -795,7 +789,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaupdShaYmdを設定
+	 * ND403DTO.javaupdShaYmdを設定
 	 * @return updShaYmd
 	 */
 	public String getUpdShaYmd() {
@@ -810,7 +804,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostInsNoを設定
+	 * ND403DTO.javapostInsNoを設定
 	 * @return postInsNo
 	 */
 	public String getPostInsNo() {
@@ -825,7 +819,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostUltInsNoを設定
+	 * ND403DTO.javapostUltInsNoを設定
 	 * @return postUltInsNo
 	 */
 	public String getPostUltInsNo() {
@@ -840,7 +834,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostDeptCodeを設定
+	 * ND403DTO.javapostDeptCodeを設定
 	 * @return postDeptCode
 	 */
 	public String getPostDeptCode() {
@@ -855,7 +849,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostDeptKnを設定
+	 * ND403DTO.javapostDeptKnを設定
 	 * @return postDeptKn
 	 */
 	public String getPostDeptKn() {
@@ -870,7 +864,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostTitleCodeを設定
+	 * ND403DTO.javapostTitleCodeを設定
 	 * @return postTitleCode
 	 */
 	public String getPostTitleCode() {
@@ -885,7 +879,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostJobFormを設定
+	 * ND403DTO.javapostJobFormを設定
 	 * @return postJobForm
 	 */
 	public String getPostJobForm() {
@@ -900,7 +894,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostDccを設定
+	 * ND403DTO.javapostDccを設定
 	 * @return postDcc
 	 */
 	public String getPostDcc() {
@@ -915,7 +909,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostHoInsTypeを設定
+	 * ND403DTO.javapostHoInsTypeを設定
 	 * @return postHoInsType
 	 */
 	public String getPostHoInsType() {
@@ -930,7 +924,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostUnivPosCodeを設定
+	 * ND403DTO.javapostUnivPosCodeを設定
 	 * @return postUnivPosCode
 	 */
 	public String getPostUnivPosCode() {
@@ -945,7 +939,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostInsClassを設定
+	 * ND403DTO.javapostInsClassを設定
 	 * @return postInsClass
 	 */
 	public String getPostInsClass() {
@@ -960,7 +954,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreInsNoを設定
+	 * ND403DTO.javapreInsNoを設定
 	 * @return preInsNo
 	 */
 	public String getPreInsNo() {
@@ -975,7 +969,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreUltInsNoを設定
+	 * ND403DTO.javapreUltInsNoを設定
 	 * @return preUltInsNo
 	 */
 	public String getPreUltInsNo() {
@@ -990,7 +984,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreDeptCodeを設定
+	 * ND403DTO.javapreDeptCodeを設定
 	 * @return preDeptCode
 	 */
 	public String getPreDeptCode() {
@@ -1005,7 +999,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreDeptKnを設定
+	 * ND403DTO.javapreDeptKnを設定
 	 * @return preDeptKn
 	 */
 	public String getPreDeptKn() {
@@ -1020,7 +1014,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreTitleCodeを設定
+	 * ND403DTO.javapreTitleCodeを設定
 	 * @return preTitleCode
 	 */
 	public String getPreTitleCode() {
@@ -1035,7 +1029,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreJobFormを設定
+	 * ND403DTO.javapreJobFormを設定
 	 * @return preJobForm
 	 */
 	public String getPreJobForm() {
@@ -1050,7 +1044,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreDccを設定
+	 * ND403DTO.javapreDccを設定
 	 * @return preDcc
 	 */
 	public String getPreDcc() {
@@ -1065,7 +1059,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreUnivPosCodeを設定
+	 * ND403DTO.javapreUnivPosCodeを設定
 	 * @return preUnivPosCode
 	 */
 	public String getPreUnivPosCode() {
@@ -1080,7 +1074,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreHoInsTypeを設定
+	 * ND403DTO.javapreHoInsTypeを設定
 	 * @return preHoInsType
 	 */
 	public String getPreHoInsType() {
@@ -1095,7 +1089,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreInsClassを設定
+	 * ND403DTO.javapreInsClassを設定
 	 * @return preInsClass
 	 */
 	public String getPreInsClass() {
@@ -1110,7 +1104,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaultDocNoを設定
+	 * ND403DTO.javaultDocNoを設定
 	 * @return ultDocNo
 	 */
 	public String getUltDocNo() {
@@ -1125,7 +1119,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javadocKanjを設定
+	 * ND403DTO.javadocKanjを設定
 	 * @return docKanj
 	 */
 	public String getDocKanj() {
@@ -1140,7 +1134,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreInsAbbrNameを設定
+	 * ND403DTO.javapreInsAbbrNameを設定
 	 * @return preInsAbbrName
 	 */
 	public String getPreInsAbbrName() {
@@ -1155,7 +1149,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapreDeptKjを設定
+	 * ND403DTO.javapreDeptKjを設定
 	 * @return preDeptKj
 	 */
 	public String getPreDeptKj() {
@@ -1170,7 +1164,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javatitlePreTitleKjを設定
+	 * ND403DTO.javatitlePreTitleKjを設定
 	 * @return titlePreTitleKj
 	 */
 	public String getTitlePreTitleKj() {
@@ -1185,7 +1179,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakmuPreCodeKanjを設定
+	 * ND403DTO.javakmuPreCodeKanjを設定
 	 * @return kmuPreCodeKanj
 	 */
 	public String getKmuPreCodeKanj() {
@@ -1200,7 +1194,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javayakushinPreCodeKanjを設定
+	 * ND403DTO.javayakushinPreCodeKanjを設定
 	 * @return yakushinPreCodeKanj
 	 */
 	public String getYakushinPreCodeKanj() {
@@ -1215,7 +1209,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaunivPreTitleKjを設定
+	 * ND403DTO.javaunivPreTitleKjを設定
 	 * @return univPreTitleKj
 	 */
 	public String getUnivPreTitleKj() {
@@ -1230,7 +1224,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javatrnKbnを設定
+	 * ND403DTO.javatrnKbnを設定
 	 * @return trnKbn
 	 */
 	public String getTrnKbn() {
@@ -1245,7 +1239,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostInsAbbrNameを設定
+	 * ND403DTO.javapostInsAbbrNameを設定
 	 * @return postInsAbbrName
 	 */
 	public String getPostInsAbbrName() {
@@ -1260,7 +1254,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapostDeptKjを設定
+	 * ND403DTO.javapostDeptKjを設定
 	 * @return postDeptKj
 	 */
 	public String getPostDeptKj() {
@@ -1275,7 +1269,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javatitlePostTitleKjを設定
+	 * ND403DTO.javatitlePostTitleKjを設定
 	 * @return titlePostTitleKj
 	 */
 	public String getTitlePostTitleKj() {
@@ -1290,7 +1284,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakmuPostCodeKanjを設定
+	 * ND403DTO.javakmuPostCodeKanjを設定
 	 * @return kmuPostCodeKanj
 	 */
 	public String getKmuPostCodeKanj() {
@@ -1305,7 +1299,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javayakushinPostCodeKanjを設定
+	 * ND403DTO.javayakushinPostCodeKanjを設定
 	 * @return yakushinPostCodeKanj
 	 */
 	public String getYakushinPostCodeKanj() {
@@ -1320,7 +1314,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaunivPostTitleKjを設定
+	 * ND403DTO.javaunivPostTitleKjを設定
 	 * @return univPostTitleKj
 	 */
 	public String getUnivPostTitleKj() {
@@ -1335,7 +1329,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqCommentを設定
+	 * ND403DTO.javareqCommentを設定
 	 * @return reqComment
 	 */
 	public String getReqComment() {
@@ -1350,7 +1344,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaaprCommentを設定
+	 * ND403DTO.javaaprCommentを設定
 	 * @return aprComment
 	 */
 	public String getAprComment() {
@@ -1365,7 +1359,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javadocNoを設定
+	 * ND403DTO.javadocNoを設定
 	 * @return docNo
 	 */
 	public String getDocNo() {
@@ -1380,7 +1374,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javainsNoを設定
+	 * ND403DTO.javainsNoを設定
 	 * @return insNo
 	 */
 	public String getInsNo() {
@@ -1395,7 +1389,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javamovemedEditFlgを設定
+	 * ND403DTO.javamovemedEditFlgを設定
 	 * @return movemedEditFlg
 	 */
 	public String getMovemedEditFlg() {
@@ -1410,7 +1404,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javainputFlgを設定
+	 * ND403DTO.javainputFlgを設定
 	 * @return inputFlg
 	 */
 	public String getInputFlg() {
@@ -1425,7 +1419,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqCommentFlgを設定
+	 * ND403DTO.javareqCommentFlgを設定
 	 * @return reqCommentFlg
 	 */
 	public String getReqCommentFlg() {
@@ -1440,7 +1434,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javayakushokuを設定
+	 * ND403DTO.javayakushokuを設定
 	 * @return yakushoku
 	 */
 	public String getYakushoku() {
@@ -1455,7 +1449,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javayakushokuComboを設定
+	 * ND403DTO.javayakushokuComboを設定
 	 * @return yakushokuCombo
 	 */
 	public LinkedHashMap<String, String> getYakushokuCombo() {
@@ -1470,7 +1464,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javajobFormを設定
+	 * ND403DTO.javajobFormを設定
 	 * @return jobForm
 	 */
 	public String getJobForm() {
@@ -1485,7 +1479,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javajobFormComboを設定
+	 * ND403DTO.javajobFormComboを設定
 	 * @return jobFormCombo
 	 */
 	public LinkedHashMap<String, String> getJobFormCombo() {
@@ -1500,7 +1494,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javadccを設定
+	 * ND403DTO.javadccを設定
 	 * @return dcc
 	 */
 	public String getDcc() {
@@ -1515,7 +1509,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javadccComboを設定
+	 * ND403DTO.javadccComboを設定
 	 * @return dccCombo
 	 */
 	public LinkedHashMap<String, String> getDccCombo() {
@@ -1530,7 +1524,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javadigakuShokuiを設定
+	 * ND403DTO.javadigakuShokuiを設定
 	 * @return digakuShokui
 	 */
 	public String getDigakuShokui() {
@@ -1545,7 +1539,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javadigakuShokuiComboを設定
+	 * ND403DTO.javadigakuShokuiComboを設定
 	 * @return digakuShokuiCombo
 	 */
 	public LinkedHashMap<String, String> getDigakuShokuiCombo() {
@@ -1560,7 +1554,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqDestBtnFlgを設定
+	 * ND403DTO.javareqDestBtnFlgを設定
 	 * @return reqDestBtnFlg
 	 */
 	public String getReqDestBtnFlg() {
@@ -1575,7 +1569,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javatempReqBtnFlgを設定
+	 * ND403DTO.javatempReqBtnFlgを設定
 	 * @return tempReqBtnFlg
 	 */
 	public String getTempReqBtnFlg() {
@@ -1590,7 +1584,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqBtnFlgを設定
+	 * ND403DTO.javareqBtnFlgを設定
 	 * @return reqBtnFlg
 	 */
 	public String getReqBtnFlg() {
@@ -1605,7 +1599,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javadispTekiyoYmdを設定
+	 * ND403DTO.javadispTekiyoYmdを設定
 	 * @return dispTekiyoYmd
 	 */
 	public String getDispTekiyoYmd() {
@@ -1620,7 +1614,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javatekiyoInitDayを設定
+	 * ND403DTO.javatekiyoInitDayを設定
 	 * @return tekiyoInitDay
 	 */
 	public String getTekiyoInitDay() {
@@ -1635,7 +1629,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaselectDayを設定
+	 * ND403DTO.javaselectDayを設定
 	 * @return selectDay
 	 */
 	public String getSelectDay() {
@@ -1650,7 +1644,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javamsgStrを設定
+	 * ND403DTO.javamsgStrを設定
 	 * @return msgStr
 	 */
 	public String getMsgStr() {
@@ -1665,7 +1659,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javatempButtonExecutedを設定
+	 * ND403DTO.javatempButtonExecutedを設定
 	 * @return tempButtonExecuted
 	 */
 	public String getTempButtonExecuted() {
@@ -1680,7 +1674,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqBtnActiveFlgを設定
+	 * ND403DTO.javareqBtnActiveFlgを設定
 	 * @return reqBtnActiveFlg
 	 */
 	public String getReqBtnActiveFlg() {
@@ -1695,7 +1689,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javareqTypeを設定
+	 * ND403DTO.javareqTypeを設定
 	 * @return reqType
 	 */
 	public String getReqType() {
@@ -1710,7 +1704,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapageFlagを設定
+	 * ND403DTO.javapageFlagを設定
 	 * @return pageFlag
 	 */
 	public String getPageFlag() {
@@ -1725,7 +1719,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javamaxPageCntを設定
+	 * ND403DTO.javamaxPageCntを設定
 	 * @return maxPageCnt
 	 */
 	public Integer getMaxPageCnt() {
@@ -1740,7 +1734,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javapageCntを設定
+	 * ND403DTO.javapageCntを設定
 	 * @return pageCnt
 	 */
 	public Integer getPageCnt() {
@@ -1755,7 +1749,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakmuIkkatsuDataListを設定
+	 * ND403DTO.javakmuIkkatsuDataListを設定
 	 * @return kmuIkkatsuDataList
 	 */
 	public List<KmuIkkatsuData> getKmuIkkatsuDataList() {
@@ -1779,7 +1773,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
     }
 
 	/**
-	 * ND401DTO.javakensakuInsKanjを設定
+	 * ND403DTO.javakensakuInsKanjを設定
 	 * @return kensakuInsKanj
 	 */
 	public String getKensakuInsKanj() {
@@ -1794,7 +1788,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuInsNoを設定
+	 * ND403DTO.javakensakuInsNoを設定
 	 * @return kensakuInsNo
 	 */
 	public String getKensakuInsNo() {
@@ -1809,7 +1803,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuDocKanjを設定
+	 * ND403DTO.javakensakuDocKanjを設定
 	 * @return kensakuDocKanj
 	 */
 	public String getKensakuDocKanj() {
@@ -1824,7 +1818,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuDocNoを設定
+	 * ND403DTO.javakensakuDocNoを設定
 	 * @return kensakuDocNo
 	 */
 	public String getKensakuDocNo() {
@@ -1839,7 +1833,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuDeptCodeを設定
+	 * ND403DTO.javakensakuDeptCodeを設定
 	 * @return kensakuDeptCode
 	 */
 	public String getKensakuDeptCode() {
@@ -1854,7 +1848,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuSosCdを設定
+	 * ND403DTO.javakensakuSosCdを設定
 	 * @return kensakuSosCd
 	 */
 	public String getKensakuSosCd() {
@@ -1869,7 +1863,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuBrCodeを設定
+	 * ND403DTO.javakensakuBrCodeを設定
 	 * @return kensakuBrCode
 	 */
 	public String getKensakuBrCode() {
@@ -1884,7 +1878,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuDistCodeを設定
+	 * ND403DTO.javakensakuDistCodeを設定
 	 * @return kensakuDistCode
 	 */
 	public String getKensakuDistCode() {
@@ -1899,7 +1893,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javakensakuJgiNoを設定
+	 * ND403DTO.javakensakuJgiNoを設定
 	 * @return kensakuJgiNo
 	 */
 	public String getKensakuJgiNo() {
@@ -1914,7 +1908,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javaserialVersionUIDを設定
+	 * ND403DTO.javaserialVersionUIDを設定
 	 * @return serialversionuid
 	 */
 	public static long getSerialversionuid() {
@@ -1922,7 +1916,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javasearchTypeを設定
+	 * ND403DTO.javasearchTypeを設定
 	 * @return searchType
 	 */
 	public String getSearchType() {
@@ -1937,7 +1931,7 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
-	 * ND401DTO.javatitleMapを設定
+	 * ND403DTO.javatitleMapを設定
 	 * @return titleMap
 	 */
 	public LinkedHashMap<String, String> getTitleMap() {
@@ -1949,20 +1943,5 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	 */
 	public void setTitleMap(LinkedHashMap<String, String> titleMap) {
 		this.titleMap = titleMap;
-	}
-
-	/**
-	 * ND401DTO.javakensakuDeptKjを設定
-	 * @return kensakuDeptKj
-	 */
-	public String getKensakuDeptKj() {
-		return kensakuDeptKj;
-	}
-
-	/**
-	 * @param kensakuDeptKj セットする kensakuDeptKj
-	 */
-	public void setKensakuDeptKj(String kensakuDeptKj) {
-		this.kensakuDeptKj = kensakuDeptKj;
 	}
 }

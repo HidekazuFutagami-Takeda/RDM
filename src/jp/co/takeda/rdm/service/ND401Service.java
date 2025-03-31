@@ -241,6 +241,7 @@ public class ND401Service extends BaseService {
             data.setInsNo(entity.getInsNo());//施設固定コード
             data.setDocNo(entity.getDocNo());//医師固定コード
             data.setDocKanj(entity.getDocKanj());//氏名（漢字）
+
             data.setPreTitleKj(entity.getPreTitleKj());//役職（変更前）
             data.setPostTitleKj(entity.getPostTitleKj());//役職（変更後）
             data.setPreDeptKanji(entity.getPreDeptKanji());//所属部科名（漢字）（変更前）

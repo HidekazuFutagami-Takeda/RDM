@@ -4,7 +4,7 @@
  * </pre>
  * @since 1.0
  * @version $Revision:
- * @author SBS　千葉
+ * @author BHH 趙
  */
 
 /**
@@ -131,6 +131,35 @@ function hcpClosePopUp(targetWin,targetWinName){
  */
 var gMsg = new Array();
 
+/**
+ * <pre>
+ *  画面のロード時の処理
+ * 画面のロード時の処理を記述します。
+ * @param msg1～5 全メッセージ
+ * <pre>
+ */
+function jimViewLoad(msg1,msg2,msg3,msg4,msg5, msg6){
+
+  gMsg[0] = msg1;  // 『「組織・担当(現)」及び「組織・担当(新)」が設定されていません。どちらかの指定が必須となります。』
+  gMsg[1] = msg2;  // 『施設名(全角カナ)には全角カナ文字又は全角英数字(大文字)以外は入力できません。』
+  gMsg[2] = msg3;  // 『「展開方法」が設定されていません。 』
+  gMsg[3] = msg4;  // 『新担当者を設定してください。』
+  gMsg[4] = msg5;  // 『変更内容が破棄されます。よろしいですか？』
+  gMsg[5] = msg6;  // 『登録します。よろしいですか？』
+
+  // 変更内容破棄確認メッセージの設定
+  destructMsg = gMsg[4];  // 『変更内容が破棄されます。よろしいですか？』
+
+  if (document.fm1.gamenId.value == "JKR040C010") {
+    setAllChgBtnStatus010("chgInsTrtList");
+  } else if (document.fm1.gamenId.value == "JKR040C020") {
+
+  } else if (document.fm1.gamenId.value == "JKR040C030") {
+    setAllChgBtnStatus("chgInsCityList");
+  } else if (document.fm1.gamenId.value == "JKR040C040") {
+    setAllChgBtnStatus010("chgInsTrtList");
+  }
+}
 
 /**
  * 画面のリロードやアンロードの際の処理を記述します。
@@ -168,23 +197,6 @@ function jimViewClear(number){
   }
 }
 
-
-/**
- * <pre>
- *  所属部科クリア
- * 所属部科(clear)押下時に呼ばれます。
- * </pre>
- */
-function deptClear() {
-
-	var kensakuDeptKj = document.getElementById("kensakuDeptKj");
-	kensakuDeptKj.value = '';
-	document.fm1.kensakuDeptCode.value = '';
-}
-
-/**
- * 検索条件のクリアを行います。
- */
 function clearAll(){
 
 	var kensakuInsKanj = document.getElementById("kensakuInsKanj");
@@ -195,56 +207,40 @@ function clearAll(){
 	kensakuDocKanj.value = '';
 	var kensakuDocNo = document.getElementById("kensakuDocNo");
 	kensakuDocNo.value = '';
-	var kensakuDeptKj = document.getElementById("kensakuDeptKj");
-	kensakuDeptKj.value = '';
-
-	document.fm1.kensakuDeptCode.value = '';
-	document.fm1.kensakuBrCode.value = '';
-	document.fm1.kensakuDistCode.value = '';
-	document.fm1.kensakuJgiNo.value = '';
-
+	var kensakuDeptCode = document.getElementById("kensakuDeptCode");
+	kensakuDeptCode.value = '';
+	var kensakuSosCd = document.getElementById("kensakuSosCd");
+	kensakuSosCd.value = '';
+	var kensakuBrCode = document.getElementById("kensakuBrCode");
+	kensakuBrCode.value = '';
+	var kensakuDistCode = document.getElementById("kensakuDistCode");
+	kensakuDistCode.value = '';
+	var kensakuJgiNo = document.getElementById("kensakuJgiNo");
+	kensakuJgiNo.value = '';
 }
 
-/**
- * 戻すボタン押下時に呼ばれます
- */
-function deptBack(Backbutton, indexNo){
+function deptBack(Backbutton){
 
 	var td = Backbutton.parentNode;
 	var tr = td.parentNode;
 
+	//所属部科　漢字名
+	var deptKj = tr.children[9];
+	var deptKjAFLabel = tr.children[6];
+	var deptKjAF = deptKjAFLabel.children[0];
+	deptKj.textContent = deptKjAF.textContent;
+
 	//所属部科　カナ名
-	var preDeptKana = "kmuIkkatsuDataList[" + indexNo + "].preDeptKana";
-    var preDeptKanaValue = document.getElementsByName(preDeptKana)[0].value;
-
-    var postDeptKanaBack = "kmuIkkatsuDataList[" + indexNo + "].postDeptKana";
-    var postDeptKanaValueBack = document.getElementsByName(postDeptKanaBack)[0].value;
-
 	var deptKn = tr.children[15];
-	deptKn.textContent = preDeptKanaValue;
-	postDeptKanaValueBack = preDeptKanaValue;
+	var deptKnAFLabel = tr.children[14];
+	var deptKnAF = deptKnAFLabel.children[0];
+	deptKn.textContent = deptKnAF.textContent;
 
 	//所属部科コード
-	var preDeptCode = "kmuIkkatsuDataList[" + indexNo + "].preDeptCode";
-    var preDeptCodeValue = document.getElementsByName(preDeptCode)[0].value;
-
-    var postDeptCodeBack = "kmuIkkatsuDataList[" + indexNo + "].postDeptCode";
-    var postDeptCodeValueBack = document.getElementsByName(postDeptCodeBack)[0].value;
-
 	var deptCd = tr.children[17];
-	deptCd.textContent = preDeptCodeValue;
-	postDeptCodeValueBack = preDeptCodeValue;
-
-	//所属部科　漢字名
-	var preDeptKanji = "kmuIkkatsuDataList[" + indexNo + "].preDeptKanji";
-    var preDeptKanjiKanjiValue = document.getElementsByName(preDeptKanji)[0].value;
-
-    var postDeptKanjiBack = "kmuIkkatsuDataList[" + indexNo + "].postDeptKanji";
-    var postDeptKanjiValueBack = document.getElementsByName(postDeptKanjiBack)[0].value;
-
-	var deptKj = tr.children[9];
-	deptKj.textContent = preDeptKanjiKanjiValue;
-	postDeptKanjiValueBack = preDeptKanjiKanjiValue;
+	var deptCdAfLabel = tr.children[16];
+	var deptCdAf = deptCdAfLabel.children[0];
+	deptCd.textContent = deptCdAf.textContent;
 
 	//★へ変更ボタン表示
 	var henkou = tr.children[7];
@@ -258,37 +254,20 @@ function deptBack(Backbutton, indexNo){
 }
 
 
-/**
- * ★へ変更ボタン押下後に呼ばれます。
- */
-function cseViewND401(button, indexNo){
+function cseViewND401(button){
 
 	var td = button.parentNode;
 	var tr = td.parentNode;
 
 	//所属部科　漢字名
-	var postDeptKanji = "kmuIkkatsuDataList[" + indexNo + "].postDeptKanji";
-    var postDeptKanjiValue = document.getElementsByName(postDeptKanji)[0].value;
-
 	var deptKj = tr.children[9]
 	deptKj.textContent = document.fm1.deptKjHenkou.value;
-	postDeptKanjiValue = document.fm1.deptKjHenkou.value;
-
 	//所属部科　カナ名
-	var postDeptKana = "kmuIkkatsuDataList[" + indexNo + "].postDeptKana";
-    var postDeptKanaValue = document.getElementsByName(postDeptKana)[0].value;
-
 	var deptKn = tr.children[15]
 	deptKn.textContent = document.fm1.deptKnHenkou.value;
-	postDeptKanaValue = document.fm1.deptKnHenkou.value;
-
 	//所属部科コード
-	var postDeptCode = "kmuIkkatsuDataList[" + indexNo + "].postDeptCode";
-    var postDeptCodeValue = document.getElementsByName(postDeptCode)[0].value;
-
 	var deptCd = tr.children[17]
 	deptCd.textContent = document.fm1.deptCodeHenkou.value;
-	postDeptCodeValue  = document.fm1.deptCodeHenkou.value;
 	//★へ変更ボタン非表示
 	var henkou = tr.children[7];
 	var henkouButton = henkou.children[0];
@@ -301,25 +280,18 @@ function cseViewND401(button, indexNo){
 
 /**
 * 所属部科POPUP画面を呼び出します。
-* 1:選択ボタン
-* 2:★選択ボタン
+*
 */
-function hekouShozoku(index){
+function hekouShozoku(){
 
 	// 2度押し対策
 	  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	// 全てのポップアップを閉じる
 	  hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
 
-	  if (index == 1) {
-		  document.fm1.paramInsNo.value = "";
-		  gCdcViewWin = cdcViewND401(gCdcViewWin,"tmpCallBackKensakuShozokuViewHenkou","gCdcViewWin");
-	  }
-	  else {
-		  document.fm1.paramInsNo.value = document.getElementById("kensakuInsNo").value;
-		  gCdcViewWin = cdcViewND401(gCdcViewWin,"tmpCallBackShozokuViewHenkou","gCdcViewWin");
-	  }
+	  document.fm1.paramInsNo.value = document.getElementById("kensakuInsNo").value;
 
+	  gCdcViewWin = cdcViewND401(gCdcViewWin,"tmpCallBackShozokuViewHenkou","gCdcViewWin");
 	  return(true);
 }
 
@@ -371,19 +343,6 @@ function cdcViewND401(w,callBack,winVarName){
 
 /**
  * <pre>
- * 選択ボタン
- * 出身所属部科POPUP　コールバック関数。
- * </pre>
- */
-function tmpCallBackKensakuShozokuViewHenkou(deptCode,DeptKj,DeptKn){
-
-	document.fm1.kensakuDeptKj.value = DeptKj;
-	document.fm1.kensakuDeptCode.value = deptCode;
-}
-
-/**
- * <pre>
- * ★選択ボタン
  * 出身所属部科POPUP　コールバック関数。
  * </pre>
  */
@@ -411,8 +370,18 @@ function pltPage( pageCntCur ){
   comSubmitForAnyWarp(fm1);
 }
 
+/**
+ * <pre>
+ *  クリア
+ * 全項目展開>>(リンク)押下時に呼ばれます。
+ * </pre>
+ */
+function clearText() {
 
+	var kensakuInsNo = document.getElementById("kensakuInsNo");
+	kensakuInsNo.value = '';
 
+}
 
 /**
  * <pre>

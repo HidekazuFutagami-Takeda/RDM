@@ -174,9 +174,13 @@
         </action>
         <action name="ND401Search" class="nD401Action" method="search">
             <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
+            <result name="ND403Init" type="chain">ND403Init</result>
         </action>
         <action name="ND401Page" class="nD401Action" method="page">
             <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
+        </action>
+        <action name="ND403Init" class="nD403Action" method="init">
+            <result name="ND403">/WEB-INF/pages/ND403.jsp</result>
         </action>
         <action name="NC206Init" class="nC206Action" method="init">
             <result name="NC206">/WEB-INF/pages/NC206.jsp</result>

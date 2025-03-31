@@ -1,7 +1,7 @@
 <%--
 /**
  * <pre>
- *  医師勤務先情報一括更新のJSP
+ *  医師勤務先情報一括更新 - 申請内容確認のJSP
  * </pre>
  * @since 1.0
  * @version $Revision: 1.0 $
@@ -27,7 +27,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-	<title>ND401_医師勤務先情報一括更新</title>
+	<title>ND403_医師勤務先情報一括更新 - 申請内容確認</title>
 
 	<link href="WebContent/css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
@@ -229,13 +229,11 @@
       <s:hidden name="kensakuSTantouBrCode" />
       <s:hidden name="kensakuShinseiDistCode" />
       <s:hidden name="kensakuShinseiBrCode" />
-      <s:hidden name="kensakuDeptCode" />
       <s:hidden name="clearUpdMstFrom" />
       <s:hidden name="clearUpdMstTo" />
 
       <s:hidden name="deptCodeHenkou" />
       <s:hidden name="deptKnHenkou" />
-      <s:hidden name="kmuIkkatsuData" />
 
       <%-- トップメニューから --%>
       <s:hidden name="trtGrpCd" />
@@ -320,185 +318,7 @@
 		kensakuReqJgiNameUser.disabled = true;
 		</script>
 
-		<%-- 検索部 開始 --%>
-     	<table class="pupList" style="border-collapse: separate; margin-top:3pt; background-color: white;">
 
-     	<s:form action="NF501Search" theme="simple" name="fm1" >
-	        <tr>
-	        	 <%-- 組織  --%>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>組織 </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="KensakuJgiName" name="KensakuJgiName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
-		          	</td>
-
-	            <%-- 担当者 --%>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		         	 	<nobr>担当者</nobr>
-		         	</td>
-		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="" /></td>
-		          	<td>
-		          		<s:textfield id="kensakuSosName" name="kensakuSosName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
-		          		<span>clear</span>
-		          	</td>
-
-	             <%-- 所属部科 --%>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>所属部科 </nobr>
-		          	</td>
-
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="hekouShozoku(1);" />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="kensakuDeptKj" name="kensakuDeptKj" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
-		          		&nbsp;
-		          		<a href="" class="comMiniLink" onClick="deptClear();return false;">clear</a>
-		          	</td>
-
-		          	<td>
-		          		<%-- 表示リセット --%>
-	               		 <input type="button" value="クリア" class="comMiniLink" onclick="clearAll()">
-		          	</td>
-	        </tr>
-
-	        <tr>
-	           <%-- 施設名 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設名 </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuInsKanj"  name="kensakuInsKanj" size="20" maxlength="128" /></td>
-	           <%-- 施設固定C --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設固定C </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuInsNo"  name="kensakuInsNo" size="20" maxlength="128" /></td>
-
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td>
-	            	<!-- 検索ボタン -->
-	                <input type="button" name="search" value="検索" onclick="jimSearch();">
-	            </td>
-	        </tr>
-
-	        <tr>
-	           <%-- 医師名 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>医師名</nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuDocKanj"  name="kensakuDocKanj" size="20" maxlength="128" /></td>
-	           <%-- 医師固定C --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>医師固定C </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuDocNo"  name="kensakuDocNo" size="20" maxlength="128" /></td>
-
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	        </tr>
-	        </s:form>
-	    </table>
-		<%-- 検索部 終了 --%>
-		<hr>
-		<s:if test="searchType == 1 ">
-			<div style="display: flex; justify-content: flex-end;">
-				<div style="margin-right: 40px;">
-					<input id="sosButton1" class="comButton" type="button" value="★選択" onClick="hekouShozoku(2);" />
-
-		          		<s:textfield id="deptKjHenkou" name="deptKjHenkou"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
-		          		<span style="FONT-SIZE: 8pt;">clear</span>
-				</div>
-			</div>
-		</s:if>
-
-	<%-- ページ情報 --%>
-	<CENTER>
-		 <%-- ページャー表示 開始 --%>
-                 <!-- 改ページ -->
-                 <s:if test="searchType == 1 ">
-                  <table width="95%" style="text-align: center;" >
-                      <tbody>
-                      <tr>
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
-
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0',1,'2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur+1"/>);return false;">
-                                 	 次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                 </s:if>
-          <%-- ページャー表示 終了 --%>
-
-	    <%-- 項目 --%>
-	    <s:if test="searchType == 1 ">
 
 	    	<div class="kensakuDate">
 	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
@@ -527,7 +347,6 @@
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-				            	<s:hidden name="kmuIkkatsuDataList[%{#status.index}].insNo" />
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].insNo" />
 				            </s:else>
 						</td>
@@ -538,7 +357,6 @@
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-								<s:hidden name="kmuIkkatsuDataList[%{#status.index}].insAbbrName" />
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].insAbbrName" />
 				            </s:else>
 						</td>
@@ -550,7 +368,6 @@
 				            </s:if>
 				            <s:else>
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].docNo" />
-		            			<s:hidden name="kmuIkkatsuDataList[%{#status.index}].docNo" />
 				            </s:else>
 						</td>
 
@@ -561,7 +378,6 @@
 				            </s:if>
 				            <s:else>
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].docKanj" />
-		            			<s:hidden name="kmuIkkatsuDataList[%{#status.index}].docKanj" />
 				            </s:else>
 						</td>
 
@@ -572,13 +388,13 @@
 				            </s:if>
 				            <s:else>
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].preTitleKj" />
-		            			<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preTitleKj" />
 				            </s:else>
 						</td>
 
 						<!-- 役職（変更後） -->
 						<td class="comTableItem" id=""  >
-							<s:select id="kensakuHoInsType" name="kmuIkkatsuDataList[%{#status.index}].postTitleCode" cssStyle="width:80pt" list ="titleMap" />
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].postTitleCode" />
+
 						</td>
 
 						<!--所属部科（変更前）   -->
@@ -588,67 +404,62 @@
 				            </s:if>
 				            <s:else>
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].preDeptKanji" />
-		            			<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptKanji" />
 				            </s:else>
 						</td>
 
 						<!-- 所属部科（変更後） -->
-						<td><input type="button" value="★へ変更" onclick="cseViewND401(this, '<s:property value="%{#status.index}"/>');"/></td>
-						<td><input type="button" value="戻す" onclick="deptBack(this, '<s:property value="%{#status.index}"/>');" style="display:none;"></td>
+
 						<td class="comTableItem" id=""  >
 							<s:if test="%{#rowBean.postDeptKanji == null || #rowBean.postDeptKanji == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].postDeptKanji" />
-
 				            </s:else>
-				            <s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptKanji" />
 						</td>
 						<!-- ULT施設コード　隠し項目 -->
 						<td style="display:none;">
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].ultInsNo" />
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].ultInsNo" />
 						</td>
 						<!-- ULT医師コード　隠し項目 -->
 						<td style="display:none;">
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].ultDocNo" />
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].ultDocNo" />
 						</td>
 						<!--役職コード（変更前） 　隠し項目 -->
 						<td style="display:none;">
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preTitleCode" />
-
+							<s:label key="kmuIkkatsuDataList[%{#status.index}]." />
 						</td>
 						<!-- 役職コード（変更後）　隠し項目 -->
 						<td style="display:none;">
-
+							<s:label key="kmuIkkatsuDataList[%{#status.index}]." />
 						</td>
 						<!-- 所属部科カナ（変更前）　隠し項目 -->
-						<td >
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptKana" />
+						<td style="display:none;">
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].preDeptKana" />
 						</td>
 						<!-- 所属部科カナ（変更後） 隠し項目 -->
-						<td >
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptKana" />
+						<td style="display:none;">
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].postDeptKana" />
 						</td>
 						<!-- 所属部科コード（変更前） 隠し項目 -->
-						<td >
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptCode" />
+						<td style="display:none;">
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].preDeptCode" />
 						</td>
 						<!-- 所属部科コード（変更後）　隠し項目 -->
-						<td >
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptCode" />
+						<td style="display:none;">
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].postDeptCode" />
 						</td>
 						<!-- 勤務形態(変更前) 隠し項目 -->
 						<td style="display:none;">
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].jobForm" />
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].jobForm" />
 						</td>
 						<!-- 大学職位コード 隠し項目 -->
 						<td style="display:none;">
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].univPosCode" />
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].univPosCode" />
 						</td>
 						<!-- 薬審メンバー区分(変更前) 隠し項目 -->
 						<td style="display:none;">
-							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].dcc" />
+							<s:label key="kmuIkkatsuDataList[%{#status.index}].dcc" />
 						</td>
 
 
@@ -659,7 +470,7 @@
 				</table>
 
 			    </div>
-	    </s:if>
+
     </table>
 
 

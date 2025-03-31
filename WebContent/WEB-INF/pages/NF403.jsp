@@ -47,6 +47,8 @@
     <script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
+
+    	onLoadMakeBox();
     }
 
     var sosSubScreenSize = "left=0, top=0, width=600, height=600";
@@ -255,85 +257,288 @@
 		comSubmitForAnyWarp(fm1);
 	}
 
- 	// 承認チェックボックス
- 	function apprChk(chk, index){
- 		let key = "hcoBlkReqDataList["+index+"].apprChk";
- 		let apprFlg = document.getElementsByName(key)[0];
+ 	// 申請チェックボックス
+ 	function reqChk(chk, index){
+ 		let key = "hcoBlkReqDataList["+index+"].reqChk";
+ 		let reqFlg = document.getElementsByName(key)[0];
 
 		if(chk.checked == true){
-			apprFlg.value = "1";
+			reqFlg.value = "1";
 		} else {
-			apprFlg.value = "0";
+			reqFlg.value = "0";
 		}
  	}
 
- 	// 一括承認ボタン
- 	function apprBtn(){
-		let chkFlg = false;
+ 	// 一括申請ボタン
+ 	function reqBtn(){
+		document.fm1.screenId.value="NF403";
+		document.fm1.functionId.value="Request";
 
- 		let i = 0;
- 		let key = "hcoBlkReqDataList["+i+"].apprChk";
- 		let apprFlg = document.getElementsByName(key)[0];
+		comSubmitForAnyWarp(fm1);
 
- 		while(apprFlg != undefined){
-			if(apprFlg.value == "1"){
-				chkFlg = true;
-				break;
+ 	}
+
+    // selectOption作成
+	function makeOption(value, text){
+		const option1 = document.createElement('option');
+    	option1.value = value;
+    	option1.textContent = text;
+    	return option1;
+	}
+
+    // selectを空にする
+    function removeBox(box){
+    	if (box.hasChildNodes()) {
+			while (box.childNodes.length > 0) {
+				box.removeChild(box.firstChild);
 			}
+		}
+    }
+
+    // 施設区分セレクトボックス設定
+    function makePharmTypeBox(box, insType){
+    	removeBox(box);
+
+    	const option0 = makeOption("","--選択してください--");
+    	const option1 = makeOption("01","01:U(大学)");
+		const option2 = makeOption("02","02:H(病院)");
+		const option3 = makeOption("03","03:C(診療所)");
+		const option4 = makeOption("04","04:P(開業医)");
+		const option5 = makeOption("05","05:T(精神)");
+		const option6 = makeOption("06","06:B(調剤薬局)");
+		const option7 = makeOption("07","07:Y(ワクチン施設)");
+		const option8 = makeOption("08","08:W(二次店)");
+		const option9 = makeOption("09","09:Z(その他雑)");
+
+		box.appendChild(option0);
+		if(insType == "01"){
+			box.appendChild(option1);
+	    	box.appendChild(option2);
+	    	box.appendChild(option3);
+	    	box.appendChild(option4);
+	    	box.appendChild(option5);
+		} else if(insType == "02"){
+			box.appendChild(option2);
+	    	box.appendChild(option3);
+	    	box.appendChild(option4);
+		} else if(insType == "03"){
+			box.appendChild(option6);
+		} else if(insType == "06"){
+			box.appendChild(option3);
+	    	box.appendChild(option4);
+		} else if(insType == "08"){
+			box.appendChild(option7);
+		} else if(insType == "09"){
+			box.appendChild(option8);
+	    	box.appendChild(option9);
+		} else if(insType == "10"){
+			box.appendChild(option4);
+		}
+
+    	return box;
+    }
+
+    // 階級区分セレクトボックス設定
+    function makeInsRankBox(box, insType, pharmType){
+    	removeBox(box);
+
+    	const option0 = makeOption("","--選択してください--");
+    	const option1 = makeOption("01","01:国公立大学医学部附属病院");
+    	const option2 = makeOption("02","02:私立大学医学部附属病院");
+    	const option3 = makeOption("03","03:国公立大学の分院");
+    	const option4 = makeOption("04","04:私立大学の分院");
+    	const option5 = makeOption("05","05:歯科大学本院");
+    	const option6 = makeOption("06","06:歯科大学分院");
+    	const option7 = makeOption("07","07:100床以上の国公立病院");
+    	const option8 = makeOption("08","08:200床以上の私立病院");
+    	const option9 = makeOption("09","09:20床以上99床以下の国公立病院");
+    	const option10 = makeOption("10","10:20床以上199床以下の私立病院");
+    	const option11 = makeOption("11","11:1床以上19床以下の診療所");
+    	const option12 = makeOption("12","12:無床の診療所");
+    	const option13 = makeOption("13","13:歯科施設");
+    	const option14 = makeOption("14","14:1床以上19床以下の個人立の開業医");
+    	const option15 = makeOption("15","15:無床の開業医");
+    	const option16 = makeOption("16","16:精神");
+    	const option17 = makeOption("17","17:B調剤薬局");
+    	const option18 = makeOption("18","18:二次店");
+    	const option19 = makeOption("19","19:特二次店");
+    	const option20 = makeOption("20","20:医療モール");
+    	const option21 = makeOption("00","00:該当なし");
+
+		box.appendChild(option0);
+    	if(insType == "01" && pharmType == "01"){
+			box.appendChild(option1);
+	    	box.appendChild(option2);
+	    	box.appendChild(option3);
+	    	box.appendChild(option4);
+	    	box.appendChild(option5);
+	    	box.appendChild(option6);
+    	} else if(insType == "01" && pharmType == "02"){
+			box.appendChild(option7);
+	    	box.appendChild(option8);
+	    	box.appendChild(option9);
+	    	box.appendChild(option10);
+    	} else if(insType == "01" && pharmType == "03"){
+			box.appendChild(option11);
+	    	box.appendChild(option12);
+    	} else if(insType == "01" && pharmType == "04"){
+			box.appendChild(option13);
+	    	box.appendChild(option14);
+	    	box.appendChild(option15);
+    	} else if(insType == "01" && pharmType == "05"){
+			box.appendChild(option16);
+    	} else if(insType == "02" && pharmType == "02"){
+	    	box.appendChild(option9);
+	    	box.appendChild(option10);
+    	} else if(insType == "02" && pharmType == "03"){
+	    	box.appendChild(option11);
+	    	box.appendChild(option12);
+    	} else if(insType == "02" && pharmType == "04"){
+			box.appendChild(option13);
+	    	box.appendChild(option14);
+	    	box.appendChild(option15);
+    	} else if(insType == "03" && pharmType == "06"){
+	    	box.appendChild(option17);
+    	} else if(insType == "06" && pharmType == "03"){
+			box.appendChild(option11);
+	    	box.appendChild(option12);
+    	} else if(insType == "06" && pharmType == "04"){
+			box.appendChild(option13);
+	    	box.appendChild(option14);
+	    	box.appendChild(option15);
+    	} else if(insType == "08" && pharmType == "07"){
+			box.appendChild(option21);
+    	} else if(insType == "09" && pharmType == "08"){
+	    	box.appendChild(option18);
+	    	box.appendChild(option19);
+    	} else if(insType == "09" && pharmType == "09"){
+	    	box.appendChild(option21);
+    	} else if(insType == "10" && pharmType == "04"){
+	    	box.appendChild(option20);
+    	}
+
+    	return box;
+    }
+
+    // 定訪先区分セレクトボックス設定
+    function makeRegVisTypeBox(box, insType, pharmType, insRank){
+    	removeBox(box);
+
+    	const option0 = makeOption("","--選択してください--");
+    	const option1 = makeOption("1","1:定訪先");
+    	const option2 = makeOption("2","2:その他先");
+    	const option3 = makeOption("0","0:該当なし");
+
+		box.appendChild(option0);
+    	if((insType == "01" && pharmType == "01" && (insRank == "01" || insRank == "02" || insRank == "03"
+    			|| insRank == "04" || insRank == "05" || insRank == "06"))
+    		|| (insType == "01" && pharmType == "02" && (insRank == "07" || insRank == "08"))){
+	    	box.appendChild(option1);
+    	} else if((insType == "01" && pharmType == "02" && (insRank == "09" || insRank == "10"))
+    			|| (insType == "01" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+ 				|| (insType == "01" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
+ 				|| (insType == "01" && pharmType == "05" && insRank == "16")
+ 				|| (insType == "02" && pharmType == "02" && (insRank == "09" || insRank == "10"))
+ 				|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+ 				|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
+ 				|| (insType == "03" && pharmType == "06" && insRank == "17")
+ 				|| (insType == "06" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+ 				|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))){
+	    	box.appendChild(option1);
+	    	box.appendChild(option2);
+    	} else if((insType == "08" && pharmType == "07" && insRank == "00")
+    			|| (insType == "09" && pharmType == "08" && insRank == "18")
+    			|| (insType == "09" && pharmType == "08" && insRank == "19")
+    			|| (insType == "09" && pharmType == "09" && insRank == "00")){
+    		box.appendChild(option3);
+    	} else if(insType == "10" && pharmType == "04" && insRank == "20"){
+    		box.appendChild(option1);
+    	}
+
+    	return box;
+    }
+
+    //  重点病院区分セレクトボックス設定
+    function makeImpHosTypeBox(box, insType, pharmType, insRank){
+    	removeBox(box);
+
+    	const option0 = makeOption("","--選択してください--");
+    	const option1 = makeOption("1","1:H1");
+    	const option2 = makeOption("2","2:H2");
+    	const option3 = makeOption("0","0:該当なし");
+
+		box.appendChild(option0);
+    	if(insType == "01" && pharmType == "01" && (insRank == "01" || insRank == "02")){
+	    	box.appendChild(option3);
+    	} else if((insType == "01" && pharmType == "01" && (insRank == "03" || insRank == "04" || insRank == "05" || insRank == "06"))
+    			|| (insType == "01" && pharmType == "02" && (insRank == "07" || insRank == "08"))){
+	    	box.appendChild(option1);
+	    	box.appendChild(option2);
+    	} else if((insType == "01" && pharmType == "02" && (insRank == "09" || insRank == "10"))
+    			|| (insType == "01" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+    			|| (insType == "01" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
+    			|| (insType == "01" && pharmType == "05" && insRank == "16")
+    			|| (insType == "02" && pharmType == "02" && (insRank == "09" || insRank == "10"))
+    			|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+    			|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
+    			|| (insType == "03" && pharmType == "06" && insRank == "17")
+    			|| (insType == "06" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+    			|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
+    			|| (insType == "08" && pharmType == "07" && insRank == "00")
+    			|| (insType == "09" && pharmType == "08" && (insRank == "18" || insRank == "19"))
+    			|| (insType == "09" && pharmType == "09" && insRank == "00")
+    			|| (insType == "10" && pharmType == "04" && insRank == "20")){
+    		box.appendChild(option3);
+    	}
+
+    	return box;
+    }
+
+    function onLoadMakeBox(){
+    	let i = 0;
+    	let insTypeKey = "hcoBlkReqDataList["+i+"].insType";
+    	let insType = document.getElementsByName(insTypeKey)[0];
+    	let tmpPharmTypeKey = "hcoBlkReqDataList["+i+"].tmpPharmType";
+    	let tmpPharmType = document.getElementsByName(tmpPharmTypeKey)[0];
+    	let pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+ 		let pharmTypeBox = document.getElementsByName(pharmType)[0];
+ 		let tmpInsRankKey = "hcoBlkReqDataList["+i+"].tmpInsRank";
+    	let tmpInsRank = document.getElementsByName(tmpInsRankKey)[0];
+    	let insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+ 		let insRankBox = document.getElementsByName(insRank)[0];
+ 		let tmpRegVisTypeKey = "hcoBlkReqDataList["+i+"].tmpRegVisType";
+    	let tmpRegVisType = document.getElementsByName(tmpRegVisTypeKey)[0];
+    	let regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+ 		let regVisTypeBox = document.getElementsByName(regVisType)[0];
+
+ 		while(pharmTypeBox != undefined){
+ 			// 施設区分
+ 			makePharmTypeBox(pharmTypeBox, insType.value);
+ 			pharmTypeBox.value = tmpPharmType.value;
+
+ 			// 階級区分
+			makeInsRankBox(insRankBox, insType.value, pharmTypeBox.value);
+ 			insRankBox.value = tmpInsRank.value;
+
+ 			// 定訪先区分
+
+ 			// 重点病院区分
+
+ 			// 対象区分
 
 			i++;
-			key = "hcoBlkReqDataList["+i+"].apprChk";
-	 		apprFlg = document.getElementsByName(key)[0];
+			insTypeKey = "hcoBlkReqDataList["+i+"].insType";
+	    	insType = document.getElementsByName(insTypeKey)[0];
+	    	tmpPharmTypeKey = "hcoBlkReqDataList["+i+"].tmpPharmType";
+	    	tmpPharmType = document.getElementsByName(tmpPharmTypeKey)[0];
+			pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+	 		pharmTypeBox = document.getElementsByName(pharmType)[0];
+	 		tmpInsRankKey = "hcoBlkReqDataList["+i+"].tmpInsRank";
+	    	tmpInsRank = document.getElementsByName(tmpInsRankKey)[0];
+	    	insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+	 		insRankBox = document.getElementsByName(insRank)[0];
  		}
-
- 		if(!chkFlg){
- 			// ・隠し項目．承認対象フラグ＝'1'の行が0件の場合、（W046）「承認する施設が未選択です。」エラーメッセージをポップアップで表示
- 			window.alert("承認する施設が未選択です。");
- 			return false;
- 		}
-
- 		if(window.confirm("申請データを承認します。よろしいですか？")){
-			// ・隠し項目．承認対象フラグ＝'1'の行が1件以上の場合、（I012）「申請データを承認します。よろしいですか？」確認メッセージをポップアップで表示
-
-			i = 0;
-			key = "hcoBlkReqDataList["+i+"].aprComment";
-			let aprComment = document.getElementsByName(key)[0];
-			let strCom = document.getElementsByName("aprComment")[i];
-
-			while(aprComment != undefined && strCom != undefined){
-				aprComment.value = strCom.value;
-
-				i++;
-				key = "hcoBlkReqDataList["+i+"].aprComment";
-				aprComment = document.getElementsByName(key)[0];
-				strCom = document.getElementsByName("aprComment")[i];
-			}
-
- 			document.fm1.screenId.value="NF401";
-			document.fm1.functionId.value="Approve";
-
-			comSubmitForAnyWarp(fm1);
- 		}
- 	}
-
- 	// 却下ボタン
- 	function rejBtn(insNo, index){
- 		document.fm1.rejectInsNo.value = insNo;
-		var aprComment = document.getElementsByName("aprComment")[index].value;
- 		document.fm1.rejectComment.value = aprComment;
-
- 		if(aprComment.trim() == ""){
- 			window.alert("却下の場合はコメントを入力してください。");
- 			return false;
- 		}
-
- 		if(window.confirm("申請データを却下します。よろしいですか？")){
- 			document.fm1.screenId.value="NF401";
-			document.fm1.functionId.value="Reject";
-
-			comSubmitForAnyWarp(fm1);
- 		}
- 	}
+    }
 
 </script>
 <style>
@@ -587,7 +792,7 @@
 	<%-- ヘッダー行 --%>
 	<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
 		<td class="comTableTitle" style="width:50px" rowspan=2>申請</td>
-		<td class="comTableTitle" style="width:80px;">施設固定C</td>
+		<td class="comTableTitle" style="width:110px;">施設固定C</td>
 		<td class="comTableTitle" style="width:50px" rowspan=2>期</td>
 		<td class="comTableTitle" style="width:130px" colspan=8>施設情報</td>
 		<td class="comTableTitle" colspan=10>病床数情報</td>
@@ -623,14 +828,23 @@
 		<tr style="min-height:30px;">
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].reqChk"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insNo"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRank"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].regVisType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].impHosType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].hoInsType"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].manageNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].manageCd"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacInsType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacVisitType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRankNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].regVisTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].impHosTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].hoInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].manageNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacVisitTypeNm"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCntBase"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt04"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt01"/>
@@ -654,40 +868,25 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedCnt07"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultBedsTot"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultMedBedsTot"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextPharmType"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextInsRank"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextRegVisType"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextImpHosType"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsType"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextManageNm"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacInsType"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedsTot"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot"/>
+
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpPharmType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpInsRank"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpRegVisType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpImpHosType"/>
 
 			<td class="comTableItem" rowspan=3 style="text-align:center;">
-				<s:if test='#rowBean.waitAppFlg == "1"'>
-					<input type="checkbox" name="apprChkBox" onChange="JavaScript:apprChk(this,'<s:property value="%{#status.index}"/>'); return false;" />
-				</s:if>
+				<input type="checkbox" name="reqChkBox" onChange="JavaScript:reqChk(this,'<s:property value="%{#status.index}"/>'); return false;" />
 			</td>
 	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insNo" /></td>
 	        <td class="comTableItem">当期</td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].pharmType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insRank" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].regVisType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].impHosType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].hoInsType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].pharmTypeNm" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insRankNm" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].regVisTypeNm" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].impHosTypeNm" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].hoInsTypeNm" /></td>
 	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].manageNm" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].vacInsType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].vacVisitType" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].vacInsTypeNm" /></td>
+	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].vacVisitTypeNm" /></td>
 	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCntBase" /></td>
 	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt04" /></td>
 	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedCnt01" /></td>
@@ -699,7 +898,9 @@
 	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].bedsTot" /></td>
 	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].medBedsTot" /></td>
 	        <td class="comTableItem" style="text-align:center" rowspan=3><s:label key="hcoBlkReqDataList[%{#status.index}].ultDif" /></td>
-	        <td class="comTableItem" rowspan=3><s:label key="hcoBlkReqDataList[%{#status.index}].reqComment" /></td>
+	        <td class="comTableItem" rowspan=3>
+	        	<s:textarea name="hcoBlkReqDataList[%{#status.index}].reqComment" maxlength="300" style="resize:none" />
+	        </td>
 		</tr>
 		<tr>
 	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insAbbrName" /></td>
@@ -729,24 +930,60 @@
 	        	<input type="button" value="申請歴" onclick="histBtn('<s:property value="#rowBean.insNo"/>');return false;" />
 	        </td>
 	        <td class="comTableItem">来期</td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextPharmType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextInsRank" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextRegVisType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextImpHosType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextHoInsType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextManageNm" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextVacInsType" /></td>
-	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedsTot" /></td>
-	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" /></td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" />
+	        </td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextInsRank" cssStyle="width:120pt" list ="insRankCombo" />
+	        </td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo" />
+	        </td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextImpHosType" cssStyle="width:120pt" list ="impHosTypeCombo" />
+	        </td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextHoInsType" cssStyle="width:120pt" list ="hoInsTypeCombo" />
+	        </td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextManageCd" cssStyle="width:120pt" list ="manageCdCombo" />
+	        </td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextVacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo" />
+	        </td>
+	        <td class="comTableItem">
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" />
+	        	</td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" />
+	       	</td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        </td>
+	        <td class="comTableItem" style="text-align:right">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        </td>
 		</tr>
 	</s:iterator>
     </table>

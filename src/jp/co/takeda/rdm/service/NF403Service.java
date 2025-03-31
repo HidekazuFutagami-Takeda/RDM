@@ -23,6 +23,7 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoBlkReqDataList;
 import jp.co.takeda.rdm.dto.NF403DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
@@ -253,9 +254,16 @@ public class NF403Service extends BaseService {
 
         // 一覧を取得する
         List<SelectNF403MainDataEntity> selectNF403MainDataEntityList = dao.select(selectNF403MainDataEntity);
-/*
+
         for (SelectNF403MainDataEntity entity : selectNF403MainDataEntityList) {
         	HcoBlkReqDataList dataRecord = new HcoBlkReqDataList();
+
+        	// 施設種別
+        	if(entity.getInsType() != null && !entity.getInsType().isEmpty()) {
+        		dataRecord.setInsType(entity.getInsType());
+        	} else {
+        		dataRecord.setInsType(" ");
+        	}
 
         	// 施設固定コード
         	if(entity.getInsNo() != null && !entity.getInsNo().isEmpty()) {
@@ -272,10 +280,10 @@ public class NF403Service extends BaseService {
         	}
 
         	// 施設区分
-        	if(entity.getPharmType() != null && !entity.getPharmType().isEmpty()) {
-        		dataRecord.setPharmType(entity.getPharmType());
+        	if(entity.getPharmTypeNm() != null && !entity.getPharmTypeNm().isEmpty()) {
+        		dataRecord.setPharmTypeNm(entity.getPharmTypeNm());
         	} else {
-        		dataRecord.setPharmType(" ");
+        		dataRecord.setPharmTypeNm(" ");
         	}
         	if(entity.getShisetsuKbn() != null && !entity.getShisetsuKbn().isEmpty()) {
         		dataRecord.setShisetsuKbn(entity.getShisetsuKbn());
@@ -288,15 +296,15 @@ public class NF403Service extends BaseService {
         		if(entity.getPharmType() != null && !entity.getPharmType().isEmpty()) {
             		dataRecord.setNextPharmType(entity.getPharmType());
             	} else {
-            		dataRecord.setNextPharmType(" ");
+            		dataRecord.setNextPharmType("");
             	}
         	}
 
         	// 階級区分
-        	if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
-        		dataRecord.setInsRank(entity.getInsRank());
+        	if(entity.getInsRankNm() != null && !entity.getInsRankNm().isEmpty()) {
+        		dataRecord.setInsRankNm(entity.getInsRankNm());
         	} else {
-        		dataRecord.setInsRank(" ");
+        		dataRecord.setInsRankNm(" ");
         	}
         	if(entity.getNextInsRank() != null && !entity.getNextInsRank().isEmpty()) {
         		dataRecord.setNextInsRank(entity.getNextInsRank());
@@ -304,15 +312,15 @@ public class NF403Service extends BaseService {
         		if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
             		dataRecord.setNextInsRank(entity.getInsRank());
             	} else {
-            		dataRecord.setNextInsRank(" ");
+            		dataRecord.setNextInsRank("");
             	}
         	}
 
         	// 定訪先区分
-        	if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
-        		dataRecord.setRegVisType(entity.getRegVisType());
+        	if(entity.getRegVisTypeNm() != null && !entity.getRegVisTypeNm().isEmpty()) {
+        		dataRecord.setRegVisTypeNm(entity.getRegVisTypeNm());
         	} else {
-        		dataRecord.setRegVisType(" ");
+        		dataRecord.setRegVisTypeNm(" ");
         	}
         	if(entity.getNextRegVisType() != null && !entity.getNextRegVisType().isEmpty()) {
         		dataRecord.setNextRegVisType(entity.getNextRegVisType());
@@ -320,15 +328,15 @@ public class NF403Service extends BaseService {
         		if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
             		dataRecord.setNextRegVisType(entity.getRegVisType());
             	} else {
-            		dataRecord.setNextRegVisType(" ");
+            		dataRecord.setNextRegVisType("");
             	}
         	}
 
         	// 重点病院区分
-        	if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
-        		dataRecord.setImpHosType(entity.getImpHosType());
+        	if(entity.getImpHosTypeNm() != null && !entity.getImpHosTypeNm().isEmpty()) {
+        		dataRecord.setImpHosTypeNm(entity.getImpHosTypeNm());
         	} else {
-        		dataRecord.setImpHosType(" ");
+        		dataRecord.setImpHosTypeNm(" ");
         	}
         	if(entity.getNextImpHosType() != null && !entity.getNextImpHosType().isEmpty()) {
         		dataRecord.setNextImpHosType(entity.getNextImpHosType());
@@ -336,15 +344,15 @@ public class NF403Service extends BaseService {
         		if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
             		dataRecord.setNextImpHosType(entity.getImpHosType());
             	} else {
-            		dataRecord.setNextImpHosType(" ");
+            		dataRecord.setNextImpHosType("");
             	}
         	}
 
         	// 対象区分
-        	if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
-        		dataRecord.setHoInsType(entity.getHoInsType());
+        	if(entity.getHoInsTypeNm() != null && !entity.getHoInsTypeNm().isEmpty()) {
+        		dataRecord.setHoInsTypeNm(entity.getHoInsTypeNm());
         	} else {
-        		dataRecord.setHoInsType(" ");
+        		dataRecord.setHoInsTypeNm(" ");
         	}
         	if(entity.getNextHoInsType() != null && !entity.getNextHoInsType().isEmpty()) {
         		dataRecord.setNextHoInsType(entity.getNextHoInsType());
@@ -352,7 +360,7 @@ public class NF403Service extends BaseService {
         		if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
             		dataRecord.setNextHoInsType(entity.getHoInsType());
             	} else {
-            		dataRecord.setNextHoInsType(" ");
+            		dataRecord.setNextHoInsType("");
             	}
         	}
 
@@ -367,22 +375,22 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setKeieitai(" ");
         	}
-        	if(entity.getNextManageNm() != null && !entity.getNextManageNm().isEmpty()) {
-        		dataRecord.setNextManageNm(entity.getNextManageNm());
+        	if(entity.getNextManageCd() != null && !entity.getNextManageCd().isEmpty()) {
+        		dataRecord.setNextManageCd(entity.getNextManageCd());
         	} else {
-        		if(entity.getManageNm() != null && !entity.getManageNm().isEmpty()) {
-            		dataRecord.setNextManageNm(entity.getManageNm());
+        		if(entity.getManageCd() != null && !entity.getManageCd().isEmpty()) {
+            		dataRecord.setNextManageCd(entity.getManageCd());
             	} else {
-            		dataRecord.setNextManageNm(" ");
+            		dataRecord.setNextManageCd("");
             	}
         	}
 
 
         	// ワクチン対象区分
-        	if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
-        		dataRecord.setVacInsType(entity.getVacInsType());
+        	if(entity.getVacInsTypeNm() != null && !entity.getVacInsTypeNm().isEmpty()) {
+        		dataRecord.setVacInsTypeNm(entity.getVacInsTypeNm());
         	} else {
-        		dataRecord.setVacInsType(" ");
+        		dataRecord.setVacInsTypeNm(" ");
         	}
         	if(entity.getNextVacInsType() != null && !entity.getNextVacInsType().isEmpty()) {
         		dataRecord.setNextVacInsType(entity.getNextVacInsType());
@@ -390,15 +398,15 @@ public class NF403Service extends BaseService {
         		if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
             		dataRecord.setNextVacInsType(entity.getVacInsType());
             	} else {
-            		dataRecord.setNextVacInsType(" ");
+            		dataRecord.setNextVacInsType("");
             	}
         	}
 
         	// ワクチン定訪先区分
-        	if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
-        		dataRecord.setVacVisitType(entity.getVacVisitType());
+        	if(entity.getVacVisitTypeNm() != null && !entity.getVacVisitTypeNm().isEmpty()) {
+        		dataRecord.setVacVisitTypeNm(entity.getVacVisitTypeNm());
         	} else {
-        		dataRecord.setVacVisitType(" ");
+        		dataRecord.setVacVisitTypeNm(" ");
         	}
         	if(entity.getNextVacVisitType() != null && !entity.getNextVacVisitType().isEmpty()) {
         		dataRecord.setNextVacVisitType(entity.getNextVacVisitType());
@@ -406,7 +414,7 @@ public class NF403Service extends BaseService {
         		if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
             		dataRecord.setNextVacVisitType(entity.getVacVisitType());
             	} else {
-            		dataRecord.setNextVacVisitType(" ");
+            		dataRecord.setNextVacVisitType("");
             	}
         	}
 
@@ -617,11 +625,43 @@ public class NF403Service extends BaseService {
         		dataRecord.setReqComment(" ");
         	}
 
+        	// ULT差分
+        	if(entity.getUltDif() != null && !entity.getUltDif().isEmpty()) {
+        		dataRecord.setUltDif(entity.getUltDif());
+        	} else {
+        		dataRecord.setUltDif(" ");
+        	}
+
+        	// カラーフラグ
+        	dataRecord.setPharmTypeFlg(entity.getPharmTypeFlg());
+        	dataRecord.setInsRankFlg(entity.getInsRankFlg());
+        	dataRecord.setRegVisTypeFlg(entity.getRegVisTypeFlg());
+        	dataRecord.setImpHosTypeFlg(entity.getImpHosTypeFlg());
+        	dataRecord.setHoInsTypeFlg(entity.getHoInsTypeFlg());
+        	dataRecord.setManageCdFlg(entity.getManageCdFlg());
+        	dataRecord.setVacInsTypeFlg(entity.getVacInsTypeFlg());
+        	dataRecord.setVacVisitTypeFlg(entity.getVacVisitTypeFlg());
+        	dataRecord.setBedCntBaseFlg(entity.getBedCntBaseFlg());
+        	dataRecord.setBedCnt04Flg(entity.getBedCnt04Flg());
+        	dataRecord.setBedCnt01Flg(entity.getBedCnt01Flg());
+        	dataRecord.setBedCnt05Flg(entity.getBedCnt05Flg());
+        	dataRecord.setBedCnt03Flg(entity.getBedCnt03Flg());
+        	dataRecord.setBedCnt07Flg(entity.getBedCnt07Flg());
+        	dataRecord.setBedCnt02Flg(entity.getBedCnt02Flg());
+        	dataRecord.setBedCnt06Flg(entity.getBedCnt06Flg());
+        	dataRecord.setBedsTotFlg(entity.getBedsTotFlg());
+        	dataRecord.setMedBedsTotFlg(entity.getMedBedsTotFlg());
+
+        	// 画面表示用
+        	dataRecord.setTmpPharmType(dataRecord.getNextPharmType());
+        	dataRecord.setTmpInsRank(dataRecord.getNextInsRank());
+        	dataRecord.setTmpRegVisType(dataRecord.getRegVisType());
+        	dataRecord.setImpHosType(dataRecord.getImpHosType());
 
         	hcoBlkReqDataList.add(dataRecord);
         }
-        indto.setHcoReqDataList(hcoBlkReqDataList);
-*/
+        indto.setHcoBlkReqDataList(hcoBlkReqDataList);
+
         indto.setSrchFlg("1");
 
         // END UOC
@@ -674,5 +714,37 @@ public class NF403Service extends BaseService {
         mapUltDif.put("0", "無");
         mapUltDif.put("1", "有");
         indto.setUltDifCombo(mapUltDif);
+
+        // 経営主体
+ 		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
+ 		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
+ 		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
+ 		mapManageCd.put("", "--なし--");
+ 		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
+ 			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
+ 		}
+ 		indto.setManageCdCombo(mapManageCd);
+
+ 		// ワクチン対象区分
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_VAC_INS_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapVacInsType = new LinkedHashMap<String, String>();
+		mapVacInsType.put("", "--なし--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapVacInsType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setVacInsTypeCombo(mapVacInsType);
+
+		// ワクチン定訪先区分
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_VAC_VISIT_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapVacVisitType = new LinkedHashMap<String, String>();
+		mapVacVisitType.put("", "--なし--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapVacVisitType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setVacVisitTypeCombo(mapVacVisitType);
     }
 }

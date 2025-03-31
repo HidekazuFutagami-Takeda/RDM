@@ -156,7 +156,7 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
      * 経営主体
      * @generated
      */
-    private String manageNm;
+    private String manageCd;
 
     /**
      * ワクチン対象区分
@@ -169,6 +169,54 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
      * @generated
      */
     private String vacVisitType;
+
+    /**
+     * 施設区分
+     * @generated
+     */
+    private String pharmTypeNm;
+
+    /**
+     * 階級区分
+     * @generated
+     */
+    private String insRankNm;
+
+    /**
+     * 定訪先区分
+     * @generated
+     */
+    private String regVisTypeNm;
+
+    /**
+     * 重点病院区分
+     * @generated
+     */
+    private String impHosTypeNm;
+
+    /**
+     * 対象区分
+     * @generated
+     */
+    private String hoInsTypeNm;
+
+    /**
+     * 経営主体
+     * @generated
+     */
+    private String manageNm;
+
+    /**
+     * ワクチン対象区分
+     * @generated
+     */
+    private String vacInsTypeNm;
+
+    /**
+     * ワクチン定訪先区分
+     * @generated
+     */
+    private String vacVisitTypeNm;
 
     /**
      * 基準
@@ -336,7 +384,7 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
      * 経営主体
      * @generated
      */
-    private String nextManageNm;
+    private String nextManageCd;
 
     /**
      * ワクチン対象区分
@@ -421,6 +469,114 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
      * @generated
      */
     private String reqComment;
+
+    /**
+     * 施設区分
+     * @generated
+     */
+    private String pharmTypeFlg;
+
+    /**
+     * 階級区分
+     * @generated
+     */
+    private String insRankFlg;
+
+    /**
+     * 定訪先区分
+     * @generated
+     */
+    private String regVisTypeFlg;
+
+    /**
+     * 重点病院区分
+     * @generated
+     */
+    private String impHosTypeFlg;
+
+    /**
+     * 対象区分
+     * @generated
+     */
+    private String hoInsTypeFlg;
+
+    /**
+     * 経営主体
+     * @generated
+     */
+    private String manageCdFlg;
+
+    /**
+     * ワクチン対象区分
+     * @generated
+     */
+    private String vacInsTypeFlg;
+
+    /**
+     * ワクチン定訪先区分
+     * @generated
+     */
+    private String vacVisitTypeFlg;
+
+    /**
+     * 基準
+     * @generated
+     */
+    private String bedCntBaseFlg;
+
+    /**
+     * 結核
+     * @generated
+     */
+    private String bedCnt04Flg;
+
+    /**
+     * 一般
+     * @generated
+     */
+    private String bedCnt01Flg;
+
+    /**
+     * 感染症
+     * @generated
+     */
+    private String bedCnt05Flg;
+
+    /**
+     * 精神
+     * @generated
+     */
+    private String bedCnt03Flg;
+
+    /**
+     * 療養
+     * @generated
+     */
+    private String bedCnt07Flg;
+
+    /**
+     * 医療療養
+     * @generated
+     */
+    private String bedCnt02Flg;
+
+    /**
+     * 介護療養
+     * @generated
+     */
+    private String bedCnt06Flg;
+
+    /**
+     * ベッド数計
+     * @generated
+     */
+    private String bedsTotFlg;
+
+    /**
+     * 医療ベッド数計
+     * @generated
+     */
+    private String medBedsTotFlg;
 
     /**
      * コンストラクタ
@@ -797,6 +953,126 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setVacVisitType(String vacVisitType) {
 		this.vacVisitType = vacVisitType;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javamanageCdを設定
+	 * @return manageCd
+	 */
+	public String getManageCd() {
+		return manageCd;
+	}
+
+	/**
+	 * @param manageCd セットする manageCd
+	 */
+	public void setManageCd(String manageCd) {
+		this.manageCd = manageCd;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javapharmTypeNmを設定
+	 * @return pharmTypeNm
+	 */
+	public String getPharmTypeNm() {
+		return pharmTypeNm;
+	}
+
+	/**
+	 * @param pharmTypeNm セットする pharmTypeNm
+	 */
+	public void setPharmTypeNm(String pharmTypeNm) {
+		this.pharmTypeNm = pharmTypeNm;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javainsRankNmを設定
+	 * @return insRankNm
+	 */
+	public String getInsRankNm() {
+		return insRankNm;
+	}
+
+	/**
+	 * @param insRankNm セットする insRankNm
+	 */
+	public void setInsRankNm(String insRankNm) {
+		this.insRankNm = insRankNm;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javaregVisTypeNmを設定
+	 * @return regVisTypeNm
+	 */
+	public String getRegVisTypeNm() {
+		return regVisTypeNm;
+	}
+
+	/**
+	 * @param regVisTypeNm セットする regVisTypeNm
+	 */
+	public void setRegVisTypeNm(String regVisTypeNm) {
+		this.regVisTypeNm = regVisTypeNm;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javaimpHosTypeNmを設定
+	 * @return impHosTypeNm
+	 */
+	public String getImpHosTypeNm() {
+		return impHosTypeNm;
+	}
+
+	/**
+	 * @param impHosTypeNm セットする impHosTypeNm
+	 */
+	public void setImpHosTypeNm(String impHosTypeNm) {
+		this.impHosTypeNm = impHosTypeNm;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javahoInsTypeNmを設定
+	 * @return hoInsTypeNm
+	 */
+	public String getHoInsTypeNm() {
+		return hoInsTypeNm;
+	}
+
+	/**
+	 * @param hoInsTypeNm セットする hoInsTypeNm
+	 */
+	public void setHoInsTypeNm(String hoInsTypeNm) {
+		this.hoInsTypeNm = hoInsTypeNm;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javavacInsTypeNmを設定
+	 * @return vacInsTypeNm
+	 */
+	public String getVacInsTypeNm() {
+		return vacInsTypeNm;
+	}
+
+	/**
+	 * @param vacInsTypeNm セットする vacInsTypeNm
+	 */
+	public void setVacInsTypeNm(String vacInsTypeNm) {
+		this.vacInsTypeNm = vacInsTypeNm;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javavacVisitTypeNmを設定
+	 * @return vacVisitTypeNm
+	 */
+	public String getVacVisitTypeNm() {
+		return vacVisitTypeNm;
+	}
+
+	/**
+	 * @param vacVisitTypeNm セットする vacVisitTypeNm
+	 */
+	public void setVacVisitTypeNm(String vacVisitTypeNm) {
+		this.vacVisitTypeNm = vacVisitTypeNm;
 	}
 
 	/**
@@ -1205,18 +1481,18 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
 	}
 
 	/**
-	 * SelectNF403MainDataEntity.javanextManageNmを設定
-	 * @return nextManageNm
+	 * SelectNF403MainDataEntity.javanextManageCdを設定
+	 * @return nextManageCd
 	 */
-	public String getNextManageNm() {
-		return nextManageNm;
+	public String getNextManageCd() {
+		return nextManageCd;
 	}
 
 	/**
-	 * @param nextManageNm セットする nextManageNm
+	 * @param nextManageCd セットする nextManageCd
 	 */
-	public void setNextManageNm(String nextManageNm) {
-		this.nextManageNm = nextManageNm;
+	public void setNextManageCd(String nextManageCd) {
+		this.nextManageCd = nextManageCd;
 	}
 
 	/**
@@ -1427,6 +1703,276 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setReqComment(String reqComment) {
 		this.reqComment = reqComment;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javapharmTypeFlgを設定
+	 * @return pharmTypeFlg
+	 */
+	public String getPharmTypeFlg() {
+		return pharmTypeFlg;
+	}
+
+	/**
+	 * @param pharmTypeFlg セットする pharmTypeFlg
+	 */
+	public void setPharmTypeFlg(String pharmTypeFlg) {
+		this.pharmTypeFlg = pharmTypeFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javainsRankFlgを設定
+	 * @return insRankFlg
+	 */
+	public String getInsRankFlg() {
+		return insRankFlg;
+	}
+
+	/**
+	 * @param insRankFlg セットする insRankFlg
+	 */
+	public void setInsRankFlg(String insRankFlg) {
+		this.insRankFlg = insRankFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javaregVisTypeFlgを設定
+	 * @return regVisTypeFlg
+	 */
+	public String getRegVisTypeFlg() {
+		return regVisTypeFlg;
+	}
+
+	/**
+	 * @param regVisTypeFlg セットする regVisTypeFlg
+	 */
+	public void setRegVisTypeFlg(String regVisTypeFlg) {
+		this.regVisTypeFlg = regVisTypeFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javaimpHosTypeFlgを設定
+	 * @return impHosTypeFlg
+	 */
+	public String getImpHosTypeFlg() {
+		return impHosTypeFlg;
+	}
+
+	/**
+	 * @param impHosTypeFlg セットする impHosTypeFlg
+	 */
+	public void setImpHosTypeFlg(String impHosTypeFlg) {
+		this.impHosTypeFlg = impHosTypeFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javahoInsTypeFlgを設定
+	 * @return hoInsTypeFlg
+	 */
+	public String getHoInsTypeFlg() {
+		return hoInsTypeFlg;
+	}
+
+	/**
+	 * @param hoInsTypeFlg セットする hoInsTypeFlg
+	 */
+	public void setHoInsTypeFlg(String hoInsTypeFlg) {
+		this.hoInsTypeFlg = hoInsTypeFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javamanageCdFlgを設定
+	 * @return manageCdFlg
+	 */
+	public String getManageCdFlg() {
+		return manageCdFlg;
+	}
+
+	/**
+	 * @param manageCdFlg セットする manageCdFlg
+	 */
+	public void setManageCdFlg(String manageCdFlg) {
+		this.manageCdFlg = manageCdFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javavacInsTypeFlgを設定
+	 * @return vacInsTypeFlg
+	 */
+	public String getVacInsTypeFlg() {
+		return vacInsTypeFlg;
+	}
+
+	/**
+	 * @param vacInsTypeFlg セットする vacInsTypeFlg
+	 */
+	public void setVacInsTypeFlg(String vacInsTypeFlg) {
+		this.vacInsTypeFlg = vacInsTypeFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javavacVisitTypeFlgを設定
+	 * @return vacVisitTypeFlg
+	 */
+	public String getVacVisitTypeFlg() {
+		return vacVisitTypeFlg;
+	}
+
+	/**
+	 * @param vacVisitTypeFlg セットする vacVisitTypeFlg
+	 */
+	public void setVacVisitTypeFlg(String vacVisitTypeFlg) {
+		this.vacVisitTypeFlg = vacVisitTypeFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCntBaseFlgを設定
+	 * @return bedCntBaseFlg
+	 */
+	public String getBedCntBaseFlg() {
+		return bedCntBaseFlg;
+	}
+
+	/**
+	 * @param bedCntBaseFlg セットする bedCntBaseFlg
+	 */
+	public void setBedCntBaseFlg(String bedCntBaseFlg) {
+		this.bedCntBaseFlg = bedCntBaseFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCnt04Flgを設定
+	 * @return bedCnt04Flg
+	 */
+	public String getBedCnt04Flg() {
+		return bedCnt04Flg;
+	}
+
+	/**
+	 * @param bedCnt04Flg セットする bedCnt04Flg
+	 */
+	public void setBedCnt04Flg(String bedCnt04Flg) {
+		this.bedCnt04Flg = bedCnt04Flg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCnt01Flgを設定
+	 * @return bedCnt01Flg
+	 */
+	public String getBedCnt01Flg() {
+		return bedCnt01Flg;
+	}
+
+	/**
+	 * @param bedCnt01Flg セットする bedCnt01Flg
+	 */
+	public void setBedCnt01Flg(String bedCnt01Flg) {
+		this.bedCnt01Flg = bedCnt01Flg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCnt05Flgを設定
+	 * @return bedCnt05Flg
+	 */
+	public String getBedCnt05Flg() {
+		return bedCnt05Flg;
+	}
+
+	/**
+	 * @param bedCnt05Flg セットする bedCnt05Flg
+	 */
+	public void setBedCnt05Flg(String bedCnt05Flg) {
+		this.bedCnt05Flg = bedCnt05Flg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCnt03Flgを設定
+	 * @return bedCnt03Flg
+	 */
+	public String getBedCnt03Flg() {
+		return bedCnt03Flg;
+	}
+
+	/**
+	 * @param bedCnt03Flg セットする bedCnt03Flg
+	 */
+	public void setBedCnt03Flg(String bedCnt03Flg) {
+		this.bedCnt03Flg = bedCnt03Flg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCnt07Flgを設定
+	 * @return bedCnt07Flg
+	 */
+	public String getBedCnt07Flg() {
+		return bedCnt07Flg;
+	}
+
+	/**
+	 * @param bedCnt07Flg セットする bedCnt07Flg
+	 */
+	public void setBedCnt07Flg(String bedCnt07Flg) {
+		this.bedCnt07Flg = bedCnt07Flg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCnt02Flgを設定
+	 * @return bedCnt02Flg
+	 */
+	public String getBedCnt02Flg() {
+		return bedCnt02Flg;
+	}
+
+	/**
+	 * @param bedCnt02Flg セットする bedCnt02Flg
+	 */
+	public void setBedCnt02Flg(String bedCnt02Flg) {
+		this.bedCnt02Flg = bedCnt02Flg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedCnt06Flgを設定
+	 * @return bedCnt06Flg
+	 */
+	public String getBedCnt06Flg() {
+		return bedCnt06Flg;
+	}
+
+	/**
+	 * @param bedCnt06Flg セットする bedCnt06Flg
+	 */
+	public void setBedCnt06Flg(String bedCnt06Flg) {
+		this.bedCnt06Flg = bedCnt06Flg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javabedsTotFlgを設定
+	 * @return bedsTotFlg
+	 */
+	public String getBedsTotFlg() {
+		return bedsTotFlg;
+	}
+
+	/**
+	 * @param bedsTotFlg セットする bedsTotFlg
+	 */
+	public void setBedsTotFlg(String bedsTotFlg) {
+		this.bedsTotFlg = bedsTotFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javamedBedsTotFlgを設定
+	 * @return medBedsTotFlg
+	 */
+	public String getMedBedsTotFlg() {
+		return medBedsTotFlg;
+	}
+
+	/**
+	 * @param medBedsTotFlg セットする medBedsTotFlg
+	 */
+	public void setMedBedsTotFlg(String medBedsTotFlg) {
+		this.medBedsTotFlg = medBedsTotFlg;
 	}
 
 	/**

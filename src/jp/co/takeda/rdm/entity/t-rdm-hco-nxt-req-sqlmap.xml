@@ -215,13 +215,22 @@
         <result column="INS_NO" property="insNo"/>
         <result column="INS_ABBR_NAME" property="insAbbrName"/>
         <result column="PHARM_TYPE" property="pharmType"/>
+        <result column="INS_TYPE" property="insType"/>
         <result column="INS_RANK" property="insRank"/>
         <result column="REG_VIS_TYPE" property="regVisType"/>
         <result column="IMP_HOS_TYPE" property="impHosType"/>
         <result column="HO_INS_TYPE" property="hoInsType"/>
-        <result column="MANAGE_NM" property="manageNm"/>
+        <result column="MANAGE_CD" property="manageCd"/>
         <result column="VAC_INS_TYPE" property="vacInsType"/>
         <result column="VAC_VISIT_TYPE" property="vacVisitType"/>
+        <result column="PHARM_TYPE_NM" property="pharmTypeNm"/>
+        <result column="INS_RANK_NM" property="insRankNm"/>
+        <result column="REG_VIS_TYPE_NM" property="regVisTypeNm"/>
+        <result column="IMP_HOS_TYPE_NM" property="impHosTypeNm"/>
+        <result column="HO_INS_TYPE_NM" property="hoInsTypeNm"/>
+        <result column="MANAGE_NM" property="manageNm"/>
+        <result column="VAC_INS_TYPE_NM" property="vacInsTypeNm"/>
+        <result column="VAC_VISIT_TYPE_NM" property="vacVisitTypeNm"/>
         <result column="BEDCNT_BASE" property="bedCntBase"/>
         <result column="BEDCNT04" property="bedCnt04"/>
         <result column="BEDCNT01" property="bedCnt01"/>
@@ -261,6 +270,24 @@
         <result column="NEXT_BEDS_TOT" property="nextBedsTot"/>
         <result column="NEXT_MED_BEDS_TOT" property="nextMedBedsTot"/>
 		<result column="REQ_COMMENT" property="reqComment"/>
+		<result column="ULT_DIF" property="ultDif"/>
+		<result column="PHARM_TYPE_FLG" property="pharmTypeFlg"/>
+        <result column="INS_RANK_FLG" property="insRankFlg"/>
+        <result column="REG_VIS_TYPE_FLG" property="regVisTypeFlg"/>
+        <result column="IMP_HOS_TYPE_FLG" property="impHosTypeFlg"/>
+        <result column="MANAGE_CD_FLG" property="manageCdFlg"/>
+        <result column="VAC_INS_TYPE_FLG" property="vacInsTypeFlg"/>
+        <result column="VAC_VISIT_TYPE_FLG" property="vacVisitTypeFlg"/>
+        <result column="BEDCNT_BASE_FLG" property="bedCntBaseFlg"/>
+        <result column="BEDCNT04_FLG" property="bedCnt04Flg"/>
+        <result column="BEDCNT01_FLG" property="bedCnt01Flg"/>
+        <result column="BEDCNT05_FLG" property="bedCnt05Flg"/>
+        <result column="BEDCNT03_FLG" property="bedCnt03Flg"/>
+        <result column="BEDCNT07_FLG" property="bedCnt07Flg"/>
+        <result column="BEDCNT02_FLG" property="bedCnt02Flg"/>
+        <result column="BEDCNT06_FLG" property="bedCnt06Flg"/>
+        <result column="BEDS_TOT_FLG" property="bedsTotFlg"/>
+        <result column="MED_BEDS_TOT_FLG" property="medBedsTotFlg"/>
         <result column="CNT" property="cnt"/>
     </resultMap>
     <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
@@ -1641,14 +1668,23 @@
 		SELECT DISTINCT
 		  MST.INS_NO
 		, MST.INS_ABBR_NAME
-		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE
-		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK
-		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE
-		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE
-		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE
+		, MST.INS_SBT AS INS_TYPE
+		, MST.PHARM_TYPE
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE_NM
+		, MST.INS_RANK
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK_NM
+		, MST.REG_VIS_TYPE
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM
+		, MST.IMP_HOS_TYPE
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE_NM
+		, MST.HO_INS_TYPE
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE_NM
+		, MST.MANAGE_CD
 		, HCOKEIEI.KEIEITAI_KJ AS MANAGE_NM
-		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE
-		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE
+		, VAC.VAC_INS_TYPE
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE_NM
+		, VAC.VAC_VISIT_TYPE
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE_NM
 		, BEDCNT.BEDCNT_BASE
 		, BEDCNT.BEDCNT04
 		, BEDCNT.BEDCNT01
@@ -1688,6 +1724,30 @@
 		, COL.BEDS_TOT AS NEXT_BEDS_TOT
 		, COL.MED_BEDS_TOT AS NEXT_MED_BEDS_TOT
 		, REQ_COM.REQ_COMMENT
+		, COLOR.PHARM_TYPE_FLG
+		, COLOR.INS_RANK_FLG
+		, COLOR.REG_VIS_TYPE_FLG
+		, COLOR.IMP_HOS_TYPE_FLG
+		, COLOR.MANAGE_CD_FLG
+		, COLOR.VAC_INS_TYPE_FLG
+		, COLOR.VAC_VISIT_TYPE_FLG
+		, COLOR.BEDCNT_BASE_FLG
+		, COLOR.BEDCNT04_FLG
+		, COLOR.BEDCNT01_FLG
+		, COLOR.BEDCNT05_FLG
+		, COLOR.BEDCNT03_FLG
+		, COLOR.BEDCNT07_FLG
+		, COLOR.BEDCNT02_FLG
+		, COLOR.BEDCNT06_FLG
+		, COLOR.BEDS_TOT_FLG
+		, COLOR.MED_BEDS_TOT_FLG
+		, CASE WHEN (BEDCNT.BEDCNT_BASE <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SUM)
+			OR BEDCNT.BEDCNT04 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_KEKKAKU)
+			OR BEDCNT.BEDCNT01 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_IPPAN)
+			OR BEDCNT.BEDCNT05 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_KANSEN)
+			OR BEDCNT.BEDCNT03 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SEISHIN)
+			OR BEDCNT.BEDCNT07 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_RYOYO)
+			) THEN '有' ELSE ' ' END AS ULT_DIF
 		FROM
 		M_RDM_HCO_MST MST -- 施設_基本情報
 		LEFT JOIN
@@ -1835,7 +1895,7 @@
 		<if test="insClass != null">AND MST.INS_CLASS = #{insClass}</if>
 		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
-		<if test="ultDif == '1'">
+		<if test="ultDif == 1">
 			AND (BEDCNT.BEDCNT_BASE <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SUM)
 			OR BEDCNT.BEDCNT04 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_KEKKAKU)
 			OR BEDCNT.BEDCNT01 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_IPPAN)
@@ -1844,7 +1904,7 @@
 			OR BEDCNT.BEDCNT07 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_RYOYO)
 			)
 		</if>
-		<if test="ultDif == '0'">
+		<if test="ultDif == 0">
 			AND (BEDCNT.BEDCNT_BASE = TO_CHAR(MDB.KYOKABYOSHOSU_SUM)
 			AND BEDCNT.BEDCNT04 = TO_CHAR(MDB.KYOKABYOSHOSU_KEKKAKU)
 			AND BEDCNT.BEDCNT01 = TO_CHAR(MDB.KYOKABYOSHOSU_IPPAN)
@@ -1937,18 +1997,27 @@
 
 		SELECT
 		  COUNT(*) AS CNT
-		FROM (
+		FROM(
 		SELECT DISTINCT
 		  MST.INS_NO
 		, MST.INS_ABBR_NAME
-		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE
-		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK
-		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE
-		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE
-		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE
+		, MST.INS_SBT AS INS_TYPE
+		, MST.PHARM_TYPE
+		, CDM_PHARMTYPE.VALUE1_KANJ AS PHARM_TYPE_NM
+		, MST.INS_RANK
+		, CDM_INSRANK.VALUE1_KANJ AS INS_RANK_NM
+		, MST.REG_VIS_TYPE
+		, CDM_REGVISTYPE.VALUE1_KANJ AS REG_VIS_TYPE_NM
+		, MST.IMP_HOS_TYPE
+		, CDM_IMPHOSTYPE.VALUE1_KANJ AS IMP_HOS_TYPE_NM
+		, MST.HO_INS_TYPE
+		, CDM_HOINSTYPE.VALUE1_KANJ AS HO_INS_TYPE_NM
+		, MST.MANAGE_CD
 		, HCOKEIEI.KEIEITAI_KJ AS MANAGE_NM
-		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE
-		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE
+		, VAC.VAC_INS_TYPE
+		, CDM_VACINSTYPE.VALUE1_KANJ AS VAC_INS_TYPE_NM
+		, VAC.VAC_VISIT_TYPE
+		, CDM_VACVISITTYPE.VALUE1_KANJ AS VAC_VISIT_TYPE_NM
 		, BEDCNT.BEDCNT_BASE
 		, BEDCNT.BEDCNT04
 		, BEDCNT.BEDCNT01
@@ -1988,6 +2057,30 @@
 		, COL.BEDS_TOT AS NEXT_BEDS_TOT
 		, COL.MED_BEDS_TOT AS NEXT_MED_BEDS_TOT
 		, REQ_COM.REQ_COMMENT
+		, COLOR.PHARM_TYPE_FLG
+		, COLOR.INS_RANK_FLG
+		, COLOR.REG_VIS_TYPE_FLG
+		, COLOR.IMP_HOS_TYPE_FLG
+		, COLOR.MANAGE_CD_FLG
+		, COLOR.VAC_INS_TYPE_FLG
+		, COLOR.VAC_VISIT_TYPE_FLG
+		, COLOR.BEDCNT_BASE_FLG
+		, COLOR.BEDCNT04_FLG
+		, COLOR.BEDCNT01_FLG
+		, COLOR.BEDCNT05_FLG
+		, COLOR.BEDCNT03_FLG
+		, COLOR.BEDCNT07_FLG
+		, COLOR.BEDCNT02_FLG
+		, COLOR.BEDCNT06_FLG
+		, COLOR.BEDS_TOT_FLG
+		, COLOR.MED_BEDS_TOT_FLG
+		, CASE WHEN (BEDCNT.BEDCNT_BASE <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SUM)
+			OR BEDCNT.BEDCNT04 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_KEKKAKU)
+			OR BEDCNT.BEDCNT01 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_IPPAN)
+			OR BEDCNT.BEDCNT05 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_KANSEN)
+			OR BEDCNT.BEDCNT03 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SEISHIN)
+			OR BEDCNT.BEDCNT07 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_RYOYO)
+			) THEN '有' ELSE ' ' END AS ULT_DIF
 		FROM
 		M_RDM_HCO_MST MST -- 施設_基本情報
 		LEFT JOIN
@@ -2135,7 +2228,7 @@
 		<if test="insClass != null">AND MST.INS_CLASS = #{insClass}</if>
 		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
 		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
-		<if test="ultDif == '1'">
+		<if test="ultDif == 1">
 			AND (BEDCNT.BEDCNT_BASE <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SUM)
 			OR BEDCNT.BEDCNT04 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_KEKKAKU)
 			OR BEDCNT.BEDCNT01 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_IPPAN)
@@ -2144,7 +2237,7 @@
 			OR BEDCNT.BEDCNT07 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_RYOYO)
 			)
 		</if>
-		<if test="ultDif == '0'">
+		<if test="ultDif == 0">
 			AND (BEDCNT.BEDCNT_BASE = TO_CHAR(MDB.KYOKABYOSHOSU_SUM)
 			AND BEDCNT.BEDCNT04 = TO_CHAR(MDB.KYOKABYOSHOSU_KEKKAKU)
 			AND BEDCNT.BEDCNT01 = TO_CHAR(MDB.KYOKABYOSHOSU_IPPAN)

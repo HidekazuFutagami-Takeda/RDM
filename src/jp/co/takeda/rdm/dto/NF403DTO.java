@@ -220,6 +220,48 @@ public class NF403DTO extends BaseDTO implements Serializable {
 	 */
 	private LinkedHashMap<String,String> ultDifCombo = new LinkedHashMap<String,String>();
 
+	/**
+     * コンボボックス_施設区分
+     * @generated
+     */
+    private LinkedHashMap<String,String> pharmTypeCombo = new LinkedHashMap<String,String>();
+
+	/**
+     * コンボボックス_階級区分
+     * @generated
+     */
+    private LinkedHashMap<String,String> insRankCombo = new LinkedHashMap<String,String>();
+
+    /**
+     * コンボボックス_定訪先区分
+     * @generated
+     */
+    private LinkedHashMap<String,String> regVisTypeCombo = new LinkedHashMap<String,String>();
+
+    /**
+     * コンボボックス_重点病院区分
+     * @generated
+     */
+    private LinkedHashMap<String,String> impHosTypeCombo = new LinkedHashMap<String,String>();
+
+    /**
+     * コンボボックス_経営主体
+     * @generated
+     */
+    private LinkedHashMap<String,String> manageCdCombo = new LinkedHashMap<String,String>();
+
+    /**
+     * コンボボックス_ワクチン対象区分
+     * @generated
+     */
+    private LinkedHashMap<String,String> vacInsTypeCombo = new LinkedHashMap<String,String>();
+
+    /**
+     * コンボボックス_ワクチン定訪先区分
+     * @generated
+     */
+    private LinkedHashMap<String,String> vacVisitTypeCombo = new LinkedHashMap<String,String>();
+
     /**
 	 * メッセージ中身
 	 * @generated
@@ -721,6 +763,111 @@ public class NF403DTO extends BaseDTO implements Serializable {
 	 */
 	public void setHoInsTypeCombo(LinkedHashMap<String, String> hoInsTypeCombo) {
 		this.hoInsTypeCombo = hoInsTypeCombo;
+	}
+
+	/**
+	 * NF403DTO.javapharmTypeComboを設定
+	 * @return pharmTypeCombo
+	 */
+	public LinkedHashMap<String,String> getPharmTypeCombo() {
+		return pharmTypeCombo;
+	}
+
+	/**
+	 * @param pharmTypeCombo セットする pharmTypeCombo
+	 */
+	public void setPharmTypeCombo(LinkedHashMap<String,String> pharmTypeCombo) {
+		this.pharmTypeCombo = pharmTypeCombo;
+	}
+
+	/**
+	 * NF403DTO.javainsRankComboを設定
+	 * @return insRankCombo
+	 */
+	public LinkedHashMap<String, String> getInsRankCombo() {
+		return insRankCombo;
+	}
+
+	/**
+	 * @param insRankCombo セットする insRankCombo
+	 */
+	public void setInsRankCombo(LinkedHashMap<String, String> insRankCombo) {
+		this.insRankCombo = insRankCombo;
+	}
+
+	/**
+	 * NF403DTO.javaregVisTypeComboを設定
+	 * @return regVisTypeCombo
+	 */
+	public LinkedHashMap<String, String> getRegVisTypeCombo() {
+		return regVisTypeCombo;
+	}
+
+	/**
+	 * @param regVisTypeCombo セットする regVisTypeCombo
+	 */
+	public void setRegVisTypeCombo(LinkedHashMap<String, String> regVisTypeCombo) {
+		this.regVisTypeCombo = regVisTypeCombo;
+	}
+
+	/**
+	 * NF403DTO.javaimpHosTypeComboを設定
+	 * @return impHosTypeCombo
+	 */
+	public LinkedHashMap<String, String> getImpHosTypeCombo() {
+		return impHosTypeCombo;
+	}
+
+	/**
+	 * @param impHosTypeCombo セットする impHosTypeCombo
+	 */
+	public void setImpHosTypeCombo(LinkedHashMap<String, String> impHosTypeCombo) {
+		this.impHosTypeCombo = impHosTypeCombo;
+	}
+
+	/**
+	 * NF403DTO.javamanageCdComboを設定
+	 * @return manageCdCombo
+	 */
+	public LinkedHashMap<String, String> getManageCdCombo() {
+		return manageCdCombo;
+	}
+
+	/**
+	 * @param manageCdCombo セットする manageCdCombo
+	 */
+	public void setManageCdCombo(LinkedHashMap<String, String> manageCdCombo) {
+		this.manageCdCombo = manageCdCombo;
+	}
+
+	/**
+	 * NF403DTO.javavacInsTypeComboを設定
+	 * @return vacInsTypeCombo
+	 */
+	public LinkedHashMap<String, String> getVacInsTypeCombo() {
+		return vacInsTypeCombo;
+	}
+
+	/**
+	 * @param vacInsTypeCombo セットする vacInsTypeCombo
+	 */
+	public void setVacInsTypeCombo(LinkedHashMap<String, String> vacInsTypeCombo) {
+		this.vacInsTypeCombo = vacInsTypeCombo;
+	}
+
+	/**
+	 * NF403DTO.javavacVisitTypeComboを設定
+	 * @return vacVisitTypeCombo
+	 */
+	public LinkedHashMap<String, String> getVacVisitTypeCombo() {
+		return vacVisitTypeCombo;
+	}
+
+	/**
+	 * @param vacVisitTypeCombo セットする vacVisitTypeCombo
+	 */
+	public void setVacVisitTypeCombo(LinkedHashMap<String, String> vacVisitTypeCombo) {
+		this.vacVisitTypeCombo = vacVisitTypeCombo;
 	}
 
 	/**

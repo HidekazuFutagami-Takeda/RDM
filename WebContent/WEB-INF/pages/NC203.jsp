@@ -257,13 +257,13 @@ if (stack.peek() instanceof NC203DTO) {
 
 			<tr>
 				<%-- 電話番号(半角) --%>
-				<td class="pupControlItem"><nobr>&nbsp;電話番号(半角)</nobr></td>
+				<td class="pupControlItem"><nobr>&nbsp;電話番号(半角)※</nobr></td>
 				<td>
  					<s:textfield id="phone1" size="20" maxlength="14" name="phone1" style="ime-mode:inactive;" />
 				</td>
 
 				<%-- 郵便番号(半角) --%>
-				<td class="pupControlItem"><nobr>&nbsp;郵便番号(半角)</nobr></td>
+				<td class="pupControlItem"><nobr>&nbsp;郵便番号(半角)※</nobr></td>
 				<td>
 					<s:textfield id="insPcode" size="20" maxlength="14" name="insPcode" style="ime-mode:inactive;" />
 				</td>
@@ -300,7 +300,7 @@ if (stack.peek() instanceof NC203DTO) {
 			</tr>
 			<tr>
 				<%-- 住所 --%>
-				<td class="pupControlItem"><nobr>&nbsp;住所</nobr></td>
+				<td class="pupControlItem"><nobr>&nbsp;住所(全角)※</nobr></td>
 				<td  colspan="3">
   					<s:textfield id="address" size="50" maxlength="150" name="address" style="ime-mode:inactive;" />
 				</td>
@@ -312,6 +312,16 @@ if (stack.peek() instanceof NC203DTO) {
                     <input type="button" align="left" value="クリア" class="comMiniLink" onclick="clearText()">
 				</td>
 			</tr>
+			<s:if test="viewKbn == 1">
+			<tr>
+				<td>&nbsp;</td>
+				<td class="pupControlItem"><nobr>※項目は、武田施設情報とアルトマーク施設情報を同時検索します。</nobr></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			</s:if>
 		</tbody>
 		</table>
 		<!-- 前制御部 終了 -->

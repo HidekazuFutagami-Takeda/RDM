@@ -452,13 +452,15 @@
  		(
  		SELECT
  			INS_NO,
- 		    ULT_INS_NO
+ 		    ULT_INS_NO,
+ 		    '0' AS ULT_FLG
  		FROM
  		     TAKEDA_ULT
  		UNION ALL
  		SELECT
  		    NULL as INS_NO,
- 		    DCF_SHISETSU_CD  as ULT_INS_NO
+ 		    DCF_SHISETSU_CD  as ULT_INS_NO,
+ 		    '1' AS ULT_FLG
  		FROM
  		    MDM_ONLY
  		) X
@@ -484,12 +486,12 @@
  		AND CODE_MST3.DEL_FLG = '0'
  		AND CODE_MST3.VALUE1 = MDB_HCO_MST1.SHISETSU_KBN)
 
- 		LEFT JOIN ORAUSR01.M_RDM_HCO_KEIEITAI KEIEI_ULT --施設_経営主体マスタ ULT        --16
- 		ON (KEIEI_ULT.DEL_FLG = '0')
-
  		LEFT JOIN ORAUSR01.M_RDM_HCO_KEIEITAI_LNK_MST KEIEI_LNK_MST --経営体紐付けマスタ --16_2
- 		ON (KEIEI_ULT.SET_DT_CD = KEIEI_LNK_MST.SET_DT_CD
- 		AND KEIEI_LNK_MST.KEIEITAI_CD = MDB_HCO_MST1.KEIEITAI_CD)
+ 		ON (KEIEI_LNK_MST.KEIEITAI_CD = MDB_HCO_MST1.KEIEITAI_CD)
+
+ 		LEFT JOIN ORAUSR01.M_RDM_HCO_KEIEITAI KEIEI_ULT --施設_経営主体マスタ ULT        --16
+ 		ON (KEIEI_ULT.DEL_FLG = '0'
+ 		AND KEIEI_ULT.SET_DT_CD = KEIEI_LNK_MST.SET_DT_CD)
 
  		LEFT JOIN ORAUSR01.M_RDM_CODE_MST CODE_MST4 --コード情報 施設種別                --17
  		ON (CODE_MST4.CODE_NAME = 'INS_TYPE'
@@ -504,10 +506,10 @@
 
  		<where>
  		<if test="kensakuHaiinKbnNullFlg == '1' ">
- 			AND HCO_MST.DEL_KBN IS NULL
+ 			AND (HCO_MST.DEL_KBN IS NULL OR X.ULT_FLG = '1')
  		</if>
  		<if test="kensakuHaiinKbnNullFlg != '1' ">
- 			<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+ 			<if test="kensakuHaiinKbn != null ">AND (HCO_MST.DEL_KBN = #{kensakuHaiinKbn} OR X.ULT_FLG = '1') --廃院区分</if>
  		</if>
  		<if test="insKanjiSrch != null">
  			AND (HCO_MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjiSrch}|| '%' --施設名（全角）
@@ -517,12 +519,12 @@
  			AND (HCO_MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%' --施設名（半角カナ）
  			OR MDB_HCO_MST1.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
  		</if>
- 		<if test="kensakuDelFlg != null ">AND HCO_MST.DEL_FLG = #{kensakuDelFlg} --削除フラグ</if>
- 		<if test="insNoSrch != null">AND HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%' --施設固定コード</if>
- 		<if test="kensakuManageCd != null">AND HCO_MST.MANAGE_CD = #{kensakuManageCd} --経営主体コード</if>
- 		<if test="kensakuHoInsType != null ">AND HCO_MST.HO_INS_TYPE = #{kensakuHoInsType} --対象区分</if>
- 		<if test="kensakuInsSbt != null ">AND HCO_MST.INS_SBT = #{kensakuInsSbt} --施設種別</if>
- 		<if test="pharmType != null ">AND HCO_MST.PHARM_TYPE = #{pharmType} --施設区分</if>
+ 		<if test="kensakuDelFlg != null ">AND (HCO_MST.DEL_FLG = #{kensakuDelFlg} OR X.ULT_FLG = '1') --削除フラグ</if>
+ 		<if test="insNoSrch != null">AND (HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%' OR X.ULT_FLG = '1') --施設固定コード</if>
+ 		<if test="kensakuManageCd != null">AND (HCO_MST.MANAGE_CD = #{kensakuManageCd} OR X.ULT_FLG = '1') --経営主体コード</if>
+ 		<if test="kensakuHoInsType != null ">AND (HCO_MST.HO_INS_TYPE = #{kensakuHoInsType} OR X.ULT_FLG = '1') --対象区分</if>
+ 		<if test="kensakuInsSbt != null ">AND (HCO_MST.INS_SBT = #{kensakuInsSbt} OR X.ULT_FLG = '1') --施設種別</if>
+ 		<if test="pharmType != null ">AND (HCO_MST.PHARM_TYPE = #{pharmType} OR X.ULT_FLG = '1') --施設区分</if>
  		<if test="phone1 != null">
  			AND (HCO_MST.INS_PHONE_SRCH LIKE '%' ||#{phone1}|| '%' --電話番号
  			OR MDB_HCO_MST1.SHISETSU_TEL_SRCH LIKE '%' ||#{phone1}|| '%')
@@ -531,14 +533,14 @@
  			AND (HCO_MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%' --郵便番号
  			OR MDB_HCO_MST1.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
  		</if>
- 		<if test="koshisetsuCheck == true">AND HCO_MST.MAIN_INS_NO IS NULL --子施設を除く</if>
- 		<if test="kensakuAddrCodePref != null">AND HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} --JIS府県コード</if>
- 		<if test="kensakuAddrCodeCity != null">AND HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} --JIS市区町村コード</if>
+ 		<if test="koshisetsuCheck == true">AND (HCO_MST.MAIN_INS_NO IS NULL OR X.ULT_FLG = '1') --子施設を除く</if>
+ 		<if test="kensakuAddrCodePref != null">AND (HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} OR X.ULT_FLG = '1') --JIS府県コード</if>
+ 		<if test="kensakuAddrCodeCity != null">AND (HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} OR X.ULT_FLG = '1') --JIS市区町村コード</if>
  		<if test="address != null">
  			AND (HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所
  			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
  		</if>
- 		<if test="ultNo != null">AND HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' --ULTコード</if>
+ 		<if test="ultNo != null">AND (HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' OR X.ULT_FLG = '1') --ULTコード</if>
  		<if test="knrFlg == false">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
  			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
@@ -670,7 +672,7 @@
      </select>
      <select id="selectCntHcoUlt" parameterType="jp.co.takeda.rdm.entity.join.SelectCntSelectHcoEntity" resultMap="selectCntHcoResultMap">
      SELECT COUNT(*) CNT_HCO FROM(
-      WITH MDM_ONLY AS ( --6 ULTのみ
+       	   WITH MDM_ONLY AS ( --6 ULTのみ
     		 SELECT
     		     *
    		  FROM ORAUSR01.T_RDM_M_MDB_HCO_MST e  --ULT_MDB施設マスタ
@@ -718,13 +720,15 @@
  		(
  		SELECT
  			INS_NO,
- 		    ULT_INS_NO
+ 		    ULT_INS_NO,
+ 		    '0' AS ULT_FLG
  		FROM
  		     TAKEDA_ULT
  		UNION ALL
  		SELECT
  		    NULL as INS_NO,
- 		    DCF_SHISETSU_CD  as ULT_INS_NO
+ 		    DCF_SHISETSU_CD  as ULT_INS_NO,
+ 		    '1' AS ULT_FLG
  		FROM
  		    MDM_ONLY
  		) X
@@ -750,12 +754,12 @@
  		AND CODE_MST3.DEL_FLG = '0'
  		AND CODE_MST3.VALUE1 = MDB_HCO_MST1.SHISETSU_KBN)
 
- 		LEFT JOIN ORAUSR01.M_RDM_HCO_KEIEITAI KEIEI_ULT --施設_経営主体マスタ ULT        --16
- 		ON (KEIEI_ULT.DEL_FLG = '0')
-
  		LEFT JOIN ORAUSR01.M_RDM_HCO_KEIEITAI_LNK_MST KEIEI_LNK_MST --経営体紐付けマスタ --16_2
- 		ON (KEIEI_ULT.SET_DT_CD = KEIEI_LNK_MST.SET_DT_CD
- 		AND KEIEI_LNK_MST.KEIEITAI_CD = MDB_HCO_MST1.KEIEITAI_CD)
+ 		ON (KEIEI_LNK_MST.KEIEITAI_CD = MDB_HCO_MST1.KEIEITAI_CD)
+
+ 		LEFT JOIN ORAUSR01.M_RDM_HCO_KEIEITAI KEIEI_ULT --施設_経営主体マスタ ULT        --16
+ 		ON (KEIEI_ULT.DEL_FLG = '0'
+ 		AND KEIEI_ULT.SET_DT_CD = KEIEI_LNK_MST.SET_DT_CD)
 
  		LEFT JOIN ORAUSR01.M_RDM_CODE_MST CODE_MST4 --コード情報 施設種別                --17
  		ON (CODE_MST4.CODE_NAME = 'INS_TYPE'
@@ -770,10 +774,10 @@
 
  		<where>
  		<if test="kensakuHaiinKbnNullFlg == '1' ">
- 			AND HCO_MST.DEL_KBN IS NULL
+ 			AND (HCO_MST.DEL_KBN IS NULL OR X.ULT_FLG = '1')
  		</if>
  		<if test="kensakuHaiinKbnNullFlg != '1' ">
- 			<if test="kensakuHaiinKbn != null ">AND HCO_MST.DEL_KBN = #{kensakuHaiinKbn} --廃院区分</if>
+ 			<if test="kensakuHaiinKbn != null ">AND (HCO_MST.DEL_KBN = #{kensakuHaiinKbn} OR X.ULT_FLG = '1') --廃院区分</if>
  		</if>
  		<if test="insKanjiSrch != null">
  			AND (HCO_MST.INS_KANJ_SRCH LIKE '%' ||#{insKanjiSrch}|| '%' --施設名（全角）
@@ -783,12 +787,12 @@
  			AND (HCO_MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%' --施設名（半角カナ）
  			OR MDB_HCO_MST1.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
  		</if>
- 		<if test="kensakuDelFlg != null ">AND HCO_MST.DEL_FLG = #{kensakuDelFlg} --削除フラグ</if>
- 		<if test="insNoSrch != null">AND HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%' --施設固定コード</if>
- 		<if test="kensakuManageCd != null">AND HCO_MST.MANAGE_CD = #{kensakuManageCd} --経営主体コード</if>
- 		<if test="kensakuHoInsType != null ">AND HCO_MST.HO_INS_TYPE = #{kensakuHoInsType} --対象区分</if>
- 		<if test="kensakuInsSbt != null ">AND HCO_MST.INS_SBT = #{kensakuInsSbt} --施設種別</if>
- 		<if test="pharmType != null ">AND HCO_MST.PHARM_TYPE = #{pharmType} --施設区分</if>
+ 		<if test="kensakuDelFlg != null ">AND (HCO_MST.DEL_FLG = #{kensakuDelFlg} OR X.ULT_FLG = '1') --削除フラグ</if>
+ 		<if test="insNoSrch != null">AND (HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%' OR X.ULT_FLG = '1') --施設固定コード</if>
+ 		<if test="kensakuManageCd != null">AND (HCO_MST.MANAGE_CD = #{kensakuManageCd} OR X.ULT_FLG = '1') --経営主体コード</if>
+ 		<if test="kensakuHoInsType != null ">AND (HCO_MST.HO_INS_TYPE = #{kensakuHoInsType} OR X.ULT_FLG = '1') --対象区分</if>
+ 		<if test="kensakuInsSbt != null ">AND (HCO_MST.INS_SBT = #{kensakuInsSbt} OR X.ULT_FLG = '1') --施設種別</if>
+ 		<if test="pharmType != null ">AND (HCO_MST.PHARM_TYPE = #{pharmType} OR X.ULT_FLG = '1') --施設区分</if>
  		<if test="phone1 != null">
  			AND (HCO_MST.INS_PHONE_SRCH LIKE '%' ||#{phone1}|| '%' --電話番号
  			OR MDB_HCO_MST1.SHISETSU_TEL_SRCH LIKE '%' ||#{phone1}|| '%')
@@ -797,21 +801,21 @@
  			AND (HCO_MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%' --郵便番号
  			OR MDB_HCO_MST1.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
  		</if>
- 		<if test="koshisetsuCheck == true">AND HCO_MST.MAIN_INS_NO IS NULL --子施設を除く</if>
- 		<if test="kensakuAddrCodePref != null">AND HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} --JIS府県コード</if>
- 		<if test="kensakuAddrCodeCity != null">AND HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} --JIS市区町村コード</if>
+ 		<if test="koshisetsuCheck == true">AND (HCO_MST.MAIN_INS_NO IS NULL OR X.ULT_FLG = '1') --子施設を除く</if>
+ 		<if test="kensakuAddrCodePref != null">AND (HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} OR X.ULT_FLG = '1') --JIS府県コード</if>
+ 		<if test="kensakuAddrCodeCity != null">AND (HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} OR X.ULT_FLG = '1') --JIS市区町村コード</if>
  		<if test="address != null">
  			AND (HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所
  			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
  		</if>
- 		<if test="ultNo != null">AND HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' --ULTコード</if>
+ 		<if test="ultNo != null">AND (HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' OR X.ULT_FLG = '1') --ULTコード</if>
  		<if test="knrFlg == false">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
  			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
  			<if test="brCd != null">--AND JGI_SOS_MST1.BR_CODE = #{brCd}</if>
  			<if test="distCd != null">--AND JGI_SOS_MST1.DIST_CODE = #{distCd}</if>
  		</if>
- 	<if test="knrFlg == true">
+ 		<if test="knrFlg == true">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
  		</if>
  		<if test="knrFlg == false and sosCd != null">

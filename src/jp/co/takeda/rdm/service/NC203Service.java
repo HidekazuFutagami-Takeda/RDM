@@ -337,7 +337,7 @@ public class NC203Service extends BaseService {
         	if(entity.getInsSbtNm() != null) {
         	test.setInsSbtNm(entity.getInsSbtNm());
         	}else {
-        	test.setInsSbtNm("");
+        	test.setInsSbtNm(" ");
         	}
 
         	// 経営主体コード

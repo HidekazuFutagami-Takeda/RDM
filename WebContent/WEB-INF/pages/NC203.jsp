@@ -456,6 +456,10 @@ if (stack.peek() instanceof NC203DTO) {
 	                <td class="comTableTitle" style="width:5pt;"><nobr>ULTベッド数</nobr></td>
 				</tr>
 				<s:iterator value="insData" status="status" var="rowBean">
+					<s:hidden name="insData[%{#status.index}].insSbt" />
+					<s:hidden name="insData[%{#status.index}].manageCd" />
+					<s:hidden name="insData[%{#status.index}].shisetsuKbn" />
+					<s:hidden name="insData[%{#status.index}].keieitaiCd" />
 				<tr>
 					<td class="pupButton" style="height:90%;" rowspan="2" >
 					<input class="pupButton" type="button" value="" OnClick="cseSelectIns(
@@ -477,8 +481,8 @@ if (stack.peek() instanceof NC203DTO) {
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insNo" /></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAddr" /></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].phone1" /></td>
-					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insSbt" /></td>
-					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].manageCd" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insSbtNm" /></td>
+					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].manageNm" /></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].bedsTot" /></td>
 				</tr>
 				<tr>
@@ -487,8 +491,8 @@ if (stack.peek() instanceof NC203DTO) {
 					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].dcfShisetsuCd" /></td>
 					<td class="comTableItem" id="left" style="background-color:#e0ffff" style="width:500pt"><s:label key="insData[%{#status.index}].address" /></td>
 					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuTel" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuKbn" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].keieitaiCd" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuKbnNm" /></td>
+					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].keieitaiNm" /></td>
 					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].byoshoSu" /></td>
 				</tr>
 	            </s:iterator>

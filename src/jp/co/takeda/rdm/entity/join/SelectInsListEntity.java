@@ -173,67 +173,91 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
     private String insAddr;
 
     /**
-     * JIS府県名
+     * 施設種別
      * @generated
      */
     private String insSbt;
 
     /**
-     * 武田市区郡コード
+     * 施設種別名
+     * @generated
+     */
+    private String insSbtNm;
+
+    /**
+     * 経営主体
      * @generated
      */
     private String manageCd;
 
     /**
-     * 武田市区郡名
+     * 経営主体
+     * @generated
+     */
+    private String manageNm;
+
+    /**
+     * 病床数
      * @generated
      */
     private int bedsTot;
 
     /**
-     * レコード件数
+     * 施設名略
      * @generated
      */
     private String shisetsuNmRyaku;
 
     /**
-     * レコード件数
+     * 施設名
      * @generated
      */
     private String shisetsuNm;
 
     /**
-     * レコード件数
+     * DCF施設コード
      * @generated
      */
     private String dcfShisetsuCd;
 
     /**
-     * レコード件数
+     * 住所
      * @generated
      */
     private String address;
 
     /**
-     * レコード件数
+     * 電話番号
      * @generated
      */
     private String shisetsuTel;
 
     /**
-     * レコード件数
+     * 施設区分
      * @generated
      */
     private String shisetsuKbn;
 
     /**
-     * レコード件数
+     * 施設区分
+     * @generated
+     */
+    private String shisetsuKbnNm;
+
+    /**
+     * 経営主体
      * @generated
      */
     private String keieitaiCd;
 
     /**
-     * レコード件数
+     * 経営主体
+     * @generated
+     */
+    private String keieitaiNm;
+
+    /**
+     * 病床数
      * @generated
      */
     private int byoshoSu;
@@ -895,6 +919,58 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
 	 */
 	public void setInsClass(String insClass) {
 		this.insClass = insClass;
+	}
+	/**
+	 * SelectInsListEntity.javainsSbtNmを設定
+	 * @return insSbtNm
+	 */
+	public String getInsSbtNm() {
+		return insSbtNm;
+	}
+	/**
+	 * @param insSbtNm セットする insSbtNm
+	 */
+	public void setInsSbtNm(String insSbtNm) {
+		this.insSbtNm = insSbtNm;
+	}
+	/**
+	 * SelectInsListEntity.javamanageNmを設定
+	 * @return manageNm
+	 */
+	public String getManageNm() {
+		return manageNm;
+	}
+	/**
+	 * @param manageNm セットする manageNm
+	 */
+	public void setManageNm(String manageNm) {
+		this.manageNm = manageNm;
+	}
+	/**
+	 * SelectInsListEntity.javashisetsuKbnNmを設定
+	 * @return shisetsuKbnNm
+	 */
+	public String getShisetsuKbnNm() {
+		return shisetsuKbnNm;
+	}
+	/**
+	 * @param shisetsuKbnNm セットする shisetsuKbnNm
+	 */
+	public void setShisetsuKbnNm(String shisetsuKbnNm) {
+		this.shisetsuKbnNm = shisetsuKbnNm;
+	}
+	/**
+	 * SelectInsListEntity.javakeieitaiNmを設定
+	 * @return keieitaiNm
+	 */
+	public String getKeieitaiNm() {
+		return keieitaiNm;
+	}
+	/**
+	 * @param keieitaiNm セットする keieitaiNm
+	 */
+	public void setKeieitaiNm(String keieitaiNm) {
+		this.keieitaiNm = keieitaiNm;
 	}
 	/**
      * このEntityの値を返す

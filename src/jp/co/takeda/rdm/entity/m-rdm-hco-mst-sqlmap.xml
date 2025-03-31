@@ -73,7 +73,9 @@
          <result column="INS_ADDR" property="insAddr"/>
          <result column="INS_PHONE1" property="phone1"/>
          <result column="INS_SBT" property="insSbt"/>
+         <result column="INS_SBT_NM" property="insSbtNm"/>
          <result column="MANAGE_CD" property="manageCd"/>
+         <result column="MANAGE_NM" property="manageNm"/>
          <result column="BEDS_TOT" property="bedsTot"/>
          <result column="SHISETSU_NM_RYAKU" property="shisetsuNmRyaku"/>
          <result column="SHISETSU_NM" property="shisetsuNm"/>
@@ -81,7 +83,9 @@
          <result column="ADDRESS" property="address"/>
          <result column="SHISETSU_TEL" property="shisetsuTel"/>
          <result column="SHISETSU_KBN" property="shisetsuKbn"/>
+         <result column="SHISETSU_KBN_NM" property="shisetsuKbnNm"/>
          <result column="KEIEITAI_CD" property="keieitaiCd"/>
+         <result column="KEIEITAI_NM" property="keieitaiNm"/>
          <result column="BYOSHO_SU" property="byoshoSu"/>
          <result column="INS_PCODE" property="insPcode"/>
          <result column="JGI_NAME" property="jgiName"/>
@@ -426,7 +430,9 @@
  		,HCO_MST.INS_ADDR                   --施設_基本情報       施設住所（漢字）
  		,HCO_MST.INS_PHONE1                 --施設_基本情報       電話番号１
  		,HCO_MST.INS_SBT                    --施設_基本情報       施設種別
+ 		,CODE_MST4.VALUE1_KANJ AS INS_SBT_NM
  		,HCO_MST.MANAGE_CD                  --施設_基本情報       経営主体コード
+		,KEIEI_TKD.KEIEITAI_KJ AS MANAGE_NM
  		,HCO_MST.BEDS_TOT                   --施設_基本情報       ベッド数計
  		,HCO_MST.HO_INS_TYPE				--施設_基本情報       対象区分
  		,HCO_MST.INS_CLASS				--施設_基本情報       施設分類
@@ -436,7 +442,9 @@
  		,MDB_HCO_MST1.ADDRESS               --ULT_MDB施設マスタ   住所
  		,MDB_HCO_MST1.SHISETSU_TEL          --ULT_MDB施設マスタ   施設電話番号
  		,MDB_HCO_MST1.SHISETSU_KBN          --ULT_MDB施設マスタ   施設区分
+ 		,CODE_MST3.VALUE1_KANJ AS SHISETSU_KBN_NM
  		,MDB_HCO_MST1.KEIEITAI_CD           --ULT_MDB施設マスタ   経営体コード
+		,KEIEI_ULT.KEIEITAI_KJ AS KEIEITAI_NM
  		,MDB_HCO_MST1.BYOSHO_SU             --ULT_MDB施設マスタ   病床数（定員）
 
  		FROM ORAUSR01.M_RDM_PARAM_MST PARAM_MST
@@ -688,7 +696,9 @@
  		,HCO_MST.INS_ADDR                   --施設_基本情報       施設住所（漢字）
  		,HCO_MST.INS_PHONE1                 --施設_基本情報       電話番号１
  		,HCO_MST.INS_SBT                    --施設_基本情報       施設種別
+ 		,CODE_MST4.VALUE1_KANJ AS INS_SBT_NM
  		,HCO_MST.MANAGE_CD                  --施設_基本情報       経営主体コード
+		,KEIEI_TKD.KEIEITAI_KJ AS MANAGE_NM
  		,HCO_MST.BEDS_TOT                   --施設_基本情報       ベッド数計
  		,HCO_MST.HO_INS_TYPE				--施設_基本情報       対象区分
  		,HCO_MST.INS_CLASS				--施設_基本情報       施設分類
@@ -698,7 +708,9 @@
  		,MDB_HCO_MST1.ADDRESS               --ULT_MDB施設マスタ   住所
  		,MDB_HCO_MST1.SHISETSU_TEL          --ULT_MDB施設マスタ   施設電話番号
  		,MDB_HCO_MST1.SHISETSU_KBN          --ULT_MDB施設マスタ   施設区分
+ 		,CODE_MST3.VALUE1_KANJ AS SHISETSU_KBN_NM
  		,MDB_HCO_MST1.KEIEITAI_CD           --ULT_MDB施設マスタ   経営体コード
+		,KEIEI_ULT.KEIEITAI_KJ AS KEIEITAI_NM
  		,MDB_HCO_MST1.BYOSHO_SU             --ULT_MDB施設マスタ   病床数（定員）
 
  		FROM ORAUSR01.M_RDM_PARAM_MST PARAM_MST

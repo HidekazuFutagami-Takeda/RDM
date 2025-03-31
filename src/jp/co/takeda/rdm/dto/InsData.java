@@ -121,16 +121,28 @@ public class InsData implements Serializable {
     private String insAddr;
 
     /**
-     * 電話番号
+     * 施設種別
      * @generated
      */
     private String insSbt;
 
     /**
-     * 電話番号
+     * 施設種別
+     * @generated
+     */
+    private String insSbtNm;
+
+    /**
+     * 経営主体
      * @generated
      */
     private String manageCd;
+
+    /**
+     * 経営主体
+     * @generated
+     */
+    private String manageNm;
 
     /**
      * 電話番号
@@ -170,17 +182,28 @@ public class InsData implements Serializable {
 
 
     /**
-     * ULT住所
+     * 施設区分
      * @generated
      */
     private String shisetsuKbn;
 
+    /**
+     * 施設区分
+     * @generated
+     */
+    private String shisetsuKbnNm;
 
     /**
-     * ULT住所
+     * 経営主体
      * @generated
      */
     private String keieitaiCd;
+
+    /**
+     * 経営主体
+     * @generated
+     */
+    private String keieitaiNm;
 
 
     /**
@@ -717,6 +740,82 @@ public class InsData implements Serializable {
 	 */
 	public void setInsClass(String insClass) {
 		this.insClass = insClass;
+	}
+
+
+
+	/**
+	 * InsData.javainsSbtNmを設定
+	 * @return insSbtNm
+	 */
+	public String getInsSbtNm() {
+		return insSbtNm;
+	}
+
+
+
+	/**
+	 * @param insSbtNm セットする insSbtNm
+	 */
+	public void setInsSbtNm(String insSbtNm) {
+		this.insSbtNm = insSbtNm;
+	}
+
+
+
+	/**
+	 * InsData.javamanageNmを設定
+	 * @return manageNm
+	 */
+	public String getManageNm() {
+		return manageNm;
+	}
+
+
+
+	/**
+	 * @param manageNm セットする manageNm
+	 */
+	public void setManageNm(String manageNm) {
+		this.manageNm = manageNm;
+	}
+
+
+
+	/**
+	 * InsData.javashisetsuKbnNmを設定
+	 * @return shisetsuKbnNm
+	 */
+	public String getShisetsuKbnNm() {
+		return shisetsuKbnNm;
+	}
+
+
+
+	/**
+	 * @param shisetsuKbnNm セットする shisetsuKbnNm
+	 */
+	public void setShisetsuKbnNm(String shisetsuKbnNm) {
+		this.shisetsuKbnNm = shisetsuKbnNm;
+	}
+
+
+
+	/**
+	 * InsData.javakeieitaiNmを設定
+	 * @return keieitaiNm
+	 */
+	public String getKeieitaiNm() {
+		return keieitaiNm;
+	}
+
+
+
+	/**
+	 * @param keieitaiNm セットする keieitaiNm
+	 */
+	public void setKeieitaiNm(String keieitaiNm) {
+		this.keieitaiNm = keieitaiNm;
 	}
 
 

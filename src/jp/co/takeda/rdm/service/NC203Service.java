@@ -330,14 +330,28 @@ public class NC203Service extends BaseService {
         	if(entity.getInsSbt() != null) {
         	test.setInsSbt(entity.getInsSbt());
         	}else {
-        	test.setInsSbt(" ");
+        	test.setInsSbt("");
+        	}
+
+        	// 施設種別
+        	if(entity.getInsSbtNm() != null) {
+        	test.setInsSbtNm(entity.getInsSbtNm());
+        	}else {
+        	test.setInsSbtNm("");
         	}
 
         	// 経営主体コード
         	if(entity.getManageCd() != null) {
         	test.setManageCd(entity.getManageCd());
         	}else {
-        	test.setManageCd(" ");
+        	test.setManageCd("");
+        	}
+
+        	// 経営主体
+        	if(entity.getManageNm() != null) {
+        	test.setManageNm(entity.getManageNm());
+        	}else {
+        	test.setManageNm(" ");
         	}
 
         	// 病床数
@@ -383,6 +397,27 @@ public class NC203Service extends BaseService {
         	test.setShisetsuKbn(entity.getShisetsuKbn());
         	}else {
         	test.setShisetsuKbn(" ");
+    		}
+
+        	// 施設区分
+        	if(entity.getShisetsuKbnNm() != null) {
+        	test.setShisetsuKbnNm(entity.getShisetsuKbnNm());
+        	}else {
+        	test.setShisetsuKbnNm(" ");
+    		}
+
+        	// 経営主体コード
+        	if(entity.getKeieitaiCd() != null) {
+        	test.setKeieitaiCd(entity.getKeieitaiCd());
+        	}else {
+        	test.setKeieitaiCd(" ");
+    		}
+
+        	// 経営主体
+        	if(entity.getKeieitaiNm() != null) {
+        	test.setKeieitaiNm(entity.getKeieitaiNm());
+        	}else {
+        	test.setKeieitaiNm(" ");
     		}
 
         	// 経営主体コード

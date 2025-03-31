@@ -54,13 +54,13 @@ function rdmCheck(reqId,reqType) {
 	if(reqType == '施設復活'){
 		fm1.reqTypeCell.value='04';
 		}
-	if(reqType == '施設紐づけ作成'){
+	if(reqType == '施設紐付け新規'){
 		fm1.reqTypeCell.value='11';
 		}
-	if(reqType == '親施設の変更'){
+	if(reqType == '施設紐付け変更'){
 		fm1.reqTypeCell.value='12';
 		}
-	if(reqType == '施設紐づけの削除'){
+	if(reqType == '施設紐付け削除'){
 		fm1.reqTypeCell.value='13';
 		}
 	if(reqType == '施設来期用項目更新'){
@@ -536,9 +536,9 @@ function NC011Seni() {
 		}
 
 		nc001Tab = window.open("","NC011Tab");
-		document.fm1.target="NC211Tab";
+		document.fm1.target="NC011Tab";
 
-		fm1.screenId.value='NF011';
+		fm1.screenId.value='NF211';
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
@@ -551,9 +551,9 @@ function NC011Seni() {
 		}
 
 		nc001Tab = window.open("","NC011Tab");
-		document.fm1.target="NC211Tab";
+		document.fm1.target="NC011Tab";
 
-		fm1.screenId.value='NF011';
+		fm1.screenId.value='NF211';
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();

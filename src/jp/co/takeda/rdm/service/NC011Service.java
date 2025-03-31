@@ -1020,7 +1020,7 @@ public class NC011Service extends BaseService {
               //indto.setReqFlg("0");
               //indto.setReqId(indto.getReqIdCell());
               //indto.setReqId("");
-              indto.setReqType(indto.getReqIdCell());
+              indto.setReqType(indto.getReqTypeCell());
               }
               }
           indto.setCatSnseiComboDataList(catSnseiComboDataList);

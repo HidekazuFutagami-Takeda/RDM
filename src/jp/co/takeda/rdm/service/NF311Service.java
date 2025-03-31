@@ -182,7 +182,7 @@ public class NF311Service extends BaseService {
 
         	if(tRdmHcoLnkNxtReqEntityList.size() > 0 || mRdmHcoOyakoEntityList.size() > 0) {
         		// 親施設に選択した施設が同じ領域で子施設となっています。
-            	errMsg += loginInfo.getMsgData(RdmConstantsData.W022) + "\n";
+            	errMsg += loginInfo.getMsgData(RdmConstantsData.W061) + "\n";
             	errFlg = true;
         	}
 
@@ -202,9 +202,16 @@ public class NF311Service extends BaseService {
 
         	if(tRdmHcoLnkReqEntityList.size() > 0 || mRdmHcoOyakoEntityList.size() > 0) {
         		// 親施設に選択した施設が同じ領域で子施設となっています。
-            	errMsg += loginInfo.getMsgData(RdmConstantsData.W022) + "\n";
+            	errMsg += loginInfo.getMsgData(RdmConstantsData.W061) + "\n";
             	errFlg = true;
         	}
+        }
+
+        // 領域別親施設に自分自身と同じ施設を選択した場合
+        if(indto.getInsNo().equals(indto.getMainInsCd())) {
+        	// 同一の施設が親施設に指定されています。
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W060) + "\n";
+			errFlg = true;
         }
 
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合

@@ -108,11 +108,6 @@ public class HcpWorkData implements Serializable {
      */
     private String dummyHco;
 
-    /**
-     * 実勤務先_件数
-     * @generated
-     */
-    private int dummyHcoCount = 0;
 
     /**
      * 勤務先_件数
@@ -371,21 +366,6 @@ public class HcpWorkData implements Serializable {
 	 */
 	public void setActionDel(String actionDel) {
 		this.actionDel = actionDel;
-	}
-
-	/**
-	 * HcpWorkData.javadummyHcoCountを設定
-	 * @return dummyHcoCount
-	 */
-	public int getDummyHcoCount() {
-		return dummyHcoCount;
-	}
-
-	/**
-	 * @param dummyHcoCount セットする dummyHcoCount
-	 */
-	public void setDummyHcoCount(int dummyHcoCount) {
-		this.dummyHcoCount = dummyHcoCount;
 	}
 
 	/**

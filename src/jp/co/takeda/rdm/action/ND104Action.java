@@ -277,7 +277,8 @@ public class ND104Action extends BaseAction<ND104DTO> {
            	 //エラーがない場合
            	if (StringUtils.isEmpty(dto.getMsgStr())) {
            		outdto = dto;
-           		outdto.setForward("ND313Init");
+           		outdto.setForward("ND313");
+           		//outdto.setForward("ND313Init");
            		return outdto.getForward();
            	}
            	//エラーがある場合　入力情報を保持

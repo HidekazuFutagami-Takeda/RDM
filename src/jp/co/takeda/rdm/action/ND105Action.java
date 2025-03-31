@@ -142,6 +142,9 @@ public class ND105Action extends BaseAction<ND105DTO> {
         String docNo = dto.getTkdDocNo();
 //TODO
         //モック
+        if(preScreenId == null) {
+        	preScreenId = loginInfo.getPreScreenId();
+        }
         if(preScreenId.equals("NC001")) {
         	preScreenId = dto.getPreScreenId();
         }

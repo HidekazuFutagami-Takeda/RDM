@@ -39,6 +39,32 @@
 	<script type="text/javascript" src="js/ND013.js"></script>
 	<script type="text/javascript" src="js/catSosJgiExpand.js"></script>
 	<script type="text/javascript" src="js/jgiKanren.js"></script>
+	<script>
+    function comSetFormWindowInfo(){
+    	comClickFlgInit();
+    }
+
+ 	var nd013Tab;
+ 	// アクションボタン
+    function actBtn(screenId, docNo){
+ 		var tmpDoc = fm1.docNo.value;
+
+ 		fm1.paramDocNo.value = docNo;
+
+ 		if(nd013Tab && !nd013Tab.closed){
+ 			nd013Tab.close();
+ 		}
+
+ 		nf001Tab = window.open("","ND013Tab");
+		document.fm1.target="ND013Tab";
+
+  		fm1.screenId.value=screenId;
+	  	fm1.functionId.value="Init";
+	  	comSubmitForAnyWarp(fm1);
+	  	comClickFlgInit();
+	}
+
+    </script>
     <!-- css -->
     <style>
     	a {
@@ -88,7 +114,7 @@
 
     </style>
 </head>
-<body class="comPage">
+<body class="comPage onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
 
 
 <%-- submit用フォーム 開始 　まるっといらないかもって話がある--%>
@@ -164,7 +190,7 @@
       <s:hidden name="listName" />
       <s:hidden name="poprowno" />
       <s:hidden name="poptrtno" />
-
+      <s:hidden name="tkdDocNo" id="tkdDocNo"/>
       <%-- トップメニューから --%>
       <s:hidden name="trtGrpCd" />
       <s:hidden name="selectedJgiJoken" />
@@ -186,6 +212,7 @@
       <s:hidden name="hoInsType" />
       <s:hidden name="searchInsChg" />
       <s:hidden name="msgId" />
+      <s:hidden name="dummyHcoCount" />
     <div id="cdcCheckedCodesDiv" style="display:none">
     <s:iterator value="cdcCheckedCodes" var="code">
         <s:if test="%{#code == 'dummy'}">
@@ -350,14 +377,13 @@
 
 		        		<!-- 医師勤務先削除 -->
 		        		<!-- アクション削除が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合、表示 -->
-						<s:if test="%{#rowBean.actionDel == 1 && #rowBean.dummyHcoCount >= 2}">
+						<s:if test="%{#rowBean.actionDel == 1 && dummyHcoCount >= 2}">
 							<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
 		        			<s:if test="%{#rowBean.reqA == 1}">
 			        			<s:if test="%{#rowBean.reqB == 1}">
 			        				<!-- 活性 -->
 			        				<span>
-
-			        					<img src="img/button_delete.gif" onclick="errorCheckAction('3', this)" />
+			        					<img src="img/button_delete.gif" onclick="actBtn('ND104', docNo)" />
 			        					<s:hidden name="hcpWorkData[%{#status.index}].insNoKakusi"/>
 			        				</span>
 			        			</s:if>

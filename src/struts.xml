@@ -149,6 +149,29 @@
         <action name="ND401Init" class="nD401Action" method="init">
             <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
         </action>
+        <action name="ND104Init" class="ND104Action" method="init">
+            <result name="ND104">/WEB-INF/pages/ND104.jsp</result>
+            <result name="ND313">/WEB-INF/pages/ND313.jsp</result>
+        </action>
+        <action name="ND104Cancel" class="ND104Action" method="cancel">
+            <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
+        <action name="ND311Init" class="ND311Action" method="init">
+            <result name="ND311">/WEB-INF/pages/ND311.jsp</result>
+            <result name="ND103">/WEB-INF/pages/ND103.jsp</result>
+        </action>
+        <action name="ND313Init" class="ND313Action" method="init">
+            <result name="ND313">/WEB-INF/pages/ND313.jsp</result>
+        </action>
+        <action name="ND313Register" class="ND313Action" method="register">
+            <result name="ND311">/WEB-INF/pages/ND311.jsp</result>
+            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+        </action>
+
+        <action name="ND313Cancel" class="ND313Action" method="cancel">
+            <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+        </action>
         <action name="ND401Search" class="nD401Action" method="search">
             <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
         </action>
@@ -552,6 +575,7 @@
         </action>
         <action name="ND013Init" class="ND013Action" method="init">
             <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
+            <result name="ND105Init" type="chain">ND105Init</result>
         </action>
         <action name="NC208Init" class="NC208Action" method="init">
             <result name="NC208">/WEB-INF/pages/NC208.jsp</result>

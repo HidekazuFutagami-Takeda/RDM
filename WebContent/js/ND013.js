@@ -11,12 +11,28 @@
 
 /**
  * <pre>
+ *  アプリケーションIDを定義
+ * window名等に利用します。
+ * </pre>
+ */
+var CDC_APPLICATION_ID = "CDC";
+
+/**
+ * スクリーンID
+ */
+var CDC_SCREEN_ID = "CatDeptsCombo";
+
+
+/**
+ * <pre>
  *  勤務先追加、医師の廃業・死亡ボタン押下時に呼ばれます。
  * エラーチェック
  * </pre>
  */
 function errorCheck(checkFlg) {
-
+	if(checkFlg == "2"){//医師の廃業・死亡ボタン
+		document.fm1.tkdDocNo.value = document.fm1.paramDocNo.value;
+	}
 	//エラーチェックフラグ定義
 	document.fm1.errorCheckFlg.value = checkFlg;
 
@@ -83,7 +99,7 @@ window.onload = function(){
 	//エラーチェックが行われている場合
 	if (document.fm1.errorCheckFlg.value != "0") {
 
-
+	}
 
 }
 
@@ -99,20 +115,20 @@ window.onload = function(){
 */
 function cseViewND013(td,w, callBack, winVarName, clearProc){
 
-	if(typeof(w)=='string'){
-	  w=null;
-	}else{
-	  //フォーカスをあてる処理と２度押し対策を共通関数化
-	  if(!comPopupPreCheck(w, winVarName)){
-	    return(w);
+	  //****************************************************************
+	  // ポップアップ起動中にウィンドウが閉じられると
+	  // windowオブジェクトがString型に変換されてしまう場合があるため
+	  // 型変換された場合はNULLをセットして初期化する
+	  //****************************************************************
+	  if(typeof(w) == 'string') {
+	    w = null;
+	  } else {
+	    if(!comPopupPreCheck(w, winVarName)){
+	      return(w);
+	    }
 	  }
-	}
-	//ウインドウの体裁(幅や高さなど)はここで指定します。
-	w = window.open (
-	  "",
-	  comCreateWindowName(CSE_APPLICATION_ID),
-	  "width=500,height=570,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no"
-	);
+
+	  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=530,height=660,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
 
 	cseParentClearProc	= clearProc;
 
@@ -134,7 +150,7 @@ function cseViewND013(td,w, callBack, winVarName, clearProc){
 	document.fm1.insNoKakusi.value	= insNoKakusi;
 
 	/*条件有り呼び出しパターン*/
-	comPostPopup(w,"NC208Init",CSE_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
+	comPostPopup(w,"NC208Init",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 	//comPostPopup(w,"JKR100C010Init.action",CSE_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 	/*
 	 *
@@ -142,5 +158,5 @@ function cseViewND013(td,w, callBack, winVarName, clearProc){
 
 	w.focus();
 	return(w);
-}
+
 }

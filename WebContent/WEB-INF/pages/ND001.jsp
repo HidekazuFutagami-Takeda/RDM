@@ -85,7 +85,9 @@ if (stack.peek() instanceof ND001DTO) {
  		// 新規
  		if(screenId == "ND011"){
  			fm1.ultDocNo.value = docNo;
- 		} else {
+ 		}else if (screenId == "ND013") {
+ 			fm1.paramDocNo.value = docNo;
+ 		}else {
  			fm1.docNo.value = docNo;
  			fm1.tkdDocNo.value = docNo;
  		}
@@ -289,6 +291,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
   			<s:hidden name="upBumonRank" id="upBumonRank" />
   			<s:hidden name="upBrCode" id="upBrCode" />
   			<s:hidden name="upDistCode" id="upDistCode" />
+
+
+			<input type="hidden" name="paramDocNo"           value="" />
+
 
 
 	<s:hidden id="sosCdPop" name="sosCdPop"/>

@@ -85,7 +85,7 @@ public class SelectInsTrtListEntity extends BaseEntity implements Serializable {
      * @generated
      */
     public SelectInsTrtListEntity() {
-        super("m_rdm_hco_mst" , "selectInsTrtListEntiry");
+        super("m_rdm_hco_mst" , "selectInsTrtListEntity");
     }
 
     /**

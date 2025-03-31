@@ -170,6 +170,12 @@ public class ND013DTO extends BaseDTO implements Serializable {
      */
     private String ishiHaigyou;
 
+
+    /**
+     * 施設固定コード
+     * @generated
+     */
+    private Integer dummyHcoCount;
     /**
      * エラーチェックフラグ
      * 0:チェックなし
@@ -597,4 +603,20 @@ public class ND013DTO extends BaseDTO implements Serializable {
 	public void setInsNoKakusi(String insNoKakusi) {
 		this.insNoKakusi = insNoKakusi;
 	}
+
+	/**
+	 * ND013DTO.javadummyHcoCountを設定
+	 * @return dummyHcoCount
+	 */
+	public Integer getDummyHcoCount() {
+		return dummyHcoCount;
+	}
+
+	/**
+	 * @param dummyHcoCount セットする dummyHcoCount
+	 */
+	public void setDummyHcoCount(Integer dummyHcoCount) {
+		this.dummyHcoCount = dummyHcoCount;
+	}
+
 }

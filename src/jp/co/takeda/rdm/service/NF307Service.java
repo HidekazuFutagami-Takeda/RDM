@@ -95,6 +95,14 @@ public class NF307Service extends BaseService {
 			errFlg = true;
         }
 
+        // 復活理由にその他が選択されている状態で、申請コメントに値が入力されていない
+        if("04".equals(indto.getRstReason()) && (indto.getReqComment() == null || indto.getReqComment().isEmpty())) {
+        	// 申請理由がその他の場合、申請コメントを入力してください。
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W005) + "\n";
+			errFlg = true;
+        }
+
+
         // 同じ施設固定コードに紐づく施設復活申請がすでに存在している場合
         TRdmHcoReqEntity tRdmHcoReqchkEntity = new TRdmHcoReqEntity("selectNF014InsChkData");
         tRdmHcoReqchkEntity.setInsNo(indto.getInsNo());

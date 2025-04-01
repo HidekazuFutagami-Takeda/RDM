@@ -443,6 +443,10 @@
         <action name="NF403Search" class="nF403Action" method="search">
             <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
         </action>
+        <action name="NF403Request" class="nF403Action" method="request">
+            <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
+            <result name="NF405Init" type="chain">NF405Init</result>
+        </action>
         <action name="NC203Init" class="nC203Action" method="init">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>

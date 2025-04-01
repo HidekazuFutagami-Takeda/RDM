@@ -210,8 +210,7 @@
 		document.fm1.insClass.value = "";
 		document.fm1.insType.value = "";
 		document.fm1.hoInsType.value = "";
-
-		document.fm1.shnFlgChk.checked = false;
+		document.fm1.ultDif.value = "";
 	}
 
 	// 画面遷移処理
@@ -510,8 +509,56 @@
     	let tmpRegVisType = document.getElementsByName(tmpRegVisTypeKey)[0];
     	let regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
  		let regVisTypeBox = document.getElementsByName(regVisType)[0];
+ 		let tmpImpHosTypeKey = "hcoBlkReqDataList["+i+"].tmpImpHosType";
+    	let tmpImpHosType = document.getElementsByName(tmpImpHosTypeKey)[0];
+    	let impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+ 		let impHosTypeBox = document.getElementsByName(impHosType)[0];
+ 		let hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+ 		let hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+ 		let tmpManageCdKey = "hcoBlkReqDataList["+i+"].tmpManageCd";
+    	let tmpManageCd = document.getElementsByName(tmpManageCdKey)[0];
+ 		let manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+ 		let manageCdBox = document.getElementsByName(manageCd)[0];
+
+ 		let vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+ 		let vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+ 		let vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+ 		let vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
 
  		while(pharmTypeBox != undefined){
+ 			if(insType.value == "04" || insType.value == "05" || insType.value == "07"){
+ 	 			pharmTypeBox.disabled = true;
+ 	   			insRankBox.disabled = true;
+ 	   			regVisTypeBox.disabled = true;
+ 	   			impHosTypeBox.disabled = true;
+ 	   			manageCdBox.disabled = true;
+ 	   			tmpPharmType.value = "";
+ 	   			tmpInsRank.value = "";
+ 	   			tmpRegVisType.value = "";
+ 	   			tmpImpHosType.value = "";
+ 	   			tmpManageCd.value = "";
+ 	 		} else {
+ 				if(tmpPharmType.value != ""){
+ 					if(tmpInsRank.value == ""){
+ 						regVisTypeBox.disabled = true;
+ 		   		   		impHosTypeBox.disabled = true;
+ 		   		   		manageCdBox.disabled = true;
+ 			   			tmpRegVisType.value = "";
+ 			   			tmpImpHosType.value = "";
+ 			   			tmpManageCd.value = "";
+ 					}
+ 				} else {
+ 					insRankBox.disabled.value = true;
+ 					regVisTypeBox.disabled.value = true;
+ 	   		   		impHosTypeBox.disabled.value = true;
+ 	   		   		manageCdBox.disabled.value = true;
+ 		   			tmpInsRank.value = "";
+ 		   			tmpRegVisType.value = "";
+ 		   			tmpImpHosType.value = "";
+ 		   			tmpManageCd.value = "";
+ 				}
+ 	 		}
+
  			// 施設区分
  			makePharmTypeBox(pharmTypeBox, insType.value);
  			pharmTypeBox.value = tmpPharmType.value;
@@ -521,10 +568,30 @@
  			insRankBox.value = tmpInsRank.value;
 
  			// 定訪先区分
+ 			makeRegVisTypeBox(regVisTypeBox, insType.value, pharmTypeBox.value, insRankBox.value);
+ 			regVisTypeBox.value = tmpRegVisType.value;
 
  			// 重点病院区分
+ 			makeImpHosTypeBox(impHosTypeBox, insType.value, pharmTypeBox.value, insRankBox.value);
+ 			impHosTypeBox.value = tmpImpHosType.value;
 
  			// 対象区分
+ 			setHoInsType(hoInsTypeBox, insRankBox.value);
+ 			hoInsTypeBox.disabled = true;
+
+	 		if(insType.value != "08"){
+	 			vacInsTypeBox.disabled = true;
+	 			vacVisitTypeBox.disabled = true;
+	 		}
+
+	 		if(document.fm1.btnEnableFlg.value != "1"){
+	 			pharmTypeBox.disabled = true;
+	 			insRankBox.disabled = true;
+	 			regVisTypeBox.disabled = true;
+	 			impHosTypeBox.disabled = true;
+	 			vacInsTypeBox.disabled = true;
+	 			vacVisitTypeBox.disabled = true;
+	 		}
 
 			i++;
 			insTypeKey = "hcoBlkReqDataList["+i+"].insType";
@@ -537,8 +604,149 @@
 	    	tmpInsRank = document.getElementsByName(tmpInsRankKey)[0];
 	    	insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
 	 		insRankBox = document.getElementsByName(insRank)[0];
+	 		tmpRegVisTypeKey = "hcoBlkReqDataList["+i+"].tmpRegVisType";
+	    	tmpRegVisType = document.getElementsByName(tmpRegVisTypeKey)[0];
+	    	regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+	 		regVisTypeBox = document.getElementsByName(regVisType)[0];
+	 		tmpImpHosTypeKey = "hcoBlkReqDataList["+i+"].tmpImpHosType";
+	    	tmpImpHosType = document.getElementsByName(tmpImpHosTypeKey)[0];
+	    	impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+	 		impHosTypeBox = document.getElementsByName(impHosType)[0];
+	 		hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+	 		hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+	 		vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+	 		vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+	 		vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+	 		vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+	 		manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+	 		manageCdBox = document.getElementsByName(manageCd)[0];
  		}
     }
+
+	// セレクトボックスの設定
+    function changeBox(changeItem, index){
+    	let insTypeKey = "hcoBlkReqDataList["+index+"].insType";
+    	let insType = document.getElementsByName(insTypeKey)[0];
+    	let pharmType = "hcoBlkReqDataList["+index+"].nextPharmType";
+ 		let pharmTypeBox = document.getElementsByName(pharmType)[0];
+    	let insRank = "hcoBlkReqDataList["+index+"].nextInsRank";
+ 		let insRankBox = document.getElementsByName(insRank)[0];
+    	let regVisType = "hcoBlkReqDataList["+index+"].nextRegVisType";
+ 		let regVisTypeBox = document.getElementsByName(regVisType)[0];
+    	let impHosType = "hcoBlkReqDataList["+index+"].nextImpHosType";
+ 		let impHosTypeBox = document.getElementsByName(impHosType)[0];
+ 		let hoInsType = "hcoBlkReqDataList["+index+"].nextHoInsType";
+ 		let hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+
+ 		if(changeItem == "1"){
+			// 施設区分変更
+			// 階級区分
+			makeInsRankBox(insRankBox, insType.value, pharmTypeBox.value);
+			insRankBox.value = "";
+
+			// 定訪先区分
+			makeRegVisTypeBox(regVisTypeBox, insType.value, pharmTypeBox.value, insRankBox.value);
+			regVisTypeBox.value = "";
+
+			// 重点病院区分
+			makeImpHosTypeBox(impHosTypeBox, insType.value, pharmTypeBox.value, insRankBox.value);
+			impHosTypeBox.value = "";
+
+			// 対象区分
+			hoInsTypeBox.value = "";
+
+ 		} else if(changeItem == "2"){
+			// 階級区分変更
+			// 定訪先区分
+			makeRegVisTypeBox(regVisTypeBox, insType.value, pharmTypeBox.value, insRankBox.value);
+			regVisTypeBox.value = "";
+
+			// 重点病院区分
+			makeImpHosTypeBox(impHosTypeBox, insType.value, pharmTypeBox.value, insRankBox.value);
+			impHosTypeBox.value = "";
+
+			// 対象区分
+			setHoInsType(hoInsTypeBox, insRankBox.value);
+ 		}
+	}
+
+	// 対象区分値設定
+	function setHoInsType(hoInsType, insRank){
+		if(insRank == "01" ||insRank == "02"){
+			hoInsType.value = "1";
+		} else if(insRank == "03" || insRank == "04" || insRank == "05" || insRank == "06"
+			 || insRank == "07" || insRank == "08"){
+			hoInsType.value = "2";
+		} else if(insRank == "09" || insRank == "10" || insRank == "11" || insRank == "12"
+			 || insRank == "13" || insRank == "14"|| insRank == "15" || insRank == "16"
+			 || insRank == "17" || insRank == "20"){
+			hoInsType.value = "3";
+		} else if(insRank == "00" || insRank == "18" || insRank == "19"){
+			hoInsType.value = "4";
+		} else {
+			hoInsType.value = "";
+		}
+	}
+
+	// 病床数再計算
+	function calcBedCnt(index){
+		var bedsTot = 0;
+		var medBedsTot = 0;
+
+		var bedCnt01Key = "hcoBlkReqDataList["+index+"].nextBedCnt01";
+    	var bedCnt01Value = document.getElementsByName(bedCnt01Key)[0];
+    	var bedCnt03Key = "hcoBlkReqDataList["+index+"].nextBedCnt03";
+    	var bedCnt03Value = document.getElementsByName(bedCnt03Key)[0];
+    	var bedCnt04Key = "hcoBlkReqDataList["+index+"].nextBedCnt04";
+    	var bedCnt04Value = document.getElementsByName(bedCnt04Key)[0];
+    	var bedCnt05Key = "hcoBlkReqDataList["+index+"].nextBedCnt05";
+    	var bedCnt05Value = document.getElementsByName(bedCnt05Key)[0];
+    	var bedCnt07Key = "hcoBlkReqDataList["+index+"].nextBedCnt07";
+    	var bedCnt07Value = document.getElementsByName(bedCnt07Key)[0];
+    	var bedCnt02Key = "hcoBlkReqDataList["+index+"].nextBedCnt02";
+    	var bedCnt02Value = document.getElementsByName(bedCnt02Key)[0];
+    	var bedsTotKey = "hcoBlkReqDataList["+index+"].nextBedsTot";
+    	var bedsTotValue = document.getElementsByName(bedsTotKey)[0];
+    	var medBedsTotKey = "hcoBlkReqDataList["+index+"].nextMedBedsTot";
+    	var medBedsTotValue = document.getElementsByName(medBedsTotKey)[0];
+
+    	// 一般
+		if(bedCnt01Value.value != "" && comChkNum(bedCnt01Value.value)) {
+			bedsTot += parseInt(bedCnt01Value.value);
+			medBedsTot += parseInt(bedCnt01Value.value);
+		}
+
+		// 精神
+		if(bedCnt03Value.value != "" && comChkNum(bedCnt03Value.value)) {
+			bedsTot += parseInt(bedCnt03Value.value);
+			medBedsTot += parseInt(bedCnt03Value.value);
+		}
+
+		// 結核
+		if(bedCnt04Value.value != "" && comChkNum(bedCnt04Value.value)) {
+			bedsTot += parseInt(bedCnt04Value.value);
+			medBedsTot += parseInt(bedCnt04Value.value);
+		}
+
+		// 感染症
+		if(bedCnt05Value.value != "" && comChkNum(bedCnt05Value.value)) {
+			bedsTot += parseInt(bedCnt05Value.value);
+			medBedsTot += parseInt(bedCnt05Value.value);
+		}
+
+		// 療養
+		if(bedCnt07Value.value != "" && comChkNum(bedCnt07Value.value)) {
+			bedsTot += parseInt(bedCnt07Value.value);
+		}
+
+		// 医療療養
+		if(bedCnt02Value.value != "" && comChkNum(bedCnt02Value.value)) {
+			medBedsTot += parseInt(bedCnt02Value.value);
+		}
+
+		bedsTotValue.value = bedsTot;
+		medBedsTotValue.value = medBedsTot;
+	}
 
 </script>
 <style>
@@ -856,7 +1064,6 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedsTot"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].medBedsTot"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].ultDif"/>
-			<s:hidden name="hcoBlkReqDataList[%{#status.index}].reqComment"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insAbbrName"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].shisetsuKbn"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].keieitai"/>
@@ -873,9 +1080,15 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpInsRank"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpRegVisType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpImpHosType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpManageCd"/>
 
 			<td class="comTableItem" rowspan=3 style="text-align:center;">
+				<s:if test="btnEnableFlg == 1">
 				<input type="checkbox" name="reqChkBox" onChange="JavaScript:reqChk(this,'<s:property value="%{#status.index}"/>'); return false;" />
+				</s:if>
+				<s:else>
+				<input type="checkbox" name="reqChkBox" onChange="" disabled />
+				</s:else>
 			</td>
 	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insNo" /></td>
 	        <td class="comTableItem">当期</td>
@@ -899,7 +1112,12 @@
 	        <td class="comTableItem" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].medBedsTot" /></td>
 	        <td class="comTableItem" style="text-align:center" rowspan=3><s:label key="hcoBlkReqDataList[%{#status.index}].ultDif" /></td>
 	        <td class="comTableItem" rowspan=3>
+	        	<s:if test="btnEnableFlg == 1">
 	        	<s:textarea name="hcoBlkReqDataList[%{#status.index}].reqComment" maxlength="300" style="resize:none" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textarea name="hcoBlkReqDataList[%{#status.index}].reqComment" maxlength="300" style="resize:none" readonly="true" />
+	        	</s:else>
 	        </td>
 		</tr>
 		<tr>
@@ -931,10 +1149,10 @@
 	        </td>
 	        <td class="comTableItem">来期</td>
 	        <td class="comTableItem">
-	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" />
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onChange="JavaScript:changeBox('1','%{#status.index}'); return false;" />
 	        </td>
 	        <td class="comTableItem">
-	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextInsRank" cssStyle="width:120pt" list ="insRankCombo" />
+	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onChange="JavaScript:changeBox('2','%{#status.index}'); return false;" />
 	        </td>
 	        <td class="comTableItem">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo" />
@@ -955,28 +1173,68 @@
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo" />
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	        	</td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	       	</td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
+	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
 	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" />
+	        	</s:if>
+	        	<s:else>
+	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />

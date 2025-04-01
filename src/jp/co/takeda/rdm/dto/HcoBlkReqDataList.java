@@ -91,6 +91,12 @@ public class HcoBlkReqDataList implements Serializable {
      */
     private String tmpImpHosType;
 
+    /**
+     * 経営主体
+     * @generated
+     */
+    private String tmpManageCd;
+
 
     /**
      * 対象区分
@@ -734,6 +740,23 @@ public class HcoBlkReqDataList implements Serializable {
 	 */
 	public void setTmpImpHosType(String tmpImpHosType) {
 		this.tmpImpHosType = tmpImpHosType;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javatmpManageCdを設定
+	 * @return tmpManageCd
+	 */
+	public String getTmpManageCd() {
+		return tmpManageCd;
+	}
+
+
+	/**
+	 * @param tmpManageCd セットする tmpManageCd
+	 */
+	public void setTmpManageCd(String tmpManageCd) {
+		this.tmpManageCd = tmpManageCd;
 	}
 
 

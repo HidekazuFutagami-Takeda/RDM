@@ -22,6 +22,8 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoBlkReqDataList;
+import jp.co.takeda.rdm.dto.KmuIkkatsuData;
+import jp.co.takeda.rdm.dto.ND401DTO;
 import jp.co.takeda.rdm.dto.NF403DTO;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
@@ -30,6 +32,8 @@ import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF401MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF403MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamNF403Entity;
+import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
+import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
 import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
@@ -102,7 +106,7 @@ public class NF403Service extends BaseService {
 			indto.setBtnEnableFlg("0");
 		}
 
-        // END UOC
+    	// END UOC
         return outdto;
 
     }
@@ -435,7 +439,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
             		dataRecord.setNextBedCntBase(entity.getBedCntBase());
             	} else {
-            		dataRecord.setNextBedCntBase(" ");
+            		dataRecord.setNextBedCntBase("");
             	}
         	}
 
@@ -456,7 +460,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
             		dataRecord.setNextBedCnt04(entity.getBedCnt04());
             	} else {
-            		dataRecord.setNextBedCnt04(" ");
+            		dataRecord.setNextBedCnt04("");
             	}
         	}
 
@@ -477,7 +481,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
             		dataRecord.setNextBedCnt01(entity.getBedCnt01());
             	} else {
-            		dataRecord.setNextBedCnt01(" ");
+            		dataRecord.setNextBedCnt01("");
             	}
         	}
 
@@ -498,7 +502,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
             		dataRecord.setNextBedCnt05(entity.getBedCnt05());
             	} else {
-            		dataRecord.setNextBedCnt05(" ");
+            		dataRecord.setNextBedCnt05("");
             	}
         	}
 
@@ -519,7 +523,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
             		dataRecord.setNextBedCnt03(entity.getBedCnt03());
             	} else {
-            		dataRecord.setNextBedCnt03(" ");
+            		dataRecord.setNextBedCnt03("");
             	}
         	}
 
@@ -540,7 +544,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
             		dataRecord.setNextBedCnt07(entity.getBedCnt07());
             	} else {
-            		dataRecord.setNextBedCnt07(" ");
+            		dataRecord.setNextBedCnt07("");
             	}
         	}
 
@@ -556,7 +560,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
             		dataRecord.setNextBedCnt02(entity.getBedCnt02());
             	} else {
-            		dataRecord.setNextBedCnt02(" ");
+            		dataRecord.setNextBedCnt02("");
             	}
         	}
 
@@ -572,7 +576,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
             		dataRecord.setNextBedCnt06(entity.getBedCnt06());
             	} else {
-            		dataRecord.setNextBedCnt06(" ");
+            		dataRecord.setNextBedCnt06("");
             	}
         	}
 
@@ -593,7 +597,7 @@ public class NF403Service extends BaseService {
         		if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
             		dataRecord.setNextBedsTot(entity.getBedsTot());
             	} else {
-            		dataRecord.setNextBedsTot(" ");
+            		dataRecord.setNextBedsTot("");
             	}
         	}
 
@@ -614,7 +618,7 @@ public class NF403Service extends BaseService {
         		if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
             		dataRecord.setNextMedBedsTot(entity.getMedBedsTot());
             	} else {
-            		dataRecord.setNextMedBedsTot(" ");
+            		dataRecord.setNextMedBedsTot("");
             	}
         	}
 
@@ -622,7 +626,7 @@ public class NF403Service extends BaseService {
         	if(entity.getReqComment() != null && !entity.getReqComment().isEmpty()) {
         		dataRecord.setReqComment(entity.getReqComment());
         	} else {
-        		dataRecord.setReqComment(" ");
+        		dataRecord.setReqComment("");
         	}
 
         	// ULT差分
@@ -655,8 +659,9 @@ public class NF403Service extends BaseService {
         	// 画面表示用
         	dataRecord.setTmpPharmType(dataRecord.getNextPharmType());
         	dataRecord.setTmpInsRank(dataRecord.getNextInsRank());
-        	dataRecord.setTmpRegVisType(dataRecord.getRegVisType());
-        	dataRecord.setImpHosType(dataRecord.getImpHosType());
+        	dataRecord.setTmpRegVisType(dataRecord.getNextRegVisType());
+        	dataRecord.setTmpImpHosType(dataRecord.getNextImpHosType());
+        	dataRecord.setTmpManageCd(dataRecord.getNextManageCd());
 
         	hcoBlkReqDataList.add(dataRecord);
         }
@@ -667,6 +672,50 @@ public class NF403Service extends BaseService {
         // END UOC
        	return outdto;
 	}
+
+    /**
+     * イベント処理
+     * @param indto NF403DTO
+     * @return 遷移先DTO
+     * @customizable
+     */
+    @Transactional
+    public BaseDTO reqest(NF403DTO indto) {
+    	BaseDTO outdto = indto;
+    	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+    	boolean errFlg = false;
+		String errMsg = "";
+
+		List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
+
+		// 申請チェック有のもののみ取得
+		for(HcoBlkReqDataList entity : indto.getHcoBlkReqDataList()) {
+			if("1".equals(entity.getReqChk())) {
+				hcoBlkReqDataList.add(entity);
+			}
+		}
+
+		// エラーチェック
+		// TODO
+
+
+		// エラー時処理
+		if (errFlg) {
+			indto.setMsgStr(errMsg);
+			indto.setForward("NF403");
+
+			// DropDownList作成
+			createCombo(indto);
+			return outdto;
+		}
+
+		// 変更有のリストをセット
+		indto.setHcoBlkReqDataList(hcoBlkReqDataList);
+
+		indto.setForward("NF405Init");
+    	return outdto;
+    }
 
     /**
      * コンボ作成

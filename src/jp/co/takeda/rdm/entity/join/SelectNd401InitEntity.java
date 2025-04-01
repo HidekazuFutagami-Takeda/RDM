@@ -73,6 +73,12 @@ public class SelectNd401InitEntity extends BaseEntity implements Serializable {
     private String kensakuSosCd;
 
     /**
+     * 検索条件_部門ランク
+     * @generated
+     */
+    private String kensakuBumonRank;
+
+    /**
      * 検索条件_医薬支店C
      * @generated
      */
@@ -758,6 +764,21 @@ public class SelectNd401InitEntity extends BaseEntity implements Serializable {
 	 */
 	public void setKensakuSosCd(String kensakuSosCd) {
 		this.kensakuSosCd = kensakuSosCd;
+	}
+
+	/**
+	 * SelectNd401InitEntity.javakensakuBumonRankを設定
+	 * @return kensakuBumonRank
+	 */
+	public String getKensakuBumonRank() {
+		return kensakuBumonRank;
+	}
+
+	/**
+	 * @param kensakuBumonRank セットする kensakuBumonRank
+	 */
+	public void setKensakuBumonRank(String kensakuBumonRank) {
+		this.kensakuBumonRank = kensakuBumonRank;
 	}
 
 	/**

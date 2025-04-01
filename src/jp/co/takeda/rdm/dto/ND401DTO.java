@@ -121,6 +121,12 @@ public class ND401DTO extends BaseDTO implements Serializable {
     private String kensakuSosName;
 
     /**
+     * 検索条件_部門ランク
+     * @generated
+     */
+    private String kensakuBumonRank;
+
+    /**
      * 検索条件_医薬支店C
      * @generated
      */
@@ -1935,6 +1941,21 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuSosName(String kensakuSosName) {
 		this.kensakuSosName = kensakuSosName;
+	}
+
+	/**
+	 * ND401DTO.javakensakuBumonRankを設定
+	 * @return kensakuBumonRank
+	 */
+	public String getKensakuBumonRank() {
+		return kensakuBumonRank;
+	}
+
+	/**
+	 * @param kensakuBumonRank セットする kensakuBumonRank
+	 */
+	public void setKensakuBumonRank(String kensakuBumonRank) {
+		this.kensakuBumonRank = kensakuBumonRank;
 	}
 
 	/**

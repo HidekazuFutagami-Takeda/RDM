@@ -145,11 +145,11 @@
 			</if>
 	        --組織が選択されている場合
 	        --No6
-	        <if test="kensakuSosCd != null">
+	        <if test="kensakuSosCd != null and kensakuBumonRank == 2">
 				AND JGI_SOS_MST.UP_SOS_CD = #{kensakuSosCd}
 			</if>
 	        --No7
-	        <if test="kensakuSosCd != null">
+	        <if test="kensakuSosCd != null and kensakuBumonRank == 3">
 				AND JGI_SOS_MST.SOS_CD = #{kensakuSosCd}
 			</if>
 	        --担当者が選択されている場合
@@ -257,11 +257,11 @@
 			</if>
 	        --組織が選択されている場合
 	        --No6
-	        <if test="kensakuSosCd != null">
+	        <if test="kensakuSosCd != null and kensakuBumonRank == 2">
 				AND JGI_SOS_MST.UP_SOS_CD = #{kensakuSosCd}
 			</if>
 	        --No7
-	        <if test="kensakuSosCd != null">
+	        <if test="kensakuSosCd != null and kensakuBumonRank == 3">
 				AND JGI_SOS_MST.SOS_CD = #{kensakuSosCd}
 			</if>
 	        --担当者が選択されている場合

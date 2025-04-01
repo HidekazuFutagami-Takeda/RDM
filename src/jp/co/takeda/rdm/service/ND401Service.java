@@ -70,6 +70,7 @@ public class ND401Service extends BaseService {
         	indto.setKensakuJgiName(loginInfo.getJgiName());
         	indto.setKensakuBrCode(loginInfo.getBrCode());
         	indto.setKensakuDistCode(loginInfo.getDistCode());
+        	indto.setKensakuBumonRank(loginInfo.getBumonRank());
         }
 
         //初期表示画面フラグ = 1(初期化)
@@ -174,6 +175,11 @@ public class ND401Service extends BaseService {
         	indto.setKensakuSosCd(null);
         }
         selectParamSelectKmuEntity.setKensakuSosCd(indto.getKensakuSosCd());
+        //検索条件_部門ランク
+        if (StringUtils.isEmpty(indto.getKensakuBumonRank())) {
+        	indto.setKensakuBumonRank(null);
+        }
+        selectParamSelectKmuEntity.setKensakuBumonRank(indto.getKensakuBumonRank());
         //索条件_医薬支店C
         if (StringUtils.isEmpty(indto.getKensakuBrCode())) {
         	indto.setKensakuBrCode(null);
@@ -231,6 +237,11 @@ public class ND401Service extends BaseService {
         	indto.setKensakuSosCd(null);
         }
         selectNd401InitEntity.setKensakuSosCd(indto.getKensakuSosCd());
+        //検索条件_部門ランク
+        if (StringUtils.isEmpty(indto.getKensakuBumonRank())) {
+        	indto.setKensakuBumonRank(null);
+        }
+        selectNd401InitEntity.setKensakuBumonRank(indto.getKensakuBumonRank());
         //索条件_医薬支店C
         if (StringUtils.isEmpty(indto.getKensakuBrCode())) {
         	indto.setKensakuBrCode(null);

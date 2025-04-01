@@ -68,6 +68,12 @@ public class SelectCntSelectNd401InitEntity extends BaseEntity implements Serial
     private String kensakuSosCd;
 
     /**
+     * 検索条件_部門ランク
+     * @generated
+     */
+    private String kensakuBumonRank;
+
+    /**
      * 検索条件_医薬支店C
      * @generated
      */
@@ -205,6 +211,21 @@ public class SelectCntSelectNd401InitEntity extends BaseEntity implements Serial
 	 */
 	public void setKensakuSosCd(String kensakuSosCd) {
 		this.kensakuSosCd = kensakuSosCd;
+	}
+
+	/**
+	 * SelectCntSelectNd401InitEntity.javakensakuBumonRankを設定
+	 * @return kensakuBumonRank
+	 */
+	public String getKensakuBumonRank() {
+		return kensakuBumonRank;
+	}
+
+	/**
+	 * @param kensakuBumonRank セットする kensakuBumonRank
+	 */
+	public void setKensakuBumonRank(String kensakuBumonRank) {
+		this.kensakuBumonRank = kensakuBumonRank;
 	}
 
 	/**

@@ -75,7 +75,7 @@
 		/*検索結果テーブルを囲むdiv名*/
 		.kensakuDate {
 			max-height: 370px;
-			width: 1400px;
+			width: 1100px;
 			overflow: auto;
 			-webkit-overflow-scrolling: touch;
 		}
@@ -186,6 +186,9 @@
 	<s:hidden name="kensakuDistCode" />
 	<s:hidden name="kensakuBrCode" />
 	<s:hidden name="kensakuTrtCd" />
+    <s:hidden name="kensakuSosCd" />
+    <s:hidden name="kensakuUpSosCd" />
+    <s:hidden name="kensakuBumonRank" />
     <s:hidden name="kensakuJgiNo" />
     <s:hidden name="kensakuReqDistCode" />
     <s:hidden name="searchType" />
@@ -257,6 +260,16 @@
       <s:hidden name="hoInsType" />
       <s:hidden name="searchInsChg" />
       <s:hidden name="msgId" />
+
+      <s:hidden name="loginJokenSetCd"/>
+     <s:hidden name="loginJgiNo"/>
+     <s:hidden name="loginNm"/>
+     <s:hidden name="loginShzNm"/>
+     <s:hidden name="loginTrtCd"/>
+     <s:hidden name="loginBrCd"/>
+     <s:hidden name="loginDistCd"/>
+     <s:hidden name="reqBtnFlg" />
+
     <div id="cdcCheckedCodesDiv" style="display:none">
     <s:iterator value="cdcCheckedCodes" var="code">
         <s:if test="%{#code == 'dummy'}">
@@ -276,13 +289,19 @@
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師勤務先情報一括更新"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>
     </tbody>
     </table>
 <%-- ポータルタイトル 終了 --%>
+
+ <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
 		<!-- エラー表示部  開始 -->
 		<center>
 		<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
@@ -301,25 +320,6 @@
 		<center/>
 		<!-- エラー表示部  終了 -->
 
-		<script>
-
-		</script>
-		<center/>
-		<!-- エラー表示部  終了 -->
-		<script>
-		const jgiNameUser = document.getElementById('jgiNameUser');
-		jgiNameUser.disabled = true;
-
-		const sosNameUser = document.getElementById('sosNameUser');
-		sosNameUser.disabled = true;
-
-		const kensakuReqDistUser = document.getElementById('kensakuReqDistUser');
-		kensakuReqDistUser.disabled = true;
-
-		const kensakuReqJgiNameUser = document.getElementById('kensakuReqJgiNameUser');
-		kensakuReqJgiNameUser.disabled = true;
-		</script>
-
 		<%-- 検索部 開始 --%>
      	<table class="pupList" style="border-collapse: separate; margin-top:3pt; background-color: white;">
 
@@ -330,21 +330,37 @@
 		          		<nobr>組織 </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          	<s:if test='%{loginJokenSetCd == "JKN0850"}'>
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="henkouSos();" />
+		          	</s:if>
+		          	<s:else>
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" disabled />
+		          	</s:else>
 		          	</td>
 		          	<td>
-		          		<s:textfield id="KensakuJgiName" name="KensakuJgiName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		<s:textfield id="KensakuSosName" name="kensakuSosName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
+		          		<s:if test='%{loginJokenSetCd == "JKN0850"}'>
+		          			&nbsp;<a href="#" class="comMiniLink" onClick="sosClear();return false;">Clear</a>
+		          		</s:if>
 		          	</td>
 
 	            <%-- 担当者 --%>
 		          	<td class="comTableSearchItem" style="width:50pt;">
 		         	 	<nobr>担当者</nobr>
 		         	</td>
-		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="" /></td>
+		         	<td style="width: 35px;">
+					<s:if test='%{loginJokenSetCd == "JKN0850"}'>
+		         		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="henkouTanto();" />
+					</s:if>
+					<s:else>
+						<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" disabled />
+					</s:else>
+		         	</td>
 		          	<td>
-		          		<s:textfield id="kensakuSosName" name="kensakuSosName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
-		          		<span>clear</span>
+		          		<s:textfield id="kensakuJgiName" name="kensakuJgiName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+		          		<s:if test='%{loginJokenSetCd == "JKN0850"}'>
+			          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
+			          	</s:if>
 		          	</td>
 
 	             <%-- 所属部科 --%>
@@ -358,7 +374,7 @@
 		          	<td>
 		          		<s:textfield id="kensakuDeptKj" name="kensakuDeptKj" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
 		          		&nbsp;
-		          		<a href="" class="comMiniLink" onClick="deptClear();return false;">clear</a>
+		          		<a href="#" class="comMiniLink" onClick="deptClear();return false;">Clear</a>
 		          	</td>
 
 		          	<td>
@@ -418,83 +434,27 @@
 					<input id="sosButton1" class="comButton" type="button" value="★選択" onClick="hekouShozoku(2);" />
 
 		          		<s:textfield id="deptKjHenkou" name="deptKjHenkou"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
-		          		<span style="FONT-SIZE: 8pt;">clear</span>
+		          		&nbsp;<a href="" class="comMiniLink" onClick="deptKjHenkouClear();return false;">Clear</a>
 				</div>
 			</div>
 		</s:if>
 
 	<%-- ページ情報 --%>
 	<CENTER>
-		 <%-- ページャー表示 開始 --%>
-                 <!-- 改ページ -->
-                 <s:if test="searchType == 1 ">
-                  <table width="95%" style="text-align: center;" >
-                      <tbody>
-                      <tr>
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
-
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0',1,'2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur+1"/>);return false;">
-                                 	 次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                 </s:if>
+<%-- ページャー表示 開始 --%>
+          <s:if test='pageFlag == "1" '>
+          </s:if>
+		<s:else>
+          	<table width="80%">
+          		<tr>
+                    <td align="right">
+                      <jsp:include page="common/rdmPage.jsp">
+                      <jsp:param name="" value="" />
+                      </jsp:include>
+                    </td>
+                </tr>
+             </table>
+          </s:else>
           <%-- ページャー表示 終了 --%>
 
 	    <%-- 項目 --%>
@@ -512,8 +472,6 @@
 		            <td class="comTableTitle" id="7" style="width:146pt;"><nobr>役職（変更後）</nobr></td>
 		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>所属部科（変更前）</nobr></td>
 		            <td colspan="3" class="comTableTitle" id="8" style="width:146pt;"><nobr>所属部科（変更後）</nobr></td>
-					<td></td>
-					<td></td>
 		        </tr>
 		        </thead>
 			    <%-- 内容 --%>
@@ -593,65 +551,37 @@
 						</td>
 
 						<!-- 所属部科（変更後） -->
-						<td><input type="button" value="★へ変更" onclick="cseViewND401(this, '<s:property value="%{#status.index}"/>');"/></td>
-						<td><input type="button" value="戻す" onclick="deptBack(this, '<s:property value="%{#status.index}"/>');" style="display:none;"></td>
+						<td><input type="button" value="★" onclick="cseHenkouViewND401(this, '<s:property value="%{#status.index}"/>');"/></td>
+						<td><input type="button" value="←" onclick="deptBack(this, '<s:property value="%{#status.index}"/>');" style="display:none;"></td>
 						<td class="comTableItem" id=""  >
 							<s:if test="%{#rowBean.postDeptKanji == null || #rowBean.postDeptKanji == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].postDeptKanji" />
-
 				            </s:else>
-				            <s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptKanji" />
 						</td>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptKanji" />
 						<!-- ULT施設コード　隠し項目 -->
-						<td style="display:none;">
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].ultInsNo" />
-						</td>
 						<!-- ULT医師コード　隠し項目 -->
-						<td style="display:none;">
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].ultDocNo" />
-						</td>
 						<!--役職コード（変更前） 　隠し項目 -->
-						<td style="display:none;">
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preTitleCode" />
-
-						</td>
-						<!-- 役職コード（変更後）　隠し項目 -->
-						<td style="display:none;">
-
-						</td>
 						<!-- 所属部科カナ（変更前）　隠し項目 -->
-						<td >
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptKana" />
-						</td>
 						<!-- 所属部科カナ（変更後） 隠し項目 -->
-						<td >
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptKana" />
-						</td>
 						<!-- 所属部科コード（変更前） 隠し項目 -->
-						<td >
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptCode" />
-						</td>
 						<!-- 所属部科コード（変更後）　隠し項目 -->
-						<td >
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptCode" />
-						</td>
 						<!-- 勤務形態(変更前) 隠し項目 -->
-						<td style="display:none;">
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].jobForm" />
-						</td>
 						<!-- 大学職位コード 隠し項目 -->
-						<td style="display:none;">
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].univPosCode" />
-						</td>
 						<!-- 薬審メンバー区分(変更前) 隠し項目 -->
-						<td style="display:none;">
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].dcc" />
-						</td>
-
-
 			        </tr>
 
 			    </s:iterator>
@@ -660,6 +590,22 @@
 
 			    </div>
 	    </s:if>
+
+         <div style="display: flex; justify-content: space-between;">
+       		<div style="margin-top: 3%;margin-left: 10%;">
+       			<input type="button" value="戻る" onclick="" />
+       		</div>
+
+       		<div style="margin-top: 3%;margin-right: 10%;">
+       			<s:if test="searchType == 1 ">
+       				<s:if test="reqBtnFlg == 1 ">
+       					<input type="button" value="申請画面へ" onclick="goND403();"  />
+       				</s:if>
+       				<s:else>
+       					<input type="button" value="申請画面へ" onclick="" disabled />
+       				</s:else>
+       			</s:if>
+         </div>
     </table>
 
 
@@ -680,24 +626,17 @@
 	 </tr>
           </tbody>
           </table>
-
-         <div style="display: flex; justify-content: space-between;">
-       		<div style="margin-top: 3%;margin-left: 10%;">
-       			<input type="button" value="戻る" onclick="" />
-       		</div>
-
-       		<div style="margin-top: 3%;margin-right: 10%;">
-       			<s:if test="searchType == 1 ">
-       				<input type="button" value="申請画面へ" onclick="goND403();"  />
-       			</s:if>
-       		</div>
-         </div>
   </s:form>
 
   </td>
     </tr>
     </table>
 <%-- input用フォーム 終了 --%>
+</tbody>
+</td>
+</tr>
+</table>
+
 <jsp:include page="common/jkrBottom.jsp" flush="true" />
 <%-- input用フォーム 終了 --%>
 </body>

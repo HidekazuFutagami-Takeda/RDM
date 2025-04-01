@@ -621,4 +621,18 @@
        --NO1
        AND KMU_REQ.REQ_ID = #{inReqId}
     </select>
+    <select id="selectND401CheckData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity" resultMap="tRdmHcpKmuReqResultMap">
+        SELECT
+            KNR.REQ_ID
+		FROM
+            T_RDM_HCP_KMU_REQ HCP
+        INNER JOIN
+        	T_RDM_REQ_KNR KNR
+        ON  KNR.REQ_ID = HCP.REQ_ID
+        AND KNR.REQ_TYPE IN ('42','43','44')
+        AND KNR.REQ_STS IN ('03','13','04','14')
+        WHERE
+            HCP.DOC_NO = #{docNo}
+        AND HCP.INS_NO_MT = #{insNoMt}
+    </select>
 </mapper>

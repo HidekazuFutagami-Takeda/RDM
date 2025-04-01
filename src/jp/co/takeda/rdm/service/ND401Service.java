@@ -5,43 +5,36 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import javax.inject.Named;
 import java.util.LinkedHashMap;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
-
-import jp.co.takeda.rdm.common.LoginInfo;
-import jp.co.takeda.rdm.common.BaseInfoHolder;
-import jp.co.takeda.rdm.common.BaseDTO;
-import jp.co.takeda.rdm.common.BaseService;
-import jp.co.takeda.rdm.common.BeanUtil;
-import jp.co.takeda.rdm.util.StringUtils;
-import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
-import jp.co.takeda.rdm.entity.join.SelectCntSelectHcpEntity;
-import jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity;
-import jp.co.takeda.rdm.entity.join.SelectHcpEntity;
-import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
-import jp.co.takeda.rdm.entity.join.SelectNd401InitEntity;
-import jp.co.takeda.rdm.entity.join.SelectParamNd001Entity;
-import jp.co.takeda.rdm.entity.join.SelectParamNd401Entity;
-import jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity;
-import jp.co.takeda.rdm.dto.HcpData;
-import jp.co.takeda.rdm.dto.KmuIkkatsuData;
-import jp.co.takeda.rdm.dto.ND001DTO;
-import jp.co.takeda.rdm.dto.ND401DTO;
-import jp.co.takeda.rdm.util.RdmConstantsData;
-import jp.co.takeda.rdm.util.DateUtils;
-
+import javax.inject.Named;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
+
+import jp.co.takeda.rdm.common.BaseDTO;
+import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.common.BaseService;
+import jp.co.takeda.rdm.common.BeanUtil;
+import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.KmuIkkatsuData;
+import jp.co.takeda.rdm.dto.ND401DTO;
+import jp.co.takeda.rdm.dto.NF011DTO;
+import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
+import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
+import jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity;
+import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
+import jp.co.takeda.rdm.entity.join.SelectNd401InitEntity;
+import jp.co.takeda.rdm.entity.join.SelectParamNd401Entity;
+import jp.co.takeda.rdm.entity.join.SelectParamSwitchEntity;
+import jp.co.takeda.rdm.entity.join.SelectRdmComTrtgrpDataEntity;
+import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
+import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
+import jp.co.takeda.rdm.util.RdmConstantsData;
+import jp.co.takeda.rdm.util.StringUtils;
 
 /**
  * Serviceクラス（ND101)
@@ -69,6 +62,16 @@ public class ND401Service extends BaseService {
     	//1-1 権限判定
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
+        // MR権限の場合検索条件．組織、検索条件．担当者設定する
+        if(RdmConstantsData.RDM_JKN_MR.equals(loginInfo.getJokenSetCd())) {
+        	indto.setKensakuSosCd(loginInfo.getSosCd());
+        	indto.setKensakuSosName(loginInfo.getBumonRyakuName());
+        	indto.setKensakuJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        	indto.setKensakuJgiName(loginInfo.getJgiName());
+        	indto.setKensakuBrCode(loginInfo.getBrCode());
+        	indto.setKensakuDistCode(loginInfo.getDistCode());
+        }
+
         //初期表示画面フラグ = 1(初期化)
         indto.setPageFlag("1");
 
@@ -82,9 +85,34 @@ public class ND401Service extends BaseService {
 
 		BaseDTO outdto = indto;
 
-		indto.setSearchType("1");
+		// エラーチェック
+        // 検索項目未入力の場合
+        boolean inputFlg = false;
 
-		SelectHcpEntity selectHcpEntity = new SelectHcpEntity();
+		if(!StringUtils.isEmpty(indto.getKensakuSosCd())) {
+			inputFlg = true;
+		} else if(!StringUtils.isEmpty(indto.getKensakuJgiNo())) {
+			inputFlg = true;
+		} else if(!StringUtils.isEmpty(indto.getKensakuDeptCode())) {
+			inputFlg = true;
+		} else if(!StringUtils.isEmpty(indto.getKensakuInsKanj())) {
+			inputFlg = true;
+		} else if(!StringUtils.isEmpty(indto.getKensakuInsNo())) {
+			inputFlg = true;
+		} else if(!StringUtils.isEmpty(indto.getKensakuDocKanj())) {
+			inputFlg = true;
+		} else if(!StringUtils.isEmpty(indto.getKensakuDocNo())) {
+			inputFlg = true;
+		}
+
+		if (!inputFlg) {
+			// 検索条件を入力してください。
+			String tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);
+			//エラーメッセージをdtoに格納
+			indto.setMsgStr(tmpMsgStr);
+		  	return outdto;
+		}
+
 		//1-4 件数定義取得
 		SelectParamNd401Entity selectParamNd401Entity = new SelectParamNd401Entity();
 		List<SelectParamNd401Entity> selectParamNd401List;
@@ -98,25 +126,21 @@ public class ND401Service extends BaseService {
 		List<SelectParamSwitchEntity> selectParamSwitchIshiList;
 		selectParamSwitchIshiList = dao.select(selectParamSwitchEntity);
 
-		String ishiSinkiFlg = selectParamSwitchIshiList.get(0).getShinkiFlg();
 		String ishiHenshuFlg = selectParamSwitchIshiList.get(0).getHenshuFlg();
-		String ishiSakujoFlg = selectParamSwitchIshiList.get(0).getSakujoFlg();
-		String ishiFukkatsuFlg = selectParamSwitchIshiList.get(0).getFukkatsuFlg();
-        //MN_KMU
+
+		//MN_KMU
 		selectParamSwitchEntity.setInParamName(2);
 		List<SelectParamSwitchEntity> selectParamSwitchIshiKinmuList;
 		selectParamSwitchIshiKinmuList = dao.select(selectParamSwitchEntity);
-		String ishiKinmuSinkiFlg = selectParamSwitchIshiKinmuList.get(0).getShinkiFlg();
 		String ishiKinmuHenshuFlg = selectParamSwitchIshiKinmuList.get(0).getHenshuFlg();
-		String ishiKinmuSakujoFlg = selectParamSwitchIshiKinmuList.get(0).getSakujoFlg();
 
-		String ishiKinmuSwitchFlg = null;
+		String reqSwitchFlg = "0";
 
-		if ((ishiKinmuSinkiFlg.equals("1")) || (ishiKinmuHenshuFlg.equals("1")) || (ishiKinmuSakujoFlg.equals("1"))) {
-			ishiKinmuSwitchFlg = "1";
-		}else {
-			ishiKinmuSwitchFlg = "0";
+		if ("1".equals(ishiHenshuFlg) && "1".equals(ishiKinmuHenshuFlg)) {
+			reqSwitchFlg = "1";
 		}
+
+		indto.setReqBtnFlg(reqSwitchFlg);
 
 		SelectCntSelectNd401InitEntity selectParamSelectKmuEntity = new SelectCntSelectNd401InitEntity();
 
@@ -163,8 +187,6 @@ public class ND401Service extends BaseService {
 
 
         //検索条件
-        //直書きは仮置き、検索部作成出来次第indtoから取得すること
-
         List<SelectCntSelectNd401InitEntity> selectParamSelectKmuList;
         selectParamSelectKmuList = dao.select(selectParamSelectKmuEntity);
         indto.setPageCnt(selectParamSelectKmuList.get(0).getCntKmu());
@@ -177,9 +199,6 @@ public class ND401Service extends BaseService {
         indto.initPageInfo(indto.getPageCntCur(), selectParamSelectKmuList.get(0).getCntKmu(), selectParamNd401List.get(1).getValue());
 
         //検索条件
-        //entitiyから取得している箇所は仮置き、検索部作成出来次第indtoから取得すること
-
-
     	SelectNd401InitEntity selectNd401InitEntity = new SelectNd401InitEntity();
 
     	//検索条件_施設名
@@ -264,19 +283,10 @@ public class ND401Service extends BaseService {
     	indto.setPageFlag("0");
     	indto.setKmuIkkatsuDataList(kmuIkkatsuDataList);
 
-    	//役職プルダウン
-    	SelectNd401InitEntity selectNd401DmcMstPostEntity = new SelectNd401InitEntity();
-    	selectNd401DmcMstPostEntity.setSqlId("selectCntNd401DmcMstPost");
-    	List<SelectNd401InitEntity> selectNd401DmcMstPostListList = dao.select(selectNd401DmcMstPostEntity);
+		indto.setSearchType("1");
 
-    	//役職データ_取り出す
-        LinkedHashMap<String, String> mapTitleList = new LinkedHashMap<String, String>();
-        mapTitleList.put("", "--なし--");
-        for (SelectNd401InitEntity outEntity : selectNd401DmcMstPostListList) {
-        	mapTitleList.put(outEntity.getPuldownTitleCode(), outEntity.getPuldownTitleKj());
-        }
-        //役職を格納する
-        indto.setTitleMap(mapTitleList);
+		// DropDownList作成
+		createCombo(indto);
 
         return outdto;
 	}
@@ -297,6 +307,104 @@ public class ND401Service extends BaseService {
 
         // END UOC
         return outdto;
+    }
+
+    /**
+     * イベント処理
+     * @param indto ND401DTO
+     * @return 遷移先DTO
+     * @customizable
+     */
+    @Transactional
+    public BaseDTO req(ND401DTO indto) {
+    	BaseDTO outdto = indto;
+    	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+    	boolean errFlg = false;
+		String errMsg = "";
+
+		List<KmuIkkatsuData> kmuIkkatsuDataList = new ArrayList<KmuIkkatsuData>();
+
+		// 変更有のもののみ取得
+		for(KmuIkkatsuData entity : indto.getKmuIkkatsuDataList()) {
+			if(!entity.getPreTitleCode().equals(entity.getPostTitleCode())) {
+				// 役職変更有
+				kmuIkkatsuDataList.add(entity);
+			} else if (!entity.getPreDeptCode().equals(entity.getPostDeptCode())) {
+				// 所属部科変更有
+				kmuIkkatsuDataList.add(entity);
+			}
+		}
+
+		// エラーチェック
+		// 勤務先情報が変更されていない場合
+		if(kmuIkkatsuDataList.size() == 0) {
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W045) + "\n";
+			errFlg = true;
+		}
+
+		// 整合性チェック
+		for(KmuIkkatsuData entity : kmuIkkatsuDataList) {
+			// 医師の廃業・死亡申請している場合
+			TRdmHcpReqEntity tRdmHcpReqEntity = new TRdmHcpReqEntity();
+			tRdmHcpReqEntity.setSqlId("selectND401CheckDelData");
+			tRdmHcpReqEntity.setDocNo(entity.getDocNo());
+
+			List<TRdmHcpReqEntity> tRdmHcpReqChkList = dao.select(tRdmHcpReqEntity);
+			if(tRdmHcpReqChkList.size() > 0) {
+				// 施設コード_施設略式漢字名、医師コード_医師名：医師免許返納・死亡の申請されているため申請できません。（医師固定コード）
+				StringBuilder msgSb = new StringBuilder();
+				msgSb.append(entity.getInsNo());
+				msgSb.append("_");
+				msgSb.append(entity.getInsAbbrName());
+				msgSb.append("、");
+				msgSb.append(entity.getDocNo());
+				msgSb.append("_");
+				msgSb.append(entity.getDocKanj());
+				msgSb.append("：");
+
+				errMsg += msgSb.toString() + loginInfo.getMsgData(RdmConstantsData.W043).replace("（施設名）", "").replace("医師名", "医師固定コード") + "\n";
+				errFlg = true;
+			}
+
+			// 同一の医師勤務先の異動、削除申請がされている場合
+			TRdmHcpKmuReqEntity tRdmHcpKmuReqEntity = new TRdmHcpKmuReqEntity("selectND401CheckData");
+			tRdmHcpKmuReqEntity.setDocNo(entity.getDocNo());
+			tRdmHcpKmuReqEntity.setInsNoMt(entity.getInsNo());
+
+			List<TRdmHcpKmuReqEntity> tRdmHcpKmuReqChkList = dao.select(tRdmHcpKmuReqEntity);
+			if(tRdmHcpKmuReqChkList.size() > 0) {
+				// 施設コード_施設略式漢字名、医師コード_医師名：医師勤務先の異動、削除申請がされているため申請できません。（施設固定コード）（医師固定コード）
+				StringBuilder msgSb = new StringBuilder();
+				msgSb.append(entity.getInsNo());
+				msgSb.append("_");
+				msgSb.append(entity.getInsAbbrName());
+				msgSb.append("、");
+				msgSb.append(entity.getDocNo());
+				msgSb.append("_");
+				msgSb.append(entity.getDocKanj());
+				msgSb.append("：");
+
+				errMsg += msgSb.toString()+ loginInfo.getMsgData(RdmConstantsData.W044).replace("施設名", "施設固定コード").replace("医師名", "医師固定コード") + "\n";
+				errFlg = true;
+			}
+		}
+
+		// エラー時処理
+		if (errFlg) {
+			indto.setMsgStr(errMsg);
+			indto.setForward("ND401");
+
+			// DropDownList作成
+			createCombo(indto);
+			return outdto;
+		}
+
+		// 変更有のリストをセット
+		indto.setKmuIkkatsuDataList(kmuIkkatsuDataList);
+
+		indto.setForward("ND403Init");
+    	return outdto;
     }
 
 	/*
@@ -325,5 +433,28 @@ public class ND401Service extends BaseService {
 			indto.setMsgStr(msgStr);
 		}
 		return errChk;
+	}
+
+	/**
+	 * コンボ作成
+	 *
+	 * @param indto NF011DTO
+	 * @return なし
+	 * @customizable
+	 */
+	private void createCombo(ND401DTO indto) {
+		//役職プルダウン
+    	SelectNd401InitEntity selectNd401DmcMstPostEntity = new SelectNd401InitEntity();
+    	selectNd401DmcMstPostEntity.setSqlId("selectCntNd401DmcMstPost");
+    	List<SelectNd401InitEntity> selectNd401DmcMstPostListList = dao.select(selectNd401DmcMstPostEntity);
+
+    	//役職データ_取り出す
+        LinkedHashMap<String, String> mapTitleList = new LinkedHashMap<String, String>();
+        mapTitleList.put("", "--なし--");
+        for (SelectNd401InitEntity outEntity : selectNd401DmcMstPostListList) {
+        	mapTitleList.put(outEntity.getPuldownTitleCode(), outEntity.getPuldownTitleKj());
+        }
+        //役職を格納する
+        indto.setTitleMap(mapTitleList);
 	}
 }

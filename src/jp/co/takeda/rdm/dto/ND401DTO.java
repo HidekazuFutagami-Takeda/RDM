@@ -115,6 +115,12 @@ public class ND401DTO extends BaseDTO implements Serializable {
     private String kensakuSosCd;
 
     /**
+     * 検索条件_組織名
+     * @generated
+     */
+    private String kensakuSosName;
+
+    /**
      * 検索条件_医薬支店C
      * @generated
      */
@@ -131,6 +137,12 @@ public class ND401DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private String kensakuJgiNo;
+
+    /**
+     * 検索条件_担当者名
+     * @generated
+     */
+    private String kensakuJgiName;
 
 
 	/**
@@ -515,6 +527,48 @@ public class ND401DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private List<KmuIkkatsuData> kmuIkkatsuDataList = new ArrayList<KmuIkkatsuData>();
+
+	/**
+	 * ユーザ権限
+	 * @generated
+	 */
+	private String loginJokenSetCd;
+
+	/**
+	 * ユーザ従業員番号
+	 * @generated
+	 */
+	private String loginJgiNo;
+
+	/**
+	 * ユーザ氏名
+	 * @generated
+	 */
+	private String loginNm;
+
+	/**
+	 * ユーザ医薬支店C
+	 * @generated
+	 */
+	private String loginBrCd;
+
+	/**
+	 * ユーザ医薬営業所C
+	 * @generated
+	 */
+	private String loginDistCd;
+
+	/**
+	 * ユーザ所属組織名
+	 * @generated
+	 */
+	private String loginShzNm;
+
+	/**
+	 * ユーザ領域コード
+	 * @generated
+	 */
+	private String loginTrtCd;
 
 	/**
      * デフォルトのコンストラクタ。
@@ -1869,6 +1923,21 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * ND401DTO.javakensakuSosNameを設定
+	 * @return kensakuSosName
+	 */
+	public String getKensakuSosName() {
+		return kensakuSosName;
+	}
+
+	/**
+	 * @param kensakuSosName セットする kensakuSosName
+	 */
+	public void setKensakuSosName(String kensakuSosName) {
+		this.kensakuSosName = kensakuSosName;
+	}
+
+	/**
 	 * ND401DTO.javakensakuBrCodeを設定
 	 * @return kensakuBrCode
 	 */
@@ -1911,6 +1980,21 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuJgiNo(String kensakuJgiNo) {
 		this.kensakuJgiNo = kensakuJgiNo;
+	}
+
+	/**
+	 * ND401DTO.javakensakuJgiNameを設定
+	 * @return kensakuJgiName
+	 */
+	public String getKensakuJgiName() {
+		return kensakuJgiName;
+	}
+
+	/**
+	 * @param kensakuJgiName セットする kensakuJgiName
+	 */
+	public void setKensakuJgiName(String kensakuJgiName) {
+		this.kensakuJgiName = kensakuJgiName;
 	}
 
 	/**
@@ -1964,5 +2048,110 @@ public class ND401DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuDeptKj(String kensakuDeptKj) {
 		this.kensakuDeptKj = kensakuDeptKj;
+	}
+
+	/**
+	 * ND401DTO.javaloginJokenSetCdを設定
+	 * @return loginJokenSetCd
+	 */
+	public String getLoginJokenSetCd() {
+		return loginJokenSetCd;
+	}
+
+	/**
+	 * @param loginJokenSetCd セットする loginJokenSetCd
+	 */
+	public void setLoginJokenSetCd(String loginJokenSetCd) {
+		this.loginJokenSetCd = loginJokenSetCd;
+	}
+
+	/**
+	 * ND401DTO.javaloginJgiNoを設定
+	 * @return loginJgiNo
+	 */
+	public String getLoginJgiNo() {
+		return loginJgiNo;
+	}
+
+	/**
+	 * @param loginJgiNo セットする loginJgiNo
+	 */
+	public void setLoginJgiNo(String loginJgiNo) {
+		this.loginJgiNo = loginJgiNo;
+	}
+
+	/**
+	 * ND401DTO.javaloginNmを設定
+	 * @return loginNm
+	 */
+	public String getLoginNm() {
+		return loginNm;
+	}
+
+	/**
+	 * @param loginNm セットする loginNm
+	 */
+	public void setLoginNm(String loginNm) {
+		this.loginNm = loginNm;
+	}
+
+	/**
+	 * ND401DTO.javaloginBrCdを設定
+	 * @return loginBrCd
+	 */
+	public String getLoginBrCd() {
+		return loginBrCd;
+	}
+
+	/**
+	 * @param loginBrCd セットする loginBrCd
+	 */
+	public void setLoginBrCd(String loginBrCd) {
+		this.loginBrCd = loginBrCd;
+	}
+
+	/**
+	 * ND401DTO.javaloginDistCdを設定
+	 * @return loginDistCd
+	 */
+	public String getLoginDistCd() {
+		return loginDistCd;
+	}
+
+	/**
+	 * @param loginDistCd セットする loginDistCd
+	 */
+	public void setLoginDistCd(String loginDistCd) {
+		this.loginDistCd = loginDistCd;
+	}
+
+	/**
+	 * ND401DTO.javaloginShzNmを設定
+	 * @return loginShzNm
+	 */
+	public String getLoginShzNm() {
+		return loginShzNm;
+	}
+
+	/**
+	 * @param loginShzNm セットする loginShzNm
+	 */
+	public void setLoginShzNm(String loginShzNm) {
+		this.loginShzNm = loginShzNm;
+	}
+
+	/**
+	 * ND401DTO.javaloginTrtCdを設定
+	 * @return loginTrtCd
+	 */
+	public String getLoginTrtCd() {
+		return loginTrtCd;
+	}
+
+	/**
+	 * @param loginTrtCd セットする loginTrtCd
+	 */
+	public void setLoginTrtCd(String loginTrtCd) {
+		this.loginTrtCd = loginTrtCd;
 	}
 }

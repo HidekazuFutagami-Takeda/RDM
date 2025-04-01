@@ -133,7 +133,7 @@
 			</if>
 	        --No3
 	        <if test="kensakuDocKanj != null">
-				AND HCP_MST.DOC_KANJI_SRCH = LIKE '%' ||#{kensakuDocKanj}|| '%'
+				AND HCP_MST.DOC_KANJI_SRCH LIKE '%' ||#{kensakuDocKanj}|| '%'
 			</if>
 	        --No4
 	        <if test="kensakuDocNo != null">
@@ -245,7 +245,7 @@
 			</if>
 	        --No3
 	        <if test="kensakuDocKanj != null">
-				AND HCP_MST.DOC_KANJI_SRCH = LIKE '%' ||#{kensakuDocKanj}|| '%'
+				AND HCP_MST.DOC_KANJI_SRCH LIKE '%' ||#{kensakuDocKanj}|| '%'
 			</if>
 	        --No4
 	        <if test="kensakuDocNo != null">

@@ -2240,4 +2240,17 @@
 			AND HCP.DOC_NO = #{inDocNo}
 			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
     </select>
+    <select id="selectND401CheckDelData" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity" resultMap="tRdmHcpReqResultMap">
+        SELECT
+            KNR.REQ_ID
+		FROM
+            T_RDM_HCP_REQ HCP
+        INNER JOIN
+        	T_RDM_REQ_KNR KNR
+        ON  KNR.REQ_ID = HCP.REQ_ID
+        AND KNR.REQ_TYPE IN ('33')
+        AND KNR.REQ_STS IN ('03','13','04','14')
+        WHERE
+            HCP.DOC_NO = #{docNo}
+    </select>
 </mapper>

@@ -168,6 +168,38 @@ function jimViewClear(number){
   }
 }
 
+/**
+ * <pre>
+ *  組織クリア
+ * 組織(clear)押下時に呼ばれます。
+ * </pre>
+ */
+function sosClear() {
+	document.fm1.kensakuSosCd.value = "";
+	document.fm1.kensakuSosName.value = "";
+	document.fm1.kensakuBrCode.value = "";
+	document.fm1.kensakuDistCode.value = "";
+	document.fm1.kensakuUpSosCd.value = "";
+	document.fm1.kensakuBumonRank.value = "";
+
+	document.fm1.kensakuJgiNo.value = "";
+	document.fm1.kensakuJgiName.value = "";
+	document.fm1.kensakuTrtCd.value = "";
+	document.fm1.kensakuBrCode.value = "";
+	document.fm1.kensakuDistCode.value = "";
+}
+
+/**
+ * <pre>
+ *  担当者クリア
+ * 担当者(clear)押下時に呼ばれます。
+ * </pre>
+ */
+function tantoClear() {
+	document.fm1.kensakuJgiNo.value = "";
+	document.fm1.kensakuJgiName.value = "";
+	document.fm1.kensakuTrtCd.value = "";
+}
 
 /**
  * <pre>
@@ -180,6 +212,19 @@ function deptClear() {
 	var kensakuDeptKj = document.getElementById("kensakuDeptKj");
 	kensakuDeptKj.value = '';
 	document.fm1.kensakuDeptCode.value = '';
+}
+
+/**
+ * <pre>
+ *  所属部科クリア
+ * ★選択 所属部科(clear)押下時に呼ばれます。
+ * </pre>
+ */
+function deptKjHenkouClear() {
+
+	document.fm1.deptCodeHenkou.value = "";
+	document.fm1.deptKjHenkou.value = "";
+	document.fm1.deptKnHenkou.value = "";
 }
 
 /**
@@ -198,10 +243,17 @@ function clearAll(){
 	var kensakuDeptKj = document.getElementById("kensakuDeptKj");
 	kensakuDeptKj.value = '';
 
-	document.fm1.kensakuDeptCode.value = '';
-	document.fm1.kensakuBrCode.value = '';
-	document.fm1.kensakuDistCode.value = '';
-	document.fm1.kensakuJgiNo.value = '';
+	if(document.fm1.loginJokenSetCd.value == "JKN0850") {
+		document.fm1.kensakuSosCd.value = '';
+		document.fm1.kensakuSosName.value = '';
+		document.fm1.kensakuJgiNo.value = '';
+		document.fm1.kensakuJgiName.value = '';
+		document.fm1.kensakuBrCode.value = '';
+		document.fm1.kensakuDistCode.value = '';
+		document.fm1.kensakuUpSosCd.value = '';
+		document.fm1.kensakuBumonRank.value = '';
+
+	}
 
 }
 
@@ -218,33 +270,33 @@ function deptBack(Backbutton, indexNo){
     var preDeptKanaValue = document.getElementsByName(preDeptKana)[0].value;
 
     var postDeptKanaBack = "kmuIkkatsuDataList[" + indexNo + "].postDeptKana";
-    var postDeptKanaValueBack = document.getElementsByName(postDeptKanaBack)[0].value;
+    var postDeptKanaValueBack = document.getElementsByName(postDeptKanaBack)[0];
 
-	var deptKn = tr.children[15];
-	deptKn.textContent = preDeptKanaValue;
-	postDeptKanaValueBack = preDeptKanaValue;
+	//var deptKn = tr.children[15];
+	//deptKn.textContent = preDeptKanaValue;
+	postDeptKanaValueBack.value = preDeptKanaValue;
 
 	//所属部科コード
 	var preDeptCode = "kmuIkkatsuDataList[" + indexNo + "].preDeptCode";
     var preDeptCodeValue = document.getElementsByName(preDeptCode)[0].value;
 
     var postDeptCodeBack = "kmuIkkatsuDataList[" + indexNo + "].postDeptCode";
-    var postDeptCodeValueBack = document.getElementsByName(postDeptCodeBack)[0].value;
+    var postDeptCodeValueBack = document.getElementsByName(postDeptCodeBack)[0];
 
-	var deptCd = tr.children[17];
-	deptCd.textContent = preDeptCodeValue;
-	postDeptCodeValueBack = preDeptCodeValue;
+	//var deptCd = tr.children[17];
+	//deptCd.textContent = preDeptCodeValue;
+	postDeptCodeValueBack.value = preDeptCodeValue;
 
 	//所属部科　漢字名
 	var preDeptKanji = "kmuIkkatsuDataList[" + indexNo + "].preDeptKanji";
     var preDeptKanjiKanjiValue = document.getElementsByName(preDeptKanji)[0].value;
 
     var postDeptKanjiBack = "kmuIkkatsuDataList[" + indexNo + "].postDeptKanji";
-    var postDeptKanjiValueBack = document.getElementsByName(postDeptKanjiBack)[0].value;
+    var postDeptKanjiValueBack = document.getElementsByName(postDeptKanjiBack)[0];
 
 	var deptKj = tr.children[9];
 	deptKj.textContent = preDeptKanjiKanjiValue;
-	postDeptKanjiValueBack = preDeptKanjiKanjiValue;
+	postDeptKanjiValueBack.value = preDeptKanjiKanjiValue;
 
 	//★へ変更ボタン表示
 	var henkou = tr.children[7];
@@ -261,34 +313,34 @@ function deptBack(Backbutton, indexNo){
 /**
  * ★へ変更ボタン押下後に呼ばれます。
  */
-function cseViewND401(button, indexNo){
+function cseHenkouViewND401(button, indexNo){
 
 	var td = button.parentNode;
 	var tr = td.parentNode;
 
 	//所属部科　漢字名
 	var postDeptKanji = "kmuIkkatsuDataList[" + indexNo + "].postDeptKanji";
-    var postDeptKanjiValue = document.getElementsByName(postDeptKanji)[0].value;
+    var postDeptKanjiValue = document.getElementsByName(postDeptKanji)[0];
 
 	var deptKj = tr.children[9]
 	deptKj.textContent = document.fm1.deptKjHenkou.value;
-	postDeptKanjiValue = document.fm1.deptKjHenkou.value;
+	postDeptKanjiValue.value = document.fm1.deptKjHenkou.value;
 
 	//所属部科　カナ名
 	var postDeptKana = "kmuIkkatsuDataList[" + indexNo + "].postDeptKana";
-    var postDeptKanaValue = document.getElementsByName(postDeptKana)[0].value;
+    var postDeptKanaValue = document.getElementsByName(postDeptKana)[0];
 
-	var deptKn = tr.children[15]
-	deptKn.textContent = document.fm1.deptKnHenkou.value;
-	postDeptKanaValue = document.fm1.deptKnHenkou.value;
+	//var deptKn = tr.children[15]
+	//deptKn.textContent = document.fm1.deptKnHenkou.value;
+	postDeptKanaValue.value = document.fm1.deptKnHenkou.value;
 
 	//所属部科コード
 	var postDeptCode = "kmuIkkatsuDataList[" + indexNo + "].postDeptCode";
-    var postDeptCodeValue = document.getElementsByName(postDeptCode)[0].value;
+    var postDeptCodeValue = document.getElementsByName(postDeptCode)[0];
 
-	var deptCd = tr.children[17]
-	deptCd.textContent = document.fm1.deptCodeHenkou.value;
-	postDeptCodeValue  = document.fm1.deptCodeHenkou.value;
+	//var deptCd = tr.children[17]
+	//deptCd.textContent = document.fm1.deptCodeHenkou.value;
+	postDeptCodeValue.value = document.fm1.deptCodeHenkou.value;
 	//★へ変更ボタン非表示
 	var henkou = tr.children[7];
 	var henkouButton = henkou.children[0];
@@ -309,15 +361,15 @@ function hekouShozoku(index){
 	// 2度押し対策
 	  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	// 全てのポップアップを閉じる
-	  hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
+	  hcpClosePopUp(gChsViewWin, "gChsViewWin");
 
 	  if (index == 1) {
 		  document.fm1.paramInsNo.value = "";
-		  gCdcViewWin = cdcViewND401(gCdcViewWin,"tmpCallBackKensakuShozokuViewHenkou","gCdcViewWin");
+		  gChsViewWin = chsViewND401(gChsViewWin,"tmpCallBackKensakuShozokuViewHenkou","gChsViewWin");
 	  }
 	  else {
 		  document.fm1.paramInsNo.value = document.getElementById("kensakuInsNo").value;
-		  gCdcViewWin = cdcViewND401(gCdcViewWin,"tmpCallBackShozokuViewHenkou","gCdcViewWin");
+		  gChsViewWin = chsViewND401(gCdcViewWin,"tmpCallBackShozokuViewHenkou","gChsViewWin");
 	  }
 
 	  return(true);
@@ -332,7 +384,7 @@ function hekouShozoku(index){
  *           このエリアはUnLoad処理でクリアします。
  * @return 呼び出したwindowオブジェクトを返します。
  */
-function cdcViewND401(w,callBack,winVarName){
+function chsViewND401(w,callBack,winVarName){
 
   //****************************************************************
   // ポップアップ起動中にウィンドウが閉じられると
@@ -350,7 +402,7 @@ function cdcViewND401(w,callBack,winVarName){
   w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=530,height=660,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
 
   // パラメタの設定
-  var checkedCodes = document.fm1.cdcCheckedCodes;
+  var checkedCodes = document.fm1.chsCheckedCodes;
   var jokenName = [];
   var joken = [];
 //  for (var i = 0; i < checkedCodes.length; i++) {
@@ -395,6 +447,171 @@ function tmpCallBackShozokuViewHenkou(deptCode,DeptKj,DeptKn){
 }
 
 /**
+* 組織POPUP画面を呼び出します。
+*/
+function henkouSos(index){
+
+	// 2度押し対策
+	  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	// 全てのポップアップを閉じる
+	  hcpClosePopUp(gCseViewWin, "gCseViewWin");
+
+	  gCseViewWin = cseViewND401(gCseViewWin,"tmpCallBackKensakuSos","gCseViewWin");
+
+	  return(true);
+}
+
+/**
+ * 組織ポップアップ
+ * 親ウインドウから呼び出す画面表示関数
+ * @param w 今から呼び出すwindowオブジェクトを受け取ります。既に存在した場合はフォーカスをあてるだけです。
+ * @param callBack コールバック関数の名前をStringで受け取ります。
+ * @param winVarName windowの名前を保存するエリアの名前をStringで受け取ります。
+ *           このエリアはUnLoad処理でクリアします。
+ * @return 呼び出したwindowオブジェクトを返します。
+ */
+function cseViewND401(w,callBack,winVarName){
+
+  //****************************************************************
+  // ポップアップ起動中にウィンドウが閉じられると
+  // windowオブジェクトがString型に変換されてしまう場合があるため
+  // 型変換された場合はNULLをセットして初期化する
+  //****************************************************************
+  if(typeof(w) == 'string') {
+    w = null;
+  } else {
+    if(!comPopupPreCheck(w, winVarName)){
+      return(w);
+    }
+  }
+
+  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=530,height=660,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
+
+  // パラメタの設定
+  var checkedCodes = document.fm1.CseCheckedCodes;
+  var jokenName = [];
+  var joken = [];
+//  for (var i = 0; i < checkedCodes.length; i++) {
+//    jokenName[jokenName.length] = "CseCheckedCodes";
+//    joken[joken.length] = new Array(checkedCodes[i].value);
+//  }
+  //jokenName[jokenName.length] = "paramInsNo";
+  //joken[joken.length] = new Array(document.fm1.paramInsNo.value);
+
+  jokenName[jokenName.length] = "selectFlgPop";
+  joken[joken.length] = new Array("1");
+  jokenName[jokenName.length] = "backScreenId";
+  joken[joken.length] = new Array(document.fm1.backScreenId.value);
+
+  comPostPopup(w,"NC201Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
+
+  w.focus();
+  return(w);
+}
+
+/**
+ * <pre>
+ * 選択ボタン
+ * 組織POPUP　コールバック関数。
+ * </pre>
+ */
+function tmpCallBackKensakuSos(bumonRank, sosCd,
+		  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+
+	document.fm1.kensakuSosCd.value = sosCd;
+	document.fm1.kensakuSosName.value = bumonSeiName;
+	document.fm1.kensakuBrCode.value = brCode;
+	document.fm1.kensakuDistCode.value = distCode;
+	document.fm1.kensakuUpSosCd.value = upSosCode;
+	document.fm1.kensakuBumonRank.value = bumonRank;
+}
+
+/**
+* 担当者POPUP画面を呼び出します。
+*/
+function henkouTanto(index){
+
+	// 2度押し対策
+	  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	// 全てのポップアップを閉じる
+	  hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
+
+	  gCdcViewWin = cdcViewND401(gCdcViewWin,"tmpCallBackKensakuTanto","gCdcViewWin");
+
+	  return(true);
+}
+
+/**
+ * 担当者ポップアップ
+ * 親ウインドウから呼び出す画面表示関数
+ * @param w 今から呼び出すwindowオブジェクトを受け取ります。既に存在した場合はフォーカスをあてるだけです。
+ * @param callBack コールバック関数の名前をStringで受け取ります。
+ * @param winVarName windowの名前を保存するエリアの名前をStringで受け取ります。
+ *           このエリアはUnLoad処理でクリアします。
+ * @return 呼び出したwindowオブジェクトを返します。
+ */
+function cdcViewND401(w,callBack,winVarName){
+
+  //****************************************************************
+  // ポップアップ起動中にウィンドウが閉じられると
+  // windowオブジェクトがString型に変換されてしまう場合があるため
+  // 型変換された場合はNULLをセットして初期化する
+  //****************************************************************
+  if(typeof(w) == 'string') {
+    w = null;
+  } else {
+    if(!comPopupPreCheck(w, winVarName)){
+      return(w);
+    }
+  }
+
+  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=530,height=660,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
+
+  // パラメタの設定
+  var checkedCodes = document.fm1.CdcCheckedCodes;
+  var jokenName = [];
+  var joken = [];
+//  for (var i = 0; i < checkedCodes.length; i++) {
+//    jokenName[jokenName.length] = "CseCheckedCodes";
+//    joken[joken.length] = new Array(checkedCodes[i].value);
+//  }
+  //jokenName[jokenName.length] = "paramInsNo";
+  //joken[joken.length] = new Array(document.fm1.paramInsNo.value);
+
+  jokenName[jokenName.length] = "sosCdPop";
+  joken[joken.length] = new Array(document.fm1.kensakuSosCd.value);
+  jokenName[jokenName.length] = "bumonRankPop";
+  joken[joken.length] = new Array(document.fm1.kensakuBumonRank.value);
+  jokenName[jokenName.length] = "upSosCdPop";
+  joken[joken.length] = new Array(document.fm1.kensakuUpSosCd.value);
+  jokenName[jokenName.length] = "selectFlgPop";
+  joken[joken.length] = new Array("1");
+  jokenName[jokenName.length] = "backScreenId";
+  joken[joken.length] = new Array(document.fm1.backScreenId.value);
+
+  comPostPopup(w,"NC202Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
+
+  w.focus();
+  return(w);
+}
+
+/**
+ * <pre>
+ * 選択ボタン
+ * 担当者POPUP　コールバック関数。
+ * </pre>
+ */
+function tmpCallBackKensakuTanto(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+		distCode, trtGrpCd, trtNm, mrCat){
+
+	document.fm1.kensakuJgiNo.value = jgiNo;
+	document.fm1.kensakuJgiName.value = jgiName;
+	document.fm1.kensakuTrtCd.value = trtCd;
+	document.fm1.kensakuBrCode.value = brCode;
+	document.fm1.kensakuDistCode.value = distCode;
+}
+
+/**
  * <pre>
  *  ページ切替え
  * ページ切替えリンク押下時に呼ばれます。
@@ -421,11 +638,9 @@ function pltPage( pageCntCur ){
  * </pre>
  */
 function goND403() {
-	//現在ページ番号変更（遷移）
-    document.fm1.pageCntCur.value = 1;
 
-    document.fm1.functionId.value = "Init"
-	document.fm1.screenId.value	= "ND403";
+    document.fm1.functionId.value = "Req"
+	document.fm1.screenId.value	= "ND401";
 
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);

@@ -102,32 +102,16 @@ public class ND401Action extends BaseAction<ND401DTO> {
     protected void initSetup() throws Exception {
         // START UOC
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-    	String preScreenId = loginInfo.getPreScreenId();
 
-    	//モック
-//    	loginInfo.setJokenFlg("1");
-//    	loginInfo.setJgiNo(8830034);
-//    	loginInfo.setJgiName("テスト");
-//TODO 遷移元によるエラーは後で作成
-//    	//検証用 TODO
-//    	if(preScreenId.equals("NC001")) {
-//    		preScreenId = dto.getPreScreenId();
-//    	}
-//
-//    	dto.setPreScreenId(preScreenId);
-//
-//		// 遷移パターン 0:施設-医師コードから作成、1:申請データあり
-//		// 医師勤務先情報更新
-//		if ("ND013".equals(preScreenId)) {
-//			dto.setDisplayKbn("0");
-//			// 申請一覧
-//		} else if ("NC011".equals(preScreenId) || "ND307".equals(preScreenId)) {
-//			dto.setDisplayKbn("1");
-//		} else {
-//			throw new InvalidRequestException();
-//		}
+    	dto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
 
-		String title = "ND401_医師勤務先情報一括更新";
+    	String title = "ND401_医師勤務先情報一括更新";
 
 		dto.setTitle(title);
 
@@ -220,6 +204,39 @@ public class ND401Action extends BaseAction<ND401DTO> {
      * @customizable
      */
     protected String pageNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        sessionMap.put(AppConstant.SESKEY_ND401_SEARCHKEY, outdto);
+        // END UOC
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String req() throws Exception {
+        reqSetup();
+        // F層呼び出し
+        BaseDTO outdto = nD401Service.req(dto);
+        return reqNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void reqSetup() throws Exception {
+        // START UOC
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String reqNext(BaseDTO outdto) throws Exception {
         // START UOC
         sessionMap.put(AppConstant.SESKEY_ND401_SEARCHKEY, outdto);
         // END UOC

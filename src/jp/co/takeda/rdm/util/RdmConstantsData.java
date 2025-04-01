@@ -724,5 +724,6 @@ public class RdmConstantsData {
     public static final String W059 = "W059"; // 同一の施設が重複先に指定されています。
     public static final String W060 = "W060"; // 同一の施設が親施設に指定されています。
     public static final String W061 = "W061"; // 親施設に選択した施設が同じ領域で子施設となっています。
+    public static final String W062 = "W062"; //  勤務先に廃院が選択されています。
     public static final String I016 = "I016"; // 一時保存データを破棄しました。
 }

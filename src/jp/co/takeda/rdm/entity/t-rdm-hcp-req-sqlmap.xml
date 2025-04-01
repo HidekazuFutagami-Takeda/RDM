@@ -1076,7 +1076,7 @@
 			SELECT '0'
 			FROM
 			M_RDM_HCO_MST HCO --施設_基本情報
-			WHERE HCO.DEL_FLG = '1'
+			WHERE HCO.DEL_KBN IN ('1','2','3')
 			AND HCO.INS_NO = #{skInsNo}
     </select>
     <select id="selectND301REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND301MainDataEntity" resultMap="nD301MainDataResultMap">
@@ -1276,7 +1276,7 @@
 			SELECT '0'
 			FROM
 			M_RDM_HCO_MST HCO --施設_基本情報
-			WHERE HCO.DEL_FLG = '1'
+			WHERE HCO.DEL_KBN IN ('1','2','3')
 			AND HCO.INS_NO = #{skInsNo}
     </select>
     <select id="selectND012REQData" parameterType="jp.co.takeda.rdm.entity.join.SelectND012MainDataEntity" resultMap="nD012MainDataResultMap">
@@ -2252,5 +2252,41 @@
         AND KNR.REQ_STS IN ('03','13','04','14')
         WHERE
             HCP.DOC_NO = #{docNo}
+    </select>
+    <select id="selectND014CheckDelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity" resultMap="nD014CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCO_REQ HCO --施設_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCO.REQ_ID
+			WHERE KNR.REQ_TYPE = '03'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCO.INS_NO = #{skInsNo}
+			UNION
+			SELECT '0'
+			FROM
+			M_RDM_HCO_MST HCO --施設_基本情報
+			WHERE HCO.DEL_KBN IN ('1','2','3')
+			AND HCO.INS_NO = #{skInsNo}
+    </select>
+    <select id="selectND305CheckDelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectND305MainDataEntity" resultMap="nD305CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCO_REQ HCO --施設_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCO.REQ_ID
+			WHERE KNR.REQ_TYPE = '03'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCO.INS_NO = #{skInsNo}
+			UNION
+			SELECT '0'
+			FROM
+			M_RDM_HCO_MST HCO --施設_基本情報
+			WHERE HCO.DEL_KBN IN ('1','2','3')
+			AND HCO.INS_NO = #{skInsNo}
     </select>
 </mapper>

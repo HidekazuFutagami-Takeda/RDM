@@ -1903,7 +1903,7 @@ public class ND012Service extends BaseService {
 			if(len > 5) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", " 医師名(漢字)名");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}
@@ -2100,7 +2100,7 @@ public class ND012Service extends BaseService {
 			int duplicate = 0;
 			for (int j = 0; j < medicalSocietyNmArray.length; j++) {
 				for (int k = 0; k < medicalSocietyNmArray.length; k++) {
-					if (k != j && medicalSocietyNmArray[k] == medicalSocietyNmArray[j]) {
+					if (k != j && medicalSocietyNmArray[k].equals(medicalSocietyNmArray[j])) {
 						duplicate++;
 					}
 				}
@@ -2123,7 +2123,7 @@ public class ND012Service extends BaseService {
 			int duplicate = 0;
 			for (int j = 0; j < pubInstitutionCdArray.length; j++) {
 				for (int k = 0; k < pubInstitutionCdArray.length; k++) {
-					if (k != j && pubInstitutionCdArray[k] == pubInstitutionCdArray[j]) {
+					if (k != j && pubInstitutionCdArray[k].equals(pubInstitutionCdArray[j])) {
 						duplicate++;
 					}
 				}

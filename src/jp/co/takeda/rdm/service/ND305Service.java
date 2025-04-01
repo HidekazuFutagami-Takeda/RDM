@@ -599,6 +599,15 @@ public class ND305Service extends BaseService {
 			tmpMsgStr = tmpMsgStr.replace("項目名", "医師固定C");
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
+		//		整合性チェック                              廃院を勤務先施設に選択して申請している場合
+		paramChkEntity.setSqlId("selectND305CheckDelInsData");
+		paramChkEntity.setSkInsNo(indto.getSkInsNo());
+		List<SelectND305MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
+		if(!chkEntityList2.isEmpty()) {
+			errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W062);//勤務先に廃院が選択されています。
+			msgStr = msgStr + tmpMsgStr + "\n";
+		}
 
 		if(errChk) {//エラーありなのでメッセージをセットする
 			indto.setMsgStr(msgStr);

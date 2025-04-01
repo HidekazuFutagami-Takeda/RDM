@@ -678,10 +678,10 @@
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpCom"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="spCom" size="20" maxlength="150" />
+	      		<s:textfield name="spCom" size="20" maxlength="300" />
 			</s:if>
 			<s:else>
-				<s:textfield name="spCom" size="20" maxlength="150" readonly="true" />
+				<s:textfield name="spCom" size="20" maxlength="300" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>

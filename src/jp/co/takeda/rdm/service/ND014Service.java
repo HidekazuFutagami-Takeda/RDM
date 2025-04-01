@@ -729,6 +729,15 @@ public class ND014Service extends BaseService {
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 
+			//		整合性チェック                              廃院を勤務先施設に選択して申請している場合
+			paramChkEntity.setSqlId("selectND014CheckDelInsData");
+			paramChkEntity.setSkInsNo(indto.getSkInsNo());
+			List<SelectND014MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
+			if(!chkEntityList2.isEmpty()) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W062);//勤務先に廃院が選択されています。
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
 		}
 
 		if(errChk) {//エラーありなのでメッセージをセットする

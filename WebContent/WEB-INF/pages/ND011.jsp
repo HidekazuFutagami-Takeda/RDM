@@ -561,10 +561,10 @@
 	      <td class="comFormTableItem"><nobr>専門追加情報</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="spCom" size="20" maxlength="150" />
+	      		<s:textfield name="spCom" size="20" maxlength="300" />
 			</s:if>
 			<s:else>
-				<s:textfield name="spCom" size="20" maxlength="150" readonly="true" />
+				<s:textfield name="spCom" size="20" maxlength="300" readonly="true" />
 			</s:else>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

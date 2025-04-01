@@ -1218,7 +1218,7 @@ public class ND301Service extends BaseService {
 		List<SelectND301MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);
 		if(!chkEntityList2.isEmpty()) {
 			errChk = true;
-			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W040);//廃業・死亡状態で、申請できません。
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W062);//勤務先に廃院が選択されています。
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
 

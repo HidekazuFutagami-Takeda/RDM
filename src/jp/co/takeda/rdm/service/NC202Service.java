@@ -18,13 +18,16 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.entity.join.SelectInitJgiEntity;
+import jp.co.takeda.rdm.entity.join.SelectCntUnderSosEntity;
 //import jp.co.takeda.rdm.entity.join.SelectInitSosEntity;
 import jp.co.takeda.rdm.entity.join.SelectJgiEntity;
+import jp.co.takeda.rdm.entity.join.SelectJgiJgiEntity;
 import jp.co.takeda.rdm.entity.join.SelectRyakuNameEntity;
 //import jp.co.takeda.rdm.entity.join.SelectSosEntity;
 import jp.co.takeda.rdm.dto.NC202DTO;
 //import jp.co.takeda.rdm.dto.SosInitData;
 import jp.co.takeda.rdm.dto.JgiData;
+import jp.co.takeda.rdm.dto.JgiJgiData;
 import jp.co.takeda.rdm.dto.JgiInitData;
 //import jp.co.takeda.rdm.dto.NC201DTO;
 import jp.co.takeda.rdm.util.RdmConstantsData;
@@ -104,15 +107,15 @@ public class NC202Service extends BaseService {
 //        if(!StringUtils.isEmpty(jgiFlg)) {
 //        	indto.setJgiFlg(1);
 //        }
-        if(indto.getJgiData().isEmpty()) {
-        	indto.setJgiFlg(0);
-        }else {
-        	if(indto.getJgiData().get(0).getJgiNo() == null) {
-        		indto.setJgiFlg(0);
-        	}else {
-        		indto.setJgiFlg(1);
-        	}
-        }
+//        if(indto.getJgiJgiData().isEmpty()) {
+//        	indto.setJgiFlg(0);
+//        }else {
+//        	if(indto.getJgiJgiData().get(0).getJgiNo() == null) {
+//        		indto.setJgiFlg(0);
+//        	}else {
+//        		indto.setJgiFlg(1);
+//        	}
+//        }
         // END UOC
         return outdto;
     }
@@ -130,57 +133,117 @@ public class NC202Service extends BaseService {
        selectJgiEntity.setInBumonRank(initFlg);
 //       selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(null));
        selectJgiEntity.setInUpSosCd(null);
+       selectJgiEntity.setInJokenSetCd(loginInfo.getJokenSetCd());
        if (initFlg == 0) {
     	   selectJgiEntity.setInBumonRank(indto.getBumonRankPop()+ 1);
 //    	   selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
     	   selectJgiEntity.setInUpSosCd(indto.getSosCdPop());
        }
 
-       if (indto.getBackScreenId().equals("NF011")) {
-    	   selectJgiEntity.setInGmnFlg(0);
+       SelectCntUnderSosEntity selectCntUnderSosEntity = new SelectCntUnderSosEntity();
+       selectCntUnderSosEntity.setInSosCd(selectJgiEntity.getInUpSosCd());
+       List<SelectCntUnderSosEntity> selectCntUnderSosList = dao.select(selectCntUnderSosEntity);
+       if (selectCntUnderSosList.size() > 0) {
+
+			if (indto.getBackScreenId().equals("NF011")) {
+				selectJgiEntity.setInGmnFlg(0);
 //    	   selectJgiEntity.setInTrtCd("02");
 //    	   selectJgiEntity.setInAddrCodePref("01");
 //    	   selectJgiEntity.setInTkCityCd("018");
-    	   selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
-    	   selectJgiEntity.setInAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePrefPop()));
-    	   selectJgiEntity.setInTkCityCd(StringUtils.setEmptyToNull(indto.getTkCityCdPop()));
+				selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
+				selectJgiEntity.setInAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePrefPop()));
+				selectJgiEntity.setInTkCityCd(StringUtils.setEmptyToNull(indto.getTkCityCdPop()));
+				selectJgiEntity.setInSosCdPop(loginInfo.getSosCd());
+				selectJgiEntity.setInUpSosCdPop(loginInfo.getUpSosCd());
+				Integer tempBumonRank = Integer.parseInt(loginInfo.getBumonRank());
+				selectJgiEntity.setInBumonRankPop(tempBumonRank);
 
-       }else {
-    	   selectJgiEntity.setInGmnFlg(1);
-    	   selectJgiEntity.setInSosCdPop(indto.getSosCdPop());
-    	   selectJgiEntity.setInUpSosCdPop(indto.getUpSosCdPop());
-    	   selectJgiEntity.setInBumonRankPop(indto.getBumonRankPop());
+			} else {
+				selectJgiEntity.setInGmnFlg(1);
+				selectJgiEntity.setInSosCdPop(indto.getSosCdPop());
+				selectJgiEntity.setInUpSosCdPop(indto.getUpSosCdPop());
+				selectJgiEntity.setInBumonRankPop(indto.getBumonRankPop());
 //    	   selectJgiEntity.setInTrtCd("02");
 //    	   selectJgiEntity.setInSosCd("04199");
-    	   //selectJgiEntity.setInTrtCd(indto.getTrtCdPop());
-    	   //selectJgiEntity.setInSosCd(indto.getSosCdPop());
+				// selectJgiEntity.setInTrtCd(indto.getTrtCdPop());
+				// selectJgiEntity.setInSosCd(indto.getSosCdPop());
+			}
+
+			List<SelectJgiEntity> selectJgiList = dao.select(selectJgiEntity);
+
+			List<JgiData> jgiDataList = new ArrayList<JgiData>(selectJgiList.size());
+
+			for (SelectJgiEntity entity : selectJgiList) {
+				JgiData data = new JgiData();
+				BeanUtil.copyProperties(data, entity);
+				jgiDataList.add(data);
+			}
+			indto.setJgiData(jgiDataList);
+
+		}
+
+       SelectJgiJgiEntity selectJgiJgiEntity = new SelectJgiJgiEntity();
+       selectJgiJgiEntity.setInBumonRank(initFlg);
+//       selectJgiJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(null));
+       selectJgiJgiEntity.setInUpSosCd(null);
+       selectJgiJgiEntity.setInJokenSetCd(loginInfo.getJokenSetCd());
+       if (initFlg == 0) {
+    	   selectJgiJgiEntity.setInBumonRank(indto.getBumonRankPop()+ 1);
+//    	   selectJgiJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
+    	   selectJgiJgiEntity.setInUpSosCd(indto.getSosCdPop());
        }
 
-       List<SelectJgiEntity> selectJgiList = dao.select(selectJgiEntity);
+       if (indto.getBackScreenId().equals("NF011")) {
+    	   selectJgiJgiEntity.setInGmnFlg(0);
+//    	   selectJgiJgiEntity.setInTrtCd("02");
+//    	   selectJgiJgiEntity.setInAddrCodePref("01");
+//    	   selectJgiJgiEntity.setInTkCityCd("018");
+    	   selectJgiJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
+    	   selectJgiJgiEntity.setInAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePrefPop()));
+    	   selectJgiJgiEntity.setInTkCityCd(StringUtils.setEmptyToNull(indto.getTkCityCdPop()));
+    	   selectJgiJgiEntity.setInSosCdPop(loginInfo.getSosCd());
+    	   selectJgiJgiEntity.setInUpSosCdPop(loginInfo.getUpSosCd());
+    	   Integer tempBumonRank = Integer.parseInt(loginInfo.getBumonRank());
+    	   selectJgiJgiEntity.setInBumonRankPop(tempBumonRank);
+
+       }else {
+    	   selectJgiJgiEntity.setInGmnFlg(1);
+    	   selectJgiJgiEntity.setInSosCdPop(indto.getSosCdPop());
+    	   selectJgiJgiEntity.setInUpSosCdPop(indto.getUpSosCdPop());
+    	   selectJgiJgiEntity.setInBumonRankPop(indto.getBumonRankPop());
+//    	   selectJgiJgiEntity.setInTrtCd("02");
+//    	   selectJgiJgiEntity.setInSosCd("04199");
+    	   //selectJgiJgiEntity.setInTrtCd(indto.getTrtCdPop());
+    	   //selectJgiJgiEntity.setInSosCd(indto.getSosCdPop());
+       }
+
+       List<SelectJgiJgiEntity> selectJgiJgiList = dao.select(selectJgiJgiEntity);
 
 
-		if (selectJgiEntity.getInBumonRank() == 4) {
-			String sosCd = selectJgiList.get(0).getSosCd();
+		if (selectJgiJgiEntity.getInBumonRank() == 4) {
+			String sosCd = selectJgiJgiList.get(0).getSosCd();
 
 			SelectRyakuNameEntity selectRyakuNameEntity = new SelectRyakuNameEntity();
 			selectRyakuNameEntity.setInSosCd(sosCd);
 			List<SelectRyakuNameEntity> selectRyakuNameList = dao.select(selectRyakuNameEntity);
 			String sosName = selectRyakuNameList.get(0).getBumonRyakuName();
 
-			for (SelectJgiEntity entity : selectJgiList) {
+			for (SelectJgiJgiEntity entity : selectJgiJgiList) {
 				String nameJoin;
 				nameJoin = sosName + entity.getBumonRyakuName();
 				entity.setBumonRyakuName(nameJoin);
 			}
 		}
 
-       List<JgiData> jgiDataList = new ArrayList<JgiData>(selectJgiList.size());
 
-       for (SelectJgiEntity entity : selectJgiList) {
-           JgiData data = new JgiData();
+       List<JgiJgiData> jgiJgiDataList = new ArrayList<JgiJgiData>(selectJgiJgiList.size());
+
+       for (SelectJgiJgiEntity entity : selectJgiJgiList) {
+           JgiJgiData data = new JgiJgiData();
            BeanUtil.copyProperties(data, entity);
-           jgiDataList.add(data);
+           jgiJgiDataList.add(data);
        }
-       indto.setJgiData(jgiDataList);
+
+       indto.setJgiJgiData(jgiJgiDataList);
    }
 }

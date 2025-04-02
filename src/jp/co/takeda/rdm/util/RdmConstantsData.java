@@ -594,6 +594,12 @@ public class RdmConstantsData {
     public static final String CODE_NAME_DEL_FLG = "DEL_FLG";
     /**コード情報コード名 : 施設区分 */
     public static final String CODE_NAME_PHARM_TYPE = "PHARM_TYPE";
+    /**コード情報コード名 : 階級区分 */
+    public static final String CODE_NAME_INS_RANK = "INS_RANK";
+    /**コード情報コード名 : 定訪先区分 */
+    public static final String CODE_NAME_REG_VIS_TYPE = "REG_VIS_TYPE";
+    /**コード情報コード名 : 重点病院区分 */
+    public static final String CODE_NAME_IMP_HOS_TYPE = "IMP_HOS_TYPE";
     /**コード情報コード名 : 復活理由 */
     public static final String CODE_NAME_HCO_RST_REASON = "HCO_RST_REASON";
     /**コード情報コード名 : 削除理由 */

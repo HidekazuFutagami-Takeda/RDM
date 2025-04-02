@@ -333,6 +333,12 @@ public class HcoBlkReqDataList implements Serializable {
     private String nextHoInsType;
 
     /**
+     * 対象区分
+     * @generated
+     */
+    private String nextHoInsTypeValue;
+
+    /**
      * 経営主体
      * @generated
      */
@@ -1426,6 +1432,23 @@ public class HcoBlkReqDataList implements Serializable {
 	 */
 	public void setNextHoInsType(String nextHoInsType) {
 		this.nextHoInsType = nextHoInsType;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextHoInsTypeValueを設定
+	 * @return nextHoInsTypeValue
+	 */
+	public String getNextHoInsTypeValue() {
+		return nextHoInsTypeValue;
+	}
+
+
+	/**
+	 * @param nextHoInsTypeValue セットする nextHoInsTypeValue
+	 */
+	public void setNextHoInsTypeValue(String nextHoInsTypeValue) {
+		this.nextHoInsTypeValue = nextHoInsTypeValue;
 	}
 
 

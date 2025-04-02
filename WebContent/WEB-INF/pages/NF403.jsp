@@ -981,36 +981,38 @@
     }
 
     function onLoadMakeBox(){
-    	let i = 0;
-    	let insTypeKey = "hcoBlkReqDataList["+i+"].insType";
-    	let insType = document.getElementsByName(insTypeKey)[0];
-    	let tmpPharmTypeKey = "hcoBlkReqDataList["+i+"].tmpPharmType";
-    	let tmpPharmType = document.getElementsByName(tmpPharmTypeKey)[0];
-    	let pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
- 		let pharmTypeBox = document.getElementsByName(pharmType)[0];
- 		let tmpInsRankKey = "hcoBlkReqDataList["+i+"].tmpInsRank";
-    	let tmpInsRank = document.getElementsByName(tmpInsRankKey)[0];
-    	let insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
- 		let insRankBox = document.getElementsByName(insRank)[0];
- 		let tmpRegVisTypeKey = "hcoBlkReqDataList["+i+"].tmpRegVisType";
-    	let tmpRegVisType = document.getElementsByName(tmpRegVisTypeKey)[0];
-    	let regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
- 		let regVisTypeBox = document.getElementsByName(regVisType)[0];
- 		let tmpImpHosTypeKey = "hcoBlkReqDataList["+i+"].tmpImpHosType";
-    	let tmpImpHosType = document.getElementsByName(tmpImpHosTypeKey)[0];
-    	let impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
- 		let impHosTypeBox = document.getElementsByName(impHosType)[0];
- 		let hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
- 		let hoInsTypeBox = document.getElementsByName(hoInsType)[0];
- 		let tmpManageCdKey = "hcoBlkReqDataList["+i+"].tmpManageCd";
-    	let tmpManageCd = document.getElementsByName(tmpManageCdKey)[0];
- 		let manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
- 		let manageCdBox = document.getElementsByName(manageCd)[0];
+    	var i = 0;
+    	var insTypeKey = "hcoBlkReqDataList["+i+"].insType";
+    	var insType = document.getElementsByName(insTypeKey)[0];
+    	var tmpPharmTypeKey = "hcoBlkReqDataList["+i+"].tmpPharmType";
+    	var tmpPharmType = document.getElementsByName(tmpPharmTypeKey)[0];
+    	var pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+ 		var pharmTypeBox = document.getElementsByName(pharmType)[0];
+ 		var tmpInsRankKey = "hcoBlkReqDataList["+i+"].tmpInsRank";
+    	var tmpInsRank = document.getElementsByName(tmpInsRankKey)[0];
+    	var insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+ 		var insRankBox = document.getElementsByName(insRank)[0];
+ 		var tmpRegVisTypeKey = "hcoBlkReqDataList["+i+"].tmpRegVisType";
+    	var tmpRegVisType = document.getElementsByName(tmpRegVisTypeKey)[0];
+    	var regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+ 		var regVisTypeBox = document.getElementsByName(regVisType)[0];
+ 		var tmpImpHosTypeKey = "hcoBlkReqDataList["+i+"].tmpImpHosType";
+    	var tmpImpHosType = document.getElementsByName(tmpImpHosTypeKey)[0];
+    	var impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+ 		var impHosTypeBox = document.getElementsByName(impHosType)[0];
+ 		var hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+ 		var hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+ 		var hoInsTypeValueKey = "hcoBlkReqDataList["+i+"].nextHoInsTypeValue";
+ 		var hoInsTypeValue = document.getElementsByName(hoInsTypeValueKey)[0];
+ 		var tmpManageCdKey = "hcoBlkReqDataList["+i+"].tmpManageCd";
+    	var tmpManageCd = document.getElementsByName(tmpManageCdKey)[0];
+ 		var manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+ 		var manageCdBox = document.getElementsByName(manageCd)[0];
 
- 		let vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
- 		let vacInsTypeBox = document.getElementsByName(vacInsType)[0];
- 		let vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
- 		let vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+ 		var vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+ 		var vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+ 		var vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+ 		var vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
 
  		while(pharmTypeBox != undefined){
  			if(insType.value == "04" || insType.value == "05" || insType.value == "07"){
@@ -1064,6 +1066,7 @@
 
  			// 対象区分
  			setHoInsType(hoInsTypeBox, insRankBox.value);
+ 			hoInsTypeValue = hoInsTypeBox.value;
  			hoInsTypeBox.disabled = true;
 
 	 		// 経営主体
@@ -1128,6 +1131,8 @@
  		var impHosTypeBox = document.getElementsByName(impHosType)[0];
  		var hoInsType = "hcoBlkReqDataList["+index+"].nextHoInsType";
  		var hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+ 		var hoInsTypeValueKey = "hcoBlkReqDataList["+index+"].nextHoInsTypeValue";
+ 		var hoInsTypeValue = document.getElementsByName(hoInsTypeValueKey)[0];
  		var manageCd = "hcoBlkReqDataList["+index+"].nextManageCd";
  		var manageCdBox = document.getElementsByName(manageCd)[0];
 
@@ -1147,6 +1152,7 @@
 
 			// 対象区分
 			hoInsTypeBox.value = "";
+			hoInsTypeValue = "";
 
 			// 経営主体
 			makeManageCdBox(manageCdBox, insRankBox.value);
@@ -1164,6 +1170,7 @@
 
 			// 対象区分
 			setHoInsType(hoInsTypeBox, insRankBox.value);
+			hoInsTypeValue = hoInsTypeBox.value;
 
 			// 経営主体
 			makeManageCdBox(manageCdBox, insRankBox.value);
@@ -1582,6 +1589,7 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpRegVisType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpImpHosType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpManageCd"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeValue"/>
 
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmTypeFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRankFlg"/>

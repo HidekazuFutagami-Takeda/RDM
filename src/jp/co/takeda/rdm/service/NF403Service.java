@@ -650,6 +650,7 @@ public class NF403Service extends BaseService {
         	dataRecord.setTmpRegVisType(dataRecord.getNextRegVisType());
         	dataRecord.setTmpImpHosType(dataRecord.getNextImpHosType());
         	dataRecord.setTmpManageCd(dataRecord.getNextManageCd());
+        	dataRecord.setNextHoInsTypeValue(dataRecord.getNextHoInsType());
 
         	// 最終更新日
         	if(entity.getUpdShaYmd() != null) {
@@ -683,8 +684,11 @@ public class NF403Service extends BaseService {
 
 		List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
 
-		// 申請チェック有のもののみ取得
 		for(HcoBlkReqDataList entity : indto.getHcoBlkReqDataList()) {
+			// 対象区分再設定
+			entity.setNextHoInsType(entity.getNextHoInsTypeValue());
+
+			// 申請チェック有のもののみ取得
 			if("1".equals(entity.getReqChk())) {
 				hcoBlkReqDataList.add(entity);
 			}
@@ -998,6 +1002,50 @@ public class NF403Service extends BaseService {
         mapUltDif.put("0", "無");
         mapUltDif.put("1", "有");
         indto.setUltDifCombo(mapUltDif);
+
+        // 施設区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_PHARM_TYPE);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapPharmType = new LinkedHashMap<String, String>();
+        mapPharmType.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapPharmType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setPharmTypeCombo(mapPharmType);
+
+        // 階級区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_RANK);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapInsRank = new LinkedHashMap<String, String>();
+        mapInsRank.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapInsRank.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setInsRankCombo(mapInsRank);
+
+        // 定訪先区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REG_VIS_TYPE);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapRegVisType = new LinkedHashMap<String, String>();
+        mapRegVisType.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapRegVisType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setRegVisTypeCombo(mapRegVisType);
+
+        // 重点病院区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_IMP_HOS_TYPE);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapImpHosType = new LinkedHashMap<String, String>();
+        mapImpHosType.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapImpHosType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setImpHosTypeCombo(mapImpHosType);
 
         // 経営主体
  		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");

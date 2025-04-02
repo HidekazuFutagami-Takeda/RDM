@@ -7,7 +7,6 @@ package jp.co.takeda.rdm.service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -22,19 +21,14 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoBlkReqDataList;
-import jp.co.takeda.rdm.dto.KmuIkkatsuData;
-import jp.co.takeda.rdm.dto.ND401DTO;
 import jp.co.takeda.rdm.dto.NF403DTO;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
-import jp.co.takeda.rdm.entity.join.SelectNF401MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF403MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamNF403Entity;
-import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
-import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
-import jp.co.takeda.rdm.util.DateUtils;
+import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
@@ -115,11 +109,6 @@ public class NF403Service extends BaseService {
 		BaseDTO outdto = indto;
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
-		// 現在日付を取得
-		Date systemDate = DateUtils.getNowDate();
-		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
-		indto.setSrchSysDate(fmtDate.format(systemDate));
-
 		// DropDownList作成
         createCombo(indto);
 
@@ -150,13 +139,12 @@ public class NF403Service extends BaseService {
         }
 
         if (!inputFlg) {
-      	  // 検索条件を入力してください。
-      	  String tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);
-      	  //エラーメッセージをdtoに格納
-      	  indto.setMsgStr(tmpMsgStr);
-      	  return outdto;
-      }
-
+			// 検索条件を入力してください。
+			String tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);
+			//エラーメッセージをdtoに格納
+			indto.setMsgStr(tmpMsgStr);
+			return outdto;
+        }
 
         // 一覧表示データ
         List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
@@ -663,6 +651,12 @@ public class NF403Service extends BaseService {
         	dataRecord.setTmpImpHosType(dataRecord.getNextImpHosType());
         	dataRecord.setTmpManageCd(dataRecord.getNextManageCd());
 
+        	// 最終更新日
+        	if(entity.getUpdShaYmd() != null) {
+	    		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
+	    		dataRecord.setUpdShaYmd(fmtDate.format(entity.getUpdShaYmd()));
+        	}
+
         	hcoBlkReqDataList.add(dataRecord);
         }
         indto.setHcoBlkReqDataList(hcoBlkReqDataList);
@@ -680,7 +674,7 @@ public class NF403Service extends BaseService {
      * @customizable
      */
     @Transactional
-    public BaseDTO reqest(NF403DTO indto) {
+    public BaseDTO request(NF403DTO indto) {
     	BaseDTO outdto = indto;
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
@@ -697,8 +691,249 @@ public class NF403Service extends BaseService {
 		}
 
 		// エラーチェック
-		// TODO
+		for(HcoBlkReqDataList entity : hcoBlkReqDataList) {
+			// 「施設コード_施設略式漢字名：」を各エラーメッセージの先頭に追加
+			StringBuilder nmSb = new StringBuilder();
+			nmSb.append(entity.getInsNo());
+			nmSb.append("_");
+			nmSb.append(entity.getInsAbbrName());
+			nmSb.append(":");
+			String msgNm = nmSb.toString();
 
+			// １：必須入力チェック
+			if(entity.getInsType() != null && !"04".equals(entity.getInsType())
+	        		&& !"05".equals(entity.getInsType()) && !"07".equals(entity.getInsType())) {
+		        if(StringUtils.isEmpty(entity.getNextPharmType())) {
+		        	// 必須項目にデータを入力してください。（施設区分）
+					errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
+					errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextInsRank())) {
+		        	// 必須項目にデータを入力してください。（階級区分）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
+		        	errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextRegVisType())) {
+		        	// 必須項目にデータを入力してください。（定訪先区分）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
+		        	errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextImpHosType())) {
+		        	// 必須項目にデータを入力してください。（重点病院区分）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
+		        	errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextManageCd())) {
+		        	// 必須項目にデータを入力してください。（経営主体）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
+		        	errFlg = true;
+		        }
+	        }
+
+			if(entity.getInsType() != null && ("01".equals(entity.getInsType())
+	        		 || "02".equals(entity.getInsType()))) {
+				if(StringUtils.isEmpty(entity.getNextBedCntBase())) {
+	            	// 必須項目にデータを入力してください。（基準）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "基準") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt04())) {
+	            	// 必須項目にデータを入力してください。（結核）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "結核") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt01())) {
+	            	// 必須項目にデータを入力してください。（一般）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "一般") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt05())) {
+	            	// 必須項目にデータを入力してください。（感染症）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "感染症") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt03())) {
+	            	// 必須項目にデータを入力してください。（精神）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "精神") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt07())) {
+	            	// 必須項目にデータを入力してください。（療養）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "療養") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt02())) {
+	            	// 必須項目にデータを入力してください。（医療療養）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "医療療養") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt06())) {
+	            	// 必須項目にデータを入力してください。（介護療養）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "介護療養") + "\n";
+	    			errFlg = true;
+	            }
+	        }
+
+			// ２：レングスチェック
+	        if(entity.getNextBedCntBase() != null && entity.getNextBedCntBase().length() > 4) {
+	        	// 最大文字数を超えています。（病床（基準））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（基準）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt04() != null && entity.getNextBedCnt04().length() > 4) {
+	        	// 最大文字数を超えています。（病床（結核））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（結核）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt01() != null && entity.getNextBedCnt01().length() > 4) {
+	        	// 最大文字数を超えています。（病床（一般））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（一般）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt05() != null && entity.getNextBedCnt05().length() > 4) {
+	        	// 最大文字数を超えています。（病床（感染症））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（感染症）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt03() != null && entity.getNextBedCnt03().length() > 4) {
+	        	// 最大文字数を超えています。（病床（精神））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（精神）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt07() != null && entity.getNextBedCnt07().length() > 4) {
+	        	// 最大文字数を超えています。（病床（療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt02() != null && entity.getNextBedCnt02().length() > 4) {
+	        	// 最大文字数を超えています。（病床（医療療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt06() != null && entity.getNextBedCnt06().length() > 4) {
+	        	// 最大文字数を超えています。（病床（介護療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（介護療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedsTot() != null && entity.getNextBedsTot().length() > 5) {
+	        	// 最大文字数を超えています。（病床（ベッド数計））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（ベッド数計）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextMedBedsTot() != null && entity.getNextMedBedsTot().length() > 5) {
+	        	// 最大文字数を超えています。病床（（医療ベッド数計））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療ベッド数計）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getReqComment() != null && StringUtils.getByteLength(entity.getReqComment()) > 300) {
+	        	// 最大文字数を超えています。（申請コメント）
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
+				errFlg = true;
+	        }
+
+	        // ３：文字種チェック
+	        if(!StringUtils.isNumeric(entity.getNextBedCntBase())) {
+	        	// 入力文字種が不正です。（病床（基準））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（基準）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt04())) {
+	        	// 入力文字種が不正です。（病床（結核））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（結核）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt01())) {
+	        	// 入力文字種が不正です。（病床（一般））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（一般）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt05())) {
+	        	// 入力文字種が不正です。（病床（感染症））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（感染症）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt03())) {
+	        	// 入力文字種が不正です。（病床（精神））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（精神）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt07())) {
+	        	// 入力文字種が不正です。（病床（療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt02())) {
+	        	// 入力文字種が不正です。（病床（医療療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（医療療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt06())) {
+	        	// 入力文字種が不正です。（病床（介護療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（介護療養）") + "\n";
+				errFlg = true;
+	        }
+
+	        // ７：整合性チェック
+	        // 階級区分と病床数の値が適合しない場合
+			if((!"01".equals(entity.getInsType()) && !"02".equals(entity.getInsType())) || entity.getNextInsRank() == null) {
+
+			} else if(("01".equals(entity.getNextInsRank()) || "02".equals(entity.getNextInsRank()) || "03".equals(entity.getNextInsRank())
+					 || "04".equals(entity.getNextInsRank()) || "05".equals(entity.getNextInsRank()) || "06".equals(entity.getNextInsRank()))
+					 && !chkNumRange(entity.getNextBedsTot(), 0, 9999)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if(("12".equals(entity.getNextInsRank()) || "13".equals(entity.getNextInsRank()) || "15".equals(entity.getNextInsRank()))
+					 && !"0".equals(entity.getNextBedsTot())){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if(("11".equals(entity.getNextInsRank()) || "14".equals(entity.getNextInsRank()))
+					 && !chkNumRange(entity.getNextBedsTot(), 1, 19)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("07".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 100, 9999)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("08".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 200, 9999)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("09".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 20, 99)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("10".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 20, 199)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("16".equals(entity.getNextInsRank())
+						&& !("0".equals(StringUtils.nvl(entity.getNextBedCnt01(),"0")) && "0".equals(StringUtils.nvl(entity.getNextBedCnt07(), "0")) && "0".equals(StringUtils.nvl(entity.getNextBedCnt04(),"0"))
+								&& "0".equals(StringUtils.nvl(entity.getNextBedCnt05(),"0")) &&chkNumRange(entity.getNextBedCnt03(), 1, 9999))){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			}
+
+			// 排他チェック
+			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("selectNF401DateChkData");
+			tRdmReqKnrEntity.setInsNo(entity.getInsNo());
+			List<TRdmReqKnrEntity> tRdmReqKnrChkData = dao.select(tRdmReqKnrEntity);
+
+			if(tRdmReqKnrChkData.size() > 0 && tRdmReqKnrChkData.get(0) != null && tRdmReqKnrChkData.get(0).getUpdShaYmd() != null) {
+				// 現在日付を取得
+				SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
+				String updShaYmd = fmtDate.format(tRdmReqKnrChkData.get(0).getUpdShaYmd());
+
+				if(!updShaYmd.equals(entity.getUpdShaYmd())) {
+					// 既に他のユーザーによってデータが処理されています。
+					errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.E003) + "\n";
+					errFlg = true;
+				}
+			}
+		}
 
 		// エラー時処理
 		if (errFlg) {
@@ -796,4 +1031,19 @@ public class NF403Service extends BaseService {
 		}
 		indto.setVacVisitTypeCombo(mapVacVisitType);
     }
+
+    /**
+     * 数値範囲チェック
+     * @return n = "", min <= n <= max ならtrue
+     */
+	public static boolean chkNumRange(String n, int min, int max){
+		if(n == null || "".equals(n)){
+			return true;
+		} else if(!StringUtils.isNumeric(n)){
+			return false;
+		} else if(Integer.parseInt(n) >= min && Integer.parseInt(n) <= max){
+			return true;
+		}
+		return false;
+	}
 }

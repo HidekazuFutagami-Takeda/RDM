@@ -275,6 +275,7 @@
         <result column="INS_RANK_FLG" property="insRankFlg"/>
         <result column="REG_VIS_TYPE_FLG" property="regVisTypeFlg"/>
         <result column="IMP_HOS_TYPE_FLG" property="impHosTypeFlg"/>
+        <result column="HO_INS_TYPE_FLG" property="hoInsTypeFlg"/>
         <result column="MANAGE_CD_FLG" property="manageCdFlg"/>
         <result column="VAC_INS_TYPE_FLG" property="vacInsTypeFlg"/>
         <result column="VAC_VISIT_TYPE_FLG" property="vacVisitTypeFlg"/>
@@ -288,6 +289,7 @@
         <result column="BEDCNT06_FLG" property="bedCnt06Flg"/>
         <result column="BEDS_TOT_FLG" property="bedsTotFlg"/>
         <result column="MED_BEDS_TOT_FLG" property="medBedsTotFlg"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
         <result column="CNT" property="cnt"/>
     </resultMap>
     <insert id="insertByValue" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoNxtReqEntity">
@@ -1663,6 +1665,17 @@
 				) COM
 			WHERE
 			COM.SORT = 1
+		),
+		REQ_UPD_DT AS (
+			SELECT
+			  INS_NO
+			, MAX(UPD_SHA_YMD) AS UPD_SHA_YMD
+			FROM
+			T_RDM_REQ_KNR
+			WHERE REQ_TYPE = '21'
+			AND REQ_YMDHMS IS NOT NULL
+			GROUP BY
+			INS_NO
 		)
 
 		SELECT DISTINCT
@@ -1728,6 +1741,7 @@
 		, COLOR.INS_RANK_FLG
 		, COLOR.REG_VIS_TYPE_FLG
 		, COLOR.IMP_HOS_TYPE_FLG
+		, COLOR.HO_INS_TYPE_FLG
 		, COLOR.MANAGE_CD_FLG
 		, COLOR.VAC_INS_TYPE_FLG
 		, COLOR.VAC_VISIT_TYPE_FLG
@@ -1748,8 +1762,12 @@
 			OR BEDCNT.BEDCNT03 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SEISHIN)
 			OR BEDCNT.BEDCNT07 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_RYOYO)
 			) THEN '有' ELSE ' ' END AS ULT_DIF
+		,REQ_UPD_DT.UPD_SHA_YMD
 		FROM
 		M_RDM_HCO_MST MST -- 施設_基本情報
+		LEFT JOIN
+		REQ_UPD_DT
+		ON REQ_UPD_DT.INS_NO = MST.INS_NO
 		LEFT JOIN
 		M_RDM_HCO_VAC VAC -- 施設_ワクチン情報
 		ON  VAC.INS_NO = MST.INS_NO
@@ -1993,6 +2011,17 @@
 				) COM
 			WHERE
 			COM.SORT = 1
+		),
+		REQ_UPD_DT AS (
+			SELECT
+			  INS_NO
+			, MAX(UPD_SHA_YMD) AS UPD_SHA_YMD
+			FROM
+			T_RDM_REQ_KNR
+			WHERE REQ_TYPE = '21'
+			AND REQ_YMDHMS IS NOT NULL
+			GROUP BY
+			INS_NO
 		)
 
 		SELECT
@@ -2081,8 +2110,12 @@
 			OR BEDCNT.BEDCNT03 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_SEISHIN)
 			OR BEDCNT.BEDCNT07 <![CDATA[<>]]> TO_CHAR(MDB.KYOKABYOSHOSU_RYOYO)
 			) THEN '有' ELSE ' ' END AS ULT_DIF
+		,REQ_UPD_DT.UPD_SHA_YMD
 		FROM
 		M_RDM_HCO_MST MST -- 施設_基本情報
+		LEFT JOIN
+		REQ_UPD_DT
+		ON REQ_UPD_DT.INS_NO = MST.INS_NO
 		LEFT JOIN
 		M_RDM_HCO_VAC VAC -- 施設_ワクチン情報
 		ON  VAC.INS_NO = MST.INS_NO

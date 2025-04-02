@@ -440,6 +440,15 @@
 		ORDER BY
 		REQ_YMDHMS DESC
 	</select>
+	<select id="selectNF401DateChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+		SELECT
+		MAX(UPD_SHA_YMD) AS UPD_SHA_YMD -- 申請管理.更新日
+		FROM
+		T_RDM_REQ_KNR
+		WHERE INS_NO = #{insNo}
+		AND REQ_TYPE = '21'
+		AND REQ_YMDHMS IS NOT NULL
+	</select>
 	<update id="updateNF011Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
 	UPDATE
 		T_RDM_REQ_KNR

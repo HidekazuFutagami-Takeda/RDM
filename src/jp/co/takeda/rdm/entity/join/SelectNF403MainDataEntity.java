@@ -6,10 +6,11 @@
 package jp.co.takeda.rdm.entity.join;
 
 import java.io.Serializable;
-
-import jp.co.takeda.rdm.common.BaseEntity;
+import java.util.Date;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import jp.co.takeda.rdm.common.BaseEntity;
 
 
 /**
@@ -387,6 +388,12 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
     private String nextManageCd;
 
     /**
+     * 経営主体
+     * @generated
+     */
+    private String nextManageNm;
+
+    /**
      * ワクチン対象区分
      * @generated
      */
@@ -577,6 +584,12 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
      * @generated
      */
     private String medBedsTotFlg;
+
+    /**
+     * 最終更新日
+     * @generated
+     */
+    private Date updShaYmd;
 
     /**
      * コンストラクタ
@@ -1496,6 +1509,21 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
 	}
 
 	/**
+	 * SelectNF403MainDataEntity.javanextManageNmを設定
+	 * @return nextManageNm
+	 */
+	public String getNextManageNm() {
+		return nextManageNm;
+	}
+
+	/**
+	 * @param nextManageNm セットする nextManageNm
+	 */
+	public void setNextManageNm(String nextManageNm) {
+		this.nextManageNm = nextManageNm;
+	}
+
+	/**
 	 * SelectNF403MainDataEntity.javanextVacInsTypeを設定
 	 * @return nextVacInsType
 	 */
@@ -1973,6 +2001,21 @@ public class SelectNF403MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setMedBedsTotFlg(String medBedsTotFlg) {
 		this.medBedsTotFlg = medBedsTotFlg;
+	}
+
+	/**
+	 * SelectNF403MainDataEntity.javaupdShaYmdを設定
+	 * @return updShaYmd
+	 */
+	public Date getUpdShaYmd() {
+		return updShaYmd;
+	}
+
+	/**
+	 * @param updShaYmd セットする updShaYmd
+	 */
+	public void setUpdShaYmd(Date updShaYmd) {
+		this.updShaYmd = updShaYmd;
 	}
 
 	/**

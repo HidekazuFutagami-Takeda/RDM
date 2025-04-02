@@ -367,8 +367,8 @@ public class NF301Service extends BaseService {
 			errFlg = true;
         }
         if(!StringUtils.isNumeric(indto.getBedCnt04())) {
-        	// 入力文字種が不正です。（基準）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "基準") + "\n";
+        	// 入力文字種が不正です。（結核）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "結核") + "\n";
 			errFlg = true;
         }
         if(!StringUtils.isNumeric(indto.getBedCnt01())) {

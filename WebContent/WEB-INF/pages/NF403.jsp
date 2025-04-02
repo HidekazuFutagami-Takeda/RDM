@@ -1082,6 +1082,26 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpImpHosType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpManageCd"/>
 
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRankFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].regVisTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].impHosTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].hoInsTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].manageCdFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacInsTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacVisitTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCntBaseFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt04Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt01Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt05Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt03Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt07Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt02Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt06Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedsTotFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].medBedsTotFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].updShaYmd"/>
+
 			<td class="comTableItem" rowspan=3 style="text-align:center;">
 				<s:if test="btnEnableFlg == 1">
 				<input type="checkbox" name="reqChkBox" onChange="JavaScript:reqChk(this,'<s:property value="%{#status.index}"/>'); return false;" />
@@ -1149,98 +1169,228 @@
 	        </td>
 	        <td class="comTableItem">来期</td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.pharmTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onChange="JavaScript:changeBox('1','%{#status.index}'); return false;" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onChange="JavaScript:changeBox('1','%{#status.index}'); return false;" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.insRankFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onChange="JavaScript:changeBox('2','%{#status.index}'); return false;" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onChange="JavaScript:changeBox('2','%{#status.index}'); return false;" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.regVisTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.impHosTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextImpHosType" cssStyle="width:120pt" list ="impHosTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextImpHosType" cssStyle="width:120pt" list ="impHosTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.hoInsTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextHoInsType" cssStyle="width:120pt" list ="hoInsTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextHoInsType" cssStyle="width:120pt" list ="hoInsTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.manageCdFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextManageCd" cssStyle="width:120pt" list ="manageCdCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextManageCd" cssStyle="width:120pt" list ="manageCdCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.vacInsTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextVacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextVacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	       	<s:if test="#rowBean.vacVisitTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		<s:if test="#rowBean.bedCntBaseFlg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		<s:if test="#rowBean.bedCntBaseFlg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		</s:else>
 	        	</s:else>
 	        	</td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		<s:if test="#rowBean.bedCnt04Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		<s:if test="#rowBean.bedCnt04Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt01Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt01Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt05Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt05Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt03Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt03Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	       	</td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt07Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt07Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt02Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt02Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="#rowBean.bedCnt06Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt06Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	<s:if test="#rowBean.bedsTotFlg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	</s:if>
+	        	<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	<s:if test="#rowBean.medBedsTotFlg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+		        </s:if>
+		        <s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+		        </s:else>
 	        </td>
 		</tr>
 	</s:iterator>
@@ -1271,7 +1421,7 @@
                 <td>
                <nobr>
                	<s:if test='%{btnEnableFlg == "1"}'>
-					<input class="comButton" type="button"name="buttonF3" value="一括申請" onClick="apprBtn();JavaScript:return false;" />
+					<input class="comButton" type="button"name="buttonF3" value="一括申請" onClick="reqBtn();JavaScript:return false;" />
 				</s:if>
 				<s:else>
 					&nbsp;

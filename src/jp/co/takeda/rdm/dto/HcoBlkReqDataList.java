@@ -530,6 +530,12 @@ public class HcoBlkReqDataList implements Serializable {
      */
     private String medBedsTotFlg;
 
+    /**
+     * 最終更新日
+     * @generated
+     */
+    private String updShaYmd;
+
 
     /**
      * コンストラクタ
@@ -1981,6 +1987,23 @@ public class HcoBlkReqDataList implements Serializable {
 	 */
 	public void setMedBedsTotFlg(String medBedsTotFlg) {
 		this.medBedsTotFlg = medBedsTotFlg;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javaupdShaYmdを設定
+	 * @return updShaYmd
+	 */
+	public String getUpdShaYmd() {
+		return updShaYmd;
+	}
+
+
+	/**
+	 * @param updShaYmd セットする updShaYmd
+	 */
+	public void setUpdShaYmd(String updShaYmd) {
+		this.updShaYmd = updShaYmd;
 	}
 }
 

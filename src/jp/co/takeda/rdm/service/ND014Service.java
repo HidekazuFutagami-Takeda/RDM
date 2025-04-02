@@ -28,8 +28,6 @@ import jp.co.takeda.rdm.dto.ND014DTO;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcpYakushokuEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
-import jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
@@ -694,8 +692,9 @@ public class ND014Service extends BaseService {
 
 		//      申請コメント                                ３００文字を超えている場合
 		if(!StringUtils.isEmpty(indto.getReqComment())) {
-			len = StringUtils.getByteLength(indto.getReqComment());
-			if(len > 300) {
+			//len = StringUtils.getByteLength(indto.getReqComment());
+			len = indto.getReqComment().length();
+			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
@@ -704,8 +703,9 @@ public class ND014Service extends BaseService {
 		}
 		//      審査・承認メモ                                ３００文字を超えている場合
 		if(!StringUtils.isEmpty(indto.getAprMemo())) {
-			len = StringUtils.getByteLength(indto.getAprMemo());
-			if(len > 300) {
+			//len = StringUtils.getByteLength(indto.getAprMemo());
+			len = indto.getAprMemo().length();
+			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "審査・承認メモ");

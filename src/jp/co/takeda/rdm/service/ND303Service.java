@@ -1426,8 +1426,9 @@ public class ND303Service extends BaseService {
 
 		//      申請コメント                                ３００文字を超えている場合
 		if(!StringUtils.isEmpty(indto.getReqComment())) {
-			len = StringUtils.getByteLength(indto.getReqComment());
-			if(len > 300) {
+			//len = StringUtils.getByteLength(indto.getReqComment());
+			len = indto.getReqComment().length();
+			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
@@ -1436,8 +1437,9 @@ public class ND303Service extends BaseService {
 		}
 		//      却下コメント                                ３００文字を超えている場合
 		if(!StringUtils.isEmpty(indto.getAprComment())) {
-			len = StringUtils.getByteLength(indto.getAprComment());
-			if(len > 300) {
+			//len = StringUtils.getByteLength(indto.getAprComment());
+			len = indto.getAprComment().length();
+			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "却下コメント");

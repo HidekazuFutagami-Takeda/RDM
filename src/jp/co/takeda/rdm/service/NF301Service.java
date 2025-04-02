@@ -361,52 +361,52 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCntBase())) {
+        if(!isNumHyph(indto.getBedCntBase())) {
         	// 入力文字種が不正です。（基準）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "基準") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCnt04())) {
+        if(!isNumHyph(indto.getBedCnt04())) {
         	// 入力文字種が不正です。（結核）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "結核") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCnt01())) {
+        if(!isNumHyph(indto.getBedCnt01())) {
         	// 入力文字種が不正です。（一般）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "一般") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCnt05())) {
+        if(!isNumHyph(indto.getBedCnt05())) {
         	// 入力文字種が不正です。（感染症）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "感染症") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCnt03())) {
+        if(!isNumHyph(indto.getBedCnt03())) {
         	// 入力文字種が不正です。（精神）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "精神") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCnt07())) {
+        if(!isNumHyph(indto.getBedCnt07())) {
         	// 入力文字種が不正です。（療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "療養") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCnt02())) {
+        if(!isNumHyph(indto.getBedCnt02())) {
         	// 入力文字種が不正です。（医療療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "医療療養") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedCnt06())) {
+        if(!isNumHyph(indto.getBedCnt06())) {
         	// 入力文字種が不正です。（介護療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "介護療養") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getBedsTot())) {
+        if(!isNumHyph(indto.getBedsTot())) {
         	// 入力文字種が不正です。（ベッド数計）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "ベッド数計") + "\n";
 			errFlg = true;
         }
-        if(!StringUtils.isNumeric(indto.getMedBedsTot())) {
+        if(!isNumHyph(indto.getMedBedsTot())) {
         	// 入力文字種が不正です。（医療ベッド数計）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "医療ベッド数計") + "\n";
 			errFlg = true;
@@ -1666,11 +1666,12 @@ public class NF301Service extends BaseService {
      * @return n = "", min <= n <= max ならtrue
      */
 	public static boolean chkNumRange(String n, int min, int max){
-		if(n == null || "".equals(n)){
+		if (n == null || "".equals(n)) {
 			return true;
-		} else if(!StringUtils.isNumeric(n)){
-			return false;
-		} else if(Integer.parseInt(n) >= min && Integer.parseInt(n) <= max){
+		} else if (!isNumHyph(n)) {
+			// 文字種でエラーとなっているため範囲エラーは表示しない
+			return true;
+		} else if (Integer.parseInt(n) >= min && Integer.parseInt(n) <= max) {
 			return true;
 		}
 		return false;

@@ -2905,6 +2905,8 @@ public interface AppConstant {
     public static final String SESKEY_NF401_SEARCHKEY = "NF401_SEARCHKEY";
     /** 施設来期項目一括申請での初期結果 */
     public static final String SESKEY_NF403_SEARCHKEY = "NF403_SEARCHKEY";
+    /** 施設来期項目一括申請 - 申請内容確認での初期結果 */
+    public static final String SESKEY_NF405_SEARCHKEY = "NF405_SEARCHKEY";
 
     public static final String SESKEY_NC011_SEARCHKEY = "NC011_SEARCHKEY";
 	public static final String SESKEY_NC201_SEARCHKEY = "NC201_SEARCHKEY";

@@ -5,13 +5,12 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.inject.Named;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,38 +20,30 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoBlkReqDataList;
-import jp.co.takeda.rdm.dto.NF403DTO;
-import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
-import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
-import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
-import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
-import jp.co.takeda.rdm.entity.join.SelectNF403MainDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectParamNF403Entity;
-import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
+import jp.co.takeda.rdm.dto.NF405DTO;
 import jp.co.takeda.rdm.util.RdmConstantsData;
-import jp.co.takeda.rdm.util.StringUtils;
 
 /**
- * Serviceクラス（NF403)
+ * Serviceクラス（NF405)
  * @generated
  */
 @Named
-public class NF403Service extends BaseService {
+public class NF405Service extends BaseService {
 
     /**
      * ログインスタンス
      * @generated
      */
-    private static Log log = LogFactory.getLog(NF403Service.class);
+    private static Log log = LogFactory.getLog(NF405Service.class);
 
     /**
      * イベント処理
-     * @param indto RDMNF403DTO
+     * @param indto RDMNF405DTO
      * @return 遷移先DTO
      * @customizable
      */
     @Transactional
-    public BaseDTO init(NF403DTO indto) {
+    public BaseDTO init(NF405DTO indto) {
         BaseDTO outdto = indto;
         // START UOC
         // MR権限の場合、権限エラーでエラー画面に遷移する
@@ -61,57 +52,36 @@ public class NF403Service extends BaseService {
         	return outdto;
         }
 
-        // DropDownList作成
-        createCombo(indto);
+        List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
 
-        // ページ数(現在:１ページ目から)
-        indto.setPageCntCur(1);
+		for(HcoBlkReqDataList entity : indto.getHcoBlkReqDataList()) {
+			// 対象区分再設定
+			entity.setNextHoInsType(entity.getNextHoInsTypeValue());
 
-        indto.setPageFlag("1");
-
-
-        // 一括申請ボタン・申請チェックボックスの活性設定
-        String mnFac = "0";
-    	String mnNt = "0";
-
-    	MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
-    	mRdmParamMstEntity.setParamName("MN_FAC");
-    	mRdmParamMstEntity.setDelFlg("0");
-
-    	List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
-    	if(mRdmParamMstEntityList.size() > 0) {
-    		// valueの左から2桁目
-    		mnFac = mRdmParamMstEntityList.get(0).getValue().substring(1,2);
-    	}
-
-    	MRdmParamMstEntity mRdmParamMstNtEntity = new MRdmParamMstEntity();
-		mRdmParamMstNtEntity.setParamName("MN_NT_FAC");
-    	mRdmParamMstNtEntity.setDelFlg("0");
-
-    	List<MRdmParamMstEntity> mRdmParamMstOyaEntityList = dao.selectByValue(mRdmParamMstNtEntity);
-    	if(mRdmParamMstOyaEntityList.size() > 0) {
-    		// value
-    		mnNt = mRdmParamMstOyaEntityList.get(0).getValue();
-    	}
-
-    	if(mnFac.equals("1") && mnNt.equals("1")) {
-			indto.setBtnEnableFlg("1");
-		} else {
-			indto.setBtnEnableFlg("0");
+			// 申請チェック有のもののみ取得
+			if("1".equals(entity.getReqChk())) {
+				hcoBlkReqDataList.add(entity);
+			}
 		}
+
+        for(HcoBlkReqDataList entity : hcoBlkReqDataList) {
+        	if(StringUtils.isEmpty(entity.getReqComment())) {
+        		entity.setReqComment(" ");
+        	}
+        }
+
+        indto.setHcoBlkReqDataList(hcoBlkReqDataList);
 
     	// END UOC
         return outdto;
 
     }
 
-	public BaseDTO search(NF403DTO indto) {
+	public BaseDTO register(NF405DTO indto) {
 		BaseDTO outdto = indto;
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
-		// DropDownList作成
-        createCombo(indto);
-
+		/*
         // エラーチェック
         // 検索項目未入力の場合
         boolean inputFlg = false;
@@ -663,429 +633,8 @@ public class NF403Service extends BaseService {
         indto.setHcoBlkReqDataList(hcoBlkReqDataList);
 
         indto.setSrchFlg("1");
-
+*/
         // END UOC
        	return outdto;
-	}
-
-    /**
-     * イベント処理
-     * @param indto NF403DTO
-     * @return 遷移先DTO
-     * @customizable
-     */
-    @Transactional
-    public BaseDTO request(NF403DTO indto) {
-    	BaseDTO outdto = indto;
-    	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-
-    	boolean errFlg = false;
-		String errMsg = "";
-
-		List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
-
-		for(HcoBlkReqDataList entity : indto.getHcoBlkReqDataList()) {
-			// 申請チェック有のもののみ取得
-			if("1".equals(entity.getReqChk())) {
-				hcoBlkReqDataList.add(entity);
-			}
-		}
-
-		// エラーチェック
-		for(HcoBlkReqDataList entity : hcoBlkReqDataList) {
-			// 「施設コード_施設略式漢字名：」を各エラーメッセージの先頭に追加
-			StringBuilder nmSb = new StringBuilder();
-			nmSb.append(entity.getInsNo());
-			nmSb.append("_");
-			nmSb.append(entity.getInsAbbrName());
-			nmSb.append(":");
-			String msgNm = nmSb.toString();
-
-			// １：必須入力チェック
-			if(entity.getInsType() != null && !"04".equals(entity.getInsType())
-	        		&& !"05".equals(entity.getInsType()) && !"07".equals(entity.getInsType())) {
-		        if(StringUtils.isEmpty(entity.getNextPharmType())) {
-		        	// 必須項目にデータを入力してください。（施設区分）
-					errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
-					errFlg = true;
-		        }
-		        if(StringUtils.isEmpty(entity.getNextInsRank())) {
-		        	// 必須項目にデータを入力してください。（階級区分）
-		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
-		        	errFlg = true;
-		        }
-		        if(StringUtils.isEmpty(entity.getNextRegVisType())) {
-		        	// 必須項目にデータを入力してください。（定訪先区分）
-		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
-		        	errFlg = true;
-		        }
-		        if(StringUtils.isEmpty(entity.getNextImpHosType())) {
-		        	// 必須項目にデータを入力してください。（重点病院区分）
-		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
-		        	errFlg = true;
-		        }
-		        if(StringUtils.isEmpty(entity.getNextManageCd())) {
-		        	// 必須項目にデータを入力してください。（経営主体）
-		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
-		        	errFlg = true;
-		        }
-	        }
-
-			if(entity.getInsType() != null && ("01".equals(entity.getInsType())
-	        		 || "02".equals(entity.getInsType()))) {
-				if(StringUtils.isEmpty(entity.getNextBedCntBase())) {
-	            	// 必須項目にデータを入力してください。（基準）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "基準") + "\n";
-	    			errFlg = true;
-	            }
-				if(StringUtils.isEmpty(entity.getNextBedCnt04())) {
-	            	// 必須項目にデータを入力してください。（結核）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "結核") + "\n";
-	    			errFlg = true;
-	            }
-				if(StringUtils.isEmpty(entity.getNextBedCnt01())) {
-	            	// 必須項目にデータを入力してください。（一般）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "一般") + "\n";
-	    			errFlg = true;
-	            }
-				if(StringUtils.isEmpty(entity.getNextBedCnt05())) {
-	            	// 必須項目にデータを入力してください。（感染症）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "感染症") + "\n";
-	    			errFlg = true;
-	            }
-				if(StringUtils.isEmpty(entity.getNextBedCnt03())) {
-	            	// 必須項目にデータを入力してください。（精神）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "精神") + "\n";
-	    			errFlg = true;
-	            }
-				if(StringUtils.isEmpty(entity.getNextBedCnt07())) {
-	            	// 必須項目にデータを入力してください。（療養）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "療養") + "\n";
-	    			errFlg = true;
-	            }
-				if(StringUtils.isEmpty(entity.getNextBedCnt02())) {
-	            	// 必須項目にデータを入力してください。（医療療養）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "医療療養") + "\n";
-	    			errFlg = true;
-	            }
-				if(StringUtils.isEmpty(entity.getNextBedCnt06())) {
-	            	// 必須項目にデータを入力してください。（介護療養）
-	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "介護療養") + "\n";
-	    			errFlg = true;
-	            }
-	        }
-
-			// ２：レングスチェック
-	        if(entity.getNextBedCntBase() != null && entity.getNextBedCntBase().length() > 4) {
-	        	// 最大文字数を超えています。（病床（基準））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（基準）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedCnt04() != null && entity.getNextBedCnt04().length() > 4) {
-	        	// 最大文字数を超えています。（病床（結核））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（結核）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedCnt01() != null && entity.getNextBedCnt01().length() > 4) {
-	        	// 最大文字数を超えています。（病床（一般））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（一般）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedCnt05() != null && entity.getNextBedCnt05().length() > 4) {
-	        	// 最大文字数を超えています。（病床（感染症））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（感染症）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedCnt03() != null && entity.getNextBedCnt03().length() > 4) {
-	        	// 最大文字数を超えています。（病床（精神））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（精神）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedCnt07() != null && entity.getNextBedCnt07().length() > 4) {
-	        	// 最大文字数を超えています。（病床（療養））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（療養）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedCnt02() != null && entity.getNextBedCnt02().length() > 4) {
-	        	// 最大文字数を超えています。（病床（医療療養））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療療養）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedCnt06() != null && entity.getNextBedCnt06().length() > 4) {
-	        	// 最大文字数を超えています。（病床（介護療養））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（介護療養）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextBedsTot() != null && entity.getNextBedsTot().length() > 5) {
-	        	// 最大文字数を超えています。（病床（ベッド数計））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（ベッド数計）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getNextMedBedsTot() != null && entity.getNextMedBedsTot().length() > 5) {
-	        	// 最大文字数を超えています。病床（（医療ベッド数計））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療ベッド数計）") + "\n";
-				errFlg = true;
-	        }
-	        if(entity.getReqComment() != null && StringUtils.getByteLength(entity.getReqComment()) > 300) {
-	        	// 最大文字数を超えています。（申請コメント）
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
-				errFlg = true;
-	        }
-
-	        // ３：文字種チェック
-	        if(!StringUtils.isNumeric(entity.getNextBedCntBase())) {
-	        	// 入力文字種が不正です。（病床（基準））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（基準）") + "\n";
-				errFlg = true;
-	        }
-	        if(!StringUtils.isNumeric(entity.getNextBedCnt04())) {
-	        	// 入力文字種が不正です。（病床（結核））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（結核）") + "\n";
-				errFlg = true;
-	        }
-	        if(!StringUtils.isNumeric(entity.getNextBedCnt01())) {
-	        	// 入力文字種が不正です。（病床（一般））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（一般）") + "\n";
-				errFlg = true;
-	        }
-	        if(!StringUtils.isNumeric(entity.getNextBedCnt05())) {
-	        	// 入力文字種が不正です。（病床（感染症））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（感染症）") + "\n";
-				errFlg = true;
-	        }
-	        if(!StringUtils.isNumeric(entity.getNextBedCnt03())) {
-	        	// 入力文字種が不正です。（病床（精神））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（精神）") + "\n";
-				errFlg = true;
-	        }
-	        if(!StringUtils.isNumeric(entity.getNextBedCnt07())) {
-	        	// 入力文字種が不正です。（病床（療養））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（療養）") + "\n";
-				errFlg = true;
-	        }
-	        if(!StringUtils.isNumeric(entity.getNextBedCnt02())) {
-	        	// 入力文字種が不正です。（病床（医療療養））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（医療療養）") + "\n";
-				errFlg = true;
-	        }
-	        if(!StringUtils.isNumeric(entity.getNextBedCnt06())) {
-	        	// 入力文字種が不正です。（病床（介護療養））
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（介護療養）") + "\n";
-				errFlg = true;
-	        }
-
-	        // ７：整合性チェック
-	        // 階級区分と病床数の値が適合しない場合
-			if((!"01".equals(entity.getInsType()) && !"02".equals(entity.getInsType())) || entity.getNextInsRank() == null) {
-
-			} else if(("01".equals(entity.getNextInsRank()) || "02".equals(entity.getNextInsRank()) || "03".equals(entity.getNextInsRank())
-					 || "04".equals(entity.getNextInsRank()) || "05".equals(entity.getNextInsRank()) || "06".equals(entity.getNextInsRank()))
-					 && !chkNumRange(entity.getNextBedsTot(), 0, 9999)){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			} else if(("12".equals(entity.getNextInsRank()) || "13".equals(entity.getNextInsRank()) || "15".equals(entity.getNextInsRank()))
-					 && !"0".equals(entity.getNextBedsTot())){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			} else if(("11".equals(entity.getNextInsRank()) || "14".equals(entity.getNextInsRank()))
-					 && !chkNumRange(entity.getNextBedsTot(), 1, 19)){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			} else if("07".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 100, 9999)){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			} else if("08".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 200, 9999)){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			} else if("09".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 20, 99)){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			} else if("10".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 20, 199)){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			} else if("16".equals(entity.getNextInsRank())
-						&& !("0".equals(StringUtils.nvl(entity.getNextBedCnt01(),"0")) && "0".equals(StringUtils.nvl(entity.getNextBedCnt07(), "0")) && "0".equals(StringUtils.nvl(entity.getNextBedCnt04(),"0"))
-								&& "0".equals(StringUtils.nvl(entity.getNextBedCnt05(),"0")) &&chkNumRange(entity.getNextBedCnt03(), 1, 9999))){
-				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
-				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
-				errFlg = true;
-			}
-
-			// 排他チェック
-			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("selectNF401DateChkData");
-			tRdmReqKnrEntity.setInsNo(entity.getInsNo());
-			List<TRdmReqKnrEntity> tRdmReqKnrChkData = dao.select(tRdmReqKnrEntity);
-
-			if(tRdmReqKnrChkData.size() > 0 && tRdmReqKnrChkData.get(0) != null && tRdmReqKnrChkData.get(0).getUpdShaYmd() != null) {
-				// 現在日付を取得
-				SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
-				String updShaYmd = fmtDate.format(tRdmReqKnrChkData.get(0).getUpdShaYmd());
-
-				if(!updShaYmd.equals(entity.getUpdShaYmd())) {
-					// 既に他のユーザーによってデータが処理されています。
-					errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.E003) + "\n";
-					errFlg = true;
-				}
-			}
-		}
-
-		// エラー時処理
-		if (errFlg) {
-			indto.setMsgStr(errMsg);
-			indto.setForward("NF403");
-
-			// DropDownList作成
-			createCombo(indto);
-			return outdto;
-		}
-
-		indto.setForward("NF405Init");
-    	return outdto;
-    }
-
-    /**
-     * コンボ作成
-     * @param indto NF401DTO
-     * @return なし
-     * @customizable
-     */
-    private void createCombo(NF403DTO indto){
-		// 施設分類
-    	SelectComboListEntity inEntityCmb = new SelectComboListEntity();
-    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_CLASS);
-        List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
-        LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
-        mapDelKbn.put("", "--なし--");
-        for (SelectComboListEntity outEntity : outMainList) {
-        	mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-        }
-        indto.setInsClassCombo(mapDelKbn);
-
-        // 施設種別
-        inEntityCmb = new SelectComboListEntity();
-        inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_TYPE);
-        outMainList = dao.select(inEntityCmb);
-        LinkedHashMap<String, String> mapInsType = new LinkedHashMap<String, String>();
-        mapInsType.put("", "--なし--");
-        for (SelectComboListEntity outEntity : outMainList) {
-        	mapInsType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-        }
-        indto.setInsTypeCombo(mapInsType);
-
-        // 対象区分
-        inEntityCmb = new SelectComboListEntity();
-    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_HO_INS_TYPE);
-        outMainList = dao.select(inEntityCmb);
-        LinkedHashMap<String, String> mapHoInsType = new LinkedHashMap<String, String>();
-        mapHoInsType.put("", "--なし--");
-        for (SelectComboListEntity outEntity : outMainList) {
-        	mapHoInsType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-        }
-        indto.setHoInsTypeCombo(mapHoInsType);
-
-        // ULT差分
-        LinkedHashMap<String, String> mapUltDif = new LinkedHashMap<String, String>();
-        mapUltDif.put("", "--なし--");
-        mapUltDif.put("0", "無");
-        mapUltDif.put("1", "有");
-        indto.setUltDifCombo(mapUltDif);
-
-        // 施設区分
-        inEntityCmb = new SelectComboListEntity();
-    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_PHARM_TYPE);
-        outMainList = dao.select(inEntityCmb);
-        LinkedHashMap<String, String> mapPharmType = new LinkedHashMap<String, String>();
-        mapPharmType.put("", "--なし--");
-        for (SelectComboListEntity outEntity : outMainList) {
-        	mapPharmType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-        }
-        indto.setPharmTypeCombo(mapPharmType);
-
-        // 階級区分
-        inEntityCmb = new SelectComboListEntity();
-    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_RANK);
-        outMainList = dao.select(inEntityCmb);
-        LinkedHashMap<String, String> mapInsRank = new LinkedHashMap<String, String>();
-        mapInsRank.put("", "--なし--");
-        for (SelectComboListEntity outEntity : outMainList) {
-        	mapInsRank.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-        }
-        indto.setInsRankCombo(mapInsRank);
-
-        // 定訪先区分
-        inEntityCmb = new SelectComboListEntity();
-    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REG_VIS_TYPE);
-        outMainList = dao.select(inEntityCmb);
-        LinkedHashMap<String, String> mapRegVisType = new LinkedHashMap<String, String>();
-        mapRegVisType.put("", "--なし--");
-        for (SelectComboListEntity outEntity : outMainList) {
-        	mapRegVisType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-        }
-        indto.setRegVisTypeCombo(mapRegVisType);
-
-        // 重点病院区分
-        inEntityCmb = new SelectComboListEntity();
-    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_IMP_HOS_TYPE);
-        outMainList = dao.select(inEntityCmb);
-        LinkedHashMap<String, String> mapImpHosType = new LinkedHashMap<String, String>();
-        mapImpHosType.put("", "--なし--");
-        for (SelectComboListEntity outEntity : outMainList) {
-        	mapImpHosType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-        }
-        indto.setImpHosTypeCombo(mapImpHosType);
-
-        // 経営主体
- 		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
- 		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
- 		LinkedHashMap<String, String> mapManageCd = new LinkedHashMap<String, String>();
- 		mapManageCd.put("", "--なし--");
- 		for (MRdmHcoKeieitaiEntiry outEntity : keieiList) {
- 			mapManageCd.put(outEntity.getSetDtCd(), outEntity.getSetDtCd()+":"+outEntity.getKeieitaiKj());
- 		}
- 		indto.setManageCdCombo(mapManageCd);
-
- 		// ワクチン対象区分
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_VAC_INS_TYPE);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapVacInsType = new LinkedHashMap<String, String>();
-		mapVacInsType.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapVacInsType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
-		}
-		indto.setVacInsTypeCombo(mapVacInsType);
-
-		// ワクチン定訪先区分
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_VAC_VISIT_TYPE);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapVacVisitType = new LinkedHashMap<String, String>();
-		mapVacVisitType.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapVacVisitType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
-		}
-		indto.setVacVisitTypeCombo(mapVacVisitType);
-    }
-
-    /**
-     * 数値範囲チェック
-     * @return n = "", min <= n <= max ならtrue
-     */
-	public static boolean chkNumRange(String n, int min, int max){
-		if(n == null || "".equals(n)){
-			return true;
-		} else if(!StringUtils.isNumeric(n)){
-			return false;
-		} else if(Integer.parseInt(n) >= min && Integer.parseInt(n) <= max){
-			return true;
-		}
-		return false;
 	}
 }

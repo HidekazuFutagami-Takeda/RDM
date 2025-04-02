@@ -273,6 +273,92 @@
 		document.fm1.screenId.value="NF403";
 		document.fm1.functionId.value="Request";
 
+		var i = 0;
+    	var pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+ 		var pharmTypeBox = document.getElementsByName(pharmType)[0];
+ 		var pharmTypeNmKey = "hcoBlkReqDataList["+i+"].nextPharmTypeNm";
+ 		var pharmTypeNm = document.getElementsByName(pharmTypeNmKey)[0];
+    	var insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+ 		var insRankBox = document.getElementsByName(insRank)[0];
+ 		var insRankNmKey = "hcoBlkReqDataList["+i+"].nextInsRankNm";
+ 		var insRankNm = document.getElementsByName(insRankNmKey)[0];
+    	var regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+ 		var regVisTypeBox = document.getElementsByName(regVisType)[0];
+ 		var regVisTypeNmKey = "hcoBlkReqDataList["+i+"].nextRegVisTypeNm";
+ 		var regVisTypeNm = document.getElementsByName(regVisTypeNmKey)[0];
+    	var impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+ 		var impHosTypeBox = document.getElementsByName(impHosType)[0];
+ 		var impHosTypeNmKey = "hcoBlkReqDataList["+i+"].nextImpHosTypeNm";
+ 		var impHosTypeNm = document.getElementsByName(impHosTypeNmKey)[0];
+ 		var hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+ 		var hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+ 		var hoInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextHoInsTypeNm";
+ 		var hoInsTypeNm = document.getElementsByName(hoInsTypeNmKey)[0];
+ 		var manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+ 		var manageCdBox = document.getElementsByName(manageCd)[0];
+ 		var manageNmKey = "hcoBlkReqDataList["+i+"].nextManageNm";
+ 		var manageNm = document.getElementsByName(manageNmKey)[0];
+ 		var vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+ 		var vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+ 		var vacInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacInsTypeNm";
+ 		var vacInsTypeNm = document.getElementsByName(vacInsTypeNmKey)[0];
+ 		var vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+ 		var vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+ 		var vacVisitTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacVisitTypeNm";
+ 		var vacVisitTypeNm = document.getElementsByName(vacVisitTypeNmKey)[0];
+ 		var reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+ 		var reqChk = document.getElementsByName(reqChkKey)[0];
+
+ 		while(pharmTypeBox != undefined){
+
+ 			if(reqChk.value == "1"){
+				pharmTypeNm.value = pharmTypeBox.options[pharmTypeBox.selectedIndex].textContent;
+				insRankNm.value = insRankBox.options[insRankBox.selectedIndex].textContent;
+				regVisTypeNm.value = regVisTypeBox.options[regVisTypeBox.selectedIndex].textContent;
+				impHosTypeNm.value = impHosTypeBox.options[impHosTypeBox.selectedIndex].textContent;
+				hoInsTypeNm.value = hoInsTypeBox.options[hoInsTypeBox.selectedIndex].textContent;
+				manageNm.value = manageCdBox.options[manageCdBox.selectedIndex].textContent;
+				vacInsTypeNm.value = vacInsTypeBox.options[vacInsTypeBox.selectedIndex].textContent;
+				vacVisitTypeNm.value = vacVisitTypeBox.options[vacVisitTypeBox.selectedIndex].textContent;
+ 			}
+
+			i++;
+			pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+	 		pharmTypeBox = document.getElementsByName(pharmType)[0];
+	 		pharmTypeNmKey = "hcoBlkReqDataList["+i+"].nextPharmTypeNm";
+	 		pharmTypeNm = document.getElementsByName(pharmTypeNmKey)[0];
+	    	insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+	 		insRankBox = document.getElementsByName(insRank)[0];
+	 		insRankNmKey = "hcoBlkReqDataList["+i+"].nextInsRankNm";
+	 		insRankNm = document.getElementsByName(insRankNmKey)[0];
+	    	regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+	 		regVisTypeBox = document.getElementsByName(regVisType)[0];
+	 		regVisTypeNmKey = "hcoBlkReqDataList["+i+"].nextRegVisTypeNm";
+	 		regVisTypeNm = document.getElementsByName(regVisTypeNmKey)[0];
+	    	impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+	 		impHosTypeBox = document.getElementsByName(impHosType)[0];
+	 		impHosTypeNmKey = "hcoBlkReqDataList["+i+"].nextImpHosTypeNm";
+	 		impHosTypeNm = document.getElementsByName(impHosTypeNmKey)[0];
+	 		hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+	 		hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+	 		hoInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextHoInsTypeNm";
+	 		hoInsTypeNm = document.getElementsByName(hoInsTypeNmKey)[0];
+	 		manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+	 		manageCdBox = document.getElementsByName(manageCd)[0];
+	 		manageNmKey = "hcoBlkReqDataList["+i+"].nextManageNm";
+	 		manageNm = document.getElementsByName(manageNmKey)[0];
+	 		vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+	 		vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+	 		vacInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacInsTypeNm";
+	 		vacInsTypeNm = document.getElementsByName(vacInsTypeNmKey)[0];
+	 		vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+	 		vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+	 		vacVisitTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacVisitTypeNm";
+	 		vacVisitTypeNm = document.getElementsByName(vacVisitTypeNmKey)[0];
+	 		reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+	 		reqChk = document.getElementsByName(reqChkKey)[0];
+ 		}
+
 		comSubmitForAnyWarp(fm1);
 
  	}
@@ -1283,7 +1369,7 @@
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設来期項目一括承認"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設来期項目一括申請"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>
@@ -1610,6 +1696,15 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedsTotFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].medBedsTotFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].updShaYmd"/>
+
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextPharmTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextInsRankNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextRegVisTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextImpHosTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextManageNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacVisitTypeNm"/>
 
 			<td class="comTableItem" rowspan=3 style="text-align:center;">
 				<s:if test="btnEnableFlg == 1">

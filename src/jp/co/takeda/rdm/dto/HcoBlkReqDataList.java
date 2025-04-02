@@ -357,6 +357,54 @@ public class HcoBlkReqDataList implements Serializable {
     private String nextVacVisitType;
 
     /**
+     * 施設区分
+     * @generated
+     */
+    private String nextPharmTypeNm;
+
+    /**
+     * 階級区分
+     * @generated
+     */
+    private String nextInsRankNm;
+
+    /**
+     * 定訪先区分
+     * @generated
+     */
+    private String nextRegVisTypeNm;
+
+    /**
+     * 重点病院区分
+     * @generated
+     */
+    private String nextImpHosTypeNm;
+
+    /**
+     * 対象区分
+     * @generated
+     */
+    private String nextHoInsTypeNm;
+
+    /**
+     * 経営主体
+     * @generated
+     */
+    private String nextManageNm;
+
+    /**
+     * ワクチン対象区分
+     * @generated
+     */
+    private String nextVacInsTypeNm;
+
+    /**
+     * ワクチン定訪先区分
+     * @generated
+     */
+    private String nextVacVisitTypeNm;
+
+    /**
      * 基準
      * @generated
      */
@@ -1500,6 +1548,142 @@ public class HcoBlkReqDataList implements Serializable {
 	 */
 	public void setNextVacVisitType(String nextVacVisitType) {
 		this.nextVacVisitType = nextVacVisitType;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextPharmTypeNmを設定
+	 * @return nextPharmTypeNm
+	 */
+	public String getNextPharmTypeNm() {
+		return nextPharmTypeNm;
+	}
+
+
+	/**
+	 * @param nextPharmTypeNm セットする nextPharmTypeNm
+	 */
+	public void setNextPharmTypeNm(String nextPharmTypeNm) {
+		this.nextPharmTypeNm = nextPharmTypeNm;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextInsRankNmを設定
+	 * @return nextInsRankNm
+	 */
+	public String getNextInsRankNm() {
+		return nextInsRankNm;
+	}
+
+
+	/**
+	 * @param nextInsRankNm セットする nextInsRankNm
+	 */
+	public void setNextInsRankNm(String nextInsRankNm) {
+		this.nextInsRankNm = nextInsRankNm;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextRegVisTypeNmを設定
+	 * @return nextRegVisTypeNm
+	 */
+	public String getNextRegVisTypeNm() {
+		return nextRegVisTypeNm;
+	}
+
+
+	/**
+	 * @param nextRegVisTypeNm セットする nextRegVisTypeNm
+	 */
+	public void setNextRegVisTypeNm(String nextRegVisTypeNm) {
+		this.nextRegVisTypeNm = nextRegVisTypeNm;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextImpHosTypeNmを設定
+	 * @return nextImpHosTypeNm
+	 */
+	public String getNextImpHosTypeNm() {
+		return nextImpHosTypeNm;
+	}
+
+
+	/**
+	 * @param nextImpHosTypeNm セットする nextImpHosTypeNm
+	 */
+	public void setNextImpHosTypeNm(String nextImpHosTypeNm) {
+		this.nextImpHosTypeNm = nextImpHosTypeNm;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextHoInsTypeNmを設定
+	 * @return nextHoInsTypeNm
+	 */
+	public String getNextHoInsTypeNm() {
+		return nextHoInsTypeNm;
+	}
+
+
+	/**
+	 * @param nextHoInsTypeNm セットする nextHoInsTypeNm
+	 */
+	public void setNextHoInsTypeNm(String nextHoInsTypeNm) {
+		this.nextHoInsTypeNm = nextHoInsTypeNm;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextManageNmを設定
+	 * @return nextManageNm
+	 */
+	public String getNextManageNm() {
+		return nextManageNm;
+	}
+
+
+	/**
+	 * @param nextManageNm セットする nextManageNm
+	 */
+	public void setNextManageNm(String nextManageNm) {
+		this.nextManageNm = nextManageNm;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextVacInsTypeNmを設定
+	 * @return nextVacInsTypeNm
+	 */
+	public String getNextVacInsTypeNm() {
+		return nextVacInsTypeNm;
+	}
+
+
+	/**
+	 * @param nextVacInsTypeNm セットする nextVacInsTypeNm
+	 */
+	public void setNextVacInsTypeNm(String nextVacInsTypeNm) {
+		this.nextVacInsTypeNm = nextVacInsTypeNm;
+	}
+
+
+	/**
+	 * HcoBlkReqDataList.javanextVacVisitTypeNmを設定
+	 * @return nextVacVisitTypeNm
+	 */
+	public String getNextVacVisitTypeNm() {
+		return nextVacVisitTypeNm;
+	}
+
+
+	/**
+	 * @param nextVacVisitTypeNm セットする nextVacVisitTypeNm
+	 */
+	public void setNextVacVisitTypeNm(String nextVacVisitTypeNm) {
+		this.nextVacVisitTypeNm = nextVacVisitTypeNm;
 	}
 
 

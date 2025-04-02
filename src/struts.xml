@@ -447,6 +447,14 @@
             <result name="NF403">/WEB-INF/pages/NF403.jsp</result>
             <result name="NF405Init" type="chain">NF405Init</result>
         </action>
+        <action name="NF405Init" class="nF405Action" method="init">
+            <result name="NF405">/WEB-INF/pages/NF405.jsp</result>
+            <result name="NC109" type="chain">NC109Init</result>
+        </action>
+        <action name="NF405Register" class="nF405Action" method="register">
+            <result name="NF405">/WEB-INF/pages/NF405.jsp</result>
+            <result name="NC101" type="chain">NC101Init</result>
+        </action>
         <action name="NC203Init" class="nC203Action" method="init">
             <result name="NC203">/WEB-INF/pages/NC203.jsp</result>
         </action>

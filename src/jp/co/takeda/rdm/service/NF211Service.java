@@ -71,6 +71,23 @@ public class NF211Service extends BaseService {
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
         List<LnkTrtData> lnkTrtDataList = new ArrayList<LnkTrtData>();
 
+        if ("4".equals(indto.getDisplayKbn())) {
+        	// 申請一覧から遷移時、武田紐か領域別紐かを判別
+        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqEntity = new TRdmHcoLnkNxtReqEntity();
+        	tRdmHcoLnkNxtReqEntity.setReqId(indto.getReqId());
+        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqData = dao.selectByPK(tRdmHcoLnkNxtReqEntity);
+
+        	if(tRdmHcoLnkNxtReqData == null) {
+        		// 領域別紐
+        		indto.setDisplayKbn("3");
+        		indto.setTkdTrtKbn("1");
+        	} else {
+        		// 武田紐
+        		indto.setDisplayKbn("2");
+        		indto.setTkdTrtKbn("0");
+        	}
+        }
+
         if ("0".equals(indto.getDisplayKbn())) {
     		// 施設固定コードで初期データ作成
         	// 武田紐領域別区分が'0'（来期用紐付け(武田紐)）

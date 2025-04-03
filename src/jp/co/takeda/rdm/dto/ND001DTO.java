@@ -131,6 +131,21 @@ public class ND001DTO extends BaseDTO implements Serializable {
     private String searchInsNo;
 
 	/**
+     * 施設名
+     */
+    private String searchInsNm;
+
+	/**
+     * 所属部科コード
+     */
+    private String searchDeptCd;
+
+	/**
+     * 所属部科名
+     */
+    private String searchDeptNm;
+
+	/**
      * 医師属性
      */
     private String searchDocAttribute;
@@ -488,6 +503,51 @@ public class ND001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setSearchInsNo(String searchInsNo) {
 		this.searchInsNo = searchInsNo;
+	}
+
+	/**
+	 * ND001DTO.javasearchInsNmを設定
+	 * @return searchInsNm
+	 */
+	public String getSearchInsNm() {
+		return searchInsNm;
+	}
+
+	/**
+	 * @param searchInsNm セットする searchInsNm
+	 */
+	public void setSearchInsNm(String searchInsNm) {
+		this.searchInsNm = searchInsNm;
+	}
+
+	/**
+	 * ND001DTO.javasearchDeptCdを設定
+	 * @return searchDeptCd
+	 */
+	public String getSearchDeptCd() {
+		return searchDeptCd;
+	}
+
+	/**
+	 * @param searchDeptCd セットする searchDeptCd
+	 */
+	public void setSearchDeptCd(String searchDeptCd) {
+		this.searchDeptCd = searchDeptCd;
+	}
+
+	/**
+	 * ND001DTO.javasearchDeptNmを設定
+	 * @return searchDeptNm
+	 */
+	public String getSearchDeptNm() {
+		return searchDeptNm;
+	}
+
+	/**
+	 * @param searchDeptNm セットする searchDeptNm
+	 */
+	public void setSearchDeptNm(String searchDeptNm) {
+		this.searchDeptNm = searchDeptNm;
 	}
 
 	/**

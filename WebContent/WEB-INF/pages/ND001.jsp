@@ -27,18 +27,18 @@
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
-String title = (String)request.getAttribute("title");
-String execDate = (String)request.getAttribute("execDate");
-ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
-ND001DTO dto = new ND001DTO();
-if (stack.peek() instanceof ND001DTO) {
-   dto = (ND001DTO)stack.peek();
-}
+// String title = (String)request.getAttribute("title");
+// String execDate = (String)request.getAttribute("execDate");
+// ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
+// ND001DTO dto = new ND001DTO();
+// if (stack.peek() instanceof ND001DTO) {
+//    dto = (ND001DTO)stack.peek();
+// }
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title>施設別・地区別（施設）担当変更</title>
+    <title>ND001_医師検索</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="css/common2.css" rel="Stylesheet" type="text/css" />
     <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
@@ -46,7 +46,6 @@ if (stack.peek() instanceof ND001DTO) {
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
     <%-- 040C共通のjs --%>
-    <script type="text/javascript" src="js/ND001.js"></script>
     <!--<script type="text/javascript" src="js/JKR040C000.js"></script> -->
     <!--<script type="text/javascript" src="js/JKR040C010.js"></script> -->
     <script type="text/javascript" src="js/catTkCityCombo.js"></script>
@@ -54,8 +53,11 @@ if (stack.peek() instanceof ND001DTO) {
     <script type="text/javascript" src="js/jgiKanren.js"></script>
     <script type="text/javascript" src="js/rdmCatSosExpand.js"></script>
     <script type="text/javascript" src="js/jkrMenu.js"></script>
-    <script type="text/javascript" src="js/NC201.js"></script>
-
+<%--     <script type="text/javascript" src="js/NC201.js"></script> --%>
+    <script type="text/javascript" src="js/catShisetsu.js"></script>
+    <script type="text/javascript" src="js/catDeptsComboRDM.js"></script>
+    <%-- 上のjsを参照するのでページのjsは最後に記載 --%>
+    <script type="text/javascript" src="js/ND001.js"></script>
     <script>
 
     function comSetFormWindowInfo(){
@@ -122,53 +124,54 @@ if (stack.peek() instanceof ND001DTO) {
 	  	comClickFlgInit();
 
 	}
- // 担当者選択ボタン
-    function tantoPopBtn(){
-    		// NC202_担当者検索ポップアップ画面を表示
-    		window.open("","tantoPopWindow",tantoSubScreenSize);
-    		document.fm1.screenId.value = "NC202";
-    		document.fm1.functionId.value="Init";
-    		document.fm1.target="tantoPopWindow";
+ // 下記は他ポップアップとの制御のためND001.jsに移動_20250403
+//  // 担当者選択ボタン
+//     function tantoPopBtn(){
+//     		// NC202_担当者検索ポップアップ画面を表示
+//     		window.open("","tantoPopWindow",tantoSubScreenSize);
+//     		document.fm1.screenId.value = "NC202";
+//     		document.fm1.functionId.value="Init";
+//     		document.fm1.target="tantoPopWindow";
 
-    		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
-    		document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
-    		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+//     		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
+//     		document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
+//     		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
 
-    		document.fm1.selectFlgPop.value="1";
-    		document.fm1.callBack.value="callBackTantoPop";
+//     		document.fm1.selectFlgPop.value="1";
+//     		document.fm1.callBack.value="callBackTantoPop";
 
-    		comSubmitForAnyWarp(fm1);
-    		comClickFlgInit();
-    }
+//     		comSubmitForAnyWarp(fm1);
+//     		comClickFlgInit();
+//     }
 
-    function soshikiPopBtn(){
-		// NC201_担当者検索ポップアップ画面を表示
-		window.open("","soshikiPopWindow",tantoSubScreenSize);
-		document.fm1.screenId.value = "NC201";
-		document.fm1.functionId.value="Init";
-		document.fm1.target="soshikiPopWindow";
+//     function soshikiPopBtn(){
+// 		// NC201_担当者検索ポップアップ画面を表示
+// 		window.open("","soshikiPopWindow",tantoSubScreenSize);
+// 		document.fm1.screenId.value = "NC201";
+// 		document.fm1.functionId.value="Init";
+// 		document.fm1.target="soshikiPopWindow";
 
-//		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
+// //		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
 
-//		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
-		document.fm1.bumonRankPop.value="1";
-		document.fm1.selectFlgPop.value="1";
-		document.fm1.callBack.value="nc201CallBack";
+// //		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+// 		document.fm1.bumonRankPop.value="1";
+// 		document.fm1.selectFlgPop.value="1";
+// 		document.fm1.callBack.value="nc201CallBack";
 
-		comSubmitForAnyWarp(fm1);
-		comClickFlgInit();
-}
+// 		comSubmitForAnyWarp(fm1);
+// 		comClickFlgInit();
+// }
 
-	// 担当者検索ポップアップから値受け取り
-    function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
-    							distCode, trtGrpCd, trtNm, mrCat){
-		document.fm1.sosCd.value = sosCd;
-		document.fm1.bumonRyakuName.value = bumonSeiName;
-		document.fm1.jgiNo.value = jgiNo;
-		document.fm1.jgiName.value = jgiName;
-		document.fm1.brCode.value = brCode;
-		document.fm1.distCode.value = distCode;
-    }
+// 	// 担当者検索ポップアップから値受け取り
+//     function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+//     							distCode, trtGrpCd, trtNm, mrCat){
+// 		document.fm1.sosCd.value = sosCd;
+// 		document.fm1.bumonRyakuName.value = bumonSeiName;
+// 		document.fm1.jgiNo.value = jgiNo;
+// 		document.fm1.jgiName.value = jgiName;
+// 		document.fm1.brCode.value = brCode;
+// 		document.fm1.distCode.value = distCode;
+//     }
     </script>
     <style>
     .parent {
@@ -258,6 +261,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
   <tr>
     <td>
     <s:form name="fm1" theme="simple" onSubmit="JavaScript:return false;" >
+          <s:hidden name="title" />
           <s:hidden name="screenId" value="ND001"/>
           <s:hidden name="functionId" value="Search"/>
           <s:hidden name="gamenId" value="ND001"/>
@@ -292,6 +296,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
   			<s:hidden name="upBrCode" id="upBrCode" />
   			<s:hidden name="upDistCode" id="upDistCode" />
 
+    <%-- 所属部科ポップアップ用パラメータ --%>
+    <input type="hidden" name="cdcCheckedCodes" value="" />
+    <input type="hidden" name="paramInsNo" value="" />
+    <s:hidden name="loginJokenSetCd"/>
 
 			<input type="hidden" name="paramDocNo"           value="" />
 
@@ -310,7 +318,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="ND001_医師検索"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>
@@ -441,7 +449,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
                   </td>
-                  <td><a href="#" class="comMiniLink" onclick="jimClear('Sos');return false;">clear</a>&nbsp;</td>
+                  <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">clear</a>&nbsp;</td>
               </s:else>
               <s:if test='mrAdminFlg == "0"'>
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
@@ -457,7 +465,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comPortalControlItem">
                        <s:textfield name="jgiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
                    </td>
-                   <td><a href="#" class="comMiniLink" onclick="jimClear('Sos');return false;">clear</a>&nbsp;</td>
+                   <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">clear</a>&nbsp;</td>
               </s:else>
               <td></td>
               <td></td>
@@ -472,17 +480,18 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               </td>
               <td></td>
               <td class="comTableSearchItem" style="width:50pt;"><nobr>施設名</nobr></td>
-              <td align="right"><input class="comButton" type="button" value="選択" onClick="jmnSearchSosCd();" /></td>
+              <td align="right"><input class="comButton" type="button" value="選択" onClick="tmpCseView();" /></td>
               <td class="comPortalControlItem">
-                   <s:textfield name="" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                   <s:textfield name="searchInsNm" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
               </td>
-              <td ><a href="#" class="comMiniLink" onclick="jimClear('Sos');return false;" align="left">clear</a>&nbsp;</td>
+              <td ><a href="#" class="comMiniLink" onclick="nd001Clear('searchIns');return false;" align="left">clear</a>&nbsp;</td>
               <td class="comTableSearchItem" style="width:50pt;"><nobr>所属部科</nobr></td>
-              <td align="right"><input class="comButton" type="button" value="選択" onClick="jmnSearchSosCd();" /></td>
+              <td align="right"><input class="comButton" type="button" value="選択" onClick="tmpCdcView();" /></td>
               <td class="comPortalControlItem">
-                   <s:textfield name="" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                   <s:textfield name="searchDeptNm" id="searchDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8" readonly="true"/>
+		                <s:hidden name="searchDeptCd" id="searchDeptCd"/>
               </td>
-              <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="jimClear('Sos');return false;" style="float:none;">clear</a>&nbsp;</td>
+              <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="nd001Clear('searchDept');return false;" style="float:none;">clear</a>&nbsp;</td>
             </tr>
             <tr>
               <td class="comTableSearchItem" style="width:50pt;"></td>
@@ -511,8 +520,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td class="comTableSearchItem" style="width:50pt;"></td>
               <td class="comTableSearchItem" style="width:50pt;"></td>
               <td align="right" colspan="2">
-                <input type="button" name="search" value="検索" onclick="jimSearch();">&nbsp;
-                <input type="button" name="search" value="クリア" onclick="jimClearAll(mrAdminFlg);">
+                <input type="button" name="search" value="検索" onclick="nd001Search();">&nbsp;
+                <input type="button" name="search" value="クリア" onclick="nd001ClearAll('<s:property value="mrAdminFlg"/>');">
               </td>
             </tr>
             </tbody>
@@ -563,6 +572,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	  ishiNmKanaAscClass = "comTableSort";
   } else if ("9".equals(sortCondition)) {
 	  ishiNmKanaDescClass = "comTableSort";
+  } else {
+		docKanaAscClass = "comTableSort";
   }
 %>
           <s:if test='pageFlag == "1" '>
@@ -577,25 +588,25 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <th class="comTableTitle" style="width:110px;">氏名漢字
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=docKanjAscClass %>" href="" onclick="jimSort(2);return false;">▲</a>
+                                <a class="<%=docKanjAscClass %>" href="" onclick="nd001Sort(2);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=docKanjDescClass %>" href="" onclick="jimSort(3);return false;">▼</a>
+                                <a class="<%=docKanjDescClass %>" href="" onclick="nd001Sort(3);return false;">▼</a>
                             </s:if>
                             </th>
                             <th class="comTableTitle" style="width:110px;">氏名カナ
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=docKanaAscClass %>" href="" onclick="jimSort(0);return false;">▲</a>
+                                <a class="<%=docKanaAscClass %>" href="" onclick="nd001Sort(0);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=docKanaDescClass %>" href="" onclick="jimSort(1);return false;">▼</a>
+                                <a class="<%=docKanaDescClass %>" href="" onclick="nd001Sort(1);return false;">▼</a>
                             </s:if>
                             </th>
                             <th class="comTableTitle" style="width:110px;">医師固定C
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=docNoAscClass %>" href="" onclick="jimSort(4);return false;">▲</a>
+                                <a class="<%=docNoAscClass %>" href="" onclick="nd001Sort(4);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=docNoDescClass %>" href="" onclick="jimSort(5);return false;">▼</a>
+                                <a class="<%=docNoDescClass %>" href="" onclick="nd001Sort(5);return false;">▼</a>
                             </s:if>
                             </th>
                             <th class="comTableTitle"><nobr>生年月日</nobr></th>
@@ -611,17 +622,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <th class="comTableTitle">ULT医師名漢字
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=ishiNmAscClass %>" href="" onclick="jimSort(6);return false;">▲</a>
+                                <a class="<%=ishiNmAscClass %>" href="" onclick="nd001Sort(6);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=ishiNmDescClass %>" href="" onclick="jimSort(7);return false;">▼</a>
+                                <a class="<%=ishiNmDescClass %>" href="" onclick="nd001Sort(7);return false;">▼</a>
                             </s:if>
                             </th>
                             <th class="comTableTitle">ULT医師名カナ
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=ishiNmKanaAscClass %>" href="" onclick="jimSort(8);return false;">▲</a>
+                                <a class="<%=ishiNmKanaAscClass %>" href="" onclick="nd001Sort(8);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
-                                <a class="<%=ishiNmKanaDescClass %>" href="" onclick="jimSort(9);return false;">▼</a>
+                                <a class="<%=ishiNmKanaDescClass %>" href="" onclick="nd001Sort(9);return false;">▼</a>
                             </s:if>
                             </th>
                             <th class="comTableTitle"><nobr>ULT医師コード</nobr></th>
@@ -732,7 +743,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <table class="comPortalControlTable" style="margin-top:3pt;margin-bottom:1pt; width:800pt;"align="center">
                   <tr>
                       <td>
-                          <input class="comButton" type="button" name="bSosJgiFrom" value="戻る"/>
+                          <input class="comButton" type="button" name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
                       </td>
                   </tr>
               </table>

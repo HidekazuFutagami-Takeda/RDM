@@ -324,6 +324,18 @@ public class NC204Service extends BaseService {
 
         		catDeptsComboDataList.add(dataRecord);
         	}
+        }else if(paramEntity.getScreenId().equals("ND001")) {
+        	for (SelectDeptListEntityRDM entiry : deptListEntity) {
+        		CatDeptsComboDataList dataRecord = new CatDeptsComboDataList();
+
+        		// 所属部科コード
+        		dataRecord.setDeptCode(entiry.getDeptCode());
+
+        		// 所属部科名漢字
+        		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+
+        		catDeptsComboDataList.add(dataRecord);
+        	}
         }
 
         indto.setParamInsNo(paramEntity.getInInsNo());

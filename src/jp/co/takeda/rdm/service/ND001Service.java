@@ -171,8 +171,14 @@ public class ND001Service extends BaseService {
 //        selectParamSelectHcpEntity.setInGmnBrCode("582");
 //        selectParamSelectHcpEntity.setInGmnDistCode("040");
 //        selectParamSelectHcpEntity.setInGmnJgiNo("3071200");
+        selectParamSelectHcpEntity.setInGmnBumonRank(StringUtils.setEmptyToNull(indto.getBumonRank()));
+        selectParamSelectHcpEntity.setInGmnSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
+        selectParamSelectHcpEntity.setInGmnBrCode(StringUtils.setEmptyToNull(indto.getBrCode()));
+        selectParamSelectHcpEntity.setInGmnDistCode(StringUtils.setEmptyToNull(indto.getDistCode()));
+        selectParamSelectHcpEntity.setInGmnJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
         selectParamSelectHcpEntity.setInInsNo(StringUtils.setEmptyToNull(indto.getSearchInsNo()));
 //        selectParamSelectHcpEntity.setInDeptCode("0900");
+        selectParamSelectHcpEntity.setInDeptCode(StringUtils.setEmptyToNull(indto.getSearchDeptCd()));
         selectParamSelectHcpEntity.setInSortId(indto.getSortCondition());
 
         String workSortCondition = indto.getSortCondition();
@@ -215,7 +221,7 @@ public class ND001Service extends BaseService {
         selectHcpEntity.setInDocAttribute(selectParamSelectHcpEntity.getInDocAttribute());
         selectHcpEntity.setInMedSch(selectParamSelectHcpEntity.getInMedSch());
         selectHcpEntity.setInGradYear(selectParamSelectHcpEntity.getInGradYear());
-        selectHcpEntity.setInHUniv(null);
+        selectHcpEntity.setInHUniv(selectParamSelectHcpEntity.getInHUniv());
         selectHcpEntity.setInSetsuzoku(selectParamSelectHcpEntity.getInSetsuzoku());
         selectHcpEntity.setInGmnBumonRank(selectParamSelectHcpEntity.getInGmnBumonRank());
         selectHcpEntity.setInGmnSosCd(selectParamSelectHcpEntity.getInGmnSosCd());
@@ -223,6 +229,7 @@ public class ND001Service extends BaseService {
         selectHcpEntity.setInGmnDistCode(selectParamSelectHcpEntity.getInGmnDistCode());
         selectHcpEntity.setInGmnJgiNo(selectParamSelectHcpEntity.getInGmnJgiNo());
         selectHcpEntity.setInInsNo(selectParamSelectHcpEntity.getInInsNo());
+        selectHcpEntity.setInDeptCode(selectParamSelectHcpEntity.getInDeptCode());
         selectHcpEntity.setInSortId(selectParamSelectHcpEntity.getInSortId());
 
 		List<SelectHcpEntity> selectHcpList = dao.select(selectHcpEntity);

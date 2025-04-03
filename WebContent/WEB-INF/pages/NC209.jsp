@@ -25,13 +25,13 @@
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
-String title = (String)request.getAttribute("title");
-String execDate = (String)request.getAttribute("execDate");
-ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
-NC209DTO dto = new NC209DTO();
-if (stack.peek() instanceof NC209DTO) {
-   dto = (NC209DTO)stack.peek();
-}
+// String title = (String)request.getAttribute("title");
+// String execDate = (String)request.getAttribute("execDate");
+// ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
+// NC209DTO dto = new NC209DTO();
+// if (stack.peek() instanceof NC209DTO) {
+//    dto = (NC209DTO)stack.peek();
+// }
 %>
 <%
 //検索条件の制御-----------------------------------------------------------
@@ -315,7 +315,7 @@ if (stack.peek() instanceof NC209DTO) {
               <td class="comTableSearchItem" style="width:50pt;"></td>
               <td align="right" colspan="2">
                 <input type="button" name="search" value="検索" onclick="cdrSearch();">&nbsp;
-                <input type="button" name="search" value="クリア" onclick="cdrClearAll(mrAdminFlg);">
+                <input type="button" name="search" value="クリア" onclick="cdrClearAll();">
               </td>
 			</tr>
 		</tbody>

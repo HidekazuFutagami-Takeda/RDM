@@ -60,6 +60,39 @@ function cdrClear( name ) {
 
 /**
  * <pre>
+ * clear(リンク)押下時に呼ばれます。
+ *@param name クリア項目名
+ * </pre>
+ */
+function cdrClearAll() {
+  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	  document.fm1.searchDocName.value = "";
+	  document.fm1.searchDocKana.value = "";
+	  document.fm1.searchDocType.value = "";
+	  document.fm1.searchDocNo.value = "";
+	  document.fm1.searchDocAttribute.value = "";
+	  document.fm1.searchMedSch.value = "";
+	  document.fm1.searchGradYear.value = "";
+	  document.fm1.searchHUniv.value = "";
+	  // 検索条件 組織
+	  document.fm1.searchSosCd.value = "";
+	  document.fm1.searchSosNm.value = "";
+	  document.fm1.searchSosRank.value = "";
+	  document.fm1.searchTantoCd.value = "";
+	  document.fm1.searchTantoNm.value = "";
+	  // 検索条件 担当者
+	  document.fm1.searchTantoCd.value = "";
+	  document.fm1.searchTantoNm.value = "";
+	  // 検索条件 施設
+	  document.fm1.searchInsNo.value = "";
+	  document.fm1.searchInsNm.value = "";
+	  // 検索条件 所属部科
+	  document.fm1.searchDeptCd.value = "";
+	  document.fm1.searchDeptNm.value = "";
+}
+
+/**
+ * <pre>
  *  全てのポップアップを閉じます。
  * </pre>
  * @param targetWin 	対象ウィンドウオブジェクト

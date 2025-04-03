@@ -123,6 +123,9 @@ public class ND001Action extends BaseAction<ND001DTO> {
      */
     @InputConfig(methodName="validationError")
     public String search() throws Exception {
+    	//画面タイトル制御処理
+        String title = "ND001_医師検索";
+        dto.setTitle(title);
         searchSetup();
         // F層呼び出し
         BaseDTO outdto = nD001Service.search(dto);
@@ -165,6 +168,9 @@ public class ND001Action extends BaseAction<ND001DTO> {
     @InputConfig(methodName="validationError")
     public String page() throws Exception {
         pageSetup();
+    	//画面タイトル制御処理
+        String title = "ND001_医師検索";
+        dto.setTitle(title);
         // F層呼び出し
         BaseDTO outdto = nD001Service.page(dto);
         if (outdto instanceof ND001DTO) {
@@ -209,6 +215,9 @@ public class ND001Action extends BaseAction<ND001DTO> {
     @InputConfig(methodName="validationError")
     public String sort() throws Exception {
         pageSetup();
+    	//画面タイトル制御処理
+        String title = "ND001_医師検索";
+        dto.setTitle(title);
         // F層呼び出し
         BaseDTO outdto = nD001Service.sort(dto);
         if (outdto instanceof ND001DTO) {

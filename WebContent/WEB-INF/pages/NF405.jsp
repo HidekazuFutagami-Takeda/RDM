@@ -279,6 +279,14 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextManageCd"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacInsType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextPharmTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextInsRankNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextRegVisTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextImpHosTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextManageNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacVisitTypeNm"/>
 
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmTypeFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRankFlg"/>

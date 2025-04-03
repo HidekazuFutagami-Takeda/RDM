@@ -162,7 +162,7 @@
 	<table class="pupBodyTable" align="center">
 	<tr><td>
 
-    <div style="max-height:270px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+    <div style="max-height:450px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 <table class="siz">
 	<thead style="z-index:3;">
 	<tr>
@@ -252,6 +252,15 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpManageCd"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeValue"/>
 
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextPharmType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextInsRank"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextRegVisType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextImpHosType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextManageCd"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacInsType"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType"/>
+
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmTypeFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRankFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].regVisTypeFlg"/>
@@ -271,6 +280,17 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedsTotFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].medBedsTotFlg"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].updShaYmd"/>
+
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextBedsTot"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot"/>
 
 	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insNo" /></td>
 	        <td class="comTableItem">当期</td>
@@ -323,58 +343,148 @@
 	        <td class="comTableItem">&nbsp;</td>
 	        <td class="comTableItem">来期</td>
 	        <td class="comTableItem">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextPharmTypeNm"/>
+	        	<s:if test="#rowBean.pharmType == #rowBean.nextPharmType">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextPharmTypeNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextPharmTypeNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem">
-				<s:label key="hcoBlkReqDataList[%{#status.index}].nextInsRankNm"/>
+				<s:if test="#rowBean.insRank == #rowBean.nextInsRank">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextInsRankNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextInsRankNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem">
-				<s:label key="hcoBlkReqDataList[%{#status.index}].nextRegVisTypeNm"/>
+				<s:if test="#rowBean.regVisType == #rowBean.nextRegVisType">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextRegVisTypeNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextRegVisTypeNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem">
-		        <s:label key="hcoBlkReqDataList[%{#status.index}].nextImpHosTypeNm"/>
+		        <s:if test="#rowBean.impHosType == #rowBean.nextImpHosType">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextImpHosTypeNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextImpHosTypeNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem">
-		        <s:label key="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeNm"/>
+		        <s:if test="#rowBean.hoInsType == #rowBean.nextHoInsType">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem">
-		        <s:label key="hcoBlkReqDataList[%{#status.index}].nextManageNm"/>
+		        <s:if test="#rowBean.manageCd == #rowBean.nextManageCd">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextManageNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextManageNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem">
-	        <s:label key="hcoBlkReqDataList[%{#status.index}].nextVacInsTypeNm"/>
+	        	<s:if test="#rowBean.vacInsType == #rowBean.nextVacInsType">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextVacInsTypeNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextVacInsTypeNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem">
-		       	<s:label key="hcoBlkReqDataList[%{#status.index}].nextVacVisitTypeNm"/>
+		       	<s:if test="#rowBean.vacVisitType == #rowBean.nextVacVisitType">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextVacVisitTypeNm"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextVacVisitTypeNm"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCntBase"/>
+	        	<s:if test="#rowBean.bedCntBase == #rowBean.nextBedCntBase">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCntBase"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCntBase"/></font>
+	        	</s:else>
         	</td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt04"/>
+	        	<s:if test="#rowBean.bedCnt04 == #rowBean.nextBedCnt04">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt04"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt04"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt01"/>
+	        	<s:if test="#rowBean.bedCnt01 == #rowBean.nextBedCnt01">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt01"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt01"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt05"/>
+	        	<s:if test="#rowBean.bedCnt05 == #rowBean.nextBedCnt05">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt05"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt05"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt03"/>
+	        	<s:if test="#rowBean.bedCnt03 == #rowBean.nextBedCnt03">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt03"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt03"/></font>
+	        	</s:else>
 	       	</td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt07"/>
+	        	<s:if test="#rowBean.bedCnt07 == #rowBean.nextBedCnt07">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt07"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt07"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt02"/>
+	        	<s:if test="#rowBean.bedCnt02 == #rowBean.nextBedCnt02">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt02"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt02"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt06"/>
+	        	<s:if test="#rowBean.bedCnt06 == #rowBean.nextBedCnt06">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt06"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedCnt06"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedsTot"/>
+	        	<s:if test="#rowBean.bedsTot == #rowBean.nextBedsTot">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextBedsTot"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextBedsTot"/></font>
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:label key="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot"/>
+	        	<s:if test="#rowBean.medBedsTot == #rowBean.nextMedBedsTot">
+	        		<s:label key="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot"/>
+	        	</s:if>
+	        	<s:else>
+	        		<font color="red"><s:label key="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot"/></font>
+	        	</s:else>
 	        </td>
 		</tr>
 	</s:iterator>
@@ -407,7 +517,7 @@
 					<input class="comButton" type="button"name="buttonF3" value="申請" onClick="reqBtn();JavaScript:return false;" />
 				</s:if>
 				<s:else>
-					&nbsp;
+					<input class="comButton" type="button"name="buttonF3" value="申請" onClick="" disabled />
                	</s:else>
                </nobr>
                </td>

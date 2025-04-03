@@ -94,6 +94,12 @@ public class NF405DTO extends BaseDTO implements Serializable {
 	private String title;
 
 	/**
+	 * 申請ボタン活性フラグ
+	 * @generated
+	 */
+	private String btnEnableFlg;
+
+	/**
 	 * 一覧表示
      * @generated
      */
@@ -276,6 +282,21 @@ public class NF405DTO extends BaseDTO implements Serializable {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	/**
+	 * NF405DTO.javabtnEnableFlgを設定
+	 * @return btnEnableFlg
+	 */
+	public String getBtnEnableFlg() {
+		return btnEnableFlg;
+	}
+
+	/**
+	 * @param btnEnableFlg セットする btnEnableFlg
+	 */
+	public void setBtnEnableFlg(String btnEnableFlg) {
+		this.btnEnableFlg = btnEnableFlg;
 	}
 
 	/**

@@ -1238,7 +1238,7 @@
 
 			// 対象区分
 			hoInsTypeBox.value = "";
-			hoInsTypeValue = "";
+			hoInsTypeValue.value = "";
 
 			// 経営主体
 			makeManageCdBox(manageCdBox, insRankBox.value);
@@ -1256,7 +1256,7 @@
 
 			// 対象区分
 			setHoInsType(hoInsTypeBox, insRankBox.value);
-			hoInsTypeValue = hoInsTypeBox.value;
+			hoInsTypeValue.value = hoInsTypeBox.value;
 
 			// 経営主体
 			makeManageCdBox(manageCdBox, insRankBox.value);

@@ -272,143 +272,118 @@ public class NF403Service extends BaseService {
         	}
 
         	// 施設区分
+        	if(entity.getPharmType() != null && !entity.getPharmType().isEmpty()) {
+        		dataRecord.setPharmType(entity.getPharmType());
+        	} else {
+        		dataRecord.setPharmType("");
+        	}
         	if(entity.getPharmTypeNm() != null && !entity.getPharmTypeNm().isEmpty()) {
         		dataRecord.setPharmTypeNm(entity.getPharmTypeNm());
         	} else {
-        		dataRecord.setPharmTypeNm(" ");
+        		dataRecord.setPharmTypeNm("--なし--");
         	}
         	if(entity.getShisetsuKbn() != null && !entity.getShisetsuKbn().isEmpty()) {
         		dataRecord.setShisetsuKbn(entity.getShisetsuKbn());
         	} else {
-        		dataRecord.setShisetsuKbn(" ");
+        		dataRecord.setShisetsuKbn("--なし--");
         	}
-        	if(entity.getNextPharmType() != null && !entity.getNextPharmType().isEmpty()) {
-        		dataRecord.setNextPharmType(entity.getNextPharmType());
-        	} else {
-        		if(entity.getPharmType() != null && !entity.getPharmType().isEmpty()) {
-            		dataRecord.setNextPharmType(entity.getPharmType());
-            	} else {
-            		dataRecord.setNextPharmType("");
-            	}
-        	}
+        	dataRecord.setNextPharmType(getReqViewValue(entity.getPharmType(), entity.getNextPharmType()));
 
         	// 階級区分
+        	if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
+        		dataRecord.setInsRank(entity.getInsRank());
+        	} else {
+        		dataRecord.setInsRank("");
+        	}
         	if(entity.getInsRankNm() != null && !entity.getInsRankNm().isEmpty()) {
         		dataRecord.setInsRankNm(entity.getInsRankNm());
         	} else {
-        		dataRecord.setInsRankNm(" ");
+        		dataRecord.setInsRankNm("--なし--");
         	}
-        	if(entity.getNextInsRank() != null && !entity.getNextInsRank().isEmpty()) {
-        		dataRecord.setNextInsRank(entity.getNextInsRank());
-        	} else {
-        		if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
-            		dataRecord.setNextInsRank(entity.getInsRank());
-            	} else {
-            		dataRecord.setNextInsRank("");
-            	}
-        	}
+        	dataRecord.setNextInsRank(getReqViewValue(entity.getInsRank(), entity.getNextInsRank()));
 
         	// 定訪先区分
+        	if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
+        		dataRecord.setRegVisType(entity.getRegVisType());
+        	} else {
+        		dataRecord.setRegVisType("");
+        	}
         	if(entity.getRegVisTypeNm() != null && !entity.getRegVisTypeNm().isEmpty()) {
         		dataRecord.setRegVisTypeNm(entity.getRegVisTypeNm());
         	} else {
-        		dataRecord.setRegVisTypeNm(" ");
+        		dataRecord.setRegVisTypeNm("--なし--");
         	}
-        	if(entity.getNextRegVisType() != null && !entity.getNextRegVisType().isEmpty()) {
-        		dataRecord.setNextRegVisType(entity.getNextRegVisType());
-        	} else {
-        		if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
-            		dataRecord.setNextRegVisType(entity.getRegVisType());
-            	} else {
-            		dataRecord.setNextRegVisType("");
-            	}
-        	}
+        	dataRecord.setNextRegVisType(getReqViewValue(entity.getRegVisType(), entity.getNextRegVisType()));
 
         	// 重点病院区分
+        	if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
+        		dataRecord.setImpHosType(entity.getImpHosType());
+        	} else {
+        		dataRecord.setImpHosType("");
+        	}
         	if(entity.getImpHosTypeNm() != null && !entity.getImpHosTypeNm().isEmpty()) {
         		dataRecord.setImpHosTypeNm(entity.getImpHosTypeNm());
         	} else {
-        		dataRecord.setImpHosTypeNm(" ");
+        		dataRecord.setImpHosTypeNm("--なし--");
         	}
-        	if(entity.getNextImpHosType() != null && !entity.getNextImpHosType().isEmpty()) {
-        		dataRecord.setNextImpHosType(entity.getNextImpHosType());
-        	} else {
-        		if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
-            		dataRecord.setNextImpHosType(entity.getImpHosType());
-            	} else {
-            		dataRecord.setNextImpHosType("");
-            	}
-        	}
+        	dataRecord.setNextImpHosType(getReqViewValue(entity.getImpHosType(), entity.getNextImpHosType()));
 
         	// 対象区分
+        	if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
+        		dataRecord.setHoInsType(entity.getHoInsType());
+        	} else {
+        		dataRecord.setHoInsType("");
+        	}
         	if(entity.getHoInsTypeNm() != null && !entity.getHoInsTypeNm().isEmpty()) {
         		dataRecord.setHoInsTypeNm(entity.getHoInsTypeNm());
         	} else {
-        		dataRecord.setHoInsTypeNm(" ");
+        		dataRecord.setHoInsTypeNm("--なし--");
         	}
-        	if(entity.getNextHoInsType() != null && !entity.getNextHoInsType().isEmpty()) {
-        		dataRecord.setNextHoInsType(entity.getNextHoInsType());
-        	} else {
-        		if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
-            		dataRecord.setNextHoInsType(entity.getHoInsType());
-            	} else {
-            		dataRecord.setNextHoInsType("");
-            	}
-        	}
+        	dataRecord.setNextHoInsType(getReqViewValue(entity.getHoInsType(), entity.getNextHoInsType()));
 
         	// 経営主体
+        	if(entity.getManageCd() != null && !entity.getManageCd().isEmpty()) {
+        		dataRecord.setManageCd(entity.getManageCd());
+        	} else {
+        		dataRecord.setManageCd("");
+        	}
         	if(entity.getManageNm() != null && !entity.getManageNm().isEmpty()) {
         		dataRecord.setManageNm(entity.getManageNm());
         	} else {
-        		dataRecord.setManageNm(" ");
+        		dataRecord.setManageNm("--なし--");
         	}
         	if(entity.getKeieitai() != null && !entity.getKeieitai().isEmpty()) {
         		dataRecord.setKeieitai(entity.getKeieitai());
         	} else {
-        		dataRecord.setKeieitai(" ");
+        		dataRecord.setKeieitai("--なし--");
         	}
-        	if(entity.getNextManageCd() != null && !entity.getNextManageCd().isEmpty()) {
-        		dataRecord.setNextManageCd(entity.getNextManageCd());
-        	} else {
-        		if(entity.getManageCd() != null && !entity.getManageCd().isEmpty()) {
-            		dataRecord.setNextManageCd(entity.getManageCd());
-            	} else {
-            		dataRecord.setNextManageCd("");
-            	}
-        	}
-
+        	dataRecord.setNextManageCd(getReqViewValue(entity.getManageCd(), entity.getNextManageCd()));
 
         	// ワクチン対象区分
+        	if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
+        		dataRecord.setVacInsType(entity.getVacInsType());
+        	} else {
+        		dataRecord.setVacInsType("");
+        	}
         	if(entity.getVacInsTypeNm() != null && !entity.getVacInsTypeNm().isEmpty()) {
         		dataRecord.setVacInsTypeNm(entity.getVacInsTypeNm());
         	} else {
-        		dataRecord.setVacInsTypeNm(" ");
+        		dataRecord.setVacInsTypeNm("--なし--");
         	}
-        	if(entity.getNextVacInsType() != null && !entity.getNextVacInsType().isEmpty()) {
-        		dataRecord.setNextVacInsType(entity.getNextVacInsType());
-        	} else {
-        		if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
-            		dataRecord.setNextVacInsType(entity.getVacInsType());
-            	} else {
-            		dataRecord.setNextVacInsType("");
-            	}
-        	}
+        	dataRecord.setNextVacInsType(getReqViewValue(entity.getVacInsType(), entity.getNextVacInsType()));
 
         	// ワクチン定訪先区分
+        	if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
+        		dataRecord.setVacVisitType(entity.getVacVisitType());
+        	} else {
+        		dataRecord.setVacVisitType("");
+        	}
         	if(entity.getVacVisitTypeNm() != null && !entity.getVacVisitTypeNm().isEmpty()) {
         		dataRecord.setVacVisitTypeNm(entity.getVacVisitTypeNm());
         	} else {
-        		dataRecord.setVacVisitTypeNm(" ");
+        		dataRecord.setVacVisitTypeNm("--なし--");
         	}
-        	if(entity.getNextVacVisitType() != null && !entity.getNextVacVisitType().isEmpty()) {
-        		dataRecord.setNextVacVisitType(entity.getNextVacVisitType());
-        	} else {
-        		if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
-            		dataRecord.setNextVacVisitType(entity.getVacVisitType());
-            	} else {
-            		dataRecord.setNextVacVisitType("");
-            	}
-        	}
+        	dataRecord.setNextVacVisitType(getReqViewValue(entity.getVacVisitType(), entity.getNextVacVisitType()));
 
         	// 病床数基準
         	if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
@@ -421,15 +396,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCntBase(" ");
         	}
-        	if(entity.getNextBedCntBase() != null && !entity.getNextBedCntBase().isEmpty()) {
-        		dataRecord.setNextBedCntBase(entity.getNextBedCntBase());
-        	} else {
-        		if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
-            		dataRecord.setNextBedCntBase(entity.getBedCntBase());
-            	} else {
-            		dataRecord.setNextBedCntBase("");
-            	}
-        	}
+        	dataRecord.setNextBedCntBase(getReqViewValue(StringUtils.nvl(entity.getBedCntBase(), ""),StringUtils.nvl(entity.getNextBedCntBase(), "")));
 
         	// 結核
         	if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
@@ -442,15 +409,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt04(" ");
         	}
-        	if(entity.getNextBedCnt04() != null && !entity.getNextBedCnt04().isEmpty()) {
-        		dataRecord.setNextBedCnt04(entity.getNextBedCnt04());
-        	} else {
-        		if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
-            		dataRecord.setNextBedCnt04(entity.getBedCnt04());
-            	} else {
-            		dataRecord.setNextBedCnt04("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt04(getReqViewValue(StringUtils.nvl(entity.getBedCnt04(), ""),StringUtils.nvl(entity.getNextBedCnt04(), "")));
 
         	// 一般
         	if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
@@ -463,15 +422,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt01(" ");
         	}
-        	if(entity.getNextBedCnt01() != null && !entity.getNextBedCnt01().isEmpty()) {
-        		dataRecord.setNextBedCnt01(entity.getNextBedCnt01());
-        	} else {
-        		if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
-            		dataRecord.setNextBedCnt01(entity.getBedCnt01());
-            	} else {
-            		dataRecord.setNextBedCnt01("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt01(getReqViewValue(StringUtils.nvl(entity.getBedCnt01(), ""),StringUtils.nvl(entity.getNextBedCnt01(), "")));
 
         	// 感染症
         	if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
@@ -484,15 +435,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt05(" ");
         	}
-        	if(entity.getNextBedCnt05() != null && !entity.getNextBedCnt05().isEmpty()) {
-        		dataRecord.setNextBedCnt05(entity.getNextBedCnt05());
-        	} else {
-        		if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
-            		dataRecord.setNextBedCnt05(entity.getBedCnt05());
-            	} else {
-            		dataRecord.setNextBedCnt05("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt05(getReqViewValue(StringUtils.nvl(entity.getBedCnt05(), ""),StringUtils.nvl(entity.getNextBedCnt05(), "")));
 
         	// 精神
         	if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
@@ -505,15 +448,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt03(" ");
         	}
-        	if(entity.getNextBedCnt03() != null && !entity.getNextBedCnt03().isEmpty()) {
-        		dataRecord.setNextBedCnt03(entity.getNextBedCnt03());
-        	} else {
-        		if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
-            		dataRecord.setNextBedCnt03(entity.getBedCnt03());
-            	} else {
-            		dataRecord.setNextBedCnt03("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt03(getReqViewValue(StringUtils.nvl(entity.getBedCnt03(), ""),StringUtils.nvl(entity.getNextBedCnt03(), "")));
 
         	// 療養
         	if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
@@ -526,15 +461,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt07(" ");
         	}
-        	if(entity.getNextBedCnt07() != null && !entity.getNextBedCnt07().isEmpty()) {
-        		dataRecord.setNextBedCnt07(entity.getNextBedCnt07());
-        	} else {
-        		if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
-            		dataRecord.setNextBedCnt07(entity.getBedCnt07());
-            	} else {
-            		dataRecord.setNextBedCnt07("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt07(getReqViewValue(StringUtils.nvl(entity.getBedCnt07(), ""),StringUtils.nvl(entity.getNextBedCnt07(), "")));
 
         	// 医療療養
         	if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
@@ -542,15 +469,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setBedCnt02(" ");
         	}
-        	if(entity.getNextBedCnt02() != null && !entity.getNextBedCnt02().isEmpty()) {
-        		dataRecord.setNextBedCnt02(entity.getNextBedCnt02());
-        	} else {
-        		if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
-            		dataRecord.setNextBedCnt02(entity.getBedCnt02());
-            	} else {
-            		dataRecord.setNextBedCnt02("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt02(getReqViewValue(StringUtils.nvl(entity.getBedCnt02(), ""),StringUtils.nvl(entity.getNextBedCnt02(), "")));
 
         	// 介護療養
         	if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
@@ -558,15 +477,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setBedCnt06(" ");
         	}
-        	if(entity.getNextBedCnt06() != null && !entity.getNextBedCnt06().isEmpty()) {
-        		dataRecord.setNextBedCnt06(entity.getNextBedCnt06());
-        	} else {
-        		if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
-            		dataRecord.setNextBedCnt06(entity.getBedCnt06());
-            	} else {
-            		dataRecord.setNextBedCnt06("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt06(getReqViewValue(StringUtils.nvl(entity.getBedCnt06(), ""),StringUtils.nvl(entity.getNextBedCnt06(), "")));
 
         	// ベッド数計
         	if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
@@ -579,15 +490,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedsTot(" ");
         	}
-        	if(entity.getNextBedsTot() != null && !entity.getNextBedsTot().isEmpty()) {
-        		dataRecord.setNextBedsTot(entity.getNextBedsTot());
-        	} else {
-        		if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
-            		dataRecord.setNextBedsTot(entity.getBedsTot());
-            	} else {
-            		dataRecord.setNextBedsTot("");
-            	}
-        	}
+        	dataRecord.setNextBedsTot(getReqViewValue(StringUtils.nvl(entity.getBedsTot(), ""),StringUtils.nvl(entity.getNextBedsTot(), "")));
 
         	// 医療ベッド数計
         	if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
@@ -600,15 +503,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltMedBedsTot(" ");
         	}
-        	if(entity.getNextMedBedsTot() != null && !entity.getNextMedBedsTot().isEmpty()) {
-        		dataRecord.setNextMedBedsTot(entity.getNextMedBedsTot());
-        	} else {
-        		if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
-            		dataRecord.setNextMedBedsTot(entity.getMedBedsTot());
-            	} else {
-            		dataRecord.setNextMedBedsTot("");
-            	}
-        	}
+        	dataRecord.setNextMedBedsTot(getReqViewValue(StringUtils.nvl(entity.getMedBedsTot(), ""),StringUtils.nvl(entity.getNextMedBedsTot(), "")));
 
         	// 申請コメント
         	if(entity.getReqComment() != null && !entity.getReqComment().isEmpty()) {
@@ -693,6 +588,13 @@ public class NF403Service extends BaseService {
 
 		// エラーチェック
 		for(HcoBlkReqDataList entity : hcoBlkReqDataList) {
+			entity.setTmpPharmType(entity.getNextPharmType());
+        	entity.setTmpInsRank(entity.getNextInsRank());
+        	entity.setTmpRegVisType(entity.getNextRegVisType());
+        	entity.setTmpImpHosType(entity.getNextImpHosType());
+        	entity.setTmpManageCd(entity.getNextManageCd());
+        	entity.setNextHoInsTypeValue(entity.getNextHoInsType());
+
 			// 「施設コード_施設略式漢字名：」を各エラーメッセージの先頭に追加
 			StringBuilder nmSb = new StringBuilder();
 			nmSb.append(entity.getInsNo());
@@ -943,6 +845,7 @@ public class NF403Service extends BaseService {
 
 			// DropDownList作成
 			createCombo(indto);
+
 			return outdto;
 		}
 
@@ -1088,4 +991,22 @@ public class NF403Service extends BaseService {
 		}
 		return false;
 	}
+
+	/**
+    * NULLの場合変更前値、'Z'の場合はブランクを返却
+    * @param preValue
+    * @param value
+    * @return
+    */
+   public String getReqViewValue(String preValue, String value){
+   	String rtnValue = value;
+
+   	if(StringUtils.isEmpty(value)) {
+   		rtnValue = preValue;
+   	} else if("Z".equals(value)) {
+   		rtnValue = "";
+   	}
+
+   	return rtnValue;
+   }
 }

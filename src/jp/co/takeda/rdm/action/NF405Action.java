@@ -18,9 +18,13 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.NF405DTO;
 import jp.co.takeda.rdm.service.NF405Service;
 import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Actionクラス
@@ -42,6 +46,10 @@ public class NF405Action extends BaseAction<NF405DTO> {
      */
     @Inject
     private NF405Service NF405Service;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
 
     // START UOC
 
@@ -182,7 +190,31 @@ public class NF405Action extends BaseAction<NF405DTO> {
         // 検索条件をセッションに格納する（ページャ押下時に使用）
     	sessionMap.put(AppConstant.SESKEY_NF405_SEARCHKEY, outdto);
         // END UOC
+
+    	if("NC101".equals(dto.getForward())) {
+        	setJumpInfo("1");
+        }
+
         setNextDTO(outdto);
         return outdto.getForward();
+    }
+
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String event) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+        // 画面タイトル
+        paramDto.setTitle("施設来期項目一括申請");
+        // メッセージ１
+        if (event.equals("1")) {//I002	申請が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
+        }
     }
 }

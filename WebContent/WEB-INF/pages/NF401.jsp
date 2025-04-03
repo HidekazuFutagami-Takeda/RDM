@@ -254,7 +254,7 @@
 	}
 
  	// ページボタン
-    function pageBtn( pageCntCur ){
+    function pltPage( pageCntCur ){
 		//現在ページ番号変更（遷移）
 		document.fm1.pageCntCur.value = pageCntCur;
 		document.fm1.target="";

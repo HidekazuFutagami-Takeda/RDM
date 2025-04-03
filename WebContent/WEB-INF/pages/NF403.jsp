@@ -221,7 +221,7 @@
   	  	comSubmitForAnyWarp(fm1);
   	}
 
- 	var nf401Tab;
+ 	var nf403Tab;
  	// 申請歴ボタン
     function histBtn(insNo){
     	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
@@ -229,12 +229,12 @@
 
  		fm1.insNo.value = insNo;
 
- 		if(nf401Tab && !nf401Tab.closed){
- 			nf401Tab.close();
+ 		if(nf403Tab && !nf403Tab.closed){
+ 			nf403Tab.close();
  		}
 
- 		nf401Tab = window.open("","NF401Tab");
-		document.fm1.target="NF401Tab";
+ 		nf403Tab = window.open("","NF403Tab");
+		document.fm1.target="NF403Tab";
 
 
   		fm1.screenId.value="NF102";
@@ -246,11 +246,11 @@
 	}
 
  	// ページボタン
-    function pageBtn( pageCntCur ){
+    function pltPage( pageCntCur ){
 		//現在ページ番号変更（遷移）
 		document.fm1.pageCntCur.value = pageCntCur;
 		document.fm1.target="";
-		document.fm1.screenId.value	= "NF401";
+		document.fm1.screenId.value	= "NF403";
 		document.fm1.functionId.value = "Search";
 		// 検索イベント呼び出し
 		comSubmitForAnyWarp(fm1);

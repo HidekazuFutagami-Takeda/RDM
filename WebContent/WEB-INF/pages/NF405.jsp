@@ -30,7 +30,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title>NF403_施設来期項目一括申請</title>
+    <title>NF405_施設来期項目一括申請 - 申請内容確認</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="css/common2.css" rel="Stylesheet" type="text/css" />
     <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />

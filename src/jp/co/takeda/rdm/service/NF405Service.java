@@ -117,25 +117,28 @@ public class NF405Service extends BaseService {
 				entity.setNextVacVisitType("");
 			}
 
-			if("--選択してください--".equals(entity.getNextPharmTypeNm())) {
+			if("--選択してください--".equals(entity.getNextPharmTypeNm()) || "".equals(entity.getNextPharmTypeNm())) {
 				entity.setNextPharmTypeNm("--なし--");
 			}
-			if("--選択してください--".equals(entity.getNextInsRankNm())) {
+			if("--選択してください--".equals(entity.getNextInsRankNm()) || StringUtils.isEmpty(entity.getNextInsRankNm())) {
 				entity.setNextInsRankNm("--なし--");
 			}
-			if("--選択してください--".equals(entity.getNextRegVisTypeNm())) {
+			if("--選択してください--".equals(entity.getNextRegVisTypeNm()) || StringUtils.isEmpty(entity.getNextRegVisTypeNm())) {
 				entity.setNextRegVisTypeNm("--なし--");
 			}
-			if("--選択してください--".equals(entity.getNextImpHosTypeNm())) {
+			if("--選択してください--".equals(entity.getNextImpHosTypeNm()) || StringUtils.isEmpty(entity.getNextImpHosTypeNm())) {
 				entity.setNextImpHosTypeNm("--なし--");
 			}
-			if("--選択してください--".equals(entity.getNextManageNm())) {
+			if("--選択してください--".equals(entity.getNextHoInsTypeNm()) || StringUtils.isEmpty(entity.getNextHoInsTypeNm())) {
+				entity.setNextHoInsTypeNm("--なし--");
+			}
+			if("--選択してください--".equals(entity.getNextManageNm()) || StringUtils.isEmpty(entity.getNextManageNm())) {
 				entity.setNextManageNm("--なし--");
 			}
-			if("--選択してください--".equals(entity.getNextVacInsTypeNm())) {
+			if("--選択してください--".equals(entity.getNextVacInsTypeNm()) || StringUtils.isEmpty(entity.getNextVacInsTypeNm())) {
 				entity.setNextVacInsTypeNm("--なし--");
 			}
-			if("--選択してください--".equals(entity.getNextVacVisitTypeNm())) {
+			if("--選択してください--".equals(entity.getNextVacVisitTypeNm()) || StringUtils.isEmpty(entity.getNextVacVisitTypeNm())) {
 				entity.setNextVacVisitTypeNm("--なし--");
 			}
 

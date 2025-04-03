@@ -69,7 +69,6 @@ public class NF403Service extends BaseService {
 
         indto.setPageFlag("1");
 
-
         // 一括申請ボタン・申請チェックボックスの活性設定
         String mnFac = "0";
     	String mnNt = "0";

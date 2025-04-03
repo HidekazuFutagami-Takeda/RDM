@@ -312,14 +312,30 @@
  		while(pharmTypeBox != undefined){
 
  			if(reqChk.value == "1"){
-				pharmTypeNm.value = pharmTypeBox.options[pharmTypeBox.selectedIndex].textContent;
-				insRankNm.value = insRankBox.options[insRankBox.selectedIndex].textContent;
-				regVisTypeNm.value = regVisTypeBox.options[regVisTypeBox.selectedIndex].textContent;
-				impHosTypeNm.value = impHosTypeBox.options[impHosTypeBox.selectedIndex].textContent;
-				hoInsTypeNm.value = hoInsTypeBox.options[hoInsTypeBox.selectedIndex].textContent;
-				manageNm.value = manageCdBox.options[manageCdBox.selectedIndex].textContent;
-				vacInsTypeNm.value = vacInsTypeBox.options[vacInsTypeBox.selectedIndex].textContent;
-				vacVisitTypeNm.value = vacVisitTypeBox.options[vacVisitTypeBox.selectedIndex].textContent;
+ 				if(pharmType != undefined && pharmTypeBox.value != ""){
+	 				pharmTypeNm.value = pharmTypeBox.options[pharmTypeBox.selectedIndex].textContent;
+ 				}
+ 				if(insRank != undefined && insRankBox.value != ""){
+					insRankNm.value = insRankBox.options[insRankBox.selectedIndex].textContent;
+ 				}
+ 				if(regVisType != undefined && regVisTypeBox.value != ""){
+					regVisTypeNm.value = regVisTypeBox.options[regVisTypeBox.selectedIndex].textContent;
+ 				}
+ 				if(impHosType != undefined && impHosTypeBox.value != ""){
+					impHosTypeNm.value = impHosTypeBox.options[impHosTypeBox.selectedIndex].textContent;
+ 				}
+ 				if(hoInsType != undefined && hoInsTypeBox.value != ""){
+					hoInsTypeNm.value = hoInsTypeBox.options[hoInsTypeBox.selectedIndex].textContent;
+ 				}
+				if(manageCd != undefined && manageCdBox.value != ""){
+					manageNm.value = manageCdBox.options[manageCdBox.selectedIndex].textContent;
+				}
+				if(vacInsType != undefined && vacInsTypeBox.value != ""){
+					vacInsTypeNm.value = vacInsTypeBox.options[vacInsTypeBox.selectedIndex].textContent;
+				}
+				if(vacVisitType != undefined && vacVisitTypeBox.value != ""){
+					vacVisitTypeNm.value = vacVisitTypeBox.options[vacVisitTypeBox.selectedIndex].textContent;
+				}
  			}
 
 			i++;
@@ -1100,6 +1116,10 @@
  		var vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
  		var vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
 
+ 		var reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+ 		var reqChk = document.getElementsByName(reqChkKey)[0];
+ 		var reqChkBox = document.getElementsByName("reqChkBox")[i];
+
  		while(pharmTypeBox != undefined){
  			if(insType.value == "04" || insType.value == "05" || insType.value == "07"){
  	 			pharmTypeBox.disabled = true;
@@ -1162,6 +1182,8 @@
 	 		if(insType.value != "08"){
 	 			vacInsTypeBox.disabled = true;
 	 			vacVisitTypeBox.disabled = true;
+	 			vacInsTypeBox.value = "";
+	 			vacVisitTypeBox.value = "";
 	 		}
 
 	 		if(document.fm1.btnEnableFlg.value != "1"){
@@ -1171,6 +1193,10 @@
 	 			impHosTypeBox.disabled = true;
 	 			vacInsTypeBox.disabled = true;
 	 			vacVisitTypeBox.disabled = true;
+	 		}
+
+	 		if(reqChk.value == "1"){
+	 			reqChkBox.checked = true;
 	 		}
 
 			i++;
@@ -1200,6 +1226,10 @@
 	 		vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
 	 		manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
 	 		manageCdBox = document.getElementsByName(manageCd)[0];
+
+	 		reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+	 		reqChk = document.getElementsByName(reqChkKey)[0];
+	 		reqChkBox = document.getElementsByName("reqChkBox")[i];
  		}
     }
 
@@ -1422,6 +1452,11 @@
     <s:hidden name="backScreenId" value="NF403" />
     <s:hidden id="preScreenId" name="preScreenId"/>
 	<s:hidden id="pageCntCur" name="pageCntCur"/>
+	<s:hidden id="pageCntAll" name="pageCntAll"/>
+	<s:hidden id="pageCntBase" name="pageCntBase"/>
+	<s:hidden id="lineCntAll" name="lineCntAll"/>
+	<s:hidden id="lineCntStart" name="lineCntStart"/>
+	<s:hidden id="lineCntEnd" name="lineCntEnd"/>
 
 	<s:hidden id="callBack" name="callBack" />
 	<s:hidden id="viewKbn" name="viewKbn" />

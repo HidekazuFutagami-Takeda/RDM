@@ -60,10 +60,12 @@
 
 	// 戻るボタン
  	function backBtn(){
-		document.fm1.screenId.value="NF403";
-		document.fm1.functionId.value="Init";
+		if(window.confirm("施設来期項目一括申請画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			document.fm1.screenId.value="NF403";
+			document.fm1.functionId.value="Search";
 
-		comSubmitForAnyWarp(fm1);
+			comSubmitForAnyWarp(fm1);
+		}
  	}
 
 </script>
@@ -149,6 +151,8 @@
 
 	<s:hidden id="title" name="title" />
 
+	<s:hidden id="sosCd" name="sosCd"/>
+	<s:hidden id="sosNm" name="sosNm"/>
 	<s:hidden id="upSosCd" name="upSosCd"/>
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
@@ -157,6 +161,21 @@
 	<s:hidden id="trtCd" name="trtCd"/>
 	<s:hidden id="trtNm" name="trtNm"/>
 	<s:hidden id="mrCat" name="mrCat"/>
+
+	<s:hidden id="jgiNo" name="jgiNo"/>
+	<s:hidden id="jgiNm" name="jgiNm"/>
+
+	<s:hidden id="insNo" name="insNo"/>
+	<s:hidden id="insNm" name="insNm"/>
+	<s:hidden id="ultInsNo" name="ultInsNo"/>
+	<s:hidden id="insKanjSrch" name="insKanjSrch"/>
+	<s:hidden id="shisetsuNmSrch" name="shisetsuNmSrch"/>
+	<s:hidden id="insClass" name="insClass"/>
+	<s:hidden id="insType" name="insType"/>
+	<s:hidden id="hoInsType" name="hoInsType"/>
+	<s:hidden id="ultDif" name="ultDif"/>
+
+	<s:hidden id="btnEnableFlg" name="btnEnableFlg"/>
 
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">

@@ -94,6 +94,102 @@ public class NF405DTO extends BaseDTO implements Serializable {
 	private String title;
 
 	/**
+	 * 組織
+	 * @generated
+	 */
+	private String sosCd;
+
+	/**
+	 * 組織
+	 * @generated
+	 */
+	private String sosNm;
+
+	/**
+	 * 医薬支店C
+	 * @generated
+	 */
+	private String brCode;
+
+	/**
+	 * 医薬営業所C
+	 * @generated
+	 */
+	private String distCode;
+
+	/**
+	 * 部門ランク
+	 * @generated
+	 */
+	private String bumonRank;
+
+	/**
+	 * 担当者
+	 * @generated
+	 */
+	private String jgiNo;
+
+	/**
+	 * 担当者
+	 * @generated
+	 */
+	private String jgiNm;
+
+	/**
+	 * 施設名
+	 * @generated
+	 */
+	private String insNm;
+
+	/**
+	 * 施設固定コード
+	 * @generated
+	 */
+	private String insNo;
+
+	/**
+	 * ULT施設コード
+	 * @generated
+	 */
+	private String ultInsNo;
+
+	/**
+	 * 施設略式漢字名
+	 * @generated
+	 */
+	private String insKanjSrch;
+
+	/**
+	 * ULT施設名
+	 * @generated
+	 */
+	private String shisetsuNmSrch;
+
+	/**
+	 * 施設分類
+	 * @generated
+	 */
+	private String insClass;
+
+	/**
+	 * 施設種別
+	 * @generated
+	 */
+	private String insType;
+
+	/**
+	 * 対象区分
+	 * @generated
+	 */
+	private String hoInsType;
+
+	/**
+	 * ULT差分
+	 * @generated
+	 */
+	private String ultDif;
+
+	/**
 	 * 申請ボタン活性フラグ
 	 * @generated
 	 */
@@ -282,6 +378,246 @@ public class NF405DTO extends BaseDTO implements Serializable {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	/**
+	 * NF405DTO.javasosCdを設定
+	 * @return sosCd
+	 */
+	public String getSosCd() {
+		return sosCd;
+	}
+
+	/**
+	 * @param sosCd セットする sosCd
+	 */
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
+	}
+
+	/**
+	 * NF405DTO.javasosNmを設定
+	 * @return sosNm
+	 */
+	public String getSosNm() {
+		return sosNm;
+	}
+
+	/**
+	 * @param sosNm セットする sosNm
+	 */
+	public void setSosNm(String sosNm) {
+		this.sosNm = sosNm;
+	}
+
+	/**
+	 * NF405DTO.javabrCodeを設定
+	 * @return brCode
+	 */
+	public String getBrCode() {
+		return brCode;
+	}
+
+	/**
+	 * @param brCode セットする brCode
+	 */
+	public void setBrCode(String brCode) {
+		this.brCode = brCode;
+	}
+
+	/**
+	 * NF405DTO.javadistCodeを設定
+	 * @return distCode
+	 */
+	public String getDistCode() {
+		return distCode;
+	}
+
+	/**
+	 * @param distCode セットする distCode
+	 */
+	public void setDistCode(String distCode) {
+		this.distCode = distCode;
+	}
+
+	/**
+	 * NF405DTO.javabumonRankを設定
+	 * @return bumonRank
+	 */
+	public String getBumonRank() {
+		return bumonRank;
+	}
+
+	/**
+	 * @param bumonRank セットする bumonRank
+	 */
+	public void setBumonRank(String bumonRank) {
+		this.bumonRank = bumonRank;
+	}
+
+	/**
+	 * NF405DTO.javajgiNoを設定
+	 * @return jgiNo
+	 */
+	public String getJgiNo() {
+		return jgiNo;
+	}
+
+	/**
+	 * @param jgiNo セットする jgiNo
+	 */
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
+
+	/**
+	 * NF405DTO.javajgiNmを設定
+	 * @return jgiNm
+	 */
+	public String getJgiNm() {
+		return jgiNm;
+	}
+
+	/**
+	 * @param jgiNm セットする jgiNm
+	 */
+	public void setJgiNm(String jgiNm) {
+		this.jgiNm = jgiNm;
+	}
+
+	/**
+	 * NF405DTO.javainsNmを設定
+	 * @return insNm
+	 */
+	public String getInsNm() {
+		return insNm;
+	}
+
+	/**
+	 * @param insNm セットする insNm
+	 */
+	public void setInsNm(String insNm) {
+		this.insNm = insNm;
+	}
+
+	/**
+	 * NF405DTO.javainsNoを設定
+	 * @return insNo
+	 */
+	public String getInsNo() {
+		return insNo;
+	}
+
+	/**
+	 * @param insNo セットする insNo
+	 */
+	public void setInsNo(String insNo) {
+		this.insNo = insNo;
+	}
+
+	/**
+	 * NF405DTO.javaultInsNoを設定
+	 * @return ultInsNo
+	 */
+	public String getUltInsNo() {
+		return ultInsNo;
+	}
+
+	/**
+	 * @param ultInsNo セットする ultInsNo
+	 */
+	public void setUltInsNo(String ultInsNo) {
+		this.ultInsNo = ultInsNo;
+	}
+
+	/**
+	 * NF405DTO.javainsKanjSrchを設定
+	 * @return insKanjSrch
+	 */
+	public String getInsKanjSrch() {
+		return insKanjSrch;
+	}
+
+	/**
+	 * @param insKanjSrch セットする insKanjSrch
+	 */
+	public void setInsKanjSrch(String insKanjSrch) {
+		this.insKanjSrch = insKanjSrch;
+	}
+
+	/**
+	 * NF405DTO.javashisetsuNmSrchを設定
+	 * @return shisetsuNmSrch
+	 */
+	public String getShisetsuNmSrch() {
+		return shisetsuNmSrch;
+	}
+
+	/**
+	 * @param shisetsuNmSrch セットする shisetsuNmSrch
+	 */
+	public void setShisetsuNmSrch(String shisetsuNmSrch) {
+		this.shisetsuNmSrch = shisetsuNmSrch;
+	}
+
+	/**
+	 * NF405DTO.javainsClassを設定
+	 * @return insClass
+	 */
+	public String getInsClass() {
+		return insClass;
+	}
+
+	/**
+	 * @param insClass セットする insClass
+	 */
+	public void setInsClass(String insClass) {
+		this.insClass = insClass;
+	}
+
+	/**
+	 * NF405DTO.javainsTypeを設定
+	 * @return insType
+	 */
+	public String getInsType() {
+		return insType;
+	}
+
+	/**
+	 * @param insType セットする insType
+	 */
+	public void setInsType(String insType) {
+		this.insType = insType;
+	}
+
+	/**
+	 * NF405DTO.javahoInsTypeを設定
+	 * @return hoInsType
+	 */
+	public String getHoInsType() {
+		return hoInsType;
+	}
+
+	/**
+	 * @param hoInsType セットする hoInsType
+	 */
+	public void setHoInsType(String hoInsType) {
+		this.hoInsType = hoInsType;
+	}
+
+	/**
+	 * NF405DTO.javaultDifを設定
+	 * @return ultDif
+	 */
+	public String getUltDif() {
+		return ultDif;
+	}
+
+	/**
+	 * @param ultDif セットする ultDif
+	 */
+	public void setUltDif(String ultDif) {
+		this.ultDif = ultDif;
 	}
 
 	/**

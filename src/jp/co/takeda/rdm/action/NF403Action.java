@@ -169,7 +169,8 @@ public class NF403Action extends BaseAction<NF403DTO> {
      */
     protected void searchSetup() throws Exception {
         // START UOC
-
+    	String title = "NF403_施設来期項目一括申請";
+    	dto.setTitle(title);
         // END UOC
     }
 

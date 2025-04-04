@@ -593,7 +593,7 @@
 
          <div style="display: flex; justify-content: space-between;">
        		<div style="margin-top: 3%;margin-left: 10%;">
-       			<input type="button" value="戻る" onclick="" />
+       			<input type="button" value="戻る" onclick="window.close();" />
        		</div>
 
        		<div style="margin-top: 3%;margin-right: 10%;">

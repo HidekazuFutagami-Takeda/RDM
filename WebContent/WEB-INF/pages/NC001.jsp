@@ -42,9 +42,19 @@
  * </pre>
  */
 function gotoNext(screenId,functionId){
-  fm1.screenId.value=screenId;
-  fm1.functionId.value=functionId;
-  comSubmitForAnyWarp(fm1);
+		var nc001Tab;
+
+		if(nc001Tab && !nc001Tab.closed){
+			nc001Tab.close();
+		}
+
+		nc001Tab = window.open("","NC001Tab");
+		document.fm1.target="NC001Tab";
+
+		fm1.screenId.value=screenId;
+		fm1.functionId.value=functionId;
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
 }
 
 /**
@@ -82,24 +92,6 @@ function shwoInit() {
     </s:iterator>
     alert(msg);
   </s:if>
-
-}
-
-function actBtn(screenId){
-
-	var nc001Tab;
-
-	if(nc001Tab && !nc001Tab.closed){
-		nc001Tab.close();
-	}
-
-	nc001Tab = window.open("","NC001Tab");
-	document.fm1.target="NC001Tab";
-
-	fm1.screenId.value=screenId;
-	fm1.functionId.value="Init";
-	comSubmitForAnyWarp(fm1);
-	comClickFlgInit();
 
 }
 

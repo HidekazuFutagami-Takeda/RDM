@@ -330,19 +330,15 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <tbody>
       <tr>
         <td>
-          <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-              <tbody>
-                  <s:if test="msgStr != null">
-                      <tr>
-                          <td>
-                              <nobr>
-                                  <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-                              </nobr>
-                          </td>
-                      </tr>
-              </s:if>
-              </tbody>
-          </table>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 <%-- 検索部 開始 --%>
           <table class="comPortalControlTable" style="margin-top:3pt;margin-bottom:1pt; width:800pt;"align="center">
           <tbody>

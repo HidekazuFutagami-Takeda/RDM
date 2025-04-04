@@ -303,8 +303,9 @@ public class ND315Service extends BaseService {
 					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
 					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
 					updateEntity1.setAprYmdhms(strDate);// 承認日時
-					//※削除理由が'01'(医療従事者の死亡)の場合、申請時に'1'を設定
-					if(indto.getDelReason().equals("01")) {
+//					//※削除理由が'01'(医療従事者の死亡)の場合、申請時に'1'を設定
+//					if(indto.getDelReason().equals("01")) {
+					if(indto.getFbReqFlg()) {
 						updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
 					}else {
 						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
@@ -660,7 +661,7 @@ public class ND315Service extends BaseService {
 		//      申請コメント                                ３００文字を超えている場合
 		if(!StringUtils.isEmpty(indto.getReqComment())) {
 			//len = StringUtils.getByteLength(indto.getReqComment());
-			len = indto.getAprComment().length();
+			len = indto.getReqComment().length();
 			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）

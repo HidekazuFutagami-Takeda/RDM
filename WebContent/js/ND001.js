@@ -81,7 +81,6 @@ function nd001ClearAll( mrAdminFlg ) {
   if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
   	  document.fm1.searchDocName.value = "";
 	  document.fm1.searchDocKana.value = "";
-	  document.fm1.searchDocType.value = "";
 	  document.fm1.searchDocNo.value = "";
 	  document.fm1.searchDcfIshiCd.value = "";
 	  document.fm1.searchMedSch.value = "";
@@ -89,6 +88,7 @@ function nd001ClearAll( mrAdminFlg ) {
 	  document.fm1.searchHUniv.value = "";
 	  document.fm1.searchSetsuzoku.value = "";
   if ( mrAdminFlg == '1' ) {
+	    document.fm1.searchDocType.value = "";
 		document.fm1.searchDocAttribute.value = "";
 	  // 検索条件 組織担当者
 		document.fm1.bumonRank.value    = "";
@@ -218,6 +218,9 @@ function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
 							distCode, trtGrpCd, trtNm, mrCat){
 		document.fm1.sosCd.value = sosCd;
 		document.fm1.bumonRyakuName.value = bumonSeiName;
+		document.fm1.bumonSeiName.value = bumonSeiName;
+		document.fm1.brCode.value       = brCode;
+		document.fm1.distCode.value     = distCode;
 		document.fm1.jgiNo.value = jgiNo;
 		document.fm1.jgiName.value = jgiName;
 		document.fm1.brCode.value = brCode;

@@ -46,9 +46,9 @@
     	if(backKbn == '0')	{
 	    	if(window.confirm(destructMsg.replace("（遷移元）", '医師検索'))){
 				//モック
-	    		document.fm1.screenId.value="ND001";
-	    		document.fm1.functionId.value="Init";
-  				comSubmitForAnyWarp(fm1);
+// 	    		document.fm1.screenId.value="ND001";
+// 	    		document.fm1.functionId.value="Init";
+//   				comSubmitForAnyWarp(fm1);
 				//この画面（タブ）を閉じる
 				window.close();
 				//元タブにフォーカス
@@ -183,19 +183,15 @@
       <tr>
         <td>
 
-  <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-    <tbody>
-      <s:if test="msgStr != null">
-      <tr>
-        <td>
-          <nobr>
-          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-          </nobr>
-        </td>
-      </tr>
-      </s:if>
-    </tbody>
-  </table>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
   <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--申請情報--%>

@@ -53,9 +53,9 @@
         if (kbn == '0'){//I015	申請します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
         }
-//         if (kbn == '1'){//I012	申請データを承認します。よろしいですか？
-//             msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
-//         }
+        if (kbn == '1'){//I012	申請データを承認します。よろしいですか？
+            msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
+        }
         if (kbn == '2'){//I009	申請データを却下します。よろしいですか？
             msgContent = '<s:property value="#session.UserInfoKey.msgMap.I009.msgData" />';
         }
@@ -145,19 +145,15 @@
       <tr>
         <td>
 
-  <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-    <tbody>
-      <s:if test="msgStr != null">
-      <tr>
-        <td>
-          <nobr>
-          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-          </nobr>
-        </td>
-      </tr>
-      </s:if>
-    </tbody>
-  </table>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
   <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--申請情報--%>
@@ -713,7 +709,7 @@
       </tr>
 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
 	      <tr>
-		      <td class="comFormTableItem"><nobr>却下コメント（※申請者への伝達事項）</nobr></td>
+		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>
@@ -755,7 +751,22 @@
 	      <nobr>&nbsp;</nobr>
 	      </td>
 	      <td class="comFormTableItem">
-	      <nobr>&nbsp;</nobr>
+                <nobr>
+                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
+                	<s:if test='%{btnEnableFlg == "1"}'>
+                		<s:if test='%{reqStsCd == "03"}'>
+	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               		</s:if>
+	                	<input class="comButton" type="button"name="buttonF3" value="承認" onClick="register('1');return false;" />
+	                </s:if>
+	                <s:else>
+						<s:if test='%{reqStsCd == "03"}'>
+							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+						</s:if>
+	                	<input class="comButton" type="button"name="buttonF3" value="承認" disabled />
+	                </s:else>
+                </s:if>
+                </nobr>
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>

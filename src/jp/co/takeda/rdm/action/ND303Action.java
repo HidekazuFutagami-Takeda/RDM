@@ -243,9 +243,9 @@ public class ND303Action extends BaseAction<ND303DTO> {
         if (event.equals("0")) {//I002	申請が完了しました。
             paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
         }
-//        if (event.equals("1")) {//I003	承認が完了しました。
-//            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I003));
-//        }
+        if (event.equals("1")) {//I003	承認が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I003));
+        }
         if (event.equals("2")) {//I004	却下が完了しました。
             paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I004));
         }

@@ -32,6 +32,23 @@
   <s:set id="TOP_FUNCTIONID" value="'View'"/>
 </s:else>
 <!-- セカンダリリンク 開始 -->
+<% if(mainMenu != null){ %>
+    <% if("S0110403".equals(mainMenu.getMenuCode()) || "S0110405".equals(mainMenu.getMenuCode())){ %>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:10px;">
+<tbody>
+  <tr>
+    <td align="left">&nbsp;</td>
+    <td align="right" colSpan="2">
+      <a class="comBannerSecondaryLink" style="margin-left:3pt;margin-right:3pt;" href="" onClick="JavaScript:document._fmTopMenu.action='<%= request.getContextPath() %>/servlet/control';JavaScript:rdmMenuLink('<s:property value="%{#TOP_FUNCTIONID}"/>');return false;">
+      メニュー画面へ
+      </a>
+      <a class="comBannerSecondaryLink" href="" OnClick="rdmHomeLink();return false;"><font class="comBannerSecondaryLink">ホームへ</font></a>&nbsp;
+    </td>
+  </tr>
+  </tbody>
+</table>
+    <% } %>
+  <% } %>
 <!-- <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:10px;"> -->
 <!-- <tbody> -->
 <!--   <tr> -->

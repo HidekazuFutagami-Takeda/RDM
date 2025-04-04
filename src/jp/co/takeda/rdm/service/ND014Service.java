@@ -570,9 +570,9 @@ public class ND014Service extends BaseService {
 			//        	updateEntity.setSqlId("updateShn");
 			updateEntity.setReqId(indto.getReqId());
 			updateEntity.setShnFlg("1");
-			updateEntity.setShnBrCode("");
-			updateEntity.setShnDistCode("");
-			updateEntity.setShnShz("");
+			updateEntity.setShnBrCode(loginInfo.getBrCode());
+			updateEntity.setShnDistCode(loginInfo.getDistCode());
+			updateEntity.setShnShz(loginInfo.getBumonRyakuName());
 			updateEntity.setShnJgiNo(loginInfo.getJgiNo());
 			updateEntity.setShnShaName(loginInfo.getJgiName());
 			// 現在日付を取得する
@@ -599,6 +599,11 @@ public class ND014Service extends BaseService {
 		if ("0".equals(indto.getButtonFlg())) {
 			// 一時保存の場合完了メッセージセット
 			indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I005)); // 保存が完了しました。
+		}
+		if ("2".equals(indto.getButtonFlg())) {
+			// 審査の場合完了メッセージセット
+			indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I008)); // ステータスを審査済みに変更しました。
+			indto.setShnFlg("1");
 		}
 		if ("1".equals(indto.getButtonFlg()) || "3".equals(indto.getButtonFlg())) {
 		// 申請または承認ボタン押下でエラーなしならボタンフラグを9完了にする

@@ -97,11 +97,11 @@
       if (kbn == '1'){//I015	申請します。よろしいですか？
         msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
       }
-//       if (kbn == '2'){//I014	ステータスを審査済みに変更します。よろしいですか？
-//           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I014.msgData" />';
-//       }
-      if (kbn == '3'){//I009	申請データを却下します。よろしいですか？
-          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I009.msgData" />';
+      if (kbn == '2'){//I014	ステータスを審査済みに変更します。よろしいですか？
+          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I014.msgData" />';
+      }
+      if (kbn == '3'){//I012	申請データを承認します。よろしいですか？
+          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
       }
       if (kbn == '4'){//I007	申請データを破棄します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I007.msgData" />';
@@ -258,19 +258,15 @@
       <tr>
         <td>
 
-  <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-    <tbody>
-      <s:if test="msgStr != null">
-      <tr>
-        <td>
-          <nobr>
-          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-          </nobr>
-        </td>
-      </tr>
-      </s:if>
-    </tbody>
-  </table>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
   <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--申請情報--%>
@@ -953,19 +949,19 @@
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
-<%-- 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'> --%>
-<!-- 	      <tr> -->
-<!-- 		      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td> -->
-<!-- 	      </tr> -->
-<!-- 	      <tr> -->
-<%-- 		      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td> --%>
-<!-- 	      </tr> -->
-<%--       </s:if> --%>
+	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
+	      </tr>
+	      <tr>
+		      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td>
+	      </tr>
+      </s:if>
 <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13"  }'>
 </s:if>
 <s:else>
 		 <tr>
-		      <td class="comFormTableItem"><nobr>却下コメント</nobr></td>
+		      <td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
 	     </tr>
 	     <tr>
 		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
@@ -1019,17 +1015,17 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-<%-- 				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'> --%>
-<%-- 					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'> --%>
-<!-- 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" disabled/> -->
-<%-- 					</s:if> --%>
-<%-- 					<s:else> --%>
-<!-- 		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="register('2');return false;" /> -->
-<%-- 					</s:else> --%>
-<%-- 				</s:if> --%>
-<%-- 				<s:else> --%>
+				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
+					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
+		                <input class="comButton" type="button"name="buttonF3" value="審査完了" disabled/>
+					</s:if>
+					<s:else>
+		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="register('2');return false;" />
+					</s:else>
+				</s:if>
+				<s:else>
 					&nbsp;
-<%-- 				</s:else> --%>
+				</s:else>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem">
@@ -1039,11 +1035,11 @@
 			   </s:if>
 				<s:else>
 				   <s:if test='%{reqStsCd != null && reqStsCd != "" && (reqStsCd == "03" || reqStsCd == "13") &&  loginJokenSetCd == "JKN0850"}'>
-		                <input class="comButton" type="button"name="buttonF4" value="却下画面へ" onClick="register('3');return false;" />
+		                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" onClick="register('3');return false;" />
 				   </s:if>
 					<s:else>
 						<s:if test='%{loginJokenSetCd == "JKN0850"}'>
-			                <input class="comButton" type="button"name="buttonF4" value="却下画面へ" disabled/>
+			                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" disabled/>
 						</s:if>
 						<s:else>
 			                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" disabled/>

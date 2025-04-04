@@ -296,9 +296,9 @@ public class ND303Service extends BaseService {
 				indto.setBtnEnableFlg("1");
 			}
 		}
-//		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
-//			indto.setFbReqFlg(true);//初期値はチェックON
-//		}
+		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
+			indto.setFbReqFlg(true);//初期値はチェックON
+		}
 //		indto.setHcpSocietyDataChgFlg("0");
 //		indto.setHcpPublicDataChgFlg("0");
 		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
@@ -644,28 +644,27 @@ public class ND303Service extends BaseService {
 					updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
 					updateEntity1.setReqYmdhms(strDate); // 申請日時
 					updateEntity1.setReqComment(indto.getReqComment());//　申請コメント
-					updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
-
 				}
-				//				if ("1".equals(indto.getButtonFlg())) {//承認
-				//					if(reqChl.equals("3")) {//ULT起因
-				//						updateEntity1.setReqStsCd("14");//　申請ステータス
-				//					}else {
-				//						updateEntity1.setReqStsCd("04");//　申請ステータス
-				//					}
-				//					updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
-				//					updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
-				//					updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
-				//					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
-				//					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
-				//					updateEntity1.setAprYmdhms(strDate);// 承認日時
-				//					if(indto.getFbReqFlg()) {
-				//						updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
-				//					}else {
-				//						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
-				//					}
-				//					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
-				//				}
+				if ("1".equals(indto.getButtonFlg())) {//承認
+					if(reqChl.equals("3")) {//ULT起因
+						updateEntity1.setReqStsCd("14");//　申請ステータス
+					}else {
+						updateEntity1.setReqStsCd("04");//　申請ステータス
+					}
+					updateEntity1.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
+					updateEntity1.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
+					updateEntity1.setAprShz(loginInfo.getBumonRyakuName());// 承認者所属
+					updateEntity1.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
+					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
+					updateEntity1.setAprYmdhms(strDate);// 承認日時
+					if(indto.getFbReqFlg()) {
+						updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+					}else {
+						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+					}
+					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
+					updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
+				}
 				if ("2".equals(indto.getButtonFlg())) {//却下
 					if(reqChl.equals("3")) {//ULT起因
 						updateEntity1.setReqStsCd("12");//　申請ステータス

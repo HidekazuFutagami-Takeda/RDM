@@ -153,8 +153,8 @@ public class ND001Service extends BaseService {
 
         //検索条件
         //直書きは仮置き、検索部作成出来次第indtoから取得すること
-        selectParamSelectHcpEntity.setInSosCd(loginInfo.getSosCd());
-        selectParamSelectHcpEntity.setInJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        selectParamSelectHcpEntity.setInSosCd(loginInfo.getSosCd());//新規フラグ判定用
+        selectParamSelectHcpEntity.setInJgiNo(Integer.toString(loginInfo.getJgiNo()));//更新フラグ判定用
         selectParamSelectHcpEntity.setInKanjiSrch(StringUtils.setEmptyToNull(indto.getSearchDocName()));
         selectParamSelectHcpEntity.setInKanaSrch(StringUtils.setEmptyToNull(indto.getSearchDocKana()));
         selectParamSelectHcpEntity.setInDocType(StringUtils.setEmptyToNull(indto.getSearchDocType()));

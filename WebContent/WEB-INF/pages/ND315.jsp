@@ -144,19 +144,15 @@
     <tbody>
       <tr>
         <td>
-  <table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-    <tbody>
-      <s:if test="msgStr != null">
-      <tr>
-        <td>
-          <nobr>
-          <s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-          </nobr>
-        </td>
-      </tr>
-      </s:if>
-    </tbody>
-  </table>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
   <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
       <tr>
         <%--申請情報--%>
@@ -286,7 +282,7 @@
 			  <s:hidden name="dupDocNo"/>
                 </nobr>
 	      </td>
-	      <td class="comFormTableItem"><nobr>医師・コメディカル名</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>医師・コメディカル名</nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
                 <s:label key="dupDocNm"/>
@@ -309,10 +305,10 @@
       </tr>
         <tr>
 	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
-		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" /></nobr></td>
+		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
-	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
@@ -321,8 +317,8 @@
 	      </tr>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>
-		      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="150" style="width: 650px; height: 80px;"/>
-		      <s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="display:none;"/>
+		      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/>
+		      <s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="display:none;"/>
 		      </nobr></td>
 	      </tr>
       </s:if>
@@ -344,7 +340,8 @@
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>
-                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13") && reqChl == "2" && delReason == "02"}'>
+                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
+<%--                 <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13") && reqChl == "2" && delReason == "02"}'> --%>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 	                	<input class="comButton" type="button"name="buttonF2" value="却下" onClick="register('2');return false;" />
 	                </s:if>
@@ -359,11 +356,18 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13") && reqChl == "2" && delReason == "02" }'>
+<%--                 <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13") && reqChl == "2" && delReason == "02" }'> --%>
+                <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
+                		<s:if test='%{reqStsCd == "03"}'>
+	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               		</s:if>
 	                	<input class="comButton" type="button"name="buttonF3" value="承認" onClick="register('1');return false;" />
 	                </s:if>
 	                <s:else>
+						<s:if test='%{reqStsCd == "03"}'>
+							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+						</s:if>
 	                	<input class="comButton" type="button"name="buttonF3" value="承認" disabled />
 	                </s:else>
                 </s:if>

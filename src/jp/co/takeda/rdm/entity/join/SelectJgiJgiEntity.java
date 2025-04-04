@@ -15,10 +15,10 @@ import java.util.Date;
 /**
  * Entityクラス
  * テーブル物理名 : M_RDM_JGI_SOS_MST
- * SQLID : selectJgi
+ * SQLID : selectJgiJgi
  * @generated
  */
-public class SelectJgiEntity extends BaseEntity implements Serializable {
+public class SelectJgiJgiEntity extends BaseEntity implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -173,19 +173,13 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
     private String gmnJgiName;
 
     /**
-     * 下部組織件数
-     * @generated
-     */
-    private String underSosCnt;
-
-    /**
      * 領域コード
      * @generated
      */
     private String trtCd;
 
-    public SelectJgiEntity() {
-        super("m_rdm_jgi_sos_mst","selectJgi");
+    public SelectJgiJgiEntity() {
+        super("m_rdm_jgi_sos_mst","selectJgiJgi");
     }
 
 	/**
@@ -561,21 +555,6 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
 	 */
 	public void setInJokenSetCd(String inJokenSetCd) {
 		this.inJokenSetCd = inJokenSetCd;
-	}
-
-	/**
-	 * SelectJgiEntity.javaunderSosCntを設定
-	 * @return underSosCnt
-	 */
-	public String getUnderSosCnt() {
-		return underSosCnt;
-	}
-
-	/**
-	 * @param underSosCnt セットする underSosCnt
-	 */
-	public void setUnderSosCnt(String underSosCnt) {
-		this.underSosCnt = underSosCnt;
 	}
 
 	/**

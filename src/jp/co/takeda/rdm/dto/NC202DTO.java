@@ -118,7 +118,10 @@ public class NC202DTO extends BaseDTO implements Serializable {
      */
     private List<JgiData> jgiData = new ArrayList<JgiData>();
 
-
+    /**
+     * @generated
+     */
+    private List<JgiJgiData> jgiJgiData = new ArrayList<JgiJgiData>();
 	/**
      * デフォルトのコンストラクタ。
      * @generated
@@ -423,6 +426,21 @@ public class NC202DTO extends BaseDTO implements Serializable {
 	}
 
     /**
+	 * NC202DTO.javajgiJgiDataを設定
+	 * @return jgiJgiData
+	 */
+	public List<JgiJgiData> getJgiJgiData() {
+		return jgiJgiData;
+	}
+
+	/**
+	 * @param jgiJgiData セットする jgiJgiData
+	 */
+	public void setJgiJgiData(List<JgiJgiData> jgiJgiData) {
+		this.jgiJgiData = jgiJgiData;
+	}
+
+	/**
      * このDTOの値を返す
      * @return DTOの値
      * @generated

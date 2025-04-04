@@ -221,7 +221,7 @@
   	  	comSubmitForAnyWarp(fm1);
   	}
 
- 	var nf401Tab;
+ 	var nf403Tab;
  	// 申請歴ボタン
     function histBtn(insNo){
     	if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
@@ -229,12 +229,12 @@
 
  		fm1.insNo.value = insNo;
 
- 		if(nf401Tab && !nf401Tab.closed){
- 			nf401Tab.close();
+ 		if(nf403Tab && !nf403Tab.closed){
+ 			nf403Tab.close();
  		}
 
- 		nf401Tab = window.open("","NF401Tab");
-		document.fm1.target="NF401Tab";
+ 		nf403Tab = window.open("","NF403Tab");
+		document.fm1.target="NF403Tab";
 
 
   		fm1.screenId.value="NF102";
@@ -246,11 +246,11 @@
 	}
 
  	// ページボタン
-    function pageBtn( pageCntCur ){
+    function pltPage( pageCntCur ){
 		//現在ページ番号変更（遷移）
 		document.fm1.pageCntCur.value = pageCntCur;
 		document.fm1.target="";
-		document.fm1.screenId.value	= "NF401";
+		document.fm1.screenId.value	= "NF403";
 		document.fm1.functionId.value = "Search";
 		// 検索イベント呼び出し
 		comSubmitForAnyWarp(fm1);
@@ -272,6 +272,108 @@
  	function reqBtn(){
 		document.fm1.screenId.value="NF403";
 		document.fm1.functionId.value="Request";
+
+		var i = 0;
+    	var pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+ 		var pharmTypeBox = document.getElementsByName(pharmType)[0];
+ 		var pharmTypeNmKey = "hcoBlkReqDataList["+i+"].nextPharmTypeNm";
+ 		var pharmTypeNm = document.getElementsByName(pharmTypeNmKey)[0];
+    	var insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+ 		var insRankBox = document.getElementsByName(insRank)[0];
+ 		var insRankNmKey = "hcoBlkReqDataList["+i+"].nextInsRankNm";
+ 		var insRankNm = document.getElementsByName(insRankNmKey)[0];
+    	var regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+ 		var regVisTypeBox = document.getElementsByName(regVisType)[0];
+ 		var regVisTypeNmKey = "hcoBlkReqDataList["+i+"].nextRegVisTypeNm";
+ 		var regVisTypeNm = document.getElementsByName(regVisTypeNmKey)[0];
+    	var impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+ 		var impHosTypeBox = document.getElementsByName(impHosType)[0];
+ 		var impHosTypeNmKey = "hcoBlkReqDataList["+i+"].nextImpHosTypeNm";
+ 		var impHosTypeNm = document.getElementsByName(impHosTypeNmKey)[0];
+ 		var hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+ 		var hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+ 		var hoInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextHoInsTypeNm";
+ 		var hoInsTypeNm = document.getElementsByName(hoInsTypeNmKey)[0];
+ 		var manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+ 		var manageCdBox = document.getElementsByName(manageCd)[0];
+ 		var manageNmKey = "hcoBlkReqDataList["+i+"].nextManageNm";
+ 		var manageNm = document.getElementsByName(manageNmKey)[0];
+ 		var vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+ 		var vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+ 		var vacInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacInsTypeNm";
+ 		var vacInsTypeNm = document.getElementsByName(vacInsTypeNmKey)[0];
+ 		var vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+ 		var vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+ 		var vacVisitTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacVisitTypeNm";
+ 		var vacVisitTypeNm = document.getElementsByName(vacVisitTypeNmKey)[0];
+ 		var reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+ 		var reqChk = document.getElementsByName(reqChkKey)[0];
+
+ 		while(pharmTypeBox != undefined){
+
+ 			if(reqChk.value == "1"){
+ 				if(pharmType != undefined && pharmTypeBox.value != ""){
+	 				pharmTypeNm.value = pharmTypeBox.options[pharmTypeBox.selectedIndex].textContent;
+ 				}
+ 				if(insRank != undefined && insRankBox.value != ""){
+					insRankNm.value = insRankBox.options[insRankBox.selectedIndex].textContent;
+ 				}
+ 				if(regVisType != undefined && regVisTypeBox.value != ""){
+					regVisTypeNm.value = regVisTypeBox.options[regVisTypeBox.selectedIndex].textContent;
+ 				}
+ 				if(impHosType != undefined && impHosTypeBox.value != ""){
+					impHosTypeNm.value = impHosTypeBox.options[impHosTypeBox.selectedIndex].textContent;
+ 				}
+ 				if(hoInsType != undefined && hoInsTypeBox.value != ""){
+					hoInsTypeNm.value = hoInsTypeBox.options[hoInsTypeBox.selectedIndex].textContent;
+ 				}
+				if(manageCd != undefined && manageCdBox.value != ""){
+					manageNm.value = manageCdBox.options[manageCdBox.selectedIndex].textContent;
+				}
+				if(vacInsType != undefined && vacInsTypeBox.value != ""){
+					vacInsTypeNm.value = vacInsTypeBox.options[vacInsTypeBox.selectedIndex].textContent;
+				}
+				if(vacVisitType != undefined && vacVisitTypeBox.value != ""){
+					vacVisitTypeNm.value = vacVisitTypeBox.options[vacVisitTypeBox.selectedIndex].textContent;
+				}
+ 			}
+
+			i++;
+			pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+	 		pharmTypeBox = document.getElementsByName(pharmType)[0];
+	 		pharmTypeNmKey = "hcoBlkReqDataList["+i+"].nextPharmTypeNm";
+	 		pharmTypeNm = document.getElementsByName(pharmTypeNmKey)[0];
+	    	insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+	 		insRankBox = document.getElementsByName(insRank)[0];
+	 		insRankNmKey = "hcoBlkReqDataList["+i+"].nextInsRankNm";
+	 		insRankNm = document.getElementsByName(insRankNmKey)[0];
+	    	regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+	 		regVisTypeBox = document.getElementsByName(regVisType)[0];
+	 		regVisTypeNmKey = "hcoBlkReqDataList["+i+"].nextRegVisTypeNm";
+	 		regVisTypeNm = document.getElementsByName(regVisTypeNmKey)[0];
+	    	impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+	 		impHosTypeBox = document.getElementsByName(impHosType)[0];
+	 		impHosTypeNmKey = "hcoBlkReqDataList["+i+"].nextImpHosTypeNm";
+	 		impHosTypeNm = document.getElementsByName(impHosTypeNmKey)[0];
+	 		hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+	 		hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+	 		hoInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextHoInsTypeNm";
+	 		hoInsTypeNm = document.getElementsByName(hoInsTypeNmKey)[0];
+	 		manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+	 		manageCdBox = document.getElementsByName(manageCd)[0];
+	 		manageNmKey = "hcoBlkReqDataList["+i+"].nextManageNm";
+	 		manageNm = document.getElementsByName(manageNmKey)[0];
+	 		vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+	 		vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+	 		vacInsTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacInsTypeNm";
+	 		vacInsTypeNm = document.getElementsByName(vacInsTypeNmKey)[0];
+	 		vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+	 		vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+	 		vacVisitTypeNmKey = "hcoBlkReqDataList["+i+"].nextVacVisitTypeNm";
+	 		vacVisitTypeNm = document.getElementsByName(vacVisitTypeNmKey)[0];
+	 		reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+	 		reqChk = document.getElementsByName(reqChkKey)[0];
+ 		}
 
 		comSubmitForAnyWarp(fm1);
 
@@ -493,37 +595,530 @@
     	return box;
     }
 
-    function onLoadMakeBox(){
-    	let i = 0;
-    	let insTypeKey = "hcoBlkReqDataList["+i+"].insType";
-    	let insType = document.getElementsByName(insTypeKey)[0];
-    	let tmpPharmTypeKey = "hcoBlkReqDataList["+i+"].tmpPharmType";
-    	let tmpPharmType = document.getElementsByName(tmpPharmTypeKey)[0];
-    	let pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
- 		let pharmTypeBox = document.getElementsByName(pharmType)[0];
- 		let tmpInsRankKey = "hcoBlkReqDataList["+i+"].tmpInsRank";
-    	let tmpInsRank = document.getElementsByName(tmpInsRankKey)[0];
-    	let insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
- 		let insRankBox = document.getElementsByName(insRank)[0];
- 		let tmpRegVisTypeKey = "hcoBlkReqDataList["+i+"].tmpRegVisType";
-    	let tmpRegVisType = document.getElementsByName(tmpRegVisTypeKey)[0];
-    	let regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
- 		let regVisTypeBox = document.getElementsByName(regVisType)[0];
- 		let tmpImpHosTypeKey = "hcoBlkReqDataList["+i+"].tmpImpHosType";
-    	let tmpImpHosType = document.getElementsByName(tmpImpHosTypeKey)[0];
-    	let impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
- 		let impHosTypeBox = document.getElementsByName(impHosType)[0];
- 		let hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
- 		let hoInsTypeBox = document.getElementsByName(hoInsType)[0];
- 		let tmpManageCdKey = "hcoBlkReqDataList["+i+"].tmpManageCd";
-    	let tmpManageCd = document.getElementsByName(tmpManageCdKey)[0];
- 		let manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
- 		let manageCdBox = document.getElementsByName(manageCd)[0];
+    // 経営主体セレクトボックス設定
+    function makeManageCdBox(box, insRank){
+    	if(insRank == "01" || insRank == "03"){
+    		box.options[1].hidden = false;
+    		box.options[2].hidden = false;
+    		box.options[3].hidden = false;
+    		box.options[4].hidden = false;
+    		box.options[5].hidden = false;
+    		box.options[6].hidden = false;
+    		box.options[7].hidden = false;
+    		box.options[8].hidden = true;
+    		box.options[9].hidden = false;
+    		box.options[10].hidden = false;
+    		box.options[11].hidden = false;
+    		box.options[12].hidden = false;
+    		box.options[13].hidden = false;
+    		box.options[14].hidden = false;
+    		box.options[15].hidden = false;
+    		box.options[16].hidden = false;
+    		box.options[17].hidden = false;
+    		box.options[18].hidden = false;
+    		box.options[19].hidden = false;
+    		box.options[20].hidden = false;
+    		box.options[21].hidden = false;
+    		box.options[22].hidden = false;
+    		box.options[23].hidden = false;
+    		box.options[24].hidden = false;
+    		box.options[25].hidden = false;
+    		box.options[26].hidden = false;
+    		box.options[27].hidden = false;
+    		box.options[28].hidden = false;
+    		box.options[29].hidden = false;
+    		box.options[30].hidden = false;
+    		box.options[31].hidden = false;
+    		box.options[32].hidden = false;
+    		box.options[33].hidden = false;
+    		box.options[34].hidden = false;
+    		box.options[35].hidden = false;
+    		box.options[36].hidden = false;
+    		box.options[37].hidden = true;
+    		box.options[38].hidden = false;
+    		box.options[39].hidden = false;
+    		box.options[40].hidden = true;
+    		box.options[41].hidden = true;
+    		box.options[42].hidden = true;
+    		box.options[43].hidden = true;
+    		box.options[44].hidden = true;
+    		box.options[45].hidden = true;
+    		box.options[46].hidden = true;
+    		box.options[47].hidden = true;
+    		box.options[48].hidden = false;
+    		box.options[49].hidden = false;
+    		box.options[50].hidden = false;
+    		box.options[51].hidden = false;
+    		box.options[52].hidden = true;
+    		box.options[53].hidden = true;
+    		box.options[54].hidden = true;
+    		box.options[55].hidden = true;
+    		box.options[56].hidden = true;
+    		box.options[57].hidden = true;
+    		box.options[58].hidden = true;
+    		box.options[59].hidden = true;
+    	} else if(insRank == "02" || insRank == "04") {
+    		box.options[1].hidden = true;
+    		box.options[2].hidden = true;
+    		box.options[3].hidden = true;
+    		box.options[4].hidden = true;
+    		box.options[5].hidden = true;
+    		box.options[6].hidden = true;
+    		box.options[7].hidden = true;
+    		box.options[8].hidden = true;
+    		box.options[9].hidden = true;
+    		box.options[10].hidden = true;
+    		box.options[11].hidden = true;
+    		box.options[12].hidden = true;
+    		box.options[13].hidden = true;
+    		box.options[14].hidden = true;
+    		box.options[15].hidden = true;
+    		box.options[16].hidden = true;
+    		box.options[17].hidden = true;
+    		box.options[18].hidden = true;
+    		box.options[19].hidden = true;
+    		box.options[20].hidden = true;
+    		box.options[21].hidden = true;
+    		box.options[22].hidden = true;
+    		box.options[23].hidden = true;
+    		box.options[24].hidden = true;
+    		box.options[25].hidden = true;
+    		box.options[26].hidden = true;
+    		box.options[27].hidden = true;
+    		box.options[28].hidden = true;
+    		box.options[29].hidden = true;
+    		box.options[30].hidden = true;
+    		box.options[31].hidden = true;
+    		box.options[32].hidden = true;
+    		box.options[33].hidden = true;
+    		box.options[34].hidden = true;
+    		box.options[35].hidden = true;
+    		box.options[36].hidden = true;
+    		box.options[37].hidden = false;
+    		box.options[38].hidden = true;
+    		box.options[39].hidden = true;
+    		box.options[40].hidden = false;
+    		box.options[41].hidden = false;
+    		box.options[42].hidden = false;
+    		box.options[43].hidden = false;
+    		box.options[44].hidden = false;
+    		box.options[45].hidden = false;
+    		box.options[46].hidden = false;
+    		box.options[47].hidden = false;
+    		box.options[48].hidden = true;
+    		box.options[49].hidden = true;
+    		box.options[50].hidden = true;
+    		box.options[51].hidden = true;
+    		box.options[52].hidden = false;
+    		box.options[53].hidden = false;
+    		box.options[54].hidden = false;
+    		box.options[55].hidden = false;
+    		box.options[56].hidden = false;
+    		box.options[57].hidden = false;
+    		box.options[58].hidden = false;
+    		box.options[59].hidden = false;
+    	} else if(insRank == "05" || insRank == "06" || insRank == "16" || insRank == "17"
+    		 || insRank == "18" || insRank == "19" || insRank == "20" || insRank == "00"){
+    		box.options[1].hidden = false;
+    		box.options[2].hidden = false;
+    		box.options[3].hidden = false;
+    		box.options[4].hidden = false;
+    		box.options[5].hidden = false;
+    		box.options[6].hidden = false;
+    		box.options[7].hidden = false;
+    		box.options[8].hidden = true;
+    		box.options[9].hidden = false;
+    		box.options[10].hidden = false;
+    		box.options[11].hidden = false;
+    		box.options[12].hidden = false;
+    		box.options[13].hidden = false;
+    		box.options[14].hidden = false;
+    		box.options[15].hidden = false;
+    		box.options[16].hidden = false;
+    		box.options[17].hidden = false;
+    		box.options[18].hidden = false;
+    		box.options[19].hidden = false;
+    		box.options[20].hidden = false;
+    		box.options[21].hidden = false;
+    		box.options[22].hidden = false;
+    		box.options[23].hidden = false;
+    		box.options[24].hidden = false;
+    		box.options[25].hidden = false;
+    		box.options[26].hidden = false;
+    		box.options[27].hidden = false;
+    		box.options[28].hidden = false;
+    		box.options[29].hidden = false;
+    		box.options[30].hidden = false;
+    		box.options[31].hidden = false;
+    		box.options[32].hidden = false;
+    		box.options[33].hidden = false;
+    		box.options[34].hidden = false;
+    		box.options[35].hidden = false;
+    		box.options[36].hidden = false;
+    		box.options[37].hidden = false;
+    		box.options[38].hidden = false;
+    		box.options[39].hidden = false;
+    		box.options[40].hidden = false;
+    		box.options[41].hidden = false;
+    		box.options[42].hidden = false;
+    		box.options[43].hidden = false;
+    		box.options[44].hidden = false;
+    		box.options[45].hidden = false;
+    		box.options[46].hidden = false;
+    		box.options[47].hidden = false;
+    		box.options[48].hidden = false;
+    		box.options[49].hidden = false;
+    		box.options[50].hidden = false;
+    		box.options[51].hidden = false;
+    		box.options[52].hidden = false;
+    		box.options[53].hidden = false;
+    		box.options[54].hidden = false;
+    		box.options[55].hidden = false;
+    		box.options[56].hidden = false;
+    		box.options[57].hidden = false;
+    		box.options[58].hidden = false;
+    		box.options[59].hidden = false;
+    	} else if(insRank == "07" || insRank == "09"){
+    		box.options[1].hidden = false;
+    		box.options[2].hidden = false;
+    		box.options[3].hidden = false;
+    		box.options[4].hidden = false;
+    		box.options[5].hidden = false;
+    		box.options[6].hidden = false;
+    		box.options[7].hidden = false;
+    		box.options[8].hidden = false;
+    		box.options[9].hidden = false;
+    		box.options[10].hidden = false;
+    		box.options[11].hidden = false;
+    		box.options[12].hidden = false;
+    		box.options[13].hidden = false;
+    		box.options[14].hidden = false;
+    		box.options[15].hidden = false;
+    		box.options[16].hidden = false;
+    		box.options[17].hidden = false;
+    		box.options[18].hidden = false;
+    		box.options[19].hidden = false;
+    		box.options[20].hidden = false;
+    		box.options[21].hidden = false;
+    		box.options[22].hidden = false;
+    		box.options[23].hidden = false;
+    		box.options[24].hidden = false;
+    		box.options[25].hidden = false;
+    		box.options[26].hidden = false;
+    		box.options[27].hidden = false;
+    		box.options[28].hidden = false;
+    		box.options[29].hidden = false;
+    		box.options[30].hidden = false;
+    		box.options[31].hidden = false;
+    		box.options[32].hidden = false;
+    		box.options[33].hidden = false;
+    		box.options[34].hidden = false;
+    		box.options[35].hidden = false;
+    		box.options[36].hidden = false;
+    		box.options[37].hidden = true;
+    		box.options[38].hidden = false;
+    		box.options[39].hidden = false;
+    		box.options[40].hidden = true;
+    		box.options[41].hidden = true;
+    		box.options[42].hidden = true;
+    		box.options[43].hidden = true;
+    		box.options[44].hidden = true;
+    		box.options[45].hidden = true;
+    		box.options[46].hidden = true;
+    		box.options[47].hidden = true;
+    		box.options[48].hidden = false;
+    		box.options[49].hidden = false;
+    		box.options[50].hidden = false;
+    		box.options[51].hidden = false;
+    		box.options[52].hidden = true;
+    		box.options[53].hidden = true;
+    		box.options[54].hidden = true;
+    		box.options[55].hidden = true;
+    		box.options[56].hidden = true;
+    		box.options[57].hidden = true;
+    		box.options[58].hidden = true;
+    		box.options[59].hidden = true;
+    	} else if(insRank == "08" || insRank == "10"){
+    		box.options[1].hidden = true;
+    		box.options[2].hidden = true;
+    		box.options[3].hidden = true;
+    		box.options[4].hidden = true;
+    		box.options[5].hidden = true;
+    		box.options[6].hidden = true;
+    		box.options[7].hidden = true;
+    		box.options[8].hidden = true;
+    		box.options[9].hidden = true;
+    		box.options[10].hidden = true;
+    		box.options[11].hidden = true;
+    		box.options[12].hidden = true;
+    		box.options[13].hidden = true;
+    		box.options[14].hidden = true;
+    		box.options[15].hidden = true;
+    		box.options[16].hidden = true;
+    		box.options[17].hidden = true;
+    		box.options[18].hidden = true;
+    		box.options[19].hidden = true;
+    		box.options[20].hidden = true;
+    		box.options[21].hidden = true;
+    		box.options[22].hidden = true;
+    		box.options[23].hidden = true;
+    		box.options[24].hidden = true;
+    		box.options[25].hidden = true;
+    		box.options[26].hidden = true;
+    		box.options[27].hidden = true;
+    		box.options[28].hidden = true;
+    		box.options[29].hidden = true;
+    		box.options[30].hidden = true;
+    		box.options[31].hidden = true;
+    		box.options[32].hidden = true;
+    		box.options[33].hidden = true;
+    		box.options[34].hidden = true;
+    		box.options[35].hidden = true;
+    		box.options[36].hidden = true;
+    		box.options[37].hidden = false;
+    		box.options[38].hidden = true;
+    		box.options[39].hidden = true;
+    		box.options[40].hidden = false;
+    		box.options[41].hidden = false;
+    		box.options[42].hidden = false;
+    		box.options[43].hidden = false;
+    		box.options[44].hidden = false;
+    		box.options[45].hidden = false;
+    		box.options[46].hidden = false;
+    		box.options[47].hidden = false;
+    		box.options[48].hidden = true;
+    		box.options[49].hidden = true;
+    		box.options[50].hidden = true;
+    		box.options[51].hidden = true;
+    		box.options[52].hidden = false;
+    		box.options[53].hidden = false;
+    		box.options[54].hidden = false;
+    		box.options[55].hidden = false;
+    		box.options[56].hidden = false;
+    		box.options[57].hidden = false;
+    		box.options[58].hidden = false;
+    		box.options[59].hidden = false;
+    	} else if(insRank == "11" || insRank == "12"){
+    		box.options[1].hidden = false;
+    		box.options[2].hidden = false;
+    		box.options[3].hidden = false;
+    		box.options[4].hidden = false;
+    		box.options[5].hidden = false;
+    		box.options[6].hidden = false;
+    		box.options[7].hidden = false;
+    		box.options[8].hidden = false;
+    		box.options[9].hidden = false;
+    		box.options[10].hidden = false;
+    		box.options[11].hidden = false;
+    		box.options[12].hidden = false;
+    		box.options[13].hidden = false;
+    		box.options[14].hidden = false;
+    		box.options[15].hidden = false;
+    		box.options[16].hidden = false;
+    		box.options[17].hidden = false;
+    		box.options[18].hidden = false;
+    		box.options[19].hidden = false;
+    		box.options[20].hidden = false;
+    		box.options[21].hidden = false;
+    		box.options[22].hidden = false;
+    		box.options[23].hidden = false;
+    		box.options[24].hidden = false;
+    		box.options[25].hidden = false;
+    		box.options[26].hidden = false;
+    		box.options[27].hidden = false;
+    		box.options[28].hidden = false;
+    		box.options[29].hidden = false;
+    		box.options[30].hidden = false;
+    		box.options[31].hidden = false;
+    		box.options[32].hidden = false;
+    		box.options[33].hidden = false;
+    		box.options[34].hidden = false;
+    		box.options[35].hidden = false;
+    		box.options[36].hidden = false;
+    		box.options[37].hidden = false;
+    		box.options[38].hidden = false;
+    		box.options[39].hidden = false;
+    		box.options[40].hidden = false;
+    		box.options[41].hidden = false;
+    		box.options[42].hidden = false;
+    		box.options[43].hidden = false;
+    		box.options[44].hidden = false;
+    		box.options[45].hidden = false;
+    		box.options[46].hidden = false;
+    		box.options[47].hidden = false;
+    		box.options[48].hidden = false;
+    		box.options[49].hidden = false;
+    		box.options[50].hidden = false;
+    		box.options[51].hidden = false;
+    		box.options[52].hidden = false;
+    		box.options[53].hidden = false;
+    		box.options[54].hidden = false;
+    		box.options[55].hidden = false;
+    		box.options[56].hidden = false;
+    		box.options[57].hidden = false;
+    		box.options[58].hidden = false;
+    		box.options[59].hidden = false;
+    	} else if(insRank == "13" || insRank == "14" || insRank == "15"){
+    		box.options[1].hidden = true;
+    		box.options[2].hidden = true;
+    		box.options[3].hidden = true;
+    		box.options[4].hidden = true;
+    		box.options[5].hidden = true;
+    		box.options[6].hidden = true;
+    		box.options[7].hidden = true;
+    		box.options[8].hidden = true;
+    		box.options[9].hidden = true;
+    		box.options[10].hidden = true;
+    		box.options[11].hidden = true;
+    		box.options[12].hidden = true;
+    		box.options[13].hidden = true;
+    		box.options[14].hidden = false;
+    		box.options[15].hidden = true;
+    		box.options[16].hidden = true;
+    		box.options[17].hidden = true;
+    		box.options[18].hidden = true;
+    		box.options[19].hidden = true;
+    		box.options[20].hidden = true;
+    		box.options[21].hidden = true;
+    		box.options[22].hidden = true;
+    		box.options[23].hidden = false;
+    		box.options[24].hidden = false;
+    		box.options[25].hidden = true;
+    		box.options[26].hidden = false;
+    		box.options[27].hidden = true;
+    		box.options[28].hidden = true;
+    		box.options[29].hidden = true;
+    		box.options[30].hidden = true;
+    		box.options[31].hidden = true;
+    		box.options[32].hidden = true;
+    		box.options[33].hidden = true;
+    		box.options[34].hidden = true;
+    		box.options[35].hidden = true;
+    		box.options[36].hidden = true;
+    		box.options[37].hidden = true;
+    		box.options[38].hidden = true;
+    		box.options[39].hidden = true;
+    		box.options[40].hidden = false;
+    		box.options[41].hidden = false;
+    		box.options[42].hidden = true;
+    		box.options[43].hidden = false;
+    		box.options[44].hidden = false;
+    		box.options[45].hidden = false;
+    		box.options[46].hidden = true;
+    		box.options[47].hidden = true;
+    		box.options[48].hidden = true;
+    		box.options[49].hidden = true;
+    		box.options[50].hidden = true;
+    		box.options[51].hidden = true;
+    		box.options[52].hidden = true;
+    		box.options[53].hidden = true;
+    		box.options[54].hidden = false;
+    		box.options[55].hidden = false;
+    		box.options[56].hidden = true;
+    		box.options[57].hidden = true;
+    		box.options[58].hidden = true;
+    		box.options[59].hidden = true;
+    	} else {
+    		box.options[1].hidden = true;
+    		box.options[2].hidden = true;
+    		box.options[3].hidden = true;
+    		box.options[4].hidden = true;
+    		box.options[5].hidden = true;
+    		box.options[6].hidden = true;
+    		box.options[7].hidden = true;
+    		box.options[8].hidden = true;
+    		box.options[9].hidden = true;
+    		box.options[10].hidden = true;
+    		box.options[11].hidden = true;
+    		box.options[12].hidden = true;
+    		box.options[13].hidden = true;
+    		box.options[14].hidden = true;
+    		box.options[15].hidden = true;
+    		box.options[16].hidden = true;
+    		box.options[17].hidden = true;
+    		box.options[18].hidden = true;
+    		box.options[19].hidden = true;
+    		box.options[20].hidden = true;
+    		box.options[21].hidden = true;
+    		box.options[22].hidden = true;
+    		box.options[23].hidden = true;
+    		box.options[24].hidden = true;
+    		box.options[25].hidden = true;
+    		box.options[26].hidden = true;
+    		box.options[27].hidden = true;
+    		box.options[28].hidden = true;
+    		box.options[29].hidden = true;
+    		box.options[30].hidden = true;
+    		box.options[31].hidden = true;
+    		box.options[32].hidden = true;
+    		box.options[33].hidden = true;
+    		box.options[34].hidden = true;
+    		box.options[35].hidden = true;
+    		box.options[36].hidden = true;
+    		box.options[37].hidden = true;
+    		box.options[38].hidden = true;
+    		box.options[39].hidden = true;
+    		box.options[40].hidden = true;
+    		box.options[41].hidden = true;
+    		box.options[42].hidden = true;
+    		box.options[43].hidden = true;
+    		box.options[44].hidden = true;
+    		box.options[45].hidden = true;
+    		box.options[46].hidden = true;
+    		box.options[47].hidden = true;
+    		box.options[48].hidden = true;
+    		box.options[49].hidden = true;
+    		box.options[50].hidden = true;
+    		box.options[51].hidden = true;
+    		box.options[52].hidden = true;
+    		box.options[53].hidden = true;
+    		box.options[54].hidden = true;
+    		box.options[55].hidden = true;
+    		box.options[56].hidden = true;
+    		box.options[57].hidden = true;
+    		box.options[58].hidden = true;
+    		box.options[59].hidden = true;
+    	}
+    	return box;
+    }
 
- 		let vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
- 		let vacInsTypeBox = document.getElementsByName(vacInsType)[0];
- 		let vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
- 		let vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+    function onLoadMakeBox(){
+    	var i = 0;
+    	var insTypeKey = "hcoBlkReqDataList["+i+"].insType";
+    	var insType = document.getElementsByName(insTypeKey)[0];
+    	var tmpPharmTypeKey = "hcoBlkReqDataList["+i+"].tmpPharmType";
+    	var tmpPharmType = document.getElementsByName(tmpPharmTypeKey)[0];
+    	var pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
+ 		var pharmTypeBox = document.getElementsByName(pharmType)[0];
+ 		var tmpInsRankKey = "hcoBlkReqDataList["+i+"].tmpInsRank";
+    	var tmpInsRank = document.getElementsByName(tmpInsRankKey)[0];
+    	var insRank = "hcoBlkReqDataList["+i+"].nextInsRank";
+ 		var insRankBox = document.getElementsByName(insRank)[0];
+ 		var tmpRegVisTypeKey = "hcoBlkReqDataList["+i+"].tmpRegVisType";
+    	var tmpRegVisType = document.getElementsByName(tmpRegVisTypeKey)[0];
+    	var regVisType = "hcoBlkReqDataList["+i+"].nextRegVisType";
+ 		var regVisTypeBox = document.getElementsByName(regVisType)[0];
+ 		var tmpImpHosTypeKey = "hcoBlkReqDataList["+i+"].tmpImpHosType";
+    	var tmpImpHosType = document.getElementsByName(tmpImpHosTypeKey)[0];
+    	var impHosType = "hcoBlkReqDataList["+i+"].nextImpHosType";
+ 		var impHosTypeBox = document.getElementsByName(impHosType)[0];
+ 		var hoInsType = "hcoBlkReqDataList["+i+"].nextHoInsType";
+ 		var hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+ 		var hoInsTypeValueKey = "hcoBlkReqDataList["+i+"].nextHoInsTypeValue";
+ 		var hoInsTypeValue = document.getElementsByName(hoInsTypeValueKey)[0];
+ 		var tmpManageCdKey = "hcoBlkReqDataList["+i+"].tmpManageCd";
+    	var tmpManageCd = document.getElementsByName(tmpManageCdKey)[0];
+ 		var manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
+ 		var manageCdBox = document.getElementsByName(manageCd)[0];
+
+ 		var vacInsType = "hcoBlkReqDataList["+i+"].nextVacInsType";
+ 		var vacInsTypeBox = document.getElementsByName(vacInsType)[0];
+ 		var vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
+ 		var vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+
+ 		var reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+ 		var reqChk = document.getElementsByName(reqChkKey)[0];
+ 		var reqChkBox = document.getElementsByName("reqChkBox")[i];
 
  		while(pharmTypeBox != undefined){
  			if(insType.value == "04" || insType.value == "05" || insType.value == "07"){
@@ -577,11 +1172,18 @@
 
  			// 対象区分
  			setHoInsType(hoInsTypeBox, insRankBox.value);
+ 			hoInsTypeValue = hoInsTypeBox.value;
  			hoInsTypeBox.disabled = true;
+
+	 		// 経営主体
+ 			makeManageCdBox(manageCdBox, insRankBox.value);
+ 			manageCdBox.value = tmpManageCd.value;
 
 	 		if(insType.value != "08"){
 	 			vacInsTypeBox.disabled = true;
 	 			vacVisitTypeBox.disabled = true;
+	 			vacInsTypeBox.value = "";
+	 			vacVisitTypeBox.value = "";
 	 		}
 
 	 		if(document.fm1.btnEnableFlg.value != "1"){
@@ -591,6 +1193,10 @@
 	 			impHosTypeBox.disabled = true;
 	 			vacInsTypeBox.disabled = true;
 	 			vacVisitTypeBox.disabled = true;
+	 		}
+
+	 		if(reqChk.value == "1"){
+	 			reqChkBox.checked = true;
 	 		}
 
 			i++;
@@ -620,23 +1226,31 @@
 	 		vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
 	 		manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
 	 		manageCdBox = document.getElementsByName(manageCd)[0];
+
+	 		reqChkKey = "hcoBlkReqDataList["+i+"].reqChk";
+	 		reqChk = document.getElementsByName(reqChkKey)[0];
+	 		reqChkBox = document.getElementsByName("reqChkBox")[i];
  		}
     }
 
 	// セレクトボックスの設定
     function changeBox(changeItem, index){
-    	let insTypeKey = "hcoBlkReqDataList["+index+"].insType";
-    	let insType = document.getElementsByName(insTypeKey)[0];
-    	let pharmType = "hcoBlkReqDataList["+index+"].nextPharmType";
- 		let pharmTypeBox = document.getElementsByName(pharmType)[0];
-    	let insRank = "hcoBlkReqDataList["+index+"].nextInsRank";
- 		let insRankBox = document.getElementsByName(insRank)[0];
-    	let regVisType = "hcoBlkReqDataList["+index+"].nextRegVisType";
- 		let regVisTypeBox = document.getElementsByName(regVisType)[0];
-    	let impHosType = "hcoBlkReqDataList["+index+"].nextImpHosType";
- 		let impHosTypeBox = document.getElementsByName(impHosType)[0];
- 		let hoInsType = "hcoBlkReqDataList["+index+"].nextHoInsType";
- 		let hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+    	var insTypeKey = "hcoBlkReqDataList["+index+"].insType";
+    	var insType = document.getElementsByName(insTypeKey)[0];
+    	var pharmType = "hcoBlkReqDataList["+index+"].nextPharmType";
+ 		var pharmTypeBox = document.getElementsByName(pharmType)[0];
+    	var insRank = "hcoBlkReqDataList["+index+"].nextInsRank";
+ 		var insRankBox = document.getElementsByName(insRank)[0];
+    	var regVisType = "hcoBlkReqDataList["+index+"].nextRegVisType";
+ 		var regVisTypeBox = document.getElementsByName(regVisType)[0];
+    	var impHosType = "hcoBlkReqDataList["+index+"].nextImpHosType";
+ 		var impHosTypeBox = document.getElementsByName(impHosType)[0];
+ 		var hoInsType = "hcoBlkReqDataList["+index+"].nextHoInsType";
+ 		var hoInsTypeBox = document.getElementsByName(hoInsType)[0];
+ 		var hoInsTypeValueKey = "hcoBlkReqDataList["+index+"].nextHoInsTypeValue";
+ 		var hoInsTypeValue = document.getElementsByName(hoInsTypeValueKey)[0];
+ 		var manageCd = "hcoBlkReqDataList["+index+"].nextManageCd";
+ 		var manageCdBox = document.getElementsByName(manageCd)[0];
 
  		if(changeItem == "1"){
 			// 施設区分変更
@@ -654,6 +1268,11 @@
 
 			// 対象区分
 			hoInsTypeBox.value = "";
+			hoInsTypeValue.value = "";
+
+			// 経営主体
+			makeManageCdBox(manageCdBox, insRankBox.value);
+			manageCdBox.value = "";
 
  		} else if(changeItem == "2"){
 			// 階級区分変更
@@ -667,6 +1286,11 @@
 
 			// 対象区分
 			setHoInsType(hoInsTypeBox, insRankBox.value);
+			hoInsTypeValue.value = hoInsTypeBox.value;
+
+			// 経営主体
+			makeManageCdBox(manageCdBox, insRankBox.value);
+			manageCdBox.value = "";
  		}
 	}
 
@@ -775,7 +1399,7 @@
     <table class="comPortalTitle">
     <tbody>
     <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設来期項目一括承認"></td>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設来期項目一括申請"></td>
         <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
         <td class="comPortalTitleRight"><nobr></nobr></td>
     </tr>
@@ -789,19 +1413,15 @@
       <tr>
         <td>
 
-	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-		<tbody>
-		<s:if test="msgStr != null">
-			<tr>
-				<td>
-					<nobr>
-					<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-					</nobr>
-				</td>
-			</tr>
-		</s:if>
-		</tbody>
-	</table>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 
 <table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
   <tbody>
@@ -828,6 +1448,11 @@
     <s:hidden name="backScreenId" value="NF403" />
     <s:hidden id="preScreenId" name="preScreenId"/>
 	<s:hidden id="pageCntCur" name="pageCntCur"/>
+	<s:hidden id="pageCntAll" name="pageCntAll"/>
+	<s:hidden id="pageCntBase" name="pageCntBase"/>
+	<s:hidden id="lineCntAll" name="lineCntAll"/>
+	<s:hidden id="lineCntStart" name="lineCntStart"/>
+	<s:hidden id="lineCntEnd" name="lineCntEnd"/>
 
 	<s:hidden id="callBack" name="callBack" />
 	<s:hidden id="viewKbn" name="viewKbn" />
@@ -1081,6 +1706,36 @@
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpRegVisType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpImpHosType"/>
 			<s:hidden name="hcoBlkReqDataList[%{#status.index}].tmpManageCd"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeValue"/>
+
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].pharmTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].insRankFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].regVisTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].impHosTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].hoInsTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].manageCdFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacInsTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].vacVisitTypeFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCntBaseFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt04Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt01Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt05Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt03Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt07Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt02Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedCnt06Flg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].bedsTotFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].medBedsTotFlg"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].updShaYmd"/>
+
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextPharmTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextInsRankNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextRegVisTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextImpHosTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextHoInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextManageNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacInsTypeNm"/>
+			<s:hidden name="hcoBlkReqDataList[%{#status.index}].nextVacVisitTypeNm"/>
 
 			<td class="comTableItem" rowspan=3 style="text-align:center;">
 				<s:if test="btnEnableFlg == 1">
@@ -1149,98 +1804,228 @@
 	        </td>
 	        <td class="comTableItem">来期</td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.pharmTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onChange="JavaScript:changeBox('1','%{#status.index}'); return false;" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextPharmType" cssStyle="width:120pt" list ="pharmTypeCombo" onChange="JavaScript:changeBox('1','%{#status.index}'); return false;" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.insRankFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onChange="JavaScript:changeBox('2','%{#status.index}'); return false;" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextInsRank" cssStyle="width:120pt" list ="insRankCombo" onChange="JavaScript:changeBox('2','%{#status.index}'); return false;" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.regVisTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextRegVisType" cssStyle="width:120pt" list ="regVisTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.impHosTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextImpHosType" cssStyle="width:120pt" list ="impHosTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextImpHosType" cssStyle="width:120pt" list ="impHosTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.hoInsTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextHoInsType" cssStyle="width:120pt" list ="hoInsTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextHoInsType" cssStyle="width:120pt" list ="hoInsTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.manageCdFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextManageCd" cssStyle="width:120pt" list ="manageCdCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextManageCd" cssStyle="width:120pt" list ="manageCdCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	        <s:if test="#rowBean.vacInsTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextVacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextVacInsType" cssStyle="width:120pt" list ="vacInsTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem">
+	       	<s:if test="#rowBean.vacVisitTypeFlg != 1">
 	        	<s:select name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo" />
+	        </s:if>
+	        <s:else>
+	        	<s:select cssClass="comTableSelectYellow" name="hcoBlkReqDataList[%{#status.index}].nextVacVisitType" cssStyle="width:120pt" list ="vacVisitTypeCombo" />
+	        </s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		<s:if test="#rowBean.bedCntBaseFlg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		<s:if test="#rowBean.bedCntBaseFlg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCntBase" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		</s:else>
 	        	</s:else>
 	        	</td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		<s:if test="#rowBean.bedCnt04Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        		<s:if test="#rowBean.bedCnt04Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt04" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt01Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt01Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt01" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt05Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt05Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt05" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt03Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt03Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt03" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	       	</td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt07Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt07Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt07" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        	<s:if test="#rowBean.bedCnt02Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt02Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt02" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
 	        	<s:if test="btnEnableFlg == 1 and (#rowBean.insType == '01' or #rowBean.insType == '02')">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" />
+	        	<s:if test="#rowBean.bedCnt06Flg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:if>
+	        		<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" onChange="JavaScript:calcBedCnt('%{#status.index}'); return false;" />
+	        		</s:else>
 	        	</s:if>
 	        	<s:else>
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+	        	<s:if test="#rowBean.bedCnt06Flg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:if>
+		        	<s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedCnt06" size="4" maxlength="4" style="text-align:right;" readonly="true"/>
+		        	</s:else>
 	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	<s:if test="#rowBean.bedsTotFlg != 1">
+	        		<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	</s:if>
+	        	<s:else>
+	        		<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	</s:else>
 	        </td>
 	        <td class="comTableItem" style="text-align:right">
-	        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+	        	<s:if test="#rowBean.medBedsTotFlg != 1">
+		        	<s:textfield name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+		        </s:if>
+		        <s:else>
+		        	<s:textfield cssClass="comTableInputYellow" name="hcoBlkReqDataList[%{#status.index}].nextMedBedsTot" size="4" maxlength="4" style="text-align:right;" readonly="true" />
+		        </s:else>
 	        </td>
 		</tr>
 	</s:iterator>
@@ -1271,7 +2056,7 @@
                 <td>
                <nobr>
                	<s:if test='%{btnEnableFlg == "1"}'>
-					<input class="comButton" type="button"name="buttonF3" value="一括申請" onClick="apprBtn();JavaScript:return false;" />
+					<input class="comButton" type="button"name="buttonF3" value="一括申請" onClick="reqBtn();JavaScript:return false;" />
 				</s:if>
 				<s:else>
 					&nbsp;

@@ -20,7 +20,6 @@
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-    <s:if test="%{(jgiFlg == 0 )}">
       <%-- 組織 --%>
       <s:iterator value="jgiData" status="status" var="rowBean">
         <div id="layout" name="layout" style="padding-top:8px">
@@ -52,10 +51,8 @@
 
         </div>
       </s:iterator>
-  </s:if>
-  <s:if test="%{(jgiFlg == 1 )}">
         <%-- 従業員 --%>
-      <s:iterator value="jgiData" status="status" var="rowBeanJgi">
+      <s:iterator value="jgiJgiData" status="status" var="rowBeanJgi">
         <div id="layout" name="layout" style="padding-top:8px">
           <nobr>
             <%-- 従業員名 --%>
@@ -78,9 +75,8 @@
                       );"
                   >
                 <%-- 従業員名 --%>
-                <s:property value="#rowBeanJgi.jgiName"/>
+                <s:property value="#rowBeanJgi.gmnJgiName"/>
              </s:if>
           </nobr>
         </div>
       </s:iterator>
-  </s:if>

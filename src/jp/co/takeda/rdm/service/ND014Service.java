@@ -28,8 +28,6 @@ import jp.co.takeda.rdm.dto.ND014DTO;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcpYakushokuEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
-import jp.co.takeda.rdm.entity.join.SelectHcpPublicDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectHcpSocietyDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectND014MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
@@ -572,9 +570,9 @@ public class ND014Service extends BaseService {
 			//        	updateEntity.setSqlId("updateShn");
 			updateEntity.setReqId(indto.getReqId());
 			updateEntity.setShnFlg("1");
-			updateEntity.setShnBrCode("");
-			updateEntity.setShnDistCode("");
-			updateEntity.setShnShz("");
+			updateEntity.setShnBrCode(loginInfo.getBrCode());
+			updateEntity.setShnDistCode(loginInfo.getDistCode());
+			updateEntity.setShnShz(loginInfo.getBumonRyakuName());
 			updateEntity.setShnJgiNo(loginInfo.getJgiNo());
 			updateEntity.setShnShaName(loginInfo.getJgiName());
 			// 現在日付を取得する
@@ -601,6 +599,11 @@ public class ND014Service extends BaseService {
 		if ("0".equals(indto.getButtonFlg())) {
 			// 一時保存の場合完了メッセージセット
 			indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I005)); // 保存が完了しました。
+		}
+		if ("2".equals(indto.getButtonFlg())) {
+			// 審査の場合完了メッセージセット
+			indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.I008)); // ステータスを審査済みに変更しました。
+			indto.setShnFlg("1");
 		}
 		if ("1".equals(indto.getButtonFlg()) || "3".equals(indto.getButtonFlg())) {
 		// 申請または承認ボタン押下でエラーなしならボタンフラグを9完了にする
@@ -694,8 +697,9 @@ public class ND014Service extends BaseService {
 
 		//      申請コメント                                ３００文字を超えている場合
 		if(!StringUtils.isEmpty(indto.getReqComment())) {
-			len = StringUtils.getByteLength(indto.getReqComment());
-			if(len > 300) {
+			//len = StringUtils.getByteLength(indto.getReqComment());
+			len = indto.getReqComment().length();
+			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
@@ -704,8 +708,9 @@ public class ND014Service extends BaseService {
 		}
 		//      審査・承認メモ                                ３００文字を超えている場合
 		if(!StringUtils.isEmpty(indto.getAprMemo())) {
-			len = StringUtils.getByteLength(indto.getAprMemo());
-			if(len > 300) {
+			//len = StringUtils.getByteLength(indto.getAprMemo());
+			len = indto.getAprMemo().length();
+			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
 				tmpMsgStr = tmpMsgStr.replace("項目名", "審査・承認メモ");

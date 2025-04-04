@@ -7,7 +7,6 @@ package jp.co.takeda.rdm.service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -22,19 +21,14 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.HcoBlkReqDataList;
-import jp.co.takeda.rdm.dto.KmuIkkatsuData;
-import jp.co.takeda.rdm.dto.ND401DTO;
 import jp.co.takeda.rdm.dto.NF403DTO;
 import jp.co.takeda.rdm.entity.MRdmHcoKeieitaiEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
-import jp.co.takeda.rdm.entity.join.SelectNF401MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF403MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamNF403Entity;
-import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
-import jp.co.takeda.rdm.entity.join.TRdmHcpReqEntity;
-import jp.co.takeda.rdm.util.DateUtils;
+import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
@@ -75,7 +69,6 @@ public class NF403Service extends BaseService {
 
         indto.setPageFlag("1");
 
-
         // 一括申請ボタン・申請チェックボックスの活性設定
         String mnFac = "0";
     	String mnNt = "0";
@@ -115,11 +108,6 @@ public class NF403Service extends BaseService {
 		BaseDTO outdto = indto;
 		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
-		// 現在日付を取得
-		Date systemDate = DateUtils.getNowDate();
-		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
-		indto.setSrchSysDate(fmtDate.format(systemDate));
-
 		// DropDownList作成
         createCombo(indto);
 
@@ -150,13 +138,12 @@ public class NF403Service extends BaseService {
         }
 
         if (!inputFlg) {
-      	  // 検索条件を入力してください。
-      	  String tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);
-      	  //エラーメッセージをdtoに格納
-      	  indto.setMsgStr(tmpMsgStr);
-      	  return outdto;
-      }
-
+			// 検索条件を入力してください。
+			String tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);
+			//エラーメッセージをdtoに格納
+			indto.setMsgStr(tmpMsgStr);
+			return outdto;
+        }
 
         // 一覧表示データ
         List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
@@ -284,143 +271,118 @@ public class NF403Service extends BaseService {
         	}
 
         	// 施設区分
+        	if(entity.getPharmType() != null && !entity.getPharmType().isEmpty()) {
+        		dataRecord.setPharmType(entity.getPharmType());
+        	} else {
+        		dataRecord.setPharmType("");
+        	}
         	if(entity.getPharmTypeNm() != null && !entity.getPharmTypeNm().isEmpty()) {
         		dataRecord.setPharmTypeNm(entity.getPharmTypeNm());
         	} else {
-        		dataRecord.setPharmTypeNm(" ");
+        		dataRecord.setPharmTypeNm("--なし--");
         	}
         	if(entity.getShisetsuKbn() != null && !entity.getShisetsuKbn().isEmpty()) {
         		dataRecord.setShisetsuKbn(entity.getShisetsuKbn());
         	} else {
-        		dataRecord.setShisetsuKbn(" ");
+        		dataRecord.setShisetsuKbn("--なし--");
         	}
-        	if(entity.getNextPharmType() != null && !entity.getNextPharmType().isEmpty()) {
-        		dataRecord.setNextPharmType(entity.getNextPharmType());
-        	} else {
-        		if(entity.getPharmType() != null && !entity.getPharmType().isEmpty()) {
-            		dataRecord.setNextPharmType(entity.getPharmType());
-            	} else {
-            		dataRecord.setNextPharmType("");
-            	}
-        	}
+        	dataRecord.setNextPharmType(getReqViewValue(entity.getPharmType(), entity.getNextPharmType()));
 
         	// 階級区分
+        	if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
+        		dataRecord.setInsRank(entity.getInsRank());
+        	} else {
+        		dataRecord.setInsRank("");
+        	}
         	if(entity.getInsRankNm() != null && !entity.getInsRankNm().isEmpty()) {
         		dataRecord.setInsRankNm(entity.getInsRankNm());
         	} else {
-        		dataRecord.setInsRankNm(" ");
+        		dataRecord.setInsRankNm("--なし--");
         	}
-        	if(entity.getNextInsRank() != null && !entity.getNextInsRank().isEmpty()) {
-        		dataRecord.setNextInsRank(entity.getNextInsRank());
-        	} else {
-        		if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
-            		dataRecord.setNextInsRank(entity.getInsRank());
-            	} else {
-            		dataRecord.setNextInsRank("");
-            	}
-        	}
+        	dataRecord.setNextInsRank(getReqViewValue(entity.getInsRank(), entity.getNextInsRank()));
 
         	// 定訪先区分
+        	if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
+        		dataRecord.setRegVisType(entity.getRegVisType());
+        	} else {
+        		dataRecord.setRegVisType("");
+        	}
         	if(entity.getRegVisTypeNm() != null && !entity.getRegVisTypeNm().isEmpty()) {
         		dataRecord.setRegVisTypeNm(entity.getRegVisTypeNm());
         	} else {
-        		dataRecord.setRegVisTypeNm(" ");
+        		dataRecord.setRegVisTypeNm("--なし--");
         	}
-        	if(entity.getNextRegVisType() != null && !entity.getNextRegVisType().isEmpty()) {
-        		dataRecord.setNextRegVisType(entity.getNextRegVisType());
-        	} else {
-        		if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
-            		dataRecord.setNextRegVisType(entity.getRegVisType());
-            	} else {
-            		dataRecord.setNextRegVisType("");
-            	}
-        	}
+        	dataRecord.setNextRegVisType(getReqViewValue(entity.getRegVisType(), entity.getNextRegVisType()));
 
         	// 重点病院区分
+        	if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
+        		dataRecord.setImpHosType(entity.getImpHosType());
+        	} else {
+        		dataRecord.setImpHosType("");
+        	}
         	if(entity.getImpHosTypeNm() != null && !entity.getImpHosTypeNm().isEmpty()) {
         		dataRecord.setImpHosTypeNm(entity.getImpHosTypeNm());
         	} else {
-        		dataRecord.setImpHosTypeNm(" ");
+        		dataRecord.setImpHosTypeNm("--なし--");
         	}
-        	if(entity.getNextImpHosType() != null && !entity.getNextImpHosType().isEmpty()) {
-        		dataRecord.setNextImpHosType(entity.getNextImpHosType());
-        	} else {
-        		if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
-            		dataRecord.setNextImpHosType(entity.getImpHosType());
-            	} else {
-            		dataRecord.setNextImpHosType("");
-            	}
-        	}
+        	dataRecord.setNextImpHosType(getReqViewValue(entity.getImpHosType(), entity.getNextImpHosType()));
 
         	// 対象区分
+        	if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
+        		dataRecord.setHoInsType(entity.getHoInsType());
+        	} else {
+        		dataRecord.setHoInsType("");
+        	}
         	if(entity.getHoInsTypeNm() != null && !entity.getHoInsTypeNm().isEmpty()) {
         		dataRecord.setHoInsTypeNm(entity.getHoInsTypeNm());
         	} else {
-        		dataRecord.setHoInsTypeNm(" ");
+        		dataRecord.setHoInsTypeNm("--なし--");
         	}
-        	if(entity.getNextHoInsType() != null && !entity.getNextHoInsType().isEmpty()) {
-        		dataRecord.setNextHoInsType(entity.getNextHoInsType());
-        	} else {
-        		if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
-            		dataRecord.setNextHoInsType(entity.getHoInsType());
-            	} else {
-            		dataRecord.setNextHoInsType("");
-            	}
-        	}
+        	dataRecord.setNextHoInsType(getReqViewValue(entity.getHoInsType(), entity.getNextHoInsType()));
 
         	// 経営主体
+        	if(entity.getManageCd() != null && !entity.getManageCd().isEmpty()) {
+        		dataRecord.setManageCd(entity.getManageCd());
+        	} else {
+        		dataRecord.setManageCd("");
+        	}
         	if(entity.getManageNm() != null && !entity.getManageNm().isEmpty()) {
         		dataRecord.setManageNm(entity.getManageNm());
         	} else {
-        		dataRecord.setManageNm(" ");
+        		dataRecord.setManageNm("--なし--");
         	}
         	if(entity.getKeieitai() != null && !entity.getKeieitai().isEmpty()) {
         		dataRecord.setKeieitai(entity.getKeieitai());
         	} else {
-        		dataRecord.setKeieitai(" ");
+        		dataRecord.setKeieitai("--なし--");
         	}
-        	if(entity.getNextManageCd() != null && !entity.getNextManageCd().isEmpty()) {
-        		dataRecord.setNextManageCd(entity.getNextManageCd());
-        	} else {
-        		if(entity.getManageCd() != null && !entity.getManageCd().isEmpty()) {
-            		dataRecord.setNextManageCd(entity.getManageCd());
-            	} else {
-            		dataRecord.setNextManageCd("");
-            	}
-        	}
-
+        	dataRecord.setNextManageCd(getReqViewValue(entity.getManageCd(), entity.getNextManageCd()));
 
         	// ワクチン対象区分
+        	if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
+        		dataRecord.setVacInsType(entity.getVacInsType());
+        	} else {
+        		dataRecord.setVacInsType("");
+        	}
         	if(entity.getVacInsTypeNm() != null && !entity.getVacInsTypeNm().isEmpty()) {
         		dataRecord.setVacInsTypeNm(entity.getVacInsTypeNm());
         	} else {
-        		dataRecord.setVacInsTypeNm(" ");
+        		dataRecord.setVacInsTypeNm("--なし--");
         	}
-        	if(entity.getNextVacInsType() != null && !entity.getNextVacInsType().isEmpty()) {
-        		dataRecord.setNextVacInsType(entity.getNextVacInsType());
-        	} else {
-        		if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
-            		dataRecord.setNextVacInsType(entity.getVacInsType());
-            	} else {
-            		dataRecord.setNextVacInsType("");
-            	}
-        	}
+        	dataRecord.setNextVacInsType(getReqViewValue(entity.getVacInsType(), entity.getNextVacInsType()));
 
         	// ワクチン定訪先区分
+        	if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
+        		dataRecord.setVacVisitType(entity.getVacVisitType());
+        	} else {
+        		dataRecord.setVacVisitType("");
+        	}
         	if(entity.getVacVisitTypeNm() != null && !entity.getVacVisitTypeNm().isEmpty()) {
         		dataRecord.setVacVisitTypeNm(entity.getVacVisitTypeNm());
         	} else {
-        		dataRecord.setVacVisitTypeNm(" ");
+        		dataRecord.setVacVisitTypeNm("--なし--");
         	}
-        	if(entity.getNextVacVisitType() != null && !entity.getNextVacVisitType().isEmpty()) {
-        		dataRecord.setNextVacVisitType(entity.getNextVacVisitType());
-        	} else {
-        		if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
-            		dataRecord.setNextVacVisitType(entity.getVacVisitType());
-            	} else {
-            		dataRecord.setNextVacVisitType("");
-            	}
-        	}
+        	dataRecord.setNextVacVisitType(getReqViewValue(entity.getVacVisitType(), entity.getNextVacVisitType()));
 
         	// 病床数基準
         	if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
@@ -433,15 +395,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCntBase(" ");
         	}
-        	if(entity.getNextBedCntBase() != null && !entity.getNextBedCntBase().isEmpty()) {
-        		dataRecord.setNextBedCntBase(entity.getNextBedCntBase());
-        	} else {
-        		if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
-            		dataRecord.setNextBedCntBase(entity.getBedCntBase());
-            	} else {
-            		dataRecord.setNextBedCntBase("");
-            	}
-        	}
+        	dataRecord.setNextBedCntBase(getReqViewValue(StringUtils.nvl(entity.getBedCntBase(), ""),StringUtils.nvl(entity.getNextBedCntBase(), "")));
 
         	// 結核
         	if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
@@ -454,15 +408,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt04(" ");
         	}
-        	if(entity.getNextBedCnt04() != null && !entity.getNextBedCnt04().isEmpty()) {
-        		dataRecord.setNextBedCnt04(entity.getNextBedCnt04());
-        	} else {
-        		if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
-            		dataRecord.setNextBedCnt04(entity.getBedCnt04());
-            	} else {
-            		dataRecord.setNextBedCnt04("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt04(getReqViewValue(StringUtils.nvl(entity.getBedCnt04(), ""),StringUtils.nvl(entity.getNextBedCnt04(), "")));
 
         	// 一般
         	if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
@@ -475,15 +421,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt01(" ");
         	}
-        	if(entity.getNextBedCnt01() != null && !entity.getNextBedCnt01().isEmpty()) {
-        		dataRecord.setNextBedCnt01(entity.getNextBedCnt01());
-        	} else {
-        		if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
-            		dataRecord.setNextBedCnt01(entity.getBedCnt01());
-            	} else {
-            		dataRecord.setNextBedCnt01("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt01(getReqViewValue(StringUtils.nvl(entity.getBedCnt01(), ""),StringUtils.nvl(entity.getNextBedCnt01(), "")));
 
         	// 感染症
         	if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
@@ -496,15 +434,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt05(" ");
         	}
-        	if(entity.getNextBedCnt05() != null && !entity.getNextBedCnt05().isEmpty()) {
-        		dataRecord.setNextBedCnt05(entity.getNextBedCnt05());
-        	} else {
-        		if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
-            		dataRecord.setNextBedCnt05(entity.getBedCnt05());
-            	} else {
-            		dataRecord.setNextBedCnt05("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt05(getReqViewValue(StringUtils.nvl(entity.getBedCnt05(), ""),StringUtils.nvl(entity.getNextBedCnt05(), "")));
 
         	// 精神
         	if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
@@ -517,15 +447,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt03(" ");
         	}
-        	if(entity.getNextBedCnt03() != null && !entity.getNextBedCnt03().isEmpty()) {
-        		dataRecord.setNextBedCnt03(entity.getNextBedCnt03());
-        	} else {
-        		if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
-            		dataRecord.setNextBedCnt03(entity.getBedCnt03());
-            	} else {
-            		dataRecord.setNextBedCnt03("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt03(getReqViewValue(StringUtils.nvl(entity.getBedCnt03(), ""),StringUtils.nvl(entity.getNextBedCnt03(), "")));
 
         	// 療養
         	if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
@@ -538,15 +460,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt07(" ");
         	}
-        	if(entity.getNextBedCnt07() != null && !entity.getNextBedCnt07().isEmpty()) {
-        		dataRecord.setNextBedCnt07(entity.getNextBedCnt07());
-        	} else {
-        		if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
-            		dataRecord.setNextBedCnt07(entity.getBedCnt07());
-            	} else {
-            		dataRecord.setNextBedCnt07("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt07(getReqViewValue(StringUtils.nvl(entity.getBedCnt07(), ""),StringUtils.nvl(entity.getNextBedCnt07(), "")));
 
         	// 医療療養
         	if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
@@ -554,15 +468,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setBedCnt02(" ");
         	}
-        	if(entity.getNextBedCnt02() != null && !entity.getNextBedCnt02().isEmpty()) {
-        		dataRecord.setNextBedCnt02(entity.getNextBedCnt02());
-        	} else {
-        		if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
-            		dataRecord.setNextBedCnt02(entity.getBedCnt02());
-            	} else {
-            		dataRecord.setNextBedCnt02("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt02(getReqViewValue(StringUtils.nvl(entity.getBedCnt02(), ""),StringUtils.nvl(entity.getNextBedCnt02(), "")));
 
         	// 介護療養
         	if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
@@ -570,15 +476,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setBedCnt06(" ");
         	}
-        	if(entity.getNextBedCnt06() != null && !entity.getNextBedCnt06().isEmpty()) {
-        		dataRecord.setNextBedCnt06(entity.getNextBedCnt06());
-        	} else {
-        		if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
-            		dataRecord.setNextBedCnt06(entity.getBedCnt06());
-            	} else {
-            		dataRecord.setNextBedCnt06("");
-            	}
-        	}
+        	dataRecord.setNextBedCnt06(getReqViewValue(StringUtils.nvl(entity.getBedCnt06(), ""),StringUtils.nvl(entity.getNextBedCnt06(), "")));
 
         	// ベッド数計
         	if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
@@ -591,15 +489,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltBedsTot(" ");
         	}
-        	if(entity.getNextBedsTot() != null && !entity.getNextBedsTot().isEmpty()) {
-        		dataRecord.setNextBedsTot(entity.getNextBedsTot());
-        	} else {
-        		if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
-            		dataRecord.setNextBedsTot(entity.getBedsTot());
-            	} else {
-            		dataRecord.setNextBedsTot("");
-            	}
-        	}
+        	dataRecord.setNextBedsTot(getReqViewValue(StringUtils.nvl(entity.getBedsTot(), ""),StringUtils.nvl(entity.getNextBedsTot(), "")));
 
         	// 医療ベッド数計
         	if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
@@ -612,15 +502,7 @@ public class NF403Service extends BaseService {
         	} else {
         		dataRecord.setUltMedBedsTot(" ");
         	}
-        	if(entity.getNextMedBedsTot() != null && !entity.getNextMedBedsTot().isEmpty()) {
-        		dataRecord.setNextMedBedsTot(entity.getNextMedBedsTot());
-        	} else {
-        		if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
-            		dataRecord.setNextMedBedsTot(entity.getMedBedsTot());
-            	} else {
-            		dataRecord.setNextMedBedsTot("");
-            	}
-        	}
+        	dataRecord.setNextMedBedsTot(getReqViewValue(StringUtils.nvl(entity.getMedBedsTot(), ""),StringUtils.nvl(entity.getNextMedBedsTot(), "")));
 
         	// 申請コメント
         	if(entity.getReqComment() != null && !entity.getReqComment().isEmpty()) {
@@ -662,6 +544,13 @@ public class NF403Service extends BaseService {
         	dataRecord.setTmpRegVisType(dataRecord.getNextRegVisType());
         	dataRecord.setTmpImpHosType(dataRecord.getNextImpHosType());
         	dataRecord.setTmpManageCd(dataRecord.getNextManageCd());
+        	dataRecord.setNextHoInsTypeValue(dataRecord.getNextHoInsType());
+
+        	// 最終更新日
+        	if(entity.getUpdShaYmd() != null) {
+	    		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
+	    		dataRecord.setUpdShaYmd(fmtDate.format(entity.getUpdShaYmd()));
+        	}
 
         	hcoBlkReqDataList.add(dataRecord);
         }
@@ -680,7 +569,7 @@ public class NF403Service extends BaseService {
      * @customizable
      */
     @Transactional
-    public BaseDTO reqest(NF403DTO indto) {
+    public BaseDTO request(NF403DTO indto) {
     	BaseDTO outdto = indto;
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
@@ -689,16 +578,264 @@ public class NF403Service extends BaseService {
 
 		List<HcoBlkReqDataList> hcoBlkReqDataList = new ArrayList<HcoBlkReqDataList>();
 
-		// 申請チェック有のもののみ取得
 		for(HcoBlkReqDataList entity : indto.getHcoBlkReqDataList()) {
+			// 申請チェック有のもののみ取得
 			if("1".equals(entity.getReqChk())) {
 				hcoBlkReqDataList.add(entity);
 			}
 		}
 
 		// エラーチェック
-		// TODO
+		for(HcoBlkReqDataList entity : hcoBlkReqDataList) {
+			entity.setTmpPharmType(entity.getNextPharmType());
+        	entity.setTmpInsRank(entity.getNextInsRank());
+        	entity.setTmpRegVisType(entity.getNextRegVisType());
+        	entity.setTmpImpHosType(entity.getNextImpHosType());
+        	entity.setTmpManageCd(entity.getNextManageCd());
+        	entity.setNextHoInsTypeValue(entity.getNextHoInsType());
 
+			// 「施設コード_施設略式漢字名：」を各エラーメッセージの先頭に追加
+			StringBuilder nmSb = new StringBuilder();
+			nmSb.append(entity.getInsNo());
+			nmSb.append("_");
+			nmSb.append(entity.getInsAbbrName());
+			nmSb.append(":");
+			String msgNm = nmSb.toString();
+
+			// １：必須入力チェック
+			if(entity.getInsType() != null && !"04".equals(entity.getInsType())
+	        		&& !"05".equals(entity.getInsType()) && !"07".equals(entity.getInsType())) {
+		        if(StringUtils.isEmpty(entity.getNextPharmType())) {
+		        	// 必須項目にデータを入力してください。（施設区分）
+					errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設区分") + "\n";
+					errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextInsRank())) {
+		        	// 必須項目にデータを入力してください。（階級区分）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "階級区分") + "\n";
+		        	errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextRegVisType())) {
+		        	// 必須項目にデータを入力してください。（定訪先区分）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "定訪先区分") + "\n";
+		        	errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextImpHosType())) {
+		        	// 必須項目にデータを入力してください。（重点病院区分）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "重点病院区分") + "\n";
+		        	errFlg = true;
+		        }
+		        if(StringUtils.isEmpty(entity.getNextManageCd())) {
+		        	// 必須項目にデータを入力してください。（経営主体）
+		        	errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "経営主体") + "\n";
+		        	errFlg = true;
+		        }
+	        }
+
+			if(entity.getInsType() != null && ("01".equals(entity.getInsType())
+	        		 || "02".equals(entity.getInsType()))) {
+				if(StringUtils.isEmpty(entity.getNextBedCntBase())) {
+	            	// 必須項目にデータを入力してください。（基準）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "基準") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt04())) {
+	            	// 必須項目にデータを入力してください。（結核）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "結核") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt01())) {
+	            	// 必須項目にデータを入力してください。（一般）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "一般") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt05())) {
+	            	// 必須項目にデータを入力してください。（感染症）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "感染症") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt03())) {
+	            	// 必須項目にデータを入力してください。（精神）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "精神") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt07())) {
+	            	// 必須項目にデータを入力してください。（療養）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "療養") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt02())) {
+	            	// 必須項目にデータを入力してください。（医療療養）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "医療療養") + "\n";
+	    			errFlg = true;
+	            }
+				if(StringUtils.isEmpty(entity.getNextBedCnt06())) {
+	            	// 必須項目にデータを入力してください。（介護療養）
+	    			errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "介護療養") + "\n";
+	    			errFlg = true;
+	            }
+	        }
+
+			// ２：レングスチェック
+	        if(entity.getNextBedCntBase() != null && entity.getNextBedCntBase().length() > 4) {
+	        	// 最大文字数を超えています。（病床（基準））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（基準）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt04() != null && entity.getNextBedCnt04().length() > 4) {
+	        	// 最大文字数を超えています。（病床（結核））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（結核）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt01() != null && entity.getNextBedCnt01().length() > 4) {
+	        	// 最大文字数を超えています。（病床（一般））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（一般）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt05() != null && entity.getNextBedCnt05().length() > 4) {
+	        	// 最大文字数を超えています。（病床（感染症））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（感染症）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt03() != null && entity.getNextBedCnt03().length() > 4) {
+	        	// 最大文字数を超えています。（病床（精神））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（精神）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt07() != null && entity.getNextBedCnt07().length() > 4) {
+	        	// 最大文字数を超えています。（病床（療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt02() != null && entity.getNextBedCnt02().length() > 4) {
+	        	// 最大文字数を超えています。（病床（医療療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedCnt06() != null && entity.getNextBedCnt06().length() > 4) {
+	        	// 最大文字数を超えています。（病床（介護療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（介護療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextBedsTot() != null && entity.getNextBedsTot().length() > 5) {
+	        	// 最大文字数を超えています。（病床（ベッド数計））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（ベッド数計）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getNextMedBedsTot() != null && entity.getNextMedBedsTot().length() > 5) {
+	        	// 最大文字数を超えています。病床（（医療ベッド数計））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療ベッド数計）") + "\n";
+				errFlg = true;
+	        }
+	        if(entity.getReqComment() != null && StringUtils.getByteLength(entity.getReqComment()) > 300) {
+	        	// 最大文字数を超えています。（申請コメント）
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
+				errFlg = true;
+	        }
+
+	        // ３：文字種チェック
+	        if(!StringUtils.isNumeric(entity.getNextBedCntBase())) {
+	        	// 入力文字種が不正です。（病床（基準））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（基準）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt04())) {
+	        	// 入力文字種が不正です。（病床（結核））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（結核）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt01())) {
+	        	// 入力文字種が不正です。（病床（一般））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（一般）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt05())) {
+	        	// 入力文字種が不正です。（病床（感染症））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（感染症）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt03())) {
+	        	// 入力文字種が不正です。（病床（精神））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（精神）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt07())) {
+	        	// 入力文字種が不正です。（病床（療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt02())) {
+	        	// 入力文字種が不正です。（病床（医療療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（医療療養）") + "\n";
+				errFlg = true;
+	        }
+	        if(!StringUtils.isNumeric(entity.getNextBedCnt06())) {
+	        	// 入力文字種が不正です。（病床（介護療養））
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（介護療養）") + "\n";
+				errFlg = true;
+	        }
+
+	        // ７：整合性チェック
+	        // 階級区分と病床数の値が適合しない場合
+			if((!"01".equals(entity.getInsType()) && !"02".equals(entity.getInsType())) || entity.getNextInsRank() == null) {
+
+			} else if(("01".equals(entity.getNextInsRank()) || "02".equals(entity.getNextInsRank()) || "03".equals(entity.getNextInsRank())
+					 || "04".equals(entity.getNextInsRank()) || "05".equals(entity.getNextInsRank()) || "06".equals(entity.getNextInsRank()))
+					 && !chkNumRange(entity.getNextBedsTot(), 0, 9999)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if(("12".equals(entity.getNextInsRank()) || "13".equals(entity.getNextInsRank()) || "15".equals(entity.getNextInsRank()))
+					 && !"0".equals(entity.getNextBedsTot())){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if(("11".equals(entity.getNextInsRank()) || "14".equals(entity.getNextInsRank()))
+					 && !chkNumRange(entity.getNextBedsTot(), 1, 19)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("07".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 100, 9999)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("08".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 200, 9999)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("09".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 20, 99)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("10".equals(entity.getNextInsRank()) && !chkNumRange(entity.getNextBedsTot(), 20, 199)){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			} else if("16".equals(entity.getNextInsRank())
+						&& !("0".equals(StringUtils.nvl(entity.getNextBedCnt01(),"0")) && "0".equals(StringUtils.nvl(entity.getNextBedCnt07(), "0")) && "0".equals(StringUtils.nvl(entity.getNextBedCnt04(),"0"))
+								&& "0".equals(StringUtils.nvl(entity.getNextBedCnt05(),"0")) &&chkNumRange(entity.getNextBedCnt03(), 1, 9999))){
+				// 階級区分の範囲とベッド数計が一致するよう入力して下さい。
+				errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.W023) + "\n";
+				errFlg = true;
+			}
+
+			// 排他チェック
+			TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("selectNF401DateChkData");
+			tRdmReqKnrEntity.setInsNo(entity.getInsNo());
+			List<TRdmReqKnrEntity> tRdmReqKnrChkData = dao.select(tRdmReqKnrEntity);
+
+			if(tRdmReqKnrChkData.size() > 0 && tRdmReqKnrChkData.get(0) != null && tRdmReqKnrChkData.get(0).getUpdShaYmd() != null) {
+				// 現在日付を取得
+				SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
+				String updShaYmd = fmtDate.format(tRdmReqKnrChkData.get(0).getUpdShaYmd());
+
+				if(!updShaYmd.equals(entity.getUpdShaYmd())) {
+					// 既に他のユーザーによってデータが処理されています。
+					errMsg += msgNm + loginInfo.getMsgData(RdmConstantsData.E003) + "\n";
+					errFlg = true;
+				}
+			}
+		}
 
 		// エラー時処理
 		if (errFlg) {
@@ -707,11 +844,9 @@ public class NF403Service extends BaseService {
 
 			// DropDownList作成
 			createCombo(indto);
+
 			return outdto;
 		}
-
-		// 変更有のリストをセット
-		indto.setHcoBlkReqDataList(hcoBlkReqDataList);
 
 		indto.setForward("NF405Init");
     	return outdto;
@@ -764,6 +899,50 @@ public class NF403Service extends BaseService {
         mapUltDif.put("1", "有");
         indto.setUltDifCombo(mapUltDif);
 
+        // 施設区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_PHARM_TYPE);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapPharmType = new LinkedHashMap<String, String>();
+        mapPharmType.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapPharmType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setPharmTypeCombo(mapPharmType);
+
+        // 階級区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_RANK);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapInsRank = new LinkedHashMap<String, String>();
+        mapInsRank.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapInsRank.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setInsRankCombo(mapInsRank);
+
+        // 定訪先区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REG_VIS_TYPE);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapRegVisType = new LinkedHashMap<String, String>();
+        mapRegVisType.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapRegVisType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setRegVisTypeCombo(mapRegVisType);
+
+        // 重点病院区分
+        inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_IMP_HOS_TYPE);
+        outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapImpHosType = new LinkedHashMap<String, String>();
+        mapImpHosType.put("", "--なし--");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	mapImpHosType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        }
+        indto.setImpHosTypeCombo(mapImpHosType);
+
         // 経営主体
  		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
  		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);
@@ -796,4 +975,37 @@ public class NF403Service extends BaseService {
 		}
 		indto.setVacVisitTypeCombo(mapVacVisitType);
     }
+
+    /**
+     * 数値範囲チェック
+     * @return n = "", min <= n <= max ならtrue
+     */
+	public static boolean chkNumRange(String n, int min, int max){
+		if(n == null || "".equals(n)){
+			return true;
+		} else if(!StringUtils.isNumeric(n)){
+			return false;
+		} else if(Integer.parseInt(n) >= min && Integer.parseInt(n) <= max){
+			return true;
+		}
+		return false;
+	}
+
+	/**
+    * NULLの場合変更前値、'Z'の場合はブランクを返却
+    * @param preValue
+    * @param value
+    * @return
+    */
+   public String getReqViewValue(String preValue, String value){
+   	String rtnValue = value;
+
+   	if(StringUtils.isEmpty(value)) {
+   		rtnValue = preValue;
+   	} else if("Z".equals(value)) {
+   		rtnValue = "";
+   	}
+
+   	return rtnValue;
+   }
 }

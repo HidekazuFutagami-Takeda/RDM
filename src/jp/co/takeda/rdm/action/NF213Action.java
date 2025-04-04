@@ -163,9 +163,11 @@ public class NF213Action extends BaseAction<NF213DTO> {
         		// 申請データ（一時保存含む）を参照
         		if("0".equals(tkdTrtKbn)) {
         			dto.setDisplayKbn("2");
-            	} else {
-            		dto.setDisplayKbn("3");
-            	}
+        		} else if("1".equals(tkdTrtKbn)) {
+        			dto.setDisplayKbn("3");
+        		} else {
+        			dto.setDisplayKbn("4");
+        		}
         	} else if("NF315".equals(backScreenId)) {
 				// 一時保存なし申請後に確認画面から遷移
 				dto.setDisplayKbn("9");

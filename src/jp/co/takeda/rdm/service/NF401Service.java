@@ -302,15 +302,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setShisetsuKbn(" ");
         	}
-        	if(entity.getNextPharmType() != null && !entity.getNextPharmType().isEmpty()) {
-        		dataRecord.setNextPharmType(entity.getNextPharmType());
-        	} else {
-        		if(entity.getPharmType() != null && !entity.getPharmType().isEmpty()) {
-            		dataRecord.setNextPharmType(entity.getPharmType());
-            	} else {
-            		dataRecord.setNextPharmType(" ");
-            	}
-        	}
+        	dataRecord.setNextPharmType(getReqViewValue(entity.getPharmType(), entity.getNextPharmType()));
 
         	// 階級区分
         	if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
@@ -318,15 +310,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setInsRank(" ");
         	}
-        	if(entity.getNextInsRank() != null && !entity.getNextInsRank().isEmpty()) {
-        		dataRecord.setNextInsRank(entity.getNextInsRank());
-        	} else {
-        		if(entity.getInsRank() != null && !entity.getInsRank().isEmpty()) {
-            		dataRecord.setNextInsRank(entity.getInsRank());
-            	} else {
-            		dataRecord.setNextInsRank(" ");
-            	}
-        	}
+        	dataRecord.setNextInsRank(getReqViewValue(entity.getInsRank(), entity.getNextInsRank()));
 
         	// 定訪先区分
         	if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
@@ -334,15 +318,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setRegVisType(" ");
         	}
-        	if(entity.getNextRegVisType() != null && !entity.getNextRegVisType().isEmpty()) {
-        		dataRecord.setNextRegVisType(entity.getNextRegVisType());
-        	} else {
-        		if(entity.getRegVisType() != null && !entity.getRegVisType().isEmpty()) {
-            		dataRecord.setNextRegVisType(entity.getRegVisType());
-            	} else {
-            		dataRecord.setNextRegVisType(" ");
-            	}
-        	}
+        	dataRecord.setNextRegVisType(getReqViewValue(entity.getRegVisType(), entity.getNextRegVisType()));
 
         	// 重点病院区分
         	if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
@@ -350,15 +326,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setImpHosType(" ");
         	}
-        	if(entity.getNextImpHosType() != null && !entity.getNextImpHosType().isEmpty()) {
-        		dataRecord.setNextImpHosType(entity.getNextImpHosType());
-        	} else {
-        		if(entity.getImpHosType() != null && !entity.getImpHosType().isEmpty()) {
-            		dataRecord.setNextImpHosType(entity.getImpHosType());
-            	} else {
-            		dataRecord.setNextImpHosType(" ");
-            	}
-        	}
+        	dataRecord.setNextImpHosType(getReqViewValue(entity.getImpHosType(), entity.getNextImpHosType()));
 
         	// 対象区分
         	if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
@@ -366,15 +334,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setHoInsType(" ");
         	}
-        	if(entity.getNextHoInsType() != null && !entity.getNextHoInsType().isEmpty()) {
-        		dataRecord.setNextHoInsType(entity.getNextHoInsType());
-        	} else {
-        		if(entity.getHoInsType() != null && !entity.getHoInsType().isEmpty()) {
-            		dataRecord.setNextHoInsType(entity.getHoInsType());
-            	} else {
-            		dataRecord.setNextHoInsType(" ");
-            	}
-        	}
+        	dataRecord.setNextHoInsType(getReqViewValue(entity.getHoInsType(), entity.getNextHoInsType()));
 
         	// 経営主体
         	if(entity.getManageNm() != null && !entity.getManageNm().isEmpty()) {
@@ -387,15 +347,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setKeieitai(" ");
         	}
-        	if(entity.getNextManageNm() != null && !entity.getNextManageNm().isEmpty()) {
-        		dataRecord.setNextManageNm(entity.getNextManageNm());
-        	} else {
-        		if(entity.getManageNm() != null && !entity.getManageNm().isEmpty()) {
-            		dataRecord.setNextManageNm(entity.getManageNm());
-            	} else {
-            		dataRecord.setNextManageNm(" ");
-            	}
-        	}
+        	dataRecord.setNextManageNm(getReqViewValue(entity.getManageNm(), entity.getNextManageNm()));
 
 
         	// ワクチン対象区分
@@ -404,15 +356,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setVacInsType(" ");
         	}
-        	if(entity.getNextVacInsType() != null && !entity.getNextVacInsType().isEmpty()) {
-        		dataRecord.setNextVacInsType(entity.getNextVacInsType());
-        	} else {
-        		if(entity.getVacInsType() != null && !entity.getVacInsType().isEmpty()) {
-            		dataRecord.setNextVacInsType(entity.getVacInsType());
-            	} else {
-            		dataRecord.setNextVacInsType(" ");
-            	}
-        	}
+        	dataRecord.setNextVacInsType(getReqViewValue(entity.getVacInsType(), entity.getNextVacInsType()));
 
         	// ワクチン定訪先区分
         	if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
@@ -420,15 +364,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setVacVisitType(" ");
         	}
-        	if(entity.getNextVacVisitType() != null && !entity.getNextVacVisitType().isEmpty()) {
-        		dataRecord.setNextVacVisitType(entity.getNextVacVisitType());
-        	} else {
-        		if(entity.getVacVisitType() != null && !entity.getVacVisitType().isEmpty()) {
-            		dataRecord.setNextVacVisitType(entity.getVacVisitType());
-            	} else {
-            		dataRecord.setNextVacVisitType(" ");
-            	}
-        	}
+        	dataRecord.setNextVacVisitType(getReqViewValue(entity.getVacVisitType(), entity.getNextVacVisitType()));
 
         	// 病床数基準
         	if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
@@ -441,15 +377,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCntBase(" ");
         	}
-        	if(entity.getNextBedCntBase() != null && !entity.getNextBedCntBase().isEmpty()) {
-        		dataRecord.setNextBedCntBase(entity.getNextBedCntBase());
-        	} else {
-        		if(entity.getBedCntBase() != null && !entity.getBedCntBase().isEmpty()) {
-            		dataRecord.setNextBedCntBase(entity.getBedCntBase());
-            	} else {
-            		dataRecord.setNextBedCntBase(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCntBase(getReqViewValue(StringUtils.nvl(entity.getBedCntBase(), ""),StringUtils.nvl(entity.getNextBedCntBase(), "")));
 
         	// 結核
         	if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
@@ -462,15 +390,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt04(" ");
         	}
-        	if(entity.getNextBedCnt04() != null && !entity.getNextBedCnt04().isEmpty()) {
-        		dataRecord.setNextBedCnt04(entity.getNextBedCnt04());
-        	} else {
-        		if(entity.getBedCnt04() != null && !entity.getBedCnt04().isEmpty()) {
-            		dataRecord.setNextBedCnt04(entity.getBedCnt04());
-            	} else {
-            		dataRecord.setNextBedCnt04(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCnt04(getReqViewValue(StringUtils.nvl(entity.getBedCnt04(), ""),StringUtils.nvl(entity.getNextBedCnt04(), "")));
 
         	// 一般
         	if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
@@ -483,15 +403,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt01(" ");
         	}
-        	if(entity.getNextBedCnt01() != null && !entity.getNextBedCnt01().isEmpty()) {
-        		dataRecord.setNextBedCnt01(entity.getNextBedCnt01());
-        	} else {
-        		if(entity.getBedCnt01() != null && !entity.getBedCnt01().isEmpty()) {
-            		dataRecord.setNextBedCnt01(entity.getBedCnt01());
-            	} else {
-            		dataRecord.setNextBedCnt01(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCnt01(getReqViewValue(StringUtils.nvl(entity.getBedCnt01(), ""),StringUtils.nvl(entity.getNextBedCnt01(), "")));
 
         	// 感染症
         	if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
@@ -504,15 +416,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt05(" ");
         	}
-        	if(entity.getNextBedCnt05() != null && !entity.getNextBedCnt05().isEmpty()) {
-        		dataRecord.setNextBedCnt05(entity.getNextBedCnt05());
-        	} else {
-        		if(entity.getBedCnt05() != null && !entity.getBedCnt05().isEmpty()) {
-            		dataRecord.setNextBedCnt05(entity.getBedCnt05());
-            	} else {
-            		dataRecord.setNextBedCnt05(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCnt05(getReqViewValue(StringUtils.nvl(entity.getBedCnt05(), ""),StringUtils.nvl(entity.getNextBedCnt05(), "")));
 
         	// 精神
         	if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
@@ -525,15 +429,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt03(" ");
         	}
-        	if(entity.getNextBedCnt03() != null && !entity.getNextBedCnt03().isEmpty()) {
-        		dataRecord.setNextBedCnt03(entity.getNextBedCnt03());
-        	} else {
-        		if(entity.getBedCnt03() != null && !entity.getBedCnt03().isEmpty()) {
-            		dataRecord.setNextBedCnt03(entity.getBedCnt03());
-            	} else {
-            		dataRecord.setNextBedCnt03(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCnt03(getReqViewValue(StringUtils.nvl(entity.getBedCnt03(), ""),StringUtils.nvl(entity.getNextBedCnt03(), "")));
 
         	// 療養
         	if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
@@ -546,15 +442,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltBedCnt07(" ");
         	}
-        	if(entity.getNextBedCnt07() != null && !entity.getNextBedCnt07().isEmpty()) {
-        		dataRecord.setNextBedCnt07(entity.getNextBedCnt07());
-        	} else {
-        		if(entity.getBedCnt07() != null && !entity.getBedCnt07().isEmpty()) {
-            		dataRecord.setNextBedCnt07(entity.getBedCnt07());
-            	} else {
-            		dataRecord.setNextBedCnt07(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCnt07(getReqViewValue(StringUtils.nvl(entity.getBedCnt07(), ""),StringUtils.nvl(entity.getNextBedCnt07(), "")));
 
         	// 医療療養
         	if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
@@ -562,15 +450,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setBedCnt02(" ");
         	}
-        	if(entity.getNextBedCnt02() != null && !entity.getNextBedCnt02().isEmpty()) {
-        		dataRecord.setNextBedCnt02(entity.getNextBedCnt02());
-        	} else {
-        		if(entity.getBedCnt02() != null && !entity.getBedCnt02().isEmpty()) {
-            		dataRecord.setNextBedCnt02(entity.getBedCnt02());
-            	} else {
-            		dataRecord.setNextBedCnt02(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCnt02(getReqViewValue(StringUtils.nvl(entity.getBedCnt02(), ""),StringUtils.nvl(entity.getNextBedCnt02(), "")));
 
         	// 介護療養
         	if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
@@ -578,15 +458,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setBedCnt06(" ");
         	}
-        	if(entity.getNextBedCnt06() != null && !entity.getNextBedCnt06().isEmpty()) {
-        		dataRecord.setNextBedCnt06(entity.getNextBedCnt06());
-        	} else {
-        		if(entity.getBedCnt06() != null && !entity.getBedCnt06().isEmpty()) {
-            		dataRecord.setNextBedCnt06(entity.getBedCnt06());
-            	} else {
-            		dataRecord.setNextBedCnt06(" ");
-            	}
-        	}
+        	dataRecord.setNextBedCnt06(getReqViewValue(StringUtils.nvl(entity.getBedCnt06(), ""),StringUtils.nvl(entity.getNextBedCnt06(), "")));
 
         	// ベッド数計
         	if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
@@ -599,15 +471,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltBedsTot(" ");
         	}
-        	if(entity.getNextBedsTot() != null && !entity.getNextBedsTot().isEmpty()) {
-        		dataRecord.setNextBedsTot(entity.getNextBedsTot());
-        	} else {
-        		if(entity.getBedsTot() != null && !entity.getBedsTot().isEmpty()) {
-            		dataRecord.setNextBedsTot(entity.getBedsTot());
-            	} else {
-            		dataRecord.setNextBedsTot(" ");
-            	}
-        	}
+        	dataRecord.setNextBedsTot(getReqViewValue(StringUtils.nvl(entity.getBedsTot(), ""),StringUtils.nvl(entity.getNextBedsTot(), "")));
 
         	// 医療ベッド数計
         	if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
@@ -620,15 +484,7 @@ public class NF401Service extends BaseService {
         	} else {
         		dataRecord.setUltMedBedsTot(" ");
         	}
-        	if(entity.getNextMedBedsTot() != null && !entity.getNextMedBedsTot().isEmpty()) {
-        		dataRecord.setNextMedBedsTot(entity.getNextMedBedsTot());
-        	} else {
-        		if(entity.getMedBedsTot() != null && !entity.getMedBedsTot().isEmpty()) {
-            		dataRecord.setNextMedBedsTot(entity.getMedBedsTot());
-            	} else {
-            		dataRecord.setNextMedBedsTot(" ");
-            	}
-        	}
+        	dataRecord.setNextMedBedsTot(getReqViewValue(StringUtils.nvl(entity.getMedBedsTot(), ""),StringUtils.nvl(entity.getNextMedBedsTot(), "")));
 
         	// 未審査申請数
         	if(entity.getNoShnCnt() != null) {
@@ -844,5 +700,27 @@ public class NF401Service extends BaseService {
         	mapHoInsType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
         }
         indto.setHoInsTypeCombo(mapHoInsType);
+    }
+
+    /**
+     * NULLの場合変更前値、'Z'の場合はブランクを返却
+     * @param preValue
+     * @param value
+     * @return
+     */
+    public String getReqViewValue(String preValue, String value){
+    	String rtnValue = value;
+
+    	if(StringUtils.isEmpty(value)) {
+    		rtnValue = preValue;
+    	} else if("Z".equals(value)) {
+    		rtnValue = "";
+    	}
+
+    	if(StringUtils.isEmpty(rtnValue)) {
+    		rtnValue = " ";
+    	}
+
+    	return rtnValue;
     }
 }

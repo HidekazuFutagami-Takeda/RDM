@@ -302,23 +302,15 @@
       <tr>
         <td>
 
-		<!-- エラー表示部  開始 -->
-		<center>
-		<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-			<tbody>
-				<s:if test="msgStr != null">
-					<tr>
-						<td style="height: 80px; text-align: center;">
-							<nobr style="color: red; font-size: 15px;">
-								<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-							</nobr>
-						</td>
-					</tr>
-				</s:if>
-			</tbody>
-		</table>
-		<center/>
-		<!-- エラー表示部  終了 -->
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 
 		<%-- 検索部 開始 --%>
      	<table class="pupList" style="border-collapse: separate; margin-top:3pt; background-color: white;">
@@ -593,7 +585,7 @@
 
          <div style="display: flex; justify-content: space-between;">
        		<div style="margin-top: 3%;margin-left: 10%;">
-       			<input type="button" value="戻る" onclick="" />
+       			<input type="button" value="戻る" onclick="window.close();" />
        		</div>
 
        		<div style="margin-top: 3%;margin-right: 10%;">

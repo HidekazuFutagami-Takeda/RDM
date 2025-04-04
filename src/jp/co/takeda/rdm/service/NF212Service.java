@@ -9,7 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.inject.Named;
@@ -24,10 +23,8 @@ import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.LnkTrtData;
 import jp.co.takeda.rdm.dto.NF212DTO;
-import jp.co.takeda.rdm.entity.join.MRdmHcoMstEntity;
 import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.SelectLnkTrtDataEntity;
-import jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF212MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcoLnkNxtReqEntity;
@@ -71,6 +68,23 @@ public class NF212Service extends BaseService {
         // START UOC
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
         List<LnkTrtData> lnkTrtDataList = new ArrayList<LnkTrtData>();
+
+        if ("4".equals(indto.getDisplayKbn())) {
+        	// 申請一覧から遷移時、武田紐か領域別紐かを判別
+        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqEntity = new TRdmHcoLnkNxtReqEntity();
+        	tRdmHcoLnkNxtReqEntity.setReqId(indto.getReqId());
+        	TRdmHcoLnkNxtReqEntity tRdmHcoLnkNxtReqData = dao.selectByPK(tRdmHcoLnkNxtReqEntity);
+
+        	if(tRdmHcoLnkNxtReqData == null) {
+        		// 領域別紐
+        		indto.setDisplayKbn("3");
+        		indto.setTkdTrtKbn("1");
+        	} else {
+        		// 武田紐
+        		indto.setDisplayKbn("2");
+        		indto.setTkdTrtKbn("0");
+        	}
+        }
 
         if ("0".equals(indto.getDisplayKbn())) {
     		// 施設固定コード、領域コード、品目グループコードからデータ取得

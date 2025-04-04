@@ -169,7 +169,8 @@ public class NF403Action extends BaseAction<NF403DTO> {
      */
     protected void searchSetup() throws Exception {
         // START UOC
-
+    	String title = "NF403_施設来期項目一括申請";
+    	dto.setTitle(title);
         // END UOC
     }
 
@@ -178,6 +179,43 @@ public class NF403Action extends BaseAction<NF403DTO> {
      * @customizable
      */
     protected String searchNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        // 検索条件をセッションに格納する（ページャ押下時に使用）
+    	sessionMap.put(AppConstant.SESKEY_NF403_SEARCHKEY, outdto);
+        // END UOC
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String request() throws Exception {
+    	BaseDTO outdto = dto;
+    	requestSetup();
+        // F層呼び出し
+    	outdto = NF403Service.request(dto);
+
+        return requestNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void requestSetup() throws Exception {
+        // START UOC
+
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String requestNext(BaseDTO outdto) throws Exception {
         // START UOC
         // 検索条件をセッションに格納する（ページャ押下時に使用）
     	sessionMap.put(AppConstant.SESKEY_NF403_SEARCHKEY, outdto);

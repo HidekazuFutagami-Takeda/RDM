@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
  * DTOクラス
  * @generated
  */
-public class JgiData implements Serializable {
+public class JgiJgiData implements Serializable {
 
     /**
      * シリアルバージョンUID
@@ -133,7 +133,7 @@ public class JgiData implements Serializable {
      * コンストラクタ
      * @customizable
      */
-    public JgiData() {
+    public JgiJgiData() {
         // START UOC
 
         // END UOC

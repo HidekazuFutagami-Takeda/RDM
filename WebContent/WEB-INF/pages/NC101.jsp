@@ -105,7 +105,7 @@ function backBtn(){
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
   <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
-
+<br>
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>

@@ -322,7 +322,7 @@ End Function
       <tr>
         <%-- タイトル画像とホームへのリンク 開始 --%>
         <td align="left" width="5%">
-          <img alt="ホームへ" border="0" src="<%= request.getContextPath() %>/img/HomeNaviLogo.png">
+          <img alt="ホームへ" border="0" height="20px" src="<%= request.getContextPath() %>/img/HomeNaviLogo.png">
         </td>
         <%-- タイトル画像とホームへのリンク 終了 --%>
 
@@ -334,7 +334,6 @@ End Function
               <span class="comWelcome" id="Welcome">
                 <s:property value="#session.UserInfoKey.jgiName"/>さん
               </span>
-              <br />
               <font class="comBannerSecondaryText"><s:property value="%{#dateFormat.format(new java.util.Date())}" /></font></td></tr>
             <tr><td align="middle">&nbsp;</td></tr>
           </tbody></table>

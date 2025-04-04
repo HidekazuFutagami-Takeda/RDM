@@ -113,19 +113,15 @@
       <tr>
         <td>
 
-	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-		<tbody>
-		<s:if test="msgStr != null">
-			<tr>
-				<td>
-					<nobr>
-					<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-					</nobr>
-				</td>
-			</tr>
-		</s:if>
-		</tbody>
-	</table>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 
 <table <s:if test='tkdTrtKbn == "0"'>class="comPortalTableBlue"</s:if><s:else>class="comPortalTable"</s:else> align="center" style="width:95%;margin-top:0pt">
   <tbody>

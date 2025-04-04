@@ -23,7 +23,7 @@
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%-- データ更新中メッセージ表示 開始 --%>
-  <table border="0" cellPadding="0" cellSpacing="0" align="center" style="width:100%;margin-top:3pt;">
+  <table border="0" cellPadding="0" cellSpacing="0" align="center" style="width:100%;margin-top:-10pt;">
   <tbody>
   <tr>
     <td align="center">

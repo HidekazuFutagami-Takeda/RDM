@@ -255,6 +255,10 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	 */
 	private String msgData;
 
+	private String serchReqId;
+
+	private String serchReqType;
+
 	    /**
 	 * reqChl
 	 * @generated
@@ -359,6 +363,13 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	 */
 
 	private String inReqId;
+
+	/**
+	 * rEQ_ID
+	 * @generated
+	 */
+
+	private String inReqType;
 
 	/**
 	 * 検索-申請日時
@@ -1685,4 +1696,32 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	public void setPageFlag(String pageFlag) {
 		this.pageFlag = pageFlag;
 	}
+	/**
+	 * NC011DTO.javaserchReqIdを設定
+	 * @return serchReqId
+	 */
+	public String getSerchReqId() {
+		return serchReqId;
+	}
+	/**
+	 * @param serchReqId セットする serchReqId
+	 */
+	public void setSerchReqId(String serchReqId) {
+		this.serchReqId = serchReqId;
+	}
+	/**
+	 * NC011DTO.javaserchReqTypeを設定
+	 * @return serchReqType
+	 */
+	public String getSerchReqType() {
+		return serchReqType;
+	}
+	/**
+	 * @param serchReqType セットする serchReqType
+	 */
+	public void setSerchReqType(String serchReqType) {
+		this.serchReqType = serchReqType;
+	}
+
+
 }

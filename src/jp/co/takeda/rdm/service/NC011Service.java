@@ -371,7 +371,7 @@ public class NC011Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
-        indto.setReqId("");
+        //indto.setReqId("");
         if("NM001".equals(indto.getPreScreenId())) {
         	outdto = search(indto);
         }
@@ -447,8 +447,8 @@ public class NC011Service extends BaseService {
           //申請IDの検索値のセット、setEmptyToNullで空文字をNullに置換している。
           //paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getInReqId()));
           //selectCntSelectReqListEntity.setReqId(StringUtils.setEmptyToNull(indto.getInReqId()));
-          paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
-          selectCntSelectReqListEntity.setReqId(StringUtils.setEmptyToNull(indto.getReqId()));
+          paramEntity.setReqId(StringUtils.setEmptyToNull(indto.getSerchReqId()));
+          selectCntSelectReqListEntity.setReqId(StringUtils.setEmptyToNull(indto.getSerchReqId()));
           if(!loginInfo.getPreScreenId().equals("NM101")) {
           //種別の検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setSbt(StringUtils.setEmptyToNull(indto.getSbt()));
@@ -497,8 +497,8 @@ public class NC011Service extends BaseService {
           selectCntSelectReqListEntity.setADdrCodePref(StringUtils.setEmptyToNull(indto.getADdrCodePref()));
 
           //申請区分の検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setReqType(StringUtils.setEmptyToNull(indto.getReqType()));
-          selectCntSelectReqListEntity.setReqType(StringUtils.setEmptyToNull(indto.getReqType()));
+          paramEntity.setReqType(StringUtils.setEmptyToNull(indto.getSerchReqType()));
+          selectCntSelectReqListEntity.setReqType(StringUtils.setEmptyToNull(indto.getSerchReqType()));
 
           //都道府県の検索値のセット、setEmptyToNullで空文字をNullに置換している。
           paramEntity.setADdrCodePref(StringUtils.setEmptyToNull(indto.getADdrCodePref()));
@@ -1079,7 +1079,9 @@ public class NC011Service extends BaseService {
 	        	if(indto.getReqFlg().equals("2")) {
 	        		indto.setReqFlg("1");
 	        		indto.setReqIdCell(paramEntity.getReqId());
-	        		indto.setReqTypeCell(paramEntity.getReqType());
+	        		//indto.setReqTypeCell(paramEntity.getReqType());
+	        		//indto.setReqIdCell(indto.getReqId());
+	        		//indto.setReqTypeCell(indto.getReqType());
     	        	outdto = indto;
     	        	outdto = search(indto);
     				return outdto;

@@ -190,6 +190,7 @@
     <s:hidden name="functionId" />
 
     <s:hidden id="pageFlag" name="pageFlag" />
+    <input type="hidden" name="serchReqType"           value="" />
 
     <input type="hidden" name="windowName" value="" />
     <input type="hidden" name="openerName" value="" />

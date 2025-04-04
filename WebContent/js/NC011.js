@@ -101,16 +101,6 @@ function rdmCheck(reqId,reqType) {
       document.fm1.functionId.value = 'Check';
       bumonRyakuName = document.fm1.bumonRyakuName.value;
 
-
-
-    //選択された組織情報格納（表示押下前→表示押下後）
-//    setTopChangedSos();
-//
-//    //20150202 HISOL Suzuki 本番課題No.25対応 ADD START
-//    //選択された組織情報格納（ポップアップ用）
-//    setSearchSosCdPop();
-    //20150202 HISOL Suzuki 本番課題No.25対応 ADD END
-
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
     fm1.reqId.value=reqIdcell;
@@ -231,10 +221,10 @@ if(document.fm1.jokenFlg.value == 1){
 	document.fm1.reqSbt.value = "";
 	document.fm1.insSbt.value = "";
 	document.fm1.jobForm.value = "";
-	document.fm1.reqType.value = "";
+	document.fm1.serchReqType.value = "";
 	document.fm1.hoInsType.value = "";
 	document.fm1.reqSts.value = "";
-	document.fm1.reqId.value = "";
+	document.fm1.serchReqId.value = "";
 	document.fm1.reqComment.value = "";
 	document.fm1.aprComment.value = "";
 	document.fm1.reqChl.value = "";

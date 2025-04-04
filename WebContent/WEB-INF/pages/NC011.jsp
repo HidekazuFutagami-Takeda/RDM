@@ -204,6 +204,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <s:hidden name="reqTypeCell" />
 
     <s:hidden id="pageFlag" name="pageFlag" />
+    <input type="hidden" name="reqId"           value="" />
+    <input type="hidden" name="reqType"           value="" />
 
     <input type="hidden" name="windowName" value="" />
     <input type="hidden" name="openerName" value="" />
@@ -394,7 +396,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 						<%-- 申請区分 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請区分</nobr></td>
 	           <td class="comTableSearchItem">
-			<s:select id="jkrSosReqTypeMap" name="reqType" cssStyle="width:80pt" list ="jkrSosReqTypeMap" />
+			<s:select id="jkrSosReqTypeMap" name="serchReqType" cssStyle="width:80pt" list ="jkrSosReqTypeMap" />
 		    </td>
 						<%-- 対象区分 --%>
 			<td class="pupControlItem"><nobr>&nbsp;対象区分</nobr></td>
@@ -413,7 +415,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 							<%-- 申請ID --%>
 				<td class="pupControlItem"><nobr>&nbsp;申請ID</nobr></td>
 					<td>
-						<s:textfield size="20" maxlength="40" name="reqId" STYLE="ime-mode:active" />
+						<s:textfield size="20" maxlength="40" name="serchReqId" STYLE="ime-mode:active" />
 					</td>
 							<%-- 申請コメント --%>
 				<td class="pupControlItem"><nobr>&nbsp;申請コメント</nobr></td>

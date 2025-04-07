@@ -330,7 +330,7 @@
 		          	</s:else>
 		          	</td>
 		          	<td>
-		          		<s:textfield id="KensakuSosName" name="kensakuSosName" size="40" maxlength="40" cssStyle="width: 176px;" readonly="true" />
+		          		<s:textfield id="KensakuSosName" name="kensakuSosName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
 		          		<s:if test='%{loginJokenSetCd == "JKN0850"}'>
 		          			&nbsp;<a href="#" class="comMiniLink" onClick="sosClear();return false;">Clear</a>
 		          		</s:if>
@@ -349,7 +349,7 @@
 					</s:else>
 		         	</td>
 		          	<td>
-		          		<s:textfield id="kensakuJgiName" name="kensakuJgiName"  size="40" maxlength="40" cssStyle="width: 176px;" readonly="true"  />
+		          		<s:textfield id="kensakuJgiName" name="kensakuJgiName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
 		          		<s:if test='%{loginJokenSetCd == "JKN0850"}'>
 			          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
 			          	</s:if>
@@ -364,7 +364,7 @@
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="hekouShozoku(1);" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="kensakuDeptKj" name="kensakuDeptKj" size="40" maxlength="40" cssStyle="width: 176px;" readonly="true" />
+		          		<s:textfield id="kensakuDeptKj" name="kensakuDeptKj" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
 		          		&nbsp;
 		          		<a href="#" class="comMiniLink" onClick="deptClear();return false;">Clear</a>
 		          	</td>
@@ -425,7 +425,7 @@
 				<div style="margin-right: 40px;">
 					<input id="sosButton1" class="comButton" type="button" value="★選択" onClick="hekouShozoku(2);" />
 
-		          		<s:textfield id="deptKjHenkou" name="deptKjHenkou"  size="40" maxlength="40" cssStyle="width: 176px;" readonly="true"  />
+		          		<s:textfield id="deptKjHenkou" name="deptKjHenkou"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
 		          		&nbsp;<a href="" class="comMiniLink" onClick="deptKjHenkouClear();return false;">Clear</a>
 				</div>
 			</div>

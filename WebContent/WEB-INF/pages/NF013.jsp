@@ -626,7 +626,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     		</nobr>
    		</td>
    		<td class="comFormTableItem"><nobr>
-   			<s:textfield name="dupInsNo" readonly="true" />
+   			<s:textfield name="dupInsNo" style="background-color:#D4D0C8" readonly="true" />
    			<s:if test="editApprFlg == 1">
 				<a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.dupInsNo.value='';document.fm1.dupInsAbbrName.value='';document.fm1.dupInsAddr.value='';return false;">Clear</a>
 			</s:if>
@@ -639,7 +639,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
    		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
-				<s:textfield name="dupInsAbbrName" readonly="true" />
+				<s:textfield name="dupInsAbbrName" style="background-color:#D4D0C8" readonly="true" />
     		</nobr>
    		</td>
    		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -650,7 +650,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
    		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	    <td class="comFormTableItem" colspan=2>
 	    	<nobr>
-				<s:textfield name="dupInsAddr" size="40" readonly="true" />
+				<s:textfield name="dupInsAddr" size="40" style="background-color:#D4D0C8" readonly="true" />
     		</nobr>
    		</td>
       </tr>

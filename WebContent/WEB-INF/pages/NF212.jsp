@@ -607,12 +607,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlueNf212Right"</s:if><s:else>class="comFormTableItemNf212Right"</s:else>><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" readonly="true" />
+				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
                 <a class="comMiniLink" href="JavaScript:clearMainIns();">Clear</a>
 			</s:if>
 			<s:else>
 				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" disabled />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" readonly="true" />
+				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
 			</s:else>
 			</nobr>
 		</td>

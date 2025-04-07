@@ -450,7 +450,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>適用日<s:if test='tkdTrtKbn == "1"'><font color="red" size="3">*</font></s:if></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
 	      	<s:if test='tkdTrtKbn == "0"'>
-	      		<s:textfield name="tekiyoYmd" type="date" readonly="true" />
+	      		<s:textfield name="tekiyoYmd" type="date" cssStyle="background-color:#D4D0C8" readonly="true" />
 		    </s:if>
 		    <s:else>
 		    	<s:if test='%{editApprFlg == "1"}'>

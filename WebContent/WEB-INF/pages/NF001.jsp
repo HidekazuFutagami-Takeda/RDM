@@ -447,7 +447,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		   </nobr>
 		</td>
 		<td>
-			<s:textfield size="20" maxlength="40" name="sosNm" readonly="true" />
+			<s:textfield size="20" maxlength="40" name="sosNm" style="background-color:#D4D0C8" readonly="true" />
 			<s:hidden key="sosCd" />
 			<a href ="#" onClick="sosClearBtn();return false;">Clear</a>
 		</td>
@@ -463,7 +463,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		   </nobr>
 		</td>
 		<td>
-			<s:textfield size="20" maxlength="40" name="jgiNm" readonly="true" />
+			<s:textfield size="20" maxlength="40" name="jgiNm" style="background-color:#D4D0C8" readonly="true" />
 			<s:hidden key="jgiNo" />
 			<a href ="#" onClick="tantoClearBtn();return false;">Clear</a>
 		</td>

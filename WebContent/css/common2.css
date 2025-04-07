@@ -745,6 +745,12 @@ INPUT.comTableInputYellow
 {
   background-color: lemonchiffon;
 }
+INPUT[type="text"]:read-only,
+INPUT[type="date"]:read-only,
+TEXTAREA:read-only
+{
+  background-color: #a1a4ac;
+}
 SELECT.comTableSelectYellow
 {
   background-color: lemonchiffon;

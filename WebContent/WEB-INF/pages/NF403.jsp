@@ -272,6 +272,7 @@
  	function reqBtn(){
 		document.fm1.screenId.value="NF403";
 		document.fm1.functionId.value="Request";
+		document.fm1.target = "";
 
 		var i = 0;
     	var pharmType = "hcoBlkReqDataList["+i+"].nextPharmType";
@@ -1489,7 +1490,7 @@
 		   </nobr>
 		</td>
 		<td>
-			<s:textfield size="20" maxlength="40" name="sosNm" style="background-color:#D4D0C8" readonly="true" />
+			<s:textfield size="20" maxlength="40" name="sosNm" readonly="true" />
 			<s:hidden key="sosCd" />
 			<a href ="#" onClick="sosClearBtn();return false;">Clear</a>
 		</td>
@@ -1505,7 +1506,7 @@
 		   </nobr>
 		</td>
 		<td>
-			<s:textfield size="20" maxlength="40" name="jgiNm" style="background-color:#D4D0C8" readonly="true" />
+			<s:textfield size="20" maxlength="40" name="jgiNm" readonly="true" />
 			<s:hidden key="jgiNo" />
 			<a href ="#" onClick="tantoClearBtn();return false;">Clear</a>
 		</td>
@@ -1519,7 +1520,7 @@
 		   </nobr>
 		</td>
 		<td>
-			<s:textfield size="20" maxlength="40" name="insNm" style="background-color:#D4D0C8" readonly="true" />
+			<s:textfield size="20" maxlength="40" name="insNm" readonly="true" />
 			<a href ="#" onClick="insClearBtn();return false;">Clear</a>
 		</td>
 		<td class="pupControlItem"><nobr>&nbsp;</nobr></td>

@@ -810,6 +810,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
        		manageCd = "";
        		setHoInsType();
 
+       		// 担当者選択
+      		if(insType == "09"){
+      			document.getElementById("trtButton").disabled = true;
+      		} else {
+      			document.getElementById("trtButton").disabled = false;
+      		}
+
     	} else if(changeItem == "2"){
     		// 施設区分を変更
     		if(insType == "01" && pharmType == "01"){
@@ -982,6 +989,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
   		// 入所定員情報
   		if(insType != "06" && insType != "07"){
   			document.getElementById("entcapaNumTr").style.visibility = "collapse";
+  		}
+
+  		// 担当者選択
+  		if(insType == "09"){
+			document.getElementById("trtButton").disabled = true;
   		}
 	}
 
@@ -1300,12 +1312,22 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	mainInsView();
     	vacView();
     	trtView();
+    	changeUrl();
 
     	// 編集不可設定
 		onLoadEditSet();
     	// 対象区分表示
     	document.fm1.hoInsTypeView.value = document.fm1.hoInsType.options[document.fm1.hoInsType.selectedIndex].textContent;
 
+    }
+
+    // url編集時
+    function changeUrl(){
+  		if(document.getElementById("insUrl").value.length == 0){
+			document.getElementById("urlButton").disabled = true;
+  		} else {
+  			document.getElementById("urlButton").disabled = false;
+  		}
     }
 
     function onLoadEditSet(){
@@ -2345,12 +2367,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    <td class="comFormTableItem">
 	    	<nobr>
 	    		<s:if test='%{editApprFlg == "1"}'>
-		    		<s:textarea name="insUrl" maxlength="150" style="resize:none" />
+		    		<s:textarea id="insUrl" name="insUrl" maxlength="150" style="resize:none" onchange="changeUrl();" />
 		    	</s:if>
 		    	<s:else>
-		    		<s:textarea name="insUrl" maxlength="150" readonly="true" style="resize:none" />
+		    		<s:textarea id="insUrl" name="insUrl" maxlength="150" readonly="true" style="resize:none" />
 		    	</s:else>
-	    		<input class="comButton" type="button"name="button2" value="表示" onClick="JavaScript:window.open(document.fm1.insUrl.value, '_blank');return false;" />
+	    		<input class="comButton" type="button" id="urlButton" name="button2" value="表示" onClick="JavaScript:window.open(document.fm1.insUrl.value, '_blank');return false;" />
     		</nobr>
    		</td>
    		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
@@ -2546,10 +2568,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    	<nobr>
 	    		<s:select id="trtCd" name="trtCd" cssStyle="width:80pt" list ="trtCdCombo"/>
 	    		<s:if test='%{editApprFlg == "1"}'>
-		    		<input class="comButton" type="button"name="button2" value="担当者検索" onClick="JavaScript:trtPopBtn();return false;" />
+		    		<input class="comButton" type="button" id="trtButton" name="button2" value="担当者検索" onClick="JavaScript:trtPopBtn();return false;" />
 	    		</s:if>
 	    		<s:else>
-	    			<input class="comButton" type="button"name="button2" value="担当者検索" onClick="JavaScript:trtPopBtn();return false;" disabled />
+	    			<input class="comButton" type="button"　id="trtButton" name="button2" value="担当者検索" onClick="JavaScript:trtPopBtn();return false;" disabled />
 	    		</s:else>
     		</nobr>
    		　　</td>

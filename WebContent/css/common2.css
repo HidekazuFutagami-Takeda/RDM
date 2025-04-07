@@ -703,6 +703,11 @@ INPUT
   font-family: "Meiryo UI";
   font-size: 8pt;
 }
+TEXTAREA
+{
+  font-family: "Meiryo UI";
+  font-size: 8pt;
+}
 SELECT
 {
   font-family: "Meiryo UI";

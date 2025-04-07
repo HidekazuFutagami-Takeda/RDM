@@ -2050,7 +2050,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012" colSpan="2">
 	   		<nobr>
 	   		<s:label key="preInsUrl" />
-	   		<input class="comButton" type="button"name="button2" value="表示" onClick="JavaScript:window.open(document.fm1.preInsUrl.value, '_blank');return false;" />
+	   		<s:if test='%{preInsUrl == null || preInsUrl == ""}'>
+		   		<input class="comButton" type="button"name="button2" value="表示" onClick="" disabled />
+		   	</s:if>
+		   	<s:else>
+		   		<input class="comButton" type="button"name="button2" value="表示" onClick="JavaScript:window.open(document.fm1.preInsUrl.value, '_blank');return false;" />
+		   	</s:else>
 	   		</nobr>
 	   	</td>
 	</tr>

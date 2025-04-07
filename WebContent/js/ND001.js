@@ -16,6 +16,9 @@ var gCseViewWin = null;        // 検索条件 施設POPUP用
  */
 var ND001_SCREEN_ID		= "ND001";
 
+var tmpCallback = null;
+var tmpTarget = null;
+
 //戻るボタン
 function backBtn(){
 		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
@@ -183,6 +186,9 @@ function tantoPopBtn(){
 		window.open("","gCtaViewWin",tantoSubScreenSize);
 		document.fm1.screenId.value = "NC202";
 		document.fm1.functionId.value="Init";
+		if(tmpTarget == null){
+			tmpTarget = document.fm1.target;
+		}
 		document.fm1.target="gCtaViewWin";
 
 		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
@@ -203,6 +209,9 @@ function soshikiPopBtn(){
 	window.open("","gCsoViewWin",tantoSubScreenSize);
 	document.fm1.screenId.value = "NC201";
 	document.fm1.functionId.value="Init";
+	if(tmpTarget == null){
+		tmpTarget = document.fm1.target;
+	}
 	document.fm1.target="gCsoViewWin";
 
 	document.fm1.bumonRankPop.value="1";
@@ -225,6 +234,7 @@ function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
 		document.fm1.jgiName.value = jgiName;
 		document.fm1.brCode.value = brCode;
 		document.fm1.distCode.value = distCode;
+		document.fm1.target = tmpTarget;
 }
 
 // 組織検索ポップアップから値受け取り
@@ -238,6 +248,7 @@ function callBackSoshikiPop(bumonRank, sosCd, bumonSeiName, brCode, distCode, up
 		document.fm1.upBumonRank.value  = upBumonRank;
 		document.fm1.upBrCode.value     = upBrCode;
 		document.fm1.upDistCode.value   = upDistCode;
+		document.fm1.target = tmpTarget;
 }
 
 /**
@@ -310,7 +321,11 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
  */
 function nd001Search() {
 
-
+    //現在ページ番号変更（遷移）
+    document.fm1.pageCntCur.value = 1;
+	if(tmpCallback != null){
+		document.fm1.target = tmpTarget;
+	}
   // 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);
 }
@@ -327,6 +342,9 @@ function pltPage( pageCntCur ){
   document.fm1.pageCntCur.value = pageCntCur;
   document.fm1.screenId.value = "ND001";
   document.fm1.functionId.value = 'Page';
+	if(tmpCallback != null){
+		document.fm1.target = tmpTarget;
+	}
 	// 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);
 }
@@ -345,6 +363,9 @@ function nd001Sort( sortCondition ){
   document.fm1.sortCondition.value = sortCondition;
   document.fm1.screenId.value = "ND001";
   document.fm1.functionId.value = 'Sort';
+	if(tmpCallback != null){
+		document.fm1.target = tmpTarget;
+	}
 
   // 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);

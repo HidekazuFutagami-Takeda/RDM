@@ -375,8 +375,8 @@ function cdrUnLoad(){
  */
 function cdrSearch(){
 
-	//ボタン２度押し対策をなるべく早くやる(実際のSubmitのときではなく)
-	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
+//	//ボタン２度押し対策をなるべく早くやる(実際のSubmitのときではなく)
+//	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
 
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 1;

@@ -26,7 +26,7 @@
        <!-- 改ページ -->
         <table width="80%" >
             <tbody>
-            <tr align="center">
+            <tr align="right">
                 <td>
                   <!-- 前頁リンク -->
                   <s:if test="pageCntCur > 1">

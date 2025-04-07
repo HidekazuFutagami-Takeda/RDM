@@ -471,7 +471,7 @@ TD.comTableItemNF001				/* テーブル形式の各項目 */
   border-right-width : 1px;
   border-bottom-width : 1px;
   font-size   : 8pt;
-  height : 30px;
+  height : 15px;
 }
 
 TD.comTableTitle			/* テーブル形式のタイトル項目 */

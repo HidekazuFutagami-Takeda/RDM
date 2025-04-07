@@ -600,7 +600,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <!-- なにも表示しない -->
       </s:if>
    <s:else>
-    <div style="max-height:270px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+    <div style="max-height:330px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 <table>
 	<tr>
 	    <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
@@ -608,26 +608,26 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<%-- ヘッダー行 --%>
 	<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
 		<td style="background-color:#FFFFFF; width:100px;" >&nbsp;</td>
-		<td class="comTableTitleNF001W" style="width:130px">施設略式漢字名
+		<td class="comTableTitleNF001W" style="width:150px">施設略式漢字名
 			 <span style="font-size: 1pt;"> </span>
 		     <a class="<%=insAbbrNameAscClass %>" href="" onclick="sortBtn(2);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
 		     <a class="<%=insAbbrNameDescClass %>" href="" onclick="sortBtn(3);return false;">▼</a>
 		</td>
-		<td class="comTableTitleNF001W" style="width:160px;">施設正式漢字名</td>
+		<td class="comTableTitleNF001W" style="width:240px;">施設正式漢字名</td>
 		<td class="comTableTitleNF001W" style="width:80px;">施設固定C
 			 <span style="font-size: 1pt;"> </span>
 		     <a class="<%=insNoAscClass %>" href="" onclick="sortBtn(0);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
 		     <a class="<%=insNoDescClass %>" href="" onclick="sortBtn(1);return false;">▼</a>
 		</td>
-		<td class="comTableTitleNF001W" style="width:200px;">施設住所
+		<td class="comTableTitleNF001W" style="width:240px;">施設住所
 			 <span style="font-size: 1pt;"> </span>
 		     <a class="<%=insAddrAscClass %>" href="" onclick="sortBtn(4);return false;">▲</a>
 		     <span style="font-size: 1pt;"> </span>
 		     <a class="<%=insAddrDescClass %>" href="" onclick="sortBtn(5);return false;">▼</a>
 		</td>
-		<td class="comTableTitleNF001W" style="width:150px;">電話番号</td>
+		<td class="comTableTitleNF001W" style="width:80px;">電話番号</td>
 		<td class="comTableTitleNF001W" style="width:90px;">施設種別</td>
 		<td class="comTableTitleNF001W" style="width:90px;">経営主体</td>
 		<td class="comTableTitleNF001W" style="width:70px;">ベッド数</td>
@@ -657,7 +657,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
     <%-- 内容 --%>
 
 	<s:iterator value="hcoSearchDataList" status="status" var="rowBean">
-		<tr style="min-height:30px;">
+		<tr style="height:10px;">
 			<td class="comTableItem" rowspan=2>
 				<table>
 				<%-- アクションアイコン --%>
@@ -724,24 +724,24 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	            </tr>
 	            </table>
 			</td>
-	        <td class="comTableItem" style="height:30px;"><s:label key="hcoSearchDataList[%{#status.index}].insAbbrName" /></td>
-	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].insFormalName" /></td>
-	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].insNo" /></td>
-	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].insAddr" /></td>
-	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].insPhone1" /></td>
-	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].insType" /></td>
-	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].keieitaiKj" /></td>
-	        <td class="comTableItem"><s:label key="hcoSearchDataList[%{#status.index}].bedsTot" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insAbbrName" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insFormalName" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insNo" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insAddr" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insPhone1" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insType" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].keieitaiKj" /></td>
+	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].bedsTot" /></td>
 		</tr>
 		<tr>
-	        <td class="comTableItemNF001"><s:label key="HcoSearchDataList[%{#status.index}].shisetsuNmRyaku" /></td>
-	        <td class="comTableItemNF001"><s:label key="hcoSearchDataList[%{#status.index}].shisetsuNm" /></td>
-	        <td class="comTableItemNF001"><s:label key="hcoSearchDataList[%{#status.index}].dcfShisetsuCd" /></td>
-	        <td class="comTableItemNF001"><s:label key="hcoSearchDataList[%{#status.index}].address" /></td>
-	        <td class="comTableItemNF001"><s:label key="hcoSearchDataList[%{#status.index}].shisetsuTel" /></td>
-	        <td class="comTableItemNF001"><s:label key="hcoSearchDataList[%{#status.index}].ultPharmType" /></td>
-	        <td class="comTableItemNF001"><s:label key="hcoSearchDataList[%{#status.index}].ultKeieitaiKj" /></td>
-	        <td class="comTableItemNF001"><s:label key="hcoSearchDataList[%{#status.index}].byoshoSu" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="HcoSearchDataList[%{#status.index}].shisetsuNmRyaku" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].shisetsuNm" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].dcfShisetsuCd" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].address" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].shisetsuTel" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].ultPharmType" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].ultKeieitaiKj" /></td>
+	        <td class="comTableItemNF001" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].byoshoSu" /></td>
 		</tr>
 	</s:iterator>
     </table>

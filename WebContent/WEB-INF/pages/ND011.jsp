@@ -449,7 +449,7 @@
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>生年月日</nobr></td>
+	      <td class="comFormTableItem"><nobr>生年月日<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="dobYear" name="dobYear" cssStyle="width:40pt" list ="dobYearCombo"/>年<s:select id="dobMonth" name="dobMonth" cssStyle="width:30pt" list ="dobMonthCombo"/>月<s:select id="dobDay" name="dobDay" cssStyle="width:30pt" list ="dobDayCombo"/>日
@@ -470,7 +470,7 @@
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>出身校</nobr></td>
+	      <td class="comFormTableItem"><nobr>出身校<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="medSchoolCd" name="medSchoolCd" cssStyle="width:100pt" list ="medSchoolCdCombo"/>
@@ -479,7 +479,7 @@
 		      <s:select id="medSchoolCd" name="medSchoolCd" cssStyle="width:100pt" list ="medSchoolCdCombo" disabled="true"/>
 			</s:else>
 	      </nobr></td>
-	      <td class="comFormTableItem"><nobr>卒年（西暦）</nobr></td>
+	      <td class="comFormTableItem"><nobr>卒年（西暦）<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 		      <s:select id="gradYear" name="gradYear" cssStyle="width:40pt" list ="gradYearCombo"/>年

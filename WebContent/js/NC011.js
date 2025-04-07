@@ -1249,12 +1249,12 @@ function backBtn(){
 			comSubmitForAnyWarp(fm1);
 		}
 	} else if(preScreenId == "NM001"){
-		if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+		//if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 			document.fm1.screenId.value = preScreenId;
 			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
-		}
+		//}
 	}else if(preScreenId == "NM101"){
 		if(window.confirm("画面を閉じます。よろしいですか？（入力内容は破棄されます。）")){
 			window.close();

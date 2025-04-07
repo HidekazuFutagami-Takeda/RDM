@@ -1778,25 +1778,25 @@
 		<tr>
 	        <td class="comTableItem"><s:label key="hcoBlkReqDataList[%{#status.index}].insAbbrName" /></td>
 	        <td class="comTableItem">ULT</td>
-	        <td class="comTableItemNF401"><s:label key="hcoBlkReqDataList[%{#status.index}].shisetsuKbn" /></td>
-	        <td class="comTableItemNF401">&nbsp;</td>
-	        <td class="comTableItemNF401">&nbsp;</td>
-	        <td class="comTableItemNF401">&nbsp;</td>
-	        <td class="comTableItemNF401">&nbsp;</td>
-	        <td class="comTableItemNF401"><s:label key="hcoBlkReqDataList[%{#status.index}].keieitai" /></td>
-	        <td class="comTableItemNF401">&nbsp;</td>
-	        <td class="comTableItemNF401">&nbsp;</td>
+	        <td class="comTableItemUlt"><s:label key="hcoBlkReqDataList[%{#status.index}].shisetsuKbn" /></td>
+	        <td class="comTableItemUlt">&nbsp;</td>
+	        <td class="comTableItemUlt">&nbsp;</td>
+	        <td class="comTableItemUlt">&nbsp;</td>
+	        <td class="comTableItemUlt">&nbsp;</td>
+	        <td class="comTableItemUlt"><s:label key="hcoBlkReqDataList[%{#status.index}].keieitai" /></td>
+	        <td class="comTableItemUlt">&nbsp;</td>
+	        <td class="comTableItemUlt">&nbsp;</td>
 
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCntBase" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt04" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt01" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt05" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt03" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt07" /></td>
-	        <td class="comTableItemNF401" style="text-align:right">&nbsp;</td>
-	        <td class="comTableItemNF401" style="text-align:right">&nbsp;</td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedsTot" /></td>
-	        <td class="comTableItemNF401" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultMedBedsTot" /></td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCntBase" /></td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt04" /></td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt01" /></td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt05" /></td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt03" /></td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedCnt07" /></td>
+	        <td class="comTableItemUlt" style="text-align:right">&nbsp;</td>
+	        <td class="comTableItemUlt" style="text-align:right">&nbsp;</td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultBedsTot" /></td>
+	        <td class="comTableItemUlt" style="text-align:right"><s:label key="hcoBlkReqDataList[%{#status.index}].ultMedBedsTot" /></td>
 		</tr>
 		<tr style="min-height:30px;">
 	        <td class="comTableItem">

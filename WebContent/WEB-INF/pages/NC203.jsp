@@ -438,7 +438,7 @@ if (stack.peek() instanceof NC203DTO) {
 				</tr>
 				<tr style="position: sticky; top:20; left:0;">
 					<td class="actionTh" style="width:8pt;"><nobr>選択</nobr></td>
-					<td class="comTableTitle" style="width:105pt;"><nobr>ULT施設略名
+					<td class="comTableTitleUlt" style="width:105pt;"><nobr>ULT施設略名
 					<s:if test=' !(insData == null || insData.size() <= 0)'>
 	                       <span style="font-size: 1pt;"> </span>
 	                       <a class="<%=ultAbbrAscClass %>" href="" onclick="jimSort(6);return false;">▲</a>
@@ -446,10 +446,10 @@ if (stack.peek() instanceof NC203DTO) {
 	                       <a class="<%=ultAbbrDescClass %>" href="" onclick="jimSort(7);return false;">▼</a>
 	                </s:if>
 	                </nobr></td>
-	                <td class="comTableTitle" style="width:200pt;"><nobr>ULT施設名</nobr></td>
+	                <td class="comTableTitleUlt" style="width:200pt;"><nobr>ULT施設名</nobr></td>
 
-	                <td class="comTableTitle" style="width:50pt;"><nobr>ULTコード</nobr></td>
-	                <td class="comTableTitle" style="width:250pt;"><nobr>ULT住所
+	                <td class="comTableTitleUlt" style="width:50pt;"><nobr>ULTコード</nobr></td>
+	                <td class="comTableTitleUlt" style="width:250pt;"><nobr>ULT住所
 					<s:if test=' !(insData == null || insData.size() <= 0)'>
 	                       <span style="font-size: 1pt;"> </span>
 	                       <a class="<%=ultAdrsAscClass %>" href="" onclick="jimSort(8);return false;">▲</a>
@@ -457,13 +457,13 @@ if (stack.peek() instanceof NC203DTO) {
 	                       <a class="<%=ultAdrsDescClass %>" href="" onclick="jimSort(9);return false;">▼</a>
 	                </s:if>
 	                </nobr></td>
-	                <td class="comTableTitle" style="width:50pt;"><nobr>ULT電話番号</nobr></td>
+	                <td class="comTableTitleUlt" style="width:50pt;"><nobr>ULT電話番号</nobr></td>
 
-	                <td class="comTableTitle" style="width:50pt;"><nobr>ULT施設区分</nobr></td>
+	                <td class="comTableTitleUlt" style="width:50pt;"><nobr>ULT施設区分</nobr></td>
 
-	                <td class="comTableTitle" style="width:50pt;"><nobr>ULT経営主体</nobr></td>
+	                <td class="comTableTitleUlt" style="width:50pt;"><nobr>ULT経営主体</nobr></td>
 
-	                <td class="comTableTitle" style="width:5pt;"><nobr>ULTベッド数</nobr></td>
+	                <td class="comTableTitleUlt" style="width:5pt;"><nobr>ULTベッド数</nobr></td>
 				</tr>
 				<s:iterator value="insData" status="status" var="rowBean">
 					<s:hidden name="insData[%{#status.index}].insSbt" />
@@ -496,14 +496,14 @@ if (stack.peek() instanceof NC203DTO) {
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].bedsTot" /></td>
 				</tr>
 				<tr>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuNmRyaku" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuNm" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].dcfShisetsuCd" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff" style="width:500pt"><s:label key="insData[%{#status.index}].address" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuTel" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].shisetsuKbnNm" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].keieitaiNm" /></td>
-					<td class="comTableItem" id="left" style="background-color:#e0ffff"><s:label key="insData[%{#status.index}].byoshoSu" /></td>
+					<td class="comTableItemUlt" id="left"><s:label key="insData[%{#status.index}].shisetsuNmRyaku" /></td>
+					<td class="comTableItemUlt" id="left"><s:label key="insData[%{#status.index}].shisetsuNm" /></td>
+					<td class="comTableItemUlt" id="left"><s:label key="insData[%{#status.index}].dcfShisetsuCd" /></td>
+					<td class="comTableItemUlt" id="left" style="width:500pt"><s:label key="insData[%{#status.index}].address" /></td>
+					<td class="comTableItemUlt" id="left"><s:label key="insData[%{#status.index}].shisetsuTel" /></td>
+					<td class="comTableItemUlt" id="left"><s:label key="insData[%{#status.index}].shisetsuKbnNm" /></td>
+					<td class="comTableItemUlt" id="left"><s:label key="insData[%{#status.index}].keieitaiNm" /></td>
+					<td class="comTableItemUlt" id="left"><s:label key="insData[%{#status.index}].byoshoSu" /></td>
 				</tr>
 	            </s:iterator>
 			</s:if>

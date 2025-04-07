@@ -1159,8 +1159,8 @@
  		</if>
  		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
  		<if test="sosCd != null">
- 			<if test="bumonRank == '2'">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
- 			<if test="bumonRank == '3'">AND JGI_A.SOS_CD = #{sosCd}</if>
+ 			<if test="bumonRank == 2">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
+ 			<if test="bumonRank == 3">AND JGI_A.SOS_CD = #{sosCd}</if>
  		</if>
  		<if test="jgiNo != null">
  			AND JGI_A.BR_CODE = #{brCode}
@@ -1433,8 +1433,8 @@
  		</if>
  		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
  		<if test="sosCd != null">
- 			<if test="bumonRank == '2'">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
- 			<if test="bumonRank == '3'">AND JGI_A.SOS_CD = #{sosCd}</if>
+ 			<if test="bumonRank == 2">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
+ 			<if test="bumonRank == 3">AND JGI_A.SOS_CD = #{sosCd}</if>
  		</if>
  		<if test="jgiNo != null">
  			AND JGI_A.BR_CODE = #{brCode}

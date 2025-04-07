@@ -731,10 +731,18 @@ INPUT
   font-family: "Meiryo UI";
   font-size: 8pt;
 }
+INPUT.mediumGray
+{
+	background-color:a1a4ac;
+}
 TEXTAREA
 {
   font-family: "Meiryo UI";
   font-size: 8pt;
+}
+TEXTAREA.mediumGray
+{
+	background-color:a1a4ac;
 }
 SELECT
 {

@@ -1052,14 +1052,23 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			// 病床数非活性
 			if(document.fm1.insType.value == "07"){
 				// 入所定員数表示
-				document.fm1.bedCntBase.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt01.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt02.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt03.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt04.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt05.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt06.style = "background-color:#D4D0C8; text-align:right;";
-				document.fm1.bedCnt07.style = "background-color:#D4D0C8; text-align:right;";
+				document.fm1.bedCntBase.style = "text-align:right;";
+	    		document.fm1.bedCnt01.style = "text-align:right;";
+	    		document.fm1.bedCnt02.style = "text-align:right;";
+	    		document.fm1.bedCnt03.style = "text-align:right;";
+	    		document.fm1.bedCnt04.style = "text-align:right;";
+	    		document.fm1.bedCnt05.style = "text-align:right;";
+	    		document.fm1.bedCnt06.style = "text-align:right;";
+				document.fm1.bedCnt07.style = "text-align:right;";
+
+				document.fm1.bedCntBase.className = "mediumGray";
+	    		document.fm1.bedCnt01.className = "mediumGray";
+	    		document.fm1.bedCnt02.className = "mediumGray";
+	    		document.fm1.bedCnt03.className = "mediumGray";
+	    		document.fm1.bedCnt04.className = "mediumGray";
+	    		document.fm1.bedCnt05.className = "mediumGray";
+	    		document.fm1.bedCnt06.className = "mediumGray";
+				document.fm1.bedCnt07.className = "mediumGray";
 
 				document.getElementById("bedCntHr").style.visibility = "visible";
 				document.getElementById("formTable08").style.visibility = "visible";
@@ -1099,14 +1108,23 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 			} else {
 				// 入所定員数非表示
-				document.fm1.bedCntBase.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt01.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt02.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt03.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt04.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt05.style = "background-color:#D4D0C8; text-align:right;";
-	    		document.fm1.bedCnt06.style = "background-color:#D4D0C8; text-align:right;";
-				document.fm1.bedCnt07.style = "background-color:#D4D0C8; text-align:right;";
+				document.fm1.bedCntBase.style = "text-align:right;";
+	    		document.fm1.bedCnt01.style = "text-align:right;";
+	    		document.fm1.bedCnt02.style = "text-align:right;";
+	    		document.fm1.bedCnt03.style = "text-align:right;";
+	    		document.fm1.bedCnt04.style = "text-align:right;";
+	    		document.fm1.bedCnt05.style = "text-align:right;";
+	    		document.fm1.bedCnt06.style = "text-align:right;";
+				document.fm1.bedCnt07.style = "text-align:right;";
+
+				document.fm1.bedCntBase.className = "mediumGray";
+	    		document.fm1.bedCnt01.className = "mediumGray";
+	    		document.fm1.bedCnt02.className = "mediumGray";
+	    		document.fm1.bedCnt03.className = "mediumGray";
+	    		document.fm1.bedCnt04.className = "mediumGray";
+	    		document.fm1.bedCnt05.className = "mediumGray";
+	    		document.fm1.bedCnt06.className = "mediumGray";
+				document.fm1.bedCnt07.className = "mediumGray";
 
 				document.getElementById("bedCntHr").style.visibility = "visible";
 				document.getElementById("formTable08").style.visibility = "visible";
@@ -1164,6 +1182,15 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    	document.fm1.bedCnt05.style = "text-align:right;";
 	    	document.fm1.bedCnt06.style = "text-align:right;";
 			document.fm1.bedCnt07.style = "text-align:right;";
+
+			document.fm1.bedCntBase.className = "";
+    		document.fm1.bedCnt01.className = "";
+    		document.fm1.bedCnt02.className = "";
+    		document.fm1.bedCnt03.className = "";
+    		document.fm1.bedCnt04.className = "";
+    		document.fm1.bedCnt05.className = "";
+    		document.fm1.bedCnt06.className = "";
+			document.fm1.bedCnt07.className = "";
 
 			document.getElementById("bedCntHr").style.visibility = "visible";
 			document.getElementById("formTable08").style.visibility = "visible";
@@ -2134,7 +2161,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
           </td>
           <td class="comFormTableItem">
           	    <nobr>
-                <s:textfield name="mainInsNm" id="mainInsNm" size="20" maxlength="150" style="background-color:#D4D0C8" readonly="true" />
+                <s:textfield name="mainInsNm" id="mainInsNm" size="20" maxlength="150" cssClass="mediumGray" readonly="true" />
                 <s:hidden name="mainInsCd" id="mainInsCd"/>
                 <a class="comMiniLink" href="#" onClick="JavaScript:document.fm1.mainInsCd.value='';document.fm1.mainInsNm.value='';return false;">Clear</a>
                 </nobr>
@@ -2277,14 +2304,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    <td class="comFormTableItem"><nobr>JIS府県<font color="red" size="3">*</font></nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
-	    		<s:textfield name="addrCodePrefName" size="15" maxlength="15" style="background-color:#D4D0C8" readonly="true" />
+	    		<s:textfield name="addrCodePrefName" size="15" maxlength="15" cssClass="mediumGray" readonly="true" />
 	    		<s:hidden name="addrCodePref" id="addrCodePref"/>
 	    	</nobr>
 	    </td>
 	    <td class="comFormTableItem"><nobr>JIS市区町村<font color="red" size="3">*</font></nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
-	    		<s:textfield name="addrCodeCityName" size="15" style="background-color:#D4D0C8" readonly="true" />
+	    		<s:textfield name="addrCodeCityName" size="15" cssClass="mediumGray" readonly="true" />
 	    		<s:hidden name="addrCodeCity" id="addrCodeCity"/>
 	    	</nobr>
 	    </td>
@@ -2310,7 +2337,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	    <td class="comFormTableItem"><nobr>武田市区郡<font color="red" size="3">*</font></nobr></td>
 	    <td class="comFormTableItem">
 	    	<nobr>
-	    		<s:textfield name="tkCityName" size="15" style="background-color:#D4D0C8" readonly="true" />
+	    		<s:textfield name="tkCityName" size="15" cssClass="mediumGray" readonly="true" />
 	    		<s:hidden name="tkCityCd" id="tkCityCd"/>
 	    	</nobr>
 	    </td>
@@ -2447,8 +2474,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>対象区分</nobr></td>
 	      <td class="comFormTableItem">
 	      	<nobr>
-	      		<s:select id="hoInsType" name="hoInsType" cssStyle="width:120pt; background-color:#D4D0C8" list ="hoInsTypeCombo" hidden="true" />
-	      		<s:textfield id="hoInsTypeView" name="hoInsTypeView" cssStyle="width:120pt; background-color:#D4D0C8" readonly="true" />
+	      		<s:select id="hoInsType" name="hoInsType" cssStyle="width:120pt;" cssClass="mediumGray" list ="hoInsTypeCombo" hidden="true" />
+	      		<s:textfield id="hoInsTypeView" name="hoInsTypeView" cssStyle="width:120pt;" cssClass="mediumGray" readonly="true" />
 	      	</nobr>
 	      </td>
       </tr>
@@ -2516,9 +2543,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       <tr id="bedCntTr05">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>ベッド数計</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="bedsTot" size="4" maxlength="4" style="background-color:#D4D0C8; text-align:right;" readonly="true" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="bedsTot" size="4" maxlength="4" cssClass="mediumGray" style="text-align:right;" readonly="true" /></nobr></td>
 	      <td class="comFormTableItem"><nobr>医療ベッド数計</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield name="medBedsTot" size="4" maxlength="4" style="background-color:#D4D0C8; text-align:right;" readonly="true" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="medBedsTot" size="4" maxlength="4" cssClass="mediumGray" style="text-align:right;" readonly="true" /></nobr></td>
       </tr>
       <tr id="entcapaNumTr">
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

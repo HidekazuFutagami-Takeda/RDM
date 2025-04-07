@@ -586,7 +586,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      		<s:if test='tkdTrtKbn == "0"'>
 	      			<!-- 武田紐固定 -->
 		      		<s:hidden name="trtPrdGrp" />
-					<s:textfield id="trtPrdGrpTkdView" name="trtPrdGrpTkdView" value="武田紐" cssStyle="width:120pt; background-color:#D4D0C8" readonly="true" />
+					<s:textfield id="trtPrdGrpTkdView" name="trtPrdGrpTkdView" value="武田紐" cssStyle="width:120pt;" cssClass="mediumGray" readonly="true" />
 				</s:if>
 				<s:else>
 					<s:select id="trtPrdGrp" name="trtPrdGrp" cssStyle="width:150pt" list ="trtPrdGrpCombo" onchange="JavaScript:clearMainIns(); return false;"/>
@@ -596,7 +596,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>適用日<font color="red" size="3">*</font></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
 	      	<s:if test='tkdTrtKbn == "0"'>
-	      		<s:textfield name="tekiyoYmd" type="date" cssStyle="background-color:#D4D0C8" readonly="true" />
+	      		<s:textfield name="tekiyoYmd" type="date" cssClass="mediumGray" readonly="true" />
 		    </s:if>
 		    <s:else>
 		    	<s:if test='%{editApprFlg == "1"}'>
@@ -616,12 +616,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
+				<s:textfield name="mainInsCd" id="mainInsCd" size="20" cssClass="mediumGray" readonly="true" />
                 <a class="comMiniLink" href="JavaScript:clearMainIns();">Clear</a>
 			</s:if>
 			<s:else>
 				<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:mainInsPopBtn(); return false;" disabled />
-				<s:textfield name="mainInsCd" id="mainInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
+				<s:textfield name="mainInsCd" id="mainInsCd" size="20" cssClass="mediumGray" readonly="true" />
 			</s:else>
 			</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>施設略式漢字名</nobr></td>

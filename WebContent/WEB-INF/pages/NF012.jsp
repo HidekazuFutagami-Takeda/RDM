@@ -1817,19 +1817,19 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
                 <s:else>
                 	<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:ultInsPopBtn(); return false;" disabled />
                 </s:else>
-                <s:textfield name="ultInsCd" id="ultInsCd" size="20" style="background-color:#D4D0C8" readonly="true" />
+                <s:textfield name="ultInsCd" id="ultInsCd" size="20" cssClass="mediumGray" readonly="true" />
             </nobr>
 		</td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ULT施設略名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preShisetsuNmRyaku" /></td>
-		<td class="comFormTableItemNf012"><nobr><s:textfield name="shisetsuNmRyaku" size="30" maxlength="60" style="background-color:#D4D0C8" readonly="true" /></nobr></td>
+		<td class="comFormTableItemNf012"><nobr><s:textfield name="shisetsuNmRyaku" size="30" maxlength="60" cssClass="mediumGray" readonly="true" /></nobr></td>
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ULT施設名</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preShisetsuNm" /></td>
-		<td class="comFormTableItemNf012"><nobr><s:textarea name="shisetsuNm" style="width:220px; height:40px; resize: none; background-color:#D4D0C8" readonly="true" />　</nobr></td>
+		<td class="comFormTableItemNf012"><nobr><s:textarea name="shisetsuNm" style="width:220px; height:40px; resize: none;" cssClass="mediumGray" readonly="true" />　</nobr></td>
 	</tr>
 	</table>
 	<br/>
@@ -1950,7 +1950,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="preAddrCodePrefName" /></td>
 		<td class="comFormTableItemNf012">
 			<nobr>
-                <s:textfield name="addrCodePrefName" id="addrCodePrefName" size="20" style="background-color:#D4D0C8" readonly="true" />
+                <s:textfield name="addrCodePrefName" id="addrCodePrefName" size="20" cssClass="mediumGray" readonly="true" />
                 <s:hidden name="addrCodePref" id="addrCodePref"/>
             </nobr>
 		</td>
@@ -1960,7 +1960,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="preAddrCodeCityName" /></td>
 		<td class="comFormTableItemNf012">
 			<nobr>
-                <s:textfield name="addrCodeCityName" id="addrCodeCityName" size="20" style="background-color:#D4D0C8" readonly="true" />
+                <s:textfield name="addrCodeCityName" id="addrCodeCityName" size="20" cssClass="mediumGray" readonly="true" />
                 <s:hidden name="addrCodeCity" id="addrCodeCity"/>
             </nobr>
 		</td>
@@ -1984,7 +1984,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="preTkCityName" /></td>
 		<td class="comFormTableItemNf012">
 			<nobr>
-                <s:textfield name="tkCityName" id="tkCityName" size="20" style="background-color:#D4D0C8" readonly="true" />
+                <s:textfield name="tkCityName" id="tkCityName" size="20" cssClass="mediumGray" readonly="true" />
                 <s:hidden name="tkCityCd" id="tkCityCd"/>
             </nobr>
 		</td>
@@ -3848,7 +3848,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
       	</s:if>
       	<s:else>
-      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
       	</s:else>
       </tr>
       </s:if>

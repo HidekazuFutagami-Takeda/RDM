@@ -167,12 +167,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			if(document.fm1.bedsTotFlg.value == "1"){
 				document.fm1.nextBedsTot.className = "comTableInputYellow";
 			} else {
-				document.fm1.nextBedsTot.style = "background-color:#D4D0C8; text-align:right;"
+				document.fm1.nextBedsTot.style = "text-align:right;"
+				document.fm1.nextBedsTot.className = "mediumGray";
 			}
 			if(document.fm1.medBedsTotFlg.value == "1"){
 				document.fm1.nextMedBedsTot.className = "comTableInputYellow";
 			} else {
-				document.fm1.nextMedBedsTot.style = "background-color:#D4D0C8; text-align:right;"
+				document.fm1.nextMedBedsTot.style = "text-align:right;"
+				document.fm1.nextMedBedsTot.className = "mediumGray";
 			}
 		}
     }
@@ -1522,7 +1524,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012">&nbsp;</td>
 	   	<td class="comFormTableItemNf012">
 	   		<s:select id="nextHoInsType" name="nextHoInsType" cssStyle="width:120pt" list ="hoInsTypeCombo"  hidden="true"/>
-	   		<s:textfield id="nextHoInsTypeView" name="nextHoInsTypeView" cssStyle="width:120pt; background-color:#D4D0C8" readonly="true" />
+	   		<s:textfield id="nextHoInsTypeView" name="nextHoInsTypeView" cssStyle="width:120pt;" cssClass="mediumGray" readonly="true" />
 	   	</td>
 	</tr>
 	<tr>
@@ -1659,7 +1661,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
       	</s:if>
       	<s:else>
-      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
       	</s:else>
       </tr>
       </s:if>

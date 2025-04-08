@@ -1642,10 +1642,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">
 	      <nobr>
 	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11")}'>
-		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/>
+		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/>
 		  	</s:if>
 		  	<s:else>
-		  		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/>
+		  		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" readonly="true"/>
 		  	</s:else>
 		  </nobr></td>
 		  <td class="comFormTableItem">
@@ -1658,10 +1658,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
       	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && editApprFlg == "1"}'>
-	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td>
       	</s:if>
       	<s:else>
-      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
+      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
       	</s:else>
       </tr>
       </s:if>

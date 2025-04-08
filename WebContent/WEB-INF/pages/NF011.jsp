@@ -2186,20 +2186,20 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">
 	      	<nobr>
 	      		<s:if test='%{editApprFlg == "1"}'>
-			      	<s:textfield name="insAbbrName" size="30" maxlength="60" />
+			      	<s:textfield name="insAbbrName" size="30" maxlength="10" />
 				</s:if>
 				<s:else>
-					<s:textfield name="insAbbrName" size="30" maxlength="60" readonly="true" />
+					<s:textfield name="insAbbrName" size="30" maxlength="10" readonly="true" />
 				</s:else>
 			</nobr>
 		  </td>
 	      <td class="comFormTableItem"><nobr>施設カナ名(半角カナ)<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-				<s:textfield name="insKana" size="30" maxlength="45" />
+				<s:textfield name="insKana" size="30" maxlength="15" />
 			</s:if>
 			<s:else>
-				<s:textfield name="insKana" size="30" maxlength="45" readonly="true" />
+				<s:textfield name="insKana" size="30" maxlength="15" readonly="true" />
 			</s:else>
 			</nobr>
 		</td>
@@ -2210,15 +2210,15 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem" colSpan="3">
 	      	<nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-		      	<s:textfield name="insFormalName" size="60" maxlength="240" />
+		      	<s:textfield name="insFormalName" size="60" maxlength="40" />
 		      </s:if>
 		      <s:else>
-		      	<s:textfield name="insFormalName" size="60" maxlength="240" readonly="true" />
+		      	<s:textfield name="insFormalName" size="60" maxlength="40" readonly="true" />
 		      </s:else>
 		     </nobr>
 		   </td>
       </tr>
-      <tr>
+<!--       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>施設契約用漢字名(全角)<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem" colSpan="3">
@@ -2232,6 +2232,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			</nobr>
 		</td>
 	  </tr>
+ -->
 	  <tr>
 	  	  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>取引区分<font color="red" size="3">*</font></nobr></td>
@@ -2659,10 +2660,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
         <tr>
         <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
-	      <td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td>
 		</s:if>
 		<s:else>
-			<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
+			<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
 		</s:else>
       </tr>
       <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
@@ -2671,10 +2672,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
       	<s:if test='%{reqStsCd == "03" || reqStsCd == "13"}'>
-	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td>
       	</s:if>
       	<s:else>
-      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
+      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
       	</s:else>
       </tr>
       </s:if>

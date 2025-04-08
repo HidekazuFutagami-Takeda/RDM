@@ -1768,10 +1768,10 @@
 	        <td class="comTableItem" style="text-align:center" rowspan=3><s:label key="hcoBlkReqDataList[%{#status.index}].ultDif" /></td>
 	        <td class="comTableItem" rowspan=3>
 	        	<s:if test="btnEnableFlg == 1">
-	        	<s:textarea name="hcoBlkReqDataList[%{#status.index}].reqComment" maxlength="300" style="resize:none" />
+	        	<s:textarea name="hcoBlkReqDataList[%{#status.index}].reqComment" maxlength="100" style="resize:none" />
 	        	</s:if>
 	        	<s:else>
-	        	<s:textarea name="hcoBlkReqDataList[%{#status.index}].reqComment" maxlength="300" style="resize:none" readonly="true" />
+	        	<s:textarea name="hcoBlkReqDataList[%{#status.index}].reqComment" maxlength="100" style="resize:none" readonly="true" />
 	        	</s:else>
 	        </td>
 		</tr>

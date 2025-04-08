@@ -56,13 +56,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 戻るボタン
     function backBtn(){
-    	if(window.confirm("施設紐付け変更画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+    	//if(window.confirm("施設紐付け変更画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
     		// NF212_施設紐付け変更に遷移
     		document.fm1.screenId.value="NF212";
 			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
-    	}
+    	//}
     }
 
     // 却下ボタン

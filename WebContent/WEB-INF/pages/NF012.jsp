@@ -1666,10 +1666,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="preInsAbbrName" /></td>
 		<td class="comFormTableItemNf012"><nobr>
 			<s:if test='%{editApprFlg == "1"}'>
-				<s:textfield name="insAbbrName" size="30" maxlength="60" />　(全角)
+				<s:textfield name="insAbbrName" size="30" maxlength="10" />　(全角)
 			</s:if>
 			<s:else>
-				<s:textfield name="insAbbrName" size="30" maxlength="60" readonly="true" />　(全角)
+				<s:textfield name="insAbbrName" size="30" maxlength="10" readonly="true" />　(全角)
 			</s:else>
 			</nobr></td>
 	</tr>
@@ -1678,10 +1678,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="preInsKana" /></td>
 		<td class="comFormTableItemNf012"><nobr>
 			<s:if test='%{editApprFlg == "1"}'>
-				<s:textfield name="insKana" size="30" maxlength="45" />　(半角)
+				<s:textfield name="insKana" size="30" maxlength="15" />　(半角)
 			</s:if>
 			<s:else>
-				<s:textfield name="insKana" size="30" maxlength="45" readonly="true" />　(半角)
+				<s:textfield name="insKana" size="30" maxlength="15" readonly="true" />　(半角)
 			</s:else>
 			</nobr></td>
 	</tr>
@@ -1690,10 +1690,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012"><s:label key="preInsFormalName" /></td>
 		<td class="comFormTableItemNf012"><nobr>
 			<s:if test='%{editApprFlg == "1"}'>
-				<s:textarea name="insFormalName" style="width:220px; height:40px; resize: none;" maxlength="240" />　(全角)
+				<s:textarea name="insFormalName" style="width:220px; height:40px; resize: none;" maxlength="40" />　(全角)
 			</s:if>
 			<s:else>
-				<s:textarea name="insFormalName" style="width:220px; height:40px; resize: none;" maxlength="240" readonly="true" />　(全角)
+				<s:textarea name="insFormalName" style="width:220px; height:40px; resize: none;" maxlength="40" readonly="true" />　(全角)
 			</s:else>
 			</nobr></td>
 	</tr>
@@ -1935,11 +1935,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="insPcode" id="insPcode" size="20" />
+	                <s:textfield name="insPcode" id="insPcode" size="20" maxlength="8"  />
 					<input class="comButton" type="button"name="button1" value="住所候補" onClick="JavaScript:addrPopBtn(); return false;" />
 				</s:if>
 				<s:else>
-	                <s:textfield name="insPcode" id="insPcode" size="20" readonly="true" />
+	                <s:textfield name="insPcode" id="insPcode" size="20" maxlength="8" readonly="true" />
 					<input class="comButton" type="button"name="button1" value="住所候補" onClick="JavaScript:addrPopBtn(); return false;" disabled />
 				</s:else>
             </nobr>
@@ -1995,10 +1995,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="insPhone1" id="insPhone1" size="20" /> (ﾊｲﾌﾝあり)
+	                <s:textfield name="insPhone1" id="insPhone1" size="20" maxlength="13" /> (ﾊｲﾌﾝあり)
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="insPhone1" id="insPhone1" size="20" readonly="true" /> (ﾊｲﾌﾝあり)
+	            	<s:textfield name="insPhone1" id="insPhone1" size="20" maxlength="13" readonly="true" /> (ﾊｲﾌﾝあり)
 	            </s:else>
             </nobr>
 		</td>
@@ -2009,10 +2009,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="insPhone2" id="insPhone2" size="20" /> (ﾊｲﾌﾝあり)
+	                <s:textfield name="insPhone2" id="insPhone2" size="20" maxlength="13" /> (ﾊｲﾌﾝあり)
 				</s:if>
 				<s:else>
-					<s:textfield name="insPhone2" id="insPhone2" size="20" readonly="true" /> (ﾊｲﾌﾝあり)
+					<s:textfield name="insPhone2" id="insPhone2" size="20" maxlength="13" readonly="true" /> (ﾊｲﾌﾝあり)
 				</s:else>
             </nobr>
 		</td>
@@ -2023,10 +2023,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="insFax1" id="insFax1" size="20" /> (ﾊｲﾌﾝあり)
+	                <s:textfield name="insFax1" id="insFax1" size="20" maxlength="13" /> (ﾊｲﾌﾝあり)
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="insFax1" id="insFax1" size="20" readonly="true" /> (ﾊｲﾌﾝあり)
+	            	<s:textfield name="insFax1" id="insFax1" size="20" maxlength="13" readonly="true" /> (ﾊｲﾌﾝあり)
 	            </s:else>
             </nobr>
 		</td>
@@ -2037,10 +2037,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="insFax2" id="insFax2" size="20" /> (ﾊｲﾌﾝあり)
+	                <s:textfield name="insFax2" id="insFax2" size="20" maxlength="13" /> (ﾊｲﾌﾝあり)
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="insFax2" id="insFax2" size="20" readonly="true" /> (ﾊｲﾌﾝあり)
+	            	<s:textfield name="insFax2" id="insFax2" size="20" maxlength="13" readonly="true" /> (ﾊｲﾌﾝあり)
 	            </s:else>
             </nobr>
 		</td>
@@ -3832,10 +3832,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem">
 	      <nobr>
 	      	<s:if test='%{editApprFlg == "1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11")}'>
-		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/>
+		      	<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/>
 		  	</s:if>
 		  	<s:else>
-		  		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true"/>
+		  		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" readonly="true"/>
 		  	</s:else>
 		  </nobr></td>
       </tr>
@@ -3845,10 +3845,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
       	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && editApprFlg == "1"}'>
-	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"/></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td>
       	</s:if>
       	<s:else>
-      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
+      		<td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
       	</s:else>
       </tr>
       </s:if>

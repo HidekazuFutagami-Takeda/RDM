@@ -116,11 +116,11 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設正式漢字名") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsContName() == null || indto.getInsContName().isEmpty()) {
-        	// 必須項目にデータを入力してください。（施設契約用漢字名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設契約用漢字名") + "\n";
-			errFlg = true;
-        }
+//        if(indto.getInsContName() == null || indto.getInsContName().isEmpty()) {
+//        	// 必須項目にデータを入力してください。（施設契約用漢字名）
+//			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "施設契約用漢字名") + "\n";
+//			errFlg = true;
+//        }
         if(indto.getTradeType() == null || indto.getTradeType().isEmpty()) {
         	// 必須項目にデータを入力してください。（取引区分）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "取引区分") + "\n";
@@ -254,11 +254,11 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設正式漢字名") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsContName() != null && indto.getInsContName().length() > 40) {
-        	// 最大文字数を超えています。（施設契約用漢字名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設契約用漢字名") + "\n";
-			errFlg = true;
-        }
+//        if(indto.getInsContName() != null && indto.getInsContName().length() > 40) {
+//        	// 最大文字数を超えています。（施設契約用漢字名）
+//			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設契約用漢字名") + "\n";
+//			errFlg = true;
+//        }
         if(indto.getEntcapaNum() != null && indto.getEntcapaNum().length() > 4) {
         	// 最大文字数を超えています。（入所定員情報）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "入所定員情報") + "\n";
@@ -453,11 +453,11 @@ public class NF301Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設正式漢字名") + "\n";
 			errFlg = true;
         }
-        if(StringUtils.checkSingleByte(indto.getInsContName())) {
-        	// 全角で入力してください。（施設契約用漢字名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設契約用漢字名") + "\n";
-			errFlg = true;
-        }
+//        if(StringUtils.checkSingleByte(indto.getInsContName())) {
+//        	// 全角で入力してください。（施設契約用漢字名）
+//			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設契約用漢字名") + "\n";
+//			errFlg = true;
+//        }
         if(StringUtils.checkSingleByte(indto.getInsAddrDt())) {
         	// 全角で入力してください。（町名地番）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "町名地番") + "\n";
@@ -1110,7 +1110,8 @@ public class NF301Service extends BaseService {
         	tRdmHcoReqInsData.setInsKana(indto.getInsKana());
         	tRdmHcoReqInsData.setInsAbbrName(indto.getInsAbbrName());
         	tRdmHcoReqInsData.setInsFormalName(indto.getInsFormalName());
-        	tRdmHcoReqInsData.setInsContName(indto.getInsContName());
+        	//tRdmHcoReqInsData.setInsContName(indto.getInsContName());
+        	tRdmHcoReqInsData.setInsContName(indto.getInsFormalName());
         	tRdmHcoReqInsData.setInsPcode(indto.getInsPcode().replace("-", ""));
         	tRdmHcoReqInsData.setAddrCodePref(indto.getAddrCodePref());
         	tRdmHcoReqInsData.setAddrCodeCity(indto.getAddrCodeCity());
@@ -1364,7 +1365,8 @@ public class NF301Service extends BaseService {
         	tRdmHcoReqUpdData.setInsKana(indto.getInsKana());
         	tRdmHcoReqUpdData.setInsAbbrName(indto.getInsAbbrName());
         	tRdmHcoReqUpdData.setInsFormalName(indto.getInsFormalName());
-        	tRdmHcoReqUpdData.setInsContName(indto.getInsContName());
+        	//tRdmHcoReqUpdData.setInsContName(indto.getInsContName());
+        	tRdmHcoReqUpdData.setInsContName(indto.getInsFormalName());
         	tRdmHcoReqUpdData.setInsPcode(indto.getInsPcode().replace("-", ""));
         	tRdmHcoReqUpdData.setAddrCodePref(indto.getAddrCodePref());
         	tRdmHcoReqUpdData.setAddrCodeCity(indto.getAddrCodeCity());

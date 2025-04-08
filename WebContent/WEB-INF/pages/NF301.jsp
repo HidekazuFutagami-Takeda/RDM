@@ -55,13 +55,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     comClickFlgInit();
 
     function backBtn(){
-    	if(window.confirm("施設新規作成画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+    	//if(window.confirm("施設新規作成画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
     		// NF011_施設新規作成に遷移
     		document.fm1.screenId.value="NF011";
 			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
-    	}
+    	//}
     }
 
     function rejectBtn(){
@@ -482,7 +482,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		    </nobr>
 		   </td>
       </tr>
-      <tr>
+<!--       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>施設契約用漢字名(全角)</nobr></td>
 	      <td class="comFormTableItem" colSpan="3">
@@ -491,6 +491,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			</nobr>
 		</td>
 	  </tr>
+ -->
 	  <tr>
 	  	  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>取引区分</nobr></td>

@@ -55,13 +55,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     comClickFlgInit();
 
     function backBtn(){
-    	if(window.confirm("施設復活画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+    	//if(window.confirm("施設復活画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
     		// NF014_施設復活画面に遷移
     		document.fm1.screenId.value="NF014";
 			document.fm1.functionId.value="Init";
 
 			comSubmitForAnyWarp(fm1);
-    	}
+    	//}
     }
 
     function rejectBtn(){

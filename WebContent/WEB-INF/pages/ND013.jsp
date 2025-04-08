@@ -42,14 +42,48 @@
 	<script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
+    	if(document.fm1.tabFlg != null){
+    	const tabFlg = document.fm1.tabFlg.value;
+    	const docNo = document.fm1.paramDocNo.value;
+    	document.fm1.tabFlg.value = "X";
+	 		if(tabFlg == "1"){//エラーなしなので遷移
+	 			actBtn('ND103', docNo);
+	 		}
+	 		if(tabFlg == "2"){//エラーなしなので遷移
+	 			actBtn('ND105', docNo);
+	 		}
+	 		if(tabFlg == "3"){//エラーなしなので遷移
+	 			actBtn('ND104', docNo);
+	 		}
+	 		if(tabFlg == "4"){//エラーなしなので遷移
+	 			document.fm1.movemedEditFlg.value = "1";
+	 			actBtn('ND101', docNo);
+	 		}
+	 		if(tabFlg == "5"){//エラーなしなので遷移
+	 			document.fm1.movemedEditFlg.value = "0";
+	 			actBtn('ND101', docNo);
+	 		}
+	 		if(tabFlg == "6"){//エラーなしなので遷移
+	 			actBtn('ND102', docNo);
+	 		}
+    	}
     }
 
  	var nd013Tab;
  	// アクションボタン
     function actBtn(screenId, docNo){
  		var tmpDoc = fm1.docNo.value;
-
- 		fm1.paramDocNo.value = docNo;
+		if(screenId == "ND105"){
+			fm1.tkdDocNo.value = docNo;
+		}else{
+	 		fm1.paramDocNo.value = docNo;
+	 		if(fm1.insNoKakusi != null){
+	 			fm1.insNo.value = fm1.insNoKakusi.value;
+	 			fm1.paramInsNo.value = fm1.insNoKakusi.value;
+	 		}else{//勤務先追加
+	 			fm1.insNo.value = "";
+	 		}
+		}
 
  		if(nd013Tab && !nd013Tab.closed){
  			nd013Tab.close();
@@ -63,7 +97,12 @@
 	  	comSubmitForAnyWarp(fm1);
 	  	comClickFlgInit();
 	}
-
+    function backPage(){
+	    if(window.confirm("画面を閉じます。よろしいですか？")){
+			//この画面（タブ）を閉じる
+			window.close();
+	    }
+    }
     </script>
     <!-- css -->
     <style>
@@ -150,15 +189,19 @@
     <s:hidden name="callBack" />
     <s:hidden name="msgStr" />
     <s:hidden name="dialog" />
-    <s:hidden name="buttonFlg" />
     <s:hidden name="insNoKakusi" />
 	<s:hidden name="errorCheckFlg" />
 	<s:hidden name="errorBool" />
+	<s:hidden name="tabFlg" />
 	<s:hidden name="jokenSetCd" />
 	<s:hidden name="docKanj" />
 	<s:hidden name="docKana" />
 	<s:hidden name="docNo" />
 	<s:hidden name="paramDocNo" />
+	<s:hidden name="tkdDocNo"/>
+	<s:hidden name="insNo"/>
+	<s:hidden name="paramInsNo" />
+	<s:hidden name="movemedEditFlg"/>
 	<s:hidden name="docType" />
     <s:hidden name="ultKanj" />
     <s:hidden name="ultKana" />
@@ -182,7 +225,7 @@
       <s:hidden name="title" />
       <s:hidden name="sortCondition1" />
       <s:hidden name="sortCondition2" />
-      <s:hidden name="screenId" value="NF501" />
+      <s:hidden name="screenId" value="ND013" />
       <s:hidden name="functionId"/>
       <s:hidden name="buttonFlg" />
       <s:hidden name="gamenId"/>
@@ -190,7 +233,6 @@
       <s:hidden name="listName" />
       <s:hidden name="poprowno" />
       <s:hidden name="poptrtno" />
-      <s:hidden name="tkdDocNo" id="tkdDocNo"/>
       <%-- トップメニューから --%>
       <s:hidden name="trtGrpCd" />
       <s:hidden name="selectedJgiJoken" />
@@ -383,7 +425,7 @@
 			        			<s:if test="%{#rowBean.reqB == 1}">
 			        				<!-- 活性 -->
 			        				<span>
-			        					<img src="img/button_delete.gif" onclick="actBtn('ND104', docNo)" />
+			        					<img src="img/button_delete.gif" onclick="errorCheckAction('3', this)" />
 			        					<s:hidden name="hcpWorkData[%{#status.index}].insNoKakusi"/>
 			        				</span>
 			        			</s:if>
@@ -403,7 +445,7 @@
 		        		<!--アクション編集が'1'の場合,勤務先情報の件数が1件で隠し項目．実勤務先判定がNULLの場合 表示
 		        		|| (#rowBean.actionEdit == 1　&& #rowBean.kinmuCount == 1 && #rowBean.dummyHco == null) -->
 		        		<s:if test="%{#rowBean.actionEdit == 1}">
-		        		<s:if test="%{#rowBean.dummyHcoCount >= 2}">
+		        		<s:if test="%{dummyHcoCount >= 2}">
 		        			<s:if test="%{#rowBean.reqA == 1}">
 		        				<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
 		        			</s:if>
@@ -545,7 +587,7 @@
 	<table>
 
 		<td>
-			<input type="button" value="戻る" onclick="backPage" />
+			<input type="button" value="戻る" onclick="backPage();" />
 		</td>
 
 	</table>

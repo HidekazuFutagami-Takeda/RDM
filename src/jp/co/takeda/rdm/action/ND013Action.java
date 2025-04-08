@@ -107,7 +107,7 @@ public class ND013Action extends BaseAction<ND013DTO> {
      */
     public String init() throws Exception {
         initSetup();
-
+        dto.setTabFlg("X");
         //【仮】権限判別
       //ログインユーザー情報格納
         LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -176,12 +176,8 @@ public class ND013Action extends BaseAction<ND013DTO> {
         			dto.setMsgStr(tmpMsgStr);
         		}
             } else {
-            	//医師の廃業・死亡ボタン遷移
-            	if (Objects.equals(dto.getErrorCheckFlg(), "2")) {
-            		outdto.setForward("ND105Init");
-            		setNextDTO(outdto);
-                    return outdto.getForward();
-            	}
+            	//エラーなしならタブ遷移フラグをセットしonloadに渡す
+            	dto.setTabFlg(dto.getErrorCheckFlg());
             }
         }
 

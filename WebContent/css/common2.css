@@ -517,6 +517,21 @@ TD.comTableTitleUlt			/* テーブル形式のタイトル項目 */
   font-size   : 8pt;
 }
 
+TH.comTableTitleUlt			/* テーブル形式のタイトル項目 */
+{
+  color : #000000;
+/*	background-color: #e0e0d4;*/
+/*	background-color: #cccccc;*/
+  background-color: #eba800;
+  text-align : center;
+  border-style: solid;
+  border-top-width : 0px;
+  border-left-width : 1px;
+  border-right-width : 1px;
+  border-bottom-width : 1px;
+  font-size   : 8pt;
+}
+
 TD.comTableTitleNF001			/* テーブル形式のタイトル項目 */
 {
   color : #000000;
@@ -733,7 +748,7 @@ INPUT
 }
 INPUT.mediumGray
 {
-	background-color:a1a4ac;
+	background-color:#a1a4ac;
 }
 TEXTAREA
 {
@@ -742,7 +757,7 @@ TEXTAREA
 }
 TEXTAREA.mediumGray
 {
-	background-color:a1a4ac;
+	background-color:#a1a4ac;
 }
 SELECT
 {

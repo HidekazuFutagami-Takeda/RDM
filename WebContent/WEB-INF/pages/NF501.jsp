@@ -373,7 +373,7 @@
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
+		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 
@@ -388,7 +388,7 @@
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
+		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 		          </s:else>
@@ -401,7 +401,7 @@
 		          	</td>
 		          	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" disabled /></td>
 		          	<td>
-		          		<s:textfield id="sosNameUser" name="jgiName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+		          		<s:textfield id="sosNameUser" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<span>clear</span>
 		          	</td>
 		          </s:if>
@@ -413,7 +413,7 @@
 		         	</td>
 		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="" /></td>
 		          	<td>
-		          		<s:textfield id="sosNameUser" name="sosName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+		          		<s:textfield id="sosNameUser" name="sosName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<span>clear</span>
 		          	</td>
 		          </s:else>
@@ -429,7 +429,7 @@
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
+		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 		          </s:if>
@@ -443,7 +443,7 @@
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
+		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 		          </s:else>

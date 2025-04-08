@@ -365,7 +365,7 @@ table {
 	                  <td>異動先施設<span style="color: red;">*</span></td>
 	                  <td>
 	                      <nobr>
-							<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" /><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('abbrName')">clear</a>&nbsp;
+							<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" /><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('abbrName')">clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
@@ -374,7 +374,7 @@ table {
 	                  <td>異動先所属部科<span style="color: red;">*</span></td>
 	                  <td>
 	                      <nobr>
-	                           <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;"/><s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')" >clear</a>&nbsp;
+	                           <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;"/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')" >clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
@@ -390,7 +390,7 @@ table {
 	                  <td>異動先施設<span style="color: red;">*</span></td>
 	                  <td>
 	                      <nobr>
-	                          <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
+	                          <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
@@ -399,7 +399,7 @@ table {
 	                  <td>異動先所属部科<span style="color: red;">*</span></td>
 	                  <td>
 	                      <nobr>
-	                           <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" style="color:lightgray">clear</a>&nbsp;
+	                           <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray">clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
@@ -412,7 +412,7 @@ table {
 	                  <td>所属部科<span style="color: red;">*</span></td>
 	                  <td>
 	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
-	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')">clear</a>&nbsp;
+	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')">clear</a>&nbsp;
 	                  </td>
 	                  </s:if>
 	                  <s:else>
@@ -420,7 +420,7 @@ table {
 	                  <td>所属部科<span style="color: red;">*</span></td>
 	                  <td>
 	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" disabled/>
-	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
+	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
 	                  </td>
 	                  </s:else>
 	              </tr>
@@ -501,7 +501,7 @@ table {
                           <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" rows="3"/>
                       </s:if>
                       <s:elseif test='reqCommentFlg == 0'>
-                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none; background-color:#D4D0C8" rows="3" readonly="true"/>
+                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" cssClass="mediumGray" rows="3" readonly="true"/>
                       </s:elseif>
                   </td>
               </tr>
@@ -515,7 +515,7 @@ table {
 	          <table class="comPortalTable" align="center">
 	              <tr>
 	                  <td>
-	                          <s:textarea label="aprComment" name="aprComment" style="width: 60vw; resize: none; background-color:#D4D0C8" rows="3" readonly="true"/>
+	                          <s:textarea label="aprComment" name="aprComment" style="width: 60vw; resize: none;" cssClass="mediumGray" rows="3" readonly="true"/>
 	                  </td>
 	              </tr>
 	          </table>

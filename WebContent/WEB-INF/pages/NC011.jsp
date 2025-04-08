@@ -289,11 +289,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<s:if test='jokenFlg != "1"'>
 								<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit  value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true" cssStyle="background-color:#D4D0C8;"/>
+			   <nobr><s:submit  value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true" cssClass="mediumGray"/>
 			   </nobr>
 			</td>
 				<td >
-					<s:textfield size="20" maxlength="40" id="bumonRyakuName" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssStyle="background-color:#D4D0C8;"/>
+					<s:textfield size="20" maxlength="40" id="bumonRyakuName" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssClass="mediumGray"/>
 					<a href ="" onClick="popClearDisabled();return false;"disabled="true" >Clear</a>
 				</td>
 		</s:if>
@@ -304,7 +304,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			   </nobr>
 			</td>
 				<td>
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" cssStyle="background-color:#D4D0C8;"/>
+					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" cssClass="mediumGray"/>
 					<a href ="" onClick="popClear();return false;">Clear</a>
 				</td>
 		</s:if>
@@ -323,7 +323,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			<s:if test='jokenFlg != "1"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
 				<td>
-					 <s:textfield readonly="true" Style="width:100pt" id="reqJgiName" name="reqJgiName" cssStyle="background-color:#D4D0C8;"/>
+					 <s:textfield readonly="true" Style="width:100pt" id="reqJgiName" name="reqJgiName" cssClass="mediumGray"/>
 				</td>
 				</s:if>
 			<s:if test='jokenFlg == "1"'>

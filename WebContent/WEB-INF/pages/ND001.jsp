@@ -436,14 +436,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <s:if test='mrAdminFlg == "0"'>
                   <td align="right"><input class="comButton" type="button" value="選択" onClick="" disabled/></td>
                   <td class="comPortalControlItem">
-                         <s:textfield name="bumonSeiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                         <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                   </td>
                   <td><a class="comMiniLink" onclick="" style="color:lightgray">clear</a>&nbsp;</td>
               </s:if>
               <s:else>
                   <td align="right"><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></td>
                   <td class="comPortalControlItem">
-                         <s:textfield name="bumonSeiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                         <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                   </td>
                   <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">clear</a>&nbsp;</td>
               </s:else>
@@ -451,7 +451,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
                   <td align="right"><input class="comButton" type="button" value="選択" onClick="" disabled/></td>
                   <td class="comPortalControlItem">
-                       <s:textfield name="jgiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                       <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                    </td>
                    <td><a class="comMiniLink" onclick="" style="color:lightgray">clear</a>&nbsp;</td>
               </s:if>
@@ -459,7 +459,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
                   <td align="right"><input class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
                   <td class="comPortalControlItem">
-                       <s:textfield name="jgiName" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                       <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                    </td>
                    <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">clear</a>&nbsp;</td>
               </s:else>
@@ -478,13 +478,13 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td class="comTableSearchItem" style="width:50pt;"><nobr>施設名</nobr></td>
               <td align="right"><input class="comButton" type="button" value="選択" onClick="tmpCseView();" /></td>
               <td class="comPortalControlItem">
-                   <s:textfield name="searchInsNm" size="17" maxlength="17" cssStyle="background-color:#D4D0C8;" readonly="true"/>
+                   <s:textfield name="searchInsNm" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
               </td>
               <td ><a href="#" class="comMiniLink" onclick="nd001Clear('searchIns');return false;" align="left">clear</a>&nbsp;</td>
               <td class="comTableSearchItem" style="width:50pt;"><nobr>所属部科</nobr></td>
               <td align="right"><input class="comButton" type="button" value="選択" onClick="tmpCdcView();" /></td>
               <td class="comPortalControlItem">
-                   <s:textfield name="searchDeptNm" id="searchDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8" readonly="true"/>
+                   <s:textfield name="searchDeptNm" id="searchDeptNm" size="20" maxlength="40" cssClass="mediumGray" readonly="true"/>
 		                <s:hidden name="searchDeptCd" id="searchDeptCd"/>
               </td>
               <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="nd001Clear('searchDept');return false;" style="float:none;">clear</a>&nbsp;</td>
@@ -615,7 +615,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                         </tr>
                         <tr>
                             <th class="actionTh">アクション</th>
-                            <th class="comTableTitle">ULT医師名漢字
+                            <th class="comTableTitleUlt">ULT医師名漢字
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
                                 <a class="<%=ishiNmAscClass %>" href="" onclick="nd001Sort(6);return false;">▲</a>
@@ -623,7 +623,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                                 <a class="<%=ishiNmDescClass %>" href="" onclick="nd001Sort(7);return false;">▼</a>
                             </s:if>
                             </th>
-                            <th class="comTableTitle">ULT医師名カナ
+                            <th class="comTableTitleUlt">ULT医師名カナ
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
                                 <a class="<%=ishiNmKanaAscClass %>" href="" onclick="nd001Sort(8);return false;">▲</a>
@@ -631,14 +631,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                                 <a class="<%=ishiNmKanaDescClass %>" href="" onclick="nd001Sort(9);return false;">▼</a>
                             </s:if>
                             </th>
-                            <th class="comTableTitle"><nobr>ULT医師コード</nobr></th>
-                            <th class="comTableTitle"><nobr>ULT生年月日</nobr></th>
-                            <th class="comTableTitle"><nobr>ULT出身校</nobr></th>
-                            <th class="comTableTitle"><nobr>ULT卒年</nobr></th>
-                            <th class="comTableTitle"><nobr></nobr></th>
-                            <th class="comTableTitle"><nobr></nobr></th>
-                            <th class="comTableTitle"><nobr>ULT施設名略名（所属部科名：役職名）</nobr></th>
-                            <th class="comTableTitle"><nobr></nobr></th>
+                            <th class="comTableTitleUlt"><nobr>ULT医師コード</nobr></th>
+                            <th class="comTableTitleUlt"><nobr>ULT生年月日</nobr></th>
+                            <th class="comTableTitleUlt"><nobr>ULT出身校</nobr></th>
+                            <th class="comTableTitleUlt"><nobr>ULT卒年</nobr></th>
+                            <th class="comTableTitleUlt"><nobr></nobr></th>
+                            <th class="comTableTitleUlt"><nobr></nobr></th>
+                            <th class="comTableTitleUlt"><nobr>ULT施設名略名（所属部科名：役職名）</nobr></th>
+                            <th class="comTableTitleUlt"><nobr></nobr></th>
                         </tr>
                     </thead>
                      <tbody style="z-index:2">
@@ -718,16 +718,16 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                                   <!-- <td class="comTableItem"><nobr>横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列横スクロールバー用に長文の文字列</nobr></nobr></td> -->
                               </tr>
                               <tr style="min-height:18px;">
-                                  <td class="comTableItem" style="background-color:#e0ffff; height:18px;"><nobr><s:property value="#rowBean.ishiNm"/></nobr></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"><nobr><s:property value="#rowBean.ishiNmKana"/></nobr></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"><nobr><s:property value="#rowBean.dcfIshiCd"/></nobr></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"><nobr><s:property value="#rowBean.ultDob"/></nobr></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"><nobr><s:property value="#rowBean.ultUnivKj"/></nobr></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"><nobr><s:property value="#rowBean.sotsunenSr"/></nobr></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"><s:property value="#rowBean.ultInsName.replaceAll('\\n', '<br />')" escape="false"/></td>
-                                  <td class="comTableItem" style="background-color:#e0ffff"></td>
+                                  <td class="comTableItemUlt" style="height:18px;"><nobr><s:property value="#rowBean.ishiNm"/></nobr></td>
+                                  <td class="comTableItemUlt"><nobr><s:property value="#rowBean.ishiNmKana"/></nobr></td>
+                                  <td class="comTableItemUlt"><nobr><s:property value="#rowBean.dcfIshiCd"/></nobr></td>
+                                  <td class="comTableItemUlt"><nobr><s:property value="#rowBean.ultDob"/></nobr></td>
+                                  <td class="comTableItemUlt"><nobr><s:property value="#rowBean.ultUnivKj"/></nobr></td>
+                                  <td class="comTableItemUlt"><nobr><s:property value="#rowBean.sotsunenSr"/></nobr></td>
+                                  <td class="comTableItemUlt"></td>
+                                  <td class="comTableItemUlt"></td>
+                                  <td class="comTableItemUlt"><s:property value="#rowBean.ultInsName.replaceAll('\\n', '<br />')" escape="false"/></td>
+                                  <td class="comTableItemUlt"></td>
 
                               </tr>
                             </s:iterator>

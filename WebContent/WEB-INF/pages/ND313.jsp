@@ -484,7 +484,7 @@
 		        	<td></td>
 		        	<td>承認却下コメント</td>
 		        	<td colspan="3">
-		        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="margin-top: 78px;background-color:#D4D0C8; width: 650px; height: 80px;" readonly="true" />
+		        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="margin-top: 78px; width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
 		        	</td>
 		        	<td></td>
 		        	<td></td>

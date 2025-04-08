@@ -408,7 +408,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="sosNamePop();" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="sosName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
+		          		<s:textfield id="sosName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;
 		          		<span onClick="sosNameClear();">clear</span>
 		          	</td>
@@ -424,7 +424,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		          		<input id="sosButton1" class="comButton" type="button" value="選択"   disabled />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="" name="sosName" size="40" maxlength="40" cssStyle="width: 176px; background-color:#D4D0C8;" readonly="true" />
+		          		<s:textfield id="" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;
 		          		<span>clear</span>
 		          	</td>
@@ -438,7 +438,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		          	<td style="width: 35px;">
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="jgiNamePop();" /></td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<span onClick="jgiNameClear();">clear</span>
 		          	</td>
 		          </s:if>
@@ -448,7 +448,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		         	</td>
 		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick=""  disabled/></td>
 		          	<td>
-		          		<s:textfield id="" name="jgiName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+		          		<s:textfield id="" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<span>clear</span>
 		          	</td>
 		          </s:else>
@@ -461,7 +461,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 			          </td>
 			          <td style="width: 35px;" colspan="2">
 			          	<input id="sosButton1" class="comButton" type="button" value="選択" onclick="tmpCseView()" />
-			          	<s:textfield id="kensakuReqShz" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+			          	<s:textfield id="kensakuReqShz" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 			          	<span onClick="ReqShzClear();">clear</span>
 			          </td>
 			          	<td>
@@ -475,7 +475,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		          	</td>
 		          	<td style="width: 35px;">
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-		          		<s:textfield id="" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+		          		<s:textfield id="" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<span>clear</span>
 		          	</td>
 		          	<td>
@@ -501,7 +501,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	            </td>
 	            <td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onclick="tmpCseView()" /></td>
 	          	<td>
-	          		<s:textfield id="kensakuInsKanj" name="kensakuInsKanj"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+	          		<s:textfield id="kensakuInsKanj" name="kensakuInsKanj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 	          		<span onClick="insKanjClear();">clear</span>
 	          	</td>
 
@@ -520,7 +520,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	          	<td class="comTableSearchItem" style="width:50pt;">
 	          		<nobr>申請者</nobr>
 	          	</td>
-	          	<td><s:textfield id="" name="kensakuReqJgiName" size="20" maxlength="128" style="background-color:#D4D0C8;" readonly="true"/></td>
+	          	<td><s:textfield id="" name="kensakuReqJgiName" size="20" maxlength="128" cssClass="mediumGray" readonly="true"/></td>
 	          </s:else>
 	        </tr>
 

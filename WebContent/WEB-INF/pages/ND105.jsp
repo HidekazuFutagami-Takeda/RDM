@@ -323,14 +323,14 @@
 	      <td class="comFormTableItem">
                 <nobr>
 		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCdrView();return false;" />
-		                <s:textfield name="dupDocNo" id="dupDocNo" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="dupDocNo" id="dupDocNo" size="20" maxlength="40" cssClass="mediumGray"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd105Clear('dupDoc');return false;">Clear</a>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>医師・コメディカル名</font></nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-		                <s:textfield name="dupDocNm" id="dupDocNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="dupDocNm" id="dupDocNm" size="20" maxlength="40" cssClass="mediumGray"/>
                 </nobr>
 	      </td>
 	 </tr>
@@ -342,13 +342,13 @@
 	      <td class="comFormTableItem">
                 <nobr>
 		                <input class="comButton" type="button"name="button2" value="選択" disabled />
-		                <s:textfield name="dupDocNo" id="dupDocNo" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="dupDocNo" id="dupDocNo" size="20" maxlength="40" cssClass="mediumGray"/>
                 </nobr>
 	      </td>
 	      <td class="comFormTableItem"><nobr>医師・コメディカル名</font></nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-		                <s:textfield name="dupDocNm" id="dupDocNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="dupDocNm" id="dupDocNm" size="20" maxlength="40" cssClass="mediumGray"/>
                 </nobr>
 	      </td>
 	 </tr>
@@ -368,7 +368,7 @@
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
-	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
@@ -386,7 +386,7 @@
 		      <td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
 	     </tr>
 	     <tr>
-		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
 	      </tr>
 </s:else>
 

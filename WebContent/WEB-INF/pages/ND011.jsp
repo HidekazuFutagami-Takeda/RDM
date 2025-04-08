@@ -517,13 +517,13 @@
                 <nobr>
 	      			<s:if test='%{editApprFlg == "1"}'>
 		                <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
-		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" style="background-color:#D4D0C8"/>
+		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" cssClass="mediumGray"/>
 		                <s:hidden name="homeDeptCd" id="homeDeptCd"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('homeDept');return false;">Clear</a>
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button1" value="選択"  disabled />
-		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" style="background-color:#D4D0C8" disabled="true"/>
+		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" cssClass="mediumGray" disabled="true"/>
 		                <s:hidden name="homeDeptCd" id="homeDeptCd"/>
 					</s:else>
                 </nobr>
@@ -821,7 +821,7 @@
                 <nobr>
 			      	<s:if test='%{editApprFlg == "1"}'>
 		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCseView();return false;" />
-		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" cssClass="mediumGray"/>
 		                <s:hidden name="skInsNo" id="skInsNo"/>
 		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
 		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
@@ -829,7 +829,7 @@
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button2" value="選択" disabled />
-		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" cssClass="mediumGray"/>
 		                <s:hidden name="skInsNo" id="skInsNo"/>
 		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
 		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
@@ -853,13 +853,13 @@
                 <nobr>
 			      	<s:if test='%{editApprFlg == "1"}'>
 		                <input class="comButton" type="button"name="button3" value="選択" onClick="JavaScript:tmpCdcView('1');return false;" />
-		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" cssClass="mediumGray"/>
 		                <s:hidden name="skDeptCd" id="skDeptCd"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skDept');return false;">Clear</a>
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button3" value="選択" disabled />
-		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" style="background-color:#D4D0C8"/>
+		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" cssClass="mediumGray"/>
 		                <s:hidden name="skDeptCd" id="skDeptCd"/>
 					</s:else>
                 </nobr>
@@ -910,7 +910,7 @@
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
-	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
 	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
@@ -928,7 +928,7 @@
 		      <td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
 	     </tr>
 	     <tr>
-		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px; background-color:#D4D0C8" readonly="true"/></nobr></td>
+		      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
 	      </tr>
 </s:else>
 

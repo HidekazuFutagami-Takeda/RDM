@@ -480,7 +480,7 @@
 	 		<s:else>
 	 			<!-- 非活性 -->
 	        	<td >
-	            	<input type="date" name="formTekiyoYmd" id="updMstFrom" value="${tekiyoYmd}" pattern="yyyy-MM-dd" style="background-color:#D4D0C8;"  readonly="true"/>
+	            	<input type="date" name="formTekiyoYmd" id="updMstFrom" value="${tekiyoYmd}" pattern="yyyy-MM-dd" cssClass="mediumGray" readonly="true"/>
 	            </td>
 	 		</s:else>
         </tr>
@@ -511,7 +511,7 @@
 	 		<s:else>
 	 			<!-- 非活性 -->
 				<td colspan="4">
-	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="background-color:#D4D0C8;width: 650px; height: 80px;"  readonly="true"/>
+	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/>
 	        	</td>
 	 		</s:else>
         	<td></td>
@@ -536,7 +536,7 @@
 	        <tr>
 	        	<td></td>
 	        	<td colspan="4">
-	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="background-color:#D4D0C8; width: 650px; height: 80px;" readonly="true" />
+	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
 	        	</td>
 	        	<td></td>
 	        	<td></td>

@@ -31,8 +31,8 @@ var RDM_BG_COLOR_NORMAL = "#FFFFFF";
  * 入力不可のテキストボックスの背景色に使用します。
  * </pre>
  */
-var JKR_BG_COLOR_DISABLED = "#D4D0C8";
-var RDM_BG_COLOR_DISABLED = "#D4D0C8";
+var JKR_BG_COLOR_DISABLED = "#a1a4ac";
+var RDM_BG_COLOR_DISABLED = "#a1a4ac";
 
 /**
  * <pre>

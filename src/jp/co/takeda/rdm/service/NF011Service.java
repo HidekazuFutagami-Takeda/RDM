@@ -31,6 +31,7 @@ import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcoJkrWkEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcoJkrDataEntity;
+import jp.co.takeda.rdm.entity.join.SelectJgiJgiEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF011MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectRdmComTrtgrpDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
@@ -363,6 +364,32 @@ public class NF011Service extends BaseService {
 		indto.setHcoJkrDataChgFlg("0");
 		// DropDownList作成
 		createCombo(indto);
+
+		if (!"2".equals(indto.getDisplayKbn()) && RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
+			// 担当者に自分を初期設定する
+			SelectJgiJgiEntity selectJgiJgiEntity = new SelectJgiJgiEntity();
+
+			selectJgiJgiEntity.setSqlId("selectJgiTrt");
+			selectJgiJgiEntity.setInTrtCd(indto.getLoginTrtCd());
+			selectJgiJgiEntity.setJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
+
+			List<SelectJgiJgiEntity> selectJgiJgiEntityList = dao.select(selectJgiJgiEntity);
+
+			if(selectJgiJgiEntityList.size() > 0) {
+				SelectJgiJgiEntity selectJgiJgiData = selectJgiJgiEntityList.get(0);
+				HcoJkrData sData = new HcoJkrData();
+				sData.setTrtCd(selectJgiJgiData.getTrtCd());
+				sData.setTrtNm(selectJgiJgiData.getTrtNm());
+				sData.setJgiNo(Integer.toString(selectJgiJgiData.getJgiNo()));
+				sData.setJgiNm(selectJgiJgiData.getJgiName());
+				sData.setTrtGrpCd(selectJgiJgiData.getTrtGrpCd());
+				sData.setMrCat(selectJgiJgiData.getMrCat());
+				sData.setDeleteFlg("0");
+				hcoJkrDataList.add(sData);
+			}
+
+			indto.setHcoJkrDataList(hcoJkrDataList);
+		}
 
 		// 編集可能判定
 		if ("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {

@@ -2628,7 +2628,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			        <s:hidden name="hcoJkrDataList[%{#status.index}].deleteFlg"/>
 
 			        <td><%-- アクションボタン --%>
-			        <s:if test='%{editApprFlg=="1" && (reqStsCd == "" || reqStsCd == "01" || reqStsCd == "03" || reqStsCd == "13")}'>
+			        <s:if test='%{editApprFlg=="1" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "03" || reqStsCd == "13")}'>
 			          <nobr>
 		                <a class="comMiniLink" href="#" onClick="JavaScript:delTrtRow('<s:property value="%{#status.index}"/>'); return false;" >
 		                  <img border="0" src="img/button_delete.gif">

@@ -254,7 +254,10 @@
 	  	  	comClickFlgInit();
 
 	  	  	fm1.addrCodePref.value = tmpAddrCodePref;
-	  	  	fm1.addrCodeCity.value = tmpAddrCodeVity;
+	  	  	fm1.addrCodeCity.value = tmpAddrCodeCity;
+
+	  	  	// 新規作成ボタン非活性にする
+	  	  	document.getElementById("newButton").disabled = true;
 		}
 
 	 	// ソートボタン
@@ -552,10 +555,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	    <%-- 新規作成 --%>
 	    <td colspan=2><nobr>
 		    <s:if test='srchFlg == "1" '>
-	    		<input type="button" name="新規作成" value="新規作成" onclick="newBtn()" />
+	    		<input type="button" id="newButton" name="新規作成" value="新規作成" onclick="newBtn()" />
 	    	</s:if>
 	    	<s:else>
-	    		<input type="button" name="新規作成" value="新規作成" onclick="newBtn()" disabled />
+	    		<input type="button" id="newButton" name="新規作成" value="新規作成" onclick="newBtn()" disabled />
 	    	</s:else>
 			※新規作成の前に検索してください
 		</nobr></td>

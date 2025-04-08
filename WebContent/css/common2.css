@@ -545,6 +545,9 @@ TD.comTableTitleNF001			/* テーブル形式のタイトル項目 */
   border-right-width : 1px;
   border-bottom-width : 1px;
   font-size   : 8pt;
+  text-overflow: clip;
+  white-space: nowrap;
+  overflow : hidden;
 }
 
 TD.comTableTitleNF001W			/* テーブル形式のタイトル項目 */
@@ -560,6 +563,10 @@ TD.comTableTitleNF001W			/* テーブル形式のタイトル項目 */
   border-right-width : 1px;
   border-bottom-width : 1px;
   font-size   : 8pt;
+  resize : horizontal;
+  text-overflow: clip;
+  white-space: nowrap;
+  overflow : hidden;
 }
 
 TD.comTableTitleNF001Act			/* テーブル形式のタイトル項目 */

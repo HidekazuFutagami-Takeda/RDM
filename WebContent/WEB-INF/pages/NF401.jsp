@@ -712,11 +712,11 @@
 	        <td class="comTableItem" rowspan=3><s:label key="hcoReqDataList[%{#status.index}].reqComment" /></td>
 	        <td class="comTableItem" rowspan=3>
 				<s:if test='#rowBean.waitAppFlg == "1"'>
-		        	<s:textarea name="aprComment" maxlength="300" style="resize:none" />
+		        	<s:textarea name="aprComment" maxlength="100" style="resize:none" />
 		        </s:if>
 		        <s:else>
 		        	<s:label key="hcoReqDataList[%{#status.index}].aprComment" />
-		        	<s:textarea name="aprComment" maxlength="300" style="resize:none; visibility:collapse" />
+		        	<s:textarea name="aprComment" maxlength="100" style="resize:none; visibility:collapse" />
 				</s:else>
 	        </td>
 	        <td class="comTableItem" rowspan=3>

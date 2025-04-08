@@ -154,14 +154,29 @@ public class NF309Service extends BaseService {
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（基準）") + "\n";
 				errFlg = true;
 	        }
+	        if (!StringUtils.isNumeric(indto.getNextBedCntBase())) {
+				// 入力文字種が不正です。（病床（基準））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（基準）") + "\n";
+				errFlg = true;
+			}
 	        if(indto.getNextBedCnt04() != null && indto.getNextBedCnt04().length() > 4) {
 	        	// 最大文字数を超えています。（病床（結核））
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（結核）") + "\n";
 				errFlg = true;
 	        }
+	        if (!StringUtils.isNumeric(indto.getNextBedCnt04())) {
+				// 入力文字種が不正です。（病床（結核））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（結核）") + "\n";
+				errFlg = true;
+			}
 	        if (indto.getNextBedCnt01() != null && indto.getNextBedCnt01().length() > 4) {
 				// 最大文字数を超えています。（病床（一般））
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（一般）") + "\n";
+				errFlg = true;
+			}
+	        if (!StringUtils.isNumeric(indto.getNextBedCnt01())) {
+				// 入力文字種が不正です。（病床（一般））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（一般）") + "\n";
 				errFlg = true;
 			}
 			if (indto.getNextBedCnt05() != null && indto.getNextBedCnt05().length() > 4) {
@@ -169,9 +184,19 @@ public class NF309Service extends BaseService {
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（感染症）") + "\n";
 				errFlg = true;
 			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt05())) {
+				// 入力文字種が不正です。（病床（感染症））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（感染症）") + "\n";
+				errFlg = true;
+			}
 			if (indto.getNextBedCnt03() != null && indto.getNextBedCnt03().length() > 4) {
 				// 最大文字数を超えています。（病床（精神））
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（精神）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt03())) {
+				// 入力文字種が不正です。（病床（精神））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（精神）") + "\n";
 				errFlg = true;
 			}
 			if (indto.getNextBedCnt07() != null && indto.getNextBedCnt07().length() > 4) {
@@ -179,14 +204,29 @@ public class NF309Service extends BaseService {
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（療養）") + "\n";
 				errFlg = true;
 			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt07())) {
+				// 入力文字種が不正です。（病床（療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（療養）") + "\n";
+				errFlg = true;
+			}
 			if (indto.getNextBedCnt02() != null && indto.getNextBedCnt02().length() > 4) {
 				// 最大文字数を超えています。（病床（医療療養））
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（医療療養）") + "\n";
 				errFlg = true;
 			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt02())) {
+				// 入力文字種が不正です。（病床（医療療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（医療療養）") + "\n";
+				errFlg = true;
+			}
 			if (indto.getNextBedCnt06() != null && indto.getNextBedCnt06().length() > 4) {
 				// 最大文字数を超えています。（病床（介護療養））
 				errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "病床（介護療養）") + "\n";
+				errFlg = true;
+			}
+			if (!StringUtils.isNumeric(indto.getNextBedCnt06())) {
+				// 入力文字種が不正です。（病床（介護療養））
+				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（介護療養）") + "\n";
 				errFlg = true;
 			}
 			if (indto.getNextBedsTot() != null && indto.getNextBedsTot().length() > 5) {
@@ -209,50 +249,6 @@ public class NF309Service extends BaseService {
         	// 最大文字数を超えています。（審査・承認メモ）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "審査・承認メモ") + "\n";
 			errFlg = true;
-        }
-
-        // 文字種チェック
-        if("01".equals(indto.getInsType()) || "02".equals(indto.getInsType())) {
-	        if (!StringUtils.isNumeric(indto.getNextBedCntBase())) {
-				// 入力文字種が不正です。（病床（基準））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（基準）") + "\n";
-				errFlg = true;
-			}
-			if (!StringUtils.isNumeric(indto.getNextBedCnt04())) {
-				// 入力文字種が不正です。（病床（結核））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（結核）") + "\n";
-				errFlg = true;
-			}
-			if (!StringUtils.isNumeric(indto.getNextBedCnt01())) {
-				// 入力文字種が不正です。（病床（一般））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（一般）") + "\n";
-				errFlg = true;
-			}
-			if (!StringUtils.isNumeric(indto.getNextBedCnt05())) {
-				// 入力文字種が不正です。（病床（感染症））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（感染症）") + "\n";
-				errFlg = true;
-			}
-			if (!StringUtils.isNumeric(indto.getNextBedCnt03())) {
-				// 入力文字種が不正です。（病床（精神））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（精神）") + "\n";
-				errFlg = true;
-			}
-			if (!StringUtils.isNumeric(indto.getNextBedCnt07())) {
-				// 入力文字種が不正です。（病床（療養））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（療養）") + "\n";
-				errFlg = true;
-			}
-			if (!StringUtils.isNumeric(indto.getNextBedCnt02())) {
-				// 入力文字種が不正です。（病床（医療療養））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（医療療養）") + "\n";
-				errFlg = true;
-			}
-			if (!StringUtils.isNumeric(indto.getNextBedCnt06())) {
-				// 入力文字種が不正です。（病床（介護療養））
-				errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "病床（介護療養）") + "\n";
-				errFlg = true;
-			}
         }
 
         // 整合性チェック

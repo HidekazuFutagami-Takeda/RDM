@@ -813,6 +813,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
        		// 担当者選択
       		if(insType == "09"){
       			document.getElementById("trtButton").disabled = true;
+
+      			// 担当者欄をクリア
+				trtTantoClear();
+
       		} else {
       			document.getElementById("trtButton").disabled = false;
       		}
@@ -1677,6 +1681,27 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		let delFlg = document.getElementsByName(key)[0];
 
 		delFlg.value = "1";
+
+		return false;
+	}
+
+	// 担当者行の全削除処理
+	function trtTantoClear(){
+		var i = 0;
+		var trtTable = document.getElementById("formTable11");
+		var trtTr = trtTable.rows[i+1];
+
+		while(trtTr != undefined){
+			trtTr.style.visibility = "collapse";
+
+			var key = "hcoJkrDataList["+i+"].deleteFlg";
+			var delFlg = document.getElementsByName(key)[0];
+
+			delFlg.value = "1";
+
+			i++;
+			trtTr = trtTable.rows[i+1];
+		}
 
 		return false;
 	}

@@ -1266,6 +1266,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	if(insType == "02" || insType == "04" || insType == "05" || insType == "07"){
     		document.getElementById("trtHr").style.visibility = "hidden";
     		document.getElementById("formTable10").style.visibility = "hidden";
+    		trtTantoClear();
     	} else {
     		document.getElementById("trtHr").style.visibility = "visible";
     		document.getElementById("formTable10").style.visibility = "visible";

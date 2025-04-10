@@ -1437,9 +1437,9 @@ public class ND011Service extends BaseService {
 		boolean errChk = false;
 		String msgStr = "";
 		String tmpMsgStr = "";
+		int len = 0;
 		if(fullchkFlg) {
 			//	１：必須入力チェック
-			//	項目
 			//	医師／薬剤師区分
 			if(StringUtils.isEmpty(indto.getDocType())) {
 				errChk = true;
@@ -1447,6 +1447,8 @@ public class ND011Service extends BaseService {
 				tmpMsgStr = tmpMsgStr.replace("項目名", "医師／薬剤師区分");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
+		}
+		if(fullchkFlg) {
 			//	性別
 			if(StringUtils.isEmpty(indto.getSexCd())) {
 				errChk = true;
@@ -1454,6 +1456,8 @@ public class ND011Service extends BaseService {
 				tmpMsgStr = tmpMsgStr.replace("項目名", "性別");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
+		}
+		if(fullchkFlg) {
 			//	医師名(漢字)姓
 			if(StringUtils.isEmpty(indto.getDocKanjiSei())) {
 				errChk = true;
@@ -1461,6 +1465,27 @@ public class ND011Service extends BaseService {
 				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
+		}
+		//      医師名(漢字)姓                              ５文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getDocKanjiSei())) {
+			len = indto.getDocKanjiSei().length();
+			if(len > 5) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//		医師名(漢字)姓                              半角文字が含まれている場合
+		if(!StringUtils.isEmpty(indto.getDocKanjiSei())) {
+			if(!StringUtils.isMultiByte(indto.getDocKanjiSei())){
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		if(fullchkFlg) {
 			//	医師名(漢字)名
 			if(StringUtils.isEmpty(indto.getDocKanjiMei())) {
 				errChk = true;
@@ -1468,6 +1493,27 @@ public class ND011Service extends BaseService {
 				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
+		}
+		//      医師名(漢字)名                              ５文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getDocKanjiMei())) {
+			len = indto.getDocKanjiMei().length();
+			if(len > 5) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//		医師名(漢字)名                              半角文字が含まれている場合
+		if(!StringUtils.isEmpty(indto.getDocKanjiMei())) {
+			if(!StringUtils.isMultiByte(indto.getDocKanjiMei())){
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		if(fullchkFlg) {
 			//	医師名(半角カナ)姓
 			if(StringUtils.isEmpty(indto.getDocKanaSei())) {
 				errChk = true;
@@ -1475,6 +1521,27 @@ public class ND011Service extends BaseService {
 				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
+		}
+		//      医師名(半角カナ)姓                              １０文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getDocKanaSei())) {
+			len = indto.getDocKanaSei().length();
+			if(len > 10) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//		医師名(半角カナ)姓                              全角文字が含まれている場合
+		if(!StringUtils.isEmpty(indto.getDocKanaSei())) {
+			if(StringUtils.checkMultiByte(indto.getDocKanaSei())){
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		if(fullchkFlg) {
 			//	医師名(半角カナ)名
 			if(StringUtils.isEmpty(indto.getDocKanaMei())) {
 				errChk = true;
@@ -1482,6 +1549,111 @@ public class ND011Service extends BaseService {
 				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
+		}
+		//      医師名(半角カナ)名                              １０文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getDocKanaMei())) {
+			len = indto.getDocKanaMei().length();
+			if(len > 10) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//		医師名(半角カナ)名                              全角文字が含まれている場合
+		if(!StringUtils.isEmpty(indto.getDocKanaMei())) {
+			if(StringUtils.checkMultiByte(indto.getDocKanaMei())){
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//      旧姓(漢字)姓                                ５文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getOldKanaSei())) {
+			len = indto.getOldKanjSei().length();
+			if(len > 5) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(漢字)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//		旧姓(漢字)姓                                半角文字が含まれている場合
+		if(!StringUtils.isEmpty(indto.getOldKanjSei())) {
+			if(!StringUtils.isMultiByte(indto.getOldKanjSei())){
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(漢字)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		if(fullchkFlg) {
+			//改姓日
+			if(!StringUtils.isEmpty(indto.getNewNameStYear()) || !StringUtils.isEmpty(indto.getNewNameStMonth()) || !StringUtils.isEmpty(indto.getNewNameStDay())) {
+				if(!DateUtils.isDate(indto.getNewNameStYear() + indto.getNewNameStMonth() + indto.getNewNameStDay())) {
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W022);//有効な年月日を入力してください。（項目名）
+					tmpMsgStr = tmpMsgStr.replace("項目名", "改姓日");
+					msgStr = msgStr + tmpMsgStr + "\n";
+				}
+			}
+		}
+		//      旧姓(半角カナ)姓                                １０文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getOldKanaSei())) {
+			len = indto.getOldKanaSei().length();
+			if(len > 10) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(半角カナ)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//		旧姓(半角カナ)姓                                全角文字が含まれている場合
+		if(!StringUtils.isEmpty(indto.getOldKanaSei())) {
+			if(StringUtils.checkMultiByte(indto.getOldKanaSei())){
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(半角カナ)姓");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		if(fullchkFlg) {
+			//W022	有効な年月日を入力してください。（項目名）
+			//生年月日
+			if(!StringUtils.isEmpty(indto.getDobYear()) || !StringUtils.isEmpty(indto.getDobMonth()) || !StringUtils.isEmpty(indto.getDobDay())) {
+				if(!DateUtils.isDate(indto.getDobYear() + indto.getDobMonth() + indto.getDobDay())) {
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W022);//有効な年月日を入力してください。（項目名）
+					tmpMsgStr = tmpMsgStr.replace("項目名", "生年月日");
+					msgStr = msgStr + tmpMsgStr + "\n";
+				}
+			}
+		}
+		if(fullchkFlg) {
+			//		整合性チェック                              下記の全てが未設定ならエラー
+			//		- 生年月日(年月日のすべて指定)
+			//		- 出身校
+			//		- 卒年
+			if((StringUtils.isEmpty(indto.getDobYear()) && StringUtils.isEmpty(indto.getDobMonth()) && StringUtils.isEmpty(indto.getDobDay()))
+					&& StringUtils.isEmpty(indto.getMedSchoolCd())
+					&& StringUtils.isEmpty(indto.getGradYear())) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W028);//下記のいずれかが登録してください。- 生年月日(年月日のすべて指定)- 出身校- 卒年
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		//      専門追加情報                                ３００文字を超えている場合
+		if(!StringUtils.isEmpty(indto.getSpCom())) {
+			len = StringUtils.getByteLength(indto.getSpCom());
+			if(len > 300) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "専門追加情報");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}
+		}
+		if(fullchkFlg) {
 			//	勤務先情報．施設
 			if(StringUtils.isEmpty(indto.getSkInsNo())) {
 				errChk = true;
@@ -1499,6 +1671,8 @@ public class ND011Service extends BaseService {
 					}
 				}
 			}
+		}
+		if(fullchkFlg) {
 			//	勤務先情報．所属部科
 			if(StringUtils.isEmpty(indto.getSkDeptCd())) {
 				errChk = true;
@@ -1514,76 +1688,12 @@ public class ND011Service extends BaseService {
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}
-		//      ２：レングスチェック
-		//      項目                                チェック内容
-		int len = 0;
-		//      医師名(漢字)姓                              ５文字を超えている場合
-		if(!StringUtils.isEmpty(indto.getDocKanjiSei())) {
-			len = indto.getDocKanjiSei().length();
-			if(len > 5) {
+		if(fullchkFlg) {
+			//		整合性チェック                              "医師／薬剤師区分が「医師」の場合
+			//		役職まで登録されているか確認。"
+			if(indto.getDocType().equals("1") && StringUtils.isEmpty(indto.getSkTitleCd())){
 				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//      医師名(漢字)名                              ５文字を超えている場合
-		if(!StringUtils.isEmpty(indto.getDocKanjiMei())) {
-			len = indto.getDocKanjiMei().length();
-			if(len > 5) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//      医師名(半角カナ)姓                              １０文字を超えている場合
-		if(!StringUtils.isEmpty(indto.getDocKanaSei())) {
-			len = indto.getDocKanaSei().length();
-			if(len > 10) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//      医師名(半角カナ)名                              １０文字を超えている場合
-		if(!StringUtils.isEmpty(indto.getDocKanaMei())) {
-			len = indto.getDocKanaMei().length();
-			if(len > 10) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//      旧姓(漢字)姓                                ５文字を超えている場合
-		if(!StringUtils.isEmpty(indto.getOldKanaSei())) {
-			len = indto.getOldKanjSei().length();
-			if(len > 5) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(漢字)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//      旧姓(半角カナ)姓                                １０文字を超えている場合
-		if(!StringUtils.isEmpty(indto.getOldKanaSei())) {
-			len = indto.getOldKanaSei().length();
-			if(len > 10) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(半角カナ)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//      専門追加情報                                ３００文字を超えている場合
-		if(!StringUtils.isEmpty(indto.getSpCom())) {
-			len = StringUtils.getByteLength(indto.getSpCom());
-			if(len > 300) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "専門追加情報");
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W029);//医師／薬剤師区分に医師を設定する場合は役職を指定してください。
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}
@@ -1609,101 +1719,8 @@ public class ND011Service extends BaseService {
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}
-		//		４：半角全角チェック
-		//		項目                                チェック内容
-		//		医師名(漢字)姓                              半角文字が含まれている場合
-		if(!StringUtils.isEmpty(indto.getDocKanjiSei())) {
-			if(!StringUtils.isMultiByte(indto.getDocKanjiSei())){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//		医師名(漢字)名                              半角文字が含まれている場合
-		if(!StringUtils.isEmpty(indto.getDocKanjiMei())) {
-			if(!StringUtils.isMultiByte(indto.getDocKanjiMei())){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(漢字)名");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//		医師名(半角カナ)姓                              全角文字が含まれている場合
-		if(!StringUtils.isEmpty(indto.getDocKanaSei())) {
-			if(StringUtils.checkMultiByte(indto.getDocKanaSei())){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//		医師名(半角カナ)名                              全角文字が含まれている場合
-		if(!StringUtils.isEmpty(indto.getDocKanaMei())) {
-			if(StringUtils.checkMultiByte(indto.getDocKanaMei())){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "医師名(半角カナ)名");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//		旧姓(漢字)姓                                半角文字が含まれている場合
-		if(!StringUtils.isEmpty(indto.getOldKanjSei())) {
-			if(!StringUtils.isMultiByte(indto.getOldKanjSei())){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W015);//全角で入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(漢字)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//		旧姓(半角カナ)姓                                全角文字が含まれている場合
-		if(!StringUtils.isEmpty(indto.getOldKanaSei())) {
-			if(StringUtils.checkMultiByte(indto.getOldKanaSei())){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W014);//半角で入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "旧姓(半角カナ)姓");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-		}
-		//		７：整合性チェック
+
 		if(fullchkFlg) {
-			//W022	有効な年月日を入力してください。（項目名）
-			//生年月日
-			if(!StringUtils.isEmpty(indto.getDobYear()) || !StringUtils.isEmpty(indto.getDobMonth()) || !StringUtils.isEmpty(indto.getDobDay())) {
-				if(!DateUtils.isDate(indto.getDobYear() + indto.getDobMonth() + indto.getDobDay())) {
-					errChk = true;
-					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W022);//有効な年月日を入力してください。（項目名）
-					tmpMsgStr = tmpMsgStr.replace("項目名", "生年月日");
-					msgStr = msgStr + tmpMsgStr + "\n";
-				}
-			}
-			//改姓日
-			if(!StringUtils.isEmpty(indto.getNewNameStYear()) || !StringUtils.isEmpty(indto.getNewNameStMonth()) || !StringUtils.isEmpty(indto.getNewNameStDay())) {
-				if(!DateUtils.isDate(indto.getNewNameStYear() + indto.getNewNameStMonth() + indto.getNewNameStDay())) {
-					errChk = true;
-					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W022);//有効な年月日を入力してください。（項目名）
-					tmpMsgStr = tmpMsgStr.replace("項目名", "改姓日");
-					msgStr = msgStr + tmpMsgStr + "\n";
-				}
-			}
-			//		整合性チェック                              下記の全てが未設定ならエラー
-			//		- 生年月日(年月日のすべて指定)
-			//		- 出身校
-			//		- 卒年
-			if((StringUtils.isEmpty(indto.getDobYear()) && StringUtils.isEmpty(indto.getDobMonth()) && StringUtils.isEmpty(indto.getDobDay()))
-					&& StringUtils.isEmpty(indto.getMedSchoolCd())
-					&& StringUtils.isEmpty(indto.getGradYear())) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W028);//下記のいずれかが登録してください。- 生年月日(年月日のすべて指定)- 出身校- 卒年
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
-			//		整合性チェック                              "医師／薬剤師区分が「医師」の場合
-			//		役職まで登録されているか確認。"
-			if(indto.getDocType().equals("1") && StringUtils.isEmpty(indto.getSkTitleCd())){
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W029);//医師／薬剤師区分に医師を設定する場合は役職を指定してください。
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}
 			//		項目                                チェック内容
 			//		重複申請チェック                                同じULTコードに紐づく医師新規作成申請がすでに存在している場合
 			SelectND011MainDataEntity paramChkEntity = new SelectND011MainDataEntity();

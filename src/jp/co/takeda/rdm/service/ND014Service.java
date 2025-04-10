@@ -641,21 +641,6 @@ public class ND014Service extends BaseService {
 		if(fullchkFlg) {
 			//	１：必須入力チェック
 			//	項目
-			//	復活理由
-			if(StringUtils.isEmpty(indto.getRstReason())) {
-				errChk = true;
-				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "復活理由");
-				msgStr = msgStr + tmpMsgStr + "\n";
-			}else {
-				// 削除理由が「その他（復活理由コメント・必須）」の場合、必須項目に値が入力されているか確認
-				if(indto.getRstReason().equals("02") && StringUtils.isEmpty(indto.getReqComment())) {
-					errChk = true;
-					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-					tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
-					msgStr = msgStr + tmpMsgStr + "\n";
-				}
-			}
 			if(!indto.getUnknownFlg()){
 				//	勤務先情報．施設
 				if(StringUtils.isEmpty(indto.getSkInsNo())) {
@@ -689,6 +674,21 @@ public class ND014Service extends BaseService {
 					msgStr = msgStr + tmpMsgStr + "\n";
 				}
 
+			}
+			//	復活理由
+			if(StringUtils.isEmpty(indto.getRstReason())) {
+				errChk = true;
+				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
+				tmpMsgStr = tmpMsgStr.replace("項目名", "復活理由");
+				msgStr = msgStr + tmpMsgStr + "\n";
+			}else {
+				// 削除理由が「その他（復活理由コメント・必須）」の場合、必須項目に値が入力されているか確認
+				if(indto.getRstReason().equals("02") && StringUtils.isEmpty(indto.getReqComment())) {
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
+					tmpMsgStr = tmpMsgStr.replace("項目名", "申請コメント");
+					msgStr = msgStr + tmpMsgStr + "\n";
+				}
 			}
 		}
 		//      ２：レングスチェック

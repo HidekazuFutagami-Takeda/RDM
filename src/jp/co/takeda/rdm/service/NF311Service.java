@@ -78,6 +78,9 @@ public class NF311Service extends BaseService {
         String sysDate = fmtDate.format(systemDate);
 
         String reqId = indto.getReqId();
+        if(StringUtils.isEmpty(reqId)) {
+        	reqId = null;
+        }
         boolean errFlg = false;
         String errMsg = "";
 

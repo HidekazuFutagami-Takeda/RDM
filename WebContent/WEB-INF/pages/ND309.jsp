@@ -280,7 +280,7 @@
 				    <td></td>
 					<td>承認・却下コメント</td>
 					<td>
-					    <s:textarea label="aprComment" name="reqComment" style="width: 60vw; resize: none;" rows="3"/>
+					    <s:textarea label="aprComment" name="reqComment" style="width: 60vw; resize: none;" maxlength="100" rows="3"/>
 					</td>
 				</tr>
 			</s:if>

@@ -557,7 +557,7 @@
           <table class="comPortalTable" align="center">
               <tr>
                   <td>
-                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" rows="3"/>
+                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" maxlength="100" rows="3"/>
                   </td>
               </tr>
           </table>

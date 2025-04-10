@@ -373,10 +373,10 @@ table {
               <tr>
                   <td>
                       <s:if test='reqCommentFlg == 1'>
-                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" rows="3"/>
+                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" rows="3" maxlength="100"/>
                       </s:if>
                       <s:elseif test='reqCommentFlg == 0'>
-                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" cssClass="mediumGray" rows="3" readonly="true"/>
+                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" cssClass="mediumGray" rows="3" maxlength="100" readonly="true"/>
                       </s:elseif>
                   </td>
               </tr>

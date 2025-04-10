@@ -426,7 +426,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	</table>
 	<table>
       <tr>
-	      <td ><nobr><s:textarea name="ntyMemo"  cols="50" rows="3" maxlength="300" style="width: 850px; height: 80px;" escape="false" /></nobr></td>
+	      <td ><nobr><s:textarea name="ntyMemo"  cols="50" rows="3" maxlength="250" style="width: 850px; height: 80px;" escape="false" /></nobr></td>
       </tr>
 	</table>
 	<!-- <div style="max-height:160px;width:1000px;overflow-y:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">

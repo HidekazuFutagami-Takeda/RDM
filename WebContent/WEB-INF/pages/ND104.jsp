@@ -487,25 +487,25 @@
         	<s:if test='%{reqStsCd == 01}'>
         		<!-- 活性 -->
 				<td colspan="4">
-	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"  />
+	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"  />
 	        	</td>
 	 		</s:if>
 	 		<s:elseif test='%{reqStsCd == null}'>
 	 			<!-- 活性 -->
 				<td colspan="4">
-	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"  />
+	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"  />
 	        	</td>
 	 		</s:elseif>
 	 		<s:elseif test='%{reqStsCd == ""}'>
 	 			<!-- 活性 -->
 				<td colspan="4">
-	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"  />
+	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"  />
 	        	</td>
 	 		</s:elseif>
 	 		<s:else>
 	 			<!-- 非活性 -->
 				<td colspan="4">
-	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/>
+	        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/>
 	        	</td>
 	 		</s:else>
         	<td></td>
@@ -530,7 +530,7 @@
 	        <tr>
 	        	<td></td>
 	        	<td colspan="4">
-	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
+	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
 	        	</td>
 	        	<td></td>
 	        	<td></td>

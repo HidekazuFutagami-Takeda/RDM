@@ -375,19 +375,19 @@
 	      <td class="comFormTableItem"><nobr>医師名(漢字)姓<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" />
+	      		<s:textfield name="docKanjiSei" size="15" maxlength="5" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanjiSei" size="15" maxlength="5" readonly="true" />
 			</s:else>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(漢字)名<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="docKanjiMei" size="15" maxlength="15" />
+	      		<s:textfield name="docKanjiMei" size="15" maxlength="5" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanjiMei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanjiMei" size="15" maxlength="5" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>
@@ -396,19 +396,19 @@
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)姓<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="docKanaSei" size="15" maxlength="15" />
+	      		<s:textfield name="docKanaSei" size="15" maxlength="10" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanaSei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanaSei" size="15" maxlength="10" readonly="true" />
 			</s:else>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)名<font color="red" size="3">*</font></nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:textfield name="docKanaMei" size="15" maxlength="15" />
+			      <s:textfield name="docKanaMei" size="15" maxlength="10" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanaMei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanaMei" size="15" maxlength="10" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>
@@ -417,10 +417,10 @@
 	      <td class="comFormTableItem"><nobr>旧姓(漢字)姓</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      <s:textfield name="oldKanjSei" size="15" maxlength="15" />
+	      <s:textfield name="oldKanjSei" size="15" maxlength="5" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="oldKanjSei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="oldKanjSei" size="15" maxlength="5" readonly="true" />
 			</s:else>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>改姓日</nobr></td>
@@ -438,10 +438,10 @@
 	      <td class="comFormTableItem"><nobr>旧姓(半角カナ)姓</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:textfield name="oldKanaSei" size="15" maxlength="15" />
+			      <s:textfield name="oldKanaSei" size="15" maxlength="10" />
 			</s:if>
 	      	<s:else>
-			      <s:textfield name="oldKanaSei" size="15" maxlength="15" readonly="true" />
+			      <s:textfield name="oldKanaSei" size="15" maxlength="10" readonly="true" />
 			</s:else>
 	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

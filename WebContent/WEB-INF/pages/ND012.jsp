@@ -460,10 +460,10 @@
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" />
+	      		<s:textfield name="docKanjiSei" size="15" maxlength="5" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanjiSei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanjiSei" size="15" maxlength="5" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>
@@ -472,10 +472,10 @@
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiMei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="docKanjiMei" size="15" maxlength="15" />
+	      		<s:textfield name="docKanjiMei" size="15" maxlength="5" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanjiMei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanjiMei" size="15" maxlength="5" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>
@@ -484,10 +484,10 @@
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      		<s:textfield name="docKanaSei" size="15" maxlength="15" />
+	      		<s:textfield name="docKanaSei" size="15" maxlength="10" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanaSei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanaSei" size="15" maxlength="10" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>
@@ -496,10 +496,10 @@
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaMei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:textfield name="docKanaMei" size="15" maxlength="15" />
+			      <s:textfield name="docKanaMei" size="15" maxlength="10" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="docKanaMei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="docKanaMei" size="15" maxlength="10" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>
@@ -513,10 +513,10 @@
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanjSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-	      <s:textfield name="oldKanjSei" size="15" maxlength="15" />
+	      <s:textfield name="oldKanjSei" size="15" maxlength="5" />
 	      	</s:if>
 	      	<s:else>
-	      		<s:textfield name="oldKanjSei" size="15" maxlength="15" readonly="true" />
+	      		<s:textfield name="oldKanjSei" size="15" maxlength="5" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>
@@ -525,10 +525,10 @@
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanaSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
-			      <s:textfield name="oldKanaSei" size="15" maxlength="15" />
+			      <s:textfield name="oldKanaSei" size="15" maxlength="10" />
 			</s:if>
 	      	<s:else>
-			      <s:textfield name="oldKanaSei" size="15" maxlength="15" readonly="true" />
+			      <s:textfield name="oldKanaSei" size="15" maxlength="10" readonly="true" />
 			</s:else>
 	      </nobr></td>
       </tr>

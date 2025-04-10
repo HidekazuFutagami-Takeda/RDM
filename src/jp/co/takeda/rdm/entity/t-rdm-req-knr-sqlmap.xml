@@ -456,6 +456,7 @@
 		REQ_STS = #{reqStsCd},
 		REQ_COMMENT = #{reqComment},
 		<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if><if test="aprMemo == null">APR_MEMO = NULL,</if>
+		REQ_YMDHMS = #{reqYmdhms},
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE
@@ -468,6 +469,7 @@
 		REQ_STS = #{reqStsCd},
 		REQ_COMMENT = #{reqComment},
 		<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if><if test="aprMemo == null">APR_MEMO = NULL,</if>
+		REQ_YMDHMS = #{reqYmdhms},
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE
@@ -481,6 +483,7 @@
 		TEKIYO_YMD = #{tekiyoYmd},
 		REQ_COMMENT = #{reqComment},
 		<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if><if test="aprMemo == null">APR_MEMO = NULL,</if>
+		REQ_YMDHMS = #{reqYmdhms},
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE

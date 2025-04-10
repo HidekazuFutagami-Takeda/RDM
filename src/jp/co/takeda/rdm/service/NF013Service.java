@@ -342,6 +342,8 @@ public class NF013Service extends BaseService {
         Date systemDate = DateUtils.getNowDate();
         SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
         String sysDate = fmtDate.format(systemDate);
+        SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+        String sysDateTime = fmtDateTime.format(systemDate);
 
         String reqId = indto.getReqId();
         boolean errFlg = false;
@@ -399,6 +401,7 @@ public class NF013Service extends BaseService {
         	tRdmReqKnrInsData.setReqJgiNo(indto.getReqJgiNo());
         	tRdmReqKnrInsData.setReqJgiName(indto.getReqJgiName());
         	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
+        	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
         	tRdmReqKnrInsData.setInsNo(indto.getInsNo());
         	tRdmReqKnrInsData.setFbReqFlg("0");
         	tRdmReqKnrInsData.setInsShaYmd(systemDate);
@@ -420,6 +423,7 @@ public class NF013Service extends BaseService {
 				tRdmReqKnrUpdData.setReqStsCd("01");
 			}
 			tRdmReqKnrUpdData.setReqComment(indto.getReqComment());
+			tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
 			tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());
         	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());

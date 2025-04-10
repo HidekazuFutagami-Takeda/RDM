@@ -639,8 +639,8 @@ function pltPage( pageCntCur ){
  */
 function goND403() {
 
-    document.fm1.functionId.value = "Req"
-	document.fm1.screenId.value	= "ND401";
+    document.fm1.functionId.value = "Init"
+	document.fm1.screenId.value	= "ND403";
 
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);

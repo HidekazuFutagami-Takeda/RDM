@@ -389,11 +389,11 @@ function clearText() {
  * 申請画面へ(ボタン)押下時に呼ばれます。
  * </pre>
  */
-function goND403() {
+function goNC101() {
 	//現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 1;
 
-    document.fm1.functionId.value = "Init"
+    document.fm1.functionId.value = "Register"
 	document.fm1.screenId.value	= "ND403";
 
     // 検索イベント呼び出し
@@ -418,5 +418,6 @@ function jimSearch() {
     comSubmitForAnyWarp(fm1);
 
 }
+
 
 

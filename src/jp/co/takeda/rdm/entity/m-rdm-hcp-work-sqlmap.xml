@@ -44,6 +44,7 @@
         <result column="DCC" property="dccType"/>
         <result column="ULT_DOC_NO" property="ultDocNo"/>
         <result column="NEXT_BIZDAY" property="nextBizday"/>
+        <result column="UPD_SHA_YMD" property="updShaYmd"/>
     </resultMap>
 
     <select id="selectCntNd401DmcMstPost" parameterType="jp.co.takeda.rdm.entity.join.SelectNd401InitEntity" resultMap="selectNd401InitResultMap">
@@ -303,5 +304,14 @@
           AND HCP.DOC_NO = WOR.DOC_NO
         WHERE 1 = 1
           AND WOR.DOC_NO = #{inDocNo}
+    </select>
+    <select id="selectNd403UpdYmd" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpWorkEntity" resultMap="selectHcpWorkResultMap">
+    	SELECT
+    	    MAX(UPD_SHA_YMD)
+    	FROM
+    	    M_RDM_HCP_WORK
+    	WHERE 1 = 1
+    	    AND INS_NO = #{inInsNo}
+    	    AND DOC_NO = #{inDocNo}
     </select>
 </mapper>

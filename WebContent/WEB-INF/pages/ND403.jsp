@@ -11,7 +11,8 @@
 --%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="jp.co.takeda.rdm.util.StringUtils"%>
-<%@page import="jp.co.takeda.rdm.dto.NF501DTO"%>
+<%@page import="jp.co.takeda.rdm.dto.ND401DTO"%>
+<%@page import="jp.co.takeda.rdm.dto.ND403DTO"%>
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal"
@@ -40,6 +41,45 @@
     function comSetFormWindowInfo(){
     	comClickFlgInit();
     }
+
+	// 戻るボタン
+	function backBtn(){
+		//２度押し対策フラグ初期化
+		comClickFlgInit();
+
+		if(window.confirm(destructMsg.replace("（遷移元）", '医師勤務先情報一括更新'))){
+			// NF211_施設紐付け新規に遷移
+			document.fm1.screenId.value="ND401";
+			document.fm1.functionId.value="Init";
+
+			comSubmitForAnyWarp(fm1);
+	    }
+	}
+
+	// 画面遷移処理
+    function gotoNext(screenId,functionId){
+   		document.fm1.target="";
+  	 	fm1.screenId.value=screenId;
+  	  	fm1.functionId.value=functionId;
+  	  	comSubmitForAnyWarp(fm1);
+  	}
+
+	/**
+	 * <pre>
+	 *  申請画面遷移
+	 * 申請画面へ(ボタン)押下時に呼ばれます。
+	 * </pre>
+	 */
+	function goNC101() {
+		//現在ページ番号変更（遷移）
+	    document.fm1.pageCntCur.value = 1;
+
+	    document.fm1.functionId.value = "Register"
+		document.fm1.screenId.value	= "ND403";
+
+	    // 検索イベント呼び出し
+	    comSubmitForAnyWarp(fm1);
+	}
     </script>
 	<script type="text/javascript" src="js/ND401.js"></script>
 	<script type="text/javascript" src="js/catTkCityCombo.js"></script>
@@ -178,7 +218,7 @@
 <%-- submit用フォーム 終了 --%>
 <%-- input用フォーム 開始 --%>
   <s:form name="fm1" theme="simple">
-	<%-- 常に配列にするためにダミーを配置 --%>
+
     <s:hidden name="callBack" />
 	<s:hidden name="sortId" />
 	<s:hidden name="jokenSetCd" />
@@ -232,6 +272,7 @@
       <s:hidden name="clearUpdMstFrom" />
       <s:hidden name="clearUpdMstTo" />
 
+	<s:hidden name="reqBtnFlg" />
       <s:hidden name="deptCodeHenkou" />
       <s:hidden name="deptKnHenkou" />
 
@@ -282,21 +323,15 @@
     </table>
 <%-- ポータルタイトル 終了 --%>
 		<!-- エラー表示部  開始 -->
-		<center>
-		<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-			<tbody>
-				<s:if test="msgStr != null">
-					<tr>
-						<td style="height: 80px; text-align: center;">
-							<nobr style="color: red; font-size: 15px;">
-								<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-							</nobr>
-						</td>
-					</tr>
-				</s:if>
-			</tbody>
-		</table>
-		<center/>
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 		<!-- エラー表示部  終了 -->
 
 		<script>
@@ -321,24 +356,50 @@
 
 
 	    	<div class="kensakuDate">
-	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
+	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none; margin-top:3pt;margin-bottom:1pt;">
 	    		<thead>
 		        <tr>
-		            <td class="comTableTitle" id="1" style="width:146pt;"><nobr>施設固定C</nobr></td>
-		            <td class="comTableTitle" id="2" style="width:146pt;"><nobr>施設名</nobr></td>
-		            <td class="comTableTitle" id="3" style="width:146pt;"><nobr>医師固定C</nobr></td>
-		            <td class="comTableTitle" id="5" style="width:146pt;"><nobr>医師名</nobr></td>
-		            <td class="comTableTitle" id="6" style="width:146pt;"><nobr>役職（変更前）</nobr></td>
-		            <td class="comTableTitle" id="7" style="width:146pt;"><nobr>役職（変更後）</nobr></td>
-		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>所属部科（変更前）</nobr></td>
-		            <td colspan="3" class="comTableTitle" id="8" style="width:146pt;"><nobr>所属部科（変更後）</nobr></td>
-					<td></td>
-					<td></td>
+		            <td class="comTableTitle" id="1" style="width:146pt;"rowspan=2><nobr>施設固定C</nobr></td>
+		            <td class="comTableTitle" id="2" style="width:146pt;"rowspan=2><nobr>施設名</nobr></td>
+		            <td class="comTableTitle" id="3" style="width:146pt;"rowspan=2><nobr>医師固定C</nobr></td>
+		            <td class="comTableTitle" id="4" style="width:146pt;"rowspan=2><nobr>医師名</nobr></td>
+		            <td class="comTableTitle" id="5" style="width:146pt;"colspan=2><nobr>役職</nobr></td>
+		            <td class="comTableTitle" id="6" style="width:146pt;"colspan=2><nobr>所属部科</nobr></td>
+		        </tr>
+		        <tr>
+		            <td class="comTableTitle" id="7" style="width:146pt;"><nobr>役職（変更前）</nobr></td>
+		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>役職（変更後）</nobr></td>
+		            <td class="comTableTitle" id="9" style="width:146pt;"><nobr>所属部科（変更前）</nobr></td>
+		            <td class="comTableTitle" id="10" style="width:146pt;"><nobr>所属部科（変更後）</nobr></td>
 		        </tr>
 		        </thead>
 			    <%-- 内容 --%>
 			    <tbody>
 			    <s:iterator value="kmuIkkatsuDataList" status="status" var="rowBean">
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].insNo"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].insAbbrName"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].docNo"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].docKanj"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preTitleKj"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postTitleKj"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptKanji"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptKanji"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preTitleCode"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postTitleCode"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptCode"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptCode"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].preDeptKana"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].postDeptKana"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].jobForm"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].univPosCode"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].dcc"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].ultInsNo"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].ultDocNo"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].sortNum1"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].sortNum2"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].sortNum3"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].sortNum"/>
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].updShaYmd"/>
 			        <tr>
 
 						<!-- 施設固定C -->
@@ -387,14 +448,23 @@
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].preTitleKj" />
+				            	<s:if test="%{#rowBean.preTitleKj != #rowBean.postTitleKj}">
+		            				<s:label key="kmuIkkatsuDataList[%{#status.index}].preTitleKj" />
+		            			</s:if>
+		            			<s:else>
+		            				<nobr>&nbsp;</nobr>
+		            			</s:else>
 				            </s:else>
 						</td>
 
 						<!-- 役職（変更後） -->
 						<td class="comTableItem" id=""  >
-							<s:label key="kmuIkkatsuDataList[%{#status.index}].postTitleCode" />
-
+				            	<s:if test="%{#rowBean.preTitleKj != #rowBean.postTitleKj}">
+		            				<font color="red"><s:label key="kmuIkkatsuDataList[%{#status.index}].postTitleKj" /></font>
+		            			</s:if>
+		            			<s:else>
+		            				<nobr>&nbsp;</nobr>
+		            			</s:else>
 						</td>
 
 						<!--所属部科（変更前）   -->
@@ -403,7 +473,12 @@
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].preDeptKanji" />
+				            	<s:if test="%{#rowBean.preDeptKanji != #rowBean.postDeptKanji}">
+		            				<s:label key="kmuIkkatsuDataList[%{#status.index}].preDeptKanji" />
+		            			</s:if>
+		            			<s:else>
+		            				<nobr>&nbsp;</nobr>
+		            			</s:else>
 				            </s:else>
 						</td>
 
@@ -414,7 +489,12 @@
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-		            			<s:label key="kmuIkkatsuDataList[%{#status.index}].postDeptKanji" />
+				            	<s:if test="%{#rowBean.preDeptKanji != #rowBean.postDeptKanji}">
+		            				<font color="red"><s:label key="kmuIkkatsuDataList[%{#status.index}].postDeptKanji" /></font>
+		            			</s:if>
+		            			<s:else>
+		            				<nobr>&nbsp;</nobr>
+		            			</s:else>
 				            </s:else>
 						</td>
 						<!-- ULT施設コード　隠し項目 -->
@@ -461,8 +541,6 @@
 						<td style="display:none;">
 							<s:label key="kmuIkkatsuDataList[%{#status.index}].dcc" />
 						</td>
-
-
 			        </tr>
 
 			    </s:iterator>
@@ -471,25 +549,17 @@
 
 			    </div>
 
-    </table>
-
-
-
-	</CENTER>
-
-	<%-- メイン部 一覧 終了 --%>
-
-	<%-- チェック済み表示欄 終了 --%>
-	<%--ヘッダー部　開始 --%>
-
-
-
-
-
-	</table>
-
-	 </tr>
-          </tbody>
+          <table class="comPortalTable" align="center">
+              <tr>
+                  <td>申請コメント</td>
+              </tr>
+          </table>
+          <table class="comPortalTable" align="center">
+              <tr>
+                  <td>
+                          <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" rows="3"/>
+                  </td>
+              </tr>
           </table>
 
          <div style="display: flex; justify-content: space-between;">
@@ -498,9 +568,12 @@
        		</div>
 
        		<div style="margin-top: 3%;margin-right: 10%;">
-       			<s:if test="searchType == 1 ">
-       				<input type="button" value="申請画面へ" onclick="goND403();"  />
+       			<s:if test="reqBtnFlg == 1 ">
+       				<input type="button" value="申請" onclick="goNC101();"  />
        			</s:if>
+       			<s:else>
+       				<input type="button" value="申請" onclick="" disabled />
+       			</s:else>
        		</div>
          </div>
   </s:form>

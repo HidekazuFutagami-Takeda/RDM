@@ -142,10 +142,10 @@
             SUBSTR(PARAM_MST_MN_DOC.VALUE,2,1) DOC_FLG	  --医師メニュースイッチ
         FROM ORAUSR01.M_RDM_PARAM_MST PARAM_MST_MN_KMU
         INNER JOIN
-            ORAUSR01.M_RDM_PARAM_MST PARAM_MST_MN_DOC
+             ORAUSR01.M_RDM_PARAM_MST PARAM_MST_MN_DOC
         ON
-            PARAM_MST_MN_KMU.PARAM_NAME = 'MN_KMU'
-        AND PARAM_MST_MN_DOC.PARAM_NAME = 'MN_DOC'
+             PARAM_MST_MN_KMU.PARAM_NAME = 'MN_KMU'
+        AND  PARAM_MST_MN_DOC.PARAM_NAME = 'MN_DOC'
     </select>
     <select id="selectParamNM011" parameterType="jp.co.takeda.rdm.entity.join.SelectParamNM011Entity" resultMap="selectParamNM011ResultMap">
         SELECT

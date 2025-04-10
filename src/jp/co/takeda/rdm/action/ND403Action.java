@@ -152,4 +152,39 @@ public class ND403Action extends BaseAction<ND403DTO> {
     private void setSearchCon() {
 
     }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String register() throws Exception {
+    	BaseDTO outdto = dto;
+        registerSetup();
+        // F層呼び出し
+        outdto = nD403Service.register(dto);
+        return registerNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void registerSetup() throws Exception {
+        // START UOC
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String registerNext(BaseDTO outdto) throws Exception {
+        // START UOC
+        // END UOC
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
 }

@@ -536,7 +536,8 @@ public class NF001Service extends BaseService {
 
         	// 機能フラグ4 復活
         	String funcFlg4 = "0";
-        	if(entity.getInsNo() != null && "1".equals(entity.getDelFlg())) {
+        	if(entity.getInsNo() != null && ("1".equals(entity.getDelKbn()) || "2".equals(entity.getDelKbn())
+        			|| "3".equals(entity.getDelKbn()))) {
         		funcFlg4 = "1";
         	}
 

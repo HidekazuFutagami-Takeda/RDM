@@ -114,6 +114,7 @@
          <result column="JSK_VALUE_ZK" property="jskValueZk"/>
          <result column="JSK_VALUE_ZZK" property="jskValueZzk"/>
          <result column="DEL_KBN" property="delKbn"/>
+         <result column="DEL_KBN_NM" property="delKbnNm"/>
          <result column="DEL_FLG" property="delFlg"/>
          <result column="DEL_FLG_NM" property="delFlgNm"/>
          <result column="BUMON_RYAKU_NAME" property="bumonRyakuName"/>
@@ -1020,7 +1021,8 @@
  		, SUP.JSK_VALUE_TK
  		, SUP.JSK_VALUE_ZK
  		, SUP.JSK_VALUE_ZZK
- 		, CDM_DELKBN.VALUE1_KANJ AS DEL_KBN
+ 		, MST.DEL_KBN
+ 		, CDM_DELKBN.VALUE1_KANJ AS DEL_KBN_NM
  		, MST.DEL_FLG
  		, CDM_DELFLG.VALUE1_KANJ AS DEL_FLG_NM
  		, JGI_B.BUMON_RYAKU_NAME
@@ -1294,7 +1296,8 @@
  		, SUP.JSK_VALUE_TK
  		, SUP.JSK_VALUE_ZK
  		, SUP.JSK_VALUE_ZZK
- 		, CDM_DELKBN.VALUE1_KANJ AS DEL_KBN
+ 		, MST.DEL_KBN
+ 		, CDM_DELKBN.VALUE1_KANJ AS DEL_KBN_NM
  		, MST.DEL_FLG
  		, CDM_DELFLG.VALUE1_KANJ AS DEL_FLG_NM
  		, JGI_B.BUMON_RYAKU_NAME

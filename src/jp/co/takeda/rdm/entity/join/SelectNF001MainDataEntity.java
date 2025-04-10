@@ -153,6 +153,12 @@ public class SelectNF001MainDataEntity extends BaseEntity implements Serializabl
     private String delKbn;
 
     /**
+     * 廃院区分名
+     * @generated
+     */
+    private String delKbnNm;
+
+    /**
      * 削除フラグ
      * @generated
      */
@@ -667,6 +673,21 @@ public class SelectNF001MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setDelKbn(String delKbn) {
 		this.delKbn = delKbn;
+	}
+
+	/**
+	 * SelectNF001MainDataEntity.javadelKbnNmを設定
+	 * @return delKbnNm
+	 */
+	public String getDelKbnNm() {
+		return delKbnNm;
+	}
+
+	/**
+	 * @param delKbnNm セットする delKbnNm
+	 */
+	public void setDelKbnNm(String delKbnNm) {
+		this.delKbnNm = delKbnNm;
 	}
 
 	/**

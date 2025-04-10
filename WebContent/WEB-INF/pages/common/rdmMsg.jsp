@@ -22,7 +22,7 @@
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<s:if test="msgStr != null">
+<s:if test="msgStr != null && msgStr != ''">
 	<table border="1" cellpadding="2" cellspacing="0" width="75%" style="background-color:gold;">
 		<tbody>
 			<tr>

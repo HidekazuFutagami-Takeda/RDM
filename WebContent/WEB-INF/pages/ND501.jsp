@@ -305,21 +305,15 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
     </table>
 <%-- ポータルタイトル 終了 --%>
 		<!-- エラー表示部  開始 -->
-		<center>
-		<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-			<tbody>
-				<s:if test="msgStr != null">
-					<tr>
-						<td style="height: 80px; text-align: center;">
-							<nobr style="color: red; font-size: 15px;">
-								<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-							</nobr>
-						</td>
-					</tr>
-				</s:if>
-			</tbody>
-		</table>
-		<center/>
+		<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 		<!-- エラー表示部  終了 -->
 
 		<script>

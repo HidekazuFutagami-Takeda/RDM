@@ -557,7 +557,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			        <%--領域担当者データ保持用のHIDDEN項目--%>
 			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtGrpCd"/>
 			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtCd"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtNm"/>
 			        <s:hidden name="lnkTrtDataList[%{#status.index}].hinGCd"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].hinGName"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].insAbbrName"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].hoInsType"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].insAddr"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].jgiName"/>
 
 					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].trtNm"/></nobr></td>
 					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].hinGName"/></nobr></td>

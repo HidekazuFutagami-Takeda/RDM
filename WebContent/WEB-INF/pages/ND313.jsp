@@ -542,14 +542,14 @@
 	function backPage() {
 
 		destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
-		if(window.confirm(destructMsg.replace("（遷移元）", '医師勤務先削除'))){
+		//if(window.confirm(destructMsg.replace("（遷移元）", '医師勤務先削除'))){
 
 				document.fm1.screenId.value="ND104";
 				document.fm1.functionId.value="Init";
 
 				comSubmitForAnyWarp(fm1);
 
-		}
+		//}
 
 	}
 	// 却下ボタン

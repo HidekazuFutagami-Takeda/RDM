@@ -38,13 +38,13 @@
     <script>
     destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
     function backFnc(reqId){
-    	if(window.confirm(destructMsg.replace("（遷移元）", '医師復活'))){
+    	//if(window.confirm(destructMsg.replace("（遷移元）", '医師復活'))){
     		document.fm1.screenId.value="ND014";
 			document.fm1.functionId.value="Init";
 			document.fm1.reqId.value=reqId;
 			document.fm1.preScreenId.value="ND305";
 			comSubmitForAnyWarp(fm1);
-    	}
+    	//}
     }
     function register(kbn){
       //区分 0:申請,1:承認,2:却下

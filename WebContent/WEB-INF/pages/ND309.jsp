@@ -87,13 +87,13 @@
 			//２度押し対策フラグ初期化
 			comClickFlgInit();
 
-			if(window.confirm(destructMsg.replace("（遷移元）", '医療機関以外への異動'))){
+			//if(window.confirm(destructMsg.replace("（遷移元）", '医療機関以外への異動'))){
 				// NF211_施設紐付け新規に遷移
 				document.fm1.screenId.value="ND102";
 				document.fm1.functionId.value="Init";
 
 				comSubmitForAnyWarp(fm1);
-		    }
+		    //}
 		}
 </script>
 </head>

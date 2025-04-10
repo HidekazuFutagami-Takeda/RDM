@@ -46,7 +46,72 @@ var CDC_SCREEN_ID = "CatDeptsCombo";
  * </pre>
  */
 var gMsg = new Array();
+function tmpCdcView(){
 
+	// 2度押し対策
+	  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+	  // 全てのポップアップを閉じる
+	  hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
+
+	 // パラメータの設定
+	  //document.fm1.cdcCheckedCodes.value = "";
+	  document.fm1.paramInsNo.value = document.fm1.insNoSk.value;
+	  document.fm1.insAbbrName.value = document.fm1.insAbbrName.value;
+
+
+	  document.fm1.backScreenId.value = "ND103";
+	  gCdcViewWin = cdcView(gCdcViewWin,"tmpCallBackShozokuViewRDM","gCdcViewWin");
+	  return(true);
+	}
+
+function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
+	document.fm1.searchDeptCd.value = deptCode;
+	document.fm1.searchDeptNm.value = DeptKj;
+}
+
+
+/**
+ * 所属部科POPUP画面を呼び出します。
+ *
+ */
+//function tmpCdcView(){
+
+// 2度押し対策
+  //if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+
+  // 全てのポップアップを閉じる
+  //hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
+
+
+  //document.fm1.callBack.value = "ND103";
+ //gCdcViewWin = cdcView(gCdcViewWin,"tmpCallBackShozokuViewRDM","gCdcViewWin");
+  //return(true);
+//}
+
+/**
+ * <pre>
+ * 出身所属部科POPUP　コールバック関数。
+ * </pre>
+ */
+//function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
+//gCdcViewSelId 0:出身所属部科,1:勤務先情報 所属部科
+	//document.fm1.deptCodeAf.value = deptCode;
+	//document.fm1.deptKj.value = DeptKj;
+	//document.fm1.deptKn.value = DeptKn;
+//}
+
+/**
+ * <pre>
+ * 施設検索POPUP　コールバック関数。
+ * </pre>
+ */
+function tmpCallBackShisetsuView(insAbbrName,insNo){
+    document.fm1.searchInsNo.value = insNo;
+    document.fm1.searchInsNm.value = insAbbrName;
+//    document.fm1.searchInsHoInsType.value = hoInsType;
+//    document.fm1.searchInsInsClass.value = insClass;
+
+}
 /**
  * <pre>
  *  画面のロード時の処理
@@ -231,23 +296,7 @@ function ND311Page(){
 }
 
 
-/**
- * 所属部科POPUP画面を呼び出します。
- *
- */
-function tmpCdcView(){
 
-// 2度押し対策
-  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
-
-  // 全てのポップアップを閉じる
-  hcpClosePopUp(gCdcViewWin, "gCdcViewWin");
-
-
-  document.fm1.callBack.value = "ND103";
-  gCdcViewWin = cdcView(gCdcViewWin,"tmpCallBackShozokuViewRDM","gCdcViewWin");
-  return(true);
-}
 
 /**
  * 施設検索POPUP画面を呼び出します。
@@ -343,6 +392,8 @@ function cdcView(w,callBack,winVarName){
   var checkedCodes = document.fm1.cdcCheckedCodes;
   var jokenName = [];
   var joken = [];
+  //var jokenName = document.fm1.insAbbrName.value;
+  //var joken = document.fm1.insNoSk.value;
 //  for (var i = 0; i < checkedCodes.length; i++) {
 //    jokenName[jokenName.length] = "cdcCheckedCodes";
 //    joken[joken.length] = new Array(checkedCodes[i].value);
@@ -378,17 +429,6 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
 
 }
 
-/**
- * <pre>
- * 出身所属部科POPUP　コールバック関数。
- * </pre>
- */
-function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
-//gCdcViewSelId 0:出身所属部科,1:勤務先情報 所属部科
-	document.fm1.deptCodeAf.value = deptCode;
-	document.fm1.deptKj.value = DeptKj;
-	document.fm1.deptKn.value = DeptKn;
-}
 
 
 function jimClear(name) {

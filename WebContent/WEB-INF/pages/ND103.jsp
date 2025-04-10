@@ -43,6 +43,9 @@
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/catSosJgiExpand.js"></script>
 	<script type="text/javascript" src="js/jgiKanren.js"></script>
+	<script>
+
+	</script>
     <!-- css -->
     <style>
     	a {
@@ -201,6 +204,24 @@
       <s:hidden name="poprowno" />
       <s:hidden name="poptrtno" />
 
+        <%-- 所属部科ポップアップ用パラメータ --%>
+    <input type="hidden" name="cdcCheckedCodes" value="" />
+    <input type="hidden" name="paramInsNo" value="" />
+    <s:hidden name="loginJokenSetCd"/>
+
+			<input type="hidden" name="paramDocNo"           value="" />
+
+
+
+	<s:hidden id="sosCdPop" name="sosCdPop"/>
+	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
+	<s:hidden id="bumonRankPop" name="bumonRankPop" value=""/>
+	<s:hidden id="sosCd" name="sosCd"/>
+	<s:hidden id="upSosCd" name="upSosCd"/>
+	<s:hidden id="bumonRank" name="bumonRank"/>
+	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
+	<s:hidden id="jgiNo" name="jgiNo"/>
+	<s:hidden id="searchInsNo"  name="searchInsNo"></s:hidden>
       <%-- トップメニューから --%>
       <s:hidden name="trtGrpCd" />
       <s:hidden name="selectedJgiJoken" />
@@ -352,7 +373,8 @@
             <td class="comTableSearchItem" style="width:50pt;">
 	          	<nobr>所属部科<span style="color:red;">*</span></nobr>
           	</td>
-          	<td colspan="3" style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="JavaScript:tmpCdcView();return false;" />
+          	<td colspan="3" style="width: 35px;">
+          	<input class="comButton" type="button" value="選択" onClick="JavaScript:tmpCdcView();" />
           		<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
           		<span onclick="deptClear();">clear</span>
           	</td>

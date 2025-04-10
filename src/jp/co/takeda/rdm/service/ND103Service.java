@@ -309,9 +309,11 @@ public class ND103Service extends BaseService {
 	           	tRdmReqKnrInsData.setReqComment(dto.getReqComment());
 	           	tRdmReqKnrInsData.setInsNo(dto.getInsNoSk());
 	           	tRdmReqKnrInsData.setInsShaYmd(systemDate);
-	           	tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
+	           	//tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
+	           	tRdmReqKnrInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 	           	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
-	           	tRdmReqKnrInsData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
+	           	//tRdmReqKnrInsData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
+	           	tRdmReqKnrInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 	           	//申請管理 insert処理
 	           	dao.insertByValue(tRdmReqKnrInsData);
 	           }else {

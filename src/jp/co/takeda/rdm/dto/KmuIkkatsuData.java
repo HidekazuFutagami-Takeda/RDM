@@ -154,6 +154,12 @@ public class KmuIkkatsuData implements Serializable {
     */
    private String sortNum;
 
+   /**
+    * 更新日
+    * @generated
+    */
+   private String updShaYmd;
+
     /**
      * シリアルバージョンUID
      * @generated
@@ -514,6 +520,21 @@ public class KmuIkkatsuData implements Serializable {
 	 */
 	public void setSortNum(String sortNum) {
 		this.sortNum = sortNum;
+	}
+
+	/**
+	 * KmuIkkatsuData.javaupdShaYmdを設定
+	 * @return updShaYmd
+	 */
+	public String getUpdShaYmd() {
+		return updShaYmd;
+	}
+
+	/**
+	 * @param updShaYmd セットする updShaYmd
+	 */
+	public void setUpdShaYmd(String updShaYmd) {
+		this.updShaYmd = updShaYmd;
 	}
 
 	/**

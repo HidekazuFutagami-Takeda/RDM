@@ -186,6 +186,10 @@
         <action name="ND403Init" class="nD403Action" method="init">
             <result name="ND403">/WEB-INF/pages/ND403.jsp</result>
         </action>
+        <action name="ND403Register" class="nD403Action" method="register">
+        	<result name="ND403">/WEB-INF/pages/ND403.jsp</result>
+        	<result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+        </action>
         <action name="NC206Init" class="nC206Action" method="init">
             <result name="NC206">/WEB-INF/pages/NC206.jsp</result>
         </action>

@@ -160,19 +160,15 @@ if (stack.peek() instanceof NC203DTO) {
 	</s:iterator>
 
 	<tr><td>
-	<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-		<tbody>
-		<s:if test="msgStr != null">
-		<tr>
-		<td>
-		<nobr>
-		<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-		</nobr>
-		</td>
-		</tr>
-		</s:if>
-		</tbody>
-	</table>
+	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 		<!-- 前制御部 開始 -->
 		<table <s:if test='viewKbn == 2'>class="pupReferenceDetailBlue"</s:if><s:else>class="pupReferenceDetail"</s:else> align="center" style="width:500pt;">
 		<tbody>

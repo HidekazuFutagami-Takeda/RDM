@@ -200,6 +200,12 @@ public class ND013DTO extends BaseDTO implements Serializable {
      */
     private String delFlg;
 
+    /**
+     * 遷移用
+     *
+     */
+    private String tabFlg;
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -617,6 +623,21 @@ public class ND013DTO extends BaseDTO implements Serializable {
 	 */
 	public void setDummyHcoCount(Integer dummyHcoCount) {
 		this.dummyHcoCount = dummyHcoCount;
+	}
+
+	/**
+	 * ND013DTO.javatabFlgを設定
+	 * @return tabFlg
+	 */
+	public String getTabFlg() {
+		return tabFlg;
+	}
+
+	/**
+	 * @param tabFlg セットする tabFlg
+	 */
+	public void setTabFlg(String tabFlg) {
+		this.tabFlg = tabFlg;
 	}
 
 }

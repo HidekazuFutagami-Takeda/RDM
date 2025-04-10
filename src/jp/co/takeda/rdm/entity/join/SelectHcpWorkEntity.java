@@ -33,6 +33,12 @@ public class SelectHcpWorkEntity extends BaseEntity implements Serializable {
     private String inDocNo;
 
     /**
+     * 施設固定コード(入力)
+     * @generated
+     */
+    private String inInsNo;
+
+    /**
      * 施設固定コード
      * @generated
      */
@@ -97,6 +103,12 @@ public class SelectHcpWorkEntity extends BaseEntity implements Serializable {
      * @generated
      */
     private String nextBizday;
+
+    /**
+     * 更新日
+     * @generated
+     */
+    private String updShaYmd;
 
     /**
      * コンストラクタ
@@ -307,6 +319,36 @@ public class SelectHcpWorkEntity extends BaseEntity implements Serializable {
 		this.nextBizday = nextBizday;
 	}
 
+
+	/**
+	 * SelectHcpWorkEntity.javaupdShaYmdを設定
+	 * @return updShaYmd
+	 */
+	public String getUpdShaYmd() {
+		return updShaYmd;
+	}
+
+	/**
+	 * @param updShaYmd セットする updShaYmd
+	 */
+	public void setUpdShaYmd(String updShaYmd) {
+		this.updShaYmd = updShaYmd;
+	}
+
+	/**
+	 * SelectHcpWorkEntity.javainInsNoを設定
+	 * @return inInsNo
+	 */
+	public String getInInsNo() {
+		return inInsNo;
+	}
+
+	/**
+	 * @param inInsNo セットする inInsNo
+	 */
+	public void setInInsNo(String inInsNo) {
+		this.inInsNo = inInsNo;
+	}
 
 	/**
      * このEntityの値を返す

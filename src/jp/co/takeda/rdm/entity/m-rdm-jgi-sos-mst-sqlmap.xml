@@ -484,4 +484,56 @@
          WHERE 1 = 1
          AND UP_SOS_CD = #{inSosCd}
     </select>
+    <select id="selectJgiTrt" parameterType="jp.co.takeda.rdm.entity.join.SelectJgiJgiEntity" resultMap="selectJgiJgiResultMap">
+		SELECT DISTINCT
+	        JGI_SOS_MST.JGI_NO JGI_NO,
+            JGI_SOS_MST.JGI_NAME,
+            COM_LNK_TGT.TRT_GRP_CD,
+            COM_LNK_TGT.TRT_NM,
+            MR_INS_TRT.MR_CAT,
+            COM_LNK_TGT.TRT_CD
+              FROM
+                  M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報
+              INNER JOIN
+                  S_RDM_JKR_SOS_ADDR SOS_ADDR
+              ON JGI_SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
+              INNER JOIN
+                  S_RDM_COM_SHOKUSHU_CONFIG  COM_SKS_CFG --職種別定義
+              ON COM_SKS_CFG.SHOKUSHU_CD = JGI_SOS_MST.SHOKUSHU_CD
+              INNER JOIN
+                  S_RDM_COM_LNK_TRT_SHOKUSHU  LNK_TRT_SKS --領域・職種関連定義
+              ON COM_SKS_CFG.SHOKUSHU_CD = JGI_SOS_MST.SHOKUSHU_CD
+              INNER JOIN
+                  S_RDM_COM_LNK_TRTGRP_TRT  COM_LNK_TGT　--領域グループ・領域関連定義
+              ON LNK_TRT_SKS.TRT_CD = COM_LNK_TGT.TRT_CD
+              <if test="inTrtCd != null">
+              AND COM_LNK_TGT.TRT_CD = #{inTrtCd}
+              </if>
+              INNER JOIN
+                  M_JGI_MST JGI_MST
+              ON JGI_SOS_MST.JGI_NO = JGI_MST.JGI_NO
+              INNER JOIN
+                  M_JGI_FLG_FIX FLG_FIX
+              ON JGI_SOS_MST.JGI_NO = FLG_FIX.JGI_NO
+              INNER JOIN
+                  M_RDM_JKR_MR_INS_TRT MR_INS_TRT
+              ON
+                  MR_INS_TRT.JGI_NO = JGI_SOS_MST.JGI_NO
+              ,M_RDM_COM_CAL_USR RDM_CAL_USR --RDM用カレンダー(オンライン用)
+              <where>
+                  1 = 1
+                  AND RDM_CAL_USR.TODAY = '1'
+                  AND LNK_TRT_SKS.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                  AND LNK_TRT_SKS.TEKIYO_END_DATE　&gt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_SKS_CFG.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_SKS_CFG.TEKIYO_END_DATE &gt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_LNK_TGT.TEKIYO_START_DATE &lt;= RDM_CAL_USR.CAL_DATE
+                  AND COM_LNK_TGT.TEKIYO_END_DATE &gt;= RDM_CAL_USR.CAL_DATE
+                  AND FLG_FIX.START_DAY &lt;= RDM_CAL_USR.CAL_YEAR || RDM_CAL_USR.CAL_MONTH || RDM_CAL_USR.CAL_DAY
+                  AND FLG_FIX.END_DAY &gt;= RDM_CAL_USR.CAL_YEAR || RDM_CAL_USR.CAL_MONTH || RDM_CAL_USR.CAL_DAY
+                  AND JGI_MST.JGI_KB IN ('0','1')
+                  AND COM_LNK_TGT.TRT_GRP_CD = MR_INS_TRT.TRT_GRP_CD
+                  AND JGI_SOS_MST.JGI_NO = #{jgiNo}
+              </where>
+    </select>
 </mapper>

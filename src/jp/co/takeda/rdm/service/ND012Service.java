@@ -2125,7 +2125,7 @@ public class ND012Service extends BaseService {
 		//		整合性チェック                              公的機関一覧内で公的機関が重複しているデータが存在する場合
 		List<HcpPublicData> publicDataList = indto.getHcpPublicDataList();
 		if (publicDataList.size() > 1) {
-			String[] pubInstitutionCdArray = new String[societyDataList.size()];
+			String[] pubInstitutionCdArray = new String[publicDataList.size()];
 			int i = 0;
 			for (HcpPublicData pData : publicDataList) {
 				pubInstitutionCdArray[i] = pData.getPubInstitutionCd();

@@ -3750,103 +3750,14 @@ public class NF012Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設略式漢字名") + "\n";
 			errFlg = true;
         }
-        if(indto.getInsKana() != null && indto.getInsKana().length() > 15) {
-        	// 最大文字数を超えています。（施設カナ名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設カナ名") + "\n";
-			errFlg = true;
-        }
-        if(indto.getInsFormalName() != null && indto.getInsFormalName().length() > 40) {
-        	// 最大文字数を超えています。（施設正式漢字名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設正式漢字名") + "\n";
-			errFlg = true;
-        }
-        if(indto.getInsPcode() != null && indto.getInsPcode().length() > 8) {
-        	// 最大文字数を超えています。（郵便番号）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "郵便番号") + "\n";
-			errFlg = true;
-        }
-        if(indto.getInsPhone1() != null && indto.getInsPhone1().length() > 13) {
-        	// 最大文字数を超えています。（電話番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "電話番号(代表)") + "\n";
-			errFlg = true;
-        }
-        if(indto.getInsFax1() != null && indto.getInsFax1().length() > 13) {
-        	// 最大文字数を超えています。（FAX番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(代表)") + "\n";
-			errFlg = true;
-        }
-        if(indto.getInsPhone2() != null && indto.getInsPhone2().length() > 13) {
-        	// 最大文字数を超えています。（電話番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "電話番号(薬局/DI室)") + "\n";
-			errFlg = true;
-        }
-        if(indto.getInsFax2() != null && indto.getInsFax2().length() > 13) {
-        	// 最大文字数を超えています。（FAX番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
-			errFlg = true;
-        }
-        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
-        	// 最大文字数を超えています。（申請コメント）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
-			errFlg = true;
-        }
-
-        // 文字種チェック
-        if(!isNumHyph(indto.getInsPcode())) {
-        	// 入力文字種が不正です。（郵便番号）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "郵便番号") + "\n";
-			errFlg = true;
-        }
-        if(!isNumHyph(indto.getInsPhone1())) {
-        	// 入力文字種が不正です。（電話番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "電話番号(代表)") + "\n";
-			errFlg = true;
-        }
-        if(!isNumHyph(indto.getInsFax1())) {
-        	// 入力文字種が不正です。（FAX番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(代表)") + "\n";
-			errFlg = true;
-        }
-        if(!isNumHyph(indto.getInsPhone2())) {
-        	// 入力文字種が不正です。（電話番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "電話番号(薬局/DI室)") + "\n";
-			errFlg = true;
-        }
-        if(!isNumHyph(indto.getInsFax2())) {
-        	// 入力文字種が不正です。（FAX番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
-			errFlg = true;
-        }
-
-        // 半角全角チェック
-        if(StringUtils.checkMultiByte(indto.getInsPcode())) {
-        	// 半角で入力してください。（郵便番号）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "郵便番号") + "\n";
-			errFlg = true;
-        }
-        if(StringUtils.checkMultiByte(indto.getInsPhone1())) {
-        	// 半角で入力してください。（電話番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(代表)") + "\n";
-			errFlg = true;
-        }
-        if(StringUtils.checkMultiByte(indto.getInsFax1())) {
-        	// 半角で入力してください。（FAX番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(代表)") + "\n";
-			errFlg = true;
-        }
-        if(StringUtils.checkMultiByte(indto.getInsPhone2())) {
-        	// 半角で入力してください。（電話番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(薬局/DI室)") + "\n";
-			errFlg = true;
-        }
-        if(StringUtils.checkMultiByte(indto.getInsFax2())) {
-        	// 半角で入力してください。（FAX番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
-			errFlg = true;
-        }
         if(StringUtils.checkSingleByte(indto.getInsAbbrName())) {
         	// 全角で入力してください。（施設略式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設略式漢字名") + "\n";
+			errFlg = true;
+        }
+        if(indto.getInsKana() != null && indto.getInsKana().length() > 15) {
+        	// 最大文字数を超えています。（施設カナ名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設カナ名") + "\n";
 			errFlg = true;
         }
         if(StringUtils.checkMultiByte(indto.getInsKana())) {
@@ -3854,18 +3765,31 @@ public class NF012Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "施設カナ名") + "\n";
 			errFlg = true;
         }
+        if(indto.getInsFormalName() != null && indto.getInsFormalName().length() > 40) {
+        	// 最大文字数を超えています。（施設正式漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設正式漢字名") + "\n";
+			errFlg = true;
+        }
         if(StringUtils.checkSingleByte(indto.getInsFormalName())) {
         	// 全角で入力してください。（施設正式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設正式漢字名") + "\n";
 			errFlg = true;
         }
-        if(StringUtils.checkSingleByte(indto.getInsAddrDt())) {
-        	// 全角で入力してください。（町名地番）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "町名地番") + "\n";
+        if(indto.getInsPcode() != null && indto.getInsPcode().length() > 8) {
+        	// 最大文字数を超えています。（郵便番号）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "郵便番号") + "\n";
 			errFlg = true;
         }
-
-        // 書式チェック
+        if(!isNumHyph(indto.getInsPcode())) {
+        	// 入力文字種が不正です。（郵便番号）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "郵便番号") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getInsPcode())) {
+        	// 半角で入力してください。（郵便番号）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "郵便番号") + "\n";
+			errFlg = true;
+        }
         if(indto.getInsPcode() != null
         		&& ((indto.getInsPcode().length() != 0 && indto.getInsPcode().length() != 7 && indto.getInsPcode().length() != 8)
         		|| (indto.getInsPcode().length() == 8 && !chkPostcode(indto.getInsPcode())
@@ -3874,9 +3798,79 @@ public class NF012Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W016).replace("項目名", "郵便番号") + "\n";
 			errFlg = true;
         }
+        if(StringUtils.checkSingleByte(indto.getInsAddrDt())) {
+        	// 全角で入力してください。（町名地番）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "町名地番") + "\n";
+			errFlg = true;
+        }
+        if(indto.getInsPhone1() != null && indto.getInsPhone1().length() > 13) {
+        	// 最大文字数を超えています。（電話番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "電話番号(代表)") + "\n";
+			errFlg = true;
+        }
+        if(!isNumHyph(indto.getInsPhone1())) {
+        	// 入力文字種が不正です。（電話番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "電話番号(代表)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getInsPhone1())) {
+        	// 半角で入力してください。（電話番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(代表)") + "\n";
+			errFlg = true;
+        }
         if("10".equals(indto.getInsSbt()) && !"00-0000-0000".equals(indto.getInsPhone1())) {
         	// 医療モールを新規作成する場合は「00-0000-0000」と入力してください。電話番号(代表)
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W017) + "\n";
+			errFlg = true;
+        }
+        if(indto.getInsPhone2() != null && indto.getInsPhone2().length() > 13) {
+        	// 最大文字数を超えています。（電話番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "電話番号(薬局/DI室)") + "\n";
+			errFlg = true;
+        }
+        if(!isNumHyph(indto.getInsPhone2())) {
+        	// 入力文字種が不正です。（電話番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "電話番号(薬局/DI室)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getInsPhone2())) {
+        	// 半角で入力してください。（電話番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(薬局/DI室)") + "\n";
+			errFlg = true;
+        }
+        if(indto.getInsFax1() != null && indto.getInsFax1().length() > 13) {
+        	// 最大文字数を超えています。（FAX番号(代表)）
+        	errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(代表)") + "\n";
+        	errFlg = true;
+        }
+        if(!isNumHyph(indto.getInsFax1())) {
+        	// 入力文字種が不正です。（FAX番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(代表)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getInsFax1())) {
+        	// 半角で入力してください。（FAX番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(代表)") + "\n";
+			errFlg = true;
+        }
+        if(indto.getInsFax2() != null && indto.getInsFax2().length() > 13) {
+        	// 最大文字数を超えています。（FAX番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
+			errFlg = true;
+        }
+        if(!isNumHyph(indto.getInsFax2())) {
+        	// 入力文字種が不正です。（FAX番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getInsFax2())) {
+        	// 半角で入力してください。（FAX番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
+			errFlg = true;
+        }
+        if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
+        	// 最大文字数を超えています。（申請コメント）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;
         }
 

@@ -31,6 +31,7 @@ import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcoJkrWkEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcoJkrDataEntity;
+import jp.co.takeda.rdm.entity.join.SelectJgiJgiEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF011MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectRdmComTrtgrpDataEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
@@ -364,6 +365,32 @@ public class NF011Service extends BaseService {
 		// DropDownList作成
 		createCombo(indto);
 
+		if (!"2".equals(indto.getDisplayKbn()) && RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
+			// 担当者に自分を初期設定する
+			SelectJgiJgiEntity selectJgiJgiEntity = new SelectJgiJgiEntity();
+
+			selectJgiJgiEntity.setSqlId("selectJgiTrt");
+			selectJgiJgiEntity.setInTrtCd(indto.getLoginTrtCd());
+			selectJgiJgiEntity.setJgiNo(Integer.parseInt(indto.getLoginJgiNo()));
+
+			List<SelectJgiJgiEntity> selectJgiJgiEntityList = dao.select(selectJgiJgiEntity);
+
+			if(selectJgiJgiEntityList.size() > 0) {
+				SelectJgiJgiEntity selectJgiJgiData = selectJgiJgiEntityList.get(0);
+				HcoJkrData sData = new HcoJkrData();
+				sData.setTrtCd(selectJgiJgiData.getTrtCd());
+				sData.setTrtNm(selectJgiJgiData.getTrtNm());
+				sData.setJgiNo(Integer.toString(selectJgiJgiData.getJgiNo()));
+				sData.setJgiNm(selectJgiJgiData.getJgiName());
+				sData.setTrtGrpCd(selectJgiJgiData.getTrtGrpCd());
+				sData.setMrCat(selectJgiJgiData.getMrCat());
+				sData.setDeleteFlg("0");
+				hcoJkrDataList.add(sData);
+			}
+
+			indto.setHcoJkrDataList(hcoJkrDataList);
+		}
+
 		// 編集可能判定
 		if ("".equals(indto.getReqStsCd()) || indto.getReqStsCd() == null) {
 			// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
@@ -599,10 +626,14 @@ public class NF011Service extends BaseService {
 		boolean errFlg = false;
 		String errMsg = "";
 
-		// レングスチェック
 		if (indto.getInsAbbrName() != null && indto.getInsAbbrName().length() > 10) {
 			// 最大文字数を超えています。（施設略式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設略式漢字名") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkSingleByte(indto.getInsAbbrName())) {
+			// 全角で入力してください。（施設略式漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設略式漢字名") + "\n";
 			errFlg = true;
 		}
 		if (indto.getInsKana() != null && indto.getInsKana().length() > 15) {
@@ -610,9 +641,19 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設カナ名") + "\n";
 			errFlg = true;
 		}
+		if (StringUtils.checkMultiByte(indto.getInsKana())) {
+			// 半角で入力してください。（施設カナ名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "施設カナ名") + "\n";
+			errFlg = true;
+		}
 		if (indto.getInsFormalName() != null && indto.getInsFormalName().length() > 40) {
 			// 最大文字数を超えています。（施設正式漢字名）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設正式漢字名") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkSingleByte(indto.getInsFormalName())) {
+			// 全角で入力してください。（施設正式漢字名）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設正式漢字名") + "\n";
 			errFlg = true;
 		}
 //		if (indto.getInsContName() != null && indto.getInsContName().length() > 40) {
@@ -620,14 +661,37 @@ public class NF011Service extends BaseService {
 //			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "施設契約用漢字名") + "\n";
 //			errFlg = true;
 //		}
-		if (indto.getEntcapaNum() != null && indto.getEntcapaNum().length() > 4) {
-			// 最大文字数を超えています。（入所定員情報）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "入所定員情報") + "\n";
-			errFlg = true;
-		}
+//		if (StringUtils.checkSingleByte(indto.getInsContName())) {
+//			// 全角で入力してください。（施設契約用漢字名）
+//			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設契約用漢字名") + "\n";
+//			errFlg = true;
+//		}
 		if (indto.getInsPcode() != null && indto.getInsPcode().length() > 8) {
 			// 最大文字数を超えています。（郵便番号）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "郵便番号") + "\n";
+			errFlg = true;
+		}
+		if (!isNumHyph(indto.getInsPcode())) {
+			// 入力文字種が不正です。（郵便番号）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "郵便番号") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getInsPcode())) {
+			// 半角で入力してください。（郵便番号）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "郵便番号") + "\n";
+			errFlg = true;
+		}
+		if (indto.getInsPcode() != null && ((indto.getInsPcode().length() != 0 && indto.getInsPcode().length() != 7
+				&& indto.getInsPcode().length() != 8)
+				|| (indto.getInsPcode().length() == 8 && !chkPostcode(indto.getInsPcode())
+						|| (indto.getInsPcode().length() == 7 && !StringUtils.isNumeric(indto.getInsPcode()))))) {
+			// 正しい書式で入力してください。（郵便番号）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W016).replace("項目名", "郵便番号") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkSingleByte(indto.getInsAddrDt())) {
+			// 全角で入力してください。（町名地番）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "町名地番") + "\n";
 			errFlg = true;
 		}
 		if (indto.getInsPhone1() != null && indto.getInsPhone1().length() > 13) {
@@ -635,76 +699,19 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "電話番号(代表)") + "\n";
 			errFlg = true;
 		}
-		if (indto.getInsFax1() != null && indto.getInsFax1().length() > 13) {
-			// 最大文字数を超えています。（FAX番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(代表)") + "\n";
-			errFlg = true;
-		}
-		if (indto.getInsPhone2() != null && indto.getInsPhone2().length() > 13) {
-			// 最大文字数を超えています。（電話番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "電話番号(薬局/DI室)") + "\n";
-			errFlg = true;
-		}
-		if (indto.getInsFax2() != null && indto.getInsFax2().length() > 13) {
-			// 最大文字数を超えています。（FAX番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCntBase() != null && indto.getBedCntBase().length() > 4) {
-			// 最大文字数を超えています。（基準）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "基準") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCnt04() != null && indto.getBedCnt04().length() > 4) {
-			// 最大文字数を超えています。（結核）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "結核") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCnt01() != null && indto.getBedCnt01().length() > 4) {
-			// 最大文字数を超えています。（一般）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "一般") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCnt05() != null && indto.getBedCnt05().length() > 4) {
-			// 最大文字数を超えています。（感染症）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "感染症") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCnt03() != null && indto.getBedCnt03().length() > 4) {
-			// 最大文字数を超えています。（精神）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "精神") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCnt07() != null && indto.getBedCnt07().length() > 4) {
-			// 最大文字数を超えています。（療養）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "療養") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCnt02() != null && indto.getBedCnt02().length() > 4) {
-			// 最大文字数を超えています。（医療療養）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "医療療養") + "\n";
-			errFlg = true;
-		}
-		if (indto.getBedCnt06() != null && indto.getBedCnt06().length() > 4) {
-			// 最大文字数を超えています。（基準）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "介護療養") + "\n";
-			errFlg = true;
-		}
-		if (indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
-			// 最大文字数を超えています。（申請コメント）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
-			errFlg = true;
-		}
-
-		// 文字種チェック
-		if (!isNumHyph(indto.getInsPcode())) {
-			// 入力文字種が不正です。（郵便番号）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "郵便番号") + "\n";
-			errFlg = true;
-		}
 		if (!isNumHyph(indto.getInsPhone1())) {
 			// 入力文字種が不正です。（電話番号(代表)）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "電話番号(代表)") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getInsPhone1())) {
+			// 半角で入力してください。（電話番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(代表)") + "\n";
+			errFlg = true;
+		}
+		if (indto.getInsFax1() != null && indto.getInsFax1().length() > 13) {
+			// 最大文字数を超えています。（FAX番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(代表)") + "\n";
 			errFlg = true;
 		}
 		if (!isNumHyph(indto.getInsFax1())) {
@@ -712,9 +719,29 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(代表)") + "\n";
 			errFlg = true;
 		}
+		if (StringUtils.checkMultiByte(indto.getInsFax1())) {
+			// 半角で入力してください。（FAX番号(代表)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(代表)") + "\n";
+			errFlg = true;
+		}
+		if (indto.getInsPhone2() != null && indto.getInsPhone2().length() > 13) {
+			// 最大文字数を超えています。（電話番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "電話番号(薬局/DI室)") + "\n";
+			errFlg = true;
+		}
 		if (!isNumHyph(indto.getInsPhone2())) {
 			// 入力文字種が不正です。（電話番号(薬局/DI室)）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "電話番号(薬局/DI室)") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getInsPhone2())) {
+			// 半角で入力してください。（電話番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(薬局/DI室)") + "\n";
+			errFlg = true;
+		}
+		if (indto.getInsFax2() != null && indto.getInsFax2().length() > 13) {
+			// 最大文字数を超えています。（FAX番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
 			errFlg = true;
 		}
 		if (!isNumHyph(indto.getInsFax2())) {
@@ -722,9 +749,29 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
 			errFlg = true;
 		}
+		if (StringUtils.checkMultiByte(indto.getInsFax2())) {
+			// 半角で入力してください。（FAX番号(薬局/DI室)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCntBase() != null && indto.getBedCntBase().length() > 4) {
+			// 最大文字数を超えています。（基準）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "基準") + "\n";
+			errFlg = true;
+		}
 		if (!isNumHyph(indto.getBedCntBase())) {
 			// 入力文字種が不正です。（基準）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "基準") + "\n";
+			errFlg = true;
+		}
+		if (!chkNumRange(indto.getBedCntBase(), 0, 9999)) {
+			// 入力可能範囲外です。（基準）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "基準") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCnt04() != null && indto.getBedCnt04().length() > 4) {
+			// 最大文字数を超えています。（結核）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "結核") + "\n";
 			errFlg = true;
 		}
 		if (!isNumHyph(indto.getBedCnt04())) {
@@ -732,9 +779,29 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "結核") + "\n";
 			errFlg = true;
 		}
+		if (!chkNumRange(indto.getBedCnt04(), 0, 9999)) {
+			// 入力可能範囲外です。（結核）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "結核") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCnt01() != null && indto.getBedCnt01().length() > 4) {
+			// 最大文字数を超えています。（一般）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "一般") + "\n";
+			errFlg = true;
+		}
 		if (!isNumHyph(indto.getBedCnt01())) {
 			// 入力文字種が不正です。（一般）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "一般") + "\n";
+			errFlg = true;
+		}
+		if (!chkNumRange(indto.getBedCnt01(), 0, 9999)) {
+			// 入力可能範囲外です。（一般）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "一般") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCnt05() != null && indto.getBedCnt05().length() > 4) {
+			// 最大文字数を超えています。（感染症）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "感染症") + "\n";
 			errFlg = true;
 		}
 		if (!isNumHyph(indto.getBedCnt05())) {
@@ -742,9 +809,29 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "感染症") + "\n";
 			errFlg = true;
 		}
+		if (!chkNumRange(indto.getBedCnt05(), 0, 9999)) {
+			// 入力可能範囲外です。（感染症）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "感染症") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCnt03() != null && indto.getBedCnt03().length() > 4) {
+			// 最大文字数を超えています。（精神）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "精神") + "\n";
+			errFlg = true;
+		}
 		if (!isNumHyph(indto.getBedCnt03())) {
 			// 入力文字種が不正です。（精神）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "精神") + "\n";
+			errFlg = true;
+		}
+		if (!chkNumRange(indto.getBedCnt03(), 0, 9999)) {
+			// 入力可能範囲外です。（精神）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "精神") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCnt07() != null && indto.getBedCnt07().length() > 4) {
+			// 最大文字数を超えています。（療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "療養") + "\n";
 			errFlg = true;
 		}
 		if (!isNumHyph(indto.getBedCnt07())) {
@@ -752,14 +839,39 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "療養") + "\n";
 			errFlg = true;
 		}
+		if (!chkNumRange(indto.getBedCnt07(), 0, 9999)) {
+			// 入力可能範囲外です。（療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "療養") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCnt02() != null && indto.getBedCnt02().length() > 4) {
+			// 最大文字数を超えています。（医療療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "医療療養") + "\n";
+			errFlg = true;
+		}
 		if (!isNumHyph(indto.getBedCnt02())) {
 			// 入力文字種が不正です。（医療療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "医療療養") + "\n";
 			errFlg = true;
 		}
+		if (!chkNumRange(indto.getBedCnt02(), 0, 9999)) {
+			// 入力可能範囲外です。（医療療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "医療療養") + "\n";
+			errFlg = true;
+		}
+		if (indto.getBedCnt06() != null && indto.getBedCnt06().length() > 4) {
+			// 最大文字数を超えています。（介護療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "介護療養") + "\n";
+			errFlg = true;
+		}
 		if (!isNumHyph(indto.getBedCnt06())) {
 			// 入力文字種が不正です。（介護療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "介護療養") + "\n";
+			errFlg = true;
+		}
+		if (!chkNumRange(indto.getBedCnt06(), 0, 9999)) {
+			// 入力可能範囲外です。（介護療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "介護療養") + "\n";
 			errFlg = true;
 		}
 		if (!isNumHyph(indto.getBedsTot())) {
@@ -772,113 +884,19 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "医療ベッド数計") + "\n";
 			errFlg = true;
 		}
-
-		// 半角全角チェック
-		if (StringUtils.checkMultiByte(indto.getInsPcode())) {
-			// 半角で入力してください。（郵便番号）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "郵便番号") + "\n";
-			errFlg = true;
-		}
-		if (StringUtils.checkMultiByte(indto.getInsPhone1())) {
-			// 半角で入力してください。（電話番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(代表)") + "\n";
-			errFlg = true;
-		}
-		if (StringUtils.checkMultiByte(indto.getInsFax1())) {
-			// 半角で入力してください。（FAX番号(代表)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(代表)") + "\n";
-			errFlg = true;
-		}
-		if (StringUtils.checkMultiByte(indto.getInsPhone2())) {
-			// 半角で入力してください。（電話番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "電話番号(薬局/DI室)") + "\n";
-			errFlg = true;
-		}
-		if (StringUtils.checkMultiByte(indto.getInsFax2())) {
-			// 半角で入力してください。（FAX番号(薬局/DI室)）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
-			errFlg = true;
-		}
-		if (StringUtils.checkSingleByte(indto.getInsAbbrName())) {
-			// 全角で入力してください。（施設略式漢字名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設略式漢字名") + "\n";
-			errFlg = true;
-		}
-		if (StringUtils.checkMultiByte(indto.getInsKana())) {
-			// 半角で入力してください。（施設カナ名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "施設カナ名") + "\n";
-			errFlg = true;
-		}
-		if (StringUtils.checkSingleByte(indto.getInsFormalName())) {
-			// 全角で入力してください。（施設正式漢字名）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設正式漢字名") + "\n";
-			errFlg = true;
-		}
-//		if (StringUtils.checkSingleByte(indto.getInsContName())) {
-//			// 全角で入力してください。（施設契約用漢字名）
-//			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "施設契約用漢字名") + "\n";
-//			errFlg = true;
-//		}
-		if (StringUtils.checkSingleByte(indto.getInsAddrDt())) {
-			// 全角で入力してください。（町名地番）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W015).replace("項目名", "町名地番") + "\n";
-			errFlg = true;
-		}
-
-		// 書式チェック
-		if (indto.getInsPcode() != null && ((indto.getInsPcode().length() != 0 && indto.getInsPcode().length() != 7
-				&& indto.getInsPcode().length() != 8)
-				|| (indto.getInsPcode().length() == 8 && !chkPostcode(indto.getInsPcode())
-						|| (indto.getInsPcode().length() == 7 && !StringUtils.isNumeric(indto.getInsPcode()))))) {
-			// 正しい書式で入力してください。（郵便番号）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W016).replace("項目名", "郵便番号") + "\n";
-			errFlg = true;
-		}
-
-		// 範囲チェック
-		if (!chkNumRange(indto.getBedCntBase(), 0, 9999)) {
-			// 入力可能範囲外です。（基準）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "基準") + "\n";
-			errFlg = true;
-		}
-		if (!chkNumRange(indto.getBedCnt04(), 0, 9999)) {
-			// 入力可能範囲外です。（結核）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "結核") + "\n";
-			errFlg = true;
-		}
-		if (!chkNumRange(indto.getBedCnt01(), 0, 9999)) {
-			// 入力可能範囲外です。（一般）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "一般") + "\n";
-			errFlg = true;
-		}
-		if (!chkNumRange(indto.getBedCnt05(), 0, 9999)) {
-			// 入力可能範囲外です。（感染症）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "感染症") + "\n";
-			errFlg = true;
-		}
-		if (!chkNumRange(indto.getBedCnt03(), 0, 9999)) {
-			// 入力可能範囲外です。（精神）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "精神") + "\n";
-			errFlg = true;
-		}
-		if (!chkNumRange(indto.getBedCnt07(), 0, 9999)) {
-			// 入力可能範囲外です。（療養）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "療養") + "\n";
-			errFlg = true;
-		}
-		if (!chkNumRange(indto.getBedCnt02(), 0, 9999)) {
-			// 入力可能範囲外です。（医療療養）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "医療療養") + "\n";
-			errFlg = true;
-		}
-		if (!chkNumRange(indto.getBedCnt06(), 0, 9999)) {
-			// 入力可能範囲外です。（介護療養）
-			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "介護療養") + "\n";
+		if (indto.getEntcapaNum() != null && indto.getEntcapaNum().length() > 4) {
+			// 最大文字数を超えています。（入所定員情報）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "入所定員情報") + "\n";
 			errFlg = true;
 		}
 		if (!chkNumRange(indto.getEntcapaNum(), 0, 9999)) {
 			// 入力可能範囲外です。（入所定員情報）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "入所定員情報") + "\n";
+			errFlg = true;
+		}
+		if (indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
+			// 最大文字数を超えています。（申請コメント）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 			errFlg = true;
 		}
 

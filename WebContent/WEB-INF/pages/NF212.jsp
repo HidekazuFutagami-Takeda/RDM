@@ -707,7 +707,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      </td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>>
                 <nobr>
-				<s:if test='%{reqStsCd == "01" || reqStsCd == "11"}'>
+				<s:if test='%{(loginJgiNo == reqJgiNo && (reqStsCd == "01" || reqStsCd == "11")) || (loginJokenSetCd == "JKN0850" && (reqStsCd == "11" || reqStsCd == "13"))}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="JavaScript:reqCancelBtn();return false;" />
 				</s:if>
 				<s:else>

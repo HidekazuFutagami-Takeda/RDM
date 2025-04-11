@@ -124,6 +124,13 @@ public class ND103Action extends BaseAction<ND103DTO> {
 
         dto.setTitle("ND103_医師勤務先追加");
 
+        String preScreenId = dto.getBackScreenId();
+        if("ND311".equals(preScreenId)) {
+        	preScreenId = dto.getPreScreenId();
+        } else {
+        	dto.setPreScreenId(preScreenId);
+        }
+
         //エラーメッセージが定義されている場合
         if (!StringUtils.isEmpty(dto.getMsgStr())) {
         	outdto = nD103Service.pullDown(dto);

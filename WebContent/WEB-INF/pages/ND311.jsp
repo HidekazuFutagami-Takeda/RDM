@@ -156,6 +156,8 @@
 	<s:hidden name="docNo" />
 	<s:hidden name="urlDocNo" />
 	<s:hidden name="processFlg" />
+	<s:hidden name="backScreenId" value="ND311" />
+	<s:hidden name="preScreenId" />
 
 	<s:hidden name="tekiyoYmd" />
 	<s:hidden name="insNoSk" />

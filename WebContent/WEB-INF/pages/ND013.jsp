@@ -226,6 +226,7 @@
       <s:hidden name="sortCondition1" />
       <s:hidden name="sortCondition2" />
       <s:hidden name="screenId" value="ND013" />
+      <s:hidden name="backScreenId" value="ND013" />
       <s:hidden name="functionId"/>
       <s:hidden name="buttonFlg" />
       <s:hidden name="gamenId"/>

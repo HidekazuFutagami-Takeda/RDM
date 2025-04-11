@@ -169,7 +169,6 @@
 
 	<s:hidden name="tekiyoYmd" />
 	<s:hidden name="insNoSk" />
-	<s:hidden name="paramInsNo" />
 	<s:hidden name="ultInsNo" />
 	<s:hidden name="deptCodeAf" />
 	<s:hidden name="deptKn" />

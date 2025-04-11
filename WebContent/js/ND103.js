@@ -65,8 +65,8 @@ function tmpCdcView(){
 	}
 
 function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
-	document.fm1.searchDeptCd.value = deptCode;
-	document.fm1.searchDeptNm.value = DeptKj;
+	document.fm1.deptCodeAf.value = deptCode;
+	document.fm1.deptKj.value = DeptKj;
 }
 
 
@@ -404,8 +404,8 @@ function cdcView(w,callBack,winVarName){
   jokenName[jokenName.length] = "backScreenId";
   joken[joken.length] = new Array(document.fm1.backScreenId.value);
 
-  jokenName[jokenName.length] = "callBack";
-  joken[joken.length] = new Array(document.fm1.callBack.value);
+//  jokenName[jokenName.length] = "callBack";
+//  joken[joken.length] = new Array(document.fm1.callBack.value);
 
 
 

@@ -1803,7 +1803,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	</tr>
 	<tr>
 	   	<td class="comFormTableItem">ULT施設コード</td>
-	   	<td class="comFormTableItemNf012"><s:label key="ultInsCd" /></td>
+	   	<td class="comFormTableItemNf012"><s:label key="preUltInsCd" /></td>
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{loginJokenSetCd == "JKN0850"}'>

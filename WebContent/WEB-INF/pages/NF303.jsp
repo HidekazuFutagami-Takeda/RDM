@@ -484,6 +484,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="bedCnt07"/>
 	<s:hidden name="bedsTot"/>
 	<s:hidden name="medBedsTot"/>
+	<s:hidden name="ultBedCntBase"/>
 	<s:hidden name="ultBedCnt01"/>
 	<s:hidden name="ultBedCnt03"/>
 	<s:hidden name="ultBedCnt04"/>

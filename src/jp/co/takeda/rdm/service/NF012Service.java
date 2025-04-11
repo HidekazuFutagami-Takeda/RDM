@@ -3870,6 +3870,157 @@ public class NF012Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "FAX番号(薬局/DI室)") + "\n";
 			errFlg = true;
         }
+        if(StringUtils.checkMultiByte(indto.getFree0001())) {
+        	// 半角で入力してください。（DM先(TKP-LDA)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "DM先(TKP-LDA)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0002())) {
+        	// 半角で入力してください。（LEUあすか）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "LEUあすか") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0003())) {
+        	// 半角で入力してください。（DM先(TKP-NSAID)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "DM先(TKP-NSAID)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0015())) {
+        	// 半角で入力してください。（(O:未使用)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "(O:未使用)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0008())) {
+        	// 半角で入力してください。（TRIアロ登録(当期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "TRIアロ登録(当期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0009())) {
+        	// 半角で入力してください。（TRIアロ登録(来期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "TRIアロ登録(来期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0004())) {
+        	// 半角で入力してください。（REMアロ登録(当期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "REMアロ登録(当期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0005())) {
+        	// 半角で入力してください。（REMアロ登録(来期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "REMアロ登録(来期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0006())) {
+        	// 半角で入力してください。（ENBアロ登録(当期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "ENBアロ登録(当期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0007())) {
+        	// 半角で入力してください。（ENBアロ登録(来期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "ENBアロ登録(来期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0010())) {
+        	// 半角で入力してください。（XELアロ登録(当期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "XELアロ登録(当期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0011())) {
+        	// 半角で入力してください。（XELアロ登録(来期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "XELアロ登録(来期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0013())) {
+        	// 半角で入力してください。（ROZアロ登録(当期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "ROZアロ登録(当期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0014())) {
+        	// 半角で入力してください。（ROZアロ登録(来期)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "ROZアロ登録(来期)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getFree0012())) {
+        	// 半角で入力してください。（振替先1310）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "振替先1310") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0101())) {
+        	// 半角で入力してください。（A(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "A(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0102())) {
+        	// 半角で入力してください。（B(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "B(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0103())) {
+        	// 半角で入力してください。（C(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "C(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0104())) {
+        	// 半角で入力してください。（D(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "D(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0105())) {
+        	// 半角で入力してください。（E(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "E(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0106())) {
+        	// 半角で入力してください。（F(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "F(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0107())) {
+        	// 半角で入力してください。（G(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "G(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0108())) {
+        	// 半角で入力してください。（H(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "H(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0109())) {
+        	// 半角で入力してください。（I(支店)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "I(支店)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0201())) {
+        	// 半角で入力してください。（A(営業所)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "A(営業所)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0202())) {
+        	// 半角で入力してください。（LEUターゲット先）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "LEUターゲット先") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0203())) {
+        	// 半角で入力してください。（C(営業所)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "C(営業所)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0204())) {
+        	// 半角で入力してください。（次期院長ターゲット先）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "次期院長ターゲット先") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0205())) {
+        	// 半角で入力してください。（E(営業所)）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "E(営業所)") + "\n";
+			errFlg = true;
+        }
+        if(StringUtils.checkMultiByte(indto.getUsercd0206())) {
+        	// 半角で入力してください。（F:なんでもフォロー表）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "F:なんでもフォロー表") + "\n";
+			errFlg = true;
+        }
+
         if(indto.getReqComment() != null && StringUtils.getByteLength(indto.getReqComment()) > 300) {
         	// 最大文字数を超えています。（申請コメント）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";

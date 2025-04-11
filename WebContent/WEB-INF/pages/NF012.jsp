@@ -2112,10 +2112,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0001" id="free0001" size="20" />
+	                <s:textfield name="free0001" id="free0001" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0001" id="free0001" size="20" readonly="true" />
+	            	<s:textfield name="free0001" id="free0001" size="20" maxlength="1" readonly="true" />
 	            </s:else>
             </nobr>
 		</td>
@@ -2126,10 +2126,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-                	<s:textfield name="free0002" id="free0002" size="20" />
+                	<s:textfield name="free0002" id="free0002" size="20" maxlength="1" />
                 </s:if>
                 <s:else>
-                	<s:textfield name="free0002" id="free0002" size="20" readonly="true" />
+                	<s:textfield name="free0002" id="free0002" size="20" maxlength="1" readonly="true" />
                 </s:else>
             </nobr>
 		</td>
@@ -2140,10 +2140,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0003" id="free0003" size="20" />
+	                <s:textfield name="free0003" id="free0003" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0003" id="free0003" size="20" readonly="true" />
+	            	<s:textfield name="free0003" id="free0003" size="20" maxlength="1" readonly="true" />
 	            </s:else>
             </nobr>
 		</td>
@@ -2154,10 +2154,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0015" id="free0015" size="20" />
+	                <s:textfield name="free0015" id="free0015" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0015" id="free0015" size="20" readonly="true" />
+	            	<s:textfield name="free0015" id="free0015" size="20" maxlength="1" readonly="true" />
 	            </s:else>
             </nobr>
 		</td>
@@ -2168,10 +2168,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0008" id="free0008" size="20" />
+	                <s:textfield name="free0008" id="free0008" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0008" id="free0008" size="20" readonly="true" />
+	            	<s:textfield name="free0008" id="free0008" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2182,10 +2182,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0009" id="free0009" size="20" />
+	                <s:textfield name="free0009" id="free0009" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0009" id="free0009" size="20" readonly="true" />
+	            	<s:textfield name="free0009" id="free0009" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2196,10 +2196,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0004" id="free0004" size="20" />
+	                <s:textfield name="free0004" id="free0004" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0004" id="free0004" size="20" readonly="true" />
+	            	<s:textfield name="free0004" id="free0004" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2210,10 +2210,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0005" id="free0005" size="20" />
+	                <s:textfield name="free0005" id="free0005" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0005" id="free0005" size="20" readonly="true" />
+	            	<s:textfield name="free0005" id="free0005" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2224,10 +2224,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0006" id="free0006" size="20" />
+	                <s:textfield name="free0006" id="free0006" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0006" id="free0006" size="20" readonly="true" />
+	            	<s:textfield name="free0006" id="free0006" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2238,10 +2238,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0007" id="free0007" size="20" />
+	                <s:textfield name="free0007" id="free0007" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0007" id="free0007" size="20" readonly="true" />
+	            	<s:textfield name="free0007" id="free0007" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2252,10 +2252,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0010" id="free0010" size="20" />
+	                <s:textfield name="free0010" id="free0010" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0010" id="free0010" size="20" readonly="true" />
+	            	<s:textfield name="free0010" id="free0010" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2266,10 +2266,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0011" id="free0011" size="20" />
+	                <s:textfield name="free0011" id="free0011" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0011" id="free0011" size="20" readonly="true" />
+	            	<s:textfield name="free0011" id="free0011" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2280,10 +2280,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0013" id="free0013" size="20" />
+	                <s:textfield name="free0013" id="free0013" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0013" id="free0013" size="20" readonly="true" />
+	            	<s:textfield name="free0013" id="free0013" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2294,10 +2294,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0014" id="free0014" size="20" />
+	                <s:textfield name="free0014" id="free0014" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0014" id="free0014" size="20" readonly="true" />
+	            	<s:textfield name="free0014" id="free0014" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -2308,10 +2308,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="free0012" id="free0012" size="20" />
+	                <s:textfield name="free0012" id="free0012" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="free0012" id="free0012" size="20" readonly="true" />
+	            	<s:textfield name="free0012" id="free0012" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3420,10 +3420,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
 				<s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0101" id="usercd0101" size="20" />
+	                <s:textfield name="usercd0101" id="usercd0101" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0101" id="usercd0101" size="20" readonly="true" />
+	            	<s:textfield name="usercd0101" id="usercd0101" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3434,10 +3434,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0102" id="usercd0102" size="20" />
+	                <s:textfield name="usercd0102" id="usercd0102" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0102" id="usercd0102" size="20" readonly="true" />
+	            	<s:textfield name="usercd0102" id="usercd0102" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3448,10 +3448,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0103" id="usercd0103" size="20" />
+	                <s:textfield name="usercd0103" id="usercd0103" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0103" id="usercd0103" size="20" readonly="true" />
+	            	<s:textfield name="usercd0103" id="usercd0103" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3462,10 +3462,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0104" id="usercd0104" size="20" />
+	                <s:textfield name="usercd0104" id="usercd0104" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0104" id="usercd0104" size="20" readonly="true" />
+	            	<s:textfield name="usercd0104" id="usercd0104" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3476,10 +3476,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0105" id="usercd0105" size="20" />
+	                <s:textfield name="usercd0105" id="usercd0105" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0105" id="usercd0105" size="20" readonly="true" />
+	            	<s:textfield name="usercd0105" id="usercd0105" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3490,10 +3490,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0106" id="usercd0106" size="20" />
+	                <s:textfield name="usercd0106" id="usercd0106" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0106" id="usercd0106" size="20" readonly="true" />
+	            	<s:textfield name="usercd0106" id="usercd0106" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3504,10 +3504,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0107" id="usercd0107" size="20" />
+	                <s:textfield name="usercd0107" id="usercd0107" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0107" id="usercd0107" size="20" readonly="true" />
+	            	<s:textfield name="usercd0107" id="usercd0107" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3518,10 +3518,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0108" id="usercd0108" size="20" />
+	                <s:textfield name="usercd0108" id="usercd0108" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0108" id="usercd0108" size="20" readonly="true" />
+	            	<s:textfield name="usercd0108" id="usercd0108" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3532,10 +3532,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0109" id="usercd0109" size="20" />
+	                <s:textfield name="usercd0109" id="usercd0109" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0109" id="usercd0109" size="20" readonly="true" />
+	            	<s:textfield name="usercd0109" id="usercd0109" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3546,10 +3546,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0201" id="usercd0201" size="20" />
+	                <s:textfield name="usercd0201" id="usercd0201" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0201" id="usercd0201" size="20" readonly="true" />
+	            	<s:textfield name="usercd0201" id="usercd0201" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3560,10 +3560,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0202" id="usercd0202" size="20" />
+	                <s:textfield name="usercd0202" id="usercd0202" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0202" id="usercd0202" size="20" readonly="true" />
+	            	<s:textfield name="usercd0202" id="usercd0202" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3574,10 +3574,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0203" id="usercd0203" size="20" />
+	                <s:textfield name="usercd0203" id="usercd0203" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0203" id="usercd0203" size="20" readonly="true" />
+	            	<s:textfield name="usercd0203" id="usercd0203" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3588,10 +3588,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0204" id="usercd0204" size="20" />
+	                <s:textfield name="usercd0204" id="usercd0204" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0204" id="usercd0204" size="20" readonly="true" />
+	            	<s:textfield name="usercd0204" id="usercd0204" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3602,10 +3602,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0205" id="usercd0205" size="20" />
+	                <s:textfield name="usercd0205" id="usercd0205" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0205" id="usercd0205" size="20" readonly="true" />
+	            	<s:textfield name="usercd0205" id="usercd0205" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>
@@ -3616,10 +3616,10 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItemNf012">
 			<nobr>
                 <s:if test='%{editApprFlg == "1"}'>
-	                <s:textfield name="usercd0206" id="usercd0206" size="20" />
+	                <s:textfield name="usercd0206" id="usercd0206" size="20" maxlength="1" />
 	            </s:if>
 	            <s:else>
-	            	<s:textfield name="usercd0206" id="usercd0206" size="20" readonly="true" />
+	            	<s:textfield name="usercd0206" id="usercd0206" size="20" maxlength="1" readonly="true" />
 	           	</s:else>
             </nobr>
 		</td>

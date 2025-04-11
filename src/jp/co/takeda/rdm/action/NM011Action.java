@@ -175,7 +175,7 @@ public class NM011Action extends BaseAction<NM011DTO> {
         // ULTT医師コード　ありなしで分岐
         // ND001_医師検索
         //管理者：0　MR：１
-        if ("ND001".equals(preScreenId)||loginInfo.getJokenFlg().equals("0")) {
+        if ("NC001".equals(preScreenId)||loginInfo.getJokenFlg().equals("1")) {
         	//何もしない
         }else {
         		throw new InvalidRequestException();

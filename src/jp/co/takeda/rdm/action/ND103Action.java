@@ -24,11 +24,14 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.DAO;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.ND103DTO;
 import jp.co.takeda.rdm.service.ND103Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.RdmConstantsData;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Actionクラス
@@ -50,6 +53,10 @@ public class ND103Action extends BaseAction<ND103DTO> {
      */
     @Inject
     private ND103Service nD103Service;
+ // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
 
     /**
      * DAOインスタンス
@@ -263,11 +270,29 @@ public class ND103Action extends BaseAction<ND103DTO> {
 
         // END UOC
         setNextDTO(outdto);
-        //親画面へ遷移
-        outdto.setForward(dto.getWinVarName());
+
+        setJumpInfo(RdmConstantsData.I016);
+        //完了画面へ遷移
+        outdto.setForward("NC101");
         return outdto.getForward();
     }
 
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String msgId) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+		// 画面タイトル
+		paramDto.setTitle("医師勤務先追加");
+		// メッセージ１
+		if (msgId.equals(RdmConstantsData.I016)) {//I016	一時保存データを破棄しました。
+			paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I016));
+		}
+	}
 }

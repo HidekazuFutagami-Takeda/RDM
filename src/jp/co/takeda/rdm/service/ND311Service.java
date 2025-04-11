@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +23,7 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.ND103DTO;
 import jp.co.takeda.rdm.dto.ND311DTO;
 import jp.co.takeda.rdm.entity.MRdmHcpYakusyokuEntity;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
@@ -499,4 +501,76 @@ public class ND311Service extends BaseService {
         return outdto;
     }
 
+    /**
+     * 更新処理
+     * @param dto ND311DTO
+     * @return 遷移先DTO
+     * @customizable
+     */
+    @Transactional
+    public BaseDTO pullDown(ND311DTO dto) {
+        BaseDTO outdto = dto;
+
+      //医師_役職マスタ_生成用エンティティ
+    	MRdmHcpYakusyokuEntity paramYakusyoku = new MRdmHcpYakusyokuEntity();
+    	//検索条件_大学職位利用フラグ=0
+    	paramYakusyoku.setUnivTitleFlg("0");
+        //役職の帳票一覧を取得する
+        List<MRdmHcpYakusyokuEntity> SelectYakusyoku = dao.select(paramYakusyoku);
+        //役職データ_取り出す
+        LinkedHashMap<String, String> yakusyokuMap = new LinkedHashMap<String, String>();
+        yakusyokuMap.put("", "--なし--");
+        for (MRdmHcpYakusyokuEntity outEntity : SelectYakusyoku) {
+        	yakusyokuMap.put(outEntity.getTitleCode(), outEntity.getTitleKj());
+        }
+        //役職区分を格納する
+        dto.setYakusyokuMap(yakusyokuMap);
+
+        //医師_役職マスタ_生成用エンティティ
+        MRdmHcpYakusyokuEntity paramDaigakuSyokui = new MRdmHcpYakusyokuEntity();
+        //検索条件_大学職位利用フラグ=0
+    	paramDaigakuSyokui.setUnivTitleFlg("1");
+        //大学職位の帳票一覧を取得する
+        List<MRdmHcpYakusyokuEntity> SelectDaigakuSyokui = dao.select(paramDaigakuSyokui);
+        //大学職位データ_取り出す
+        LinkedHashMap<String, String> DaigakuSyokuiMap = new LinkedHashMap<String, String>();
+        DaigakuSyokuiMap.put("", "--なし--");
+        for (MRdmHcpYakusyokuEntity outEntity : SelectDaigakuSyokui) {
+        	DaigakuSyokuiMap.put(outEntity.getTitleCode(), outEntity.getTitleKj());
+        }
+        //大学職位を格納する
+        dto.setDaigakuSyokuiMap(DaigakuSyokuiMap);
+
+        //勤務形態_生成用エンティティ
+    	MRdmCodeMstEntity paramKinmuKeitai = new MRdmCodeMstEntity();
+    	//検索条件_勤務形態
+    	paramKinmuKeitai.setCodeName("JOB_FORM");
+        //勤務形態の帳票一覧を取得する
+        List<MRdmCodeMstEntity> SelectKinmuKeitaiList = dao.selectByValue(paramKinmuKeitai);
+        //勤務形態データ_取り出す
+        LinkedHashMap<String, String> KinmuKeitai = new LinkedHashMap<String, String>();
+        KinmuKeitai.put("", "--なし--");
+        for (MRdmCodeMstEntity outEntity : SelectKinmuKeitaiList) {
+        	KinmuKeitai.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+        }
+        //勤務形態を格納する
+        dto.setKinmuKeitaiMap(KinmuKeitai);
+
+        //薬審メンバー区分_生成用エンティティ
+    	MRdmCodeMstEntity paramYakushin = new MRdmCodeMstEntity();
+    	//検索条件_薬審メンバー区分
+    	paramYakushin.setCodeName("DCC");
+        //薬審メンバー区分の帳票一覧を取得する
+        List<MRdmCodeMstEntity> SelectYakushinList = dao.selectByValue(paramYakushin);
+        //薬審メンバー区分データ_取り出す
+        LinkedHashMap<String, String> yakushinMap = new LinkedHashMap<String, String>();
+        yakushinMap.put("", "--なし--");
+        for (MRdmCodeMstEntity outEntity : SelectYakushinList) {
+        	yakushinMap.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+        }
+        //薬審メンバー区分を格納する
+        dto.setYakushinMap(yakushinMap);
+     // END UOC
+        return outdto;
+    }
 }

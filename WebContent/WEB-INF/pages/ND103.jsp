@@ -271,21 +271,15 @@
 		</table>
 
 		<!-- エラー表示部  開始 -->
-		<center>
-		<table id="formTable00" border="0" cellpadding="2" cellspacing="0" width="600px">
-			<tbody>
-				<s:if test="msgStr != null">
-					<tr>
-						<td style="height: 15px; text-align: center;">
-							<nobr style="color: red; font-size: 15px;">
-								<s:property value="msgStr.replaceAll('\\n', '<br />')" escape="false"/>
-							</nobr>
-						</td>
-					</tr>
-				</s:if>
-			</tbody>
-		</table>
-		<center/>
+		<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
 		<!-- エラー表示部  終了 -->
 		<script>
 
@@ -361,7 +355,7 @@
 	          	<nobr>施設名<span style="color:red;">*</span></nobr>
           	</td>
           	<td colspan="3" style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onclick="JavaScript:tmpCseView();return false;"/>
-          		<s:textfield id="sosNameUser" name="insAbbrName"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+          		<s:textfield id="sosNameUser" name="insAbbrName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
           		<span onclick="sosClear();">clear</span>
           	</td>
           	<td></td>
@@ -375,7 +369,7 @@
           	</td>
           	<td colspan="3" style="width: 35px;">
           	<input class="comButton" type="button" value="選択" onClick="JavaScript:tmpCdcView();" />
-          		<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="background-color:#D4D0C8; width: 176px;" readonly="true"  />
+          		<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
           		<span onclick="deptClear();">clear</span>
           	</td>
           	<td></td>
@@ -452,7 +446,7 @@
 	        </tr>
 	        <tr>
 	        	<td colspan="5">
-	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="background-color:#D4D0C8; width: 650px; height: 80px;" readonly="true" />
+	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
 	        	</td>
 	        	<td></td>
 	        	<td></td>

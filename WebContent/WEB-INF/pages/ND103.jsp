@@ -192,7 +192,6 @@
       <s:hidden name="newTekiyoYmd" />
       <s:hidden name="newSosCd" />
       <s:hidden name="regEnabedFlg" />
-      <s:hidden name="title" />
       <s:hidden name="sortCondition1" />
       <s:hidden name="sortCondition2" />
       <s:hidden name="screenId" value="NF501" />
@@ -257,21 +256,24 @@
     <s:url id="pageurl" action="NF501Page"/>
     <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
 
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師勤務先追加"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
-	<table class="pupBodyTable" align="center">
-	<tr><td>
-		<table class="comPortalTitle">
-			<tbody>
-				<tr>
-					<td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
-					<td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
-					<td class="comPortalTitleRight"><nobr></nobr></td>
-				</tr>
-			</tbody>
-		</table>
+    <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
 
-		<!-- エラー表示部  開始 -->
-		<table width="100%">
+   	<table width="100%">
    		<tr>
              <td align="center">
                <jsp:include page="common/rdmMsg.jsp">
@@ -280,13 +282,9 @@
              </td>
          </tr>
       </table>
-		<!-- エラー表示部  終了 -->
-		<script>
-
-		</script>
 
 		<%-- ヘッダー部 開始 --%>
-     	<table class="pupList" style="border-collapse:collapse; margin-top:3pt;margin-bottom:1pt; background-color: white;width:250px"  >
+     	<table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
 
 			<tr>
 				<td>申請情報</td>
@@ -427,7 +425,7 @@
         </tr>
         <tr>
         	<td colspan="5">
-        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;"  />
+        		<s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"  />
         	</td>
         	<td></td>
 	       	<td></td>
@@ -437,7 +435,7 @@
  		<s:if test='%{reqStsCd == 01 }'>
 
  		</s:if>
- 		<s:elseif test='%{reqStsCd == null }'>
+ 		<s:elseif test='%{reqStsCd == null || reqStsCd == ""}'>
 
  		</s:elseif>
  		<s:else>
@@ -446,7 +444,7 @@
 	        </tr>
 	        <tr>
 	        	<td colspan="5">
-	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
+	        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
 	        	</td>
 	        	<td></td>
 	        	<td></td>
@@ -480,7 +478,7 @@
 		 		<s:elseif test='%{reqStsCd == 13 }'>
 					<input type="button" value="一時保存" onclick="reqND103Save();" />
 		 		</s:elseif>
-		 		<s:elseif test='%{reqStsCd == null }'>
+		 		<s:elseif test='%{reqStsCd == null || reqStsCd == ""}'>
 					<input type="button" value="一時保存" onclick="reqND103Save();" />
 		 		</s:elseif>
 		 		<s:else>

@@ -181,7 +181,6 @@
       <s:hidden name="newTekiyoYmd" />
       <s:hidden name="newSosCd" />
       <s:hidden name="regEnabedFlg" />
-      <s:hidden name="title" />
       <s:hidden name="sortCondition1" />
       <s:hidden name="sortCondition2" />
       <s:hidden name="screenId" value="NF501" />
@@ -228,22 +227,24 @@
     <s:url id="pageurl" action="NF501Page"/>
     <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
 
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師勤務先追加"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
-	<table class="pupBodyTable" align="center">
-	<tr><td>
+    <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
 
-		<table class="comPortalTitle">
-			<tbody>
-				<tr>
-					<td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
-					<td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
-					<td class="comPortalTitleRight"><nobr></nobr></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<!-- エラー表示部  開始 -->
-		<table width="100%">
+   	<table width="100%">
    		<tr>
              <td align="center">
                <jsp:include page="common/rdmMsg.jsp">
@@ -252,13 +253,9 @@
              </td>
          </tr>
       </table>
-		<!-- エラー表示部  終了 -->
-		<script>
-
-		</script>
 
 		<%-- ヘッダー部 開始 --%>
-     	<table class="pupList" style="border-collapse:collapse; margin-top:3pt;margin-bottom:1pt; background-color: white; width: 50%;">
+     	<table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
 
 			<tr>
 				<td style="width:60px;">申請情報</td>

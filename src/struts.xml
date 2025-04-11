@@ -507,7 +507,7 @@
         </action>
         <action name="ND311Register" class="ND311Action" method="register">
             <result name="ND311">/WEB-INF/pages/ND311.jsp</result>
-            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NC101" type="chain">NC101Init</result>
         </action>
         <action name="ND311Cancel" class="ND311Action" method="cancel">
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
@@ -596,6 +596,7 @@
 
         <action name="ND103Cancel" class="ND103Action" method="cancel">
             <result name="ND103">/WEB-INF/pages/ND103.jsp</result>
+            <result name="NC101" type="chain">NC101Init</result>
         </action>
         <action name="ND013Init" class="ND013Action" method="init">
             <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
@@ -607,10 +608,6 @@
         <action name="ND311Init" class="ND311Action" method="init">
             <result name="ND311">/WEB-INF/pages/ND311.jsp</result>
             <result name="ND103">/WEB-INF/pages/ND103.jsp</result>
-        </action>
-        <action name="ND311Register" class="ND311Action" method="register">
-            <result name="ND311">/WEB-INF/pages/ND311.jsp</result>
-            <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
         </action>
         <action name="ND311Cancel" class="ND311Action" method="cancel">
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>

@@ -21,6 +21,7 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.ND311DTO;
 import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
@@ -28,6 +29,8 @@ import jp.co.takeda.rdm.service.ND311Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Actionクラス
@@ -49,6 +52,10 @@ public class ND311Action extends BaseAction<ND311DTO> {
      */
     @Inject
     private ND311Service nD311Service;
+ // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
 
     //ログインユーザ情報取得
     LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -112,11 +119,15 @@ public class ND311Action extends BaseAction<ND311DTO> {
     public String init() throws Exception {
         initSetup();
 
+        dto.setTitle("ND311_医師勤務先追加 - 申請内容確認");
+
         BaseDTO outdto = dto;
 
         dto.setMsgStr(null);
 
       	 String tmpMsgStr = "";
+
+      	nD311Service.pullDown(dto);
 
         //【仮】権限判別
       //ログインユーザー情報格納
@@ -310,6 +321,7 @@ public class ND311Action extends BaseAction<ND311DTO> {
 
        	 //エラーがある場合親画面へ遷移.
        	 if (!StringUtils.isEmpty(dto.getMsgStr())) {
+       		dto.setTitle("ND103_医師勤務先追加");
        		outdto.setForward("ND103");
        		return initNext(outdto);
        	 }
@@ -378,12 +390,37 @@ public class ND311Action extends BaseAction<ND311DTO> {
     protected String registerNext(BaseDTO outdto) throws Exception {
         // START UOC
         // END UOC
+    	setNextDTO(outdto);
 
-        setNextDTO(outdto);
+        if("NC101".equals(dto.getForward())) {
+        	setJumpInfo(dto.getProcessFlg());
+        }
+
         return outdto.getForward();
     }
 
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String event) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-
-
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+        // 画面タイトル
+        paramDto.setTitle("医師勤務先追加");
+        // メッセージ１
+        if (event.equals("0")) {//I002	申請が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
+        }
+        if (event.equals("2")) {//I003	承認が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I003));
+        }
+        if (event.equals("1")) {//I004	却下が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I004));
+        }
+    }
 }

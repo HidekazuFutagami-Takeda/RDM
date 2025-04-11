@@ -89,6 +89,7 @@ public class NF014Service extends BaseService {
 			indto.setInsPcode(insPcode);
 			indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 			indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
+			indto.setPreDelKbn(StringUtils.nvl(mainDataEntity.getPreDelKbn(), ""));
 			indto.setRstReason("");
 
 			indto.setReqShzNm(loginInfo.getBumonRyakuName());
@@ -178,6 +179,14 @@ public class NF014Service extends BaseService {
 			indto.setInsPcode(insPcode);
 			indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 			indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
+			indto.setPreDelKbn(StringUtils.nvl(mainDataEntity.getPreDelKbn(), ""));
+
+			if(mainDataEntity.getDelKbn() == null && !"01".equals(indto.getReqStsCd()) && !"11".equals(indto.getReqStsCd())
+			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
+				indto.setDelKbn("0");
+			} else {
+				indto.setDelKbn(StringUtils.nvl(mainDataEntity.getDelKbn(), ""));
+			}
 			indto.setRstReason(StringUtils.nvl(mainDataEntity.getRstReason(), ""));
 
 			indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -215,10 +224,24 @@ public class NF014Service extends BaseService {
 	 * @customizable
 	 */
 	private void createCombo(NF014DTO indto) {
+		// 削除区分
+    	SelectComboListEntity inEntityCmb = new SelectComboListEntity();
+    	inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_DEL_KBN);
+        List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
+        LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
+        mapDelKbn.put("", "--選択してください--");
+        mapDelKbn.put("0", "通常状態");
+        for (SelectComboListEntity outEntity : outMainList) {
+        	if("1".equals(outEntity.getValue()) && "2".equals(indto.getPreDelKbn())) {
+        		mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        	}
+        }
+        indto.setDelKbnCombo(mapDelKbn);
+
 		// 復活理由
-		SelectComboListEntity inEntityCmb = new SelectComboListEntity();
+		inEntityCmb = new SelectComboListEntity();
 		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_HCO_RST_REASON);
-		List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
+		outMainList = dao.select(inEntityCmb);
 		LinkedHashMap<String, String> mapRstReason = new LinkedHashMap<String, String>();
 		mapRstReason.put("", "--選択してください--");
 		for (SelectComboListEntity outEntity : outMainList) {
@@ -372,20 +395,45 @@ public class NF014Service extends BaseService {
 			tRdmHcoReqInsData.setReqId(reqId);
 			tRdmHcoReqInsData.setInsNo(indto.getInsNo());
 
-			// 削除施設の施設名は先頭に'●'が入っているので、'●'を除いた値をセットする
+			// 施設名
 			String insAbbrName = indto.getInsAbbrName();
-			if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
-				insAbbrName = insAbbrName.substring(1);
+			String insFormalName = indto.getInsFormalName();
+			if("1".equals(indto.getPreDelKbn())) {
+				// 廃院/閉院予定→通常の場合'○'を除去
+				if(insAbbrName != null && insAbbrName.length() > 0 && "○".equals(insAbbrName.substring(0,1))) {
+					insAbbrName = insAbbrName.substring(1);
+				}
+				if(insFormalName != null && insFormalName.length() > 0 && "○".equals(insFormalName.substring(0,1))) {
+					insFormalName = insFormalName.substring(1);
+				}
+			} else if("2".equals(indto.getPreDelKbn()) && "0".equals(indto.getDelKbn())) {
+				// 廃院/閉院済み→通常の場合'●'を除去
+				if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
+					insAbbrName = insAbbrName.substring(1);
+				}
+				if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
+					insFormalName = insFormalName.substring(1);
+				}
+			} else if("2".equals(indto.getPreDelKbn()) && "1".equals(indto.getDelKbn())) {
+				// 廃院/閉院済み→廃院/閉院予定の場合'●'を除去、'○'を付与
+				if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
+					insAbbrName = insAbbrName.substring(1);
+				}
+				insAbbrName = "○" + insAbbrName;
+				if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
+					insFormalName = insFormalName.substring(1);
+				}
+				insFormalName = "○" + insFormalName;
 			}
 			tRdmHcoReqInsData.setInsAbbrName(insAbbrName);
-
-			String insFormalName = indto.getInsFormalName();
-			if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
-				insFormalName = insFormalName.substring(1);
-			}
 			tRdmHcoReqInsData.setInsFormalName(insFormalName);
 
 			tRdmHcoReqInsData.setRstReason(indto.getRstReason());
+
+			if(!StringUtils.isEmpty(indto.getDelKbn())) {
+				tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
+			}
+
 			tRdmHcoReqInsData.setInsShaYmd(sysDate);
 			tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
 			tRdmHcoReqInsData.setUpdShaYmd(sysDate);
@@ -398,20 +446,45 @@ public class NF014Service extends BaseService {
 			TRdmHcoReqEntity tRdmHcoReqUpdData = new TRdmHcoReqEntity("updateNF014Data");
 			tRdmHcoReqUpdData.setReqId(reqId);
 
-			// 削除施設の施設名は先頭に'●'が入っているので、'●'を除いた値をセットする
+			// 施設名
 			String insAbbrName = indto.getInsAbbrName();
-			if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
-				insAbbrName = insAbbrName.substring(1);
+			String insFormalName = indto.getInsFormalName();
+			if("1".equals(indto.getPreDelKbn())) {
+				// 廃院/閉院予定→通常の場合'○'を除去
+				if(insAbbrName != null && insAbbrName.length() > 0 && "○".equals(insAbbrName.substring(0,1))) {
+					insAbbrName = insAbbrName.substring(1);
+				}
+				if(insFormalName != null && insFormalName.length() > 0 && "○".equals(insFormalName.substring(0,1))) {
+					insFormalName = insFormalName.substring(1);
+				}
+			} else if("2".equals(indto.getPreDelKbn()) && "0".equals(indto.getDelKbn())) {
+				// 廃院/閉院済み→通常の場合'●'を除去
+				if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
+					insAbbrName = insAbbrName.substring(1);
+				}
+				if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
+					insFormalName = insFormalName.substring(1);
+				}
+			} else if("2".equals(indto.getPreDelKbn()) && "1".equals(indto.getDelKbn())) {
+				// 廃院/閉院済み→廃院/閉院予定の場合'●'を除去、'○'を付与
+				if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
+					insAbbrName = insAbbrName.substring(1);
+				}
+				insAbbrName = "○" + insAbbrName;
+				if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
+					insFormalName = insFormalName.substring(1);
+				}
+				insFormalName = "○" + insFormalName;
 			}
 			tRdmHcoReqUpdData.setInsAbbrName(insAbbrName);
-
-			String insFormalName = indto.getInsFormalName();
-			if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
-				insFormalName = insFormalName.substring(1);
-			}
 			tRdmHcoReqUpdData.setInsFormalName(insFormalName);
 
 			tRdmHcoReqUpdData.setRstReason(indto.getRstReason());
+
+			if(!StringUtils.isEmpty(indto.getDelKbn())) {
+				tRdmHcoReqUpdData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
+			}
+
 			tRdmHcoReqUpdData.setUpdShaYmd(sysDate);
 			tRdmHcoReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 

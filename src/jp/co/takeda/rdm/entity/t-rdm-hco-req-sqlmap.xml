@@ -8202,6 +8202,7 @@
 			<if test="insAbbrName != null">INS_ABBR_NAME = #{insAbbrName},</if><if test="insAbbrName == null">INS_ABBR_NAME = null,</if>
 			<if test="insFormalName != null">INS_FORMAL_NAME = #{insFormalName},</if><if test="insFormalName == null">INS_FORMAL_NAME = null,</if>
 			<if test="rstReason != null">RST_REASON = #{rstReason},</if><if test="rstReason == null">RST_REASON = null,</if>
+			<if test="delKbn != null">DEL_KBN = #{delKbn},</if><if test="delKbn == null">DEL_KBN = null,</if>
 			UPD_SHA_YMD = #{updShaYmd},
 			UPD_SHA_ID = #{updShaId}
         WHERE

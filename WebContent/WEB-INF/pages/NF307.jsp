@@ -394,6 +394,9 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       	<s:hidden name="insPcode"/>
       	<s:hidden name="insAddr"/>
       	<s:hidden name="delReason"/>
+      	<s:hidden name="preDelKbn"/>
+      	<s:hidden name="delKbn"/>
+      	<s:hidden name="delKbnNm"/>
       	<s:hidden name="rstReason"/>
       	<s:hidden name="rstReasonNm"/>
         <%--申請内容--%>
@@ -426,6 +429,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>削除理由</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="delReason"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>削除区分</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="delKbnNm"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>復活理由</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="rstReasonNm"/></nobr></td>
       </tr>

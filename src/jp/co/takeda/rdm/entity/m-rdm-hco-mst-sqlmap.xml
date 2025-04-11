@@ -159,6 +159,8 @@
          <result column="INS_ADDR" property="insAddr"/>
          <result column="INS_PCODE" property="insPcode"/>
          <result column="DEL_REASON" property="delReason"/>
+         <result column="PRE_DEL_KBN" property="preDelKbn"/>
+         <result column="DEL_KBN" property="delKbn"/>
          <result column="RST_REASON" property="rstReason"/>
          <result column="REQ_COMMENT" property="reqComment"/>
          <result column="APR_MEMO" property="aprMemo"/>
@@ -1453,6 +1455,7 @@
  		, MST.INS_FORMAL_NAME
  		, MST.INS_ADDR
  		, MST.INS_PCODE
+ 		, MST.DEL_KBN AS PRE_DEL_KBN
  		, CDM_DEL.VALUE1_KANJ AS DEL_REASON
  		FROM
  		M_RDM_HCO_MST MST -- 施設_基本情報
@@ -1487,10 +1490,12 @@
  		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
  		, HCO.INS_NO
  		, MST.INS_ABBR_NAME
- 		, HCO.INS_FORMAL_NAME
+ 		, MST.INS_FORMAL_NAME
  		, MST.INS_ADDR
  		, MST.INS_PCODE
  		, CDM_DEL.VALUE1_KANJ AS DEL_REASON
+ 		, MST.DEL_KBN AS PRE_DEL_KBN
+ 		, HCO.DEL_KBN
  		, HCO.RST_REASON
  		, KNR.REQ_COMMENT  -- 申請管理.申請コメント
  		, KNR.APR_MEMO  -- 申請管理.承認者メモ

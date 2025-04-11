@@ -232,6 +232,18 @@ public class NF014DTO extends BaseDTO implements Serializable {
     private String delReason;
 
     /**
+     * 変更前削除区分
+     * @generated
+     */
+    private String preDelKbn;
+
+    /**
+     * 削除区分
+     * @generated
+     */
+    private String delKbn;
+
+    /**
      * 復活理由
      * @generated
      */
@@ -268,6 +280,12 @@ public class NF014DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private LinkedHashMap<String,String> rstReasonCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_削除区分
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> delKbnCombo = new LinkedHashMap<String,String>();
 
 	/**
 	 * 審査済みフラグ
@@ -815,6 +833,36 @@ public class NF014DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF014DTO.javapreDelKbnを設定
+	 * @return preDelKbn
+	 */
+	public String getPreDelKbn() {
+		return preDelKbn;
+	}
+
+	/**
+	 * @param preDelKbn セットする preDelKbn
+	 */
+	public void setPreDelKbn(String preDelKbn) {
+		this.preDelKbn = preDelKbn;
+	}
+
+	/**
+	 * NF014DTO.javadelKbnを設定
+	 * @return delKbn
+	 */
+	public String getDelKbn() {
+		return delKbn;
+	}
+
+	/**
+	 * @param delKbn セットする delKbn
+	 */
+	public void setDelKbn(String delKbn) {
+		this.delKbn = delKbn;
+	}
+
+	/**
 	 * NF014DTO.javarstReasonを設定
 	 * @return rstReason
 	 */
@@ -902,6 +950,21 @@ public class NF014DTO extends BaseDTO implements Serializable {
 	 */
 	public void setRstReasonCombo(LinkedHashMap<String, String> rstReasonCombo) {
 		this.rstReasonCombo = rstReasonCombo;
+	}
+
+	/**
+	 * NF014DTO.javadelKbnComboを設定
+	 * @return delKbnCombo
+	 */
+	public LinkedHashMap<String,String> getDelKbnCombo() {
+		return delKbnCombo;
+	}
+
+	/**
+	 * @param delKbnCombo セットする delKbnCombo
+	 */
+	public void setDelKbnCombo(LinkedHashMap<String,String> delKbnCombo) {
+		this.delKbnCombo = delKbnCombo;
 	}
 
 	/**

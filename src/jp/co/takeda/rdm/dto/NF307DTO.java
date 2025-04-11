@@ -232,6 +232,24 @@ public class NF307DTO extends BaseDTO implements Serializable {
     private String delReason;
 
     /**
+     * 変更前削除区分
+     * @generated
+     */
+    private String preDelKbn;
+
+    /**
+     * 削除区分
+     * @generated
+     */
+    private String delKbn;
+
+    /**
+     * 削除区分
+     * @generated
+     */
+    private String delKbnNm;
+
+    /**
      * 復活理由
      * @generated
      */
@@ -280,6 +298,12 @@ public class NF307DTO extends BaseDTO implements Serializable {
 	 * @generated
 	 */
 	private LinkedHashMap<String,String> rstReasonCombo = new LinkedHashMap<String,String>();
+
+	/**
+	 * コンボボックス_削除区分
+	 * @generated
+	 */
+	private LinkedHashMap<String,String> delKbnCombo = new LinkedHashMap<String,String>();
 
 	/**
 	 * 審査済みフラグ
@@ -840,6 +864,51 @@ public class NF307DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * NF307DTO.javapreDelKbnを設定
+	 * @return preDelKbn
+	 */
+	public String getPreDelKbn() {
+		return preDelKbn;
+	}
+
+	/**
+	 * @param preDelKbn セットする preDelKbn
+	 */
+	public void setPreDelKbn(String preDelKbn) {
+		this.preDelKbn = preDelKbn;
+	}
+
+	/**
+	 * NF307DTO.javadelKbnを設定
+	 * @return delKbn
+	 */
+	public String getDelKbn() {
+		return delKbn;
+	}
+
+	/**
+	 * @param delKbn セットする delKbn
+	 */
+	public void setDelKbn(String delKbn) {
+		this.delKbn = delKbn;
+	}
+
+	/**
+	 * NF307DTO.javadelKbnNmを設定
+	 * @return delKbnNm
+	 */
+	public String getDelKbnNm() {
+		return delKbnNm;
+	}
+
+	/**
+	 * @param delKbnNm セットする delKbnNm
+	 */
+	public void setDelKbnNm(String delKbnNm) {
+		this.delKbnNm = delKbnNm;
+	}
+
+	/**
 	 * NF307DTO.javarstReasonを設定
 	 * @return rstReason
 	 */
@@ -957,6 +1026,21 @@ public class NF307DTO extends BaseDTO implements Serializable {
 	 */
 	public void setRstReasonCombo(LinkedHashMap<String, String> rstReasonCombo) {
 		this.rstReasonCombo = rstReasonCombo;
+	}
+
+	/**
+	 * NF307DTO.javadelKbnComboを設定
+	 * @return delKbnCombo
+	 */
+	public LinkedHashMap<String,String> getDelKbnCombo() {
+		return delKbnCombo;
+	}
+
+	/**
+	 * @param delKbnCombo セットする delKbnCombo
+	 */
+	public void setDelKbnCombo(LinkedHashMap<String,String> delKbnCombo) {
+		this.delKbnCombo = delKbnCombo;
 	}
 
 	/**

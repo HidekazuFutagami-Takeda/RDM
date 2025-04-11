@@ -177,6 +177,18 @@ public class SelectNF014MainDataEntity extends BaseEntity implements Serializabl
     private String delReason;
 
     /**
+     * 変更前削除区分
+     * @generated
+     */
+    private String preDelKbn;
+
+    /**
+     * 削除区分
+     * @generated
+     */
+    private String delKbn;
+
+    /**
      * 復活理由
      * @generated
      */
@@ -585,6 +597,36 @@ public class SelectNF014MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setDelReason(String delReason) {
 		this.delReason = delReason;
+	}
+
+	/**
+	 * SelectNF014MainDataEntity.javapreDelKbnを設定
+	 * @return preDelKbn
+	 */
+	public String getPreDelKbn() {
+		return preDelKbn;
+	}
+
+	/**
+	 * @param preDelKbn セットする preDelKbn
+	 */
+	public void setPreDelKbn(String preDelKbn) {
+		this.preDelKbn = preDelKbn;
+	}
+
+	/**
+	 * SelectNF014MainDataEntity.javadelKbnを設定
+	 * @return delKbn
+	 */
+	public String getDelKbn() {
+		return delKbn;
+	}
+
+	/**
+	 * @param delKbn セットする delKbn
+	 */
+	public void setDelKbn(String delKbn) {
+		this.delKbn = delKbn;
 	}
 
 	/**

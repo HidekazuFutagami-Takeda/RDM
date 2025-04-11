@@ -59,10 +59,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	editFlg = document.fm1.editApprFlg.value;
 
 		if(editFlg == "0") {
+			// 削除区分
+			document.fm1.delKbnView.value = document.fm1.delKbn.options[document.fm1.delKbn.selectedIndex].textContent;
+			document.fm1.delKbn.hidden = "true";
 			// 復活理由
 			document.fm1.rstReasonView.value = document.fm1.rstReason.options[document.fm1.rstReason.selectedIndex].textContent;
 			document.fm1.rstReason.hidden = "true";
 		} else {
+			document.fm1.delKbnView.hidden = "true";
 			document.fm1.rstReasonView.hidden = "true";
 		}
     }
@@ -111,6 +115,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			document.fm1.screenId.value="NF307";
 			document.fm1.functionId.value="Init";
 
+			document.fm1.delKbnNm.value = document.fm1.delKbn.options[document.fm1.delKbn.selectedIndex].textContent;
 			document.fm1.rstReasonNm.value = document.fm1.rstReason.options[document.fm1.rstReason.selectedIndex].textContent;
 		}
 
@@ -272,6 +277,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     <s:hidden name="sosRyakuName"/>
 
 	<s:hidden name="editApprFlg"/>
+	<s:hidden name="preDelKbn"/>
 
 	<s:hidden name="winVarName" value="NF014" />
 
@@ -438,6 +444,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       	<s:hidden name="insPcode"/>
       	<s:hidden name="insAddr"/>
       	<s:hidden name="delReason"/>
+      	<s:hidden name="delKbnNm"/>
       	<s:hidden name="rstReasonNm"/>
         <%--申請内容--%>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
@@ -469,6 +476,16 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>削除理由</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="delReason"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>削除区分<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:select id="delKbn" name="delKbn" cssStyle="width:130pt" list ="delKbnCombo" />
+			<s:textfield id="delKbnView" name="delKbnView" cssStyle="width:130pt" readonly="true" />
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>

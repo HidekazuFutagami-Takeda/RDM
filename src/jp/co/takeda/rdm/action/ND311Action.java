@@ -116,7 +116,7 @@ public class ND311Action extends BaseAction<ND311DTO> {
 
         dto.setMsgStr(null);
 
-      	 String tmpMsgStr = null;
+      	 String tmpMsgStr = "";
 
         //【仮】権限判別
       //ログインユーザー情報格納

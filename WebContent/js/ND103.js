@@ -289,7 +289,7 @@ function ND311Page(){
 
 	//ND311_医師勤務先追加 - 申請内容確認
 	document.fm1.screenId.value	= "ND311";
-    document.fm1.functionId.value = "Init"
+    document.fm1.functionId.value = "Init";
 
  	comSubmitForAnyWarp(fm1);
 
@@ -490,25 +490,25 @@ window.onload = function(){
 	//エラーメッセージ
     var msgStr = document.fm1.msgStr.value;
 
-	if (msgStr != "") {
-		document.fm1.screenId.value	= "ND103";
-	    document.fm1.functionId.value = "Init"
-
-		comSubmitForAnyWarp(fm1);
-	}
-	if (dialog != "") {
-		if (window.confirm(dialog)) {//OK押下の場合
-
-			//ND311_医師勤務先追加 - 申請内容確認
-			document.fm1.screenId.value	= "ND311";
-		    document.fm1.functionId.value = "Init"
-
-			comSubmitForAnyWarp(fm1);
-
-	     }
-		 //Cancel押下の場合
-		 return false;
-	}
+//	if (msgStr != "") {
+//		document.fm1.screenId.value	= "ND103";
+//	    document.fm1.functionId.value = "Init"
+//
+//		comSubmitForAnyWarp(fm1);
+//	}
+//	if (dialog != "") {
+//		if (window.confirm(dialog)) {//OK押下の場合
+//
+//			//ND311_医師勤務先追加 - 申請内容確認
+//			document.fm1.screenId.value	= "ND311";
+//		    document.fm1.functionId.value = "Init"
+//
+//			comSubmitForAnyWarp(fm1);
+//
+//	     }
+//		 //Cancel押下の場合
+//		 return false;
+//	}
 	return false;
 }
 

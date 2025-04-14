@@ -362,7 +362,7 @@
           	</td>
           	<td colspan="3" style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onclick="JavaScript:tmpCseView();return false;"/>
           		<s:textfield id="sosNameUser" name="insAbbrName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-          		<span onclick="sosClear();">clear</span>
+          		<a class="comMiniLink" href="#" onClick="JavaScript:sosClear();">Clear</a>
           	</td>
           	<td></td>
 	        <td></td>
@@ -376,7 +376,7 @@
           	<td colspan="3" style="width: 35px;">
           	<input class="comButton" type="button" value="選択" onClick="JavaScript:tmpCdcView();" />
           		<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-          		<span onclick="deptClear();">clear</span>
+          		<a class="comMiniLink" href="#" onClick="JavaScript:deptClear();">Clear</a>
           	</td>
           	<td></td>
 	        <td></td>

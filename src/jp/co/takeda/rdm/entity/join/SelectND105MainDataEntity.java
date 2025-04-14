@@ -220,6 +220,11 @@ public class SelectND105MainDataEntity extends BaseEntity implements Serializabl
 	private String shnFlg;
 
 
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
 
 
 
@@ -717,6 +722,21 @@ public class SelectND105MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setShnFlg(String shnFlg) {
 		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * SelectND105MainDataEntity.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

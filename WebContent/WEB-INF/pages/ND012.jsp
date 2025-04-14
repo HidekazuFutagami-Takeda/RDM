@@ -324,6 +324,7 @@
         <s:hidden name="mstSpDiseaseCd"/>
         <s:hidden name="mstSpDiseaseNm"/>
         <s:hidden name="mstSpCom"/>
+        <s:hidden name="reqChl"/>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
@@ -942,7 +943,7 @@
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
-	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" }'>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || (loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
@@ -995,7 +996,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")}'>
+				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && reqStsCd == "11")}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="register('4');return false;" />
 				</s:if>
 				<s:else>
@@ -1005,7 +1006,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{reqStsCd == null || reqStsCd == "" ||(loginJgiNo == reqJgiNo && reqStsCd == "01")}'>
+				<s:if test='%{reqStsCd == null || reqStsCd == "" ||(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && reqStsCd == "11")}'>
 	                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="register('0');return false;" />
 				</s:if>
 				<s:else>
@@ -1030,7 +1031,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" }'>
+			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" ||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
 		                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" onClick="register('1');return false;" />
 			   </s:if>
 				<s:else>

@@ -323,7 +323,8 @@
 	      <td class="comFormTableItem"><nobr>医師／薬剤師区分</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocTypeNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="docTypeNm"/>
+		      <s:if test="mstDocType != docType"><font color="red"><s:label key="docTypeNm"/></font></s:if>
+			  <s:else><s:label key="docTypeNm"/></s:else>
 			  <s:hidden name="docType"/><s:hidden name="docTypeNm"/>
 	      </nobr></td>
       </tr>
@@ -331,7 +332,8 @@
 	      <td class="comFormTableItem"><nobr>性別</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSexNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="sexNm"/>
+		      <s:if test="mstSexCd != sexCd"><font color="red"><s:label key="sexNm"/></font></s:if>
+		      <s:else><s:label key="sexNm"/></s:else>
 			  <s:hidden name="sexCd"/><s:hidden name="sexNm"/>
 	      </nobr></td>
       </tr>
@@ -339,7 +341,8 @@
 	      <td class="comFormTableItem"><nobr>医師名(漢字)姓</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="docKanjiSei"/>
+		      <s:if test="mstDocKanjiSei != docKanjiSei"><font color="red"><s:label key="docKanjiSei"/></font></s:if>
+		      <s:else><s:label key="docKanjiSei"/></s:else>
 			  <s:hidden name="docKanjiSei"/>
 	      </nobr></td>
       </tr>
@@ -347,7 +350,8 @@
 	      <td class="comFormTableItem"><nobr>医師名(漢字)名</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanjiMei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="docKanjiMei"/>
+		      <s:if test="mstDocKanjiMei != docKanjiMei"><font color="red"><s:label key="docKanjiMei"/></font></s:if>
+		      <s:else><s:label key="docKanjiMei"/></s:else>
 			  <s:hidden name="docKanjiMei"/>
 	      </nobr></td>
       </tr>
@@ -355,7 +359,8 @@
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)姓</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="docKanaSei"/>
+		      <s:if test="mstDocKanaSei != docKanaSei"><font color="red"><s:label key="docKanaSei"/></font></s:if>
+		      <s:else><s:label key="docKanaSei"/></s:else>
 			  <s:hidden name="docKanaSei"/>
 	      </nobr></td>
       </tr>
@@ -363,7 +368,8 @@
 	      <td class="comFormTableItem"><nobr>医師名(半角カナ)名</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDocKanaMei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="docKanaMei"/>
+		      <s:if test="mstDocKanaMei != docKanaMei"><font color="red"><s:label key="docKanaMei"/></font></s:if>
+		      <s:else><s:label key="docKanaMei"/></s:else>
 			  <s:hidden name="docKanaMei"/>
 	      </nobr></td>
       </tr>
@@ -376,7 +382,8 @@
 	      <td class="comFormTableItem"><nobr>旧姓(漢字)姓</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanjSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="oldKanjSei"/>
+		      <s:if test="mstOldKanjSei != oldKanjSei"><font color="red"><s:label key="oldKanjSei"/></font></s:if>
+		      <s:else><s:label key="oldKanjSei"/></s:else>
 			  <s:hidden name="oldKanjSei"/>
 	      </nobr></td>
       </tr>
@@ -384,7 +391,8 @@
 	      <td class="comFormTableItem"><nobr>旧姓(半角カナ)姓</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstOldKanaSei"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="oldKanaSei"/>
+		      <s:if test="mstOldKanaSei != oldKanaSei"><font color="red"><s:label key="oldKanaSei"/></font></s:if>
+		      <s:else><s:label key="oldKanaSei"/></s:else>
 			  <s:hidden name="oldKanaSei"/>
 	      </nobr></td>
       </tr>
@@ -392,7 +400,9 @@
 	      <td class="comFormTableItem"><nobr>改姓日</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstNewNameStYear"/>年<s:label key="mstNewNameStMonth"/>月<s:label key="mstNewNameStDay"/>日</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="newNameStYear"/>年<s:label key="newNameStMonth"/>月<s:label key="newNameStDay"/>日
+		      <s:if test='%{mstNewNameStYear != newNameStYear || mstNewNameStMonth != newNameStMonth || mstNewNameStDay != newNameStDay }'>
+		      	<font color="red"><s:label key="newNameStYear"/>年<s:label key="newNameStMonth"/>月<s:label key="newNameStDay"/>日</font></s:if>
+		      <s:else><s:label key="newNameStYear"/>年<s:label key="newNameStMonth"/>月<s:label key="newNameStDay"/>日</s:else>
 			  <s:hidden name="newNameStYear"/><s:hidden name="newNameStMonth"/><s:hidden name="newNameStDay"/>
 	      </nobr></td>
       </tr>
@@ -405,7 +415,9 @@
 	      <td class="comFormTableItem"><nobr>生年月日</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstDobYear"/>年<s:label key="mstDobMonth"/>月<s:label key="mstDobDay"/>日</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="dobYear"/>年<s:label key="dobMonth"/>月<s:label key="dobDay"/>日
+		      <s:if test='%{mstDobYear != dobYear || mstDobMonth != dobMonth || mstDobDay != dobDay }'>
+		      	<font color="red"><s:label key="dobYear"/>年<s:label key="dobMonth"/>月<s:label key="dobDay"/>日</font></s:if>
+		      <s:else><s:label key="dobYear"/>年<s:label key="dobMonth"/>月<s:label key="dobDay"/>日</s:else>
 			  <s:hidden name="dobYear"/><s:hidden name="dobMonth"/><s:hidden name="dobDay"/>
 	      </nobr></td>
       </tr>
@@ -413,7 +425,8 @@
 	      <td class="comFormTableItem"><nobr>出身地</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeTownNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="homeTownNm"/>
+		      <s:if test="mstHomeTownCd != homeTownCd"><font color="red"><s:label key="homeTownNm"/></font></s:if>
+		      <s:else><s:label key="homeTownNm"/></s:else>
 			  <s:hidden name="homeTownCd"/><s:hidden name="homeTownNm"/>
 	      </nobr></td>
       </tr>
@@ -421,7 +434,8 @@
 	      <td class="comFormTableItem"><nobr>出身校</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstMedSchoolNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="medSchoolNm"/>
+		      <s:if test="mstMedSchoolCd != medSchoolCd"><font color="red"><s:label key="medSchoolNm"/></font></s:if>
+		      <s:else><s:label key="medSchoolNm"/></s:else>
 			  <s:hidden name="medSchoolCd"/><s:hidden name="medSchoolNm"/>
 	      </nobr></td>
       </tr>
@@ -429,7 +443,8 @@
 	      <td class="comFormTableItem"><nobr>卒年（西暦）</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstGradYear"/>年</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="gradYear"/>年
+		      <s:if test="mstGradYear != gradYear"><font color="red"><s:label key="gradYear"/>年</font></s:if>
+		      <s:else><s:label key="gradYear"/>年</s:else>
 			  <s:hidden name="gradYear"/>
 	      </nobr></td>
       </tr>
@@ -437,7 +452,8 @@
 	      <td class="comFormTableItem"><nobr>出身医局校</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeUnivNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="homeUnivNm"/>
+		      <s:if test="mstHomeUnivCd != homeUnivCd"><font color="red"><s:label key="homeUnivNm"/></font></s:if>
+		      <s:else><s:label key="homeUnivNm"/></s:else>
 			  <s:hidden name="homeUnivCd"/><s:hidden name="homeUnivNm"/>
 	      </nobr></td>
       </tr>
@@ -445,7 +461,8 @@
 	      <td class="comFormTableItem"><nobr>臨床研修年（西暦）</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstEmplYear"/>年</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="emplYear"/>年
+		      <s:if test="mstEmplYear != emplYear"><font color="red"><s:label key="emplYear"/>年</font></s:if>
+		      <s:else><s:label key="emplYear"/>年</s:else>
 			  <s:hidden name="emplYear"/>
 	      </nobr></td>
       </tr>
@@ -458,7 +475,8 @@
 	      <td class="comFormTableItem"><nobr>出身所属部科</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstHomeDeptNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="homeDeptNm"/>
+		      <s:if test="mstHomeDeptCd != homeDeptCd"><font color="red"><s:label key="homeDeptNm"/></font></s:if>
+		      <s:else><s:label key="homeDeptNm"/></s:else>
 			  <s:hidden name="homeDeptCd"/><s:hidden name="homeDeptNm"/>
           </nobr></td>
       </tr>
@@ -466,7 +484,8 @@
 	      <td class="comFormTableItem"><nobr>専門臓器</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpLiverNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="spLiverNm"/>
+		      <s:if test="mstSpLiverCd != spLiverCd"><font color="red"><s:label key="spLiverNm"/></font></s:if>
+		      <s:else><s:label key="spLiverNm"/></s:else>
 			  <s:hidden name="spLiverCd"/><s:hidden name="spLiverNm"/>
 	      </nobr></td>
       </tr>
@@ -474,7 +493,8 @@
 	      <td class="comFormTableItem"><nobr>専門詳細</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpDiseaseNm"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="spDiseaseNm"/>
+		      <s:if test="mstSpDiseaseCd != spDiseaseCd"><font color="red"><s:label key="spDiseaseNm"/></font></s:if>
+		      <s:else><s:label key="spDiseaseNm"/></s:else>
 			  <s:hidden name="spDiseaseCd"/><s:hidden name="spDiseaseNm"/>
 	      </nobr></td>
       </tr>
@@ -482,7 +502,8 @@
 	      <td class="comFormTableItem"><nobr>専門追加情報</nobr></td>
 	      <td class="comFormTableItemNd012"><nobr><s:label key="mstSpCom"/></nobr></td>
 	      <td class="comFormTableItemNd012"><nobr>
-		      <s:label key="spCom"/>
+		      <s:if test="mstSpCom != spCom"><font color="red"><s:label key="spCom"/></font></s:if>
+		      <s:else><s:label key="spCom"/></s:else>
 			  <s:hidden name="spCom"/>
 	      </nobr></td>
       </tr>
@@ -700,7 +721,7 @@
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
-	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || (loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
@@ -770,7 +791,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 		                <input class="comButton" type="button"name="buttonF4" value="申請" onClick="register('0');return false;" />
 	                </s:if>

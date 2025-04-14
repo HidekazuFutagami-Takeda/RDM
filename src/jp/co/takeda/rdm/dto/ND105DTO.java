@@ -313,6 +313,12 @@ public class ND105DTO extends BaseDTO implements Serializable {
 	 */
 	private String btnEnableFlg;
 
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
@@ -1031,6 +1037,21 @@ public class ND105DTO extends BaseDTO implements Serializable {
 	 */
 	public void setBtnEnableFlg(String btnEnableFlg) {
 		this.btnEnableFlg = btnEnableFlg;
+	}
+
+	/**
+	 * ND105DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

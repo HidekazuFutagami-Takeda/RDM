@@ -569,13 +569,15 @@ public class ND301Service extends BaseService {
 					}else {
 						updateEntity1.setReqStsCd("03");//　申請ステータス
 						// 申請者権限区分
-						if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
-							//MDM管理者：JKN0850 全MR：JKN0023)
-							updateEntity1.setReqKngKbn("2");
-							updateEntity1.setReqChl("2");
-						}else {
-							updateEntity1.setReqKngKbn("1");
-							updateEntity1.setReqChl("1");
+						if(!indto.getReqChl().equals("3")) {
+							if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
+								//MDM管理者：JKN0850 全MR：JKN0023)
+								updateEntity1.setReqKngKbn("2");
+								updateEntity1.setReqChl("2");
+							}else {
+								updateEntity1.setReqKngKbn("1");
+								updateEntity1.setReqChl("1");
+							}
 						}
 					}
 					updateEntity1.setReqBrCd(loginInfo.getBrCode());// 申請者所属リージョン

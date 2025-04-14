@@ -612,6 +612,12 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 */
 	private String editApprFlg;
 
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
@@ -2080,6 +2086,21 @@ public class ND011DTO extends BaseDTO implements Serializable {
 	 */
 	public void setSkInsInsClass(String skInsInsClass) {
 		this.skInsInsClass = skInsInsClass;
+	}
+
+	/**
+	 * ND011DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

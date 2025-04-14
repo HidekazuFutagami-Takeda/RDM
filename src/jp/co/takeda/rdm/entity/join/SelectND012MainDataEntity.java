@@ -573,6 +573,13 @@ public class SelectND012MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String tkdDocKana;
 
+
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
     /**
      * コンストラクタ
      * @generated
@@ -1952,6 +1959,21 @@ public class SelectND012MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setTkdDocKana(String tkdDocKana) {
 		this.tkdDocKana = tkdDocKana;
+	}
+
+	/**
+	 * SelectND012MainDataEntity.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

@@ -209,7 +209,7 @@
         <s:hidden name="docAttributeNm"/>
         <s:hidden name="docKanjiSei"/>
         <s:hidden name="docKanjiMei"/>
-
+		<s:hidden name="reqChl"/>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
@@ -225,14 +225,14 @@
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>申請者所属部署</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者所属</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqShzNm"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqStsNm"/></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>申請者</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqJgiName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>申請日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqYmdhms"/></nobr></td>
@@ -242,7 +242,7 @@
 		<s:if test='%{loginJgiNo != reqJgiNo }'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-		      <td class="comFormTableItem"><nobr>審査者</nobr></td>
+		      <td class="comFormTableItem"><nobr>審査者氏名</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnShaName"/></nobr></td>
 		      <td class="comFormTableItem"><nobr>審査日時</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnYmdhms"/></nobr></td>
@@ -251,7 +251,7 @@
 	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示 -->
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>承認者</nobr></td>
+	      <td class="comFormTableItem"><nobr>承認者氏名</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprShaName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>承認日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprYmdhms"/></nobr></td>
@@ -364,7 +364,7 @@
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
-	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" }'>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || (loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
@@ -417,7 +417,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")}'>
+				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && reqStsCd == "11")}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="register('4');return false;" />
 				</s:if>
 				<s:else>
@@ -427,7 +427,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{reqStsCd == null || reqStsCd == "" ||(loginJgiNo == reqJgiNo && reqStsCd == "01")}'>
+				<s:if test='%{reqStsCd == null || reqStsCd == "" ||(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && reqStsCd == "11")}'>
 	                <input class="comButton" type="button"name="buttonF3" value="一時保存" onClick="register('0');return false;" />
 				</s:if>
 				<s:else>
@@ -452,7 +452,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" }'>
+			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" ||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
 		                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" onClick="register('1');return false;" />
 			   </s:if>
 				<s:else>

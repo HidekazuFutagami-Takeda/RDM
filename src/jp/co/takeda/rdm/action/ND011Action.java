@@ -172,8 +172,12 @@ public class ND011Action extends BaseAction<ND011DTO> {
         	// NM101_通知内容詳細
         	if ("NC011".equals(preScreenId) || "ND301".equals(preScreenId) || "NM101".equals(preScreenId)) {
         		if (reqId != null && reqId.length() > 0) {
-        			// 申請データ（一時保存含む）を参照
-        			dto.setDisplayKbn("2");
+        			if("ND301".equals(preScreenId)) {
+        				//一時保存なし申請後に確認画面から遷移
+        				dto.setDisplayKbn("9");
+        			}else {        			// 申請データ（一時保存含む）を参照
+        				dto.setDisplayKbn("2");
+        			}
         		} else {
         			if("ND301".equals(preScreenId)) {
         				//一時保存なし申請後に確認画面から遷移

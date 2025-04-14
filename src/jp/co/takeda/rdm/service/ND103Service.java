@@ -171,7 +171,7 @@ public class ND103Service extends BaseService {
             	String Tyyyy = tekiyoYmd.substring(0,4);
             	String  Tmm = tekiyoYmd.substring(4,6);
             	String  Tdd = tekiyoYmd.substring(6,8);
-            	dto.setTekiyoYmd(Tyyyy + "-" + Tmm + "-" + Tdd);
+            	dto.setFormTekiyoYmd(Tyyyy + "-" + Tmm + "-" + Tdd);
         	}
 
         	//施設固定コード(異動先)

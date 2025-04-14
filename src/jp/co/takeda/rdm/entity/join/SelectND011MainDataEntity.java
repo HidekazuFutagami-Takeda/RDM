@@ -381,6 +381,12 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String skInsInsClass;
 
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
     /**
      * コンストラクタ
      * @generated
@@ -1280,6 +1286,21 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setSkInsInsClass(String skInsInsClass) {
 		this.skInsInsClass = skInsInsClass;
+	}
+
+	/**
+	 * SelectND011MainDataEntity.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

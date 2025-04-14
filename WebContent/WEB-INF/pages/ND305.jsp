@@ -320,7 +320,7 @@
 	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
       </tr>
         <tr>
-	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
 		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
 	      	</s:if>
 	      	<s:else>
@@ -389,7 +389,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
 		                <input class="comButton" type="button"name="buttonF4" value="申請" onClick="register('0');return false;" />
 	                </s:if>

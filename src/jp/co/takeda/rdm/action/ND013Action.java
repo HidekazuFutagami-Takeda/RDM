@@ -193,7 +193,8 @@ public class ND013Action extends BaseAction<ND013DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
-
+    	String title = "ND013_医師勤務先情報更新";
+        dto.setTitle(title);
         // END UOC
     }
 

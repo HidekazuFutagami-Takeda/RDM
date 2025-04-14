@@ -291,8 +291,29 @@ function ND311Page(){
 	document.fm1.screenId.value	= "ND311";
     document.fm1.functionId.value = "Init";
 
- 	comSubmitForAnyWarp(fm1);
+    // プルダウン名称系保持
+    if(document.fm1.titleCodeAf != undefined && document.fm1.titleCodeAf.value != ""){
+		document.fm1.titleCodeName.value = document.fm1.titleCodeAf.options[document.fm1.titleCodeAf.selectedIndex].textContent;
+	} else {
+		document.fm1.titleCodeName.value = "--なし--";
+	}
+    if(document.fm1.univPosCodeAf != undefined && document.fm1.univPosCodeAf.value != ""){
+		document.fm1.univPosCodeAfName.value = document.fm1.univPosCodeAf.options[document.fm1.univPosCodeAf.selectedIndex].textContent;
+	} else {
+		document.fm1.univPosCodeAfName.value = "--なし--";
+	}
+    if(document.fm1.jobFormAf != undefined && document.fm1.jobFormAf.value != ""){
+		document.fm1.jobFormAfName.value = document.fm1.jobFormAf.options[document.fm1.jobFormAf.selectedIndex].textContent;
+	} else {
+		document.fm1.jobFormAfName.value = "--なし--";
+	}
+    if(document.fm1.dccTypeAf != undefined && document.fm1.dccTypeAf.value != ""){
+		document.fm1.dccTypeAfName.value = document.fm1.dccTypeAf.options[document.fm1.dccTypeAf.selectedIndex].textContent;
+	} else {
+		document.fm1.dccTypeAfName.value = "--なし--";
+	}
 
+ 	comSubmitForAnyWarp(fm1);
 }
 
 

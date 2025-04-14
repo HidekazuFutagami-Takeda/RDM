@@ -151,7 +151,12 @@
 	<s:hidden name="reqShz" />
 	<s:hidden name="paramReqId" />
 	<s:hidden name="ReqId" />
-	<s:hidden name="loginJokenSetCd" />
+	<s:hidden name="loginJgiNo"/>
+     <s:hidden name="loginNm"/>
+     <s:hidden name="loginShzNm"/>
+     <s:hidden name="loginTrtCd"/>
+     <s:hidden name="loginBrCd"/>
+     <s:hidden name="loginDistCd"/>
 	<s:hidden name="reqSts" />
 	<s:hidden name="jgiName" />
 	<s:hidden name="reqYmdhms" />
@@ -166,7 +171,10 @@
 	<s:hidden name="insClass" />
 	<s:hidden name="hoInsType" />
 	<s:hidden name="title" />
-
+	<s:hidden name="titleCodeName" />
+	<s:hidden name="univPosCodeAfName" />
+	<s:hidden name="jobFormAfName" />
+	<s:hidden name="dccTypeAfName" />
 
 	<s:hidden name="tekiyoYmd" />
 	<s:hidden name="insNoSk" />
@@ -417,7 +425,7 @@
 	          	<nobr>適用日<span style="color:red;">*</span></nobr>
 	          </td>
 	          <td >
-	          	<input type="date" name="formTekiyoYmd" id="updMstFrom" value="${tekiyoYmd}" pattern="yyyy-MM-dd" />
+	          	<s:textfield type="date" name="formTekiyoYmd" />
 	          </td>
         </tr>
         <tr>

@@ -68,7 +68,7 @@ public class ND311Service extends BaseService {
          paramEntity.setParamReqId(dto.getParamReqId());
        //画面初期表示時の帳票一覧を取得する
          List<SelectHcpKmuReqNewEntity> SelectHcpKmuReqNewList = dao.select(paramEntity);
-
+/*
  	   //申請ステータス_生成用エンティティ
     	MRdmCodeMstEntity paramStatus = new MRdmCodeMstEntity();
     	//検索条件_申請ステータス
@@ -106,7 +106,7 @@ public class ND311Service extends BaseService {
  	   paramYakushin.setSqlId("selectByValue");
         //薬審メンバー区分の帳票一覧を取得する
         List<MRdmCodeMstEntity> SelectYakushinList = dao.select(paramYakushin);
-
+*/
         for (SelectHcpKmuReqNewEntity entity : SelectHcpKmuReqNewList) {
 
      	 //医師メニュースイッチ
@@ -128,10 +128,11 @@ public class ND311Service extends BaseService {
         		dto.setActionEdit("1");
         	}
 
-        	//申請者所属
-        	dto.setReqShz(entity.getReqShz());
         	//申請チャネル
         	dto.setReqChl(entity.getReqChl());
+/*
+        	//申請者所属
+        	dto.setReqShz(entity.getReqShz());
         	//申請ステータス(名称)
         	for (MRdmCodeMstEntity outEntity : SelectparamStatusList) {
         		if (Objects.deepEquals(entity.getReqSts(),outEntity.getValue1())) {
@@ -221,7 +222,7 @@ public class ND311Service extends BaseService {
         	dto.setReqComment(entity.getReqComment());
         	//却下コメント
         	dto.setAprComment(entity.getAprComment());
-
+*/
         }
 
 
@@ -438,36 +439,131 @@ public class ND311Service extends BaseService {
 
         if (Objects.deepEquals(dto.getProcessFlg(), "0")) {
 
-        	//申請管理 申請
-           	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+        	// 申請管理
+            TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity();
+            tRdmReqKnrEntity.setReqId(dto.getParamReqId());
+            TRdmReqKnrEntity tRdmReqKnrData = dao.selectByPK(tRdmReqKnrEntity);
 
-           	tRdmReqKnrUpdData.setReqId(dto.getParamReqId());//申請ID
-           	if(RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {
-           		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
-           		tRdmReqKnrUpdData.setReqKngKbn("2");//申請者権限区分
-           	} else {
-           		// "MRが申請の場合、'1'(MR起因)
-           		tRdmReqKnrUpdData.setReqKngKbn("1");//申請者権限区分
-           	}
-           	//申請ステータス
-           	if (Objects.deepEquals(dto.getReqChl(), "3")) {
-           		//申請チャネルが'3'（ULT起因）の場合
-           		tRdmReqKnrUpdData.setReqStsCd("13");
-           	}
-           	else {
-           		//申請チャネルが'1'(MR起因)、'2'(DSG起因)の場合
-           		tRdmReqKnrUpdData.setReqStsCd("03");
-           	}
-           	tRdmReqKnrUpdData.setReqBrCd(loginInfo.getBrCode());//申請者所属リージョン
-           	tRdmReqKnrUpdData.setReqDistCd(dto.getLoginDistCd());//申請者所属エリア
-           	tRdmReqKnrUpdData.setReqShzNm(dto.getLoginShzNm());//申請者所属
-           	tRdmReqKnrUpdData.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
-           	tRdmReqKnrUpdData.setReqJgiName(loginInfo.getJgiName());//申請者氏名
-           	tRdmReqKnrUpdData.setReqComment(dto.getReqComment());//申請コメント
-           	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);//更新日
-           	tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));//更新者
-           	//申請管理　申請処理
-           	dao.update(tRdmReqKnrUpdData);
+            String reqId = dto.getReqId();
+
+            if(tRdmReqKnrData == null) {
+            	// 新規登録
+            	// 新規にIDを取得
+            	SeqRdmReqIdEntity seqRdmReqIdEntity = new SeqRdmReqIdEntity();
+            	List<SeqRdmReqIdEntity> seqRdmReqIdDate = dao.select(seqRdmReqIdEntity);
+            	reqId = seqRdmReqIdDate.get(0).getReqId();
+
+            	// レコードを登録
+            	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
+            	tRdmReqKnrInsData.setReqId(reqId);
+            	if(RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {
+            		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
+            		tRdmReqKnrInsData.setReqChl("2");
+            		tRdmReqKnrInsData.setReqKngKbn("2");
+            	} else {
+            		// "MRが申請の場合、'1'(MR起因)
+            		tRdmReqKnrInsData.setReqChl("1");
+            		tRdmReqKnrInsData.setReqKngKbn("1");
+            	}
+            	tRdmReqKnrInsData.setReqType("41");
+        		// 申請
+        		tRdmReqKnrInsData.setReqStsCd("03");
+
+        		tRdmReqKnrInsData.setTekiyoYmd(dto.getFormTekiyoYmd().replace("/", ""));
+
+        		tRdmReqKnrInsData.setReqBrCd(dto.getLoginBrCd());
+            	tRdmReqKnrInsData.setReqDistCd(dto.getLoginDistCd());
+            	tRdmReqKnrInsData.setReqShzNm(dto.getLoginShzNm());
+            	tRdmReqKnrInsData.setReqJgiNo(dto.getLoginJgiNo());
+            	tRdmReqKnrInsData.setReqJgiName(dto.getLoginNm());
+            	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
+            	tRdmReqKnrInsData.setReqComment(dto.getReqComment());
+            	tRdmReqKnrInsData.setInsNo(dto.getInsNoSk());
+            	tRdmReqKnrInsData.setDocNo(dto.getParamDocNo());
+            	tRdmReqKnrInsData.setFbReqFlg("1");
+            	tRdmReqKnrInsData.setInsShaYmd(systemDate);
+            	tRdmReqKnrInsData.setInsShaId(Integer.toString(dto.getLoginJgiNo()));
+            	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
+            	tRdmReqKnrInsData.setUpdShaId(Integer.toString(dto.getLoginJgiNo()));
+
+            	dao.insertByValue(tRdmReqKnrInsData);
+
+            } else {
+	        	//申請管理 申請
+	           	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+
+	           	tRdmReqKnrUpdData.setReqId(reqId);//申請ID
+	           	if(RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {
+	           		// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
+	           		tRdmReqKnrUpdData.setReqKngKbn("2");//申請者権限区分
+	           	} else {
+	           		// "MRが申請の場合、'1'(MR起因)
+	           		tRdmReqKnrUpdData.setReqKngKbn("1");//申請者権限区分
+	           	}
+	           	//申請ステータス
+	           	if (Objects.deepEquals(dto.getReqChl(), "3")) {
+	           		//申請チャネルが'3'（ULT起因）の場合
+	           		tRdmReqKnrUpdData.setReqStsCd("13");
+	           	}
+	           	else {
+	           		//申請チャネルが'1'(MR起因)、'2'(DSG起因)の場合
+	           		tRdmReqKnrUpdData.setReqStsCd("03");
+	           	}
+
+	           	tRdmReqKnrUpdData.setTekiyoYmd(dto.getFormTekiyoYmd().replace("/", ""));
+	           	tRdmReqKnrUpdData.setReqBrCd(loginInfo.getBrCode());//申請者所属リージョン
+	           	tRdmReqKnrUpdData.setReqDistCd(dto.getLoginDistCd());//申請者所属エリア
+	           	tRdmReqKnrUpdData.setReqShzNm(dto.getLoginShzNm());//申請者所属
+	           	tRdmReqKnrUpdData.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
+	           	tRdmReqKnrUpdData.setReqJgiName(loginInfo.getJgiName());//申請者氏名
+	           	tRdmReqKnrUpdData.setReqComment(dto.getReqComment());//申請コメント
+	           	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);//更新日
+	           	tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));//更新者
+	           	//申請管理　申請処理
+	           	dao.update(tRdmReqKnrUpdData);
+            }
+
+            // 勤務先_申請管理
+            if(tRdmReqKnrData == null) {//新規
+
+	           	TRdmHcpKmuReqEntity tRdmHcpKmuReqInsData = new TRdmHcpKmuReqEntity();
+
+	        	tRdmHcpKmuReqInsData.setReqId(reqId);
+	        	tRdmHcpKmuReqInsData.setDocNo(dto.getDocNo());
+	        	tRdmHcpKmuReqInsData.setJobFormAf(dto.getJobFormAf());
+	        	tRdmHcpKmuReqInsData.setDeptCodeAf(dto.getDeptCodeAf());
+	        	tRdmHcpKmuReqInsData.setDeptKanjiAf(dto.getDeptKj());
+	        	tRdmHcpKmuReqInsData.setDeptKanaAf(dto.getDeptKn());
+	        	tRdmHcpKmuReqInsData.setUnivPosCodeAf(dto.getUnivPosCodeAf());
+	        	tRdmHcpKmuReqInsData.setTitleCodeAf(dto.getTitleCodeAf());
+	        	tRdmHcpKmuReqInsData.setDccTypeAf(dto.getDccTypeAf());
+	        	tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
+	        	tRdmHcpKmuReqInsData.setUltInsNo(dto.getUltInsNo());
+	        	tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
+	        	tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
+	        	tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
+	        	tRdmHcpKmuReqInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+	        	//勤務先申請管理　insert処理
+	        	dao.insertByValue(tRdmHcpKmuReqInsData);
+
+           }else {//更新
+	           	TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
+	           	tRdmHcpKmuReqUpdData.setReqId(reqId);
+	           	tRdmHcpKmuReqUpdData.setInsNoSk(dto.getInsNoSk());
+	           	tRdmHcpKmuReqUpdData.setJobFormAf(dto.getJobFormAf());
+	           	tRdmHcpKmuReqUpdData.setDeptCodeAf(dto.getDeptCodeAf());
+	           	tRdmHcpKmuReqUpdData.setDeptKanjiAf(dto.getDeptKj());
+	           	tRdmHcpKmuReqUpdData.setDeptKanaAf(dto.getDeptKn());
+	           	tRdmHcpKmuReqUpdData.setUnivPosCodeAf(dto.getUnivPosCodeAf());
+	           	tRdmHcpKmuReqUpdData.setTitleCodeAf(dto.getTitleCodeAf());
+	           	tRdmHcpKmuReqUpdData.setDccTypeAf(dto.getDccTypeAf());
+	           	tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
+	           	tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
+	           	tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+
+	           	dao.update(tRdmHcpKmuReqUpdData);
+           }
+
         }
         else if (Objects.deepEquals(dto.getProcessFlg(), "1")) {
         	//申請管理 却下処理
@@ -484,6 +580,7 @@ public class ND311Service extends BaseService {
            		tRdmReqKnrUpdData.setReqStsCd("02");
            	}
 
+           	tRdmReqKnrUpdData.setTekiyoYmd(dto.getFormTekiyoYmd().replace("/", ""));
            	tRdmReqKnrUpdData.setAprBrCode(loginInfo.getBrCode());//承認者所属リージョン
            	tRdmReqKnrUpdData.setAprDistCode(loginInfo.getDistCode());//承認者所属エリア
            	tRdmReqKnrUpdData.setAprShz(dto.getLoginShzNm());//承認者所属
@@ -495,6 +592,22 @@ public class ND311Service extends BaseService {
 
            	//申請管理　却下処理
            	dao.update(tRdmReqKnrUpdData);
+
+           	TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
+           	tRdmHcpKmuReqUpdData.setReqId(dto.getParamReqId());
+           	tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), "Z"));
+           	tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), "Z"));
+           	tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), "Z"));
+           	tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), "Z"));
+           	tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), "Z"));
+           	tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(dto.getUnivPosCodeAf(),""));
+           	tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(dto.getTitleCodeAf(),""));
+           	tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(dto.getDccTypeAf(),""));
+           	tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
+           	tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
+           	tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+
+           	dao.update(tRdmHcpKmuReqUpdData);
         }
 
         outdto.setForward("NC101");

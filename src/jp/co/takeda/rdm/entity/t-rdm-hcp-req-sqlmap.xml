@@ -65,6 +65,7 @@
         <result column="REQ_BR_CODE" property="reqBrCd"/>
         <result column="REQ_DIST_CODE" property="reqDistCd"/>
         <result column="REQ_STS" property="reqStsCd"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_JGI_NO" property="shnJgiNo"/>
         <result column="APR_JGI_NO" property="aprJgiNo"/>
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
@@ -225,6 +226,7 @@
         <result column="REQ_BR_CODE" property="reqBrCd"/>
         <result column="REQ_DIST_CODE" property="reqDistCd"/>
         <result column="REQ_STS" property="reqStsCd"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_JGI_NO" property="shnJgiNo"/>
         <result column="APR_JGI_NO" property="aprJgiNo"/>
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
@@ -405,6 +407,7 @@
         <result column="REQ_BR_CODE" property="reqBrCd"/>
         <result column="REQ_DIST_CODE" property="reqDistCd"/>
         <result column="REQ_STS" property="reqStsCd"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_JGI_NO" property="shnJgiNo"/>
         <result column="APR_JGI_NO" property="aprJgiNo"/>
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
@@ -483,6 +486,7 @@
         <result column="REQ_BR_CODE" property="reqBrCd"/>
         <result column="REQ_DIST_CODE" property="reqDistCd"/>
         <result column="REQ_STS" property="reqStsCd"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="SHN_JGI_NO" property="shnJgiNo"/>
         <result column="APR_JGI_NO" property="aprJgiNo"/>
         <result column="UPD_SHA_YMD" property="updShaYmd"/>
@@ -832,6 +836,7 @@
 		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
 		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
 		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.REQ_CHL
 		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
 		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
 		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
@@ -1294,6 +1299,7 @@
 		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
 		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
 		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.REQ_CHL
 		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
 		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
 		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
@@ -1784,6 +1790,7 @@
 		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
 		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
 		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.REQ_CHL
 		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
 		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
 		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日
@@ -2025,6 +2032,7 @@
 		, KNR.REQ_BR_CODE  -- 申請管理.申請者所属リージョン
 		, KNR.REQ_DIST_CODE  -- 申請管理.申請者所属エリア
 		, KNR.REQ_STS  -- 申請管理.申請ステータス
+		, KNR.REQ_CHL
 		, KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
 		, KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
 		, TO_CHAR(KNR.UPD_SHA_YMD,'YYYYMMDDhh24miss') AS UPD_SHA_YMD  -- 申請管理.更新日

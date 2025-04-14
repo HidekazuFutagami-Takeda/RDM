@@ -29,10 +29,9 @@
 <head>
 	<title>ND013_医師勤務先情報更新</title>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-	<link href="WebContent/css/common2.css" rel="Stylesheet" type="text/css" />
+	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
 	<link href="css/catDeptsCombo.css" rel="Stylesheet" type="text/css" />
-	<link href="css/common.css" rel="Stylesheet" type="text/css" />
 	<link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
 	<script type="text/javascript" src="js/jkrMenu.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
@@ -183,6 +182,19 @@
 		--%>
 	</form>
 <%-- submit用フォーム 終了 --%>
+
+  <%-- バナー部分をインクルード --%>
+  <%-- サブシステムIDが３:(従業員関連)の時 --%>
+  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <br>
+  <%-- 更新警告メッセージ表示をインクルード 開始 --%>
+  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
+
+<table border="0" class="comPortalTable" align="center" style="width:98%;">
+  <tr>
+    <td>
+
 <%-- input用フォーム 開始 --%>
   <s:form name="fm1" theme="simple">
 	<%-- 常に配列にするためにダミーを配置 --%>
@@ -269,6 +281,24 @@
     <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
     <s:url id="pageurl" action="NF501Page"/>
     <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
+
+
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師勤務先情報更新"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+    <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
 
 <%-- ポータルボディー 開始 --%>
 	<table class="pupBodyTable" align="center">
@@ -590,7 +620,14 @@
 	<%--ヘッダー部　終了 --%>
 
 	<%-- ポータルボディー 終了 --%>
+	</td>
+	</tr>
+	</tbody>
+	</table>
   </s:form>
+  </td>
+  </tr>
+  </table>
 <%-- input用フォーム 終了 --%>
 </body>
 </html>

@@ -189,17 +189,78 @@
     }
     </style>
     <style>
-	    .testDiv{
+    	.insertDiv{
 	        position: relative;
 	    }
-	    .testDiv:hover .hoverImg {
+	    .insertDiv:hover .hoverInsert {
             display: inline;                /* インライン要素として表示 */
         }
-        .hoverImg{
+        .hoverInsert{
             display: none;
             position   : absolute;
+            background-color : #ffffff;
+            font-size : 1rem;
+            z-index : 2;
+            border: 2px solid #000000;
         }
-        .hoverImg:after{
+        .hoverInsert:after{
+            right: -12px;
+            top: 30%;
+            position: absolute;
+        }
+	    .updateDiv{
+	        position: relative;
+	    }
+	    .updateDiv:hover .hoverUpdate {
+            display: inline;                /* インライン要素として表示 */
+        }
+        .hoverUpdate{
+            display: none;
+            position   : absolute;
+            background-color : #ffffff;
+            font-size : 1rem;
+            z-index : 2;
+            border: 2px solid #000000;
+        }
+        .hoverUpdate:after{
+            right: -12px;
+            top: 30%;
+            position: absolute;
+        }
+        .movemedDiv{
+	        position: relative;
+	    }
+	    .movemedDiv:hover .hoverMovemed {
+            display: inline;                /* インライン要素として表示 */
+        }
+        .hoverMovemed{
+            display: none;
+            position   : absolute;
+            background-color : #ffffff;
+            font-size : 1rem;
+            z-index : 2;
+            border: 2px solid #000000;
+        }
+        .hoverMovemed:after{
+            right: -12px;
+            top: 30%;
+            position: absolute;
+        }
+        .restoreDiv{
+	        position: relative;
+	    }
+	    .restoreDiv:hover .hoverRestore {
+            display: inline;                /* インライン要素として表示 */
+        }
+        .hoverRestore{
+            display: none;
+            position   : absolute;
+            background-color : #ffffff;
+            font-size : 1rem;
+            z-index : 2;
+            border: 2px solid #000000;
+        }
+        .hoverRestore:after{
             right: -12px;
             top: 30%;
             position: absolute;
@@ -646,63 +707,67 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                               <tr>
 
                                   <td class="actionButton" style="height:90%; width:90px;" rowspan="2">
-                                  <div class="testDiv">
                                       <table>
                                       <tbody>
                                       <tr>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenShinkiFlg == "1"'>
+                                      	<div class="insertDiv">
                                           <img
                                             src="img/button_insert.gif"
                                             name="a"
                                             onclick="JavaScript:actBtn('ND011','<s:property value="#rowBean.dcfIshiCd"/>');"
                                           >
+                                          <div class="hoverInsert"><nobr>医師新規作成</nobr></div>
+                                        </div>
                                       </s:if>
                                       <s:else>
                                       </s:else>
                                       </td>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenKoushinFlg == "1"'>
+                                      	<div class="updateDiv">
                                           <img
                                             src="img/button_update.gif"
                                             name="b"
                                             onclick="JavaScript:actBtn('ND012','<s:property value="#rowBean.docNo"/>');"
                                           >
+                                          <div class="hoverUpdate"><nobr>医師情報更新</nobr></div>
+                                        </div>
                                       </s:if>
                                       <s:else>
                                       </s:else>
                                       </td>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenKinmuKoushinFlg == "1"'>
+                                      	<div class="movemedDiv">
                                           <img
                                             src="img/button_movemed.gif"
                                             name="c"
                                             onClick="JavaScript:actBtn('ND013','<s:property value="#rowBean.docNo"/>');"
                                           >
+                                          <div class="hoverMovemed"><nobr>医師勤務先情報更新</nobr></div>
+                                        </div>
                                       </s:if>
                                       <s:else>
                                       </s:else>
                                       </td>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenFukkatsuFlg == "1"'>
+                                      	<div class="restoreDiv">
                                           <img
                                             src="img/button_restoration.gif"
                                             name="d"
                                             onClick="JavaScript:actBtn('ND014','<s:property value="#rowBean.docNo"/>');"
                                           >
+                                          <div class="hoverRestore"><nobr>医師復活</nobr></div>
+                                        </div>
                                       </s:if>
                                       <s:else>
                                       </s:else>
-                                      <td>
-                                          <img
-                                            class="hoverImg"
-                                            src="img/toolTip.gif"
-                                          >
-                                      </td>
                                       </tr>
                                       </tbody>
                                       </table>
-                                  </div>
         						  </td>
 
                                   <td class="comTableItem" style="width:110px; height:18px;"><nobr><s:property value="#rowBean.docKanj"/></nobr></td>

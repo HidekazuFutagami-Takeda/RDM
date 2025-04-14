@@ -59,6 +59,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     	// 編集不可設定
 		onLoadEditSet();
+		changeUrl();
 
 		insClass = document.fm1.insClass.value;
 		knrFlg = "0";
@@ -862,6 +863,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		}
 	}
 
+	// url編集時
+    function changeUrl(){
+  		if(document.fm1.insUrl.value.length == 0){
+			document.getElementById("urlButton").disabled = true;
+  		} else {
+  			document.getElementById("urlButton").disabled = false;
+  		}
+    }
     </script>
 </head>
 
@@ -2064,11 +2073,12 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	   	<td class="comFormTableItemNf012" colSpan="2">
 	   		<nobr>
 	   			<s:if test='%{editApprFlg == "1"}'>
-			   		<s:textarea name="insUrl" style="width:500px; height:20px; resize: none;" />
+			   		<s:textarea name="insUrl" style="width:500px; height:20px; resize: none;" onchange="changeUrl()" />
 			   	</s:if>
 			   	<s:else>
 			   		<s:textarea name="insUrl" style="width:500px; height:20px; resize: none;" readonly="true" />
 			   	</s:else>
+		   		<input class="comButton" type="button" id="urlButton" name="button2" value="表示" onClick="JavaScript:window.open(document.fm1.insUrl.value, '_blank');return false;" />
 	   		</nobr>
 	   	</td>
 	</tr>

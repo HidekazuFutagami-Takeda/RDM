@@ -139,10 +139,10 @@ public class ND103Action extends BaseAction<ND103DTO> {
         }
 
         //エラーメッセージが定義されている場合
-        if (!StringUtils.isEmpty(dto.getMsgStr())) {
-        	outdto = nD103Service.pullDown(dto);
-            return initNext(outdto);
-        }
+//        if (!StringUtils.isEmpty(dto.getMsgStr())) {
+//        	outdto = nD103Service.pullDown(dto);
+//            return initNext(outdto);
+//        }
 
         if(!"ND311".equals(dto.getBackScreenId())) {
 		    //【仮】権限判別
@@ -181,7 +181,9 @@ public class ND103Action extends BaseAction<ND103DTO> {
 
 			dto.setMsgStr(null);
 
-			dto.setParamReqId(dto.getReqId());
+			if(StringUtils.isEmpty(dto.getParamReqId())) {
+				dto.setParamReqId(dto.getReqId());
+			}
 
 		    //一時保存押下の場合
 		     if (Objects.deepEquals(dto.getSaveButtonFlg(), "1")) {
@@ -189,7 +191,7 @@ public class ND103Action extends BaseAction<ND103DTO> {
 
 				//エラーチェック
 				int i = dto.getReqComment().length();
-				if (i >= 300) {//申請コメント文字数が300文字以上の場合
+				if (i >= 100) {//申請コメント文字数が300文字以上の場合
 					errChk = true;
 					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W013);// 検索条件を入力してください。
 
@@ -201,6 +203,7 @@ public class ND103Action extends BaseAction<ND103DTO> {
 					nD103Service.save(dto);
 					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I005);//保存メッセージ
 					dto.setSaveButtonFlg("0");
+					dto.setMsgStr(tmpMsgStr);
 				}
 		    }
 

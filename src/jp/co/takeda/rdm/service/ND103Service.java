@@ -316,9 +316,9 @@ public class ND103Service extends BaseService {
 	           	tRdmReqKnrInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 	           	//申請管理 insert処理
 	           	dao.insertByValue(tRdmReqKnrInsData);
-	           }else {
+           }else {
 	           	// 更新
-	           	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF211Data");
+	           	TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateND103Data");
 	           	tRdmReqKnrUpdData.setReqId(dto.getParamReqId());
 
 	           	if("13".equals(dto.getReqStsCd())) {

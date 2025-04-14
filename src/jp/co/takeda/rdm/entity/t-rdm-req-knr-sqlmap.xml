@@ -747,6 +747,18 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
+	<update id="updateND103Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity">
+	UPDATE
+		ORAUSR01.T_RDM_REQ_KNR
+	SET
+		REQ_STS = #{reqStsCd},
+		<if test="tekiyoYmd != null">TEKIYO_YMD = #{tekiyoYmd},</if>
+		REQ_COMMENT = #{reqComment},
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
 	<select id="selectLinkDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity" resultMap="selectLinkDataResultMap">
         SELECT
             REQ_ID

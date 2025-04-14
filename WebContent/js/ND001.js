@@ -326,6 +326,9 @@ function nd001Search() {
 	if(tmpCallback != null){
 		document.fm1.target = tmpTarget;
 	}
+	  document.fm1.screenId.value = "ND001";
+	  document.fm1.functionId.value = 'Search';
+
   // 検索イベント呼び出し
   comSubmitForAnyWarp(fm1);
 }

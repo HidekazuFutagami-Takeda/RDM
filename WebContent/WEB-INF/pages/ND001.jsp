@@ -804,7 +804,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <table class="comPortalControlTable" style="margin-top:3pt;margin-bottom:1pt; width:800pt;"align="center">
                   <tr>
                       <td>
-                          <input class="comButton" type="button" name="buttonF1" value="戻る" onClick="JavaScript:backBtn();return false;" />
+                          <input class="comButton" type="button" name="buttonF1" value="戻る" onClick="window.close();" />
                       </td>
                   </tr>
               </table>

@@ -1,13 +1,13 @@
 /**
  * <pre>
- * 共通スタイルシート
+ * 蜈ｱ騾壹せ繧ｿ繧､繝ｫ繧ｷ繝ｼ繝�
  * </pre>
  * @since 1.0
  * @version $Revision: 1.1 $
- * @author 日立
+ * @author 譌･遶�
  */
 
-/* コンテンツの共通 */
+/* 繧ｳ繝ｳ繝�繝ｳ繝�縺ｮ蜈ｱ騾� */
 BODY.comPage {
   BACKGROUND-COLOR: #ffffff;
   margin: 0pt 0pt 0pt 0pt;
@@ -46,7 +46,7 @@ IMG.comIco
   vertical-align:bottom;
   border-style: none;
 }
-HR.comSplit			/* 分割線大 */
+HR.comSplit			/* 蛻�蜑ｲ邱壼､ｧ */
 {
   color: #336699;
   width: 99%;
@@ -60,9 +60,9 @@ SELECT.comItem
   /*font-size: 10pt;*/
 }
 
-/***************** ポータル編 *********************/
+/***************** 繝昴�ｼ繧ｿ繝ｫ邱ｨ *********************/
 
-TABLE.comPortalTable	/* 全画面用ポータル大枠 */
+TABLE.comPortalTable	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ螟ｧ譫� */
 {
   margin-top:10pt;
   width:540pt;
@@ -70,7 +70,7 @@ TABLE.comPortalTable	/* 全画面用ポータル大枠 */
   border-color:#666666;
   padding : 1pt 1pt 1pt 1pt;
 }
-TABLE.comPortalTableBlue	/* 全画面用ポータル大枠 青背景 */
+TABLE.comPortalTableBlue	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ螟ｧ譫� 髱定レ譎ｯ */
 {
   margin-top:10pt;
   width:540pt;
@@ -78,7 +78,7 @@ TABLE.comPortalTableBlue	/* 全画面用ポータル大枠 青背景 */
   border-color:#666666;
   padding : 1pt 1pt 1pt 1pt;
 }
-TABLE.comPortalBodyTable		/* 全画面用ポータルボディー */
+TABLE.comPortalBodyTable		/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ繝懊ョ繧｣繝ｼ */
 {
   background-color: #999999;
   border-style:	solid;
@@ -87,14 +87,14 @@ TABLE.comPortalBodyTable		/* 全画面用ポータルボディー */
   padding: 0pt;
   width:	100%;
 }
-TABLE.comPortalTitle	/* 全画面用ポータルタイトル */
+TABLE.comPortalTitle	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ繧ｿ繧､繝医Ν */
 {
   padding: 0pt;
   margin: 0pt;
   width:	100%;
   background-color:#EE1100;
 }
-TABLE.comPortalBody		/* 全画面用ポータル枠のボディー部分 */
+TABLE.comPortalBody		/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ譫�縺ｮ繝懊ョ繧｣繝ｼ驛ｨ蛻� */
 {
   background-color: #ffffff;
   border-style:	solid;
@@ -104,77 +104,77 @@ TABLE.comPortalBody		/* 全画面用ポータル枠のボディー部分 */
   padding: 2pt;
   width:	100%;
 }
-TABLE.comPortalMainTable		/* メイン部の枠 */
+TABLE.comPortalMainTable		/* 繝｡繧､繝ｳ驛ｨ縺ｮ譫� */
 {
   padding:0pt;
   border-style:	none;
-  margin: 0pt 2pt 2pt 2pt;	/* 上右下左 */
+  margin: 0pt 2pt 2pt 2pt;	/* 荳雁承荳句ｷｦ */
   width:	100%;
   background-color:#ffffff;
 }
 TABLE.comPortalControlTable
 {
-/* 表示位置調整 2001/09/26 */
-/* 	padding:	0pt;	/* 上右下左 */
-  padding:	0pt 0pt 2pt 0pt;	/* 上右下左 */
-  margin:		0pt 0pt 5pt 0pt;	/* 上右下左 */
+/* 陦ｨ遉ｺ菴咲ｽｮ隱ｿ謨ｴ 2001/09/26 */
+/* 	padding:	0pt;	/* 荳雁承荳句ｷｦ */
+  padding:	0pt 0pt 2pt 0pt;	/* 荳雁承荳句ｷｦ */
+  margin:		0pt 0pt 5pt 0pt;	/* 荳雁承荳句ｷｦ */
   border-style:	none;
   width:	100%;
   background-color:#ffffff;
 }
 TABLE.comPortalControlTablePopup
 {
-  padding:	0pt 0pt 2pt 0pt;	/* 上右下左 */
-  margin:		0pt 0pt 5pt 0pt;	/* 上右下左 */
+  padding:	0pt 0pt 2pt 0pt;	/* 荳雁承荳句ｷｦ */
+  margin:		0pt 0pt 5pt 0pt;	/* 荳雁承荳句ｷｦ */
   border-style:	none;
   width:	100%;
   background-color:#ffffff;
 }
 TABLE.comPortalControlTableBlue
 {
-/* 表示位置調整 2001/09/26 */
-/* 	padding:	0pt;	/* 上右下左 */
-  padding:	0pt 0pt 2pt 0pt;	/* 上右下左 */
-  margin:		0pt 0pt 5pt 0pt;	/* 上右下左 */
+/* 陦ｨ遉ｺ菴咲ｽｮ隱ｿ謨ｴ 2001/09/26 */
+/* 	padding:	0pt;	/* 荳雁承荳句ｷｦ */
+  padding:	0pt 0pt 2pt 0pt;	/* 荳雁承荳句ｷｦ */
+  margin:		0pt 0pt 5pt 0pt;	/* 荳雁承荳句ｷｦ */
   border-style:	none;
   width:	100%;
   background-color:#D7EEFF;
 }
 TABLE.comPortalControlTablePopupBlue
 {
-  padding:	0pt 0pt 2pt 0pt;	/* 上右下左 */
-  margin:		0pt 0pt 5pt 0pt;	/* 上右下左 */
+  padding:	0pt 0pt 2pt 0pt;	/* 荳雁承荳句ｷｦ */
+  margin:		0pt 0pt 5pt 0pt;	/* 荳雁承荳句ｷｦ */
   border-style:	none;
   width:	100%;
   background-color:#D7EEFF;
 }
-TD.comPortalControlItem		/* 制御部の項目 */
+TD.comPortalControlItem		/* 蛻ｶ蠕｡驛ｨ縺ｮ鬆�逶ｮ */
 {
   /*font-size: 6pt;*/
 }
 TD.comPortalInputItem
 {
-  padding: 1pt 2pt 1pt 15pt;		/* 上右下左 */
+  padding: 1pt 2pt 1pt 15pt;		/* 荳雁承荳句ｷｦ */
 }
 TD.comPortalInputItemRight
 {
-  padding: 1pt 15pt 1pt 2pt;		/* 上右下左 */
+  padding: 1pt 15pt 1pt 2pt;		/* 荳雁承荳句ｷｦ */
   width: 100%;
 }
-TD.comPortalTitleIcon	/* 全画面用ポータル枠のタイトルのアイコン部分 */
+TD.comPortalTitleIcon	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ譫�縺ｮ繧ｿ繧､繝医Ν縺ｮ繧｢繧､繧ｳ繝ｳ驛ｨ蛻� */
 {
-  padding: 0pt;	/* 上右下左 */
+  padding: 0pt;	/* 荳雁承荳句ｷｦ */
 }
-TD.comPortalTitle	/* 全画面用ポータル枠のタイトル文字部分 */
+TD.comPortalTitle	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ譫�縺ｮ繧ｿ繧､繝医Ν譁�蟄鈴Κ蛻� */
 {
-  padding: 1pt 0pt 0pt 1pt;	/* 上右下左 */
+  padding: 1pt 0pt 0pt 1pt;	/* 荳雁承荳句ｷｦ */
   font-size: 11pt;
   font-weight: bolder;
   color: #ffffff;
 }
-TD.comPortalTitleRight	/* 全画面用ポータル枠のタイトルの右端アイコン部分 */
+TD.comPortalTitleRight	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ譫�縺ｮ繧ｿ繧､繝医Ν縺ｮ蜿ｳ遶ｯ繧｢繧､繧ｳ繝ｳ驛ｨ蛻� */
 {
-  padding: 0pt;	/* 上右下左 */
+  padding: 0pt;	/* 荳雁承荳句ｷｦ */
   width:100%;
   text-align:right;
 }
@@ -182,7 +182,7 @@ TD.comPortalTitleRight	/* 全画面用ポータル枠のタイトルの右端ア
 TD.comPortalReferenceItem
 {
   vertical-align: bottom;
-  padding: 2pt 5pt 2pt 5pt;	/* 上右下左 */
+  padding: 2pt 5pt 2pt 5pt;	/* 荳雁承荳句ｷｦ */
   background-color: #ffffff;
   color: #000000;
   border-style: none;
@@ -194,9 +194,9 @@ TD.comPortalReferenceItem
 }
 /*************************************************/
 
-/*************** TABLE編 *************************/
+/*************** TABLE邱ｨ *************************/
 /**
- * 頭の"山田太郎さんのホームページ"で使用します。
+ * 鬆ｭ縺ｮ"螻ｱ逕ｰ螟ｪ驛弱＆繧薙�ｮ繝帙�ｼ繝�繝壹�ｼ繧ｸ"縺ｧ菴ｿ逕ｨ縺励∪縺吶��
  * @since 1.0
  * @author
  */
@@ -204,25 +204,25 @@ TD.comPortalReferenceItem
   COLOR: #336699; FONT-FAMILY: inherit; FONT-SIZE: 16pt; FONT-WEIGHT: bold
 }
 /**
- *	セカンダリリンク"2001-06-21"という本日日付で使用します。
+ *	繧ｻ繧ｫ繝ｳ繝�繝ｪ繝ｪ繝ｳ繧ｯ"2001-06-21"縺ｨ縺�縺�譛ｬ譌･譌･莉倥〒菴ｿ逕ｨ縺励∪縺吶��
  */
 .comBannerSecondaryText {
   COLOR: #663300; FONT-FAMILY: inherit; FONT-SIZE: 8pt
 }
 /**
- *	セカンダリリンク"ホームへ"で使用します。
+ *	繧ｻ繧ｫ繝ｳ繝�繝ｪ繝ｪ繝ｳ繧ｯ"繝帙�ｼ繝�縺ｸ"縺ｧ菴ｿ逕ｨ縺励∪縺吶��
  */
 .comBannerSecondaryLink {
   COLOR: #663300; FONT-FAMILY: inherit; FONT-SIZE: 8pt
 }
 /**
- * セカンダリリンクのhoverの抑止
+ * 繧ｻ繧ｫ繝ｳ繝�繝ｪ繝ｪ繝ｳ繧ｯ縺ｮhover縺ｮ謚第ｭ｢
  */
 A.comBannerSecondaryLink {color: #663300;}
 A.comBannerSecondaryLink:hover {color: #663300;}
 A.comBannerSecondaryLink:visited {color: #663300;}
 
-A.comLink		/* visitedしても通常通りのリンク */
+A.comLink		/* visited縺励※繧る�壼ｸｸ騾壹ｊ縺ｮ繝ｪ繝ｳ繧ｯ */
 {
   color: #000000;
   font-size:8pt;
@@ -240,7 +240,7 @@ A.comLink:visited:hover
   color: #ff3300;
 }
 
-A.comMiniLink		/* Clear文字のリンク */
+A.comMiniLink		/* Clear譁�蟄励�ｮ繝ｪ繝ｳ繧ｯ */
 {
   color: #000000;
   font-size:8pt;
@@ -258,7 +258,7 @@ A.comMiniLink:visited:hover
 {
   color: #ff3300;
 }
-A.comSmallLink		/* トップ画面一覧用 */
+A.comSmallLink		/* 繝医ャ繝礼判髱｢荳�隕ｧ逕ｨ */
 {
   color: #000000;
   font-size:8pt;
@@ -311,20 +311,20 @@ TD.comDetailItem
 {
 /*	vertical-align: bottom;*/
   vertical-align: middle;
-  padding: 2pt 5pt 2pt 5pt;	/* 上右下左 */
+  padding: 2pt 5pt 2pt 5pt;	/* 荳雁承荳句ｷｦ */
 }
 TD.comDetailBody
 {
-  padding: 10pt 8pt 10pt 8pt;	/* 上右下左 */
+  padding: 10pt 8pt 10pt 8pt;	/* 荳雁承荳句ｷｦ */
   border-style: solid;
   border-color: #666666;
   border-width: 1pt;
   text-align: left;
 }
 /*-----------------------------------------*/
-TD.comMessage		/* 参照画面の件名を大きく見せる */
+TD.comMessage		/* 蜿ら�ｧ逕ｻ髱｢縺ｮ莉ｶ蜷阪ｒ螟ｧ縺阪￥隕九○繧� */
 {
-  padding: 5pt 5pt 5pt 5pt;	/* 上右下左 */
+  padding: 5pt 5pt 5pt 5pt;	/* 荳雁承荳句ｷｦ */
 /*	background-color: #ffffcc; */
   color: #0000ff;
 /*	border-style: solid; */
@@ -335,7 +335,7 @@ TD.comMessage		/* 参照画面の件名を大きく見せる */
   font-weight: bolder;
 }
 /*----------------------------------------*/
-/* テーブル形式のスクロール用前後アイコン */
+/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ逕ｨ蜑榊ｾ後い繧､繧ｳ繝ｳ */
 /*----------------------------------------*/
 A.comScroll
 {
@@ -363,13 +363,13 @@ A.comNoScroll
 }
 
 /*--------------------------*/
-/* テーブル形式にタブを付加 */
+/* 繝�繝ｼ繝悶Ν蠖｢蠑上↓繧ｿ繝悶ｒ莉伜刈 */
 /*--------------------------*/
 TD.comTab
 {
-/* 表示位置調整 2001/10/01 */
-/*	padding: 0pt 0pt 0pt 0pt;	/* 上右下左 */
-  padding: 5pt 0pt 0pt 0pt;	/* 上右下左 */
+/* 陦ｨ遉ｺ菴咲ｽｮ隱ｿ謨ｴ 2001/10/01 */
+/*	padding: 0pt 0pt 0pt 0pt;	/* 荳雁承荳句ｷｦ */
+  padding: 5pt 0pt 0pt 0pt;	/* 荳雁承荳句ｷｦ */
 }
 TD.comTabCenter {
 /*	background-color: #c0c0c0;*/
@@ -412,7 +412,7 @@ SPAN.comTabBgText {
   font-size: 8pt;
   font-weight: normal;
 }
-TD.comTableItem				/* テーブル形式の各項目 */
+TD.comTableItem				/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -434,7 +434,7 @@ TD.comTableItem#green		{ text-align : center; color : #006600; }
 TD.comTableItem#yellow		{ text-align : center; color : #999933; }
 TD.comTableItem#orange		{ text-align : center; color : #ff6600; }
 
-TD.comTableItemUlt				/* テーブル形式の各項目 */
+TD.comTableItemUlt				/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #eba800;
@@ -447,7 +447,7 @@ TD.comTableItemUlt				/* テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comTableItemBlue				/* テーブル形式の各項目 */
+TD.comTableItemBlue				/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #D7EEFF;
@@ -460,7 +460,7 @@ TD.comTableItemBlue				/* テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comTableItemNF401				/* テーブル形式の各項目 */
+TD.comTableItemNF401				/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #CEF9DC;
@@ -473,7 +473,7 @@ TD.comTableItemNF401				/* テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comTableItemNF001				/* テーブル形式の各項目 */
+TD.comTableItemNF001				/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #eba800;
@@ -487,7 +487,7 @@ TD.comTableItemNF001				/* テーブル形式の各項目 */
   height : 15px;
 }
 
-TD.comTableTitle			/* テーブル形式のタイトル項目 */
+TD.comTableTitle			/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｿ繧､繝医Ν鬆�逶ｮ */
 {
   color : #000000;
 /*	background-color: #e0e0d4;*/
@@ -502,7 +502,7 @@ TD.comTableTitle			/* テーブル形式のタイトル項目 */
   font-size   : 8pt;
 }
 
-TD.comTableTitleUlt			/* テーブル形式のタイトル項目 */
+TD.comTableTitleUlt			/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｿ繧､繝医Ν鬆�逶ｮ */
 {
   color : #000000;
 /*	background-color: #e0e0d4;*/
@@ -517,7 +517,7 @@ TD.comTableTitleUlt			/* テーブル形式のタイトル項目 */
   font-size   : 8pt;
 }
 
-TH.comTableTitleUlt			/* テーブル形式のタイトル項目 */
+TH.comTableTitleUlt			/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｿ繧､繝医Ν鬆�逶ｮ */
 {
   color : #000000;
 /*	background-color: #e0e0d4;*/
@@ -530,9 +530,10 @@ TH.comTableTitleUlt			/* テーブル形式のタイトル項目 */
   border-right-width : 1px;
   border-bottom-width : 1px;
   font-size   : 8pt;
+  font-weight:normal;
 }
 
-TD.comTableTitleNF001			/* テーブル形式のタイトル項目 */
+TD.comTableTitleNF001			/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｿ繧､繝医Ν鬆�逶ｮ */
 {
   color : #000000;
 /*	background-color: #e0e0d4;*/
@@ -550,7 +551,7 @@ TD.comTableTitleNF001			/* テーブル形式のタイトル項目 */
   overflow : hidden;
 }
 
-TD.comTableTitleNF001W			/* テーブル形式のタイトル項目 */
+TD.comTableTitleNF001W			/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｿ繧､繝医Ν鬆�逶ｮ */
 {
   color : #000000;
 /*	background-color: #e0e0d4;*/
@@ -569,7 +570,7 @@ TD.comTableTitleNF001W			/* テーブル形式のタイトル項目 */
   overflow : hidden;
 }
 
-TD.comTableTitleNF001Act			/* テーブル形式のタイトル項目 */
+TD.comTableTitleNF001Act			/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｿ繧､繝医Ν鬆�逶ｮ */
 {
   color : #000000;
 /*	background-color: #e0e0d4;*/
@@ -584,19 +585,19 @@ TD.comTableTitleNF001Act			/* テーブル形式のタイトル項目 */
   font-size   : 8pt;
 }
 
-TABLE.comTableSearch	/* テーブル形式の検索部の枠 */
+TABLE.comTableSearch	/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ讀懃ｴ｢驛ｨ縺ｮ譫� */
 {
   background-color: #ffffff;
-  margin: 5pt 2pt 5pt 5pt;	/* 上右下左 */
+  margin: 5pt 2pt 5pt 5pt;	/* 荳雁承荳句ｷｦ */
   border-style:none;
   border-width: 1pt;
   border-color: #000000;
 }
-TD.comTableSearchItem	/* テーブル形式の検索部の項目 */
+TD.comTableSearchItem	/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ讀懃ｴ｢驛ｨ縺ｮ鬆�逶ｮ */
 {
 }
 /*------------------------------------*/
-/* テーブル形式のソート用▲▼アイコン */
+/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ繧ｽ繝ｼ繝育畑笆ｲ笆ｼ繧｢繧､繧ｳ繝ｳ */
 /*------------------------------------*/
 A.comTableSort
 {
@@ -634,7 +635,7 @@ A.comTableNoSort:visited:hover
 {
   color: #ff3300;
 }
-/*管理画面用*/
+/*邂｡逅�逕ｻ髱｢逕ｨ*/
 A.comBigMenuTitle {
   color: #330000; font-family: inherit; font-size: 15px; font-weight: bold; text-decoration: none
 }
@@ -655,18 +656,18 @@ TD.comBigMenu {
 }
 
 /**
- *	共有スクリーンポートレット用スタイル
+ *	蜈ｱ譛峨せ繧ｯ繝ｪ繝ｼ繝ｳ繝昴�ｼ繝医Ξ繝�繝育畑繧ｹ繧ｿ繧､繝ｫ
  */
 .comPortletHeaderColor {
-/* TabForegroundColorと機能は同じ
-   必要なのか要確認 */
+/* TabForegroundColor縺ｨ讖溯�ｽ縺ｯ蜷後§
+   蠢�隕√↑縺ｮ縺玖ｦ∫｢ｺ隱� */
   BACKGROUND-COLOR: #336699
 }
 /*------------------------------------*/
-/* 件名やタイトルのリンク */
+/* 莉ｶ蜷阪ｄ繧ｿ繧､繝医Ν縺ｮ繝ｪ繝ｳ繧ｯ */
 A.comSubject
 {
-/* bulletinSubjectのline-height: 18px;が無い */
+/* bulletinSubject縺ｮline-height: 18px;縺檎┌縺� */
   color: #000000;
   font-size: 8pt;
   text-decoration: underline;
@@ -685,7 +686,7 @@ A.comSubject:visited:hover
   color: #ff3300;
 }
 /**
- * トップメニュー用
+ * 繝医ャ繝励Γ繝九Η繝ｼ逕ｨ
  * @since 1.0
  * @author
  */
@@ -714,7 +715,7 @@ SPAN.comTopMenuPos {
   left: 25%;
 }
 /**
- * 隠しフォーム用
+ * 髫�縺励ヵ繧ｩ繝ｼ繝�逕ｨ
  */
 FORM.comHidden
 {
@@ -779,9 +780,9 @@ SELECT.comTableSelectYellow
 {
   background-color: lemonchiffon;
 }
-TD.comSubjectBolder		/* 参照画面の件名を大きく見せる */
+TD.comSubjectBolder		/* 蜿ら�ｧ逕ｻ髱｢縺ｮ莉ｶ蜷阪ｒ螟ｧ縺阪￥隕九○繧� */
 {
-  padding: 5pt 5pt 5pt 5pt;	/* 上右下左 */
+  padding: 5pt 5pt 5pt 5pt;	/* 荳雁承荳句ｷｦ */
   background-color: #ffffcc;
   color: #000000;
   border-style: solid;
@@ -791,7 +792,7 @@ TD.comSubjectBolder		/* 参照画面の件名を大きく見せる */
   font-size: 11pt;
   font-weight: bolder;
 }
-TD.comWaku					/* 表示項目の枠付き */
+TD.comWaku					/* 陦ｨ遉ｺ鬆�逶ｮ縺ｮ譫�莉倥″ */
 {
   border-style: solid;
   border-top-width: 1pt;
@@ -802,7 +803,7 @@ TD.comWaku					/* 表示項目の枠付き */
   padding: 2pt;
 }
 /*------------------------------*/
-/* 全画面での青色のサブタイトル */
+/* 蜈ｨ逕ｻ髱｢縺ｧ縺ｮ髱定牡縺ｮ繧ｵ繝悶ち繧､繝医Ν */
 /*------------------------------*/
 TD.comSubTitle
 {
@@ -813,7 +814,7 @@ TD.comSubTitle
 }
 
 /*--------------------------*/
-/* 全画面での灰色のコメント */
+/* 蜈ｨ逕ｻ髱｢縺ｧ縺ｮ轣ｰ濶ｲ縺ｮ繧ｳ繝｡繝ｳ繝� */
 /*--------------------------*/
 SPAN.comComment
 {
@@ -826,7 +827,7 @@ SPAN.comSmallComment
   color: #666666;
 }
 /*--------------------------*/
-/* 全画面での赤色のコメント */
+/* 蜈ｨ逕ｻ髱｢縺ｧ縺ｮ襍､濶ｲ縺ｮ繧ｳ繝｡繝ｳ繝� */
 /*--------------------------*/
 SPAN.comRedComment
 {
@@ -846,9 +847,9 @@ body {
 }
 
 /*--------------------------*/
-/* RDM登録画面系 */
+/* RDM逋ｻ骭ｲ逕ｻ髱｢邉ｻ */
 /*--------------------------*/
-TD.comFormTableItem				/* テーブル形式の各項目 */
+TD.comFormTableItem				/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -870,7 +871,7 @@ TD.comFormTableItem#green		{ text-align : center; color : #006600; }
 TD.comFormTableItem#yellow		{ text-align : center; color : #999933; }
 TD.comFormTableItem#orange		{ text-align : center; color : #ff6600; }
 
-TD.comFormTableItemNf212Head				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemNf212Head				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -883,7 +884,7 @@ TD.comFormTableItemNf212Head				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemNf212Left				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemNf212Left				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -896,7 +897,7 @@ TD.comFormTableItemNf212Left				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemNf212Right				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemNf212Right				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -909,7 +910,7 @@ TD.comFormTableItemNf212Right				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemNf212Foot1				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemNf212Foot1				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -922,7 +923,7 @@ TD.comFormTableItemNf212Foot1				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemNf212Foot2				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemNf212Foot2				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -935,7 +936,7 @@ TD.comFormTableItemNf212Foot2				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemNf212Foot3				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemNf212Foot3				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -948,7 +949,7 @@ TD.comFormTableItemNf212Foot3				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemBlueNf212Head				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemBlueNf212Head				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #D7EEFF;
@@ -961,7 +962,7 @@ TD.comFormTableItemBlueNf212Head				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemBlueNf212Left				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemBlueNf212Left				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #D7EEFF;
@@ -974,7 +975,7 @@ TD.comFormTableItemBlueNf212Left				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemBlueNf212Right				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemBlueNf212Right				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #D7EEFF;
@@ -987,7 +988,7 @@ TD.comFormTableItemBlueNf212Right				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemBlueNf212Foot1				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemBlueNf212Foot1				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #D7EEFF;
@@ -1000,7 +1001,7 @@ TD.comFormTableItemBlueNf212Foot1				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemBlueNf212Foot2				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemBlueNf212Foot2				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #D7EEFF;
@@ -1013,7 +1014,7 @@ TD.comFormTableItemBlueNf212Foot2				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemBlueNf212Foot3				/* NF212 テーブル形式の各項目 */
+TD.comFormTableItemBlueNf212Foot3				/* NF212 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ */
 {
   color : #000000;
   background-color: #D7EEFF;
@@ -1026,7 +1027,7 @@ TD.comFormTableItemBlueNf212Foot3				/* NF212 テーブル形式の各項目 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemBlue				/* テーブル形式の各項目 青背景 */
+TD.comFormTableItemBlue				/* 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ蜷�鬆�逶ｮ 髱定レ譎ｯ */
 {
   color : #000000;
   background-color:#D7EEFF;
@@ -1039,7 +1040,7 @@ TD.comFormTableItemBlue				/* テーブル形式の各項目 青背景 */
   font-size   : 8pt;
 }
 
-TD.comFormTableItemNf012Head	/* NF012 テーブル形式の見出し項目 */
+TD.comFormTableItemNf012Head	/* NF012 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ隕句�ｺ縺鈴��逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -1053,7 +1054,7 @@ TD.comFormTableItemNf012Head	/* NF012 テーブル形式の見出し項目 */
   height : 30px;
 }
 
-TD.comFormTableItemNf012	/* NF012 テーブル形式の項目 */
+TD.comFormTableItemNf012	/* NF012 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -1069,7 +1070,7 @@ TD.comFormTableItemNf012	/* NF012 テーブル形式の項目 */
 }
 
 
-TABLE.comCustomTable	/* 全画面用ポータル大枠 */
+TABLE.comCustomTable	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ螟ｧ譫� */
 {
   margin-top:10pt;
   width:540pt;
@@ -1078,7 +1079,7 @@ TABLE.comCustomTable	/* 全画面用ポータル大枠 */
   padding : 1pt 1pt 1pt 1pt;
 }
 
-TABLE.comCustomTableBlue	/* 全画面用ポータル大枠 青背景 */
+TABLE.comCustomTableBlue	/* 蜈ｨ逕ｻ髱｢逕ｨ繝昴�ｼ繧ｿ繝ｫ螟ｧ譫� 髱定レ譎ｯ */
 {
   margin-top:10pt;
   width:540pt;
@@ -1088,13 +1089,13 @@ TABLE.comCustomTableBlue	/* 全画面用ポータル大枠 青背景 */
 }
 
 .comCustomTable tbody td{
-resize : horizontal;     // <-ユーザが幅を変更できる①
-overflow : hidden;     // <-はみ出たら非表示②
-white-space : nowrap; // <-折り返さない③
+resize : horizontal;     // <-繝ｦ繝ｼ繧ｶ縺悟ｹ�繧貞､画峩縺ｧ縺阪ｋ竭�
+overflow : hidden;     // <-縺ｯ縺ｿ蜃ｺ縺溘ｉ髱櫁｡ｨ遉ｺ竭｡
+white-space : nowrap; // <-謚倥ｊ霑斐＆縺ｪ縺�竭｢
 }
 
 
-TD.comFormTableItemNd012Head	/* ND012 テーブル形式の見出し項目 */
+TD.comFormTableItemNd012Head	/* ND012 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ隕句�ｺ縺鈴��逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -1108,7 +1109,7 @@ TD.comFormTableItemNd012Head	/* ND012 テーブル形式の見出し項目 */
   height : 30px;
 }
 
-TD.comFormTableItemNd012	/* ND012 テーブル形式の項目 */
+TD.comFormTableItemNd012	/* ND012 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;
@@ -1123,7 +1124,7 @@ TD.comFormTableItemNd012	/* ND012 テーブル形式の項目 */
   padding-left : 10px;
 }
 
-TD.comFormTableItemNd012Border	/* ND012 テーブル形式の項目 */
+TD.comFormTableItemNd012Border	/* ND012 繝�繝ｼ繝悶Ν蠖｢蠑上�ｮ鬆�逶ｮ */
 {
   color : #000000;
   background-color: #ffffff;

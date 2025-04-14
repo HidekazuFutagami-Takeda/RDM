@@ -153,6 +153,7 @@
 	<s:hidden name="reqStsCd" />
 	<s:hidden name="updShaYmd" />
 	<s:hidden name="docKanj" />
+	<s:hidden name="paramDocNo" />
 	<s:hidden name="docNo" />
 	<s:hidden name="urlDocNo" />
 	<s:hidden name="processFlg" />
@@ -162,9 +163,31 @@
 	<s:hidden name="tekiyoYmd" />
 	<s:hidden name="insNoSk" />
 	<s:hidden name="ultInsNo" />
-	<s:hidden name="deptCodeAf" />
 	<s:hidden name="deptKn" />
 	<s:hidden name="saveButtonFlg" />
+
+	<s:hidden name="paramInsNo" />
+	<s:hidden name="insAbbrName" />
+	<s:hidden name="deptCodeAf" />
+	<s:hidden name="deptKj" />
+	<s:hidden name="titleCodeAf" />
+	<s:hidden name="titleCodeName" />
+	<s:hidden name="univPosCodeAf" />
+	<s:hidden name="univPosCodeAfName" />
+	<s:hidden name="jobFormAf" />
+	<s:hidden name="jobFormAfName" />
+	<s:hidden name="dccTypeAf" />
+	<s:hidden name="dccTypeAfName" />
+	<s:hidden name="formTekiyoYmd" />
+	<s:hidden name="reqComment" />
+
+	<s:hidden name="loginJokenSetCd" />
+	<s:hidden name="loginJgiNo"/>
+     <s:hidden name="loginNm"/>
+     <s:hidden name="loginShzNm"/>
+     <s:hidden name="loginTrtCd"/>
+     <s:hidden name="loginBrCd"/>
+     <s:hidden name="loginDistCd"/>
 
     <s:hidden name="pageCntAll" />
       <s:hidden name="pageCntCur" />
@@ -380,7 +403,7 @@
 	          <td class="comTableSearchItem" >
 	          	<nobr>適用日</nobr>
 	          </td>
-	          <td><s:property value="tekiyoYmd"/></td>
+	          <td><s:property value="formTekiyoYmd"/></td>
         </tr>
         <tr>
         	<td></td>
@@ -453,17 +476,9 @@
 			</td>
 
 			<td>
-				<s:if test='%{reqStsCd == 01 }'>
+				<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11"}'>
 					<s:if test='%{actionEdit == "1"}'>
 	                	<input type="button" value="申請" onclick="ND311Page()" />
-	                </s:if>
-	                <s:if test='%{actionEdit == "0"}'>
-	                	<input type="button" value="申請" onclick="ND311Page" disabled/>
-	                </s:if>
-				</s:if>
-				<s:if test='%{reqStsCd == 11 }'>
-	                <s:if test='%{actionEdit == "1"}'>
-	                	<input type="button" value="申請" onclick="ND311Page" />
 	                </s:if>
 	                <s:if test='%{actionEdit == "0"}'>
 	                	<input type="button" value="申請" onclick="ND311Page" disabled/>

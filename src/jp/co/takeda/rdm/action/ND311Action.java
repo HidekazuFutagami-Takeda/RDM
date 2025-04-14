@@ -148,11 +148,11 @@ public class ND311Action extends BaseAction<ND311DTO> {
     	//申請者所属リージョンセット
     	dto.setBrCode(loginInfo.getBrCode());
     	//申請者セット
-    	dto.setJgiName("西村　佳美");
+    	dto.setJgiName(loginInfo.getJgiName());
 
     	dto.setMsgStr(null);
 
-
+/*
         String reqSts = dto.getReqStsCd();
       //申請ステータスが保存済み、初回登録以外の場合
         if (!Objects.equals(reqSts,"01")) {
@@ -168,7 +168,7 @@ public class ND311Action extends BaseAction<ND311DTO> {
                 return initNext(outdto);
         	}
         }
-
+*/
        	 //施設名 必須入力チェック
        	 if (StringUtils.isEmpty(dto.getInsAbbrName())) {
        		 errChk = true;
@@ -328,11 +328,13 @@ public class ND311Action extends BaseAction<ND311DTO> {
 
 
     	// F層呼び出し
-       outdto = nD311Service.initReq(dto);
+       //outdto = nD311Service.initReq(dto);
        outdto = nD311Service.init(dto);
 
        dto.setReqId(dto.getParamReqId());
        dto.setParamDocNo(null);
+
+       dto.setFormTekiyoYmd(dto.getFormTekiyoYmd().replace("-", "/"));
 
         return initNext(outdto);
     }

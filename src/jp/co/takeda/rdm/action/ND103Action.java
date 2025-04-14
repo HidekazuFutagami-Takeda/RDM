@@ -144,72 +144,82 @@ public class ND103Action extends BaseAction<ND103DTO> {
             return initNext(outdto);
         }
 
-        //【仮】権限判別
-      //ログインユーザー情報格納
-        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        if(!"ND311".equals(dto.getBackScreenId())) {
+		    //【仮】権限判別
+		    //ログインユーザー情報格納
+		    LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
-     // 現在日付を取得
-        Date systemDate = DateUtils.getNowDate();
-        SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
-        String sysDate = fmtDate.format(systemDate);
+		    // 現在日付を取得
+		    Date systemDate = DateUtils.getNowDate();
+		    SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+		    String sysDate = fmtDate.format(systemDate);
 
-        dto.setLoginJokenSetCd("JKN0813");
+		    dto.setLoginJgiNo(loginInfo.getJgiNo());
+	        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+	        dto.setLoginBrCd(loginInfo.getBrCode());
+	        dto.setLoginDistCd(loginInfo.getDistCode());
+	        dto.setLoginNm(loginInfo.getJgiName());
+	        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+	        dto.setLoginTrtCd(loginInfo.getTrtCd());
 
-        //ユーザー
-        if (loginInfo.getJokenSetCd() == "0") {
-        	dto.setJokenSetCd("0");
+		    //ユーザー
+		    if (loginInfo.getJokenSetCd() == "0") {
+		    	dto.setJokenSetCd("0");
+		    }
+		    //管理者
+		    if (loginInfo.getJokenSetCd() == "1") {
+		    	dto.setJokenSetCd("1");
+		    }
+
+		    dto.setLoginJgiNo(loginInfo.getJgiNo());
+		    //申請者所属エリアセット
+			dto.setReqDistCode(loginInfo.getDistCode());
+			//申請者所属リージョンセット
+			dto.setBrCode(loginInfo.getBrCode());
+			//申請者セット
+			dto.setJgiName(loginInfo.getJgiName());
+
+			dto.setMsgStr(null);
+
+			dto.setParamReqId(dto.getReqId());
+
+		    //一時保存押下の場合
+		     if (Objects.deepEquals(dto.getSaveButtonFlg(), "1")) {
+		    	 dto.setSaveButtonFlg("0");
+
+				//エラーチェック
+				int i = dto.getReqComment().length();
+				if (i >= 300) {//申請コメント文字数が300文字以上の場合
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W013);// 検索条件を入力してください。
+
+		    		if(errChk) {//エラーありなのでメッセージをセットする
+		    			dto.setMsgStr(tmpMsgStr);
+		    		}
+				}
+				else {//エラーがない場合更新処理へ
+					nD103Service.save(dto);
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I005);//保存メッセージ
+					dto.setSaveButtonFlg("0");
+				}
+		    }
+
+		     //親画面 申請ID　空チェック
+		     if (!StringUtils.isEmpty(dto.getParamReqId())) {
+		     	dto.setParamDocNo(null);
+		     	// F層呼び出し
+		        outdto = nD103Service.initReq(dto);
+		     }
+
+		     //親画面 医師固定コード　空チェック
+		     if (!StringUtils.isEmpty(dto.getParamDocNo())) {
+		     	dto.setParamReqId(null);
+		     	// F層呼び出し
+		         outdto = nD103Service.initDoc(dto);
+		     }
+        } else {
+        	dto.setFormTekiyoYmd(dto.getFormTekiyoYmd().replace("/", "-"));
         }
-        //管理者
-        if (loginInfo.getJokenSetCd() == "1") {
-        	dto.setJokenSetCd("1");
-        	dto.setLoginJgiNo(loginInfo.getJgiNo());
-        }
-
-      //申請者所属エリアセット
-    	dto.setReqDistCode(loginInfo.getDistCode());
-    	//申請者所属リージョンセット
-    	dto.setBrCode(loginInfo.getBrCode());
-    	//申請者セット
-    	dto.setJgiName("西村　佳美");
-
-    	dto.setMsgStr(null);
-
-    	dto.setParamReqId(dto.getReqId());
-
-        //一時保存押下の場合
-         if (Objects.deepEquals(dto.getSaveButtonFlg(), "1")) {
-        	 dto.setSaveButtonFlg("0");
-
-    		//エラーチェック
-    		int i = dto.getReqComment().length();
-    		if (i >= 300) {//申請コメント文字数が300文字以上の場合
-    			errChk = true;
-    			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W013);// 検索条件を入力してください。
-
-        		if(errChk) {//エラーありなのでメッセージをセットする
-        			dto.setMsgStr(tmpMsgStr);
-        		}
-    		}
-    		else {//エラーがない場合更新処理へ
-    			nD103Service.save(dto);
-    			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I005);//保存メッセージ
-    			dto.setSaveButtonFlg("0");
-    		}
-        }
-
-         //親画面 申請ID　空チェック
-         if (!StringUtils.isEmpty(dto.getParamReqId())) {
-         	dto.setParamDocNo(null);
-         	// F層呼び出し
-            outdto = nD103Service.initReq(dto);
-         }
-
-         //親画面 医師固定コード　空チェック
-         if (!StringUtils.isEmpty(dto.getParamDocNo())) {
-         	dto.setParamReqId(null);
-         	// F層呼び出し
-             outdto = nD103Service.initDoc(dto);
-         }
 
         outdto = nD103Service.pullDown(dto);
         return initNext(outdto);
@@ -235,7 +245,7 @@ public class ND103Action extends BaseAction<ND103DTO> {
     	sessionMap.put(AppConstant.SESKEY_ND103_SEARCHKEY, outdto);
 
         // END UOC
-         setNextDTO(outdto);
+        setNextDTO(outdto);
         return outdto.getForward();
     }
 

@@ -30,6 +30,12 @@ public class ND013DTO extends BaseDTO implements Serializable {
     private String ND013 = "ND013";
 
     /**
+	 * 画面タイトル
+	 * @generated
+	 */
+	private String title;
+
+    /**
      * 親画面コールバックメソッド名
      * @generated
      */
@@ -231,6 +237,21 @@ public class ND013DTO extends BaseDTO implements Serializable {
 	 */
 	public void setND013(String nD013) {
 		ND013 = nD013;
+	}
+
+	/**
+	 * ND013DTO.javatitleを設定
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title セットする title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	/**

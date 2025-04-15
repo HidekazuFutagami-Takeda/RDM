@@ -27,6 +27,7 @@ import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.DAO;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.ND104DTO;
+import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
 import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
 import jp.co.takeda.rdm.service.ND104Service;
@@ -277,6 +278,33 @@ public class ND104Action extends BaseAction<ND104DTO> {
            	 //エラーがない場合
            	if (StringUtils.isEmpty(dto.getMsgStr())) {
            		outdto = dto;
+
+           		// パラメタ情報を取得
+           		String kmuValue = "0";
+                String docValue = "0";
+
+           		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
+        		mRdmParamMstEntity.setParamName("MN_KMU");
+        		mRdmParamMstEntity.setDelFlg("0");
+        		List<MRdmParamMstEntity> mRdmParamMstEntityList = dao.selectByValue(mRdmParamMstEntity);
+        		if(mRdmParamMstEntityList.size() > 0) {
+        			kmuValue = mRdmParamMstEntityList.get(0).getValue().substring(1,2);
+        		}
+
+        		MRdmParamMstEntity mRdmParamMstEntityDoc = new MRdmParamMstEntity();
+        		mRdmParamMstEntityDoc.setParamName("MN_DOC");
+        		mRdmParamMstEntityDoc.setDelFlg("0");
+        		List<MRdmParamMstEntity> mRdmParamMstEntityDocList = dao.selectByValue(mRdmParamMstEntityDoc);
+        		if(mRdmParamMstEntityList.size() > 0) {
+        			docValue = mRdmParamMstEntityList.get(0).getValue().substring(2,3);
+        		}
+
+        		if("1".equals(kmuValue) && "1".equals(docValue)) {
+        			dto.setActionEdit("1");
+        		} else {
+        			dto.setActionEdit("0");
+        		}
+
            		outdto.setForward("ND313");
            		//outdto.setForward("ND313Init");
            		return outdto.getForward();

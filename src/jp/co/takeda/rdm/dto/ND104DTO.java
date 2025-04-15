@@ -441,6 +441,12 @@ public class ND104DTO extends BaseDTO implements Serializable {
     private String aprComment;
 
     /**
+     * 医師メニュースイッチ
+     * @generated
+     */
+    private String actionEdit;
+
+    /**
      * @役職_ドロップダウンリスト
      */
     private String yakusyokuCd;
@@ -1325,6 +1331,21 @@ public class ND104DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAprComment(String aprComment) {
 		this.aprComment = aprComment;
+	}
+
+	/**
+	 * ND104DTO.javaactionEditを設定
+	 * @return actionEdit
+	 */
+	public String getActionEdit() {
+		return actionEdit;
+	}
+
+	/**
+	 * @param actionEdit セットする actionEdit
+	 */
+	public void setActionEdit(String actionEdit) {
+		this.actionEdit = actionEdit;
 	}
 
 	/**

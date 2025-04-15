@@ -141,7 +141,7 @@ public class ND313Action extends BaseAction<ND313DTO> {
     	//申請者所属リージョンセット
     	dto.setBrCode(loginInfo.getBrCode());
     	//申請者セット
-    	dto.setJgiName("西村　佳美");
+    	dto.setJgiName(loginInfo.getJgiName());
 
     	dto.setMsgStr(null);
 

@@ -233,12 +233,14 @@ public class ND013Service extends BaseService {
         	//仮
 //        	dataRecord.setDummyHcoCount(2);
 
+        	dataRecord.setKinmuCount(SelectHcpWorkList.size());
         	//データ部検索結果を格納
         	SelectHcpWorkDataList.add(dataRecord);
         }
 
     	// 勤務先追加ボタン表示
     	Integer kinmuCount = SelectHcpWorkList.size();
+    	dto.setKinmuCount(kinmuCount);
     	if(kinmuCount >= 2) {
     		if("1".equals(dto.getIshiNewKinmu())) {
     			dto.setIshiNewKinmu("2");

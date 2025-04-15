@@ -147,6 +147,8 @@ public class ND013Action extends BaseAction<ND013DTO> {
         			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I011);//
         			//ダイアログメッセージ定義
         			dto.setDialog(tmpMsgStr);
+        			//エラーなしならタブ遷移フラグをセットしonloadに渡す
+                	dto.setTabFlg(dto.getErrorCheckFlg());
         		}
 
         		//「勤務先削除」の重複申請チェックエラーの場合

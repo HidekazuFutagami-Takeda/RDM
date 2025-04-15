@@ -44,12 +44,25 @@
     	if(document.fm1.tabFlg != null){
     	const tabFlg = document.fm1.tabFlg.value;
     	const docNo = document.fm1.paramDocNo.value;
+    	const dialog = document.fm1.dialog.value;
     	document.fm1.tabFlg.value = "X";
 	 		if(tabFlg == "1"){//エラーなしなので遷移
-	 			actBtn('ND103', docNo);
+	 			if(dialog != null && dialog != ""){
+					if(window.confirm(dialog)){
+			 			actBtn('ND103', docNo);
+					} else {
+						document.fm1.dialog.value = "";
+					}
+	 			}
 	 		}
 	 		if(tabFlg == "2"){//エラーなしなので遷移
-	 			actBtn('ND105', docNo);
+	 			if(dialog != null && dialog != ""){
+	 				if(window.confirm(dialog)){
+		 				actBtn('ND105', docNo);
+					} else {
+						document.fm1.dialog.value = "";
+					}
+	 			}
 	 		}
 	 		if(tabFlg == "3"){//エラーなしなので遷移
 	 			actBtn('ND104', docNo);
@@ -467,14 +480,15 @@
 		        		<!--アクション編集が'1'の場合,勤務先情報の件数が1件で隠し項目．実勤務先判定がNULLの場合 表示
 		        		|| (#rowBean.actionEdit == 1　&& #rowBean.kinmuCount == 1 && #rowBean.dummyHco == null) -->
 		        		<s:if test="%{#rowBean.actionEdit == 1}">
-		        		<s:if test="%{dummyHcoCount >= 2}">
-		        			<s:if test="%{#rowBean.reqA == 1}">
+			        		<s:if test="%{dummyHcoCount >= 2}">
 		        				<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
-		        			</s:if>
-		        			<s:else>
-		        				<span><img src="img/button_update_off.gif"></span>
-		        			</s:else>
-		        		</s:if>
+			        		</s:if>
+			        		<s:elseif test="%{kinmuCount == 1 and dummyHcoCount > 0}">
+								<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
+			        		</s:elseif>
+			        		<s:else>
+		        			<nobr>&nbsp;</nobr>
+		        		</s:else>
 		        		</s:if>
 		        		<s:else>
 		        			<nobr>&nbsp;</nobr>

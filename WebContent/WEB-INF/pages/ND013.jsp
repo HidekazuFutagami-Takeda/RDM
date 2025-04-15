@@ -487,10 +487,20 @@
 		        		|| (#rowBean.actionEdit == 1　&& #rowBean.kinmuCount == 1 && #rowBean.dummyHco == null) -->
 		        		<s:if test="%{#rowBean.actionEdit == 1}">
 			        		<s:if test="%{dummyHcoCount >= 2}">
-		        				<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
+			        			<s:if test="%{#rowBean.reqA == 1}">
+			        				<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
+		        				</s:if>
+		        				<s:else>
+		        					<span><img src="img/button_update_off.gif"></span>
+		        				</s:else>
 			        		</s:if>
 			        		<s:elseif test="%{kinmuCount == 1 and dummyHcoCount > 0}">
-								<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
+								<s:if test="%{#rowBean.reqA == 1}">
+			        				<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
+		        				</s:if>
+		        				<s:else>
+		        					<span><img src="img/button_update_off.gif"></span>
+		        				</s:else>
 			        		</s:elseif>
 			        		<s:else>
 		        			<nobr>&nbsp;</nobr>
@@ -506,9 +516,7 @@
 		        		<s:if test="%{#rowBean.actionEdit == 1}">
 		        			<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
 		        			<s:if test="%{#rowBean.reqA == 1}">
-		        				<s:if test="%{#rowBean.reqB == 1}">
-		        					<span><img src="img/button_movemed.gif" onclick="errorCheckAction('5', this)"></span>
-		        				</s:if>
+	        					<span><img src="img/button_movemed.gif" onclick="errorCheckAction('5', this)"></span>
 		        			</s:if>
 		        			<s:else>
 		        				<span><img src="img/button_movemed_off.gif"></span>
@@ -522,11 +530,9 @@
 		        		<!-- 医療機関外へ異動 -->
 		        		<s:if test="%{#rowBean.actionEdit == 1 && #rowBean.kinmuCount == 1}">
 	        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->
-		        			<s:if test="%{#rowBean.reqA == 1}">
-		        				<s:if test="%{#rowBean.reqB == 1}">
-		        					<span><img src="img/button_moveoutmed.gif" onclick="errorCheckAction('6', this)"></span>
-		        				</s:if>
-		        			</s:if>
+	        				<s:if test="%{#rowBean.reqB == 1}">
+	        					<span><img src="img/button_moveoutmed.gif" onclick="errorCheckAction('6', this)"></span>
+	        				</s:if>
 
 		        			<s:else>
 		        			<!-- その他 -->

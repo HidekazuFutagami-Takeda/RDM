@@ -113,7 +113,7 @@ window.onload = function(){
 * @param clearProc 呼び出し元のクリア処理名をStringで受け取ります。
 * @return 呼び出したwindowオブジェクトを返します。
 */
-function cseViewND013(td,w, callBack, winVarName, clearProc){
+function cseViewND013(insNoKakusi, w, callBack, winVarName, clearProc){
 
 	  //****************************************************************
 	  // ポップアップ起動中にウィンドウが閉じられると
@@ -137,12 +137,12 @@ function cseViewND013(td,w, callBack, winVarName, clearProc){
 	joken = new Array();		//パラメタの値を2次元配列で指定
 
 	//選択された行の施設固定C（隠し項目）を取り出す
-	var span = td.parentNode;
-	var td = span.parentNode;
-	var tr = td.parentNode
-	var insNoKakusiLabel = tr.lastElementChild;
-	var insNoKakusiVal = insNoKakusiLabel.textContent;
-	const insNoKakusi = insNoKakusiVal.replace(/[^0-9]/g, '');
+//	var span = td.parentNode;
+//	var td = span.parentNode;
+//	var tr = td.parentNode;
+//	var insNoKakusiLabel = tr.lastElementChild;
+//	var insNoKakusiVal = insNoKakusiLabel.textContent;
+//	const insNoKakusi = insNoKakusiVal.replace(/[^0-9]/g, '');
 
 	jokenName[ix1] = "insNoKakusi";
 	joken[ix1++] = new Array(insNoKakusi);

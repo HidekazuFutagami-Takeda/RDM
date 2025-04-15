@@ -466,6 +466,20 @@ if (stack.peek() instanceof NC203DTO) {
 					<s:hidden name="insData[%{#status.index}].manageCd" />
 					<s:hidden name="insData[%{#status.index}].shisetsuKbn" />
 					<s:hidden name="insData[%{#status.index}].keieitaiCd" />
+					<s:hidden name="insData[%{#status.index}].insAbbrName" />
+					<s:hidden name="insData[%{#status.index}].insFormalName" />
+					<s:hidden name="insData[%{#status.index}].insNo" />
+					<s:hidden name="insData[%{#status.index}].insAddr" />
+					<s:hidden name="insData[%{#status.index}].phone1" />
+					<s:hidden name="insData[%{#status.index}].insSbtNm" />
+					<s:hidden name="insData[%{#status.index}].manageNm" />
+					<s:hidden name="insData[%{#status.index}].shisetsuNmRyaku" />
+					<s:hidden name="insData[%{#status.index}].shisetsuNm" />
+					<s:hidden name="insData[%{#status.index}].dcfShisetsuCd" />
+					<s:hidden name="insData[%{#status.index}].address" />
+					<s:hidden name="insData[%{#status.index}].shisetsuTel" />
+					<s:hidden name="insData[%{#status.index}].shisetsuKbnNm" />
+					<s:hidden name="insData[%{#status.index}].keieitaiNm" />
 				<tr>
 					<td class="pupButton" style="height:90%;" rowspan="2" >
 					<input class="pupButton" type="button" value="" OnClick="cseSelectIns(

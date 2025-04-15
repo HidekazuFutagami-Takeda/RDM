@@ -162,8 +162,9 @@ public class ND013DTO extends BaseDTO implements Serializable {
 
     /**
      * 医師勤務先追加ボタン
-     * 0:非活性
-     * 1:活性
+     * 0:非表示
+     * 1:非活性
+     * 2:活性
      * @generated
      */
     private String ishiNewKinmu;

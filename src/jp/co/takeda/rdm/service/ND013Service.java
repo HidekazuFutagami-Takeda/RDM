@@ -86,9 +86,6 @@ public class ND013Service extends BaseService {
         //データ部画面初期表示時の帳票一覧を取得する
         List<MRdmHcpWorkEntity> SelectHcpWorkList = dao.select(paramEntity);
 
-//        dto.setKinmuCount(SelectHcpWorkList.size());
-        dto.setKinmuCount(2);
-
         List<HcpWorkData> SelectHcpWorkDataList = new ArrayList<>();
         dto.setDummyHcoCount(0);
         for (MRdmHcpWorkEntity entity : SelectHcpWorkList) {
@@ -161,10 +158,6 @@ public class ND013Service extends BaseService {
         	else {
         		dto.setIshiHaigyou("1");
         	}
-
-        	//疎通確認
-//        	dto.setIshiHaigyou("0");
-//        	dto.setIshiNewKinmu("0");
 
         	//アクション申請A
         	/*
@@ -240,12 +233,27 @@ public class ND013Service extends BaseService {
         	//仮
 //        	dataRecord.setDummyHcoCount(2);
 
-        	//勤務先件数をカウント
-        	dataRecord.setKinmuCount(SelectHcpWorkList.size());
-
         	//データ部検索結果を格納
         	SelectHcpWorkDataList.add(dataRecord);
         }
+
+    	// 勤務先追加ボタン表示
+    	Integer kinmuCount = SelectHcpWorkList.size();
+    	if(kinmuCount >= 2) {
+    		if("1".equals(dto.getIshiNewKinmu())) {
+    			dto.setIshiNewKinmu("2");
+    		} else {
+    			dto.setIshiNewKinmu("1");
+    		}
+    	} else if(kinmuCount == 1 && dto.getDummyHcoCount() > 0) {
+    		if("1".equals(dto.getIshiNewKinmu())) {
+    			dto.setIshiNewKinmu("2");
+    		} else {
+    			dto.setIshiNewKinmu("1");
+    		}
+    	} else {
+    		dto.setIshiNewKinmu("0");
+    	}
 
         dto.setHcpWorkData(SelectHcpWorkDataList);
         // END UOC

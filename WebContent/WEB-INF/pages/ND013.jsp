@@ -369,18 +369,15 @@
 	        </tr>
 	        <tr>
 	            <td><!-- 勤務先追加ボタン -->
-	            	<s:if test="%{kinmuCount >= 2}">
-	            		<!-- 表示 -->
-	            		<s:if test="%{ishiNewKinmu != 0}">
-	            			<!-- 活性 -->
-	            			<input type="button" value="勤務先追加" onclick="errorCheck('1')">
-	            		</s:if>
-	            		<s:else>
-	            			<!-- 非活性 -->
-	            			<input type="button" value="勤務先追加" style="background-color: gray;" >
-	            		</s:else>
-
-		            </s:if>
+            		<!-- 表示 -->
+            		<s:if test="%{ishiNewKinmu == 2}">
+            			<!-- 活性 -->
+            			<input type="button" value="勤務先追加" onclick="errorCheck('1')">
+            		</s:if>
+            		<s:elseif test="%{ishiNewKinmu == 1}">
+            			<!-- 非活性 -->
+            			<input type="button" value="勤務先追加" style="background-color: gray;" >
+            		</s:elseif>
 		            <s:else>
 		            	<!-- 非表示 -->
 						<nobr>&nbsp;</nobr>
@@ -586,7 +583,7 @@
 					</td>
 					<!-- 担当者(領域：所属) -->
 					<td class="comTableItem" id="left"  >
-						<input type="button" value=" 施設担当者" onclick="cseViewND013(this);">
+						<input type="button" value=" 施設担当者" onclick="cseViewND013('<s:property value="#rowBean.insNoKakusi"/>');">
 					</td>
 					<!-- 施設固定C　隠し項目 -->
 					<td style="display:none;">

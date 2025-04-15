@@ -446,14 +446,14 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
       </tr>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請者所属部署</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請者所属</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="reqShzNm"/></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請ステータス</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="reqStsNm"/></nobr></td>
       </tr>
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請者</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請者氏名</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="reqJgiName"/></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>申請日時</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="reqYmdhms"/></nobr></td>
@@ -463,7 +463,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<s:if test='%{loginJgiNo != reqJgiNo }'>
 	      <tr>
 		      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-		      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>審査者</nobr></td>
+		      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>審査者氏名</nobr></td>
 		      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="shnShaName"/></nobr></td>
 		      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>審査日時</nobr></td>
 		      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="shnYmdhms"/></nobr></td>
@@ -472,7 +472,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示 -->
       <tr>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>&nbsp;</nobr></td>
-	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>承認者</nobr></td>
+	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>承認者氏名</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="aprShaName"/></nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr>承認日時</nobr></td>
 	      <td <s:if test='tkdTrtKbn == "0"'>class="comFormTableItemBlue"</s:if><s:else>class="comFormTableItem"</s:else>><nobr><s:label key="aprYmdhms"/></nobr></td>
@@ -530,7 +530,13 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 			        <%--領域担当者データ保持用のHIDDEN項目--%>
 			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtGrpCd"/>
 			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtCd"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].trtNm"/>
 			        <s:hidden name="lnkTrtDataList[%{#status.index}].hinGCd"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].hinGName"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].insAbbrName"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].hoInsType"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].insAddr"/>
+			        <s:hidden name="lnkTrtDataList[%{#status.index}].jgiName"/>
 
 					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].trtNm"/></nobr></td>
 					<td><nobr><s:label key="lnkTrtDataList[%{#status.index}].hinGName"/></nobr></td>

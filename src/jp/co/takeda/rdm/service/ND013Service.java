@@ -178,7 +178,7 @@ public class ND013Service extends BaseService {
         	 * nullの場合1を挿入
         	 * Notnullは0を挿入
         	 * */
-        	if (Objects.equals(entity.getReqA(), null)) {
+        	if (Objects.equals(entity.getReqB(), null)) {
         		dataRecord.setReqB(1);
         	}
         	else {

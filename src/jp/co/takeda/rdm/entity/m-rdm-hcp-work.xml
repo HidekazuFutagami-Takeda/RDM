@@ -70,7 +70,7 @@
 			INNER JOIN
 				ORAUSR01.T_RDM_REQ_KNR REQ_KNR --申請管理
 			ON
-				KMU_REQ.REQ_ID = KMU_REQ.REQ_ID --申請ID
+				KMU_REQ.REQ_ID = REQ_KNR.REQ_ID --申請ID
 			WHERE
 				 1 = 1
 			AND
@@ -94,7 +94,7 @@
 			INNER JOIN
 				ORAUSR01.T_RDM_REQ_KNR REQ_KNR --申請管理
 			ON
-				KMU_REQ.REQ_ID = KMU_REQ.REQ_ID --申請ID
+				KMU_REQ.REQ_ID = REQ_KNR.REQ_ID --申請ID
 			WHERE
 				 1 = 1
 			AND

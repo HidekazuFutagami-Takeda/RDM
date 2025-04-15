@@ -123,11 +123,11 @@ public class ND013Action extends BaseAction<ND013DTO> {
         	dto.setJokenSetCd("1");
         }
 
+        dto.setMsgStr(null);
         //エラーチェック フラグが立っていいる場合
         if (!Objects.equals(dto.getErrorCheckFlg(), "0")) {
         	// F層呼び出し
 
-        	dto.setMsgStr(null);
             BaseDTO outdto = nD013Service.errorCheck(dto);
 
             if (!dto.isErrorBool()) {
@@ -140,6 +140,7 @@ public class ND013Action extends BaseAction<ND013DTO> {
         			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I010);//
         			//ダイアログメッセージ定義
         			dto.setDialog(tmpMsgStr);
+        			dto.setTabFlg(dto.getErrorCheckFlg());
         		}
         		//「医師の廃業・死亡」のエラーの場合
         		if (Objects.equals(dto.getErrorCheckFlg(), "2")) {

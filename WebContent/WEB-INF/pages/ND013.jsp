@@ -41,11 +41,11 @@
 	<script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
-    	if(document.fm1.tabFlg != null){
+    	if(document.fm1.tabFlg.value != null && document.fm1.tabFlg.value != ""){
     	const tabFlg = document.fm1.tabFlg.value;
     	const docNo = document.fm1.paramDocNo.value;
     	const dialog = document.fm1.dialog.value;
-    	document.fm1.tabFlg.value = "X";
+    	document.fm1.tabFlg.value = "";
 	 		if(tabFlg == "1"){//エラーなしなので遷移
 	 			if(dialog != null && dialog != ""){
 					if(window.confirm(dialog)){
@@ -111,6 +111,8 @@
   		fm1.screenId.value=screenId;
 	  	fm1.functionId.value="Init";
 	  	comSubmitForAnyWarp(fm1);
+
+	  	document.fm1.target="";
 	  	comClickFlgInit();
 	}
     function backPage(){

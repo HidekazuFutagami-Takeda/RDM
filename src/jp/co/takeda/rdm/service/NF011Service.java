@@ -446,7 +446,10 @@ public class NF011Service extends BaseService {
 		LinkedHashMap<String, String> mapInsType = new LinkedHashMap<String, String>();
 		mapInsType.put("", "--選択してください--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapInsType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+			//"MR権限のときに施設種別の項目に「09:二次店・雑」の表示は不要
+			if(!"09".equals(outEntity.getValue()) || RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
+				mapInsType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+			}
 		}
 		indto.setInsTypeCombo(mapInsType);
 
@@ -766,6 +769,11 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "基準") + "\n";
 			errFlg = true;
 		}
+		if (StringUtils.checkMultiByte(indto.getBedCntBase())) {
+			// 半角で入力してください。（基準）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "基準") + "\n";
+			errFlg = true;
+		}
 		if (!chkNumRange(indto.getBedCntBase(), 0, 9999)) {
 			// 入力可能範囲外です。（基準）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "基準") + "\n";
@@ -779,6 +787,11 @@ public class NF011Service extends BaseService {
 		if (!isNumHyph(indto.getBedCnt04())) {
 			// 入力文字種が不正です。（結核）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "結核") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getBedCnt04())) {
+			// 半角で入力してください。（結核）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "結核") + "\n";
 			errFlg = true;
 		}
 		if (!chkNumRange(indto.getBedCnt04(), 0, 9999)) {
@@ -796,6 +809,11 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "一般") + "\n";
 			errFlg = true;
 		}
+		if (StringUtils.checkMultiByte(indto.getBedCnt01())) {
+			// 半角で入力してください。（一般）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "一般") + "\n";
+			errFlg = true;
+		}
 		if (!chkNumRange(indto.getBedCnt01(), 0, 9999)) {
 			// 入力可能範囲外です。（一般）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "一般") + "\n";
@@ -809,6 +827,11 @@ public class NF011Service extends BaseService {
 		if (!isNumHyph(indto.getBedCnt05())) {
 			// 入力文字種が不正です。（感染症）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "感染症") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getBedCnt05())) {
+			// 半角で入力してください。（感染症）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "感染症") + "\n";
 			errFlg = true;
 		}
 		if (!chkNumRange(indto.getBedCnt05(), 0, 9999)) {
@@ -826,6 +849,11 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "精神") + "\n";
 			errFlg = true;
 		}
+		if (StringUtils.checkMultiByte(indto.getBedCnt03())) {
+			// 半角で入力してください。（精神）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "精神") + "\n";
+			errFlg = true;
+		}
 		if (!chkNumRange(indto.getBedCnt03(), 0, 9999)) {
 			// 入力可能範囲外です。（精神）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "精神") + "\n";
@@ -839,6 +867,11 @@ public class NF011Service extends BaseService {
 		if (!isNumHyph(indto.getBedCnt07())) {
 			// 入力文字種が不正です。（療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "療養") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getBedCnt07())) {
+			// 半角で入力してください。（療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "療養") + "\n";
 			errFlg = true;
 		}
 		if (!chkNumRange(indto.getBedCnt07(), 0, 9999)) {
@@ -856,6 +889,11 @@ public class NF011Service extends BaseService {
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "医療療養") + "\n";
 			errFlg = true;
 		}
+		if (StringUtils.checkMultiByte(indto.getBedCnt02())) {
+			// 半角で入力してください。（医療療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "医療療養") + "\n";
+			errFlg = true;
+		}
 		if (!chkNumRange(indto.getBedCnt02(), 0, 9999)) {
 			// 入力可能範囲外です。（医療療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W018).replace("項目名", "医療療養") + "\n";
@@ -869,6 +907,11 @@ public class NF011Service extends BaseService {
 		if (!isNumHyph(indto.getBedCnt06())) {
 			// 入力文字種が不正です。（介護療養）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W013).replace("項目名", "介護療養") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getBedCnt06())) {
+			// 半角で入力してください。（介護療養）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "介護療養") + "\n";
 			errFlg = true;
 		}
 		if (!chkNumRange(indto.getBedCnt06(), 0, 9999)) {
@@ -889,6 +932,11 @@ public class NF011Service extends BaseService {
 		if (indto.getEntcapaNum() != null && indto.getEntcapaNum().length() > 4) {
 			// 最大文字数を超えています。（入所定員情報）
 			errMsg += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "入所定員情報") + "\n";
+			errFlg = true;
+		}
+		if (StringUtils.checkMultiByte(indto.getEntcapaNum())) {
+			// 半角で入力してください。（入所定員情報）
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W014).replace("項目名", "入所定員情報") + "\n";
 			errFlg = true;
 		}
 		if (!chkNumRange(indto.getEntcapaNum(), 0, 9999)) {

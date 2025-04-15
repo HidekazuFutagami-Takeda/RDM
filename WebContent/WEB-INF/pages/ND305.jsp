@@ -198,14 +198,14 @@
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>申請者所属部署</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者所属</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqShzNm"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqStsNm"/></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>申請者</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqJgiName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>申請日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqYmdhms"/></nobr></td>
@@ -215,7 +215,7 @@
 		<s:if test='%{loginJgiNo != reqJgiNo }'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-		      <td class="comFormTableItem"><nobr>審査者</nobr></td>
+		      <td class="comFormTableItem"><nobr>審査者氏名</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnShaName"/></nobr></td>
 		      <td class="comFormTableItem"><nobr>審査日時</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnYmdhms"/></nobr></td>
@@ -224,7 +224,7 @@
 	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示 -->
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>承認者</nobr></td>
+	      <td class="comFormTableItem"><nobr>承認者氏名</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprShaName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>承認日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprYmdhms"/></nobr></td>

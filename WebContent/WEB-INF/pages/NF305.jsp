@@ -234,6 +234,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	<s:hidden name="insFormalName"/>
 	<s:hidden name="dupInsAbbrName"/>
 	<s:hidden name="dupInsAddr"/>
+	<s:hidden name="preDelKbn"/>
 
     <%-- トップメニューからの共通パラメータ --%>
     <s:hidden name="trtGrpCd"/>

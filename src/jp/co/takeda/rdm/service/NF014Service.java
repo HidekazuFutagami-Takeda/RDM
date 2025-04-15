@@ -90,6 +90,7 @@ public class NF014Service extends BaseService {
 			indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 			indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
 			indto.setPreDelKbn(StringUtils.nvl(mainDataEntity.getPreDelKbn(), ""));
+			indto.setDelKbn("");
 			indto.setRstReason("");
 
 			indto.setReqShzNm(loginInfo.getBumonRyakuName());
@@ -180,13 +181,7 @@ public class NF014Service extends BaseService {
 			indto.setInsAddr(StringUtils.nvl(mainDataEntity.getInsAddr(), ""));
 			indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
 			indto.setPreDelKbn(StringUtils.nvl(mainDataEntity.getPreDelKbn(), ""));
-
-			if(mainDataEntity.getDelKbn() == null && !"01".equals(indto.getReqStsCd()) && !"11".equals(indto.getReqStsCd())
-			&& !"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())) {
-				indto.setDelKbn("0");
-			} else {
-				indto.setDelKbn(StringUtils.nvl(mainDataEntity.getDelKbn(), ""));
-			}
+			indto.setDelKbn(StringUtils.nvl(mainDataEntity.getDelKbn(), ""));
 			indto.setRstReason(StringUtils.nvl(mainDataEntity.getRstReason(), ""));
 
 			indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
@@ -230,9 +225,8 @@ public class NF014Service extends BaseService {
         List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
         LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
         mapDelKbn.put("", "--選択してください--");
-        mapDelKbn.put("0", "通常状態");
         for (SelectComboListEntity outEntity : outMainList) {
-        	if("1".equals(outEntity.getValue()) && "2".equals(indto.getPreDelKbn())) {
+        	if("0".equals(outEntity.getValue()) || "1".equals(outEntity.getValue())) {
         		mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
         	}
         }

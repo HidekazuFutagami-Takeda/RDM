@@ -213,6 +213,12 @@ public class SelectNF013MainDataEntity extends BaseEntity implements Serializabl
 	private String insAddr;
 
 	/**
+	 * 変更前削除区分
+	 * @generated
+	 */
+	private String preDelKbn;
+
+	/**
 	 * 削除区分
 	 * @generated
 	 */
@@ -738,6 +744,21 @@ public class SelectNF013MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setInsAddr(String insAddr) {
 		this.insAddr = insAddr;
+	}
+
+	/**
+	 * SelectNF013MainDataEntity.javapreDelKbnを設定
+	 * @return preDelKbn
+	 */
+	public String getPreDelKbn() {
+		return preDelKbn;
+	}
+
+	/**
+	 * @param preDelKbn セットする preDelKbn
+	 */
+	public void setPreDelKbn(String preDelKbn) {
+		this.preDelKbn = preDelKbn;
 	}
 
 	/**

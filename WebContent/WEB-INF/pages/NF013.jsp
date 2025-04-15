@@ -339,6 +339,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	<s:hidden name="delKbnNm" />
 	<s:hidden name="delReasonNm" />
+	<s:hidden name="preDelKbn"/>
 
 	<s:hidden name="addrCodePrefPop"/>
 	<s:hidden name="tkCityCdPop"/>

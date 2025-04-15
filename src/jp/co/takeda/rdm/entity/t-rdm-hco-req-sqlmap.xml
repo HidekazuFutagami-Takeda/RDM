@@ -859,6 +859,7 @@
         <result column="JSK_VALUE_ZK" property="jskValueZk"/>
         <result column="JSK_VALUE_ZZK" property="jskValueZzk"/>
         <result column="INS_ADDR" property="insAddr"/>
+        <result column="PRE_DEL_KBN" property="preDelKbn"/>
         <result column="DEL_KBN" property="delKbn"/>
         <result column="DEL_YMD" property="delYmd"/>
         <result column="DEL_REASON" property="delReason"/>
@@ -4938,6 +4939,7 @@
 		, SUP.JSK_VALUE_TK
 		, SUP.JSK_VALUE_ZK
 		, SUP.JSK_VALUE_ZZK
+		, MST.DEL_KBN AS PRE_DEL_KBN
 		FROM
 		M_RDM_HCO_MST MST -- 施設_基本情報
 		LEFT JOIN
@@ -5049,6 +5051,7 @@
 		, SUP.JSK_VALUE_TK
 		, SUP.JSK_VALUE_ZK
 		, SUP.JSK_VALUE_ZZK
+		, MST.DEL_KBN AS PRE_DEL_KBN
 		, HCO.DEL_KBN
 		, HCO.DEL_YMD
 		, HCO.DEL_REASON

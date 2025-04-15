@@ -256,6 +256,12 @@ public class NF305DTO extends BaseDTO implements Serializable {
 	private String insAddr;
 
 	/**
+	 * 変更前削除区分
+	 * @generated
+	 */
+	private String preDelKbn;
+
+	/**
 	 * 削除区分
 	 * @generated
 	 */
@@ -963,6 +969,21 @@ public class NF305DTO extends BaseDTO implements Serializable {
 	 */
 	public void setInsAddr(String insAddr) {
 		this.insAddr = insAddr;
+	}
+
+	/**
+	 * NF305DTO.javapreDelKbnを設定
+	 * @return preDelKbn
+	 */
+	public String getPreDelKbn() {
+		return preDelKbn;
+	}
+
+	/**
+	 * @param preDelKbn セットする preDelKbn
+	 */
+	public void setPreDelKbn(String preDelKbn) {
+		this.preDelKbn = preDelKbn;
 	}
 
 	/**

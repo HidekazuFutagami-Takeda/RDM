@@ -101,6 +101,13 @@ public class NF307Service extends BaseService {
 			errFlg = true;
         }
 
+        // 削除区分が変更前と同じ
+        if(!StringUtils.isEmpty(indto.getPreDelKbn()) && indto.getPreDelKbn().equals(indto.getDelKbn())) {
+        	// 変更前と同じ削除区分は指定出来ません
+        	errMsg += loginInfo.getMsgData(RdmConstantsData.W063) + "\n";
+			errFlg = true;
+        }
+
         // 復活理由にその他が選択されている状態で、申請コメントに値が入力されていない
         if("04".equals(indto.getRstReason()) && (indto.getReqComment() == null || indto.getReqComment().isEmpty())) {
         	// 申請理由がその他の場合、申請コメントを入力してください。
@@ -191,9 +198,8 @@ public class NF307Service extends BaseService {
         List<SelectComboListEntity> outMainList = dao.select(inEntityCmb);
         LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
         mapDelKbn.put("", "--選択してください--");
-        mapDelKbn.put("0", "通常状態");
         for (SelectComboListEntity outEntity : outMainList) {
-        	if("1".equals(outEntity.getValue()) && "2".equals(indto.getPreDelKbn())) {
+        	if("0".equals(outEntity.getValue()) || "1".equals(outEntity.getValue())) {
         		mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
         	}
         }
@@ -448,10 +454,7 @@ public class NF307Service extends BaseService {
 			tRdmHcoReqInsData.setInsFormalName(insFormalName);
 
  			tRdmHcoReqInsData.setRstReason(indto.getRstReason());
-
- 			if(!StringUtils.isEmpty(indto.getDelKbn())) {
-				tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
-			}
+			tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
 
  			tRdmHcoReqInsData.setInsShaYmd(sysDate);
  			tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
@@ -498,15 +501,7 @@ public class NF307Service extends BaseService {
 			tRdmHcoReqUpdData.setInsAbbrName(insAbbrName);
 			tRdmHcoReqUpdData.setInsFormalName(insFormalName);
 
-			if("2".equals(indto.getFuncId()) || "3".equals(indto.getFuncId())) {
-				if(!StringUtils.isEmpty(indto.getDelKbn()) && !"0".equals(indto.getDelKbn())) {
-					tRdmHcoReqUpdData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
-				}
-			} else {
-				if(!StringUtils.isEmpty(indto.getDelKbn())) {
-					tRdmHcoReqUpdData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
-				}
-			}
+			tRdmHcoReqUpdData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
 
  			tRdmHcoReqUpdData.setRstReason(indto.getRstReason());
  			tRdmHcoReqUpdData.setUpdShaYmd(sysDate);

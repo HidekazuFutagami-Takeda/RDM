@@ -93,6 +93,9 @@ public class NF013Service extends BaseService {
     		indto.setInsCount(StringUtils.nvl(mainDataEntity.getInsCount(), "0"));
     		indto.setNextInsCount(StringUtils.nvl(mainDataEntity.getNextInsCount(), "0"));
 
+    		indto.setPreDelKbn(StringUtils.nvl(mainDataEntity.getPreDelKbn(), ""));
+    		indto.setDelKbn("");
+
     		if((mainDataEntity.getJskValueTk() == null || mainDataEntity.getJskValueTk() == 0)
     			&& (mainDataEntity.getJskValueZk() == null || mainDataEntity.getJskValueZk() == 0)
     			&& (mainDataEntity.getJskValueZzk() == null || mainDataEntity.getJskValueZzk() == 0)) {
@@ -218,6 +221,7 @@ public class NF013Service extends BaseService {
     			indto.setJskValue("あり");
     		}
 
+    		indto.setPreDelKbn(StringUtils.nvl(mainDataEntity.getPreDelKbn(), ""));
     		indto.setDelKbn(StringUtils.nvl(mainDataEntity.getDelKbn(), ""));
     		indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
 
@@ -283,7 +287,9 @@ public class NF013Service extends BaseService {
         LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
         mapDelKbn.put("", "--選択してください--");
         for (SelectComboListEntity outEntity : outMainList) {
-        	mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        	if(!"0".equals(outEntity.getValue())) {
+        		mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        	}
         }
         indto.setDelKbnCombo(mapDelKbn);
 

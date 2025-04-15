@@ -115,6 +115,13 @@ public class NF305Service extends BaseService {
 			errFlg = true;
         }
 
+        // 削除区分が変更前と同じ
+        if(!StringUtils.isEmpty(indto.getPreDelKbn()) && indto.getPreDelKbn().equals(indto.getDelKbn())) {
+        	// 変更前と同じ削除区分は指定出来ません
+        	errMsg += loginInfo.getMsgData(RdmConstantsData.W063) + "\n";
+			errFlg = true;
+        }
+
         // 削除理由にその他が選択されている状態で、申請コメントに値が入力されていない
         if("05".equals(indto.getDelReason()) && (indto.getReqComment() == null || indto.getReqComment().isEmpty())) {
         	// 申請理由がその他の場合、申請コメントを入力してください。
@@ -217,7 +224,9 @@ public class NF305Service extends BaseService {
         LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
         mapDelKbn.put("", "--選択してください--");
         for (SelectComboListEntity outEntity : outMainList) {
-        	mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        	if(!"0".equals(outEntity.getValue())) {
+        		mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+        	}
         }
         indto.setDelKbnCombo(mapDelKbn);
 

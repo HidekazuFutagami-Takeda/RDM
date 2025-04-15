@@ -502,7 +502,7 @@ public class ND307Service extends BaseService {
 		SelectNd307ParamSwitchEntity paramSwitch = selectParamSwitchIshiList3.get(0);
 		//承認ボタン
 		if (indto.getMrAdminFlg().equals("0")) {
-			if (indto.getReqSts().equals("01")) {
+			if (StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01")) {
 				indto.setNd307AppdFlg("1");
 				if (paramSwitch.getKmuFlg().equals("1") && paramSwitch.getDocFlg().equals("1")) {
 					indto.setNd307AppdActiveFlg("1");
@@ -514,7 +514,7 @@ public class ND307Service extends BaseService {
 				indto.setNd307AppdActiveFlg("0");
 			}
 		} else {
-			if (indto.getReqSts().equals("01") || indto.getReqSts().equals("11") ) {
+			if (StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01") || indto.getReqSts().equals("11") ) {
 				indto.setNd307AppdFlg("1");
 				if (paramSwitch.getKmuFlg().equals("1") && paramSwitch.getDocFlg().equals("1")) {
 					indto.setNd307AppdActiveFlg("1");
@@ -661,12 +661,12 @@ public class ND307Service extends BaseService {
         // 更新処理
         if("0".equals(indto.getFuncId())) {//
 			// 登録か更新か申請IDで判定
-			if(indto.getReqId() == null || StringUtils.isEmpty(indto.getReqId())) {
+			if(indto.getReqId() == null || StringUtils.isEmpty(indto.getReqId()) || "-".equals(indto.getReqId())) {
 	        	// 新規登録
 	        	SeqRdmReqIdEntity seqRdmReqIdEntity = new SeqRdmReqIdEntity();
 	        	List<SeqRdmReqIdEntity> seqRdmReqIdDate = dao.select(seqRdmReqIdEntity);
 	        	reqId = seqRdmReqIdDate.get(0).getReqId();
-
+	        	indto.setReqId(reqId);
 	        	// レコードを登録
 	        	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
 	        	tRdmReqKnrInsData.setReqId(reqId);
@@ -706,7 +706,7 @@ public class ND307Service extends BaseService {
 	        	tRdmReqKnrInsData.setReqBrCd(loginInfo.getBrCode());
 	        	tRdmReqKnrInsData.setReqDistCd(loginInfo.getDistCode());
 	        	tRdmReqKnrInsData.setReqShzNm(loginInfo.getBumonRyakuName());
-
+	        	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
 	        	tRdmReqKnrInsData.setReqJgiNo(loginInfo.getJgiNo());
 	        	tRdmReqKnrInsData.setReqJgiName(loginInfo.getJgiName());
 	        	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
@@ -780,7 +780,7 @@ public class ND307Service extends BaseService {
 	        	tRdmHcpKmuReqInsData.setDccTypeAf(indto.getPostDcc());
 	        	tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
 	            //異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
-	        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || indto.getPostUltInsNo() == null) {
+	        	if(!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || StringUtils.isEmpty(indto.getPostUltInsNo()))) {
 	        		tRdmHcpKmuReqInsData.setUltInsNo(indto.getPostUltInsNo());
 	        	}
 	        	tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);

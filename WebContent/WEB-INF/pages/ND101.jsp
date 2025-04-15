@@ -312,23 +312,23 @@ table {
 
 		<table class="comPortalTable" align="center">
               <tr>
-                  <td>申請情報</td>
-                  <td>申請ID</td>
-                  <td><s:label key="reqId"/></td>
+                  <td class="comFormTableItem"><nobr>申請情報</nobr></td>
+                  <td class="comFormTableItem"><nobr>申請ID</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="reqId"/></nobr></td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>申請者所属</td>
-                  <td><s:label key="reqShz"/></td>
-                  <td>申請ステータス</td>
-                  <td><s:label key="reqStsNm"/></td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>申請者所属</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="reqShz"/></nobr></td>
+                  <td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="reqStsNm"/></nobr></td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>申請者氏名</td>
-                  <td><s:label key="reqJgiName"/></td>
-                  <td>申請日時</td>
-                  <td><s:label key="reqYmdhms"/></td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="reqJgiName"/></nobr></td>
+                  <td class="comFormTableItem"><nobr>申請日時</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="reqYmdhms"/></nobr></td>
               </tr>
 	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示　申請者には非表示 -->
 	  <s:if test='%{reqStsCd != null && reqStsCd != "" && !(reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13") }'>
@@ -365,39 +365,39 @@ table {
                   <td class="keisen"></td>
               </tr>
               <tr>
-                  <td>変更前</td>
+                  <td class="comFormTableItem"><nobr>変更前</nobr></td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>医師・コメディカル名</td>
-                  <td><s:label key="docKanj"/></td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>医師・コメディカル名</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="docKanj"/></nobr></td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>所属施設</td>
-                  <td><s:label key="preInsAbbrName"/></td>
-                  <td>所属部科</td>
-                  <td><s:label key="preDeptKj"/></td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>所属施設</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="preInsAbbrName"/></nobr></td>
+                  <td class="comFormTableItem"><nobr>所属部科</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="preDeptKj"/></nobr></td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>役職</td>
-                  <td><s:label key="titlePreTitleKj"/></td>
-                  <td>勤務形態</td>
-                  <td><s:label key="kmuPreCodeKanj"/></td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>役職</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="titlePreTitleKj"/></nobr></td>
+                  <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="kmuPreCodeKanj"/></nobr></td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>薬審メンバー区分</td>
-                  <td><s:label key="yakushinPreCodeKanj"/></td>
-                  <td>大学職位</td>
-                  <td><s:label key="univPreTitleKj"/></td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="yakushinPreCodeKanj"/></nobr></td>
+                  <td class="comFormTableItem"><nobr>大学職位</nobr></td>
+                  <td class="comFormTableItem"><nobr><s:label key="univPreTitleKj"/></nobr></td>
               </tr>
           <s:if test='(reqType == "42" || movemedEditFlg == "0")'>
               <tr>
-                  <td></td>
-                  <td>異動区分</td>
-                  <td>医療機関</td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>異動区分</nobr></td>
+                  <td class="comFormTableItem"><nobr>医療機関</nobr></td>
               </tr>
           </s:if>
               <tr>
@@ -416,49 +416,47 @@ table {
               </tr>
               <tr>
               <tr>
-                  <td>変更後</td>
+                  <td class="comFormTableItem"><nobr>変更後</nobr></td>
               </tr>
               <s:if test='(reqType == "42" || movemedEditFlg == "0")'>
                   <s:if test='inputFlg == 1'>
 	              <tr>
-	                  <td>
-	                  </td>
-	                  <td>異動先施設<span style="color: red;">*</span></td>
-	                  <td>
+	                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	                  <td class="comFormTableItem"><nobr>異動先施設<span style="color: red;">*</span></nobr></td>
+	                  <td class="comFormTableItem">
 	                      <nobr>
 							<input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCseView();return false;" /><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('abbrName')">clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
 	              <tr>
-	                  <td></td>
-	                  <td>異動先所属部科<span style="color: red;">*</span></td>
-	                  <td>
+	                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	                  <td class="comFormTableItem"><nobr>異動先所属部科<span style="color: red;">*</span></nobr></td>
+	                  <td class="comFormTableItem">
 	                      <nobr>
 	                           <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;"/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')" >clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
 	              <tr>
-	                  <td></td>
-	                  <td>※施設を先に選択してください</td>
+	                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	                  <td class="comFormTableItem"><nobr>※施設を先に選択してください</nobr></td>
 	              </tr>
 	              </s:if>
                   <s:else>
 	              <tr>
-	                  <td>
-	                  </td>
-	                  <td>異動先施設<span style="color: red;">*</span></td>
-	                  <td>
+	                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	                  <td class="comFormTableItem"><nobr>異動先施設<span style="color: red;">*</span></nobr></td>
+	                  <td class="comFormTableItem">
 	                      <nobr>
 	                          <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
 	              <tr>
-	                  <td></td>
-	                  <td>異動先所属部科<span style="color: red;">*</span></td>
-	                  <td>
+	                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	                  <td class="comFormTableItem"><nobr>異動先所属部科<span style="color: red;">*</span></nobr></td>
+	                  <td class="comFormTableItem">
 	                      <nobr>
 	                           <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray">clear</a>&nbsp;
 	                      </nobr>
@@ -469,26 +467,26 @@ table {
               <s:else>
 	              <tr>
 	                  <s:if test='inputFlg == 1'>
-	                  <td></td>
-	                  <td>所属部科<span style="color: red;">*</span></td>
-	                  <td>
+	                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	                  <td class="comFormTableItem"><nobr>所属部科<span style="color: red;">*</span></nobr></td>
+	                  <td class="comFormTableItem"><nobr>
 	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
 	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')">clear</a>&nbsp;
-	                  </td>
+	                  </nobr></td>
 	                  </s:if>
 	                  <s:else>
-	                  <td></td>
-	                  <td>所属部科<span style="color: red;">*</span></td>
-	                  <td>
+	                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	                  <td class="comFormTableItem"><nobr>所属部科<span style="color: red;">*</span></nobr></td>
+	                  <td class="comFormTableItem"><nobr>
 	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" disabled/>
 	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
-	                  </td>
+	                  </nobr></td>
 	                  </s:else>
 	              </tr>
               </s:else>
               <tr>
-                  <td></td>
-                  <td>役職<span style="color: red;">*</span></td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>役職<span style="color: red;">*</span></nobr></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                   <s:if test='inputFlg == 1'>
                       <s:select id="postTitleCode" name="postTitleCode" cssStyle="width:100pt" list ="yakushokuCombo"/>
@@ -499,7 +497,7 @@ table {
                       </select>
                   </s:elseif>
                   </td>
-                  <td>勤務形態</td>
+                  <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
                   <td class="comPortalControlItem" style="text-align:left;">
 					<s:if test='inputFlg == 1'>
 						<s:select id="postJobForm" name="postJobForm" cssStyle="width:100pt" list="jobFormCombo" />
@@ -512,8 +510,8 @@ table {
 				</td>
               </tr>
               <tr>
-                  <td></td>
-                  <td>薬審メンバー区分</td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                   <s:if test='inputFlg == 1'>
                       <s:select id="postDcc" name="postDcc" cssStyle="width:100pt" list ="dccCombo"/>
@@ -524,7 +522,7 @@ table {
                       </select>
                   </s:elseif>
                   </td>
-			      <td>大学職位</td>
+			      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
 			      <td class="comPortalControlItem" style="text-align: left;">
 			      <s:if test='inputFlg == 1'>
 					  <s:select id="postUnivPosCode" name="postUnivPosCode"
@@ -538,33 +536,33 @@ table {
 				  </td>
 		    </tr>
             <tr>
-                  <td></td>
-                  <td>適用日</td>
-                  <td>
+                  <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+                  <td class="comFormTableItem"><nobr>適用日</nobr></td>
+                  <td class="comFormTableItem"><nobr>
                       <s:if test='inputFlg == 1'>
                           <input id="tekiyoYmd" type="date" name="selectDay" value="${dispTekiyoYmd}" pattern="yyyy-MM-dd" style="width:100pt"/>
                       </s:if>
                       <s:if test='inputFlg == 0'>
                           <input type="date" name="selectDay" value="${dispTekiyoYmd}" pattern="yyyy-MM-dd" style="width:100pt" tabindex="-1" disabled />
                       </s:if>
-                  </td>
+                  </nobr></td>
               </tr>
           </table>
           <table class="comPortalTable" align="center">
               <tr>
-                  <td>申請コメント</td>
+                  <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
               </tr>
           </table>
           <table class="comPortalTable" align="center">
               <tr>
-                  <td>
+                  <td class="comFormTableItem"><nobr>
                       <s:if test='reqCommentFlg == 1'>
                           <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" rows="3"/>
                       </s:if>
                       <s:elseif test='reqCommentFlg == 0'>
                           <s:textarea label="ReqComment" name="reqComment" style="width: 60vw; resize: none;" cssClass="mediumGray" rows="3" readonly="true"/>
                       </s:elseif>
-                  </td>
+                 </nobr></td>
               </tr>
           </table>
 
@@ -582,20 +580,20 @@ table {
           <s:if test='reqSts == "02" || reqSts == "04" || reqSts == "12" || reqSts == "14" ||'>
 	          <table class="comPortalTable" align="center">
 	              <tr>
-	                  <td>承認・却下コメント</td>
+	                  <td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
 	              </tr>
 	          </table>
 	          <table class="comPortalTable" align="center">
 	              <tr>
-	                  <td>
+	                  <td class="comFormTableItem"><nobr>
 	                          <s:textarea label="aprComment" name="aprComment" style="width: 60vw; resize: none;" cssClass="mediumGray" rows="3" readonly="true"/>
-	                  </td>
+	                  </nobr></td>
 	              </tr>
 	          </table>
            </s:if>
           <table class="comPortalTable" style="margin-top:3pt;margin-bottom:1pt; "align="center">
               <tr>
-                  <td><input class="comButton" type="button" name="button1" id="button1" value="戻る" onClick="JavaScript:backBtn();return false;"/></td>
+                  <td class="comFormTableItem"><nobr><input class="comButton" type="button" name="button1" id="button1" value="戻る" onClick="JavaScript:backBtn();return false;"/></nobr></td>
               <s:if test='reqDestBtnFlg == 1'>
                   <td align="right"><input class="comButton" type="button" name="button2" id="button2" value="申請破棄" onClick="JavaScript:reqCancelBtn();return false;"/></td>
               </s:if>
@@ -618,10 +616,10 @@ table {
                 </nobr>
 	      </td>
               <s:if test='tempReqBtnFlg == 1'>
-                  <td><input class="comButton" type="button" name="button4" id="button4" value="一時保存" onClick="JavaScript:submitBtn('0');return false;"/></td>
+                  <td class="comFormTableItem"><nobr><input class="comButton" type="button" name="button4" id="button4" value="一時保存" onClick="JavaScript:submitBtn('0');return false;"/></nobr></td>
               </s:if>
               <s:elseif test='tempReqBtnFlg == 0'>
-                  <td><input class="comButton" type="button" name="button5" id="button5" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/></td>
+                  <td class="comFormTableItem"><nobr><input class="comButton" type="button" name="button5" id="button5" value="一時保存" onClick="JavaScript:submitBtn('0');return false;" disabled/></nobr></td>
               </s:elseif>
 <%--               <s:if test='reqBtnFlg == 1&& reqBtnActiveFlg == 1' > --%>
 <!--                   <td align="right"><input class="comButton" type="button" name="button6" id="button6" value="申請画面へ" onClick="JavaScript:submitBtn('1');return false;"/></td> -->

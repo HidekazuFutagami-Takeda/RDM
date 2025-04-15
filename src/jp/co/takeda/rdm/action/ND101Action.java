@@ -102,7 +102,7 @@ public class ND101Action extends BaseAction<ND101DTO> {
         // START UOC
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
     	String preScreenId = loginInfo.getPreScreenId();
-
+    	String reqId = dto.getReqId();
     	//モック
 //    	loginInfo.setJokenFlg("1");
 //    	loginInfo.setJgiNo(8830034);
@@ -126,7 +126,16 @@ public class ND101Action extends BaseAction<ND101DTO> {
 			dto.setDisplayKbn("0");
 			// 申請一覧
 		} else if ("NC011".equals(preScreenId) || "ND307".equals(preScreenId)) {
-			dto.setDisplayKbn("1");
+			if (StringUtils.isEmpty(reqId) || reqId.equals("-")) {
+    			if("ND307".equals(preScreenId)) {
+    				//一時保存なし申請後に確認画面から遷移
+    				dto.setDisplayKbn("9");
+    			}else {
+    			 	dto.setDisplayKbn("0");
+    			}
+			} else {
+				dto.setDisplayKbn("1");
+			}
 		} else {
 			throw new InvalidRequestException();
 		}

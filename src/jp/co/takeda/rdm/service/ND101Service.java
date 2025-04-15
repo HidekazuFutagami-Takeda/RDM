@@ -28,6 +28,7 @@ import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd101ComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectNd101YakushokuComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectTmrEntity;
+import jp.co.takeda.rdm.dto.CatSnseiComboDataList;
 import jp.co.takeda.rdm.dto.ND101DTO;
 import jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity;
 import jp.co.takeda.rdm.util.RdmConstantsData;
@@ -79,9 +80,9 @@ public class ND101Service extends BaseService {
 
         SelectDocReqKnrInsChangeEntity selectDocReqKnrInsChangeEntity = new SelectDocReqKnrInsChangeEntity();
 
-        List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList;
+        List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList = new ArrayList<SelectDocReqKnrInsChangeEntity>();
         //遷移元画面フラグ 申請済み、一時保存ボタン押下時:1 申請なしの場合:0
-
+if(!"9".equals(indto.getDisplayKbn())) {
         if("0".equals(indto.getDisplayKbn())) {
 			if (!(indto.getPreScreenId().equals("ND307") || indto.getPreScreenId().equals("ND101"))) {
 				indto.setNd101PreScreenId(indto.getPreScreenId());
@@ -197,7 +198,7 @@ public class ND101Service extends BaseService {
 		//コメント
 		indto.setReqComment(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqComment(), ""));
 		indto.setAprComment(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getAprComment(), ""));
-
+}
 		//1-3-1　入力項目
 		//MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
       //管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
@@ -218,28 +219,52 @@ public class ND101Service extends BaseService {
         	}
         }
 
-		// 取得した申請管理．申請者従業員番号とログインユーザ情報．従業員番号が異なる場合、申請コメント欄は変更不可（非活性）とする
-		if (StringUtils.isEmpty(indto.getReqSts()) || StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(), "")
-				.equals(Integer.toString(loginInfo.getJgiNo()))) {
-			if(indto.getMrAdminFlg().equals("1")) {
-				//申請者であり管理者の場合、申請前、保存済みの状態の場合のみ申請コメントを活性
-				if(StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01") || indto.getReqSts().equals("11")) {
-					indto.setReqCommentFlg("1");
-				}else {
-					indto.setReqCommentFlg("0");
-				}
-			}else {
-				if(StringUtils.isEmpty(indto.getReqSts())) {
-					indto.setReqCommentFlg("1");
-				}else {
-					indto.setReqCommentFlg("0");
-				}
+        if(!"9".equals(indto.getDisplayKbn())) {
+        	// 取得した申請管理．申請者従業員番号とログインユーザ情報．従業員番号が異なる場合、申請コメント欄は変更不可（非活性）とする
+        	if (StringUtils.isEmpty(indto.getReqSts()) || StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(), "")
+        			.equals(Integer.toString(loginInfo.getJgiNo()))) {
+        		if(indto.getMrAdminFlg().equals("1")) {
+        			//申請者であり管理者の場合、申請前、保存済みの状態の場合のみ申請コメントを活性
+        			if(StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01") || indto.getReqSts().equals("11")) {
+        				indto.setReqCommentFlg("1");
+        			}else {
+        				indto.setReqCommentFlg("0");
+        			}
+        		}else {
+        			if(StringUtils.isEmpty(indto.getReqSts())) {
+        				indto.setReqCommentFlg("1");
+        			}else {
+        				indto.setReqCommentFlg("0");
+        			}
 
-			}
+        		}
 
-		} else {
-			indto.setReqCommentFlg("0");
-		}
+        	} else {
+        		indto.setReqCommentFlg("0");
+        	}
+        } else {
+        	// 取得した申請管理．申請者従業員番号とログインユーザ情報．従業員番号が異なる場合、申請コメント欄は変更不可（非活性）とする
+        	if (StringUtils.isEmpty(indto.getReqSts())) {
+        		if(indto.getMrAdminFlg().equals("1")) {
+        			//申請者であり管理者の場合、申請前、保存済みの状態の場合のみ申請コメントを活性
+        			if(StringUtils.isEmpty(indto.getReqSts()) || indto.getReqSts().equals("01") || indto.getReqSts().equals("11")) {
+        				indto.setReqCommentFlg("1");
+        			}else {
+        				indto.setReqCommentFlg("0");
+        			}
+        		}else {
+        			if(StringUtils.isEmpty(indto.getReqSts())) {
+        				indto.setReqCommentFlg("1");
+        			}else {
+        				indto.setReqCommentFlg("0");
+        			}
+
+        		}
+
+        	} else {
+        		indto.setReqCommentFlg("1");
+        	}
+        }
 
         //申請前は「申請破棄」ボタンを非活性にする 非活性:0
         if (StringUtils.isEmpty(indto.getReqSts())|| !((indto.getReqSts().equals("01")) || indto.getReqSts().equals("11"))) {
@@ -268,7 +293,10 @@ public class ND101Service extends BaseService {
         	indto.setReqBtnFlg("1");
         }
         //申請画面へボタン　活性非活性処理
-        String tempJgiNo = StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(), "");
+        String tempJgiNo = Integer.toString(loginInfo.getJgiNo());
+        if(!"9".equals(indto.getDisplayKbn())) {
+        	tempJgiNo = StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqJgiNo(), "");
+        }
         //MR権限の場合
 		if (indto.getMrAdminFlg().equals("0") && ((StringUtils.isEmpty(tempJgiNo) || tempJgiNo.equals(Integer.toString(loginInfo.getJgiNo()))))) {
 			if ( StringUtils.isEmpty(indto.getReqSts())|| indto.getReqSts().equals("01")) {
@@ -503,7 +531,7 @@ public class ND101Service extends BaseService {
         	tRdmHcpKmuReqInsData.setDccTypeAf(indto.getPostDcc());
         	tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
             //異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
-        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || indto.getPostUltInsNo() == null) {
+        	if(!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || StringUtils.isEmpty(indto.getPostUltInsNo()))) {
         		tRdmHcpKmuReqInsData.setUltInsNo(indto.getPostUltInsNo());
         	}
         	tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);

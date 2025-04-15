@@ -119,7 +119,7 @@
 		LEFT JOIN
 			M_RDM_HCO_MST HCO_MST --施設_基本情報
 		ON
-			HCO_MST.INS_NO = KMU_REQ.INS_NO_SK --施設固定コード,施設固定コード(異動先)
+			HCO_MST.ULT_INS_NO = KMU_REQ.ULT_INS_NO --施設固定コード,施設固定コード(異動先)
 
 		LEFT JOIN
 			M_RDM_HCP_SHOZOKU_BUKA SHOZOKU_BUKA --医師_所属部科マスタ

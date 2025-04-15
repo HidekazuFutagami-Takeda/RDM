@@ -33,6 +33,7 @@
         <result column="REQ_SHZ" property="reqShz"/>
         <result column="REQ_STS_NM" property="reqStsNm"/>
         <result column="REQ_STS" property="reqSts"/>
+        <result column="REQ_CHL" property="reqChl"/>
         <result column="REQ_JGI_NAME" property="reqJgiName"/>
         <result column="REQ_JGI_NO" property="reqJgiNo"/>
         <result column="REQ_YMDHMS" property="reqYmdhms"/>
@@ -80,6 +81,14 @@
         <result column="PRE_INS_CLASS" property="preInsClass"/>
         <result column="POST_INS_CLASS" property="postInsClass"/>
         <result column="REQ_TYPE" property="reqType"/>
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="SHN_FLG" property="shnFlg"/>
     </resultMap>
     <resultMap id="selectDocReqKnrInsChangeCheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity">
         <result column="REQ_ID" property="reqId"/>
@@ -175,12 +184,22 @@
           ,REQ_KNR.REQ_SHZ
           ,REQ_STS_CODE_MST.VALUE1_KANJ REQ_STS_NM
           ,REQ_KNR.REQ_STS
+          ,REQ_KNR.REQ_CHL
           ,REQ_KNR.REQ_JGI_NAME
           ,REQ_KNR.REQ_JGI_NO
           ,NVL2(REQ_KNR.REQ_YMDHMS,SUBSTR(REQ_KNR.REQ_YMDHMS,1,4) || '/'|| SUBSTR(REQ_KNR.REQ_YMDHMS,5,2) || '/'|| SUBSTR(REQ_KNR.REQ_YMDHMS,7,2) || ' '|| SUBSTR(REQ_KNR.REQ_YMDHMS,9,2) || ':'|| SUBSTR(REQ_KNR.REQ_YMDHMS,11,2),'-') REQ_YMDHMS
           ,REQ_KNR.REQ_BR_CODE
           ,REQ_KNR.REQ_DIST_CODE
           ,REQ_KNR.UPD_SHA_YMD
+
+          ,REQ_KNR.SHN_SHA_ID
+          ,REQ_KNR.SHN_YMDHMS
+          ,REQ_KNR.APR_SHA_ID
+          ,REQ_KNR.APR_YMDHMS
+          ,REQ_KNR.SHN_JGI_NO
+          ,REQ_KNR.APR_JGI_NO
+          ,REQ_KNR.APR_MEMO
+          ,REQ_KNR.SHN_FLG
 
           ,KMU_REQ.INS_NO_MT PRE_INS_NO
           ,PRE_HCO_MST.ULT_INS_NO PRE_ULT_INS_NO
@@ -391,7 +410,8 @@
 		UNIV_POS_CODE_AF = #{univPosCodeAf},
 		TITLE_CODE_AF = #{titleCodeAf},
 		DCC_TYPE_AF = #{dccTypeAf},
-		ULT_INS_NO = #{ultInsNo},
+		<if test="ultInsNo != null">ULT_INS_NO = #{ultInsNo},</if>
+		<if test="ultInsNo == null">ULT_INS_NO = NULL,</if>
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 
@@ -411,6 +431,7 @@
 			WHERE 1 = 1
 			and KMU_REQ.DOC_NO = #{inDocNo}
 			and KMU_REQ.INS_NO_MT = #{inInsNo}
+			<if test="inReqId != null">AND REQ_KNR.REQ_ID != #{inReqId}</if>
     </select>
     <select id="selectNd101DelData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
 			SELECT REQ_KNR.REQ_ID

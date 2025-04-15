@@ -107,13 +107,18 @@ public class ND101Action extends BaseAction<ND101DTO> {
 //    	loginInfo.setJokenFlg("1");
 //    	loginInfo.setJgiNo(8830034);
 //    	loginInfo.setJgiName("テスト");
-
+    	preScreenId = dto.getBackScreenId();
+    	if(preScreenId == null) {
+    		preScreenId = dto.getPreScreenId();
+    	}
     	//検証用 TODO
     	if(preScreenId.equals("NC001")) {
     		preScreenId = dto.getPreScreenId();
     	}
 
     	dto.setPreScreenId(preScreenId);
+        dto.setLoginJgiNo(loginInfo.getJgiNo());
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
 
 		// 遷移パターン 0:施設-医師コードから作成、1:申請データあり
 		// 医師勤務先情報更新
@@ -175,7 +180,12 @@ public class ND101Action extends BaseAction<ND101DTO> {
         // START UOC
         // END UOC
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
+        if ("9".equals(dto.getButtonFlg())) {
+            // 確認画面へ遷移
+            outdto.setForward("ND307Init");
+            //画面状況フラグを初期化
+            dto.setButtonFlg("");
+        }
         setNextDTO(outdto);
         return outdto.getForward();
     }
@@ -210,6 +220,42 @@ public class ND101Action extends BaseAction<ND101DTO> {
         // START UOC
 
         // END UOC
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String shnComp() throws Exception {
+        registerSetup();
+        // F層呼び出し
+        BaseDTO outdto = nD101Service.shnComp(dto);
+        outdto = nD101Service.init(dto);
+        return shnCompNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void shnCompSetup() throws Exception {
+        // START UOC
+//        dto.setMsgId(null);
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String shnCompNext(BaseDTO outdto) throws Exception {
+    	// START UOC
+
+    	// END UOC
+    	outdto.setForward("ND101");
         setNextDTO(outdto);
         return outdto.getForward();
     }

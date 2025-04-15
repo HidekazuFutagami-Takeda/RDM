@@ -39,6 +39,12 @@ public class SelectNd101MainDataEntity extends BaseEntity implements Serializabl
     private String inInsNo;
 
     /**
+     * 入力_申請ID(パラメータ1)
+     * @generated
+     */
+    private String inReqId;
+
+    /**
      * 申請ID
      * @generated
      */
@@ -95,6 +101,21 @@ public class SelectNd101MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setInInsNo(String inInsNo) {
 		this.inInsNo = inInsNo;
+	}
+
+	/**
+	 * SelectNd101MainDataEntity.javainReqIdを設定
+	 * @return inReqId
+	 */
+	public String getInReqId() {
+		return inReqId;
+	}
+
+	/**
+	 * @param inReqId セットする inReqId
+	 */
+	public void setInReqId(String inReqId) {
+		this.inReqId = inReqId;
 	}
 
 	/**

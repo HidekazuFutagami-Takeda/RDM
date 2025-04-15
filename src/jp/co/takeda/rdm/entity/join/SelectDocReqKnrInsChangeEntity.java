@@ -81,6 +81,55 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
      */
     private String reqYmdhms;
 
+	/**
+	 * 審査済みフラグ
+	 * 0:未審査、1:審査済
+	 * @generated
+	 */
+	private String shnFlg;
+
+	/**
+	 * 審査者氏名
+	 * @generated
+	 */
+	private String shnShaName;
+
+	/**
+	 * 審査日時
+	 * @generated
+	 */
+	private String shnYmdhms;
+
+	/**
+	 * 承認者氏名
+	 * @generated
+	 */
+	private String aprShaName;
+
+	/**
+	 * 承認日時
+	 * @generated
+	 */
+	private String aprYmdhms;
+
+		/**
+	 * 審査者従業員番号
+	 * @generated
+	 */
+	private Integer shnJgiNo;
+
+	/**
+	 * 承認者従業員番号
+	 * @generated
+	 */
+	private Integer aprJgiNo;
+
+    /**
+     * 審査・承認メモ
+     * @generated
+     */
+    private String aprMemo;
+
     /**
      * 変更前-医師・コメディカル名
      */
@@ -152,10 +201,10 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
     private String univPostTitleKj;
 
 
-    /**
-     * 変更後-大学職位
-     */
-    private String aprYmdhms;
+//    /**
+//     * 変更後-大学職位
+//     */
+//    private String aprYmdhms;
 
     /**
      * 申請コメント
@@ -301,6 +350,12 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
      * 施設分類(先)
      */
     private String postInsClass;
+
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
 
     /**
      * コンストラクタ
@@ -473,6 +528,96 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
 	 */
 	public void setReqYmdhms(String reqYmdhms) {
 		this.reqYmdhms = reqYmdhms;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javashnFlgを設定
+	 * @return shnFlg
+	 */
+	public String getShnFlg() {
+		return shnFlg;
+	}
+
+	/**
+	 * @param shnFlg セットする shnFlg
+	 */
+	public void setShnFlg(String shnFlg) {
+		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javashnShaNameを設定
+	 * @return shnShaName
+	 */
+	public String getShnShaName() {
+		return shnShaName;
+	}
+
+	/**
+	 * @param shnShaName セットする shnShaName
+	 */
+	public void setShnShaName(String shnShaName) {
+		this.shnShaName = shnShaName;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javashnYmdhmsを設定
+	 * @return shnYmdhms
+	 */
+	public String getShnYmdhms() {
+		return shnYmdhms;
+	}
+
+	/**
+	 * @param shnYmdhms セットする shnYmdhms
+	 */
+	public void setShnYmdhms(String shnYmdhms) {
+		this.shnYmdhms = shnYmdhms;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javaaprShaNameを設定
+	 * @return aprShaName
+	 */
+	public String getAprShaName() {
+		return aprShaName;
+	}
+
+	/**
+	 * @param aprShaName セットする aprShaName
+	 */
+	public void setAprShaName(String aprShaName) {
+		this.aprShaName = aprShaName;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javashnJgiNoを設定
+	 * @return shnJgiNo
+	 */
+	public Integer getShnJgiNo() {
+		return shnJgiNo;
+	}
+
+	/**
+	 * @param shnJgiNo セットする shnJgiNo
+	 */
+	public void setShnJgiNo(Integer shnJgiNo) {
+		this.shnJgiNo = shnJgiNo;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javaaprJgiNoを設定
+	 * @return aprJgiNo
+	 */
+	public Integer getAprJgiNo() {
+		return aprJgiNo;
+	}
+
+	/**
+	 * @param aprJgiNo セットする aprJgiNo
+	 */
+	public void setAprJgiNo(Integer aprJgiNo) {
+		this.aprJgiNo = aprJgiNo;
 	}
 
 	/**
@@ -1133,6 +1278,36 @@ public class SelectDocReqKnrInsChangeEntity extends BaseEntity implements Serial
 	 */
 	public void setPostInsClass(String postInsClass) {
 		this.postInsClass = postInsClass;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javaaprMemoを設定
+	 * @return aprMemo
+	 */
+	public String getAprMemo() {
+		return aprMemo;
+	}
+
+	/**
+	 * @param aprMemo セットする aprMemo
+	 */
+	public void setAprMemo(String aprMemo) {
+		this.aprMemo = aprMemo;
+	}
+
+	/**
+	 * SelectDocReqKnrInsChangeEntity.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

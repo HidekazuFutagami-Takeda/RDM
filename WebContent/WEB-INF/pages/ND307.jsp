@@ -58,7 +58,7 @@
 		/** 申請ボタンが押された場合 */
 		if(button == 0) {
 			/** 申請ステータスが保存済み,承認待ち、ULT承認待ちの場合の場合、申請出来る */
-			if(reqSts.value == 01 || reqSts.value == 03 || reqSts.value == 13) {
+			if(reqSts.value == 01 || reqSts.value == 03 || reqSts.value == 13 || (mrAdminFlg.value == 1 && reqSts.value == 11) ) {
 
 
 				document.fm1.funcId.value = req0;
@@ -79,6 +79,17 @@
 				document.fm1.functionId.value = "Register";
 				comSubmitForAnyWarp(fm1);
 	    	}
+	        /** 承認ボタンが押された場合 */
+		}else if(button == 2) {
+			/** 申請ステータスが承認待ち、ULT承認待ちの場合、承認出来る */
+	        if((reqSts.value == 03 || reqSts.value == 13) && (mrAdminFlg.value == 1)) {
+	        	msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
+	        	window.confirm(msgContent)
+				document.fm1.funcId.value = "2";
+				document.fm1.screenId.value = "ND307";
+				document.fm1.functionId.value = "Register";
+				comSubmitForAnyWarp(fm1);
+	    	}
 		}
 	}
 
@@ -91,7 +102,7 @@
 				// NF211_施設紐付け新規に遷移
 				document.fm1.screenId.value="ND101";
 				document.fm1.functionId.value="Init";
-
+				document.fm1.preScreenId.value="ND307";
 				comSubmitForAnyWarp(fm1);
 		    }
 		}
@@ -115,7 +126,8 @@
 		<s:hidden name="functionId" value="Register" />
 		<s:hidden id="pageFlag" name="pageFlag" />
 		<s:hidden id="mrAdminFlg" name="mrAdminFlg" />
-
+    <s:hidden name="buttonFlg" />
+    	<s:hidden name="title" />
 
 		<s:hidden name="preScreenId" id="preScreenId" />
 		<s:hidden name="nd101PreScreenId"/>
@@ -123,10 +135,7 @@
 		<s:hidden name="reqBrCode" />
 		<s:hidden name="reqDistCode" />
 		<s:hidden name="updShaYmd" />
-		<s:hidden name="postInsNo" />
-		<s:hidden name="postUltInsNo" />
-		<s:hidden name="postDeptCode" />
-		<s:hidden name="postDeptKn" />
+
 		<s:hidden name="preInsNo" />
 		<s:hidden name="preUltInsNo" />
 		<s:hidden name="preDeptCode" />
@@ -142,7 +151,7 @@
 		<s:hidden name="reqId" />
 		<s:hidden name="today" id="today" value="" />
 		<s:hidden name="preHoInsType" />
-		<s:hidden name="postHoInsType" />
+        <s:hidden name="preInsClass"/>
 
 
 		<s:hidden name="reqShz" />
@@ -161,17 +170,11 @@
 		<s:hidden name="inputFlg" />
 		<s:hidden name="reqCommentFlg" />
 		<s:hidden name="movemedEditFlg" />
+		<s:hidden name="alertIgnore"/>
 		<s:hidden name="reqChl" />
 		<s:hidden name="reqSts" id="reqSts"/>
 		<s:hidden name="funcId" id="funcId" value=""/>
 
-		<s:hidden name="postDeptKj"/>
-		<s:hidden name="titlePostTitleKj"/>
-		<s:hidden name="kmuPostCodeKanj"/>
-		<s:hidden name="yakushinPostCodeKanj"/>
-		<s:hidden name="univPostTitleKj"/>
-		<s:hidden name="dispTekiyoYmd"/>
-        <s:hidden name="reqComment"/>
 		<s:hidden name="reqDestBtnFlg"/>
 
 		<s:hidden name="tempReqBtnFlg" id="tempReqBtnFlg" value="0" />
@@ -258,66 +261,85 @@
 				<tr style="border-bottom: 2px solid #000;">
 					<td>変更後</td>
 				</tr>
-				<s:if test='(trnKbn == "42" || reqFlg == 0)'>
+				<s:if test='(reqType == "42" || movemedEditFlg == "0")'>
 					<tr>
 						<td></td>
 						<td>異動区分</td>
 						<td>医療機関</td>
 					</tr>
 				</s:if>
-				<s:if test='(trnKbn == "42" || reqFlg == 0)'>
+				<s:if test='(reqType == "42" || movemedEditFlg == "0")'>
 					<tr>
 						<td></td>
 						<td>異動先施設</td>
-						<td><s:label key="postInsAbbrName" /></td>
+						<td><s:label key="postInsAbbrName" />
+								<s:hidden name="postInsNo" />
+		<s:hidden name="postUltInsNo" />
+		<s:hidden name="postHoInsType" />
+        <s:hidden name="postInsClass"/>
+						</td>
 						<td>異動先所属部科</td>
-						<td><s:label key="postDeptKj" /></td>
+						<td><s:label key="postDeptKj" />
+						<s:hidden name="postDeptCode" /><s:hidden name="postDeptKn" /><s:hidden name="postDeptKj"/>
+		</td>
 					</tr>
 				</s:if>
 				<s:else>
 					<tr>
 						<td></td>
 						<td>異動先所属部科</td>
-						<td><s:label key="postDeptKj" /></td>
+						<td><s:label key="postDeptKj" />
+						<s:hidden name="postDeptCode" /><s:hidden name="postDeptKn" /><s:hidden name="postDeptKj"/>
+						</td>
 					</tr>
 				</s:else>
 				<tr>
 					<td></td>
 					<td>役職</td>
-					<td><s:label key="titlePostTitleKj" /></td>
+					<td><s:label key="titlePostTitleKj" /><s:hidden name="postTitleCode"/><s:hidden name="titlePostTitleKj"/></td>
 					<td>勤務形態</td>
-					<td><s:label key="kmuPostCodeKanj" /></td>
+					<td><s:label key="kmuPostCodeKanj" /><s:hidden name="postJobForm"/><s:hidden name="kmuPostCodeKanj"/></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td>薬審メンバー区分</td>
-					<td><s:label key="yakushinPostCodeKanj" /></td>
+					<td><s:label key="yakushinPostCodeKanj" /><s:hidden name="postDcc"/><s:hidden name="yakushinPostCodeKanj"/>
+					</td>
 					<td>大学職位</td>
-					<td><s:label key="univPostTitleKj" /></td>
+					<td><s:label key="univPostTitleKj" /><s:hidden name="postUnivPosCode"/><s:hidden name="univPostTitleKj"/>
+					</td>
 				</tr>
 				<tr>
 				    <td></td>
 					<td>適用日</td>
-					<td><s:label key="dispTekiyoYmd" /></td>
+					<td><s:label key="dispTekiyoYmd" /><s:hidden name="selectDay"/><s:hidden name="dispTekiyoYmd"/></td>
 				</tr>
+				</tbody>
+          </table>
+          <table class="comPortalTable" align="center">
+				<tbody>
 				<tr>
 				    <td></td>
 					<td>申請コメント</td>
-					<td><s:label key="reqComment" /></td>
+					<s:if test='%{reqSts == null || reqSts == "" || reqSts == "01"}'>
+		    			<td class="comFormTableItem" colspan="3"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
+	      			</s:if>
+	      			<s:else>
+	      				<td class="comFormTableItem" colspan="3"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
+	      			</s:else>
 				</tr>
-			<s:if test="mrAdminFlg == '1' && (reqSts == '03' || reqSts == '13') ">
+			<s:if test='%{mrAdminFlg == "1" && (reqSts == "03" || reqSts == "13")}'>
 				<tr>
 				    <td></td>
 					<td>承認・却下コメント</td>
-					<td>
-					    <s:textarea label="aprComment" name="reqComment" style="width: 60vw; resize: none;" rows="3"/>
-					</td>
+					<td class="comFormTableItem" colspan="3"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/>
+		      <s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="display:none;"/>
+					</nobr></td>
 				</tr>
 			</s:if>
 			</tbody>
 		</table>
-		<table class="comPortalTable"
-			style="margin-top: 3pt; margin-bottom: 1pt;" align="center">
+		<table class="comPortalTable" style="margin-top: 3pt; margin-bottom: 1pt;" align="center">
 			<tr>
 				<td align="left"><input class="comButton" type="button"
 					name="button1" id="button6" value="戻る" onClick="backBtn();"/></td>
@@ -336,6 +358,21 @@
 			    	</s:if>
 			    	<s:elseif test="Nd307AppdFlg == 1 && Nd307AppdActiveFlg == 0">
 			    	    <input class="comButton" type="button" name="button2" id="button2" value="申請" disabled/>
+			    	</s:elseif>
+			    	<s:else>
+			    	</s:else>
+
+			    	<s:if test="Nd307RejectFlg == 1 && Nd307RejectActiveFlg == 1">
+                		<s:if test='%{reqSts == "03"}'>
+	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               		</s:if>
+					    <input class="comButton" type="button" name="button3" id="button3" value="承認" onClick="setFuncId(2);"/>
+			    	</s:if>
+			    	<s:elseif test="Nd307RejectFlg == 1 && Nd307RejectActiveFlg == 0">
+						<s:if test='%{reqSts == "03"}'>
+							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+						</s:if>
+						<input class="comButton" type="button" name="button3" id="button3" value="承認" disabled/>
 			    	</s:elseif>
 			    	<s:else>
 			    	</s:else>

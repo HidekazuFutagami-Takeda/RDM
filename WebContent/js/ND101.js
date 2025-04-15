@@ -7,6 +7,55 @@
  * @author BHH 趙
  */
 
+var gCdcViewWin = null;        // 勤務先情報 所属部科POPUP用
+var gCseViewWin = null;        // 勤務先情報 施設POPUP用
+
+/**
+ * <pre>
+ *  全てのポップアップを閉じます。
+ * </pre>
+ * @param targetWin 	対象ウィンドウオブジェクト
+ * @param targetWinName	対象ウィンドウ名称
+ */
+function hcpClosePopUp(targetWin,targetWinName){
+  if(hcpCheckPopUp()){
+	  // 対象ポップアップが存在すればフォーカスを当てる
+	  if(targetWin != null){
+		  targetWin.focus();
+	  }
+
+	  // 勤務先情報 所属部科ポップアップ
+	  if(gCdcViewWin != null && targetWinName != "gCdcViewWin"){
+		  gCdcViewWin.close();
+		  gCdcViewWin = null;
+	  }
+	  // 勤務先情報 施設ポップアップ
+	  if(gCseViewWin != null && targetWinName != "gCseViewWin"){
+		  gCseViewWin.close();
+		  gCseViewWin = null;
+	  }
+
+  }
+}
+
+/**
+ * <pre>
+ *  ポップアップウィンドウオブジェクトチェック関数
+ * </pre>
+ *  ポップアップ起動中にウィンドウが閉じられた時に
+ *  ウィンドウオブジェクトがstring型に変更される場合があるため、
+ *  ウィンドウオブジェクトの型をチェックしてJSエラーを回避します。
+ *
+ * @return true：正常,false：異常
+ */
+function hcpCheckPopUp() {
+
+  // 本画面で使用する全ポップアップウィンドウオブジェクトを対象にチェック
+  if(typeof(gCdcViewWin) == 'string') return false;     // 勤務先情報 所属部科ポップアップ
+  if(typeof(gCseViewWin) == 'string') return false;     // 勤務先情報 施設ポップアップ
+  // 全ウィンドウが正常ならばtrue
+  return true;
+}
 
 /**
  * 所属部科POPUP画面を呼び出します。
@@ -51,6 +100,36 @@ function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
 	document.fm1.postDeptKn.value = DeptKn;
 }
 
+/**
+ * 施設検索POPUP画面を呼び出します。
+ *
+ */
+function tmpCseView(){
+
+// 2度押し対策
+  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+
+  // 全てのポップアップを閉じる
+  hcpClosePopUp(gCseViewWin, "gCseViewWin");
+
+ // パラメータの設定
+  document.fm1.backScreenId.value = "ND101";
+  gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
+  return(true);
+}
+
+/**
+ * <pre>
+ * 施設検索POPUP　コールバック関数。
+ * </pre>
+ */
+function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
+    document.fm1.postInsNo.value = insNo;
+    document.fm1.postInsAbbrName.value = insAbbrName;
+    document.fm1.postInsHoInsType.value = hoInsType;
+    document.fm1.postInsInsClass.value = insClass;
+    document.fm1.postUltInsNo.value = dcfShisetsuCd;
+}
 
 function jimClear(name) {
 	if (!comChkClickFlg(COM_CLICK_ALERT)) {
@@ -67,4 +146,25 @@ function jimClear(name) {
 		document.fm1.postDeptCode.value = "";
 		document.fm1.postDeptKn.value = "";
 	}
+}
+
+/**
+ * <pre>
+ *  登録、更新、削除処理
+ * DB操作処理時に呼ばれます。
+ * </pre>
+ */
+function nd101Register(buttonFlg){
+  // 確認メッセージ表示
+//  if (confirm(msgContent)){
+//  } else {
+//    return false;
+//  }
+
+  document.fm1.buttonFlg.value = buttonFlg;
+  document.fm1.screenId.value = 'ND101';
+  document.fm1.functionId.value = 'Register';
+
+  //イベント呼び出し
+  comSubmitForAnyWarp(fm1);
 }

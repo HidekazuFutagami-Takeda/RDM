@@ -219,11 +219,16 @@
         </action>
         <action name="ND101Register" class="nD101Action" method="register">
             <result name="ND101">/WEB-INF/pages/ND101.jsp</result>
+            <result name="ND307Init" type="chain">ND307Init</result>
         </action>
         <action name="ND101Cancel" class="nD101Action" method="cancel">
             <result name="ND101">/WEB-INF/pages/ND101.jsp</result>
             <result name="ND013">/WEB-INF/pages/ND013.jsp</result>
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
+            <result name="NC101" type="chain">NC101Init</result>
+        </action>
+        <action name="ND101ShnComp" class="nD101Action" method="shnComp">
+        	<result name="ND101">/WEB-INF/pages/ND101.jsp</result>
         </action>
         <action name="ND307Init" class="nD307Action" method="init">
             <result name="ND307">/WEB-INF/pages/ND307.jsp</result>
@@ -232,6 +237,7 @@
         <action name="ND307Register" class="nD307Action" method="register">
             <result name="ND307">/WEB-INF/pages/ND307.jsp</result>
             <result name="NC101">/WEB-INF/pages/NC101.jsp</result>
+            <result name="NC101Init" type="chain">NC101Init</result>
         </action>
         <action name="ND102Init" class="nD102Action" method="init">
             <result name="ND102">/WEB-INF/pages/ND102.jsp</result>

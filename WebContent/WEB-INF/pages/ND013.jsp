@@ -53,6 +53,8 @@
 					} else {
 						document.fm1.dialog.value = "";
 					}
+	 			} else {
+	 				actBtn('ND103', docNo);
 	 			}
 	 		}
 	 		if(tabFlg == "2"){//エラーなしなので遷移
@@ -62,6 +64,8 @@
 					} else {
 						document.fm1.dialog.value = "";
 					}
+	 			} else {
+	 				actBtn('ND105', docNo);
 	 			}
 	 		}
 	 		if(tabFlg == "3"){//エラーなしなので遷移

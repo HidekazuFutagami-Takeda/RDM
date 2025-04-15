@@ -181,7 +181,6 @@
 	<s:hidden name="ultInsNo" />
 	<s:hidden name="deptCodeAf" />
 	<s:hidden name="deptKn" />
-	<s:hidden name="aprComment" />
 	<s:hidden name="saveButtonFlg" />
 
     <s:hidden name="pageCntAll" />

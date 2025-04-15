@@ -447,6 +447,7 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
     document.fm1.insAbbrName.value = insAbbrName;
     document.fm1.insClass.value = insClass;
     document.fm1.hoInsType.value = hoInsType;
+    document.fm1.ultInsNo.value = dcfShisetsuCd;
 
 }
 

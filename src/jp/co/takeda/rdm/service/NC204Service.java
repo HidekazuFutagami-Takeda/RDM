@@ -31,6 +31,7 @@ import jp.co.takeda.rdm.entity.join.SelectNC209MainDataEntity;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 
 
@@ -57,7 +58,11 @@ public class NC204Service extends BaseService {
     		SRdmJkrSosInsAbbrNameEntiry sRdmJkrSosAddrEntiry = new SRdmJkrSosInsAbbrNameEntiry();
     		sRdmJkrSosAddrEntiry.setInsNo(indto.getParamInsNo());
     		List<SRdmJkrSosInsAbbrNameEntiry> jkrSosAddrMap = dao.select(sRdmJkrSosAddrEntiry);
-    		indto.setInsAbbrName(jkrSosAddrMap.get(0).getInsAbbrName());
+	    	if(CollectionUtils.isEmpty(jkrSosAddrMap)) {
+	        	indto.setInsAbbrName("");
+	        }else{
+	    		indto.setInsAbbrName(jkrSosAddrMap.get(0).getInsAbbrName());
+	       	}
     	}
         // END UOC
     }

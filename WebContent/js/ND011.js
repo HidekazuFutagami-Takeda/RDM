@@ -71,11 +71,14 @@ function nd011Clear( name ) {
  * </pre>
  */
 function nd011Register(buttonFlg){
-  // 確認メッセージ表示
-  if (confirm(msgContent)){
-  } else {
-    return false;
-  }
+	// 確認メッセージ表示
+	if (buttonFlg == '2' || buttonFlg == '3' || buttonFlg == '4'){
+		if (confirm(msgContent)){
+		} else {
+			mstContent = "";
+			return false;
+		}
+	}
 
   document.fm1.buttonFlg.value = buttonFlg;
   document.fm1.screenId.value = 'ND011';

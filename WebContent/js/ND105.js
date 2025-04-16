@@ -72,10 +72,12 @@ function nd105Clear( name ) {
  */
 function nd105Register(buttonFlg){
   // 確認メッセージ表示
-  if (confirm(msgContent)){
-  } else {
-    return false;
-  }
+	if (buttonFlg == '2' || buttonFlg == '3' || buttonFlg == '4'){
+	  if (confirm(msgContent)){
+	  } else {
+	    return false;
+	  }
+	}
 
   document.fm1.buttonFlg.value = buttonFlg;
   document.fm1.screenId.value = 'ND105';

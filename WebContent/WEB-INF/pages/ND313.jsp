@@ -150,7 +150,7 @@
 
 	<s:hidden name="errorCheckFlg" />
 	<s:hidden name="dialogMst" />
-	<s:hidden name="backScreenId" />
+	<s:hidden name="backScreenId" value="ND313" />
 	<s:hidden name="preScreenId" />
 	<s:hidden name="reqShz" />
 	<s:hidden name="paramReqId" />
@@ -209,7 +209,6 @@
       <s:hidden name="newTekiyoYmd" />
       <s:hidden name="newSosCd" />
       <s:hidden name="regEnabedFlg" />
-      <s:hidden name="title" />
       <s:hidden name="sortCondition1" />
       <s:hidden name="sortCondition2" />
       <s:hidden name="screenId" value="NF501" />
@@ -436,7 +435,7 @@
 	          	<nobr>適用日<span style="color:red;">*</span></nobr>
 	          </td>
 	          <td >
-	          	<s:property value="tekiyoYmd" />
+	          	<s:property value="formTekiyoYmd" />
 	          </td>
         </tr>
         <tr>
@@ -522,7 +521,7 @@
 			</td>
 
 			<td>
-				<s:if test="%{reqStsCd == 01}">
+				<s:if test="%{reqStsCd == null || reqStsCd == '' || reqStsCd == 01}">
 					<s:if test='%{actionEdit == "1"}'>
 	                	<input type="button" value="申請" onclick="ND313Page()" />
 	                </s:if>

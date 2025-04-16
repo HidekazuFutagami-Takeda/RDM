@@ -99,8 +99,8 @@
 
 
     function comSetFormWindowInfo(){
-        comSetFormWindowName('ND105');
         changeBox();
+        comSetFormWindowName('ND105');
 // 		const returnFlg = document.fm1.buttonFlg.value;
 // 		if(returnFlg == "8"){//削除完了時画面を閉じろ
 // // 			window.close();ではjsで開いた画面しか無理

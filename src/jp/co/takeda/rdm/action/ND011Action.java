@@ -267,6 +267,7 @@ public class ND011Action extends BaseAction<ND011DTO> {
         	setJumpInfo(RdmConstantsData.I016);
         	outdto.setForward("NC101Init");
         }
+        sessionMap.put(AppConstant.SESKEY_ND011_SEARCHKEY, outdto);
         setNextDTO(outdto);
         return outdto.getForward();
     }

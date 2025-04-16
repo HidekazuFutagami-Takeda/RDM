@@ -613,8 +613,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 														style="width: 160px; border: none;">承認日時</td>
 													<td class="comTableTitle container"
 														style="width: 90px; border: none;">承認者</td>
+													<s:if test='jokenFlg == "1"'>
 													<td class="comTableTitle container"
 														style="width: 120px; border: none;">審査・承認メモ</td>
+													</s:if>
 													<td class="comTableTitle container"
 														style="width: 120px; border: none;">承認・却下コメント</td>
 													<s:if test='jokenFlg == "1"'>
@@ -655,7 +657,9 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				     </s:if>
 				     	  <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS"  key="catSnseiComboDataList[%{#status.index}].aPR_YMDHMS" /></td>
 				          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID"  key="catSnseiComboDataList[%{#status.index}].aPR_SHA_ID" /></td>
+		  		     <s:if test='jokenFlg == "1"'>
 		  		          <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aPR_MEMO"  key="catSnseiComboDataList[%{#status.index}].aPR_MEMO" /></td>
+		       		 </s:if>
 		       		      <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].aprComment"  key="catSnseiComboDataList[%{#status.index}].aprComment" /></td>
 			      	 <s:if test='jokenFlg == "1"'>
 			          	  <td class="comTableItem" ><s:label  name="catSnseiComboDataList[%{#status.index}].fbReqFlg"  key="catSnseiComboDataList[%{#status.index}].fbReqFlg" /></td>

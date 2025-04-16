@@ -674,8 +674,15 @@ public class NC011Service extends BaseService {
 
 
               selectParamSelectReqList  = dao.select(selectCntSelectReqListEntity);
-              //1000件以上の場合のエラー     selectParamSelectReqList.size()  or 1001
-        	    if (selectParamSelectReqList.size() > selectParamNC011List.get(0).getValue()) {//deptListEntity.size()
+
+                indto.initPageInfo(indto.getPageCntCur(), selectParamSelectReqList.get(0).getCntReq(), selectParamNC011List.get(1).getValue());
+                paramEntity.setInOffset(indto.getLineCntStart() - 1);
+                paramEntity.setInLimit(selectParamNC011List.get(1).getValue());
+                //画面初期表示時の帳票一覧を取得する
+                List<SRdmReqListEntity> deptListEntity = dao.select(paramEntity);
+                //1000件以上の場合のエラー     selectParamSelectReqList.size()  or 1001
+                int i = deptListEntity.size();
+        	    if (indto.getLineCntAll() > selectParamNC011List.get(0).getValue()) {//deptListEntity.size()
         	    	//indto.setBoolKnb("2");
             		//return outdto;
         			errMsg += loginInfo.getMsgData(RdmConstantsData.W002) + "\n";
@@ -687,12 +694,6 @@ public class NC011Service extends BaseService {
                 	//outdto = search(indto);
                 	return outdto;
                 }
-                indto.initPageInfo(indto.getPageCntCur(), selectParamSelectReqList.get(0).getCntReq(), selectParamNC011List.get(1).getValue());
-                paramEntity.setInOffset(indto.getLineCntStart() - 1);
-                paramEntity.setInLimit(selectParamNC011List.get(1).getValue());
-                //画面初期表示時の帳票一覧を取得する
-                List<SRdmReqListEntity> deptListEntity = dao.select(paramEntity);
-
              // for(int i = 0;i < 11; i++) {
               	 for (SRdmReqListEntity entiry : deptListEntity) {
               		CatSnseiComboDataList dataRecord = new CatSnseiComboDataList();

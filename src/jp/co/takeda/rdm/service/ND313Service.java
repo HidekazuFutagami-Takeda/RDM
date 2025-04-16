@@ -328,7 +328,7 @@ public class ND313Service extends BaseService {
 
 	           	String tekiyoYmd = dto.getFormTekiyoYmd();
 	           	if(tekiyoYmd != null) {
-	           		tekiyoYmd = tekiyoYmd.replace("-", "");
+	           		tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
 	           	}
 	           	tRdmReqKnrInsData.setTekiyoYmd(tekiyoYmd);//適用日
 	           	tRdmReqKnrInsData.setReqBrCd(dto.getBrCode());//申請者医薬支店C
@@ -356,7 +356,7 @@ public class ND313Service extends BaseService {
 	           	}
 	           	String tekiyoYmd = dto.getFormTekiyoYmd();//適用開始日
 	           	if(tekiyoYmd != null) {
-	           		tekiyoYmd = tekiyoYmd.replace("-", "");
+	           		tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
 	           	}
 	           	tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);//適用開始日
 	           	tRdmReqKnrUpdData.setReqComment(dto.getReqComment());//申請コメント

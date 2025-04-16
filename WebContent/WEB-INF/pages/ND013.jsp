@@ -407,11 +407,11 @@
 	        	<td><!-- 医師の廃業・死亡ボタン -->
 	        		<s:if test="%{ishiHaigyou != 0}">
 	            			<!-- 活性 -->
-	            			<input type="button" value="医師の廃業・死亡" onclick="errorCheck('2')">
+	            			<input type="button" value="医師免許返納・死亡" onclick="errorCheck('2')">
 	            		</s:if>
 	            		<s:else>
 	            			<!-- 非活性 -->
-	            			<input type="button" value="医師の廃業・死亡" style="background-color: gray;">
+	            			<input type="button" value="医師免許返納・死亡" style="background-color: gray;">
 	            		</s:else>
 	        	</td>
 	        	<td></td>

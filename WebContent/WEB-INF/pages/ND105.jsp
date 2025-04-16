@@ -79,12 +79,12 @@
     function register(kbn){
       //区分 0:一時保存,1:申請（一時保存チェック高),2:審査,3:承認（チェック高),4:申請破棄
       //確定ボタン
-      if (kbn == '0'){//I013	申請データを保存します。よろしいですか？
-        msgContent = '<s:property value="#session.UserInfoKey.msgMap.I013.msgData" />';
-      }
-      if (kbn == '1'){//I015	申請します。よろしいですか？
-        msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
-      }
+//      if (kbn == '0'){//I013	申請データを保存します。よろしいですか？
+//        msgContent = '<s:property value="#session.UserInfoKey.msgMap.I013.msgData" />';
+//      }
+//      if (kbn == '1'){//I015	申請します。よろしいですか？
+//        msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
+//      }
       if (kbn == '2'){//I014	ステータスを審査済みに変更します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I014.msgData" />';
       }
@@ -99,8 +99,8 @@
 
 
     function comSetFormWindowInfo(){
-        comSetFormWindowName('ND105');
         changeBox();
+        comSetFormWindowName('ND105');
 // 		const returnFlg = document.fm1.buttonFlg.value;
 // 		if(returnFlg == "8"){//削除完了時画面を閉じろ
 // // 			window.close();ではjsで開いた画面しか無理

@@ -24,12 +24,15 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.ND313DTO;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
 import jp.co.takeda.rdm.service.ND313Service;
 import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Actionクラス
@@ -51,6 +54,10 @@ public class ND313Action extends BaseAction<ND313DTO> {
      */
     @Inject
     private ND313Service nD313Service;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
 
     //ログインユーザ情報取得
     LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
@@ -232,11 +239,36 @@ public class ND313Action extends BaseAction<ND313DTO> {
         // START UOC
         // END UOC
 
+    	if("NC101".equals(dto.getForward())) {
+        	setJumpInfo(dto.getProcessFlg());
+        }
+
         setNextDTO(outdto);
         return outdto.getForward();
     }
 
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String event) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
-
-
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+        // 画面タイトル
+        paramDto.setTitle("医師勤務先削除");
+        // メッセージ１
+        if (event.equals("0")) {//I002	申請が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
+        }
+        if (event.equals("2")) {//I003	承認が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I003));
+        }
+        if (event.equals("1")) {//I004	却下が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I004));
+        }
+    }
 }

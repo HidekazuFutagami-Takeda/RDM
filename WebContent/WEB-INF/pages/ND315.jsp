@@ -196,14 +196,14 @@
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>申請者所属部署</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者所属</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqShzNm"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqStsNm"/></nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>申請者</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqJgiName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>申請日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="reqYmdhms"/></nobr></td>
@@ -213,7 +213,7 @@
 		<s:if test='%{loginJgiNo != reqJgiNo }'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-		      <td class="comFormTableItem"><nobr>審査者</nobr></td>
+		      <td class="comFormTableItem"><nobr>審査者氏名</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnShaName"/></nobr></td>
 		      <td class="comFormTableItem"><nobr>審査日時</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnYmdhms"/></nobr></td>
@@ -305,7 +305,7 @@
       </tr>
         <tr>
 	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
-		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
+		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
 	      	</s:if>
 	      	<s:else>
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>

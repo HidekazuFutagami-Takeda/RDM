@@ -185,7 +185,6 @@
 	<s:hidden name="univPosCodeBf" />
 	<s:hidden name="formTekiyoYmd" />
 
-	<s:hidden name="reqComment" />
 	<s:hidden name="tekiyoYmd" />
 	<s:hidden name="insNoMt" />
 	<s:hidden name="paramInsNo" />
@@ -444,7 +443,12 @@
         	<td></td>
         	<td>申請コメント</td>
         	<td colspan="3">
-        		<s:property value="reqComment" />
+        		<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+        			<nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true" /></nobr>
+        		</s:if>
+        		<s:else>
+      				<nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr>
+      			</s:else>
         	</td>
         	<td></td>
 	       	<td></td>

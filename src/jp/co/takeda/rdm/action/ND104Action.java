@@ -311,6 +311,7 @@ public class ND104Action extends BaseAction<ND104DTO> {
         		}
 
            		outdto.setForward("ND313");
+           		dto.setTitle("ND313_医師勤務先削除 - 申請内容確認");
            		//outdto.setForward("ND313Init");
            		return outdto.getForward();
            	}

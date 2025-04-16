@@ -342,7 +342,7 @@ table {
                   <td class="comFormTableItem"><nobr><s:label key="reqYmdhms"/></nobr></td>
               </tr>
 	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示　申請者には非表示 -->
-	  <s:if test='%{reqStsCd != null && reqStsCd != "" && !(reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13") }'>
+	  <s:if test='%{reqSts != null && reqSts != "" && !(reqSts == "01" || reqSts == "11" || reqSts == "03" || reqSts == "13") }'>
 		<s:if test='%{loginJgiNo != reqJgiNo }'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

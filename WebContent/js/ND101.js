@@ -129,6 +129,15 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
     document.fm1.postHoInsType.value = hoInsType;
     document.fm1.postInsClass.value = insClass;
     document.fm1.postUltInsNo.value = dcfShisetsuCd;
+
+    if(hoInsType == "1" && insClass == "01" && document.fm1.inputFlg.value == 1){
+    	// 大学病院の場合大学職位を活性
+    	document.getElementById("postUnivPosCode").disabled = false;
+    } else {
+    	// 大学職位を非活性
+    	document.getElementById("postUnivPosCode").disabled = true;
+    	document.getElementById("postUnivPosCode").value = "";
+    }
 }
 
 function jimClear(name) {

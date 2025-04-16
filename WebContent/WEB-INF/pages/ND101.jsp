@@ -54,24 +54,24 @@ function submitBtn(funcId) {
 	document.fm1.reqBtnFlg.value = "0";
 	if (funcId == 0) {
 		document.fm1.tempButtonExecuted.value = "1";
-		msgContent = '<s:property value="#session.UserInfoKey.msgMap.I013.msgData" />';
+		/*msgContent = '<s:property value="#session.UserInfoKey.msgMap.I013.msgData" />';
 		if (window.confirm(msgContent)) {
 		} else {
 			return false;
-		}
+		}*/
 		// 一時保存
 		document.fm1.screenId.value = "ND101";
 		document.fm1.functionId.value = "Register";
 	} else if (funcId == 1) {
 		document.fm1.reqBtnFlg.value = "1";
-		msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
+		/*msgContent = '<s:property value="#session.UserInfoKey.msgMap.I015.msgData" />';
 		if (window.confirm(msgContent)) {
 			  document.fm1.buttonFlg.value = "1";
 			  document.fm1.screenId.value = 'ND101';
 			  document.fm1.functionId.value = 'Register';
 		} else {
 			return false;
-		}
+		}*/
 		// 申請画面へ
 // 		document.fm1.screenId.value = "ND307";
 // 		document.fm1.functionId.value = "Init";
@@ -96,6 +96,17 @@ function submitBtn(funcId) {
 
 function comSetFormWindowInfo() {
 	comClickFlgInit();
+
+	if(document.fm1.postHoInsType.value == "1" && document.fm1.postInsClass.value == "01"
+			&& document.fm1.inputFlg.value == 1){
+    	// 大学病院の場合大学職位を活性
+    	document.getElementById("postUnivPosCode").disabled = false;
+    } else {
+    	// 大学職位を非活性
+    	document.getElementById("postUnivPosCode").disabled = true;
+    	document.getElementById("postUnivPosCode").value = "";
+    }
+
 	var alertFlg = document.fm1.alertMsgStr.value;
 	var alertFlg2 = document.fm1.alertMsgStr2.value;
 	if(!alertFlg) {

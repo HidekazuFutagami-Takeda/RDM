@@ -1062,7 +1062,7 @@
 			ON
 			    KNR.REQ_ID = HCP.REQ_ID
 			WHERE KNR.REQ_TYPE = '31'
-			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND KNR.REQ_STS IN ('11','03','13','04','14')
 			AND HCP.ULT_DOC_NO = #{inUltDocNo}
 			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
     </select>
@@ -1262,7 +1262,7 @@
 			ON
 			    KNR.REQ_ID = HCP.REQ_ID
 			WHERE KNR.REQ_TYPE = '31'
-			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND KNR.REQ_STS IN ('11','03','13','04','14')
 			AND HCP.ULT_DOC_NO = #{inUltDocNo}
 			<if test="inReqId != null">AND KNR.REQ_ID != #{inReqId}</if>
     </select>

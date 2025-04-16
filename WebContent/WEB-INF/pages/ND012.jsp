@@ -79,8 +79,8 @@
     	}
     }
     function gotoND013(){
-        gotoMsg = '<s:property value="#session.UserInfoKey.msgMap.I007.msgData" />';
-    	if(window.confirm(gotoMsg)){
+        gotoMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
+    	if(window.confirm(gotoMsg.replace("（遷移元）", '医師勤務先情報更新'))){
 			//モック
     		document.fm1.screenId.value="ND013";
     		document.fm1.functionId.value="Init";

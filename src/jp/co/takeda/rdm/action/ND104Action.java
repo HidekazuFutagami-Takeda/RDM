@@ -129,6 +129,11 @@ public class ND104Action extends BaseAction<ND104DTO> {
 
         dto.setTitle("ND104_医師勤務先削除");
 
+        String preScreenId = dto.getBackScreenId();
+        if(!"ND313".equals(preScreenId)) {
+        	dto.setPreScreenId(preScreenId);
+        }
+
         //エラーメッセージが定義されている場合
         if (!StringUtils.isEmpty(dto.getMsgStr())) {
             return initNext(outdto);

@@ -151,6 +151,7 @@
 	<s:hidden name="errorCheckFlg" />
 	<s:hidden name="dialogMst" />
 	<s:hidden name="backScreenId" />
+	<s:hidden name="preScreenId" />
 	<s:hidden name="reqShz" />
 	<s:hidden name="paramReqId" />
 	<s:hidden name="ReqId" />

@@ -151,6 +151,7 @@
 	<s:hidden name="errorCheckFlg" />
 	<s:hidden name="dialogMst" />
 	<s:hidden name="backScreenId" />
+	<s:hidden name="preScreenId" />
 	<s:hidden name="reqShz" />
 	<s:hidden name="paramReqId" />
 	<s:hidden name="ReqId" />
@@ -592,19 +593,16 @@
 	function backPage(){
 
 		destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
-		var winVarName = document.fm1.winVarName.value;
-		if (winVarName == "ND013") {
+		var preScreenId = document.fm1.preScreenId.value;
+		if (preScreenId == "ND013") {
 			var gamenId = "医師勤務先情報更新"
 		}
-		if (winVarName == "NC011") {
+		if (preScreenId == "NC011") {
 			var gamenId = "申請一覧"
 		}
 		if(window.confirm(destructMsg.replace("（遷移元）", gamenId))){
 
-			document.fm1.screenId.value	= winVarName;
-		    document.fm1.functionId.value = "Init"
-
-		 	comSubmitForAnyWarp(fm1);
+			window.close();
 		}
 	}
 

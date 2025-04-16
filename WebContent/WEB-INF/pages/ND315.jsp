@@ -305,7 +305,7 @@
       </tr>
         <tr>
 	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
-		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
+		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" readonly="true"/></nobr></td>
 	      	</s:if>
 	      	<s:else>
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>

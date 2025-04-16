@@ -16,7 +16,7 @@
 		AND
 			DEL_FLG = '0'
 		ORDER BY
-			 TITLE_CODE
+			 SORT_NUM
     </select>
 
 </mapper>

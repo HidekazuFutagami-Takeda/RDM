@@ -336,6 +336,54 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
      */
     private String insClass;
 
+    /**
+     * 施設名カナ
+     * @generated
+     */
+    private String shisetsuNmKana;
+
+    /**
+     * 郵便番号
+     * @generated
+     */
+    private String yubinNo;
+
+    /**
+     * 都道府県コード
+     * @generated
+     */
+    private String todofukenCd;
+
+    /**
+     * 都道府県名
+     * @generated
+     */
+    private String addrNamePref;
+
+    /**
+     * 市区町村コード
+     * @generated
+     */
+    private String shikuchosonCd;
+
+    /**
+     * 市区町村名
+     * @generated
+     */
+    private String addrNameCity;
+
+    /**
+     * 武田市区郡コード
+     * @generated
+     */
+    private String tkCityCd;
+
+    /**
+     * 武田市区郡名
+     * @generated
+     */
+    private String tkCityName;
+
 
     /**
      * コンストラクタ
@@ -971,6 +1019,110 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
 	 */
 	public void setKeieitaiNm(String keieitaiNm) {
 		this.keieitaiNm = keieitaiNm;
+	}
+	/**
+	 * SelectInsListEntity.javashisetsuNmKanaを設定
+	 * @return shisetsuNmKana
+	 */
+	public String getShisetsuNmKana() {
+		return shisetsuNmKana;
+	}
+	/**
+	 * @param shisetsuNmKana セットする shisetsuNmKana
+	 */
+	public void setShisetsuNmKana(String shisetsuNmKana) {
+		this.shisetsuNmKana = shisetsuNmKana;
+	}
+	/**
+	 * SelectInsListEntity.javayubinNoを設定
+	 * @return yubinNo
+	 */
+	public String getYubinNo() {
+		return yubinNo;
+	}
+	/**
+	 * @param yubinNo セットする yubinNo
+	 */
+	public void setYubinNo(String yubinNo) {
+		this.yubinNo = yubinNo;
+	}
+	/**
+	 * SelectInsListEntity.javatodofukenCdを設定
+	 * @return todofukenCd
+	 */
+	public String getTodofukenCd() {
+		return todofukenCd;
+	}
+	/**
+	 * @param todofukenCd セットする todofukenCd
+	 */
+	public void setTodofukenCd(String todofukenCd) {
+		this.todofukenCd = todofukenCd;
+	}
+	/**
+	 * SelectInsListEntity.javaaddrNamePrefを設定
+	 * @return addrNamePref
+	 */
+	public String getAddrNamePref() {
+		return addrNamePref;
+	}
+	/**
+	 * @param addrNamePref セットする addrNamePref
+	 */
+	public void setAddrNamePref(String addrNamePref) {
+		this.addrNamePref = addrNamePref;
+	}
+	/**
+	 * SelectInsListEntity.javashikuchosonCdを設定
+	 * @return shikuchosonCd
+	 */
+	public String getShikuchosonCd() {
+		return shikuchosonCd;
+	}
+	/**
+	 * @param shikuchosonCd セットする shikuchosonCd
+	 */
+	public void setShikuchosonCd(String shikuchosonCd) {
+		this.shikuchosonCd = shikuchosonCd;
+	}
+	/**
+	 * SelectInsListEntity.javaaddrNameCityを設定
+	 * @return addrNameCity
+	 */
+	public String getAddrNameCity() {
+		return addrNameCity;
+	}
+	/**
+	 * @param addrNameCity セットする addrNameCity
+	 */
+	public void setAddrNameCity(String addrNameCity) {
+		this.addrNameCity = addrNameCity;
+	}
+	/**
+	 * SelectInsListEntity.javatkCityCdを設定
+	 * @return tkCityCd
+	 */
+	public String getTkCityCd() {
+		return tkCityCd;
+	}
+	/**
+	 * @param tkCityCd セットする tkCityCd
+	 */
+	public void setTkCityCd(String tkCityCd) {
+		this.tkCityCd = tkCityCd;
+	}
+	/**
+	 * SelectInsListEntity.javatkCityNameを設定
+	 * @return tkCityName
+	 */
+	public String getTkCityName() {
+		return tkCityName;
+	}
+	/**
+	 * @param tkCityName セットする tkCityName
+	 */
+	public void setTkCityName(String tkCityName) {
+		this.tkCityName = tkCityName;
 	}
 	/**
      * このEntityの値を返す

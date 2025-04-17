@@ -450,6 +450,23 @@ public class NC203Service extends BaseService {
         	// 施設区分
         	test.setInsClass(entity.getInsClass());
 
+        	// 施設名カナ
+        	test.setShisetsuNmKana(entity.getShisetsuNmKana());
+        	// 郵便番号
+        	test.setYubinNo(entity.getYubinNo());
+        	// 都道府県コード
+        	test.setTodofukenCd(entity.getTodofukenCd());
+        	// 都道府県名
+        	test.setAddrNamePref(entity.getAddrNamePref());
+        	// 市区町村コード
+        	test.setShikuchosonCd(entity.getShikuchosonCd());
+        	// 市区町村名
+        	test.setAddrNameCity(entity.getAddrNameCity());
+        	// 武田市区郡コード
+        	test.setTkCityCd(entity.getTkCityCd());
+        	// 武田市区郡名
+        	test.setTkCityName(entity.getTkCityName());
+
         	//データ代入
         	dataList.add(test);
         }

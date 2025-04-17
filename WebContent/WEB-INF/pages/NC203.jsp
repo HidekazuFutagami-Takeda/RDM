@@ -480,9 +480,17 @@ if (stack.peek() instanceof NC203DTO) {
 					<s:hidden name="insData[%{#status.index}].shisetsuTel" />
 					<s:hidden name="insData[%{#status.index}].shisetsuKbnNm" />
 					<s:hidden name="insData[%{#status.index}].keieitaiNm" />
+					<s:hidden name="insData[%{#status.index}].shisetsuNmKana" />
+					<s:hidden name="insData[%{#status.index}].yubinNo" />
+					<s:hidden name="insData[%{#status.index}].todofukenCd" />
+					<s:hidden name="insData[%{#status.index}].addrNamePref" />
+					<s:hidden name="insData[%{#status.index}].shikuchosonCd" />
+					<s:hidden name="insData[%{#status.index}].addrNameCity" />
+					<s:hidden name="insData[%{#status.index}].tkCityCd" />
+					<s:hidden name="insData[%{#status.index}].tkCityName" />
 				<tr>
 					<td class="pupButton" style="height:90%;" rowspan="2" >
-					<input class="pupButton" type="button" value="" OnClick="cseSelectIns(
+					<input class="pupButton" type="button" value="" OnClick="cseSelectInsUlt(
 					'<s:property value="#rowBean.insAbbrName" />',
 					'<s:property value="#rowBean.insFormalName" />',
 					'<s:property value="#rowBean.insNo" />',
@@ -495,6 +503,15 @@ if (stack.peek() instanceof NC203DTO) {
 					'<s:property value="#rowBean.insSbt" />',
 					'<s:property value="#rowBean.hoInsType" />',
 					'<s:property value="#rowBean.insClass" />',
+					'<s:property value="#rowBean.shisetsuNmKana" />',
+					'<s:property value="#rowBean.yubinNo" />',
+					'<s:property value="#rowBean.todofukenCd" />',
+					'<s:property value="#rowBean.addrNamePref" />',
+					'<s:property value="#rowBean.shikuchosonCd" />',
+					'<s:property value="#rowBean.addrNameCity" />',
+					'<s:property value="#rowBean.tkCityCd" />',
+					'<s:property value="#rowBean.tkCityName" />',
+					'<s:property value="#rowBean.shisetsuTel" />',
 					);"></input></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insAbbrName" /></td>
 					<td class="comTableItem" id="left"><s:label key="insData[%{#status.index}].insFormalName" /></td>

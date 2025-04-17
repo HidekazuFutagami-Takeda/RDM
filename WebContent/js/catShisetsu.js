@@ -246,6 +246,17 @@ function cseSelectIns(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,sh
       cseClose();
 }
 
+/**
+ * 施設を選択ボタン押下(Ult)
+ */
+function cseSelectInsUlt(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass,
+						shisetsuNmKana, yubinNo, todofukenCd, addrNamePref, shikuchosonCd, addrNameCity, tkCityCd, tkCityName, shisetsuTel) {
+	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
+  eval("window.opener." + document.fm1.callBack.value + "(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass,shisetsuNmKana, yubinNo, todofukenCd, addrNamePref, shikuchosonCd, addrNameCity, tkCityCd, tkCityName, shisetsuTel)"
+  );
+      cseClose();
+}
+
 /*
  * グローバル変数
  * （グローバル変数の命名は「g_」始まりで統一する）

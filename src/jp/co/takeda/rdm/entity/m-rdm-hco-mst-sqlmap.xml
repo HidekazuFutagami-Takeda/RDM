@@ -91,6 +91,14 @@
          <result column="JGI_NAME" property="jgiName"/>
          <result column="HO_INS_TYPE" property="hoInsType"/>
          <result column="INS_CLASS" property="insClass"/>
+         <result column="SHISETSU_NM_KANA" property="shisetsuNmKana"/>
+         <result column="YUBIN_NO" property="yubinNo"/>
+         <result column="TODOFUKEN_CD" property="todofukenCd"/>
+         <result column="ADDR_NAME_PREF" property="addrNamePref"/>
+         <result column="SHIKUCHOSON_CD" property="shikuchosonCd"/>
+         <result column="ADDR_NAME_CITY" property="addrNameCity"/>
+         <result column="TK_CITY_CD" property="tkCityCd"/>
+         <result column="TK_CITY_NAME" property="tkCityName"/>
      </resultMap>
      <resultMap id="selectCntHcoResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectHcoEntity">
          <result column="CNT_HCO" property="cntHco"/>
@@ -449,6 +457,14 @@
  		,MDB_HCO_MST1.KEIEITAI_CD           --ULT_MDB施設マスタ   経営体コード
 		,KEIEI_ULT.KEIEITAI_KJ AS KEIEITAI_NM
  		,MDB_HCO_MST1.BYOSHO_SU             --ULT_MDB施設マスタ   病床数（定員）
+ 		,MDB_HCO_MST1.SHISETSU_NM_KANA -- 施設名カナ
+ 		,MDB_HCO_MST1.YUBIN_NO -- 郵便番号
+ 		,MDB_HCO_MST1.TODOFUKEN_CD -- 都道府県コード
+ 		,ADDR.ADDR_NAME_PREF -- 都道府県名
+ 		,MDB_HCO_MST1.SHIKUCHOSON_CD -- 市区町村コード
+		,ADDR.ADDR_NAME_CITY -- 市区町村名
+ 		,ADDR.TK_CITY_CD -- 武田市区郡コード
+ 		,ADDR.TK_CITY_NAME -- 武田市区郡名
 
  		FROM ORAUSR01.M_RDM_PARAM_MST PARAM_MST
  		INNER JOIN
@@ -500,6 +516,20 @@
  		ON (CODE_MST4.CODE_NAME = 'INS_TYPE'
  		AND CODE_MST4.DEL_FLG = '0'
  		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
+
+ 		LEFT JOIN
+ 		(SELECT DISTINCT
+ 			 POST_CODE
+ 			,ADDR_CODE_PREF
+ 			,ADDR_NAME_PREF
+ 			,ADDR_CODE_CITY
+ 			,ADDR_NAME_CITY
+ 			,TK_CITY_CD
+ 			,TK_CITY_NAME
+ 		FROM S_RDM_COM_POS_ADDR) ADDR
+ 		ON  ADDR.POST_CODE = MDB_HCO_MST1.YUBIN_NO
+ 		AND ADDR.ADDR_CODE_PREF = MDB_HCO_MST1.TODOFUKEN_CD
+ 		AND ADDR.ADDR_CODE_CITY = MDB_HCO_MST1.SHIKUCHOSON_CD
 
  		<if test="knrFlg == false and sosCd != null">
  		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
@@ -718,6 +748,14 @@
  		,MDB_HCO_MST1.KEIEITAI_CD           --ULT_MDB施設マスタ   経営体コード
 		,KEIEI_ULT.KEIEITAI_KJ AS KEIEITAI_NM
  		,MDB_HCO_MST1.BYOSHO_SU             --ULT_MDB施設マスタ   病床数（定員）
+ 		,MDB_HCO_MST1.SHISETSU_NM_KANA -- 施設名カナ
+ 		,MDB_HCO_MST1.YUBIN_NO -- 郵便番号
+ 		,MDB_HCO_MST1.TODOFUKEN_CD -- 都道府県コード
+ 		,ADDR.ADDR_NAME_PREF -- 都道府県名
+ 		,MDB_HCO_MST1.SHIKUCHOSON_CD -- 市区町村コード
+		,ADDR.ADDR_NAME_CITY -- 市区町村名
+ 		,ADDR.TK_CITY_CD -- 武田市区郡コード
+ 		,ADDR.TK_CITY_NAME -- 武田市区郡名
 
  		FROM ORAUSR01.M_RDM_PARAM_MST PARAM_MST
  		INNER JOIN
@@ -769,6 +807,20 @@
  		ON (CODE_MST4.CODE_NAME = 'INS_TYPE'
  		AND CODE_MST4.DEL_FLG = '0'
  		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
+
+ 		LEFT JOIN
+ 		(SELECT DISTINCT
+ 			 POST_CODE
+ 			,ADDR_CODE_PREF
+ 			,ADDR_NAME_PREF
+ 			,ADDR_CODE_CITY
+ 			,ADDR_NAME_CITY
+ 			,TK_CITY_CD
+ 			,TK_CITY_NAME
+ 		FROM S_RDM_COM_POS_ADDR) ADDR
+ 		ON  ADDR.POST_CODE = MDB_HCO_MST1.YUBIN_NO
+ 		AND ADDR.ADDR_CODE_PREF = MDB_HCO_MST1.TODOFUKEN_CD
+ 		AND ADDR.ADDR_CODE_CITY = MDB_HCO_MST1.SHIKUCHOSON_CD
 
  		<if test="knrFlg == false and sosCd != null">
  		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報

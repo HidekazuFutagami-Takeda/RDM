@@ -734,5 +734,6 @@ public class RdmConstantsData {
     public static final String W063 = "W063"; // 変更前と同じ削除区分は指定出来ません。
     public static final String W064 = "W064"; // 変更前より小さい削除区分は指定出来ません。
     public static final String W065 = "W065"; // 変更前より大きい削除区分は指定出来ません。
+    public static final String W066 = "W066"; // 施設情報が変更されていません。
     public static final String I016 = "I016"; // 一時保存データを破棄しました。
 }

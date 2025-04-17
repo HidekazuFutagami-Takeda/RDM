@@ -270,7 +270,7 @@ if (stack.peek() instanceof NC203DTO) {
 					<s:hidden name="koshisetsuCheck" value="true" />
 					</s:if>
 					<s:else>
-					<s:checkbox id="koshisetsuCheck" align="right" name="koshisetsuCheck" tabIndex="-1" value="false" />
+					<s:checkbox id="koshisetsuCheck" align="right" name="koshisetsuCheck" tabIndex="-1" />
 					</s:else>
 				</td><td><nobr><label for="koshisetsuCheck">子施設を除く</label></nobr></td>
 

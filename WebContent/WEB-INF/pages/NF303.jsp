@@ -3282,7 +3282,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		<td class="comFormTableItem">急性期入院加算</td>
 	   	<td class="comFormTableItemNf012"><s:label key="preReward16Nm" /></td>
 	   	<td class="comFormTableItemNf012">
-	   	<s:if test="preReward04 != reward04">
+	   	<s:if test="preReward16 != reward16">
 			<font color="red"><s:label key="reward16Nm" /></font>
 		</s:if>
 		<s:else>

@@ -359,6 +359,176 @@ public class NF303Service extends BaseService {
 			errFlg = true;
         }
 
+        // 内容が一か所も変更されていない場合
+        if(chkEquals(indto.getInsAbbrName(),indto.getPreInsAbbrName()) &&
+        		chkEquals(indto.getInsKana(),indto.getPreInsKana()) &&
+        		chkEquals(indto.getInsFormalName(),indto.getPreInsFormalName()) &&
+        		chkEquals(indto.getTradeType(),indto.getPreTradeType()) &&
+        		chkEquals(indto.getInsOpenYear(),indto.getPreInsOpenYear()) &&
+        		chkEquals(indto.getInsOpenMonth(),indto.getPreInsOpenMonth()) &&
+        		chkEquals(indto.getInsOpenDay(),indto.getPreInsOpenDay()) &&
+        		chkEquals(indto.getWsType(),indto.getPreWsType()) &&
+        		chkEquals(indto.getBasketPurchase(),indto.getPreBasketPurchase()) &&
+        		chkEquals(indto.getUnivSubdiv(),indto.getPreUnivSubdiv()) &&
+        		chkEquals(indto.getCapaType(),indto.getPreCapaType()) &&
+        		chkEquals(indto.getWsType(),indto.getPreWsType()) &&
+        		chkEquals(indto.getUltInsCd(),indto.getPreUltInsCd()) &&
+        		chkEquals(indto.getInsPcode(),indto.getPreInsPcode()) &&
+        		chkEquals(indto.getAddrCodePref(),indto.getPreAddrCodePref()) &&
+        		chkEquals(indto.getAddrCodeCity(),indto.getPreAddrCodeCity()) &&
+        		chkEquals(indto.getInsAddrDt(),indto.getPreInsAddrDt()) &&
+        		chkEquals(indto.getTkCityCd(),indto.getPreTkCityCd()) &&
+        		chkEquals(indto.getInsPhone1(),indto.getPreInsPhone1()) &&
+        		chkEquals(indto.getInsPhone2(),indto.getPreInsPhone2()) &&
+        		chkEquals(indto.getInsFax1(),indto.getPreInsFax1()) &&
+        		chkEquals(indto.getInsFax2(),indto.getPreInsFax2()) &&
+        		chkEquals(indto.getInsUrl(),indto.getPreInsUrl()) &&
+        		chkEquals(indto.getInsUrlYmd(),indto.getPreInsUrlYmd()) &&
+        		chkEquals(indto.getFree0001(),indto.getPreFree0001()) &&
+        		chkEquals(indto.getFree0002(),indto.getPreFree0002()) &&
+        		chkEquals(indto.getFree0003(),indto.getPreFree0003()) &&
+        		chkEquals(indto.getFree0015(),indto.getPreFree0015()) &&
+        		chkEquals(indto.getFree0008(),indto.getPreFree0008()) &&
+        		chkEquals(indto.getFree0009(),indto.getPreFree0009()) &&
+        		chkEquals(indto.getFree0004(),indto.getPreFree0004()) &&
+        		chkEquals(indto.getFree0005(),indto.getPreFree0005()) &&
+        		chkEquals(indto.getFree0006(),indto.getPreFree0006()) &&
+        		chkEquals(indto.getFree0007(),indto.getPreFree0007()) &&
+        		chkEquals(indto.getFree0010(),indto.getPreFree0010()) &&
+        		chkEquals(indto.getFree0011(),indto.getPreFree0011()) &&
+        		chkEquals(indto.getFree0013(),indto.getPreFree0013()) &&
+        		chkEquals(indto.getFree0014(),indto.getPreFree0014()) &&
+        		chkEquals(indto.getFree0012(),indto.getPreFree0012()) &&
+        		chkEquals(indto.getWelfare02(),indto.getPreWelfare02()) &&
+        		chkEquals(indto.getWelfare08(),indto.getPreWelfare08()) &&
+        		chkEquals(indto.getResult01(),indto.getPreResult01()) &&
+        		chkEquals(indto.getResult02(),indto.getPreResult02()) &&
+        		chkEquals(indto.getResult03(),indto.getPreResult03()) &&
+        		chkEquals(indto.getResult04(),indto.getPreResult04()) &&
+        		chkEquals(indto.getResult05(),indto.getPreResult05()) &&
+        		chkEquals(indto.getResult06(),indto.getPreResult06()) &&
+        		chkEquals(indto.getResult07(),indto.getPreResult07()) &&
+        		chkEquals(indto.getResult08(),indto.getPreResult08()) &&
+        		chkEquals(indto.getResult09(),indto.getPreResult09()) &&
+        		chkEquals(indto.getResult10(),indto.getPreResult10()) &&
+        		chkEquals(indto.getResult11(),indto.getPreResult11()) &&
+        		chkEquals(indto.getResult12(),indto.getPreResult12()) &&
+        		chkEquals(indto.getResult13(),indto.getPreResult13()) &&
+        		chkEquals(indto.getResult14(),indto.getPreResult14()) &&
+        		chkEquals(indto.getResult15(),indto.getPreResult15()) &&
+        		chkEquals(indto.getResult16(),indto.getPreResult16()) &&
+        		chkEquals(indto.getResult17(),indto.getPreResult17()) &&
+        		chkEquals(indto.getResult18(),indto.getPreResult18()) &&
+        		chkEquals(indto.getResult19(),indto.getPreResult19()) &&
+        		chkEquals(indto.getResult20(),indto.getPreResult20()) &&
+        		chkEquals(indto.getResult21(),indto.getPreResult21()) &&
+        		chkEquals(indto.getResult22(),indto.getPreResult22()) &&
+        		chkEquals(indto.getResult23(),indto.getPreResult23()) &&
+        		chkEquals(indto.getResult24(),indto.getPreResult24()) &&
+        		chkEquals(indto.getResult25(),indto.getPreResult25()) &&
+        		chkEquals(indto.getResult26(),indto.getPreResult26()) &&
+        		chkEquals(indto.getResult27(),indto.getPreResult27()) &&
+        		chkEquals(indto.getResult28(),indto.getPreResult28()) &&
+        		chkEquals(indto.getResult29(),indto.getPreResult29()) &&
+        		chkEquals(indto.getResult30(),indto.getPreResult30()) &&
+        		chkEquals(indto.getResult31(),indto.getPreResult31()) &&
+        		chkEquals(indto.getResult32(),indto.getPreResult32()) &&
+        		chkEquals(indto.getResult33(),indto.getPreResult33()) &&
+        		chkEquals(indto.getResult34(),indto.getPreResult34()) &&
+        		chkEquals(indto.getResult35(),indto.getPreResult35()) &&
+        		chkEquals(indto.getResult36(),indto.getPreResult36()) &&
+        		chkEquals(indto.getEquip01(),indto.getPreEquip01()) &&
+        		chkEquals(indto.getEquip02(),indto.getPreEquip02()) &&
+        		chkEquals(indto.getEquip03(),indto.getPreEquip03()) &&
+        		chkEquals(indto.getEquip07(),indto.getPreEquip07()) &&
+        		chkEquals(indto.getEquip09(),indto.getPreEquip09()) &&
+        		chkEquals(indto.getMarket01(),indto.getPreMarket01()) &&
+        		chkEquals(indto.getMarket02(),indto.getPreMarket02()) &&
+        		chkEquals(indto.getMarket03(),indto.getPreMarket03()) &&
+        		chkEquals(indto.getMarket04(),indto.getPreMarket04()) &&
+        		chkEquals(indto.getMarket06(),indto.getPreMarket06()) &&
+        		chkEquals(indto.getMarket07(),indto.getPreMarket07()) &&
+        		chkEquals(indto.getMarket09(),indto.getPreMarket09()) &&
+        		chkEquals(indto.getMedical12(),indto.getPreMedical12()) &&
+        		chkEquals(indto.getSpfunc01(),indto.getPreSpfunc01()) &&
+        		chkEquals(indto.getSpfunc03(),indto.getPreSpfunc03()) &&
+        		chkEquals(indto.getSpfunc04(),indto.getPreSpfunc04()) &&
+        		chkEquals(indto.getTieup10(),indto.getPreTieup10()) &&
+        		chkEquals(indto.getTieup11(),indto.getPreTieup11()) &&
+        		chkEquals(indto.getTieup12(),indto.getPreTieup12()) &&
+        		chkEquals(indto.getUsercd0001(),indto.getPreUsercd0001()) &&
+        		chkEquals(indto.getUsercd0002(),indto.getPreUsercd0002()) &&
+        		chkEquals(indto.getUsercd0003(),indto.getPreUsercd0003()) &&
+        		chkEquals(indto.getUsercd0004(),indto.getPreUsercd0004()) &&
+        		chkEquals(indto.getUsercd0005(),indto.getPreUsercd0005()) &&
+        		chkEquals(indto.getUsercd0006(),indto.getPreUsercd0006()) &&
+        		chkEquals(indto.getUsercd0007(),indto.getPreUsercd0007()) &&
+        		chkEquals(indto.getUsercd0008(),indto.getPreUsercd0008()) &&
+        		chkEquals(indto.getUsercd0009(),indto.getPreUsercd0009()) &&
+        		chkEquals(indto.getUsercd0010(),indto.getPreUsercd0010()) &&
+        		chkEquals(indto.getUsercd0011(),indto.getPreUsercd0011()) &&
+        		chkEquals(indto.getUsercd0012(),indto.getPreUsercd0012()) &&
+        		chkEquals(indto.getUsercd0013(),indto.getPreUsercd0013()) &&
+        		chkEquals(indto.getUsercd0014(),indto.getPreUsercd0014()) &&
+        		chkEquals(indto.getUsercd0015(),indto.getPreUsercd0015()) &&
+        		chkEquals(indto.getUsercd0016(),indto.getPreUsercd0016()) &&
+        		chkEquals(indto.getUsercd0017(),indto.getPreUsercd0017()) &&
+        		chkEquals(indto.getUsercd0018(),indto.getPreUsercd0018()) &&
+        		chkEquals(indto.getUsercd0019(),indto.getPreUsercd0019()) &&
+        		chkEquals(indto.getUsercd0020(),indto.getPreUsercd0020()) &&
+        		chkEquals(indto.getUsercd0021(),indto.getPreUsercd0021()) &&
+        		chkEquals(indto.getUsercd0022(),indto.getPreUsercd0022()) &&
+        		chkEquals(indto.getUsercd0023(),indto.getPreUsercd0023()) &&
+        		chkEquals(indto.getUsercd0024(),indto.getPreUsercd0024()) &&
+        		chkEquals(indto.getUsercd0025(),indto.getPreUsercd0025()) &&
+        		chkEquals(indto.getUsercd0026(),indto.getPreUsercd0026()) &&
+        		chkEquals(indto.getUsercd0027(),indto.getPreUsercd0027()) &&
+        		chkEquals(indto.getUsercd0028(),indto.getPreUsercd0028()) &&
+        		chkEquals(indto.getUsercd0029(),indto.getPreUsercd0029()) &&
+        		chkEquals(indto.getUsercd0030(),indto.getPreUsercd0030()) &&
+        		chkEquals(indto.getUsercd0031(),indto.getPreUsercd0031()) &&
+        		chkEquals(indto.getUsercd0032(),indto.getPreUsercd0032()) &&
+        		chkEquals(indto.getUsercd0033(),indto.getPreUsercd0033()) &&
+        		chkEquals(indto.getUsercd0034(),indto.getPreUsercd0034()) &&
+        		chkEquals(indto.getUsercd0035(),indto.getPreUsercd0035()) &&
+        		chkEquals(indto.getUsercd0036(),indto.getPreUsercd0036()) &&
+        		chkEquals(indto.getUsercd0101(),indto.getPreUsercd0101()) &&
+        		chkEquals(indto.getUsercd0102(),indto.getPreUsercd0102()) &&
+        		chkEquals(indto.getUsercd0103(),indto.getPreUsercd0103()) &&
+        		chkEquals(indto.getUsercd0104(),indto.getPreUsercd0104()) &&
+        		chkEquals(indto.getUsercd0105(),indto.getPreUsercd0105()) &&
+        		chkEquals(indto.getUsercd0106(),indto.getPreUsercd0106()) &&
+        		chkEquals(indto.getUsercd0107(),indto.getPreUsercd0107()) &&
+        		chkEquals(indto.getUsercd0108(),indto.getPreUsercd0108()) &&
+        		chkEquals(indto.getUsercd0109(),indto.getPreUsercd0109()) &&
+        		chkEquals(indto.getUsercd0201(),indto.getPreUsercd0201()) &&
+        		chkEquals(indto.getUsercd0202(),indto.getPreUsercd0202()) &&
+        		chkEquals(indto.getUsercd0203(),indto.getPreUsercd0203()) &&
+        		chkEquals(indto.getUsercd0204(),indto.getPreUsercd0204()) &&
+        		chkEquals(indto.getUsercd0205(),indto.getPreUsercd0205()) &&
+        		chkEquals(indto.getUsercd0206(),indto.getPreUsercd0206()) &&
+        		chkEquals(indto.getReward04(),indto.getPreReward04()) &&
+        		chkEquals(indto.getReward05(),indto.getPreReward05()) &&
+        		chkEquals(indto.getReward08(),indto.getPreReward08()) &&
+        		chkEquals(indto.getReward09(),indto.getPreReward09()) &&
+        		chkEquals(indto.getReward18(),indto.getPreReward18()) &&
+        		chkEquals(indto.getReward21(),indto.getPreReward21()) &&
+        		chkEquals(indto.getReward23(),indto.getPreReward23()) &&
+        		chkEquals(indto.getReward25(),indto.getPreReward25()) &&
+        		chkEquals(indto.getReward26(),indto.getPreReward26()) &&
+        		chkEquals(indto.getReward27(),indto.getPreReward27()) &&
+        		chkEquals(indto.getReward29(),indto.getPreReward29()) &&
+        		chkEquals(indto.getReward35(),indto.getPreReward35()) &&
+        		chkEquals(indto.getReward36(),indto.getPreReward36()) &&
+        		chkEquals(indto.getReward37(),indto.getPreReward37()) &&
+        		chkEquals(indto.getReward44(),indto.getPreReward44()) &&
+        		chkEquals(indto.getReward16(),indto.getPreReward16()) &&
+        		chkEquals(indto.getReward17(),indto.getPreReward17())) {
+        	// 施設情報が変更されていません。
+			errMsg += loginInfo.getMsgData(RdmConstantsData.W066) + "\n";
+        	errFlg = true;
+        }
+
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
         if(indto.getUpdShaYmd() != null && !indto.getUpdShaYmd().equals("")) {
         	TRdmReqKnrEntity tRdmReqKnrChkEntity = new TRdmReqKnrEntity("selectNF011DateChkData");
@@ -1596,5 +1766,21 @@ public class NF303Service extends BaseService {
     	}
 
     	return true;
+	}
+
+    /**
+     * 変更無チェック
+     * @param pcode
+     * @return
+     */
+    public static boolean chkEquals(String value1, String value2){
+    	if(StringUtils.isEmpty(value1)) {
+    		if(StringUtils.isEmpty(value2)) {
+    			return true;
+    		}
+    	} else if (value1.equals(value2)) {
+    		return true;
+    	}
+    	return false;
 	}
 }

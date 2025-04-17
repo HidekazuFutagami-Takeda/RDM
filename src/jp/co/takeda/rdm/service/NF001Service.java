@@ -630,7 +630,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg5) && "1".equals(editValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg5("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg5("1");
         		} else {
         			dataRecord.setFuncFlg5("0");
@@ -656,7 +656,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg7) && "1".equals(editValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg7("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg7("1");
         		} else {
         			dataRecord.setFuncFlg7("0");

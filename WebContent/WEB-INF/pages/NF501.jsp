@@ -29,7 +29,6 @@
 <head>
 	<title>NF501_施設変更履歴</title>
 
-	<link href="WebContent/css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
 	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
@@ -74,7 +73,7 @@
 		/*検索結果テーブルを囲むdiv名*/
 		.kensakuDate {
 			height: 370px;
-			width: 1400px;
+			width: 1200px;
 			overflow: auto;
 			-webkit-overflow-scrolling: touch;
 		}
@@ -321,6 +320,13 @@
     </tbody>
     </table>
 <%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+
+ <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
 		<!-- エラー表示部  開始 -->
 		<table width="100%">
    		<tr>
@@ -333,25 +339,6 @@
       </table>
 		<!-- エラー表示部  終了 -->
 
-		<script>
-
-		</script>
-		<center/>
-		<!-- エラー表示部  終了 -->
-		<script>
-		const jgiNameUser = document.getElementById('jgiNameUser');
-		jgiNameUser.disabled = true;
-
-		const sosNameUser = document.getElementById('sosNameUser');
-		sosNameUser.disabled = true;
-
-		const kensakuReqDistUser = document.getElementById('kensakuReqDistUser');
-		kensakuReqDistUser.disabled = true;
-
-		const kensakuReqJgiNameUser = document.getElementById('kensakuReqJgiNameUser');
-		kensakuReqJgiNameUser.disabled = true;
-		</script>
-
 		<%-- 検索部 開始 --%>
      	<table class="pupList" style="margin-top:3pt;margin-bottom:1pt; background-color: white;">
 
@@ -361,7 +348,7 @@
 		          <!-- ユーザー権限の場合 -->
 		          <s:if test="%{jokenSetCd == 0}">
 		          	<td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>担当者組織  </nobr>
+			          	<nobr>組織  </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
@@ -376,7 +363,7 @@
 		          <!-- 管理者権限の場合 -->
 		          <s:else>
 		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>担当者組織 </nobr>
+		          		<nobr>組織 </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
@@ -542,16 +529,12 @@
 	            <%-- JIS市区町村 --%>
 	            <td class="comTableSearchItem" style="width:50pt;">
 	            	<nobr>JIS市区町村 </nobr>
-	            	<td><nobr></nobr></td>
 	            </td>
+	            	<td><nobr></nobr></td>
 	            <td>
 	            	<s:select class="jkrCityNameCd" id="jkrCityNameCd" name="kensakuAddrCodeCity" cssStyle="width:80pt" list ="jkrCityNameMap" />
 	            </td>
 	        </tr>
-
-	        <script>
-
-	        </script>
 
 	        <tr>
 	             <%-- 住所(全角) --%>
@@ -559,13 +542,13 @@
 		          	<nobr>住所(全角) </nobr>
 		          </td>
 		          <td><nobr></nobr></td>
-		          <td  colspan="3">
+		          <td  colspan="4">
 		          	<s:textfield id="kensakuInsAddr" name="kensakuInsAddr" size="20" maxlength="128" style="width:500px;"/>
 		          </td>
 	        </tr>
 	        <tr>
 	            <%-- 更新日 --%>
-		          <td class="comTableSearchItem" style="width:50pt;"">
+		          <td class="comTableSearchItem" style="width:50pt;">
 		          	<nobr>更新日 </nobr>
 		          </td>
 		          <td><nobr></nobr></td>
@@ -575,9 +558,8 @@
 		          	<input type="date" name="kensakuUpdMstTo" id="updMstTo" value="${updMstTo}" pattern="yyyy-MM-dd" />
 		          </td>
 	        </tr>
-	        <table>
-	        	<tr>
-	              <td align="right" colspan="3">
+	        <tr>
+	              <td align="center" colspan="9">
 	             	 <!-- 検索ボタン -->
 	                <input type="button" name="search" value="検索" onclick="jimSearch();">
 	                &nbsp;
@@ -590,91 +572,31 @@
 					<s:select id="selectListChange" name="selectListChange" list ="selectListChangeMap" />
 	              </td>
 		        </tr>
-	        </table>
 		</s:form>
 	    </table>
 	<%-- 検索部 終了 --%>
 
-
-	<%-- ページ情報 --%>
-	<CENTER>
-		 <%-- ページャー表示 開始 --%>
-                 <!-- 改ページ -->
-                 <s:if test="searchType == 1 ">
-                  <table width="95%" style="text-align: center;" >
-                      <tbody>
-                      <tr>
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
-
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0',1,'2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur+1"/>);return false;">
-                                 	 次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                 </s:if>
+<%-- ページャー表示 開始 --%>
+          <s:if test='pageFlag == "1" '>
+          </s:if>
+		<s:else>
+          	<table width="80%">
+          		<tr>
+                    <td align="right">
+                      <jsp:include page="common/rdmPage.jsp">
+                      <jsp:param name="" value="" />
+                      </jsp:include>
+                    </td>
+                </tr>
+             </table>
+          </s:else>
           <%-- ページャー表示 終了 --%>
 
 	    <%-- 項目 --%>
 	    <s:if test="searchType == 1 ">
 	    	<!-- 施設一覧　検索結果 -->
 	    	<s:if test="selectListChange == 0 ">
-	    		<div style="width:1400px; text-algin">
+	    		<div style="width:1200px; text-align:right">
 	    			<a id="Btton" onclick="show();">
 		            		全項目展開>>
 	            	</a>
@@ -1602,11 +1524,6 @@
 	    	</s:if>
 
 	    </s:if>
-    </table>
-
-
-
-	</CENTER>
 
 	<%-- メイン部 一覧 終了 --%>
 
@@ -1614,11 +1531,12 @@
     <hr class="comSplit" />
 	<%--ヘッダー部　開始 --%>
 	<table>
+		<tr>
 		<!-- 検索ボタン -->
 		<td>
 			<input type="button" value="戻る" onclick="" />
 		</td>
-
+		</tr>
 	</table>
 
 	 </tr>
@@ -1629,6 +1547,7 @@
   </td>
     </tr>
     </table>
+
 <%-- input用フォーム 終了 --%>
 <jsp:include page="common/jkrBottom.jsp" flush="true" />
 <%-- input用フォーム 終了 --%>

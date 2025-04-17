@@ -890,7 +890,7 @@ function NC011Seni() {
 		nc001Tab = window.open("","NC011Tab");
 		document.fm1.target="NC011Tab";
 
-		fm1.screenId.value='ND013';
+		fm1.screenId.value='ND101';
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();
@@ -905,7 +905,7 @@ function NC011Seni() {
 		nc001Tab = window.open("","NC011Tab");
 		document.fm1.target="NC011Tab";
 
-		fm1.screenId.value='ND013';
+		fm1.screenId.value='ND101';
 		fm1.functionId.value="Init";
 		comSubmitForAnyWarp(fm1);
 		comClickFlgInit();

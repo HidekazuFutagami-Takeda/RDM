@@ -122,6 +122,13 @@ public class NF305Service extends BaseService {
 			errFlg = true;
         }
 
+        // 削除区分が変更前より小さい
+        if("2".equals(indto.getPreDelKbn()) && "1".equals(indto.getDelKbn())) {
+        	// 変更前より小さい削除区分は指定出来ません
+        	errMsg += loginInfo.getMsgData(RdmConstantsData.W064) + "\n";
+			errFlg = true;
+        }
+
         // 削除理由にその他が選択されている状態で、申請コメントに値が入力されていない
         if("05".equals(indto.getDelReason()) && (indto.getReqComment() == null || indto.getReqComment().isEmpty())) {
         	// 申請理由がその他の場合、申請コメントを入力してください。

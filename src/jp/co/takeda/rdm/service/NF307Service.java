@@ -108,6 +108,13 @@ public class NF307Service extends BaseService {
 			errFlg = true;
         }
 
+        // 削除区分が変更前より大きい
+        if("1".equals(indto.getPreDelKbn()) && "2".equals(indto.getDelKbn())) {
+        	// 変更前より大きい削除区分は指定出来ません
+        	errMsg += loginInfo.getMsgData(RdmConstantsData.W065) + "\n";
+			errFlg = true;
+        }
+
         // 復活理由にその他が選択されている状態で、申請コメントに値が入力されていない
         if("04".equals(indto.getRstReason()) && (indto.getReqComment() == null || indto.getReqComment().isEmpty())) {
         	// 申請理由がその他の場合、申請コメントを入力してください。
@@ -199,7 +206,7 @@ public class NF307Service extends BaseService {
         LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
         mapDelKbn.put("", "--選択してください--");
         for (SelectComboListEntity outEntity : outMainList) {
-        	if("0".equals(outEntity.getValue()) || "1".equals(outEntity.getValue())) {
+        	if(!"3".equals(outEntity.getValue())) {
         		mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
         	}
         }

@@ -226,7 +226,7 @@ public class NF014Service extends BaseService {
         LinkedHashMap<String, String> mapDelKbn = new LinkedHashMap<String, String>();
         mapDelKbn.put("", "--選択してください--");
         for (SelectComboListEntity outEntity : outMainList) {
-        	if("0".equals(outEntity.getValue()) || "1".equals(outEntity.getValue())) {
+        	if(!"3".equals(outEntity.getValue())) {
         		mapDelKbn.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
         	}
         }

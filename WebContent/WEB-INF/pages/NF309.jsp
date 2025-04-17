@@ -56,19 +56,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
 	// 戻るボタン
     function backBtn(){
-    	document.fm1.target="";
-		const preScreenId = document.fm1.preScreenId.value;
-		if(preScreenId == "NF001"){
-			if(window.confirm("施設検索画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				window.close();
-			}
-		} else if(preScreenId == "NC011"){
-			if(window.confirm("申請一覧画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-				window.close();
-			}
-		} else {
-			window.close();
-		}
+    	document.fm1.screenId.value="NF101";
+		document.fm1.functionId.value="Init";
+
+		comSubmitForAnyWarp(fm1);
+
     }
 
     // 却下ボタン

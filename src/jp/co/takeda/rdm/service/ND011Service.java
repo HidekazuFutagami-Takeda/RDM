@@ -105,6 +105,16 @@ public class ND011Service extends BaseService {
 				indto.setUltDocNo(StringUtils.nvl(mainDataEntity.getUltDocNo(), ""));
 				indto.setUltDocNm(StringUtils.nvl(mainDataEntity.getUltDocNm(), ""));
 				indto.setUltDocKana(StringUtils.nvl(mainDataEntity.getUltDocKana(), ""));
+
+				// 医師/薬剤師区分
+				if("DCF".equals(mainDataEntity.getMdbKbn())) {
+					// 医師
+					indto.setDocType("1");
+				} else if("PCF".equals(mainDataEntity.getMdbKbn())) {
+					// 薬剤師
+					indto.setDocType("2");
+				}
+
 				indto.setSexCd(StringUtils.nvl(mainDataEntity.getSexCd(), ""));
 				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));

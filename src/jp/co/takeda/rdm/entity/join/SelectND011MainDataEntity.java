@@ -387,6 +387,12 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String reqChl;
 
+	/**
+	 * MDB区分
+	 * @generated
+	 */
+	private String mdbKbn;
+
     /**
      * コンストラクタ
      * @generated
@@ -1301,6 +1307,21 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setReqChl(String reqChl) {
 		this.reqChl = reqChl;
+	}
+
+	/**
+	 * SelectND011MainDataEntity.javamdbKbnを設定
+	 * @return mdbKbn
+	 */
+	public String getMdbKbn() {
+		return mdbKbn;
+	}
+
+	/**
+	 * @param mdbKbn セットする mdbKbn
+	 */
+	public void setMdbKbn(String mdbKbn) {
+		this.mdbKbn = mdbKbn;
 	}
 
 	/**

@@ -996,7 +996,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && reqStsCd == "11")}'>
+				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && (reqStsCd == "11" || reqStsCd == "13"))}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="register('4');return false;" />
 				</s:if>
 				<s:else>

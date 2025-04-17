@@ -522,12 +522,12 @@
  			AND (HCO_MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%' --施設名（半角カナ）
  			OR MDB_HCO_MST1.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
  		</if>
- 		<if test="kensakuDelFlg != null ">AND (HCO_MST.DEL_FLG = #{kensakuDelFlg} OR X.ULT_FLG = '1') --削除フラグ</if>
- 		<if test="insNoSrch != null">AND (HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%' OR X.ULT_FLG = '1') --施設固定コード</if>
- 		<if test="kensakuManageCd != null">AND (HCO_MST.MANAGE_CD = #{kensakuManageCd} OR X.ULT_FLG = '1') --経営主体コード</if>
- 		<if test="kensakuHoInsType != null ">AND (HCO_MST.HO_INS_TYPE = #{kensakuHoInsType} OR X.ULT_FLG = '1') --対象区分</if>
- 		<if test="kensakuInsSbt != null ">AND (HCO_MST.INS_SBT = #{kensakuInsSbt} OR X.ULT_FLG = '1') --施設種別</if>
- 		<if test="pharmType != null ">AND (HCO_MST.PHARM_TYPE = #{pharmType} OR X.ULT_FLG = '1') --施設区分</if>
+ 		<if test="kensakuDelFlg != null ">AND (HCO_MST.DEL_FLG = #{kensakuDelFlg} OR MDB_HCO_MST1.DEL_FLG = #{kensakuDelFlg}) --削除フラグ</if>
+ 		<if test="insNoSrch != null">AND (HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%') --施設固定コード</if>
+ 		<if test="kensakuManageCd != null">AND (HCO_MST.MANAGE_CD = #{kensakuManageCd} OR MDB_HCO_MST1.KEIEITAI_CD = #{kensakuManageCd}) --経営主体コード</if>
+ 		<if test="kensakuHoInsType != null ">AND (HCO_MST.HO_INS_TYPE = #{kensakuHoInsType}) --対象区分</if>
+ 		<if test="kensakuInsSbt != null ">AND (HCO_MST.INS_SBT = #{kensakuInsSbt}) --施設種別</if>
+ 		<if test="pharmType != null ">AND (HCO_MST.PHARM_TYPE = #{pharmType}) --施設区分</if>
  		<if test="phone1 != null">
  			AND (HCO_MST.INS_PHONE_SRCH LIKE '%' ||#{phone1}|| '%' --電話番号
  			OR MDB_HCO_MST1.SHISETSU_TEL_SRCH LIKE '%' ||#{phone1}|| '%')
@@ -536,14 +536,14 @@
  			AND (HCO_MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%' --郵便番号
  			OR MDB_HCO_MST1.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
  		</if>
- 		<if test="koshisetsuCheck == true">AND (HCO_MST.MAIN_INS_NO IS NULL OR X.ULT_FLG = '1') --子施設を除く</if>
- 		<if test="kensakuAddrCodePref != null">AND (HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} OR X.ULT_FLG = '1') --JIS府県コード</if>
- 		<if test="kensakuAddrCodeCity != null">AND (HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} OR X.ULT_FLG = '1') --JIS市区町村コード</if>
+ 		<if test="koshisetsuCheck == true">AND (HCO_MST.MAIN_INS_NO IS NULL) --子施設を除く</if>
+ 		<if test="kensakuAddrCodePref != null">AND (HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} OR MDB_HCO_MST1.TODOFUKEN_CD = #{kensakuAddrCodePref}) --JIS府県コード</if>
+ 		<if test="kensakuAddrCodeCity != null">AND (HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} OR MDB_HCO_MST1.SHIKUCHOSON_CD = #{kensakuAddrCodeCity}) --JIS市区町村コード</if>
  		<if test="address != null">
  			AND (HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所
  			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
  		</if>
- 		<if test="ultNo != null">AND (HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' OR X.ULT_FLG = '1') --ULTコード</if>
+ 		<if test="ultNo != null">AND (HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' OR MDB_HCO_MST1.DCF_SHISETSU_CD LIKE '%' ||#{ultNo}|| '%') --ULTコード</if>
  		<if test="knrFlg == false">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
  			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
@@ -791,12 +791,12 @@
  			AND (HCO_MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%' --施設名（半角カナ）
  			OR MDB_HCO_MST1.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
  		</if>
- 		<if test="kensakuDelFlg != null ">AND (HCO_MST.DEL_FLG = #{kensakuDelFlg} OR X.ULT_FLG = '1') --削除フラグ</if>
- 		<if test="insNoSrch != null">AND (HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%' OR X.ULT_FLG = '1') --施設固定コード</if>
- 		<if test="kensakuManageCd != null">AND (HCO_MST.MANAGE_CD = #{kensakuManageCd} OR X.ULT_FLG = '1') --経営主体コード</if>
- 		<if test="kensakuHoInsType != null ">AND (HCO_MST.HO_INS_TYPE = #{kensakuHoInsType} OR X.ULT_FLG = '1') --対象区分</if>
- 		<if test="kensakuInsSbt != null ">AND (HCO_MST.INS_SBT = #{kensakuInsSbt} OR X.ULT_FLG = '1') --施設種別</if>
- 		<if test="pharmType != null ">AND (HCO_MST.PHARM_TYPE = #{pharmType} OR X.ULT_FLG = '1') --施設区分</if>
+ 		<if test="kensakuDelFlg != null ">AND (HCO_MST.DEL_FLG = #{kensakuDelFlg} OR MDB_HCO_MST1.DEL_FLG = #{kensakuDelFlg}) --削除フラグ</if>
+ 		<if test="insNoSrch != null">AND (HCO_MST.INS_NO LIKE '%' ||#{insNoSrch}|| '%') --施設固定コード</if>
+ 		<if test="kensakuManageCd != null">AND (HCO_MST.MANAGE_CD = #{kensakuManageCd} OR MDB_HCO_MST1.KEIEITAI_CD = #{kensakuManageCd}) --経営主体コード</if>
+ 		<if test="kensakuHoInsType != null ">AND (HCO_MST.HO_INS_TYPE = #{kensakuHoInsType}) --対象区分</if>
+ 		<if test="kensakuInsSbt != null ">AND (HCO_MST.INS_SBT = #{kensakuInsSbt}) --施設種別</if>
+ 		<if test="pharmType != null ">AND (HCO_MST.PHARM_TYPE = #{pharmType}) --施設区分</if>
  		<if test="phone1 != null">
  			AND (HCO_MST.INS_PHONE_SRCH LIKE '%' ||#{phone1}|| '%' --電話番号
  			OR MDB_HCO_MST1.SHISETSU_TEL_SRCH LIKE '%' ||#{phone1}|| '%')
@@ -805,14 +805,14 @@
  			AND (HCO_MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%' --郵便番号
  			OR MDB_HCO_MST1.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
  		</if>
- 		<if test="koshisetsuCheck == true">AND (HCO_MST.MAIN_INS_NO IS NULL OR X.ULT_FLG = '1') --子施設を除く</if>
- 		<if test="kensakuAddrCodePref != null">AND (HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} OR X.ULT_FLG = '1') --JIS府県コード</if>
- 		<if test="kensakuAddrCodeCity != null">AND (HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} OR X.ULT_FLG = '1') --JIS市区町村コード</if>
+ 		<if test="koshisetsuCheck == true">AND (HCO_MST.MAIN_INS_NO IS NULL) --子施設を除く</if>
+ 		<if test="kensakuAddrCodePref != null">AND (HCO_MST.ADDR_CODE_PREF = #{kensakuAddrCodePref} OR MDB_HCO_MST1.TODOFUKEN_CD = #{kensakuAddrCodePref}) --JIS府県コード</if>
+ 		<if test="kensakuAddrCodeCity != null">AND (HCO_MST.ADDR_CODE_CITY = #{kensakuAddrCodeCity} OR MDB_HCO_MST1.SHIKUCHOSON_CD = #{kensakuAddrCodeCity}) --JIS市区町村コード</if>
  		<if test="address != null">
  			AND (HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%' --住所
  			OR HCO_MST.INS_ADDR_SRCH LIKE '%' ||#{address}|| '%')
  		</if>
- 		<if test="ultNo != null">AND (HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' OR X.ULT_FLG = '1') --ULTコード</if>
+ 		<if test="ultNo != null">AND (HCO_MST.ULT_INS_NO LIKE '%' ||#{ultNo}|| '%' OR MDB_HCO_MST1.DCF_SHISETSU_CD LIKE '%' ||#{ultNo}|| '%') --ULTコード</if>
  		<if test="knrFlg == false">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
  			<if test="jgiNo != null">--AND MR_INS_TRT1.JGI_NO = #{jgiNo}</if>
@@ -951,6 +951,7 @@
  			, TKD.INS_ADDR_SRCH
  			, ULT.ADDRESS_SRCH
  			, TKD.ULT_INS_NO
+ 			, ULT.DEL_FLG AS ULT_DEL_FLG
  			FROM
  			M_RDM_HCO_MST TKD -- 施設_基本情報 武田施設すべて
  			LEFT JOIN
@@ -997,6 +998,7 @@
  			, null AS INS_ADDR_SRCH
  			, ADDRESS_SRCH
  			, null AS ULT_INS_NO
+ 			, DEL_FLG AS ULT_DEL_FLG
  			FROM
  			T_RDM_M_MDB_HCO_MST HMDB -- ULT_MDB施設マスタ
  			WHERE 1=1
@@ -1142,9 +1144,9 @@
  			AND (MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%'
  			OR	MST.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
  		</if>
- 		<if test="delFlg != null">AND MST.DEL_FLG = #{delFlg}</if>
+ 		<if test="delFlg != null">AND (MST.DEL_FLG = #{delFlg} OR MST.ULT_DEL_FLG = #{delFlg})</if>
  		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
- 		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
+ 		<if test="keieitai != null">AND (MST.MANAGE_CD = #{keieitai} OR MST.KEIEITAI_CD = #{keieitai})</if>
  		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
  		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
  		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
@@ -1156,13 +1158,13 @@
  			AND (MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%'
  			OR	MST.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
  		</if>
- 		<if test="addrCodePref != null">AND MST.ADDR_CODE_PREF = #{addrCodePref}</if>
- 		<if test="addrCodeCity != null">AND MST.ADDR_CODE_CITY = #{addrCodeCity}</if>
+ 		<if test="addrCodePref != null">AND (MST.ADDR_CODE_PREF = #{addrCodePref} OR MST.TODOFUKEN_CD = #{addrCodePref})</if>
+ 		<if test="addrCodeCity != null">AND (MST.ADDR_CODE_CITY = #{addrCodeCity} OR MST.SHIKUCHOSON_CD = #{addrCodeCity})</if>
  		<if test="insAddrSrch != null">
  			AND (MST.INS_ADDR_SRCH LIKE '%' ||#{insAddrSrch}|| '%'
  			OR	MST.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
  		</if>
- 		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
+ 		<if test="ultInsNo != null">AND (MST.ULT_INS_NO = #{ultInsNo} OR MST.DCF_SHISETSU_CD = #{ultInsNo})</if>
  		<if test="sosCd != null">
  			<if test="bumonRank == 2">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
  			<if test="bumonRank == 3">AND JGI_A.SOS_CD = #{sosCd}</if>
@@ -1226,6 +1228,7 @@
  			, TKD.INS_ADDR_SRCH
  			, ULT.ADDRESS_SRCH
  			, TKD.ULT_INS_NO
+ 			, ULT.DEL_FLG AS ULT_DEL_FLG
  			FROM
  			M_RDM_HCO_MST TKD -- 施設_基本情報 武田施設すべて
  			LEFT JOIN
@@ -1272,6 +1275,7 @@
  			, null AS INS_ADDR_SRCH
  			, ADDRESS_SRCH
  			, null AS ULT_INS_NO
+ 			, DEL_FLG AS ULT_DEL_FLG
  			FROM
  			T_RDM_M_MDB_HCO_MST HMDB -- ULT_MDB施設マスタ
  			WHERE 1=1
@@ -1417,9 +1421,9 @@
  			AND (MST.INS_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%'
  			OR	MST.SHISETSU_NM_KANA_SRCH LIKE '%' ||#{insKanaSrch}|| '%')
  		</if>
- 		<if test="delFlg != null">AND MST.DEL_FLG = #{delFlg}</if>
+ 		<if test="delFlg != null">AND (MST.DEL_FLG = #{delFlg} OR MST.ULT_DEL_FLG = #{delFlg})</if>
  		<if test="insNo != null">AND MST.INS_NO = #{insNo}</if>
- 		<if test="keieitai != null">AND MST.MANAGE_CD = #{keieitai}</if>
+ 		<if test="keieitai != null">AND (MST.MANAGE_CD = #{keieitai} OR MST.KEIEITAI_CD = #{keieitai})</if>
  		<if test="hoInsType != null">AND MST.HO_INS_TYPE = #{hoInsType}</if>
  		<if test="insType != null">AND MST.INS_SBT = #{insType}</if>
  		<if test="pharmType != null">AND MST.PHARM_TYPE = #{pharmType}</if>
@@ -1431,13 +1435,13 @@
  			AND (MST.INS_PCODE LIKE '%' ||#{insPcode}|| '%'
  			OR	MST.YUBIN_NO LIKE '%' ||#{insPcode}|| '%')
  		</if>
- 		<if test="addrCodePref != null">AND MST.ADDR_CODE_PREF = #{addrCodePref}</if>
- 		<if test="addrCodeCity != null">AND MST.ADDR_CODE_CITY = #{addrCodeCity}</if>
+ 		<if test="addrCodePref != null">AND (MST.ADDR_CODE_PREF = #{addrCodePref} OR MST.TODOFUKEN_CD = #{addrCodePref})</if>
+ 		<if test="addrCodeCity != null">AND (MST.ADDR_CODE_CITY = #{addrCodeCity} OR MST.SHIKUCHOSON_CD = #{addrCodeCity})</if>
  		<if test="insAddrSrch != null">
  			AND (MST.INS_ADDR_SRCH LIKE '%' ||#{insAddrSrch}|| '%'
  			OR	MST.ADDRESS_SRCH LIKE '%' ||#{insAddrSrch}|| '%')
  		</if>
- 		<if test="ultInsNo != null">AND MST.ULT_INS_NO = #{ultInsNo}</if>
+ 		<if test="ultInsNo != null">AND (MST.ULT_INS_NO = #{ultInsNo} OR MST.DCF_SHISETSU_CD = #{ultInsNo})</if>
  		<if test="sosCd != null">
  			<if test="bumonRank == 2">AND JGI_A.UP_SOS_CD = #{sosCd}</if>
  			<if test="bumonRank == 3">AND JGI_A.SOS_CD = #{sosCd}</if>

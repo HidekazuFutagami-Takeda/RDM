@@ -202,7 +202,7 @@ if (stack.peek() instanceof NC203DTO) {
 					<s:textfield id="insKanaSrch" size="20" maxlength="14" name="insKanaSrch" style="ime-mode:inactive;" />
 				</td>
 				<%-- 削除フラグ --%>
-				<td class="pupControlItem"><nobr>&nbsp;削除フラグ</nobr></td>
+				<td class="pupControlItem"><nobr>&nbsp;削除フラグ※</nobr></td>
 				<td>
 					<s:select id="delFlg" name="kensakuDelFlg" cssStyle="width:80pt" list ="delFlgMap" />
 				</td>
@@ -215,7 +215,7 @@ if (stack.peek() instanceof NC203DTO) {
 				</td>
 				<s:if test="viewKbn == 1">
 					<%-- ULTコード --%>
-					<td class="pupControlItem"><nobr>&nbsp;ULTコード</nobr></td>
+					<td class="pupControlItem"><nobr>&nbsp;ULTコード※</nobr></td>
 					<td>
 						<s:textfield id="ultNo" size="20" maxlength="14" name="ultNo" style="ime-mode:inactive;" />
 					</td>
@@ -226,7 +226,7 @@ if (stack.peek() instanceof NC203DTO) {
 					<td>&nbsp;</td>
 				</s:else>
 				<%-- 経営主体 --%>
-				<td class="pupControlItem"><nobr>&nbsp;経営主体</nobr></td>
+				<td class="pupControlItem"><nobr>&nbsp;経営主体※</nobr></td>
 				<td>
 					<s:select id="hcoKeieitai" name="kensakuManageCd" cssStyle="width:80pt" list ="hcoKeieitaiMap" />
 				</td>
@@ -279,7 +279,7 @@ if (stack.peek() instanceof NC203DTO) {
 			<tr>
 				<%-- 都道府県 --%>
 				<td class="comTableSearchItem">
-				<nobr>&nbsp;都道府県 </nobr>
+				<nobr>&nbsp;都道府県※</nobr>
 				</td>
 				<td>
 				<span onchange="sosAddrChange();addrCodeCityChange(); return false;">
@@ -289,7 +289,7 @@ if (stack.peek() instanceof NC203DTO) {
 
 				<%-- JIS市区町村 --%>
 				<td class="comTableSearchItem">
-				<nobr>&nbsp;JIS市区町村 </nobr>
+				<nobr>&nbsp;JIS市区町村※</nobr>
 				</td>
 				<td><s:select class="jkrCityNameCd" id="jkrCityNameCd" name="kensakuAddrCodeCity" cssStyle="width:80pt" list ="mapCityName" onchange="addrCodeCityChange();" /></td>
 

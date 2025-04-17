@@ -488,7 +488,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			<s:textfield size="20" maxlength="40" name="insKanaSrch" />
 		</td>
 		<%-- 削除フラグ --%>
-		<td class="pupControlItem"><nobr>&nbsp;削除フラグ</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;削除フラグ※</nobr></td>
         <td class="comTableSearchItem">
 			<s:select id="delFlg" name="delFlg" cssStyle="width:80pt" list ="delFlgCombo" />
 	    </td>
@@ -500,12 +500,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			<s:textfield size="20" maxlength="40" name="insNo" />
 		</td>
 		<%-- ULT施設コード --%>
-		<td class="pupControlItem"><nobr>&nbsp;ULT施設コード</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;ULT施設コード※</nobr></td>
 		<td>
 			<s:textfield size="20" maxlength="40" name="ultInsNo" />
 		</td>
 		<%-- 経営主体 --%>
-		<td class="pupControlItem"><nobr>&nbsp;経営主体</nobr></td>
+		<td class="pupControlItem"><nobr>&nbsp;経営主体※</nobr></td>
         <td class="comTableSearchItem">
 			<s:select id="keieitai" name="keieitai" cssStyle="width:80pt" list ="keieitaiCombo" />
 	    </td>
@@ -543,12 +543,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	</tr>
 	<tr>
 		<%-- 都道府県--%>
-	    <td class="pupControlItem"><nobr>&nbsp;都道府県</nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;都道府県※</nobr></td>
         <td class="comTableSearchItem">
 			<s:select id="addrCodePref" name="addrCodePref" cssStyle="width:80pt" list ="addrPrefCombo" onchange="sosAddrChange();addrCodeCityChange();" />
 	    </td>
 	    <%-- JIS市区町村名 --%>
-	    <td class="pupControlItem"><nobr>&nbsp;JIS市区町村名</nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;JIS市区町村名※</nobr></td>
         <td class="comTableSearchItem">
 			<s:select id="addrCodeCity" name="addrCodeCity" cssStyle="width:80pt" list ="addrCityCombo" onchange="addrCodeCityChange();" />
 	    </td>
@@ -565,7 +565,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	</tr>
 	<tr>
 		<%-- 住所(全角) --%>
-	    <td class="pupControlItem"><nobr>&nbsp;住所(全角)</nobr></td>
+	    <td class="pupControlItem"><nobr>&nbsp;住所(全角)※</nobr></td>
         <td class="comTableSearchItem" colspan=3>
 			<s:textfield size="65" name="insAddrSrch" />
 	    </td>

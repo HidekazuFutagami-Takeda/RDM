@@ -368,7 +368,7 @@
 		          	</td>
 		          	<td>
 		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
 		          	</td>
 
 		          </s:if>
@@ -383,7 +383,7 @@
 		          	</td>
 		          	<td>
 		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoSosClear();return false;">Clear</a>
 		          	</td>
 		          </s:else>
 
@@ -396,7 +396,7 @@
 		          	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" disabled /></td>
 		          	<td>
 		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		<span>clear</span>
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
 		          	</td>
 		          </s:if>
 
@@ -408,7 +408,7 @@
 		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
 		          	<td>
 		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		<span>clear</span>
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
 		          	</td>
 		          </s:else>
 
@@ -424,7 +424,7 @@
 		          	</td>
 		          	<td>
 		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
 		          	</td>
 		          </s:if>
 		          <!-- 管理者権限の場合 -->
@@ -438,7 +438,7 @@
 		          	</td>
 		          	<td>
 		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="reqSosClear();return false;">Clear</a>
 		          	</td>
 		          </s:else>
 	        </tr>

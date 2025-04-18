@@ -119,7 +119,7 @@ function pltPage( pageCntCur ){
 /**
  * <pre>
  *  クリア
- * 全項目展開>>(リンク)押下時に呼ばれます。
+ * クリアボタン押下時に呼ばれます。
  * </pre>
  */
 function clearText() {
@@ -575,4 +575,29 @@ function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
 		document.fm1.kensakuTantouDistCode.value = distCode;
 		document.fm1.jgiName.value = jgiName;
 		document.fm1.target = tmpTarget;
+}
+
+// 担当者組織クリアボタン
+function tantoSosClear(){
+		document.fm1.tantoBumonRank.value = "";
+		document.fm1.tantoSosName.value = "";
+		document.fm1.tantoSosCd.value = "";
+		document.fm1.tantoUpSosCd.value = "";
+		document.fm1.kensakuSTantouBrCode.value = "";
+		document.fm1.kensakuTantouDistCode.value = "";
+}
+
+// 申請者組織クリアボタン
+function reqSosClear(){
+		document.fm1.kensakuShinseiBumonRank.value = "";
+		document.fm1.reqSosName.value = "";
+		document.fm1.kensakuShinseiSosCd.value = "";
+		document.fm1.kensakuShinseiBrCode.value = "";
+		document.fm1.kensakuShinseiDistCode.value = "";
+}
+
+// 担当者クリアボタン
+function tantoClear(){
+		document.fm1.kensakuJgiNo.value = "";
+		document.fm1.jgiName.value = "";
 }

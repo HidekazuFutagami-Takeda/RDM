@@ -348,7 +348,7 @@
 		          <!-- ユーザー権限の場合 -->
 		          <s:if test="%{jokenSetCd == 0}">
 		          	<td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>組織  </nobr>
+			          	<nobr>担当者組織  </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
@@ -363,7 +363,7 @@
 		          <!-- 管理者権限の場合 -->
 		          <s:else>
 		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>組織 </nobr>
+		          		<nobr>担当者組織 </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />

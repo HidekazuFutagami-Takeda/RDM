@@ -260,17 +260,30 @@
       <s:hidden name="listName" />
       <s:hidden name="poprowno" />
       <s:hidden name="poptrtno" />
+      <s:hidden name="backScreenId" value="NF501" />
 
       <s:hidden name="mrJgiNo" />
       <s:hidden name="mrBrCode" />
       <s:hidden name="mrDistCode" />
       <s:hidden name="mrTrtCd" />
 
+      <s:hidden name="bumonRankPop" />
+      <s:hidden name="selectFlgPop" />
+      <s:hidden name="sosCdPop" />
+      <s:hidden name="bumonRankPop" />
+      <s:hidden name="upSosCdPop" />
+
+      <s:hidden name="tantoBumonRank" />
+      <s:hidden name="tantoSosCd" />
+      <s:hidden name="tantoUpSosCd" />
       <s:hidden name="kensakuTantouDistCode" />
       <s:hidden name="kensakuSTantouBrCode" />
+
+		<s:hidden name="kensakuShinseiBumonRank" />
+	  <s:hidden name="kensakuShinseiSosCd" />
       <s:hidden name="kensakuShinseiDistCode" />
       <s:hidden name="kensakuShinseiBrCode" />
-      <s:hidden name="kensakuJgiNo" />
+
       <s:hidden name="clearUpdMstFrom" />
       <s:hidden name="clearUpdMstTo" />
 
@@ -351,10 +364,10 @@
 			          	<nobr>担当者組織  </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 
@@ -366,10 +379,10 @@
 		          		<nobr>担当者組織 </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(1);" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 		          </s:else>
@@ -382,7 +395,7 @@
 		          	</td>
 		          	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" disabled /></td>
 		          	<td>
-		          		<s:textfield id="sosNameUser" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<span>clear</span>
 		          	</td>
 		          </s:if>
@@ -392,9 +405,9 @@
 		          	<td class="comTableSearchItem" style="width:50pt;">
 		         	 	<nobr>担当者</nobr>
 		         	</td>
-		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="" /></td>
+		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
 		          	<td>
-		          		<s:textfield id="sosNameUser" name="sosName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<span>clear</span>
 		          	</td>
 		          </s:else>
@@ -407,10 +420,10 @@
 			          	<nobr>申請者組織  </nobr>
 			          </td>
 			          <td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 		          </s:if>
@@ -421,10 +434,10 @@
 		          	</td>
 
 		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(2);" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
 		          	</td>
 		          </s:else>

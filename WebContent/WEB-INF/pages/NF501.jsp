@@ -92,18 +92,18 @@
 			z-index:3;
 		}
 		#left2 {
-			position:sticky;left: 51pt;z-index:3;
+			position:sticky;left: 50pt;z-index:3;
 		}
 		#left3 {
-			position:sticky;left: 88pt;z-index:3;
+			position:sticky;left: 116pt;z-index:3;
 		}
 		#left4 {
-			position:sticky;left: 148pt;z-index:3;
+			position:sticky;left: 168pt;z-index:3;
 		}
 		#left5 {
-			position:sticky;left: 184pt;z-index:3;
+			position:sticky;left: 203pt;z-index:3;
 		}
-		#left6 {
+/*		#left6 {
 			position:sticky;left: 245pt;z-index:3;
 		}
 		#left7 {
@@ -129,7 +129,7 @@
 		}
 		#left14 {
 			position:sticky;left: 720pt;z-index:3;
-		}
+		}*/
 
 
 		/*検索結果テーブルタイトル項目*/
@@ -597,7 +597,7 @@
 	    	<!-- 施設一覧　検索結果 -->
 	    	<s:if test="selectListChange == 0 ">
 	    		<div style="width:1200px; text-align:right">
-	    			<a id="Btton" onclick="show();">
+	    			<a id="allShowButton" onclick="showAll();">
 		            		全項目展開>>
 	            	</a>
                  </div>
@@ -608,10 +608,8 @@
 		            <td class="comTableTitle" id="left1" style="width:146pt;">
 		            	<nobr>
 		            		更新日
-		            	</nobr>
-		            	<nobr><span onclick="orderUp();" style="color:red;"> ▲ </span></nobr>
-		            	<nobr><span onclick="orderDown();"> ▼ </span></nobr>
-						<nobr>&nbsp;</nobr>
+		            	<span onclick="orderUp();" style="color:red;"> ▲ </span>
+		            	<span onclick="orderDown();"> ▼ </span></nobr>
 
 		            </td>
 		            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>申請ID</nobr></td>
@@ -628,38 +626,38 @@
 		            <td class="comTableTitle" id="left13" style="width:146pt;"><nobr>申請者氏名</nobr></td>
 		            <td class="comTableTitle" id="left14" style="width:146pt;"><nobr>承認者氏名</nobr></td>
 		            <!-- ここから全画面 -->
-		            <td class="comTableTitle" id="1" style="width:146pt;"><nobr>ULT施設コード</nobr></td>
-		            <td class="comTableTitle" id="2" style="width:146pt;"><nobr>ULT施設名称</nobr></td>
-		            <td class="comTableTitle" id="3" style="width:146pt;"><nobr>施設契約漢字名</nobr></td>
-		            <td class="comTableTitle" id="5" style="width:146pt;"><nobr>施設区分</nobr></td>
-		            <td class="comTableTitle" id="6" style="width:146pt;"><nobr>階級区分</nobr></td>
-		            <td class="comTableTitle" id="7" style="width:146pt;"><nobr>経営主体</nobr></td>
-		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>JIS府県</nobr></td>
-		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>JIS市区町村</nobr></td>
-		            <td class="comTableTitle" id="9" style="width:146pt;"><nobr>武田市区郡</nobr></td>
-		            <td class="comTableTitle" id="10" style="width:146pt;"><nobr>電話番号2</nobr></td>
-		            <td class="comTableTitle" id="11" style="width:146pt;"><nobr>FAX番号2</nobr></td>
-		            <td class="comTableTitle" id="12" style="width:146pt;"><nobr>ホームページアドレス</nobr></td>
-		            <td class="comTableTitle" id="13" style="width:146pt;"><nobr>ホームページアドレス最終更新日</nobr></td>
-		            <td class="comTableTitle" id="14" style="width:146pt;"><nobr>ワクチン対象区分(当期)</nobr></td>
-		            <td class="comTableTitle" id="15" style="width:146pt;"><nobr>ワクチン定訪先区分(当期)</nobr></td>
-		            <td class="comTableTitle" id="16" style="width:146pt;"><nobr>病床(基準)</nobr></td>
-		            <td class="comTableTitle" id="17" style="width:146pt;"><nobr>ベッド数計</nobr></td>
-		            <td class="comTableTitle" id="18" style="width:146pt;"><nobr>医療ベッド数計</nobr></td>
-		            <td class="comTableTitle" id="19" style="width:146pt;"><nobr>病床数(一般)</nobr></td>
-		            <td class="comTableTitle" id="20" style="width:146pt;"><nobr>病床数(医療療養)</nobr></td>
-		            <td class="comTableTitle" id="21" style="width:146pt;"><nobr>病床数(精神)</nobr></td>
-		            <td class="comTableTitle" id="22" style="width:146pt;"><nobr>病床数(結核)</nobr></td>
-		            <td class="comTableTitle" id="23" style="width:146pt;"><nobr>病床数(感染症)</nobr></td>
-		            <td class="comTableTitle" id="24" style="width:146pt;"><nobr>病床数(介護療養)</nobr></td>
-		            <td class="comTableTitle" id="25" style="width:146pt;"><nobr>病床数(療養)</nobr></td>
-		            <td class="comTableTitle" id="26" style="width:146pt;"><nobr>開業年</nobr></td>
-		            <td class="comTableTitle" id="27" style="width:146pt;"><nobr>開業月</nobr></td>
-		            <td class="comTableTitle" id="28" style="width:146pt;"><nobr>開業日</nobr></td>
-		            <td class="comTableTitle" id="29" style="width:146pt;"><nobr>診療科目</nobr></td>
-		            <td class="comTableTitle" id="30" style="width:146pt;"><nobr>申請者所属リージョン</nobr></td>
-		            <td class="comTableTitle" id="31" style="width:146pt;"><nobr>申請者所属エリア</nobr></td>
-		            <td class="comTableTitle" id="32" style="width:146pt;"><nobr>承認者所属</nobr></td>
+		            <td class="comTableTitle" id="allShow1" style="width:146pt; display: none;"><nobr>ULT施設コード</nobr></td>
+		            <td class="comTableTitle" id="allShow2" style="width:146pt; display: none;"><nobr>ULT施設名称</nobr></td>
+		            <td class="comTableTitle" id="allShow3" style="width:146pt; display: none;"><nobr>施設契約漢字名</nobr></td>
+		            <td class="comTableTitle" id="allShow4" style="width:146pt; display: none;"><nobr>施設区分</nobr></td>
+		            <td class="comTableTitle" id="allShow5" style="width:146pt; display: none;"><nobr>階級区分</nobr></td>
+		            <td class="comTableTitle" id="allShow6" style="width:146pt; display: none;"><nobr>経営主体</nobr></td>
+		            <td class="comTableTitle" id="allShow7" style="width:146pt; display: none;"><nobr>JIS府県</nobr></td>
+		            <td class="comTableTitle" id="allShow8" style="width:146pt; display: none;"><nobr>JIS市区町村</nobr></td>
+		            <td class="comTableTitle" id="allShow9" style="width:146pt; display: none;"><nobr>武田市区郡</nobr></td>
+		            <td class="comTableTitle" id="allShow10" style="width:146pt; display: none;"><nobr>電話番号2</nobr></td>
+		            <td class="comTableTitle" id="allShow11" style="width:146pt; display: none;"><nobr>FAX番号2</nobr></td>
+		            <td class="comTableTitle" id="allShow12" style="width:146pt; display: none;"><nobr>ホームページアドレス</nobr></td>
+		            <td class="comTableTitle" id="allShow13" style="width:146pt; display: none;"><nobr>ホームページアドレス最終更新日</nobr></td>
+		            <td class="comTableTitle" id="allShow14" style="width:146pt; display: none;"><nobr>ワクチン対象区分(当期)</nobr></td>
+		            <td class="comTableTitle" id="allShow15" style="width:146pt; display: none;"><nobr>ワクチン定訪先区分(当期)</nobr></td>
+		            <td class="comTableTitle" id="allShow16" style="width:146pt; display: none;"><nobr>病床(基準)</nobr></td>
+		            <td class="comTableTitle" id="allShow17" style="width:146pt; display: none;"><nobr>ベッド数計</nobr></td>
+		            <td class="comTableTitle" id="allShow18" style="width:146pt; display: none;"><nobr>医療ベッド数計</nobr></td>
+		            <td class="comTableTitle" id="allShow19" style="width:146pt; display: none;"><nobr>病床数(一般)</nobr></td>
+		            <td class="comTableTitle" id="allShow20" style="width:146pt; display: none;"><nobr>病床数(医療療養)</nobr></td>
+		            <td class="comTableTitle" id="allShow21" style="width:146pt; display: none;"><nobr>病床数(精神)</nobr></td>
+		            <td class="comTableTitle" id="allShow22" style="width:146pt; display: none;"><nobr>病床数(結核)</nobr></td>
+		            <td class="comTableTitle" id="allShow23" style="width:146pt; display: none;"><nobr>病床数(感染症)</nobr></td>
+		            <td class="comTableTitle" id="allShow24" style="width:146pt; display: none;"><nobr>病床数(介護療養)</nobr></td>
+		            <td class="comTableTitle" id="allShow25" style="width:146pt; display: none;"><nobr>病床数(療養)</nobr></td>
+		            <td class="comTableTitle" id="allShow26" style="width:146pt; display: none;"><nobr>開業年</nobr></td>
+		            <td class="comTableTitle" id="allShow27" style="width:146pt; display: none;"><nobr>開業月</nobr></td>
+		            <td class="comTableTitle" id="allShow28" style="width:146pt; display: none;"><nobr>開業日</nobr></td>
+		            <td class="comTableTitle" id="allShow29" style="width:146pt; display: none;"><nobr>診療科目</nobr></td>
+		            <td class="comTableTitle" id="allShow30" style="width:146pt; display: none;"><nobr>申請者所属リージョン</nobr></td>
+		            <td class="comTableTitle" id="allShow31" style="width:146pt; display: none;"><nobr>申請者所属エリア</nobr></td>
+		            <td class="comTableTitle" id="allShow32" style="width:146pt; display: none;"><nobr>承認者所属</nobr></td>
 		            <!-- ここまで -->
 
 		        </tr>
@@ -669,34 +667,34 @@
 			    <s:iterator value="hcoUpdHstDataList" status="status" var="rowBean">
 			        <tr>
 			        	<!-- 更新 -->
-						<td class="comTableItem" id="left1"  >
+						<td class="comTableItem" id="left1" style="z-index:2;" >
 							<s:if test="%{#rowBean.updShaYmd == null || #rowBean.updShaYmd == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-								<s:label key="hcoUpdHstDataList[%{#status.index}].updShaYmd" />
+								<nobr><s:label key="hcoUpdHstDataList[%{#status.index}].updShaYmd" /></nobr>
 				            </s:else>
 						</td>
 						<!-- 申請ID -->
-						<td class="comTableItem" id="left2"  >
+						<td class="comTableItem" id="left2" style="z-index:2;" >
 							<s:if test="%{#rowBean.reqId == null || #rowBean.reqId == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-								<s:label key="hcoUpdHstDataList[%{#status.index}].reqId" />
+								<nobr><s:label key="hcoUpdHstDataList[%{#status.index}].reqId" /></nobr>
 				            </s:else>
 						</td>
 						<!-- 施設固定コード -->
-						<td class="comTableItem" id="left3"  >
+						<td class="comTableItem" id="left3" style="z-index:2;" >
 							<s:if test="%{#rowBean.insNo == null || #rowBean.insNo == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-								<s:label key="hcoUpdHstDataList[%{#status.index}].insNo" />
+								<nobr><s:label key="hcoUpdHstDataList[%{#status.index}].insNo" /></nobr>
 				            </s:else>
 						</td>
 						<!-- 対象区分 -->
-						<td class="comTableItem" id="left4"  >
+						<td class="comTableItem" id="left4" style="z-index:2;" >
 							<s:if test="%{#rowBean.hoInsType == null || #rowBean.hoInsType == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -712,7 +710,7 @@
 				            </s:else>
 						</td>
 						<!-- 施設略式漢字名 -->
-						<td class="comTableItem" id="left5"  >
+						<td class="comTableItem" id="left5" style="z-index:2;" >
 							<s:if test="%{#rowBean.insAbbrName == null || #rowBean.insAbbrName == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -748,7 +746,7 @@
 							<s:if test="%{#rowBean.insPcode == null || #rowBean.insPcode == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
-				            <s:else>
+				            <s:else><nobr>
 				            	<!-- 更新がある場合 -->
 				            	<s:if test="%{#rowBean.insPcodeUpdFlg == 1}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insPcode" style="color:red;"/>
@@ -757,7 +755,7 @@
 				            	<s:else>
 									<s:label key="hcoUpdHstDataList[%{#status.index}].insPcode" />
 				            	</s:else>
-				            </s:else>
+				            </nobr></s:else>
 						</td>
 						<!-- 施設住所（漢字） -->
 						<td class="comTableItem" id="left8"  >
@@ -780,7 +778,7 @@
 							<s:if test="%{#rowBean.insPhone1 == null || #rowBean.insPhone1 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
-				            <s:else>
+				            <s:else><nobr>
 								<!-- 更新がある場合 -->
 				            	<s:if test="%{#rowBean.insPhone1UpdFlg == 1}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insPhone1" style="color:red;"/>
@@ -789,7 +787,7 @@
 				            	<s:else>
 									<s:label key="hcoUpdHstDataList[%{#status.index}].insPhone1" />
 				            	</s:else>
-				            </s:else>
+				            </nobr></s:else>
 						</td>
 						<!-- FAX番号1 -->
 						<td class="comTableItem" id="left10"  >
@@ -803,7 +801,7 @@
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
 				            	<s:else>
-									<s:label key="hcoUpdHstDataList[%{#status.index}].insFax1" />
+									<nobr><s:label key="hcoUpdHstDataList[%{#status.index}].insFax1" /></nobr>
 				            	</s:else>
 				            </s:else>
 						</td>
@@ -831,7 +829,7 @@
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-								<s:label key="hcoUpdHstDataList[%{#status.index}].reqJgiName" />
+								<nobr><s:label key="hcoUpdHstDataList[%{#status.index}].reqJgiName" /></nobr>
 				            </s:else>
 						</td>
 						<!-- 承認者氏名 -->
@@ -840,13 +838,13 @@
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
-								<s:label key="hcoUpdHstDataList[%{#status.index}].aprShaId" />
+								<nobr><s:label key="hcoUpdHstDataList[%{#status.index}].aprShaId" /></nobr>
 				            </s:else>
 						</td>
 
 						<!-- ここから全画面 -->
 						<!-- ULT施設コード -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont1" style="display:none;" >
 							<s:if test="%{#rowBean.ultInsNo == null || #rowBean.ultInsNo == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -862,7 +860,7 @@
 				            </s:else>
 						</td>
 						<!-- ULT施設名称 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont2" style="display:none;" >
 							<s:if test="%{#rowBean.shisetsuNmRyaku == null || #rowBean.shisetsuNmRyaku == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -878,7 +876,7 @@
 				            </s:else>
 						</td>
 						<!-- 施設契約漢字名 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont3" style="display:none;" >
 							<s:if test="%{#rowBean.insContName == null || #rowBean.insContName == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -894,7 +892,7 @@
 				            </s:else>
 						</td>
 						<!-- 施設区分 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont4" style="display:none;" >
 							<s:if test="%{#rowBean.pharmType == null || #rowBean.pharmType == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -910,7 +908,7 @@
 				            </s:else>
 						</td>
 						<!-- 階級区分 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont5" style="display:none;" >
 							<s:if test="%{#rowBean.insRank == null || #rowBean.insRank == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -926,7 +924,7 @@
 				            </s:else>
 						</td>
 						<!-- 経営主体 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont6" style="display:none;" >
 							<s:if test="%{#rowBean.manageCd == null || #rowBean.manageCd == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -942,7 +940,7 @@
 				            </s:else>
 						</td>
 						<!--JIS府県名  -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont7" style="display:none;" >
 							<s:if test="%{#rowBean.addrCodePref == null || #rowBean.addrCodePref == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -958,7 +956,7 @@
 				            </s:else>
 						</td>
 						<!-- JIS市区町村名 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont8" style="display:none;" >
 							<s:if test="%{#rowBean.addrCodeCity == null || #rowBean.addrCodeCity == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -974,7 +972,7 @@
 				            </s:else>
 						</td>
 						<!--武田市区郡名  -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont9" style="display:none;" >
 							<s:if test="%{#rowBean.tkCityCd == null || #rowBean.tkCityCd == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -990,11 +988,11 @@
 				            </s:else>
 						</td>
 						<!-- 電話番号2 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont10" style="display:none;" >
 							<s:if test="%{#rowBean.insPhone2 == null || #rowBean.insPhone2 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
-				            <s:else>
+				            <s:else><nobr>
 								<!-- 更新がある場合 -->
 				            	<s:if test="%{#rowBean.insPhone2UpdFlg == 1}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insPhone2" style="color:red;"/>
@@ -1003,14 +1001,14 @@
 				            	<s:else>
 									<s:label key="hcoUpdHstDataList[%{#status.index}].insPhone2" />
 				            	</s:else>
-				            </s:else>
+				            </nobr></s:else>
 						</td>
 						<!-- FAX番号2 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont11" style="display:none;" >
 							<s:if test="%{#rowBean.insFax2 == null || #rowBean.insFax2 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
-				            <s:else>
+				            <s:else><nobr>
 								<!-- 更新がある場合 -->
 				            	<s:if test="%{#rowBean.insFax2UpdFlg == 1}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insFax2" style="color:red;"/>
@@ -1019,14 +1017,14 @@
 				            	<s:else>
 									<s:label key="hcoUpdHstDataList[%{#status.index}].insFax2" />
 				            	</s:else>
-				            </s:else>
+				            </nobr></s:else>
 						</td>
 						<!-- ホームページアドレス -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont12" style="display:none;" >
 							<s:if test="%{#rowBean.insUrl == null || #rowBean.insUrl == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
-				            <s:else>
+				            <s:else><nobr>
 								<!-- 更新がある場合 -->
 				            	<s:if test="%{#rowBean.insUrlUpdFlg == 1}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insUrl" style="color:red;"/>
@@ -1035,10 +1033,10 @@
 				            	<s:else>
 									<s:label key="hcoUpdHstDataList[%{#status.index}].insUrl" />
 				            	</s:else>
-				            </s:else>
+				            </nobr></s:else>
 						</td>
 						<!-- ホームページアドレス最終更新日 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont13" style="display:none;" >
 							<s:if test="%{#rowBean.insUrlYmd == null || #rowBean.insUrlYmd == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1054,7 +1052,7 @@
 				            </s:else>
 						</td>
 						<!-- ワクチン対象区分(当期) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont14" style="display:none;" >
 							<s:if test="%{#rowBean.vacInsType == null || #rowBean.vacInsType == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1070,7 +1068,7 @@
 				            </s:else>
 						</td>
 						<!-- ワクチン定訪先区分(当期) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont15" style="display:none;" >
 							<s:if test="%{#rowBean.vacVisitType == null || #rowBean.vacVisitType == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1087,7 +1085,7 @@
 
 						</td>
 						<!-- 病床(基準) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont16" style="display:none;" >
 							<s:if test="%{#rowBean.bedcntBase == null || #rowBean.bedcntBase == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1103,7 +1101,7 @@
 				            </s:else>
 						</td>
 						<!-- ベッド数計 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont17" style="display:none;" >
 							<s:if test="%{#rowBean.bedsTot == null || #rowBean.bedsTot == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1119,7 +1117,7 @@
 				            </s:else>
 						</td>
 						<!-- 医療ベッド数計 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont18" style="display:none;" >
 							<s:if test="%{#rowBean.medBedsTot == null || #rowBean.medBedsTot == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1135,7 +1133,7 @@
 				            </s:else>
 						</td>
 						<!-- 病床数(一般)-->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont19" style="display:none;" >
 							<s:if test="%{#rowBean.bedcnt01 == null || #rowBean.bedcnt01 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1151,7 +1149,7 @@
 				            </s:else>
 						</td>
 						<!-- 病床数(医療療養) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont20" style="display:none;" >
 							<s:if test="%{#rowBean.bedcnt02 == null || #rowBean.bedcnt02 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1167,7 +1165,7 @@
 				            </s:else>
 						</td>
 						<!-- 病床数(精神) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont21" style="display:none;" >
 							<s:if test="%{#rowBean.bedcnt03 == null || #rowBean.bedcnt03 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1183,7 +1181,7 @@
 				            </s:else>
 						</td>
 						<!-- 病床数(結核) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont22" style="display:none;" >
 							<s:if test="%{#rowBean.bedcnt04 == null || #rowBean.bedcnt04 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1199,7 +1197,7 @@
 				            </s:else>
 						</td>
 						<!-- 病床数(感染症)-->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont23" style="display:none;" >
 							<s:if test="%{#rowBean.bedcnt05 == null || #rowBean.bedcnt05 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1215,7 +1213,7 @@
 				            </s:else>
 						</td>
 						<!-- 病床数(介護療養) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont24" style="display:none;" >
 							<s:if test="%{#rowBean.bedcnt06 == null || #rowBean.bedcnt06 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1231,7 +1229,7 @@
 				            </s:else>
 						</td>
 						<!-- 病床数(療養) -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont25" style="display:none;" >
 							<s:if test="%{#rowBean.bedcnt07 == null || #rowBean.bedcnt07 == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1247,7 +1245,7 @@
 				            </s:else>
 						</td>
 						<!-- 開業年 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont26" style="display:none;" >
 							<s:if test="%{#rowBean.insOpenYear == null || #rowBean.insOpenYear == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1263,7 +1261,7 @@
 				            </s:else>
 						</td>
 						<!-- 開業月 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont27" style="display:none;" >
 							<s:if test="%{#rowBean.insOpenMonth == null || #rowBean.insOpenMonth == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1279,7 +1277,7 @@
 				            </s:else>
 						</td>
 						<!-- 開業日 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont28" style="display:none;" >
 							<s:if test="%{#rowBean.insOpenDay == null || #rowBean.insOpenDay == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1295,7 +1293,7 @@
 				            </s:else>
 						</td>
 						<!-- 診療科目 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont29" style="display:none;" >
 							<s:if test="%{#rowBean.clitemList == null || #rowBean.clitemList == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1311,7 +1309,7 @@
 				            </s:else>
 						</td>
 						<!-- 申請者所属リージョン -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont30" style="display:none;" >
 							<s:if test="%{#rowBean.reqBrCod == null || #rowBean.reqBrCod == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1320,7 +1318,7 @@
 				            </s:else>
 						</td>
 						<!-- 申請者所属エリア -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont31" style="display:none;" >
 							<s:if test="%{#rowBean.reqDistCode == null || #rowBean.reqDistCode == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1329,7 +1327,7 @@
 				            </s:else>
 						</td>
 						<!-- 承認者所属 -->
-						<td class="comTableItem" id=""  >
+						<td class="comTableItem" name="allShowCont32" style="display:none;" >
 							<s:if test="%{#rowBean.aprShz == null || #rowBean.aprShz == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1343,21 +1341,6 @@
 			    </s:iterator>
 			    </tbody>
 				</table>
-
-				    <!-- 全項目表示
-				    <div id="showAll">
-				    <table id="comTableTitle" class="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
-				    	<tr>
-
-				    	</tr>
-				    	<s:iterator value="hcoUpdHstDataList" status="status" var="rowBean">
-				    	<tr>
-
-				    	</tr>
-				    	</s:iterator>
-				    </table>
-				    </div>
-				    -->
 			    </div>
 	    	</s:if>
 

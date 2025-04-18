@@ -187,14 +187,79 @@ function clearText() {
  * (ボタン)押下時に呼ばれます。
  * </pre>
  */
-const show = () => {
-  var ele = document.getElementById('showAll');
+function showAll() {
+	document.getElementById('allShow1').style.display = '';
+	document.getElementById('allShow2').style.display = '';
+	document.getElementById('allShow3').style.display = '';
+	document.getElementById('allShow4').style.display = '';
+	document.getElementById('allShow5').style.display = '';
+	document.getElementById('allShow6').style.display = '';
+	document.getElementById('allShow7').style.display = '';
+	document.getElementById('allShow8').style.display = '';
+	document.getElementById('allShow9').style.display = '';
+	document.getElementById('allShow10').style.display = '';
+	document.getElementById('allShow11').style.display = '';
+	document.getElementById('allShow12').style.display = '';
+	document.getElementById('allShow13').style.display = '';
+	document.getElementById('allShow14').style.display = '';
+	document.getElementById('allShow15').style.display = '';
+	document.getElementById('allShow16').style.display = '';
+	document.getElementById('allShow17').style.display = '';
+	document.getElementById('allShow18').style.display = '';
+	document.getElementById('allShow19').style.display = '';
+	document.getElementById('allShow20').style.display = '';
+	document.getElementById('allShow21').style.display = '';
+	document.getElementById('allShow22').style.display = '';
+	document.getElementById('allShow23').style.display = '';
+	document.getElementById('allShow24').style.display = '';
+	document.getElementById('allShow25').style.display = '';
+	document.getElementById('allShow26').style.display = '';
+	document.getElementById('allShow27').style.display = '';
+	document.getElementById('allShow28').style.display = '';
+	document.getElementById('allShow29').style.display = '';
+	document.getElementById('allShow30').style.display = '';
+	document.getElementById('allShow31').style.display = '';
+	document.getElementById('allShow32').style.display = '';
 
-  if (ele.style.display == 'none') {
-   ele.style.display = 'block';
-  } else {
-    ele.style.display = 'none';
-  }
+	var i=0;
+	while (document.getElementsByName('allShowCont1')[i] != undefined){
+		document.getElementsByName('allShowCont1')[i].style.display = '';
+		document.getElementsByName('allShowCont2')[i].style.display = '';
+		document.getElementsByName('allShowCont3')[i].style.display = '';
+		document.getElementsByName('allShowCont4')[i].style.display = '';
+		document.getElementsByName('allShowCont5')[i].style.display = '';
+		document.getElementsByName('allShowCont6')[i].style.display = '';
+		document.getElementsByName('allShowCont7')[i].style.display = '';
+		document.getElementsByName('allShowCont8')[i].style.display = '';
+		document.getElementsByName('allShowCont9')[i].style.display = '';
+		document.getElementsByName('allShowCont10')[i].style.display = '';
+		document.getElementsByName('allShowCont11')[i].style.display = '';
+		document.getElementsByName('allShowCont12')[i].style.display = '';
+		document.getElementsByName('allShowCont13')[i].style.display = '';
+		document.getElementsByName('allShowCont14')[i].style.display = '';
+		document.getElementsByName('allShowCont15')[i].style.display = '';
+		document.getElementsByName('allShowCont16')[i].style.display = '';
+		document.getElementsByName('allShowCont17')[i].style.display = '';
+		document.getElementsByName('allShowCont18')[i].style.display = '';
+		document.getElementsByName('allShowCont19')[i].style.display = '';
+		document.getElementsByName('allShowCont20')[i].style.display = '';
+		document.getElementsByName('allShowCont21')[i].style.display = '';
+		document.getElementsByName('allShowCont22')[i].style.display = '';
+		document.getElementsByName('allShowCont23')[i].style.display = '';
+		document.getElementsByName('allShowCont24')[i].style.display = '';
+		document.getElementsByName('allShowCont25')[i].style.display = '';
+		document.getElementsByName('allShowCont26')[i].style.display = '';
+		document.getElementsByName('allShowCont27')[i].style.display = '';
+		document.getElementsByName('allShowCont28')[i].style.display = '';
+		document.getElementsByName('allShowCont29')[i].style.display = '';
+		document.getElementsByName('allShowCont30')[i].style.display = '';
+		document.getElementsByName('allShowCont31')[i].style.display = '';
+		document.getElementsByName('allShowCont32')[i].style.display = '';
+
+		i++
+	}
+
+	document.getElementById('allShowButton').style.display = 'none';
 };
 
 /**

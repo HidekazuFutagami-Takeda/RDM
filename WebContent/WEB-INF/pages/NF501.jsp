@@ -630,7 +630,7 @@
 	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
 	    		<thead>
 		        <tr>
-		            <td class="comTableTitle" id="left1" style="width:146pt;">
+		            <td class="comTableTitle" id="left1" style="min-width:63px;">
 		            	<nobr>
 		            		更新日
 		            	<a href="#" class="<%=updShaYmdAscClass %>" onclick="orderUp();"> ▲ </a>
@@ -638,7 +638,7 @@
 		            	</nobr>
 
 		            </td>
-		            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>申請ID</nobr></td>
+		            <td class="comTableTitle" id="left2" style="min-width:84px;"><nobr>申請ID</nobr></td>
 		            <td class="comTableTitle" id="left3" style="width:146pt;"><nobr>施設固定コード</nobr></td>
 		        　　　　　　　 <td class="comTableTitle" id="left4" style="width:146pt;"><nobr>対象区分</nobr></td>
 		            <td class="comTableTitle" id="left5" style="width:146pt;"><nobr>施設略式漢字名</nobr></td>

@@ -605,6 +605,18 @@
           </s:else>
           <%-- ページャー表示 終了 --%>
 
+<%
+	// ソート表示状態制御
+	int sortCondition = (int)request.getAttribute("sortId");
+	String updShaYmdAscClass = "comTableNoSort";
+	String updShaYmdDescClass = "comTableNoSort";
+	if (sortCondition == 0) {
+		updShaYmdDescClass = "comTableSort";
+	} else if (sortCondition == 1) {
+		updShaYmdAscClass = "comTableSort";
+	}
+%>
+
 	    <%-- 項目 --%>
 	    <s:if test="searchType == 1 ">
 	    	<!-- 施設一覧　検索結果 -->
@@ -621,8 +633,9 @@
 		            <td class="comTableTitle" id="left1" style="width:146pt;">
 		            	<nobr>
 		            		更新日
-		            	<span onclick="orderUp();" style="color:red;"> ▲ </span>
-		            	<span onclick="orderDown();"> ▼ </span></nobr>
+		            	<a href="#" class="<%=updShaYmdAscClass %>" onclick="orderUp();"> ▲ </a>
+		            	<a href="#" class="<%=updShaYmdDescClass %>" onclick="orderDown();"> ▼ </a>
+		            	</nobr>
 
 		            </td>
 		            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>申請ID</nobr></td>

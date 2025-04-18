@@ -313,7 +313,7 @@ function orderUp() {
 
   if (!jkrDestructChack()) return false;
   // 検索前チェック
-  if(jimChkBeforeSearch()) {
+  //if(jimChkBeforeSearch()) {
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 0;
     document.fm1.sortCondition1.value = "";
@@ -328,7 +328,7 @@ function orderUp() {
     document.fm1.functionId.value = "Search"
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
-  }
+  //}
 }
 
 /**
@@ -341,7 +341,7 @@ function orderDown() {
   // 変更内容破棄確認チェック
   if (!jkrDestructChack()) return false;
   // 検索前チェック
-  if(jimChkBeforeSearch()) {
+  //if(jimChkBeforeSearch()) {
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 0;
     document.fm1.sortCondition1.value = "";
@@ -356,7 +356,7 @@ function orderDown() {
     document.fm1.functionId.value = "Search"
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
-  }
+  //}
 }
 
 

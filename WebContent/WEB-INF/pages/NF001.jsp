@@ -452,7 +452,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td>
 			<s:textfield size="20" maxlength="40" name="sosNm" cssClass="mediumGray" readonly="true" />
 			<s:hidden key="sosCd" />
-			<a href ="#" onClick="sosClearBtn();return false;">Clear</a>
+			<a class="comMiniLink" href ="#" onClick="sosClearBtn();return false;">Clear</a>
 		</td>
 		<%-- 担当者 --%>
 		<td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
@@ -468,7 +468,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td>
 			<s:textfield size="20" maxlength="40" name="jgiNm" cssClass="mediumGray" readonly="true" />
 			<s:hidden key="jgiNo" />
-			<a href ="#" onClick="tantoClearBtn();return false;">Clear</a>
+			<a class="comMiniLink" href ="#" onClick="tantoClearBtn();return false;">Clear</a>
 		</td>
 		<%-- 廃院区分 --%>
 		<td class="pupControlItem"><nobr>&nbsp;廃院区分</nobr></td>

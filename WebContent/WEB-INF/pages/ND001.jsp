@@ -499,14 +499,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                   </td>
-                  <td><a class="comMiniLink" onclick="" style="color:lightgray">clear</a>&nbsp;</td>
+                  <td><a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
               </s:if>
               <s:else>
                   <td align="right"><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></td>
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                   </td>
-                  <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">clear</a>&nbsp;</td>
+                  <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">Clear</a>&nbsp;</td>
               </s:else>
               <s:if test='mrAdminFlg == "0"'>
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
@@ -514,7 +514,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comPortalControlItem">
                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                    </td>
-                   <td><a class="comMiniLink" onclick="" style="color:lightgray">clear</a>&nbsp;</td>
+                   <td><a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
               </s:if>
               <s:else>
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
@@ -522,7 +522,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comPortalControlItem">
                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                    </td>
-                   <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">clear</a>&nbsp;</td>
+                   <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">Clear</a>&nbsp;</td>
               </s:else>
               <td></td>
               <td></td>
@@ -541,14 +541,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td class="comPortalControlItem">
                    <s:textfield name="searchInsNm" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
               </td>
-              <td ><a href="#" class="comMiniLink" onclick="nd001Clear('searchIns');return false;" align="left">clear</a>&nbsp;</td>
+              <td ><a href="#" class="comMiniLink" onclick="nd001Clear('searchIns');return false;" align="left">Clear</a>&nbsp;</td>
               <td class="comTableSearchItem" style="width:50pt;"><nobr>所属部科</nobr></td>
               <td align="right"><input class="comButton" type="button" value="選択" onClick="tmpCdcView();" /></td>
               <td class="comPortalControlItem">
                    <s:textfield name="searchDeptNm" id="searchDeptNm" size="20" maxlength="40" cssClass="mediumGray" readonly="true"/>
 		                <s:hidden name="searchDeptCd" id="searchDeptCd"/>
               </td>
-              <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="nd001Clear('searchDept');return false;" style="float:none;">clear</a>&nbsp;</td>
+              <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="nd001Clear('searchDept');return false;" style="float:none;">Clear</a>&nbsp;</td>
             </tr>
             <tr>
               <td class="comTableSearchItem" style="width:50pt;"></td>

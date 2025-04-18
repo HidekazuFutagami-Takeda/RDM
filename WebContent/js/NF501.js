@@ -124,8 +124,22 @@ function pltPage( pageCntCur ){
  */
 function clearText() {
 
-	var kensakuInsNo = document.getElementById("kensakuInsNo");
-	kensakuInsNo.value = '';
+	if(document.fm1.jokenSetCd.value != 0){
+		// 管理者権限のみ組織担当者をクリア
+		document.fm1.tantoBumonRank.value = "";
+		document.fm1.tantoSosName.value = "";
+		document.fm1.tantoSosCd.value = "";
+		document.fm1.tantoUpSosCd.value = "";
+		document.fm1.kensakuSTantouBrCode.value = "";
+		document.fm1.kensakuTantouDistCode.value = "";
+		document.fm1.kensakuShinseiBumonRank.value = "";
+		document.fm1.reqSosName.value = "";
+		document.fm1.kensakuShinseiSosCd.value = "";
+		document.fm1.kensakuShinseiBrCode.value = "";
+		document.fm1.kensakuShinseiDistCode.value = "";
+		document.fm1.kensakuJgiNo.value = "";
+		document.fm1.jgiName.value = "";
+	}
 
 	var kensakuInsKanj = document.getElementById("kensakuInsKanj");
 	kensakuInsKanj.value = '';
@@ -133,23 +147,14 @@ function clearText() {
 	var kensakuInsKana = document.getElementById("kensakuInsKana");
 	kensakuInsKana.value = '';
 
-	var kensakuUltInsNo = document.getElementById("kensakuUltInsNo");
-	kensakuUltInsNo.value = '';
-
-	var kensakuInsPhone = document.getElementById("kensakuInsPhone");
-	kensakuInsPhone.value = '';
-
-	var kensakuInsPcode = document.getElementById("kensakuInsPcode");
-	kensakuInsPcode.value = '';
-
-	var kensakuInsAddr = document.getElementById("kensakuInsAddr");
-	kensakuInsAddr.value = '';
-
-	var kensakuReqDist = document.getElementById("kensakuReqDist");
-	kensakuReqDist.value = '';
-
 	var kensakuReqJgiName = document.getElementById("kensakuReqJgiName");
 	kensakuReqJgiName.value = '';
+
+	var kensakuInsNo = document.getElementById("kensakuInsNo");
+	kensakuInsNo.value = '';
+
+	var kensakuUltInsNo = document.getElementById("kensakuUltInsNo");
+	kensakuUltInsNo.value = '';
 
 	var kensakuManageCd = document.getElementById("kensakuManageCd");
 	kensakuManageCd.value = '';
@@ -160,17 +165,26 @@ function clearText() {
 	var kensakuInsSbt = document.getElementById("kensakuInsSbt");
 	kensakuInsSbt.value = '';
 
-	var pharmType = document.getElementById("pharmType");
+	var pharmType = document.getElementById("kensakuPharmType");
 	pharmType.value = '';
+
+	var kensakuInsPhone = document.getElementById("kensakuInsPhone");
+	kensakuInsPhone.value = '';
+
+	var kensakuInsPcode = document.getElementById("kensakuInsPcode");
+	kensakuInsPcode.value = '';
 
 	var jkrSosAddrCd = document.getElementById("jkrSosAddrCd");
 	jkrSosAddrCd.value = '';
 
-	var kensakuReqJgiName = document.getElementById("jkrCityNameCd");
+	var jkrCityNameCd = document.getElementById("jkrCityNameCd");
 	jkrCityNameCd.value = '';
 
+	var kensakuInsAddr = document.getElementById("kensakuInsAddr");
+	kensakuInsAddr.value = '';
+
 	var updMstTo = document.getElementById("updMstTo");
-	updMstTo.value = document.fm1.clearUpdMstTo.value;;
+	updMstTo.value = document.fm1.clearUpdMstTo.value;
 
 	var updMstFrom = document.getElementById("updMstFrom");
 	updMstFrom.value = document.fm1.clearUpdMstFrom.value;

@@ -511,7 +511,7 @@
 	            	<nobr>施設区分 </nobr>
 	            </td>
 	            <td><nobr></nobr></td>
-	            <td><s:select id="pharmType" name="kensakuPharmType" cssStyle="width:80pt" list ="pharmTypeMap" /></td>
+	            <td><s:select id="kensakuPharmType" name="kensakuPharmType" cssStyle="width:80pt" list ="pharmTypeMap" /></td>
 	        </tr>
 	        <tr>
 	            <%-- 電話番号(半角) --%>

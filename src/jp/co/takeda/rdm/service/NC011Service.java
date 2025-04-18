@@ -690,6 +690,7 @@ public class NC011Service extends BaseService {
         	    }
                 // エラー時処理
                 if(errFlg) {
+                	indto.setPageFlag("1");
                 	indto.setMsgStr(errMsg);
                 	//outdto = search(indto);
                 	return outdto;

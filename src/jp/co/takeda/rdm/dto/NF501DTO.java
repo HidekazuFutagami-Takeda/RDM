@@ -120,6 +120,30 @@ public class NF501DTO extends BaseDTO implements Serializable {
     private int kensakuJgiNo;
 
     /**
+     * 検索条件_担当者名
+     * @generated
+     */
+    private String jgiName;
+
+    /**
+     * 検索条件_申請者組織コード
+     * @generated
+     */
+    private String kensakuShinseiSosCd;
+
+    /**
+     * 検索条件_申請者組織名
+     * @generated
+     */
+    private String reqSosName;
+
+    /**
+     * 検索条件_申請者部門ランク
+     * @generated
+     */
+    private String kensakuShinseiBumonRank;
+
+    /**
      * 検索条件_医薬支店C_申請者所属リージョン(管理者)
      * @generated
      */
@@ -130,6 +154,30 @@ public class NF501DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private String kensakuShinseiDistCode;
+
+    /**
+     * 検索条件_担当者組織コード
+     * @generated
+     */
+    private String tantoSosCd;
+
+    /**
+     * 検索条件_担当者組織名
+     * @generated
+     */
+    private String tantoSosName;
+
+    /**
+     * 検索条件_担当者上位組織コード
+     * @generated
+     */
+    private String tantoUpSosCd;
+
+    /**
+     * 検索条件_担当者組織部門ランク
+     * @generated
+     */
+    private String tantoBumonRank;
 
     /**
      * 検索条件_医薬支店C_担当者所属リージョン(管理者)
@@ -705,6 +753,74 @@ public class NF501DTO extends BaseDTO implements Serializable {
 
 
 	/**
+	 * NF501DTO.javajgiNameを設定
+	 * @return jgiName
+	 */
+	public String getJgiName() {
+		return jgiName;
+	}
+
+
+	/**
+	 * @param jgiName セットする jgiName
+	 */
+	public void setJgiName(String jgiName) {
+		this.jgiName = jgiName;
+	}
+
+
+	/**
+	 * NF501DTO.javakensakuShinseiSosCdを設定
+	 * @return kensakuShinseiSosCd
+	 */
+	public String getKensakuShinseiSosCd() {
+		return kensakuShinseiSosCd;
+	}
+
+
+	/**
+	 * @param kensakuShinseiSosCd セットする kensakuShinseiSosCd
+	 */
+	public void setKensakuShinseiSosCd(String kensakuShinseiSosCd) {
+		this.kensakuShinseiSosCd = kensakuShinseiSosCd;
+	}
+
+
+	/**
+	 * NF501DTO.javareqSosNameを設定
+	 * @return reqSosName
+	 */
+	public String getReqSosName() {
+		return reqSosName;
+	}
+
+
+	/**
+	 * @param reqSosName セットする reqSosName
+	 */
+	public void setReqSosName(String reqSosName) {
+		this.reqSosName = reqSosName;
+	}
+
+
+	/**
+	 * NF501DTO.javakensakuShinseiBumonRankを設定
+	 * @return kensakuShinseiBumonRank
+	 */
+	public String getKensakuShinseiBumonRank() {
+		return kensakuShinseiBumonRank;
+	}
+
+
+	/**
+	 * @param kensakuShinseiBumonRank セットする kensakuShinseiBumonRank
+	 */
+	public void setKensakuShinseiBumonRank(String kensakuShinseiBumonRank) {
+		this.kensakuShinseiBumonRank = kensakuShinseiBumonRank;
+	}
+
+
+	/**
 	 * NF501DTO.javakensakuShinseiBrCodeを設定
 	 * @return kensakuShinseiBrCode
 	 */
@@ -735,6 +851,74 @@ public class NF501DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuShinseiDistCode(String kensakuShinseiDistCode) {
 		this.kensakuShinseiDistCode = kensakuShinseiDistCode;
+	}
+
+
+	/**
+	 * NF501DTO.javatantoSosCdを設定
+	 * @return tantoSosCd
+	 */
+	public String getTantoSosCd() {
+		return tantoSosCd;
+	}
+
+
+	/**
+	 * @param tantoSosCd セットする tantoSosCd
+	 */
+	public void setTantoSosCd(String tantoSosCd) {
+		this.tantoSosCd = tantoSosCd;
+	}
+
+
+	/**
+	 * NF501DTO.javatantoSosNameを設定
+	 * @return tantoSosName
+	 */
+	public String getTantoSosName() {
+		return tantoSosName;
+	}
+
+
+	/**
+	 * @param tantoSosName セットする tantoSosName
+	 */
+	public void setTantoSosName(String tantoSosName) {
+		this.tantoSosName = tantoSosName;
+	}
+
+
+	/**
+	 * NF501DTO.javatantoUpSosCdを設定
+	 * @return tantoUpSosCd
+	 */
+	public String getTantoUpSosCd() {
+		return tantoUpSosCd;
+	}
+
+
+	/**
+	 * @param tantoUpSosCd セットする tantoUpSosCd
+	 */
+	public void setTantoUpSosCd(String tantoUpSosCd) {
+		this.tantoUpSosCd = tantoUpSosCd;
+	}
+
+
+	/**
+	 * NF501DTO.javatantoBumonRankを設定
+	 * @return tantoBumonRank
+	 */
+	public String getTantoBumonRank() {
+		return tantoBumonRank;
+	}
+
+
+	/**
+	 * @param tantoBumonRank セットする tantoBumonRank
+	 */
+	public void setTantoBumonRank(String tantoBumonRank) {
+		this.tantoBumonRank = tantoBumonRank;
 	}
 
 

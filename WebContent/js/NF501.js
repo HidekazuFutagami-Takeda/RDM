@@ -10,6 +10,8 @@
 /**
  * ポップアップ用ウィンドウオブジェクト
  */
+var gCsoViewWin = null;        // 検索条件 組織POPUP用
+var gCtaViewWin = null;        // 検索条件 担当POPUP用
 var gCseViewFromWin = null;    // 組織従業員選択(組織・担当(現))
 var gCseViewToWin = null;      // 組織従業員選択(組織・担当(新))
 var gCtcViewWin = null;        // JIS府県武田市区郡選択
@@ -18,6 +20,9 @@ var gCpcViewWin=null;          // 品目選択開始
 var gCseViewChgWin=null;       // 組織従業員選択(変更担当者)
 var gCseViewToJgiWin=null;     // 組織従業員選択(新担当者)
 var gCseViewSosWin=null;       // 組織従業員選択(組織)
+
+var tmpCallback = null;
+var tmpTarget = null;
 
 /**
  * <pre>
@@ -114,13 +119,27 @@ function pltPage( pageCntCur ){
 /**
  * <pre>
  *  クリア
- * 全項目展開>>(リンク)押下時に呼ばれます。
+ * クリアボタン押下時に呼ばれます。
  * </pre>
  */
 function clearText() {
 
-	var kensakuInsNo = document.getElementById("kensakuInsNo");
-	kensakuInsNo.value = '';
+	if(document.fm1.jokenSetCd.value != 0){
+		// 管理者権限のみ組織担当者をクリア
+		document.fm1.tantoBumonRank.value = "";
+		document.fm1.tantoSosName.value = "";
+		document.fm1.tantoSosCd.value = "";
+		document.fm1.tantoUpSosCd.value = "";
+		document.fm1.kensakuSTantouBrCode.value = "";
+		document.fm1.kensakuTantouDistCode.value = "";
+		document.fm1.kensakuShinseiBumonRank.value = "";
+		document.fm1.reqSosName.value = "";
+		document.fm1.kensakuShinseiSosCd.value = "";
+		document.fm1.kensakuShinseiBrCode.value = "";
+		document.fm1.kensakuShinseiDistCode.value = "";
+		document.fm1.kensakuJgiNo.value = "";
+		document.fm1.jgiName.value = "";
+	}
 
 	var kensakuInsKanj = document.getElementById("kensakuInsKanj");
 	kensakuInsKanj.value = '';
@@ -128,23 +147,14 @@ function clearText() {
 	var kensakuInsKana = document.getElementById("kensakuInsKana");
 	kensakuInsKana.value = '';
 
-	var kensakuUltInsNo = document.getElementById("kensakuUltInsNo");
-	kensakuUltInsNo.value = '';
-
-	var kensakuInsPhone = document.getElementById("kensakuInsPhone");
-	kensakuInsPhone.value = '';
-
-	var kensakuInsPcode = document.getElementById("kensakuInsPcode");
-	kensakuInsPcode.value = '';
-
-	var kensakuInsAddr = document.getElementById("kensakuInsAddr");
-	kensakuInsAddr.value = '';
-
-	var kensakuReqDist = document.getElementById("kensakuReqDist");
-	kensakuReqDist.value = '';
-
 	var kensakuReqJgiName = document.getElementById("kensakuReqJgiName");
 	kensakuReqJgiName.value = '';
+
+	var kensakuInsNo = document.getElementById("kensakuInsNo");
+	kensakuInsNo.value = '';
+
+	var kensakuUltInsNo = document.getElementById("kensakuUltInsNo");
+	kensakuUltInsNo.value = '';
 
 	var kensakuManageCd = document.getElementById("kensakuManageCd");
 	kensakuManageCd.value = '';
@@ -155,17 +165,26 @@ function clearText() {
 	var kensakuInsSbt = document.getElementById("kensakuInsSbt");
 	kensakuInsSbt.value = '';
 
-	var pharmType = document.getElementById("pharmType");
+	var pharmType = document.getElementById("kensakuPharmType");
 	pharmType.value = '';
+
+	var kensakuInsPhone = document.getElementById("kensakuInsPhone");
+	kensakuInsPhone.value = '';
+
+	var kensakuInsPcode = document.getElementById("kensakuInsPcode");
+	kensakuInsPcode.value = '';
 
 	var jkrSosAddrCd = document.getElementById("jkrSosAddrCd");
 	jkrSosAddrCd.value = '';
 
-	var kensakuReqJgiName = document.getElementById("jkrCityNameCd");
+	var jkrCityNameCd = document.getElementById("jkrCityNameCd");
 	jkrCityNameCd.value = '';
 
+	var kensakuInsAddr = document.getElementById("kensakuInsAddr");
+	kensakuInsAddr.value = '';
+
 	var updMstTo = document.getElementById("updMstTo");
-	updMstTo.value = document.fm1.clearUpdMstTo.value;;
+	updMstTo.value = document.fm1.clearUpdMstTo.value;
 
 	var updMstFrom = document.getElementById("updMstFrom");
 	updMstFrom.value = document.fm1.clearUpdMstFrom.value;
@@ -273,7 +292,8 @@ function jimSearch() {
     document.fm1.pageCntCur.value = 1;
     document.fm1.sortId.value = "0";
 
-    document.fm1.functionId.value = "Search"
+    document.fm1.screenId.value = "NF501";
+    document.fm1.functionId.value = "Search";
 
     document.fm1.selectListChange.value = document.fm1.selectListChange.value;
 
@@ -293,7 +313,7 @@ function orderUp() {
 
   if (!jkrDestructChack()) return false;
   // 検索前チェック
-  if(jimChkBeforeSearch()) {
+  //if(jimChkBeforeSearch()) {
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 0;
     document.fm1.sortCondition1.value = "";
@@ -308,7 +328,7 @@ function orderUp() {
     document.fm1.functionId.value = "Search"
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
-  }
+  //}
 }
 
 /**
@@ -321,7 +341,7 @@ function orderDown() {
   // 変更内容破棄確認チェック
   if (!jkrDestructChack()) return false;
   // 検索前チェック
-  if(jimChkBeforeSearch()) {
+  //if(jimChkBeforeSearch()) {
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 0;
     document.fm1.sortCondition1.value = "";
@@ -336,7 +356,7 @@ function orderDown() {
     document.fm1.functionId.value = "Search"
     // 検索イベント呼び出し
     comSubmitForAnyWarp(fm1);
-  }
+  //}
 }
 
 
@@ -429,3 +449,155 @@ function jimGotoErr() {
   //}
 }
 
+/**
+ * <pre>
+ *  ポップアップウィンドウオブジェクトチェック関数
+ * </pre>
+ *  ポップアップ起動中にウィンドウが閉じられた時に
+ *  ウィンドウオブジェクトがstring型に変更される場合があるため、
+ *  ウィンドウオブジェクトの型をチェックしてJSエラーを回避します。
+ *
+ * @return true：正常,false：異常
+ */
+function hcpCheckPopUp() {
+
+  // 本画面で使用する全ポップアップウィンドウオブジェクトを対象にチェック
+  if(typeof(gCsoViewWin) == 'string') return false;     // 検索条件 組織ポップアップ
+  if(typeof(gCtaViewWin) == 'string') return false;     // 検索条件 担当ポップアップ
+  // 全ウィンドウが正常ならばtrue
+  return true;
+}
+
+/**
+ * <pre>
+ *  全てのポップアップを閉じます。
+ * </pre>
+ * @param targetWin 	対象ウィンドウオブジェクト
+ * @param targetWinName	対象ウィンドウ名称
+ */
+function hcpClosePopUp(targetWin,targetWinName){
+  if(hcpCheckPopUp()){
+	  // 対象ポップアップが存在すればフォーカスを当てる
+	  if(targetWin != null){
+		  targetWin.focus();
+	  }
+
+	  // 検索条件 組織ポップアップ
+	  if(gCsoViewWin != null && targetWinName != "gCsoViewWin"){
+		  gCsoViewWin.close();
+		  gCsoViewWin = null;
+	  }
+	  // 検索条件 担当ポップアップ
+	  if(gCtaViewWin != null && targetWinName != "gCtaViewWin"){
+		  gCtaViewWin.close();
+		  gCtaViewWin = null;
+	  }
+  }
+}
+
+//組織選択ボタン
+function soshikiPopBtn(func){
+	hcpClosePopUp(gCsoViewWin, "gCsoViewWin");
+	// NC201_担当者検索ポップアップ画面を表示
+	window.open("","gCsoViewWin",tantoSubScreenSize);
+	document.fm1.screenId.value = "NC201";
+	document.fm1.functionId.value="Init";
+	if(tmpTarget == null){
+		tmpTarget = document.fm1.target;
+	}
+	document.fm1.target="gCsoViewWin";
+
+	document.fm1.bumonRankPop.value="1";
+	document.fm1.selectFlgPop.value="1";
+
+	if(func == 1){
+		document.fm1.callBack.value = "callBackTantoSoshikiPop";
+	} else {
+		document.fm1.callBack.value = "callBackReqSoshikiPop";
+	}
+
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+}
+
+//組織検索ポップアップから値受け取り
+function callBackTantoSoshikiPop(bumonRank, sosCd, bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+		document.fm1.tantoBumonRank.value    = bumonRank;
+		document.fm1.tantoSosName.value = bumonSeiName;
+		document.fm1.tantoSosCd.value        = sosCd;
+		document.fm1.tantoUpSosCd.value        = upSosCode;
+		document.fm1.kensakuSTantouBrCode.value       = brCode;
+		document.fm1.kensakuTantouDistCode.value     = distCode;
+		document.fm1.target = tmpTarget;
+}
+
+//組織検索ポップアップから値受け取り
+function callBackReqSoshikiPop(bumonRank, sosCd, bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+		document.fm1.kensakuShinseiBumonRank.value    = bumonRank;
+		document.fm1.reqSosName.value = bumonSeiName;
+		document.fm1.kensakuShinseiSosCd.value        = sosCd;
+		document.fm1.kensakuShinseiBrCode.value       = brCode;
+		document.fm1.kensakuShinseiDistCode.value     = distCode;
+		document.fm1.target = tmpTarget;
+}
+
+//担当者選択ボタン
+function tantoPopBtn(){
+	  // 全てのポップアップを閉じる
+	  hcpClosePopUp(gCtaViewWin, "gCtaViewWin");
+		// NC202_担当者検索ポップアップ画面を表示
+		window.open("","gCtaViewWin",tantoSubScreenSize);
+		document.fm1.screenId.value = "NC202";
+		document.fm1.functionId.value="Init";
+		if(tmpTarget == null){
+			tmpTarget = document.fm1.target;
+		}
+		document.fm1.target="gCtaViewWin";
+
+		document.fm1.sosCdPop.value = document.fm1.tantoSosCd.value;
+		document.fm1.bumonRankPop.value = document.fm1.tantoBumonRank.value;
+		document.fm1.upSosCdPop.value = document.fm1.tantoUpSosCd.value;
+
+		document.fm1.selectFlgPop.value="1";
+		document.fm1.callBack.value="callBackTantoPop";
+
+		comSubmitForAnyWarp(fm1);
+		comClickFlgInit();
+}
+
+//担当者検索ポップアップから値受け取り
+function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+							distCode, trtGrpCd, trtNm, mrCat){
+		document.fm1.tantoSosCd.value = sosCd;
+		document.fm1.tantoSosName.value = bumonSeiName;
+		document.fm1.kensakuJgiNo.value = jgiNo;
+		document.fm1.kensakuSTantouBrCode.value       = brCode;
+		document.fm1.kensakuTantouDistCode.value = distCode;
+		document.fm1.jgiName.value = jgiName;
+		document.fm1.target = tmpTarget;
+}
+
+// 担当者組織クリアボタン
+function tantoSosClear(){
+		document.fm1.tantoBumonRank.value = "";
+		document.fm1.tantoSosName.value = "";
+		document.fm1.tantoSosCd.value = "";
+		document.fm1.tantoUpSosCd.value = "";
+		document.fm1.kensakuSTantouBrCode.value = "";
+		document.fm1.kensakuTantouDistCode.value = "";
+}
+
+// 申請者組織クリアボタン
+function reqSosClear(){
+		document.fm1.kensakuShinseiBumonRank.value = "";
+		document.fm1.reqSosName.value = "";
+		document.fm1.kensakuShinseiSosCd.value = "";
+		document.fm1.kensakuShinseiBrCode.value = "";
+		document.fm1.kensakuShinseiDistCode.value = "";
+}
+
+// 担当者クリアボタン
+function tantoClear(){
+		document.fm1.kensakuJgiNo.value = "";
+		document.fm1.jgiName.value = "";
+}

@@ -333,23 +333,28 @@ public class NF501Service extends BaseService {
         //検索条件をもとに検索結果を格納
         List<BaseEntity> selectParam = dao.select(paramEntity);
 
-        //検索結果が0件の場合
-        if (CollectionUtils.isEmpty(selectParam)) {
-        	return outdto;
-        }
-
       // 件数定義取得
 		SelectParamNF501Entity selectParamNF501Entity = new SelectParamNF501Entity();
 		List<SelectParamNF501Entity> selectParamNF501List;
 		selectParamNF501List = dao.select(selectParamNF501Entity);
 
+        //検索数格納
+  	    dto.initPageInfo(dto.getPageCntCur(), selectParam.size(), selectParamNF501List.get(1).getValue());
+  	    paramEntity.setInOffset(dto.getLineCntStart() - 1);
+  	    paramEntity.setInLimit(selectParamNF501List.get(1).getValue());
+
 //		SelectPageHcoUpdHstEntity selectPageHcoUpdHstEntity = new SelectPageHcoUpdHstEntity();
 //	    List<SelectPageHcoUpdHstEntity> selectPageHcoUpdHstList;
 //	    selectPageHcoUpdHstList = dao.select(selectPageHcoUpdHstEntity);
 
+        //検索結果が0件の場合
+        if (CollectionUtils.isEmpty(selectParam)) {
+        	return outdto;
+        }
+
 	    //検索結果が上限以上の場合
 	    if (selectParam.size() > selectParamNF501List.get(0).getValue()) {
-	    	
+
 	    	dto.setKensakuBool(false);
     		return outdto;
 	    }
@@ -612,10 +617,6 @@ public class NF501Service extends BaseService {
                 hcoUpdHstDataList.add(dataRecord);
             }
 
-          //検索数格納
-    	    dto.initPageInfo(dto.getPageCntCur(), hcoUpdHstDataList.size(), selectParamNF501List.get(1).getValue());
-    	    paramEntity.setInOffset(dto.getLineCntStart() - 1);
-    	    paramEntity.setInLimit(selectParamNF501List.get(1).getValue());
         //検索された帳票一覧をDTOに設定する
         dto.setHcoUpdHstDataList(hcoUpdHstDataList);
         // END UOC

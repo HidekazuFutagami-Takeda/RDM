@@ -260,17 +260,30 @@
       <s:hidden name="listName" />
       <s:hidden name="poprowno" />
       <s:hidden name="poptrtno" />
+      <s:hidden name="backScreenId" value="NF501" />
 
       <s:hidden name="mrJgiNo" />
       <s:hidden name="mrBrCode" />
       <s:hidden name="mrDistCode" />
       <s:hidden name="mrTrtCd" />
 
+      <s:hidden name="bumonRankPop" />
+      <s:hidden name="selectFlgPop" />
+      <s:hidden name="sosCdPop" />
+      <s:hidden name="bumonRankPop" />
+      <s:hidden name="upSosCdPop" />
+
+      <s:hidden name="tantoBumonRank" />
+      <s:hidden name="tantoSosCd" />
+      <s:hidden name="tantoUpSosCd" />
       <s:hidden name="kensakuTantouDistCode" />
       <s:hidden name="kensakuSTantouBrCode" />
+
+		<s:hidden name="kensakuShinseiBumonRank" />
+	  <s:hidden name="kensakuShinseiSosCd" />
       <s:hidden name="kensakuShinseiDistCode" />
       <s:hidden name="kensakuShinseiBrCode" />
-      <s:hidden name="kensakuJgiNo" />
+
       <s:hidden name="clearUpdMstFrom" />
       <s:hidden name="clearUpdMstTo" />
 
@@ -351,11 +364,11 @@
 			          	<nobr>担当者組織  </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
 		          	</td>
 
 		          </s:if>
@@ -366,11 +379,11 @@
 		          		<nobr>担当者組織 </nobr>
 		          	</td>
 		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(1);" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoSosClear();return false;">Clear</a>
 		          	</td>
 		          </s:else>
 
@@ -382,8 +395,8 @@
 		          	</td>
 		          	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" disabled /></td>
 		          	<td>
-		          		<s:textfield id="sosNameUser" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		<span>clear</span>
+		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
 		          	</td>
 		          </s:if>
 
@@ -392,10 +405,10 @@
 		          	<td class="comTableSearchItem" style="width:50pt;">
 		         	 	<nobr>担当者</nobr>
 		         	</td>
-		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="" /></td>
+		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
 		          	<td>
-		          		<s:textfield id="sosNameUser" name="sosName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		<span>clear</span>
+		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
 		          	</td>
 		          </s:else>
 
@@ -407,11 +420,11 @@
 			          	<nobr>申請者組織  </nobr>
 			          </td>
 			          <td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
 		          	</td>
 		          </s:if>
 		          <!-- 管理者権限の場合 -->
@@ -421,11 +434,11 @@
 		          	</td>
 
 		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" />
+		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(2);" />
 		          	</td>
 		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="" class="comMiniLink" onClick=";return false;">clear</a>
+		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          		&nbsp;<a href="#" class="comMiniLink" onClick="reqSosClear();return false;">Clear</a>
 		          	</td>
 		          </s:else>
 	        </tr>
@@ -498,7 +511,7 @@
 	            	<nobr>施設区分 </nobr>
 	            </td>
 	            <td><nobr></nobr></td>
-	            <td><s:select id="pharmType" name="kensakuPharmType" cssStyle="width:80pt" list ="pharmTypeMap" /></td>
+	            <td><s:select id="kensakuPharmType" name="kensakuPharmType" cssStyle="width:80pt" list ="pharmTypeMap" /></td>
 	        </tr>
 	        <tr>
 	            <%-- 電話番号(半角) --%>
@@ -592,6 +605,18 @@
           </s:else>
           <%-- ページャー表示 終了 --%>
 
+<%
+	// ソート表示状態制御
+	int sortCondition = (int)request.getAttribute("sortId");
+	String updShaYmdAscClass = "comTableNoSort";
+	String updShaYmdDescClass = "comTableNoSort";
+	if (sortCondition == 0) {
+		updShaYmdDescClass = "comTableSort";
+	} else if (sortCondition == 1) {
+		updShaYmdAscClass = "comTableSort";
+	}
+%>
+
 	    <%-- 項目 --%>
 	    <s:if test="searchType == 1 ">
 	    	<!-- 施設一覧　検索結果 -->
@@ -605,14 +630,15 @@
 	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
 	    		<thead>
 		        <tr>
-		            <td class="comTableTitle" id="left1" style="width:146pt;">
+		            <td class="comTableTitle" id="left1" style="min-width:63px;">
 		            	<nobr>
 		            		更新日
-		            	<span onclick="orderUp();" style="color:red;"> ▲ </span>
-		            	<span onclick="orderDown();"> ▼ </span></nobr>
+		            	<a href="#" class="<%=updShaYmdAscClass %>" onclick="orderUp();"> ▲ </a>
+		            	<a href="#" class="<%=updShaYmdDescClass %>" onclick="orderDown();"> ▼ </a>
+		            	</nobr>
 
 		            </td>
-		            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>申請ID</nobr></td>
+		            <td class="comTableTitle" id="left2" style="min-width:84px;"><nobr>申請ID</nobr></td>
 		            <td class="comTableTitle" id="left3" style="width:146pt;"><nobr>施設固定コード</nobr></td>
 		        　　　　　　　 <td class="comTableTitle" id="left4" style="width:146pt;"><nobr>対象区分</nobr></td>
 		            <td class="comTableTitle" id="left5" style="width:146pt;"><nobr>施設略式漢字名</nobr></td>
@@ -621,8 +647,8 @@
 		            <td class="comTableTitle" id="left8" style="width:146pt;"><nobr>施設住所（漢字）</nobr></td>
 		            <td class="comTableTitle" id="left9" style="width:146pt;"><nobr>電話番号1</nobr></td>
 		            <td class="comTableTitle" id="left10" style="width:146pt;"><nobr>FAX番号1</nobr></td>
-		            <td class="comTableTitle" id="left11" style="width:146pt;"><nobr>（来期）項目変更フラグ</nobr></td>
-		            <td class="comTableTitle" id="left12" style="width:146pt;"><nobr>その他項目の変更フラグ</nobr></td>
+		            <!-- <td class="comTableTitle" id="left11" style="width:146pt;"><nobr>（来期）項目変更フラグ</nobr></td>
+		            <td class="comTableTitle" id="left12" style="width:146pt;"><nobr>その他項目の変更フラグ</nobr></td> -->
 		            <td class="comTableTitle" id="left13" style="width:146pt;"><nobr>申請者氏名</nobr></td>
 		            <td class="comTableTitle" id="left14" style="width:146pt;"><nobr>承認者氏名</nobr></td>
 		            <!-- ここから全画面 -->
@@ -806,23 +832,23 @@
 				            </s:else>
 						</td>
 						<!-- （来期）項目変更フラグ -->
-						<td class="comTableItem" id="left11"  >
+						<!-- <td class="comTableItem" id="left11"  >
 							<s:if test="%{#rowBean.hcoNxt == null || #rowBean.hcoNxt == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 								<s:label key="hcoUpdHstDataList[%{#status.index}].hcoNxt" style="color:red;"/>
 				            </s:else>
-						</td>
+						</td> -->
 						<!-- その他項目の変更フラグ -->
-						<td class="comTableItem" id="left12"  >
+						<!-- <td class="comTableItem" id="left12"  >
 							<s:if test="%{#rowBean.otherChanges == null || #rowBean.otherChanges == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 								<s:label key="hcoUpdHstDataList[%{#status.index}].otherChanges" />
 				            </s:else>
-						</td>
+						</td> -->
 						<!-- 申請者氏名 -->
 						<td class="comTableItem" id="left13"  >
 							<s:if test="%{#rowBean.reqJgiName == null || #rowBean.reqJgiName == ''}">

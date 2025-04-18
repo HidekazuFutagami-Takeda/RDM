@@ -146,7 +146,7 @@
 	<s:hidden name="shinseiButtonFlg" />
 	<s:hidden name="errorCheckFlg" />
 	<s:hidden name="dialogMst" />
-	<s:hidden name="backScreenId" />
+	<s:hidden name="backScreenId" value="ND103" />
 	<s:hidden name="preScreenId" />
 	<s:hidden name="reqShz" />
 	<s:hidden name="paramReqId" />

@@ -120,6 +120,12 @@ public class NF501DTO extends BaseDTO implements Serializable {
     private int kensakuJgiNo;
 
     /**
+     * 検索条件_担当者名
+     * @generated
+     */
+    private String jgiName;
+
+    /**
      * 検索条件_申請者組織コード
      * @generated
      */
@@ -743,6 +749,23 @@ public class NF501DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuJgiNo(int kensakuJgiNo) {
 		this.kensakuJgiNo = kensakuJgiNo;
+	}
+
+
+	/**
+	 * NF501DTO.javajgiNameを設定
+	 * @return jgiName
+	 */
+	public String getJgiName() {
+		return jgiName;
+	}
+
+
+	/**
+	 * @param jgiName セットする jgiName
+	 */
+	public void setJgiName(String jgiName) {
+		this.jgiName = jgiName;
 	}
 
 

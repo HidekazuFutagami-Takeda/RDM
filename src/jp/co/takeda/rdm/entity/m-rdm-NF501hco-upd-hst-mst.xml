@@ -423,6 +423,8 @@
 		<if test="sortId == 1">
 			ORDER BY HCO_UPD_HST.UPD_SHA_YMD DESC, HCO_UPD_HST.REQ_ID
 		</if>
+
+		<if test="inOffset != null and inLimit != null">OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY</if>
     </select>
 
     <!-- 施設一覧 _変換系-->

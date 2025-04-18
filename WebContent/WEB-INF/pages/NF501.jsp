@@ -647,8 +647,8 @@
 		            <td class="comTableTitle" id="left8" style="width:146pt;"><nobr>施設住所（漢字）</nobr></td>
 		            <td class="comTableTitle" id="left9" style="width:146pt;"><nobr>電話番号1</nobr></td>
 		            <td class="comTableTitle" id="left10" style="width:146pt;"><nobr>FAX番号1</nobr></td>
-		            <td class="comTableTitle" id="left11" style="width:146pt;"><nobr>（来期）項目変更フラグ</nobr></td>
-		            <td class="comTableTitle" id="left12" style="width:146pt;"><nobr>その他項目の変更フラグ</nobr></td>
+		            <!-- <td class="comTableTitle" id="left11" style="width:146pt;"><nobr>（来期）項目変更フラグ</nobr></td>
+		            <td class="comTableTitle" id="left12" style="width:146pt;"><nobr>その他項目の変更フラグ</nobr></td> -->
 		            <td class="comTableTitle" id="left13" style="width:146pt;"><nobr>申請者氏名</nobr></td>
 		            <td class="comTableTitle" id="left14" style="width:146pt;"><nobr>承認者氏名</nobr></td>
 		            <!-- ここから全画面 -->
@@ -832,23 +832,23 @@
 				            </s:else>
 						</td>
 						<!-- （来期）項目変更フラグ -->
-						<td class="comTableItem" id="left11"  >
+						<!-- <td class="comTableItem" id="left11"  >
 							<s:if test="%{#rowBean.hcoNxt == null || #rowBean.hcoNxt == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 								<s:label key="hcoUpdHstDataList[%{#status.index}].hcoNxt" style="color:red;"/>
 				            </s:else>
-						</td>
+						</td> -->
 						<!-- その他項目の変更フラグ -->
-						<td class="comTableItem" id="left12"  >
+						<!-- <td class="comTableItem" id="left12"  >
 							<s:if test="%{#rowBean.otherChanges == null || #rowBean.otherChanges == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 								<s:label key="hcoUpdHstDataList[%{#status.index}].otherChanges" />
 				            </s:else>
-						</td>
+						</td> -->
 						<!-- 申請者氏名 -->
 						<td class="comTableItem" id="left13"  >
 							<s:if test="%{#rowBean.reqJgiName == null || #rowBean.reqJgiName == ''}">

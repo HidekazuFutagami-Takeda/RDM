@@ -713,7 +713,6 @@ public class ND307Service extends BaseService {
 	        	tRdmReqKnrInsData.setDocNo(indto.getDocNo());
 	        	tRdmReqKnrInsData.setInsNo(indto.getInsNo());
 	        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
-	        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
 	        	tRdmReqKnrInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
 	        	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
 	        	tRdmReqKnrInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
@@ -833,7 +832,7 @@ public class ND307Service extends BaseService {
         	tRdmReqKnrEntity.setAprJgiNo(loginInfo.getJgiNo());
         	tRdmReqKnrEntity.setAprShaName(loginInfo.getJgiName());
         	tRdmReqKnrEntity.setAprYmdhms(sysDateTime);
-        	tRdmReqKnrEntity.setAprComment(indto.getReqComment());
+        	tRdmReqKnrEntity.setAprComment(indto.getAprComment());
 
         	tRdmReqKnrEntity.setUpdShaYmd(systemDate);
         	tRdmReqKnrEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
@@ -878,7 +877,7 @@ public class ND307Service extends BaseService {
 			}
 			tRdmReqKnrEntity.setTekiyoYmd(tekiyoYmd);
 			tRdmReqKnrEntity.setAprComment(indto.getAprComment());//承認者コメント
-			tRdmReqKnrEntity.setAprMemo(indto.getAprMemo());//承認者メモ
+//			tRdmReqKnrEntity.setAprMemo(indto.getAprMemo());//承認者メモ
         	tRdmReqKnrEntity.setUpdShaYmd(systemDate);
         	tRdmReqKnrEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 
@@ -1083,7 +1082,7 @@ public class ND307Service extends BaseService {
 			if(len > 100) {
 				errChk = true;
 				tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);//最大文字数を超えています。（項目名）
-				tmpMsgStr = tmpMsgStr.replace("項目名", "却下コメント");
+				tmpMsgStr = tmpMsgStr.replace("項目名", "承認・却下コメント");
 				msgStr = msgStr + tmpMsgStr + "\n";
 			}
 		}

@@ -313,111 +313,86 @@
       </table>
 
 		<%-- 検索部 開始 --%>
-     	<table class="pupList" style="border-collapse: separate; margin-top:3pt; background-color: white;">
-
+     	<table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
      	<s:form action="NF501Search" theme="simple" name="fm1" >
 	        <tr>
-	        	 <%-- 組織  --%>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>組織 </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          	<s:if test='%{loginJokenSetCd == "JKN0850"}'>
+        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>組織
+	      <s:if test='%{loginJokenSetCd == "JKN0850"}'>
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="henkouSos();" />
 		          	</s:if>
 		          	<s:else>
 		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" disabled />
 		          	</s:else>
-		          	</td>
-		          	<td>
-		          		<s:textfield id="KensakuSosName" name="kensakuSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:textfield id="KensakuSosName" name="kensakuSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		<s:if test='%{loginJokenSetCd == "JKN0850"}'>
 		          			&nbsp;<a href="#" class="comMiniLink" onClick="sosClear();return false;">Clear</a>
 		          		</s:if>
-		          	</td>
-
-	            <%-- 担当者 --%>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		         	 	<nobr>担当者</nobr>
-		         	</td>
-		         	<td style="width: 35px;">
-					<s:if test='%{loginJokenSetCd == "JKN0850"}'>
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>担当者
+	      <s:if test='%{loginJokenSetCd == "JKN0850"}'>
 		         		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="henkouTanto();" />
 					</s:if>
 					<s:else>
 						<input id="sosButton1" class="comButton" type="button" value="選択" onClick="" disabled />
 					</s:else>
-		         	</td>
-		          	<td>
-		          		<s:textfield id="kensakuJgiName" name="kensakuJgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:textfield id="kensakuJgiName" name="kensakuJgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 		          		<s:if test='%{loginJokenSetCd == "JKN0850"}'>
 			          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
 			          	</s:if>
-		          	</td>
-
-	             <%-- 所属部科 --%>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>所属部科 </nobr>
-		          	</td>
-
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="hekouShozoku(1);" />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="kensakuDeptKj" name="kensakuDeptKj" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;
-		          		<a href="#" class="comMiniLink" onClick="deptClear();return false;">Clear</a>
-		          	</td>
-
-		          	<td>
-		          		<%-- 表示リセット --%>
-	               		 <input type="button" value="クリア" class="comMiniLink" onclick="clearAll()">
-		          	</td>
-	        </tr>
-
-	        <tr>
-	           <%-- 施設名 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設名 </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuInsKanj"  name="kensakuInsKanj" size="20" maxlength="128" /></td>
-	           <%-- 施設固定C --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設固定C </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuInsNo"  name="kensakuInsNo" size="20" maxlength="128" /></td>
-
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	            <td>
-	            	<!-- 検索ボタン -->
-	                <input type="button" name="search" value="検索" onclick="jimSearch();">
-	            </td>
-	        </tr>
-
-	        <tr>
-	           <%-- 医師名 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>医師名</nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuDocKanj"  name="kensakuDocKanj" size="20" maxlength="128" /></td>
-	           <%-- 医師固定C --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>医師固定C </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuDocNo"  name="kensakuDocNo" size="20" maxlength="128" /></td>
-
-	            <td></td>
-	            <td></td>
-	            <td></td>
-	        </tr>
-	        </s:form>
-	    </table>
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>所属部科
+	      	<input id="sosButton1" class="comButton" type="button" value="選択" onClick="hekouShozoku(1);" />
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:textfield id="kensakuDeptKj" name="kensakuDeptKj" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+         		&nbsp;
+        		<a href="#" class="comMiniLink" onClick="deptClear();return false;">Clear</a>
+	      </nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>施設名</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:textfield id="kensakuInsKanj"  name="kensakuInsKanj" size="20" maxlength="128" />
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>施設固定C</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:textfield id="kensakuInsNo"  name="kensakuInsNo" size="20" maxlength="128" />
+	      </nobr></td>
+	      <td class="comFormTableItem">&nbsp;</td>
+	      <td class="comFormTableItem">&nbsp;</td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>医師名</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:textfield id="kensakuDocKanj"  name="kensakuDocKanj" size="20" maxlength="128" />
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>医師固定C</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:textfield id="kensakuDocNo"  name="kensakuDocNo" size="20" maxlength="128" />
+	      </nobr></td>
+	      <td class="comFormTableItem" colspan="2">
+	      <nobr>
+	      	<input type="button" name="search" value="検索" onclick="jimSearch();">
+	      	<input type="button" value="クリア" class="comMiniLink" onclick="clearAll()">
+	      </nobr>
+	      </td>
+      </tr>
+       </s:form>
+	</table>
 		<%-- 検索部 終了 --%>
 		<hr>
 		<s:if test="searchType == 1 ">

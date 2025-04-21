@@ -624,27 +624,27 @@ function backBtn(){
 		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 			document.fm1.screenId.value = preScreenId;
 			document.fm1.functionId.value="Init";
-
+			window.close();
 			comSubmitForAnyWarp(fm1);
 		}
 	} else if(preScreenId == "NM011"){
 		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 			document.fm1.screenId.value = "NC001";
 			document.fm1.functionId.value="Init";
-
+			window.close();
 			comSubmitForAnyWarp(fm1);
 	} else if(preScreenId == "NM101"){
 		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 			document.fm1.screenId.value = "NC001";
 			document.fm1.functionId.value="Init";
-
+			window.close();
 			comSubmitForAnyWarp(fm1);
 		}
 	} else if(preScreenId == "NC011"){
 		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 			document.fm1.screenId.value = "NC001";
 			document.fm1.functionId.value="Init";
-
+			window.close();
 			comSubmitForAnyWarp(fm1);
 		}
 	}

@@ -1242,17 +1242,24 @@ function backBtn(){
 	document.fm1.target="";
 	const preScreenId = document.fm1.preScreenId.value;
 	if(preScreenId == "NC001"){
-		if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+		//if(window.confirm("メニュー画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
 			document.fm1.screenId.value = preScreenId;
 			document.fm1.functionId.value="Init";
-
+			window.close();
 			comSubmitForAnyWarp(fm1);
-		}
+		//}
 	} else if(preScreenId == "NM001"){
 		//if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
-			document.fm1.screenId.value = preScreenId;
+			document.fm1.preScreenId.value = "NM001";
 			document.fm1.functionId.value="Init";
-
+			window.close();
+			comSubmitForAnyWarp(fm1);
+		//}
+	}else if(preScreenId != "NM001"){
+		//if(window.confirm("申請サマリ画面へ戻ります。よろしいですか？（入力内容は破棄されます。）")){
+			document.fm1.preScreenId.value = "NM001";
+			document.fm1.functionId.value="Init";
+			window.close();
 			comSubmitForAnyWarp(fm1);
 		//}
 	}else if(preScreenId == "NM101"){

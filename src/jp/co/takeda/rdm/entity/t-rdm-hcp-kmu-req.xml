@@ -485,6 +485,16 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
+	<update id="updateND104Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity">
+	UPDATE
+		T_RDM_HCP_KMU_REQ
+	SET
+		UPD_SHA_YMD = #{updShaYmd},
+		UPD_SHA_ID = #{updShaId}
+
+	WHERE
+		REQ_ID = #{reqId}
+	</update>
     <select id="selectDocReqKnrInsChangeCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectDocReqKnrInsChangeCheckEntity" resultMap="selectDocReqKnrInsChangeCheckResultMap">
        SELECT
            HCP_MST.DOC_KANJ

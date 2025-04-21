@@ -291,6 +291,8 @@ public class ND313Service extends BaseService {
         // 現在日付を取得
         Date systemDate = DateUtils.getNowDate();
         SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+        String sysDateTime = fmtDateTime.format(systemDate);
 
         LocalDateTime nowDate = LocalDateTime.now();
         ZoneId zone = ZoneId.systemDefault();
@@ -337,6 +339,7 @@ public class ND313Service extends BaseService {
 	           	tRdmReqKnrInsData.setReqJgiNo(dto.getJgiNo());//申請者従業員番号
 	           	tRdmReqKnrInsData.setReqJgiName(dto.getJgiName());//申請者氏名
 	           	tRdmReqKnrInsData.setReqComment(dto.getReqComment());//申請者コメント
+	           	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
 	           	tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());//医師固定C
 	           	tRdmReqKnrInsData.setInsShaYmd(systemDate);
 	           	tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
@@ -360,6 +363,7 @@ public class ND313Service extends BaseService {
 	           	}
 	           	tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);//適用開始日
 	           	tRdmReqKnrUpdData.setReqComment(dto.getReqComment());//申請コメント
+	           	tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
 	           	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);//更新日
 	           	tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));//更新者
 

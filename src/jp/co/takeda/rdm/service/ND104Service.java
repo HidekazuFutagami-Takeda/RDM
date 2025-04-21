@@ -5,6 +5,7 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -155,13 +156,20 @@ public class ND104Service extends BaseService {
         	//申請者氏名
         	dto.setJgiName(entity.getJgiName());
         	//申請日時
-        	if (!StringUtils.isEmpty(entity.getReqYmdhms())) {
-        		String reqYmdhms = entity.getReqYmdhms();
-            	String yyyy = reqYmdhms.substring(0,4);
-            	String  mm = reqYmdhms.substring(4,6);
-            	String  dd = reqYmdhms.substring(6,8);
-            	dto.setReqYmdhms(yyyy + "-" + mm + "-" + dd);
-        	}
+        	SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+			SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        	if (entity.getReqYmdhms() != null && entity.getReqYmdhms().length() == 14) {
+				try {
+					Date reqYmd = sdfDateTime.parse(entity.getReqYmdhms());
+					String strReqYmd = sdfDateTime2.format(reqYmd);
+					dto.setReqYmdhms(strReqYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+					dto.setReqYmdhms(StringUtils.nvl(entity.getReqYmdhms(), ""));
+				}
+			} else {
+				dto.setReqYmdhms(StringUtils.nvl(entity.getReqYmdhms(), ""));
+			}
 
         	//申請者従業員番号
         	dto.setJgiNo(Integer.parseInt(entity.getReqJgiNo()));
@@ -320,6 +328,8 @@ public class ND104Service extends BaseService {
         // 現在日付を取得
         Date systemDate = DateUtils.getNowDate();
         SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+        String sysDateTime = fmtDateTime.format(systemDate);
 
         LocalDateTime nowDate = LocalDateTime.now();
         ZoneId zone = ZoneId.systemDefault();
@@ -366,6 +376,7 @@ public class ND104Service extends BaseService {
 	           	tRdmReqKnrInsData.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
 	           	tRdmReqKnrInsData.setReqJgiName(loginInfo.getJgiName());//申請者氏名
 	           	tRdmReqKnrInsData.setReqComment(dto.getReqComment());//申請者コメント
+	           	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
 	           	tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());//医師固定C
 	           	tRdmReqKnrInsData.setInsShaYmd(systemDate);
 	           	tRdmReqKnrInsData.setInsShaId(String.valueOf(loginInfo.getJgiNo()));
@@ -389,6 +400,7 @@ public class ND104Service extends BaseService {
 	           	}
 	           	tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);//適用開始日
 	           	tRdmReqKnrUpdData.setReqComment(dto.getReqComment());//申請コメント
+	           	tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
 	           	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);//更新日
 	           	tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));//更新者
 

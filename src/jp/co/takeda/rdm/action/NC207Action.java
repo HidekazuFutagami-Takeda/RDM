@@ -107,7 +107,10 @@ public class NC207Action extends BaseAction<NC207DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
+        // 画面タイトル制御処理
+        String title = "NC207_公的機関編集ポップアップ";
 
+        dto.setTitle(title);
         // END UOC
     }
 

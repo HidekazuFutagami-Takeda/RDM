@@ -218,14 +218,14 @@ public class NC207Service extends BaseService {
 		if(StringUtils.isEmpty(indto.getClassCategoryCdPop())) {
 			errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-			tmpMsgStr.replace("項目名", "分類区分");
+			tmpMsgStr = tmpMsgStr.replace("項目名", "分類区分");
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
 
 		if(StringUtils.isEmpty(indto.getPubInstitutionCdPop())) {
 			errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-			tmpMsgStr.replace("項目名", "公的機関");
+			tmpMsgStr = tmpMsgStr.replace("項目名", "公的機関");
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
 

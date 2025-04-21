@@ -58,7 +58,7 @@
 		/** 申請ボタンが押された場合 */
 		if(button == 0) {
 			/** 申請ステータスが保存済み,承認待ち、ULT承認待ちの場合の場合、申請出来る */
-			if(reqSts.value == 01 || reqSts.value == 03 || reqSts.value == 13) {
+			if(reqSts == null || reqSts.value == '' || reqSts.value == 01 || reqSts.value == 03 || reqSts.value == 13 || (mrAdminFlg.value == 1 && reqSts.value == 11) ) {
 
 
 				document.fm1.funcId.value = req0;
@@ -79,6 +79,17 @@
 				document.fm1.functionId.value = "Register";
 				comSubmitForAnyWarp(fm1);
 	    	}
+	        /** 承認ボタンが押された場合 */
+		}else if(button == 2) {
+			/** 申請ステータスが承認待ち、ULT承認待ちの場合、承認出来る */
+	        if((reqSts.value == 03 || reqSts.value == 13) && (mrAdminFlg.value == 1)) {
+	        	msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
+	        	window.confirm(msgContent)
+				document.fm1.funcId.value = "2";
+				document.fm1.screenId.value = "ND309";
+				document.fm1.functionId.value = "Register";
+				comSubmitForAnyWarp(fm1);
+	    	}
 		}
 	}
 
@@ -91,10 +102,14 @@
 				// NF211_施設紐付け新規に遷移
 				document.fm1.screenId.value="ND102";
 				document.fm1.functionId.value="Init";
-
+				document.fm1.preScreenId.value="ND309";
 				comSubmitForAnyWarp(fm1);
 		    //}
 		}
+
+	    function comSetFormWindowInfo(){
+	    	comClickFlgInit();
+	      }
 </script>
 </head>
 <body class="comPage" onUnload="JavaScript:jmrUnLoad();"onLoad="JavaScript:comSetFormWindowInfo();">
@@ -136,7 +151,6 @@
 		<s:hidden name="preDcc" />
 		<s:hidden name="preUnivPosCode" />
 		<s:hidden name="ultDocNo" />
-		<s:hidden name="aprComment" />
 		<s:hidden name="docNo" />
 		<s:hidden name="insNo" />
 		<s:hidden name="reqId" />
@@ -161,6 +175,11 @@
 		<s:hidden name="inputFlg" />
 		<s:hidden name="reqCommentFlg" />
 		<s:hidden name="movemedEditFlg" />
+		<s:hidden name="Nd309RejectFlg" />
+		<s:hidden name="Nd309RejectActiveFlg" />
+		<s:hidden name="Nd309AppdFlg" />
+		<s:hidden name="Nd309AppdActiveFlg" />
+		<s:hidden name="alertIgnore"/>
 		<s:hidden name="reqChl" />
 		<s:hidden name="reqSts" id="reqSts"/>
 		<s:hidden name="funcId" id="funcId" value=""/>
@@ -170,13 +189,11 @@
 		<s:hidden name="kmuPostCodeKanj"/>
 		<s:hidden name="yakushinPostCodeKanj"/>
 		<s:hidden name="univPostTitleKj"/>
-		<s:hidden name="dispTekiyoYmd"/>
-        <s:hidden name="reqComment"/>
 		<s:hidden name="reqDestBtnFlg"/>
 
 		<s:hidden name="tempReqBtnFlg" id="tempReqBtnFlg" value="0" />
 		<s:hidden name="reqBtnFlg" id="reqBtnFlg" value="0" />
-
+<s:hidden name="title" />
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>
@@ -207,87 +224,118 @@
 		<%--申請内容表示エリア --%>
 		<table class="comPortalTable" align="center">
 			<tbody>
+			<tr>
+			        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 185px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 185px; height: 0px; border-width: 0px;"></td>
+			</tr>
 				<tr>
-					<td>申請情報</td>
-					<td>申請ID</td>
-					<td><s:label key="reqId" /></td>
+					<td class="comFormTableItem"><nobr>申請情報</nobr></td>
+					<td class="comFormTableItem"><nobr>申請ID</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="reqId" /></nobr></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td>申請者所属</td>
-					<td><s:label key="reqShz" /></td>
-					<td>申請ステータス</td>
-					<td><s:label key="reqStsNm" /></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>申請者所属</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="reqShz" /></nobr></td>
+					<td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="reqStsNm" /></nobr></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td>申請者氏名</td>
-					<td><s:label key="reqJgiName" /></td>
-					<td>申請日時</td>
-					<td><s:label key="reqYmdhms" /></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="reqJgiName" /></nobr></td>
+					<td class="comFormTableItem"><nobr>申請日時</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="reqYmdhms" /></nobr></td>
 				</tr>
+					  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示　申請者には非表示 -->
+	  <s:if test='%{reqSts != null && reqSts != "" && !(reqSts == "01" || reqSts == "11" || reqSts == "03" || reqSts == "13") }'>
+		<s:if test='%{loginJgiNo != reqJgiNo }'>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+		      <td class="comFormTableItem"><nobr>審査者</nobr></td>
+		      <td class="comFormTableItem"><nobr><s:label key="shnShaName"/></nobr></td>
+		      <td class="comFormTableItem"><nobr>審査日時</nobr></td>
+		      <td class="comFormTableItem"><nobr><s:label key="shnYmdhms"/></nobr></td>
+		  </tr>
+	  </s:if>
+	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示 -->
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>承認者</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="aprShaName"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>承認日時</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="aprYmdhms"/></nobr></td>
+	  </tr>
+	  </s:if>
+
 				<tr style="border_top: 4px solid #fff;">
-					<td>変更前</td>
+					<td class="comFormTableItem"><nobr>変更前</nobr></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td>医師・コメディカル名</td>
-					<td><s:label key="docKanj" /></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>医師・コメディカル名</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="docKanj" /></nobr></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td>所属施設</td>
-					<td><s:label key="preInsAbbrName" /></td>
-					<td>所属部科</td>
-					<td><s:label key="preDeptKj" /></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>所属施設</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="preInsAbbrName" /></nobr></td>
+					<td class="comFormTableItem"><nobr>所属部科</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="preDeptKj" /></nobr></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td>役職</td>
-					<td><s:label key="titlePreTitleKj" /></td>
-					<td>勤務形態</td>
-					<td><s:label key="kmuPreCodeKanj" /></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>役職</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="titlePreTitleKj" /></nobr></td>
+					<td class="comFormTableItem"><nobr>勤務形態</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="kmuPreCodeKanj" /></nobr></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td>薬審メンバー区分</td>
-					<td><s:label key="yakushinPreCodeKanj" /></td>
-					<td>大学職位</td>
-					<td><s:label key="univPreTitleKj" /></td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="yakushinPreCodeKanj" /></nobr></td>
+					<td class="comFormTableItem"><nobr>大学職位</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="univPreTitleKj" /></nobr></td>
 				</tr>
 				<tr>
-					<td>
-					</td>
-					<td>
-					    異動区分
-					</td>
-				    <td>
-				        <s:label key="postTrnKbn" />
-				    </td>
+					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>異動区分</nobr></td>
+				    <td class="comFormTableItem"><nobr><s:label key="postTrnKbn" /><s:hidden name="trnKbnCd"/></nobr></td>
 				</tr>
 				<tr>
-				    <td></td>
-					<td>適用日</td>
-					<td><s:label key="dispTekiyoYmd" /></td>
+				    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>適用日</nobr></td>
+					<td class="comFormTableItem"><nobr><s:label key="dispTekiyoYmd" /><s:hidden name="selectDay"/><s:hidden name="dispTekiyoYmd"/></nobr></td>
 				</tr>
+				</tbody>
+          </table>
+          <table class="comPortalTable" align="center">
+				<tbody>
 				<tr>
-				    <td></td>
-					<td>申請コメント</td>
-					<td><s:label key="reqComment" /></td>
+				    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>申請コメント</nobr></td>
+					<s:if test='%{reqSts == null || reqSts == "" || reqSts == "01"}'>
+		    			<td class="comFormTableItem" colspan="3"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"  readonly="true" /></nobr></td>
+	      			</s:if>
+	      			<s:else>
+	      				<td class="comFormTableItem" colspan="3"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
+	      			</s:else>
 				</tr>
-			<s:if test="mrAdminFlg == '1' && (reqSts == '03' || reqSts == '13') ">
+			<s:if test='%{mrAdminFlg == "1" && (reqSts == "03" || reqSts == "13")}'>
 				<tr>
-				    <td></td>
-					<td>承認・却下コメント</td>
-					<td>
-					    <s:textarea label="aprComment" name="reqComment" style="width: 60vw; resize: none;" maxlength="100" rows="3"/>
-					</td>
+				    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+					<td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
+					<td class="comFormTableItem" colspan="3"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/>
+		      			<s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="display:none;"/>
+					</nobr></td>
 				</tr>
 			</s:if>
 			</tbody>
 		</table>
-		<table class="comPortalTable"
-			style="margin-top: 3pt; margin-bottom: 1pt;" align="center">
+		<table class="comPortalTable" style="margin-top: 3pt; margin-bottom: 1pt;" align="center">
 			<tr>
 				<td align="left"><input class="comButton" type="button"
 					name="button1" id="button6" value="戻る" onClick="backBtn();"/></td>
@@ -306,6 +354,20 @@
 			    	</s:if>
 			    	<s:elseif test="Nd309AppdFlg == 1 && Nd309AppdActiveFlg == 0">
 			    	    <input class="comButton" type="button" name="button2" id="button2" value="申請" disabled/>
+			    	</s:elseif>
+			    	<s:else>
+			    	</s:else>
+			    	<s:if test="Nd309RejectFlg == 1 && Nd309RejectActiveFlg == 1">
+                		<s:if test='%{reqSts == "03"}'>
+	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               		</s:if>
+					    <input class="comButton" type="button" name="button3" id="button3" value="承認" onClick="setFuncId(2);"/>
+			    	</s:if>
+			    	<s:elseif test="Nd309RejectFlg == 1 && Nd309RejectActiveFlg == 0">
+						<s:if test='%{reqSts == "03"}'>
+							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+						</s:if>
+						<input class="comButton" type="button" name="button3" id="button3" value="承認" disabled/>
 			    	</s:elseif>
 			    	<s:else>
 			    	</s:else>

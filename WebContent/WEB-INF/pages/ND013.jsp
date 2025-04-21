@@ -24,11 +24,14 @@
 
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+
+<%-- オブジェクト読み込み --%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-	<title>ND013_医師勤務先情報更新</title>
-	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <title>ND013_医師勤務先情報更新</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
 	<link href="css/catDeptsCombo.css" rel="Stylesheet" type="text/css" />
@@ -38,7 +41,7 @@
 	<script type="text/javascript" src="js/ND013.js"></script>
 	<script type="text/javascript" src="js/catSosJgiExpand.js"></script>
 	<script type="text/javascript" src="js/jgiKanren.js"></script>
-	<script>
+    <script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
     	if(document.fm1.tabFlg.value != null && document.fm1.tabFlg.value != ""){
@@ -122,60 +125,10 @@
 	    }
     }
     </script>
-    <!-- css -->
-    <style>
-    	a {
-    		color: inherit;
-    	}
-
-		a:hover{
-			opacity:0.5;
-			transition:0.3s;
-			cursor: pointer;
-		}
-    	TABLE {
-		    FONT-SIZE: 8pt;
-		}
-		.comTableSearchItem {
-			width: 20%;
-			height: 55px;
-		}
-
-		TD.comTableTitle			/* テーブル形式のタイトル項目 */
-			{
-			border-color: #f5f5f5;
-		   color: #000000;
-		   /* background-color: #e0e0d4; */
-		   /* background-color: #cccccc; */
-		   background-color: #e8b5a2;
-		   text-align: center;
-		   border-style: solid;
-		   border-top-width: 0px;
-		   border-left-width: 1px;
-		   border-right-width: 1px;
-		   border-bottom-width: 1px;
-		   font-size: 8pt;
-			}
-
-			TD.comTableItem {
-				color: #000000;
-			    border-style: solid;
-			    border-top-width: 0px;
-			    border-left-width: 1px;
-			    border-right-width: 1px;
-			    border-bottom-width: 1px;
-			    font-size: 8pt;
-			    border-color: #f5f5f5;
-			}
-
-
-    </style>
 </head>
+
 <body class="comPage onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
-
-
-<%-- submit用フォーム 開始 　まるっといらないかもって話がある--%>
-	<form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
+<form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
 		<%--
 		<input type="text" name="screenId"          value="" />
 		<input type="text" name="functionId"        value="" />
@@ -200,22 +153,19 @@
 		<input type="text" name="dummy"             value="dummy" />
 		--%>
 	</form>
-<%-- submit用フォーム 終了 --%>
 
   <%-- バナー部分をインクルード --%>
   <%-- サブシステムIDが３:(従業員関連)の時 --%>
-  <jsp:include page="common/jkrTop.jsp" flush="true" />
+  <jsp:include page="common/rdmTop.jsp" flush="true" />
   <br>
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
-  <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <jsp:include page="common/rdmDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
 <table border="0" class="comPortalTable" align="center" style="width:98%;">
   <tr>
     <td>
-
-<%-- input用フォーム 開始 --%>
-  <s:form name="fm1" theme="simple">
+      <s:form name="fm1" theme="simple">
 	<%-- 常に配列にするためにダミーを配置 --%>
     <s:hidden name="callBack" />
     <s:hidden name="msgStr" />
@@ -301,7 +251,6 @@
     <s:url id="pageurl" action="NF501Page"/>
     <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
 
-
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>
@@ -314,14 +263,10 @@
     </table>
 <%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
-    <table class="comPortalBody">
+<table class="comPortalBody">
     <tbody>
       <tr>
         <td>
-
-<%-- ポータルボディー 開始 --%>
-	<table class="pupBodyTable" align="center">
-	<tr><td>
 
 		<!-- エラー表示部  開始 -->
 		<table width="100%">
@@ -333,79 +278,55 @@
              </td>
          </tr>
       </table>
-		<!-- エラー表示部  終了 -->
-		<script>
 
-		</script>
-
-		<%-- 検索部 開始 --%>
-     	<table class="pupList" style="margin-top:3pt;margin-bottom:1pt; background-color: white; width: 50%;">
-
-	        <tr>
-	            <%-- 武田医師名（漢字） --%>
-		          <td class="comTableSearchItem" >
-		          	<nobr>武田医師名（漢字）  </nobr>
-		          </td>
-		          <td ><s:property value="docKanj" /></td>
-
-				<td class="comTableSearchItem" ></td>
-
-	            <%-- 武田医師名（ｶﾅ） --%>
-	            <td class="comTableSearchItem" >
-	            	<nobr>武田医師名（ｶﾅ） </nobr>
-	            </td>
-	            <td style="width:100pt;"><s:property value="docKana"/></td>
-	        </tr>
-	        <tr>
-	            <%-- 医師固定C --%>
-		          <td class="comTableSearchItem" >
-		          	<nobr>医師固定C </nobr>
-		          </td>
-		          <td ><s:property value="docNo" /></td>
-
-		          <td class="comTableSearchItem" ></td>
-
-	            <%-- 医師薬剤師区分 --%>
-	            <td class="comTableSearchItem" >
-	            	<nobr>医師薬剤師区分  </nobr>
-	            </td>
-	            <td><s:property value="docType"/></td>
-	        </tr>
-	        <tr>
-	            <%-- ULT医師名（漢字） --%>
-		          <td class="comTableSearchItem">
-		          	<nobr>ULT医師名（漢字）  </nobr>
-		          </td>
-		          <td><s:property value="ultKanj"/></td>
-
-		          <td class="comTableSearchItem" ></td>
-
-	            <%-- ULT医師名（ｶﾅ） --%>
-	            <td class="comTableSearchItem">
-	            	<nobr>ULT医師名（ｶﾅ） </nobr>
-	            </td>
-	            <td><s:property value="ultKana" /></td>
-	        </tr>
-	        <tr>
-	            <td><!-- 勤務先追加ボタン -->
-            		<!-- 表示 -->
-            		<s:if test="%{ishiNewKinmu == 2}">
-            			<!-- 活性 -->
-            			<input type="button" value="勤務先追加" onclick="errorCheck('1')">
-            		</s:if>
-            		<s:elseif test="%{ishiNewKinmu == 1}">
-            			<!-- 非活性 -->
-            			<input type="button" value="勤務先追加" style="background-color: gray;" >
-            		</s:elseif>
-		            <s:else>
-		            	<!-- 非表示 -->
-						<nobr>&nbsp;</nobr>
-		            </s:else>
-
-	            </td>
-	        	<td></td>
-	        	<td><!-- 医師の廃業・死亡ボタン -->
-	        		<s:if test="%{ishiHaigyou != 0}">
+  <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
+      <tr>
+        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>武田医師名（漢字）</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="docKanj" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>武田医師名（ｶﾅ）</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="docKana"/></nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>医師固定C</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="docNo" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>医師薬剤師区分</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="docType"/></nobr></td>
+      </tr>
+   	  <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>ULT医師名（漢字）</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="ultKanj"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>ULT医師名（ｶﾅ）</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="ultKana" /></nobr></td>
+	  </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test="%{ishiNewKinmu == 2}">
+          			<!-- 活性 -->
+          			<input type="button" value="勤務先追加" onclick="errorCheck('1')">
+          		</s:if>
+          		<s:elseif test="%{ishiNewKinmu == 1}">
+          			<!-- 非活性 -->
+          			<input type="button" value="勤務先追加" style="background-color: gray;" >
+          		</s:elseif>
+            <s:else>
+            	<!-- 非表示 -->
+				<nobr>&nbsp;</nobr>
+            </s:else>
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test="%{ishiHaigyou != 0}">
 	            			<!-- 活性 -->
 	            			<input type="button" value="医師免許返納・死亡" onclick="errorCheck('2')">
 	            		</s:if>
@@ -413,23 +334,14 @@
 	            			<!-- 非活性 -->
 	            			<input type="button" value="医師免許返納・死亡" style="background-color: gray;">
 	            		</s:else>
-	        	</td>
-	        	<td></td>
-	        </tr>
 
-	    </table>
-	<%-- 検索部 終了 --%>
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	  </tr>
+	</table>
 
-	<%-- ページ情報 --%>
-
-
-
-	<CENTER>
-
-
-	   	<div style="margin-top: 2%; height: 370px; width: 1100px;">
-
-
+	<center>
+	<div style="margin-top: 2%; height: 370px; width: 1100px;">
 	   	  <table class="comTableTitle" id="comTableTitle" style=" border: none !important;text-align: center;" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
 	   		<tr>
 	   			<td style="border: none !important;" colspan="4"></td>
@@ -620,37 +532,25 @@
 		    </s:iterator>
 		  </table>
 		</div>
+		</center>
 
-    </table>
-
-
-
-	</CENTER>
-
-	<%-- メイン部 一覧 終了 --%>
-
-	<%-- チェック済み表示欄 終了 --%>
-    <hr class="comSplit" />
-	<%--ヘッダー部　開始 --%>
 	<table>
-
+		<tr>
 		<td>
 			<input type="button" value="戻る" onclick="backPage();" />
 		</td>
-
+		</tr>
 	</table>
-
-	<%--ヘッダー部　終了 --%>
-
-	<%-- ポータルボディー 終了 --%>
-	</td>
+<%-- SUBMIT用パラメータ 終了 --%>
+    </td>
 	</tr>
-	</tbody>
-	</table>
+    </tbody>
+    </table>
   </s:form>
-  </td>
-  </tr>
   </table>
-<%-- input用フォーム 終了 --%>
+
+  <jsp:include page="common/rdmBottom.jsp" flush="true" />
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
 </body>
 </html>

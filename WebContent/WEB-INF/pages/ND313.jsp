@@ -31,7 +31,6 @@
 <head>
 	<title>ND313_医師勤務先削除 - 申請内容確認</title>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-	<link href="WebContent/css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
 	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
@@ -43,54 +42,6 @@
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/catSosJgiExpand.js"></script>
 	<script type="text/javascript" src="js/jgiKanren.js"></script>
-    <!-- css -->
-    <style>
-    	a {
-    		color: inherit;
-    	}
-
-		a:hover{
-			opacity:0.5;
-			transition:0.3s;
-			cursor: pointer;
-		}
-    	TABLE {
-		    FONT-SIZE: 8pt;
-		}
-		.comTableSearchItem {
-			width: 20%;
-			height: 55px;
-		}
-
-		TD.comTableTitle			/* テーブル形式のタイトル項目 */
-			{
-			border-color: #f5f5f5;
-		   color: #000000;
-		   /* background-color: #e0e0d4; */
-		   /* background-color: #cccccc; */
-		   background-color: #e8b5a2;
-		   text-align: center;
-		   border-style: solid;
-		   border-top-width: 0px;
-		   border-left-width: 1px;
-		   border-right-width: 1px;
-		   border-bottom-width: 1px;
-		   font-size: 8pt;
-			}
-
-			TD.comTableItem {
-				color: #000000;
-			    border-style: solid;
-			    border-top-width: 0px;
-			    border-left-width: 1px;
-			    border-right-width: 1px;
-			    border-bottom-width: 1px;
-			    font-size: 8pt;
-			    border-color: #f5f5f5;
-			}
-
-
-    </style>
 </head>
 <body class="comPage">
 
@@ -262,14 +213,14 @@
 		<table class="comPortalTitle">
 			<tbody>
 				<tr>
-					<td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
+					<td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師勤務先削除 - 申請内容確認"></td>
 					<td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
 					<td class="comPortalTitleRight"><nobr></nobr></td>
 				</tr>
 			</tbody>
 		</table>
 
-		  <table class="comPortalBody">
+ <table class="comPortalBody">
     <tbody>
       <tr>
         <td>
@@ -285,224 +236,188 @@
          </tr>
       </table>
 		<!-- エラー表示部  終了 -->
-		<script>
 
-		</script>
-
-		<%-- ヘッダー部 開始 --%>
-     	<table class="pupList" style="border-collapse:collapse; margin-top:3pt;margin-bottom:1pt; background-color: white;width:700px; "  >
-
-			<tr>
-				<td><nobr>申請情報　　</nobr></td>
-				<%-- 申請ID --%>
-		          <td class="comTableSearchItem" >
-		          	<nobr>申請ID</nobr>
-		          </td>
-		          <td >
-		          	<s:if test="%{paramReqId == null}">
+  <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
+      <tr>
+        <%--申請情報--%>
+        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>申請情報</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請ID</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test="%{paramReqId == null}">
 		          		-
 		          	</s:if>
 		          	<s:else>
 		          		<s:property value="paramReqId" />
 		          	</s:else>
+		  </nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者所属</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="bumonRyakuName" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="reqSts"/></nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="jgiName" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>申請日時</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="reqYmdhms"/></nobr></td>
+	  </tr>
+  </table>
+  <br/>
+  <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
+  <table id="formTable02" border="0" class="comPortalTable" align="center" style="width:75%;">
+      <tr>
+        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>医師・コメディカル名</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="docKanj"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>施設名</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="insAbbrName" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>所属部科</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="deptKj" /></nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>役職</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test="%{titleCodeName == null || titleCodeName == ''}">
+	          		-
+          	</s:if>
+          	<s:else>
+          		<s:property value="titleCodeName" />
+          	</s:else>
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test="%{univPosCodeBfName == null || univPosCodeBfName == ''}">
+          		-
+          	</s:if>
+          	<s:else>
+          		<s:property value="univPosCodeBfName" />
+          	</s:else>
+	      </nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test="%{jobFormBfName == null || jobFormBfName == ''}">
+	          		-
+          	</s:if>
+          	<s:else>
+          		<s:property value="jobFormBfName" />
+          	</s:else>
+	      </nobr></td>
+	      <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test="%{dccTypeBfName == null || dccTypeBfName == ''}">
+	          		-
+          	</s:if>
+          	<s:else>
+          		<s:property value="dccTypeBfName" />
+          	</s:else>
+	      </nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>適用日<span style="color:red;">*</span></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:property value="formTekiyoYmd" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+  </table>
 
-		          </td>
-				<td></td>
-				<td></td>
-			</tr>
+  <%--コメント類 --%>
+  <table id="formTable03" border="0" class="comPortalTable" align="center" style="width:75%;">
+      <tr>
+        <%--コメント--%>
+        <td style="width: 650px; height: 0px; border-width: 0px;"></td>
+      </tr>
+        <tr>
+	      <td class="comFormTableItem"><nobr>申請コメント</nobr></td>
+      </tr>
+        <tr>
+	     	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+		    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" readonly="true" /></nobr></td>
+	      	</s:if>
+	      	<s:else>
+	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
+	      	</s:else>
+      </tr>
+	<s:if test='%{reqStsCd != 01 }'>
+ 		<s:if test='%{reqStsCd == 03 }'>
 	        <tr>
-	        	<td></td>
-	            <%-- 申請者所属 --%>
-		          <td class="comTableSearchItem" >
-		          	<nobr>申請者所属</nobr>
-		          </td>
-		          <td ><s:property value="bumonRyakuName" /></td>
-
-	            <%-- 申請ステータス --%>
-	            <td class="comTableSearchItem" >
-	            	<nobr>申請ステータス </nobr>
-	            </td>
-	            <td style="width:100pt;"><s:property value="reqSts"/></td>
-	        </tr>
-	        <tr>
-	        	<td></td>
-	            <%-- 申請者氏名 --%>
-		          <td class="comTableSearchItem" >
-		          	<nobr>申請者氏名 </nobr>
-		          </td>
-		          <td ><s:property value="jgiName" /></td>
-
-	            <%-- 申請日時 --%>
-	            <td class="comTableSearchItem" >
-	            	<nobr>申請日時  </nobr>
-	            </td>
-	            <td><s:property value="reqYmdhms"/></td>
-	        </tr>
-	        <tr>
-	        	<td style="border-bottom: 1px solid black;"></td>
-	        	<td style="border-bottom: 1px solid black;"></td>
-	        	<td style="border-bottom: 1px solid black;"></td>
-	        	<td style="border-bottom: 1px solid black;"></td>
-	        	<td style="border-bottom: 1px solid black;"></td>
-	        	<td style="border-bottom: 1px solid black;"></td>
-	        </tr>
-
-	   	<tr>
-	   		<td></td>
-			<%-- 医師・コメディカル名 --%>
-            <td class="comTableSearchItem" >
-            	<nobr>医師・コメディカル名 </nobr>
-            </td>
-            <td><s:property value="docKanj"/></td>
-		</tr>
-		<tr>
-			<td></td>
-			<%-- 施設名 --%>
-			<td class="comTableSearchItem" style="width:50pt;">
-	          	<nobr>施設名</nobr>
-          	</td>
-          	<td>
-            	<s:property value="insAbbrName" />
-              </td>
-          	<%-- 所属部科* --%>
-            <td class="comTableSearchItem" style="width:50pt;">
-	          	<nobr>所属部科</nobr>
-          	</td>
-          	<td>
-            	<s:property value="deptKj" />
-            </td>
-
-		</tr>
-		<tr>
-			<td></td>
-            <%-- 役職 --%>
-	          <td class="comTableSearchItem" >
-	          	<nobr>役職</nobr>
-	          </td>
-	          <td>
-	          	<s:if test="%{titleCodeName == null || titleCodeName == ''}">
-		          		-
-	          	</s:if>
-	          	<s:else>
-	          		<s:property value="titleCodeName" />
-	          	</s:else>
-	            </td>
-	            <%-- 大学職位 --%>
-	            <td class="comTableSearchItem" >
-	            	<nobr>大学職位</nobr>
-	            </td>
-	            <td>
-	            	<s:if test="%{univPosCodeBfName == null || univPosCodeBfName == ''}">
-		          		-
-		          	</s:if>
-		          	<s:else>
-		          		<s:property value="univPosCodeBfName" />
-		          	</s:else>
-            </td>
-        </tr>
-        <tr>
-        	<td></td>
-            <%-- 勤務形態 --%>
-	          <td class="comTableSearchItem" >
-	          	<nobr>勤務形態</nobr>
-	          </td>
-	          <td>
-	          	<s:if test="%{jobFormBfName == null || jobFormBfName == ''}">
-		          		-
-	          	</s:if>
-	          	<s:else>
-	          		<s:property value="jobFormBfName" />
-	          	</s:else>
-              </td>
-
-            <%-- 薬審メンバー区分--%>
-            <td class="comTableSearchItem" >
-            	<nobr>薬審メンバー区分</nobr>
-            </td>
-            <td>
-            	<s:if test="%{dccTypeBfName == null || dccTypeBfName == ''}">
-		          		-
-	          	</s:if>
-	          	<s:else>
-	          		<s:property value="dccTypeBfName" />
-	          	</s:else>
-            </td>
-        </tr>
-        <tr>
-        	<td></td>
-            <%-- 適用日* --%>
-	          <td class="comTableSearchItem" >
-	          	<nobr>適用日<span style="color:red;">*</span></nobr>
-	          </td>
-	          <td >
-	          	<s:property value="formTekiyoYmd" />
-	          </td>
-        </tr>
-        <tr>
-        	<td></td>
-        	<td>申請コメント</td>
-        	<td colspan="3">
-        		<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
-        			<nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" readonly="true" /></nobr>
-        		</s:if>
-        		<s:else>
-      				<nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="300" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr>
-      			</s:else>
-        	</td>
-        	<td></td>
-	       	<td></td>
-        </tr>
-        <tr>
-
-		<s:if test='%{reqStsCd != 01 }'>
-	 		<s:if test='%{reqStsCd == 03 }'>
-		        <tr>
-		        	<td></td>
-		        	<td>承認却下コメント</td>
-		        	<td colspan="3">
-		        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="margin-top: 78px;width: 650px; height: 80px;" />
-		        	</td>
-		        	<td></td>
-		        	<td></td>
-		        </tr>
-	 		 </s:if>
-	 		 <s:elseif test='%{reqStsCd == 13 }'>
-		        <tr>
-		        	<td></td>
-		        	<td>承認却下コメント</td>
-		        	<td colspan="3">
-		        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="margin-top: 78px;width: 650px; height: 80px;"  />
-		        	</td>
-		        	<td></td>
-		        	<td></td>
-		        </tr>
-	 		 </s:elseif>
-	 		 <s:else>
-		        <tr>
-		        	<td></td>
-		        	<td>承認却下コメント</td>
-		        	<td colspan="3">
-		        		<s:textarea name="aprComment"  cols="50" rows="3" maxlength="300" style="margin-top: 78px; width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
-		        	</td>
-		        	<td></td>
-		        	<td></td>
-		        </tr>
-	 		 </s:else>
+		      <td class="comFormTableItem"><nobr>承認却下コメント</nobr></td>
+	      </tr>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>
+		      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/>
+		      </nobr></td>
+	      </tr>
  		 </s:if>
+ 		 <s:elseif test='%{reqStsCd == 13 }'>
+	        <tr>
+		      <td class="comFormTableItem"><nobr>承認却下コメント</nobr></td>
+	      </tr>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>
+		      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/>
+		      </nobr></td>
+	      </tr>
+ 		 </s:elseif>
+ 		 <s:else>
+	        <tr>
+		      <td class="comFormTableItem"><nobr>承認却下コメント</nobr></td>
+	      </tr>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>
+		      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true" />
+		      </nobr></td>
+	      </tr>
+ 		 </s:else>
+	</s:if>
+  </table>
 
-	</table>
-
-
-	<%--フッター部　開始 --%>
-	<%--フッター部　開始 --%>
-	<table>
+  <%--ボタン類 --%>
+  <table id="formTable04" border="0" class="comPortalTable" align="center" style="width:98%;">
+      <tr>
+        <td style="width: 30%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 10%; height: 0px; border-width: 0px;"></td>
+        <td style="width: 38%; height: 0px; border-width: 0px;"></td>
+      </tr>
 		<tr>
-			<td>
-				<input type="button" value="戻る" onclick="backPage()" />
-			</td>
-
-			<td>
-				<s:if test='%{reqStsCd == 03 }'>
+	      <td class="comFormTableItem">
+                <nobr>
+                <input type="button" value="戻る" onclick="backPage()" />
+                </nobr>
+	      </td>
+	      <td class="comFormTableItem"><nobr>
+                <s:if test='%{reqStsCd == 03 }'>
 					<s:if test='%{actionEdit == "1"}'>
 	                	<input type="button" value="却下" onclick="ND313Cancel()" />
 	                </s:if>
@@ -518,10 +433,19 @@
 	                	<input type="button" value="却下" disabled/>
 	                </s:if>
 				</s:if>
-			</td>
-
-			<td>
-				<s:if test="%{reqStsCd == null || reqStsCd == '' || reqStsCd == 01}">
+                </nobr>
+	      </td>
+	      <td class="comFormTableItem">
+	      <nobr>&nbsp;</nobr>
+	      </td>
+	      <td class="comFormTableItem">
+                <nobr>
+					&nbsp;
+                </nobr>
+	      </td>
+	      <td class="comFormTableItem">
+               <nobr>
+			   <s:if test="%{reqStsCd == null || reqStsCd == '' || reqStsCd == 01}">
 					<s:if test='%{actionEdit == "1"}'>
 	                	<input type="button" value="申請" onclick="ND313Page()" />
 	                </s:if>
@@ -537,9 +461,10 @@
 	                	<input type="button" value="申請" onclick="ND313Page" disabled/>
 	                </s:if>
 				</s:if>
-			</td>
-		</tr>
-	</table>
+                </nobr>
+	      </td>
+	  </tr>
+  </table>
 
 	<script>
 	//戻るボタン

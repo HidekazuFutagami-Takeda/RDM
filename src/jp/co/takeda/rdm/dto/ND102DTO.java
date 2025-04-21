@@ -450,6 +450,97 @@ public class ND102DTO extends BaseDTO implements Serializable {
      */
 	private String reqType;
 
+    /**
+     * ボタンフラグ
+     * @generated
+     */
+    private String buttonFlg;
+
+	/**
+	 * ユーザ権限
+	 * @generated
+	 */
+	private String loginJokenSetCd;
+
+	/**
+	 * ユーザ従業員番号
+	 * @generated
+	 */
+	private Integer loginJgiNo;
+
+	/**
+	 * 審査済みフラグ
+	 * 0:未審査、1:審査済
+	 * @generated
+	 */
+	private String shnFlg;
+
+	/**
+	 * 審査者氏名
+	 * @generated
+	 */
+	private String shnShaName;
+
+	/**
+	 * 審査日時
+	 * @generated
+	 */
+	private String shnYmdhms;
+
+	/**
+	 * 承認者氏名
+	 * @generated
+	 */
+	private String aprShaName;
+
+	/**
+	 * 承認日時
+	 * @generated
+	 */
+	private String aprYmdhms;
+
+		/**
+	 * 審査者従業員番号
+	 * @generated
+	 */
+	private Integer shnJgiNo;
+
+	/**
+	 * 承認者従業員番号
+	 * @generated
+	 */
+	private Integer aprJgiNo;
+
+    /**
+     * 審査・承認メモ
+     * @generated
+     */
+    private String aprMemo;
+
+	/**
+	 * アラートメッセージ中身
+	 * @generated
+	 */
+	private String AlertMsgStr;
+
+	/**
+	 * アラートメッセージ中身2
+	 * @generated
+	 */
+	private String alertMsgStr2;
+
+	/**
+	 * 警告無視フラグ 1の場合、廃業・死亡の警告を無視
+	 * @generated
+	 */
+	private String alertIgnore;
+
+	/**
+	 * 申請チャネル
+	 * @generated
+	 */
+	private String reqChl;
+
 	/**
      * デフォルトのコンストラクタ。
      * @generated
@@ -1716,6 +1807,231 @@ public class ND102DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReqType(String reqType) {
 		this.reqType = reqType;
+	}
+
+	/**
+	 * ND102DTO.javabuttonFlgを設定
+	 * @return buttonFlg
+	 */
+	public String getButtonFlg() {
+		return buttonFlg;
+	}
+
+	/**
+	 * @param buttonFlg セットする buttonFlg
+	 */
+	public void setButtonFlg(String buttonFlg) {
+		this.buttonFlg = buttonFlg;
+	}
+
+	/**
+	 * ND102DTO.javaloginJokenSetCdを設定
+	 * @return loginJokenSetCd
+	 */
+	public String getLoginJokenSetCd() {
+		return loginJokenSetCd;
+	}
+
+	/**
+	 * @param loginJokenSetCd セットする loginJokenSetCd
+	 */
+	public void setLoginJokenSetCd(String loginJokenSetCd) {
+		this.loginJokenSetCd = loginJokenSetCd;
+	}
+
+	/**
+	 * ND102DTO.javaloginJgiNoを設定
+	 * @return loginJgiNo
+	 */
+	public Integer getLoginJgiNo() {
+		return loginJgiNo;
+	}
+
+	/**
+	 * @param loginJgiNo セットする loginJgiNo
+	 */
+	public void setLoginJgiNo(Integer loginJgiNo) {
+		this.loginJgiNo = loginJgiNo;
+	}
+
+	/**
+	 * ND102DTO.javashnFlgを設定
+	 * @return shnFlg
+	 */
+	public String getShnFlg() {
+		return shnFlg;
+	}
+
+	/**
+	 * @param shnFlg セットする shnFlg
+	 */
+	public void setShnFlg(String shnFlg) {
+		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * ND102DTO.javashnShaNameを設定
+	 * @return shnShaName
+	 */
+	public String getShnShaName() {
+		return shnShaName;
+	}
+
+	/**
+	 * @param shnShaName セットする shnShaName
+	 */
+	public void setShnShaName(String shnShaName) {
+		this.shnShaName = shnShaName;
+	}
+
+	/**
+	 * ND102DTO.javashnYmdhmsを設定
+	 * @return shnYmdhms
+	 */
+	public String getShnYmdhms() {
+		return shnYmdhms;
+	}
+
+	/**
+	 * @param shnYmdhms セットする shnYmdhms
+	 */
+	public void setShnYmdhms(String shnYmdhms) {
+		this.shnYmdhms = shnYmdhms;
+	}
+
+	/**
+	 * ND102DTO.javaaprShaNameを設定
+	 * @return aprShaName
+	 */
+	public String getAprShaName() {
+		return aprShaName;
+	}
+
+	/**
+	 * @param aprShaName セットする aprShaName
+	 */
+	public void setAprShaName(String aprShaName) {
+		this.aprShaName = aprShaName;
+	}
+
+	/**
+	 * ND102DTO.javaaprYmdhmsを設定
+	 * @return aprYmdhms
+	 */
+	public String getAprYmdhms() {
+		return aprYmdhms;
+	}
+
+	/**
+	 * @param aprYmdhms セットする aprYmdhms
+	 */
+	public void setAprYmdhms(String aprYmdhms) {
+		this.aprYmdhms = aprYmdhms;
+	}
+
+	/**
+	 * ND102DTO.javashnJgiNoを設定
+	 * @return shnJgiNo
+	 */
+	public Integer getShnJgiNo() {
+		return shnJgiNo;
+	}
+
+	/**
+	 * @param shnJgiNo セットする shnJgiNo
+	 */
+	public void setShnJgiNo(Integer shnJgiNo) {
+		this.shnJgiNo = shnJgiNo;
+	}
+
+	/**
+	 * ND102DTO.javaaprJgiNoを設定
+	 * @return aprJgiNo
+	 */
+	public Integer getAprJgiNo() {
+		return aprJgiNo;
+	}
+
+	/**
+	 * @param aprJgiNo セットする aprJgiNo
+	 */
+	public void setAprJgiNo(Integer aprJgiNo) {
+		this.aprJgiNo = aprJgiNo;
+	}
+
+	/**
+	 * ND102DTO.javaaprMemoを設定
+	 * @return aprMemo
+	 */
+	public String getAprMemo() {
+		return aprMemo;
+	}
+
+	/**
+	 * @param aprMemo セットする aprMemo
+	 */
+	public void setAprMemo(String aprMemo) {
+		this.aprMemo = aprMemo;
+	}
+
+	/**
+	 * ND102DTO.javaAlertMsgStrを設定
+	 * @return alertMsgStr
+	 */
+	public String getAlertMsgStr() {
+		return AlertMsgStr;
+	}
+
+	/**
+	 * @param alertMsgStr セットする alertMsgStr
+	 */
+	public void setAlertMsgStr(String alertMsgStr) {
+		AlertMsgStr = alertMsgStr;
+	}
+
+	/**
+	 * ND102DTO.javaalertMsgStr2を設定
+	 * @return alertMsgStr2
+	 */
+	public String getAlertMsgStr2() {
+		return alertMsgStr2;
+	}
+
+	/**
+	 * @param alertMsgStr2 セットする alertMsgStr2
+	 */
+	public void setAlertMsgStr2(String alertMsgStr2) {
+		this.alertMsgStr2 = alertMsgStr2;
+	}
+
+	/**
+	 * ND102DTO.javaalertIgnoreを設定
+	 * @return alertIgnore
+	 */
+	public String getAlertIgnore() {
+		return alertIgnore;
+	}
+
+	/**
+	 * @param alertIgnore セットする alertIgnore
+	 */
+	public void setAlertIgnore(String alertIgnore) {
+		this.alertIgnore = alertIgnore;
+	}
+
+	/**
+	 * ND102DTO.javareqChlを設定
+	 * @return reqChl
+	 */
+	public String getReqChl() {
+		return reqChl;
+	}
+
+	/**
+	 * @param reqChl セットする reqChl
+	 */
+	public void setReqChl(String reqChl) {
+		this.reqChl = reqChl;
 	}
 
 	/**

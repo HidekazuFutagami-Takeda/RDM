@@ -500,6 +500,25 @@ public class ND309DTO extends BaseDTO implements Serializable {
 	private String reqType;
 
 	/**
+	 * 審査・承認メモ
+	 * @generated
+	 */
+	private String aprMemo;
+
+	/**
+	 * 処理結果フラグ
+	 * 9:完了
+	 * @generated
+	 */
+	private String returnFlg;
+
+	/**
+	 * アルトマークへの情報連携
+	 * @generated
+	 */
+	private Boolean fbReqFlg;
+
+	/**
      * デフォルトのコンストラクタ。
      * @generated
      */
@@ -1885,6 +1904,51 @@ public class ND309DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReqType(String reqType) {
 		this.reqType = reqType;
+	}
+
+	/**
+	 * ND309DTO.javaaprMemoを設定
+	 * @return aprMemo
+	 */
+	public String getAprMemo() {
+		return aprMemo;
+	}
+
+	/**
+	 * @param aprMemo セットする aprMemo
+	 */
+	public void setAprMemo(String aprMemo) {
+		this.aprMemo = aprMemo;
+	}
+
+	/**
+	 * ND309DTO.javareturnFlgを設定
+	 * @return returnFlg
+	 */
+	public String getReturnFlg() {
+		return returnFlg;
+	}
+
+	/**
+	 * @param returnFlg セットする returnFlg
+	 */
+	public void setReturnFlg(String returnFlg) {
+		this.returnFlg = returnFlg;
+	}
+
+	/**
+	 * ND309DTO.javafbReqFlgを設定
+	 * @return fbReqFlg
+	 */
+	public Boolean getFbReqFlg() {
+		return fbReqFlg;
+	}
+
+	/**
+	 * @param fbReqFlg セットする fbReqFlg
+	 */
+	public void setFbReqFlg(Boolean fbReqFlg) {
+		this.fbReqFlg = fbReqFlg;
 	}
 
 	/**

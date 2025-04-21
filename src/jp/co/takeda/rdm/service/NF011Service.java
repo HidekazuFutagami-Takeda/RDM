@@ -150,6 +150,7 @@ public class NF011Service extends BaseService {
 				indto.setReqId("");
 				indto.setReqYmdhms("");
 				indto.setReqStsNm("");
+				indto.setReqComment("アルトマーク施設検索結果を元に作成");
 			} else {
 				// 完全新規 ログイン情報から申請者セット
 				indto.setReqShzNm(loginInfo.getBumonRyakuName());

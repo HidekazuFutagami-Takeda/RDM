@@ -107,7 +107,10 @@ public class NC206Action extends BaseAction<NC206DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
+        // 画面タイトル制御処理
+        String title = "NC206_所属学会編集ポップアップ";
 
+        dto.setTitle(title);
         // END UOC
     }
 

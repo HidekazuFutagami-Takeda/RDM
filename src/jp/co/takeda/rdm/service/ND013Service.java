@@ -287,6 +287,8 @@ public class ND013Service extends BaseService {
     	//医師固定コードをセット
     	paramEntity.setDocNo(dto.getDocNo());
 
+    	dto.setErrorBool(true);
+
         //勤務先追加 エラーチェック
         if (Objects.equals(dto.getErrorCheckFlg(), "1")) {
         	paramEntity.setErrorCheckFlg("1");

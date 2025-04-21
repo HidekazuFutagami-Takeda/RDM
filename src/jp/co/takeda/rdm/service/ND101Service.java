@@ -267,10 +267,14 @@ if(!"9".equals(indto.getDisplayKbn())) {
         }
 
         //申請前は「申請破棄」ボタンを非活性にする 非活性:0
-        if (StringUtils.isEmpty(indto.getReqSts())|| !((indto.getReqSts().equals("01")) || indto.getReqSts().equals("11"))) {
+        if (StringUtils.isEmpty(indto.getReqSts())|| !((indto.getReqSts().equals("01")) || indto.getReqSts().equals("11")|| indto.getReqSts().equals("13"))) {
         	indto.setReqDestBtnFlg("0");
         }else {
-        	indto.setReqDestBtnFlg("1");
+        	if(indto.getMrAdminFlg().equals("0") && (indto.getReqSts().equals("11")|| indto.getReqSts().equals("13"))) {
+        		indto.setReqDestBtnFlg("0");
+        	}else {
+        		indto.setReqDestBtnFlg("1");
+        	}
         }
 
         //申請管理．申請ステータスが取得できない（初回DB登録前）場合は、押下可（活性）とする
@@ -282,7 +286,7 @@ if(!"9".equals(indto.getDisplayKbn())) {
 				indto.setTempReqBtnFlg("0");
 			}
 		} else {
-			if (StringUtils.isEmpty(indto.getReqSts()) || (indto.getReqSts().equals("01") || indto.getReqSts().equals("03")|| indto.getReqSts().equals("13") || indto.getReqSts().equals("11"))) {
+			if (StringUtils.isEmpty(indto.getReqSts()) || (indto.getReqSts().equals("01") ||  indto.getReqSts().equals("13") || indto.getReqSts().equals("11"))) {
 				indto.setTempReqBtnFlg("1");
 			} else{
 				indto.setTempReqBtnFlg("0");
@@ -424,7 +428,7 @@ if(!"9".equals(indto.getDisplayKbn())) {
         	SeqRdmReqIdEntity seqRdmReqIdEntity = new SeqRdmReqIdEntity();
         	List<SeqRdmReqIdEntity> seqRdmReqIdDate = dao.select(seqRdmReqIdEntity);
         	reqId = seqRdmReqIdDate.get(0).getReqId();
-
+        	indto.setReqId(reqId);
         	// レコードを登録
         	TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
         	tRdmReqKnrInsData.setReqId(reqId);

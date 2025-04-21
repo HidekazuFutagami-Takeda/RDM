@@ -19,8 +19,12 @@ import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
 import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
+import lombok.Getter;
+import lombok.Setter;
 import jp.co.takeda.rdm.common.LoginInfo;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.ND102DTO;
 import jp.co.takeda.rdm.exception.InvalidRequestException;
 import jp.co.takeda.rdm.service.ND102Service;
@@ -45,6 +49,10 @@ public class ND102Action extends BaseAction<ND102DTO> {
      */
     @Inject
     private ND102Service nD102Service;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
 
     // START UOC
 
@@ -102,18 +110,23 @@ public class ND102Action extends BaseAction<ND102DTO> {
         // START UOC
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
     	String preScreenId = loginInfo.getPreScreenId();
-
+    	String reqId = dto.getReqId();
     	//モック
 //    	loginInfo.setJokenFlg("1");
 //    	loginInfo.setJgiNo(8830034);
 //    	loginInfo.setJgiName("テスト");
-
+    	preScreenId = dto.getBackScreenId();
+    	if(preScreenId == null) {
+    		preScreenId = dto.getPreScreenId();
+    	}
     	//検証用 TODO
     	if(preScreenId.equals("NC001")) {
     		preScreenId = dto.getPreScreenId();
     	}
 
     	dto.setPreScreenId(preScreenId);
+        dto.setLoginJgiNo(loginInfo.getJgiNo());
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
 
 		// 遷移パターン 0:施設-医師コードから作成、1:申請データあり
 		// 医師勤務先情報更新
@@ -121,7 +134,16 @@ public class ND102Action extends BaseAction<ND102DTO> {
 			dto.setDisplayKbn("0");
 			// 申請一覧
 		} else if ("NC011".equals(preScreenId) || "ND309".equals(preScreenId)) {
-			dto.setDisplayKbn("1");
+			if (StringUtils.isEmpty(reqId) || reqId.equals("-")) {
+    			if("ND307".equals(preScreenId)) {
+    				//一時保存なし申請後に確認画面から遷移
+    				dto.setDisplayKbn("9");
+    			}else {
+    			 	dto.setDisplayKbn("0");
+    			}
+			} else {
+				dto.setDisplayKbn("1");
+			}
 		} else {
 			throw new InvalidRequestException();
 		}
@@ -175,7 +197,12 @@ public class ND102Action extends BaseAction<ND102DTO> {
         // START UOC
         // END UOC
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
-
+        if ("9".equals(dto.getButtonFlg())) {
+            // 確認画面へ遷移
+            outdto.setForward("ND309Init");
+            //画面状況フラグを初期化
+            dto.setButtonFlg("");
+        }
         setNextDTO(outdto);
         return outdto.getForward();
     }
@@ -208,9 +235,66 @@ public class ND102Action extends BaseAction<ND102DTO> {
      */
     protected String cancelNext(BaseDTO outdto) throws Exception {
         // START UOC
-
+    	setJumpInfo(RdmConstantsData.I016);
+    	outdto.setForward("NC101");
         // END UOC
         setNextDTO(outdto);
         return outdto.getForward();
+    }
+
+    /**
+     * 業務処理
+     * @customizable
+     */
+    @InputConfig(methodName="validationError")
+    public String shnComp() throws Exception {
+        registerSetup();
+        // F層呼び出し
+        BaseDTO outdto = nD102Service.shnComp(dto);
+        outdto = nD102Service.init(dto);
+        return shnCompNext(outdto);
+    }
+
+    /**
+     * 前処理
+     * @customizable
+     */
+    protected void shnCompSetup() throws Exception {
+        // START UOC
+//        dto.setMsgId(null);
+        // END UOC
+    }
+
+    /**
+     * 後処理
+     * @customizable
+     */
+    protected String shnCompNext(BaseDTO outdto) throws Exception {
+    	// START UOC
+
+    	// END UOC
+    	outdto.setForward("ND102");
+        setNextDTO(outdto);
+        return outdto.getForward();
+    }
+
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String msgId) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+      // 画面タイトル
+      paramDto.setTitle("医療機関以外への異動");
+      // メッセージ１
+      if (msgId.equals(RdmConstantsData.I016)) {//I016	一時保存データを破棄しました。
+          paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I016));
+      }
+
     }
 }

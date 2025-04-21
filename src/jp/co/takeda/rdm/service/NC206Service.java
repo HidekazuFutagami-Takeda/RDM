@@ -273,7 +273,7 @@ public class NC206Service extends BaseService {
 		if(StringUtils.isEmpty(indto.getMedicalSocietyNmPop())) {
 			errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W004);//必須項目にデータを入力してください。（項目名）
-			tmpMsgStr.replace("項目名", "所属学会名");
+			tmpMsgStr = tmpMsgStr.replace("項目名", "所属学会名");
 			msgStr = msgStr + tmpMsgStr + "\n";
 		}
 		//      ２：レングスチェック

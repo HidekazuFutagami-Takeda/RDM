@@ -58,6 +58,23 @@
 
 	<%-- 施設選択 開始 --%>
 
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="公的機関編集"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
+    <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
 	<!-- ポータル枠 開始 -->
 	<table class="pupBodyTable" align="center">
 	<tbody>
@@ -67,6 +84,7 @@
      <s:hidden name="screenId"/>
      <s:hidden name="functionId"/>
     <s:hidden name="callBack" />
+    <s:hidden name="title" />
     <s:hidden name="winVarName" />
 	<s:hidden name="classCategoryNmPop"/>
 	<s:hidden name="pubInstitutionNmPop"/>
@@ -162,5 +180,11 @@
 	</table>
 	<!-- ポータル枠 終了 -->
 	<!-- 施設選択 終了 -->
+
+	</td>
+	</tr>
+	</tbody>
+	</table>
+
 </body>
 </html>

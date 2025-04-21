@@ -149,7 +149,6 @@
 		<s:hidden name="preDcc" />
 		<s:hidden name="preUnivPosCode" />
 		<s:hidden name="ultDocNo" />
-		<s:hidden name="aprComment" />
 		<s:hidden name="docNo" />
 		<s:hidden name="insNo" />
 		<s:hidden name="reqId" />
@@ -182,7 +181,7 @@
 
 		<s:hidden name="tempReqBtnFlg" id="tempReqBtnFlg" value="0" />
 		<s:hidden name="reqBtnFlg" id="reqBtnFlg" value="0" />
-
+<s:hidden name="title" />
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>
@@ -213,6 +212,13 @@
 		<%--申請内容表示エリア --%>
 		<table class="comPortalTable" align="center">
 			<tbody>
+			<tr>
+			        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 185px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+			        <td style="width: 185px; height: 0px; border-width: 0px;"></td>
+			</tr>
 				<tr>
 					<td class="comFormTableItem"><nobr>申請情報</nobr></td>
 					<td class="comFormTableItem"><nobr>申請ID</nobr></td>

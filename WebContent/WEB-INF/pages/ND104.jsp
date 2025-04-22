@@ -107,6 +107,7 @@
 	<s:hidden name="paramReqId" />
 	<s:hidden name="ReqId" />
 	<s:hidden name="loginJokenSetCd" />
+	<s:hidden name="loginJgiNo" />
 	<s:hidden name="reqSts" />
 	<s:hidden name="jgiName" />
 	<s:hidden name="reqYmdhms" />
@@ -432,7 +433,7 @@
 	      </td>
 	      <td class="comFormTableItem">
                 <nobr>
-				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && (reqStsCd == "11" || reqStsCd == "13"))}'>
+				<s:if test='%{(loginJgiNo == jgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && (reqStsCd == "11" || reqStsCd == "13"))}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="JavaScript:reqCancelBtn();return false;" />
 				</s:if>
 				<s:else>

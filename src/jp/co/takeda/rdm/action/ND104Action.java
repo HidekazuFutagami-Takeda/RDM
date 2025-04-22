@@ -362,7 +362,14 @@ public class ND104Action extends BaseAction<ND104DTO> {
      */
     protected void initSetup() throws Exception {
         // START UOC
-
+    	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+    	dto.setLoginJgiNo(loginInfo.getJgiNo());
+        dto.setLoginJokenSetCd(loginInfo.getJokenSetCd());
+        dto.setLoginBrCd(loginInfo.getBrCode());
+        dto.setLoginDistCd(loginInfo.getDistCode());
+        dto.setLoginNm(loginInfo.getJgiName());
+        dto.setLoginShzNm(loginInfo.getBumonRyakuName());
+        dto.setLoginTrtCd(loginInfo.getTrtCd());
         // END UOC
     }
 

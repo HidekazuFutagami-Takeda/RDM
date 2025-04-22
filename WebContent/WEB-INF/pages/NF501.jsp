@@ -31,10 +31,6 @@
 
 	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
-	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
-	<link href="css/catDeptsCombo.css" rel="Stylesheet" type="text/css" />
-	<link href="css/common.css" rel="Stylesheet" type="text/css" />
-	<link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
 	<script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
@@ -185,17 +181,47 @@
 
     </style>
 </head>
-<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
-<%-- バナー部分をインクルード --%>
+  <%-- バナー部分をインクルード --%>
   <%-- サブシステムIDが３:(従業員関連)の時 --%>
   <jsp:include page="common/jkrTop.jsp" flush="true" />
   <br>
   <%-- 更新警告メッセージ表示をインクルード 開始 --%>
   <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
+  <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
+<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設変更履歴"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
 
-<%-- submit用フォーム 開始 　まるっといらないかもって話がある--%>
-	<form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
+ <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
+
+<table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
+  <tbody>
+  <tr/>
+    <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
 		<%--
 		<input type="text" name="screenId"          value="" />
 		<input type="text" name="functionId"        value="" />
@@ -220,8 +246,6 @@
 		<input type="text" name="dummy"             value="dummy" />
 		--%>
 	</form>
-<%-- submit用フォーム 終了 --%>
-<%-- input用フォーム 開始 --%>
   <s:form name="fm1" theme="simple">
 	<%-- 常に配列にするためにダミーを配置 --%>
     <s:hidden name="callBack" />
@@ -321,273 +345,206 @@
     <s:url id="pageurl" action="NF501Page"/>
     <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
 
-
-<%-- ポータルタイトル 開始 --%>
-    <table class="comPortalTitle">
-    <tbody>
-    <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
-        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
-        <td class="comPortalTitleRight"><nobr></nobr></td>
-    </tr>
-    </tbody>
-    </table>
-<%-- ポータルタイトル 終了 --%>
 <%-- ポータルボディー 開始 --%>
+	<table class="pupBodyTable" align="center">
+	<tr><td>
+<%-- 検索部 開始 --%>
 
- <table class="comPortalBody">
-    <tbody>
-      <tr>
-        <td>
-
-		<!-- エラー表示部  開始 -->
-		<table width="100%">
-   		<tr>
-             <td align="center">
-               <jsp:include page="common/rdmMsg.jsp">
-               <jsp:param name="" value="" />
-               </jsp:include>
-             </td>
-         </tr>
-      </table>
-		<!-- エラー表示部  終了 -->
-
-		<%-- 検索部 開始 --%>
-     	<table class="pupList" style="margin-top:3pt;margin-bottom:1pt; background-color: white;">
-
-     	<s:form action="NF501Search" theme="simple" name="fm1" >
-	        <tr>
-	        	 <%-- 担当者組織  --%>
-		          <!-- ユーザー権限の場合 -->
-		          <s:if test="%{jokenSetCd == 0}">
-		          	<td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>担当者組織  </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-		          	</td>
-
-		          </s:if>
-
-		          <!-- 管理者権限の場合 -->
-		          <s:else>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>担当者組織 </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(1);" />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoSosClear();return false;">Clear</a>
-		          	</td>
-		          </s:else>
-
-	            <%-- 担当者 --%>
-            	<!-- ユーザー権限の場合 -->
-		          <s:if test="%{jokenSetCd == 0}">
-		          	<td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>担当者 </nobr>
-		          	</td>
-		          	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" disabled /></td>
-		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-		          	</td>
-		          </s:if>
-
-		          <!-- 管理者権限の場合 -->
-		          <s:else>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		         	 	<nobr>担当者</nobr>
-		         	</td>
-		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
-		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
-		          	</td>
-		          </s:else>
-
-	             <%-- 申請者組織 --%>
-
-	           	  <!-- ユーザー権限の場合 -->
-		          <s:if test="%{jokenSetCd == 0}">
-			          <td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>申請者組織  </nobr>
-			          </td>
-			          <td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-		          	</td>
-		          </s:if>
-		          <!-- 管理者権限の場合 -->
-		          <s:else>
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>申請者組織 </nobr>
-		          	</td>
-
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(2);" />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+	<tr>
+		<%-- 担当者組織 --%>
+		<td class="pupControlItem"><nobr>担当者組織
+		   	<s:if test="%{jokenSetCd == 0}">
+		   		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
+		   	</s:if>
+		   	<s:else>
+		   		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(1);" />
+		   	</s:else>
+		   </nobr>
+		</td>
+		<td>
+			<s:if test="%{jokenSetCd == 0}">
+				<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+		          	&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
+			</s:if>
+			<s:else>
+				<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+	          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoSosClear();return false;">Clear</a>
+			</s:else>
+		</td>
+		<%-- 担当者 --%>
+		<td class="pupControlItem"><nobr>担当者
+		   <s:if test="%{jokenSetCd == 0}">
+				<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
+		   </s:if>
+		   <s:else>
+		   		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="tantoPopBtn();" />
+		   </s:else>
+		   </nobr>
+		</td>
+		<td>
+			<s:if test="%{jokenSetCd == 0}">
+				<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
+		   </s:if>
+		   <s:else>
+		   		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
+		   </s:else>
+		</td>
+		<%-- 申請者組織 --%>
+		<td class="pupControlItem"><nobr>申請者組織
+		   <s:if test="%{jokenSetCd == 0}">
+				<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
+		   </s:if>
+		   <s:else>
+		   		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(2);" />
+		   </s:else>
+		   </nobr>
+		</td>
+		<td>
+			<s:if test="%{jokenSetCd == 0}">
+				<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+	          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
+		   </s:if>
+		   <s:else>
+		   		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="#" class="comMiniLink" onClick="reqSosClear();return false;">Clear</a>
-		          	</td>
-		          </s:else>
-	        </tr>
-	        <tr>
-	            <%-- 施設名(全角) --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>施設名(全角) </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td><s:textfield name="kensakuInsKanj" id="kensakuInsKanj" size="20" maxlength="128" /></td>
-
-	            <%-- 施設カナ(半角カナ) --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設カナ(半角カナ) </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuInsKana" name="kensakuInsKana" size="20" maxlength="128" /></td>
-
-				<%-- 申請者 --%>
-            	<!-- ユーザー権限の場合 -->
-		          <s:if test="%{jokenSetCd == 0}">
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>申請者 </nobr>
-		          	</td>
-		          	<td><nobr></nobr></td>
-		          	<td><s:textfield id="kensakuReqJgiNameUser" name="kensakuReqJgiName" size="20" maxlength="128"  /></td>
-		          </s:if>
-		          <!-- 管理者権限の場合 -->
-		          <s:else>
-		          	<td class="comTableSearchItem" style="width:50pt;"><nobr>申請者 </nobr></td>
-		          	<td><nobr></nobr></td>
-		          	<td><s:textfield id="kensakuReqJgiName" name="kensakuReqJgiName" size="20" maxlength="128" /></td>
-		          </s:else>
-	        </tr>
-	        <tr>
-	            <%-- 施設固定C --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>施設固定C </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td><s:textfield id="kensakuInsNo" name="kensakuInsNo" size="20" maxlength="128" /></td>
-	            <%-- ULTコード --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>ULTコード </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuUltInsNo"  name="kensakuUltInsNo" size="20" maxlength="128" /></td>
-				<%-- 経営主体 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>経営主体 </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:select id="kensakuManageCd" name="kensakuManageCd" cssStyle="width:80pt" list ="hcoKeieitaiMap" /></td>
-	        </tr>
-	        <tr>
-	            <%--対象区分 --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>対象区分 </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td><s:select id="kensakuHoInsType" name="kensakuHoInsType" cssStyle="width:80pt" list ="hoInsTypeMap" /></td>
-	            <%-- 施設種別 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設種別 </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:select id="kensakuInsSbt" name="kensakuInsSbt" cssStyle="width:80pt" list ="insSbtMap" /></td>
-				<%-- 施設区分 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設区分 </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:select id="kensakuPharmType" name="kensakuPharmType" cssStyle="width:80pt" list ="pharmTypeMap" /></td>
-	        </tr>
-	        <tr>
-	            <%-- 電話番号(半角) --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>電話番号(半角)</nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td><s:textfield id="kensakuInsPhone" name="kensakuInsPhone" size="20" maxlength="128"  /></td>
-	            <%-- 郵便番号(半角) --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>郵便番号(半角)</nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuInsPcode" name="kensakuInsPcode" size="20" maxlength="128" /></td>
-	        </tr>
-
-	        <tr>
-	            <%-- 都道府県 --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>都道府県 </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td>
-		          	<span onchange="sosAddrChange(); return false;">
-						<s:select class="jkrSosAddrCd" id="jkrSosAddrCd" name="kensakuAddrCodePref" cssStyle="width:80pt" list ="jkrSosAddrMap" />
-					</span>
-		          </td>
-	            <%-- JIS市区町村 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>JIS市区町村 </nobr>
-	            </td>
-	            	<td><nobr></nobr></td>
-	            <td>
-	            	<s:select class="jkrCityNameCd" id="jkrCityNameCd" name="kensakuAddrCodeCity" cssStyle="width:80pt" list ="jkrCityNameMap" />
-	            </td>
-	        </tr>
-
-	        <tr>
-	             <%-- 住所(全角) --%>
-		          <td class="comTableSearchItem" style="width:50pt;" >
-		          	<nobr>住所(全角) </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td  colspan="4">
-		          	<s:textfield id="kensakuInsAddr" name="kensakuInsAddr" size="20" maxlength="128" style="width:500px;"/>
-		          </td>
-	        </tr>
-	        <tr>
-	            <%-- 更新日 --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>更新日 </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td>
-		          	<input type="date" name="kensakuUpdMstFrom" id="updMstFrom" value="${updMstFrom}" pattern="yyyy-MM-dd" />
-		          	<span>　～　</span>
-		          	<input type="date" name="kensakuUpdMstTo" id="updMstTo" value="${updMstTo}" pattern="yyyy-MM-dd" />
-		          </td>
-	        </tr>
-	        <tr>
-	              <td align="center" colspan="9">
-	             	 <!-- 検索ボタン -->
-	                <input type="button" name="search" value="検索" onclick="jimSearch();">
-	                &nbsp;
-	                <%-- 表示リセット --%>
-	                <input type="button" value="クリア" class="comMiniLink" onclick="clearText()">
-	                &nbsp;
-	                <!-- リスト切り替え -->
-					リスト切替
-	              	&nbsp;
-					<s:select id="selectListChange" name="selectListChange" list ="selectListChangeMap" />
-	              </td>
-		        </tr>
-		</s:form>
-	    </table>
-	<%-- 検索部 終了 --%>
+		   </s:else>
+		</td>
+	</tr>
+	<tr>
+		<%-- 施設名(全角) --%>
+		<td class="pupControlItem"><nobr>施設名(全角)</nobr>
+		</td>
+		<td>
+			<s:textfield name="kensakuInsKanj" id="kensakuInsKanj" size="20" maxlength="128" />
+		</td>
+		<%-- 施設カナ(半角カナ) --%>
+		<td class="pupControlItem"><nobr>施設カナ(半角カナ)</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuInsKana" name="kensakuInsKana" size="20" maxlength="128" />
+		</td>
+		<%-- 申請者 --%>
+		<td class="pupControlItem"><nobr>申請者</nobr>
+		</td>
+		<td>
+			<s:if test="%{jokenSetCd == 0}">
+				<s:textfield id="kensakuReqJgiNameUser" name="kensakuReqJgiName" size="20" maxlength="128"  />
+		   </s:if>
+		   <s:else>
+		   	<s:textfield id="kensakuReqJgiName" name="kensakuReqJgiName" size="20" maxlength="128" />
+		   </s:else>
+		</td>
+	</tr>
+	<tr>
+		<%-- 施設固定C --%>
+		<td class="pupControlItem"><nobr>施設固定C</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuInsNo" name="kensakuInsNo" size="20" maxlength="128" />
+		</td>
+		<%-- ULTコード --%>
+		<td class="pupControlItem"><nobr>ULTコード</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuUltInsNo"  name="kensakuUltInsNo" size="20" maxlength="128" />
+		</td>
+		<%-- 経営主体 --%>
+		<td class="pupControlItem"><nobr>経営主体</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuManageCd" name="kensakuManageCd" cssStyle="width:80pt" list ="hcoKeieitaiMap" />
+		</td>
+	</tr>
+	<tr>
+		<%-- 対象区分 --%>
+		<td class="pupControlItem"><nobr>対象区分</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuHoInsType" name="kensakuHoInsType" cssStyle="width:80pt" list ="hoInsTypeMap" />
+		</td>
+		<%-- 施設種別 --%>
+		<td class="pupControlItem"><nobr>施設種別</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuInsSbt" name="kensakuInsSbt" cssStyle="width:80pt" list ="insSbtMap" />
+		</td>
+		<%-- 施設区分 --%>
+		<td class="pupControlItem"><nobr>施設区分</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuPharmType" name="kensakuPharmType" cssStyle="width:80pt" list ="pharmTypeMap" />
+		</td>
+	</tr>
+	<tr>
+		<%-- 電話番号(半角) --%>
+		<td class="pupControlItem"><nobr>電話番号(半角)</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuInsPhone" name="kensakuInsPhone" size="20" maxlength="128"  />
+		</td>
+		<%-- 郵便番号(半角) --%>
+		<td class="pupControlItem"><nobr>郵便番号(半角)</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuInsPcode" name="kensakuInsPcode" size="20" maxlength="128" />
+		</td>
+		<td class="pupControlItem">&nbsp;</td>
+		<td class="pupControlItem">&nbsp;</td>
+	</tr>
+	<tr>
+		<%-- 都道府県 --%>
+		<td class="pupControlItem"><nobr>都道府県</nobr>
+		</td>
+		<td>
+			<span onchange="sosAddrChange(); return false;">
+				<s:select class="jkrSosAddrCd" id="jkrSosAddrCd" name="kensakuAddrCodePref" cssStyle="width:80pt" list ="jkrSosAddrMap" />
+			</span>
+		</td>
+		<%-- JIS市区町村 --%>
+		<td class="pupControlItem"><nobr>JIS市区町村</nobr>
+		</td>
+		<td>
+			<s:select class="jkrCityNameCd" id="jkrCityNameCd" name="kensakuAddrCodeCity" cssStyle="width:80pt" list ="jkrCityNameMap" />
+		</td>
+		<td class="pupControlItem">&nbsp;</td>
+		<td class="pupControlItem">&nbsp;</td>
+	</tr>
+	<tr>
+		<%-- 住所(全角) --%>
+	    <td class="pupControlItem"><nobr>住所(全角)</nobr></td>
+        <td class="comTableSearchItem" colspan=3>
+			<s:textfield id="kensakuInsAddr" name="kensakuInsAddr" size="20" maxlength="128" style="width:500px;"/>
+	    </td>
+	    <td class="pupControlItem">&nbsp;</td>
+	    <td class="pupControlItem">&nbsp;</td>
+	</tr>
+	<tr>
+		<%-- 更新日 --%>
+	    <td class="pupControlItem"><nobr>更新日</nobr></td>
+        <td class="comTableSearchItem" colspan=3>
+			<input type="date" name="kensakuUpdMstFrom" id="updMstFrom" value="${updMstFrom}" pattern="yyyy-MM-dd" />
+	          	<span>　～　</span>
+          	<input type="date" name="kensakuUpdMstTo" id="updMstTo" value="${updMstTo}" pattern="yyyy-MM-dd" />
+	    </td>
+	    <td class="pupControlItem">&nbsp;</td>
+	    <td class="pupControlItem">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" colspan=6>
+			<!-- 検索ボタン -->
+			<input type="button" name="search" value="検索" onclick="jimSearch();">
+			&nbsp;
+			<%-- 表示リセット --%>
+			<input type="button" value="クリア" class="comMiniLink" onclick="clearText()">
+			&nbsp;
+			<!-- リスト切り替え -->
+			リスト切替
+			&nbsp;
+			<s:select id="selectListChange" name="selectListChange" list ="selectListChangeMap" />
+		</td>
+	</tr>
 
 <%-- ページャー表示 開始 --%>
           <s:if test='pageFlag == "1" '>
@@ -1533,32 +1490,32 @@
 	    	</s:if>
 
 	    </s:if>
+<%-- メイン部 一覧 終了    key="catDeptsComboDataList[%{#status.index}].addrNameArea" --%>
+<!--  <hr class="comSplit" /> -->
+<%-- 後制御部 --%>
 
-	<%-- メイン部 一覧 終了 --%>
-
-	<%-- チェック済み表示欄 終了 --%>
     <hr class="comSplit" />
-	<%--ヘッダー部　開始 --%>
 	<table>
 		<tr>
 		<!-- 検索ボタン -->
 		<td>
-			<input type="button" value="戻る" onclick="" />
+			<input type="button" value="戻る" onclick="window.close();" />
 		</td>
 		</tr>
 	</table>
 
-	 </tr>
-          </tbody>
-          </table>
-  </s:form>
+	</table>
 
-  </td>
-    </tr>
+    </tbody>
     </table>
+    </s:form>
+    </table>
+<%-- ポータルボディー 終了 --%>
 
-<%-- input用フォーム 終了 --%>
-<jsp:include page="common/jkrBottom.jsp" flush="true" />
-<%-- input用フォーム 終了 --%>
+
+<%-- メイン部 一覧 終了 --%>
+<%-- ポータル大枠 終了 --%>
+	<jsp:include page="common/jkrBottom.jsp" flush="true" />
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
 </body>
-</html>

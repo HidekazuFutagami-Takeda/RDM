@@ -546,6 +546,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ntyPri"  key="catTuuchiComboDataList[%{#status.index}].ntyPri" /></td>
 				         <td class="comTableItem" ><s:label  name="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms"  key="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms" /></td>
 					</tr>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].hisYmdhmsTo"/>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].ntyBri"/>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].ntySubject"/>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].ntyData"/>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].ntyMemo"/>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].ntySts"/>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].ntyPri"/>
+					<s:hidden name="catTuuchiComboDataList[%{#status.index}].ssUpdYmdhms"/>
 				</s:iterator>
 
 				</table>

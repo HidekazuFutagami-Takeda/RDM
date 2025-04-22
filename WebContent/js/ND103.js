@@ -162,6 +162,9 @@ function sosClear() {
 	//施設固定C,施設名削除
 	document.fm1.insAbbrName.value = "";
 	document.fm1.insNoSk.value	= "";
+    document.fm1.insClass.value = "";
+    document.fm1.hoInsType.value = "";
+    document.fm1.ultInsNo.value = "";
 
 	document.getElementById("deptBtn").disabled = true;
 

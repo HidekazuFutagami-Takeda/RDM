@@ -378,7 +378,9 @@
 			        			<s:if test="%{#rowBean.reqB == 1}">
 			        				<!-- 活性 -->
 			        				<span>
-			        					<img src="img/button_delete.gif" onclick="errorCheckAction('3', this)" />
+			        					<a class="comMiniLink" href="#" onclick="errorCheckAction('3', this)" >
+			        					<img src="img/button_delete.gif" />
+			        					</a>
 			        					<s:hidden name="hcpWorkData[%{#status.index}].insNoKakusi"/>
 			        				</span>
 			        			</s:if>
@@ -400,7 +402,11 @@
 		        		<s:if test="%{#rowBean.actionEdit == 1}">
 			        		<s:if test="%{dummyHcoCount >= 2}">
 			        			<s:if test="%{#rowBean.reqA == 1}">
-			        				<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
+			        				<span>
+			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this)">
+			        				<img src="img/button_update.gif">
+			        				</a>
+			        				</span>
 		        				</s:if>
 		        				<s:else>
 		        					<span><img src="img/button_update_off.gif"></span>
@@ -408,7 +414,11 @@
 			        		</s:if>
 			        		<s:elseif test="%{kinmuCount == 1 and dummyHcoCount > 0}">
 								<s:if test="%{#rowBean.reqA == 1}">
-			        				<span><img src="img/button_update.gif" onclick="errorCheckAction('4', this)"></span>
+			        				<span>
+			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this)">
+			        				<img src="img/button_update.gif">
+			        				</a>
+			        				</span>
 		        				</s:if>
 		        				<s:else>
 		        					<span><img src="img/button_update_off.gif"></span>
@@ -428,7 +438,11 @@
 		        		<s:if test="%{#rowBean.actionEdit == 1}">
 		        			<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
 		        			<s:if test="%{#rowBean.reqA == 1}">
-	        					<span><img src="img/button_movemed.gif" onclick="errorCheckAction('5', this)"></span>
+	        					<span>
+	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('5', this)">
+	        					<img src="img/button_movemed.gif">
+	        					</a>
+	        					</span>
 		        			</s:if>
 		        			<s:else>
 		        				<span><img src="img/button_movemed_off.gif"></span>
@@ -443,7 +457,11 @@
 		        		<s:if test="%{#rowBean.actionEdit == 1 && #rowBean.kinmuCount == 1}">
 	        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->
 	        				<s:if test="%{#rowBean.reqB == 1}">
-	        					<span><img src="img/button_moveoutmed.gif" onclick="errorCheckAction('6', this)"></span>
+	        					<span>
+	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this)">
+	        					<img src="img/button_moveoutmed.gif">
+	        					</a>
+	        					</span>
 	        				</s:if>
 
 		        			<s:else>

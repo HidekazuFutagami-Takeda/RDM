@@ -79,7 +79,7 @@ function tmpCdcView(index){
 	 document.fm1.paramInsNo.value = document.fm1.postInsNo.value;
 
 	 if (!insNo) {
-	 	 document.fm1.paramInsNo.value = document.fm1.preInsNo.value;
+	 	 //document.fm1.paramInsNo.value = document.fm1.preInsNo.value;
 	 }
   } else {//ここにはこない
   }

@@ -357,17 +357,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<tr>
 					<%-- 通知分類--%>
 		    <td class="pupControlItem" ><nobr>&nbsp;通知分類</nobr></td>
-			<td style="width:10pt;"><s:checkbox id="dataDupCheck" name="dataDupCheck" tabIndex="-1"/>データ重複検知</td>
+			<td style="width:10pt;"><s:checkbox id="dataDupCheck" name="dataDupCheck" tabIndex="-1"/><label for="dataDupCheck">データ重複検知</label></td>
             <td style="width:10pt;"><s:checkbox id="ultRnkCheck" name="ultRnkCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>アルトマーク連携</nobr></td>
+            <td style="width:100pt;"><nobr><label for="ultRnkCheck">アルトマーク連携</label></nobr></td>
             <td style="width:10pt;"><s:checkbox id="fbResCheck" name="fbResCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>FB回答確認</nobr></td>
+            <td style="width:100pt;"><nobr><label for="fbResCheck">FB回答確認</label></nobr></td>
             <td style="width:10pt;"><s:checkbox id="consCheck" name="consCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>整合性チェック</nobr></td>
+            <td style="width:100pt;"><nobr><label for="consCheck">整合性チェック</label></nobr></td>
             <td style="width:10pt;"><s:checkbox id="othersCheck" name="othersCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>その他</nobr></td>
+            <td style="width:100pt;"><nobr><label for="othersCheck">その他</label></nobr></td>
             <td style="width:10pt;"><s:checkbox id="onlyCheck" name="onlyCheck" tabIndex="-1" onchange="handleCheckboxChange(this)"/></td>
-            <td style="width:100pt;"><nobr>要確認のみ</nobr></td>
+            <td style="width:100pt;"><nobr><label for="onlyCheck">要確認のみ</label></nobr></td>
 		</tr>
 		<tr>
 						<%-- 通知件名 --%>
@@ -378,11 +378,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		</tr>
 		<tr>	<%-- ステータス --%>
 			<td class="pupControlItem"><nobr>&nbsp;ステータス</nobr></td>
-			<td style="width:10pt;"><s:checkbox id="unconCheck" name="unconCheck" tabIndex="-1"/>未確認</td>
+			<td style="width:10pt;"><s:checkbox id="unconCheck" name="unconCheck" tabIndex="-1"/><label for="unconCheck">未確認</label></td>
             <td style="width:10pt;"><s:checkbox id="ubderCheck" name="ubderCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>確認中</nobr></td>
+            <td style="width:100pt;"><nobr><label for="ubderCheck">確認中</label></nobr></td>
             <td style="width:10pt;"><s:checkbox id="resolvCheck" name="resolvCheck" tabIndex="-1"/></td>
-            <td style="width:100pt;"><nobr>解消済</nobr></td>
+            <td style="width:100pt;"><nobr><label for="resolvCheck">解消済</label></nobr></td>
 		</tr>
 		<tr>
 							<%-- 優先度 --%>

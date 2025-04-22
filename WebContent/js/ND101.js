@@ -138,6 +138,12 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
     	document.getElementById("postUnivPosCode").disabled = true;
     	document.getElementById("postUnivPosCode").value = "";
     }
+
+    if(insNo != null && insNo != ""){
+    	document.getElementById("deptBtn").disabled = false;
+    } else {
+    	document.getElementById("deptBtn").disabled = true;
+    }
 }
 
 function jimClear(name) {
@@ -149,6 +155,7 @@ function jimClear(name) {
 		document.fm1.postInsNo.value = "";
 		document.fm1.postUltInsNo.value = "";
 		document.fm1.postHoInsType.value = "";
+    	document.getElementById("deptBtn").disabled = true;
 	}
 	if (name == 'shozokubukaName') {
 		document.fm1.postDeptKj.value = "";

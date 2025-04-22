@@ -163,6 +163,8 @@ function sosClear() {
 	document.fm1.insAbbrName.value = "";
 	document.fm1.insNoSk.value	= "";
 
+	document.getElementById("deptBtn").disabled = true;
+
 }
 
 /**
@@ -449,6 +451,11 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
     document.fm1.hoInsType.value = hoInsType;
     document.fm1.ultInsNo.value = dcfShisetsuCd;
 
+    if(insNo != null && insNo != ""){
+    	document.getElementById("deptBtn").disabled = false;
+    } else {
+    	document.getElementById("deptBtn").disabled = true;
+    }
 }
 
 
@@ -507,6 +514,13 @@ function nd101ClosePopUp(targetWin,targetWinName){
 window.onload = function(){
 
 	comClickFlgInit();
+
+    if(document.fm1.insNoSk.value != null && document.fm1.insNoSk.value != ""){
+    	document.getElementById("deptBtn").disabled = false;
+    } else {
+    	document.getElementById("deptBtn").disabled = true;
+    }
+
 	//ダイアログメッセージ定義
 	var dialog = document.fm1.dialog.value;
 	//エラーメッセージ

@@ -310,7 +310,7 @@
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>所属部科<span style="color:red;">*</span></nobr></td>
 	      <td class="comFormTableItem" colspan="3"><nobr>
-	      	<input class="comButton" type="button" value="選択" onClick="JavaScript:tmpCdcView();" />
+	      	<input class="comButton" id="deptBtn" type="button" value="選択" onClick="JavaScript:tmpCdcView();" />
           		<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
           		<a class="comMiniLink" href="#" onClick="JavaScript:deptClear();">Clear</a>
 	      </nobr></td>

@@ -32,10 +32,6 @@
 	<link href="WebContent/css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 	<link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
-	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
-	<link href="css/catDeptsCombo.css" rel="Stylesheet" type="text/css" />
-	<link href="css/common.css" rel="Stylesheet" type="text/css" />
-	<link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
 	<script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
@@ -74,7 +70,7 @@
 		/*検索結果テーブルを囲むdiv名*/
 		.kensakuDate {
 			height: 370px;
-			width: 1400px;
+			width: 1200px;
 			overflow: auto;
 			-webkit-overflow-scrolling: touch;
 		}
@@ -162,9 +158,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 //String sortCondition = null;
 %>
 
-</head>
-<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
-<%-- バナー部分をインクルード --%>
+  <%-- バナー部分をインクルード --%>
   <%-- サブシステムIDが３:(従業員関連)の時 --%>
   <jsp:include page="common/jkrTop.jsp" flush="true" />
   <br>
@@ -172,9 +166,39 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
   <jsp:include page="common/jkrDispMsg.jsp" flush="true" />
   <%-- 更新警告メッセージ表示をインクルード 終了 --%>
 
+<body class="comPage" onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
+<%-- ポータルタイトル 開始 --%>
+    <table class="comPortalTitle">
+    <tbody>
+    <tr>
+        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="医師変更履歴"></td>
+        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
+        <td class="comPortalTitleRight"><nobr></nobr></td>
+    </tr>
+    </tbody>
+    </table>
+<%-- ポータルタイトル 終了 --%>
+<%-- ポータルボディー 開始 --%>
 
-<%-- submit用フォーム 開始 　まるっといらないかもって話がある--%>
-	<form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
+ <table class="comPortalBody">
+    <tbody>
+      <tr>
+        <td>
+
+   	<table width="100%">
+   		<tr>
+             <td align="center">
+               <jsp:include page="common/rdmMsg.jsp">
+               <jsp:param name="" value="" />
+               </jsp:include>
+             </td>
+         </tr>
+      </table>
+
+<table class="comPortalTable" align="center" style="width:95%;margin-top:0pt">
+  <tbody>
+  <tr/>
+    <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
 		<%--
 		<input type="text" name="screenId"          value="" />
 		<input type="text" name="functionId"        value="" />
@@ -199,11 +223,6 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		<input type="text" name="dummy"             value="dummy" />
 		--%>
 	</form>
-<%-- submit用フォーム 終了 --%>
-<%-- input用フォーム 開始 --%>
-<table border="0" class="comPortalTable" align="center" style="width:98%;">
-  <tr>
-    <td>
   <s:form name="fm1" theme="simple">
 	<%-- 常に配列にするためにダミーを配置 --%>
     <s:hidden name="callBack" />
@@ -290,342 +309,201 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
     <s:url id="pageurl" action="NF501Page"/>
     <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
 
+<%-- ポータルボディー 開始 --%>
+	<table class="pupBodyTable" align="center">
+	<tr><td>
+<%-- 検索部 開始 --%>
 
-
-
-<%-- ポータルタイトル 開始 --%>
-    <table class="comPortalTitle">
-    <tbody>
-    <tr>
-        <td class="comPortalTitleIcon"><img class="comSmallIcon" src="img/mrinsdoc.gif" alt="施設新規作成"></td>
-        <td class="comPortalTitle"><nobr><s:property value='title'/></nobr></td>
-        <td class="comPortalTitleRight"><nobr></nobr></td>
-    </tr>
-    </tbody>
-    </table>
-<%-- ポータルタイトル 終了 --%>
-		<!-- エラー表示部  開始 -->
-		<table width="100%">
-   		<tr>
-             <td align="center">
-               <jsp:include page="common/rdmMsg.jsp">
-               <jsp:param name="" value="" />
-               </jsp:include>
-             </td>
-         </tr>
-      </table>
-		<!-- エラー表示部  終了 -->
-
-		<script>
-
-		</script>
-
-		<%-- 検索部 開始 --%>
-     	<table class="pupList" style="margin-top:3pt;margin-bottom:1pt; background-color: white;">
-
-     	<s:form action="ND501Search" theme="simple" name="fm1" >
-	        <tr>
-	            <%-- 氏名漢字(全角) --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>氏名漢字(全角)</nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td><s:textfield name="kensakuDocKanj" id="kensakuDocKanj" size="20" maxlength="128" /></td>
-
-	            <%-- 氏名カナ(半角カナ) --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>氏名カナ(半角カナ) </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuDocKana" name="kensakuDocKana" size="20" maxlength="128" /></td>
-
-				<%-- 医師／薬剤師区分 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>医師／薬剤師区分</nobr>
-	            </td>
-
-	            <td><s:select id="kensakuDocType" name="kensakuDocType" cssStyle="width:80pt" list ="docTypeMap" /></td>
-
-	        </tr>
-	        <tr>
-	            <%-- 医師固定C --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>医師固定C </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td><s:textfield id="kensakuDocNo" name="kensakuDocNo" size="20" maxlength="128" /></td>
-
-	            <%-- ULT医師コード --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>ULT医師コード</nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:textfield id="kensakuUltDocNo"  name="kensakuUltDocNo" size="20" maxlength="128" /></td>
-
-				<%-- 医師属性 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>医師属性 </nobr>
-	            </td>
-	            <td><s:select id="kensakuDocAttribute" name="kensakuDocAttribute" cssStyle="width:80pt" list ="docAttributeMap" /></td>
-	        </tr>
-	        <tr>
-	            <%--出身校 --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>出身校</nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td><s:select id="kensakuMedSch" name="kensakuMedSch" cssStyle="width:80pt" list ="medSchMap" /></td>
-
-	            <%-- 卒年(西暦) --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>卒年(西暦) </nobr>
-	            </td>
-	            <td><nobr></nobr></td>
-	            <td><s:select id="kensakuGradYear" name="kensakuGradYear" cssStyle="width:80pt" list ="gradYearMap" /></td>
-
-				<%-- 出身医局校 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>出身医局校 </nobr>
-	            </td>
-	            <td><s:select id="kensakuHuniv" name="kensakuHuniv" cssStyle="width:80pt" list ="hunivMap" /></td>
-
-	        </tr>
-			<tr>
-	        	 <%-- 担当者組織  --%>
-
-		          <s:if test="%{jokenSetCd == 1}">
-		          <!-- 管理者権限の場合 -->
-		          	<td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>担当者組織  </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="sosNamePop();" />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="sosName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;
-		          		<span onClick="sosNameClear();">clear</span>
-		          	</td>
-
-		          </s:if>
-
-		          <s:else>
-		          	<!-- ユーザー権限の場合 -->
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>担当者組織 </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択"   disabled />
-		          	</td>
-		          	<td>
-		          		<s:textfield id="" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          		&nbsp;
-		          		<span>clear</span>
-		          	</td>
-		          </s:else>
-
-	            <%-- 担当者 --%>
-		          <s:if test="%{jokenSetCd == 1}"><!-- 管理者権限の場合 -->
-		          	<td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>担当者 </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="jgiNamePop();" /></td>
-		          	<td>
-		          		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		<span onClick="jgiNameClear();">clear</span>
-		          	</td>
-		          </s:if>
-		          <s:else><!-- ユーザー権限の場合 -->
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		         	 	<nobr>担当者</nobr>
-		         	</td>
-		         	<td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onClick=""  disabled/></td>
-		          	<td>
-		          		<s:textfield id="" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		<span>clear</span>
-		          	</td>
-		          </s:else>
-
-	             <%-- 申請者組織 --%>
-		          <s:if test="%{jokenSetCd == 1}">
-		          		<!-- 管理者権限の場合 -->
-			          <td class="comTableSearchItem" style="width:50pt;">
-			          	<nobr>申請者組織  </nobr>
-			          </td>
-			          <td style="width: 35px;" colspan="2">
-			          	<input id="sosButton1" class="comButton" type="button" value="選択" onclick="tmpCseView()" />
-			          	<s:textfield id="kensakuReqShz" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-			          	<span onClick="ReqShzClear();">clear</span>
-			          </td>
-			          	<td>
-
-			          	</td>
-		          </s:if>
-
-		          <s:else><!-- ユーザー権限の場合 -->
-		          	<td class="comTableSearchItem" style="width:50pt;">
-		          		<nobr>申請者組織 </nobr>
-		          	</td>
-		          	<td style="width: 35px;">
-		          		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-		          		<s:textfield id="" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-		          		<span>clear</span>
-		          	</td>
-		          	<td>
-
-		          	</td>
-
-		          </s:else>
-	        </tr>
-
-	        <tr>
-	            <%-- 施設固定C --%>
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>施設固定C </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td>
-		          	<s:textfield id="kensakuInsNo" name="kensakuInsNo" size="20" maxlength="128"/>
-		          </td>
-
-	            <%-- 施設名 --%>
-	            <td class="comTableSearchItem" style="width:50pt;">
-	            	<nobr>施設名 </nobr>
-	            </td>
-	            <td style="width: 35px;"><input id="sosButton1" class="comButton" type="button" value="選択" onclick="tmpCseView()" /></td>
-	          	<td>
-	          		<s:textfield id="kensakuInsKanj" name="kensakuInsKanj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-	          		<span onClick="insKanjClear();">clear</span>
-	          	</td>
-
-	            <%-- 申請者 --%>
-	            <s:if test="%{jokenSetCd == 1}">
-	          		<!-- 管理者権限の場合 -->
-		          <td class="comTableSearchItem" style="width:50pt;">
-		          	<nobr>申請者 </nobr>
-		          </td>
-		          <td>
-		          	<s:textfield id="kensakuReqJgiName" name="kensakuReqJgiName" size="20" maxlength="128" />
-		          </td>
-	          </s:if>
-
-	          <s:else><!-- ユーザー権限の場合 -->
-	          	<td class="comTableSearchItem" style="width:50pt;">
-	          		<nobr>申請者</nobr>
-	          	</td>
-	          	<td><s:textfield id="" name="kensakuReqJgiName" size="20" maxlength="128" cssClass="mediumGray" readonly="true"/></td>
-	          </s:else>
-	        </tr>
-
-	        <tr>
-	            <%-- 更新日 --%>
-		          <td class="comTableSearchItem">
-		          	<nobr>更新日 </nobr>
-		          </td>
-		          <td><nobr></nobr></td>
-		          <td>
-		          	<input type="date" name="kensakuUpdMstFrom" id="updMstFrom" value="${updMstFrom}" pattern="yyyy-MM-dd" />
+	<tr>
+		<%-- 氏名漢字(全角) --%>
+		<td class="pupControlItem"><nobr>氏名漢字(全角)</nobr>
+		</td>
+		<td>
+			<s:textfield name="kensakuDocKanj" id="kensakuDocKanj" size="20" maxlength="128" />
+		</td>
+		<%-- 氏名カナ(半角カナ) --%>
+		<td class="pupControlItem"><nobr>氏名カナ(半角カナ)</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuDocKana" name="kensakuDocKana" size="20" maxlength="128" />
+		</td>
+		<%-- 医師／薬剤師区分 --%>
+		<td class="pupControlItem"><nobr>医師／薬剤師区分</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuDocType" name="kensakuDocType" cssStyle="width:80pt" list ="docTypeMap" />
+		</td>
+	</tr>
+	<tr>
+		<%-- 医師固定C --%>
+		<td class="pupControlItem"><nobr>医師固定C</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuDocNo" name="kensakuDocNo" size="20" maxlength="128" />
+		</td>
+		<%-- ULT医師コード --%>
+		<td class="pupControlItem"><nobr>ULT医師コード</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuUltDocNo"  name="kensakuUltDocNo" size="20" maxlength="128" />
+		</td>
+		<%-- 医師属性 --%>
+		<td class="pupControlItem"><nobr>医師属性</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuDocAttribute" name="kensakuDocAttribute" cssStyle="width:80pt" list ="docAttributeMap" />
+		</td>
+	</tr>
+	<tr>
+		<%-- 出身校 --%>
+		<td class="pupControlItem"><nobr>出身校</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuMedSch" name="kensakuMedSch" cssStyle="width:80pt" list ="medSchMap" />
+		</td>
+		<%-- 卒年(西暦) --%>
+		<td class="pupControlItem"><nobr>卒年(西暦)</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuGradYear" name="kensakuGradYear" cssStyle="width:80pt" list ="gradYearMap" />
+		</td>
+		<%-- 出身医局校 --%>
+		<td class="pupControlItem"><nobr>出身医局校</nobr>
+		</td>
+		<td>
+			<s:select id="kensakuHuniv" name="kensakuHuniv" cssStyle="width:80pt" list ="hunivMap" />
+		</td>
+	</tr>
+	<tr>
+		<%-- 担当者組織 --%>
+		<td class="pupControlItem"><nobr>担当者組織
+			<s:if test="%{jokenSetCd == 1}">
+				<input id="sosButton1" class="comButton" type="button" value="選択" onClick="sosNamePop();" />
+			</s:if>
+			<s:else>
+				<input id="sosButton1" class="comButton" type="button" value="選択"   disabled />
+			</s:else>
+		</nobr></td>
+		<td>
+			<s:if test="%{jokenSetCd == 1}">
+				<s:textfield id="sosName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+	          		&nbsp;
+          		<a href="#" class="comMiniLink" onClick="sosNameClear();">Clear</a>
+			</s:if>
+			<s:else>
+				<s:textfield id="" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
+	          		&nbsp;
+          		<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
+			</s:else>
+		</td>
+		<%-- 担当者 --%>
+		<td class="pupControlItem"><nobr>担当者
+			<s:if test="%{jokenSetCd == 1}">
+				<input id="sosButton1" class="comButton" type="button" value="選択" onClick="jgiNamePop();" />
+			</s:if>
+			<s:else>
+				<input id="sosButton1" class="comButton" type="button" value="選択" onClick=""  disabled/>
+			</s:else>
+		</nobr></td>
+		<td>
+			<s:if test="%{jokenSetCd == 1}">
+				<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+          		<a href="#" class="comMiniLink" onClick="jgiNameClear();">Clear</a>
+			</s:if>
+			<s:else>
+				<s:textfield id="" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+          		<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
+			</s:else>
+		</td>
+		<%-- 申請者組織 --%>
+		<td class="pupControlItem"><nobr>申請者組織
+			<s:if test="%{jokenSetCd == 1}">
+				<input id="sosButton1" class="comButton" type="button" value="選択" onclick="tmpCseView()" />
+			</s:if>
+			<s:else>
+				<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
+			</s:else>
+		</nobr></td>
+		<td>
+			<s:if test="%{jokenSetCd == 1}">
+				<s:textfield id="kensakuReqShz" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	          	<a href="#" class="comMiniLink" onClick="ReqShzClear();">Clear</a>
+			</s:if>
+			<s:else>
+				<s:textfield id="" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+         		<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
+			</s:else>
+		</td>
+	</tr>
+	<tr>
+		<%-- 施設固定C --%>
+		<td class="pupControlItem"><nobr>施設固定C</nobr>
+		</td>
+		<td>
+			<s:textfield id="kensakuInsNo" name="kensakuInsNo" size="20" maxlength="128"/>
+		</td>
+		<%-- 施設名 --%>
+		<td class="pupControlItem"><nobr>施設名
+		<input id="sosButton1" class="comButton" type="button" value="選択" onclick="tmpCseView()" />
+		</nobr></td>
+		<td>
+			<s:textfield id="kensakuInsKanj" name="kensakuInsKanj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+        	<a href="#" class="comMiniLink" onClick="insKanjClear();">Clear</a>
+		</td>
+		<%-- 申請者 --%>
+		<td class="pupControlItem"><nobr>申請者</nobr></td>
+		<td>
+			<s:if test="%{jokenSetCd == 1}">
+				<s:textfield id="kensakuReqJgiName" name="kensakuReqJgiName" size="20" maxlength="128" />
+			</s:if>
+			<s:else>
+				<s:textfield id="" name="kensakuReqJgiName" size="20" maxlength="128" cssClass="mediumGray" readonly="true"/>
+			</s:else>
+		</td>
+	</tr>
+	<tr>
+		<%-- 更新日 --%>
+	    <td class="pupControlItem"><nobr>更新日</nobr></td>
+        <td class="comTableSearchItem" colspan=3>
+			<input type="date" name="kensakuUpdMstFrom" id="updMstFrom" value="${updMstFrom}" pattern="yyyy-MM-dd" />
 		          	<span>　～　</span>
 		          	<input type="date" name="kensakuUpdMstTo" id="updMstTo" value="${updMstTo}" pattern="yyyy-MM-dd" />
-		          </td>
-	        </tr>
-	        <table>
-	        	<tr>
-	              <td align="right" colspan="3">
-	             	 <!-- 検索ボタン -->
-	                <input type="button" name="search" value="検索" onclick="jimSearch();">
-	                &nbsp;
-	                <%-- 表示リセット --%>
-	                <input type="button" value="クリア" class="comMiniLink" onclick="clearText()">
-	                &nbsp;
-	                <!-- リスト切り替え -->
-					リスト切替
-	              	&nbsp;
-					<s:select id="selectListChange" name="selectListChange" list ="selectListChangeMap" />
-	              </td>
-		        </tr>
-	        </table>
-		</s:form>
-	    </table>
-	<%-- 検索部 終了 --%>
+	    </td>
+	    <td class="pupControlItem">&nbsp;</td>
+	    <td class="pupControlItem">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" colspan=6>
+			<!-- 検索ボタン -->
+			<input type="button" name="search" value="検索" onclick="jimSearch();">
+			&nbsp;
+			<%-- 表示リセット --%>
+			<input type="button" value="クリア" class="comMiniLink" onclick="clearText()">
+			&nbsp;
+			<!-- リスト切り替え -->
+			リスト切替
+			&nbsp;
+			<s:select id="selectListChange" name="selectListChange" list ="selectListChangeMap" />
+		</td>
+	</tr>
 
-
-	<%-- ページ情報 --%>
-	<CENTER>
-		 <%-- ページャー表示 開始 --%>
-                 <!-- 改ページ -->
-                 <s:if test="searchType == 1 ">
-                  <table width="95%" style="text-align: center;" >
-                      <tbody>
-                      <tr>
-                          <td>
-                            <!-- 前頁リンク -->
-                            <s:if test="pageCntCur > 1">
-                            <nobr>
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur-1"/>);return false;">
-                                &lt;&lt; 前
-                                </a>&nbsp;
-                            </nobr>
-                            </s:if>
-
-                            <!-- ページ基準の前頁リンク -->
-                            <s:if test="pageCntBase > 1">
-                              <a class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="pageCntBase-1"/>);return false;">
-                              <nobr>～<s:property value="pageCntBase-1"/></nobr></a>
-                            </s:if>
-
-                            <!-- 各ページリンク作成 -->
-                            <s:if test="pageCntAll > 1">
-                              <s:iterator value="{'0',1,'2','3','4','5','6','7','8','9'}" var="pageIndex" status="status">
-                                <s:set var="pageCntCurTemp" value="#status.index + pageCntBase" />
-                                <s:if test="#pageCntCurTemp <= pageCntAll">
-                                  <s:if test="#pageCntCurTemp != pageCntCur">
-                                    <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp"/>);return false;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:if>
-                                  <s:else>
-                                    <!-- 現在ページはリンクではない -->
-                                    <a  class="comMiniLink"  style="text-decoration:none;">
-                                    <nobr><s:property value="#pageCntCurTemp"/></nobr></a>
-                                  </s:else>
-                                </s:if>
-                              </s:iterator>
-                            </s:if>
-                            <!-- 次のグループ -->
-                            <s:if test="(#pageCntBase + 10) <= pageCntAll">
-                                &nbsp;
-                                <a  class="comMiniLink"  href="" style="" onClick="pltPage(<s:property value="#pageCntCurTemp-1"/>);return false;">
-                                <nobr><s:property value="pageCntBase + 10"/>～</nobr></a>
-                            </s:if>
-
-                            <!-- 次頁  -->
-                            <s:if test="pageCntCur < pageCntAll">
-                              <nobr>&nbsp;
-                                <a class="comMiniLink" href = "" onClick="pltPage(<s:property value="pageCntCur+1"/>);return false;">
-                                 	 次&gt;&gt;
-                                </a>
-                              </nobr>
-                            </s:if>
-
-                                 <nobr>
-                            <s:if test="lineCntAll > 0">
-                              &nbsp;&nbsp;
-                              <s:property value="lineCntAll"/>件中
-                              <s:property value="lineCntStart"/>～<s:property value="lineCntEnd"/>件
-                            </s:if>
-                            <s:else>
-                              &nbsp;0件
-                            </s:else>
-                            </nobr>
-                          </td>
-                      </tr>
-                      </tbody>
-                  </table>
-                 </s:if>
+<%-- ページャー表示 開始 --%>
+          <s:if test='pageFlag == "1" '>
+          </s:if>
+		<s:else>
+          	<table width="80%">
+          		<tr>
+                    <td align="right">
+                      <jsp:include page="common/rdmPage.jsp">
+                      <jsp:param name="" value="" />
+                      </jsp:include>
+                    </td>
+                </tr>
+             </table>
+          </s:else>
           <%-- ページャー表示 終了 --%>
 
-          <%
+<%
   // ソート表示状態制御
   String docKanaAscClass = "comTableNoSort";
   String docKanaDescClass = "comTableNoSort";
@@ -640,7 +518,6 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	  docKanjDescClass = "comTableSort";
   }
 %>
-
 
 	    <%-- 項目 --%>
 	    <s:if test="searchType == 1 ">
@@ -703,7 +580,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 			    <s:iterator value="hcpUpdHstDataList" status="status" var="rowBean">
 			        <tr>
 			        	<!-- 更新日 -->
-						<td class="comTableItem" id="left1"  >
+						<td class="comTableItem" id="left1" style="z-index:2;" >
 							<s:if test="%{#rowBean.updMstYmd == null || #rowBean.updMstYmd == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -712,7 +589,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:else>
 						</td>
 						<!-- 医師固定C -->
-						<td class="comTableItem" id="left2"  >
+						<td class="comTableItem" id="left2" style="z-index:2;" >
 							<s:if test="%{#rowBean.docNo == null || #rowBean.docNo == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -721,7 +598,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:else>
 						</td>
 						<!-- 医師／薬剤師区分 -->
-						<td class="comTableItem" id="left3"  >
+						<td class="comTableItem" id="left3" style="z-index:2;" >
 							<s:if test="%{#rowBean.docType == null || #rowBean.docType == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -737,7 +614,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:else>
 						</td>
 						<!-- 氏名（漢字） -->
-						<td class="comTableItem" id="left4"  >
+						<td class="comTableItem" id="left4" style="z-index:2;" >
 							<s:if test="%{#rowBean.docKanj == null || #rowBean.docKanj == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
@@ -1183,7 +1060,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 			        <s:iterator value="hcpUpdHstDataList" status="status" var="rowBean">
 				        <tr>
 				        	<!-- 更新日 -->
-							<td class="comTableItem" id="left1"  >
+							<td class="comTableItem" id="left1" style="z-index:2;" >
 								<s:if test="%{#rowBean.updMstYmd == null || #rowBean.updMstYmd == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1192,7 +1069,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 					            </s:else>
 							</td>
 							<!-- 医師固定C -->
-							<td class="comTableItem" id="left2"  >
+							<td class="comTableItem" id="left2" style="z-index:2;" >
 								<s:if test="%{#rowBean.docNo == null || #rowBean.docNo == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1201,7 +1078,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 					            </s:else>
 							</td>
 							<!-- 氏名（漢字） -->
-							<td class="comTableItem" id="left3"  >
+							<td class="comTableItem" id="left3" style="z-index:2;" >
 								<s:if test="%{#rowBean.docKanj == null || #rowBean.docKanj == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1480,7 +1357,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 			        <s:iterator value="hcpUpdHstDataList" status="status" var="rowBean">
 				        <tr>
 				        	<!-- 更新日 -->
-							<td class="comTableItem" id="left1"  >
+							<td class="comTableItem" id="left1" style="z-index:2;" >
 								<s:if test="%{#rowBean.updMstYmd == null || #rowBean.updMstYmd == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1489,7 +1366,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 					            </s:else>
 							</td>
 							<!-- 医師固定C -->
-							<td class="comTableItem" id="left2"  >
+							<td class="comTableItem" id="left2" style="z-index:2;" >
 								<s:if test="%{#rowBean.docNo == null || #rowBean.docNo == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1498,7 +1375,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 					            </s:else>
 							</td>
 							<!-- 氏名（漢字） -->
-							<td class="comTableItem" id="left3"  >
+							<td class="comTableItem" id="left3" style="z-index:2;" >
 								<s:if test="%{#rowBean.docKanj == null || #rowBean.docKanj == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1817,7 +1694,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 			        <s:iterator value="hcpUpdHstDataList" status="status" var="rowBean">
 				        <tr>
 				        	<!-- 更新日 -->
-							<td class="comTableItem" id="left1"  >
+							<td class="comTableItem" id="left1" style="z-index:2;" >
 								<s:if test="%{#rowBean.updMstYmd == null || #rowBean.updMstYmd == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1826,7 +1703,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 					            </s:else>
 							</td>
 							<!-- 医師固定C -->
-							<td class="comTableItem" id="left2"  >
+							<td class="comTableItem" id="left2" style="z-index:2;" >
 								<s:if test="%{#rowBean.docNo == null || #rowBean.docNo == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -1835,7 +1712,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 					            </s:else>
 							</td>
 							<!-- 氏名（漢字） -->
-							<td class="comTableItem" id="left3"  >
+							<td class="comTableItem" id="left3" style="z-index:2;" >
 								<s:if test="%{#rowBean.docKanj == null || #rowBean.docKanj == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
@@ -2026,21 +1903,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	    </s:if>
     </table>
 
-
-
-	</CENTER>
-
-	<%-- メイン部 一覧 終了 --%>
-
-
 	<table>
+		<tr>
 		<!-- 検索ボタン -->
 		<td>
-			<input type="button" value="戻る" onclick="NC001Page();" />
+			<input type="button" value="戻る" onclick="window.close();" />
 		</td>
-
+		</tr>
 	</table>
-
 	<script>
 	//戻るボタン押下
 	function NC001Page(){
@@ -2052,24 +1922,18 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 
 	}
 	</script>
+	</table>
 
-	<%--ヘッダー部　終了 --%>
-
-	<%-- ポータルボディー 終了 --%>
-	<%--フッター部　終了 --%>
-
-	<%-- ポータルボディー 終了 --%>
-
-	 </tr>
-          </tbody>
-          </table>
-  </s:form>
-
-  </td>
-    </tr>
+    </tbody>
     </table>
-<%-- input用フォーム 終了 --%>
-<jsp:include page="common/jkrBottom.jsp" flush="true" />
-<%-- input用フォーム 終了 --%>
+    </s:form>
+    </table>
+<%-- ポータルボディー 終了 --%>
+
+
+<%-- メイン部 一覧 終了 --%>
+<%-- ポータル大枠 終了 --%>
+	<jsp:include page="common/jkrBottom.jsp" flush="true" />
+  <%-- ボトム部分をインクルード --%>
+  <hr class="comTitle" />
 </body>
-</html>

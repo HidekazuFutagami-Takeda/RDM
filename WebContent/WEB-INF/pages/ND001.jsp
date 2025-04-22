@@ -189,6 +189,21 @@
     }
     </style>
     <style>
+    	.hoverDiv{
+	        position: relative;
+	    }
+	    .hoverDiv:hover .hoverImg {
+            display: inline;                /* インライン要素として表示 */
+        }
+        .hoverImg{
+            display: none;
+            position   : absolute;
+        }
+        .hoverImg:after{
+            left: 105%;
+            top: 30%;
+            position: absolute;
+        }
     	.insertDiv{
 	        position: relative;
 	    }
@@ -269,10 +284,11 @@
         TH.comTableTitle			/* テーブル形式のタイトル項目 */
         {
           color : #000000;
-          background-color: #e0e0d4;
+/*           background-color: #e0e0d4; */
         /*	background-color: #cccccc;*/
-          background-color: #e8b5a2;
-          text-align : center;
+/*           background-color: #e8b5a2; */
+		  background-color: #FFFFFF;
+		  text-align : left;
           border-style: solid;
           border-top-width : 0px;
           border-left-width : 1px;
@@ -281,9 +297,29 @@
           font-size   : 8pt;
           /*テーブル幅可変*/
 	      resize : horizontal;
+		  text-overflow: clip;
+		  white-space: nowrap;
 		  overflow : hidden;
 		  font-weight:normal;
         }
+        TH.comTableTitleULT
+		{
+		  color : #000000;
+		  background-color: #eba800;
+		  text-align : left;
+		  border-style: solid;
+		  border-top-width : 0px;
+		  border-left-width : 1px;
+		  border-right-width : 1px;
+		  border-bottom-width : 1px;
+		  font-size   : 8pt;
+		  resize : horizontal;
+		  text-overflow: clip;
+		  white-space: nowrap;
+		  overflow : hidden;
+		  font-weight:normal;
+		}
+
         .tkdUlt TH:first-child {
           position: sticky;
           left: 0;
@@ -293,13 +329,38 @@
           position:Sticky;
           left: 0;
           border-style: solid;
+          border-top-width : 0px;
+		  border-left-width : 1px;
+		  border-right-width : 0px;
+		  border-bottom-width : 1px;
           background-color:#fff;
           z-index:2;
         }
         .actionTh {
           position: sticky;
           top: 0;
-          background-color:#fff;
+          background-color: #FFFFFF;
+		  text-align : left;
+		  border-style: solid;
+		  border-top-width : 0px;
+		  border-left-width : 0px;
+		  border-right-width : 0px;
+		  border-bottom-width : 1px;
+		  font-size   : 8pt;
+		  font-weight:normal;
+        }
+       .actionThHead {
+          position: sticky;
+          top: 0;
+          background-color: #FFFFFF;
+		  text-align : left;
+		  border-style: solid;
+		  border-top-width : 0px;
+		  border-left-width : 0px;
+		  border-right-width : 0px;
+		  border-bottom-width : 0px;
+		  font-size   : 8pt;
+		  font-weight:normal;
         }
 	</style>
 <%
@@ -638,10 +699,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           </s:if>
           <s:else>
               <div style="max-height:300px;width:1250px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-                  <table class="tkdUlt" =border=1 cellpadding=2 cellspacing=0 style="width:1240px;">
+                  <table>
                     <thead style="z-index:3">
-                        <tr>
-                            <th class="actionTh"></th>
+                        <tr class="comTableTitle" style="position: sticky; top:0; left:0;">
+                            <th class="actionThHead"></th>
                             <th class="comTableTitle" style="width:110px;">氏名漢字
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
                                 <span style="font-size: 1pt;"> </span>
@@ -674,7 +735,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <th class="comTableTitle"><nobr>施設略式漢字名（所属部科名：役職名）</nobr></th>
                             <th class="comTableTitle" style="width:20px;"><nobr>旧姓</nobr></th>
                         </tr>
-                        <tr>
+                        <tr class="comTableTitle" style="position: sticky; top:20; left:0;">
                             <th class="actionTh">アクション</th>
                             <th class="comTableTitleUlt">ULT医師名漢字
                             <s:if test=' !(hcpDataList== null || hcpDataList.size() <= 0)'>
@@ -695,11 +756,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                             <th class="comTableTitleUlt"><nobr>ULT医師コード</nobr></th>
                             <th class="comTableTitleUlt"><nobr>ULT生年月日</nobr></th>
                             <th class="comTableTitleUlt"><nobr>ULT出身校</nobr></th>
-                            <th class="comTableTitleUlt"><nobr>ULT卒年</nobr></th>
-                            <th class="comTableTitleUlt"><nobr></nobr></th>
-                            <th class="comTableTitleUlt"><nobr></nobr></th>
-                            <th class="comTableTitleUlt"><nobr>ULT施設名略名（所属部科名：役職名）</nobr></th>
-                            <th class="comTableTitleUlt"><nobr></nobr></th>
+                            <th class="comTableTitleUlt" colspan="3"><nobr>ULT卒年</nobr></th>
+                            <th class="comTableTitleUlt" colspan="2"><nobr>ULT施設名略名（所属部科名：役職名）</nobr></th>
                         </tr>
                     </thead>
                      <tbody style="z-index:2">
@@ -707,67 +765,76 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                               <tr>
 
                                   <td class="actionButton" style="height:90%; width:90px;" rowspan="2">
+                                  <div class="hoverDiv">
                                       <table>
                                       <tbody>
                                       <tr>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenShinkiFlg == "1"'>
-                                      	<div class="insertDiv">
+<!--                                       	<div class="insertDiv"> -->
                                           <img
                                             src="img/button_insert.gif"
                                             name="a"
                                             onclick="JavaScript:actBtn('ND011','<s:property value="#rowBean.dcfIshiCd"/>');"
                                           >
-                                          <div class="hoverInsert"><nobr>医師新規作成</nobr></div>
-                                        </div>
+<!--                                           <div class="hoverInsert"><nobr>医師新規作成</nobr></div> -->
+<!--                                         </div> -->
                                       </s:if>
                                       <s:else>
                                       </s:else>
                                       </td>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenKoushinFlg == "1"'>
-                                      	<div class="updateDiv">
+<!--                                       	<div class="updateDiv"> -->
                                           <img
                                             src="img/button_update.gif"
                                             name="b"
                                             onclick="JavaScript:actBtn('ND012','<s:property value="#rowBean.docNo"/>');"
                                           >
-                                          <div class="hoverUpdate"><nobr>医師情報更新</nobr></div>
-                                        </div>
+<!--                                           <div class="hoverUpdate"><nobr>医師情報更新</nobr></div> -->
+<!--                                         </div> -->
                                       </s:if>
                                       <s:else>
                                       </s:else>
                                       </td>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenKinmuKoushinFlg == "1"'>
-                                      	<div class="movemedDiv">
+<!--                                       	<div class="movemedDiv"> -->
                                           <img
                                             src="img/button_movemed.gif"
                                             name="c"
                                             onClick="JavaScript:actBtn('ND013','<s:property value="#rowBean.docNo"/>');"
                                           >
-                                          <div class="hoverMovemed"><nobr>医師勤務先情報更新</nobr></div>
-                                        </div>
+<!--                                           <div class="hoverMovemed"><nobr>医師勤務先情報更新</nobr></div> -->
+<!--                                         </div> -->
                                       </s:if>
                                       <s:else>
                                       </s:else>
                                       </td>
                                       <td style="width:18px;">
                                       <s:if test='#rowBean.gamenFukkatsuFlg == "1"'>
-                                      	<div class="restoreDiv">
+<!--                                       	<div class="restoreDiv"> -->
                                           <img
                                             src="img/button_restoration.gif"
                                             name="d"
                                             onClick="JavaScript:actBtn('ND014','<s:property value="#rowBean.docNo"/>');"
                                           >
-                                          <div class="hoverRestore"><nobr>医師復活</nobr></div>
-                                        </div>
+<!--                                           <div class="hoverRestore"><nobr>医師復活</nobr></div> -->
+<!--                                         </div> -->
                                       </s:if>
                                       <s:else>
                                       </s:else>
+                                      <td>
+                                          <img
+                                            class="hoverImg"
+                                            src="img/tooltip2.jpg"
+                                            width="190px" height="112px"
+                                          >
+                                      </td>
                                       </tr>
                                       </tbody>
                                       </table>
+                                      </div>
         						  </td>
 
                                   <td class="comTableItem" style="width:110px; height:18px;"><nobr><s:property value="#rowBean.docKanj"/></nobr></td>
@@ -788,11 +855,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                                   <td class="comTableItemUlt"><nobr><s:property value="#rowBean.dcfIshiCd"/></nobr></td>
                                   <td class="comTableItemUlt"><nobr><s:property value="#rowBean.ultDob"/></nobr></td>
                                   <td class="comTableItemUlt"><nobr><s:property value="#rowBean.ultUnivKj"/></nobr></td>
-                                  <td class="comTableItemUlt"><nobr><s:property value="#rowBean.sotsunenSr"/></nobr></td>
-                                  <td class="comTableItemUlt"></td>
-                                  <td class="comTableItemUlt"></td>
-                                  <td class="comTableItemUlt"><s:property value="#rowBean.ultInsName.replaceAll('\\n', '<br />')" escape="false"/></td>
-                                  <td class="comTableItemUlt"></td>
+                                  <td class="comTableItemUlt" colspan="3"><nobr><s:property value="#rowBean.sotsunenSr"/></nobr></td>
+                                  <td class="comTableItemUlt" colspan="2"><s:property value="#rowBean.ultInsName.replaceAll('\\n', '<br />')" escape="false"/></td>
 
                               </tr>
                             </s:iterator>

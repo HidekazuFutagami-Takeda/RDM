@@ -393,9 +393,9 @@ public class ND001Service extends BaseService {
         LinkedHashMap<String, String> mapGradYear = new LinkedHashMap<String, String>();
         mapGradYear.put(null, "");
         Integer thisYear = Integer.parseInt(outCalUsr.getCalYear());
-        Integer futureYear = thisYear + 1;
-        String futureYearString = Integer.toString(futureYear);
-        mapGradYear.put(futureYearString,futureYearString);
+//        Integer futureYear = thisYear + 1;
+//        String futureYearString = Integer.toString(futureYear);
+//        mapGradYear.put(futureYearString,futureYearString);
         mapGradYear.put(outCalUsr.getCalYear(),outCalUsr.getCalYear());
         for (int i = 1; i < 101; i++){
             Integer year = Integer.parseInt(outCalUsr.getCalYear()) - i;

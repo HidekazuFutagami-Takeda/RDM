@@ -547,10 +547,14 @@ public class ND011Service extends BaseService {
 		MRdmComCalUsrEntity outCalUsr = dao.selectByValue(inEntityYearCmb).get(0);
 		int yearInt = Integer.parseInt(outCalUsr.getCalYear());
 		LinkedHashMap<String, String> mapYear = new LinkedHashMap<String, String>();
+		LinkedHashMap<String, String> mapYearNow = new LinkedHashMap<String, String>();
 		mapYear.put("", "");
+		mapYearNow.put("", "");
 		for (int i = 0; i < 101; i++) {
 			String yearStr = Integer.toString(yearInt + 1 - i);
+			String yearStrNow = Integer.toString(yearInt - i);
 			mapYear.put(yearStr, yearStr);
+			mapYearNow.put(yearStrNow, yearStrNow);
 		}
 		indto.setNewNameStYearCombo(mapYear);
 
@@ -610,12 +614,12 @@ public class ND011Service extends BaseService {
 		//1-2-7     卒年（西暦）
 		//下記で作成する                          空白を選択可能とし、取得値が無い場合は空白を初期値として選択する
 		//            年      現在日付の年+1年～－100年
-		indto.setGradYearCombo(mapYear);
+		indto.setGradYearCombo(mapYearNow);
 
 		//1-2-8     臨床研修年（西暦）
 		//下記で作成する                          空白を選択可能とし、取得値が無い場合は空白を初期値として選択する
 		//            年      現在日付の年+1年～－100年
-		indto.setEmplYearCombo(mapYear);
+		indto.setEmplYearCombo(mapYearNow);
 
 		//1-2-9     出身医局校                  「補足_出身医局校_出身校リスト」シート参照
 		//医師_出身大学マスタから下記条件で「武田出身大学コード：出身大学漢字名」を並び順の昇順に取得しドロップダウンリストを作成する

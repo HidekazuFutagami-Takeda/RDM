@@ -1449,11 +1449,11 @@
 							</td>
 							<!-- 申請者所属 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.reqDistCode == null || #rowBean.reqDistCode == ''}">
+								<s:if test="%{#rowBean.reqShz == null || #rowBean.reqShz == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="mainInsDataList[%{#status.index}].reqDistCode" />
+									<s:label key="mainInsDataList[%{#status.index}].reqShz" />
 					            </s:else>
 							</td>
 							<!-- 申請者氏名 -->

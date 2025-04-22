@@ -541,6 +541,8 @@ public class NF501Service extends BaseService {
                 dataRecord.setReqBrCod(entity.getReqBrCod());
                 //申請者所属エリア
                 dataRecord.setReqDistCode(entity.getReqDistCode());
+              	//申請者所属
+                dataRecord.setReqShz(entity.getReqShz());
                 //承認者所属
                 dataRecord.setAprShz(entity.getAprShz());
                 /*
@@ -1178,6 +1180,8 @@ public class NF501Service extends BaseService {
                 dataRecord.setAprShaId(entity.getAprShaId());
                 //申請者所属エリア
                 dataRecord.setReqDistCode(entity.getReqDistCode());
+                //承認者所属
+                dataRecord.setReqShz(entity.getReqShz());
                 //承認者所属
                 dataRecord.setAprShz(entity.getAprShz());
                 //対象区分更新フラグ

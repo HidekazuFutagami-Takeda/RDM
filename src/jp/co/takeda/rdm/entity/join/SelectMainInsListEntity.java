@@ -304,6 +304,12 @@ public class SelectMainInsListEntity extends BaseEntity implements Serializable 
     private String reqDistCode;
 
     /**
+     * 申請者所属
+     * @generated
+     */
+    private String reqShz;
+
+    /**
      * 承認者所属
      * @generated
      */
@@ -542,6 +548,21 @@ public class SelectMainInsListEntity extends BaseEntity implements Serializable 
 
 	public void setReqDistCode(String reqDistCode) {
 		this.reqDistCode = reqDistCode;
+	}
+
+	/**
+	 * SelectMainInsListEntity.javareqShzを設定
+	 * @return reqShz
+	 */
+	public String getReqShz() {
+		return reqShz;
+	}
+
+	/**
+	 * @param reqShz セットする reqShz
+	 */
+	public void setReqShz(String reqShz) {
+		this.reqShz = reqShz;
 	}
 
 	public String getAprShz() {

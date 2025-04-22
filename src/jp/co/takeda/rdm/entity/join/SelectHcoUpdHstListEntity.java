@@ -616,6 +616,12 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
     private String reqDistCode;
 
     /**
+     * 申請者所属
+     * @generated
+     */
+    private String reqShz;
+
+    /**
      * 承認者所属
      * @generated
      */
@@ -1756,6 +1762,21 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
 
 	public void setReqDistCode(String reqDistCode) {
 		this.reqDistCode = reqDistCode;
+	}
+
+	/**
+	 * SelectHcoUpdHstListEntity.javareqShzを設定
+	 * @return reqShz
+	 */
+	public String getReqShz() {
+		return reqShz;
+	}
+
+	/**
+	 * @param reqShz セットする reqShz
+	 */
+	public void setReqShz(String reqShz) {
+		this.reqShz = reqShz;
 	}
 
 	public String getAprShz() {

@@ -114,6 +114,12 @@ public class MainInsDataList implements Serializable {
     private String reqDistCode;
 
     /**
+     * 申請者所属
+     * @generated
+     */
+    private String reqShz;
+
+    /**
      * 承認者所属
      * @generated
      */
@@ -288,6 +294,21 @@ public class MainInsDataList implements Serializable {
 	}
 
 
+
+	/**
+	 * MainInsDataList.javareqShzを設定
+	 * @return reqShz
+	 */
+	public String getReqShz() {
+		return reqShz;
+	}
+
+	/**
+	 * @param reqShz セットする reqShz
+	 */
+	public void setReqShz(String reqShz) {
+		this.reqShz = reqShz;
+	}
 
 	public String getAprShz() {
 		return aprShz;

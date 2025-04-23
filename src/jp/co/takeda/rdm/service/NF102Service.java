@@ -13,7 +13,6 @@ import java.util.List;
 
 import javax.inject.Named;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -23,6 +22,7 @@ import jp.co.takeda.rdm.dto.HcoNxtReqDataList;
 import jp.co.takeda.rdm.dto.NF102DTO;
 import jp.co.takeda.rdm.entity.join.SelectNF102MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF102MainDataListEntity;
+import jp.co.takeda.rdm.util.StringUtils;
 
 /**
  * Serviceクラス（NF102)
@@ -46,9 +46,13 @@ public class NF102Service extends BaseService {
 		List<SelectNF102MainDataEntity> selectNF102MainDataEntityList = dao.select(selectNF102MainDataEntity);
 
 		if(selectNF102MainDataEntityList.size() > 0) {
-			indto.setInsAbbrName(selectNF102MainDataEntityList.get(0).getInsAbbrName());
-			indto.setUltInsNo(selectNF102MainDataEntityList.get(0).getUltInsNo());
-			indto.setShisetsuNmRyaku(selectNF102MainDataEntityList.get(0).getShisetsuNmRyaku());
+			indto.setInsAbbrName(StringUtils.nvl(selectNF102MainDataEntityList.get(0).getInsAbbrName()," "));
+			indto.setUltInsNo(StringUtils.nvl(selectNF102MainDataEntityList.get(0).getUltInsNo()," "));
+			indto.setShisetsuNmRyaku(StringUtils.nvl(selectNF102MainDataEntityList.get(0).getShisetsuNmRyaku()," "));
+		} else {
+			indto.setInsAbbrName(" ");
+			indto.setUltInsNo(" ");
+			indto.setShisetsuNmRyaku(" ");
 		}
 
         // 一覧表示データ

@@ -2051,7 +2051,11 @@
                 <td>
                <nobr>
                	<s:if test='%{btnEnableFlg == "1"}'>
-					<input class="comButton" type="button"name="buttonF3" value="一括申請" onClick="reqBtn();JavaScript:return false;" />
+               		<s:if test='pageFlag == "1" '>
+		         	 </s:if>
+		        	<s:else>
+						<input class="comButton" type="button"name="buttonF3" value="一括申請" onClick="reqBtn();JavaScript:return false;" />
+					</s:else>
 				</s:if>
 				<s:else>
 					&nbsp;

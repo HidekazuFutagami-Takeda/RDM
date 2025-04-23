@@ -1236,6 +1236,26 @@ function tmpCallBackInsView(insNo) {
   }
 }
 
+var tmpTarget = null;
+//組織選択ボタン
+function soshikiPopBtn(){
+	  //hcpClosePopUp(gCsoViewWin, "gCsoViewWin");
+	// NC201_担当者検索ポップアップ画面を表示
+	window.open("","gCsoViewWin",tantoSubScreenSize);
+	document.fm1.screenId.value = "NC201";
+	document.fm1.functionId.value="Init";
+	if(tmpTarget == null){
+		tmpTarget = document.fm1.target;
+	}
+	document.fm1.target="gCsoViewWin";
+
+	document.fm1.bumonRankPop.value="1";
+	document.fm1.selectFlgPop.value="1";
+	document.fm1.callBack.value = "callBackSoshikiPop";
+
+	comSubmitForAnyWarp(fm1);
+	comClickFlgInit();
+}
 
 //戻るボタン
 function backBtn(){

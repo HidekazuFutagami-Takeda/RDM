@@ -229,6 +229,29 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden name="backScreenId" value="NC011" />
 	<s:hidden name="callBack" />
 
+	<%-- 組織検索ポップアップ用 --%>
+  			<input type="hidden" name="selectFlgPop"           value="" />
+  			<input type="hidden" name="initSosCdPop"           value="" />
+  			<input type="hidden" name="trtCdPop"               value="" />
+  			<s:hidden id="callBack" name="callBack" />
+  			<input type="hidden" name="trtCdPop"               value="" />
+  			<s:hidden id="brCode" name="brCode"/>
+  			<s:hidden id="distCode" name="distCode"/>
+  			<s:hidden id="upSosCode" name="upSosCode"/>
+  			<s:hidden name="upBumonRank" id="upBumonRank" />
+  			<s:hidden name="upBrCode" id="upBrCode" />
+  			<s:hidden name="upDistCode" id="upDistCode" />
+
+  				<s:hidden id="sosCdPop" name="sosCdPop"/>
+	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
+	<s:hidden id="bumonRankPop" name="bumonRankPop" value=""/>
+	<s:hidden id="sosCd" name="sosCd"/>
+	<s:hidden id="upSosCd" name="upSosCd"/>
+	<s:hidden id="bumonRank" name="bumonRank"/>
+	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
+	<s:hidden id="jgiNo" name="jgiNo"/>
+
+
 <!--  	<s:hidden id="reqId" name="reqId"/>
 	<s:hidden id="reqType" name="reqType"/>-->
 
@@ -296,7 +319,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<s:if test='jokenFlg == "1"'>
 						<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="addrPopBtn()"/>
+			   <nobr><s:submit value="選択" name="選択" onclick="soshikiPopBtn()"/>
 			   </nobr>
 			</td>
 				<td>

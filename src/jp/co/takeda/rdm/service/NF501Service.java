@@ -722,7 +722,7 @@ public class NF501Service extends BaseService {
       //検索結果切り替えリスト_作成
         LinkedHashMap<String, String> selectListChangeMap = new LinkedHashMap<String, String>();
         selectListChangeMap.put("0", "施設一覧");
-        selectListChangeMap.put("1", "領域別担当一覧");
+        selectListChangeMap.put("1", "領域別親子一覧");
         //検索結果切り替えリストを格納する
         dto.setSelectListChangeMap(selectListChangeMap);
 

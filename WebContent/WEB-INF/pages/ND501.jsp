@@ -473,7 +473,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	    <td class="pupControlItem">&nbsp;</td>
 	</tr>
 	<tr>
-		<td align="center" colspan=6>
+		<td align="right" colspan=6>
 			<!-- 検索ボタン -->
 			<input type="button" name="search" value="検索" onclick="jimSearch();">
 			&nbsp;
@@ -1256,29 +1256,29 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 
 							<!-- 申請者所属 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqShz == null || #rowBean.reqShz == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqShz" />
 					            </s:else>
 							</td>
 							<!-- 申請者氏名 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqJgiName == null || #rowBean.reqJgiName == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqJgiName" />
 					            </s:else>
 							</td>
 							<!-- 承認者所属 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.aprShz == null || #rowBean.aprShz == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShz" />
 					            </s:else>
 							</td>
 							<!-- 承認者氏名 -->
@@ -1292,20 +1292,20 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 							</td>
 							<!-- 申請チャネル -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqChl == null || #rowBean.reqChl == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqChl" />
 					            </s:else>
 							</td>
 							<!-- 申請ID -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqId == null || #rowBean.reqId == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqId" />
 					            </s:else>
 							</td>
 				        </tr>
@@ -1600,29 +1600,29 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 							</td>
 							<!-- 申請者所属 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqShz == null || #rowBean.reqShz == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqShz" />
 					            </s:else>
 							</td>
 							<!-- 申請者氏名 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqJgiName == null || #rowBean.reqJgiName == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqJgiName" />
 					            </s:else>
 							</td>
 							<!-- 承認者所属 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.aprShz == null || #rowBean.aprShz == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShz" />
 					            </s:else>
 							</td>
 							<!-- 承認者氏名 -->
@@ -1636,20 +1636,20 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 							</td>
 							<!-- 申請チャネル -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqChl == null || #rowBean.reqChl == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqChl" />
 					            </s:else>
 							</td>
 							<!-- 申請ID -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqId == null || #rowBean.reqId == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqId" />
 					            </s:else>
 							</td>
 				        </tr>
@@ -1842,29 +1842,29 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 
 							<!-- 申請者所属 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqShz == null || #rowBean.reqShz == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqShz" />
 					            </s:else>
 							</td>
 							<!-- 申請者氏名 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqJgiName == null || #rowBean.reqJgiName == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqJgiName" />
 					            </s:else>
 							</td>
 							<!-- 承認者所属 -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.aprShz == null || #rowBean.aprShz == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShz" />
 					            </s:else>
 							</td>
 							<!-- 承認者氏名 -->
@@ -1878,20 +1878,20 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 							</td>
 							<!-- 申請チャネル -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqChl == null || #rowBean.reqChl == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqChl" />
 					            </s:else>
 							</td>
 							<!-- 申請ID -->
 							<td class="comTableItem" id="left"  >
-								<s:if test="%{#rowBean.aprShaId == null || #rowBean.aprShaId == ''}">
+								<s:if test="%{#rowBean.reqId == null || #rowBean.reqId == ''}">
 					            	<nobr>&nbsp;</nobr>
 					            </s:if>
 					            <s:else>
-									<s:label key="hcpUpdHstDataList[%{#status.index}].aprShaId" />
+									<s:label key="hcpUpdHstDataList[%{#status.index}].reqId" />
 					            </s:else>
 							</td>
 				        </tr>

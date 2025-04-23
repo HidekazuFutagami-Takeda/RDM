@@ -505,11 +505,7 @@ public class NF403Service extends BaseService {
         	dataRecord.setNextMedBedsTot(getReqViewValue(StringUtils.nvl(entity.getMedBedsTot(), ""),StringUtils.nvl(entity.getNextMedBedsTot(), "")));
 
         	// 申請コメント
-        	if(entity.getReqComment() != null && !entity.getReqComment().isEmpty()) {
-        		dataRecord.setReqComment(entity.getReqComment());
-        	} else {
-        		dataRecord.setReqComment("");
-        	}
+    		dataRecord.setReqComment(entity.getReqComment());
 
         	// ULT差分
         	if(entity.getUltDif() != null && !entity.getUltDif().isEmpty()) {

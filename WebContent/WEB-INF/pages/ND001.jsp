@@ -331,7 +331,7 @@
           border-style: solid;
           border-top-width : 0px;
 		  border-left-width : 1px;
-		  border-right-width : 0px;
+		  border-right-width : 1px;
 		  border-bottom-width : 1px;
           background-color:#fff;
           z-index:2;
@@ -462,84 +462,60 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
          </tr>
       </table>
 <%-- 検索部 開始 --%>
-          <table class="comPortalControlTable" style="margin-top:3pt;margin-bottom:1pt; width:800pt;"align="center">
+          <table class="pupBodyTable" align="center">
           <tbody>
           　　　　　　　<tr>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>氏名漢字(全角)※</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;氏名漢字(全角)※</nobr></td>
               <td><s:textfield name="searchDocName" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
-              <td></td>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>氏名カナ(半角カナ)※</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;氏名カナ(半角カナ)※</nobr></td>
               <td><s:textfield name="searchDocKana" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
-              <td></td>
               <s:if test='mrAdminFlg == "0"'>
                   <td class="comTableSearchItem" style="width:50pt;  color:lightgray;"><nobr>医師／薬剤師区分</nobr></td>
-                  <td></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                       <select disabled Style="width:100pt"></select>
                   </td>
               </s:if>
               <s:else>
-                  <td class="comTableSearchItem" style="width:50pt;"><nobr>医師／薬剤師区分</nobr></td>
-                  <td></td>
+                  <td class="pupControlItem"><nobr>&nbsp;医師／薬剤師区分</nobr></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                       <s:select id="searchDocType" name="searchDocType" cssStyle="width:100pt" list ="searchDocTypeCombo"/>
                   </td>
               </s:else>
-              <td></td>
-              <td></td>
             </tr>
                       　　<tr>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>医師固定C</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;医師固定C</nobr></td>
               <td><s:textfield name="searchDocNo" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
-              <td></td>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>ULT医師コード</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;ULT医師コード</nobr></td>
               <td><s:textfield name="searchDcfIshiCd" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
-              <td></td>
               <s:if test='mrAdminFlg == "0"'>
                   <td class="comTableSearchItem" style="width:50pt; color:lightgray;"><nobr>医師属性</nobr></td>
-                  <td></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                       <select disabled Style="width:100pt"></select>
                   </td>
               </s:if>
               <s:else>
-                  <td class="comTableSearchItem" style="width:50pt;"><nobr>医師属性</nobr></td>
-                  <td></td>
+                  <td class="pupControlItem"><nobr>&nbsp;医師属性</nobr></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                       <s:select id="searchDocAttribute" name="searchDocAttribute" cssStyle="width:100pt" list ="searchDocAttributeCombo"/>
                   </td>
               </s:else>
-              <td></td>
-              <td></td>
             </tr>
                       　　<tr>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>出身校</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;出身校</nobr></td>
               <td class="comPortalControlItem" style="text-align:left;">
                   <s:select id="searchMedSch" name="searchMedSch" cssStyle="width:100pt" list ="searchMedSchCombo"/>
               </td>
-              <td></td>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>卒年(西暦)</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;卒年(西暦)</nobr></td>
               <td class="comPortalControlItem" style="text-align:left;">
                   <s:select id="searchGradYear" name="searchGradYear" cssStyle="width:100pt" list ="searchGradYearCombo"/>
               </td>
-              <td></td>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>出身医局校</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;出身医局校</nobr></td>
               <td class="comPortalControlItem" style="text-align:left;">
                   <s:select id="searchHUniv" name="searchHUniv" cssStyle="width:100pt" list ="searchHUnivCombo"/>
               </td>
-              <td></td>
-              <td></td>
             </tr>
             <tr>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>ULT接続</nobr></td>
-              <td></td>
+              <td class="pupControlItem"><nobr>&nbsp;ULT接続</nobr></td>
               <td class="comPortalControlItem" style="text-align:left;">
                   <s:select id="searchSetsuzoku" name="searchSetsuzoku" cssStyle="width:100pt" list ="searchSetsuzokuCombo"/>
               </td>
@@ -547,78 +523,69 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
             </tr>
             <tr>
-              <td class="comTableSearchItem" style="width:50pt;">組織</td>
               <s:if test='mrAdminFlg == "0"'>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="" disabled/></td>
+              <td class="pupControlItem"><nobr>&nbsp;組織</nobr>
+                  <nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td>
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                   </td>
                   <td><a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
               </s:if>
               <s:else>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></td>
+              <td class="pupControlItem"><nobr>&nbsp;組織</nobr>
+                  <nobr><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></nobr></td>
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-                  </td>
-                  <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">Clear</a>&nbsp;</td>
+                  <a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">Clear</a>&nbsp;</td>
               </s:else>
               <s:if test='mrAdminFlg == "0"'>
-                  <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="" disabled/></td>
+                  <td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
+					<nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td>
                   <td class="comPortalControlItem">
                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-                   </td>
-                   <td><a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
+                   <a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
               </s:if>
               <s:else>
-                  <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
-                  <td align="right"><input class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
+                  <td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
+				   <nobr>
+				   <s:if test="bumonRank == '2'">
+				   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" disabled />
+				   </s:if>
+				   <s:else>
+				   	<input class="comButton" type="button" id="tantoButton" name="button2" value="選択" onClick="JavaScript:tantoPopBtn(); return false;" />
+				   </s:else>
+				   </nobr>
+				</td>
                   <td class="comPortalControlItem">
                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-                   </td>
-                   <td><a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">Clear</a>&nbsp;</td>
+                   <a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">Clear</a>&nbsp;</td>
               </s:else>
-              <td></td>
-              <td></td>
               <td></td>
               <td></td>
             </tr>
             <tr>
-              <td class="comTableSearchItem"><nobr>施設固定C</nobr></td>
-              <td></td>
+              <td class="comTableSearchItem"><nobr>&nbsp;施設固定C</nobr></td>
               <td class="comPortalControlItem">
                   <s:textfield name="searchInsNo" size="30" maxlength="30" type="search" style="width:100pt;"/>
               </td>
-              <td></td>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>施設名</nobr></td>
-              <td align="right"><input class="comButton" type="button" value="選択" onClick="tmpCseView();" /></td>
+              <td class="pupControlItem"><nobr>&nbsp;施設名</nobr>
+              <nobr><input class="comButton" type="button" value="選択" onClick="tmpCseView();" /></nobr></td>
               <td class="comPortalControlItem">
                    <s:textfield name="searchInsNm" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-              </td>
-              <td ><a href="#" class="comMiniLink" onclick="nd001Clear('searchIns');return false;" align="left">Clear</a>&nbsp;</td>
-              <td class="comTableSearchItem" style="width:50pt;"><nobr>所属部科</nobr></td>
-              <td align="right"><input class="comButton" type="button" value="選択" onClick="tmpCdcView();" /></td>
+              <a href="#" class="comMiniLink" onclick="nd001Clear('searchIns');return false;">Clear</a>&nbsp;</td>
+              <td class="pupControlItem"><nobr>&nbsp;所属部科</nobr><nobr>
+              <input class="comButton" type="button" value="選択" onClick="tmpCdcView();" /></nobr></td>
               <td class="comPortalControlItem">
                    <s:textfield name="searchDeptNm" id="searchDeptNm" size="20" maxlength="40" cssClass="mediumGray" readonly="true"/>
 		                <s:hidden name="searchDeptCd" id="searchDeptCd"/>
-              </td>
-              <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="nd001Clear('searchDept');return false;" style="float:none;">Clear</a>&nbsp;</td>
+              <a href="#" class="comMiniLink" onclick="nd001Clear('searchDept');return false;" style="float:none;">Clear</a>&nbsp;</td>
             </tr>
             <tr>
               <td class="comTableSearchItem" style="width:50pt;"></td>
               <td class="comTableSearchItem" style="width:50pt;" colspan=3><p>※項目は、武田情報とアルトマーク情報を同時検索します。</p></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td align="left"colspan="3">
+              <td colspan="2">
               <s:if test='pageFlag == "1" '>
                 <input type="button" name="search" value="新規作成" onclick="" disabled>&nbsp;※新規作成の前に検索してください
                 <%--<input type="hidden"> --%>
@@ -630,15 +597,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td class="comTableSearchItem" style="width:50pt;"></td>
             </tr>
             <tr>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td class="comTableSearchItem" style="width:50pt;"></td>
-              <td align="right" colspan="2">
-                <input type="button" name="search" value="検索" onclick="nd001Search();">&nbsp;
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+              <td colspan="2">
+                <input type="button" name="search" value="検索" onclick="nd001Search();">
                 <input type="button" name="search" value="クリア" onclick="nd001ClearAll('<s:property value="mrAdminFlg"/>');">
               </td>
             </tr>

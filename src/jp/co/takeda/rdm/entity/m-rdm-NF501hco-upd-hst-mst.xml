@@ -412,7 +412,7 @@
 			</if>
 			<if test="kensakuUpdMstFrom != null">
 			AND
-				HCO_UPD_HST.UPD_SHA_YMD
+				TO_DATE(HCO_UPD_HST.UPD_SHA_YMD)
 			BETWEEN
 				#{kensakuUpdMstFrom}
 			AND
@@ -607,7 +607,7 @@
 			</if>
 			<if test="kensakuUpdMstFrom != null">
 			AND
-				HCO_UPD_HST.UPD_SHA_YMD
+				TO_DATE(HCO_UPD_HST.UPD_SHA_YMD)
 			BETWEEN
 				#{kensakuUpdMstFrom}
 			AND

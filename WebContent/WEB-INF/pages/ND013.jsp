@@ -125,6 +125,23 @@
 	    }
     }
     </script>
+    <style>
+    	.hoverDiv{
+	        position: relative;
+	    }
+	    .hoverDiv:hover .hoverImg {
+            display: inline;                /* インライン要素として表示 */
+        }
+        .hoverImg{
+            display: none;
+            position   : absolute;
+        }
+        .hoverImg:after{
+            left: 105%;
+            top: 30%;
+            position: absolute;
+        }
+	</style>
 </head>
 
 <body class="comPage onUnload="JavaScript:jmrUnLoad();" onLoad="JavaScript:comSetFormWindowInfo();">
@@ -355,7 +372,7 @@
 	            <td style="border: none !important;width:146pt;"><nobr></nobr></td>
 	        </tr>
 	   		<tr>
-	   			<td class="comTableTitle" style="border: 0px none; background-color:white;" colspan="4">アクション</td>
+	   			<td class="comTableTitle" style="border: 0px none; background-color:white;">アクション</td>
 	            <td class="comTableTitle" style="width:146pt;"><nobr>施設略式漢字名</nobr></td>
 	            <td class="comTableTitle" style="width:146pt;"><nobr>対象区分</nobr></td>
 	            <td class="comTableTitle" style="width:200pt;"><nobr>施設住所</nobr></td>
@@ -367,8 +384,12 @@
 	        </tr>
 	        <s:iterator value="hcpWorkData" status="status" var="rowBean">
 		        <tr>
+		        	<td>
 		        	<!-- アクションボタン -->
-		        	<td class="comTableItem" id="left" style="width: 30px;">
+                    <div class="hoverDiv">
+                    <table>
+                    <tr>
+		        	<td style="width: 30px;">
 
 		        		<!-- 医師勤務先削除 -->
 		        		<!-- アクション削除が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合、表示 -->
@@ -394,7 +415,7 @@
 		        			<nobr>&nbsp;</nobr>
 		        		</s:else>
 					</td>
-					<td class="comTableItem" id="left" style="width: 30px;">
+					<td style="width: 30px;">
 		        		<!-- 勤務先情報更新-->
 		        		<!-- アクション編集が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合　表示 -->
 		        		<!--アクション編集が'1'の場合,勤務先情報の件数が1件で隠し項目．実勤務先判定がNULLの場合 表示
@@ -432,7 +453,7 @@
 		        			<nobr>&nbsp;</nobr>
 		        		</s:else>
 					</td>
-					<td class="comTableItem" id="left" style="width: 30px;">
+					<td style="width: 30px;">
 		        		<!-- 医療機関へ異動 -->
 		        		<!-- アクション編集が'1'の場合　表示 -->
 		        		<s:if test="%{#rowBean.actionEdit == 1}">
@@ -452,7 +473,7 @@
 		        			<nobr>&nbsp;</nobr>
 		        		</s:else>
 					</td>
-					<td class="comTableItem" id="left" style="width: 30px;">
+					<td style="width: 30px;">
 		        		<!-- 医療機関外へ異動 -->
 		        		<s:if test="%{#rowBean.actionEdit == 1 && #rowBean.kinmuCount == 1}">
 	        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->
@@ -473,7 +494,17 @@
 		        			<nobr>&nbsp;</nobr>
 		        		</s:else>
 					</td>
-
+	                <td>
+	                       <img
+	                         class="hoverImg"
+	                         src="img/tooltip3.jpg"
+	                         width="190px" height="92px"
+	                       >
+	                </td>
+	                </tr>
+	                </table>
+	                </div>
+	                </td>
 		        	<!-- 施設略式漢字名 -->
 					<td class="comTableItem" id="left"  >
 						<s:if test="%{#rowBean.insAbbrName == null || #rowBean.insAbbrName == ''}">

@@ -806,9 +806,9 @@ public class ND501Service extends BaseService {
             dataRecord.setPubInstitution(entity.getPubInstitution());//公的機関
 
             dataRecord.setPubInstitutionUpdFlg(entity.getPubInstitutionUpdFlg());//公的機関更新フラグ
-            dataRecord.setPubInstStYmd(entity.getPubInstStYmd());//公的機関開始年月日
+            dataRecord.setPubInstStYmd(setFmtYmd(entity.getPubInstStYmd()));//公的機関開始年月日
             dataRecord.setPubInstStYmdUpdFlg(entity.getPubInstStYmdUpdFlg());//公的機関開始年月日更新フラグ
-            dataRecord.setPubInstEdYmd(entity.getPubInstEdYmd());//公的機関終了年月日
+            dataRecord.setPubInstEdYmd(setFmtYmd(entity.getPubInstEdYmd()));//公的機関終了年月日
             dataRecord.setPubInstEdYmdUpdFlg(entity.getPubInstEdYmdUpdFlg());//公的機関終了年月日更新フラグ
             //公的機関役職コード
             if (!StringUtils.isEmpty(entity.getPubInstPosition())) {
@@ -822,9 +822,9 @@ public class ND501Service extends BaseService {
             dataRecord.setPubInstPosition(entity.getPubInstPosition());//公的機関役職コード//分類区分
 
             dataRecord.setPubInstPositionUpdFlg(entity.getPubInstPositionUpdFlg());//公的機関役職コード更新フラグ
-            dataRecord.setPubInstposStYmd(entity.getPubInstposStYmd());//公的機関役職開始年月日
+            dataRecord.setPubInstposStYmd(setFmtYmd(entity.getPubInstposStYmd()));//公的機関役職開始年月日
             dataRecord.setPubInstposStYmdUpdFlg(entity.getPubInstposStYmdUpdFlg());//公的機関役職開始年月日更新フラグ
-            dataRecord.setPubInstposEdYmd(entity.getPubInstposEdYmd());//公的機関役職終了年月日
+            dataRecord.setPubInstposEdYmd(setFmtYmd(entity.getPubInstposEdYmd()));//公的機関役職終了年月日
             dataRecord.setPubInstposEdYmdUpdFlg(entity.getPubInstposEdYmdUpdFlg());//公的機関役職終了年月日更新フラグ
 
             dataRecord.setReqShz(entity.getReqShz());//申請者所属
@@ -1071,9 +1071,9 @@ public class ND501Service extends BaseService {
             dataRecord.setDocKanj(entity.getDocKanj());//氏名（漢字)
             dataRecord.setMedicalSocietyNm(entity.getMedicalSocietyNm());//所属学会名称
             dataRecord.setMedicalSocietyNmUpdFlg(entity.getMedicalSocietyNmUpdFlg());//所属学会名称更新フラグ
-            dataRecord.setAdmissionYmd(entity.getAdmissionYmd());//入会日
+            dataRecord.setAdmissionYmd(setFmtYmd(entity.getAdmissionYmd()));//入会日
             dataRecord.setAdmissionYmdUpdFlg(entity.getAdmissionYmdUpdFlg());//入会年月日更新フラグ
-            dataRecord.setQuitYmd(entity.getQuitYmd());//脱会日
+            dataRecord.setQuitYmd(setFmtYmd(entity.getQuitYmd()));//脱会日
             dataRecord.setQuitYmdUpdFlg(entity.getQuitYmdUpdFlg());//脱会年月日更新フラグ
             //所属役職
             if (!StringUtils.isEmpty(entity.getPositionCode())) {
@@ -1087,19 +1087,19 @@ public class ND501Service extends BaseService {
             dataRecord.setPositionCode(entity.getPositionCode());
 
             dataRecord.setPositionCodeUpdFlg(entity.getPositionCodeUpdFlg());//所属役職更新フラグ
-            dataRecord.setSocietyPosiStYmd(entity.getSocietyPosiStYmd());//役職開始年月日
+            dataRecord.setSocietyPosiStYmd(setFmtYmd(entity.getSocietyPosiStYmd()));//役職開始年月日
             dataRecord.setSocietyPosiStYmdUpdFlg(entity.getSocietyPosiStYmdUpdFlg());//役職開始年月日更新フラグ
-            dataRecord.setSocietyPosiEdYmd(entity.getSocietyPosiEdYmd());//役職終了年月日
+            dataRecord.setSocietyPosiEdYmd(setFmtYmd(entity.getSocietyPosiEdYmd()));//役職終了年月日
             dataRecord.setSocietyPosiEdYmdUpdFlg(entity.getSocietyPosiEdYmdUpdFlg());//役職終了年月日更新フラグ
-            dataRecord.setCoachingAcquisiYmd(entity.getCoachingAcquisiYmd());//指導医取得年月日
+            dataRecord.setCoachingAcquisiYmd(setFmtYmd(entity.getCoachingAcquisiYmd()));//指導医取得年月日
             dataRecord.setCoachingAcquisiYmdUpdFlg(entity.getCoachingAcquisiYmdUpdFlg());//指導医取得年月日更新フラグ
-            dataRecord.setCoachinStYmd(entity.getCoachinStYmd());//指導医開始年月日
+            dataRecord.setCoachinStYmd(setFmtYmd(entity.getCoachinStYmd()));//指導医開始年月日
             dataRecord.setCoachinStYmdUpdFlg(entity.getCoachinStYmdUpdFlg());//指導医開始年月日更新フラグ
-            dataRecord.setCoachinEdYmd(entity.getCoachinEdYmd());//指導医終了年月日
+            dataRecord.setCoachinEdYmd(setFmtYmd(entity.getCoachinEdYmd()));//指導医終了年月日
             dataRecord.setCoachingEdYmdUpdFlg(entity.getCoachingEdYmdUpdFlg());//指導医終了年月日更新フラグ
-            dataRecord.setCertifyStYmd(entity.getCertifyStYmd());//認定医開始年月日
+            dataRecord.setCertifyStYmd(setFmtYmd(entity.getCertifyStYmd()));//認定医開始年月日
             dataRecord.setCertifyStYmdUpdFlg(entity.getCertifyStYmdUpdFlg());//認定医開始年月日更新フラグ
-            dataRecord.setCertifyEdYmd(entity.getCertifyEdYmd());//認定医終了年月日
+            dataRecord.setCertifyEdYmd(setFmtYmd(entity.getCertifyEdYmd()));//認定医終了年月日
             dataRecord.setCertifyEdYmdUpdFlg(entity.getCertifyEdYmdUpdFlg());//認定医終了年月日更新フラグ
             dataRecord.setAdvisingDoctor(entity.getAdvisingDoctor());//所属学会指導医区分
             dataRecord.setAdvisingDoctorUpdFlg(entity.getAdvisingDoctorUpdFlg());//所属学会指導医区分更新フラグ
@@ -1399,9 +1399,9 @@ public class ND501Service extends BaseService {
             dataRecord.setOldKanjSeiUpdFlg(entity.getOldKanjSeiUpdFlg());//氏名（漢字）旧姓更新フラグ
             dataRecord.setOldKanaSei(entity.getOldKanaSei());//氏名（カナ）旧姓
             dataRecord.setOldKanaSeiUpdFlg(entity.getOldKanaSeiUpdFlg());//氏名（カナ）旧姓更新フラグ
-            dataRecord.setNewNameStYmd(entity.getNewNameStYmd());//改姓日
+            dataRecord.setNewNameStYmd(setFmtYmd(entity.getNewNameStYmd()));//改姓日
             dataRecord.setNewNameStYmdUpdFlg(entity.getNewNameStYmdUpdFlg());//改姓日更新フラグ
-            dataRecord.setDobYmd(entity.getDobYmd());//生年月日
+            dataRecord.setDobYmd(setFmtYmd(entity.getDobYmd()));//生年月日
             dataRecord.setDobYmdUpdFlg(entity.getDobYmdUpdFlg());//生年月日更新フラグ
             //性別区分
             if (!StringUtils.isEmpty(entity.getSex())) {
@@ -1680,5 +1680,28 @@ public class ND501Service extends BaseService {
         return dto;
     }
 
+    /**
+     * yyyy + / + mm + / + dd で作成された文字列に対して、下記変換を行う
+     * 年、月、日　がないものは空白("//"→"")
+     * 日がないものは、年/月("yyyy/mm/"→"yyyy/mm")
+     * 月、日がないものは、年のみ("yyyy//"→"yyyy")
+     * @param ymd
+     * @return
+     */
+    public String setFmtYmd(String ymd) {
+    	String rtnYmd = ymd;
+    	if(rtnYmd == null) {
+    		rtnYmd = "";
+    	}
 
+    	if("//".equals(rtnYmd)) {
+    		rtnYmd = "";
+    	} else {
+	    	while(rtnYmd.length() > 0 && "/".equals(rtnYmd.substring(rtnYmd.length()-1))) {
+	    		rtnYmd = rtnYmd.substring(0, rtnYmd.length()-1);
+	    	}
+    	}
+
+    	return rtnYmd;
+    }
 }

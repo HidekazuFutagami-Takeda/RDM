@@ -200,6 +200,13 @@ public class NF313Service extends BaseService {
         	}
         }
 
+        // 変更前後の親施設が同じ場合
+        if(indto.getPreMainInsCd() != null && indto.getPreMainInsCd().equals(indto.getMainInsCd())) {
+        	// 施設情報が変更されていません。
+ 			errMsg += loginInfo.getMsgData(RdmConstantsData.W066) + "\n";
+         	errFlg = true;
+         }
+
         // 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
         if(indto.getUpdShaYmd() != null && !indto.getUpdShaYmd().equals("")) {
         	TRdmReqKnrEntity tRdmReqKnrChkEntity = new TRdmReqKnrEntity("selectNF011DateChkData");

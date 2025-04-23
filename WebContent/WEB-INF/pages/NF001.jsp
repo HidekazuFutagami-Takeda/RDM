@@ -310,6 +310,23 @@
 	    	document.fm1.tmpAddrCodeCity.value = document.fm1.addrCodeCity.value;
 	    }
     </script>
+    <style>
+    	.hoverDiv{
+	        position: relative;
+	    }
+	    .hoverDiv:hover .hoverImg {
+            display: inline;                /* インライン要素として表示 */
+        }
+        .hoverImg{
+            display: none;
+            position   : absolute;
+        }
+        .hoverImg:after{
+            left: 105%;
+            top: 30%;
+            position: absolute;
+        }
+	</style>
 <%
 // ソート順状態制御用
 String sortCondition = StringUtils.nvl((String)request.getAttribute("sortCondition"), "");
@@ -662,6 +679,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:iterator value="hcoSearchDataList" status="status" var="rowBean">
 		<tr style="height:10px;">
 			<td class="comTableItem" rowspan=2>
+            <div class="hoverDiv">
 				<table>
 				<%-- アクションアイコン --%>
 				<tr>
@@ -725,7 +743,17 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		            </td>
 	                <td></td>
 	            </tr>
+	            <tr><td></td><td></td><td></td>
+	                <td>
+	                       <img
+	                         class="hoverImg"
+	                         src="img/tooltip1.jpg"
+	                         width="190px" height="148px"
+	                       >
+	                </td>
+	            </tr>
 	            </table>
+	            </div>
 			</td>
 	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insAbbrName" /></td>
 	        <td class="comTableItem" style="max-height:10px; text-overflow: clip; white-space: nowrap; overflow: hidden; max-width: 0;"><s:label key="hcoSearchDataList[%{#status.index}].insFormalName" /></td>

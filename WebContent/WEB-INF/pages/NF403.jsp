@@ -73,11 +73,6 @@
     function callBackSosPop(bumonRank, sosCd,
 	  		  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
 
-    	if(bumonRank != null && bumonRank != "3"){
-    		window.alert("エリア階層の組織を選択してください");
-    		return false;
-    	}
-
     	document.fm1.bumonRank.value = bumonRank;
 		document.fm1.sosCd.value = sosCd;
 		document.fm1.sosNm.value = bumonSeiName;
@@ -401,15 +396,15 @@
     	removeBox(box);
 
     	const option0 = makeOption("","--選択してください--");
-    	const option1 = makeOption("01","01:U(大学)");
-		const option2 = makeOption("02","02:H(病院)");
-		const option3 = makeOption("03","03:C(診療所)");
-		const option4 = makeOption("04","04:P(開業医)");
-		const option5 = makeOption("05","05:T(精神)");
-		const option6 = makeOption("06","06:B(調剤薬局)");
-		const option7 = makeOption("07","07:Y(ワクチン施設)");
-		const option8 = makeOption("08","08:W(二次店)");
-		const option9 = makeOption("09","09:Z(その他雑)");
+    	const option1 = makeOption("01","01:U（大学）");
+		const option2 = makeOption("02","02:H（病院）");
+		const option3 = makeOption("03","03:C（診療所）");
+		const option4 = makeOption("04","04:P（開業医）");
+		const option5 = makeOption("05","05:T（精神）");
+		const option6 = makeOption("06","06:B（調剤薬局）");
+		const option7 = makeOption("07","07:Y（ワクチン施設）");
+		const option8 = makeOption("08","08:W（二次店）");
+		const option9 = makeOption("09","09:Z（その他雑）");
 
 		box.appendChild(option0);
 		if(insType == "01"){

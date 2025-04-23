@@ -408,6 +408,8 @@ public class NF212Service extends BaseService {
         	indto.setInsSbt(StringUtils.nvl(mainDataEntity.getInsSbt(), ""));
 
         	// 施設紐付け情報
+        	indto.setTrtCd(StringUtils.nvl(mainDataEntity.getTrtCd(), ""));
+        	indto.setHinGCd(StringUtils.nvl(mainDataEntity.getHinGCd(), ""));
         	indto.setTrtPrdGrpNm(StringUtils.nvl(mainDataEntity.getTrtPrdGrpNm(), ""));
 
         	// 適用日を"yyyy-MM-dd"に変換

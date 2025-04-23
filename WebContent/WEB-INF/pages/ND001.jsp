@@ -566,7 +566,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td></td>
             </tr>
             <tr>
-              <td class="comTableSearchItem"><nobr>施設固定C</nobr></td>
+              <td class="comTableSearchItem"><nobr>&nbsp;施設固定C</nobr></td>
               <td class="comPortalControlItem">
                   <s:textfield name="searchInsNo" size="30" maxlength="30" type="search" style="width:100pt;"/>
               </td>

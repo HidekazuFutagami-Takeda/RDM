@@ -330,7 +330,7 @@ public class ND403Service extends BaseService {
         	tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
         	tRdmHcpKmuReqInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 
-			dao.insertByValue(tRdmReqKnrInsData);
+			dao.insertByValue(tRdmHcpKmuReqInsData);
 		}
 		indto.setForward("NC101");
         // END UOC

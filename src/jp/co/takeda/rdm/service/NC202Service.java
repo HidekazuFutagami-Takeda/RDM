@@ -83,7 +83,9 @@ public class NC202Service extends BaseService {
         	}
 
         }
-
+//SosCdPopにデータコピー　initでDTOに値をセットしないと以降セットできなくなるため。
+        indto.setSosCdSearch(indto.getSosCdPop());
+        indto.setBumonRankSearch(indto.getBumonRankPop());
         indto.setJgiInitData(jgiInitDataList);
         // END UOC
         return outdto;
@@ -161,8 +163,9 @@ public class NC202Service extends BaseService {
 			} else {
 				selectJgiEntity.setInGmnFlg(1);
 				selectJgiEntity.setInSosCdPop(indto.getSosCdPop());
-				selectJgiEntity.setInUpSosCdPop(indto.getUpSosCdPop());
-				selectJgiEntity.setInBumonRankPop(indto.getBumonRankPop());
+				selectJgiEntity.setInUpSosCdPop(StringUtils.setEmptyToNull(indto.getUpSosCdPop()));
+				selectJgiEntity.setInBumonRankPop(indto.getBumonRankSearch());
+				selectJgiEntity.setInSosCdSearch(indto.getSosCdSearch());
 //    	   selectJgiEntity.setInTrtCd("02");
 //    	   selectJgiEntity.setInSosCd("04199");
 				// selectJgiEntity.setInTrtCd(indto.getTrtCdPop());

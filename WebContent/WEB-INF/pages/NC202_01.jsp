@@ -18,7 +18,6 @@
   autoFlush="true"
   isThreadSafe="true"
   contentType="text/html;charset=UTF-8"
-
 %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
@@ -33,6 +32,8 @@
   <script type="text/javascript" src="js/common.js"></script>
   <script type="text/javascript" src="js/ajax.js"></script>
   <script type="text/javascript" src="js/rdmCatSosExpand.js"></script>
+  <script>
+  </script>
 </head>
 <body class="comPage" onLoad="cseLoad('<s:property value="selectFlgPop"/>');" OnUnLoad="cseUnLoad();">
 <%-- submit用フォーム 開始 --%>
@@ -58,7 +59,8 @@
     <s:hidden name="bumonRankPop"/>
     <s:hidden name="sosCdPop"/>
     <s:hidden name="upSosCdPop"/>
-    <s:hidden name="bumonRankPop"/>
+    <s:hidden name="sosCdSearch"/>
+    <s:hidden name="bumonRankSearch"/>
 <%-- ポータルボディー 開始 --%>
   <table class="pupBodyTable" align="center" cellspacing="0" cellpadding="0">
   <tr>
@@ -82,7 +84,7 @@
           <img
             src="img/right.gif"
             name="img<s:property value="#rowBean.sosCd"/>"
-            onclick="rcseCallAjaxJgi('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>'); return false;"
+            onclick="rcseCallAjaxJgi('<s:property value="#rowBean.sosCd"/>', '<s:property value="#rowBean.bumonRank"/>', '<s:property value="#rowBean.bumonRank"/>'); return false;"
           >
         </s:if>
 

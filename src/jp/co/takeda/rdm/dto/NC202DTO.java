@@ -50,10 +50,28 @@ public class NC202DTO extends BaseDTO implements Serializable {
     private String sosCdPop;
 
     /**
+     * パラメタ上位組織コード
+     * @generated
+     */
+    private String sosCd;
+
+    /**
      * パラメタ領域コード
      * @generated
      */
     private String upSosCdPop;
+
+    /**
+     * パラメタ組織コード（コピー先）
+     * @generated
+     */
+    private String sosCdSearch;
+
+    /**
+     * パラメタ部門ランク（コピー先）
+     * @generated
+     */
+    private Integer bumonRankSearch;
 
     /**
      * パラメタ領域コード
@@ -438,6 +456,51 @@ public class NC202DTO extends BaseDTO implements Serializable {
 	 */
 	public void setJgiJgiData(List<JgiJgiData> jgiJgiData) {
 		this.jgiJgiData = jgiJgiData;
+	}
+
+	/**
+	 * NC202DTO.javasosCdSearchを設定
+	 * @return sosCdSearch
+	 */
+	public String getSosCdSearch() {
+		return sosCdSearch;
+	}
+
+	/**
+	 * @param sosCdSearch セットする sosCdSearch
+	 */
+	public void setSosCdSearch(String sosCdSearch) {
+		this.sosCdSearch = sosCdSearch;
+	}
+
+	/**
+	 * NC202DTO.javasosCdを設定
+	 * @return sosCd
+	 */
+	public String getSosCd() {
+		return sosCd;
+	}
+
+	/**
+	 * @param sosCd セットする sosCd
+	 */
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
+	}
+
+	/**
+	 * NC202DTO.javabumonRankSearchを設定
+	 * @return bumonRankSearch
+	 */
+	public Integer getBumonRankSearch() {
+		return bumonRankSearch;
+	}
+
+	/**
+	 * @param bumonRankSearch セットする bumonRankSearch
+	 */
+	public void setBumonRankSearch(Integer bumonRankSearch) {
+		this.bumonRankSearch = bumonRankSearch;
 	}
 
 	/**

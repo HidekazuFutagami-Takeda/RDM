@@ -81,6 +81,12 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
     private String inSosCdPop;
 
     /**
+     * 組織コード親画面 (パラメータ)
+     * @generated
+     */
+    private String inSosCdSearch;
+
+    /**
      * 部門ランク親画面 (パラメータ)
      * @generated
      */
@@ -576,6 +582,21 @@ public class SelectJgiEntity extends BaseEntity implements Serializable {
 	 */
 	public void setUnderSosCnt(String underSosCnt) {
 		this.underSosCnt = underSosCnt;
+	}
+
+	/**
+	 * SelectJgiEntity.javainSosCdSearchを設定
+	 * @return inSosCdSearch
+	 */
+	public String getInSosCdSearch() {
+		return inSosCdSearch;
+	}
+
+	/**
+	 * @param inSosCdSearch セットする inSosCdSearch
+	 */
+	public void setInSosCdSearch(String inSosCdSearch) {
+		this.inSosCdSearch = inSosCdSearch;
 	}
 
 	/**

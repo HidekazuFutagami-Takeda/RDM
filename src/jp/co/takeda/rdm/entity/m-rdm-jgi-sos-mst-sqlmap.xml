@@ -177,74 +177,6 @@
                   ORDER BY JGI_SOS_MST.BR_CODE, JGI_SOS_MST.DIST_SEQ, JGI_SOS_MST.DIST_CODE
               </if>
 		  </if>
-		  <if test='inGmnFlg == 1'>
-		  with TRT_SOS as (
-            SELECT distinct
-                SOS_MST.UP_SOS_CD SOS_CD,
-				SOS_ADDR.TRT_CD
-            FROM
-                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
-            INNER JOIN
-                S_RDM_JKR_SOS_ADDR SOS_ADDR
-            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
-            union all
-            SELECT distinct
-                SOS_MST.SOS_CD,
-				SOS_ADDR.TRT_CD
-            FROM
-                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
-            INNER JOIN
-                S_RDM_JKR_SOS_ADDR SOS_ADDR
-            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
-		  )
-		    SELECT DISTINCT
-                SOS_MST.BUMON_RANK BUMON_RANK,
-                SOS_MST.SOS_CD SOS_CD,
-                SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
-                SOS_MST.BR_CODE BR_CODE,
-                SOS_MST.DIST_CODE DIST_CODE,
-                SOS_MST.DIST_SEQ DIST_SEQ
-            FROM
-                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
-            INNER JOIN
-                TRT_SOS
-            ON SOS_MST.SOS_CD = TRT_SOS.SOS_CD
-		      <where>
-                  <if test="inBumonRank &lt;= 3">
-                  AND SOS_MST.BUMON_RANK = #{inBumonRank}
-                  </if>
-                  <if test="inTrtCd != null">
-                  AND TRT_SOS.TRT_CD = #{inTrtCd}
-                  </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 1">
-                  AND SOS_MST.SOS_CD = #{inSosCd}
-                  </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 3 and inUpSosCdPop != null and inGmnFlg == 1">
-                  AND SOS_MST.SOS_CD = #{inUpSosCd}
-                  </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 0">
-                  AND SOS_MST.SOS_CD = #{inSosCdPop}
-                  </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 3 and inUpSosCdPop != null and inGmnFlg == 0">
-                  AND SOS_MST.SOS_CD = #{inUpSosCdPop}
-                  </if>
-                  <if test="inBumonRank == 3 and inBumonRankPop == 3 and inSosCdPop != null and inGmnFlg == 1">
-                  AND SOS_MST.SOS_CD = #{inSosCd}
-                  </if>
-                  <if test="inBumonRank == 3 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 1">
-                  AND SOS_MST.UP_SOS_CD = #{inUpSosCd}
-                  </if>
-                  <if test="inBumonRank == 3 and inBumonRankPop == 3 and inSosCdPop != null and inGmnFlg == 0">
-                  AND SOS_MST.SOS_CD = #{inSosCdPop}
-                  </if>
-                  <if test="inBumonRank == 3 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 0">
-                  AND SOS_MST.UP_SOS_CD = #{inSosCdPop}
-                  </if>
-              <if test="inBumonRank &lt;= 3">
-              ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
-              </if>
-		      </where>
-		  </if>
 		  <if test='inGmnFlg == 0 and inJokenSetCd == "JKN0023"'>
 		  with TRT_SOS as (
             SELECT distinct
@@ -294,29 +226,67 @@
                   <if test="inTrtCd != null">
                   AND TRT_SOS.TRT_CD = #{inTrtCd}
                   </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 1">
-                  AND SOS_MST.SOS_CD = #{inSosCd}
+                  <if test="inBumonRank == 2 and inUpSosCdPop != null and inGmnFlg == 0">
+                  AND SOS_MST.SOS_CD = #{inUpSosCdPop}
                   </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 3 and inUpSosCdPop != null and inGmnFlg == 1">
-                  AND SOS_MST.SOS_CD = #{inUpSosCd}
-                  </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 0">
+                  <if test="inBumonRank == 3 and inSosCdPop != null and inGmnFlg == 0">
                   AND SOS_MST.SOS_CD = #{inSosCdPop}
                   </if>
-                  <if test="inBumonRank == 2 and inBumonRankPop == 3 and inUpSosCdPop != null and inGmnFlg == 0">
+              <if test="inBumonRank &lt;= 3">
+              ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
+              </if>
+		      </where>
+		  </if>
+		  <if test='inGmnFlg == 1'>
+		  with TRT_SOS as (
+            SELECT distinct
+                SOS_MST.UP_SOS_CD SOS_CD,
+				SOS_ADDR.TRT_CD
+            FROM
+                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+            INNER JOIN
+                S_RDM_JKR_SOS_ADDR SOS_ADDR
+            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
+            union all
+            SELECT distinct
+                SOS_MST.SOS_CD,
+				SOS_ADDR.TRT_CD
+            FROM
+                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+            INNER JOIN
+                S_RDM_JKR_SOS_ADDR SOS_ADDR
+            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
+		  )
+		    SELECT DISTINCT
+                SOS_MST.BUMON_RANK BUMON_RANK,
+                SOS_MST.SOS_CD SOS_CD,
+                SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
+                SOS_MST.BR_CODE BR_CODE,
+                SOS_MST.DIST_CODE DIST_CODE,
+                SOS_MST.DIST_SEQ DIST_SEQ
+            FROM
+                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+            INNER JOIN
+                TRT_SOS
+            ON SOS_MST.SOS_CD = TRT_SOS.SOS_CD
+		      <where>
+                  <if test="inBumonRank &lt;= 3">
+                  AND SOS_MST.BUMON_RANK = #{inBumonRank}
+                  </if>
+                  <if test="inTrtCd != null">
+                  AND TRT_SOS.TRT_CD = #{inTrtCd}
+                  </if>
+                  <if test="inBumonRank == 2 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 1">
+                  AND SOS_MST.SOS_CD = #{inSosCdSearch}
+                  </if>
+                  <if test="inBumonRank == 2 and inBumonRankPop == 3 and inUpSosCdPop != null and inGmnFlg == 1">
                   AND SOS_MST.SOS_CD = #{inUpSosCdPop}
                   </if>
                   <if test="inBumonRank == 3 and inBumonRankPop == 3 and inSosCdPop != null and inGmnFlg == 1">
-                  AND SOS_MST.SOS_CD = #{inSosCd}
+                  AND SOS_MST.SOS_CD = #{inSosCdSearch}
                   </if>
-                  <if test="inBumonRank == 3 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 1">
+                  <if test="inBumonRank == 3 and inBumonRankPop == 2 and inUpSosCdPop != null and inGmnFlg == 1">
                   AND SOS_MST.UP_SOS_CD = #{inUpSosCd}
-                  </if>
-                  <if test="inBumonRank == 3 and inBumonRankPop == 3 and inSosCdPop != null and inGmnFlg == 0">
-                  AND SOS_MST.SOS_CD = #{inSosCdPop}
-                  </if>
-                  <if test="inBumonRank == 3 and inBumonRankPop == 2 and inSosCdPop != null and inGmnFlg == 0">
-                  AND SOS_MST.UP_SOS_CD = #{inSosCdPop}
                   </if>
               <if test="inBumonRank &lt;= 3">
               ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE

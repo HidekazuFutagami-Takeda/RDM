@@ -230,7 +230,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden name="callBack" />
 
 	<%-- 組織検索ポップアップ用 --%>
-  			<input type="hidden" name="selectFlgPop"           value="" />
+ <!-- 			<input type="hidden" name="selectFlgPop"           value="" />
   			<input type="hidden" name="initSosCdPop"           value="" />
   			<input type="hidden" name="trtCdPop"               value="" />
   			<s:hidden id="callBack" name="callBack" />
@@ -243,13 +243,13 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
   			<s:hidden name="upDistCode" id="upDistCode" />
 
   				<s:hidden id="sosCdPop" name="sosCdPop"/>
-	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
+  	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
 	<s:hidden id="bumonRankPop" name="bumonRankPop" value=""/>
 	<s:hidden id="sosCd" name="sosCd"/>
 	<s:hidden id="upSosCd" name="upSosCd"/>
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
-	<s:hidden id="jgiNo" name="jgiNo"/>
+	<s:hidden id="jgiNo" name="jgiNo"/>-->
 
 
 <!--  	<s:hidden id="reqId" name="reqId"/>

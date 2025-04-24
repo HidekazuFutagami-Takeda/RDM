@@ -193,7 +193,7 @@ function tantoPopBtn(){
 
 		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
 		document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
-		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
+		document.fm1.upSosCdPop.value = document.fm1.upSosCode.value;
 
 		document.fm1.selectFlgPop.value="1";
 		document.fm1.callBack.value="callBackTantoPop";

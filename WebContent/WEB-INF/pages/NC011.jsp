@@ -227,29 +227,38 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="knYmdhmsTo" name="knYmdhmsTo"/>
 
 	<s:hidden name="backScreenId" value="NC011" />
-	<s:hidden name="callBack" />
+	<!--<s:hidden name="callBack" />-->
 
-	<%-- 組織検索ポップアップ用 --%>
- <!-- 			<input type="hidden" name="selectFlgPop"           value="" />
+
+ 			<input type="hidden" name="selectFlgPop"           value="" />
   			<input type="hidden" name="initSosCdPop"           value="" />
   			<input type="hidden" name="trtCdPop"               value="" />
   			<s:hidden id="callBack" name="callBack" />
   			<input type="hidden" name="trtCdPop"               value="" />
-  			<s:hidden id="brCode" name="brCode"/>
-  			<s:hidden id="distCode" name="distCode"/>
-  			<s:hidden id="upSosCode" name="upSosCode"/>
+  			<s:hidden id="bumonRankPop" name="bumonRankPop" value=""/>
   			<s:hidden name="upBumonRank" id="upBumonRank" />
+  			<s:hidden id="upSosCode" name="upSosCode"/>
   			<s:hidden name="upBrCode" id="upBrCode" />
   			<s:hidden name="upDistCode" id="upDistCode" />
+	<%-- 組織検索ポップアップ用 --%>
+ <!--
 
-  				<s:hidden id="sosCdPop" name="sosCdPop"/>
+  			<s:hidden id="brCode" name="brCode"/>
+  			<s:hidden id="distCode" name="distCode"/>
+
+
+
+
+
+  	<s:hidden id="sosCdPop" name="sosCdPop"/>
   	<s:hidden id="upSosCdPop" name="upSosCdPop"/>
-	<s:hidden id="bumonRankPop" name="bumonRankPop" value=""/>
+
 	<s:hidden id="sosCd" name="sosCd"/>
 	<s:hidden id="upSosCd" name="upSosCd"/>
 	<s:hidden id="bumonRank" name="bumonRank"/>
 	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
-	<s:hidden id="jgiNo" name="jgiNo"/>-->
+	<s:hidden id="jgiNo" name="jgiNo"/>
+	-->
 
 
 <!--  	<s:hidden id="reqId" name="reqId"/>
@@ -312,7 +321,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			   </nobr>
 			</td>
 				<td >
-					<s:textfield size="20" maxlength="40" id="bumonRyakuName" name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssClass="mediumGray"/>
+					<s:textfield size="20" maxlength="40"  name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssClass="mediumGray"/>
 					<a href ="" onClick="popClearDisabled();return false;"disabled="true" >Clear</a>
 				</td>
 		</s:if>

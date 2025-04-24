@@ -963,6 +963,19 @@ function sosReqSbt(){
 
       }
  }
+//組織検索ポップアップから値受け取り
+ function callBackSoshikiPop(bumonRank, sosCd, bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
+ 		document.fm1.bumonRank.value    = bumonRank;
+ 		document.fm1.bumonRyakuName.value = bumonSeiName;
+ 		document.fm1.sosCd.value        = sosCd;
+ 		document.fm1.brCode.value       = brCode;
+ 		document.fm1.distCode.value     = distCode;
+ 		document.fm1.upSosCode.value    = upSosCode;
+ 		document.fm1.upBumonRank.value  = upBumonRank;
+ 		document.fm1.upBrCode.value     = upBrCode;
+ 		document.fm1.upDistCode.value   = upDistCode;
+ 		document.fm1.target = tmpTarget;
+ }
 
  function reqDisable(){
 	 document.fm1.target = "";

@@ -288,6 +288,9 @@
                   <if test="inBumonRank == 3 and inBumonRankPop == 2 and inUpSosCdPop != null and inGmnFlg == 1">
                   AND SOS_MST.UP_SOS_CD = #{inUpSosCd}
                   </if>
+                  <if test="inBumonRankPop == 0">
+                  AND SOS_MST.UP_SOS_CD = #{inSosCdPop}
+                  </if>
               <if test="inBumonRank &lt;= 3">
               ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
               </if>

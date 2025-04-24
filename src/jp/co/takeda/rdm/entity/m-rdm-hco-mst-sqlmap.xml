@@ -1067,7 +1067,7 @@
  		    )
  		)
  	, ADDRSOS AS (
- 	      SELECT
+ 	      SELECT DISTINCT
 			      ADDR.ADDR_CODE_PREF
 			    , ADDR.ADDR_CODE_CITY
 			    , ADDR.TK_CITY_CD
@@ -1077,9 +1077,9 @@
 			 		INNER JOIN
 			 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
 			 		ON 1=1
+			 		AND JKR_ADDR.SOS_CD = #{loginSosCd}
 			 		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
 			 		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
-			 		AND JKR_ADDR.SOS_CD = #{loginSosCd}
         )
  		SELECT DISTINCT
  		  MST.INS_ABBR_NAME

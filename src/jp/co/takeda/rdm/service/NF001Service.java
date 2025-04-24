@@ -569,10 +569,11 @@ public class NF001Service extends BaseService {
         	}
 
         	// MR更新判定フラグ
-//        	String mrUpdFlg = "0";
-//        	if(entity.getJgiNo() != null) {
-//        		mrUpdFlg = "1";
-//        	}
+        	// UT-O-401
+        	String mrUpdFlg = "0";
+        	if(entity.getTkdSosCd() != null) {
+        		mrUpdFlg = "1";
+        	}
 
         	// 新規作成
         	if("1".equals(funcFlg1) && "1".equals(newValue)) {
@@ -591,7 +592,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg2) && "1".equals(editValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg2("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg2("1");
         		} else {
         			dataRecord.setFuncFlg2("0");
@@ -604,7 +605,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg3) && "1".equals(delValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg3("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg3("1");
         		} else {
         			dataRecord.setFuncFlg3("0");
@@ -617,7 +618,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg4) && "1".equals(revValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg4("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg4("1");
         		} else {
         			dataRecord.setFuncFlg4("0");
@@ -630,7 +631,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg5) && "1".equals(editValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg5("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg5("1");
         		} else {
         			dataRecord.setFuncFlg5("0");
@@ -643,7 +644,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg6) && "1".equals(editValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg6("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg6("1");
         		} else {
         			dataRecord.setFuncFlg6("0");
@@ -656,7 +657,7 @@ public class NF001Service extends BaseService {
         	if("1".equals(funcFlg7) && "1".equals(editValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg7("1");
-        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrNewFlg)) {
+        		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
         			dataRecord.setFuncFlg7("1");
         		} else {
         			dataRecord.setFuncFlg7("0");

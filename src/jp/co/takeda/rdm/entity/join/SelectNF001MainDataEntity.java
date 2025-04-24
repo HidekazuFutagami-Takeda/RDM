@@ -345,6 +345,12 @@ public class SelectNF001MainDataEntity extends BaseEntity implements Serializabl
     private String valueNt;
 
     /**
+     * MR更新管轄判定用組織コード
+     * @generated
+     */
+    private String tkdSosCd;
+
+    /**
      * コンストラクタ
      * @generated
      */
@@ -1153,6 +1159,21 @@ public class SelectNF001MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setValueNt(String valueNt) {
 		this.valueNt = valueNt;
+	}
+
+	/**
+	 * SelectNF001MainDataEntity.javatkdSosCdを設定
+	 * @return tkdSosCd
+	 */
+	public String getTkdSosCd() {
+		return tkdSosCd;
+	}
+
+	/**
+	 * @param tkdSosCd セットする tkdSosCd
+	 */
+	public void setTkdSosCd(String tkdSosCd) {
+		this.tkdSosCd = tkdSosCd;
 	}
 
 	/**

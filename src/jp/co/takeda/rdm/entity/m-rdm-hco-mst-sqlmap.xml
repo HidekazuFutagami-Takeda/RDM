@@ -141,6 +141,7 @@
          <result column="VALUE_CT" property="valueCt"/>
          <result column="VALUE_FAC" property="valueFac"/>
          <result column="VALUE_NT" property="valueNt"/>
+         <result column="TKD_SOS_CD" property="tkdSosCd"/>
          <result column="CNT" property="cnt"/>
      </resultMap>
      <resultMap id="nF014MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF014MainDataEntity">
@@ -1000,6 +1001,7 @@
  			, ULT.YUBIN_NO
  			, TKD.ADDR_CODE_PREF
  			, TKD.ADDR_CODE_CITY
+ 			, TKD.TK_CITY_CD
  			, TKD.INS_ADDR_SRCH
  			, ULT.ADDRESS_SRCH
  			, TKD.ULT_INS_NO
@@ -1047,6 +1049,7 @@
  			, YUBIN_NO
  			, null AS ADDR_CODE_PREF
  			, null AS ADDR_CODE_CITY
+ 			, null AS TK_CITY_CD
  			, null AS INS_ADDR_SRCH
  			, ADDRESS_SRCH
  			, null AS ULT_INS_NO
@@ -1063,7 +1066,21 @@
  	         HMDB.DCF_SHISETSU_CD = HMST.ULT_INS_NO
  		    )
  		)
-
+ 	, ADDRSOS AS (
+ 	      SELECT
+			      ADDR.ADDR_CODE_PREF
+			    , ADDR.ADDR_CODE_CITY
+			    , ADDR.TK_CITY_CD
+			    , JKR_ADDR.SOS_CD
+			FROM
+			 		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
+			 		INNER JOIN
+			 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
+			 		ON 1=1
+			 		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
+			 		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
+			 		AND JKR_ADDR.SOS_CD = #{loginSosCd}
+        )
  		SELECT DISTINCT
  		  MST.INS_ABBR_NAME
  		, MST.INS_FORMAL_NAME
@@ -1094,6 +1111,7 @@
  		, MST.BYOSHO_SU
  		, MST.INS_CLASS
  		, JKR_ADDR.SOS_CD
+ 		, TKD_ADDR.SOS_CD AS TKD_SOS_CD
  		, JKR_B.JGI_NO
  		, PRM_CT.VALUE AS VALUE_CT
  		, PRM_FAC.VALUE AS VALUE_FAC
@@ -1170,16 +1188,15 @@
  		AND CDM_INSTYPE.DEL_FLG = '0'
  		AND CDM_INSTYPE.VALUE1 = MST.INS_SBT
  		LEFT JOIN
- 		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
+ 		ADDRSOS JKR_ADDR -- ログインユーザの管轄エリア（ULT結合用）
  		ON 1=1
- 		AND ADDR.ADDR_CODE_PREF = MST.TODOFUKEN_CD
- 		AND ADDR.ADDR_CODE_CITY = MST.SHIKUCHOSON_CD
+ 		AND JKR_ADDR.ADDR_CODE_PREF = MST.TODOFUKEN_CD
+ 		AND JKR_ADDR.ADDR_CODE_CITY = MST.SHIKUCHOSON_CD
  		LEFT JOIN
- 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
+ 		ADDRSOS TKD_ADDR -- ログインユーザの管轄エリア（武田結合用）
  		ON 1=1
- 		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
- 		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
- 		AND JKR_ADDR.SOS_CD = #{loginSosCd}
+ 		AND TKD_ADDR.ADDR_CODE_PREF = MST.ADDR_CODE_PREF
+ 		AND TKD_ADDR.TK_CITY_CD = MST.TK_CITY_CD
  		LEFT JOIN
  		M_RDM_JKR_MR_INS_TRT JKR_B -- RDM用施設担当者情報 B
  		ON 1=1

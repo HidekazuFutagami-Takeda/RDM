@@ -128,7 +128,7 @@ function cseViewND013(insNoKakusi, w, callBack, winVarName, clearProc){
 	    }
 	  }
 
-	  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=530,height=660,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
+	  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=1120,height=630,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
 
 	cseParentClearProc	= clearProc;
 

@@ -57,12 +57,12 @@ function nd001Clear( name ) {
 		document.fm1.distCode.value = "";
   } else if ( name == 'searchTanto' ) {
 	  // 検索条件 担当者
-		document.fm1.sosCd.value = "";
-		document.fm1.bumonRyakuName.value = "";
+//		document.fm1.sosCd.value = "";
+//		document.fm1.bumonRyakuName.value = "";
 		document.fm1.jgiNo.value = "";
 		document.fm1.jgiName.value = "";
-		document.fm1.brCode.value = "";
-		document.fm1.distCode.value = "";
+//		document.fm1.brCode.value = "";
+//		document.fm1.distCode.value = "";
   } else if ( name == 'searchIns' ) {
 	  // 検索条件 施設
 	  document.fm1.searchInsNo.value = "";
@@ -103,12 +103,24 @@ function nd001ClearAll( mrAdminFlg ) {
 		document.fm1.upBumonRank.value  = "";
 		document.fm1.upBrCode.value     = "";
 		document.fm1.upDistCode.value   = "";
-		document.fm1.sosCd.value = "";
 		document.fm1.bumonRyakuName.value = "";
 		document.fm1.jgiNo.value = "";
 		document.fm1.jgiName.value = "";
-		document.fm1.brCode.value = "";
-		document.fm1.distCode.value = "";
+  }
+  if ( mrAdminFlg == '0' ) {
+	  // 検索条件 組織担当者
+	document.fm1.brCode.value         = document.fm1.loginBrCode.value;
+	document.fm1.bumonRank.value      = document.fm1.loginBumonRank.value;
+	document.fm1.bumonRyakuName.value = document.fm1.loginBumonRyakuName.value;
+	document.fm1.bumonSeiName.value   = document.fm1.loginBumonRyakuName.value;
+	document.fm1.distCode.value       = document.fm1.loginDistCode.value;
+	document.fm1.jgiName.value        = document.fm1.loginJgiName.value;
+	document.fm1.jgiNo.value          = document.fm1.loginJgiNo.value;
+	document.fm1.sosCd.value          = document.fm1.loginSosCd.value;
+	document.fm1.upBrCode.value       = "";
+	document.fm1.upBumonRank.value    = "";
+	document.fm1.upDistCode.value     = "";
+	document.fm1.upSosCode.value      = document.fm1.loginUpSosCode.value  ;
   }
 	  // 検索条件 施設
 	  document.fm1.searchInsNo.value = "";

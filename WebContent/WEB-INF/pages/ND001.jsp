@@ -389,6 +389,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <s:hidden name="gamenId" value="ND001"/>
           <s:hidden id="pageFlag" name="pageFlag" />
           <s:hidden id="mrAdminFlg" name="mrAdminFlg" />
+          <s:hidden name="loginBrCode" />
+          <s:hidden name="loginBumonRank" />
+          <s:hidden name="loginBumonRyakuName" />
+          <s:hidden name="loginDistCode" />
+          <s:hidden name="loginJgiName" />
+          <s:hidden name="loginJgiNo" />
+          <s:hidden name="loginSosCd" />
+          <s:hidden name="loginUpSosCode" />
           <s:hidden name="pageCntAll" />
           <s:hidden name="pageCntCur" />
           <s:hidden name="pageCntBase" />
@@ -525,29 +533,28 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td></td>
             </tr>
             <tr>
-              <s:if test='mrAdminFlg == "0"'>
-              <td class="pupControlItem"><nobr>&nbsp;組織</nobr>
-                  <nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td>
-                  <td class="comPortalControlItem">
-                         <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-                  </td>
-                  <td><a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
-              </s:if>
-              <s:else>
+<%--               <s:if test='mrAdminFlg == "0"'> --%>
+<!--               <td class="pupControlItem"><nobr>&nbsp;組織</nobr> -->
+<!--                   <nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td> -->
+<!--                   <td class="comPortalControlItem"> -->
+<%--                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/> --%>
+<!--                   <a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td> -->
+<%--               </s:if> --%>
+<%--               <s:else> --%>
               <td class="pupControlItem"><nobr>&nbsp;組織</nobr>
                   <nobr><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></nobr></td>
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                   <a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">Clear</a>&nbsp;</td>
-              </s:else>
-              <s:if test='mrAdminFlg == "0"'>
-                  <td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
-					<nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td>
-                  <td class="comPortalControlItem">
-                       <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-                   <a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
-              </s:if>
-              <s:else>
+<%--               </s:else> --%>
+<%--               <s:if test='mrAdminFlg == "0"'> --%>
+<!--                   <td class="pupControlItem"><nobr>&nbsp;担当者</nobr> -->
+<!-- 					<nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td> -->
+<!--                   <td class="comPortalControlItem"> -->
+<%--                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/> --%>
+<!--                    <a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td> -->
+<%--               </s:if> --%>
+<%--               <s:else> --%>
                   <td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
 				   <nobr>
 				   <s:if test="bumonRank == '2'">
@@ -561,7 +568,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comPortalControlItem">
                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                    <a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">Clear</a>&nbsp;</td>
-              </s:else>
+<%--               </s:else> --%>
               <td></td>
               <td></td>
             </tr>

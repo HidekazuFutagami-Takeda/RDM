@@ -346,8 +346,16 @@ public class ND001Service extends BaseService {
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
     	indto.setMrAdminFlg(loginInfo.getJokenFlg());
     	if (indto.getMrAdminFlg().equals("0")) {
-    		indto.setBumonSeiName(loginInfo.getBumonRyakuName());
-    		indto.setJgiName(loginInfo.getJgiName());
+//    		indto.setBumonSeiName(loginInfo.getBumonRyakuName());
+//    		indto.setJgiName(loginInfo.getJgiName());
+    		indto.setLoginBrCode(loginInfo.getBrCode());
+    		indto.setLoginBumonRank(loginInfo.getBumonRank());
+    		indto.setLoginBumonRyakuName(loginInfo.getBumonRyakuName());
+    		indto.setLoginDistCode(loginInfo.getDistCode());
+    		indto.setLoginJgiName(loginInfo.getJgiName());
+    		indto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+    		indto.setLoginSosCd(loginInfo.getSosCd());
+    		indto.setLoginUpSosCode  (loginInfo.getUpSosCd());
     	}
 
         //1-2 ドロップダウンリストの生成

@@ -299,10 +299,10 @@ function sosReqSbt(){
 
 			//document.fm1.inHisYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
 			//document.fm1.inHisYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
-			document.fm1.inHisYmdhmsFrom.disabled = true;
-			document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_DISABLED;
-			document.fm1.inHisYmdhmsTo.disabled = true;
-			document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			//document.fm1.inHisYmdhmsFrom.disabled = true;
+			//document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+			//document.fm1.inHisYmdhmsTo.disabled = true;
+			//document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
 
  		document.getElementById('jkrSosNtySubject').options[1].hidden=true;
  		document.getElementById('jkrSosNtySubject').options[2].hidden=true;

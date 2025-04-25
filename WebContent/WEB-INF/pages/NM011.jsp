@@ -103,14 +103,14 @@
     			document.fm1.jkrSosNtyPri.value = "3";
     			document.fm1.jkrSosNtyPri.style.backgroundColor = JKR_BG_COLOR_DISABLED;
 
-    			document.fm1.inHisYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
-    			document.fm1.inHisYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
-    			document.fm1.inHisYmdhmsFrom.disabled = true;
+    			//document.fm1.inHisYmdhmsFrom.value = document.fm1.knYmdhmsFrom.value;
+    			//document.fm1.inHisYmdhmsTo.value = document.fm1.knYmdhmsTo.value;
+    			//document.fm1.inHisYmdhmsFrom.disabled = true;
     			//document.getElementById("inHisYmdhmsFrom").readOnly = true;
-    			document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_DISABLED;
-    			document.fm1.inHisYmdhmsTo.disabled = true;
+    			//document.fm1.inHisYmdhmsFrom.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			//document.fm1.inHisYmdhmsTo.disabled = true;
     			//document.getElementById("inHisYmdhmsTo").readOnly = true;
-    			document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
+    			//document.fm1.inHisYmdhmsTo.style.backgroundColor = JKR_BG_COLOR_DISABLED;
 
         		document.getElementById('jkrSosNtySubject').options[1].hidden=true;
         		document.getElementById('jkrSosNtySubject').options[2].hidden=true;

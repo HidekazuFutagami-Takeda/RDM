@@ -223,7 +223,7 @@ public class NC202Service extends BaseService {
        List<SelectJgiJgiEntity> selectJgiJgiList = dao.select(selectJgiJgiEntity);
 
 
-		if (selectJgiJgiEntity.getInBumonRank() == 4) {
+		if (!(selectJgiJgiList == null || selectJgiJgiList.isEmpty())) {
 			String sosCd = selectJgiJgiList.get(0).getSosCd();
 
 			SelectRyakuNameEntity selectRyakuNameEntity = new SelectRyakuNameEntity();

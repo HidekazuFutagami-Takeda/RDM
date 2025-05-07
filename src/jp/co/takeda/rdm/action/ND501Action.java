@@ -270,6 +270,7 @@ public class ND501Action extends BaseAction<ND501DTO> {
         pageSetup();
         // F層呼び出し
         BaseDTO outdto = nD501Service.page(dto);
+        outdto = nD501Service.search(dto);
         if (outdto instanceof ND501DTO) {
         	// START UOC
             // END UOC

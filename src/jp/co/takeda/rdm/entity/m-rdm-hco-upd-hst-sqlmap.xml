@@ -693,7 +693,7 @@
 			ORDER BY
 				 PUBLIC_HST.REQ_ID DESC
 		</if>
-
+		<if test="inOffset != null and inLimit != null">OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY</if>
     </select>
 
     <select id="searchKmuHst1" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpUpdHstListEntity" resultMap="MRdmHcpUpdHstEntiryResultMap">

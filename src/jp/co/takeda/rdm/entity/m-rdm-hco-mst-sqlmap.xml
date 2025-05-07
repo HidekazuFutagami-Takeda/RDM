@@ -1067,42 +1067,29 @@
  		    )
  		)
  	, ADDRSOS AS (
- 	      SELECT DISTINCT
-			      ADDR.ADDR_CODE_PREF
-			    , ADDR.ADDR_CODE_CITY
-			    , ADDR.TK_CITY_CD
-			    , JKR_ADDR.SOS_CD
+ 	      SELECT
+			      ADDR_CODE_PREF
+			    , ADDR_CODE_CITY
+			    , TK_CITY_CD
+			    , SOS_CD
 			FROM
-			 		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
-			 		INNER JOIN
-			 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
-			 		ON 1=1
-			 		AND JKR_ADDR.SOS_CD = #{loginSosCd}
-			 		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
-			 		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
+			 		M_RDM_ADDR
+			 		WHERE  1=1
+			 		AND SOS_CD = #{loginSosCd}
         )
  		<if test="sosCd != null">
  	, ADDRSOSALL AS (
- 	      SELECT DISTINCT
-			      ADDR.ADDR_CODE_PREF
-			    , ADDR.ADDR_CODE_CITY
-			    , ADDR.TK_CITY_CD
-			    , JKR_ADDR.SOS_CD
-			    , SOS_MST.UP_SOS_CD
+ 	      SELECT
+			      ADDR_CODE_PREF
+			    , ADDR_CODE_CITY
+			    , TK_CITY_CD
+			    , SOS_CD
+			    , UP_SOS_CD
 			FROM
-			 		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
-			 		INNER JOIN
-			 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
-			 		ON 1=1
-			 		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
-			 		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
-			 		INNER JOIN
-			 		M_RDM_SOS_MST SOS_MST --組織マスタ
-			 		ON 1=1
-			 		AND JKR_ADDR.SOS_CD = SOS_MST.SOS_CD
+			 		M_RDM_ADDR
 			WHERE 1=1
- 			<if test="bumonRank == 2">AND SOS_MST.UP_SOS_CD = #{sosCd}</if>
- 			<if test="bumonRank == 3">AND SOS_MST.SOS_CD = #{sosCd}</if>
+ 			<if test="bumonRank == 2">AND UP_SOS_CD = #{sosCd}</if>
+ 			<if test="bumonRank == 3">AND SOS_CD = #{sosCd}</if>
         )
         </if>
  		SELECT DISTINCT
@@ -1385,26 +1372,17 @@
  		)
  		<if test="sosCd != null">
  	, ADDRSOSALL AS (
- 	      SELECT DISTINCT
-			      ADDR.ADDR_CODE_PREF
-			    , ADDR.ADDR_CODE_CITY
-			    , ADDR.TK_CITY_CD
-			    , JKR_ADDR.SOS_CD
-			    , SOS_MST.UP_SOS_CD
+ 	      SELECT
+			      ADDR_CODE_PREF
+			    , ADDR_CODE_CITY
+			    , TK_CITY_CD
+			    , SOS_CD
+			    , UP_SOS_CD
 			FROM
-			 		S_RDM_COM_POS_ADDR ADDR -- 郵便番号-住所変換マスタ
-			 		INNER JOIN
-			 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
-			 		ON 1=1
-			 		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
-			 		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
-			 		INNER JOIN
-			 		M_RDM_SOS_MST SOS_MST --組織マスタ
-			 		ON 1=1
-			 		AND JKR_ADDR.SOS_CD = SOS_MST.SOS_CD
- 		WHERE 1=1
- 			<if test="bumonRank == 2">AND SOS_MST.UP_SOS_CD = #{sosCd}</if>
- 			<if test="bumonRank == 3">AND SOS_MST.SOS_CD = #{sosCd}</if>
+			 		M_RDM_ADDR
+			WHERE 1=1
+ 			<if test="bumonRank == 2">AND UP_SOS_CD = #{sosCd}</if>
+ 			<if test="bumonRank == 3">AND SOS_CD = #{sosCd}</if>
         )
  		</if>
  		SELECT

@@ -89,13 +89,13 @@
 			z-index:3;
 		}
 		#left2 {
-			position:sticky;left: 44pt;z-index:3;
+			position:sticky;left: 50pt;z-index:3;
 		}
 		#left3 {
-			position:sticky;left: 85pt;z-index:3;
+			position:sticky;left: 89pt;z-index:3;
 		}
 		#left4 {
-			position:sticky;left: 148pt;z-index:3;
+			position:sticky;left: 155pt;z-index:3;
 		}
 
 
@@ -541,9 +541,9 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		            </td>
 		            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>医師固定C</nobr></td>
 		            <td class="comTableTitle" id="left3" style="width:146pt;"><nobr>医師／薬剤師区分</nobr></td>
-		        　　　　　　　 <td class="comTableTitle" id="left4" style="width:146pt;"><nobr>氏名（漢字）</nobr></td>
+		        　　　　　　　 <td class="comTableTitle" id="left4" style="min-width:100pt;"><nobr>氏名（漢字）</nobr></td>
 		       		 <!-- ここから全画面 -->
-		            <td class="comTableTitle" id="" style="width:146pt;"><nobr>氏名（カナ）</nobr></td>
+		            <td class="comTableTitle" id="" style="min-width:80pt;"><nobr>氏名（カナ）</nobr></td>
 		            <td class="comTableTitle" id="" style="width:146pt;"><nobr>氏名（漢字）姓</nobr></td>
 					<td class="comTableTitle" id="" style="width:146pt;"><nobr>氏名（漢字）名</nobr></td>
 		            <td class="comTableTitle" id="" style="width:146pt;"><nobr>氏名（カナ）姓</nobr></td>
@@ -554,20 +554,20 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		            <td class="comTableTitle" id="" style="width:146pt;"><nobr>生年月日</nobr></td>
 		            <td class="comTableTitle" id="" style="width:146pt;"><nobr>性別区分</nobr></td>
 		            <td class="comTableTitle" id="1" style="width:146pt;"><nobr>出身地</nobr></td>
-		            <td class="comTableTitle" id="2" style="width:146pt;"><nobr>出身校</nobr></td>
-		            <td class="comTableTitle" id="3" style="width:146pt;"><nobr>卒年</nobr></td>
-		            <td class="comTableTitle" id="5" style="width:146pt;"><nobr>出身所属</nobr></td>
-		            <td class="comTableTitle" id="6" style="width:146pt;"><nobr>出身医局校</nobr></td>
-		            <td class="comTableTitle" id="7" style="width:146pt;"><nobr>臨床研修年</nobr></td>
-		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>専門臓器県</nobr></td>
-		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>専門詳細</nobr></td>
-		            <td class="comTableTitle" id="9" style="width:146pt;"><nobr>専門追加情報</nobr></td>
-		            <td class="comTableTitle" id="10" style="width:146pt;"><nobr>申請者所属</nobr></td>
-		            <td class="comTableTitle" id="11" style="width:146pt;"><nobr>申請者氏名</nobr></td>
-		            <td class="comTableTitle" id="12" style="width:146pt;"><nobr>承認者所属</nobr></td>
-		            <td class="comTableTitle" id="13" style="width:146pt;"><nobr>承認者氏名</nobr></td>
-		            <td class="comTableTitle" id="14" style="width:146pt;"><nobr>申請チャネル</nobr></td>
-		            <td class="comTableTitle" id="15" style="width:146pt;">
+		            <td class="comTableTitle" id="2" style="min-width:60pt;"><nobr>出身校</nobr></td>
+		            <td class="comTableTitle" id="3" style="min-width:60pt;"><nobr>卒年</nobr></td>
+		            <td class="comTableTitle" id="5" style="min-width:60pt;"><nobr>出身所属</nobr></td>
+		            <td class="comTableTitle" id="6" style="min-width:60pt;"><nobr>出身医局校</nobr></td>
+		            <td class="comTableTitle" id="7" style="min-width:60pt;"><nobr>臨床研修年</nobr></td>
+		            <td class="comTableTitle" id="8" style="min-width:60pt;"><nobr>専門臓器県</nobr></td>
+		            <td class="comTableTitle" id="8" style="min-width:60pt;"><nobr>専門詳細</nobr></td>
+		            <td class="comTableTitle" id="9" style="min-width:60pt;"><nobr>専門追加情報</nobr></td>
+		            <td class="comTableTitle" id="10" style="min-width:60pt;"><nobr>申請者所属</nobr></td>
+		            <td class="comTableTitle" id="11" style="min-width:50pt;"><nobr>申請者氏名</nobr></td>
+		            <td class="comTableTitle" id="12" style="min-width:60pt;"><nobr>承認者所属</nobr></td>
+		            <td class="comTableTitle" id="13" style="min-width:50pt;"><nobr>承認者氏名</nobr></td>
+		            <td class="comTableTitle" id="14" style="min-width:60pt;"><nobr>申請チャネル</nobr></td>
+		            <td class="comTableTitle" id="15" style="min-width:80pt;">
 		            	<nobr>申請ID</nobr>
 		            	<a  href="" onclick="jimSort(2);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
@@ -1036,28 +1036,28 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 			            </td>
 			            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>医師固定C</nobr></td>
 			            <td class="comTableTitle" id="left3" style="width:146pt;"><nobr>氏名（漢字）</nobr></td>
-			        　　　　　　　 <td class="comTableTitle" style="width:146pt;"><nobr>申請区分</nobr></td>
+			        　　　　　　　 <td class="comTableTitle" style="min-width:80pt;"><nobr>申請区分</nobr></td>
 
-			            <td class="comTableTitle" style="width:146pt;"><nobr>勤務先_施設</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>勤務形態</nobr></td>
-						<td class="comTableTitle" style="width:146pt;"><nobr>所属部科</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>役職</nobr></td>
-			           　　　　　　<td class="comTableTitle" style="width:146pt;"><nobr>大学職位</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>薬審メンバー区分</nobr></td>
+			            <td class="comTableTitle" style="min-width:80pt;"><nobr>勤務先_施設</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>勤務形態</nobr></td>
+						<td class="comTableTitle" style="min-width:60pt;"><nobr>所属部科</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>役職</nobr></td>
+			           　　　　　　<td class="comTableTitle" style="min-width:60pt;"><nobr>大学職位</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>薬審メンバー区分</nobr></td>
 
-			            <td class="comTableTitle" style="width:146pt;"><nobr>勤務先_施設</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>勤務形態</nobr></td>
-						<td class="comTableTitle" style="width:146pt;"><nobr>所属部科</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>役職</nobr></td>
-			           　　　　　　<td class="comTableTitle" style="width:146pt;"><nobr>大学職位</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>薬審メンバー区分</nobr></td>
+			            <td class="comTableTitle" style="min-width:80pt;"><nobr>勤務先_施設</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>勤務形態</nobr></td>
+						<td class="comTableTitle" style="min-width:60pt;"><nobr>所属部科</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>役職</nobr></td>
+			           　　　　　　<td class="comTableTitle" style="min-width:60pt;"><nobr>大学職位</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>薬審メンバー区分</nobr></td>
 
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請者所属</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請者氏名</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>承認者所属</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>承認者氏名</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請チャネル</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請ID</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>申請者所属</nobr></td>
+			            <td class="comTableTitle" style="min-width:50pt;"><nobr>申請者氏名</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>承認者所属</nobr></td>
+			            <td class="comTableTitle" style="min-width:50pt;"><nobr>承認者氏名</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>申請チャネル</nobr></td>
+			            <td class="comTableTitle" style="min-width:80pt;"><nobr>申請ID</nobr></td>
 			        </tr>
 			        <s:iterator value="hcpUpdHstDataList" status="status" var="rowBean">
 				        <tr>
@@ -1329,26 +1329,26 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
                                 <a class="<%=docKanaDescClass %>" href="" onclick="jimSort(1);return false;">▼</a>
 			            </td>
 			            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>医師固定C</nobr></td>
-			            <td class="comTableTitle" id="left3" style="width:146pt;"><nobr>氏名（漢字）</nobr></td>
-			        　　　　　　　 <td class="comTableTitle" style="width:146pt;"><nobr>所属学会名称</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>入会年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>脱会年月日</nobr></td>
-						<td class="comTableTitle" style="width:146pt;"><nobr>所属役職</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>役職開始年月日</nobr></td>
-			           　　　　　　<td class="comTableTitle" style="width:146pt;"><nobr>役職終了年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>指導医取得年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>指導医開始年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>指導医終了年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>認定医開始年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>認定医終了年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>所属学会指導医区分</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>所属学会認定医区分</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請者所属</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請者氏名</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>承認者所属</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>承認者氏名</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請チャネル</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;">
+			            <td class="comTableTitle" id="left3" style="min-width:80pt;"><nobr>氏名（漢字）</nobr></td>
+			        　　　　　　　 <td class="comTableTitle" style="min-width:60pt;"><nobr>所属学会名称</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>入会年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>脱会年月日</nobr></td>
+						<td class="comTableTitle" style="min-width:60pt;"><nobr>所属役職</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>役職開始年月日</nobr></td>
+			           　　　　　　<td class="comTableTitle" style="min-width:60pt;"><nobr>役職終了年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>指導医取得年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>指導医開始年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>指導医終了年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>認定医開始年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>認定医終了年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>所属学会指導医区分</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>所属学会認定医区分</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>申請者所属</nobr></td>
+			            <td class="comTableTitle" style="min-width:50pt;"><nobr>申請者氏名</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>承認者所属</nobr></td>
+			            <td class="comTableTitle" style="min-width:50pt;"><nobr>承認者氏名</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>申請チャネル</nobr></td>
+			            <td class="comTableTitle" style="min-width:80pt;">
 			            	<nobr>申請ID</nobr>
 			            	<a class="<%=docKanjAscClass %>" href="" onclick="jimSort(2);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
@@ -1672,20 +1672,20 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
                                 <a class="<%=docKanaDescClass %>" href="" onclick="jimSort(1);return false;">▼</a>
 			            </td>
 			            <td class="comTableTitle" id="left2" style="width:146pt;"><nobr>医師固定C</nobr></td>
-			            <td class="comTableTitle" id="left3" style="width:146pt;"><nobr>氏名（漢字）</nobr></td>
-			        　　　　　　　 <td class="comTableTitle" style="width:146pt;"><nobr>分類区分</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>公的機関</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>公的機関開始年月日</nobr></td>
-						<td class="comTableTitle" style="width:146pt;"><nobr>公的機関終了年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>公的機関役職</nobr></td>
-			           　　　　　　<td class="comTableTitle" style="width:146pt;"><nobr>公的機関役職開始年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>公的機関役職終了年月日</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請者所属</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請者氏名</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>承認者所属</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>承認者氏名</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;"><nobr>申請チャネル</nobr></td>
-			            <td class="comTableTitle" style="width:146pt;">
+			            <td class="comTableTitle" id="left3" style="min-width:80pt;"><nobr>氏名（漢字）</nobr></td>
+			        　　　　　　　 <td class="comTableTitle" style="min-width:60pt;"><nobr>分類区分</nobr></td>
+			            <td class="comTableTitle" style="min-width:120pt;"><nobr>公的機関</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>公的機関開始年月日</nobr></td>
+						<td class="comTableTitle" style="min-width:60pt;"><nobr>公的機関終了年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>公的機関役職</nobr></td>
+			           　　　　　　<td class="comTableTitle" style="min-width:60pt;"><nobr>公的機関役職開始年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>公的機関役職終了年月日</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>申請者所属</nobr></td>
+			            <td class="comTableTitle" style="min-width:50pt;"><nobr>申請者氏名</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>承認者所属</nobr></td>
+			            <td class="comTableTitle" style="min-width:50pt;"><nobr>承認者氏名</nobr></td>
+			            <td class="comTableTitle" style="min-width:60pt;"><nobr>申請チャネル</nobr></td>
+			            <td class="comTableTitle" style="min-width:80pt;">
 			            	<nobr>申請ID</nobr>
 			            	<a class="<%=docKanjAscClass %>" href="" onclick="jimSort(2);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>

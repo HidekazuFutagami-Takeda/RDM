@@ -122,7 +122,8 @@
 	  	fm1.functionId.value="Init";
 	  	comSubmitForAnyWarp(fm1);
 	  	comClickFlgInit();
-
+  	  	// 新規作成ボタン非活性にする
+  	  	document.getElementById("newButton").disabled = true;
 	}
  // 下記は他ポップアップとの制御のためND001.jsに移動_20250403
 //  // 担当者選択ボタン
@@ -594,11 +595,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td class="comTableSearchItem" style="width:50pt;" colspan=3><p>※項目は、武田情報とアルトマーク情報を同時検索します。</p></td>
               <td colspan="2">
               <s:if test='pageFlag == "1" '>
-                <input type="button" name="search" value="新規作成" onclick="" disabled>&nbsp;※新規作成の前に検索してください
+                <input type="button" id="newButton" name="newButton" value="新規作成" onclick="" disabled>&nbsp;※新規作成の前に検索してください
                 <%--<input type="hidden"> --%>
               </s:if>
               <s:else>
-                <input type="button" name="search" value="新規作成" onclick="newBtn();">&nbsp;※新規作成の前に検索してください
+                <input type="button" id="newButton" name="newButton" value="新規作成" onclick="newBtn();">&nbsp;※新規作成の前に検索してください
               </s:else>
               </td>
               <td class="comTableSearchItem" style="width:50pt;"></td>

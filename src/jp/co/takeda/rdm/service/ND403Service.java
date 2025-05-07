@@ -285,7 +285,7 @@ public class ND403Service extends BaseService {
         	}
     		tRdmReqKnrInsData.setReqKngKbn("2");
 
-    		tRdmReqKnrInsData.setReqType("21");
+    		tRdmReqKnrInsData.setReqType("51");
 
     		// 申請
     		tRdmReqKnrInsData.setReqStsCd("03");

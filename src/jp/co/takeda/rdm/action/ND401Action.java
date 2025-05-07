@@ -140,11 +140,9 @@ public class ND401Action extends BaseAction<ND401DTO> {
         searchSetup();
         // F層呼び出し
         BaseDTO outdto = nD401Service.search(dto);
-//        if (outdto instanceof ND001DTO) {
-            // START UOC
+    	String title = "ND401_医師勤務先情報一括更新";
 
-            // END UOC
-//        }
+		dto.setTitle(title);
         return searchNext(outdto);
     }
 

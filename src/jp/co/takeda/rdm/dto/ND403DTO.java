@@ -57,6 +57,12 @@ public class ND403DTO extends BaseDTO implements Serializable {
      */
     private String jokenSetCd;
 
+    /**
+	 * ユーザ権限
+	 * @generated
+	 */
+	private String loginJokenSetCd;
+
 	/**
      * MR権限/管理者権限判定
      */
@@ -103,10 +109,22 @@ public class ND403DTO extends BaseDTO implements Serializable {
     private String kensakuDeptCode;
 
     /**
+     * 検索条件_所属部科名
+     * @generated
+     */
+    private String kensakuDeptKj;
+
+    /**
      * 検索条件_組織コード
      * @generated
      */
     private String kensakuSosCd;
+
+    /**
+     * 検索条件_組織名
+     * @generated
+     */
+    private String kensakuSosName;
 
     /**
      * 検索条件_医薬支店C
@@ -126,6 +144,11 @@ public class ND403DTO extends BaseDTO implements Serializable {
      */
     private String kensakuJgiNo;
 
+    /**
+     * 検索条件_担当者名
+     * @generated
+     */
+    private String kensakuJgiName;
 
 	/**
      * 申請フラグ
@@ -606,6 +629,21 @@ public class ND403DTO extends BaseDTO implements Serializable {
 	 */
 	public void setJokenSetCd(String jokenSetCd) {
 		this.jokenSetCd = jokenSetCd;
+	}
+
+	/**
+	 * ND403DTO.javaloginJokenSetCdを設定
+	 * @return loginJokenSetCd
+	 */
+	public String getLoginJokenSetCd() {
+		return loginJokenSetCd;
+	}
+
+	/**
+	 * @param loginJokenSetCd セットする loginJokenSetCd
+	 */
+	public void setLoginJokenSetCd(String loginJokenSetCd) {
+		this.loginJokenSetCd = loginJokenSetCd;
 	}
 
 	/**
@@ -1848,6 +1886,21 @@ public class ND403DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * ND403DTO.javakensakuDeptKjを設定
+	 * @return kensakuDeptKj
+	 */
+	public String getKensakuDeptKj() {
+		return kensakuDeptKj;
+	}
+
+	/**
+	 * @param kensakuDeptKj セットする kensakuDeptKj
+	 */
+	public void setKensakuDeptKj(String kensakuDeptKj) {
+		this.kensakuDeptKj = kensakuDeptKj;
+	}
+
+	/**
 	 * ND403DTO.javakensakuSosCdを設定
 	 * @return kensakuSosCd
 	 */
@@ -1860,6 +1913,21 @@ public class ND403DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuSosCd(String kensakuSosCd) {
 		this.kensakuSosCd = kensakuSosCd;
+	}
+
+	/**
+	 * ND403DTO.javakensakuSosNameを設定
+	 * @return kensakuSosName
+	 */
+	public String getKensakuSosName() {
+		return kensakuSosName;
+	}
+
+	/**
+	 * @param kensakuSosName セットする kensakuSosName
+	 */
+	public void setKensakuSosName(String kensakuSosName) {
+		this.kensakuSosName = kensakuSosName;
 	}
 
 	/**
@@ -1905,6 +1973,21 @@ public class ND403DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuJgiNo(String kensakuJgiNo) {
 		this.kensakuJgiNo = kensakuJgiNo;
+	}
+
+	/**
+	 * ND403DTO.javakensakuJgiNameを設定
+	 * @return kensakuJgiName
+	 */
+	public String getKensakuJgiName() {
+		return kensakuJgiName;
+	}
+
+	/**
+	 * @param kensakuJgiName セットする kensakuJgiName
+	 */
+	public void setKensakuJgiName(String kensakuJgiName) {
+		this.kensakuJgiName = kensakuJgiName;
 	}
 
 	/**

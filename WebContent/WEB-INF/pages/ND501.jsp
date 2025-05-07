@@ -253,8 +253,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
       <s:hidden name="mrDistCode" />
       <s:hidden name="mrTrtCd" />
 
+      <s:hidden name="kensakuTantouSosCd" />
       <s:hidden name="kensakuTantouDistCode" />
       <s:hidden name="kensakuSTantouBrCode" />
+      <s:hidden name="kensakuShinseiSosCd" />
       <s:hidden name="kensakuShinseiDistCode" />
       <s:hidden name="kensakuShinseiBrCode" />
       <s:hidden name="kensakuJgiNo" />
@@ -418,7 +420,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		<%-- 申請者組織 --%>
 		<td class="pupControlItem"><nobr>申請者組織
 			<s:if test="%{jokenSetCd == 1}">
-				<input id="sosButton1" class="comButton" type="button" value="選択" onclick="tmpCseView()" />
+				<input id="sosButton1" class="comButton" type="button" value="選択" onclick="shinseiSosNamePop();" />
 			</s:if>
 			<s:else>
 				<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
@@ -554,8 +556,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		            <td class="comTableTitle" id="1" style="width:146pt;"><nobr>出身地</nobr></td>
 		            <td class="comTableTitle" id="2" style="width:146pt;"><nobr>出身校</nobr></td>
 		            <td class="comTableTitle" id="3" style="width:146pt;"><nobr>卒年</nobr></td>
-		            <td class="comTableTitle" id="5" style="width:146pt;"><nobr>出身所属コード</nobr></td>
-		            <td class="comTableTitle" id="6" style="width:146pt;"><nobr>出身医局校コード</nobr></td>
+		            <td class="comTableTitle" id="5" style="width:146pt;"><nobr>出身所属</nobr></td>
+		            <td class="comTableTitle" id="6" style="width:146pt;"><nobr>出身医局校</nobr></td>
 		            <td class="comTableTitle" id="7" style="width:146pt;"><nobr>臨床研修年</nobr></td>
 		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>専門臓器県</nobr></td>
 		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>専門詳細</nobr></td>

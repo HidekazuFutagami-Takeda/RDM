@@ -93,9 +93,12 @@ function comSetFormWindowInfo() {
 	comClickFlgInit();
 
 	if(document.fm1.postHoInsType.value == "1" && document.fm1.postInsClass.value == "01"
-			&& document.fm1.inputFlg.value == 1){
+			&& document.fm1.inputFlg.value == 1 && document.fm1.movemedEditFlg.value == "0"){
     	// 大学病院の場合大学職位を活性
     	document.getElementById("postUnivPosCode").disabled = false;
+	}else if(document.fm1.preHoInsType.value == "1" && document.fm1.preInsClass.value == "01"
+			&& document.fm1.inputFlg.value == 1 && document.fm1.movemedEditFlg.value == "1"){
+    		document.getElementById("postUnivPosCode").disabled = false;
     } else {
     	// 大学職位を非活性
     	document.getElementById("postUnivPosCode").disabled = true;

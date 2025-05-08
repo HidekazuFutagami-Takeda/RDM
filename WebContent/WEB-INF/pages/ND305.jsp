@@ -376,12 +376,18 @@
                 		<s:if test='%{reqStsCd == "03"}'>
 	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
 	               		</s:if>
+	               		<s:else>
+	               			<s:hidden name="fbReqFlg"/>
+	               		</s:else>
 	                	<input class="comButton" type="button"name="buttonF3" value="承認" onClick="register('1');return false;" />
 	                </s:if>
 	                <s:else>
 						<s:if test='%{reqStsCd == "03"}'>
 							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
 						</s:if>
+						<s:else>
+	               			<s:hidden name="fbReqFlg"/>
+	               		</s:else>
 	                	<input class="comButton" type="button"name="buttonF3" value="承認" disabled />
 	                </s:else>
                 </s:if>

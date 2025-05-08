@@ -396,12 +396,18 @@
                 		<s:if test='%{reqSts == "03"}'>
 	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
 	               		</s:if>
+	               		<s:else>
+	               			<s:hidden name="fbReqFlg"/>
+	               		</s:else>
 					    <input class="comButton" type="button" name="button3" id="button3" value="承認" onClick="setFuncId(2);"/>
 			    	</s:if>
 			    	<s:elseif test="Nd307RejectFlg == 1 && Nd307RejectActiveFlg == 0">
 						<s:if test='%{reqSts == "03"}'>
 							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
 						</s:if>
+						<s:else>
+	               			<s:hidden name="fbReqFlg"/>
+	               		</s:else>
 						<input class="comButton" type="button" name="button3" id="button3" value="承認" disabled/>
 			    	</s:elseif>
 			    	<s:else>

@@ -79,7 +79,11 @@ public class ND307Service extends BaseService {
 		indto.setTitlePostTitleKj(StringUtils.nvl(indto.getYakushokuCombo().get(indto.getPostTitleCode()), ""));
 		indto.setKmuPostCodeKanj(StringUtils.nvl(indto.getJobFormCombo().get(indto.getPostJobForm()), ""));
 		indto.setYakushinPostCodeKanj(StringUtils.nvl(indto.getDccCombo().get(indto.getPostDcc()), ""));
-		indto.setUnivPostTitleKj(StringUtils.nvl(indto.getDigakuShokuiCombo().get(indto.getPostUnivPosCode()), ""));
+		if(indto.getPostUnivPosCode() != null) {
+			indto.setUnivPostTitleKj(StringUtils.nvl(indto.getDigakuShokuiCombo().get(indto.getPostUnivPosCode()), ""));
+		} else {
+			indto.setUnivPostTitleKj("");
+		}
 		if(!StringUtils.isEmpty(indto.getSelectDay())) {
 			indto.setDispTekiyoYmd(indto.getSelectDay());
 		}

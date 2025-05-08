@@ -497,6 +497,11 @@ public class ND001Service extends BaseService {
 		}
 		if (errChk) {// エラーありなのでメッセージをセットする
 			indto.setMsgStr(msgStr);
+	        //初期表示画面フラグ = 1(初期化)
+	        indto.setPageFlag("1");
+
+	        //ページNO
+	        indto.setPageCntCur(1);
 		}
 		return errChk;
 	}

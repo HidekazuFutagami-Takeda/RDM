@@ -135,6 +135,7 @@
         <result column="INS_CLASS" property="skInsInsClass"/>
         <result column="DEPT_CODE" property="skDeptCd"/>
         <result column="MDB_KBN" property="mdbKbn"/>
+        <result column="GAKUBUSHIKIBETSU_CD" property="gakubushikibetsuCd"/>
     </resultMap>
     <resultMap id="nD011CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND011MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
@@ -951,6 +952,7 @@
 		, HCO.INS_NO AS INS_NO_SK  -- 施設_基本情報.施設固定コード
 		, SJM.DEPT_CODE AS DEPT_CODE  -- 医師_所属部科紐付けマスタ.武田所属部科コード
 		, ULT.MDB_KBN
+		, ULT.GAKUBUSHIKIBETSU_CD
 		FROM
 		T_RDM_M_MDB_HCP_MST ULT -- ULT_MDB個人マスタ
 		LEFT JOIN

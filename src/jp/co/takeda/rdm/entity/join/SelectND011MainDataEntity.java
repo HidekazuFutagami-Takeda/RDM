@@ -393,6 +393,12 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String mdbKbn;
 
+	/**
+	 * 学部識別コード
+	 * @generated
+	 */
+	private String gakubushikibetsuCd;
+
     /**
      * コンストラクタ
      * @generated
@@ -1322,6 +1328,21 @@ public class SelectND011MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setMdbKbn(String mdbKbn) {
 		this.mdbKbn = mdbKbn;
+	}
+
+	/**
+	 * SelectND011MainDataEntity.javagakubushikibetsuCdを設定
+	 * @return gakubushikibetsuCd
+	 */
+	public String getGakubushikibetsuCd() {
+		return gakubushikibetsuCd;
+	}
+
+	/**
+	 * @param gakubushikibetsuCd セットする gakubushikibetsuCd
+	 */
+	public void setGakubushikibetsuCd(String gakubushikibetsuCd) {
+		this.gakubushikibetsuCd = gakubushikibetsuCd;
 	}
 
 	/**

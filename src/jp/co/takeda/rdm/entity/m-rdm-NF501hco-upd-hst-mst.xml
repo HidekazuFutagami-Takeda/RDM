@@ -466,7 +466,7 @@
 			,HCO_UPD_HST.MAIN_INS_NO_UPD_FLG --領域別親子_親施設コード更新フラグ
 	        ,HCO_UPD_HST.MAIN_INS_NM --領域別親子_親施設名
 			,HCO_UPD_HST.MAIN_INS_NM_UPD_FLG --領域別親子_親施設名更新フラグ
-	        ,HCO_UPD_HST.TRT_NM --領域別親子_領域名
+	        ,TRT.TRT_NM || '・' || PRD.HIN_G_NAME AS TRT_NM --領域別親子_領域名
 	        ,HCO_UPD_HST.REQ_DIST_CODE AS REQ_DIST_CODE --申請者所属
 	        ,HCO_UPD_HST.REQ_SHZ --申請者所属
 	        ,HCO_UPD_HST.REQ_JGI_NAME --申請者
@@ -516,7 +516,26 @@
 			 HCO_UPD_HST.TK_CITY_CD = POS_ADDR.TK_CITY_CD --武田市区郡コード
 		AND
 			HCO_UPD_HST.INS_PCODE = POS_ADDR.POST_CODE --追加＿郵便番号
-		<where>
+
+		LEFT JOIN
+ 		M_RDM_COM_CAL_USR CAL -- RDM用カレンダー(オンライン用)
+ 		ON 1=1
+ 		AND CAL.TODAY = '1'
+		LEFT JOIN
+ 		S_RDM_COM_LNK_TRT_PRDGRP_PRD PRD -- 領域別品目グループ品目
+ 		ON 1=1
+ 		AND PRD.TRT_CD = HCO_UPD_HST.TRT_CD
+ 		AND PRD.HIN_G_CD = HCO_UPD_HST.HIN_G_CD
+ 		AND PRD.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+ 		AND PRD.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+ 		LEFT JOIN
+ 		S_RDM_COM_LNK_TRTGRP_TRT TRT -- 領域グループ・領域関連定義
+ 		ON 1=1
+ 		AND TRT.TRT_CD = PRD.TRT_CD
+ 		AND TRT.TEKIYO_START_DATE <![CDATA[<=]]> CAL.CAL_DATE
+ 		AND TRT.TEKIYO_END_DATE <![CDATA[>=]]> CAL.CAL_DATE
+
+ 		WHERE 1=1
 			<if test="kensakuInsKanj != null">
 			AND
 				HCO_UPD_HST.INS_ABBR_NAME LIKE '%' ||#{kensakuInsKanj}|| '%'
@@ -613,7 +632,6 @@
 			AND
 				#{kensakuUpdMstTo}
 			</if>
-		</where>
 			<if test="sortId == 0">
 				ORDER BY
 					HCO_UPD_HST.UPD_SHA_YMD, HCO_UPD_HST.REQ_ID

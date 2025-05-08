@@ -1173,7 +1173,11 @@ public class NF501Service extends BaseService {
                 //検索結果_親施設名
                 dataRecord.setMainInsNm(entity.getMainInsNm());
                 //検索結果_領域名（親子）
-                dataRecord.setTrtNm(entity.getTrtNm());
+                if("・".equals(entity.getTrtNm())) {
+                	dataRecord.setTrtNm("");
+                } else {
+                	dataRecord.setTrtNm(entity.getTrtNm());
+                }
                 //申請者氏名
                 dataRecord.setReqJgiName(entity.getReqJgiName());
                 //承認者氏名

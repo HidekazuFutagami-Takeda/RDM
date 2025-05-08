@@ -151,6 +151,12 @@
      <s:hidden name="loginDistCd"/>
      <s:hidden name="shnFlg"/>
      <s:hidden name="msgId" value="%{msgId}"/>
+<%-- 施設検索ポップアップ用 --%>
+    <s:hidden id="paramSosCd" name="paramSosCd" value="" />
+    <s:hidden id="paramSosName" name="paramSosName" value="" />
+    <s:hidden id="paramSosRank" name="paramSosRank" value="" />
+    <s:hidden id="paramJgiNo" name="paramJgiNo" value="" />
+    <s:hidden id="paramJgiName" name="paramJgiName" value="" />
 
     <%-- 所属部科ポップアップ用パラメータ --%>
     <input type="hidden" name="cdcCheckedCodes" value="" />

@@ -195,6 +195,11 @@ function tmpCseView(){
 
  // パラメータの設定
   document.fm1.backScreenId.value = "NC209";
+  document.fm1.paramSosCd.value = document.fm1.searchSosCd.value;
+  document.fm1.paramSosName.value = document.fm1.searchSosNm.value;
+  document.fm1.paramSosRank.value = document.fm1.searchSosRank.value
+  document.fm1.paramJgiNo.value = document.fm1.searchTantoCd.value;
+  document.fm1.paramJgiName.value = document.fm1.searchTantoNm.value;
   gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
   return(true);
 }

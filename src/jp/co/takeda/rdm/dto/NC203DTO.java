@@ -370,6 +370,36 @@ public class NC203DTO extends BaseDTO implements Serializable {
      */
     private String tkdTrtKbn;
 
+    /**
+     * 親画面の検索条件（組織コード）
+     * @generated
+     */
+    private String paramSosCd;
+
+    /**
+     * 親画面の検索条件（組織名）
+     * @generated
+     */
+    private String paramSosName;
+
+    /**
+     * 親画面の検索条件（組織名）
+     * @generated
+     */
+    private String paramSosRank;
+
+    /**
+     * 親画面の検索条件（担当者コード）
+     * @generated
+     */
+    private String paramJgiNo;
+
+    /**
+     * 親画面の検索条件（担当者名）
+     * @generated
+     */
+    private String paramJgiName;
+
 	/**
 	 * NC203DTO.javapageFlgを設定
 	 * @return pageFlg
@@ -1251,6 +1281,81 @@ public class NC203DTO extends BaseDTO implements Serializable {
 	 */
 	public void setTkdTrtKbn(String tkdTrtKbn) {
 		this.tkdTrtKbn = tkdTrtKbn;
+	}
+
+	/**
+	 * NC203DTO.javaparamSosCdを設定
+	 * @return paramSosCd
+	 */
+	public String getParamSosCd() {
+		return paramSosCd;
+	}
+
+	/**
+	 * @param paramSosCd セットする paramSosCd
+	 */
+	public void setParamSosCd(String paramSosCd) {
+		this.paramSosCd = paramSosCd;
+	}
+
+	/**
+	 * NC203DTO.javaparamSosNameを設定
+	 * @return paramSosName
+	 */
+	public String getParamSosName() {
+		return paramSosName;
+	}
+
+	/**
+	 * @param paramSosName セットする paramSosName
+	 */
+	public void setParamSosName(String paramSosName) {
+		this.paramSosName = paramSosName;
+	}
+
+	/**
+	 * NC203DTO.javaparamSosRankを設定
+	 * @return paramSosRank
+	 */
+	public String getParamSosRank() {
+		return paramSosRank;
+	}
+
+	/**
+	 * @param paramSosRank セットする paramSosRank
+	 */
+	public void setParamSosRank(String paramSosRank) {
+		this.paramSosRank = paramSosRank;
+	}
+
+	/**
+	 * NC203DTO.javaparamJgiNoを設定
+	 * @return paramJgiNo
+	 */
+	public String getParamJgiNo() {
+		return paramJgiNo;
+	}
+
+	/**
+	 * @param paramJgiNo セットする paramJgiNo
+	 */
+	public void setParamJgiNo(String paramJgiNo) {
+		this.paramJgiNo = paramJgiNo;
+	}
+
+	/**
+	 * NC203DTO.javaparamJgiNameを設定
+	 * @return paramJgiName
+	 */
+	public String getParamJgiName() {
+		return paramJgiName;
+	}
+
+	/**
+	 * @param paramJgiName セットする paramJgiName
+	 */
+	public void setParamJgiName(String paramJgiName) {
+		this.paramJgiName = paramJgiName;
 	}
 
 	/**

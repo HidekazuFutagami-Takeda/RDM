@@ -445,6 +445,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
 	<s:hidden id="jgiNo" name="jgiNo"/>
 
+<%-- 施設検索ポップアップ用 --%>
+    <s:hidden id="paramSosCd" name="paramSosCd"/>
+    <s:hidden id="paramSosName" name="paramSosName"/>
+    <s:hidden id="paramSosRank" name="paramSosRank"/>
+    <s:hidden id="paramJgiNo" name="paramJgiNo"/>
+    <s:hidden id="paramJgiName" name="paramJgiName"/>
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>

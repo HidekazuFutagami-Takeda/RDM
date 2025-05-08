@@ -205,6 +205,12 @@ function shnCompBtn(){
 
     <s:form name="fm1" theme="simple" onSubmit="JavaScript:return false;" >
 
+<%-- 施設検索ポップアップ用 --%>
+    <s:hidden id="paramSosCd" name="paramSosCd" value="" />
+    <s:hidden id="paramSosName" name="paramSosName" value="" />
+    <s:hidden id="paramSosRank" name="paramSosRank" value="" />
+    <s:hidden id="paramJgiNo" name="paramJgiNo" value="" />
+    <s:hidden id="paramJgiName" name="paramJgiName" value="" />
           <%-- 所属部科ポップアップ用パラメータ --%>
           <input type="hidden" name="cdcCheckedCodes" value="" />
           <input type="hidden" name="paramInsNo" value="" />

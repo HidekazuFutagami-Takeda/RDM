@@ -65,21 +65,31 @@ public class NC203Service extends BaseService {
          //ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
 
-        outdto = this.list(indto);
-        outdto = this.searchCityName(indto);
-
-     	// MR権限の場合検索条件．組織、検索条件．担当者設定する
-        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
-        	indto.setSosCd(loginInfo.getSosCd());
-        	indto.setSosName(loginInfo.getBumonRyakuName());
-        	indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
-        	indto.setJgiName(loginInfo.getJgiName());
-        	indto.setLoginBrCd(loginInfo.getBrCode());
-        	indto.setLoginDistCd(loginInfo.getDistCode());
-        	indto.setTrtCd(loginInfo.getTrtCd());
+        String backScreenId = indto.getBackScreenId();
+        if(("NC209".equals(backScreenId) || "ND001".equals(backScreenId) )) {//医師検索は画面の組織を引き継ぐ
+        	if(!StringUtils.isEmpty(indto.getParamSosCd())) {
+        		indto.setSosCd(indto.getParamSosCd());
+        		indto.setSosName(indto.getParamSosName());
+        	}
+    		if(!StringUtils.isEmpty(indto.getParamJgiNo())) {
+	    		indto.setJgiNo(indto.getParamJgiNo());
+	    		indto.setJgiName(indto.getParamJgiName());
+    		}
+        } else {
+        	// MR権限の場合検索条件．組織、検索条件．担当者設定する
+        	if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
+        		indto.setSosCd(loginInfo.getSosCd());
+        		indto.setSosName(loginInfo.getBumonRyakuName());
+        		indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        		indto.setJgiName(loginInfo.getJgiName());
+        		indto.setLoginBrCd(loginInfo.getBrCode());
+        		indto.setLoginDistCd(loginInfo.getDistCode());
+        		indto.setTrtCd(loginInfo.getTrtCd());
+        	}
         }
 
-
+        outdto = this.list(indto);
+        outdto = this.searchCityName(indto);
 
       //施設名(漢字)
 //
@@ -620,6 +630,19 @@ public class NC203Service extends BaseService {
 
         //都道府県_組織担当地区情報_生成用エンティティ
         SRdmJkrSosAddrEntiry paramJkrSosAddr = new SRdmJkrSosAddrEntiry();
+        //MRで医師新規登録の勤務先施設、医療機関への異動の異動先施設、医師復活の復活先施設、勤務先追加が親画面の場合
+        //または医師検索で組織が選択されている場合
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) &&
+        		("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId) || "ND103".equals(backScreenId) )
+        ) {
+        	paramJkrSosAddr.setInSosCd(indto.getSosCd());
+        	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        	paramJkrSosAddr.setInSosRank(loginInfo.getBumonRank());
+        }
+        if(("NC209".equals(backScreenId) || "ND001".equals(backScreenId) )) {
+        	paramJkrSosAddr.setInSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
+        	paramJkrSosAddr.setInSosRank(StringUtils.setEmptyToNull(indto.getParamSosRank()));
+        }
         //都道府県_都道府県_組織担当地区情報の帳票一覧を取得する
         List<SRdmJkrSosAddrEntiry> SelectJkrSosAddr = dao.select(paramJkrSosAddr);
         //都道府県_組織担当地区情報データ_取り出す
@@ -646,6 +669,20 @@ public class NC203Service extends BaseService {
 
     	//市区町村_組織担当地区情報_生成用エンティティ
         SRdmJkrSosAddrEntiry paramJkrCityName = new SRdmJkrSosAddrEntiry("");
+        //MRで医師新規登録の勤務先施設、医療機関への異動の異動先施設、医師復活の復活先施設、勤務先追加が親画面の場合
+        //または医師検索で組織が選択されている場合
+        String backScreenId = indto.getBackScreenId();
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) &&
+        		("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId) || "ND103".equals(backScreenId) )
+        ) {
+        	paramJkrCityName.setInSosCd(indto.getSosCd());
+        	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        	paramJkrCityName.setInSosRank(loginInfo.getBumonRank());
+        }
+        if(("NC209".equals(backScreenId) || "ND001".equals(backScreenId) )) {
+        	paramJkrCityName.setInSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
+        	paramJkrCityName.setInSosRank(StringUtils.setEmptyToNull(indto.getParamSosRank()));
+        }
         //市区町村_都道府県_組織担当地区情報の帳票一覧を取得する
         List<SRdmJkrSosAddrEntiry> SelectJkrCityName = dao.select(paramJkrCityName);
         //市区町村_組織担当地区情報データ_取り出す

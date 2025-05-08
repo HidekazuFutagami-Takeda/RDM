@@ -104,7 +104,17 @@ public class SRdmJkrSosAddrEntiry extends BaseEntity implements Serializable {
     private String upFuncId;
     private boolean upFuncIdNullFlag;
 
+	/**
+	 * 検索条件．組織
+	 * @generated
+	 */
+    private String inSosCd;
 
+	/**
+	 * 検索条件．組織ランク
+	 * @generated
+	 */
+    private String inSosRank;
 
 	 /**
      * コンストラクタ
@@ -384,6 +394,36 @@ public class SRdmJkrSosAddrEntiry extends BaseEntity implements Serializable {
 		this.upFuncIdNullFlag = upFuncIdNullFlag;
 	}
 
+
+	/**
+	 * SRdmJkrSosAddrEntiry.javainSosCdを設定
+	 * @return inSosCd
+	 */
+	public String getInSosCd() {
+		return inSosCd;
+	}
+
+	/**
+	 * @param inSosCd セットする inSosCd
+	 */
+	public void setInSosCd(String inSosCd) {
+		this.inSosCd = inSosCd;
+	}
+
+	/**
+	 * SRdmJkrSosAddrEntiry.javainSosRankを設定
+	 * @return inSosRank
+	 */
+	public String getInSosRank() {
+		return inSosRank;
+	}
+
+	/**
+	 * @param inSosRank セットする inSosRank
+	 */
+	public void setInSosRank(String inSosRank) {
+		this.inSosRank = inSosRank;
+	}
 
 	/**
      * このEntityの値を返す

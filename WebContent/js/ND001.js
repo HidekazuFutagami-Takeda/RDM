@@ -307,6 +307,11 @@ function tmpCseView(){
 
  // パラメータの設定
   document.fm1.backScreenId.value = "ND001";
+  document.fm1.paramSosCd.value = document.fm1.sosCd.value;
+  document.fm1.paramSosName.value = document.fm1.bumonSeiName.value;
+  document.fm1.paramSosRank.value = document.fm1.bumonRank.value
+  document.fm1.paramJgiNo.value = document.fm1.jgiNo.value;
+  document.fm1.paramJgiName.value = document.fm1.jgiName.value;
   gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
   return(true);
 }

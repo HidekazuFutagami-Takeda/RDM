@@ -53,25 +53,46 @@
     </select>
 	<select id="selectSRdmJkrSosAddrEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry" resultMap="SRdmJkrSosAddrEntiryResultMap">
 		SELECT DISTINCT
-			ADDR_CODE_PREF,
-			ADDR_NAME_PREF
+			CPA.ADDR_CODE_PREF,
+			CPA.ADDR_NAME_PREF
 		from
-			ORAUSR01.S_RDM_COM_POS_ADDR
+			ORAUSR01.S_RDM_COM_POS_ADDR CPA
+		<if test="inSosCd != null">
+		<if test="inSosRank != null">
+			INNER JOIN
+			M_RDM_ADDR MRA
+			ON 1=1
+			<if test="inSosRank == 2">AND MRA.UP_SOS_CD = #{inSosCd}</if>
+ 			<if test="inSosRank == 3">AND MRA.SOS_CD = #{inSosCd}</if>
+			AND MRA.ADDR_CODE_PREF = CPA.ADDR_CODE_PREF
+		</if>
+		</if>
 		ORDER BY
-			ADDR_CODE_PREF
+			CPA.ADDR_CODE_PREF
     </select>
 
 	<select id="selectSRdmJkrCityNameEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosAddrEntiry" resultMap="SRdmJkrSosAddrEntiryResultMap">
 		SELECT
 			DISTINCT
-			ADDR_CODE_PREF,
-			ADDR_CODE_CITY,
-			ADDR_NAME_PREF,
-			ADDR_NAME_CITY
+			CPA.ADDR_CODE_PREF,
+			CPA.ADDR_CODE_CITY,
+			CPA.ADDR_NAME_PREF,
+			CPA.ADDR_NAME_CITY
 		FROM
-			ORAUSR01.S_RDM_COM_POS_ADDR
+			ORAUSR01.S_RDM_COM_POS_ADDR CPA
+		<if test="inSosCd != null">
+		<if test="inSosRank != null">
+			INNER JOIN
+			M_RDM_ADDR MRA
+			ON 1=1
+			<if test="inSosRank == 2">AND MRA.UP_SOS_CD = #{inSosCd}</if>
+ 			<if test="inSosRank == 3">AND MRA.SOS_CD = #{inSosCd}</if>
+			AND MRA.ADDR_CODE_PREF = CPA.ADDR_CODE_PREF
+			AND MRA.ADDR_CODE_CITY = CPA.ADDR_CODE_CITY
+		</if>
+		</if>
 		ORDER BY
-			ADDR_CODE_PREF ,ADDR_CODE_CITY
+			CPA.ADDR_CODE_PREF ,CPA.ADDR_CODE_CITY
 	</select>
 	<select id="selectAddrCityComboList" parameterType="jp.co.takeda.rdm.entity.join.SRdmJkrSosAddrEntity" resultMap="sRdmJkrSosAddrResultMap">
 		SELECT DISTINCT

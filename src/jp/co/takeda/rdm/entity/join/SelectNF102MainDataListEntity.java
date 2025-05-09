@@ -39,6 +39,18 @@ public class SelectNF102MainDataListEntity extends BaseEntity implements Seriali
     private String inInsNo;
 
     /**
+     * 入力_当期開始日(パラメータ3)
+     * @generated
+     */
+    private String inCurrTermFirstDay;
+
+    /**
+     * 入力_翌期開始日(パラメータ4)
+     * @generated
+     */
+    private String inNextTermFirstDay;
+
+    /**
      * 申請ステータス
      * @generated
      */
@@ -224,6 +236,36 @@ public class SelectNF102MainDataListEntity extends BaseEntity implements Seriali
 	 */
 	public void setInInsNo(String inInsNo) {
 		this.inInsNo = inInsNo;
+	}
+
+	/**
+	 * SelectNF102MainDataListEntity.javainCurrTermFirstDayを設定
+	 * @return inCurrTermFirstDay
+	 */
+	public String getInCurrTermFirstDay() {
+		return inCurrTermFirstDay;
+	}
+
+	/**
+	 * @param inCurrTermFirstDay セットする inCurrTermFirstDay
+	 */
+	public void setInCurrTermFirstDay(String inCurrTermFirstDay) {
+		this.inCurrTermFirstDay = inCurrTermFirstDay;
+	}
+
+	/**
+	 * SelectNF102MainDataListEntity.javainNextTermFirstDayを設定
+	 * @return inNextTermFirstDay
+	 */
+	public String getInNextTermFirstDay() {
+		return inNextTermFirstDay;
+	}
+
+	/**
+	 * @param inNextTermFirstDay セットする inNextTermFirstDay
+	 */
+	public void setInNextTermFirstDay(String inNextTermFirstDay) {
+		this.inNextTermFirstDay = inNextTermFirstDay;
 	}
 
 	/**

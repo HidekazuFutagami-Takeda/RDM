@@ -20,8 +20,10 @@ import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.dto.HcoNxtReqDataList;
 import jp.co.takeda.rdm.dto.NF102DTO;
+import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF102MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectNF102MainDataListEntity;
+import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.StringUtils;
 
 /**
@@ -55,6 +57,29 @@ public class NF102Service extends BaseService {
 			indto.setShisetsuNmRyaku(" ");
 		}
 
+    	// 現在日付を取得
+        Date systemDate = DateUtils.getNowDate();
+        SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMdd");
+        String sysDate = fmtDate.format(systemDate);
+
+        // 当期月初をRDM_COMMON.GET_CURR_TERM_FIRSTDAYから取得する
+        RdmCommonEntity rdmCommonEntity = new RdmCommonEntity("getCurrTermFirstday");
+    	rdmCommonEntity.setInVBatDate(sysDate);
+    	List<RdmCommonEntity> rdmCommonEntityList = dao.select(rdmCommonEntity);
+    	String currTermFirstDay = null;
+    	if(rdmCommonEntityList.size() > 0) {
+    		currTermFirstDay = rdmCommonEntityList.get(0).getCurrTermFirstday() + "000000";
+    	}
+
+		// 翌期月初をRDM_COMMON.GET_NEXT_TERM_FIRSTDAYから取得する
+    	RdmCommonEntity rdmCommonNextEntity = new RdmCommonEntity("getNextTermFirstday");
+    	rdmCommonNextEntity.setInVBatDate(sysDate);
+    	List<RdmCommonEntity> rdmCommonNextEntityList = dao.select(rdmCommonNextEntity);
+    	String nextTermFirstDay = null;
+    	if(rdmCommonNextEntityList.size() > 0) {
+    		nextTermFirstDay = rdmCommonNextEntityList.get(0).getNextTermFirstday() + "000000";
+    	}
+
         // 一覧表示データ
         List<HcoNxtReqDataList> hcoNxtReqDataList = new ArrayList<HcoNxtReqDataList>();
 
@@ -63,6 +88,10 @@ public class NF102Service extends BaseService {
 
   		// 施設固定コード
   		selectNF102MainDataListEntity.setInInsNo(indto.getInsNo());
+
+  		// 取得範囲
+  		selectNF102MainDataListEntity.setInCurrTermFirstDay(currTermFirstDay);
+  		selectNF102MainDataListEntity.setInNextTermFirstDay(nextTermFirstDay);
 
         //ソートIDのセット
   		if(indto.getSortCondition() == null || indto.getSortCondition().isEmpty()) {

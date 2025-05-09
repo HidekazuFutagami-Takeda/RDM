@@ -32,6 +32,12 @@ public class RdmCommonEntity extends BaseEntity implements Serializable {
     private String inVBatDate;
 
     /**
+     * 当期期初日
+     * @generated
+     */
+    private String currTermFirstday;
+
+    /**
      * 翌期期初日
      * @generated
      */
@@ -72,6 +78,21 @@ public class RdmCommonEntity extends BaseEntity implements Serializable {
 	 */
 	public void setInVBatDate(String inVBatDate) {
 		this.inVBatDate = inVBatDate;
+	}
+
+	/**
+	 * RdmCommonEntity.javacurrTermFirstdayを設定
+	 * @return currTermFirstday
+	 */
+	public String getCurrTermFirstday() {
+		return currTermFirstday;
+	}
+
+	/**
+	 * @param currTermFirstday セットする currTermFirstday
+	 */
+	public void setCurrTermFirstday(String currTermFirstday) {
+		this.currTermFirstday = currTermFirstday;
 	}
 
 	/**

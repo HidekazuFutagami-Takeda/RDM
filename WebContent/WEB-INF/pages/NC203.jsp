@@ -385,7 +385,7 @@ if (stack.peek() instanceof NC203DTO) {
   }
 %>
 
-	<div style="max-height:270px;width:800px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<div style="max-height:270px;width:800px;overflow-y:scroll; overflow-x:none; border-width:1px; position: relative; top:0; margin:0 auto;">
 		<table>
 		<tbody>
 			<!-- ヘッダー -->

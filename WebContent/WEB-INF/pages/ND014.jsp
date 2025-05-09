@@ -338,7 +338,7 @@
 	               <s:checkbox name="unknownFlg" tabIndex="-1" onclick="skCheck(this);" /><label for="unknownFlg">勤務先不明</label>
 	            </s:if>
 				<s:else>
-			      &nbsp;
+			      <s:hidden name="unknownFlg"/>
 				</s:else>
                 </nobr>
 	      </td>

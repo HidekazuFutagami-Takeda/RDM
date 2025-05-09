@@ -136,7 +136,7 @@ public class NC208Service extends BaseService {
             }
 
             //施設固定CをDTOに入れる
-            dto.setInsNo("101108002");
+            dto.setInsNo(dto.getInsNoKakusi());
 
             //施設略式漢字名を取り出す
             InsTrtDataList instrt = insTrtDataList.get(0);

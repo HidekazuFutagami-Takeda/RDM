@@ -47,7 +47,7 @@ function nd014Clear( name ) {
  */
 function nd014Register(buttonFlg){
   // 確認メッセージ表示
-	if (buttonFlg == '2' || buttonFlg == '3' || buttonFlg == '4'){
+	if (buttonFlg == '2' || buttonFlg == '4'){
 	  if (confirm(msgContent)){
 	  } else {
 	    return false;

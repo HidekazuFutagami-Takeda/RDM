@@ -70,7 +70,7 @@ function nd012Clear( name ) {
  */
 function nd012Register(buttonFlg){
   // 確認メッセージ表示
-	if (buttonFlg == '2' || buttonFlg == '3' || buttonFlg == '4'){
+	if (buttonFlg == '2' || buttonFlg == '4'){
 	  if (confirm(msgContent)){
 	  } else {
 	    return false;

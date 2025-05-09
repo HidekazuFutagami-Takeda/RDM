@@ -273,6 +273,11 @@ public class SelectCntSelectHcoEntity extends BaseEntity implements Serializable
      */
     private String sosCd;
 
+    /**
+     * 組織ランク
+     * @generated
+     */
+    private String sosRank;
 
     /**
      * コンストラクタ
@@ -926,6 +931,21 @@ public class SelectCntSelectHcoEntity extends BaseEntity implements Serializable
 	 */
 	public void setSosCd(String sosCd) {
 		this.sosCd = sosCd;
+	}
+
+	/**
+	 * SelectCntSelectHcoEntity.javasosRankを設定
+	 * @return sosRank
+	 */
+	public String getSosRank() {
+		return sosRank;
+	}
+
+	/**
+	 * @param sosRank セットする sosRank
+	 */
+	public void setSosRank(String sosRank) {
+		this.sosRank = sosRank;
 	}
 
 	/**

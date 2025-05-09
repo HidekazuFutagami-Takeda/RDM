@@ -532,10 +532,14 @@
  		AND ADDR.ADDR_CODE_PREF = MDB_HCO_MST1.TODOFUKEN_CD
  		AND ADDR.ADDR_CODE_CITY = MDB_HCO_MST1.SHIKUCHOSON_CD
 
- 		<if test="knrFlg == false and sosCd != null">
- 		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
- 		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
- 		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+ 		<if test="sosRank != null and sosCd != null">
+ 		INNER JOIN M_RDM_ADDR MRA
+ 		ON 1=1
+			<if test="sosRank == 2">AND MRA.UP_SOS_CD = #{sosCd}</if>
+ 			<if test="sosRank == 3">AND MRA.SOS_CD = #{sosCd}</if>
+        AND ((HCO_MST.INS_NO IS NOT NULL AND MRA.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF AND MRA.TK_CITY_CD = HCO_MST.TK_CITY_CD)
+              OR
+             (HCO_MST.INS_NO IS NULL AND MRA.ADDR_CODE_PREF = MDB_HCO_MST1.TODOFUKEN_CD AND MRA.ADDR_CODE_CITY = MDB_HCO_MST1.SHIKUCHOSON_CD))
  		</if>
 
  		<where>
@@ -583,9 +587,6 @@
  		</if>
  		<if test="knrFlg == true">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- 		</if>
- 		<if test="knrFlg == false and sosCd != null">
- 			AND ADDR.SOS_CD = #{sosCd}
  		</if>
  		</where>
  		--ソートID NULL OR '0'
@@ -644,10 +645,12 @@
  		AND CODE_MST4.DEL_FLG = '0'
  		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
- 		<if test="knrFlg == false and sosCd != null">
- 		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
- 		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
- 		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+ 		<if test="sosRank != null and sosCd != null">
+ 		INNER JOIN M_RDM_ADDR MRA
+ 		ON 1=1
+			<if test="sosRank == 2">AND MRA.UP_SOS_CD = #{sosCd}</if>
+ 			<if test="sosRank == 3">AND MRA.SOS_CD = #{sosCd}</if>
+        AND (MRA.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF AND MRA.TK_CITY_CD = HCO_MST.TK_CITY_CD)
  		</if>
  		<where>
  		<if test="kensakuHaiinKbnNullFlg == '1' ">
@@ -681,9 +684,6 @@
  		</if>
  		<if test="knrFlg == true">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
- 		</if>
- 		<if test="knrFlg == false and sosCd != null">
- 			AND ADDR.SOS_CD = #{sosCd}
  		</if>
  		</where>
  		--ソートID NULL OR '0'
@@ -823,10 +823,14 @@
  		AND ADDR.ADDR_CODE_PREF = MDB_HCO_MST1.TODOFUKEN_CD
  		AND ADDR.ADDR_CODE_CITY = MDB_HCO_MST1.SHIKUCHOSON_CD
 
- 		<if test="knrFlg == false and sosCd != null">
- 		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
- 		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
- 		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+ 		<if test="sosRank != null and sosCd != null">
+ 		INNER JOIN M_RDM_ADDR MRA
+ 		ON 1=1
+			<if test="sosRank == 2">AND MRA.UP_SOS_CD = #{sosCd}</if>
+ 			<if test="sosRank == 3">AND MRA.SOS_CD = #{sosCd}</if>
+        AND ((HCO_MST.INS_NO IS NOT NULL AND MRA.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF AND MRA.TK_CITY_CD = HCO_MST.TK_CITY_CD)
+              OR
+             (HCO_MST.INS_NO IS NULL AND MRA.ADDR_CODE_PREF = MDB_HCO_MST1.TODOFUKEN_CD AND MRA.ADDR_CODE_CITY = MDB_HCO_MST1.SHIKUCHOSON_CD))
  		</if>
 
  		<where>
@@ -875,9 +879,6 @@
  		<if test="knrFlg == true">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
  		</if>
- 		<if test="knrFlg == false and sosCd != null">
- 			AND ADDR.SOS_CD = #{sosCd}
- 		</if>
  		</where>
  		) SELECT_HCO
      </select>
@@ -914,10 +915,12 @@
  		AND CODE_MST4.DEL_FLG = '0'
  		AND CODE_MST4.VALUE1 = HCO_MST.INS_SBT)
 
- 		<if test="knrFlg == false and sosCd != null">
- 		LEFT JOIN S_RDM_JKR_SOS_ADDR ADDR -- 組織担当地区情報
- 		ON ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
- 		AND ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+ 		<if test="sosRank != null and sosCd != null">
+ 		INNER JOIN M_RDM_ADDR MRA
+ 		ON 1=1
+			<if test="sosRank == 2">AND MRA.UP_SOS_CD = #{sosCd}</if>
+ 			<if test="sosRank == 3">AND MRA.SOS_CD = #{sosCd}</if>
+        AND (MRA.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF AND MRA.TK_CITY_CD = HCO_MST.TK_CITY_CD)
  		</if>
 
  		<where>
@@ -953,9 +956,7 @@
  		<if test="knrFlg == true">
  			<if test="trtCd != null">--AND MR_INS_TRT1.TRT_CD = #{trtCd}</if>
  		</if>
- 		<if test="knrFlg == false and sosCd != null">
- 			AND ADDR.SOS_CD = #{sosCd}
- 		</if>
+
  		</where>
  		) SELECT_HCO
      </select>

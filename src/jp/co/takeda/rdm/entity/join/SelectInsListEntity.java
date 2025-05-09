@@ -325,6 +325,12 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
     private String sosCd;
 
     /**
+     * 組織ランク
+     * @generated
+     */
+    private String sosRank;
+
+    /**
      * 対象区分
      * @generated
      */
@@ -941,6 +947,19 @@ public class SelectInsListEntity extends BaseEntity implements Serializable {
 	 */
 	public void setSosCd(String sosCd) {
 		this.sosCd = sosCd;
+	}
+	/**
+	 * SelectInsListEntity.javasosRankを設定
+	 * @return sosRank
+	 */
+	public String getSosRank() {
+		return sosRank;
+	}
+	/**
+	 * @param sosRank セットする sosRank
+	 */
+	public void setSosRank(String sosRank) {
+		this.sosRank = sosRank;
 	}
 	/**
 	 * SelectInsListEntity.javahoInsTypeを設定

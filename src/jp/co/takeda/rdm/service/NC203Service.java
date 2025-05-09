@@ -152,8 +152,28 @@ public class NC203Service extends BaseService {
     		*/
 
     		selectinsListEntity.setSosCd(loginInfo.getSosCd());
+    		selectinsListEntity.setSosRank(loginInfo.getBumonRank());
     		selectParamSelectHcoEntity.setSosCd(loginInfo.getSosCd());
+        	selectParamSelectHcoEntity.setSosRank(loginInfo.getBumonRank());
     	}
+
+        //MRで医師新規登録の勤務先施設、医療機関への異動の異動先施設、医師復活の復活先施設、勤務先追加が親画面の場合
+        //または医師検索で組織が選択されている場合
+        String backScreenId = indto.getBackScreenId();
+        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) &&
+        		("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId) || "ND103".equals(backScreenId) )
+        ) {
+        	selectinsListEntity.setSosCd(indto.getSosCd());
+        	selectinsListEntity.setSosRank(loginInfo.getBumonRank());
+        	selectParamSelectHcoEntity.setSosCd(indto.getSosCd());
+        	selectParamSelectHcoEntity.setSosRank(loginInfo.getBumonRank());
+        }
+        if(("NC209".equals(backScreenId) || "ND001".equals(backScreenId) )) {
+        	selectinsListEntity.setSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
+        	selectinsListEntity.setSosRank(StringUtils.setEmptyToNull(indto.getParamSosRank()));
+        	selectParamSelectHcoEntity.setSosCd(StringUtils.setEmptyToNull(indto.getSosCd()));
+        	selectParamSelectHcoEntity.setSosRank(StringUtils.setEmptyToNull(indto.getParamSosRank()));
+        }
 
     	//検索条件_施設名（全角）
         if (indto.getInsKanjiSrch().isEmpty()) {
@@ -231,7 +251,7 @@ public class NC203Service extends BaseService {
 
 		//1-4-2 件数取得
         List<SelectCntSelectHcoEntity> selectParamSelectHcoList;
-        String backScreenId = indto.getBackScreenId();
+//        String backScreenId = indto.getBackScreenId();
 
         // 廃院区分
 //        if("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId)

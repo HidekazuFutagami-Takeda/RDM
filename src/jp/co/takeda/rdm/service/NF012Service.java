@@ -2468,11 +2468,11 @@ public class NF012Service extends BaseService {
     			// ホームページアドレス更新日を"yyyy-MM-dd"に変換
     			if(urlYmd != null && urlYmd.length() == 8) {
     				StringBuilder sbUrlYmd = new StringBuilder();
-    				sbUrlYmd.append(mainDataEntity.getInsUrlYmd().substring(0,4));
+    				sbUrlYmd.append(urlYmd.substring(0,4));
     				sbUrlYmd.append("-");
-    				sbUrlYmd.append(mainDataEntity.getInsUrlYmd().substring(4,6));
+    				sbUrlYmd.append(urlYmd.substring(4,6));
     				sbUrlYmd.append("-");
-    				sbUrlYmd.append(mainDataEntity.getInsUrlYmd().substring(6,8));
+    				sbUrlYmd.append(urlYmd.substring(6,8));
     				indto.setInsUrlYmd(sbUrlYmd.toString());
     			}
 

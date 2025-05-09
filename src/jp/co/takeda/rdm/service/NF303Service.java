@@ -622,6 +622,10 @@ public class NF303Service extends BaseService {
 		}
 		indto.setInsPcode(insPcode);
 
+		if(indto.getUnivSubdiv() == null) {
+			indto.setUnivSubdiv("");
+		}
+
 		// 申請ボタン活性フラグ取得
 		indto.setBtnEnableFlg("0");
 		MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();

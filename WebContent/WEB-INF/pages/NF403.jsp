@@ -1219,6 +1219,8 @@
 	 		vacInsTypeBox = document.getElementsByName(vacInsType)[0];
 	 		vacVisitType = "hcoBlkReqDataList["+i+"].nextVacVisitType";
 	 		vacVisitTypeBox = document.getElementsByName(vacVisitType)[0];
+	 		tmpManageCdKey = "hcoBlkReqDataList["+i+"].tmpManageCd";
+	    	tmpManageCd = document.getElementsByName(tmpManageCdKey)[0];
 	 		manageCd = "hcoBlkReqDataList["+i+"].nextManageCd";
 	 		manageCdBox = document.getElementsByName(manageCd)[0];
 

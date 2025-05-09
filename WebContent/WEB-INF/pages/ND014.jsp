@@ -100,7 +100,8 @@
 
 
     function comSetFormWindowInfo(){
-        comSetFormWindowName('ND014');
+        //comSetFormWindowName('ND014');
+        comClickFlgInit();
         if(document.fm1.unknownFlg.checked == true){
             //勤務先不明 ON
             document.fm1.skUnivPosCd.disabled = true;
@@ -335,7 +336,7 @@
 	      <td class="comFormTableItem">
                 <nobr>
                 <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "03" || reqStsCd == "13")}'>
-	               <s:checkbox name="unknownFlg" tabIndex="-1" onclick="skCheck(this);" /><label for="unknownFlg">勤務先不明</label>
+	               <s:checkbox id="unknownFlg" name="unknownFlg" tabIndex="-1" onclick="skCheck(this);" /><label for="unknownFlg">勤務先不明</label>
 	            </s:if>
 				<s:else>
 			      <s:hidden name="unknownFlg"/>

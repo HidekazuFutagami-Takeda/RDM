@@ -225,7 +225,7 @@ public class NF311Service extends BaseService {
         	List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
 
         	if(tRdmReqKnrEntityList.size() > 0) {
-        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         		Date updDate = null;
                 try {
 					updDate = sdFormat.parse(indto.getUpdShaYmd());
@@ -399,7 +399,7 @@ public class NF311Service extends BaseService {
 			List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
 
 			if(tRdmReqKnrEntityList.size() > 0) {
-        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         		Date updDate = null;
                 try {
 					updDate = sdFormat.parse(indto.getUpdShaYmd());

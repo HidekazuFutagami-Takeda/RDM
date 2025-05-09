@@ -472,16 +472,34 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
     private String addrCodePref;
 
     /**
+     * JIS府県名
+     * @generated
+     */
+    private String addrNamePref;
+
+    /**
      * JIS市区町村名
      * @generated
      */
     private String addrCodeCity;
 
     /**
+     * JIS市区町村名
+     * @generated
+     */
+    private String addrNameCity;
+
+    /**
      * 武田市区郡名
      * @generated
      */
     private String tkCityCd;
+
+    /**
+     * 武田市区郡名
+     * @generated
+     */
+    private String tkCityName;
 
     /**
      * 電話番号2
@@ -1558,6 +1576,14 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
 		this.addrCodePref = addrCodePref;
 	}
 
+	public String getAddrNamePref() {
+		return addrNamePref;
+	}
+
+	public void setAddrNamePref(String addrNamePref) {
+		this.addrNamePref = addrNamePref;
+	}
+
 	public String getAddrCodeCity() {
 		return addrCodeCity;
 	}
@@ -1566,12 +1592,28 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
 		this.addrCodeCity = addrCodeCity;
 	}
 
+	public String getAddrNameCity() {
+		return addrNameCity;
+	}
+
+	public void setAddrNameCity(String addrNameCity) {
+		this.addrNameCity = addrNameCity;
+	}
+
 	public String getTkCityCd() {
 		return tkCityCd;
 	}
 
 	public void setTkCityCd(String tkCityCd) {
 		this.tkCityCd = tkCityCd;
+	}
+
+	public String getTkCityName() {
+		return tkCityName;
+	}
+
+	public void setTkCityName(String tkCityName) {
+		this.tkCityName = tkCityName;
 	}
 
 	public String getInsPhone2() {

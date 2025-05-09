@@ -209,7 +209,7 @@ function clearText() {
 function showAll() {
 	document.getElementById('allShow1').style.display = '';
 	document.getElementById('allShow2').style.display = '';
-	document.getElementById('allShow3').style.display = '';
+	//document.getElementById('allShow3').style.display = '';
 	document.getElementById('allShow4').style.display = '';
 	document.getElementById('allShow5').style.display = '';
 	document.getElementById('allShow6').style.display = '';
@@ -244,7 +244,7 @@ function showAll() {
 	while (document.getElementsByName('allShowCont1')[i] != undefined){
 		document.getElementsByName('allShowCont1')[i].style.display = '';
 		document.getElementsByName('allShowCont2')[i].style.display = '';
-		document.getElementsByName('allShowCont3')[i].style.display = '';
+		//document.getElementsByName('allShowCont3')[i].style.display = '';
 		document.getElementsByName('allShowCont4')[i].style.display = '';
 		document.getElementsByName('allShowCont5')[i].style.display = '';
 		document.getElementsByName('allShowCont6')[i].style.display = '';

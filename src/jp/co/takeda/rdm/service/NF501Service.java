@@ -493,10 +493,13 @@ public class NF501Service extends BaseService {
                 dataRecord.setManageCd(manageCd);
                 //JIS府県名
                 dataRecord.setAddrCodePref(entity.getAddrCodePref());
+                dataRecord.setAddrNamePref(entity.getAddrNamePref());
                 //JIS市区町村名
                 dataRecord.setAddrCodeCity(entity.getAddrCodeCity());
+                dataRecord.setAddrNameCity(entity.getAddrNameCity());
                 //武田市区郡名
                 dataRecord.setTkCityCd(entity.getTkCityCd());
+                dataRecord.setTkCityName(entity.getTkCityName());
                 //電話番号2
                 dataRecord.setInsPhone2(entity.getInsPhone2());
                 //FAX番号2

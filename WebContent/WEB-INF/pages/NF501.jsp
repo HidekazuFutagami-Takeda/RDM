@@ -611,7 +611,7 @@
 		            <!-- ここから全画面 -->
 		            <td class="comTableTitle" id="allShow1" style="width:146pt; display: none;"><nobr>ULT施設コード</nobr></td>
 		            <td class="comTableTitle" id="allShow2" style="width:146pt; display: none;"><nobr>ULT施設名称</nobr></td>
-		            <td class="comTableTitle" id="allShow3" style="width:146pt; display: none;"><nobr>施設契約漢字名</nobr></td>
+		            <!-- <td class="comTableTitle" id="allShow3" style="width:146pt; display: none;"><nobr>施設契約漢字名</nobr></td> -->
 		            <td class="comTableTitle" id="allShow4" style="width:146pt; display: none;"><nobr>施設区分</nobr></td>
 		            <td class="comTableTitle" id="allShow5" style="width:146pt; display: none;"><nobr>階級区分</nobr></td>
 		            <td class="comTableTitle" id="allShow6" style="width:146pt; display: none;"><nobr>経営主体</nobr></td>
@@ -859,21 +859,21 @@
 				            </s:else>
 						</td>
 						<!-- 施設契約漢字名 -->
-						<td class="comTableItem" name="allShowCont3" style="display:none;" >
+						<!-- <td class="comTableItem" name="allShowCont3" style="display:none;" >
 							<s:if test="%{#rowBean.insContName == null || #rowBean.insContName == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
-				            <s:else>
+				            <s:else> -->
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insContNameUpdFlg == 1}">
+				            	<!-- <s:if test="%{#rowBean.insContNameUpdFlg == 1}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insContName" style="color:red;"/>
-				            	</s:if>
+				            	</s:if> -->
 				            	<!-- 更新がない場合 -->
-				            	<s:else>
+				            	<!-- <s:else>
 									<s:label key="hcoUpdHstDataList[%{#status.index}].insContName" />
 				            	</s:else>
 				            </s:else>
-						</td>
+						</td> -->
 						<!-- 施設区分 -->
 						<td class="comTableItem" name="allShowCont4" style="display:none;" >
 							<s:if test="%{#rowBean.pharmType == null || #rowBean.pharmType == ''}">
@@ -924,49 +924,49 @@
 						</td>
 						<!--JIS府県名  -->
 						<td class="comTableItem" name="allShowCont7" style="display:none;" >
-							<s:if test="%{#rowBean.addrCodePref == null || #rowBean.addrCodePref == ''}">
+							<s:if test="%{#rowBean.addrNamePref == null || #rowBean.addrNamePref == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.addrCodePrefUpdFlg == 1}">
-				            		<s:label key="hcoUpdHstDataList[%{#status.index}].addrCodePref" style="color:red;"/>
+				            	<s:if test="%{#rowBean.addrNamePrefUpdFlg == 1}">
+				            		<s:label key="hcoUpdHstDataList[%{#status.index}].addrNamePref" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
 				            	<s:else>
-									<s:label key="hcoUpdHstDataList[%{#status.index}].addrCodePref" />
+									<s:label key="hcoUpdHstDataList[%{#status.index}].addrNamePref" />
 				            	</s:else>
 				            </s:else>
 						</td>
 						<!-- JIS市区町村名 -->
 						<td class="comTableItem" name="allShowCont8" style="display:none;" >
-							<s:if test="%{#rowBean.addrCodeCity == null || #rowBean.addrCodeCity == ''}">
+							<s:if test="%{#rowBean.addrNameCity == null || #rowBean.addrNameCity == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.addrCodeCityUpdFlg == 1}">
-				            		<s:label key="hcoUpdHstDataList[%{#status.index}].addrCodeCity" style="color:red;"/>
+				            	<s:if test="%{#rowBean.addrNameCityUpdFlg == 1}">
+				            		<s:label key="hcoUpdHstDataList[%{#status.index}].addrNameCity" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
 				            	<s:else>
-									<s:label key="hcoUpdHstDataList[%{#status.index}].addrCodeCity" />
+									<s:label key="hcoUpdHstDataList[%{#status.index}].addrNameCity" />
 				            	</s:else>
 				            </s:else>
 						</td>
 						<!--武田市区郡名  -->
 						<td class="comTableItem" name="allShowCont9" style="display:none;" >
-							<s:if test="%{#rowBean.tkCityCd == null || #rowBean.tkCityCd == ''}">
+							<s:if test="%{#rowBean.tkCityName == null || #rowBean.tkCityName == ''}">
 				            	<nobr>&nbsp;</nobr>
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.tkCityCdUpdFlg == 1}">
-				            		<s:label key="hcoUpdHstDataList[%{#status.index}].tkCityCd" style="color:red;"/>
+				            	<s:if test="%{#rowBean.tkCityNameUpdFlg == 1}">
+				            		<s:label key="hcoUpdHstDataList[%{#status.index}].tkCityName" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
 				            	<s:else>
-									<s:label key="hcoUpdHstDataList[%{#status.index}].tkCityCd" />
+									<s:label key="hcoUpdHstDataList[%{#status.index}].tkCityName" />
 				            	</s:else>
 				            </s:else>
 						</td>

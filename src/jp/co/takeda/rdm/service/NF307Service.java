@@ -463,9 +463,9 @@ public class NF307Service extends BaseService {
  			tRdmHcoReqInsData.setRstReason(indto.getRstReason());
 			tRdmHcoReqInsData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
 
- 			tRdmHcoReqInsData.setInsShaYmd(sysDate);
+ 			tRdmHcoReqInsData.setInsShaYmd(systemDate);
  			tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
- 			tRdmHcoReqInsData.setUpdShaYmd(sysDate);
+ 			tRdmHcoReqInsData.setUpdShaYmd(systemDate);
  			tRdmHcoReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
  			dao.insertByValue(tRdmHcoReqInsData);
@@ -511,7 +511,7 @@ public class NF307Service extends BaseService {
 			tRdmHcoReqUpdData.setDelKbn(Integer.parseInt(indto.getDelKbn()));
 
  			tRdmHcoReqUpdData.setRstReason(indto.getRstReason());
- 			tRdmHcoReqUpdData.setUpdShaYmd(sysDate);
+ 			tRdmHcoReqUpdData.setUpdShaYmd(systemDate);
  			tRdmHcoReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
  			dao.update(tRdmHcoReqUpdData);

@@ -581,9 +581,9 @@ public class NF213Service extends BaseService {
 	        	tRdmHcoLnkNxtReqInsData.setMainInsNoAf("Z");
 	        	tRdmHcoLnkNxtReqInsData.setMainInsFlgAf("1");
 	        	tRdmHcoLnkNxtReqInsData.setInsSbtAf(null);
-	        	tRdmHcoLnkNxtReqInsData.setInsShaYmd(sysDate);
+	        	tRdmHcoLnkNxtReqInsData.setInsShaYmd(systemDate);
 	        	tRdmHcoLnkNxtReqInsData.setInsShaId(indto.getLoginJgiNo());
-	        	tRdmHcoLnkNxtReqInsData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkNxtReqInsData.setUpdShaYmd(systemDate);
 	        	tRdmHcoLnkNxtReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
 	        	dao.insertByValue(tRdmHcoLnkNxtReqInsData);
@@ -594,7 +594,7 @@ public class NF213Service extends BaseService {
 	        	tRdmHcoLnkNxtReqUpdData.setReqId(reqId);
 	        	tRdmHcoLnkNxtReqUpdData.setMainInsNoAf("Z");
 	        	tRdmHcoLnkNxtReqUpdData.setInsSbtAf(null);
-	        	tRdmHcoLnkNxtReqUpdData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkNxtReqUpdData.setUpdShaYmd(systemDate);
 	        	tRdmHcoLnkNxtReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
 	        	dao.update(tRdmHcoLnkNxtReqUpdData);
@@ -621,9 +621,9 @@ public class NF213Service extends BaseService {
 	        	tRdmHcoLnkReqInsData.setMainInsNoAf("Z");
 	        	tRdmHcoLnkReqInsData.setMainInsFlgAf("1");
 	        	tRdmHcoLnkReqInsData.setInsSbtAf(null);
-	        	tRdmHcoLnkReqInsData.setInsShaYmd(sysDate);
+	        	tRdmHcoLnkReqInsData.setInsShaYmd(systemDate);
 	        	tRdmHcoLnkReqInsData.setInsShaId(indto.getLoginJgiNo());
-	        	tRdmHcoLnkReqInsData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkReqInsData.setUpdShaYmd(systemDate);
 	        	tRdmHcoLnkReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
 	        	dao.insertByValue(tRdmHcoLnkReqInsData);
@@ -638,7 +638,7 @@ public class NF213Service extends BaseService {
 
 	        	tRdmHcoLnkReqUpdData.setMainInsNoAf("Z");
 	        	tRdmHcoLnkReqUpdData.setInsSbtAf(null);
-	        	tRdmHcoLnkReqUpdData.setUpdShaYmd(sysDate);
+	        	tRdmHcoLnkReqUpdData.setUpdShaYmd(systemDate);
 	        	tRdmHcoLnkReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
 	        	dao.update(tRdmHcoLnkReqUpdData);

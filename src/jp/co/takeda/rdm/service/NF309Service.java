@@ -661,9 +661,9 @@ public class NF309Service extends BaseService {
 	        	tRdmHcoNxtReqInsData.setMedBedsTot(getUpdValue(indto.getMedBedsTot(), indto.getNextMedBedsTot()));
         	}
 
-        	tRdmHcoNxtReqInsData.setInsShaYmd(sysDate);
+        	tRdmHcoNxtReqInsData.setInsShaYmd(systemDate);
         	tRdmHcoNxtReqInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmHcoNxtReqInsData.setUpdShaYmd(sysDate);
+        	tRdmHcoNxtReqInsData.setUpdShaYmd(systemDate);
         	tRdmHcoNxtReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.insertByValue(tRdmHcoNxtReqInsData);
@@ -707,7 +707,7 @@ public class NF309Service extends BaseService {
 	        	tRdmHcoNxtReqUpdData.setMedBedsTot(getUpdValue(indto.getMedBedsTot(), indto.getNextMedBedsTot()));
         	}
 
-        	tRdmHcoNxtReqUpdData.setUpdShaYmd(sysDate);
+        	tRdmHcoNxtReqUpdData.setUpdShaYmd(systemDate);
         	tRdmHcoNxtReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.update(tRdmHcoNxtReqUpdData);

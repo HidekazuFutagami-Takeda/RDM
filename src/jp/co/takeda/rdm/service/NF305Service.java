@@ -549,9 +549,9 @@ public class NF305Service extends BaseService {
         		tRdmHcoReqInsData.setDupInsNo(indto.getDupInsNo());
         	}
 
-        	tRdmHcoReqInsData.setInsShaYmd(sysDate);
+        	tRdmHcoReqInsData.setInsShaYmd(systemDate);
         	tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmHcoReqInsData.setUpdShaYmd(sysDate);
+        	tRdmHcoReqInsData.setUpdShaYmd(systemDate);
         	tRdmHcoReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.insertByValue(tRdmHcoReqInsData);
@@ -604,7 +604,7 @@ public class NF305Service extends BaseService {
         		tRdmHcoReqUpdData.setDupInsNo(indto.getDupInsNo());
         	}
 
-        	tRdmHcoReqUpdData.setUpdShaYmd(sysDate);
+        	tRdmHcoReqUpdData.setUpdShaYmd(systemDate);
         	tRdmHcoReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.update(tRdmHcoReqUpdData);

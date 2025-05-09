@@ -77,7 +77,8 @@ public class NC011Service extends BaseService {
         // SimpleDateFormatで日付フォーマット設定
      	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //本日日付データ_取り出す
-     	if("NM001".equals(loginInfo.getPreScreenId())) {
+     	//タブ画面を開いている場合、メニューから遷移した場合、PreScreenIdがNC001にならないため、serchReqTypeのチェックも追加する
+     	if("NM001".equals(loginInfo.getPreScreenId()) && indto.getSerchReqType() != null) {
      		//if(indto.getReqYmdhmsTo().length() == 8) {
 //         	indto.setReqYmdhmsTo(indto.getReqYmdhmsTo().substring(0, 4)+ '-' + indto.getReqYmdhmsTo().substring(4, 6)+ '-' + indto.getReqYmdhmsTo().substring(6, 8));
 //         	indto.setReqYmdhmsFrom(indto.getReqYmdhmsFrom().substring(0, 4)+ '-' + indto.getReqYmdhmsFrom().substring(4, 6)+ '-' + indto.getReqYmdhmsFrom().substring(6, 8));
@@ -86,18 +87,19 @@ public class NC011Service extends BaseService {
 
      		//}
      	}
-     	if(!"NM001".equals(loginInfo.getPreScreenId())) {
-        for (MRdmComCalUsrEntity entity : SelectComCalUsrKako) {
-            //検索結果_本日日付
-            indto.setInreqYmdhmsFrom(sdf.format(entity.getCalDate()));
-            indto.setKnYmdhmsFrom(sdf.format(entity.getCalDate()));
-        }
-        for (MRdmComCalUsrEntity entity : SelectComCalUsrToday) {
-            //検索結果_過去日付
-            indto.setInreqYmdhmsTo(sdf.format(entity.getCalDate()));
-            indto.setKnYmdhmsTo(sdf.format(entity.getCalDate()));
-        }
-    }
+     	//if(!"NM001".equals(loginInfo.getPreScreenId())) {
+     	else {
+	        for (MRdmComCalUsrEntity entity : SelectComCalUsrKako) {
+	            //検索結果_本日日付
+	            indto.setInreqYmdhmsFrom(sdf.format(entity.getCalDate()));
+	            indto.setKnYmdhmsFrom(sdf.format(entity.getCalDate()));
+	        }
+	        for (MRdmComCalUsrEntity entity : SelectComCalUsrToday) {
+	            //検索結果_過去日付
+	            indto.setInreqYmdhmsTo(sdf.format(entity.getCalDate()));
+	            indto.setKnYmdhmsTo(sdf.format(entity.getCalDate()));
+	        }
+	    }
     }
     //ドロップダウンリスト-都道府県
     private void  addrDrop(NC011DTO indto) {
@@ -262,23 +264,24 @@ public class NC011Service extends BaseService {
         mapAddr.put("1","ULT連携");
 
         indto.setJkrSosReqSbtMap(mapAddr);
-        if("NM001".equals(loginInfo.getPreScreenId())) {
-        if(indto.getReqChl().equals("1")) {
-            indto.setReqSbt("0");
-            indto.setReqChl("01");
-        }
-        if(indto.getReqChl().equals("2")) {
-            indto.setReqSbt("0");
-            indto.setReqChl("02");
-        }
-        if(indto.getReqChl().equals("3")) {
-            indto.setReqSbt("1");
-            indto.setReqChl("13");
-        }
-        if(indto.getReqChl().equals("4")) {
-            indto.setReqSbt("1");
-            indto.setReqChl("14");
-        }
+        //タブ画面を開いている場合、メニューから遷移した場合、PreScreenIdがNC001にならないため、serchReqTypeのチェックも追加する
+        if("NM001".equals(loginInfo.getPreScreenId()) && indto.getSerchReqType() != null) {
+	        if(indto.getReqChl().equals("1")) {
+	            indto.setReqSbt("0");
+	            indto.setReqChl("01");
+	        }
+	        if(indto.getReqChl().equals("2")) {
+	            indto.setReqSbt("0");
+	            indto.setReqChl("02");
+	        }
+	        if(indto.getReqChl().equals("3")) {
+	            indto.setReqSbt("1");
+	            indto.setReqChl("13");
+	        }
+	        if(indto.getReqChl().equals("4")) {
+	            indto.setReqSbt("1");
+	            indto.setReqChl("14");
+	        }
         }
         // END UOC
     }
@@ -372,7 +375,8 @@ public class NC011Service extends BaseService {
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
         //indto.setReqId("");
-        if("NM001".equals(indto.getPreScreenId())) {
+        //タブ画面を開いている場合、メニューから遷移した場合、PreScreenIdがNC001にならないため、serchReqTypeのチェックも追加する
+        if("NM001".equals(indto.getPreScreenId()) && indto.getSerchReqType() != null) {
         	outdto = search(indto);
         }
         indto.setReqFlg("0");

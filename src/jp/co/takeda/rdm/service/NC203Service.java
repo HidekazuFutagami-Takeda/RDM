@@ -264,10 +264,11 @@ public class NC203Service extends BaseService {
 
         indto.setPageCnt(selectParamSelectHcoList.get(0).getCntHco());
         indto.setMaxPageCnt(selectParamNc203List.get(0).getValue());
-        indto.initPageInfo(indto.getPageCntCur(), selectParamSelectHcoList.get(0).getCntHco(), selectParamNc203List.get(1).getValue());
         if (checkSearchResults(loginInfo, indto, false)) {
         	return outdto;
         }
+
+        indto.initPageInfo(indto.getPageCntCur(), selectParamSelectHcoList.get(0).getCntHco(), selectParamNc203List.get(1).getValue());
 
         selectinsListEntity.setInOffset(indto.getLineCntStart() - 1);
         selectinsListEntity.setInLimit(selectParamNc203List.get(1).getValue());

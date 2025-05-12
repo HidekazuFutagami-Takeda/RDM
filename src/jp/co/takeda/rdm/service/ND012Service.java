@@ -230,8 +230,24 @@ public class ND012Service extends BaseService {
 				SelectND012MainDataEntity mainDataEntity = mainDataEntityList.get(0);
 				indto.setReqShzNm(StringUtils.nvl(mainDataEntity.getReqShzNm(), ""));
 				indto.setReqStsNm(StringUtils.nvl(mainDataEntity.getReqStsNm(), ""));
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				String strReqYmd = "";
+				if (mainDataEntity.getReqYmdhms() != null && mainDataEntity.getReqYmdhms().length() == 14) {
+					try {
+						Date reqYmd = sdfDateTime.parse(mainDataEntity.getReqYmdhms());
+						strReqYmd = sdfDateTime2.format(reqYmd);
+						indto.setReqYmdhms(strReqYmd);
+					} catch (ParseException e) {
+						e.printStackTrace();
+						indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+					}
+				} else {
+					indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+				}
+
 				indto.setReqJgiName(StringUtils.nvl(mainDataEntity.getReqJgiName(), ""));
-				indto.setReqYmdhms(StringUtils.dispYmdhms(mainDataEntity.getReqYmdhms()));
 				indto.setShnShaName(StringUtils.nvl(mainDataEntity.getShnShaName(), ""));
 				indto.setShnYmdhms(StringUtils.dispYmdhms(mainDataEntity.getShnYmdhms()));
 				indto.setAprShaName(StringUtils.nvl(mainDataEntity.getAprShaName(), ""));
@@ -983,6 +999,10 @@ public class ND012Service extends BaseService {
 				updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+
+				SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+		        String sysDateTime = fmtDateTime.format(currentDt);
+				updateEntity1.setReqYmdhms(sysDateTime);//申請日時
 				dao.update(updateEntity1);
 
 				//医師申請管理/////////////////////////////////////////////////////////////////////////
@@ -1464,6 +1484,21 @@ public class ND012Service extends BaseService {
 //					return outdto;
 //				}
 				indto.setUpdShaYmd(strDate);
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				if (sysDateTime != null ) {
+					try {
+						Date reqYmd = sdfDateTime.parse(sysDateTime);
+						String strReqYmd = sdfDateTime2.format(reqYmd);
+						indto.setReqYmdhms(strReqYmd);
+					} catch (ParseException e) {
+						e.printStackTrace();
+						indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+					}
+				} else {
+					indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+				}
 			}else {
 				//　登録
 				// 申請ID発行
@@ -1506,6 +1541,11 @@ public class ND012Service extends BaseService {
 				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity1.setUpdShaYmd(currentDt);//更新日
 				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+
+				SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+		        String sysDateTime = fmtDateTime.format(currentDt);
+
+				insEntity1.setReqYmdhms(sysDateTime);//申請日時
 
 				dao.insertByValue(insEntity1);
 
@@ -1697,6 +1737,21 @@ public class ND012Service extends BaseService {
 				indto.setReqId(reqId);
 				indto.setReqStsCd("01");
 				indto.setReqStsNm("保存済み");
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				if (sysDateTime != null ) {
+					try {
+						Date reqYmd = sdfDateTime.parse(sysDateTime);
+						String strReqYmd = sdfDateTime2.format(reqYmd);
+						indto.setReqYmdhms(strReqYmd);
+					} catch (ParseException e) {
+						e.printStackTrace();
+						indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+					}
+				} else {
+					indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+				}
 			}
 		}
 		//審査ボタン押下の場合

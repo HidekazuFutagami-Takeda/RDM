@@ -989,9 +989,9 @@ public class NC011DTO extends BaseDTO implements Serializable {
 	}
 	/**
 	 * brCodeを設定します。
-	 * @param brCode reqBrCode
+	 * @param brCode BrCode
 	 */
-	public void setReqBrCode(String brCode) {
+	public void setBrCode(String brCode) {
 		this.brCode = brCode;
 	}
 	/**

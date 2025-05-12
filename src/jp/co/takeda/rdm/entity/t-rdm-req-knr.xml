@@ -344,9 +344,7 @@
 	    <if test="reqJgiName != null">
 	    	AND REQ_KNR.REQ_JGI_NAME LIKE  '%' || #{reqJgiName} || '%'
 	    </if>
-	   	<if test="reqShz != null">
-	    	AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
-	    </if><!-- 管理者 -->
+	   	<!-- 管理者 -->
 		</if>
 	    <if test=" insKanjiSrch != null">
 		    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'

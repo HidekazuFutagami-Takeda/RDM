@@ -53,7 +53,7 @@ public class NC204Service extends BaseService {
         // START UOC
     	if(StringUtils.isEmpty(indto.getParamInsNo())) {
     		indto.setInsAbbrName("");
-    		indto.setAllCheck(true);
+    		indto.setAllCheck(true);//初期状態のフラグ管理。ここをoffにすると検索しなくなる？
     	}else {
     		SRdmJkrSosInsAbbrNameEntiry sRdmJkrSosAddrEntiry = new SRdmJkrSosInsAbbrNameEntiry();
     		sRdmJkrSosAddrEntiry.setInsNo(indto.getParamInsNo());
@@ -148,10 +148,8 @@ public class NC204Service extends BaseService {
 
 
         //一覧検索件数取得の検索条件の設定
-       // SelectDeptListEntity paramEntity = new SelectDeptListEntity();
       SelectDeptListEntityRDM paramEntity = new SelectDeptListEntityRDM();
       SelectDeptListEntityRDM paramEntity2 = new SelectDeptListEntityRDM(indto.getSearchInput());
-//      paramEntity.setScreenId("RDMND101");
       paramEntity.setScreenId(indto.getBackScreenId());
 
       //入力_検索文字列  入力バーに入れられた値がnull、""でないかのチェック。
@@ -164,48 +162,37 @@ public class NC204Service extends BaseService {
       }else {
     	  if (indto.getSearchInput().isEmpty()) {
           	indto.setSearchInput(null);
-          }
-          else {
-          	 //漢字変換
-//          	SelectHenkanListEntity kanziHenkan = new SelectHenkanListEntity("漢字変換");
-//        	  kanziHenkan.setSearchHenkan(indto.getSearchInput());
-//              //漢字変換結果を格納
-//              List<SelectHenkanListEntity> selectKnazi = dao.select(kanziHenkan);
-//              for (SelectHenkanListEntity kanzi : selectKnazi) {
-//              	paramEntity.setSearchInput(kanzi.getSearchHenkan());
-//              }
-//          }
-      //paramEntity.setSearchInput(indto.getSearchInput());
-     // paramEntity.setInSearchInput(indto.getSearchInput());
-      	paramEntity2.setSearchInput(indto.getSearchInput());
-      	paramEntity2.setInSearchInput(indto.getSearchInput());
-        SelectDeptListEntityRDM selectCntEntity2 = (SelectDeptListEntityRDM)dao.select(paramEntity2).get(0);
-      	paramEntity.setSearchInput(StringUtils.setEmptyToNull(selectCntEntity2.getSearchInput()));
-      	paramEntity.setInSearchInput(selectCntEntity2.getSearchInput());
-      	//paramEntity=paramEntity2;
+      }else {
+
+    	  //paramEntity.setSearchInput(indto.getSearchInput());
+    	  //paramEntity.setInSearchInput(indto.getSearchInput());
+	      	paramEntity2.setSearchInput(indto.getSearchInput());
+	      	paramEntity2.setInSearchInput(indto.getSearchInput());
+	        SelectDeptListEntityRDM selectCntEntity2 = (SelectDeptListEntityRDM)dao.select(paramEntity2).get(0);
+	      	paramEntity.setSearchInput(StringUtils.setEmptyToNull(selectCntEntity2.getSearchInput()));
+	      	paramEntity.setInSearchInput(selectCntEntity2.getSearchInput());
+	      //paramEntity.setSearchInput(indto.getSearchInput());//この行と1個下の行でで検索用入力文字列を変換前に戻している
+	      //paramEntity.setInSearchInput(indto.getSearchInput());
+	      //paramEntity=paramEntity2;
           }
       }
         //入力_SELECT区分 (パラメータ1)
         paramEntity.setInSelectKbn(0);
         //入力_施設固定コード (パラメータ2)
-        //paramEntity.setInInsNo("004001005");//消化器内科344001289//高血圧004001005
-        //paramEntity.setInsNo("004001005");//消化器内科344001289//高血圧004001005
         paramEntity.setInInsNo(indto.getParamInsNo());
         paramEntity.setInsNo(indto.getParamInsNo());
-        //paramEntity.setInInsNo(indto.getParamInsNo());
         //入力_所属部科名カナ(パラメータ3)
-//        paramEntity.setInDeptKn("TEST");
         //paramEntity.setInDeptKn(StringUtils.setEmptyToNull(AppMethods.zKanaToHKana(indto.getKensakuKana())));
-       //入力_所属部科名漢字 (パラメータ4)
-//        paramEntity.setInDeptKj("TEST");
-       //paramEntity.setInDeptKj(StringUtils.setEmptyToNull(indto.getKensakuKanj()));
-       //入力_全所属部科チェックボックス(パラメータ5)
+        //入力_所属部科名漢字 (パラメータ4)
+        //paramEntity.setInDeptKj(StringUtils.setEmptyToNull(indto.getKensakuKanj()));
+        //入力_全所属部科チェックボックス(パラメータ5)
         paramEntity.setAllCheck(indto.getAllCheck());
-//        if(!StringUtils.isEmpty(paramEntity.getSearchInput())) {
 
-         //画面初期表示時の所属部科一覧を取得する
-      //  SelectDeptListEntity selectCntEntity = (SelectDeptListEntity)dao.select(paramEntity).get(0);
-      //SelectDeptListEntityRDM selectCntEntity = (SelectDeptListEntityRDM)dao.select(paramEntity).get(0);
+
+        //画面初期表示時の所属部科一覧を取得する
+        //SelectDeptListEntity selectCntEntity = (SelectDeptListEntity)dao.select(paramEntity).get(0);
+        //SelectDeptListEntityRDM selectCntEntity = (SelectDeptListEntityRDM)dao.select(paramEntity).get(0);
+
         //ページャー情報設定
         //indto.initPageInfo(indto.getPageCntCur(), selectCntEntity.getRecCnt(), 20);
 
@@ -214,10 +201,6 @@ public class NC204Service extends BaseService {
 		//件数なので必ず1レコード取得される
         indto.setPageCnt(mainCntEntityList.get(0).getRecCnt());
 
-        //最大件数エラーチェック
-        if (checkSearchResults(loginInfo, indto, false)) {
-        	return outdto;
-        }
         //入力_SELECT区分 (パラメータ1)
         paramEntity.setInSelectKbn(1);
         //共通　明細行番号(開始)を生成
@@ -229,6 +212,12 @@ public class NC204Service extends BaseService {
 
             //画面初期表示時の帳票一覧を取得する
         List<SelectDeptListEntityRDM> deptListEntity = dao.select(paramEntity);
+
+        //最大件数エラーチェック
+        if (checkSearchResults(loginInfo, indto, false)) {
+        	indto.setPageFlg(1);
+        	return outdto;
+        }
 
         if(paramEntity.getScreenId().equals("ND011")) {
         	for (SelectDeptListEntityRDM entiry : deptListEntity) {
@@ -260,8 +249,10 @@ public class NC204Service extends BaseService {
 
         		// 所属部科コード
         		dataRecord.setDeptCode(entiry.getDeptCode());
+
         		// 所属部科名カナ
         		dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
+
         		// 所属部科名漢字
         		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
@@ -273,8 +264,10 @@ public class NC204Service extends BaseService {
 
         		// 所属部科コード
         		dataRecord.setDeptCode(entiry.getDeptCode());
+
         		// 所属部科名カナ
         		dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
+
         		// 所属部科名漢字
         		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
@@ -286,8 +279,10 @@ public class NC204Service extends BaseService {
 
         		// 所属部科コード
         		dataRecord.setDeptCode(entiry.getDeptCode());
+
         		// 所属部科名カナ
         		dataRecord.setDeptKn(entiry.getDeptKn()); /*setDeptCode部分を修正している(DeptKn)*/
+
         		// 所属部科名漢字
         		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
 
@@ -344,12 +339,12 @@ public class NC204Service extends BaseService {
         }
 
         indto.setParamInsNo(paramEntity.getInInsNo());
-        //indto.setInsAbbrName("東北大学病院");
+
         //検索された帳票一覧をDTOに設定する
         indto.setCatDeptsComboDataList(catDeptsComboDataList);
         indto.setPageFlg(0);
         // END UOC
-//        }
+
         return outdto;
     }
 

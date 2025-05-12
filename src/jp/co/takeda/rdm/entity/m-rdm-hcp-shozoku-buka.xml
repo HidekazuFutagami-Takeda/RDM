@@ -39,8 +39,8 @@
 	        	HCO_DEPT.INS_NO =  #{insNo}   --(施設固定コードを元画面から入力情報として取得)
 
 	            <if test="searchInput != null">
-	            AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
-	            <!--AND  F_RDM_KJ_HENKAN(HCO_DEPT.DEPT_KJ) LIKE '%' || #{searchInput} || '%'-->
+	           AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
+	            <!-- AND  F_RDM_KJ_HENKAN(HCO_DEPT.DEPT_KJ) LIKE '%' || #{searchInput} || '%'-->
 	            </if>
 	        </where>
 	        <if test="inSelectKbn == 1">
@@ -51,7 +51,7 @@
 	        FROM
 	        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU
 			<if test="searchInput != null">
-			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%' --(検索文字列を本画面から入力で取得)
+			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%'--(検索文字列を本画面から入力で取得)
 			<!--WHERE  F_RDM_KJ_HENKAN(HCP_SHOZOKU.DEPT_KJ) LIKE '%' || #{searchInput} || '%' -->
 			</if>
 	        <if test="inSelectKbn == 1">
@@ -87,7 +87,7 @@
 	        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU
 			<if test="searchInput != null">
 			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%' --(検索文字列を本画面から入力で取得)
-			<!--WHERE  F_RDM_KJ_HENKAN(HCP_SHOZOKU.DEPT_KJ) LIKE '%' || #{searchInput} || '%' -->
+			<!--WHERE  F_RDM_KJ_HENKAN(HCP_SHOZOKU.DEPT_KJ) LIKE '%' || #{searchInput} || '%'-->
 			</if>
 			ORDER BY HCP_SHOZOKU.DEPT_KN ASC  --(五十音順で並び変えるため、DEPT_KJではなくDEPT_KNを使用)
         </if>

@@ -152,40 +152,42 @@
           </s:if>
           <s:else>
              <jsp:include page="common/popPage.jsp" >
-      <jsp:param name="showPagerFlg" value="1" />
-      <jsp:param name="pagerSize" value="300" />
-    </jsp:include>
+			      <jsp:param name="showPagerFlg" value="1" />
+			      <jsp:param name="pagerSize" value="300" />
+    		 </jsp:include>
           </s:else>
-    <table >
-	<tr class="comTableTitle" >
-	<td class="comTableTitle" align="left" style="width:400px; text-align: left;  border:none;">所属部科名</td>
-	</tr>
-</table>
-	<div id="osirase" align="center"  style="background-color:#ffffff; width:417px; height:300px; overflow-y:scroll; border-width:1px; border-style:solid;">
-    <table  align="center" border="0" cellpadding="2" cellspacing="0" style="width:300pt;">
-    <%-- 項目 --%>
+          <s:if test='pageFlg == "1" '>
+          </s:if>
+          <s:else>
+              <table>
+	              <tr class="comTableTitle" >
+	                  <td class="comTableTitle" align="left" style="width:400px; text-align: left;  border:none;">所属部科名</td>
+	              </tr>
+	          </table>
+	          <div id="osirase" align="center"  style="background-color:#ffffff; width:417px; height:300px; overflow-y:scroll; border-width:1px; border-style:solid;">
+              <table  align="center" border="0" cellpadding="2" cellspacing="0" style="width:300pt;">
+              <%-- 項目 --%>
 
-    <%-- 内容 --%>
+              <%-- 内容 --%>
 
-    <s:iterator value="catDeptsComboDataList" status="status" var="rowBean">
-	 <tr>
-		        <td class="comTableItem" style="width:100px; border:none;">
+                  <s:iterator value="catDeptsComboDataList" status="status" var="rowBean">
+	                  <tr>
+		                  <td class="comTableItem" style="width:100px; border:none;">
 
+                	          <input type="button" value="" class="cseJgiSelectButton"
+              			             onclick="dcaReturnRDM('<s:property value="#rowBean.deptCode"/>',
+                                                           '<s:property value="#rowBean.DeptKj" />',
+                                                           '<s:property value="#rowBean.DeptKn"/>');">
 
-                	<input type="button" value="" class="cseJgiSelectButton"
-              			onclick="dcaReturnRDM('<s:property value="#rowBean.deptCode"/>',
-						           		 	　  '<s:property value="#rowBean.DeptKj" />',
-						           		 	  '<s:property value="#rowBean.DeptKn"/>');">
+		  			          <s:hidden name="catDeptsComboDataList[%{#status.index}].deptCode" />
+		  			          <s:label name="catDeptsComboDataList[%{#status.index}].DeptKj"  key="catDeptsComboDataList[%{#status.index}].DeptKj" />
+		  			          <s:hidden name="catDeptsComboDataList[%{#status.index}].DeptKn" />
 
-		  			  <s:hidden name="catDeptsComboDataList[%{#status.index}].deptCode" />
-		  			  <s:label name="catDeptsComboDataList[%{#status.index}].DeptKj"  key="catDeptsComboDataList[%{#status.index}].DeptKj" />
-		  			  <s:hidden name="catDeptsComboDataList[%{#status.index}].DeptKn" />
-
-
-                       </td>
-                </tr>
-    </s:iterator>
-    </table>
+                          </td>
+                      </tr>
+                  </s:iterator>
+              </table>
+          </s:else>
     </div>
 	</CENTER>
 <%-- メイン部 一覧 終了 --%>

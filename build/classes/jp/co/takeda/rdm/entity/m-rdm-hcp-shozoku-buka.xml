@@ -17,8 +17,15 @@
         <result column="DEPT_CODE" property="deptCode"/>
         <result column="DEPT_KJ" property="DeptKj"/>
         <result column="DEPT_KN" property="DeptKn"/>
+        <result column="REC_CNT" property="recCnt"/>
     </resultMap>
     <select id="selectDeptList" parameterType="jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM" resultMap="selectDeptListMap">
+        <if test="inSelectKbn == 0">
+          SELECT /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE') */
+              COUNT(*) AS REC_CNT
+                  FROM
+              (
+        </if>
         SELECT
             HCP_SHOZOKU.DEPT_KJ, HCP_SHOZOKU.DEPT_CODE, HCP_SHOZOKU.DEPT_KN
         <if test= "allCheck == false">  --(全所属部科チェックボックスの有無を確認,0の時チェック無しの処理/施設固定コードを使用する処理を実行)
@@ -32,19 +39,31 @@
 	        	HCO_DEPT.INS_NO =  #{insNo}   --(施設固定コードを元画面から入力情報として取得)
 
 	            <if test="searchInput != null">
-	            AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
+	           AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
+	            <!-- AND  F_RDM_KJ_HENKAN(HCO_DEPT.DEPT_KJ) LIKE '%' || #{searchInput} || '%'-->
 	            </if>
 	        </where>
-	        ORDER BY HCO_DEPT.DEPT_KN ASC
+	        <if test="inSelectKbn == 1">
+		        ORDER BY HCO_DEPT.DEPT_KN ASC
+			</if>
 	    </if>
         <if test = "allCheck == true">　　--(全所属部科チェックボックスの有無を確認,1の時チェック有りの処理/全所属部科取得処理を実行)
 	        FROM
 	        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU
 			<if test="searchInput != null">
-			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%' --(検索文字列を本画面から入力で取得)
+			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%'--(検索文字列を本画面から入力で取得)
+			<!--WHERE  F_RDM_KJ_HENKAN(HCP_SHOZOKU.DEPT_KJ) LIKE '%' || #{searchInput} || '%' -->
 			</if>
-			ORDER BY HCP_SHOZOKU.DEPT_KN ASC  --(五十音順で並び変えるため、DEPT_KJではなくDEPT_KNを使用)
+	        <if test="inSelectKbn == 1">
+				ORDER BY HCP_SHOZOKU.DEPT_KN ASC  --(五十音順で並び変えるため、DEPT_KJではなくDEPT_KNを使用)
+			</if>
         </if>
+                <if test="inSelectKbn == 0">
+          )
+        </if>
+        <if test="inSelectKbn == 1">
+                OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
+       </if>
     </select>
         <select id="selectDeptListCount" parameterType="jp.co.takeda.rdm.entity.join.SelectDeptListEntityRDM" resultMap="selectDeptListResultMap">
         SELECT
@@ -67,7 +86,8 @@
 	        FROM
 	        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU
 			<if test="searchInput != null">
-			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%' --(検索文字列を本画面から入力で取得)
+			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%'  --(検索文字列を本画面から入力で取得)
+			<!--WHERE  F_RDM_KJ_HENKAN(HCP_SHOZOKU.DEPT_KJ) LIKE '%' || #{searchInput} || '%'-->
 			</if>
 			ORDER BY HCP_SHOZOKU.DEPT_KN ASC  --(五十音順で並び変えるため、DEPT_KJではなくDEPT_KNを使用)
         </if>

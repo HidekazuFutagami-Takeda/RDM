@@ -279,204 +279,204 @@
       	  <s:else><!-- max-height:500px; div内スタイルから抜き取って最大幅の上限を撤廃、overflow-y:hiddenで縦スクロールを無効化 -->
               <div id="insTableDataOff" style=" max-height:500px; width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;"onscroll="javascript:jpjOffSyncScrolling()" >
 
-              <table class="siz " id="dataTable" style="margin-top:3pt;margin-bottom:1pt;"border="0" >
+              <table class="siz " id="dataTable" style="margin-top:3pt;margin-bottom:1pt;border-spacing: 0px;"border="0" >
               <thead style="z-index:3;">
               <%-- ヘッダー行 --%>
 				<tr >
 					<td rowspan="4" class="comTableTitle container tkdUlt" id="tkdUlt"width="180px"
-						style="border: none;resize : horizontal;overflow : hidden; font-weight:normal;" id="styles">都道府県
+						style="border-width:1px;border-color:#ffffff; resize : horizontal;overflow : hidden; font-weight:normal;" id="styles">都道府県
 					</td>
 				</tr>
 					<tr><!-- 枠組み　大 -->
 							<td colspan="4" class="comTableTitle container" width="150px"
-							style="border: none;" id="styles">施設新規</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">施設新規</td>
 							<td colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設更新</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">施設更新</td>
 							<td colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設削除</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">施設削除</td>
 							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">領域別親子紐付け<br>(当期)<br>承認待ち</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">領域別親子紐付け<br>(当期)<br>承認待ち</td>
 							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設復活<br><br>承認待ち</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">施設復活<br><br>承認待ち</td>
 							<td colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">医師新規</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">医師新規</td>
 							<td colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">医師削除</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">医師削除</td>
 							<td colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">医師復活</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">医師復活</td>
 							<td colspan="4" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">施設更新来期</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">施設更新来期</td>
 							<td rowspan="2" colspan="2" class="comTableTitle container" width="100px"
-							style="border: none;" id="styles">武田親子紐づけ<br>(来期)<br>承認待ち</td>
+							style="border-width:1px;border-color:#ffffff;" id="styles">武田親子紐づけ<br>(来期)<br>承認待ち</td>
 					</tr>
 						<tr>　<!-- 枠組み　中 -->
 							<td colspan="2" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>承認待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>申請待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>申請待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>承認待ち
 							</td>
 							<td colspan="2" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>承認待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>申請待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>申請待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>承認待ち
 							</td>
 							<td colspan="2" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>承認待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>申請待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>申請待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>ULT承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>ULT承認待ち
 							</td>
 							<td colspan="2" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>承認待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>申請待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>申請待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>ULT承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>ULT承認待ち
 							</td>
 							<td colspan="2" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>承認待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>申請待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>申請待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>承認待ち
 							</td>
 							<td colspan="2" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>承認待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>申請待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>申請待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>承認待ち
 							</td>
 							<td colspan="2" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles"><br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles"><br>承認待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>申請待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>申請待ち
 							</td>
 							<td colspan="1" class="comTableTitle container" width="100px"
-								style="border: none;" id="styles">ULT<br>承認待ち
+								style="border-width:1px;border-color:#ffffff;" id="styles">ULT<br>承認待ち
 							</td>
 
 						</tr>
 						<tr><!-- 枠組み　小 -->
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 						    <td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 						     <td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;">承認者
+								style="border-width:1px;border-color:#ffffff;">承認者
 							</td>
 							<td class="comTableTitleMini container" width="180px"
-								style="border: none;background-Color:#f4d3c4;">MR
+								style="border-width:1px;border-color:#ffffff;background-Color:#f4d3c4;">MR
 							</td>
 						</tr>
 					</thead>

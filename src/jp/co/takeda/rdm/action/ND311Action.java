@@ -244,23 +244,17 @@ public class ND311Action extends BaseAction<ND311DTO> {
 
     		//適用日に当日以前の日付が入っている場合
     		 // 適用日が翌営業日以降ではない場合
-//           if(dto.getTekiyoYmd() != null && !dto.getTekiyoYmd().isEmpty()) {
-//           	// 翌営業日を取得
-//   	        RdmCommonEntity rdmCommonEntity = new RdmCommonEntity("getNextBizday");
-//   	    	rdmCommonEntity.setInVBatDate(sysDate.replace("-", ""));
-//   	    	List<RdmCommonEntity> rdmCommonEntityList = dao.select(rdmCommonEntity);
-//
-//   	    	Integer nextBizDay = Integer.parseInt(rdmCommonEntityList.get(0).getNextBizday());
-//   	    	Integer tekiyoYmd = Integer.parseInt(dto.getTekiyoYmd().replace("-", ""));
-//
-//   	    	if (tekiyoYmd < nextBizDay) {
-//   	    		// 適用日は翌営業日以降を指定してください。
-//   				errMsg += loginInfo.getMsgData(RdmConstantsData.W007) + "\n";
-//   				//適用日は翌営業日以降を指定してください。
-//
-//   	    	}
-//           }
+           if(dto.getFormTekiyoYmd() != null && !dto.getFormTekiyoYmd().isEmpty()) {
+	           	// 翌営業日を取得
+	   	    	Integer nextBizDay = Integer.parseInt(nD311Service.getNextBizday());
+	   	    	Integer tekiyoYmd = Integer.parseInt(dto.getFormTekiyoYmd().replace("-", ""));
 
+	   	    	if (tekiyoYmd < nextBizDay) {
+	   	    		// 適用日は翌営業日以降を指定してください。
+	   	    		errChk = true;
+	   				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W007) + "\n";
+	   	    	}
+           }
 	          //所属部科を指定する場合に施設を指定しているか
 	       	 if (StringUtils.isEmpty(dto.getInsAbbrName())) {
 	       		 if (!StringUtils.isEmpty(dto.getDeptKj())) {

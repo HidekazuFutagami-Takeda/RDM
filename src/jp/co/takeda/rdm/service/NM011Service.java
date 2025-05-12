@@ -337,6 +337,9 @@ public class NM011Service extends BaseService {
         // ページ数(現在:１ページ目から)
         indto.setPageCntCur(1);
         indto.setPageFlag("1");
+
+        // 初期表示は発生日時降順
+        indto.setSortCondition("3");
         if("NM001".equals(indto.getPreScreenId())) {
         	outdto = search(indto);
         }

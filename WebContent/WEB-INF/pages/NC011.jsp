@@ -317,7 +317,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<s:if test='jokenFlg != "1"'>
 								<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit  value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true" cssClass="mediumGray"/>
+			   <nobr>
+			   <input class="comButton" type="button" value="選択" name="選択" onclick="gotoNext('NC201','Init') " disabled="true"/>
 			   </nobr>
 			</td>
 				<td >
@@ -328,7 +329,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<s:if test='jokenFlg == "1"'>
 						<%-- 申請者所属 --%>
 			<td class="pupControlItem"><nobr>&nbsp;申請者所属</nobr><!-- ReqShz,bumonRyakuName -->
-			   <nobr><s:submit value="選択" name="選択" onclick="soshikiPopBtn()"/>
+			   <nobr>
+			   <input class="comButton" type="button" value="選択" name="選択" onclick="soshikiPopBtn()"/>
 			   </nobr>
 			</td>
 				<td>
@@ -376,10 +378,9 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<tr>
 						<%-- 申請日: 操作日-1カ月、操作日 --%>
 				<s:if test='preScreenId == "NM001"'>
+				<td class="pupControlItem"><nobr>&nbsp;申請日</nobr></td>
 				<td>
 					<input type="date" size="20" maxlength="40" name="reqYmdhmsFrom" id="inreqYmdhmsFrom" value="${reqYmdhmsFrom}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>　～
-				</td>
-				<td>
 					<input type="date" size="20" maxlength="40" name="reqYmdhmsTo" id="inreqYmdhmsTo" value="${reqYmdhmsTo}" STYLE="ime-mode:active" pattern="yyyy-MM-dd"/>
 				</td>
 				</s:if>

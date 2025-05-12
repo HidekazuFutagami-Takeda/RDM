@@ -418,7 +418,7 @@ public class NM101Service extends BaseService {
               		// 通知内容
                 	if(entity.getNtyData() != null) {
                 	dataRecord.setNtyData(entity.getNtyData());
-                	indto.setNtyData(entity.getNtyData() +"" +" "+"<br>" + indto.getNtyData2() +"<br>" +" "+"<br>" + indto.getNtyData3()+"<br>" +" "+"<br>" + indto.getNtyData4()  +" "+"<br>" + indto.getNtyData5());
+                	indto.setNtyData(entity.getNtyData() + indto.getNtyData2() + indto.getNtyData3() + indto.getNtyData4() + indto.getNtyData5());
                 	//dataRecord.setNtyData(entity.getNtyData().replace("\\n", "<br>"));
                 	}else {
                 		indto.setNtyData(" ");

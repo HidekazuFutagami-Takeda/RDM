@@ -154,26 +154,22 @@ public class NC204Service extends BaseService {
 
       //入力_検索文字列  入力バーに入れられた値がnull、""でないかのチェック。
       if(indto.getSearchInput() == null) {
-      	paramEntity.setSearchInput(null);
-      	paramEntity.setInSearchInput("");
+      	    paramEntity.setSearchInput(null);
+      	    paramEntity.setInSearchInput("");
       }else if(indto.getSearchInput().equals("")) {
         	paramEntity.setSearchInput(null);
           	paramEntity.setInSearchInput("");
       }else {
     	  if (indto.getSearchInput().isEmpty()) {
           	indto.setSearchInput(null);
-      }else {
-
-    	  //paramEntity.setSearchInput(indto.getSearchInput());
-    	  //paramEntity.setInSearchInput(indto.getSearchInput());
-	      	paramEntity2.setSearchInput(indto.getSearchInput());
-	      	paramEntity2.setInSearchInput(indto.getSearchInput());
-	        SelectDeptListEntityRDM selectCntEntity2 = (SelectDeptListEntityRDM)dao.select(paramEntity2).get(0);
-	      	paramEntity.setSearchInput(StringUtils.setEmptyToNull(selectCntEntity2.getSearchInput()));
-	      	paramEntity.setInSearchInput(selectCntEntity2.getSearchInput());
-	      //paramEntity.setSearchInput(indto.getSearchInput());//この行と1個下の行でで検索用入力文字列を変換前に戻している
-	      //paramEntity.setInSearchInput(indto.getSearchInput());
-	      //paramEntity=paramEntity2;
+          }else {
+    	    paramEntity.setSearchInput(indto.getSearchInput());
+    	    paramEntity.setInSearchInput(indto.getSearchInput());
+          //paramEntity2.setSearchInput(indto.getSearchInput());    //入力文字の変換部
+          //paramEntity2.setInSearchInput(indto.getSearchInput());
+          //SelectDeptListEntityRDM selectCntEntity2 = (SelectDeptListEntityRDM)dao.select(paramEntity2).get(0);
+          //paramEntity.setSearchInput(StringUtils.setEmptyToNull(selectCntEntity2.getSearchInput()));
+          //paramEntity.setInSearchInput(selectCntEntity2.getSearchInput());
           }
       }
         //入力_SELECT区分 (パラメータ1)

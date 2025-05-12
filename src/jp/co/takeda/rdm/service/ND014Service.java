@@ -408,6 +408,7 @@ public class ND014Service extends BaseService {
 				updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				updateEntity1.setReqYmdhms(strDate);//申請日時
 				dao.update(updateEntity1);
 
 				//医師申請管理/////////////////////////////////////////////////////////////////////////
@@ -485,6 +486,17 @@ public class ND014Service extends BaseService {
 				dao.update(updateEntity2);
 
 				indto.setUpdShaYmd(strDate);
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				try {
+					Date reqYmd = sdfDateTime.parse(strDate);
+					String strReqYmd = sdfDateTime2.format(reqYmd);
+					indto.setReqYmdhms(strReqYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+
 			}else {
 				//　登録
 				// 申請ID発行
@@ -528,6 +540,7 @@ public class ND014Service extends BaseService {
 				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity1.setUpdShaYmd(currentDt);//更新日
 				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				insEntity1.setReqYmdhms(strDate);//申請日時
 
 				dao.insertByValue(insEntity1);
 
@@ -568,7 +581,18 @@ public class ND014Service extends BaseService {
 				indto.setReqId(reqId);
 				indto.setReqStsCd("01");
 				indto.setReqStsNm("保存済み");
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				try {
+					Date reqYmd = sdfDateTime.parse(strDate);
+					String strReqYmd = sdfDateTime2.format(reqYmd);
+					indto.setReqYmdhms(strReqYmd);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
+
 		}
 		//審査ボタン押下の場合
 		if ("2".equals(indto.getButtonFlg())) {

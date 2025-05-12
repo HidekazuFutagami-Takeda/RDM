@@ -177,7 +177,7 @@
 			LEFT JOIN
 				ORAUSR01.M_RDM_HCP_YAKUSHOKU HCP_UNIV --医師_役職マスタ 大学職位
 			ON
-				HCP_WORK.TITLE_CODE = HCP_UNIV.TITLE_CODE  --大学職位コード・武田役職コード
+				HCP_WORK.UNIV_POS_CODE = HCP_UNIV.TITLE_CODE  --大学職位コード・武田役職コード
 			AND
 				'1' = HCP_UNIV.UNIV_TITLE_FLG --大学職位利用フラグ
 			AND

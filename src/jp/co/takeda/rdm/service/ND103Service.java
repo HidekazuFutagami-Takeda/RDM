@@ -217,12 +217,14 @@ public class ND103Service extends BaseService {
 
         SelectHcpKmuReqNewEntity paramEntity = new SelectHcpKmuReqNewEntity();
 
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
         //申請IDをセット
         paramEntity.setParamReqId(dto.getParamReqId());
         if (StringUtils.isEmpty(dto.getParamReqId())) {
         	dto.setParamReqId("-");
         	dto.setReqSts("-");
         	dto.setReqYmdhms("-");
+        	dto.setReqShz(loginInfo.getBumonRyakuName());
         }
 
         //医師固定Cをセット

@@ -556,7 +556,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <!-- なにも表示しない -->
       	  </s:if>
       	  <s:else>
-              <div style="max-height:300px;width:1450px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+              <div style="max-height:300px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
               <table class="siz">
               		<thead style="z-index:3;">
               <%-- ヘッダー行 --%>

@@ -29,6 +29,7 @@
 <head>
 	<title>NC208_領域別担当者一覧ポップアップ</title>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
 	<script type="text/javascript" src="js/catDeptsCombo.js"></script>
     <!-- css -->
     <style>

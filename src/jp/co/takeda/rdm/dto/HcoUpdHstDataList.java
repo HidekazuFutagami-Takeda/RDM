@@ -170,16 +170,34 @@ public class HcoUpdHstDataList implements Serializable {
     private String addrCodePref;
 
     /**
+     * JIS府県名
+     * @generated
+     */
+    private String addrNamePref;
+
+    /**
      * JIS市区町村名
      * @generated
      */
     private String addrCodeCity;
 
     /**
+     * JIS市区町村名
+     * @generated
+     */
+    private String addrNameCity;
+
+    /**
      * 武田市区郡名
      * @generated
      */
     private String tkCityCd;
+
+    /**
+     * 武田市区郡名
+     * @generated
+     */
+    private String tkCityName;
 
     /**
      * 電話番号2
@@ -1317,6 +1335,51 @@ public class HcoUpdHstDataList implements Serializable {
 	}
 
 
+
+	/**
+	 * HcoUpdHstDataList.javaaddrNamePrefを設定
+	 * @return addrNamePref
+	 */
+	public String getAddrNamePref() {
+		return addrNamePref;
+	}
+
+	/**
+	 * @param addrNamePref セットする addrNamePref
+	 */
+	public void setAddrNamePref(String addrNamePref) {
+		this.addrNamePref = addrNamePref;
+	}
+
+	/**
+	 * HcoUpdHstDataList.javaaddrNameCityを設定
+	 * @return addrNameCity
+	 */
+	public String getAddrNameCity() {
+		return addrNameCity;
+	}
+
+	/**
+	 * @param addrNameCity セットする addrNameCity
+	 */
+	public void setAddrNameCity(String addrNameCity) {
+		this.addrNameCity = addrNameCity;
+	}
+
+	/**
+	 * HcoUpdHstDataList.javatkCityNameを設定
+	 * @return tkCityName
+	 */
+	public String getTkCityName() {
+		return tkCityName;
+	}
+
+	/**
+	 * @param tkCityName セットする tkCityName
+	 */
+	public void setTkCityName(String tkCityName) {
+		this.tkCityName = tkCityName;
+	}
 
 	public String getInsPhone2() {
 		return insPhone2;

@@ -399,7 +399,7 @@
 			        			<s:if test="%{#rowBean.reqB == 1}">
 			        				<!-- 活性 -->
 			        				<span>
-			        					<a class="comMiniLink" href="#" onclick="errorCheckAction('3', this)" >
+			        					<a class="comMiniLink" href="#" onclick="errorCheckAction('3', this, '<s:property value="#rowBean.insNoKakusi"/>')" >
 			        					<img src="img/button_delete.gif" />
 			        					</a>
 			        					<s:hidden name="hcpWorkData[%{#status.index}].insNoKakusi"/>
@@ -424,7 +424,7 @@
 			        		<s:if test="%{dummyHcoCount >= 2}">
 			        			<s:if test="%{#rowBean.reqA == 1}">
 			        				<span>
-			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this)">
+			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this, '<s:property value="#rowBean.insNoKakusi"/>')">
 			        				<img src="img/button_update.gif">
 			        				</a>
 			        				</span>
@@ -436,7 +436,7 @@
 			        		<s:elseif test="%{kinmuCount == 1 and dummyHcoCount > 0}">
 								<s:if test="%{#rowBean.reqA == 1}">
 			        				<span>
-			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this)">
+			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this, '<s:property value="#rowBean.insNoKakusi"/>')">
 			        				<img src="img/button_update.gif">
 			        				</a>
 			        				</span>
@@ -460,7 +460,7 @@
 		        			<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
 		        			<s:if test="%{#rowBean.reqA == 1}">
 	        					<span>
-	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('5', this)">
+	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('5', this, '<s:property value="#rowBean.insNoKakusi"/>')">
 	        					<img src="img/button_movemed.gif">
 	        					</a>
 	        					</span>
@@ -479,7 +479,7 @@
 	        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->
 	        				<s:if test="%{#rowBean.reqB == 1}">
 	        					<span>
-	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this)">
+	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this, '<s:property value="#rowBean.insNoKakusi"/>')">
 	        					<img src="img/button_moveoutmed.gif">
 	        					</a>
 	        					</span>

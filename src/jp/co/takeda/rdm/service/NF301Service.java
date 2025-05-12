@@ -714,7 +714,7 @@ public class NF301Service extends BaseService {
         	List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
 
         	if(tRdmReqKnrEntityList.size() > 0) {
-        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         		Date updDate = null;
                 try {
 					updDate = sdFormat.parse(indto.getUpdShaYmd());
@@ -986,7 +986,7 @@ public class NF301Service extends BaseService {
 			List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
 
 			if(tRdmReqKnrEntityList.size() > 0) {
-        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         		Date updDate = null;
                 try {
 					updDate = sdFormat.parse(indto.getUpdShaYmd());
@@ -1385,9 +1385,9 @@ public class NF301Service extends BaseService {
         	tRdmHcoReqInsData.setBedcnt05(indto.getBedCnt05());
         	tRdmHcoReqInsData.setBedcnt06(indto.getBedCnt06());
         	tRdmHcoReqInsData.setBedcnt07(indto.getBedCnt07());
-        	tRdmHcoReqInsData.setInsShaYmd(sysDate);
+        	tRdmHcoReqInsData.setInsShaYmd(systemDate);
         	tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmHcoReqInsData.setUpdShaYmd(sysDate);
+        	tRdmHcoReqInsData.setUpdShaYmd(systemDate);
         	tRdmHcoReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.insertByValue(tRdmHcoReqInsData);
@@ -1441,7 +1441,7 @@ public class NF301Service extends BaseService {
         	tRdmHcoReqUpdData.setBedcnt05(indto.getBedCnt05());
         	tRdmHcoReqUpdData.setBedcnt06(indto.getBedCnt06());
         	tRdmHcoReqUpdData.setBedcnt07(indto.getBedCnt07());
-        	tRdmHcoReqUpdData.setUpdShaYmd(sysDate);
+        	tRdmHcoReqUpdData.setUpdShaYmd(systemDate);
         	tRdmHcoReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.update(tRdmHcoReqUpdData);

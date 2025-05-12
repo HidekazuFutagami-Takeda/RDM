@@ -626,7 +626,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	    <td class="comFormTableItem" colSpan="3"><%-- スクロールバー用のテーブルクラスにすること --%>
 
 	<%-- ヘッダー行 --%>
-	<tr class="comTableTitle" style="position: sticky; top:0; left:0;">
+	<tr class="comTableTitle" style="position: sticky; top:0; left:0; z-index:3;">
 		<td style="background-color:#FFFFFF; width:100px;" >&nbsp;</td>
 		<td class="comTableTitleNF001W" style="width:150px">施設略式漢字名
 			 <span style="font-size: 1pt;"> </span>
@@ -652,7 +652,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<td class="comTableTitleNF001W" style="width:90px;">経営主体</td>
 		<td class="comTableTitleNF001W" style="width:70px;">ベッド数</td>
 	</tr>
-	<tr class="comTableTitle" style="position: sticky; top:20; left:0;">
+	<tr class="comTableTitle" style="position: sticky; top:20; left:0; z-index:3;">
 		<td class="comTableTitleNF001Act">アクション</td>
 		<td class="comTableTitleNF001">ULT施設略名
 			 <span style="font-size: 1pt;"> </span>

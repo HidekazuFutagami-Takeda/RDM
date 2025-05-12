@@ -704,6 +704,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
    		var insRank = document.fm1.insRank.value;
    		var regVisType = document.fm1.regVisType.value;
    		var impHosType = document.fm1.impHosType.value;
+   		var univSubdiv = document.fm1.univSubdiv.value;
    		var manageCd = document.fm1.manageCd.value;
 
    		var pharmTypeBox = document.fm1.pharmType;
@@ -807,7 +808,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
        		insRank = "";
        		regVisType = "";
        		impHosType = "";
-       		manageCd = "";
+       		document.fm1.manageCd.value = "";
        		setHoInsType();
 
        		// 担当者選択
@@ -861,8 +862,8 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
        		insRank = "";
        		regVisType = "";
        		impHosType = "";
-       		univSubdiv = "";
-       		manageCd = "";
+       		document.fm1.univSubdiv.value = "";
+       		document.fm1.manageCd.value = "";
        		setHoInsType();
 
     	} else if(changeItem == "3"){

@@ -93,9 +93,12 @@ function comSetFormWindowInfo() {
 	comClickFlgInit();
 
 	if(document.fm1.postHoInsType.value == "1" && document.fm1.postInsClass.value == "01"
-			&& document.fm1.inputFlg.value == 1){
+			&& document.fm1.inputFlg.value == 1 && document.fm1.movemedEditFlg.value == "0"){
     	// 大学病院の場合大学職位を活性
     	document.getElementById("postUnivPosCode").disabled = false;
+	}else if(document.fm1.preHoInsType.value == "1" && document.fm1.preInsClass.value == "01"
+			&& document.fm1.inputFlg.value == 1 && document.fm1.movemedEditFlg.value == "1"){
+    		document.getElementById("postUnivPosCode").disabled = false;
     } else {
     	// 大学職位を非活性
     	document.getElementById("postUnivPosCode").disabled = true;
@@ -202,6 +205,12 @@ function shnCompBtn(){
 
     <s:form name="fm1" theme="simple" onSubmit="JavaScript:return false;" >
 
+<%-- 施設検索ポップアップ用 --%>
+    <s:hidden id="paramSosCd" name="paramSosCd" value="" />
+    <s:hidden id="paramSosName" name="paramSosName" value="" />
+    <s:hidden id="paramSosRank" name="paramSosRank" value="" />
+    <s:hidden id="paramJgiNo" name="paramJgiNo" value="" />
+    <s:hidden id="paramJgiName" name="paramJgiName" value="" />
           <%-- 所属部科ポップアップ用パラメータ --%>
           <input type="hidden" name="cdcCheckedCodes" value="" />
           <input type="hidden" name="paramInsNo" value="" />

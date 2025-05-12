@@ -113,6 +113,13 @@ public class ND501DTO extends BaseDTO implements Serializable {
     private int kensakuJgiNo;
 
     /**
+     * 検索条件_従業員名
+     *
+     * @generated
+     */
+    private String jgiName;
+
+    /**
      * 検索条件_医薬支店C_申請者所属リージョン(管理者)
      * @generated
      */
@@ -137,6 +144,13 @@ public class ND501DTO extends BaseDTO implements Serializable {
     private String kensakuTantouDistCode;
 
     /**
+     * 検索条件_担当者組織名
+     *
+     * @generated
+     */
+    private String sosName;
+
+    /**
      * 検索条件_申請者(管理者)
      * @generated
      */
@@ -147,6 +161,12 @@ public class ND501DTO extends BaseDTO implements Serializable {
      * @generated
      */
     private int mrJgiNo;
+
+    /**
+     * 検索条件_申請者組織
+     * @generated
+     */
+    private String kensakuReqShz;
 
     /**
      * 医薬支店C_申請者所属リージョン(MR)
@@ -486,6 +506,21 @@ public class ND501DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuReqJgiName(String kensakuReqJgiName) {
 		this.kensakuReqJgiName = kensakuReqJgiName;
+	}
+
+	/**
+	 * ND501DTO.javakensakuReqShzを設定
+	 * @return kensakuReqShz
+	 */
+	public String getKensakuReqShz() {
+		return kensakuReqShz;
+	}
+
+	/**
+	 * @param kensakuReqShz セットする kensakuReqShz
+	 */
+	public void setKensakuReqShz(String kensakuReqShz) {
+		this.kensakuReqShz = kensakuReqShz;
 	}
 
 	/**
@@ -976,6 +1011,21 @@ public class ND501DTO extends BaseDTO implements Serializable {
 	}
 
 	/**
+	 * ND501DTO.javajgiNameを設定
+	 * @return jgiName
+	 */
+	public String getJgiName() {
+		return jgiName;
+	}
+
+	/**
+	 * @param jgiName セットする jgiName
+	 */
+	public void setJgiName(String jgiName) {
+		this.jgiName = jgiName;
+	}
+
+	/**
 	 * ND501DTO.javakensakuShinseiBrCodeを設定
 	 * @return kensakuShinseiBrCode
 	 */
@@ -1033,6 +1083,21 @@ public class ND501DTO extends BaseDTO implements Serializable {
 	 */
 	public void setKensakuTantouDistCode(String kensakuTantouDistCode) {
 		this.kensakuTantouDistCode = kensakuTantouDistCode;
+	}
+
+	/**
+	 * ND501DTO.javasosNameを設定
+	 * @return sosName
+	 */
+	public String getSosName() {
+		return sosName;
+	}
+
+	/**
+	 * @param sosName セットする sosName
+	 */
+	public void setSosName(String sosName) {
+		this.sosName = sosName;
 	}
 
 	/**

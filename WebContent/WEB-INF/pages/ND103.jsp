@@ -197,7 +197,6 @@
       <s:hidden name="jgiNo" />
       <s:hidden name="wkCat" />
       <s:hidden name="caseKbn" />
-      <s:hidden name="hoInsType" />
       <s:hidden name="searchInsChg" />
       <s:hidden name="msgId" />
     <div id="cdcCheckedCodesDiv" style="display:none">

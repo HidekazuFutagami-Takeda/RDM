@@ -481,6 +481,8 @@ function jgiNamePopView(w,callBack,winVarName){
   joken[joken.length] = new Array(document.fm1.backScreenId.value);
   jokenName[jokenName.length] = "loginJokenSetCd";
   joken[joken.length] = new Array(document.fm1.loginJokenSetCd.value);
+  jokenName[jokenName.length] = "selectFlgPop";
+  joken[joken.length] = new Array("1");
 
   comPostPopup(w,"NC202Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 
@@ -493,12 +495,11 @@ function jgiNamePopView(w,callBack,winVarName){
 // * 担当者　検索POPUP　コールバック関数。
  * </pre>
  */
-function tmpCallBackJgiNameView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
+function tmpCallBackJgiNameView(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
+		distCode, trtGrpCd, trtNm, mrCat){
 
-    document.fm1.insNoSk.value = insNo;
-    document.fm1.insAbbrName.value = insAbbrName;
-    document.fm1.insClass.value = insClass;
-    document.fm1.hoInsType.value = hoInsType;
+    document.fm1.kensakuJgiNo.value = jgiNo;
+    document.fm1.jgiName.value = jgiName;
 }
 
 /**
@@ -516,6 +517,24 @@ function sosNamePop(){
  // パラメータの設定
   document.fm1.backScreenId.value = "ND501";
   gCseViewWin = sosNamePopView(gCseViewWin,"tmpCallBackSosNameView","gCseViewWin");
+  return(true);
+}
+
+/**
+ * 申請者組織検索POPUP画面を呼び出します。
+ *
+ */
+function shinseiSosNamePop(){
+
+// 2度押し対策
+  if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
+
+  // 全てのポップアップを閉じる
+  hcpClosePopUp(gCseViewWin, "gCseViewWin");
+
+ // パラメータの設定
+  document.fm1.backScreenId.value = "ND501";
+  gCseViewWin = sosNamePopView(gCseViewWin,"tmpCallBackShinseiSosNameView","gCseViewWin");
   return(true);
 }
 
@@ -559,6 +578,8 @@ function sosNamePopView(w,callBack,winVarName){
   joken[joken.length] = new Array(document.fm1.backScreenId.value);
   jokenName[jokenName.length] = "loginJokenSetCd";
   joken[joken.length] = new Array(document.fm1.loginJokenSetCd.value);
+  jokenName[jokenName.length] = "selectFlgPop";
+  joken[joken.length] = new Array("1");
 
   comPostPopup(w,"NC201Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 
@@ -571,15 +592,29 @@ function sosNamePopView(w,callBack,winVarName){
 // * 担当者組織　検索POPUP　コールバック関数。
  * </pre>
  */
-function tmpCallBackSosNameView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
+function tmpCallBackSosNameView(bumonRank, sosCd,
+		  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
 
-    document.fm1.insNoSk.value = insNo;
-    document.fm1.insAbbrName.value = insAbbrName;
-    document.fm1.insClass.value = insClass;
-    document.fm1.hoInsType.value = hoInsType;
+    document.fm1.kensakuTantouSosCd.value = sosCd;
+    document.fm1.insAbbrName.value = bumonSeiName;
+    document.fm1.sosName.value = bumonSeiName;
+    document.fm1.kensakuSTantouBrCode.value = brCode;
+    document.fm1.kensakuTantouDistCode.value = distCode;
 }
 
+/**
+ * <pre>
+// * 申請者組織　検索POPUP　コールバック関数。
+ * </pre>
+ */
+function tmpCallBackShinseiSosNameView(bumonRank, sosCd,
+		  bumonSeiName, brCode, distCode, upSosCode, upBumonRank, upBrCode, upDistCode){
 
+    document.fm1.kensakuShinseiSosCd.value = sosCd;
+    document.fm1.kensakuReqShz.value = bumonSeiName;
+    document.fm1.kensakuShinseiBrCode.value = brCode;
+    document.fm1.kensakuShinseiDistCode.value = distCode;
+}
 
 /**
  * <pre>

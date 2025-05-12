@@ -245,6 +245,17 @@ public class ND001DTO extends BaseDTO implements Serializable {
     private List<HcpData> hcpDataList = new ArrayList<HcpData>();
 
 
+    /*ログインユーザ情報*/
+    private String loginBrCode;
+    private String loginBumonRank;
+    private String loginBumonRyakuName;
+    private String loginDistCode;
+    private String loginJgiName;
+    private String loginJgiNo;
+    private String loginSosCd;
+    private String loginUpSosCode  ;
+
+
 	/**
      * デフォルトのコンストラクタ。
      * @generated
@@ -871,6 +882,126 @@ public class ND001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setDistCode(String distCode) {
 		this.distCode = distCode;
+	}
+
+	/**
+	 * ND001DTO.javaloginBrCodeを設定
+	 * @return loginBrCode
+	 */
+	public String getLoginBrCode() {
+		return loginBrCode;
+	}
+
+	/**
+	 * @param loginBrCode セットする loginBrCode
+	 */
+	public void setLoginBrCode(String loginBrCode) {
+		this.loginBrCode = loginBrCode;
+	}
+
+	/**
+	 * ND001DTO.javaloginBumonRankを設定
+	 * @return loginBumonRank
+	 */
+	public String getLoginBumonRank() {
+		return loginBumonRank;
+	}
+
+	/**
+	 * @param loginBumonRank セットする loginBumonRank
+	 */
+	public void setLoginBumonRank(String loginBumonRank) {
+		this.loginBumonRank = loginBumonRank;
+	}
+
+	/**
+	 * ND001DTO.javaloginBumonRyakuNameを設定
+	 * @return loginBumonRyakuName
+	 */
+	public String getLoginBumonRyakuName() {
+		return loginBumonRyakuName;
+	}
+
+	/**
+	 * @param loginBumonRyakuName セットする loginBumonRyakuName
+	 */
+	public void setLoginBumonRyakuName(String loginBumonRyakuName) {
+		this.loginBumonRyakuName = loginBumonRyakuName;
+	}
+
+	/**
+	 * ND001DTO.javaloginDistCodeを設定
+	 * @return loginDistCode
+	 */
+	public String getLoginDistCode() {
+		return loginDistCode;
+	}
+
+	/**
+	 * @param loginDistCode セットする loginDistCode
+	 */
+	public void setLoginDistCode(String loginDistCode) {
+		this.loginDistCode = loginDistCode;
+	}
+
+	/**
+	 * ND001DTO.javaloginJgiNameを設定
+	 * @return loginJgiName
+	 */
+	public String getLoginJgiName() {
+		return loginJgiName;
+	}
+
+	/**
+	 * @param loginJgiName セットする loginJgiName
+	 */
+	public void setLoginJgiName(String loginJgiName) {
+		this.loginJgiName = loginJgiName;
+	}
+
+	/**
+	 * ND001DTO.javaloginJgiNoを設定
+	 * @return loginJgiNo
+	 */
+	public String getLoginJgiNo() {
+		return loginJgiNo;
+	}
+
+	/**
+	 * @param loginJgiNo セットする loginJgiNo
+	 */
+	public void setLoginJgiNo(String loginJgiNo) {
+		this.loginJgiNo = loginJgiNo;
+	}
+
+	/**
+	 * ND001DTO.javaloginSosCdを設定
+	 * @return loginSosCd
+	 */
+	public String getLoginSosCd() {
+		return loginSosCd;
+	}
+
+	/**
+	 * @param loginSosCd セットする loginSosCd
+	 */
+	public void setLoginSosCd(String loginSosCd) {
+		this.loginSosCd = loginSosCd;
+	}
+
+	/**
+	 * ND001DTO.javaloginUpSosCodeを設定
+	 * @return loginUpSosCode
+	 */
+	public String getLoginUpSosCode() {
+		return loginUpSosCode;
+	}
+
+	/**
+	 * @param loginUpSosCode セットする loginUpSosCode
+	 */
+	public void setLoginUpSosCode(String loginUpSosCode) {
+		this.loginUpSosCode = loginUpSosCode;
 	}
 
 	/**

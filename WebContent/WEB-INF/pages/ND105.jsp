@@ -88,9 +88,9 @@
       if (kbn == '2'){//I014	ステータスを審査済みに変更します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I014.msgData" />';
       }
-      if (kbn == '3'){//I012	申請データを承認します。よろしいですか？
-          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
-      }
+//       if (kbn == '3'){//I012	申請データを承認します。よろしいですか？
+//           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
+//       }
       if (kbn == '4'){//I007	申請データを破棄します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I007.msgData" />';
       }

@@ -48,9 +48,9 @@
 		comClickFlgInit();
 
 		//if(window.confirm(destructMsg.replace("（遷移元）", '医師勤務先情報一括更新'))){
-			// NF211_施設紐付け新規に遷移
+			// ND401_医師勤務先情報一括更新に遷移
 			document.fm1.screenId.value="ND401";
-			document.fm1.functionId.value="Init";
+			document.fm1.functionId.value="Search";
 
 			comSubmitForAnyWarp(fm1);
 	    //}
@@ -272,6 +272,19 @@
       <s:hidden name="clearUpdMstFrom" />
       <s:hidden name="clearUpdMstTo" />
 
+      <s:hidden name="kensakuSosCd" />
+      <s:hidden name="kensakuSosName" />
+      <s:hidden name="kensakuUpSosCd" />
+      <s:hidden name="kensakuBumonRank" />
+      <s:hidden name="kensakuJgiName" />
+      <s:hidden name="kensakuDeptKj" />
+      <s:hidden name="kensakuDeptCode" />
+      <s:hidden name="kensakuInsKanj" />
+      <s:hidden name="kensakuInsNo" />
+      <s:hidden name="kensakuDocKanj" />
+      <s:hidden name="kensakuDocNo" />
+      <s:hidden name="loginJokenSetCd" />
+
 	<s:hidden name="reqBtnFlg" />
       <s:hidden name="deptCodeHenkou" />
       <s:hidden name="deptKnHenkou" />
@@ -339,21 +352,6 @@
 		</script>
 		<center/>
 		<!-- エラー表示部  終了 -->
-		<script>
-		const jgiNameUser = document.getElementById('jgiNameUser');
-		jgiNameUser.disabled = true;
-
-		const sosNameUser = document.getElementById('sosNameUser');
-		sosNameUser.disabled = true;
-
-		const kensakuReqDistUser = document.getElementById('kensakuReqDistUser');
-		kensakuReqDistUser.disabled = true;
-
-		const kensakuReqJgiNameUser = document.getElementById('kensakuReqJgiNameUser');
-		kensakuReqJgiNameUser.disabled = true;
-		</script>
-
-
 
 	    	<div class="kensakuDate">
 	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none; margin-top:3pt;margin-bottom:1pt;">
@@ -564,7 +562,7 @@
 
          <div style="display: flex; justify-content: space-between;">
        		<div style="margin-top: 3%;margin-left: 10%;">
-       			<input type="button" value="戻る" onclick="" />
+       			<input type="button" value="戻る" onclick="backBtn();" />
        		</div>
 
        		<div style="margin-top: 3%;margin-right: 10%;">

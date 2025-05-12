@@ -272,9 +272,9 @@ public class NF405Service extends BaseService {
         	tRdmHcoNxtReqInsData.setBedsTot(getUpdValue(entity.getBedsTot(), entity.getNextBedsTot()));
         	tRdmHcoNxtReqInsData.setMedBedsTot(getUpdValue(entity.getMedBedsTot(), entity.getNextMedBedsTot()));
 
-        	tRdmHcoNxtReqInsData.setInsShaYmd(sysDate);
+        	tRdmHcoNxtReqInsData.setInsShaYmd(systemDate);
         	tRdmHcoNxtReqInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmHcoNxtReqInsData.setUpdShaYmd(sysDate);
+        	tRdmHcoNxtReqInsData.setUpdShaYmd(systemDate);
         	tRdmHcoNxtReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.insertByValue(tRdmHcoNxtReqInsData);

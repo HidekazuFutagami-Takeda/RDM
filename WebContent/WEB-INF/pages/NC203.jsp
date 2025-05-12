@@ -145,6 +145,11 @@ if (stack.peek() instanceof NC203DTO) {
     <s:hidden name="tkdTrtKbn"/>
     <s:hidden name="insSbtEditFlg"/>
     <s:hidden id="tmpAddrCodeCity" name="tmpAddrCodeCity" />
+    <s:hidden id="paramSosCd" name="paramSosCd"/>
+    <s:hidden id="paramSosName" name="paramSosName"/>
+    <s:hidden id="paramSosRank" name="paramSosRank"/>
+    <s:hidden id="paramJgiNo" name="paramJgiNo"/>
+    <s:hidden id="paramJgiName" name="paramJgiName"/>
      <s:url id="searchurl" action="NC203Search"/>
     <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
     <s:url id="sorturl" action="NC203Sort"/>
@@ -380,7 +385,7 @@ if (stack.peek() instanceof NC203DTO) {
   }
 %>
 
-	<div style="max-height:270px;width:800px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<div style="max-height:270px;width:800px;overflow-y:scroll; overflow-x:none; border-width:1px; position: relative; top:0; margin:0 auto;">
 		<table>
 		<tbody>
 			<!-- ヘッダー -->

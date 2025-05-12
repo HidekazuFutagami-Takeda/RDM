@@ -418,6 +418,3 @@ function jimSearch() {
     comSubmitForAnyWarp(fm1);
 
 }
-
-
-

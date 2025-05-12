@@ -25,6 +25,7 @@ import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.ND103DTO;
 import jp.co.takeda.rdm.entity.MRdmHcpYakusyokuEntity;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
+import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
@@ -211,17 +212,19 @@ public class ND103Service extends BaseService {
     public BaseDTO initDoc(ND103DTO dto) {
         BaseDTO outdto = dto;
 
-     // ページ数(現在:１ページ目から)
+        // ページ数(現在:１ページ目から)
         dto.setPageCntCur(1);
 
         SelectHcpKmuReqNewEntity paramEntity = new SelectHcpKmuReqNewEntity();
 
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
         //申請IDをセット
         paramEntity.setParamReqId(dto.getParamReqId());
         if (StringUtils.isEmpty(dto.getParamReqId())) {
         	dto.setParamReqId("-");
         	dto.setReqSts("-");
         	dto.setReqYmdhms("-");
+        	dto.setReqShz(loginInfo.getBumonRyakuName());
         }
 
         //医師固定Cをセット
@@ -236,7 +239,34 @@ public class ND103Service extends BaseService {
         	dto.setUltInsNo(entity.getUltInsNo());
         }
 
-      //プルダウン生成へ
+        // 適用日
+    	// 翌営業日をRDM_COMMON.GET_NEXT_BIZDAYから取得する
+    	// 現在日付を取得
+        Date systemDate = DateUtils.getNowDate();
+        SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMdd");
+        String sysDate = fmtDate.format(systemDate);
+
+    	RdmCommonEntity rdmCommonEntity = new RdmCommonEntity("getNextBizday");
+    	rdmCommonEntity.setInVBatDate(sysDate);
+    	List<RdmCommonEntity> rdmCommonEntityList = dao.select(rdmCommonEntity);
+
+    	if(rdmCommonEntityList.size() > 0) {
+        	// "yyyyMMdd"から"yyyy-MM-dd"に変換
+        	String tekiyoYmd = rdmCommonEntityList.get(0).getNextBizday();
+    		if(tekiyoYmd != null && tekiyoYmd.length() == 8) {
+    			StringBuilder sbUrlYmd = new StringBuilder();
+    			sbUrlYmd.append(tekiyoYmd.substring(0,4));
+    			sbUrlYmd.append("-");
+    			sbUrlYmd.append(tekiyoYmd.substring(4,6));
+    			sbUrlYmd.append("-");
+    			sbUrlYmd.append(tekiyoYmd.substring(6,8));
+    			tekiyoYmd = sbUrlYmd.toString();
+    		}
+
+        	dto.setFormTekiyoYmd(tekiyoYmd);
+    	}
+
+    	//プルダウン生成へ
         pullDown(dto);
 
      // END UOC

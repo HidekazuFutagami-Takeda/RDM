@@ -195,6 +195,11 @@ function tmpCseView(){
 
  // パラメータの設定
   document.fm1.backScreenId.value = "NC209";
+  document.fm1.paramSosCd.value = document.fm1.searchSosCd.value;
+  document.fm1.paramSosName.value = document.fm1.searchSosNm.value;
+  document.fm1.paramSosRank.value = document.fm1.searchSosRank.value
+  document.fm1.paramJgiNo.value = document.fm1.searchTantoCd.value;
+  document.fm1.paramJgiName.value = document.fm1.searchTantoNm.value;
   gCseViewWin = cseView(gCseViewWin,"tmpCallBackShisetsuView","gCseViewWin");
   return(true);
 }
@@ -272,7 +277,7 @@ function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
 	document.fm1.searchSosRank.value = "3";
 	document.fm1.brCode.value = brCode;
 	document.fm1.distCode.value = distCode;
-	document.fm1.callBack.value = tmpCallback;
+	document.fm1.callBack.value = "tmpCallBackDoctorView";
 	document.fm1.target = tmpTarget;
 }
 
@@ -288,7 +293,7 @@ function callBackSoshikiPop(bumonRank, sosCd, bumonSeiName, brCode, distCode, up
 		document.fm1.upBumonRank.value  = upBumonRank;
 		document.fm1.upBrCode.value     = upBrCode;
 		document.fm1.upDistCode.value   = upDistCode;
-		document.fm1.callBack.value = tmpCallback;
+		document.fm1.callBack.value = "tmpCallBackDoctorView";
 		document.fm1.target = tmpTarget;
 }
 /////////////////////////////////////////////////
@@ -343,10 +348,10 @@ function cdrLoad(){
  * 医師を選択ボタン押下
  */
 function csdSelectDoc(docNo,docKanj) {
-	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
-	if(tmpCallback != null){
-		document.fm1.callBack.value = tmpCallback;
-	}
+	document.fm1.callBack.value = "tmpCallBackDoctorView";
+	  //ボタン２度押し対策を、なるべく早いタイミングで行います。
+	  if(!comChkSubmit(COM_CLICK_ALERT))return(false);
+
   eval("window.opener." + document.fm1.callBack.value + "(docNo,docKanj)"
   );
       cdrClose();
@@ -376,11 +381,11 @@ function cdrUnLoad(){
 function cdrSearch(){
 
 //	//ボタン２度押し対策をなるべく早くやる(実際のSubmitのときではなく)
-//	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
+	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
 
     //現在ページ番号変更（遷移）
     document.fm1.pageCntCur.value = 1;
-	if(tmpCallback != null){
+	if(tmpTarget != null){
 		document.fm1.target = tmpTarget;
 	}
 
@@ -399,7 +404,7 @@ function pltPage( pageCntCur ){
   document.fm1.pageCntCur.value = pageCntCur;
   document.fm1.screenId.value = "NC209";
   document.fm1.functionId.value = 'Page';
-	if(tmpCallback != null){
+	if(tmpTarget != null){
 		document.fm1.target = tmpTarget;
 	}
 	// 検索イベント呼び出し
@@ -420,7 +425,7 @@ function cdrSort( sortCondition ){
   document.fm1.sortCondition.value = sortCondition;
   document.fm1.screenId.value = "NC209";
   document.fm1.functionId.value = 'Sort';
-	if(tmpCallback != null){
+	if(tmpTarget != null){
 		document.fm1.target = tmpTarget;
 	}
   // 検索イベント呼び出し

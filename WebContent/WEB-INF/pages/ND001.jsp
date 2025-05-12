@@ -122,7 +122,8 @@
 	  	fm1.functionId.value="Init";
 	  	comSubmitForAnyWarp(fm1);
 	  	comClickFlgInit();
-
+  	  	// 新規作成ボタン非活性にする
+  	  	document.getElementById("newButton").disabled = true;
 	}
  // 下記は他ポップアップとの制御のためND001.jsに移動_20250403
 //  // 担当者選択ボタン
@@ -389,6 +390,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <s:hidden name="gamenId" value="ND001"/>
           <s:hidden id="pageFlag" name="pageFlag" />
           <s:hidden id="mrAdminFlg" name="mrAdminFlg" />
+          <s:hidden name="loginBrCode" />
+          <s:hidden name="loginBumonRank" />
+          <s:hidden name="loginBumonRyakuName" />
+          <s:hidden name="loginDistCode" />
+          <s:hidden name="loginJgiName" />
+          <s:hidden name="loginJgiNo" />
+          <s:hidden name="loginSosCd" />
+          <s:hidden name="loginUpSosCode" />
           <s:hidden name="pageCntAll" />
           <s:hidden name="pageCntCur" />
           <s:hidden name="pageCntBase" />
@@ -436,6 +445,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="bumonRyakuName" name="bumonRyakuName"/>
 	<s:hidden id="jgiNo" name="jgiNo"/>
 
+<%-- 施設検索ポップアップ用 --%>
+    <s:hidden id="paramSosCd" name="paramSosCd"/>
+    <s:hidden id="paramSosName" name="paramSosName"/>
+    <s:hidden id="paramSosRank" name="paramSosRank"/>
+    <s:hidden id="paramJgiNo" name="paramJgiNo"/>
+    <s:hidden id="paramJgiName" name="paramJgiName"/>
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
     <tbody>
@@ -525,29 +540,28 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td></td>
             </tr>
             <tr>
-              <s:if test='mrAdminFlg == "0"'>
-              <td class="pupControlItem"><nobr>&nbsp;組織</nobr>
-                  <nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td>
-                  <td class="comPortalControlItem">
-                         <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-                  </td>
-                  <td><a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
-              </s:if>
-              <s:else>
+<%--               <s:if test='mrAdminFlg == "0"'> --%>
+<!--               <td class="pupControlItem"><nobr>&nbsp;組織</nobr> -->
+<!--                   <nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td> -->
+<!--                   <td class="comPortalControlItem"> -->
+<%--                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/> --%>
+<!--                   <a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td> -->
+<%--               </s:if> --%>
+<%--               <s:else> --%>
               <td class="pupControlItem"><nobr>&nbsp;組織</nobr>
                   <nobr><input class="comButton" type="button" value="選択" onClick="soshikiPopBtn();" /></nobr></td>
                   <td class="comPortalControlItem">
                          <s:textfield name="bumonSeiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                   <a href="#" class="comMiniLink" onclick="nd001Clear('searchSos');return false;">Clear</a>&nbsp;</td>
-              </s:else>
-              <s:if test='mrAdminFlg == "0"'>
-                  <td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
-					<nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td>
-                  <td class="comPortalControlItem">
-                       <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
-                   <a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td>
-              </s:if>
-              <s:else>
+<%--               </s:else> --%>
+<%--               <s:if test='mrAdminFlg == "0"'> --%>
+<!--                   <td class="pupControlItem"><nobr>&nbsp;担当者</nobr> -->
+<!-- 					<nobr><input class="comButton" type="button" value="選択" onClick="" disabled/></nobr></td> -->
+<!--                   <td class="comPortalControlItem"> -->
+<%--                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/> --%>
+<!--                    <a class="comMiniLink" onclick="" style="color:lightgray">Clear</a>&nbsp;</td> -->
+<%--               </s:if> --%>
+<%--               <s:else> --%>
                   <td class="pupControlItem"><nobr>&nbsp;担当者</nobr>
 				   <nobr>
 				   <s:if test="bumonRank == '2'">
@@ -561,7 +575,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                   <td class="comPortalControlItem">
                        <s:textfield name="jgiName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/>
                    <a href="#" class="comMiniLink" onclick="nd001Clear('searchTanto');return false;">Clear</a>&nbsp;</td>
-              </s:else>
+<%--               </s:else> --%>
               <td></td>
               <td></td>
             </tr>
@@ -587,11 +601,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td class="comTableSearchItem" style="width:50pt;" colspan=3><p>※項目は、武田情報とアルトマーク情報を同時検索します。</p></td>
               <td colspan="2">
               <s:if test='pageFlag == "1" '>
-                <input type="button" name="search" value="新規作成" onclick="" disabled>&nbsp;※新規作成の前に検索してください
+                <input type="button" id="newButton" name="newButton" value="新規作成" onclick="" disabled>&nbsp;※新規作成の前に検索してください
                 <%--<input type="hidden"> --%>
               </s:if>
               <s:else>
-                <input type="button" name="search" value="新規作成" onclick="newBtn();">&nbsp;※新規作成の前に検索してください
+                <input type="button" id="newButton" name="newButton" value="新規作成" onclick="newBtn();">&nbsp;※新規作成の前に検索してください
               </s:else>
               </td>
               <td class="comTableSearchItem" style="width:50pt;"></td>

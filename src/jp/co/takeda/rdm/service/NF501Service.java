@@ -493,10 +493,13 @@ public class NF501Service extends BaseService {
                 dataRecord.setManageCd(manageCd);
                 //JIS府県名
                 dataRecord.setAddrCodePref(entity.getAddrCodePref());
+                dataRecord.setAddrNamePref(entity.getAddrNamePref());
                 //JIS市区町村名
                 dataRecord.setAddrCodeCity(entity.getAddrCodeCity());
+                dataRecord.setAddrNameCity(entity.getAddrNameCity());
                 //武田市区郡名
                 dataRecord.setTkCityCd(entity.getTkCityCd());
+                dataRecord.setTkCityName(entity.getTkCityName());
                 //電話番号2
                 dataRecord.setInsPhone2(entity.getInsPhone2());
                 //FAX番号2
@@ -1173,7 +1176,11 @@ public class NF501Service extends BaseService {
                 //検索結果_親施設名
                 dataRecord.setMainInsNm(entity.getMainInsNm());
                 //検索結果_領域名（親子）
-                dataRecord.setTrtNm(entity.getTrtNm());
+                if("・".equals(entity.getTrtNm())) {
+                	dataRecord.setTrtNm("");
+                } else {
+                	dataRecord.setTrtNm(entity.getTrtNm());
+                }
                 //申請者氏名
                 dataRecord.setReqJgiName(entity.getReqJgiName());
                 //承認者氏名

@@ -537,7 +537,7 @@ public class NF303Service extends BaseService {
         	List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
 
         	if(tRdmReqKnrEntityList.size() > 0) {
-        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         		Date updDate = null;
                 try {
 					updDate = sdFormat.parse(indto.getUpdShaYmd());
@@ -621,6 +621,10 @@ public class NF303Service extends BaseService {
 								+ insPcode.substring(3);
 		}
 		indto.setInsPcode(insPcode);
+
+		if(indto.getUnivSubdiv() == null) {
+			indto.setUnivSubdiv("");
+		}
 
 		// 申請ボタン活性フラグ取得
 		indto.setBtnEnableFlg("0");
@@ -1024,7 +1028,7 @@ public class NF303Service extends BaseService {
 			List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
 
 			if(tRdmReqKnrEntityList.size() > 0) {
-        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         		Date updDate = null;
                 try {
 					updDate = sdFormat.parse(indto.getUpdShaYmd());
@@ -1404,9 +1408,9 @@ public class NF303Service extends BaseService {
 	        	tRdmHcoReqInsData.setReward44(getUpdValue(indto.getPreReward44(), indto.getReward44()));
         	}
 
-        	tRdmHcoReqInsData.setInsShaYmd(sysDate);
+        	tRdmHcoReqInsData.setInsShaYmd(systemDate);
         	tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
-        	tRdmHcoReqInsData.setUpdShaYmd(sysDate);
+        	tRdmHcoReqInsData.setUpdShaYmd(systemDate);
         	tRdmHcoReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
         	dao.insertByValue(tRdmHcoReqInsData);
@@ -1618,7 +1622,7 @@ public class NF303Service extends BaseService {
 	        	tRdmHcoReqUpdData.setReward44(getUpdValue(indto.getPreReward44(), indto.getReward44()));
         	}
 
-        	tRdmHcoReqUpdData.setUpdShaYmd(sysDate);
+        	tRdmHcoReqUpdData.setUpdShaYmd(systemDate);
         	tRdmHcoReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
         	if(knr) {

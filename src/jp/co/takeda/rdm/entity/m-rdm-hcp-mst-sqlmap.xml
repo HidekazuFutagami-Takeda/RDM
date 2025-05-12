@@ -46,24 +46,108 @@
         <result column="OLD_KANJ_SEI" property="oldKanjSei"/>
     </resultMap>
    <select id="selectHcp" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpEntity" resultMap="selectHcpResultMap">
-        WITH ULT_ONLY AS (
-            SELECT
-                DCF_ISHI_CD
-            FROM
-                T_RDM_M_MDB_HCP_MST MDB_HCP_MST_SUB
-            WHERE
-            NOT EXISTS
-            (
-                SELECT
-                    ULT_DOC_NO
-                FROM
-                    M_RDM_HCP_MST HCP_MST_SUB
-                WHERE
-                    MDB_HCP_MST_SUB.DCF_ISHI_CD = HCP_MST_SUB.ULT_DOC_NO
-            )
-        )
-        --サブクエリ用　武田側
+        WITH MST AS (
+ 			SELECT
+				  TKD.DOC_NO
+				, TKD.DOC_KANJ
+				, TKD.DOC_KANA
+				, TKD.DOB_YYYY
+				, TKD.DOB_MM
+				, TKD.DOB_DD
+				, TKD.GRAD_YEAR
+				, TKD.OLD_KANJ_SEI
+				, TKD.MED_SCH
+				, TKD.H_UNIV
+				, TKD.DOC_TYPE
+				, TKD.DOC_KANJI_SRCH
+				, TKD.DOC_KANA_SRCH
+				, TKD.DOC_ATTRIBUTE
+				, TKD.DEL_FLG
+				, TKD.DEL_REASON
+				, ULT.ISHI_NM
+				, ULT.ISHI_NM_KANA
+				, ULT.DCF_ISHI_CD
+				, ULT.SEINENGAPPI_SR
+				, ULT.SOTSUNEN_SR
+				, ULT.SHUSSHINKO_CD
+				, ULT.ISHI_NM_SRCH
+				, ULT.ISHI_NM_KANA_SRCH
+				, ULT.SHUSEI_KBN
+				, ULT.SAKUJYO_YOTEI_RIYU_CD
+ 			FROM
+ 			M_RDM_HCP_MST TKD -- 医師_基本情報 武田施設すべて
+ 			LEFT JOIN
+ 			T_RDM_M_MDB_HCP_MST ULT -- ULT_MDB個人マスタ 武田医師＋ULT医師
+ 			ON 1=1
+ 			AND ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
+            WHERE 1=1
+        --削除理由 重複登録除き(武田側)
+		        AND NOT EXISTS(
+		            SELECT *
+		            FROM M_RDM_HCP_MST DEL_HCP_MST
+		            WHERE 1 = 1
+		            AND TKD.DOC_NO = DEL_HCP_MST.DOC_NO
+		            AND TKD.DEL_FLG = '1'
+		            AND TKD.DEL_REASON = '02')
+        --UT-O-536 連携済も武田側の削除理由のみで判断
+        ----削除理由 重複登録除き(ULT側)
+		--        AND NOT EXISTS(
+		--            SELECT *
+		--            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
+		--            WHERE 1 = 1
+		--            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
+		--            AND ULT.SHUSEI_KBN = 'C'
+		--            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
 
+ 			UNION ALL
+ 			SELECT
+				  null AS DOC_NO
+				, null AS DOC_KANJ
+				, null AS DOC_KANA
+				, null AS DOB_YYYY
+				, null AS DOB_MM
+				, null AS DOB_DD
+				, null AS GRAD_YEAR
+				, null AS OLD_KANJ_SEI
+				, null AS MED_SCH
+				, null AS H_UNIV
+				, null AS DOC_TYPE
+				, null AS DOC_KANJI_SRCH
+				, null AS DOC_KANA_SRCH
+				, null AS DOC_ATTRIBUTE
+				, null AS DEL_FLG
+				, null AS DEL_REASON
+				, ULT.ISHI_NM
+				, ULT.ISHI_NM_KANA
+				, ULT.DCF_ISHI_CD
+				, ULT.SEINENGAPPI_SR
+				, ULT.SOTSUNEN_SR
+				, ULT.SHUSSHINKO_CD
+				, ULT.ISHI_NM_SRCH
+				, ULT.ISHI_NM_KANA_SRCH
+				, ULT.SHUSEI_KBN
+				, ULT.SAKUJYO_YOTEI_RIYU_CD
+ 			FROM
+ 			T_RDM_M_MDB_HCP_MST ULT -- ULT_MDB個人マスタ
+ 			WHERE 1=1
+	 			AND NOT EXISTS
+	 	    	(SELECT
+	 	         *
+	 		     FROM
+	 		     M_RDM_HCP_MST TKD -- 医師_基本情報
+	 	    	 WHERE
+	 	         ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
+	 		    )
+        --削除理由 重複登録除き(ULT側)
+		        AND NOT EXISTS(
+		            SELECT *
+		            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
+		            WHERE 1 = 1
+		            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
+		            AND ULT.SHUSEI_KBN = 'C'
+		            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
+		)
+        --サブクエリ用　武田側
         , TKD_INS_NAME AS (
                 SELECT DISTINCT
                     HCP_MST.DOC_NO
@@ -89,7 +173,6 @@
                     HCP_YAKUSHOKU_TKD.TITLE_CODE = HCP_WORK.TITLE_CODE
                     AND HCP_YAKUSHOKU_TKD.DEL_FLG = '0'
                     GROUP BY HCP_MST.DOC_NO
-<!--                     ORDER BY HCP_MST.DOC_NO -->
         )
         --サブクエリ用　ULT側
         ,ULT_INS_NAME AS (
@@ -125,85 +208,127 @@
                     HCP_YAKUSHOKU_ULT.TITLE_CODE = HCP_YAKUSHOKU_LNK_MST.TITLE_CODE
                     AND HCP_YAKUSHOKU_ULT.DEL_FLG = '0'
                     GROUP BY MDB_HCP_MST.DCF_ISHI_CD
-<!--                     ORDER BY MDB_HCP_MST.DCF_ISHI_CD -->
         )
+		,TKD_WORK AS (
+		SELECT DISTINCT
+			  HCP_WORK.DOC_NO
+			, HCP_WORK.INS_NO
+			, HCP_WORK.DEPT_CODE
+			, HCO_MST.ADDR_CODE_PREF
+			, HCO_MST.TK_CITY_CD
+		    , CDMST.VALUE1 AS DUMMY_HCO
+		  FROM
+			M_RDM_HCP_WORK HCP_WORK
+		  LEFT JOIN
+			M_RDM_HCO_MST HCO_MST
+		    ON 1=1
+		   AND HCO_MST.INS_NO = HCP_WORK.INS_NO
+		  LEFT JOIN
+		    M_RDM_CODE_MST CDMST
+		    ON 1=1
+		   AND CDMST.CODE_NAME = 'DUMMY_HCO'
+		   AND CDMST.DEL_FLG = '0'
+		   AND CDMST.VALUE1 = HCP_WORK.INS_NO
+		)
+		,ULT_WORK AS (
+		SELECT DISTINCT
+			  MDB_HCP_KINMUSAKI.DCF_ISHI_CD
+			, MDB_HCP_KINMUSAKI.KINMUSAKI_SHISETSU_CD AS DCF_SHISETSU_CD
+			, HCP_SHOZOKU_BUKA_LNK_MST.DEPT_CODE
+			, MDB_HCO_MST.TODOFUKEN_CD
+			, MDB_HCO_MST.SHIKUCHOSON_CD
+		  FROM
+			T_RDM_M_MDB_HCP_KINMUSAKI MDB_HCP_KINMUSAKI
+		  LEFT JOIN
+			T_RDM_M_MDB_HCO_MST MDB_HCO_MST
+		    ON 1=1
+		   AND MDB_HCO_MST.DCF_SHISETSU_CD = MDB_HCP_KINMUSAKI.KINMUSAKI_SHISETSU_CD
+		            LEFT JOIN
+		            M_RDM_HCP_SHOZOKU_BUKA_LNK_MST HCP_SHOZOKU_BUKA_LNK_MST
+		            ON
+		            HCP_SHOZOKU_BUKA_LNK_MST.SHOZOKU_BUKA_CD = MDB_HCP_KINMUSAKI.SHOZOKUBUKA_CD
+		)
+ 	, ADDRSOS AS (
+ 	      SELECT
+			      ADDR_CODE_PREF
+			    , ADDR_CODE_CITY
+			    , TK_CITY_CD
+			    , SOS_CD
+			FROM
+			 		M_RDM_ADDR
+			 		WHERE  1=1
+			 		AND SOS_CD = #{inSosCd}
+        )
+	<if test="inGmnJgiNo == null">
+	<if test="inGmnSosCd != null">
+ 	, ADDRSOSALL AS (
+ 	      SELECT
+			      ADDR_CODE_PREF
+			    , ADDR_CODE_CITY
+			    , TK_CITY_CD
+			    , SOS_CD
+			    , UP_SOS_CD
+			FROM
+			 		M_RDM_ADDR
+			WHERE 1=1
+ 			<if test="inGmnBumonRank == 2">AND UP_SOS_CD = #{inGmnSosCd}</if>
+ 			<if test="inGmnBumonRank == 3">AND SOS_CD = #{inGmnSosCd}</if>
+        )
+        </if>
+	</if>
         SELECT
-            MAX(HCP_MST.DOC_KANJ) DOC_KANJ
-           ,MAX(HCP_MST.DOC_KANA) DOC_KANA
-           ,HCP_MST.DOC_NO
-           ,MAX(NVL2(HCP_MST.DOB_YYYY,HCP_MST.DOB_YYYY || '/' || HCP_MST.DOB_MM || '/' || HCP_MST.DOB_DD, '')) DOB
+            MAX(MST.DOC_KANJ) DOC_KANJ
+           ,MAX(MST.DOC_KANA) DOC_KANA
+           ,MST.DOC_NO
+           ,MAX(NVL2(MST.DOB_YYYY,MST.DOB_YYYY || '/' || MST.DOB_MM || '/' || MST.DOB_DD, '')) DOB
            ,MAX(HCP_SHUSSHINKO_TKD_DOC.UNIV_KJ) UNIV_KJ
-           ,MAX(HCP_MST.GRAD_YEAR) GRAD_YEAR
+           ,MAX(MST.GRAD_YEAR) GRAD_YEAR
            ,MAX(ISHI_KBN.VALUE1_KANJ) VALUE1_KANJ
            ,MAX(HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_KJ) IKYOKU_KJ
            ,MAX(REPLACE(TKD_INS_NAME.INS_NAME,'(未登録:未登録)','')) INS_NAME
-           ,MAX(HCP_MST.OLD_KANJ_SEI) OLD_KANJ_SEI
-           ,MAX(MDB_HCP_MST.ISHI_NM) ISHI_NM
-           ,MAX(MDB_HCP_MST.ISHI_NM_KANA) ISHI_NM_KANA
-           ,MDB_HCP_MST.DCF_ISHI_CD
-           ,MAX(NVL2(MDB_HCP_MST.SEINENGAPPI_SR,SUBSTR(MDB_HCP_MST.SEINENGAPPI_SR,1,4) || '/' || SUBSTR(MDB_HCP_MST.SEINENGAPPI_SR,5,2) || '/' || SUBSTR(MDB_HCP_MST.SEINENGAPPI_SR,7,2) ,'')) ULT_DOB
+           ,MAX(MST.OLD_KANJ_SEI) OLD_KANJ_SEI
+           ,MAX(MST.ISHI_NM) ISHI_NM
+           ,MAX(MST.ISHI_NM_KANA) ISHI_NM_KANA
+           ,MST.DCF_ISHI_CD
+           ,MAX(NVL2(MST.SEINENGAPPI_SR,SUBSTR(MST.SEINENGAPPI_SR,1,4) || '/' || SUBSTR(MST.SEINENGAPPI_SR,5,2) || '/' || SUBSTR(MST.SEINENGAPPI_SR,7,2) ,'')) ULT_DOB
            ,MAX(HCP_SHUSSHINKO_ULT_DOC.UNIV_KJ) ULT_UNIV_KJ
-           ,MAX(MDB_HCP_MST.SOTSUNEN_SR) SOTSUNEN_SR
+           ,MAX(MST.SOTSUNEN_SR) SOTSUNEN_SR
            ,MAX(REPLACE(ULT_INS_NAME.INS_NAME,'(未登録:未登録)','')) ULT_INS_NAME
-           ,MAX(CASE WHEN HCP_MST.DOC_NO IS NULL AND MDB_HCP_MST.DCF_ISHI_CD IS NOT NULL THEN 1 ELSE 0 END) AS SHINKI_FLG
-           ,MAX(CASE WHEN HCP_MST.DOC_NO IS NOT NULL AND HCP_MST.DEL_FLG = 0 THEN 1 ELSE 0 END )AS HENSHU_FLG
-           ,MAX(CASE WHEN HCP_MST.DOC_NO IS NOT NULL AND HCP_MST.DEL_FLG = 1 THEN 1 ELSE 0 END )AS FUKKATSU_FLG
-           ,MAX(CASE WHEN JKR_SOS_ADDR.SOS_CD IS NOT NULL THEN 1 ELSE 0 END) AS MR_SHINKI_FLG
-           ,MAX(CASE WHEN INS_DOC_TRT_MR.JGI_NO IS NOT NULL THEN 1 ELSE 0 END) AS MR_KOUSHIN_FLG
+           ,MAX(CASE WHEN MST.DOC_NO IS NULL AND MST.DCF_ISHI_CD IS NOT NULL THEN 1 ELSE 0 END) AS SHINKI_FLG
+           ,MAX(CASE WHEN MST.DOC_NO IS NOT NULL AND MST.DEL_FLG = 0 THEN 1 ELSE 0 END )AS HENSHU_FLG
+           ,MAX(CASE WHEN MST.DOC_NO IS NOT NULL AND MST.DEL_FLG = 1 THEN 1 ELSE 0 END )AS FUKKATSU_FLG
+           ,MAX(CASE WHEN ULT_ADDR.SOS_CD IS NOT NULL THEN 1 ELSE 0 END) AS MR_SHINKI_FLG
+           ,MAX(CASE WHEN TKD_WORK.DUMMY_HCO IS NOT NULL OR TKD_ADDR.SOS_CD IS NOT NULL THEN 1 ELSE 0 END) AS MR_KOUSHIN_FLG
         FROM
-            M_RDM_PARAM_MST PARAM_MST
-            INNER JOIN
-            (
-                SELECT
-                    DOC_NO,
-                    ULT_DOC_NO
-                FROM
-                    M_RDM_HCP_MST
-
-                UNION
-
-                SELECT
-                     NULL AS DOC_NO,
-                     DCF_ISHI_CD AS ULT_DOC_NO
-                FROM
-                     ULT_ONLY
-            ) TKD_ULT
-            ON
-            PARAM_MST.PARAM_NAME = 'MN_DOC'
+            MST
             LEFT JOIN
-            M_RDM_HCP_MST HCP_MST
+            TKD_WORK
             ON
-            HCP_MST.DOC_NO = TKD_ULT.DOC_NO
+            TKD_WORK.DOC_NO = MST.DOC_NO
             LEFT JOIN
-            T_RDM_M_MDB_HCP_MST MDB_HCP_MST
+            ULT_WORK
             ON
-            MDB_HCP_MST.DCF_ISHI_CD = TKD_ULT.ULT_DOC_NO
-            LEFT JOIN
-            M_RDM_HCP_WORK HCP_WORK
-            ON
-            HCP_WORK.DOC_NO = HCP_MST.DOC_NO
-            LEFT JOIN
-            M_RDM_HCO_MST HCO_MST
-            ON
-            HCO_MST.INS_NO = HCP_WORK.INS_NO
-            LEFT JOIN
-            T_RDM_M_MDB_HCP_KINMUSAKI MDB_HCP_KINMUSAKI
-            ON
-            MDB_HCP_KINMUSAKI.DCF_ISHI_CD = MDB_HCP_MST.DCF_ISHI_CD
-            LEFT JOIN
-            T_RDM_M_MDB_HCO_MST MDB_HCO_MST
-            ON
-            MDB_HCO_MST.DCF_SHISETSU_CD = MDB_HCP_KINMUSAKI.KINMUSAKI_SHISETSU_CD
+            ULT_WORK.DCF_ISHI_CD = MST.DCF_ISHI_CD
+	<if test="inGmnJgiNo == null">
+	 		<if test="inGmnSosCd != null">
+			 		INNER JOIN
+			 		ADDRSOSALL
+			 		ON 1=1
+			        AND ((TKD_WORK.INS_NO IS NOT NULL AND ADDRSOSALL.ADDR_CODE_PREF = TKD_WORK.ADDR_CODE_PREF AND ADDRSOSALL.TK_CITY_CD = TKD_WORK.TK_CITY_CD)
+			              OR
+			             (TKD_WORK.INS_NO IS NULL AND ADDRSOSALL.ADDR_CODE_PREF = ULT_WORK.TODOFUKEN_CD AND ADDRSOSALL.ADDR_CODE_CITY = ULT_WORK.SHIKUCHOSON_CD))
+			</if>
+	</if>
             LEFT JOIN
             M_RDM_HCP_SHUSSHINKO HCP_SHUSSHINKO_TKD_DOC
             ON
-            HCP_SHUSSHINKO_TKD_DOC.UNIV_CODE = HCP_MST.MED_SCH
+            HCP_SHUSSHINKO_TKD_DOC.UNIV_CODE = MST.MED_SCH
             AND HCP_SHUSSHINKO_TKD_DOC.UNIV_FLG = '1'
             AND HCP_SHUSSHINKO_TKD_DOC.DEL_FLG = '0'
             LEFT JOIN
             M_RDM_HCP_SHUSSHINKO_LNK_MST SHUSSHINKO_LNK_MST
             ON
-            SHUSSHINKO_LNK_MST.SHUSSHINKO_CD = MDB_HCP_MST.SHUSSHINKO_CD
+            SHUSSHINKO_LNK_MST.SHUSSHINKO_CD = MST.SHUSSHINKO_CD
             LEFT JOIN
             M_RDM_HCP_SHUSSHINKO HCP_SHUSSHINKO_ULT_DOC
             ON
@@ -213,126 +338,81 @@
             LEFT JOIN
             M_RDM_HCP_SHUSSHINKO HCP_SHUSSHINKO_TKD_IKYOKU
             ON
-            HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_CODE = HCP_MST.H_UNIV
+            HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_CODE = MST.H_UNIV
             AND HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_FLG = '1'
             AND HCP_SHUSSHINKO_TKD_IKYOKU.DEL_FLG = '0'
             LEFT JOIN
-            M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA_TKD
-            ON
-            HCP_SHOZOKU_BUKA_TKD.DEPT_CODE = HCP_WORK.DEPT_CODE
-            AND HCP_SHOZOKU_BUKA_TKD.DEL_FLG = '0'
-            LEFT JOIN
-            M_RDM_HCP_SHOZOKU_BUKA_LNK_MST HCP_SHOZOKU_BUKA_LNK_MST
-            ON
-            HCP_SHOZOKU_BUKA_LNK_MST.SHOZOKU_BUKA_CD = MDB_HCP_KINMUSAKI.SHOZOKUBUKA_CD
-            LEFT JOIN
-            M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA_ULT
-            ON
-            HCP_SHOZOKU_BUKA_ULT.DEPT_CODE = HCP_SHOZOKU_BUKA_LNK_MST.DEPT_CODE
-            AND HCP_SHOZOKU_BUKA_ULT.DEL_FLG = '0'
-            LEFT JOIN
-            M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU_TKD
-            ON
-            HCP_YAKUSHOKU_TKD.TITLE_CODE = HCP_WORK.TITLE_CODE
-            AND HCP_YAKUSHOKU_TKD.DEL_FLG = '0'
-            LEFT JOIN
-            M_RDM_HCP_YAKUSHOKU_LNK_MST HCP_YAKUSHOKU_LNK_MST
-            ON
-            HCP_YAKUSHOKU_LNK_MST.YAKUSHOKU_CD = MDB_HCP_KINMUSAKI.YAKUSHOKU_CD
-            LEFT JOIN
-            M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU_ULT
-            ON
-            HCP_YAKUSHOKU_ULT.TITLE_CODE = HCP_YAKUSHOKU_LNK_MST.TITLE_CODE
-            AND HCP_YAKUSHOKU_ULT.DEL_FLG = '0'
-            LEFT JOIN
             TKD_INS_NAME
             ON
-            TKD_INS_NAME.DOC_NO = HCP_MST.DOC_NO
+            TKD_INS_NAME.DOC_NO = MST.DOC_NO
             LEFT JOIN
             ULT_INS_NAME
             ON
-            ULT_INS_NAME.DCF_ISHI_CD = MDB_HCP_MST.DCF_ISHI_CD
+            ULT_INS_NAME.DCF_ISHI_CD = MST.DCF_ISHI_CD
             LEFT JOIN
             M_RDM_CODE_MST ISHI_KBN
             ON
             ISHI_KBN.CODE_NAME = 'DOC_TYPE'
             AND ISHI_KBN.DEL_FLG = '0'
-            AND ISHI_KBN.VALUE1 = HCP_MST.DOC_TYPE
+            AND ISHI_KBN.VALUE1 = MST.DOC_TYPE
+
+            LEFT JOIN
+            ADDRSOS ULT_ADDR
+            ON 1=1
+            AND ULT_ADDR.ADDR_CODE_PREF = ULT_WORK.TODOFUKEN_CD
+            AND ULT_ADDR.ADDR_CODE_CITY = ULT_WORK.SHIKUCHOSON_CD
+            LEFT JOIN
+            ADDRSOS TKD_ADDR
+            ON 1=1
+            AND TKD_ADDR.ADDR_CODE_PREF = TKD_WORK.ADDR_CODE_PREF
+            AND TKD_ADDR.TK_CITY_CD = TKD_WORK.TK_CITY_CD
+	<if test="inGmnJgiNo != null">
             LEFT JOIN
             M_RDM_JKR_MR_INS_DOC_TRT INS_DOC_TRT
             ON
-            INS_DOC_TRT.DOC_NO = HCP_MST.DOC_NO
-            LEFT JOIN
-            M_RDM_JGI_SOS_MST JGI_SOS_MST
-            ON
-            JGI_SOS_MST.JGI_NO = INS_DOC_TRT.JGI_NO
-            LEFT JOIN
-            COM_POS_ADDR POS_ADDR
-            ON
-            POS_ADDR.ADDR_CODE_PREF = MDB_HCO_MST.TODOFUKEN_CD
-            AND POS_ADDR.ADDR_CODE_CITY = MDB_HCO_MST.SHIKUCHOSON_CD
-            LEFT JOIN
-            S_RDM_JKR_SOS_ADDR JKR_SOS_ADDR
-            ON
-            JKR_SOS_ADDR.ADDR_CODE_PREF = POS_ADDR.ADDR_CODE_PREF
-            AND JKR_SOS_ADDR.TK_CITY_CD = POS_ADDR.ADDR_CODE_CITY
-            AND JKR_SOS_ADDR.SOS_CD = #{inSosCd}
-            LEFT JOIN
-            M_RDM_JKR_MR_INS_DOC_TRT INS_DOC_TRT_MR
-            ON
-            INS_DOC_TRT_MR.DOC_NO = HCP_MST.DOC_NO
-            AND INS_DOC_TRT_MR.JGI_NO = #{inJgiNo}
+            INS_DOC_TRT.DOC_NO = MST.DOC_NO
+	</if>
         <where> 1 = 1
         --1 氏名漢字(全角)※
-        <if test="inKanjiSrch != null">AND (HCP_MST.DOC_KANJI_SRCH like '%' || #{inKanjiSrch} || '%' OR  MDB_HCP_MST.ISHI_NM_SRCH like '%' || #{inKanjiSrch} || '%')</if>
+        <if test="inKanjiSrch != null">AND (MST.DOC_KANJI_SRCH like '%' || #{inKanjiSrch} || '%' OR  MST.ISHI_NM_SRCH like '%' || #{inKanjiSrch} || '%')</if>
         --2 氏名カナ(半角カナ)※
-        <if test="inKanaSrch != null">AND (HCP_MST.DOC_KANA_SRCH like '%' || #{inKanaSrch} || '%' OR  MDB_HCP_MST.ISHI_NM_KANA_SRCH like '%' || #{inKanaSrch} || '%')</if>
+        <if test="inKanaSrch != null">AND (MST.DOC_KANA_SRCH like '%' || #{inKanaSrch} || '%' OR  MST.ISHI_NM_KANA_SRCH like '%' || #{inKanaSrch} || '%')</if>
         --3 医師／薬剤師区分
-        <if test="inDocType != null">AND (HCP_MST.DOC_TYPE = #{inDocType})</if>
+        <if test="inDocType != null">AND (MST.DOC_TYPE = #{inDocType})</if>
         --4 医師固定C
-        <if test="inDocNo != null">AND (HCP_MST.DOC_NO = #{inDocNo})</if>
+        <if test="inDocNo != null">AND (MST.DOC_NO = #{inDocNo})</if>
         --5 ULT医師コード
-        <if test="inDcfIshiCd != null">AND (MDB_HCP_MST.DCF_ISHI_CD = #{inDcfIshiCd})</if>
+        <if test="inDcfIshiCd != null">AND (MST.DCF_ISHI_CD = #{inDcfIshiCd})</if>
         --6 医師属性
-        <if test="inDocAttribute != null">AND HCP_MST.DOC_ATTRIBUTE = #{inDocAttribute}</if>
+        <if test="inDocAttribute != null">AND MST.DOC_ATTRIBUTE = #{inDocAttribute}</if>
         --7 出身校
-        <if test="inMedSch != null">AND (HCP_MST.MED_SCH = #{inMedSch} OR  SHUSSHINKO_LNK_MST.UNIV_CODE = #{inMedSch})</if>
+        <if test="inMedSch != null">AND (MST.MED_SCH = #{inMedSch} OR  SHUSSHINKO_LNK_MST.UNIV_CODE = #{inMedSch})</if>
         --8 卒年
-        <if test="inGradYear != null">AND (HCP_MST.GRAD_YEAR = #{inGradYear} OR  MDB_HCP_MST.SOTSUNEN_SR = #{inGradYear})</if>
+        <if test="inGradYear != null">AND (MST.GRAD_YEAR = #{inGradYear} OR  MST.SOTSUNEN_SR = #{inGradYear})</if>
         --9 出身医局校
-        <if test="inHUniv != null">AND (HCP_MST.H_UNIV = #{inHUniv})</if>
+        <if test="inHUniv != null">AND (MST.H_UNIV = #{inHUniv})</if>
         --10 ULT接続が武田情報のみ
-        <if test="inSetsuzoku == 0">AND (MDB_HCP_MST.DCF_ISHI_CD IS NULL)</if>
+        <if test="inSetsuzoku == 0">AND (MST.DCF_ISHI_CD IS NULL)</if>
         --10 ULT接続がULT情報のみ
-        <if test="inSetsuzoku == 1">AND (HCP_MST.DOC_NO IS NULL)</if>
+        <if test="inSetsuzoku == 1">AND (MST.DOC_NO IS NULL)</if>
         --10 ULT接続が武田-ULT接続済み
-        <if test="inSetsuzoku == 2">AND (HCP_MST.DOC_NO IS NOT NULL AND  MDB_HCP_MST.DCF_ISHI_CD IS NOT NULL)</if>
+        <if test="inSetsuzoku == 2">AND (MST.DOC_NO IS NOT NULL AND  MST.DCF_ISHI_CD IS NOT NULL)</if>
         --11 組織選択
-        <if test="inGmnBumonRank == 2">AND (JGI_SOS_MST.UP_SOS_CD = #{inGmnSosCd})</if>
-        <if test="inGmnBumonRank == 3">AND (JGI_SOS_MST.SOS_CD = #{inGmnSosCd})</if>
+	<if test="inGmnJgiNo == null">
+        <if test="inGmnSosCd != null">
+	        <if test="inGmnBumonRank == 2">AND (ADDRSOSALL.UP_SOS_CD = #{inGmnSosCd})</if>
+	        <if test="inGmnBumonRank == 3">AND (ADDRSOSALL.SOS_CD = #{inGmnSosCd})</if>
+	    </if>
+	    </if>
         --12 担当者選択
-        <if test="inGmnJgiNo != null">AND (JGI_SOS_MST.BR_CODE = #{inGmnBrCode} AND JGI_SOS_MST.DIST_CODE = #{inGmnDistCode} AND INS_DOC_TRT.JGI_NO = #{inGmnJgiNo})</if>
+        <if test="inGmnJgiNo != null">AND (INS_DOC_TRT.JGI_NO = #{inGmnJgiNo})</if>
         --13 施設固定C
-        <if test="inInsNo != null">AND (HCO_MST.INS_NO = #{inInsNo})</if>
+        <if test="inInsNo != null">AND (TKD_WORK.INS_NO = #{inInsNo})</if>
         --14 所属部科コード
-        <if test="inDeptCode != null">AND (HCP_WORK.DEPT_CODE = #{inDeptCode} OR  HCP_SHOZOKU_BUKA_LNK_MST.DEPT_CODE = #{inDeptCode})</if>
-        AND NOT EXISTS(
-            SELECT *
-            FROM M_RDM_HCP_MST DEL_HCP_MST
-            WHERE 1 = 1
-            AND HCP_MST.DOC_NO = DEL_HCP_MST.DOC_NO
-            AND HCP_MST.DEL_FLG = '1'
-            AND HCP_MST.DEL_REASON = '02')
-        --削除理由 重複登録除き(ULT側)
-        AND NOT EXISTS(
-            SELECT *
-            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
-            WHERE 1 = 1
-            AND MDB_HCP_MST.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
-            AND MDB_HCP_MST.SHUSEI_KBN = 'C'
-            AND MDB_HCP_MST.SAKUJYO_YOTEI_RIYU_CD = '5')
+        <if test="inDeptCode != null">AND (TKD_WORK.DEPT_CODE = #{inDeptCode} OR  ULT_WORK.DEPT_CODE = #{inDeptCode})</if>
+
         </where>
-        GROUP BY HCP_MST.DOC_NO,MDB_HCP_MST.DCF_ISHI_CD
+        GROUP BY MST.DOC_NO,MST.DCF_ISHI_CD
         --ソートID NULL OR '0'
         <if test="inSortId == 0 or inSortId == null">ORDER BY DOC_KANA NULLS FIRST</if>
         --ソートID '1'
@@ -356,316 +436,238 @@
         OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
     </select>
     <select id="selectCntHcp" parameterType="jp.co.takeda.rdm.entity.join.SelectCntSelectHcpEntity" resultMap="selectCntHcpResultMap">
+        WITH MST AS (
+ 			SELECT
+				  TKD.DOC_NO
+				, TKD.DOC_KANJ
+				, TKD.DOC_KANA
+				, TKD.DOB_YYYY
+				, TKD.DOB_MM
+				, TKD.DOB_DD
+				, TKD.GRAD_YEAR
+				, TKD.OLD_KANJ_SEI
+				, TKD.MED_SCH
+				, TKD.H_UNIV
+				, TKD.DOC_TYPE
+				, TKD.DOC_KANJI_SRCH
+				, TKD.DOC_KANA_SRCH
+				, TKD.DOC_ATTRIBUTE
+				, TKD.DEL_FLG
+				, TKD.DEL_REASON
+				, ULT.ISHI_NM
+				, ULT.ISHI_NM_KANA
+				, ULT.DCF_ISHI_CD
+				, ULT.SEINENGAPPI_SR
+				, ULT.SOTSUNEN_SR
+				, ULT.SHUSSHINKO_CD
+				, ULT.ISHI_NM_SRCH
+				, ULT.ISHI_NM_KANA_SRCH
+				, ULT.SHUSEI_KBN
+				, ULT.SAKUJYO_YOTEI_RIYU_CD
+ 			FROM
+ 			M_RDM_HCP_MST TKD -- 医師_基本情報 武田施設すべて
+ 			LEFT JOIN
+ 			T_RDM_M_MDB_HCP_MST ULT -- ULT_MDB個人マスタ 武田医師＋ULT医師
+ 			ON 1=1
+ 			AND ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
+            WHERE 1=1
+        --削除理由 重複登録除き(武田側)
+		        AND NOT EXISTS(
+		            SELECT *
+		            FROM M_RDM_HCP_MST DEL_HCP_MST
+		            WHERE 1 = 1
+		            AND TKD.DOC_NO = DEL_HCP_MST.DOC_NO
+		            AND TKD.DEL_FLG = '1'
+		            AND TKD.DEL_REASON = '02')
+        --UT-O-536 連携済も武田側の削除理由のみで判断
+        ----削除理由 重複登録除き(ULT側)
+		--        AND NOT EXISTS(
+		--            SELECT *
+		--            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
+		--            WHERE 1 = 1
+		--            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
+		--            AND ULT.SHUSEI_KBN = 'C'
+		--            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
+
+ 			UNION ALL
+ 			SELECT
+				  null AS DOC_NO
+				, null AS DOC_KANJ
+				, null AS DOC_KANA
+				, null AS DOB_YYYY
+				, null AS DOB_MM
+				, null AS DOB_DD
+				, null AS GRAD_YEAR
+				, null AS OLD_KANJ_SEI
+				, null AS MED_SCH
+				, null AS H_UNIV
+				, null AS DOC_TYPE
+				, null AS DOC_KANJI_SRCH
+				, null AS DOC_KANA_SRCH
+				, null AS DOC_ATTRIBUTE
+				, null AS DEL_FLG
+				, null AS DEL_REASON
+				, ULT.ISHI_NM
+				, ULT.ISHI_NM_KANA
+				, ULT.DCF_ISHI_CD
+				, ULT.SEINENGAPPI_SR
+				, ULT.SOTSUNEN_SR
+				, ULT.SHUSSHINKO_CD
+				, ULT.ISHI_NM_SRCH
+				, ULT.ISHI_NM_KANA_SRCH
+				, ULT.SHUSEI_KBN
+				, ULT.SAKUJYO_YOTEI_RIYU_CD
+ 			FROM
+ 			T_RDM_M_MDB_HCP_MST ULT -- ULT_MDB個人マスタ
+ 			WHERE 1=1
+	 			AND NOT EXISTS
+	 	    	(SELECT
+	 	         *
+	 		     FROM
+	 		     M_RDM_HCP_MST TKD -- 医師_基本情報
+	 	    	 WHERE
+	 	         ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
+	 		    )
+        --削除理由 重複登録除き(ULT側)
+		        AND NOT EXISTS(
+		            SELECT *
+		            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
+		            WHERE 1 = 1
+		            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
+		            AND ULT.SHUSEI_KBN = 'C'
+		            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
+		)
+		,TKD_WORK AS (
+		SELECT DISTINCT
+			  HCP_WORK.DOC_NO
+			, HCP_WORK.INS_NO
+			, HCP_WORK.DEPT_CODE
+			, HCO_MST.ADDR_CODE_PREF
+			, HCO_MST.TK_CITY_CD
+		    , CDMST.VALUE1 AS DUMMY_HCO
+		  FROM
+			M_RDM_HCP_WORK HCP_WORK
+		  LEFT JOIN
+			M_RDM_HCO_MST HCO_MST
+		    ON 1=1
+		   AND HCO_MST.INS_NO = HCP_WORK.INS_NO
+		  LEFT JOIN
+		    M_RDM_CODE_MST CDMST
+		    ON 1=1
+		   AND CDMST.CODE_NAME = 'DUMMY_HCO'
+		   AND CDMST.DEL_FLG = '0'
+		   AND CDMST.VALUE1 = HCP_WORK.INS_NO
+		)
+		,ULT_WORK AS (
+		SELECT DISTINCT
+			  MDB_HCP_KINMUSAKI.DCF_ISHI_CD
+			, MDB_HCP_KINMUSAKI.KINMUSAKI_SHISETSU_CD AS DCF_SHISETSU_CD
+			, HCP_SHOZOKU_BUKA_LNK_MST.DEPT_CODE
+			, MDB_HCO_MST.TODOFUKEN_CD
+			, MDB_HCO_MST.SHIKUCHOSON_CD
+		  FROM
+			T_RDM_M_MDB_HCP_KINMUSAKI MDB_HCP_KINMUSAKI
+		  LEFT JOIN
+			T_RDM_M_MDB_HCO_MST MDB_HCO_MST
+		    ON 1=1
+		   AND MDB_HCO_MST.DCF_SHISETSU_CD = MDB_HCP_KINMUSAKI.KINMUSAKI_SHISETSU_CD
+		            LEFT JOIN
+		            M_RDM_HCP_SHOZOKU_BUKA_LNK_MST HCP_SHOZOKU_BUKA_LNK_MST
+		            ON
+		            HCP_SHOZOKU_BUKA_LNK_MST.SHOZOKU_BUKA_CD = MDB_HCP_KINMUSAKI.SHOZOKUBUKA_CD
+		)
+	<if test="inGmnJgiNo == null">
+		<if test="inGmnSosCd != null">
+ 	, ADDRSOSALL AS (
+ 	      SELECT
+			      ADDR_CODE_PREF
+			    , ADDR_CODE_CITY
+			    , TK_CITY_CD
+			    , SOS_CD
+			    , UP_SOS_CD
+			FROM
+			 		M_RDM_ADDR
+			WHERE 1=1
+ 			<if test="inGmnBumonRank == 2">AND UP_SOS_CD = #{inGmnSosCd}</if>
+ 			<if test="inGmnBumonRank == 3">AND SOS_CD = #{inGmnSosCd}</if>
+        )
+        </if>
+        </if>
         select count(*) CNT_HCP
         from (
-                WITH ULT_ONLY AS (
-                    SELECT
-                        DCF_ISHI_CD
-                    FROM
-                        T_RDM_M_MDB_HCP_MST MDB_HCP_MST_SUB
-                    WHERE
-                    NOT EXISTS
-                    (
-                        SELECT
-                            ULT_DOC_NO
-                        FROM
-                            M_RDM_HCP_MST HCP_MST_SUB
-                        WHERE
-                            MDB_HCP_MST_SUB.DCF_ISHI_CD = HCP_MST_SUB.ULT_DOC_NO
-                    )
-                )
-<!--                 -サブクエリ用　武田側 -->
-
-<!--                 , TKD_INS_NAME AS ( -->
-<!--                         SELECT DISTINCT -->
-<!--                             HCP_MST.DOC_NO -->
-<!--                            ,NVL(LISTAGG(HCO_MST.INS_ABBR_NAME || '(' || HCP_SHOZOKU_BUKA_TKD.DEPT_KJ || ':' || HCP_YAKUSHOKU_TKD.TITLE_KJ || ')', CHR(10)) WITHIN GROUP (order by null),'') INS_NAME -->
-<!--                         FROM -->
-<!--                             M_RDM_HCP_MST HCP_MST -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCP_WORK HCP_WORK -->
-<!--                             ON -->
-<!--                             HCP_WORK.DOC_NO = HCP_MST.DOC_NO -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCO_MST HCO_MST -->
-<!--                             ON -->
-<!--                             HCO_MST.INS_NO = HCP_WORK.INS_NO -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA_TKD -->
-<!--                             ON -->
-<!--                             HCP_SHOZOKU_BUKA_TKD.DEPT_CODE = HCP_WORK.DEPT_CODE -->
-<!--                             AND HCP_SHOZOKU_BUKA_TKD.DEL_FLG = '0' -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU_TKD -->
-<!--                             ON -->
-<!--                             HCP_YAKUSHOKU_TKD.TITLE_CODE = HCP_WORK.TITLE_CODE -->
-<!--                             AND HCP_YAKUSHOKU_TKD.DEL_FLG = '0' -->
-<!--                             GROUP BY HCP_MST.DOC_NO -->
-<!--                             ORDER BY HCP_MST.DOC_NO -->
-<!--                 ) -->
-<!--                 -サブクエリ用　ULT側 -->
-<!--                 ,ULT_INS_NAME AS ( -->
-<!--                         SELECT DISTINCT -->
-<!--                             MDB_HCP_MST.DCF_ISHI_CD -->
-<!--                            ,NVL(LISTAGG(MDB_HCO_MST.SHISETSU_NM || '(' || HCP_SHOZOKU_BUKA_ULT.DEPT_KJ || ':' || HCP_YAKUSHOKU_ULT.TITLE_KJ || ')', CHR(10)) WITHIN GROUP (order by null),'') INS_NAME -->
-<!--                         FROM -->
-<!--                             T_RDM_M_MDB_HCP_MST MDB_HCP_MST -->
-<!--                             LEFT JOIN -->
-<!--                             T_RDM_M_MDB_HCP_KINMUSAKI MDB_HCP_KINMUSAKI -->
-<!--                             ON -->
-<!--                             MDB_HCP_KINMUSAKI.DCF_ISHI_CD = MDB_HCP_MST.DCF_ISHI_CD -->
-<!--                             LEFT JOIN -->
-<!--                             T_RDM_M_MDB_HCO_MST MDB_HCO_MST -->
-<!--                             ON -->
-<!--                             MDB_HCO_MST.DCF_SHISETSU_CD = MDB_HCP_KINMUSAKI.KINMUSAKI_SHISETSU_CD -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCP_SHOZOKU_BUKA_LNK_MST HCP_SHOZOKU_BUKA_LNK_MST -->
-<!--                             ON -->
-<!--                             HCP_SHOZOKU_BUKA_LNK_MST.SHOZOKU_BUKA_CD = MDB_HCP_KINMUSAKI.SHOZOKUBUKA_CD -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA_ULT -->
-<!--                             ON -->
-<!--                             HCP_SHOZOKU_BUKA_ULT.DEPT_CODE = HCP_SHOZOKU_BUKA_LNK_MST.DEPT_CODE -->
-<!--                             AND HCP_SHOZOKU_BUKA_ULT.DEL_FLG = '0' -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCP_YAKUSHOKU_LNK_MST HCP_YAKUSHOKU_LNK_MST -->
-<!--                             ON -->
-<!--                             HCP_YAKUSHOKU_LNK_MST.YAKUSHOKU_CD = MDB_HCP_KINMUSAKI.YAKUSHOKU_CD -->
-<!--                             LEFT JOIN -->
-<!--                             M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU_ULT -->
-<!--                             ON -->
-<!--                             HCP_YAKUSHOKU_ULT.TITLE_CODE = HCP_YAKUSHOKU_LNK_MST.TITLE_CODE -->
-<!--                             AND HCP_YAKUSHOKU_ULT.DEL_FLG = '0' -->
-<!--                             GROUP BY MDB_HCP_MST.DCF_ISHI_CD -->
-<!--                             ORDER BY MDB_HCP_MST.DCF_ISHI_CD -->
-<!--                 ) -->
-                SELECT
-<!--                     MAX(HCP_MST.DOC_KANJ) DOC_KANJ -->
-<!--                    ,MAX(HCP_MST.DOC_KANA) DOC_KANA -->
-                    HCP_MST.DOC_NO
-<!--                    ,MAX(NVL2(HCP_MST.DOB_YYYY,HCP_MST.DOB_YYYY || '/' || HCP_MST.DOB_MM || '/' || HCP_MST.DOB_DD, '')) DOB -->
-<!--                    ,MAX(HCP_SHUSSHINKO_TKD_DOC.UNIV_KJ) UNIV_KJ -->
-<!--                    ,MAX(HCP_MST.GRAD_YEAR) GRAD_YEAR -->
-<!--                    ,MAX(ISHI_KBN.VALUE1_KANJ) VALUE1_KANJ -->
-<!--                    ,MAX(HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_KJ) IKYOKU_KJ -->
-<!--                    ,MAX(REPLACE(TKD_INS_NAME.INS_NAME,'(:)','')) INS_NAME -->
-<!--                    ,MAX(HCP_MST.OLD_KANJ_SEI) OLD_KANJ_SEI -->
-<!--                    ,MAX(MDB_HCP_MST.ISHI_NM) ISHI_NM -->
-<!--                    ,MAX(MDB_HCP_MST.ISHI_NM_KANA) ISHI_NM_KANA -->
-                   ,MDB_HCP_MST.DCF_ISHI_CD
-<!--                    ,MAX(NVL2(MDB_HCP_MST.SEINENGAPPI_SR,SUBSTR(MDB_HCP_MST.SEINENGAPPI_SR,1,4) || '/' || SUBSTR(MDB_HCP_MST.SEINENGAPPI_SR,5,2) || '/' || SUBSTR(MDB_HCP_MST.SEINENGAPPI_SR,7,2) ,'')) ULT_DOB -->
-<!--                    ,MAX(HCP_SHUSSHINKO_ULT_DOC.UNIV_KJ) ULT_UNIV_KJ -->
-<!--                    ,MAX(MDB_HCP_MST.SOTSUNEN_SR) SOTSUNEN_SR -->
-<!--                    ,MAX(REPLACE(ULT_INS_NAME.INS_NAME,'(:)','')) ULT_INS_NAME -->
-<!--                    ,MAX(CASE WHEN HCP_MST.DOC_NO IS NULL AND MDB_HCP_MST.DCF_ISHI_CD IS NOT NULL THEN 1 ELSE 0 END) AS SHINKI_FLG -->
-<!--                    ,MAX(CASE WHEN HCP_MST.DOC_NO IS NOT NULL AND HCP_MST.DEL_FLG = 0 THEN 1 ELSE 0 END )AS HENSHU_FLG -->
-<!--                    ,MAX(CASE WHEN HCP_MST.DOC_NO IS NOT NULL AND HCP_MST.DEL_FLG = 1 THEN 1 ELSE 0 END )AS FUKKATSU_FLG -->
-<!--                    ,MAX(CASE WHEN JKR_SOS_ADDR.SOS_CD IS NOT NULL THEN 1 ELSE 0 END) AS MR_SHINKI_FLG -->
-<!--                    ,MAX(CASE WHEN INS_DOC_TRT_MR.JGI_NO IS NOT NULL THEN 1 ELSE 0 END) AS MR_KOUSHIN_FLG -->
+                SELECT DISTINCT
+                    MST.DOC_NO
+                   ,MST.DCF_ISHI_CD
                 FROM
-                    M_RDM_PARAM_MST PARAM_MST
-                    INNER JOIN
-                    (
-                        SELECT
-                            DOC_NO,
-                            ULT_DOC_NO
-                        FROM
-                            M_RDM_HCP_MST
-
-                        UNION
-
-                        SELECT
-                             NULL AS DOC_NO,
-                             DCF_ISHI_CD AS ULT_DOC_NO
-                        FROM
-                             ULT_ONLY
-                    ) TKD_ULT
-                    ON
-                    PARAM_MST.PARAM_NAME = 'MN_DOC'
-                    LEFT JOIN
-                    M_RDM_HCP_MST HCP_MST
-                    ON
-                    HCP_MST.DOC_NO = TKD_ULT.DOC_NO
-                    LEFT JOIN
-                    T_RDM_M_MDB_HCP_MST MDB_HCP_MST
-                    ON
-                    MDB_HCP_MST.DCF_ISHI_CD = TKD_ULT.ULT_DOC_NO
-                    LEFT JOIN
-                    M_RDM_HCP_WORK HCP_WORK
-                    ON
-                    HCP_WORK.DOC_NO = HCP_MST.DOC_NO
-                    LEFT JOIN
-                    M_RDM_HCO_MST HCO_MST
-                    ON
-                    HCO_MST.INS_NO = HCP_WORK.INS_NO
-                    LEFT JOIN
-                    T_RDM_M_MDB_HCP_KINMUSAKI MDB_HCP_KINMUSAKI
-                    ON
-                    MDB_HCP_KINMUSAKI.DCF_ISHI_CD = MDB_HCP_MST.DCF_ISHI_CD
-                    LEFT JOIN
-                    T_RDM_M_MDB_HCO_MST MDB_HCO_MST
-                    ON
-                    MDB_HCO_MST.DCF_SHISETSU_CD = MDB_HCP_KINMUSAKI.KINMUSAKI_SHISETSU_CD
-                    LEFT JOIN
-                    M_RDM_HCP_SHOZOKU_BUKA_LNK_MST HCP_SHOZOKU_BUKA_LNK_MST
-                    ON
-                    HCP_SHOZOKU_BUKA_LNK_MST.SHOZOKU_BUKA_CD = MDB_HCP_KINMUSAKI.SHOZOKUBUKA_CD
+                    MST
+		            LEFT JOIN
+		            TKD_WORK
+		            ON
+		            TKD_WORK.DOC_NO = MST.DOC_NO
+		            LEFT JOIN
+		            ULT_WORK
+		            ON
+		            ULT_WORK.DCF_ISHI_CD = MST.DCF_ISHI_CD
+	<if test="inGmnJgiNo == null">
+	 		<if test="inGmnSosCd != null">
+			 		INNER JOIN
+			 		ADDRSOSALL
+			 		ON 1=1
+			        AND ((TKD_WORK.INS_NO IS NOT NULL AND ADDRSOSALL.ADDR_CODE_PREF = TKD_WORK.ADDR_CODE_PREF AND ADDRSOSALL.TK_CITY_CD = TKD_WORK.TK_CITY_CD)
+			              OR
+			             (TKD_WORK.INS_NO IS NULL AND ADDRSOSALL.ADDR_CODE_PREF = ULT_WORK.TODOFUKEN_CD AND ADDRSOSALL.ADDR_CODE_CITY = ULT_WORK.SHIKUCHOSON_CD))
+			</if>
+	</if>
                     LEFT JOIN
                     M_RDM_HCP_SHUSSHINKO_LNK_MST SHUSSHINKO_LNK_MST
                     ON
-                    SHUSSHINKO_LNK_MST.SHUSSHINKO_CD = MDB_HCP_MST.SHUSSHINKO_CD
+                    SHUSSHINKO_LNK_MST.SHUSSHINKO_CD = MST.SHUSSHINKO_CD
+	<if test="inGmnJgiNo != null">
                     LEFT JOIN
                     M_RDM_JKR_MR_INS_DOC_TRT INS_DOC_TRT
                     ON
-                    INS_DOC_TRT.DOC_NO = HCP_MST.DOC_NO
-                    LEFT JOIN
-                    M_RDM_JGI_SOS_MST JGI_SOS_MST
-                    ON
-                    JGI_SOS_MST.JGI_NO = INS_DOC_TRT.JGI_NO
-
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_SHUSSHINKO HCP_SHUSSHINKO_TKD_DOC -->
-<!--                     ON -->
-<!--                     HCP_SHUSSHINKO_TKD_DOC.UNIV_CODE = HCP_MST.MED_SCH -->
-<!--                     AND HCP_SHUSSHINKO_TKD_DOC.UNIV_FLG = '1' -->
-<!--                     AND HCP_SHUSSHINKO_TKD_DOC.DEL_FLG = '0' -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_SHUSSHINKO HCP_SHUSSHINKO_ULT_DOC -->
-<!--                     ON -->
-<!--                     HCP_SHUSSHINKO_ULT_DOC.UNIV_CODE = SHUSSHINKO_LNK_MST.UNIV_CODE -->
-<!--                     AND HCP_SHUSSHINKO_ULT_DOC.UNIV_FLG = '1' -->
-<!--                     AND HCP_SHUSSHINKO_ULT_DOC.DEL_FLG = '0' -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_SHUSSHINKO HCP_SHUSSHINKO_TKD_IKYOKU -->
-<!--                     ON -->
-<!--                     HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_CODE = HCP_MST.H_UNIV -->
-<!--                     AND HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_FLG = '1' -->
-<!--                     AND HCP_SHUSSHINKO_TKD_IKYOKU.DEL_FLG = '0' -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA_TKD -->
-<!--                     ON -->
-<!--                     HCP_SHOZOKU_BUKA_TKD.DEPT_CODE = HCP_WORK.DEPT_CODE -->
-<!--                     AND HCP_SHOZOKU_BUKA_TKD.DEL_FLG = '0' -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA_ULT -->
-<!--                     ON -->
-<!--                     HCP_SHOZOKU_BUKA_ULT.DEPT_CODE = HCP_SHOZOKU_BUKA_LNK_MST.DEPT_CODE -->
-<!--                     AND HCP_SHOZOKU_BUKA_ULT.DEL_FLG = '0' -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU_TKD -->
-<!--                     ON -->
-<!--                     HCP_YAKUSHOKU_TKD.TITLE_CODE = HCP_WORK.TITLE_CODE -->
-<!--                     AND HCP_YAKUSHOKU_TKD.DEL_FLG = '0' -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_YAKUSHOKU_LNK_MST HCP_YAKUSHOKU_LNK_MST -->
-<!--                     ON -->
-<!--                     HCP_YAKUSHOKU_LNK_MST.YAKUSHOKU_CD = MDB_HCP_KINMUSAKI.YAKUSHOKU_CD -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU_ULT -->
-<!--                     ON -->
-<!--                     HCP_YAKUSHOKU_ULT.TITLE_CODE = HCP_YAKUSHOKU_LNK_MST.TITLE_CODE -->
-<!--                     AND HCP_YAKUSHOKU_ULT.DEL_FLG = '0' -->
-<!--                     LEFT JOIN -->
-<!--                     TKD_INS_NAME -->
-<!--                     ON -->
-<!--                     TKD_INS_NAME.DOC_NO = HCP_MST.DOC_NO -->
-<!--                     LEFT JOIN -->
-<!--                     ULT_INS_NAME -->
-<!--                     ON -->
-<!--                     ULT_INS_NAME.DCF_ISHI_CD = MDB_HCP_MST.DCF_ISHI_CD -->
-<!--                     LEFT JOIN -->
-<!--                     M_RDM_CODE_MST ISHI_KBN -->
-<!--                     ON -->
-<!--                     ISHI_KBN.CODE_NAME = 'DOC_TYPE' -->
-<!--                     AND ISHI_KBN.DEL_FLG = '0' -->
-<!--                     AND ISHI_KBN.VALUE1 = HCP_MST.DOC_TYPE -->
-                    LEFT JOIN
-                    COM_POS_ADDR POS_ADDR
-                    ON
-                    POS_ADDR.ADDR_CODE_PREF = MDB_HCO_MST.TODOFUKEN_CD
-                    AND POS_ADDR.ADDR_CODE_CITY = MDB_HCO_MST.SHIKUCHOSON_CD
-                    LEFT JOIN
-                    S_RDM_JKR_SOS_ADDR JKR_SOS_ADDR
-                    ON
-                    JKR_SOS_ADDR.ADDR_CODE_PREF = POS_ADDR.ADDR_CODE_PREF
-                    AND JKR_SOS_ADDR.TK_CITY_CD = POS_ADDR.ADDR_CODE_CITY
-                    AND JKR_SOS_ADDR.SOS_CD = #{inSosCd}
-                    LEFT JOIN
-                    M_RDM_JKR_MR_INS_DOC_TRT INS_DOC_TRT_MR
-                    ON
-                    INS_DOC_TRT_MR.DOC_NO = HCP_MST.DOC_NO
-                    AND INS_DOC_TRT_MR.JGI_NO = #{inJgiNo}
+                    INS_DOC_TRT.DOC_NO = MST.DOC_NO
+	</if>
                 <where> 1 = 1
                 --1 氏名漢字(全角)※
-                <if test="inKanjiSrch != null">AND (HCP_MST.DOC_KANJI_SRCH like '%' || #{inKanjiSrch} || '%' OR  MDB_HCP_MST.ISHI_NM_SRCH like '%' || #{inKanjiSrch} || '%')</if>
+                <if test="inKanjiSrch != null">AND (MST.DOC_KANJI_SRCH like '%' || #{inKanjiSrch} || '%' OR  MST.ISHI_NM_SRCH like '%' || #{inKanjiSrch} || '%')</if>
                 --2 氏名カナ(半角カナ)※
-                <if test="inKanaSrch != null">AND (HCP_MST.DOC_KANA_SRCH like '%' || #{inKanaSrch} || '%' OR  MDB_HCP_MST.ISHI_NM_KANA_SRCH like '%' || #{inKanaSrch} || '%')</if>
+                <if test="inKanaSrch != null">AND (MST.DOC_KANA_SRCH like '%' || #{inKanaSrch} || '%' OR  MST.ISHI_NM_KANA_SRCH like '%' || #{inKanaSrch} || '%')</if>
                 --3 医師／薬剤師区分
-                <if test="inDocType != null">AND (HCP_MST.DOC_TYPE = #{inDocType})</if>
+                <if test="inDocType != null">AND (MST.DOC_TYPE = #{inDocType})</if>
                 --4 医師固定C
-                <if test="inDocNo != null">AND (HCP_MST.DOC_NO = #{inDocNo})</if>
+                <if test="inDocNo != null">AND (MST.DOC_NO = #{inDocNo})</if>
                 --5 ULT医師コード
-                <if test="inDcfIshiCd != null">AND (MDB_HCP_MST.DCF_ISHI_CD = #{inDcfIshiCd})</if>
+                <if test="inDcfIshiCd != null">AND (MST.DCF_ISHI_CD = #{inDcfIshiCd})</if>
                 --6 医師属性
-                <if test="inDocAttribute != null">AND HCP_MST.DOC_ATTRIBUTE = #{inDocAttribute}</if>
+                <if test="inDocAttribute != null">AND MST.DOC_ATTRIBUTE = #{inDocAttribute}</if>
                 --7 出身校
-                <if test="inMedSch != null">AND (HCP_MST.MED_SCH = #{inMedSch} OR  SHUSSHINKO_LNK_MST.UNIV_CODE = #{inMedSch})</if>
+                <if test="inMedSch != null">AND (MST.MED_SCH = #{inMedSch} OR  SHUSSHINKO_LNK_MST.UNIV_CODE = #{inMedSch})</if>
                 --8 卒年
-                <if test="inGradYear != null">AND (HCP_MST.GRAD_YEAR = #{inGradYear} OR  MDB_HCP_MST.SOTSUNEN_SR = #{inGradYear})</if>
+                <if test="inGradYear != null">AND (MST.GRAD_YEAR = #{inGradYear} OR  MST.SOTSUNEN_SR = #{inGradYear})</if>
                 --9 出身医局校
-                <if test="inHUniv != null">AND (HCP_MST.H_UNIV = #{inHUniv})</if>
+                <if test="inHUniv != null">AND (MST.H_UNIV = #{inHUniv})</if>
                 --10 ULT接続が武田情報のみ
-                <if test="inSetsuzoku == 0">AND (MDB_HCP_MST.DCF_ISHI_CD IS NULL)</if>
+                <if test="inSetsuzoku == 0">AND (MST.DCF_ISHI_CD IS NULL)</if>
                 --10 ULT接続がULT情報のみ
-                <if test="inSetsuzoku == 1">AND (HCP_MST.DOC_NO IS NULL)</if>
+                <if test="inSetsuzoku == 1">AND (MST.DOC_NO IS NULL)</if>
                 --10 ULT接続が武田-ULT接続済み
-                <if test="inSetsuzoku == 2">AND (HCP_MST.DOC_NO IS NOT NULL AND  MDB_HCP_MST.DCF_ISHI_CD IS NOT NULL)</if>
+                <if test="inSetsuzoku == 2">AND (MST.DOC_NO IS NOT NULL AND  MST.DCF_ISHI_CD IS NOT NULL)</if>
                 --11 組織選択
-                <if test="inGmnBumonRank == 2">AND (JGI_SOS_MST.UP_SOS_CD = #{inGmnSosCd})</if>
-                <if test="inGmnBumonRank == 3">AND (JGI_SOS_MST.SOS_CD = #{inGmnSosCd})</if>
+                <if test="inGmnJgiNo == null">
+				<if test="inGmnSosCd != null">
+	                <if test="inGmnBumonRank == 2">AND (ADDRSOSALL.UP_SOS_CD = #{inGmnSosCd})</if>
+	                <if test="inGmnBumonRank == 3">AND (ADDRSOSALL.SOS_CD = #{inGmnSosCd})</if>
+                </if>
+                </if>
                 --12 担当者選択
-                <if test="inGmnJgiNo != null">AND (JGI_SOS_MST.BR_CODE = #{inGmnBrCode} AND JGI_SOS_MST.DIST_CODE = #{inGmnDistCode} AND INS_DOC_TRT.JGI_NO = #{inGmnJgiNo})</if>
+                <if test="inGmnJgiNo != null">AND (INS_DOC_TRT.JGI_NO = #{inGmnJgiNo})</if>
                 --13 施設固定C
-                <if test="inInsNo != null">AND (HCO_MST.INS_NO = #{inInsNo})</if>
+                <if test="inInsNo != null">AND (TKD_WORK.INS_NO = #{inInsNo})</if>
                 --14 所属部科コード
-                <if test="inDeptCode != null">AND (HCP_WORK.DEPT_CODE = #{inDeptCode} OR  HCP_SHOZOKU_BUKA_LNK_MST.DEPT_CODE = #{inDeptCode})</if>
-                AND NOT EXISTS(
-                    SELECT *
-                    FROM M_RDM_HCP_MST DEL_HCP_MST
-                    WHERE 1 = 1
-                    AND HCP_MST.DOC_NO = DEL_HCP_MST.DOC_NO
-                    AND HCP_MST.DEL_FLG = '1'
-                    AND HCP_MST.DEL_REASON = '02')
-                --削除理由 重複登録除き(ULT側)
-                AND NOT EXISTS(
-                    SELECT *
-                    FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
-                    WHERE 1 = 1
-                    AND MDB_HCP_MST.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
-                    AND MDB_HCP_MST.SHUSEI_KBN = 'C'
-                    AND MDB_HCP_MST.SAKUJYO_YOTEI_RIYU_CD = '5')
+                <if test="inDeptCode != null">AND (TKD_WORK.DEPT_CODE = #{inDeptCode} OR  ULT_WORK.DEPT_CODE = #{inDeptCode})</if>
                 </where>
-                GROUP BY HCP_MST.DOC_NO,MDB_HCP_MST.DCF_ISHI_CD
-<!--                 -ソートID NULL OR '0' -->
-<!--                 <if test="inSortId == 0 or inSortId == null">ORDER BY DOC_KANA NULLS FIRST</if> -->
-<!--                 -ソートID '1' -->
-<!--                 <if test="inSortId == 1">ORDER BY DOC_KANA DESC NULLS LAST</if> -->
-<!--                 -ソートID '2' -->
-<!--                 <if test="inSortId == 2">ORDER BY DOC_KANJ NULLS FIRST</if> -->
-<!--                 -ソートID '3' -->
-<!--                 <if test="inSortId == 3">ORDER BY DOC_KANJ DESC NULLS LAST</if> -->
-<!--                 -ソートID '4' -->
-<!--                 <if test="inSortId == 4">ORDER BY DOC_NO NULLS FIRST</if> -->
-<!--                 -ソートID '5' -->
-<!--                 <if test="inSortId == 5">ORDER BY DOC_NO DESC NULLS LAST</if> -->
-<!--                 -ソートID '6' -->
-<!--                 <if test="inSortId == 6">ORDER BY ISHI_NM NULLS FIRST</if> -->
-<!--                 -ソートID '7' -->
-<!--                 <if test="inSortId == 7">ORDER BY ISHI_NM DESC NULLS LAST</if> -->
-<!--                 -ソートID '8' -->
-<!--                 <if test="inSortId == 8">ORDER BY ISHI_NM_KANA NULLS FIRST</if> -->
-<!--                 -ソートID '9' -->
-<!--                 <if test="inSortId == 9">ORDER BY ISHI_NM_KANA DESC NULLS LAST</if> -->
+                GROUP BY MST.DOC_NO,MST.DCF_ISHI_CD
                 ) SELECT_HCP
     </select>
     <select id="selectNd102ClosedCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectNd102ClosedCheckEntity" resultMap="selectNd102ClosedCheckResultMap">
@@ -683,7 +685,26 @@
     </select>
     <select id="selectNC209MainData" parameterType="jp.co.takeda.rdm.entity.join.SelectNC209MainDataEntity" resultMap="selectNC209MainDataResultMap">
           WITH
-          TKD_INS_NAME AS (--サブクエリ用
+           MST AS (
+ 			SELECT
+				  TKD.DOC_NO
+				, TKD.DOC_KANJ
+				, TKD.DOC_KANA
+				, TKD.DOB_YYYY
+				, TKD.DOB_MM
+				, TKD.DOB_DD
+				, TKD.GRAD_YEAR
+				, TKD.OLD_KANJ_SEI
+				, TKD.MED_SCH
+				, TKD.H_UNIV
+				, TKD.DOC_TYPE
+				, TKD.DOC_KANJI_SRCH
+				, TKD.DOC_KANA_SRCH
+				, TKD.DOC_ATTRIBUTE
+ 			FROM
+ 			M_RDM_HCP_MST TKD -- 医師_基本情報 武田施設すべて
+ 			)
+         , TKD_INS_NAME AS (--サブクエリ用
                   SELECT
                       HCP_MST.DOC_NO
                      ,NVL(LISTAGG(HCO_MST.INS_ABBR_NAME || '(' || HCP_SHOZOKU_BUKA_TKD.DEPT_KJ || ':' || HCP_YAKUSHOKU_TKD.TITLE_KJ || ')', CHR(10)) WITHIN GROUP (ORDER BY NULL),'') INS_NAME
@@ -709,6 +730,44 @@
                       AND HCP_YAKUSHOKU_TKD.DEL_FLG = '0'
                       GROUP BY HCP_MST.DOC_NO
           )
+		,TKD_WORK AS (
+		SELECT DISTINCT
+			  HCP_WORK.DOC_NO
+			, HCP_WORK.INS_NO
+			, HCP_WORK.DEPT_CODE
+			, HCO_MST.ADDR_CODE_PREF
+			, HCO_MST.TK_CITY_CD
+		    , CDMST.VALUE1 AS DUMMY_HCO
+		  FROM
+			M_RDM_HCP_WORK HCP_WORK
+		  LEFT JOIN
+			M_RDM_HCO_MST HCO_MST
+		    ON 1=1
+		   AND HCO_MST.INS_NO = HCP_WORK.INS_NO
+		  LEFT JOIN
+		    M_RDM_CODE_MST CDMST
+		    ON 1=1
+		   AND CDMST.CODE_NAME = 'DUMMY_HCO'
+		   AND CDMST.DEL_FLG = '0'
+		   AND CDMST.VALUE1 = HCP_WORK.INS_NO
+		)
+        <if test="inGmnJgiNo == null">
+		<if test="inGmnSosCd != null">
+ 	, ADDRSOSALL AS (
+ 	      SELECT
+			      ADDR_CODE_PREF
+			    , ADDR_CODE_CITY
+			    , TK_CITY_CD
+			    , SOS_CD
+			    , UP_SOS_CD
+			FROM
+			 		M_RDM_ADDR
+			WHERE 1=1
+ 			<if test="inGmnBumonRank == 2">AND UP_SOS_CD = #{inGmnSosCd}</if>
+ 			<if test="inGmnBumonRank == 3">AND SOS_CD = #{inGmnSosCd}</if>
+        )
+        </if>
+        </if>
         <if test="inSelectKbn == 0">
           SELECT /*+ OPT_PARAM('_COMPLEX_VIEW_MERGING','FALSE') */
               COUNT(*) AS REC_CNT
@@ -727,23 +786,19 @@
                    ,MAX(REPLACE(TKD_INS_NAME.INS_NAME,'(:)','')) INS_NAME
                    ,MAX(HCP_MST.OLD_KANJ_SEI) OLD_KANJ_SEI
                 FROM
-                    M_RDM_HCP_MST HCP_MST
-                    LEFT JOIN
-                    M_RDM_JKR_MR_INS_DOC_TRT INS_DOC_TRT
-                    ON
-                    INS_DOC_TRT.DOC_NO = HCP_MST.DOC_NO
-                    LEFT JOIN
-                    M_RDM_JGI_SOS_MST JGI_SOS_MST
-                    ON
-                    JGI_SOS_MST.JGI_NO = INS_DOC_TRT.JGI_NO
-                    LEFT JOIN
-                    M_RDM_HCP_WORK HCP_WORK
-                    ON
-                    HCP_WORK.DOC_NO = HCP_MST.DOC_NO
-                    LEFT JOIN
-                    M_RDM_HCO_MST HCO_MST
-                    ON
-                    HCO_MST.INS_NO = HCP_WORK.INS_NO
+                    MST HCP_MST
+		            LEFT JOIN
+		            TKD_WORK HCP_WORK
+		            ON
+		            HCP_WORK.DOC_NO = HCP_MST.DOC_NO
+	<if test="inGmnJgiNo == null">
+	 		<if test="inGmnSosCd != null">
+			 		INNER JOIN
+			 		ADDRSOSALL
+			 		ON 1=1
+			        AND (HCP_WORK.INS_NO IS NOT NULL AND ADDRSOSALL.ADDR_CODE_PREF = HCP_WORK.ADDR_CODE_PREF AND ADDRSOSALL.TK_CITY_CD = HCP_WORK.TK_CITY_CD)
+			</if>
+	</if>
                     LEFT JOIN
                     M_RDM_HCP_SHUSSHINKO HCP_SHUSSHINKO_TKD_DOC
                     ON
@@ -757,16 +812,6 @@
                     AND HCP_SHUSSHINKO_TKD_IKYOKU.UNIV_FLG = '1'
                     AND HCP_SHUSSHINKO_TKD_IKYOKU.DEL_FLG = '0'
                     LEFT JOIN
-                    M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU_BUKA_TKD
-                    ON
-                    HCP_SHOZOKU_BUKA_TKD.DEPT_CODE = HCP_WORK.DEPT_CODE
-                    AND HCP_SHOZOKU_BUKA_TKD.DEL_FLG = '0'
-                    LEFT JOIN
-                    M_RDM_HCP_YAKUSHOKU HCP_YAKUSHOKU_TKD
-                    ON
-                    HCP_YAKUSHOKU_TKD.TITLE_CODE = HCP_WORK.TITLE_CODE
-                    AND HCP_YAKUSHOKU_TKD.DEL_FLG = '0'
-                    LEFT JOIN
                     TKD_INS_NAME
                     ON
                     TKD_INS_NAME.DOC_NO = HCP_MST.DOC_NO
@@ -776,6 +821,12 @@
                     ISHI_KBN.CODE_NAME = 'DOC_TYPE'
                     AND ISHI_KBN.DEL_FLG = '0'
                     AND ISHI_KBN.VALUE1 = HCP_MST.DOC_TYPE
+                    <if test="inGmnJgiNo != null">
+                    LEFT JOIN
+                    M_RDM_JKR_MR_INS_DOC_TRT INS_DOC_TRT
+                    ON
+                    INS_DOC_TRT.DOC_NO = HCP_MST.DOC_NO
+                    </if>
                 WHERE 1 = 1
                 --1 氏名漢字(全角)※
                 <if test="inKanjiSrch != null">AND (HCP_MST.DOC_KANJI_SRCH like '%' || #{inKanjiSrch} || '%')</if>
@@ -794,12 +845,16 @@
                 --9 出身医局校
                 <if test="inHUniv != null">AND (HCP_MST.H_UNIV = #{inHUniv})</if>
                 --11 組織選択
-                <if test="inGmnBumonRank == 2">AND (JGI_SOS_MST.UP_SOS_CD = #{inGmnSosCd})</if>
-                <if test="inGmnBumonRank == 3">AND (JGI_SOS_MST.SOS_CD = #{inGmnSosCd})</if>
+                <if test="inGmnJgiNo == null">
+				<if test="inGmnSosCd != null">
+	                <if test="inGmnBumonRank == 2">AND (ADDRSOSALL.UP_SOS_CD = #{inGmnSosCd})</if>
+	                <if test="inGmnBumonRank == 3">AND (ADDRSOSALL.SOS_CD = #{inGmnSosCd})</if>
+                </if>
+                </if>
                 --12 担当者選択
                 <if test="inGmnJgiNo != null">AND (INS_DOC_TRT.JGI_NO = #{inGmnJgiNo})</if>
                 --13 施設固定C
-                <if test="inInsNo != null">AND (HCO_MST.INS_NO = #{inInsNo})</if>
+                <if test="inInsNo != null">AND (HCP_WORK.INS_NO = #{inInsNo})</if>
                 --14 所属部科コード
                 <if test="inDeptCode != null">AND (HCP_WORK.DEPT_CODE = #{inDeptCode})</if>
 

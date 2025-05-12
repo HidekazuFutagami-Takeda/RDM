@@ -445,11 +445,11 @@
          SELECT
              BUMON_RYAKU_NAME
          FROM
-             M_RDM_JGI_SOS_MST JGI_SOS_MST
+             M_RDM_SOS_MST SOS_MST
              INNER JOIN
                  SOS_LNK
              ON
-                 JGI_SOS_MST.SOS_CD = SOS_LNK.UP_SOS_CD
+                 SOS_MST.SOS_CD = SOS_LNK.UP_SOS_CD
     </select>
     <select id="selectCntUnderSos" parameterType="jp.co.takeda.rdm.entity.join.SelectCntUnderSosEntity" resultMap="selectCntUnderSosResultMap">
          SELECT SOS_CD CNT_SOS

@@ -27,6 +27,7 @@ import jp.co.takeda.rdm.dto.ND103DTO;
 import jp.co.takeda.rdm.dto.ND311DTO;
 import jp.co.takeda.rdm.entity.MRdmHcpYakusyokuEntity;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
+import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
@@ -685,5 +686,17 @@ public class ND311Service extends BaseService {
         dto.setYakushinMap(yakushinMap);
      // END UOC
         return outdto;
+    }
+
+    public String getNextBizday() {
+    	Date systemDate = DateUtils.getNowDate();
+        SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMdd");
+        String sysDate = fmtDate.format(systemDate);
+
+    	RdmCommonEntity rdmCommonEntity = new RdmCommonEntity("getNextBizday");
+    	rdmCommonEntity.setInVBatDate(sysDate.replace("-", ""));
+    	List<RdmCommonEntity> rdmCommonEntityList = dao.select(rdmCommonEntity);
+
+    	return rdmCommonEntityList.get(0).getNextBizday();
     }
 }

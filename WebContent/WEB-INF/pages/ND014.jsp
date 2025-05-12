@@ -89,9 +89,9 @@
       if (kbn == '2'){//I014	ステータスを審査済みに変更します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I014.msgData" />';
       }
-      if (kbn == '3'){//I012	申請データを承認します。よろしいですか？
-          msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
-      }
+//       if (kbn == '3'){//I012	申請データを承認します。よろしいですか？
+//           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
+//       }
       if (kbn == '4'){//I007	申請データを破棄します。よろしいですか？
           msgContent = '<s:property value="#session.UserInfoKey.msgMap.I007.msgData" />';
       }
@@ -100,7 +100,8 @@
 
 
     function comSetFormWindowInfo(){
-        comSetFormWindowName('ND014');
+        //comSetFormWindowName('ND014');
+        comClickFlgInit();
         if(document.fm1.unknownFlg.checked == true){
             //勤務先不明 ON
             document.fm1.skUnivPosCd.disabled = true;
@@ -159,6 +160,12 @@
      <s:hidden name="loginDistCd"/>
      <s:hidden name="shnFlg"/>
      <s:hidden name="msgId" value="%{msgId}"/>
+     <%-- 施設検索ポップアップ用 --%>
+    <s:hidden id="paramSosCd" name="paramSosCd" value="" />
+    <s:hidden id="paramSosName" name="paramSosName" value="" />
+    <s:hidden id="paramSosRank" name="paramSosRank" value="" />
+    <s:hidden id="paramJgiNo" name="paramJgiNo" value="" />
+    <s:hidden id="paramJgiName" name="paramJgiName" value="" />
     <%-- 所属部科ポップアップ用パラメータ --%>
     <input type="hidden" name="cdcCheckedCodes" value="" />
     <input type="hidden" name="paramInsNo" value="" />
@@ -329,10 +336,10 @@
 	      <td class="comFormTableItem">
                 <nobr>
                 <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "03" || reqStsCd == "13")}'>
-	               <s:checkbox name="unknownFlg" tabIndex="-1" onclick="skCheck(this);" /><label for="unknownFlg">勤務先不明</label>
+	               <s:checkbox id="unknownFlg" name="unknownFlg" tabIndex="-1" onclick="skCheck(this);" /><label for="unknownFlg">勤務先不明</label>
 	            </s:if>
 				<s:else>
-			      &nbsp;
+			      <s:hidden name="unknownFlg"/>
 				</s:else>
                 </nobr>
 	      </td>
@@ -360,7 +367,7 @@
 	  </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>大学職位<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 			      <s:select id="skUnivPosCd" name="skUnivPosCd" cssStyle="width:80pt" list ="skUnivPosCdCombo"/>

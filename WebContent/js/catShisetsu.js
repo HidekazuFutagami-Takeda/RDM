@@ -57,6 +57,16 @@ function cseView(w, callBack, winVarName, clearProc){
   joken[ix1++] = new Array(document.fm1.loginJokenSetCd.value);
   jokenName[ix1] = "backScreenId";
   joken[ix1++] = new Array(document.fm1.backScreenId.value);
+  jokenName[ix1] = "paramSosCd";
+  joken[ix1++] = new Array(document.fm1.paramSosCd.value);
+  jokenName[ix1] = "paramSosName";
+  joken[ix1++] = new Array(document.fm1.paramSosName.value);
+  jokenName[ix1] = "paramSosRank";
+  joken[ix1++] = new Array(document.fm1.paramSosRank.value);
+  jokenName[ix1] = "paramJgiNo";
+  joken[ix1++] = new Array(document.fm1.paramJgiNo.value);
+  jokenName[ix1] = "paramJgiName";
+  joken[ix1++] = new Array(document.fm1.paramJgiName.value);
 
 //  jokenName[ix1] = "selectFlgPop";
 //  joken[ix1++] = new Array(document.fm1.selectFlgPop.value);

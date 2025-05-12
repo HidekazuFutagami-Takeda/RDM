@@ -623,7 +623,7 @@ public class NF011Service extends BaseService {
 		createCombo(indto);
 		// 現在日付を取得
 		Date systemDate = DateUtils.getNowDate();
-		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String sysDate = fmtDate.format(systemDate);
 		SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
         String sysDateTime = fmtDateTime.format(systemDate);
@@ -1299,9 +1299,9 @@ public class NF011Service extends BaseService {
 			tRdmHcoReqInsData.setBedcnt05(indto.getBedCnt05());
 			tRdmHcoReqInsData.setBedcnt06(indto.getBedCnt06());
 			tRdmHcoReqInsData.setBedcnt07(indto.getBedCnt07());
-			tRdmHcoReqInsData.setInsShaYmd(sysDate);
+			tRdmHcoReqInsData.setInsShaYmd(systemDate);
 			tRdmHcoReqInsData.setInsShaId(indto.getLoginJgiNo());
-			tRdmHcoReqInsData.setUpdShaYmd(sysDate);
+			tRdmHcoReqInsData.setUpdShaYmd(systemDate);
 			tRdmHcoReqInsData.setUpdShaId(indto.getLoginJgiNo());
 
 			dao.insertByValue(tRdmHcoReqInsData);
@@ -1355,7 +1355,7 @@ public class NF011Service extends BaseService {
 			tRdmHcoReqUpdData.setBedcnt05(indto.getBedCnt05());
 			tRdmHcoReqUpdData.setBedcnt06(indto.getBedCnt06());
 			tRdmHcoReqUpdData.setBedcnt07(indto.getBedCnt07());
-			tRdmHcoReqUpdData.setUpdShaYmd(sysDate);
+			tRdmHcoReqUpdData.setUpdShaYmd(systemDate);
 			tRdmHcoReqUpdData.setUpdShaId(indto.getLoginJgiNo());
 
 			dao.update(tRdmHcoReqUpdData);

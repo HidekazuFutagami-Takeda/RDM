@@ -185,8 +185,23 @@ public class ND501Action extends BaseAction<ND501DTO> {
 		dto.setUpdMstTo(dto.getKensakuUpdMstTo());
 
         //必須検索条件が未入力の場合
-        if (StringUtils.isEmpty(dto.getKensakuUpdMstFrom()) ||
-        	StringUtils.isEmpty(dto.getKensakuUpdMstTo())
+        if (StringUtils.isEmpty(dto.getKensakuDocKanj()) &&
+        		StringUtils.isEmpty(dto.getKensakuDocKana()) &&
+        		StringUtils.isEmpty(dto.getKensakuDocType()) &&
+        		StringUtils.isEmpty(dto.getKensakuDocNo()) &&
+        		StringUtils.isEmpty(dto.getKensakuUltDocNo()) &&
+        		StringUtils.isEmpty(dto.getKensakuDocAttribute()) &&
+        		StringUtils.isEmpty(dto.getKensakuMedSch()) &&
+        		StringUtils.isEmpty(dto.getKensakuGradYear()) &&
+        		StringUtils.isEmpty(dto.getKensakuHuniv()) &&
+        		StringUtils.isEmpty(dto.getKensakuSTantouBrCode()) &&
+        		dto.getKensakuJgiNo() == 0 &&
+        		StringUtils.isEmpty(dto.getKensakuShinseiBrCode()) &&
+        		StringUtils.isEmpty(dto.getKensakuInsNo()) &&
+        		StringUtils.isEmpty(dto.getKensakuInsKanj()) &&
+        		StringUtils.isEmpty(dto.getKensakuReqJgiName()) &&
+        		StringUtils.isEmpty(dto.getKensakuUpdMstFrom()) &&
+        		StringUtils.isEmpty(dto.getKensakuUpdMstTo())
         		) {
 
 			errChk = true;
@@ -203,7 +218,9 @@ public class ND501Action extends BaseAction<ND501DTO> {
         // SimpleDateFormatで日付フォーマット設定
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //日付チェック 開始日が終了日より後の場合
-        if (!sdf.parse(dto.getKensakuUpdMstFrom()).before(sdf.parse(dto.getKensakuUpdMstTo()))) {
+        if (!StringUtils.isEmpty(dto.getKensakuUpdMstFrom()) &&
+        		!StringUtils.isEmpty(dto.getKensakuUpdMstTo()) &&
+        		!sdf.parse(dto.getKensakuUpdMstFrom()).before(sdf.parse(dto.getKensakuUpdMstTo()))) {
         	errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W003);// 終了日は開始日以降を選択してください。
     		if(errChk) {//エラーありなのでメッセージをセットする
@@ -270,6 +287,7 @@ public class ND501Action extends BaseAction<ND501DTO> {
         pageSetup();
         // F層呼び出し
         BaseDTO outdto = nD501Service.page(dto);
+        outdto = nD501Service.search(dto);
         if (outdto instanceof ND501DTO) {
         	// START UOC
             // END UOC

@@ -107,9 +107,16 @@
 	    function onLoadEditSet(){
 			editFlg = document.fm1.editApprFlg.value;
 			insClass = document.fm1.insClass.value;
+			pharmType = document.fm1.prePharmType.value;
 			knrFlg = "0";
 			if(document.fm1.loginJokenSetCd.value == "JKN0850"){
 				knrFlg = "1";
+			}
+
+			// 施設区分01:Uの場合のみ大学細分類活性
+			if(pharmType != "01"){
+				document.fm1.univSubdiv.disabled = true;
+				document.fm1.univSubdiv.value = "";
 			}
 
 			if(editFlg == "0") {

@@ -108,8 +108,13 @@ public class ND011Service extends BaseService {
 
 				// 医師/薬剤師区分
 				if("DCF".equals(mainDataEntity.getMdbKbn())) {
-					// 医師
-					indto.setDocType("1");
+					if("3".equals(mainDataEntity.getGakubushikibetsuCd())) {
+						// その他
+						indto.setDocType("8");
+					} else if("1".equals(mainDataEntity.getGakubushikibetsuCd())) {
+						// 医師
+						indto.setDocType("1");
+					}
 				} else if("PCF".equals(mainDataEntity.getMdbKbn())) {
 					// 薬剤師
 					indto.setDocType("2");

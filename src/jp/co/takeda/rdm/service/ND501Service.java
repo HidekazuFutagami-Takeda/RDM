@@ -316,6 +316,13 @@ public class ND501Service extends BaseService {
     		return outdto;
 	    }
 
+	    dto.initPageInfo(dto.getPageCntCur(), SelectHcoUpdHstList.size(), selectParamND501List.get(1).getValue());
+        paramEntity.setInOffset(dto.getLineCntStart() - 1);
+        paramEntity.setInLimit(selectParamND501List.get(1).getValue());
+
+        paramEntity.setSqlId("searchKmuHst");
+        SelectHcoUpdHstList = dao.select(paramEntity);
+
 	    //検索結果画面受け渡し用リスト
 	    List<HcpUpdHstDataList> hcoUpdHstDataList = new ArrayList<HcpUpdHstDataList>();
 
@@ -549,10 +556,6 @@ public class ND501Service extends BaseService {
             hcoUpdHstDataList.add(dataRecord);
         }
 
-      //検索数格納
-	    dto.initPageInfo(dto.getPageCntCur(), hcoUpdHstDataList.size(), selectParamND501List.get(1).getValue());
-	    paramEntity.setInOffset(dto.getLineCntStart() - 1);
-	    paramEntity.setInLimit(selectParamND501List.get(1).getValue());
         //検索された帳票一覧をDTOに設定する
         dto.setHcpUpdHstDataList(hcoUpdHstDataList);
 
@@ -741,6 +744,11 @@ public class ND501Service extends BaseService {
     		return outdto;
 	    }
 
+	    dto.initPageInfo(dto.getPageCntCur(), SelectHcoUpdHstList.size(), selectParamND501List.get(1).getValue());
+        paramEntity.setInOffset(dto.getLineCntStart() - 1);
+        paramEntity.setInLimit(selectParamND501List.get(1).getValue());
+        SelectHcoUpdHstList = dao.select(paramEntity);
+
 	    //検索結果画面受け渡し用リスト
 	    List<HcpUpdHstDataList> hcoUpdHstDataList = new ArrayList<HcpUpdHstDataList>();
 
@@ -848,10 +856,6 @@ public class ND501Service extends BaseService {
             hcoUpdHstDataList.add(dataRecord);
         }
 
-      //検索数格納
-	    dto.initPageInfo(dto.getPageCntCur(), hcoUpdHstDataList.size(), selectParamND501List.get(1).getValue());
-	    paramEntity.setInOffset(dto.getLineCntStart() - 1);
-	    paramEntity.setInLimit(selectParamND501List.get(1).getValue());
         //検索された帳票一覧をDTOに設定する
         dto.setHcpUpdHstDataList(hcoUpdHstDataList);
 
@@ -1040,6 +1044,11 @@ public class ND501Service extends BaseService {
     		return outdto;
 	    }
 
+	    dto.initPageInfo(dto.getPageCntCur(), SelectHcoUpdHstList.size(), selectParamND501List.get(1).getValue());
+        paramEntity.setInOffset(dto.getLineCntStart() - 1);
+        paramEntity.setInLimit(selectParamND501List.get(1).getValue());
+        SelectHcoUpdHstList = dao.select(paramEntity);
+
 	    //検索結果画面受け渡し用リスト
 	    List<HcpUpdHstDataList> hcoUpdHstDataList = new ArrayList<HcpUpdHstDataList>();
 
@@ -1126,10 +1135,6 @@ public class ND501Service extends BaseService {
             hcoUpdHstDataList.add(dataRecord);
         }
 
-      //検索数格納
-	    dto.initPageInfo(dto.getPageCntCur(), hcoUpdHstDataList.size(), selectParamND501List.get(1).getValue());
-	    paramEntity.setInOffset(dto.getLineCntStart() - 1);
-	    paramEntity.setInLimit(selectParamND501List.get(1).getValue());
         //検索された帳票一覧をDTOに設定する
         dto.setHcpUpdHstDataList(hcoUpdHstDataList);
 
@@ -1318,6 +1323,11 @@ public class ND501Service extends BaseService {
 	    	dto.setKensakuBool(false);
     		return outdto;
 	    }
+
+	    dto.initPageInfo(dto.getPageCntCur(), SelectHcoUpdHstList.size(), selectParamND501List.get(1).getValue());
+        paramEntity.setInOffset(dto.getLineCntStart() - 1);
+        paramEntity.setInLimit(selectParamND501List.get(1).getValue());
+        SelectHcoUpdHstList = dao.select(paramEntity);
 
 	    //検索結果画面受け渡し用リスト
 	    List<HcpUpdHstDataList> hcoUpdHstDataList = new ArrayList<HcpUpdHstDataList>();
@@ -1515,10 +1525,6 @@ public class ND501Service extends BaseService {
             hcoUpdHstDataList.add(dataRecord);
         }
 
-      //検索数格納
-	    dto.initPageInfo(dto.getPageCntCur(), hcoUpdHstDataList.size(), selectParamND501List.get(1).getValue());
-	    paramEntity.setInOffset(dto.getLineCntStart() - 1);
-	    paramEntity.setInLimit(selectParamND501List.get(1).getValue());
         //検索された帳票一覧をDTOに設定する
         dto.setHcpUpdHstDataList(hcoUpdHstDataList);
 

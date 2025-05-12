@@ -26,6 +26,25 @@
         <result column="UP_DIST_CODE" property="upDistCode"/>
     </resultMap>
    <select id="selectInitSos" parameterType="jp.co.takeda.rdm.entity.join.SelectInitSosEntity" resultMap="selectInitSosResultMap">
+		  with TRT_SOS as (
+            SELECT distinct
+                SOS_MST.UP_SOS_CD SOS_CD,
+				SOS_ADDR.TRT_CD
+            FROM
+                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+            INNER JOIN
+                S_RDM_JKR_SOS_ADDR SOS_ADDR
+            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
+            union all
+            SELECT distinct
+                SOS_MST.SOS_CD,
+				SOS_ADDR.TRT_CD
+            FROM
+                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+            INNER JOIN
+                S_RDM_JKR_SOS_ADDR SOS_ADDR
+            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
+		  )
         SELECT DISTINCT
             SOS_MST.BUMON_RANK BUMON_RANK,
             SOS_MST.SOS_CD SOS_CD,
@@ -48,21 +67,21 @@
             NULL
             </if>
         FROM
-            ORAUSR01.M_RDM_SOS_MST SOS_MST
+            M_RDM_SOS_MST SOS_MST
         --部門ランクが2:リージョン 以上の場合
         <if test="inBumonRank &gt;= 2">
         INNER JOIN
-            ORAUSR01.S_RDM_COM_MR_SOS_TRT SOS_TRT
-        ON SOS_MST.SOS_CD = SOS_TRT.SOS_CD
+            TRT_SOS
+        ON SOS_MST.SOS_CD = TRT_SOS.SOS_CD
         LEFT JOIN
-            ORAUSR01.M_RDM_SOS_MST UP_SOS_MST
+            M_RDM_SOS_MST UP_SOS_MST
         ON SOS_MST.UP_SOS_CD = UP_SOS_MST.SOS_CD
         </if>
         <where>
             1 = 1
             --領域コードが設定されている場合
             <if test="inTrtCd != null">
-            AND SOS_TRT.TRT_CD = #{inTrtCd}
+            AND TRT_SOS.TRT_CD = #{inTrtCd}
             </if>
             --部門ランクがセットされている場合
             <if test="inBumonRank != null">
@@ -76,6 +95,25 @@
         ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
     </select>
     <select id="selectSos" parameterType="jp.co.takeda.rdm.entity.join.SelectSosEntity" resultMap="selectSosResultMap">
+		  with TRT_SOS as (
+            SELECT distinct
+                SOS_MST.UP_SOS_CD SOS_CD,
+				SOS_ADDR.TRT_CD
+            FROM
+                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+            INNER JOIN
+                S_RDM_JKR_SOS_ADDR SOS_ADDR
+            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
+            union all
+            SELECT distinct
+                SOS_MST.SOS_CD,
+				SOS_ADDR.TRT_CD
+            FROM
+                M_RDM_SOS_MST SOS_MST --RDM用組織従業員情報
+            INNER JOIN
+                S_RDM_JKR_SOS_ADDR SOS_ADDR
+            ON SOS_MST.SOS_CD = SOS_ADDR.SOS_CD
+		  )
         SELECT DISTINCT
             SOS_MST.BUMON_RANK BUMON_RANK,
             SOS_MST.SOS_CD SOS_CD,
@@ -98,20 +136,20 @@
             NULL UP_DIST_CODE
             </if>
         FROM
-            ORAUSR01.M_RDM_SOS_MST SOS_MST
+            M_RDM_SOS_MST SOS_MST
         --部門ランクが2:リージョン 以上の場合
         <if test="inBumonRank &gt;= 2">
         INNER JOIN
-            ORAUSR01.S_RDM_COM_MR_SOS_TRT SOS_TRT
-        ON SOS_MST.SOS_CD = SOS_TRT.SOS_CD
+            TRT_SOS
+        ON SOS_MST.SOS_CD = TRT_SOS.SOS_CD
         LEFT JOIN
-            ORAUSR01.M_RDM_SOS_MST UP_SOS_MST
+            M_RDM_SOS_MST UP_SOS_MST
         ON SOS_MST.UP_SOS_CD = UP_SOS_MST.SOS_CD
             </if>
         <where>
             1 = 1
             <if test="inTrtCd != null">
-            AND SOS_TRT.TRT_CD = #{inTrtCd}
+            AND TRT_SOS.TRT_CD = #{inTrtCd}
             </if>
             --領域コードが設定されている場合
             --部門ランクがセットされている場合

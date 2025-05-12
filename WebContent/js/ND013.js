@@ -50,18 +50,18 @@ function errorCheck(checkFlg) {
  * エラーチェック
  * </pre>
  */
-function errorCheckAction(checkFlg, td) {
+function errorCheckAction(checkFlg, td, insNoKakusi) {
 
 	//エラーチェックフラグ定義
 	document.fm1.errorCheckFlg.value = checkFlg;
 
 	// 選択された行の施設固定C（隠し項目）を取り出す
-	var span = td.parentNode;
-	var td = span.parentNode;
-	var tr = td.parentNode
-	var insNoKakusiLabel = tr.lastElementChild;
-	var insNoKakusiVal = insNoKakusiLabel.textContent;
-	const insNoKakusi = insNoKakusiVal.replace(/[^0-9]/g, '');
+//	var span = td.parentNode;
+//	var td = span.parentNode;
+//	var tr = td.parentNode
+//	var insNoKakusiLabel = tr.lastElementChild;
+//	var insNoKakusiVal = insNoKakusiLabel.textContent;
+//	const insNoKakusi = insNoKakusiVal.replace(/[^0-9]/g, '');
 
 	document.fm1.insNoKakusi.value	= insNoKakusi;
 

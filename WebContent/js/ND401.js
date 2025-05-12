@@ -225,6 +225,16 @@ function deptKjHenkouClear() {
 	document.fm1.deptCodeHenkou.value = "";
 	document.fm1.deptKjHenkou.value = "";
 	document.fm1.deptKnHenkou.value = "";
+
+	// ★ボタン非活性
+	var i = 0;
+	var henkouBtn = document.getElementsByName("cseHenkouBtn")[i];
+	while(henkouBtn != undefined){
+		henkouBtn.disabled = true;
+
+		i++;
+		henkouBtn = document.getElementsByName("cseHenkouBtn")[i];
+	}
 }
 
 /**
@@ -444,6 +454,16 @@ function tmpCallBackShozokuViewHenkou(deptCode,DeptKj,DeptKn){
 	document.fm1.deptCodeHenkou.value = deptCode;
 	document.fm1.deptKjHenkou.value = DeptKj;
 	document.fm1.deptKnHenkou.value = DeptKn;
+
+	// ★ボタン活性
+	var i = 0;
+	var henkouBtn = document.getElementsByName("cseHenkouBtn")[i];
+	while(henkouBtn != undefined){
+		henkouBtn.disabled = false;
+
+		i++;
+		henkouBtn = document.getElementsByName("cseHenkouBtn")[i];
+	}
 }
 
 /**

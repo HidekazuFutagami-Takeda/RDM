@@ -18,11 +18,15 @@ import org.springframework.context.annotation.Scope;
 import jp.co.takeda.rdm.common.BaseAction;
 import jp.co.takeda.rdm.common.BaseDTO;
 import jp.co.takeda.rdm.common.BaseInfoHolder;
+import jp.co.takeda.rdm.dto.NC101DTO;
 import jp.co.takeda.rdm.dto.ND001DTO;
 import jp.co.takeda.rdm.dto.ND403DTO;
 import jp.co.takeda.rdm.service.ND403Service;
 import jp.co.takeda.rdm.util.AppConstant;
+import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
+import lombok.Getter;
+import lombok.Setter;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.exception.InvalidRequestException;
 
@@ -46,6 +50,10 @@ public class ND403Action extends BaseAction<ND403DTO> {
      */
     @Inject
     private ND403Service nD403Service;
+    // 確認画面用
+    @Getter
+    @Setter
+    private NC101DTO paramDto;
 
     // START UOC
 
@@ -127,7 +135,7 @@ public class ND403Action extends BaseAction<ND403DTO> {
 //			throw new InvalidRequestException();
 //		}
 
-		String title = "ND403_医師勤務先情報一括更新";
+		String title = "ND403_医師勤務先情報一括更新 - 申請内容確認";
 
 		dto.setTitle(title);
 
@@ -184,7 +192,30 @@ public class ND403Action extends BaseAction<ND403DTO> {
         // END UOC
     	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
+    	if("NC101".equals(dto.getForward())) {
+        	setJumpInfo("1");
+        }
+
         setNextDTO(outdto);
         return outdto.getForward();
+    }
+
+    /**
+     * 終了画面へ遷移用パラメータ設定。
+     * @param dto 登録完了画面DTO
+     * @param msgId メッセージID
+     */
+    private void setJumpInfo(String event) {
+        // メッセージオブジェクト取得
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+
+        //画面タイトル内容設定
+        paramDto = new NC101DTO();
+        // 画面タイトル
+        paramDto.setTitle("医師勤務先情報一括更新");
+        // メッセージ１
+        if (event.equals("1")) {//I002	申請が完了しました。
+            paramDto.setMessage1(loginInfo.getMsgEntity(RdmConstantsData.I002));
+        }
     }
 }

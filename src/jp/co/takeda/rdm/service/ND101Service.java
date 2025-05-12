@@ -114,7 +114,10 @@ if(!"9".equals(indto.getDisplayKbn())) {
     		indto.setReqStsNm(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqStsNm(), "-"));
     		indto.setReqSts(selectDocReqKnrInsChangeList.get(0).getReqSts());
     		indto.setReqJgiName(selectDocReqKnrInsChangeList.get(0).getReqJgiName());
-    		indto.setReqYmdhms(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqYmdhms(), "-"));
+    		if(indto.getReqYmdhms() == null) {
+    			indto.setReqYmdhms(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqYmdhms(), "-"));
+    		}
+
     		//ヘッダ部隠し項目
     		indto.setReqJgiNo(selectDocReqKnrInsChangeList.get(0).getReqJgiNo());
     		indto.setReqBrCode(selectDocReqKnrInsChangeList.get(0).getReqBrCode());
@@ -476,6 +479,10 @@ if(!"9".equals(indto.getDisplayKbn())) {
         	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
         	tRdmReqKnrInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 
+        	SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+	        String sysDateTime = fmtDateTime.format(systemDate);
+
+	        tRdmReqKnrInsData.setReqYmdhms(sysDateTime);//申請日時
         	dao.insertByValue(tRdmReqKnrInsData);
 
         }else {
@@ -504,8 +511,17 @@ if(!"9".equals(indto.getDisplayKbn())) {
         	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 
+        	SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+	        String sysDateTime = fmtDateTime.format(systemDate);
+
+	        tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);//申請日時
         	dao.update(tRdmReqKnrUpdData);
+
         }
+
+    	SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    	String strReqYmd = sdfDateTime2.format(systemDate);
+		indto.setReqYmdhms(strReqYmd);
 
         // 勤務先_申請管理
         TRdmHcpKmuReqEntity tRdmHcpKmuReqEntity = new TRdmHcpKmuReqEntity();

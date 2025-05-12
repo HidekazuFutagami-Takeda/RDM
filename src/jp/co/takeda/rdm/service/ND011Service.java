@@ -222,6 +222,22 @@ public class ND011Service extends BaseService {
 				indto.setSkInsNo(StringUtils.nvl(mainDataEntity.getSkInsNo(), ""));
 				indto.setSkDeptCd(StringUtils.nvl(mainDataEntity.getSkDeptCd(), ""));
 				indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				String strReqYmd = "";
+				if (mainDataEntity.getReqYmdhms() != null && mainDataEntity.getReqYmdhms().length() == 14) {
+					try {
+						Date reqYmd = sdfDateTime.parse(mainDataEntity.getReqYmdhms());
+						strReqYmd = sdfDateTime2.format(reqYmd);
+						indto.setReqYmdhms(strReqYmd);
+					} catch (ParseException e) {
+						e.printStackTrace();
+						indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+					}
+				} else {
+					indto.setReqYmdhms(StringUtils.nvl(mainDataEntity.getReqYmdhms(), ""));
+				}
 				indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
 				indto.setAprComment(StringUtils.nvl(mainDataEntity.getAprComment(), ""));
 				indto.setShnFlg(StringUtils.nvl(mainDataEntity.getShnFlg(), "0"));
@@ -796,6 +812,9 @@ public class ND011Service extends BaseService {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
+				SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+		        String sysDateTime = fmtDateTime.format(currentDt);
+
 				//申請管理/////////////////////////////////////////////////////////////////////////////////////
 				UpdateTRdmReqKnrEntity selectUpdateEntity = new UpdateTRdmReqKnrEntity();
 				selectUpdateEntity.setSqlId("selectUpDate");
@@ -856,6 +875,7 @@ public class ND011Service extends BaseService {
 	        		updateEntity1.setReqStsCd("01");
 	        	}
 				updateEntity1.setReqComment(indto.getReqComment());//申請コメント
+				updateEntity1.setReqYmdhms(sysDateTime);//申請日時
 				updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
@@ -1222,6 +1242,22 @@ public class ND011Service extends BaseService {
 //					return outdto;
 //				}
 				indto.setUpdShaYmd(strDate);
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				if (sysDateTime != null ) {
+					try {
+						Date reqYmd = sdfDateTime.parse(sysDateTime);
+						String strReqYmd = sdfDateTime2.format(reqYmd);
+						indto.setReqYmdhms(strReqYmd);
+					} catch (ParseException e) {
+						e.printStackTrace();
+						indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+					}
+				} else {
+					indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+				}
+
 			}else {
 				//　登録
 				// 申請ID発行
@@ -1264,6 +1300,11 @@ public class ND011Service extends BaseService {
 				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity1.setUpdShaYmd(currentDt);//更新日
 				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+
+				SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+		        String sysDateTime = fmtDateTime.format(currentDt);
+
+				insEntity1.setReqYmdhms(sysDateTime);//申請日時
 
 				dao.insertByValue(insEntity1);
 
@@ -1382,6 +1423,21 @@ public class ND011Service extends BaseService {
 				indto.setReqId(reqId);
 				indto.setReqStsCd("01");
 				indto.setReqStsNm("保存済み");
+
+				SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+				SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				if (sysDateTime != null ) {
+					try {
+						Date reqYmd = sdfDateTime.parse(sysDateTime);
+						String strReqYmd = sdfDateTime2.format(reqYmd);
+						indto.setReqYmdhms(strReqYmd);
+					} catch (ParseException e) {
+						e.printStackTrace();
+						indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+					}
+				} else {
+					indto.setReqYmdhms(StringUtils.nvl(sysDateTime, ""));
+				}
 			}
 		}
 		//審査ボタン押下の場合

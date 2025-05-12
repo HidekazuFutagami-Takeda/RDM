@@ -51,33 +51,6 @@
 			overflow : hidden;
 			}
 
-    	TD.comTableTitle			/* テーブル形式のタイトル項目 */
-			{
-			border-color: #f5f5f5;
-		   color: #000000;
-		   /* background-color: #e0e0d4; */
-		   /* background-color: #cccccc; */
-		   background-color: #e8b5a2;
-		   text-align: center;
-		   border-style: solid;
-		   border-top-width: 0px;
-		   border-left-width: 1px;
-		   border-right-width: 1px;
-		   border-bottom-width: 1px;
-		   font-size: 8pt;
-			}
-
-			TD.comTableItem {
-				color: #000000;
-			    text-align: left;
-			    border-style: solid;
-			    border-top-width: 0px;
-			    border-left-width: 1px;
-			    border-right-width: 1px;
-			    border-bottom-width: 1px;
-			    font-size: 8pt;
-			    border-color: #f5f5f5;
-			}
     </style>
 </head>
 <body class="comPage">
@@ -149,17 +122,29 @@
 	<tr><td>
 <%-- 検索部 開始 --%>
 
-	<CENTER>
-
-     	<table class="pupReferenceDetail" align="center" style="width: 600px;">
+  <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
+      <tr>
+        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+      </tr>
 	        <tr>
 	            <%-- 施設固定C --%>
+	              <td class="comTableSearchItem">&nbsp;</td>
 		          <td class="comTableSearchItem">
-		          	<nobr>施設固定C </nobr><s:property value="insNo" />
+		          	<nobr>施設固定C </nobr>
+		          </td>
+		          <td class="comTableSearchItem">
+			          <s:property value="insNo" />
 		          </td>
 	            <%-- 施設略式漢字名 --%>
 	            <td class="comTableSearchItem">
-	            	<nobr>施設略式漢字名 </nobr><s:property value="insAbbrName" />
+	            	<nobr>施設略式漢字名 </nobr>
+	            </td>
+	            <td>
+	            	<s:property value="insAbbrName" />
 	            </td>
 
 	        </tr>
@@ -193,13 +178,13 @@
 <%-- 検索部 終了 --%>
 <%-- ページ情報 --%>
 
-
-    <table class="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
+<div id="societyHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
+    <table class="comTableTitle" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
     <%-- 項目 --%>
         <tr>
-            <td class="comTableTitle" style="width:300pt;"><nobr>領域</nobr></td>
+            <td class="comTableTitle" style="width:100pt;"><nobr>領域</nobr></td>
             <td class="comTableTitle" style="width:146pt;"><nobr>所属</nobr></td>
-            <td class="comTableTitle" style="width:146pt;"><nobr>担当者</nobr></td>
+            <td class="comTableTitle" style="width:80pt;"><nobr>担当者</nobr></td>
         　　　　　　　 <td class="comTableTitle" style="width:146pt;"><nobr>メールアドレス</nobr></td>
             <td class="comTableTitle" style="width:8pt;"><nobr>主／副</nobr></td>
         </tr>
@@ -246,8 +231,7 @@
         </tr>
     </s:iterator>
     </table>
-	</CENTER>
-
+    </div>
 
 <%-- メイン部 一覧 終了 --%>
 

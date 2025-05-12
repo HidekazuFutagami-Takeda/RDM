@@ -27,6 +27,26 @@
       <nobr>
         <s:if test="%{selectFlgPop != 2}">
           <s:if test="%{(selectFlgPop == 1 && #rowBean.bumonRank < 4)}">
+			<s:if test="%{(#rowBean.bumonRank == 3)}">
+            <%-- 選択ボタン --%>
+            <input
+              type="button"
+              value=""
+              class="cseSosSelectButton"
+              onclick="nC201SelectSos(
+                          '<s:property value="#rowBean.bumonRank"/>',
+                          '<s:property value="#rowBean.sosCd"/>',
+                          '<s:property value="#rowBean.upBumonSeiName"/>　<s:property value="#rowBean.bumonSeiName"/>',
+                          '<s:property value="#rowBean.brCode"/>',
+                          '<s:property value="#rowBean.distCode"/>',
+                          '<s:property value="#rowBean.upSosCode"/>',
+                          '<s:property value="#rowBean.upBumonRank"/>',
+                          '<s:property value="#rowBean.upBrCode"/>',
+                          '<s:property value="#rowBean.upDistCode"/>'
+                          );"
+            >
+            </s:if>
+			<s:else>
             <%-- 選択ボタン --%>
             <input
               type="button"
@@ -44,6 +64,7 @@
                           '<s:property value="#rowBean.upDistCode"/>'
                           );"
             >
+            </s:else>
           </s:if>
         </s:if>
 

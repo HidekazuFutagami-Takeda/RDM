@@ -64,7 +64,9 @@
            ,M_RDM_JGI_SOS_MST.SOS_CD
            ,M_RDM_JGI_SOS_MST.BR_CODE
            ,M_RDM_JGI_SOS_MST.DIST_CODE
-           ,M_RDM_JGI_SOS_MST.BUMON_RYAKU_NAME
+           --,M_RDM_JGI_SOS_MST.BUMON_RYAKU_NAME
+,CASE WHEN M_RDM_JGI_SOS_MST.BUMON_RANK = '3' THEN M_RDM_SOS_MST.BUMON_SEI_NAME || '　' || M_RDM_JGI_SOS_MST.BUMON_SEI_NAME
+ELSE M_RDM_JGI_SOS_MST.BUMON_SEI_NAME END AS BUMON_RYAKU_NAME
            ,M_RDM_JGI_SOS_MST.BUMON_RANK
            ,M_RDM_JGI_SOS_MST.UP_SOS_CD
            ,S_RDM_COM_MR_SOS_TRT.TRT_CD
@@ -81,6 +83,10 @@
          ON 1=1
         AND M_RDM_JGI_SOS_MST.SOS_CD = S_RDM_COM_MR_SOS_TRT.SOS_CD
         AND S_RDM_COM_LNK_TRT_SHOKUSHU.TRT_CD = S_RDM_COM_MR_SOS_TRT.TRT_CD
+LEFT JOIN M_RDM_SOS_MST --RDM用組織情報
+         ON 1=1
+        AND M_RDM_JGI_SOS_MST.BUMON_RANK = '3'
+        AND M_RDM_JGI_SOS_MST.UP_SOS_CD = M_RDM_SOS_MST.SOS_CD
         WHERE
             1=1
         AND M_RDM_JGI_SOS_MST.JGI_NO = #{jgiNo}
@@ -109,7 +115,7 @@
                   SELECT DISTINCT
                       SOS_MST.BUMON_RANK,
                       UP_SOS_MST.SOS_CD,
-                      SOS_MST.BUMON_RYAKU_NAME,
+                      SOS_MST.BUMON_SEI_NAME BUMON_RYAKU_NAME,
                       SOS_MST.BR_CODE,
                       SOS_MST.DIST_CODE,
                       SOS_MST.DIST_SEQ,
@@ -134,7 +140,7 @@
               SELECT DISTINCT
                 JGI_SOS_MST.BUMON_RANK BUMON_RANK,
                 JGI_SOS_MST.SOS_CD SOS_CD,
-                JGI_SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
+                JGI_SOS_MST.BUMON_SEI_NAME BUMON_RYAKU_NAME,
                 JGI_SOS_MST.BR_CODE BR_CODE,
                 JGI_SOS_MST.DIST_CODE DIST_CODE,
                 JGI_SOS_MST.DIST_SEQ DIST_SEQ
@@ -204,7 +210,7 @@
 		    SELECT DISTINCT
                 SOS_MST.BUMON_RANK BUMON_RANK,
                 SOS_MST.SOS_CD SOS_CD,
-                SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
+                SOS_MST.BUMON_SEI_NAME BUMON_RYAKU_NAME,
                 SOS_MST.BR_CODE BR_CODE,
                 SOS_MST.DIST_CODE DIST_CODE,
                 SOS_MST.DIST_SEQ DIST_SEQ
@@ -260,7 +266,7 @@
 		    SELECT DISTINCT
                 SOS_MST.BUMON_RANK BUMON_RANK,
                 SOS_MST.SOS_CD SOS_CD,
-                SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
+                SOS_MST.BUMON_SEI_NAME BUMON_RYAKU_NAME,
                 SOS_MST.BR_CODE BR_CODE,
                 SOS_MST.DIST_CODE DIST_CODE,
                 SOS_MST.DIST_SEQ DIST_SEQ
@@ -302,7 +308,7 @@
               SELECT DISTINCT
                   JGI_SOS_MST.BUMON_RANK BUMON_RANK,
                   JGI_SOS_MST.SOS_CD SOS_CD,
-                  JGI_SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
+                  JGI_SOS_MST.BUMON_SEI_NAME BUMON_RYAKU_NAME,
                   JGI_SOS_MST.BR_CODE BR_CODE,
                   JGI_SOS_MST.DIST_CODE DIST_CODE,
                   JGI_SOS_MST.DIST_SEQ DIST_SEQ,
@@ -369,15 +375,15 @@
           </if>
           <if test='inGmnFlg == 1 or inJokenSetCd == "JKN0023"'>
           SELECT DISTINCT
-                SOS_MST.BUMON_RANK BUMON_RANK,
-                SOS_MST.SOS_CD SOS_CD,
-                SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
-                SOS_MST.BR_CODE BR_CODE,
-                SOS_MST.DIST_CODE DIST_CODE,
-                SOS_MST.DIST_SEQ DIST_SEQ,
+                --SOS_MST.BUMON_RANK BUMON_RANK,
+                --SOS_MST.SOS_CD SOS_CD,
+                --SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
+                --SOS_MST.BR_CODE BR_CODE,
+                --SOS_MST.DIST_CODE DIST_CODE,
+                --SOS_MST.DIST_SEQ DIST_SEQ,
                 JGI_SOS_MST.BUMON_RANK BUMON_RANK,
                 JGI_SOS_MST.SOS_CD SOS_CD,
-                JGI_SOS_MST.BUMON_RYAKU_NAME BUMON_RYAKU_NAME,
+                JGI_SOS_MST.BUMON_SEI_NAME BUMON_RYAKU_NAME,
                 JGI_SOS_MST.BR_CODE BR_CODE,
                 JGI_SOS_MST.DIST_CODE DIST_CODE,
                 JGI_SOS_MST.DIST_SEQ DIST_SEQ,
@@ -403,9 +409,9 @@
               INNER JOIN
                   S_RDM_COM_LNK_TRTGRP_TRT  COM_LNK_TGT --領域グループ・領域関連定義
               ON COM_LNK_TGT.TRT_CD = LNK_TRT_SKS.TRT_CD
-              INNER JOIN
-                  M_RDM_SOS_MST SOS_MST --RDM用組織情報
-              ON  SOS_MST.SOS_CD =  JGI_SOS_MST.SOS_CD
+              --INNER JOIN
+              --    M_RDM_SOS_MST SOS_MST --RDM用組織情報
+              --ON  SOS_MST.SOS_CD =  JGI_SOS_MST.SOS_CD
               INNER JOIN
                   M_JGI_FLG_FIX FLG_FIX
               ON JGI_SOS_MST.JGI_NO = FLG_FIX.JGI_NO
@@ -443,7 +449,7 @@
                 JGI_SOS_MST.SOS_CD = #{inSosCd}
          )
          SELECT
-             BUMON_RYAKU_NAME
+             BUMON_SEI_NAME BUMON_RYAKU_NAME
          FROM
              M_RDM_SOS_MST SOS_MST
              INNER JOIN

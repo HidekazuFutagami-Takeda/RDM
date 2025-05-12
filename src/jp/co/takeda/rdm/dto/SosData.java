@@ -65,6 +65,12 @@ public class SosData implements Serializable {
     private String upSosCode;
 
     /**
+     * 上位組織名称
+     * @generated
+     */
+    private String upBumonSeiName;
+
+    /**
      * 組織名称※上位組織コードに紐づく
      * @generated
      */
@@ -231,6 +237,21 @@ public class SosData implements Serializable {
 	 */
 	public Integer getUpBumonRank() {
 		return upBumonRank;
+	}
+
+	/**
+	 * SosData.javaupBumonSeiNameを設定
+	 * @return upBumonSeiName
+	 */
+	public String getUpBumonSeiName() {
+		return upBumonSeiName;
+	}
+
+	/**
+	 * @param upBumonSeiName セットする upBumonSeiName
+	 */
+	public void setUpBumonSeiName(String upBumonSeiName) {
+		this.upBumonSeiName = upBumonSeiName;
 	}
 
 	/**

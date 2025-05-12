@@ -233,7 +233,7 @@ public class NC202Service extends BaseService {
 
 			for (SelectJgiJgiEntity entity : selectJgiJgiList) {
 				String nameJoin;
-				nameJoin = sosName + entity.getBumonRyakuName();
+				nameJoin = sosName + "　"+ entity.getBumonRyakuName();
 				entity.setBumonRyakuName(nameJoin);
 			}
 		}

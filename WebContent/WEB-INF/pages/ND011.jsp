@@ -524,7 +524,7 @@
                 <nobr>
 	      			<s:if test='%{editApprFlg == "1"}'>
 		                <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
-		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" cssClass="mediumGray"/>
+		                <s:textfield name="homeDeptNm" id="homeDeptNm" size="20" maxlength="150" cssClass="mediumGray" readonly="true" />
 		                <s:hidden name="homeDeptCd" id="homeDeptCd"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('homeDept');return false;">Clear</a>
 					</s:if>
@@ -828,7 +828,7 @@
                 <nobr>
 			      	<s:if test='%{editApprFlg == "1"}'>
 		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCseView();return false;" />
-		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" cssClass="mediumGray"/>
+		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" cssClass="mediumGray" readonly="true" />
 		                <s:hidden name="skInsNo" id="skInsNo"/>
 		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
 		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
@@ -860,7 +860,7 @@
                 <nobr>
 			      	<s:if test='%{editApprFlg == "1"}'>
 		                <input class="comButton" type="button"name="button3" value="選択" onClick="JavaScript:tmpCdcView('1');return false;" />
-		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" cssClass="mediumGray"/>
+		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" cssClass="mediumGray" readonly="true" />
 		                <s:hidden name="skDeptCd" id="skDeptCd"/>
 		                <a class="comMiniLink" href ="" onClick="JavaScript:nd011Clear('skDept');return false;">Clear</a>
 					</s:if>

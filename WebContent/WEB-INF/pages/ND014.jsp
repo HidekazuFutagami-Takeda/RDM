@@ -367,7 +367,7 @@
 	  </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>大学職位<font color="red" size="3">*</font></nobr></td>
+	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
 	      <td class="comFormTableItem"><nobr>
 	      	<s:if test='%{editApprFlg == "1"}'>
 			      <s:select id="skUnivPosCd" name="skUnivPosCd" cssStyle="width:80pt" list ="skUnivPosCdCombo"/>

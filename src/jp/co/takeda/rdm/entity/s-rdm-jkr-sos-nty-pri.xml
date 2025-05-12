@@ -10,13 +10,14 @@
     <select id="selectSRdmJkrSosNtyPriAllEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosNtyPriEntiry" resultMap="SRdmJkrSosNtyPriEntiryResultMap">
 	 SELECT DISTINCT
 		    VALUE1,
-		    VALUE1_KANJ
+		    VALUE1_KANJ,
+		    SORT_NUM
 	  FROM
 	  	    ORAUSR01.M_RDM_CODE_MST
 	  WHERE
 	        CODE_NAME ='NTY_PRI'
 	  AND   DEL_FLG = 0
 	  ORDER BY
-	   	    VALUE1
+	   	    SORT_NUM
     </select>
 </mapper>

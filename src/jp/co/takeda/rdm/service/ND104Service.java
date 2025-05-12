@@ -26,6 +26,7 @@ import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.dto.ND104DTO;
 import jp.co.takeda.rdm.entity.MRdmHcpYakusyokuEntity;
 import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
+import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpKmuReqDelEntity;
 import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity;
@@ -306,7 +307,34 @@ public class ND104Service extends BaseService {
 
         }
 
-     // END UOC
+     // 適用日
+    	// 翌営業日をRDM_COMMON.GET_NEXT_BIZDAYから取得する
+    	// 現在日付を取得
+        Date systemDate = DateUtils.getNowDate();
+        SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMdd");
+        String sysDate = fmtDate.format(systemDate);
+
+    	RdmCommonEntity rdmCommonEntity = new RdmCommonEntity("getNextBizday");
+    	rdmCommonEntity.setInVBatDate(sysDate);
+    	List<RdmCommonEntity> rdmCommonEntityList = dao.select(rdmCommonEntity);
+
+    	if(rdmCommonEntityList.size() > 0) {
+        	// "yyyyMMdd"から"yyyy-MM-dd"に変換
+        	String tekiyoYmd = rdmCommonEntityList.get(0).getNextBizday();
+    		if(tekiyoYmd != null && tekiyoYmd.length() == 8) {
+    			StringBuilder sbUrlYmd = new StringBuilder();
+    			sbUrlYmd.append(tekiyoYmd.substring(0,4));
+    			sbUrlYmd.append("-");
+    			sbUrlYmd.append(tekiyoYmd.substring(4,6));
+    			sbUrlYmd.append("-");
+    			sbUrlYmd.append(tekiyoYmd.substring(6,8));
+    			tekiyoYmd = sbUrlYmd.toString();
+    		}
+
+        	dto.setTekiyoYmd(tekiyoYmd);
+    	}
+
+    	// END UOC
         return outdto;
     }
 

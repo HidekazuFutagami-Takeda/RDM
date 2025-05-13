@@ -479,7 +479,7 @@
 	SET
 	    TRN_KBN = #{trnKbn},
 		INS_NO_SK = #{insNoSk},
-		ULT_INS_NO = #{ultInsNo},
+		<if test="ultInsNo != null">ULT_INS_NO = #{ultInsNo},</if>
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE

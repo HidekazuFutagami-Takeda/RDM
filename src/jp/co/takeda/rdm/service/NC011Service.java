@@ -107,7 +107,7 @@ public class NC011Service extends BaseService {
         SRdmJkrSosAddrEntiry sRdmJkrSosAddrEntiry = new SRdmJkrSosAddrEntiry();
         List<SRdmJkrSosAddrEntiry> jkrSosAddrMap = dao.select(sRdmJkrSosAddrEntiry);
         LinkedHashMap<String, String> mapAddr = new LinkedHashMap<String, String>();
-        mapAddr.put(null,"");
+        mapAddr.put(null,"--なし--");
         for (SRdmJkrSosAddrEntiry outEntity : jkrSosAddrMap) {
         	mapAddr.put(outEntity.getAddrCodePref(),outEntity.getAddrNamePref());
         }
@@ -171,7 +171,7 @@ public class NC011Service extends BaseService {
     		SRdmJkrSosInsClassEntiry sRdmJkrSosInsClassEntiry = new SRdmJkrSosInsClassEntiry();
             List<SRdmJkrSosInsClassEntiry> jkrSosInsClassMap = dao.select(sRdmJkrSosInsClassEntiry);
             LinkedHashMap<String, String> mapReqType = new LinkedHashMap<String, String>();
-            mapReqType.put(null," ");
+            mapReqType.put(null,"--なし--");
             for (SRdmJkrSosInsClassEntiry outEntity : jkrSosInsClassMap) {
             	mapReqType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
             }
@@ -183,7 +183,7 @@ public class NC011Service extends BaseService {
     		SRdmJkrSosInsSbtEntiry sRdmJkrSosInsSbtEntiry = new SRdmJkrSosInsSbtEntiry();
             List<SRdmJkrSosInsSbtEntiry> jkrSosInsSbtMap = dao.select(sRdmJkrSosInsSbtEntiry);
             LinkedHashMap<String, String> mapReqType = new LinkedHashMap<String, String>();
-            mapReqType.put(null," ");
+            mapReqType.put(null,"--なし--");
             for (SRdmJkrSosInsSbtEntiry outEntity : jkrSosInsSbtMap) {
             	mapReqType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
             }
@@ -195,7 +195,7 @@ public class NC011Service extends BaseService {
     		SRdmJkrSosDocTypeEntiry sRdmJkrSosDocTypeEntiry = new SRdmJkrSosDocTypeEntiry();
             List<SRdmJkrSosDocTypeEntiry> jkrSosDocTypeMap = dao.select(sRdmJkrSosDocTypeEntiry);
             LinkedHashMap<String, String> mapReqType = new LinkedHashMap<String, String>();
-            mapReqType.put(null," ");
+            mapReqType.put(null,"--なし--");
             for (SRdmJkrSosDocTypeEntiry outEntity : jkrSosDocTypeMap) {
             	mapReqType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
             }
@@ -208,7 +208,7 @@ public class NC011Service extends BaseService {
     		SRdmJkrSosJobFormEntiry sRdmJkrSosJobFormEntiry = new SRdmJkrSosJobFormEntiry();
             List<SRdmJkrSosJobFormEntiry> jkrSosJobFormMap = dao.select(sRdmJkrSosJobFormEntiry);
             LinkedHashMap<String, String> mapReqType = new LinkedHashMap<String, String>();
-            mapReqType.put(null," ");
+            mapReqType.put(null,"--なし--");
             for (SRdmJkrSosJobFormEntiry outEntity : jkrSosJobFormMap) {
             	mapReqType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
             }
@@ -221,7 +221,7 @@ public class NC011Service extends BaseService {
     		SRdmJkrSosHoInsTypeEntiry sRdmJkrSosHoInsTypeEntiry = new SRdmJkrSosHoInsTypeEntiry();
             List<SRdmJkrSosHoInsTypeEntiry> jkrSosHoInsTypeMap = dao.select(sRdmJkrSosHoInsTypeEntiry);
             LinkedHashMap<String, String> mapReqType = new LinkedHashMap<String, String>();
-            mapReqType.put(null," ");
+            mapReqType.put(null,"--なし--");
             for (SRdmJkrSosHoInsTypeEntiry outEntity : jkrSosHoInsTypeMap) {
             	mapReqType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
             }
@@ -234,7 +234,7 @@ public class NC011Service extends BaseService {
     		SRdmJkrSosReqChlEntiry sRdmJkrSosReqChlEntiry = new SRdmJkrSosReqChlEntiry();
             List<SRdmJkrSosReqChlEntiry> jkrSosReqChlMap = dao.select(sRdmJkrSosReqChlEntiry);
             LinkedHashMap<String, String> mapReqType = new LinkedHashMap<String, String>();
-            mapReqType.put(""," ");//nullの確認
+            mapReqType.put("","--なし--");//nullの確認
             for (SRdmJkrSosReqChlEntiry outEntity : jkrSosReqChlMap) {
             	if(outEntity.getValue1().equals("1") || outEntity.getValue1().equals("2")) {
             		outEntity.setValue1("0" + outEntity.getValue1());
@@ -292,7 +292,7 @@ public class NC011Service extends BaseService {
     private void  sbtDrop(NC011DTO indto) {
         // START UOC
         LinkedHashMap<String, String> mapAddr = new LinkedHashMap<String, String>();
-        mapAddr.put(null," ");
+        mapAddr.put(null,"全て");
         mapAddr.put("0","施設");
         mapAddr.put("1","医師");
         indto.setJkrSosSbtMap(mapAddr);

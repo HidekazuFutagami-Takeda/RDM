@@ -203,10 +203,20 @@ function rdmCler(){
 	document.fm1.aDdrCodePref.value = "";
 	document.fm1.sbt.value = "";
 	//document.fm1.bumonRyakuName.value = "";
-if(document.fm1.jokenFlg.value == 1){
-	document.fm1.reqJgiName.value = "";
-	reqJgiName = "";
-}
+	if(document.fm1.jokenFlg.value == 1){
+		document.fm1.reqJgiName.value = "";
+		reqJgiName = "";
+
+		document.fm1.bumonRank.value    = "";
+		document.fm1.bumonRyakuName.value = "";
+		document.fm1.sosCd.value        = "";
+		document.fm1.brCode.value       = "";
+		document.fm1.distCode.value     = "";
+		document.fm1.upSosCode.value    = "";
+		document.fm1.upBumonRank.value  = "";
+		document.fm1.upBrCode.value     = "";
+		document.fm1.upDistCode.value   = "";
+	}
 	document.fm1.insNo.value = "";
 	document.fm1.docNo.value = "";
 

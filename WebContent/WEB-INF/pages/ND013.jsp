@@ -119,10 +119,10 @@
 	  	comClickFlgInit();
 	}
     function backPage(){
-	    if(window.confirm("画面を閉じます。よろしいですか？")){
+	    //if(window.confirm("画面を閉じます。よろしいですか？")){
 			//この画面（タブ）を閉じる
 			window.close();
-	    }
+	    //}
     }
     </script>
     <style>
@@ -191,7 +191,6 @@
 	<s:hidden name="errorCheckFlg" />
 	<s:hidden name="errorBool" />
 	<s:hidden name="tabFlg" />
-	<s:hidden name="jokenSetCd" />
 	<s:hidden name="docKanj" />
 	<s:hidden name="docKana" />
 	<s:hidden name="docNo" />
@@ -315,7 +314,7 @@
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>医師固定C</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:property value="docNo" /></nobr></td>
-	      <td class="comFormTableItem"><nobr>医師薬剤師区分</nobr></td>
+	      <td class="comFormTableItem"><nobr>医師／薬剤師区分</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:property value="docType"/></nobr></td>
       </tr>
    	  <tr>
@@ -477,18 +476,24 @@
 		        		<!-- 医療機関外へ異動 -->
 		        		<s:if test="%{#rowBean.actionEdit == 1 && #rowBean.kinmuCount == 1}">
 	        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->
-	        				<s:if test="%{#rowBean.reqB == 1}">
-	        					<span>
-	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this, '<s:property value="#rowBean.insNoKakusi"/>')">
-	        					<img src="img/button_moveoutmed.gif">
-	        					</a>
-	        					</span>
+	        			<!-- MR権限かつ医療機関外施設の場合は　非表示 -->
+	        				<s:if test="%{jokenSetCd != 1 && (#rowBean.dummyHco != null && #rowBean.dummyHco != '')}">
+	        					<nobr>&nbsp;</nobr>
 	        				</s:if>
+	        				<s:else>
+		        				<s:if test="%{#rowBean.reqB == 1}">
+		        					<span>
+		        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this, '<s:property value="#rowBean.insNoKakusi"/>')">
+		        					<img src="img/button_moveoutmed.gif">
+		        					</a>
+		        					</span>
+		        				</s:if>
 
-		        			<s:else>
-		        			<!-- その他 -->
-		        				<span><img src="img/button_moveoutmed_off.gif"></span>
-		        			</s:else>
+			        			<s:else>
+			        			<!-- その他 -->
+			        				<span><img src="img/button_moveoutmed_off.gif"></span>
+			        			</s:else>
+			        		</s:else>
 		        		</s:if>
 		        		<s:else>
 		        			<nobr>&nbsp;</nobr>

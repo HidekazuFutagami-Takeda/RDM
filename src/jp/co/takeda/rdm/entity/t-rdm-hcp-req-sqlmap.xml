@@ -427,6 +427,7 @@
         <result column="APR_MEMO" property="aprMemo"/>
         <result column="APR_COMMENT" property="aprComment"/>
         <result column="SHN_FLG" property="shnFlg"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
     </resultMap>
     <resultMap id="nD105CheckResultMap" type="jp.co.takeda.rdm.entity.join.SelectND105MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
@@ -1813,6 +1814,7 @@
 		, KNR.SHN_FLG -- 申請管理.審査済みフラグ
 		, KNR.REQ_CHL -- 申請管理.申請チャネル
 		, KNR.APR_COMMENT -- 申請管理.承認却下コメント
+		, MST.ULT_DOC_NO
 		FROM
 		M_RDM_HCP_MST MST ---医師_基本情報
 		INNER JOIN
@@ -1851,6 +1853,7 @@
 		, CDMDAT.VALUE1_KANJ AS DOC_ATTRIBUTE_NM
 		, MST.DOC_KANJ_SEI
 		, MST.DOC_KANJ_MEI
+		, MST.ULT_DOC_NO
 		FROM
 		M_RDM_HCP_MST MST ---医師_基本情報
 		LEFT JOIN

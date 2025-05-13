@@ -30,6 +30,7 @@ import jp.co.takeda.rdm.dto.ND315DTO;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
+import jp.co.takeda.rdm.entity.join.RdmCommonEntity;
 import jp.co.takeda.rdm.entity.join.SelectComboListEntity;
 import jp.co.takeda.rdm.entity.join.SelectHcpWorkEntity;
 import jp.co.takeda.rdm.entity.join.SelectND315MainDataEntity;
@@ -474,7 +475,6 @@ public class ND315Service extends BaseService {
 					String reqId = outIdList.get(0).getReqId();
 
 					//申請管理
-					// 申請管理
 					TRdmReqKnrEntity insEntity1 =  new TRdmReqKnrEntity();
 					insEntity1.setReqId(reqId); //申請ID
 					if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {//MDM管理者：JKN0850 全MR：JKN0023)
@@ -497,6 +497,7 @@ public class ND315Service extends BaseService {
 					insEntity1.setReqMemo(indto.getReqId());
 					insEntity1.setTekiyoYmd(wData.getNextBizday());
 					insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+					insEntity1.setReqYmdhms(strDate); // 申請日時
 					insEntity1.setInsShaYmd(currentDt);//作成日
 					insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 					insEntity1.setUpdShaYmd(currentDt);//更新日
@@ -528,6 +529,79 @@ public class ND315Service extends BaseService {
 					insEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 					dao.insertByValue(insEntity2);
 				}
+
+				// 医師免許返納・死亡のダミー施設への勤務先追加の申請を作成する
+				// 申請ID発行
+				SeqRdmReqIdEntity idEntity = new SeqRdmReqIdEntity();
+				List<SeqRdmReqIdEntity> outIdList = dao.select(idEntity);
+				String reqId = outIdList.get(0).getReqId();
+
+				// 翌営業日を取得
+				// 現在日付を取得
+		        Date systemDate = DateUtils.getNowDate();
+		        SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMdd");
+		        String sysDate = fmtDate.format(systemDate);
+
+		    	RdmCommonEntity rdmCommonEntity = new RdmCommonEntity("getNextBizday");
+		    	rdmCommonEntity.setInVBatDate(sysDate);
+		    	List<RdmCommonEntity> rdmCommonEntityList = dao.select(rdmCommonEntity);
+
+		    	String tekiyoYmd = null;
+		    	if(rdmCommonEntityList.size() > 0) {
+		        	tekiyoYmd = rdmCommonEntityList.get(0).getNextBizday();
+	    		}
+
+				// 申請管理
+				TRdmReqKnrEntity tRdmReqKnrEntity =  new TRdmReqKnrEntity();
+				tRdmReqKnrEntity.setReqId(reqId); //申請ID
+				if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
+					tRdmReqKnrEntity.setReqChl("2");//申請チャネル
+					tRdmReqKnrEntity.setReqKngKbn("2");//申請者権限区分
+				} else {
+					tRdmReqKnrEntity.setReqChl("1");//申請チャネル
+					tRdmReqKnrEntity.setReqKngKbn("1");//申請者権限区分
+				}
+				tRdmReqKnrEntity.setReqType("41");//申請区分
+				tRdmReqKnrEntity.setReqStsCd("03");//申請ステータス
+				tRdmReqKnrEntity.setReqBrCd(loginInfo.getBrCode());//申請者所属リージョン
+				tRdmReqKnrEntity.setReqDistCd(loginInfo.getDistCode());//申請者所属エリア
+				tRdmReqKnrEntity.setReqShzNm(loginInfo.getBumonRyakuName());//申請者所属
+				tRdmReqKnrEntity.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
+				tRdmReqKnrEntity.setReqJgiName(loginInfo.getJgiName());//申請者氏名
+				tRdmReqKnrEntity.setReqComment(indto.getReqComment());//申請コメント
+				tRdmReqKnrEntity.setDocNo(indto.getTkdDocNo());//医師固定コード
+
+				tRdmReqKnrEntity.setReqMemo(indto.getReqId());
+				tRdmReqKnrEntity.setTekiyoYmd(tekiyoYmd);
+				tRdmReqKnrEntity.setFbReqFlg("1");//FB申請要否フラグ
+				tRdmReqKnrEntity.setReqYmdhms(strDate); // 申請日時
+				tRdmReqKnrEntity.setInsShaYmd(currentDt);//作成日
+				tRdmReqKnrEntity.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
+				tRdmReqKnrEntity.setUpdShaYmd(currentDt);//更新日
+				tRdmReqKnrEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+
+				dao.insertByValue(tRdmReqKnrEntity);
+
+				// 勤務先_申請管理
+				TRdmHcpKmuReqEntity tRdmHcpKmuReqEntity = new TRdmHcpKmuReqEntity();
+				tRdmHcpKmuReqEntity.setReqId(reqId);
+				tRdmHcpKmuReqEntity.setDocNo(indto.getTkdDocNo());
+
+				tRdmHcpKmuReqEntity.setInsNoSk("953000000");
+				tRdmHcpKmuReqEntity.setJobFormAf("0");
+				tRdmHcpKmuReqEntity.setDeptCodeAf("9999");
+				tRdmHcpKmuReqEntity.setDeptKanjiAf("未登録");
+				tRdmHcpKmuReqEntity.setDeptKanaAf("ﾐﾄｳﾛｸ");
+				tRdmHcpKmuReqEntity.setTitleCodeAf("999");
+				tRdmHcpKmuReqEntity.setDccTypeAf("0");
+
+				tRdmHcpKmuReqEntity.setUltDocNo(indto.getUltDocNo());
+				tRdmHcpKmuReqEntity.setInsShaYmd(currentDt);//作成日
+				tRdmHcpKmuReqEntity.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
+				tRdmHcpKmuReqEntity.setUpdShaYmd(currentDt);//更新日
+				tRdmHcpKmuReqEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				dao.insertByValue(tRdmHcpKmuReqEntity);
+
 			}
 			//TODO
 			//自申請IDに紐づく勤務先削除も却下

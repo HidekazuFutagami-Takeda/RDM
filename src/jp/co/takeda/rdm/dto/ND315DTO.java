@@ -280,6 +280,12 @@ public class ND315DTO extends BaseDTO implements Serializable {
 	private String aprComment;
 
 	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
+	/**
 	 * 表示分岐
 	 * 0:完全新規、1:ULTから作成、2：申請データあり
 	 * @generated
@@ -988,6 +994,14 @@ public class ND315DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAprComment(String aprComment) {
 		this.aprComment = aprComment;
+	}
+
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 	/**

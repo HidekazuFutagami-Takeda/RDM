@@ -226,6 +226,11 @@ public class SelectND105MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String reqChl;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
 
 
     /**
@@ -737,6 +742,14 @@ public class SelectND105MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setReqChl(String reqChl) {
 		this.reqChl = reqChl;
+	}
+
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 	/**

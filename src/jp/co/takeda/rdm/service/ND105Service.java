@@ -91,6 +91,8 @@ public class ND105Service extends BaseService {
 				indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
 				indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
 
+				indto.setUltDocNo(StringUtils.nvl(mainDataEntity.getUltDocNo(), ""));
+
 				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
 				indto.setDocAttribute(StringUtils.nvl(mainDataEntity.getDocAttribute(), ""));
@@ -135,6 +137,8 @@ public class ND105Service extends BaseService {
 				indto.setTkdDocNo(StringUtils.nvl(mainDataEntity.getTkdDocNo(), ""));
 				indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
 				indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
+
+				indto.setUltDocNo(StringUtils.nvl(mainDataEntity.getUltDocNo(), ""));
 
 				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));

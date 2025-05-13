@@ -153,6 +153,8 @@
      <s:hidden name="shnFlg"/>
      <s:hidden name="msgId" value="%{msgId}"/>
 
+     <s:hidden name="ultDocNo" />
+
 <!-- ボタン制御用 -->
     <s:hidden name="buttonFlg" />
     	<s:hidden name="title" />

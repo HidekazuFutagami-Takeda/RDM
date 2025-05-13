@@ -501,13 +501,15 @@ public class ND104Service extends BaseService {
 			return outdto;
 		}
 
-		// 勤務先0件チェック
-		paramEntity.setSqlId("errorCheck2");
-		List<SelectHcpKmuReqDelEntity> kinmu0 = dao.select(paramEntity);
-		// 勤務先が１件以下または空の場合エラー
-		if (kinmu0.size() <= 1) {
-			indto.setErrorCheckFlg("2");
-			return outdto;
+		if(!"03".equals(indto.getReqStsCd()) && !"13".equals(indto.getReqStsCd())){
+			// 勤務先0件チェック
+			paramEntity.setSqlId("errorCheck2");
+			List<SelectHcpKmuReqDelEntity> kinmu0 = dao.select(paramEntity);
+			// 勤務先が１件以下または空の場合エラー
+			if (kinmu0.size() <= 1) {
+				indto.setErrorCheckFlg("2");
+				return outdto;
+			}
 		}
 
 		// END UOC

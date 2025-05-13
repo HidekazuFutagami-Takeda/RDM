@@ -114,13 +114,12 @@ public class ND013Action extends BaseAction<ND013DTO> {
 
         //親画面から医師固定Cを受け取る
 
-        //ユーザー
-        if (loginInfo.getJokenSetCd() == "0") {
-        	dto.setJokenSetCd("0");
-        }
-        //管理者
-        if (loginInfo.getJokenSetCd() == "1") {
+        if (RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd())) {
+        	//管理者
         	dto.setJokenSetCd("1");
+        } else {
+        	//MR権限
+        	dto.setJokenSetCd("0");
         }
 
         dto.setMsgStr(null);

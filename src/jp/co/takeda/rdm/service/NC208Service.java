@@ -20,6 +20,7 @@ import jp.co.takeda.rdm.common.BaseEntity;
 import jp.co.takeda.rdm.common.BaseService;
 import jp.co.takeda.rdm.dto.InsTrtDataList;
 import jp.co.takeda.rdm.dto.NC208DTO;
+import jp.co.takeda.rdm.entity.join.MRdmHcoMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectInsTrtListEntity;
 
 
@@ -68,6 +69,15 @@ public class NC208Service extends BaseService {
     public BaseDTO search(NC208DTO dto) {
         BaseDTO outdto = dto;
         // START UOC
+
+        // ヘッダ部設定
+        dto.setInsNo(dto.getInsNoKakusi());
+
+        // 名称設定
+        MRdmHcoMstEntity mRdmHcoMstEntity = new MRdmHcoMstEntity();
+        mRdmHcoMstEntity.setInsNo(dto.getInsNoKakusi());
+        MRdmHcoMstEntity mRdmHcoMstData = dao.selectByPK(mRdmHcoMstEntity);
+        dto.setInsAbbrName(mRdmHcoMstData.getInsAbbrName());
 
         //一覧検索件数取得の検索条件の設定
         SelectInsTrtListEntity paramEntity = new SelectInsTrtListEntity();
@@ -136,11 +146,11 @@ public class NC208Service extends BaseService {
             }
 
             //施設固定CをDTOに入れる
-            dto.setInsNo(dto.getInsNoKakusi());
+            //dto.setInsNo(dto.getInsNoKakusi());
 
             //施設略式漢字名を取り出す
-            InsTrtDataList instrt = insTrtDataList.get(0);
-            dto.setInsAbbrName(instrt.getInsAbbrName());
+            //InsTrtDataList instrt = insTrtDataList.get(0);
+            //dto.setInsAbbrName(instrt.getInsAbbrName());
         }
         //検索された帳票一覧をDTOに設定する
         dto.setInsTrtDataList(insTrtDataList);

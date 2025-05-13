@@ -229,7 +229,7 @@ public class ND013Service extends BaseService {
         	if (Objects.equals(entity.getDummyHco(), null)) {
         		dto.setDummyHcoCount(dto.getDummyHcoCount() + 1);
         	}
-        	dataRecord.setDummyHco(dataRecord.getDummyHco());
+        	dataRecord.setDummyHco(entity.getDummyHco());
         	//仮
 //        	dataRecord.setDummyHcoCount(2);
 

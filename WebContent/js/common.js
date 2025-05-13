@@ -74,7 +74,7 @@ var COM_FUNC_DOWNLOAD	= "DownLoad";
 /**
  * ポップアップ画面サイズ
  */
-var insSubScreenSize = "left=0, top=0, width=1100, height=800";
+var insSubScreenSize = "left=0, top=0, width=1105, height=580";
 var addrSubScreenSize = "left=0, top=0, width=450, height=500";
 var tantoSubScreenSize = "left=0, top=0, width=600, height=600";
 

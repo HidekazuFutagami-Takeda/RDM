@@ -385,7 +385,7 @@ function cseAbbrView(w,callBack,winVarName){
     }
   }
 
-  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=1100,height=800,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
+  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=1105,height=580,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
 
   // パラメタの設定
   var checkedCodes = document.fm1.cdcCheckedCodes;

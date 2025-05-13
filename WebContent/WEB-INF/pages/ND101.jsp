@@ -463,7 +463,7 @@ function shnCompBtn(){
 	                  <td class="comFormTableItem"><nobr>異動先施設<span style="color: red;">*</span></nobr></td>
 	                  <td class="comFormTableItem">
 	                      <nobr>
-	                          <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
+	                          <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postInsAbbrName" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">Clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
@@ -472,7 +472,7 @@ function shnCompBtn(){
 	                  <td class="comFormTableItem"><nobr>異動先所属部科<span style="color: red;">*</span></nobr></td>
 	                  <td class="comFormTableItem">
 	                      <nobr>
-	                           <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray">clear</a>&nbsp;
+	                           <input class="comButton" type="button"name="button1" value="選択" disabled/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray">Clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>
@@ -485,7 +485,7 @@ function shnCompBtn(){
 	                  <td class="comFormTableItem"><nobr>所属部科<span style="color: red;">*</span></nobr></td>
 	                  <td class="comFormTableItem"><nobr>
 	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" />
-	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')">clear</a>&nbsp;
+	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" onclick="jimClear('shozokubukaName')">Clear</a>&nbsp;
 	                  </nobr></td>
 	                  </s:if>
 	                  <s:else>
@@ -493,7 +493,7 @@ function shnCompBtn(){
 	                  <td class="comFormTableItem"><nobr>所属部科<span style="color: red;">*</span></nobr></td>
 	                  <td class="comFormTableItem"><nobr>
 	                               <input class="comButton" type="button"name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;" disabled/>
-	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">clear</a>&nbsp;
+	                               <s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a class="comMiniLink" style="color:lightgray;">Clear</a>&nbsp;
 	                  </nobr></td>
 	                  </s:else>
                                     <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>

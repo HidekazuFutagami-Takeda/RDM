@@ -334,7 +334,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			   </nobr>
 			</td>
 				<td>
-					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" cssClass="mediumGray"/>
+					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" readonly="true" cssClass="mediumGray"/>
 					<a href ="" onClick="popClear();return false;">Clear</a>
 				</td>
 		</s:if>

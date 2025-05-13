@@ -838,6 +838,15 @@ if(!"9".equals(indto.getDisplayKbn())) {
 
 			// 医療機関への異動の場合
 			if (indto.getMovemedEditFlg().equals("0")) {
+				if(indto.getPreInsNo() != null && indto.getPreInsNo().equals(indto.getPostInsNo())) {
+					// 同一の施設が異動先に指定されています。
+					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W067) + "\n";
+					errChk = true;
+				}
+			}
+
+			// 医療機関への異動の場合
+			if (indto.getMovemedEditFlg().equals("0")) {
 				if (indto.getPostHoInsType().equals(RdmConstantsData.HCO_HO_INS_TYPE_1) && indto.getPostInsClass().equals(RdmConstantsData.HCO_INS_CLASS_01)) {
 					if (indto.getPostUnivPosCode() == null || indto.getPostUnivPosCode().isEmpty()) {
 						// 勤務先が大学附属病院の場合、大学職位を入力してください。

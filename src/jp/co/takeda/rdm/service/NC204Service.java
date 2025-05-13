@@ -76,6 +76,7 @@ public class NC204Service extends BaseService {
     @Transactional
     public BaseDTO init(NC204DTO indto) {
         BaseDTO outdto = indto;
+        insAbbrNameDrop(indto);
         // START UOC
 
         //初期表示画面フラグ = 1(初期化)
@@ -121,10 +122,11 @@ public class NC204Service extends BaseService {
         	}
         }
 
-
-        //検索を行う
-        outdto = search(indto);
-
+        //施設固定コードがあるかの判定 ある場合は検索を行う。ない場合は検索せずに画面を表示する。
+        if(!StringUtils.isEmpty(indto.getParamInsNo())) {
+            //検索を行う
+            outdto = search(indto);
+        }
         // END UOC
         return outdto;
     }

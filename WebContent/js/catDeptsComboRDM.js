@@ -214,6 +214,21 @@ function cdcSearch(){
 }
 
 /**
+ * 検索ボタンクリック時
+ */
+function deptSearch(){
+
+	//ボタン２度押し対策をなるべく早くやる(実際のSubmitのときではなく)
+	if(!comChkSubmit(COM_CLICK_ALERT))return(false);
+
+    //現在ページ番号変更（遷移）
+    document.fm1.pageCntCur.value = 1;
+
+    // 検索イベント呼び出し
+    document.fm1.submit_search.click();
+}
+
+/**
  * チェックボックスクリック時
  */
 function rCdcCheckMaxSize(inputObject) {

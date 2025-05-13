@@ -137,7 +137,7 @@
 		<tr>
         <td>
             <nobr><s:textfield name="searchInput" align="left"  size="40" maxlength="40" type="search" onsubmit="return false;"/></nobr>
-            <s:submit value="検索" name="検索" onclick="this.form.action='%{inSearchInput}';  this.form.submit();return false;" onkeypress="if(event.keyCode==13){event.returnValue=false}" />
+            <s:submit value="検索" name="検索" onclick="deptSearch();"/>
             <br> ※部分一致で検索されます。<%-- 検索ボタン --%>
         </td>
 		</tr>

@@ -323,7 +323,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			</td>
 				<td >
 					<s:textfield size="20" maxlength="40"  name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssClass="mediumGray"/>
-					<a href ="" onClick="popClearDisabled();return false;"disabled="true" >Clear</a>
+					<a class="comMiniLink" href ="" onClick="popClearDisabled();return false;"disabled="true" >Clear</a>
 				</td>
 		</s:if>
 		<s:if test='jokenFlg == "1"'>
@@ -335,7 +335,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			</td>
 				<td>
 					<s:textfield size="20" maxlength="40" name="bumonRyakuName" STYLE="ime-mode:active" readonly="true" cssClass="mediumGray"/>
-					<a href ="" onClick="popClear();return false;">Clear</a>
+					<a class="comMiniLink" href ="" onClick="popClear();return false;">Clear</a>
 				</td>
 		</s:if>
 							<%-- 施設固定C --%>
@@ -365,7 +365,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
 
 					<%-- 施設名(全角) --%>
-			<td class="pupControlItem"><nobr>&nbsp;施設名(全角)※</nobr></td>
+			<td class="pupControlItem"><nobr>&nbsp;施設名(全角)</nobr></td>
 				<td>
 					<s:textfield size="20" maxlength="40" name="insKanjiSrch" STYLE="ime-mode:active" />
 				</td>

@@ -164,10 +164,12 @@
 		});
 
 		function openMailer(email) {
+			// タイトル
 			const subject = encodeURIComponent("お問い合わせ");
-			const body = encodeURIComponent("本文サンプル");
-			const mailtolink = 'mailto:${email}?subject=${subject}&body=${body}';
-			window.location.href = mailtoLink;
+			// 本文
+			const body = encodeURIComponent("");
+			const mailtolink = 'mailto:' + email + '?subject=' + subject + '&body=' + body + '';
+			window.location.href = mailtolink;
 		}
 
 

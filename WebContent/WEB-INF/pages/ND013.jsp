@@ -378,7 +378,7 @@
 
 	<div style="margin-left:100px;margin-top:5px">勤務先一覧</div>
 	<center>
-	<div style="max-height:340px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
+	<div style="height:340px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 	   	  <table class="comTableTitle" id="comTableTitle" style=" border: none !important;text-align: center;" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
 	   		<tr style="position: sticky; top:0; left:0; z-index:3">
 	   			<td class="comTableTitle" style="border: 0px none; background-color:white;">アクション</td>

@@ -545,6 +545,9 @@ public class ND307Service extends BaseService {
 			indto.setNd307RejectFlg("0");
 			indto.setNd307RejectActiveFlg("0");
 		}
+
+		indto.setDispTekiyoYmd(indto.getDispTekiyoYmd().replace("-", "/"));
+
         return outdto;
     }
 

@@ -111,15 +111,12 @@ public class ND101Action extends BaseAction<ND101DTO> {
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
     	String preScreenId = loginInfo.getPreScreenId();
     	String reqId = dto.getReqId();
-    	//モック
-//    	loginInfo.setJokenFlg("1");
-//    	loginInfo.setJgiNo(8830034);
-//    	loginInfo.setJgiName("テスト");
+
     	preScreenId = dto.getBackScreenId();
     	if(preScreenId == null) {
     		preScreenId = dto.getPreScreenId();
     	}
-    	//検証用 TODO
+
     	if(preScreenId.equals("NC001")) {
     		preScreenId = dto.getPreScreenId();
     	}
@@ -132,15 +129,13 @@ public class ND101Action extends BaseAction<ND101DTO> {
 		// 医師勤務先情報更新
 		if ("ND013".equals(preScreenId)) {
 			dto.setDisplayKbn("0");
+		} else if("ND307".equals(preScreenId)) {
+			//確認画面から遷移
+			dto.setDisplayKbn("9");
+		} else if ("NC011".equals(preScreenId)) {
 			// 申請一覧
-		} else if ("NC011".equals(preScreenId) || "ND307".equals(preScreenId)) {
 			if (StringUtils.isEmpty(reqId) || reqId.equals("-")) {
-    			if("ND307".equals(preScreenId)) {
-    				//一時保存なし申請後に確認画面から遷移
-    				dto.setDisplayKbn("9");
-    			}else {
-    			 	dto.setDisplayKbn("0");
-    			}
+				dto.setDisplayKbn("0");
 			} else {
 				dto.setDisplayKbn("1");
 			}

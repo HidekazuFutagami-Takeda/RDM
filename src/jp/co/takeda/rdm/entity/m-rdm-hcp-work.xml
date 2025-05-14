@@ -25,6 +25,8 @@
         <result column="INS_NO" property="insNo"/>
         <result column="DUMMY_HCO" property="dummyHco"/>
         <result column="INS_NO_KAKUSI" property="insNoKakusi"/>
+
+        <result column="JGI_NO" property="jgiNo"/>
     </resultMap>
 
     <select id="selectHcpWorkDate" parameterType="jp.co.takeda.rdm.entity.MRdmHcpWorkEntity" resultMap="mRdmHcpWorkResultMap">
@@ -123,6 +125,7 @@
 				,HCP_UNIV.TITLE_KJ AS UNIV_TITLE --大学職位
 				,HCP_WORK.INS_NO AS INS_NO_KAKUSI --施設固定コード (隠し項目)
 				,DUMMY_HCO.VALUE1 AS  DUMMY_HCO--ダミー施設コード (隠し項目)
+				,MR_INS.JGI_NO
 			FROM
 			    ORAUSR01.M_RDM_PARAM_MST PARAM_MST_ISHI_KINMU --医師勤務先メニュースイッチ
 			INNER JOIN
@@ -205,6 +208,14 @@
 				'0' = DUMMY_HCO.DEL_FLG --削除フラグ
 			AND
 				HCP_WORK.INS_NO = DUMMY_HCO.VALUE1 --施設固定コード
+
+			LEFT JOIN
+				M_RDM_JKR_MR_INS_TRT MR_INS
+			ON
+				MR_INS.INS_NO = HCP_WORK.INS_NO
+			AND
+				MR_INS.JGI_NO = #{jgiNo}
+
 			ORDER BY
 				HCP_WORK.INS_NO --施設固定コード
 

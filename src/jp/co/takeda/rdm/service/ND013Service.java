@@ -49,6 +49,7 @@ public class ND013Service extends BaseService {
     @Transactional
     public BaseDTO init(ND013DTO dto) {
         BaseDTO outdto = dto;
+        LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
         // START UOC
 
         // ページ数(現在:１ページ目から)
@@ -83,6 +84,9 @@ public class ND013Service extends BaseService {
 
         //データ部検索区分
         paramEntity.setSearchType("1");
+        // ログインユーザID
+        paramEntity.setJgiNo(String.valueOf(loginInfo.getJgiNo()));
+
         //データ部画面初期表示時の帳票一覧を取得する
         List<MRdmHcpWorkEntity> SelectHcpWorkList = dao.select(paramEntity);
 
@@ -170,8 +174,6 @@ public class ND013Service extends BaseService {
         	else {
         		dataRecord.setReqA(0);
         	}
-        	//仮
-//        	dataRecord.setReqA(1);
 
         	//アクション申請B
         	/*
@@ -184,8 +186,6 @@ public class ND013Service extends BaseService {
         	else {
         		dataRecord.setReqB(0);
         	}
-        	//仮
-//        	dataRecord.setReqB(1);
 
         	//施設略式漢字名
         	dataRecord.setInsAbbrName(entity.getInsAbbrName());
@@ -224,14 +224,14 @@ public class ND013Service extends BaseService {
 
         	//実勤務先判定(ダミー施設コード)
         	/*
-        	 * nullでない実勤務先をカウント
+        	 * nullの場合ダミー勤務先をカウント
         	 * */
         	if (Objects.equals(entity.getDummyHco(), null)) {
         		dto.setDummyHcoCount(dto.getDummyHcoCount() + 1);
         	}
         	dataRecord.setDummyHco(entity.getDummyHco());
-        	//仮
-//        	dataRecord.setDummyHcoCount(2);
+
+        	dataRecord.setJgiNo(entity.getJgiNo());
 
         	dataRecord.setKinmuCount(SelectHcpWorkList.size());
         	//データ部検索結果を格納
@@ -281,8 +281,6 @@ public class ND013Service extends BaseService {
 
         //施設固定コード (隠し項目)をセット
     	paramEntity.setInsNoKakusi(dto.getInsNoKakusi());
-    	//仮z
-    	//paramEntity.setInsNoKakusi("951000000");
 
     	//医師固定コードをセット
     	paramEntity.setDocNo(dto.getDocNo());

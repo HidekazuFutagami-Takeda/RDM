@@ -97,6 +97,12 @@ public class HcpWorkData implements Serializable {
     private String univTitle;
 
     /**
+     * 施設担当者コード
+     * @generated
+     */
+    private String jgiNo;
+
+    /**
      * 施設固定コード(隠し)
      * @generated
      */
@@ -299,6 +305,14 @@ public class HcpWorkData implements Serializable {
 		this.univTitle = univTitle;
 	}
 
+
+	public String getJgiNo() {
+		return jgiNo;
+	}
+
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
 
 	/**
 	 * HcpWorkData.javadummyHcoを設定

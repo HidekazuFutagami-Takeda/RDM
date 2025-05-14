@@ -398,124 +398,132 @@
                     <div class="hoverDiv">
                     <table>
                     <tr>
-		        	<td style="width: 30px;">
-
-		        		<!-- 医師勤務先削除 -->
-		        		<!-- アクション削除が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合、表示 -->
-						<s:if test="%{#rowBean.actionDel == 1 && dummyHcoCount >= 2}">
-							<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
-		        			<s:if test="%{#rowBean.reqA == 1}">
-			        			<s:if test="%{#rowBean.reqB == 1}">
-			        				<!-- 活性 -->
-			        				<span>
-			        					<a class="comMiniLink" href="#" onclick="errorCheckAction('3', this, '<s:property value="#rowBean.insNoKakusi"/>')" >
-			        					<img src="img/button_delete.gif" />
-			        					</a>
-			        					<s:hidden name="hcpWorkData[%{#status.index}].insNoKakusi"/>
-			        				</span>
-			        			</s:if>
-			        		</s:if>
-		        			<s:else>
-		        				<!-- 非活性 -->
-		        				<span><img src="img/button_delete_off.gif"></span>
-		        			</s:else>
-		        		</s:if>
-		        		<s:else>
-		        			<nobr>&nbsp;</nobr>
-		        		</s:else>
-					</td>
-					<td style="width: 30px;">
-		        		<!-- 勤務先情報更新-->
-		        		<!-- アクション編集が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合　表示 -->
-		        		<!--アクション編集が'1'の場合,勤務先情報の件数が1件で隠し項目．実勤務先判定がNULLの場合 表示
-		        		|| (#rowBean.actionEdit == 1　&& #rowBean.kinmuCount == 1 && #rowBean.dummyHco == null) -->
-		        		<s:if test="%{#rowBean.actionEdit == 1}">
-			        		<s:if test="%{dummyHcoCount >= 2}">
+                    <s:if test="%{jokenSetCd != 1 && (#rowBean.jgiNo == null || #rowBean.jgiNo == '')}">
+                    	<!-- MR権限かつ担当外施設はアイコン非表示 -->
+	                    <td style="width: 30px;">&nbsp;</td>
+	                    <td style="width: 30px;">&nbsp;</td>
+	                    <td style="width: 30px;">&nbsp;</td>
+	                    <td style="width: 30px;">&nbsp;</td>
+                    </s:if>
+					<s:else>
+			        	<td style="width: 30px;">
+			        		<!-- 医師勤務先削除 -->
+			        		<!-- アクション削除が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合、表示 -->
+							<s:if test="%{#rowBean.actionDel == 1 && dummyHcoCount >= 2}">
+								<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
 			        			<s:if test="%{#rowBean.reqA == 1}">
-			        				<span>
-			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this, '<s:property value="#rowBean.insNoKakusi"/>')">
-			        				<img src="img/button_update.gif">
-			        				</a>
-			        				</span>
-		        				</s:if>
-		        				<s:else>
-		        					<span><img src="img/button_update_off.gif"></span>
-		        				</s:else>
+				        			<s:if test="%{#rowBean.reqB == 1}">
+				        				<!-- 活性 -->
+				        				<span>
+				        					<a class="comMiniLink" href="#" onclick="errorCheckAction('3', this, '<s:property value="#rowBean.insNoKakusi"/>')" >
+				        					<img src="img/button_delete.gif" />
+				        					</a>
+				        					<s:hidden name="hcpWorkData[%{#status.index}].insNoKakusi"/>
+				        				</span>
+				        			</s:if>
+				        		</s:if>
+			        			<s:else>
+			        				<!-- 非活性 -->
+			        				<span><img src="img/button_delete_off.gif"></span>
+			        			</s:else>
 			        		</s:if>
-			        		<s:elseif test="%{kinmuCount == 1 and dummyHcoCount > 0}">
-								<s:if test="%{#rowBean.reqA == 1}">
-			        				<span>
-			        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this, '<s:property value="#rowBean.insNoKakusi"/>')">
-			        				<img src="img/button_update.gif">
-			        				</a>
-			        				</span>
-		        				</s:if>
-		        				<s:else>
-		        					<span><img src="img/button_update_off.gif"></span>
-		        				</s:else>
-			        		</s:elseif>
 			        		<s:else>
-		        			<nobr>&nbsp;</nobr>
-		        		</s:else>
-		        		</s:if>
-		        		<s:else>
-		        			<nobr>&nbsp;</nobr>
-		        		</s:else>
-					</td>
-					<td style="width: 30px;">
-		        		<!-- 医療機関へ異動 -->
-		        		<!-- アクション編集が'1'の場合　表示 -->
-		        		<s:if test="%{#rowBean.actionEdit == 1}">
-		        			<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
-		        			<s:if test="%{#rowBean.reqA == 1}">
-	        					<span>
-	        					<a class="comMiniLink" href="#" onclick="errorCheckAction('5', this, '<s:property value="#rowBean.insNoKakusi"/>')">
-	        					<img src="img/button_movemed.gif">
-	        					</a>
-	        					</span>
-		        			</s:if>
-		        			<s:else>
-		        				<span><img src="img/button_movemed_off.gif"></span>
-		        			</s:else>
-		        		</s:if>
-		        		<s:else>
-		        			<nobr>&nbsp;</nobr>
-		        		</s:else>
-					</td>
-					<td style="width: 30px;">
-		        		<!-- 医療機関外へ異動 -->
-		        		<s:if test="%{#rowBean.actionEdit == 1 && #rowBean.kinmuCount == 1}">
-	        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->
-	        			<!-- MR権限かつ医療機関外施設の場合は　非表示 -->
-	        				<s:if test="%{jokenSetCd != 1 && (#rowBean.dummyHco != null && #rowBean.dummyHco != '')}">
-	        					<nobr>&nbsp;</nobr>
-	        				</s:if>
-	        				<s:else>
-		        				<s:if test="%{#rowBean.reqB == 1}">
+			        			<nobr>&nbsp;</nobr>
+			        		</s:else>
+						</td>
+						<td style="width: 30px;">
+			        		<!-- 勤務先情報更新-->
+			        		<!-- アクション編集が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合　表示 -->
+			        		<!--アクション編集が'1'の場合,勤務先情報の件数が1件で隠し項目．実勤務先判定がNULLの場合 表示
+			        		|| (#rowBean.actionEdit == 1　&& #rowBean.kinmuCount == 1 && #rowBean.dummyHco == null) -->
+			        		<s:if test="%{#rowBean.actionEdit == 1}">
+				        		<s:if test="%{dummyHcoCount >= 2}">
+				        			<s:if test="%{#rowBean.reqA == 1}">
+				        				<span>
+				        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this, '<s:property value="#rowBean.insNoKakusi"/>')">
+				        				<img src="img/button_update.gif">
+				        				</a>
+				        				</span>
+			        				</s:if>
+			        				<s:else>
+			        					<span><img src="img/button_update_off.gif"></span>
+			        				</s:else>
+				        		</s:if>
+				        		<s:elseif test="%{kinmuCount == 1 and dummyHcoCount > 0}">
+									<s:if test="%{#rowBean.reqA == 1}">
+				        				<span>
+				        				<a class="comMiniLink" href="#" onclick="errorCheckAction('4', this, '<s:property value="#rowBean.insNoKakusi"/>')">
+				        				<img src="img/button_update.gif">
+				        				</a>
+				        				</span>
+			        				</s:if>
+			        				<s:else>
+			        					<span><img src="img/button_update_off.gif"></span>
+			        				</s:else>
+				        		</s:elseif>
+				        		<s:else>
+			        			<nobr>&nbsp;</nobr>
+			        		</s:else>
+			        		</s:if>
+			        		<s:else>
+			        			<nobr>&nbsp;</nobr>
+			        		</s:else>
+						</td>
+						<td style="width: 30px;">
+			        		<!-- 医療機関へ異動 -->
+			        		<!-- アクション編集が'1'の場合　表示 -->
+			        		<s:if test="%{#rowBean.actionEdit == 1}">
+			        			<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
+			        			<s:if test="%{#rowBean.reqA == 1}">
 		        					<span>
-		        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this, '<s:property value="#rowBean.insNoKakusi"/>')">
-		        					<img src="img/button_moveoutmed.gif">
+		        					<a class="comMiniLink" href="#" onclick="errorCheckAction('5', this, '<s:property value="#rowBean.insNoKakusi"/>')">
+		        					<img src="img/button_movemed.gif">
 		        					</a>
 		        					</span>
-		        				</s:if>
-
+			        			</s:if>
 			        			<s:else>
-			        			<!-- その他 -->
-			        				<span><img src="img/button_moveoutmed_off.gif"></span>
+			        				<span><img src="img/button_movemed_off.gif"></span>
 			        			</s:else>
+			        		</s:if>
+			        		<s:else>
+			        			<nobr>&nbsp;</nobr>
 			        		</s:else>
-		        		</s:if>
-		        		<s:else>
-		        			<nobr>&nbsp;</nobr>
-		        		</s:else>
-					</td>
-	                <td>
-	                       <img
-	                         class="hoverImg"
-	                         src="img/tooltip3.jpg"
-	                         width="190px" height="92px"
-	                       >
-	                </td>
+						</td>
+						<td style="width: 30px;">
+			        		<!-- 医療機関外へ異動 -->
+			        		<s:if test="%{#rowBean.actionEdit == 1 && #rowBean.kinmuCount == 1}">
+		        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->
+		        			<!-- MR権限かつ医療機関外施設の場合は　非表示 -->
+		        				<s:if test="%{jokenSetCd != 1 && (#rowBean.dummyHco != null && #rowBean.dummyHco != '')}">
+		        					<nobr>&nbsp;</nobr>
+		        				</s:if>
+		        				<s:else>
+			        				<s:if test="%{#rowBean.reqB == 1}">
+			        					<span>
+			        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this, '<s:property value="#rowBean.insNoKakusi"/>')">
+			        					<img src="img/button_moveoutmed.gif">
+			        					</a>
+			        					</span>
+			        				</s:if>
+
+				        			<s:else>
+				        			<!-- その他 -->
+				        				<span><img src="img/button_moveoutmed_off.gif"></span>
+				        			</s:else>
+				        		</s:else>
+			        		</s:if>
+			        		<s:else>
+			        			<nobr>&nbsp;</nobr>
+			        		</s:else>
+						</td>
+		                <td>
+		                       <img
+		                         class="hoverImg"
+		                         src="img/tooltip3.jpg"
+		                         width="190px" height="92px"
+		                       >
+		                </td>
+		            </s:else>
 	                </tr>
 	                </table>
 	                </div>

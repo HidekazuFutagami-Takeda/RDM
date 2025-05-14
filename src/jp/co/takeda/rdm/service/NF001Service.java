@@ -237,9 +237,10 @@ public class NF001Service extends BaseService {
         }
 
         // 都道府県
-  		selectNF001MainDataCntEntity.setAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePref()));
-  		selectNF001MainDataEntity.setAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePref()));
-
+  		if(indto.getAddrCodePref() != null && !"".equals(indto.getAddrCodePref())){
+  			selectNF001MainDataCntEntity.setAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePref().substring(5)));
+  			selectNF001MainDataEntity.setAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePref().substring(5)));
+  		}
         // JIS市区町村
   		if(indto.getAddrCodeCity() != null && !"".equals(indto.getAddrCodeCity())){
   			selectNF001MainDataCntEntity.setAddrCodeCity(StringUtils.setEmptyToNull(indto.getAddrCodeCity().substring(2)));
@@ -787,22 +788,22 @@ public class NF001Service extends BaseService {
 		//組織担当地区情報からJIS府県コード、JIS府県名を集約して取得しドロップダウンリストを作成する
 		//※MR権限の場合、親画面．領域区分を検索条件とする
         SRdmJkrSosAddrEntity inEntityAddrCmb = new SRdmJkrSosAddrEntity("selectAddrPrefComboList");
-		if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())
-				&& !StringUtils.isEmpty(indto.getTrtCd())) {
-			//※MR権限の場合、親画面．領域区分を検索条件とする
-			inEntityAddrCmb.setTrtCd(indto.getTrtCd());
-		}
+//		if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())
+//				&& !StringUtils.isEmpty(indto.getTrtCd())) {
+//			//※MR権限の場合、親画面．領域区分を検索条件とする
+//			inEntityAddrCmb.setTrtCd(indto.getTrtCd());
+//		}
         List<SRdmJkrSosAddrEntity> outMainAddrList = dao.select(inEntityAddrCmb);
         LinkedHashMap<String, String> mapAddrPref = new LinkedHashMap<String, String>();
         mapAddrPref.put("", "--なし--");
         for (SRdmJkrSosAddrEntity outEntity : outMainAddrList) {
-        	mapAddrPref.put(outEntity.getAddrCodePref(), outEntity.getAddrNamePref());
+        	mapAddrPref.put(outEntity.getSosCd()+outEntity.getAddrCodePref(), outEntity.getAddrNamePref());
         }
         indto.setAddrPrefCombo(mapAddrPref);
 
         //1-2-8			JIS市区町村
 		//ブランク　※都道府県が選択された場合、リストを取得する
-        SRdmJkrSosAddrEntiry inEntityCityCmb = new SRdmJkrSosAddrEntiry("selectSRdmJkrCityNameEntiry");
+        SRdmJkrSosAddrEntiry inEntityCityCmb = new SRdmJkrSosAddrEntiry("selectSRdmJkrCityNameEntiry");//※どんな文字列入れてもselectSRdmJkrCityNameEntiryが呼ばれます
         List<SRdmJkrSosAddrEntiry> outMainCityList = dao.select(inEntityCityCmb);
         LinkedHashMap<String, String> mapAddrCity = new LinkedHashMap<String, String>();
         mapAddrCity.put("", "--なし--");

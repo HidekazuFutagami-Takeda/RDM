@@ -56,7 +56,8 @@
     <script>
 	    function comSetFormWindowInfo(){
 	    	comClickFlgInit();
-
+	    	sosChange();
+	    	document.fm1.addrCodePref.value = document.fm1.tmpAddrCodePref.value;
 	    	sosAddrChange();
 
 	    	document.fm1.addrCodeCity.value = document.fm1.tmpAddrCodeCity.value;
@@ -96,6 +97,10 @@
 				document.getElementById("tantoButton").disabled = true;
 				tantoClearBtn();
 			}
+			sosChange();
+			addrCodePrefChange();
+			sosAddrChange();
+			addrCodeCityChange();
 	 	}
 
 	 	// 担当者選択ボタン
@@ -130,6 +135,10 @@
 			document.fm1.mrCat.value = mrCat;
 			document.fm1.brCode.value = brCode;
 			document.fm1.distCode.value = distCode;
+			sosChange();
+			addrCodePrefChange();
+			sosAddrChange();
+			addrCodeCityChange();
 	    }
 
 		// 組織Clearボタン
@@ -146,6 +155,10 @@
 			document.fm1.distCode.value = "";
 			document.fm1.bumonRank.value = "";
 			document.fm1.upSosCd.value = "";
+			sosChange();
+			addrCodePrefChange();
+			sosAddrChange();
+			addrCodeCityChange();
 		}
 
 	 	// 担当者Clearボタン
@@ -188,9 +201,14 @@
 			document.fm1.insPhoneSrch.value = "";
 			document.fm1.insPcode.value = "";
 			document.fm1.addrCodePref.value = "";
+			document.fm1.tmpAddrCodePref.value = "";
 			document.fm1.addrCodeCity.value = "";
 			document.fm1.tmpAddrCodeCity.value = "";
 			document.fm1.insAddrSrch.value = "";
+			sosChange();
+			addrCodePrefChange();
+			sosAddrChange();
+			addrCodeCityChange();
 		}
 
 	 	// 画面遷移処理
@@ -284,13 +302,43 @@
 			comSubmitForAnyWarp(fm1);
     	}
 
+	    function sosChange() {
+			//都道府県配列
+			var val2 = document.getElementById("addrCodePref");
+			val2.value = '';
+			//選択された組織のCD
+			var val1 = document.fm1.sosCd;
+			if(val1 == null){
+				sc = "00000";
+			}else{
+				sc = val1.value;
+			}
+			if(sc == ""){
+				sc = "00000";
+			}
+			for (i = 0; i < val2.length; i++) {
+				//表示
+				val2.options[i].style.display = "block";
+				var val2Cd = val2[i].value;
+				if(val2Cd != ""){
+					//都道府県コードの頭5つ切り取る
+					var val2cut = val2Cd.toString().substr(0, 5);
+					if (sc != val2cut) {
+						val2.options[i];
+						val2.options[i].style.display = "none";
+					}
+				}
+			}
+    	}
+
 	    function sosAddrChange() {
 			//市区町村配列
 			var val2 = document.getElementById("addrCodeCity");
 			val2.value = '';
 			//選択された都道府県のCD
 			var val1 = document.getElementById("addrCodePref").value;
-
+			//都道府県の頭に管轄組織コードがついているので末尾2桁を切り取る
+			var val1cut = val1.toString().substr(5, 2);
 			for (i = 0; i < val2.length; i++) {
 				//表示
 				val2.options[i].style.display = "block";
@@ -298,7 +346,7 @@
 				if(val2Cd != ""){
 					//市区町村コードの頭2つ切り取る
 					var val2cut = val2Cd.toString().substr(0, 2);
-					if (val1 != val2cut) {
+					if (val1cut != val2cut) {
 						val2.options[i];
 						val2.options[i].style.display = "none";
 					}
@@ -308,6 +356,9 @@
 
 	    function addrCodeCityChange(){
 	    	document.fm1.tmpAddrCodeCity.value = document.fm1.addrCodeCity.value;
+	    }
+	    function addrCodePrefChange(){
+	    	document.fm1.tmpAddrCodePref.value = document.fm1.addrCodePref.value;
 	    }
     </script>
     <style>
@@ -409,7 +460,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
 	<s:hidden id="ultInsCd" name="ultInsCd"/>
 	<s:hidden id="tkdTrtKbn" name="tkdTrtKbn"/>
-
+	<s:hidden id="tmpAddrCodePref" name="tmpAddrCodePref" />
 	<s:hidden id="tmpAddrCodeCity" name="tmpAddrCodeCity" />
 
 	<s:hidden id="bumonRank" name="bumonRank"/>
@@ -562,7 +613,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<%-- 都道府県--%>
 	    <td class="pupControlItem"><nobr>&nbsp;都道府県※</nobr></td>
         <td class="comTableSearchItem">
-			<s:select id="addrCodePref" name="addrCodePref" cssStyle="width:80pt" list ="addrPrefCombo" onchange="sosAddrChange();addrCodeCityChange();" />
+			<s:select id="addrCodePref" name="addrCodePref" cssStyle="width:80pt" list ="addrPrefCombo" onchange="addrCodePrefChange();sosAddrChange();addrCodeCityChange();" />
 	    </td>
 	    <%-- JIS市区町村名 --%>
 	    <td class="pupControlItem"><nobr>&nbsp;JIS市区町村名※</nobr></td>

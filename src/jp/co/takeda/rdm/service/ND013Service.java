@@ -216,7 +216,7 @@ public class ND013Service extends BaseService {
         	dataRecord.setJobForm(entity.getJobForm());
         	//大学職位
         	if (StringUtils.isEmpty(entity.getUnivTitle())) {
-        		entity.setUnivTitle("-");
+        		entity.setUnivTitle("--なし--");
         	}
         	dataRecord.setUnivTitle(entity.getUnivTitle());
         	//施設固定コード(隠し)

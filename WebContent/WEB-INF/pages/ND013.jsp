@@ -141,6 +141,26 @@
             top: 30%;
             position: absolute;
         }
+
+        /*テーブル幅可変*/
+		.comTableTitle .comTableTitle{
+			resize : horizontal;
+			overflow : hidden;
+		}
+
+		TD.comTableTitle
+		{
+			  border-top-width : 1px;
+			  border-left-width : 0px;
+			  border-right-width : 0px;
+		}
+
+		TD.comTableItem
+		{
+			  border-left-width : 0px;
+			  border-right-width : 0px;
+		}
+
 	</style>
 </head>
 
@@ -356,30 +376,20 @@
 	  </tr>
 	</table>
 
+	<div style="margin-left:100px;margin-top:5px">勤務先一覧</div>
 	<center>
-	<div style="margin-top: 2%; height: 370px; width: 1100px;">
+	<div style="max-height:340px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 	   	  <table class="comTableTitle" id="comTableTitle" style=" border: none !important;text-align: center;" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
-	   		<tr>
-	   			<td style="border: none !important;" colspan="4"></td>
-	            <td style="border: none !important; width:146pt; text-align: left;"><nobr>勤務先一覧</nobr></td>
-	            <td style="border: none !important;width:146pt;"><nobr></nobr></td>
-	            <td style="border: none !important;width:200pt;"><nobr></nobr></td>
-	        　　             <td style="border: none !important;width:200pt;"><nobr></nobr></td>
-	            <td style="border: none !important;width:146pt;"><nobr></nobr></td>
-	            <td style="border: none !important;width:146pt;"><nobr></nobr></td>
-				<td style="border: none !important;width:146pt;"><nobr></nobr></td>
-	            <td style="border: none !important;width:146pt;"><nobr></nobr></td>
-	        </tr>
-	   		<tr>
+	   		<tr style="position: sticky; top:0; left:0; z-index:3">
 	   			<td class="comTableTitle" style="border: 0px none; background-color:white;">アクション</td>
-	            <td class="comTableTitle" style="width:146pt;"><nobr>施設略式漢字名</nobr></td>
-	            <td class="comTableTitle" style="width:146pt;"><nobr>対象区分</nobr></td>
-	            <td class="comTableTitle" style="width:200pt;"><nobr>施設住所</nobr></td>
-	        　　             <td class="comTableTitle" style="width:200pt;"><nobr>所属部科</nobr></td>
-	            <td class="comTableTitle" style="width:146pt;"><nobr>役職</nobr></td>
-	            <td class="comTableTitle" style="width:146pt;"><nobr>勤務形態</nobr></td>
-				<td class="comTableTitle" style="width:146pt;"><nobr>大学職位</nobr></td>
-	            <td class="comTableTitle" style="width:146pt;"><nobr>担当者(領域：所属)</nobr></td>
+	            <td class="comTableTitle" style="width:146pt; background-color:white; border-left-width : 1px;"><nobr>施設略式漢字名</nobr></td>
+	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>対象区分</nobr></td>
+	            <td class="comTableTitle" style="width:200pt; background-color:white;"><nobr>施設住所</nobr></td>
+	        　　             <td class="comTableTitle" style="width:200pt; background-color:white;"><nobr>所属部科</nobr></td>
+	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>役職</nobr></td>
+	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>勤務形態</nobr></td>
+				<td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>大学職位</nobr></td>
+	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>担当者(領域：所属)</nobr></td>
 	        </tr>
 	        <s:iterator value="hcpWorkData" status="status" var="rowBean">
 		        <tr>
@@ -511,7 +521,7 @@
 	                </div>
 	                </td>
 		        	<!-- 施設略式漢字名 -->
-					<td class="comTableItem" id="left"  >
+					<td class="comTableItem" id="left" style="border-left-width : 1px;" >
 						<s:if test="%{#rowBean.insAbbrName == null || #rowBean.insAbbrName == ''}">
 			            	<nobr>&nbsp;</nobr>
 			            </s:if>

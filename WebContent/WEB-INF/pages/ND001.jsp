@@ -806,7 +806,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
                                           <img
                                             class="hoverImg"
                                             src="img/tooltip2.jpg"
-                                            width="190px" height="112px"
+                                            width="190px" height="92px"
                                           >
                                       </td>
                                       </tr>

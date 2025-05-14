@@ -267,6 +267,7 @@
       <s:hidden name="selectedInsDispRngFlg" />
       <s:hidden name="sosSelFlg" />
       <s:hidden name="jgiNo" />
+      <s:hidden name="sosCd" />
       <s:hidden name="wkCat" />
       <s:hidden name="caseKbn" />
       <s:hidden name="hoInsType" />
@@ -398,7 +399,7 @@
                     <div class="hoverDiv">
                     <table>
                     <tr>
-                    <s:if test="%{jokenSetCd != 1 && (#rowBean.jgiNo == null || #rowBean.jgiNo == '')}">
+                    <s:if test="%{jokenSetCd != 1 && (#rowBean.sosCd == null || #rowBean.sosCd == '')}">
                     	<!-- MR権限かつ担当外施設はアイコン非表示 -->
 	                    <td style="width: 30px;">&nbsp;</td>
 	                    <td style="width: 30px;">&nbsp;</td>

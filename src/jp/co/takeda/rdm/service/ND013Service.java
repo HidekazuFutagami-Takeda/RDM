@@ -86,6 +86,7 @@ public class ND013Service extends BaseService {
         paramEntity.setSearchType("1");
         // ログインユーザID
         paramEntity.setJgiNo(String.valueOf(loginInfo.getJgiNo()));
+        paramEntity.setSosCd(String.valueOf(loginInfo.getSosCd()));
 
         //データ部画面初期表示時の帳票一覧を取得する
         List<MRdmHcpWorkEntity> SelectHcpWorkList = dao.select(paramEntity);
@@ -232,6 +233,7 @@ public class ND013Service extends BaseService {
         	dataRecord.setDummyHco(entity.getDummyHco());
 
         	dataRecord.setJgiNo(entity.getJgiNo());
+        	dataRecord.setSosCd(entity.getSosCd());
 
         	dataRecord.setKinmuCount(SelectHcpWorkList.size());
         	//データ部検索結果を格納

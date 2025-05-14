@@ -27,6 +27,7 @@
         <result column="INS_NO_KAKUSI" property="insNoKakusi"/>
 
         <result column="JGI_NO" property="jgiNo"/>
+        <result column="SOS_CD" property="sosCd"/>
     </resultMap>
 
     <select id="selectHcpWorkDate" parameterType="jp.co.takeda.rdm.entity.MRdmHcpWorkEntity" resultMap="mRdmHcpWorkResultMap">
@@ -126,6 +127,7 @@
 				,HCP_WORK.INS_NO AS INS_NO_KAKUSI --施設固定コード (隠し項目)
 				,DUMMY_HCO.VALUE1 AS  DUMMY_HCO--ダミー施設コード (隠し項目)
 				,MR_INS.JGI_NO
+				,JKR_ADDR.SOS_CD
 			FROM
 			    ORAUSR01.M_RDM_PARAM_MST PARAM_MST_ISHI_KINMU --医師勤務先メニュースイッチ
 			INNER JOIN
@@ -215,6 +217,29 @@
 				MR_INS.INS_NO = HCP_WORK.INS_NO
 			AND
 				MR_INS.JGI_NO = #{jgiNo}
+
+			LEFT JOIN
+ 			T_RDM_M_MDB_HCO_MST ULT -- ULT_MDB施設マスタ
+ 			ON 1=1
+ 			AND ULT.DCF_SHISETSU_CD = HCO_MST.ULT_INS_NO
+			LEFT JOIN
+	 		(SELECT DISTINCT
+	 		 ADDR_CODE_PREF
+	 		,ADDR_CODE_CITY
+	 		,TK_PREF_CD
+	 		,TK_CITY_CD
+	 		FROM
+	 		S_RDM_COM_POS_ADDR
+	 		) ADDR -- 郵便番号-住所変換マスタ
+	 		ON 1=1
+	 		AND ADDR.ADDR_CODE_PREF = ULT.TODOFUKEN_CD
+	 		AND ADDR.ADDR_CODE_CITY = ULT.SHIKUCHOSON_CD
+	 		LEFT JOIN
+	 		S_RDM_JKR_SOS_ADDR JKR_ADDR -- 組織担当地区情報
+	 		ON 1=1
+	 		AND JKR_ADDR.ADDR_CODE_PREF = ADDR.TK_PREF_CD
+	 		AND JKR_ADDR.TK_CITY_CD = ADDR.TK_CITY_CD
+	 		AND JKR_ADDR.SOS_CD = #{sosCd}
 
 			ORDER BY
 				HCP_WORK.INS_NO --施設固定コード

@@ -24,7 +24,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-  <title>担当者検索ポップアップ</title>
+  <title>NC202_担当者検索ポップアップ</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <link href="css/common2.css" rel="Stylesheet" type="text/css" />
   <link href="css/popup.css" rel="Stylesheet" type="text/css" />

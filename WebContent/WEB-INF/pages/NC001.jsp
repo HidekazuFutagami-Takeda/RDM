@@ -26,7 +26,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<title>メニュー</title>
+<title>NC001_メニュー</title>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 <link href="css/common.css" rel="Stylesheet" type="text/css" />
 <link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />

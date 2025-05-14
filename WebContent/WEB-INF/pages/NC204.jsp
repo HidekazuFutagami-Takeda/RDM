@@ -38,11 +38,39 @@
     <script type="text/javascript" src="js/dmcDocInputCategoriesRDM.js"></script>
 <%--     <script type="text/javascript" src="js/jkrMenu.js"></script> --%>
 </head>
-<script type="text/javascript">
-
-</script>
+<style>
+        TD.comTableTitle{			/* テーブル形式のタイトル項目 */
+         border-style: solid;
+         border-top-width : 0px;
+         border-left-width : 1px;
+         border-right-width : 1px;
+         border-bottom-width : 1px;
+         border-color: brack;
+         /*テーブル幅可変*/
+	     resize : horizontal;
+		 overflow : hidden;
+		 font-weight:normal;
+       }
+        TD.comTableTitle2{			/* テーブル形式のタイトル項目 */
+         color : #000000;
+         background-color: #ffffff;
+         border-style: solid;
+         border-top-width : 1px;
+         border-left-width : 1px;
+         border-right-width : 1px;
+         border-bottom-width : 1px;
+       }
+        TD.comTableItem{			/* テーブル形式のタイトル項目 */
+         border-style: solid;
+         border-top-width : 0px;
+         border-left-width : 1px;
+         border-right-width : 1px;
+         border-bottom-width : 1px;
+         border-color: brack;
+       }
+</style>
 <body class="comPage" onLoad="cdcLoad();" OnUnLoad="cdcUnLoad();">
-<%-- submit用フォーム 開始 　まるっといらないかもって話がある--%>
+<%-- submit用フォーム 開始 --%>
 	<form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
 		<input type="text" name="screenId"          value="" />
 		<input type="text" name="functionId"        value="" />
@@ -112,14 +140,14 @@
 	<table class="pupBodyTable" align="center">
 	<tr><td>
 		<table width="100%">
-   		<tr>
-             <td align="center">
-               <jsp:include page="common/rdmMsg.jsp">
-               <jsp:param name="" value="" />
-               </jsp:include>
-             </td>
-         </tr>
-      </table>
+   		    <tr>
+                <td align="center">
+                    <jsp:include page="common/rdmMsg.jsp">
+                        <jsp:param name="" value="" />
+                    </jsp:include>
+                </td>
+            </tr>
+        </table>
 <%-- 検索部 開始 --%>
 
 	<CENTER>
@@ -135,15 +163,27 @@
 	</table>
 	<table align="left" style="position:relative;left:35px">
 		<tr>
-        <td>
-            <nobr><s:textfield name="searchInput" align="left"  size="40" maxlength="40" type="search" onsubmit="return false;"/></nobr>
-            <s:submit value="検索" name="検索" onclick="deptSearch();"/>
-            <br> ※部分一致で検索されます。<%-- 検索ボタン --%>
-        </td>
+		    <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <nobr><s:textfield name="searchInput" align="left"  size="60" maxlength="60" type="search" onsubmit="return false;"/></nobr>
+                <s:submit value="検索" name="検索" onclick="deptSearch();"/>
+                <br> ※部分一致で検索されます。<%-- 検索ボタン --%>
+            </td>
 		</tr>
 	</table>
 
-	 <table class="pupReferenceDetail" align="center" style="border-style:solid;width:350pt;">
+	<table class="pupReferenceDetail" align="center" style="border-style:solid;width:350pt;">
     </table>
 <%-- 検索部 終了 --%>
 <%-- ページ情報 --%>
@@ -151,57 +191,70 @@
           <s:if test='pageFlg == "1" '>
           </s:if>
           <s:else>
-             <jsp:include page="common/popPage.jsp" >
-			      <jsp:param name="showPagerFlg" value="1" />
-			      <jsp:param name="pagerSize" value="300" />
-    		 </jsp:include>
+              <table width="95%" >
+		          <tr>
+                  <%-- ページャー表示 開始 --%>
+                      <s:if test='pageFlg == "1" '>
+                      </s:if>
+                      <s:else>
+                          <td align="right">
+                              <jsp:include page="common/rdmPage.jsp">
+                                  <jsp:param name="" value="" />
+                              </jsp:include>
+                          </td>
+                      </s:else>
+                      <%-- ページャー表示 終了 --%>
+                  </tr>
+              </table>
           </s:else>
           <s:if test='pageFlg == "1" '>
           </s:if>
           <s:else>
-              <table>
-	              <tr class="comTableTitle" >
-	                  <td class="comTableTitle" align="left" style="width:400px; text-align: left;  border:none;">所属部科名</td>
-	              </tr>
-	          </table>
-	          <div id="osirase" align="center"  style="background-color:#ffffff; width:417px; height:300px; overflow-y:scroll; border-width:1px; border-style:solid;">
-              <table  align="center" border="0" cellpadding="2" cellspacing="0" style="width:300pt;">
-              <%-- 項目 --%>
-
-              <%-- 内容 --%>
-
-                  <s:iterator value="catDeptsComboDataList" status="status" var="rowBean">
-	                  <tr>
-		                  <td class="comTableItem" style="width:100px; border:none;">
-
-                	          <input type="button" value="" class="cseJgiSelectButton"
-              			             onclick="dcaReturnRDM('<s:property value="#rowBean.deptCode"/>',
-                                                           '<s:property value="#rowBean.DeptKj" />',
-                                                           '<s:property value="#rowBean.DeptKn"/>');">
-
-		  			          <s:hidden name="catDeptsComboDataList[%{#status.index}].deptCode" />
-		  			          <s:label name="catDeptsComboDataList[%{#status.index}].DeptKj"  key="catDeptsComboDataList[%{#status.index}].DeptKj" />
-		  			          <s:hidden name="catDeptsComboDataList[%{#status.index}].DeptKn" />
-
-                          </td>
-                      </tr>
-                  </s:iterator>
-              </table>
+              <div align="center" style="max-height:270px;width:415px;overflow-y:scroll; overflow-x:none; border-width:1px; scrollbar-width: auto; ">
+                  <table align="center" border="0" cellpadding="2" cellspacing="0" style="width:300pt; position: sticky; top:0; left:0;scrollbar-width: auto;">
+	                  <tr style="position: sticky; top:0; left:0; scrollbar-width: auto;" >
+	                      <td class="comTableTitle2 " style="border:none; width:20pt; position: sticky;"><nobr>選択</nobr>
+	                      </td>
+	                      <td class="comTableTitle " style="width:80pt; "><nobr>所属部科コード</nobr>
+	                      </td>
+	                      <td class="comTableTitle" style="width:200pt; border-right-width : 2px;"><nobr>所属部科名</nobr>
+	                      </td>
+	                  </tr>
+	                  <s:iterator value="catDeptsComboDataList" status="status" var="rowBean">
+	                      <tr>
+		                      <td class="comTableItem " style="width:20px; border:none;">
+                	              <input type="button" value="" style="width:20px;" class="cseJgiSelectButton"
+              		                     onclick="dcaReturnRDM('<s:property value="#rowBean.deptCode"/>',
+                                                               '<s:property value="#rowBean.DeptKj" />',
+                                                               '<s:property value="#rowBean.DeptKn"/>');">
+                              </td>
+                              <td class="comTableItem" style="width:60pt;">
+                                  <s:label name="catDeptsComboDataList[%{#status.index}].deptCode"  key="catDeptsComboDataList[%{#status.index}].deptCode" />
+                              </td>
+		  			          <td class="comTableItem" style="width:150pt;border-right-width : 2px;">
+		  			              <s:label name="catDeptsComboDataList[%{#status.index}].DeptKj"  key="catDeptsComboDataList[%{#status.index}].DeptKj" />
+		  			              <s:hidden name="catDeptsComboDataList[%{#status.index}].deptCode" />
+		  			              <s:hidden name="catDeptsComboDataList[%{#status.index}].DeptKn" />
+		  			          </td>
+                          </tr>
+                      </s:iterator>
+	              </table>
+              </div>
           </s:else>
-    </div>
 	</CENTER>
 <%-- メイン部 一覧 終了 --%>
-<!--  <hr class="comSplit" /> -->
+
 <%-- 後制御部 --%>
-    <table class="comPortalControlTable comPortalControlTablePopup" align="center" style="width:300pt;" >
-        <tr>
-        <td width="100%"></td>
-             <td class="comPortalControlItem">
-            <%--    <nobr style="position: fixed; bottom: 20; left: 20;width: 100%; text-align: left;">  --%>
-                <input type="button" value="閉じる" OnClick="cdcClose();">
-<!--                 </nobr> -->
-            </td>
-        </tr>
+    <table class="comPortalControlTable comPortalControlTablePopup" style="margin-top:3pt;margin-bottom:1pt; width:300pt;"align="center">
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                  <input type="button"  align="left"  value="閉じる" OnClick="cdcClose();">
+              </td>
+          </tr>
     </table>
 	</td></tr>
 	</table>

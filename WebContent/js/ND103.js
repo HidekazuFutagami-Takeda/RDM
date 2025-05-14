@@ -67,6 +67,7 @@ function tmpCdcView(){
 function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
 	document.fm1.deptCodeAf.value = deptCode;
 	document.fm1.deptKj.value = DeptKj;
+	document.fm1.deptKn.value = DeptKn;
 }
 
 

@@ -493,6 +493,7 @@ public class ND315Service extends BaseService {
 					insEntity1.setReqJgiName(loginInfo.getJgiName());//申請者氏名
 					insEntity1.setReqComment(indto.getReqComment());//申請コメント
 					insEntity1.setDocNo(indto.getTkdDocNo());//医師固定コード
+					insEntity1.setInsNo(wData.getInsNo());
 
 					insEntity1.setReqMemo(indto.getReqId());
 					insEntity1.setTekiyoYmd(wData.getNextBizday());
@@ -570,6 +571,7 @@ public class ND315Service extends BaseService {
 				tRdmReqKnrEntity.setReqJgiName(loginInfo.getJgiName());//申請者氏名
 				tRdmReqKnrEntity.setReqComment(indto.getReqComment());//申請コメント
 				tRdmReqKnrEntity.setDocNo(indto.getTkdDocNo());//医師固定コード
+				tRdmReqKnrEntity.setInsNo("953000000");
 
 				tRdmReqKnrEntity.setReqMemo(indto.getReqId());
 				tRdmReqKnrEntity.setTekiyoYmd(tekiyoYmd);

@@ -176,6 +176,12 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	private String addrCodePref;
 
 	/**
+	 * 都道府県
+	 * @generated
+	 */
+	private String tmpAddrCodePref;
+
+	/**
 	 * JIS市区町村
 	 * @generated
 	 */
@@ -700,6 +706,21 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAddrCodePref(String addrCodePref) {
 		this.addrCodePref = addrCodePref;
+	}
+
+	/**
+	 * NF001DTO.javatmpAddrCodePrefを設定
+	 * @return tmpAddrCodePref
+	 */
+	public String getTmpAddrCodePref() {
+		return tmpAddrCodePref;
+	}
+
+	/**
+	 * @param tmpAddrCodePref セットする tmpAddrCodePref
+	 */
+	public void setTmpAddrCodePref(String tmpAddrCodePref) {
+		this.tmpAddrCodePref = tmpAddrCodePref;
 	}
 
 	/**

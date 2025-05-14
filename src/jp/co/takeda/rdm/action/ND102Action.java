@@ -133,14 +133,12 @@ public class ND102Action extends BaseAction<ND102DTO> {
 		if ("ND013".equals(preScreenId)) {
 			dto.setDisplayKbn("0");
 			// 申請一覧
-		} else if ("NC011".equals(preScreenId) || "ND309".equals(preScreenId)) {
+		} else if("ND309".equals(preScreenId)) {
+			//確認画面から遷移
+			dto.setDisplayKbn("9");
+		} else if ("NC011".equals(preScreenId)) {
 			if (StringUtils.isEmpty(reqId) || reqId.equals("-")) {
-    			if("ND307".equals(preScreenId)) {
-    				//一時保存なし申請後に確認画面から遷移
-    				dto.setDisplayKbn("9");
-    			}else {
-    			 	dto.setDisplayKbn("0");
-    			}
+			 	dto.setDisplayKbn("0");
 			} else {
 				dto.setDisplayKbn("1");
 			}

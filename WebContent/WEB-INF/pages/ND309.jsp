@@ -169,7 +169,6 @@
 		<s:hidden name="kmuPreCodeKanj" />
 		<s:hidden name="yakushinPreCodeKanj" />
 		<s:hidden name="univPreTitleKj" />
-		<s:hidden name="dispTekiyoYmd" />
 		<s:hidden name="trnKbn" />
 		<s:hidden name="reqFlg" />
 		<s:hidden name="inputFlg" />

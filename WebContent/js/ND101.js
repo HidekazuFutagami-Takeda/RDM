@@ -157,11 +157,10 @@ function jimClear(name) {
 		document.fm1.postHoInsType.value = "";
     	document.getElementById("deptBtn").disabled = true;
 	}
-	if (name == 'shozokubukaName') {
-		document.fm1.postDeptKj.value = "";
-		document.fm1.postDeptCode.value = "";
-		document.fm1.postDeptKn.value = "";
-	}
+
+	document.fm1.postDeptKj.value = "";
+	document.fm1.postDeptCode.value = "";
+	document.fm1.postDeptKn.value = "";
 }
 
 /**

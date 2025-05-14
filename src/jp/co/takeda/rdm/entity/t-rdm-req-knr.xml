@@ -483,7 +483,6 @@
   <select id="countReqKnr" parameterType="jp.co.takeda.rdm.entity.SRdmReqListEntity" resultMap="selectCntReqListResultMap">
 	  SELECT COUNT(*) CNT_REQ
  	  FROM(
-
 		WITH HCP_KMS_MAX AS(--■サブクエリ（医師勤務先）
 		    SELECT MAX(INS_NO) MAX_INS_NO,
 		           DOC_NO
@@ -509,9 +508,13 @@
 		                 REQ_KNR.REQ_ID = HCP_REQ.REQ_ID
 		              )
 		)
-	  	  SELECT
-		  	REQ_KNR.REQ_ID,REQ_KNR.REQ_YMDHMS,REQ_KNR.REQ_CHL,
-		    REQ_KNR.REQ_TYPE,REQ_KNR.REQ_STS,
+
+	  SELECT
+		  	REQ_KNR.REQ_ID
+		   ,REQ_KNR.REQ_YMDHMS
+		   ,REQ_KNR.REQ_CHL
+		   ,REQ_KNR.REQ_TYPE
+		   ,REQ_KNR.REQ_STS,
 
 		    --(検索処理:施設か医師かの判定:医師)
 		    --HCO_REQ.INS_NO,HCO_REQ.INS_FORMAL_NAME,
@@ -533,17 +536,22 @@
 			        WHEN REQ_KNR.REQ_TYPE IN ('31') THEN HCP_REQ.DOC_KANJ
 			        WHEN REQ_KNR.REQ_TYPE IN ('32','33','34','41','42','43','44','51')  THEN HCP_MST.DOC_KANJ
 			END AS DOC_KANJ
-		    ,REQ_KNR.REQ_JGI_NAME,REQ_KNR.REQ_SHZ,REQ_KNR.REQ_COMMENT,REQ_KNR.APR_YMDHMS,REQ_KNR.APR_SHA_ID,
-		    REQ_KNR.APR_MEMO,REQ_KNR.APR_COMMENT
+		    ,REQ_KNR.REQ_JGI_NAME
+		    ,REQ_KNR.REQ_SHZ
+		    ,REQ_KNR.REQ_COMMENT
+		    ,REQ_KNR.APR_YMDHMS
+		    ,REQ_KNR.APR_SHA_ID
+		    ,REQ_KNR.APR_MEMO
+		    ,REQ_KNR.APR_COMMENT
 		<if test='mrAdminFlg == "1"'>
-		   ,REQ_KNR.SHN_FLG,
-		    REQ_KNR.SHN_YMDHMS,
-		    REQ_KNR.SHN_SHA_ID,
-		    --REQ_KNR.FB_REQ_FLG,
-		    CODE_REQ_FLG.VALUE1_KANJ FB_REQ_FLG,
-		    REQ_KNR.FB_ANS_ID,
-		    --REQ_KNR.FB_PRC_TYPE
-			CODE_PRC_TYPE.VALUE1_KANJ FB_PRC_TYPE
+		   ,REQ_KNR.SHN_FLG
+		   ,REQ_KNR.SHN_YMDHMS
+		   ,REQ_KNR.SHN_SHA_ID
+		    --,REQ_KNR.FB_REQ_FLG
+		    ,CODE_REQ_FLG.VALUE1_KANJ FB_REQ_FLG
+		    ,REQ_KNR.FB_ANS_ID
+		    --,REQ_KNR.FB_PRC_TYPE
+			,CODE_PRC_TYPE.VALUE1_KANJ FB_PRC_TYPE
 		</if>
 	  FROM  ORAUSR01.T_RDM_REQ_KNR REQ_KNR --申請管理
 			left join ORAUSR01.T_RDM_HCO_REQ HCO_REQ --施設_申請管理　
@@ -560,10 +568,11 @@
 			on HCP_KMU_REQ.REQ_ID=REQ_KNR.REQ_ID
             LEFT JOIN HCP_INS  --■サブクエリ（医師勤務）
 		    ON HCP_INS.REQ_ID=REQ_KNR.REQ_ID
-			LEFT JOIN ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
-	        ON HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
-            OR HCO_REQ.INS_NO=HCO_MST.INS_NO
-			OR HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
+			LEFT JOIN
+	        ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
+	        --ON HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
+            --OR HCO_REQ.INS_NO=HCO_MST.INS_NO
+			ON HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
 			left join ORAUSR01.M_RDM_HCP_MST HCP_MST --医師_基本情報
 			on HCP_MST.DOC_NO=nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(HCP_REQ.DOC_NO,HCP_REQ.DOC_NO,HCP_KMU_REQ.DOC_NO)))
 			left join  ORAUSR01.M_RDM_CODE_MST CODE_LB --コード情報 申請区分_LB
@@ -583,18 +592,18 @@
 			ON  CODE_PRC_TYPE.VALUE1 = REQ_KNR.FB_PRC_TYPE
 		    AND CODE_PRC_TYPE.CODE_NAME ='FB_PRC_TYPE'
 		    </if>
-	<where>
+	WHERE
 		1=1
 		<if test="insNo != null">
-	    AND HCO_MST.INS_NO = #{insNo}
+	   		 AND HCO_MST.INS_NO = #{insNo}
 	    </if>
 	    <if test="reqType != null">
-		    <if test='reqType != "1X"'>
-		    AND REQ_KNR.REQ_TYPE = #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
+			<if test='reqType != "1X"'>
+			    AND REQ_KNR.REQ_TYPE = #{reqType} --種別が0,施設の場合:申請区分　　--入力情報を受け取り判別
 		    </if>
 		    <if test='reqType == "1X"'>
-		    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
-		    </if>
+			    AND REQ_KNR.REQ_TYPE IN ( '11','12','13')
+			</if>
 	    </if>
 	    <if test="aDdrCodePref != null">
 	    	<if test="reqType != null">
@@ -696,28 +705,26 @@
 	    <!-- MRのみ　申請者従業員番号 -->
 	    <if test="jgiNo != null">
 	    	<if test='mrAdminFlg == "0"'>
-			AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
+				AND REQ_KNR.REQ_JGI_NO = #{jgiNo}
 			</if>
 	    </if><!-- MR -->
 	    <!-- 管理者のみ -->
 	    <if test='mrAdminFlg == "1"'>
 	    <if test="brCode != null">
-	    AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
+	    	AND REQ_KNR.REQ_BR_CODE = #{brCode} --管理者権限の場合　医薬支店C(本来の数字は入力される？)	    </if>
 	    <if test="distCode != null">
-		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)
-		</if>
-	    <if test="distCode != null">
-		AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)	    </if>
-	   	<if test="reqShz != null">
-	    AND REQ_KNR.REQ_SHZ LIKE  '%' || #{reqShz} || '%'
-	    </if><!-- 管理者 -->
+			AND REQ_KNR.REQ_DIST_CODE = #{distCode} --管理者権限の場合　医薬営業所C(本来の数字は入力される？)		</if>
+	    <if test="reqJgiName != null">
+	    	AND REQ_KNR.REQ_JGI_NAME LIKE  '%' || #{reqJgiName} || '%'
+	    </if>
+	   	<!-- 管理者 -->
 		</if>
 	    <if test=" insKanjiSrch != null">
-	    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'
-		OR  HCO_REQ.INS_FORMAL_NAME LIKE'%' || #{insKanjiSrch} || '%'
-		OR  HCO_REQ.INS_CONT_NAME LIKE  '%' || #{insKanjiSrch} || '%'
-		OR  HCO_MST.INS_KANJ_SRCH LIKE  '%' || #{insKanjiSrch} || '%'
-	    )
+		    AND(HCO_REQ.INS_ABBR_NAME LIKE  '%' || #{insKanjiSrch} || '%'
+			OR  HCO_REQ.INS_FORMAL_NAME LIKE'%' || #{insKanjiSrch} || '%'
+			OR  HCO_REQ.INS_CONT_NAME LIKE  '%' || #{insKanjiSrch} || '%'
+			OR  HCO_MST.INS_KANJ_SRCH LIKE  '%' || #{insKanjiSrch} || '%'
+		    )
 	    </if>
 	    <if test="insNo != null">
 	    AND HCO_MST.INS_NO = #{insNo}
@@ -808,16 +815,14 @@
 		AND REQ_KNR.REQ_JGI_NO != #{jgiNo}　　--入力情報を受け取り判別
 		)
 		</if>
-		<if test='sbt == "0"'>
+	    <if test='sbt == "0"'>
 		AND NOT REQ_KNR.REQ_TYPE IN ('31','32','33','34')
 		AND NOT REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')
 	    </if>
 		<if test='sbt == "1"'>
 		AND NOT REQ_KNR.REQ_TYPE IN ('01','02','03','04')
 		AND NOT REQ_KNR.REQ_TYPE IN ('11','12','13','21')
-	    </if>
-		</where>
-		ORDER BY REQ_KNR.REQ_ID DESC
+		</if>
 		)SELECT_REQ
 	</select>
 </mapper>

@@ -159,6 +159,18 @@ public class MRdmHcpWorkEntity extends BaseEntity implements Serializable {
    private String insNo;
 
    /**
+    * 施設担当者コード
+    * @generated
+    */
+   private String jgiNo;
+
+   /**
+    * 施設担当組織コード
+    * @generated
+    */
+   private String sosCd;
+
+   /**
     * 施設固定コード (隠し項目)
     * @generated
     */
@@ -553,6 +565,22 @@ public class MRdmHcpWorkEntity extends BaseEntity implements Serializable {
 	 */
 	public void setInsNo(String insNo) {
 		this.insNo = insNo;
+	}
+
+	public String getJgiNo() {
+		return jgiNo;
+	}
+
+	public void setJgiNo(String jgiNo) {
+		this.jgiNo = jgiNo;
+	}
+
+	public String getSosCd() {
+		return sosCd;
+	}
+
+	public void setSosCd(String sosCd) {
+		this.sosCd = sosCd;
 	}
 
 

@@ -319,6 +319,10 @@ public class ND102Service extends BaseService {
 
 		}
 
+		if(indto.getDispTekiyoYmd() != null) {
+			indto.setDispTekiyoYmd(indto.getDispTekiyoYmd().replace("/", "-"));
+		}
+
         //ドロップダウンリスト等の作成
         setCombo(indto);
 

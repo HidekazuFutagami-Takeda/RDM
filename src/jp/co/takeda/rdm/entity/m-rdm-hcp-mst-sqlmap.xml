@@ -81,14 +81,15 @@
  			ON 1=1
  			AND ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
             WHERE 1=1
-        --削除理由 重複登録除き(武田側)
-		        AND NOT EXISTS(
-		            SELECT *
-		            FROM M_RDM_HCP_MST DEL_HCP_MST
-		            WHERE 1 = 1
-		            AND TKD.DOC_NO = DEL_HCP_MST.DOC_NO
-		            AND TKD.DEL_FLG = '1'
-		            AND TKD.DEL_REASON = '02')
+--UT-O-536 ユーザ確認により重複は除外しないように変更
+--        --削除理由 重複登録除き(武田側)
+--		        AND NOT EXISTS(
+--		            SELECT *
+--		            FROM M_RDM_HCP_MST DEL_HCP_MST
+--		            WHERE 1 = 1
+--		            AND TKD.DOC_NO = DEL_HCP_MST.DOC_NO
+--		            AND TKD.DEL_FLG = '1'
+--		            AND TKD.DEL_REASON = '02')
         --UT-O-536 連携済も武田側の削除理由のみで判断
         ----削除理由 重複登録除き(ULT側)
 		--        AND NOT EXISTS(
@@ -138,14 +139,15 @@
 	 	    	 WHERE
 	 	         ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
 	 		    )
-        --削除理由 重複登録除き(ULT側)
-		        AND NOT EXISTS(
-		            SELECT *
-		            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
-		            WHERE 1 = 1
-		            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
-		            AND ULT.SHUSEI_KBN = 'C'
-		            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
+--UT-O-536 ユーザ確認により重複は除外しないように変更
+--        --削除理由 重複登録除き(ULT側)
+--		        AND NOT EXISTS(
+--		            SELECT *
+--		            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
+--		            WHERE 1 = 1
+--		            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
+--		            AND ULT.SHUSEI_KBN = 'C'
+--		            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
 		)
         --サブクエリ用　武田側
         , TKD_INS_NAME AS (
@@ -471,14 +473,15 @@
  			ON 1=1
  			AND ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
             WHERE 1=1
-        --削除理由 重複登録除き(武田側)
-		        AND NOT EXISTS(
-		            SELECT *
-		            FROM M_RDM_HCP_MST DEL_HCP_MST
-		            WHERE 1 = 1
-		            AND TKD.DOC_NO = DEL_HCP_MST.DOC_NO
-		            AND TKD.DEL_FLG = '1'
-		            AND TKD.DEL_REASON = '02')
+--UT-O-536 ユーザ確認により重複は除外しないように変更
+--        --削除理由 重複登録除き(武田側)
+--		        AND NOT EXISTS(
+--		            SELECT *
+--		            FROM M_RDM_HCP_MST DEL_HCP_MST
+--		            WHERE 1 = 1
+--		            AND TKD.DOC_NO = DEL_HCP_MST.DOC_NO
+--		            AND TKD.DEL_FLG = '1'
+--		            AND TKD.DEL_REASON = '02')
         --UT-O-536 連携済も武田側の削除理由のみで判断
         ----削除理由 重複登録除き(ULT側)
 		--        AND NOT EXISTS(
@@ -528,14 +531,15 @@
 	 	    	 WHERE
 	 	         ULT.DCF_ISHI_CD = TKD.ULT_DOC_NO
 	 		    )
-        --削除理由 重複登録除き(ULT側)
-		        AND NOT EXISTS(
-		            SELECT *
-		            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
-		            WHERE 1 = 1
-		            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
-		            AND ULT.SHUSEI_KBN = 'C'
-		            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
+--UT-O-536 ユーザ確認により重複は除外しないように変更
+--        --削除理由 重複登録除き(ULT側)
+--		        AND NOT EXISTS(
+--		            SELECT *
+--		            FROM T_RDM_M_MDB_HCP_MST DEL_MDB_HCP_MST
+--		            WHERE 1 = 1
+--		            AND ULT.DCF_ISHI_CD = DEL_MDB_HCP_MST.DCF_ISHI_CD
+--		            AND ULT.SHUSEI_KBN = 'C'
+--		            AND ULT.SAKUJYO_YOTEI_RIYU_CD = '5')
 		)
 		,TKD_WORK AS (
 		SELECT DISTINCT

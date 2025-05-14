@@ -531,6 +531,7 @@ public class ND311Service extends BaseService {
 
 	        	tRdmHcpKmuReqInsData.setReqId(reqId);
 	        	tRdmHcpKmuReqInsData.setDocNo(dto.getDocNo());
+	        	tRdmHcpKmuReqInsData.setInsNoSk(dto.getInsNoSk());
 	        	tRdmHcpKmuReqInsData.setJobFormAf(dto.getJobFormAf());
 	        	tRdmHcpKmuReqInsData.setDeptCodeAf(dto.getDeptCodeAf());
 	        	tRdmHcpKmuReqInsData.setDeptKanjiAf(dto.getDeptKj());

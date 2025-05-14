@@ -25,7 +25,12 @@
         <result column="UP_BR_CODE" property="upBrCode"/>
         <result column="UP_DIST_CODE" property="upDistCode"/>
     </resultMap>
-   <select id="selectInitSos" parameterType="jp.co.takeda.rdm.entity.join.SelectInitSosEntity" resultMap="selectInitSosResultMap">
+    <resultMap id="selectInitSosAutoResultMap" type="jp.co.takeda.rdm.entity.join.SelectInitSosAutoEntity">
+        <result column="BUMON_RANK" property="bumonRank"/>
+        <result column="SOS_CD" property="sosCd"/>
+        <result column="UP_SOS_CD" property="upSosCode"/>
+    </resultMap>
+    <select id="selectInitSos" parameterType="jp.co.takeda.rdm.entity.join.SelectInitSosEntity" resultMap="selectInitSosResultMap">
 		  with TRT_SOS as (
             SELECT distinct
                 SOS_MST.UP_SOS_CD SOS_CD,
@@ -166,5 +171,11 @@
             </if>
         </where>
         ORDER BY SOS_MST.BR_CODE, SOS_MST.DIST_SEQ, SOS_MST.DIST_CODE
+    </select>
+    <select id="selectInitSosAuto" parameterType="jp.co.takeda.rdm.entity.join.SelectInitSosAutoEntity" resultMap="selectInitSosAutoResultMap">
+        select SOS_CD, BUMON_RANK, UP_SOS_CD
+        from M_RDM_SOS_MST
+        where 1 = 1
+        and SOS_CD = #{inSosCd}
     </select>
 </mapper>

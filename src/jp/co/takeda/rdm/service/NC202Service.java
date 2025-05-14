@@ -19,18 +19,15 @@ import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.common.LoginInfo;
 import jp.co.takeda.rdm.entity.join.SelectInitJgiEntity;
 import jp.co.takeda.rdm.entity.join.SelectCntUnderSosEntity;
-//import jp.co.takeda.rdm.entity.join.SelectInitSosEntity;
 import jp.co.takeda.rdm.entity.join.SelectJgiEntity;
 import jp.co.takeda.rdm.entity.join.SelectJgiJgiEntity;
 import jp.co.takeda.rdm.entity.join.SelectRyakuNameEntity;
-//import jp.co.takeda.rdm.entity.join.SelectSosEntity;
+import jp.co.takeda.rdm.entity.join.SelectInitSosAutoEntity;
 import jp.co.takeda.rdm.dto.NC202DTO;
-//import jp.co.takeda.rdm.dto.SosInitData;
 import jp.co.takeda.rdm.dto.JgiData;
+import jp.co.takeda.rdm.dto.SosJgiInitData;
 import jp.co.takeda.rdm.dto.JgiJgiData;
 import jp.co.takeda.rdm.dto.JgiInitData;
-//import jp.co.takeda.rdm.dto.NC201DTO;
-import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
 
 import org.apache.commons.logging.Log;
@@ -60,6 +57,10 @@ public class NC202Service extends BaseService {
     public BaseDTO init(NC202DTO indto) {
         BaseDTO outdto = indto;
 
+        //自動展開用の組織コード(sos_cd)をセット
+        //sos_cd == nullの場合はwhileをスキップ、自動展開しない
+        String sosCdFlg = indto.getSosCd();
+
         List<JgiInitData> jgiInitDataList = new ArrayList<JgiInitData>();
         SelectInitJgiEntity selectInitJgiEntity = new SelectInitJgiEntity();
 
@@ -73,7 +74,6 @@ public class NC202Service extends BaseService {
         		jgiInitDataList.clear();
                 SelectInitJgiEntity selectInitJgiEntityTop = new SelectInitJgiEntity();
                 selectInitJgiEntityTop.setInBumonRank(1);
-//                selectInitJgiEntityTop.setInTrtCd(null);
                 List<SelectInitJgiEntity> selectInitJgiListTop = dao.select(selectInitJgiEntityTop);
 
                 SelectInitJgiEntity entityTop = (SelectInitJgiEntity)selectInitJgiListTop.get(0);
@@ -83,10 +83,51 @@ public class NC202Service extends BaseService {
         	}
 
         }
-//SosCdPopにデータコピー　initでDTOに値をセットしないと以降セットできなくなるため。
+        //SosCdPopにデータコピー　initでDTOに値をセットしないと以降セットできなくなるため。
         indto.setSosCdSearch(indto.getSosCdPop());
         indto.setBumonRankSearch(indto.getBumonRankPop());
         indto.setJgiInitData(jgiInitDataList);
+
+        indto.setAjaxSwitchFlg("1");
+
+    	//自動展開用のリスト取得
+    	//親画面から組織コードを受け取っている場合に実行
+        if(!(sosCdFlg == null || sosCdFlg.isEmpty())) {
+
+        	List<SosJgiInitData> sosJgiInitDataList = new ArrayList<SosJgiInitData>();
+
+        	boolean loopFlg = true;
+        	String searchSosCd = indto.getSosCd();
+
+        	while(loopFlg) {
+        		SelectInitSosAutoEntity selectInitSosAutoEntity = new SelectInitSosAutoEntity();
+        		selectInitSosAutoEntity.setInSosCd(Integer.parseInt(searchSosCd));
+        		List<SelectInitSosAutoEntity> entity = dao.select(selectInitSosAutoEntity);
+    			SosJgiInitData data = new SosJgiInitData();
+    			SelectInitSosAutoEntity entityTop = (SelectInitSosAutoEntity)entity.get(0);
+    			BeanUtil.copyProperties(data, entityTop);
+    			sosJgiInitDataList.add(data);
+    			searchSosCd = entity.get(0).getUpSosCode();
+        		if(data.getSosCd().equals("01050")) {
+        			loopFlg = false;
+        		}
+        	}
+
+            //下位組織から上位組織探すため、上位組織から下位組織の順序にしておく必要
+            Comparator<SosJgiInitData> listOrder =
+                new Comparator<SosJgiInitData>() {
+                public int compare(SosJgiInitData e1,
+                		SosJgiInitData e2) {
+                    return e1.getBumonRank() - e2.getBumonRank();
+                }
+            };
+            Collections.sort(sosJgiInitDataList, listOrder);
+
+            indto.setSosJgiInitData(sosJgiInitDataList);
+
+        	indto.setAjaxSwitchFlg("2");
+        }
+
         // END UOC
         return outdto;
     }
@@ -103,21 +144,6 @@ public class NC202Service extends BaseService {
         BaseDTO outdto = indto;
         // START UOC
         getJgiList(0, indto);
-
-//        indto.setJgiFlg(0);
-//        String jgiFlg = indto.getJgiData().get(0).getJgiNo();
-//        if(!StringUtils.isEmpty(jgiFlg)) {
-//        	indto.setJgiFlg(1);
-//        }
-//        if(indto.getJgiJgiData().isEmpty()) {
-//        	indto.setJgiFlg(0);
-//        }else {
-//        	if(indto.getJgiJgiData().get(0).getJgiNo() == null) {
-//        		indto.setJgiFlg(0);
-//        	}else {
-//        		indto.setJgiFlg(1);
-//        	}
-//        }
         // END UOC
         return outdto;
     }
@@ -133,12 +159,10 @@ public class NC202Service extends BaseService {
 	   LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
        SelectJgiEntity selectJgiEntity = new SelectJgiEntity();
        selectJgiEntity.setInBumonRank(initFlg);
-//       selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(null));
        selectJgiEntity.setInUpSosCd(null);
        selectJgiEntity.setInJokenSetCd(loginInfo.getJokenSetCd());
        if (initFlg == 0) {
     	   selectJgiEntity.setInBumonRank(indto.getBumonRankPop()+ 1);
-//    	   selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
     	   selectJgiEntity.setInUpSosCd(indto.getSosCdPop());
        }
 
@@ -149,9 +173,6 @@ public class NC202Service extends BaseService {
 
 			if (indto.getBackScreenId().equals("NF011")) {
 				selectJgiEntity.setInGmnFlg(0);
-//    	   selectJgiEntity.setInTrtCd("02");
-//    	   selectJgiEntity.setInAddrCodePref("01");
-//    	   selectJgiEntity.setInTkCityCd("018");
 				selectJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
 				selectJgiEntity.setInAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePrefPop()));
 				selectJgiEntity.setInTkCityCd(StringUtils.setEmptyToNull(indto.getTkCityCdPop()));
@@ -166,10 +187,6 @@ public class NC202Service extends BaseService {
 				selectJgiEntity.setInUpSosCdPop(StringUtils.setEmptyToNull(indto.getUpSosCdPop()));
 				selectJgiEntity.setInBumonRankPop(indto.getBumonRankSearch());
 				selectJgiEntity.setInSosCdSearch(indto.getSosCdSearch());
-//    	   selectJgiEntity.setInTrtCd("02");
-//    	   selectJgiEntity.setInSosCd("04199");
-				// selectJgiEntity.setInTrtCd(indto.getTrtCdPop());
-				// selectJgiEntity.setInSosCd(indto.getSosCdPop());
 			}
 
 			List<SelectJgiEntity> selectJgiList = dao.select(selectJgiEntity);
@@ -187,20 +204,15 @@ public class NC202Service extends BaseService {
 
        SelectJgiJgiEntity selectJgiJgiEntity = new SelectJgiJgiEntity();
        selectJgiJgiEntity.setInBumonRank(initFlg);
-//       selectJgiJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(null));
        selectJgiJgiEntity.setInUpSosCd(null);
        selectJgiJgiEntity.setInJokenSetCd(loginInfo.getJokenSetCd());
        if (initFlg == 0) {
     	   selectJgiJgiEntity.setInBumonRank(indto.getBumonRankPop()+ 1);
-//    	   selectJgiJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
     	   selectJgiJgiEntity.setInUpSosCd(indto.getSosCdPop());
        }
 
        if (indto.getBackScreenId().equals("NF011")) {
     	   selectJgiJgiEntity.setInGmnFlg(0);
-//    	   selectJgiJgiEntity.setInTrtCd("02");
-//    	   selectJgiJgiEntity.setInAddrCodePref("01");
-//    	   selectJgiJgiEntity.setInTkCityCd("018");
     	   selectJgiJgiEntity.setInTrtCd(StringUtils.setEmptyToNull(indto.getTrtCdPop()));
     	   selectJgiJgiEntity.setInAddrCodePref(StringUtils.setEmptyToNull(indto.getAddrCodePrefPop()));
     	   selectJgiJgiEntity.setInTkCityCd(StringUtils.setEmptyToNull(indto.getTkCityCdPop()));
@@ -214,10 +226,6 @@ public class NC202Service extends BaseService {
     	   selectJgiJgiEntity.setInSosCdPop(indto.getSosCdPop());
     	   selectJgiJgiEntity.setInUpSosCdPop(indto.getUpSosCdPop());
     	   selectJgiJgiEntity.setInBumonRankPop(indto.getBumonRankPop());
-//    	   selectJgiJgiEntity.setInTrtCd("02");
-//    	   selectJgiJgiEntity.setInSosCd("04199");
-    	   //selectJgiJgiEntity.setInTrtCd(indto.getTrtCdPop());
-    	   //selectJgiJgiEntity.setInSosCd(indto.getSosCdPop());
        }
 
        List<SelectJgiJgiEntity> selectJgiJgiList = dao.select(selectJgiJgiEntity);

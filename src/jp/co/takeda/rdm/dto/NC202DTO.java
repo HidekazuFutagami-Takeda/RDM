@@ -9,7 +9,6 @@ import java.io.Serializable;
 
 import jp.co.takeda.rdm.common.BaseDTO;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,6 +124,15 @@ public class NC202DTO extends BaseDTO implements Serializable {
      */
     private String bumonSeiName;
 
+    /**
+     * @generated
+     */
+    private String ajaxSwitchFlg;
+
+    /**
+     * @generated
+     */
+    private List<SosJgiInitData> sosJgiInitData = new ArrayList<SosJgiInitData>();
 
     /**
      * @generated
@@ -501,6 +509,36 @@ public class NC202DTO extends BaseDTO implements Serializable {
 	 */
 	public void setBumonRankSearch(Integer bumonRankSearch) {
 		this.bumonRankSearch = bumonRankSearch;
+	}
+
+	/**
+	 * NC202DTO.javasosJgiInitDataを設定
+	 * @return sosJgiInitData
+	 */
+	public List<SosJgiInitData> getSosJgiInitData() {
+		return sosJgiInitData;
+	}
+
+	/**
+	 * @param sosJgiInitData セットする sosJgiInitData
+	 */
+	public void setSosJgiInitData(List<SosJgiInitData> sosJgiInitData) {
+		this.sosJgiInitData = sosJgiInitData;
+	}
+
+	/**
+	 * NC202DTO.javaajaxSwitchFlgを設定
+	 * @return ajaxSwitchFlg
+	 */
+	public String getAjaxSwitchFlg() {
+		return ajaxSwitchFlg;
+	}
+
+	/**
+	 * @param ajaxSwitchFlg セットする ajaxSwitchFlg
+	 */
+	public void setAjaxSwitchFlg(String ajaxSwitchFlg) {
+		this.ajaxSwitchFlg = ajaxSwitchFlg;
 	}
 
 	/**

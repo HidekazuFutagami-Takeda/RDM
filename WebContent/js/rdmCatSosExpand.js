@@ -125,12 +125,18 @@ function nc202CseView(w, callBack, winVarName, clearProc){
 
 /**
  * 起動時の処理を記述します。
+ *
+ * g_switch_ajax 1の場合は手動展開、2の場合は自動展開
  */
+
+var g_switch_ajax;
 function cseLoad(selectFlg){
   //２度押し対策フラグ初期化
   comClickFlgInit();
   // 選択フラグにより、タイトルを設定
   //cseSetTitle();
+
+  g_switch_ajax = selectFlg;
 
   // 初期組織を展開
   AjaxStatus.init();
@@ -323,7 +329,7 @@ function rcseCallAjax(searchUpSosCd, bumonRank, batchCall) {
 
   // Ajax開始。
   var ajax = new Ajax();
-  ajax.setUrl("NC201AjaxSos");
+  ajax.setUrl("NC202AjaxJgi");
 
   ajax.setParameter("sosCdPop",	g_searchUpSosCd);
   ajax.setParameter("bumonRankPop",	g_bumonRank);
@@ -395,7 +401,14 @@ function rcseCallAjaxJgi(searchUpSosCd, bumonRank, batchCall) {
   ajax.setParameter("bumonRankPop",	g_bumonRank);
   //ajax.setParameter("jgiFetchSize1" ,		document.fm1.jgiFetchSizeDefault.value);  // 従業員選択取得フェッチサイズ
   //ajax.setParameter("no1"           ,		"1");
-  ajax.setCallback ("cseCallBackAjax");
+
+  //展開方法　1の場合、手動展開　2の場合、自動展開
+  if(g_switch_ajax = '1') {
+	  ajax.setCallback ("cseCallBackAjax");
+  }else {
+	  ajax.setCallback ("rcseCallBackAjax");
+  }
+
   ajax.send();
 
 }

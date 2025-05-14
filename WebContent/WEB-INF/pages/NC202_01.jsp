@@ -35,7 +35,8 @@
   <script>
   </script>
 </head>
-<body class="comPage" onLoad="cseLoad('<s:property value="selectFlgPop"/>');" OnUnLoad="cseUnLoad();">
+<!-- <body class="comPage" onLoad="cseLoad('<s:property value="selectFlgPop"/>');" OnUnLoad="cseUnLoad();"> -->
+<body class="comPage" onLoad="cseLoad('<s:property value="ajaxSwitchFlg"/>');" OnUnLoad="cseUnLoad();">
 <%-- submit用フォーム 開始 --%>
   <form class="comHidden" name="fm0" action="<%= request.getContextPath() %>/servlet/control" method="post">
     <input type="text" name="screenId"           value="" />
@@ -61,6 +62,12 @@
     <s:hidden name="upSosCdPop"/>
     <s:hidden name="sosCdSearch"/>
     <s:hidden name="bumonRankSearch"/>
+    <input type="hidden" name="initSosCd" value="dummy">
+    <input type="hidden" name="initBumonRank" value="dummy">
+    <s:iterator value="sosJgiInitData" status="status" var="rowBean">
+        <input type="hidden" name="initSosCd" value="<s:property value="#rowBean.sosCd"/>">
+        <input type="hidden" name="initBumonRank" value="<s:property value="#rowBean.bumonRank"/>">
+    </s:iterator>
 <%-- ポータルボディー 開始 --%>
   <table class="pupBodyTable" align="center" cellspacing="0" cellpadding="0">
   <tr>

@@ -208,6 +208,17 @@ public class ND101Service extends BaseService {
 			// コメント
 			indto.setReqComment(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getReqComment(), ""));
 			indto.setAprComment(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getAprComment(), ""));
+
+			// 更新か異動か判定(申請一覧から遷移時)
+			if(StringUtils.isEmpty(indto.getMovemedEditFlg())) {
+				if(indto.getPreInsNo() != null && indto.getPreInsNo().equals(indto.getPostInsNo())) {
+					// 更新
+					indto.setMovemedEditFlg("1");
+				} else {
+					// 異動
+					indto.setMovemedEditFlg("0");
+				}
+			}
 		}
 		// 1-3-1 入力項目
 		// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする

@@ -221,40 +221,43 @@
       </table>
 
 		<%--申請内容表示エリア --%>
-		<table class="comPortalTable" align="center">
-			<tbody>
-			<tr>
-			        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
-			        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
-			        <td style="width: 185px; height: 0px; border-width: 0px;"></td>
-			        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
-			        <td style="width: 185px; height: 0px; border-width: 0px;"></td>
-			</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>申請情報</nobr></td>
-					<td class="comFormTableItem"><nobr>申請ID</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="reqId" /></nobr></td>
-				</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>申請者所属</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="reqShz" /></nobr></td>
-					<td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="reqStsNm" /></nobr></td>
-				</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="reqJgiName" /></nobr></td>
-					<td class="comFormTableItem"><nobr>申請日時</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="reqYmdhms" /></nobr></td>
-				</tr>
-					  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示　申請者には非表示 -->
+  <table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
+      <tr>
+        <%--申請情報--%>
+        <%--申請情報のHIDDEN項目--%>
+        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>申請情報</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請ID</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="reqId"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者所属</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="reqShz"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>申請ステータス</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="reqStsNm"/></nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>申請者氏名</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="reqJgiName"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>申請日時</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="reqYmdhms"/></nobr></td>
+	  </tr>
+	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示　申請者には非表示 -->
 	  <s:if test='%{reqSts != null && reqSts != "" && !(reqSts == "01" || reqSts == "11" || reqSts == "03" || reqSts == "13") }'>
 		<s:if test='%{loginJgiNo != reqJgiNo }'>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-		      <td class="comFormTableItem"><nobr>審査者</nobr></td>
+		      <td class="comFormTableItem"><nobr>審査者氏名</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnShaName"/></nobr></td>
 		      <td class="comFormTableItem"><nobr>審査日時</nobr></td>
 		      <td class="comFormTableItem"><nobr><s:label key="shnYmdhms"/></nobr></td>
@@ -263,54 +266,68 @@
 	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示 -->
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>承認者</nobr></td>
+	      <td class="comFormTableItem"><nobr>承認者氏名</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprShaName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>承認日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprYmdhms"/></nobr></td>
 	  </tr>
 	  </s:if>
+  </table>
+  <br/>
+  <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
+  <table id="formTable02" border="0" class="comPortalTable" align="center" style="width:75%;">
+      <tr>
+        <td style="width: 50px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 70px; height: 0px; border-width: 0px;"></td>
+        <td style="width: 100px; height: 0px; border-width: 0px;"></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>医師・コメディカル名</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="docKanj" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+      </tr>
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>所属施設</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="preInsAbbrName" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>所属部科</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="preDeptKj" /></nobr></td>
+      </tr>
+      <tr>
+      		<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+			<td class="comFormTableItem"><nobr>役職</nobr></td>
+			<td class="comFormTableItem"><nobr><s:label key="titlePreTitleKj" /></nobr></td>
+			<td class="comFormTableItem"><nobr>勤務形態</nobr></td>
+			<td class="comFormTableItem"><nobr><s:label key="kmuPreCodeKanj" /></nobr></td>
+	</tr>
+	<tr>
+			<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+			<td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
+			<td class="comFormTableItem"><nobr><s:label key="yakushinPreCodeKanj" /></nobr></td>
+			<td class="comFormTableItem"><nobr>大学職位</nobr></td>
+			<td class="comFormTableItem"><nobr><s:label key="univPreTitleKj" /></nobr></td>
+	</tr>
+	<tr>
+			<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+			<td class="comFormTableItem"><nobr>異動区分</nobr></td>
+		    <td class="comFormTableItem"><nobr><s:label key="postTrnKbn" /><s:hidden name="postTrnKbn"/><s:hidden name="trnKbnCd"/></nobr></td>
+		    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+		    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+	<tr>
+		    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+			<td class="comFormTableItem"><nobr>適用日</nobr></td>
+			<td class="comFormTableItem"><nobr><s:label key="dispTekiyoYmd" /><s:hidden name="selectDay"/><s:hidden name="dispTekiyoYmd"/></nobr></td>
+			<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+			<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	</tr>
+  </table>
+  <br/>
 
-				<tr style="border_top: 4px solid #fff;">
-					<td class="comFormTableItem"><nobr>変更前</nobr></td>
-				</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>医師・コメディカル名</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="docKanj" /></nobr></td>
-				</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>所属施設</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="preInsAbbrName" /></nobr></td>
-					<td class="comFormTableItem"><nobr>所属部科</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="preDeptKj" /></nobr></td>
-				</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>役職</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="titlePreTitleKj" /></nobr></td>
-					<td class="comFormTableItem"><nobr>勤務形態</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="kmuPreCodeKanj" /></nobr></td>
-				</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="yakushinPreCodeKanj" /></nobr></td>
-					<td class="comFormTableItem"><nobr>大学職位</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="univPreTitleKj" /></nobr></td>
-				</tr>
-				<tr>
-					<td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>異動区分</nobr></td>
-				    <td class="comFormTableItem"><nobr><s:label key="postTrnKbn" /><s:hidden name="trnKbnCd"/></nobr></td>
-				</tr>
-				<tr>
-				    <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-					<td class="comFormTableItem"><nobr>適用日</nobr></td>
-					<td class="comFormTableItem"><nobr><s:label key="dispTekiyoYmd" /><s:hidden name="selectDay"/><s:hidden name="dispTekiyoYmd"/></nobr></td>
-				</tr>
-				</tbody>
-          </table>
           <table class="comPortalTable" align="center">
 				<tbody>
 				<tr>

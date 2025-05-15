@@ -1458,7 +1458,11 @@ public class ND501Service extends BaseService {
             	shozoku.setKensakuDeptCode(entity.getSsnDeptCode());
             	shozoku.setSqlId("selectShozokuBuka");
             	List<MRdmHcpUpdHstListEntity> SelectmShozoku = dao.select(shozoku);
-            	entity.setSsnDeptCode(SelectmShozoku.get(0).getDeptKj());
+            	if(SelectmShozoku.size() > 0) {
+            		entity.setSsnDeptCode(SelectmShozoku.get(0).getDeptKj());
+            	} else {
+            		entity.setSsnDeptCode("");
+            	}
             }
             dataRecord.setSsnDeptCode(entity.getSsnDeptCode());
 

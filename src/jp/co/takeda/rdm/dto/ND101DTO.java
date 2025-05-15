@@ -517,6 +517,11 @@ public class ND101DTO extends BaseDTO implements Serializable {
 	private String reqChl;
 
 	/**
+     * 施設コード
+     */
+    private String paramInsNo;
+
+	/**
      * デフォルトのコンストラクタ。
      * @generated
      */
@@ -1932,6 +1937,14 @@ public class ND101DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReqChl(String reqChl) {
 		this.reqChl = reqChl;
+	}
+
+	public String getParamInsNo() {
+		return paramInsNo;
+	}
+
+	public void setParamInsNo(String paramInsNo) {
+		this.paramInsNo = paramInsNo;
 	}
 
 	/**

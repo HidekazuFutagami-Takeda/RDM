@@ -213,7 +213,7 @@ function shnCompBtn(){
     <s:hidden id="paramJgiName" name="paramJgiName" value="" />
           <%-- 所属部科ポップアップ用パラメータ --%>
           <input type="hidden" name="cdcCheckedCodes" value="" />
-          <input type="hidden" name="paramInsNo" value="" />
+          <s:hidden name="paramInsNo" />
           <%-- 画面用パラメータ --%>
           <s:hidden name="backScreenId" value="ND101" />
 

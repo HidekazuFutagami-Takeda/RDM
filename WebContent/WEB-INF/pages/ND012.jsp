@@ -78,15 +78,22 @@
 	    	}
     	}
     }
+    var nd012Tab;
     function gotoND013(){
-        gotoMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
-    	if(window.confirm(gotoMsg.replace("（遷移元）", '医師勤務先情報更新'))){
-			//モック
+        //gotoMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
+    	//if(window.confirm(gotoMsg.replace("（遷移元）", '医師勤務先情報更新'))){
     		document.fm1.screenId.value="ND013";
     		document.fm1.functionId.value="Init";
-    		document.fm1.paramDocNo.value=document.fm1.tkdDocNo.value
+    		document.fm1.paramDocNo.value=document.fm1.tkdDocNo.value;
+
+    		nd012Tab = window.open("","ND012Tab");
+    		document.fm1.target="ND012Tab";
+
 			comSubmitForAnyWarp(fm1);
-    	}
+
+			comClickFlgInit();
+			document.fm1.target="";
+    	//}
     }
     function register(kbn){
       //区分 0:一時保存,1:申請（一時保存チェック高),2:審査,3:承認（チェック高),4:申請破棄

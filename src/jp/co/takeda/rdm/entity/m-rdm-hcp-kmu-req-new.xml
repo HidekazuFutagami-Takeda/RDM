@@ -186,7 +186,7 @@
 		AND
 			KMU_REQ.DOC_NO = #{docNo} --医師固定コード　画面隠し項目
 		AND
-			KMU_REQ.INS_NO_MT = #{insNoSk} --施設固定コード(異動先) 画面隠し項目
+			KMU_REQ.INS_NO_SK = #{insNoSk} --施設固定コード(異動先) 画面隠し項目
 		</if>
 
 		<if test="errorCheckFlg == 4">

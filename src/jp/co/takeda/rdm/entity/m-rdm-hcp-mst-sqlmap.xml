@@ -74,6 +74,8 @@
 				, ULT.ISHI_NM_KANA_SRCH
 				, ULT.SHUSEI_KBN
 				, ULT.SAKUJYO_YOTEI_RIYU_CD
+				, ULT.MDB_KBN
+				, ULT.GAKUBUSHIKIBETSU_CD
  			FROM
  			M_RDM_HCP_MST TKD -- 医師_基本情報 武田施設すべて
  			LEFT JOIN
@@ -128,6 +130,8 @@
 				, ULT.ISHI_NM_KANA_SRCH
 				, ULT.SHUSEI_KBN
 				, ULT.SAKUJYO_YOTEI_RIYU_CD
+				, ULT.MDB_KBN
+				, ULT.GAKUBUSHIKIBETSU_CD
  			FROM
  			T_RDM_M_MDB_HCP_MST ULT -- ULT_MDB個人マスタ
  			WHERE 1=1
@@ -380,7 +384,21 @@
         --2 氏名カナ(半角カナ)※
         <if test="inKanaSrch != null">AND (MST.DOC_KANA_SRCH like '%' || #{inKanaSrch} || '%' OR  MST.ISHI_NM_KANA_SRCH like '%' || #{inKanaSrch} || '%')</if>
         --3 医師／薬剤師区分
-        <if test="inDocType != null">AND (MST.DOC_TYPE = #{inDocType})</if>
+         <if test="inSetsuzoku == 1">
+         	<if test="inDocType == 1">AND (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '1')</if>
+         	<if test="inDocType == 2">AND (MST.MDB_KBN = 'PCF')</if>
+         	<if test="inDocType == 8">AND (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '3')</if>
+         	<if test="inDocType == 3 or inDocType == 4 or inDocType == 5">AND (MST.DCF_ISHI_CD IS NULL)</if>
+         </if>
+         <if test="inSetsuzoku == 0">
+         	<if test="inDocType != null">AND (MST.DOC_TYPE = #{inDocType})</if>
+         </if>
+         <if test="inSetsuzoku == null or inSetsuzoku == 2">
+         	<if test="inDocType == 1">AND ((MST.DOC_TYPE = #{inDocType}) OR (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '1'))</if>
+         	<if test="inDocType == 2">AND ((MST.DOC_TYPE = #{inDocType}) OR (MST.MDB_KBN = 'PCF'))</if>
+         	<if test="inDocType == 8">AND ((MST.DOC_TYPE = #{inDocType}) OR (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '3'))</if>
+         	<if test="inDocType == 3 or inDocType == 4 or inDocType == 5">AND ((MST.DOC_TYPE = #{inDocType}) AND (MST.DOC_NO IS NOT NULL)) </if>
+         </if>
         --4 医師固定C
         <if test="inDocNo != null">AND (MST.DOC_NO = #{inDocNo})</if>
         --5 ULT医師コード
@@ -466,6 +484,8 @@
 				, ULT.ISHI_NM_KANA_SRCH
 				, ULT.SHUSEI_KBN
 				, ULT.SAKUJYO_YOTEI_RIYU_CD
+				, ULT.MDB_KBN
+				, ULT.GAKUBUSHIKIBETSU_CD
  			FROM
  			M_RDM_HCP_MST TKD -- 医師_基本情報 武田施設すべて
  			LEFT JOIN
@@ -520,6 +540,8 @@
 				, ULT.ISHI_NM_KANA_SRCH
 				, ULT.SHUSEI_KBN
 				, ULT.SAKUJYO_YOTEI_RIYU_CD
+				, ULT.MDB_KBN
+				, ULT.GAKUBUSHIKIBETSU_CD
  			FROM
  			T_RDM_M_MDB_HCP_MST ULT -- ULT_MDB個人マスタ
  			WHERE 1=1
@@ -638,7 +660,21 @@
                 --2 氏名カナ(半角カナ)※
                 <if test="inKanaSrch != null">AND (MST.DOC_KANA_SRCH like '%' || #{inKanaSrch} || '%' OR  MST.ISHI_NM_KANA_SRCH like '%' || #{inKanaSrch} || '%')</if>
                 --3 医師／薬剤師区分
-                <if test="inDocType != null">AND (MST.DOC_TYPE = #{inDocType})</if>
+                <if test="inSetsuzoku == 1">
+                	<if test="inDocType == 1">AND (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '1')</if>
+                	<if test="inDocType == 2">AND (MST.MDB_KBN = 'PCF')</if>
+                	<if test="inDocType == 8">AND (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '3')</if>
+                	<if test="inDocType == 3 or inDocType == 4 or inDocType == 5">AND (MST.DCF_ISHI_CD IS NULL)</if>
+                </if>
+                <if test="inSetsuzoku == 0">
+                	<if test="inDocType != null">AND (MST.DOC_TYPE = #{inDocType})</if>
+                </if>
+                <if test="inSetsuzoku == null or inSetsuzoku == 2">
+                	<if test="inDocType == 1">AND ((MST.DOC_TYPE = #{inDocType}) OR (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '1'))</if>
+                	<if test="inDocType == 2">AND ((MST.DOC_TYPE = #{inDocType}) OR (MST.MDB_KBN = 'PCF'))</if>
+                	<if test="inDocType == 8">AND ((MST.DOC_TYPE = #{inDocType}) OR (MST.MDB_KBN = 'DCF' AND MST.GAKUBUSHIKIBETSU_CD = '3'))</if>
+                	<if test="inDocType == 3 or inDocType == 4 or inDocType == 5">AND ((MST.DOC_TYPE = #{inDocType}) AND (MST.DOC_NO IS NOT NULL))</if>
+                </if>
                 --4 医師固定C
                 <if test="inDocNo != null">AND (MST.DOC_NO = #{inDocNo})</if>
                 --5 ULT医師コード

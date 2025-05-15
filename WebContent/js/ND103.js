@@ -413,7 +413,7 @@ function cdcView(w,callBack,winVarName){
     }
   }
 
-  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=530,height=660,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
+  w = window.open ("",comCreateWindowName(CDC_APPLICATION_ID),"width=610,height=500,resizable=no,status=no,toolbar=no,scrollbars=no,titlebar=no");
 
   // パラメタの設定
   var checkedCodes = document.fm1.cdcCheckedCodes;

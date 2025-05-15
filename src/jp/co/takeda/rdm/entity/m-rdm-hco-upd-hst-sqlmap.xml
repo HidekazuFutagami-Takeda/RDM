@@ -836,7 +836,9 @@
 			</if>
 			<if test="kensakuInsKanj != null">
 			AND
-				HCO_MST.INS_KANJ_SRCH = #{kensakuInsKanj}
+				(HCO_MST_MT.INS_KANJ_SRCH = #{kensakuInsKanj}
+			OR
+				HCO_MST_SK.INS_KANJ_SRCH = #{kensakuInsKanj})
 			</if>
 			<if test="kensakuInsNo != null">
 			AND
@@ -1012,7 +1014,9 @@
 			</if>
 			<if test="kensakuInsKanj != null">
 			AND
-				HCO_MST.INS_KANJ_SRCH = #{kensakuInsKanj}
+				(HCO_MST_MT.INS_KANJ_SRCH = #{kensakuInsKanj}
+			OR
+				HCO_MST_SK.INS_KANJ_SRCH = #{kensakuInsKanj})
 			</if>
 			<if test="kensakuInsNo != null">
 			AND
@@ -1175,7 +1179,9 @@
 			</if>
 			<if test="kensakuInsKanj != null">
 			AND
-				HCO_MST.INS_KANJ_SRCH = #{kensakuInsKanj}
+				(HCO_MST_MT.INS_KANJ_SRCH = #{kensakuInsKanj}
+			OR
+				HCO_MST_SK.INS_KANJ_SRCH = #{kensakuInsKanj})
 			</if>
 			<if test="kensakuInsNo != null">
 			AND
@@ -1338,7 +1344,9 @@
 			</if>
 			<if test="kensakuInsKanj != null">
 			AND
-				HCO_MST.INS_KANJ_SRCH = #{kensakuInsKanj}
+				(HCO_MST_MT.INS_KANJ_SRCH = #{kensakuInsKanj}
+			OR
+				HCO_MST_SK.INS_KANJ_SRCH = #{kensakuInsKanj})
 			</if>
 			<if test="kensakuInsNo != null">
 			AND
@@ -1501,7 +1509,9 @@
 			</if>
 			<if test="kensakuInsKanj != null">
 			AND
-				HCO_MST.INS_KANJ_SRCH = #{kensakuInsKanj}
+				(HCO_MST_MT.INS_KANJ_SRCH = #{kensakuInsKanj}
+			OR
+				HCO_MST_SK.INS_KANJ_SRCH = #{kensakuInsKanj})
 			</if>
 			<if test="kensakuInsNo != null">
 			AND

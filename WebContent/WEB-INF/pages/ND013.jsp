@@ -386,13 +386,13 @@
                     <tr>
                     <s:if test="%{jokenSetCd != 1 && (#rowBean.sosCd == null || #rowBean.sosCd == '')}">
                     	<!-- MR権限かつ担当外施設はアイコン非表示 -->
-	                    <td style="width: 30px;">&nbsp;</td>
-	                    <td style="width: 30px;">&nbsp;</td>
-	                    <td style="width: 30px;">&nbsp;</td>
-	                    <td style="width: 30px;">&nbsp;</td>
+	                    <td style="min-width: 20px;">&nbsp;</td>
+	                    <td style="min-width: 20px;">&nbsp;</td>
+	                    <td style="min-width: 20px;">&nbsp;</td>
+	                    <td style="min-width: 20px;">&nbsp;</td>
                     </s:if>
 					<s:else>
-			        	<td style="width: 30px;">
+			        	<td style="min-width: 20px;">
 			        		<!-- 医師勤務先削除 -->
 			        		<!-- アクション削除が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合、表示 -->
 							<s:if test="%{#rowBean.actionDel == 1 && dummyHcoCount >= 2}">
@@ -417,7 +417,7 @@
 			        			<nobr>&nbsp;</nobr>
 			        		</s:else>
 						</td>
-						<td style="width: 30px;">
+						<td style="min-width: 20px;">
 			        		<!-- 勤務先情報更新-->
 			        		<!-- アクション編集が'1'かつ実勤務先判定がNULLではない勤務先情報の件数が2件以上の場合　表示 -->
 			        		<!--アクション編集が'1'の場合,勤務先情報の件数が1件で隠し項目．実勤務先判定がNULLの場合 表示
@@ -455,7 +455,7 @@
 			        			<nobr>&nbsp;</nobr>
 			        		</s:else>
 						</td>
-						<td style="width: 30px;">
+						<td style="min-width: 20px;">
 			        		<!-- 医療機関へ異動 -->
 			        		<!-- アクション編集が'1'の場合　表示 -->
 			        		<s:if test="%{#rowBean.actionEdit == 1}">
@@ -475,7 +475,7 @@
 			        			<nobr>&nbsp;</nobr>
 			        		</s:else>
 						</td>
-						<td style="width: 30px;">
+						<td style="min-width: 20px;">
 			        		<!-- 医療機関外へ異動 -->
 			        		<s:if test="%{#rowBean.actionEdit == 1 && #rowBean.kinmuCount == 1}">
 		        			<!-- アクション編集が'1'かつ勤務先情報の件数が1件の場合　表示 -->

@@ -30,7 +30,7 @@
     <resultMap id="nF101MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF101MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
         <result column="REQ_CHL" property="reqChl"/>
-        <result column="SHN_SHZ" property="reqShzNm"/>
+        <result column="REQ_SHZ" property="reqShzNm"/>
         <result column="REQ_STS_NM" property="reqStsNm"/>
         <result column="REQ_JGI_NAME" property="reqJgiName"/>
         <result column="REQ_YMDHMS" property="reqYmdhms"/>
@@ -599,10 +599,11 @@
 		SELECT
 		  KNR.REQ_ID  -- 申請管理.申請ID
 		, KNR.REQ_CHL -- 申請管理.申請チャネル
-		, KNR.SHN_SHZ  -- 申請管理.申請者所属
 		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
+		, KNR.REQ_SHZ  -- 申請管理.申請者所属
 		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
 		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
+		, KNR.SHN_SHZ  -- 申請管理.審査者所属
 		, KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
 		, KNR.SHN_YMDHMS  -- 申請管理.審査日時
 		, KNR.APR_SHA_ID  -- 申請管理.承認者氏名

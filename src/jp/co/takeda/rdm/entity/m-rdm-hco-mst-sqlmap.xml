@@ -147,7 +147,7 @@
      <resultMap id="nF014MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF014MainDataEntity">
          <result column="REQ_ID" property="reqId"/>
          <result column="REQ_CHL" property="reqChl"/>
-         <result column="SHN_SHZ" property="reqShzNm"/>
+         <result column="REQ_SHZ" property="reqShzNm"/>
          <result column="REQ_STS_NM" property="reqStsNm"/>
          <result column="REQ_JGI_NAME" property="reqJgiName"/>
          <result column="REQ_YMDHMS" property="reqYmdhms"/>
@@ -184,7 +184,7 @@
  	<resultMap id="nF211MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF211MainDataEntity">
          <result column="REQ_ID" property="reqId"/>
          <result column="REQ_CHL" property="reqChl"/>
-         <result column="SHN_SHZ" property="reqShzNm"/>
+         <result column="REQ_SHZ" property="reqShzNm"/>
          <result column="REQ_STS_NM" property="reqStsNm"/>
          <result column="REQ_JGI_NAME" property="reqJgiName"/>
          <result column="REQ_YMDHMS" property="reqYmdhms"/>
@@ -219,7 +219,7 @@
      <resultMap id="nF212MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF212MainDataEntity">
          <result column="REQ_ID" property="reqId"/>
          <result column="REQ_CHL" property="reqChl"/>
-         <result column="SHN_SHZ" property="reqShzNm"/>
+         <result column="REQ_SHZ" property="reqShzNm"/>
          <result column="REQ_STS_NM" property="reqStsNm"/>
          <result column="REQ_JGI_NAME" property="reqJgiName"/>
          <result column="REQ_YMDHMS" property="reqYmdhms"/>
@@ -259,7 +259,7 @@
      <resultMap id="nF213MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF213MainDataEntity">
          <result column="REQ_ID" property="reqId"/>
          <result column="REQ_CHL" property="reqChl"/>
-         <result column="SHN_SHZ" property="reqShzNm"/>
+         <result column="REQ_SHZ" property="reqShzNm"/>
          <result column="REQ_STS_NM" property="reqStsNm"/>
          <result column="REQ_JGI_NAME" property="reqJgiName"/>
          <result column="REQ_YMDHMS" property="reqYmdhms"/>
@@ -1581,7 +1581,8 @@
  		SELECT
  		  KNR.REQ_ID  -- 申請管理.申請ID
  		, KNR.REQ_CHL  -- 申請管理.申請チャネル
- 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+ 		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+ 		, KNR.SHN_SHZ  -- 申請管理.審査者所属
  		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
  		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
  		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
@@ -1652,7 +1653,8 @@
  		SELECT
  		  KNR.REQ_ID  -- 申請管理.申請ID
  		, KNR.REQ_CHL  -- 申請管理.申請チャネル
- 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+ 		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+ 		, KNR.SHN_SHZ  -- 申請管理.審査者所属
  		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
  		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
  		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
@@ -1707,7 +1709,8 @@
  		SELECT
  		  KNR.REQ_ID  -- 申請管理.申請ID
  		, KNR.REQ_CHL  -- 申請管理.申請チャネル
- 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+ 		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+ 		, KNR.SHN_SHZ  -- 申請管理.審査者所属
  		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
  		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
  		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
@@ -1853,7 +1856,8 @@
  		SELECT
  		  KNR.REQ_ID  -- 申請管理.申請ID
  		, KNR.REQ_CHL  -- 申請管理.申請チャネル
- 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+ 		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+ 		, KNR.SHN_SHZ  -- 申請管理.審査者所属
  		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
  		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
  		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
@@ -1916,7 +1920,8 @@
  		SELECT
  		  KNR.REQ_ID  -- 申請管理.申請ID
  		, KNR.REQ_CHL  -- 申請管理.申請チャネル
- 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+ 		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+ 		, KNR.SHN_SHZ  -- 申請管理.審査者所属
  		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
  		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
  		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
@@ -2100,7 +2105,8 @@
  		SELECT
  		  KNR.REQ_ID  -- 申請管理.申請ID
  		, KNR.REQ_CHL  -- 申請管理.申請チャネル
- 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+ 		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+ 		, KNR.SHN_SHZ  -- 申請管理.審査者所属
  		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
  		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
  		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
@@ -2154,7 +2160,8 @@
  		SELECT
  		  KNR.REQ_ID  -- 申請管理.申請ID
  		, KNR.REQ_CHL  -- 申請管理.申請チャネル
- 		, KNR.SHN_SHZ  -- 申請管理.申請者所属
+ 		, KNR.REQ_SHZ  -- 申請管理.申請者所属
+ 		, KNR.SHN_SHZ  -- 申請管理.審査者所属
  		, CDM.VALUE1_KANJ AS REQ_STS_NM  -- 申請管理.申請ステータス
  		, KNR.REQ_JGI_NAME  -- 申請管理.申請者氏名
  		, KNR.REQ_YMDHMS  -- 申請管理.申請日時
@@ -2637,7 +2644,7 @@
 		HCO_MST.INS_NO AS INS_NO,
 		HCO_MST.INS_ABBR_NAME AS INS_ABBR_NAME,
 		'施設窓口' AS TRT_NM,
-		JGI_SOS_MST.BUMON_SEI_NAME,
+		SOS_MST2.BUMON_SEI_NAME || ' ' || SOS_MST1.BUMON_SEI_NAME AS BUMON_SEI_NAME,
 		JGI_SOS_MST.JGI_NAME AS JGI_NAME,
 		JGI_SOS_MST.JGI_MAIL_ADDRESS AS JGI_MAIL_ADDRESS,
 		'' AS VALUE1_KANJ
@@ -2652,6 +2659,14 @@
 		ORAUSR01.M_RDM_JGI_SOS_MST JGI_SOS_MST --RDM用組織従業員情報
 	ON
 		MR_IN_CHRG.MR_NO = JGI_SOS_MST.JGI_NO --従業員番号
+	INNER JOIN
+		ORAUSR01.M_RDM_SOS_MST SOS_MST1 --RDM用組織情報1
+	ON
+		JGI_SOS_MST.SOS_CD = SOS_MST1.SOS_CD --組織コード
+	INNER JOIN
+		ORAUSR01.M_RDM_SOS_MST SOS_MST2 --RDM用組織情報2
+	ON
+		SOS_MST1.UP_SOS_CD = SOS_MST2.SOS_CD --組織コード
 AND
 	MR_IN_CHRG.INS_NO = #{insNo} --施設固定コード
 UNION ALL

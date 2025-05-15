@@ -744,7 +744,7 @@ public class ND101Service extends BaseService {
 		selectNd101YakushokuComboListEntity2.setInDataKbn("1");
 		selectNd101YakushokuComboList2 = dao.select(selectNd101YakushokuComboListEntity2);
 		LinkedHashMap<String, String> mapDigakuShokui = new LinkedHashMap<String, String>();
-		mapDigakuShokui.put(null, "--選択してください--");
+		mapDigakuShokui.put(null, "--なし--");
 		for (SelectNd101YakushokuComboListEntity outEntity : selectNd101YakushokuComboList2) {
 			mapDigakuShokui.put(outEntity.getTitleCode(), outEntity.getTitleKj());
 		}

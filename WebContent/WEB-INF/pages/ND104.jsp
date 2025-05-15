@@ -464,12 +464,22 @@
 	      </td>
 	      <td class="comFormTableItem">
                <nobr>
-			  <s:if test='%{shinseiButtonEdit == 0 }'>
-					<input type="button" value="申請画面へ" onclick="ND311Page()" disabled/>
-		 		</s:if>
-		 		<s:else>
-					<input type="button" value="申請画面へ" onclick="ND311Page()" />
-		 		</s:else>
+			   <s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" ||(loginJokenSetCd == "JKN0850" && reqStsCd == "11") }'>
+		                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" onClick="ND311Page();return false;" />
+			   </s:if>
+				<s:else>
+				   <s:if test='%{reqStsCd != null && reqStsCd != "" && (reqStsCd == "03" || reqStsCd == "13") &&  loginJokenSetCd == "JKN0850"}'>
+		                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" onClick="ND311Page();return false;" />
+				   </s:if>
+					<s:else>
+						<s:if test='%{loginJokenSetCd == "JKN0850"}'>
+			                <input class="comButton" type="button"name="buttonF4" value="承認・却下画面へ" disabled/>
+						</s:if>
+						<s:else>
+			                <input class="comButton" type="button"name="buttonF4" value="申請画面へ" disabled/>
+						</s:else>
+					</s:else>
+				</s:else>
                 </nobr>
 	      </td>
 	  </tr>

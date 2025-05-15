@@ -327,6 +327,11 @@ public class ND311Service extends BaseService {
 		paramEntity.setDocNo(dto.getDocNo());
 		// 施設固定コード(異動先)
 		paramEntity.setInsNoSk(dto.getInsNoSk());
+
+		if(!StringUtils.isEmpty(dto.getReqId())) {
+			paramEntity.setParamReqId(dto.getReqId());
+		}
+
 		paramEntity.setSqlId("errorCheck");
 
 		// 同じ医師で同じ施設に対しての申請がすでに存在している場合
@@ -419,7 +424,7 @@ public class ND311Service extends BaseService {
 				tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
 				tRdmReqKnrInsData.setReqComment(dto.getReqComment());
 				tRdmReqKnrInsData.setInsNo(dto.getInsNoSk());
-				tRdmReqKnrInsData.setDocNo(dto.getParamDocNo());
+				tRdmReqKnrInsData.setDocNo(dto.getDocNo());
 				tRdmReqKnrInsData.setFbReqFlg("1");
 				tRdmReqKnrInsData.setInsShaYmd(systemDate);
 				tRdmReqKnrInsData.setInsShaId(Integer.toString(dto.getLoginJgiNo()));

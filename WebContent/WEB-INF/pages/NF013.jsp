@@ -495,7 +495,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示 -->
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
-	      <td class="comFormTableItem"><nobr>承認者</nobr></td>
+	      <td class="comFormTableItem"><nobr>承認者氏名</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprShaName"/></nobr></td>
 	      <td class="comFormTableItem"><nobr>承認日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:label key="aprYmdhms"/></nobr></td>

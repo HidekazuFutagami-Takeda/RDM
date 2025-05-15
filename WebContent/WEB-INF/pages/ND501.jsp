@@ -530,7 +530,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
 	    		<thead>
 		        <tr>
-		            <td class="comTableTitle" id="left1" style="width:146pt;">
+		            <td class="comTableTitle" id="left1" style="min-width:63px;">
 		            	<nobr>
 		            		更新日
 		            	</nobr>
@@ -1028,7 +1028,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 
 			        </tr>
 		    		<tr>
-			            <td class="comTableTitle" id="left1" style="width:146pt;">
+			            <td class="comTableTitle" id="left1" style="min-width:63px;">
 			            	<nobr>更新日</nobr>
 			            	<a class="<%=docKanaAscClass %>" href="" onclick="jimSort(0);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
@@ -1322,7 +1322,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		    	<div style="height: 370px; width: 1100px; overflow: scroll;">
 		    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
 		    		<tr>
-			            <td class="comTableTitle" id="left1" style="width:146pt;">
+			            <td class="comTableTitle" id="left1" style="min-width:63px;">
 			            	<nobr>更新日</nobr>
 			            	<a class="<%=docKanaAscClass %>" href="" onclick="jimSort(0);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>
@@ -1661,11 +1661,11 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	    	</s:if>
 
 	    	<s:if test="selectListChange == 3">
-	    		<!-- 所属学会　検索結果 -->
+	    		<!-- 公的機関　検索結果 -->
 		    	<div style="height: 370px; width: 1100px; overflow: scroll;">
 		    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
 		    		<tr>
-			            <td class="comTableTitle" id="left1" style="width:146pt;">
+			            <td class="comTableTitle" id="left1" style="min-width:63px;">
 			            	<nobr>更新日</nobr>
 			            	<a class="<%=docKanaAscClass %>" href="" onclick="jimSort(0);return false;">▲</a>
                                 <span style="font-size: 1pt;"> </span>

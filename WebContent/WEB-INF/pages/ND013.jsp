@@ -33,9 +33,7 @@
   <title>ND013_医師勤務先情報更新</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 	<link href="css/common2.css" rel="Stylesheet" type="text/css" />
-	<link href="css/popup.css" rel="Stylesheet" type="text/css" />
-	<link href="css/catDeptsCombo.css" rel="Stylesheet" type="text/css" />
-	<link href="css/jkrMenu.css" rel="Stylesheet" type="text/css" />
+    <link href="css/jgiKanren.css" rel="Stylesheet" type="text/css" />
 	<script type="text/javascript" src="js/jkrMenu.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/ND013.js"></script>
@@ -146,19 +144,6 @@
 		.comTableTitle .comTableTitle{
 			resize : horizontal;
 			overflow : hidden;
-		}
-
-		TD.comTableTitle
-		{
-			  border-top-width : 1px;
-			  border-left-width : 0px;
-			  border-right-width : 0px;
-		}
-
-		TD.comTableItem
-		{
-			  border-left-width : 0px;
-			  border-right-width : 0px;
 		}
 
 	</style>
@@ -380,21 +365,21 @@
 	<div style="margin-left:100px;margin-top:5px">勤務先一覧</div>
 	<center>
 	<div style="height:340px;width:1200px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
-	   	  <table class="comTableTitle" id="comTableTitle" style=" border: none !important;text-align: center;" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none;">
+	   	  <table class="comTableTitle" id="comTableTitle" style="text-align: center;" align="center" style="border: 0px none;">
 	   		<tr style="position: sticky; top:0; left:0; z-index:3">
-	   			<td class="comTableTitle" style="border: 0px none; background-color:white;">アクション</td>
-	            <td class="comTableTitle" style="width:146pt; background-color:white; border-left-width : 1px;"><nobr>施設略式漢字名</nobr></td>
-	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>対象区分</nobr></td>
-	            <td class="comTableTitle" style="width:200pt; background-color:white;"><nobr>施設住所</nobr></td>
-	        　　             <td class="comTableTitle" style="width:200pt; background-color:white;"><nobr>所属部科</nobr></td>
-	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>役職</nobr></td>
-	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>勤務形態</nobr></td>
-				<td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>大学職位</nobr></td>
-	            <td class="comTableTitle" style="width:146pt; background-color:white;"><nobr>担当者(領域：所属)</nobr></td>
+	   			<td class="comTableTitle" style="border-top-width : 0px; border-left-width : 0px; border-right-width : 0px; border-bottom-width : 1px; background-color:white; resize : none;">アクション</td>
+	            <td class="comTableTitle" style="width:146pt;"><nobr>施設略式漢字名</nobr></td>
+	            <td class="comTableTitle" style="width:146pt;"><nobr>対象区分</nobr></td>
+	            <td class="comTableTitle" style="width:200pt;"><nobr>施設住所</nobr></td>
+	        　　             <td class="comTableTitle" style="width:200pt;"><nobr>所属部科</nobr></td>
+	            <td class="comTableTitle" style="width:146pt;"><nobr>役職</nobr></td>
+	            <td class="comTableTitle" style="width:146pt;"><nobr>勤務形態</nobr></td>
+				<td class="comTableTitle" style="width:146pt;"><nobr>大学職位</nobr></td>
+	            <td class="comTableTitle" style="width:146pt;"><nobr>担当者(領域：所属)</nobr></td>
 	        </tr>
 	        <s:iterator value="hcpWorkData" status="status" var="rowBean">
 		        <tr>
-		        	<td>
+		        	<td  class="comTableItem">
 		        	<!-- アクションボタン -->
                     <div class="hoverDiv">
                     <table>
@@ -530,7 +515,7 @@
 	                </div>
 	                </td>
 		        	<!-- 施設略式漢字名 -->
-					<td class="comTableItem" id="left" style="border-left-width : 1px;" >
+					<td class="comTableItem" id="left" >
 						<s:if test="%{#rowBean.insAbbrName == null || #rowBean.insAbbrName == ''}">
 			            	<nobr>&nbsp;</nobr>
 			            </s:if>

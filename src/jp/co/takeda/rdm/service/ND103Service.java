@@ -333,6 +333,7 @@ public class ND103Service extends BaseService {
 			tRdmReqKnrInsData.setReqJgiNo(dto.getLoginJgiNo());
 			tRdmReqKnrInsData.setReqJgiName(dto.getJgiName());
 			tRdmReqKnrInsData.setReqComment(dto.getReqComment());
+			tRdmReqKnrInsData.setDocNo(dto.getDocNo());
 			tRdmReqKnrInsData.setInsNo(dto.getInsNoSk());
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
 			// tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));

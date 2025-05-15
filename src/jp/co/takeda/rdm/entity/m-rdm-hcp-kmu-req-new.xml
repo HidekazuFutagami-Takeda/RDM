@@ -187,6 +187,7 @@
 			KMU_REQ.DOC_NO = #{docNo} --医師固定コード　画面隠し項目
 		AND
 			KMU_REQ.INS_NO_SK = #{insNoSk} --施設固定コード(異動先) 画面隠し項目
+		<if test="paramReqId != null">AND KMU_REQ.REQ_ID <![CDATA[<>]]> #{paramReqId}</if>
 		</if>
 
 		<if test="errorCheckFlg == 4">

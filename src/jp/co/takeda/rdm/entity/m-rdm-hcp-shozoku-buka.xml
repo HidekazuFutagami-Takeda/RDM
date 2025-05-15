@@ -35,11 +35,11 @@
 		        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU --医師_所属部科マスタ
 			    ON HCP_SHOZOKU.DEPT_CODE = HCO_DEPT.DEPT_CODE
 	        <where>
-
-	        	HCO_DEPT.INS_NO =  #{insNo}   --(施設固定コードを元画面から入力情報として取得)
+                    HCO_DEPT.DEPT_KJ IS NOT NULL
+               AND  HCO_DEPT.INS_NO =  #{insNo}   --(施設固定コードを元画面から入力情報として取得)
 
 	            <if test="searchInput != null">
-	           AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
+	                AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
 	            <!-- AND  F_RDM_KJ_HENKAN(HCO_DEPT.DEPT_KJ) LIKE '%' || #{searchInput} || '%'-->
 	            </if>
 	        </where>
@@ -49,16 +49,18 @@
 	    </if>
         <if test = "allCheck == true">　　--(全所属部科チェックボックスの有無を確認,1の時チェック有りの処理/全所属部科取得処理を実行)
 	        FROM
-	        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU
-			<if test="searchInput != null">
-			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%'--(検索文字列を本画面から入力で取得)
-			<!--WHERE  F_RDM_KJ_HENKAN(HCP_SHOZOKU.DEPT_KJ) LIKE '%' || #{searchInput} || '%' -->
-			</if>
+	            M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU
+	        <where>
+	                HCP_SHOZOKU.DEPT_KJ IS NOT NULL
+			        <if test="searchInput != null">
+			           AND  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%'--(検索文字列を本画面から入力で取得)
+			        </if>
+			</where>
 	        <if test="inSelectKbn == 1">
 				ORDER BY HCP_SHOZOKU.DEPT_KN ASC  --(五十音順で並び変えるため、DEPT_KJではなくDEPT_KNを使用)
 			</if>
         </if>
-                <if test="inSelectKbn == 0">
+        <if test="inSelectKbn == 0">
           )
         </if>
         <if test="inSelectKbn == 1">
@@ -75,9 +77,10 @@
 		        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU --医師_所属部科マスタ
 			    ON HCP_SHOZOKU.DEPT_CODE = HCO_DEPT.DEPT_CODE
 	        <where>
-	             HCO_DEPT.INS_NO =  #{insNo}   --(施設固定コードを元画面から入力情報として取得)
+                   HCO_DEPT.DEPT_KJ IS NOT NULL
+               AND HCO_DEPT.INS_NO =  #{insNo}   --(施設固定コードを元画面から入力情報として取得)
 	            <if test="searchInput != null">
-	            AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
+	                AND  HCO_DEPT.DEPT_KJ LIKE '%' || #{searchInput} || '%'
 	            </if>
 	        </where>
 	        ORDER BY HCO_DEPT.DEPT_KN ASC
@@ -85,10 +88,12 @@
         <if test = "allCheck == true">　　--(全所属部科チェックボックスの有無を確認,1の時チェック有りの処理/全所属部科取得処理を実行)
 	        FROM
 	        M_RDM_HCP_SHOZOKU_BUKA HCP_SHOZOKU
-			<if test="searchInput != null">
-			WHERE  HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%' --(検索文字列を本画面から入力で取得)
-			<!--WHERE  F_RDM_KJ_HENKAN(HCP_SHOZOKU.DEPT_KJ) LIKE '%' || #{searchInput} || '%'-->
-			</if>
+            <where>
+                    HCP_SHOZOKU.DEPT_KJ IS NOT NULL
+			        <if test="searchInput != null">
+                        HCP_SHOZOKU.DEPT_KJ LIKE '%' || #{searchInput} || '%' --(検索文字列を本画面から入力で取得)
+			        </if>
+			</where>
 			ORDER BY HCP_SHOZOKU.DEPT_KN ASC  --(五十音順で並び変えるため、DEPT_KJではなくDEPT_KNを使用)
         </if>
     </select>

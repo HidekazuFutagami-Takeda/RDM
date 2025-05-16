@@ -389,12 +389,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		<td>
 			<s:if test="%{jokenSetCd == 1}">
 				<s:textfield id="sosName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-	          		&nbsp;
           		<a href="#" class="comMiniLink" onClick="sosNameClear();">Clear</a>
 			</s:if>
 			<s:else>
 				<s:textfield id="" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-	          		&nbsp;
           		<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
 			</s:else>
 		</td>

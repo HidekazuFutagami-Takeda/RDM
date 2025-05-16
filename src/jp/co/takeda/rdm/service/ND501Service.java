@@ -1573,7 +1573,7 @@ public class ND501Service extends BaseService {
         LinkedHashMap<String, String> mapDocType = new LinkedHashMap<String, String>();
         mapDocType.put("", "--なし--");
         for (MRdmCodeMstEntity outEntity : SelectDocTypeList) {
-        	mapDocType.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+        	mapDocType.put(outEntity.getValue1(), outEntity.getValue1() + ":" + outEntity.getValue1Kanj());
         }
         //医師／薬剤師区分を格納する
         dto.setDocTypeMap(mapDocType);
@@ -1586,7 +1586,7 @@ public class ND501Service extends BaseService {
         LinkedHashMap<String, String> docAttributeMap = new LinkedHashMap<String, String>();
         docAttributeMap.put("", "--なし--");
         for (MRdmCodeMstEntity outEntity : SelectDocAttributeList) {
-        	docAttributeMap.put(outEntity.getValue1(), outEntity.getValue1Kanj());
+        	docAttributeMap.put(outEntity.getValue1(), outEntity.getValue1() + ":" + outEntity.getValue1Kanj());
         }
         //医師属性を格納する
         dto.setDocAttributeMap(docAttributeMap);

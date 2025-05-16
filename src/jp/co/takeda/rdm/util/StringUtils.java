@@ -1675,7 +1675,7 @@ public class StringUtils {
      *
      * @param str
      *            文字列 YYYYMMDDhhmmss
-     * @return    文字列 YYYY/MM/DD hh:mm:ss
+     * @return    文字列 YYYY/MM/DD hh:mm
      */
     public static String dispYmdhms(String str) {
         if (isEmpty(str)) {
@@ -1692,8 +1692,8 @@ public class StringUtils {
         		dispStr = dispStr + str.substring(8, 10);
         		dispStr = dispStr + ":";
         		dispStr = dispStr + str.substring(10, 12);
-        		dispStr = dispStr + ":";
-        		dispStr = dispStr + str.substring(12, 14);
+        		//dispStr = dispStr + ":";
+        		//dispStr = dispStr + str.substring(12, 14);
 
         		return dispStr;
         	}else {

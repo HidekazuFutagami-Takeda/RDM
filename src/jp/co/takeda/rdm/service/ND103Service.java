@@ -123,13 +123,7 @@ public class ND103Service extends BaseService {
 			// 申請者氏名
 			dto.setJgiName(entity.getJgiName());
 			// 申請日時
-			if (!StringUtils.isEmpty(entity.getReqYmdhms())) {
-				String reqYmdhms = entity.getReqYmdhms();
-				String yyyy = reqYmdhms.substring(0, 4);
-				String mm = reqYmdhms.substring(4, 6);
-				String dd = reqYmdhms.substring(6, 8);
-				dto.setReqYmdhms(yyyy + "-" + mm + "-" + dd);
-			}
+			dto.setReqYmdhms(StringUtils.dispYmdhms(entity.getReqYmdhms()));
 
 			// 申請者従業員番号
 			dto.setReqJgiNo(entity.getReqJgiNo());

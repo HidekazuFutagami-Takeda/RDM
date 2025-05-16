@@ -3649,37 +3649,17 @@ public class NF012Service extends BaseService {
 		indto.setReward08Combo(mapRewardList);
 		indto.setReward09Combo(mapRewardList);
 		indto.setReward18Combo(mapRewardList);
+		indto.setReward21Combo(mapRewardList);
 		indto.setReward23Combo(mapRewardList);
 		indto.setReward25Combo(mapRewardList);
 		indto.setReward26Combo(mapRewardList);
+		indto.setReward27Combo(mapRewardList);
 		indto.setReward35Combo(mapRewardList);
 		indto.setReward36Combo(mapRewardList);
 		indto.setReward37Combo(mapRewardList);
 		indto.setReward44Combo(mapRewardList);
 		indto.setReward16Combo(mapRewardList);
 		indto.setReward17Combo(mapRewardList);
-
-		// 短期滞在手術基本料
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REWARD21);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapReward21 = new LinkedHashMap<String, String>();
-		mapReward21.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward21.put(outEntity.getValue(), outEntity.getValueKanji());
-		}
-		indto.setReward21Combo(mapReward21);
-
-		// 看護配置（有床診療所）
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REWARD27);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapReward27 = new LinkedHashMap<String, String>();
-		mapReward27.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward27.put(outEntity.getValue(), outEntity.getValueKanji());
-		}
-		indto.setReward27Combo(mapReward27);
 
 		// 老人入院基本料
 		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REWARD29);

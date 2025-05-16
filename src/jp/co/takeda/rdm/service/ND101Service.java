@@ -211,7 +211,7 @@ public class ND101Service extends BaseService {
 
 			// 更新か異動か判定(申請一覧から遷移時)
 			if(StringUtils.isEmpty(indto.getMovemedEditFlg())) {
-				if(indto.getPreInsNo() != null && indto.getPreInsNo().equals(indto.getPostInsNo())) {
+				if("51".equals(indto.getReqType())) {
 					// 更新
 					indto.setMovemedEditFlg("1");
 				} else {

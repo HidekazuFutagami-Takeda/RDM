@@ -134,6 +134,8 @@
 	<s:hidden name="deptKn" />
 	<s:hidden name="saveButtonFlg" />
 
+	<s:hidden name="editApprFlg" />
+
     <s:hidden name="pageCntAll" />
       <s:hidden name="pageCntCur" />
       <s:hidden name="winVarName" />
@@ -300,18 +302,30 @@
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>施設名<span style="color:red;">*</span></nobr></td>
 	      <td class="comFormTableItem" colspan="3"><nobr>
-      		<input id="sosButton1" class="comButton" type="button" value="選択" onclick="JavaScript:tmpCseView();return false;"/>
-        	<s:textfield id="sosNameUser" name="insAbbrName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-         	<a class="comMiniLink" href="#" onClick="JavaScript:sosClear();">Clear</a>
+		      <s:if test='%{editApprFlg == "1"}'>
+	      		<input id="sosButton1" class="comButton" type="button" value="選択" onclick="JavaScript:tmpCseView();return false;"/>
+	        	<s:textfield id="sosNameUser" name="insAbbrName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	         	<a class="comMiniLink" href="#" onClick="JavaScript:sosClear();">Clear</a>
+	         </s:if>
+	         <s:else>
+	         	<input id="sosButton1" class="comButton" type="button" value="選択" onclick="JavaScript:tmpCseView();return false;" disabled/>
+	        	<s:textfield id="sosNameUser" name="insAbbrName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	         </s:else>
 			</nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>所属部科<span style="color:red;">*</span></nobr></td>
 	      <td class="comFormTableItem" colspan="3"><nobr>
-	      	<input class="comButton" id="deptBtn" type="button" value="選択" onClick="JavaScript:tmpCdcView();" />
-          		<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-          		<a class="comMiniLink" href="#" onClick="JavaScript:deptClear();">Clear</a>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      	<input class="comButton" id="deptBtn" type="button" value="選択" onClick="JavaScript:tmpCdcView();" />
+	          		<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	          		<a class="comMiniLink" href="#" onClick="JavaScript:deptClear();">Clear</a>
+	        </s:if>
+	        <s:else>
+  			    <input class="comButton" id="deptBtn" type="button" value="選択" onClick="JavaScript:tmpCdcView();" disabled />
+	          	<s:textfield id="deptKj" name="deptKj"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
+	        </s:else>
 	      </nobr></td>
       </tr>
       <tr>
@@ -323,21 +337,56 @@
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>役職<span style="color:red;">*</span></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select class="titleCodeAf" id="titleCodeAf" name="titleCodeAf" cssStyle="width:80pt" list ="yakusyokuMap" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+		      <s:select class="titleCodeAf" id="titleCodeAf" name="titleCodeAf" cssStyle="width:80pt" list ="yakusyokuMap" />
+		    </s:if>
+		    <s:else>
+		      <s:select class="titleCodeAf" id="titleCodeAf" name="titleCodeAf" cssStyle="width:80pt" list ="yakusyokuMap" disabled="true" />
+		    </s:else>
+		  </nobr></td>
 	      <td class="comFormTableItem"><nobr>大学職位</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select class="univPosCodeAf" id="univPosCodeAf" name="univPosCodeAf" cssStyle="width:80pt" list ="daigakuSyokuiMap" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+		      <s:if test='%{editApprFlg == "1"}'>
+		      	<s:select class="univPosCodeAf" id="univPosCodeAf" name="univPosCodeAf" cssStyle="width:80pt" list ="daigakuSyokuiMap" />
+		      </s:if>
+		      <s:else>
+		      	<s:select class="univPosCodeAf" id="univPosCodeAf" name="univPosCodeAf" cssStyle="width:80pt" list ="daigakuSyokuiMap" disabled="true" />
+	      	  </s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>勤務形態</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select class="jobFormAf" id="jobFormAf" name="jobFormAf" cssStyle="width:80pt" list ="kinmuKeitaiMap" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:select class="jobFormAf" id="jobFormAf" name="jobFormAf" cssStyle="width:80pt" list ="kinmuKeitaiMap" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:select class="jobFormAf" id="jobFormAf" name="jobFormAf" cssStyle="width:80pt" list ="kinmuKeitaiMap" disabled="true" />
+	      	</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>薬審メンバー区分</nobr></td>
-	      <td class="comFormTableItem"><nobr><s:select class="dccTypeAf" id="dccTypeAf" name="dccTypeAf" cssStyle="width:80pt" list ="yakushinMap" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:select class="dccTypeAf" id="dccTypeAf" name="dccTypeAf" cssStyle="width:80pt" list ="yakushinMap" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:select class="dccTypeAf" id="dccTypeAf" name="dccTypeAf" cssStyle="width:80pt" list ="yakushinMap" disabled="true" />
+	      	</s:else>
+	      </nobr></td>
       </tr>
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>適用日<span style="color:red;">*</span></nobr></td>
-	      <td class="comFormTableItem"><nobr><s:textfield type="date" name="formTekiyoYmd" /></nobr></td>
+	      <td class="comFormTableItem"><nobr>
+	      	<s:if test='%{editApprFlg == "1"}'>
+	      		<s:textfield type="date" name="formTekiyoYmd" />
+	      	</s:if>
+	      	<s:else>
+	      		<s:textfield type="date" name="formTekiyoYmd" readonly="true" />
+	      	</s:else>
+	      </nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
       </tr>

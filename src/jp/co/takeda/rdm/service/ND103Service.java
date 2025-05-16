@@ -61,6 +61,7 @@ public class ND103Service extends BaseService {
 	public BaseDTO initReq(ND103DTO dto) {
 		BaseDTO outdto = dto;
 		// START UOC
+		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
 		// ページ数(現在:１ページ目から)
 		dto.setPageCntCur(1);
@@ -192,6 +193,21 @@ public class ND103Service extends BaseService {
 		// プルダウン生成へ
 		pullDown(dto);
 
+		// 編集可能判定
+        if("".equals(dto.getReqStsCd()) || dto.getReqStsCd() == null) {
+        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
+        	dto.setEditApprFlg("1");
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(dto.getReqStsCd())) {
+        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
+        	dto.setEditApprFlg("0");
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(dto.getReqStsCd()) && !"11".equals(dto.getReqStsCd())
+        			&& !"03".equals(dto.getReqStsCd()) && !"13".equals(dto.getReqStsCd())) {
+        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
+        	dto.setEditApprFlg("0");
+        } else {
+        	dto.setEditApprFlg("1");
+        }
+
 		// END UOC
 		return outdto;
 	}
@@ -263,6 +279,21 @@ public class ND103Service extends BaseService {
 
 		// プルダウン生成へ
 		pullDown(dto);
+
+		// 編集可能判定
+        if("".equals(dto.getReqStsCd()) || dto.getReqStsCd() == null) {
+        	// 完全新規(申請管理．申請ステータスが取得できない)の場合は活性
+        	dto.setEditApprFlg("1");
+        } else if(!RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(dto.getReqStsCd())) {
+        	// MR権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)以外の場合は、入力項目はすべて変更不可（非活性）とする
+        	dto.setEditApprFlg("0");
+        } else if(RdmConstantsData.RDM_JKN_ADMIN.equals(loginInfo.getJokenSetCd()) && !"01".equals(dto.getReqStsCd()) && !"11".equals(dto.getReqStsCd())
+        			&& !"03".equals(dto.getReqStsCd()) && !"13".equals(dto.getReqStsCd())) {
+        	// 管理者権限の場合、取得した申請管理．申請ステータスが'01'(保存済み)、'03'(承認待ち)、'13'(ULT承認待ち)以外の場合は、入力項目はすべて変更不可（非活性）とする
+        	dto.setEditApprFlg("0");
+        } else {
+        	dto.setEditApprFlg("1");
+        }
 
 		// END UOC
 		return outdto;

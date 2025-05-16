@@ -374,6 +374,13 @@ public class ND103DTO extends BaseDTO implements Serializable {
      */
     private String aprComment;
 
+	/**
+	 * 編集可能フラグ
+	 * 0:不可、1:可
+	 * @generated
+	 */
+	private String editApprFlg;
+
     /**
      * @役職_ドロップダウンリスト
      */
@@ -792,6 +799,14 @@ public class ND103DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAprComment(String aprComment) {
 		this.aprComment = aprComment;
+	}
+
+	public String getEditApprFlg() {
+		return editApprFlg;
+	}
+
+	public void setEditApprFlg(String editApprFlg) {
+		this.editApprFlg = editApprFlg;
 	}
 
 	/**

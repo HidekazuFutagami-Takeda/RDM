@@ -519,7 +519,7 @@ window.onload = function(){
 
 	comClickFlgInit();
 
-    if(document.fm1.insNoSk.value != null && document.fm1.insNoSk.value != ""){
+    if(document.fm1.insNoSk.value != null && document.fm1.insNoSk.value != "" && document.fm1.editApprFlg.value == "1"){
     	document.getElementById("deptBtn").disabled = false;
     } else {
     	document.getElementById("deptBtn").disabled = true;

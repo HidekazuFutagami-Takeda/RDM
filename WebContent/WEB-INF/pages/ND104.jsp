@@ -365,18 +365,10 @@
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><nobr>適用日<span style="color:red;">*</span></nobr></td>
 	      <td class="comFormTableItem"><nobr>
-	      	<s:if test='%{reqStsCd == 01}'>
+	      	<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13"}'>
         		<!-- 活性 -->
 	          	<input type="date" name="formTekiyoYmd" id="updMstFrom" value="${tekiyoYmd}" pattern="yyyy-MM-dd" />
 	 		</s:if>
-	 		<s:elseif test='%{reqStsCd == null}'>
-	 			<!-- 活性 -->
-	          	<input type="date" name="formTekiyoYmd" id="updMstFrom" value="${tekiyoYmd}" pattern="yyyy-MM-dd" />
-	 		</s:elseif>
-	 		<s:elseif test='%{reqStsCd == ""}'>
-	 			<!-- 活性 -->
-	          	<input type="date" name="formTekiyoYmd" id="updMstFrom" value="${tekiyoYmd}" pattern="yyyy-MM-dd" />
-	 		</s:elseif>
 	 		<s:else>
 	 			<!-- 非活性 -->
 	            	<input type="date" name="formTekiyoYmd" id="updMstFrom" value="${tekiyoYmd}" pattern="yyyy-MM-dd" cssClass="mediumGray" readonly="true"/>

@@ -460,7 +460,7 @@
 			        		<!-- アクション編集が'1'の場合　表示 -->
 			        		<s:if test="%{#rowBean.actionEdit == 1}">
 			        			<!-- 申請Aが'1'かつ申請Bが'1'の場合 活性 -->
-			        			<s:if test="%{#rowBean.reqA == 1}">
+			        			<s:if test="%{#rowBean.reqA == 1 && #rowBean.reqB == 1}">
 		        					<span>
 		        					<a class="comMiniLink" href="#" onclick="errorCheckAction('5', this, '<s:property value="#rowBean.insNoKakusi"/>')">
 		        					<img src="img/button_movemed.gif">
@@ -484,7 +484,7 @@
 		        					<nobr>&nbsp;</nobr>
 		        				</s:if>
 		        				<s:else>
-			        				<s:if test="%{#rowBean.reqB == 1}">
+			        				<s:if test="%{#rowBean.reqA == 1 && #rowBean.reqB == 1}">
 			        					<span>
 			        					<a class="comMiniLink" href="#" onclick="errorCheckAction('6', this, '<s:property value="#rowBean.insNoKakusi"/>')">
 			        					<img src="img/button_moveoutmed.gif">

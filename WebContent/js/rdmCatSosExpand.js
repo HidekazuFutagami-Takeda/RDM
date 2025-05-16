@@ -256,11 +256,11 @@ function rCseSelectSos(bumonRank, sosCd,
  * 従業員選択ボタン押下
  */
 function rCseSelectJgi(sosCd,bumonSeiName,
-		  jgiNo, jgiName, trtCd, brCode, distCode, trtGrpCd, trtNm, mrCat
+		  jgiNo, jgiName, trtCd, brCode, distCode, trtGrpCd, trtNm, mrCat, bumonRank, upSosCode
 ) {
   eval(
 		  "window.opener." + document.fm1.callBack.value + "(sosCd,bumonSeiName, "
-        + "jgiNo, jgiName, trtCd, brCode, distCode, trtGrpCd, trtNm, mrCat)"
+        + "jgiNo, jgiName, trtCd, brCode, distCode, trtGrpCd, trtNm, mrCat, bumonRank, upSosCode)"
   );
       cseClose();
 }

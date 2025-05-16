@@ -422,7 +422,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
   			<input type="hidden" name="trtCdPop"               value="" />
   			<s:hidden id="brCode" name="brCode"/>
   			<s:hidden id="distCode" name="distCode"/>
-  			<s:hidden id="upSosCode" name="upSosCode"/>
+<%--   			<s:hidden id="upSosCode" name="upSosCode"/> --%>
   			<s:hidden name="upBumonRank" id="upBumonRank" />
   			<s:hidden name="upBrCode" id="upBrCode" />
   			<s:hidden name="upDistCode" id="upDistCode" />

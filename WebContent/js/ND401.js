@@ -622,13 +622,17 @@ function cdcViewND401(w,callBack,winVarName){
  * </pre>
  */
 function tmpCallBackKensakuTanto(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
-		distCode, trtGrpCd, trtNm, mrCat){
+		distCode, trtGrpCd, trtNm, mrCat, bumonRank, upSosCode){
 
 	document.fm1.kensakuJgiNo.value = jgiNo;
 	document.fm1.kensakuJgiName.value = jgiName;
 	document.fm1.kensakuTrtCd.value = trtCd;
 	document.fm1.kensakuBrCode.value = brCode;
 	document.fm1.kensakuDistCode.value = distCode;
+	document.fm1.kensakuSosCd.value = sosCd;
+	document.fm1.kensakuSosName.value = bumonSeiName;
+	document.fm1.kensakuBumonRank.value = bumonRank;
+	document.fm1.kensakuUpSosCd.value = upSosCode;
 }
 
 /**

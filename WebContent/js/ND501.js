@@ -496,7 +496,7 @@ function jgiNamePopView(w,callBack,winVarName){
  * </pre>
  */
 function tmpCallBackJgiNameView(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
-		distCode, trtGrpCd, trtNm, mrCat){
+		distCode, trtGrpCd, trtNm, mrCat, bumonRank, upSosCode){
 
     document.fm1.kensakuJgiNo.value = jgiNo;
     document.fm1.jgiName.value = jgiName;

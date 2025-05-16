@@ -567,7 +567,7 @@ function tantoPopBtn(){
 
 //担当者検索ポップアップから値受け取り
 function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
-							distCode, trtGrpCd, trtNm, mrCat){
+							distCode, trtGrpCd, trtNm, mrCat, bumonRank, upSosCode){
 		document.fm1.tantoSosCd.value = sosCd;
 		document.fm1.tantoSosName.value = bumonSeiName;
 		document.fm1.kensakuJgiNo.value = jgiNo;
@@ -575,6 +575,8 @@ function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
 		document.fm1.kensakuTantouDistCode.value = distCode;
 		document.fm1.jgiName.value = jgiName;
 		document.fm1.target = tmpTarget;
+		document.fm1.tantoBumonRank.value = bumonRank;
+		document.fm1.tantoUpSosCd.value = upSosCode;
 }
 
 // 担当者組織クリアボタン

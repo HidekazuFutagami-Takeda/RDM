@@ -71,7 +71,9 @@
                           '<s:property value="#rowBeanJgi.distCode"/>',
                           '<s:property value="#rowBeanJgi.trtGrpCd"/>',
                           '<s:property value="#rowBeanJgi.trtNm"/>',
-                          '<s:property value="#rowBeanJgi.mrCat"/>'
+                          '<s:property value="#rowBeanJgi.mrCat"/>',
+                          '<s:property value="#rowBeanJgi.bumonRank"/>',
+                          '<s:property value="#rowBeanJgi.upSosCode"/>'
                       );"
                   >
                 <%-- 従業員名 --%>

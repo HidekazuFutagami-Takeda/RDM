@@ -122,7 +122,7 @@
 
 	// 担当者検索ポップアップから値受け取り
     function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
-    							distCode, trtGrpCd, trtNm, mrCat){
+    							distCode, trtGrpCd, trtNm, mrCat, bumonRank, upSosCode){
 		document.fm1.sosCd.value = sosCd;
 		document.fm1.bumonRyakuName.value = bumonSeiName;
 		document.fm1.jgiNo.value = jgiNo;
@@ -132,6 +132,8 @@
 		document.fm1.mrCat.value = mrCat;
 		document.fm1.brCode.value = brCode;
 		document.fm1.distCode.value = distCode;
+		document.fm1.bumonRank.value = bumonRank;
+		document.fm1.upSosCd.value = upSosCode;
     }
 
 	// 施設選択ボタン

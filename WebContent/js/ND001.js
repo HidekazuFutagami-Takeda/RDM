@@ -45,7 +45,7 @@ function nd001Clear( name ) {
 		document.fm1.sosCd.value        = "";
 		document.fm1.brCode.value       = "";
 		document.fm1.distCode.value     = "";
-		document.fm1.upSosCode.value    = "";
+		document.fm1.upSosCd.value    = "";
 		document.fm1.upBumonRank.value  = "";
 		document.fm1.upBrCode.value     = "";
 		document.fm1.upDistCode.value   = "";
@@ -99,7 +99,7 @@ function nd001ClearAll( mrAdminFlg ) {
 		document.fm1.sosCd.value        = "";
 		document.fm1.brCode.value       = "";
 		document.fm1.distCode.value     = "";
-		document.fm1.upSosCode.value    = "";
+		document.fm1.upSosCd.value    = "";
 		document.fm1.upBumonRank.value  = "";
 		document.fm1.upBrCode.value     = "";
 		document.fm1.upDistCode.value   = "";
@@ -120,7 +120,7 @@ function nd001ClearAll( mrAdminFlg ) {
 	document.fm1.upBrCode.value       = "";
 	document.fm1.upBumonRank.value    = "";
 	document.fm1.upDistCode.value     = "";
-	document.fm1.upSosCode.value      = document.fm1.loginUpSosCode.value  ;
+	document.fm1.upSosCd.value      = document.fm1.loginUpSosCode.value  ;
   }
 	  // 検索条件 施設
 	  document.fm1.searchInsNo.value = "";
@@ -205,7 +205,7 @@ function tantoPopBtn(){
 
 		document.fm1.sosCdPop.value = document.fm1.sosCd.value;
 		document.fm1.bumonRankPop.value = document.fm1.bumonRank.value;
-		document.fm1.upSosCdPop.value = document.fm1.upSosCode.value;
+		document.fm1.upSosCdPop.value = document.fm1.upSosCd.value;
 
 		document.fm1.selectFlgPop.value="1";
 		document.fm1.callBack.value="callBackTantoPop";
@@ -236,7 +236,7 @@ function soshikiPopBtn(){
 
 // 担当者検索ポップアップから値受け取り
 function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
-							distCode, trtGrpCd, trtNm, mrCat){
+							distCode, trtGrpCd, trtNm, mrCat, bumonRank, upSosCode){
 		document.fm1.sosCd.value = sosCd;
 		document.fm1.bumonRyakuName.value = bumonSeiName;
 		document.fm1.bumonSeiName.value = bumonSeiName;
@@ -247,6 +247,8 @@ function callBackTantoPop(sosCd, bumonSeiName, jgiNo, jgiName, trtCd, brCode,
 		document.fm1.brCode.value = brCode;
 		document.fm1.distCode.value = distCode;
 		document.fm1.target = tmpTarget;
+		document.fm1.bumonRank.value    = bumonRank;
+		document.fm1.upSosCd.value    = upSosCode;
 }
 
 // 組織検索ポップアップから値受け取り
@@ -256,7 +258,7 @@ function callBackSoshikiPop(bumonRank, sosCd, bumonSeiName, brCode, distCode, up
 		document.fm1.sosCd.value        = sosCd;
 		document.fm1.brCode.value       = brCode;
 		document.fm1.distCode.value     = distCode;
-		document.fm1.upSosCode.value    = upSosCode;
+		document.fm1.upSosCd.value    = upSosCode;
 		document.fm1.upBumonRank.value  = upBumonRank;
 		document.fm1.upBrCode.value     = upBrCode;
 		document.fm1.upDistCode.value   = upDistCode;

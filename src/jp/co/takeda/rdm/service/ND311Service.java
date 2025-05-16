@@ -278,8 +278,8 @@ public class ND311Service extends BaseService {
 			tRdmHcpKmuReqInsData.setUnivPosCodeAf(dto.getUnivPosCodeAf());
 			tRdmHcpKmuReqInsData.setTitleCodeAf(dto.getTitleCodeAf());
 			tRdmHcpKmuReqInsData.setDccTypeAf(dto.getDccTypeAf());
-			tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
-			tRdmHcpKmuReqInsData.setUltInsNo(dto.getUltInsNo());
+			//tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
+			//tRdmHcpKmuReqInsData.setUltInsNo(dto.getUltInsNo());
 			tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
 			tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
 			tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
@@ -298,7 +298,7 @@ public class ND311Service extends BaseService {
 			tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(dto.getUnivPosCodeAf(), ""));
 			tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(dto.getTitleCodeAf(), ""));
 			tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(dto.getDccTypeAf(), ""));
-			tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
+			//tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
 			tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
 			tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 
@@ -482,8 +482,8 @@ public class ND311Service extends BaseService {
 				tRdmHcpKmuReqInsData.setUnivPosCodeAf(dto.getUnivPosCodeAf());
 				tRdmHcpKmuReqInsData.setTitleCodeAf(dto.getTitleCodeAf());
 				tRdmHcpKmuReqInsData.setDccTypeAf(dto.getDccTypeAf());
-				tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
-				tRdmHcpKmuReqInsData.setUltInsNo(dto.getUltInsNo());
+				//tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
+				//tRdmHcpKmuReqInsData.setUltInsNo(dto.getUltInsNo());
 				tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
 				tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
 				tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
@@ -502,7 +502,7 @@ public class ND311Service extends BaseService {
 				tRdmHcpKmuReqUpdData.setUnivPosCodeAf(dto.getUnivPosCodeAf());
 				tRdmHcpKmuReqUpdData.setTitleCodeAf(dto.getTitleCodeAf());
 				tRdmHcpKmuReqUpdData.setDccTypeAf(dto.getDccTypeAf());
-				tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
+				//tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
 				tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
 				tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 

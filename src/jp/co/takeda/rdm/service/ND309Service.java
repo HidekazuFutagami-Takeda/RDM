@@ -791,7 +791,7 @@ public class ND309Service extends BaseService {
         		tRdmHcpKmuReqInsData.setDeptCodeAf("9999");
         		tRdmHcpKmuReqInsData.setDeptKanjiAf("Z");
         		tRdmHcpKmuReqInsData.setDeptKanaAf("Z");
-        		tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
+        		//tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
         		tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
         		tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
         		tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
@@ -808,14 +808,14 @@ public class ND309Service extends BaseService {
         		selectDocReqKnrInsChangeEntity.setInReqFlg(0);
         		selectDocReqKnrInsChangeEntity.setInDocNo(indto.getDocNo());
         		selectDocReqKnrInsChangeEntity.setInInsNo(indto.getPreInsNo());
-        		String tempUltDocNo;
-        		List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
-        		if(selectDocReqKnrInsChangeList == null) {
-        			tempUltDocNo = "";
-        		}else {
-        			tempUltDocNo = StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getUltDocNo(),"");
-        		}
-        		tRdmHcpKmuReqUpdData.setUltDocNo(tempUltDocNo);
+//        		String tempUltDocNo;
+//        		List<SelectDocReqKnrInsChangeEntity> selectDocReqKnrInsChangeList = dao.select(selectDocReqKnrInsChangeEntity);
+//        		if(selectDocReqKnrInsChangeList == null) {
+//        			tempUltDocNo = "";
+//        		}else {
+//        			tempUltDocNo = StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getUltDocNo(),"");
+//        		}
+//        		tRdmHcpKmuReqUpdData.setUltDocNo(tempUltDocNo);
         		//            //異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
         		//        	if(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || StringUtils.isEmpty(indto.getPostUltInsNo())) {
         		//        		tRdmHcpKmuReqUpdData.setUltInsNo(indto.getPreUltInsNo());

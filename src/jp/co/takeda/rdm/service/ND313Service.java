@@ -381,7 +381,7 @@ public class ND313Service extends BaseService {
 			tRdmHcpKmuReqInsData.setDeptCodeAf("Z");
 			tRdmHcpKmuReqInsData.setDeptKanjiAf("Z");
 			tRdmHcpKmuReqInsData.setDeptKanaAf("Z");
-			tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
+			//tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
 			tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
 			tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
 			tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
@@ -557,7 +557,7 @@ public class ND313Service extends BaseService {
 				tRdmHcpKmuReqInsData.setDeptCodeAf("Z");
 				tRdmHcpKmuReqInsData.setDeptKanjiAf("Z");
 				tRdmHcpKmuReqInsData.setDeptKanaAf("Z");
-				tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
+				//tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
 				tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
 				tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
 				tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);

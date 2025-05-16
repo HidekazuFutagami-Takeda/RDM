@@ -584,12 +584,12 @@ public class ND101Service extends BaseService {
 				tRdmHcpKmuReqInsData.setUnivPosCodeAf(indto.getPostUnivPosCode());
 				tRdmHcpKmuReqInsData.setTitleCodeAf(indto.getPostTitleCode());
 				tRdmHcpKmuReqInsData.setDccTypeAf(indto.getPostDcc());
-				tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
+				//tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
 				// 異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
-				if (!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())
-						|| StringUtils.isEmpty(indto.getPostUltInsNo()))) {
-					tRdmHcpKmuReqInsData.setUltInsNo(indto.getPostUltInsNo());
-				}
+//				if (!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())
+//						|| StringUtils.isEmpty(indto.getPostUltInsNo()))) {
+//					tRdmHcpKmuReqInsData.setUltInsNo(indto.getPostUltInsNo());
+//				}
 				tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
 				tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
 				tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
@@ -621,10 +621,10 @@ public class ND101Service extends BaseService {
 //        	}
 //        	tRdmHcpKmuReqUpdData.setUltDocNo(tempUltDocNo);
 				// 異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
-				if (!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())
-						|| StringUtils.isEmpty(indto.getPostUltInsNo()))) {
-					tRdmHcpKmuReqUpdData.setUltInsNo(indto.getPostUltInsNo());
-				}
+//				if (!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())
+//						|| StringUtils.isEmpty(indto.getPostUltInsNo()))) {
+//					tRdmHcpKmuReqUpdData.setUltInsNo(indto.getPostUltInsNo());
+//				}
 				tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
 				tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
 

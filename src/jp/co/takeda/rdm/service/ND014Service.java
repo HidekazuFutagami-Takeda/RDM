@@ -460,10 +460,9 @@ public class ND014Service extends BaseService {
 				updateEntity2.setSqlId("updateData");
 				updateEntity2.setReqId(indto.getReqId());
 				updateEntity2.setRstReason(indto.getRstReason());//復活理由
-				if(indto.getDocKanjiMei().endsWith("●")) {
-					updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
-					updateEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
-				}
+
+				updateEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
+				updateEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
 
 				if(indto.getUnknownFlg()) {
 					updateEntity2.setSkInsNo(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9);//勤務先施設固定コード
@@ -549,10 +548,9 @@ public class ND014Service extends BaseService {
 				insEntity2.setReqId(reqId);//申請ID
 				insEntity2.setDocNo(indto.getTkdDocNo());//医師固定コード
 				insEntity2.setRstReason(indto.getRstReason());//復活理由
-				if(indto.getDocKanjiMei().endsWith("●")) {
-					insEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
-					insEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
-				}
+
+				insEntity2.setDocKanj(indto.getDocKanjiSei() + "　" + indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）
+				insEntity2.setDocKanjiMei(indto.getDocKanjiMei().replace( "●", ""));//氏名（漢字）名
 
 				if(indto.getUnknownFlg()) {
 					insEntity2.setSkInsNo(RdmConstantsData.CODE_VALUE_DUMMY_HCO_9);//勤務先施設固定コード

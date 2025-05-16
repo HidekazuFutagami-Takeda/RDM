@@ -79,7 +79,8 @@
 <%
   if (directExecType == null || directExecType.equalsIgnoreCase("")) {
 %>
-              <a href="#" OnClick="_errorClose();return(false);">ホームへ</a>
+              <!-- <a href="#" OnClick="_errorClose();return(false);">ホームへ</a> -->
+              <input class="comButton" type="button" style="margin-left:10pt;" name="close" value="閉じる" OnClick="window.close();" />
 <%
   } else if (directExecType.equalsIgnoreCase("2")) {
 %>

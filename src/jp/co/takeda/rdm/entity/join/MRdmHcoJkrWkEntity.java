@@ -86,7 +86,7 @@ public class MRdmHcoJkrWkEntity extends BaseEntity implements Serializable {
      * 作成日
      * @generated
      */
-    private String insShaYmd;
+    private Date insShaYmd;
     private boolean insShaYmdNullFlag;
 
     /**
@@ -100,7 +100,7 @@ public class MRdmHcoJkrWkEntity extends BaseEntity implements Serializable {
      * 更新日
      * @generated
      */
-    private String updShaYmd;
+    private Date updShaYmd;
     private boolean updShaYmdNullFlag;
 
     /**
@@ -362,14 +362,14 @@ public class MRdmHcoJkrWkEntity extends BaseEntity implements Serializable {
 	 * MRdmHcoJkrWkEntity.javainsShaYmdを設定
 	 * @return insShaYmd
 	 */
-	public String getInsShaYmd() {
+	public Date getInsShaYmd() {
 		return insShaYmd;
 	}
 
 	/**
 	 * @param insShaYmd セットする insShaYmd
 	 */
-	public void setInsShaYmd(String insShaYmd) {
+	public void setInsShaYmd(Date insShaYmd) {
 		this.insShaYmd = insShaYmd;
 	}
 
@@ -422,14 +422,14 @@ public class MRdmHcoJkrWkEntity extends BaseEntity implements Serializable {
 	 * MRdmHcoJkrWkEntity.javaupdShaYmdを設定
 	 * @return updShaYmd
 	 */
-	public String getUpdShaYmd() {
+	public Date getUpdShaYmd() {
 		return updShaYmd;
 	}
 
 	/**
 	 * @param updShaYmd セットする updShaYmd
 	 */
-	public void setUpdShaYmd(String updShaYmd) {
+	public void setUpdShaYmd(Date updShaYmd) {
 		this.updShaYmd = updShaYmd;
 	}
 

@@ -1382,9 +1382,9 @@ public class NF011Service extends BaseService {
 				mRdmHcoJkrWkData.setMrCat(hcoJkrData.getMrCat());
 				mRdmHcoJkrWkData.setMainMr("0");
 				mRdmHcoJkrWkData.setRkiFlg("0");
-				mRdmHcoJkrWkData.setInsShaYmd(sysDate);
+				mRdmHcoJkrWkData.setInsShaYmd(systemDate);
 				mRdmHcoJkrWkData.setInsShaId(indto.getLoginJgiNo());
-				mRdmHcoJkrWkData.setUpdShaYmd(sysDate);
+				mRdmHcoJkrWkData.setUpdShaYmd(systemDate);
 				mRdmHcoJkrWkData.setUpdShaId(indto.getLoginJgiNo());
 
 				dao.insertByValue(mRdmHcoJkrWkData);

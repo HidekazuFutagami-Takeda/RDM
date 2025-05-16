@@ -287,6 +287,8 @@ public class ND103Service extends BaseService {
 		// 現在日付を取得
 		Date systemDate = DateUtils.getNowDate();
 		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
+        String sysDateTime = fmtDateTime.format(systemDate);
 
 		LocalDateTime nowDate = LocalDateTime.now();
 		ZoneId zone = ZoneId.systemDefault();
@@ -335,6 +337,7 @@ public class ND103Service extends BaseService {
 			tRdmReqKnrInsData.setReqComment(dto.getReqComment());
 			tRdmReqKnrInsData.setDocNo(dto.getDocNo());
 			tRdmReqKnrInsData.setInsNo(dto.getInsNoSk());
+			tRdmReqKnrInsData.setReqYmdhms(sysDateTime);//申請日時
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
 			// tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
 			tRdmReqKnrInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));// 作成者
@@ -359,6 +362,7 @@ public class ND103Service extends BaseService {
 			}
 			tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);
 			tRdmReqKnrUpdData.setReqComment(dto.getReqComment());
+			tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);//申請日時
 			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
 			tRdmReqKnrUpdData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
 

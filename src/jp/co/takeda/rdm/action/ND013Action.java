@@ -153,7 +153,7 @@ public class ND013Action extends BaseAction<ND013DTO> {
 
         		//「勤務先削除」の重複申請チェックエラーの場合
         		if (Objects.equals(dto.getErrorCheckFlg(), "31")) {
-        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);// 重複する申請が行われています。（医師コード）
+        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "医師コード");// 重複する申請が行われています。（医師コード）
         			dto.setMsgStr(tmpMsgStr);
         		}
         		//「勤務先削除」の勤務先0件チェックエラーの場合
@@ -164,17 +164,17 @@ public class ND013Action extends BaseAction<ND013DTO> {
 
         		//「勤務先情報更新」のエラーの場合
         		if (Objects.equals(dto.getErrorCheckFlg(), "4")) {
-        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);// 重複する申請が行われています。（医師コード）。
+        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "医師コード");// 重複する申請が行われています。（医師コード）。
         			dto.setMsgStr(tmpMsgStr);
         		}
         		//「医療機関への異動」のエラーの場合
         		if (Objects.equals(dto.getErrorCheckFlg(), "5")) {
-        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);// 重複する申請が行われています。（医師コード）
+        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "医師コード");// 重複する申請が行われています。（医師コード）
         			dto.setMsgStr(tmpMsgStr);
         		}
         		//「医療機関以外への異動」のエラーの場合
         		if (Objects.equals(dto.getErrorCheckFlg(), "6")) {
-        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008);// 重複する申請が行われています。（医師コード）
+        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "医師コード");// 重複する申請が行われています。（医師コード）
         			dto.setMsgStr(tmpMsgStr);
         		}
             } else {

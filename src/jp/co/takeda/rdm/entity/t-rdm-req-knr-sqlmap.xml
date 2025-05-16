@@ -754,6 +754,7 @@
 		REQ_STS = #{reqStsCd},
 		<if test="tekiyoYmd != null">TEKIYO_YMD = #{tekiyoYmd},</if>
 		REQ_COMMENT = #{reqComment},
+		<if test="reqYmdhms != null">REQ_YMDHMS = #{reqYmdhms},</if>
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE

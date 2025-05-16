@@ -461,6 +461,7 @@ public class ND311Service extends BaseService {
 				tRdmReqKnrUpdData.setReqJgiNo(loginInfo.getJgiNo());// 申請者従業員番号
 				tRdmReqKnrUpdData.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
 				tRdmReqKnrUpdData.setReqComment(dto.getReqComment());// 申請コメント
+				tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);//申請日時
 				tRdmReqKnrUpdData.setUpdShaYmd(systemDate);// 更新日
 				tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));// 更新者
 				// 申請管理 申請処理

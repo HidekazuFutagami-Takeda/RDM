@@ -263,6 +263,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
       <s:hidden name="clearUpdMstFrom" />
       <s:hidden name="clearUpdMstTo" />
 
+		<s:hidden name="bumonRank" />
+		<s:hidden name="upSosCd" />
 
       <s:hidden name="sortCondition1" />
       <s:hidden name="sortCondition2" />

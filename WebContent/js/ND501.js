@@ -483,6 +483,14 @@ function jgiNamePopView(w,callBack,winVarName){
   joken[joken.length] = new Array(document.fm1.loginJokenSetCd.value);
   jokenName[jokenName.length] = "selectFlgPop";
   joken[joken.length] = new Array("1");
+  jokenName[jokenName.length] = "bumonRankPop";
+  joken[joken.length] = new Array(document.fm1.bumonRank.value);
+  jokenName[jokenName.length] = "sosCdPop";
+  joken[joken.length] = new Array(document.fm1.kensakuTantouSosCd.value);
+  jokenName[jokenName.length] = "sosCd";
+  joken[joken.length] = new Array(document.fm1.kensakuTantouSosCd.value);
+  jokenName[jokenName.length] = "upSosCdPop";
+  joken[joken.length] = new Array(document.fm1.upSosCd.value);
 
   comPostPopup(w,"NC202Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 
@@ -600,6 +608,8 @@ function tmpCallBackSosNameView(bumonRank, sosCd,
     document.fm1.sosName.value = bumonSeiName;
     document.fm1.kensakuSTantouBrCode.value = brCode;
     document.fm1.kensakuTantouDistCode.value = distCode;
+    document.fm1.bumonRank.value = bumonRank;
+    document.fm1.upSosCd.value = upSosCode;
 }
 
 /**

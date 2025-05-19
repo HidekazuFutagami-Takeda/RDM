@@ -26,15 +26,6 @@
 %>
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%
-//String title = (String)request.getAttribute("title");
-//String execDate = (String)request.getAttribute("execDate");
-//ValueStack stack = (ValueStack)request.getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
-//JKR040C010DTO dto = new JKR040C010DTO();
-//if (stack.peek() instanceof JKR040C010DTO) {
-//  dto = (JKR040C010DTO)stack.peek();
-//}
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -46,13 +37,10 @@
     <script type="text/javascript" src="js/jkrSosStatus.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-    <%-- 040C共通のjs --%>
-    <!-- <script type="text/javascript" src="js/JKR040C000.js"></script>-->
 
     <script type="text/javascript" src="js/NM011.js"></script>
     <script type="text/javascript" src="js/jkrSosStatus.js"></script>
     <script type="text/javascript" src="js/JKR040C010.js"></script>
-    <!--<script type="text/javascript" src="js/RDMNC011.js"></script>-->
     <script type="text/javascript" src="js/catTkCityCombo.js"></script>
     <script type="text/javascript" src="js/imtInsInputCategores.js"></script>
     <script type="text/javascript" src="js/jgiKanren.js"></script>
@@ -61,6 +49,8 @@
     <script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
+
+    	setNtySubject();
     }
     </script>
      <script>
@@ -176,8 +166,77 @@
         		document.getElementById('jkrSosNtyPri').options[2].hidden=false;
         		document.getElementById('jkrSosNtyPri').options[3].hidden=false;
 
+	            setNtySubject();
             }
         }
+
+        // 通知件名プルダウンの設定
+        function setNtySubject(){
+        	// 通知件名
+        	var ntySubject = document.getElementById("jkrSosNtySubject");
+
+        	// 通知分類
+        	var dataDupCheck = document.getElementById("dataDupCheck");
+        	var ultRnkCheck = document.getElementById("ultRnkCheck");
+        	var fbResCheck = document.getElementById("fbResCheck");
+        	var consCheck = document.getElementById("consCheck");
+        	var othersCheck = document.getElementById("othersCheck");
+
+        	if(!dataDupCheck.checked && !ultRnkCheck.checked && !fbResCheck.checked
+        			&& !consCheck.checked && !othersCheck.checked){
+				for(var i=1; i<ntySubject.length; i++){
+					ntySubject.options[i].style.display = "block";
+				}
+        	} else {
+        		if(dataDupCheck.checked){
+        			// データ重複検知
+        			ntySubject.options[1].style.display = "block";
+        			ntySubject.options[6].style.display = "block";
+        		} else {
+        			ntySubject.options[1].style.display = "none";
+        			ntySubject.options[6].style.display = "none";
+        		}
+        		if(ultRnkCheck.checked){
+        			// アルトマーク連携
+        			ntySubject.options[7].style.display = "block";
+        		} else {
+        			ntySubject.options[7].style.display = "none";
+        		}
+        		if(fbResCheck.checked){
+        			// FB回答確認
+        			ntySubject.options[8].style.display = "block";
+        			ntySubject.options[9].style.display = "block";
+        			ntySubject.options[10].style.display = "block";
+        		} else {
+        			ntySubject.options[8].style.display = "none";
+        			ntySubject.options[9].style.display = "none";
+        			ntySubject.options[10].style.display = "none";
+        		}
+        		if(consCheck.checked){
+        			// 整合性チェック
+        			ntySubject.options[11].style.display = "block";
+        			ntySubject.options[12].style.display = "block";
+        			ntySubject.options[13].style.display = "block";
+        			ntySubject.options[2].style.display = "block";
+        			ntySubject.options[3].style.display = "block";
+        			ntySubject.options[4].style.display = "block";
+        		} else {
+        			ntySubject.options[11].style.display = "none";
+        			ntySubject.options[12].style.display = "none";
+        			ntySubject.options[13].style.display = "none";
+        			ntySubject.options[2].style.display = "none";
+        			ntySubject.options[3].style.display = "none";
+        			ntySubject.options[4].style.display = "none";
+        		}
+        		if(othersCheck.checked){
+        			// その他
+        			ntySubject.options[5].style.display = "block";
+        		} else {
+        			ntySubject.options[5].style.display = "none";
+        		}
+        	}
+        }
+
     </script>
         <style>
     .parent {
@@ -357,14 +416,14 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 		<tr>
 					<%-- 通知分類--%>
 		    <td class="pupControlItem" ><nobr>&nbsp;通知分類</nobr></td>
-			<td style="width:10pt;"><s:checkbox id="dataDupCheck" name="dataDupCheck" tabIndex="-1"/><label for="dataDupCheck">データ重複検知</label></td>
-            <td style="width:10pt;"><s:checkbox id="ultRnkCheck" name="ultRnkCheck" tabIndex="-1"/></td>
+			<td style="width:10pt;"><s:checkbox id="dataDupCheck" name="dataDupCheck" tabIndex="-1" onchange="setNtySubject();" /><label for="dataDupCheck">データ重複検知</label></td>
+            <td style="width:10pt;"><s:checkbox id="ultRnkCheck" name="ultRnkCheck" tabIndex="-1" onchange="setNtySubject();" /></td>
             <td style="width:100pt;"><nobr><label for="ultRnkCheck">アルトマーク連携</label></nobr></td>
-            <td style="width:10pt;"><s:checkbox id="fbResCheck" name="fbResCheck" tabIndex="-1"/></td>
+            <td style="width:10pt;"><s:checkbox id="fbResCheck" name="fbResCheck" tabIndex="-1" onchange="setNtySubject();" /></td>
             <td style="width:100pt;"><nobr><label for="fbResCheck">FB回答確認</label></nobr></td>
-            <td style="width:10pt;"><s:checkbox id="consCheck" name="consCheck" tabIndex="-1"/></td>
+            <td style="width:10pt;"><s:checkbox id="consCheck" name="consCheck" tabIndex="-1" onchange="setNtySubject();" /></td>
             <td style="width:100pt;"><nobr><label for="consCheck">整合性チェック</label></nobr></td>
-            <td style="width:10pt;"><s:checkbox id="othersCheck" name="othersCheck" tabIndex="-1"/></td>
+            <td style="width:10pt;"><s:checkbox id="othersCheck" name="othersCheck" tabIndex="-1" onchange="setNtySubject();" /></td>
             <td style="width:100pt;"><nobr><label for="othersCheck">その他</label></nobr></td>
             <td style="width:10pt;"><s:checkbox id="onlyCheck" name="onlyCheck" tabIndex="-1" onchange="handleCheckboxChange(this)"/></td>
             <td style="width:100pt;"><nobr><label for="onlyCheck">要確認のみ</label></nobr></td>

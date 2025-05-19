@@ -135,6 +135,16 @@ public class ND103Service extends BaseService {
 			dto.setReqStsCd(entity.getReqStsCd());
 			// 更新日
 			dto.setUpdShaYmd(entity.getUpdShaYmd());
+
+			dto.setShnShaName(StringUtils.nvl(entity.getShnShaName(), ""));
+			dto.setShnYmdhms(StringUtils.dispYmdhms(entity.getShnYmdhms()));
+			dto.setAprShaName(StringUtils.nvl(entity.getAprShaName(), ""));
+			dto.setAprYmdhms(StringUtils.dispYmdhms(entity.getAprYmdhms()));
+			dto.setShnJgiNo(entity.getShnJgiNo());
+			dto.setAprJgiNo(entity.getAprJgiNo());
+			dto.setShnFlg(StringUtils.nvl(entity.getShnFlg(), "0"));
+			dto.setAprMemo(StringUtils.nvl(entity.getAprMemo(), ""));
+
 			// 氏名（漢字）
 			dto.setDocKanj(entity.getDocKanj());
 			// 医師固定コード
@@ -529,6 +539,43 @@ public class ND103Service extends BaseService {
 		}
 		// 薬審メンバー区分を格納する
 		dto.setYakushinMap(yakushinMap);
+		// END UOC
+		return outdto;
+	}
+
+	/**
+	 * イベント処理
+	 *
+	 * @param indto ND103DTO
+	 * @return 遷移先DTO
+	 * @customizable
+	 */
+	@Transactional
+	public BaseDTO shnComp(ND103DTO indto) {
+		BaseDTO outdto = indto;
+		// START UOC
+		LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+		// DropDownList作成
+		pullDown(indto);
+		// 現在日付を取得
+		Date systemDate = DateUtils.getNowDate();
+		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
+		String sysDate = fmtDate.format(systemDate);
+
+		// 申請管理の更新を行う
+		TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+		tRdmReqKnrEntity.setReqId(indto.getReqId());
+		tRdmReqKnrEntity.setShnFlg("1");
+		tRdmReqKnrEntity.setShnBrCode(loginInfo.getBrCode());
+		tRdmReqKnrEntity.setShnDistCode(loginInfo.getDistCode());
+		tRdmReqKnrEntity.setShnShz(loginInfo.getBumonRyakuName());
+		tRdmReqKnrEntity.setShnJgiNo(loginInfo.getJgiNo());
+		tRdmReqKnrEntity.setShnShaName(loginInfo.getJgiName());
+		tRdmReqKnrEntity.setAprMemo(indto.getAprMemo());
+		tRdmReqKnrEntity.setShnYmdhms(sysDate);
+
+		dao.update(tRdmReqKnrEntity);
+
 		// END UOC
 		return outdto;
 	}

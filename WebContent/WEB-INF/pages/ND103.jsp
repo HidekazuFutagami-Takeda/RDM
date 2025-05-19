@@ -96,6 +96,8 @@
 	<s:hidden name="jokenSetCd" />
 	<s:hidden name="shinseiButtonFlg" />
 	<s:hidden name="errorCheckFlg" />
+	<s:hidden name="shnFlg"/>
+	<s:hidden name="shnCompButtonFlg" />
 	<s:hidden name="dialogMst" />
 	<s:hidden name="backScreenId" value="ND103" />
 	<s:hidden name="preScreenId" />
@@ -279,6 +281,26 @@
 	      <td class="comFormTableItem"><nobr>申請日時</nobr></td>
 	      <td class="comFormTableItem"><nobr><s:property value="reqYmdhms"/></nobr></td>
 	  </tr>
+	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示　申請者には非表示 -->
+	  <s:if test='%{reqStsCd != null && reqStsCd != "" && !(reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13") }'>
+		<s:if test='%{loginJgiNo != reqJgiNo }'>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+		      <td class="comFormTableItem"><nobr>審査者氏名</nobr></td>
+		      <td class="comFormTableItem"><nobr><s:label key="shnShaName"/></nobr></td>
+		      <td class="comFormTableItem"><nobr>審査日時</nobr></td>
+		      <td class="comFormTableItem"><nobr><s:label key="shnYmdhms"/></nobr></td>
+		  </tr>
+	  </s:if>
+	  <!-- 申請ステータス＝保存済み、承認待ち、ULT申請待ち、ULT承認待ち　の際は非表示 -->
+      <tr>
+	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
+	      <td class="comFormTableItem"><nobr>承認者氏名</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="aprShaName"/></nobr></td>
+	      <td class="comFormTableItem"><nobr>承認日時</nobr></td>
+	      <td class="comFormTableItem"><nobr><s:label key="aprYmdhms"/></nobr></td>
+	  </tr>
+	  </s:if>
   </table>
   <br/>
   <hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -403,14 +425,23 @@
         <tr>
 	    	<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" /></nobr></td>
       </tr>
-		<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01"}'>
+      <s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
+	      <tr>
+		      <td class="comFormTableItem"><nobr>審査・承認メモ</nobr></td>
+	      </tr>
+	      <tr>
+		      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td>
+	      </tr>
+      </s:if>
+		<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13"  }'>
 		</s:if>
 		<s:else>
 				 <tr>
 				      <td class="comFormTableItem"><nobr>承認・却下コメント</nobr></td>
 			     </tr>
 			     <tr>
-				      <td class="comFormTableItem"><nobr><s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
+				      <td class="comFormTableItem"><nobr>
+				      <s:textarea name="aprComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
 			      </tr>
 		</s:else>
 
@@ -436,6 +467,21 @@
                 <nobr>
 				<s:if test='%{(loginJgiNo == reqJgiNo && reqStsCd == "01")||(loginJokenSetCd == "JKN0850" && (reqStsCd == "11" || reqStsCd == "13"))}'>
 	                <input class="comButton" type="button"name="buttonF2" value="申請破棄" onClick="JavaScript:reqCancelBtn();return false;" />
+				</s:if>
+				<s:else>
+					&nbsp;
+				</s:else>
+                </nobr>
+	      </td>
+          <td class="comFormTableItem">
+                <nobr>
+				<s:if test='%{(reqStsCd == "03" || reqStsCd == "13") && loginJokenSetCd == "JKN0850"}'>
+					<s:if test='%{shnFlg == "1" || loginJgiNo == reqJgiNo}'>
+		                <input class="comButton" type="button"name="buttonF3" value="審査完了" disabled/>
+					</s:if>
+					<s:else>
+		                <input class="comButton" type="button"name="buttonF3" value="審査完了" onClick="JavaScript:shnCompBtn();return false;" />
+					</s:else>
 				</s:if>
 				<s:else>
 					&nbsp;

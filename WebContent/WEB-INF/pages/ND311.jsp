@@ -415,6 +415,30 @@
 				</s:if>
                 </nobr>
 	      </td>
+	      <td class="comFormTableItem"><nobr>
+                <s:if test='%{reqStsCd == 03 }'>
+					<s:if test='%{actionEdit == "1"}'>
+						<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	                	<input type="button" value="承認" onclick="ND311Approval()" />
+	                </s:if>
+	                <s:if test='%{actionEdit == "0"}'>
+	                <s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	                	<input type="button" value="承認" onclick="" disabled/>
+	                </s:if>
+				</s:if>
+				<s:else>
+				<s:hidden name="fbReqFlg"/>
+				</s:else>
+				<s:if test='%{reqStsCd == 13 }'>
+	                <s:if test='%{actionEdit == "1"}'>
+	                	<input type="button" value="承認" onclick="ND311Approval()" />
+	                </s:if>
+	                <s:if test='%{actionEdit == "0"}'>
+	                	<input type="button" value="承認" onclick="" disabled/>
+	                </s:if>
+				</s:if>
+                </nobr>
+	      </td>
 	  </tr>
   </table>
 <%-- SUBMIT用パラメータ 終了 --%>
@@ -459,6 +483,17 @@
 			document.fm1.processFlg.value="0";
 
 			comSubmitForAnyWarp(fm1);
+
+	}
+
+	// 承認ボタン
+	function ND311Approval(){
+
+		document.fm1.screenId.value="ND311";
+		document.fm1.functionId.value="Register";
+		document.fm1.processFlg.value="2";
+
+		comSubmitForAnyWarp(fm1);
 
 	}
 	</script>

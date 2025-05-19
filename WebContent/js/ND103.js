@@ -322,7 +322,24 @@ function ND311Page(){
  	comSubmitForAnyWarp(fm1);
 }
 
+/**
+ * <pre>
+ *  審査完了ボタン押下後に呼ばれます
+ * エラーチェック　保存処理
+ * </pre>
+ */
+function shnCompBtn() {
 
+	//一時保存　押下済み
+	document.fm1.shnCompButtonFlg.value = "1";
+
+	document.fm1.screenId.value	= "ND103";
+
+	document.fm1.functionId.value = "Init";
+	// 検索イベント呼び出し
+	comSubmitForAnyWarp(fm1);
+
+}
 
 
 /**

@@ -37,7 +37,14 @@
        	<result column="UPD_SHA_ID" property="updShaId"/>
        	<result column="INS_CLASS" property="insClass"/>
        	<result column="HO_INS_TYPE" property="hoInsType"/>
-
+        <result column="SHN_SHA_ID" property="shnShaName"/>
+        <result column="SHN_YMDHMS" property="shnYmdhms"/>
+        <result column="APR_SHA_ID" property="aprShaName"/>
+        <result column="APR_YMDHMS" property="aprYmdhms"/>
+        <result column="APR_JGI_NO" property="aprJgiNo"/>
+        <result column="SHN_FLG" property="shnFlg"/>
+        <result column="APR_MEMO" property="aprMemo"/>
+        <result column="SHN_JGI_NO" property="shnJgiNo"/>
     </resultMap>
 
     <select id="selectHcpKmuReqNew" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity" resultMap="mRdmHcpKmuReqNewResultMap">
@@ -91,6 +98,14 @@
 			,REQ_KNR.UPD_SHA_ID
 			,HCO_MST.INS_CLASS --施設分類
 			,HCO_MST.HO_INS_TYPE --対象区分
+			,REQ_KNR.APR_MEMO
+			,REQ_KNR.SHN_FLG
+		, REQ_KNR.SHN_SHA_ID  -- 申請管理.審査者氏名
+		, REQ_KNR.SHN_YMDHMS  -- 申請管理.審査日時
+		, REQ_KNR.SHN_JGI_NO  -- 申請管理.審査者従業員番号
+		, REQ_KNR.APR_SHA_ID  -- 申請管理.承認者氏名
+		, REQ_KNR.APR_YMDHMS  -- 申請管理.承認日時
+		, REQ_KNR.APR_JGI_NO  -- 申請管理.承認者従業員番号
 		FROM
 		    M_RDM_PARAM_MST PARAM_MST_ISHI_KINMU --医師勤務先メニュースイッチ
 

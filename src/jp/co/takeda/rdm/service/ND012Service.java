@@ -1756,7 +1756,6 @@ public class ND012Service extends BaseService {
 		}
 		//審査ボタン押下の場合
 		if ("2".equals(indto.getButtonFlg())) {
-			//TODO ステータス更新
 			UpdateTRdmReqKnrEntity updateEntity = new UpdateTRdmReqKnrEntity();
 			//        	updateEntity.setSqlId("updateShn");
 			updateEntity.setReqId(indto.getReqId());
@@ -1771,7 +1770,10 @@ public class ND012Service extends BaseService {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 			String strDate = sdf.format(date);
 			updateEntity.setShnYmdhms(strDate);
-			//        	updateEntity.setAprMemo(indto.getAprMemo());
+			updateEntity.setAprMemo(indto.getAprMemo());
+
+			updateEntity.setUpdShaYmd(date);//更新日
+			updateEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 
 			dao.update(updateEntity);
 		}

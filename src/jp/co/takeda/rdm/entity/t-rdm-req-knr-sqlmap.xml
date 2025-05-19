@@ -388,6 +388,8 @@
 			<if test="shnShaNameNullFlag == true">SHN_SHA_ID = NULL,</if><if test="shnShaNameNullFlag == false"><if test="shnShaName != null">SHN_SHA_ID = #{shnShaName},</if></if>
 			<if test="shnYmdhmsNullFlag == true">SHN_YMDHMS = NULL,</if><if test="shnYmdhmsNullFlag == false"><if test="shnYmdhms != null">SHN_YMDHMS = #{shnYmdhms},</if></if>
 			<if test="aprMemoNullFlag == true">APR_MEMO = NULL,</if><if test="aprMemoNullFlag == false"><if test="aprMemo != null">APR_MEMO = #{aprMemo},</if></if>
+			<if test="updShaYmd != null">UPD_SHA_YMD = #{updShaYmd},</if>
+			<if test="updShaId != null">UPD_SHA_ID = #{updShaId},</if>
 			<if test="shnFlgNullFlag == true">SHN_FLG = NULL</if><if test="shnFlgNullFlag == false"><if test="shnFlg != null">SHN_FLG = #{shnFlg}</if></if>
         WHERE
             REQ_ID = #{reqId}

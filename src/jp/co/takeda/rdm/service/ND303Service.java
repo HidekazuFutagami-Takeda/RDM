@@ -665,7 +665,7 @@ public class ND303Service extends BaseService {
 						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
 					}
 					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
-					updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
+					//updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
 				}
 				if ("2".equals(indto.getButtonFlg())) {//却下
 					if(reqChl.equals("3")) {//ULT起因
@@ -680,7 +680,7 @@ public class ND303Service extends BaseService {
 					updateEntity1.setAprShaName(loginInfo.getJgiName());// 承認者氏名
 					updateEntity1.setAprYmdhms(strDate);// 承認日時
 					updateEntity1.setAprComment(indto.getAprComment());//承認者コメント
-					updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
+					//updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
 				}
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者

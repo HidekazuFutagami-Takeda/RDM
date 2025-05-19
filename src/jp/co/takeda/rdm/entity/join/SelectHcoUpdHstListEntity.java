@@ -123,6 +123,11 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
      */
     private String mrDistCode;
 
+    /**
+     * 申請者領域(MR)
+     * @generated
+     */
+    private String mrTrtCd;
 
     /**
      * 検索条件_施設名（全角）
@@ -2082,6 +2087,14 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
 	 */
 	public void setMrDistCode(String mrDistCode) {
 		this.mrDistCode = mrDistCode;
+	}
+
+	public String getMrTrtCd() {
+		return mrTrtCd;
+	}
+
+	public void setMrTrtCd(String mrTrtCd) {
+		this.mrTrtCd = mrTrtCd;
 	}
 
 	/**

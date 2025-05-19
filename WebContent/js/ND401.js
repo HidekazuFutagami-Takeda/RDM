@@ -382,7 +382,7 @@ function hekouShozoku(index){
 	  hcpClosePopUp(gChsViewWin, "gChsViewWin");
 
 	  if (index == 1) {
-		  document.fm1.paramInsNo.value = "";
+		  document.fm1.paramInsNo.value = document.getElementById("kensakuInsNo").value;
 		  gChsViewWin = chsViewND401(gChsViewWin,"tmpCallBackKensakuShozokuViewHenkou","gChsViewWin");
 	  }
 	  else {

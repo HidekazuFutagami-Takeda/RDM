@@ -47,13 +47,14 @@
 		//２度押し対策フラグ初期化
 		comClickFlgInit();
 
-		//if(window.confirm(destructMsg.replace("（遷移元）", '医師勤務先情報一括更新'))){
+		var destructMsg = '<s:property value="#session.UserInfoKey.msgMap.I006.msgData" />';
+		if(window.confirm(destructMsg.replace("（遷移元）", '医師勤務先情報一括更新'))){
 			// ND401_医師勤務先情報一括更新に遷移
 			document.fm1.screenId.value="ND401";
 			document.fm1.functionId.value="Search";
 
 			comSubmitForAnyWarp(fm1);
-	    //}
+	    }
 	}
 
 	// 画面遷移処理

@@ -542,8 +542,8 @@
 						</td>
 
 						<!-- 所属部科（変更後） -->
-						<td><input type="button" name="cseHenkouBtn" value="★" onclick="cseHenkouViewND401(this, '<s:property value="%{#status.index}"/>');" disabled/></td>
-						<td><input type="button" name="cseBackBtn" value="←" onclick="deptBack(this, '<s:property value="%{#status.index}"/>');" style="display:none;"></td>
+						<td style="min-width:30px"><input type="button" name="cseHenkouBtn" value="★" onclick="cseHenkouViewND401(this, '<s:property value="%{#status.index}"/>');" disabled/></td>
+						<td style="min-width:30px"><input type="button" name="cseBackBtn" value="←" onclick="deptBack(this, '<s:property value="%{#status.index}"/>');" style="display:none;"></td>
 						<td class="comTableItem" id=""  >
 							<s:if test="%{#rowBean.postDeptKanji == null || #rowBean.postDeptKanji == ''}">
 				            	<nobr>&nbsp;</nobr>

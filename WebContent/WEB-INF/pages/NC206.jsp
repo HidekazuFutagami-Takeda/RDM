@@ -114,7 +114,7 @@
       <tr>
 	      <td class="comFormTableItem"><nobr>所属学会名<font color="red" size="3">*</font></nobr></td>
 <s:if test='%{hcpSocietyDataChgFlg == "0"}'>
-	      <td class="comFormTableItem"><nobr><s:textfield name="medicalSocietyNmPop" size="15" maxlength="50" /></nobr></td>
+	      <td class="comFormTableItem"><nobr><s:textfield name="medicalSocietyNmPop" size="15" maxlength="33" /></nobr></td>
 </s:if>
 <s:else>
 	      <td class="comFormTableItem"><nobr><s:label key="medicalSocietyNmPop"/></nobr>

@@ -491,7 +491,7 @@ public class ND315Service extends BaseService {
 					insEntity1.setReqShzNm(loginInfo.getBumonRyakuName());//申請者所属
 					insEntity1.setReqJgiNo(loginInfo.getJgiNo());//申請者従業員番号
 					insEntity1.setReqJgiName(loginInfo.getJgiName());//申請者氏名
-					insEntity1.setReqComment(indto.getReqComment());//申請コメント
+					insEntity1.setReqComment("医師削除による自動勤務先削除になります。");//申請コメント
 					insEntity1.setDocNo(indto.getTkdDocNo());//医師固定コード
 					insEntity1.setInsNo(wData.getInsNo());
 

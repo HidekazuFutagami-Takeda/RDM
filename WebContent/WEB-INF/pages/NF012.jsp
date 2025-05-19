@@ -2350,6 +2350,23 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="free0001" />
+			<s:hidden name="free0002" />
+			<s:hidden name="free0003" />
+			<s:hidden name="free0015" />
+			<s:hidden name="free0008" />
+			<s:hidden name="free0009" />
+			<s:hidden name="free0004" />
+			<s:hidden name="free0005" />
+			<s:hidden name="free0006" />
+			<s:hidden name="free0007" />
+			<s:hidden name="free0010" />
+			<s:hidden name="free0011" />
+			<s:hidden name="free0013" />
+			<s:hidden name="free0014" />
+			<s:hidden name="free0012" />
+		</s:else>
 		<s:if test='%{loginJokenSetCd != "JKN0023"}'>
 		<s:hidden id="table09ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -2391,6 +2408,11 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="welfare02" />
+			<s:hidden name="welfare08" />
+		</s:else>
+
 		<s:if test='%{loginJokenSetCd != "JKN0023"}'>
 		<s:hidden id="table10ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -2772,6 +2794,44 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="result01" />
+			<s:hidden name="result02" />
+			<s:hidden name="result03" />
+			<s:hidden name="result04" />
+			<s:hidden name="result05" />
+			<s:hidden name="result06" />
+			<s:hidden name="result07" />
+			<s:hidden name="result08" />
+			<s:hidden name="result09" />
+			<s:hidden name="result10" />
+			<s:hidden name="result11" />
+			<s:hidden name="result12" />
+			<s:hidden name="result13" />
+			<s:hidden name="result14" />
+			<s:hidden name="result15" />
+			<s:hidden name="result16" />
+			<s:hidden name="result17" />
+			<s:hidden name="result18" />
+			<s:hidden name="result19" />
+			<s:hidden name="result20" />
+			<s:hidden name="result21" />
+			<s:hidden name="result22" />
+			<s:hidden name="result23" />
+			<s:hidden name="result24" />
+			<s:hidden name="result25" />
+			<s:hidden name="result26" />
+			<s:hidden name="result27" />
+			<s:hidden name="result28" />
+			<s:hidden name="result29" />
+			<s:hidden name="result30" />
+			<s:hidden name="result31" />
+			<s:hidden name="result32" />
+			<s:hidden name="result33" />
+			<s:hidden name="result34" />
+			<s:hidden name="result35" />
+			<s:hidden name="result36" />
+		</s:else>
 		<s:if test='%{insClass == "01"}'>
 		<s:hidden id="table11ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -2843,6 +2903,14 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="equip01" />
+			<s:hidden name="equip02" />
+			<s:hidden name="equip03" />
+			<s:hidden name="equip07" />
+			<s:hidden name="equip09" />
+		</s:else>
+
 		<s:if test='%{loginJokenSetCd != "JKN0023" && insClass == "01"}'>
 		<s:hidden id="table12ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -2934,6 +3002,15 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="market01" />
+			<s:hidden name="market02" />
+			<s:hidden name="market03" />
+			<s:hidden name="market04" />
+			<s:hidden name="market06" />
+			<s:hidden name="market07" />
+			<s:hidden name="market09" />
+		</s:else>
 		<s:if test='%{loginJokenSetCd != "JKN0023"}'>
 		<s:hidden id="table13ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -2965,6 +3042,9 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="medical12" />
+		</s:else>
 		<s:if test='%{insClass == "01"}'>
 		<s:hidden id="table14ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -3016,6 +3096,11 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="spfunc01" />
+			<s:hidden name="spfunc03" />
+			<s:hidden name="spfunc04" />
+		</s:else>
 		<s:if test='%{insClass == "01"}'>
 		<s:hidden id="table15ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -3067,6 +3152,11 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="tieup10" />
+			<s:hidden name="tieup11" />
+			<s:hidden name="tieup12" />
+		</s:else>
 		<s:if test='%{loginJokenSetCd != "JKN0023"}'>
 		<s:hidden id="table16ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -3658,6 +3748,59 @@
 		</table>
 		<br/>
 		</s:if>
+		<s:else>
+			<s:hidden name="usercd0001" />
+			<s:hidden name="usercd0002" />
+			<s:hidden name="usercd0003" />
+			<s:hidden name="usercd0004" />
+			<s:hidden name="usercd0005" />
+			<s:hidden name="usercd0006" />
+			<s:hidden name="usercd0007" />
+			<s:hidden name="usercd0008" />
+			<s:hidden name="usercd0009" />
+			<s:hidden name="usercd0010" />
+			<s:hidden name="usercd0011" />
+			<s:hidden name="usercd0012" />
+			<s:hidden name="usercd0013" />
+			<s:hidden name="usercd0014" />
+			<s:hidden name="usercd0015" />
+			<s:hidden name="usercd0016" />
+			<s:hidden name="usercd0017" />
+			<s:hidden name="usercd0018" />
+			<s:hidden name="usercd0019" />
+			<s:hidden name="usercd0020" />
+			<s:hidden name="usercd0021" />
+			<s:hidden name="usercd0022" />
+			<s:hidden name="usercd0023" />
+			<s:hidden name="usercd0024" />
+			<s:hidden name="usercd0025" />
+			<s:hidden name="usercd0026" />
+			<s:hidden name="usercd0027" />
+			<s:hidden name="usercd0028" />
+			<s:hidden name="usercd0029" />
+			<s:hidden name="usercd0030" />
+			<s:hidden name="usercd0031" />
+			<s:hidden name="usercd0032" />
+			<s:hidden name="usercd0033" />
+			<s:hidden name="usercd0034" />
+			<s:hidden name="usercd0035" />
+			<s:hidden name="usercd0036" />
+			<s:hidden name="usercd0101" />
+			<s:hidden name="usercd0102" />
+			<s:hidden name="usercd0103" />
+			<s:hidden name="usercd0104" />
+			<s:hidden name="usercd0105" />
+			<s:hidden name="usercd0106" />
+			<s:hidden name="usercd0107" />
+			<s:hidden name="usercd0108" />
+			<s:hidden name="usercd0109" />
+			<s:hidden name="usercd0201" />
+			<s:hidden name="usercd0202" />
+			<s:hidden name="usercd0203" />
+			<s:hidden name="usercd0204" />
+			<s:hidden name="usercd0205" />
+			<s:hidden name="usercd0206" />
+		</s:else>
 		<s:if test='%{loginJokenSetCd != "JKN0023" && insClass == "01"}'>
 		<s:hidden id="table17ViewFlg" value="1" />
 		<hr class="comTitle" style="margin-top:2px;width:75%"/><br/>
@@ -3848,7 +3991,25 @@
 		</tr>
 		</table>
 		</s:if>
-
+		<s:else>
+			<s:hidden name="reward04" />
+			<s:hidden name="reward05" />
+			<s:hidden name="reward08" />
+			<s:hidden name="reward09" />
+			<s:hidden name="reward18" />
+			<s:hidden name="reward21" />
+			<s:hidden name="reward23" />
+			<s:hidden name="reward25" />
+			<s:hidden name="reward26" />
+			<s:hidden name="reward27" />
+			<s:hidden name="reward29" />
+			<s:hidden name="reward35" />
+			<s:hidden name="reward36" />
+			<s:hidden name="reward37" />
+			<s:hidden name="reward44" />
+			<s:hidden name="reward16" />
+			<s:hidden name="reward17" />
+		</s:else>
 
 	  <%--コメント類 --%>
 	  <table id="formTable18" border="0" class="comPortalTable" align="center" style="width:75%;">

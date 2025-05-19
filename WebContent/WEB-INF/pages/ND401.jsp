@@ -39,6 +39,30 @@
 	<script>
     function comSetFormWindowInfo(){
     	comClickFlgInit();
+
+    	// ★ボタン、←ボタン制御
+    	var i = 0;
+    	var henkouBtn = document.getElementsByName("cseHenkouBtn")[i];
+    	var backBtn = document.getElementsByName("cseBackBtn")[i];
+    	while(henkouBtn != undefined){
+    		var deptBtnFlg = "kmuIkkatsuDataList[" + i + "].deptBtnFlg";
+    	    if(document.getElementsByName(deptBtnFlg)[0].value == "1"){
+    	    	//★へ変更ボタン非表示
+    	    	henkouBtn.style.display = 'none';
+    	    	//戻すボタン表示
+    	    	backBtn.style.display = 'block';
+    	    } else {
+    	    	//★へ変更ボタン表示
+    	    	henkouBtn.style.display = 'block';
+
+    	    	//戻すボタン非表示
+    	    	backBtn.style.display = 'none';
+    	    }
+
+    		i++;
+    		henkouBtn = document.getElementsByName("cseHenkouBtn")[i];
+    		backBtn = document.getElementsByName("cseBackBtn")[i];
+    	}
     }
     </script>
 	<script type="text/javascript" src="js/ND401.js"></script>
@@ -519,7 +543,7 @@
 
 						<!-- 所属部科（変更後） -->
 						<td><input type="button" name="cseHenkouBtn" value="★" onclick="cseHenkouViewND401(this, '<s:property value="%{#status.index}"/>');" disabled/></td>
-						<td><input type="button" value="←" onclick="deptBack(this, '<s:property value="%{#status.index}"/>');" style="display:none;"></td>
+						<td><input type="button" name="cseBackBtn" value="←" onclick="deptBack(this, '<s:property value="%{#status.index}"/>');" style="display:none;"></td>
 						<td class="comTableItem" id=""  >
 							<s:if test="%{#rowBean.postDeptKanji == null || #rowBean.postDeptKanji == ''}">
 				            	<nobr>&nbsp;</nobr>
@@ -549,6 +573,7 @@
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].univPosCode" />
 						<!-- 薬審メンバー区分(変更前) 隠し項目 -->
 							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].dcc" />
+							<s:hidden name="kmuIkkatsuDataList[%{#status.index}].deptBtnFlg" />
 			        </tr>
 
 			    </s:iterator>

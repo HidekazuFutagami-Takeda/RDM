@@ -160,6 +160,12 @@ public class KmuIkkatsuData implements Serializable {
     */
    private String updShaYmd;
 
+   /**
+    * 所属部科ボタンフラグ
+    * @generated
+    */
+   private String deptBtnFlg;
+
     /**
      * シリアルバージョンUID
      * @generated
@@ -535,6 +541,14 @@ public class KmuIkkatsuData implements Serializable {
 	 */
 	public void setUpdShaYmd(String updShaYmd) {
 		this.updShaYmd = updShaYmd;
+	}
+
+	public String getDeptBtnFlg() {
+		return deptBtnFlg;
+	}
+
+	public void setDeptBtnFlg(String deptBtnFlg) {
+		this.deptBtnFlg = deptBtnFlg;
 	}
 
 	/**

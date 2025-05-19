@@ -316,7 +316,11 @@ function deptBack(Backbutton, indexNo){
 	//戻すボタン非表示
 	var back = tr.children[8];
 	var backDept = back.children[0];
-	backDept.style.display = 'none'
+	backDept.style.display = 'none';
+
+	//所属部科ボタンフラグ
+	var deptBtnFlg = "kmuIkkatsuDataList[" + indexNo + "].deptBtnFlg";
+    document.getElementsByName(deptBtnFlg)[0].value = "0";
 }
 
 
@@ -358,7 +362,11 @@ function cseHenkouViewND401(button, indexNo){
 	//戻すボタン表示
 	var back = tr.children[8];
 	var backDept = back.children[0];
-	backDept.style.display = 'block'
+	backDept.style.display = 'block';
+
+	//所属部科ボタンフラグ
+	var deptBtnFlg = "kmuIkkatsuDataList[" + indexNo + "].deptBtnFlg";
+    document.getElementsByName(deptBtnFlg)[0].value = "1";
 }
 
 /**

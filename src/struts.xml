@@ -185,6 +185,7 @@
             <result name="NC011">/WEB-INF/pages/NC011.jsp</result>
         </action>
         <action name="ND403Init" class="nD403Action" method="init">
+            <result name="ND401">/WEB-INF/pages/ND401.jsp</result>
             <result name="ND403">/WEB-INF/pages/ND403.jsp</result>
         </action>
         <action name="ND403Register" class="nD403Action" method="register">

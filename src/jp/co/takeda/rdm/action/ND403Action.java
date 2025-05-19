@@ -110,30 +110,6 @@ public class ND403Action extends BaseAction<ND403DTO> {
     protected void initSetup() throws Exception {
         // START UOC
     	LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
-    	String preScreenId = loginInfo.getPreScreenId();
-
-    	//モック
-//    	loginInfo.setJokenFlg("1");
-//    	loginInfo.setJgiNo(8830034);
-//    	loginInfo.setJgiName("テスト");
-//TODO 遷移元によるエラーは後で作成
-//    	//検証用 TODO
-//    	if(preScreenId.equals("NC001")) {
-//    		preScreenId = dto.getPreScreenId();
-//    	}
-//
-//    	dto.setPreScreenId(preScreenId);
-//
-//		// 遷移パターン 0:施設-医師コードから作成、1:申請データあり
-//		// 医師勤務先情報更新
-//		if ("ND013".equals(preScreenId)) {
-//			dto.setDisplayKbn("0");
-//			// 申請一覧
-//		} else if ("NC011".equals(preScreenId) || "ND307".equals(preScreenId)) {
-//			dto.setDisplayKbn("1");
-//		} else {
-//			throw new InvalidRequestException();
-//		}
 
 		String title = "ND403_医師勤務先情報一括更新 - 申請内容確認";
 

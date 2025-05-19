@@ -354,7 +354,7 @@
 		<center/>
 		<!-- エラー表示部  終了 -->
 
-	    	<div class="kensakuDate">
+	    	<div style="max-height:300px;width:1250px;overflow-y:scroll; overflow-x:scroll; border-width:1px; position: relative; top:0; margin:0 auto;">
 	    	<table class="comTableTitle" id="comTableTitle" align="center" border="1" cellpadding="2" cellspacing="0" style="border: 0px none; margin-top:3pt;margin-bottom:1pt;">
 	    		<thead>
 		        <tr>
@@ -366,10 +366,10 @@
 		            <td class="comTableTitle" id="6" style="width:146pt;"colspan=2><nobr>所属部科</nobr></td>
 		        </tr>
 		        <tr>
-		            <td class="comTableTitle" id="7" style="width:146pt;"><nobr>役職（変更前）</nobr></td>
-		            <td class="comTableTitle" id="8" style="width:146pt;"><nobr>役職（変更後）</nobr></td>
-		            <td class="comTableTitle" id="9" style="width:146pt;"><nobr>所属部科（変更前）</nobr></td>
-		            <td class="comTableTitle" id="10" style="width:146pt;"><nobr>所属部科（変更後）</nobr></td>
+		            <td class="comTableTitle" id="7" style="width:146pt; top: 18;"><nobr>役職（変更前）</nobr></td>
+		            <td class="comTableTitle" id="8" style="width:146pt; top: 18;"><nobr>役職（変更後）</nobr></td>
+		            <td class="comTableTitle" id="9" style="width:146pt; top: 18;"><nobr>所属部科（変更前）</nobr></td>
+		            <td class="comTableTitle" id="10" style="width:146pt; top: 18;"><nobr>所属部科（変更後）</nobr></td>
 		        </tr>
 		        </thead>
 			    <%-- 内容 --%>

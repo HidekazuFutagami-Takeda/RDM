@@ -526,7 +526,7 @@
       <tr>
 	      <td class="comFormTableItem"><nobr>&nbsp;</nobr></td>
 	      <td class="comFormTableItem"><%-- スクロールバー用のテーブルクラスにすること --%>
-              <div id="societyHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;resize:horizontal;">
+              <div id="societyHeader" style="margin:0;width:800px;overflow-y:hidden;overflow-x:auto;position:relative;">
 			  <table class="comCustomTable" id="formTable05">
 				<tr>
 			        <%-- ヘッダ行 --%>

@@ -265,14 +265,14 @@
 						<s:hidden name="searchSosCd" id="searchSosCd"/>
        					<s:hidden name="searchSosRank" id="searchSosRank"/>
                   </td>
-                  <td><a href="#" class="comMiniLink" onclick="cdrClear('searchSos');return false;">clear</a>&nbsp;</td>
+                  <td><a href="#" class="comMiniLink" onclick="cdrClear('searchSos');return false;">Clear</a>&nbsp;</td>
                   <td class="comTableSearchItem" style="width:50pt;"><nobr>担当者</nobr></td>
                   <td align="right"><input class="comButton" type="button" value="選択" onClick="tantoPopBtn();" /></td>
                   <td class="comPortalControlItem">
                        <s:textfield name="searchTantoNm" size="24" maxlength="24" cssClass="mediumGray" readonly="true"/>
        					<s:hidden name="searchTantoCd" id="searchTantoCd"/>
                    </td>
-                   <td><a href="#" class="comMiniLink" onclick="cdrClear('searchTanto');return false;">clear</a>&nbsp;</td>
+                   <td><a href="#" class="comMiniLink" onclick="cdrClear('searchTanto');return false;">Clear</a>&nbsp;</td>
               <td></td>
               <td></td>
               <td></td>
@@ -292,7 +292,7 @@
               <td class="comPortalControlItem">
 		        <s:textfield name="searchInsNm" id="searchInsNm" size="20" maxlength="40" cssClass="mediumGray" readonly="true"/>
               </td>
-              <td ><a href="#" class="comMiniLink" onclick="cdrClear('searchIns');return false;">clear</a>&nbsp;
+              <td ><a href="#" class="comMiniLink" onclick="cdrClear('searchIns');return false;">Clear</a>&nbsp;
               </td>
               <td class="comTableSearchItem" style="width:50pt;"><nobr>所属部科</nobr></td>
               <td align="right">
@@ -302,7 +302,7 @@
                    <s:textfield name="searchDeptNm" id="searchDeptNm" size="20" maxlength="40" cssClass="mediumGray" readonly="true"/>
 		                <s:hidden name="searchDeptCd" id="searchDeptCd"/>
               </td>
-              <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="cdrClear('searchDept');return false;" style="float:none;">clear</a>&nbsp;</td>
+              <td style="width:50pt; text-align:left;"><a href="#" class="comMiniLink" onclick="cdrClear('searchDept');return false;" style="float:none;">Clear</a>&nbsp;</td>
             </tr>
             <tr>
               <td class="comTableSearchItem" style="width:50pt;"></td>

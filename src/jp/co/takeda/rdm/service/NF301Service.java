@@ -1045,7 +1045,6 @@ public class NF301Service extends BaseService {
         	tRdmReqKnrInsData.setReqJgiName(indto.getLoginNm());
         	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
         	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
-        	tRdmReqKnrInsData.setFbReqFlg("0");
         	tRdmReqKnrInsData.setInsShaYmd(systemDate);
         	tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
         	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
@@ -1112,6 +1111,7 @@ public class NF301Service extends BaseService {
             	tRdmReqKnrUpdData.setAprShaName(indto.getLoginNm());
             	tRdmReqKnrUpdData.setAprYmdhms(sysDateTime);
             	tRdmReqKnrUpdData.setAprComment(indto.getAprComment());
+            	tRdmReqKnrUpdData.setFbReqFlg("0");
 
         	}
 

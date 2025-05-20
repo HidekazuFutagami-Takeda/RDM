@@ -178,7 +178,9 @@ public class ND104Action extends BaseAction<ND104DTO> {
 
 			dto.setMsgStr(null);
 
-			dto.setParamReqId(dto.getReqId());
+			if(StringUtils.isEmpty(dto.getParamReqId())) {
+				dto.setParamReqId(dto.getReqId());
+			}
 
 			// 一時保存押下の場合
 			if (Objects.deepEquals(dto.getSaveButtonFlg(), "1")) {
@@ -186,7 +188,7 @@ public class ND104Action extends BaseAction<ND104DTO> {
 
 				// エラーチェック
 				int i = dto.getReqComment().length();
-				if (i >= 300) {// 申請コメント文字数が300文字以上の場合
+				if (i > 100) {// 申請コメント文字数が300文字以上の場合
 					errChk = true;
 					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 					;
@@ -225,7 +227,7 @@ public class ND104Action extends BaseAction<ND104DTO> {
 
 				// 申請コメント レングスチェック
 				int i = dto.getReqComment().length();
-				if (i >= 300) {// 申請コメント文字数が300文字以上の場合
+				if (i > 100) {// 申請コメント文字数が300文字以上の場合
 					errChk = true;
 					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W009).replace("項目名", "申請コメント") + "\n";
 					// 最大文字数を超えています。（申請コメント）
@@ -343,6 +345,29 @@ public class ND104Action extends BaseAction<ND104DTO> {
 
 			}
 
+			//審査完了押下の場合
+			if (Objects.deepEquals(dto.getShnCompButtonFlg(), "1")) {
+				dto.setShnCompButtonFlg("0");
+
+				//エラーチェック
+				int i = dto.getAprMemo().length();
+				if (i > 100) {//申請メモ文字数が300文字以上の場合
+					errChk = true;
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W009);// 最大文字数を超えています。（項目名）
+					tmpMsgStr = tmpMsgStr.replace("項目名", "審査・承認メモ");
+
+					if(errChk) {//エラーありなのでメッセージをセットする
+						dto.setMsgStr(tmpMsgStr);
+					}
+				}
+				else {//エラーがない場合更新処理へ
+					nD104Service.shnComp(dto);
+					dto.setShnFlg("1");
+					tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I008);//保存メッセージ
+					dto.setShnCompButtonFlg("0");
+					dto.setMsgStr(tmpMsgStr);
+				}
+			}
 			// 親画面 申請ID 空チェック
 			if (!StringUtils.isEmpty(dto.getParamReqId())) {
 				dto.setParamDocNo(null);

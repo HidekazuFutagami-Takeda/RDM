@@ -287,6 +287,49 @@ public class SelectHcpKmuReqDelEntity extends BaseEntity implements Serializable
      */
     private String hoInsType;
 
+	/**
+	 * 審査済みフラグ
+	 * 0:未審査、1:審査済
+	 * @generated
+	 */
+	private String shnFlg;
+
+	/**
+	 * 審査者氏名
+	 * @generated
+	 */
+	private String shnShaName;
+
+	/**
+	 * 審査日時
+	 * @generated
+	 */
+	private String shnYmdhms;
+
+	/**
+	 * 承認者氏名
+	 * @generated
+	 */
+	private String aprShaName;
+
+	/**
+	 * 承認日時
+	 * @generated
+	 */
+	private String aprYmdhms;
+
+		/**
+	 * 審査者従業員番号
+	 * @generated
+	 */
+	private Integer shnJgiNo;
+
+	/**
+	 * 承認者従業員番号
+	 * @generated
+	 */
+	private Integer aprJgiNo;
+
     /**
      * コンストラクタ
      * @generated
@@ -946,6 +989,111 @@ public class SelectHcpKmuReqDelEntity extends BaseEntity implements Serializable
 	 */
 	public void setInsNo(String insNo) {
 		this.insNo = insNo;
+	}
+
+	/**
+	 * SelectHcpKmuReqDelEntity.javashnFlgを設定
+	 * @return shnFlg
+	 */
+	public String getShnFlg() {
+		return shnFlg;
+	}
+
+	/**
+	 * @param shnFlg セットする shnFlg
+	 */
+	public void setShnFlg(String shnFlg) {
+		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * SelectHcpKmuReqDelEntity.javashnShaNameを設定
+	 * @return shnShaName
+	 */
+	public String getShnShaName() {
+		return shnShaName;
+	}
+
+	/**
+	 * @param shnShaName セットする shnShaName
+	 */
+	public void setShnShaName(String shnShaName) {
+		this.shnShaName = shnShaName;
+	}
+
+	/**
+	 * SelectHcpKmuReqDelEntity.javashnYmdhmsを設定
+	 * @return shnYmdhms
+	 */
+	public String getShnYmdhms() {
+		return shnYmdhms;
+	}
+
+	/**
+	 * @param shnYmdhms セットする shnYmdhms
+	 */
+	public void setShnYmdhms(String shnYmdhms) {
+		this.shnYmdhms = shnYmdhms;
+	}
+
+	/**
+	 * SelectHcpKmuReqDelEntity.javaaprShaNameを設定
+	 * @return aprShaName
+	 */
+	public String getAprShaName() {
+		return aprShaName;
+	}
+
+	/**
+	 * @param aprShaName セットする aprShaName
+	 */
+	public void setAprShaName(String aprShaName) {
+		this.aprShaName = aprShaName;
+	}
+
+	/**
+	 * SelectHcpKmuReqDelEntity.javaaprYmdhmsを設定
+	 * @return aprYmdhms
+	 */
+	public String getAprYmdhms() {
+		return aprYmdhms;
+	}
+
+	/**
+	 * @param aprYmdhms セットする aprYmdhms
+	 */
+	public void setAprYmdhms(String aprYmdhms) {
+		this.aprYmdhms = aprYmdhms;
+	}
+
+	/**
+	 * SelectHcpKmuReqDelEntity.javashnJgiNoを設定
+	 * @return shnJgiNo
+	 */
+	public Integer getShnJgiNo() {
+		return shnJgiNo;
+	}
+
+	/**
+	 * @param shnJgiNo セットする shnJgiNo
+	 */
+	public void setShnJgiNo(Integer shnJgiNo) {
+		this.shnJgiNo = shnJgiNo;
+	}
+
+	/**
+	 * SelectHcpKmuReqDelEntity.javaaprJgiNoを設定
+	 * @return aprJgiNo
+	 */
+	public Integer getAprJgiNo() {
+		return aprJgiNo;
+	}
+
+	/**
+	 * @param aprJgiNo セットする aprJgiNo
+	 */
+	public void setAprJgiNo(Integer aprJgiNo) {
+		this.aprJgiNo = aprJgiNo;
 	}
 
 

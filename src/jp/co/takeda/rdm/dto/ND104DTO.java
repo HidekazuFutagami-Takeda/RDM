@@ -471,6 +471,56 @@ public class ND104DTO extends BaseDTO implements Serializable {
 	private LinkedHashMap<String,String> yakushinMap = new LinkedHashMap<String,String>();
 
 
+    /**
+     * 審査完了ボタン押下フラグ
+     * 0:押下前
+     * 1:押下済み
+     * @generated
+     */
+    private String shnCompButtonFlg = "0";
+
+	/**
+	 * 審査済みフラグ
+	 * 0:未審査、1:審査済
+	 * @generated
+	 */
+	private String shnFlg;
+
+	/**
+	 * 審査者氏名
+	 * @generated
+	 */
+	private String shnShaName;
+
+	/**
+	 * 審査日時
+	 * @generated
+	 */
+	private String shnYmdhms;
+
+	/**
+	 * 承認者氏名
+	 * @generated
+	 */
+	private String aprShaName;
+
+	/**
+	 * 承認日時
+	 * @generated
+	 */
+	private String aprYmdhms;
+
+		/**
+	 * 審査者従業員番号
+	 * @generated
+	 */
+	private Integer shnJgiNo;
+
+	/**
+	 * 承認者従業員番号
+	 * @generated
+	 */
+	private Integer aprJgiNo;
 
     /**
      * デフォルトのコンストラクタ。
@@ -1639,6 +1689,126 @@ public class ND104DTO extends BaseDTO implements Serializable {
 	 */
 	public void setTrtCd(String trtCd) {
 		this.trtCd = trtCd;
+	}
+
+	/**
+	 * ND104DTO.javashnCompButtonFlgを設定
+	 * @return shnCompButtonFlg
+	 */
+	public String getShnCompButtonFlg() {
+		return shnCompButtonFlg;
+	}
+
+	/**
+	 * @param shnCompButtonFlg セットする shnCompButtonFlg
+	 */
+	public void setShnCompButtonFlg(String shnCompButtonFlg) {
+		this.shnCompButtonFlg = shnCompButtonFlg;
+	}
+
+	/**
+	 * ND104DTO.javashnFlgを設定
+	 * @return shnFlg
+	 */
+	public String getShnFlg() {
+		return shnFlg;
+	}
+
+	/**
+	 * @param shnFlg セットする shnFlg
+	 */
+	public void setShnFlg(String shnFlg) {
+		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * ND104DTO.javashnShaNameを設定
+	 * @return shnShaName
+	 */
+	public String getShnShaName() {
+		return shnShaName;
+	}
+
+	/**
+	 * @param shnShaName セットする shnShaName
+	 */
+	public void setShnShaName(String shnShaName) {
+		this.shnShaName = shnShaName;
+	}
+
+	/**
+	 * ND104DTO.javashnYmdhmsを設定
+	 * @return shnYmdhms
+	 */
+	public String getShnYmdhms() {
+		return shnYmdhms;
+	}
+
+	/**
+	 * @param shnYmdhms セットする shnYmdhms
+	 */
+	public void setShnYmdhms(String shnYmdhms) {
+		this.shnYmdhms = shnYmdhms;
+	}
+
+	/**
+	 * ND104DTO.javaaprShaNameを設定
+	 * @return aprShaName
+	 */
+	public String getAprShaName() {
+		return aprShaName;
+	}
+
+	/**
+	 * @param aprShaName セットする aprShaName
+	 */
+	public void setAprShaName(String aprShaName) {
+		this.aprShaName = aprShaName;
+	}
+
+	/**
+	 * ND104DTO.javaaprYmdhmsを設定
+	 * @return aprYmdhms
+	 */
+	public String getAprYmdhms() {
+		return aprYmdhms;
+	}
+
+	/**
+	 * @param aprYmdhms セットする aprYmdhms
+	 */
+	public void setAprYmdhms(String aprYmdhms) {
+		this.aprYmdhms = aprYmdhms;
+	}
+
+	/**
+	 * ND104DTO.javashnJgiNoを設定
+	 * @return shnJgiNo
+	 */
+	public Integer getShnJgiNo() {
+		return shnJgiNo;
+	}
+
+	/**
+	 * @param shnJgiNo セットする shnJgiNo
+	 */
+	public void setShnJgiNo(Integer shnJgiNo) {
+		this.shnJgiNo = shnJgiNo;
+	}
+
+	/**
+	 * ND104DTO.javaaprJgiNoを設定
+	 * @return aprJgiNo
+	 */
+	public Integer getAprJgiNo() {
+		return aprJgiNo;
+	}
+
+	/**
+	 * @param aprJgiNo セットする aprJgiNo
+	 */
+	public void setAprJgiNo(Integer aprJgiNo) {
+		this.aprJgiNo = aprJgiNo;
 	}
 
 

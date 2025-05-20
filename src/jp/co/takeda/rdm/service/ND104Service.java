@@ -245,6 +245,14 @@ public class ND104Service extends BaseService {
 			dto.setInsClass(entity.getInsClass());
 			// 対象区分
 			dto.setHoInsType(entity.getHoInsType());
+			dto.setShnShaName(StringUtils.nvl(entity.getShnShaName(), ""));
+			dto.setShnYmdhms(StringUtils.dispYmdhms(entity.getShnYmdhms()));
+			dto.setAprShaName(StringUtils.nvl(entity.getAprShaName(), ""));
+			dto.setAprYmdhms(StringUtils.dispYmdhms(entity.getAprYmdhms()));
+			dto.setShnJgiNo(entity.getShnJgiNo());
+			dto.setAprJgiNo(entity.getAprJgiNo());
+			dto.setShnFlg(StringUtils.nvl(entity.getShnFlg(), "0"));
+			dto.setAprMemo(StringUtils.nvl(entity.getAprMemo(), ""));
 
 		}
 
@@ -535,4 +543,38 @@ public class ND104Service extends BaseService {
 		return outdto;
 	}
 
+	/**
+	 * イベント処理
+	 *
+	 * @param indto ND104DTO
+	 * @return 遷移先DTO
+	 * @customizable
+	 */
+	@Transactional
+	public BaseDTO shnComp(ND104DTO indto) {
+		BaseDTO outdto = indto;
+		// START UOC
+		LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
+		// 現在日付を取得
+		Date systemDate = DateUtils.getNowDate();
+		SimpleDateFormat fmtDate = new SimpleDateFormat("yyyyMMddHHmmss");
+		String sysDate = fmtDate.format(systemDate);
+
+		// 申請管理の更新を行う
+		TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+		tRdmReqKnrEntity.setReqId(indto.getReqId());
+		tRdmReqKnrEntity.setShnFlg("1");
+		tRdmReqKnrEntity.setShnBrCode(loginInfo.getBrCode());
+		tRdmReqKnrEntity.setShnDistCode(loginInfo.getDistCode());
+		tRdmReqKnrEntity.setShnShz(loginInfo.getBumonRyakuName());
+		tRdmReqKnrEntity.setShnJgiNo(loginInfo.getJgiNo());
+		tRdmReqKnrEntity.setShnShaName(loginInfo.getJgiName());
+		tRdmReqKnrEntity.setAprMemo(indto.getAprMemo());
+		tRdmReqKnrEntity.setShnYmdhms(sysDate);
+
+		dao.update(tRdmReqKnrEntity);
+
+		// END UOC
+		return outdto;
+	}
 }

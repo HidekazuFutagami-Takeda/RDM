@@ -484,6 +484,11 @@ public class ND313DTO extends BaseDTO implements Serializable {
     private String yakushinCd;
 	private LinkedHashMap<String,String> yakushinMap = new LinkedHashMap<String,String>();
 
+	/**
+	 * アルトマークへの情報連携
+	 * @generated
+	 */
+	private Boolean fbReqFlg;
 
 
     /**
@@ -1683,6 +1688,21 @@ public class ND313DTO extends BaseDTO implements Serializable {
 	 */
 	public void setActionEdit(String actionEdit) {
 		this.actionEdit = actionEdit;
+	}
+
+	/**
+	 * ND313DTO.javafbReqFlgを設定
+	 * @return fbReqFlg
+	 */
+	public Boolean getFbReqFlg() {
+		return fbReqFlg;
+	}
+
+	/**
+	 * @param fbReqFlg セットする fbReqFlg
+	 */
+	public void setFbReqFlg(Boolean fbReqFlg) {
+		this.fbReqFlg = fbReqFlg;
 	}
 
 

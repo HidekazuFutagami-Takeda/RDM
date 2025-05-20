@@ -152,7 +152,9 @@ public class ND313Action extends BaseAction<ND313DTO> {
 
     	dto.setMsgStr(null);
 
-
+		if(loginInfo.getJokenSetCd() == "1") {
+			dto.setFbReqFlg(true);//初期値はチェックON
+		}
         String reqSts = dto.getReqStsCd();
       //申請ステータスが保存済み、初回登録以外の場合
         if (!Objects.equals(reqSts,"01")) {

@@ -121,7 +121,8 @@
 	<s:hidden name="ultInsNo" />
 	<s:hidden name="deptKn" />
 	<s:hidden name="saveButtonFlg" />
-
+	<s:hidden name="shnFlg"/>
+	<s:hidden name="shnCompButtonFlg" />
 	<s:hidden name="paramInsNo" />
 	<s:hidden name="insAbbrName" />
 	<s:hidden name="deptCodeAf" />

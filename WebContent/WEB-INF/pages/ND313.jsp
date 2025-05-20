@@ -143,6 +143,8 @@
 	<s:hidden name="deptCodeBf" />
 	<s:hidden name="deptKn" />
 	<s:hidden name="saveButtonFlg" />
+	<s:hidden name="shnFlg"/>
+	<s:hidden name="shnCompButtonFlg" />
 
     <s:hidden name="pageCntAll" />
       <s:hidden name="pageCntCur" />
@@ -367,10 +369,10 @@
 	      		<td class="comFormTableItem"><nobr><s:textarea name="reqComment"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;" cssClass="mediumGray" readonly="true"/></nobr></td>
 	      	</s:else>
       </tr>
-	<s:if test='%{reqStsCd != 01 }'>
+	<s:if test='%{(reqStsCd == "03" || reqStsCd == "13")}'>
  		<s:if test='%{reqStsCd == 03 }'>
 	        <tr>
-		      <td class="comFormTableItem"><nobr>承認却下コメント</nobr></td>
+		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>
@@ -380,7 +382,7 @@
  		 </s:if>
  		 <s:elseif test='%{reqStsCd == 13 }'>
 	        <tr>
-		      <td class="comFormTableItem"><nobr>承認却下コメント</nobr></td>
+		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>
@@ -390,7 +392,7 @@
  		 </s:elseif>
  		 <s:else>
 	        <tr>
-		      <td class="comFormTableItem"><nobr>承認却下コメント</nobr></td>
+		      <td class="comFormTableItem"><nobr>承認・却下コメント（※申請者への伝達事項）</nobr></td>
 	      </tr>
 	      <tr>
 		      <td class="comFormTableItem"><nobr>
@@ -463,6 +465,30 @@
 				</s:if>
                 </nobr>
 	      </td>
+	      <td class="comFormTableItem"><nobr>
+                <s:if test='%{reqStsCd == 03 }'>
+					<s:if test='%{actionEdit == "1"}'>
+						<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	                	<input type="button" value="承認" onclick="ND313Approval()" />
+	                </s:if>
+	                <s:if test='%{actionEdit == "0"}'>
+	                <s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	                	<input type="button" value="承認" onclick="" disabled/>
+	                </s:if>
+				</s:if>
+				<s:else>
+				<s:hidden name="fbReqFlg"/>
+				</s:else>
+				<s:if test='%{reqStsCd == 13 }'>
+	                <s:if test='%{actionEdit == "1"}'>
+	                	<input type="button" value="承認" onclick="ND313Approval()" />
+	                </s:if>
+	                <s:if test='%{actionEdit == "0"}'>
+	                	<input type="button" value="承認" onclick="" disabled/>
+	                </s:if>
+				</s:if>
+                </nobr>
+	      </td>
 	  </tr>
   </table>
 
@@ -500,6 +526,17 @@
 			document.fm1.processFlg.value="0";
 
 			comSubmitForAnyWarp(fm1);
+
+	}
+
+	// 承認ボタン
+	function ND313Approval(){
+
+		document.fm1.screenId.value="ND313";
+		document.fm1.functionId.value="Register";
+		document.fm1.processFlg.value="2";
+
+		comSubmitForAnyWarp(fm1);
 
 	}
 	</script>

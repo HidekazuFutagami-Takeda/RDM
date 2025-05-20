@@ -254,6 +254,9 @@ public class ND313Service extends BaseService {
 			dto.setHoInsType(entity.getHoInsType());
 
 		}
+		if(dto.getLoginJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
+			dto.setFbReqFlg(true);//初期値はチェックON
+		}
 
 		// END UOC
 		return outdto;
@@ -623,6 +626,45 @@ public class ND313Service extends BaseService {
 
 			// 申請管理 却下処理
 			dao.update(tRdmReqKnrUpdData);
+		} else if (Objects.deepEquals(dto.getProcessFlg(), "2")) {
+			// 申請管理 承認処理
+			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateTRdmReqKnrData");
+			// 申請IDを指定
+			tRdmReqKnrUpdData.setReqId(dto.getParamReqId());
+			// 申請ステータス
+			if (Objects.deepEquals(dto.getReqChl(), "3")) {
+				// 申請チャネルが'3'（ULT起因）の場合
+				tRdmReqKnrUpdData.setReqStsCd("14");
+			} else {
+				// 申請チャネルが'1'(MR起因)、'2'(DSG起因)の場合
+				tRdmReqKnrUpdData.setReqStsCd("04");
+			}
+
+    		String tekiyoYmd = dto.getFormTekiyoYmd();
+			if (tekiyoYmd != null) {
+				tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
+			}
+			tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);// 適用日
+
+			tRdmReqKnrUpdData.setAprBrCode(loginInfo.getBrCode());// 承認者所属リージョン
+			tRdmReqKnrUpdData.setAprDistCode(loginInfo.getDistCode());// 承認者所属エリア
+			tRdmReqKnrUpdData.setAprShz(dto.getLoginShzNm());// 承認者所属
+			tRdmReqKnrUpdData.setAprJgiNo(loginInfo.getJgiNo());// 承認者従業員番号
+			tRdmReqKnrUpdData.setAprShaName(loginInfo.getJgiName());// 承認者氏名
+			tRdmReqKnrUpdData.setAprYmdhms(sysDateTime);// 承認日時
+
+			tRdmReqKnrUpdData.setAprComment(dto.getAprComment());// 承認コメント
+			if(dto.getFbReqFlg()) {
+				tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+			}
+			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
+			tRdmReqKnrUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+
+			// 申請管理 承認処理
+			dao.update(tRdmReqKnrUpdData);
+
 		}
 
 		outdto.setForward("NC101");

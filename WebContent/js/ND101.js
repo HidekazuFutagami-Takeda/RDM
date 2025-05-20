@@ -76,12 +76,13 @@ function tmpCdcView(index){
   if (gCdcCsdViewSelId == "0") {
 	 document.fm1.cdcCheckedCodes.value = "";
 	 insNo = document.fm1.postInsNo.value;
-	 document.fm1.paramInsNo.value = document.fm1.postInsNo.value;
+	 document.fm1.paramInsNo.value = document.fm1.preInsNo.value;
 
 	 if (!insNo) {
 	 	 //document.fm1.paramInsNo.value = document.fm1.preInsNo.value;
 	 }
-  } else {//ここにはこない
+  } else {
+	  document.fm1.paramInsNo.value = document.fm1.postInsNo.value;
   }
   document.fm1.backScreenId.value = "ND101";
   gCdcViewWin = cdcView(gCdcViewWin,"tmpCallBackShozokuViewRDM","gCdcViewWin");

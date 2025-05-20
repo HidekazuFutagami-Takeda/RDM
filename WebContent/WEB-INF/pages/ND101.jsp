@@ -448,7 +448,7 @@ function shnCompBtn(){
 	                  <td class="comFormTableItem"><nobr>異動先所属部科<span style="color: red;">*</span></nobr></td>
 	                  <td class="comFormTableItem">
 	                      <nobr>
-	                           <input class="comButton" type="button" id="deptBtn" name="button1" value="選択" onClick="JavaScript:tmpCdcView('0');return false;"/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a href="#" class="comMiniLink" onclick="jimClear('shozokubukaName')" >Clear</a>&nbsp;
+	                           <input class="comButton" type="button" id="deptBtn" name="button1" value="選択" onClick="JavaScript:tmpCdcView('1');return false;"/><s:textfield name="postDeptKj" size="17" maxlength="17" cssClass="mediumGray" readonly="true"/><a href="#" class="comMiniLink" onclick="jimClear('shozokubukaName')" >Clear</a>&nbsp;
 	                      </nobr>
 	                  </td>
 	              </tr>

@@ -61,7 +61,7 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
 , HCP_INS AS (--■サブクエリ（医師勤務）
     SELECT  HCP_REQ.REQ_ID
            ,CASE
-                 WHEN REQ_KNR.REQ_TYPE = '31' THEN HCP_REQ.INS_NO_SK
+                 WHEN REQ_KNR.REQ_TYPE IN ('31','34') THEN HCP_REQ.INS_NO_SK
                  WHEN HCP_KMS_MAX.MAX_INS_NO IS NULL THEN '000000000'
                  ELSE HCP_KMS_MAX.MAX_INS_NO
             END HCP_INS_NO

@@ -397,6 +397,13 @@ public class ND311DTO extends BaseDTO implements Serializable {
 	 */
 	private Boolean fbReqFlg;
 
+	/**
+	 * 編集可能フラグ
+	 * 0:不可、1:可
+	 * @generated
+	 */
+	private String editApprFlg;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
@@ -1373,6 +1380,21 @@ public class ND311DTO extends BaseDTO implements Serializable {
 	 */
 	public void setFbReqFlg(Boolean fbReqFlg) {
 		this.fbReqFlg = fbReqFlg;
+	}
+
+	/**
+	 * ND311DTO.javaeditApprFlgを設定
+	 * @return editApprFlg
+	 */
+	public String getEditApprFlg() {
+		return editApprFlg;
+	}
+
+	/**
+	 * @param editApprFlg セットする editApprFlg
+	 */
+	public void setEditApprFlg(String editApprFlg) {
+		this.editApprFlg = editApprFlg;
 	}
 
 

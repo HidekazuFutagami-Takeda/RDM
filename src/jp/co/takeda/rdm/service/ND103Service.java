@@ -175,9 +175,17 @@ public class ND103Service extends BaseService {
 			}
 
 			// 施設固定コード(異動先)
-			dto.setInsNoSk(entity.getInsNoSk());
+			if(StringUtils.isZ(entity.getInsNoSk())) {
+				dto.setInsNoSk("");
+			}else {
+				dto.setInsNoSk(entity.getInsNoSk());
+			}
 			// 施設固定コード（所属部課）
-			dto.setParamInsNo(entity.getInsNoSk());
+			if(StringUtils.isZ(entity.getInsNoSk())) {
+				dto.setParamInsNo("");
+			}else {
+				dto.setParamInsNo(entity.getInsNoSk());
+			}
 			// ULT施設コード
 			dto.setUltInsNo(entity.getUltInsNo());
 			// 所属部科コード(異動先)

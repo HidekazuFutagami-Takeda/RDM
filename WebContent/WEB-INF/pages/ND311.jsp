@@ -123,6 +123,7 @@
 	<s:hidden name="saveButtonFlg" />
 	<s:hidden name="shnFlg"/>
 	<s:hidden name="shnCompButtonFlg" />
+	<s:hidden name="editApprFlg" />
 	<s:hidden name="paramInsNo" />
 	<s:hidden name="insAbbrName" />
 	<s:hidden name="deptCodeAf" />

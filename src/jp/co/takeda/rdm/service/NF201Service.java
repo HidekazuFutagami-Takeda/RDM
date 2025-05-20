@@ -69,6 +69,10 @@ public class NF201Service extends BaseService {
         // 一覧を取得する
         List<SelectNF201OyakoDataListEntity> selectNF201OyakoDataList = dao.select(selectNF201OyakoDataListEntity);
 
+        HcoOyakoNextDataList tkdOyakoData = new HcoOyakoNextDataList();
+        tkdOyakoData.setTekiyoYmd(" ");
+        tkdOyakoData.setAction(" ");
+
         String mainInsNo = "";
         for (SelectNF201OyakoDataListEntity entity : selectNF201OyakoDataList) {
         	HcoOyakoDataList dataRecord = new HcoOyakoDataList();
@@ -122,6 +126,15 @@ public class NF201Service extends BaseService {
     		dataRecord.setHoInsType(getSetValue(entity.getHoInsType()));
     		dataRecord.setInsAddr(getSetValue(entity.getInsAddr()));
     		dataRecord.setJgiName(getSetValue(entity.getJgiName()));
+
+    		if("1".equals(indto.getTkdTrtKbn()) && "00".equals(entity.getTrtCd())) {
+    			// 領域別の場合、武田紐行のデータ保持
+    			tkdOyakoData.setTrtCd(getSetValue(entity.getTrtCd()));
+    			tkdOyakoData.setTrtNm(getSetValue(entity.getTrtNm()));
+    			tkdOyakoData.setHinGNm(getSetValue(entity.getHinGNm()));
+    			tkdOyakoData.setInsAbbrName(getSetValue(entity.getInsAbbrName()));
+    			tkdOyakoData.setInsAddr(getSetValue(entity.getInsAddr()));
+    		}
 
     		mainInsNo = entity.getMainInsNo();
 
@@ -225,6 +238,8 @@ public class NF201Service extends BaseService {
         // 一覧を取得する
         List<SelectNF201OyakoNextDataListEntity> selectNF201OyakoNextDataList = dao.select(selectNF201OyakoNextDataListEntity);
 
+        // 武田紐の申請有無
+        boolean tkdFlg = false;
         if("1".equals(indto.getTkdTrtKbn()) || selectNF201OyakoNextDataList.size() > 0) {
 		    for (SelectNF201OyakoNextDataListEntity entity : selectNF201OyakoNextDataList) {
 		    	HcoOyakoNextDataList dataRecord = new HcoOyakoNextDataList();
@@ -248,6 +263,10 @@ public class NF201Service extends BaseService {
 		    	dataRecord.setInsAbbrName(getSetValue(entity.getInsAbbrName()));
 		    	dataRecord.setInsAddr(getSetValue(entity.getInsAddr()));
 
+		    	if("00".equals(entity.getTrtCd())) {
+		    		tkdFlg = true;
+		    	}
+
 		    	hcoOyakoNextDataList.add(dataRecord);
 		    }
         } else {
@@ -264,6 +283,11 @@ public class NF201Service extends BaseService {
 
 		    	hcoOyakoNextDataList.add(dataRecord);
         	}
+        }
+
+        if(!tkdFlg && "1".equals(indto.getTkdTrtKbn()) && !StringUtils.isEmpty(tkdOyakoData.getTrtCd())) {
+        	// 領域別の場合、武田紐の申請がなければ一行目に当期武田紐行を表示
+        	hcoOyakoNextDataList.add(0,tkdOyakoData);
         }
 
         indto.setHcoOyakoNextDataList(hcoOyakoNextDataList);

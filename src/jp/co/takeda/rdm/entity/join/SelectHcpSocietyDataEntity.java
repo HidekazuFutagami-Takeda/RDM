@@ -249,6 +249,12 @@ public class SelectHcpSocietyDataEntity extends BaseEntity implements Serializab
     private String certifyEdDD;
 
     /**
+     * 更新有フラグ
+     * @generated
+     */
+    private String updFlg;
+
+    /**
      * コンストラクタ
      * @generated
      */
@@ -809,6 +815,21 @@ public class SelectHcpSocietyDataEntity extends BaseEntity implements Serializab
 	 */
 	public void setCertifyEdDD(String certifyEdDD) {
 		this.certifyEdDD = certifyEdDD;
+	}
+
+	/**
+	 * SelectHcpSocietyDataEntity.javaupdFlgを設定
+	 * @return updFlg
+	 */
+	public String getUpdFlg() {
+		return updFlg;
+	}
+
+	/**
+	 * @param updFlg セットする updFlg
+	 */
+	public void setUpdFlg(String updFlg) {
+		this.updFlg = updFlg;
 	}
 
 	/**

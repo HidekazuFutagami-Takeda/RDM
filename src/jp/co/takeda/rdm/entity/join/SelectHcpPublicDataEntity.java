@@ -153,6 +153,12 @@ public class SelectHcpPublicDataEntity extends BaseEntity implements Serializabl
     private String pubInstposEdDD;
 
     /**
+     * 更新有フラグ
+     * @generated
+     */
+    private String updFlg;
+
+    /**
      * コンストラクタ
      * @generated
      */
@@ -475,6 +481,14 @@ public class SelectHcpPublicDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setPubInstposEdDD(String pubInstposEdDD) {
 		this.pubInstposEdDD = pubInstposEdDD;
+	}
+
+	public String getUpdFlg() {
+		return updFlg;
+	}
+
+	public void setUpdFlg(String updFlg) {
+		this.updFlg = updFlg;
 	}
 
 	/**

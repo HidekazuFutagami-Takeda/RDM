@@ -491,6 +491,9 @@ function CallBackToUpdHcpSocRow(indexNo,medicalSocietyNmPop
     if(certifyEdDDPop != null && certifyEdDDPop != ""){certifyEdYMDPop += ("/" + certifyEdDDPop);}
     document.getElementsByName(certifyEdYMD)[0].value = certifyEdYMDPop;
 
+    var updFlg = "hcpSocietyDataList[" + indexNo + "].updFlg";
+    document.getElementsByName(updFlg)[0].value = "1";
+
 }
 
 /**
@@ -597,6 +600,7 @@ function CallBackToNewHcpSocRow(medicalSocietyNm
 	let certifyEdMMInp = document.createElement("input");
 	let certifyEdDDInp = document.createElement("input");
 	let certifyEdYMDInp = document.createElement("input");
+	let updFlgInp = document.createElement("input");
 
 	positionCodeInp.setAttribute("type", "hidden");
 	advisingDoctorCdInp.setAttribute("type", "hidden");
@@ -641,6 +645,7 @@ function CallBackToNewHcpSocRow(medicalSocietyNm
 	certifyEdMMInp.setAttribute("type", "hidden");
 	certifyEdDDInp.setAttribute("type", "hidden");
 	certifyEdYMDInp.setAttribute("type", "text");
+	updFlgInp.setAttribute("type", "hidden");
 
 	positionCodeInp.setAttribute("name", "hcpSocietyDataList["+hcpSocRow+"].positionCode");
 	advisingDoctorCdInp.setAttribute("name", "hcpSocietyDataList["+hcpSocRow+"].advisingDoctorCd");
@@ -685,6 +690,7 @@ function CallBackToNewHcpSocRow(medicalSocietyNm
 	certifyEdMMInp.setAttribute("name", "hcpSocietyDataList["+hcpSocRow+"].certifyEdMM");
 	certifyEdDDInp.setAttribute("name", "hcpSocietyDataList["+hcpSocRow+"].certifyEdDD");
 	certifyEdYMDInp.setAttribute("name", "hcpSocietyDataList["+hcpSocRow+"].certifyEdYMD");
+	updFlgInp.setAttribute("name", "hcpSocietyDataList["+hcpSocRow+"].updFlg");
 
 	positionCodeInp.setAttribute("value", positionCode);
 	advisingDoctorCdInp.setAttribute("value", advisingDoctorCd);
@@ -729,6 +735,7 @@ function CallBackToNewHcpSocRow(medicalSocietyNm
 	certifyEdMMInp.setAttribute("value", certifyEdMM);
 	certifyEdDDInp.setAttribute("value", certifyEdDD);
 	certifyEdYMDInp.setAttribute("value", certifyEdYMD);
+	updFlgInp.setAttribute("value", "1");
 
 	admissionYMDInp.setAttribute("readonly", "readonly");
 	quitYMDInp.setAttribute("readonly", "readonly");
@@ -806,6 +813,7 @@ function CallBackToNewHcpSocRow(medicalSocietyNm
 	tr.appendChild(certifyEdYYYYInp);
 	tr.appendChild(certifyEdMMInp);
 	tr.appendChild(certifyEdDDInp);
+	tr.appendChild(updFlgInp);
 
 	//新規の返りなので絶対に編集できる
 	a.className = "comMiniLink";
@@ -1054,6 +1062,8 @@ function CallBackToUpdHcpPubRow(indexNo,classCategoryCdPop,classCategoryNmPop,pu
     if(pubInstposEdDDPop != null && pubInstposEdDDPop != ""){pubInstposEdYMDPop += ("/" + pubInstposEdDDPop);}
     document.getElementsByName(pubInstposEdYMD)[0].value = pubInstposEdYMDPop;
 
+    var updFlg = "hcpPublicDataList[" + indexNo + "].updFlg";
+    document.getElementsByName(updFlg)[0].value = "1";
 }
 
 /**
@@ -1110,6 +1120,7 @@ function CallBackToNewHcpPubRow(classCategoryCd,classCategoryNm,pubInstitutionCd
 	let pubInstposEdMMInp = document.createElement("input");
 	let pubInstposEdDDInp = document.createElement("input");
 	let pubInstposEdYMDInp = document.createElement("input");
+	let updFlgInp = document.createElement("input");
 
 	classCategoryCdInp.setAttribute("type", "hidden");
 	classCategoryNmInp.setAttribute("type", "text");
@@ -1133,6 +1144,7 @@ function CallBackToNewHcpPubRow(classCategoryCd,classCategoryNm,pubInstitutionCd
 	pubInstposEdMMInp.setAttribute("type", "hidden");
 	pubInstposEdDDInp.setAttribute("type", "hidden");
 	pubInstposEdYMDInp.setAttribute("type", "text");
+	updFlgInp.setAttribute("type", "hidden");
 
 	classCategoryCdInp.setAttribute("name", "hcpPublicDataList["+hcpPubRow+"].classCategoryCd");
 	classCategoryNmInp.setAttribute("name", "hcpPublicDataList["+hcpPubRow+"].classCategoryNm");
@@ -1156,6 +1168,7 @@ function CallBackToNewHcpPubRow(classCategoryCd,classCategoryNm,pubInstitutionCd
 	pubInstposEdMMInp.setAttribute("name", "hcpPublicDataList["+hcpPubRow+"].pubInstposEdMM");
 	pubInstposEdDDInp.setAttribute("name", "hcpPublicDataList["+hcpPubRow+"].pubInstposEdDD");
 	pubInstposEdYMDInp.setAttribute("name", "hcpPublicDataList["+hcpPubRow+"].pubInstposEdYMD");
+	updFlgInp.setAttribute("name", "hcpPublicDataList["+hcpPubRow+"].updFlg");
 
 	classCategoryCdInp.setAttribute("value", classCategoryCd);
 	classCategoryNmInp.setAttribute("value", classCategoryNm);
@@ -1179,6 +1192,7 @@ function CallBackToNewHcpPubRow(classCategoryCd,classCategoryNm,pubInstitutionCd
 	pubInstposEdMMInp.setAttribute("value", pubInstposEdMM);
 	pubInstposEdDDInp.setAttribute("value", pubInstposEdDD);
 	pubInstposEdYMDInp.setAttribute("value", pubInstposEdYMD);
+	updFlgInp.setAttribute("value", "1");
 
 	classCategoryNmInp.setAttribute("readonly", "readonly");
 //	pubInstitutionNmInp.setAttribute("readonly", "readonly");
@@ -1225,7 +1239,7 @@ function CallBackToNewHcpPubRow(classCategoryCd,classCategoryNm,pubInstitutionCd
 	tr.appendChild(pubInstposEdYYYYInp);
 	tr.appendChild(pubInstposEdMMInp);
 	tr.appendChild(pubInstposEdDDInp);
-
+	tr.appendChild(updFlgInp);
 
 	//新規の返りなので絶対に編集できる
 	a.className = "comMiniLink";

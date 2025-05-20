@@ -79,6 +79,7 @@
         <result column="CERTIFY_ED_YYYY" property="certifyEdYYYY"/>
         <result column="CERTIFY_ED_MM" property="certifyEdMM"/>
         <result column="CERTIFY_ED_DD" property="certifyEdDD"/>
+        <result column="UPD_FLG" property="updFlg"/>
     </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpSocietyReqEntity" resultMap="tRdmHcpSocietyReqResultMap">
         SELECT
@@ -461,6 +462,7 @@
           SELECT
              DOC_NO
            , MEDICAL_SOCIETY_NM
+           , '0' AS UPD_FLG
             FROM
              M_RDM_HCP_SOCIETY SOC -- 医師_所属学会情報
            WHERE DOC_NO = #{inDocNo}
@@ -468,6 +470,7 @@
           SELECT
              DOC_NO
            , MEDICAL_SOCIETY_NM
+           , '1' AS UPD_FLG
             FROM
              T_RDM_HCP_SOCIETY_REQ REQ -- 医師_所属学会_申請管理
            WHERE DOC_NO = #{inDocNo}
@@ -508,6 +511,7 @@
 		, NVL(REQ.CERTIFY_ED_YYYY, SOC.CERTIFY_ED_YYYY) AS CERTIFY_ED_YYYY -- 認定医終了年月日(年)
 		, NVL(REQ.CERTIFY_ED_MM, SOC.CERTIFY_ED_MM) AS CERTIFY_ED_MM -- 認定医終了年月日(月)
 		, NVL(REQ.CERTIFY_ED_DD, SOC.CERTIFY_ED_DD) AS CERTIFY_ED_DD -- 認定医終了年月日(日)
+		, KEY.UPD_FLG
 		FROM
         KEYDATA KEY
         LEFT JOIN

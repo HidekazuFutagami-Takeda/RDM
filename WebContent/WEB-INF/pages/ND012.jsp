@@ -774,6 +774,7 @@
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdYYYY"/>
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdMM"/>
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdDD"/>
+					<s:hidden name="hcpSocietyDataList[%{#status.index}].updFlg"/>
 			        <td><%-- アクションボタン --%>
 <%-- 			        <s:if test="%{reqStsCd == '' || reqStsCd == '01' || reqStsCd == '03' || reqStsCd == '13'}"> --%>
 					<s:if test='%{editApprFlg == "1"}'>
@@ -889,6 +890,7 @@
 			        <s:hidden name="hcpPublicDataList[%{#status.index}].pubInstposEdYYYY"/>
 			        <s:hidden name="hcpPublicDataList[%{#status.index}].pubInstposEdMM"/>
 			        <s:hidden name="hcpPublicDataList[%{#status.index}].pubInstposEdDD"/>
+			        <s:hidden name="hcpPublicDataList[%{#status.index}].updFlg"/>
 
 			        <td><%-- アクションボタン --%>
 <%-- 			        <s:if test="%{reqStsCd == '' || reqStsCd == '01' || reqStsCd == '03' || reqStsCd == '13'}"> --%>

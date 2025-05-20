@@ -155,6 +155,12 @@ public class HcpPublicData implements Serializable {
     private String pubInstposEdYMD;
 
     /**
+     * 更新有フラグ
+     * @generated
+     */
+    private String updFlg;
+
+    /**
      * コンストラクタ
      * @customizable
      */
@@ -578,6 +584,18 @@ public class HcpPublicData implements Serializable {
 	 */
 	public void setPubInstposEdYMD(String pubInstposEdYMD) {
 		this.pubInstposEdYMD = pubInstposEdYMD;
+	}
+
+
+
+		public String getUpdFlg() {
+		return updFlg;
+	}
+
+
+
+	public void setUpdFlg(String updFlg) {
+		this.updFlg = updFlg;
 	}
 
 

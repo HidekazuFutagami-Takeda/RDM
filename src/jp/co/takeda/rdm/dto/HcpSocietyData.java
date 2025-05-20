@@ -280,6 +280,11 @@ public class HcpSocietyData implements Serializable {
      */
     private String certifyEdYMD;
 
+    /**
+     * 更新有フラグ
+     * @generated
+     */
+    private String updFlg;
 
     /**
      * コンストラクタ
@@ -1275,6 +1280,22 @@ public class HcpSocietyData implements Serializable {
 	 */
 	public void setCertifyEdYMD(String certifyEdYMD) {
 		this.certifyEdYMD = certifyEdYMD;
+	}
+
+
+
+
+
+	public String getUpdFlg() {
+		return updFlg;
+	}
+
+
+
+
+
+	public void setUpdFlg(String updFlg) {
+		this.updFlg = updFlg;
 	}
 
 

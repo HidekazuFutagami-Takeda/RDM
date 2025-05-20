@@ -736,5 +736,6 @@ public class RdmConstantsData {
     public static final String W065 = "W065"; // 変更前より大きい削除区分は指定出来ません。
     public static final String W066 = "W066"; // 施設情報が変更されていません。
     public static final String W067 = "W067"; // 同一の施設が異動先に指定されています。
+    public static final String W068 = "W068"; // 医師情報が変更されていません。
     public static final String I016 = "I016"; // 一時保存データを破棄しました。
 }

@@ -47,6 +47,7 @@
         <result column="PUB_INSTPOS_ED_YYYY" property="pubInstposEdYYYY"/>
         <result column="PUB_INSTPOS_ED_MM" property="pubInstposEdMM"/>
         <result column="PUB_INSTPOS_ED_DD" property="pubInstposEdDD"/>
+        <result column="UPD_FLG" property="updFlg"/>
     </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpPublicReqEntity" resultMap="tRdmHcpPublicReqResultMap">
         SELECT
@@ -339,6 +340,7 @@
           SELECT
              DOC_NO
            , PUB_INSTITUTION_CD
+           , '0' AS UPD_FLG
             FROM
              M_RDM_HCP_PUBLIC PUR -- 医師_公的機関情報
            WHERE DOC_NO = #{inDocNo}
@@ -346,6 +348,7 @@
           SELECT
              DOC_NO
            , PUB_INSTITUTION_CD
+           , '1' AS UPD_FLG
             FROM
              T_RDM_HCP_PUBLIC_REQ PUR -- 医師_公的機関_申請管理
            WHERE DOC_NO = #{inDocNo}
@@ -370,6 +373,7 @@
 		, NVL(REQ.PUB_INSTPOS_ED_YYYY, PUR.PUB_INSTPOS_ED_YYYY) AS PUB_INSTPOS_ED_YYYY -- 公的機関役職終了年月日(年)
 		, NVL(REQ.PUB_INSTPOS_ED_MM, PUR.PUB_INSTPOS_ED_MM) AS PUB_INSTPOS_ED_MM -- 公的機関役職終了年月日(月)
 		, NVL(REQ.PUB_INSTPOS_ED_DD, PUR.PUB_INSTPOS_ED_DD) AS PUB_INSTPOS_ED_DD -- 公的機関役職終了年月日(日)
+		, KEY.UPD_FLG
 		FROM
         KEYDATA KEY
         LEFT JOIN

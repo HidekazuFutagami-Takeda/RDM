@@ -484,6 +484,8 @@ public class ND012Service extends BaseService {
 			pubInstposEdYMD += ("/" + pData.getPubInstposEdDD());
 		}
 		pData.setPubInstposEdYMD(pubInstposEdYMD);
+
+		pData.setUpdFlg(StringUtils.nvl(pEntity.getUpdFlg(), ""));
 	}
 
 	private void setHcpSocietyData(SelectHcpSocietyDataEntity sEntity, HcpSocietyData sData) {
@@ -620,6 +622,8 @@ public class ND012Service extends BaseService {
 			certifyEdYMD += ("/" + sData.getCertifyEdDD());
 		}
 		sData.setCertifyEdYMD(certifyEdYMD);
+
+		sData.setUpdFlg(StringUtils.nvl(sEntity.getUpdFlg(), ""));
 	}
 
 	/**
@@ -2230,6 +2234,50 @@ public class ND012Service extends BaseService {
 			}
 		}
 
+		// 変更なしチェック
+		if(fullchkFlg) {
+			if(chkEquals(indto.getMstDocType(),indto.getDocType()) && chkEquals(indto.getMstSexCd(),indto.getSexCd())
+					&& chkEquals(indto.getMstDocKanjiSei(),indto.getDocKanjiSei()) && chkEquals(indto.getMstDocKanjiMei(),indto.getDocKanjiMei())
+					&& chkEquals(indto.getMstDocKanaSei(),indto.getDocKanaSei()) && chkEquals(indto.getMstDocKanaMei(),indto.getDocKanaMei())
+					&& chkEquals(indto.getMstOldKanjSei(),indto.getOldKanjSei()) && chkEquals(indto.getMstOldKanaSei(),indto.getOldKanaSei())
+					&& chkEquals(indto.getMstNewNameStYear(),indto.getNewNameStYear()) && chkEquals(indto.getMstNewNameStMonth(),indto.getNewNameStMonth())
+					&& chkEquals(indto.getMstNewNameStDay(),indto.getNewNameStDay()) && chkEquals(indto.getMstDobYear(),indto.getDobYear())
+					&& chkEquals(indto.getMstDobMonth(),indto.getDobMonth()) && chkEquals(indto.getMstDobDay(),indto.getDobDay())
+					&& chkEquals(indto.getMstHomeTownCd(),indto.getHomeTownCd()) && chkEquals(indto.getMstMedSchoolCd(),indto.getMedSchoolCd())
+					&& chkEquals(indto.getMstGradYear(),indto.getGradYear()) && chkEquals(indto.getMstHomeUnivCd(),indto.getHomeUnivCd())
+					&& chkEquals(indto.getMstEmplYear(),indto.getEmplYear()) && chkEquals(indto.getMstHomeDeptCd(),indto.getHomeDeptCd())
+					&& chkEquals(indto.getMstSpLiverCd(),indto.getSpLiverCd()) && chkEquals(indto.getMstSpDiseaseCd(),indto.getSpDiseaseCd())
+					&& chkEquals(indto.getMstSpCom(),indto.getSpCom())) {
+
+					// 所属学会、公的機関の更新チェック
+					List<HcpSocietyData> hcpSocietyData = indto.getHcpSocietyDataList();
+					List<HcpPublicData> hcpPublicData = indto.getHcpPublicDataList();
+
+					boolean updFlg = false;
+					for(HcpSocietyData ent : hcpSocietyData) {
+						if("1".equals(ent.getUpdFlg())) {
+							updFlg = true;
+							break;
+						}
+					}
+					if(!updFlg) {
+						for(HcpPublicData ent : hcpPublicData) {
+							if("1".equals(ent.getUpdFlg())) {
+								updFlg = true;
+								break;
+							}
+						}
+					}
+
+					if(!updFlg) {
+						// 医師情報が変更されていません。
+						tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W068);
+						errChk = true;
+						msgStr = msgStr + tmpMsgStr + "\n";
+					}
+			}
+		}
+
 		if(errChk) {//エラーありなのでメッセージをセットする
 			indto.setMsgStr(msgStr);
 		}
@@ -2318,5 +2366,22 @@ public class ND012Service extends BaseService {
         		return strNew;
         	}
         }
+    }
+
+    /**
+     * 変更前文字列と変更後文字列を比較し、同一ならtrue
+     * @return
+     */
+    public static boolean chkEquals(String strNew, String strOld) {
+    	if(StringUtils.isEmpty(strNew)) {
+    		if(StringUtils.isEmpty(strOld)) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	} else if (strNew.equals(strOld)) {
+    		return true;
+        }
+    	return false;
     }
 }

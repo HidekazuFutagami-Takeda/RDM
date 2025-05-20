@@ -583,6 +583,7 @@
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdYYYY"/>
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdMM"/>
 					<s:hidden name="hcpSocietyDataList[%{#status.index}].certifyEdDD"/>
+					<s:hidden name="hcpSocietyDataList[%{#status.index}].updFlg"/>
 			        <td><%-- アクションボタン --%>
 						<nobr>&nbsp;</nobr>
 					</td>
@@ -679,6 +680,7 @@
 			        <s:hidden name="hcpPublicDataList[%{#status.index}].pubInstposEdYYYY"/>
 			        <s:hidden name="hcpPublicDataList[%{#status.index}].pubInstposEdMM"/>
 			        <s:hidden name="hcpPublicDataList[%{#status.index}].pubInstposEdDD"/>
+			        <s:hidden name="hcpPublicDataList[%{#status.index}].updFlg"/>
 
 			        <td><%-- アクションボタン --%>
 						<nobr>&nbsp;</nobr>

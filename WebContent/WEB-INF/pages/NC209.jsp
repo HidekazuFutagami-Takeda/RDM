@@ -114,6 +114,7 @@
 	<s:hidden name="gamenId" value="NC209" />
 	<s:hidden name="functionId"/>
     <s:hidden name="orderKbn" />
+    <s:hidden id="mrAdminFlg" name="mrAdminFlg" />
     <s:hidden id="pageFlg"  name="pageFlg" />
     <s:hidden name="pageCntAll" />
     <s:hidden name="pageCntCur" />
@@ -132,8 +133,13 @@
     <s:hidden name="viewKbn" />
     <s:hidden name="loginJokenSetCd"/>
     <s:hidden name="loginJgiNo"/>
-    <s:hidden name="loginBrCd"/>
-    <s:hidden name="loginDistCd"/>
+    <s:hidden name="loginBrCode"/>
+    <s:hidden name="loginDistCode"/>
+    <s:hidden name="loginBumonRank" />
+    <s:hidden name="loginBumonRyakuName" />
+    <s:hidden name="loginJgiName" />
+    <s:hidden name="loginSosCd" />
+    <s:hidden name="loginUpSosCode" />
     <s:hidden name="trtCd"/>
 <%-- 施設検索ポップアップ用 --%>
     <s:hidden id="paramSosCd" name="paramSosCd" value="" />
@@ -317,7 +323,7 @@
               <td class="comTableSearchItem" style="width:50pt;"></td>
               <td align="right" colspan="2">
                 <input type="button" name="search" value="検索" onclick="cdrSearch();">&nbsp;
-                <input type="button" name="search" value="クリア" onclick="cdrClearAll();">
+                <input type="button" name="search" value="クリア" onclick="cdrClearAll('<s:property value="mrAdminFlg"/>');">
               </td>
 			</tr>
 		</tbody>

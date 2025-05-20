@@ -64,31 +64,44 @@ function cdrClear( name ) {
  *@param name クリア項目名
  * </pre>
  */
-function cdrClearAll() {
+function cdrClearAll(mrAdminFlg) {
   if(!comChkClickFlg(COM_CLICK_ALERT)){return false;}
 	  document.fm1.searchDocName.value = "";
 	  document.fm1.searchDocKana.value = "";
-	  document.fm1.searchDocType.value = "";
-	  document.fm1.searchDocNo.value = "";
-	  document.fm1.searchDocAttribute.value = "";
 	  document.fm1.searchMedSch.value = "";
 	  document.fm1.searchGradYear.value = "";
 	  document.fm1.searchHUniv.value = "";
+	  document.fm1.searchDocNo.value = "";
+	  if ( mrAdminFlg == '1' ) {
+		  document.fm1.searchDocType.value = "";
+		  document.fm1.searchDocAttribute.value = "";
+
 	  // 検索条件 組織
 	  document.fm1.searchSosCd.value = "";
 	  document.fm1.searchSosNm.value = "";
 	  document.fm1.searchSosRank.value = "";
-	  document.fm1.searchTantoCd.value = "";
-	  document.fm1.searchTantoNm.value = "";
+	  document.fm1.upSosCd.value      = "";
 	  // 検索条件 担当者
 	  document.fm1.searchTantoCd.value = "";
 	  document.fm1.searchTantoNm.value = "";
+	  }
+	  if ( mrAdminFlg == '0' ) {
+		  // 検索条件 組織担当者
+		document.fm1.brCode.value         = document.fm1.loginBrCode.value;
+		document.fm1.searchSosRank.value      = document.fm1.loginBumonRank.value;
+		document.fm1.searchSosNm.value = document.fm1.loginBumonRyakuName.value;
+		document.fm1.distCode.value       = document.fm1.loginDistCode.value;
+		document.fm1.searchTantoNm.value        = document.fm1.loginJgiName.value;
+		document.fm1.searchTantoCd.value          = document.fm1.loginJgiNo.value;
+		document.fm1.upSosCd.value      = document.fm1.loginUpSosCode.value  ;
+	  }
 	  // 検索条件 施設
 	  document.fm1.searchInsNo.value = "";
 	  document.fm1.searchInsNm.value = "";
 	  // 検索条件 所属部科
 	  document.fm1.searchDeptCd.value = "";
 	  document.fm1.searchDeptNm.value = "";
+
 }
 
 /**

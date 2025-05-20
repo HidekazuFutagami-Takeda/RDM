@@ -216,6 +216,33 @@ public class NC209DTO extends BaseDTO implements Serializable {
      */
     private String searchDeptNm;
 
+	/**
+	 * 上位組織
+	 * @generated
+	 */
+	private String upSosCd;
+
+	/**
+	 * 医薬支店C
+	 * @generated
+	 */
+	private String brCode;
+
+	/**
+	 * 医薬営業所C
+	 * @generated
+	 */
+	private String distCode;
+
+    /*ログインユーザ情報*/
+    private String loginBrCode;
+    private String loginBumonRank;
+    private String loginBumonRyakuName;
+    private String loginDistCode;
+    private String loginJgiName;
+    private String loginJgiNo;
+    private String loginSosCd;
+    private String loginUpSosCode  ;
 
     /**
      * @generated
@@ -953,6 +980,215 @@ public class NC209DTO extends BaseDTO implements Serializable {
 	 */
 	public void setHcpDataList(List<HcpData> hcpDataList) {
 		this.hcpDataList = hcpDataList;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaupSosCdを設定
+	 * @return upSosCd
+	 */
+	public String getUpSosCd() {
+		return upSosCd;
+	}
+
+
+
+	/**
+	 * @param upSosCd セットする upSosCd
+	 */
+	public void setUpSosCd(String upSosCd) {
+		this.upSosCd = upSosCd;
+	}
+
+
+
+	/**
+	 * NC209DTO.javabrCodeを設定
+	 * @return brCode
+	 */
+	public String getBrCode() {
+		return brCode;
+	}
+
+
+
+	/**
+	 * @param brCode セットする brCode
+	 */
+	public void setBrCode(String brCode) {
+		this.brCode = brCode;
+	}
+
+
+
+	/**
+	 * NC209DTO.javadistCodeを設定
+	 * @return distCode
+	 */
+	public String getDistCode() {
+		return distCode;
+	}
+
+
+
+	/**
+	 * @param distCode セットする distCode
+	 */
+	public void setDistCode(String distCode) {
+		this.distCode = distCode;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginBrCodeを設定
+	 * @return loginBrCode
+	 */
+	public String getLoginBrCode() {
+		return loginBrCode;
+	}
+
+
+
+	/**
+	 * @param loginBrCode セットする loginBrCode
+	 */
+	public void setLoginBrCode(String loginBrCode) {
+		this.loginBrCode = loginBrCode;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginBumonRankを設定
+	 * @return loginBumonRank
+	 */
+	public String getLoginBumonRank() {
+		return loginBumonRank;
+	}
+
+
+
+	/**
+	 * @param loginBumonRank セットする loginBumonRank
+	 */
+	public void setLoginBumonRank(String loginBumonRank) {
+		this.loginBumonRank = loginBumonRank;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginBumonRyakuNameを設定
+	 * @return loginBumonRyakuName
+	 */
+	public String getLoginBumonRyakuName() {
+		return loginBumonRyakuName;
+	}
+
+
+
+	/**
+	 * @param loginBumonRyakuName セットする loginBumonRyakuName
+	 */
+	public void setLoginBumonRyakuName(String loginBumonRyakuName) {
+		this.loginBumonRyakuName = loginBumonRyakuName;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginDistCodeを設定
+	 * @return loginDistCode
+	 */
+	public String getLoginDistCode() {
+		return loginDistCode;
+	}
+
+
+
+	/**
+	 * @param loginDistCode セットする loginDistCode
+	 */
+	public void setLoginDistCode(String loginDistCode) {
+		this.loginDistCode = loginDistCode;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginJgiNameを設定
+	 * @return loginJgiName
+	 */
+	public String getLoginJgiName() {
+		return loginJgiName;
+	}
+
+
+
+	/**
+	 * @param loginJgiName セットする loginJgiName
+	 */
+	public void setLoginJgiName(String loginJgiName) {
+		this.loginJgiName = loginJgiName;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginJgiNoを設定
+	 * @return loginJgiNo
+	 */
+	public String getLoginJgiNo() {
+		return loginJgiNo;
+	}
+
+
+
+	/**
+	 * @param loginJgiNo セットする loginJgiNo
+	 */
+	public void setLoginJgiNo(String loginJgiNo) {
+		this.loginJgiNo = loginJgiNo;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginSosCdを設定
+	 * @return loginSosCd
+	 */
+	public String getLoginSosCd() {
+		return loginSosCd;
+	}
+
+
+
+	/**
+	 * @param loginSosCd セットする loginSosCd
+	 */
+	public void setLoginSosCd(String loginSosCd) {
+		this.loginSosCd = loginSosCd;
+	}
+
+
+
+	/**
+	 * NC209DTO.javaloginUpSosCodeを設定
+	 * @return loginUpSosCode
+	 */
+	public String getLoginUpSosCode() {
+		return loginUpSosCode;
+	}
+
+
+
+	/**
+	 * @param loginUpSosCode セットする loginUpSosCode
+	 */
+	public void setLoginUpSosCode(String loginUpSosCode) {
+		this.loginUpSosCode = loginUpSosCode;
 	}
 
 

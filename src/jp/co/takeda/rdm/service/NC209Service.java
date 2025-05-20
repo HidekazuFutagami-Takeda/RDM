@@ -60,8 +60,8 @@ public class NC209Service extends BaseService {
     public BaseDTO init(NC209DTO indto) {
 
     	BaseDTO outdto = indto;
-//    	//1-1 権限判定
-//        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+    	//1-1 権限判定
+        LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
 
         //1-2 ドロップダウンリストの生成
         setCombo(indto);
@@ -71,6 +71,19 @@ public class NC209Service extends BaseService {
 
         //ページNO
         indto.setPageCntCur(1);
+
+        // MR権限の場合、親画面．ログインユーザ情報からログインユーザの従業員番号、氏名、組織コード、医薬支店C、医薬営業所C、所属組織名を取得し
+        // 検索条件．組織、検索条件．担当者に設定する
+        if(RdmConstantsData.RDM_JKN_MR.equals(loginInfo.getJokenSetCd())) {
+        	indto.setUpSosCd(loginInfo.getUpSosCd());
+        	indto.setSearchSosCd(loginInfo.getSosCd());
+        	indto.setSearchSosNm(loginInfo.getBumonRyakuName());
+        	indto.setSearchTantoCd(loginInfo.getJgiNo());
+        	indto.setSearchTantoNm(loginInfo.getJgiName());
+        	indto.setBrCode(loginInfo.getBrCode());
+        	indto.setDistCode(loginInfo.getDistCode());
+        	indto.setSearchSosRank(loginInfo.getBumonRank());
+        }
 
         //最大件数（エラーチェック用）をパラメータから取得
         if(indto.getMaxPageCnt() == null) {
@@ -260,6 +273,19 @@ public class NC209Service extends BaseService {
 //    			indto.setSearchTantoNm(loginInfo.getJgiName());
 //    		}
 //    	}
+
+    	LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+    	indto.setMrAdminFlg(loginInfo.getJokenFlg());
+    	if (indto.getMrAdminFlg().equals("0")) {
+    		indto.setLoginBrCode(loginInfo.getBrCode());
+    		indto.setLoginBumonRank(loginInfo.getBumonRank());
+    		indto.setLoginBumonRyakuName(loginInfo.getBumonRyakuName());
+    		indto.setLoginDistCode(loginInfo.getDistCode());
+    		indto.setLoginJgiName(loginInfo.getJgiName());
+    		indto.setLoginJgiNo(Integer.toString(loginInfo.getJgiNo()));
+    		indto.setLoginSosCd(loginInfo.getSosCd());
+    		indto.setLoginUpSosCode  (loginInfo.getUpSosCd());
+    	}
 
         //1-2 ドロップダウンリストの生成
         //医師／薬剤師区分

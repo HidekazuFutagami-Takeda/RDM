@@ -4151,8 +4151,8 @@ public class NF012Service extends BaseService {
         	tRdmHcoReqInsData.setInsOpenDay(indto.getInsOpenDay());
         	tRdmHcoReqInsData.setCapaType(indto.getCapaType());
 
+        	tRdmHcoReqInsData.setUltInsNo(indto.getUltInsCd());
         	if(knr) {
-        		tRdmHcoReqInsData.setUltInsNo(indto.getUltInsCd());
 
         		tRdmHcoReqInsData.setFree0001(indto.getFree0001());
 	        	tRdmHcoReqInsData.setFree0002(indto.getFree0002());
@@ -4357,8 +4357,9 @@ public class NF012Service extends BaseService {
         	tRdmHcoReqUpdData.setInsOpenDay(indto.getInsOpenDay());
         	tRdmHcoReqUpdData.setCapaType(indto.getCapaType());
 
+        	tRdmHcoReqUpdData.setUltInsNo(indto.getUltInsCd());
+
         	if(knr) {
-        		tRdmHcoReqUpdData.setUltInsNo(indto.getUltInsCd());
 
         		tRdmHcoReqUpdData.setFree0001(indto.getFree0001());
 	        	tRdmHcoReqUpdData.setFree0002(indto.getFree0002());

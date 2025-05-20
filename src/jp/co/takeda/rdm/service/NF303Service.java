@@ -1250,8 +1250,9 @@ public class NF303Service extends BaseService {
         	tRdmHcoReqInsData.setInsOpenDay(getUpdValue(indto.getPreInsOpenDay(), indto.getInsOpenDay()));
         	tRdmHcoReqInsData.setCapaType(getUpdValue(indto.getPreCapaType(), indto.getCapaType()));
 
+        	tRdmHcoReqInsData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
+
         	if(knr) {
-        		tRdmHcoReqInsData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
 
         		tRdmHcoReqInsData.setFree0001(getUpdValue(indto.getPreFree0001(), indto.getFree0001()));
 	        	tRdmHcoReqInsData.setFree0002(getUpdValue(indto.getPreFree0002(), indto.getFree0002()));
@@ -1464,8 +1465,9 @@ public class NF303Service extends BaseService {
         	tRdmHcoReqUpdData.setInsOpenDay(getUpdValue(indto.getPreInsOpenDay(), indto.getInsOpenDay()));
         	tRdmHcoReqUpdData.setCapaType(getUpdValue(indto.getPreCapaType(), indto.getCapaType()));
 
+        	tRdmHcoReqUpdData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
+
         	if(knr) {
-        		tRdmHcoReqUpdData.setUltInsNo(getUpdValue(indto.getPreUltInsCd(), indto.getUltInsCd()));
 
         		tRdmHcoReqUpdData.setFree0001(getUpdValue(indto.getPreFree0001(), indto.getFree0001()));
 	        	tRdmHcoReqUpdData.setFree0002(getUpdValue(indto.getPreFree0002(), indto.getFree0002()));

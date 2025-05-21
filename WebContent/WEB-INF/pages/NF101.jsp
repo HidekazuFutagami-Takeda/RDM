@@ -280,182 +280,489 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 
     // 施設区分セレクトボックス設定
     function makePharmTypeBox(box, insType){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--なし--");
-    	const option1 = makeOption("01","01:U(大学)");
-		const option2 = makeOption("02","02:H(病院)");
-		const option3 = makeOption("03","03:C(診療所)");
-		const option4 = makeOption("04","04:P(開業医)");
-		const option5 = makeOption("05","05:T(精神)");
-		const option6 = makeOption("06","06:B(調剤薬局)");
-		const option7 = makeOption("07","07:Y(ワクチン施設)");
-		const option8 = makeOption("08","08:W(二次店)");
-		const option9 = makeOption("09","09:Z(その他雑)");
-
-		box.appendChild(option0);
 		if(insType == "01"){
-			box.appendChild(option1);
-	    	box.appendChild(option2);
-	    	box.appendChild(option3);
-	    	box.appendChild(option4);
-	    	box.appendChild(option5);
+	    	box.options[1].hidden = false;
+	    	box.options[2].hidden = false;
+	    	box.options[3].hidden = false;
+	    	box.options[4].hidden = false;
+	    	box.options[5].hidden = false;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+
 		} else if(insType == "02"){
-			box.appendChild(option2);
-	    	box.appendChild(option3);
-	    	box.appendChild(option4);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = false;
+	    	box.options[3].hidden = false;
+	    	box.options[4].hidden = false;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+
 		} else if(insType == "03"){
-			box.appendChild(option6);
+			box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = false;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+
 		} else if(insType == "06"){
-			box.appendChild(option3);
-	    	box.appendChild(option4);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = false;
+	    	box.options[4].hidden = false;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+
 		} else if(insType == "08"){
-			box.appendChild(option7);
+			box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = false;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+
 		} else if(insType == "09"){
-			box.appendChild(option8);
-	    	box.appendChild(option9);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = false;
+	    	box.options[9].hidden = false;
+
 		} else if(insType == "10"){
-			box.appendChild(option4);
+			box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = false;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
 		}
 
+		box.value = "";
     	return box;
     }
 
     // 階級区分セレクトボックス設定
     function makeInsRankBox(box, insType, pharmType){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--なし--");
-    	const option1 = makeOption("01","01:国公立大学医学部附属病院");
-    	const option2 = makeOption("02","02:私立大学医学部附属病院");
-    	const option3 = makeOption("03","03:国公立大学の分院");
-    	const option4 = makeOption("04","04:私立大学の分院");
-    	const option5 = makeOption("05","05:歯科大学本院");
-    	const option6 = makeOption("06","06:歯科大学分院");
-    	const option7 = makeOption("07","07:100床以上の国公立病院");
-    	const option8 = makeOption("08","08:200床以上の私立病院");
-    	const option9 = makeOption("09","09:20床以上99床以下の国公立病院");
-    	const option10 = makeOption("10","10:20床以上199床以下の私立病院");
-    	const option11 = makeOption("11","11:1床以上19床以下の診療所");
-    	const option12 = makeOption("12","12:無床の診療所");
-    	const option13 = makeOption("13","13:歯科施設");
-    	const option14 = makeOption("14","14:1床以上19床以下の個人立の開業医");
-    	const option15 = makeOption("15","15:無床の開業医");
-    	const option16 = makeOption("16","16:精神");
-    	const option17 = makeOption("17","17:B調剤薬局");
-    	const option18 = makeOption("18","18:二次店");
-    	const option19 = makeOption("19","19:特二次店");
-    	const option20 = makeOption("20","20:医療モール");
-    	const option21 = makeOption("00","00:該当なし");
-
-		box.appendChild(option0);
     	if(insType == "01" && pharmType == "01"){
-			box.appendChild(option1);
-	    	box.appendChild(option2);
-	    	box.appendChild(option3);
-	    	box.appendChild(option4);
-	    	box.appendChild(option5);
-	    	box.appendChild(option6);
+	    	box.options[1].hidden = false;
+	    	box.options[2].hidden = false;
+	    	box.options[3].hidden = false;
+	    	box.options[4].hidden = false;
+	    	box.options[5].hidden = false;
+	    	box.options[6].hidden = false;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "01" && pharmType == "02"){
-			box.appendChild(option7);
-	    	box.appendChild(option8);
-	    	box.appendChild(option9);
-	    	box.appendChild(option10);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = false;
+	    	box.options[8].hidden = false;
+	    	box.options[9].hidden = false;
+	    	box.options[10].hidden = false;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "01" && pharmType == "03"){
-			box.appendChild(option11);
-	    	box.appendChild(option12);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = false;
+	    	box.options[12].hidden = false;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "01" && pharmType == "04"){
-			box.appendChild(option13);
-	    	box.appendChild(option14);
-	    	box.appendChild(option15);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = false;
+	    	box.options[14].hidden = false;
+	    	box.options[15].hidden = false;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "01" && pharmType == "05"){
-			box.appendChild(option16);
+			box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = false;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "02" && pharmType == "02"){
-	    	box.appendChild(option9);
-	    	box.appendChild(option10);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = false;
+	    	box.options[10].hidden = false;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "02" && pharmType == "03"){
-	    	box.appendChild(option11);
-	    	box.appendChild(option12);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = false;
+	    	box.options[12].hidden = false;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "02" && pharmType == "04"){
-			box.appendChild(option13);
-	    	box.appendChild(option14);
-	    	box.appendChild(option15);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = false;
+	    	box.options[14].hidden = false;
+	    	box.options[15].hidden = false;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "03" && pharmType == "06"){
-	    	box.appendChild(option17);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = false;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "06" && pharmType == "03"){
-			box.appendChild(option11);
-	    	box.appendChild(option12);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = false;
+	    	box.options[12].hidden = false;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "06" && pharmType == "04"){
-			box.appendChild(option13);
-	    	box.appendChild(option14);
-	    	box.appendChild(option15);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = false;
+	    	box.options[14].hidden = false;
+	    	box.options[15].hidden = false;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "08" && pharmType == "07"){
-			box.appendChild(option21);
+			box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = false;
+
     	} else if(insType == "09" && pharmType == "08"){
-	    	box.appendChild(option18);
-	    	box.appendChild(option19);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = false;
+	    	box.options[19].hidden = false;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = true;
+
     	} else if(insType == "09" && pharmType == "09"){
-	    	box.appendChild(option21);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = true;
+	    	box.options[21].hidden = false;
+
     	} else if(insType == "10" && pharmType == "04"){
-	    	box.appendChild(option20);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+	    	box.options[4].hidden = true;
+	    	box.options[5].hidden = true;
+	    	box.options[6].hidden = true;
+	    	box.options[7].hidden = true;
+	    	box.options[8].hidden = true;
+	    	box.options[9].hidden = true;
+	    	box.options[10].hidden = true;
+	    	box.options[11].hidden = true;
+	    	box.options[12].hidden = true;
+	    	box.options[13].hidden = true;
+	    	box.options[14].hidden = true;
+	    	box.options[15].hidden = true;
+	    	box.options[16].hidden = true;
+	    	box.options[17].hidden = true;
+	    	box.options[18].hidden = true;
+	    	box.options[19].hidden = true;
+	    	box.options[20].hidden = false;
+	    	box.options[21].hidden = true;
     	}
 
+    	box.value = "";
     	return box;
     }
 
     // 定訪先区分セレクトボックス設定
     function makeRegVisTypeBox(box, insType, pharmType, insRank){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--なし--");
-    	const option1 = makeOption("1","1:定訪先");
-    	const option2 = makeOption("2","2:その他先");
-    	const option3 = makeOption("0","0:該当なし");
-
-		box.appendChild(option0);
     	if((insType == "01" && pharmType == "01" && (insRank == "01" || insRank == "02" || insRank == "03"
-    			|| insRank == "04" || insRank == "05" || insRank == "06"))
-    		|| (insType == "01" && pharmType == "02" && (insRank == "07" || insRank == "08"))){
-	    	box.appendChild(option1);
-    	} else if((insType == "01" && pharmType == "02" && (insRank == "09" || insRank == "10"))
-    			|| (insType == "01" && pharmType == "03" && (insRank == "11" || insRank == "12"))
- 				|| (insType == "01" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
- 				|| (insType == "01" && pharmType == "05" && insRank == "16")
- 				|| (insType == "02" && pharmType == "02" && (insRank == "09" || insRank == "10"))
- 				|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
- 				|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
- 				|| (insType == "03" && pharmType == "06" && insRank == "17")
- 				|| (insType == "06" && pharmType == "03" && (insRank == "11" || insRank == "12"))
- 				|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))){
-	    	box.appendChild(option1);
-	    	box.appendChild(option2);
-    	} else if((insType == "08" && pharmType == "07" && insRank == "00")
-    			|| (insType == "09" && pharmType == "08" && insRank == "19")
-    			|| (insType == "09" && pharmType == "09" && insRank == "00")){
-    		box.appendChild(option3);
-    	} else if(insType == "10" && pharmType == "04" && insRank == "20"){
-    		box.appendChild(option1);
-    	}
+			|| insRank == "04" || insRank == "05" || insRank == "06"))
+			|| (insType == "01" && pharmType == "02" && (insRank == "07" || insRank == "08"))){
+	    	box.options[1].hidden = false;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+		} else if((insType == "01" && pharmType == "02" && (insRank == "09" || insRank == "10"))
+				|| (insType == "01" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+					|| (insType == "01" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
+					|| (insType == "01" && pharmType == "05" && insRank == "16")
+					|| (insType == "02" && pharmType == "02" && (insRank == "09" || insRank == "10"))
+					|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+					|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
+					|| (insType == "03" && pharmType == "06" && insRank == "17")
+					|| (insType == "06" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+					|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))){
+	    	box.options[1].hidden = false;
+	    	box.options[2].hidden = false;
+	    	box.options[3].hidden = true;
+		} else if((insType == "08" && pharmType == "07" && insRank == "00")
+				|| (insType == "09" && pharmType == "08" && insRank == "18")
+				|| (insType == "09" && pharmType == "08" && insRank == "19")
+				|| (insType == "09" && pharmType == "09" && insRank == "00")){
+			box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = false;
+		} else if(insType == "10" && pharmType == "04" && insRank == "20"){
+			box.options[1].hidden = false;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = true;
+		}
 
-    	return box;
+		box.value = "";
+		return box;
     }
 
     //  重点病院区分セレクトボックス設定
     function makeImpHosTypeBox(box, insType, pharmType, insRank){
-    	removeBox(box);
-
-    	const option0 = makeOption("","--なし--");
-    	const option1 = makeOption("1","1:H1");
-    	const option2 = makeOption("2","2:H2");
-    	const option3 = makeOption("0","0:該当なし");
-
-		box.appendChild(option0);
     	if(insType == "01" && pharmType == "01" && (insRank == "01" || insRank == "02")){
-	    	box.appendChild(option3);
+	    	box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = false;
     	} else if((insType == "01" && pharmType == "01" && (insRank == "03" || insRank == "04" || insRank == "05" || insRank == "06"))
     			|| (insType == "01" && pharmType == "02" && (insRank == "07" || insRank == "08"))){
-	    	box.appendChild(option1);
-	    	box.appendChild(option2);
+	    	box.options[1].hidden = false;
+	    	box.options[2].hidden = false;
+	    	box.options[3].hidden = true;
     	} else if((insType == "01" && pharmType == "02" && (insRank == "09" || insRank == "10"))
     			|| (insType == "01" && pharmType == "03" && (insRank == "11" || insRank == "12"))
     			|| (insType == "01" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
@@ -464,15 +771,18 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     			|| (insType == "02" && pharmType == "03" && (insRank == "11" || insRank == "12"))
     			|| (insType == "02" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
     			|| (insType == "03" && pharmType == "06" && insRank == "17")
-    			|| (insType == "03" && pharmType == "03" && (insRank == "11" || insRank == "12"))
+    			|| (insType == "06" && pharmType == "03" && (insRank == "11" || insRank == "12"))
     			|| (insType == "06" && pharmType == "04" && (insRank == "13" || insRank == "14" || insRank == "15"))
     			|| (insType == "08" && pharmType == "07" && insRank == "00")
     			|| (insType == "09" && pharmType == "08" && (insRank == "18" || insRank == "19"))
     			|| (insType == "09" && pharmType == "09" && insRank == "00")
     			|| (insType == "10" && pharmType == "04" && insRank == "20")){
-    		box.appendChild(option3);
+    		box.options[1].hidden = true;
+	    	box.options[2].hidden = true;
+	    	box.options[3].hidden = false;
     	}
 
+    	box.value = "";
     	return box;
     }
 

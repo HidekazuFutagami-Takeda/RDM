@@ -434,6 +434,46 @@ public class NF101Service extends BaseService {
 		}
 		indto.setHoInsTypeCombo(mapHoInsType);
 
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_PHARM_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapPharmType = new LinkedHashMap<String, String>();
+		mapPharmType.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapPharmType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setPharmTypeCombo(mapPharmType);
+
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_RANK);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapInsRank = new LinkedHashMap<String, String>();
+		mapInsRank.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapInsRank.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setInsRankCombo(mapInsRank);
+
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REG_VIS_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapRegVisType = new LinkedHashMap<String, String>();
+		mapRegVisType.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapRegVisType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setRegVisTypeCombo(mapRegVisType);
+
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_IMP_HOS_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapImpHosType = new LinkedHashMap<String, String>();
+		mapImpHosType.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapImpHosType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setImpHosTypeCombo(mapImpHosType);
+
 		// 経営主体
 		MRdmHcoKeieitaiEntiry mRdmHcoKeieitaiCmb = new MRdmHcoKeieitaiEntiry("selectKeieitaiComboList");
 		List<MRdmHcoKeieitaiEntiry> keieiList = dao.select(mRdmHcoKeieitaiCmb);

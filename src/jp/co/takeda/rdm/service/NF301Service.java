@@ -820,6 +820,46 @@ public class NF301Service extends BaseService {
 		}
 		indto.setTradeTypeCombo(mapTradeType);
 
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_PHARM_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapPharmType = new LinkedHashMap<String, String>();
+		mapPharmType.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapPharmType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setPharmTypeCombo(mapPharmType);
+
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_INS_RANK);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapInsRank = new LinkedHashMap<String, String>();
+		mapInsRank.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapInsRank.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setInsRankCombo(mapInsRank);
+
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REG_VIS_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapRegVisType = new LinkedHashMap<String, String>();
+		mapRegVisType.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapRegVisType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setRegVisTypeCombo(mapRegVisType);
+
+		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_IMP_HOS_TYPE);
+		outMainList.clear();
+		outMainList = dao.select(inEntityCmb);
+		LinkedHashMap<String, String> mapImpHosType = new LinkedHashMap<String, String>();
+		mapImpHosType.put("", "--選択してください--");
+		for (SelectComboListEntity outEntity : outMainList) {
+			mapImpHosType.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
+		}
+		indto.setImpHosTypeCombo(mapImpHosType);
+
 		//1-2-7			大学細分類
 		//コード情報から下記条件で値１：値１（漢字）を値１順に取得しドロップダウンリストを作成する
 		//		コード名＝UNIV_SUBDIV（大学細分類）

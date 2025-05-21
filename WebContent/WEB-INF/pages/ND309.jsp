@@ -73,22 +73,24 @@
 			/** 申請ステータスが承認待ち、ULT承認待ちの場合、却下出来る */
 	        if((reqSts.value == 03 || reqSts.value == 13) && (mrAdminFlg.value == 1)) {
 	        	msgContent = '<s:property value="#session.UserInfoKey.msgMap.I009.msgData" />';
-	        	window.confirm(msgContent)
-				document.fm1.funcId.value = req1;
-				document.fm1.screenId.value = "ND309";
-				document.fm1.functionId.value = "Register";
-				comSubmitForAnyWarp(fm1);
+	        	if(window.confirm(msgContent)){
+					document.fm1.funcId.value = req1;
+					document.fm1.screenId.value = "ND309";
+					document.fm1.functionId.value = "Register";
+					comSubmitForAnyWarp(fm1);
+	        	}
 	    	}
 	        /** 承認ボタンが押された場合 */
 		}else if(button == 2) {
 			/** 申請ステータスが承認待ち、ULT承認待ちの場合、承認出来る */
 	        if((reqSts.value == 03 || reqSts.value == 13) && (mrAdminFlg.value == 1)) {
 	        	msgContent = '<s:property value="#session.UserInfoKey.msgMap.I012.msgData" />';
-	        	window.confirm(msgContent)
-				document.fm1.funcId.value = "2";
-				document.fm1.screenId.value = "ND309";
-				document.fm1.functionId.value = "Register";
-				comSubmitForAnyWarp(fm1);
+	        	if(window.confirm(msgContent)){
+					document.fm1.funcId.value = "2";
+					document.fm1.screenId.value = "ND309";
+					document.fm1.functionId.value = "Register";
+					comSubmitForAnyWarp(fm1);
+	        	}
 	    	}
 		}
 	}

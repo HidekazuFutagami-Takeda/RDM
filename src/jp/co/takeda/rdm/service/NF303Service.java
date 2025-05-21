@@ -683,7 +683,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapBasketPurchase = new LinkedHashMap<String, String>();
 		mapBasketPurchase.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapBasketPurchase.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapBasketPurchase.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setBasketPurchaseCombo(mapBasketPurchase);
 
@@ -705,7 +705,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapCapaType = new LinkedHashMap<String, String>();
 		mapCapaType.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapCapaType.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapCapaType.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setCapaTypeCombo(mapCapaType);
 
@@ -716,7 +716,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapWelfareList = new LinkedHashMap<String, String>();
 		mapWelfareList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapWelfareList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapWelfareList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setWelfare02Combo(mapWelfareList);
 		indto.setWelfare08Combo(mapWelfareList);
@@ -728,7 +728,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapResultList = new LinkedHashMap<String, String>();
 		mapResultList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapResultList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapResultList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setResult01Combo(mapResultList);
 		indto.setResult02Combo(mapResultList);
@@ -774,7 +774,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapEquipList = new LinkedHashMap<String, String>();
 		mapEquipList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapEquipList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapEquipList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setEquip01Combo(mapEquipList);
 		indto.setEquip02Combo(mapEquipList);
@@ -789,7 +789,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapMarket01 = new LinkedHashMap<String, String>();
 		mapMarket01.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapMarket01.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapMarket01.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setMarket01Combo(mapMarket01);
 
@@ -800,7 +800,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapMarketList = new LinkedHashMap<String, String>();
 		mapMarketList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapMarketList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapMarketList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setMarket02Combo(mapMarketList);
 		indto.setMarket03Combo(mapMarketList);
@@ -816,7 +816,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapMedicalList = new LinkedHashMap<String, String>();
 		mapMedicalList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapMedicalList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapMedicalList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setMedical12Combo(mapMedicalList);
 
@@ -827,7 +827,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapSpFuncList = new LinkedHashMap<String, String>();
 		mapSpFuncList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapSpFuncList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapSpFuncList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setSpfunc01Combo(mapSpFuncList);
 		indto.setSpfunc04Combo(mapSpFuncList);
@@ -839,7 +839,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapSpFunc03 = new LinkedHashMap<String, String>();
 		mapSpFunc03.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapSpFunc03.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapSpFunc03.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setSpfunc03Combo(mapSpFunc03);
 
@@ -850,7 +850,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapTieupList = new LinkedHashMap<String, String>();
 		mapTieupList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapTieupList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapTieupList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setTieup10Combo(mapTieupList);
 		indto.setTieup11Combo(mapTieupList);
@@ -863,7 +863,7 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapUsercdList = new LinkedHashMap<String, String>();
 		mapUsercdList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapUsercdList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapUsercdList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setUsercd0001Combo(mapUsercdList);
 		indto.setUsercd0002Combo(mapUsercdList);
@@ -909,55 +909,25 @@ public class NF303Service extends BaseService {
 		LinkedHashMap<String, String> mapRewardList = new LinkedHashMap<String, String>();
 		mapRewardList.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
-			mapRewardList.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
+			mapRewardList.put(outEntity.getValue(), outEntity.getValueKanji());
 		}
 		indto.setReward04Combo(mapRewardList);
 		indto.setReward05Combo(mapRewardList);
 		indto.setReward08Combo(mapRewardList);
 		indto.setReward09Combo(mapRewardList);
 		indto.setReward18Combo(mapRewardList);
+		indto.setReward21Combo(mapRewardList);
 		indto.setReward23Combo(mapRewardList);
 		indto.setReward25Combo(mapRewardList);
 		indto.setReward26Combo(mapRewardList);
+		indto.setReward27Combo(mapRewardList);
+		indto.setReward29Combo(mapRewardList);
 		indto.setReward35Combo(mapRewardList);
 		indto.setReward36Combo(mapRewardList);
 		indto.setReward37Combo(mapRewardList);
 		indto.setReward44Combo(mapRewardList);
 		indto.setReward16Combo(mapRewardList);
 		indto.setReward17Combo(mapRewardList);
-
-		// 短期滞在手術基本料
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REWARD21);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapReward21 = new LinkedHashMap<String, String>();
-		mapReward21.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward21.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-		}
-		indto.setReward21Combo(mapReward21);
-
-		// 看護配置（有床診療所）
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REWARD27);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapReward27 = new LinkedHashMap<String, String>();
-		mapReward27.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward27.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-		}
-		indto.setReward27Combo(mapReward27);
-
-		// 老人入院基本料
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REWARD29);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapReward29 = new LinkedHashMap<String, String>();
-		mapReward29.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward29.put(outEntity.getValue(), outEntity.getValue()+":"+outEntity.getValueKanji());
-		}
-		indto.setReward29Combo(mapReward29);
 
 		//開業年月日
         MRdmComCalUsrEntity inEntityYearCmb = new MRdmComCalUsrEntity();

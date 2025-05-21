@@ -3654,23 +3654,13 @@ public class NF012Service extends BaseService {
 		indto.setReward25Combo(mapRewardList);
 		indto.setReward26Combo(mapRewardList);
 		indto.setReward27Combo(mapRewardList);
+		indto.setReward29Combo(mapRewardList);
 		indto.setReward35Combo(mapRewardList);
 		indto.setReward36Combo(mapRewardList);
 		indto.setReward37Combo(mapRewardList);
 		indto.setReward44Combo(mapRewardList);
 		indto.setReward16Combo(mapRewardList);
 		indto.setReward17Combo(mapRewardList);
-
-		// 老人入院基本料
-		inEntityCmb.setInCodeName(jp.co.takeda.rdm.util.RdmConstantsData.CODE_NAME_REWARD29);
-		outMainList.clear();
-		outMainList = dao.select(inEntityCmb);
-		LinkedHashMap<String, String> mapReward29 = new LinkedHashMap<String, String>();
-		mapReward29.put("", "--なし--");
-		for (SelectComboListEntity outEntity : outMainList) {
-			mapReward29.put(outEntity.getValue(), outEntity.getValueKanji());
-		}
-		indto.setReward29Combo(mapReward29);
 
 		//開業年月日
         MRdmComCalUsrEntity inEntityYearCmb = new MRdmComCalUsrEntity();

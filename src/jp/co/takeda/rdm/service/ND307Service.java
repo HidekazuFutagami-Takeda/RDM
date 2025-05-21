@@ -769,7 +769,11 @@ public class ND307Service extends BaseService {
 	        	tRdmHcpKmuReqInsData.setReqId(reqId);
 	        	tRdmHcpKmuReqInsData.setDocNo(indto.getDocNo());
 	        	tRdmHcpKmuReqInsData.setInsNoMt(indto.getPreInsNo());
-	        	tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+	        	if ("0".equals(indto.getMovemedEditFlg())) {
+	        		tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+	        	} else {
+	        		tRdmHcpKmuReqInsData.setInsNoSk(indto.getPreInsNo());
+	        	}
 	        	tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(indto.getPreJobForm(), ""));
 	        	tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(indto.getPreDeptCode(), ""));
 	        	tRdmHcpKmuReqInsData.setDeptKanjiBf(StringUtils.nvl(indto.getPreDeptKj(), ""));
@@ -798,7 +802,11 @@ public class ND307Service extends BaseService {
 	        }else {//更新
 	        	TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
 	        	tRdmHcpKmuReqUpdData.setReqId(reqId);
-	        	tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+	        	if ("0".equals(indto.getMovemedEditFlg())) {
+	        		tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+	        	} else {
+					tRdmHcpKmuReqUpdData.setInsNoSk(indto.getPreInsNo());
+				}
 	        	tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
 	        	tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
 	        	tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));

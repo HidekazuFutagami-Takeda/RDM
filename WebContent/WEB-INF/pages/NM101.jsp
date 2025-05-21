@@ -323,6 +323,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 
 <!--  	<s:hidden id="reqId" name="reqId"/>
 	<s:hidden id="reqType" name="reqType"/>-->
+	<s:hidden name="serchReqId"/>
 
 	<s:hidden id="sortCondition" name="sortCondition" />
 	<s:hidden name="title" />

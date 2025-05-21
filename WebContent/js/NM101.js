@@ -38,6 +38,8 @@ function NM011Seni() {
 
 	fm1.reqId.value=reqIdcell;
 
+	fm1.serchReqId.value=reqIdcell;
+
 
 	if(nm101Tab && !nm101Tab.closed){
 		nm101Tab.close();
@@ -45,7 +47,7 @@ function NM011Seni() {
 
 	nc001Tab = window.open("","NM101Tab");
 	document.fm1.target="NM101Tab";
-	fm1.jokenFlg.value='0'
+	//fm1.jokenFlg.value='0'
 	fm1.screenId.value='NC011';
 	fm1.functionId.value="Search";
 	comSubmitForAnyWarp(fm1);

@@ -303,6 +303,12 @@ public class NM101DTO extends BaseDTO implements Serializable {
 
 	private String Nc011PreScreenId;
 
+    /**
+     * MR権限/管理者権限判定(0：MR権限、1：管理者権限)
+     * @generated
+     */
+    private String jokenFlg;
+
 	/**
 	 * NM101DTO.javajgiNoを設定
 	 * @return jgiNo
@@ -1646,6 +1652,12 @@ public class NM101DTO extends BaseDTO implements Serializable {
 	 */
 	public void setNc011PreScreenId(String nc011PreScreenId) {
 		Nc011PreScreenId = nc011PreScreenId;
+	}
+	public String getJokenFlg() {
+		return jokenFlg;
+	}
+	public void setJokenFlg(String jokenFlg) {
+		this.jokenFlg = jokenFlg;
 	}
 
 }

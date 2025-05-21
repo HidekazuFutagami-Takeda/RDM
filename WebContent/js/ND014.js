@@ -87,6 +87,18 @@ function skCheck(obj){
     document.fm1.skDcctype.disabled = true;
     document.fm1.button2.disabled = true;
     document.fm1.button3.disabled = true;
+    var selectItem = document.getElementById("unknownClear").getElementsByTagName("a");
+	for(var i=0; i<selectItem.length; i++){
+		selectItem[i].style.pointerEvents = 'none';
+		//selectItem[i].style.textDecoration = 'none';
+		selectItem[i].style.color = '#a1a4ac';
+	}
+	var selectItem2 = document.getElementById("unknownClearskDept").getElementsByTagName("a");
+	for(var i=0; i<selectItem2.length; i++){
+		selectItem2[i].style.pointerEvents = 'none';
+		//selectItem2[i].style.textDecoration = 'none';
+		selectItem2[i].style.color = '#a1a4ac';
+	}
   }else{
     //勤務先不明 OFF
     document.fm1.skInsNo.value = "";
@@ -101,7 +113,19 @@ function skCheck(obj){
     document.fm1.skDcctype.disabled = false;
     document.fm1.button2.disabled = false;
     document.fm1.button3.disabled = false;
-  }
+    var selectItem = document.getElementById("unknownClear").getElementsByTagName("a");
+	for(var i=0; i<selectItem.length; i++){
+		selectItem[i].style.pointerEvents = 'auto';
+		//selectItem[i].style.textDecoration = 'underline';
+		selectItem[i].style.color = '';
+	}
+	var selectItem2 = document.getElementById("unknownClearskDept").getElementsByTagName("a");
+	for(var i=0; i<selectItem2.length; i++){
+		selectItem2[i].style.pointerEvents = 'auto';
+		//selectItem2[i].style.textDecoration = 'underline';
+		selectItem2[i].style.color = '';
+	}
+	}
 
 }
 

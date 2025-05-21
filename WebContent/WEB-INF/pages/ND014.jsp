@@ -110,6 +110,18 @@
             document.fm1.skDcctype.disabled = true;
             document.fm1.button2.disabled = true;
             document.fm1.button3.disabled = true;
+            var selectItem = document.getElementById("unknownClear").getElementsByTagName("a");
+        	for(var i=0; i<selectItem.length; i++){
+        		selectItem[i].style.pointerEvents = 'none';
+        		//selectItem[i].style.textDecoration = 'none';
+        		selectItem[i].style.color = '#a1a4ac';
+        	}
+        	var selectItem2 = document.getElementById("unknownClearskDept").getElementsByTagName("a");
+        	for(var i=0; i<selectItem2.length; i++){
+        		selectItem2[i].style.pointerEvents = 'none';
+        		//selectItem2[i].style.textDecoration = 'none';
+        		selectItem2[i].style.color = '#a1a4ac';
+        	}
           }
 // 		const returnFlg = document.fm1.buttonFlg.value;
 // 		if(returnFlg == "8"){//削除完了時画面を閉じろ
@@ -316,13 +328,13 @@
 	      <td class="comFormTableItem"><nobr>復活先施設</nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-			      	<s:if test='%{editApprFlg == "1"}'>
+			      	<s:if test='%{editApprFlg == "1"}'><div id="unknownClear">
 		                <input class="comButton" type="button"name="button2" value="選択" onClick="JavaScript:tmpCseView();return false;" />
 		                <s:textfield name="skInsNm" id="skInsNm" size="20" maxlength="40" cssClass="mediumGray"/>
 		                <s:hidden name="skInsNo" id="skInsNo"/>
 		                <s:hidden name="skInsHoInsType" id="skInsHoInsType"/>
 		                <s:hidden name="skInsInsClass" id="skInsInsClass"/>
-		                <a class="comMiniLink" href ="" onClick="JavaScript:nd014Clear('skIns');return false;">Clear</a>
+		                <a class="comMiniLink" href ="" onClick="JavaScript:nd014Clear('skIns');return false;">Clear</a></div>
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button2" value="選択" disabled />
@@ -350,11 +362,11 @@
 			</nobr></td>
 	      <td class="comFormTableItem">
                 <nobr>
-			      	<s:if test='%{editApprFlg == "1"}'>
+			      	<s:if test='%{editApprFlg == "1"}'><div id="unknownClearskDept">
 		                <input class="comButton" type="button"name="button3" value="選択" onClick="JavaScript:tmpCdcView();return false;" />
 		                <s:textfield name="skDeptNm" id="skDeptNm" size="20" maxlength="40" cssClass="mediumGray"/>
 		                <s:hidden name="skDeptCd" id="skDeptCd"/>
-		                <a class="comMiniLink" href ="" onClick="JavaScript:nd014Clear('skDept');return false;">Clear</a>
+		                <a class="comMiniLink" href ="" onClick="JavaScript:nd014Clear('skDept');return false;">Clear</a></div>
 					</s:if>
 					<s:else>
 		                <input class="comButton" type="button"name="button3" value="選択" disabled />

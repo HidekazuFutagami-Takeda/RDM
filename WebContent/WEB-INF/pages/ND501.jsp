@@ -559,7 +559,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		            <td class="comTableTitle" id="5" style="min-width:60pt;"><nobr>出身所属</nobr></td>
 		            <td class="comTableTitle" id="6" style="min-width:60pt;"><nobr>出身医局校</nobr></td>
 		            <td class="comTableTitle" id="7" style="min-width:60pt;"><nobr>臨床研修年</nobr></td>
-		            <td class="comTableTitle" id="8" style="min-width:60pt;"><nobr>専門臓器県</nobr></td>
+		            <td class="comTableTitle" id="8" style="min-width:60pt;"><nobr>専門臓器</nobr></td>
 		            <td class="comTableTitle" id="8" style="min-width:60pt;"><nobr>専門詳細</nobr></td>
 		            <td class="comTableTitle" id="9" style="min-width:60pt;"><nobr>専門追加情報</nobr></td>
 		            <td class="comTableTitle" id="10" style="min-width:60pt;"><nobr>申請者所属</nobr></td>

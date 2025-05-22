@@ -533,6 +533,7 @@ public class ND301Service extends BaseService {
 							//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 							indto.setMsgId(RdmConstantsData.E003);
 							indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+							indto.setReturnFlg("0");
 						} else {
 							indto.setForward("exception");
 						}
@@ -651,6 +652,7 @@ public class ND301Service extends BaseService {
 								//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 								indto.setMsgId(RdmConstantsData.E003);
 								indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+								indto.setReturnFlg("0");
 							} else {
 								indto.setForward("exception");
 							}
@@ -664,12 +666,14 @@ public class ND301Service extends BaseService {
 						//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 						indto.setMsgId(RdmConstantsData.E003);
 						indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+						indto.setReturnFlg("0");
 						return outdto;
 					} else {
 						if (outEntity2.get(0).getUpdShaYmd().compareTo(dtoUpdShaYmddate) > 0) {
 							//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 							indto.setMsgId(RdmConstantsData.E003);
 							indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+							indto.setReturnFlg("0");
 							return outdto;
 						}
 					}
@@ -797,6 +801,7 @@ public class ND301Service extends BaseService {
 												//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 												indto.setMsgId(RdmConstantsData.E003);
 												indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+												indto.setReturnFlg("0");
 											} else {
 												indto.setForward("exception");
 											}
@@ -810,12 +815,14 @@ public class ND301Service extends BaseService {
 										//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 										indto.setMsgId(RdmConstantsData.E003);
 										indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+										indto.setReturnFlg("0");
 										return outdto;
 									} else {
 										if (outEntity3.get(0).getUpdShaYmd().compareTo(dtoUpdShaYmddate) > 0) {
 											//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 											indto.setMsgId(RdmConstantsData.E003);
 											indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+											indto.setReturnFlg("0");
 											return outdto;
 										}
 									}
@@ -929,6 +936,7 @@ public class ND301Service extends BaseService {
 												//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 												indto.setMsgId(RdmConstantsData.E003);
 												indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+												indto.setReturnFlg("0");
 											} else {
 												indto.setForward("exception");
 											}
@@ -942,12 +950,14 @@ public class ND301Service extends BaseService {
 										//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 										indto.setMsgId(RdmConstantsData.E003);
 										indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+										indto.setReturnFlg("0");
 										return outdto;
 									} else {
 										if (outEntity4.get(0).getUpdShaYmd().compareTo(dtoUpdShaYmddate) > 0) {
 											//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
 											indto.setMsgId(RdmConstantsData.E003);
 											indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+											indto.setReturnFlg("0");
 											return outdto;
 										}
 									}

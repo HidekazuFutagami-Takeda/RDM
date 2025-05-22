@@ -132,6 +132,14 @@
          left: 1;
          z-index:100;
        }
+       .comMiniLinkD
+	   {
+		  color: #000000;
+		  font-size:8pt;
+		  font-style: italic;
+		  cursor:hand;
+		  pointer-events:none;
+	   }
 	</style>
 <%
 // ソート順状態制御用
@@ -322,8 +330,8 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			   </nobr>
 			</td>
 				<td >
-					<s:textfield size="20" maxlength="40"  name="bumonRyakuName" STYLE="ime-mode:active"  disabled="true" cssClass="mediumGray"/>
-					<a class="comMiniLink" href ="" onClick="popClearDisabled();return false;"disabled="true" >Clear</a>
+					<s:textfield size="20" maxlength="40"  name="bumonRyakuName" STYLE="ime-mode:active"  readonly="true" cssClass="mediumGray"/>
+					<a class="comMiniLinkD" href ="" onClick="popClearDisabled();return false;" >Clear</a>
 				</td>
 		</s:if>
 		<s:if test='jokenFlg == "1"'>
@@ -353,7 +361,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 			<s:if test='jokenFlg != "1"'>
 			<td class="pupControlItem"><nobr>&nbsp;申請者</nobr></td>
 				<td>
-					 <s:textfield readonly="true" Style="width:100pt" id="reqJgiName" name="reqJgiName" cssClass="mediumGray"/>
+					 <s:textfield readonly="true" Style="ime-mode:active" id="reqJgiName" name="reqJgiName" cssClass="mediumGray"/>
 				</td>
 				</s:if>
 			<s:if test='jokenFlg == "1"'>

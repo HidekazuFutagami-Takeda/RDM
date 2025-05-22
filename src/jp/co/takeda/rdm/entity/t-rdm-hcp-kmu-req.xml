@@ -436,28 +436,20 @@
     <select id="selectNd101DelData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
 			SELECT REQ_KNR.REQ_ID
 			FROM
-			    T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
-			INNER JOIN
 			    T_RDM_REQ_KNR REQ_KNR --申請管理
-			ON
-			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID
+			WHERE 1 = 1
+			AND REQ_KNR.DOC_NO = #{inDocNo}
 			AND REQ_KNR.REQ_TYPE IN ('33')
 			AND REQ_KNR.REQ_STS IN ('03','13')
-			WHERE 1 = 1
-			and KMU_REQ.DOC_NO = #{inDocNo}
     </select>
     <select id="selectNd101DelAppdData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
 			SELECT REQ_KNR.REQ_ID
 			FROM
-			    T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
-			INNER JOIN
 			    T_RDM_REQ_KNR REQ_KNR --申請管理
-			ON
-			REQ_KNR.REQ_ID = KMU_REQ.REQ_ID
+			WHERE 1 = 1
+			AND REQ_KNR.DOC_NO = #{inDocNo}
 			AND REQ_KNR.REQ_TYPE IN ('33')
 			AND REQ_KNR.REQ_STS IN ('04','14')
-			WHERE 1 = 1
-			and KMU_REQ.DOC_NO = #{inDocNo}
     </select>
     <select id="selectNd101DupKmuData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
 			SELECT REQ_KNR.REQ_ID

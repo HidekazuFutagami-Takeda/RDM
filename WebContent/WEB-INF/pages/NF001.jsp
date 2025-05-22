@@ -91,12 +91,12 @@
 			document.fm1.distCode.value = distCode;
 			document.fm1.upSosCd.value = upSosCode;
 
-			if(bumonRank == null || bumonRank == "3"){
-				document.getElementById("tantoButton").disabled = false;
-			} else if(bumonRank == "2"){
-				document.getElementById("tantoButton").disabled = true;
-				tantoClearBtn();
-			}
+// 			if(bumonRank == null || bumonRank == "3"){
+// 				document.getElementById("tantoButton").disabled = false;
+// 			} else if(bumonRank == "2"){
+// 				document.getElementById("tantoButton").disabled = true;
+// 				tantoClearBtn();
+// 			}
 			sosChange();
 			addrCodePrefChange();
 			sosAddrChange();

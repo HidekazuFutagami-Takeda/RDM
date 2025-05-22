@@ -335,6 +335,7 @@ public class ND313Service extends BaseService {
 			tRdmReqKnrInsData.setReqComment(dto.getReqComment());// 申請者コメント
 			tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
 			tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());// 医師固定C
+			tRdmReqKnrInsData.setDocNo(dto.getDocNo());
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
 			tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
@@ -535,6 +536,7 @@ public class ND313Service extends BaseService {
 	        	tRdmReqKnrInsData.setReqComment(dto.getReqComment());
 	        	tRdmReqKnrInsData.setFbReqFlg("0");
 	        	tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());
+	        	tRdmReqKnrInsData.setDocNo(dto.getDocNo());
 	        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
 	        	tRdmReqKnrInsData.setInsShaId(String.valueOf(loginInfo.getJgiNo()));
 	        	tRdmReqKnrInsData.setUpdShaYmd(systemDate);

@@ -411,7 +411,8 @@ public class ND104Service extends BaseService {
 			tRdmReqKnrInsData.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
 			tRdmReqKnrInsData.setReqComment(dto.getReqComment());// 申請者コメント
 			tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
-			tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());// 医師固定C
+			tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());
+			tRdmReqKnrInsData.setDocNo(dto.getDocNo());// 医師固定C
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
 			tRdmReqKnrInsData.setInsShaId(String.valueOf(loginInfo.getJgiNo()));
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);

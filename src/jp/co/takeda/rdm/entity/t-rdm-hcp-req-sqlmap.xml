@@ -2046,7 +2046,7 @@
 		, MST.DOC_NO AS MST_DOC_NO
 		, MST.DOC_KANJ AS MST_DOC_KANJ
 		, MST.DOC_KANA AS MST_DOC_KANA
-		, HCP.DOC_KANJ_SEI  -- 医師_申請管理.氏名（漢字）姓
+		, MST.DOC_KANJ_SEI  -- 医師_申請管理.氏名（漢字）姓
 		, HCP.DOC_KANJ_MEI  -- 医師_申請管理.氏名（漢字）名
 		, MST.DEL_REASON
 		, CDMDRE.VALUE1_KANJ AS DEL_REASON_NM

@@ -223,6 +223,36 @@
 			REQ_KNR.REQ_ID = #{paramReqId}--申請ID
 
 		</if>
+		<if test="errorCheckFlg == 5">
+			<!-- 勤務先が登録済勤務先と同一 -->
+		SELECT
+			DOC_NO
+		FROM
+			M_RDM_HCP_WORK --医師_勤務先情報
+		WHERE
+			DOC_NO = #{docNo} --医師固定コード　画面隠し項目
+		AND
+			INS_NO = #{insNoSk} --施設固定コード(異動先) 画面隠し項目
+		</if>
+		<if test="errorCheckFlg == 6">
+			<!-- 勤務先が廃院 -->
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCO_REQ HCO --施設_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCO.REQ_ID
+			WHERE KNR.REQ_TYPE = '03'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCO.INS_NO = #{insNoSk}
+			UNION
+			SELECT '0'
+			FROM
+			M_RDM_HCO_MST HCO --施設_基本情報
+			WHERE HCO.DEL_KBN IN ('1','2','3')
+			AND HCO.INS_NO = #{insNoSk}
+		</if>
     </select>
 
     <delete id="deleteRdmHcpKmu" parameterType="jp.co.takeda.rdm.entity.join.SelectHcpKmuReqNewEntity">

@@ -308,7 +308,14 @@ public class ND311Action extends BaseAction<ND311DTO> {
 			if (Objects.deepEquals(dto.getErrorCheckFlg(), "3")) {
 				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.I010);// 廃業・死亡の申請がされています。よろしいですか？
 			}
-
+			//既存の勤務先施設と同じ
+			if (Objects.deepEquals(dto.getErrorCheckFlg(), "4")) {
+				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W069);// 選択した施設は勤務先として存在します。
+			}
+			//廃院
+			if (Objects.deepEquals(dto.getErrorCheckFlg(), "5")) {
+				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W062);// 勤務先に廃院が選択されています。
+			}
 			dto.setMsgStr(tmpMsgStr);
 		}
 

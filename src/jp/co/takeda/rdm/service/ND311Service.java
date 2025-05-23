@@ -358,6 +358,28 @@ public class ND311Service extends BaseService {
 			return outdto;
 		}
 
+		// 一時保存後、「申請画面へ」ボタン押下時に勤務先が登録済勤務先と同一の場合
+		paramEntity.setErrorCheckFlg("5");
+		List<SelectHcpKmuReqNewEntity> dupin = dao.select(paramEntity);
+
+		// 整合性チェックエラーがある場合
+		if (!CollectionUtils.isEmpty(dupin)) {
+			// 整合性チェックエラーを定義
+			dto.setErrorCheckFlg("4");
+			return outdto;
+		}
+
+		// 一時保存後、「申請画面へ」ボタン押下時に勤務先が廃院になっている場合
+		paramEntity.setErrorCheckFlg("6");
+		List<SelectHcpKmuReqNewEntity> haiin = dao.select(paramEntity);
+
+		// 整合性チェックエラーがある場合
+		if (!CollectionUtils.isEmpty(haiin)) {
+			// 整合性チェックエラーを定義
+			dto.setErrorCheckFlg("5");
+			return outdto;
+		}
+
 		// エラーチェック済
 		dto.setErrorCheckFlg("1");
 

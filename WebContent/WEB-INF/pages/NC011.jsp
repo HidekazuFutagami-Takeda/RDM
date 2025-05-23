@@ -611,10 +611,10 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 														style="width: 140px; border: none;">申請ステータス <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqTypeAscClass%>" href=""
-														onclick="NC011Sort(6);return false;">▲</a> <span
+														onclick="NC011Sort(8);return false;">▲</a> <span
 														style="font-size: 1pt;"> </span> <a
 														class="<%=reqTypeDescClass%>" href=""
-														onclick="NC011Sort(7);return false;">▼</a>
+														onclick="NC011Sort(9);return false;">▼</a>
 													</td>
 													<td class="comTableTitle container"
 														style="width: 50px; border: none;">種別 <span

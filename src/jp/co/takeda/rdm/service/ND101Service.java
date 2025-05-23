@@ -886,6 +886,27 @@ public class ND101Service extends BaseService {
 					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W067) + "\n";
 					errChk = true;
 				}
+			}else {
+				//勤務先情報更新の場合
+				// 変更前と比べて変更箇所が無い(※医療機関への異動は上のチェックで施設が変わってなければNG)
+				//所属部科/役職/勤務形態/薬審メンバー区分/大学職位
+				String pre = StringUtils.nvl(indto.getPreDeptCode(),"")
+						+ StringUtils.nvl(indto.getPreTitleCode(),"")
+						+ StringUtils.nvl(indto.getPreJobForm(),"")
+						+ StringUtils.nvl(indto.getPreDcc(),"")
+						+ StringUtils.nvl(indto.getPreUnivPosCode(),"");
+
+				String post = StringUtils.nvl(indto.getPostDeptCode(),"")
+						+ StringUtils.nvl(indto.getPostTitleCode(),"")
+						+ StringUtils.nvl(indto.getPostJobForm(),"")
+						+ StringUtils.nvl(indto.getPostDcc(),"")
+						+ StringUtils.nvl(indto.getPostUnivPosCode(),"");
+
+				if(pre.equals(post)) {
+					//勤務先情報が変更されていません。
+					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W045) + "\n";
+					errChk = true;
+				}
 			}
 
 			// 医療機関への異動の場合

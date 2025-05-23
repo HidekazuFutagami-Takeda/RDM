@@ -273,10 +273,10 @@ public class ND311Service extends BaseService {
 
 			tRdmHcpKmuReqInsData.setReqId(reqId);
 			tRdmHcpKmuReqInsData.setDocNo(dto.getDocNo());
-			tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), "Z"));
+			tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), ""));
+			tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), ""));
+			tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), ""));
+			tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), ""));
 			tRdmHcpKmuReqInsData.setUnivPosCodeAf(dto.getUnivPosCodeAf());
 			tRdmHcpKmuReqInsData.setTitleCodeAf(dto.getTitleCodeAf());
 			tRdmHcpKmuReqInsData.setDccTypeAf(dto.getDccTypeAf());
@@ -292,11 +292,11 @@ public class ND311Service extends BaseService {
 		} else {// 勤務先申請管理 更新
 			TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
 			tRdmHcpKmuReqUpdData.setReqId(reqId);
-			tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), "Z"));
-			tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), "Z"));
+			tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), ""));
+			tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), ""));
+			tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), ""));
+			tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), ""));
+			tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), ""));
 			tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(dto.getUnivPosCodeAf(), ""));
 			tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(dto.getTitleCodeAf(), ""));
 			tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(dto.getDccTypeAf(), ""));
@@ -541,21 +541,21 @@ public class ND311Service extends BaseService {
 			// 申請管理 却下処理
 			dao.update(tRdmReqKnrUpdData);
 
-			TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
-			tRdmHcpKmuReqUpdData.setReqId(dto.getParamReqId());
-			tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), "Z"));
-			tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), "Z"));
-			tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(dto.getUnivPosCodeAf(), ""));
-			tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(dto.getTitleCodeAf(), ""));
-			tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(dto.getDccTypeAf(), ""));
-			tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
-			tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
-			tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
-
-			dao.update(tRdmHcpKmuReqUpdData);
+//			TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
+//			tRdmHcpKmuReqUpdData.setReqId(dto.getParamReqId());
+//			tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), "Z"));
+//			tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), "Z"));
+//			tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), "Z"));
+//			tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), "Z"));
+//			tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), "Z"));
+//			tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(dto.getUnivPosCodeAf(), ""));
+//			tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(dto.getTitleCodeAf(), ""));
+//			tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(dto.getDccTypeAf(), ""));
+//			tRdmHcpKmuReqUpdData.setUltInsNo(dto.getUltInsNo());
+//			tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);
+//			tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+//
+//			dao.update(tRdmHcpKmuReqUpdData);
 		} else if (Objects.deepEquals(dto.getProcessFlg(), "2")) {
 			// 申請管理 承認処理
 			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateTRdmReqKnrData");

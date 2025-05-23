@@ -419,11 +419,11 @@ public class ND103Service extends BaseService {
 
 			tRdmHcpKmuReqInsData.setReqId(dto.getParamReqId());
 			tRdmHcpKmuReqInsData.setDocNo(dto.getDocNo());
-			tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), "Z"));
-			tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), "Z"));
+			tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), ""));
+			tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), ""));
+			tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), ""));
+			tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), ""));
+			tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), ""));
 			tRdmHcpKmuReqInsData.setUnivPosCodeAf(dto.getUnivPosCodeAf());
 			tRdmHcpKmuReqInsData.setTitleCodeAf(dto.getTitleCodeAf());
 			tRdmHcpKmuReqInsData.setDccTypeAf(dto.getDccTypeAf());
@@ -439,11 +439,11 @@ public class ND103Service extends BaseService {
 		} else {// 更新
 			TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND101Data");
 			tRdmHcpKmuReqUpdData.setReqId(dto.getParamReqId());
-			tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), "Z"));
-			tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), "Z"));
-			tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), "Z"));
+			tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(dto.getInsNoSk(), ""));
+			tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(dto.getJobFormAf(), ""));
+			tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(dto.getDeptCodeAf(), ""));
+			tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(dto.getDeptKj(), ""));
+			tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(dto.getDeptKn(), ""));
 			tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(dto.getUnivPosCodeAf(), ""));
 			tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(dto.getTitleCodeAf(), ""));
 			tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(dto.getDccTypeAf(), ""));

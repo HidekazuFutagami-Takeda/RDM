@@ -909,6 +909,21 @@ public class ND101Service extends BaseService {
 				}
 			}
 
+			SelectNd101MainDataEntity paramEntity = new SelectNd101MainDataEntity();
+			//勤務先が廃院に変わってないか
+			paramEntity.setSqlId("selectNd101DelInsData");
+			if(indto.getMovemedEditFlg().equals("0")) {// 医療機関への異動の場合
+				paramEntity.setInInsNo(indto.getPostInsNo());
+			} else {//勤務先情報更新の場合
+				paramEntity.setInInsNo(indto.getPreInsNo());
+			}
+			List<SelectNd101MainDataEntity> mainDataChkList = dao.select(paramEntity);
+			if(!mainDataChkList.isEmpty()) {
+				// 勤務先に廃院が選択されています。
+				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W062) + "\n";
+				errChk = true;
+			}
+
 			// 医療機関への異動の場合
 			if (indto.getMovemedEditFlg().equals("0")) {
 				if (indto.getPostHoInsType().equals(RdmConstantsData.HCO_HO_INS_TYPE_1)
@@ -933,8 +948,6 @@ public class ND101Service extends BaseService {
 
 			// 整合性チェック
 			// 同じ医師で同じ施設に対しての申請がすでに存在している場合
-
-			SelectNd101MainDataEntity paramEntity = new SelectNd101MainDataEntity();
 			paramEntity.setSqlId("selectNd101DupData");
 			paramEntity.setInDocNo(indto.getDocNo());
 			paramEntity.setInInsNo(indto.getPreInsNo());

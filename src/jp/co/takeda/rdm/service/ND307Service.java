@@ -1103,9 +1103,21 @@ public class ND307Service extends BaseService {
 		}
 
 		//		整合性チェック                              廃院を勤務先施設に選択して申請している場合
-		// 同じ医師で同じ施設に対しての申請がすでに存在している場合
-
 		SelectNd101MainDataEntity paramEntity = new SelectNd101MainDataEntity();
+		paramEntity.setSqlId("selectNd101DelInsData");
+		if(indto.getMovemedEditFlg().equals("0")) {// 医療機関への異動の場合
+			paramEntity.setInInsNo(indto.getPostInsNo());
+		} else {//勤務先情報更新の場合
+			paramEntity.setInInsNo(indto.getPreInsNo());
+		}
+		List<SelectNd101MainDataEntity> mainDataChkList = dao.select(paramEntity);
+		if(!mainDataChkList.isEmpty()) {
+			// 勤務先に廃院が選択されています。
+			msgStr += loginInfo.getMsgData(RdmConstantsData.W062) + "\n";
+			errChk = true;
+		}
+
+		// 同じ医師で同じ施設に対しての申請がすでに存在している場合
 		paramEntity.setSqlId("selectNd101DupData");
 		paramEntity.setInDocNo(indto.getDocNo());
 		paramEntity.setInInsNo(indto.getPreInsNo());

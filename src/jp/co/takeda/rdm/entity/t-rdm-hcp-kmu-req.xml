@@ -465,6 +465,24 @@
 			and KMU_REQ.DOC_NO = #{inDocNo}
 			and KMU_REQ.INS_NO_MT = #{inInsNo}
     </select>
+        <select id="selectNd101DelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCO_REQ HCO --施設_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCO.REQ_ID
+			WHERE KNR.REQ_TYPE = '03'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCO.INS_NO = #{inInsNo}
+			UNION
+			SELECT '0'
+			FROM
+			M_RDM_HCO_MST HCO --施設_基本情報
+			WHERE HCO.DEL_KBN IN ('1','2','3')
+			AND HCO.INS_NO = #{inInsNo}
+    </select>
 	<update id="updateND102Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity">
 	UPDATE
 		T_RDM_HCP_KMU_REQ

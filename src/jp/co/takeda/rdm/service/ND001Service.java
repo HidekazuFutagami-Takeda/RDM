@@ -245,8 +245,10 @@ public class ND001Service extends BaseService {
 //                data.setUltInsName(StringUtils.replaceString(entity.getUltInsName(), "CHR(13)", "CHR(13)"));
             	data.setUltInsName(entity.getUltInsName());
 			}
-            if(entity.getDob().equals("0000/00/00")) {
-            	data.setDob("");
+            if(entity.getDob() != null) {
+	            if(entity.getDob().equals("0000/00/00")) {
+	            	data.setDob("");
+	            }
             }
 			// アクションボタンフラグ設定
 			// 新規

@@ -117,7 +117,8 @@ function jgiNameClear() {
 
 	var jgiName = document.getElementById("jgiName");
 	jgiName.value = '';
-	document.fm1.kensakuShinseiBrCode.value = 'kensakuJgiNo';
+	//document.fm1.kensakuShinseiBrCode.value = 'kensakuJgiNo';
+	document.fm1.kensakuJgiNo.value = '';
 
 }
 

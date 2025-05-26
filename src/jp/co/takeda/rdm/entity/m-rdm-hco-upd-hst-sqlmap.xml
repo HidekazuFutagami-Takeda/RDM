@@ -235,30 +235,6 @@
 	ON
 		HCO_MST.INS_NO = HCP_WORK.INS_NO --施設固定コード
 	<where>
-		<if test="jokenSetCd == 0">
-			<if test="mrJgiNo != 0">
-			AND
-				DOC_TRT.JGI_NO = #{mrJgiNo}
-			</if>
-			<if test="mrTrtCd != null">
-			AND
-				DOC_TRT.TRT_CD = #{mrTrtCd}
-			</if>
-			<if test="mrJgiNo != 0">
-			AND
-				UPD_HST.REQ_JGI_NO = #{mrJgiNo}
-			</if>
-			<if test="mrDistCode != null">
-			AND
-				UPD_HST.REQ_DIST_CODE = #{mrDistCode}
-			</if>
-			<if test="mrBrCode != null">
-			AND
-				UPD_HST.REQ_BR_CODE = #{mrBrCode}
-			</if>
-		</if>
-
-		<if test="jokenSetCd == 1">
 			<if test="kensakuTantouDistCode != null">
 			AND
 				SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -283,7 +259,6 @@
 			AND
 				UPD_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 			</if>
-		</if>
 
 		<if test="kensakuDocKanj != null">
 		AND
@@ -407,30 +382,6 @@
 		ON
 			HCO_MST.INS_NO = DOC_TRT.INS_NO --施設固定コード
 		<where>
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					SOCIETY_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					SOCIETY_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					SOCIETY_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -455,8 +406,6 @@
 				AND
 					SOCIETY_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
-
 			<if test="kensakuDocKanj != null">
 			AND
 				HCP_MST.DOC_KANJ LIKE '%' ||#{kensakuDocKanj}|| '%'
@@ -578,31 +527,6 @@
 		ON
 			HCO_MST.INS_NO = DOC_TRT.INS_NO --施設固定コード
 		<where>
-
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					PUBLIC_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					PUBLIC_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					PUBLIC_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -627,8 +551,6 @@
 				AND
 					PUBLIC_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
-
 			<if test="kensakuDocKanj != null">
 			AND
 				HCP_MST.DOC_KANJ LIKE '%' ||#{kensakuDocKanj}|| '%'
@@ -751,30 +673,6 @@
 			AND
 				(REQ_KNR.REQ_TYPE = '31' OR REQ_KNR.REQ_TYPE = '41')
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -799,7 +697,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -929,30 +826,6 @@
 			AND
 				(REQ_KNR.REQ_TYPE = '51' OR REQ_KNR.REQ_TYPE = '42')
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -977,7 +850,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -1094,30 +966,6 @@
 			AND
 				REQ_KNR.REQ_TYPE = '43'
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -1142,7 +990,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -1259,30 +1106,6 @@
 			AND
 				REQ_KNR.REQ_TYPE = '44'
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -1307,7 +1130,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -1424,30 +1246,6 @@
 			AND
 				REQ_KNR.REQ_TYPE = '33'
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -1472,7 +1270,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -1604,30 +1401,6 @@
 			AND
 				(REQ_KNR.REQ_TYPE = '31' OR REQ_KNR.REQ_TYPE = '41')
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -1652,7 +1425,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -1772,30 +1544,6 @@
 			AND
 				(REQ_KNR.REQ_TYPE = '51' OR REQ_KNR.REQ_TYPE = '42')
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -1820,7 +1568,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -1938,30 +1685,6 @@
 			AND
 				REQ_KNR.REQ_TYPE = '43'
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -1986,7 +1709,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -2104,30 +1826,6 @@
 			AND
 				REQ_KNR.REQ_TYPE = '44'
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -2152,7 +1850,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND
@@ -2270,30 +1967,6 @@
 			AND
 				REQ_KNR.REQ_TYPE = '33'
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					DOC_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					DOC_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					KMU_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					KMU_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					KMU_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -2318,7 +1991,6 @@
 				AND
 					KMU_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuDocKanj != null">
 			AND

@@ -385,30 +385,6 @@
 				HCO_UPD_HST.INS_KANA LIKE '%' ||#{kensakuInsKana}|| '%'
 			</if>
 
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					INS_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					INS_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					HCO_UPD_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					HCO_UPD_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					HCO_UPD_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -433,7 +409,6 @@
 				AND
 					HCO_UPD_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuInsNo != null">AND HCO_UPD_HST.INS_NO = #{kensakuInsNo}</if>
 			<if test="kensakuUltInsNo != null">AND HCO_UPD_HST.ULT_INS_NO = #{kensakuUltInsNo}</if>
@@ -600,30 +575,6 @@
 			AND
 				HCO_UPD_HST.INS_KANA LIKE '%' ||#{kensakuInsKana}|| '%'
 			</if>
-			<if test="jokenSetCd == 0">
-				<if test="mrJgiNo != 0">
-				AND
-					INS_TRT.JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrTrtCd != null">
-				AND
-					INS_TRT.TRT_CD = #{mrTrtCd}
-				</if>
-				<if test="mrJgiNo != 0">
-				AND
-					HCO_UPD_HST.REQ_JGI_NO = #{mrJgiNo}
-				</if>
-				<if test="mrDistCode != null">
-				AND
-					HCO_UPD_HST.REQ_DIST_CODE = #{mrDistCode}
-				</if>
-				<if test="mrBrCode != null">
-				AND
-					HCO_UPD_HST.REQ_BR_CODE = #{mrBrCode}
-				</if>
-			</if>
-
-			<if test="jokenSetCd == 1">
 				<if test="kensakuTantouDistCode != null">
 				AND
 					SOS_MST.DIST_CODE = #{kensakuTantouDistCode}
@@ -648,7 +599,6 @@
 				AND
 					HCO_UPD_HST.REQ_JGI_NAME LIKE '%' || #{kensakuReqJgiName} || '%'
 				</if>
-			</if>
 
 			<if test="kensakuInsNo != null">AND HCO_UPD_HST.INS_NO = #{kensakuInsNo}</if>
 			<if test="kensakuUltInsNo != null">AND HCO_UPD_HST.ULT_INS_NO = #{kensakuUltInsNo}</if>

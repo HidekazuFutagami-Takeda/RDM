@@ -353,63 +353,63 @@
 	<tr>
 		<%-- 担当者組織 --%>
 		<td class="pupControlItem"><nobr>担当者組織
-		   	<s:if test="%{jokenSetCd == 0}">
-		   		<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-		   	</s:if>
-		   	<s:else>
+<%-- 		   	<s:if test="%{jokenSetCd == 0}"> --%>
+<!-- 		   		<input id="sosButton1" class="comButton" type="button" value="選択" disabled /> -->
+<%-- 		   	</s:if> --%>
+<%-- 		   	<s:else> --%>
 		   		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(1);" />
-		   	</s:else>
+<%-- 		   	</s:else> --%>
 		   </nobr>
 		</td>
 		<td>
-			<s:if test="%{jokenSetCd == 0}">
-				<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-		          	&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-			</s:if>
-			<s:else>
+<%-- 			<s:if test="%{jokenSetCd == 0}"> --%>
+<%-- 				<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" /> --%>
+<!-- 		          	&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a> -->
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
 				<s:textfield id="tantoSosName" name="tantoSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 	          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoSosClear();return false;">Clear</a>
-			</s:else>
+<%-- 			</s:else> --%>
 		</td>
 		<%-- 担当者 --%>
 		<td class="pupControlItem"><nobr>担当者
-		   <s:if test="%{jokenSetCd == 0}">
-				<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-		   </s:if>
-		   <s:else>
+<%-- 		   <s:if test="%{jokenSetCd == 0}"> --%>
+<!-- 				<input id="sosButton1" class="comButton" type="button" value="選択" disabled /> -->
+<%-- 		   </s:if> --%>
+<%-- 		   <s:else> --%>
 		   		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="tantoPopBtn();" />
-		   </s:else>
+<%-- 		   </s:else> --%>
 		   </nobr>
 		</td>
 		<td>
-			<s:if test="%{jokenSetCd == 0}">
-				<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-	          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-		   </s:if>
-		   <s:else>
+<%-- 			<s:if test="%{jokenSetCd == 0}"> --%>
+<%-- 				<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  /> --%>
+<!-- 	          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a> -->
+<%-- 		   </s:if> --%>
+<%-- 		   <s:else> --%>
 		   		<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 	          		&nbsp;<a href="#" class="comMiniLink" onClick="tantoClear();return false;">Clear</a>
-		   </s:else>
+<%-- 		   </s:else> --%>
 		</td>
 		<%-- 申請者組織 --%>
 		<td class="pupControlItem"><nobr>申請者組織
-		   <s:if test="%{jokenSetCd == 0}">
-				<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-		   </s:if>
-		   <s:else>
+<%-- 		   <s:if test="%{jokenSetCd == 0}"> --%>
+<!-- 				<input id="sosButton1" class="comButton" type="button" value="選択" disabled /> -->
+<%-- 		   </s:if> --%>
+<%-- 		   <s:else> --%>
 		   		<input id="sosButton1" class="comButton" type="button" value="選択" onClick="soshikiPopBtn(2);" />
-		   </s:else>
+<%-- 		   </s:else> --%>
 		   </nobr>
 		</td>
 		<td>
-			<s:if test="%{jokenSetCd == 0}">
-				<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-	          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-		   </s:if>
-		   <s:else>
+<%-- 			<s:if test="%{jokenSetCd == 0}"> --%>
+<%-- 				<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" /> --%>
+<!-- 	          		&nbsp;<a href="#" class="comMiniLink" onClick="return false;">Clear</a> -->
+<%-- 		   </s:if> --%>
+<%-- 		   <s:else> --%>
 		   		<s:textfield id="reqSosName" name="reqSosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
 		          		&nbsp;<a href="#" class="comMiniLink" onClick="reqSosClear();return false;">Clear</a>
-		   </s:else>
+<%-- 		   </s:else> --%>
 		</td>
 	</tr>
 	<tr>
@@ -429,12 +429,12 @@
 		<td class="pupControlItem"><nobr>申請者</nobr>
 		</td>
 		<td>
-			<s:if test="%{jokenSetCd == 0}">
-				<s:textfield id="kensakuReqJgiNameUser" name="kensakuReqJgiName" size="20" maxlength="128"  />
-		   </s:if>
-		   <s:else>
+<%-- 			<s:if test="%{jokenSetCd == 0}"> --%>
+<%-- 				<s:textfield id="kensakuReqJgiNameUser" name="kensakuReqJgiName" size="20" maxlength="128"  /> --%>
+<%-- 		   </s:if> --%>
+<%-- 		   <s:else> --%>
 		   	<s:textfield id="kensakuReqJgiName" name="kensakuReqJgiName" size="20" maxlength="128" />
-		   </s:else>
+<%-- 		   </s:else> --%>
 		</td>
 	</tr>
 	<tr>

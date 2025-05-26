@@ -93,8 +93,8 @@ public class NF501Service extends BaseService {
 		// 施設一覧検索件数取得の検索条件の設定
 		SelectHcoUpdHstListEntity paramEntity = new SelectHcoUpdHstListEntity();
 
-		// 条件セット
-		paramEntity.setJokenSetCd(dto.getJokenSetCd());
+//		// 条件セット
+//		paramEntity.setJokenSetCd(dto.getJokenSetCd());
 
 		// 検索条件_従業員番号(管理者)
 		if (StringUtils.isEmpty(dto.getKensakuJgiNo())) {
@@ -132,29 +132,29 @@ public class NF501Service extends BaseService {
 		}
 		paramEntity.setKensakuReqJgiName(dto.getKensakuReqJgiName());
 
-		// 従業員番号(MR)
-		if (StringUtils.isEmpty(dto.getMrJgiNo())) {
-			dto.setMrJgiNo(0);
-		}
-		paramEntity.setMrJgiNo(dto.getMrJgiNo());
-
-		// 医薬支店C_申請者所属リージョン(MR)
-		if (StringUtils.isEmpty(dto.getMrBrCode())) {
-			dto.setMrBrCode(null);
-		}
-		paramEntity.setMrBrCode(dto.getMrBrCode());
-
-		// 医薬営業所C_申請者所属エリア(MR)
-		if (StringUtils.isEmpty(dto.getMrDistCode())) {
-			dto.setMrDistCode(null);
-		}
-		paramEntity.setMrDistCode(dto.getMrDistCode());
-
-		// 領域コード(MR)
-		if (StringUtils.isEmpty(dto.getMrTrtCd())) {
-			dto.setMrTrtCd(null);
-		}
-		paramEntity.setMrTrtCd(dto.getMrTrtCd());
+//		// 従業員番号(MR)
+//		if (StringUtils.isEmpty(dto.getMrJgiNo())) {
+//			dto.setMrJgiNo(0);
+//		}
+//		paramEntity.setMrJgiNo(dto.getMrJgiNo());
+//
+//		// 医薬支店C_申請者所属リージョン(MR)
+//		if (StringUtils.isEmpty(dto.getMrBrCode())) {
+//			dto.setMrBrCode(null);
+//		}
+//		paramEntity.setMrBrCode(dto.getMrBrCode());
+//
+//		// 医薬営業所C_申請者所属エリア(MR)
+//		if (StringUtils.isEmpty(dto.getMrDistCode())) {
+//			dto.setMrDistCode(null);
+//		}
+//		paramEntity.setMrDistCode(dto.getMrDistCode());
+//
+//		// 領域コード(MR)
+//		if (StringUtils.isEmpty(dto.getMrTrtCd())) {
+//			dto.setMrTrtCd(null);
+//		}
+//		paramEntity.setMrTrtCd(dto.getMrTrtCd());
 
 		// 検索条件_申請者
 		if (StringUtils.isEmpty(dto.getKensakuReqJgiName())) {
@@ -872,8 +872,8 @@ public class NF501Service extends BaseService {
 		// 領域別担当者の検索条件の設定
 		SelectMainInsListEntity paramEntity = new SelectMainInsListEntity();
 
-		// 条件セット
-		paramEntity.setJokenSetCd(dto.getJokenSetCd());
+//		// 条件セット
+//		paramEntity.setJokenSetCd(dto.getJokenSetCd());
 
 		// 検索条件_従業員番号(管理者)
 		if (StringUtils.isEmpty(dto.getKensakuJgiNo())) {
@@ -911,29 +911,29 @@ public class NF501Service extends BaseService {
 		}
 		paramEntity.setKensakuReqJgiName(dto.getKensakuReqJgiName());
 
-		// 従業員番号(MR)
-		if (StringUtils.isEmpty(dto.getMrJgiNo())) {
-			dto.setMrJgiNo(0);
-		}
-		paramEntity.setMrJgiNo(dto.getMrJgiNo());
-
-		// 医薬支店C_申請者所属リージョン(MR)
-		if (StringUtils.isEmpty(dto.getMrBrCode())) {
-			dto.setMrBrCode(null);
-		}
-		paramEntity.setMrBrCode(dto.getMrBrCode());
-
-		// 医薬営業所C_申請者所属エリア(MR)
-		if (StringUtils.isEmpty(dto.getMrDistCode())) {
-			dto.setMrDistCode(null);
-		}
-		paramEntity.setMrDistCode(dto.getMrDistCode());
-
-		// 領域コード(MR)
-		if (StringUtils.isEmpty(dto.getMrTrtCd())) {
-			dto.setMrTrtCd(null);
-		}
-		paramEntity.setMrTrtCd(dto.getMrTrtCd());
+//		// 従業員番号(MR)
+//		if (StringUtils.isEmpty(dto.getMrJgiNo())) {
+//			dto.setMrJgiNo(0);
+//		}
+//		paramEntity.setMrJgiNo(dto.getMrJgiNo());
+//
+//		// 医薬支店C_申請者所属リージョン(MR)
+//		if (StringUtils.isEmpty(dto.getMrBrCode())) {
+//			dto.setMrBrCode(null);
+//		}
+//		paramEntity.setMrBrCode(dto.getMrBrCode());
+//
+//		// 医薬営業所C_申請者所属エリア(MR)
+//		if (StringUtils.isEmpty(dto.getMrDistCode())) {
+//			dto.setMrDistCode(null);
+//		}
+//		paramEntity.setMrDistCode(dto.getMrDistCode());
+//
+//		// 領域コード(MR)
+//		if (StringUtils.isEmpty(dto.getMrTrtCd())) {
+//			dto.setMrTrtCd(null);
+//		}
+//		paramEntity.setMrTrtCd(dto.getMrTrtCd());
 
 		// 検索条件_申請者
 		if (StringUtils.isEmpty(dto.getKensakuReqJgiName())) {

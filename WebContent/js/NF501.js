@@ -124,7 +124,7 @@ function pltPage( pageCntCur ){
  */
 function clearText() {
 
-	if(document.fm1.jokenSetCd.value != 0){
+	//if(document.fm1.jokenSetCd.value != 0){
 		// 管理者権限のみ組織担当者をクリア
 		document.fm1.tantoBumonRank.value = "";
 		document.fm1.tantoSosName.value = "";
@@ -139,7 +139,7 @@ function clearText() {
 		document.fm1.kensakuShinseiDistCode.value = "";
 		document.fm1.kensakuJgiNo.value = "";
 		document.fm1.jgiName.value = "";
-	}
+	//}
 
 	var kensakuInsKanj = document.getElementById("kensakuInsKanj");
 	kensakuInsKanj.value = '';

@@ -381,60 +381,60 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 	<tr>
 		<%-- 担当者組織 --%>
 		<td class="pupControlItem"><nobr>担当者組織
-			<s:if test="%{jokenSetCd == 1}">
+<%-- 			<s:if test="%{jokenSetCd == 1}"> --%>
 				<input id="sosButton1" class="comButton" type="button" value="選択" onClick="sosNamePop();" />
-			</s:if>
-			<s:else>
-				<input id="sosButton1" class="comButton" type="button" value="選択"   disabled />
-			</s:else>
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
+<!-- 				<input id="sosButton1" class="comButton" type="button" value="選択"   disabled /> -->
+<%-- 			</s:else> --%>
 		</nobr></td>
 		<td>
-			<s:if test="%{jokenSetCd == 1}">
+<%-- 			<s:if test="%{jokenSetCd == 1}"> --%>
 				<s:textfield id="sosName" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
           		<a href="#" class="comMiniLink" onClick="sosNameClear();">Clear</a>
-			</s:if>
-			<s:else>
-				<s:textfield id="" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" />
-          		<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-			</s:else>
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
+<%-- 				<s:textfield id="" name="sosName" size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true" /> --%>
+<!--           		<a href="#" class="comMiniLink" onClick="return false;">Clear</a> -->
+<%-- 			</s:else> --%>
 		</td>
 		<%-- 担当者 --%>
 		<td class="pupControlItem"><nobr>担当者
-			<s:if test="%{jokenSetCd == 1}">
+<%-- 			<s:if test="%{jokenSetCd == 1}"> --%>
 				<input id="sosButton1" class="comButton" type="button" value="選択" onClick="jgiNamePop();" />
-			</s:if>
-			<s:else>
-				<input id="sosButton1" class="comButton" type="button" value="選択" onClick=""  disabled/>
-			</s:else>
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
+<!-- 				<input id="sosButton1" class="comButton" type="button" value="選択" onClick=""  disabled/> -->
+<%-- 			</s:else> --%>
 		</nobr></td>
 		<td>
-			<s:if test="%{jokenSetCd == 1}">
+<%-- 			<s:if test="%{jokenSetCd == 1}"> --%>
 				<s:textfield id="jgiName" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
           		<a href="#" class="comMiniLink" onClick="jgiNameClear();">Clear</a>
-			</s:if>
-			<s:else>
-				<s:textfield id="" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-          		<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-			</s:else>
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
+<%-- 				<s:textfield id="" name="jgiName"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  /> --%>
+<!--           		<a href="#" class="comMiniLink" onClick="return false;">Clear</a> -->
+<%-- 			</s:else> --%>
 		</td>
 		<%-- 申請者組織 --%>
 		<td class="pupControlItem"><nobr>申請者組織
-			<s:if test="%{jokenSetCd == 1}">
+<%-- 			<s:if test="%{jokenSetCd == 1}"> --%>
 				<input id="sosButton1" class="comButton" type="button" value="選択" onclick="shinseiSosNamePop();" />
-			</s:if>
-			<s:else>
-				<input id="sosButton1" class="comButton" type="button" value="選択" disabled />
-			</s:else>
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
+<!-- 				<input id="sosButton1" class="comButton" type="button" value="選択" disabled /> -->
+<%-- 			</s:else> --%>
 		</nobr></td>
 		<td>
-			<s:if test="%{jokenSetCd == 1}">
+<%-- 			<s:if test="%{jokenSetCd == 1}"> --%>
 				<s:textfield id="kensakuReqShz" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
 	          	<a href="#" class="comMiniLink" onClick="ReqShzClear();">Clear</a>
-			</s:if>
-			<s:else>
-				<s:textfield id="" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  />
-         		<a href="#" class="comMiniLink" onClick="return false;">Clear</a>
-			</s:else>
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
+<%-- 				<s:textfield id="" name="kensakuReqShz"  size="40" maxlength="40" cssStyle="width: 176px;" cssClass="mediumGray" readonly="true"  /> --%>
+<!--          		<a href="#" class="comMiniLink" onClick="return false;">Clear</a> -->
+<%-- 			</s:else> --%>
 		</td>
 	</tr>
 	<tr>
@@ -455,12 +455,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 		<%-- 申請者 --%>
 		<td class="pupControlItem"><nobr>申請者</nobr></td>
 		<td>
-			<s:if test="%{jokenSetCd == 1}">
+<%-- 			<s:if test="%{jokenSetCd == 1}"> --%>
 				<s:textfield id="kensakuReqJgiName" name="kensakuReqJgiName" size="20" maxlength="128" />
-			</s:if>
-			<s:else>
-				<s:textfield id="" name="kensakuReqJgiName" size="20" maxlength="128" cssClass="mediumGray" readonly="true"/>
-			</s:else>
+<%-- 			</s:if> --%>
+<%-- 			<s:else> --%>
+<%-- 				<s:textfield id="" name="kensakuReqJgiName" size="20" maxlength="128" cssClass="mediumGray" readonly="true"/> --%>
+<%-- 			</s:else> --%>
 		</td>
 	</tr>
 	<tr>

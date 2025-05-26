@@ -344,6 +344,11 @@
             FROM
              M_RDM_HCP_PUBLIC PUR -- 医師_公的機関情報
            WHERE DOC_NO = #{inDocNo}
+             AND NOT EXISTS (SELECT PUB_INSTITUTION_CD
+                               FROM T_RDM_HCP_PUBLIC_REQ REQ -- 医師_公的機関_申請管理
+                              WHERE REQ.REQ_ID = #{inReqId}
+                                AND REQ.PUB_INSTITUTION_CD = PUR.PUB_INSTITUTION_CD
+                            )
            UNION
           SELECT
              DOC_NO

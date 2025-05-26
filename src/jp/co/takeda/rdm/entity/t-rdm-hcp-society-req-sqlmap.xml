@@ -466,6 +466,11 @@
             FROM
              M_RDM_HCP_SOCIETY SOC -- 医師_所属学会情報
            WHERE DOC_NO = #{inDocNo}
+             AND NOT EXISTS (SELECT MEDICAL_SOCIETY_NM
+                               FROM T_RDM_HCP_SOCIETY_REQ REQ -- 医師_所属学会_申請管理
+                              WHERE REQ.REQ_ID = #{inReqId}
+                                AND REQ.MEDICAL_SOCIETY_NM = SOC.MEDICAL_SOCIETY_NM
+                            )
            UNION
           SELECT
              DOC_NO

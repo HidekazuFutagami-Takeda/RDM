@@ -541,6 +541,12 @@ public class HcoUpdHstDataList implements Serializable {
      * @generated
      */
     private String clitemListUpdFlg;
+
+    /**
+     * 削除フラグ更新フラグ
+     * @generated
+     */
+    private String delFlgUpdFlg;
     //更新フラグここまで
 
     /**
@@ -1671,6 +1677,14 @@ public class HcoUpdHstDataList implements Serializable {
 	}
 
 
+
+	public String getDelFlgUpdFlg() {
+		return delFlgUpdFlg;
+	}
+
+	public void setDelFlgUpdFlg(String delFlgUpdFlg) {
+		this.delFlgUpdFlg = delFlgUpdFlg;
+	}
 
 	public Integer getRecCnt() {
 		return recCnt;

@@ -123,6 +123,8 @@
         <result column="PUB_INSTPOS_ED_YMD" property="pubInstposEdYmd"/>
         <result column="PUB_INSTPOS_ED_YMD_UPD_FLG" property="pubInstposEdYmdUpdFlg"/>
 
+        <result column="DEL_FLG_UPD_FLG" property="delFlgUpdFlg"/>
+
     </resultMap>
     <resultMap id="SelectParamND501ResultMap" type="jp.co.takeda.rdm.entity.join.SelectParamND501Entity">
         <result column="PARAM_NAME" property="paramName"/>
@@ -213,6 +215,7 @@
 		,UPD_HST.APR_SHA_ID	--承認者氏名
 		,UPD_HST.REQ_CHL	--申請チャネル
 		,UPD_HST.REQ_ID	--申請ID
+		,UPD_HST.DEL_FLG_UPD_FLG  --削除フラグ更新フラグ
 	FROM
 		T_RDM_HCP_UPD_HST UPD_HST --医師_変更履歴
 	LEFT JOIN

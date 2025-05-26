@@ -609,6 +609,8 @@ public class NF501Service extends BaseService {
 			dataRecord.setInsOpenYmdUpdFlg(entity.getInsOpenYmdUpdFlg());
 			// 診療科目更新フラグ
 			dataRecord.setClitemListUpdFlg(entity.getClitemListUpdFlg());
+			// 削除フラグ更新フラグ
+			dataRecord.setDelFlgUpdFlg(entity.getDelFlgUpdFlg());
 
 			// リストにデータ追加
 			hcoUpdHstDataList.add(dataRecord);
@@ -1190,6 +1192,8 @@ public class NF501Service extends BaseService {
 			dataRecord.setMainInsNoUpdFlg(entity.getMainInsNoUpdFlg());
 			// 親施設名更新フラグ
 			dataRecord.setMainInsNmUpdFlg(entity.getMainInsNmUpdFlg());
+			// 削除フラグ更新フラグ
+			dataRecord.setDelFlgUpdFlg(entity.getDelFlgUpdFlg());
 
 			// リストにデータ追加
 			mainInsDataList.add(dataRecord);

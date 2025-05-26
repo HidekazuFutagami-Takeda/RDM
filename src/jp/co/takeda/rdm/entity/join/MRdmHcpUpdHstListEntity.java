@@ -909,6 +909,12 @@ public class MRdmHcpUpdHstListEntity extends BaseEntity implements Serializable 
     //公的機関ここまで
 
     /**
+     * 削除フラグ更新フラグ
+     * @generated
+     */
+    private String delFlgUpdFlg;
+
+    /**
      * レコード件数
      * @generated
      */
@@ -3102,6 +3108,21 @@ public class MRdmHcpUpdHstListEntity extends BaseEntity implements Serializable 
 	 */
 	public void setJokenSetCd(String jokenSetCd) {
 		this.jokenSetCd = jokenSetCd;
+	}
+
+	/**
+	 * MRdmHcpUpdHstListEntity.delFlgUpdFlgを設定
+	 * @return delFlgUpdFlg
+	 */
+	public String getDelFlgUpdFlg() {
+		return delFlgUpdFlg;
+	}
+
+	/**
+	 * @param delFlgUpdFlg セットする delFlgUpdFlg
+	 */
+	public void setDelFlgUpdFlg(String delFlgUpdFlg) {
+		this.delFlgUpdFlg = delFlgUpdFlg;
 	}
 
 

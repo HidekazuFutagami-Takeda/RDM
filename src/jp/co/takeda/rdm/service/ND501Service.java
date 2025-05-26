@@ -1524,6 +1524,7 @@ public class ND501Service extends BaseService {
             dataRecord.setReqChl(entity.getReqChl());
 
             dataRecord.setReqId(entity.getReqId());//申請ID
+            dataRecord.setDelFlgUpdFlg(entity.getDelFlgUpdFlg());//削除フラグ更新フラグ
 
             //リストにデータ追加
             hcoUpdHstDataList.add(dataRecord);

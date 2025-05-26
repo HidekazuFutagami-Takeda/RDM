@@ -760,6 +760,12 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
      * @generated
      */
     private String clitemListUpdFlg;
+
+    /**
+     * 削除フラグ更新フラグ
+     * @generated
+     */
+    private String delFlgUpdFlg;
     //更新フラグここまで
 
     /**
@@ -2112,4 +2118,18 @@ public class SelectHcoUpdHstListEntity extends BaseEntity implements Serializabl
 		this.jokenSetCd = jokenSetCd;
 	}
 
+	/**
+	 * SelectHcoUpdHstListEntity.delFlgUpdFlgを設定
+	 * @return jokenSetCd
+	 */
+	public String getDelFlgUpdFlg() {
+		return delFlgUpdFlg;
+	}
+
+	/**
+	 * @param delFlgUpdFlg セットする delFlgUpdFlg
+	 */
+	public void setDelFlgUpdFlg(String delFlgUpdFlg) {
+		this.delFlgUpdFlg = delFlgUpdFlg;
+	}
 }

@@ -683,7 +683,7 @@
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.hoInsTypeUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.hoInsTypeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].hoInsType" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -699,7 +699,7 @@
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insAbbrNameUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insAbbrNameUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insAbbrName" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -715,7 +715,7 @@
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insFormalNameUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insFormalNameUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insFormalName" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -731,7 +731,7 @@
 				            </s:if>
 				            <s:else><nobr>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insPcodeUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insPcodeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insPcode" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -747,7 +747,7 @@
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insAddrUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insAddrUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insAddr" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -763,7 +763,7 @@
 				            </s:if>
 				            <s:else><nobr>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insPhone1UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insPhone1UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insPhone1" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -779,7 +779,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insFax1UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insFax1UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insFax1" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -833,7 +833,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.ultInsNoUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.ultInsNoUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].ultInsNo" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -849,7 +849,7 @@
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.ultInsNoUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.ultInsNoUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].shisetsuNmRyaku" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -881,7 +881,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.pharmTypeUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.pharmTypeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].pharmType" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -897,7 +897,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insRankUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insRankUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insRank" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -913,7 +913,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.manageCdUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.manageCdUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].manageCd" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -929,7 +929,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.addrNamePrefUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.addrNamePrefUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].addrNamePref" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -945,7 +945,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.addrNameCityUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.addrNameCityUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].addrNameCity" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -961,7 +961,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.tkCityNameUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.tkCityNameUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].tkCityName" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -977,7 +977,7 @@
 				            </s:if>
 				            <s:else><nobr>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insPhone2UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insPhone2UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insPhone2" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -993,7 +993,7 @@
 				            </s:if>
 				            <s:else><nobr>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insFax2UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insFax2UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insFax2" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1009,7 +1009,7 @@
 				            </s:if>
 				            <s:else><nobr>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insUrlUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insUrlUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insUrl" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1025,7 +1025,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insUrlYmdUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insUrlYmdUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insUrlYmd" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1041,7 +1041,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.vacInsTypeUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.vacInsTypeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].vacInsType" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1057,7 +1057,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.vacVisitTypeUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.vacVisitTypeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].vacVisitType" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1074,7 +1074,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcntBaseUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcntBaseUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcntBase" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1090,7 +1090,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedsTotUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedsTotUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedsTot" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1106,7 +1106,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.medBedsTotUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.medBedsTotUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].medBedsTot" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1122,7 +1122,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcnt01UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcnt01UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcnt01" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1138,7 +1138,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcnt02UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcnt02UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcnt02" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1154,7 +1154,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcnt03UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcnt03UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcnt03" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1170,7 +1170,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcnt04UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcnt04UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcnt04" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1186,7 +1186,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcnt05UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcnt05UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcnt05" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1202,7 +1202,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcnt06UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcnt06UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcnt06" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1218,7 +1218,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.bedcnt07UpdFlg == 1}">
+				            	<s:if test="%{#rowBean.bedcnt07UpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].bedcnt07" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1234,7 +1234,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insOpenYmdUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insOpenYmdUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insOpenYear" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1250,7 +1250,7 @@
 				            </s:if>
 				            <s:else>
 									<!-- 更新がある場合 -->
-					            	<s:if test="%{#rowBean.insOpenYmdUpdFlg == 1}">
+					            	<s:if test="%{#rowBean.insOpenYmdUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 					            		<s:label key="hcoUpdHstDataList[%{#status.index}].insOpenMonth" style="color:red;"/>
 					            	</s:if>
 					            	<!-- 更新がない場合 -->
@@ -1266,7 +1266,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.insOpenYmdUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.insOpenYmdUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].insOpenDay" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1282,7 +1282,7 @@
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.clitemListUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.clitemListUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcoUpdHstDataList[%{#status.index}].clitemList" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -1381,7 +1381,7 @@
 					            </s:if>
 					            <s:else>
 									<!-- 更新がある場合 -->
-					            	<s:if test="%{#rowBean.hoInsTypeUpdFlg == 1}">
+					            	<s:if test="%{#rowBean.hoInsTypeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 					            		<s:label key="mainInsDataList[%{#status.index}].hoInsType" style="color:red;"/>
 					            	</s:if>
 					            	<!-- 更新がない場合 -->
@@ -1397,7 +1397,7 @@
 					            </s:if>
 					            <s:else>
 									<!-- 更新がある場合 -->
-					            	<s:if test="%{#rowBean.insAbbrNameUpdFlg == 1}">
+					            	<s:if test="%{#rowBean.insAbbrNameUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 					            		<s:label key="mainInsDataList[%{#status.index}].insAbbrName" style="color:red;"/>
 					            	</s:if>
 					            	<!-- 更新がない場合 -->
@@ -1413,7 +1413,7 @@
 					            </s:if>
 					            <s:else>
 									<!-- 更新がある場合 -->
-					            	<s:if test="%{#rowBean.mainInsNoUpdFlg == 1}">
+					            	<s:if test="%{#rowBean.mainInsNoUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 					            		<s:label key="mainInsDataList[%{#status.index}].mainInsNo" style="color:red;"/>
 					            	</s:if>
 					            	<!-- 更新がない場合 -->
@@ -1429,7 +1429,7 @@
 					            </s:if>
 					            <s:else>
 									<!-- 更新がある場合 -->
-					            	<s:if test="%{#rowBean.mainInsNmUpdFlg == 1}">
+					            	<s:if test="%{#rowBean.mainInsNmUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 					            		<s:label key="mainInsDataList[%{#status.index}].mainInsNm" style="color:red;"/>
 					            	</s:if>
 					            	<!-- 更新がない場合 -->

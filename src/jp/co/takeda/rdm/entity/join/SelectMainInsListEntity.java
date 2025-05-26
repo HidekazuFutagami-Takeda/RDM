@@ -322,6 +322,12 @@ public class SelectMainInsListEntity extends BaseEntity implements Serializable 
     private String aprShz;
 
     /**
+     * 削除フラグ更新フラグ
+     * @generated
+     */
+    private String delFlgUpdFlg;
+
+    /**
      * レコード件数
      * @generated
      */
@@ -884,6 +890,21 @@ public class SelectMainInsListEntity extends BaseEntity implements Serializable 
 	 */
 	public void setKensakuPharmType(String kensakuPharmType) {
 		this.kensakuPharmType = kensakuPharmType;
+	}
+
+	/**
+	 * SelectMainInsListEntity.delFlgUpdFlgを設定
+	 * @return delFlgUpdFlg
+	 */
+	public String getDelFlgUpdFlg() {
+		return delFlgUpdFlg;
+	}
+
+	/**
+	 * @param delFlgUpdFlg セットする delFlgUpdFlg
+	 */
+	public void setDelFlgUpdFlg(String delFlgUpdFlg) {
+		this.delFlgUpdFlg = delFlgUpdFlg;
 	}
 
 }

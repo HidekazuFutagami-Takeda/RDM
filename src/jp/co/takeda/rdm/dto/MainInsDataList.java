@@ -126,6 +126,12 @@ public class MainInsDataList implements Serializable {
     private String aprShz;
 
     /**
+     * 削除フラグ更新フラグ
+     * @generated
+     */
+    private String delFlgUpdFlg;
+
+    /**
      * レコード件数
      * @generated
      */
@@ -342,6 +348,14 @@ public class MainInsDataList implements Serializable {
 		this.insNo = insNo;
 	}
 
+
+	public String getDelFlgUpdFlg() {
+		return delFlgUpdFlg;
+	}
+
+	public void setDelFlgUpdFlg(String delFlgUpdFlg) {
+		this.delFlgUpdFlg = delFlgUpdFlg;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

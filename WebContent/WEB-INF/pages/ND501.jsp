@@ -606,7 +606,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.docTypeUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.docTypeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].docType" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -622,7 +622,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.docKanjUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.docKanjUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].docKanj" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -640,7 +640,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.docKanaUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.docKanaUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].docKana" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -656,7 +656,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.docKanjSeiUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.docKanjSeiUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].docKanjSei" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -672,7 +672,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.docKanjMeiUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.docKanjMeiUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].docKanjMei" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -689,7 +689,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.docKanaSeiUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.docKanaSeiUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].docKanaSei" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -706,7 +706,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.docKanaMeiUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.docKanaMeiUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].docKanaMei" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -722,7 +722,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.oldKanjSeiUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.oldKanjSeiUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].oldKanjSei" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -739,7 +739,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.oldKanaSeiUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.oldKanaSeiUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].oldKanaSei" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -757,7 +757,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.newNameStYmdUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.newNameStYmdUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].newNameStYmd" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -773,7 +773,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.dobYmdUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.dobYmdUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].dobYmd" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -790,7 +790,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.sexUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.sexUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].sex" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -808,7 +808,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.homeTownUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.homeTownUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].homeTown" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -825,7 +825,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 				            	<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.medSchUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.medSchUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].medSch" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -841,7 +841,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.gradYearUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.gradYearUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].gradYear" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -857,7 +857,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.ssnDeptCodeUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.ssnDeptCodeUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].ssnDeptCode" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -873,7 +873,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.hunivUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.hunivUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].huniv" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -889,7 +889,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.emplYearUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.emplYearUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].emplYear" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -905,7 +905,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.spLiverUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.spLiverUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].spLiver" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -922,7 +922,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.spDiseaseUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.spDiseaseUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].spDisease" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->
@@ -939,7 +939,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortId"), "
 				            </s:if>
 				            <s:else>
 								<!-- 更新がある場合 -->
-				            	<s:if test="%{#rowBean.spComUpdFlg == 1}">
+				            	<s:if test="%{#rowBean.spComUpdFlg == 1 && #rowBean.delFlgUpdFlg != 'N'}">
 				            		<s:label key="hcpUpdHstDataList[%{#status.index}].spCom" style="color:red;"/>
 				            	</s:if>
 				            	<!-- 更新がない場合 -->

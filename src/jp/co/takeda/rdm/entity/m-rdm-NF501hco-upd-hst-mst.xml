@@ -142,6 +142,7 @@
         <result column="REQ_DIST_CODE_UPD_FLG" property="reqDistCodeUpdFlg"/>
         <result column="APR_SHZ_UPD_FLG" property="aprShzUpdFlg"/>
         <result column="REC_CNT_UPD_FLG" property="recCntUpdFlg"/>
+        <result column="DEL_FLG_UPD_FLG" property="delFlgUpdFlg"/>
 
     </resultMap>
 
@@ -182,6 +183,7 @@
         <result column="INS_ABBR_NAME_UPD_FLG" property="insAbbrNameUpdFlg"/>
         <result column="HO_INS_TYPE" property="hoInsType"/>
 		<result column="HO_INS_TYPE_UPD_FLG" property="hoInsTypeUpdFlg"/>
+		<result column="DEL_FLG_UPD_FLG" property="delFlgUpdFlg"/>
 
     </resultMap>
 
@@ -284,6 +286,7 @@
 	        ,DIST_SOS.BUMON_SEI_NAME AS REQ_DIST_CODE --申請者所属エリア
 	        ,HCO_UPD_HST.REQ_SHZ --申請者所属
 	        ,HCO_UPD_HST.APR_SHZ --承認者所属
+	        ,HCO_UPD_HST.DEL_FLG_UPD_FLG  --削除フラグ更新フラグ
 	FROM
 			ORAUSR01.T_RDM_HCO_UPD_HST  HCO_UPD_HST --施設_変更履歴テーブル
 
@@ -522,6 +525,7 @@
 	        ,HCO_UPD_HST.REQ_JGI_NAME --申請者
 	        ,HCO_UPD_HST.APR_SHZ AS APR_SHZ --承認者所属
 	        ,HCO_UPD_HST.APR_SHA_ID --承認者氏名
+	        ,HCO_UPD_HST.DEL_FLG_UPD_FLG  --削除フラグ更新フラグ
 		FROM
 				ORAUSR01.T_RDM_HCO_UPD_HST  HCO_UPD_HST --施設_変更履歴テーブル
 

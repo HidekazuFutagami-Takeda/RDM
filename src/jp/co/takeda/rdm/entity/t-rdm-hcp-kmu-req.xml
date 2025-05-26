@@ -252,7 +252,7 @@
        ON
            KMU_REQ.REQ_ID = REQ_KNR.REQ_ID
        --NC011_No3
-       inner join
+       LEFT JOIN
            M_RDM_HCP_MST HCP_MST
        ON
            HCP_MST.DOC_NO = KMU_REQ.DOC_NO

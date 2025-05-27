@@ -20,7 +20,7 @@ import jp.co.takeda.rdm.dto.NC209DTO;
 import jp.co.takeda.rdm.entity.SRdmDmcMstDeptEntity;
 import jp.co.takeda.rdm.entity.SRdmJkrSosInsAbbrNameEntiry;
 import jp.co.takeda.rdm.entity.join.MRdmParamMstEntity;
-import jp.co.takeda.rdm.entity.join.SelectDeptListEntity;
+
 import jp.co.takeda.rdm.util.AppMethods;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;

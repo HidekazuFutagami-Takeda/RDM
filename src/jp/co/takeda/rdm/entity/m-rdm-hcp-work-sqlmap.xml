@@ -27,7 +27,7 @@
         <result column="SORT_NUM" property="sortNum"/>
 
         <result column="TITLE_CODE" property="puldownTitleCode"/>
-        <result column="KANJ_NAME" property="puldownTitleKj"/>
+        <result column="TITLE_KJ" property="puldownTitleKj"/>
     </resultMap>
     <resultMap id="selectCntNd401InitResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectNd401InitEntity">
         <result column="CNT_KMU" property="cntKmu"/>
@@ -49,10 +49,12 @@
 
     <select id="selectCntNd401DmcMstPost" parameterType="jp.co.takeda.rdm.entity.join.SelectNd401InitEntity" resultMap="selectNd401InitResultMap">
     select
-    	TITLE_CODE, KANA_NAME, KANJ_NAME, IS_JGI_NO, UP_JGI_NO, IS_DATE,
-		UP_DATE, UP_SCRN_ID, UP_FUNC_ID
+    	TITLE_CODE, TITLE_KJ
 	from
-		DMC_MST_POST
+		M_RDM_HCP_YAKUSHOKU
+	where UNIV_TITLE_FLG = '0'
+	  and DEL_FLG ='0'
+	  order by SORT_NUM
 	</select>
 
 

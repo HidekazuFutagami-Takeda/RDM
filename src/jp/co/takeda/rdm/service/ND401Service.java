@@ -363,6 +363,28 @@ public class ND401Service extends BaseService {
 			errFlg = true;
 		}
 
+		// 必須チェック
+		for (KmuIkkatsuData entity : kmuIkkatsuDataList) {
+			// 役職が未選択
+			if (StringUtils.isEmpty(entity.getPostTitleCode())) {
+				// 施設コード_施設略式漢字名、医師コード_必須項目にデータを入力してください。（役職（変更後））
+				StringBuilder msgSb = new StringBuilder();
+				msgSb.append(entity.getInsNo());
+				msgSb.append("_");
+				msgSb.append(entity.getInsAbbrName());
+				msgSb.append("、");
+				msgSb.append(entity.getDocNo());
+				msgSb.append("_");
+				msgSb.append(entity.getDocKanj());
+				msgSb.append("：");
+
+				errMsg += msgSb.toString()
+						+ loginInfo.getMsgData(RdmConstantsData.W004).replace("項目名", "役職（変更後）")
+						+ "\n";
+				errFlg = true;
+			}
+		}
+
 		// 整合性チェック
 		for (KmuIkkatsuData entity : kmuIkkatsuDataList) {
 			// 医師の廃業・死亡申請している場合

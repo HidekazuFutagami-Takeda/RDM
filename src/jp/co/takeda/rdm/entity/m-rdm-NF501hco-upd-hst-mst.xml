@@ -373,6 +373,7 @@
 			OR HCO_UPD_HST.BEDCNT05_UPD_FLG = '1'
 			OR HCO_UPD_HST.BEDCNT06_UPD_FLG = '1'
 			OR HCO_UPD_HST.BEDCNT07_UPD_FLG = '1'
+			OR HCO_UPD_HST.DEL_FLG_UPD_FLG = 'N'
 			)
 			<if test="kensakuInsKanj != null">
 			AND

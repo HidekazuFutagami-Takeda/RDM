@@ -387,7 +387,8 @@ public class NF501Service extends BaseService {
 					|| Objects.equals(entity.getBedcnt04UpdFlg(), "1")
 					|| Objects.equals(entity.getBedcnt05UpdFlg(), "1")
 					|| Objects.equals(entity.getBedcnt06UpdFlg(), "1")
-					|| Objects.equals(entity.getBedcnt07UpdFlg(), "1")) {
+					|| Objects.equals(entity.getBedcnt07UpdFlg(), "1")
+					|| Objects.equals(entity.getDelFlgUpdFlg(), "N")) {
 				// （来期）項目変更フラグ
 				dataRecord.setHcoNxt("1");
 			} else {
@@ -430,7 +431,8 @@ public class NF501Service extends BaseService {
 					&& !Objects.equals(entity.getBedcnt07UpdFlg(), "1")
 					&& !Objects.equals(entity.getInsOpenYmdUpdFlg(), "1")
 					&& !Objects.equals(entity.getClitemListUpdFlg(), "1")
-					&& !Objects.equals(entity.getBedcnt01UpdFlg(), "1") && Objects.equals(dataRecord.getHcoNxt(), "")) {
+					&& !Objects.equals(entity.getBedcnt01UpdFlg(), "1") && Objects.equals(dataRecord.getHcoNxt(), "")
+					&& !Objects.equals(entity.getDelFlgUpdFlg(), "N")) {
 				continue;
 			}
 

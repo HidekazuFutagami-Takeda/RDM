@@ -440,7 +440,14 @@
 			WHERE 1 = 1
 			AND REQ_KNR.DOC_NO = #{inDocNo}
 			AND REQ_KNR.REQ_TYPE IN ('33')
-			AND REQ_KNR.REQ_STS IN ('03','13')
+			AND REQ_KNR.REQ_STS IN ('03','13','04','14')
+    </select>
+    <select id="selectNd101DelMaster" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+			SELECT '0' AS REQ_ID
+			FROM
+			M_RDM_HCP_MST HCP --医師_基本情報
+			WHERE HCP.DEL_FLG = '1'
+			AND HCP.DOC_NO = #{inDocNo}
     </select>
     <select id="selectNd101DelAppdData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
 			SELECT REQ_KNR.REQ_ID
@@ -449,7 +456,7 @@
 			WHERE 1 = 1
 			AND REQ_KNR.DOC_NO = #{inDocNo}
 			AND REQ_KNR.REQ_TYPE IN ('33')
-			AND REQ_KNR.REQ_STS IN ('04','14')
+			AND REQ_KNR.REQ_STS IN ('04','14','04','14')
     </select>
     <select id="selectNd101DupKmuData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
 			SELECT REQ_KNR.REQ_ID

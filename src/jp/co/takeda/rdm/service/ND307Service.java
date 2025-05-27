@@ -1117,6 +1117,17 @@ public class ND307Service extends BaseService {
 			errChk = true;
 		}
 
+		// 整合性チェック
+		// 医師がマスタ上で削除済
+		paramEntity.setSqlId("selectNd101DelMaster");
+		paramEntity.setInDocNo(indto.getDocNo());
+		List<SelectNd101MainDataEntity> mainDataEntityListM = dao.select(paramEntity);
+		if (mainDataEntityListM.size() > 0) {
+			// 医師免許返納・死亡状態で、申請できません。
+			tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W040) + "\n";
+			errChk = true;
+		}
+
 		// 同じ医師で同じ施設に対しての申請がすでに存在している場合
 		paramEntity.setSqlId("selectNd101DupData");
 		paramEntity.setInDocNo(indto.getDocNo());

@@ -91,6 +91,15 @@ public class ND013Service extends BaseService {
         //データ部画面初期表示時の帳票一覧を取得する
         List<MRdmHcpWorkEntity> SelectHcpWorkList = dao.select(paramEntity);
 
+        //MRの場合、医師の勤務先に1件以上管轄エリアの施設が存在するかチェック
+        //0件なら医師削除はできない
+        paramEntity.setSqlId("selectHcpWorkMRAreaDate");
+        List<MRdmHcpWorkEntity> SelectHcpWorkMRAreaList = dao.select(paramEntity);
+        boolean mrAreaFlg = true;
+        if(SelectHcpWorkMRAreaList.isEmpty()) {
+        	mrAreaFlg = false;
+        }
+
         List<HcpWorkData> SelectHcpWorkDataList = new ArrayList<>();
         dto.setDummyHcoCount(0);
         for (MRdmHcpWorkEntity entity : SelectHcpWorkList) {
@@ -162,6 +171,9 @@ public class ND013Service extends BaseService {
         	}
         	else {
         		dto.setIshiHaigyou("1");
+        	}
+        	if(loginInfo.getJokenFlg().equals("0") && !mrAreaFlg) {
+        		dto.setIshiHaigyou("0"); //MRで医師の勤務先に管轄エリア施設が無い
         	}
 
         	//アクション申請A

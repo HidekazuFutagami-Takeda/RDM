@@ -76,15 +76,17 @@ public class NC203Service extends BaseService {
 	    		indto.setJgiName(indto.getParamJgiName());
     		}
         } else {
+        	if(!("ND101".equals(backScreenId) || "ND103".equals(backScreenId) )) {//勤務先追加、医療機関異動はMRも無制限
         	// MR権限の場合検索条件．組織、検索条件．担当者設定する
-        	if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
-        		indto.setSosCd(loginInfo.getSosCd());
-        		indto.setSosName(loginInfo.getBumonRyakuName());
-        		indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
-        		indto.setJgiName(loginInfo.getJgiName());
-        		indto.setLoginBrCd(loginInfo.getBrCode());
-        		indto.setLoginDistCd(loginInfo.getDistCode());
-        		indto.setTrtCd(loginInfo.getTrtCd());
+        		if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd())) {
+        			indto.setSosCd(loginInfo.getSosCd());
+        			indto.setSosName(loginInfo.getBumonRyakuName());
+        			indto.setJgiNo(Integer.toString(loginInfo.getJgiNo()));
+        			indto.setJgiName(loginInfo.getJgiName());
+        			indto.setLoginBrCd(loginInfo.getBrCode());
+        			indto.setLoginDistCd(loginInfo.getDistCode());
+        			indto.setTrtCd(loginInfo.getTrtCd());
+        		}
         	}
         }
 
@@ -135,10 +137,15 @@ public class NC203Service extends BaseService {
     		}
     		*/
     	} else {
-    		// MR権限
-    		selectinsListEntity.setKnrFlg(false);
-    		selectParamSelectHcoEntity.setKnrFlg(false);
-    		/*
+    		String backScreenId = indto.getBackScreenId();
+    		if(("ND101".equals(backScreenId) || "ND103".equals(backScreenId) )) {//勤務先追加、医療機関異動はMRも無制限
+        		selectinsListEntity.setKnrFlg(true);
+        		selectParamSelectHcoEntity.setKnrFlg(true);
+    		} else {
+    			// MR権限
+    			selectinsListEntity.setKnrFlg(false);
+    			selectParamSelectHcoEntity.setKnrFlg(false);
+    			/*
     		if(!indto.getTrtCd().isEmpty()){
     			selectinsListEntity.setTrtCd(indto.getTrtCd());
     			selectParamSelectHcoEntity.setTrtCd(indto.getTrtCd());
@@ -149,19 +156,23 @@ public class NC203Service extends BaseService {
     		selectParamSelectHcoEntity.setBrCd(indto.getLoginBrCd());
     		selectinsListEntity.setDistCd(indto.getLoginDistCd());
     		selectParamSelectHcoEntity.setDistCd(indto.getLoginDistCd());
-    		*/
+    			 */
 
-    		selectinsListEntity.setSosCd(loginInfo.getSosCd());
-    		selectinsListEntity.setSosRank(loginInfo.getBumonRank());
-    		selectParamSelectHcoEntity.setSosCd(loginInfo.getSosCd());
-        	selectParamSelectHcoEntity.setSosRank(loginInfo.getBumonRank());
+    			selectinsListEntity.setSosCd(loginInfo.getSosCd());
+    			selectinsListEntity.setSosRank(loginInfo.getBumonRank());
+    			selectParamSelectHcoEntity.setSosCd(loginInfo.getSosCd());
+    			selectParamSelectHcoEntity.setSosRank(loginInfo.getBumonRank());
+    		}
     	}
 
         //MRで医師新規登録の勤務先施設、医療機関への異動の異動先施設、医師復活の復活先施設、勤務先追加が親画面の場合
         //または医師検索で組織が選択されている場合
         String backScreenId = indto.getBackScreenId();
+//        if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) &&
+//        		("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId) || "ND103".equals(backScreenId) )
+//        ) {
         if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) &&
-        		("ND011".equals(backScreenId) || "ND014".equals(backScreenId) || "ND101".equals(backScreenId) || "ND103".equals(backScreenId) )
+        		("ND011".equals(backScreenId) || "ND014".equals(backScreenId) )
         ) {
         	selectinsListEntity.setSosCd(indto.getSosCd());
         	selectinsListEntity.setSosRank(loginInfo.getBumonRank());

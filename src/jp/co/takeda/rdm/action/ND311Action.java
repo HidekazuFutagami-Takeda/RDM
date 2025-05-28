@@ -316,6 +316,10 @@ public class ND311Action extends BaseAction<ND311DTO> {
 			if (Objects.deepEquals(dto.getErrorCheckFlg(), "5")) {
 				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W062);// 勤務先に廃院が選択されています。
 			}
+			//MR管轄外
+			if (Objects.deepEquals(dto.getErrorCheckFlg(), "6")) {
+				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W071);// 管轄外の医師は勤務先に管轄外の施設を選択できません。
+			}
 			dto.setMsgStr(tmpMsgStr);
 		}
 

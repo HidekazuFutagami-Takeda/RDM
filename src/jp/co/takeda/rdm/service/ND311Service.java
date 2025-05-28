@@ -322,6 +322,7 @@ public class ND311Service extends BaseService {
 		BaseDTO outdto = dto;
 
 		SelectHcpKmuReqNewEntity paramEntity = new SelectHcpKmuReqNewEntity();
+		LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
 		// 申請IDをセット
 		paramEntity.setParamReqId(dto.getParamReqId());
@@ -380,6 +381,20 @@ public class ND311Service extends BaseService {
 			return outdto;
 		}
 
+		if(loginInfo.getJokenFlg().equals("0")) {//MRのみ
+			// 「異動先施設がMRの管轄」または「医師の現勤務先にMR管轄エリアの施設が1件以上ある」でなければエラー
+			// 施設固定コード(異動先)
+			paramEntity.setInSosCd(loginInfo.getSosCd());
+			paramEntity.setErrorCheckFlg("7");
+			List<SelectHcpKmuReqNewEntity> mrArea = dao.select(paramEntity);
+
+			// 整合性チェックエラーがある場合
+			if (CollectionUtils.isEmpty(mrArea)) {
+				// 整合性チェックエラーを定義
+				dto.setErrorCheckFlg("6");
+				return outdto;
+			}
+		}
 		// エラーチェック済
 		dto.setErrorCheckFlg("1");
 

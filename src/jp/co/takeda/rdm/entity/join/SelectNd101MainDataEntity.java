@@ -45,6 +45,24 @@ public class SelectNd101MainDataEntity extends BaseEntity implements Serializabl
     private String inReqId;
 
     /**
+     * 入力_施設固定コード(変更前)
+     * @generated
+     */
+    private String inPreInsNo;
+
+    /**
+     * 入力_施設固定コード(変更後)
+     * @generated
+     */
+    private String inPostInsNo;
+
+    /**
+     * 入力_組織コード
+     * @generated
+     */
+    private String inSosCd;
+
+    /**
      * 申請ID
      * @generated
      */
@@ -101,6 +119,51 @@ public class SelectNd101MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setInInsNo(String inInsNo) {
 		this.inInsNo = inInsNo;
+	}
+
+	/**
+	 * SelectNd101MainDataEntity.javainPreInsNoを設定
+	 * @return inPreInsNo
+	 */
+	public String getInPreInsNo() {
+		return inPreInsNo;
+	}
+
+	/**
+	 * @param inPreInsNo セットする inPreInsNo
+	 */
+	public void setInPreInsNo(String inPreInsNo) {
+		this.inPreInsNo = inPreInsNo;
+	}
+
+	/**
+	 * SelectNd101MainDataEntity.javainPostInsNoを設定
+	 * @return inPostInsNo
+	 */
+	public String getInPostInsNo() {
+		return inPostInsNo;
+	}
+
+	/**
+	 * @param inPostInsNo セットする inPostInsNo
+	 */
+	public void setInPostInsNo(String inPostInsNo) {
+		this.inPostInsNo = inPostInsNo;
+	}
+
+	/**
+	 * SelectNd101MainDataEntity.javainSosCdを設定
+	 * @return inSosCd
+	 */
+	public String getInSosCd() {
+		return inSosCd;
+	}
+
+	/**
+	 * @param inSosCd セットする inSosCd
+	 */
+	public void setInSosCd(String inSosCd) {
+		this.inSosCd = inSosCd;
 	}
 
 	/**

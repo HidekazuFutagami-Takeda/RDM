@@ -295,6 +295,12 @@ public class SelectHcpKmuReqNewEntity extends BaseEntity implements Serializable
 	private Integer aprJgiNo;
 
     /**
+     * 入力_組織コード
+     * @generated
+     */
+    private String inSosCd;
+
+    /**
      * コンストラクタ
      * @generated
      */
@@ -1067,6 +1073,23 @@ public class SelectHcpKmuReqNewEntity extends BaseEntity implements Serializable
 	 */
 	public void setAprJgiNo(Integer aprJgiNo) {
 		this.aprJgiNo = aprJgiNo;
+	}
+
+
+	/**
+	 * SelectHcpKmuReqNewEntity.javainSosCdを設定
+	 * @return inSosCd
+	 */
+	public String getInSosCd() {
+		return inSosCd;
+	}
+
+
+	/**
+	 * @param inSosCd セットする inSosCd
+	 */
+	public void setInSosCd(String inSosCd) {
+		this.inSosCd = inSosCd;
 	}
 
 }

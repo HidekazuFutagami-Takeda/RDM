@@ -420,5 +420,22 @@
 		</if>
 
     </select>
-
+    <select id="selectHcpWorkMRAreaDate" parameterType="jp.co.takeda.rdm.entity.MRdmHcpWorkEntity" resultMap="mRdmHcpWorkResultMap">
+			SELECT
+				 HCP_WORK.INS_NO AS INS_NO_KAKUSI --施設固定コード (隠し項目)
+				,JKR_ADDR.SOS_CD
+			FROM
+				M_RDM_HCP_WORK HCP_WORK --医師_勤務先情報テーブル
+			INNER JOIN
+				M_RDM_HCO_MST HCO_MST --施設_基本情報
+			ON 1=1
+	 		AND HCP_WORK.DOC_NO = #{paramDocNo} --親画面の医師固定コード
+			AND HCP_WORK.INS_NO = HCO_MST.INS_NO --施設固定コード
+	 		INNER JOIN
+	 			M_RDM_ADDR JKR_ADDR
+	 		ON 1=1
+	 		AND JKR_ADDR.ADDR_CODE_PREF = HCO_MST.ADDR_CODE_PREF
+	 		AND JKR_ADDR.TK_CITY_CD = HCO_MST.TK_CITY_CD
+	 		AND JKR_ADDR.SOS_CD = #{sosCd} --MRの所属組織
+    </select>
 </mapper>

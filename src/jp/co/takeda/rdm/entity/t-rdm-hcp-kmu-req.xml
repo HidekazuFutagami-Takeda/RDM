@@ -472,7 +472,7 @@
 			and KMU_REQ.DOC_NO = #{inDocNo}
 			and KMU_REQ.INS_NO_MT = #{inInsNo}
     </select>
-        <select id="selectNd101DelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+    <select id="selectNd101DelInsData" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
 			SELECT KNR.REQ_ID
 			FROM
 			T_RDM_HCO_REQ HCO --施設_申請管理
@@ -682,5 +682,24 @@
         WHERE
             HCP.DOC_NO = #{docNo}
         AND HCP.INS_NO_MT = #{insNoMt}
+    </select>
+    <select id="selectNd101MRSosCheck" parameterType="jp.co.takeda.rdm.entity.join.SelectNd101MainDataEntity" resultMap="nd101CheckResultMap">
+			SELECT PRE_HCO.INS_NO AS REQ_ID
+			FROM M_RDM_ADDR PRE_ADDR
+			INNER JOIN M_RDM_HCO_MST PRE_HCO
+			ON 1=1
+			AND PRE_HCO.INS_NO = #{inPreInsNo}
+			AND PRE_ADDR.SOS_CD = #{inSosCd}
+			AND PRE_HCO.ADDR_CODE_PREF = PRE_ADDR.ADDR_CODE_PREF
+			AND PRE_HCO.TK_CITY_CD = PRE_ADDR.TK_CITY_CD
+			UNION
+			SELECT POS_HCO.INS_NO AS REQ_ID
+			FROM M_RDM_ADDR POS_ADDR
+			INNER JOIN M_RDM_HCO_MST POS_HCO
+			ON 1=1
+			AND POS_HCO.INS_NO = #{inPostInsNo}
+			AND POS_ADDR.SOS_CD = #{inSosCd}
+			AND POS_HCO.ADDR_CODE_PREF = POS_ADDR.ADDR_CODE_PREF
+			AND POS_HCO.TK_CITY_CD = POS_ADDR.TK_CITY_CD
     </select>
 </mapper>

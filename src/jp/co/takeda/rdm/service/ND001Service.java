@@ -294,9 +294,9 @@ public class ND001Service extends BaseService {
 					data.setGamenFukkatsuFlg("0");
 				}
 
-				if(!(data.getGamenKinmuKoushinFlg().equals(entity.getMrKoushinFlg()))) {
-					data.setGamenKinmuKoushinFlg("0");
-				}
+//				if(!(data.getGamenKinmuKoushinFlg().equals(entity.getMrKoushinFlg()))) {
+//					data.setGamenKinmuKoushinFlg("0");
+//				}
 			}
 
             hcpDataList.add(data);

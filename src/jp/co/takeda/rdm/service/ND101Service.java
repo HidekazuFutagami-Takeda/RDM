@@ -958,6 +958,23 @@ public class ND101Service extends BaseService {
 				errChk = true;
 			}
 
+			//MRの場合、異動先か異動元のいずれかが管轄ではないとエラー
+			// 医療機関への異動の場合
+			if (indto.getMovemedEditFlg().equals("0") && loginInfo.getJokenFlg().equals("0")) {
+				if (indto.getPreInsNo() != null) {
+					paramEntity.setSqlId("selectNd101MRSosCheck");
+					paramEntity.setInPreInsNo(indto.getPreInsNo());
+					paramEntity.setInPostInsNo(indto.getPostInsNo());
+					paramEntity.setInSosCd(loginInfo.getSosCd());
+					List<SelectNd101MainDataEntity> mainDataEntityListMR = dao.select(paramEntity);
+					if (mainDataEntityListMR.size() == 0) {
+						// 異動元施設、異動先施設の両方が管轄外のため申請できません。
+						tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W070) + "\n";
+						errChk = true;
+					}
+				}
+			}
+
 			// 整合性チェック
 			// 同じ医師で同じ施設に対しての申請がすでに存在している場合
 			paramEntity.setSqlId("selectNd101DupData");

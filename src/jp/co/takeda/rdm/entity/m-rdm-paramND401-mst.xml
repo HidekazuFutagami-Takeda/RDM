@@ -11,7 +11,7 @@
         FROM
             ORAUSR01.M_RDM_PARAM_MST
         WHERE
-            PARAM_NAME in ('MAX_ROWNUM', 'NF501_ROWNUM')
+            PARAM_NAME in ('MAX_ROWNUM', 'ND401_ROWNUM')
         ORDER BY PARAM_NAME
     </select>
 </mapper>

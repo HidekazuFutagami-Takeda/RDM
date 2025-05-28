@@ -268,10 +268,6 @@
         </s:else>
     </s:iterator>
     </div>
-    <s:url id="searchurl" action="NF501Search"/>
-    <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
-    <s:url id="pageurl" action="NF501Page"/>
-    <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
 
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">

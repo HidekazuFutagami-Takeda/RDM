@@ -11,7 +11,7 @@
 --%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="jp.co.takeda.rdm.util.StringUtils"%>
-<%@page import="jp.co.takeda.rdm.dto.NF501DTO"%>
+<%@page import="jp.co.takeda.rdm.dto.ND401DTO"%>
 <%@ page
   language="java"
   import="jp.co.takeda.rdm.util.AppConstant,java.util.ArrayList,java.math.BigDecimal"
@@ -303,11 +303,6 @@
         </s:else>
     </s:iterator>
     </div>
-    <s:url id="searchurl" action="NF501Search"/>
-    <s:submit name="submit_search" value="検索イベント" onclick="this.form.action='%{searchurl}'; this.form.submit();return false;" cssStyle="display:none" />
-    <s:url id="pageurl" action="NF501Page"/>
-    <s:submit name="page_search" value="改ページイベント" onclick="this.form.action='%{pageurl}'; this.form.submit();return false;" cssStyle="display:none" />
-
 
 <%-- ポータルタイトル 開始 --%>
     <table class="comPortalTitle">
@@ -338,7 +333,7 @@
 
 		<%-- 検索部 開始 --%>
      	<table id="formTable01" border="0" class="comPortalTable" align="center" style="width:75%;">
-     	<s:form action="NF501Search" theme="simple" name="fm1" >
+     	<s:form action="ND401Search" theme="simple" name="fm1" >
 	        <tr>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>

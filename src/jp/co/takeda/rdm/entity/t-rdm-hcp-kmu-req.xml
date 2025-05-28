@@ -403,13 +403,13 @@
 		T_RDM_HCP_KMU_REQ
 	SET
 		INS_NO_SK = #{insNoSk},
-		JOB_FORM_AF = #{jobFormAf},
-		DEPT_CODE_AF = #{deptCodeAf},
-		DEPT_KANJI_AF = #{deptKanjiAf},
-		DEPT_KANA_AF = #{deptKanaAf},
-		UNIV_POS_CODE_AF = #{univPosCodeAf},
-		TITLE_CODE_AF = #{titleCodeAf},
-		DCC_TYPE_AF = #{dccTypeAf},
+		<if test="jobFormAfNullFlag == true">JOB_FORM_AF = NULL,</if><if test="jobFormAfNullFlag == false"><if test="jobFormAf != null">JOB_FORM_AF = #{jobFormAf},</if></if>
+		<if test="deptCodeAfNullFlag == true">DEPT_CODE_AF = NULL,</if><if test="deptCodeAfNullFlag == false"><if test="deptCodeAf != null">DEPT_CODE_AF = #{deptCodeAf},</if></if>
+		<if test="deptKanjiAfNullFlag == true">DEPT_KANJI_AF = NULL,</if><if test="deptKanjiAfNullFlag == false"><if test="deptKanjiAf != null">DEPT_KANJI_AF = #{deptKanjiAf},</if></if>
+		<if test="deptKanaAfNullFlag == true">DEPT_KANA_AF = NULL,</if><if test="deptKanaAfNullFlag == false"><if test="deptKanaAf != null">DEPT_KANA_AF = #{deptKanaAf},</if></if>
+		<if test="univPosCodeAfNullFlag == true">UNIV_POS_CODE_AF = NULL,</if><if test="univPosCodeAfNullFlag == false"><if test="univPosCodeAf != null">UNIV_POS_CODE_AF = #{univPosCodeAf},</if></if>
+		<if test="titleCodeAfNullFlag == true">TITLE_CODE_AF = NULL,</if><if test="titleCodeAfNullFlag == false"><if test="titleCodeAf != null">TITLE_CODE_AF = #{titleCodeAf},</if></if>
+		<if test="dccTypeAfNullFlag == true">DCC_TYPE_AF = NULL,</if><if test="dccTypeAfNullFlag == false"><if test="dccTypeAf != null">DCC_TYPE_AF = #{dccTypeAf},</if></if>
 		<if test="ultInsNo != null">ULT_INS_NO = #{ultInsNo},</if>
 		<if test="ultInsNo == null">ULT_INS_NO = NULL,</if>
 		UPD_SHA_YMD = #{updShaYmd},

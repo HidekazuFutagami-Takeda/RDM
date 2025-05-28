@@ -771,8 +771,23 @@ public class ND307Service extends BaseService {
 	        	tRdmHcpKmuReqInsData.setInsNoMt(indto.getPreInsNo());
 	        	if ("0".equals(indto.getMovemedEditFlg())) {
 	        		tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
-	        	} else {
+		        	tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
+		        	tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
+		        	tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
+		        	tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
+		        	tRdmHcpKmuReqInsData.setUnivPosCodeAf(indto.getPostUnivPosCode());
+		        	tRdmHcpKmuReqInsData.setTitleCodeAf(indto.getPostTitleCode());
+		        	tRdmHcpKmuReqInsData.setDccTypeAf(indto.getPostDcc());
+		        } else {
 	        		tRdmHcpKmuReqInsData.setInsNoSk(indto.getPreInsNo());
+					// 変更前と比較し同一ならNULL、""に変更なら"Z"、それ以外に変更なら変更後の値をセット
+					tRdmHcpKmuReqInsData.setJobFormAf(getUpdStr(indto.getPostJobForm(), indto.getPreJobForm()));
+					tRdmHcpKmuReqInsData.setDeptCodeAf(getUpdStr(indto.getPostDeptCode(), indto.getPreDeptCode()));
+					tRdmHcpKmuReqInsData.setDeptKanjiAf(getUpdStr(indto.getPostDeptKj(), indto.getPreDeptKj()));
+					tRdmHcpKmuReqInsData.setDeptKanaAf(getUpdStr(indto.getPostDeptKn(), indto.getPreDeptKn()));
+					tRdmHcpKmuReqInsData.setUnivPosCodeAf(getUpdStr(indto.getPostUnivPosCode(),indto.getPreUnivPosCode()));
+					tRdmHcpKmuReqInsData.setTitleCodeAf(getUpdStr(indto.getPostTitleCode(),indto.getPreTitleCode()));
+					tRdmHcpKmuReqInsData.setDccTypeAf(getUpdStr(indto.getPostDcc(),indto.getPreDcc()));
 	        	}
 	        	tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(indto.getPreJobForm(), ""));
 	        	tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(indto.getPreDeptCode(), ""));
@@ -781,13 +796,7 @@ public class ND307Service extends BaseService {
 	        	tRdmHcpKmuReqInsData.setUnivPosCodeBf(indto.getPreUnivPosCode());
 	        	tRdmHcpKmuReqInsData.setTitleCodeBf(indto.getPreTitleCode());
 	        	tRdmHcpKmuReqInsData.setDccTypeBf(indto.getPreDcc());
-	        	tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
-	        	tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
-	        	tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
-	        	tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
-	        	tRdmHcpKmuReqInsData.setUnivPosCodeAf(indto.getPostUnivPosCode());
-	        	tRdmHcpKmuReqInsData.setTitleCodeAf(indto.getPostTitleCode());
-	        	tRdmHcpKmuReqInsData.setDccTypeAf(indto.getPostDcc());
+
 	        	tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
 	            //異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
 //	        	if(!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo()) || StringUtils.isEmpty(indto.getPostUltInsNo()))) {
@@ -804,16 +813,26 @@ public class ND307Service extends BaseService {
 	        	tRdmHcpKmuReqUpdData.setReqId(reqId);
 	        	if ("0".equals(indto.getMovemedEditFlg())) {
 	        		tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+		        	tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
+		        	tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
+		        	tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
+		        	tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
+		        	tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(indto.getPostUnivPosCode(),""));
+		        	tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(indto.getPostTitleCode(),""));
+		        	tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(indto.getPostDcc(),""));
 	        	} else {
 					tRdmHcpKmuReqUpdData.setInsNoSk(indto.getPreInsNo());
+					// 変更前と比較し同一ならNULL、""に変更なら"Z"、それ以外に変更なら変更後の値をセット
+					tRdmHcpKmuReqUpdData.setJobFormAf(getUpdStr(indto.getPostJobForm(), indto.getPreJobForm()));
+					tRdmHcpKmuReqUpdData.setDeptCodeAf(getUpdStr(indto.getPostDeptCode(), indto.getPreDeptCode()));
+					tRdmHcpKmuReqUpdData.setDeptKanjiAf(getUpdStr(indto.getPostDeptKj(), indto.getPreDeptKj()));
+					tRdmHcpKmuReqUpdData.setDeptKanaAf(getUpdStr(indto.getPostDeptKn(), indto.getPreDeptKn()));
+					tRdmHcpKmuReqUpdData.setUnivPosCodeAf(getUpdStr(indto.getPostUnivPosCode(),indto.getPreUnivPosCode()));
+					tRdmHcpKmuReqUpdData.setTitleCodeAf(getUpdStr(indto.getPostTitleCode(),indto.getPreTitleCode()));
+					tRdmHcpKmuReqUpdData.setDccTypeAf(getUpdStr(indto.getPostDcc(),indto.getPreDcc()));
 				}
-	        	tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
-	        	tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
-	        	tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
-	        	tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
-	        	tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(indto.getPostUnivPosCode(),""));
-	        	tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(indto.getPostTitleCode(),""));
-	        	tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(indto.getPostDcc(),""));
+	        	tRdmHcpKmuReqUpdData.checkSetNull();
+
 	        	//ult医師コード最新化
 	        	SelectDocReqKnrInsChangeEntity selectDocReqKnrInsChangeEntity = new SelectDocReqKnrInsChangeEntity();
 	        	selectDocReqKnrInsChangeEntity.setInReqFlg(0);
@@ -1232,4 +1251,23 @@ public class ND307Service extends BaseService {
 
 		return errChk;
 	}
+
+    /**
+     * 変更前文字列と変更後文字列を比較し、同一なら空文字、
+     * 不一致かつ変更後文字列が空文字ならZ、不一致かつ変更後が空文字以外なら変更後文字列を返す
+     * @return
+     */
+    public static String getUpdStr(String strNew, String strOld) {
+    	String sN = StringUtils.nvl(strNew, "");
+    	String sO = StringUtils.nvl(strOld, "");
+        if (sN.equals(sO)) {
+            return null;
+        } else {
+        	if(StringUtils.isEmpty(strNew)) {
+        		return "Z";
+        	}else {
+        		return strNew;
+        	}
+        }
+    }
 }

@@ -8,6 +8,8 @@ package jp.co.takeda.rdm.entity.join;
 import java.io.Serializable;
 
 import jp.co.takeda.rdm.common.BaseEntity;
+import jp.co.takeda.rdm.util.StringUtils;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.Date;
@@ -975,4 +977,18 @@ public class TRdmHcpKmuReqEntity extends BaseEntity implements Serializable {
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
+
+	/**
+	 * null更新可の項目の更新
+	 */
+		public void checkSetNull() {
+			if(StringUtils.isEmpty(jobFormAf)) this.jobFormAfNullFlag = true;//勤務形態
+			if(StringUtils.isEmpty(deptCodeAf)) this.deptCodeAfNullFlag = true;//所属部科コード
+			if(StringUtils.isEmpty(deptKanjiAf)) this.deptKanjiAfNullFlag = true;//所属部科漢字
+			if(StringUtils.isEmpty(deptKanaAf)) this.deptKanaAfNullFlag = true;//所属部科カナ
+			if(StringUtils.isEmpty(univPosCodeAf)) this.univPosCodeAfNullFlag = true;//大学職位コード
+			if(StringUtils.isEmpty(titleCodeAf)) this.titleCodeAfNullFlag = true;//役職コード
+			if(StringUtils.isEmpty(dccTypeAf)) this.dccTypeAfNullFlag = true;//薬審メンバー区分
+
+		}
 }

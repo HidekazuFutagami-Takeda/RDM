@@ -135,18 +135,44 @@ public class ND101Service extends BaseService {
 				indto.setAprMemo(StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getAprMemo(), ""));
 				indto.setReqChl(selectDocReqKnrInsChangeList.get(0).getReqChl());
 
-				// 隠し項目（変更後）
-				indto.setPostInsNo(selectDocReqKnrInsChangeList.get(0).getPostInsNo());
-				indto.setPostUltInsNo(selectDocReqKnrInsChangeList.get(0).getPostUltInsNo());
-				indto.setPostDeptCode(selectDocReqKnrInsChangeList.get(0).getPostDeptCode());
-				indto.setPostDeptKn(selectDocReqKnrInsChangeList.get(0).getPostDeptKn());
-				indto.setPostTitleCode(selectDocReqKnrInsChangeList.get(0).getPostTitleCode());
-				indto.setPostJobForm(selectDocReqKnrInsChangeList.get(0).getPostJobForm());
-				indto.setPostDcc(selectDocReqKnrInsChangeList.get(0).getPostDcc());
-				indto.setPostUnivPosCode(selectDocReqKnrInsChangeList.get(0).getPostUnivPosCode());
-
 				// 画面切り替え判定用
 				indto.setReqType(selectDocReqKnrInsChangeList.get(0).getReqType());
+
+				// 更新か異動か判定(申請一覧から遷移時)
+				if(StringUtils.isEmpty(indto.getMovemedEditFlg())) {
+					if("51".equals(indto.getReqType())) {
+						// 更新
+						indto.setMovemedEditFlg("1");
+					} else {
+						// 異動
+						indto.setMovemedEditFlg("0");
+					}
+				}
+				if ("0".equals(indto.getMovemedEditFlg())) {//建物
+					// 隠し項目（変更後）
+					indto.setPostInsNo(selectDocReqKnrInsChangeList.get(0).getPostInsNo());
+					indto.setPostUltInsNo(selectDocReqKnrInsChangeList.get(0).getPostUltInsNo());
+					indto.setPostDeptCode(selectDocReqKnrInsChangeList.get(0).getPostDeptCode());
+					indto.setPostDeptKn(selectDocReqKnrInsChangeList.get(0).getPostDeptKn());
+					indto.setPostTitleCode(selectDocReqKnrInsChangeList.get(0).getPostTitleCode());
+					indto.setPostJobForm(selectDocReqKnrInsChangeList.get(0).getPostJobForm());
+					indto.setPostDcc(selectDocReqKnrInsChangeList.get(0).getPostDcc());
+					indto.setPostUnivPosCode(selectDocReqKnrInsChangeList.get(0).getPostUnivPosCode());
+				} else {//鉛筆
+					indto.setPostInsNo(selectDocReqKnrInsChangeList.get(0).getPreInsNo());
+					indto.setPostUltInsNo(selectDocReqKnrInsChangeList.get(0).getPreUltInsNo());
+					indto.setPostDeptCode(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostDeptCode(),selectDocReqKnrInsChangeList.get(0).getPreDeptCode()));
+					if(StringUtils.isZ(selectDocReqKnrInsChangeList.get(0).getPostDeptCode())) {
+						indto.setPostDeptKn("");
+					}else {
+						indto.setPostDeptKn(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostDeptKn(),selectDocReqKnrInsChangeList.get(0).getPreDeptKn()));
+					}
+
+					indto.setPostTitleCode(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostTitleCode(),selectDocReqKnrInsChangeList.get(0).getPreTitleCode()));
+					indto.setPostJobForm(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostJobForm(),selectDocReqKnrInsChangeList.get(0).getPreJobForm()));
+					indto.setPostDcc(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostDcc(),selectDocReqKnrInsChangeList.get(0).getPreDcc()));
+					indto.setPostUnivPosCode(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostUnivPosCode(),selectDocReqKnrInsChangeList.get(0).getPreUnivPosCode()));
+				}
 			}
 			// 以下共通
 			// 基本情報
@@ -183,17 +209,35 @@ public class ND101Service extends BaseService {
 			// indto.setTrnKbn(selectDocReqKnrInsChangeList.get(0).getTrnKbn());
 
 			// 勤務情報（変更後）
-			indto.setPostInsAbbrName(selectDocReqKnrInsChangeList.get(0).getPostInsAbbrName());
-			indto.setPostDeptKj(selectDocReqKnrInsChangeList.get(0).getPostDeptKj());
-			indto.setTitlePostTitleKj(
-					StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getTitlePostTitleKj(), "--なし--"));
-			indto.setKmuPostCodeKanj(
-					StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getKmuPostCodeKanj(), "--なし--"));
-			indto.setYakushinPostCodeKanj(
-					StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getYakushinPostCodeKanj(), "--なし--"));
-			indto.setUnivPostTitleKj(
-					StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getUnivPostTitleKj(), "--なし--"));
+			if ("0".equals(indto.getMovemedEditFlg())) {//建物
+				indto.setPostInsAbbrName(selectDocReqKnrInsChangeList.get(0).getPostInsAbbrName());
+				indto.setPostDeptKj(selectDocReqKnrInsChangeList.get(0).getPostDeptKj());
+				indto.setTitlePostTitleKj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getTitlePostTitleKj(), "--なし--"));
+				indto.setKmuPostCodeKanj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getKmuPostCodeKanj(), "--なし--"));
+				indto.setYakushinPostCodeKanj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getYakushinPostCodeKanj(), "--なし--"));
+				indto.setUnivPostTitleKj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getUnivPostTitleKj(), "--なし--"));
+			} else {//鉛筆
+				indto.setPostInsNo(selectDocReqKnrInsChangeList.get(0).getPreInsNo());
+				indto.setPostUltInsNo(selectDocReqKnrInsChangeList.get(0).getPreUltInsNo());
+				indto.setPostDeptCode(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostDeptCode(),selectDocReqKnrInsChangeList.get(0).getPreDeptCode()));
+				if(StringUtils.isZ(selectDocReqKnrInsChangeList.get(0).getPostDeptCode())) {
+					indto.setPostDeptKn("");
+					indto.setPostDeptKj("");
+				}else {
+					indto.setPostDeptKn(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostDeptKn(),selectDocReqKnrInsChangeList.get(0).getPreDeptKn()));
+					indto.setPostDeptKj(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostDeptKj(),selectDocReqKnrInsChangeList.get(0).getPreDeptKj()));
+				}
+				indto.setPostTitleCode(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostTitleCode(),selectDocReqKnrInsChangeList.get(0).getPreTitleCode()));
+				indto.setPostJobForm(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostJobForm(),selectDocReqKnrInsChangeList.get(0).getPreJobForm()));
+				indto.setPostDcc(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostDcc(),selectDocReqKnrInsChangeList.get(0).getPreDcc()));
+				indto.setPostUnivPosCode(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostUnivPosCode(),selectDocReqKnrInsChangeList.get(0).getPreUnivPosCode()));
+				indto.setPostInsAbbrName(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostInsAbbrName(),selectDocReqKnrInsChangeList.get(0).getPreInsAbbrName()));
 
+			}
 			// 表示する適用日の設定
 			if (StringUtils.isEmpty(selectDocReqKnrInsChangeList.get(0).getTekiyoYmd())) {
 				String tempDispTekiyoYmd = indto.getTekiyoInitDay();
@@ -571,8 +615,23 @@ public class ND101Service extends BaseService {
 				tRdmHcpKmuReqInsData.setInsNoMt(indto.getPreInsNo());
 				if ("0".equals(indto.getMovemedEditFlg())) {
 					tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+					tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
+					tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
+					tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
+					tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
+					tRdmHcpKmuReqInsData.setUnivPosCodeAf(indto.getPostUnivPosCode());
+					tRdmHcpKmuReqInsData.setTitleCodeAf(indto.getPostTitleCode());
+					tRdmHcpKmuReqInsData.setDccTypeAf(indto.getPostDcc());
 				}else {
 					tRdmHcpKmuReqInsData.setInsNoSk(indto.getPreInsNo());
+					// 変更前と比較し同一ならNULL、""に変更なら"Z"、それ以外に変更なら変更後の値をセット
+					tRdmHcpKmuReqInsData.setJobFormAf(getUpdStr(indto.getPostJobForm(), indto.getPreJobForm()));
+					tRdmHcpKmuReqInsData.setDeptCodeAf(getUpdStr(indto.getPostDeptCode(), indto.getPreDeptCode()));
+					tRdmHcpKmuReqInsData.setDeptKanjiAf(getUpdStr(indto.getPostDeptKj(), indto.getPreDeptKj()));
+					tRdmHcpKmuReqInsData.setDeptKanaAf(getUpdStr(indto.getPostDeptKn(), indto.getPreDeptKn()));
+					tRdmHcpKmuReqInsData.setUnivPosCodeAf(getUpdStr(indto.getPostUnivPosCode(),indto.getPreUnivPosCode()));
+					tRdmHcpKmuReqInsData.setTitleCodeAf(getUpdStr(indto.getPostTitleCode(),indto.getPreTitleCode()));
+					tRdmHcpKmuReqInsData.setDccTypeAf(getUpdStr(indto.getPostDcc(),indto.getPreDcc()));
 				}
 				tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(indto.getPreJobForm(), ""));
 				tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(indto.getPreDeptCode(), ""));
@@ -581,13 +640,7 @@ public class ND101Service extends BaseService {
 				tRdmHcpKmuReqInsData.setUnivPosCodeBf(indto.getPreUnivPosCode());
 				tRdmHcpKmuReqInsData.setTitleCodeBf(indto.getPreTitleCode());
 				tRdmHcpKmuReqInsData.setDccTypeBf(indto.getPreDcc());
-				tRdmHcpKmuReqInsData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
-				tRdmHcpKmuReqInsData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
-				tRdmHcpKmuReqInsData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
-				tRdmHcpKmuReqInsData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
-				tRdmHcpKmuReqInsData.setUnivPosCodeAf(indto.getPostUnivPosCode());
-				tRdmHcpKmuReqInsData.setTitleCodeAf(indto.getPostTitleCode());
-				tRdmHcpKmuReqInsData.setDccTypeAf(indto.getPostDcc());
+
 				//tRdmHcpKmuReqInsData.setUltDocNo(indto.getUltDocNo());
 				// 異動でない（異動元と異動先の施設コードが同じ、異動先のULT施設コードがnull）場合、現在の所属施設をセット
 //				if (!(indto.getPreUltInsNo().equals(indto.getPostUltInsNo())
@@ -605,16 +658,26 @@ public class ND101Service extends BaseService {
 				tRdmHcpKmuReqUpdData.setReqId(reqId);
 				if ("0".equals(indto.getMovemedEditFlg())) {
 					tRdmHcpKmuReqUpdData.setInsNoSk(StringUtils.nvl(indto.getPostInsNo(), ""));
+					tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
+					tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
+					tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
+					tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
+					tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(indto.getPostUnivPosCode(), ""));
+					tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(indto.getPostTitleCode(), ""));
+					tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(indto.getPostDcc(), ""));
 				} else {
 					tRdmHcpKmuReqUpdData.setInsNoSk(indto.getPreInsNo());
+					// 変更前と比較し同一ならNULL、""に変更なら"Z"、それ以外に変更なら変更後の値をセット
+					tRdmHcpKmuReqUpdData.setJobFormAf(getUpdStr(indto.getPostJobForm(), indto.getPreJobForm()));
+					tRdmHcpKmuReqUpdData.setDeptCodeAf(getUpdStr(indto.getPostDeptCode(), indto.getPreDeptCode()));
+					tRdmHcpKmuReqUpdData.setDeptKanjiAf(getUpdStr(indto.getPostDeptKj(), indto.getPreDeptKj()));
+					tRdmHcpKmuReqUpdData.setDeptKanaAf(getUpdStr(indto.getPostDeptKn(), indto.getPreDeptKn()));
+					tRdmHcpKmuReqUpdData.setUnivPosCodeAf(getUpdStr(indto.getPostUnivPosCode(),indto.getPreUnivPosCode()));
+					tRdmHcpKmuReqUpdData.setTitleCodeAf(getUpdStr(indto.getPostTitleCode(),indto.getPreTitleCode()));
+					tRdmHcpKmuReqUpdData.setDccTypeAf(getUpdStr(indto.getPostDcc(),indto.getPreDcc()));
 				}
-				tRdmHcpKmuReqUpdData.setJobFormAf(StringUtils.nvl(indto.getPostJobForm(), ""));
-				tRdmHcpKmuReqUpdData.setDeptCodeAf(StringUtils.nvl(indto.getPostDeptCode(), ""));
-				tRdmHcpKmuReqUpdData.setDeptKanjiAf(StringUtils.nvl(indto.getPostDeptKj(), ""));
-				tRdmHcpKmuReqUpdData.setDeptKanaAf(StringUtils.nvl(indto.getPostDeptKn(), ""));
-				tRdmHcpKmuReqUpdData.setUnivPosCodeAf(StringUtils.nvl(indto.getPostUnivPosCode(), ""));
-				tRdmHcpKmuReqUpdData.setTitleCodeAf(StringUtils.nvl(indto.getPostTitleCode(), ""));
-				tRdmHcpKmuReqUpdData.setDccTypeAf(StringUtils.nvl(indto.getPostDcc(), ""));
+				tRdmHcpKmuReqUpdData.checkSetNull();
+
 				// ult医師コード最新化
 				SelectDocReqKnrInsChangeEntity selectDocReqKnrInsChangeEntity = new SelectDocReqKnrInsChangeEntity();
 				selectDocReqKnrInsChangeEntity.setInReqFlg(0);
@@ -976,18 +1039,19 @@ public class ND101Service extends BaseService {
 			}
 
 			// 整合性チェック
-			// 同じ医師で同じ施設に対しての申請がすでに存在している場合
-			paramEntity.setSqlId("selectNd101DupData");
-			paramEntity.setInDocNo(indto.getDocNo());
-			paramEntity.setInInsNo(indto.getPreInsNo());
-			paramEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
-			List<SelectNd101MainDataEntity> mainDataEntityList = dao.select(paramEntity);
-			if (mainDataEntityList.size() > 0) {
-				// 重複する申請が行われています。（医師コード）
-				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "医師コード") + "\n";
-				errChk = true;
+			if ("0".equals(indto.getMovemedEditFlg())) {//建物
+				// 同じ医師で同じ施設に対しての申請がすでに存在している場合
+				paramEntity.setSqlId("selectNd101DupData");
+				paramEntity.setInDocNo(indto.getDocNo());
+				paramEntity.setInInsNo(indto.getPreInsNo());
+				paramEntity.setInReqId(StringUtils.setEmptyToNull(indto.getReqId()));
+				List<SelectNd101MainDataEntity> mainDataEntityList = dao.select(paramEntity);
+				if (mainDataEntityList.size() > 0) {
+					// 重複する申請が行われています。（医師コード）
+					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "医師コード") + "\n";
+					errChk = true;
+				}
 			}
-
 			// 適用日が翌営業日以降ではない場合
 			if (indto.getSelectDay() != null && !indto.getSelectDay().isEmpty()) {
 				// 翌日日付_RDM用カレンダー(オンライン用)_生成用エンティティ
@@ -1075,4 +1139,23 @@ public class ND101Service extends BaseService {
 		}
 		return errChk;
 	}
+
+    /**
+     * 変更前文字列と変更後文字列を比較し、同一なら空文字、
+     * 不一致かつ変更後文字列が空文字ならZ、不一致かつ変更後が空文字以外なら変更後文字列を返す
+     * @return
+     */
+    public static String getUpdStr(String strNew, String strOld) {
+    	String sN = StringUtils.nvl(strNew, "");
+    	String sO = StringUtils.nvl(strOld, "");
+        if (sN.equals(sO)) {
+            return null;
+        } else {
+        	if(StringUtils.isEmpty(strNew)) {
+        		return "Z";
+        	}else {
+        		return strNew;
+        	}
+        }
+    }
 }

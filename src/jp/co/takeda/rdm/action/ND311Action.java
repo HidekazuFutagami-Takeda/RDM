@@ -306,7 +306,7 @@ public class ND311Action extends BaseAction<ND311DTO> {
 			}
 
 			if (Objects.deepEquals(dto.getErrorCheckFlg(), "3")) {
-				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.I010);// 廃業・死亡の申請がされています。よろしいですか？
+				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W038);// 医師免許返納・死亡の申請されているため申請できません。
 			}
 			//既存の勤務先施設と同じ
 			if (Objects.deepEquals(dto.getErrorCheckFlg(), "4")) {

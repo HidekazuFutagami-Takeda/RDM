@@ -203,6 +203,23 @@
 		AND
 			KMU_REQ.INS_NO_SK = #{insNoSk} --施設固定コード(異動先) 画面隠し項目
 		<if test="paramReqId != null">AND KMU_REQ.REQ_ID <![CDATA[<>]]> #{paramReqId}</if>
+		UNION
+		SELECT
+			KMU_REQ.DOC_NO
+		FROM
+			T_RDM_HCP_KMU_REQ KMU_REQ --勤務先_申請管理
+		INNER JOIN
+			T_RDM_REQ_KNR REQ_KNR	--申請管理
+		ON
+			KMU_REQ.REQ_ID = REQ_KNR.REQ_ID --申請ID
+		WHERE
+			REQ_KNR.REQ_TYPE IN ('42') --申請区分 '42'(医療機関への異動)
+		AND
+			REQ_KNR.REQ_STS IN ('03','13','04','14') --申請ステータス '03'(承認待ち)、'13'(ULT承認待ち)、'04'(承認済み)、'14'(ULT承認済み)
+		AND
+			KMU_REQ.DOC_NO = #{docNo} --医師固定コード　画面隠し項目
+		AND
+			KMU_REQ.INS_NO_SK = #{insNoSk} --施設固定コード(異動先) 画面隠し項目
 		</if>
 
 		<if test="errorCheckFlg == 4">
@@ -214,13 +231,13 @@
 		INNER JOIN
 			T_RDM_REQ_KNR REQ_KNR	--申請管理
 		ON
-			REQ_KNR.REQ_ID = REQ_KNR.REQ_ID --申請ID
+			REQ_KNR.REQ_ID = HCP_REQ.REQ_ID --申請ID
 		WHERE
 			REQ_KNR.REQ_TYPE IN ('33')--申請区分 '33'(医師削除)
 		AND
 			REQ_KNR.REQ_STS IN ('03','13','04','14') --申請ステータス '03'(承認待ち)、'13'(ULT承認待ち)、'04'(承認済み)、'14'(ULT承認済み)
 		AND
-			REQ_KNR.REQ_ID = #{paramReqId}--申請ID
+			HCP_REQ.DOC_NO = #{docNo} --医師固定コード　画面隠し項目
 
 		</if>
 		<if test="errorCheckFlg == 5">

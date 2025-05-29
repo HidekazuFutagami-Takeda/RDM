@@ -412,7 +412,8 @@ public class RdmConstantsData {
     public static final String JKR000_R060 = "JKR000-R060";
 
     /** pemファイル格納場所 */
-    public static final String PEM_FILE_AREA = "/oracle/jasper/public.pem";
+    //public static final String PEM_FILE_AREA = "/oracle/jasper/public.pem";
+    public static final String PEM_FILE_AREA = "/oracle/keyfile/server.crt";
     /** コード：X509 */
     public static final String TYPE_X509 = "X509";
     /** 10分 */

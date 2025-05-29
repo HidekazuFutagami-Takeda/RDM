@@ -1285,7 +1285,7 @@ public class ND301Service extends BaseService {
 		outMainList.clear();
 		outMainList = dao.select(inEntityCmb);
 		LinkedHashMap<String, String> mapHomeTown = new LinkedHashMap<String, String>();
-		mapHomeTown.put("", "--なし--");
+//		mapHomeTown.put("", "--なし--");
 		for (SelectComboListEntity outEntity : outMainList) {
 			mapHomeTown.put(outEntity.getValue(), outEntity.getValue() + ":" + outEntity.getValueKanji());
 		}

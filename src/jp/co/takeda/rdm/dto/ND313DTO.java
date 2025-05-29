@@ -490,6 +490,11 @@ public class ND313DTO extends BaseDTO implements Serializable {
 	 */
 	private Boolean fbReqFlg;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
 
     /**
      * デフォルトのコンストラクタ。
@@ -1703,6 +1708,21 @@ public class ND313DTO extends BaseDTO implements Serializable {
 	 */
 	public void setFbReqFlg(Boolean fbReqFlg) {
 		this.fbReqFlg = fbReqFlg;
+	}
+
+	/**
+	 * ND313DTO.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 

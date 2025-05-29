@@ -419,6 +419,12 @@ public class ND305DTO extends BaseDTO implements Serializable {
 	private String skInsInsClass;
 
 	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
+	/**
 	 * コンボボックス_復活理由
 	 * @generated
 	 */
@@ -1423,6 +1429,21 @@ public class ND305DTO extends BaseDTO implements Serializable {
 	 */
 	public void setSkInsInsClass(String skInsInsClass) {
 		this.skInsInsClass = skInsInsClass;
+	}
+
+	/**
+	 * ND305DTO.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 	/**

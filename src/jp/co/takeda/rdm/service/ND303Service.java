@@ -297,7 +297,11 @@ public class ND303Service extends BaseService {
 			}
 		}
 		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
-			indto.setFbReqFlg(true);//初期値はチェックON
+			if(StringUtils.isEmpty(indto.getUltDocNo())) {
+				indto.setFbReqFlg(false);//ULTと紐付けが無い場合は初期値OFF
+			} else {
+				indto.setFbReqFlg(true);//ULTありは初期値ON
+			}
 		}
 //		indto.setHcpSocietyDataChgFlg("0");
 //		indto.setHcpPublicDataChgFlg("0");
@@ -647,6 +651,11 @@ public class ND303Service extends BaseService {
 					updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
 					updateEntity1.setReqYmdhms(strDate); // 申請日時
 					updateEntity1.setReqComment(indto.getReqComment());//　申請コメント
+					if(StringUtils.isEmpty(indto.getUltDocNo())) {
+						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+					}else {
+						updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+					}
 				}
 				if ("1".equals(indto.getButtonFlg())) {//承認
 					if(reqChl.equals("3")) {//ULT起因
@@ -1207,7 +1216,11 @@ public class ND303Service extends BaseService {
 				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity1.setUpdShaYmd(currentDt);//更新日
 				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					insEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(insEntity1);
 
 				// 医師_申請管理

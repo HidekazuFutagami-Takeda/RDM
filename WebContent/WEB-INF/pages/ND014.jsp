@@ -239,6 +239,7 @@
         <s:hidden name="docKanjiSei"/>
         <s:hidden name="docKanjiMei"/>
 		<s:hidden name="reqChl"/>
+		<s:hidden name="ultDocNo"/>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>

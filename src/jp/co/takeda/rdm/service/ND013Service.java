@@ -74,6 +74,8 @@ public class ND013Service extends BaseService {
         	dto.setParamDocNo(entity.getDocNo());
         	//医師薬剤師区分
         	dto.setDocType(entity.getDocType());
+        	//ULT医師C
+        	dto.setUltDocNo(entity.getUltDocNo());
         	//ULT医師名（漢字）
         	dto.setUltKanj(entity.getUltKanj());
         	//ULT医師名（ｶﾅ）

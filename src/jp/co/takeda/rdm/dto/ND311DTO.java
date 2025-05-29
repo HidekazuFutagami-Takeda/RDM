@@ -404,6 +404,12 @@ public class ND311DTO extends BaseDTO implements Serializable {
 	 */
 	private String editApprFlg;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
@@ -1395,6 +1401,21 @@ public class ND311DTO extends BaseDTO implements Serializable {
 	 */
 	public void setEditApprFlg(String editApprFlg) {
 		this.editApprFlg = editApprFlg;
+	}
+
+	/**
+	 * ND311DTO.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 

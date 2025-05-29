@@ -132,6 +132,7 @@
 	<s:hidden name="tekiyoYmd" />
 	<s:hidden name="insNoSk" />
 	<s:hidden name="ultInsNo" />
+	<s:hidden name="ultDocNo"/>
 	<s:hidden name="deptCodeAf" />
 	<s:hidden name="deptKn" />
 	<s:hidden name="saveButtonFlg" />

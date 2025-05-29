@@ -182,6 +182,12 @@ public class MRdmHcpWorkEntity extends BaseEntity implements Serializable {
     */
    private String dummyHco;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
     /**
      * コンストラクタ
      * @generated
@@ -581,6 +587,21 @@ public class MRdmHcpWorkEntity extends BaseEntity implements Serializable {
 
 	public void setSosCd(String sosCd) {
 		this.sosCd = sosCd;
+	}
+
+	/**
+	 * MRdmHcpWorkEntity.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 

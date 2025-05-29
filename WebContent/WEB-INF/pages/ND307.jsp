@@ -428,7 +428,13 @@
 
 			    	<s:if test="Nd307RejectFlg == 1 && Nd307RejectActiveFlg == 1">
                 		<s:if test='%{reqSts == "03"}'>
-	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	                		<s:if test='%{ultDocNo == null || ultDocNo == ""}'>
+	                			<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+								<s:hidden name="fbReqFlg"/>
+	                		</s:if>
+	                		<s:else>
+		               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+		               			</s:else>
 	               		</s:if>
 	               		<s:else>
 	               			<s:hidden name="fbReqFlg"/>

@@ -147,7 +147,11 @@ public class ND315Service extends BaseService {
 			}
 		}
 		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
-			indto.setFbReqFlg(true);//初期値はチェックON
+			if(StringUtils.isEmpty(indto.getUltDocNo())) {
+				indto.setFbReqFlg(false);//ULTと紐付けが無い場合は初期値OFF
+			} else {
+				indto.setFbReqFlg(true);//ULTありは初期値ON
+			}
 		}
 		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
@@ -294,6 +298,11 @@ public class ND315Service extends BaseService {
 					updateEntity1.setReqJgiName(loginInfo.getJgiName());// 申請者氏名
 					updateEntity1.setReqYmdhms(strDate); // 申請日時
 					updateEntity1.setReqComment(indto.getReqComment());//　申請コメント
+					if(StringUtils.isEmpty(indto.getUltDocNo())) {
+						updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+					}else {
+						updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+					}
 				}
 				if ("1".equals(indto.getButtonFlg())) {//承認
 					if(reqChl.equals("3")) {//ULT起因
@@ -442,7 +451,11 @@ public class ND315Service extends BaseService {
 				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity1.setUpdShaYmd(currentDt);//更新日
 				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					insEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(insEntity1);
 
 				// 医師_申請管理
@@ -507,7 +520,11 @@ public class ND315Service extends BaseService {
 					insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 					insEntity1.setUpdShaYmd(currentDt);//更新日
 					insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-
+					if(StringUtils.isEmpty(indto.getUltDocNo())) {
+						insEntity1.setFbReqFlg("0");//FB申請要否フラグ
+					}else {
+						insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+					}
 					dao.insertByValue(insEntity1);
 
 					// 勤務先_申請管理
@@ -585,7 +602,11 @@ public class ND315Service extends BaseService {
 				tRdmReqKnrEntity.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				tRdmReqKnrEntity.setUpdShaYmd(currentDt);//更新日
 				tRdmReqKnrEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					tRdmReqKnrEntity.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrEntity.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(tRdmReqKnrEntity);
 
 				// 勤務先_申請管理
@@ -682,7 +703,11 @@ public class ND315Service extends BaseService {
 						updateLinkEntity.setAprShaName(loginInfo.getJgiName());// 承認者氏名
 						updateLinkEntity.setAprYmdhms(strDate);// 承認日時
 						updateLinkEntity.setAprComment(indto.getAprComment());//承認者コメント
-
+						if(indto.getFbReqFlg()) {
+							updateLinkEntity.setFbReqFlg("1");//FB申請要否フラグ
+						}else {
+							updateLinkEntity.setFbReqFlg("0");//FB申請要否フラグ
+						}
 					}
 					if ("2".equals(indto.getButtonFlg())) {//却下
 						if(reqChl.equals("3")) {//ULT起因

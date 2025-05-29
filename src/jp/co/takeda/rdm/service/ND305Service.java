@@ -172,7 +172,11 @@ public class ND305Service extends BaseService {
 			}
 		}
 		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
-			indto.setFbReqFlg(true);//初期値はチェックON
+			if(StringUtils.isEmpty(indto.getUltDocNo())) {
+				indto.setFbReqFlg(false);//ULTと紐付けが無い場合は初期値OFF
+			} else {
+				indto.setFbReqFlg(true);//ULTありは初期値ON
+			}
 		}
 		indto.setLoginJokenSetCd(loginInfo.getJokenSetCd());//MDM管理者：JKN0850 全MR：JKN0023
 		indto.setLoginJgiNo(loginInfo.getJgiNo());
@@ -489,7 +493,11 @@ public class ND305Service extends BaseService {
 				insEntity1.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity1.setUpdShaYmd(currentDt);//更新日
 				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
-
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					insEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(insEntity1);
 
 				// 医師_申請管理

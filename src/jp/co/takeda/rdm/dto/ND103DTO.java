@@ -389,6 +389,12 @@ public class ND103DTO extends BaseDTO implements Serializable {
 	 */
 	private String editApprFlg;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
     /**
      * @役職_ドロップダウンリスト
      */
@@ -1561,6 +1567,21 @@ public class ND103DTO extends BaseDTO implements Serializable {
 	 */
 	public void setAprJgiNo(Integer aprJgiNo) {
 		this.aprJgiNo = aprJgiNo;
+	}
+
+	/**
+	 * ND103DTO.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 

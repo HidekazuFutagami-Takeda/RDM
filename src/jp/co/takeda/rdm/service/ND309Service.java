@@ -88,7 +88,11 @@ public class ND309Service extends BaseService {
 			indto.setDispTekiyoYmd(indto.getSelectDay());
 		}
 		if(loginInfo.getJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
-			indto.setFbReqFlg(true);//初期値はチェックON
+			if(StringUtils.isEmpty(indto.getUltDocNo())) {
+				indto.setFbReqFlg(false);//ULTと紐付けが無い場合は初期値OFF
+			} else {
+				indto.setFbReqFlg(true);//ULTありは初期値ON
+			}
 		}
 //		// 必須入力チェック
 //
@@ -721,6 +725,11 @@ public class ND309Service extends BaseService {
         		tRdmReqKnrInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
         		tRdmReqKnrInsData.setUpdShaYmd(systemDate);
         		tRdmReqKnrInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+				}
 
         		dao.insertByValue(tRdmReqKnrInsData);
 
@@ -763,6 +772,11 @@ public class ND309Service extends BaseService {
 
 				tRdmReqKnrEntity.setUpdShaYmd(systemDate);
 				tRdmReqKnrEntity.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					tRdmReqKnrEntity.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrEntity.setFbReqFlg("1");//FB申請要否フラグ
+				}
 
 				dao.update(tRdmReqKnrEntity);
 			}

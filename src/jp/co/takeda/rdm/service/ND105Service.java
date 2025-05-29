@@ -384,6 +384,11 @@ public class ND105Service extends BaseService {
 				updateEntity1.setAprMemo(indto.getAprMemo());//承認者メモ
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.update(updateEntity1);
 
 				//医師申請管理/////////////////////////////////////////////////////////////////////////
@@ -553,7 +558,11 @@ public class ND105Service extends BaseService {
 		        String sysDateTime = fmtDateTime.format(currentDt);
 
 				insEntity1.setReqYmdhms(sysDateTime);//申請日時
-
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					insEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(insEntity1);
 
 				// 医師_申請管理

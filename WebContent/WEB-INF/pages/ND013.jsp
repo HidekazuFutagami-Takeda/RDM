@@ -201,6 +201,7 @@
 	<s:hidden name="docNo" />
 	<s:hidden name="paramDocNo" />
 	<s:hidden name="tkdDocNo"/>
+	<s:hidden name="ultDocNo"/>
 	<s:hidden name="insNo"/>
 	<s:hidden name="paramInsNo" />
 	<s:hidden name="movemedEditFlg"/>

@@ -170,6 +170,7 @@ public class ND104Service extends BaseService {
 
 			// 申請者従業員番号
 			dto.setJgiNo(Integer.parseInt(entity.getReqJgiNo()));
+			dto.setReqJgiNo(entity.getReqJgiNo());
 			dto.setBumonRyakuName(entity.getReqShz()); // 所属組織名（部門名略式）
 			// 申請者所属リージョン
 			dto.setBrCode(entity.getBrCode());
@@ -185,6 +186,7 @@ public class ND104Service extends BaseService {
 			dto.setDocNo(entity.getDocNo());
 			// ULT医師コード
 			dto.setUrlDocNo(entity.getUrlDocNo());
+			dto.setUltDocNo(entity.getUrlDocNo());
 			// 施設略式漢字名
 			dto.setInsAbbrName(entity.getInsAbbrName());
 			// 所属部科漢字名
@@ -417,6 +419,11 @@ public class ND104Service extends BaseService {
 			tRdmReqKnrInsData.setInsShaId(String.valueOf(loginInfo.getJgiNo()));
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
 			tRdmReqKnrInsData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 			// 申請管理 insert処理
 			dao.insertByValue(tRdmReqKnrInsData);
 		} else {
@@ -438,7 +445,11 @@ public class ND104Service extends BaseService {
 			tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
 			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);// 更新日
 			tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));// 更新者
-
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 			dao.update(tRdmReqKnrUpdData);
 		}
 

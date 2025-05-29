@@ -397,6 +397,12 @@ public class ND014DTO extends BaseDTO implements Serializable {
 	 */
 	private String reqChl;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
@@ -1327,6 +1333,21 @@ public class ND014DTO extends BaseDTO implements Serializable {
 	 */
 	public void setReqChl(String reqChl) {
 		this.reqChl = reqChl;
+	}
+
+	/**
+	 * ND014DTO.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 	/**

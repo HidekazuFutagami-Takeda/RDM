@@ -273,6 +273,12 @@ public class SelectND014MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String reqChl;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
     /**
      * コンストラクタ
      * @generated
@@ -976,6 +982,23 @@ public class SelectND014MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setReqChl(String reqChl) {
 		this.reqChl = reqChl;
+	}
+
+
+	/**
+	 * SelectND014MainDataEntity.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 

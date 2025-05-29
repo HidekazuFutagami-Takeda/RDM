@@ -255,7 +255,11 @@ public class ND313Service extends BaseService {
 
 		}
 		if(dto.getLoginJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
-			dto.setFbReqFlg(true);//初期値はチェックON
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				dto.setFbReqFlg(false);//ULTと紐付けが無い場合は初期値OFF
+			} else {
+				dto.setFbReqFlg(true);//ULTありは初期値ON
+			}
 		}
 
 		// END UOC
@@ -340,6 +344,11 @@ public class ND313Service extends BaseService {
 			tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
 			tRdmReqKnrInsData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 			// 申請管理 insert処理
 			dao.insertByValue(tRdmReqKnrInsData);
 		} else {
@@ -361,7 +370,11 @@ public class ND313Service extends BaseService {
 			tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
 			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);// 更新日
 			tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));// 更新者
-
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 			dao.update(tRdmReqKnrUpdData);
 		}
 

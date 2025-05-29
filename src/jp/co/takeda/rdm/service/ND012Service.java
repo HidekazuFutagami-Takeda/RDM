@@ -1088,6 +1088,11 @@ public class ND012Service extends BaseService {
 				SimpleDateFormat fmtDateTime = new SimpleDateFormat("yyyyMMddHHmmss");
 		        String sysDateTime = fmtDateTime.format(currentDt);
 				updateEntity1.setReqYmdhms(sysDateTime);//申請日時
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.update(updateEntity1);
 
 				//医師申請管理/////////////////////////////////////////////////////////////////////////
@@ -1874,7 +1879,11 @@ public class ND012Service extends BaseService {
 		        String sysDateTime = fmtDateTime.format(currentDt);
 
 				insEntity1.setReqYmdhms(sysDateTime);//申請日時
-
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					insEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(insEntity1);
 
 				// 医師_申請管理

@@ -152,8 +152,12 @@ public class ND313Action extends BaseAction<ND313DTO> {
 
     	dto.setMsgStr(null);
 
-		if(loginInfo.getJokenSetCd() == "1") {
-			dto.setFbReqFlg(true);//初期値はチェックON
+		if(loginInfo.getJokenFlg() == "1") {
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				dto.setFbReqFlg(false);//ULTと紐付けが無い場合は初期値OFF
+			} else {
+				dto.setFbReqFlg(true);//ULTありは初期値ON
+			}
 		}
         String reqSts = dto.getReqStsCd();
       //申請ステータスが保存済み、初回登録以外の場合

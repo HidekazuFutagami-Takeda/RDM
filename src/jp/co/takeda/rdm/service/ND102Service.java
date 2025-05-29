@@ -477,6 +477,11 @@ public class ND102Service extends BaseService {
     	        String sysDateTime = fmtDateTime.format(systemDate);
 
     	        tRdmReqKnrInsData.setReqYmdhms(sysDateTime);//申請日時
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+				}
         		dao.insertByValue(tRdmReqKnrInsData);
 
         	}else {
@@ -512,7 +517,12 @@ public class ND102Service extends BaseService {
     	        String sysDateTime = fmtDateTime.format(systemDate);
 
     	        tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);//申請日時
-        		dao.update(tRdmReqKnrUpdData);
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+				}
+				dao.update(tRdmReqKnrUpdData);
             }
 
         	SimpleDateFormat sdfDateTime2 = new SimpleDateFormat("yyyy/MM/dd HH:mm");

@@ -89,7 +89,7 @@ public class ND014Service extends BaseService {
 				indto.setTkdDocNo(StringUtils.nvl(mainDataEntity.getTkdDocNo(), ""));
 				indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
 				indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
-
+				indto.setUltDocNo(StringUtils.nvl(mainDataEntity.getUltDocNo(), ""));
 				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
 				indto.setDelReason(StringUtils.nvl(mainDataEntity.getDelReason(), ""));
@@ -134,7 +134,7 @@ public class ND014Service extends BaseService {
 				indto.setTkdDocNo(StringUtils.nvl(mainDataEntity.getTkdDocNo(), ""));
 				indto.setTkdDocNm(StringUtils.nvl(mainDataEntity.getTkdDocNm(), ""));
 				indto.setTkdDocKana(StringUtils.nvl(mainDataEntity.getTkdDocKana(), ""));
-
+				indto.setUltDocNo(StringUtils.nvl(mainDataEntity.getUltDocNo(), ""));
 				indto.setDocKanjiSei(StringUtils.nvl(mainDataEntity.getDocKanjiSei(), ""));
 				indto.setDocKanjiMei(StringUtils.nvl(mainDataEntity.getDocKanjiMei(), ""));
 
@@ -451,6 +451,11 @@ public class ND014Service extends BaseService {
 				updateEntity1.setUpdShaYmd(currentDt);//更新日
 				updateEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 				updateEntity1.setReqYmdhms(strDate);//申請日時
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					updateEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					updateEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.update(updateEntity1);
 
 				//医師申請管理/////////////////////////////////////////////////////////////////////////
@@ -624,7 +629,11 @@ public class ND014Service extends BaseService {
 				insEntity1.setUpdShaYmd(currentDt);//更新日
 				insEntity1.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
 				insEntity1.setReqYmdhms(strDate);//申請日時
-
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					insEntity1.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					insEntity1.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(insEntity1);
 
 				// 医師_申請管理

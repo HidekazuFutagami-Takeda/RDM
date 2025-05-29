@@ -207,6 +207,12 @@ public class ND013DTO extends BaseDTO implements Serializable {
      */
     private String delFlg;
 
+	/**
+	 * ULT医師C
+	 * @generated
+	 */
+	private String ultDocNo;
+
     /**
      * 遷移用
      *
@@ -660,6 +666,21 @@ public class ND013DTO extends BaseDTO implements Serializable {
 	 */
 	public void setTabFlg(String tabFlg) {
 		this.tabFlg = tabFlg;
+	}
+
+	/**
+	 * ND013DTO.javaultDocNoを設定
+	 * @return ultDocNo
+	 */
+	public String getUltDocNo() {
+		return ultDocNo;
+	}
+
+	/**
+	 * @param ultDocNo セットする ultDocNo
+	 */
+	public void setUltDocNo(String ultDocNo) {
+		this.ultDocNo = ultDocNo;
 	}
 
 }

@@ -778,7 +778,13 @@
                 <s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                 	<s:if test='%{btnEnableFlg == "1"}'>
                 		<s:if test='%{reqStsCd == "03"}'>
-	               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	                		<s:if test='%{ultDocNo == null || ultDocNo == ""}'>
+	                			<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+								<s:hidden name="fbReqFlg"/>
+	                		</s:if>
+	                		<s:else>
+		               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+		               			</s:else>
 	               		</s:if>
 	               		<s:else>
 	               			<s:hidden name="fbReqFlg"/>

@@ -7,6 +7,7 @@
         <result column="DOC_KANA" property="docKana"/>
         <result column="DOC_NO" property="docNo"/>
         <result column="DOC_TYPE" property="docType"/>
+        <result column="ULT_DOC_NO" property="ultDocNo"/>
         <result column="ISHI_NM" property="ultKanj"/>
         <result column="ISHI_NM_KANA" property="ultKana"/>
         <result column="DEL_FLG" property="delFlg"/>
@@ -38,6 +39,7 @@
 			,HCP_MST.DOC_KANA --武田医師名（ｶﾅ）
 			,HCP_MST.DOC_NO --医師固定C
 			,CODE_MST.VALUE1_KANJ AS DOC_TYPE --医師薬剤師区分
+			,HCP_MST.ULT_DOC_NO
 			,MDB_HCP_MST.ISHI_NM --ULT医師名（漢字）
 			,MDB_HCP_MST.ISHI_NM_KANA --ULT医師名（ｶﾅ）
 			,HCP_MST.DEL_FLG --削除フラグ

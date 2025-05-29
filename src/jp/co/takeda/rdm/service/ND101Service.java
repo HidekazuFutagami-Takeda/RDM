@@ -563,6 +563,11 @@ public class ND101Service extends BaseService {
 				String sysDateTime = fmtDateTime.format(systemDate);
 
 				tRdmReqKnrInsData.setReqYmdhms(sysDateTime);// 申請日時
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.insertByValue(tRdmReqKnrInsData);
 
 			} else {
@@ -595,6 +600,11 @@ public class ND101Service extends BaseService {
 				String sysDateTime = fmtDateTime.format(systemDate);
 
 				tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);// 申請日時
+				if(StringUtils.isEmpty(indto.getUltDocNo())) {
+					tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+				}
 				dao.update(tRdmReqKnrUpdData);
 
 			}

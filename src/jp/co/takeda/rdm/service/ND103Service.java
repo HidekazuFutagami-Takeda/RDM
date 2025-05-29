@@ -151,6 +151,7 @@ public class ND103Service extends BaseService {
 			dto.setDocNo(entity.getDocNo());
 			// ULT医師コード
 			dto.setUrlDocNo(entity.getUrlDocNo());
+			dto.setUltDocNo(entity.getUrlDocNo());
 			// 施設略式漢字名
 			dto.setInsAbbrName(entity.getInsAbbrName());
 			// 所属部科漢字名
@@ -387,6 +388,11 @@ public class ND103Service extends BaseService {
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
 			// tRdmReqKnrInsData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
 			tRdmReqKnrInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));// 更新者
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 			// 申請管理 insert処理
 			dao.insertByValue(tRdmReqKnrInsData);
 		} else {
@@ -408,7 +414,11 @@ public class ND103Service extends BaseService {
 			tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);//申請日時
 			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
 			tRdmReqKnrUpdData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
-
+			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+				tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 			dao.update(tRdmReqKnrUpdData);
 		}
 

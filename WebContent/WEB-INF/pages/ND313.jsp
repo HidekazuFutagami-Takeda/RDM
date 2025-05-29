@@ -140,6 +140,7 @@
 	<s:hidden name="insNoMt" />
 	<s:hidden name="paramInsNo" />
 	<s:hidden name="ultInsNo" />
+	<s:hidden name="ultDocNo"/>
 	<s:hidden name="deptCodeBf" />
 	<s:hidden name="deptKn" />
 	<s:hidden name="saveButtonFlg" />
@@ -464,7 +465,13 @@
 	      <td class="comFormTableItem"><nobr>
                 <s:if test='%{reqStsCd == 03 }'>
 					<s:if test='%{actionEdit == "1"}'>
-						<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+						<s:if test='%{ultDocNo == null || ultDocNo == ""}'>
+	                			<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+								<s:hidden name="fbReqFlg"/>
+	                		</s:if>
+	                		<s:else>
+		               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+		               		</s:else>
 	                	<input type="button" value="承認" onclick="ND313Approval()" />
 	                </s:if>
 	                <s:if test='%{actionEdit == "0"}'>

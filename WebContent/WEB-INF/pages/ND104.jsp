@@ -142,6 +142,7 @@
 	<s:hidden name="paramInsNo" />
 	<s:hidden name="paramDocNo" />
 	<s:hidden name="ultInsNo" />
+	<s:hidden name="ultDocNo"/>
 	<s:hidden name="deptCodeBf" />
 	<s:hidden name="deptKn" />
 	<s:hidden name="saveButtonFlg" />

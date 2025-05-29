@@ -27,9 +27,9 @@
     <filter>
         <filter-name>AccessCheck</filter-name>
         <!-- 本番を意識したバージョン（HTTPHeaderから取得する） -->
-        <filter-class>jp.co.takeda.rdm.common.filter.AccessControlHttpHeader</filter-class>
+        <!-- <filter-class>jp.co.takeda.rdm.common.filter.AccessControlHttpHeader</filter-class> -->
         <!-- 開発環境を意識したバージョン（sessionから取得する） -->
-        <!-- <filter-class>jp.co.takeda.rdm.common.filter.AccessControlSession</filter-class> -->
+        <filter-class>jp.co.takeda.rdm.common.filter.AccessControlSession</filter-class>
         <!-- CLEARTRUST で格納されたHTTPヘッダの名前を記載する。-->
         <init-param>
           <param-name>HTTP_HEADER_NAME</param-name>

@@ -143,6 +143,7 @@ public class NF011Action extends BaseAction<NF011DTO> {
         dto.setLoginNm(loginInfo.getJgiName());
         dto.setLoginShzNm(loginInfo.getBumonRyakuName());
         dto.setLoginTrtCd(loginInfo.getTrtCd());
+        dto.setLoginSosCd(loginInfo.getSosCd());
 
         // 遷移パターン　0:完全新規、1:ULTから作成、2：申請データあり
         // ULT施設コード　ありなしで分岐

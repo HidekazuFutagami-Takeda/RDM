@@ -1869,6 +1869,11 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 		document.fm1.functionId.value="Init";
 		document.fm1.target="tantoPopWindow";
 
+		var valSosCd = "";
+		if(document.fm1.loginJokenSetCd.value != "JKN0850"){
+			valSosCd = document.fm1.loginSosCd.value;
+		}
+		document.fm1.sosCd.value = valSosCd;
 		document.fm1.trtCdPop.value = document.fm1.trtCd.value;
 		document.fm1.addrCodePrefPop.value = document.fm1.addrCodePref.value;
 		document.fm1.tkCityCdPop.value = document.fm1.tkCityCd.value;
@@ -2222,6 +2227,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
      <s:hidden name="loginTrtCd"/>
      <s:hidden name="loginBrCd"/>
      <s:hidden name="loginDistCd"/>
+     <s:hidden name="loginSosCd"/>
      <s:hidden name="shnFlg"/>
      <s:hidden name="funcId"/>
 

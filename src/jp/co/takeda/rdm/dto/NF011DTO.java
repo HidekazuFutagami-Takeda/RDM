@@ -82,6 +82,11 @@ public class NF011DTO extends BaseDTO implements Serializable {
 	private String loginTrtCd;
 
 	/**
+	 * ユーザ組織コード
+	 */
+	private String loginSosCd;
+
+	/**
 	 * 画面ＩＤ（共通部分判定用）
 	 * @generated
 	 */
@@ -782,6 +787,21 @@ public class NF011DTO extends BaseDTO implements Serializable {
 	 */
 	public void setLoginTrtCd(String loginTrtCd) {
 		this.loginTrtCd = loginTrtCd;
+	}
+
+	/**
+	 * NF011DTO.javaloginSosCdを設定
+	 * @return loginSosCd
+	 */
+	public String getLoginSosCd() {
+		return loginSosCd;
+	}
+
+	/**
+	 * @param loginSosCd セットする loginSosCd
+	 */
+	public void setLoginSosCd(String loginSosCd) {
+		this.loginSosCd = loginSosCd;
 	}
 
 	/**

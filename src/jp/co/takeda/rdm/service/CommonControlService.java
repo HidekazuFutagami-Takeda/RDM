@@ -109,16 +109,19 @@ public class CommonControlService extends BaseService {
                 MRdmJgiSosMstEntity rdmJgiSosMstParam = new MRdmJgiSosMstEntity();
                 rdmJgiSosMstParam.setJgiNo(loginInfo.getJgiNo());
 
-                MRdmJgiSosMstEntity rdmJgiSosMstEntity = dao.selectByValue(rdmJgiSosMstParam).get(0);
+                List<MRdmJgiSosMstEntity> rdmJgiSosMstEntityList = dao.selectByValue(rdmJgiSosMstParam);
 
-                loginInfo.setJgiName(rdmJgiSosMstEntity.getJgiName());
-                loginInfo.setSosCd(rdmJgiSosMstEntity.getSosCd());
-                loginInfo.setBrCode(rdmJgiSosMstEntity.getBrCode());
-                loginInfo.setDistCode(rdmJgiSosMstEntity.getDistCode());
-                loginInfo.setBumonRyakuName(rdmJgiSosMstEntity.getBumonRyakuName());
-                loginInfo.setBumonRank(rdmJgiSosMstEntity.getBumonRank());
-                loginInfo.setUpSosCd(rdmJgiSosMstEntity.getUpSosCd());
-                loginInfo.setTrtCd(rdmJgiSosMstEntity.getTrtCd());
+                if(!rdmJgiSosMstEntityList.isEmpty()){
+	                MRdmJgiSosMstEntity rdmJgiSosMstEntity = rdmJgiSosMstEntityList.get(0);
+	                loginInfo.setJgiName(rdmJgiSosMstEntity.getJgiName());
+	                loginInfo.setSosCd(rdmJgiSosMstEntity.getSosCd());
+	                loginInfo.setBrCode(rdmJgiSosMstEntity.getBrCode());
+	                loginInfo.setDistCode(rdmJgiSosMstEntity.getDistCode());
+	                loginInfo.setBumonRyakuName(rdmJgiSosMstEntity.getBumonRyakuName());
+	                loginInfo.setBumonRank(rdmJgiSosMstEntity.getBumonRank());
+	                loginInfo.setUpSosCd(rdmJgiSosMstEntity.getUpSosCd());
+	                loginInfo.setTrtCd(rdmJgiSosMstEntity.getTrtCd());
+                }
 
                 SRdmMJgiJokenEntity jokenParam = new SRdmMJgiJokenEntity();
                 //従業員番号設定

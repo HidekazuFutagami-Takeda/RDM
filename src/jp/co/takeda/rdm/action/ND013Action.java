@@ -136,19 +136,21 @@ public class ND013Action extends BaseAction<ND013DTO> {
         		//「勤務先追加」のエラーの場合
         		if (Objects.equals(dto.getErrorCheckFlg(), "1")) {
         			dto.setButtonFlg("1");
-        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I010);//
+        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W038);//
         			//ダイアログメッセージ定義
-        			dto.setDialog(tmpMsgStr);
-        			dto.setTabFlg(dto.getErrorCheckFlg());
+//        			dto.setDialog(tmpMsgStr);
+//        			dto.setTabFlg(dto.getErrorCheckFlg());
+           			dto.setMsgStr(tmpMsgStr);
         		}
         		//「医師の廃業・死亡」のエラーの場合
         		if (Objects.equals(dto.getErrorCheckFlg(), "2")) {
-        			dto.setButtonFlg("1");
-        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.I011);//
-        			//ダイアログメッセージ定義
-        			dto.setDialog(tmpMsgStr);
-        			//エラーなしならタブ遷移フラグをセットしonloadに渡す
-                	dto.setTabFlg(dto.getErrorCheckFlg());
+        			//dto.setButtonFlg("1");
+        			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W038);//
+//        			//ダイアログメッセージ定義
+//        			dto.setDialog(tmpMsgStr);
+//        			//エラーなしならタブ遷移フラグをセットしonloadに渡す
+//                	dto.setTabFlg(dto.getErrorCheckFlg());
+        			dto.setMsgStr(tmpMsgStr);
         		}
 
         		//「勤務先削除」の重複申請チェックエラーの場合

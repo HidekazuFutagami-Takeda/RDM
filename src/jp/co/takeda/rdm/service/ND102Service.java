@@ -828,17 +828,18 @@ public class ND102Service extends BaseService {
 
 //			// 整合性チェック
 //			// 申請時に既に医師削除申請がされている場合
-			if(!indto.getAlertIgnore().equals("1")) {
+//			if(!indto.getAlertIgnore().equals("1")) {
 				SelectNd101MainDataEntity paramEntity2 = new SelectNd101MainDataEntity();
 				paramEntity2.setSqlId("selectNd101DelData");
 				paramEntity2.setInDocNo(indto.getDocNo());
 				List<SelectNd101MainDataEntity> mainDataEntityList2 = dao.select(paramEntity2);
 				if (mainDataEntityList2.size() > 0) {
 					// 廃業・死亡の申請がされています。よろしいですか？
-					alertErrMsg2 += loginInfo.getMsgData(RdmConstantsData.I010) + "\n";
+//					alertErrMsg2 += loginInfo.getMsgData(RdmConstantsData.I010) + "\n";
+					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W038) + "\n";
 					errChk = true;
 				}
-			}
+//			}
 
 			// 整合性チェック
 			// 申請時に既に医師削除申請がされている場合（承認済）

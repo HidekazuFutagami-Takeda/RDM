@@ -332,7 +332,9 @@ End Function
           <tbody>
             <tr><td align="middle" valign="bottom">
               <span class="comWelcome" id="Welcome">
-                <s:property value="#session.UserInfoKey.jgiName"/>さん
+                <s:if test="#session.UserInfoKey.jgiName != null">
+                  <s:property value="#session.UserInfoKey.jgiName"/>さん
+                </s:if>
               </span>
               <font class="comBannerSecondaryText"><s:property value="%{#dateFormat.format(new java.util.Date())}" /></font></td></tr>
             <tr><td align="middle">&nbsp;</td></tr>
@@ -369,7 +371,9 @@ End Function
       </td>
       <td width="223">
         <span class="comWelcome" id="Welcome">
-          <s:property value="#session.UserInfoKey.jgiName"/>さん
+          <s:if test="#session.UserInfoKey.jgiName != null">
+            <s:property value="#session.UserInfoKey.jgiName"/>さん
+          </s:if>
         </span>
         <br />
         <font class="comBannerSecondaryText"><s:property value="%{#dateFormat.format(new java.util.Date())}" /></font>
@@ -404,7 +408,9 @@ End Function
       </td>
       <td width="223">
         <span class="comWelcome" id="Welcome">
-          <s:property value="#session.UserInfoKey.jgiName"/>さん
+          <s:if test="#session.UserInfoKey.jgiName != null">
+            <s:property value="#session.UserInfoKey.jgiName"/>さん
+          </s:if>
         </span>
         <br />
         <font class="comBannerSecondaryText"><s:property value="%{#dateFormat.format(new java.util.Date())}" /></font>

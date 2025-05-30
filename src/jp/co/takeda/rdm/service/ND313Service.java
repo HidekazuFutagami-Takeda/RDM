@@ -116,36 +116,36 @@ public class ND313Service extends BaseService {
 
 		for (SelectHcpKmuReqDelEntity entity : SelectHcpKmuReqDelList) {
 
-			// 申請者所属
-			dto.setReqShz(entity.getReqShz());
-			// 申請ステータス(名称)
-			for (MRdmCodeMstEntity outEntity : SelectparamStatusList) {
-				if (Objects.deepEquals(entity.getReqSts(), outEntity.getValue1())) {
-					dto.setReqSts(outEntity.getValue1Kanj());
-					break;
-				}
-			}
-
-			// 保存ボタン活性フラグ
-			// '01'(保存済み)、'03'（承認待ち）、'13'(ULT承認待ち)の場合 活性
-			if (Objects.deepEquals(entity.getReqSts(), "01") || Objects.deepEquals(entity.getReqSts(), "03")
-					|| Objects.deepEquals(entity.getReqSts(), "13")) {
-
-			} else {// その他非活
-
-			}
-			if ("JKN0813".equals(dto.getLoginJokenSetCd())) {// 管理者
-				// '01'(保存済み)、'03'（承認待ち）、'13'(ULT承認待ち)の場合 活性
-				if (Objects.deepEquals(entity.getReqSts(), "01") || Objects.deepEquals(entity.getReqSts(), "03")
-						|| Objects.deepEquals(entity.getReqSts(), "13")) {
-					dto.getShinseiButtonFlg();
-				} else {// その他非活
-
-				}
-			} else {
-
-			}
-
+//			// 申請者所属
+//			dto.setReqShz(entity.getReqShz());
+//			// 申請ステータス(名称)
+//			for (MRdmCodeMstEntity outEntity : SelectparamStatusList) {
+//				if (Objects.deepEquals(entity.getReqSts(), outEntity.getValue1())) {
+//					dto.setReqSts(outEntity.getValue1Kanj());
+//					break;
+//				}
+//			}
+//
+//			// 保存ボタン活性フラグ
+//			// '01'(保存済み)、'03'（承認待ち）、'13'(ULT承認待ち)の場合 活性
+//			if (Objects.deepEquals(entity.getReqSts(), "01") || Objects.deepEquals(entity.getReqSts(), "03")
+//					|| Objects.deepEquals(entity.getReqSts(), "13")) {
+//
+//			} else {// その他非活
+//
+//			}
+//			if (RdmConstantsData.RDM_JKN_ADMIN.equals(dto.getLoginJokenSetCd())) {// 管理者
+//				// '01'(保存済み)、'03'（承認待ち）、'13'(ULT承認待ち)の場合 活性
+//				if (Objects.deepEquals(entity.getReqSts(), "01") || Objects.deepEquals(entity.getReqSts(), "03")
+//						|| Objects.deepEquals(entity.getReqSts(), "13")) {
+//					dto.getShinseiButtonFlg();
+//				} else {// その他非活
+//
+//				}
+//			} else {
+//
+//			}
+//
 			// 医師メニュースイッチ
 			String ishiMenu = entity.getIshiMenu().substring(1, 2);
 			// 医師勤務先メニュースイッチ
@@ -160,99 +160,99 @@ public class ND313Service extends BaseService {
 			} else {
 				dto.setActionEdit("1");
 			}
-
-			// 申請者氏名
-			dto.setJgiName(entity.getJgiName());
-			// 申請日時
-			if (!StringUtils.isEmpty(entity.getReqYmdhms())) {
-				String reqYmdhms = entity.getReqYmdhms();
-				String yyyy = reqYmdhms.substring(0, 4);
-				String mm = reqYmdhms.substring(4, 6);
-				String dd = reqYmdhms.substring(6, 8);
-				dto.setReqYmdhms(yyyy + "-" + mm + "-" + dd);
-				dto.setFormTekiyoYmd(yyyy + "-" + mm + "-" + dd);
-			}
-
-			// 申請チャネル
-			dto.setReqChl(entity.getReqChl());
-			// 申請者従業員番号
-			dto.setJgiNo(Integer.parseInt(entity.getReqJgiNo()));
-			dto.setBumonRyakuName(entity.getReqShz()); // 所属組織名（部門名略式）
-			// 申請者所属リージョン
-			dto.setBrCode(entity.getBrCode());
-			// 申請者所属エリア
-			dto.setDistCode(entity.getReqDistCode());
-			// 申請ステータス(コード)
-			dto.setReqStsCd(entity.getReqStsCd());
-			// 更新日
-			dto.setUpdShaYmd(entity.getUpdShaYmd());
-			// 氏名（漢字）
-			dto.setDocKanj(entity.getDocKanj());
-			// 医師固定コード
-			dto.setDocNo(entity.getDocNo());
-			// ULT医師コード
-			dto.setUrlDocNo(entity.getUrlDocNo());
-			// 施設略式漢字名
-			dto.setInsAbbrName(entity.getInsAbbrName());
-			// 所属部科漢字名
-			dto.setDeptKj(entity.getDeptKj());
-
-			// 役職コード(異動先)
-			for (MRdmHcpYakusyokuEntity outEntity : SelectYakusyoku) {
-				if (Objects.equals(outEntity.getTitleCode(), entity.getTitleCodeBf())) {
-					dto.setTitleCodeName(outEntity.getTitleKj());
-					break;
-				}
-			}
-			// 勤務形態(異動先)
-			for (MRdmCodeMstEntity outEntity : SelectKinmuKeitaiList) {
-				if (Objects.equals(outEntity.getValue1(), entity.getJobFormBf())) {
-					dto.setJobFormBfName(outEntity.getValue1Kanj());
-					break;
-				}
-			}
-			// 薬審メンバー区分(異動先)
-			for (MRdmCodeMstEntity outEntity : SelectYakushinList) {
-				if (Objects.equals(outEntity.getValue1(), entity.getDccTypeBf())) {
-					dto.setDccTypeBfName(outEntity.getValue1Kanj());
-					break;
-				}
-			}
-			// 大学職位コード(異動先)
-			for (MRdmHcpYakusyokuEntity outEntity : SelectDaigakuSyokui) {
-				if (Objects.equals(outEntity.getTitleCode(), entity.getUnivPosCodeBf())) {
-					dto.setUnivPosCodeBfName(outEntity.getTitleKj());
-					break;
-				}
-			}
-			// 適用開始日
-			if (!StringUtils.isEmpty(entity.getTekiyoYmd())) {
-				String tekiyoYmd = entity.getTekiyoYmd();
-				String Tyyyy = tekiyoYmd.substring(0, 4);
-				String Tmm = tekiyoYmd.substring(4, 6);
-				String Tdd = tekiyoYmd.substring(6, 8);
-				dto.setTekiyoYmd(Tyyyy + "-" + Tmm + "-" + Tdd);
-			}
-
-			// 施設固定コード(異動元)
-			dto.setInsNoMt(entity.getInsNoMt());
-			// 施設固定コード
-			dto.setParamInsNo(entity.getInsNoMt());
-			// ULT施設コード
-			dto.setUltInsNo(entity.getUltInsNo());
-			// 所属部科コード(異動元)
-			dto.setDeptCodeBf(entity.getDeptCodeBf());
-			// 所属部科カナ名
-			dto.setDeptKn(entity.getDeptKn());
-			// 申請コメント
-			dto.setReqComment(entity.getReqComment());
-			// 却下コメント
-			dto.setAprComment(entity.getAprComment());
-			// 施設分類
-			dto.setInsClass(entity.getInsClass());
-			// 対象区分
-			dto.setHoInsType(entity.getHoInsType());
-
+//
+//			// 申請者氏名
+//			dto.setJgiName(entity.getJgiName());
+//			// 申請日時
+//			if (!StringUtils.isEmpty(entity.getReqYmdhms())) {
+//				String reqYmdhms = entity.getReqYmdhms();
+//				String yyyy = reqYmdhms.substring(0, 4);
+//				String mm = reqYmdhms.substring(4, 6);
+//				String dd = reqYmdhms.substring(6, 8);
+//				dto.setReqYmdhms(yyyy + "-" + mm + "-" + dd);
+//				dto.setFormTekiyoYmd(yyyy + "-" + mm + "-" + dd);
+//			}
+//
+//			// 申請チャネル
+//			dto.setReqChl(entity.getReqChl());
+//			// 申請者従業員番号
+//			dto.setJgiNo(Integer.parseInt(entity.getReqJgiNo()));
+//			dto.setBumonRyakuName(entity.getReqShz()); // 所属組織名（部門名略式）
+//			// 申請者所属リージョン
+//			dto.setBrCode(entity.getBrCode());
+//			// 申請者所属エリア
+//			dto.setDistCode(entity.getReqDistCode());
+//			// 申請ステータス(コード)
+//			dto.setReqStsCd(entity.getReqStsCd());
+//			// 更新日
+//			dto.setUpdShaYmd(entity.getUpdShaYmd());
+//			// 氏名（漢字）
+//			dto.setDocKanj(entity.getDocKanj());
+//			// 医師固定コード
+//			dto.setDocNo(entity.getDocNo());
+//			// ULT医師コード
+//			dto.setUrlDocNo(entity.getUrlDocNo());
+//			// 施設略式漢字名
+//			dto.setInsAbbrName(entity.getInsAbbrName());
+//			// 所属部科漢字名
+//			dto.setDeptKj(entity.getDeptKj());
+//
+//			// 役職コード(異動先)
+//			for (MRdmHcpYakusyokuEntity outEntity : SelectYakusyoku) {
+//				if (Objects.equals(outEntity.getTitleCode(), entity.getTitleCodeBf())) {
+//					dto.setTitleCodeName(outEntity.getTitleKj());
+//					break;
+//				}
+//			}
+//			// 勤務形態(異動先)
+//			for (MRdmCodeMstEntity outEntity : SelectKinmuKeitaiList) {
+//				if (Objects.equals(outEntity.getValue1(), entity.getJobFormBf())) {
+//					dto.setJobFormBfName(outEntity.getValue1Kanj());
+//					break;
+//				}
+//			}
+//			// 薬審メンバー区分(異動先)
+//			for (MRdmCodeMstEntity outEntity : SelectYakushinList) {
+//				if (Objects.equals(outEntity.getValue1(), entity.getDccTypeBf())) {
+//					dto.setDccTypeBfName(outEntity.getValue1Kanj());
+//					break;
+//				}
+//			}
+//			// 大学職位コード(異動先)
+//			for (MRdmHcpYakusyokuEntity outEntity : SelectDaigakuSyokui) {
+//				if (Objects.equals(outEntity.getTitleCode(), entity.getUnivPosCodeBf())) {
+//					dto.setUnivPosCodeBfName(outEntity.getTitleKj());
+//					break;
+//				}
+//			}
+//			// 適用開始日
+//			if (!StringUtils.isEmpty(entity.getTekiyoYmd())) {
+//				String tekiyoYmd = entity.getTekiyoYmd();
+//				String Tyyyy = tekiyoYmd.substring(0, 4);
+//				String Tmm = tekiyoYmd.substring(4, 6);
+//				String Tdd = tekiyoYmd.substring(6, 8);
+//				dto.setTekiyoYmd(Tyyyy + "-" + Tmm + "-" + Tdd);
+//			}
+//
+//			// 施設固定コード(異動元)
+//			dto.setInsNoMt(entity.getInsNoMt());
+//			// 施設固定コード
+//			dto.setParamInsNo(entity.getInsNoMt());
+//			// ULT施設コード
+//			dto.setUltInsNo(entity.getUltInsNo());
+//			// 所属部科コード(異動元)
+//			dto.setDeptCodeBf(entity.getDeptCodeBf());
+//			// 所属部科カナ名
+//			dto.setDeptKn(entity.getDeptKn());
+//			// 申請コメント
+//			dto.setReqComment(entity.getReqComment());
+//			// 却下コメント
+//			dto.setAprComment(entity.getAprComment());
+//			// 施設分類
+//			dto.setInsClass(entity.getInsClass());
+//			// 対象区分
+//			dto.setHoInsType(entity.getHoInsType());
+//
 		}
 		if(dto.getLoginJokenSetCd().equals(RdmConstantsData.RDM_JKN_ADMIN)) {
 			if(StringUtils.isEmpty(dto.getUltDocNo())) {
@@ -296,125 +296,125 @@ public class ND313Service extends BaseService {
 		ZoneId zone = ZoneId.systemDefault();
 		ZonedDateTime zonedDateTime = ZonedDateTime.of(nowDate, zone);
 
-		// 申請管理テーブル データ定義
-		// 申請ステータスを「01：保存済」として各テーブルに画面の申請情報を登録
-		// 申請管理
-		TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity();
-		tRdmReqKnrEntity.setReqId(dto.getParamReqId());
-		TRdmReqKnrEntity tRdmReqKnrData = dao.selectByPK(tRdmReqKnrEntity);
-
-		if (tRdmReqKnrData == null) {// insert処理
-
-			// 新規にIDを取得 githubで実行
-			SeqRdmReqIdEntity seqRdmReqIdEntity = new SeqRdmReqIdEntity();
-			List<SeqRdmReqIdEntity> seqRdmReqIdDate = dao.select(seqRdmReqIdEntity);
-			reqId = seqRdmReqIdDate.get(0).getReqId();
-			dto.setParamReqId(reqId);
-
-			// レコードを登録
-			TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
-			tRdmReqKnrInsData.setReqId(dto.getParamReqId());
-			if ("JKN0813".equals(dto.getLoginJokenSetCd())) {
-				// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
-				tRdmReqKnrInsData.setReqChl("2");
-				tRdmReqKnrInsData.setReqKngKbn("2");
-			} else {
-				// "MRが申請の場合、'1'(MR起因)
-				tRdmReqKnrInsData.setReqChl("1");
-				tRdmReqKnrInsData.setReqKngKbn("1");
-			}
-			tRdmReqKnrInsData.setReqType("44");
-			tRdmReqKnrInsData.setReqStsCd("01");
-
-			String tekiyoYmd = dto.getFormTekiyoYmd();
-			if (tekiyoYmd != null) {
-				tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
-			}
-			tRdmReqKnrInsData.setTekiyoYmd(tekiyoYmd);// 適用日
-			tRdmReqKnrInsData.setReqBrCd(dto.getBrCode());// 申請者医薬支店C
-			tRdmReqKnrInsData.setReqDistCd(dto.getDistCode()); // 申請者医薬営業所C
-			tRdmReqKnrInsData.setReqShzNm(dto.getBumonRyakuName());// 所属組織名（部門名略式）
-			tRdmReqKnrInsData.setReqJgiNo(dto.getJgiNo());// 申請者従業員番号
-			tRdmReqKnrInsData.setReqJgiName(dto.getJgiName());// 申請者氏名
-			tRdmReqKnrInsData.setReqComment(dto.getReqComment());// 申請者コメント
-			tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
-			tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());// 医師固定C
-			tRdmReqKnrInsData.setDocNo(dto.getDocNo());
-			tRdmReqKnrInsData.setInsShaYmd(systemDate);
-			tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
-			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
-			tRdmReqKnrInsData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
-			if(StringUtils.isEmpty(dto.getUltDocNo())) {
-				tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
-			}else {
-				tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
-			}
-			// 申請管理 insert処理
-			dao.insertByValue(tRdmReqKnrInsData);
-		} else {
-			// 更新
-			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF211Data");
-			tRdmReqKnrUpdData.setReqId(dto.getParamReqId());// 申請ID
-
-			if ("13".equals(dto.getReqStsCd())) {// 元が'13'(ULT承認待ち)の場合は'11'のまま
-				tRdmReqKnrUpdData.setReqStsCd("11");// 申請ステータス
-			} else {
-				tRdmReqKnrUpdData.setReqStsCd("01");// 申請ステータス '01'（保存済)
-			}
-			String tekiyoYmd = dto.getFormTekiyoYmd();// 適用開始日
-			if (tekiyoYmd != null) {
-				tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
-			}
-			tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);// 適用開始日
-			tRdmReqKnrUpdData.setReqComment(dto.getReqComment());// 申請コメント
-			tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
-			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);// 更新日
-			tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));// 更新者
-			if(StringUtils.isEmpty(dto.getUltDocNo())) {
-				tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
-			}else {
-				tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
-			}
-			dao.update(tRdmReqKnrUpdData);
-		}
-
-		// 勤務先申請管理 データ格納
-		if (tRdmReqKnrData == null) {// 新規
-
-			TRdmHcpKmuReqEntity tRdmHcpKmuReqInsData = new TRdmHcpKmuReqEntity();
-
-			tRdmHcpKmuReqInsData.setReqId(dto.getParamReqId());
-			tRdmHcpKmuReqInsData.setDocNo(dto.getDocNo());
-			tRdmHcpKmuReqInsData.setInsNoMt(dto.getInsNoMt());
-			tRdmHcpKmuReqInsData.setInsNoSk("Z");
-			tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(dto.getJobFormBf(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(dto.getDeptCodeBf(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptKanjiBf(StringUtils.nvl(dto.getDeptKj(), "Z"));
-			tRdmHcpKmuReqInsData.setDeptKanaBf(StringUtils.nvl(dto.getDeptKn(), "Z"));
-			tRdmHcpKmuReqInsData.setUnivPosCodeBf(dto.getUnivPosCodeBf());
-			tRdmHcpKmuReqInsData.setTitleCodeBf(dto.getTitleCodeBf());
-			tRdmHcpKmuReqInsData.setDccTypeBf(dto.getDccTypeBf());
-			tRdmHcpKmuReqInsData.setJobFormAf("Z");
-			tRdmHcpKmuReqInsData.setDeptCodeAf("Z");
-			tRdmHcpKmuReqInsData.setDeptKanjiAf("Z");
-			tRdmHcpKmuReqInsData.setDeptKanaAf("Z");
-			//tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
-			tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
-			tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
-			tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
-			tRdmHcpKmuReqInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
-			tRdmHcpKmuReqInsData.setSqlId("insertByValue");
-			// 勤務先申請管理 insert処理
-			dao.insert(tRdmHcpKmuReqInsData);
-
-		} else {// 更新
-			TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND104Data");
-			tRdmHcpKmuReqUpdData.setReqId(dto.getParamReqId());
-			tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);// 更新日
-			tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));// 更新者
-
-			dao.update(tRdmHcpKmuReqUpdData);
-		}
+//		// 申請管理テーブル データ定義
+//		// 申請ステータスを「01：保存済」として各テーブルに画面の申請情報を登録
+//		// 申請管理
+//		TRdmReqKnrEntity tRdmReqKnrEntity = new TRdmReqKnrEntity();
+//		tRdmReqKnrEntity.setReqId(dto.getParamReqId());
+//		TRdmReqKnrEntity tRdmReqKnrData = dao.selectByPK(tRdmReqKnrEntity);
+//
+//		if (tRdmReqKnrData == null) {// insert処理
+//
+//			// 新規にIDを取得 githubで実行
+//			SeqRdmReqIdEntity seqRdmReqIdEntity = new SeqRdmReqIdEntity();
+//			List<SeqRdmReqIdEntity> seqRdmReqIdDate = dao.select(seqRdmReqIdEntity);
+//			reqId = seqRdmReqIdDate.get(0).getReqId();
+//			dto.setParamReqId(reqId);
+//
+//			// レコードを登録
+//			TRdmReqKnrEntity tRdmReqKnrInsData = new TRdmReqKnrEntity();
+//			tRdmReqKnrInsData.setReqId(dto.getParamReqId());
+//			if ("JKN0813".equals(dto.getLoginJokenSetCd())) {
+//				// 承認者（管理者権限）が申請の場合、'2'(DSG起因)
+//				tRdmReqKnrInsData.setReqChl("2");
+//				tRdmReqKnrInsData.setReqKngKbn("2");
+//			} else {
+//				// "MRが申請の場合、'1'(MR起因)
+//				tRdmReqKnrInsData.setReqChl("1");
+//				tRdmReqKnrInsData.setReqKngKbn("1");
+//			}
+//			tRdmReqKnrInsData.setReqType("44");
+//			tRdmReqKnrInsData.setReqStsCd("01");
+//
+//			String tekiyoYmd = dto.getFormTekiyoYmd();
+//			if (tekiyoYmd != null) {
+//				tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
+//			}
+//			tRdmReqKnrInsData.setTekiyoYmd(tekiyoYmd);// 適用日
+//			tRdmReqKnrInsData.setReqBrCd(dto.getBrCode());// 申請者医薬支店C
+//			tRdmReqKnrInsData.setReqDistCd(dto.getDistCode()); // 申請者医薬営業所C
+//			tRdmReqKnrInsData.setReqShzNm(dto.getBumonRyakuName());// 所属組織名（部門名略式）
+//			tRdmReqKnrInsData.setReqJgiNo(dto.getJgiNo());// 申請者従業員番号
+//			tRdmReqKnrInsData.setReqJgiName(dto.getJgiName());// 申請者氏名
+//			tRdmReqKnrInsData.setReqComment(dto.getReqComment());// 申請者コメント
+//			tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
+//			tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());// 医師固定C
+//			tRdmReqKnrInsData.setDocNo(dto.getDocNo());
+//			tRdmReqKnrInsData.setInsShaYmd(systemDate);
+//			tRdmReqKnrInsData.setInsShaId(String.valueOf(dto.getLoginJgiNo()));
+//			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
+//			tRdmReqKnrInsData.setUpdShaId(String.valueOf(dto.getLoginJgiNo()));
+//			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+//				tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+//			}else {
+//				tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+//			}
+//			// 申請管理 insert処理
+//			dao.insertByValue(tRdmReqKnrInsData);
+//		} else {
+//			// 更新
+//			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateNF211Data");
+//			tRdmReqKnrUpdData.setReqId(dto.getParamReqId());// 申請ID
+//
+//			if ("13".equals(dto.getReqStsCd())) {// 元が'13'(ULT承認待ち)の場合は'11'のまま
+//				tRdmReqKnrUpdData.setReqStsCd("11");// 申請ステータス
+//			} else {
+//				tRdmReqKnrUpdData.setReqStsCd("01");// 申請ステータス '01'（保存済)
+//			}
+//			String tekiyoYmd = dto.getFormTekiyoYmd();// 適用開始日
+//			if (tekiyoYmd != null) {
+//				tekiyoYmd = tekiyoYmd.replace("-", "").replace("/", "");
+//			}
+//			tRdmReqKnrUpdData.setTekiyoYmd(tekiyoYmd);// 適用開始日
+//			tRdmReqKnrUpdData.setReqComment(dto.getReqComment());// 申請コメント
+//			tRdmReqKnrUpdData.setReqYmdhms(sysDateTime);
+//			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);// 更新日
+//			tRdmReqKnrUpdData.setUpdShaId(String.valueOf(loginInfo.getJgiNo()));// 更新者
+//			if(StringUtils.isEmpty(dto.getUltDocNo())) {
+//				tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+//			}else {
+//				tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+//			}
+//			dao.update(tRdmReqKnrUpdData);
+//		}
+//
+//		// 勤務先申請管理 データ格納
+//		if (tRdmReqKnrData == null) {// 新規
+//
+//			TRdmHcpKmuReqEntity tRdmHcpKmuReqInsData = new TRdmHcpKmuReqEntity();
+//
+//			tRdmHcpKmuReqInsData.setReqId(dto.getParamReqId());
+//			tRdmHcpKmuReqInsData.setDocNo(dto.getDocNo());
+//			tRdmHcpKmuReqInsData.setInsNoMt(dto.getInsNoMt());
+//			tRdmHcpKmuReqInsData.setInsNoSk("Z");
+//			tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(dto.getJobFormBf(), "Z"));
+//			tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(dto.getDeptCodeBf(), "Z"));
+//			tRdmHcpKmuReqInsData.setDeptKanjiBf(StringUtils.nvl(dto.getDeptKj(), "Z"));
+//			tRdmHcpKmuReqInsData.setDeptKanaBf(StringUtils.nvl(dto.getDeptKn(), "Z"));
+//			tRdmHcpKmuReqInsData.setUnivPosCodeBf(dto.getUnivPosCodeBf());
+//			tRdmHcpKmuReqInsData.setTitleCodeBf(dto.getTitleCodeBf());
+//			tRdmHcpKmuReqInsData.setDccTypeBf(dto.getDccTypeBf());
+//			tRdmHcpKmuReqInsData.setJobFormAf("Z");
+//			tRdmHcpKmuReqInsData.setDeptCodeAf("Z");
+//			tRdmHcpKmuReqInsData.setDeptKanjiAf("Z");
+//			tRdmHcpKmuReqInsData.setDeptKanaAf("Z");
+//			//tRdmHcpKmuReqInsData.setUltDocNo(dto.getUrlDocNo());
+//			tRdmHcpKmuReqInsData.setInsShaYmd(systemDate);
+//			tRdmHcpKmuReqInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
+//			tRdmHcpKmuReqInsData.setUpdShaYmd(systemDate);
+//			tRdmHcpKmuReqInsData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));
+//			tRdmHcpKmuReqInsData.setSqlId("insertByValue");
+//			// 勤務先申請管理 insert処理
+//			dao.insert(tRdmHcpKmuReqInsData);
+//
+//		} else {// 更新
+//			TRdmHcpKmuReqEntity tRdmHcpKmuReqUpdData = new TRdmHcpKmuReqEntity("updateND104Data");
+//			tRdmHcpKmuReqUpdData.setReqId(dto.getParamReqId());
+//			tRdmHcpKmuReqUpdData.setUpdShaYmd(systemDate);// 更新日
+//			tRdmHcpKmuReqUpdData.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));// 更新者
+//
+//			dao.update(tRdmHcpKmuReqUpdData);
+//		}
 		// END UOC
 		return outdto;
 	}
@@ -547,7 +547,11 @@ public class ND313Service extends BaseService {
 				tRdmReqKnrInsData.setReqJgiName(loginInfo.getJgiName());
 	        	tRdmReqKnrInsData.setReqYmdhms(sysDateTime);
 	        	tRdmReqKnrInsData.setReqComment(dto.getReqComment());
-	        	tRdmReqKnrInsData.setFbReqFlg("0");
+				if(StringUtils.isEmpty(dto.getUltDocNo())) {
+					tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+				}else {
+					tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+				}
 	        	tRdmReqKnrInsData.setInsNo(dto.getInsNoMt());
 	        	tRdmReqKnrInsData.setDocNo(dto.getDocNo());
 	        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
@@ -617,6 +621,11 @@ public class ND313Service extends BaseService {
 			}
 
 		} else if (Objects.deepEquals(dto.getProcessFlg(), "1")) {
+			// 却下コメントなし
+			if(StringUtils.isEmpty(dto.getAprComment())) {
+				dto.setErrorCheckFlg("2");
+				return outdto;
+			}
 			// 申請管理 却下処理
 			TRdmReqKnrEntity tRdmReqKnrUpdData = new TRdmReqKnrEntity("updateTRdmReqKnrData");
 			// 申請IDを指定

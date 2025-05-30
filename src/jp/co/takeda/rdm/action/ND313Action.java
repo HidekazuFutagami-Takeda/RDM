@@ -221,9 +221,19 @@ public class ND313Action extends BaseAction<ND313DTO> {
         BaseDTO outdto = nD313Service.register(dto);
 
         if (Objects.deepEquals(dto.getErrorCheckFlg(), "1")) {
-      		 tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W008.replace("項目名", "医師コード、施設コード") + "\n");//重複する申請が行われています。（施設名）
+      		 tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W008).replace("項目名", "医師コード、施設コード") + "\n";//重複する申請が行われています。（施設名）
       	}
-
+        if (Objects.deepEquals(dto.getErrorCheckFlg(), "2")) {
+     		 tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W026) + "\n";//却下の場合はコメントを入力してください。
+     	}
+        dto.setMsgStr(tmpMsgStr);
+		// エラーがある場合親画面へ遷移.
+		if (!StringUtils.isEmpty(dto.getMsgStr())) {
+			dto.setTitle("ND313_医師勤務先削除-申請内容確認");
+			outdto.setForward("ND313");
+			dto.setErrorCheckFlg("");
+			return initNext(outdto);
+		}
         return registerNext(outdto);
     }
 

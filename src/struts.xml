@@ -175,9 +175,10 @@
         </action>
         <action name="ND313Init" class="ND313Action" method="init">
             <result name="ND313">/WEB-INF/pages/ND313.jsp</result>
+            <result name="ND104">/WEB-INF/pages/ND104.jsp</result>
         </action>
         <action name="ND313Register" class="ND313Action" method="register">
-            <result name="ND311">/WEB-INF/pages/ND311.jsp</result>
+            <result name="ND313">/WEB-INF/pages/ND313.jsp</result>
             <result name="NC101" type="chain">NC101Init</result>
         </action>
 

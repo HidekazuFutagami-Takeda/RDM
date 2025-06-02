@@ -108,6 +108,7 @@ public class ND001Service extends BaseService {
 		String ishiHenshuFlg = selectParamSwitchIshiList.get(0).getHenshuFlg();
 		String ishiSakujoFlg = selectParamSwitchIshiList.get(0).getSakujoFlg();
 		String ishiFukkatsuFlg = selectParamSwitchIshiList.get(0).getFukkatsuFlg();
+		indto.setNewButtonFlg(ishiSinkiFlg);
         //MN_KMU
 		selectParamSwitchEntity.setInParamName(2);
 		List<SelectParamSwitchEntity> selectParamSwitchIshiKinmuList;
@@ -252,27 +253,27 @@ public class ND001Service extends BaseService {
             }
 			// アクションボタンフラグ設定
 			// 新規
-			if (entity.getShinkiFlg().equals(ishiSinkiFlg)) {
+			if (entity.getShinkiFlg().equals("1") && ishiSinkiFlg.equals("1")) {
 				data.setGamenShinkiFlg("1");
 			} else {
 				data.setGamenShinkiFlg("0");
 			}
 
 			// 編集
-			if (entity.getHenshuFlg().equals(ishiHenshuFlg)) {
+			if (entity.getHenshuFlg().equals("1") && ishiHenshuFlg.equals("1")) {
 				data.setGamenKoushinFlg("1");
 			} else {
 				data.setGamenKoushinFlg("0");
 			}
 
 			// 復活
-			if (entity.getFukkatsuFlg().equals(ishiFukkatsuFlg)) {
+			if (entity.getFukkatsuFlg().equals("1") && ishiFukkatsuFlg.equals("1")) {
 				data.setGamenFukkatsuFlg("1");
 			} else {
 				data.setGamenFukkatsuFlg("0");
 			}
 			// 勤務先更新
-			if (entity.getHenshuFlg().equals(ishiKinmuSwitchFlg)) {
+			if (entity.getHenshuFlg().equals("1") && ishiKinmuSwitchFlg.equals("1")) {
 				data.setGamenKinmuKoushinFlg("1");
 			} else {
 				data.setGamenKinmuKoushinFlg("0");

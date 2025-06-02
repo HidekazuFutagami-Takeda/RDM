@@ -255,6 +255,8 @@ public class ND001DTO extends BaseDTO implements Serializable {
     private String loginSosCd;
     private String loginUpSosCode  ;
 
+    //新規作成ボタンの制御フラグ
+    private String newButtonFlg;
 
 	/**
      * デフォルトのコンストラクタ。
@@ -1012,4 +1014,19 @@ public class ND001DTO extends BaseDTO implements Serializable {
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
+
+	/**
+	 * ND001DTO.javanewButtonFlgを設定
+	 * @return newButtonFlg
+	 */
+	public String getNewButtonFlg() {
+		return newButtonFlg;
+	}
+
+	/**
+	 * @param newButtonFlg セットする newButtonFlg
+	 */
+	public void setNewButtonFlg(String newButtonFlg) {
+		this.newButtonFlg = newButtonFlg;
+	}
 }

@@ -5,6 +5,7 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -409,6 +410,31 @@ public class ND311Service extends BaseService {
 				return outdto;
 			}
 		}
+
+		// 排他チェック
+		// 最終更新日時が、画面OPEN時とボタン押下時で異なっていた場合
+		if (dto.getUpdShaYmd() != null && !dto.getUpdShaYmd().equals("")) {
+			TRdmReqKnrEntity tRdmReqKnrChkEntity = new TRdmReqKnrEntity("selectND103DateChkData");
+			tRdmReqKnrChkEntity.setReqId(dto.getReqId());
+
+			List<TRdmReqKnrEntity> tRdmReqKnrEntityList = dao.select(tRdmReqKnrChkEntity);
+
+			if (tRdmReqKnrEntityList.size() > 0) {
+				SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date updDate = null;
+				try {
+					updDate = sdFormat.parse(dto.getUpdShaYmd());
+				} catch (ParseException e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+				}
+				if (!tRdmReqKnrEntityList.get(0).getUpdShaYmd().equals(updDate)) {
+					dto.setErrorCheckFlg("7");
+					return outdto;
+				}
+			}
+		}
+
 		// エラーチェック済
 		dto.setErrorCheckFlg("1");
 

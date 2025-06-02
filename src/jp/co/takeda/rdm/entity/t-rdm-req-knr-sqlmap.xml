@@ -762,6 +762,12 @@
 	WHERE
 		REQ_ID = #{reqId}
 	</update>
+	<select id="selectND103DateChkData" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
+	SELECT
+		UPD_SHA_YMD -- 申請管理.更新日
+	FROM
+		T_RDM_REQ_KNR WHERE REQ_ID = #{reqId}
+	</select>
 	<select id="selectLinkDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity" resultMap="selectLinkDataResultMap">
         SELECT
             REQ_ID

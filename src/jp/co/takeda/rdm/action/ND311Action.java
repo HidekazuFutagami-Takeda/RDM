@@ -320,6 +320,9 @@ public class ND311Action extends BaseAction<ND311DTO> {
 			if (Objects.deepEquals(dto.getErrorCheckFlg(), "6")) {
 				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W071);// 管轄外の医師は勤務先に管轄外の施設を選択できません。
 			}
+			if (Objects.deepEquals(dto.getErrorCheckFlg(), "7")) {
+				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.E003);// 既に他のユーザーによってデータが処理されています。
+			}
 			dto.setMsgStr(tmpMsgStr);
 		}
 

@@ -406,6 +406,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
           <s:hidden name="lineCntAll" />
           <s:hidden name="selectFlg"/>
           <s:hidden name="sortCondition" />
+          <s:hidden name="newButtonFlg" />
 
 		  <s:hidden name="backScreenId" value="ND001" />
     	  <s:hidden id="preScreenId" name="preScreenId" value="ND001"/>

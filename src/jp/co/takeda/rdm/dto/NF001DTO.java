@@ -326,6 +326,27 @@ public class NF001DTO extends BaseDTO implements Serializable {
 	private String pageFlag;
 
 	/**
+	 * 新規作成ボタンの制御フラグ
+	 * @generated
+	 */
+    private String newButtonFlg;
+
+	/**
+	 * NF001DTO.javanewButtonFlgを設定
+	 * @return newButtonFlg
+	 */
+	public String getNewButtonFlg() {
+		return newButtonFlg;
+	}
+
+	/**
+	 * @param newButtonFlg セットする newButtonFlg
+	 */
+	public void setNewButtonFlg(String newButtonFlg) {
+		this.newButtonFlg = newButtonFlg;
+	}
+
+	/**
      * デフォルトのコンストラクタ。
      * @generated
      */

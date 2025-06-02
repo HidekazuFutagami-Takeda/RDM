@@ -322,6 +322,9 @@ public class NF001Service extends BaseService {
         String editValue = "0";
         String delValue = "0";
         String revValue = "0";
+        String ctOyaValue = "0";
+        String ntOyaValue = "0";
+        String ntEditValue = "0";
 
         MRdmParamMstEntity mRdmParamMstEntity = new MRdmParamMstEntity();
 		mRdmParamMstEntity.setParamName("MN_FAC");
@@ -334,9 +337,27 @@ public class NF001Service extends BaseService {
 			editValue = mRdmParamMstEntityList.get(0).getValue().substring(1,2);
 			delValue = mRdmParamMstEntityList.get(0).getValue().substring(2,3);
 			revValue = mRdmParamMstEntityList.get(0).getValue().substring(3);
+			indto.setNewButtonFlg(newValue);
+		}
+		//親子紐づけ(当期)メニュースイッチ
+		mRdmParamMstEntity.setParamName("MN_CT_OYA");
+		List<MRdmParamMstEntity> mRdmParamMstEntityList2 = dao.selectByValue(mRdmParamMstEntity);
+		if(mRdmParamMstEntityList2.size() > 0) {
+			ctOyaValue = mRdmParamMstEntityList2.get(0).getValue();
+		}
+		//親子紐づけ(来期)メニュースイッチ
+		mRdmParamMstEntity.setParamName("MN_NT_OYA");
+		List<MRdmParamMstEntity> mRdmParamMstEntityList3 = dao.selectByValue(mRdmParamMstEntity);
+		if(mRdmParamMstEntityList3.size() > 0) {
+			ntOyaValue = mRdmParamMstEntityList3.get(0).getValue();
+		}
+		mRdmParamMstEntity.setParamName("MN_NT_FAC");
+		List<MRdmParamMstEntity> mRdmParamMstEntityList4 = dao.selectByValue(mRdmParamMstEntity);
+		if(mRdmParamMstEntityList4.size() > 0) {
+			ntEditValue = mRdmParamMstEntityList4.get(0).getValue();
 		}
 
-        // 一覧を取得する
+		// 一覧を取得する
         List<SelectNF001MainDataEntity> selectNF001MainDataEntityList = dao.select(selectNF001MainDataEntity);
 
         for (SelectNF001MainDataEntity entity : selectNF001MainDataEntityList) {
@@ -629,7 +650,7 @@ public class NF001Service extends BaseService {
         	}
 
         	// 親子紐づけ
-        	if("1".equals(funcFlg5) && "1".equals(editValue)) {
+        	if("1".equals(funcFlg5) && "1".equals(ctOyaValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg5("1");
         		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
@@ -642,7 +663,7 @@ public class NF001Service extends BaseService {
         	}
 
         	// 来期用項目更新
-        	if("1".equals(funcFlg6) && "1".equals(editValue)) {
+        	if("1".equals(funcFlg6) && "1".equals(editValue)&&"1".equals(ntEditValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg6("1");
         		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {
@@ -655,7 +676,7 @@ public class NF001Service extends BaseService {
         	}
 
         	// 親子紐づけ(来期)
-        	if("1".equals(funcFlg7) && "1".equals(editValue)) {
+        	if("1".equals(funcFlg7) && "1".equals(ntOyaValue)) {
         		if(RdmConstantsData.RDM_JKN_ADMIN.equals(indto.getLoginJokenSetCd())) {
         			dataRecord.setFuncFlg7("1");
         		} else if(RdmConstantsData.RDM_JKN_MR.equals(indto.getLoginJokenSetCd()) && "1".equals(mrUpdFlg)) {

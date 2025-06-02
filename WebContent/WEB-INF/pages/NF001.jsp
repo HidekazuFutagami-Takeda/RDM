@@ -454,6 +454,7 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	<s:hidden id="callBack" name="callBack" />
 	<s:hidden id="title" name="title" />
 	<s:hidden id="srchFlg" name="srchFlg" />
+    <s:hidden id="newButtonFlg"  name="newButtonFlg" />
 
 	<s:hidden id="upSosCd" name="upSosCd"/>
 	<s:hidden id="sosCdPop" name="sosCdPop"/>
@@ -626,7 +627,12 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
 	    <%-- 新規作成 --%>
 	    <td colspan=2><nobr>
 		    <s:if test='srchFlg == "1" '>
-	    		<input type="button" id="newButton" name="新規作成" value="新規作成" onclick="newBtn()" />
+		     	<s:if test='%{newButtonFlg == "1"}'>
+	    			<input type="button" id="newButton" name="新規作成" value="新規作成" onclick="newBtn()" />
+	    		</s:if>
+		    	<s:else>
+		    		<input type="button" id="newButton" name="新規作成" value="新規作成" onclick="newBtn()" disabled />
+		    	</s:else>
 	    	</s:if>
 	    	<s:else>
 	    		<input type="button" id="newButton" name="新規作成" value="新規作成" onclick="newBtn()" disabled />

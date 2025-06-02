@@ -150,7 +150,6 @@ function comSetFormWindowInfo(){
           <s:if test="%{jokenSetCd == @jp.co.takeda.rdm.util.RdmConstantsData@RDM_JKN_ADMIN || jokenSetCd == @jp.co.takeda.rdm.util.RdmConstantsData@RDM_JKN_MR}">
             <table align="center" border="0" id="jobsel" width="880px">
               <!-- 医師・コメディカル情報 -->
-              <s:if test="%{menuMnIktDoc == 1}">
               <tr>
                 <td style="width:230px">
                  <label>医師・コメディカル情報</label>
@@ -162,6 +161,7 @@ function comSetFormWindowInfo(){
                  <label>医師の異動（勤務施設の変更）もここから申請可能です。</label>
                 </td>
               </tr>
+        <s:if test="%{menuMnIktDoc == 1}">
               <tr>
                 <td></td>
               　　　　　　　　　<td>
@@ -171,6 +171,7 @@ function comSetFormWindowInfo(){
                   <label>医師の一括更新を申請できます。</label>
                 </td>
               </tr>
+        </s:if>
               <tr>
                 <td></td>
               　　　　　　　　　<td>
@@ -185,10 +186,9 @@ function comSetFormWindowInfo(){
                   <hr class="comSplit" style="width:100%" id="jobselbar">
                 </td>
               </tr>
-              </s:if>
+
 
               <!-- 施設情報 -->
-              <s:if test="%{menuMnIktFac == 1}">
               <tr>
                 <td style="width:230px">
                  <label>施設情報</label>
@@ -200,8 +200,8 @@ function comSetFormWindowInfo(){
                 <label>施設の作成・更新・削除などが申請できます。</label>
                 </td>
               </tr>
+        <s:if test="%{menuMnIktFac == 1}">
               <s:if test="%{jokenSetCd == @jp.co.takeda.rdm.util.RdmConstantsData@RDM_JKN_ADMIN}">
-                <s:if test="%{menuMnNtFac == 1}">
                   <tr>
                     <td></td>
                   　　　　　　　　　<td>
@@ -236,7 +236,6 @@ function comSetFormWindowInfo(){
                   <hr class="comSplit" style="width:100%" id="jobselbar">
                 </td>
               </tr>
-              </s:if>
 
               <!-- 申請内容確認 -->
               <s:if test="%{jokenSetCd == @jp.co.takeda.rdm.util.RdmConstantsData@RDM_JKN_ADMIN}">

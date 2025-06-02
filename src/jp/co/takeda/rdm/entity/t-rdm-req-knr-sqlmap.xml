@@ -59,9 +59,10 @@
     </resultMap>
     <select id="issueReqId" parameterType="jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity" resultMap="seqRdmReqIdResultMap">
         SELECT
-            TO_CHAR(SYSDATE,'YYMMDD') || '-' || LPAD(SEQ_RDM_REQ_ID.NEXTVAL,6,'0') AS REQ_ID
+            TO_CHAR(CAL_DATE,'YYMMDD') || '-' || LPAD(SEQ_RDM_REQ_ID.NEXTVAL,6,'0') AS REQ_ID
 		FROM
-            DUAL
+            M_RDM_COM_CAL_USR
+        WHERE TODAY = '1'
     </select>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity" resultMap="tRdmReqKnrResultMap">
         SELECT

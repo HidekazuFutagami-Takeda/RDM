@@ -27,6 +27,7 @@ import jp.co.takeda.rdm.common.BeanUtil;
 import jp.co.takeda.rdm.dto.HcpPublicData;
 import jp.co.takeda.rdm.dto.HcpSocietyData;
 import jp.co.takeda.rdm.dto.ND301DTO;
+import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.MRdmComCalUsrEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcpShusshinkoEntity;
 import jp.co.takeda.rdm.entity.join.MRdmHcpSpDiseaseEntity;
@@ -495,6 +496,22 @@ public class ND301Service extends BaseService {
 				return outdto;
 			}
 		}
+
+		//医師属性の取得
+		String docAttribute = "0";//医療機関等に所属
+		//ダミー施設で医師属性が取得できるならそちらを使用する
+        MRdmCodeMstEntity paramDummyHco = new MRdmCodeMstEntity();
+        //検索条件_ダミー施設
+        paramDummyHco.setCodeName("DUMMY_HCO");
+        paramDummyHco.setValue1(indto.getSkInsNo());
+        //廃院区分の帳票一覧を取得する
+        List<MRdmCodeMstEntity> SelectDummyHCO = dao.selectByValue(paramDummyHco);
+	    for (MRdmCodeMstEntity outEntity : SelectDummyHCO) {
+	    	if(!StringUtils.isEmpty(outEntity.getValue2())) {
+	    		docAttribute = outEntity.getValue2();
+	    	}
+	    }
+
 		if ("0".equals(indto.getButtonFlg()) || "1".equals(indto.getButtonFlg()) || "2".equals(indto.getButtonFlg())) {
 			// 登録か更新か申請IDで判定
 			if(indto.getReqId() != null && !StringUtils.isEmpty(indto.getReqId())) {
@@ -714,6 +731,7 @@ public class ND301Service extends BaseService {
 					updateEntity2.setUltDocNo(indto.getUltDocNo());//ULT医師コード
 					updateEntity2.setUpdShaYmd(currentDt);//更新日
 					updateEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+					updateEntity2.setDocAttribute(docAttribute);
 					updateEntity2.checkSetNull();
 					dao.update(updateEntity2);
 
@@ -1072,6 +1090,7 @@ public class ND301Service extends BaseService {
 				insEntity2.setInsShaId(Integer.toString(loginInfo.getJgiNo()));//作成者
 				insEntity2.setUpdShaYmd(currentDt);//更新日
 				insEntity2.setUpdShaId(Integer.toString(loginInfo.getJgiNo()));//更新者
+				insEntity2.setDocAttribute(docAttribute);
 				dao.insertByValue(insEntity2);
 
 				//所属学会

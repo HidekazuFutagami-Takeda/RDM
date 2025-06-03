@@ -642,6 +642,12 @@ public class NF303Service extends BaseService {
 			}
 		}
 
+		if(StringUtils.isEmpty(indto.getUltInsCd())) {
+			indto.setFbReqFlg(false);	//ULTと紐付けがない場合は初期値OFF
+		} else {
+			indto.setFbReqFlg(true);//ULTありは初期値ON
+		}
+
         // END UOC
 		outdto.setForward("NF303");
         return outdto;
@@ -1069,7 +1075,7 @@ public class NF303Service extends BaseService {
             	tRdmReqKnrInsData.setAprShaName(indto.getLoginNm());
             	tRdmReqKnrInsData.setAprYmdhms(sysDateTime);
             	tRdmReqKnrInsData.setAprComment(indto.getAprComment());
-            	if("on".equals(indto.getFbReqFlg())) {
+            	if(indto.getFbReqFlg()) {
             		tRdmReqKnrInsData.setFbReqFlg("1");
             	} else {
             		tRdmReqKnrInsData.setFbReqFlg("0");
@@ -1135,7 +1141,7 @@ public class NF303Service extends BaseService {
             	tRdmReqKnrUpdData.setAprShaName(indto.getLoginNm());
             	tRdmReqKnrUpdData.setAprYmdhms(sysDateTime);
             	tRdmReqKnrUpdData.setAprComment(indto.getAprComment());
-            	if("on".equals(indto.getFbReqFlg())) {
+            	if(indto.getFbReqFlg()) {
             		tRdmReqKnrUpdData.setFbReqFlg("1");
             	} else {
             		tRdmReqKnrUpdData.setFbReqFlg("0");

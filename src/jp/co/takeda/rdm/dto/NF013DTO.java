@@ -324,6 +324,11 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	private String funcId;
 
 	/**
+	 * ULT施設コード
+	 */
+	private String ultInsNo;
+
+	/**
 	 * コンボボックス_削除区分
 	 * @generated
 	 */
@@ -1103,6 +1108,21 @@ public class NF013DTO extends BaseDTO implements Serializable {
 	 */
 	public void setFuncId(String funcId) {
 		this.funcId = funcId;
+	}
+
+	/**
+	 * NF013DTO.javaultInsNoを設定
+	 * @return ultInsNo
+	 */
+	public String getUltInsNo() {
+		return ultInsNo;
+	}
+
+	/**
+	 * @param ultInsNo セットする ultInsNo
+	 */
+	public void setUltInsNo(String ultInsNo) {
+		this.ultInsNo = ultInsNo;
 	}
 
 	/**

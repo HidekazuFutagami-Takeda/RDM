@@ -213,6 +213,11 @@ public class SelectNF014MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	private String shnFlg;
 
+	/**
+	 * ULT施設コード
+	 */
+	private String ultInsNo;
+
     /**
      * コンストラクタ
      * @generated
@@ -687,6 +692,21 @@ public class SelectNF014MainDataEntity extends BaseEntity implements Serializabl
 	 */
 	public void setShnFlg(String shnFlg) {
 		this.shnFlg = shnFlg;
+	}
+
+	/**
+	 * SelectNF014MainDataEntity.javaultInsNoを設定
+	 * @return ultInsNo
+	 */
+	public String getUltInsNo() {
+		return ultInsNo;
+	}
+
+	/**
+	 * @param ultInsNo セットする ultInsNo
+	 */
+	public void setUltInsNo(String ultInsNo) {
+		this.ultInsNo = ultInsNo;
 	}
 
 	/**

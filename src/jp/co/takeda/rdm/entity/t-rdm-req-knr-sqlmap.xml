@@ -460,6 +460,7 @@
 		REQ_COMMENT = #{reqComment},
 		<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if><if test="aprMemo == null">APR_MEMO = NULL,</if>
 		REQ_YMDHMS = #{reqYmdhms},
+		<if test="fbReqFlg != null">FB_REQ_FLG = #{fbReqFlg},</if><if test="fbReqFlg == null">FB_REQ_FLG = NULL,</if>
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE
@@ -473,6 +474,7 @@
 		REQ_COMMENT = #{reqComment},
 		<if test="aprMemo != null">APR_MEMO = #{aprMemo},</if><if test="aprMemo == null">APR_MEMO = NULL,</if>
 		REQ_YMDHMS = #{reqYmdhms},
+		<if test="fbReqFlg != null">FB_REQ_FLG = #{fbReqFlg},</if><if test="fbReqFlg == null">FB_REQ_FLG = NULL,</if>
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}
 	WHERE

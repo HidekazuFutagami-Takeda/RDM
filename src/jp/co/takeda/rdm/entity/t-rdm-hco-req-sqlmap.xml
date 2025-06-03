@@ -869,6 +869,7 @@
         <result column="REQ_COMMENT" property="reqComment"/>
         <result column="APR_MEMO" property="aprMemo"/>
         <result column="SHN_FLG" property="shnFlg"/>
+        <result column="ULT_INS_NO" property="ultInsNo"/>
     </resultMap>
     <resultMap id="nF301MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNF301MainDataEntity">
         <result column="REQ_ID" property="reqId"/>
@@ -4942,6 +4943,7 @@
 		, SUP.JSK_VALUE_ZK
 		, SUP.JSK_VALUE_ZZK
 		, MST.DEL_KBN AS PRE_DEL_KBN
+		, MST.ULT_INS_NO
 		FROM
 		M_RDM_HCO_MST MST -- 施設_基本情報
 		LEFT JOIN
@@ -5063,6 +5065,7 @@
 		, MST_DUP.INS_ADDR AS DUP_INS_ADDR
 		, KNR.REQ_COMMENT
 		, KNR.APR_MEMO
+		, MST.ULT_INS_NO
 		FROM
 		T_RDM_REQ_KNR KNR -- 申請管理
 		INNER JOIN

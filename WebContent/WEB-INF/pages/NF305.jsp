@@ -345,6 +345,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <s:hidden name="shnJgiNo"/>
         <s:hidden name="aprJgiNo"/>
         <s:hidden name="updShaYmd"/>
+        <s:hidden name="ultInsNo"/>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>
@@ -567,17 +568,32 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
                	<s:if test='%{loginJokenSetCd == "JKN0850" && (reqStsCd == "03" || reqStsCd == "13")}'>
                		<s:if test='%{btnEnableFlg == "1"}'>
 	               		<s:if test='%{reqStsCd == "03" && delKbn == "3"}'>
-	               			<input type="checkbox" id="fbReqFlg" name="fbReqFlg" checked /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               			<s:if test='%{ultInsNo == null || ultInsNo == ""}'>
+	               				<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               				<s:hidden name="fbReqFlg"/>
+	               			</s:if>
+	               			<s:else>
+		               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+		               		</s:else>
 	               		</s:if>
 	               		<s:elseif test='%{reqStsCd == "03"}'>
-	               			<input type="checkbox" id="fbReqFlg" name="fbReqFlg" disabled /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               			<s:if test='%{ultInsNo == null || ultInsNo == ""}'>
+	               				<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+	               				<s:hidden name="fbReqFlg"/>
+	               			</s:if>
+	               			<s:else>
+		               			<s:checkbox name="fbReqFlg" tabIndex="-1" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+		               		</s:else>
 	               		</s:elseif>
 						<input class="comButton" type="button"name="buttonF3" value="承認" onClick="reqApprBtn('2');JavaScript:return false;" />
 					</s:if>
 					<s:else>
 						<s:if test='%{reqStsCd == "03"}'>
-							<input type="checkbox" id="fbReqFlg" name="fbReqFlg" readonly="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
+							<s:checkbox name="fbReqFlg"  tabIndex="-1" disabled="true" /><label for="fbReqFlg">アルトマークへの情報連携</label>
 						</s:if>
+						<s:else>
+	               			<s:hidden name="fbReqFlg"/>
+	               		</s:else>
 						<input class="comButton" type="button"name="buttonF3" value="承認" onClick="reqApprBtn('2');JavaScript:return false;" disabled />
 					</s:else>
 				</s:if>

@@ -454,6 +454,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
         <s:hidden name="shnJgiNo"/>
         <s:hidden name="aprJgiNo"/>
         <s:hidden name="updShaYmd"/>
+        <s:hidden name="ultInsNo"/>
         <td style="width: 50px; height: 0px; border-width: 0px;"></td>
         <td style="width: 70px; height: 0px; border-width: 0px;"></td>
         <td style="width: 100px; height: 0px; border-width: 0px;"></td>

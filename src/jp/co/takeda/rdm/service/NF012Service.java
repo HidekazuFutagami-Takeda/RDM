@@ -4067,6 +4067,11 @@ public class NF012Service extends BaseService {
         	tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
         	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
         	tRdmReqKnrInsData.setUpdShaId(indto.getLoginJgiNo());
+        	if(StringUtils.isEmpty(indto.getUltInsCd())) {
+        		tRdmReqKnrInsData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrInsData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 
         	dao.insertByValue(tRdmReqKnrInsData);
 
@@ -4088,6 +4093,11 @@ public class NF012Service extends BaseService {
         	tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());
         	tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
         	tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
+        	if(StringUtils.isEmpty(indto.getUltInsCd())) {
+        		tRdmReqKnrUpdData.setFbReqFlg("0");//FB申請要否フラグ
+			}else {
+				tRdmReqKnrUpdData.setFbReqFlg("1");//FB申請要否フラグ
+			}
 
         	dao.update(tRdmReqKnrUpdData);
         }

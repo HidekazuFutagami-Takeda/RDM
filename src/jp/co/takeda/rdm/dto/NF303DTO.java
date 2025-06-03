@@ -4777,7 +4777,7 @@ public class NF303DTO extends BaseDTO implements Serializable {
 	 * アルトマークへの情報連携
 	 * @generated
 	 */
-	private String fbReqFlg;
+	private Boolean fbReqFlg;
 
     /**
      * デフォルトのコンストラクタ。
@@ -16648,14 +16648,14 @@ public class NF303DTO extends BaseDTO implements Serializable {
 	 * NF303DTO.javafbReqFlgを設定
 	 * @return fbReqFlg
 	 */
-	public String getFbReqFlg() {
+	public Boolean getFbReqFlg() {
 		return fbReqFlg;
 	}
 
 	/**
 	 * @param fbReqFlg セットする fbReqFlg
 	 */
-	public void setFbReqFlg(String fbReqFlg) {
+	public void setFbReqFlg(Boolean fbReqFlg) {
 		this.fbReqFlg = fbReqFlg;
 	}
 

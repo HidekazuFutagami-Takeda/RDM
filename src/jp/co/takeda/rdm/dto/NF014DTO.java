@@ -307,6 +307,11 @@ public class NF014DTO extends BaseDTO implements Serializable {
 	 */
 	private String msgStr;
 
+	/**
+	 * ULT施設コード
+	 */
+	private String ultInsNo;
+
     /**
      * デフォルトのコンストラクタ。
      * @generated
@@ -1010,6 +1015,21 @@ public class NF014DTO extends BaseDTO implements Serializable {
 	 */
 	public void setMsgStr(String msgStr) {
 		this.msgStr = msgStr;
+	}
+
+	/**
+	 * NF014DTO.javaultInsCdを設定
+	 * @return ultInsCd
+	 */
+	public String getUltInsNo() {
+		return ultInsNo;
+	}
+
+	/**
+	 * @param ultInsCd セットする ultInsCd
+	 */
+	public void setUltInsNo(String ultInsNo) {
+		this.ultInsNo = ultInsNo;
 	}
 
 	/**

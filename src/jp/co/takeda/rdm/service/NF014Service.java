@@ -103,6 +103,8 @@ public class NF014Service extends BaseService {
 			indto.setReqYmdhms("");
 			indto.setReqStsNm("");
 
+			indto.setUltInsNo(StringUtils.nvl(mainDataEntity.getUltInsNo(), ""));
+
 		} else if ("1".equals(indto.getDisplayKbn())) {
 			// 申請データ（一時保存含む）を参照
 			SelectNF014MainDataEntity paramEntity = new SelectNF014MainDataEntity();
@@ -187,6 +189,7 @@ public class NF014Service extends BaseService {
 			indto.setReqComment(StringUtils.nvl(mainDataEntity.getReqComment(), ""));
 			indto.setAprMemo(StringUtils.nvl(mainDataEntity.getAprMemo(), ""));
 
+			indto.setUltInsNo(StringUtils.nvl(mainDataEntity.getUltInsNo(), ""));
 		}
 
 		// DropDownList作成
@@ -354,6 +357,11 @@ public class NF014Service extends BaseService {
 			tRdmReqKnrInsData.setInsShaId(indto.getLoginJgiNo());
 			tRdmReqKnrInsData.setUpdShaYmd(systemDate);
 			tRdmReqKnrInsData.setUpdShaId(indto.getLoginJgiNo());
+			if(StringUtils.isEmpty(indto.getUltInsNo())) {
+        		tRdmReqKnrInsData.setFbReqFlg("0");	//FB申請要否フラグ
+        	} else {
+        		tRdmReqKnrInsData.setFbReqFlg("1");	//FB申請要否フラグ
+        	}
 
 			dao.insertByValue(tRdmReqKnrInsData);
 
@@ -373,6 +381,11 @@ public class NF014Service extends BaseService {
 			tRdmReqKnrUpdData.setAprMemo(indto.getAprMemo());
 			tRdmReqKnrUpdData.setUpdShaYmd(systemDate);
 			tRdmReqKnrUpdData.setUpdShaId(indto.getLoginJgiNo());
+			if(StringUtils.isEmpty(indto.getUltInsNo())) {
+				tRdmReqKnrUpdData.setFbReqFlg("0");	//FB申請要否フラグ
+        	} else {
+        		tRdmReqKnrUpdData.setFbReqFlg("1");	//FB申請要否フラグ
+        	}
 
 			dao.update(tRdmReqKnrUpdData);
 		}

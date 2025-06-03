@@ -336,7 +336,12 @@ public class NF307DTO extends BaseDTO implements Serializable {
 	 * アルトマークへの情報連携
 	 * @generated
 	 */
-	private String fbReqFlg;
+	private Boolean fbReqFlg;
+
+	/**
+	 * ULT施設コード
+	 */
+	private String ultInsNo;
 
     /**
      * デフォルトのコンストラクタ。
@@ -1107,15 +1112,30 @@ public class NF307DTO extends BaseDTO implements Serializable {
 	 * NF307DTO.javafbReqFlgを設定
 	 * @return fbReqFlg
 	 */
-	public String getFbReqFlg() {
+	public Boolean getFbReqFlg() {
 		return fbReqFlg;
 	}
 
 	/**
 	 * @param fbReqFlg セットする fbReqFlg
 	 */
-	public void setFbReqFlg(String fbReqFlg) {
+	public void setFbReqFlg(Boolean fbReqFlg) {
 		this.fbReqFlg = fbReqFlg;
+	}
+
+	/**
+	 * NF307DTO.javaultInsNoを設定
+	 * @return ultInsNo
+	 */
+	public String getUltInsNo() {
+		return ultInsNo;
+	}
+
+	/**
+	 * @param ultInsNo セットする ultInsNo
+	 */
+	public void setUltInsNo(String ultInsNo) {
+		this.ultInsNo = ultInsNo;
 	}
 
 	/**

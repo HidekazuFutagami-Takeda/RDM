@@ -79,7 +79,7 @@
 			,HCP_MST.DOC_KANJ --氏名（漢字）
 			,HCP_MST.DOC_NO --医師固定コード
 			,HCP_MST.ULT_DOC_NO --ULT医師コード
-			,HCO_MST.INS_ABBR_NAME --施設略式漢字名
+			,HCO_MST.INS_FORMAL_NAME AS INS_ABBR_NAME --施設略式漢字名
 			,SHOZOKU_BUKA.DEPT_KJ --所属部科漢字名
 			,KMU_REQ.TITLE_CODE_AF --役職コード(異動先)
 			,KMU_REQ.JOB_FORM_AF --勤務形態(異動先)

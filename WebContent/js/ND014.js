@@ -236,7 +236,7 @@ function tmpCseView(){
  */
 function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
     document.fm1.skInsNo.value = insNo;
-    document.fm1.skInsNm.value = insAbbrName;
+    document.fm1.skInsNm.value = insFormalName;
     document.fm1.skInsHoInsType.value = hoInsType;
     document.fm1.skInsInsClass.value = insClass;
 

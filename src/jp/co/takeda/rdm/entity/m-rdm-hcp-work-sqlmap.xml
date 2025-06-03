@@ -63,7 +63,7 @@
         FROM (
         SELECT DISTINCT
             HCO_MST.INS_NO
-           ,HCO_MST.INS_ABBR_NAME
+           ,HCO_MST.INS_FORMAL_NAME AS INS_ABBR_NAME
            ,HCP_MST.DOC_NO
            ,HCP_MST.DOC_KANJ
            ,HCP_YAKUSHOKU.TITLE_KJ PRE_TITLE_KJ
@@ -175,7 +175,7 @@
    <select id="selectNd401Init" parameterType="jp.co.takeda.rdm.entity.join.SelectNd401InitEntity" resultMap="selectNd401InitResultMap">
         SELECT DISTINCT
             HCO_MST.INS_NO
-           ,HCO_MST.INS_ABBR_NAME
+           ,HCO_MST.INS_FORMAL_NAME AS INS_ABBR_NAME
            ,HCP_MST.DOC_NO
            ,HCP_MST.DOC_KANJ
            ,HCP_YAKUSHOKU.TITLE_KJ PRE_TITLE_KJ

@@ -154,7 +154,7 @@
     <select id="selectInsAbbrName" parameterType="jp.co.takeda.rdm.entity.join.MRdmHcpUpdHstListEntity" resultMap="MRdmHcpUpdHstEntiryResultMap">
         SELECT
 			INS_NO,
-			INS_ABBR_NAME
+			INS_FORMAL_NAME AS INS_ABBR_NAME
 		FROM
 			M_RDM_HCO_MST
 		WHERE

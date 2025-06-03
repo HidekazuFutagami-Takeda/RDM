@@ -871,7 +871,7 @@
 		, HCP.SP_DISEASE  -- 医師_申請管理.専門詳細コード
 		, HCP.SP_COM  -- 医師_申請管理.専門追加情報
 		, HCP.HOME_DEPT_CODE  -- 医師_申請管理.出身所属コード
-		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.INS_FORMAL_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
 		, HCO.HO_INS_TYPE
 		, HCO.INS_CLASS
 		, HCP.UNIV_POS_CODE  -- 医師_申請管理.大学職位コード
@@ -945,7 +945,7 @@
 		, CDM.VALUE1 AS HOME_TOWN  -- コード情報(出身地).値1
 		, SJM.UNIV_CODE AS MED_SCH  -- 医師_出身校紐付けマスタ.武田出身大学コード
 		, ULT.SOTSUNEN_SR AS GRAD_YEAR  -- ULT_MDB個人マスタ.卒年(西暦)
-		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.INS_FORMAL_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
 		, HCO.HO_INS_TYPE
 		, HCO.INS_CLASS
 		, YUV.TITLE_CODE AS UNIV_POS_CODE  -- 医師_役職紐付けマスタ(大学職位).武田役職コード
@@ -1135,7 +1135,7 @@
 		, HCP.SP_DISEASE  -- 医師_申請管理.専門詳細コード
 		, HCP.SP_COM  -- 医師_申請管理.専門追加情報
 		, HCP.HOME_DEPT_CODE  -- 医師_申請管理.出身所属コード
-		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.INS_FORMAL_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
 		, HCO.HO_INS_TYPE
 		, HCO.INS_CLASS
 		, HCP.UNIV_POS_CODE  -- 医師_申請管理.大学職位コード
@@ -2053,7 +2053,7 @@
 		, CDMDRE.VALUE1_KANJ AS DEL_REASON_NM
 		, HCP.RST_REASON  -- 医師_申請管理.復活理由
 		, HCP.INS_NO_SK  -- 医師_申請管理.勤務先施設固定コード
-		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.INS_FORMAL_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
 		, HCO.HO_INS_TYPE
 		, HCO.INS_CLASS
 		, HCP.DEPT_CODE  -- 医師_申請管理.所属部科コード
@@ -2162,7 +2162,7 @@
 		, CDMDRE.VALUE1_KANJ AS DEL_REASON_NM
 		, HCP.RST_REASON  -- 医師_申請管理.復活理由
 		, HCP.INS_NO_SK  -- 医師_申請管理.勤務先施設固定コード
-		, HCO.INS_ABBR_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
+		, HCO.INS_FORMAL_NAME AS SK_INS_NM -- 施設_基本情報.施設略式漢字名
 		, HCO.HO_INS_TYPE
 		, HCO.INS_CLASS
 		, HCP.DEPT_CODE  -- 医師_申請管理.所属部科コード

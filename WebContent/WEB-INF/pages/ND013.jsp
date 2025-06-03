@@ -365,7 +365,7 @@
 	   	  <table class="comTableTitle" id="comTableTitle" style="text-align: center;" align="center" style="border: 0px none;">
 	   		<tr style="position: sticky; top:0; left:0; z-index:3">
 	   			<td class="comTableTitle" style="border-top-width : 0px; border-left-width : 0px; border-right-width : 0px; border-bottom-width : 1px; background-color:white; resize : none;">アクション</td>
-	            <td class="comTableTitle" style="width:146pt;"><nobr>施設略式漢字名</nobr></td>
+	            <td class="comTableTitle" style="width:146pt;"><nobr>施設正式漢字名</nobr></td>
 	            <td class="comTableTitle" style="width:146pt;"><nobr>対象区分</nobr></td>
 	            <td class="comTableTitle" style="width:200pt;"><nobr>施設住所</nobr></td>
 	        　　             <td class="comTableTitle" style="width:200pt;"><nobr>所属部科</nobr></td>
@@ -530,7 +530,7 @@
 	                </table>
 	                </div>
 	                </td>
-		        	<!-- 施設略式漢字名 -->
+		        	<!-- 施設正式漢字名 -->
 					<td class="comTableItem" id="left" >
 						<s:if test="%{#rowBean.insAbbrName == null || #rowBean.insAbbrName == ''}">
 			            	<nobr>&nbsp;</nobr>

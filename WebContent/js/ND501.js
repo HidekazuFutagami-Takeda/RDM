@@ -419,7 +419,7 @@ function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisets
     document.fm1.insNo.value = insNo;
     document.fm1.kensakuInsNo.value = document.fm1.insNo.value;
 
-    document.fm1.insAbbrName.value = insAbbrName;
+    document.fm1.insAbbrName.value = insFormalName;
     document.fm1.kensakuInsKanj.value = document.fm1.insAbbrName.value;
 }
 

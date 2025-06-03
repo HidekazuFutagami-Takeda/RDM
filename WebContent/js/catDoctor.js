@@ -224,7 +224,7 @@ function tmpCseView(){
  */
 function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
     document.fm1.searchInsNo.value = insNo;
-    document.fm1.searchInsNm.value = insAbbrName;
+    document.fm1.searchInsNm.value = insFormalName;
 //    document.fm1.searchInsHoInsType.value = hoInsType;
 //    document.fm1.searchInsInsClass.value = insClass;
 

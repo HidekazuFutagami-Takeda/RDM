@@ -108,7 +108,7 @@ function tmpCallBackShozokuViewRDM(deptCode,DeptKj,DeptKn){
  */
 function tmpCallBackShisetsuView(insAbbrName,insNo){
     document.fm1.searchInsNo.value = insNo;
-    document.fm1.searchInsNm.value = insAbbrName;
+    document.fm1.searchInsNm.value = insFormalName;
 //    document.fm1.searchInsHoInsType.value = hoInsType;
 //    document.fm1.searchInsInsClass.value = insClass;
 
@@ -467,7 +467,7 @@ function cdcView(w,callBack,winVarName){
 function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address,jgiName,insSbt,hoInsType,insClass){
 
     document.fm1.insNoSk.value = insNo;
-    document.fm1.insAbbrName.value = insAbbrName;
+    document.fm1.insAbbrName.value = insFormalName;
     document.fm1.insClass.value = insClass;
     document.fm1.hoInsType.value = hoInsType;
     document.fm1.ultInsNo.value = dcfShisetsuCd;

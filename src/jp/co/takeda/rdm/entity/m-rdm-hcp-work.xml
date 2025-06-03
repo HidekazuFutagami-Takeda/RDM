@@ -118,7 +118,7 @@
 				,PARAM_MST_ISHI_MENU.VALUE AS ISHI_MENU --医師メニュースイッチ
 				,IDOU.KMU_REQ_COUNT AS REQA --申請A（異動申請数）
 				,HENKOU.HENKOU_COUNT AS REQB --申請B（変更申請数）
-				,HCO_MST.INS_ABBR_NAME --施設略式漢字名
+				,HCO_MST.INS_FORMAL_NAME AS INS_ABBR_NAME --施設略式漢字名
 				,DUMMY_HCO.VALUE1_KANJ --ダミー施設コード
 				,HO_INS_TYPE.VALUE1_KANJ AS HO_INS_TYPE --対象区分 値１（漢字）
 				,HCO_MST.INS_ADDR AS INS_ADDR --施設住所（漢字）

@@ -7,7 +7,7 @@
     </resultMap>
 
     <select id="selectSRdmJkrSosInsAbrrNameEntiry" parameterType="jp.co.takeda.rdm.entity.SRdmJkrSosInsAbbrNameEntiry" resultMap="SRdmJkrSosInsAbrrNameEntiryResultMap">
-    SELECT    HCO_MST.INS_ABBR_NAME
+    SELECT    HCO_MST.INS_FORMAL_NAME AS INS_ABBR_NAME
         FROM  M_RDM_HCO_MST HCO_MST
         WHERE
               HCO_MST.INS_NO = #{insNo}

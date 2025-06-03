@@ -94,7 +94,7 @@ function jimClear(name) {
  */
 function tmpCallBackShisetsuView(insAbbrName,insFormalName,insNo,insAddr,shisetsuNmRyaku,shisetsuNm,dcfShisetsuCd,address){
     document.fm1.postInsNo.value = insNo;
-    document.fm1.postInsAbbrName.value = shisetsuNm;
+    document.fm1.postInsAbbrName.value = insFormalName;
     //TODO 改修してhoInsType（対象区分） insClass（施設分類）を取得するよう変更すること
 }
 

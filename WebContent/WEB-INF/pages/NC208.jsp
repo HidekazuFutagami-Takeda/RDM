@@ -139,9 +139,9 @@
 		          <td class="comTableSearchItem">
 			          <s:property value="insNo" />
 		          </td>
-	            <%-- 施設略式漢字名 --%>
+	            <%-- 施設正式漢字名 --%>
 	            <td class="comTableSearchItem">
-	            	<nobr>施設略式漢字名 </nobr>
+	            	<nobr>施設正式漢字名 </nobr>
 	            </td>
 	            <td>
 	            	<s:property value="insAbbrName" />

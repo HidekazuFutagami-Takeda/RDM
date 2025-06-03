@@ -77,7 +77,7 @@ public class NC208Service extends BaseService {
         MRdmHcoMstEntity mRdmHcoMstEntity = new MRdmHcoMstEntity();
         mRdmHcoMstEntity.setInsNo(dto.getInsNoKakusi());
         MRdmHcoMstEntity mRdmHcoMstData = dao.selectByPK(mRdmHcoMstEntity);
-        dto.setInsAbbrName(mRdmHcoMstData.getInsAbbrName());
+        dto.setInsAbbrName(mRdmHcoMstData.getInsFormalName());
 
         //一覧検索件数取得の検索条件の設定
         SelectInsTrtListEntity paramEntity = new SelectInsTrtListEntity();

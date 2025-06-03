@@ -156,7 +156,7 @@
 	<table>
 		<tr height="40">
 		    <td style="width:100pt;"><nobr>施設固定C   <s:property value="paramInsNo"/></nobr></td>
-            <td style="width:100pt;"><nobr>施設略式漢字名    <s:label name="insAbbrName"  key="insAbbrName"/></nobr></td>
+            <td style="width:100pt;"><nobr>施設正式漢字名    <s:label name="insAbbrName"  key="insAbbrName"/></nobr></td>
             <td style="width:10pt;"><s:checkbox id="allCheck" name="allCheck" tabIndex="-1"/></td>
             <td style="width:100pt;"><nobr><label for="allCheck">全所属部科から検索</label></nobr></td>
 		</tr>

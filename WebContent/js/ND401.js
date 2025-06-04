@@ -387,7 +387,7 @@ function hekouShozoku(index){
 	  }
 	  else {
 		  document.fm1.paramInsNo.value = document.getElementById("kensakuInsNo").value;
-		  gChsViewWin = chsViewND401(gCdcViewWin,"tmpCallBackShozokuViewHenkou","gChsViewWin");
+		  gChsViewWin = chsViewND401(gChsViewWin,"tmpCallBackShozokuViewHenkou","gChsViewWin");
 	  }
 
 	  return(true);
@@ -616,6 +616,12 @@ function cdcViewND401(w,callBack,winVarName){
   joken[joken.length] = new Array("1");
   jokenName[jokenName.length] = "backScreenId";
   joken[joken.length] = new Array(document.fm1.backScreenId.value);
+  jokenName[jokenName.length] = "sosCd";
+  joken[joken.length] = new Array(document.fm1.kensakuSosCd.value);
+  jokenName[jokenName.length] = "bumonRank";
+  joken[joken.length] = new Array(document.fm1.kensakuBumonRank.value);
+  jokenName[jokenName.length] = "upSosCd";
+  joken[joken.length] = new Array(document.fm1.kensakuUpSosCd.value);
 
   comPostPopup(w,"NC202Init.action",CDC_SCREEN_ID,COM_FUNC_VIEWINIT,callBack,winVarName,jokenName,joken,false);
 

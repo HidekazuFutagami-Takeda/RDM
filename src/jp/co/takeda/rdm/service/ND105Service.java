@@ -733,7 +733,15 @@ public class ND105Service extends BaseService {
 		}
 		//		７：整合性チェック
 		if(fullchkFlg) {
-
+			if(!StringUtils.isEmpty(indto.getDelReason())) {
+				if(indto.getDelReason().equals("02")  && !StringUtils.isEmpty(indto.getDupDocNo()) ) {
+					if(indto.getTkdDocNo().equals(indto.getDupDocNo())) {
+						errChk = true;
+						tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W072);//削除する医師と重複医師の医師固定コードが同一です。
+						msgStr = msgStr + tmpMsgStr + "\n";
+					}
+				}
+			}
 			//		項目                                チェック内容
 			//		重複申請チェック 同じ医師固定コードに紐づく医師削除申請がすでに存在している場合    W008     重複する申請が行われています。（医師固定C）
 			SelectND105MainDataEntity paramChkEntity = new SelectND105MainDataEntity();
@@ -750,7 +758,7 @@ public class ND105Service extends BaseService {
 //TODO
 			// 整合性チェック 削除理由が「医師免許返納・死亡」以外で、所属施設が2つの以上の場合    W033    勤務先が2件以上存在するため申請できません。
 			if(!StringUtils.isEmpty(indto.getDelReason())) {
-				if(!indto.getDelReason().equals("01") && !indto.getDelReason().equals("03")) {
+				if(!indto.getDelReason().equals("01") && !indto.getDelReason().equals("03") && !indto.getDelReason().equals("02") ) {
 					paramChkEntity.setSqlId("selectND105CheckKinmuData");
 					paramChkEntity.setInDocNo(indto.getTkdDocNo());
 					List<SelectND105MainDataEntity> chkEntityList2 = dao.select(paramChkEntity);

@@ -90,6 +90,9 @@ public class ND401Service extends BaseService {
 
 		BaseDTO outdto = indto;
 
+		// DropDownList作成
+		createCombo(indto);
+
 		// エラーチェック
 		// 検索項目未入力の場合
 		boolean inputFlg = false;
@@ -303,9 +306,6 @@ public class ND401Service extends BaseService {
 		indto.setKmuIkkatsuDataList(kmuIkkatsuDataList);
 
 		indto.setSearchType("1");
-
-		// DropDownList作成
-		createCombo(indto);
 
 		return outdto;
 	}

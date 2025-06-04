@@ -308,23 +308,27 @@ public class NF501Service extends BaseService {
 		// 検索条件_更新日(FROM)
 		if (dto.getKensakuUpdMstFrom().isEmpty()) {
 			dto.setKensakuUpdMstFrom(null);
-		}
-		try {
-			dto.setUpdMstFrom(dto.getKensakuUpdMstFrom());
-			paramEntity.setKensakuUpdMstFrom(sdf.parse(dto.getKensakuUpdMstFrom()));
-		} catch (ParseException e) {
-			e.printStackTrace();
+			paramEntity.setKensakuUpdMstFrom(null);
+		} else {
+			try {
+				dto.setUpdMstFrom(dto.getKensakuUpdMstFrom());
+				paramEntity.setKensakuUpdMstFrom(sdf.parse(dto.getKensakuUpdMstFrom()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 
 		// 検索条件_更新日(TO)
 		if (dto.getKensakuUpdMstTo().isEmpty()) {
 			dto.setKensakuUpdMstTo(null);
-		}
-		try {
-			dto.setUpdMstTo(dto.getKensakuUpdMstTo());
-			paramEntity.setKensakuUpdMstTo(sdf.parse(dto.getKensakuUpdMstTo()));
-		} catch (ParseException e) {
-			e.printStackTrace();
+			paramEntity.setKensakuUpdMstTo(null);
+		} else {
+			try {
+				dto.setUpdMstTo(dto.getKensakuUpdMstTo());
+				paramEntity.setKensakuUpdMstTo(sdf.parse(dto.getKensakuUpdMstTo()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 
 		// ソートID
@@ -1089,23 +1093,27 @@ public class NF501Service extends BaseService {
 		// 検索条件_更新日(FROM)
 		if (dto.getKensakuUpdMstFrom().isEmpty()) {
 			dto.setKensakuUpdMstFrom(null);
-		}
-		try {
-			dto.setUpdMstFrom(dto.getKensakuUpdMstFrom());
-			paramEntity.setKensakuUpdMstFrom(sdf.parse(dto.getKensakuUpdMstFrom()));
-		} catch (ParseException e) {
-			e.printStackTrace();
+			paramEntity.setKensakuUpdMstFrom(null);
+		} else {
+			try {
+				dto.setUpdMstFrom(dto.getKensakuUpdMstFrom());
+				paramEntity.setKensakuUpdMstFrom(sdf.parse(dto.getKensakuUpdMstFrom()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 
 		// 検索条件_更新日(TO)
 		if (dto.getKensakuUpdMstTo().isEmpty()) {
 			dto.setKensakuUpdMstTo(null);
-		}
-		try {
-			dto.setUpdMstTo(dto.getKensakuUpdMstTo());
-			paramEntity.setKensakuUpdMstTo(sdf.parse(dto.getKensakuUpdMstTo()));
-		} catch (ParseException e) {
-			e.printStackTrace();
+			paramEntity.setKensakuUpdMstTo(null);
+		} else {
+			try {
+				dto.setUpdMstTo(dto.getKensakuUpdMstTo());
+				paramEntity.setKensakuUpdMstTo(sdf.parse(dto.getKensakuUpdMstTo()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 
 		// ソートID

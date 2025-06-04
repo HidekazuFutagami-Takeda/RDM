@@ -197,8 +197,21 @@ public class NF501Action extends BaseAction<NF501DTO> {
 		// ログインユーザ情報取得
 		LoginInfo loginInfo = (LoginInfo) BaseInfoHolder.getUserInfo();
 
+		// 入力された日付を保持
+		dto.setUpdMstFrom(dto.getKensakuUpdMstFrom());
+		dto.setUpdMstTo(dto.getKensakuUpdMstTo());
+
 		// 検索条件がすべて未入力の場合
-		if (StringUtils.isEmpty(dto.getKensakuUpdMstFrom()) || StringUtils.isEmpty(dto.getKensakuUpdMstTo())) {
+		if (StringUtils.isEmpty(dto.getKensakuSTantouBrCode()) && StringUtils.isEmpty(dto.getKensakuTantouDistCode()) && dto.getKensakuJgiNo() == 0 &&
+			StringUtils.isEmpty(dto.getKensakuShinseiBrCode()) && StringUtils.isEmpty(dto.getKensakuShinseiDistCode()) &&
+			StringUtils.isEmpty(dto.getKensakuInsKanj()) && StringUtils.isEmpty(dto.getKensakuInsKana()) &&
+			StringUtils.isEmpty(dto.getKensakuReqJgiName()) && StringUtils.isEmpty(dto.getKensakuInsNo()) &&
+			StringUtils.isEmpty(dto.getKensakuUltInsNo()) && StringUtils.isEmpty(dto.getKensakuManageCd()) &&
+			StringUtils.isEmpty(dto.getKensakuHoInsType()) && StringUtils.isEmpty(dto.getKensakuInsSbt()) &&
+			StringUtils.isEmpty(dto.getKensakuPharmType()) && StringUtils.isEmpty(dto.getKensakuInsPhone()) &&
+			StringUtils.isEmpty(dto.getKensakuInsPcode()) && StringUtils.isEmpty(dto.getKensakuAddrCodePref()) &&
+			StringUtils.isEmpty(dto.getKensakuAddrCodeCity()) && StringUtils.isEmpty(dto.getKensakuInsAddr()) &&
+			StringUtils.isEmpty(dto.getKensakuUpdMstFrom()) && StringUtils.isEmpty(dto.getKensakuUpdMstTo())) {
 
 			errChk = true;
 			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);// 検索条件を入力してください。

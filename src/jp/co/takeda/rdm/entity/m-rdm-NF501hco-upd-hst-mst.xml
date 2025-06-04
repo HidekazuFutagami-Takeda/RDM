@@ -290,7 +290,7 @@
 	FROM
 			ORAUSR01.T_RDM_HCO_UPD_HST  HCO_UPD_HST --施設_変更履歴テーブル
 
-		<if test="test=kensakuJgiNo != 0 || mrJgiNo != 0">
+		<if test="test=kensakuJgiNo != 0 || mrJgiNo != 0 || kensakuTantouDistCode != null || kensakuSTantouBrCode != null">
 		LEFT JOIN
 			ORAUSR01.M_RDM_JKR_MR_INS_TRT  INS_TRT --RDM用施設担当者情報テーブル
 		ON
@@ -505,7 +505,7 @@
 		FROM
 				ORAUSR01.T_RDM_HCO_UPD_HST  HCO_UPD_HST --施設_変更履歴テーブル
 
-		<if test="test=kensakuJgiNo != 0 || mrJgiNo != 0">
+		<if test="test=kensakuJgiNo != 0 || mrJgiNo != 0 || kensakuTantouDistCode != null || kensakuSTantouBrCode != null">
 		LEFT JOIN
 			ORAUSR01.M_RDM_JKR_MR_INS_TRT  INS_TRT --RDM用施設担当者情報テーブル
 		ON

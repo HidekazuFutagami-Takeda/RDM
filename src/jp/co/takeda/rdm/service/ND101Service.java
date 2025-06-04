@@ -237,6 +237,14 @@ public class ND101Service extends BaseService {
 				indto.setPostUnivPosCode(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostUnivPosCode(),selectDocReqKnrInsChangeList.get(0).getPreUnivPosCode()));
 				indto.setPostInsAbbrName(StringUtils.nvlUpd(selectDocReqKnrInsChangeList.get(0).getPostInsAbbrName(),selectDocReqKnrInsChangeList.get(0).getPreInsAbbrName()));
 
+				indto.setTitlePostTitleKj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getTitlePostTitleKj(), "--なし--"));
+				indto.setKmuPostCodeKanj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getKmuPostCodeKanj(), "--なし--"));
+				indto.setYakushinPostCodeKanj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getYakushinPostCodeKanj(), "--なし--"));
+				indto.setUnivPostTitleKj(
+						StringUtils.nvl(selectDocReqKnrInsChangeList.get(0).getUnivPostTitleKj(), "--なし--"));
 			}
 			// 表示する適用日の設定
 			if (StringUtils.isEmpty(selectDocReqKnrInsChangeList.get(0).getTekiyoYmd())) {

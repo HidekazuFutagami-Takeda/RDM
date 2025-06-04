@@ -187,7 +187,7 @@ public class NF307Service extends BaseService {
 			}
 		}
 
-		if(StringUtils.isEmpty(indto.getUltInsNo())) {
+		if(StringUtils.isEmpty(indto.getUltInsNo()) || !"0".equals(indto.getDelKbn())) {
 			indto.setFbReqFlg(false);	//ULTと紐付けがない場合は初期値OFF
 		} else {
 			indto.setFbReqFlg(true);	//ULTありは初期値ON

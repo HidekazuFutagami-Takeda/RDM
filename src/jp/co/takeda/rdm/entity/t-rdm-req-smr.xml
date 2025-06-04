@@ -137,6 +137,15 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
 	     LEFT JOIN
 	          ORAUSR01.T_RDM_HCO_REQ HCO_REQ --施設_申請管理　
 	      ON  HCO_REQ.REQ_ID=REQ_KNR.REQ_ID
+	     LEFT JOIN
+	          ORAUSR01.T_RDM_HCO_NXT_REQ HCO_NXT_REQ --施設_来期用_申請管理　
+	      ON  HCO_NXT_REQ.REQ_ID=REQ_KNR.REQ_ID
+         LEFT JOIN
+	          ORAUSR01.T_RDM_HCO_LNK_NXT_REQ HCO_LNK_NXT_REQ --武田紐親子_来期用_申請管理　
+	      ON  HCO_LNK_NXT_REQ.REQ_ID=REQ_KNR.REQ_ID
+         LEFT JOIN
+	          ORAUSR01.T_RDM_HCO_LNK_REQ HCO_LNK_REQ --領域品目グループ親子_申請管理　
+	      ON  HCO_LNK_REQ.REQ_ID=REQ_KNR.REQ_ID
          LEFT JOIN
               HCP_INS
           ON     HCP_INS.REQ_ID=REQ_KNR.REQ_ID
@@ -144,6 +153,9 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
 	          ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
 	      ON  HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
               OR HCO_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_NXT_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_LNK_NXT_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_LNK_REQ.INS_NO=HCO_MST.INS_NO
 	     LEFT JOIN
 	          JKR_ADDR_A    --■サブクエリ（都道府県_A）
 	      ON  JKR_ADDR_A.ADDR_CODE_PREF=HCO_REQ.ADDR_CODE_PREF

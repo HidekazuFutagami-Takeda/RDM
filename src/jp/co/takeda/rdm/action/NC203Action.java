@@ -168,7 +168,14 @@ public class NC203Action extends BaseAction<NC203DTO> {
         searchSetup();
         // F層呼び出し
         dto.setFunctionId("Search");
-        BaseDTO outdto = nC203Service.search(dto);
+
+        BaseDTO outdto;
+        if(dto.isReqCheck()) {
+        	outdto = nC203Service.searchReqData(dto);
+        } else {
+        	outdto = nC203Service.search(dto);
+        }
+
         if (outdto instanceof NC203DTO) {
             // START UOC
 

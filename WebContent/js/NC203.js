@@ -118,6 +118,97 @@
 
 		}
 
+	/**
+	 * 申請中の施設を対象
+	 * @returns
+	 */
+	function reqChk(){
+		var req = document.getElementById("reqCheck").checked;
 
+		if(req){
+			// 申請中の施設を対象チェックONの場合
+			document.fm1.haiinKbn.readonly = true;
+			document.fm1.haiinKbn.className = "reqChkOn";
+			document.fm1.haiinKbn.tabIndex = "-1";
+			document.fm1.kensakuDelFlg.readonly = true;
+			document.fm1.kensakuDelFlg.className = "reqChkOn";
+			document.fm1.kensakuDelFlg.tabIndex = "-1";
+			document.fm1.insNoSrch.readonly = true;
+			document.fm1.insNoSrch.className = "reqChkOn";
+			document.fm1.insNoSrch.tabIndex = "-1";
+			document.fm1.hcoKeieitai.readonly = true;
+			document.fm1.hcoKeieitai.className = "reqChkOn";
+			document.fm1.hcoKeieitai.tabIndex = "-1";
+			document.fm1.hoInsType.readonly = true;
+			document.fm1.hoInsType.className = "reqChkOn";
+			document.fm1.hoInsType.tabIndex = "-1";
+			document.fm1.insType.readonly = true;
+			document.fm1.insType.className = "reqChkOn";
+			document.fm1.insType.tabIndex = "-1";
+			document.fm1.pharmType.readonly = true;
+			document.fm1.pharmType.className = "reqChkOn";
+			document.fm1.pharmType.tabIndex = "-1";
+			document.fm1.phone1.readonly = true;
+			document.fm1.phone1.className = "reqChkOn";
+			document.fm1.phone1.tabIndex = "-1";
+			document.fm1.insPcode.readonly = true;
+			document.fm1.insPcode.className = "reqChkOn";
+			document.fm1.insPcode.tabIndex = "-1";
+			document.fm1.jkrSosAddrCd.readonly = true;
+			document.fm1.jkrSosAddrCd.className = "reqChkOn";
+			document.fm1.jkrSosAddrCd.tabIndex = "-1";
+			document.fm1.jkrCityNameCd.readonly = true;
+			document.fm1.jkrCityNameCd.className = "reqChkOn";
+			document.fm1.jkrCityNameCd.tabIndex = "-1";
+			document.fm1.address.readonly = true;
+			document.fm1.address.className = "reqChkOn";
+			document.fm1.address.tabIndex = "-1";
+			document.fm1.searchReqId.readonly = false;
+			document.fm1.searchReqId.className = "";
+			document.fm1.searchReqId.tabIndex = "";
+
+		} else {
+			// 申請中の施設を対象チェックOFFの場合
+			document.fm1.haiinKbn.readonly = false;
+			document.fm1.haiinKbn.className = "";
+			document.fm1.haiinKbn.tabIndex = "";
+			document.fm1.kensakuDelFlg.readonly = false;
+			document.fm1.kensakuDelFlg.className = "";
+			document.fm1.kensakuDelFlg.tabIndex = "";
+			document.fm1.insNoSrch.readonly = false;
+			document.fm1.insNoSrch.className = "";
+			document.fm1.insNoSrch.tabIndex = "";
+			document.fm1.hcoKeieitai.readonly = false;
+			document.fm1.hcoKeieitai.className = "";
+			document.fm1.hcoKeieitai.tabIndex = "";
+			document.fm1.hoInsType.readonly = false;
+			document.fm1.hoInsType.className = "";
+			document.fm1.hoInsType.tabIndex = "";
+			document.fm1.insType.readonly = false;
+			document.fm1.insType.className = "";
+			document.fm1.insType.tabIndex = "";
+			document.fm1.pharmType.readonly = false;
+			document.fm1.pharmType.className = "";
+			document.fm1.pharmType.tabIndex = "";
+			document.fm1.phone1.readonly = false;
+			document.fm1.phone1.className = "";
+			document.fm1.phone1.tabIndex = "";
+			document.fm1.insPcode.readonly = false;
+			document.fm1.insPcode.className = "";
+			document.fm1.insPcode.tabIndex = "";
+			document.fm1.jkrSosAddrCd.readonly = false;
+			document.fm1.jkrSosAddrCd.className = "";
+			document.fm1.jkrSosAddrCd.tabIndex = "";
+			document.fm1.jkrCityNameCd.readonly = false;
+			document.fm1.jkrCityNameCd.className = "";
+			document.fm1.jkrCityNameCd.tabIndex = "";
+			document.fm1.address.readonly = false;
+			document.fm1.address.className = "";
+			document.fm1.address.tabIndex = "";
+			document.fm1.searchReqId.readonly = true;
+			document.fm1.searchReqId.className = "reqChkOn";
+			document.fm1.searchReqId.tabIndex = "-1";
+		}
+	}
 
 

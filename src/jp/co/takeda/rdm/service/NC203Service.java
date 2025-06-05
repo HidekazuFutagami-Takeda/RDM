@@ -27,6 +27,7 @@ import jp.co.takeda.rdm.entity.join.MRdmCodeMstEntity;
 import jp.co.takeda.rdm.entity.join.SelectCntSelectHcoEntity;
 import jp.co.takeda.rdm.entity.join.SelectHenkanListEntity;
 import jp.co.takeda.rdm.entity.join.SelectInsListEntity;
+import jp.co.takeda.rdm.entity.join.SelectNC203MainDataEntity;
 import jp.co.takeda.rdm.entity.join.SelectParamNc203Entity;
 
 import org.apache.commons.lang3.BooleanUtils;
@@ -821,6 +822,188 @@ public class NC203Service extends BaseService {
 	}
 
 
+	/**
+	 * イベント処理
+	 * @param indto NC203DTO
+     * @return 遷移先DTO
+     * @customizable
+	 */
+	public BaseDTO searchReqData(NC203DTO indto) {
+		LoginInfo loginInfo = (LoginInfo)BaseInfoHolder.getUserInfo();
+        BaseDTO outdto = indto;
+
+        outdto = this.list(indto);
+        outdto = this.searchCityName(indto);
+
+        SelectNC203MainDataEntity selectNC203MainDataEntity = new SelectNC203MainDataEntity();
+        SelectNC203MainDataEntity selectNC203MainDataCntEntity = new SelectNC203MainDataEntity("selectNC203InsREQCnt");
+
+        // 検索条件_申請ID
+        if(!StringUtils.isEmpty(indto.getSearchReqId())){
+        	selectNC203MainDataEntity.setReqId(indto.getSearchReqId());
+        	selectNC203MainDataCntEntity.setReqId(indto.getSearchReqId());
+        }
+
+    	//検索条件_施設名（全角）
+        if (indto.getInsKanjiSrch().isEmpty()) {
+        	indto.setInsKanjiSrch(null);
+        }
+        else {
+        	 //漢字変換
+        	SelectHenkanListEntity kanjiHenkan = new SelectHenkanListEntity("漢字変換");
+            kanjiHenkan.setSearchHenkan(indto.getInsKanjiSrch());
+            //漢字変換結果を格納
+            List<SelectHenkanListEntity> selectKanji = dao.select(kanjiHenkan);
+            for (SelectHenkanListEntity kanji : selectKanji) {
+            	selectNC203MainDataEntity.setInsAbbrName(kanji.getSearchHenkan());
+            	selectNC203MainDataCntEntity.setInsAbbrName(kanji.getSearchHenkan());
+            }
+        }
+
+        //検索条件_施設名（半角カナ）
+        if (indto.getInsKanaSrch().isEmpty()) {
+        	indto.setInsKanaSrch(null);
+        }
+        else {
+        	 //半角変換
+        	SelectHenkanListEntity kanaHenkan = new SelectHenkanListEntity("半角変換");
+            kanaHenkan.setSearchHenkan(indto.getInsKanaSrch());
+            //半角変換結果を格納
+            List<SelectHenkanListEntity> selectKana = dao.select(kanaHenkan);
+            for (SelectHenkanListEntity kana : selectKana) {
+            	selectNC203MainDataEntity.setInsKana(kana.getSearchHenkan());
+            	selectNC203MainDataCntEntity.setInsKana(kana.getSearchHenkan());
+            }
+        }
+        selectNC203MainDataEntity.setInsSbt(StringUtils.setEmptyToNull(indto.getKensakuInsSbt()));
+        selectNC203MainDataCntEntity.setInsSbt(StringUtils.setEmptyToNull(indto.getKensakuInsSbt()));
+
+        // 件数定義取得
+        SelectParamNc203Entity selectParamNc203Entity = new SelectParamNc203Entity();
+		List<SelectParamNc203Entity> selectParamNc203List;
+		selectParamNc203List = dao.select(selectParamNc203Entity);
+
+        // 件数取得
+		List<SelectNC203MainDataEntity> selectNC203MainDataCntEntityList  = dao.select(selectNC203MainDataCntEntity);
+
+        if (checkInputReq(loginInfo, indto, selectNC203MainDataEntity ,false)) {
+        	return outdto;
+        }
+
+        indto.setPageCnt(selectNC203MainDataCntEntityList.get(0).getCntHco());
+        indto.setMaxPageCnt(selectParamNc203List.get(0).getValue());
+        if (checkSearchResults(loginInfo, indto, false)) {
+        	return outdto;
+        }
+
+        indto.initPageInfo(indto.getPageCntCur(), selectNC203MainDataCntEntityList.get(0).getCntHco(), selectParamNc203List.get(1).getValue());
+
+        selectNC203MainDataEntity.setInOffset(indto.getLineCntStart() - 1);
+        selectNC203MainDataEntity.setInLimit(selectParamNc203List.get(1).getValue());
+        selectNC203MainDataEntity.setInSortId(StringUtils.setEmptyToNull(indto.getSortCondition()));
+
+        // 検索結果取得
+        List<SelectNC203MainDataEntity> selectNC203MainDataEntityList = dao.select(selectNC203MainDataEntity);
+
+        List<InsData> dataList = new ArrayList<InsData>();
+        for(SelectNC203MainDataEntity entity : selectNC203MainDataEntityList) {
+
+        	InsData test = new InsData();
+
+        	// 施設略式漢字名
+        	if(entity.getInsAbbrName() != null) {
+        	test.setInsAbbrName(entity.getInsAbbrName());
+        	}else {
+        	test.setInsAbbrName(" ");
+    		}
+
+        	// 施設正式漢字名
+        	if(entity.getInsFormalName() != null) {
+        	test.setInsFormalName(entity.getInsFormalName());
+        	}else {
+        	test.setInsFormalName(" ");
+    		}
+
+        	// 施設固定コード
+        	if(entity.getInsNo() != null) {
+        	test.setInsNo(entity.getInsNo());
+        	}else {
+        	test.setInsNo(" ");
+    		}
+
+        	// 住所
+        	if(entity.getInsAddr() != null) {
+        	test.setInsAddr(entity.getInsAddr());
+        	}else {
+        	test.setInsAddr(" ");
+    		}
+
+        	// 電話名
+        	if(entity.getInsPhone1() != null) {
+        	test.setPhone1(entity.getInsPhone1());
+        	}else {
+        	test.setPhone1(" ");
+    		}
+
+        	// 施設種別
+        	if(entity.getInsSbt() != null) {
+        	test.setInsSbt(entity.getInsSbt());
+        	}else {
+        	test.setInsSbt("");
+        	}
+
+        	// 対象区分
+        	test.setHoInsType(entity.getHoInsType());
+        	// 施設区分
+        	test.setInsClass(entity.getInsClass());
+        	// 施設名カナ
+        	test.setShisetsuNmKana(entity.getInsKana());
+        	// 郵便番号
+        	test.setInsPcode(entity.getInsPcode());
+        	// 都道府県コード
+        	test.setTodofukenCd(entity.getAddrCodePref());
+        	// 市区町村コード
+        	test.setShikuchosonCd(entity.getAddrCodeCity());
+        	// 武田市区郡コード
+        	test.setTkCityCd(entity.getTkCityCd());
+
+        	//データ代入
+        	dataList.add(test);
+        }
+        indto.setInsData(dataList);
+
+        //検索部分ヘッダ（検索後は表示=0）
+        indto.setPageFlg(0);
+
+        // END UOC
+        return outdto;
+	}
+
+	/*
+	 * １：必須入力チェック
+	 * エラーありならtrueとし、エラーメッセージをmsgStrにセットする
+	 */
+	public boolean checkInputReq(LoginInfo loginInfo, NC203DTO indto, SelectNC203MainDataEntity selectNC203MainDataEntity, boolean fullchkFlg) {
+
+		boolean errChk = false;
+		String msgStr = "";
+		String tmpMsgStr = "";
+
+        if (    StringUtils.isEmpty(selectNC203MainDataEntity.getInsAbbrName())   &&
+        		StringUtils.isEmpty(selectNC203MainDataEntity.getInsKana())       &&
+        		StringUtils.isEmpty(selectNC203MainDataEntity.getReqId())         &&
+        		StringUtils.isEmpty(selectNC203MainDataEntity.getInSortId())
+        		) {
+			errChk = true;
+			tmpMsgStr = loginInfo.getMsgData(RdmConstantsData.W001);// 検索条件を入力してください。
+			msgStr = msgStr + tmpMsgStr + "\n";
+
+        }
+		if (errChk) {// エラーありなのでメッセージをセットする
+			indto.setMsgStr(msgStr);
+		}
+        return errChk;
+	}
 
     /**
      * イベント処理

@@ -264,6 +264,16 @@ public class NC203DTO extends BaseDTO implements Serializable {
     private String kensakuAddrCodeCity;
 
     /**
+     * 検索条件_申請ID
+     */
+    private String searchReqId;
+
+    /**
+     * 検索条件_申請中の施設を対象
+     */
+    private boolean reqCheck;
+
+    /**
 	 * メッセージ中身
 	 * @generated
 	 */
@@ -987,6 +997,22 @@ public class NC203DTO extends BaseDTO implements Serializable {
 
 	public void setKensakuAddrCodePref(String kensakuAddrCodePref) {
 		this.kensakuAddrCodePref = kensakuAddrCodePref;
+	}
+
+	public String getSearchReqId() {
+		return searchReqId;
+	}
+
+	public void setSearchReqId(String searchReqId) {
+		this.searchReqId = searchReqId;
+	}
+
+	public boolean isReqCheck() {
+		return reqCheck;
+	}
+
+	public void setReqCheck(boolean reqCheck) {
+		this.reqCheck = reqCheck;
 	}
 
 	/**

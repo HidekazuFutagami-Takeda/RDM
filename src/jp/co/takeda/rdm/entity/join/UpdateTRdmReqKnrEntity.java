@@ -334,7 +334,10 @@ public class UpdateTRdmReqKnrEntity extends BaseEntity implements Serializable {
     private String updShaId;
     private boolean updShaIdNullFlag;
 
-
+    /**
+     * 更新日（function引き渡し用）
+     */
+    private String updShaYmdToStr;
 
     /**
      * コンストラクタ
@@ -1838,6 +1841,23 @@ public class UpdateTRdmReqKnrEntity extends BaseEntity implements Serializable {
 	 */
 	public void setUpdShaIdNullFlag(boolean updShaIdNullFlag) {
 		this.updShaIdNullFlag = updShaIdNullFlag;
+	}
+
+
+	/**
+	 * UpdateTRdmReqKnrEntity.javaupdShaYmdToStrを設定
+	 * @return updShaYmdToStr
+	 */
+	public String getUpdShaYmdToStr() {
+		return updShaYmdToStr;
+	}
+
+
+	/**
+	 * @param updShaYmdToStr セットする updShaYmdToStr
+	 */
+	public void setUpdShaYmdToStr(String updShaYmdToStr) {
+		this.updShaYmdToStr = updShaYmdToStr;
 	}
 
 

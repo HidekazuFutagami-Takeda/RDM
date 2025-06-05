@@ -65,7 +65,7 @@ if (stack.peek() instanceof NC203DTO) {
 
     	sosAddrChange();
     	document.fm1.kensakuAddrCodeCity.value = document.fm1.tmpAddrCodeCity.value;
-
+    	reqChk();
     }
     </script>
 	<style>
@@ -82,6 +82,12 @@ if (stack.peek() instanceof NC203DTO) {
         #jkrCityNameCd option {
 			display: none;
 			}
+
+	.reqChkOn{
+		background-color:#a1a4ac;
+		pointer-events:none;
+	}
+
 	</style>
 	<%
 	// ソート順状態制御用
@@ -298,6 +304,14 @@ if (stack.peek() instanceof NC203DTO) {
 				</td>
 				<td><s:select class="jkrCityNameCd" id="jkrCityNameCd" name="kensakuAddrCodeCity" cssStyle="width:80pt" list ="mapCityName" onchange="addrCodeCityChange();" /></td>
 
+				<%-- 申請中の施設を対象 --%>
+				<s:if test="backScreenId == 'NF011' || backScreenId == 'NF211' || backScreenId == 'NF212'">
+					<td>
+						<s:checkbox id="reqCheck" align="right" name="reqCheck" onchange="reqChk();" />
+					</td>
+					<td><nobr><label for="reqCheck">申請中の施設を対象</label></nobr></td>
+				</s:if>
+
 			</tr>
 			<tr>
 				<%-- 住所 --%>
@@ -305,6 +319,16 @@ if (stack.peek() instanceof NC203DTO) {
 				<td  colspan="3">
   					<s:textfield id="address" size="50" maxlength="150" name="address" style="ime-mode:inactive;" />
 				</td>
+
+				<%-- 申請ID --%>
+				<s:if test="backScreenId == 'NF011' || backScreenId == 'NF211' || backScreenId == 'NF212'">
+					<td class="comTableSearchItem">
+					<nobr>&nbsp;申請ID</nobr>
+					</td>
+					<td>
+						<s:textfield size="20" maxlength="40" name="searchReqId" style="ime-mode:active；" />
+					</td>
+				</s:if>
 
 				<td>
 					<input type="button" name="btnS0" value="検索" OnClick="ciiSearch();return false;">

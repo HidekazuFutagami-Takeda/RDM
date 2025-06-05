@@ -5,6 +5,7 @@
 //## AutomaticGeneration
 package jp.co.takeda.rdm.service;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,6 +41,8 @@ import jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity;
 import jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity;
 import jp.co.takeda.rdm.entity.join.TRdmMMdbHcoMstEntity;
 import jp.co.takeda.rdm.entity.join.TRdmReqKnrEntity;
+import jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity;
+import jp.co.takeda.rdm.util.AppConstant;
 import jp.co.takeda.rdm.util.DateUtils;
 import jp.co.takeda.rdm.util.RdmConstantsData;
 import jp.co.takeda.rdm.util.StringUtils;
@@ -1119,6 +1122,58 @@ public class NF301Service extends BaseService {
 
         	} else if("2".equals(indto.getFuncId())) {
         		// 承認
+        		// 申請管理、施設_申請管理　///////////////////////////////////////////////////////
+    			UpdateTRdmReqKnrEntity updateTRdmReqKnrEntity = new UpdateTRdmReqKnrEntity();
+    			updateTRdmReqKnrEntity.setReqId(indto.getReqId());
+    			updateTRdmReqKnrEntity.setUpdShaYmdToStr(sysDateTime);
+    			updateTRdmReqKnrEntity.setSqlId("updateInsNoDate");
+    			try {
+    				// 施設固定コード採番（function呼び出し）
+    				List<UpdateTRdmReqKnrEntity> updateEntityList = dao.select(updateTRdmReqKnrEntity);
+    			} catch(Exception pe) {
+    				log.error(pe.toString());
+    				Throwable cause = pe.getCause();
+    				if(cause instanceof SQLException) {
+    					SQLException sqle = (SQLException)cause;
+    					//SQLエラーの場合はエラーコードをチェックし、業務的なエラー以外は InternalException をスローする
+    					int sqlCode = sqle.getErrorCode();
+    					//SQL業務エラーのチェック
+    					if (sqlCode == AppConstant.ORA_ROWLOCK_ERROR) {
+    						//追加、更新、削除の行ロック(for update nowait)時に発生するエラー
+    						//メッセージ(M0001101:他のユーザによって使用されています。)
+    						//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+    						indto.setMsgId(RdmConstantsData.E003);
+    						indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+    					} else {
+    						indto.setForward("exception");
+    					}
+    				} else {
+    					indto.setForward("exception");
+    				}
+    				return outdto;
+    			}
+
+    			// 施設固定コード採番チェック
+    			UpdateTRdmReqKnrEntity updateTRdmReqKnrChkEntity = new UpdateTRdmReqKnrEntity();
+    			updateTRdmReqKnrChkEntity.setReqId(indto.getReqId());
+    			updateTRdmReqKnrChkEntity.setUpdShaYmdToStr(sysDateTime);
+    			updateTRdmReqKnrChkEntity.setSqlId("selectNF301DateChkData");
+
+    			List<UpdateTRdmReqKnrEntity> chkEntityList = dao.select(updateTRdmReqKnrChkEntity);
+    			if(chkEntityList.size() > 0) {
+    				if(StringUtils.isEmpty(chkEntityList.get(0).getInsNo())) {
+    					//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+    					indto.setMsgId(RdmConstantsData.E003);
+    					indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+    					return outdto;
+    				}
+    			} else {
+    				//MSG_CODE	既に他のユーザーによってデータが処理されています。	E003
+    				indto.setMsgId(RdmConstantsData.E003);
+    				indto.setMsgStr(loginInfo.getMsgData(RdmConstantsData.E003));
+    				return outdto;
+    			}
+
         		if("1".equals(indto.getReqChl()) || "2".equals(indto.getReqChl())) {
     				tRdmReqKnrUpdData.setReqStsCd("04");
     			} else if("3".equals(indto.getReqChl())) {

@@ -1659,6 +1659,26 @@
         <result column="APR_COMMENT" property="aprComment"/>
         <result column="SHN_FLG" property="shnFlg"/>
     </resultMap>
+    <resultMap id="nC203MainDataResultMap" type="jp.co.takeda.rdm.entity.join.SelectNC203MainDataEntity">
+    	<result column="REQ_ID" property="reqId"/>
+    	<result column="INS_ABBR_NAME" property="insAbbrName"/>
+         <result column="INS_FORMAL_NAME" property="insFormalName"/>
+         <result column="INS_NO" property="insNo"/>
+         <result column="INS_ADDR" property="insAddr"/>
+         <result column="INS_PHONE1" property="insPhone1"/>
+         <result column="INS_SBT" property="insSbt"/>
+         <result column="MANAGE_CD" property="manageCd"/>
+         <result column="BEDS_TOT" property="bedsTot"/>
+         <result column="HO_INS_TYPE" property="hoInsType"/>
+         <result column="INS_CLASS" property="insClass"/>
+         <result column="INS_KANA" property="insKana"/>
+         <result column="INS_PCODE" property="insPcode"/>
+         <result column="TODOFUKEN_CD" property="todofukenCd"/>
+         <result column="ADDR_CODE_PREF" property="addrCodePref"/>
+         <result column="ADDR_CODE_CITY" property="addrCodeCity"/>
+         <result column="TK_CITY_CD" property="tkCityCd"/>
+         <result column="CNT_HCO" property="cntHco"/>
+    </resultMap>
     <select id="selectByPK" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity" resultMap="tRdmHcoReqResultMap">
         SELECT
             REQ_ID, INS_NO, INS_CLASS, INS_SBT, INS_KANA, INS_ABBR_NAME, INS_FORMAL_NAME, INS_CONT_NAME, INS_PCODE, ADDR_CODE_PREF, ADDR_CODE_CITY, TK_CITY_CD, INS_ADDR_DT, INS_ADDR, INS_ADDR_KANA, INS_PHONE1, INS_FAX1, INS_PHONE2, INS_FAX2, INS_URL, INS_URL_YMD, TRADE_TYPE, WS_TYPE, BASKET_PURCHASE, HO_INS_TYPE, PHARM_TYPE, INS_RANK, MANAGE_CD, REG_VIS_TYPE, IMP_HOS_TYPE, IMP_INS_TYPE, UNIV_SUBDIV, INS_OPEN_YEAR, INS_OPEN_MONTH, INS_OPEN_DAY, HOS_EMERG, CAPA_TYPE, CLITEM_LIST, VAC_INS_TYPE, VAC_VISIT_TYPE, BEDCNT_BASE, BEDS_TOT, MED_BEDS_TOT, ENTCAPA_NUM, MAIN_INS_NO, INS_SECOND_TYPE, ULT_INS_NO, MDM_ID, BEDCNT01, BEDCNT02, BEDCNT03, BEDCNT04, BEDCNT05, BEDCNT06, BEDCNT07, FREE0001, FREE0002, FREE0003, FREE0004, FREE0005, FREE0006, FREE0007, FREE0008, FREE0009, FREE0010, FREE0011, FREE0012, FREE0013, FREE0014, FREE0015, FREE0101, WELFARE02, WELFARE08, RESULT01, RESULT02, RESULT03, RESULT04, RESULT05, RESULT06, RESULT07, RESULT08, RESULT09, RESULT10, RESULT11, RESULT12, RESULT13, RESULT14, RESULT15, RESULT16, RESULT17, RESULT18, RESULT19, RESULT20, RESULT21, RESULT22, RESULT23, RESULT24, RESULT25, RESULT26, RESULT27, RESULT28, RESULT29, RESULT30, RESULT31, RESULT32, RESULT33, RESULT34, RESULT35, RESULT36, EQUIP01, EQUIP02, EQUIP03, EQUIP07, EQUIP09, MARKET01, MARKET02, MARKET03, MARKET04, MARKET06, MARKET07, MARKET09, MEDICAL12, SPFUNC01, SPFUNC02, SPFUNC03, SPFUNC04, SPFUNC05, SPFUNC06, TIEUP05, TIEUP08, TIEUP09, TIEUP10, TIEUP11, TIEUP12, TIEUP13, USERCD0001, USERCD0002, USERCD0003, USERCD0004, USERCD0005, USERCD0006, USERCD0007, USERCD0008, USERCD0009, USERCD0010, USERCD0011, USERCD0012, USERCD0013, USERCD0014, USERCD0015, USERCD0016, USERCD0017, USERCD0018, USERCD0019, USERCD0020, USERCD0021, USERCD0022, USERCD0023, USERCD0024, USERCD0025, USERCD0026, USERCD0027, USERCD0028, USERCD0029, USERCD0030, USERCD0031, USERCD0032, USERCD0033, USERCD0034, USERCD0035, USERCD0036, USERCD0101, USERCD0102, USERCD0103, USERCD0104, USERCD0105, USERCD0106, USERCD0107, USERCD0108, USERCD0109, USERCD0201, USERCD0202, USERCD0203, USERCD0204, USERCD0205, USERCD0206, REWARD04, REWARD05, REWARD08, REWARD09, REWARD16, REWARD17, REWARD18, REWARD21, REWARD23, REWARD25, REWARD26, REWARD27, REWARD29, REWARD35, REWARD36, REWARD37, REWARD44, DEL_KBN, DEL_REASON, DEL_YMD, DUP_INS_NO, RST_REASON, INS_SHA_YMD, INS_SHA_ID, UPD_SHA_YMD, UPD_SHA_ID
@@ -1711,7 +1731,7 @@
 		, ULT.SHISETSU_NM		-- ULT_MDB施設マスタ.施設名
 		, HCO.INS_SBT			-- 施設_申請管理.施設種別
 		, HCO.MAIN_INS_NO		-- 施設_申請管理.親施設コード
-		, MSTMAIN.INS_ABBR_NAME AS MAIN_INS_NM -- 親施設名
+		, NVL(MSTMAIN.INS_ABBR_NAME, HCOMAIN.INS_ABBR_NAME) AS MAIN_INS_NM -- 親施設名
 		, HCO.INS_ABBR_NAME		-- 施設_申請管理.施設略式漢字名
 		, HCO.INS_KANA			-- 施設_申請管理.施設カナ名
 		, HCO.INS_FORMAL_NAME	-- 施設_申請管理.施設正式漢字名
@@ -1782,6 +1802,10 @@
 		COM_POS_ADDR ADDR
 		ON 1=1
 		AND HCO.INS_PCODE = ADDR.POST_CODE
+		LEFT JOIN
+		T_RDM_HCO_REQ HCOMAIN -- 施設_申請管理
+		ON 1=1
+		AND HCO.MAIN_INS_NO = HCOMAIN.INS_NO
 		WHERE 1=1
         AND KNR.REQ_ID = #{inReqId}
     </select>
@@ -7956,6 +7980,89 @@
 		AND KNR.REQ_STS IN ('03','13','04','14')
 		WHERE 1=1
         AND HCO.INS_NO = #{insNo}
+    </select>
+    <select id="selectNC203InsREQData" parameterType="jp.co.takeda.rdm.entity.join.SelectNC203MainDataEntity" resultMap="nC203MainDataResultMap">
+		SELECT
+		    HCO.REQ_ID               -- 申請管理　申請ID
+		   ,HCO.INS_ABBR_NAME        -- 施設_申請管理　施設略式漢字名
+		   ,HCO.INS_FORMAL_NAME      -- 施設_申請管理　施設正式漢字名
+		   ,HCO.INS_NO               -- 施設_申請管理　施設固定コード
+		   ,HCO.INS_ADDR             -- 施設_申請管理　施設住所（漢字）
+		   ,HCO.INS_PHONE1           -- 施設_申請管理　電話番号１
+		   ,HCO.INS_SBT              -- 施設_申請管理　施設種別
+		   ,HCO.MANAGE_CD            -- 施設_申請管理　経営主体コード
+		   ,HCO.BEDS_TOT             -- 施設_申請管理　ベッド数計
+		   ,HCO.HO_INS_TYPE          -- 施設_申請管理　対象区分
+		   ,HCO.INS_CLASS            -- 施設_申請管理　施設分類
+		   ,HCO.INS_KANA             -- 施設_申請管理　施設カナ名
+		   ,HCO.INS_PCODE            -- 施設_申請管理　郵便番号
+		   ,HCO.ADDR_CODE_PREF       -- 施設_申請管理　JIS府県コード
+		   ,HCO.ADDR_CODE_CITY       -- 施設_申請管理　JIS市区町村コード
+		   ,HCO.TK_CITY_CD           -- 施設_申請管理　武田市区群コード
+		FROM
+		    T_RDM_REQ_KNR KNR
+		INNER JOIN
+		    T_RDM_HCO_REQ HCO
+		ON  KNR.REQ_ID = HCO.REQ_ID
+		WHERE
+		    KNR.REQ_STS IN ('04', '14')      -- 承認済み、ULT承認済み
+		AND KNR.REQ_TYPE = '01'              -- 新規作成
+		<if test="reqId != null">
+		    AND HCO.REQ_ID = #{reqId} --申請ID
+		</if>
+ 		<if test="insAbbrName != null">
+ 			AND (HCO.INS_ABBR_NAME LIKE '%' ||#{insAbbrName}|| '%' --施設名（全角）
+ 			OR   HCO.INS_FORMAL_NAME LIKE '%' ||#{insAbbrName}|| '%')
+ 		</if>
+ 		<if test="insKana != null">
+ 			AND HCO.INS_KANA LIKE '%' ||#{insKana}|| '%' --施設名（半角カナ）
+ 		</if>
+ 		<if test="insSbt != null">
+ 			AND HCO.INS_SBT = #{insSbt} --施設種別
+ 		</if>
+ 		--ソートID NULL OR '0'
+         <if test="inSortId == 0 or inSortId == null">ORDER BY INS_NO NULLS FIRST</if>
+         --ソートID '1'
+         <if test="inSortId == 1">ORDER BY INS_NO DESC NULLS LAST</if>
+         --ソートID '2'
+         <if test="inSortId == 2">ORDER BY INS_ABBR_NAME NULLS FIRST</if>
+         --ソートID '3'
+         <if test="inSortId == 3">ORDER BY INS_ABBR_NAME DESC NULLS LAST</if>
+         --ソートID '4'
+         <if test="inSortId == 4">ORDER BY INS_ADDR NULLS FIRST</if>
+         --ソートID '5'
+         <if test="inSortId == 5">ORDER BY INS_ADDR DESC NULLS LAST</if>
+         --ソートID '10'
+         <if test="inSortId == 10">ORDER BY INS_FORMAL_NAME NULLS FIRST</if>
+         --ソートID '11'
+         <if test="inSortId == 11">ORDER BY INS_FORMAL_NAME NULLS FIRST</if>
+
+ 		OFFSET #{inOffset} ROWS FETCH FIRST #{inLimit} ROWS ONLY
+    </select>
+    <select id="selectNC203InsREQCnt" parameterType="jp.co.takeda.rdm.entity.join.SelectNC203MainDataEntity" resultMap="nC203MainDataResultMap">
+		SELECT
+		    COUNT(*) AS CNT_HCO
+		FROM
+		    T_RDM_REQ_KNR KNR
+		INNER JOIN
+		    T_RDM_HCO_REQ HCO
+		ON  KNR.REQ_ID = HCO.REQ_ID
+		WHERE
+		    KNR.REQ_STS IN ('04', '14')      -- 承認済み、ULT承認済み
+		AND KNR.REQ_TYPE = '01'              -- 新規作成
+		<if test="reqId != null">
+		    AND HCO.REQ_ID = #{reqId} --申請ID
+		</if>
+ 		<if test="insAbbrName != null">
+ 			AND (HCO.INS_ABBR_NAME LIKE '%' ||#{insAbbrName}|| '%' --施設名（全角）
+ 			OR   HCO.INS_FORMAL_NAME LIKE '%' ||#{insAbbrName}|| '%')
+ 		</if>
+ 		<if test="insKana != null">
+ 			AND HCO.INS_KANA LIKE '%' ||#{insKana}|| '%' --施設名（半角カナ）
+ 		</if>
+ 		<if test="insSbt != null">
+ 			AND HCO.INS_SBT = #{insSbt} --施設種別
+ 		</if>
     </select>
 	<update id="updateNF011Data" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcoReqEntity">
         UPDATE

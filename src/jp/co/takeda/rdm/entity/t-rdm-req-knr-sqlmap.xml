@@ -56,6 +56,7 @@
     </resultMap>
     <resultMap id="selectLinkDataResultMap" type="jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity">
         <result column="REQ_ID" property="reqId"/>
+        <result column="INS_NO" property="insNo"/>
     </resultMap>
     <select id="issueReqId" parameterType="jp.co.takeda.rdm.entity.join.SeqRdmReqIdEntity" resultMap="seqRdmReqIdResultMap">
         SELECT
@@ -778,5 +779,21 @@
             T_RDM_REQ_KNR
         WHERE
             REQ_MEMO = #{reqId}
+    </select>
+    <select id="updateInsNoDate" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity" resultMap="selectUpDateResultMap">
+    	DECLARE
+    		INS_NO_RTN_CD varchar2(1);
+    	BEGIN
+	        INS_NO_RTN_CD := ORAUSR01.F_RDM_PRC_GET_EMP_INS_NO(#{reqId}, #{updShaYmdToStr});
+	    END;
+    </select>
+    <select id="selectNF301DateChkData" parameterType="jp.co.takeda.rdm.entity.join.UpdateTRdmReqKnrEntity" resultMap="selectLinkDataResultMap">
+	SELECT
+		REQ_ID
+	   ,INS_NO
+	FROM
+		T_RDM_REQ_KNR
+	WHERE REQ_ID = #{reqId}
+	  AND TO_CHAR(UPD_SHA_YMD, 'YYYYMMDDHH24MISS') = #{updShaYmdToStr}
     </select>
 </mapper>

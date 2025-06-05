@@ -436,8 +436,12 @@ public class ND403Service extends BaseService {
 			tRdmReqKnrInsData.setDocNo(entity.getDocNo());
 
 			// チェックあり：'1'（FB申請要）
-			//TODO ULTコード有無チェック追加
-			tRdmReqKnrInsData.setFbReqFlg("1");
+			// ULTコード有無でセット
+			if(StringUtils.isEmpty(entity.getUltDocNo())) {
+				tRdmReqKnrInsData.setFbReqFlg("0");//ULTと紐付けが無い場合はOFF
+			} else {
+				tRdmReqKnrInsData.setFbReqFlg("1");//ULTありはON
+			}
 
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
 			tRdmReqKnrInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));

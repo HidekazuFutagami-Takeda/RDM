@@ -87,7 +87,7 @@ public class NM001Service extends BaseService {
 
 	public BaseDTO search(NM001DTO indto) throws ParseException{
 		BaseDTO outdto = indto;
-		SRdmReqSamariEntity paramEntity = new SRdmReqSamariEntity();
+		SRdmReqSamariEntity summaryParamEntity = new SRdmReqSamariEntity();
       //  List<NM001Entity> selectTestEntity = dao.select(paramEntity);
       //  indto.setTest(selectTestEntity.get(0).getTest());
 
@@ -96,18 +96,18 @@ public class NM001Service extends BaseService {
 
 
           //アドミンflagの検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setMrAdminFlg(StringUtils.setEmptyToNull(indto.getMrAdminFlg()));
+          summaryParamEntity.setMrAdminFlg(StringUtils.setEmptyToNull(indto.getMrAdminFlg()));
 
           //アドミンflagの検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
+          summaryParamEntity.setJgiNo(StringUtils.setEmptyToNull(indto.getJgiNo()));
 
 
 
           //申請日前部分の検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setReqYmdhmsFrom(StringUtils.setEmptyToNull(indto.getReqYmdhmsFrom()));
+          summaryParamEntity.setReqYmdhmsFrom(StringUtils.setEmptyToNull(indto.getReqYmdhmsFrom()));
 
           //申請日前部分の検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setReqYmdhmsTo(StringUtils.setEmptyToNull(indto.getReqYmdhmsTo()));
+          summaryParamEntity.setReqYmdhmsTo(StringUtils.setEmptyToNull(indto.getReqYmdhmsTo()));
 
 
         //SimpleDateFormatで日付フォーマット設定
@@ -127,30 +127,30 @@ public class NM001Service extends BaseService {
           }
 
           //入力_検索文字列  申請日がnullでないかのチェック。
-          if(paramEntity.getReqYmdhmsFrom() != null) {
-        	  indto.setInreqYmdhmsFrom(paramEntity.getReqYmdhmsFrom());
+          if(summaryParamEntity.getReqYmdhmsFrom() != null) {
+        	  indto.setInreqYmdhmsFrom(summaryParamEntity.getReqYmdhmsFrom());
               	 //値がある場合：ハイフン除去
               	SelectHenkanListEntity haihunjokyo = new SelectHenkanListEntity("ハイフン除去");
               	haihunjokyo.setSearchHenkan(indto.getReqYmdhmsFrom());
                   //ハイフン除去結果を格納
                   List<SelectHenkanListEntity> selectKnazi = dao.select(haihunjokyo);
                   for (SelectHenkanListEntity haijokyo : selectKnazi) {
-                	paramEntity.setReqYmdhmsFrom(haijokyo.getSearchHenkan());
+                	summaryParamEntity.setReqYmdhmsFrom(haijokyo.getSearchHenkan());
                   }
               }
 
           //申請日後部分の検索値のセット、setEmptyToNullで空文字をNullに置換している。
-          paramEntity.setReqYmdhmsTo(StringUtils.setEmptyToNull(indto.getReqYmdhmsTo()));
+          summaryParamEntity.setReqYmdhmsTo(StringUtils.setEmptyToNull(indto.getReqYmdhmsTo()));
           //入力_検索文字列  申請日がnullでないかのチェック。
-          if(paramEntity.getReqYmdhmsTo() != null) {
-        	  indto.setInreqYmdhmsTo(paramEntity.getReqYmdhmsTo());
+          if(summaryParamEntity.getReqYmdhmsTo() != null) {
+        	  indto.setInreqYmdhmsTo(summaryParamEntity.getReqYmdhmsTo());
               	 //値がある場合：ハイフン除去
               	SelectHenkanListEntity haihunjokyo = new SelectHenkanListEntity("ハイフン除去");
               	haihunjokyo.setSearchHenkan(indto.getReqYmdhmsTo());
               	//ハイフン除去結果を格納
                   List<SelectHenkanListEntity> selectKnazi = dao.select(haihunjokyo);
                   for (SelectHenkanListEntity haijokyo : selectKnazi) {
-                  	paramEntity.setReqYmdhmsTo(haijokyo.getSearchHenkan());
+                  	summaryParamEntity.setReqYmdhmsTo(haijokyo.getSearchHenkan());
                   }
               }
 
@@ -159,10 +159,10 @@ public class NM001Service extends BaseService {
 
           //paramEntity.setInLimit(selectParamNM001List.get(1).getValue());
               //画面初期表示時の帳票一覧を取得する
-              List<SRdmReqSamariEntity> deptListEntity = dao.select(paramEntity);
+              List<SRdmReqSamariEntity> summaryListEntity = dao.select(summaryParamEntity);
 
              // for(int i = 0;i < 11; i++) {
-              	 for (SRdmReqSamariEntity entiry : deptListEntity) {
+              	 for (SRdmReqSamariEntity entiry : summaryListEntity) {
               		NM001DTO dataRecord = new NM001DTO();
 
                 	// 都道府県名　

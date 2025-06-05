@@ -2,53 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="t-rdm-req-knr">
 
-    <resultMap id="sJkrJkrAuthKnrResultMap" type="jp.co.takeda.rdm.entity.SRdmReqListEntity">
+    <resultMap id="selectReqListResultMap" type="jp.co.takeda.rdm.entity.SRdmReqListEntity">
         <result column="REQ_ID" property="reqId"/>
         <result column="REQ_YMDHMS" property="reqYmdhmsFrom"/>
-        <result column="REQ_YMDHMS" property="reqYmdhmsTo"/>
         <result column="REQ_CHL" property="reqChl"/>
         <result column="REQ_TYPE" property="reqType"/><!-- reqKbn=req_TYPE -->
         <result column="REQ_STS" property="reqSts"/>
         <result column="INS_NO" property="insNo"/>
         <result column="DOC_NO" property="docNo"/>
         <result column="DOC_KANJ" property="docKanj"/>
-        <result column="DOC_KANJI_SRCH" property="docKanjiSrch"/>
         <result column="REQ_JGI_NAME" property="reqJgiName"/>
         <result column="REQ_SHZ" property="reqShz"/>
         <result column="APR_YMDHMS" property="aPR_YMDHMS"/>
         <result column="APR_SHA_ID" property="aPR_SHA_ID"/>
         <result column="APR_MEMO" property="aPR_MEMO"/>
         <result column="APR_COMMENT" property="aprComment"/>
-        <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
-       <!--<result column="REQ_JGI_NO" property="reqJgiNo"/>  -->
-        <result column="REQ_JGI_NO" property="jgiNo"/>
-        <result column="REQ_BR_CODE" property="brCode"/>
-        <result column="REQ_DIST_CODE" property="distCode"/>
-        <result column="INS_NO_SK" property="insNoSk"/>
-        <result column="INS_NO_MT" property="insNoMt"/>
-        <result column="INS_ABBR_NAME" property="insAbbrName"/>
         <result column="INS_FORMAL_NAME" property="insFormalName"/>
-        <result column="INS_CONT_NAME" property="insContName"/>
-        <result column="INS_KANJ_SRCH" property="insKanjiSrch"/>
-        <result column="INS_CLASS" property="insClass"/>
-        <result column="INS_SBT" property="insSbt"/>
-        <result column="HO_INS_TYPE" property="hoInsType"/>
-        <result column="DOC_TYPE" property="docType"/>
-        <result column="JOB_FORM" property="jobForm"/>
-        <result column="JOB_FORM_BF" property="jobFormBf"/>
-        <result column="JOB_FORM_AF" property="jobFormAf"/>
-        <result column="VALUE1" property="vALUE1"/>
         <result column="REQ_COMMENT" property="reqComment"/>
-        <result column="INSORDOC" property="iNSORDOC"/>
-        <result column="MRORKNR" property="mRORKNR"/>
-        <result column="SBT" property="sBt"/>
-        <result column="EMP_ID" property="eMP_ID"/>
-        <result column="LEN_SBT" property="reqSbt"/>
-        <result column="SORT_ID" property="sORT_ID"/>
-
-        <result column="MR_ADMIN_FLG" property="mrAdminFlg"/>
-        <result column="INSORTID" property="inSortId"/>
-
         <result column="SHN_FLG" property="shnFlg"/>
         <result column="SHN_YMDHMS" property="shnYmdhms"/>
         <result column="SHN_SHA_ID" property="shnShaId"/>
@@ -58,58 +28,8 @@
     </resultMap>
     <resultMap id="selectCntReqListResultMap" type="jp.co.takeda.rdm.entity.join.SelectCntSelectReqListEntity">
         <result column="CNT_REQ" property="CntReq"/>
-        <result column="REQ_ID" property="reqId"/>
-        <result column="REQ_YMDHMS" property="reqYmdhmsFrom"/>
-        <result column="REQ_YMDHMS" property="reqYmdhmsTo"/>
-        <result column="REQ_CHL" property="reqChl"/>
-        <result column="REQ_TYPE" property="reqType"/><!-- reqKbn=req_TYPE -->
-        <result column="REQ_STS" property="reqSts"/>
-        <result column="INS_NO" property="insNo"/>
-        <result column="DOC_NO" property="docNo"/>
-        <result column="DOC_KANJ" property="docKanj"/>
-        <result column="DOC_KANJI_SRCH" property="docKanjiSrch"/>
-        <result column="REQ_JGI_NAME" property="reqJgiName"/>
-        <result column="REQ_SHZ" property="reqShz"/>
-        <result column="APR_YMDHMS" property="aPR_YMDHMS"/>
-        <result column="APR_SHA_ID" property="aPR_SHA_ID"/>
-        <result column="APR_MEMO" property="aPR_MEMO"/>
-        <result column="APR_COMMENT" property="aprComment"/>
-        <result column="ADDR_CODE_PREF" property="aDdrCodePref"/>
-     <!--<result column="REQ_JGI_NO" property="reqJgiNo"/>  -->
-        <result column="REQ_JGI_NO" property="jgiNo"/>
-        <result column="REQ_BR_CODE" property="brCode"/>
-        <result column="REQ_DIST_CODE" property="distCode"/>
-        <result column="INS_NO_SK" property="insNoSk"/>
-        <result column="INS_NO_MT" property="insNoMt"/>
-        <result column="INS_ABBR_NAME" property="insAbbrName"/>
-        <result column="INS_FORMAL_NAME" property="insFormalName"/>
-        <result column="INS_CONT_NAME" property="insContName"/>
-        <result column="INS_KANJ_SRCH" property="insKanjiSrch"/>
-        <result column="INS_CLASS" property="insClass"/>
-        <result column="INS_SBT" property="insSbt"/>
-        <result column="HO_INS_TYPE" property="hoInsType"/>
-        <result column="DOC_TYPE" property="docType"/>
-        <result column="JOB_FORM" property="jobForm"/>
-        <result column="JOB_FORM_BF" property="jobFormBf"/>
-        <result column="JOB_FORM_AF" property="jobFormAf"/>
-        <result column="VALUE1" property="vALUE1"/>
-        <result column="REQ_COMMENT" property="reqComment"/>
-        <result column="INSORDOC" property="iNSORDOC"/>
-        <result column="MRORKNR" property="mRORKNR"/>
-        <result column="SBT" property="sBt"/>
-        <result column="EMP_ID" property="eMP_ID"/>
-        <result column="LEN_SBT" property="reqSbt"/>
-        <result column="SORT_ID" property="sORT_ID"/>
-        <result column="MR_ADMIN_FLG" property="mrAdminFlg"/>
-        <result column="INSORTID" property="inSortId"/>
-        <result column="SHN_FLG" property="shnFlg"/>
-        <result column="SHN_YMDHMS" property="shnYmdhms"/>
-        <result column="SHN_SHA_ID" property="shnShaId"/>
-        <result column="FB_REQ_FLG" property="fbReqFlg"/>
-        <result column="FB_ANS_ID" property="fbAnsId"/>
-        <result column="FB_PRC_TYPE" property="fbPrcType"/>
     </resultMap>
-  <select id="selectReqKnr" parameterType="jp.co.takeda.rdm.entity.SRdmReqListEntity" resultMap="sJkrJkrAuthKnrResultMap">
+  <select id="selectReqKnr" parameterType="jp.co.takeda.rdm.entity.SRdmReqListEntity" resultMap="selectReqListResultMap">
 		WITH HCP_KMS_MAX AS(--■サブクエリ（医師勤務先）
 		    SELECT MAX(INS_NO) MAX_INS_NO,
 		           DOC_NO
@@ -119,7 +39,7 @@
 		, HCP_INS AS (--■サブクエリ（医師勤務）
 		    SELECT  HCP_REQ.REQ_ID
 		           ,CASE
-		                 WHEN REQ_KNR.REQ_TYPE = '31' THEN HCP_REQ.INS_NO_SK
+		                 WHEN REQ_KNR.REQ_TYPE IN ('31','34') THEN HCP_REQ.INS_NO_SK
 		                 WHEN HCP_KMS_MAX.MAX_INS_NO IS NULL THEN '000000000'
 		                 ELSE HCP_KMS_MAX.MAX_INS_NO
 		            END HCP_INS_NO
@@ -135,6 +55,11 @@
 		                 REQ_KNR.REQ_ID = HCP_REQ.REQ_ID
 		              )
 		)
+		,PREF_MST AS(  --■サブクエリ（都道府県）
+    SELECT DISTINCT
+          ADDR_CODE_PREF
+    FROM  ORAUSR01.S_RDM_JKR_SOS_ADDR
+    )
 
 	  SELECT
 		  	REQ_KNR.REQ_ID
@@ -201,7 +126,16 @@
 	        ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
 	        --ON HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
             --OR HCO_REQ.INS_NO=HCO_MST.INS_NO
-			ON HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
+			--ON HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
+	      ON  HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
+              OR HCO_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_NXT_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_LNK_NXT_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_LNK_REQ.INS_NO=HCO_MST.INS_NO
+            left join PREF_MST PREF_MST_A
+            on PREF_MST_A.ADDR_CODE_PREF=HCO_REQ.ADDR_CODE_PREF
+            left join PREF_MST PREF_MST_B
+            on PREF_MST_B.ADDR_CODE_PREF=HCO_MST.ADDR_CODE_PREF
 			left join ORAUSR01.M_RDM_HCP_MST HCP_MST --医師_基本情報
 			on HCP_MST.DOC_NO=nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(HCP_REQ.DOC_NO,HCP_REQ.DOC_NO,HCP_KMU_REQ.DOC_NO)))
 			left join  ORAUSR01.M_RDM_CODE_MST CODE_LB --コード情報 申請区分_LB
@@ -241,9 +175,7 @@
 					    AND HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
 				   </if>
 				   <if test='reqType == "31"'><!-- &amp;で&になる -->
-					    AND (HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
-				  		OR   HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}
-				  		)
+					    AND HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}
 				   </if>
 				   <if test='reqType != "01" &amp;&amp; reqType != "31"'>
 						AND  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別	  --//施設マスタ
@@ -251,14 +183,10 @@
 			    </if>
 			    <if test='aDdrCodePref == "99"'>
 				    <if test='reqType == "01"'>
-					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
-					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-					    )
+					    AND PREF_MST_A.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
 				    </if>
-				    <if test='reqType == "31"'>
-					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
-					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-					    )
+				    <if test='reqType == "31" or reqType == "34"'>
+					    AND PREF_MST_B.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
 				    </if>
 				    <if test='reqType == "1X"'>
 				    	<!-- 旧ver
@@ -268,14 +196,8 @@
 						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    	 -->
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_REQ.ADDR_CODE_PREF IS NULL
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-						OR   HCO_REQ.ADDR_CODE_PREF = '00'
-						OR   HCO_REQ.ADDR_CODE_PREF = '51'
+						AND( PREF_MST_A.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						AND   PREF_MST_B.ADDR_CODE_PREF IS NULL
 		                )
 				    </if>
 				    <if test='reqType == "21"'>
@@ -286,22 +208,12 @@
 						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    	 -->
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_REQ.ADDR_CODE_PREF IS NULL
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-						OR   HCO_REQ.ADDR_CODE_PREF = '00'
-						OR   HCO_REQ.ADDR_CODE_PREF = '51'
+						AND( PREF_MST_A.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						AND   PREF_MST_B.ADDR_CODE_PREF IS NULL
 		                )
 				    </if>
 				    <if test='reqType != "01" &amp;&amp; reqType != "31" &amp;&amp; reqType != "1X" &amp;&amp; reqType != "21"'>
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-		                )
+						AND PREF_MST_B.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
 				    </if>
 				</if>
 			</if>
@@ -319,14 +231,8 @@
 						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    	 -->
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_REQ.ADDR_CODE_PREF IS NULL
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-						OR   HCO_REQ.ADDR_CODE_PREF = '00'
-						OR   HCO_REQ.ADDR_CODE_PREF = '51'
+						AND( PREF_MST_A.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						AND   PREF_MST_B.ADDR_CODE_PREF IS NULL
 		                )
 			    </if>
 			</if>
@@ -494,7 +400,7 @@
 		, HCP_INS AS (--■サブクエリ（医師勤務）
 		    SELECT  HCP_REQ.REQ_ID
 		           ,CASE
-		                 WHEN REQ_KNR.REQ_TYPE = '31' THEN HCP_REQ.INS_NO_SK
+		                 WHEN REQ_KNR.REQ_TYPE IN ('31','34') THEN HCP_REQ.INS_NO_SK
 		                 WHEN HCP_KMS_MAX.MAX_INS_NO IS NULL THEN '000000000'
 		                 ELSE HCP_KMS_MAX.MAX_INS_NO
 		            END HCP_INS_NO
@@ -510,6 +416,11 @@
 		                 REQ_KNR.REQ_ID = HCP_REQ.REQ_ID
 		              )
 		)
+		,PREF_MST AS(  --■サブクエリ（都道府県）
+    SELECT DISTINCT
+          ADDR_CODE_PREF
+    FROM  ORAUSR01.S_RDM_JKR_SOS_ADDR
+    )
 
 	  SELECT
 		  	REQ_KNR.REQ_ID
@@ -532,11 +443,13 @@
 
 		    ,CASE
 			        WHEN REQ_KNR.REQ_TYPE IN ('31') THEN HCP_REQ.DOC_NO
-			        WHEN REQ_KNR.REQ_TYPE IN ('41','42','43','44','51','32','33','34')  THEN HCP_MST.DOC_NO
+			        WHEN REQ_KNR.REQ_TYPE IN ('32','33','34')  THEN HCP_MST.DOC_NO
+			        WHEN REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')  THEN HCO_MST.INS_NO || '／' || HCP_MST.DOC_NO
 			END AS DOC_NO
 			,CASE
 			        WHEN REQ_KNR.REQ_TYPE IN ('31') THEN HCP_REQ.DOC_KANJ
-			        WHEN REQ_KNR.REQ_TYPE IN ('32','33','34','41','42','43','44','51')  THEN HCP_MST.DOC_KANJ
+			        WHEN REQ_KNR.REQ_TYPE IN ('32','33','34')  THEN HCP_MST.DOC_KANJ
+			        WHEN REQ_KNR.REQ_TYPE IN ('41','42','43','44','51')  THEN HCO_MST.INS_FORMAL_NAME || '／' || HCP_MST.DOC_KANJ
 			END AS DOC_KANJ
 		    ,REQ_KNR.REQ_JGI_NAME
 		    ,REQ_KNR.REQ_SHZ
@@ -574,7 +487,16 @@
 	        ORAUSR01.M_RDM_HCO_MST HCO_MST -- 施設_基本情報
 	        --ON HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
             --OR HCO_REQ.INS_NO=HCO_MST.INS_NO
-			ON HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
+			--ON HCO_MST.INS_NO=nvl2(REQ_KNR.INS_NO,REQ_KNR.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_REQ.INS_NO,HCO_REQ.INS_NO,nvl2(HCO_NXT_REQ.INS_NO,HCO_NXT_REQ.INS_NO,nvl2(HCO_LNK_REQ.INS_NO,HCO_LNK_REQ.INS_NO,nvl2(HCO_LNK_NXT_REQ.INS_NO,HCO_LNK_NXT_REQ.INS_NO,nvl2(HCP_REQ.INS_NO_SK,HCP_REQ.INS_NO_SK,nvl2(HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_SK,HCP_KMU_REQ.INS_NO_MT))))))))
+	      ON  HCP_INS.HCP_INS_NO=HCO_MST.INS_NO
+              OR HCO_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_NXT_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_LNK_NXT_REQ.INS_NO=HCO_MST.INS_NO
+              OR HCO_LNK_REQ.INS_NO=HCO_MST.INS_NO
+            left join PREF_MST PREF_MST_A
+            on PREF_MST_A.ADDR_CODE_PREF=HCO_REQ.ADDR_CODE_PREF
+            left join PREF_MST PREF_MST_B
+            on PREF_MST_B.ADDR_CODE_PREF=HCO_MST.ADDR_CODE_PREF
 			left join ORAUSR01.M_RDM_HCP_MST HCP_MST --医師_基本情報
 			on HCP_MST.DOC_NO=nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(REQ_KNR.DOC_NO,REQ_KNR.DOC_NO,nvl2(HCP_REQ.DOC_NO,HCP_REQ.DOC_NO,HCP_KMU_REQ.DOC_NO)))
 			left join  ORAUSR01.M_RDM_CODE_MST CODE_LB --コード情報 申請区分_LB
@@ -614,9 +536,7 @@
 					    AND HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
 				   </if>
 				   <if test='reqType == "31"'><!-- &amp;で&になる -->
-					    AND (HCO_REQ.ADDR_CODE_PREF = #{aDdrCodePref}　--入力情報を受け取り判別 --//施設申請管理
-				  		OR   HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}
-				  		)
+					    AND HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}
 				   </if>
 				   <if test='reqType != "01" &amp;&amp; reqType != "31"'>
 						AND  HCO_MST.ADDR_CODE_PREF = #{aDdrCodePref}　　--入力情報を受け取り判別	  --//施設マスタ
@@ -624,14 +544,10 @@
 			    </if>
 			    <if test='aDdrCodePref == "99"'>
 				    <if test='reqType == "01"'>
-					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
-					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-					    )
+					    AND PREF_MST_A.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
 				    </if>
-				    <if test='reqType == "31"'>
-					    AND( HCO_REQ.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
-					    OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-					    )
+				    <if test='reqType == "31" or reqType == "34"'>
+					    AND PREF_MST_B.ADDR_CODE_PREF IS NULL　--入力情報を受け取り判別 --//施設申請管理
 				    </if>
 				    <if test='reqType == "1X"'>
 				    	<!-- 旧ver
@@ -641,14 +557,8 @@
 						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    	 -->
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_REQ.ADDR_CODE_PREF IS NULL
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-						OR   HCO_REQ.ADDR_CODE_PREF = '00'
-						OR   HCO_REQ.ADDR_CODE_PREF = '51'
+						AND( PREF_MST_A.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						AND   PREF_MST_B.ADDR_CODE_PREF IS NULL
 		                )
 				    </if>
 				    <if test='reqType == "21"'>
@@ -659,22 +569,12 @@
 						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    	 -->
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_REQ.ADDR_CODE_PREF IS NULL
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-						OR   HCO_REQ.ADDR_CODE_PREF = '00'
-						OR   HCO_REQ.ADDR_CODE_PREF = '51'
+						AND( PREF_MST_A.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						AND   PREF_MST_B.ADDR_CODE_PREF IS NULL
 		                )
 				    </if>
 				    <if test='reqType != "01" &amp;&amp; reqType != "31" &amp;&amp; reqType != "1X" &amp;&amp; reqType != "21"'>
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-		                )
+						AND PREF_MST_B.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
 				    </if>
 				</if>
 			</if>
@@ -692,14 +592,8 @@
 						OR   HCO_MST.ADDR_CODE_PREF = '51'
 		                )
 				    	 -->
-						AND( HCO_MST.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
-						OR   HCO_REQ.ADDR_CODE_PREF IS NULL
-						OR   HCO_MST.ADDR_CODE_PREF = 'Z'
-						OR   HCO_MST.ADDR_CODE_PREF = '00'
-						OR   HCO_MST.ADDR_CODE_PREF = '51'
-						OR   HCO_REQ.ADDR_CODE_PREF = 'Z'
-						OR   HCO_REQ.ADDR_CODE_PREF = '00'
-						OR   HCO_REQ.ADDR_CODE_PREF = '51'
+						AND( PREF_MST_A.ADDR_CODE_PREF IS NULL　　--入力情報を受け取り判別	  --//施設マスタ
+						AND   PREF_MST_B.ADDR_CODE_PREF IS NULL
 		                )
 			    </if>
 			</if>

@@ -19,7 +19,7 @@
         <result column="MR_ADMIN_FLG" property="mrAdminFlg"/>
     </resultMap>
   <select id="selectReqSmr" parameterType="jp.co.takeda.rdm.entity.SRdmReqSamariEntity" resultMap="sJkrJkrAuthKnrResultMap">
-WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
+WITH JKR_ADDR AS(  --■サブクエリ（都道府県）
     SELECT
           ADDR_CODE_PREF
          ,ADDR_NAME_PREF
@@ -29,28 +29,6 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
            '99'
           ,'その他'
     FROM   DUAL
-    )
-,JKR_ADDR_B AS(  --■サブクエリ（都道府県_B）
-    SELECT
-          ADDR_CODE_PREF
-         ,ADDR_NAME_PREF
-    FROM  ORAUSR01.S_RDM_JKR_SOS_ADDR
-    UNION
-    SELECT
-           '99'
-          ,'その他'
-    FROM   DUAL
-    )
-,JKR_ADDR AS(  --■サブクエリ（都道府県）
-    SELECT
-            ADDR_CODE_PREF,
-            ADDR_NAME_PREF
-    FROM    ORAUSR01.S_RDM_JKR_SOS_ADDR
-    UNION
-    SELECT
-            '99'
-            ,'その他'
-    FROM    DUAL
     )
 , HCP_KMS_MAX AS(--■サブクエリ（医師勤務先）
     SELECT MAX(INS_NO) MAX_INS_NO,
@@ -157,10 +135,10 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
               OR HCO_LNK_NXT_REQ.INS_NO=HCO_MST.INS_NO
               OR HCO_LNK_REQ.INS_NO=HCO_MST.INS_NO
 	     LEFT JOIN
-	          JKR_ADDR_A    --■サブクエリ（都道府県_A）
+	          JKR_ADDR JKR_ADDR_A    --■サブクエリ（都道府県_A）
 	      ON  JKR_ADDR_A.ADDR_CODE_PREF=HCO_REQ.ADDR_CODE_PREF
 	     LEFT JOIN
-	          JKR_ADDR_B    --■サブクエリ（都道府県_B）
+	          JKR_ADDR JKR_ADDR_B    --■サブクエリ（都道府県_B）
           ON  JKR_ADDR_B.ADDR_CODE_PREF=HCO_MST.ADDR_CODE_PREF
       WHERE
               1=1
@@ -172,8 +150,8 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
 	    </if>
           )
          SELECT    --■メインクエリ
-                        JKR_ADDR.ADDR_CODE_PREF
-                       ,JKR_ADDR.ADDR_NAME_PREF
+                        JKR_ADDR_C.ADDR_CODE_PREF
+                       ,JKR_ADDR_C.ADDR_NAME_PREF
                        ,REQ_NUM.KEY
                        ,REQ_NUM.SORT
                        ,CASE
@@ -184,22 +162,22 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
                        ,REQ_NUM.REQ_CHL
                        ,COUNT(REQ_INFO.REQ_ID) REQ_COUNT
 
-       FROM         JKR_ADDR
+       FROM         JKR_ADDR JKR_ADDR_C
        LEFT JOIN
                     REQ_NUM
           ON        1=1
 
        LEFT JOIN
                     REQ_INFO
-          ON        REQ_INFO.ADDR_CODE_PREF=JKR_ADDR.ADDR_CODE_PREF
+          ON        REQ_INFO.ADDR_CODE_PREF=JKR_ADDR_C.ADDR_CODE_PREF
 
           AND       REQ_NUM.REQ_TYPE_SYU=REQ_INFO.REQ_TYPE
 
           AND       REQ_NUM.REQ_STS=REQ_INFO.REQ_STS
 
           AND       REQ_NUM.REQ_CHL=REQ_INFO.REQ_CHL
-      GROUP BY  JKR_ADDR.ADDR_CODE_PREF
-	                   ,JKR_ADDR.ADDR_NAME_PREF
+      GROUP BY  JKR_ADDR_C.ADDR_CODE_PREF
+	                   ,JKR_ADDR_C.ADDR_NAME_PREF
 	                   ,REQ_NUM.KEY
 	                   ,REQ_NUM.SORT
 	                   ,CASE
@@ -208,7 +186,7 @@ WITH JKR_ADDR_A AS(  --■サブクエリ（都道府県_A）
 		                 END
 	                   ,REQ_NUM.REQ_STS
 	                   ,REQ_NUM.REQ_CHL
-      ORDER BY JKR_ADDR.ADDR_CODE_PREF
+      ORDER BY JKR_ADDR_C.ADDR_CODE_PREF
                        , REQ_NUM.SORT
 
 	</select>

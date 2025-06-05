@@ -590,7 +590,7 @@ public class NC011Service extends BaseService {
 
 		boolean errFlg = false;
 		String errMsg = "";
-		if (indto.getReqYmdhmsTo() != null || indto.getReqYmdhmsFrom() != null) {
+		if (!StringUtils.isEmpty(indto.getReqYmdhmsTo()) && !StringUtils.isEmpty(indto.getReqYmdhmsFrom())) {
 			// SimpleDateFormatで日付フォーマット設定
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			// 日付チェック 開始日が終了日より後の場合
@@ -621,6 +621,7 @@ public class NC011Service extends BaseService {
 
 		// 申請日後部分の検索値のセット、setEmptyToNullで空文字をNullに置換している。
 		paramEntity.setReqYmdhmsTo(StringUtils.setEmptyToNull(indto.getReqYmdhmsTo()));
+		selectCntSelectReqListEntity.setReqYmdhmsTo(StringUtils.setEmptyToNull(indto.getReqYmdhmsTo()));
 		// 入力_検索文字列 申請日がnullでないかのチェック。
 		if (paramEntity.getReqYmdhmsTo() != null) {
 			indto.setInreqYmdhmsTo(paramEntity.getReqYmdhmsTo());

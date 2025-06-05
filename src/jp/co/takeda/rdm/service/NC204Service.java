@@ -319,6 +319,8 @@ public class NC204Service extends BaseService {
 
         		// 所属部科名漢字
         		dataRecord.setDeptKj(entiry.getDeptKj()); /*setDeptCode部分を修正している(DepjtK)*/
+        		// 所属部科名カナ
+        		dataRecord.setDeptKn(entiry.getDeptKn());
 
         		catDeptsComboDataList.add(dataRecord);
         	}

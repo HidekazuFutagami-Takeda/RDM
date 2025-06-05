@@ -436,6 +436,7 @@ public class ND403Service extends BaseService {
 			tRdmReqKnrInsData.setDocNo(entity.getDocNo());
 
 			// チェックあり：'1'（FB申請要）
+			//TODO ULTコード有無チェック追加
 			tRdmReqKnrInsData.setFbReqFlg("1");
 
 			tRdmReqKnrInsData.setInsShaYmd(systemDate);
@@ -449,6 +450,12 @@ public class ND403Service extends BaseService {
 			TRdmHcpKmuReqEntity tRdmHcpKmuReqInsData = new TRdmHcpKmuReqEntity();
 			tRdmHcpKmuReqInsData.setReqId(reqId);
 			tRdmHcpKmuReqInsData.setDocNo(entity.getDocNo());
+			tRdmHcpKmuReqInsData.setInsNoMt(StringUtils.nvl(entity.getInsNo(), ""));
+			tRdmHcpKmuReqInsData.setInsNoSk(StringUtils.nvl(entity.getInsNo(), ""));
+			tRdmHcpKmuReqInsData.setUnivPosCodeBf(StringUtils.nvl(entity.getUnivPosCode(), ""));
+			tRdmHcpKmuReqInsData.setDccTypeBf(StringUtils.nvl(entity.getDcc(), ""));
+			tRdmHcpKmuReqInsData.setJobFormBf(StringUtils.nvl(entity.getJobForm(), ""));
+
 			tRdmHcpKmuReqInsData.setDeptCodeBf(StringUtils.nvl(entity.getPreDeptCode(), ""));
 			tRdmHcpKmuReqInsData.setDeptKanjiBf(StringUtils.nvl(entity.getPreDeptKanji(), ""));
 			tRdmHcpKmuReqInsData.setDeptKanaBf(StringUtils.nvl(entity.getPreDeptKana(), ""));

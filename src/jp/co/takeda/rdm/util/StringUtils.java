@@ -50,7 +50,7 @@ public class StringUtils {
     /**
      * 半角カナチェック用文字列
      */
-    private static final String SINGLEBYTE_KANA = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｧｨｩｪｫｬｭｮｯｰ､｡･ﾞﾟ";
+    private static final String SINGLEBYTE_KANA = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝｧｨｩｪｫｬｭｮｯｰ､｡･ﾞﾟ ";
     private static final String MULTIBYTE_KANA = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンァィゥェォャュョッー、。・゛゜";
     //private static final String MULTIEBYTE_KANA_V = "ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ";
 

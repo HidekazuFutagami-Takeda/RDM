@@ -1000,8 +1000,13 @@ public class ND101Service extends BaseService {
 			}
 			List<SelectNd101MainDataEntity> mainDataChkList = dao.select(paramEntity);
 			if(!mainDataChkList.isEmpty()) {
-				// 勤務先に廃院が選択されています。
-				tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W062) + "\n";
+				if(indto.getMovemedEditFlg().equals("0")) {// 医療機関への異動の場合
+					// 勤務先に廃院が選択されています。
+					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W062) + "\n";
+				}else {
+					//勤務先が廃院のため申請できません。
+					tmpMsgStr += loginInfo.getMsgData(RdmConstantsData.W073) + "\n";
+				}
 				errChk = true;
 			}
 

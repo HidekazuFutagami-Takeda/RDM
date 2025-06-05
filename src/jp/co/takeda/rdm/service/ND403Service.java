@@ -217,6 +217,26 @@ public class ND403Service extends BaseService {
 							.replace("医師名", "医師固定コード") + "\n";
 					errFlg = true;
 				}
+
+				//勤務先が廃院
+				tRdmHcpKmuReqEntity.setSqlId("selectND401CheckInsDel");
+				tRdmHcpKmuReqEntity.setInsNoMt(entity.getInsNo());
+				List<TRdmHcpKmuReqEntity> delInsChkList = dao.select(tRdmHcpKmuReqEntity);
+				if (delInsChkList.size() > 0) {
+					// 施設コード_施設略式漢字名、医師コード_医師名：勤務先が廃院のため申請できません。
+					StringBuilder msgSb = new StringBuilder();
+					msgSb.append(entity.getInsNo());
+					msgSb.append("_");
+					msgSb.append(entity.getInsAbbrName());
+					msgSb.append("、");
+					msgSb.append(entity.getDocNo());
+					msgSb.append("_");
+					msgSb.append(entity.getDocKanj());
+					msgSb.append("：");
+
+					errMsg += msgSb.toString() + loginInfo.getMsgData(RdmConstantsData.W073) + "\n";
+					errFlg = true;
+				}
 			}
 		}
 
@@ -316,6 +336,26 @@ public class ND403Service extends BaseService {
 
 				errMsg += msgSb.toString() + loginInfo.getMsgData(RdmConstantsData.W044).replace("施設名", "施設固定コード")
 						.replace("医師名", "医師固定コード") + "\n";
+				errFlg = true;
+			}
+
+			//勤務先が廃院
+			tRdmHcpKmuReqEntity.setSqlId("selectND401CheckInsDel");
+			tRdmHcpKmuReqEntity.setInsNoMt(entity.getInsNo());
+			List<TRdmHcpKmuReqEntity> delInsChkList = dao.select(tRdmHcpKmuReqEntity);
+			if (delInsChkList.size() > 0) {
+				// 施設コード_施設略式漢字名、医師コード_医師名：勤務先が廃院のため申請できません。
+				StringBuilder msgSb = new StringBuilder();
+				msgSb.append(entity.getInsNo());
+				msgSb.append("_");
+				msgSb.append(entity.getInsAbbrName());
+				msgSb.append("、");
+				msgSb.append(entity.getDocNo());
+				msgSb.append("_");
+				msgSb.append(entity.getDocKanj());
+				msgSb.append("：");
+
+				errMsg += msgSb.toString() + loginInfo.getMsgData(RdmConstantsData.W073) + "\n";
 				errFlg = true;
 			}
 

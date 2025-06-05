@@ -702,4 +702,22 @@
 			AND POS_HCO.ADDR_CODE_PREF = POS_ADDR.ADDR_CODE_PREF
 			AND POS_HCO.TK_CITY_CD = POS_ADDR.TK_CITY_CD
     </select>
+    <select id="selectND401CheckInsDel" parameterType="jp.co.takeda.rdm.entity.join.TRdmHcpKmuReqEntity" resultMap="tRdmHcpKmuReqResultMap">
+			SELECT KNR.REQ_ID
+			FROM
+			T_RDM_HCO_REQ HCO --施設_申請管理
+			INNER JOIN
+			T_RDM_REQ_KNR KNR --申請管理
+			ON
+			    KNR.REQ_ID = HCO.REQ_ID
+			WHERE KNR.REQ_TYPE = '03'
+			AND KNR.REQ_STS IN ('03','13','04','14')
+			AND HCO.INS_NO = #{insNoMt}
+			UNION
+			SELECT '0' AS REQ_ID
+			FROM
+			M_RDM_HCO_MST HCO --施設_基本情報
+			WHERE HCO.DEL_KBN IN ('1','2','3')
+			AND HCO.INS_NO = #{insNoMt}
+    </select>
 </mapper>

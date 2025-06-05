@@ -1559,12 +1559,20 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
     	if(insType == "02" || insType == "04" || insType == "05" || insType == "07"){
     		document.getElementById("trtHr").style.visibility = "hidden";
     		document.getElementById("formTable10").style.visibility = "hidden";
-    		trtTantoClear();
+//     		trtTantoClear();
     	} else {
     		document.getElementById("trtHr").style.visibility = "visible";
     		document.getElementById("formTable10").style.visibility = "visible";
     	}
     }
+
+	// 登録前担当者情報クリア
+	function trtSet(){
+		const insType = document.fm1.insType.value;
+    	if(insType == "02" || insType == "04" || insType == "05" || insType == "07"){
+     		trtTantoClear();
+		}
+	}
 
 	// 病床数再計算
 	function calcBedCnt(){
@@ -2040,6 +2048,7 @@ if ((!"1".equals(regEnabedFlg)) || ("1".equals(sosSelFlg))){
 										+ document.fm1.insAddrDt.value;
 		document.fm1.insAddrKana.value = document.fm1.addrCodePrefKana.value + document.fm1.addrCodeCityKana.value
 										+ document.fm1.addrDtKana.value;
+		trtSet();
 
 		document.fm1.funcId.value = funcId;
 		document.fm1.screenId.value="NF011";

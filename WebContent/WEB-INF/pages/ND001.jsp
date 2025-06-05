@@ -485,36 +485,36 @@ String sortCondition = StringUtils.nvl((String)request.getAttribute("sortConditi
               <td><s:textfield name="searchDocName" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
               <td class="pupControlItem"><nobr>&nbsp;氏名カナ(半角カナ)※</nobr></td>
               <td><s:textfield name="searchDocKana" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
-              <s:if test='mrAdminFlg == "0"'>
-                  <td class="comTableSearchItem" style="width:50pt;  color:lightgray;"><nobr>医師／薬剤師区分</nobr></td>
-                  <td class="comPortalControlItem" style="text-align:left;">
-                      <select disabled Style="width:100pt"></select>
-                  </td>
-              </s:if>
-              <s:else>
+<%--               <s:if test='mrAdminFlg == "0"'> --%>
+<!--                   <td class="comTableSearchItem" style="width:50pt;  color:lightgray;"><nobr>医師／薬剤師区分</nobr></td> -->
+<!--                   <td class="comPortalControlItem" style="text-align:left;"> -->
+<%--                       <select disabled Style="width:100pt"></select> --%>
+<!--                   </td> -->
+<%--               </s:if> --%>
+<%--               <s:else> --%>
                   <td class="pupControlItem"><nobr>&nbsp;医師／薬剤師区分</nobr></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                       <s:select id="searchDocType" name="searchDocType" cssStyle="width:100pt" list ="searchDocTypeCombo"/>
                   </td>
-              </s:else>
+<%--               </s:else> --%>
             </tr>
                       　　<tr>
               <td class="pupControlItem"><nobr>&nbsp;医師固定C</nobr></td>
               <td><s:textfield name="searchDocNo" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
               <td class="pupControlItem"><nobr>&nbsp;ULT医師コード</nobr></td>
               <td><s:textfield name="searchDcfIshiCd" size="30" maxlength="30" type="search" style="width:100pt;"/></td>
-              <s:if test='mrAdminFlg == "0"'>
-                  <td class="comTableSearchItem" style="width:50pt; color:lightgray;"><nobr>医師属性</nobr></td>
-                  <td class="comPortalControlItem" style="text-align:left;">
-                      <select disabled Style="width:100pt"></select>
-                  </td>
-              </s:if>
-              <s:else>
+<%--               <s:if test='mrAdminFlg == "0"'> --%>
+<!--                   <td class="comTableSearchItem" style="width:50pt; color:lightgray;"><nobr>医師属性</nobr></td> -->
+<!--                   <td class="comPortalControlItem" style="text-align:left;"> -->
+<%--                       <select disabled Style="width:100pt"></select> --%>
+<!--                   </td> -->
+<%--               </s:if> --%>
+<%--               <s:else> --%>
                   <td class="pupControlItem"><nobr>&nbsp;医師属性</nobr></td>
                   <td class="comPortalControlItem" style="text-align:left;">
                       <s:select id="searchDocAttribute" name="searchDocAttribute" cssStyle="width:100pt" list ="searchDocAttributeCombo"/>
                   </td>
-              </s:else>
+<%--               </s:else> --%>
             </tr>
                       　　<tr>
               <td class="pupControlItem"><nobr>&nbsp;出身校</nobr></td>

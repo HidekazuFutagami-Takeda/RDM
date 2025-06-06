@@ -422,7 +422,7 @@
 		      <td class="comFormTableItem"><nobr><s:textarea name="aprMemo"  cols="50" rows="3" maxlength="100" style="width: 650px; height: 80px;"/></nobr></td>
 	      </tr>
       </s:if>
-<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" }'>
+<s:if test='%{reqStsCd == null || reqStsCd == "" || reqStsCd == "01" || reqStsCd == "11" || reqStsCd == "03" || reqStsCd == "13"  }'>
 </s:if>
 <s:else>
 		 <tr>

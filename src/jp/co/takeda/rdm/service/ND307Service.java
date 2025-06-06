@@ -722,7 +722,11 @@ public class ND307Service extends BaseService {
 	        	tRdmReqKnrInsData.setReqJgiName(loginInfo.getJgiName());
 	        	tRdmReqKnrInsData.setReqComment(indto.getReqComment());
 	        	tRdmReqKnrInsData.setDocNo(indto.getDocNo());
-	        	tRdmReqKnrInsData.setInsNo(indto.getInsNo());
+				if ("0".equals(indto.getMovemedEditFlg())) {
+					tRdmReqKnrInsData.setInsNo(StringUtils.nvl(indto.getPostInsNo(), ""));
+				}else {
+					tRdmReqKnrInsData.setInsNo(indto.getPreInsNo());
+				}
 	        	tRdmReqKnrInsData.setInsShaYmd(systemDate);
 	        	tRdmReqKnrInsData.setInsShaId(Integer.toString(loginInfo.getJgiNo()));
 	        	tRdmReqKnrInsData.setUpdShaYmd(systemDate);
@@ -768,6 +772,9 @@ public class ND307Service extends BaseService {
 					tRdmReqKnrEntity.setFbReqFlg("0");//FB申請要否フラグ
 				}else {
 					tRdmReqKnrEntity.setFbReqFlg("1");//FB申請要否フラグ
+				}
+				if ("0".equals(indto.getMovemedEditFlg())) {
+					tRdmReqKnrEntity.setInsNo(StringUtils.nvl(indto.getPostInsNo(), ""));
 				}
 
 				dao.update(tRdmReqKnrEntity);

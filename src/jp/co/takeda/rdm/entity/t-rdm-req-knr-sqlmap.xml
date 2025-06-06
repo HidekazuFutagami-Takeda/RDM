@@ -728,6 +728,7 @@
 	SET
 		REQ_STS = #{reqStsCd},
 		TEKIYO_YMD = #{tekiyoYmd},
+		<if test="insNo != null">INS_NO = #{insNo},</if>
 		REQ_COMMENT = #{reqComment},
 		UPD_SHA_YMD = #{updShaYmd},
 		UPD_SHA_ID = #{updShaId}

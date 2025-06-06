@@ -444,16 +444,16 @@ public class NF307Service extends BaseService {
 				if(insFormalName != null && insFormalName.length() > 0 && "○".equals(insFormalName.substring(0,1))) {
 					insFormalName = insFormalName.substring(1);
 				}
-			} else if("2".equals(indto.getPreDelKbn()) && "0".equals(indto.getDelKbn())) {
-				// 廃院/閉院済み→通常の場合'●'を除去
+			} else if(("2".equals(indto.getPreDelKbn()) || "3".equals(indto.getPreDelKbn())) && "0".equals(indto.getDelKbn())) {
+				// 廃院/閉院済 又は 削除済みみ→通常の場合'●'を除去
 				if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
 					insAbbrName = insAbbrName.substring(1);
 				}
 				if(insFormalName != null && insFormalName.length() > 0 && "●".equals(insFormalName.substring(0,1))) {
 					insFormalName = insFormalName.substring(1);
 				}
-			} else if("2".equals(indto.getPreDelKbn()) && "1".equals(indto.getDelKbn())) {
-				// 廃院/閉院済み→廃院/閉院予定の場合'●'を除去、'○'を付与
+			} else if(("2".equals(indto.getPreDelKbn()) || "3".equals(indto.getPreDelKbn())) && "1".equals(indto.getDelKbn())) {
+				// 廃院/閉院済み 又は 削除済み→廃院/閉院予定の場合'●'を除去、'○'を付与
 				if(insAbbrName != null && insAbbrName.length() > 0 && "●".equals(insAbbrName.substring(0,1))) {
 					insAbbrName = insAbbrName.substring(1);
 				}
@@ -510,6 +510,23 @@ public class NF307Service extends BaseService {
 					insFormalName = insFormalName.substring(1);
 				}
 				insFormalName = "○" + insFormalName;
+			} else if("3".equals(indto.getPreDelKbn())) {
+				// 削除済み
+				if(insAbbrName != null && insAbbrName.length() > 0 && ("●".equals(insAbbrName.substring(0,1)) || "○".equals(insAbbrName.substring(0,1)))) {
+					insAbbrName = insAbbrName.substring(1);
+				}
+				if(insFormalName != null && insFormalName.length() > 0 && ("●".equals(insFormalName.substring(0,1)) || "○".equals(insFormalName.substring(0,1)))) {
+					insFormalName = insFormalName.substring(1);
+				}
+				if("1".equals(indto.getDelKbn())) {
+					// 廃院/閉院予定の場合'○'を付与
+					insAbbrName = "○" + insAbbrName;
+					insFormalName = "○" + insFormalName;
+				} else if("2".equals(indto.getDelKbn())) {
+					// 廃院/閉店済みの場合'●'を付与
+					insAbbrName = "●" + insAbbrName;
+					insFormalName = "●" + insFormalName;
+				}
 			}
 			tRdmHcoReqUpdData.setInsAbbrName(insAbbrName);
 			tRdmHcoReqUpdData.setInsFormalName(insFormalName);
